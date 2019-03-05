@@ -8,8 +8,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gedit_help master\n"
-"POT-Creation-Date: 2019-03-03 11:23+0000\n"
-"PO-Revision-Date: 2019-03-05 08:08+0100\n"
+"POT-Creation-Date: 2019-03-05 07:10+0000\n"
+"PO-Revision-Date: 2019-03-05 20:15+0100\n"
 "Last-Translator: Balázs Úr <ur.balazs at fsf dot hu>\n"
 "Language-Team: Hungarian <gnome-hu-list at gnome dot org>\n"
 "Language: hu\n"
@@ -98,8 +98,8 @@ msgid ""
 "gui></guiseq>."
 msgstr ""
 "Nyomja meg az ablak jobb felső sarkában lévő menügombot, és válassza a "
-"<guiseq><gui style=\"menuitem\">Beállítások</gui><gui>Betűk és színek</gui>"
-"</guiseq> menüpontot."
+"<guiseq><gui style=\"menuitem\">Beállítások</gui><gui>Betűk és színek</gui></"
+"guiseq> menüpontot."
 
 #. (itstool) path: item/p
 #: C/gedit-change-color-scheme.page:44
@@ -830,8 +830,8 @@ msgid ""
 "<app>gedit-plugins</app> package. Install the <app>gedit-plugins</app> "
 "package to make these extra plugins available to <app>gedit</app>."
 msgstr ""
-"Sok Linux disztribúció ezen bővítmények egy csoportját a <app>gedit-plugins<"
-"/app> csomagban teszi elérhetővé. Telepítse a <app>gedit-plugins</app> "
+"Sok Linux disztribúció ezen bővítmények egy csoportját a <app>gedit-plugins</"
+"app> csomagban teszi elérhetővé. Telepítse a <app>gedit-plugins</app> "
 "csomagot, hogy elérhetővé tegye a további bővítményeket a <app>gedit</app> "
 "alkalmazásban."
 
@@ -1571,9 +1571,9 @@ msgid ""
 msgstr ""
 "Ahogy a nevéből sejteni lehet, a <app>Gyors megnyitás</app> bővítmény a "
 "fájlok szokásosnál gyorsabb megnyitását teszi lehetővé. A bővítmény "
-"engedélyezéséhez válassza a <guiseq><gui style=\"menu\">gedit</gui><gui"
-">Beállítások</gui><gui>Bővítmények</gui><gui>Gyors megnyitás</gui></guiseq> "
-"lehetőséget."
+"engedélyezéséhez válassza a <guiseq><gui style=\"menu\">gedit</"
+"gui><gui>Beállítások</gui><gui>Bővítmények</gui><gui>Gyors megnyitás</gui></"
+"guiseq> lehetőséget."
 
 #. (itstool) path: page/p
 #: C/gedit-plugins-quick-open.page:29
@@ -1732,8 +1732,8 @@ msgid ""
 "Select <guiseq><gui style=\"menu\">gedit</gui> <gui style=\"menuitem"
 "\">Preferences</gui> <gui style=\"tab\">Plugins</gui></guiseq>."
 msgstr ""
-"Válassza a <guiseq><gui style=\"menu\">gedit</gui><gui style=\"menuitem\""
-">Beállítások<gui><gui style=\"tab\">Bővítmények</gui></guiseq>."
+"Válassza a <guiseq><gui style=\"menu\">gedit</gui><gui style=\"menuitem"
+"\">Beállítások</gui><gui style=\"tab\">Bővítmények</gui></guiseq>."
 
 #. (itstool) path: item/p
 #: C/gedit-plugins-snippets.page:40
@@ -1842,21 +1842,19 @@ msgstr ""
 #: C/gedit-plugins-snippets.page:98
 #, no-wrap
 msgid ""
-"\n "
-"     &lt;head&gt;\n "
-"     &lt;meta http-equiv=\"Content-type\" content=\"text/html; "
-"charset=utf-8\" /&gt;\n "
-"     &lt;title&gt;Page Title&lt;/title&gt;\n "
-"     &lt;/head&gt;\n "
-"   "
+"\n"
+"      &lt;head&gt;\n"
+"      &lt;meta http-equiv=\"Content-type\" content=\"text/html; charset=utf-8\" /&gt;\n"
+"      &lt;title&gt;Page Title&lt;/title&gt;\n"
+"      &lt;/head&gt;\n"
+"    "
 msgstr ""
-"\n "
-"     &lt;head&gt;\n "
-"     &lt;meta http-equiv=\"Content-type\" content=\"text/html; "
-"charset=utf-8\" /&gt;\n "
-"     &lt;title&gt;Oldalcím&lt;/title&gt;\n "
-"     &lt;/head&gt;\n "
-"   "
+"\n"
+"      &lt;head&gt;\n"
+"      &lt;meta http-equiv=\"Content-type\" content=\"text/html; charset=utf-8\" /&gt;\n"
+"      &lt;title&gt;Oldalcím&lt;/title&gt;\n"
+"      &lt;/head&gt;\n"
+"    "
 
 #. (itstool) path: section/title
 #: C/gedit-plugins-snippets.page:108
@@ -1976,15 +1974,15 @@ msgstr ""
 #: C/gedit-plugins-snippets.page:164
 #, no-wrap
 msgid ""
-"\n "
-"     &lt;greetings&gt;Hello ${1:wonderful}${2:amazing} world!\n "
-"     &lt;/greetings&gt;\n "
-"   "
+"\n"
+"      &lt;greetings&gt;Hello ${1:wonderful}${2:amazing} world!\n"
+"      &lt;/greetings&gt;\n"
+"    "
 msgstr ""
-"\n "
-"     &lt;üdvözlet&gt;Szia ${1:csodás}${2:bámulatos} világ!\n "
-"     &lt;/üdvözlet&gt;\n "
-"   "
+"\n"
+"      &lt;üdvözlet&gt;Szia ${1:csodás}${2:bámulatos} világ!\n"
+"      &lt;/üdvözlet&gt;\n"
+"    "
 
 #. (itstool) path: section/p
 #: C/gedit-plugins-snippets.page:169
@@ -2001,13 +1999,13 @@ msgstr ""
 #: C/gedit-plugins-snippets.page:173
 #, no-wrap
 msgid ""
-"\n "
-"     &lt;greetings&gt;Hello wonderfulamazing world!&lt;/greetings&gt;\n "
-"   "
+"\n"
+"      &lt;greetings&gt;Hello wonderfulamazing world!&lt;/greetings&gt;\n"
+"    "
 msgstr ""
-"\n "
-"     &lt;üdvözlet&gt;Szia csodásbámulatos világ!&lt;/üdvözlet&gt;\n "
-"   "
+"\n"
+"      &lt;üdvözlet&gt;Szia csodásbámulatos világ!&lt;/üdvözlet&gt;\n"
+"    "
 
 #. (itstool) path: section/p
 #: C/gedit-plugins-snippets.page:177
@@ -2076,8 +2074,8 @@ msgid ""
 "Select <guiseq><gui style=\"menu\">Tools</gui> <gui style=\"menuitem\">Sort…"
 "</gui></guiseq>."
 msgstr ""
-"Válassza az <guiseq><gui style=\"menu\">Eszközök</gui><gui style=\"menuitem\""
-">Rendezés…</gui></guiseq> menüpontot."
+"Válassza az <guiseq><gui style=\"menu\">Eszközök</gui><gui style=\"menuitem"
+"\">Rendezés…</gui></guiseq> menüpontot."
 
 #. (itstool) path: item/p
 #: C/gedit-plugins-sort.page:62
@@ -2210,8 +2208,8 @@ msgid ""
 "Click <guiseq><gui style=\"menu\">File</gui> <gui style=\"menuitem\">Print</"
 "gui></guiseq>."
 msgstr ""
-"Kattintson a <guiseq><gui style=\"menu\">Fájl</gui><gui style=\"menuitem\""
-">Nyomtatás</gui></guiseq> menüpontra."
+"Kattintson a <guiseq><gui style=\"menu\">Fájl</gui><gui style=\"menuitem"
+"\">Nyomtatás</gui></guiseq> menüpontra."
 
 #. (itstool) path: item/p
 #: C/gedit-printing-order.page:60
@@ -2450,8 +2448,8 @@ msgid ""
 "section."
 msgstr ""
 "A Nyomtatás ablak <gui style=\"tab\">Általános</gui> lapján válassza az <gui "
-"style=\"radiobutton\">Oldalak</gui> elemet a <gui style=\"group\">Tartomány<"
-"/gui> szakaszban."
+"style=\"radiobutton\">Oldalak</gui> elemet a <gui style=\"group\">Tartomány</"
+"gui> szakaszban."
 
 #. (itstool) path: item/p
 #: C/gedit-printing-select.page:36
@@ -4263,5 +4261,3 @@ msgstr "Creative Commons Nevezd meg!-Így add tovább! 3.0 átíratlan licenc"
 #: C/legal.xml:3
 msgid "This work is licensed under a <_:link-1/>."
 msgstr "Ez a munka a <_:link-1/> feltételei szerint használható."
-
-
