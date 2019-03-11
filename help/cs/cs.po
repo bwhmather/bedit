@@ -3,13 +3,13 @@
 # This file is distributed under the same license as the gedit help.
 #
 # Lucas Lommer <llommer@svn.gnome.org>, 2009.
-# Marek Černocký <marek@manet.cz>, 2009, 2010, 2014, 2015, 2017.
+# Marek Černocký <marek@manet.cz>, 2009, 2010, 2014, 2015, 2017, 2019.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gedit master\n"
-"POT-Creation-Date: 2017-09-17 01:26+0000\n"
-"PO-Revision-Date: 2017-09-17 08:59+0200\n"
+"POT-Creation-Date: 2019-03-10 16:48+0000\n"
+"PO-Revision-Date: 2019-03-11 09:48+0100\n"
 "Last-Translator: Marek Černocký <marek@manet.cz>\n"
 "Language-Team: čeština <gnome-cs-list@gnome.org>\n"
 "Language: cs\n"
@@ -35,7 +35,7 @@ msgid "Change the text and background colors in gedit."
 msgstr "Jak změnit v editoru gedit barvy textu a pozadí."
 
 #. (itstool) path: credit/name
-#: C/gedit-change-color-scheme.page:13 C/gedit-change-default-font.page:10
+#: C/gedit-change-color-scheme.page:14 C/gedit-change-default-font.page:10
 #: C/gedit-close-file.page:11 C/gedit-create-new-file.page:12
 #: C/gedit-edit-as-root.page:10 C/gedit-files-basic.page:10
 #: C/gedit-full-screen.page:13 C/gedit-open-files-from-sidepane.page:11
@@ -56,29 +56,29 @@ msgid "Jim Campbell"
 msgstr "Jim Campbell"
 
 #. (itstool) path: credit/name
-#: C/gedit-change-color-scheme.page:17
+#: C/gedit-change-color-scheme.page:18
 msgid "Jana Svarova"
 msgstr "Jana Švárová"
 
 #. (itstool) path: credit/years
-#: C/gedit-change-color-scheme.page:19 C/gedit-change-color-scheme.page:24
+#: C/gedit-change-color-scheme.page:20 C/gedit-change-color-scheme.page:25
 #: C/gedit-shortcut-keys.page:41
 msgid "2015"
 msgstr "2015"
 
 #. (itstool) path: credit/name
-#: C/gedit-change-color-scheme.page:22 C/gedit-replace.page:26
+#: C/gedit-change-color-scheme.page:23 C/gedit-replace.page:26
 #: C/gedit-shortcut-keys.page:39
 msgid "Ekaterina Gerasimova"
 msgstr "Ekaterina Gerasimova"
 
 #. (itstool) path: page/title
-#: C/gedit-change-color-scheme.page:30
+#: C/gedit-change-color-scheme.page:31
 msgid "Change the color scheme"
 msgstr "Změna barevného schématu"
 
 #. (itstool) path: page/p
-#: C/gedit-change-color-scheme.page:32
+#: C/gedit-change-color-scheme.page:33
 msgid ""
 "<app>gedit</app> includes several different color schemes, allowing you to "
 "change the appearance of the main text window."
@@ -87,38 +87,38 @@ msgstr ""
 "kterým můžete měnit vzhled hlavního okna s textem."
 
 #. (itstool) path: steps/title
-#: C/gedit-change-color-scheme.page:36
+#: C/gedit-change-color-scheme.page:37
 msgid "To change the color scheme:"
 msgstr "Když chcete změnit barevné schéma:"
 
 #. (itstool) path: item/p
-#: C/gedit-change-color-scheme.page:38
+#: C/gedit-change-color-scheme.page:39
 msgid ""
-"Open the <gui style=\"menu\">gedit</gui> menu from the top bar, then select "
+"Press the menu button in the top-right corner of the window and select "
 "<guiseq><gui style=\"menuitem\">Preferences</gui><gui>Font &amp; Colors</"
 "gui></guiseq>."
 msgstr ""
-"Otevřete nabídku <gui style=\"menu\">gedit</gui> na horní liště a po té "
-"<guiseq><gui style=\"menuitem\">Předvolby</gui> <gui>Písmo a barvy</gui></"
+"Zmáčkněte tlačítko nabídky v pravém horním rohu okna a vyberte <guiseq><gui "
+"style=\"menuitem\">Předvolby</gui> <gui>Písmo a barvy</gui></"
 "guiseq>."
 
 #. (itstool) path: item/p
-#: C/gedit-change-color-scheme.page:43
+#: C/gedit-change-color-scheme.page:44
 msgid "Choose your desired color scheme."
 msgstr "Zvolte požadované schéma barev."
 
 #. (itstool) path: page/p
-#: C/gedit-change-color-scheme.page:47
+#: C/gedit-change-color-scheme.page:48
 msgid "The new color scheme will be applied immediately."
 msgstr "Nové schéma barev se okamžitě použije."
 
 #. (itstool) path: section/title
-#: C/gedit-change-color-scheme.page:50
+#: C/gedit-change-color-scheme.page:51
 msgid "Use a Custom Color Scheme"
 msgstr "Použití vlastního schématu barev"
 
 #. (itstool) path: section/p
-#: C/gedit-change-color-scheme.page:56
+#: C/gedit-change-color-scheme.page:57
 msgid ""
 "You can also use color schemes that have been created by others, or create "
 "and use your own color schemes."
@@ -127,7 +127,7 @@ msgstr ""
 "své vlastní."
 
 #. (itstool) path: section/p
-#: C/gedit-change-color-scheme.page:59
+#: C/gedit-change-color-scheme.page:60
 msgid ""
 "Instructions on how to install custom color schemes, as well as examples of "
 "color schemes that you can download and use, are available on the <link href="
@@ -671,7 +671,7 @@ msgstr ""
 
 #. (itstool) path: item/p
 #: C/gedit-open-on-server.page:32
-msgid "In the title bar, click on <gui>Open</gui>."
+msgid "In the header bar, click on <gui>Open</gui>."
 msgstr "V hlavičkové liště klikněte na <gui>Otevřít</gui>."
 
 #. (itstool) path: item/p
