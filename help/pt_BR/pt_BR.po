@@ -1,5 +1,5 @@
 # Brazilian Portuguese translation of gedit documentation.
-# Copyright (C) 2002-2018 Free Software Foundation, Inc.
+# Copyright (C) 2019 gedit's COPYRIGHT HOLDERS
 # This file is distributed under the same license as the gedit package.
 # Wagner Luís de A. M. Macêdo <wagnerluis1982@gmail.com>, 2007.
 # Pedro Vaz de Mello de Medeiros <pedrovmm@gmail.com>, 2007.
@@ -11,22 +11,23 @@
 # Jose Carlos Menezes <jcmenezes.91@gmail.com>, 2013.
 # Enrico Nicoletto <liverig@gmail.com>, 2013.
 # Felipe Braga <fbobraga@gmail.com>, 2015.
-# Rafael Fontenelle <rafaelff@gnome.org>, 2013, 2014, 2016-2018.
+# Rafael Fontenelle <rafaelff@gnome.org>, 2013-2019.
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: gedit-help\n"
-"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/"
-"enter_bug.cgi?product=gedit&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2018-07-17 20:09+0000\n"
-"PO-Revision-Date: 2018-09-24 17:00-0200\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
+"product=gedit&keywords=I18N+L10N&component=general\n"
+"POT-Creation-Date: 2019-03-17 14:01+0000\n"
+"PO-Revision-Date: 2019-03-17 20:26-0300\n"
 "Last-Translator: Rafael Fontenelle <rafaelff@gnome.org>\n"
-"Language-Team: Brazilian Portuguese <gnome-pt_br-list@gnome.org>\n"
+"Language-Team: Portuguese - Brazil <gnome-pt_br-list@gnome.org>\n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Virtaal 1.0.0-beta1\n"
+"Plural-Forms: nplurals=2; plural=(n > 1)\n"
+"X-Generator: Gtranslator 3.32.0\n"
 "X-Project-Style: gnome\n"
 
 #. Put one translator per line, in the form NAME <EMAIL>, YEAR1, YEAR2
@@ -41,7 +42,7 @@ msgstr ""
 "Krix Apolinário <krixapolinario@gmail.com>, 2009\n"
 "José Carlos Menezes <jcmenezes.91@gmail.com>, 2013\n"
 "Enrico Nicoletto <liverig@gmail.com>, 2013, 2014\n"
-"Rafael Fontenelle <rafaelff@gnome.org>, 2013, 2014, 2016-2018"
+"Rafael Fontenelle <rafaelff@gnome.org>, 2013-2019"
 
 #. (itstool) path: info/desc
 #: C/gedit-change-color-scheme.page:8
@@ -49,7 +50,7 @@ msgid "Change the text and background colors in gedit."
 msgstr "Altere as cores de texto e de plano de fundo no gedit."
 
 #. (itstool) path: credit/name
-#: C/gedit-change-color-scheme.page:13 C/gedit-change-default-font.page:10
+#: C/gedit-change-color-scheme.page:14 C/gedit-change-default-font.page:10
 #: C/gedit-close-file.page:11 C/gedit-create-new-file.page:12
 #: C/gedit-edit-as-root.page:10 C/gedit-files-basic.page:10
 #: C/gedit-full-screen.page:13 C/gedit-open-files-from-sidepane.page:11
@@ -70,29 +71,29 @@ msgid "Jim Campbell"
 msgstr "Jim Campbell"
 
 #. (itstool) path: credit/name
-#: C/gedit-change-color-scheme.page:17
+#: C/gedit-change-color-scheme.page:18
 msgid "Jana Svarova"
 msgstr "Jana Svarova"
 
 #. (itstool) path: credit/years
-#: C/gedit-change-color-scheme.page:19 C/gedit-change-color-scheme.page:24
+#: C/gedit-change-color-scheme.page:20 C/gedit-change-color-scheme.page:25
 #: C/gedit-shortcut-keys.page:41
 msgid "2015"
 msgstr "2015"
 
 #. (itstool) path: credit/name
-#: C/gedit-change-color-scheme.page:22 C/gedit-replace.page:26
+#: C/gedit-change-color-scheme.page:23 C/gedit-replace.page:26
 #: C/gedit-shortcut-keys.page:39
 msgid "Ekaterina Gerasimova"
 msgstr "Ekaterina Gerasimova"
 
 #. (itstool) path: page/title
-#: C/gedit-change-color-scheme.page:30
+#: C/gedit-change-color-scheme.page:31
 msgid "Change the color scheme"
 msgstr "Alterando o esquema de cor"
 
 #. (itstool) path: page/p
-#: C/gedit-change-color-scheme.page:32
+#: C/gedit-change-color-scheme.page:33
 msgid ""
 "<app>gedit</app> includes several different color schemes, allowing you to "
 "change the appearance of the main text window."
@@ -101,38 +102,41 @@ msgstr ""
 "a aparência da janela de texto principal."
 
 #. (itstool) path: steps/title
-#: C/gedit-change-color-scheme.page:36
+#: C/gedit-change-color-scheme.page:37
 msgid "To change the color scheme:"
 msgstr "Para alterar o esquema de cor:"
 
 #. (itstool) path: item/p
-#: C/gedit-change-color-scheme.page:38
+#: C/gedit-change-color-scheme.page:39
+#| msgid ""
+#| "Open the <gui style=\"menu\">gedit</gui> menu from the top bar, then "
+#| "select <guiseq><gui style=\"menuitem\">Preferences</gui><gui>Font &amp; "
+#| "Colors</gui></guiseq>."
 msgid ""
-"Open the <gui style=\"menu\">gedit</gui> menu from the top bar, then select "
+"Press the menu button in the top-right corner of the window and select "
 "<guiseq><gui style=\"menuitem\">Preferences</gui><gui>Font &amp; Colors</"
 "gui></guiseq>."
 msgstr ""
-"Abra o menu do <gui style=\"menu\">gedit</gui> na barra superior da tela, e "
-"selecione <guiseq><gui style=\"menuitem\">Preferências</gui> <gui>Fontes "
-"&amp; cores</gui></guiseq>."
+"Pressione o botão no canto direito da janela e selecione <guiseq><gui style="
+"\"menuitem\">Preferências</gui> <gui>Fontes &amp; cores</gui></guiseq>."
 
 #. (itstool) path: item/p
-#: C/gedit-change-color-scheme.page:43
+#: C/gedit-change-color-scheme.page:44
 msgid "Choose your desired color scheme."
 msgstr "Escolha seu esquema de cores desejado."
 
 #. (itstool) path: page/p
-#: C/gedit-change-color-scheme.page:47
+#: C/gedit-change-color-scheme.page:48
 msgid "The new color scheme will be applied immediately."
 msgstr "O novo esquema de cores será aplicado imediatamente."
 
 #. (itstool) path: section/title
-#: C/gedit-change-color-scheme.page:50
+#: C/gedit-change-color-scheme.page:51
 msgid "Use a Custom Color Scheme"
 msgstr "Usando um esquema de cores personalizado"
 
 #. (itstool) path: section/p
-#: C/gedit-change-color-scheme.page:56
+#: C/gedit-change-color-scheme.page:57
 msgid ""
 "You can also use color schemes that have been created by others, or create "
 "and use your own color schemes."
@@ -141,7 +145,7 @@ msgstr ""
 "próprios esquemas de cores."
 
 #. (itstool) path: section/p
-#: C/gedit-change-color-scheme.page:59
+#: C/gedit-change-color-scheme.page:60
 msgid ""
 "Instructions on how to install custom color schemes, as well as examples of "
 "color schemes that you can download and use, are available on the <link href="
@@ -693,8 +697,9 @@ msgstr ""
 
 #. (itstool) path: item/p
 #: C/gedit-open-on-server.page:32
-msgid "In the title bar, click on <gui>Open</gui>."
-msgstr "Na barra de título, clique em <gui>Abrir</gui>."
+#| msgid "In the title bar, click on <gui>Open</gui>."
+msgid "In the header bar, click on <gui>Open</gui>."
+msgstr "Na barra de cabeçalho, clique em <gui>Abrir</gui>."
 
 #. (itstool) path: item/p
 #: C/gedit-open-on-server.page:33
