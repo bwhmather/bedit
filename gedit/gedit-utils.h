@@ -105,8 +105,8 @@ gchar                     *gedit_utils_basename_for_display                   (G
 gboolean                   gedit_utils_decode_uri                             (const gchar  *uri,
                                                                                gchar       **scheme,
                                                                                gchar       **user,
-                                                                               gchar       **port,
                                                                                gchar       **host,
+                                                                               gchar       **port,
                                                                                gchar       **path);
 
 
