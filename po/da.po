@@ -21,7 +21,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gedit.gnome-2-16\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gedit/issues\n"
-"POT-Creation-Date: 2019-02-09 09:13+0000\n"
+"POT-Creation-Date: 2019-03-24 19:20+0000\n"
 "PO-Revision-Date: 2019-02-11 19:35+0100\n"
 "Last-Translator: Alan Mortensen <alanmortensen.am@gmail.com>\n"
 "Language-Team: Danish <dansk@dansk-gruppen.dk>\n"
@@ -72,12 +72,6 @@ msgstr ""
 #: data/org.gnome.gedit.desktop.in.in:3 gedit/gedit-print-job.c:730
 msgid "Text Editor"
 msgstr "Tekstredigering"
-
-#. TRANSLATORS: Do NOT translate or transliterate this text!
-#. This is an icon file name.
-#: data/org.gnome.gedit.desktop.in.in:12
-msgid "org.gnome.gedit"
-msgstr "org.gnome.gedit"
 
 #. TRANSLATORS: Do NOT translate or localize the semicolons!
 #. The list MUST also end with a semicolon!
@@ -413,7 +407,8 @@ msgid "Print Syntax Highlighting"
 msgstr "Udskriv syntaksfremhævning"
 
 #: data/org.gnome.gedit.gschema.xml.in:205
-msgid "Whether gedit should print syntax highlighting when printing documents."
+msgid ""
+"Whether gedit should print syntax highlighting when printing documents."
 msgstr "Om syntaksfremhævning skal medtages ved udskrivning."
 
 #: data/org.gnome.gedit.gschema.xml.in:209
@@ -421,7 +416,8 @@ msgid "Print Header"
 msgstr "Udskriv sidehoveder"
 
 #: data/org.gnome.gedit.gschema.xml.in:210
-msgid "Whether gedit should include a document header when printing documents."
+msgid ""
+"Whether gedit should include a document header when printing documents."
 msgstr "Om der skal medtages et sidehoved ved udskrivning."
 
 #: data/org.gnome.gedit.gschema.xml.in:219
@@ -542,13 +538,14 @@ msgstr "Tegnkodningskandidater"
 
 #: data/org.gnome.gedit.gschema.xml.in:270
 msgid ""
-"List of candidate encodings shown in the Character Encoding menu in the open/"
-"save file chooser. “CURRENT” represents the current locale encoding. Only "
-"recognized encodings are used. The default value is the empty list, in which "
-"case gedit will choose good defaults depending on the country and language."
+"List of candidate encodings shown in the Character Encoding menu in the "
+"open/save file chooser. “CURRENT” represents the current locale encoding. "
+"Only recognized encodings are used. The default value is the empty list, in "
+"which case gedit will choose good defaults depending on the country and "
+"language."
 msgstr ""
-"Liste af tegnkodningskandidater som skal vises i menuen Tegnkodning i åbn/"
-"gem-filvælgeren. “CURRENT” repræsenterer den nuværende lokalitets "
+"Liste af tegnkodningskandidater som skal vises i menuen Tegnkodning i "
+"åbn/gem-filvælgeren. “CURRENT” repræsenterer den nuværende lokalitets "
 "tegnkodning. Kun genkendte tegnkodninger vil blive brugt. Standardværdien er "
 "den tomme liste, som betyder at gedit vil vælge gode standardværdier "
 "afhængigt af land og sprog."
@@ -693,7 +690,8 @@ msgstr[1] ""
 "Hvis du ikke gemmer, vil ændringer fra de sidste %ld minutter gå tabt."
 
 #: gedit/gedit-close-confirmation-dialog.c:364
-msgid "If you don’t save, changes from the last hour will be permanently lost."
+msgid ""
+"If you don’t save, changes from the last hour will be permanently lost."
 msgstr "Hvis du ikke gemmer, vil ændringer fra den sidste time gå tabt."
 
 #: gedit/gedit-close-confirmation-dialog.c:370
@@ -743,7 +741,8 @@ msgstr[1] "Ændringer foretaget i %d dokumenter vil gå tabt."
 
 #: gedit/gedit-close-confirmation-dialog.c:508
 #, c-format
-msgid "There is %d document with unsaved changes. Save changes before closing?"
+msgid ""
+"There is %d document with unsaved changes. Save changes before closing?"
 msgid_plural ""
 "There are %d documents with unsaved changes. Save changes before closing?"
 msgstr[0] ""
@@ -907,7 +906,8 @@ msgstr[1] ""
 "tabt."
 
 #: gedit/gedit-commands-file.c:1525
-msgid "Changes made to the document in the last hour will be permanently lost."
+msgid ""
+"Changes made to the document in the last hour will be permanently lost."
 msgstr ""
 "Ændringer foretaget i dokumentet inden for den sidste time vil gå tabt."
 
@@ -960,8 +960,9 @@ msgstr ""
 "Ask Hjorth Larsen\n"
 "scootergrisen\n"
 "\n"
-"Dansk-gruppen <dansk@dansk-gruppen.dk>\n"
-"Mere info: http://www.dansk-gruppen.dk"
+"Dansk-gruppen\n"
+"Websted <http://dansk-gruppen.dk>\n"
+"E-mail <dansk@dansk-gruppen.dk>"
 
 #: gedit/gedit-commands-search.c:107
 #, c-format
@@ -1272,7 +1273,8 @@ msgid "The file “%s” has been modified since reading it."
 msgstr "Filen “%s” er blevet ændret siden den blev læst sidst."
 
 #: gedit/gedit-io-error-info-bar.c:881
-msgid "If you save it, all the external changes could be lost. Save it anyway?"
+msgid ""
+"If you save it, all the external changes could be lost. Save it anyway?"
 msgstr "Hvis du gemmer den, går alle eksterne ændringer tabt. Gem alligevel?"
 
 #: gedit/gedit-io-error-info-bar.c:961
@@ -2766,7 +2768,8 @@ msgstr "Denne genvej er allerede bundet til %s"
 
 #: plugins/externaltools/tools/manager.py:727
 msgid "Type a new accelerator, or press Backspace to clear"
-msgstr "Indtast en ny genvej eller tryk på “slet tilbage”-knappen for at rydde"
+msgstr ""
+"Indtast en ny genvej eller tryk på “slet tilbage”-knappen for at rydde"
 
 #: plugins/externaltools/tools/manager.py:729
 msgid "Type a new accelerator"
@@ -2910,12 +2913,6 @@ msgstr "Filvælger-panel"
 #: plugins/filebrowser/filebrowser.plugin.desktop.in:7
 msgid "Easy file access from the side panel"
 msgstr "Nem tilgang til filer fra sidepanelet"
-
-#. TRANSLATORS: Do NOT translate or transliterate this text!
-#. This is an icon file name.
-#: plugins/filebrowser/filebrowser.plugin.desktop.in:10
-msgid "system-file-manager"
-msgstr "system-file-manager"
 
 #: plugins/filebrowser/gedit-file-bookmarks-store.c:200
 msgid "Home"
@@ -3086,9 +3083,9 @@ msgid ""
 "plugin when onload/tree_view is TRUE. The virtual root must always be below "
 "the actual root."
 msgstr ""
-"Den virtuelle rodmappe filvælgeren skal bruge når filvælger-"
-"udvidelsesmodulet indlæses og onload/tree_view er TRUE. Den virtuelle "
-"rodmappe skal altid være under den aktuelle rod."
+"Den virtuelle rodmappe filvælgeren skal bruge når "
+"filvælger-udvidelsesmodulet indlæses og onload/tree_view er TRUE. Den "
+"virtuelle rodmappe skal altid være under den aktuelle rod."
 
 #: plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in:20
 msgid "Enable Restore of Remote Locations"
@@ -3110,9 +3107,9 @@ msgid ""
 "with Nautilus, etc.)"
 msgstr ""
 "Hvis TRUE vil filvælger-udvidelsesmodulet åbne i den mappe som det først "
-"åbnede dokument findes i, givet at det er første gang filvælger-"
-"udvidelsesmodulet bruges. (Derfor gælder dette også generelt når man åbner "
-"et dokument fra kommandolinjen med nautilus eller lignende.)"
+"åbnede dokument findes i, givet at det er første gang "
+"filvælger-udvidelsesmodulet bruges. (Derfor gælder dette også generelt når "
+"man åbner et dokument fra kommandolinjen med nautilus eller lignende.)"
 
 #: plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in:30
 msgid "File Browser Filter Mode"
@@ -3256,12 +3253,6 @@ msgstr "Python-konsol"
 msgid "Interactive Python console standing in the bottom panel"
 msgstr "Interaktiv Python-konsol i bundpanelet"
 
-#. TRANSLATORS: Do NOT translate or transliterate this text!
-#. This is an icon file name.
-#: plugins/pythonconsole/pythonconsole.plugin.desktop.in:10
-msgid "text-x-script"
-msgstr "text-x-script"
-
 #: plugins/quickhighlight/quickhighlight.plugin.desktop.in:5
 msgid "Quick Highlight"
 msgstr "Hurtig fremhævning"
@@ -3282,13 +3273,6 @@ msgstr "Hurtig åbning"
 #: plugins/quickopen/quickopen.plugin.desktop.in:7
 msgid "Quickly open files"
 msgstr "Åbn filer hurtigt"
-
-#. TRANSLATORS: Do NOT translate or transliterate this text!
-#. This is an icon file name.
-#: plugins/quickopen/quickopen.plugin.desktop.in:10
-#| msgid "Document"
-msgid "document-open"
-msgstr "document-open"
 
 #: plugins/quickopen/quickopen/popup.py:90
 msgid "Type to search…"
@@ -3463,7 +3447,8 @@ msgstr "Eksportér tekststumper"
 
 #: plugins/snippets/snippets/manager.py:1049
 msgid "Type a new shortcut, or press Backspace to clear"
-msgstr "Indtast en ny genvej eller tryk på “slet tilbage”-knappen for at rydde"
+msgstr ""
+"Indtast en ny genvej eller tryk på “slet tilbage”-knappen for at rydde"
 
 #: plugins/snippets/snippets/manager.py:1051
 msgid "Type a new shortcut"
@@ -3577,12 +3562,6 @@ msgstr "_Sortér"
 msgid "Sorts a document or selected text."
 msgstr "Sortér et dokument eller det markerede tekst."
 
-#. TRANSLATORS: Do NOT translate or transliterate this text!
-#. This is an icon file name.
-#: plugins/sort/sort.plugin.desktop.in:9
-msgid "view-sort-ascending"
-msgstr "view-sort-ascending"
-
 #: plugins/spell/gedit-spell-app-activatable.c:143
 msgid "_Check Spelling…"
 msgstr "_Kontrollér stavning …"
@@ -3603,14 +3582,6 @@ msgstr "Stavekontrol"
 msgid "Checks the spelling of the current document."
 msgstr "Kontrollér stavningen i det aktuelle dokument."
 
-#. TRANSLATORS: Do NOT translate or transliterate this text!
-#. This is an icon file name.
-#: plugins/spell/spell.plugin.desktop.in:9
-#| msgctxt "shortcut window"
-#| msgid "Check spelling"
-msgid "tools-check-spelling"
-msgstr "tools-check-spelling"
-
 #: plugins/time/gedit-time-plugin.c:265
 msgid "In_sert Date and Time…"
 msgstr "Ind_sæt dato og klokkeslæt …"
@@ -3628,8 +3599,8 @@ msgid ""
 "If the user should be prompted for a format or if the selected or custom "
 "format should be used."
 msgstr ""
-"Om brugeren skal blive spurgt om et format, eller om det valgte/"
-"brugerdefinerede format skal bruges."
+"Om brugeren skal blive spurgt om et format, eller om det "
+"valgte/brugerdefinerede format skal bruges."
 
 #: plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in:10
 msgid "Selected Format"
@@ -3699,6 +3670,24 @@ msgstr "Indsæt dato/klokkeslæt"
 msgid "Inserts current date and time at the cursor position."
 msgstr "Indsætter den aktuelle dato og klokkeslæt ved markørpositionen."
 
+#~ msgid "org.gnome.gedit"
+#~ msgstr "org.gnome.gedit"
+
+#~ msgid "system-file-manager"
+#~ msgstr "system-file-manager"
+
+#~ msgid "text-x-script"
+#~ msgstr "text-x-script"
+
+#~ msgid "document-open"
+#~ msgstr "document-open"
+
+#~ msgid "view-sort-ascending"
+#~ msgstr "view-sort-ascending"
+
+#~ msgid "tools-check-spelling"
+#~ msgstr "tools-check-spelling"
+
 #~ msgid "gedit Text Editor"
 #~ msgstr "Tekstredigeringsprogrammet gedit"
 
@@ -3711,7 +3700,7 @@ msgstr "Indsætter den aktuelle dato og klokkeslæt ved markørpositionen."
 #~ msgid "C_haracter Encoding:"
 #~ msgstr "_Tegnkodning:"
 
-# Drejer sig garanteret om hvorvidt linjeskiftstegn skal gemmes som \n eller \r\n
+#~ # Drejer sig garanteret om hvorvidt linjeskiftstegn skal gemmes som \n eller \r\n
 #~ msgid "L_ine Ending:"
 #~ msgstr "L_injeskift:"
 
@@ -3741,3 +3730,4 @@ msgstr "Indsætter den aktuelle dato og klokkeslæt ved markørpositionen."
 
 #~ msgid "GEOMETRY"
 #~ msgstr "GEOMETRI"
+
