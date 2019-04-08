@@ -273,10 +273,16 @@ gedit_close_confirmation_dialog_new_single (GtkWindow     *parent,
 static void
 add_buttons (GeditCloseConfirmationDialog *dlg)
 {
-	gtk_dialog_add_buttons (GTK_DIALOG (dlg),
-	                        _("Close _without Saving"), GTK_RESPONSE_NO,
-	                        _("_Cancel"), GTK_RESPONSE_CANCEL,
-	                        NULL);
+        GtkWidget *close_button;
+
+        close_button = gtk_dialog_add_button (GTK_DIALOG (dlg),
+                                              _("Close _without Saving"),
+                                              GTK_RESPONSE_NO);
+
+        gtk_style_context_add_class (gtk_widget_get_style_context (close_button),
+                                     "destructive-action");
+
+	gtk_dialog_add_button (GTK_DIALOG (dlg), _("_Cancel"), GTK_RESPONSE_CANCEL);
 
 	if (dlg->disable_save_to_disk)
 	{
