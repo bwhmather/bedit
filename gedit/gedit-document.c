@@ -1017,70 +1017,6 @@ set_content_type (GeditDocument *doc,
 }
 
 /**
- * gedit_document_set_content_type:
- * @doc:
- * @content_type: (allow-none):
- *
- * Deprecated: 3.18: Unused function. The intent is to change the
- * #GeditDocument:content-type property to be read-only.
- */
-void
-gedit_document_set_content_type (GeditDocument *doc,
-                                 const gchar   *content_type)
-{
-	g_return_if_fail (GEDIT_IS_DOCUMENT (doc));
-
-	set_content_type (doc, content_type);
-}
-
-/**
- * gedit_document_get_location:
- * @doc: a #GeditDocument
- *
- * Returns: (allow-none) (transfer full): a copy of the internal #GFile
- *
- * Deprecated: 3.14: use gtk_source_file_get_location() instead. Attention,
- * gedit_document_get_location() has a transfer full for the return value, while
- * gtk_source_file_get_location() has a transfer none.
- */
-GFile *
-gedit_document_get_location (GeditDocument *doc)
-{
-	GeditDocumentPrivate *priv;
-	GFile *location;
-
-	priv = gedit_document_get_instance_private (doc);
-
-	g_return_val_if_fail (GEDIT_IS_DOCUMENT (doc), NULL);
-
-	location = gtk_source_file_get_location (priv->file);
-
-	return location != NULL ? g_object_ref (location) : NULL;
-}
-
-/**
- * gedit_document_set_location:
- * @doc: a #GeditDocument.
- * @location: the new location.
- *
- * Deprecated: 3.14: use gtk_source_file_set_location() instead.
- */
-void
-gedit_document_set_location (GeditDocument *doc,
-			     GFile         *location)
-{
-	GeditDocumentPrivate *priv;
-
-	g_return_if_fail (GEDIT_IS_DOCUMENT (doc));
-	g_return_if_fail (G_IS_FILE (location));
-
-	priv = gedit_document_get_instance_private (doc);
-
-	gtk_source_file_set_location (priv->file, location);
-	set_content_type (doc, NULL);
-}
-
-/**
  * gedit_document_get_uri_for_display:
  * @doc: a #GeditDocument.
  *
@@ -1200,25 +1136,6 @@ gedit_document_get_mime_type (GeditDocument *doc)
 	}
 
 	return g_strdup ("text/plain");
-}
-
-/**
- * gedit_document_get_readonly:
- * @doc: a #GeditDocument.
- *
- * Returns: whether the document is read-only.
- * Deprecated: 3.18: Use gtk_source_file_is_readonly() instead.
- */
-gboolean
-gedit_document_get_readonly (GeditDocument *doc)
-{
-	GeditDocumentPrivate *priv;
-
-	g_return_val_if_fail (GEDIT_IS_DOCUMENT (doc), TRUE);
-
-	priv = gedit_document_get_instance_private (doc);
-
-	return gtk_source_file_is_readonly (priv->file);
 }
 
 static void

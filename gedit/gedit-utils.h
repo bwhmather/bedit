@@ -51,9 +51,6 @@ void                       gedit_utils_menu_position_under_widget             (G
 gboolean                   gedit_utils_menu_position_under_tree_view          (GtkTreeView     *tree_view,
                                                                                GdkRectangle    *rect);
 
-G_DEPRECATED
-gchar                     *gedit_utils_escape_underscores                     (const gchar     *text,
-                                                                               gssize           length);
 gchar                     *gedit_utils_str_middle_truncate                    (const gchar     *string,
                                                                                guint            truncate_length);
 gchar                     *gedit_utils_str_end_truncate                       (const gchar     *string,
@@ -70,9 +67,6 @@ void                       gedit_warning                                       (
 gchar                     *gedit_utils_make_valid_utf8                         (const char     *name);
 
 
-/* Note that this function replace home dir with ~ */
-G_DEPRECATED
-gchar                     *gedit_utils_uri_get_dirname                         (const char     *uri);
 gchar                     *gedit_utils_location_get_dirname_for_display        (GFile          *location);
 gchar                     *gedit_utils_replace_home_dir_with_tilde             (const gchar    *uri);
 guint                      gedit_utils_get_current_workspace                   (GdkScreen      *screen);
@@ -83,24 +77,6 @@ void                       gedit_utils_get_current_viewport                    (
 gboolean                   gedit_utils_is_valid_location                       (GFile          *location);
 
 
-G_DEPRECATED
-gboolean                   gedit_utils_get_ui_objects                          (const gchar    *filename,
-                                                                                gchar         **root_objects,
-                                                                                GtkWidget     **error_widget,
-                                                                                const gchar    *object_name,
-                                                                                ...) G_GNUC_NULL_TERMINATED;
-
-
-G_DEPRECATED
-gboolean                   gedit_utils_get_ui_objects_with_translation_domain  (const gchar  *filename,
-                                                                                const gchar  *translation_domain,
-                                                                                gchar       **root_objects,
-                                                                                GtkWidget   **error_widget,
-                                                                                const gchar  *object_name,
-                                                                                ...) G_GNUC_NULL_TERMINATED;
-
-G_DEPRECATED
-gchar                     *gedit_utils_make_canonical_uri_from_shell_arg      (const gchar  *str);
 gchar                     *gedit_utils_basename_for_display                   (GFile        *location);
 gboolean                   gedit_utils_decode_uri                             (const gchar  *uri,
                                                                                gchar       **scheme,

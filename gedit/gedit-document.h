@@ -52,12 +52,6 @@ GeditDocument   *gedit_document_new				(void);
 
 GtkSourceFile	*gedit_document_get_file			(GeditDocument       *doc);
 
-G_DEPRECATED_FOR (gtk_source_file_get_location)
-GFile		*gedit_document_get_location			(GeditDocument       *doc);
-
-G_DEPRECATED_FOR (gtk_source_file_set_location)
-void		 gedit_document_set_location			(GeditDocument       *doc,
-								 GFile               *location);
 
 gchar		*gedit_document_get_uri_for_display		(GeditDocument       *doc);
 
@@ -69,14 +63,7 @@ void		 gedit_document_set_short_name_for_display	(GeditDocument       *doc,
 
 gchar		*gedit_document_get_content_type		(GeditDocument       *doc);
 
-G_DEPRECATED
-void		 gedit_document_set_content_type		(GeditDocument       *doc,
-								 const gchar         *content_type);
-
 gchar		*gedit_document_get_mime_type			(GeditDocument       *doc);
-
-G_DEPRECATED_FOR (gtk_source_file_is_readonly)
-gboolean	 gedit_document_get_readonly			(GeditDocument       *doc);
 
 gboolean	 gedit_document_is_untouched			(GeditDocument       *doc);
 
