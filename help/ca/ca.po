@@ -1,33 +1,35 @@
 # Translators:
 # Jaume Jorba <jaume.jorba@gmail.com>, 2019
 # Jordi Mas <jmas@softcatala.org>, 2019
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: gedit.help.master\n"
-"POT-Creation-Date: 2019-01-27 14:46+0000\n"
+"POT-Creation-Date: 2019-04-13 09:36+0000\n"
 "PO-Revision-Date: 2019-01-27 19:40+0000\n"
 "Last-Translator: Jaume Jorba <jaume.jorba@gmail.com>\n"
-"Language-Team: Catalan (https://www.transifex.com/softcatala/teams/62837/ca/)\n"
+"Language-Team: Catalan (https://www.transifex.com/softcatala/teams/62837/"
+"ca/)\n"
+"Language: ca\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: ca\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #. Put one translator per line, in the form NAME <EMAIL>, YEAR1, YEAR2
 msgctxt "_"
 msgid "translator-credits"
-msgstr "Jaume Jorba <jaume.jorba@gmail.com>, 2019\n"
+msgstr ""
+"Jaume Jorba <jaume.jorba@gmail.com>, 2019\n"
 "Jordi Mas <jmas@softcatala.org>, 2019"
 
 #. (itstool) path: info/desc
 #: C/gedit-change-color-scheme.page:8
 msgid "Change the text and background colors in gedit."
-msgstr "Canvia els colors del text i del fons de pantalla a gedit"
+msgstr "Canvia els colors del text i del fons de pantalla a gedit."
 
 #. (itstool) path: credit/name
-#: C/gedit-change-color-scheme.page:13 C/gedit-change-default-font.page:10
+#: C/gedit-change-color-scheme.page:14 C/gedit-change-default-font.page:10
 #: C/gedit-close-file.page:11 C/gedit-create-new-file.page:12
 #: C/gedit-edit-as-root.page:10 C/gedit-files-basic.page:10
 #: C/gedit-full-screen.page:13 C/gedit-open-files-from-sidepane.page:11
@@ -39,78 +41,83 @@ msgstr "Canvia els colors del text i del fons de pantalla a gedit"
 #: C/gedit-plugins-modelines.page:13 C/gedit-plugins-pyconsole.page:10
 #: C/gedit-plugins-quick-open.page:11 C/gedit-plugins-snippets.page:9
 #: C/gedit-plugins-sort.page:14 C/gedit-printing.page:10
-#: C/gedit-quickstart.page:12 C/gedit-replace.page:14
-#: C/gedit-save-file.page:13 C/gedit-search.page:12
-#: C/gedit-shortcut-keys.page:14 C/gedit-spellcheck.page:12
-#: C/gedit-syntax-highlighting.page:10 C/gedit-tabs-moving.page:13
-#: C/gedit-tabs.page:14 C/gedit-undo-recent-action.page:12 C/index.page:14
+#: C/gedit-quickstart.page:12 C/gedit-replace.page:14 C/gedit-save-file.page:13
+#: C/gedit-search.page:12 C/gedit-shortcut-keys.page:14
+#: C/gedit-spellcheck.page:12 C/gedit-syntax-highlighting.page:10
+#: C/gedit-tabs-moving.page:13 C/gedit-tabs.page:14
+#: C/gedit-undo-recent-action.page:12 C/index.page:14
 msgid "Jim Campbell"
 msgstr "Jim Campbell"
 
 #. (itstool) path: credit/name
-#: C/gedit-change-color-scheme.page:17
+#: C/gedit-change-color-scheme.page:18
 msgid "Jana Svarova"
 msgstr "Jana Svarova"
 
 #. (itstool) path: credit/years
-#: C/gedit-change-color-scheme.page:19 C/gedit-change-color-scheme.page:24
+#: C/gedit-change-color-scheme.page:20 C/gedit-change-color-scheme.page:25
 #: C/gedit-shortcut-keys.page:41
 msgid "2015"
 msgstr "2015"
 
 #. (itstool) path: credit/name
-#: C/gedit-change-color-scheme.page:22 C/gedit-replace.page:26
+#: C/gedit-change-color-scheme.page:23 C/gedit-replace.page:26
 #: C/gedit-shortcut-keys.page:39
 msgid "Ekaterina Gerasimova"
 msgstr "Ekaterina Gerasimova"
 
 #. (itstool) path: page/title
-#: C/gedit-change-color-scheme.page:30
+#: C/gedit-change-color-scheme.page:31
 msgid "Change the color scheme"
 msgstr "Canvia l'esquema de colors"
 
 #. (itstool) path: page/p
-#: C/gedit-change-color-scheme.page:32
+#: C/gedit-change-color-scheme.page:33
 msgid ""
 "<app>gedit</app> includes several different color schemes, allowing you to "
 "change the appearance of the main text window."
 msgstr ""
-"El <app>gedit</app> inclou diferents esquemes de color, permetent que l'usuari "
-"canvi l'aparença de la finestra principal de l'aplicació.."
+"El <app>gedit</app> inclou diferents esquemes de color, permetent que "
+"l'usuari canvi l'aparença de la finestra principal de l'aplicació."
 
 #. (itstool) path: steps/title
-#: C/gedit-change-color-scheme.page:36
+#: C/gedit-change-color-scheme.page:37
 msgid "To change the color scheme:"
 msgstr "Per canviar l'esquema de colors:"
 
 #. (itstool) path: item/p
-#: C/gedit-change-color-scheme.page:38
+#: C/gedit-change-color-scheme.page:39
+#, fuzzy
+#| msgid ""
+#| "Open the <gui style=\"menu\">gedit</gui> menu from the top bar, then "
+#| "select <guiseq><gui style=\"menuitem\">Preferences</gui><gui>Font &amp; "
+#| "Colors</gui></guiseq>."
 msgid ""
-"Open the <gui style=\"menu\">gedit</gui> menu from the top bar, then select "
-"<guiseq><gui style=\"menuitem\">Preferences</gui><gui>Font &amp; "
-"Colors</gui></guiseq>."
+"Press the menu button in the top-right corner of the window and select "
+"<guiseq><gui style=\"menuitem\">Preferences</gui><gui>Font &amp; Colors</"
+"gui></guiseq>."
 msgstr ""
 "Obre el menú <gui style=\"menu\">gedit</gui> des de la barra superior, "
-"aleshores seleccioneu <guiseq><gui "
-"style=\"menuitem\">Preferències</gui><gui>Tipus de lletres i colors</gui></guiseq>."
+"aleshores seleccioneu <guiseq><gui style=\"menuitem\">Preferències</"
+"gui><gui>Tipus de lletres i colors</gui></guiseq>."
 
 #. (itstool) path: item/p
-#: C/gedit-change-color-scheme.page:43
+#: C/gedit-change-color-scheme.page:44
 msgid "Choose your desired color scheme."
 msgstr "Trieu l'esquema de colors desitjat."
 
 #. (itstool) path: page/p
-#: C/gedit-change-color-scheme.page:47
+#: C/gedit-change-color-scheme.page:48
 msgid "The new color scheme will be applied immediately."
 msgstr "El nou esquema de colors s'aplicarà tot seguit."
 
 #. (itstool) path: section/title
-#: C/gedit-change-color-scheme.page:50
+#: C/gedit-change-color-scheme.page:51
 msgid "Use a Custom Color Scheme"
 msgstr "Utilitza un esquema de color personalitzat"
 
 #. (itstool) path: section/p
-#: C/gedit-change-color-scheme.page:56
+#: C/gedit-change-color-scheme.page:57
 msgid ""
 "You can also use color schemes that have been created by others, or create "
 "and use your own color schemes."
@@ -119,18 +126,17 @@ msgstr ""
 "utilitzar els vostres."
 
 #. (itstool) path: section/p
-#: C/gedit-change-color-scheme.page:59
+#: C/gedit-change-color-scheme.page:60
 msgid ""
 "Instructions on how to install custom color schemes, as well as examples of "
-"color schemes that you can download and use, are available on the <link "
-"href=\"https://wiki.gnome.org/Projects/GtkSourceView/StyleSchemes\">gedit "
-"wiki</link>."
+"color schemes that you can download and use, are available on the <link href="
+"\"https://wiki.gnome.org/Projects/GtkSourceView/StyleSchemes\">gedit wiki</"
+"link>."
 msgstr ""
 "Instruccions sobre com instal·lar esquemes de color, així com exemples "
 "d'esquemes de color que us podeu descarregar i utilitzar, estan disponibles "
-"a <link "
-"href=\"https://wiki.gnome.org/Projects/GtkSourceView/StyleSchemes\">Wiki del "
-"gedit</link>."
+"a <link href=\"https://wiki.gnome.org/Projects/GtkSourceView/StyleSchemes"
+"\">Wiki del gedit</link>."
 
 #. (itstool) path: info/desc
 #: C/gedit-change-default-font.page:6
@@ -153,9 +159,9 @@ msgid ""
 "<app>gedit</app> will use the system fixed-width font by default, but you "
 "can change the default <app>gedit</app> font to suit your preferences."
 msgstr ""
-"El <app>gedit</app> utilitzarà el tipus de lletra d'amplada fixa predefinida al"
-" sistema, però podeu canviar el valor predeterminat anant al <app>gedit</app>"
-" per ajustar les vostres preferències."
+"El <app>gedit</app> utilitzarà el tipus de lletra d'amplada fixa predefinida "
+"al sistema, però podeu canviar el valor predeterminat anant al <app>gedit</"
+"app> per ajustar les vostres preferències."
 
 #. (itstool) path: steps/title
 #: C/gedit-change-default-font.page:26
@@ -165,16 +171,16 @@ msgstr "Per canviar el tipus de lletra predeterminat al <app>gedit</app>:"
 #. (itstool) path: item/p
 #: C/gedit-change-default-font.page:27
 msgid ""
-"Select <guiseq><gui style=\"menu\">gedit</gui> <gui "
-"style=\"menuitem\">Preferences</gui> <gui>Font &amp; Colors</gui></guiseq>."
+"Select <guiseq><gui style=\"menu\">gedit</gui> <gui style=\"menuitem"
+"\">Preferences</gui> <gui>Font &amp; Colors</gui></guiseq>."
 msgstr ""
-"Seleccioneu <guiseq><gui style=\"menu\">gedit</gui> <gui "
-"style=\"menuitem\">Preferències</gui> <gui>Tipus de lletra i "
-"Colors</gui></guiseq>."
+"Seleccioneu <guiseq><gui style=\"menu\">gedit</gui> <gui style=\"menuitem"
+"\">Preferències</gui> <gui>Tipus de lletra i Colors</gui></guiseq>."
 
 #. (itstool) path: item/p
 #: C/gedit-change-default-font.page:30
-msgid "Uncheck the box next to the phrase, \"Use the system fixed-width font.\""
+msgid ""
+"Uncheck the box next to the phrase, \"Use the system fixed-width font.\""
 msgstr ""
 "Desmarqueu la casella del costat de la frase, \"Utilitza el tipus de lletra "
 "d'amplada fixa del sistema\"."
@@ -186,9 +192,9 @@ msgid ""
 "window, allowing you to see available fonts and choose the one that you "
 "prefer."
 msgstr ""
-"Feu clic al nom del el tipus de lletra actual i el <app>gedit</app> obrirà una finestra per"
-" seleccionar el tipus de lletra, mostrant-vos el tipus de lletra disponibles i permetent-vos "
-"seleccionar-ne el preferit."
+"Feu clic al nom del tipus de lletra actual i el <app>gedit</app> obrirà "
+"una finestra per seleccionar el tipus de lletra, mostrant-vos els tipus de "
+"lletra disponibles i permetent-vos seleccionar-ne el preferit."
 
 #. (itstool) path: item/p
 #: C/gedit-change-default-font.page:35
@@ -196,8 +202,9 @@ msgid ""
 "After you have chosen a new font, use the <gui>slider</gui> under the list "
 "of fonts to set the default font size."
 msgstr ""
-"Un cop hagueu triat un tipus de lletra nou, utilitzeu el <gui>desplaçador</gui> sota "
-"la llista de el tipus de lletra per establir la mida predeterminada."
+"Un cop hagueu triat un tipus de lletra nou, utilitzeu el <gui>desplaçador</"
+"gui> sota la llista de el tipus de lletra per establir la mida "
+"predeterminada."
 
 #. (itstool) path: item/p
 #: C/gedit-change-default-font.page:37
@@ -218,22 +225,22 @@ msgstr "Tanca un fitxer"
 #. (itstool) path: page/p
 #: C/gedit-close-file.page:20
 msgid ""
-"To close a file in <app>gedit</app>, select <gui "
-"style=\"menuitem\">Close</gui>. Alternately, you can click the small \"X\" "
-"that appears on the right-side of the file's tab, or press "
-"<keyseq><key>Ctrl</key> <key>W</key></keyseq>."
+"To close a file in <app>gedit</app>, select <gui style=\"menuitem\">Close</"
+"gui>. Alternately, you can click the small \"X\" that appears on the right-"
+"side of the file's tab, or press <keyseq><key>Ctrl</key> <key>W</key></"
+"keyseq>."
 msgstr ""
-"Per tancar un fitxer al <app>gedit</app>, seleccioneu <gui "
-"style=\"menuitem\">Tanca</gui>. Alternativament, podeu fer clic a la \"X\" "
-"petita que apareix on a la dreta de la pestanya del fitxer o premeu "
-"<keyseq><key>Ctrl</key> <key>W</key></keyseq>."
+"Per tancar un fitxer al <app>gedit</app>, seleccioneu <gui style=\"menuitem"
+"\">Tanca</gui>. Alternativament, podeu fer clic a la \"X\" petita que "
+"apareix on a la dreta de la pestanya del fitxer o premeu <keyseq><key>Ctrl</"
+"key> <key>W</key></keyseq>."
 
 #. (itstool) path: page/p
 #: C/gedit-close-file.page:24
 msgid ""
-"Any one of these actions will close a file in <app>gedit</app>. If your file"
-" contains changes that have not been saved, <app>gedit</app> will prompt you"
-" to save those changes before closing the file."
+"Any one of these actions will close a file in <app>gedit</app>. If your file "
+"contains changes that have not been saved, <app>gedit</app> will prompt you "
+"to save those changes before closing the file."
 msgstr ""
 "Qualsevol d'aquestes accions tancarà un fitxer al <app>gedit</app>. Si el "
 "fitxer conté canvis que no s'han desat, el <app>gedit</app> us demanarà que "
@@ -264,8 +271,8 @@ msgid ""
 "<gui>Create a new document</gui> button on the left side of the toolbar, or "
 "press <keyseq><key>Ctrl</key><key>T</key></keyseq>."
 msgstr ""
-"La manera més fàcil de crear un fitxer nou al <app>gedit</app> és fer clic al"
-" botó <gui>Crea un document nou</gui> al cantó esquerre de la barra "
+"La manera més fàcil de crear un fitxer nou al <app>gedit</app> és fer clic "
+"al botó <gui>Crea un document nou</gui> al cantó esquerre de la barra "
 "d'eines, o prémer <keyseq><key>Ctrl</key><key>T</key></keyseq>."
 
 #. (itstool) path: page/p
@@ -303,8 +310,8 @@ msgstr ""
 #. (itstool) path: page/p
 #: C/gedit-edit-as-root.page:24
 msgid ""
-"To edit files as the root user, launch <app>gedit</app> from the terminal by"
-" entering:"
+"To edit files as the root user, launch <app>gedit</app> from the terminal by "
+"entering:"
 msgstr ""
 "Per editar fitxers com a usuari root, inicieu el <app>gedit</app> des del "
 "terminal introduint:"
@@ -321,8 +328,8 @@ msgid ""
 "Using the <cmd>sudo</cmd> command, you will need to successfully enter your "
 "password before <app>gedit</app> will open."
 msgstr ""
-"Utilitzant l'ordre <cmd>sudo</cmd>, haureu d'entrar correctament la "
-"vostra contrasenya de root abans de que <app>gedit</app> s'obri."
+"Utilitzant l'ordre <cmd>sudo</cmd>, haureu d'entrar correctament la vostra "
+"contrasenya de root abans que el <app>gedit</app> s'obri."
 
 #. (itstool) path: page/p
 #: C/gedit-edit-as-root.page:31
@@ -396,9 +403,9 @@ msgid ""
 msgstr ""
 "Quan treballeu amb un document gran, us pot resultar útil treballar en el "
 "mode de pantalla completa del <app>gedit's</app>. L'ús del mode de pantalla "
-"completa amagarà la <gui>barra de menú</gui>, <gui>la barra de "
-"pestanyes</gui> i la <gui>barra d'eines</gui>, mostrant-vos més text i "
-"permetent-vos centrar millor en les vostres tasques."
+"completa amagarà la <gui>barra de menú</gui>, <gui>la barra de pestanyes</"
+"gui> i la <gui>barra d'eines</gui>, mostrant-vos més text i permetent-vos "
+"centrar millor en les vostres tasques."
 
 #. (itstool) path: section/title
 #: C/gedit-full-screen.page:32
@@ -412,8 +419,8 @@ msgid ""
 "title, and tab-bars will hide, and you will only be presented with the text "
 "of your current file."
 msgstr ""
-"Per activar el mode pantalla completa, premeu <key>F11</key>. El menú del <app>"
-"gedit</app>, el títol, i les barres de pestanyes s'amagaran, i només se "
+"Per activar el mode pantalla completa, premeu <key>F11</key>. El menú del "
+"<app>gedit</app>, el títol, i les barres de pestanyes s'amagaran, i només se "
 "us mostrarà el text del vostre fitxer actual."
 
 #. (itstool) path: section/p
@@ -421,12 +428,12 @@ msgstr ""
 msgid ""
 "If you need to perform an action from the <app>gedit</app> menu while "
 "working in fullscreen mode, move your mouse pointer to the top of the "
-"screen. The <app>gedit</app> menu bar will reappear, and you can select your"
-" desired action."
+"screen. The <app>gedit</app> menu bar will reappear, and you can select your "
+"desired action."
 msgstr ""
 "Si necessiteu realitzar una acció des del menú <app>gedit</app> mentre "
-"treballeu en mode de pantalla completa, moveu el punter del ratolí a la part"
-" superior de la pantalla. La barra de menú del <app>gedit</app> tornarà a "
+"treballeu en mode de pantalla completa, moveu el punter del ratolí a la part "
+"superior de la pantalla. La barra de menú del <app>gedit</app> tornarà a "
 "aparèixer i podreu seleccionar l'acció desitjada."
 
 #. (itstool) path: note/p
@@ -437,9 +444,8 @@ msgid ""
 "<keyseq><key>Ctrl</key><key>Alt</key><key>PgDn</key></keyseq>."
 msgstr ""
 "Per navegar entre les pestanyes obertes mentre s'està en mode de pantalla "
-"completa, premeu "
-"<keyseq><key>Ctrl</key><key>Alt</key><key>Retrocedir</key></keyseq> o "
-"<keyseq><key>Ctrl</key><key>Alt</key><key>Avançar</key></keyseq>."
+"completa, premeu <keyseq><key>Ctrl</key><key>Alt</key><key>Retrocedir</key></"
+"keyseq> o <keyseq><key>Ctrl</key><key>Alt</key><key>Avançar</key></keyseq>."
 
 #. (itstool) path: section/title
 #: C/gedit-full-screen.page:50
@@ -452,8 +458,8 @@ msgid ""
 "To turn off fullscreen mode and return to the standard <app>gedit</app> "
 "window, press <key>F11</key>."
 msgstr ""
-"Per desactivar el mode de pantalla completa i tornar a la finestra estàndard"
-" del <app>gedit</app>, premeu <key>F11</key>."
+"Per desactivar el mode de pantalla completa i tornar a la finestra estàndard "
+"del <app>gedit</app>, premeu <key>F11</key>."
 
 #. (itstool) path: section/p
 #: C/gedit-full-screen.page:53
@@ -481,24 +487,24 @@ msgstr "Veure i obrir fitxers des del quadre lateral"
 msgid ""
 "The most common way to switch between files in <app>gedit</app> is by using "
 "the tabs at the top of the <app>gedit</app> window. In some cases, though, "
-"particularly when you are working with a large number of open files, you may"
-" find it easier to use the side panel."
+"particularly when you are working with a large number of open files, you may "
+"find it easier to use the side panel."
 msgstr ""
-"La forma més comuna de canviar de fitxer a <app>gedit</app> és utilitzant les"
-" pestanyes de la part superior de la finestra del <app>gedit</app>. "
+"La forma més comuna de canviar de fitxer a <app>gedit</app> és utilitzant "
+"les pestanyes de la part superior de la finestra del <app>gedit</app>. "
 "Tanmateix, en alguns casos, especialment si es treballa amb una gran "
-"quantitat de fitxers oberts, és possible que us sigui més fàcil utilitzar el"
-" quadre lateral."
+"quantitat de fitxers oberts, és possible que us sigui més fàcil utilitzar el "
+"quadre lateral."
 
 #. (itstool) path: page/p
 #: C/gedit-open-files-from-sidepane.page:25
 msgid ""
-"To activate the side panel, select <guiseq><gui>View</gui> <gui>Side "
-"Panel</gui></guiseq>, or just press the <key>F9</key> key."
+"To activate the side panel, select <guiseq><gui>View</gui> <gui>Side Panel</"
+"gui></guiseq>, or just press the <key>F9</key> key."
 msgstr ""
 "Per activar el quadre lateral, seleccioneu <guiseq><gui>Visualització</gui> "
-"<gui>Quadre lateral</gui></guiseq>, o senzillament premeu la tecla "
-"<key>F9</key>."
+"<gui>Quadre lateral</gui></guiseq>, o senzillament premeu la tecla <key>F9</"
+"key>."
 
 #. (itstool) path: note/p
 #: C/gedit-open-files-from-sidepane.page:31
@@ -520,19 +526,19 @@ msgstr "Obrir fitxers des del quadre lateral"
 msgid ""
 "To open files from the side panel, first open the side panel by selecting "
 "<guiseq><gui>View</gui> <gui>Side Panel</gui></guiseq> (or just press "
-"<key>F9</key>), and then choose <gui>File Browser</gui> from the dropdown at"
-" the top of the panel."
+"<key>F9</key>), and then choose <gui>File Browser</gui> from the dropdown at "
+"the top of the panel."
 msgstr ""
 "Per obrir fitxers des del quadre lateral, primer obriu el quadre lateral "
-"seleccionant <guiseq><gui>Visualització</gui> <gui>Quadre lateral</gui></guiseq> (o "
-"premeu <key>F9</key>), i aleshores seleccioneu <gui>Navegador de "
+"seleccionant <guiseq><gui>Visualització</gui> <gui>Quadre lateral</gui></"
+"guiseq> (o premeu <key>F9</key>), i aleshores seleccioneu <gui>Navegador de "
 "fitxers</gui> des del menú desplegable a la part superior del tauler."
 
 #. (itstool) path: section/p
 #: C/gedit-open-files-from-sidepane.page:48
 msgid ""
-"This will activate the <em>File Browser</em> mode of the side panel. You can"
-" then use the navigation buttons at the top of the panel to locate and open "
+"This will activate the <em>File Browser</em> mode of the side panel. You can "
+"then use the navigation buttons at the top of the panel to locate and open "
 "your desired files."
 msgstr ""
 "Això activarà el mode <em>Navegador de fitxers</em> del quadre lateral. A "
@@ -542,15 +548,14 @@ msgstr ""
 #. (itstool) path: section/title
 #: C/gedit-open-files-from-sidepane.page:56
 msgid "Using the side panel to switch between open files"
-msgstr ""
-"Utilitzeu el tauler lateral per desplaçar-vos entre els fitxers oberts"
+msgstr "Utilitzeu el tauler lateral per desplaçar-vos entre els fitxers oberts"
 
 #. (itstool) path: section/p
 #: C/gedit-open-files-from-sidepane.page:57
 msgid ""
 "Once you have several files open, you can use the side panel to switch "
-"between open files. To list open files, choose <gui>Documents</gui> from the"
-" dropdown at the top of the panel."
+"between open files. To list open files, choose <gui>Documents</gui> from the "
+"dropdown at the top of the panel."
 msgstr ""
 "Quan hagueu obert diversos fitxers, podeu utilitzar el tauler lateral per "
 "desplaçar-vos entre els fitxers oberts. Per llistar els fitxers oberts, "
@@ -581,15 +586,15 @@ msgid ""
 "To open a file in <app>gedit</app>, click the <gui>Open</gui> button, or "
 "press <keyseq><key>Ctrl</key><key>O</key></keyseq>."
 msgstr ""
-"Per obrir un fitxer al <app>gedit</app>, feu clic al botó <gui>Obre</gui>, o"
-" premeu <keyseq><key>Ctrl</key><key>O</key></keyseq>."
+"Per obrir un fitxer al <app>gedit</app>, feu clic al botó <gui>Obre</gui>, o "
+"premeu <keyseq><key>Ctrl</key><key>O</key></keyseq>."
 
 #. (itstool) path: page/p
 #: C/gedit-open-files.page:31
 msgid ""
 "This will cause the <gui>Open</gui> dialog to appear. Use your mouse or "
-"keyboard to select the file that you wish to open, and then click "
-"<gui>Open</gui>. The file that you've selected will open in a new tab."
+"keyboard to select the file that you wish to open, and then click <gui>Open</"
+"gui>. The file that you've selected will open in a new tab."
 msgstr ""
 "Això mostra el diàleg <gui>Obre</gui>. Utilitzeu el ratolí o el teclat per "
 "seleccionar el fitxer que voleu obrir, i feu clic a <gui>Obre</gui>. El "
@@ -624,9 +629,9 @@ msgid ""
 "the first file that you select, the last file that you select, and all of "
 "the files in between."
 msgstr ""
-"Mantenint premuda la tecla <key>Majúscules</key> mentre seleccioneu múltiples"
-" fitxers, s'obrirà el primer fitxer seleccionat, l'últim, i tots els fitxers"
-" seleccionats entremig."
+"Mantenint premuda la tecla <key>Majúscules</key> mentre seleccioneu "
+"múltiples fitxers, s'obrirà el primer fitxer seleccionat, l'últim, i tots "
+"els fitxers seleccionats entremig."
 
 #. (itstool) path: info/desc
 #: C/gedit-open-on-server.page:7
@@ -648,21 +653,21 @@ msgid ""
 msgstr ""
 "Abans d'obrir un fitxer en un servidor des del <app>gedit</app>, necessiteu "
 "conèixer informació tècnica sobre el servidor. Per exemple, n'haureu de "
-"saber l'adreça IP o l'URL del servidor, i potser necessiteu saber quin tipus"
-" de servidor és (per exemple, HTTP, FTP, etc.)."
+"saber l'adreça IP o l'URL del servidor, i potser necessiteu saber quin tipus "
+"de servidor és (per exemple, HTTP, FTP, etc.)."
 
 #. (itstool) path: page/p
 #: C/gedit-open-on-server.page:23
 msgid ""
 "Also, some types of servers impose restrictions on what you can do with "
-"files stored on the server. For example, you may be able to open a file from"
-" a server, but may need to save any changes to the file locally, on your own"
-" computer."
+"files stored on the server. For example, you may be able to open a file from "
+"a server, but may need to save any changes to the file locally, on your own "
+"computer."
 msgstr ""
-"A més, alguns tipus de servidors imposen restriccions sobre el que podeu fer"
-" amb els fitxers que hi ha emmagatzemats. Per exemple, és possible que "
-"pugueu obrir un fitxer des d'un servidor, però potser haureu de desar els "
-"canvis al fitxer localment, al vostre propi ordinador."
+"A més, alguns tipus de servidors imposen restriccions sobre el que podeu fer "
+"amb els fitxers que hi ha emmagatzemats. Per exemple, és possible que pugueu "
+"obrir un fitxer des d'un servidor, però potser haureu de desar els canvis al "
+"fitxer localment, al vostre propi ordinador."
 
 #. (itstool) path: page/p
 #: C/gedit-open-on-server.page:28
@@ -675,7 +680,7 @@ msgstr ""
 
 #. (itstool) path: item/p
 #: C/gedit-open-on-server.page:32
-msgid "In the title bar, click on <gui>Open</gui>."
+msgid "In the header bar, click on <gui>Open</gui>."
 msgstr "A la barra de títol, feu clic a <gui>Obre</gui>."
 
 #. (itstool) path: item/p
@@ -689,13 +694,13 @@ msgid ""
 "Press <keyseq><key>Ctrl</key><key>L</key></keyseq> in the <gui>Open</gui> "
 "dialog."
 msgstr ""
-"Premeu <keyseq><key>Ctrl</key><key>L</key></keyseq> al diàleg "
-"<gui>Obre</gui>."
+"Premeu <keyseq><key>Ctrl</key><key>L</key></keyseq> al diàleg <gui>Obre</"
+"gui>."
 
 #. (itstool) path: item/p
 #: C/gedit-open-on-server.page:36
 msgid "Enter the IP Address or URL of the appropriate server."
-msgstr "Entreu l'adreça IP o la URL del servidor apropiat."
+msgstr "Introduïu l'adreça IP o l'URL del servidor apropiat."
 
 #. (itstool) path: item/p
 #: C/gedit-open-on-server.page:38
@@ -734,8 +739,8 @@ msgid ""
 "servers may correctly work with saving remote files."
 msgstr ""
 "Els fitxers d'alguns tipus d'URI s'obren com a només de lectura, i els "
-"canvis que feu s'hauran de desar en una ubicació diferent. Per exemple, HTTP"
-" només permet llegir els fitxers. Els fitxers de FTP són de només lectura "
+"canvis que feu s'hauran de desar en una ubicació diferent. Per exemple, HTTP "
+"només permet llegir els fitxers. Els fitxers de FTP són de només lectura "
 "perquè no tots els servidors FTP funcionen correctament desant els fitxers "
 "remots."
 
@@ -755,9 +760,9 @@ msgid ""
 "By default, <app>gedit</app> provides easy access to five of your most "
 "recently-used files. Here is how you can open a recently-used file:"
 msgstr ""
-"Per defecte, el <app>gedit</app> proporciona un accés fàcil a cinc dels fitxers"
-" més recentment utilitzats. A continuació s'explica pot obrir un fitxer usat"
-" recentment:"
+"Per defecte, el <app>gedit</app> proporciona un accés fàcil a cinc dels "
+"fitxers més recentment utilitzats. A continuació s'explica com es pot obrir un "
+"fitxer usat recentment:"
 
 #. (itstool) path: item/p
 #: C/gedit-open-recent.page:22
@@ -789,13 +794,13 @@ msgstr ""
 #. (itstool) path: item/p
 #: C/gedit-open-recent.page:32
 msgid ""
-"Launch <app>dconf-editor</app> and select <guiseq><gui>org</gui> "
-"<gui>gnome</gui><gui>gedit</gui><gui>preferences</gui><gui>ui</gui> <gui"
-">max-recents</gui></guiseq>."
+"Launch <app>dconf-editor</app> and select <guiseq><gui>org</gui> <gui>gnome</"
+"gui><gui>gedit</gui><gui>preferences</gui><gui>ui</gui> <gui>max-recents</"
+"gui></guiseq>."
 msgstr ""
 "Inicieu el <app>dconf-editor</app> i seleccioneu <guiseq><gui>org</gui> "
-"<gui>gnome</gui><gui>gedit</gui><gui>preferències</gui><gui>ui</gui> <gui"
-">max-recents</gui></guiseq>."
+"<gui>gnome</gui><gui>gedit</gui><gui>preferències</gui><gui>ui</gui> "
+"<gui>max-recents</gui></guiseq>."
 
 #. (itstool) path: item/p
 #: C/gedit-open-recent.page:35
@@ -803,8 +808,8 @@ msgid ""
 "Double-click on the number next to <gui>max-recents</gui> and change the "
 "number to your desired value."
 msgstr ""
-"Feu doble clic al nombre al costat de <gui>max-recents</gui> i canvieu-lo al"
-" valor desitjat."
+"Feu doble clic al nombre al costat de <gui>max-recents</gui> i canvieu-lo al "
+"valor desitjat."
 
 #. (itstool) path: info/desc
 #: C/gedit-plugin-guide.page:9
@@ -823,32 +828,30 @@ msgid ""
 "installed by default, but a large number of other plugins are available "
 "separately."
 msgstr ""
-"Podeu fer més amb el <app>gedit</app> utilitzant components. Diversos connectors "
-"s'instal·len de manera predeterminada, però hi ha una gran quantitat "
-"d'altres connectors disponibles per separat."
+"Podeu fer més amb el <app>gedit</app> utilitzant components. Diversos "
+"connectors s'instal·len de manera predeterminada, però hi ha una gran "
+"quantitat d'altres connectors disponibles per separat."
 
 #. (itstool) path: note/p
 #: C/gedit-plugin-guide.page:24
 msgid ""
-"Many Linux distributions make a group of these plugins available as a <app"
-">gedit-plugins</app> package. Install the <app>gedit-plugins</app> package "
-"to make these extra plugins available to <app>gedit</app>."
+"Many Linux distributions make a group of these plugins available as a "
+"<app>gedit-plugins</app> package. Install the <app>gedit-plugins</app> "
+"package to make these extra plugins available to <app>gedit</app>."
 msgstr ""
 "Moltes distribucions Linux fan un grup amb aquests connectors i els "
-"publiquen al paquet <app>gedit-plugins</app>. Instal·leu el paquet <app"
-">gedit-plugins</app> per fer que aquests connectors extres estiguin "
+"publiquen al paquet <app>gedit-plugins</app>. Instal·leu el paquet "
+"<app>gedit-plugins</app> per fer que aquests connectors extres estiguin "
 "disponibles per al <app>gedit</app>."
 
 #. (itstool) path: when/p
 #: C/gedit-plugin-guide.page:30
 msgid ""
-"<link action=\"install:gedit-plugins\" "
-"href=\"ftp://ftp.gnome.org/pub/gnome/sources/gedit-plugins/\" "
-"style=\"button\">Install gedit-plugins</link>"
+"<link action=\"install:gedit-plugins\" href=\"ftp://ftp.gnome.org/pub/gnome/"
+"sources/gedit-plugins/\" style=\"button\">Install gedit-plugins</link>"
 msgstr ""
-"<link action=\"install:gedit-plugins\" "
-"href=\"ftp://ftp.gnome.org/pub/gnome/sources/gedit-plugins/\" "
-"style=\"button\">Instal·lar gedit-plugins</link>"
+"<link action=\"install:gedit-plugins\" href=\"ftp://ftp.gnome.org/pub/gnome/"
+"sources/gedit-plugins/\" style=\"button\">Instal·lar gedit-plugins</link>"
 
 #. (itstool) path: section/title
 #: C/gedit-plugin-guide.page:36
@@ -889,12 +892,12 @@ msgid ""
 "style=\"menu\">gedit</gui><gui style=\"menuitem\">Preferences</gui> "
 "<gui>Plugins</gui><gui>Change Case</gui></guiseq>."
 msgstr ""
-"Aquest connector us ajuda a canviar entre majúscules/minúscules les parts "
-"de text seleccionades. Podeu utilitzar-lo per canviar el text a minúscules, "
-"a majúscules, per invertir-lo, o aplicar majúscules a la primera lletra. Per"
-" activar aquest connector, seleccioneu <guiseq><gui "
-"style=\"menu\">gedit</gui><gui style=\"menuitem\">Preferències</gui> "
-"<gui>Connectors</gui><gui>Canviar majúscules/minúscules</gui></guiseq>."
+"Aquest connector us ajuda a canviar entre majúscules/minúscules les parts de "
+"text seleccionades. Podeu utilitzar-lo per canviar el text a minúscules, a "
+"majúscules, per invertir-lo, o aplicar majúscules a la primera lletra. Per "
+"activar aquest connector, seleccioneu <guiseq><gui style=\"menu\">gedit</"
+"gui><gui style=\"menuitem\">Preferències</gui> <gui>Connectors</"
+"gui><gui>Canviar majúscules/minúscules</gui></guiseq>."
 
 #. (itstool) path: page/p
 #: C/gedit-plugins-change-case.page:28
@@ -913,11 +916,10 @@ msgstr "Destaca la porció de text que voleu canviar."
 #. (itstool) path: item/p
 #: C/gedit-plugins-change-case.page:33
 msgid ""
-"Select <guiseq><gui style=\"menu\">gedit</gui><gui>Change "
-"Case</gui></guiseq>"
+"Select <guiseq><gui style=\"menu\">gedit</gui><gui>Change Case</gui></guiseq>"
 msgstr ""
-"Seleccioneu <guiseq><gui style=\"menu\">gedit</gui><gui>Canviar "
-"majúscules/minúscules</gui></guiseq>"
+"Seleccioneu <guiseq><gui style=\"menu\">gedit</gui><gui>Canviar majúscules/"
+"minúscules</gui></guiseq>"
 
 #. (itstool) path: item/p
 #: C/gedit-plugins-change-case.page:35
@@ -935,8 +937,8 @@ msgid ""
 "The <gui>Invert Case</gui> option will convert all lower case letters to "
 "upper case, and will convert all upper case letters to lower case."
 msgstr ""
-"L'opció <gui>Invertir majúscules/minúscules</gui> convertirà les lletres en "
-"minúscula a majúscula, i al inrevés."
+"L'opció <gui>Inverteix majúscules i minúscules</gui> convertirà les lletres en "
+"minúscula a majúscula, i a l'inrevés."
 
 #. (itstool) path: note/p
 #: C/gedit-plugins-change-case.page:43
@@ -945,8 +947,7 @@ msgid ""
 "to upper case. All other letters will be converted to lower case."
 msgstr ""
 "L'opció <gui>Majúscula inicial</gui> convertirà la primera lletra de cada "
-"paraula en majúscules. Totes les altres lletres es convertiran en "
-"minúscules."
+"paraula en majúscules. Totes les altres lletres es convertiran en minúscules."
 
 #. (itstool) path: note/p
 #: C/gedit-plugins-change-case.page:49
@@ -973,9 +974,9 @@ msgstr "Estadístiques del document"
 #: C/gedit-plugins-doc-stats.page:22
 msgid ""
 "The <em>Document Statistics</em> plugin shows you various statistics about "
-"your current document. To enable this plugin, select <guiseq><gui "
-"style=\"menu\">gedit</gui><gui style=\"menuitem\">Preferences</gui> "
-"<gui>Plugins</gui><gui>Document Statistics</gui></guiseq>."
+"your current document. To enable this plugin, select <guiseq><gui style="
+"\"menu\">gedit</gui><gui style=\"menuitem\">Preferences</gui> <gui>Plugins</"
+"gui><gui>Document Statistics</gui></guiseq>."
 msgstr ""
 "El connector <em>Estadístiques del document</em> mostra diferents "
 "estadístiques del document actual. Per activar-lo, seleccioneu <guiseq><gui "
@@ -995,28 +996,28 @@ msgid ""
 "statistical information of your document, including the number of words, "
 "lines, characters, non-space characters, and the size of your file in bytes."
 msgstr ""
-"Un cop està habilitat, el podeu utilitzar seleccionant "
-"<guiseq><gui>Eines</gui> <gui>Estadístiques del document</gui></guiseq>. Una"
-" finestra mostrarà la informació estadística del document, incloent-hi el "
-"nombre de paraules, línies, caràcters, caràcters que no són un espai, i la "
-"mida del fitxer en bytes."
+"Un cop està habilitat, el podeu utilitzar seleccionant <guiseq><gui>Eines</"
+"gui> <gui>Estadístiques del document</gui></guiseq>. Una finestra mostrarà "
+"la informació estadística del document, incloent-hi el nombre de paraules, "
+"línies, caràcters, caràcters que no són un espai, i la mida del fitxer en "
+"bytes."
 
 #. (itstool) path: section/p
 #: C/gedit-plugins-doc-stats.page:36
 msgid ""
 "You can also use <em>Document Statistics</em> to show you information about "
-"just a portion of your document. To do this, use the mouse pointer to select"
-" the portion of text that you want to examine, and then select "
-"<guiseq><gui>Tools</gui><gui>Document Statistics</gui></guiseq>. "
-"<app>Gedit</app> will display information for both your entire document, and"
-" for the portion of text that you highlighted."
+"just a portion of your document. To do this, use the mouse pointer to select "
+"the portion of text that you want to examine, and then select "
+"<guiseq><gui>Tools</gui><gui>Document Statistics</gui></guiseq>. <app>Gedit</"
+"app> will display information for both your entire document, and for the "
+"portion of text that you highlighted."
 msgstr ""
 "També podeu utilitzar les <em>Estadístiques del document</em> per mostrar "
-"informació sobre una part del document. Per fer-ho, utilitzeu el ratolí per"
-" seleccionar la part del text que voleu examinar i, a continuació, "
-"seleccioneu <guiseq><gui>Eines</gui><gui>Estadístiques del "
-"document</gui></guiseq>. El <app>gedit</app> mostrarà informació tant per a tot"
-" el document com per a la part del text que heu ressaltat."
+"informació sobre una part del document. Per fer-ho, utilitzeu el ratolí per "
+"seleccionar la part del text que voleu examinar i, a continuació, "
+"seleccioneu <guiseq><gui>Eines</gui><gui>Estadístiques del document</gui></"
+"guiseq>. El <app>gedit</app> mostrarà informació tant per a tot el document "
+"com per a la part del text que heu ressaltat."
 
 #. (itstool) path: info/desc
 #: C/gedit-plugins-external-tools.page:18
@@ -1038,18 +1039,16 @@ msgid ""
 "Specifically, it extends <app>gedit</app> by helping you to run scripts on "
 "your working files, and by allowing <app>gedit</app> to interact with other "
 "programs on your computer. To enable the <app>External Tools</app> plugin, "
-"select <guiseq><gui style=\"menu\">gedit</gui> <gui "
-"style=\"menuitem\">Preferences</gui><gui>Plugins</gui> <gui>External "
-"Tools</gui></guiseq>."
+"select <guiseq><gui style=\"menu\">gedit</gui> <gui style=\"menuitem"
+"\">Preferences</gui><gui>Plugins</gui> <gui>External Tools</gui></guiseq>."
 msgstr ""
 "El connector <em>Eines externes</em> pot ajudar a simplificar tasques "
 "repetitives. Concretament, estén el <app>gedit</app> ajudant-vos a executar "
 "scripts als vostres fitxers de treball, i permetent al <app>gedit</app> "
 "interactuar amb altres programes del vostre ordinador. Per activar el "
-"connector <app>Eines externes</app>, seleccioneu <guiseq><gui "
-"style=\"menu\">gedit</gui> <gui "
-"style=\"menuitem\">Preferències</gui><gui>Connectors</gui> <gui>Eines "
-"externes</gui></guiseq>."
+"connector <app>Eines externes</app>, seleccioneu <guiseq><gui style=\"menu"
+"\">gedit</gui> <gui style=\"menuitem\">Preferències</gui><gui>Connectors</"
+"gui> <gui>Eines externes</gui></guiseq>."
 
 #. (itstool) path: section/title
 #: C/gedit-plugins-external-tools.page:33
@@ -1059,25 +1058,25 @@ msgstr "Configura el connector eines externes"
 #. (itstool) path: section/p
 #: C/gedit-plugins-external-tools.page:35
 msgid ""
-"Once you have enabled the plugin, you will need to configure it to suit your"
-" needs. The configuration options are available by selecting "
+"Once you have enabled the plugin, you will need to configure it to suit your "
+"needs. The configuration options are available by selecting "
 "<guiseq><gui>Tools</gui><gui>Manage External Tools</gui></guiseq>."
 msgstr ""
 "Un cop activat el connector, l'haureu de configurar per a que segueixi les "
 "vostres necessitats. Les opcions de configuració estan disponibles a "
-"<guiseq><gui>Eines</gui><gui>Gestiona eines externes</gui></guiseq>."
+"<guiseq><gui>Eines</gui><gui>Gestiona les eines externes</gui></guiseq>."
 
 #. (itstool) path: note/p
 #: C/gedit-plugins-external-tools.page:40
 msgid ""
-"This plugin is for advanced users, and requires knowledge of scripting to be"
-" used effectively. Use this plugin with care, as mistakes with your scripts "
+"This plugin is for advanced users, and requires knowledge of scripting to be "
+"used effectively. Use this plugin with care, as mistakes with your scripts "
 "can affect your work in unintended ways."
 msgstr ""
 "Aquest connector és per a usuaris avançats, i requereix coneixements de "
-"programació per poder-se utilitzar de forma efectiva. Utilitzeu el "
-"connector amb compte, ja que errors als vostres scripts poden afectar el "
-"vostre treball de forma involuntària."
+"programació per poder-se utilitzar de forma efectiva. Utilitzeu el connector "
+"amb compte, ja que errors als vostres scripts poden afectar el vostre "
+"treball de forma involuntària."
 
 #. (itstool) path: info/desc
 #: C/gedit-plugins-file-browser.page:18
@@ -1105,32 +1104,32 @@ msgstr ""
 #. (itstool) path: page/p
 #: C/gedit-plugins-file-browser.page:28
 msgid ""
-"You can enable the side panel by selecting <guiseq><gui "
-"style=\"menu\">gedit</gui><gui style=\"menuitem\">Preferences</gui> "
-"<gui>Plugins</gui><gui>File Browser Panel</gui></guiseq>."
+"You can enable the side panel by selecting <guiseq><gui style=\"menu"
+"\">gedit</gui><gui style=\"menuitem\">Preferences</gui> <gui>Plugins</"
+"gui><gui>File Browser Panel</gui></guiseq>."
 msgstr ""
-"Podeu activar el quadre lateral seleccionant <guiseq><gui "
-"style=\"menu\">gedit</gui><gui style=\"menuitem\">Preferències</gui> "
-"<gui>Connectors</gui><gui>Quadre del navegador de fitxers</gui></guiseq>."
+"Podeu activar el quadre lateral seleccionant <guiseq><gui style=\"menu"
+"\">gedit</gui><gui style=\"menuitem\">Preferències</gui> <gui>Connectors</"
+"gui><gui>Quadre del navegador de fitxers</gui></guiseq>."
 
 #. (itstool) path: section/p
 #: C/gedit-plugins-file-browser.page:34
 msgid ""
 "To open files from the side panel, first open the side panel by selecting "
 "<guiseq><gui>View</gui> <gui>Side Panel</gui></guiseq> (or just press "
-"<key>F9</key>), and then choose <gui>File Browser</gui> from the dropdown at"
-" the top of the pane."
+"<key>F9</key>), and then choose <gui>File Browser</gui> from the dropdown at "
+"the top of the pane."
 msgstr ""
 "Per obrir fitxers des del quadre lateral, primer obriu el quadre lateral "
-"seleccionant <guiseq><gui>Visualització</gui> <gui>Quadre lateral</gui></guiseq> (o "
-"prement F9 <key>F9</key>), i aleshores trieu <gui>Navegador pels "
+"seleccionant <guiseq><gui>Visualització</gui> <gui>Quadre lateral</gui></"
+"guiseq> (o prement F9 <key>F9</key>), i aleshores trieu <gui>Navegador pels "
 "fitxers</gui> des del menú desplegable a la part superior del panell."
 
 #. (itstool) path: section/p
 #: C/gedit-plugins-file-browser.page:42
 msgid ""
-"This will activate the <em>File Browser</em> mode of the side panel. You can"
-" then use the navigation buttons at the top of the pane to locate and open "
+"This will activate the <em>File Browser</em> mode of the side panel. You can "
+"then use the navigation buttons at the top of the pane to locate and open "
 "your desired files."
 msgstr ""
 "Això activarà el mode <em>Navegador de fitxers</em> del quadre lateral. "
@@ -1150,37 +1149,37 @@ msgstr "Insereix la data/hora"
 #. (itstool) path: page/p
 #: C/gedit-plugins-insert-date-time.page:22
 msgid ""
-"As this name of this plugin suggests, the <gui>Insert Date/Time</gui> plugin"
-" allows you to insert the date and/or time at the current cursor position. "
-"To enable this plugin, select <guiseq><gui style=\"menu\">gedit</gui> <gui "
-"style=\"menuitem\">Preferences</gui><gui>Plugins</gui> <gui>Insert "
-"Date/Time</gui></guiseq>. To use the plugin, press <guiseq> <gui "
-"style=\"menu\">Edit</gui><gui>Insert Date and Time</gui></guiseq>."
+"As this name of this plugin suggests, the <gui>Insert Date/Time</gui> plugin "
+"allows you to insert the date and/or time at the current cursor position. To "
+"enable this plugin, select <guiseq><gui style=\"menu\">gedit</gui> <gui "
+"style=\"menuitem\">Preferences</gui><gui>Plugins</gui> <gui>Insert Date/"
+"Time</gui></guiseq>. To use the plugin, press <guiseq> <gui style=\"menu"
+"\">Edit</gui><gui>Insert Date and Time</gui></guiseq>."
 msgstr ""
-"Tal com el nom del connector suggereix, el component <gui>Inserir "
-"Data/Hora</gui> us permet inserir la data i/o l'hora a la posició actual del"
-" cursor. Per activar aquest connector, seleccioneu <guiseq><gui "
-"style=\"menu\">gedit</gui> <gui "
-"style=\"menuitem\">Preferències</gui><gui>Connectors</gui> <gui>Inserir "
-"Data/Hora</gui></guiseq>. Per utilitzar el connector, premeu <guiseq> <gui "
-"style=\"menu\">Editar</gui><gui>Insereix la data/hora</gui></guiseq>."
+"Tal com el nom del connector suggereix, el component <gui>Insereix Data/Hora</"
+"gui> us permet inserir la data i/o l'hora a la posició actual del cursor. "
+"Per activar aquest connector, seleccioneu <guiseq><gui style=\"menu\">gedit</"
+"gui> <gui style=\"menuitem\">Preferències</gui><gui>Connectors</gui> "
+"<gui>Insereix Data/Hora</gui></guiseq>. Per utilitzar el connector, premeu "
+"<guiseq> <gui style=\"menu\">Editar</gui><gui>Insereix la data/hora</gui></"
+"guiseq>."
 
 #. (itstool) path: page/p
 #: C/gedit-plugins-insert-date-time.page:29
 msgid ""
-"By default, the <gui>Insert Date/Time</gui> plugin will prompt you to choose"
-" your preferred date/time format each time that you use the plugin. However,"
-" you can choose your own default date and time format by selecting "
-"<guiseq><gui style=\"menu\">gedit</gui><gui "
-"style=\"menuitem\">Preferences</gui> <gui>Plugins</gui><gui>Insert "
-"Date/Time</gui><gui>Configure</gui></guiseq>."
+"By default, the <gui>Insert Date/Time</gui> plugin will prompt you to choose "
+"your preferred date/time format each time that you use the plugin. However, "
+"you can choose your own default date and time format by selecting "
+"<guiseq><gui style=\"menu\">gedit</gui><gui style=\"menuitem\">Preferences</"
+"gui> <gui>Plugins</gui><gui>Insert Date/Time</gui><gui>Configure</gui></"
+"guiseq>."
 msgstr ""
-"Per defecte, el connector <gui>Insereix la data/hora</gui> us demanarà "
-"que trieu el format de data/hora a utilitzar cada cop que l'utilitzeu. "
+"Per defecte, el connector <gui>Insereix la data/hora</gui> us demanarà que "
+"trieu el format de data/hora a utilitzar cada cop que l'utilitzeu. "
 "Tanmateix, podeu triar el vostre format de data/hora predeterminat "
-"seleccionant <guiseq><gui style=\"menu\">gedit</gui><gui "
-"style=\"menuitem\">Preferències</gui> <gui>Connectors</gui><gui>Insereix la data/hora "
-"</gui><gui>Configura</gui></guiseq>."
+"seleccionant <guiseq><gui style=\"menu\">gedit</gui><gui style=\"menuitem"
+"\">Preferències</gui> <gui>Connectors</gui><gui>Insereix la data/hora </"
+"gui><gui>Configura</gui></guiseq>."
 
 #. (itstool) path: info/desc
 #: C/gedit-plugins-install.page:15
@@ -1198,20 +1197,20 @@ msgid ""
 "Installing third-party plugins gives you extra functionality that isn't "
 "available in default <app>gedit</app> plugins, or even the extra plugins "
 "that are part of the <app>gedit-plugins</app> package. An online list of "
-"third-party plugins is <link href=\"https://wiki.gnome.org/Apps/Gedit\">kept"
-" here</link>."
+"third-party plugins is <link href=\"https://wiki.gnome.org/Apps/Gedit\">kept "
+"here</link>."
 msgstr ""
 "La instal·lació de connectors de tercers us ofereix funcionalitats "
 "addicionals que no estan disponibles per defecte al <app>gedit</app>, ni als "
 "paquets de connectors addicionals del <app>gedit-plugins</app>. Una llista "
-"de connectors de tercers està disponible a <link "
-"href=\"https://wiki.gnome.org/Apps/Gedit\">mantinguts aquí</link>."
+"de connectors de tercers està disponible a <link href=\"https://wiki.gnome."
+"org/Apps/Gedit\">mantinguts aquí</link>."
 
 #. (itstool) path: page/p
 #: C/gedit-plugins-install.page:27
 msgid ""
-"Installing a third-party plugin involves downloading the plugin, placing the"
-" plugin files in the right directory, and activating the plugin."
+"Installing a third-party plugin involves downloading the plugin, placing the "
+"plugin files in the right directory, and activating the plugin."
 msgstr ""
 "Instal·lar un connector de tercers implica descarregar el connector, "
 "col·locar els fitxers del connector en el directori correcte i activar-lo."
@@ -1219,11 +1218,11 @@ msgstr ""
 #. (itstool) path: item/p
 #: C/gedit-plugins-install.page:31
 msgid ""
-"You can usually download a plugin from the plugin's website, but may need to"
-" use a revision-control program like <app>git</app>, <app> bazaar</app>, or "
+"You can usually download a plugin from the plugin's website, but may need to "
+"use a revision-control program like <app>git</app>, <app> bazaar</app>, or "
 "<app>subversion</app> to copy a plugin's software repository from the "
-"internet. Refer to the plugin's documentation for information on getting the"
-" plugin."
+"internet. Refer to the plugin's documentation for information on getting the "
+"plugin."
 msgstr ""
 "Normalment podeu descarregar un connector des del lloc web del connector, "
 "però potser haureu d'utilitzar un programa de control de versions com "
@@ -1234,31 +1233,29 @@ msgstr ""
 #. (itstool) path: item/p
 #: C/gedit-plugins-install.page:36
 msgid ""
-"Place the plugin files into the "
-"<file>/home/<var>username</var>/.local/share/gedit/plugins</file> directory."
+"Place the plugin files into the <file>/home/<var>username</var>/.local/share/"
+"gedit/plugins</file> directory."
 msgstr ""
-"Copieu els fitxers del connector a la carpeta "
-"<file>/home/<var>usuari</var>/.local/share/gedit/plugins</file>."
+"Copieu els fitxers del connector a la carpeta <file>/home/<var>usuari</var>/."
+"local/share/gedit/plugins</file>."
 
 #. (itstool) path: item/p
 #: C/gedit-plugins-install.page:39
-msgid ""
-"Of course, replace the word <var>username</var> with your own username."
+msgid "Of course, replace the word <var>username</var> with your own username."
 msgstr "Per descomptat, canvieu <var>usuari</var> pel vostre nom d'usuari."
 
 #. (itstool) path: item/p
 #: C/gedit-plugins-install.page:41
 msgid ""
 "After you have placed the plugin files into the correct directory, the "
-"plugin will appear in the Preferences menu. Select <guiseq><gui>Edit "
-"</gui><gui style=\"menuitem\">Preferences</gui><gui>Plugins</gui> <gui>[Name"
-" of Plugin]</gui></guiseq> to enable the plugin."
+"plugin will appear in the Preferences menu. Select <guiseq><gui>Edit </"
+"gui><gui style=\"menuitem\">Preferences</gui><gui>Plugins</gui> <gui>[Name "
+"of Plugin]</gui></guiseq> to enable the plugin."
 msgstr ""
-"Una vegada col·locats els fitxers del connector en el directori correcte, "
-"el connector apareixerà al menú Preferències. Seleccioneu "
-"<guiseq><gui>Edita</gui><gui "
-"style=\"menuitem\">Preferències</gui><gui>Complememnts</gui> <gui>[Nom del "
-"connector]</gui></guiseq> per activar-lo."
+"Una vegada col·locats els fitxers del connector en el directori correcte, el "
+"connector apareixerà al menú Preferències. Seleccioneu <guiseq><gui>Edita</"
+"gui><gui style=\"menuitem\">Preferències</gui><gui>Connectors</gui> "
+"<gui>[Nom del connector]</gui></guiseq> per activar-lo."
 
 #. (itstool) path: item/p
 #: C/gedit-plugins-install.page:45
@@ -1274,13 +1271,13 @@ msgstr "Un cop activat el connector, estarà disponible per al seu us."
 #. (itstool) path: note/p
 #: C/gedit-plugins-install.page:52
 msgid ""
-"The <file>.local</file> directory is hidden by default. To view it and other"
-" hidden files, select <guiseq><gui>View</gui><gui>Show Hidden "
-"Files</gui></guiseq>, or press <keyseq><key>Ctrl</key><key>H</key></keyseq>."
+"The <file>.local</file> directory is hidden by default. To view it and other "
+"hidden files, select <guiseq><gui>View</gui><gui>Show Hidden Files</gui></"
+"guiseq>, or press <keyseq><key>Ctrl</key><key>H</key></keyseq>."
 msgstr ""
 "La carpeta <file>.local</file> per defecte està oculta. Per veure-la així "
-"com altres arxius ocults, seleccioneu <guiseq><gui>Visualització</gui><gui>Mostra "
-"els fitxers ocults</gui></guiseq>, o premeu "
+"com altres arxius ocults, seleccioneu <guiseq><gui>Visualització</"
+"gui><gui>Mostra els fitxers ocults</gui></guiseq>, o premeu "
 "<keyseq><key>Ctrl</key><key>H</key></keyseq>."
 
 #. (itstool) path: note/p
@@ -1295,7 +1292,7 @@ msgstr ""
 #. (itstool) path: info/desc
 #: C/gedit-plugins-modelines.page:16
 msgid "Emacs, Kate and Vim-style modelines support for gedit."
-msgstr "Suport de modes de línia de Emacs, Kate i Vim per al gedit."
+msgstr "Suport de modes de línia d'Emacs, Kate i Vim per al gedit."
 
 #. (itstool) path: page/title
 #: C/gedit-plugins-modelines.page:19
@@ -1305,28 +1302,28 @@ msgstr "Modes de línia"
 #. (itstool) path: page/p
 #: C/gedit-plugins-modelines.page:21
 msgid ""
-"The <app>Modelines</app> plugin allows <app>gedit</app> to analyze the lines"
-" of text at the start and end of a file, and then apply a set of document "
+"The <app>Modelines</app> plugin allows <app>gedit</app> to analyze the lines "
+"of text at the start and end of a file, and then apply a set of document "
 "preferences to the file. The <app>Modelines</app> plugin supports a subset "
-"of the options used by the <app>Emacs</app>, <app>Kate</app> and "
-"<app>Vim</app> text editors."
+"of the options used by the <app>Emacs</app>, <app>Kate</app> and <app>Vim</"
+"app> text editors."
 msgstr ""
-"El connector <app>Modes de línia</app> permet al <app>gedit</app> analitzar"
-" les línies de text al principi i al final d'un fitxer i, a continuació, "
-"aplicar-hi un conjunt de preferències. El connector <app>Modes de línia</app>"
-" suporta un subconjunt d'opcions contingudes als editors de text "
+"El connector <app>Modes de línia</app> permet al <app>gedit</app> analitzar "
+"les línies de text al principi i al final d'un fitxer i, a continuació, "
+"aplicar-hi un conjunt de preferències. El connector <app>Modes de línia</"
+"app> suporta un subconjunt d'opcions contingudes als editors de text "
 "<app>Emacs</app>, <app>Kate</app> i <app>Vim</app>."
 
 #. (itstool) path: page/p
 #: C/gedit-plugins-modelines.page:27
 msgid ""
-"To enable the <app>Modelines</app> plugin, select <guiseq><gui "
-"style=\"menu\">gedit</gui> <gui "
-"style=\"menuitem\">Preferences</gui><gui>Plugins</gui><gui>Modelines</gui></guiseq>."
+"To enable the <app>Modelines</app> plugin, select <guiseq><gui style=\"menu"
+"\">gedit</gui> <gui style=\"menuitem\">Preferences</gui><gui>Plugins</"
+"gui><gui>Modelines</gui></guiseq>."
 msgstr ""
 "Per activar el connector <app>Modes de línia</app>, seleccioneu <guiseq><gui "
-"style=\"menu\">gedit</gui> <gui "
-"style=\"menuitem\">Preferències</gui><gui>Connectors</gui><gui>Modes de línia</gui></guiseq>."
+"style=\"menu\">gedit</gui> <gui style=\"menuitem\">Preferències</"
+"gui><gui>Connectors</gui><gui>Modes de línia</gui></guiseq>."
 
 #. (itstool) path: section/title
 #: C/gedit-plugins-modelines.page:31
@@ -1387,8 +1384,8 @@ msgid ""
 "modeline options:"
 msgstr ""
 "Les dues primeres línies d'un document s'analitzen per trobar modes de línia "
-"<app>Emacs</app>, i <app>gedit</app> suporta les següents opcions de "
-"modes de línia d'<app>Emacs</app>:"
+"<app>Emacs</app>, i <app>gedit</app> suporta les següents opcions de modes "
+"de línia d'<app>Emacs</app>:"
 
 #. (itstool) path: item/p
 #: C/gedit-plugins-modelines.page:54
@@ -1413,13 +1410,13 @@ msgstr "Text auto-wrap"
 #. (itstool) path: section/p
 #: C/gedit-plugins-modelines.page:59
 msgid ""
-"For more information on <app>Emacs</app> modelines, visit the <link "
-"href=\"http://www.gnu.org/software/emacs/manual/emacs.html\">GNU Emacs "
-"Manual</link>."
+"For more information on <app>Emacs</app> modelines, visit the <link href="
+"\"http://www.gnu.org/software/emacs/manual/emacs.html\">GNU Emacs Manual</"
+"link>."
 msgstr ""
-"Per a més informació sobre els modes de línia <app>Emacs</app>, visiteu el <link"
-" href=\"http://www.gnu.org/software/emacs/manual/emacs.html\">Manual del GNU Emacs "
-"</link>."
+"Per a més informació sobre els modes de línia <app>Emacs</app>, visiteu el "
+"<link href=\"http://www.gnu.org/software/emacs/manual/emacs.html\">Manual "
+"del GNU Emacs </link>."
 
 #. (itstool) path: section/title
 #: C/gedit-plugins-modelines.page:65
@@ -1433,8 +1430,8 @@ msgid ""
 "modelines, and <app>gedit</app> supports the following <app>Kate</app> "
 "modeline options:"
 msgstr ""
-"La primera i les deu darreres línies del document són analitzades pels "
-"modes de línia del <app>Kate</app>, i <app>gedit</app> suporta les següents "
+"La primera i les deu darreres línies del document són analitzades pels modes "
+"de línia del <app>Kate</app>, i <app>gedit</app> suporta les següents "
 "opcions de modificadors <app>Kate</app>:"
 
 #. (itstool) path: item/p
@@ -1465,8 +1462,8 @@ msgstr "word-wrap-column"
 #. (itstool) path: section/p
 #: C/gedit-plugins-modelines.page:79
 msgid ""
-"For more information about <app>Kate</app> modelines, visit the <link "
-"href=\"http://kate-editor.org/\">Kate website</link>."
+"For more information about <app>Kate</app> modelines, visit the <link href="
+"\"http://kate-editor.org/\">Kate website</link>."
 msgstr ""
 "Per a més informació sobre els modes de línia <app>Kate</app>, visiteu <link "
 "href=\"http://kate-editor.org/\">el lloc web Kate</link>."
@@ -1515,8 +1512,8 @@ msgstr "textwidth"
 #. (itstool) path: section/p
 #: C/gedit-plugins-modelines.page:97
 msgid ""
-"For more information on <app>Vim</app> modelines, visit the <link "
-"href=\"http://www.vim.org/\">Vim website</link>."
+"For more information on <app>Vim</app> modelines, visit the <link href="
+"\"http://www.vim.org/\">Vim website</link>."
 msgstr ""
 "Per a més informació sobre els modificadors <app>Vim</app>, visiteu <link "
 "href=\"http://www.vim.org/\">el lloc web Vim</link>."
@@ -1534,11 +1531,10 @@ msgstr "Consola Python"
 #. (itstool) path: page/p
 #: C/gedit-plugins-pyconsole.page:19
 msgid ""
-"You can add a Python console to the bottom pane, allowing you to test Python"
-" scripts without leaving <app>gedit</app>. To enable the Python console, "
-"select <guiseq><gui style=\"menu\">gedit</gui> <gui "
-"style=\"menuitem\">Preferences</gui><gui>Plugins</gui> <gui>Python "
-"Console</gui></guiseq>."
+"You can add a Python console to the bottom pane, allowing you to test Python "
+"scripts without leaving <app>gedit</app>. To enable the Python console, "
+"select <guiseq><gui style=\"menu\">gedit</gui> <gui style=\"menuitem"
+"\">Preferences</gui><gui>Plugins</gui> <gui>Python Console</gui></guiseq>."
 msgstr ""
 "Podeu afegir una consola de Python al quadre inferior, que us permetrà "
 "validar scripts de Python sense sortir del <app>gedit</app>. Per activar la "
@@ -1580,15 +1576,14 @@ msgstr "Obertura ràpida"
 msgid ""
 "As the name of this plugin would imply, the <app>Quick Open</app> plugin "
 "helps you to open files more quickly than using the usual ways of opening "
-"files. To enable this plugin, select <guiseq><gui style=\"menu\">gedit</gui>"
-" <gui>Preferences</gui><gui>Plugins</gui><gui>Quick Open</gui></guiseq>."
+"files. To enable this plugin, select <guiseq><gui style=\"menu\">gedit</gui> "
+"<gui>Preferences</gui><gui>Plugins</gui><gui>Quick Open</gui></guiseq>."
 msgstr ""
-"Com el nom d'aquest connector implica, el connector <app>Obertura ràpida</app> "
-"us ajuda a obrir fitxers més ràpidament que utilitzant les formes habituals "
-"d'obrir fitxers. Per activar aquest connector, seleccioneu <guiseq><gui "
-"style=\"menu\">gedit</gui> "
-"<gui>Preferències</gui><gui>Connectors</gui><gui>Obertura ràpida"
-"</gui></guiseq>."
+"Com el nom d'aquest connector implica, el connector <app>Obertura ràpida</"
+"app> us ajuda a obrir fitxers més ràpidament que utilitzant les formes "
+"habituals d'obrir fitxers. Per activar aquest connector, seleccioneu "
+"<guiseq><gui style=\"menu\">gedit</gui> <gui>Preferències</"
+"gui><gui>Connectors</gui><gui>Obertura ràpida</gui></guiseq>."
 
 #. (itstool) path: page/p
 #: C/gedit-plugins-quick-open.page:29
@@ -1596,15 +1591,15 @@ msgid ""
 "Once you have enabled the <app>Quick Open</app> plugin you can use it as "
 "follows:"
 msgstr ""
-"Un cop activat el connector <app>Obertura ràpida</app> el podeu utilitzar com "
-"segueix:"
+"Un cop activat el connector <app>Obertura ràpida</app> el podeu utilitzar "
+"com segueix:"
 
 #. (itstool) path: item/p
 #: C/gedit-plugins-quick-open.page:33
 msgid ""
-"Open the <app>Quick Open</app> dialog box by pressing "
-"<keyseq><key>Ctrl</key><key>Alt</key><key>O</key></keyseq>, or by selecting "
-"<gui style=\"menuitem\">Quick Open…</gui>."
+"Open the <app>Quick Open</app> dialog box by pressing <keyseq><key>Ctrl</"
+"key><key>Alt</key><key>O</key></keyseq>, or by selecting <gui style="
+"\"menuitem\">Quick Open…</gui>."
 msgstr ""
 "Obre el quadre de diàleg <app>Obertura ràpida</app> prement "
 "<keyseq><key>Ctrl</key><key>Alt</key><key>O</key></keyseq>, o seleccionant "
@@ -1624,8 +1619,8 @@ msgstr ""
 #. (itstool) path: item/p
 #: C/gedit-plugins-quick-open.page:39
 msgid ""
-"To select several individual files, hold down your <key>Ctrl</key> key while"
-" you click on the files that you want to open."
+"To select several individual files, hold down your <key>Ctrl</key> key while "
+"you click on the files that you want to open."
 msgstr ""
 "Per seleccionar diversos fitxers de forma individual, manteniu premuda la "
 "tecla <key>Ctrl</key> mentre feu clic als fitxers que voleu obrir."
@@ -1657,8 +1652,8 @@ msgid ""
 "The root directory of the <app xref=\"gedit-plugins-file-browser\">File "
 "Browser Pane</app> plugin"
 msgstr ""
-"Directori arrel del connector <app xref=\"gedit-plugins-file-"
-"browser\">Panell del navegador de fitxers</app>"
+"Directori arrel del connector <app xref=\"gedit-plugins-file-browser"
+"\">Panell del navegador de fitxers</app>"
 
 #. (itstool) path: item/p
 #: C/gedit-plugins-quick-open.page:54
@@ -1745,13 +1740,11 @@ msgstr "Per activar el connector <gui>Fragments</gui>:"
 #: C/gedit-plugins-snippets.page:35 C/gedit-plugins-sort.page:37
 #: C/gedit-spellcheck.page:36
 msgid ""
-"Select <guiseq><gui style=\"menu\">gedit</gui> <gui "
-"style=\"menuitem\">Preferences</gui> <gui "
-"style=\"tab\">Plugins</gui></guiseq>."
+"Select <guiseq><gui style=\"menu\">gedit</gui> <gui style=\"menuitem"
+"\">Preferences</gui> <gui style=\"tab\">Plugins</gui></guiseq>."
 msgstr ""
-"Seleccioneu <guiseq><gui style=\"menu\">gedit</gui> <gui "
-"style=\"menuitem\">Preferències</gui> <gui "
-"style=\"tab\">Connectors</gui></guiseq>."
+"Seleccioneu <guiseq><gui style=\"menu\">gedit</gui> <gui style=\"menuitem"
+"\">Preferències</gui> <gui style=\"tab\">Connectors</gui></guiseq>."
 
 #. (itstool) path: item/p
 #: C/gedit-plugins-snippets.page:40
@@ -1772,11 +1765,11 @@ msgstr "Per navegar pels fragments disponibles:"
 #. (itstool) path: item/p
 #: C/gedit-plugins-snippets.page:52
 msgid ""
-"Select <guiseq><gui style=\"menu\">Tools</gui> <gui "
-"style=\"menuitem\">Manage Snippets</gui></guiseq>."
+"Select <guiseq><gui style=\"menu\">Tools</gui> <gui style=\"menuitem"
+"\">Manage Snippets</gui></guiseq>."
 msgstr ""
-"Seleccioneu <guiseq><gui style=\"menu\">Eines</gui> <gui "
-"style=\"menuitem\">Gestiona els fragments</gui></guiseq>."
+"Seleccioneu <guiseq><gui style=\"menu\">Eines</gui> <gui style=\"menuitem"
+"\">Gestiona els fragments</gui></guiseq>."
 
 #. (itstool) path: note/p
 #: C/gedit-plugins-snippets.page:55
@@ -1826,7 +1819,7 @@ msgstr "Utilitza Fragments"
 #. (itstool) path: section/p
 #: C/gedit-plugins-snippets.page:78
 msgid "To insert a snippet into your current document:"
-msgstr "Per inserir un fragment al vostre document actual."
+msgstr "Per inserir un fragment al vostre document actual:"
 
 #. (itstool) path: item/p
 #: C/gedit-plugins-snippets.page:82
@@ -1850,9 +1843,9 @@ msgstr "Exemple d'ús d'un fragment"
 #. (itstool) path: section/p
 #: C/gedit-plugins-snippets.page:94
 msgid ""
-"For example, if you have set the syntax to <em>HTML</em>, type <code>head "
-"</code>, and press the <key>Tab</key> key. The text would have auto "
-"completed into a snippet as:"
+"For example, if you have set the syntax to <em>HTML</em>, type <code>head </"
+"code>, and press the <key>Tab</key> key. The text would have auto completed "
+"into a snippet as:"
 msgstr ""
 "Per exemple, si heu establert la sintaxi a <em>HTML</em>, escriviu "
 "<code>head </code>, i premeu la tecla <key>Tab</key>. El text s'hauria "
@@ -1893,10 +1886,10 @@ msgstr ""
 #. (itstool) path: item/p
 #: C/gedit-plugins-snippets.page:115
 msgid ""
-"Select <guiseq style=\"menu\"><gui style=\"menuitem\">Tools</gui> <gui "
-"style=\"menuitem\">Manage Snippets</gui></guiseq>."
+"Select <guiseq style=\"menu\"><gui style=\"menuitem\">Tools</gui> <gui style="
+"\"menuitem\">Manage Snippets</gui></guiseq>."
 msgstr ""
-"Selecsioneu <guiseq style=\"menu\"><gui style=\"menuitem\">Eines</gui> <gui "
+"Seleccioneu <guiseq style=\"menu\"><gui style=\"menuitem\">Eines</gui> <gui "
 "style=\"menuitem\">Gestiona els fragments</gui></guiseq>."
 
 #. (itstool) path: item/p
@@ -1905,9 +1898,9 @@ msgid ""
 "From the <gui>Manage Snippets</gui> sidebar select the desired syntax and "
 "click on the \"+\" button to list existing snippets for the selected syntax."
 msgstr ""
-"Des de la barra lateral <gui>Gestiona els fragments</gui> seleccioneu la sintaxi "
-"desitjada i feu clic al botó \"+\" per mostrar els fragments existents per "
-"aquesta sintaxi."
+"Des de la barra lateral <gui>Gestiona els fragments</gui> seleccioneu la "
+"sintaxi desitjada i feu clic al botó \"+\" per mostrar els fragments "
+"existents per aquesta sintaxi."
 
 #. (itstool) path: note/p
 #: C/gedit-plugins-snippets.page:123
@@ -1935,8 +1928,8 @@ msgid ""
 "Input a name for the new snippet. The name of the snippet can be different "
 "from the snippet you want to add."
 msgstr ""
-"Introduïu un nom per al nou fragment. El nom del fragment pot diferir del fragment"
-" que vulgueu afegir."
+"Introduïu un nom per al nou fragment. El nom del fragment pot diferir del "
+"fragment que vulgueu afegir."
 
 #. (itstool) path: item/p
 #: C/gedit-plugins-snippets.page:137
@@ -1945,16 +1938,16 @@ msgid ""
 "term for the <gui style=\"input\">Tab trigger:</gui> textarea. You will be "
 "using this term to insert your snippet."
 msgstr ""
-"A la secció <gui style=\"group\">Activació</gui>, heu d'introduir un terme a"
-" l'area de text <gui style=\"input\">Activador:</gui>. Estareu utilitzant "
+"A la secció <gui style=\"group\">Activació</gui>, heu d'introduir un terme a "
+"l'area de text <gui style=\"input\">Activador:</gui>. Estareu utilitzant "
 "aquest terme per inserir el vostre fragment."
 
 #. (itstool) path: note/p
 #: C/gedit-plugins-snippets.page:141
 msgid ""
 "If you wish to insert a snippet with a keyboard shortcut, then click your "
-"mouse pointer on <gui style=\"input\">Shortcut key:</gui> textarea and press"
-" the desired combination of keys. Once you have pressed and released the "
+"mouse pointer on <gui style=\"input\">Shortcut key:</gui> textarea and press "
+"the desired combination of keys. Once you have pressed and released the "
 "keys, the keyboard shortcut will be set."
 msgstr ""
 "Si voleu inserir un fragment amb una drecera de teclat, feu clic al punter "
@@ -1970,10 +1963,10 @@ msgid ""
 "where <em>n</em> is replaced with a number that represents the numerical "
 "order of variables included."
 msgstr ""
-"A l'àrea d'<gui style=\"input\">Edició:</gui>, introduïu el text del fragment."
-" Podeu utilitzar <code>${n}</code> per indicar variables, on <em>n</em> es "
-"substitueix per un nombre que representa l'ordre numèric de les variables "
-"incloses."
+"A l'àrea d'<gui style=\"input\">Edició:</gui>, introduïu el text del "
+"fragment. Podeu utilitzar <code>${n}</code> per indicar variables, on <em>n</"
+"em> es substitueix per un nombre que representa l'ordre numèric de les "
+"variables incloses."
 
 #. (itstool) path: section/title
 #: C/gedit-plugins-snippets.page:158
@@ -1984,11 +1977,11 @@ msgstr "Exemple de nou fragment"
 #: C/gedit-plugins-snippets.page:160
 msgid ""
 "Consider you have created a snippet with the term <var>greetings</var> in "
-"<gui style=\"input\">Tab trigger:</gui>. The <gui "
-"style=\"input\">Edit:</gui> textarea contains:"
+"<gui style=\"input\">Tab trigger:</gui>. The <gui style=\"input\">Edit:</"
+"gui> textarea contains:"
 msgstr ""
-"Considereu que heu creat un fragment amb el contingut <var>salutacions</var> a"
-" la <gui style=\"input\">Pestanya d'activació</gui>. L'àrea de text <gui "
+"Considereu que heu creat un fragment amb el contingut <var>salutacions</var> "
+"a la <gui style=\"input\">Pestanya d'activació</gui>. L'àrea de text <gui "
 "style=\"input\">Editar:</gui> conté:"
 
 #. (itstool) path: section/code
@@ -2030,15 +2023,15 @@ msgstr ""
 #. (itstool) path: section/p
 #: C/gedit-plugins-snippets.page:177
 msgid ""
-"The words \"wonderful\" and \"amazing\" can be retained or deleted depending"
-" on your choice of usage. To do so, press <key>Tab</key> to choose between "
+"The words \"wonderful\" and \"amazing\" can be retained or deleted depending "
+"on your choice of usage. To do so, press <key>Tab</key> to choose between "
 "\"wonderful\" and \"amazing\" and press <key>Del</key> to delete the least "
 "preferred option."
 msgstr ""
 "Les paraules \"meravellós\" i \"sorprenent\" es poden conservar o suprimir "
-"depenent de la vostra elecció d'ús. Per fer-ho, premeu "
-"<key>Tabulador</key>per triar entre \"meravellós\" i \"sorprenent\", i "
-"premeu <key>Esborrar</key> per eliminar l'opció menys preferida."
+"depenent de la vostra elecció d'ús. Per fer-ho, premeu <key>Tabulador</"
+"key> per triar entre \"meravellós\" i \"sorprenent\", i premeu <key>Esborrar</"
+"key> per eliminar l'opció menys preferida."
 
 #. (itstool) path: info/desc
 #: C/gedit-plugins-sort.page:22
@@ -2077,7 +2070,7 @@ msgstr ""
 #. (itstool) path: section/title
 #: C/gedit-plugins-sort.page:49
 msgid "Using Sort Plugin"
-msgstr "Us del connector Ordena"
+msgstr "Ús del connector Ordena"
 
 #. (itstool) path: section/p
 #: C/gedit-plugins-sort.page:51
@@ -2092,17 +2085,17 @@ msgstr "Arrossegueu i ressalteu les línies de text desitjades. "
 #. (itstool) path: item/p
 #: C/gedit-plugins-sort.page:58
 msgid ""
-"Select <guiseq><gui style=\"menu\">Tools</gui> <gui "
-"style=\"menuitem\">Sort…</gui></guiseq>."
+"Select <guiseq><gui style=\"menu\">Tools</gui> <gui style=\"menuitem\">Sort…"
+"</gui></guiseq>."
 msgstr ""
-"Seleccioneu <guiseq><gui style=\"menu\">Eines</gui> <gui "
-"style=\"menuitem\">Ordena...</gui></guiseq>."
+"Seleccioneu <guiseq><gui style=\"menu\">Eines</gui> <gui style=\"menuitem"
+"\">Ordena...</gui></guiseq>."
 
 #. (itstool) path: item/p
 #: C/gedit-plugins-sort.page:62
 msgid ""
-"The <gui>Sort</gui> dialog will open, allowing you to choose between several"
-" sorting options:"
+"The <gui>Sort</gui> dialog will open, allowing you to choose between several "
+"sorting options:"
 msgstr ""
 "S'obrirà el diàleg <gui>Ordena</gui>, que us permetrà triar entre diverses "
 "opcions d'ordenació:"
@@ -2110,8 +2103,7 @@ msgstr ""
 #. (itstool) path: item/p
 #: C/gedit-plugins-sort.page:66
 msgid ""
-"<gui>Reverse order</gui> will arrange the text in reverse alphabetical "
-"order."
+"<gui>Reverse order</gui> will arrange the text in reverse alphabetical order."
 msgstr "<gui>Ordre invers</gui> ordenarà el text en ordre alfabètic invers."
 
 #. (itstool) path: item/p
@@ -2126,7 +2118,7 @@ msgstr ""
 msgid "<gui>Ignore case</gui> will ignore case sensitivity."
 msgstr ""
 "<gui>Ignora Majúscules/minúscules</gui> no diferenciarà majúscules de "
-"minúscules"
+"minúscules."
 
 #. (itstool) path: note/p
 #: C/gedit-plugins-sort.page:76
@@ -2135,7 +2127,7 @@ msgid ""
 "first character that should be used for sorting in the <gui>Start at</gui> "
 "column spin box."
 msgstr ""
-"Per fer que ordenar ignori els caràcters al inici de les línies, configureu "
+"Per fer que ordenar ignori els caràcters a l'inici de les línies, configureu "
 "el primer caràcter que s'utilitzarà per ordenar al control incremental "
 "<gui>Inicia a</gui> la columna."
 
@@ -2143,7 +2135,7 @@ msgstr ""
 #: C/gedit-plugins-sort.page:84
 msgid "To perform the sort operation, click <gui>Sort</gui>."
 msgstr ""
-"Per realitzar l'operació de classificació, feu clic a<gui>Ordenar</gui>."
+"Per realitzar l'operació de classificació, feu clic a<gui>Ordena</gui>."
 
 #. (itstool) path: info/desc
 #: C/gedit-printing-order.page:7
@@ -2171,18 +2163,18 @@ msgid ""
 "Printers usually print the first page first, and the last page last, so the "
 "pages end up in reverse order when you pick them up. To reverse the order:"
 msgstr ""
-"Normalment les impressores imprimeixen primer la primera primera pàgina i "
+"Normalment les impressores imprimeixen primer la primera pàgina i "
 "per últim la darrera, de manera que les pàgines acaben en ordre invers quan "
 "es recullen. Si és necessari, podeu invertir aquest l'ordre:"
 
 #. (itstool) path: item/p
 #: C/gedit-printing-order.page:32
 msgid ""
-"Select <guiseq><gui style=\"menu\">File</gui> <gui "
-"style=\"menuitem\">Print</gui></guiseq>."
+"Select <guiseq><gui style=\"menu\">File</gui> <gui style=\"menuitem\">Print</"
+"gui></guiseq>."
 msgstr ""
-"Seleccioneu <guiseq><gui style=\"menu\">Fitxer</gui> <gui "
-"style=\"menuitem\">Imprimir</gui></guiseq>."
+"Seleccioneu <guiseq><gui style=\"menu\">Fitxer</gui> <gui style=\"menuitem"
+"\">Imprimir</gui></guiseq>."
 
 #. (itstool) path: item/p
 #: C/gedit-printing-order.page:36
@@ -2191,8 +2183,8 @@ msgid ""
 "style=\"group\">Copies</gui>, check <gui style=\"checkbox\">Reverse</gui>."
 msgstr ""
 "A la pestanya <gui style=\"tab\">General</gui> del diàleg d'impressió, sota "
-"<gui style=\"group\">Copies</gui>, marqueu <gui "
-"style=\"checkbox\">Invers</gui>."
+"<gui style=\"group\">Copies</gui>, marqueu <gui style=\"checkbox\">Invers</"
+"gui>."
 
 #. (itstool) path: section/p
 #: C/gedit-printing-order.page:42
@@ -2208,14 +2200,14 @@ msgstr "Intercala"
 #: C/gedit-printing-order.page:48
 msgid ""
 "If you are printing more than one copy of the document, the print outs will "
-"be grouped by page number by default. (e.g. The copies of page one come out,"
-" then the copies of page two, etc.) Collating will make each copy come out "
+"be grouped by page number by default. (e.g. The copies of page one come out, "
+"then the copies of page two, etc.) Collating will make each copy come out "
 "with its pages grouped together."
 msgstr ""
 "Si imprimiu més d'una còpia del document, les impressions s'agruparan per "
-"número de pàgina de manera predeterminada (és a dir, surten totes les còpies"
-" de la pàgina 1, les còpies de la pàgina 2, etc.). Intercalar, farà que cada"
-" còpia surti amb les seves pàgines agrupades."
+"número de pàgina de manera predeterminada (és a dir, surten totes les còpies "
+"de la pàgina 1, les còpies de la pàgina 2, etc.). Intercalar, farà que cada "
+"còpia surti amb les seves pàgines agrupades."
 
 #. (itstool) path: section/p
 #: C/gedit-printing-order.page:53
@@ -2225,11 +2217,11 @@ msgstr "Per intercalar:"
 #. (itstool) path: item/p
 #: C/gedit-printing-order.page:56
 msgid ""
-"Click <guiseq><gui style=\"menu\">File</gui> <gui "
-"style=\"menuitem\">Print</gui></guiseq>."
+"Click <guiseq><gui style=\"menu\">File</gui> <gui style=\"menuitem\">Print</"
+"gui></guiseq>."
 msgstr ""
-"Feu clic a <guiseq><gui style=\"menu\">Fitxer</gui> <gui "
-"style=\"menuitem\">Imprimir</gui></guiseq>."
+"Feu clic a <guiseq><gui style=\"menu\">Fitxer</gui> <gui style=\"menuitem"
+"\">Imprimir</gui></guiseq>."
 
 #. (itstool) path: item/p
 #: C/gedit-printing-order.page:60
@@ -2238,8 +2230,8 @@ msgid ""
 "style=\"group\">Copies</gui> check <gui style=\"checkbox\">Collate</gui>."
 msgstr ""
 "A la pestanya <gui style=\"tab\">General</gui> del diàleg d'impressió, sota "
-"<gui style=\"group\">Copies</gui> marqueu <gui "
-"style=\"checkbox\">Intercalar</gui>."
+"<gui style=\"group\">Copies</gui> marqueu <gui style=\"checkbox"
+"\">Intercalar</gui>."
 
 #. (itstool) path: info/desc
 #: C/gedit-printing.page:7
@@ -2255,12 +2247,12 @@ msgstr "Imprimir documents"
 #: C/gedit-printing.page:23
 msgid ""
 "Printing with <app>gedit</app> requires that you have connected and "
-"configured your printer. If you have not done this, please consult the <link"
-" href=\"help:gnome-help/printing\">printing help for GNOME</link>."
+"configured your printer. If you have not done this, please consult the <link "
+"href=\"help:gnome-help/printing\">printing help for GNOME</link>."
 msgstr ""
-"Imprimir amb <app>gedit</app> requereix que tingueu connectada i configurada"
-" la vostra impressora. Si no ho heu fet, consulteu l'<link href=\"help"
-":gnome-help/printing\">ajuda a la impressió de GNOME</link>."
+"Imprimir amb <app>gedit</app> requereix que tingueu connectada i configurada "
+"la vostra impressora. Si no ho heu fet, consulteu l'<link href=\"help:gnome-"
+"help/printing\">ajuda a la impressió de GNOME</link>."
 
 #. (itstool) path: page/p
 #: C/gedit-printing.page:28
@@ -2278,29 +2270,28 @@ msgid ""
 "Prior to printing your document, you can preview how the printed document "
 "will look by using <gui>Print Preview</gui>. To preview the document:"
 msgstr ""
-"Abans d'imprimir el document, podeu obtenir una vista prèvia de com es veurà"
-" el document imprès <gui>Vista prèvia d'impressió</gui>. Per obtenir una "
+"Abans d'imprimir el document, podeu obtenir una vista prèvia de com es veurà "
+"el document imprès <gui>Vista prèvia d'impressió</gui>. Per obtenir una "
 "vista prèvia del document:"
 
 #. (itstool) path: item/p
 #: C/gedit-printing.page:38
 msgid ""
 "Select <guiseq><gui style=\"menu\">File</gui> <gui style=\"menuitem\">Print "
-"Preview</gui></guiseq>. Alternatively, you can press "
-"<keyseq><key>Shift</key><key>Ctrl</key> <key>P</key></keyseq>."
+"Preview</gui></guiseq>. Alternatively, you can press <keyseq><key>Shift</"
+"key><key>Ctrl</key> <key>P</key></keyseq>."
 msgstr ""
-"Selecciona <guiseq><gui style=\"menu\">Fitxer</gui> <gui "
-"style=\"menuitem\">Visualització prèvia</gui></guiseq>. Alternativament, "
-"podeu imprimir <keyseq><key>Shift</key><key>Ctrl</key> "
-"<key>P</key></keyseq>."
+"Selecciona <guiseq><gui style=\"menu\">Fitxer</gui> <gui style=\"menuitem"
+"\">Visualització prèvia</gui></guiseq>. Alternativament, podeu imprimir "
+"<keyseq><key>Shift</key><key>Ctrl</key> <key>P</key></keyseq>."
 
 #. (itstool) path: section/p
 #: C/gedit-printing.page:45
 msgid ""
 "A preview of your document will open in the same tab as the file. You can "
-"browse this preview with help of navigation buttons and tools in the toolbar"
-" at the top of the document preview tab. To close and return to the document"
-" click <gui style=\"button\">Close Preview</gui>."
+"browse this preview with help of navigation buttons and tools in the toolbar "
+"at the top of the document preview tab. To close and return to the document "
+"click <gui style=\"button\">Close Preview</gui>."
 msgstr ""
 "La previsualització del vostre document s'obrirà a la mateixa pestanya que "
 "el fitxer. Podeu navegar per aquesta previsualització amb l'ajuda dels "
@@ -2325,11 +2316,11 @@ msgstr ""
 #. (itstool) path: item/p
 #: C/gedit-printing.page:60
 msgid ""
-"Select <guiseq><gui style=\"menu\">File</gui> <gui "
-"style=\"menuitem\">Print</gui> <gui style=\"tab\">General</gui></guiseq>."
+"Select <guiseq><gui style=\"menu\">File</gui> <gui style=\"menuitem\">Print</"
+"gui> <gui style=\"tab\">General</gui></guiseq>."
 msgstr ""
-"Selecciona <guiseq><gui style=\"menu\">Fitxer</gui> <gui "
-"style=\"menuitem\">Imprimir</gui> <gui style=\"tab\">General</gui></guiseq>."
+"Selecciona <guiseq><gui style=\"menu\">Fitxer</gui> <gui style=\"menuitem"
+"\">Imprimir</gui> <gui style=\"tab\">General</gui></guiseq>."
 
 #. (itstool) path: item/p
 #: C/gedit-printing.page:65
@@ -2340,14 +2331,14 @@ msgstr ""
 #. (itstool) path: item/p
 #: C/gedit-printing.page:68
 msgid ""
-"You can preview the file using <gui style=\"button\">Print Preview</gui> and"
-" once you are satisfied with the settings, click <gui "
-"style=\"button\">Print</gui> to send the file to printer."
+"You can preview the file using <gui style=\"button\">Print Preview</gui> and "
+"once you are satisfied with the settings, click <gui style=\"button\">Print</"
+"gui> to send the file to printer."
 msgstr ""
-"Podeu previsualitzar el fitxer utilitzant <gui "
-"style=\"button\">Visualització prèvia</gui> i una vegada estigueu satisfets "
-"amb la configuració, feu clic a <gui style=\"button\">Imprimir</gui> per "
-"enviar el fitxer a la impressora."
+"Podeu previsualitzar el fitxer utilitzant <gui style=\"button"
+"\">Visualització prèvia</gui> i una vegada estigueu satisfets amb la "
+"configuració, feu clic a <gui style=\"button\">Imprimir</gui> per enviar el "
+"fitxer a la impressora."
 
 #. (itstool) path: section/p
 #: C/gedit-printing.page:74
@@ -2355,15 +2346,15 @@ msgid ""
 "Additionally, from <gui style=\"tab\">Page Setup</gui> tab: you can choose "
 "<gui style=\"group\">Layout</gui> and <gui style=\"group\">Paper</gui> "
 "options. As these settings are available throughout <app>GNOME</app> "
-"programs, please consult <link href=\"help:gnome-"
-"help/printing#paper\">Layout and Paper options</link> help."
+"programs, please consult <link href=\"help:gnome-help/printing#paper"
+"\">Layout and Paper options</link> help."
 msgstr ""
 "Addicionalment, des de la pestanya <gui style=\"tab\">Configuració de la "
-"pàgina</gui>: podeu seleccionar les opcions de <gui "
-"style=\"group\">Disseny</gui> i <gui style=\"group\">paper</gui>. Si aquesta"
-" configuració està disponible en tots els programes, <app>GNOME</app>, si us"
-" plau, consulteu l'ajuda per a les <link href=\"help:gnome-"
-"help/printing#paper\">Opcions de disseny i de paper</link>."
+"pàgina</gui>: podeu seleccionar les opcions de <gui style=\"group\">Disseny</"
+"gui> i <gui style=\"group\">paper</gui>. Si aquesta configuració està "
+"disponible en tots els programes, <app>GNOME</app>, si us plau, consulteu "
+"l'ajuda per a les <link href=\"help:gnome-help/printing#paper\">Opcions de "
+"disseny i de paper</link>."
 
 #. (itstool) path: section/title
 #: C/gedit-printing.page:84
@@ -2373,11 +2364,11 @@ msgstr "Imprimeix diverses còpies i entre rangs especificats"
 #. (itstool) path: section/p
 #: C/gedit-printing.page:86
 msgid ""
-"You can set <gui style=\"group\">Range</gui> and <gui "
-"style=\"group\">Copies</gui> options to help you:"
+"You can set <gui style=\"group\">Range</gui> and <gui style=\"group"
+"\">Copies</gui> options to help you:"
 msgstr ""
-"Podeu establir opcions de <gui style=\"group\">Rang</gui> i <gui "
-"style=\"group\">Copies</gui> per ajudar-vos:"
+"Podeu establir opcions de <gui style=\"group\">Rang</gui> i <gui style="
+"\"group\">Copies</gui> per ajudar-vos:"
 
 #. (itstool) path: section/title
 #: C/gedit-printing.page:92
@@ -2387,8 +2378,8 @@ msgstr "Imprimir a un fitxer"
 #. (itstool) path: section/p
 #: C/gedit-printing.page:94
 msgid ""
-"You can also use <app>gedit</app> to print to a file. To print your document"
-" to file of a different format:"
+"You can also use <app>gedit</app> to print to a file. To print your document "
+"to file of a different format:"
 msgstr ""
 "També podeu utilitzar <app>gedit</app> per imprimir a un fitxer. Per "
 "imprimir el document a un format diferent:"
@@ -2396,13 +2387,12 @@ msgstr ""
 #. (itstool) path: item/p
 #: C/gedit-printing.page:99
 msgid ""
-"Select <guiseq><gui style=\"menu\">File</gui> <gui "
-"style=\"menuitem\">Print</gui> <gui style=\"menuitem\">Print to "
-"File</gui></guiseq>."
+"Select <guiseq><gui style=\"menu\">File</gui> <gui style=\"menuitem\">Print</"
+"gui> <gui style=\"menuitem\">Print to File</gui></guiseq>."
 msgstr ""
-"Seleccioneu <guiseq><gui style=\"menu\">Fitxer</gui> <gui "
-"style=\"menuitem\">Imprimir</gui> <gui style=\"menuitem\">Imprimir a un "
-"Fitxer</gui></guiseq>."
+"Seleccioneu <guiseq><gui style=\"menu\">Fitxer</gui> <gui style=\"menuitem"
+"\">Imprimir</gui> <gui style=\"menuitem\">Imprimir a un Fitxer</gui></"
+"guiseq>."
 
 #. (itstool) path: item/p
 #: C/gedit-printing.page:104
@@ -2431,8 +2421,8 @@ msgstr "Gràfic de vectors escalables (.svg)"
 #: C/gedit-printing.page:119
 msgid "To print the document to file, click <gui style=\"button\">Print</gui>."
 msgstr ""
-"Per imprimir el document a un fitxer, feu clic a <gui "
-"style=\"button\">Imprimeix</gui>."
+"Per imprimir el document a un fitxer, feu clic a <gui style=\"button"
+"\">Imprimeix</gui>."
 
 #. (itstool) path: info/desc
 #: C/gedit-printing-select.page:7
@@ -2447,22 +2437,22 @@ msgstr "Tan sols imprimir certes pàgines"
 #. (itstool) path: page/p
 #: C/gedit-printing-select.page:22
 msgid ""
-"You can selectively print only certain pages from the document. For example,"
-" if you enter the page numbers \"1,3,5-7,9\", then only pages 1, 3, 5, 6, 7 "
+"You can selectively print only certain pages from the document. For example, "
+"if you enter the page numbers \"1,3,5-7,9\", then only pages 1, 3, 5, 6, 7 "
 "and 9 will be printed. To print pages of your choice:"
 msgstr ""
-"Podeu imprimir selectivament només certes pàgines del document. Per exemple,"
-" si introduïu els números de pàgina \"1,3,5-7,9\", només s'imprimiran les "
+"Podeu imprimir selectivament només certes pàgines del document. Per exemple, "
+"si introduïu els números de pàgina \"1,3,5-7,9\", només s'imprimiran les "
 "pàgines 1, 3, 5, 6, 7 i 9. Per imprimir les pàgines que vulgueu:"
 
 #. (itstool) path: item/p
 #: C/gedit-printing-select.page:28
 msgid ""
-"Select <guiseq><gui style=\"menu\">File</gui> <gui "
-"style=\"menuitem\">Print…</gui></guiseq>."
+"Select <guiseq><gui style=\"menu\">File</gui> <gui style=\"menuitem\">Print…"
+"</gui></guiseq>."
 msgstr ""
-"Seleccioneu <guiseq><gui style=\"menu\">Fitxer</gui> <gui "
-"style=\"menuitem\">Imprimir…</gui></guiseq>."
+"Seleccioneu <guiseq><gui style=\"menu\">Fitxer</gui> <gui style=\"menuitem"
+"\">Imprimir…</gui></guiseq>."
 
 #. (itstool) path: item/p
 #: C/gedit-printing-select.page:32
@@ -2472,14 +2462,14 @@ msgid ""
 "section."
 msgstr ""
 "A la pestanya <gui style=\"tab\">General</gui> al diàleg d'impressió, trieu "
-"<gui style=\"radiobutton\">Pàgines</gui> des de la secció <gui "
-"style=\"group\">Rangs</gui>."
+"<gui style=\"radiobutton\">Pàgines</gui> des de la secció <gui style=\"group"
+"\">Rangs</gui>."
 
 #. (itstool) path: item/p
 #: C/gedit-printing-select.page:36
 msgid ""
-"Type the numbers of the pages you want to print from the document, separated"
-" by commas. Use a dash to specify a range of pages."
+"Type the numbers of the pages you want to print from the document, separated "
+"by commas. Use a dash to specify a range of pages."
 msgstr ""
 "Escriviu els números de les pàgines que voleu imprimir del document, "
 "separades per comes. Utilitzeu un guió per especificar un rang de pàgines."
@@ -2529,9 +2519,9 @@ msgid ""
 "your text, just click the <gui>Save</gui> icon in the <app>gedit</app> "
 "toolbar."
 msgstr ""
-"Una cop <app>gedit</app> s'ha engegat, podeu començar a escriure "
-"immediatament. Per desar el vostre text, feu clic a la icona "
-"<gui>Desa</gui> a la barra d'eines del <app>gedit</app>."
+"Un cop el <app>gedit</app> s'ha engegat, podeu començar a escriure "
+"immediatament. Per desar el vostre text, feu clic a la icona <gui>Desa</gui> "
+"a la barra d'eines del <app>gedit</app>."
 
 #. (itstool) path: page/p
 #: C/gedit-quickstart.page:34
@@ -2563,11 +2553,11 @@ msgstr "Reemplaça text"
 #: C/gedit-replace.page:42
 msgid ""
 "Editing text can be time consuming. To save time, <app>gedit</app> includes "
-"a <app>Replace</app> function that helps you to find and replace portions of"
-" text."
+"a <app>Replace</app> function that helps you to find and replace portions of "
+"text."
 msgstr ""
 "L'edició del text pot ser lenta. Per estalviar temps, <app>gedit</app> "
-"inclou la funció <app>Reemplaçar</app>que us ajuda a trobar i reemplaçar "
+"inclou la funció <app>Reemplaçar</app> que us ajuda a trobar i reemplaçar "
 "parts de text."
 
 #. (itstool) path: steps/title
@@ -2578,26 +2568,22 @@ msgstr "Reemplaça text a <app>gedit</app>"
 #. (itstool) path: item/p
 #: C/gedit-replace.page:49
 msgid ""
-"Open the <gui>Replace</gui> tool by clicking <guiseq><gui "
-"style=\"button\">Menu button</gui><gui style=\"menuitem\">Find and "
-"Replace…</gui></guiseq> or press "
-"<keyseq><key>Ctrl</key><key>H</key></keyseq>."
+"Open the <gui>Replace</gui> tool by clicking <guiseq><gui style=\"button"
+"\">Menu button</gui><gui style=\"menuitem\">Find and Replace…</gui></guiseq> "
+"or press <keyseq><key>Ctrl</key><key>H</key></keyseq>."
 msgstr ""
-"Obriu l'eina <gui>Reemplaça</gui> fent clic al <guiseq><gui "
-"style=\"button\">Bbotó menú</gui><gui style=\"menuitem\">Troba i "
-"reemplaça…</gui></guiseq> o premeu "
-"<keyseq><key>Ctrl</key><key>H</key></keyseq>."
+"Obriu l'eina <gui>Reemplaça</gui> fent clic al <guiseq><gui style=\"button"
+"\">Botó menú</gui><gui style=\"menuitem\">Cerca i reemplaça…</gui></guiseq> "
+"o premeu <keyseq><key>Ctrl</key><key>H</key></keyseq>."
 
 #. (itstool) path: item/p
 #: C/gedit-replace.page:55
-msgid ""
-"Enter the text that you wish to replace into the <gui>Find</gui> field."
-msgstr "Introduïu el text que vulgueu reemplaçar al camp <gui>Trobar</gui>."
+msgid "Enter the text that you wish to replace into the <gui>Find</gui> field."
+msgstr "Introduïu el text que vulgueu reemplaçar al camp <gui>Cerca</gui>."
 
 #. (itstool) path: item/p
 #: C/gedit-replace.page:59
-msgid ""
-"Enter the new, replacement text into the <gui>Replace with</gui> field."
+msgid "Enter the new, replacement text into the <gui>Replace with</gui> field."
 msgstr ""
 "Introduïu el nou text per reemplaçar al camp <gui>Reemplaçar amb</gui>."
 
@@ -2607,8 +2593,8 @@ msgid ""
 "Once you have entered the original and replacement text, you can add extra "
 "parameters to the search. You can also choose what you want to replace:"
 msgstr ""
-"Un cop hagueu introduït el text original i el de reemplaçament, podeu afegir"
-" paràmetres addicionals a la cerca. També podeu triar que voleu reemplaçar:"
+"Un cop hagueu introduït el text original i el de reemplaçament, podeu afegir "
+"paràmetres addicionals a la cerca. També podeu triar que voleu reemplaçar:"
 
 #. (itstool) path: item/p
 #: C/gedit-replace.page:68
@@ -2630,12 +2616,12 @@ msgstr ""
 #: C/gedit-replace.page:80
 msgid ""
 "Use the <gui>Replace All</gui> function with care. <gui>Replace All</gui> "
-"works on the entirety of your text file, and does not allow you to highlight"
-" portions of text where the replace function will be performed."
+"works on the entirety of your text file, and does not allow you to highlight "
+"portions of text where the replace function will be performed."
 msgstr ""
-"Utilitzeu la funció <gui>Reemplaça tot</gui> amb compte. <gui>Reemplaça "
-"tot</gui>actua sobre tot el fitxer, i no permet ressaltar les parts de text "
-"on es realitzarà la funció de substitució."
+"Utilitzeu la funció <gui>Reemplaça tot</gui> amb compte. <gui>Reemplaça tot</"
+"gui> actua sobre tot el fitxer, i no permet ressaltar les parts de text on es "
+"realitzarà la funció de substitució."
 
 #. (itstool) path: section/title
 #: C/gedit-replace.page:87
@@ -2672,10 +2658,10 @@ msgstr "Fer coincidir la paraula sencera"
 #. (itstool) path: item/p
 #: C/gedit-replace.page:100
 msgid ""
-"Use this option to search for a specific word without including fragments of"
-" other words. For example, if you searched for the word 'and' with this "
-"option selected, the word 'and' would be matched, but the words "
-"'s<em>and</em>' and 'comm<em>and</em>er' would not be matched."
+"Use this option to search for a specific word without including fragments of "
+"other words. For example, if you searched for the word 'and' with this "
+"option selected, the word 'and' would be matched, but the words 's<em>and</"
+"em>' and 'comm<em>and</em>er' would not be matched."
 msgstr ""
 "Utilitzeu aquesta opció per cercar una paraula específica sense incloure "
 "fragments d'altres paraules. Per exemple, si heu cercat la paraula 'poma' "
@@ -2694,8 +2680,8 @@ msgid ""
 "This command behaves identically to the Find Previous command. If you wish "
 "to step through search results from end to beginning, select this option."
 msgstr ""
-"Aquesta ordre es comporta de forma idèntica a l'ordre 'Cerca anterior'."
-" Si voleu saltar pels resultats de la cerca des del final al començament, "
+"Aquesta ordre es comporta de forma idèntica a l'ordre 'Cerca anterior'. Si "
+"voleu saltar pels resultats de la cerca des del final al començament, "
 "seleccioneu aquesta opció."
 
 #. (itstool) path: item/title
@@ -2708,18 +2694,18 @@ msgstr "Continua des de l'inici"
 msgid ""
 "With the <app>wrap around</app> option enabled, <app>gedit</app> will re-"
 "start the search/replace action at the top of the file after it has reached "
-"the bottom of the file. This ensures that your search/replace action is made"
-" across your entire file."
+"the bottom of the file. This ensures that your search/replace action is made "
+"across your entire file."
 msgstr ""
 "Amb l'opció <app>continua des de l'inici</app> activada, <app>gedit</app> "
-"reiniciarà l'acció de cerca/reemplaçament al inici del fitxer després "
+"reiniciarà l'acció de cerca/reemplaçament a l'inici del fitxer després "
 "d'haver arribat al final. D'aquesta manera, es garanteix que l'acció de "
-"cerca/reemplaçament esfarà a tot el fitxer."
+"cerca/reemplaçament es farà a tot el fitxer."
 
 #. (itstool) path: section/title
 #: C/gedit-replace.page:124
 msgid "Using escape sequences"
-msgstr "Us de seqüències d'escapament"
+msgstr "Ús de seqüències d'escapament"
 
 #. (itstool) path: section/p
 #: C/gedit-replace.page:126
@@ -2767,15 +2753,15 @@ msgid ""
 "of the escape sequences in the text, you need to escape the backslash with "
 "an extra backslash. For example, to search for <input>\\</input>, you need "
 "to enter <input>\\\\</input> into the search or replace field. You can "
-"search for escape sequences in the same way: to search for or replace with a"
-" <input>\\n</input>, use the <input>\\\\n</input> term."
+"search for escape sequences in the same way: to search for or replace with a "
+"<input>\\n</input>, use the <input>\\\\n</input> term."
 msgstr ""
 "Si esteu cercant una <output>\\</output> (barra invertida) o una seqüència "
 "d'escapament al text, heu de posar la barra inversa amb una barra inversa "
-"extra. Per exemple, per cercar <input>\\</input>, heu d'introduir "
-"<input>\\\\</input> al camp de cerca o reemplaçament. Podeu cercar "
-"seqüències d'escapament de la mateixa manera: per cercar o reemplaçar un "
-"salt de línia <input>\\n</input>, utilitzeu el terme <input>\\\\n</input>."
+"extra. Per exemple, per cercar <input>\\</input>, heu d'introduir <input>\\"
+"\\</input> al camp de cerca o reemplaçament. Podeu cercar seqüències "
+"d'escapament de la mateixa manera: per cercar o reemplaçar un salt de línia "
+"<input>\\n</input>, utilitzeu el terme <input>\\\\n</input>."
 
 #. (itstool) path: info/desc
 #: C/gedit-save-file.page:8
@@ -2790,23 +2776,23 @@ msgstr "Desa un fitxer"
 #. (itstool) path: page/p
 #: C/gedit-save-file.page:30
 msgid ""
-"To save a file in <app>gedit</app>, click on the <gui "
-"style=\"button\">Save</gui> button on the right side of the toolbar or just "
-"press <keyseq><key>Ctrl</key><key>S</key></keyseq>."
+"To save a file in <app>gedit</app>, click on the <gui style=\"button\">Save</"
+"gui> button on the right side of the toolbar or just press "
+"<keyseq><key>Ctrl</key><key>S</key></keyseq>."
 msgstr ""
-"Per desar un fitxer amb <app>gedit</app>, feu clic al botó <gui "
-"style=\"button\">Desa</gui> a la dreta de la barra d'eines o just premeu "
+"Per desar un fitxer amb <app>gedit</app>, feu clic al botó <gui style="
+"\"button\">Desa</gui> a la dreta de la barra d'eines o just premeu "
 "<keyseq><key>Ctrl</key><key>S</key></keyseq>."
 
 #. (itstool) path: page/p
 #: C/gedit-save-file.page:32
 msgid ""
 "If you are saving a new file, a dialog will appear, and you can select a "
-"name for the file, as well as the directory where you would like the file to"
-" be saved."
+"name for the file, as well as the directory where you would like the file to "
+"be saved."
 msgstr ""
-"Si esteu desant un fitxer nou, apareixerà un diàleg, i podreu seleccionar un"
-" nom pel fitxer, així com la carpeta on voleu desar-lo."
+"Si esteu desant un fitxer nou, apareixerà un diàleg, i podreu seleccionar un "
+"nom pel fitxer, així com la carpeta on voleu desar-lo."
 
 #. (itstool) path: info/desc
 #: C/gedit-search.page:8
@@ -2835,21 +2821,20 @@ msgstr "Cerca de text"
 #. (itstool) path: item/p
 #: C/gedit-search.page:38
 msgid ""
-"Open the <gui>search window</gui> by clicking <guiseq><gui "
-"style=\"menu\">Menu Button</gui> <gui style=\"menuitem\">Find…</gui> "
-"</guiseq> or pressing <keyseq><key>Ctrl</key><key>F</key></keyseq>. This "
-"will move your cursor to the start of the <gui>search window</gui>."
+"Open the <gui>search window</gui> by clicking <guiseq><gui style=\"menu"
+"\">Menu Button</gui> <gui style=\"menuitem\">Find…</gui> </guiseq> or "
+"pressing <keyseq><key>Ctrl</key><key>F</key></keyseq>. This will move your "
+"cursor to the start of the <gui>search window</gui>."
 msgstr ""
-"Obriu la <gui>finestra de cerca</gui> fent clic al <guiseq><gui "
-"style=\"menu\">botó de menú</gui> <gui style=\"menuitem\">Cerca…</gui> "
-"</guiseq> o prement <keyseq><key>Ctrl</key><key>F</key></keyseq>. Això "
-"desplaçarà el cursor a l'inici de la <gui>finestra de cerca</gui>."
+"Obriu la <gui>finestra de cerca</gui> fent clic al <guiseq><gui style=\"menu"
+"\">botó de menú</gui> <gui style=\"menuitem\">Cerca…</gui> </guiseq> o "
+"prement <keyseq><key>Ctrl</key><key>F</key></keyseq>. Això desplaçarà el "
+"cursor a l'inici de la <gui>finestra de cerca</gui>."
 
 #. (itstool) path: item/p
 #: C/gedit-search.page:45
 msgid "Type the text you wish to search for in the <gui>search window</gui>."
-msgstr ""
-"Escriviu el text que vulgueu cercar a la <gui>finestra de cerca</gui>."
+msgstr "Escriviu el text que vulgueu cercar a la <gui>finestra de cerca</gui>."
 
 #. (itstool) path: item/p
 #: C/gedit-search.page:49
@@ -2870,39 +2855,35 @@ msgstr ""
 #. (itstool) path: item/p
 #: C/gedit-search.page:57
 msgid ""
-"Click on the <gui style=\"button\">up</gui> or <gui "
-"style=\"button\">down</gui> facing arrows next to the <gui>search "
-"window</gui>."
+"Click on the <gui style=\"button\">up</gui> or <gui style=\"button\">down</"
+"gui> facing arrows next to the <gui>search window</gui>."
 msgstr ""
-"Feu clic a la fletxa <gui style=\"button\">amunt</gui> o <gui "
-"style=\"button\">avall</gui> que hi ha al costat de la <gui> finestra de "
-"cerca</gui>."
+"Feu clic a la fletxa <gui style=\"button\">amunt</gui> o <gui style=\"button"
+"\">avall</gui> que hi ha al costat de la <gui> finestra de cerca</gui>."
 
 #. (itstool) path: item/p
 #: C/gedit-search.page:62
 msgid ""
-"Press the <key>up arrow</key> or <key>down arrow</key> keys on your "
-"keyboard."
+"Press the <key>up arrow</key> or <key>down arrow</key> keys on your keyboard."
 msgstr ""
-"Premeu la tecla <key>fletxa amunt</key> o <key>fletxa avall</key> del "
-"teclat."
+"Premeu la tecla <key>fletxa amunt</key> o <key>fletxa avall</key> del teclat."
 
 #. (itstool) path: item/p
 #: C/gedit-search.page:66
 msgid ""
-"Press <keyseq><key>Ctrl</key><key>G</key></keyseq> or "
-"<keyseq><key>Ctrl</key><key>Shift</key><key>G</key></keyseq>."
+"Press <keyseq><key>Ctrl</key><key>G</key></keyseq> or <keyseq><key>Ctrl</"
+"key><key>Shift</key><key>G</key></keyseq>."
 msgstr ""
-"Premeu <keyseq><key>Ctrl</key><key>G</key></keyseq> o "
-"<keyseq><key>Ctrl</key><key>Shift</key><key>G</key></keyseq>."
+"Premeu <keyseq><key>Ctrl</key><key>G</key></keyseq> o <keyseq><key>Ctrl</"
+"key><key>Shift</key><key>G</key></keyseq>."
 
 #. (itstool) path: page/p
 #: C/gedit-search.page:71
 msgid ""
 "To close the <gui>search window</gui>, press either <key>Esc</key> or "
-"<key>Enter</key>. Pressing <key>Esc</key> will return the cursor to where it"
-" was before you began your search. Pressing <key>Enter</key> will return the"
-" cursor to the current position in the search results."
+"<key>Enter</key>. Pressing <key>Esc</key> will return the cursor to where it "
+"was before you began your search. Pressing <key>Enter</key> will return the "
+"cursor to the current position in the search results."
 msgstr ""
 "Per tancar la <gui>finestra de cerca</gui>, premeu o bé <key>Esc</key> o bé "
 "<key>Retorn</key>. Si premeu <key>Esc</key> el cursor tornarà al lloc on era "
@@ -2929,13 +2910,13 @@ msgstr ""
 #: C/gedit-search.page:84
 msgid ""
 "For more search options, click on the <gui style=\"button\">Magnifying "
-"Glass</gui> icon in the search window, or right-click anywhere in the search"
-" window. You can select one or more of the following search options:"
+"Glass</gui> icon in the search window, or right-click anywhere in the search "
+"window. You can select one or more of the following search options:"
 msgstr ""
-"Si voleu veure més opcions de cerca, feu clic a la icona de la <gui "
-"style=\"button\">lupa</gui> a la finestra de cerca, o feu clic amb el botó "
-"dret a qualsevol punt de la finestra de cerca. Podeu seleccionar una o més "
-"de les opcions de cerca següents:"
+"Si voleu veure més opcions de cerca, feu clic a la icona de la <gui style="
+"\"button\">lupa</gui> a la finestra de cerca, o feu clic amb el botó dret a "
+"qualsevol punt de la finestra de cerca. Podeu seleccionar una o més de les "
+"opcions de cerca següents:"
 
 #. (itstool) path: item/p
 #: C/gedit-search.page:90
@@ -2946,8 +2927,7 @@ msgstr ""
 
 #. (itstool) path: item/p
 #: C/gedit-search.page:93
-msgid ""
-"Select <gui>Match Entire Word Only</gui> to search only complete words."
+msgid "Select <gui>Match Entire Word Only</gui> to search only complete words."
 msgstr ""
 "Seleccioneu <gui>Fes coincidir la paraula sencera</gui> per cercar només "
 "paraules senceres."
@@ -2958,21 +2938,21 @@ msgid ""
 "Select <gui>Wrap Around</gui> to search text from top to bottom and cycle "
 "back again."
 msgstr ""
-"Seleccioneu <gui>Continua des de l'inici</gui> per cercar el text des del principi al final "
-"i tornar a començar desprès."
+"Seleccioneu <gui>Continua des de l'inici</gui> per cercar el text des del "
+"principi al final i tornar a començar després."
 
 #. (itstool) path: item/p
 #: C/gedit-search.page:103
 msgid ""
 "The text that you've searched for will remain highlighted by gedit, even "
 "after you have completed your search. To remove the highlight, click <gui "
-"style=\"menuitem\">Clear Highlight</gui>, or press "
-"<keyseq><key>Ctrl</key><key>Shift</key><key>K</key></keyseq>."
+"style=\"menuitem\">Clear Highlight</gui>, or press <keyseq><key>Ctrl</"
+"key><key>Shift</key><key>K</key></keyseq>."
 msgstr ""
 "gedit mantindrà destacat el text que heu cercat, fins i tot un cop "
-"completada la cerca. Per eliminar els estacats, feu clic a <gui "
-"style=\"menuitem\">Neteja el ressaltat</gui>, o premeu "
-"<keyseq><key>Ctrl</key><key>Shift</key><key>K</key></keyseq>."
+"completada la cerca. Per eliminar els estacats, feu clic a <gui style="
+"\"menuitem\">Neteja el ressaltat</gui>, o premeu <keyseq><key>Ctrl</"
+"key><key>Shift</key><key>K</key></keyseq>."
 
 #. (itstool) path: info/desc
 #: C/gedit-shortcut-keys.page:9
@@ -3025,8 +3005,8 @@ msgid ""
 "shortcut keys."
 msgstr ""
 "Feu servir les <gui>dreceres de teclat</gui> per realitzar les tasques "
-"habituals més de pressa que amb el ratolí i els menús. A les taules següents"
-" hi figuren totes les dreceres de teclat del <app>gedit</app>."
+"habituals més de pressa que amb el ratolí i els menús. A les taules següents "
+"hi figuren totes les dreceres de teclat del <app>gedit</app>."
 
 #. (itstool) path: table/title
 #: C/gedit-shortcut-keys.page:54
@@ -3137,10 +3117,11 @@ msgstr "Grup de pestanyes previ"
 #. (itstool) path: td/p
 #: C/gedit-shortcut-keys.page:100
 msgid ""
-"<keyseq><key>Shift</key><key>Ctrl</key><key>Alt</key><key>Page "
-"up</key></keyseq>"
+"<keyseq><key>Shift</key><key>Ctrl</key><key>Alt</key><key>Page up</key></"
+"keyseq>"
 msgstr ""
-"<keyseq><key>Shift</key><key>Ctrl</key><key>Alt</key><key>RePàg</key></keyseq>"
+"<keyseq><key>Shift</key><key>Ctrl</key><key>Alt</key><key>RePàg</key></"
+"keyseq>"
 
 #. (itstool) path: td/p
 #: C/gedit-shortcut-keys.page:103
@@ -3150,10 +3131,11 @@ msgstr "Següent grup de pestanyes"
 #. (itstool) path: td/p
 #: C/gedit-shortcut-keys.page:104
 msgid ""
-"<keyseq><key>Shift</key><key>Ctrl</key><key>Alt</key><key>Page "
-"down</key></keyseq>"
+"<keyseq><key>Shift</key><key>Ctrl</key><key>Alt</key><key>Page down</key></"
+"keyseq>"
 msgstr ""
-"<keyseq><key>Shift</key><key>Ctrl</key><key>Alt</key><key>AvPàg</key></keyseq>"
+"<keyseq><key>Shift</key><key>Ctrl</key><key>Alt</key><key>AvPàg</key></"
+"keyseq>"
 
 #. (itstool) path: table/title
 #: C/gedit-shortcut-keys.page:110
@@ -3343,7 +3325,7 @@ msgstr "<keyseq><key>Ctrl</key><key>Shift</key> <key>Z</key></keyseq>"
 #. (itstool) path: td/p
 #: C/gedit-shortcut-keys.page:206
 msgid "Cut the selected text or region and place it on the clipboard"
-msgstr "Talleu el text o la àrea seleccionada i poseu-la en el porta-retalls"
+msgstr "Talleu el text o l'àrea seleccionada i poseu-la en el porta-retalls"
 
 #. (itstool) path: td/p
 #: C/gedit-shortcut-keys.page:208
@@ -3624,7 +3606,7 @@ msgstr "Baptiste Mille-Mathias"
 #. (itstool) path: section/title
 #: C/gedit-spellcheck.page:28 C/gedit-spellcheck.page:49
 msgid "Spell-check your document"
-msgstr "Revisa l'ortografia del document"
+msgstr "Comprova l'ortografia del document"
 
 #. (itstool) path: section/title
 #: C/gedit-spellcheck.page:30
@@ -3637,16 +3619,17 @@ msgid ""
 "The Spell-check feature is provided as a plugin in <app>gedit</app> which "
 "can be enabled as required. To enable the plugin:"
 msgstr ""
-"La funcionalitat de comprovació de l'ortografia es subministra com un connector "
-"del <app>gedit</app> que es pot activar quan es necessiti. Per activar el "
-"connector:"
+"La funcionalitat de comprovació de l'ortografia es subministra com un "
+"connector del <app>gedit</app> que es pot activar quan es necessiti. Per "
+"activar el connector:"
 
 #. (itstool) path: item/p
 #: C/gedit-spellcheck.page:41
-msgid "Select <gui style=\"menuitem\">Spell Checker</gui> to enable the plugin."
+msgid ""
+"Select <gui style=\"menuitem\">Spell Checker</gui> to enable the plugin."
 msgstr ""
-"Seleccioneu <gui style=\"menuitem\">Revisa l'ortografia</gui> per activar el"
-" connector."
+"Seleccioneu <gui style=\"menuitem\">Comprovador d'ortografia</gui> per activar el "
+"connector."
 
 #. (itstool) path: section/p
 #: C/gedit-spellcheck.page:51
@@ -3656,11 +3639,11 @@ msgstr "Per comprovar si hi ha paraules mal escrites al vostre document:"
 #. (itstool) path: item/p
 #: C/gedit-spellcheck.page:55
 msgid ""
-"Select <guiseq><gui style=\"menu\">Tools</gui> <gui style=\"menuitem\">Check"
-" Spelling</gui></guiseq>."
+"Select <guiseq><gui style=\"menu\">Tools</gui> <gui style=\"menuitem\">Check "
+"Spelling</gui></guiseq>."
 msgstr ""
-"Seleccioneu <guiseq><gui style=\"menu\">Eines</gui> <gui "
-"style=\"menuitem\">Comprova l'ortografia</gui></guiseq>."
+"Seleccioneu <guiseq><gui style=\"menu\">Eines</gui> <gui style=\"menuitem"
+"\">Comprova l'ortografia</gui></guiseq>."
 
 #. (itstool) path: note/p
 #: C/gedit-spellcheck.page:61
@@ -3669,10 +3652,10 @@ msgid ""
 "document as you type, select <guiseq><gui style=\"menu\">Tools</gui><gui "
 "style=\"menuitem\">Highlight Misspelled Words</gui></guiseq>."
 msgstr ""
-"Per fer que el <app>gedit</app> ressalti automàticament els errors ortogràfics "
-"al document mentre escriviu, seleccioneu <guiseq><gui "
-"style=\"menu\">Eines</gui><gui style=\"menuitem\">Ressalta les paraules mal escrites"
-"</gui></guiseq>."
+"Per fer que el <app>gedit</app> ressalti automàticament els errors "
+"ortogràfics al document mentre escriviu, seleccioneu <guiseq><gui style="
+"\"menu\">Eines</gui><gui style=\"menuitem\">Ressalta les paraules mal "
+"escrites</gui></guiseq>."
 
 #. (itstool) path: section/title
 #: C/gedit-spellcheck.page:68
@@ -3689,25 +3672,24 @@ msgid ""
 msgstr ""
 "Podeu triar la forma de substitució correcta per als errors ortogràfics des "
 "del diàleg \"Comprova l’ortografia\". L'error ortogràfic que marca el "
-"corrector es mostra en negreta al costat d'<gui>Error ortogràfic</gui>. "
+"corrector es mostra en negreta al costat de <gui>Paraula mal escrita</gui>. "
 "Podeu triar entre les següents accions correctives:"
 
 #. (itstool) path: item/p
 #: C/gedit-spellcheck.page:77
 msgid ""
 "<gui style=\"input\">Change to:</gui> allows you to input a word and use "
-"<gui style=\"button\">Check Word</gui> to check the validity of the "
-"spelling."
+"<gui style=\"button\">Check Word</gui> to check the validity of the spelling."
 msgstr ""
 "<gui style=\"input\">Canviar a:</gui> permet que introduïu una paraula i "
-"utilitzeu<gui style=\"button\">Validar paraula</gui> per comprovar la seva "
+"utilitzeu <gui style=\"button\">Validar paraula</gui> per comprovar la seva "
 "correcció ortogràfica."
 
 #. (itstool) path: item/p
 #: C/gedit-spellcheck.page:82
 msgid ""
-"<gui style=\"menu\">Suggestions:</gui> lists the available substitutions for"
-" the word."
+"<gui style=\"menu\">Suggestions:</gui> lists the available substitutions for "
+"the word."
 msgstr ""
 "<gui style=\"menu\">Suggeriments:</gui> llista els possibles substituts de "
 "la paraula."
@@ -3718,7 +3700,7 @@ msgid ""
 "<gui style=\"button\">Ignore</gui> allows you to bypass spell check for "
 "<em>a</em> instance of current word."
 msgstr ""
-"<gui style=\"button\">Ignorar</gui> permet saltar el control ortogràfic per "
+"<gui style=\"button\">Ignora</gui> permet saltar el control ortogràfic per "
 "<em>una</em> instància de la paraula actual."
 
 #. (itstool) path: item/p
@@ -3734,21 +3716,21 @@ msgstr ""
 #: C/gedit-spellcheck.page:94
 msgid ""
 "<gui style=\"button\">Change</gui> substitutes the misspelt or unrecognized "
-"word with <em>a</em> chosen substitute from the <gui "
-"style=\"menuitem\">Suggestions:</gui> list."
+"word with <em>a</em> chosen substitute from the <gui style=\"menuitem"
+"\">Suggestions:</gui> list."
 msgstr ""
 "<gui style=\"button\">Canvia</gui> substitueix l'errada ortogràfica o la "
-"paraula desconeguda amb <em>una</em> triada de la llista de <gui "
-"style=\"menuitem\">Suggeriments:</gui>."
+"paraula desconeguda amb <em>una</em> triada de la llista de <gui style="
+"\"menuitem\">Suggeriments:</gui>."
 
 #. (itstool) path: item/p
 #: C/gedit-spellcheck.page:99
 msgid ""
 "<gui style=\"button\">Change all</gui> substitutes <em>all</em> misspelt or "
-"unrecognized words with the chosen substitute from the <gui "
-"style=\"menuitem\">Suggestions:</gui> list."
+"unrecognized words with the chosen substitute from the <gui style=\"menuitem"
+"\">Suggestions:</gui> list."
 msgstr ""
-"<gui style=\"button\">Canvia totes</gui> substitueix <em>totes</em> les "
+"<gui style=\"button\">Canvia-ho tot</gui> substitueix <em>totes</em> les "
 "errades ortogràfiques o les paraules desconegudes amb la paraula substituta "
 "triada de la llista de <gui style=\"menuitem\">Suggeriments:</gui>."
 
@@ -3757,13 +3739,13 @@ msgstr ""
 msgid ""
 "<gui style=\"button\">Add word</gui> allows you to add the current word to "
 "the <app>gedit</app> <gui>User dictionary</gui>. Adding custom words to the "
-"<gui>User dictionary</gui> will allow <app>gedit</app> to recognize the word"
-" in documents and thus will not be highlighted as a misspelt word."
+"<gui>User dictionary</gui> will allow <app>gedit</app> to recognize the word "
+"in documents and thus will not be highlighted as a misspelt word."
 msgstr ""
-"<gui style=\"button\">Afegir paraula</gui> permet afegir la paraula a "
+"<gui style=\"button\">Afegeix paraula</gui> permet afegir la paraula a "
 "<app>gedit</app> <gui>Diccionari de l'usuari</gui>. Afegir paraules pròpies "
-"al <gui>Diccionari de l'usuari</gui> permet al <app>gedit</app> reconèixer la"
-" paraula als documents i no destacar-la com errada."
+"al <gui>Diccionari de l'usuari</gui> permet al <app>gedit</app> reconèixer "
+"la paraula als documents i no destacar-la com errada."
 
 #. (itstool) path: section/title
 #: C/gedit-spellcheck.page:115
@@ -3775,13 +3757,13 @@ msgstr "Definir l'idioma que s'utilitzarà en la correcció ortogràfica"
 msgid ""
 "By default, <app>gedit</app> will use your current language to spell check "
 "your document. If you need to use another language, choose <guiseq><gui "
-"style=\"menu\">Tools</gui><gui style=\"menuitem\">Set "
-"Language…</gui></guiseq>, then choose the language you want to use."
+"style=\"menu\">Tools</gui><gui style=\"menuitem\">Set Language…</gui></"
+"guiseq>, then choose the language you want to use."
 msgstr ""
 "Per defecte, el <app>gedit</app> utilitzarà el vostre idioma per a la "
 "correcció del document. Si necessiteu un altre idioma, seleccioneu "
-"<guiseq><gui style=\"menu\">Eines</gui><gui style=\"menuitem\">Especifiqueu l'idioma"
-"…</gui></guiseq>, aleshores trieu l'idioma que vulgueu utilitzar."
+"<guiseq><gui style=\"menu\">Eines</gui><gui style=\"menuitem\">Especifiqueu "
+"l'idioma…</gui></guiseq>, aleshores trieu l'idioma que vulgueu utilitzar."
 
 #. (itstool) path: section/title
 #: C/gedit-spellcheck.page:123
@@ -3791,18 +3773,16 @@ msgstr "Diccionaris"
 #. (itstool) path: section/p
 #: C/gedit-spellcheck.page:125
 msgid ""
-"<app>gedit</app> uses <link "
-"href=\"http://www.abisource.com/projects/enchant/\">Enchant</link>, a small "
-"system utility, for spell checking. Enchant can use several different "
-"dictionaries to check your spelling. Two such dictionary back-ends are "
-"<em>Hunspell</em> and <em>Aspell</em>."
+"<app>gedit</app> uses <link href=\"http://www.abisource.com/projects/enchant/"
+"\">Enchant</link>, a small system utility, for spell checking. Enchant can "
+"use several different dictionaries to check your spelling. Two such "
+"dictionary back-ends are <em>Hunspell</em> and <em>Aspell</em>."
 msgstr ""
-"<app>gedit</app> utilitza <link "
-"href=\"http://www.abisource.com/projects/enchant/\">Enchant</link>, una "
-"petita utilitat del sistema, per corregir ortogràficament. Enchant pot "
-"utilitzar diferents diccionaris per fer les correccions ortogràfiques. Hi ha"
-" dos diccionaris en segon pla d'execució: <em>Hunspell</em> i "
-"<em>Aspell</em>."
+"<app>gedit</app> utilitza <link href=\"http://www.abisource.com/projects/"
+"enchant/\">Enchant</link>, una petita utilitat del sistema, per corregir "
+"ortogràficament. Enchant pot utilitzar diferents diccionaris per fer les "
+"correccions ortogràfiques. Hi ha dos diccionaris en segon pla d'execució: "
+"<em>Hunspell</em> i <em>Aspell</em>."
 
 #. (itstool) path: section/p
 #: C/gedit-spellcheck.page:131
@@ -3812,8 +3792,8 @@ msgid ""
 "dictionary back-end that you want."
 msgstr ""
 "Si l'idioma que voleu utilitzar no està disponible al <app>gedit</app>, "
-"utilitzeu l’instal·lador de programari o el gestor de paquets de l’ordinador"
-" per instal·lar el diccionari que vulgueu."
+"utilitzeu l’instal·lador de programari o el gestor de paquets de l’ordinador "
+"per instal·lar el diccionari que vulgueu."
 
 #. (itstool) path: info/desc
 #: C/gedit-syntax-highlighting.page:7
@@ -3838,32 +3818,31 @@ msgid ""
 "syntax being used when you open a file, it will automatically highlight the "
 "text."
 msgstr ""
-"El <app>gedit</app> proporciona el ressaltat de la sintaxi per a un ampli rang "
-"de llenguatges de marques, llenguatges de programació i científics. Si "
-"el <app>gedit</app> reconeix la sintaxi que s’utilitza en obrir un fitxer, el "
-"text es ressaltarà automàticament."
+"El <app>gedit</app> proporciona el ressaltat de la sintaxi per a un ampli "
+"rang de llenguatges de marques, llenguatges de programació i científics. Si "
+"el <app>gedit</app> reconeix la sintaxi que s’utilitza en obrir un fitxer, "
+"el text es ressaltarà automàticament."
 
 #. (itstool) path: section/p
 #: C/gedit-syntax-highlighting.page:29
 msgid ""
 "If your syntax or language is not highlighted upon startup, you can select "
-"the appropriate syntax or language by clicking <guiseq><gui "
-"style=\"menu\">View</gui> <gui style=\"menuitem\">Highlight "
-"Mode</gui></guiseq>, and then choosing the desired syntax. Alternately, you "
-"can select the syntax name from a list at the bottom of the <app>gedit</app>"
-" window."
+"the appropriate syntax or language by clicking <guiseq><gui style=\"menu"
+"\">View</gui> <gui style=\"menuitem\">Highlight Mode</gui></guiseq>, and "
+"then choosing the desired syntax. Alternately, you can select the syntax "
+"name from a list at the bottom of the <app>gedit</app> window."
 msgstr ""
 "Si la vostra sintaxi o llenguatge no es ressalta d'entrada, podeu "
-"seleccionar la sintaxi o llenguatge adequat fent clic a <guiseq><gui "
-"style=\"menu\">Vista</gui> <gui style=\"menuitem\">Mode "
-"ressaltat</gui></guiseq>, i aleshores triar la sintaxi adequada. "
-"Opcionalment, podeu seleccionar el nom de la sintaxi d'una llista a la part "
-"inferior de la finestra del <app>gedit</app>."
+"seleccionar la sintaxi o llenguatge adequat fent clic a <guiseq><gui style="
+"\"menu\">Vista</gui> <gui style=\"menuitem\">Mode de ressaltat</gui></guiseq>, "
+"i aleshores triar la sintaxi adequada. Opcionalment, podeu seleccionar el "
+"nom de la sintaxi d'una llista a la part inferior de la finestra del "
+"<app>gedit</app>."
 
 #. (itstool) path: info/desc
 #: C/gedit-tab-groups.page:11
 msgid "Group similar tabs together."
-msgstr "Agrupeu les pestanyes similars"
+msgstr "Agrupeu les pestanyes similars."
 
 #. (itstool) path: page/title
 #: C/gedit-tab-groups.page:23
@@ -3874,17 +3853,17 @@ msgstr "Organitzeu els fitxers en pestanyes agrupades"
 #: C/gedit-tab-groups.page:25
 msgid ""
 "If you are working with multiple tabs in <app>gedit</app> you can group "
-"them, making it easier to keep your opened files organized. Adding a new tab"
-" group will divide the <app>gedit</app> window in two panes, open a new "
+"them, making it easier to keep your opened files organized. Adding a new tab "
+"group will divide the <app>gedit</app> window in two panes, open a new "
 "\"Untitled Document\" in the new pane, and make it active. You can open "
 "files into that tab group and move tabs from one tab group to another."
 msgstr ""
-"Si treballeu amb moltes pestanyes al <app>gedit</app> les podeu agrupar, fent"
-" més fàcil mantenir els fitxers oberts organitzats. Afegir una nova pestanya"
-" de grup fa que la finestra del <app>gedit</app> es divideixi en dues parts, "
-"obriu un \"Document sense títol\" en un nou panell, i activeu-lo. Podeu "
-"obrir fitxers en aquest grup de pestanyes i moure pestanyes d’un grup de "
-"pestanyes a un altre."
+"Si treballeu amb moltes pestanyes al <app>gedit</app> les podeu agrupar, "
+"fent més fàcil mantenir els fitxers oberts organitzats. Afegir una nova "
+"pestanya de grup fa que la finestra del <app>gedit</app> es divideixi en "
+"dues parts, obriu un \"Document sense títol\" en un nou panell, i activeu-"
+"lo. Podeu obrir fitxers en aquest grup de pestanyes i moure pestanyes d’un "
+"grup de pestanyes a un altre."
 
 #. (itstool) path: section/title
 #: C/gedit-tab-groups.page:32
@@ -3902,16 +3881,16 @@ msgid ""
 "Go to <guiseq><gui>Documents</gui><gui>New Tab Group</gui></guiseq> in the "
 "main menu."
 msgstr ""
-"Aneu a <guiseq><gui>Documents</gui><gui>Grup de pestanyes nou</gui></guiseq>"
-" al menú principal"
+"Aneu a <guiseq><gui>Documents</gui><gui>Grup de pestanyes nou</gui></guiseq> "
+"al menú principal"
 
 #. (itstool) path: item/p
 #: C/gedit-tab-groups.page:42
 msgid ""
 "Use the <keyseq><key>Ctrl</key><key>Alt</key><key>N</key></keyseq> shortcut."
 msgstr ""
-"Utilitzar la drecera "
-"<keyseq><key>Ctrl</key><key>Alt</key><key>N</key></keyseq>."
+"Utilitzar la drecera <keyseq><key>Ctrl</key><key>Alt</key><key>N</key></"
+"keyseq>."
 
 #. (itstool) path: section/p
 #: C/gedit-tab-groups.page:47
@@ -3922,8 +3901,8 @@ msgid ""
 "<app>gedit</app> window between panes according to your needs."
 msgstr ""
 "Aquesta acció divideix la finestra del <app>gedit</app> en dos panells, i el "
-"panell amb el nou grup de pestanyes es posicionarà a la dreta de la pestanya"
-" activa. Podeu desplaçar la barra vertical cap a la dreta o l’esquerra "
+"panell amb el nou grup de pestanyes es posicionarà a la dreta de la pestanya "
+"activa. Podeu desplaçar la barra vertical cap a la dreta o l’esquerra "
 "assignant més o menys espai als panells de la finestra del <app>gedit</app> "
 "d'acord amb les vostres necessitats."
 
@@ -3961,17 +3940,17 @@ msgid ""
 "Go to <guiseq><gui>Documents</gui><gui>Next Tab Group</gui></guiseq> in the "
 "main menu."
 msgstr ""
-"Vés a <guiseq><gui>Documents</gui><gui>Grup de pestanyes "
-"següent</gui></guiseq> al menú principal."
+"Vés a <guiseq><gui>Documents</gui><gui>Grup de pestanyes següent</gui></"
+"guiseq> al menú principal."
 
 #. (itstool) path: item/p
 #: C/gedit-tab-groups.page:72
 msgid ""
-"Use the <keyseq><key>Shift</key><key>Ctrl</key><key>Alt</key><key>Page "
-"down</key></keyseq> shortcut."
+"Use the <keyseq><key>Shift</key><key>Ctrl</key><key>Alt</key><key>Page down</"
+"key></keyseq> shortcut."
 msgstr ""
-"Utilitza la drecera "
-"<keyseq><key>Shift</key><key>Ctrl</key><key>Alt</key><key>AvPàg</key></keyseq>."
+"Utilitza la drecera <keyseq><key>Shift</key><key>Ctrl</key><key>Alt</"
+"key><key>AvPàg</key></keyseq>."
 
 #. (itstool) path: section/p
 #: C/gedit-tab-groups.page:77
@@ -3984,17 +3963,17 @@ msgid ""
 "Go to <guiseq><gui>Documents</gui><gui>Previous Tab Group</gui></guiseq> in "
 "the main menu."
 msgstr ""
-"Vés a <guiseq><gui>Documents</gui><gui>Grup de pestanyes "
-"previ</gui></guiseq> al menú principal."
+"Vés a <guiseq><gui>Documents</gui><gui>Grup de pestanyes previ</gui></"
+"guiseq> al menú principal."
 
 #. (itstool) path: item/p
 #: C/gedit-tab-groups.page:85
 msgid ""
-"Use the <keyseq><key>Shift</key><key>Ctrl</key><key>Alt</key><key>Page "
-"up</key></keyseq> shortcut."
+"Use the <keyseq><key>Shift</key><key>Ctrl</key><key>Alt</key><key>Page up</"
+"key></keyseq> shortcut."
 msgstr ""
-"Utilitza la drecera "
-"<keyseq><key>Shift</key><key>Ctrl</key><key>Alt</key><key>RePàg</key></keyseq>."
+"Utilitza la drecera <keyseq><key>Shift</key><key>Ctrl</key><key>Alt</"
+"key><key>RePàg</key></keyseq>."
 
 #. (itstool) path: section/title
 #: C/gedit-tab-groups.page:93
@@ -4041,7 +4020,7 @@ msgstr ""
 #. (itstool) path: info/desc
 #: C/gedit-tabs-moving.page:10
 msgid "Change the position of a tab in the gedit window."
-msgstr "Canvia la posició d'una pestanya a al finestra gedit"
+msgstr "Canvia la posició d'una pestanya a la finestra gedit."
 
 #. (itstool) path: page/title
 #: C/gedit-tabs-moving.page:32
@@ -4058,8 +4037,8 @@ msgid ""
 msgstr ""
 "Les pestanyes a <app>gedit</app> es poden moure, fent més senzilla la feina "
 "amb els arxius. Les pestanyes es poden reordenar dins la mateixa finestra, "
-"moure fora del <app>gedit</app> (creant una nova finestra de "
-"<app>gedit</app>, i moure entre finestres."
+"moure fora del <app>gedit</app> (creant una nova finestra de <app>gedit</"
+"app>, i moure entre finestres."
 
 #. (itstool) path: section/title
 #: C/gedit-tabs-moving.page:39
@@ -4079,8 +4058,8 @@ msgstr "Moure la pestanya a la posició desitjada entre l'altra pestanya."
 #. (itstool) path: section/p
 #: C/gedit-tabs-moving.page:55
 msgid ""
-"The tab will be placed in the position closest to where you release the tab,"
-" immediately beside other opened tabs."
+"The tab will be placed in the position closest to where you release the tab, "
+"immediately beside other opened tabs."
 msgstr ""
 "La pestanya es situarà a la posició més propera del lloc on deixis anar la "
 "pestanya, immediatament al costat d'altres pestanyes obertes."
@@ -4103,11 +4082,11 @@ msgstr "Arrossegueu la pestanya fora de la finestra del <app>gedit</app>."
 #. (itstool) path: note/p
 #: C/gedit-tabs-moving.page:77
 msgid ""
-"To move a tab into a new window when <app>gedit</app> is maximized, drag the"
-" tab onto the top bar at the top of the screen."
+"To move a tab into a new window when <app>gedit</app> is maximized, drag the "
+"tab onto the top bar at the top of the screen."
 msgstr ""
 "Per moure una pestanya a una finestra nova quan <app>gedit</app> es "
-"maximitza, arrossegueu la pestanya a la barra superior de la pantalla.."
+"maximitza, arrossegueu la pestanya a la barra superior de la pantalla."
 
 #. (itstool) path: section/title
 #: C/gedit-tabs-moving.page:83
@@ -4127,7 +4106,7 @@ msgstr "Arrossegueu la pestanya a la nova finestra."
 #. (itstool) path: item/p
 #: C/gedit-tabs-moving.page:95
 msgid "Place it beside other tabs in the new window."
-msgstr "Situeu-la al costat d'altres pestanyes a la nova finestra"
+msgstr "Situeu-la al costat d'altres pestanyes a la nova finestra."
 
 #. (itstool) path: note/p
 #: C/gedit-tabs-moving.page:104
@@ -4138,10 +4117,9 @@ msgid ""
 "release the tab on the desired <app>gedit</app> window."
 msgstr ""
 "Potser resultar més fàcil moure una pestanya d’una finestra a una altra "
-"arrossegant-la a <gui>Activititats</gui> hot-corner del <gui>Shell de "
-"GNOME</gui>. Així es mostra cadascuna de les finestres obertes de "
-"<app>gedit</app>. Podeu deixar anar la pestanya a la finestra "
-"de<app>gedit</app>que desitjeu."
+"arrossegant-la a <gui>Activitats</gui> hot-corner del <gui>Shell de GNOME</"
+"gui>. Així es mostra cadascuna de les finestres obertes del <app>gedit</app>. "
+"Podeu deixar anar la pestanya a la finestra de<app>gedit</app> que desitgeu."
 
 #. (itstool) path: section/p
 #: C/gedit-tabs-moving.page:111
@@ -4149,13 +4127,13 @@ msgid ""
 "See the <link xref=\"gedit-shortcut-keys\">tab-related shortcut keys</link> "
 "table to make it easier to manage your tabs."
 msgstr ""
-"Veure la taula <link xref=\"gedit-shortcut-keys\">tab-related tecles d'accés"
-" directe</link> per fer més senzilla la gestió de les pestanyes."
+"Veure la taula <link xref=\"gedit-shortcut-keys\">tab-related tecles d'accés "
+"directe</link> per fer més senzilla la gestió de les pestanyes."
 
 #. (itstool) path: info/desc
 #: C/gedit-tabs.page:10
 msgid "Create or close tabs in the gedit window."
-msgstr "Crea o tanca pestanyes a la finestra del gedit"
+msgstr "Crea o tanca pestanyes a la finestra del gedit."
 
 #. (itstool) path: page/title
 #: C/gedit-tabs.page:38
@@ -4171,9 +4149,9 @@ msgid ""
 "files that are available to work on."
 msgstr ""
 "Utilitzar pestanyes al <app>gedit</app> us permet veure diversos fitxers en "
-"una sola finestra. La pestanya més gran indica el fitxer que està "
-"actualment obert. Les pestanyes més petites indiquen altres fitxers "
-"disponibles per treballar."
+"una sola finestra. La pestanya més gran indica el fitxer que està actualment "
+"obert. Les pestanyes més petites indiquen altres fitxers disponibles per "
+"treballar."
 
 #. (itstool) path: section/title
 #: C/gedit-tabs.page:45
@@ -4183,13 +4161,11 @@ msgstr "Afegeix pestanyes"
 #. (itstool) path: section/p
 #: C/gedit-tabs.page:46
 msgid ""
-"To add a new tab, create a new file with <keyseq><key>Ctrl</key> "
-"<key>T</key></keyseq>. The tab will be added to the right side of any other "
-"tabs."
+"To add a new tab, create a new file with <keyseq><key>Ctrl</key> <key>T</"
+"key></keyseq>. The tab will be added to the right side of any other tabs."
 msgstr ""
-"Per afegir una nova pestanya, crear un fitxer nou amb "
-"<keyseq><key>Ctrl</key> <key>T</key></keyseq>. La pestanya s'afegirà a la "
-"dreta de les altres."
+"Per afegir una nova pestanya, crear un fitxer nou amb <keyseq><key>Ctrl</"
+"key> <key>T</key></keyseq>. La pestanya s'afegirà a la dreta de les altres."
 
 #. (itstool) path: section/title
 #: C/gedit-tabs.page:52
@@ -4200,8 +4176,8 @@ msgstr "Suprimeix pestanyes"
 #: C/gedit-tabs.page:53
 msgid ""
 "To remove a tab, click the <gui style=\"button\">×</gui> on the tab's right "
-"side. To remove all open tabs, press <keyseq><key>Ctrl</key> "
-"<key>Shift</key><key>W</key></keyseq>."
+"side. To remove all open tabs, press <keyseq><key>Ctrl</key> <key>Shift</"
+"key><key>W</key></keyseq>."
 msgstr ""
 "Per eliminar una pestanya, feu clic a la <gui style=\"button\">×</gui> a la "
 "part dreta de la pestanya. Per eliminar totes les pestanyes obertes, premeu "
@@ -4228,10 +4204,9 @@ msgstr ""
 
 #. (itstool) path: note/p
 #: C/gedit-undo-recent-action.page:37
-msgid ""
-"You cannot undo a change after you have closed a <app>gedit</app> file."
+msgid "You cannot undo a change after you have closed a <app>gedit</app> file."
 msgstr ""
-"No podreu revertir un canvi desprès de tancar el fitxer del <app>gedit</app>."
+"No podreu revertir un canvi després de tancar el fitxer del <app>gedit</app>."
 
 #. (itstool) path: info/title
 #: C/index.page:8
@@ -4248,7 +4223,7 @@ msgstr "Editor de text gedit"
 #. (itstool) path: info/desc
 #: C/index.page:11
 msgid "Home page of the gedit help guide."
-msgstr "Pagina inicial de la guia d'ajuda del gedit"
+msgstr "Pagina inicial de la guia d'ajuda del gedit."
 
 #. (itstool) path: page/title
 #: C/index.page:26
@@ -4261,14 +4236,14 @@ msgid ""
 "Welcome to the <app>gedit</app> help guide. For a quick introduction into "
 "both <app>gedit's</app> most basic features, as well as some advanced "
 "keyboard shortcuts, visit the <link xref=\"gedit-quickstart\">Get started "
-"with gedit</link> and <link xref=\"gedit-shortcut-keys\">Shortcut "
-"keys</link> pages."
+"with gedit</link> and <link xref=\"gedit-shortcut-keys\">Shortcut keys</"
+"link> pages."
 msgstr ""
-"Benvinguts a la guia d'ajuda del <app>gedit</app>. Per una ràpida introducció"
-" a les funcionalitats més bàsiques del <app>gedit</app>, així com d'algunes"
-" dreceres de teclat avançades, visiteu les pàgines <link xref=\"gedit-"
-"quickstart\">Comenceu amb les pàgines gedit</link> i <link xref=\"gedit-"
-"shortcut-keys\">dreceres de teclat</link>."
+"Us donem la benvinguda a la guia d'ajuda del <app>gedit</app>. Per una ràpida "
+"introducció a les funcionalitats més bàsiques del <app>gedit</app>, així com "
+"d'algunes dreceres de teclat avançades, visiteu les pàgines <link xref="
+"\"gedit-quickstart\">Comenceu amb les pàgines gedit</link> i <link xref="
+"\"gedit-shortcut-keys\">dreceres de teclat</link>."
 
 #. (itstool) path: page/p
 #: C/index.page:36
