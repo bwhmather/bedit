@@ -694,10 +694,10 @@ io_loading_error_info_bar_response (GtkWidget *info_bar,
 				gedit_recent_remove_if_local (location);
 			}
 
+			remove_tab (data->tab);
+
 			g_task_return_boolean (loading_task, FALSE);
 			g_object_unref (loading_task);
-
-			remove_tab (data->tab);
 			break;
 	}
 }
