@@ -701,6 +701,8 @@ class Manager(GObject.Object):
             self.update_accelerator_label()
             self['commands'].grab_focus()
             return True
+        elif event.keyval == Gdk.KEY_BackSpace:
+            return False
         elif event.keyval in range(Gdk.KEY_F1, Gdk.KEY_F12 + 1):
             # New accelerator
             if self.set_accelerator(event.keyval, mask):
