@@ -189,7 +189,7 @@ def run_external_tool(window, panel, node):
             end = start.copy()
             if not start.inside_word():
                 panel.write(_('You must be inside a word to run this command'),
-                            panel.command_tag)
+                            panel.error_tag)
                 return
             if not start.starts_word():
                 start.backward_word_start()
