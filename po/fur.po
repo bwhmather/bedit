@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gedit master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gedit/issues\n"
-"POT-Creation-Date: 2019-04-17 05:49+0000\n"
-"PO-Revision-Date: 2019-04-26 16:36+0200\n"
+"POT-Creation-Date: 2019-05-02 19:06+0000\n"
+"PO-Revision-Date: 2019-05-03 19:49+0200\n"
 "Last-Translator: Fabio Tomat <f.t.public@gmail.com>\n"
 "Language-Team: Friulian <f.t.public@gmail.com>\n"
 "Language: fur\n"
@@ -62,8 +62,8 @@ msgstr "Editôr di test"
 #. The list MUST also end with a semicolon!
 #. Search terms to find this application.
 #: data/org.gnome.gedit.desktop.in.in:18
-msgid "Text;Editor;Plaintext;Write;"
-msgstr "Text;Editor;Test;Editôr;Testplat;Scrivi;"
+msgid "Text;Editor;Plaintext;Write;gedit;"
+msgstr "Text;Editor;Test sempliç;Scrivi;gedit;"
 
 #: data/org.gnome.gedit.desktop.in.in:22
 msgid "New Window"
@@ -565,15 +565,15 @@ msgstr ""
 "Liste di plugin atîfs. E conten la “Posizion” dai plugin atîfs. Viôt il "
 "file .gedit-plugin par vê la “Posizion” di un particolâr plugin."
 
-#: gedit/gedit-app.c:110
+#: gedit/gedit-app.c:114
 msgid "Show the application’s version"
 msgstr "Mostre la version de aplicazion"
 
-#: gedit/gedit-app.c:116
+#: gedit/gedit-app.c:120
 msgid "Display list of possible values for the encoding option"
 msgstr "Mostre la liste dai pussibii valôrs pe opzion di codifiche"
 
-#: gedit/gedit-app.c:123
+#: gedit/gedit-app.c:127
 msgid ""
 "Set the character encoding to be used to open the files listed on the "
 "command line"
@@ -581,35 +581,35 @@ msgstr ""
 "Met la codifiche dal caratar di doprâ par vierzi i file listâts te rie di "
 "comant"
 
-#: gedit/gedit-app.c:124
+#: gedit/gedit-app.c:128
 msgid "ENCODING"
 msgstr "CODIFICHE"
 
-#: gedit/gedit-app.c:130
+#: gedit/gedit-app.c:134
 msgid "Create a new top-level window in an existing instance of gedit"
 msgstr "Cree un gnûf barcon di nivel plui alt intune istance esistent di gedit"
 
-#: gedit/gedit-app.c:137
+#: gedit/gedit-app.c:141
 msgid "Create a new document in an existing instance of gedit"
 msgstr "Cree un gnûf document intune istance esistent di gedit"
 
-#: gedit/gedit-app.c:144
+#: gedit/gedit-app.c:148
 msgid "Open files and block process until files are closed"
 msgstr "Vierç i file e bloche il procès fintremai la sieradure dai file"
 
-#: gedit/gedit-app.c:151
+#: gedit/gedit-app.c:155
 msgid "Run gedit in standalone mode"
 msgstr "Eseguìs gedit in modalitât indipendent"
 
-#: gedit/gedit-app.c:158
+#: gedit/gedit-app.c:162
 msgid "[FILE…] [+LINE[:COLUMN]]"
 msgstr "[FILE…] [+LINIE[:COLONE]]"
 
-#: gedit/gedit-app.c:273
+#: gedit/gedit-app.c:281
 msgid "There was an error displaying the help."
 msgstr "Al è saltât fûr un erôr tal mostrâ il jutori."
 
-#: gedit/gedit-app.c:964
+#: gedit/gedit-app.c:972
 #, c-format
 msgid "%s: invalid encoding."
 msgstr "%s: codifiche no valide."
@@ -620,7 +620,7 @@ msgstr "Siere _cence salvâ"
 
 #: gedit/gedit-close-confirmation-dialog.c:285 gedit/gedit-commands-file.c:462
 #: gedit/gedit-commands-file.c:567 gedit/gedit-commands-file.c:643
-#: gedit/gedit-commands-file.c:854 gedit/gedit-commands-file.c:1568
+#: gedit/gedit-commands-file.c:854 gedit/gedit-commands-file.c:1583
 #: gedit/gedit-encodings-dialog.c:194 gedit/gedit-preferences-dialog.c:825
 #: gedit/gedit-progress-info-bar.c:49
 #: gedit/resources/ui/gedit-encodings-dialog.ui:44
@@ -864,17 +864,21 @@ msgctxt "window title"
 msgid "Save As"
 msgstr "Salve come"
 
-#: gedit/gedit-commands-file.c:1429
+#: gedit/gedit-commands-file.c:1101
+msgid "No changes need to be saved"
+msgstr "Nissune modifiche e à di jessi salvade"
+
+#: gedit/gedit-commands-file.c:1444
 #, c-format
 msgid "Reverting the document “%s”…"
 msgstr "Ripristinament dal document “%s”…"
 
-#: gedit/gedit-commands-file.c:1476
+#: gedit/gedit-commands-file.c:1491
 #, c-format
 msgid "Revert unsaved changes to document “%s”?"
 msgstr "Anulâ lis modifichis no salvadis al document “%s'”?"
 
-#: gedit/gedit-commands-file.c:1485
+#: gedit/gedit-commands-file.c:1500
 #, c-format
 msgid ""
 "Changes made to the document in the last %ld second will be permanently lost."
@@ -888,14 +892,14 @@ msgstr[1] ""
 "Lis modifichis fatis tal document intai ultins %ld seconts a laran pierdudis "
 "par simpri."
 
-#: gedit/gedit-commands-file.c:1494
+#: gedit/gedit-commands-file.c:1509
 msgid ""
 "Changes made to the document in the last minute will be permanently lost."
 msgstr ""
 "Lis modifichis fatis tal document intal ultin minût a laran pierdudis par "
 "simpri."
 
-#: gedit/gedit-commands-file.c:1500
+#: gedit/gedit-commands-file.c:1515
 #, c-format
 msgid ""
 "Changes made to the document in the last minute and %ld second will be "
@@ -910,7 +914,7 @@ msgstr[1] ""
 "Lis modifichis fatis tal document intal ultin minût e %ld seconts a laran "
 "pierdudis par simpri."
 
-#: gedit/gedit-commands-file.c:1510
+#: gedit/gedit-commands-file.c:1525
 #, c-format
 msgid ""
 "Changes made to the document in the last %ld minute will be permanently lost."
@@ -924,13 +928,13 @@ msgstr[1] ""
 "Lis modifichis fatis tal document intai ultins %ld minûts a laran pierdudis "
 "par simpri."
 
-#: gedit/gedit-commands-file.c:1525
+#: gedit/gedit-commands-file.c:1540
 msgid "Changes made to the document in the last hour will be permanently lost."
 msgstr ""
 "Lis modifichis fatis tal document inte ultime ore a laran pierdudis par "
 "simpri."
 
-#: gedit/gedit-commands-file.c:1531
+#: gedit/gedit-commands-file.c:1546
 #, c-format
 msgid ""
 "Changes made to the document in the last hour and %d minute will be "
@@ -945,7 +949,7 @@ msgstr[1] ""
 "Lis modifichis fatis tal document inte ultime ore e %d minûts a laran "
 "pierdudis par simpri."
 
-#: gedit/gedit-commands-file.c:1546
+#: gedit/gedit-commands-file.c:1561
 #, c-format
 msgid ""
 "Changes made to the document in the last %d hour will be permanently lost."
@@ -958,7 +962,7 @@ msgstr[1] ""
 "Lis modifichis fatis tal document intes ultimis %d oris a laran pierdudis "
 "par simpri."
 
-#: gedit/gedit-commands-file.c:1569
+#: gedit/gedit-commands-file.c:1584
 msgid "_Revert"
 msgstr "_Ripristine"
 
@@ -988,7 +992,7 @@ msgstr "Cjate e sostituìs un câs"
 msgid "“%s” not found"
 msgstr "“%s” no cjatât"
 
-#: gedit/gedit-document.c:1065 gedit/gedit-document.c:1098
+#: gedit/gedit-document.c:1079 gedit/gedit-document.c:1112
 #, c-format
 msgid "Untitled Document %d"
 msgstr "Document cence titul %d"
@@ -1004,12 +1008,12 @@ msgid "Read-Only"
 msgstr "Dome leture"
 
 #: gedit/gedit-encodings-combo-box.c:299
-#: gedit/gedit-file-chooser-dialog-osx.c:565
+#: gedit/gedit-file-chooser-dialog-osx.m:565
 msgid "Automatically Detected"
 msgstr "Ricognossiment automatic"
 
 #: gedit/gedit-encodings-combo-box.c:328
-#: gedit/gedit-file-chooser-dialog-osx.c:574
+#: gedit/gedit-file-chooser-dialog-osx.m:574
 msgid "Add or Remove…"
 msgstr "Zonte o gjave…"
 
@@ -1058,12 +1062,12 @@ msgid "All Text Files"
 msgstr "Ducj i file di test"
 
 #: gedit/gedit-file-chooser-dialog-gtk.c:317
-#: gedit/gedit-file-chooser-dialog-osx.c:547
+#: gedit/gedit-file-chooser-dialog-osx.m:547
 msgid "Character Encoding:"
 msgstr "Codifiche caratars:"
 
 #: gedit/gedit-file-chooser-dialog-gtk.c:350
-#: gedit/gedit-file-chooser-dialog-osx.c:620
+#: gedit/gedit-file-chooser-dialog-osx.m:620
 msgid "Line Ending:"
 msgstr "Fin di rie:"
 
@@ -1071,7 +1075,7 @@ msgstr "Fin di rie:"
 #: plugins/externaltools/tools/manager.py:115
 #: plugins/externaltools/tools/manager.py:324
 #: plugins/externaltools/tools/manager.py:440
-#: plugins/externaltools/tools/manager.py:774
+#: plugins/externaltools/tools/manager.py:776
 msgid "Plain Text"
 msgstr "Test sempliç"
 
@@ -2777,7 +2781,7 @@ msgstr "Dutis lis lenghis"
 
 #: plugins/externaltools/tools/manager.py:429
 #: plugins/externaltools/tools/manager.py:433
-#: plugins/externaltools/tools/manager.py:772
+#: plugins/externaltools/tools/manager.py:774
 #: plugins/externaltools/tools/tools.ui:473
 msgid "All Languages"
 msgstr "Dutis lis lenghis"
@@ -2791,11 +2795,11 @@ msgstr "Gnûf strument"
 msgid "This accelerator is already bound to %s"
 msgstr "Cheste scurte e je za associade cun %s"
 
-#: plugins/externaltools/tools/manager.py:727
+#: plugins/externaltools/tools/manager.py:729
 msgid "Type a new accelerator, or press Backspace to clear"
 msgstr "Inserìs une gnove scurte o frache Backspace par anulâ"
 
-#: plugins/externaltools/tools/manager.py:729
+#: plugins/externaltools/tools/manager.py:731
 msgid "Type a new accelerator"
 msgstr "Inserìs une gnove scurte"
 
