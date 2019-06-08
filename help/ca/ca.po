@@ -232,7 +232,7 @@ msgid ""
 msgstr ""
 "Per tancar un fitxer al <app>gedit</app>, seleccioneu <gui style=\"menuitem"
 "\">Tanca</gui>. Alternativament, podeu fer clic a la \"X\" petita que "
-"apareix on a la dreta de la pestanya del fitxer o premeu <keyseq><key>Ctrl</"
+"apareix a la dreta de la pestanya del fitxer o premeu <keyseq><key>Ctrl</"
 "key> <key>W</key></keyseq>."
 
 #. (itstool) path: page/p
@@ -302,8 +302,8 @@ msgstr "Editeu un fitxer com a usuari root"
 msgid ""
 "Editing files as the root user is potentially dangerous, and may break your "
 "system in bad ways. Take great care when editing files as the root user."
-msgstr ""
-"L'edició de fitxers com a usuari root és potencialment perillós i pot posar "
+msgstr "" 
+"L'edició de fitxers com a usuari root és potencialment perillosa i pot posar "
 "el vostre sistema en una situació de risc. Tingueu molta cura en editar "
 "fitxers com a usuari root."
 
@@ -617,7 +617,7 @@ msgid ""
 "select multiple files, clicking <gui>Open</gui> will open each of the files "
 "that you have selected."
 msgstr ""
-"Podeu utilitzar les tecles <key>Ctrl</key> i <key>Shift</key> per obrir més "
+"Podeu utilitzar les tecles <key>Ctrl</key> i <key>Maj</key> per obrir més "
 "d'un fitxer a la vegada. Si manteniu premuda la tecla <key>Ctrl</key> mentre "
 "seleccioneu múltiples fitxers, fent clic a <gui>Obre</gui> s'obrirà cadascun "
 "dels fitxers seleccionats."
@@ -1633,7 +1633,7 @@ msgid ""
 "list that you want to open."
 msgstr ""
 "Per seleccionar un grup de fitxers, feu clic al primer fitxer que vulgueu "
-"obrir, mantingueu premuda la tecla <key>Shift</key>, i després feu clic a "
+"obrir, mantingueu premuda la tecla <key>Maj</key>, i després feu clic a "
 "l'últim fitxer de la llista que vulgueu obrir."
 
 #. (itstool) path: page/p
@@ -2283,7 +2283,7 @@ msgid ""
 msgstr ""
 "Selecciona <guiseq><gui style=\"menu\">Fitxer</gui> <gui style=\"menuitem"
 "\">Visualització prèvia</gui></guiseq>. Alternativament, podeu imprimir "
-"<keyseq><key>Shift</key><key>Ctrl</key> <key>P</key></keyseq>."
+"<keyseq><key>Maj</key><key>Ctrl</key> <key>P</key></keyseq>."
 
 #. (itstool) path: section/p
 #: C/gedit-printing.page:45
@@ -2482,7 +2482,7 @@ msgstr "Una breu introducció al gedit"
 #. (itstool) path: page/title
 #: C/gedit-quickstart.page:22
 msgid "Get started with gedit"
-msgstr "Comenceu amb gedit"
+msgstr "Comenceu amb el gedit"
 
 #. (itstool) path: page/p
 #: C/gedit-quickstart.page:23
@@ -2875,7 +2875,7 @@ msgid ""
 "key><key>Shift</key><key>G</key></keyseq>."
 msgstr ""
 "Premeu <keyseq><key>Ctrl</key><key>G</key></keyseq> o <keyseq><key>Ctrl</"
-"key><key>Shift</key><key>G</key></keyseq>."
+"key><key>Maj</key><key>G</key></keyseq>."
 
 #. (itstool) path: page/p
 #: C/gedit-search.page:71
@@ -2952,7 +2952,7 @@ msgstr ""
 "gedit mantindrà destacat el text que heu cercat, fins i tot un cop "
 "completada la cerca. Per eliminar els estacats, feu clic a <gui style="
 "\"menuitem\">Neteja el ressaltat</gui>, o premeu <keyseq><key>Ctrl</"
-"key><key>Shift</key><key>K</key></keyseq>."
+"key><key>Maj</key><key>K</key></keyseq>."
 
 #. (itstool) path: info/desc
 #: C/gedit-shortcut-keys.page:9
@@ -3067,7 +3067,7 @@ msgstr "Desa totes les pestanyes"
 #. (itstool) path: td/p
 #: C/gedit-shortcut-keys.page:78
 msgid "<keyseq><key>Ctrl</key><key>Shift</key> <key>L</key></keyseq>"
-msgstr "<keyseq><key>Ctrl</key><key>Shift</key> <key>L</key></keyseq>"
+msgstr "<keyseq><key>Ctrl</key><key>Maj</key> <key>L</key></keyseq>"
 
 #. (itstool) path: td/p
 #: C/gedit-shortcut-keys.page:82
@@ -3077,7 +3077,7 @@ msgstr "Tanca totes les pestanyes"
 #. (itstool) path: td/p
 #: C/gedit-shortcut-keys.page:83
 msgid "<keyseq><key>Ctrl</key><key>Shift</key><key>W</key></keyseq>"
-msgstr "<keyseq><key>Ctrl</key><key>Shift</key><key>W</key></keyseq>"
+msgstr "<keyseq><key>Ctrl</key><key>Maj</key><key>W</key></keyseq>"
 
 #. (itstool) path: td/p
 #: C/gedit-shortcut-keys.page:86
@@ -3087,7 +3087,7 @@ msgstr "Reobre l'última pestanya que s'hagi tancat"
 #. (itstool) path: td/p
 #: C/gedit-shortcut-keys.page:87
 msgid "<keyseq><key>Ctrl</key><key>Shift</key><key>T</key></keyseq>"
-msgstr "<keyseq><key>Ctrl</key><key>Majúscules</key><key>T</key></keyseq>"
+msgstr "<keyseq><key>Ctrl</key><key>Maj</key><key>T</key></keyseq>"
 
 #. (itstool) path: td/p
 #: C/gedit-shortcut-keys.page:90
@@ -3120,7 +3120,7 @@ msgid ""
 "<keyseq><key>Shift</key><key>Ctrl</key><key>Alt</key><key>Page up</key></"
 "keyseq>"
 msgstr ""
-"<keyseq><key>Shift</key><key>Ctrl</key><key>Alt</key><key>RePàg</key></"
+"<keyseq><key>Maj</key><key>Ctrl</key><key>Alt</key><key>RePàg</key></"
 "keyseq>"
 
 #. (itstool) path: td/p
@@ -3134,7 +3134,7 @@ msgid ""
 "<keyseq><key>Shift</key><key>Ctrl</key><key>Alt</key><key>Page down</key></"
 "keyseq>"
 msgstr ""
-"<keyseq><key>Shift</key><key>Ctrl</key><key>Alt</key><key>AvPàg</key></"
+"<keyseq><key>Maj</key><key>Ctrl</key><key>Alt</key><key>AvPàg</key></"
 "keyseq>"
 
 #. (itstool) path: table/title
@@ -3200,7 +3200,7 @@ msgstr "Deseu el fitxer actual amb un altre nom"
 #. (itstool) path: td/p
 #: C/gedit-shortcut-keys.page:140
 msgid "<keyseq><key>Ctrl</key><key>Shift</key> <key>S</key></keyseq>"
-msgstr "<keyseq><key>Ctrl</key><key>Shift</key> <key>S</key></keyseq>"
+msgstr "<keyseq><key>Ctrl</key><key>Maj</key> <key>S</key></keyseq>"
 
 #. (itstool) path: td/p
 #: C/gedit-shortcut-keys.page:144
@@ -3220,7 +3220,7 @@ msgstr "Exemple d'impressió"
 #. (itstool) path: td/p
 #: C/gedit-shortcut-keys.page:149
 msgid "<keyseq><key>Ctrl</key><key>Shift</key> <key>P</key></keyseq>"
-msgstr "<keyseq><key>Ctrl</key><key>Shift</key> <key>P</key></keyseq>"
+msgstr "<keyseq><key>Ctrl</key><key>Maj</key> <key>P</key></keyseq>"
 
 #. (itstool) path: td/p
 #: C/gedit-shortcut-keys.page:153
@@ -3320,7 +3320,7 @@ msgstr "Refer la darrera acció desfeta"
 #. (itstool) path: td/p
 #: C/gedit-shortcut-keys.page:202
 msgid "<keyseq><key>Ctrl</key><key>Shift</key> <key>Z</key></keyseq>"
-msgstr "<keyseq><key>Ctrl</key><key>Shift</key> <key>Z</key></keyseq>"
+msgstr "<keyseq><key>Ctrl</key><key>Maj</key> <key>Z</key></keyseq>"
 
 #. (itstool) path: td/p
 #: C/gedit-shortcut-keys.page:206
@@ -3410,7 +3410,7 @@ msgstr "Suprimeix un tabulador"
 #. (itstool) path: td/p
 #: C/gedit-shortcut-keys.page:240
 msgid "<keyseq><key>Shift</key><key>Tab</key></keyseq>"
-msgstr "<keyseq><key>Shift</key><key>Tab</key></keyseq>"
+msgstr "<keyseq><key>Maj</key><key>Tab</key></keyseq>"
 
 #. (itstool) path: td/p
 #: C/gedit-shortcut-keys.page:243
@@ -3500,7 +3500,7 @@ msgstr "Busca l'aparició anterior de la cadena"
 #. (itstool) path: td/p
 #: C/gedit-shortcut-keys.page:296
 msgid "<keyseq><key>Ctrl</key><key>Shift</key><key>G</key></keyseq>"
-msgstr "<keyseq><key>Ctrl</key><key>Shift</key><key>G</key></keyseq>"
+msgstr "<keyseq><key>Ctrl</key><key>Maj</key><key>G</key></keyseq>"
 
 #. (itstool) path: td/p
 #: C/gedit-shortcut-keys.page:299
@@ -3520,7 +3520,7 @@ msgstr "Neteja el ressaltat"
 #. (itstool) path: td/p
 #: C/gedit-shortcut-keys.page:304
 msgid "<keyseq><key>Ctrl</key><key>Shift</key> <key>K</key></keyseq>"
-msgstr "<keyseq><key>Ctrl</key><key>Shift</key> <key>K</key></keyseq>"
+msgstr "<keyseq><key>Ctrl</key><key>Maj</key> <key>K</key></keyseq>"
 
 #. (itstool) path: td/p
 #: C/gedit-shortcut-keys.page:308
@@ -3545,7 +3545,7 @@ msgstr "Comproveu l’ortografia"
 #. (itstool) path: td/p
 #: C/gedit-shortcut-keys.page:325
 msgid "<keyseq><key>Shift</key><key>F7</key></keyseq>"
-msgstr "<keyseq><key>Shift</key><key>F7</key></keyseq>"
+msgstr "<keyseq><key>Maj</key><key>F7</key></keyseq>"
 
 #. (itstool) path: td/p
 #: C/gedit-shortcut-keys.page:328
@@ -3575,7 +3575,7 @@ msgstr "Llistat de carpetes (amb el connector)"
 #. (itstool) path: td/p
 #: C/gedit-shortcut-keys.page:337
 msgid "<keyseq><key>Ctrl</key><key>Shift</key> <key>D</key></keyseq>"
-msgstr "<keyseq><key>Ctrl</key><key>Shift</key> <key>D</key></keyseq>"
+msgstr "<keyseq><key>Ctrl</key><key>Maj</key> <key>D</key></keyseq>"
 
 #. (itstool) path: table/title
 #: C/gedit-shortcut-keys.page:344
@@ -3949,7 +3949,7 @@ msgid ""
 "Use the <keyseq><key>Shift</key><key>Ctrl</key><key>Alt</key><key>Page down</"
 "key></keyseq> shortcut."
 msgstr ""
-"Utilitza la drecera <keyseq><key>Shift</key><key>Ctrl</key><key>Alt</"
+"Utilitza la drecera <keyseq><key>Maj</key><key>Ctrl</key><key>Alt</"
 "key><key>AvPàg</key></keyseq>."
 
 #. (itstool) path: section/p
@@ -3972,7 +3972,7 @@ msgid ""
 "Use the <keyseq><key>Shift</key><key>Ctrl</key><key>Alt</key><key>Page up</"
 "key></keyseq> shortcut."
 msgstr ""
-"Utilitza la drecera <keyseq><key>Shift</key><key>Ctrl</key><key>Alt</"
+"Utilitza la drecera <keyseq><key>Maj</key><key>Ctrl</key><key>Alt</"
 "key><key>RePàg</key></keyseq>."
 
 #. (itstool) path: section/title
@@ -4181,7 +4181,7 @@ msgid ""
 msgstr ""
 "Per eliminar una pestanya, feu clic a la <gui style=\"button\">×</gui> a la "
 "part dreta de la pestanya. Per eliminar totes les pestanyes obertes, premeu "
-"<keyseq><key>Ctrl</key> <key>Shift</key><key>W</key></keyseq>."
+"<keyseq><key>Ctrl</key> <key>Maj</key><key>W</key></keyseq>."
 
 #. (itstool) path: info/desc
 #: C/gedit-undo-recent-action.page:8
@@ -4242,7 +4242,7 @@ msgstr ""
 "Us donem la benvinguda a la guia d'ajuda del <app>gedit</app>. Per una ràpida "
 "introducció a les funcionalitats més bàsiques del <app>gedit</app>, així com "
 "d'algunes dreceres de teclat avançades, visiteu les pàgines <link xref="
-"\"gedit-quickstart\">Comenceu amb les pàgines gedit</link> i <link xref="
+"\"gedit-quickstart\">comenceu amb el gedit</link> i <link xref="
 "\"gedit-shortcut-keys\">dreceres de teclat</link>."
 
 #. (itstool) path: page/p
