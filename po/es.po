@@ -19,8 +19,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gedit.master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gedit/issues\n"
-"POT-Creation-Date: 2019-05-03 12:26+0000\n"
-"PO-Revision-Date: 2019-05-07 13:35+0200\n"
+"POT-Creation-Date: 2019-06-18 04:59+0000\n"
+"PO-Revision-Date: 2019-06-19 09:30+0200\n"
 "Last-Translator: Daniel Mustieles <daniel.mustieles@gmail.com>\n"
 "Language-Team: es <gnome-es-list@gnome.org>\n"
 "Language: es\n"
@@ -631,7 +631,7 @@ msgstr "[ARCHIVO...] [+LÍNEA[:COLUMNA]]"
 msgid "There was an error displaying the help."
 msgstr "Hubo un error al mostrar la ayuda."
 
-#: gedit/gedit-app.c:972
+#: gedit/gedit-app.c:973
 #, c-format
 msgid "%s: invalid encoding."
 msgstr "%s: codificación no válida."
@@ -2572,6 +2572,12 @@ msgstr "Imprimir el documento"
 msgctxt "shortcut window"
 msgid "Show completion window"
 msgstr "Mostrar la ventana de completado"
+
+#: gedit/resources/ui/gedit-shortcuts.ui:417
+#| msgid "Inserted text"
+msgctxt "shortcut window"
+msgid "Insert timestamp"
+msgstr "Insertar marca de tiempo"
 
 #: gedit/resources/ui/gedit-tab-label.ui:34
 msgid "Close Document"
@@ -4850,9 +4856,6 @@ msgstr "Inserta la fecha y hora actual en la posición del cursor."
 
 #~ msgid "Inline layer"
 #~ msgstr "Capa en línea"
-
-#~ msgid "Inserted text"
-#~ msgstr "Texto insertado"
 
 #~ msgid "Instance definition"
 #~ msgstr "Definición de instancia"
