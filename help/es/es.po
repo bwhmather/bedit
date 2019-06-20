@@ -11,8 +11,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gedit.help.master\n"
-"POT-Creation-Date: 2019-04-17 05:50+0000\n"
-"PO-Revision-Date: 2019-06-10 15:07+0200\n"
+"POT-Creation-Date: 2019-06-18 05:00+0000\n"
+"PO-Revision-Date: 2019-06-20 10:13+0200\n"
 "Last-Translator: Daniel Mustieles <daniel.mustieles@gmail.com>\n"
 "Language-Team: es <gnome-es-list@gnome.org>\n"
 "Language: es\n"
@@ -1412,10 +1412,6 @@ msgstr "Text auto-wrap"
 
 #. (itstool) path: section/p
 #: C/gedit-plugins-modelines.page:59
-#| msgid ""
-#| "For more information on <app>Emacs</app> modelines, visit the <link href="
-#| "\"http://www.gnu.org/software/emacs/manual/emacs.html\">GNU Emacs Manual</"
-#| "link>."
 msgid ""
 "For more information on <app>Emacs</app> modelines, visit the <link href="
 "\"https://www.gnu.org/software/emacs/manual/emacs.html\">GNU Emacs Manual</"
@@ -1468,9 +1464,6 @@ msgstr "word-wrap-column"
 
 #. (itstool) path: section/p
 #: C/gedit-plugins-modelines.page:79
-#| msgid ""
-#| "For more information about <app>Kate</app> modelines, visit the <link "
-#| "href=\"http://kate-editor.org/\">Kate website</link>."
 msgid ""
 "For more information about <app>Kate</app> modelines, visit the <link href="
 "\"https://kate-editor.org/\">Kate website</link>."
@@ -1521,9 +1514,6 @@ msgstr "textwidth"
 
 #. (itstool) path: section/p
 #: C/gedit-plugins-modelines.page:97
-#| msgid ""
-#| "For more information on <app>Vim</app> modelines, visit the <link href="
-#| "\"http://www.vim.org/\">Vim website</link>."
 msgid ""
 "For more information on <app>Vim</app> modelines, visit the <link href="
 "\"https://www.vim.org/\">Vim website</link>."
@@ -3027,7 +3017,7 @@ msgstr "Tecla rápidas relacionadas con las pestañas"
 #: C/gedit-shortcut-keys.page:57 C/gedit-shortcut-keys.page:113
 #: C/gedit-shortcut-keys.page:167 C/gedit-shortcut-keys.page:253
 #: C/gedit-shortcut-keys.page:273 C/gedit-shortcut-keys.page:325
-#: C/gedit-shortcut-keys.page:358 C/gedit-shortcut-keys.page:387
+#: C/gedit-shortcut-keys.page:358 C/gedit-shortcut-keys.page:392
 msgid "Action"
 msgstr "Acción"
 
@@ -3035,7 +3025,7 @@ msgstr "Acción"
 #: C/gedit-shortcut-keys.page:58 C/gedit-shortcut-keys.page:114
 #: C/gedit-shortcut-keys.page:168 C/gedit-shortcut-keys.page:254
 #: C/gedit-shortcut-keys.page:274 C/gedit-shortcut-keys.page:326
-#: C/gedit-shortcut-keys.page:359 C/gedit-shortcut-keys.page:388
+#: C/gedit-shortcut-keys.page:359 C/gedit-shortcut-keys.page:393
 msgid "Keyboard shortcut"
 msgstr "Atajo del teclado"
 
@@ -3334,13 +3324,11 @@ msgstr "<keyseq><key>Ctrl</key><key>A</key></keyseq>"
 
 #. (itstool) path: td/p
 #: C/gedit-shortcut-keys.page:207
-#| msgid "Select all."
 msgid "Unselect all text"
 msgstr "Deseleccionar todo el texto."
 
 #. (itstool) path: td/p
 #: C/gedit-shortcut-keys.page:208
-#| msgid "<keyseq><key>Ctrl</key><key>W</key></keyseq>"
 msgid "<keyseq><key>Ctrl</key><key>Backslash</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>\\</key></keyseq>"
 
@@ -3431,7 +3419,6 @@ msgstr "Conmutar la visibilidad del cursor"
 
 #. (itstool) path: td/p
 #: C/gedit-shortcut-keys.page:244
-#| msgid "<keyseq><key>Tab</key></keyseq>"
 msgid "<keyseq><key>F7</key></keyseq>"
 msgstr "<keyseq><key>F7</key></keyseq>"
 
@@ -3462,7 +3449,6 @@ msgstr "<key>F10</key>"
 
 #. (itstool) path: table/title
 #: C/gedit-shortcut-keys.page:270
-#| msgid "Shortcut keys for tools"
 msgid "Shortcut keys for navigation"
 msgstr "Atajos de teclas para la navegación"
 
@@ -3473,7 +3459,6 @@ msgstr "Mover al corchete coincidente"
 
 #. (itstool) path: td/p
 #: C/gedit-shortcut-keys.page:280
-#| msgid "<keyseq><key>Ctrl</key><key>W</key></keyseq>"
 msgid "<keyseq><key>Ctrl</key><key>%</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>%</key></keyseq>"
 
@@ -3534,7 +3519,6 @@ msgstr "Mover la sección hacia arriba en el archivo"
 
 #. (itstool) path: td/p
 #: C/gedit-shortcut-keys.page:304
-#| msgid "<keyseq><key>Ctrl</key><key>Alt</key><key>N</key></keyseq>"
 msgid "<keyseq><key>Shift</key><key>Alt</key><key>Up</key></keyseq>"
 msgstr "<keyseq><key>Mayús</key><key>Alt</key><key>Arriba</key></keyseq>"
 
@@ -3545,19 +3529,16 @@ msgstr "Mover la sección hacia abajo en el archivo"
 
 #. (itstool) path: td/p
 #: C/gedit-shortcut-keys.page:308
-#| msgid "<keyseq><key>Ctrl</key><key>Alt</key> <key>PageDown</key></keyseq>"
 msgid "<keyseq><key>Shift</key><key>Alt</key><key>Down</key></keyseq>"
 msgstr "<keyseq><key>Mayús</key><key>Alt</key><key>Abajo</key></keyseq>"
 
 #. (itstool) path: td/p
 #: C/gedit-shortcut-keys.page:311
-#| msgid "Move to the beginning of the document"
 msgid "Move viewport to beginning of file"
 msgstr "Mover la sección al principio del archivo"
 
 #. (itstool) path: td/p
 #: C/gedit-shortcut-keys.page:312
-#| msgid "<keyseq><key>Ctrl</key><key>Alt</key><key>N</key></keyseq>"
 msgid "<keyseq><key>Shift</key><key>Alt</key><key>Home</key></keyseq>"
 msgstr "<keyseq><key>Mayús</key><key>Alt</key><key>Inicio</key></keyseq>"
 
@@ -3568,7 +3549,6 @@ msgstr "Mover la sección al final del archivo"
 
 #. (itstool) path: td/p
 #: C/gedit-shortcut-keys.page:316
-#| msgid "<keyseq><key>Ctrl</key><key>Alt</key><key>N</key></keyseq>"
 msgid "<keyseq><key>Shift</key><key>Alt</key><key>End</key></keyseq>"
 msgstr "<keyseq><key>Mayús</key><key>Alt</key><key>Fin</key></keyseq>"
 
@@ -3672,18 +3652,30 @@ msgstr "Listado de carpeta (con complemento)"
 msgid "<keyseq><key>Ctrl</key><key>Shift</key> <key>D</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>Mayús</key> <key>D</key></keyseq>"
 
+#. (itstool) path: td/p
+#: C/gedit-shortcut-keys.page:381
+#| msgid "Indent (with plugin)."
+msgid "Insert timestamp (with plugin)"
+msgstr "Insertar marca de tiempo (con complemento)"
+
+#. (itstool) path: td/p
+#: C/gedit-shortcut-keys.page:382
+#| msgid "<keyseq><key>Ctrl</key><key>Shift</key> <key>L</key></keyseq>"
+msgid "<keyseq><key>Ctrl</key><key>Shift</key> <key>B</key></keyseq>"
+msgstr "<keyseq><key>Ctrl</key><key>Mayús</key> <key>B</key></keyseq>"
+
 #. (itstool) path: table/title
-#: C/gedit-shortcut-keys.page:384
+#: C/gedit-shortcut-keys.page:389
 msgid "Shortcut keys for user help"
 msgstr "Teclas rápidas para la ayuda"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:393
+#: C/gedit-shortcut-keys.page:398
 msgid "Open the gedit user guide"
 msgstr "Abrir la guía de usuario de gedit"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:394
+#: C/gedit-shortcut-keys.page:399
 msgid "<key>F1</key>"
 msgstr "<key>F1</key>"
 
@@ -3867,11 +3859,6 @@ msgstr "Diccionarios"
 
 #. (itstool) path: section/p
 #: C/gedit-spellcheck.page:125
-#| msgid ""
-#| "<app>gedit</app> uses <link href=\"http://www.abisource.com/projects/"
-#| "enchant/\">Enchant</link>, a small system utility, for spell checking. "
-#| "Enchant can use several different dictionaries to check your spelling. "
-#| "Two such dictionary back-ends are <em>Hunspell</em> and <em>Aspell</em>."
 msgid ""
 "<app>gedit</app> uses <link href=\"https://www.abisource.com/projects/"
 "enchant/\">Enchant</link>, a small system utility, for spell checking. "
@@ -7876,9 +7863,6 @@ msgstr "Este trabajo está licenciado bajo la <_:link-1/>."
 
 #~ msgid "Ctrl + T"
 #~ msgstr "Ctrl + T"
-
-#~ msgid "Indent (with plugin)."
-#~ msgstr "Sangría (con complemento)."
 
 #~ msgid "Ctrl + Shift + T"
 #~ msgstr "Ctrl + Mayús. + T"
