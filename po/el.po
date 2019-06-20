@@ -36,8 +36,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: el\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gedit/issues\n"
-"POT-Creation-Date: 2019-05-02 19:06+0000\n"
-"PO-Revision-Date: 2019-06-10 23:45+0300\n"
+"POT-Creation-Date: 2019-06-18 04:59+0000\n"
+"PO-Revision-Date: 2019-06-20 22:56+0300\n"
 "Last-Translator: Efstathios Iosifidis <eiosifidis@gnome.org>\n"
 "Language-Team: Ελληνικά <opensuse-translation-el@opensuse.org>\n"
 "Language: el\n"
@@ -643,7 +643,7 @@ msgstr "[ΑΡΧΕΙΟ...] [+ΓΡΑΜΜΗ[:ΣΤΗΛΗ]]"
 msgid "There was an error displaying the help."
 msgstr "Υπήρξε σφάλμα κατά την εμφάνιση της βοήθειας."
 
-#: gedit/gedit-app.c:972
+#: gedit/gedit-app.c:973
 #, c-format
 msgid "%s: invalid encoding."
 msgstr "%s: μη έγκυρη κωδικοποίηση."
@@ -2613,6 +2613,11 @@ msgstr "Εκτύπωση εγγράφου"
 msgctxt "shortcut window"
 msgid "Show completion window"
 msgstr "Εμφάνιση παραθύρου ολοκλήρωσης"
+
+#: gedit/resources/ui/gedit-shortcuts.ui:417
+msgctxt "shortcut window"
+msgid "Insert timestamp"
+msgstr "Εισαγωγή χρονικής σήμανσης"
 
 #: gedit/resources/ui/gedit-tab-label.ui:34
 msgid "Close Document"
@@ -4954,9 +4959,6 @@ msgstr "Εισαγωγή τρέχουσας ημ/νίας και ώρας στη
 
 #~ msgid "Inline layer"
 #~ msgstr "Inline layer"
-
-#~ msgid "Inserted text"
-#~ msgstr "Εισηγμένο κείμενο"
 
 #~ msgid "Instance definition"
 #~ msgstr "Περιγραφή Instance"
