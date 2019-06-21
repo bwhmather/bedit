@@ -12,8 +12,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gedit master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gedit/issues\n"
-"POT-Creation-Date: 2019-05-02 19:06+0000\n"
-"PO-Revision-Date: 2019-05-07 14:03+0700\n"
+"POT-Creation-Date: 2019-06-18 04:59+0000\n"
+"PO-Revision-Date: 2019-06-21 15:44+0700\n"
 "Last-Translator: Kukuh Syafaat <kukuhsyafaat@gnome.org>\n"
 "Language-Team: Indonesian <gnome-l10n-id@googlegroups.com>\n"
 "Language: id\n"
@@ -22,7 +22,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural= n!=1;\n"
 "X-Poedit-SourceCharset: UTF-8\n"
-"X-Generator: Poedit 2.2.1\n"
+"X-Generator: Poedit 2.2.3\n"
 
 #: data/org.gnome.gedit.appdata.xml.in:7
 msgid "gedit"
@@ -608,7 +608,7 @@ msgstr "[BERKAS…][+BARIS[:KOLOM]]"
 msgid "There was an error displaying the help."
 msgstr "Ada galat saat menampilkan bantuan."
 
-#: gedit/gedit-app.c:972
+#: gedit/gedit-app.c:973
 #, c-format
 msgid "%s: invalid encoding."
 msgstr "%s: salah pengkodean."
@@ -2526,6 +2526,11 @@ msgstr "Cetak dokumen"
 msgctxt "shortcut window"
 msgid "Show completion window"
 msgstr "Tampilkan jendela pelengkapan"
+
+#: gedit/resources/ui/gedit-shortcuts.ui:417
+msgctxt "shortcut window"
+msgid "Insert timestamp"
+msgstr "Sisipkan tanda waktu"
 
 #: gedit/resources/ui/gedit-tab-label.ui:34
 msgid "Close Document"
