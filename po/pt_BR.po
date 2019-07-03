@@ -32,8 +32,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gedit\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gedit/issues\n"
-"POT-Creation-Date: 2019-05-02 19:06+0000\n"
-"PO-Revision-Date: 2019-06-13 08:01-0300\n"
+"POT-Creation-Date: 2019-06-18 04:59+0000\n"
+"PO-Revision-Date: 2019-07-03 19:34-0300\n"
 "Last-Translator: Rafael Fontenelle <rafaelff@gnome.org>\n"
 "Language-Team: Brazilian Portuguese <gnome-pt_br-list@gnome.org>\n"
 "Language: pt_BR\n"
@@ -88,7 +88,6 @@ msgstr "Editor de texto"
 #. The list MUST also end with a semicolon!
 #. Search terms to find this application.
 #: data/org.gnome.gedit.desktop.in.in:18
-#| msgid "Text;Editor;Plaintext;Write;"
 msgid "Text;Editor;Plaintext;Write;gedit;"
 msgstr "Texto;Editor;Texto simples;Plaintext;Escrever;Write;gedit;"
 
@@ -643,7 +642,7 @@ msgstr "[ARQUIVO…] [+LINHA[:COLUNA]]"
 msgid "There was an error displaying the help."
 msgstr "Houve um erro ao exibir a ajuda."
 
-#: gedit/gedit-app.c:972
+#: gedit/gedit-app.c:973
 #, c-format
 msgid "%s: invalid encoding."
 msgstr "%s: codificação inválida."
@@ -2466,8 +2465,6 @@ msgid "Select all text"
 msgstr "Seleciona todo o texto"
 
 #: gedit/resources/ui/gedit-shortcuts.ui:218
-#| msgctxt "shortcut window"
-#| msgid "Select all text"
 msgctxt "shortcut window"
 msgid "Unselect all text"
 msgstr "Cancela a seleção de todo o texto"
@@ -2493,7 +2490,6 @@ msgid "Paste text from clipboard"
 msgstr "Cola o texto da área de transferência"
 
 #: gedit/resources/ui/gedit-shortcuts.ui:253
-#| msgid "Activation"
 msgctxt "shortcut window"
 msgid "Navigation"
 msgstr "Navegação"
@@ -2525,7 +2521,6 @@ msgstr "Move o viewport para o início do arquivo"
 
 # "Bracket" pode ter várias traduções. Neste contexto, se aplica a [ ] { } ( ) -- Rafael
 #: gedit/resources/ui/gedit-shortcuts.ui:293
-#| msgid "Highlight matching _brackets"
 msgctxt "shortcut window"
 msgid "Move to matching bracket"
 msgstr "Move para o parêntese, colchete ou chave correspondente"
@@ -2614,6 +2609,12 @@ msgstr "Imprime o documento"
 msgctxt "shortcut window"
 msgid "Show completion window"
 msgstr "Mostra janela de completação"
+
+#: gedit/resources/ui/gedit-shortcuts.ui:417
+#| msgid "Insert Date/Time"
+msgctxt "shortcut window"
+msgid "Insert timestamp"
+msgstr "Inserir carimbo de hora"
 
 #: gedit/resources/ui/gedit-tab-label.ui:34
 msgid "Close Document"
@@ -3676,22 +3677,18 @@ msgstr "_Destaque palavras com erros ortográficos"
 
 #: plugins/spell/org.gnome.gedit.plugins.spell.gschema.xml.in:5
 #: plugins/spell/resources/ui/gedit-spell-setup-dialog.ui:75
-#| msgid "_Highlight Misspelled Words"
 msgid "Highlight misspelled words"
 msgstr "Destaca palavras com erros ortográficos"
 
 #: plugins/spell/org.gnome.gedit.plugins.spell.gschema.xml.in:6
-#| msgid "_Highlight Misspelled Words"
 msgid "Default setting for highlight misspelled words."
 msgstr "Configuração padrão para destaque de palavras com erros ortográficos."
 
 #: plugins/spell/resources/ui/gedit-spell-setup-dialog.ui:7
-#| msgid "Configure date/time plugin"
 msgid "Configure spell plugin"
 msgstr "Configurar plug-in de ortografia"
 
 #: plugins/spell/resources/ui/gedit-spell-setup-dialog.ui:61
-#| msgid "Create a new document"
 msgid "Defaults for new documents"
 msgstr "Padrão para novos documentos"
 
