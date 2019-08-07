@@ -1,7 +1,7 @@
 General Information
 ===================
 
-This is version 3.32.0 of gedit. gedit is a small and lightweight UTF-8 text
+This is version 3.33.90 of gedit. gedit is a small and lightweight UTF-8 text
 editor for the GNOME environment.
 
 gedit is part of GNOME and uses the latest GTK+ and GNOME libraries.
@@ -72,8 +72,8 @@ python plugins support.
 Simple install procedure:
 
 ```
-% tar Jxf gedit-3.32.0.tar.xz			# unpack the sources
-% cd gedit-3.32.0				# change to the toplevel directory
+% tar Jxf gedit-3.33.90.tar.xz			# unpack the sources
+% cd gedit-3.33.90				# change to the toplevel directory
 % meson _build					# run the `configure' script
 % ninja -C _build				# build gedit
 [ Become root if necessary ]
