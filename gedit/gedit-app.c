@@ -841,7 +841,6 @@ gedit_app_startup (GApplication *application)
 	add_accelerator (GTK_APPLICATION (application), "win.next-tab-group", "<Primary><Shift><Alt>Page_Down");
 	add_accelerator (GTK_APPLICATION (application), "win.previous-document", "<Primary><Alt>Page_Up");
 	add_accelerator (GTK_APPLICATION (application), "win.next-document", "<Primary><Alt>Page_Down");
-	add_accelerator (GTK_APPLICATION (application), "win.time", "<Primary><Shift>B");
 
 	load_accels ();
 
