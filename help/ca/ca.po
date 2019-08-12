@@ -5,8 +5,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gedit.help.master\n"
-"POT-Creation-Date: 2019-04-13 09:36+0000\n"
-"PO-Revision-Date: 2019-01-27 19:40+0000\n"
+"POT-Creation-Date: 2019-08-07 01:40+0000\n"
+"PO-Revision-Date: 2019-08-12 08:12+0200\n"
 "Last-Translator: Jaume Jorba <jaume.jorba@gmail.com>\n"
 "Language-Team: Catalan (https://www.transifex.com/softcatala/teams/62837/"
 "ca/)\n"
@@ -15,6 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 2.2.1\n"
 
 #. Put one translator per line, in the form NAME <EMAIL>, YEAR1, YEAR2
 msgctxt "_"
@@ -87,11 +88,6 @@ msgstr "Per canviar l'esquema de colors:"
 
 #. (itstool) path: item/p
 #: C/gedit-change-color-scheme.page:39
-#, fuzzy
-#| msgid ""
-#| "Open the <gui style=\"menu\">gedit</gui> menu from the top bar, then "
-#| "select <guiseq><gui style=\"menuitem\">Preferences</gui><gui>Font &amp; "
-#| "Colors</gui></guiseq>."
 msgid ""
 "Press the menu button in the top-right corner of the window and select "
 "<guiseq><gui style=\"menuitem\">Preferences</gui><gui>Font &amp; Colors</"
@@ -192,8 +188,8 @@ msgid ""
 "window, allowing you to see available fonts and choose the one that you "
 "prefer."
 msgstr ""
-"Feu clic al nom del tipus de lletra actual i el <app>gedit</app> obrirà "
-"una finestra per seleccionar el tipus de lletra, mostrant-vos els tipus de "
+"Feu clic al nom del tipus de lletra actual i el <app>gedit</app> obrirà una "
+"finestra per seleccionar el tipus de lletra, mostrant-vos els tipus de "
 "lletra disponibles i permetent-vos seleccionar-ne el preferit."
 
 #. (itstool) path: item/p
@@ -202,9 +198,8 @@ msgid ""
 "After you have chosen a new font, use the <gui>slider</gui> under the list "
 "of fonts to set the default font size."
 msgstr ""
-"Un cop hagueu triat un tipus de lletra nou, utilitzeu el <gui>desplaçador</"
-"gui> sota la llista del tipus de lletra per establir la mida "
-"predeterminada."
+"Un cop hàgeu triat un tipus de lletra nou, utilitzeu el <gui>desplaçador</"
+"gui> sota la llista del tipus de lletra per establir la mida predeterminada."
 
 #. (itstool) path: item/p
 #: C/gedit-change-default-font.page:37
@@ -302,7 +297,7 @@ msgstr "Editeu un fitxer com a usuari root"
 msgid ""
 "Editing files as the root user is potentially dangerous, and may break your "
 "system in bad ways. Take great care when editing files as the root user."
-msgstr "" 
+msgstr ""
 "L'edició de fitxers com a usuari root és potencialment perillosa i pot posar "
 "el vostre sistema en una situació de risc. Tingueu molta cura en editar "
 "fitxers com a usuari root."
@@ -328,8 +323,8 @@ msgid ""
 "Using the <cmd>sudo</cmd> command, you will need to successfully enter your "
 "password before <app>gedit</app> will open."
 msgstr ""
-"Utilitzant l'ordre <cmd>sudo</cmd>, haureu d'introduir correctament la vostra "
-"contrasenya de root abans que el <app>gedit</app> s'obri."
+"Utilitzant l'ordre <cmd>sudo</cmd>, haureu d'introduir correctament la "
+"vostra contrasenya de root abans que el <app>gedit</app> s'obri."
 
 #. (itstool) path: page/p
 #: C/gedit-edit-as-root.page:31
@@ -385,7 +380,7 @@ msgstr ""
 #. (itstool) path: info/desc
 #: C/gedit-full-screen.page:8
 msgid "Set gedit to use the entire screen."
-msgstr "Configura el gedit per a que utilitzi la pantalla completa."
+msgstr "Configura el gedit perquè utilitzi la pantalla completa."
 
 #. (itstool) path: page/title
 #: C/gedit-full-screen.page:23
@@ -557,7 +552,7 @@ msgid ""
 "between open files. To list open files, choose <gui>Documents</gui> from the "
 "dropdown at the top of the panel."
 msgstr ""
-"Quan hagueu obert diversos fitxers, podeu utilitzar el tauler lateral per "
+"Quan hàgeu obert diversos fitxers, podeu utilitzar el tauler lateral per "
 "desplaçar-vos entre els fitxers oberts. Per llistar els fitxers oberts, "
 "trieu <gui>Documents</gui> des del menú desplegable a la part superior del "
 "tauler."
@@ -761,8 +756,8 @@ msgid ""
 "recently-used files. Here is how you can open a recently-used file:"
 msgstr ""
 "Per defecte, el <app>gedit</app> proporciona un accés fàcil a cinc dels "
-"fitxers més recentment utilitzats. A continuació s'explica com es pot obrir un "
-"fitxer usat recentment:"
+"fitxers més recentment utilitzats. A continuació s'explica com es pot obrir "
+"un fitxer usat recentment:"
 
 #. (itstool) path: item/p
 #: C/gedit-open-recent.page:22
@@ -937,8 +932,8 @@ msgid ""
 "The <gui>Invert Case</gui> option will convert all lower case letters to "
 "upper case, and will convert all upper case letters to lower case."
 msgstr ""
-"L'opció <gui>Inverteix majúscules i minúscules</gui> convertirà les lletres en "
-"minúscula a majúscula, i a l'inrevés."
+"L'opció <gui>Inverteix majúscules i minúscules</gui> convertirà les lletres "
+"en minúscula a majúscula, i a l'inrevés."
 
 #. (itstool) path: note/p
 #: C/gedit-plugins-change-case.page:43
@@ -1062,7 +1057,7 @@ msgid ""
 "needs. The configuration options are available by selecting "
 "<guiseq><gui>Tools</gui><gui>Manage External Tools</gui></guiseq>."
 msgstr ""
-"Un cop activat el connector, l'haureu de configurar per a que segueixi les "
+"Un cop activat el connector, l'haureu de configurar perquè segueixi les "
 "vostres necessitats. Les opcions de configuració estan disponibles a "
 "<guiseq><gui>Eines</gui><gui>Gestiona les eines externes</gui></guiseq>."
 
@@ -1156,13 +1151,13 @@ msgid ""
 "Time</gui></guiseq>. To use the plugin, press <guiseq> <gui style=\"menu"
 "\">Edit</gui><gui>Insert Date and Time</gui></guiseq>."
 msgstr ""
-"Tal com el nom del connector suggereix, el component <gui>Insereix Data/Hora</"
-"gui> us permet inserir la data i/o l'hora a la posició actual del cursor. "
-"Per activar aquest connector, seleccioneu <guiseq><gui style=\"menu\">gedit</"
-"gui> <gui style=\"menuitem\">Preferències</gui><gui>Connectors</gui> "
-"<gui>Insereix Data/Hora</gui></guiseq>. Per utilitzar el connector, premeu "
-"<guiseq> <gui style=\"menu\">Edita</gui><gui>Insereix la data/hora</gui></"
-"guiseq>."
+"Tal com el nom del connector suggereix, el component <gui>Insereix Data/"
+"Hora</gui> us permet inserir la data i/o l'hora a la posició actual del "
+"cursor. Per activar aquest connector, seleccioneu <guiseq><gui style=\"menu"
+"\">gedit</gui> <gui style=\"menuitem\">Preferències</gui><gui>Connectors</"
+"gui> <gui>Insereix Data/Hora</gui></guiseq>. Per utilitzar el connector, "
+"premeu <guiseq> <gui style=\"menu\">Edita</gui><gui>Insereix la data/hora</"
+"gui></guiseq>."
 
 #. (itstool) path: page/p
 #: C/gedit-plugins-insert-date-time.page:29
@@ -1411,11 +1406,11 @@ msgstr "Text auto-wrap"
 #: C/gedit-plugins-modelines.page:59
 msgid ""
 "For more information on <app>Emacs</app> modelines, visit the <link href="
-"\"http://www.gnu.org/software/emacs/manual/emacs.html\">GNU Emacs Manual</"
+"\"https://www.gnu.org/software/emacs/manual/emacs.html\">GNU Emacs Manual</"
 "link>."
 msgstr ""
 "Per a més informació sobre els modes de línia <app>Emacs</app>, visiteu el "
-"<link href=\"http://www.gnu.org/software/emacs/manual/emacs.html\">Manual "
+"<link href=\"https://www.gnu.org/software/emacs/manual/emacs.html\">Manual "
 "del GNU Emacs </link>."
 
 #. (itstool) path: section/title
@@ -1463,10 +1458,10 @@ msgstr "word-wrap-column"
 #: C/gedit-plugins-modelines.page:79
 msgid ""
 "For more information about <app>Kate</app> modelines, visit the <link href="
-"\"http://kate-editor.org/\">Kate website</link>."
+"\"https://kate-editor.org/\">Kate website</link>."
 msgstr ""
 "Per a més informació sobre els modes de línia <app>Kate</app>, visiteu <link "
-"href=\"http://kate-editor.org/\">el lloc web Kate</link>."
+"href=\"https://kate-editor.org/\">el lloc web Kate</link>."
 
 #. (itstool) path: section/title
 #: C/gedit-plugins-modelines.page:84
@@ -1513,10 +1508,10 @@ msgstr "textwidth"
 #: C/gedit-plugins-modelines.page:97
 msgid ""
 "For more information on <app>Vim</app> modelines, visit the <link href="
-"\"http://www.vim.org/\">Vim website</link>."
+"\"https://www.vim.org/\">Vim website</link>."
 msgstr ""
 "Per a més informació sobre els modificadors <app>Vim</app>, visiteu <link "
-"href=\"http://www.vim.org/\">el lloc web Vim</link>."
+"href=\"https://www.vim.org/\">el lloc web Vim</link>."
 
 #. (itstool) path: info/desc
 #: C/gedit-plugins-pyconsole.page:14
@@ -1919,7 +1914,7 @@ msgid ""
 "To add a new snippet, click on the \"plus\" icon in the <gui>Manage "
 "Snippets</gui> sidebar."
 msgstr ""
-"Per afegir un nou fragment, feu clic a la icona \"més\" a la barra lateral "
+"Per afegir un nou fragment, feu clic a la icona «més» a la barra lateral "
 "<gui>Gestiona els fragments</gui>."
 
 #. (itstool) path: item/p
@@ -1952,7 +1947,7 @@ msgid ""
 msgstr ""
 "Si voleu inserir un fragment amb una drecera de teclat, feu clic al punter "
 "del ratolí a <gui style=\"input\">Drecera:</gui> i premeu la combinació de "
-"tecles desitjada. Un cop hagueu premut i alliberat les tecles, s'establirà "
+"tecles desitjada. Un cop hàgeu premut i alliberat les tecles, s'establirà "
 "la drecera des del teclat."
 
 #. (itstool) path: item/p
@@ -2029,8 +2024,8 @@ msgid ""
 "preferred option."
 msgstr ""
 "Les paraules \"meravellós\" i \"sorprenent\" es poden conservar o suprimir "
-"depenent de la vostra elecció d'ús. Per fer-ho, premeu <key>Tabulador</"
-"key> per triar entre \"meravellós\" i \"sorprenent\", i premeu <key>Esborrar</"
+"depenent de la vostra elecció d'ús. Per fer-ho, premeu <key>Tabulador</key> "
+"per triar entre \"meravellós\" i \"sorprenent\", i premeu <key>Esborrar</"
 "key> per eliminar l'opció menys preferida."
 
 #. (itstool) path: info/desc
@@ -2163,9 +2158,9 @@ msgid ""
 "Printers usually print the first page first, and the last page last, so the "
 "pages end up in reverse order when you pick them up. To reverse the order:"
 msgstr ""
-"Normalment les impressores imprimeixen primer la primera pàgina i "
-"per últim la darrera, de manera que les pàgines acaben en ordre invers quan "
-"es recullen. Si és necessari, podeu invertir aquest l'ordre:"
+"Normalment les impressores imprimeixen primer la primera pàgina i per últim "
+"la darrera, de manera que les pàgines acaben en ordre invers quan es "
+"recullen. Si és necessari, podeu invertir aquest l'ordre:"
 
 #. (itstool) path: item/p
 #: C/gedit-printing-order.page:32
@@ -2477,7 +2472,7 @@ msgstr ""
 #. (itstool) path: info/desc
 #: C/gedit-quickstart.page:9
 msgid "A brief introduction to gedit."
-msgstr "Una breu introducció al gedit"
+msgstr "Una breu introducció al gedit."
 
 #. (itstool) path: page/title
 #: C/gedit-quickstart.page:22
@@ -2593,7 +2588,7 @@ msgid ""
 "Once you have entered the original and replacement text, you can add extra "
 "parameters to the search. You can also choose what you want to replace:"
 msgstr ""
-"Un cop hagueu introduït el text original i el de reemplaçament, podeu afegir "
+"Un cop hàgeu introduït el text original i el de reemplaçament, podeu afegir "
 "paràmetres addicionals a la cerca. També podeu triar que voleu reemplaçar:"
 
 #. (itstool) path: item/p
@@ -2620,8 +2615,8 @@ msgid ""
 "portions of text where the replace function will be performed."
 msgstr ""
 "Utilitzeu la funció <gui>Reemplaça tot</gui> amb compte. <gui>Reemplaça tot</"
-"gui> actua sobre tot el fitxer, i no permet ressaltar les parts de text on es "
-"realitzarà la funció de substitució."
+"gui> actua sobre tot el fitxer, i no permet ressaltar les parts de text on "
+"es realitzarà la funció de substitució."
 
 #. (itstool) path: section/title
 #: C/gedit-replace.page:87
@@ -3015,17 +3010,17 @@ msgstr "Dreceres de teclat relacionades amb pestanyes"
 
 #. (itstool) path: td/p
 #: C/gedit-shortcut-keys.page:57 C/gedit-shortcut-keys.page:113
-#: C/gedit-shortcut-keys.page:167 C/gedit-shortcut-keys.page:261
-#: C/gedit-shortcut-keys.page:281 C/gedit-shortcut-keys.page:318
-#: C/gedit-shortcut-keys.page:347
+#: C/gedit-shortcut-keys.page:167 C/gedit-shortcut-keys.page:253
+#: C/gedit-shortcut-keys.page:273 C/gedit-shortcut-keys.page:325
+#: C/gedit-shortcut-keys.page:358 C/gedit-shortcut-keys.page:387
 msgid "Action"
 msgstr "Acció"
 
 #. (itstool) path: td/p
 #: C/gedit-shortcut-keys.page:58 C/gedit-shortcut-keys.page:114
-#: C/gedit-shortcut-keys.page:168 C/gedit-shortcut-keys.page:262
-#: C/gedit-shortcut-keys.page:282 C/gedit-shortcut-keys.page:319
-#: C/gedit-shortcut-keys.page:348
+#: C/gedit-shortcut-keys.page:168 C/gedit-shortcut-keys.page:254
+#: C/gedit-shortcut-keys.page:274 C/gedit-shortcut-keys.page:326
+#: C/gedit-shortcut-keys.page:359 C/gedit-shortcut-keys.page:388
 msgid "Keyboard shortcut"
 msgstr "Drecera de teclat"
 
@@ -3120,8 +3115,7 @@ msgid ""
 "<keyseq><key>Shift</key><key>Ctrl</key><key>Alt</key><key>Page up</key></"
 "keyseq>"
 msgstr ""
-"<keyseq><key>Maj</key><key>Ctrl</key><key>Alt</key><key>RePàg</key></"
-"keyseq>"
+"<keyseq><key>Maj</key><key>Ctrl</key><key>Alt</key><key>RePàg</key></keyseq>"
 
 #. (itstool) path: td/p
 #: C/gedit-shortcut-keys.page:103
@@ -3134,8 +3128,7 @@ msgid ""
 "<keyseq><key>Shift</key><key>Ctrl</key><key>Alt</key><key>Page down</key></"
 "keyseq>"
 msgstr ""
-"<keyseq><key>Maj</key><key>Ctrl</key><key>Alt</key><key>AvPàg</key></"
-"keyseq>"
+"<keyseq><key>Maj</key><key>Ctrl</key><key>Alt</key><key>AvPàg</key></keyseq>"
 
 #. (itstool) path: table/title
 #: C/gedit-shortcut-keys.page:110
@@ -3244,351 +3237,426 @@ msgstr "Tecles de drecera per editar fitxers"
 
 #. (itstool) path: td/p
 #: C/gedit-shortcut-keys.page:173
-msgid "Move to the beginning of the current line"
-msgstr "Desplaceu-vos al principi de la línia actual"
-
-#. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:174
-msgid "<key>Home</key>"
-msgstr "<key>Inici</key>"
-
-#. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:177
-msgid "Move to the end of the current line"
-msgstr "Desplaceu-vos al final de la línia actual"
-
-#. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:178
-msgid "<key>End</key>"
-msgstr "<key>Final</key>"
-
-#. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:181
-msgid "Move to the beginning of the document"
-msgstr "Desplaceu-vos al principi del document"
-
-#. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:182
-msgid "<keyseq><key>Ctrl</key><key>Home</key></keyseq>"
-msgstr "<keyseq><key>Ctrl</key><key>Inici</key></keyseq>"
-
-#. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:185
-msgid "Move to the end of the document"
-msgstr "Desplaceu-vos al final del document"
-
-#. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:186
-msgid "<keyseq><key>Ctrl</key><key>End</key></keyseq>"
-msgstr "<keyseq><key>Ctrl</key><key>Final</key></keyseq>"
-
-#. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:189
 msgid "Move the selected word right one word"
 msgstr "Desplaceu la paraula seleccionada una paraula a la dreta"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:190
+#: C/gedit-shortcut-keys.page:174
 msgid "<keyseq><key>Alt</key><key>Right Arrow</key></keyseq>"
-msgstr "<keyseq><key>Alt</key><key>Cursor dret</key></keyseq>"
+msgstr "<keyseq><key>Alt</key><key>Fletxa dreta</key></keyseq>"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:193
+#: C/gedit-shortcut-keys.page:177
 msgid "Move the selected word left one word"
 msgstr "Desplaceu la paraula seleccionada una paraula a l'esquerra"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:194
+#: C/gedit-shortcut-keys.page:178
 msgid "<keyseq><key>Alt</key><key>Left Arrow</key></keyseq>"
-msgstr "<keyseq><key>Alt</key><key>Cursor esquerra</key></keyseq>"
+msgstr "<keyseq><key>Alt</key><key>Fletxa esquerra</key></keyseq>"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:197
+#: C/gedit-shortcut-keys.page:181
 msgid "Undo the last action"
 msgstr "Desfer la darrera acció"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:198
+#: C/gedit-shortcut-keys.page:182
 msgid "<keyseq><key>Ctrl</key><key>Z</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>Z</key></keyseq>"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:201
+#: C/gedit-shortcut-keys.page:185
 msgid "Redo the last undone action"
 msgstr "Refer la darrera acció desfeta"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:202
+#: C/gedit-shortcut-keys.page:186
 msgid "<keyseq><key>Ctrl</key><key>Shift</key> <key>Z</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>Maj</key> <key>Z</key></keyseq>"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:206
+#: C/gedit-shortcut-keys.page:190
 msgid "Cut the selected text or region and place it on the clipboard"
 msgstr "Talleu el text o l'àrea seleccionada i poseu-la en el porta-retalls"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:208
+#: C/gedit-shortcut-keys.page:192
 msgid "<keyseq><key>Ctrl</key><key>X</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>X</key></keyseq>"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:211
+#: C/gedit-shortcut-keys.page:195
 msgid "Copy the selected text or region onto the clipboard"
 msgstr "Copieu el text o àrea seleccionada al porta-retalls"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:212
+#: C/gedit-shortcut-keys.page:196
 msgid "<keyseq><key>Ctrl</key><key>C</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>C</key></keyseq>"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:215
+#: C/gedit-shortcut-keys.page:199
 msgid "Paste the contents of the clipboard"
 msgstr "Enganxeu el contingut del porta-retalls"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:216
+#: C/gedit-shortcut-keys.page:200
 msgid "<keyseq><key>Ctrl</key><key>V</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>V</key></keyseq>"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:219
+#: C/gedit-shortcut-keys.page:203
 msgid "Select all text in the file"
 msgstr "Seleccioneu tot el text del fitxer"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:220
+#: C/gedit-shortcut-keys.page:204
 msgid "<keyseq><key>Ctrl</key><key>A</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>A</key></keyseq>"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:223
+#: C/gedit-shortcut-keys.page:207
+msgid "Unselect all text"
+msgstr "Desselecciona tot el text"
+
+#. (itstool) path: td/p
+#: C/gedit-shortcut-keys.page:208
+msgid "<keyseq><key>Ctrl</key><key>Backslash</key></keyseq>"
+msgstr "<keyseq><key>Ctrl</key><key>Barra inversa</key></keyseq>"
+
+#. (itstool) path: td/p
+#: C/gedit-shortcut-keys.page:211
 msgid "Delete the current line"
 msgstr "Esborreu la línia actual"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:224
+#: C/gedit-shortcut-keys.page:212
 msgid "<keyseq><key>Ctrl</key><key>D</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>D</key></keyseq>"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:227
+#: C/gedit-shortcut-keys.page:215
 msgid "Move the selected line up one line"
 msgstr "Moveu la línia seleccionada una línia amunt"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:228
+#: C/gedit-shortcut-keys.page:216
 msgid "<keyseq><key>Alt</key><key>Up Arrow</key></keyseq>"
-msgstr "<keyseq><key>Alt</key><key>Cursor amunt</key></keyseq>"
+msgstr "<keyseq><key>Alt</key><key>Fletxa amunt</key></keyseq>"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:231
+#: C/gedit-shortcut-keys.page:219
 msgid "Move the selected line down one line"
 msgstr "Moveu la línia seleccionada una línia avall"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:232
+#: C/gedit-shortcut-keys.page:220
 msgid "<keyseq><key>Alt</key><key>Down Arrow</key></keyseq>"
-msgstr "<keyseq><key>Alt</key><key>Cursor avall</key></keyseq>"
+msgstr "<keyseq><key>Alt</key><key>Fletxa avall</key></keyseq>"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:235
+#: C/gedit-shortcut-keys.page:223
 msgid "Add a tab stop"
 msgstr "Afegeix un tabulador"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:236
+#: C/gedit-shortcut-keys.page:224
 msgid "<keyseq><key>Tab</key></keyseq>"
 msgstr "<keyseq><key>Tab</key></keyseq>"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:239
+#: C/gedit-shortcut-keys.page:227
 msgid "Remove a tab stop"
 msgstr "Suprimeix un tabulador"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:240
+#: C/gedit-shortcut-keys.page:228
 msgid "<keyseq><key>Shift</key><key>Tab</key></keyseq>"
 msgstr "<keyseq><key>Maj</key><key>Tab</key></keyseq>"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:243
+#: C/gedit-shortcut-keys.page:231
 msgid "Convert the selected text to upper case"
 msgstr "Posa en majúscula el text seleccionat"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:244
+#: C/gedit-shortcut-keys.page:232
 msgid "<keyseq><key>Ctrl</key><key>U</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>U</key></keyseq>"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:247
+#: C/gedit-shortcut-keys.page:235
 msgid "Convert the selected text to lower case"
 msgstr "Posa en minúscula el text seleccionat"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:248
+#: C/gedit-shortcut-keys.page:236
 msgid "<keyseq><key>Ctrl</key><key>L</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>L</key></keyseq>"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:251
+#: C/gedit-shortcut-keys.page:239
 msgid "Toggle case of the selected text"
 msgstr "Commuta entre majúscules/minúscules el text seleccionat"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:252
+#: C/gedit-shortcut-keys.page:240
 msgid "<keyseq><key>Ctrl</key><key>~</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>~</key></keyseq>"
 
+#. (itstool) path: td/p
+#: C/gedit-shortcut-keys.page:243
+msgid "Toggle cursor visibility"
+msgstr "Canvia la visibilitat del cursor"
+
+#. (itstool) path: td/p
+#: C/gedit-shortcut-keys.page:244
+msgid "<keyseq><key>F7</key></keyseq>"
+msgstr "<keyseq><key>F7</key></keyseq>"
+
 #. (itstool) path: table/title
-#: C/gedit-shortcut-keys.page:258
+#: C/gedit-shortcut-keys.page:250
 msgid "Shortcut keys for showing and hiding panes"
 msgstr "Tecles de drecera per mostrar i amagar panells"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:267
+#: C/gedit-shortcut-keys.page:259
 msgid "Show / hide the side panel"
 msgstr "Mostreu / amagueu el quadre lateral"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:268
+#: C/gedit-shortcut-keys.page:260
 msgid "<key>F9</key>"
 msgstr "<key>F9</key>"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:271
+#: C/gedit-shortcut-keys.page:263
 msgid "Open the file menu"
 msgstr "Obre el menú de fitxers"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:272
+#: C/gedit-shortcut-keys.page:264
 msgid "<key>F10</key>"
 msgstr "<key>F10</key>"
 
 #. (itstool) path: table/title
-#: C/gedit-shortcut-keys.page:278
-msgid "Shortcut keys for searching"
-msgstr "Tecles de drecera per a la cerca"
+#: C/gedit-shortcut-keys.page:270
+msgid "Shortcut keys for navigation"
+msgstr "Tecles de drecera per a la navegació"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:287
-msgid "Find a string"
-msgstr "Cerqueu una cadena"
+#: C/gedit-shortcut-keys.page:279
+msgid "Move to matching bracket"
+msgstr "Mou al claudàtor concordant"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:288
-msgid "<keyseq><key>Ctrl</key><key>F</key></keyseq>"
-msgstr "<keyseq><key>Ctrl</key><key>F</key></keyseq>"
+#: C/gedit-shortcut-keys.page:280
+msgid "<keyseq><key>Ctrl</key><key>%</key></keyseq>"
+msgstr "<keyseq><key>Ctrl</key><key>%</key></keyseq>"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:291
-msgid "Find the next instance of the string"
-msgstr "Busca la següent aparició de la cadena"
-
-#. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:292
-msgid "<keyseq><key>Ctrl</key><key>G</key></keyseq>"
-msgstr "<keyseq><key>Ctrl</key><key>G</key></keyseq>"
-
-#. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:295
-msgid "Find the previous instance of the string"
-msgstr "Busca l'aparició anterior de la cadena"
-
-#. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:296
-msgid "<keyseq><key>Ctrl</key><key>Shift</key><key>G</key></keyseq>"
-msgstr "<keyseq><key>Ctrl</key><key>Maj</key><key>G</key></keyseq>"
-
-#. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:299
-msgid "Search and Replace"
-msgstr "Cerqueu i reemplaceu"
-
-#. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:300
-msgid "<keyseq><key>Ctrl</key><key>H</key></keyseq>"
-msgstr "<keyseq><key>Ctrl</key><key>H</key></keyseq>"
-
-#. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:303
-msgid "Clear highlight"
-msgstr "Neteja el ressaltat"
-
-#. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:304
-msgid "<keyseq><key>Ctrl</key><key>Shift</key> <key>K</key></keyseq>"
-msgstr "<keyseq><key>Ctrl</key><key>Maj</key> <key>K</key></keyseq>"
-
-#. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:308
+#: C/gedit-shortcut-keys.page:283
 msgid "Goto line"
 msgstr "Vés a la línia"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:309
+#: C/gedit-shortcut-keys.page:284
 msgid "<keyseq><key>Ctrl</key><key>I</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>I</key></keyseq>"
 
-#. (itstool) path: table/title
+#. (itstool) path: td/p
+#: C/gedit-shortcut-keys.page:287
+msgid "Move to the beginning of the current line"
+msgstr "Desplaceu-vos al principi de la línia actual"
+
+#. (itstool) path: td/p
+#: C/gedit-shortcut-keys.page:288
+msgid "<key>Home</key>"
+msgstr "<key>Inici</key>"
+
+#. (itstool) path: td/p
+#: C/gedit-shortcut-keys.page:291
+msgid "Move to the end of the current line"
+msgstr "Desplaceu-vos al final de la línia actual"
+
+#. (itstool) path: td/p
+#: C/gedit-shortcut-keys.page:292
+msgid "<key>End</key>"
+msgstr "<key>Fi</key>"
+
+#. (itstool) path: td/p
+#: C/gedit-shortcut-keys.page:295
+msgid "Move to the beginning of the document"
+msgstr "Desplaceu-vos al principi del document"
+
+#. (itstool) path: td/p
+#: C/gedit-shortcut-keys.page:296
+msgid "<keyseq><key>Ctrl</key><key>Home</key></keyseq>"
+msgstr "<keyseq><key>Ctrl</key><key>Inici</key></keyseq>"
+
+#. (itstool) path: td/p
+#: C/gedit-shortcut-keys.page:299
+msgid "Move to the end of the document"
+msgstr "Desplaceu-vos al final del document"
+
+#. (itstool) path: td/p
+#: C/gedit-shortcut-keys.page:300
+msgid "<keyseq><key>Ctrl</key><key>End</key></keyseq>"
+msgstr "<keyseq><key>Ctrl</key><key>Fi</key></keyseq>"
+
+#. (itstool) path: td/p
+#: C/gedit-shortcut-keys.page:303
+msgid "Move viewport up within the file"
+msgstr "Mou l'àrea de visualització cap amunt dins del fitxer"
+
+#. (itstool) path: td/p
+#: C/gedit-shortcut-keys.page:304
+msgid "<keyseq><key>Shift</key><key>Alt</key><key>Up</key></keyseq>"
+msgstr "<keyseq><key>Shift</key><key>Alt</key><key>Amunt</key></keyseq>"
+
+#. (itstool) path: td/p
+#: C/gedit-shortcut-keys.page:307
+msgid "Move viewport down within the file"
+msgstr "Mou l'àrea de visualització avall dins del fitxer"
+
+#. (itstool) path: td/p
+#: C/gedit-shortcut-keys.page:308
+msgid "<keyseq><key>Shift</key><key>Alt</key><key>Down</key></keyseq>"
+msgstr "<keyseq><key>Maj</key><key>Alt</key> <key>Avall</key></keyseq>"
+
+#. (itstool) path: td/p
+#: C/gedit-shortcut-keys.page:311
+msgid "Move viewport to beginning of file"
+msgstr "Mou l'àrea de visualització al començament del fitxer"
+
+#. (itstool) path: td/p
+#: C/gedit-shortcut-keys.page:312
+msgid "<keyseq><key>Shift</key><key>Alt</key><key>Home</key></keyseq>"
+msgstr "<keyseq><key>Maj</key><key>Alt</key><key>Inici</key></keyseq>"
+
+#. (itstool) path: td/p
 #: C/gedit-shortcut-keys.page:315
+msgid "Move viewport to end of file"
+msgstr "Mou l'àrea de visualització al final del fitxer"
+
+#. (itstool) path: td/p
+#: C/gedit-shortcut-keys.page:316
+msgid "<keyseq><key>Shift</key><key>Alt</key><key>End</key></keyseq>"
+msgstr "<keyseq><key>Maj</key><key>Alt</key><key>Fi</key></keyseq>"
+
+#. (itstool) path: table/title
+#: C/gedit-shortcut-keys.page:322
+msgid "Shortcut keys for searching"
+msgstr "Tecles de drecera per a la cerca"
+
+#. (itstool) path: td/p
+#: C/gedit-shortcut-keys.page:331
+msgid "Find a string"
+msgstr "Cerqueu una cadena"
+
+#. (itstool) path: td/p
+#: C/gedit-shortcut-keys.page:332
+msgid "<keyseq><key>Ctrl</key><key>F</key></keyseq>"
+msgstr "<keyseq><key>Ctrl</key><key>F</key></keyseq>"
+
+#. (itstool) path: td/p
+#: C/gedit-shortcut-keys.page:335
+msgid "Find the next instance of the string"
+msgstr "Busca la següent aparició de la cadena"
+
+#. (itstool) path: td/p
+#: C/gedit-shortcut-keys.page:336
+msgid "<keyseq><key>Ctrl</key><key>G</key></keyseq>"
+msgstr "<keyseq><key>Ctrl</key><key>G</key></keyseq>"
+
+#. (itstool) path: td/p
+#: C/gedit-shortcut-keys.page:339
+msgid "Find the previous instance of the string"
+msgstr "Busca l'aparició anterior de la cadena"
+
+#. (itstool) path: td/p
+#: C/gedit-shortcut-keys.page:340
+msgid "<keyseq><key>Ctrl</key><key>Shift</key><key>G</key></keyseq>"
+msgstr "<keyseq><key>Ctrl</key><key>Maj</key><key>G</key></keyseq>"
+
+#. (itstool) path: td/p
+#: C/gedit-shortcut-keys.page:343
+msgid "Search and Replace"
+msgstr "Cerqueu i reemplaceu"
+
+#. (itstool) path: td/p
+#: C/gedit-shortcut-keys.page:344
+msgid "<keyseq><key>Ctrl</key><key>H</key></keyseq>"
+msgstr "<keyseq><key>Ctrl</key><key>H</key></keyseq>"
+
+#. (itstool) path: td/p
+#: C/gedit-shortcut-keys.page:347
+msgid "Clear highlight"
+msgstr "Neteja el ressaltat"
+
+#. (itstool) path: td/p
+#: C/gedit-shortcut-keys.page:348
+msgid "<keyseq><key>Ctrl</key><key>Shift</key> <key>K</key></keyseq>"
+msgstr "<keyseq><key>Ctrl</key><key>Maj</key> <key>K</key></keyseq>"
+
+#. (itstool) path: table/title
+#: C/gedit-shortcut-keys.page:355
 msgid "Shortcut keys for tools"
 msgstr "Tecles de drecera per a eines"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:324
+#: C/gedit-shortcut-keys.page:364
 msgid "Check spelling"
 msgstr "Comproveu l’ortografia"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:325
+#: C/gedit-shortcut-keys.page:365
 msgid "<keyseq><key>Shift</key><key>F7</key></keyseq>"
 msgstr "<keyseq><key>Maj</key><key>F7</key></keyseq>"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:328
+#: C/gedit-shortcut-keys.page:368
 msgid "Remove trailing spaces (with plugin)"
 msgstr "Suprimeix els caràcters finals (amb el connector)"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:329
+#: C/gedit-shortcut-keys.page:369
 msgid "<keyseq><key>Alt</key><key>F12</key></keyseq>"
 msgstr "<keyseq><key>Alt</key><key>F12</key></keyseq>"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:332
+#: C/gedit-shortcut-keys.page:372
 msgid "Run \"make\" in the current directory (with plugin)"
-msgstr "Executa \"make\" a la carpeta actual (amb el connector)"
+msgstr "Executa «make» a la carpeta actual (amb el connector)"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:333
+#: C/gedit-shortcut-keys.page:373
 msgid "<key>F8</key>"
 msgstr "<key>F8</key>"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:336
+#: C/gedit-shortcut-keys.page:376
 msgid "Directory listing (with plugin)"
 msgstr "Llistat de carpetes (amb el connector)"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:337
+#: C/gedit-shortcut-keys.page:377
 msgid "<keyseq><key>Ctrl</key><key>Shift</key> <key>D</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>Maj</key> <key>D</key></keyseq>"
 
 #. (itstool) path: table/title
-#: C/gedit-shortcut-keys.page:344
+#: C/gedit-shortcut-keys.page:384
 msgid "Shortcut keys for user help"
 msgstr "Accés directe a l'ajuda per l'usuari"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:353
+#: C/gedit-shortcut-keys.page:393
 msgid "Open the gedit user guide"
 msgstr "Obrir la guia d'usuari del gedit"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:354
+#: C/gedit-shortcut-keys.page:394
 msgid "<key>F1</key>"
 msgstr "<key>F1</key>"
 
@@ -3628,8 +3696,8 @@ msgstr ""
 msgid ""
 "Select <gui style=\"menuitem\">Spell Checker</gui> to enable the plugin."
 msgstr ""
-"Seleccioneu <gui style=\"menuitem\">Comprovador d'ortografia</gui> per activar el "
-"connector."
+"Seleccioneu <gui style=\"menuitem\">Comprovador d'ortografia</gui> per "
+"activar el connector."
 
 #. (itstool) path: section/p
 #: C/gedit-spellcheck.page:51
@@ -3773,12 +3841,12 @@ msgstr "Diccionaris"
 #. (itstool) path: section/p
 #: C/gedit-spellcheck.page:125
 msgid ""
-"<app>gedit</app> uses <link href=\"http://www.abisource.com/projects/enchant/"
-"\">Enchant</link>, a small system utility, for spell checking. Enchant can "
-"use several different dictionaries to check your spelling. Two such "
-"dictionary back-ends are <em>Hunspell</em> and <em>Aspell</em>."
+"<app>gedit</app> uses <link href=\"https://www.abisource.com/projects/"
+"enchant/\">Enchant</link>, a small system utility, for spell checking. "
+"Enchant can use several different dictionaries to check your spelling. Two "
+"such dictionary back-ends are <em>Hunspell</em> and <em>Aspell</em>."
 msgstr ""
-"<app>gedit</app> utilitza <link href=\"http://www.abisource.com/projects/"
+"<app>gedit</app> utilitza <link href=\"https://www.abisource.com/projects/"
 "enchant/\">Enchant</link>, una petita utilitat del sistema, per corregir "
 "ortogràficament. Enchant pot utilitzar diferents diccionaris per fer les "
 "correccions ortogràfiques. Hi ha dos diccionaris en segon pla d'execució: "
@@ -3834,10 +3902,10 @@ msgid ""
 msgstr ""
 "Si la vostra sintaxi o llenguatge no es ressalta d'entrada, podeu "
 "seleccionar la sintaxi o llenguatge adequat fent clic a <guiseq><gui style="
-"\"menu\">Vista</gui> <gui style=\"menuitem\">Mode de ressaltat</gui></guiseq>, "
-"i aleshores triar la sintaxi adequada. Opcionalment, podeu seleccionar el "
-"nom de la sintaxi d'una llista a la part inferior de la finestra del "
-"<app>gedit</app>."
+"\"menu\">Vista</gui> <gui style=\"menuitem\">Mode de ressaltat</gui></"
+"guiseq>, i aleshores triar la sintaxi adequada. Opcionalment, podeu "
+"seleccionar el nom de la sintaxi d'una llista a la part inferior de la "
+"finestra del <app>gedit</app>."
 
 #. (itstool) path: info/desc
 #: C/gedit-tab-groups.page:11
@@ -3882,7 +3950,7 @@ msgid ""
 "main menu."
 msgstr ""
 "Aneu a <guiseq><gui>Documents</gui><gui>Grup de pestanyes nou</gui></guiseq> "
-"al menú principal"
+"al menú principal."
 
 #. (itstool) path: item/p
 #: C/gedit-tab-groups.page:42
@@ -3994,7 +4062,7 @@ msgstr "Feu clic i mantingueu el botó premut sobre la pestanya."
 #. (itstool) path: item/p
 #: C/gedit-tab-groups.page:102
 msgid "Drag the tab to another tab group pane."
-msgstr "Arrossegueu la pestanya al panell d'un altre grup"
+msgstr "Arrossegueu la pestanya al panell d'un altre grup."
 
 #. (itstool) path: item/p
 #: C/gedit-tab-groups.page:105
@@ -4118,8 +4186,9 @@ msgid ""
 msgstr ""
 "Potser resultar més fàcil moure una pestanya d’una finestra a una altra "
 "arrossegant-la a <gui>Activitats</gui> hot-corner del <gui>Shell de GNOME</"
-"gui>. Així es mostra cadascuna de les finestres obertes del <app>gedit</app>. "
-"Podeu deixar anar la pestanya a la finestra de<app>gedit</app> que desitgeu."
+"gui>. Així es mostra cadascuna de les finestres obertes del <app>gedit</"
+"app>. Podeu deixar anar la pestanya a la finestra de<app>gedit</app> que "
+"desitgeu."
 
 #. (itstool) path: section/p
 #: C/gedit-tabs-moving.page:111
@@ -4239,11 +4308,11 @@ msgid ""
 "with gedit</link> and <link xref=\"gedit-shortcut-keys\">Shortcut keys</"
 "link> pages."
 msgstr ""
-"Us donem la benvinguda a la guia d'ajuda del <app>gedit</app>. Per una ràpida "
-"introducció a les funcionalitats més bàsiques del <app>gedit</app>, així com "
-"d'algunes dreceres de teclat avançades, visiteu les pàgines <link xref="
-"\"gedit-quickstart\">comenceu amb el gedit</link> i <link xref="
-"\"gedit-shortcut-keys\">dreceres de teclat</link>."
+"Us donem la benvinguda a la guia d'ajuda del <app>gedit</app>. Per una "
+"ràpida introducció a les funcionalitats més bàsiques del <app>gedit</app>, "
+"així com d'algunes dreceres de teclat avançades, visiteu les pàgines <link "
+"xref=\"gedit-quickstart\">comenceu amb el gedit</link> i <link xref=\"gedit-"
+"shortcut-keys\">dreceres de teclat</link>."
 
 #. (itstool) path: page/p
 #: C/index.page:36
