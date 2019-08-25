@@ -21,7 +21,7 @@ msgstr ""
 "Project-Id-Version: gedit master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gedit/issues\n"
 "POT-Creation-Date: 2019-08-07 01:38+0000\n"
-"PO-Revision-Date: 2019-02-09 18:10+0900\n"
+"PO-Revision-Date: 2019-08-25 18:00+0900\n"
 "Last-Translator: sicklylife <translation@sicklylife.jp>\n"
 "Language-Team: Japanese <gnome-translation@gnome.gr.jp>\n"
 "Language: ja\n"
@@ -74,10 +74,8 @@ msgstr "テキストエディター"
 #. The list MUST also end with a semicolon!
 #. Search terms to find this application.
 #: data/org.gnome.gedit.desktop.in.in:18
-#, fuzzy
-#| msgid "Text;Editor;Plaintext;Write;"
 msgid "Text;Editor;Plaintext;Write;gedit;"
-msgstr "Text;Editor;Plaintext;Write;テキスト;エディター;プレーンテキスト;"
+msgstr "Text;Editor;Plaintext;Write;gedit;テキスト;エディター;プレーンテキスト;"
 
 #: data/org.gnome.gedit.desktop.in.in:22
 msgid "New Window"
@@ -816,7 +814,7 @@ msgstr "名前を付けて保存"
 
 #: gedit/gedit-commands-file.c:1101
 msgid "No changes need to be saved"
-msgstr ""
+msgstr "保存が必要な変更はありません"
 
 #: gedit/gedit-commands-file.c:1444
 #, c-format
@@ -896,21 +894,21 @@ msgstr ""
 msgid "translator-credits"
 msgstr ""
 "相花 毅 <takeshi.aihana@gmail.com>\n"
-"佐藤 暁 <ss@gnome.gr.jp>\n"
-"KAMAGASAKO Masatoshi <emerald@gnome.gr.jp>\n"
-"Akira TAGOH <tagoh@gnome.gr.jp>\n"
-"Yukihiro Nakai <nakai@gnome.gr.jp>\n"
-"Yuusuke Tahara <tahara@gnome.gr.jp>\n"
-"Akira Higuchi <a-higuti@math.sci.hokudai.ac.jp>\n"
-"やまね ひでき <henrich@debian.or.jp>\n"
 "草野 貴之 <AE5T-KSN@asahi-net.or.jp>\n"
-"松澤 二郎 <jmatsuzawa@gnome.org>\n"
-"日本GNOMEユーザー会 http://www.gnome.gr.jp/\n"
+"佐藤 暁 <ss@gnome.gr.jp>\n"
 "平 初 <htaira@redhat.com>\n"
-"Shushi Kurose <md81bird@hitaki.net>\n"
+"日本 GNOME ユーザー会 http://www.gnome.gr.jp/\n"
+"松澤 二郎 <jmatsuzawa@gnome.org>\n"
+"やまね ひでき <henrich@debian.or.jp>\n"
+"Akira Higuchi <a-higuti@math.sci.hokudai.ac.jp>\n"
+"Akira TAGOH <tagoh@gnome.gr.jp>\n"
+"KAMAGASAKO Masatoshi <emerald@gnome.gr.jp>\n"
 "Kenichi Ito <ken.i54k@gmail.com>\n"
+"Shushi Kurose <md81bird@hitaki.net>\n"
+"sicklylife <translation@sicklylife.jp>\n"
 "sujiniku <sujinikusityuu@gmail.com>\n"
-"sicklylife <translation@sicklylife.jp>"
+"Yukihiro Nakai <nakai@gnome.gr.jp>\n"
+"Yuusuke Tahara <tahara@gnome.gr.jp>"
 
 #: gedit/gedit-commands-search.c:107
 #, c-format
@@ -2338,12 +2336,9 @@ msgid "Select all text"
 msgstr "すべてのテキストを選択する"
 
 #: gedit/resources/ui/gedit-shortcuts.ui:218
-#, fuzzy
-#| msgctxt "shortcut window"
-#| msgid "Select all text"
 msgctxt "shortcut window"
 msgid "Unselect all text"
-msgstr "すべてのテキストを選択する"
+msgstr "すべてのテキストの選択を解除する"
 
 #: gedit/resources/ui/gedit-shortcuts.ui:226
 msgctxt "shortcut window"
@@ -2366,11 +2361,9 @@ msgid "Paste text from clipboard"
 msgstr "テキストをクリップボードから貼り付ける"
 
 #: gedit/resources/ui/gedit-shortcuts.ui:253
-#, fuzzy
-#| msgid "Activation"
 msgctxt "shortcut window"
 msgid "Navigation"
-msgstr "アクティベーション"
+msgstr "ナビゲーション"
 
 #: gedit/resources/ui/gedit-shortcuts.ui:258
 msgctxt "shortcut window"
@@ -2398,11 +2391,9 @@ msgid "Move viewport to beginning of file"
 msgstr ""
 
 #: gedit/resources/ui/gedit-shortcuts.ui:293
-#, fuzzy
-#| msgid "Highlight matching _brackets"
 msgctxt "shortcut window"
 msgid "Move to matching bracket"
-msgstr "対応するカッコを強調表示する(_B)"
+msgstr "対応するカッコに移動する"
 
 #: gedit/resources/ui/gedit-shortcuts.ui:301
 msgctxt "shortcut window"
@@ -3551,28 +3542,20 @@ msgstr "スペルミスの強調表示(_H)"
 
 #: plugins/spell/org.gnome.gedit.plugins.spell.gschema.xml.in:5
 #: plugins/spell/resources/ui/gedit-spell-setup-dialog.ui:75
-#, fuzzy
-#| msgid "_Highlight Misspelled Words"
 msgid "Highlight misspelled words"
-msgstr "スペルミスの強調表示(_H)"
+msgstr "スペルミスを強調表示する"
 
 #: plugins/spell/org.gnome.gedit.plugins.spell.gschema.xml.in:6
-#, fuzzy
-#| msgid "_Highlight Misspelled Words"
 msgid "Default setting for highlight misspelled words."
-msgstr "スペルミスの強調表示(_H)"
+msgstr "スペルミスの強調表示をデフォルトの設定にします。"
 
 #: plugins/spell/resources/ui/gedit-spell-setup-dialog.ui:7
-#, fuzzy
-#| msgid "Configure date/time plugin"
 msgid "Configure spell plugin"
-msgstr "日付/時間プラグインの設定"
+msgstr "スペルプラグインの設定"
 
 #: plugins/spell/resources/ui/gedit-spell-setup-dialog.ui:61
-#, fuzzy
-#| msgid "Create a new document"
 msgid "Defaults for new documents"
-msgstr "新しいドキュメントを作成します"
+msgstr "新しいドキュメントのデフォルト"
 
 #: plugins/spell/spell.plugin.desktop.in:5
 msgid "Spell Checker"
