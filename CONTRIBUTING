@@ -5,7 +5,7 @@ See the file `docs/gedit-development-getting-started.md` and the rest of this
 file.
 
 Source code repository
-======================
+----------------------
 
 gedit source code is maintained using the git version control system
 and is available at the following location:
@@ -22,7 +22,7 @@ A web interface is available at:
 
 
 Building from git
-=================
+-----------------
 
 When building from a git checkout you will need to run the
 autogen.sh script which takes care of running automake, autoconf,
@@ -40,7 +40,7 @@ The JHBuild tool can take care of all this for you.
 
 
 Commit guidelines
-=================
+-----------------
 
 Please don't commit directly to the git repository unless
 you have been given the green light to commit freely to gedit.
@@ -91,7 +91,7 @@ tracker reference if applicable) and so forth. Be concise but not too brief.
 
 
 Code conventions
-================
+----------------
 
 You may encounter old code that doesn't follow all the following code
 conventions, but for new code it is better to follow them, for consistency.
@@ -117,7 +117,7 @@ conventions, but for new code it is better to follow them, for consistency.
 
 
 Programming best practices
-==========================
+--------------------------
 
 gedit is a pretty big piece of software, developed over the years by different
 people and GNOME technologies. Some parts of the code may be a little old. So
@@ -186,7 +186,7 @@ Here are some general advices.
 
 
 See also
-========
+--------
 
 https://developer.gnome.org/programming-guidelines/stable/
 https://wiki.gnome.org/Projects/GTK%2B/BestPractices
