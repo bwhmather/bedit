@@ -80,7 +80,9 @@ See the [Newcomers](https://wiki.gnome.org/Newcomers/) page to start
 contributing to GNOME in general.
 
 To know how to contribute to gedit specifically, read the `README.md` and
-`CONTRIBUTING` files present in the Git repository.
+`CONTRIBUTING.md` files present in the Git repository (and then you'll see that
+the `CONTRIBUTING.md` file refers to this file, but please don't end up in an
+infinite reading loop).
 
 To find something interesting to do, […]. TODO: provide list of easy tasks in
 gedit itself.
