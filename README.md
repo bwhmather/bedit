@@ -1,98 +1,62 @@
-General Information
-===================
+gedit - The GNOME text editor
+=============================
 
-This is version 3.33.90 of gedit. gedit is a small and lightweight UTF-8 text
-editor for the GNOME environment.
+This is version 3.33.90 of gedit.
 
-gedit is part of GNOME and uses the latest GTK+ and GNOME libraries.
-Complete GNOME integration is featured, with support for Drag and Drop (DnD) 
-from Nautilus (the GNOME file manager), the use of the GNOME help system,
-the Virtual File System GVfs and the GTK+ print framework.
+gedit is the official text editor of the GNOME desktop environment.
+While aiming at simplicity and ease of use, gedit is a powerful general
+purpose text editor.
 
-gedit uses a Multiple Document Interface (MDI), which lets you edit more than 
-one document at the same time.
+Whether you are writing the next bestseller, programming an innovative
+application, or simply taking some quick notes, gedit will be a reliable
+tool to accomplish your task.
 
-gedit supports most standard editing features, plus several not found in your 
-average text editor (plugins being the most notable of these).
+Its flexible plugin system allows you to tailor the application to your
+needs and adapt it to your workflow.
 
-The gedit core is written in the C language. Thanks to GObject introspection,
-plugins may also be written in other languages, like Vala and Python.
+See the [gedit official website](https://wiki.gnome.org/Apps/Gedit) for
+more information.
 
-Although new features are always under development, currently gedit has:
-
-* Complete support for UTF-8 text
-* Syntax highlighting
-* Support for editing remote files
-* Search and replace
-* Printing and Print Previewing Support
-* File Revert
-* A complete preferences interface
-* Configurable Plugin system, with optional python support
-
-
-Some of the plugins, packaged and installed with gedit include, among others:
-
-* Word count
-* Spell checker
-* File Browser
-* Automatic snippet expansion
-* Sort
-* Insert Date/Time
-* External Tools
-* Tag list
-
-Other external plugins are also available.
-
+License
+-------
 
 gedit is released under the GNU General Public License (GPL) version 2 or
-later, see the file 'COPYING' for more information.
+later, see the file `COPYING` for more information.
 
+Dependencies
+------------
 
-Resources
-=========
+gedit uses the GTK GUI toolkit.
 
-* [Official web site](https://wiki.gnome.org/Apps/Gedit)
-* [Latest gedit tarball](https://download.gnome.org/sources/gedit/)
-* [Information about gedit mailing lists](https://mail.gnome.org/mailman/listinfo/gedit-list)
-
+For a complete list of dependencies, see the file `meson.build` and search
+the section “Dependencies”.
 
 Installation
-============
+------------
 
-gedit requires `GTK+ >= 3.22.0`, `GtkSourceView >= 4.0.2` and
-`libpeas >= 1.14.1` libraries. It also has a run-time dependency on an
-icon theme for its icons. If gedit fails to display icons, installing
-GNOME's default adwaita-icon-theme is a simple way of providing them.
-
-`PyGObject 3.0.x` and `gobject-introspection 1.42.0` are required to enable
-python plugins support.
-
-`gspell >= 0.2.5` is required to enable the spell checking plugin.
+gedit uses the [Meson](https://mesonbuild.com/) build system.
 
 Simple install procedure:
 
 ```
-% tar Jxf gedit-3.33.90.tar.xz			# unpack the sources
-% cd gedit-3.33.90				# change to the toplevel directory
-% meson _build					# run the `configure' script
-% ninja -C _build				# build gedit
+$ meson builddir && cd builddir # Build configuration
+$ ninja                         # Build
 [ Become root if necessary ]
-% ninja -C _build install				# install gedit
+$ ninja install                 # Installation
 ```
 
 How to report bugs
-==================
+------------------
 
-Bugs should be reported to the [GNOME bug tracking system](https://wiki.gnome.org/Apps/Gedit/ReportingBugs).
-
+Please read
+[the wiki page on how to report bugs](https://wiki.gnome.org/Apps/Gedit/ReportingBugs),
+it contains a list of frequently reported bugs and a link to the bug
+tracker.
 
 Contributions
-=============
+-------------
 
-To contribute changes to the project, please fork the project on [the GNOME gitlab instance](https://gitlab.gnome.org/GNOME/gedit) and open a merge request.
-If the change fixes an existing bug, add the issue number in the merge request comment.
+gedit development relies on voluntary contributions and everyone is invited
+to help.
 
-See the file 'HACKING' for more detailed information.
-
-
-  The gedit team.
+See the file `HACKING` for more information.
