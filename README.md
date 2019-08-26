@@ -59,4 +59,4 @@ Contributions
 gedit development relies on voluntary contributions and everyone is invited
 to help.
 
-See the file `HACKING` for more information.
+See the file `CONTRIBUTING` for more information.
