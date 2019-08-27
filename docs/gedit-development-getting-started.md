@@ -2,7 +2,7 @@ gedit development - getting started
 ===================================
 
 The following explanations can be improved over time, if you see something
-missing.
+missing, a feedback is welcome.
 
 Programming languages and paradigms
 -----------------------------------
@@ -88,7 +88,8 @@ To find something interesting to do, […]. TODO: provide list of easy tasks in
 gedit itself.
 
 A good way to learn a lot of things is to write a new plugin (as a third-party
-plugin first). TODO: provide list of new plugins ideas.
+plugin first). To have some inspiration, see the wiki page
+[RequestedPlugins](https://wiki.gnome.org/Apps/Gedit/RequestedPlugins).
 
 A potentially easy task (but not always) is to fix compilation warnings, for
 example when a deprecated function is used. If you encounter a runtime warning
