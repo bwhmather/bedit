@@ -14,11 +14,11 @@ Contributions other than software development
 
 See the [GNOME wiki](https://wiki.gnome.org/).
 
-Doing *bug triaging* on the bug tracker is a very useful task for gedit, because
-gedit is used by many people and there are therefore lots of bug reports or
-feature requests. The gedit developers often have difficulties to triage all the
-bugs and do first line support. Having a curated list of important bugs to fix
-would tremendously help the gedit developers.
+Doing **bug triaging** on the bug tracker is a very useful task for gedit,
+because gedit is used by many people and there are therefore lots of bug reports
+or feature requests. The gedit developers often have difficulties to triage all
+the bugs and do first line support. Having a curated list of important bugs to
+fix would tremendously help the gedit developers.
 
 Software development
 --------------------
