@@ -57,21 +57,10 @@ gedit core provides:
 There is a class diagram of gedit core in the file `class-diagram.dia` (but it
 may be outdated, see the Git log for that file).
 
-Build
------
+Build/Installation
+------------------
 
-To compile the gedit source code from the Git repository, plus all the GNOME
-dependencies from Git as well, it is recommended to use one of the following
-build tool:
-- [Jhbuild](https://developer.gnome.org/jhbuild/unstable/)
-- Or [BuildStream](https://buildstream.build/)
-- Or [Flatpak](https://flatpak.org/)
-
-Jhbuild tips:
-- Try `ignore_suggests = True` in your jhbuildrc to have fewer dependencies to
-  build (see the difference with "jhbuild list gedit"). Another solution is to
-  put some modules in the skip variable in jhbuildrc.
-- Build also the dconf module to get preferences saved.
+See the file `install.md`.
 
 First contribution
 ------------------
