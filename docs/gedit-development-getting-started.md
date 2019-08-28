@@ -61,7 +61,7 @@ for that file).
 Build/Installation
 ------------------
 
-See the file [install.md](install.md).
+See the file [build.md](build.md).
 
 First contribution
 ------------------

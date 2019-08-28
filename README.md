@@ -34,7 +34,7 @@ search the section “Dependencies”.
 Installation
 ------------
 
-See the [docs/install.md](docs/install.md) file.
+To build gedit from source, see the [docs/build.md](docs/build.md) file.
 
 How to report bugs
 ------------------
