@@ -24,7 +24,7 @@ Software development
 --------------------
 
 To get started with gedit software development, see the file
-`docs/gedit-development-getting-started.md`.
+[docs/gedit-development-getting-started.md](docs/gedit-development-getting-started.md).
 
 gedit follows the same guidelines and code conventions as GtkSourceView. See
 the [GtkSourceView HACKING file](https://gitlab.gnome.org/GNOME/gtksourceview/blob/master/HACKING).

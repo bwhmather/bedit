@@ -54,13 +54,14 @@ gedit core provides:
 - A basic text editor.
 - The integration of libpeas, with an API for plugins.
 
-There is a class diagram of gedit core in the file `class-diagram.dia` (but it
-may be outdated, see the Git log for that file).
+There is a class diagram of gedit core in the file
+[class-diagram.dia](class-diagram.dia) (but it may be outdated, see the Git log
+for that file).
 
 Build/Installation
 ------------------
 
-See the file `install.md`.
+See the file [install.md](install.md).
 
 First contribution
 ------------------
@@ -68,10 +69,10 @@ First contribution
 See the [Newcomers](https://wiki.gnome.org/Newcomers/) page to start
 contributing to GNOME in general.
 
-To know how to contribute to gedit specifically, read the `README.md` and
-`CONTRIBUTING.md` files present in the Git repository (and then you'll see that
-the `CONTRIBUTING.md` file refers to this file, but please don't end up in an
-infinite reading loop).
+To know how to contribute to gedit specifically, read the
+[README.md](../README.md) and [CONTRIBUTING.md](../CONTRIBUTING.md) files
+present in the Git repository (and then you'll see that the `CONTRIBUTING.md`
+file refers to this file, but please don't end up in an infinite reading loop).
 
 To find something interesting to do, […]. TODO: provide list of easy tasks in
 gedit itself.
