@@ -51,11 +51,11 @@ There are several tools available that take care of the following:
 - Plus, for some tools: run in a container/sandbox.
 
 GNOME developers usually use one of these tools:
-- [Jhbuild](https://developer.gnome.org/jhbuild/unstable/)
+- [JHBuild](https://developer.gnome.org/jhbuild/unstable/)
 - Or [BuildStream](https://buildstream.build/)
 - Or [Flatpak](https://flatpak.org/)
 
-Jhbuild tips:
+JHBuild tips:
 - Try `ignore_suggests = True` in your jhbuildrc to have fewer dependencies to
   build (see the difference with "jhbuild list gedit"). Another solution is to
   put some modules in the skip variable in jhbuildrc.
