@@ -79,6 +79,11 @@ Implement it like in Firefox, show first a preview of the file to print.
 
 Sébastien Wilmet
 
+Replace search and replace dialog window by an horizontal bar above or below the text
+-------------------------------------------------------------------------------------
+
+To not hide the text.
+
 Windows and Mac OS X support
 ----------------------------
 
