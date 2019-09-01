@@ -20,16 +20,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gedit\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gedit/issues\n"
-"POT-Creation-Date: 2019-08-07 01:38+0000\n"
-"PO-Revision-Date: 2019-08-14 15:30+0200\n"
-"Last-Translator: Daniel Rusek <mail@asciiwolf.com>\n"
+"POT-Creation-Date: 2019-09-01 20:45+0000\n"
+"PO-Revision-Date: 2019-09-02 01:42+0200\n"
+"Last-Translator: Marek Černocký <marek@manet.cz>\n"
 "Language-Team: čeština <gnome-cs-list@gnome.org>\n"
 "Language: cs\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Poedit 2.2.3\n"
+"X-Generator: Gtranslator 2.91.7\n"
 
 #: data/org.gnome.gedit.appdata.xml.in:7
 msgid "gedit"
@@ -2452,29 +2452,27 @@ msgstr "Přejít na řádek"
 #: gedit/resources/ui/gedit-shortcuts.ui:265
 msgctxt "shortcut window"
 msgid "Move viewport up within the file"
-msgstr ""
+msgstr "Posunout se výřezem po souboru výš"
 
 #: gedit/resources/ui/gedit-shortcuts.ui:272
 msgctxt "shortcut window"
 msgid "Move viewport down within the file"
-msgstr ""
+msgstr "Posunout se výřezem po souboru níž"
 
 #: gedit/resources/ui/gedit-shortcuts.ui:279
 msgctxt "shortcut window"
 msgid "Move viewport to end of file"
-msgstr ""
+msgstr "Posunout se výřezem po souboru na konec"
 
 #: gedit/resources/ui/gedit-shortcuts.ui:286
 msgctxt "shortcut window"
 msgid "Move viewport to beginning of file"
-msgstr ""
+msgstr "Posunout se výřezem po souboru na začátek"
 
 #: gedit/resources/ui/gedit-shortcuts.ui:293
-#, fuzzy
-#| msgid "Highlight matching _brackets"
 msgctxt "shortcut window"
 msgid "Move to matching bracket"
-msgstr "Zvýrazňovat _odpovídající závorky"
+msgstr "Přejít na odpovídající závorku"
 
 #: gedit/resources/ui/gedit-shortcuts.ui:301
 msgctxt "shortcut window"
@@ -3625,22 +3623,16 @@ msgid "Highlight misspelled words"
 msgstr "Zvýrazňovat pravopisné chyby"
 
 #: plugins/spell/org.gnome.gedit.plugins.spell.gschema.xml.in:6
-#, fuzzy
-#| msgid "_Highlight Misspelled Words"
 msgid "Default setting for highlight misspelled words."
-msgstr "_Zvýrazňovat pravopisné chyby"
+msgstr "Výchozí nastavení pro zvýrazňování pravopisných chyb."
 
 #: plugins/spell/resources/ui/gedit-spell-setup-dialog.ui:7
-#, fuzzy
-#| msgid "Configure date/time plugin"
 msgid "Configure spell plugin"
-msgstr "Nastavit zásuvný modul pro vkládání data a času"
+msgstr "Nastavení zásuvného modul pro kontrolu pravopisu"
 
 #: plugins/spell/resources/ui/gedit-spell-setup-dialog.ui:61
-#, fuzzy
-#| msgid "Create a new document"
 msgid "Defaults for new documents"
-msgstr "Vytvořit nový dokument"
+msgstr "Výchozí pro nový dokument"
 
 #: plugins/spell/spell.plugin.desktop.in:5
 msgid "Spell Checker"
@@ -3735,30 +3727,3 @@ msgstr "Vložit datum/čas"
 #: plugins/time/time.plugin.desktop.in:6
 msgid "Inserts current date and time at the cursor position."
 msgstr "Vloží aktuální datum a čas na pozici kurzoru."
-
-#~ msgid "org.gnome.gedit"
-#~ msgstr "org.gnome.gedit"
-
-#~ msgid "Please check your installation."
-#~ msgstr "Zkontrolujte prosím svou instalaci."
-
-#~ msgid "Unable to open UI file %s. Error: %s"
-#~ msgstr "Nelze otevřít soubor „%s“ s uživatelským rozhraním. Chyba: %s"
-
-#~ msgid "Unable to find the object “%s” inside file %s."
-#~ msgstr "Nelze najít objekt „%s“ uvnitř souboru %s."
-
-#~ msgid "system-file-manager"
-#~ msgstr "system-file-manager"
-
-#~ msgid "text-x-script"
-#~ msgstr "text-x-script"
-
-#~ msgid "document-open"
-#~ msgstr "document-open"
-
-#~ msgid "view-sort-ascending"
-#~ msgstr "view-sort-ascending"
-
-#~ msgid "tools-check-spelling"
-#~ msgstr "tools-check-spelling"
