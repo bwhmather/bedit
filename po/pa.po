@@ -4,14 +4,13 @@
 # Amanpreet Singh Alam <amanliunx@netscapet.net>, 2004.
 # ASB <aalam@users.sf.net>, 2005, 2006, 2007.
 # Amanpreet Singh Alam <aalam@users.sf.net>, 2008.
-# A S Alam <aalam@users.sf.net>, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018.
+# A S Alam <aalam@users.sf.net>, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019.
 msgid ""
 msgstr ""
 "Project-Id-Version: gedit.HEAD\n"
-"Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?product=gedit"
-"&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2018-01-29 03:07+0000\n"
-"PO-Revision-Date: 2018-03-09 06:59-0600\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gedit/issues\n"
+"POT-Creation-Date: 2019-08-07 01:38+0000\n"
+"PO-Revision-Date: 2019-09-02 09:28-0700\n"
 "Last-Translator: A S Alam <alam.yellow@gmail.com>\n"
 "Language-Team: Punjabi <punjabi-users@list.sf.net>\n"
 "Language: pa\n"
@@ -20,14 +19,18 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-DamnedLies-Scope: partial\n"
-"X-Generator: Lokalize 2.0\n"
+"X-Generator: Lokalize 19.04.2\n"
 
-#: ../data/org.gnome.gedit.appdata.xml.in.h:1
-#: ../data/org.gnome.gedit.desktop.in.in.h:2
+#: data/org.gnome.gedit.appdata.xml.in:7
+#| msgid "About gedit"
+msgid "gedit"
+msgstr "ਜੀ-ਸੰਪਾਦਕ"
+
+#: data/org.gnome.gedit.appdata.xml.in:8 data/org.gnome.gedit.desktop.in.in:4
 msgid "Edit text files"
-msgstr "ਟੈਕਸਟ ਫਾਇਲਾਂ ਸੋਧੋ"
+msgstr "ਲਿਖਤ ਫਾਇਲਾਂ ਸੋਧੋ"
 
-#: ../data/org.gnome.gedit.appdata.xml.in.h:2
+#: data/org.gnome.gedit.appdata.xml.in:10
 msgid ""
 "gedit is the official text editor of the GNOME desktop environment. While "
 "aiming at simplicity and ease of use, gedit is a powerful general purpose "
@@ -37,7 +40,7 @@ msgstr ""
 " ਵਰਤਣ ਲਈ "
 "ਸੌਖਾ ਬਣਾਉਣਾ ਹੈ, ਗਨੋਮ ਆਮ ਵਰਤੋਂ ਲਈ ਮਜ਼ਬੂਤ ਟੈਕਸਟ ਐਡੀਟਰ ਹੈ।"
 
-#: ../data/org.gnome.gedit.appdata.xml.in.h:3
+#: data/org.gnome.gedit.appdata.xml.in:15
 msgid ""
 "Whether you are writing the next bestseller, programming an innovative "
 "application, or simply taking some quick notes, gedit will be a reliable "
@@ -47,7 +50,7 @@ msgstr ""
 " ਹੋਵੇ ਜਾਂ ਤੁਰੰਤ "
 "ਨੋਟ ਲੈਣੇ ਹੋਣ, ਜੀ-ਸੰਪਾਦਕ ਤੁਹਾਡੇ ਕੰਮਾਂ ਨੂੰ ਪੂਰਾ ਕਰਨ ਲਈ ਭਰੋਸੇਯੋਗ ਐਪਲੀਕੇਸ਼ਨ ਹੈ।"
 
-#: ../data/org.gnome.gedit.appdata.xml.in.h:4
+#: data/org.gnome.gedit.appdata.xml.in:20
 msgid ""
 "Its flexible plugin system allows you to tailor the application to your "
 "needs and adapt it to your workflow."
@@ -56,36 +59,31 @@ msgstr ""
 " ਮਾਹੌਲ ਵਿੱਚ "
 "ਢਾਲਣ ਲਈ ਸਹਾਇਕ ਹੈ।"
 
-#: ../data/org.gnome.gedit.desktop.in.in.h:1 ../gedit/gedit-print-job.c:730
+#: data/org.gnome.gedit.desktop.in.in:3 gedit/gedit-print-job.c:730
 msgid "Text Editor"
 msgstr "ਟੈਕਸਟ ਐਡੀਟਰ"
 
-#: ../data/org.gnome.gedit.desktop.in.in.h:3
-msgid "gedit Text Editor"
-msgstr "ਜੀ-ਸੰਪਾਦਕ ਟੈਕਸਟ ਐਡੀਟਰ"
+#. TRANSLATORS: Do NOT translate or localize the semicolons!
+#. The list MUST also end with a semicolon!
+#. Search terms to find this application.
+#: data/org.gnome.gedit.desktop.in.in:18
+#| msgid "Text;Editor;Plaintext;Write;"
+msgid "Text;Editor;Plaintext;Write;gedit;"
+msgstr "ਸ਼ਬਦ;ਟੈਕਸਟ;ਸੰਪਾਦਕ;ਐਡੀਟਰ;ਪਲੇਨਟੈਕਸਟ;ਜੀਸੰਪਾਦਕ;"
 
-#: ../data/org.gnome.gedit.desktop.in.in.h:4
-msgid "Text;Editor;Plaintext;Write;"
-msgstr "ਸ਼ਬਦ;ਟੈਕਸਟ;ਸੰਪਾਦਕ;ਐਡੀਟਰ;ਪਲੇਨਟੈਕਸਟ;"
-
-#: ../data/org.gnome.gedit.desktop.in.in.h:5
+#: data/org.gnome.gedit.desktop.in.in:22
 msgid "New Window"
 msgstr "ਨਵੀਂ ਵਿੰਡੋ"
 
-#: ../data/org.gnome.gedit.desktop.in.in.h:6
+#: data/org.gnome.gedit.desktop.in.in:26
 msgid "New Document"
 msgstr "ਨਵਾਂ ਡੌਕੂਮੈਂਟ"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:1
+#: data/org.gnome.gedit.gschema.xml.in:36
 msgid "Use Default Font"
 msgstr "ਡਿਫਾਲਟ ਫੋਂਟ ਵਰਤੋਂ"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:2
-#| msgid ""
-#| "Whether to use the system's default fixed width font for editing text "
-#| "instead of a font specific to gedit. If this option is turned off, then "
-#| "the font named in the \"Editor Font\" option will be used instead of the "
-#| "system font."
+#: data/org.gnome.gedit.gschema.xml.in:37
 msgid ""
 "Whether to use the system’s default fixed width font for editing text "
 "instead of a font specific to gedit. If this option is turned off, then the "
@@ -93,103 +91,88 @@ msgid ""
 "font."
 msgstr ""
 "ਜੀ-ਸੰਪਾਦਕ ਦੇ ਖਾਸ ਫੋਂਟ ਦੀ ਬਜਾਏ ਤੁਸੀਂ ਸਿਸਟਮ ਦੇ ਮੂਲ ਸਥਿਰੀ ਚੌੜਾਈ ਫੋਂਟ ਵੀ ਵਰਤ ਸਕਦੇ"
-" ਹੋ। "
-"ਜੇਕਰ ਇਹ ਚੋਣ ਬੰਦ ਹੈ ਤਾਂ “ਸੰਪਾਦਕ ਫੋਂਟ“ ਵਿੱਚ ਦੱਸੇ ਫੋਂਟ ਸਿਸਟਮ ਦੀ ਥਾਂ ਉੱਤੇ "
-"ਵਰਤੇ ਜਾਣਗੇ।"
+" ਹੋ। ਜੇਕਰ ਇਹ "
+"ਚੋਣ ਬੰਦ ਹੈ ਤਾਂ “ਸੰਪਾਦਕ ਫੋਂਟ“ ਵਿੱਚ ਦੱਸੇ ਫੋਂਟ ਸਿਸਟਮ ਦੀ ਥਾਂ ਉੱਤੇ ਵਰਤੇ ਜਾਣਗੇ।"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:3
+#. Translators: This is a GSettings default value. Do NOT change or localize the quotation marks!
+#: data/org.gnome.gedit.gschema.xml.in:41
 msgid "'Monospace 12'"
 msgstr "'Monospace 12'"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:4
+#: data/org.gnome.gedit.gschema.xml.in:42
 msgid "Editor Font"
 msgstr "ਸੰਪਾਦਕ ਫੋਂਟ"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:5
-#| msgid ""
-#| "A custom font that will be used for the editing area. This will only take "
-#| "effect if the \"Use Default Font\" option is turned off."
+#: data/org.gnome.gedit.gschema.xml.in:43
 msgid ""
 "A custom font that will be used for the editing area. This will only take "
 "effect if the “Use Default Font” option is turned off."
 msgstr ""
 "ਸੋਧੇ ਅੱਖਰ ਜੋ ਸੋਧੇ ਜਾਣ ਵਾਲੇ ਥਾਂ ਵਰਤੇ ਜਾਣੇ ਹਨ। ਇਹ ਉਦੋਂ ਹੀ ਪਰਭਾਵੀ ਹੋ ਸਕਣਗੇ, ਜਦੋਂ"
-" “ਮੂਲ ਫੋਂਟ ਵਰਤੋਂ“ ਚੋਣ ਬੰਦ ਹੋਵੇ (ਆਫ)।"
+" “ਮੂਲ ਫੋਂਟ ਵਰਤੋਂ“ ਚੋਣ "
+"ਬੰਦ ਹੋਵੇ (ਆਫ)।"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:6
+#: data/org.gnome.gedit.gschema.xml.in:47
 msgid "Style Scheme"
 msgstr "ਸਟਾਇਲ ਸਕੀਮਾਂ"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:7
+#: data/org.gnome.gedit.gschema.xml.in:48
 msgid "The ID of a GtkSourceView Style Scheme used to color the text."
 msgstr ""
 "ਇੱਕ GtkSourceView ਸਟਾਇਲ ਸਕੀਮ ਦਾ ID, ਜੋ ਕਿ ਟੈਕਸਟ ਦੇ ਰੰਗ ਲਈ ਵਰਤਿਆ ਜਾਵੇਗਾ।"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:8
+#: data/org.gnome.gedit.gschema.xml.in:52
 msgid "Create Backup Copies"
 msgstr "ਬੈਕਅਪ ਕਾਪੀਆਂ ਬਣਾਓ"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:9
+#: data/org.gnome.gedit.gschema.xml.in:53
 msgid "Whether gedit should create backup copies for the files it saves."
 msgstr "ਕੀ ਜੀ-ਸੰਪਾਦਕ ਵਲੋਂ ਸੰਭਾਲੀਆਂ ਗਈਆਂ ਫਾਇਲਾਂ ਦੀਆਂ ਬੈਕਅੱਪ ਕਾਪੀਆਂ ਬਣਾਈਆਂ ਜਾਣ।"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:10
+#: data/org.gnome.gedit.gschema.xml.in:57
 msgid "Autosave"
 msgstr "ਆਟੋ ਸੰਭਾਲੋ"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:11
-#| msgid ""
-#| "Whether gedit should automatically save modified files after a time "
-#| "interval. You can set the time interval with the \"Autosave Interval\" "
-#| "option."
+#: data/org.gnome.gedit.gschema.xml.in:58
 msgid ""
 "Whether gedit should automatically save modified files after a time "
 "interval. You can set the time interval with the “Autosave Interval” option."
 msgstr ""
 "ਕੀ ਜੀ-ਸੰਪਾਦਕ ਸੋਧੀਆਂ ਫਾਇਲਾਂ ਦੀ ਇਕ ਸਮੇਂ ਮਗਰੋਂ ਆਟੋਮੈਟਿਕ ਸੰਭਾਲ ਕਰੇ। ਤੁਸੀਂ"
-" “ਆਟੋ-ਸੰਭਾਲ ਅੰਤਰਾਲ“ ਚੋਣ ਨਾਲ ਸਮਾਂ ਨਿਸ਼ਚਿਤ ਕਰ ਸਕਦੇ ਹੋ।"
+" “ਆਟੋ-ਸੰਭਾਲ ਅੰਤਰਾਲ“ ਚੋਣ "
+"ਨਾਲ ਸਮਾਂ ਨਿਸ਼ਚਿਤ ਕਰ ਸਕਦੇ ਹੋ।"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:12
+#: data/org.gnome.gedit.gschema.xml.in:62
 msgid "Autosave Interval"
 msgstr "ਆਟੋ-ਸੰਭਾਲ ਅੰਤਰਾਲ"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:13
-#| msgid ""
-#| "Number of minutes after which gedit will automatically save modified "
-#| "files. This will only take effect if the \"Autosave\" option is turned on."
+#: data/org.gnome.gedit.gschema.xml.in:63
 msgid ""
 "Number of minutes after which gedit will automatically save modified files. "
 "This will only take effect if the “Autosave” option is turned on."
 msgstr ""
 "ਮਿੰਟ ਦੀ ਗਿਣਤੀ, ਜਿੰਨ੍ਹਾਂ ਉਪਰੰਤ ਜੀ-ਸੰਪਾਦਕ ਸੋਧੀਆਂ ਫਾਇਲਾਂ ਨੂੰ ਖੁਦ ਹੀ ਸੰਭਾਲ"
-" ਦੇਵੇਗਾ। "
-"ਇਹ ਚੋਣ ਤਾਂ ਹੀ ਪ੍ਰਭਾਵੀ ਹੋਵੇਗੀ, ਜੇਕਰ “ਆਟੋ ਸੰਭਾਲ“ ਚੋਣ ਚਾਲੂ ਹੋਵੇਗੀ।"
+" ਦੇਵੇਗਾ। ਇਹ ਚੋਣ ਤਾਂ ਹੀ "
+"ਪ੍ਰਭਾਵੀ ਹੋਵੇਗੀ, ਜੇਕਰ “ਆਟੋ ਸੰਭਾਲ“ ਚੋਣ ਚਾਲੂ ਹੋਵੇਗੀ।"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:14
+#: data/org.gnome.gedit.gschema.xml.in:67
 msgid "Maximum Number of Undo Actions"
 msgstr "ਵੱਧ ਤੋਂ ਵੱਧ ਵਾਪਸੀ ਪਗਾਂ ਦੀ ਗਿਣਤੀ"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:15
-#| msgid ""
-#| "Maximum number of actions that gedit will be able to undo or redo. Use "
-#| "\"-1\" for unlimited number of actions."
+#: data/org.gnome.gedit.gschema.xml.in:68
 msgid ""
 "Maximum number of actions that gedit will be able to undo or redo. Use “-1” "
 "for unlimited number of actions."
 msgstr ""
 "ਵਾਪਸ ਜਾਂ ਮੁੜ-ਵਾਪਸ ਕੀਤੇ ਜਾਣ ਵਾਲੀਆਂ ਵੱਧ ਤੋਂ ਵੱਧ ਕਾਰਵਾਈਆਂ ਦੀ ਗਿਣਤੀ ਹੈ। ਕਾਰਵਾਈਆਂ"
-" ਦੀ ਗਿਣਤੀ ਨੂੰ ਅਣਗਿਣਤ ਕਰਨ ਲਈ “-1“ ਦਿਓ।"
+" ਦੀ ਗਿਣਤੀ ਨੂੰ "
+"ਅਣਗਿਣਤ ਕਰਨ ਲਈ “-1“ ਦਿਓ।"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:16
+#: data/org.gnome.gedit.gschema.xml.in:77
 msgid "Line Wrapping Mode"
 msgstr "ਲਾਈਨ ਸਮੇਟਣ ਢੰਗ"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:17
-#| msgid ""
-#| "Specifies how to wrap long lines in the editing area. Use \"none\" for no "
-#| "wrapping, \"word\" for wrapping at word boundaries, and \"char\" for "
-#| "wrapping at individual character boundaries. Note that the values are "
-#| "case-sensitive, so make sure they appear exactly as mentioned here."
+#: data/org.gnome.gedit.gschema.xml.in:78
 msgid ""
 "Specifies how to wrap long lines in the editing area. Use “none” for no "
 "wrapping, “word” for wrapping at word boundaries, and “char” for wrapping at "
@@ -201,18 +184,14 @@ msgstr ""
 "ਵਰਤੋ। ਸ਼ਬਦਾਂ ਦੀ ਸੀਮਾ ਤੋ ਲਪੇਟਣ ਲਈ “word“ ਵਰਤੋਂ। ਹਰੇਕ ਅੱਖਰ ਦੀ ਸੀਮਾ ਤੋਂ ਲਪੇਣ ਲਈ"
 " “char“ ਵਰਤੋਂ "
 "(ਟਿੱਪਣੀ- ਮੁੱਲ ਅੰਗਰੇਜੀ ਅੱਖਰਾਂ ਦੇ ਛੋਟੇ ਵੱਡੇ ਹੋਣ ਤੋਂ ਪਰਭਾਵਿਤ ਹੁੰਦਾ ਹੈ, ਇਸ ਕਰਕੇ"
-" ਜਾਂਚ ਲਵੋ ਕਿ ਉਹ ਸਟੈਂਡਰਡ ਮੁਤਾਬਕ ਹੀ ਹਨ।)।"
+" ਜਾਂਚ ਲਵੋ ਕਿ ਉਹ ਸਟੈਂਡਰਡ "
+"ਮੁਤਾਬਕ ਹੀ ਹਨ।)।"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:18
+#: data/org.gnome.gedit.gschema.xml.in:86
 msgid "Last split mode choice for line wrapping mode"
 msgstr "ਲਾਈਨ ਸਮੇਟਣ ਮੋਡ ਲਈ ਆਖਰੀ ਵੰਡ ਮੋਡ ਚੋਣ"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:19
-#| msgid ""
-#| "Specifies the last split mode used with line wrapping mode, so that when "
-#| "wrapping mode is off we still remember the split mode choice. Use \"word"
-#| "\" for wrapping at word boundaries, and \"char\" for wrapping at "
-#| "individual character boundaries."
+#: data/org.gnome.gedit.gschema.xml.in:87
 msgid ""
 "Specifies the last split mode used with line wrapping mode, so that when "
 "wrapping mode is off we still remember the split mode choice. Use “word” for "
@@ -220,105 +199,98 @@ msgid ""
 "boundaries."
 msgstr ""
 "ਲਾਈਨ ਸਮੇਟਣ ਮੋਡ ਲਈ ਆਖਰੀ ਵੰਡ ਮੋਡ ਚੋਣ ਤਹਿ ਕਰੋ ਤਾਂ ਕਿ ਜਦੋਂ ਸਮੇਟਣ ਮੋਡ ਬੰਦ ਹੈ ਤਾਂ"
-" ਅਸੀਂ ਹਾਲੇ ਵੀ ਵੰਡ ਮੋਡ ਚੋਣ "
-"ਨੂੰ ਯਾਦ ਰੱਖਣਾ ਹੈ। ਸ਼ਬਦ ਹੱਦ ਤੋਂ ਸਮੇਟਣ ਲਈ “ਸ਼ਬਦ(word)“ "
-"ਵਰਤੋਂ ਅਤੇ ਅੱਖਰ ਦੀ ਹੱਦ ਤੋਂ ਸਮੇਟਣ ਲਈ “ਅੱਖਰ(char)“ ਦੀ ਚੋਣ ਕਰੋ।"
+" ਅਸੀਂ ਹਾਲੇ ਵੀ ਵੰਡ "
+"ਮੋਡ ਚੋਣ ਨੂੰ ਯਾਦ ਰੱਖਣਾ ਹੈ। ਸ਼ਬਦ ਹੱਦ ਤੋਂ ਸਮੇਟਣ ਲਈ “ਸ਼ਬਦ(word)“ ਵਰਤੋਂ ਅਤੇ ਅੱਖਰ ਦੀ"
+" ਹੱਦ ਤੋਂ ਸਮੇਟਣ ਲਈ "
+"“ਅੱਖਰ(char)“ ਦੀ ਚੋਣ ਕਰੋ।"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:20
+#: data/org.gnome.gedit.gschema.xml.in:91
 msgid "Tab Size"
 msgstr "ਟੈਬ ਆਕਾਰ"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:21
+#: data/org.gnome.gedit.gschema.xml.in:92
 msgid ""
 "Specifies the number of spaces that should be displayed instead of Tab "
 "characters."
 msgstr "ਟੈਬ (Tab) ਅੱਖਰ ਦੀ ਬਜਾਏ ਵੇਖਾਈਆਂ ਜਾਣ ਵਾਲੀਆਂ ਖਾਲੀ ਥਾਵਾਂ ਦੀ ਗਿਣਤੀ ਦਿਓ।"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:22
+#: data/org.gnome.gedit.gschema.xml.in:96
 msgid "Insert spaces"
 msgstr "ਖਾਲੀ ਥਾਂ ਜੋੜੋ"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:23
+#: data/org.gnome.gedit.gschema.xml.in:97
 msgid "Whether gedit should insert spaces instead of tabs."
 msgstr "ਜੀ-ਸੰਪਾਦਕ ਟੈਬ ਦੀ ਬਜਾਏ ਖਾਲੀ ਥਾਂ ਪਾ ਦੇਵੇ।"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:24
+#: data/org.gnome.gedit.gschema.xml.in:101
 msgid "Automatic indent"
 msgstr "ਆਟੋਮੈਟਿਕ ਹਾਸ਼ੀਆ ਦੂਰੀ"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:25
+#: data/org.gnome.gedit.gschema.xml.in:102
 msgid "Whether gedit should enable automatic indentation."
 msgstr "ਜੀ-ਸੰਪਾਦਕ ਆਟੋਮੈਟਿਕ ਹਾਸ਼ੀਏ ਤੋਂ ਦੂਰ ਕਰਨਾ ਚਾਲੂ ਕਰੇ।"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:26
+#: data/org.gnome.gedit.gschema.xml.in:106
 msgid "Display Line Numbers"
 msgstr "ਲਾਈਨ ਨੰਬਰ ਵੇਖੋ"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:27
+#: data/org.gnome.gedit.gschema.xml.in:107
 msgid "Whether gedit should display line numbers in the editing area."
 msgstr "ਜੀ-ਸੰਪਾਦਕ ਸੰਪਾਦਨ ਖੇਤਰ ਵਿੱਚ ਲਾਈਨ ਨੰਬਰ ਵੇਖਾਏ।"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:28
+#: data/org.gnome.gedit.gschema.xml.in:111
 msgid "Highlight Current Line"
 msgstr "ਮੌਜੂਦਾ ਲਾਈਨ ਹਾਈਲਾਈਟ ਕਰੋ"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:29
+#: data/org.gnome.gedit.gschema.xml.in:112
 msgid "Whether gedit should highlight the current line."
 msgstr "ਕੀ ਜੀ-ਸੰਪਾਦਕ ਮੌਜੂਦ ਲਾਈਨ ਨੂੰ ਹਾਈਲਾਈਟ ਕਰੇ।"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:30
+#: data/org.gnome.gedit.gschema.xml.in:116
 msgid "Highlight Matching Brackets"
 msgstr "ਮਿਲਦੀ ਬਰੈਕਟ ਹਾਈਲਾਈਟ ਕਰੋ"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:31
+#: data/org.gnome.gedit.gschema.xml.in:117
 msgid "Whether gedit should highlight matching brackets."
 msgstr "ਕੀ ਜੀ-ਸੰਪਾਦਕ ਮਿਲਦੀਆਂ ਬਰੈਕਟਾਂ ਹਾਈਲਾਈਟ ਕਰੇ।"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:32
+#: data/org.gnome.gedit.gschema.xml.in:121
 msgid "Display Right Margin"
 msgstr "ਸੱਜੇ ਪਾਸੇ ਹਾਸ਼ੀਆ ਵੇਖੋ"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:33
+#: data/org.gnome.gedit.gschema.xml.in:122
 msgid "Whether gedit should display the right margin in the editing area."
 msgstr "ਜੀ-ਸੰਪਾਦਕ ਸੰਪਾਦਨ ਖੇਤਰ ਵਿੱਚ ਸੱਜਾ ਹਾਸ਼ੀਆ ਵੇਖਾਏ।"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:34
+#: data/org.gnome.gedit.gschema.xml.in:126
 msgid "Right Margin Position"
 msgstr "ਸੱਜੇ ਪਾਸੇ ਹਾਸ਼ੀਏ ਦਾ ਟਿਕਾਣਾ"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:35
+#: data/org.gnome.gedit.gschema.xml.in:127
 msgid "Specifies the position of the right margin."
 msgstr "ਸੱਜੇ ਹਾਸ਼ੀਏ ਦਾ ਟਿਕਾਣਾ ਦਿਓ।"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:36
+#: data/org.gnome.gedit.gschema.xml.in:131
 msgid "Display Overview Map"
 msgstr "ਰੂਪ-ਰੇਖਾ ਨਕਸ਼ਾ ਦਿਖਾਓ"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:37
+#: data/org.gnome.gedit.gschema.xml.in:132
 msgid "Whether gedit should display the overview map for the document."
 msgstr "ਕੀ ਜੀ-ਸੰਪਾਦਕ ਡੌਕੂਮੈਂਟ ਲਈ ਸੰਖੇਪ ਨਕਸ਼ਾ ਦਿਖਾਏ।"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:38
+#: data/org.gnome.gedit.gschema.xml.in:136
 msgid "Document background pattern type"
 msgstr "ਡੌਕੂਮੈਂਟ ਬੈਕਗਰਾਊਂਡ ਪੈਟਰਨ ਕਿਸਮ"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:39
+#: data/org.gnome.gedit.gschema.xml.in:137
 msgid "Whether the document will get a background pattern painted."
 msgstr "ਕੀ ਡੌਕੂਮੈਂਟ ਉੱਤੇ ਬੈਕਗਰਾਊਂਡ ਪੈਟਰਨ ਪੇਂਟ ਕੀਤਾ ਕਰਨਾ ਹੈ।"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:40
+#: data/org.gnome.gedit.gschema.xml.in:147
 msgid "Smart Home End"
 msgstr "ਸਮਾਰਟ Home End"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:41
-#| msgid ""
-#| "Specifies how the cursor moves when the HOME and END keys are pressed. "
-#| "Use \"disabled\" to always move at the start/end of the line, \"after\" "
-#| "to move to the start/end of the line the first time the keys are pressed "
-#| "and to the start/end of the text ignoring whitespaces the second time the "
-#| "keys are pressed, \"before\" to move to the start/end of the text before "
-#| "moving to the start/end of the line and \"always\" to always move to the "
-#| "start/end of the text instead of the start/end of the line."
+#: data/org.gnome.gedit.gschema.xml.in:148
 msgid ""
 "Specifies how the cursor moves when the HOME and END keys are pressed. Use "
 "“disabled” to always move at the start/end of the line, “after” to move to "
@@ -329,71 +301,68 @@ msgid ""
 "text instead of the start/end of the line."
 msgstr ""
 "ਦੱਸੋ ਕਿ ਕਰਸਰ ਘਰ (HOME) ਅਤੇ ਅੰਤ (END) ਸਵਿੱਚ ਦਬਾਉਣ ਉੱਤੇ ਕਿਵੇਂ ਹਿੱਲੇ।"
-" “(disabled) ਆਯੋਗ“ "
-"ਕਰਨ ਨਾਲ ਹਮੇਸ਼ਾਂ ਲਾਈਨ ਦੇ ਸ਼ੁਰੂ ਅਤੇ ਅੰਤ ਵਿੱਚ ਜਾਵੇਗੀ, “(after) ਬਾਅਦ ਵਿੱਚ“ ਨਾਲ"
-" ਪਹਿਲੀਂ ਵਾਰ ਲਾਈਨ "
-"ਦੇ ਸ਼ੁਰੂ/ਅੰਤ ਵਿੱਚ, ਅਤੇ ਦੂਜੀ ਵਾਰ ਦਬਾਉਣ ਨਾਲ ਖਾਲੀ ਥਾਂ ਨੂੰ ਛੱਡ ਕੇ ਟੈਸਕਟ ਦੇ ਸ਼ੁਰੂ"
-" ਅਤੇ ਅੰਤ ਵਿੱਚ ਜਾਵੇਗੀ, “(before) ਪਹਿਲਾਂ“ "
-"ਨਾਲ ਲਾਈਨ ਦੇ ਸ਼ੁਰੂ/ਅੰਤ ਉੱਤੇ ਜਾਣ ਤੋਂ ਪਹਿਲਾਂ ਟੈਕਸਟ ਦੇ ਸ਼ੁਰੂ/ਅੰਤ ਉੱਤੇ ਜਾਵੇਗੀ ਅਤੇ"
-" “(always) ਹਮੇਸ਼ਾਂ“ ਚੁਣ "
-"ਨਾਲ ਲਾਈਨ ਦੇ ਸ਼ੁਰੂ/ਅੰਤ ਉੱਤੇ ਜਾਣ ਦੀ ਬਜਾਏ ਹਮੇਸ਼ਾਂ ਟੈਕਸਟ ਦੇ ਸ਼ੁਰੂ/ਅੰਤ ਉੱਤੇ ਜਾਵੇਗੀ।"
+" “(disabled) ਆਯੋਗ“ ਕਰਨ "
+"ਨਾਲ ਹਮੇਸ਼ਾਂ ਲਾਈਨ ਦੇ ਸ਼ੁਰੂ ਅਤੇ ਅੰਤ ਵਿੱਚ ਜਾਵੇਗੀ, “(after) ਬਾਅਦ ਵਿੱਚ“ ਨਾਲ ਪਹਿਲੀਂ"
+" ਵਾਰ ਲਾਈਨ ਦੇ "
+"ਸ਼ੁਰੂ/ਅੰਤ ਵਿੱਚ, ਅਤੇ ਦੂਜੀ ਵਾਰ ਦਬਾਉਣ ਨਾਲ ਖਾਲੀ ਥਾਂ ਨੂੰ ਛੱਡ ਕੇ ਟੈਸਕਟ ਦੇ ਸ਼ੁਰੂ ਅਤੇ"
+" ਅੰਤ ਵਿੱਚ ਜਾਵੇਗੀ, "
+"“(before) ਪਹਿਲਾਂ“ ਨਾਲ ਲਾਈਨ ਦੇ ਸ਼ੁਰੂ/ਅੰਤ ਉੱਤੇ ਜਾਣ ਤੋਂ ਪਹਿਲਾਂ ਟੈਕਸਟ ਦੇ"
+" ਸ਼ੁਰੂ/ਅੰਤ ਉੱਤੇ ਜਾਵੇਗੀ ਅਤੇ "
+"“(always) ਹਮੇਸ਼ਾਂ“ ਚੁਣ ਨਾਲ ਲਾਈਨ ਦੇ ਸ਼ੁਰੂ/ਅੰਤ ਉੱਤੇ ਜਾਣ ਦੀ ਬਜਾਏ ਹਮੇਸ਼ਾਂ ਟੈਕਸਟ"
+" ਦੇ ਸ਼ੁਰੂ/ਅੰਤ ਉੱਤੇ "
+"ਜਾਵੇਗੀ।"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:42
+#: data/org.gnome.gedit.gschema.xml.in:152
 msgid "Restore Previous Cursor Position"
 msgstr "ਪੁਰਾਣੀ ਕਰਸਰ ਸਥਿਤੀ ਮੁੜ-ਸਟੋਰ"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:43
+#: data/org.gnome.gedit.gschema.xml.in:153
 msgid ""
 "Whether gedit should restore the previous cursor position when a file is "
 "loaded."
 msgstr ""
 "ਕੀ ਜੀ-ਸੰਪਾਦਕ ਇੱਕ ਫਾਇਲ ਨੂੰ ਲੋਡ ਕਰਨ ਉਪਰੰਤ ਕਰਸਰ ਦੀ ਪੁਰਾਣੀ ਟਿਕਾਣਾ ਮੁੜ-ਪ੍ਰਾਪਤ ਕਰੇ।"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:44
+#: data/org.gnome.gedit.gschema.xml.in:157
 msgid "Enable Syntax Highlighting"
 msgstr "ਸੰਟੇਕਸ ਹਾਈਲਾਈਟ ਕਰੋ"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:45
+#: data/org.gnome.gedit.gschema.xml.in:158
 msgid "Whether gedit should enable syntax highlighting."
 msgstr "ਜੀ-ਸੰਪਾਦਕ ਸੰਟੇਕਸ ਹਾਈਟਲਾਈਟ ਚਾਲੂ ਕਰ ਦੇਵੇ।"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:46
+#: data/org.gnome.gedit.gschema.xml.in:162
 msgid "Enable Search Highlighting"
 msgstr "ਖੋਜ ਹਾਈਲਾਈਟ ਕਰੋ"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:47
+#: data/org.gnome.gedit.gschema.xml.in:163
 msgid ""
 "Whether gedit should highlight all the occurrences of the searched text."
 msgstr "ਕੀ ਜੀ-ਸੰਪਾਦਕ ਖੋਜੇ ਟੈਕਸਟ ਦੀਆਂ ਸਭ ਮੌਜੂਦਗੀਆਂ ਨੂੰ ਹਾਈਲਾਈਟ ਕਰੇ।"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:48
+#: data/org.gnome.gedit.gschema.xml.in:167
 msgid "Ensure Trailing Newline"
 msgstr "ਅੰਤ 'ਚ ਨਵੀਂ-ਲਾਈਨ ਦੀ ਪੁਸ਼ਟੀ"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:49
+#: data/org.gnome.gedit.gschema.xml.in:168
 msgid ""
 "Whether gedit will ensure that documents always end with a trailing newline."
 msgstr ""
 "ਕੀ ਜੀ-ਸੰਪਾਦਕ ਯਕੀਨੀ ਬਣਾਏ ਕਿ ਦਸਤਾਵੇਜ਼ ਨੂੰ ਹਮੇਸ਼ਾ ਨਵੀਂ ਲਾਈਨ ਨਾਲ ਖਤਮ ਕਰਨਾ ਹੈ।"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:50
+#: data/org.gnome.gedit.gschema.xml.in:174
 msgid "Toolbar is Visible"
 msgstr "ਟੂਲਬਾਰ ਉਪਲੱਬਧ ਹੈ"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:51
+#: data/org.gnome.gedit.gschema.xml.in:175
 msgid "Whether the toolbar should be visible in editing windows."
 msgstr "ਕੀ ਸੰਪਾਦਕ ਵਿੰਡੋ ਵਿੱਚ ਟੂਲਬਾਰ ਉਪਲੱਬਧ ਹੋਵੇ।"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:52
+#: data/org.gnome.gedit.gschema.xml.in:179
 msgid "Notebook Show Tabs Mode"
 msgstr "ਨੋਟਬੁੱਕਮ ਵੇਖੋ ਟੈਬ ਮੋਡ"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:53
-#| msgid ""
-#| "Specifies when to show the notebook tabs. Use \"never\" to never show the "
-#| "tabs, \"always\" to always show the tabs, and \"auto\" to show the tabs "
-#| "only when there is more than one tab. Note that the values are case-"
-#| "sensitive, so make sure they appear exactly as mentioned here."
+#: data/org.gnome.gedit.gschema.xml.in:180
 msgid ""
 "Specifies when to show the notebook tabs. Use “never” to never show the "
 "tabs, “always” to always show the tabs, and “auto” to show the tabs only "
@@ -401,38 +370,36 @@ msgid ""
 "make sure they appear exactly as mentioned here."
 msgstr ""
 "ਦੱਸੋ ਕਿ ਨੋਟਬੁੱਕ ਟੈਬਾਂ ਕਦੋਂ ਵੇਖਾਉਣੀਆਂ ਹਨ। ਟੈਬਾਂ ਕਦੇ ਨਾ ਵੇਖਾਉਣ ਲਈ “never (ਕਦੇ"
-" ਨਹੀਂ)“ ਦੀ ਚੋਣ ਕਰੋ, ਟੈਬਾਂ ਹਮੇਸ਼ਾ "
-"ਵੇਖਾਉਣ ਲਈ “always (ਹਮੇਸ਼ਾ)“  ਚੁਣੋ ਤੇ ਕਦੋਂ ਵੀ ਇੱਕ ਤੋਂ ਵੱਧ ਟੈਬਾਂ ਹੋਣ ਉਦੋਂ ਹੀ"
-" ਟੈਬਾਂ ਵੇਖਾਉਣ ਲਈ “auto (ਆਟੋ)“  ਚੁਣੋ। "
-"ਟਿੱਪਣੀ- ਮੁੱਲ ਅੰਗਰੇਜੀ ਅੱਖਰਾਂ ਦੇ ਛੋਟੋ ਵੱਡੇ ਹੋਣ ਤੋਂ ਪਰਭਾਵਿਤ ਹੁੰਦਾ ਹੈ, ਇਸ ਕਰਕੇ"
-" ਜਾਂਚ ਲਵੋ ਕਿ ਉਹ ਸਟੈਂਡਰਡ ਮੁਤਾਬਕ ਹੀ ਹਨ।"
+" ਨਹੀਂ)“ ਦੀ ਚੋਣ ਕਰੋ, "
+"ਟੈਬਾਂ ਹਮੇਸ਼ਾ ਵੇਖਾਉਣ ਲਈ “always (ਹਮੇਸ਼ਾ)“  ਚੁਣੋ ਤੇ ਕਦੋਂ ਵੀ ਇੱਕ ਤੋਂ ਵੱਧ ਟੈਬਾਂ"
+" ਹੋਣ ਉਦੋਂ ਹੀ ਟੈਬਾਂ ਵੇਖਾਉਣ "
+"ਲਈ “auto (ਆਟੋ)“  ਚੁਣੋ। ਟਿੱਪਣੀ- ਮੁੱਲ ਅੰਗਰੇਜੀ ਅੱਖਰਾਂ ਦੇ ਛੋਟੋ ਵੱਡੇ ਹੋਣ ਤੋਂ"
+" ਪਰਭਾਵਿਤ ਹੁੰਦਾ ਹੈ, ਇਸ ਕਰਕੇ "
+"ਜਾਂਚ ਲਵੋ ਕਿ ਉਹ ਸਟੈਂਡਰਡ ਮੁਤਾਬਕ ਹੀ ਹਨ।"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:54
+#: data/org.gnome.gedit.gschema.xml.in:184
 msgid "Status Bar is Visible"
 msgstr "ਹਾਲਤ ਪੱਟੀ ਵੇਖਾਈ ਹੈ"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:55
+#: data/org.gnome.gedit.gschema.xml.in:185
 msgid ""
 "Whether the status bar at the bottom of editing windows should be visible."
 msgstr "ਕੀ ਸੰਪਾਦਕ ਵਿੰਡੋ ਦੇ ਹੇਠਾਂ ਹਾਲਤ ਪੱਟੀ ਉਪਲਬਧ ਹੋਵੇ।"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:56
+#: data/org.gnome.gedit.gschema.xml.in:189
 msgid "Side panel is Visible"
 msgstr "ਬਾਹੀ ਵਿਖਾਈ ਦਿੰਦੀ ਹੈ"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:57
+#: data/org.gnome.gedit.gschema.xml.in:190
 msgid ""
 "Whether the side panel at the left of editing windows should be visible."
 msgstr "ਕੀ ਸੰਪਾਦਕ ਵਿੰਡੋ ਦੇ ਖੱਬੇ ਪਾਸੇ ਸਾਈਡ ਪੈਨਲ ਵੇਖਾਇਆ ਜਾਵੇ।"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:58
+#: data/org.gnome.gedit.gschema.xml.in:197
 msgid "Maximum Recent Files"
 msgstr "ਵੱਧ ਤੋਂ ਵੱਧ ਤਾਜ਼ਾ ਫਾਇਲਾਂ"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:59
-#| msgid ""
-#| "Specifies the maximum number of recently opened files that will be "
-#| "displayed in the \"Recent Files\" submenu."
+#: data/org.gnome.gedit.gschema.xml.in:198
 msgid ""
 "Specifies the maximum number of recently opened files that will be displayed "
 "in the “Recent Files” submenu."
@@ -440,32 +407,27 @@ msgstr ""
 "ਵੱਧ ਤੋਂ ਵੱਧ ਤਾਜ਼ਾ ਖੁੱਲੀਆਂ ਫਾਇਲਾਂ ਦੀ ਗਿਣਤੀ ਦਿਓ, ਜੋ ਕਿ “ਤਾਜ਼ਾ ਫਾਇਲ਼ਾਂ“ ਸਬ-ਮੇਨ"
 " ਵਿੱਚ ਉਪਲੱਬਧ ਹੋਣ।"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:60
+#: data/org.gnome.gedit.gschema.xml.in:204
 msgid "Print Syntax Highlighting"
 msgstr "ਹਾਈਲਾਈਟ ਕੀਤੇ ਸੰਟੈਕਸ ਪਰਿੰਟ ਕਰੋ"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:61
+#: data/org.gnome.gedit.gschema.xml.in:205
 msgid "Whether gedit should print syntax highlighting when printing documents."
 msgstr "ਜੀ-ਸੰਪਾਦਕ ਸੰਟੇਕਸ ਹਾਈਲਾਈਟ ਕਰੇ, ਜਦੋਂ ਡੌਕੂਮੈਂਟ ਪਰਿੰਟ ਕੀਤਾ ਜਾਵੇ।"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:62
+#: data/org.gnome.gedit.gschema.xml.in:209
 msgid "Print Header"
 msgstr "ਹੈੱਡਰ ਪਰਿੰਟ ਕਰੋ"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:63
+#: data/org.gnome.gedit.gschema.xml.in:210
 msgid "Whether gedit should include a document header when printing documents."
 msgstr "ਜੀ-ਸੰਪਾਦਕ, ਜਦੋਂ ਡੌਕੂਮੈਂਟ ਪਰਿੰਟ ਕਰੇ ਤਾਂ ਡੌਕੂਮੈਂਟ ਦਾ ਹੈੱਡਰ ਜੋੜ ਦੇਵੇ"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:64
+#: data/org.gnome.gedit.gschema.xml.in:219
 msgid "Printing Line Wrapping Mode"
 msgstr "ਪਰਿੰਟ ਲਈ ਲਾਈਨ ਸਮੇਟਣ ਢੰਗ"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:65
-#| msgid ""
-#| "Specifies how to wrap long lines for printing. Use \"none\" for no "
-#| "wrapping, \"word\" for wrapping at word boundaries, and \"char\" for "
-#| "wrapping at individual character boundaries. Note that the values are "
-#| "case-sensitive, so make sure they appear exactly as mentioned here."
+#: data/org.gnome.gedit.gschema.xml.in:220
 msgid ""
 "Specifies how to wrap long lines for printing. Use “none” for no wrapping, "
 "“word” for wrapping at word boundaries, and “char” for wrapping at "
@@ -473,17 +435,17 @@ msgid ""
 "make sure they appear exactly as mentioned here."
 msgstr ""
 "ਪਰਿੰਟ ਕਰਨ ਵੇਲੇ ਲੰਬੀਆਂ ਲਾਈਨਾਂ ਕਿਵੇਂ ਲਪਟੇਣੀਆਂ ਹਨ, ਇਹ ਦਿਓ। ਨਾ ਲਪੇਟਣ ਲਈ “none“"
-" ਵਰਤੋ। "
-"ਸ਼ਬਦਾਂ ਦੀ ਸੀਮਾ ਤੋ ਲਪੇਟਣ ਲਈ “word“ ਵਰਤੋਂ। ਹਰੇਕ ਅੱਖਰ ਦੀ ਸੀਮਾ ਤੋਂ ਲਪੇਣ ਲਈ “char“"
-" ਵਰਤੋਂ "
-"(ਟਿੱਪਣੀ- ਮੁੱਲ ਅੰਗਰੇਜੀ ਅੱਖਰਾਂ ਦੇ ਛੋਟੋ ਵੱਡੇ ਹੋਣ ਤੋਂ ਪਰਭਾਵਿਤ ਹੁੰਦਾ ਹੈ, ਇਸ ਕਰਕੇ"
-" ਜਾਂਚ ਲਵੋ ਕਿ ਉਹ ਸਟੈਂਡਰਡ ਮੁਤਾਬਕ ਹੀ ਹਨ।"
+" ਵਰਤੋ। ਸ਼ਬਦਾਂ ਦੀ "
+"ਸੀਮਾ ਤੋ ਲਪੇਟਣ ਲਈ “word“ ਵਰਤੋਂ। ਹਰੇਕ ਅੱਖਰ ਦੀ ਸੀਮਾ ਤੋਂ ਲਪੇਣ ਲਈ “char“ ਵਰਤੋਂ"
+" (ਟਿੱਪਣੀ- ਮੁੱਲ "
+"ਅੰਗਰੇਜੀ ਅੱਖਰਾਂ ਦੇ ਛੋਟੋ ਵੱਡੇ ਹੋਣ ਤੋਂ ਪਰਭਾਵਿਤ ਹੁੰਦਾ ਹੈ, ਇਸ ਕਰਕੇ ਜਾਂਚ ਲਵੋ ਕਿ ਉਹ"
+" ਸਟੈਂਡਰਡ ਮੁਤਾਬਕ ਹੀ ਹਨ।"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:66
+#: data/org.gnome.gedit.gschema.xml.in:224
 msgid "Print Line Numbers"
 msgstr "ਲਾਈਨ ਨੰਬਰ ਪਰਿੰਟ ਕਰੋ"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:67
+#: data/org.gnome.gedit.gschema.xml.in:225
 msgid ""
 "If this value is 0, then no line numbers will be inserted when printing a "
 "document. Otherwise, gedit will print line numbers every such number of "
@@ -493,53 +455,48 @@ msgstr ""
 " ਜੀ-ਸੰਪਾਦਕ "
 "ਹਰੇਕ ਲਾਈਨ ਲਈ ਲਾਈਨ ਨੰਬਰ ਛਾਪੇਗਾ।"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:68
+#. Translators: This is a GSettings default value. Do NOT change or localize the quotation marks!
+#: data/org.gnome.gedit.gschema.xml.in:229
 msgid "'Monospace 9'"
 msgstr "'Monospace 9'"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:69
+#: data/org.gnome.gedit.gschema.xml.in:230
 msgid "Body Font for Printing"
 msgstr "ਮੁੱਖ ਭਾਗ ਪਰਿੰਟ ਕਰਨ ਲਈ ਫੋਂਟ"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:70
-#| msgid ""
-#| "Specifies the font to use for a document's body when printing documents."
+#: data/org.gnome.gedit.gschema.xml.in:231
 msgid ""
 "Specifies the font to use for a document’s body when printing documents."
 msgstr "ਫੋਂਟ ਦਿਓ, ਜੋ ਦਸਤਾਵੇਜ਼ ਦੇ ਮੁੱਖ ਭਾਗ ਨੂੰ ਛਾਪਣ ਦੇ ਦੌਰਾਨ ਵਰਤਣੇ ਹਨ।"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:71
+#. Translators: This is a GSettings default value. Do NOT change or localize the quotation marks!
+#: data/org.gnome.gedit.gschema.xml.in:235
 msgid "'Sans 11'"
 msgstr "'Sans 11'"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:72
+#: data/org.gnome.gedit.gschema.xml.in:236
 msgid "Header Font for Printing"
 msgstr "ਪਰਿੰਟ ਲਈ ਹੈੱਡਰ ਫੋਂਟ"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:73
-#| msgid ""
-#| "Specifies the font to use for page headers when printing a document. This "
-#| "will only take effect if the \"Print Header\" option is turned on."
+#: data/org.gnome.gedit.gschema.xml.in:237
 msgid ""
 "Specifies the font to use for page headers when printing a document. This "
 "will only take effect if the “Print Header” option is turned on."
 msgstr ""
 "ਫੋਂਟ ਦਿਓ, ਜੋ ਸਫੇ ਦੇ ਹੈੱਡਰ ਲਈ ਵਰਤਣੇ ਹਨ, ਜੋ ਕਿ ਛਾਪਿਆ ਜਾ ਰਿਹਾ ਹੈ। ਇਹ ਤਾਂ ਹੀ ਲਾਗੂ"
-" ਹੋ ਸਕੇਗਾ, ਜੇ “ਹੈੱਡਰ ਪਰਿੰਟ ਕਰੋ“ ਚੋਣ "
-"ਚਾਲੂ ਹੈ।"
+" ਹੋ ਸਕੇਗਾ, ਜੇ "
+"“ਹੈੱਡਰ ਪਰਿੰਟ ਕਰੋ“ ਚੋਣ ਚਾਲੂ ਹੈ।"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:74
+#. Translators: This is a GSettings default value. Do NOT change or localize the quotation marks!
+#: data/org.gnome.gedit.gschema.xml.in:241
 msgid "'Sans 8'"
 msgstr "'Sans 8'"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:75
+#: data/org.gnome.gedit.gschema.xml.in:242
 msgid "Line Number Font for Printing"
 msgstr "ਪਰਿੰਟ ਕਰਨ ਲਈ ਲਾਈਨ ਨੰਬਰ ਫੋਂਟ"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:76
-#| msgid ""
-#| "Specifies the font to use for line numbers when printing. This will only "
-#| "take effect if the \"Print Line Numbers\" option is non-zero."
+#: data/org.gnome.gedit.gschema.xml.in:243
 msgid ""
 "Specifies the font to use for line numbers when printing. This will only "
 "take effect if the “Print Line Numbers” option is non-zero."
@@ -548,51 +505,61 @@ msgstr ""
 " ਲਾਗੂ ਹੋ ਸਕੇਗਾ ਜੇ "
 "“ਲਾਈਨ ਨੰਬਰ ਪਰਿੰਟ ਕਰੋ“ ਚੋਣ ਸਿਫਰ ਨਾ ਹੋਵੇ।"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:77
+#: data/org.gnome.gedit.gschema.xml.in:247
 msgid "Margin Left"
 msgstr "ਖੱਬਾ ਹਾਸ਼ੀਆ"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:78
+#: data/org.gnome.gedit.gschema.xml.in:248
 msgid "The left margin, in millimeters."
 msgstr "ਖੱਬਾ ਹਾਸ਼ੀਆ, ਮਿਲੀਮੀਟਰਾਂ ਵਿੱਚ।"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:79
+#: data/org.gnome.gedit.gschema.xml.in:252
 msgid "Margin Top"
 msgstr "ਉੱਪਰ ਹਾਸ਼ੀਆ"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:80
+#: data/org.gnome.gedit.gschema.xml.in:253
 msgid "The top margin, in millimeters."
 msgstr "ਉੱਪਰੀ ਹਾਸ਼ੀਆ, ਮਿਲੀਮੀਟਰਾਂ ਵਿੱਚ।"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:81
+#: data/org.gnome.gedit.gschema.xml.in:257
 msgid "Margin Right"
 msgstr "ਸੱਜਾ ਹਾਸ਼ੀਆ"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:82
+#: data/org.gnome.gedit.gschema.xml.in:258
 msgid "The right margin, in millimeters."
 msgstr "ਸੱਜਾ ਹਾਸ਼ੀਆ, ਮਿਲੀਮੀਟਰਾਂ ਵਿੱਚ।"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:83
+#: data/org.gnome.gedit.gschema.xml.in:262
 msgid "Margin Bottom"
 msgstr "ਹੇਠਲਾ ਹਾਸ਼ੀਆ"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:84
+#: data/org.gnome.gedit.gschema.xml.in:263
 msgid "The bottom margin, in millimeters."
 msgstr "ਹੇਠਲਾ ਹਾਸ਼ੀਆ, ਮਿਲੀਮੀਟਰਾਂ ਵਿੱਚ।"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:85
+#: data/org.gnome.gedit.gschema.xml.in:269
 msgid "Candidate Encodings"
 msgstr "ਉਮੀਦਵਾਰ ਇੰਕੋਡਿੰਗ"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:87
+#: data/org.gnome.gedit.gschema.xml.in:270
+msgid ""
+"List of candidate encodings shown in the Character Encoding menu in the open/"
+"save file chooser. “CURRENT” represents the current locale encoding. Only "
+"recognized encodings are used. The default value is the empty list, in which "
+"case gedit will choose good defaults depending on the country and language."
+msgstr ""
+"ਉਮੀਦਵਾਰ ਇੰਕੋਡਿੰਗ ਦੀ ਲਿਸਟ ਖੋਲ੍ਹਣ/ਸੰਭਾਲਣ ਫਾਇਲ ਚੋਣਕਾਰ ਦੇ ਕਰੈਕਟਰ ਇੰਕੋਡਿੰਗ ਮੇਨੂ"
+" ਵਿੱਚ ਦਿਖਾਈ ਗਈ ਹੈ। "
+"“CURRENT” ਲੋਕਲ ਇੰਕੋਡਿੰਗ ਦੀ ਹਾਲੀਆ ਸਥਿਤੀ ਪੇਸ਼ ਕਰਦਾ ਹੈ । ਸਿਰਫ਼ ਪ੍ਰਵਾਨਿੇਤ"
+" ਇੰਕੋਡਿੰਗਸ ਹੀ ਵਰਤੀਆਂ ਗਈਆਂ ਹਨ। "
+"ਖਾਲੀ ਸੂਚੀ ਡਿਫਾਲਟ ਮੁੱਲ ਹੈ, ਜਿਸ ਵਿੱਚ ਜੀ-ਸੰਪਾਦਕ ਦੇਸ਼ ਅਤੇ ਭਾਸ਼ਾ ਦੇ ਆਧਾਰ ਉਤੇ ਵਧੀਆ"
+" ਮੂਲ ਚੁਣੇਗਾ।"
+
+#: data/org.gnome.gedit.gschema.xml.in:316
 msgid "Active plugins"
 msgstr "ਸਰਗਰਮ ਪਲੱਗਇਨ"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:88
-#| msgid ""
-#| "List of active plugins. It contains the \"Location\" of the active "
-#| "plugins. See the .gedit-plugin file for obtaining the \"Location\" of a "
-#| "given plugin."
+#: data/org.gnome.gedit.gschema.xml.in:317
 msgid ""
 "List of active plugins. It contains the “Location” of the active plugins. "
 "See the .gedit-plugin file for obtaining the “Location” of a given plugin."
@@ -601,100 +568,89 @@ msgstr ""
 " ਪਲੱਗਇਨ ਦਾ "
 "“ਟਿਕਾਣਾ“ ਪਰਾਪਤ ਕਰਨ ਲਈ .gedit-plugin ਫਾਇਲ ਵੇਖੋ।"
 
-#: ../gedit/gedit-app.c:110
-#| msgid "Show the application's version"
+#: gedit/gedit-app.c:114
 msgid "Show the application’s version"
 msgstr "ਐਪਲੀਕੇਸ਼ਨ ਦਾ ਵਰਜ਼ਨ ਵੇਖੋ"
 
-#: ../gedit/gedit-app.c:116
+#: gedit/gedit-app.c:120
 msgid "Display list of possible values for the encoding option"
 msgstr "ਇੰਕੋਡਿੰਗ ਚੋਣ ਲਈ ਸੰਭਵ ਮੁੱਲਾਂ ਦੀ ਲਿਸਟ ਵੇਖੋ।"
 
-#: ../gedit/gedit-app.c:123
+#: gedit/gedit-app.c:127
 msgid ""
 "Set the character encoding to be used to open the files listed on the "
 "command line"
 msgstr "ਕਮਾਂਡ ਲਾਈਨ ਤੋਂ ਖੁੱਲਣ ਵਾਲੀਆਂ ਫਾਇਲਾਂ ਦੀ ਅੱਖਰ ਇੰਕੋਡਿੰਗ ਦਿਓ"
 
-#: ../gedit/gedit-app.c:124
+#: gedit/gedit-app.c:128
 msgid "ENCODING"
 msgstr "ਇੰਕੋਡਿੰਗ"
 
-#: ../gedit/gedit-app.c:130
+#: gedit/gedit-app.c:134
 msgid "Create a new top-level window in an existing instance of gedit"
 msgstr "ਇਸ ਖੁੱਲ੍ਹੇ ਜੀ-ਸੰਪਾਦਕ ਲਈ ਸਿਰੇ ਦਾ ਨਵੀਂ ਵਿੰਡੋ ਬਣਾਓ"
 
-#: ../gedit/gedit-app.c:137
+#: gedit/gedit-app.c:141
 msgid "Create a new document in an existing instance of gedit"
 msgstr "ਜੀ-ਸੰਪਾਦਕ ਦੇ ਮੌਜੂਦ ਮੌਕੇ ਵਿੱਚ ਨਵਾਂ ਡੌਕੂਮੈਂਟ ਬਣਾਓ"
 
-#: ../gedit/gedit-app.c:144
+#: gedit/gedit-app.c:148
 msgid "Open files and block process until files are closed"
 msgstr "ਜਦੋਂ ਤੱਕ ਮੈਂ ਫਾਇਲਾਂ ਬੰਦ ਨਹੀਂ ਕਰਦਾ ਤਾਂ ਫਾਇਲਾਂ ਖੋਲ੍ਹੋ ਤੇ ਪਰੋਸੈੱਸ ਰੋਕੋ"
 
-#: ../gedit/gedit-app.c:151
+#: gedit/gedit-app.c:155
 msgid "Run gedit in standalone mode"
 msgstr "ਜੀਸੰਪਾਦਕ ਨੂੰ ਇੱਕਲੇ ਮੋਡ 'ਚ ਚਲਾਓ"
 
-#: ../gedit/gedit-app.c:158
-#| msgid "[FILE...] [+LINE[:COLUMN]]"
+#: gedit/gedit-app.c:162
 msgid "[FILE…] [+LINE[:COLUMN]]"
 msgstr "[FILE…] [+LINE[:COLUMN]]"
 
-#: ../gedit/gedit-app.c:273
+#: gedit/gedit-app.c:281
 msgid "There was an error displaying the help."
 msgstr "ਮੱਦਦ ਵੇਖਾਉਣ ਦੌਰਾਨ ਇੱਕ ਗਲਤੀ ਆਈ ਹੈ।"
 
-#: ../gedit/gedit-app.c:967
+#: gedit/gedit-app.c:972
 #, c-format
 msgid "%s: invalid encoding."
 msgstr "%s: ਗਲਤ ਇੰਕੋਡਿੰਗ ਹੈ।"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:277
+#: gedit/gedit-close-confirmation-dialog.c:279
 msgid "Close _without Saving"
 msgstr "ਬਿਨਾਂ ਸੰਭਾਲੇ ਬੰਦ ਕਰੋ(_w)"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:278
-#: ../gedit/gedit-commands-file.c:462 ../gedit/gedit-commands-file.c:567
-#: ../gedit/gedit-commands-file.c:643 ../gedit/gedit-commands-file.c:854
-#: ../gedit/gedit-commands-file.c:1568 ../gedit/gedit-encodings-dialog.c:194
-#: ../gedit/gedit-preferences-dialog.c:825
-#: ../gedit/gedit-progress-info-bar.c:49
-#: ../gedit/resources/ui/gedit-encodings-dialog.ui.h:2
-#: ../gedit/resources/ui/gedit-highlight-mode-dialog.ui.h:2
-#: ../plugins/filebrowser/gedit-file-browser-utils.c:170
-#: ../plugins/quickopen/quickopen/popup.py:45
-#: ../plugins/snippets/snippets/manager.py:789
-#: ../plugins/snippets/snippets/manager.py:874
-#: ../plugins/snippets/snippets/manager.py:912
-#: ../plugins/sort/resources/ui/gedit-sort-plugin.ui.h:6
-#: ../plugins/time/resources/ui/gedit-time-dialog.ui.h:8
+#: gedit/gedit-close-confirmation-dialog.c:285 gedit/gedit-commands-file.c:462
+#: gedit/gedit-commands-file.c:567 gedit/gedit-commands-file.c:643
+#: gedit/gedit-commands-file.c:854 gedit/gedit-commands-file.c:1583
+#: gedit/gedit-encodings-dialog.c:194 gedit/gedit-preferences-dialog.c:825
+#: gedit/gedit-progress-info-bar.c:49
+#: gedit/resources/ui/gedit-encodings-dialog.ui:44
+#: gedit/resources/ui/gedit-highlight-mode-dialog.ui:31
+#: plugins/filebrowser/gedit-file-browser-utils.c:213
+#: plugins/quickopen/quickopen/popup.py:45
+#: plugins/snippets/snippets/manager.py:789
+#: plugins/snippets/snippets/manager.py:874
+#: plugins/snippets/snippets/manager.py:912
+#: plugins/sort/resources/ui/gedit-sort-plugin.ui:143
+#: plugins/time/resources/ui/gedit-time-dialog.ui:150
 msgid "_Cancel"
 msgstr "ਰੱਦ ਕਰੋ(_C)"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:306
-#: ../gedit/resources/gtk/menus.ui.h:10
-#: ../gedit/resources/gtk/menus-traditional.ui.h:4
+#: gedit/gedit-close-confirmation-dialog.c:312 gedit/resources/gtk/menus.ui:37
+#: gedit/resources/gtk/menus-traditional.ui:33
 msgid "_Save As…"
 msgstr "…ਵਜੋਂ ਸੰਭਾਲੋ(_S)"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:306
-#: ../gedit/gedit-commands-file.c:855
-#: ../gedit/resources/gtk/menus-common.ui.h:18
-#: ../gedit/resources/ui/gedit-window.ui.h:7
-#: ../plugins/snippets/snippets/manager.py:875
-#: ../plugins/snippets/snippets/manager.py:913
+#: gedit/gedit-close-confirmation-dialog.c:312 gedit/gedit-commands-file.c:855
+#: gedit/resources/gtk/menus-common.ui:127
+#: gedit/resources/ui/gedit-window.ui:105
+#: plugins/snippets/snippets/manager.py:875
+#: plugins/snippets/snippets/manager.py:913
 msgid "_Save"
 msgstr "ਸੰਭਾਲੋ(_S)"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:324
+#: gedit/gedit-close-confirmation-dialog.c:330
 #, c-format
-#| msgid ""
-#| "If you don't save, changes from the last %ld second will be permanently "
-#| "lost."
-#| msgid_plural ""
-#| "If you don't save, changes from the last %ld seconds will be permanently "
-#| "lost."
 msgid ""
 "If you don’t save, changes from the last %ld second will be permanently lost."
 msgid_plural ""
@@ -705,21 +661,13 @@ msgstr[0] ""
 msgstr[1] ""
 "ਜੇਕਰ ਤੁਸੀ ਨਾ ਸੰਭਾਲਿਆ ਤਾਂ ਪਿਛਲੇ %ld ਸਕਿੰਟਾਂ ਦੀਆਂ ਸਭ ਤਬਦੀਲੀਆਂ ਖਤਮ ਹੋ ਜਾਣਗੀਆਂ।"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:333
-#| msgid ""
-#| "If you don't save, changes from the last minute will be permanently lost."
+#: gedit/gedit-close-confirmation-dialog.c:339
 msgid ""
 "If you don’t save, changes from the last minute will be permanently lost."
 msgstr "ਜੇਕਰ ਤੁਸੀ ਨਾ ਸੰਭਾਲਿਆ ਤਾਂ ਪਿਛਲੇ ਮਿੰਟ ਦੀਆਂ ਸਭ ਤਬਦੀਲੀਆਂ ਖਤਮ ਹੋ ਜਾਣਗੀਆਂ।"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:339
+#: gedit/gedit-close-confirmation-dialog.c:345
 #, c-format
-#| msgid ""
-#| "If you don't save, changes from the last minute and %ld second will be "
-#| "permanently lost."
-#| msgid_plural ""
-#| "If you don't save, changes from the last minute and %ld seconds will be "
-#| "permanently lost."
 msgid ""
 "If you don’t save, changes from the last minute and %ld second will be "
 "permanently lost."
@@ -733,14 +681,8 @@ msgstr[1] ""
 "ਜੇਕਰ ਤੁਸੀ ਨਾ ਸੰਭਾਲਿਆ ਤਾਂ ਪਿਛਲੇ ਮਿੰਟ ਅਤੇ %ld ਸਕਿੰਟਾਂ ਦੀਆਂ ਸਭ ਤਬਦੀਲੀਆਂ ਖਤਮ ਹੋ"
 " ਜਾਣਗੀਆਂ।"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:349
+#: gedit/gedit-close-confirmation-dialog.c:355
 #, c-format
-#| msgid ""
-#| "If you don't save, changes from the last %ld minute will be permanently "
-#| "lost."
-#| msgid_plural ""
-#| "If you don't save, changes from the last %ld minutes will be permanently "
-#| "lost."
 msgid ""
 "If you don’t save, changes from the last %ld minute will be permanently lost."
 msgid_plural ""
@@ -751,22 +693,14 @@ msgstr[0] ""
 msgstr[1] ""
 "ਜੇਕਰ ਤੁਸੀ ਨਾ ਸੰਭਾਲਿਆ ਤਾਂ ਪਿਛਲੇ %ld ਮਿੰਟਾਂ ਦੀਆਂ ਸਭ ਤਬਦੀਲੀਆਂ ਖਤਮ ਹੋ ਜਾਣਗੀਆਂ।"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:364
-#| msgid ""
-#| "If you don't save, changes from the last hour will be permanently lost."
+#: gedit/gedit-close-confirmation-dialog.c:370
 msgid "If you don’t save, changes from the last hour will be permanently lost."
 msgstr ""
 "ਜੇਕਰ ਤੁਸੀ ਨਾ ਸੰਭਾਲੀਆਂ ਤਾਂ ਆਖਰੀ ਘੰਟੇ ਦੀਆਂ ਸਭ ਤਬਦੀਲੀਆਂ ਹਮੇਸ਼ਾਂ ਲਈ ਖਤਮ ਹੋ"
 " ਜਾਣਗੀਆਂ।"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:370
+#: gedit/gedit-close-confirmation-dialog.c:376
 #, c-format
-#| msgid ""
-#| "If you don't save, changes from the last hour and %d minute will be "
-#| "permanently lost."
-#| msgid_plural ""
-#| "If you don't save, changes from the last hour and %d minutes will be "
-#| "permanently lost."
 msgid ""
 "If you don’t save, changes from the last hour and %d minute will be "
 "permanently lost."
@@ -778,13 +712,8 @@ msgstr[0] ""
 msgstr[1] ""
 "ਜੇਕਰ ਤੁਸੀ ਨਾ ਸੰਭਾਲਿਆ ਤਾਂ ਪਿਛਲੇ %d ਮਿੰਟਾਂ ਦੀਆਂ ਸਭ ਤਬਦੀਲੀਆਂ ਖਤਮ ਹੋ ਜਾਣਗੀਆਂ।"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:385
+#: gedit/gedit-close-confirmation-dialog.c:391
 #, c-format
-#| msgid ""
-#| "If you don't save, changes from the last %d hour will be permanently lost."
-#| msgid_plural ""
-#| "If you don't save, changes from the last %d hours will be permanently "
-#| "lost."
 msgid ""
 "If you don’t save, changes from the last %d hour will be permanently lost."
 msgid_plural ""
@@ -796,29 +725,29 @@ msgstr[1] ""
 "ਜੇਕਰ ਤੁਸੀ ਨਾ ਸੰਭਾਲੀਆਂ ਤਾਂ ਪਿਛਲੇ %d ਘੰਟਿਆਂ ਦੀਆਂ ਸਭ ਤਬਦੀਲੀਆਂ ਹਮੇਸ਼ਾਂ ਲਈ ਖਤਮ ਹੋ"
 " ਜਾਣਗੀਆਂ।"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:414
+#: gedit/gedit-close-confirmation-dialog.c:420
 #, c-format
 msgid "Changes to document “%s” will be permanently lost."
 msgstr "ਡੌਕੂਮੈਂਟ “%s” ਵਿੱਚ ਕੀਤੀਆਂ ਤਬਦੀਲੀਆਂ ਹਮੇਸ਼ਾਂ ਲਈ ਖਤਮ ਹੋ ਜਾਣਗੀਆਂ।"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:419
+#: gedit/gedit-close-confirmation-dialog.c:425
 #, c-format
 msgid "Save changes to document “%s” before closing?"
 msgstr "ਕੀ ਡੌਕੂਮੈਂਟ “%s\" ਦੇ ਬਦਲਾਅ ਬੰਦ ਕਰਨ ਤੋਂ ਪਹਿਲਾਂ ਸੰਭਾਲਣੇ ਹਨ?"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:434
-#: ../gedit/gedit-close-confirmation-dialog.c:558
+#: gedit/gedit-close-confirmation-dialog.c:440
+#: gedit/gedit-close-confirmation-dialog.c:564
 msgid "Saving has been disabled by the system administrator."
 msgstr "ਸੰਭਾਲਣ ਉੱਤੇ ਸਿਸਟਮ ਪਰਸ਼ਾਸ਼ਕ ਨੇ ਰੋਕ ਲਾ ਰੱਖੀ ਹੈ।"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:500
+#: gedit/gedit-close-confirmation-dialog.c:506
 #, c-format
 msgid "Changes to %d document will be permanently lost."
 msgid_plural "Changes to %d documents will be permanently lost."
 msgstr[0] "%d ਡੌਕੂਮੈਂਟ ਵਿੱਚ ਕੀਤੀਆਂ ਤਬਦੀਲੀਆਂ ਹਮੇਸ਼ਾਂ ਲਈ ਖਤਮ ਹੋ ਜਾਣਗੀਆਂ।"
 msgstr[1] "%d ਡੌਕੂਮੈਂਟ ਵਿੱਚ ਕੀਤੀਆਂ ਤਬਦੀਲੀਆਂ ਹਮੇਸ਼ਾ ਲਈ ਖਤਮ ਹੋ ਜਾਣਗੀਆਂ।"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:508
+#: gedit/gedit-close-confirmation-dialog.c:514
 #, c-format
 msgid "There is %d document with unsaved changes. Save changes before closing?"
 msgid_plural ""
@@ -830,26 +759,24 @@ msgstr[1] ""
 "%d ਡੌਕੂਮੈਟਾਂ ਵਿੱਚ ਨਾ ਸੰਭਾਲੀਆਂ ਤਬਦੀਲੀਆਂ ਨਾਲ ਹਨ। ਕੀ ਬੰਦ ਕਰਨ ਤੋਂ ਪਹਿਲਾਂ ਸੰਭਾਲਣਾ"
 " ਚਾਹੋਗੇ?"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:534
+#: gedit/gedit-close-confirmation-dialog.c:540
 msgid "Docum_ents with unsaved changes:"
 msgstr "ਨਾ-ਸੰਭਾਲੀਆਂ ਤਬਦੀਲੀਆਂ ਸਮੇਤ ਡੌਕੂਮੈਂਟ(_e):"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:538
+#: gedit/gedit-close-confirmation-dialog.c:544
 msgid "S_elect the documents you want to save:"
 msgstr "ਉਹ ਡੌਕੂਮੈਂਟ ਚੁਣੋ, ਜੋ ਸੰਭਾਲਣੇ ਹਨ(_E):"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:562
-#| msgid "If you don't save, all your changes will be permanently lost."
+#: gedit/gedit-close-confirmation-dialog.c:568
 msgid "If you don’t save, all your changes will be permanently lost."
 msgstr "ਜੇਕਰ ਤੁਸੀ ਨਾ ਸੰਭਾਲਿਆ ਤਾਂ ਸਾਰੀਆਂ ਤਬਦੀਲੀਆਂ ਖਤਮ ਹੋ ਜਾਣਗੀਆਂ।"
 
-#: ../gedit/gedit-commands-file.c:261
+#: gedit/gedit-commands-file.c:261
 #, c-format
-#| msgid "Loading file '%s'…"
 msgid "Loading file “%s”…"
 msgstr "…ਫਾਇਲ “%s“ ਲੋਡ ਹੋ ਰਹੀ ਹੈ"
 
-#: ../gedit/gedit-commands-file.c:270
+#: gedit/gedit-commands-file.c:270
 #, c-format
 msgid "Loading %d file…"
 msgid_plural "Loading %d files…"
@@ -857,49 +784,45 @@ msgstr[0] "…ਫਾਇਲ %d ਲੋਡ ਹੋ ਰਹੀ ਹੈ"
 msgstr[1] "…%d ਫਾਇਲਾਂ ਲੋਡ ਹੋ ਰਹੀਆਂ ਹਨ"
 
 #. Translators: "Open" is the title of the file chooser window.
-#: ../gedit/gedit-commands-file.c:456
+#: gedit/gedit-commands-file.c:456
 msgctxt "window title"
 msgid "Open"
 msgstr "ਖੋਲ੍ਹੋ"
 
-#: ../gedit/gedit-commands-file.c:463
-#: ../gedit/resources/gtk/menus-common.ui.h:15
-#: ../gedit/resources/ui/gedit-window.ui.h:3
-#: ../plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui.h:1
-#: ../plugins/quickopen/quickopen/popup.py:46
-#: ../plugins/snippets/snippets/manager.py:790
+#: gedit/gedit-commands-file.c:463 gedit/resources/gtk/menus-common.ui:100
+#: gedit/resources/gtk/menus-common.ui:106
+#: gedit/resources/ui/gedit-window.ui:48
+#: plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui:7
+#: plugins/quickopen/quickopen/popup.py:46
+#: plugins/snippets/snippets/manager.py:790
 msgid "_Open"
 msgstr "ਖੋਲ੍ਹੋ(_O)"
 
-#: ../gedit/gedit-commands-file.c:558
+#: gedit/gedit-commands-file.c:558
 #, c-format
-#| msgid "The file \"%s\" is read-only."
 msgid "The file “%s” is read-only."
 msgstr "ਫਾਇਲ “%s“ ਸਿਰਫ਼ ਪੜ੍ਹਨ ਲਈ ਹੈ।"
 
-#: ../gedit/gedit-commands-file.c:563
+#: gedit/gedit-commands-file.c:563
 msgid "Do you want to try to replace it with the one you are saving?"
 msgstr ""
 "ਕੀ ਤੁਸੀ ਇਸ ਨੂੰ ਉਸ ਫਾਇਲ ਨਾਲ ਤਬਦੀਲ ਕਰਨਾ ਚਾਹੋਗੇ, ਜਿਸ ਨੂੰ ਸੰਭਾਲਣ ਜਾ ਰਹੇ ਹੋ?"
 
-#: ../gedit/gedit-commands-file.c:568
-#: ../gedit/resources/ui/gedit-replace-dialog.ui.h:4
+#: gedit/gedit-commands-file.c:568
+#: gedit/resources/ui/gedit-replace-dialog.ui:55
 msgid "_Replace"
 msgstr "ਬਦਲੋ(_R)"
 
-#: ../gedit/gedit-commands-file.c:608
+#: gedit/gedit-commands-file.c:608
 msgid "Save the file using compression?"
 msgstr "ਕੀ ਫਾਇਲ ਨੂੰ ਕੰਪਰੈੱਸ਼ਨ ਦੀ ਵਰਤੋਂ ਕਰਕੇ ਸੰਭਾਲਣਾ?"
 
-#: ../gedit/gedit-commands-file.c:612
+#: gedit/gedit-commands-file.c:612
 msgid "Save the file as plain text?"
 msgstr "ਕੀ ਫਾਇਲ ਨੂੰ ਪਲੇਨ ਟੈਕਸਟ ਵਜੋਂ ਸੰਭਾਲਣਾ ਹੈ?"
 
-#: ../gedit/gedit-commands-file.c:625
+#: gedit/gedit-commands-file.c:625
 #, c-format
-#| msgid ""
-#| "The file \"%s\" was previously saved as plain text and will now be saved "
-#| "using compression."
 msgid ""
 "The file “%s” was previously saved as plain text and will now be saved using "
 "compression."
@@ -907,15 +830,12 @@ msgstr ""
 "ਫਾਇਲ “%s“ ਪਹਿਲਾਂ ਪਲੇਨ ਟੈਕਸਟ ਵਜੋਂ ਸੰਭਾਲਿਆ ਗਿਆ ਸੀ ਤੇ ਹੁਣ ਕੰਪਰੈੱਸ਼ਨ ਦੀ ਵਰਤੋਂ"
 " ਕਰਕੇ ਸੰਭਾਲਿਆ ਜਾਵੇਗਾ।"
 
-#: ../gedit/gedit-commands-file.c:629
+#: gedit/gedit-commands-file.c:629
 msgid "_Save Using Compression"
 msgstr "ਕੰਪਰੈੱਸ਼ਨ ਵਰਤ ਕੇ ਸੰਭਾਲੋ(_S)"
 
-#: ../gedit/gedit-commands-file.c:634
+#: gedit/gedit-commands-file.c:634
 #, c-format
-#| msgid ""
-#| "The file \"%s\" was previously saved using compression and will now be "
-#| "saved as plain text."
 msgid ""
 "The file “%s” was previously saved using compression and will now be saved "
 "as plain text."
@@ -923,35 +843,36 @@ msgstr ""
 "ਫਾਇਲ “%s“ ਪਹਿਲਾਂ ਕੰਪਰੈਸ਼ਨ ਦੀ ਵਰਤੋਂ ਕਰਕੇ ਸੰਭਾਲਿਆ ਗਿਆ ਸੀ ਤੇ ਹੁਣ ਪਲੇਨ ਟੈਕਸਟ ਵਜੋਂ"
 " ਸੰਭਾਲਿਆ ਜਾਵੇਗਾ।"
 
-#: ../gedit/gedit-commands-file.c:637
+#: gedit/gedit-commands-file.c:637
 msgid "_Save As Plain Text"
 msgstr "ਪਲੇਨ ਟੈਕਸਟ ਵਜੋਂ ਸੰਭਾਲੋ(_S)"
 
-#: ../gedit/gedit-commands-file.c:752 ../gedit/gedit-commands-file.c:1019
+#: gedit/gedit-commands-file.c:752 gedit/gedit-commands-file.c:1019
 #, c-format
-#| msgid "Saving file '%s'…"
 msgid "Saving file “%s”…"
 msgstr "…ਫਾਇਲ “%s“ ਸੰਭਾਲੀ ਜਾ ਰਹੀ ਹੈ"
 
 #. Translators: "Save As" is the title of the file chooser window.
-#: ../gedit/gedit-commands-file.c:847
+#: gedit/gedit-commands-file.c:847
 msgctxt "window title"
 msgid "Save As"
 msgstr "ਇੰਝ ਸੰਭਾਲੋ"
 
-#: ../gedit/gedit-commands-file.c:1429
+#: gedit/gedit-commands-file.c:1101
+msgid "No changes need to be saved"
+msgstr "ਕੋਈ ਤਬਦੀਲੀਆਂ ਸੰਭਾਲਣ ਲਈ ਲੋੜ ਹੈ"
+
+#: gedit/gedit-commands-file.c:1444
 #, c-format
-#| msgid "Reverting the document '%s'…"
 msgid "Reverting the document “%s”…"
 msgstr "…ਡੌਕੂਮੈਂਟ “%s“ ਪਰਤਾਇਆ ਜਾ ਰਿਹਾ ਹੈ"
 
-#: ../gedit/gedit-commands-file.c:1476
+#: gedit/gedit-commands-file.c:1491
 #, c-format
-#| msgid "Revert unsaved changes to document '%s'?"
 msgid "Revert unsaved changes to document “%s”?"
 msgstr "ਕੀ ਡੌਕੂਮੈਂਟ “%s“ ਵਿੱਚ ਨਾ-ਸੰਭਾਲੀਆਂ ਤਬਦੀਲੀਆਂ ਵਾਪਸ ਲੈਣੀਆਂ ਹਨ?"
 
-#: ../gedit/gedit-commands-file.c:1485
+#: gedit/gedit-commands-file.c:1500
 #, c-format
 msgid ""
 "Changes made to the document in the last %ld second will be permanently lost."
@@ -963,12 +884,12 @@ msgstr[0] ""
 msgstr[1] ""
 "ਆਖਰੀ %ld ਸਕਿੰਟਾਂ ਵਿੱਚ ਡੌਕੂਮੈਂਟ ਚ ਕੀਕੀਤੀਆਂ ਤਬਦੀਲੀਆਂ ਤਾਂ ਖਤਮ ਹੋ ਜਾਣਗੀਆਂ ਹਨ।"
 
-#: ../gedit/gedit-commands-file.c:1494
+#: gedit/gedit-commands-file.c:1509
 msgid ""
 "Changes made to the document in the last minute will be permanently lost."
 msgstr "ਆਖਰੀ ਮਿੰਟ ਵਿੱਚ ਡੌਕੂਮੈਂਟ ਵਿਚ ਕੀਤੀਆਂ ਤਬਦੀਲੀਆਂ ਤਾਂ ਖਤਮ ਹੋ ਜਾਣਗੀਆਂ ਹਨ।"
 
-#: ../gedit/gedit-commands-file.c:1500
+#: gedit/gedit-commands-file.c:1515
 #, c-format
 msgid ""
 "Changes made to the document in the last minute and %ld second will be "
@@ -983,7 +904,7 @@ msgstr[1] ""
 "ਪਿਛਲੇ ਮਿੰਟ ਅਤੇ %ld ਸਕਿੰਟਾਂ ਵਿੱਚ ਡੌਕੂਮੈਂਟ ਚ ਕੀਤੀਆਂ ਤਬਦੀਲੀਆਂ ਤਾਂ ਖਤਮ ਹੋ ਜਾਣਗੀਆਂ"
 " ਹੈ।"
 
-#: ../gedit/gedit-commands-file.c:1510
+#: gedit/gedit-commands-file.c:1525
 #, c-format
 msgid ""
 "Changes made to the document in the last %ld minute will be permanently lost."
@@ -995,13 +916,13 @@ msgstr[0] ""
 msgstr[1] ""
 "ਪਿਛਲੇ %ld ਮਿੰਟ ਵਿੱਚ ਡੌਕੂਮੈਂਟ ਵਿੱਚ ਕੀਤੀਆਂ ਤਬਦੀਲੀਆਂ ਤਾਂ ਖਤਮ ਹੋ ਜਾਣਗੀਆਂ ਹਨ।"
 
-#: ../gedit/gedit-commands-file.c:1525
+#: gedit/gedit-commands-file.c:1540
 msgid "Changes made to the document in the last hour will be permanently lost."
 msgstr ""
 "ਪਿਛਲੇ ਘੰਟੇ ਵਿੱਚ ਡੌਕੂਮੈਂਟ ਵਿਚ ਕੀਤੀਆਂ ਤਬਦੀਲੀਆਂ ਤਾਂ ਪੱਕੇ ਤੌਰ ਤੇ ਖਤਮ ਹੋ ਜਾਣਗੀਆਂ"
 " ਹਨ।"
 
-#: ../gedit/gedit-commands-file.c:1531
+#: gedit/gedit-commands-file.c:1546
 #, c-format
 msgid ""
 "Changes made to the document in the last hour and %d minute will be "
@@ -1016,7 +937,7 @@ msgstr[1] ""
 "ਆਖਰੀ ਘੰਟੇ ਅਤੇ %d ਮਿੰਟਾਂ ਵਿੱਚ ਡੌਕੂਮੈਂਟ ਵਿਚ ਕੀਤੀਆਂ ਤਬਦੀਲੀਆਂ ਤਾਂ ਪੱਕੇ ਤੌਰ ਤੇ ਖਤਮ"
 " ਹੋ ਜਾਣਗੀਆਂ ਹਨ।"
 
-#: ../gedit/gedit-commands-file.c:1546
+#: gedit/gedit-commands-file.c:1561
 #, c-format
 msgid ""
 "Changes made to the document in the last %d hour will be permanently lost."
@@ -1029,15 +950,15 @@ msgstr[1] ""
 "ਆਖਰੀ %d ਘੰਟੇ ਵਿੱਚ ਡੌਕੂਮੈਂਟ ਵਿਚ ਕੀਤੀਆਂ ਤਬਦੀਲੀਆਂ ਤਾਂ ਪੱਕੇ ਤੌਰ ਤੇ ਖਤਮ ਹੋ ਜਾਣਗੀਆਂ"
 " ਹਨ।"
 
-#: ../gedit/gedit-commands-file.c:1569
+#: gedit/gedit-commands-file.c:1584
 msgid "_Revert"
 msgstr "ਰੀਵਰਟ ਕਰੋ(_R)"
 
-#: ../gedit/gedit-commands-help.c:110
+#: gedit/gedit-commands-help.c:110
 msgid "gedit is a small and lightweight text editor for the GNOME Desktop"
 msgstr "ਜੀ-ਸੰਪਾਦਕ ਗਨੋਮ ਡੈਸਕਟਾਪ ਲਈ ਛੋਟਾ ਅਤੇ ਹਲਕਾ ਟੈਕਸਟ ਸੰਪਾਦਕ ਹੈ"
 
-#: ../gedit/gedit-commands-help.c:132
+#: gedit/gedit-commands-help.c:132
 msgid "translator-credits"
 msgstr ""
 "ਅਮਨਪਰੀਤ ਸਿੰਘ ਬਰਾੜ ਆਲਮਵਾਲਾ ੨੦੦੪-੨੦੦੯\n"
@@ -1045,162 +966,151 @@ msgstr ""
 "Punjabi OpenSource Team\n"
 "http://www.satluj.com"
 
-#: ../gedit/gedit-commands-search.c:107
+#: gedit/gedit-commands-search.c:107
 #, c-format
 msgid "Found and replaced %d occurrence"
 msgid_plural "Found and replaced %d occurrences"
 msgstr[0] "%d ਮੌਜੂਦਗੀ ਲੱਭੀਆਂ ਅਤੇ ਤਬਦੀਲ ਕੀਤੀ ਗਈ"
 msgstr[1] "%d ਮੌਜੂਦਗੀਆਂ ਲੱਭੀਆਂ ਅਤੇ ਤਬਦੀਲ ਕੀਤੀਆਂ ਗਈਆਂ"
 
-#: ../gedit/gedit-commands-search.c:116
+#: gedit/gedit-commands-search.c:116
 msgid "Found and replaced one occurrence"
 msgstr "ਇੱਕ ਮੌਜੂਦਗੀ ਲੱਭੀ ਅਤੇ ਤਬਦੀਲ ਕੀਤੀ ਗਈ"
 
 #. Translators: %s is replaced by the text
 #. entered by the user in the search box
-#: ../gedit/gedit-commands-search.c:142
+#: gedit/gedit-commands-search.c:142
 #, c-format
-#| msgid "\"%s\" not found"
 msgid "“%s” not found"
 msgstr "“%s“ ਨਹੀਂ ਲੱਭਿਆ"
 
-#: ../gedit/gedit-document.c:1103 ../gedit/gedit-document.c:1136
+#: gedit/gedit-document.c:1079 gedit/gedit-document.c:1112
 #, c-format
 msgid "Untitled Document %d"
 msgstr "ਬੇ-ਨਾਮਾ ਡੌਕੂਮੈਂਟ %d"
 
-#: ../gedit/gedit-documents-panel.c:399
+#: gedit/gedit-documents-panel.c:399
 #, c-format
 msgid "Tab Group %i"
 msgstr "ਟੈਬ ਗਰੁੱਪ %i"
 
-#: ../gedit/gedit-documents-panel.c:499 ../gedit/gedit-window.c:1161
-#: ../gedit/gedit-window.c:1167 ../gedit/gedit-window.c:1175
+#: gedit/gedit-documents-panel.c:499 gedit/gedit-window.c:1161
+#: gedit/gedit-window.c:1167 gedit/gedit-window.c:1175
 msgid "Read-Only"
 msgstr "ਪੜ੍ਹਨ ਲਈ"
 
-#: ../gedit/gedit-encodings-combo-box.c:299
-#: ../gedit/gedit-file-chooser-dialog-osx.c:565
+#: gedit/gedit-encodings-combo-box.c:299
+#: gedit/gedit-file-chooser-dialog-osx.m:565
 msgid "Automatically Detected"
 msgstr "ਆਟੋਮੈਟਿਕ ਖੋਜੀ"
 
-#: ../gedit/gedit-encodings-combo-box.c:328
-#: ../gedit/gedit-file-chooser-dialog-osx.c:574
-#| msgid "Add or Remove..."
+#: gedit/gedit-encodings-combo-box.c:328
+#: gedit/gedit-file-chooser-dialog-osx.m:574
 msgid "Add or Remove…"
 msgstr "ਜੋੜੋ ਜਾਂ ਹਟਾਓ..."
 
-#: ../gedit/gedit-encoding-items.c:92
+#: gedit/gedit-encoding-items.c:92
 #, c-format
 msgid "Current Locale (%s)"
 msgstr "ਮੌਜੂਦਾ ਲੋਕੇਲ (%s)"
 
-#: ../gedit/gedit-encodings-dialog.c:95
+#: gedit/gedit-encodings-dialog.c:95
 #, c-format
 msgid "%s (Current Locale)"
 msgstr "%s (ਮੌਜੂਦਾ ਲੋਕੇਲ)"
 
-#: ../gedit/gedit-encodings-dialog.c:190
-#| msgid "Do you really want to reset the character encodings' preferences?"
+#: gedit/gedit-encodings-dialog.c:190
 msgid "Do you really want to reset the character encodings’ preferences?"
 msgstr "ਕੀ ਤੁਸੀਂ ਸਚਮੁਚ ਅੱਖਰ ਇੰਕੋਡਿੰਗ ਦੀ ਪਹਿਲ ਨੂੰ ਮੁੜ-ਸੈਟ ਕਰਨਾ ਚਾਹੁੰਦੇ ਹੋ ? "
 
 #. Reset button
-#: ../gedit/gedit-encodings-dialog.c:195 ../gedit/gedit-encodings-dialog.c:820
+#: gedit/gedit-encodings-dialog.c:195 gedit/gedit-encodings-dialog.c:820
 msgid "_Reset"
 msgstr "ਮੁੜ-ਸੈੱਟ ਕਰੋ(_R)"
 
-#: ../gedit/gedit-encodings-dialog.c:731
+#: gedit/gedit-encodings-dialog.c:731
 msgid "Add"
 msgstr "ਜੋੜੋ"
 
-#: ../gedit/gedit-encodings-dialog.c:774
+#: gedit/gedit-encodings-dialog.c:774
 msgid "Remove"
 msgstr "ਹਟਾਓ"
 
-#: ../gedit/gedit-encodings-dialog.c:785
+#: gedit/gedit-encodings-dialog.c:785
 msgid "Move to a higher priority"
 msgstr "ਵੱਧ ਤਰਜੀਹ ਲਈ ਭੇਜੋ"
 
-#: ../gedit/gedit-encodings-dialog.c:796
+#: gedit/gedit-encodings-dialog.c:796
 msgid "Move to a lower priority"
 msgstr "ਘੱਟ ਤਰਜੀਹ ਲਈ ਭੇਜੋ"
 
-#: ../gedit/gedit-file-chooser-dialog-gtk.c:41
-#: ../gedit/gedit-preferences-dialog.c:834
+#: gedit/gedit-file-chooser-dialog-gtk.c:45
+#: gedit/gedit-preferences-dialog.c:834
 msgid "All Files"
 msgstr "ਸਭ ਫਾਇਲਾਂ"
 
-#: ../gedit/gedit-file-chooser-dialog-gtk.c:42
+#: gedit/gedit-file-chooser-dialog-gtk.c:46
 msgid "All Text Files"
 msgstr "ਸਭ ਟੈਕਸਟ ਫਾਇਲਾਂ"
 
-#: ../gedit/gedit-file-chooser-dialog-gtk.c:307
-msgid "C_haracter Encoding:"
-msgstr "ਅੱਖਰ ਇੰਕੋਡਿੰਗ(_h):"
-
-#: ../gedit/gedit-file-chooser-dialog-gtk.c:366
-msgid "L_ine Ending:"
-msgstr "ਲਾਈਨ ਅੰਤ(_i):"
-
-#: ../gedit/gedit-file-chooser-dialog-osx.c:547
+#: gedit/gedit-file-chooser-dialog-gtk.c:317
+#: gedit/gedit-file-chooser-dialog-osx.m:547
 msgid "Character Encoding:"
 msgstr "ਅੱਖਰ ਇੰਕੋਡਿੰਗ:"
 
-#: ../gedit/gedit-file-chooser-dialog-osx.c:620
+#: gedit/gedit-file-chooser-dialog-gtk.c:350
+#: gedit/gedit-file-chooser-dialog-osx.m:620
 msgid "Line Ending:"
 msgstr "ਲਾਈਨ ਅੰਤ:"
 
-#: ../gedit/gedit-highlight-mode-selector.c:269 ../gedit/gedit-window.c:1245
-#: ../plugins/externaltools/tools/manager.py:115
-#: ../plugins/externaltools/tools/manager.py:324
-#: ../plugins/externaltools/tools/manager.py:440
-#: ../plugins/externaltools/tools/manager.py:774
+#: gedit/gedit-highlight-mode-selector.c:269 gedit/gedit-window.c:1245
+#: plugins/externaltools/tools/manager.py:115
+#: plugins/externaltools/tools/manager.py:324
+#: plugins/externaltools/tools/manager.py:440
+#: plugins/externaltools/tools/manager.py:776
 msgid "Plain Text"
 msgstr "ਪਲੇਨ ਟੈਕਸਟ"
 
-#: ../gedit/gedit-io-error-info-bar.c:142
-#: ../gedit/gedit-io-error-info-bar.c:491
+#: gedit/gedit-io-error-info-bar.c:142 gedit/gedit-io-error-info-bar.c:491
 msgid "_Retry"
 msgstr "ਮੁੜ-ਕੋਸ਼ਿਸ਼(_R)"
 
-#: ../gedit/gedit-io-error-info-bar.c:162
+#: gedit/gedit-io-error-info-bar.c:162
 #, c-format
 msgid "Could not find the file “%s”."
 msgstr "ਫਾਇਲ “%s” ਲੱਭੀ ਨਹੀਂ ਜਾ ਸਕੀ ਹੈ।"
 
-#: ../gedit/gedit-io-error-info-bar.c:164
-#: ../gedit/gedit-io-error-info-bar.c:204
-#: ../gedit/gedit-io-error-info-bar.c:211
+#: gedit/gedit-io-error-info-bar.c:164 gedit/gedit-io-error-info-bar.c:204
+#: gedit/gedit-io-error-info-bar.c:211
 msgid "Please check that you typed the location correctly and try again."
 msgstr "ਜੋ ਟਿਕਾਣਾ ਤੁਸੀਂ ਦਿੱਤਾ ਹੈ, ਉਸ ਦੀ ਜਾਂਚ ਕਰਕੇ ਮੁੜ ਕੋਸ਼ਿਸ਼ ਕਰੋ ਜੀ।"
 
 #. Translators: %s is a URI scheme (like for example http:, ftp:, etc.)
-#: ../gedit/gedit-io-error-info-bar.c:183
+#: gedit/gedit-io-error-info-bar.c:183
 #, c-format
 msgid "Unable to handle “%s:” locations."
 msgstr "“%s:” ਟਿਕਾਣਿਆਂ ਨੂੰ ਵਰਤਣ ਤੋਂ ਅਸਮਰੱਥ"
 
-#: ../gedit/gedit-io-error-info-bar.c:189
+#: gedit/gedit-io-error-info-bar.c:189
 msgid "Unable to handle this location."
 msgstr "ਇਹ ਟਿਕਾਣੇ ਨੂੰ ਵਰਤਣ ਲਈ ਅਸਮਰੱਥ ਹੈ।"
 
-#: ../gedit/gedit-io-error-info-bar.c:198
+#: gedit/gedit-io-error-info-bar.c:198
 msgid "The location of the file cannot be accessed."
 msgstr "ਟਿਕਾਣੇ ਦਾ ਫਾਇਲ ਨੂੰ ਵਰਤਿਆ ਜਾ ਸਕਦਾ ਹੈ।"
 
-#: ../gedit/gedit-io-error-info-bar.c:202
+#: gedit/gedit-io-error-info-bar.c:202
 #, c-format
 msgid "“%s” is a directory."
 msgstr "“%s” ਡਾਇਰੈਕਟਰੀ ਹੈ।"
 
-#: ../gedit/gedit-io-error-info-bar.c:209
+#: gedit/gedit-io-error-info-bar.c:209
 #, c-format
 msgid "“%s” is not a valid location."
 msgstr "“%s” ਠੀਕ ਟਿਕਾਣਾ ਨਹੀਂ ਹੈ।"
 
 #. Translators: %s is a host name
-#: ../gedit/gedit-io-error-info-bar.c:245
+#: gedit/gedit-io-error-info-bar.c:245
 #, c-format
 msgid ""
 "Host “%s” could not be found. Please check that your proxy settings are "
@@ -1209,7 +1119,7 @@ msgstr ""
 "ਹੋਸਟ “%s” ਨਹੀਂ ਖੋਜਿਆ ਨਹੀਂ ਜਾ ਸਕਿਆ। ਆਪਣੇ ਪਰਾਕਸੀ ਸੈਟਿੰਗ ਦੀ ਜਾਂਚ ਕਰਕੇ ਮੁੜ"
 " ਕੋਸ਼ਿਸ਼ ਕਰੋ ਜੀ।"
 
-#: ../gedit/gedit-io-error-info-bar.c:260
+#: gedit/gedit-io-error-info-bar.c:260
 #, c-format
 msgid ""
 "Hostname was invalid. Please check that you typed the location correctly and "
@@ -1217,80 +1127,78 @@ msgid ""
 msgstr ""
 "ਹੋਸਟ ਨਾਂ ਠੀਕ ਨਹੀਂ ਹੈ। ਆਪਣੇ ਵਲੋਂ ਲਿਖੇ ਟਿਕਾਣੇ ਦੀ ਜਾਂਚ ਕਰਕੇ ਮੁੜ-ਕੋਸ਼ਿਸ਼ ਕਰੋ ਜੀ।"
 
-#: ../gedit/gedit-io-error-info-bar.c:268
+#: gedit/gedit-io-error-info-bar.c:268
 #, c-format
 msgid "“%s” is not a regular file."
 msgstr "“%s” ਇੱਕ ਰੈਗੂਲਰ ਫਾਇਲ ਨਹੀਂ ਹੈ।"
 
-#: ../gedit/gedit-io-error-info-bar.c:273
+#: gedit/gedit-io-error-info-bar.c:273
 msgid "Connection timed out. Please try again."
 msgstr "ਕੁਨੈਕਸ਼ਨ ਸਮਾਂ ਸਮਾਪਤ ਹੋਇਆ। ਮੁੜ ਕੋਸ਼ਿਸ਼ ਕਰੋ ਜੀ।"
 
-#: ../gedit/gedit-io-error-info-bar.c:306
+#: gedit/gedit-io-error-info-bar.c:306
 #, c-format
 msgid "Unexpected error: %s"
 msgstr "ਅਣਜਾਣੀ ਗਲਤੀ: %s"
 
-#: ../gedit/gedit-io-error-info-bar.c:342
+#: gedit/gedit-io-error-info-bar.c:342
 msgid "Cannot find the requested file. Perhaps it has recently been deleted."
 msgstr "ਮੰਗੀ ਫਾਇਲ ਲੱਭ ਨਹੀਂ ਜਾ ਸਕੀ ਹੈ। ਸ਼ਾਇਦ, ਹੁਣੇ ਹੀ ਹਟਾਈ ਗਈ ਹੋਵੇ।"
 
-#: ../gedit/gedit-io-error-info-bar.c:352
+#: gedit/gedit-io-error-info-bar.c:352
 #, c-format
 msgid "Could not revert the file “%s”."
 msgstr "ਫਾਇਲ “%s” ਪਰਤਾਈ ਨਹੀਂ ਜਾ ਸਕੀ।"
 
-#: ../gedit/gedit-io-error-info-bar.c:379
+#: gedit/gedit-io-error-info-bar.c:379
 msgid "Ch_aracter Encoding:"
 msgstr "ਕਰੈਕਟਰ ਇੰਕੋਡਿੰਗ(_a):"
 
-#: ../gedit/gedit-io-error-info-bar.c:440
+#: gedit/gedit-io-error-info-bar.c:440
 #, c-format
 msgid "The location “%s” is not currently reachable."
 msgstr "ਟਿਕਾਣਾ “%s” ਇਸ ਸਮੇਂ ਪਹੁੰਚ ਵਿੱਚ ਨਹੀਂ ਹੈ।"
 
-#: ../gedit/gedit-io-error-info-bar.c:455
+#: gedit/gedit-io-error-info-bar.c:455
 msgid "Your system is offline. Check your network."
 msgstr "ਤੁਹਾਡਾ ਸਿਸਟਮ ਆਫਲਾਈਨ ਹੈ। ਆਪਣਾ ਨੈੱਟਵਰਕ ਵੇਖੋ ਜੀ।"
 
 #. Translators: the access key chosen for this string should be
 #. different from other main menu access keys (Open, Edit, View...)
-#: ../gedit/gedit-io-error-info-bar.c:499
-#: ../gedit/gedit-io-error-info-bar.c:764
+#: gedit/gedit-io-error-info-bar.c:499 gedit/gedit-io-error-info-bar.c:764
 msgid "Edit Any_way"
 msgstr "ਕਿਵੇਂ ਵੀ ਸੋਧ(_w)"
 
-#: ../gedit/gedit-io-error-info-bar.c:587
+#: gedit/gedit-io-error-info-bar.c:587
 msgid ""
 "The number of followed links is limited and the actual file could not be "
 "found within this limit."
 msgstr ""
 "ਵੇਖਣ ਲਈ ਲਿੰਕ ਸੀਮਿਤ ਹਨ ਅਤੇ ਅਸਲੀ ਫਾਇਲ ਨੂੰ ਇਸ ਲਿਮਟ 'ਚੋਂ ਲੱਭਿਆ ਨਹੀਂ ਜਾ ਸਕਿਆ।"
 
-#: ../gedit/gedit-io-error-info-bar.c:591
+#: gedit/gedit-io-error-info-bar.c:591
 msgid "You do not have the permissions necessary to open the file."
 msgstr "ਤੁਸੀਂ ਫਾਇਲ ਖੋਲ੍ਹਣ ਲਈ ਲੋੜੀਦੇ ਅਧਿਕਾਰ ਨਹੀਂ ਹਨ।"
 
-#: ../gedit/gedit-io-error-info-bar.c:597
+#: gedit/gedit-io-error-info-bar.c:597
 msgid "Unable to detect the character encoding."
 msgstr "ਅੱਖਰ ਇੰਕੋਡਿੰਗ ਲੱਭਣ ਲਈ ਅਸਮਰੱਥ ਹੈ।"
 
-#: ../gedit/gedit-io-error-info-bar.c:598
-#: ../gedit/gedit-io-error-info-bar.c:622
+#: gedit/gedit-io-error-info-bar.c:598 gedit/gedit-io-error-info-bar.c:622
 msgid "Please check that you are not trying to open a binary file."
 msgstr ""
 "ਚੈੱਕ ਕਰੋ ਕਿ ਕਿਤੇ ਤੁਸੀਂ ਇੱਕ ਬਾਈਨਰੀ ਫਾਇਲ ਤਾਂ ਖੋਲ੍ਹਣ ਦੀ ਕੋਸ਼ਸ਼ ਨਹੀਂ ਕਰ ਰਹੇ ਹੋ।"
 
-#: ../gedit/gedit-io-error-info-bar.c:599
+#: gedit/gedit-io-error-info-bar.c:599
 msgid "Select a character encoding from the menu and try again."
 msgstr "ਮੇਨੂ ਤੋਂ ਵੱਖਰੀ ਇੰਕੋਡਿੰਗ ਦੀ ਚੋਣ ਕਰਕੇ ਮੁੜ-ਕੋਸ਼ਸ਼ ਕਰੋ।"
 
-#: ../gedit/gedit-io-error-info-bar.c:605
+#: gedit/gedit-io-error-info-bar.c:605
 #, c-format
 msgid "There was a problem opening the file “%s”."
 msgstr "ਫਾਇਲ “%s” ਖੋਲ੍ਹਣ ਦੌਰਾਨ ਸਮੱਸਿਆ ਹੈ।"
 
-#: ../gedit/gedit-io-error-info-bar.c:607
+#: gedit/gedit-io-error-info-bar.c:607
 msgid ""
 "The file you opened has some invalid characters. If you continue editing "
 "this file you could corrupt this document."
@@ -1299,32 +1207,31 @@ msgstr ""
 " ਜਾਰੀ ਰੱਖਿਆ ਤਾਂ ਇਹ "
 "ਡੌਕੂਮੈਂਟ ਬੇਕਾਰ ਹੋ ਜਾਵੇਗਾ।"
 
-#: ../gedit/gedit-io-error-info-bar.c:610
+#: gedit/gedit-io-error-info-bar.c:610
 msgid "You can also choose another character encoding and try again."
 msgstr "ਤੁਸੀਂ ਮੇਨੂ ਤੋਂ ਵੱਖਰੀ ਇੰਕੋਡਿੰਗ ਦੀ ਚੋਣ ਕਰਕੇ ਮੁੜ-ਕੋਸ਼ਸ਼ ਕਰ ਸਕਦੇ ਹੋ।"
 
-#: ../gedit/gedit-io-error-info-bar.c:619
+#: gedit/gedit-io-error-info-bar.c:619
 #, c-format
 msgid "Could not open the file “%s” using the “%s” character encoding."
 msgstr "ਫਾਇਲ “%s” ਨੂੰ “%s” ਅੱਖਰ ਇੰਕੋਡਿੰਗ ਦੀ ਵਰਤੋਂ ਕਰਕੇ ਖੋਲਿਆ ਨਹੀਂ ਜਾ ਸਕਿਆ ਹੈ।"
 
-#: ../gedit/gedit-io-error-info-bar.c:623
-#: ../gedit/gedit-io-error-info-bar.c:698
+#: gedit/gedit-io-error-info-bar.c:623 gedit/gedit-io-error-info-bar.c:698
 msgid "Select a different character encoding from the menu and try again."
 msgstr "ਮੇਨੂ ਤੋਂ ਵੱਖਰੀ ਇੰਕੋਡਿੰਗ ਦੀ ਚੋਣ ਕਰੋ ਅਤੇ ਮੁੜ-ਕੋਸ਼ਸ਼ ਕਰੋ।"
 
-#: ../gedit/gedit-io-error-info-bar.c:635
+#: gedit/gedit-io-error-info-bar.c:635
 #, c-format
 msgid "Could not open the file “%s”."
 msgstr "ਫਾਇਲ “%s” ਨੂੰ ਖੋਲ੍ਹਿਆ ਨਹੀਂ ਜਾ ਸਕਿਆ ਹੈ।"
 
-#: ../gedit/gedit-io-error-info-bar.c:693
+#: gedit/gedit-io-error-info-bar.c:693
 #, c-format
 msgid "Could not save the file “%s” using the “%s” character encoding."
 msgstr ""
 "ਫਾਇਲ “%s” ਨੂੰ ਅੱਖਰ ਇੰਕੋਡਿੰਗ “%s” ਦੀ ਵਰਤੋਂ ਕਰਕੇ ਸੰਭਾਲਿਆ ਨਹੀਂ ਜਾ ਸਕਿਆ ਹੈ।"
 
-#: ../gedit/gedit-io-error-info-bar.c:696
+#: gedit/gedit-io-error-info-bar.c:696
 msgid ""
 "The document contains one or more characters that cannot be encoded using "
 "the specified character encoding."
@@ -1334,30 +1241,26 @@ msgstr ""
 
 #. Translators: the access key chosen for this string should be
 #. different from other main menu access keys (Open, Edit, View...)
-#: ../gedit/gedit-io-error-info-bar.c:769
-#| msgid "D_on't Edit"
+#: gedit/gedit-io-error-info-bar.c:769
 msgid "D_on’t Edit"
 msgstr "ਨਾ ਸੋਧੋ(_o)"
 
-#: ../gedit/gedit-io-error-info-bar.c:779
+#: gedit/gedit-io-error-info-bar.c:779
 #, c-format
 msgid "This file “%s” is already open in another window."
 msgstr "ਇਹ ਫਾਇਲ “%s” ਹੋਰ ਜੀ-ਸੰਪਾਦਕ ਵਿੰਡੋ ਵਿੱਚ ਪਹਿਲਾਂ ਹੀ ਖੁੱਲ੍ਹੀ ਹੈ।"
 
-#: ../gedit/gedit-io-error-info-bar.c:793
+#: gedit/gedit-io-error-info-bar.c:793
 msgid "Do you want to edit it anyway?"
 msgstr "ਕੀ ਤੁਸੀਂ ਕਿਵੇਂ ਵੀ ਸੋਧਣਾ ਜਾਰੀ ਰੱਖਣਾ ਚਾਹੁੰਦੇ ਹੋ?"
 
-#: ../gedit/gedit-io-error-info-bar.c:849
-#: ../gedit/gedit-io-error-info-bar.c:939
-#: ../gedit/gedit-io-error-info-bar.c:1229
+#: gedit/gedit-io-error-info-bar.c:849 gedit/gedit-io-error-info-bar.c:939
+#: gedit/gedit-io-error-info-bar.c:1229
 msgid "S_ave Anyway"
 msgstr "ਕਿਵੇਂ ਵੀ ਸੰਭਾਲੋ(_a)"
 
-#: ../gedit/gedit-io-error-info-bar.c:852
-#: ../gedit/gedit-io-error-info-bar.c:942
-#: ../gedit/gedit-io-error-info-bar.c:1232
-#| msgid "D_on't Save"
+#: gedit/gedit-io-error-info-bar.c:852 gedit/gedit-io-error-info-bar.c:942
+#: gedit/gedit-io-error-info-bar.c:1232
 msgid "D_on’t Save"
 msgstr "ਨਾ ਸੰਭਾਲੋ(_o)"
 
@@ -1365,28 +1268,28 @@ msgstr "ਨਾ ਸੰਭਾਲੋ(_o)"
 #. * could be interpreted as the changes he made in the document. beside "reading" is
 #. * not accurate (since last load/save)
 #.
-#: ../gedit/gedit-io-error-info-bar.c:866
+#: gedit/gedit-io-error-info-bar.c:866
 #, c-format
 msgid "The file “%s” has been modified since reading it."
 msgstr "ਫਾਇਲ “%s” ਨੂੰ ਪੜ੍ਹਨ ਦੌਰਾਨ ਸੋਧਿਆ ਗਿਆ ਹੈ।"
 
-#: ../gedit/gedit-io-error-info-bar.c:881
+#: gedit/gedit-io-error-info-bar.c:881
 msgid "If you save it, all the external changes could be lost. Save it anyway?"
 msgstr ""
 "ਜੇਕਰ ਤੁਸੀਂ ਇਸ ਨੂੰ ਸੰਭਾਲਿਆ ਤਾਂ, ਬਾਹਰੀ ਤਬਦੀਲੀਆਂ ਗੁੰਮ ਹੋ ਜਾਣਗੀਆਂ। ਕੀ ਕਿਸੇ ਵੀ"
 " ਤਰ੍ਹਾਂ ਸੰਭਾਲਣਾ ਹੈ?"
 
-#: ../gedit/gedit-io-error-info-bar.c:961
+#: gedit/gedit-io-error-info-bar.c:961
 #, c-format
 msgid "Could not create a backup file while saving “%s”"
 msgstr "“%s” ਨੂੰ ਸੰਭਾਲਣ ਦੌਰਾਨ ਬੈਕਅੱਪ ਫਾਇਲ ਨਹੀਂ ਬਣਾਈ ਜਾ ਸਕੀ ਹੈ"
 
-#: ../gedit/gedit-io-error-info-bar.c:966
+#: gedit/gedit-io-error-info-bar.c:966
 #, c-format
 msgid "Could not create a temporary backup file while saving “%s”"
 msgstr "“%s” ਨੂੰ ਸੰਭਾਲਣ ਦੌਰਾਨ ਇੱਕ ਆਰਜ਼ੀ ਬੈਕਅੱਪ ਫਾਇਲ ਨਹੀਂ ਬਣਾਈ ਜਾ ਸਕੀ ਹੈ"
 
-#: ../gedit/gedit-io-error-info-bar.c:983
+#: gedit/gedit-io-error-info-bar.c:983
 msgid ""
 "Could not back up the old copy of the file before saving the new one. You "
 "can ignore this warning and save the file anyway, but if an error occurs "
@@ -1400,7 +1303,7 @@ msgstr ""
 " ਸੰਭਾਲਣਾ ਹੈ?"
 
 #. Translators: %s is a URI scheme (like for example http:, ftp:, etc.)
-#: ../gedit/gedit-io-error-info-bar.c:1043
+#: gedit/gedit-io-error-info-bar.c:1043
 #, c-format
 msgid ""
 "Cannot handle “%s:” locations in write mode. Please check that you typed the "
@@ -1410,7 +1313,7 @@ msgstr ""
 " ਕਰਕੇ ਮੁੜ-ਕੋਸ਼ਿਸ਼ "
 "ਕਰੋ ਜੀ।"
 
-#: ../gedit/gedit-io-error-info-bar.c:1051
+#: gedit/gedit-io-error-info-bar.c:1051
 msgid ""
 "Cannot handle this location in write mode. Please check that you typed the "
 "location correctly and try again."
@@ -1419,7 +1322,7 @@ msgstr ""
 " ਕਰਕੇ ਮੁੜ-ਕੋਸ਼ਿਸ਼ "
 "ਕਰੋ ਜੀ।"
 
-#: ../gedit/gedit-io-error-info-bar.c:1060
+#: gedit/gedit-io-error-info-bar.c:1060
 #, c-format
 msgid ""
 "“%s” is not a valid location. Please check that you typed the location "
@@ -1428,7 +1331,7 @@ msgstr ""
 "“%s” ਟਿਕਾਣਾ ਠੀਕ ਨਹੀਂ ਹੈ। ਆਪਣੇ ਵਲੋਂ ਲਿਖੇ ਟਿਕਾਣੇ ਦੀ ਜਾਂਚ ਕਰਕੇ ਮੁੜ-ਕੋਸ਼ਿਸ਼ ਕਰੋ"
 " ਜੀ।"
 
-#: ../gedit/gedit-io-error-info-bar.c:1067
+#: gedit/gedit-io-error-info-bar.c:1067
 msgid ""
 "You do not have the permissions necessary to save the file. Please check "
 "that you typed the location correctly and try again."
@@ -1437,7 +1340,7 @@ msgstr ""
 " ਕਰਕੇ ਮੁੜ-ਕੋਸ਼ਿਸ਼ "
 "ਕਰੋ ਜੀ।"
 
-#: ../gedit/gedit-io-error-info-bar.c:1073
+#: gedit/gedit-io-error-info-bar.c:1073
 msgid ""
 "There is not enough disk space to save the file. Please free some disk space "
 "and try again."
@@ -1445,7 +1348,7 @@ msgstr ""
 "ਫਾਇਲ ਸੰਭਾਲਣ ਲਈ ਲੋੜੀਦੀ ਡਿਸਕ ਥਾਂ ਮੌਜੂਦ ਨਹੀਂ ਹੈ। ਕੁਝ ਡਿਸਕ ਥਾਂ ਖਾਲੀ ਕਰਕੇ ਮੁੜ"
 " ਕੋਸ਼ਿਸ਼ ਕਰੋ ਜੀ।"
 
-#: ../gedit/gedit-io-error-info-bar.c:1078
+#: gedit/gedit-io-error-info-bar.c:1078
 msgid ""
 "You are trying to save the file on a read-only disk. Please check that you "
 "typed the location correctly and try again."
@@ -1454,11 +1357,11 @@ msgstr ""
 " ਵਲੋਂ ਲਿਖੇ ਟਿਕਾਣੇ ਦੀ "
 "ਜਾਂਚ ਕਰਕੇ ਮੁੜ-ਕੋਸ਼ਿਸ਼ ਕਰੋ ਜੀ।"
 
-#: ../gedit/gedit-io-error-info-bar.c:1084
+#: gedit/gedit-io-error-info-bar.c:1084
 msgid "A file with the same name already exists. Please use a different name."
 msgstr "ਇਸ ਨਾਂ ਨਾਲ ਇੱਕ ਫਾਇਲ ਪਹਿਲਾਂ ਹੀ ਮੌਜੂਦ ਹੈ। ਇੱਕ ਵੱਖਰਾ ਨਾਂ ਵਰਤੋਂ ਜੀ।"
 
-#: ../gedit/gedit-io-error-info-bar.c:1089
+#: gedit/gedit-io-error-info-bar.c:1089
 msgid ""
 "The disk where you are trying to save the file has a limitation on length of "
 "the file names. Please use a shorter name."
@@ -1467,7 +1370,7 @@ msgstr ""
 " ਸੀਮਿਤ ਸੀਮਾ ਹੈ। "
 "ਛੋਟਾ ਨਾਂ ਵਰਤੋਂ ਜੀ।"
 
-#: ../gedit/gedit-io-error-info-bar.c:1100
+#: gedit/gedit-io-error-info-bar.c:1100
 msgid ""
 "The disk where you are trying to save the file has a limitation on file "
 "sizes. Please try saving a smaller file or saving it to a disk that does not "
@@ -1478,83 +1381,77 @@ msgstr ""
 "ਛੋਟੀ ਫਾਇਲ ਨੂੰ ਸੰਭਾਲਣ ਦੀ ਕੋਸ਼ਿਸ ਕਰੋ ਜਾਂ ਹੋਰ ਡਿਸਕ ਵਰਤੋ, ਜਿਸ ਤੇ ਇਹ ਪਾਬੰਦੀ ਨਾ"
 " ਹੋਵੇ।"
 
-#: ../gedit/gedit-io-error-info-bar.c:1117
+#: gedit/gedit-io-error-info-bar.c:1117
 #, c-format
 msgid "Could not save the file “%s”."
 msgstr "ਫਾਇਲ “%s” ਨੂੰ ਸੰਭਾਲਿਆ ਨਹੀਂ ਜਾ ਸਕਿਆ।"
 
-#: ../gedit/gedit-io-error-info-bar.c:1157
+#: gedit/gedit-io-error-info-bar.c:1157
 #, c-format
 msgid "The file “%s” changed on disk."
 msgstr "ਫਾਇਲ “%s” ਡਿਸਕ ਉੱਤੇ ਬਦਲੀ ਗਈ ਹੈ।"
 
-#: ../gedit/gedit-io-error-info-bar.c:1168
+#: gedit/gedit-io-error-info-bar.c:1168
 msgid "Drop Changes and _Reload"
 msgstr "ਬਦਲਾਅ ਰੱਦ ਕਰੋ ਤੇ ਮੁੜ-ਲੋਡ ਕਰੋ(_R)"
 
-#: ../gedit/gedit-io-error-info-bar.c:1178
-#: ../gedit/resources/gtk/menus-common.ui.h:21
-#: ../gedit/resources/gtk/menus.ui.h:7
-#: ../gedit/resources/gtk/menus-traditional.ui.h:1
+#: gedit/gedit-io-error-info-bar.c:1178 gedit/resources/gtk/menus-common.ui:148
+#: gedit/resources/gtk/menus.ui:9 gedit/resources/gtk/menus-traditional.ui:9
 msgid "_Reload"
 msgstr "ਮੁੜ-ਲੋਡ(_R)"
 
-#: ../gedit/gedit-io-error-info-bar.c:1242
+#: gedit/gedit-io-error-info-bar.c:1242
 #, c-format
 msgid "Some invalid chars have been detected while saving “%s”"
 msgstr "“%s” ਨੂੰ ਸੰਭਾਲਣ ਦੌਰਾਨ ਕੁਝ ਗਲਤ ਅੱਖਰ ਮਿਲੇ ਹਨ"
 
-#: ../gedit/gedit-io-error-info-bar.c:1258
+#: gedit/gedit-io-error-info-bar.c:1258
 msgid ""
 "If you continue saving this file you can corrupt the document.  Save anyway?"
 msgstr ""
 "ਜੇ ਤੁਸੀਂ ਇਹ ਫਾਇਲ ਨੂੰ ਸੰਭਾਲਣ ਜਾਰੀ ਰੱਖਿਆ ਤਾਂ ਡੌਕੂਮੈਂਟ ਨਿਕਾਰਾ ਹੋ ਜਾਵੇਗਾ। ਕੀ"
 " ਸੰਭਾਲਣਾ ਹੈ?"
 
-#: ../gedit/gedit-preferences-dialog.c:455
+#: gedit/gedit-preferences-dialog.c:455
 msgid "Click on this button to select the font to be used by the editor"
 msgstr "ਇਸ ਸੰਪਾਦਕ ਵਲੋਂ ਵਰਤਣ ਲਈ ਫੋਂਟ ਚੁਣਨ ਲਈ ਇਸ ਬਟਨ ਨੂੰ ਦਬਾਓ"
 
-#: ../gedit/gedit-preferences-dialog.c:461
+#: gedit/gedit-preferences-dialog.c:461
 #, c-format
 msgid "_Use the system fixed width font (%s)"
 msgstr "ਸਿਸਟਮ ਸਥਿਰ ਚੌੜਾਈ ਫੋਂਟ ਹੀ ਵਰਤੋਂ (%s) (_U)"
 
-#: ../gedit/gedit-preferences-dialog.c:601
+#: gedit/gedit-preferences-dialog.c:601
 #, c-format
-#| msgid ""
-#| "Directory '%s' could not be created: g_mkdir_with_parents() failed: %s"
 msgid "Directory “%s” could not be created: g_mkdir_with_parents() failed: %s"
 msgstr "ਡਾਇਰੈਕਟਰੀ “%s“ ਬਣਾਈ ਨਹੀਂ ਜਾ ਸਕੀ: g_mkdir_with_parents() ਫੇਲ੍ਹ: %s"
 
-#: ../gedit/gedit-preferences-dialog.c:798
+#: gedit/gedit-preferences-dialog.c:798
 msgid "The selected color scheme cannot be installed."
 msgstr "ਚੁਣੀ ਰੰਗ ਸਕੀਮ ਇੰਸਟਾਲ ਨਹੀਂ ਕੀਤੀ ਜਾ ਸਕਦੀ।"
 
-#: ../gedit/gedit-preferences-dialog.c:821
+#: gedit/gedit-preferences-dialog.c:821
 msgid "Add Scheme"
 msgstr "ਸਕੀਮ ਸ਼ਾਮਲ ਕਰੋ"
 
-#: ../gedit/gedit-preferences-dialog.c:826
+#: gedit/gedit-preferences-dialog.c:826
 msgid "A_dd Scheme"
 msgstr "ਸਕੀਮ ਸ਼ਾਮਲ ਕਰੋ(_d)"
 
-#: ../gedit/gedit-preferences-dialog.c:830
+#: gedit/gedit-preferences-dialog.c:830
 msgid "Color Scheme Files"
 msgstr "ਰੰਗ ਸਕੀਮ ਫਾਇਲਾਂ"
 
-#: ../gedit/gedit-preferences-dialog.c:861
+#: gedit/gedit-preferences-dialog.c:861
 #, c-format
-#| msgid "Could not remove color scheme \"%s\"."
 msgid "Could not remove color scheme “%s”."
 msgstr "ਰੰਗ ਸਕੀਮ “%s“ ਹਟਾਈ ਨਹੀਂ ਜਾ ਸਕਦੀ ਹੈ।"
 
-#: ../gedit/gedit-print-job.c:227
-#| msgid "Preparing..."
+#: gedit/gedit-print-job.c:227
 msgid "Preparing…"
 msgstr "…ਤਿਆਰ ਕੀਤਾ ਜਾ ਰਿਹਾ ਹੈ"
 
-#: ../gedit/gedit-print-job.c:539
+#: gedit/gedit-print-job.c:539
 #, c-format
 msgid "File: %s"
 msgstr "ਫਾਇਲ: %s"
@@ -1562,41 +1459,41 @@ msgstr "ਫਾਇਲ: %s"
 #. Translators: %N is the current page number, %Q is the total
 #. * number of pages (ex. Page 2 of 10)
 #.
-#: ../gedit/gedit-print-job.c:548
+#: gedit/gedit-print-job.c:548
 msgid "Page %N of %Q"
 msgstr "%Q ਵਿੱਚੋਂ %N ਸਫ਼ਾ"
 
-#: ../gedit/gedit-print-job.c:626
+#: gedit/gedit-print-job.c:626
 #, c-format
-#| msgid "Rendering page %d of %d..."
 msgid "Rendering page %d of %d…"
 msgstr "%2$d 'ਚੋਂ %1$d ਸਫ਼ਾ ਰੈਡਰ ਕੀਤਾ ਜਾ ਰਿਹਾ ਹੈ…"
 
-#: ../gedit/gedit-print-preview.c:653
+#: gedit/gedit-print-preview.c:651
 #, c-format
 msgid "Page %d of %d"
 msgstr "%2$d ਵਿੱਚੋਂ %1$d ਸਫ਼ਾ"
 
-#: ../gedit/gedit-replace-dialog.c:690
-#: ../plugins/externaltools/tools/tools.ui.h:7
+#: gedit/gedit-replace-dialog.c:690 plugins/externaltools/tools/tools.ui:49
+#: plugins/externaltools/tools/tools.ui:83
+#: plugins/externaltools/tools/tools.ui:121
 msgid "Nothing"
 msgstr "ਕੁਝ ਨਹੀਂ"
 
-#: ../gedit/gedit-replace-dialog.c:779
-#: ../gedit/resources/ui/gedit-replace-dialog.ui.h:1
+#: gedit/gedit-replace-dialog.c:779
+#: gedit/resources/ui/gedit-replace-dialog.ui:7
 msgid "Find and Replace"
 msgstr "ਲੱਭੋ ਤੇ ਬਦਲੋ"
 
 #. Use spaces to leave padding proportional to the font size
-#: ../gedit/gedit-statusbar.c:58 ../gedit/gedit-statusbar.c:64
+#: gedit/gedit-statusbar.c:58 gedit/gedit-statusbar.c:64
 msgid "OVR"
 msgstr "ਉੱਤੇ"
 
-#: ../gedit/gedit-statusbar.c:58 ../gedit/gedit-statusbar.c:64
+#: gedit/gedit-statusbar.c:58 gedit/gedit-statusbar.c:64
 msgid "INS"
 msgstr "ਸ਼ਾਮਲ"
 
-#: ../gedit/gedit-statusbar.c:244
+#: gedit/gedit-statusbar.c:244
 #, c-format
 msgid "There is a tab with errors"
 msgid_plural "There are %d tabs with errors"
@@ -1605,102 +1502,86 @@ msgstr[1] "%d ਟੈਬ ਵਿੱਚ ਗਲਤੀਆਂ ਹਨ"
 
 #. Translators: the first %s is a file name (e.g. test.txt) the second one
 #. is a directory (e.g. ssh://master.gnome.org/home/users/paolo)
-#: ../gedit/gedit-tab.c:814
+#: gedit/gedit-tab.c:823
 #, c-format
 msgid "Reverting %s from %s"
 msgstr "%2$s ਤੋਂ %1$s ਰੀਵਰਟ ਕੀਤਾ ਜਾ ਰਿਹਾ ਹੈ"
 
-#: ../gedit/gedit-tab.c:821
+#: gedit/gedit-tab.c:830
 #, c-format
 msgid "Reverting %s"
 msgstr "%s ਰੀਵਰਟ ਕੀਤਾ ਜਾ ਰਿਹਾ ਹੈ"
 
 #. Translators: the first %s is a file name (e.g. test.txt) the second one
 #. is a directory (e.g. ssh://master.gnome.org/home/users/paolo)
-#: ../gedit/gedit-tab.c:834
+#: gedit/gedit-tab.c:843
 #, c-format
 msgid "Loading %s from %s"
 msgstr "%2$s ਵਿੱਚੋਂ %1$s ਨੂੰ ਲੋਡ ਕੀਤਾ ਜਾ ਰਿਹਾ ਹੈ"
 
-#: ../gedit/gedit-tab.c:841
+#: gedit/gedit-tab.c:850
 #, c-format
 msgid "Loading %s"
 msgstr "%s ਨੂੰ ਲੋਡ ਕੀਤਾ ਜਾ ਰਿਹਾ ਹੈ"
 
 #. Translators: the first %s is a file name (e.g. test.txt) the second one
 #. is a directory (e.g. ssh://master.gnome.org/home/users/paolo)
-#: ../gedit/gedit-tab.c:921
+#: gedit/gedit-tab.c:930
 #, c-format
 msgid "Saving %s to %s"
 msgstr "%s ਨੂੰ %s ਵਿੱਚ ਸੰਭਾਲਿਆ ਜਾ ਰਿਹਾ ਹੈ"
 
-#: ../gedit/gedit-tab.c:926
+#: gedit/gedit-tab.c:935
 #, c-format
 msgid "Saving %s"
 msgstr "%s ਸੰਭਾਲਿਆ ਜਾਂਦਾ ਹੈ"
 
-#: ../gedit/gedit-tab.c:1529
+#: gedit/gedit-tab.c:1538
 #, c-format
 msgid "Error opening file %s"
 msgstr "%s ਫਾਇਲ ਖੋਲ੍ਹਣ ਦੌਰਾਨ ਗਲਤੀ"
 
-#: ../gedit/gedit-tab.c:1534
+#: gedit/gedit-tab.c:1543
 #, c-format
 msgid "Error reverting file %s"
 msgstr "%s ਫਾਇਲ ਪਰਤਾਉਣ ਦੌਰਾਨ ਗਲਤੀ"
 
-#: ../gedit/gedit-tab.c:1539
+#: gedit/gedit-tab.c:1548
 #, c-format
 msgid "Error saving file %s"
 msgstr "ਫਾਇਲ %s ਸੰਭਾਲਣ ਦੌਰਾਨ ਗਲਤੀ"
 
-#: ../gedit/gedit-tab.c:1570
+#: gedit/gedit-tab.c:1579
 msgid "Name:"
 msgstr "ਨਾਂ:"
 
-#: ../gedit/gedit-tab.c:1571
+#: gedit/gedit-tab.c:1580
 msgid "MIME Type:"
 msgstr "MIME ਕਿਸਮ:"
 
-#: ../gedit/gedit-tab.c:1572
+#: gedit/gedit-tab.c:1581
 msgid "Encoding:"
 msgstr "ਇੰਕੋਡਿੰਗ:"
 
-#: ../gedit/gedit-utils.c:841
-msgid "Please check your installation."
-msgstr "ਆਪਣੀ ਇੰਸਟਾਲੇਸ਼ਨ ਦੀ ਜਾਂਚ ਕਰੋ ਜੀ।"
-
-#: ../gedit/gedit-utils.c:902
-#, c-format
-msgid "Unable to open UI file %s. Error: %s"
-msgstr "%s UI ਫਾਇਲ ਖੋਲਣ ਲਈ ਅਸਮਰੱਥ ਹੈ: ਗਲਤੀ: %s"
-
-#: ../gedit/gedit-utils.c:921
-#, c-format
-#| msgid "Unable to find the object '%s' inside file %s."
-msgid "Unable to find the object “%s” inside file %s."
-msgstr "ਫਾਇਲ %s ਵਿੱਚ “%s“ ਆਬਜੈਕਟ ਲੱਭਣ ਲਈ ਅਸਮਰੱਥ ਹੈ।"
-
 #. Translators: '/ on <remote-share>'
-#: ../gedit/gedit-utils.c:1159
+#: gedit/gedit-utils.c:858
 #, c-format
 msgid "/ on %s"
 msgstr "%s ਉੱਤੇ /"
 
-#: ../gedit/gedit-utils.c:1463
+#: gedit/gedit-utils.c:1162
 msgid "Unix/Linux"
 msgstr "Unix/Linux"
 
-#: ../gedit/gedit-utils.c:1465
+#: gedit/gedit-utils.c:1164
 msgid "Mac OS Classic"
 msgstr "Mac OS ਕਲਾਸਿਕ"
 
-#: ../gedit/gedit-utils.c:1467
+#: gedit/gedit-utils.c:1166
 msgid "Windows"
 msgstr "ਵਿੰਡੋਜ਼"
 
-#: ../gedit/gedit-view.c:468
-#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:2
+#: gedit/gedit-view.c:481 gedit/resources/ui/gedit-preferences-dialog.ui:41
 msgid "_Display line numbers"
 msgstr "ਲਾਈਨ ਨੰਬਰ ਵੇਖਾਓ(_D)"
 
@@ -1708,1004 +1589,1038 @@ msgstr "ਲਾਈਨ ਨੰਬਰ ਵੇਖਾਓ(_D)"
 #. * occurrence, and the second %d is the total number of search
 #. * occurrences.
 #.
-#: ../gedit/gedit-view-frame.c:674
+#: gedit/gedit-view-frame.c:674
 #, c-format
 msgid "%d of %d"
 msgstr "%2$d ਵਿੱਚੋਂ %1$d"
 
 #. create "Wrap Around" menu item.
-#: ../gedit/gedit-view-frame.c:766
+#: gedit/gedit-view-frame.c:766
 msgid "_Wrap Around"
 msgstr "ਪਾਸਿਓ ਸਮੇਟੋ(_W)"
 
 #. create "Match as Regular Expression" menu item.
-#: ../gedit/gedit-view-frame.c:776
+#: gedit/gedit-view-frame.c:776
 msgid "Match as _Regular Expression"
 msgstr "ਨਿਯਮਤ ਸਮੀਕਰਨ ਨਾਲ ਮਿਲਾਓ(_r)"
 
 #. create "Match Entire Word Only" menu item.
-#: ../gedit/gedit-view-frame.c:790
+#: gedit/gedit-view-frame.c:790
 msgid "Match _Entire Word Only"
 msgstr "ਪੂਰਾ ਸ਼ਬਦ ਹੀ ਮਿਲਾਓ(_E)"
 
 #. create "Match Case" menu item.
-#: ../gedit/gedit-view-frame.c:804
+#: gedit/gedit-view-frame.c:804
 msgid "_Match Case"
 msgstr "ਮਿਲਦਾ ਕੇਸ(_M)"
 
-#: ../gedit/gedit-view-frame.c:1026
+#: gedit/gedit-view-frame.c:1029
 msgid "String you want to search for"
 msgstr "ਲਾਈਨ, ਜਿਸ ਦੀ ਤੁਸੀਂ ਖੋਜ ਕਰਨੀ ਚਾਹੁੰਦੇ ਹੋ"
 
-#: ../gedit/gedit-view-frame.c:1038
+#: gedit/gedit-view-frame.c:1041
 msgid "Line you want to move the cursor to"
 msgstr "ਲਾਈਨ, ਜਿਸ ਵਿੱਚ ਤੁਸੀਂ ਕਰਸਰ ਲੈ ਕੇ ਜਾਣਾ ਚਾਹੁੰਦੇ ਹੋ"
 
-#: ../gedit/gedit-window.c:998
+#: gedit/gedit-window.c:998
 msgid "Bracket match is out of range"
 msgstr "ਮਿਲਦੀ ਬਰੈਕਟ ਰੇਜ਼ ਤੋਂ ਬਾਹਰ ਹੈ"
 
-#: ../gedit/gedit-window.c:1003
+#: gedit/gedit-window.c:1003
 msgid "Bracket match not found"
 msgstr "ਮਿਲਦੀ ਬਰੈਕਟ ਨਹੀਂ ਲੱਭੀ"
 
-#: ../gedit/gedit-window.c:1008
+#: gedit/gedit-window.c:1008
 #, c-format
 msgid "Bracket match found on line: %d"
 msgstr "%d: ਲਾਈਨ ਉੱਤੇ ਮਿਲਦੀ ਬਰੈਕਟ ਲੱਭੀ"
 
 #. Translators: "Ln" is an abbreviation for "Line", Col is an abbreviation for "Column". Please,
 #. use abbreviations if possible to avoid space problems.
-#: ../gedit/gedit-window.c:1043
+#: gedit/gedit-window.c:1043
 #, c-format
 msgid "  Ln %d, Col %d"
 msgstr " ਲਾਈਨ %d, ਕਾਲਮ %d"
 
-#: ../gedit/gedit-window.c:1227
+#: gedit/gedit-window.c:1227
 #, c-format
 msgid "Tab Width: %u"
 msgstr "ਟੈਬ ਚੌੜਾਈ: %u"
 
-#: ../gedit/gedit-window.c:1596
+#: gedit/gedit-window.c:1596
 msgid "There are unsaved documents"
 msgstr "ਨਾ-ਸੰਭਾਲੇ ਡੌਕੂਮੈਂਟ ਹਨ"
 
-#: ../gedit/gedit-window.c:2444
+#: gedit/gedit-window.c:2442
 msgid "Change side panel page"
 msgstr "ਬਾਹਰੀ ਸਫ਼ਾ ਬਦਲੋ"
 
-#: ../gedit/gedit-window.c:2464 ../gedit/resources/ui/gedit-window.ui.h:1
+#: gedit/gedit-window.c:2462 gedit/resources/ui/gedit-window.ui:19
 msgid "Documents"
 msgstr "ਡੌਕੂਮੈਂਟ"
 
-#. ex:set ts=8 noet:
-#: ../gedit/resources/gtk/menus-common.ui.h:1
+#: gedit/resources/gtk/menus-common.ui:7
 msgid "Move _Left"
 msgstr "ਖੱਬੇ ਭੇਜੋ(_L)"
 
-#: ../gedit/resources/gtk/menus-common.ui.h:2
+#: gedit/resources/gtk/menus-common.ui:11
 msgid "Move _Right"
 msgstr "ਸੱਜੇ ਭੇਜੋ(_R)"
 
-#: ../gedit/resources/gtk/menus-common.ui.h:3
+#: gedit/resources/gtk/menus-common.ui:17
 msgid "Move to New _Window"
 msgstr "ਨਵੀਂ ਵਿੰਡੋ ਵਿਚ ਭੇਜੋ(_W)"
 
-#: ../gedit/resources/gtk/menus-common.ui.h:4
+#: gedit/resources/gtk/menus-common.ui:21
 msgid "Move to New Tab _Group"
 msgstr "ਨਵੀਂ ਟੈਬ ਗਰੁੱਪ ਵਿੱਚ ਭੇਜੋ(_G)"
 
-#: ../gedit/resources/gtk/menus-common.ui.h:5
-#: ../gedit/resources/gtk/menus.ui.h:22
-#: ../gedit/resources/gtk/menus-traditional.ui.h:20
-#: ../gedit/resources/ui/gedit-replace-dialog.ui.h:2
-#: ../plugins/time/resources/ui/gedit-time-setup-dialog.ui.h:2
+#: gedit/resources/gtk/menus-common.ui:27
+#: gedit/resources/gtk/menus-common.ui:163
+#: gedit/resources/gtk/menus-traditional.ui:134
+#: gedit/resources/ui/gedit-replace-dialog.ui:23
+#: plugins/spell/resources/ui/gedit-spell-setup-dialog.ui:25
+#: plugins/time/resources/ui/gedit-time-setup-dialog.ui:21
 msgid "_Close"
 msgstr "ਬੰਦ ਕਰੋ(_C)"
 
-#: ../gedit/resources/gtk/menus-common.ui.h:6
+#: gedit/resources/gtk/menus-common.ui:35
 msgid "Automatic Indentation"
 msgstr "ਆਟੋਮੈਟਿਕ ਹਾਸ਼ੀਏ ਤੋਂ ਦੂਰ"
 
-#: ../gedit/resources/gtk/menus-common.ui.h:7
+#: gedit/resources/gtk/menus-common.ui:58
 msgid "Use Spaces"
 msgstr "ਸਪੇਸ ਵਰਤੋਂ"
 
-#: ../gedit/resources/gtk/menus-common.ui.h:8
+#: gedit/resources/gtk/menus-common.ui:66
 msgid "Display line numbers"
 msgstr "ਲਾਈਨ ਨੰਬਰ ਵੇਖਾਓ"
 
-#: ../gedit/resources/gtk/menus-common.ui.h:9
+#: gedit/resources/gtk/menus-common.ui:70
 msgid "Display right margin"
 msgstr "ਸੱਜੇ ਪਾਸੇ ਹਾਸ਼ੀਆ ਵੇਖੋ"
 
-#: ../gedit/resources/gtk/menus-common.ui.h:10
+#: gedit/resources/gtk/menus-common.ui:74
 msgid "Highlight current line"
 msgstr "ਮੌਜੂਦਾ ਲਾਈਨ ਉਭਾਰੋ"
 
-#: ../gedit/resources/gtk/menus-common.ui.h:11
+#: gedit/resources/gtk/menus-common.ui:78
 msgid "Text wrapping"
 msgstr "ਟੈਕਸਟ ਸਮੇਟੋ"
 
-#: ../gedit/resources/gtk/menus-common.ui.h:12
+#: gedit/resources/gtk/menus-common.ui:88
 msgid "_File"
 msgstr "ਫਾਇਲ(_F)"
 
 #. _New is the menu item under the File menu on OS X which creates a new empty document.
-#: ../gedit/resources/gtk/menus-common.ui.h:14
+#: gedit/resources/gtk/menus-common.ui:92
 msgid "_New"
 msgstr "ਨਵਾਂ(_N)"
 
-#: ../gedit/resources/gtk/menus-common.ui.h:16
+#: gedit/resources/gtk/menus-common.ui:111
 msgid "Open _Recent"
 msgstr "ਤਾਜ਼ਾ ਖੋਲ੍ਹੋ(_R)"
 
-#: ../gedit/resources/gtk/menus-common.ui.h:17
+#: gedit/resources/gtk/menus-common.ui:114
 msgid "Reopen Closed _Tab"
 msgstr "ਬੰਦ ਕੀਤੀ ਟੈਬ ਮੁੜ-ਖੋਲ੍ਹੋ(_T)"
 
-#: ../gedit/resources/gtk/menus-common.ui.h:19
+#: gedit/resources/gtk/menus-common.ui:132
 msgid "Save _As…"
 msgstr "…ਵਜੋਂ ਸੰਭਾਲੋ(_A)"
 
-#: ../gedit/resources/gtk/menus-common.ui.h:20
-#: ../gedit/resources/gtk/menus.ui.h:1
+#: gedit/resources/gtk/menus-common.ui:140 gedit/resources/gtk/menus.ui:27
 msgid "_New Window"
 msgstr "ਨਵੀਂ ਵਿੰਡੋ(_N)"
 
-#: ../gedit/resources/gtk/menus-common.ui.h:22
-#: ../gedit/resources/gtk/menus.ui.h:8
-#: ../gedit/resources/gtk/menus-traditional.ui.h:2
+#: gedit/resources/gtk/menus-common.ui:155 gedit/resources/gtk/menus.ui:14
+#: gedit/resources/gtk/menus-traditional.ui:14
 msgid "_Print…"
 msgstr "…ਪਰਿੰਟ ਕਰੋ(_P)"
 
-#: ../gedit/resources/gtk/menus-common.ui.h:23
-#: ../gedit/resources/gtk/menus.ui.h:6
-#: ../gedit/resources/gtk/menus-traditional.ui.h:21
+#: gedit/resources/gtk/menus-common.ui:168
+#: gedit/resources/gtk/menus-traditional.ui:138
 msgid "_Quit"
 msgstr "ਬੰਦ ਕਰੋ(_Q)"
 
-#: ../gedit/resources/gtk/menus-common.ui.h:24
+#: gedit/resources/gtk/menus-common.ui:176
 msgid "_Edit"
 msgstr "ਸੋਧ(_E)"
 
-#: ../gedit/resources/gtk/menus-common.ui.h:25
+#: gedit/resources/gtk/menus-common.ui:180
 msgid "_Undo"
 msgstr "ਵਾਪਸ(_U)"
 
-#: ../gedit/resources/gtk/menus-common.ui.h:26
+#: gedit/resources/gtk/menus-common.ui:185
 msgid "_Redo"
 msgstr "ਮੁੜ-ਵਾਪਸ(_R)"
 
-#: ../gedit/resources/gtk/menus-common.ui.h:27
+#: gedit/resources/gtk/menus-common.ui:192
 msgid "C_ut"
 msgstr " ਕੱਟੋ(_u)"
 
-#: ../gedit/resources/gtk/menus-common.ui.h:28
+#: gedit/resources/gtk/menus-common.ui:197
 msgid "_Copy"
 msgstr "ਕਾਪੀ ਕਰੋ(_C)"
 
-#: ../gedit/resources/gtk/menus-common.ui.h:29
+#: gedit/resources/gtk/menus-common.ui:202
 msgid "_Paste"
 msgstr "ਚੇਪੋ(_P)"
 
-#: ../gedit/resources/gtk/menus-common.ui.h:30
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:919
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:957
-#: ../plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui.h:7
+#: gedit/resources/gtk/menus-common.ui:207
+#: plugins/filebrowser/gedit-file-browser-plugin.c:919
+#: plugins/filebrowser/gedit-file-browser-plugin.c:957
+#: plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui:37
 msgid "_Delete"
 msgstr "ਹਟਾਓ(_D)"
 
-#: ../gedit/resources/gtk/menus-common.ui.h:31
+#: gedit/resources/gtk/menus-common.ui:215
 msgid "Overwrite _Mode"
 msgstr "ਉੱਤੇ ਲਿਖਣ ਢੰਗ(_M)"
 
-#: ../gedit/resources/gtk/menus-common.ui.h:32
+#: gedit/resources/gtk/menus-common.ui:223
 msgid "Select _All"
 msgstr "ਸਭ ਚੁਣੋ(_A)"
 
-#: ../gedit/resources/gtk/menus-common.ui.h:33
-#: ../gedit/resources/gtk/menus.ui.h:2
-#: ../gedit/resources/gtk/menus-traditional.ui.h:15
+#: gedit/resources/gtk/menus-common.ui:230 gedit/resources/gtk/menus.ui:112
+#: gedit/resources/gtk/menus-traditional.ui:108
 msgid "_Preferences"
 msgstr "ਮੇਰੀ ਪਸੰਦ(_P)"
 
-#: ../gedit/resources/gtk/menus-common.ui.h:34
-#: ../gedit/resources/gtk/menus.ui.h:16
+#: gedit/resources/gtk/menus-common.ui:237 gedit/resources/gtk/menus.ui:72
+#: gedit/resources/gtk/menus-traditional.ui:68
 msgid "_View"
 msgstr "ਵੇਖੋ(_V)"
 
-#: ../gedit/resources/gtk/menus-common.ui.h:35
-#: ../gedit/resources/gtk/menus.ui.h:17
-#: ../gedit/resources/gtk/menus-traditional.ui.h:11
+#: gedit/resources/gtk/menus-common.ui:241 gedit/resources/gtk/menus.ui:76
+#: gedit/resources/gtk/menus-traditional.ui:72
 msgid "Side _Panel"
 msgstr "ਸਾਈਡ ਪੈਨਲ(_P)"
 
-#: ../gedit/resources/gtk/menus-common.ui.h:36
-#: ../gedit/resources/gtk/menus.ui.h:18
-#: ../gedit/resources/gtk/menus-traditional.ui.h:12
+#: gedit/resources/gtk/menus-common.ui:246 gedit/resources/gtk/menus.ui:80
+#: gedit/resources/gtk/menus-traditional.ui:76
 msgid "_Bottom Panel"
 msgstr "ਹੇਠਲਾ ਪੈਨਲ(_B)"
 
-#: ../gedit/resources/gtk/menus-common.ui.h:37
-#: ../gedit/resources/gtk/menus.ui.h:9
-#: ../gedit/resources/gtk/menus-traditional.ui.h:3
+#: gedit/resources/gtk/menus-common.ui:255 gedit/resources/gtk/menus.ui:19
+#: gedit/resources/gtk/menus-traditional.ui:19
 msgid "_Fullscreen"
 msgstr "ਪੂਰੀ ਸਕਰੀਨ(_F)"
 
-#: ../gedit/resources/gtk/menus-common.ui.h:38
-#: ../gedit/resources/gtk/menus.ui.h:19
-#: ../gedit/resources/gtk/menus-traditional.ui.h:13
+#: gedit/resources/gtk/menus-common.ui:263 gedit/resources/gtk/menus.ui:91
+#: gedit/resources/gtk/menus-traditional.ui:87
 msgid "_Highlight Mode…"
 msgstr "…ਹਾਈਲਾਈਟ ਢੰਗ(_H)"
 
-#: ../gedit/resources/gtk/menus-common.ui.h:39
+#: gedit/resources/gtk/menus-common.ui:269
 msgid "_Search"
 msgstr "ਖੋਜ(_S)"
 
-#: ../gedit/resources/gtk/menus-common.ui.h:40
-#: ../gedit/resources/gtk/menus.ui.h:12
-#: ../gedit/resources/gtk/menus-traditional.ui.h:6
+#: gedit/resources/gtk/menus-common.ui:273 gedit/resources/gtk/menus.ui:54
+#: gedit/resources/gtk/menus-traditional.ui:50
 msgid "_Find…"
 msgstr "…ਖੋਜੋ(_F)"
 
-#: ../gedit/resources/gtk/menus-common.ui.h:41
+#: gedit/resources/gtk/menus-common.ui:278
 msgid "Find Ne_xt"
 msgstr "ਅੱਗੇ ਖੋਜ(_x)"
 
-#: ../gedit/resources/gtk/menus-common.ui.h:42
+#: gedit/resources/gtk/menus-common.ui:283
 msgid "Find Pre_vious"
 msgstr "ਪਿੱਛੇ ਖੋਜ(_V)"
 
-#: ../gedit/resources/gtk/menus-common.ui.h:43
+#: gedit/resources/gtk/menus-common.ui:291
 msgid "Find and _Replace…"
 msgstr "…ਲੱਭੋ ਤੇ ਬਦਲੋ(_r)"
 
-#: ../gedit/resources/gtk/menus-common.ui.h:44
-#: ../gedit/resources/gtk/menus.ui.h:14
-#: ../gedit/resources/gtk/menus-traditional.ui.h:8
+#: gedit/resources/gtk/menus-common.ui:299 gedit/resources/gtk/menus.ui:62
+#: gedit/resources/gtk/menus-traditional.ui:58
 msgid "_Clear Highlight"
 msgstr "ਹਾਈਲਾਈਟ ਸਾਫ਼ ਕਰੋ(_C)"
 
-#: ../gedit/resources/gtk/menus-common.ui.h:45
+#: gedit/resources/gtk/menus-common.ui:307
 msgid "Go to _Line…"
 msgstr "…ਲਾਈਨ ਉੱਤੇ ਜਾਓ(_L)"
 
-#: ../gedit/resources/gtk/menus-common.ui.h:46
-#: ../gedit/resources/gtk/menus.ui.h:20
+#: gedit/resources/gtk/menus-common.ui:314 gedit/resources/gtk/menus.ui:97
+#: gedit/resources/gtk/menus-traditional.ui:93
 msgid "_Tools"
 msgstr "ਟੂਲ(_T)"
 
-#: ../gedit/resources/gtk/menus-common.ui.h:47
+#: gedit/resources/gtk/menus-common.ui:329
 msgid "_Documents"
 msgstr "ਡੌਕੂਮੈਂਟ(_D)"
 
-#: ../gedit/resources/gtk/menus-common.ui.h:48
+#: gedit/resources/gtk/menus-common.ui:333
 msgid "_Save All"
 msgstr "ਸਭ ਸੰਭਾਲੋ(_S)"
 
-#: ../gedit/resources/gtk/menus-common.ui.h:49
-#: ../gedit/resources/gtk/menus.ui.h:21
-#: ../gedit/resources/gtk/menus-traditional.ui.h:19
+#: gedit/resources/gtk/menus-common.ui:338
+#: gedit/resources/gtk/menus-traditional.ui:130
 msgid "_Close All"
 msgstr "ਸਭ ਬੰਦ ਕਰੋ(_C)"
 
-#: ../gedit/resources/gtk/menus-common.ui.h:50
+#: gedit/resources/gtk/menus-common.ui:346
 msgid "_New Tab Group"
 msgstr "ਨਵਾਂ ਟੈਬ ਗਰੁੱਪ(_N)"
 
-#: ../gedit/resources/gtk/menus-common.ui.h:51
+#: gedit/resources/gtk/menus-common.ui:351
 msgid "P_revious Tab Group"
 msgstr "ਪਿਛਲਾ ਟੈਬ ਗਰੁੱਪ(_r)"
 
-#: ../gedit/resources/gtk/menus-common.ui.h:52
+#: gedit/resources/gtk/menus-common.ui:356
 msgid "Nex_t Tab Group"
 msgstr "ਅੱਗੇ ਟੈਬ ਗਰੁੱਪ(_t)"
 
-#: ../gedit/resources/gtk/menus-common.ui.h:53
+#: gedit/resources/gtk/menus-common.ui:364
 msgid "_Previous Document"
 msgstr "ਪਿੱਛੇ ਡੌਕੂਮੈਂਟ(_P)"
 
-#: ../gedit/resources/gtk/menus-common.ui.h:54
+#: gedit/resources/gtk/menus-common.ui:369
 msgid "N_ext Document"
 msgstr "ਅੱਗੇ ਡੌਕੂਮੈਂਟ(_e)"
 
-#: ../gedit/resources/gtk/menus-common.ui.h:55
+#: gedit/resources/gtk/menus-common.ui:377
 msgid "_Move To New Window"
 msgstr "ਨਵੀਂ ਵਿੰਡੋ ਵਿੱਚ ਭੇਜੋ(_M)"
 
-#: ../gedit/resources/gtk/menus-common.ui.h:56
-#: ../gedit/resources/gtk/menus.ui.h:4
-#: ../gedit/resources/gtk/menus-traditional.ui.h:17
-#: ../plugins/spell/gedit-spell-plugin.c:246
-#: ../plugins/time/resources/ui/gedit-time-dialog.ui.h:7
+#: gedit/resources/gtk/menus-common.ui:383
+#: gedit/resources/gtk/menus-common.ui:387 gedit/resources/gtk/menus.ui:123
+#: gedit/resources/gtk/menus-traditional.ui:119
+#: plugins/spell/gedit-spell-plugin.c:265
+#: plugins/time/resources/ui/gedit-time-dialog.ui:133
 msgid "_Help"
 msgstr "ਮੱਦਦ(_H)"
 
-#: ../gedit/resources/gtk/menus-common.ui.h:57
-#: ../gedit/resources/gtk/menus.ui.h:5
-#: ../gedit/resources/gtk/menus-traditional.ui.h:18
-msgid "_About"
-msgstr "ਇਸ ਬਾਰੇ(_A)"
+#: gedit/resources/gtk/menus-common.ui:394 gedit/resources/gtk/menus.ui:127
+#: gedit/resources/gtk/menus-traditional.ui:123
+#| msgid "Text Editor"
+msgid "_About Text Editor"
+msgstr "ਲਿਖਤ ਸੰਪਾਦਕ ਬਾਰੇ(_A)"
 
-#: ../gedit/resources/gtk/menus.ui.h:3
-#: ../gedit/resources/gtk/menus-traditional.ui.h:16
-msgid "_Keyboard Shortcuts"
-msgstr "ਕੀਬੋਰਡ ਸ਼ਾਰਟਕੱਟ(_K)"
-
-#: ../gedit/resources/gtk/menus.ui.h:11
-#: ../gedit/resources/gtk/menus-traditional.ui.h:5
+#: gedit/resources/gtk/menus.ui:41 gedit/resources/gtk/menus-traditional.ui:37
 msgid "Save _All"
 msgstr "ਸਭ ਸੰਭਾਲੋ(_A)"
 
-#: ../gedit/resources/gtk/menus.ui.h:13
-#: ../gedit/resources/gtk/menus-traditional.ui.h:7
+#: gedit/resources/gtk/menus.ui:58 gedit/resources/gtk/menus-traditional.ui:54
 msgid "_Find and Replace…"
 msgstr "…ਲੱਭੋ ਤੇ ਬਦਲੋ(_F)"
 
-#: ../gedit/resources/gtk/menus.ui.h:15
-#: ../gedit/resources/gtk/menus-traditional.ui.h:9
+#: gedit/resources/gtk/menus.ui:66 gedit/resources/gtk/menus-traditional.ui:62
 msgid "_Go to Line…"
 msgstr "…ਲਾਈਨ ਉੱਤੇ ਜਾਓ(_G)"
 
-#: ../gedit/resources/gtk/menus-traditional.ui.h:10
-#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:13
-msgid "View"
-msgstr "ਵੇਖੋ"
+#: gedit/resources/gtk/menus.ui:119
+#: gedit/resources/gtk/menus-traditional.ui:115
+msgid "_Keyboard Shortcuts"
+msgstr "ਕੀਬੋਰਡ ਸ਼ਾਰਟਕੱਟ(_K)"
 
-#: ../gedit/resources/gtk/menus-traditional.ui.h:14
-msgid "Tools"
-msgstr "ਟੂਲ"
-
-#: ../gedit/resources/ui/gedit-encodings-dialog.ui.h:1
+#: gedit/resources/ui/gedit-encodings-dialog.ui:41
 msgid "Character Encodings"
 msgstr "ਅੱਖਰ ਇੰਕੋਡਿੰਗ"
 
-#: ../gedit/resources/ui/gedit-encodings-dialog.ui.h:3
+#: gedit/resources/ui/gedit-encodings-dialog.ui:51
 msgid "_Apply"
 msgstr "ਲਾਗੂ ਕਰੋ(_A)"
 
-#: ../gedit/resources/ui/gedit-encodings-dialog.ui.h:4
+#: gedit/resources/ui/gedit-encodings-dialog.ui:82
 msgid "A_vailable Encodings"
 msgstr "ਮੌਜੂਦ ਇੰਕੋਡਿੰਗਾਂ(_v)"
 
-#: ../gedit/resources/ui/gedit-encodings-dialog.ui.h:5
+#: gedit/resources/ui/gedit-encodings-dialog.ui:100
 msgid "Cho_sen Encodings"
 msgstr "ਚੁਣੀਆਂ ਇੰਕੋਡਿੰਗ(_s)"
 
-#: ../gedit/resources/ui/gedit-encodings-dialog.ui.h:6
+#: gedit/resources/ui/gedit-encodings-dialog.ui:139
+#: gedit/resources/ui/gedit-encodings-dialog.ui:217
 msgid "_Description"
 msgstr "ਵਰਣਨ"
 
-#: ../gedit/resources/ui/gedit-encodings-dialog.ui.h:7
+#: gedit/resources/ui/gedit-encodings-dialog.ui:151
+#: gedit/resources/ui/gedit-encodings-dialog.ui:228
 msgid "_Encoding"
 msgstr "ਇੰਕੋਡਿੰਗ(_E)"
 
-#: ../gedit/resources/ui/gedit-highlight-mode-dialog.ui.h:1
+#: gedit/resources/ui/gedit-highlight-mode-dialog.ui:11
 msgid "Highlight Mode"
 msgstr "ਹਾਈਲਾਈਟ ਢੰਗ"
 
-#: ../gedit/resources/ui/gedit-highlight-mode-dialog.ui.h:3
+#: gedit/resources/ui/gedit-highlight-mode-dialog.ui:47
 msgid "_Select"
 msgstr "ਚੁਣੋ(_S)"
 
-#: ../gedit/resources/ui/gedit-highlight-mode-selector.ui.h:1
-#| msgid "Search highlight mode..."
+#: gedit/resources/ui/gedit-highlight-mode-selector.ui:31
 msgid "Search highlight mode…"
 msgstr "…ਉਘਾੜਨ ਢੰਗ ਖੋਜ"
 
-#: ../gedit/resources/ui/gedit-open-document-selector.ui.h:1
+#: gedit/resources/ui/gedit-open-document-selector.ui:53
 msgid "No results"
 msgstr "ਕੋਈ ਨਤੀਜਾ ਨਹੀਂ"
 
-#: ../gedit/resources/ui/gedit-open-document-selector.ui.h:2
+#: gedit/resources/ui/gedit-open-document-selector.ui:97
 msgid "Other _Documents…"
 msgstr "…ਹੋਰ ਡੌਕੂਮੈਂਟ(_D)"
 
-#: ../gedit/resources/ui/gedit-open-document-selector.ui.h:3
+#: gedit/resources/ui/gedit-open-document-selector.ui:101
 msgid "Open another file"
 msgstr "ਹੋਰ ਫਾਇਲ ਖੋਲ੍ਹੋ"
 
-#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:1
+#: gedit/resources/ui/gedit-preferences-dialog.ui:8
+#: gedit/resources/ui/gedit-preferences-dialog.ui:15
 msgid "Preferences"
 msgstr "ਮੇਰੀ ਪਸੰਦ"
 
-#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:3
+#: gedit/resources/ui/gedit-preferences-dialog.ui:56
 msgid "Display right _margin at column:"
 msgstr "ਕਾਲਮ ਉੱਤੇ ਸੱਜਾ ਹਾਸ਼ੀਆ ਵੇਖੋ(_m):"
 
-#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:4
+#: gedit/resources/ui/gedit-preferences-dialog.ui:95
 msgid "Display _statusbar"
 msgstr "ਹਾਲਤ-ਪੱਟੀ ਵੇਖਾਓ(_s)"
 
-#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:5
+#: gedit/resources/ui/gedit-preferences-dialog.ui:110
 msgid "Display _overview map"
 msgstr "ਰੂਪ-ਰੇਖਾ ਨਕਸ਼ਾ ਦਿਖਾਓ(_o)"
 
-#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:6
+#: gedit/resources/ui/gedit-preferences-dialog.ui:125
 msgid "Display _grid pattern"
 msgstr "ਗਰਿੱਡ ਪੈਟਨਰ ਵੇਖੋ(_g)"
 
-#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:7
-#: ../gedit/resources/ui/gedit-print-preferences.ui.h:9
+#: gedit/resources/ui/gedit-preferences-dialog.ui:154
+#: gedit/resources/ui/gedit-print-preferences.ui:197
 msgid "Text Wrapping"
 msgstr "ਟੈਕਸਟ ਸਮੇਟਣਾ"
 
-#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:8
-#: ../gedit/resources/ui/gedit-print-preferences.ui.h:10
+#: gedit/resources/ui/gedit-preferences-dialog.ui:172
+#: gedit/resources/ui/gedit-print-preferences.ui:217
 msgid "Enable text _wrapping"
 msgstr "ਟੈਕਸਟ ਸਮੇਟਣਾ ਯੋਗ(_W)"
 
-#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:9
-#: ../gedit/resources/ui/gedit-print-preferences.ui.h:11
+#: gedit/resources/ui/gedit-preferences-dialog.ui:186
+#: gedit/resources/ui/gedit-print-preferences.ui:237
 msgid "Do not _split words over two lines"
 msgstr "ਸ਼ਬਦ ਨੂੰ ਦੋ ਲਾਈਨਾਂ ਵਿਚ ਨਾ ਵੰਡੋ(_s)"
 
-#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:10
+#: gedit/resources/ui/gedit-preferences-dialog.ui:220
 msgid "Highlighting"
 msgstr "ਹਾਈਲਾਈਟ ਕਰਨਾ"
 
-#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:11
+#: gedit/resources/ui/gedit-preferences-dialog.ui:238
 msgid "Highlight current _line"
 msgstr "ਮੌਜੂਦਾ ਲਾਈਨ ਉਭਾਰੋ(_l)"
 
-#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:12
+#: gedit/resources/ui/gedit-preferences-dialog.ui:252
 msgid "Highlight matching _brackets"
 msgstr "ਮਿਲਦੀ ਬਰੈਕਟ ਉਭਾਰੋ(_b)"
 
-#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:14
+#: gedit/resources/ui/gedit-preferences-dialog.ui:285
+msgid "View"
+msgstr "ਵੇਖੋ"
+
+#: gedit/resources/ui/gedit-preferences-dialog.ui:307
 msgid "Tab Stops"
 msgstr "ਟੈਬ ਰੋਕੋ"
 
-#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:15
+#: gedit/resources/ui/gedit-preferences-dialog.ui:330
 msgid "_Tab width:"
 msgstr "ਟੈਬ ਚੌੜਾਈ(_T):"
 
-#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:16
+#: gedit/resources/ui/gedit-preferences-dialog.ui:359
 msgid "Insert _spaces instead of tabs"
 msgstr "ਟੈਬ ਦੀ ਬਜਾਏ ਖਾਲੀ ਥਾਂ ਦਿਓ(_S)"
 
-#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:17
+#: gedit/resources/ui/gedit-preferences-dialog.ui:374
 msgid "_Enable automatic indentation"
 msgstr "ਆਟੋਮੈਟਿਕ ਹਾਸ਼ੀਆ ਦੂਰੀ ਯੋਗ(_E)"
 
-#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:18
+#: gedit/resources/ui/gedit-preferences-dialog.ui:409
 msgid "File Saving"
 msgstr "ਫਾਇਲ ਸੰਭਾਲਣੀ"
 
-#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:19
+#: gedit/resources/ui/gedit-preferences-dialog.ui:428
 msgid "Create a _backup copy of files before saving"
 msgstr "ਫਾਇਲਾਂ ਸੰਭਾਲਣ ਤੋਂ ਪਹਿਲਾਂ ਬੈਕਅੱਪ ਕਾਪੀ ਬਣਾਓ(_b)"
 
-#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:20
+#: gedit/resources/ui/gedit-preferences-dialog.ui:443
 msgid "_Autosave files every"
 msgstr "ਫਾਇਲਾਂ ਆਪੇ ਸੰਭਾਲੋ, ਹਰੇਕ(_A)"
 
-#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:21
+#: gedit/resources/ui/gedit-preferences-dialog.ui:459
 msgid "_minutes"
 msgstr "ਮਿੰਟ ਬਾਅਦ(_m)"
 
-#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:22
+#: gedit/resources/ui/gedit-preferences-dialog.ui:506
 msgid "Editor"
 msgstr "ਐਡੀਟਰ"
 
-#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:23
-#: ../plugins/externaltools/org.gnome.gedit.plugins.externaltools.gschema.xml.in.h:3
-#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.h:7
+#: gedit/resources/ui/gedit-preferences-dialog.ui:529
+#: plugins/externaltools/org.gnome.gedit.plugins.externaltools.gschema.xml.in:14
+#: plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in:24
 msgid "Font"
 msgstr "ਫੋਂਟ"
 
-#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:24
+#: gedit/resources/ui/gedit-preferences-dialog.ui:573
 msgid "Editor _font: "
 msgstr "ਐਡੀਟਰ ਫੋਂਟ(_F): "
 
-#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:25
+#: gedit/resources/ui/gedit-preferences-dialog.ui:590
 msgid "Pick the editor font"
 msgstr "ਸੰਪਾਦਕ ਫੋਂਟ ਚੁਣੋ"
 
-#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:26
+#: gedit/resources/ui/gedit-preferences-dialog.ui:631
 msgid "Color Scheme"
 msgstr "ਰੰਗ ਸਕੀਮ"
 
-#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:27
+#: gedit/resources/ui/gedit-preferences-dialog.ui:678
+#: gedit/resources/ui/gedit-preferences-dialog.ui:679
 msgid "Install scheme"
 msgstr "ਸਕੀਮ ਇੰਸਟਾਲ"
 
-#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:28
+#: gedit/resources/ui/gedit-preferences-dialog.ui:680
 msgid "Install Scheme"
 msgstr "ਸਕੀਮ ਇੰਸਟਾਲ"
 
-#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:29
+#: gedit/resources/ui/gedit-preferences-dialog.ui:694
+#: gedit/resources/ui/gedit-preferences-dialog.ui:695
 msgid "Uninstall scheme"
 msgstr "ਸਕੀਮ ਅਣ-ਇੰਸਟਾਲ"
 
-#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:30
+#: gedit/resources/ui/gedit-preferences-dialog.ui:696
 msgid "Uninstall Scheme"
 msgstr "ਸਕੀਮ ਅਣ-ਇੰਸਟਾਲ"
 
-#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:31
+#: gedit/resources/ui/gedit-preferences-dialog.ui:736
 msgid "Font & Colors"
 msgstr "ਫੋਂਟ ਤੇ ਰੰਗ"
 
-#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:32
+#: gedit/resources/ui/gedit-preferences-dialog.ui:761
 msgid "Plugins"
 msgstr "ਪਲੱਗਇਨ"
 
-#: ../gedit/resources/ui/gedit-print-preferences.ui.h:1
+#: gedit/resources/ui/gedit-print-preferences.ui:39
 msgid "Syntax Highlighting"
 msgstr "ਸੰਟੈਕਸ ਹਾਈਲਾਈਟ"
 
-#: ../gedit/resources/ui/gedit-print-preferences.ui.h:2
+#: gedit/resources/ui/gedit-print-preferences.ui:52
 msgid "Print synta_x highlighting"
 msgstr "ਸੰਟੈਕਸਟ ਹਾਈਲਾਈਟਿੰਗ ਪਰਿੰਟ ਕਰੋ(_x)"
 
-#: ../gedit/resources/ui/gedit-print-preferences.ui.h:3
+#: gedit/resources/ui/gedit-print-preferences.ui:85
 msgid "Line Numbers"
 msgstr "ਲਾਈਨ ਨੰਬਰ"
 
-#: ../gedit/resources/ui/gedit-print-preferences.ui.h:4
+#: gedit/resources/ui/gedit-print-preferences.ui:105
 msgid "Print line nu_mbers"
 msgstr "ਲਾਈਨ ਨੰਬਰ ਪਰਿੰਟ ਕਰੋ(_m)"
 
-#.
-#: ../gedit/resources/ui/gedit-print-preferences.ui.h:6
+#. 'Number every' from 'Number every 3 lines' in the 'Text Editor' tab of the print preferences.
+#: gedit/resources/ui/gedit-print-preferences.ui:129
 msgid "_Number every"
 msgstr "ਹਰੇਕ ਨੰਬਰ(_N)"
 
-#.
-#: ../gedit/resources/ui/gedit-print-preferences.ui.h:8
+#. 'lines' from 'Number every 3 lines' in the 'Text Editor' tab of the print preferences.
+#: gedit/resources/ui/gedit-print-preferences.ui:157
 msgid "lines"
 msgstr "ਲਾਈਨਾਂ"
 
-#: ../gedit/resources/ui/gedit-print-preferences.ui.h:12
+#: gedit/resources/ui/gedit-print-preferences.ui:283
 msgid "Page header"
 msgstr "ਪੇਜ਼ ਹੈੱਡਰ"
 
-#: ../gedit/resources/ui/gedit-print-preferences.ui.h:13
+#: gedit/resources/ui/gedit-print-preferences.ui:296
 msgid "Print page _headers"
 msgstr "ਸਫ਼ਾ ਹੈੱਡਰ ਪਰਿੰਟ ਕਰੋ(_h)"
 
-#: ../gedit/resources/ui/gedit-print-preferences.ui.h:14
+#: gedit/resources/ui/gedit-print-preferences.ui:342
 msgid "Fonts"
 msgstr "ਫੋਂਟ"
 
-#: ../gedit/resources/ui/gedit-print-preferences.ui.h:15
+#: gedit/resources/ui/gedit-print-preferences.ui:371
 msgid "_Body:"
 msgstr "ਹਿੱਸਾ(_B):"
 
-#: ../gedit/resources/ui/gedit-print-preferences.ui.h:16
+#: gedit/resources/ui/gedit-print-preferences.ui:402
 msgid "_Line numbers:"
 msgstr "ਲਾਈਨ ਨੰਬਰ(_L):"
 
-#: ../gedit/resources/ui/gedit-print-preferences.ui.h:17
+#: gedit/resources/ui/gedit-print-preferences.ui:433
 msgid "He_aders and footers:"
 msgstr "ਹੈੱਡਰ ਅਤੇ ਫੁੱਟਰ(_a):"
 
-#: ../gedit/resources/ui/gedit-print-preferences.ui.h:18
+#: gedit/resources/ui/gedit-print-preferences.ui:474
 msgid "_Restore Default Fonts"
 msgstr "ਡਿਫਾਲਟ ਫੋਂਟ ਮੁੜ-ਸਟੋਰ(_R)"
 
-#: ../gedit/resources/ui/gedit-print-preview.ui.h:1
+#: gedit/resources/ui/gedit-print-preview.ui:34
 msgid "Show the previous page"
 msgstr "ਪਿਛਲਾ ਸਫ਼ਾ ਵੇਖੋ"
 
-#: ../gedit/resources/ui/gedit-print-preview.ui.h:2
+#: gedit/resources/ui/gedit-print-preview.ui:48
 msgid "Show the next page"
 msgstr "ਅਗਲਾ ਸਫ਼ਾ ਵੇਖੋ"
 
-#: ../gedit/resources/ui/gedit-print-preview.ui.h:3
+#: gedit/resources/ui/gedit-print-preview.ui:103
 msgid "Current page (Alt+P)"
 msgstr "ਮੌਜਦਾ ਸਫ਼ਾ (Alt+P)"
 
 #. the "of" from "1 of 19" in print preview
-#: ../gedit/resources/ui/gedit-print-preview.ui.h:5
+#: gedit/resources/ui/gedit-print-preview.ui:118
 msgid "of"
 msgstr "ਵਿੱਚੋਂ"
 
-#: ../gedit/resources/ui/gedit-print-preview.ui.h:6
+#: gedit/resources/ui/gedit-print-preview.ui:135
 msgid "Page total"
 msgstr "ਸਫ਼ੇ ਕੁੱਲ"
 
-#: ../gedit/resources/ui/gedit-print-preview.ui.h:7
+#: gedit/resources/ui/gedit-print-preview.ui:136
 msgid "The total number of pages in the document"
 msgstr "ਡੌਕੂਮੈਂਟ ਵਿੱਚ ਸਫ਼ਿਆਂ ਦੀ ਕੁੱਲ ਗਿਣਤੀ"
 
-#: ../gedit/resources/ui/gedit-print-preview.ui.h:8
+#: gedit/resources/ui/gedit-print-preview.ui:185
 msgid "Show multiple pages"
 msgstr "ਬਹੁ-ਸਫ਼ੇ ਵੇਖੋ"
 
-#: ../gedit/resources/ui/gedit-print-preview.ui.h:9
+#: gedit/resources/ui/gedit-print-preview.ui:233
 msgid "Zoom 1:1"
 msgstr "ਜ਼ੂਮ ੧:੧"
 
-#: ../gedit/resources/ui/gedit-print-preview.ui.h:10
+#: gedit/resources/ui/gedit-print-preview.ui:247
 msgid "Zoom to fit the whole page"
 msgstr "ਪੂਰਾ ਸਫ਼ਾ ਫਿੱਟ ਕਰੋ"
 
-#: ../gedit/resources/ui/gedit-print-preview.ui.h:11
+#: gedit/resources/ui/gedit-print-preview.ui:261
 msgid "Zoom the page in"
 msgstr "ਸਫ਼ਾ ਜ਼ੂਮ ਅੰਦਰ"
 
-#: ../gedit/resources/ui/gedit-print-preview.ui.h:12
+#: gedit/resources/ui/gedit-print-preview.ui:275
 msgid "Zoom the page out"
 msgstr "ਸਫ਼ਾ ਜ਼ੂਮ ਬਾਹਰ"
 
-#: ../gedit/resources/ui/gedit-print-preview.ui.h:13
+#: gedit/resources/ui/gedit-print-preview.ui:326
 msgid "Close print preview"
 msgstr "ਪਰਿੰਟ ਝਲਕ ਬੰਦ ਕਰੋ"
 
-#: ../gedit/resources/ui/gedit-print-preview.ui.h:14
+#: gedit/resources/ui/gedit-print-preview.ui:327
 msgid "_Close Preview"
 msgstr "ਝਲਕ ਬੰਦ ਕਰੋ(_C)"
 
-#: ../gedit/resources/ui/gedit-print-preview.ui.h:15
+#: gedit/resources/ui/gedit-print-preview.ui:374
 msgid "Page Preview"
 msgstr "ਸਫ਼ਾ ਝਲਕ"
 
-#: ../gedit/resources/ui/gedit-print-preview.ui.h:16
+#: gedit/resources/ui/gedit-print-preview.ui:375
 msgid "The preview of a page in the document to be printed"
 msgstr "ਡੌਕੂਮੈਂਟ ਵਿੱਚ ਇੱਕ ਸਫ਼ੇ ਦੀ ਝਲਕ ਪਰਿੰਟ ਕੀਤੀ ਜਾਂਦੀ ਹੈ"
 
-#: ../gedit/resources/ui/gedit-replace-dialog.ui.h:3
+#: gedit/resources/ui/gedit-replace-dialog.ui:39
 msgid "Replace _All"
 msgstr "ਸਭ ਬਦਲੋ(_A)"
 
-#: ../gedit/resources/ui/gedit-replace-dialog.ui.h:5
+#: gedit/resources/ui/gedit-replace-dialog.ui:71
 msgctxt "label of the find button"
 msgid "_Find"
 msgstr "ਖੋਜ(_F)"
 
-#: ../gedit/resources/ui/gedit-replace-dialog.ui.h:6
+#: gedit/resources/ui/gedit-replace-dialog.ui:105
 msgctxt "label on the left of the GtkEntry containing text to search"
 msgid "F_ind "
 msgstr "ਲੱਭੋ(_i)"
 
-#: ../gedit/resources/ui/gedit-replace-dialog.ui.h:7
+#: gedit/resources/ui/gedit-replace-dialog.ui:120
 msgid "Replace _with "
 msgstr "ਇਸ ਨਾਲ ਬਦਲੋ(_w) "
 
-#: ../gedit/resources/ui/gedit-replace-dialog.ui.h:8
+#: gedit/resources/ui/gedit-replace-dialog.ui:138
 msgid "_Match case"
 msgstr "ਮਿਲਦੀ ਸਥਿਤੀ(_M)"
 
-#: ../gedit/resources/ui/gedit-replace-dialog.ui.h:9
+#: gedit/resources/ui/gedit-replace-dialog.ui:155
 msgid "Match _entire word only"
 msgstr "ਸਿਰਫ ਪੂਰਾ ਸ਼ਬਦ ਹੀ ਮਿਲਾਓ(_e)"
 
-#: ../gedit/resources/ui/gedit-replace-dialog.ui.h:10
+#: gedit/resources/ui/gedit-replace-dialog.ui:172
 msgid "Re_gular expression"
 msgstr "ਨਿਯਮਤ ਸਮੀਕਰਨ(_g)"
 
-#: ../gedit/resources/ui/gedit-replace-dialog.ui.h:11
+#: gedit/resources/ui/gedit-replace-dialog.ui:189
 msgid "Search _backwards"
 msgstr "ਪਿੱਛੇ ਖੋਜ(_b)"
 
-#: ../gedit/resources/ui/gedit-replace-dialog.ui.h:12
+#: gedit/resources/ui/gedit-replace-dialog.ui:206
 msgid "Wra_p around"
 msgstr "ਪਾਸਿਓ ਸਮੇਟੋ(_p)"
 
-#: ../gedit/resources/ui/gedit-shortcuts.ui.h:1
+#: gedit/resources/ui/gedit-shortcuts.ui:14
 msgctxt "shortcut window"
 msgid "Documents"
 msgstr "ਡੌਕੂਮੈਂਟ"
 
-#: ../gedit/resources/ui/gedit-shortcuts.ui.h:2
+#: gedit/resources/ui/gedit-shortcuts.ui:19
 msgctxt "shortcut window"
 msgid "Create a new document in a tab"
 msgstr "ਟੈਬ ਵਿੱਚ ਨਵਾਂ ਡੌਕੂਮੈਂਟ ਬਣਾਓ"
 
-#: ../gedit/resources/ui/gedit-shortcuts.ui.h:3
+#: gedit/resources/ui/gedit-shortcuts.ui:26
 msgctxt "shortcut window"
 msgid "Open a document"
 msgstr "ਡੌਕੂਮੈਂਟ ਖੋਲ੍ਹੋ"
 
-#: ../gedit/resources/ui/gedit-shortcuts.ui.h:4
+#: gedit/resources/ui/gedit-shortcuts.ui:33
 msgctxt "shortcut window"
 msgid "Save the document"
 msgstr "ਡੌਕੂਮੈਂਟ ਨੂੰ ਸੰਭਾਲੋ"
 
-#: ../gedit/resources/ui/gedit-shortcuts.ui.h:5
+#: gedit/resources/ui/gedit-shortcuts.ui:40
 msgctxt "shortcut window"
 msgid "Save the document with a new filename"
 msgstr "ਡੌਕੂਮੈੰਟ ਨੂੰ ਨਵੇਂ ਫਾਇਲ-ਨਾਂ ਨਾਲ ਸੰਭਾਲੋ"
 
-#: ../gedit/resources/ui/gedit-shortcuts.ui.h:6
+#: gedit/resources/ui/gedit-shortcuts.ui:47
 msgctxt "shortcut window"
 msgid "Save all the documents"
 msgstr "ਸਾਰੇ ਡੌਕੂਮੈਂਟਾਂ ਨੂੰ ਸੰਭਾਲੋ"
 
-#: ../gedit/resources/ui/gedit-shortcuts.ui.h:7
+#: gedit/resources/ui/gedit-shortcuts.ui:54
 msgctxt "shortcut window"
 msgid "Close the document"
 msgstr "ਡੌਕੂਮੈਂਟ ਨੂੰ ਬੰਦ ਕਰੋ"
 
-#: ../gedit/resources/ui/gedit-shortcuts.ui.h:8
+#: gedit/resources/ui/gedit-shortcuts.ui:61
 msgctxt "shortcut window"
 msgid "Close all the documents"
 msgstr "ਸਾਰੇ ਡੌਕੂਮੈਂਟਾਂ ਨੂੰ ਬੰਦ ਕਰੋ"
 
-#: ../gedit/resources/ui/gedit-shortcuts.ui.h:9
+#: gedit/resources/ui/gedit-shortcuts.ui:68
 msgctxt "shortcut window"
 msgid "Reopen the most recently closed document"
 msgstr "ਸਭ ਤੋਂ ਤਾਜ਼ ਬੰਦ ਕੀਤੇ ਡੌਕੂਮੈਂਟ ਨੂੰ ਮੁੜ-ਖੋਲ੍ਹੋ"
 
-#: ../gedit/resources/ui/gedit-shortcuts.ui.h:10
+#: gedit/resources/ui/gedit-shortcuts.ui:75
 msgctxt "shortcut window"
 msgid "Switch to the next document"
 msgstr "ਅਗਲੇ ਡੌਕੂਮੈਂਟ ਉੱਤੇ ਜਾਓ"
 
-#: ../gedit/resources/ui/gedit-shortcuts.ui.h:11
+#: gedit/resources/ui/gedit-shortcuts.ui:82
 msgctxt "shortcut window"
 msgid "Switch to the previous document"
 msgstr "ਪਿਛਲੇ ਡੌਕੂਮੈਂਟ ਉੱਤੇ ਜਾਓ"
 
-#: ../gedit/resources/ui/gedit-shortcuts.ui.h:12
-#| msgctxt "shortcut window"
-#| msgid "Switch to the first - ninth document"
+#: gedit/resources/ui/gedit-shortcuts.ui:89
 msgctxt "shortcut window"
 msgid "Switch to the first — ninth document"
 msgstr "ਪਹਿਲੇ — ਨੌਵੇਂ ਡੌਕੂਮੈਂਟ ਉੱਤੇ ਜਾਓ"
 
-#: ../gedit/resources/ui/gedit-shortcuts.ui.h:13
+#: gedit/resources/ui/gedit-shortcuts.ui:97
 msgctxt "shortcut window"
 msgid "Windows and Panels"
 msgstr "ਵਿੰਡੋ ਅਤੇ ਪੈਨਲ"
 
-#: ../gedit/resources/ui/gedit-shortcuts.ui.h:14
+#: gedit/resources/ui/gedit-shortcuts.ui:102
 msgctxt "shortcut window"
 msgid "Create a new document in a window"
 msgstr "ਵਿੰਡੋ ਵਿੱਚ ਨਵਾਂ ਡੌਕੂਮੈਂਟ ਬਣਾਓ"
 
-#: ../gedit/resources/ui/gedit-shortcuts.ui.h:15
+#: gedit/resources/ui/gedit-shortcuts.ui:109
 msgctxt "shortcut window"
 msgid "Create a new tab group"
 msgstr "ਨਵਾਂ ਟੈਬ ਗਰੁੱਪ ਬਣਾਓ"
 
-#: ../gedit/resources/ui/gedit-shortcuts.ui.h:16
+#: gedit/resources/ui/gedit-shortcuts.ui:116
 msgctxt "shortcut window"
 msgid "Show side panel"
 msgstr "ਬਾਹੀ ਪੈਨਲ ਓਹਲੇ"
 
-#: ../gedit/resources/ui/gedit-shortcuts.ui.h:17
+#: gedit/resources/ui/gedit-shortcuts.ui:123
 msgctxt "shortcut window"
 msgid "Show bottom panel"
 msgstr "ਹੇਠਲਾ ਪੈਨਲ ਦਿਖਾਓ"
 
-#: ../gedit/resources/ui/gedit-shortcuts.ui.h:18
+#: gedit/resources/ui/gedit-shortcuts.ui:130
 msgctxt "shortcut window"
 msgid "Fullscreen on / off"
 msgstr "ਪੂਰੀ ਸਕਰੀਨ ਚਾਲੂ/ਬੰਦ ਕਰੋ"
 
-#: ../gedit/resources/ui/gedit-shortcuts.ui.h:19
+#: gedit/resources/ui/gedit-shortcuts.ui:137
 msgctxt "shortcut window"
 msgid "Quit the application"
 msgstr "ਐਪਲੀਕੇਸ਼ਨ ਵਿਚੋਂ ਬਾਹਰ ਜਾਓ"
 
-#: ../gedit/resources/ui/gedit-shortcuts.ui.h:20
+#: gedit/resources/ui/gedit-shortcuts.ui:145
+#: gedit/resources/ui/gedit-shortcuts.ui:171
 msgctxt "shortcut window"
 msgid "Find and Replace"
 msgstr "ਲੱਭੋ ਅਤੇ ਬਦਲੋ"
 
-#: ../gedit/resources/ui/gedit-shortcuts.ui.h:21
+#: gedit/resources/ui/gedit-shortcuts.ui:150
 msgctxt "shortcut window"
 msgid "Find"
 msgstr "ਖੋਜ"
 
-#: ../gedit/resources/ui/gedit-shortcuts.ui.h:22
+#: gedit/resources/ui/gedit-shortcuts.ui:157
 msgctxt "shortcut window"
 msgid "Find the next match"
 msgstr "ਅਗਲਾ ਮੇਲ ਲੱਭੋ"
 
-#: ../gedit/resources/ui/gedit-shortcuts.ui.h:23
+#: gedit/resources/ui/gedit-shortcuts.ui:164
 msgctxt "shortcut window"
 msgid "Find the previous match"
 msgstr "ਪਿਛਲਾ ਮੇਲ ਲੱਭੋ"
 
-#: ../gedit/resources/ui/gedit-shortcuts.ui.h:24
+#: gedit/resources/ui/gedit-shortcuts.ui:178
 msgctxt "shortcut window"
 msgid "Clear highlight"
 msgstr "ਹਾਈਲਾਈਟ ਸਾਫ਼ ਕਰੋ"
 
-#: ../gedit/resources/ui/gedit-shortcuts.ui.h:25
-msgctxt "shortcut window"
-msgid "Go to line"
-msgstr "ਲਾਈਨ ਉੱਤੇ ਜਾਓ"
-
-#: ../gedit/resources/ui/gedit-shortcuts.ui.h:26
-msgctxt "shortcut window"
-msgid "Copy and Paste"
-msgstr "ਕਾਪੀ ਕਰੋ ਅਤੇ ਚੇਪੋ"
-
-#: ../gedit/resources/ui/gedit-shortcuts.ui.h:27
-msgctxt "shortcut window"
-msgid "Copy selected text to clipboard"
-msgstr "ਚੁਣੇ ਟੈਕਸਟ ਨੂੰ ਕਲਿੱਪਬੋਰਡ ਵਿੱਚ ਕਾਪੀ ਕਰੋ"
-
-#: ../gedit/resources/ui/gedit-shortcuts.ui.h:28
-msgctxt "shortcut window"
-msgid "Cut selected text to clipboard"
-msgstr "ਚੁਣੇ ਟੈਸਕਟ ਨੂੰ ਕਲਿੱਪਬੋਰਡ ਵਿੱਚ ਰੱਖਣ ਲਈ ਕੱਟੋ"
-
-#: ../gedit/resources/ui/gedit-shortcuts.ui.h:29
-msgctxt "shortcut window"
-msgid "Paste text from clipboard"
-msgstr "ਟੈਕਸਟ ਨੂੰ ਕਲਿੱਪਬੋਰਡ ਤੋਂ ਚੇਪੋ"
-
-#: ../gedit/resources/ui/gedit-shortcuts.ui.h:30
+#: gedit/resources/ui/gedit-shortcuts.ui:186
 msgctxt "shortcut window"
 msgid "Undo and Redo"
 msgstr "ਵਾਪਿਸ ਕਰੋ ਅਤੇ ਫੇਰ ਪਰਤਾਓ"
 
-#: ../gedit/resources/ui/gedit-shortcuts.ui.h:31
+#: gedit/resources/ui/gedit-shortcuts.ui:191
 msgctxt "shortcut window"
 msgid "Undo previous command"
 msgstr "ਪਿਛਲੀ ਕਮਾਂਡ ਵਾਪਸ ਕਰੋ"
 
-#: ../gedit/resources/ui/gedit-shortcuts.ui.h:32
+#: gedit/resources/ui/gedit-shortcuts.ui:198
 msgctxt "shortcut window"
 msgid "Redo previous command"
 msgstr "ਪਿਛਲੀ ਕਮਾਂਡ ਨੂੰ ਦੁਬਾਰਾ ਵਾਪਸ ਕਰੋ"
 
-#: ../gedit/resources/ui/gedit-shortcuts.ui.h:33
+#: gedit/resources/ui/gedit-shortcuts.ui:206
 msgctxt "shortcut window"
 msgid "Selection"
 msgstr "ਚੋਣ"
 
-#: ../gedit/resources/ui/gedit-shortcuts.ui.h:34
+#: gedit/resources/ui/gedit-shortcuts.ui:211
 msgctxt "shortcut window"
 msgid "Select all text"
 msgstr "ਸਾਰਾ ਪਾਠ ਚੁਣੋ"
 
-#: ../gedit/resources/ui/gedit-shortcuts.ui.h:35
+#: gedit/resources/ui/gedit-shortcuts.ui:218
+#| msgctxt "shortcut window"
+#| msgid "Select all text"
+msgctxt "shortcut window"
+msgid "Unselect all text"
+msgstr "ਸਾਰੀ ਲਿਖਤ ਨੂੰ ਅਣ-ਚੁਣਿਆ ਕਰੋ"
+
+#: gedit/resources/ui/gedit-shortcuts.ui:226
+msgctxt "shortcut window"
+msgid "Copy and Paste"
+msgstr "ਕਾਪੀ ਕਰੋ ਅਤੇ ਚੇਪੋ"
+
+#: gedit/resources/ui/gedit-shortcuts.ui:231
+msgctxt "shortcut window"
+msgid "Copy selected text to clipboard"
+msgstr "ਚੁਣੇ ਟੈਕਸਟ ਨੂੰ ਕਲਿੱਪਬੋਰਡ ਵਿੱਚ ਕਾਪੀ ਕਰੋ"
+
+#: gedit/resources/ui/gedit-shortcuts.ui:238
+msgctxt "shortcut window"
+msgid "Cut selected text to clipboard"
+msgstr "ਚੁਣੇ ਟੈਸਕਟ ਨੂੰ ਕਲਿੱਪਬੋਰਡ ਵਿੱਚ ਰੱਖਣ ਲਈ ਕੱਟੋ"
+
+#: gedit/resources/ui/gedit-shortcuts.ui:245
+msgctxt "shortcut window"
+msgid "Paste text from clipboard"
+msgstr "ਟੈਕਸਟ ਨੂੰ ਕਲਿੱਪਬੋਰਡ ਤੋਂ ਚੇਪੋ"
+
+#: gedit/resources/ui/gedit-shortcuts.ui:253
+#| msgid "Citation"
+msgctxt "shortcut window"
+msgid "Navigation"
+msgstr "ਨੇਵੀਗੇਸ਼ਨ"
+
+#: gedit/resources/ui/gedit-shortcuts.ui:258
+msgctxt "shortcut window"
+msgid "Go to line"
+msgstr "ਲਾਈਨ ਉੱਤੇ ਜਾਓ"
+
+#: gedit/resources/ui/gedit-shortcuts.ui:265
+msgctxt "shortcut window"
+msgid "Move viewport up within the file"
+msgstr ""
+
+#: gedit/resources/ui/gedit-shortcuts.ui:272
+msgctxt "shortcut window"
+msgid "Move viewport down within the file"
+msgstr ""
+
+#: gedit/resources/ui/gedit-shortcuts.ui:279
+msgctxt "shortcut window"
+msgid "Move viewport to end of file"
+msgstr "ਫਾਇਲ ਦੇ ਅੰਤ ਲਈ ਵਿਊਪੋਰਟ ਭੇਜੋ"
+
+#: gedit/resources/ui/gedit-shortcuts.ui:286
+msgctxt "shortcut window"
+msgid "Move viewport to beginning of file"
+msgstr "ਫਾਇਲ ਦੇ ਸ਼ੁਰੂ ਲਈ ਵਿਊਪੋਰਟ ਭੇਜੋ"
+
+#: gedit/resources/ui/gedit-shortcuts.ui:293
+#| msgid "Highlight matching _brackets"
+msgctxt "shortcut window"
+msgid "Move to matching bracket"
+msgstr "ਮਿਲਦੀਆਂ ਬਰੈਖਤਾਂ ਵਿੱਚ ਭੇਜੋ"
+
+#: gedit/resources/ui/gedit-shortcuts.ui:301
 msgctxt "shortcut window"
 msgid "Editing"
 msgstr "ਸੰਪਾਦਨ"
 
-#: ../gedit/resources/ui/gedit-shortcuts.ui.h:36
+#: gedit/resources/ui/gedit-shortcuts.ui:306
 msgctxt "shortcut window"
 msgid "Toggle insert / overwrite"
 msgstr "ਸ਼ਾਮਲ ਕਰੋ / ਉੱਤੇ ਲਿਖੋ ਨੂੰ ਬਦਲੋ"
 
-#: ../gedit/resources/ui/gedit-shortcuts.ui.h:37
+#: gedit/resources/ui/gedit-shortcuts.ui:313
 msgctxt "shortcut window"
 msgid "Delete current line"
 msgstr "ਮੌਜੂਦਾ ਲਾਈਨ ਨੂੰ ਹਟਾਓ"
 
-#: ../gedit/resources/ui/gedit-shortcuts.ui.h:38
+#: gedit/resources/ui/gedit-shortcuts.ui:320
 msgctxt "shortcut window"
 msgid "Join selected lines"
 msgstr "ਚੁਣੀਆਂ ਲਾਈਨਾਂ ਨੂੰ ਜੋੜੋ"
 
-#: ../gedit/resources/ui/gedit-shortcuts.ui.h:39
+#: gedit/resources/ui/gedit-shortcuts.ui:327
 msgctxt "shortcut window"
 msgid "Move current line up"
 msgstr "ਮੌਜੂਦਾ ਲਾਈਨ ਨੂੰ ਉੱਤੇ ਭੇਜੋ"
 
-#: ../gedit/resources/ui/gedit-shortcuts.ui.h:40
+#: gedit/resources/ui/gedit-shortcuts.ui:334
 msgctxt "shortcut window"
 msgid "Move current line down"
 msgstr "ਮੌਜੂਦਾ ਲਾਈਨ ਨੂੰ ਹੇਠਾਂ ਭੇਜੋ"
 
-#: ../gedit/resources/ui/gedit-shortcuts.ui.h:41
+#: gedit/resources/ui/gedit-shortcuts.ui:341
 msgctxt "shortcut window"
 msgid "Move current word left"
 msgstr "ਮੌਜੂਦਾ ਸ਼ਬਦ ਨੂੰ ਖੱਬੇ ਭੇਜੋ"
 
-#: ../gedit/resources/ui/gedit-shortcuts.ui.h:42
+#: gedit/resources/ui/gedit-shortcuts.ui:348
 msgctxt "shortcut window"
 msgid "Move current word right"
 msgstr "ਮੌਜੂਦਾ ਸ਼ਬਦ ਨੂੰ ਸੱਜੇ ਭੇਜੋ"
 
-#: ../gedit/resources/ui/gedit-shortcuts.ui.h:43
+#: gedit/resources/ui/gedit-shortcuts.ui:355
 msgctxt "shortcut window"
 msgid "Convert to uppercase"
 msgstr "ਵੱਡੇ ਅੱਖਰਾਂ ਵਿੱਚ ਬਦਲੋ"
 
-#: ../gedit/resources/ui/gedit-shortcuts.ui.h:44
+#: gedit/resources/ui/gedit-shortcuts.ui:362
 msgctxt "shortcut window"
 msgid "Convert to lowercase"
 msgstr "ਅੱਖਰਾਂ ਦਾ ਅਕਾਰ ਛੋਟਾ ਕਰੋ"
 
-#: ../gedit/resources/ui/gedit-shortcuts.ui.h:45
+#: gedit/resources/ui/gedit-shortcuts.ui:369
 msgctxt "shortcut window"
 msgid "Invert case"
 msgstr "ਅੱਖਰ ਅਕਾਰ ਉਲਟ"
 
-#: ../gedit/resources/ui/gedit-shortcuts.ui.h:46
+#: gedit/resources/ui/gedit-shortcuts.ui:376
 msgctxt "shortcut window"
 msgid "Increment number at cursor"
 msgstr "ਕਰਸਰ ਉੱਤੇ ਵਾਧਾ ਨੰਬਰ"
 
-#: ../gedit/resources/ui/gedit-shortcuts.ui.h:47
+#: gedit/resources/ui/gedit-shortcuts.ui:383
 msgctxt "shortcut window"
 msgid "Decrement number at cursor"
 msgstr "ਕਰਸਰ ਉੱਤੇ ਘੱਟਦਾ ਨੰਬਰ"
 
-#: ../gedit/resources/ui/gedit-shortcuts.ui.h:48
+#: gedit/resources/ui/gedit-shortcuts.ui:391
 msgctxt "shortcut window"
 msgid "Tools"
 msgstr "ਟੂਲ"
 
-#: ../gedit/resources/ui/gedit-shortcuts.ui.h:49
+#: gedit/resources/ui/gedit-shortcuts.ui:396
 msgctxt "shortcut window"
 msgid "Check spelling"
 msgstr "ਸ਼ਬਦ-ਜੋੜ ਚੈੱਕ ਕਰੋ"
 
-#: ../gedit/resources/ui/gedit-shortcuts.ui.h:50
+#: gedit/resources/ui/gedit-shortcuts.ui:403
 msgctxt "shortcut window"
 msgid "Print the document"
 msgstr "ਡੌਕੂਮੈਂਟ ਨੂੰ ਪਰਿੰਟ ਕਰੋ"
 
-#: ../gedit/resources/ui/gedit-shortcuts.ui.h:51
+#: gedit/resources/ui/gedit-shortcuts.ui:410
 msgctxt "shortcut window"
 msgid "Show completion window"
 msgstr "ਪੂਰਨ ਵਿੰਡੋ ਨੂੰ ਦਿਖਾਓ"
 
-#: ../gedit/resources/ui/gedit-tab-label.ui.h:1
+#: gedit/resources/ui/gedit-tab-label.ui:34
 msgid "Close Document"
 msgstr "ਡੌਕੂਮੈਂਟ ਬੰਦ ਕਰੋ"
 
-#: ../gedit/resources/ui/gedit-window.ui.h:2
+#: gedit/resources/ui/gedit-window.ui:33 gedit/resources/ui/gedit-window.ui:66
+#: gedit/resources/ui/gedit-window.ui:401
 msgid "Open a file"
 msgstr "ਫਾਇਲ ਨੂੰ ਖੋਲ੍ਹੋ"
 
-#: ../gedit/resources/ui/gedit-window.ui.h:4
+#: gedit/resources/ui/gedit-window.ui:65 gedit/resources/ui/gedit-window.ui:386
+#: gedit/resources/ui/gedit-window.ui:400
 msgid "Open"
 msgstr "ਖੋਲ੍ਹੋ"
 
-#: ../gedit/resources/ui/gedit-window.ui.h:5
+#: gedit/resources/ui/gedit-window.ui:80 gedit/resources/ui/gedit-window.ui:87
+#: gedit/resources/ui/gedit-window.ui:415
+#: gedit/resources/ui/gedit-window.ui:422
 msgid "Create a new document"
 msgstr "ਨਵਾਂ ਡੌਕੂਮੈਂਟ ਬਣਾਓ"
 
-#: ../gedit/resources/ui/gedit-window.ui.h:6
+#: gedit/resources/ui/gedit-window.ui:86 gedit/resources/ui/gedit-window.ui:421
 msgid "New"
 msgstr "ਨਵਾਂ"
 
-#: ../gedit/resources/ui/gedit-window.ui.h:8
+#: gedit/resources/ui/gedit-window.ui:109
+#: gedit/resources/ui/gedit-window.ui:114
+#: gedit/resources/ui/gedit-window.ui:460
+#: gedit/resources/ui/gedit-window.ui:465
 msgid "Save the current file"
 msgstr "ਮੌਜੂਦਾ ਫਾਇਲ ਨੂੰ ਸੰਭਾਲੋ"
 
-#: ../gedit/resources/ui/gedit-window.ui.h:9
+#: gedit/resources/ui/gedit-window.ui:113
+#: gedit/resources/ui/gedit-window.ui:457
+#: gedit/resources/ui/gedit-window.ui:464
 msgid "Save"
 msgstr "ਸੰਭਾਲੋ"
 
-#: ../gedit/resources/ui/gedit-window.ui.h:10
+#: gedit/resources/ui/gedit-window.ui:256
 msgid "Hide panel"
 msgstr "ਪੈਨਲ ਓਹਲੇ"
 
-#: ../gedit/resources/ui/gedit-window.ui.h:11
+#: gedit/resources/ui/gedit-window.ui:371
 msgid "Open a file dialog"
 msgstr "ਫਾਇਲ ਖੋਲ੍ਹੋ ਡਾਈਲਾਗ"
 
-#: ../gedit/resources/ui/gedit-window.ui.h:12
+#: gedit/resources/ui/gedit-window.ui:431
+#: gedit/resources/ui/gedit-window.ui:436
+#: gedit/resources/ui/gedit-window.ui:437
 msgid "Leave Fullscreen"
 msgstr "ਪੂਰੀ ਸਕਰੀਨ ਛੱਡੋ"
 
-#: ../plugins/checkupdate/checkupdate.plugin.desktop.in.h:1
+#: plugins/checkupdate/checkupdate.plugin.desktop.in:5
 msgid "Check update"
 msgstr "ਅੱਪਡੇਟ ਚੈੱਕ ਕਰੋ"
 
-#: ../plugins/checkupdate/checkupdate.plugin.desktop.in.h:2
+#: plugins/checkupdate/checkupdate.plugin.desktop.in:6
 msgid "Check for latest version of gedit"
 msgstr "ਜੀ-ਸੰਪਾਦਕ ਦੇ ਨਵੇਂ ਵਰਜਨ ਲਈ ਚੈੱਕ ਕਰੋ"
 
-#: ../plugins/checkupdate/gedit-check-update-plugin.c:245
+#: plugins/checkupdate/gedit-check-update-plugin.c:245
 msgid "There was an error displaying the URI."
 msgstr "URI ਵੇਖਾਉਣ ਦੌਰਾਨ ਗਲਤੀ ਸੀ।"
 
-#: ../plugins/checkupdate/gedit-check-update-plugin.c:282
+#: plugins/checkupdate/gedit-check-update-plugin.c:282
 msgid "_Download"
 msgstr "ਡਾਊਨਲੋਡ ਕਰੋ(_D)"
 
-#: ../plugins/checkupdate/gedit-check-update-plugin.c:283
+#: plugins/checkupdate/gedit-check-update-plugin.c:283
 msgid "_Ignore Version"
 msgstr "ਵਰਜਨ ਅਣਡਿੱਠਾ(_I)"
 
-#: ../plugins/checkupdate/gedit-check-update-plugin.c:288
+#: plugins/checkupdate/gedit-check-update-plugin.c:288
 msgid "There is a new version of gedit"
 msgstr "ਜੀ-ਸੰਪਾਦਕ ਦਾ ਨਵਾਂ ਵਰਜਨ ਉਪਲੱਬਧ ਹੈ"
 
-#: ../plugins/checkupdate/gedit-check-update-plugin.c:291
+#: plugins/checkupdate/gedit-check-update-plugin.c:291
 msgid ""
 "You can download the new version of gedit by clicking on the download button "
 "or ignore that version and wait for a new one"
@@ -2714,376 +2629,370 @@ msgstr ""
 " ਨੂੰ ਅਣਡਿੱਠਾ "
 "ਕਰਕੇ ਹੋਰ ਨਵੇਂ ਦੀ ਉਡੀਕ ਕਰ ਸਕਦੇ ਹੋ।"
 
-#. ex:set ts=8 noet:
-#: ../plugins/checkupdate/org.gnome.gedit.plugins.checkupdate.gschema.xml.in.h:1
+#: plugins/checkupdate/org.gnome.gedit.plugins.checkupdate.gschema.xml.in:5
 msgid "Version to Ignore"
 msgstr "ਅਣਡਿੱਠਾ ਕਰਨ ਲਈ ਵਰਜਨ"
 
 #. This is releated to the next gedit version to be released
-#: ../plugins/checkupdate/org.gnome.gedit.plugins.checkupdate.gschema.xml.in.h:3
+#: plugins/checkupdate/org.gnome.gedit.plugins.checkupdate.gschema.xml.in:7
 msgid "Version to ignore until a newer version is released."
 msgstr "ਨਵਾਂ ਵਰਜਨ ਆਉਣ ਤੱਕ ਵਰਜਨ ਅਣਡਿੱਠਾ ਕਰੋ"
 
-#. ex:set ts=8 noet:
-#: ../plugins/docinfo/docinfo.plugin.desktop.in.h:1
-#: ../plugins/docinfo/resources/ui/gedit-docinfo-plugin.ui.h:1
+#: plugins/docinfo/docinfo.plugin.desktop.in:5
+#: plugins/docinfo/resources/ui/gedit-docinfo-plugin.ui:7
+#: plugins/docinfo/resources/ui/gedit-docinfo-plugin.ui:13
 msgid "Document Statistics"
 msgstr "ਡੌਕੂਮੈਂਟੀ ਅੰਕੜੇ"
 
-#: ../plugins/docinfo/docinfo.plugin.desktop.in.h:2
+#: plugins/docinfo/docinfo.plugin.desktop.in:6
 msgid "Report the number of words, lines and characters in a document."
 msgstr "ਦਸਤਾਵੇਜ਼ ਵਿੱਚ ਸ਼ਬਦਾਂ, ਲਾਈਨਾਂ ਤੇ ਅੱਖਰਾਂ ਦੀ ਗਿਣਤੀ ਬਾਰੇ ਜਾਣਕਾਰੀ"
 
-#: ../plugins/docinfo/gedit-docinfo-plugin.c:537
+#: plugins/docinfo/gedit-docinfo-plugin.c:537
 msgid "_Document Statistics"
 msgstr "ਡੌਕੂਮੈਂਟੀ ਅੰਕੜੇ(_D)"
 
-#: ../plugins/docinfo/resources/ui/gedit-docinfo-plugin.ui.h:2
+#: plugins/docinfo/resources/ui/gedit-docinfo-plugin.ui:64
 msgid "Document"
 msgstr "ਡੌਕੂਮੈਂਟ"
 
-#: ../plugins/docinfo/resources/ui/gedit-docinfo-plugin.ui.h:3
+#: plugins/docinfo/resources/ui/gedit-docinfo-plugin.ui:82
 msgid "Selection"
 msgstr "ਚੋਣ"
 
-#: ../plugins/docinfo/resources/ui/gedit-docinfo-plugin.ui.h:4
+#: plugins/docinfo/resources/ui/gedit-docinfo-plugin.ui:97
 msgid "Lines"
 msgstr "ਲਾਈਨਾਂ"
 
-#: ../plugins/docinfo/resources/ui/gedit-docinfo-plugin.ui.h:5
+#: plugins/docinfo/resources/ui/gedit-docinfo-plugin.ui:112
 msgid "Words"
 msgstr "ਸ਼ਬਦ"
 
-#: ../plugins/docinfo/resources/ui/gedit-docinfo-plugin.ui.h:6
+#: plugins/docinfo/resources/ui/gedit-docinfo-plugin.ui:127
 msgid "Characters (with spaces)"
 msgstr "ਅੱਖਰ (ਖਾਲੀ ਥਾਂ ਸਮੇਤ)"
 
-#: ../plugins/docinfo/resources/ui/gedit-docinfo-plugin.ui.h:7
+#: plugins/docinfo/resources/ui/gedit-docinfo-plugin.ui:142
 msgid "Characters (no spaces)"
 msgstr "ਅੱਖਰ (ਬਿਨਾਂ ਖਾਲੀ ਥਾਂ)"
 
-#: ../plugins/docinfo/resources/ui/gedit-docinfo-plugin.ui.h:8
+#: plugins/docinfo/resources/ui/gedit-docinfo-plugin.ui:157
 msgid "Bytes"
 msgstr "ਬਾਇਟ"
 
-#: ../plugins/externaltools/data/build.desktop.in.h:1
+#: plugins/externaltools/data/build.desktop.in:3
 msgid "Build"
 msgstr "Build"
 
-#: ../plugins/externaltools/data/build.desktop.in.h:2
-#| msgid "Run \"make\" in the document directory"
+#: plugins/externaltools/data/build.desktop.in:4
 msgid "Run “make” in the document directory"
 msgstr "ਡੌਕੂਮੈਂਟ ਡਾਇਰੈਕਟਰੀ 'ਚ ”make” ਚਲਾਓ"
 
-#: ../plugins/externaltools/data/open-terminal-here.desktop.in.h:1
-#: ../plugins/externaltools/data/open-terminal-here-osx.desktop.in.h:1
+#: plugins/externaltools/data/open-terminal-here.desktop.in:3
+#: plugins/externaltools/data/open-terminal-here-osx.desktop.in:3
 msgid "Open terminal here"
 msgstr "ਇੱਥੇ ਟਰਮੀਨਲ ਖੋਲ੍ਹੋ"
 
-#: ../plugins/externaltools/data/open-terminal-here.desktop.in.h:2
-#: ../plugins/externaltools/data/open-terminal-here-osx.desktop.in.h:2
+#: plugins/externaltools/data/open-terminal-here.desktop.in:4
+#: plugins/externaltools/data/open-terminal-here-osx.desktop.in:4
 msgid "Open a terminal in the document location"
 msgstr "ਡੌਕੂਮੈਂਟ ਟਿਕਾਣੇ 'ਚ ਇੱਕ ਟਰਮੀਨਲ ਖੋਲ੍ਹੋ"
 
-#: ../plugins/externaltools/data/remove-trailing-spaces.desktop.in.h:1
+#: plugins/externaltools/data/remove-trailing-spaces.desktop.in:3
 msgid "Remove trailing spaces"
 msgstr "ਆਖਰੀ ਖਾਲੀ ਥਾਵਾਂ ਹਟਾਓ"
 
-#: ../plugins/externaltools/data/remove-trailing-spaces.desktop.in.h:2
+#: plugins/externaltools/data/remove-trailing-spaces.desktop.in:4
 msgid "Remove useless trailing spaces in your file"
 msgstr "ਆਪਣੀ ਫਾਇਲ ਵਿੱਚ ਬੇਲੋੜੀਆਂ ਆਖਰੀ ਖਾਲੀ ਥਾਵਾਂ ਹਟਾਓ"
 
-#: ../plugins/externaltools/data/run-command.desktop.in.h:1
+#: plugins/externaltools/data/run-command.desktop.in:3
 msgid "Run command"
 msgstr "ਕਮਾਂਡ ਚਲਾਓ"
 
-#: ../plugins/externaltools/data/run-command.desktop.in.h:2
+#: plugins/externaltools/data/run-command.desktop.in:4
 msgid "Execute a custom command and put its output in a new document"
 msgstr "ਇੱਕ ਪਸੰਦੀਦਾ ਕਮਾਂਡ ਚਲਾਓ ਅਤੇ ਇਸ ਦੀ ਆਉਟਪੁੱਟ ਨਵੇਂ ਡੌਕੂਮੈਂਟ 'ਚ ਰੱਖੋ"
 
-#: ../plugins/externaltools/data/send-to-fpaste.desktop.in.h:1
+#: plugins/externaltools/data/send-to-fpaste.desktop.in:3
 msgid "Send to fpaste"
 msgstr "fpaste ਨੂੰ ਭੇਜੋ"
 
-#: ../plugins/externaltools/data/send-to-fpaste.desktop.in.h:2
+#: plugins/externaltools/data/send-to-fpaste.desktop.in:4
 msgid "Paste selected text or current document to fpaste"
 msgstr "ਚੁਣਿਆ ਟੈਕਸਟ ਜਾਂ ਮੌਜੂਦਾ ਦਸਤਾਵੇਜ਼ fpaste ਉੱਤੇ ਚੇਪੋ"
 
-#: ../plugins/externaltools/externaltools.plugin.desktop.in.h:1
+#: plugins/externaltools/externaltools.plugin.desktop.in:6
 msgid "External Tools"
 msgstr "ਬਾਹਰੀ ਟੂਲ"
 
-#: ../plugins/externaltools/externaltools.plugin.desktop.in.h:2
+#: plugins/externaltools/externaltools.plugin.desktop.in:7
 msgid "Execute external commands and shell scripts."
 msgstr "ਬਾਹਰੀ ਕਮਾਂਡਾਂ ਅਤੇ ਸ਼ੈੱਲ ਸਕਰਿਪਟਾਂ ਚਲਾਓ।"
 
-#: ../plugins/externaltools/org.gnome.gedit.plugins.externaltools.gschema.xml.in.h:1
-#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.h:5
+#: plugins/externaltools/org.gnome.gedit.plugins.externaltools.gschema.xml.in:5
+#: plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in:15
 msgid "Whether to use the system font"
 msgstr "ਕੀ ਸਿਸਟਮ ਫੋਂਟ ਵਰਤਣੇ ਹਨ"
 
-#: ../plugins/externaltools/org.gnome.gedit.plugins.externaltools.gschema.xml.in.h:2
-#| msgid ""
-#| "If true, the external tools will use the desktop-global standard font if "
-#| "it's monospace (and the most similar font it can come up with otherwise)."
+#: plugins/externaltools/org.gnome.gedit.plugins.externaltools.gschema.xml.in:6
 msgid ""
 "If true, the external tools will use the desktop-global standard font if "
 "it’s monospace (and the most similar font it can come up with otherwise)."
 msgstr ""
 "ਜੇਕਰ ਸੱਚ ਹੈ ਤਾਂ, ਬਾਹਰੀ ਟੂਲ ਡੈਸਕਟਾਪ-ਗਲੋਬਲ ਸਟੈਂਡਰਡ ਫੋਂਟ ਵਰਤੇਗਾ ਜੇ ਇਹ ਮੋਨੋਸਪੇਸ"
-" ਹੋਏ "
-"(ਅਤੇ ਇੰਝ ਦੇ ਜਿਆਦਾਤਰ ਫੋਂਟ, ਜੋ ਨਾਲ ਹੀ ਆਏ ਹਨ)।"
+" ਹੋਏ (ਅਤੇ ਇੰਝ ਦੇ "
+"ਜਿਆਦਾਤਰ ਫੋਂਟ, ਜੋ ਨਾਲ ਹੀ ਆਏ ਹਨ)।"
 
-#: ../plugins/externaltools/org.gnome.gedit.plugins.externaltools.gschema.xml.in.h:4
-#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.h:8
-#| msgid ""
-#| "A Pango font name. Examples are \"Sans 12\" or \"Monospace Bold 14\"."
+#: plugins/externaltools/org.gnome.gedit.plugins.externaltools.gschema.xml.in:15
+#: plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in:25
 msgid "A Pango font name. Examples are “Sans 12” or “Monospace Bold 14”."
 msgstr ""
 "ਇੱਕ ਪੈਨਗੋ ਫੋਂਟ ਨਾਂ। ਜਿਵੇ ਕਿ ”Sans 12 (ਸ਼ੰਨਜ਼ ੧੨)” ਜਾਂ ”Monospace Bold 14"
-" (ਮੋਨੋਸਪੇਸ ਬੋਲਡ ੧੪)”।"
+" (ਮੋਨੋਸਪੇਸ ਬੋਲਡ "
+"੧੪)”।"
 
-#: ../plugins/externaltools/tools/appactivatable.py:133
-#| msgid "Manage External Tools"
+#: plugins/externaltools/tools/appactivatable.py:133
 msgid "Manage _External Tools…"
 msgstr "ਬਾਹਰੀ ਟੂਲ ਪਰਬੰਧ(_E)…"
 
-#: ../plugins/externaltools/tools/appactivatable.py:138
+#: plugins/externaltools/tools/appactivatable.py:138
 msgid "External _Tools"
 msgstr "ਬਾਹਰੀ ਟੂਲ(_T)"
 
-#: ../plugins/externaltools/tools/capture.py:106
+#: plugins/externaltools/tools/capture.py:106
 #, python-format
 msgid "Could not execute command: %s"
 msgstr "ਕਮਾਂਡ ਚਲਾਈ ਨਹੀਂ ਜਾ ਸਕੀ: %s"
 
-#: ../plugins/externaltools/tools/functions.py:191
+#: plugins/externaltools/tools/functions.py:191
 msgid "You must be inside a word to run this command"
 msgstr "ਤੁਹਾਨੂੰ ਇਹ ਕਮਾਂਡ ਚਲਾਉਣ ਲਈ ਇਹ ਸ਼ਬਦ ਦੇ ਅੰਦਰ ਹੋਣਾ ਚਾਹੀਦਾ ਹੈ"
 
-#: ../plugins/externaltools/tools/functions.py:309
+#: plugins/externaltools/tools/functions.py:309
 msgid "Running tool:"
 msgstr "ਚੱਲ ਰਿਹਾ ਟੂਲ:"
 
-#: ../plugins/externaltools/tools/functions.py:340
+#: plugins/externaltools/tools/functions.py:340
 msgid "Done."
 msgstr "ਮੁਕੰਮਲ।"
 
-#: ../plugins/externaltools/tools/functions.py:342
+#: plugins/externaltools/tools/functions.py:342
 msgid "Exited"
 msgstr "ਬੰਦ ਕੀਤੇ"
 
-#: ../plugins/externaltools/tools/manager.py:113
+#: plugins/externaltools/tools/manager.py:113
 msgid "All languages"
 msgstr "ਸਭ ਭਾਸ਼ਾਵਾਂ"
 
-#: ../plugins/externaltools/tools/manager.py:429
-#: ../plugins/externaltools/tools/manager.py:433
-#: ../plugins/externaltools/tools/manager.py:772
-#: ../plugins/externaltools/tools/tools.ui.h:31
+#: plugins/externaltools/tools/manager.py:429
+#: plugins/externaltools/tools/manager.py:433
+#: plugins/externaltools/tools/manager.py:774
+#: plugins/externaltools/tools/tools.ui:473
 msgid "All Languages"
 msgstr "ਸਭ ਭਾਸ਼ਾਵਾਂ"
 
-#: ../plugins/externaltools/tools/manager.py:546
+#: plugins/externaltools/tools/manager.py:546
 msgid "New tool"
 msgstr "ਨਵਾਂ ਟੂਲ"
 
-#: ../plugins/externaltools/tools/manager.py:683
+#: plugins/externaltools/tools/manager.py:683
 #, python-format
 msgid "This accelerator is already bound to %s"
 msgstr "ਇਹ ਐਕਸਲੇਟਰ ਪਹਿਲਾਂ ਹੀ %s ਨਾਲ ਸਬੰਧਤ ਹੈ"
 
-#: ../plugins/externaltools/tools/manager.py:727
+#: plugins/externaltools/tools/manager.py:729
 msgid "Type a new accelerator, or press Backspace to clear"
 msgstr "ਇੱਕ ਨਵਾਂ ਐਕਸਲੇਟਰ ਦਿਓ ਜਾਂ ਹਟਾਉਣ ਲਈ ਬੈਕਸਪੇਸ ਦਬਾਓ"
 
-#: ../plugins/externaltools/tools/manager.py:729
+#: plugins/externaltools/tools/manager.py:731
 msgid "Type a new accelerator"
 msgstr "ਇੱਕ ਨਵਾਂ ਐਕਸਲੇਟਰ ਦਿਓ"
 
-#: ../plugins/externaltools/tools/outputpanel.py:129
+#: plugins/externaltools/tools/outputpanel.py:129
 msgid "Stopped."
 msgstr "ਰੁਕਿਆ।"
 
-#. ex:ts=4:et:
-#: ../plugins/externaltools/tools/outputpanel.ui.h:1
+#: plugins/externaltools/tools/outputpanel.ui:37
 msgid "Stop Tool"
 msgstr "ਟੂਲ ਰੋਕੋ"
 
-#: ../plugins/externaltools/tools/tools.ui.h:1
+#: plugins/externaltools/tools/tools.ui:15
 msgid "Always available"
 msgstr "ਹਮੇਸ਼ਾ ਉਪਲਬੱਧ"
 
-#: ../plugins/externaltools/tools/tools.ui.h:2
+#: plugins/externaltools/tools/tools.ui:19
+#: plugins/externaltools/tools/tools.ui:129
 msgid "All documents"
 msgstr "ਸਭ ਡੌਕੂਮੈਂਟ"
 
-#: ../plugins/externaltools/tools/tools.ui.h:3
+#: plugins/externaltools/tools/tools.ui:23
 msgid "All documents except untitled ones"
 msgstr "ਬਿਨਾਂ-ਨਾਂ ਨੂੰ ਛੱਡ ਕੇ ਸਭ"
 
-#: ../plugins/externaltools/tools/tools.ui.h:4
+#: plugins/externaltools/tools/tools.ui:27
 msgid "Local files only"
 msgstr "ਸਿਰਫ਼ ਲੋਕਲ ਫਾਇਲਾਂ"
 
-#: ../plugins/externaltools/tools/tools.ui.h:5
+#: plugins/externaltools/tools/tools.ui:31
 msgid "Remote files only"
 msgstr "ਸਿਰਫ਼ ਫਾਇਲਾਂ ਹੀ ਹਟਾਓ"
 
-#: ../plugins/externaltools/tools/tools.ui.h:6
+#: plugins/externaltools/tools/tools.ui:35
 msgid "Untitled documents only"
 msgstr "ਸਿਰਫ਼ ਬਿਨਾਂ-ਨਾਂ ਡੌਕੂਮੈਂਟ ਹੀ"
 
-#: ../plugins/externaltools/tools/tools.ui.h:8
+#: plugins/externaltools/tools/tools.ui:53
+#: plugins/externaltools/tools/tools.ui:125
 msgid "Current document"
 msgstr "ਮੌਜੂਦਾ ਡੌਕੂਮੈਂਟ"
 
-#: ../plugins/externaltools/tools/tools.ui.h:9
+#: plugins/externaltools/tools/tools.ui:57
 msgid "Current selection"
 msgstr "ਮੌਜੂਦਾ ਚੋਣ"
 
-#: ../plugins/externaltools/tools/tools.ui.h:10
+#: plugins/externaltools/tools/tools.ui:61
 msgid "Current selection (default to document)"
 msgstr "ਮੌਜੂਦਾ ਚੋਣ (ਡੌਕੂਮੈਂਟ ਲਈ ਡਿਫਾਲਟ)"
 
-#: ../plugins/externaltools/tools/tools.ui.h:11
+#: plugins/externaltools/tools/tools.ui:65
 msgid "Current line"
 msgstr "ਮੌਜੂਦਾ ਲਾਈਨ"
 
-#: ../plugins/externaltools/tools/tools.ui.h:12
+#: plugins/externaltools/tools/tools.ui:69
 msgid "Current word"
 msgstr "ਮੌਜੂਦਾ ਸ਼ਬਦ"
 
-#: ../plugins/externaltools/tools/tools.ui.h:13
+#: plugins/externaltools/tools/tools.ui:87
 msgid "Display in bottom pane"
 msgstr "ਤਲ ਬਾਹੀ 'ਚ ਵੇਖੋ"
 
-#: ../plugins/externaltools/tools/tools.ui.h:14
+#: plugins/externaltools/tools/tools.ui:91
 msgid "Create new document"
 msgstr "ਨਵਾਂ ਡੌਕੂਮੈਂਟ ਬਣਾਓ"
 
-#: ../plugins/externaltools/tools/tools.ui.h:15
+#: plugins/externaltools/tools/tools.ui:95
 msgid "Append to current document"
 msgstr "ਮੌਜੂਦਾ ਡੌਕੂਮੈਂਟ ਵਿੱਚ ਸ਼ਾਮਿਲ"
 
-#: ../plugins/externaltools/tools/tools.ui.h:16
+#: plugins/externaltools/tools/tools.ui:99
 msgid "Replace current document"
 msgstr "ਮੌਜੂਦਾ ਡੌਕੂਮੈਂਟ ਬਦਲੋ"
 
-#: ../plugins/externaltools/tools/tools.ui.h:17
+#: plugins/externaltools/tools/tools.ui:103
 msgid "Replace current selection"
 msgstr "ਮੌਜੂਦਾ ਚੋਣ ਬਦਲੋ"
 
-#: ../plugins/externaltools/tools/tools.ui.h:18
+#: plugins/externaltools/tools/tools.ui:107
 msgid "Insert at cursor position"
 msgstr "ਕਰਸਰ ਸਥਿਤੀ ਉੱਤੇ ਸ਼ਾਮਿਲ"
 
-#: ../plugins/externaltools/tools/tools.ui.h:19
+#: plugins/externaltools/tools/tools.ui:136
+#: plugins/externaltools/tools/tools.ui:146
 msgid "Manage External Tools"
 msgstr "ਬਾਹਰੀ ਟੂਲ ਪਰਬੰਧ"
 
-#: ../plugins/externaltools/tools/tools.ui.h:20
+#: plugins/externaltools/tools/tools.ui:204
 msgid "Add a new tool"
 msgstr "ਨਵਾਂ ਟੂਲ ਜੋੜੋ"
 
-#: ../plugins/externaltools/tools/tools.ui.h:21
+#: plugins/externaltools/tools/tools.ui:205
 msgid "Add Tool"
 msgstr "ਟੂਲ ਸ਼ਾਮਲ"
 
-#: ../plugins/externaltools/tools/tools.ui.h:22
+#: plugins/externaltools/tools/tools.ui:219
 msgid "Remove selected tool"
 msgstr "ਚੁਣਿਆ ਟੂਲ ਹਟਾਓ"
 
-#: ../plugins/externaltools/tools/tools.ui.h:23
+#: plugins/externaltools/tools/tools.ui:220
 msgid "Remove Tool"
 msgstr "ਟੂਲ ਹਟਾਓ"
 
-#: ../plugins/externaltools/tools/tools.ui.h:24
+#: plugins/externaltools/tools/tools.ui:234
 msgid "Revert tool"
 msgstr "ਟੂਲ ਰੀਵਰਟ ਕਰੋ"
 
-#: ../plugins/externaltools/tools/tools.ui.h:25
+#: plugins/externaltools/tools/tools.ui:235
 msgid "Revert Tool"
 msgstr "ਟੂਲ ਰੀਵਰਟ ਕਰੋ"
 
-#: ../plugins/externaltools/tools/tools.ui.h:26
+#: plugins/externaltools/tools/tools.ui:287
 msgid "Shortcut _key:"
 msgstr "ਸ਼ਾਰਟਕੱਟ ਸਵਿੱਚ(_k):"
 
-#: ../plugins/externaltools/tools/tools.ui.h:27
+#: plugins/externaltools/tools/tools.ui:321
 msgid "_Save:"
 msgstr "ਸੰਭਾਲੋ(_S):"
 
-#: ../plugins/externaltools/tools/tools.ui.h:28
+#: plugins/externaltools/tools/tools.ui:356
 msgid "_Input:"
 msgstr "ਇੰਪੁੱਟ(_I):"
 
-#: ../plugins/externaltools/tools/tools.ui.h:29
+#: plugins/externaltools/tools/tools.ui:391
 msgid "_Output:"
 msgstr "ਆਉਟਪੁੱਟ(_O):"
 
-#: ../plugins/externaltools/tools/tools.ui.h:30
+#: plugins/externaltools/tools/tools.ui:426
 msgid "_Applicability:"
 msgstr "ਸਹੂਲਤ(_A):"
 
-#: ../plugins/externaltools/tools/windowactivatable.py:126
+#: plugins/externaltools/tools/windowactivatable.py:126
 msgid "Tool Output"
 msgstr "ਟੂਲ ਆਉਟਪੁੱਟ"
 
-#. ex:ts=4:et:
-#: ../plugins/filebrowser/filebrowser.plugin.desktop.in.h:1
+#: plugins/filebrowser/filebrowser.plugin.desktop.in:6
 msgid "File Browser Panel"
 msgstr "ਫਾਇਲ ਬਰਾਊਜ਼ਰ ਪੈਨਲ"
 
-#: ../plugins/filebrowser/filebrowser.plugin.desktop.in.h:2
+#: plugins/filebrowser/filebrowser.plugin.desktop.in:7
 msgid "Easy file access from the side panel"
 msgstr "ਬਾਹੀ ਤੋਂ ਫਾਇਲ ਦੀ ਸੌਖੀ ਵਰਤੋਂ"
 
-#: ../plugins/filebrowser/gedit-file-bookmarks-store.c:205
+#: plugins/filebrowser/gedit-file-bookmarks-store.c:200
 msgid "Home"
 msgstr "ਘਰ"
 
-#: ../plugins/filebrowser/gedit-file-bookmarks-store.c:231
+#: plugins/filebrowser/gedit-file-bookmarks-store.c:233
 msgid "File System"
 msgstr "ਫਾਇਲ ਸਿਸਟਮ"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:523
+#: plugins/filebrowser/gedit-file-browser-plugin.c:523
 msgid "File Browser"
 msgstr "ਫਾਇਲ ਬਰਾਊਜ਼ਰ"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:659
+#: plugins/filebrowser/gedit-file-browser-plugin.c:659
 msgid "An error occurred while creating a new directory"
 msgstr "ਇੱਕ ਨਵੀਂ ਡਾਇਰੈਕਟਰੀ ਬਣਾਉਣ ਦੌਰਾਨ ਇੱਕ ਗਲਤੀ ਆਈ ਹੈ"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:662
+#: plugins/filebrowser/gedit-file-browser-plugin.c:662
 msgid "An error occurred while creating a new file"
 msgstr "ਇੱਕ ਨਵੀਂ ਫਾਇਲ ਬਣਾਉਣ ਦੌਰਾਨ ਇੱਕ ਗਲਤੀ ਆਈ ਹੈ"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:665
+#: plugins/filebrowser/gedit-file-browser-plugin.c:665
 msgid "An error occurred while renaming a file or directory"
 msgstr "ਇੱਕ ਫਾਇਲ ਜਾਂ ਡਾਇਰੈਕਟਰੀ ਦਾ ਨਾਂ-ਬਦਲਣ ਦੌਰਾਨ ਇੱਕ ਗਲਤੀ ਆਈ ਹੈ"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:668
+#: plugins/filebrowser/gedit-file-browser-plugin.c:668
 msgid "An error occurred while deleting a file or directory"
 msgstr "ਇੱਕ ਫਾਇਲ ਜਾਂ ਡਾਇਰੈਕਟਰੀ ਹਟਾਉਣ ਦੌਰਾਨ ਇੱਕ ਗਲਤੀ ਆਈ ਹੈ"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:671
+#: plugins/filebrowser/gedit-file-browser-plugin.c:671
 msgid "An error occurred while opening a directory in the file manager"
 msgstr "ਫਾਇਲ ਮੈਨੇਜਰ ਵਿੱਚ ਇੱਕ ਡਾਇਰੈਕਟਰੀ ਖੋਲ੍ਹਣ ਦੌਰਾਨ ਇੱਕ ਗਲਤੀ ਆਈ ਹੈ"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:674
+#: plugins/filebrowser/gedit-file-browser-plugin.c:674
 msgid "An error occurred while setting a root directory"
 msgstr "ਇੱਕ ਮੁੱਢਲੀ ਡਾਇਰੈਕਟਰੀ ਬਣਾਉਣ ਦੌਰਾਨ ਇੱਕ ਗਲਤੀ ਆਈ ਹੈ।"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:677
+#: plugins/filebrowser/gedit-file-browser-plugin.c:677
 msgid "An error occurred while loading a directory"
 msgstr "ਇੱਕ ਡਾਇਰੈਕਟਰੀ ਲੋਡ ਕਰਨ ਦੌਰਾਨ ਇੱਕ ਗਲਤੀ ਆਈ ਹੈ"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:680
+#: plugins/filebrowser/gedit-file-browser-plugin.c:680
 msgid "An error occurred"
 msgstr "ਇੱਕ ਗਲਤੀ ਆਈ ਹੈ"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:902
+#: plugins/filebrowser/gedit-file-browser-plugin.c:902
 msgid ""
 "Cannot move file to trash, do you\n"
 "want to delete permanently?"
@@ -3091,35 +3000,33 @@ msgstr ""
 "ਫਾਇਲ ਨੂੰ ਰੱਦੀ 'ਚ ਭੇਜਿਆ ਨਹੀਂ ਜਾ ਸਕਦਾ ਹੈ, ਕੀ\n"
 "ਤੁਸੀਂ ਹਮੇਸ਼ਾਂ ਲਈ ਹਟਾਉਣਾ ਚਾਹੁੰਦੇ ਹੋ?"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:907
+#: plugins/filebrowser/gedit-file-browser-plugin.c:907
 #, c-format
-#| msgid "The file \"%s\" cannot be moved to the trash."
 msgid "The file “%s” cannot be moved to the trash."
 msgstr "ਫਾਇਲ ”%s” ਨੂੰ ਰੱਦੀ ਵਿੱਚ ਨਹੀਂ ਭੇਜਿਆ ਜਾ ਸਕਦਾ ਹੈ।"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:912
+#: plugins/filebrowser/gedit-file-browser-plugin.c:912
 msgid "The selected files cannot be moved to the trash."
 msgstr "ਚੁਣੀਆਂ ਫਾਇਲਾਂ ਨੂੰ ਰੱਦੀ 'ਚ ਭੇਜਿਆ ਨਹੀਂ ਜਾ ਸਕਦਾ ਹੈ।"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:943
+#: plugins/filebrowser/gedit-file-browser-plugin.c:943
 #, c-format
-#| msgid "Are you sure you want to permanently delete \"%s\"?"
 msgid "Are you sure you want to permanently delete “%s”?"
 msgstr "ਕੀ ਤੁਸੀਂ ”%s” ਨੂੰ ਪੱਕੇ ਤੌਰ 'ਤੇ ਖਤਮ ਕਰਨਾ ਚਾਹੁੰਦੇ ਹੋ?"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:948
+#: plugins/filebrowser/gedit-file-browser-plugin.c:948
 msgid "Are you sure you want to permanently delete the selected files?"
 msgstr "ਕੀ ਤੁਸੀਂ ਚੁਣੀਆਂ ਫਾਇਲਾਂ ਨੂੰ ਪੱਕੇ ਤੌਰ ਉੱਤੇ ਹਟਾਉਣਾ ਚਾਹੁੰਦੇ ਹੋ?"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:951
+#: plugins/filebrowser/gedit-file-browser-plugin.c:951
 msgid "If you delete an item, it is permanently lost."
 msgstr "ਜੇ ਤੁਸੀਂ ਇੱਕ ਆਈਟਮ ਹਟਾਈ ਤਾਂ ਇਹ ਪੱਕੇ ਤੌਰ ਉੱਤੇ ਖਤਮ ਹੋ ਜਾਵੇਗੀ।"
 
-#: ../plugins/filebrowser/gedit-file-browser-store.c:1794
+#: plugins/filebrowser/gedit-file-browser-store.c:1703
 msgid "(Empty)"
 msgstr "(ਖਾਲੀ)"
 
-#: ../plugins/filebrowser/gedit-file-browser-store.c:3515
+#: plugins/filebrowser/gedit-file-browser-store.c:3327
 msgid ""
 "The renamed file is currently filtered out. You need to adjust your filter "
 "settings to make the file visible"
@@ -3129,11 +3036,11 @@ msgstr ""
 "ਦੀ ਲੋੜ ਹੈ।"
 
 #. Translators: This is the default name of new files created by the file browser pane.
-#: ../plugins/filebrowser/gedit-file-browser-store.c:3772
+#: plugins/filebrowser/gedit-file-browser-store.c:3578
 msgid "Untitled File"
 msgstr "ਬਿਨਾਂ ਨਾਂ ਫਾਇਲ"
 
-#: ../plugins/filebrowser/gedit-file-browser-store.c:3800
+#: plugins/filebrowser/gedit-file-browser-store.c:3606
 msgid ""
 "The new file is currently filtered out. You need to adjust your filter "
 "settings to make the file visible"
@@ -3142,11 +3049,11 @@ msgstr ""
 " ਦੀ ਲੋੜ ਹੈ।"
 
 #. Translators: This is the default name of new directories created by the file browser pane.
-#: ../plugins/filebrowser/gedit-file-browser-store.c:3831
+#: plugins/filebrowser/gedit-file-browser-store.c:3635
 msgid "Untitled Folder"
 msgstr "ਬਿਨ-ਨਾਂ ਫੋਲਡਰ"
 
-#: ../plugins/filebrowser/gedit-file-browser-store.c:3856
+#: plugins/filebrowser/gedit-file-browser-store.c:3658
 msgid ""
 "The new directory is currently filtered out. You need to adjust your filter "
 "settings to make the directory visible"
@@ -3155,37 +3062,35 @@ msgstr ""
 " ਸੈਟਿੰਗ ਠੀਕ ਕਰਨ "
 "ਦੀ ਲੋੜ ਹੈ।"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:754
+#: plugins/filebrowser/gedit-file-browser-widget.c:757
 msgid "Bookmarks"
 msgstr "ਬੁੱਕਮਾਰਕ"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:1995
+#: plugins/filebrowser/gedit-file-browser-widget.c:1957
 #, c-format
 msgid "No mount object for mounted volume: %s"
 msgstr "ਮਾਊਂਟ ਕੀਤੇ ਵਾਲੀਅਮ ਲਈ ਕੋਈ ਮਾਊਂਟ ਆਬਜੈਕਟ ਨਹੀਂ: %s"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:2072
+#: plugins/filebrowser/gedit-file-browser-widget.c:2026
 #, c-format
 msgid "Could not open media: %s"
 msgstr "ਮੀਡਿਆ ਖੋਲ੍ਹਿਆ ਨਹੀਂ ਜਾ ਸਕਿਆ: %s"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:2119
+#: plugins/filebrowser/gedit-file-browser-widget.c:2069
 #, c-format
 msgid "Could not mount volume: %s"
 msgstr "ਵਾਲੀਅਮ ਮਾਊਟ ਨਹੀਂ ਕੀਤਾ ਜਾ ਸਕਿਆ: %s"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:2769
+#: plugins/filebrowser/gedit-file-browser-widget.c:2581
 #, c-format
-#| msgid "Error when loading '%s': No such directory"
 msgid "Error when loading “%s”: No such directory"
 msgstr "”%s” ਨੂੰ ਲੋਡ ਕਰਨ ਵਿੱਚ ਗਲਤੀ: ਕੋਈ ਇੰਝ ਦੀ ਡਾਇਰੈਕਟਰੀ ਨਹੀਂ"
 
-#. ex:set ts=8 noet:
-#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:1
+#: plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in:5
 msgid "Open With Tree View"
 msgstr "ਲੜੀ ਝਲਕ ਨਾਲ ਖੋਲ੍ਹੋ"
 
-#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:2
+#: plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in:6
 msgid ""
 "Open the tree view when the file browser plugin gets loaded instead of the "
 "bookmarks view"
@@ -3193,11 +3098,11 @@ msgstr ""
 "ਲੜੀ ਝਲਕ ਖੋਲ੍ਹਦੀ ਹੈ, ਜਦੋਂ ਫਾਇਲ ਝਲਕਾਰਾ ਪਲੱਗਇਨ ਨੂੰ ਬੁੱਕਮਾਰਕ ਝਲਕ ਦੀ ਬਜਾਏ ਲੋਡ ਕੀਤਾ"
 " ਹੁੰਦਾ ਹੈ।"
 
-#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:3
+#: plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in:10
 msgid "File Browser Root Directory"
 msgstr "ਫਾਇਲ ਬਰਾਊਜ਼ਰ ਮੁੱਢਲੀ ਡਾਇਰੈਕਟਰੀ"
 
-#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:4
+#: plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in:11
 msgid ""
 "The file browser root directory to use when loading the file browser plugin "
 "and onload/tree_view is TRUE."
@@ -3206,11 +3111,11 @@ msgstr ""
 " ਜਦੋਂ onload/"
 "tree_view TRUE ਹੋਵੇ।"
 
-#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:5
+#: plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in:15
 msgid "File Browser Virtual Root Directory"
 msgstr "ਫਾਇਲ ਬਰਾਊਜ਼ਰ ਫ਼ਰਜ਼ੀ ਮੁੱਢਲੀ ਡਾਇਰੈਕਟਰੀ"
 
-#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:6
+#: plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in:16
 msgid ""
 "The file browser virtual root directory to use when loading the file browser "
 "plugin when onload/tree_view is TRUE. The virtual root must always be below "
@@ -3220,24 +3125,19 @@ msgstr ""
 " ਹੈ, ਜਦੋਂ "
 "onload/tree_view TRUE ਹੋਵੇ। ਫ਼ਰਜ਼ੀ ਰੂਟ ਅਸਲ ਰੂਟ ਦੇ ਹੇਠਾਂ ਹੀ ਹੋਣਾ ਚਾਹੀਦਾ ਹੈ।"
 
-#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:7
+#: plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in:20
 msgid "Enable Restore of Remote Locations"
 msgstr "ਰਿਮੋਟ ਟਿਕਾਣਿਆਂ ਤੋਂ ਮੁੜ-ਸਟੋਰ ਯੋਗ"
 
-#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:8
+#: plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in:21
 msgid "Sets whether to enable restoring of remote locations."
 msgstr "ਸੈੱਟ ਕਰਦੀ ਹੈ ਕਿ ਰਿਮੋਟ ਟਿਕਾਣੇ ਤੋਂ ਮੁੜ-ਸਟੋਰ ਕਰਨਾ ਯੋਗ ਹੋਵੇ ਕਿ ਨਾ।"
 
-#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:9
+#: plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in:25
 msgid "Set Location to First Document"
 msgstr "ਪਹਿਲੇਂ ਡੌਕੂਮੈਂਟ ਲਈ ਟਿਕਾਣਾ ਦਿਓ"
 
-#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:10
-#| msgid ""
-#| "If TRUE the file browser plugin will view the directory of the first "
-#| "opened document given that the file browser hasn't been used yet. (Thus "
-#| "this generally applies to opening a document from the command line or "
-#| "opening it with Nautilus, etc.)"
+#: plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in:26
 msgid ""
 "If TRUE the file browser plugin will view the directory of the first opened "
 "document given that the file browser hasn’t been used yet. (Thus this "
@@ -3246,15 +3146,15 @@ msgid ""
 msgstr ""
 "ਜੇ ਸਹੀਂ ਹੋਇਆ ਤਾਂ ਫਾਇਲ ਬਰਾਊਜ਼ਰ ਪਲੱਗਇਨ ਪਹਿਲੇ ਖੋਲ੍ਹੇ ਡੌਕੂਮੈਂਟ ਦੀ ਡਾਇਰੈਕਟਰੀ"
 " ਵੇਖੇਗਾ, ਨੇ ਦਿੱਤਾ ਹੈ ਕਿ "
-"ਫਾਇਲ ਬਰਾਊਜ਼ਰ ਨੂੰ ਹਾਲੀ ਵਰਤਿਆ ਨਹੀਂ ਗਿਆ ਹੈ। (ਤਾਂ ਹੀ ਇਹ ਆਮ ਤੌਰ "
-"ਉੱਤੇ ਕਮਾਂਡ ਲਾਈਨ ਤੋਂ ਖੁੱਲ੍ਹੇ ਡੌਕੂਮੈਂਟ ਲਈ ਲਾਗੂ ਹੁੰਦਾ ਹੈ ਜਾਂ ਨਾਟੀਲਸ ਰਾਹੀਂ ਖੋਲ੍ਹਣ"
-" ਨਾਲ)"
+"ਫਾਇਲ ਬਰਾਊਜ਼ਰ ਨੂੰ ਹਾਲੀ ਵਰਤਿਆ ਨਹੀਂ ਗਿਆ ਹੈ। (ਤਾਂ ਹੀ ਇਹ ਆਮ ਤੌਰ ਉੱਤੇ ਕਮਾਂਡ ਲਾਈਨ"
+" ਤੋਂ ਖੁੱਲ੍ਹੇ ਡੌਕੂਮੈਂਟ "
+"ਲਈ ਲਾਗੂ ਹੁੰਦਾ ਹੈ ਜਾਂ ਨਾਟੀਲਸ ਰਾਹੀਂ ਖੋਲ੍ਹਣ ਨਾਲ)"
 
-#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:11
+#: plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in:30
 msgid "File Browser Filter Mode"
 msgstr "ਫਾਇਲ ਬਰਾਊਜ਼ਰ ਫਿਲਟਰ ਢੰਗ"
 
-#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:12
+#: plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in:31
 msgid ""
 "This value determines what files get filtered from the file browser. Valid "
 "values are: none (filter nothing), hide-hidden (filter hidden files) and "
@@ -3266,11 +3166,11 @@ msgstr ""
 " (hide-"
 "binary) ਬਾਈਨਰੀ-ਓਹਲੇ (ਬਾਈਨਰੀ ਫਾਇਲਾਂ ਫਿਲਟਰ ਕਰੋ।"
 
-#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:13
+#: plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in:35
 msgid "File Browser Filter Pattern"
 msgstr "ਫਾਇਲ ਬਰਾਊਜ਼ਰ ਫਿਲਟਰ ਪੈਟਰਨ"
 
-#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:14
+#: plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in:36
 msgid ""
 "The filter pattern to filter the file browser with. This filter works on top "
 "of the filter_mode."
@@ -3278,238 +3178,231 @@ msgstr ""
 "ਫਿਲਟਰ ਪੈਟਰਨ ਜਿਸ ਨਾਲ ਫਾਇਲ ਝਲਕਾਰਾ ਫਿਲਟਰ ਕਰੇ। ਇਹ ਫਿਲਟਰ ਫਿਲਟਰ ਢੰਗ ਨਾ ਉੱਤੇ ਕੰਮ"
 " ਕਰਦਾ ਹੈ।"
 
-#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:15
+#: plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in:40
 msgid "File Browser Binary Patterns"
 msgstr "ਫਾਇਲ ਬਰਾਊਜ਼ਰ ਬਾਈਨਰੀ ਪੈਟਰਨ"
 
-#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:16
+#: plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in:41
 msgid "The supplemental patterns to use when filtering binary files."
 msgstr "ਜਦੋਂ ਬਾਈਨਰੀ ਫਾਇਲਾਂ ਨੂੰ ਫਿਲਟਰ ਕਰਨਾ ਹੋਵੇ ਤਾਂ ਵਰਤਣ ਲਈ ਸਹਾਇਕ ਪੈਟਰਨ"
 
-#: ../plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui.h:2
+#: plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui:13
+#: plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui:79
 msgid "_Set Root to Active Document"
 msgstr "ਸਰਗਰਮ ਡੌਕੂਮੈਂਟ ਲਈ ਰੂਟ ਬਣਾਓ(_S)"
 
-#: ../plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui.h:3
+#: plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui:19
 msgid "_New Folder"
 msgstr "ਨਵਾਂ ਫੋਲਡਰ(_N)"
 
-#: ../plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui.h:4
+#: plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui:23
 msgid "New F_ile"
 msgstr "ਨਵੀਂ ਫਾਇਲ(_i)"
 
-#: ../plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui.h:5
-#| msgid "_Rename..."
+#: plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui:29
 msgid "_Rename…"
 msgstr "ਨਾਂ ਬਦਲੋ(_R)…"
 
-#: ../plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui.h:6
+#: plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui:33
 msgid "_Move to Trash"
 msgstr "ਰੱਦੀ ਵਿੱਚ ਭੇਜੋ(_M)"
 
-#: ../plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui.h:8
+#: plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui:43
 msgid "Re_fresh View"
 msgstr "ਝਲਕ ਤਾਜ਼ਾ ਕਰੋ(_f)"
 
-#: ../plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui.h:9
+#: plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui:47
 msgid "_View Folder"
 msgstr "ਫੋਲਡਰ ਵੇਖੋ(_V)"
 
-#: ../plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui.h:10
+#: plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui:51
 msgid "_Open in Terminal"
 msgstr "ਟਰਮੀਨਲ ਵਿੱਚ ਖੋਲ੍ਹੋ(_O)"
 
-#: ../plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui.h:11
+#: plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui:56
 msgid "_Filter"
 msgstr "ਫਿਲਟਰ(_F)"
 
-#: ../plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui.h:12
+#: plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui:59
 msgid "Show _Hidden"
 msgstr "ਲੁਕਵੀਆਂ ਵੇਖੋ(_H)"
 
-#: ../plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui.h:13
+#: plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui:63
 msgid "Show _Binary"
 msgstr "ਬਾਈਨਰੀ ਵੇਖੋ(_B)"
 
-#: ../plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui.h:14
+#: plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui:67
 msgid "Match Filename"
 msgstr "ਫਾਇਲ ਨਾਂ ਮੇਲ"
 
-#: ../plugins/filebrowser/resources/ui/gedit-file-browser-widget.ui.h:1
+#: plugins/filebrowser/resources/ui/gedit-file-browser-widget.ui:183
 msgid "History"
 msgstr "ਅਤੀਤ"
 
-#: ../plugins/filebrowser/resources/ui/gedit-file-browser-widget.ui.h:2
+#: plugins/filebrowser/resources/ui/gedit-file-browser-widget.ui:184
 msgid "Open history menu"
 msgstr "ਅਤੀਤ ਮੀਨੂ ਖੋਲ੍ਹੋ"
 
-#: ../plugins/modelines/modelines.plugin.desktop.in.h:1
+#: plugins/modelines/modelines.plugin.desktop.in:5
 msgid "Modelines"
 msgstr "ਢੰਗ-ਲਾਈਨਾਂ"
 
-#: ../plugins/modelines/modelines.plugin.desktop.in.h:2
+#: plugins/modelines/modelines.plugin.desktop.in:6
 msgid "Emacs, Kate and Vim-style modelines support for gedit."
 msgstr "ਜੀ-ਸੰਪਾਦਕ ਲਈ Emacs, ਕੇਟ ਅਤੇ Vim-style ਢੰਗ-ਸਟਾਇਲ ਸਹਿਯੋਗੀ ਹਨ।"
 
-#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.h:1
+#: plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in:5
 msgid "Command Color Text"
 msgstr "ਕਮਾਂਡ ਰੰਗ ਟੈਕਸਟ"
 
-#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.h:2
+#: plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in:6
 msgid "The command color text"
 msgstr "ਕਮਾਂਡ ਰੰਗ ਟੈਕਸਟ"
 
-#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.h:3
+#: plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in:10
 msgid "Error Color Text"
 msgstr "ਗਲਤੀ ਰੰਗ ਟੈਕਸਟ"
 
-#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.h:4
+#: plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in:11
 msgid "The error color text"
 msgstr "ਗਲਤੀ ਰੰਗ ਟੈਕਸਟ"
 
-#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.h:6
-#| msgid ""
-#| "If true, the terminal will use the desktop-global standard font if it's "
-#| "monospace (and the most similar font it can come up with otherwise)."
+#: plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in:16
 msgid ""
 "If true, the terminal will use the desktop-global standard font if it’s "
 "monospace (and the most similar font it can come up with otherwise)."
 msgstr ""
 "ਜੇਕਰ ਸੱਚ ਹੈ ਤਾਂ, ਟਰਮੀਨਲ ਡੈਸਕਟਾਪ-ਗਲੋਬਲ ਸਟੈਂਡਰਡ ਫੋਂਟ ਵਰਤੇਗਾ ਜੇ ਇਹ ਮੋਨੋਸਪੇਸ ਹੋਏ"
-" (ਅਤੇ ਇੰਝ "
-"ਦੇ ਜਿਆਦਾਤਰ ਫੋਂਟ, ਜੋ ਨਾਲ ਹੀ ਆਏ ਹਨ)।"
+" (ਅਤੇ ਇੰਝ ਦੇ "
+"ਜਿਆਦਾਤਰ ਫੋਂਟ, ਜੋ ਨਾਲ ਹੀ ਆਏ ਹਨ)।"
 
-#: ../plugins/pythonconsole/pythonconsole/config.ui.h:1
+#: plugins/pythonconsole/pythonconsole/config.ui:18
 msgid "C_ommand color:"
 msgstr "ਕਮਾਂਡ ਰੰਗ(_o):"
 
-#: ../plugins/pythonconsole/pythonconsole/config.ui.h:2
+#: plugins/pythonconsole/pythonconsole/config.ui:32
 msgid "_Error color:"
 msgstr "ਗਲਤੀ ਰੰਗ(_E):"
 
-#. ex:et:ts=4:
-#: ../plugins/pythonconsole/pythonconsole/__init__.py:60
-#: ../plugins/pythonconsole/pythonconsole.plugin.desktop.in.h:1
+#: plugins/pythonconsole/pythonconsole/__init__.py:60
+#: plugins/pythonconsole/pythonconsole.plugin.desktop.in:6
 msgid "Python Console"
 msgstr "ਪਾਈਥਨ ਕਨਸੋਂਲ"
 
-#: ../plugins/pythonconsole/pythonconsole.plugin.desktop.in.h:2
+#: plugins/pythonconsole/pythonconsole.plugin.desktop.in:7
 msgid "Interactive Python console standing in the bottom panel"
 msgstr "ਤਲ ਪੈਨਲ ਵਿੱਚ ਪਾਈਥਨ ਕੰਨਸੋਲ ਤਿਆਰ ਹੈ"
 
-#: ../plugins/quickopen/quickopen/__init__.py:47
-#| msgid "Quick Open"
+#: plugins/quickhighlight/quickhighlight.plugin.desktop.in:5
+#| msgid "Highlighting"
+msgid "Quick Highlight"
+msgstr "ਤੁਰੰਤ ਉਘਾੜੋ"
+
+#: plugins/quickhighlight/quickhighlight.plugin.desktop.in:6
+#| msgid "Changes the case of selected text."
+msgid "Highlights every occurrences of selected text."
+msgstr "ਚੁਣੀ ਲਿਖਤ ਦੀ ਹਰ ਮੌਜੂਦਗੀ ਨੂੰ ਹਾਈਲਾਈਟ ਕਰੋ।"
+
+#: plugins/quickopen/quickopen/__init__.py:47
 msgid "Quick Open…"
 msgstr "…ਤੁਰੰਤ ਖੋਲ੍ਹੋ"
 
-#. ex:ts=4:et:
-#: ../plugins/quickopen/quickopen.plugin.desktop.in.h:1
-#: ../plugins/quickopen/quickopen/popup.py:40
+#: plugins/quickopen/quickopen.plugin.desktop.in:6
+#: plugins/quickopen/quickopen/popup.py:40
 msgid "Quick Open"
 msgstr "ਤੁਰੰਤ ਖੋਲ੍ਹੋ"
 
-#: ../plugins/quickopen/quickopen.plugin.desktop.in.h:2
+#: plugins/quickopen/quickopen.plugin.desktop.in:7
 msgid "Quickly open files"
 msgstr "ਫਾਇਲਾਂ ਤੁਰੰਤ ਖੋਲ੍ਹੋ"
 
-#: ../plugins/quickopen/quickopen/popup.py:90
-#| msgid "Type to search..."
+#: plugins/quickopen/quickopen/popup.py:90
 msgid "Type to search…"
 msgstr "…ਲੱਭਣ ਲਈ ਲਿਖੋ"
 
-#: ../plugins/snippets/snippets/appactivatable.py:88
-#| msgid "Manage Snippets"
+#: plugins/snippets/snippets/appactivatable.py:88
 msgid "Manage _Snippets…"
 msgstr "ਸਨਿੱਪਟ ਇੰਤਜ਼ਾਮ(_S)…"
 
 #. Do the fancy completion dialog
-#. ex:ts=4:et:
-#: ../plugins/snippets/snippets/document.py:64
-#: ../plugins/snippets/snippets/document.py:153
-#: ../plugins/snippets/snippets/document.py:667
-#: ../plugins/snippets/snippets.plugin.desktop.in.h:1
+#: plugins/snippets/snippets/document.py:64
+#: plugins/snippets/snippets/document.py:153
+#: plugins/snippets/snippets/document.py:667
+#: plugins/snippets/snippets.plugin.desktop.in:6
 msgid "Snippets"
 msgstr "ਸਨਿੱਪਟ"
 
-#: ../plugins/snippets/snippets/exporter.py:88
+#: plugins/snippets/snippets/exporter.py:88
 #, python-format
-#| msgid "The archive \"%s\" could not be created"
 msgid "The archive “%s” could not be created"
 msgstr "ਅਕਾਇਵ ”%s” ਬਣਾਇਆ ਨਹੀਂ ਜਾ ਸਕਿਆ"
 
-#: ../plugins/snippets/snippets/exporter.py:105
+#: plugins/snippets/snippets/exporter.py:105
 #, python-format
-#| msgid "Target directory \"%s\" does not exist"
 msgid "Target directory “%s” does not exist"
 msgstr "ਟਾਰਗੇਟ ਡਾਇਰੈਕਟਰੀ ”%s” ਮੌਜੂਦ ਨਹੀਂ ਹੈ"
 
-#: ../plugins/snippets/snippets/exporter.py:108
+#: plugins/snippets/snippets/exporter.py:108
 #, python-format
-#| msgid "Target directory \"%s\" is not a valid directory"
 msgid "Target directory “%s” is not a valid directory"
 msgstr "ਟਾਰਗੇਟ ਡਾਇਰੈਕਟਰੀ ”%s” ਠੀਕ ਡਾਇਰੈਕਟਰੀ ਨਹੀਂ ਹੈ"
 
-#: ../plugins/snippets/snippets/importer.py:55
-#: ../plugins/snippets/snippets/importer.py:116
+#: plugins/snippets/snippets/importer.py:55
+#: plugins/snippets/snippets/importer.py:116
 #, python-format
-#| msgid "File \"%s\" does not exist"
 msgid "File “%s” does not exist"
 msgstr "ਫਾਇਲ ”%s” ਮੌਜੂਦ ਨਹੀਂ ਹੈ"
 
-#: ../plugins/snippets/snippets/importer.py:58
+#: plugins/snippets/snippets/importer.py:58
 #, python-format
-#| msgid "File \"%s\" is not a valid snippets file"
 msgid "File “%s” is not a valid snippets file"
 msgstr "ਫਾਇਲ ”%s” ਇੱਕ ਠੀਕ ਸਨਿੱਪਟ ਫਾਇਲ ਨਹੀਂ ਹੈ"
 
-#: ../plugins/snippets/snippets/importer.py:75
+#: plugins/snippets/snippets/importer.py:75
 #, python-format
-#| msgid "Imported file \"%s\" is not a valid snippets file"
 msgid "Imported file “%s” is not a valid snippets file"
 msgstr "ਇੰਪੋਰਟ ਕੀਤੀ ਫਾਇਲ ”%s” ਠੀਕ ਸਨਿੱਪਟ ਫਾਇਲ ਨਹੀਂ ਹੈ"
 
-#: ../plugins/snippets/snippets/importer.py:85
+#: plugins/snippets/snippets/importer.py:85
 #, python-format
-#| msgid "The archive \"%s\" could not be extracted"
 msgid "The archive “%s” could not be extracted"
 msgstr "ਅਕਾਇਵ ”%s” ਖੋਲ੍ਹਿਆ ਨਹੀਂ ਜਾ ਸਕਿਆ"
 
-#: ../plugins/snippets/snippets/importer.py:103
+#: plugins/snippets/snippets/importer.py:103
 #, python-format
 msgid "The following files could not be imported: %s"
 msgstr "ਅੱਗੇ ਦਿੱਤੀ ਫਾਇਲਾਂ ਇੰਪੋਰਟ ਨਹੀਂ ਕੀਤੀਆਂ ਜਾ ਸਕੀਆਂ: %s"
 
-#: ../plugins/snippets/snippets/importer.py:119
-#: ../plugins/snippets/snippets/importer.py:132
+#: plugins/snippets/snippets/importer.py:119
+#: plugins/snippets/snippets/importer.py:132
 #, python-format
-#| msgid "File \"%s\" is not a valid snippets archive"
 msgid "File “%s” is not a valid snippets archive"
 msgstr "ਫਾਇਲ ”%s” ਠੀਕ ਸਨਿੱਪਟ ਅਕਾਇਵ ਨਹੀਂ ਹੈ"
 
-#: ../plugins/snippets/snippets/manager.py:50
+#: plugins/snippets/snippets/manager.py:50
 msgid "Snippets archive"
 msgstr "ਸਨਿੱਪਟ ਅਕਾਇਵ"
 
-#: ../plugins/snippets/snippets/manager.py:74
-#| msgid "Add a new snippet..."
+#: plugins/snippets/snippets/manager.py:74
 msgid "Add a new snippet…"
 msgstr "ਨਵਾਂ ਸਨਿੱਪਟ ਜੋੜੋ…"
 
-#: ../plugins/snippets/snippets/manager.py:124
+#: plugins/snippets/snippets/manager.py:124
 msgid "Global"
 msgstr "ਗਲੋਬਲ"
 
-#: ../plugins/snippets/snippets/manager.py:414
+#: plugins/snippets/snippets/manager.py:414
 msgid "Revert selected snippet"
 msgstr "ਚੁਣੇ ਸਨਿੱਪਟ ਰੀਵਰਟ ਕਰੋ"
 
-#: ../plugins/snippets/snippets/manager.py:417
-#: ../plugins/snippets/snippets/snippets.ui.h:4
+#: plugins/snippets/snippets/manager.py:417
+#: plugins/snippets/snippets/snippets.ui:120
+#: plugins/snippets/snippets/snippets.ui:121
 msgid "Delete selected snippet"
 msgstr "ਚੁਣਿਆ ਸਨਿੱਪਟ ਹਟਾਓ"
 
 #. self['hbox_tab_trigger'].set_spacing(3)
-#: ../plugins/snippets/snippets/manager.py:670
+#: plugins/snippets/snippets/manager.py:670
 msgid ""
 "This is not a valid Tab trigger. Triggers can either contain alphanumeric "
 "characters (or _, : and .) or a single (non-alphanumeric) character like: {, "
@@ -3520,88 +3413,89 @@ msgstr ""
 "ਅੰਕ), ਅੱਖਰ, ਜਿਵੇਂ {, [ ਆਦਿ ਹੋ ਸਕਦਾ ਹੈ।"
 
 #. self['hbox_tab_trigger'].set_spacing(0)
-#: ../plugins/snippets/snippets/manager.py:677
-#: ../plugins/snippets/snippets/snippets.ui.h:14
+#: plugins/snippets/snippets/manager.py:677
+#: plugins/snippets/snippets/snippets.ui:283
 msgid "Single word the snippet is activated with after pressing Tab"
 msgstr "ਇੱਕ ਸ਼ਬਦ, ਜਿਸ ਨਾਲ ਟੈਬ ਦਬਾਉਣ ਤੋਂ ਬਾਅਦ ਸਨਿੱਪਟ ਐਕਟਿਵ ਹੋ ਜਾਵੇ"
 
-#: ../plugins/snippets/snippets/manager.py:766
+#: plugins/snippets/snippets/manager.py:766
 #, python-format
 msgid "The following error occurred while importing: %s"
 msgstr "ਇੰਪੋਰਟ ਕਰਨ ਦੌਰਾਨ ਅੱਗੇ ਦਿੱਤੀ ਗਲਤੀ ਆਈ: %s"
 
-#: ../plugins/snippets/snippets/manager.py:773
+#: plugins/snippets/snippets/manager.py:773
 msgid "Import successfully completed"
 msgstr "ਠੀਕ ਤਰ੍ਹਾਂ ਇੰਪੋਰਟ ਕੀਤਾ"
 
-#: ../plugins/snippets/snippets/manager.py:787
-#: ../plugins/snippets/snippets/snippets.ui.h:6
+#: plugins/snippets/snippets/manager.py:787
+#: plugins/snippets/snippets/snippets.ui:137
+#: plugins/snippets/snippets/snippets.ui:138
 msgid "Import snippets"
 msgstr "ਸਨਿੱਪਟ ਇੰਪੋਰਟ ਕਰੋ"
 
-#: ../plugins/snippets/snippets/manager.py:792
-#: ../plugins/snippets/snippets/manager.py:878
-#: ../plugins/snippets/snippets/manager.py:941
+#: plugins/snippets/snippets/manager.py:792
+#: plugins/snippets/snippets/manager.py:878
+#: plugins/snippets/snippets/manager.py:941
 msgid "All supported archives"
 msgstr "ਸਭ ਸਹਾਇਕ ਅਕਾਇਵ"
 
-#: ../plugins/snippets/snippets/manager.py:793
-#: ../plugins/snippets/snippets/manager.py:879
-#: ../plugins/snippets/snippets/manager.py:942
+#: plugins/snippets/snippets/manager.py:793
+#: plugins/snippets/snippets/manager.py:879
+#: plugins/snippets/snippets/manager.py:942
 msgid "Gzip compressed archive"
 msgstr "Gzip ਕੰਪਰੈੱਸ ਅਕਾਇਵ"
 
-#: ../plugins/snippets/snippets/manager.py:794
-#: ../plugins/snippets/snippets/manager.py:880
-#: ../plugins/snippets/snippets/manager.py:943
+#: plugins/snippets/snippets/manager.py:794
+#: plugins/snippets/snippets/manager.py:880
+#: plugins/snippets/snippets/manager.py:943
 msgid "Bzip2 compressed archive"
 msgstr "Bzip2 ਕੰਪਰੈੱਸ ਅਕਾਇਵ"
 
-#: ../plugins/snippets/snippets/manager.py:795
+#: plugins/snippets/snippets/manager.py:795
 msgid "Single snippets file"
 msgstr "ਇੱਕਲੀ ਸਨਿੱਪਟ ਫਾਇਲ"
 
-#: ../plugins/snippets/snippets/manager.py:796
-#: ../plugins/snippets/snippets/manager.py:882
-#: ../plugins/snippets/snippets/manager.py:945
+#: plugins/snippets/snippets/manager.py:796
+#: plugins/snippets/snippets/manager.py:882
+#: plugins/snippets/snippets/manager.py:945
 msgid "All files"
 msgstr "ਸਭ ਫਾਇਲਾਂ"
 
-#: ../plugins/snippets/snippets/manager.py:808
+#: plugins/snippets/snippets/manager.py:808
 #, python-format
 msgid "The following error occurred while exporting: %s"
 msgstr "ਐਕਸਪੋਰਟ ਕਰਨ ਦੌਰਾਨ ਅੱਗੇ ਦਿੱਤੀ ਗਲਤੀ ਆਈ ਹੈ: %s"
 
-#: ../plugins/snippets/snippets/manager.py:812
+#: plugins/snippets/snippets/manager.py:812
 msgid "Export successfully completed"
 msgstr "ਐਕਸਪੋਰਟ ਠੀਕ ਤਰ੍ਹਾਂ ਹੋ ਗਿਆ"
 
 #. Ask if system snippets should also be exported
-#: ../plugins/snippets/snippets/manager.py:852
-#: ../plugins/snippets/snippets/manager.py:919
+#: plugins/snippets/snippets/manager.py:852
+#: plugins/snippets/snippets/manager.py:919
 msgid "Do you want to include selected <b>system</b> snippets in your export?"
 msgstr ""
 "ਕੀ ਤੁਸੀਂ ਚੁਣੇ <b>ਸਿਸਟਮ</b> ਸਨਿੱਪਟ ਨੂੰ ਆਪਣੇ ਐਕਸਪੋਰਟ ਵਿੱਚ ਸ਼ਾਮਲ ਕਰਨਾ ਚਾਹੁੰਦੇ ਹੋ?"
 
-#: ../plugins/snippets/snippets/manager.py:867
-#: ../plugins/snippets/snippets/manager.py:937
+#: plugins/snippets/snippets/manager.py:867
+#: plugins/snippets/snippets/manager.py:937
 msgid "There are no snippets selected to be exported"
 msgstr "ਐਕਸਪੋਰਟ ਕਰਨ ਲਈ ਕੋਈ ਸਨਿੱਪਟ ਨਹੀਂ ਚੁਣਿਆ"
 
-#: ../plugins/snippets/snippets/manager.py:872
-#: ../plugins/snippets/snippets/manager.py:910
+#: plugins/snippets/snippets/manager.py:872
+#: plugins/snippets/snippets/manager.py:910
 msgid "Export snippets"
 msgstr "ਸਨਿੱਪਟ ਐਕਸਪੋਰਟ ਕਰੋ"
 
-#: ../plugins/snippets/snippets/manager.py:1049
+#: plugins/snippets/snippets/manager.py:1049
 msgid "Type a new shortcut, or press Backspace to clear"
 msgstr "ਇੱਕ ਨਵਾਂ ਸ਼ਾਰਟਕੱਟ ਦਿਓ ਜਾਂ ਹਟਾਉਣ ਲਈ ਬੈਕਸਪੇਸ ਦਬਾਓ"
 
-#: ../plugins/snippets/snippets/manager.py:1051
+#: plugins/snippets/snippets/manager.py:1051
 msgid "Type a new shortcut"
 msgstr "ਇੱਕ ਨਵਾਂ ਸ਼ਾਰਟਕੱਟ ਦਿਓ"
 
-#: ../plugins/snippets/snippets/placeholder.py:605
+#: plugins/snippets/snippets/placeholder.py:605
 #, python-format
 msgid ""
 "Execution of the Python command (%s) exceeds the maximum time, execution "
@@ -3609,214 +3503,254 @@ msgid ""
 msgstr ""
 "ਪਾਈਥਨ ਕਮਾਂਡ (%s) ਵੱਧ ਤੋਂ ਵੱਧ ਚੱਲਣ ਸਮੇਂ ਤੋਂ ਵੱਧ ਗਈ ਹੈ, ਚਲਾਉਣ ਅਧੂਰਾ ਛੱਡਿਆ।"
 
-#: ../plugins/snippets/snippets/placeholder.py:613
+#: plugins/snippets/snippets/placeholder.py:613
 #, python-format
 msgid "Execution of the Python command (%s) failed: %s"
 msgstr "ਪਾਈਥਨ ਕਮਾਂਡ (%s) ਚਲਾਉਣ ਲਈ ਅਸਫ਼ਲ: %s"
 
-#: ../plugins/snippets/snippets.plugin.desktop.in.h:2
+#: plugins/snippets/snippets.plugin.desktop.in:7
 msgid "Insert often-used pieces of text in a fast way"
 msgstr "ਅਕਸਰ ਵਰਤੇ ਜਾਂਦੇ ਸ਼ਬਦਾਂ ਦਾ ਭਾਗ ਨੂੰ ਤੁਰੰਤ ਸ਼ਾਮਲ ਕਰੋ"
 
-#: ../plugins/snippets/snippets/snippets.ui.h:1
+#: plugins/snippets/snippets/snippets.ui:40
+#: plugins/snippets/snippets/snippets.ui:47
 msgid "Manage Snippets"
 msgstr "ਸਨਿੱਪਟ ਪਰਬੰਧ"
 
-#: ../plugins/snippets/snippets/snippets.ui.h:2
+#: plugins/snippets/snippets/snippets.ui:103
+#: plugins/snippets/snippets/snippets.ui:104
 msgid "Create new snippet"
 msgstr "ਨਵਾਂ ਸਨਿੱਪਟ ਬਣਾਓ"
 
-#: ../plugins/snippets/snippets/snippets.ui.h:3
+#: plugins/snippets/snippets/snippets.ui:105
 msgid "Add Snippet"
 msgstr "ਸਨਿੱਪਟ ਸ਼ਾਮਲ"
 
-#: ../plugins/snippets/snippets/snippets.ui.h:5
+#: plugins/snippets/snippets/snippets.ui:122
 msgid "Remove Snippet"
 msgstr "ਸਨਿੱਪਟ ਹਟਾਓ"
 
-#: ../plugins/snippets/snippets/snippets.ui.h:7
+#: plugins/snippets/snippets/snippets.ui:139
 msgid "Import Snippets"
 msgstr "ਸਨਿੱਪਟ ਇੰਪੋਰਟ"
 
-#: ../plugins/snippets/snippets/snippets.ui.h:8
+#: plugins/snippets/snippets/snippets.ui:154
+#: plugins/snippets/snippets/snippets.ui:155
 msgid "Export selected snippets"
 msgstr "ਚੁਣੇ ਸਨਿੱਪਟ ਐਕਸਪੋਰਟ ਕਰੋ"
 
-#: ../plugins/snippets/snippets/snippets.ui.h:9
+#: plugins/snippets/snippets/snippets.ui:156
 msgid "Export Snippets"
 msgstr "ਸਨਿੱਪਟ ਐਕਸਪੋਰਟ"
 
-#: ../plugins/snippets/snippets/snippets.ui.h:10
+#: plugins/snippets/snippets/snippets.ui:224
 msgid "Activation"
 msgstr "ਸਰਗਰਮ"
 
-#: ../plugins/snippets/snippets/snippets.ui.h:11
+#: plugins/snippets/snippets/snippets.ui:244
 msgid "    "
 msgstr "    "
 
 #. "tab" here means the tab key, not the notebook tab!
-#: ../plugins/snippets/snippets/snippets.ui.h:13
+#: plugins/snippets/snippets/snippets.ui:263
 msgid "_Tab trigger:"
 msgstr "ਟੈਗ ਟਰਿੱਗਰ(_T):"
 
-#: ../plugins/snippets/snippets/snippets.ui.h:15
+#: plugins/snippets/snippets/snippets.ui:317
 msgid "S_hortcut key:"
 msgstr "ਸ਼ਾਰਟਕੱਟ ਸਵਿੱਚ(_h):"
 
-#: ../plugins/snippets/snippets/snippets.ui.h:16
+#: plugins/snippets/snippets/snippets.ui:333
 msgid "Shortcut key with which the snippet is activated"
 msgstr "ਸ਼ਾਰਟੱਕਟ ਕੁੰਜੀ, ਜਿਸ ਨਾਲ ਸਨਿੱਪਟ ਐਕਟਿਵ ਹੋਵੇ"
 
-#: ../plugins/snippets/snippets/snippets.ui.h:17
+#: plugins/snippets/snippets/snippets.ui:351
 msgid "_Drop targets:"
 msgstr "ਟਾਰਗੇਟ ਛੱਡੋ(_D):"
 
-#: ../plugins/sort/gedit-sort-plugin.c:243
-#| msgid "S_ort..."
+#: plugins/sort/gedit-sort-plugin.c:243
 msgid "S_ort…"
 msgstr "ਲੜੀਬੱਧ(_O)…"
 
-#. ex:set ts=8 noet:
-#: ../plugins/sort/resources/ui/gedit-sort-plugin.ui.h:1
-#: ../plugins/sort/sort.plugin.desktop.in.h:1
+#: plugins/sort/resources/ui/gedit-sort-plugin.ui:13
+#: plugins/sort/sort.plugin.desktop.in:5
 msgid "Sort"
 msgstr "ਲੜੀਬੱਧ"
 
-#: ../plugins/sort/resources/ui/gedit-sort-plugin.ui.h:2
+#: plugins/sort/resources/ui/gedit-sort-plugin.ui:38
 msgid "_Reverse order"
 msgstr "ਉਲਟ ਕ੍ਰਮਬੱਧ(_R)"
 
-#: ../plugins/sort/resources/ui/gedit-sort-plugin.ui.h:3
+#: plugins/sort/resources/ui/gedit-sort-plugin.ui:54
 msgid "R_emove duplicates"
 msgstr "ਡੁਪਲੀਕੇਟ ਹਟਾਓ(_E)"
 
-#: ../plugins/sort/resources/ui/gedit-sort-plugin.ui.h:4
+#: plugins/sort/resources/ui/gedit-sort-plugin.ui:70
 msgid "C_ase sensitive"
 msgstr "ਅੱਖਰ ਅਕਾਰ 'ਤੇ ਨਿਰਭਰ(_a)"
 
-#: ../plugins/sort/resources/ui/gedit-sort-plugin.ui.h:5
+#: plugins/sort/resources/ui/gedit-sort-plugin.ui:93
 msgid "S_tart at column:"
 msgstr "ਕਾਲਮ ਤੋਂ ਸ਼ੁਰੂ(_T):"
 
-#: ../plugins/sort/resources/ui/gedit-sort-plugin.ui.h:7
+#: plugins/sort/resources/ui/gedit-sort-plugin.ui:150
 msgid "_Sort"
 msgstr "ਕ੍ਰਮ(_S)"
 
-#: ../plugins/sort/sort.plugin.desktop.in.h:2
+#: plugins/sort/sort.plugin.desktop.in:6
 msgid "Sorts a document or selected text."
 msgstr "ਡੌਕੂਮੈਂਟ ਜਾਂ ਚੁਣੇ ਟੈਕਸਟ ਨੂੰ ਕ੍ਰਮਬੱਧ ਕਰੋ।"
 
-#: ../plugins/spell/gedit-spell-app-activatable.c:143
-#| msgid "Check Spelling"
+#: plugins/spell/gedit-spell-app-activatable.c:143
 msgid "_Check Spelling…"
 msgstr "…ਸ਼ਬਦ ਜੋੜ ਚੈੱਕ ਕਰੋ(_C)"
 
-#: ../plugins/spell/gedit-spell-app-activatable.c:147
-#| msgid "Set Language"
+#: plugins/spell/gedit-spell-app-activatable.c:147
 msgid "Set _Language…"
 msgstr "…ਭਾਸ਼ਾ ਦਿਓ(_L)"
 
-#: ../plugins/spell/gedit-spell-app-activatable.c:151
+#: plugins/spell/gedit-spell-app-activatable.c:151
 msgid "_Highlight Misspelled Words"
 msgstr "ਗਲਤ ਸ਼ਬਦ-ਜੋੜ ਸ਼ਬਦ ਹਾਈਲਾਈਟ(_H)"
 
-#. ex:set ts=8 noet:
-#: ../plugins/spell/spell.plugin.desktop.in.h:1
+#: plugins/spell/org.gnome.gedit.plugins.spell.gschema.xml.in:5
+#: plugins/spell/resources/ui/gedit-spell-setup-dialog.ui:75
+#| msgid "_Highlight Misspelled Words"
+msgid "Highlight misspelled words"
+msgstr "ਗਲਤ ਸ਼ਬਦ-ਜੋੜ ਸ਼ਬਦ ਹਾਈਲਾਈਟ ਕਰੋ"
+
+#: plugins/spell/org.gnome.gedit.plugins.spell.gschema.xml.in:6
+#| msgid "_Highlight Misspelled Words"
+msgid "Default setting for highlight misspelled words."
+msgstr "ਹਾਈਲਾਈਟ ਕੀਤੇ ਗ਼ਲਤ ਸ਼ਬਦ-ਜੋੜ ਸ਼ਬਦਾਂ ਲਈ ਮੂਲ ਸੈਟਿੰਗ ਹੈ।"
+
+#: plugins/spell/resources/ui/gedit-spell-setup-dialog.ui:7
+#| msgid "C_onfigure Plugin"
+msgid "Configure spell plugin"
+msgstr "ਸ਼ਬਦ-ਜੋੜ ਪਲੱਗਇਨ ਸੰਰਚਨਾ"
+
+#: plugins/spell/resources/ui/gedit-spell-setup-dialog.ui:61
+#| msgid "Create a new document"
+msgid "Defaults for new documents"
+msgstr "ਨਵੇਂ ਦਸਤਾਵੇਜ਼ ਲਈ ਮੂਲ"
+
+#: plugins/spell/spell.plugin.desktop.in:5
 msgid "Spell Checker"
 msgstr "ਸ਼ਬਦ-ਜੋੜ ਜਾਂਚਕਾਰ"
 
-#: ../plugins/spell/spell.plugin.desktop.in.h:2
+#: plugins/spell/spell.plugin.desktop.in:6
 msgid "Checks the spelling of the current document."
 msgstr "ਮੌਜੂਦਾ ਡੌਕੂਮੈਂਟ ਲਈ ਸ਼ਬਦਾਂ ਜੋੜ ਦੀ ਜਾਂਚ ਕਰੋ।"
 
-#: ../plugins/time/gedit-time-plugin.c:265
-#| msgid "Insert Date and Time"
+#: plugins/time/gedit-time-plugin.c:265
 msgid "In_sert Date and Time…"
 msgstr "…ਤਾਰੀਖ/ਸਮਾਂ ਸ਼ਾਮਲ(_s)"
 
-#: ../plugins/time/gedit-time-plugin.c:491
+#: plugins/time/gedit-time-plugin.c:491
 msgid "Available formats"
 msgstr "ਉਪਲੱਬਧ ਫਾਰਮੈਟ"
 
-#. ex:set ts=8 noet:
-#: ../plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in.h:1
+#: plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in:5
 msgid "Prompt Type"
 msgstr "ਕਿਸਮ ਲਈ ਪੁੱਛੋ"
 
-#: ../plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in.h:2
+#: plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in:6
 msgid ""
 "If the user should be prompted for a format or if the selected or custom "
 "format should be used."
 msgstr ""
 "ਕੀ ਯੂਜ਼ਰ ਨੂੰ ਫਾਰਮੈਟ ਲਈ ਪੁੱਛਿਆ ਜਾਵੇ ਜਾਂ ਚੁਣੇ ਜਾਂ ਪਸੰਦੀਦਾ ਫਾਰਮੈਟ ਵਰਤੇ ਜਾਣ।"
 
-#: ../plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in.h:3
+#: plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in:10
 msgid "Selected Format"
 msgstr "ਚੁਣਿਆ ਫਾਰਮੈਟ"
 
-#: ../plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in.h:4
+#: plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in:11
 msgid "The selected format used when inserting the date/time."
 msgstr "ਜਦੋਂ ਮਿਤੀ/ਸਮਾਂ ਸ਼ਾਮਲ ਕੀਤਾ ਜਾਵੇਗਾ ਤਾਂ ਚੁਣਿਆ ਫਾਰਮੈਟ ਵਰਤਿਆ ਜਾਂਦਾ ਹੈ।"
 
-#: ../plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in.h:5
+#: plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in:15
 msgid "Custom Format"
 msgstr "ਪਸੰਦੀਦਾ ਫਾਰਮੈਟ"
 
-#: ../plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in.h:6
+#: plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in:16
 msgid "The custom format used when inserting the date/time."
 msgstr "ਜਦੋਂ ਤਾਰੀਖ/ਸਮਾਂ ਸ਼ਾਮਲ ਕਰਨੇ ਹੋਣ ਤਾਂ ਪਸੰਦੀਦਾ ਫਾਰਮੈਟ ਵਰਤੋਂ।"
 
-#: ../plugins/time/resources/ui/gedit-time-dialog.ui.h:1
+#: plugins/time/resources/ui/gedit-time-dialog.ui:7
 msgid "Insert Date and Time"
 msgstr "ਤਾਰੀਖ ਅਤੇ ਸਮਾਂ ਸ਼ਾਮਲ"
 
-#: ../plugins/time/resources/ui/gedit-time-dialog.ui.h:2
-#: ../plugins/time/resources/ui/gedit-time-setup-dialog.ui.h:5
+#: plugins/time/resources/ui/gedit-time-dialog.ui:23
+#: plugins/time/resources/ui/gedit-time-setup-dialog.ui:94
 msgid "Use the _selected format"
 msgstr "ਚੁਣਿਆ ਫਾਰਮੈਟ ਵਰਤੋਂ(_S)"
 
-#: ../plugins/time/resources/ui/gedit-time-dialog.ui.h:3
-#: ../plugins/time/resources/ui/gedit-time-setup-dialog.ui.h:6
+#: plugins/time/resources/ui/gedit-time-dialog.ui:65
+#: plugins/time/resources/ui/gedit-time-setup-dialog.ui:141
 msgid "_Use custom format"
 msgstr "ਸੋਧਿਆ ਫਾਰਮੈਟ ਵਰਤੋਂ(_U)"
 
 #. Translators: Use the more common date format in your locale
-#: ../plugins/time/resources/ui/gedit-time-dialog.ui.h:5
-#: ../plugins/time/resources/ui/gedit-time-setup-dialog.ui.h:9
-#, no-c-format
+#: plugins/time/resources/ui/gedit-time-dialog.ui:89
+#: plugins/time/resources/ui/gedit-time-setup-dialog.ui:165
 msgid "%d/%m/%Y %H:%M:%S"
 msgstr "%d/%m/%Y %H:%M:%S"
 
 #. Translators: This example should follow the date format defined in the entry above
-#: ../plugins/time/resources/ui/gedit-time-dialog.ui.h:6
-#: ../plugins/time/resources/ui/gedit-time-setup-dialog.ui.h:11
+#: plugins/time/resources/ui/gedit-time-dialog.ui:106
+#: plugins/time/resources/ui/gedit-time-setup-dialog.ui:181
 msgid "01/11/2009 17:52:00"
 msgstr "01/11/2009 17:52:00"
 
-#: ../plugins/time/resources/ui/gedit-time-dialog.ui.h:9
+#: plugins/time/resources/ui/gedit-time-dialog.ui:167
 msgid "_Insert"
 msgstr "ਸ਼ਾਮਿਲ(_I)"
 
-#: ../plugins/time/resources/ui/gedit-time-setup-dialog.ui.h:1
+#: plugins/time/resources/ui/gedit-time-setup-dialog.ui:6
 msgid "Configure date/time plugin"
 msgstr "ਤਾਰੀਖ/ ਸਮਾਂ ਪਲੱਗਇਨ ਸੰਰਚਨਾ"
 
-#: ../plugins/time/resources/ui/gedit-time-setup-dialog.ui.h:3
-#| msgid "When inserting date/time..."
+#: plugins/time/resources/ui/gedit-time-setup-dialog.ui:57
 msgid "When inserting date/time…"
 msgstr "ਜਦੋਂ ਤਾਰੀਖ/ਸਮਾਂ ਸ਼ਾਮਲ ਕਰਨੇ ਹੋਣ…"
 
-#: ../plugins/time/resources/ui/gedit-time-setup-dialog.ui.h:4
+#: plugins/time/resources/ui/gedit-time-setup-dialog.ui:75
 msgid "_Prompt for a format"
 msgstr "ਇੱਕ ਫਾਰਮੈਟ ਲਈ ਪੁੱਛੋ(_P)"
 
-#: ../plugins/time/time.plugin.desktop.in.h:1
+#: plugins/time/time.plugin.desktop.in:5
 msgid "Insert Date/Time"
 msgstr "ਤਾਰੀਖ/ਸਮਾਂ ਸ਼ਾਮਲ"
 
-#: ../plugins/time/time.plugin.desktop.in.h:2
+#: plugins/time/time.plugin.desktop.in:6
 msgid "Inserts current date and time at the cursor position."
 msgstr "ਕਰਸਰ ਦੀ ਸਥਿਤੀ ਤੇ ਮੌਜੂਦਾ ਤਰੀਕ ਅਤੇ ਸਮਾਂ ਸ਼ਾਮਿਲ ਕਰੋ।"
+
+#~ msgid "gedit Text Editor"
+#~ msgstr "ਜੀ-ਸੰਪਾਦਕ ਟੈਕਸਟ ਐਡੀਟਰ"
+
+#~ msgid "C_haracter Encoding:"
+#~ msgstr "ਅੱਖਰ ਇੰਕੋਡਿੰਗ(_h):"
+
+#~ msgid "L_ine Ending:"
+#~ msgstr "ਲਾਈਨ ਅੰਤ(_i):"
+
+#~ msgid "Please check your installation."
+#~ msgstr "ਆਪਣੀ ਇੰਸਟਾਲੇਸ਼ਨ ਦੀ ਜਾਂਚ ਕਰੋ ਜੀ।"
+
+#~ msgid "Unable to open UI file %s. Error: %s"
+#~ msgstr "%s UI ਫਾਇਲ ਖੋਲਣ ਲਈ ਅਸਮਰੱਥ ਹੈ: ਗਲਤੀ: %s"
+
+#~| msgid "Unable to find the object '%s' inside file %s."
+#~ msgid "Unable to find the object “%s” inside file %s."
+#~ msgstr "ਫਾਇਲ %s ਵਿੱਚ “%s“ ਆਬਜੈਕਟ ਲੱਭਣ ਲਈ ਅਸਮਰੱਥ ਹੈ।"
+
+#~ msgid "_About"
+#~ msgstr "ਇਸ ਬਾਰੇ(_A)"
+
+#~ msgid "Tools"
+#~ msgstr "ਟੂਲ"
 
 #~ msgid "_Ignore"
 #~ msgstr "ਅਣਡਿੱਠਾ(_I)"
@@ -3998,9 +3932,6 @@ msgstr "ਕਰਸਰ ਦੀ ਸਥਿਤੀ ਤੇ ਮੌਜੂਦਾ ਤਰੀ�
 #~ msgstr ""
 #~ "ਜੀ-ਸੰਪਾਦਕ ਉਹਨਾਂ ਫਾਇਲਾਂ ਦਾ ਬੈਕਅਪ ਬਣਾਏ, ਜੋ ਇਸ ਨੇ ਸੰਭਾਲੀਆਂ ਹਨ। ਤੁਸੀਂ \"ਬੈਕਅੱਪ ਕਾਪੀ ਐਕਸਟੇਸ਼ਨ"
 #~ "\" ਚੋਣ ਨਾਲ ਬੈਕਅੱਪ ਫਾਇਲ ਦੀ ਐਕਟੇਸ਼ਨ ਦੇ ਸਕਦੇ ਹੋ।"
-
-#~ msgid "About gedit"
-#~ msgstr "ਜੀਸੰਪਾਦਕ ਬਾਰੇ"
 
 #~ msgid "Unicode"
 #~ msgstr "ਯੂਨੀਕੋਡ"
@@ -4251,9 +4182,6 @@ msgstr "ਕਰਸਰ ਦੀ ਸਥਿਤੀ ਤੇ ਮੌਜੂਦਾ ਤਰੀ�
 #~ msgid "Change Case"
 #~ msgstr "ਅਕਾਰ ਬਦਲੋ"
 
-#~ msgid "Changes the case of selected text."
-#~ msgstr "ਚੁਣੇ ਟੈਕਸਟ ਦੇ ਅੱਖਰਾਂ ਦਾ ਅਕਾਰ ਬਦਲੋ।"
-
 #~ msgid "C_hange Case"
 #~ msgstr "ਅਕਾਰ ਬਦਲੋ(_h)"
 
@@ -4479,9 +4407,6 @@ msgstr "ਕਰਸਰ ਦੀ ਸਥਿਤੀ ਤੇ ਮੌਜੂਦਾ ਤਰੀ�
 #~ msgid "_About Plugin"
 #~ msgstr "ਪਲੱਗਇਨ ਬਾਰੇ(_A)"
 
-#~ msgid "C_onfigure Plugin"
-#~ msgstr "ਪਲੱਗਇਨ ਸੰਰਚਨਾ(_o)"
-
 #~ msgid "It is not possible to detect the encoding automatically"
 #~ msgstr "ਆਟੋਮੈਟਿਕ ਇੰਕੋਡਿੰਗ ਲੱਭਣਾ ਸੰਭਵ ਨਹੀਂ ਹੈ"
 
@@ -4610,9 +4535,6 @@ msgstr "ਕਰਸਰ ਦੀ ਸਥਿਤੀ ਤੇ ਮੌਜੂਦਾ ਤਰੀ�
 
 #~ msgid "Checked state"
 #~ msgstr "ਜਾਂਚੀ ਹਾਲਤ"
-
-#~ msgid "Citation"
-#~ msgstr "ਸੱਦਾ"
 
 #~ msgid "Cite reason for change"
 #~ msgstr "ਤਬਦੀਲੀ ਲਈ ਸੰਖੇਪ ਕਾਰਨ"
