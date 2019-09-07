@@ -8,8 +8,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gedit master\n"
-"POT-Creation-Date: 2019-03-10 16:48+0000\n"
-"PO-Revision-Date: 2019-03-11 09:48+0100\n"
+"POT-Creation-Date: 2019-09-06 19:25+0000\n"
+"PO-Revision-Date: 2019-09-07 14:43+0200\n"
 "Last-Translator: Marek Černocký <marek@manet.cz>\n"
 "Language-Team: čeština <gnome-cs-list@gnome.org>\n"
 "Language: cs\n"
@@ -99,8 +99,7 @@ msgid ""
 "gui></guiseq>."
 msgstr ""
 "Zmáčkněte tlačítko nabídky v pravém horním rohu okna a vyberte <guiseq><gui "
-"style=\"menuitem\">Předvolby</gui> <gui>Písmo a barvy</gui></"
-"guiseq>."
+"style=\"menuitem\">Předvolby</gui> <gui>Písmo a barvy</gui></guiseq>."
 
 #. (itstool) path: item/p
 #: C/gedit-change-color-scheme.page:44
@@ -1395,11 +1394,11 @@ msgstr "auto-wrap (automatické zalamování)"
 #: C/gedit-plugins-modelines.page:59
 msgid ""
 "For more information on <app>Emacs</app> modelines, visit the <link href="
-"\"http://www.gnu.org/software/emacs/manual/emacs.html\">GNU Emacs Manual</"
+"\"https://www.gnu.org/software/emacs/manual/emacs.html\">GNU Emacs Manual</"
 "link>."
 msgstr ""
 "Ohledně dalších informací k řádkům s režimem <app>Emacs</app> navštivte "
-"<link href=\"http://www.gnu.org/software/emacs/manual/emacs.html\">Příručku "
+"<link href=\"https://www.gnu.org/software/emacs/manual/emacs.html\">Příručku "
 "k GNU Emacs</link> (odkazovaný text je v angličtině)."
 
 #. (itstool) path: section/title
@@ -1447,10 +1446,10 @@ msgstr "word-wrap-column (sloupec pro zalamování slov)"
 #: C/gedit-plugins-modelines.page:79
 msgid ""
 "For more information about <app>Kate</app> modelines, visit the <link href="
-"\"http://kate-editor.org/\">Kate website</link>."
+"\"https://kate-editor.org/\">Kate website</link>."
 msgstr ""
 "Ohledně dalších informací k řádkům s režimem <app>Kate</app> navštivte <link "
-"href=\"http://kate-editor.org/\">webové stránky Kate</link> (odkazovaný text "
+"href=\"https://kate-editor.org/\">webové stránky Kate</link> (odkazovaný text "
 "je v angličtině)."
 
 #. (itstool) path: section/title
@@ -1498,10 +1497,10 @@ msgstr "textwidth (šířka textu)"
 #: C/gedit-plugins-modelines.page:97
 msgid ""
 "For more information on <app>Vim</app> modelines, visit the <link href="
-"\"http://www.vim.org/\">Vim website</link>."
+"\"https://www.vim.org/\">Vim website</link>."
 msgstr ""
 "Ohledně dalších informací k řádkům s režimem <app>Vim</app> navštivte <link "
-"href=\"http://www.vim.org/\">webové stránky Vim</link> (odkazovaný text je v "
+"href=\"https://www.vim.org/\">webové stránky Vim</link> (odkazovaný text je v "
 "angličtině)."
 
 #. (itstool) path: info/desc
@@ -2976,17 +2975,17 @@ msgstr "Klávesové zkratky vztahující se ke kartám"
 
 #. (itstool) path: td/p
 #: C/gedit-shortcut-keys.page:57 C/gedit-shortcut-keys.page:113
-#: C/gedit-shortcut-keys.page:167 C/gedit-shortcut-keys.page:261
-#: C/gedit-shortcut-keys.page:281 C/gedit-shortcut-keys.page:318
-#: C/gedit-shortcut-keys.page:347
+#: C/gedit-shortcut-keys.page:167 C/gedit-shortcut-keys.page:253
+#: C/gedit-shortcut-keys.page:273 C/gedit-shortcut-keys.page:325
+#: C/gedit-shortcut-keys.page:358 C/gedit-shortcut-keys.page:387
 msgid "Action"
 msgstr "Činnost"
 
 #. (itstool) path: td/p
 #: C/gedit-shortcut-keys.page:58 C/gedit-shortcut-keys.page:114
-#: C/gedit-shortcut-keys.page:168 C/gedit-shortcut-keys.page:262
-#: C/gedit-shortcut-keys.page:282 C/gedit-shortcut-keys.page:319
-#: C/gedit-shortcut-keys.page:348
+#: C/gedit-shortcut-keys.page:168 C/gedit-shortcut-keys.page:254
+#: C/gedit-shortcut-keys.page:274 C/gedit-shortcut-keys.page:326
+#: C/gedit-shortcut-keys.page:359 C/gedit-shortcut-keys.page:388
 msgid "Keyboard shortcut"
 msgstr "Klávesová zkratka"
 
@@ -3205,351 +3204,426 @@ msgstr "Klávesové zkratky pro úpravu souborů"
 
 #. (itstool) path: td/p
 #: C/gedit-shortcut-keys.page:173
-msgid "Move to the beginning of the current line"
-msgstr "Přesunout se na začátek aktuálního řádku"
-
-#. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:174
-msgid "<key>Home</key>"
-msgstr "<key>Home</key>"
-
-#. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:177
-msgid "Move to the end of the current line"
-msgstr "Přesunout se na konec aktuálního řádku"
-
-#. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:178
-msgid "<key>End</key>"
-msgstr "<key>End</key>"
-
-#. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:181
-msgid "Move to the beginning of the document"
-msgstr "Přesunout se na začátek dokumentu"
-
-#. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:182
-msgid "<keyseq><key>Ctrl</key><key>Home</key></keyseq>"
-msgstr "<keyseq><key>Ctrl</key><key>Home</key></keyseq>"
-
-#. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:185
-msgid "Move to the end of the document"
-msgstr "Přesunout se na konec dokumentu"
-
-#. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:186
-msgid "<keyseq><key>Ctrl</key><key>End</key></keyseq>"
-msgstr "<keyseq><key>Ctrl</key><key>End</key></keyseq>"
-
-#. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:189
 msgid "Move the selected word right one word"
 msgstr "Přesunout vybrané slovo o slovo doprava"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:190
+#: C/gedit-shortcut-keys.page:174
 msgid "<keyseq><key>Alt</key><key>Right Arrow</key></keyseq>"
 msgstr "<keyseq><key>Alt</key><key>→</key></keyseq>"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:193
+#: C/gedit-shortcut-keys.page:177
 msgid "Move the selected word left one word"
 msgstr "Přesunout vybrané slovo o slovo doleva"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:194
+#: C/gedit-shortcut-keys.page:178
 msgid "<keyseq><key>Alt</key><key>Left Arrow</key></keyseq>"
 msgstr "<keyseq><key>Alt</key><key>←</key></keyseq>"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:197
+#: C/gedit-shortcut-keys.page:181
 msgid "Undo the last action"
 msgstr "Vrátit zpět poslední provedený úkon"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:198
+#: C/gedit-shortcut-keys.page:182
 msgid "<keyseq><key>Ctrl</key><key>Z</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>Z</key></keyseq>"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:201
+#: C/gedit-shortcut-keys.page:185
 msgid "Redo the last undone action"
 msgstr "Znovu provést naposledy zpět vrácený úkon"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:202
+#: C/gedit-shortcut-keys.page:186
 msgid "<keyseq><key>Ctrl</key><key>Shift</key> <key>Z</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>Shift</key> <key>Z</key></keyseq>"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:206
+#: C/gedit-shortcut-keys.page:190
 msgid "Cut the selected text or region and place it on the clipboard"
 msgstr "Vyjmout vybraný text nebo oblast a vložit ji do schránky"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:208
+#: C/gedit-shortcut-keys.page:192
 msgid "<keyseq><key>Ctrl</key><key>X</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>X</key></keyseq>"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:211
+#: C/gedit-shortcut-keys.page:195
 msgid "Copy the selected text or region onto the clipboard"
 msgstr "Zkopírovat vybraný text nebo oblast do schránky"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:212
+#: C/gedit-shortcut-keys.page:196
 msgid "<keyseq><key>Ctrl</key><key>C</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>C</key></keyseq>"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:215
+#: C/gedit-shortcut-keys.page:199
 msgid "Paste the contents of the clipboard"
 msgstr "Vložit obsah ze schránky"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:216
+#: C/gedit-shortcut-keys.page:200
 msgid "<keyseq><key>Ctrl</key><key>V</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>V</key></keyseq>"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:219
+#: C/gedit-shortcut-keys.page:203
 msgid "Select all text in the file"
 msgstr "Vybrat všechen text v souboru"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:220
+#: C/gedit-shortcut-keys.page:204
 msgid "<keyseq><key>Ctrl</key><key>A</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>A</key></keyseq>"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:223
+#: C/gedit-shortcut-keys.page:207
+msgid "Unselect all text"
+msgstr "Zrušit výběr veškerého textu"
+
+#. (itstool) path: td/p
+#: C/gedit-shortcut-keys.page:208
+msgid "<keyseq><key>Ctrl</key><key>Backslash</key></keyseq>"
+msgstr "<keyseq><key>Ctrl</key><key>Backslash</key></keyseq>"
+
+#. (itstool) path: td/p
+#: C/gedit-shortcut-keys.page:211
 msgid "Delete the current line"
 msgstr "Odstranit aktuální řádek"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:224
+#: C/gedit-shortcut-keys.page:212
 msgid "<keyseq><key>Ctrl</key><key>D</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>D</key></keyseq>"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:227
+#: C/gedit-shortcut-keys.page:215
 msgid "Move the selected line up one line"
 msgstr "Přesunout vybraný řádek o řádek nahoru"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:228
+#: C/gedit-shortcut-keys.page:216
 msgid "<keyseq><key>Alt</key><key>Up Arrow</key></keyseq>"
 msgstr "<keyseq><key>Alt</key><key>Up Arrow</key></keyseq>"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:231
+#: C/gedit-shortcut-keys.page:219
 msgid "Move the selected line down one line"
 msgstr "Přesunout vybraný řádek o řádek dolů"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:232
+#: C/gedit-shortcut-keys.page:220
 msgid "<keyseq><key>Alt</key><key>Down Arrow</key></keyseq>"
 msgstr "<keyseq><key>Alt</key><key>Down Arrow</key></keyseq>"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:235
+#: C/gedit-shortcut-keys.page:223
 msgid "Add a tab stop"
 msgstr "Přidat tabulační zarážku"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:236
+#: C/gedit-shortcut-keys.page:224
 msgid "<keyseq><key>Tab</key></keyseq>"
 msgstr "<keyseq><key>Tab</key></keyseq>"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:239
+#: C/gedit-shortcut-keys.page:227
 msgid "Remove a tab stop"
 msgstr "Odstranit tabulační zarážku"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:240
+#: C/gedit-shortcut-keys.page:228
 msgid "<keyseq><key>Shift</key><key>Tab</key></keyseq>"
 msgstr "<keyseq><key>Shift</key><key>Tab</key></keyseq>"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:243
+#: C/gedit-shortcut-keys.page:231
 msgid "Convert the selected text to upper case"
 msgstr "Převést vybraný text na velká písmena"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:244
+#: C/gedit-shortcut-keys.page:232
 msgid "<keyseq><key>Ctrl</key><key>U</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>U</key></keyseq>"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:247
+#: C/gedit-shortcut-keys.page:235
 msgid "Convert the selected text to lower case"
 msgstr "Převést vybraný text na malá písmena"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:248
+#: C/gedit-shortcut-keys.page:236
 msgid "<keyseq><key>Ctrl</key><key>L</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>L</key></keyseq>"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:251
+#: C/gedit-shortcut-keys.page:239
 msgid "Toggle case of the selected text"
 msgstr "Přepnout velikost písmen ve vybraném textu"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:252
+#: C/gedit-shortcut-keys.page:240
 msgid "<keyseq><key>Ctrl</key><key>~</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>~</key></keyseq>"
 
+#. (itstool) path: td/p
+#: C/gedit-shortcut-keys.page:243
+msgid "Toggle cursor visibility"
+msgstr "Přepnout viditelnost kurzoru"
+
+#. (itstool) path: td/p
+#: C/gedit-shortcut-keys.page:244
+msgid "<keyseq><key>F7</key></keyseq>"
+msgstr "<keyseq><key>F7</key></keyseq>"
+
 #. (itstool) path: table/title
-#: C/gedit-shortcut-keys.page:258
+#: C/gedit-shortcut-keys.page:250
 msgid "Shortcut keys for showing and hiding panes"
 msgstr "Klávesové zkratky pro zobrazování a skrývání panelů"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:267
+#: C/gedit-shortcut-keys.page:259
 msgid "Show / hide the side panel"
 msgstr "Zobrazit/skrýt postranní panel"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:268
+#: C/gedit-shortcut-keys.page:260
 msgid "<key>F9</key>"
 msgstr "<key>F9</key>"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:271
+#: C/gedit-shortcut-keys.page:263
 msgid "Open the file menu"
 msgstr "Otevřít nabídku pro soubor"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:272
+#: C/gedit-shortcut-keys.page:264
 msgid "<key>F10</key>"
 msgstr "<key>F10</key>"
 
 #. (itstool) path: table/title
-#: C/gedit-shortcut-keys.page:278
-msgid "Shortcut keys for searching"
-msgstr "Klávesové zkratky pro hledávání"
+#: C/gedit-shortcut-keys.page:270
+msgid "Shortcut keys for navigation"
+msgstr "Klávesové zkratky pro navigaci"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:287
-msgid "Find a string"
-msgstr "Hledat řetězec"
+#: C/gedit-shortcut-keys.page:279
+msgid "Move to matching bracket"
+msgstr "Přejít na odpovídající závorku"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:288
-msgid "<keyseq><key>Ctrl</key><key>F</key></keyseq>"
-msgstr "<keyseq><key>Ctrl</key><key>F</key></keyseq>"
+#: C/gedit-shortcut-keys.page:280
+msgid "<keyseq><key>Ctrl</key><key>%</key></keyseq>"
+msgstr "<keyseq><key>Ctrl</key><key>%</key></keyseq>"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:291
-msgid "Find the next instance of the string"
-msgstr "Hledat následující výskyt téhož řetězce"
-
-#. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:292
-msgid "<keyseq><key>Ctrl</key><key>G</key></keyseq>"
-msgstr "<keyseq><key>Ctrl</key><key>G</key></keyseq>"
-
-#. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:295
-msgid "Find the previous instance of the string"
-msgstr "Hledat předchozí výskyt téhož řetězce"
-
-#. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:296
-msgid "<keyseq><key>Ctrl</key><key>Shift</key><key>G</key></keyseq>"
-msgstr "<keyseq><key>Ctrl</key><key>Shift</key><key>G</key></keyseq>"
-
-#. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:299
-msgid "Search and Replace"
-msgstr "Vyhledat a nahradit"
-
-#. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:300
-msgid "<keyseq><key>Ctrl</key><key>H</key></keyseq>"
-msgstr "<keyseq><key>Ctrl</key><key>H</key></keyseq>"
-
-#. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:303
-msgid "Clear highlight"
-msgstr "Zrušit zvýrazňování"
-
-#. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:304
-msgid "<keyseq><key>Ctrl</key><key>Shift</key> <key>K</key></keyseq>"
-msgstr "<keyseq><key>Ctrl</key><key>Shift</key> <key>K</key></keyseq>"
-
-#. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:308
+#: C/gedit-shortcut-keys.page:283
 msgid "Goto line"
 msgstr "Přejít na řádek"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:309
+#: C/gedit-shortcut-keys.page:284
 msgid "<keyseq><key>Ctrl</key><key>I</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>I</key></keyseq>"
 
-#. (itstool) path: table/title
+#. (itstool) path: td/p
+#: C/gedit-shortcut-keys.page:287
+msgid "Move to the beginning of the current line"
+msgstr "Přesunout se na začátek aktuálního řádku"
+
+#. (itstool) path: td/p
+#: C/gedit-shortcut-keys.page:288
+msgid "<key>Home</key>"
+msgstr "<key>Home</key>"
+
+#. (itstool) path: td/p
+#: C/gedit-shortcut-keys.page:291
+msgid "Move to the end of the current line"
+msgstr "Přesunout se na konec aktuálního řádku"
+
+#. (itstool) path: td/p
+#: C/gedit-shortcut-keys.page:292
+msgid "<key>End</key>"
+msgstr "<key>End</key>"
+
+#. (itstool) path: td/p
+#: C/gedit-shortcut-keys.page:295
+msgid "Move to the beginning of the document"
+msgstr "Přesunout se na začátek dokumentu"
+
+#. (itstool) path: td/p
+#: C/gedit-shortcut-keys.page:296
+msgid "<keyseq><key>Ctrl</key><key>Home</key></keyseq>"
+msgstr "<keyseq><key>Ctrl</key><key>Home</key></keyseq>"
+
+#. (itstool) path: td/p
+#: C/gedit-shortcut-keys.page:299
+msgid "Move to the end of the document"
+msgstr "Přesunout se na konec dokumentu"
+
+#. (itstool) path: td/p
+#: C/gedit-shortcut-keys.page:300
+msgid "<keyseq><key>Ctrl</key><key>End</key></keyseq>"
+msgstr "<keyseq><key>Ctrl</key><key>End</key></keyseq>"
+
+#. (itstool) path: td/p
+#: C/gedit-shortcut-keys.page:303
+msgid "Move viewport up within the file"
+msgstr "Posunout se výřezem po souboru výš"
+
+#. (itstool) path: td/p
+#: C/gedit-shortcut-keys.page:304
+msgid "<keyseq><key>Shift</key><key>Alt</key><key>Up</key></keyseq>"
+msgstr "<keyseq><key>Shift</key><key>Alt</key><key>Up</key></keyseq>"
+
+#. (itstool) path: td/p
+#: C/gedit-shortcut-keys.page:307
+msgid "Move viewport down within the file"
+msgstr "Posunout se výřezem po souboru níž"
+
+#. (itstool) path: td/p
+#: C/gedit-shortcut-keys.page:308
+msgid "<keyseq><key>Shift</key><key>Alt</key><key>Down</key></keyseq>"
+msgstr "<keyseq><key>Shift</key><key>Alt</key><key>Down</key></keyseq>"
+
+#. (itstool) path: td/p
+#: C/gedit-shortcut-keys.page:311
+msgid "Move viewport to beginning of file"
+msgstr "Posunout se výřezem po souboru na začátek"
+
+#. (itstool) path: td/p
+#: C/gedit-shortcut-keys.page:312
+msgid "<keyseq><key>Shift</key><key>Alt</key><key>Home</key></keyseq>"
+msgstr "<keyseq><key>Shift</key><key>Alt</key><key>Home</key></keyseq>"
+
+#. (itstool) path: td/p
 #: C/gedit-shortcut-keys.page:315
+msgid "Move viewport to end of file"
+msgstr "Posunout se výřezem po souboru na konec"
+
+#. (itstool) path: td/p
+#: C/gedit-shortcut-keys.page:316
+msgid "<keyseq><key>Shift</key><key>Alt</key><key>End</key></keyseq>"
+msgstr "<keyseq><key>Shift</key><key>Alt</key><key>End</key></keyseq>"
+
+#. (itstool) path: table/title
+#: C/gedit-shortcut-keys.page:322
+msgid "Shortcut keys for searching"
+msgstr "Klávesové zkratky pro hledávání"
+
+#. (itstool) path: td/p
+#: C/gedit-shortcut-keys.page:331
+msgid "Find a string"
+msgstr "Hledat řetězec"
+
+#. (itstool) path: td/p
+#: C/gedit-shortcut-keys.page:332
+msgid "<keyseq><key>Ctrl</key><key>F</key></keyseq>"
+msgstr "<keyseq><key>Ctrl</key><key>F</key></keyseq>"
+
+#. (itstool) path: td/p
+#: C/gedit-shortcut-keys.page:335
+msgid "Find the next instance of the string"
+msgstr "Hledat následující výskyt téhož řetězce"
+
+#. (itstool) path: td/p
+#: C/gedit-shortcut-keys.page:336
+msgid "<keyseq><key>Ctrl</key><key>G</key></keyseq>"
+msgstr "<keyseq><key>Ctrl</key><key>G</key></keyseq>"
+
+#. (itstool) path: td/p
+#: C/gedit-shortcut-keys.page:339
+msgid "Find the previous instance of the string"
+msgstr "Hledat předchozí výskyt téhož řetězce"
+
+#. (itstool) path: td/p
+#: C/gedit-shortcut-keys.page:340
+msgid "<keyseq><key>Ctrl</key><key>Shift</key><key>G</key></keyseq>"
+msgstr "<keyseq><key>Ctrl</key><key>Shift</key><key>G</key></keyseq>"
+
+#. (itstool) path: td/p
+#: C/gedit-shortcut-keys.page:343
+msgid "Search and Replace"
+msgstr "Vyhledat a nahradit"
+
+#. (itstool) path: td/p
+#: C/gedit-shortcut-keys.page:344
+msgid "<keyseq><key>Ctrl</key><key>H</key></keyseq>"
+msgstr "<keyseq><key>Ctrl</key><key>H</key></keyseq>"
+
+#. (itstool) path: td/p
+#: C/gedit-shortcut-keys.page:347
+msgid "Clear highlight"
+msgstr "Zrušit zvýrazňování"
+
+#. (itstool) path: td/p
+#: C/gedit-shortcut-keys.page:348
+msgid "<keyseq><key>Ctrl</key><key>Shift</key> <key>K</key></keyseq>"
+msgstr "<keyseq><key>Ctrl</key><key>Shift</key> <key>K</key></keyseq>"
+
+#. (itstool) path: table/title
+#: C/gedit-shortcut-keys.page:355
 msgid "Shortcut keys for tools"
 msgstr "Klávesové zkratky pro nástroje"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:324
+#: C/gedit-shortcut-keys.page:364
 msgid "Check spelling"
 msgstr "Zkontrolovat pravopis"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:325
+#: C/gedit-shortcut-keys.page:365
 msgid "<keyseq><key>Shift</key><key>F7</key></keyseq>"
 msgstr "<keyseq><key>Shift</key><key>F7</key></keyseq>"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:328
+#: C/gedit-shortcut-keys.page:368
 msgid "Remove trailing spaces (with plugin)"
 msgstr "Odstranit koncové mezery (se zásuvným modulem)"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:329
+#: C/gedit-shortcut-keys.page:369
 msgid "<keyseq><key>Alt</key><key>F12</key></keyseq>"
 msgstr "<keyseq><key>Alt</key><key>F12</key></keyseq>"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:332
+#: C/gedit-shortcut-keys.page:372
 msgid "Run \"make\" in the current directory (with plugin)"
 msgstr "Spustit „make“ v aktuální složce (se zásuvným modulem)"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:333
+#: C/gedit-shortcut-keys.page:373
 msgid "<key>F8</key>"
 msgstr "<key>F8</key>"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:336
+#: C/gedit-shortcut-keys.page:376
 msgid "Directory listing (with plugin)"
 msgstr "Výpis složky (se zásuvným modulem)"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:337
+#: C/gedit-shortcut-keys.page:377
 msgid "<keyseq><key>Ctrl</key><key>Shift</key> <key>D</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>Shift</key> <key>D</key></keyseq>"
 
 #. (itstool) path: table/title
-#: C/gedit-shortcut-keys.page:344
+#: C/gedit-shortcut-keys.page:384
 msgid "Shortcut keys for user help"
 msgstr "Klávesové zkratky pro nápovědu"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:353
+#: C/gedit-shortcut-keys.page:393
 msgid "Open the gedit user guide"
 msgstr "Otevřít uživatelskou příručku k aplikaci gedit"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:354
+#: C/gedit-shortcut-keys.page:394
 msgid "<key>F1</key>"
 msgstr "<key>F1</key>"
 
@@ -3733,12 +3807,12 @@ msgstr "Slovníky"
 #. (itstool) path: section/p
 #: C/gedit-spellcheck.page:125
 msgid ""
-"<app>gedit</app> uses <link href=\"http://www.abisource.com/projects/enchant/"
-"\">Enchant</link>, a small system utility, for spell checking. Enchant can "
-"use several different dictionaries to check your spelling. Two such "
-"dictionary back-ends are <em>Hunspell</em> and <em>Aspell</em>."
+"<app>gedit</app> uses <link href=\"https://www.abisource.com/projects/"
+"enchant/\">Enchant</link>, a small system utility, for spell checking. "
+"Enchant can use several different dictionaries to check your spelling. Two "
+"such dictionary back-ends are <em>Hunspell</em> and <em>Aspell</em>."
 msgstr ""
-"<app>gedit</app> používá <link href=\"http://www.abisource.com/projects/"
+"<app>gedit</app> používá <link href=\"https://www.abisource.com/projects/"
 "enchant/\">Enchant</link>, což je drobná systémová pomůcka pro kontrolu "
 "pravopisu. Enchant umí využít ke kontrole různé slovníky. Dvěma z nich jsou "
 "<em>Hunspell</em> a <em>Aspell</em>."
