@@ -66,7 +66,6 @@ libgedit_reference_ignored_h = [
   'gedit-small-button.h',
   'gedit-status-menu-button.h',
   'gedit-tab-label.h',
-  'gedit-view-centering.h',
   'gedit-view-frame.h',
   'gedit-window-private.h',
 ]

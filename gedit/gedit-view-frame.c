@@ -3,7 +3,7 @@
  * This file is part of gedit
  *
  * Copyright (C) 2010 - Ignacio Casal Quinteiro
- * Copyright (C) 2013 - Sébastien Wilmet
+ * Copyright (C) 2013, 2019 - Sébastien Wilmet
  *
  * gedit is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -28,7 +28,6 @@
 #include <glib/gi18n.h>
 #include <stdlib.h>
 
-#include "gedit-view-centering.h"
 #include "gedit-debug.h"
 #include "gedit-utils.h"
 #include "gedit-settings.h"
@@ -57,7 +56,6 @@ struct _GeditViewFrame
 	GSettings *editor_settings;
 
 	GeditView *view;
-	GeditViewCentering *view_centering;
 	GtkFrame *map_frame;
 
 	SearchMode search_mode;
@@ -1438,7 +1436,6 @@ gedit_view_frame_class_init (GeditViewFrameClass *klass)
 	gtk_widget_class_set_template_from_resource (widget_class,
 	                                             "/org/gnome/gedit/ui/gedit-view-frame.ui");
 	gtk_widget_class_bind_template_child (widget_class, GeditViewFrame, view);
-	gtk_widget_class_bind_template_child (widget_class, GeditViewFrame, view_centering);
 	gtk_widget_class_bind_template_child (widget_class, GeditViewFrame, map_frame);
 	gtk_widget_class_bind_template_child (widget_class, GeditViewFrame, revealer);
 	gtk_widget_class_bind_template_child (widget_class, GeditViewFrame, search_entry);
@@ -1568,14 +1565,6 @@ GeditViewFrame *
 gedit_view_frame_new (void)
 {
 	return g_object_new (GEDIT_TYPE_VIEW_FRAME, NULL);
-}
-
-GeditViewCentering *
-gedit_view_frame_get_view_centering (GeditViewFrame *frame)
-{
-	g_return_val_if_fail (GEDIT_IS_VIEW_FRAME (frame), NULL);
-
-	return frame->view_centering;
 }
 
 GeditView *

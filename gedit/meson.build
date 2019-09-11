@@ -52,7 +52,6 @@ libgedit_private_h = files(
   'gedit-status-menu-button.h',
   'gedit-tab-label.h',
   'gedit-tab-private.h',
-  'gedit-view-centering.h',
   'gedit-view-frame.h',
   'gedit-window-private.h',
 )
@@ -108,7 +107,6 @@ libgedit_sources = files(
   'gedit-utils.c',
   'gedit-view-activatable.c',
   'gedit-view.c',
-  'gedit-view-centering.c',
   'gedit-view-frame.c',
   'gedit-window-activatable.c',
   'gedit-window.c',
