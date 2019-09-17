@@ -8,6 +8,7 @@
 # Takeshi AIHANA <takeshi.aihana@gmail.com>, 2003-2009.
 # Satoru SATOH <ss@gnome.gr.jp>, 2006.
 # Hideki Yamane (Debian-JP) <henrich@debian.or.jp>, 2009.
+# Mitsuya Shibata <mty.shibata@gmail.com>, 2009.
 # Shushi Kurose <md81bird@hitaki.net>, 2010-2011, 2014.
 # Takayuki KUSANO <AE5T-KSN@asahi-net.or.jp>, 2010-2012.
 # Hajime Taira <htaira@redhat.com>, 2011.
@@ -20,8 +21,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gedit master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gedit/issues\n"
-"POT-Creation-Date: 2019-09-17 08:43+0000\n"
-"PO-Revision-Date: 2019-09-09 18:40+0900\n"
+"POT-Creation-Date: 2019-09-09 09:50+0000\n"
+"PO-Revision-Date: 2019-09-16 22:00+0900\n"
 "Last-Translator: sicklylife <translation@sicklylife.jp>\n"
 "Language-Team: Japanese <gnome-translation@gnome.gr.jp>\n"
 "Language: ja\n"
@@ -37,7 +38,7 @@ msgstr "gedit"
 
 #: data/org.gnome.gedit.appdata.xml.in:8 data/org.gnome.gedit.desktop.in.in:4
 msgid "Edit text files"
-msgstr "テキスト形式のファイルを編集します"
+msgstr "テキストファイルを編集します"
 
 #: data/org.gnome.gedit.appdata.xml.in:10
 msgid ""
@@ -349,7 +350,7 @@ msgstr "ツールバーの表示可否"
 
 #: data/org.gnome.gedit.gschema.xml.in:175
 msgid "Whether the toolbar should be visible in editing windows."
-msgstr "編集ウィンドウの中にツールバーを表示するかどうかを指定します。"
+msgstr "編集ウィンドウ内にツールバーを表示するかどうかを指定します。"
 
 #: data/org.gnome.gedit.gschema.xml.in:179
 msgid "Notebook Show Tabs Mode"
@@ -919,7 +920,7 @@ msgstr[0] "%d ヶ所で検索と置換を行いました。"
 
 #: gedit/gedit-commands-search.c:116
 msgid "Found and replaced one occurrence"
-msgstr "1 ヶ所で検索と置換を行いました。"
+msgstr "1 ヶ所で検索と置換を行いました"
 
 #. Translators: %s is replaced by the text
 #. entered by the user in the search box
@@ -1223,8 +1224,8 @@ msgstr ""
 #: gedit/gedit-io-error-info-bar.c:881
 msgid "If you save it, all the external changes could be lost. Save it anyway?"
 msgstr ""
-"このファイルを保存すると外部からの変更はすべて失われます。強制的に保存します"
-"か?"
+"このファイルを保存すると、外部で変更した内容はすべて失われます。強制的に保存"
+"しますか?"
 
 #: gedit/gedit-io-error-info-bar.c:961
 #, c-format
@@ -2635,7 +2636,7 @@ msgstr "ドキュメントのあるフォルダーで端末を開きます"
 
 #: plugins/externaltools/data/remove-trailing-spaces.desktop.in:3
 msgid "Remove trailing spaces"
-msgstr "末尾の空白を削除する"
+msgstr "末尾の空白を削除"
 
 #: plugins/externaltools/data/remove-trailing-spaces.desktop.in:4
 msgid "Remove useless trailing spaces in your file"
@@ -2643,7 +2644,7 @@ msgstr "ファイルの中にある不用な末尾の空白を取り除きます
 
 #: plugins/externaltools/data/run-command.desktop.in:3
 msgid "Run command"
-msgstr "コマンドの実行"
+msgstr "コマンドを実行"
 
 #: plugins/externaltools/data/run-command.desktop.in:4
 msgid "Execute a custom command and put its output in a new document"
