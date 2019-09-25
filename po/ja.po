@@ -21,8 +21,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gedit master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gedit/issues\n"
-"POT-Creation-Date: 2019-09-09 09:50+0000\n"
-"PO-Revision-Date: 2019-09-16 22:00+0900\n"
+"POT-Creation-Date: 2019-09-17 11:17+0000\n"
+"PO-Revision-Date: 2019-09-25 20:30+0900\n"
 "Last-Translator: sicklylife <translation@sicklylife.jp>\n"
 "Language-Team: Japanese <gnome-translation@gnome.gr.jp>\n"
 "Language: ja\n"
@@ -572,11 +572,11 @@ msgstr "ENCODING"
 
 #: gedit/gedit-app.c:134
 msgid "Create a new top-level window in an existing instance of gedit"
-msgstr "既に実行中の gedit で新しいトップレベルウィンドウを作成する"
+msgstr "すでに実行中の gedit で新しいトップレベルウィンドウを作成する"
 
 #: gedit/gedit-app.c:141
 msgid "Create a new document in an existing instance of gedit"
-msgstr "既に実行中の gedit に新しいドキュメントを作成する"
+msgstr "すでに実行中の gedit に新しいドキュメントを作成する"
 
 #: gedit/gedit-app.c:148
 msgid "Open files and block process until files are closed"
@@ -584,7 +584,7 @@ msgstr "ファイルを開き、ファイルが閉じられるまでブロック
 
 #: gedit/gedit-app.c:155
 msgid "Run gedit in standalone mode"
-msgstr "geditをスタンドアローンモードで動かす"
+msgstr "gedit をスタンドアローンモードで動かす"
 
 #: gedit/gedit-app.c:162
 msgid "[FILE…] [+LINE[:COLUMN]]"
@@ -640,12 +640,12 @@ msgid ""
 msgid_plural ""
 "If you don’t save, changes from the last %ld seconds will be permanently "
 "lost."
-msgstr[0] "保存しないと、%ld秒前からの変更内容が完全に失われます。"
+msgstr[0] "保存しないと、%ld 秒前からの変更内容が完全に失われます。"
 
 #: gedit/gedit-close-confirmation-dialog.c:339
 msgid ""
 "If you don’t save, changes from the last minute will be permanently lost."
-msgstr "保存しないと、1分前からの変更内容が完全に失われます。"
+msgstr "保存しないと、1 分前からの変更内容が完全に失われます。"
 
 #: gedit/gedit-close-confirmation-dialog.c:345
 #, c-format
@@ -655,7 +655,7 @@ msgid ""
 msgid_plural ""
 "If you don’t save, changes from the last minute and %ld seconds will be "
 "permanently lost."
-msgstr[0] "保存しないと、1分%ld秒前からの変更内容が完全に失われます。"
+msgstr[0] "保存しないと、1 分 %ld 秒前からの変更内容が完全に失われます。"
 
 #: gedit/gedit-close-confirmation-dialog.c:355
 #, c-format
@@ -664,11 +664,11 @@ msgid ""
 msgid_plural ""
 "If you don’t save, changes from the last %ld minutes will be permanently "
 "lost."
-msgstr[0] "保存しないと、%ld分前からの変更内容が完全に失われます。"
+msgstr[0] "保存しないと、%ld 分前からの変更内容が完全に失われます。"
 
 #: gedit/gedit-close-confirmation-dialog.c:370
 msgid "If you don’t save, changes from the last hour will be permanently lost."
-msgstr "保存しないと、1時間前からの変更内容が完全に失われます。"
+msgstr "保存しないと、1 時間前からの変更内容が完全に失われます。"
 
 #: gedit/gedit-close-confirmation-dialog.c:376
 #, c-format
@@ -678,7 +678,7 @@ msgid ""
 msgid_plural ""
 "If you don’t save, changes from the last hour and %d minutes will be "
 "permanently lost."
-msgstr[0] "保存しないと、1時間%d分前からの変更内容が完全に失われます。"
+msgstr[0] "保存しないと、1 時間 %d 分前からの変更内容が完全に失われます。"
 
 #: gedit/gedit-close-confirmation-dialog.c:391
 #, c-format
@@ -686,7 +686,7 @@ msgid ""
 "If you don’t save, changes from the last %d hour will be permanently lost."
 msgid_plural ""
 "If you don’t save, changes from the last %d hours will be permanently lost."
-msgstr[0] "保存しないと、%d時間前からの変更内容が完全に失われます。"
+msgstr[0] "保存しないと、%d 時間前からの変更内容が完全に失われます。"
 
 #: gedit/gedit-close-confirmation-dialog.c:420
 #, c-format
@@ -707,7 +707,7 @@ msgstr "システム管理者によってファイルの保存が利用できな
 #, c-format
 msgid "Changes to %d document will be permanently lost."
 msgid_plural "Changes to %d documents will be permanently lost."
-msgstr[0] "%d個のドキュメントへの変更が完全に失われます。"
+msgstr[0] "%d 個のドキュメントへの変更が完全に失われます。"
 
 #: gedit/gedit-close-confirmation-dialog.c:514
 #, c-format
@@ -715,7 +715,7 @@ msgid "There is %d document with unsaved changes. Save changes before closing?"
 msgid_plural ""
 "There are %d documents with unsaved changes. Save changes before closing?"
 msgstr[0] ""
-"まだ保存していないドキュメントが %d個あります。閉じる前にそれらを保存します"
+"まだ保存していないドキュメントが %d 個あります。閉じる前にそれらを保存します"
 "か?"
 
 #: gedit/gedit-close-confirmation-dialog.c:540
@@ -835,12 +835,12 @@ msgid ""
 msgid_plural ""
 "Changes made to the document in the last %ld seconds will be permanently "
 "lost."
-msgstr[0] "%ld秒前に編集したドキュメントへの変更が完全に失われます。"
+msgstr[0] "%ld 秒前に編集したドキュメントへの変更が完全に失われます。"
 
 #: gedit/gedit-commands-file.c:1509
 msgid ""
 "Changes made to the document in the last minute will be permanently lost."
-msgstr "1分前に編集したドキュメントへの変更が完全に失われます。"
+msgstr "1 分前に編集したドキュメントへの変更が完全に失われます。"
 
 #: gedit/gedit-commands-file.c:1515
 #, c-format
@@ -850,7 +850,7 @@ msgid ""
 msgid_plural ""
 "Changes made to the document in the last minute and %ld seconds will be "
 "permanently lost."
-msgstr[0] "1分 %ld秒前に編集したドキュメントへの変更が完全に失われます。"
+msgstr[0] "1 分 %ld 秒前に編集したドキュメントへの変更が完全に失われます。"
 
 #: gedit/gedit-commands-file.c:1525
 #, c-format
@@ -859,11 +859,11 @@ msgid ""
 msgid_plural ""
 "Changes made to the document in the last %ld minutes will be permanently "
 "lost."
-msgstr[0] "%ld分前に編集したドキュメントへの変更が完全に失われます。"
+msgstr[0] "%ld 分前に編集したドキュメントへの変更が完全に失われます。"
 
 #: gedit/gedit-commands-file.c:1540
 msgid "Changes made to the document in the last hour will be permanently lost."
-msgstr "1時間前に編集したドキュメントへの変更が完全に失われます。"
+msgstr "1 時間前に編集したドキュメントへの変更が完全に失われます。"
 
 #: gedit/gedit-commands-file.c:1546
 #, c-format
@@ -873,7 +873,7 @@ msgid ""
 msgid_plural ""
 "Changes made to the document in the last hour and %d minutes will be "
 "permanently lost."
-msgstr[0] "1時間 %d分前に編集したドキュメントへの変更が完全に失われます。"
+msgstr[0] "1 時間 %d 分前に編集したドキュメントへの変更が完全に失われます。"
 
 #: gedit/gedit-commands-file.c:1561
 #, c-format
@@ -881,7 +881,7 @@ msgid ""
 "Changes made to the document in the last %d hour will be permanently lost."
 msgid_plural ""
 "Changes made to the document in the last %d hours will be permanently lost."
-msgstr[0] "%d時間前に編集したドキュメントへの変更が完全に失われます。"
+msgstr[0] "%d 時間前に編集したドキュメントへの変更が完全に失われます。"
 
 #: gedit/gedit-commands-file.c:1584
 msgid "_Revert"
@@ -1194,7 +1194,7 @@ msgstr "編集しない(_O)"
 #: gedit/gedit-io-error-info-bar.c:779
 #, c-format
 msgid "This file “%s” is already open in another window."
-msgstr "このファイル“%s”は既に別の gedit ウィンドウで開いています。"
+msgstr "このファイル“%s”はすでに別の gedit ウィンドウで開いています。"
 
 #: gedit/gedit-io-error-info-bar.c:793
 msgid "Do you want to edit it anyway?"
@@ -1369,7 +1369,7 @@ msgstr ""
 
 #: gedit/gedit-preferences-dialog.c:798
 msgid "The selected color scheme cannot be installed."
-msgstr "指定した色のスキームをインストールできません。"
+msgstr "指定したカラースキームをインストールできません。"
 
 #: gedit/gedit-preferences-dialog.c:821
 msgid "Add Scheme"
@@ -1381,12 +1381,12 @@ msgstr "スキームの追加(_D)"
 
 #: gedit/gedit-preferences-dialog.c:830
 msgid "Color Scheme Files"
-msgstr "色のスキーム"
+msgstr "カラースキーム"
 
 #: gedit/gedit-preferences-dialog.c:861
 #, c-format
 msgid "Could not remove color scheme “%s”."
-msgstr "色のスキーム“%s”を削除できませんでした。"
+msgstr "カラースキーム“%s”を削除できませんでした。"
 
 #: gedit/gedit-print-job.c:227
 msgid "Preparing…"
@@ -1580,7 +1580,7 @@ msgstr "対応する括弧が %d 行目に見つかりました。"
 #: gedit/gedit-window.c:1043
 #, c-format
 msgid "  Ln %d, Col %d"
-msgstr " (%d行、%d列)"
+msgstr " (%d 行、%d 列)"
 
 #: gedit/gedit-window.c:1227
 #, c-format
@@ -2010,7 +2010,7 @@ msgstr "エディターで使用するフォントの取得"
 
 #: gedit/resources/ui/gedit-preferences-dialog.ui:631
 msgid "Color Scheme"
-msgstr "色のスキーム"
+msgstr "カラースキーム"
 
 #: gedit/resources/ui/gedit-preferences-dialog.ui:678
 #: gedit/resources/ui/gedit-preferences-dialog.ui:679
@@ -2731,7 +2731,7 @@ msgstr "新しいツール"
 #: plugins/externaltools/tools/manager.py:683
 #, python-format
 msgid "This accelerator is already bound to %s"
-msgstr "既にこのアクセラレータは %s に割り当てられています"
+msgstr "すでにこのアクセラレータは %s に割り当てられています"
 
 #: plugins/externaltools/tools/manager.py:729
 msgid "Type a new accelerator, or press Backspace to clear"
