@@ -21,8 +21,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gedit master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gedit/issues\n"
-"POT-Creation-Date: 2019-09-17 11:17+0000\n"
-"PO-Revision-Date: 2019-09-25 20:30+0900\n"
+"POT-Creation-Date: 2019-09-25 12:49+0000\n"
+"PO-Revision-Date: 2019-09-26 21:00+0900\n"
 "Last-Translator: sicklylife <translation@sicklylife.jp>\n"
 "Language-Team: Japanese <gnome-translation@gnome.gr.jp>\n"
 "Language: ja\n"
@@ -640,12 +640,12 @@ msgid ""
 msgid_plural ""
 "If you don’t save, changes from the last %ld seconds will be permanently "
 "lost."
-msgstr[0] "保存しないと、%ld 秒前からの変更内容が完全に失われます。"
+msgstr[0] "保存しないと %ld 秒前からの変更内容が完全に失われます。"
 
 #: gedit/gedit-close-confirmation-dialog.c:339
 msgid ""
 "If you don’t save, changes from the last minute will be permanently lost."
-msgstr "保存しないと、1 分前からの変更内容が完全に失われます。"
+msgstr "保存しないと 1 分前からの変更内容が完全に失われます。"
 
 #: gedit/gedit-close-confirmation-dialog.c:345
 #, c-format
@@ -655,7 +655,7 @@ msgid ""
 msgid_plural ""
 "If you don’t save, changes from the last minute and %ld seconds will be "
 "permanently lost."
-msgstr[0] "保存しないと、1 分 %ld 秒前からの変更内容が完全に失われます。"
+msgstr[0] "保存しないと 1 分 %ld 秒前からの変更内容が完全に失われます。"
 
 #: gedit/gedit-close-confirmation-dialog.c:355
 #, c-format
@@ -664,11 +664,11 @@ msgid ""
 msgid_plural ""
 "If you don’t save, changes from the last %ld minutes will be permanently "
 "lost."
-msgstr[0] "保存しないと、%ld 分前からの変更内容が完全に失われます。"
+msgstr[0] "保存しないと %ld 分前からの変更内容が完全に失われます。"
 
 #: gedit/gedit-close-confirmation-dialog.c:370
 msgid "If you don’t save, changes from the last hour will be permanently lost."
-msgstr "保存しないと、1 時間前からの変更内容が完全に失われます。"
+msgstr "保存しないと 1 時間前からの変更内容が完全に失われます。"
 
 #: gedit/gedit-close-confirmation-dialog.c:376
 #, c-format
@@ -678,7 +678,7 @@ msgid ""
 msgid_plural ""
 "If you don’t save, changes from the last hour and %d minutes will be "
 "permanently lost."
-msgstr[0] "保存しないと、1 時間 %d 分前からの変更内容が完全に失われます。"
+msgstr[0] "保存しないと 1 時間 %d 分前からの変更内容が完全に失われます。"
 
 #: gedit/gedit-close-confirmation-dialog.c:391
 #, c-format
@@ -686,7 +686,7 @@ msgid ""
 "If you don’t save, changes from the last %d hour will be permanently lost."
 msgid_plural ""
 "If you don’t save, changes from the last %d hours will be permanently lost."
-msgstr[0] "保存しないと、%d 時間前からの変更内容が完全に失われます。"
+msgstr[0] "保存しないと %d 時間前からの変更内容が完全に失われます。"
 
 #: gedit/gedit-close-confirmation-dialog.c:420
 #, c-format
@@ -772,7 +772,7 @@ msgstr "置換(_R)"
 
 #: gedit/gedit-commands-file.c:608
 msgid "Save the file using compression?"
-msgstr "ファイルを保存する時に圧縮をかけますか?"
+msgstr "ファイルを保存するときに圧縮をかけますか?"
 
 #: gedit/gedit-commands-file.c:612
 msgid "Save the file as plain text?"
@@ -1130,7 +1130,7 @@ msgstr "そのファイルを開く権限がありません。"
 
 #: gedit/gedit-io-error-info-bar.c:597
 msgid "Unable to detect the character encoding."
-msgstr "文字のエンコーディングを検出できませんでした。"
+msgstr "文字エンコーディングを検出できませんでした。"
 
 #: gedit/gedit-io-error-info-bar.c:598 gedit/gedit-io-error-info-bar.c:622
 msgid "Please check that you are not trying to open a binary file."
@@ -2315,7 +2315,7 @@ msgstr "強調表示をクリアする"
 #: gedit/resources/ui/gedit-shortcuts.ui:186
 msgctxt "shortcut window"
 msgid "Undo and Redo"
-msgstr "元に戻す, やり直す"
+msgstr "元に戻す / やり直す"
 
 #: gedit/resources/ui/gedit-shortcuts.ui:191
 msgctxt "shortcut window"
@@ -2894,11 +2894,11 @@ msgstr "ファイルブラウザー"
 
 #: plugins/filebrowser/gedit-file-browser-plugin.c:659
 msgid "An error occurred while creating a new directory"
-msgstr "新しいフォルダーを生成する際にエラーが発生しました"
+msgstr "新しいフォルダーを作成する際にエラーが発生しました"
 
 #: plugins/filebrowser/gedit-file-browser-plugin.c:662
 msgid "An error occurred while creating a new file"
-msgstr "新しいファイルを生成する際にエラーが発生しました"
+msgstr "新しいファイルを作成する際にエラーが発生しました"
 
 #: plugins/filebrowser/gedit-file-browser-plugin.c:665
 msgid "An error occurred while renaming a file or directory"
@@ -2989,8 +2989,8 @@ msgid ""
 "The new directory is currently filtered out. You need to adjust your filter "
 "settings to make the directory visible"
 msgstr ""
-"新しい名前のフォルダーはフィルターの機能により表示されていません。そのフォル"
-"ダーを表示するにはフィルターの設定を調整してください。"
+"新しいフォルダーはフィルターの機能により表示されていません。そのフォルダーを"
+"表示するにはフィルターの設定を調整してください。"
 
 #: plugins/filebrowser/gedit-file-browser-widget.c:757
 msgid "Bookmarks"
