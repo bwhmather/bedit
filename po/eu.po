@@ -10,8 +10,8 @@
 msgid ""
 msgstr "Project-Id-Version: gedit master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gedit/issues\n"
-"POT-Creation-Date: 2019-06-18 04:59+0000\n"
-"PO-Revision-Date: 2019-07-12 15:00+0100\n"
+"POT-Creation-Date: 2019-09-28 19:13+0000\n"
+"PO-Revision-Date: 2019-10-07 15:00+0100\n"
 "Last-Translator: Asier Sarasua Garmendia <asier.sarasua@gmail.com>\n"
 "Language-Team: Basque <librezale@librezale.eus>\n"
 "Language: eu\n"
@@ -209,11 +209,11 @@ msgstr "Gedit-ek uneko lerroa nabarmendu behar duen ala ez."
 
 #: data/org.gnome.gedit.gschema.xml.in:116
 msgid "Highlight Matching Brackets"
-msgstr "Nabarmendu bat-datozten parentesiak"
+msgstr "Nabarmendu bat datozen parentesiak"
 
 #: data/org.gnome.gedit.gschema.xml.in:117
 msgid "Whether gedit should highlight matching brackets."
-msgstr "Gedit-ek bat datozten parentesiak nabarmendu behar dituen edo ez."
+msgstr "Gedit-ek bat datozen parentesiak nabarmendu behar dituen edo ez."
 
 #: data/org.gnome.gedit.gschema.xml.in:121
 msgid "Display Right Margin"
@@ -475,7 +475,7 @@ msgstr "Ireki/gorde fitxategi-aukeratzaileko karaktere-kodeketen menuan erakutsi
 
 #: data/org.gnome.gedit.gschema.xml.in:316
 msgid "Active plugins"
-msgstr "Aktibatu pluginak"
+msgstr "Plugin aktiboak"
 
 #: data/org.gnome.gedit.gschema.xml.in:317
 msgid ""
@@ -525,7 +525,7 @@ msgstr "[FITXATEGIA…] [+LERROA[:ZUTABEA]]"
 msgid "There was an error displaying the help."
 msgstr "Errorea gertatu da laguntza bistaratzean."
 
-#: gedit/gedit-app.c:973
+#: gedit/gedit-app.c:972
 #, c-format
 msgid "%s: invalid encoding."
 msgstr "%s: kodeketa baliogabea."
@@ -720,7 +720,7 @@ msgstr "Gorde fitxategia testu arrunt gisa?"
 msgid ""
 "The file “%s” was previously saved as plain text and will now be saved using "
 "compression."
-msgstr "\"%s” fitxategia testu arrunt gisa gorde da lehenago, eta orain konprimituta gordeko da."
+msgstr "\"%s” fitxategia testu arrunt gisa gorde da lehenago, eta orain konprimatuta gordeko da."
 
 #: gedit/gedit-commands-file.c:629
 msgid "_Save Using Compression"
@@ -731,7 +731,7 @@ msgstr "_Gorde konpresioa erabiliz"
 msgid ""
 "The file “%s” was previously saved using compression and will now be saved "
 "as plain text."
-msgstr "\"%s” fitxategia konprimituta gorde da lehenago, eta orain testu arrunt gisa gordeko da."
+msgstr "\"%s” fitxategia konprimatuta gorde da lehenago, eta orain testu arrunt gisa gordeko da."
 
 #: gedit/gedit-commands-file.c:637
 msgid "_Save As Plain Text"
@@ -875,7 +875,7 @@ msgstr "Automatikoki detektatuta"
 #: gedit/gedit-encodings-combo-box.c:328
 #: gedit/gedit-file-chooser-dialog-osx.m:574
 msgid "Add or Remove…"
-msgstr "Gehitu edo kendu..."
+msgstr "Gehitu edo kendu…"
 
 #: gedit/gedit-encoding-items.c:92
 #, c-format
@@ -1273,7 +1273,7 @@ msgstr "Ezin izan da \"%s” kolore-eskema kendu."
 
 #: gedit/gedit-print-job.c:227
 msgid "Preparing…"
-msgstr "Prestatzen..."
+msgstr "Prestatzen…"
 
 #: gedit/gedit-print-job.c:539
 #, c-format
@@ -1477,7 +1477,7 @@ msgstr "Gorde gabeko dokumentuak daude"
 
 #: gedit/gedit-window.c:2442
 msgid "Change side panel page"
-msgstr "Aldatu albo-paneleko orria"
+msgstr "Aldatu alboko paneleko orria"
 
 #: gedit/gedit-window.c:2462 gedit/resources/ui/gedit-window.ui:19
 msgid "Documents"
@@ -1774,7 +1774,7 @@ msgstr "_Hautatu"
 
 #: gedit/resources/ui/gedit-highlight-mode-selector.ui:31
 msgid "Search highlight mode…"
-msgstr "Bilaketaren nabarmentze modua..."
+msgstr "Bilaketaren nabarmentze modua…"
 
 #: gedit/resources/ui/gedit-open-document-selector.ui:53
 msgid "No results"
@@ -1870,7 +1870,7 @@ msgstr "_Autogorde fitxategia maiztasun honekin"
 
 #: gedit/resources/ui/gedit-preferences-dialog.ui:459
 msgid "_minutes"
-msgstr "_minutuz behin"
+msgstr "_minutu"
 
 #: gedit/resources/ui/gedit-preferences-dialog.ui:506
 msgid "Editor"
@@ -2151,7 +2151,7 @@ msgstr "Sortu fitxen talde berria"
 #: gedit/resources/ui/gedit-shortcuts.ui:116
 msgctxt "shortcut window"
 msgid "Show side panel"
-msgstr "Erakutsi albo-panela"
+msgstr "Erakutsi alboko panela"
 
 #: gedit/resources/ui/gedit-shortcuts.ui:123
 msgctxt "shortcut window"
@@ -2364,11 +2364,6 @@ msgctxt "shortcut window"
 msgid "Show completion window"
 msgstr "Erakutsi osaketaren leihoa"
 
-#: gedit/resources/ui/gedit-shortcuts.ui:417
-msgctxt "shortcut window"
-msgid "Insert timestamp"
-msgstr "Txertatu denbora-zigilua"
-
 #: gedit/resources/ui/gedit-tab-label.ui:34
 msgid "Close Document"
 msgstr "Itxi dokumentua"
@@ -2569,7 +2564,7 @@ msgstr "Pango letra-tipo baten izena. Adibidez, \"Sans 12\" edo \"Monospace Bold
 
 #: plugins/externaltools/tools/appactivatable.py:133
 msgid "Manage _External Tools…"
-msgstr "Kudeatu _kanpoko tresnak..."
+msgstr "Kudeatu _kanpoko tresnak…"
 
 #: plugins/externaltools/tools/appactivatable.py:138
 msgid "External _Tools"
@@ -2761,7 +2756,7 @@ msgstr "Fitxategi-arakatzailearen panela"
 
 #: plugins/filebrowser/filebrowser.plugin.desktop.in:7
 msgid "Easy file access from the side panel"
-msgstr "Fitxategiak erraz atzitu albo-paneletik"
+msgstr "Fitxategiak erraz atzitu alboko paneletik"
 
 #: plugins/filebrowser/gedit-file-bookmarks-store.c:200
 msgid "Home"
@@ -2817,7 +2812,7 @@ msgstr "Ezin da fitxategia zakarrontzira bota.\n"
 #: plugins/filebrowser/gedit-file-browser-plugin.c:907
 #, c-format
 msgid "The file “%s” cannot be moved to the trash."
-msgstr "“%s“ fitxategia ezin izan da zakarrontzira bota."
+msgstr "“%s” fitxategia ezin izan da zakarrontzira bota."
 
 #: plugins/filebrowser/gedit-file-browser-plugin.c:912
 msgid "The selected files cannot be moved to the trash."
@@ -2826,7 +2821,7 @@ msgstr "Hautatutako fitxategia ezin da zakarrontzira bota."
 #: plugins/filebrowser/gedit-file-browser-plugin.c:943
 #, c-format
 msgid "Are you sure you want to permanently delete “%s”?"
-msgstr "Ziur zaude “%s“ behin betiko ezabatu nahi duzula?"
+msgstr "Ziur zaude “%s” behin betiko ezabatu nahi duzula?"
 
 #: plugins/filebrowser/gedit-file-browser-plugin.c:948
 msgid "Are you sure you want to permanently delete the selected files?"
@@ -2890,7 +2885,7 @@ msgstr "Ezin izan da bolumena muntatu: %s"
 #: plugins/filebrowser/gedit-file-browser-widget.c:2581
 #, c-format
 msgid "Error when loading “%s”: No such directory"
-msgstr "Errorea “%s“ kargatzean: Ez dago halako direktoriorik"
+msgstr "Errorea “%s” kargatzean: Ez dago halako direktoriorik"
 
 #: plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in:5
 msgid "Open With Tree View"
@@ -3086,7 +3081,7 @@ msgstr "Hautatutako testuaren agerraldi guztiak nabarmentzen ditu."
 
 #: plugins/quickopen/quickopen/__init__.py:47
 msgid "Quick Open…"
-msgstr "Irekitze azkarra..."
+msgstr "Irekitze azkarra…"
 
 #: plugins/quickopen/quickopen.plugin.desktop.in:6
 #: plugins/quickopen/quickopen/popup.py:40
@@ -3099,11 +3094,11 @@ msgstr "Fitxategiak azkar irekitzen ditu"
 
 #: plugins/quickopen/quickopen/popup.py:90
 msgid "Type to search…"
-msgstr "Idatzi bilaketa..."
+msgstr "Idatzi bilaketa…"
 
 #: plugins/snippets/snippets/appactivatable.py:88
 msgid "Manage _Snippets…"
-msgstr "Kudeatu mo_zkinak..."
+msgstr "Kudeatu mo_zkinak…"
 
 #. Do the fancy completion dialog
 #: plugins/snippets/snippets/document.py:64
@@ -3116,38 +3111,38 @@ msgstr "Mozkinak"
 #: plugins/snippets/snippets/exporter.py:88
 #, python-format
 msgid "The archive “%s” could not be created"
-msgstr "“%s“ fitxategia ezin izan da sortu"
+msgstr "“%s” fitxategia ezin izan da sortu"
 
 #: plugins/snippets/snippets/exporter.py:105
 #, python-format
 msgid "Target directory “%s” does not exist"
-msgstr "“%s“ direktorioa ez da existitzen"
+msgstr "“%s” direktorioa ez da existitzen"
 
 #: plugins/snippets/snippets/exporter.py:108
 #, python-format
 msgid "Target directory “%s” is not a valid directory"
-msgstr "“%s“ direktorioa ez da baliozkoa"
+msgstr "“%s” direktorioa ez da baliozkoa"
 
 #: plugins/snippets/snippets/importer.py:55
 #: plugins/snippets/snippets/importer.py:116
 #, python-format
 msgid "File “%s” does not exist"
-msgstr "\"'%s\" fitxategia ez da existitzen"
+msgstr "“%s” fitxategia ez da existitzen"
 
 #: plugins/snippets/snippets/importer.py:58
 #, python-format
 msgid "File “%s” is not a valid snippets file"
-msgstr "“%s“ fitxategia ez da mozkinen baliozko fitxategia"
+msgstr "“%s” fitxategia ez da mozkinen baliozko fitxategia"
 
 #: plugins/snippets/snippets/importer.py:75
 #, python-format
 msgid "Imported file “%s” is not a valid snippets file"
-msgstr "Inportatutako “%s“ fitxategia ez da mozkinen baliozko fitxategia"
+msgstr "Inportatutako “%s” fitxategia ez da mozkinen baliozko fitxategia"
 
 #: plugins/snippets/snippets/importer.py:85
 #, python-format
 msgid "The archive “%s” could not be extracted"
-msgstr "“%s“ fitxategia ezin izan da erauzi"
+msgstr "“%s” fitxategia ezin izan da erauzi"
 
 #: plugins/snippets/snippets/importer.py:103
 #, python-format
@@ -3158,7 +3153,7 @@ msgstr "Ezin izan dira honako fitxategiak inportatu: %s"
 #: plugins/snippets/snippets/importer.py:132
 #, python-format
 msgid "File “%s” is not a valid snippets archive"
-msgstr "“%s“ fitxategia ez da mozkinen baliozko fitxategia"
+msgstr "“%s” fitxategia ez da mozkinen baliozko fitxategia"
 
 #: plugins/snippets/snippets/manager.py:50
 msgid "Snippets archive"
@@ -3166,7 +3161,7 @@ msgstr "Mozkinen artxiboa"
 
 #: plugins/snippets/snippets/manager.py:74
 msgid "Add a new snippet…"
-msgstr "Gehitu mozkin berria..."
+msgstr "Gehitu mozkin berria…"
 
 #: plugins/snippets/snippets/manager.py:124
 msgid "Global"
@@ -3221,13 +3216,13 @@ msgstr "Onartzen diren artxibo guztiak"
 #: plugins/snippets/snippets/manager.py:879
 #: plugins/snippets/snippets/manager.py:942
 msgid "Gzip compressed archive"
-msgstr "Gzip-ekin konprimitutako artxiboa"
+msgstr "Gzip-ekin konprimatutako artxiboa"
 
 #: plugins/snippets/snippets/manager.py:794
 #: plugins/snippets/snippets/manager.py:880
 #: plugins/snippets/snippets/manager.py:943
 msgid "Bzip2 compressed archive"
-msgstr "Bzip2-rekin konprimitutako artxiboa"
+msgstr "Bzip2-rekin konprimatutako artxiboa"
 
 #: plugins/snippets/snippets/manager.py:795
 msgid "Single snippets file"
@@ -3346,7 +3341,7 @@ msgstr "_Jaregin helburuak:"
 
 #: plugins/sort/gedit-sort-plugin.c:243
 msgid "S_ort…"
-msgstr "O_rdenatu..."
+msgstr "O_rdenatu…"
 
 #: plugins/sort/resources/ui/gedit-sort-plugin.ui:13
 #: plugins/sort/sort.plugin.desktop.in:5
@@ -3379,20 +3374,20 @@ msgstr "Dokumentua edo hautatutako testua ordenatzen du."
 
 #: plugins/spell/gedit-spell-app-activatable.c:143
 msgid "_Check Spelling…"
-msgstr "_Ortografia-egiaztatzailea..."
+msgstr "_Ortografia-egiaztatzailea…"
 
 #: plugins/spell/gedit-spell-app-activatable.c:147
 msgid "Set _Language…"
-msgstr "Ezarri hi_zkuntza..."
+msgstr "Ezarri hi_zkuntza…"
 
 #: plugins/spell/gedit-spell-app-activatable.c:151
 msgid "_Highlight Misspelled Words"
-msgstr "_Nabarmendu gaziki idatzitako hitzak"
+msgstr "_Nabarmendu gaizki idatzitako hitzak"
 
 #: plugins/spell/org.gnome.gedit.plugins.spell.gschema.xml.in:5
 #: plugins/spell/resources/ui/gedit-spell-setup-dialog.ui:75
 msgid "Highlight misspelled words"
-msgstr "Nabarmendu gaziki idatzitako hitzak"
+msgstr "Nabarmendu gaizki idatzitako hitzak"
 
 #: plugins/spell/org.gnome.gedit.plugins.spell.gschema.xml.in:6
 msgid "Default setting for highlight misspelled words."
@@ -3416,7 +3411,7 @@ msgstr "Uneko dokumentuaren ortografia egiaztatzen du."
 
 #: plugins/time/gedit-time-plugin.c:265
 msgid "In_sert Date and Time…"
-msgstr "T_xertatu data eta ordua..."
+msgstr "T_xertatu data eta ordua…"
 
 #: plugins/time/gedit-time-plugin.c:491
 msgid "Available formats"
@@ -3484,7 +3479,7 @@ msgstr "Konfiguratu dataren/orduaren plugina"
 
 #: plugins/time/resources/ui/gedit-time-setup-dialog.ui:57
 msgid "When inserting date/time…"
-msgstr "Data/ordua txertatzean..."
+msgstr "Data/ordua txertatzean…"
 
 #: plugins/time/resources/ui/gedit-time-setup-dialog.ui:75
 msgid "_Prompt for a format"
@@ -3497,3 +3492,7 @@ msgstr "Sartu data/ordua"
 #: plugins/time/time.plugin.desktop.in:6
 msgid "Inserts current date and time at the cursor position."
 msgstr "Uneko data eta ordua sartzen ditu kurtsorearen posizioan."
+
+#~ msgctxt "shortcut window"
+#~ msgid "Insert timestamp"
+#~ msgstr "Txertatu denbora-zigilua"
