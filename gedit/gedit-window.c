@@ -30,7 +30,6 @@
 
 #include <glib/gi18n.h>
 #include <libpeas/peas-extension-set.h>
-#include <tepl/tepl.h>
 
 #include "gedit-window-private.h"
 #include "gedit-app.h"
@@ -1121,8 +1120,8 @@ set_title (GeditWindow *window)
 	{
 		gchar *tmp;
 
-		tmp = tepl_utils_str_middle_truncate (name,
-						      MAX_TITLE_LENGTH);
+		tmp = gedit_utils_str_middle_truncate (name,
+						       MAX_TITLE_LENGTH);
 		g_free (name);
 		name = tmp;
 	}
@@ -1140,8 +1139,8 @@ set_title (GeditWindow *window)
 			 * we have a title long 99 + 20, but I think it's a rare enough
 			 * case to be acceptable. It's justa darn title afterall :)
 			 */
-			dirname = tepl_utils_str_middle_truncate (str,
-								  MAX (20, MAX_TITLE_LENGTH - len));
+			dirname = gedit_utils_str_middle_truncate (str,
+								   MAX (20, MAX_TITLE_LENGTH - len));
 			g_free (str);
 		}
 	}

@@ -24,7 +24,6 @@
 
 #include <stdlib.h>
 #include <glib/gi18n.h>
-#include <tepl/tepl.h>
 
 #include "gedit-app.h"
 #include "gedit-app-private.h"
@@ -786,7 +785,7 @@ show_loading_info_bar (GTask *loading_task)
 	{
 		gchar *str;
 
-		str = tepl_utils_str_middle_truncate (name, MAX_MSG_LENGTH);
+		str = gedit_utils_str_middle_truncate (name, MAX_MSG_LENGTH);
 		g_free (name);
 		name = str;
 	}
@@ -805,8 +804,8 @@ show_loading_info_bar (GTask *loading_task)
 			 * we have a title long 99 + 20, but I think it's a rare enough
 			 * case to be acceptable. It's justa darn title afterall :)
 			 */
-			dirname = tepl_utils_str_middle_truncate (str,
-								  MAX (20, MAX_MSG_LENGTH - len));
+			dirname = gedit_utils_str_middle_truncate (str,
+								   MAX (20, MAX_MSG_LENGTH - len));
 			g_free (str);
 		}
 	}
@@ -900,7 +899,7 @@ show_saving_info_bar (GTask *saving_task)
 	 */
 	if (len > MAX_MSG_LENGTH)
 	{
-		from = tepl_utils_str_middle_truncate (short_name, MAX_MSG_LENGTH);
+		from = gedit_utils_str_middle_truncate (short_name, MAX_MSG_LENGTH);
 		g_free (short_name);
 	}
 	else
@@ -914,7 +913,7 @@ show_saving_info_bar (GTask *saving_task)
 
 		from = short_name;
 		to = g_file_get_parse_name (location);
-		str = tepl_utils_str_middle_truncate (to, MAX (20, MAX_MSG_LENGTH - len));
+		str = gedit_utils_str_middle_truncate (to, MAX (20, MAX_MSG_LENGTH - len));
 		g_free (to);
 
 		to = str;
@@ -1487,7 +1486,7 @@ _gedit_tab_get_name (GeditTab *tab)
 	name = gedit_document_get_short_name_for_display (doc);
 
 	/* Truncate the name so it doesn't get insanely wide. */
-	docname = tepl_utils_str_middle_truncate (name, MAX_DOC_NAME_LENGTH);
+	docname = gedit_utils_str_middle_truncate (name, MAX_DOC_NAME_LENGTH);
 
 	if (gtk_text_buffer_get_modified (GTK_TEXT_BUFFER (doc)))
 	{
