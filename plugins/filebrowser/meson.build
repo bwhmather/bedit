@@ -101,27 +101,15 @@ custom_target(
   )
 )
 
-filebrowser_gschema_file = configure_file(
+configure_file(
   input: 'org.gnome.gedit.plugins.filebrowser.gschema.xml.in',
   output: 'org.gnome.gedit.plugins.filebrowser.gschema.xml',
-  configuration: gschema_in,
+  configuration: gschema_xml,
   install_dir: join_paths(
     glibdir,
     'schemas',
   )
 )
-
-if xmllint.found()
-  test(
-    'validate-filebrowser-gschema',
-    xmllint,
-    args: [
-      '--noout',
-      '--dtdvalid', gschema_dtd,
-      filebrowser_gschema_file,
-    ]
-  )
-endif
 
 custom_target(
   'filebrowser.plugin',

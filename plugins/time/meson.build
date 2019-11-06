@@ -42,27 +42,15 @@ libtime_sha = shared_module(
   name_suffix: module_suffix,
 )
 
-time_gschema_file = configure_file(
+configure_file(
   input: 'org.gnome.gedit.plugins.time.gschema.xml.in',
   output: 'org.gnome.gedit.plugins.time.gschema.xml',
-  configuration: gschema_in,
+  configuration: gschema_xml,
   install_dir: join_paths(
     glibdir,
     'schemas',
   )
 )
-
-if xmllint.found()
-  test(
-    'validate-time-gschema',
-    xmllint,
-    args: [
-      '--noout',
-      '--dtdvalid', gschema_dtd,
-      time_gschema_file,
-    ]
-  )
-endif
 
 custom_target(
   'time.plugin',

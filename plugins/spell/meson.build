@@ -28,27 +28,15 @@ libspell_sha = shared_module(
   name_suffix: module_suffix,
 )
 
-spell_gschema_file = configure_file(
+configure_file(
   input: 'org.gnome.gedit.plugins.spell.gschema.xml.in',
   output: 'org.gnome.gedit.plugins.spell.gschema.xml',
-  configuration: gschema_in,
+  configuration: gschema_xml,
   install_dir: join_paths(
     glibdir,
     'schemas',
   )
 )
-
-if xmllint.found()
-  test(
-    'validate-spell-gschema',
-    xmllint,
-    args: [
-      '--noout',
-      '--dtdvalid', gschema_dtd,
-      spell_gschema_file,
-    ]
-  )
-endif
 
 custom_target(
   'spell.plugin',
