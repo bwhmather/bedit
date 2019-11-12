@@ -30,9 +30,9 @@
 #  include "gedit-app-x11.h"
 #endif
 
-#include <glib.h>
 #include <locale.h>
 #include <libintl.h>
+#include <tepl/tepl.h>
 
 #include "gedit-dirs.h"
 #include "gedit-debug.h"
@@ -138,6 +138,7 @@ main (int argc, char *argv[])
 	gedit_dirs_init ();
 
 	setup_i18n ();
+	tepl_init ();
 
 	/* https://honk.sigxcpu.org/con/GTK__and_the_application_id.html */
 	g_set_prgname ("org.gnome.gedit");
@@ -162,6 +163,8 @@ main (int argc, char *argv[])
 		gedit_debug_message (DEBUG_APP, "Leaking with %i refs",
 		                     G_OBJECT (app)->ref_count);
 	}
+
+	tepl_finalize ();
 
 #ifdef G_OS_WIN32
 	gedit_w32_unload_private_dll ();
