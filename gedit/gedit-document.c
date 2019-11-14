@@ -28,6 +28,7 @@
 
 #include <string.h>
 #include <glib/gi18n.h>
+#include <tepl/tepl.h>
 
 #include "gedit-settings.h"
 #include "gedit-debug.h"
@@ -45,6 +46,9 @@ static void	set_content_type		(GeditDocument *doc,
 typedef struct
 {
 	GtkSourceFile *file;
+
+	/* Used only internally for the TeplFileMetadata. */
+	TeplFile *tepl_file;
 
 	GSettings   *editor_settings;
 
@@ -192,14 +196,15 @@ gedit_document_dispose (GObject *object)
 	/* Metadata must be saved here and not in finalize because the language
 	 * is gone by the time finalize runs.
 	 */
-	if (priv->file != NULL)
+	if (priv->tepl_file != NULL)
 	{
 		save_metadata (doc);
 
-		g_object_unref (priv->file);
-		priv->file = NULL;
+		g_object_unref (priv->tepl_file);
+		priv->tepl_file = NULL;
 	}
 
+	g_clear_object (&priv->file);
 	g_clear_object (&priv->editor_settings);
 	g_clear_object (&priv->search_context);
 
@@ -739,6 +744,13 @@ gedit_document_init (GeditDocument *doc)
 				 G_CALLBACK (on_location_changed),
 				 doc,
 				 0);
+
+	priv->tepl_file = tepl_file_new ();
+
+	/* For using TeplFileMetadata we only need the TeplFile:location. */
+	g_object_bind_property (priv->file, "location",
+				priv->tepl_file, "location",
+				G_BINDING_DEFAULT | G_BINDING_SYNC_CREATE);
 
 	g_settings_bind (priv->editor_settings,
 	                 GEDIT_SETTINGS_MAX_UNDO_ACTIONS,
