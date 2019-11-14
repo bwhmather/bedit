@@ -28,9 +28,8 @@
 #include <stdlib.h>
 
 #include <glib/gi18n.h>
-#include <gio/gio.h>
 #include <libpeas/peas-extension-set.h>
-#include <gtksourceview/gtksource.h>
+#include <tepl/tepl.h>
 
 #ifdef ENABLE_INTROSPECTION
 #include <girepository.h>
@@ -740,6 +739,20 @@ show_menubar (void)
 }
 
 static void
+setup_metadata_manager (void)
+{
+	const gchar *user_data_dir;
+	gchar *metadata_path;
+
+	user_data_dir = gedit_dirs_get_user_data_dir ();
+	metadata_path = g_build_filename (user_data_dir, "gedit-metadata.xml", NULL);
+
+	tepl_metadata_manager_init (metadata_path);
+
+	g_free (metadata_path);
+}
+
+static void
 gedit_app_startup (GApplication *application)
 {
 	GeditAppPrivate *priv;
@@ -753,6 +766,8 @@ gedit_app_startup (GApplication *application)
 	/* Setup debugging */
 	gedit_debug_init ();
 	gedit_debug_message (DEBUG_APP, "Startup");
+
+	setup_metadata_manager ();
 
 	setup_theme_extensions (GEDIT_APP (application));
 
