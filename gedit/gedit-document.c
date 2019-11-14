@@ -711,12 +711,38 @@ on_location_changed (GtkSourceFile *file,
 	}
 
 	g_object_notify_by_pspec (G_OBJECT (doc), properties[PROP_SHORTNAME]);
+}
+
+static void
+on_tepl_location_changed (TeplFile      *file,
+			  GParamSpec    *pspec,
+			  GeditDocument *doc)
+{
+	TeplFileMetadata *metadata;
+	GError *error = NULL;
 
 	/* Load metadata for this location: we load sync since metadata is
 	 * always local so it should be fast and we need the information
 	 * right after the location was set.
 	 */
-	/* TODO */
+	metadata = tepl_file_get_file_metadata (file);
+	tepl_file_metadata_load (metadata, NULL, &error);
+
+	if (error != NULL)
+	{
+		/* Do not complain about metadata if we are opening a
+		 * non existing file.
+		 */
+		if (!g_error_matches (error, G_FILE_ERROR, G_FILE_ERROR_ISDIR) &&
+		    !g_error_matches (error, G_FILE_ERROR, G_FILE_ERROR_NOTDIR) &&
+		    !g_error_matches (error, G_FILE_ERROR, G_FILE_ERROR_NOENT) &&
+		    !g_error_matches (error, G_IO_ERROR, G_IO_ERROR_NOT_FOUND))
+		{
+			g_warning ("Loading metadata failed: %s", error->message);
+		}
+
+		g_clear_error (&error);
+	}
 }
 
 static void
@@ -746,6 +772,12 @@ gedit_document_init (GeditDocument *doc)
 				 0);
 
 	priv->tepl_file = tepl_file_new ();
+
+	g_signal_connect_object (priv->tepl_file,
+				 "notify::location",
+				 G_CALLBACK (on_tepl_location_changed),
+				 doc,
+				 0);
 
 	/* For using TeplFileMetadata we only need the TeplFile:location. */
 	g_object_bind_property (priv->file, "location",
@@ -1296,10 +1328,21 @@ gchar *
 gedit_document_get_metadata (GeditDocument *doc,
 			     const gchar   *key)
 {
+	GeditDocumentPrivate *priv;
+	TeplFileMetadata *metadata;
+
 	g_return_val_if_fail (GEDIT_IS_DOCUMENT (doc), NULL);
 	g_return_val_if_fail (key != NULL, NULL);
 
-	return NULL;
+	priv = gedit_document_get_instance_private (doc);
+
+	if (priv->tepl_file == NULL)
+	{
+		return NULL;
+	}
+
+	metadata = tepl_file_get_file_metadata (priv->tepl_file);
+	return tepl_file_metadata_get (metadata, key);
 }
 
 /**
@@ -1316,22 +1359,54 @@ gedit_document_set_metadata (GeditDocument *doc,
 			     const gchar   *first_key,
 			     ...)
 {
+	GeditDocumentPrivate *priv;
+	TeplFileMetadata *metadata;
 	va_list var_args;
 	const gchar *key;
+	GError *error = NULL;
 
 	g_return_if_fail (GEDIT_IS_DOCUMENT (doc));
 	g_return_if_fail (first_key != NULL);
 
+	priv = gedit_document_get_instance_private (doc);
+
+	if (priv->tepl_file == NULL)
+	{
+		return;
+	}
+
+	metadata = tepl_file_get_file_metadata (priv->tepl_file);
 	va_start (var_args, first_key);
 
 	for (key = first_key; key != NULL; key = va_arg (var_args, const gchar *))
 	{
 		const gchar *value = va_arg (var_args, const gchar *);
-
-		g_message ("Set metadata: key='%s' ; value='%s'", key, value);
+		tepl_file_metadata_set (metadata, key, value);
 	}
 
 	va_end (var_args);
+
+	/* We save synchronously since metadata is always local so it should be
+	 * fast. Moreover this function can be called on application shutdown,
+	 * when the main loop has already exited, so an async operation would
+	 * not terminate.
+	 * https://bugzilla.gnome.org/show_bug.cgi?id=736591
+	 */
+	tepl_file_metadata_save (metadata, NULL, &error);
+
+	if (error != NULL)
+	{
+		/* Do not complain about metadata if we are closing a document
+		 * for a non existing file.
+		 */
+		if (!g_error_matches (error, G_FILE_ERROR, G_FILE_ERROR_NOENT) &&
+		    !g_error_matches (error, G_IO_ERROR, G_IO_ERROR_NOT_FOUND))
+		{
+			g_warning ("Saving metadata failed: %s", error->message);
+		}
+
+		g_clear_error (&error);
+	}
 }
 
 static void
