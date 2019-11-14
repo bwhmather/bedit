@@ -29,14 +29,9 @@
 #include <string.h>
 #include <glib/gi18n.h>
 
-#include "gedit-app.h"
-#include "gedit-app-private.h"
 #include "gedit-settings.h"
 #include "gedit-debug.h"
 #include "gedit-utils.h"
-#include "gedit-metadata-manager.h"
-
-#define METADATA_QUERY "metadata::*"
 
 #define NO_LANGUAGE_NAME "_NORMAL_"
 
@@ -55,8 +50,6 @@ typedef struct
 
 	gint 	     untitled_number;
 
-	GFileInfo   *metadata_info;
-
 	gchar	    *content_type;
 
 	GTimeVal     time_of_last_save_or_load;
@@ -66,12 +59,9 @@ typedef struct
 	 */
 	GtkSourceSearchContext *search_context;
 
-	GeditMetadataManager *metadata_manager;
-
 	guint user_action;
 
 	guint language_set_by_user : 1;
-	guint use_gvfs_metadata : 1;
 
 	/* The search is empty if there is no search context, or if the
 	 * search text is empty. It is used for the sensitivity of some menu
@@ -92,7 +82,6 @@ enum
 	PROP_CONTENT_TYPE,
 	PROP_MIME_TYPE,
 	PROP_EMPTY_SEARCH,
-	PROP_USE_GVFS_METADATA,
 	LAST_PROP
 };
 
@@ -212,9 +201,7 @@ gedit_document_dispose (GObject *object)
 	}
 
 	g_clear_object (&priv->editor_settings);
-	g_clear_object (&priv->metadata_info);
 	g_clear_object (&priv->search_context);
-	g_clear_object (&priv->metadata_manager);
 
 	G_OBJECT_CLASS (gedit_document_parent_class)->dispose (object);
 }
@@ -267,10 +254,6 @@ gedit_document_get_property (GObject    *object,
 			g_value_set_boolean (value, priv->empty_search);
 			break;
 
-		case PROP_USE_GVFS_METADATA:
-			g_value_set_boolean (value, priv->use_gvfs_metadata);
-			break;
-
 		default:
 			G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
 			break;
@@ -284,16 +267,11 @@ gedit_document_set_property (GObject      *object,
 			     GParamSpec   *pspec)
 {
 	GeditDocument *doc = GEDIT_DOCUMENT (object);
-	GeditDocumentPrivate *priv = gedit_document_get_instance_private (doc);
 
 	switch (prop_id)
 	{
 		case PROP_CONTENT_TYPE:
 			set_content_type (doc, g_value_get_string (value));
-			break;
-
-		case PROP_USE_GVFS_METADATA:
-			priv->use_gvfs_metadata = g_value_get_boolean (value);
 			break;
 
 		default:
@@ -368,15 +346,6 @@ gedit_document_constructed (GObject *object)
 	GeditDocumentPrivate *priv;
 
 	priv = gedit_document_get_instance_private (doc);
-
-	if (!priv->use_gvfs_metadata)
-	{
-		GeditMetadataManager *metadata_manager;
-
-		metadata_manager = _gedit_app_get_metadata_manager (GEDIT_APP (g_application_get_default ()));
-		g_assert (GEDIT_IS_METADATA_MANAGER (metadata_manager));
-		priv->metadata_manager = g_object_ref (metadata_manager);
-	}
 
 	/* Bind construct properties. */
 	g_settings_bind (priv->editor_settings,
@@ -458,25 +427,6 @@ gedit_document_class_init (GeditDocumentClass *klass)
 		                      "Whether the search is empty",
 		                      TRUE,
 		                      G_PARAM_READABLE | G_PARAM_STATIC_STRINGS);
-
-	/**
-	 * GeditDocument:use-gvfs-metadata:
-	 *
-	 * Whether to use GVFS metadata. If %FALSE, use the gedit metadata
-	 * manager that stores the metadata in an XML file in the user cache
-	 * directory.
-	 *
-	 * <warning>
-	 * The property is used internally by gedit. It must not be used in a
-	 * gedit plugin. The property can be modified or removed at any time.
-	 * </warning>
-	 */
-	properties[PROP_USE_GVFS_METADATA] =
-		g_param_spec_boolean ("use-gvfs-metadata",
-		                      "Use GVFS metadata",
-		                      "",
-		                      TRUE,
-		                      G_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY | G_PARAM_STATIC_STRINGS);
 
 	g_object_class_install_properties (object_class, LAST_PROP, properties);
 
@@ -761,42 +711,7 @@ on_location_changed (GtkSourceFile *file,
 	 * always local so it should be fast and we need the information
 	 * right after the location was set.
 	 */
-	if (priv->use_gvfs_metadata && location != NULL)
-	{
-		GError *error = NULL;
-
-		if (priv->metadata_info != NULL)
-		{
-			g_object_unref (priv->metadata_info);
-		}
-
-		priv->metadata_info = g_file_query_info (location,
-		                                         METADATA_QUERY,
-		                                         G_FILE_QUERY_INFO_NONE,
-		                                         NULL,
-		                                         &error);
-
-		if (error != NULL)
-		{
-			/* Do not complain about metadata if we are opening a
-			 * non existing file.
-			 */
-			if (!g_error_matches (error, G_FILE_ERROR, G_FILE_ERROR_ISDIR) &&
-			    !g_error_matches (error, G_FILE_ERROR, G_FILE_ERROR_NOTDIR) &&
-			    !g_error_matches (error, G_FILE_ERROR, G_FILE_ERROR_NOENT) &&
-			    !g_error_matches (error, G_IO_ERROR, G_IO_ERROR_NOT_FOUND))
-			{
-				g_warning ("%s", error->message);
-			}
-
-			g_error_free (error);
-		}
-
-		if (priv->metadata_info == NULL)
-		{
-			priv->metadata_info = g_file_info_new ();
-		}
-	}
+	/* TODO */
 }
 
 static void
@@ -818,7 +733,6 @@ gedit_document_init (GeditDocument *doc)
 	g_get_current_time (&priv->time_of_last_save_or_load);
 
 	priv->file = gtk_source_file_new ();
-	priv->metadata_info = g_file_info_new ();
 
 	g_signal_connect_object (priv->file,
 				 "notify::location",
@@ -859,17 +773,7 @@ gedit_document_init (GeditDocument *doc)
 GeditDocument *
 gedit_document_new (void)
 {
-	gboolean use_gvfs_metadata;
-
-#ifdef ENABLE_GVFS_METADATA
-	use_gvfs_metadata = TRUE;
-#else
-	use_gvfs_metadata = FALSE;
-#endif
-
-	return g_object_new (GEDIT_TYPE_DOCUMENT,
-			     "use-gvfs-metadata", use_gvfs_metadata,
-			     NULL);
+	return g_object_new (GEDIT_TYPE_DOCUMENT, NULL);
 }
 
 static gchar *
