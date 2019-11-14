@@ -1367,64 +1367,6 @@ _gedit_document_get_seconds_since_last_save_or_load (GeditDocument *doc)
 	return (current_time.tv_sec - priv->time_of_last_save_or_load.tv_sec);
 }
 
-static gchar *
-get_metadata_from_metadata_manager (GeditDocument *doc,
-				    const gchar   *key)
-{
-	GeditDocumentPrivate *priv;
-	GFile *location;
-
-	priv = gedit_document_get_instance_private (doc);
-
-	location = gtk_source_file_get_location (priv->file);
-
-	if (location != NULL)
-	{
-		return gedit_metadata_manager_get (priv->metadata_manager, location, key);
-	}
-
-	return NULL;
-}
-
-static gchar *
-get_metadata_from_gvfs (GeditDocument *doc,
-			const gchar   *key)
-{
-	GeditDocumentPrivate *priv;
-
-	priv = gedit_document_get_instance_private (doc);
-
-	if (priv->metadata_info != NULL &&
-	    g_file_info_has_attribute (priv->metadata_info, key) &&
-	    g_file_info_get_attribute_type (priv->metadata_info, key) == G_FILE_ATTRIBUTE_TYPE_STRING)
-	{
-		return g_strdup (g_file_info_get_attribute_string (priv->metadata_info, key));
-	}
-
-	return NULL;
-}
-
-static void
-set_gvfs_metadata (GFileInfo   *info,
-		   const gchar *key,
-		   const gchar *value)
-{
-	g_return_if_fail (G_IS_FILE_INFO (info));
-
-	if (value != NULL)
-	{
-		g_file_info_set_attribute_string (info, key, value);
-	}
-	else
-	{
-		/* Unset the key */
-		g_file_info_set_attribute (info,
-					   key,
-					   G_FILE_ATTRIBUTE_TYPE_INVALID,
-					   NULL);
-	}
-}
-
 /**
  * gedit_document_get_metadata:
  * @doc: a #GeditDocument
@@ -1438,19 +1380,10 @@ gchar *
 gedit_document_get_metadata (GeditDocument *doc,
 			     const gchar   *key)
 {
-	GeditDocumentPrivate *priv;
-
 	g_return_val_if_fail (GEDIT_IS_DOCUMENT (doc), NULL);
 	g_return_val_if_fail (key != NULL, NULL);
 
-	priv = gedit_document_get_instance_private (doc);
-
-	if (priv->use_gvfs_metadata)
-	{
-		return get_metadata_from_gvfs (doc, key);
-	}
-
-	return get_metadata_from_metadata_manager (doc, key);
+	return NULL;
 }
 
 /**
@@ -1467,85 +1400,22 @@ gedit_document_set_metadata (GeditDocument *doc,
 			     const gchar   *first_key,
 			     ...)
 {
-	GeditDocumentPrivate *priv;
-	GFile *location;
-	const gchar *key;
 	va_list var_args;
-	GFileInfo *info = NULL;
+	const gchar *key;
 
 	g_return_if_fail (GEDIT_IS_DOCUMENT (doc));
 	g_return_if_fail (first_key != NULL);
 
-	priv = gedit_document_get_instance_private (doc);
-
-	location = gtk_source_file_get_location (priv->file);
-
-	/* With the metadata manager, can't set metadata for untitled documents.
-	 * With GVFS metadata, if the location is NULL the metadata is stored in
-	 * priv->metadata_info, so that it can be saved later if the document is
-	 * saved.
-	 */
-	if (!priv->use_gvfs_metadata && location == NULL)
-	{
-		return;
-	}
-
-	if (priv->use_gvfs_metadata)
-	{
-		info = g_file_info_new ();
-	}
-
 	va_start (var_args, first_key);
 
-	for (key = first_key; key; key = va_arg (var_args, const gchar *))
+	for (key = first_key; key != NULL; key = va_arg (var_args, const gchar *))
 	{
 		const gchar *value = va_arg (var_args, const gchar *);
 
-		if (priv->use_gvfs_metadata)
-		{
-			set_gvfs_metadata (info, key, value);
-			set_gvfs_metadata (priv->metadata_info, key, value);
-		}
-		else
-		{
-			gedit_metadata_manager_set (priv->metadata_manager, location, key, value);
-		}
+		g_message ("Set metadata: key='%s' ; value='%s'", key, value);
 	}
 
 	va_end (var_args);
-
-	if (priv->use_gvfs_metadata && location != NULL)
-	{
-		GError *error = NULL;
-
-		/* We save synchronously since metadata is always local so it
-		 * should be fast. Moreover this function can be called on
-		 * application shutdown, when the main loop has already exited,
-		 * so an async operation would not terminate.
-		 * https://bugzilla.gnome.org/show_bug.cgi?id=736591
-		 */
-		g_file_set_attributes_from_info (location,
-						 info,
-						 G_FILE_QUERY_INFO_NONE,
-						 NULL,
-						 &error);
-
-		if (error != NULL)
-		{
-			/* Do not complain about metadata if we are closing a
-			 * document for a non existing file.
-			 */
-			if (!g_error_matches (error, G_FILE_ERROR, G_FILE_ERROR_NOENT) &&
-			    !g_error_matches (error, G_IO_ERROR, G_IO_ERROR_NOT_FOUND))
-			{
-				g_warning ("Set document metadata failed: %s", error->message);
-			}
-
-			g_error_free (error);
-		}
-	}
-
-	g_clear_object (&info);
 }
 
 static void
