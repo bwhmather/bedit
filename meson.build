@@ -65,7 +65,6 @@ gtk_req = '>= 3.22.0'
 gtksourceview_req = '>= 4.0.2'
 tepl_req = '>= 4.3'
 libpeas_req = '>= 1.14.1'
-libxml_req = '>= 2.5.0'
 libsoup_req = '>= 2.60.0'
 gspell_req = '>= 0.2.5'
 pygobject_req = '>= 3.0.0'
@@ -83,7 +82,6 @@ gtksourceview_dep = dependency('gtksourceview-4', version: gtksourceview_req)
 tepl_dep = dependency('tepl-4', version: tepl_req)
 libpeas_dep = dependency('libpeas-1.0', version: libpeas_req)
 libpeas_gtk_dep = dependency('libpeas-gtk-1.0', version: libpeas_req)
-libxml_dep = dependency('libxml-2.0', version: libxml_req)
 
 libgd_dep = libgd_sp.get_variable('libgd_dep')
 

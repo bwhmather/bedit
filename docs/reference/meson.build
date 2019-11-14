@@ -16,7 +16,6 @@ gedit_doc_deps = [
   tepl_dep,
   libpeas_dep,
   libpeas_gtk_dep,
-  libxml_dep,
 ]
 
 gedit_doc_dep = declare_dependency(
