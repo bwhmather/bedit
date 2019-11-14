@@ -45,7 +45,6 @@ libgedit_reference_ignored_h = [
   'gedit-history-entry.h',
   'gedit-io-error-info-bar.h',
   'gedit-menu-stack-switcher.h',
-  'gedit-metadata-manager.h',
   'gedit-multi-notebook.h',
   'gedit-notebook-popup-menu.h',
   'gedit-notebook-stack-switcher.h',
