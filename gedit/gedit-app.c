@@ -50,20 +50,12 @@
 #include "gedit-tab.h"
 #include "gedit-tab-private.h"
 
-#ifndef ENABLE_GVFS_METADATA
-#include "gedit-metadata-manager.h"
-#endif
-
 #define GEDIT_PAGE_SETUP_FILE		"gedit-page-setup"
 #define GEDIT_PRINT_SETTINGS_FILE	"gedit-print-settings"
 
 typedef struct
 {
 	GeditPluginsEngine *engine;
-
-#ifndef ENABLE_GVFS_METADATA
-	GeditMetadataManager *metadata_manager;
-#endif
 
 	GtkCssProvider     *theme_provider;
 
@@ -171,10 +163,6 @@ gedit_app_dispose (GObject *object)
 	GeditAppPrivate *priv;
 
 	priv = gedit_app_get_instance_private (GEDIT_APP (object));
-
-#ifndef ENABLE_GVFS_METADATA
-	g_clear_object (&priv->metadata_manager);
-#endif
 
 	g_clear_object (&priv->ui_settings);
 	g_clear_object (&priv->window_settings);
@@ -757,10 +745,6 @@ gedit_app_startup (GApplication *application)
 	GeditAppPrivate *priv;
 	GtkCssProvider *css_provider;
 	GtkSourceStyleSchemeManager *manager;
-#ifndef ENABLE_GVFS_METADATA
-	const gchar *cache_dir;
-	gchar *metadata_filename;
-#endif
 
 	priv = gedit_app_get_instance_private (GEDIT_APP (application));
 
@@ -771,13 +755,6 @@ gedit_app_startup (GApplication *application)
 	gedit_debug_message (DEBUG_APP, "Startup");
 
 	setup_theme_extensions (GEDIT_APP (application));
-
-#ifndef ENABLE_GVFS_METADATA
-	cache_dir = gedit_dirs_get_user_cache_dir ();
-	metadata_filename = g_build_filename (cache_dir, "gedit-metadata.xml", NULL);
-	priv->metadata_manager = gedit_metadata_manager_new (metadata_filename);
-	g_free (metadata_filename);
-#endif
 
 	/* Load settings */
 	priv->settings = gedit_settings_new ();
@@ -1867,24 +1844,6 @@ _gedit_app_get_settings (GeditApp *app)
 
 	return priv->settings;
 }
-
-GeditMetadataManager *
-_gedit_app_get_metadata_manager (GeditApp *app)
-{
-#ifndef ENABLE_GVFS_METADATA
-	GeditAppPrivate *priv;
-
-	g_return_val_if_fail (GEDIT_IS_APP (app), NULL);
-
-	priv = gedit_app_get_instance_private (app);
-
-	return priv->metadata_manager;
-#else
-	g_assert_not_reached ();
-	return NULL;
-#endif
-}
-
 
 GMenuModel *
 _gedit_app_get_hamburger_menu (GeditApp *app)
