@@ -61,7 +61,6 @@ gchar                     *gedit_utils_make_valid_utf8                         (
 
 
 gchar                     *gedit_utils_location_get_dirname_for_display        (GFile          *location);
-gchar                     *gedit_utils_replace_home_dir_with_tilde             (const gchar    *uri);
 guint                      gedit_utils_get_current_workspace                   (GdkScreen      *screen);
 guint                      gedit_utils_get_window_workspace                    (GtkWindow      *gtkwindow);
 void                       gedit_utils_get_current_viewport                    (GdkScreen      *screen,
@@ -86,6 +85,8 @@ GtkSourceCompressionType   gedit_utils_get_compression_type_from_content_type (c
 gchar                     *gedit_utils_set_direct_save_filename               (GdkDragContext       *context);
 const gchar               *gedit_utils_newline_type_to_string                 (GtkSourceNewlineType  newline_type);
 
+G_DEPRECATED_FOR (tepl_utils_replace_home_dir_with_tilde)
+gchar                     *gedit_utils_replace_home_dir_with_tilde             (const gchar    *uri);
 
 G_END_DECLS
 

@@ -1520,7 +1520,7 @@ _gedit_tab_get_tooltip (GeditTab *tab)
 	uri = gedit_document_get_uri_for_display (doc);
 	g_return_val_if_fail (uri != NULL, NULL);
 
-	ruri = 	gedit_utils_replace_home_dir_with_tilde (uri);
+	ruri = 	tepl_utils_replace_home_dir_with_tilde (uri);
 	g_free (uri);
 
 	ruri_markup = g_markup_printf_escaped ("<i>%s</i>", ruri);
