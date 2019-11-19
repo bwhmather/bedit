@@ -720,6 +720,7 @@ on_tepl_location_changed (TeplFile      *file,
 	/* Load metadata for this location: we load sync since metadata is
 	 * always local so it should be fast and we need the information
 	 * right after the location was set.
+	 * TODO: do async I/O for the metadata.
 	 */
 	metadata = tepl_file_get_file_metadata (file);
 	tepl_file_metadata_load (metadata, NULL, &error);
@@ -728,6 +729,9 @@ on_tepl_location_changed (TeplFile      *file,
 	{
 		/* Do not complain about metadata if we are opening a
 		 * non existing file.
+		 * TODO: we should know beforehand whether the file exists or
+		 * not, and load the metadata only when needed (after loading
+		 * the file content, for example).
 		 */
 		if (!g_error_matches (error, G_FILE_ERROR, G_FILE_ERROR_ISDIR) &&
 		    !g_error_matches (error, G_FILE_ERROR, G_FILE_ERROR_NOTDIR) &&
@@ -1387,6 +1391,7 @@ gedit_document_set_metadata (GeditDocument *doc,
 	 * when the main loop has already exited, so an async operation would
 	 * not terminate.
 	 * https://bugzilla.gnome.org/show_bug.cgi?id=736591
+	 * TODO: do async I/O for the metadata.
 	 */
 	tepl_file_metadata_save (metadata, NULL, &error);
 
@@ -1394,6 +1399,9 @@ gedit_document_set_metadata (GeditDocument *doc,
 	{
 		/* Do not complain about metadata if we are closing a document
 		 * for a non existing file.
+		 * TODO: we should know beforehand whether the file exists or
+		 * not, and save the metadata only when needed (after saving the
+		 * file content, for example).
 		 */
 		if (!g_error_matches (error, G_FILE_ERROR, G_FILE_ERROR_NOENT) &&
 		    !g_error_matches (error, G_IO_ERROR, G_IO_ERROR_NOT_FOUND))
