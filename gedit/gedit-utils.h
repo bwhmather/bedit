@@ -33,11 +33,6 @@ G_BEGIN_DECLS
 
 enum { GEDIT_ALL_WORKSPACES = 0xffffffff };
 
-void                       gedit_utils_menu_position_under_widget             (GtkMenu         *menu,
-                                                                               gint            *x,
-                                                                               gint            *y,
-                                                                               gboolean        *push_in,
-                                                                               gpointer         user_data);
 gboolean                   gedit_utils_menu_position_under_tree_view          (GtkTreeView     *tree_view,
                                                                                GdkRectangle    *rect);
 
@@ -86,6 +81,13 @@ gchar                     *gedit_utils_str_end_truncate                       (c
                                                                                guint            truncate_length);
 G_DEPRECATED_FOR (tepl_utils_replace_home_dir_with_tilde)
 gchar                     *gedit_utils_replace_home_dir_with_tilde             (const gchar    *uri);
+
+G_DEPRECATED_FOR (gtk_menu_popup_at_widget)
+void                       gedit_utils_menu_position_under_widget             (GtkMenu         *menu,
+                                                                               gint            *x,
+                                                                               gint            *y,
+                                                                               gboolean        *push_in,
+                                                                               gpointer         user_data);
 
 G_END_DECLS
 
