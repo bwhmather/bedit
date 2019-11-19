@@ -5,7 +5,10 @@ gobject_prefix = gobject_dep.get_pkgconfig_variable('prefix')
 gobject_docpath = join_paths(gobject_prefix, 'share', 'gtk-doc', 'html', 'gobject')
 
 gtk_prefix = gtk_dep.get_pkgconfig_variable('prefix')
-gtk_docpath = join_paths(gobject_prefix, 'share', 'gtk-doc', 'html', 'gtk')
+gtk_docpath = join_paths(gtk_prefix, 'share', 'gtk-doc', 'html', 'gtk')
+
+tepl_prefix = tepl_dep.get_pkgconfig_variable('prefix')
+tepl_docpath = join_paths(tepl_prefix, 'share', 'gtk-doc', 'html', 'tepl-4.0')
 
 gedit_doc_deps = [
   glib_dep,
@@ -85,6 +88,7 @@ libgedit_reference_fixxref_args = [
   '--extra-dir=@0@'.format(glib_docpath),
   '--extra-dir=@0@'.format(gobject_docpath),
   '--extra-dir=@0@'.format(gtk_docpath),
+  '--extra-dir=@0@'.format(tepl_docpath),
 ]
 
 gnome.gtkdoc(
