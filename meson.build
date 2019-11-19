@@ -175,7 +175,7 @@ endif
 
 subdir('docs')
 
-if get_option('user-documentation')
+if get_option('user_documentation')
   subdir('help')
 endif
 
@@ -185,7 +185,7 @@ summary = [
   'gedit @0@ (@1@)'.format(version, api_version),
   '',
   '       API docs: @0@'.format(build_gtk_doc),
-  '      User docs: @0@'.format(get_option('user-documentation')),
+  '      User docs: @0@'.format(get_option('user_documentation')),
   '  Introspection: @0@'.format(generate_gir),
   '        Plugins: @0@'.format(build_plugins),
   '       Vala API: @0@'.format(generate_vapi),
