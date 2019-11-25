@@ -140,9 +140,6 @@ main (int argc, char *argv[])
 	setup_i18n ();
 	tepl_init ();
 
-	/* https://honk.sigxcpu.org/con/GTK__and_the_application_id.html */
-	g_set_prgname ("org.gnome.gedit");
-
 	app = g_object_new (type,
 	                    "application-id", "org.gnome.gedit",
 	                    "flags", G_APPLICATION_HANDLES_COMMAND_LINE | G_APPLICATION_HANDLES_OPEN,
