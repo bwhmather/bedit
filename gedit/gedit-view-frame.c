@@ -53,10 +53,7 @@ struct _GeditViewFrame
 {
 	GtkOverlay parent_instance;
 
-	GSettings *editor_settings;
-
 	GeditView *view;
-	GtkFrame *map_frame;
 
 	SearchMode search_mode;
 
@@ -162,7 +159,6 @@ gedit_view_frame_dispose (GObject *object)
 		gtk_source_file_set_mount_operation_factory (file, NULL, NULL, NULL);
 	}
 
-	g_clear_object (&frame->editor_settings);
 	g_clear_object (&frame->entry_tag);
 	g_clear_object (&frame->search_settings);
 	g_clear_object (&frame->old_search_settings);
@@ -1436,7 +1432,6 @@ gedit_view_frame_class_init (GeditViewFrameClass *klass)
 	gtk_widget_class_set_template_from_resource (widget_class,
 	                                             "/org/gnome/gedit/ui/gedit-view-frame.ui");
 	gtk_widget_class_bind_template_child (widget_class, GeditViewFrame, view);
-	gtk_widget_class_bind_template_child (widget_class, GeditViewFrame, map_frame);
 	gtk_widget_class_bind_template_child (widget_class, GeditViewFrame, revealer);
 	gtk_widget_class_bind_template_child (widget_class, GeditViewFrame, search_entry);
 	gtk_widget_class_bind_template_child (widget_class, GeditViewFrame, go_up_button);
@@ -1462,13 +1457,6 @@ gedit_view_frame_init (GeditViewFrame *frame)
 	gedit_debug (DEBUG_WINDOW);
 
 	gtk_widget_init_template (GTK_WIDGET (frame));
-
-	frame->editor_settings = g_settings_new ("org.gnome.gedit.preferences.editor");
-	g_settings_bind (frame->editor_settings,
-	                 GEDIT_SETTINGS_DISPLAY_OVERVIEW_MAP,
-	                 frame->map_frame,
-	                 "visible",
-	                 G_SETTINGS_BIND_GET | G_SETTINGS_BIND_NO_SENSITIVITY);
 
 	doc = get_document (frame);
 	file = gedit_document_get_file (doc);

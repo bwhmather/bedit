@@ -74,7 +74,6 @@ void			 gedit_settings_set_list			(GSettings     *settings,
 #define GEDIT_SETTINGS_SEARCH_HIGHLIGHTING		"search-highlighting"
 #define GEDIT_SETTINGS_TOOLBAR_VISIBLE			"toolbar-visible"
 #define GEDIT_SETTINGS_TOOLBAR_BUTTONS_STYLE		"toolbar-buttons-style"
-#define GEDIT_SETTINGS_DISPLAY_OVERVIEW_MAP		"display-overview-map"
 #define GEDIT_SETTINGS_BACKGROUND_PATTERN		"background-pattern"
 #define GEDIT_SETTINGS_STATUSBAR_VISIBLE		"statusbar-visible"
 #define GEDIT_SETTINGS_SIDE_PANEL_VISIBLE		"side-panel-visible"
