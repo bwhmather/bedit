@@ -117,7 +117,6 @@ struct _GeditPreferencesDialog
 
 	GtkWidget	*display_line_numbers_checkbutton;
 	GtkWidget	*display_statusbar_checkbutton;
-	GtkWidget	*display_overview_map_checkbutton;
 	GtkWidget	*display_grid_checkbutton;
 
 	/* Right margin */
@@ -183,7 +182,6 @@ gedit_preferences_dialog_class_init (GeditPreferencesDialogClass *klass)
 	gtk_widget_class_bind_template_child (widget_class, GeditPreferencesDialog, display_line_numbers_checkbutton);
 	gtk_widget_class_bind_template_child (widget_class, GeditPreferencesDialog, display_statusbar_checkbutton);
 	gtk_widget_class_bind_template_child (widget_class, GeditPreferencesDialog, display_grid_checkbutton);
-	gtk_widget_class_bind_template_child (widget_class, GeditPreferencesDialog, display_overview_map_checkbutton);
 	gtk_widget_class_bind_template_child (widget_class, GeditPreferencesDialog, right_margin_checkbutton);
 	gtk_widget_class_bind_template_child (widget_class, GeditPreferencesDialog, right_margin_position_grid);
 	gtk_widget_class_bind_template_child (widget_class, GeditPreferencesDialog, right_margin_position_spinbutton);
@@ -401,11 +399,6 @@ setup_view_page (GeditPreferencesDialog *dlg)
 	                 dlg->display_statusbar_checkbutton,
 	                 "active",
 	                 G_SETTINGS_BIND_GET | G_SETTINGS_BIND_SET);
-	g_settings_bind (dlg->editor,
-			 GEDIT_SETTINGS_DISPLAY_OVERVIEW_MAP,
-			 dlg->display_overview_map_checkbutton,
-			 "active",
-			 G_SETTINGS_BIND_GET | G_SETTINGS_BIND_SET);
 	g_settings_bind (dlg->editor,
 	                 GEDIT_SETTINGS_DISPLAY_RIGHT_MARGIN,
 	                 dlg->right_margin_checkbutton,
