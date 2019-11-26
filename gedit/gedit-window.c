@@ -56,7 +56,6 @@
 #include "gedit-settings.h"
 #include "gedit-menu-stack-switcher.h"
 #include "gedit-highlight-mode-selector.h"
-#include "gedit-open-document-selector.h"
 
 #define TAB_WIDTH_DATA "GeditWindowTabWidthData"
 #define FULLSCREEN_ANIMATION_SPEED 500
@@ -780,46 +779,6 @@ update_actions_sensitivity (GeditWindow *window)
 	peas_extension_set_foreach (window->priv->extensions,
 	                            (PeasExtensionSetForeachFunc) extension_update_state,
 	                            window);
-}
-
-static void
-on_recent_chooser_item_activated (GeditOpenDocumentSelector *open_document_selector,
-                                  gchar                     *uri,
-                                  GeditWindow               *window)
-{
-	GFile *location;
-	GeditView *active_view;
-
-	g_return_if_fail (GEDIT_WINDOW (window));
-	g_return_if_fail (GEDIT_OPEN_DOCUMENT_SELECTOR (open_document_selector));
-
-	/* TODO: get_current_file when exists */
-	location = g_file_new_for_uri (uri);
-
-	if (location)
-	{
-		GSList *locations = NULL;
-		GSList *loaded = NULL;
-
-		locations = g_slist_prepend (locations, (gpointer) location);
-		loaded = gedit_commands_load_locations (window, locations, NULL, 0, 0);
-
-		/* if it doesn't contain just 1 element */
-		if (!loaded || loaded->next)
-		{
-			gedit_recent_remove_if_local (location);
-		}
-
-		g_slist_free (locations);
-		g_slist_free (loaded);
-
-		g_object_unref (location);
-	}
-
-	/* Needed to close the popover when activating the same
-	 * document as the current one */
-	active_view = gedit_window_get_active_view (window);
-	gtk_widget_grab_focus (GTK_WIDGET (active_view));
 }
 
 static void
@@ -1835,18 +1794,6 @@ fullscreen_controls_setup (GeditWindow *window)
 	priv->fullscreen_open_document_popover = gtk_popover_new (priv->fullscreen_open_button);
 	gtk_menu_button_set_popover (GTK_MENU_BUTTON (priv->fullscreen_open_button),
 	                             priv->fullscreen_open_document_popover);
-
-	window->priv->fullscreen_open_document_selector = gedit_open_document_selector_new (window);
-
-	gtk_container_add (GTK_CONTAINER (priv->fullscreen_open_document_popover),
-	                   GTK_WIDGET (priv->fullscreen_open_document_selector));
-
-	gtk_widget_show_all (GTK_WIDGET (priv->fullscreen_open_document_selector));
-
-	g_signal_connect (window->priv->fullscreen_open_document_selector,
-	                  "file-activated",
-	                  G_CALLBACK (on_recent_chooser_item_activated),
-	                  window);
 }
 
 static void
@@ -2757,26 +2704,8 @@ gedit_window_init (GeditWindow *window)
 	gtk_menu_button_set_popover (GTK_MENU_BUTTON (window->priv->open_button),
 	                             window->priv->open_document_popover);
 
-	window->priv->open_document_selector = gedit_open_document_selector_new (window);
-
-	gtk_container_add (GTK_CONTAINER (window->priv->open_document_popover),
-	                   GTK_WIDGET (window->priv->open_document_selector));
-
-	gtk_widget_show_all (GTK_WIDGET (window->priv->open_document_selector));
-
-	g_signal_connect (window->priv->open_document_selector,
-	                  "file-activated",
-	                  G_CALLBACK (on_recent_chooser_item_activated),
-	                  window);
-
 	fullscreen_controls_setup (window);
 	sync_fullscreen_actions (window, FALSE);
-
-	g_object_bind_property (gedit_open_document_selector_get_search_entry (window->priv->open_document_selector),
-	                        "text",
-	                        gedit_open_document_selector_get_search_entry (window->priv->fullscreen_open_document_selector),
-	                        "text",
-	                        G_BINDING_BIDIRECTIONAL | G_BINDING_SYNC_CREATE);
 
 	hamburger_menu = _gedit_app_get_hamburger_menu (GEDIT_APP (g_application_get_default ()));
 	if (hamburger_menu)
