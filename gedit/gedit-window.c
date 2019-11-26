@@ -2644,6 +2644,23 @@ sync_fullscreen_actions (GeditWindow *window,
 }
 
 static void
+init_open_button (GeditWindow *window)
+{
+	GtkWidget *open_button;
+
+	open_button = gtk_button_new_with_mnemonic (_("_Open"));
+	gtk_widget_set_tooltip_text (open_button, _("Open a file"));
+	gtk_actionable_set_action_name (GTK_ACTIONABLE (open_button), "win.open");
+	gtk_widget_show (open_button);
+
+	/* Add before the New Tab button. */
+	gtk_container_add_with_properties (GTK_CONTAINER (window->priv->headerbar),
+					   open_button,
+					   "position", 0,
+					   NULL);
+}
+
+static void
 gedit_window_init (GeditWindow *window)
 {
 	GtkTargetList *tl;
@@ -2671,6 +2688,7 @@ gedit_window_init (GeditWindow *window)
 	window->priv->message_bus = gedit_message_bus_new ();
 
 	gtk_widget_init_template (GTK_WIDGET (window));
+	init_open_button (window);
 
 	g_action_map_add_action_entries (G_ACTION_MAP (window),
 	                                 win_entries,
