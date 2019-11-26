@@ -445,10 +445,6 @@ _gedit_cmd_file_open (GSimpleAction *action,
 
 			return;
 		}
-
-		/* FIXME: this should be in GeditWindow. */
-		gtk_widget_hide (GTK_WIDGET (window->priv->open_document_popover));
-		gtk_widget_hide (GTK_WIDGET (window->priv->fullscreen_open_document_popover));
 	}
 
 	/* Translators: "Open" is the title of the file chooser window. */

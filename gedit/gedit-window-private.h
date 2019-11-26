@@ -61,7 +61,6 @@ struct _GeditWindowPrivate
 
 	GtkWidget       *fullscreen_new_button;
 	GtkWidget       *fullscreen_open_button;
-	GtkWidget       *fullscreen_open_document_popover;
 
 	/* statusbar and context ids for statusbar messages */
 	GtkWidget      *statusbar;
@@ -82,7 +81,6 @@ struct _GeditWindowPrivate
 	GtkWidget      *side_headerbar;
 	GtkWidget      *headerbar;
 
-	GtkWidget       *open_document_popover;
 	GtkWidget       *new_button;
 	GtkWidget       *open_button;
 

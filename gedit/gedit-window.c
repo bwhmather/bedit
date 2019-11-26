@@ -1790,10 +1790,6 @@ fullscreen_controls_setup (GeditWindow *window)
 
 	gtk_widget_set_size_request (GTK_WIDGET (window->priv->fullscreen_eventbox), -1, 1);
 	gtk_widget_hide (window->priv->fullscreen_eventbox);
-
-	priv->fullscreen_open_document_popover = gtk_popover_new (priv->fullscreen_open_button);
-	gtk_menu_button_set_popover (GTK_MENU_BUTTON (priv->fullscreen_open_button),
-	                             priv->fullscreen_open_document_popover);
 }
 
 static void
@@ -2698,11 +2694,6 @@ gedit_window_init (GeditWindow *window)
 
 	window->priv->window_group = gtk_window_group_new ();
 	gtk_window_group_add_window (window->priv->window_group, GTK_WINDOW (window));
-
-	/* Setup file popover and file dialog */
-	window->priv->open_document_popover = gtk_popover_new (window->priv->open_button);
-	gtk_menu_button_set_popover (GTK_MENU_BUTTON (window->priv->open_button),
-	                             window->priv->open_document_popover);
 
 	fullscreen_controls_setup (window);
 	sync_fullscreen_actions (window, FALSE);
