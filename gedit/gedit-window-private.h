@@ -59,6 +59,7 @@ struct _GeditWindowPrivate
 	GtkWidget      *fullscreen_headerbar;
 	GtkMenuButton  *fullscreen_gear_button;
 	GtkWidget      *fullscreen_new_button;
+	GtkMenuButton  *fullscreen_open_recent_button;
 
 	/* statusbar and context ids for statusbar messages */
 	GtkWidget      *statusbar;

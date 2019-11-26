@@ -237,6 +237,8 @@ gedit_window_dispose (GObject *object)
 	 */
 	remove_actions (window);
 
+	window->priv->fullscreen_open_recent_button = NULL;
+
 	G_OBJECT_CLASS (gedit_window_parent_class)->dispose (object);
 }
 
@@ -1741,13 +1743,15 @@ static gboolean
 real_fullscreen_controls_leave_notify_event (gpointer data)
 {
 	GeditWindow *window = GEDIT_WINDOW (data);
-	gboolean hamburger_menu_state;
+	gboolean open_recent_menu_is_active;
+	gboolean hamburger_menu_is_active;
 
-	hamburger_menu_state = gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (window->priv->fullscreen_gear_button));
+	open_recent_menu_is_active = gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (window->priv->fullscreen_open_recent_button));
+	hamburger_menu_is_active = gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (window->priv->fullscreen_gear_button));
 
 	window->priv->in_fullscreen_eventbox = FALSE;
 
-	if (!hamburger_menu_state)
+	if (!open_recent_menu_is_active && !hamburger_menu_is_active)
 	{
 		gtk_revealer_set_reveal_child (GTK_REVEALER (window->priv->fullscreen_controls), FALSE);
 	}
@@ -2156,10 +2160,10 @@ on_notebook_removed (GeditMultiNotebook *mnb,
 }
 
 static void
-on_fullscreen_gear_button_toggled (GtkToggleButton *fullscreen_gear_button,
-                                   GeditWindow     *window)
+on_fullscreen_toggle_button_toggled (GtkToggleButton *fullscreen_toggle_button,
+				     GeditWindow     *window)
 {
-	gboolean button_active = gtk_toggle_button_get_active (fullscreen_gear_button);
+	gboolean button_active = gtk_toggle_button_get_active (fullscreen_toggle_button);
 
 	gtk_revealer_set_reveal_child (GTK_REVEALER (window->priv->fullscreen_controls),
 				       button_active || window->priv->in_fullscreen_eventbox);
@@ -2652,13 +2656,14 @@ init_amtk_application_window (GeditWindow *gedit_window)
 	amtk_application_window_set_statusbar (amtk_window, GTK_STATUSBAR (gedit_window->priv->statusbar));
 }
 
-static void
-init_open_buttons (GeditWindow *window)
+static GtkWidget *
+create_open_buttons (GeditWindow    *window,
+		     GtkMenuButton **open_recent_button)
 {
 	GtkWidget *hgrid;
 	GtkStyleContext *style_context;
 	GtkWidget *open_dialog_button;
-	GtkWidget *open_recent_button;
+	GtkWidget *my_open_recent_button;
 	AmtkApplicationWindow *amtk_window;
 	GtkWidget *recent_menu;
 
@@ -2670,21 +2675,42 @@ init_open_buttons (GeditWindow *window)
 	gtk_widget_set_tooltip_text (open_dialog_button, _("Open a file"));
 	gtk_actionable_set_action_name (GTK_ACTIONABLE (open_dialog_button), "win.open");
 
-	open_recent_button = gtk_menu_button_new ();
-	gtk_widget_set_tooltip_text (open_recent_button, _("Open a recently used file"));
+	my_open_recent_button = gtk_menu_button_new ();
+	gtk_widget_set_tooltip_text (my_open_recent_button, _("Open a recently used file"));
 
 	amtk_window = amtk_application_window_get_from_gtk_application_window (GTK_APPLICATION_WINDOW (window));
 	recent_menu = amtk_application_window_create_open_recent_menu (amtk_window);
-	gtk_menu_button_set_popup (GTK_MENU_BUTTON (open_recent_button), recent_menu);
+	gtk_menu_button_set_popup (GTK_MENU_BUTTON (my_open_recent_button), recent_menu);
 
 	gtk_container_add (GTK_CONTAINER (hgrid), open_dialog_button);
-	gtk_container_add (GTK_CONTAINER (hgrid), open_recent_button);
+	gtk_container_add (GTK_CONTAINER (hgrid), my_open_recent_button);
 	gtk_widget_show_all (hgrid);
 
+	if (open_recent_button != NULL)
+	{
+		*open_recent_button = GTK_MENU_BUTTON (my_open_recent_button);
+	}
+
+	return hgrid;
+}
+
+static void
+init_open_buttons (GeditWindow *window)
+{
 	gtk_container_add_with_properties (GTK_CONTAINER (window->priv->headerbar),
-					   hgrid,
+					   create_open_buttons (window, NULL),
 					   "position", 0, /* The first on the left. */
 					   NULL);
+
+	gtk_container_add_with_properties (GTK_CONTAINER (window->priv->fullscreen_headerbar),
+					   create_open_buttons (window, &(window->priv->fullscreen_open_recent_button)),
+					   "position", 0, /* The first on the left. */
+					   NULL);
+
+	g_signal_connect (GTK_TOGGLE_BUTTON (window->priv->fullscreen_open_recent_button),
+	                  "toggled",
+	                  G_CALLBACK (on_fullscreen_toggle_button_toggled),
+	                  window);
 }
 
 static void
@@ -2745,7 +2771,7 @@ gedit_window_init (GeditWindow *window)
 
 	g_signal_connect (GTK_TOGGLE_BUTTON (window->priv->fullscreen_gear_button),
 	                  "toggled",
-	                  G_CALLBACK (on_fullscreen_gear_button_toggled),
+	                  G_CALLBACK (on_fullscreen_toggle_button_toggled),
 	                  window);
 
 	/* Setup status bar */
