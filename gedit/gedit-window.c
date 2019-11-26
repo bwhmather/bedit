@@ -457,7 +457,6 @@ gedit_window_class_init (GeditWindowClass *klass)
 	gtk_widget_class_bind_template_child_private (widget_class, GeditWindow, side_headerbar);
 	gtk_widget_class_bind_template_child_private (widget_class, GeditWindow, headerbar);
 	gtk_widget_class_bind_template_child_private (widget_class, GeditWindow, new_button);
-	gtk_widget_class_bind_template_child_private (widget_class, GeditWindow, open_button);
 	gtk_widget_class_bind_template_child_private (widget_class, GeditWindow, gear_button);
 	gtk_widget_class_bind_template_child_private (widget_class, GeditWindow, hpaned);
 	gtk_widget_class_bind_template_child_private (widget_class, GeditWindow, side_panel_box);
@@ -475,7 +474,6 @@ gedit_window_class_init (GeditWindowClass *klass)
 	gtk_widget_class_bind_template_child_private (widget_class, GeditWindow, fullscreen_eventbox);
 	gtk_widget_class_bind_template_child_private (widget_class, GeditWindow, fullscreen_headerbar);
 	gtk_widget_class_bind_template_child_private (widget_class, GeditWindow, fullscreen_new_button);
-	gtk_widget_class_bind_template_child_private (widget_class, GeditWindow, fullscreen_open_button);
 	gtk_widget_class_bind_template_child_private (widget_class, GeditWindow, fullscreen_gear_button);
 }
 
@@ -1744,15 +1742,12 @@ real_fullscreen_controls_leave_notify_event (gpointer data)
 {
 	GeditWindow *window = GEDIT_WINDOW (data);
 	gboolean hamburger_menu_state;
-	gboolean fullscreen_open_button_state;
 
 	hamburger_menu_state = gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (window->priv->fullscreen_gear_button));
-	fullscreen_open_button_state =
-	                  gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (window->priv->fullscreen_open_button));
 
 	window->priv->in_fullscreen_eventbox = FALSE;
 
-	if (!hamburger_menu_state && !fullscreen_open_button_state)
+	if (!hamburger_menu_state)
 	{
 		gtk_revealer_set_reveal_child (GTK_REVEALER (window->priv->fullscreen_controls), FALSE);
 	}
@@ -2165,16 +2160,6 @@ on_fullscreen_gear_button_toggled (GtkToggleButton *fullscreen_gear_button,
                                    GeditWindow     *window)
 {
 	gboolean button_active = gtk_toggle_button_get_active (fullscreen_gear_button);
-
-	gtk_revealer_set_reveal_child (GTK_REVEALER (window->priv->fullscreen_controls),
-				       button_active || window->priv->in_fullscreen_eventbox);
-}
-
-static void
-on_fullscreen_file_menu_button_toggled (GtkMenuButton *fullscreen_open_button,
-                                        GeditWindow   *window)
-{
-	gboolean button_active = gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (fullscreen_open_button));
 
 	gtk_revealer_set_reveal_child (GTK_REVEALER (window->priv->fullscreen_controls),
 				       button_active || window->priv->in_fullscreen_eventbox);
@@ -2711,11 +2696,6 @@ gedit_window_init (GeditWindow *window)
 		gtk_widget_set_no_show_all (GTK_WIDGET (window->priv->gear_button), TRUE);
 		gtk_widget_set_no_show_all (GTK_WIDGET (window->priv->fullscreen_gear_button), TRUE);
 	}
-
-	g_signal_connect (GTK_TOGGLE_BUTTON (window->priv->fullscreen_open_button),
-	                  "toggled",
-	                  G_CALLBACK (on_fullscreen_file_menu_button_toggled),
-	                  window);
 
 	g_signal_connect (GTK_TOGGLE_BUTTON (window->priv->fullscreen_gear_button),
 	                  "toggled",

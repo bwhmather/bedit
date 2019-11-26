@@ -58,9 +58,7 @@ struct _GeditWindowPrivate
 	GtkWidget      *fullscreen_eventbox;
 	GtkWidget      *fullscreen_headerbar;
 	GtkMenuButton  *fullscreen_gear_button;
-
-	GtkWidget       *fullscreen_new_button;
-	GtkWidget       *fullscreen_open_button;
+	GtkWidget      *fullscreen_new_button;
 
 	/* statusbar and context ids for statusbar messages */
 	GtkWidget      *statusbar;
@@ -81,8 +79,7 @@ struct _GeditWindowPrivate
 	GtkWidget      *side_headerbar;
 	GtkWidget      *headerbar;
 
-	GtkWidget       *new_button;
-	GtkWidget       *open_button;
+	GtkWidget      *new_button;
 
 	GtkMenuButton  *gear_button;
 
