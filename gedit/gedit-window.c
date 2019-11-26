@@ -2644,19 +2644,32 @@ sync_fullscreen_actions (GeditWindow *window,
 }
 
 static void
-init_open_button (GeditWindow *window)
+init_open_buttons (GeditWindow *window)
 {
-	GtkWidget *open_button;
+	GtkWidget *hgrid;
+	GtkStyleContext *style_context;
+	GtkWidget *open_dialog_button;
+	GtkWidget *open_recent_button;
 
-	open_button = gtk_button_new_with_mnemonic (_("_Open"));
-	gtk_widget_set_tooltip_text (open_button, _("Open a file"));
-	gtk_actionable_set_action_name (GTK_ACTIONABLE (open_button), "win.open");
-	gtk_widget_show (open_button);
+	hgrid = gtk_grid_new ();
+	style_context = gtk_widget_get_style_context (hgrid);
+	gtk_style_context_add_class (style_context, GTK_STYLE_CLASS_LINKED);
 
-	/* Add before the New Tab button. */
+	open_dialog_button = gtk_button_new_with_mnemonic (_("_Open"));
+	gtk_widget_set_tooltip_text (open_dialog_button, _("Open a file"));
+	gtk_actionable_set_action_name (GTK_ACTIONABLE (open_dialog_button), "win.open");
+
+	open_recent_button = gtk_menu_button_new ();
+	gtk_widget_set_tooltip_text (open_recent_button, _("Open a recently used file"));
+	// gtk_menu_button_set_popup(); to set a GtkMenu.
+
+	gtk_container_add (GTK_CONTAINER (hgrid), open_dialog_button);
+	gtk_container_add (GTK_CONTAINER (hgrid), open_recent_button);
+	gtk_widget_show_all (hgrid);
+
 	gtk_container_add_with_properties (GTK_CONTAINER (window->priv->headerbar),
-					   open_button,
-					   "position", 0,
+					   hgrid,
+					   "position", 0, /* The first on the left. */
 					   NULL);
 }
 
@@ -2688,7 +2701,7 @@ gedit_window_init (GeditWindow *window)
 	window->priv->message_bus = gedit_message_bus_new ();
 
 	gtk_widget_init_template (GTK_WIDGET (window));
-	init_open_button (window);
+	init_open_buttons (window);
 
 	g_action_map_add_action_entries (G_ACTION_MAP (window),
 	                                 win_entries,
