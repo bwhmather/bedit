@@ -1755,6 +1755,34 @@ on_fullscreen_eventbox_leave_notify_event (GtkWidget        *fullscreen_eventbox
 					   GdkEventCrossing *event,
 					   GeditWindow      *window)
 {
+	if (-1.0 <= event->y && event->y <= 0.0)
+	{
+		/* Ignore the event.
+		 *
+		 * Leave notify events are received with -1 <= y <= 0
+		 * coordinates, although the GeditWindow is in fullscreen mode
+		 * and when there are no screens above (it's maybe a bug in an
+		 * underlying library).
+		 * If we hide the headerbar when those events happen, then it
+		 * makes the headerbar to be shown/hidden a lot of time in a
+		 * short period of time, i.e. a "stuttering". In other words
+		 * lots of leave/enter events are received when moving the mouse
+		 * upwards on the screen when the mouse is already at the top.
+		 * The expected leave event has a positive event->y value being
+		 * >= to the height of the headerbar (approximately
+		 * 40 <= y <= 50). So clearly when we receive a leave event with
+		 * event->y <= 0, it means that the mouse has left the eventbox
+		 * on the wrong side.
+		 * The -1.0 <= event->y is there (instead of just <= 0.0) in the
+		 * case that there is another screen *above*, even if this
+		 * heuristic/workaround is not perfect in that case. But that
+		 * case is quite rare, so it's probably a good enough solution.
+		 *
+		 * If you see a better solution...
+		 */
+		return GDK_EVENT_PROPAGATE;
+	}
+
 	window->priv->in_fullscreen_eventbox = FALSE;
 	update_fullscreen_revealer_state (window);
 
