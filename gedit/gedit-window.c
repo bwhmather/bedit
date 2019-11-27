@@ -470,7 +470,7 @@ gedit_window_class_init (GeditWindowClass *klass)
 	gtk_widget_class_bind_template_child_private (widget_class, GeditWindow, tab_width_button);
 	gtk_widget_class_bind_template_child_private (widget_class, GeditWindow, line_col_button);
 	gtk_widget_class_bind_template_child_private (widget_class, GeditWindow, fullscreen_eventbox);
-	gtk_widget_class_bind_template_child_private (widget_class, GeditWindow, fullscreen_controls);
+	gtk_widget_class_bind_template_child_private (widget_class, GeditWindow, fullscreen_revealer);
 	gtk_widget_class_bind_template_child_private (widget_class, GeditWindow, fullscreen_headerbar);
 	gtk_widget_class_bind_template_child_private (widget_class, GeditWindow, fullscreen_new_button);
 	gtk_widget_class_bind_template_child_private (widget_class, GeditWindow, fullscreen_gear_button);
@@ -1731,7 +1731,7 @@ on_fullscreen_controls_enter_notify_event (GtkWidget        *widget,
 {
 	window->priv->in_fullscreen_eventbox = TRUE;
 
-	gtk_revealer_set_reveal_child (GTK_REVEALER (window->priv->fullscreen_controls), TRUE);
+	gtk_revealer_set_reveal_child (window->priv->fullscreen_revealer, TRUE);
 
 	return FALSE;
 }
@@ -1750,7 +1750,7 @@ real_fullscreen_controls_leave_notify_event (gpointer data)
 
 	if (!open_recent_menu_is_active && !hamburger_menu_is_active)
 	{
-		gtk_revealer_set_reveal_child (GTK_REVEALER (window->priv->fullscreen_controls), FALSE);
+		gtk_revealer_set_reveal_child (window->priv->fullscreen_revealer, FALSE);
 	}
 
 	return G_SOURCE_REMOVE;
@@ -2162,7 +2162,7 @@ on_fullscreen_toggle_button_toggled (GtkToggleButton *fullscreen_toggle_button,
 {
 	gboolean button_active = gtk_toggle_button_get_active (fullscreen_toggle_button);
 
-	gtk_revealer_set_reveal_child (GTK_REVEALER (window->priv->fullscreen_controls),
+	gtk_revealer_set_reveal_child (window->priv->fullscreen_revealer,
 				       button_active || window->priv->in_fullscreen_eventbox);
 }
 
@@ -2724,7 +2724,7 @@ gedit_window_init (GeditWindow *window)
 	window->priv->state = GEDIT_WINDOW_STATE_NORMAL;
 	window->priv->inhibition_cookie = 0;
 	window->priv->dispose_has_run = FALSE;
-	window->priv->fullscreen_controls = NULL;
+	window->priv->fullscreen_revealer = NULL;
 	window->priv->direct_save_uri = NULL;
 	window->priv->closed_docs_stack = NULL;
 	window->priv->editor_settings = g_settings_new ("org.gnome.gedit.preferences.editor");

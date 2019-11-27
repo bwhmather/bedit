@@ -55,7 +55,7 @@ struct _GeditWindowPrivate
 
 	/* Widgets for fullscreen mode */
 	GtkWidget      *fullscreen_eventbox;
-	GtkWidget      *fullscreen_controls;
+	GtkRevealer    *fullscreen_revealer;
 	GtkWidget      *fullscreen_headerbar;
 	GtkWidget      *fullscreen_new_button;
 	GtkMenuButton  *fullscreen_gear_button;
