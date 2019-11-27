@@ -1724,14 +1724,28 @@ drop_uris_cb (GtkWidget    *widget,
 	load_uris_from_drop (window, uri_list);
 }
 
+static void
+update_fullscreen_revealer_state (GeditWindow *window)
+{
+	gboolean open_recent_menu_is_active;
+	gboolean hamburger_menu_is_active;
+
+	open_recent_menu_is_active = gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (window->priv->fullscreen_open_recent_button));
+	hamburger_menu_is_active = gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (window->priv->fullscreen_gear_button));
+
+	gtk_revealer_set_reveal_child (window->priv->fullscreen_revealer,
+				       (window->priv->in_fullscreen_eventbox ||
+					open_recent_menu_is_active ||
+					hamburger_menu_is_active));
+}
+
 static gboolean
 on_fullscreen_eventbox_enter_notify_event (GtkWidget        *fullscreen_eventbox,
 					   GdkEventCrossing *event,
 					   GeditWindow      *window)
 {
 	window->priv->in_fullscreen_eventbox = TRUE;
-
-	gtk_revealer_set_reveal_child (window->priv->fullscreen_revealer, TRUE);
+	update_fullscreen_revealer_state (window);
 
 	return GDK_EVENT_PROPAGATE;
 }
@@ -1740,18 +1754,9 @@ static gboolean
 real_fullscreen_eventbox_leave_notify_event (gpointer data)
 {
 	GeditWindow *window = GEDIT_WINDOW (data);
-	gboolean open_recent_menu_is_active;
-	gboolean hamburger_menu_is_active;
-
-	open_recent_menu_is_active = gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (window->priv->fullscreen_open_recent_button));
-	hamburger_menu_is_active = gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (window->priv->fullscreen_gear_button));
 
 	window->priv->in_fullscreen_eventbox = FALSE;
-
-	if (!open_recent_menu_is_active && !hamburger_menu_is_active)
-	{
-		gtk_revealer_set_reveal_child (window->priv->fullscreen_revealer, FALSE);
-	}
+	update_fullscreen_revealer_state (window);
 
 	return G_SOURCE_REMOVE;
 }
@@ -2159,10 +2164,7 @@ static void
 on_fullscreen_toggle_button_toggled (GtkToggleButton *fullscreen_toggle_button,
 				     GeditWindow     *window)
 {
-	gboolean button_active = gtk_toggle_button_get_active (fullscreen_toggle_button);
-
-	gtk_revealer_set_reveal_child (window->priv->fullscreen_revealer,
-				       button_active || window->priv->in_fullscreen_eventbox);
+	update_fullscreen_revealer_state (window);
 }
 
 static void
@@ -2723,7 +2725,6 @@ gedit_window_init (GeditWindow *window)
 	window->priv->state = GEDIT_WINDOW_STATE_NORMAL;
 	window->priv->inhibition_cookie = 0;
 	window->priv->dispose_has_run = FALSE;
-	window->priv->fullscreen_revealer = NULL;
 	window->priv->direct_save_uri = NULL;
 	window->priv->closed_docs_stack = NULL;
 	window->priv->editor_settings = g_settings_new ("org.gnome.gedit.preferences.editor");
