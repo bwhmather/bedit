@@ -57,9 +57,6 @@
 #include "gedit-menu-stack-switcher.h"
 #include "gedit-highlight-mode-selector.h"
 
-#define TAB_WIDTH_DATA "GeditWindowTabWidthData"
-#define FULLSCREEN_ANIMATION_SPEED 500
-
 enum
 {
 	PROP_0,
