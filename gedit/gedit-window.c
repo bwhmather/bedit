@@ -160,9 +160,9 @@ save_window_state (GtkWidget *widget)
 	GeditWindow *window = GEDIT_WINDOW (widget);
 
 	if ((window->priv->window_state &
-	    (GDK_WINDOW_STATE_MAXIMIZED | GDK_WINDOW_STATE_FULLSCREEN)) == 0)
+	     (GDK_WINDOW_STATE_MAXIMIZED | GDK_WINDOW_STATE_FULLSCREEN)) == 0)
 	{
-                gtk_window_get_size (GTK_WINDOW (widget), &window->priv->width, &window->priv->height);
+		gtk_window_get_size (GTK_WINDOW (widget), &window->priv->width, &window->priv->height);
 
 		g_settings_set (window->priv->window_settings, GEDIT_SETTINGS_WINDOW_SIZE,
 				"(ii)", window->priv->width, window->priv->height);
@@ -314,7 +314,7 @@ gedit_window_configure_event (GtkWidget         *widget,
 
 	if (gtk_widget_get_realized (widget) &&
 	    (window->priv->window_state &
-	    (GDK_WINDOW_STATE_MAXIMIZED | GDK_WINDOW_STATE_FULLSCREEN)) == 0)
+	     (GDK_WINDOW_STATE_MAXIMIZED | GDK_WINDOW_STATE_FULLSCREEN)) == 0)
 	{
 		save_window_state (widget);
 	}
@@ -469,8 +469,8 @@ gedit_window_class_init (GeditWindowClass *klass)
 	gtk_widget_class_bind_template_child_private (widget_class, GeditWindow, language_button);
 	gtk_widget_class_bind_template_child_private (widget_class, GeditWindow, tab_width_button);
 	gtk_widget_class_bind_template_child_private (widget_class, GeditWindow, line_col_button);
-	gtk_widget_class_bind_template_child_private (widget_class, GeditWindow, fullscreen_controls);
 	gtk_widget_class_bind_template_child_private (widget_class, GeditWindow, fullscreen_eventbox);
+	gtk_widget_class_bind_template_child_private (widget_class, GeditWindow, fullscreen_controls);
 	gtk_widget_class_bind_template_child_private (widget_class, GeditWindow, fullscreen_headerbar);
 	gtk_widget_class_bind_template_child_private (widget_class, GeditWindow, fullscreen_new_button);
 	gtk_widget_class_bind_template_child_private (widget_class, GeditWindow, fullscreen_gear_button);

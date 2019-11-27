@@ -54,11 +54,11 @@ struct _GeditWindowPrivate
 	PeasExtensionSet *extensions;
 
 	/* Widgets for fullscreen mode */
-	GtkWidget      *fullscreen_controls;
 	GtkWidget      *fullscreen_eventbox;
+	GtkWidget      *fullscreen_controls;
 	GtkWidget      *fullscreen_headerbar;
-	GtkMenuButton  *fullscreen_gear_button;
 	GtkWidget      *fullscreen_new_button;
+	GtkMenuButton  *fullscreen_gear_button;
 	GtkMenuButton  *fullscreen_open_recent_button;
 
 	/* statusbar and context ids for statusbar messages */
