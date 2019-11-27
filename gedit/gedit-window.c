@@ -1725,19 +1725,19 @@ drop_uris_cb (GtkWidget    *widget,
 }
 
 static gboolean
-on_fullscreen_controls_enter_notify_event (GtkWidget        *widget,
-                                           GdkEventCrossing *event,
-                                           GeditWindow      *window)
+on_fullscreen_eventbox_enter_notify_event (GtkWidget        *fullscreen_eventbox,
+					   GdkEventCrossing *event,
+					   GeditWindow      *window)
 {
 	window->priv->in_fullscreen_eventbox = TRUE;
 
 	gtk_revealer_set_reveal_child (window->priv->fullscreen_revealer, TRUE);
 
-	return FALSE;
+	return GDK_EVENT_PROPAGATE;
 }
 
 static gboolean
-real_fullscreen_controls_leave_notify_event (gpointer data)
+real_fullscreen_eventbox_leave_notify_event (gpointer data)
 {
 	GeditWindow *window = GEDIT_WINDOW (data);
 	gboolean open_recent_menu_is_active;
@@ -1756,36 +1756,35 @@ real_fullscreen_controls_leave_notify_event (gpointer data)
 	return G_SOURCE_REMOVE;
 }
 
-/* this idle is needed because the toggled signal from gear button is received
- * after the leave event from the event box ( which is automatically triggered when user
- * bring up the gear menu */
 static gboolean
-on_fullscreen_controls_leave_notify_event (GtkWidget        *widget,
-                                           GdkEventCrossing *event,
-                                           GeditWindow      *window)
+on_fullscreen_eventbox_leave_notify_event (GtkWidget        *fullscreen_eventbox,
+					   GdkEventCrossing *event,
+					   GeditWindow      *window)
 {
-	g_idle_add (real_fullscreen_controls_leave_notify_event, window);
+	/* This idle is needed because the toggled signal from the hamburger
+	 * button is received after the leave event from the event box (which is
+	 * automatically triggered when user bring up the hamburger menu).
+	 */
+	g_idle_add (real_fullscreen_eventbox_leave_notify_event, window);
 
 	return GDK_EVENT_PROPAGATE;
 }
 
 static void
-fullscreen_controls_setup (GeditWindow *window)
+setup_fullscreen_eventbox (GeditWindow *window)
 {
-	GeditWindowPrivate *priv = window->priv;
-
-	g_signal_connect (priv->fullscreen_eventbox,
-	                  "enter-notify-event",
-	                  G_CALLBACK (on_fullscreen_controls_enter_notify_event),
-	                  window);
-
-	g_signal_connect (priv->fullscreen_eventbox,
-	                  "leave-notify-event",
-	                  G_CALLBACK (on_fullscreen_controls_leave_notify_event),
-	                  window);
-
-	gtk_widget_set_size_request (GTK_WIDGET (window->priv->fullscreen_eventbox), -1, 1);
+	gtk_widget_set_size_request (window->priv->fullscreen_eventbox, -1, 1);
 	gtk_widget_hide (window->priv->fullscreen_eventbox);
+
+	g_signal_connect (window->priv->fullscreen_eventbox,
+	                  "enter-notify-event",
+	                  G_CALLBACK (on_fullscreen_eventbox_enter_notify_event),
+	                  window);
+
+	g_signal_connect (window->priv->fullscreen_eventbox,
+	                  "leave-notify-event",
+	                  G_CALLBACK (on_fullscreen_eventbox_leave_notify_event),
+	                  window);
 }
 
 static void
@@ -2749,7 +2748,7 @@ gedit_window_init (GeditWindow *window)
 	window->priv->window_group = gtk_window_group_new ();
 	gtk_window_group_add_window (window->priv->window_group, GTK_WINDOW (window));
 
-	fullscreen_controls_setup (window);
+	setup_fullscreen_eventbox (window);
 	sync_fullscreen_actions (window, FALSE);
 
 	hamburger_menu = _gedit_app_get_hamburger_menu (GEDIT_APP (g_application_get_default ()));
