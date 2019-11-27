@@ -2549,18 +2549,6 @@ window_unrealized (GtkWidget *window,
 }
 
 static void
-check_window_is_active (GeditWindow *window,
-			GParamSpec *property,
-			gpointer useless)
-{
-	if (window->priv->window_state & GDK_WINDOW_STATE_FULLSCREEN)
-	{
-		gtk_widget_set_visible (window->priv->fullscreen_eventbox,
-					gtk_window_is_active (GTK_WINDOW (window)));
-	}
-}
-
-static void
 extension_added (PeasExtensionSet *extensions,
 		 PeasPluginInfo   *info,
 		 PeasExtension    *exten,
@@ -2866,12 +2854,6 @@ gedit_window_init (GeditWindow *window)
 	g_signal_connect (window,
 			  "unrealize",
 			  G_CALLBACK (window_unrealized),
-			  NULL);
-
-	/* Check if the window is active for fullscreen */
-	g_signal_connect (window,
-			  "notify::is-active",
-			  G_CALLBACK (check_window_is_active),
 			  NULL);
 
 	gedit_debug_message (DEBUG_WINDOW, "Update plugins ui");
