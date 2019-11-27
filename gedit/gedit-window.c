@@ -1751,26 +1751,12 @@ on_fullscreen_eventbox_enter_notify_event (GtkWidget        *fullscreen_eventbox
 }
 
 static gboolean
-real_fullscreen_eventbox_leave_notify_event (gpointer data)
-{
-	GeditWindow *window = GEDIT_WINDOW (data);
-
-	window->priv->in_fullscreen_eventbox = FALSE;
-	update_fullscreen_revealer_state (window);
-
-	return G_SOURCE_REMOVE;
-}
-
-static gboolean
 on_fullscreen_eventbox_leave_notify_event (GtkWidget        *fullscreen_eventbox,
 					   GdkEventCrossing *event,
 					   GeditWindow      *window)
 {
-	/* This idle is needed because the toggled signal from the hamburger
-	 * button is received after the leave event from the event box (which is
-	 * automatically triggered when user bring up the hamburger menu).
-	 */
-	g_idle_add (real_fullscreen_eventbox_leave_notify_event, window);
+	window->priv->in_fullscreen_eventbox = FALSE;
+	update_fullscreen_revealer_state (window);
 
 	return GDK_EVENT_PROPAGATE;
 }
