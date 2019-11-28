@@ -1778,6 +1778,9 @@ on_fullscreen_eventbox_leave_notify_event (GtkWidget        *fullscreen_eventbox
 		 * heuristic/workaround is not perfect in that case. But that
 		 * case is quite rare, so it's probably a good enough solution.
 		 *
+		 * Note that apparently the "stuttering" occurs only on an Xorg
+		 * session, not on Wayland (tested with GNOME).
+		 *
 		 * If you see a better solution...
 		 */
 		return GDK_EVENT_PROPAGATE;
