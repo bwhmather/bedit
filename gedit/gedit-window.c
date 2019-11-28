@@ -33,7 +33,6 @@
 #include "gedit-window-private.h"
 #include "gedit-app.h"
 #include "gedit-app-private.h"
-#include "gedit-recent.h"
 #include "gedit-notebook.h"
 #include "gedit-notebook-popup-menu.h"
 #include "gedit-multi-notebook.h"
