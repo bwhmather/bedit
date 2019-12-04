@@ -11,10 +11,6 @@ python = import('python')
 
 # Versioning
 version = meson.project_version()
-version_arr = version.split('.')
-version_major = version_arr[0]
-version_minor = version_arr[1]
-version_micro = version_arr[2]
 
 api_version = '3.36'
 
@@ -117,9 +113,11 @@ config_h.set_quoted('LOCALEDIR', localdir)
 config_h.set_quoted('LIBDIR', libdir)
 config_h.set_quoted('DATADIR', datadir)
 config_h.set_quoted('VERSION', version)
-config_h.set('GEDIT_MAJOR_VERSION', version_major)
-config_h.set('GEDIT_MINOR_VERSION', version_minor)
-config_h.set('GEDIT_MICRO_VERSION', version_micro)
+
+version_array = meson.project_version().split('.')
+config_h.set('GEDIT_MAJOR_VERSION', version_array[0])
+config_h.set('GEDIT_MINOR_VERSION', version_array[1])
+config_h.set('GEDIT_MICRO_VERSION', version_array[2])
 
 configure_file(
   output: 'config.h',
