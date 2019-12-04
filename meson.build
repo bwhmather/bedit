@@ -52,15 +52,7 @@ libgd_sp = subproject(
 # Dependencies
 glib_req = '>= 2.52'
 gtk_req = '>= 3.22.0'
-gtksourceview_req = '>= 4.0.2'
-tepl_req = '>= 4.3'
 libpeas_req = '>= 1.14.1'
-libsoup_req = '>= 2.60.0'
-gspell_req = '>= 0.2.5'
-pygobject_req = '>= 3.0.0'
-introspection_req = '>= 0.9.3'
-vala_req = '>= 0.25.1'
-gtk_doc_req = '>= 1.0'
 
 glib_dep = dependency('glib-2.0', version: glib_req)
 gobject_dep = dependency('gobject-2.0', version: glib_req)
@@ -68,20 +60,20 @@ gmodule_dep = dependency('gmodule-2.0', version: glib_req)
 gio_dep = dependency('gio-2.0', version: glib_req)
 gdk_dep = dependency('gdk-3.0', version: gtk_req)
 gtk_dep = dependency('gtk+-3.0', version: gtk_req)
-gtksourceview_dep = dependency('gtksourceview-4', version: gtksourceview_req)
-tepl_dep = dependency('tepl-4', version: tepl_req)
+gtksourceview_dep = dependency('gtksourceview-4', version: '>= 4.0.2')
+tepl_dep = dependency('tepl-4', version: '>= 4.3')
 libpeas_dep = dependency('libpeas-1.0', version: libpeas_req)
 libpeas_gtk_dep = dependency('libpeas-gtk-1.0', version: libpeas_req)
 
 libgd_dep = libgd_sp.get_variable('libgd_dep')
 
-libsoup_dep = dependency('libsoup-2.4', version: libsoup_req, required: true)
-gspell_dep = dependency('gspell-1', version: gspell_req, required: true)
+libsoup_dep = dependency('libsoup-2.4', version: '>= 2.60.0', required: true)
+gspell_dep = dependency('gspell-1', version: '>= 0.2.5', required: true)
 x11_dep = dependency('x11', required: false)
 
-introspection_dep = dependency('gobject-introspection-1.0', version: introspection_req, required: false)
-vapigen_dep = dependency('vapigen', version: vala_req, required: false)
-gtk_doc_dep = dependency('gtk-doc', version: gtk_doc_req, required: false)
+introspection_dep = dependency('gobject-introspection-1.0', version: '>= 0.9.3', required: false)
+vapigen_dep = dependency('vapigen', version: '>= 0.25.1', required: false)
+gtk_doc_dep = dependency('gtk-doc', version: '>= 1.0', required: false)
 
 python3 = python.find_installation('python3')
 
