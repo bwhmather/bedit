@@ -9,9 +9,6 @@ i18n = import('i18n')
 pkg = import('pkgconfig')
 python = import('python')
 
-# Versioning
-version = meson.project_version()
-
 api_version = '3.36'
 
 package_name = meson.project_name()
@@ -107,12 +104,12 @@ endif
 config_h = configuration_data()
 config_h.set_quoted('PACKAGE_NAME', package_name)
 config_h.set_quoted('PACKAGE_STRING', package_string)
-config_h.set_quoted('PACKAGE_VERSION', version)
+config_h.set_quoted('PACKAGE_VERSION', meson.project_version())
 config_h.set_quoted('GETTEXT_PACKAGE', package_name)
 config_h.set_quoted('LOCALEDIR', localdir)
 config_h.set_quoted('LIBDIR', libdir)
 config_h.set_quoted('DATADIR', datadir)
-config_h.set_quoted('VERSION', version)
+config_h.set_quoted('VERSION', meson.project_version())
 
 version_array = meson.project_version().split('.')
 config_h.set('GEDIT_MAJOR_VERSION', version_array[0])
@@ -179,7 +176,7 @@ endif
 summary = [
   '',
   '------',
-  'gedit @0@ (@1@)'.format(version, api_version),
+  'gedit @0@ (@1@)'.format(meson.project_version(), api_version),
   '',
   '       API docs: @0@'.format(build_gtk_doc),
   '      User docs: @0@'.format(get_option('user_documentation')),
