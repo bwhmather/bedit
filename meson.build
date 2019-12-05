@@ -111,8 +111,6 @@ if host_machine.system() == 'darwin'
 endif
 
 # Options
-build_plugins = get_option('plugins')
-
 generate_gir = get_option('introspection')
 if generate_gir and not introspection_dep.found()
   generate_gir = false
@@ -137,9 +135,9 @@ endif
 
 subdir('data')
 subdir('po')
-
 subdir('gedit')
-if build_plugins == true
+
+if get_option('plugins')
   subdir('plugins')
 endif
 
@@ -166,7 +164,7 @@ summary = [
   '       API docs: @0@'.format(get_option('gtk_doc')),
   '      User docs: @0@'.format(get_option('user_documentation')),
   '  Introspection: @0@'.format(generate_gir),
-  '        Plugins: @0@'.format(build_plugins),
+  '        Plugins: @0@'.format(get_option('plugins')),
   '       Vala API: @0@'.format(generate_vapi),
   '',
   'Prefix: @0@'.format(get_option('prefix')),
