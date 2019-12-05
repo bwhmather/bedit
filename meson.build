@@ -68,7 +68,6 @@ x11_dep = dependency('x11', required: false)
 
 introspection_dep = dependency('gobject-introspection-1.0', required: false)
 vapigen_dep = dependency('vapigen', version: '>= 0.25.1', required: false)
-gtk_doc_dep = dependency('gtk-doc', required: false)
 
 python3 = python.find_installation('python3')
 
@@ -124,11 +123,6 @@ if generate_vapi and not vapigen_dep.found()
   generate_vapi = false
 endif
 
-build_gtk_doc = get_option('gtk_doc')
-if build_gtk_doc and not gtk_doc_dep.found()
-  build_gtk_doc = false
-endif
-
 active_plugins = [
   'docinfo',
   'modelines',
@@ -149,7 +143,9 @@ if build_plugins == true
   subdir('plugins')
 endif
 
-subdir('docs')
+if get_option('gtk_doc')
+  subdir('docs/reference')
+endif
 
 if get_option('user_documentation')
   subdir('help')
@@ -167,7 +163,7 @@ summary = [
   '------',
   'gedit @0@ (@1@)'.format(meson.project_version(), api_version),
   '',
-  '       API docs: @0@'.format(build_gtk_doc),
+  '       API docs: @0@'.format(get_option('gtk_doc')),
   '      User docs: @0@'.format(get_option('user_documentation')),
   '  Introspection: @0@'.format(generate_gir),
   '        Plugins: @0@'.format(build_plugins),
