@@ -122,7 +122,7 @@ libgedit_deps = [
   libgd_dep,
 ]
 
-if windowing_target == 'quartz'
+if host_machine.system() == 'darwin'
   libgedit_sources += files(
     'gedit-app-osx.m',
     'gedit-file-chooser-dialog-osx.m',
@@ -138,7 +138,7 @@ if windowing_target == 'quartz'
   libgedit_deps += [
     gtk_mac_integration_dep,
   ]
-elif windowing_target == 'win32'
+elif host_machine.system() == 'windows'
   libgedit_sources += files(
     'gedit-app-win32.c',
   )
@@ -289,7 +289,7 @@ gedit_sources = [
 
 gedit_c_args = []
 
-if windowing_target == 'quartz'
+if host_machine.system() == 'darwin'
   gedit_c_args += [
     '-DOS_OSX=1',
   ]

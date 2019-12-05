@@ -53,7 +53,6 @@ glib_dep = dependency('glib-2.0', version: glib_req)
 gobject_dep = dependency('gobject-2.0', version: glib_req)
 gmodule_dep = dependency('gmodule-2.0', version: glib_req)
 gio_dep = dependency('gio-2.0', version: glib_req)
-gdk_dep = dependency('gdk-3.0', version: gtk_req)
 gtk_dep = dependency('gtk+-3.0', version: gtk_req)
 gtksourceview_dep = dependency('gtksourceview-4', version: '>= 4.0.2')
 tepl_dep = dependency('tepl-4', version: '>= 4.3')
@@ -72,17 +71,10 @@ vapigen_dep = dependency('vapigen', version: '>= 0.25.1', required: false)
 python3 = python.find_installation('python3')
 
 # Configurations
-windowing_targets = gdk_dep.get_pkgconfig_variable('targets').split()
-if windowing_targets.contains('quartz')
-  windowing_target = 'quartz'
-elif windowing_targets.contains('win32')
-  windowing_target = 'win32'
-else
-  if not x11_dep.found()
-    error('Native dependency \'x11\' not found')
-  else
-    windowing_target = 'x11'
-  endif
+if ((host_machine.system() != 'darwin') and
+    (host_machine.system() != 'windows') and
+    (not x11_dep.found()))
+  error('Native dependency \'x11\' not found.')
 endif
 
 config_h = configuration_data()
@@ -129,7 +121,7 @@ active_plugins = [
   'time',
 ]
 
-if windowing_target == 'win32'
+if host_machine.system() == 'windows'
   active_plugins += 'checkupdate'
 endif
 
