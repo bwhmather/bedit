@@ -17,14 +17,17 @@
  */
 
 int main (string[] args) {
-	var app = new Gtk.Application ("com.bwhmather.Bedit", ApplicationFlags.FLAGS_NONE);
-	app.activate.connect (() => {
-		var win = app.active_window;
-		if (win == null) {
-			win = new Bedit.Window (app);
-		}
-		win.present ();
-	});
+    var app = new Gtk.Application (
+        "com.bwhmather.Bedit",
+         ApplicationFlags.NON_UNIQUE
+    );
+    app.activate.connect (() => {
+        var win = app.active_window;
+        if (win == null) {
+            win = new Bedit.Window (app);
+        }
+        win.present ();
+    });
 
-	return app.run (args);
+    return app.run (args);
 }
