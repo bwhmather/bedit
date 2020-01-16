@@ -15,19 +15,32 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
+namespace Bedit {
+    class Application : Gtk.Application {
+        public Application () {
+            Object(
+                application_id: "com.bwhmather.Bedit",
+                flags: ApplicationFlags.NON_UNIQUE
+            );
+        }
+
+        protected override void startup () {
+            base.startup();
+            Gtk.Sourceinit();
+        }
+
+        protected override void activate () {
+            base.activate();
+            var win = this.active_window;
+            if (win == null) {
+                win = new Bedit.Window (this);
+            }
+            win.present ();
+        }
+    }
+}
 
 int main (string[] args) {
-    var app = new Gtk.Application (
-        "com.bwhmather.Bedit",
-         ApplicationFlags.NON_UNIQUE
-    );
-    app.activate.connect (() => {
-        var win = app.active_window;
-        if (win == null) {
-            win = new Bedit.Window (app);
-        }
-        win.present ();
-    });
-
+    var app = new Bedit.Application ();
     return app.run (args);
 }
