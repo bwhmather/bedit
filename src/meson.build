@@ -11,12 +11,14 @@ bedit_deps = [
 
 gnome = import('gnome')
 
-bedit_sources += gnome.compile_resources('bedit-resources',
+bedit_sources += gnome.compile_resources(
+  'bedit-resources',
   'bedit.gresource.xml',
   c_name: 'bedit'
 )
 
-executable('bedit', bedit_sources,
+executable(
+  'bedit', bedit_sources,
   vala_args: '--target-glib=2.50',  dependencies: bedit_deps,
   install: true,
 )
