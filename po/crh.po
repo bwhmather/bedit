@@ -46,12 +46,12 @@ msgstr "Yañı bir Pencere Aç"
 msgid "Open a New Document"
 msgstr "Yañı Bir Vesiqa Aç"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:1
+#: ../data/com.bwhmather.bedit.gschema.xml.in.in.h:1
 msgid "Use Default Font"
 msgstr "Ög-belgilengen Hurufatnı Qullan"
 
 # tr
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:2
+#: ../data/com.bwhmather.bedit.gschema.xml.in.in.h:2
 msgid ""
 "Whether to use the system's default fixed width font for editing text "
 "instead of a font specific to gedit. If this option is turned off, then the "
@@ -62,12 +62,12 @@ msgstr ""
 "yazıtipininkullanılması. Bu seçenek kapalı ise, sistem yazıtipi yerine "
 "\"Editor Font\" seçeneğinde belirlenmiş olan yazıtipi kullanılır."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:3
+#: ../data/com.bwhmather.bedit.gschema.xml.in.in.h:3
 msgid "Editor Font"
 msgstr "Muharrir Hurufatı"
 
 # tr
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:4
+#: ../data/com.bwhmather.bedit.gschema.xml.in.in.h:4
 msgid ""
 "A custom font that will be used for the editing area. This will only take "
 "effect if the \"Use Default Font\" option is turned off."
@@ -75,23 +75,23 @@ msgstr ""
 "Düzenleme bölgesi için kullanılacak özel bir yazıtipi. Bu, sadece \"Use "
 "Default Font\" seçeneği kapalı ise etki gösterir."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:5
+#: ../data/com.bwhmather.bedit.gschema.xml.in.in.h:5
 msgid "Style Scheme"
 msgstr "Uslûp Taslağı"
 
 # tüklü
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:6
+#: ../data/com.bwhmather.bedit.gschema.xml.in.in.h:6
 msgid "The ID of a GtkSourceView Style Scheme used to color the text."
 msgstr ""
 "Metinni tüslendirmek içün qullanılğan bir GtkSourceView Uslûp Taslağınıñ "
 "kimligi."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:7
+#: ../data/com.bwhmather.bedit.gschema.xml.in.in.h:7
 msgid "Create Backup Copies"
 msgstr "Yedekleme Kopiyaları İcat Et"
 
 # tr
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:8
+#: ../data/com.bwhmather.bedit.gschema.xml.in.in.h:8
 msgid ""
 "Whether gedit should create backup copies for the files it saves. You can "
 "set the backup file extension with the \"Backup Copy Extension\" option."
@@ -99,11 +99,11 @@ msgstr ""
 "Gedit, kaydettiği dosyalar için yedek kopiyalar oluşturur. Yedek dosya "
 "uzantısını, \"Backup Copy Extension\" seçeneğiyle ayarlayabilirsiniz."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:9
+#: ../data/com.bwhmather.bedit.gschema.xml.in.in.h:9
 msgid "Autosave"
 msgstr "Avto-saqla"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:10
+#: ../data/com.bwhmather.bedit.gschema.xml.in.in.h:10
 msgid ""
 "Whether gedit should automatically save modified files after a time "
 "interval. You can set the time interval with the \"Autosave Interval\" "
@@ -113,11 +113,11 @@ msgstr ""
 "saqlap saqlamaycağı. Zaman aralığını \"Avto-saqla Aralığı\" ihtiyarından "
 "ayarlaybilirsiñiz."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:11
+#: ../data/com.bwhmather.bedit.gschema.xml.in.in.h:11
 msgid "Autosave Interval"
 msgstr "Avto-saqlav Aralığı"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:12
+#: ../data/com.bwhmather.bedit.gschema.xml.in.in.h:12
 msgid ""
 "Number of minutes after which gedit will automatically save modified files. "
 "This will only take effect if the \"Autosave\" option is turned on."
@@ -125,12 +125,12 @@ msgstr ""
 "Gedit'niñ deñiştirilgen dosyelerni qaç daqqa soñra öz-özünden saqlaycağı. "
 "Bu, ancaq \"Avto-saqla\" ihtiyarı faal ise uyğulanır."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:13
+#: ../data/com.bwhmather.bedit.gschema.xml.in.in.h:13
 msgid "Undo Actions Limit (DEPRECATED)"
 msgstr "Amellerni Keri Yapuv Haddi (TAKBİH ETİLGEN)"
 
 # tr
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:14
+#: ../data/com.bwhmather.bedit.gschema.xml.in.in.h:14
 msgid ""
 "Maximum number of actions that gedit will be able to undo or redo. Use "
 "\"-1\" for unlimited number of actions. Deprecated since 2.12.0"
@@ -138,12 +138,12 @@ msgstr ""
 "Gedit'in geri alabileceği ya da tekrarlayabileceği eylemlerin azami miktarı."
 "Sınırsız sayıda eylem için \"-1\" kullanın. 2.12.0'dan sonra kullanılmıyor"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:15
+#: ../data/com.bwhmather.bedit.gschema.xml.in.in.h:15
 msgid "Maximum Number of Undo Actions"
 msgstr "Keri Yapuv Amelleriniñ Azamiy Sayısı"
 
 # tr
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:16
+#: ../data/com.bwhmather.bedit.gschema.xml.in.in.h:16
 msgid ""
 "Maximum number of actions that gedit will be able to undo or redo. Use "
 "\"-1\" for unlimited number of actions."
@@ -152,11 +152,11 @@ msgstr ""
 "Sınırsız sayıda eylem için \"-1\" kullanın."
 
 # tüklü
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:17
+#: ../data/com.bwhmather.bedit.gschema.xml.in.in.h:17
 msgid "Line Wrapping Mode"
 msgstr "Satır Türme Tarzı"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:18
+#: ../data/com.bwhmather.bedit.gschema.xml.in.in.h:18
 msgid ""
 "Specifies how to wrap long lines in the editing area. Use \"none\" for no "
 "wrapping, \"word\" for wrapping at word boundaries, and \"char\" for "
@@ -168,82 +168,82 @@ msgstr ""
 "sıñırlarında türmek içün \"char\" qullanıñız. Degerler büyük-küçük "
 "hassasiyetlidir, ondan dolayı aynen mındaki kibi olğanlarından emin oluñız."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:19
+#: ../data/com.bwhmather.bedit.gschema.xml.in.in.h:19
 msgid "Tab Size"
 msgstr "Sekirme Ölçüsi"
 
 # tr
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:20
+#: ../data/com.bwhmather.bedit.gschema.xml.in.in.h:20
 msgid ""
 "Specifies the number of spaces that should be displayed instead of Tab "
 "characters."
 msgstr "Sekme karakteri yerine görüntülenecek boşluk sayısını belirtir."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:21
+#: ../data/com.bwhmather.bedit.gschema.xml.in.in.h:21
 msgid "Insert spaces"
 msgstr "Boşluqlarnı qıstır"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:22
+#: ../data/com.bwhmather.bedit.gschema.xml.in.in.h:22
 msgid "Whether gedit should insert spaces instead of tabs."
 msgstr "Gedit'niñ sekirmelerniñ yerine boşluqlarnı qıstırıp qıstırmaycağı."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:23
+#: ../data/com.bwhmather.bedit.gschema.xml.in.in.h:23
 msgid "Automatic indent"
 msgstr "Avtomatik kirinti"
 
 # tüklü
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:24
+#: ../data/com.bwhmather.bedit.gschema.xml.in.in.h:24
 msgid "Whether gedit should enable automatic indentation."
 msgstr "Gedit'niñ avtomatik kirintilemeni qabilleştirip qabilleştirmeycegi."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:25
+#: ../data/com.bwhmather.bedit.gschema.xml.in.in.h:25
 msgid "Display Line Numbers"
 msgstr "Satır Nomeralarını Köster"
 
 # tr
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:26
+#: ../data/com.bwhmather.bedit.gschema.xml.in.in.h:26
 msgid "Whether gedit should display line numbers in the editing area."
 msgstr "Gedit'in düzenleme alanında satır sayılarını göstermesi."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:27
+#: ../data/com.bwhmather.bedit.gschema.xml.in.in.h:27
 msgid "Highlight Current Line"
 msgstr "Ağımdaki Satırnı Işıqlandır"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:28
+#: ../data/com.bwhmather.bedit.gschema.xml.in.in.h:28
 msgid "Whether gedit should highlight the current line."
 msgstr "Gedit'niñ ağımdaki satırnı ışıqlandırıp ışıqlandırmaycağı."
 
 # tüklü
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:29
+#: ../data/com.bwhmather.bedit.gschema.xml.in.in.h:29
 msgid "Highlight Matching Brackets"
 msgstr "Eşleşken Qavuslarnı Işıqlandır"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:30
+#: ../data/com.bwhmather.bedit.gschema.xml.in.in.h:30
 msgid "Whether gedit should highlight matching brackets."
 msgstr "Gedit'niñ eşleşken qavuslarnı ışıqlandırıp ışıqlandırmaycağı."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:31
+#: ../data/com.bwhmather.bedit.gschema.xml.in.in.h:31
 msgid "Display Right Margin"
 msgstr "Sağ Kenarnı Köster"
 
 # tr
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:32
+#: ../data/com.bwhmather.bedit.gschema.xml.in.in.h:32
 msgid "Whether gedit should display the right margin in the editing area."
 msgstr "Gedit'in düzenleme alanında sağ kenar boşluğunu göstermesi."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:33
+#: ../data/com.bwhmather.bedit.gschema.xml.in.in.h:33
 msgid "Right Margin Position"
 msgstr "Sağ Kenar Mevamı"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:34
+#: ../data/com.bwhmather.bedit.gschema.xml.in.in.h:34
 msgid "Specifies the position of the right margin."
 msgstr "Sağ kenarnıñ mevamını belirtir."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:35
+#: ../data/com.bwhmather.bedit.gschema.xml.in.in.h:35
 msgid "Smart Home End"
 msgstr "Aqıllı Ev (Home) Soñ (End)"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:36
+#: ../data/com.bwhmather.bedit.gschema.xml.in.in.h:36
 msgid ""
 "Specifies how the cursor moves when the HOME and END keys are pressed. Use "
 "\"disabled\" to always move at the start/end of the line, \"after\" to move "
@@ -262,61 +262,61 @@ msgstr ""
 "yerine her zaman metinniñ başına/soñuna hareket etmek içün ise \"always\" "
 "qullanıñız."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:37
+#: ../data/com.bwhmather.bedit.gschema.xml.in.in.h:37
 msgid "Restore Previous Cursor Position"
 msgstr "Evelki İmleç Mevamını Keri Tikle"
 
 # tr
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:38
+#: ../data/com.bwhmather.bedit.gschema.xml.in.in.h:38
 msgid ""
 "Whether gedit should restore the previous cursor position when a file is "
 "loaded."
 msgstr ""
 "Gedit'in dosya yüklendiği zaman imlecin önceki yerinin geri getirilmesi."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:39
+#: ../data/com.bwhmather.bedit.gschema.xml.in.in.h:39
 msgid "Enable Syntax Highlighting"
 msgstr "Sintaksis Işıqlandırmasını Qabilleştir"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:40
+#: ../data/com.bwhmather.bedit.gschema.xml.in.in.h:40
 msgid "Whether gedit should enable syntax highlighting."
 msgstr "Gedit'niñ sintaksis ışıqlandırmasını qabilleştirip qabilleştirmeycegi."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:41
+#: ../data/com.bwhmather.bedit.gschema.xml.in.in.h:41
 msgid "Enable Search Highlighting"
 msgstr "Qıdırma Işıqlandırmasını Qabilleştir"
 
 # tr
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:42
+#: ../data/com.bwhmather.bedit.gschema.xml.in.in.h:42
 msgid ""
 "Whether gedit should highlight all the occurrences of the searched text."
 msgstr "Gedit'in arama metninin geçtiği yerleri vurgulaması."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:43
+#: ../data/com.bwhmather.bedit.gschema.xml.in.in.h:43
 msgid "Ensure Trailing Newline"
 msgstr "Süyreklengen Yañı-satırnı Temin Et"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:44
+#: ../data/com.bwhmather.bedit.gschema.xml.in.in.h:44
 msgid ""
 "Whether gedit will ensure that documents always end with a trailing newline."
 msgstr ""
 "Gedit'niñ vesiqalarnıñ her zaman süyreklengen bir yañı-satır ile bitmesini "
 "temin etip etmeycegi."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:45
+#: ../data/com.bwhmather.bedit.gschema.xml.in.in.h:45
 msgid "Toolbar is Visible"
 msgstr "Alet Çubuğı Körünir"
 
 # tr
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:46
+#: ../data/com.bwhmather.bedit.gschema.xml.in.in.h:46
 msgid "Whether the toolbar should be visible in editing windows."
 msgstr "Düzenleme penceresindeki araç çubuğunun görünür hale gelmesi."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:47
+#: ../data/com.bwhmather.bedit.gschema.xml.in.in.h:47
 msgid "Notebook Show Tabs Mode"
 msgstr "Tizüstü İlmeklerni Köster Tarzı"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:48
+#: ../data/com.bwhmather.bedit.gschema.xml.in.in.h:48
 msgid ""
 "Specifies when to show the notebook tabs. Use \"never\" to never show the "
 "tabs, \"always\" to always show the tabs, and \"auto\" to show the tabs only "
@@ -329,32 +329,32 @@ msgstr ""
 "büyük-küçük hassasiyetlidir, ondan dolayı aynen mındaki kibi olğanlarından "
 "emin oluñız."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:49
+#: ../data/com.bwhmather.bedit.gschema.xml.in.in.h:49
 msgid "Status Bar is Visible"
 msgstr "Durum Çubuğı Körünir"
 
 # tr
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:50
+#: ../data/com.bwhmather.bedit.gschema.xml.in.in.h:50
 msgid ""
 "Whether the status bar at the bottom of editing windows should be visible."
 msgstr ""
 "Düzenleme penceresinin altında bulunan durum çubuğunun görünür hale gelmesi."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:51
+#: ../data/com.bwhmather.bedit.gschema.xml.in.in.h:51
 msgid "Side panel is Visible"
 msgstr "Yan panel Körünirdir"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:52
+#: ../data/com.bwhmather.bedit.gschema.xml.in.in.h:52
 msgid ""
 "Whether the side panel at the left of editing windows should be visible."
 msgstr "Tahrir pencereleriniñ solundaki yan panelniñ körünir olıp olmaycağı."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:53
+#: ../data/com.bwhmather.bedit.gschema.xml.in.in.h:53
 msgid "Maximum Recent Files"
 msgstr "Azamiy Deminki Dosyeler"
 
 # tr
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:54
+#: ../data/com.bwhmather.bedit.gschema.xml.in.in.h:54
 msgid ""
 "Specifies the maximum number of recently opened files that will be displayed "
 "in the \"Recent Files\" submenu."
@@ -362,29 +362,29 @@ msgstr ""
 "\"Son Dosyalar \" altmenüsünde görüntülenecek olan en son açılmış dosyaların "
 "en yüksek sayısını belirtir."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:55
+#: ../data/com.bwhmather.bedit.gschema.xml.in.in.h:55
 msgid "Print Syntax Highlighting"
 msgstr "Sintaksis Işıqlandırmasını Bastır"
 
 # tr
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:56
+#: ../data/com.bwhmather.bedit.gschema.xml.in.in.h:56
 msgid "Whether gedit should print syntax highlighting when printing documents."
 msgstr "Gedit'in belgeleri yazdırırken bir belge başlığı eklemesi."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:57
+#: ../data/com.bwhmather.bedit.gschema.xml.in.in.h:57
 msgid "Print Header"
 msgstr "Başlıqnı Bastır"
 
 # tr
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:58
+#: ../data/com.bwhmather.bedit.gschema.xml.in.in.h:58
 msgid "Whether gedit should include a document header when printing documents."
 msgstr "Gedit'in belgeleri yazdırırken bir belge başlığı eklemesi."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:59
+#: ../data/com.bwhmather.bedit.gschema.xml.in.in.h:59
 msgid "Printing Line Wrapping Mode"
 msgstr "Bastıruv Satır Türme Tarzı"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:60
+#: ../data/com.bwhmather.bedit.gschema.xml.in.in.h:60
 msgid ""
 "Specifies how to wrap long lines for printing. Use \"none\" for no wrapping, "
 "\"word\" for wrapping at word boundaries, and \"char\" for wrapping at "
@@ -397,12 +397,12 @@ msgstr ""
 "hassasiyetlidir, ondan dolayı aynen mında zikretilgeni kibi körünmelerinden "
 "emin oluñız."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:61
+#: ../data/com.bwhmather.bedit.gschema.xml.in.in.h:61
 msgid "Print Line Numbers"
 msgstr "Satır Nomeralarını Bastır"
 
 # tr
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:62
+#: ../data/com.bwhmather.bedit.gschema.xml.in.in.h:62
 msgid ""
 "If this value is 0, then no line numbers will be inserted when printing a "
 "document. Otherwise, gedit will print line numbers every such number of "
@@ -411,24 +411,24 @@ msgstr ""
 "Bu değer \"0\" ise, belge yazdırılırken satır sayıları eklenmez. Aksi halde, "
 "gedit her satır için satır sayılarını yazdırır."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:63
+#: ../data/com.bwhmather.bedit.gschema.xml.in.in.h:63
 msgid "Body Font for Printing"
 msgstr "Bastıruv içün Beden Hurufatı"
 
 # tr
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:64
+#: ../data/com.bwhmather.bedit.gschema.xml.in.in.h:64
 msgid ""
 "Specifies the font to use for a document's body when printing documents."
 msgstr ""
 "Belge yazdırırken belge gövdesi için hangi yazıtipinin kullanılacağını "
 "belirtir."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:65
+#: ../data/com.bwhmather.bedit.gschema.xml.in.in.h:65
 msgid "Header Font for Printing"
 msgstr "Bastıruv içün Başlıq Hurufatı"
 
 # tr
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:66
+#: ../data/com.bwhmather.bedit.gschema.xml.in.in.h:66
 msgid ""
 "Specifies the font to use for page headers when printing a document. This "
 "will only take effect if the \"Print Header\" option is turned on."
@@ -436,12 +436,12 @@ msgstr ""
 "Yazdırma işleminde satır sayıları için kullanılacak yazıtipini belirtir. Bu, "
 "sadece \"Print Header\" açık ise etki gösterir."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:67
+#: ../data/com.bwhmather.bedit.gschema.xml.in.in.h:67
 msgid "Line Number Font for Printing"
 msgstr "Bastıruv içün Satır Nomerası Hurufatı"
 
 # tr
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:68
+#: ../data/com.bwhmather.bedit.gschema.xml.in.in.h:68
 msgid ""
 "Specifies the font to use for line numbers when printing. This will only "
 "take effect if the \"Print Line Numbers\" option is non-zero."
@@ -461,15 +461,15 @@ msgstr ""
 #. Only recognized encodings are used.
 #. See http://git.gnome.org/browse/gedit/tree/gedit/gedit-encodings.c#n152 for
 #. a list of supported encodings
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:80
+#: ../data/com.bwhmather.bedit.gschema.xml.in.in.h:80
 msgid "['UTF-8', 'CURRENT', 'ISO-8859-15', 'UTF-16']"
 msgstr "['UTF-8', 'CURRENT', 'ISO-8859-9', 'UTF-16']"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:81
+#: ../data/com.bwhmather.bedit.gschema.xml.in.in.h:81
 msgid "Automatically Detected Encodings"
 msgstr "Öz-özünden Alğılanğan Kodlandırmalar"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:82
+#: ../data/com.bwhmather.bedit.gschema.xml.in.in.h:82
 msgid ""
 "Sorted list of encodings used by gedit for automatically detecting the "
 "encoding of a file. \"CURRENT\" represents the current locale encoding. Only "
@@ -482,15 +482,15 @@ msgstr ""
 # tüklü
 #. Translators: This is the list of encodings shown by default in the Character Encoding
 #. menu in open/save file selector. Only recognized encodings are displayed.
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:85
+#: ../data/com.bwhmather.bedit.gschema.xml.in.in.h:85
 msgid "['ISO-8859-15']"
 msgstr "['UTF-8']"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:86
+#: ../data/com.bwhmather.bedit.gschema.xml.in.in.h:86
 msgid "Encodings shown in menu"
 msgstr "Kodlandırmalar menüde kösterilir"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:87
+#: ../data/com.bwhmather.bedit.gschema.xml.in.in.h:87
 msgid ""
 "List of encodings shown in the Character Encoding menu in open/save file "
 "selector. Only recognized encodings are used."
@@ -499,12 +499,12 @@ msgstr ""
 "kodlandırmalarnıñ listesi. Faqat tanılğan kodlandırmalar qullanılır."
 
 # tüklü
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:88
+#: ../data/com.bwhmather.bedit.gschema.xml.in.in.h:88
 msgid "Active plugins"
 msgstr "Faal plaginler"
 
 # tr
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:89
+#: ../data/com.bwhmather.bedit.gschema.xml.in.in.h:89
 msgid ""
 "List of active plugins. It contains the \"Location\" of the active plugins. "
 "See the .gedit-plugin file for obtaining the \"Location\" of a given plugin."
@@ -1626,8 +1626,8 @@ msgid "Editor"
 msgstr "Muharrir"
 
 #: ../gedit/gedit-preferences-dialog.ui.h:20
-#: ../plugins/externaltools/org.gnome.gedit.plugins.externaltools.gschema.xml.in.in.h:3
-#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.in.h:7
+#: ../plugins/externaltools/com.bwhmather.bedit.plugins.externaltools.gschema.xml.in.in.h:3
+#: ../plugins/pythonconsole/com.bwhmather.bedit.plugins.pythonconsole.gschema.xml.in.in.h:7
 msgid "Font"
 msgstr "Hurufat"
 
@@ -2418,12 +2418,12 @@ msgstr ""
 "etip yañı biri içün bekleybilirsiñiz"
 
 #. ex:set ts=8 noet:
-#: ../plugins/checkupdate/org.gnome.gedit.plugins.checkupdate.gschema.xml.in.in.h:1
+#: ../plugins/checkupdate/com.bwhmather.bedit.plugins.checkupdate.gschema.xml.in.in.h:1
 msgid "Version to Ignore"
 msgstr "İhmal Etilecek Sürüm"
 
 #. This is releated to the next gedit version to be released
-#: ../plugins/checkupdate/org.gnome.gedit.plugins.checkupdate.gschema.xml.in.in.h:3
+#: ../plugins/checkupdate/com.bwhmather.bedit.plugins.checkupdate.gschema.xml.in.in.h:3
 msgid "Version to ignore until a newer version is released."
 msgstr "Soñraki bir sürüm çıqarılğance ihmal etilecek sürüm."
 
@@ -2535,12 +2535,12 @@ msgstr "Hariciy Aletler"
 msgid "Execute external commands and shell scripts."
 msgstr "Hariciy buyruqlarnı ve qabuq bitiklerini infaz et."
 
-#: ../plugins/externaltools/org.gnome.gedit.plugins.externaltools.gschema.xml.in.in.h:1
-#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.in.h:5
+#: ../plugins/externaltools/com.bwhmather.bedit.plugins.externaltools.gschema.xml.in.in.h:1
+#: ../plugins/pythonconsole/com.bwhmather.bedit.plugins.pythonconsole.gschema.xml.in.in.h:5
 msgid "Whether to use the system font"
 msgstr "Sistem hurufatınıñ qullanılıp qullanılmaycağı"
 
-#: ../plugins/externaltools/org.gnome.gedit.plugins.externaltools.gschema.xml.in.in.h:2
+#: ../plugins/externaltools/com.bwhmather.bedit.plugins.externaltools.gschema.xml.in.in.h:2
 msgid ""
 "If true, the external tools will use the desktop-global standard font if "
 "it's monospace (and the most similar font it can come up with otherwise)."
@@ -2549,8 +2549,8 @@ msgstr ""
 "onı (aksi taqdirde, tapılğan eñ beñzer hurufatnı) qullanır."
 
 # tüklü
-#: ../plugins/externaltools/org.gnome.gedit.plugins.externaltools.gschema.xml.in.in.h:4
-#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.in.h:8
+#: ../plugins/externaltools/com.bwhmather.bedit.plugins.externaltools.gschema.xml.in.in.h:4
+#: ../plugins/pythonconsole/com.bwhmather.bedit.plugins.pythonconsole.gschema.xml.in.in.h:8
 msgid "A Pango font name. Examples are \"Sans 12\" or \"Monospace Bold 14\"."
 msgstr ""
 "Bir Pango hurufat ismi. Meselâ, \"Sans 12\" yaki \"Yek-feza Qalın 14\"."
@@ -3028,12 +3028,12 @@ msgid "Could not mount volume: %s"
 msgstr "Cılt taqılamadı: %s"
 
 #. ex:ts=8:noet:
-#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:1
+#: ../plugins/filebrowser/com.bwhmather.bedit.plugins.filebrowser.gschema.xml.in.in.h:1
 msgid "Open With Tree View"
 msgstr "Terek Körünimi ile Aç"
 
 # tr
-#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:2
+#: ../plugins/filebrowser/com.bwhmather.bedit.plugins.filebrowser.gschema.xml.in.in.h:2
 msgid ""
 "Open the tree view when the file browser plugin gets loaded instead of the "
 "bookmarks view"
@@ -3041,12 +3041,12 @@ msgstr ""
 "Dosya tarayıcısı eklentisi yüklendiğinde yer imleri görünümü yerine ağaç "
 "görünümünü aç"
 
-#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:3
+#: ../plugins/filebrowser/com.bwhmather.bedit.plugins.filebrowser.gschema.xml.in.in.h:3
 msgid "File Browser Root Directory"
 msgstr "Dosye Kezicisi Tamır Fihristi"
 
 # tr
-#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:4
+#: ../plugins/filebrowser/com.bwhmather.bedit.plugins.filebrowser.gschema.xml.in.in.h:4
 msgid ""
 "The file browser root directory to use when loading the file browser plugin "
 "and onload/tree_view is TRUE."
@@ -3055,12 +3055,12 @@ msgstr ""
 "kullanılacak dosya tarayıcısı başlangıç dizini."
 
 # tüklü
-#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:5
+#: ../plugins/filebrowser/com.bwhmather.bedit.plugins.filebrowser.gschema.xml.in.in.h:5
 msgid "File Browser Virtual Root Directory"
 msgstr "Dosye Kezicisi Sanal Tamır Fihristi"
 
 # tr
-#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:6
+#: ../plugins/filebrowser/com.bwhmather.bedit.plugins.filebrowser.gschema.xml.in.in.h:6
 msgid ""
 "The file browser virtual root directory to use when loading the file browser "
 "plugin when onload/tree_view is TRUE. The virtual root must always be below "
@@ -3070,19 +3070,19 @@ msgstr ""
 "kullanılacakdosya tarayıcısı sanal başlangıç dizini. Sanal başlangıç asıl "
 "başlangıcın altında olmalıdır."
 
-#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:7
+#: ../plugins/filebrowser/com.bwhmather.bedit.plugins.filebrowser.gschema.xml.in.in.h:7
 msgid "Enable Restore of Remote Locations"
 msgstr "Uzaqtaki Qonumlarnıñ Keri Tiklenüvini Qabilleştir"
 
-#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:8
+#: ../plugins/filebrowser/com.bwhmather.bedit.plugins.filebrowser.gschema.xml.in.in.h:8
 msgid "Sets whether to enable restoring of remote locations."
 msgstr "Uzaqtaki qonumlarnıñ keri tiklenip tiklenmeycegini tesbit eter."
 
-#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:9
+#: ../plugins/filebrowser/com.bwhmather.bedit.plugins.filebrowser.gschema.xml.in.in.h:9
 msgid "Set Location to First Document"
 msgstr "Qonumnı İlk Vesiqağa Tesbit Et"
 
-#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:10
+#: ../plugins/filebrowser/com.bwhmather.bedit.plugins.filebrowser.gschema.xml.in.in.h:10
 msgid ""
 "If TRUE the file browser plugin will view the directory of the first opened "
 "document given that the file browser hasn't been used yet. (Thus this "
@@ -3093,11 +3093,11 @@ msgstr ""
 "qullanılmağan olsa, ilk açılğan vesiqanıñ fihristini kösterir. (Umumen, bu "
 "bir vesiqanı buyruq satrından ya da Nautilus ve ilâhre ile açqanda uyğulanır)"
 
-#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:11
+#: ../plugins/filebrowser/com.bwhmather.bedit.plugins.filebrowser.gschema.xml.in.in.h:11
 msgid "File Browser Filter Mode"
 msgstr "Dosye Kezicisi Süzgüç Tarzı"
 
-#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:12
+#: ../plugins/filebrowser/com.bwhmather.bedit.plugins.filebrowser.gschema.xml.in.in.h:12
 msgid ""
 "This value determines what files get filtered from the file browser. Valid "
 "values are: none (filter nothing), hide-hidden (filter hidden files) and "
@@ -3108,12 +3108,12 @@ msgstr ""
 "dosyelerni süzgüçle), hide-binary (ekişerleme dosyelerni süzgüçle)."
 
 # tüklü
-#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:13
+#: ../plugins/filebrowser/com.bwhmather.bedit.plugins.filebrowser.gschema.xml.in.in.h:13
 msgid "File Browser Filter Pattern"
 msgstr "Dosye Kezicisi Süzgüç Deseni"
 
 # tr
-#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:14
+#: ../plugins/filebrowser/com.bwhmather.bedit.plugins.filebrowser.gschema.xml.in.in.h:14
 msgid ""
 "The filter pattern to filter the file browser with. This filter works on top "
 "of the filter_mode."
@@ -3129,23 +3129,23 @@ msgstr "Tarz-satırları"
 msgid "Emacs, Kate and Vim-style modelines support for gedit."
 msgstr "Gedit içün Emacs, Kate ve Vim-uslûbı tarz-satırları destegi."
 
-#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.in.h:1
+#: ../plugins/pythonconsole/com.bwhmather.bedit.plugins.pythonconsole.gschema.xml.in.in.h:1
 msgid "Command Color Text"
 msgstr "Emir Tüsü Metni"
 
-#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.in.h:2
+#: ../plugins/pythonconsole/com.bwhmather.bedit.plugins.pythonconsole.gschema.xml.in.in.h:2
 msgid "The command color text"
 msgstr "Emir tüsü metni"
 
-#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.in.h:3
+#: ../plugins/pythonconsole/com.bwhmather.bedit.plugins.pythonconsole.gschema.xml.in.in.h:3
 msgid "Error Color Text"
 msgstr "Hata Tüsü Metni"
 
-#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.in.h:4
+#: ../plugins/pythonconsole/com.bwhmather.bedit.plugins.pythonconsole.gschema.xml.in.in.h:4
 msgid "The error color text"
 msgstr "Hata tüsü metni"
 
-#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.in.h:6
+#: ../plugins/pythonconsole/com.bwhmather.bedit.plugins.pythonconsole.gschema.xml.in.in.h:6
 msgid ""
 "If true, the terminal will use the desktop-global standard font if it's "
 "monospace (and the most similar font it can come up with otherwise)."
@@ -3729,11 +3729,11 @@ msgid "_Prompt for a format"
 msgstr "_Bir format içün inde"
 
 # tüklü
-#: ../plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in.in.h:1
+#: ../plugins/time/com.bwhmather.bedit.plugins.time.gschema.xml.in.in.h:1
 msgid "Prompt Type"
 msgstr "İndeme Türü"
 
-#: ../plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in.in.h:2
+#: ../plugins/time/com.bwhmather.bedit.plugins.time.gschema.xml.in.in.h:2
 msgid ""
 "If the user should be prompted for a format or if the selected or custom "
 "format should be used."
@@ -3741,19 +3741,19 @@ msgstr ""
 "Qullanıcınıñ bir format içün indenecegi yaki saylanğan yaki özel formatnıñ "
 "qullanılacağı."
 
-#: ../plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in.in.h:3
+#: ../plugins/time/com.bwhmather.bedit.plugins.time.gschema.xml.in.in.h:3
 msgid "Selected Format"
 msgstr "Saylanğan Format"
 
-#: ../plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in.in.h:4
+#: ../plugins/time/com.bwhmather.bedit.plugins.time.gschema.xml.in.in.h:4
 msgid "The selected format used when inserting the date/time."
 msgstr "Tarih/vaqıt qıstırılğanda qullanılğan saylanğan format."
 
-#: ../plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in.in.h:5
+#: ../plugins/time/com.bwhmather.bedit.plugins.time.gschema.xml.in.in.h:5
 msgid "Custom Format"
 msgstr "Şahsiyleştirilgen Format"
 
-#: ../plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in.in.h:6
+#: ../plugins/time/com.bwhmather.bedit.plugins.time.gschema.xml.in.in.h:6
 msgid "The custom format used when inserting the date/time."
 msgstr "Tarih/vaqıt qıstırılğanda qullanılğan şahsiyleştirilgen format."
 

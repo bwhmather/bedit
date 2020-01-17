@@ -395,7 +395,7 @@ gedit_history_entry_init (GeditHistoryEntry *entry)
 
 	entry->completion = NULL;
 
-	entry->settings = g_settings_new ("org.gnome.gedit.state.history-entry");
+	entry->settings = g_settings_new ("com.bwhmather.bedit.state.history-entry");
 }
 
 void

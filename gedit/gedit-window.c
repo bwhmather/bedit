@@ -450,7 +450,7 @@ gedit_window_class_init (GeditWindowClass *klass)
 
 	/* Bind class to template */
 	gtk_widget_class_set_template_from_resource (widget_class,
-	                                             "/org/gnome/gedit/ui/gedit-window.ui");
+	                                             "/com/bwhmather/bedit/ui/gedit-window.ui");
 	gtk_widget_class_bind_template_child_private (widget_class, GeditWindow, titlebar_paned);
 	gtk_widget_class_bind_template_child_private (widget_class, GeditWindow, side_headerbar);
 	gtk_widget_class_bind_template_child_private (widget_class, GeditWindow, headerbar);
@@ -2731,12 +2731,12 @@ gedit_window_init (GeditWindow *window)
 	window->priv->dispose_has_run = FALSE;
 	window->priv->direct_save_uri = NULL;
 	window->priv->closed_docs_stack = NULL;
-	window->priv->editor_settings = g_settings_new ("org.gnome.gedit.preferences.editor");
-	window->priv->ui_settings = g_settings_new ("org.gnome.gedit.preferences.ui");
+	window->priv->editor_settings = g_settings_new ("com.bwhmather.bedit.preferences.editor");
+	window->priv->ui_settings = g_settings_new ("com.bwhmather.bedit.preferences.ui");
 
 	/* window settings are applied only once the window is closed. We do not
 	   want to keep writing to disk when the window is dragged around */
-	window->priv->window_settings = g_settings_new ("org.gnome.gedit.state.window");
+	window->priv->window_settings = g_settings_new ("com.bwhmather.bedit.state.window");
 	g_settings_delay (window->priv->window_settings);
 
 	window->priv->message_bus = gedit_message_bus_new ();

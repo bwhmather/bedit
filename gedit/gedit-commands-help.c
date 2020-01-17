@@ -43,7 +43,7 @@ _gedit_cmd_help_keyboard_shortcuts (GeditWindow *window)
 	{
 		GtkBuilder *builder;
 
-		builder = gtk_builder_new_from_resource ("/org/gnome/gedit/ui/gedit-shortcuts.ui");
+		builder = gtk_builder_new_from_resource ("/com/bwhmather/bedit/ui/gedit-shortcuts.ui");
 		shortcuts_window = GTK_WIDGET (gtk_builder_get_object (builder, "shortcuts-gedit"));
 
 		g_signal_connect (shortcuts_window,
@@ -112,7 +112,7 @@ _gedit_cmd_help_about (GeditWindow *window)
 
 	gedit_debug (DEBUG_COMMANDS);
 
-	logo = gdk_pixbuf_new_from_resource ("/org/gnome/gedit/pixmaps/gedit-logo.png", &error);
+	logo = gdk_pixbuf_new_from_resource ("/com/bwhmather/bedit/pixmaps/gedit-logo.png", &error);
 	if (error != NULL)
 	{
 		g_warning ("Error when loading the gedit logo: %s", error->message);

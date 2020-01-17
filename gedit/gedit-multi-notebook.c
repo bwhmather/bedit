@@ -677,7 +677,7 @@ gedit_multi_notebook_init (GeditMultiNotebook *mnb)
 	priv->show_tabs_mode = GEDIT_NOTEBOOK_SHOW_TABS_ALWAYS;
 	priv->show_tabs = TRUE;
 
-	priv->ui_settings = g_settings_new ("org.gnome.gedit.preferences.ui");
+	priv->ui_settings = g_settings_new ("com.bwhmather.bedit.preferences.ui");
 	g_settings_bind (priv->ui_settings,
 			 GEDIT_SETTINGS_SHOW_TABS_MODE,
 			 mnb,

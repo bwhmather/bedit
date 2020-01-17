@@ -525,7 +525,7 @@ gedit_file_browser_widget_class_init (GeditFileBrowserWidgetClass *klass)
 
 	/* Bind class to template */
 	gtk_widget_class_set_template_from_resource (widget_class,
-	                                             "/org/gnome/gedit/plugins/file-browser/ui/gedit-file-browser-widget.ui");
+	                                             "/com/bwhmather/bedit/plugins/file-browser/ui/gedit-file-browser-widget.ui");
 	gtk_widget_class_bind_template_child_private (widget_class, GeditFileBrowserWidget, previous_button);
 	gtk_widget_class_bind_template_child_private (widget_class, GeditFileBrowserWidget, next_button);
 
@@ -966,7 +966,7 @@ gedit_file_browser_widget_init (GeditFileBrowserWidget *obj)
 
 	builder = gtk_builder_new ();
 	if (!gtk_builder_add_from_resource (builder,
-	                                    "/org/gnome/gedit/plugins/file-browser/ui/gedit-file-browser-menus.ui",
+	                                    "/com/bwhmather/bedit/plugins/file-browser/ui/gedit-file-browser-menus.ui",
 	                                    &error))
 	{
 		g_warning ("loading menu builder file: %s", error->message);

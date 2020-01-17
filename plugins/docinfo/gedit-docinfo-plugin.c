@@ -333,7 +333,7 @@ create_docinfo_dialog (GeditDocinfoPlugin *plugin)
 	priv = plugin->priv;
 
 	builder = gtk_builder_new ();
-	gtk_builder_add_from_resource (builder, "/org/gnome/gedit/plugins/docinfo/ui/gedit-docinfo-plugin.ui", NULL);
+	gtk_builder_add_from_resource (builder, "/com/bwhmather/bedit/plugins/docinfo/ui/gedit-docinfo-plugin.ui", NULL);
 	priv->dialog = GTK_WIDGET (gtk_builder_get_object (builder, "dialog"));
 	priv->header_bar = GTK_WIDGET (gtk_builder_get_object (builder, "header_bar"));
 	priv->words_label = GTK_WIDGET (gtk_builder_get_object (builder, "words_label"));

@@ -141,7 +141,7 @@ main (int argc, char *argv[])
 	tepl_init ();
 
 	app = g_object_new (type,
-	                    "application-id", "org.gnome.gedit",
+	                    "application-id", "com.bwhmather.bedit",
 	                    "flags", G_APPLICATION_HANDLES_COMMAND_LINE | G_APPLICATION_HANDLES_OPEN,
 	                    NULL);
 

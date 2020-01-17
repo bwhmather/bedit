@@ -85,7 +85,7 @@ gedit_statusbar_class_init (GeditStatusbarClass *klass)
 	object_class->dispose = gedit_statusbar_dispose;
 
 	gtk_widget_class_set_template_from_resource (widget_class,
-		                                    "/org/gnome/gedit/ui/gedit-statusbar.ui");
+		                                    "/com/bwhmather/bedit/ui/gedit-statusbar.ui");
 
 	gtk_widget_class_bind_template_child (widget_class, GeditStatusbar, error_frame);
 	gtk_widget_class_bind_template_child (widget_class, GeditStatusbar, error_image);

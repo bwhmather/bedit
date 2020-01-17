@@ -1,5 +1,5 @@
 install_data(
-  'org.gnome.gedit.svg',
+  'com.bwhmather.bedit.svg',
   install_dir: join_paths(
     get_option('prefix'),
     get_option('datadir'),
@@ -8,7 +8,7 @@ install_data(
 )
 
 install_data(
-  'org.gnome.gedit-symbolic.svg',
+  'com.bwhmather.bedit-symbolic.svg',
   install_dir: join_paths(
     get_option('prefix'),
     get_option('datadir'),

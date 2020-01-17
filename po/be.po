@@ -20,12 +20,12 @@ msgstr ""
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 "X-Generator: Poedit 2.0.8\n"
 
-#: ../data/org.gnome.gedit.appdata.xml.in.h:1
-#: ../data/org.gnome.gedit.desktop.in.in.h:2
+#: ../data/com.bwhmather.bedit.appdata.xml.in.h:1
+#: ../data/com.bwhmather.bedit.desktop.in.in.h:2
 msgid "Edit text files"
 msgstr "Рэдагаванне тэкставых файлаў"
 
-#: ../data/org.gnome.gedit.appdata.xml.in.h:2
+#: ../data/com.bwhmather.bedit.appdata.xml.in.h:2
 msgid ""
 "gedit is the official text editor of the GNOME desktop environment. While "
 "aiming at simplicity and ease of use, gedit is a powerful general purpose "
@@ -35,7 +35,7 @@ msgstr ""
 "GNOME. Па магчымасці просты ў карыстанні, gedit з'яўляецца магутным "
 "тэкставым рэдактарам агульнага прызначэння."
 
-#: ../data/org.gnome.gedit.appdata.xml.in.h:3
+#: ../data/com.bwhmather.bedit.appdata.xml.in.h:3
 msgid ""
 "Whether you are writing the next bestseller, programming an innovative "
 "application, or simply taking some quick notes, gedit will be a reliable "
@@ -45,7 +45,7 @@ msgstr ""
 "ведзяце простыя нататкі, gedit стане надзейнай прыладай дзеля дасягнення "
 "вашых мэтаў."
 
-#: ../data/org.gnome.gedit.appdata.xml.in.h:4
+#: ../data/com.bwhmather.bedit.appdata.xml.in.h:4
 msgid ""
 "Its flexible plugin system allows you to tailor the application to your "
 "needs and adapt it to your workflow."
@@ -53,31 +53,31 @@ msgstr ""
 "Яго гнуткая сістэма плугінаў дазваляе падагнаць гэту праграму пад свае "
 "патрэбы і спосаб працы."
 
-#: ../data/org.gnome.gedit.desktop.in.in.h:1 ../gedit/gedit-print-job.c:730
+#: ../data/com.bwhmather.bedit.desktop.in.in.h:1 ../gedit/gedit-print-job.c:730
 msgid "Text Editor"
 msgstr "Тэкставы рэдактар"
 
-#: ../data/org.gnome.gedit.desktop.in.in.h:3
+#: ../data/com.bwhmather.bedit.desktop.in.in.h:3
 msgid "gedit Text Editor"
 msgstr "Тэкставы рэдактар gedit"
 
-#: ../data/org.gnome.gedit.desktop.in.in.h:4
+#: ../data/com.bwhmather.bedit.desktop.in.in.h:4
 msgid "Text;Editor;Plaintext;Write;"
 msgstr "Тэкст;Рэдактар;Тэкставы;Запіс;"
 
-#: ../data/org.gnome.gedit.desktop.in.in.h:5
+#: ../data/com.bwhmather.bedit.desktop.in.in.h:5
 msgid "New Window"
 msgstr "Новае акно"
 
-#: ../data/org.gnome.gedit.desktop.in.in.h:6
+#: ../data/com.bwhmather.bedit.desktop.in.in.h:6
 msgid "New Document"
 msgstr "Новы дакумент"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:1
+#: ../data/com.bwhmather.bedit.gschema.xml.in.h:1
 msgid "Use Default Font"
 msgstr "Ужыць прадвызначаны шрыфт"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:2
+#: ../data/com.bwhmather.bedit.gschema.xml.in.h:2
 msgid ""
 "Whether to use the system’s default fixed width font for editing text "
 "instead of a font specific to gedit. If this option is turned off, then the "
@@ -89,15 +89,15 @@ msgstr ""
 "выключана, шрыфт будзе вызначаны опцыяй \"Шрыфт рэдактара\"."
 
 #. Translators: This is a GSettings default value. Do NOT change or localize the quotation marks!
-#: ../data/org.gnome.gedit.gschema.xml.in.h:4
+#: ../data/com.bwhmather.bedit.gschema.xml.in.h:4
 msgid "'Monospace 12'"
 msgstr "'Monospace 12'"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:5
+#: ../data/com.bwhmather.bedit.gschema.xml.in.h:5
 msgid "Editor Font"
 msgstr "Шрыфт рэдактара"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:6
+#: ../data/com.bwhmather.bedit.gschema.xml.in.h:6
 msgid ""
 "A custom font that will be used for the editing area. This will only take "
 "effect if the “Use Default Font” option is turned off."
@@ -105,27 +105,27 @@ msgstr ""
 "Уласны шрыфт для абшару рэдагавання. Уздзейнічае, толькі калі выключана "
 "опцыя \"Ужыць прадвызначаны шрыфт\"."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:7
+#: ../data/com.bwhmather.bedit.gschema.xml.in.h:7
 msgid "Style Scheme"
 msgstr "Схема афармлення"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:8
+#: ../data/com.bwhmather.bedit.gschema.xml.in.h:8
 msgid "The ID of a GtkSourceView Style Scheme used to color the text."
 msgstr "Ідэнтыфікатар схемы афармлення GtkSourceView для афарбоўкі тэксту."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:9
+#: ../data/com.bwhmather.bedit.gschema.xml.in.h:9
 msgid "Create Backup Copies"
 msgstr "Стварэнне запасных копій"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:10
+#: ../data/com.bwhmather.bedit.gschema.xml.in.h:10
 msgid "Whether gedit should create backup copies for the files it saves."
 msgstr "Ці трэба ствараць запасныя копіі файлаў пры захаванні."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:11
+#: ../data/com.bwhmather.bedit.gschema.xml.in.h:11
 msgid "Autosave"
 msgstr "Аўтаматычнае захаванне"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:12
+#: ../data/com.bwhmather.bedit.gschema.xml.in.h:12
 msgid ""
 "Whether gedit should automatically save modified files after a time "
 "interval. You can set the time interval with the “Autosave Interval” option."
@@ -134,11 +134,11 @@ msgstr ""
 "такі прамежак часу можна з дапамогай опцыі \"Прамежак для аўтаматычнага "
 "захавання\"."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:13
+#: ../data/com.bwhmather.bedit.gschema.xml.in.h:13
 msgid "Autosave Interval"
 msgstr "Прамежак для аўтаматычнага захавання"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:14
+#: ../data/com.bwhmather.bedit.gschema.xml.in.h:14
 msgid ""
 "Number of minutes after which gedit will automatically save modified files. "
 "This will only take effect if the “Autosave” option is turned on."
@@ -147,11 +147,11 @@ msgstr ""
 "уздзейнічае на праграму, толькі калі ўключана опцыя \"Аўтаматычнае захаванне"
 "\"."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:15
+#: ../data/com.bwhmather.bedit.gschema.xml.in.h:15
 msgid "Maximum Number of Undo Actions"
 msgstr "Максімальная колькасць дзеянняў, якія можна адрабіць назад"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:16
+#: ../data/com.bwhmather.bedit.gschema.xml.in.h:16
 msgid ""
 "Maximum number of actions that gedit will be able to undo or redo. Use “-1” "
 "for unlimited number of actions."
@@ -159,11 +159,11 @@ msgstr ""
 "Максімальная колькасць дзеянняў, якія gedit дазваляе адрабіць назад ці зноў "
 "паўтарыць. Значэнне \"-1\" азначае неабмежаваную колькасць такіх дзеянняў."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:17
+#: ../data/com.bwhmather.bedit.gschema.xml.in.h:17
 msgid "Line Wrapping Mode"
 msgstr "Рэжым пераносу радкоў"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:18
+#: ../data/com.bwhmather.bedit.gschema.xml.in.h:18
 msgid ""
 "Specifies how to wrap long lines in the editing area. Use “none” for no "
 "wrapping, “word” for wrapping at word boundaries, and “char” for wrapping at "
@@ -176,11 +176,11 @@ msgstr ""
 "гэтыя значэнні адчувальныя да рэгістра літар, таму спраўдзіце, каб яны былі "
 "напісаныя так жа, як і тут."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:19
+#: ../data/com.bwhmather.bedit.gschema.xml.in.h:19
 msgid "Last split mode choice for line wrapping mode"
 msgstr "Апошні выбраны рэжым пераносу радкоў"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:20
+#: ../data/com.bwhmather.bedit.gschema.xml.in.h:20
 msgid ""
 "Specifies the last split mode used with line wrapping mode, so that when "
 "wrapping mode is off we still remember the split mode choice. Use “word” for "
@@ -190,94 +190,94 @@ msgstr ""
 "Выбраны рэжым пераносу радкоў, захоўваецца нават калі перанос выключаны. У "
 "рэжыме \"word\" перанос паслоўны, а у рэжыме \"char\" - пазнакавы."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:21
+#: ../data/com.bwhmather.bedit.gschema.xml.in.h:21
 msgid "Tab Size"
 msgstr "Памер табуляцыі"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:22
+#: ../data/com.bwhmather.bedit.gschema.xml.in.h:22
 msgid ""
 "Specifies the number of spaces that should be displayed instead of Tab "
 "characters."
 msgstr ""
 "Вызначае колькасць прабелаў, якія трэба паказваць замест знакаў табуляцыі."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:23
+#: ../data/com.bwhmather.bedit.gschema.xml.in.h:23
 msgid "Insert spaces"
 msgstr "Устаўка прабелаў"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:24
+#: ../data/com.bwhmather.bedit.gschema.xml.in.h:24
 msgid "Whether gedit should insert spaces instead of tabs."
 msgstr "Ці трэба ўстаўляць прабелы замест знакаў табуляцыі."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:25
+#: ../data/com.bwhmather.bedit.gschema.xml.in.h:25
 msgid "Automatic indent"
 msgstr "Аўтаматычныя водступы"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:26
+#: ../data/com.bwhmather.bedit.gschema.xml.in.h:26
 msgid "Whether gedit should enable automatic indentation."
 msgstr "Ці трэба аўтаматычна ўстаўляць водступы."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:27
+#: ../data/com.bwhmather.bedit.gschema.xml.in.h:27
 msgid "Display Line Numbers"
 msgstr "Паказ нумароў радкоў"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:28
+#: ../data/com.bwhmather.bedit.gschema.xml.in.h:28
 msgid "Whether gedit should display line numbers in the editing area."
 msgstr "Ці трэба паказваць нумарацыю радкоў у абшары рэдагавання."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:29
+#: ../data/com.bwhmather.bedit.gschema.xml.in.h:29
 msgid "Highlight Current Line"
 msgstr "Падсветка бягучага радка"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:30
+#: ../data/com.bwhmather.bedit.gschema.xml.in.h:30
 msgid "Whether gedit should highlight the current line."
 msgstr "Ці трэба падсвечваць бягучы радок."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:31
+#: ../data/com.bwhmather.bedit.gschema.xml.in.h:31
 msgid "Highlight Matching Brackets"
 msgstr "Падсветка адпаведных дужак"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:32
+#: ../data/com.bwhmather.bedit.gschema.xml.in.h:32
 msgid "Whether gedit should highlight matching brackets."
 msgstr "Ці трэба падсвечваць адпаведныя дужкі."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:33
+#: ../data/com.bwhmather.bedit.gschema.xml.in.h:33
 msgid "Display Right Margin"
 msgstr "Паказ правага берага"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:34
+#: ../data/com.bwhmather.bedit.gschema.xml.in.h:34
 msgid "Whether gedit should display the right margin in the editing area."
 msgstr "Ці трэба паказваць правы бераг у абшары рэдагавання."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:35
+#: ../data/com.bwhmather.bedit.gschema.xml.in.h:35
 msgid "Right Margin Position"
 msgstr "Размяшчэнне правага берага"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:36
+#: ../data/com.bwhmather.bedit.gschema.xml.in.h:36
 msgid "Specifies the position of the right margin."
 msgstr "Вызначае размяшчэнне правага берага."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:37
+#: ../data/com.bwhmather.bedit.gschema.xml.in.h:37
 msgid "Display Overview Map"
 msgstr "Паказ агляднай мапы"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:38
+#: ../data/com.bwhmather.bedit.gschema.xml.in.h:38
 msgid "Whether gedit should display the overview map for the document."
 msgstr "Ці трэба паказваць аглядную мапу дакумента."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:39
+#: ../data/com.bwhmather.bedit.gschema.xml.in.h:39
 msgid "Document background pattern type"
 msgstr "Тып фонавага ўзору дакумента"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:40
+#: ../data/com.bwhmather.bedit.gschema.xml.in.h:40
 msgid "Whether the document will get a background pattern painted."
 msgstr "Ці трэба паказваць фонавы узор дакумента."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:41
+#: ../data/com.bwhmather.bedit.gschema.xml.in.h:41
 msgid "Smart Home End"
 msgstr "Разумны Home/End"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:42
+#: ../data/com.bwhmather.bedit.gschema.xml.in.h:42
 msgid ""
 "Specifies how the cursor moves when the HOME and END keys are pressed. Use "
 "“disabled” to always move at the start/end of the line, “after” to move to "
@@ -296,55 +296,55 @@ msgstr ""
 "пачатак/канец радка; значэнне \"always\" азначае, што курсор будзе заўсёды "
 "перамяшчацца ў пачатак/канец тэксту, а не ў пачатак/канец радка."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:43
+#: ../data/com.bwhmather.bedit.gschema.xml.in.h:43
 msgid "Restore Previous Cursor Position"
 msgstr "Аднаўленне папярэдняга размяшчэння курсора"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:44
+#: ../data/com.bwhmather.bedit.gschema.xml.in.h:44
 msgid ""
 "Whether gedit should restore the previous cursor position when a file is "
 "loaded."
 msgstr "Ці трэба аднаўляць папярэдняе размяшчэнне курсора пры загрузцы файла."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:45
+#: ../data/com.bwhmather.bedit.gschema.xml.in.h:45
 msgid "Enable Syntax Highlighting"
 msgstr "Уключэнне падсветкі сінтаксісу"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:46
+#: ../data/com.bwhmather.bedit.gschema.xml.in.h:46
 msgid "Whether gedit should enable syntax highlighting."
 msgstr "Ці трэба ўключыць падсветку сінтаксісу."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:47
+#: ../data/com.bwhmather.bedit.gschema.xml.in.h:47
 msgid "Enable Search Highlighting"
 msgstr "Уключэнне падсветкі пошуку"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:48
+#: ../data/com.bwhmather.bedit.gschema.xml.in.h:48
 msgid ""
 "Whether gedit should highlight all the occurrences of the searched text."
 msgstr "Ці трэба падсвечваць усе знойдзеныя адпаведнікі шуканага тэксту."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:49
+#: ../data/com.bwhmather.bedit.gschema.xml.in.h:49
 msgid "Ensure Trailing Newline"
 msgstr "Заўсёды ўстаўляць новы радок у канцы дакумента"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:50
+#: ../data/com.bwhmather.bedit.gschema.xml.in.h:50
 msgid ""
 "Whether gedit will ensure that documents always end with a trailing newline."
 msgstr "Ці трэба заўсёды ўстаўляць знак новага радка ў канцы дакумента."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:51
+#: ../data/com.bwhmather.bedit.gschema.xml.in.h:51
 msgid "Toolbar is Visible"
 msgstr "Бачнасць паліцы прылад"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:52
+#: ../data/com.bwhmather.bedit.gschema.xml.in.h:52
 msgid "Whether the toolbar should be visible in editing windows."
 msgstr "Ці трэба паказваць паліцу прылад у акне рэдагавання."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:53
+#: ../data/com.bwhmather.bedit.gschema.xml.in.h:53
 msgid "Notebook Show Tabs Mode"
 msgstr "Рэжым паказу картак"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:54
+#: ../data/com.bwhmather.bedit.gschema.xml.in.h:54
 msgid ""
 "Specifies when to show the notebook tabs. Use “never” to never show the "
 "tabs, “always” to always show the tabs, and “auto” to show the tabs only "
@@ -358,29 +358,29 @@ msgstr ""
 "адчувальныя да рэгістра літар, таму спраўдзіце, каб яны былі напісаныя так "
 "жа, як і тут."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:55
+#: ../data/com.bwhmather.bedit.gschema.xml.in.h:55
 msgid "Status Bar is Visible"
 msgstr "Бачнасць стужкі стану"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:56
+#: ../data/com.bwhmather.bedit.gschema.xml.in.h:56
 msgid ""
 "Whether the status bar at the bottom of editing windows should be visible."
 msgstr "Ці трэба паказваць стужку стану ўнізе ў акне рэдагавання."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:57
+#: ../data/com.bwhmather.bedit.gschema.xml.in.h:57
 msgid "Side panel is Visible"
 msgstr "Бачнасць бакавой панэлі"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:58
+#: ../data/com.bwhmather.bedit.gschema.xml.in.h:58
 msgid ""
 "Whether the side panel at the left of editing windows should be visible."
 msgstr "Ці трэба паказваць бакавую панэль злева ў акне рэдагавання."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:59
+#: ../data/com.bwhmather.bedit.gschema.xml.in.h:59
 msgid "Maximum Recent Files"
 msgstr "Максімальная колькасць элементаў у спісе нядаўніх файлаў"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:60
+#: ../data/com.bwhmather.bedit.gschema.xml.in.h:60
 msgid ""
 "Specifies the maximum number of recently opened files that will be displayed "
 "in the “Recent Files” submenu."
@@ -388,27 +388,27 @@ msgstr ""
 "Вызначае максімальную колькасць нядаўна адкрытых файлаў, якія будуць "
 "паказвацца ў падменю \"Нядаўнія файлы\"."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:61
+#: ../data/com.bwhmather.bedit.gschema.xml.in.h:61
 msgid "Print Syntax Highlighting"
 msgstr "Друк падсветкі сінтаксісу"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:62
+#: ../data/com.bwhmather.bedit.gschema.xml.in.h:62
 msgid "Whether gedit should print syntax highlighting when printing documents."
 msgstr "Ці трэба друкаваць дакументы з падсветкай сінтаксісу."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:63
+#: ../data/com.bwhmather.bedit.gschema.xml.in.h:63
 msgid "Print Header"
 msgstr "Друк загалоўка"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:64
+#: ../data/com.bwhmather.bedit.gschema.xml.in.h:64
 msgid "Whether gedit should include a document header when printing documents."
 msgstr "Ці трэба друкаваць загаловак дакумента."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:65
+#: ../data/com.bwhmather.bedit.gschema.xml.in.h:65
 msgid "Printing Line Wrapping Mode"
 msgstr "Рэжым пераносу радкоў для друку"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:66
+#: ../data/com.bwhmather.bedit.gschema.xml.in.h:66
 msgid ""
 "Specifies how to wrap long lines for printing. Use “none” for no wrapping, "
 "“word” for wrapping at word boundaries, and “char” for wrapping at "
@@ -421,11 +421,11 @@ msgstr ""
 "значэнні адчувальныя да рэгістра літар, таму спраўдзіце, каб яны былі "
 "напісаныя так жа, як і тут."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:67
+#: ../data/com.bwhmather.bedit.gschema.xml.in.h:67
 msgid "Print Line Numbers"
 msgstr "Друк нумарацыі радкоў"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:68
+#: ../data/com.bwhmather.bedit.gschema.xml.in.h:68
 msgid ""
 "If this value is 0, then no line numbers will be inserted when printing a "
 "document. Otherwise, gedit will print line numbers every such number of "
@@ -435,29 +435,29 @@ msgstr ""
 "будзе друкаваць нумары радкоў з пэўным прамежкам."
 
 #. Translators: This is a GSettings default value. Do NOT change or localize the quotation marks!
-#: ../data/org.gnome.gedit.gschema.xml.in.h:70
+#: ../data/com.bwhmather.bedit.gschema.xml.in.h:70
 msgid "'Monospace 9'"
 msgstr "'Monospace 9'"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:71
+#: ../data/com.bwhmather.bedit.gschema.xml.in.h:71
 msgid "Body Font for Printing"
 msgstr "Шрыфт для друку асноўнага тэксту"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:72
+#: ../data/com.bwhmather.bedit.gschema.xml.in.h:72
 msgid ""
 "Specifies the font to use for a document’s body when printing documents."
 msgstr "Вызначае шрыфт для друку асноўнага тэксту дакументаў."
 
 #. Translators: This is a GSettings default value. Do NOT change or localize the quotation marks!
-#: ../data/org.gnome.gedit.gschema.xml.in.h:74
+#: ../data/com.bwhmather.bedit.gschema.xml.in.h:74
 msgid "'Sans 11'"
 msgstr "'Sans 11'"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:75
+#: ../data/com.bwhmather.bedit.gschema.xml.in.h:75
 msgid "Header Font for Printing"
 msgstr "Шрыфт для друку загалоўка"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:76
+#: ../data/com.bwhmather.bedit.gschema.xml.in.h:76
 msgid ""
 "Specifies the font to use for page headers when printing a document. This "
 "will only take effect if the “Print Header” option is turned on."
@@ -467,15 +467,15 @@ msgstr ""
 "\"."
 
 #. Translators: This is a GSettings default value. Do NOT change or localize the quotation marks!
-#: ../data/org.gnome.gedit.gschema.xml.in.h:78
+#: ../data/com.bwhmather.bedit.gschema.xml.in.h:78
 msgid "'Sans 8'"
 msgstr "'Sans 8'"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:79
+#: ../data/com.bwhmather.bedit.gschema.xml.in.h:79
 msgid "Line Number Font for Printing"
 msgstr "Шрыфт для друку нумарацыі радкоў"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:80
+#: ../data/com.bwhmather.bedit.gschema.xml.in.h:80
 msgid ""
 "Specifies the font to use for line numbers when printing. This will only "
 "take effect if the “Print Line Numbers” option is non-zero."
@@ -484,43 +484,43 @@ msgstr ""
 "паводзіны праграмы, толькі калі опцыя \"Друк нумарацыі радкоў\" мае "
 "ненулявое значэнне."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:81
+#: ../data/com.bwhmather.bedit.gschema.xml.in.h:81
 msgid "Margin Left"
 msgstr "Левы бераг"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:82
+#: ../data/com.bwhmather.bedit.gschema.xml.in.h:82
 msgid "The left margin, in millimeters."
 msgstr "Левы бераг у міліметрах."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:83
+#: ../data/com.bwhmather.bedit.gschema.xml.in.h:83
 msgid "Margin Top"
 msgstr "Верхні бераг"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:84
+#: ../data/com.bwhmather.bedit.gschema.xml.in.h:84
 msgid "The top margin, in millimeters."
 msgstr "Верхні бераг у міліметрах."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:85
+#: ../data/com.bwhmather.bedit.gschema.xml.in.h:85
 msgid "Margin Right"
 msgstr "Правы бераг"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:86
+#: ../data/com.bwhmather.bedit.gschema.xml.in.h:86
 msgid "The right margin, in millimeters."
 msgstr "Правы бераг у міліметрах."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:87
+#: ../data/com.bwhmather.bedit.gschema.xml.in.h:87
 msgid "Margin Bottom"
 msgstr "Ніжні бераг"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:88
+#: ../data/com.bwhmather.bedit.gschema.xml.in.h:88
 msgid "The bottom margin, in millimeters."
 msgstr "Ніжні бераг у міліметрах."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:89
+#: ../data/com.bwhmather.bedit.gschema.xml.in.h:89
 msgid "Candidate Encodings"
 msgstr "Прапануемыя кадаванні"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:90
+#: ../data/com.bwhmather.bedit.gschema.xml.in.h:90
 msgid ""
 "List of candidate encodings shown in the Character Encoding menu in the open/"
 "save file chooser. “CURRENT” represents the current locale encoding. Only "
@@ -533,11 +533,11 @@ msgstr ""
 "Прадвызначанае значэнне - пусты спіс, у гэтым выпадку выбар будзе залежыць "
 "ад настроек страны і мовы."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:91
+#: ../data/com.bwhmather.bedit.gschema.xml.in.h:91
 msgid "Active plugins"
 msgstr "Актыўныя плугіны"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:92
+#: ../data/com.bwhmather.bedit.gschema.xml.in.h:92
 msgid ""
 "List of active plugins. It contains the “Location” of the active plugins. "
 "See the .gedit-plugin file for obtaining the “Location” of a given plugin."
@@ -2104,8 +2104,8 @@ msgid "Editor"
 msgstr "Рэдактар"
 
 #: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:23
-#: ../plugins/externaltools/org.gnome.gedit.plugins.externaltools.gschema.xml.in.h:3
-#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.h:7
+#: ../plugins/externaltools/com.bwhmather.bedit.plugins.externaltools.gschema.xml.in.h:3
+#: ../plugins/pythonconsole/com.bwhmather.bedit.plugins.pythonconsole.gschema.xml.in.h:7
 msgid "Font"
 msgstr "Шрыфт"
 
@@ -2626,12 +2626,12 @@ msgstr ""
 "праігнараваць яе і пачакаць наступнай"
 
 #. ex:set ts=8 noet:
-#: ../plugins/checkupdate/org.gnome.gedit.plugins.checkupdate.gschema.xml.in.h:1
+#: ../plugins/checkupdate/com.bwhmather.bedit.plugins.checkupdate.gschema.xml.in.h:1
 msgid "Version to Ignore"
 msgstr "Ігнараваная версія"
 
 #. This is releated to the next gedit version to be released
-#: ../plugins/checkupdate/org.gnome.gedit.plugins.checkupdate.gschema.xml.in.h:3
+#: ../plugins/checkupdate/com.bwhmather.bedit.plugins.checkupdate.gschema.xml.in.h:3
 msgid "Version to ignore until a newer version is released."
 msgstr "Ігнараваная да з'яўлення новай версія праграмы."
 
@@ -2727,12 +2727,12 @@ msgstr "Вонкавыя прылады"
 msgid "Execute external commands and shell scripts."
 msgstr "Запуск вонкавых загадаў і сцэнарыяў загаднай абалонкі."
 
-#: ../plugins/externaltools/org.gnome.gedit.plugins.externaltools.gschema.xml.in.h:1
-#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.h:5
+#: ../plugins/externaltools/com.bwhmather.bedit.plugins.externaltools.gschema.xml.in.h:1
+#: ../plugins/pythonconsole/com.bwhmather.bedit.plugins.pythonconsole.gschema.xml.in.h:5
 msgid "Whether to use the system font"
 msgstr "Ці трэба выкарыстоўваць сістэмны шрыфт"
 
-#: ../plugins/externaltools/org.gnome.gedit.plugins.externaltools.gschema.xml.in.h:2
+#: ../plugins/externaltools/com.bwhmather.bedit.plugins.externaltools.gschema.xml.in.h:2
 msgid ""
 "If true, the external tools will use the desktop-global standard font if "
 "it’s monospace (and the most similar font it can come up with otherwise)."
@@ -2740,8 +2740,8 @@ msgstr ""
 "Калі ўключана, вонкавыя прылады будуць выкарыстоўваць звычайны глабальны "
 "шрыфт, калі ён роўнашырокі (або найбольш падобны на яго)."
 
-#: ../plugins/externaltools/org.gnome.gedit.plugins.externaltools.gschema.xml.in.h:4
-#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.h:8
+#: ../plugins/externaltools/com.bwhmather.bedit.plugins.externaltools.gschema.xml.in.h:4
+#: ../plugins/pythonconsole/com.bwhmather.bedit.plugins.pythonconsole.gschema.xml.in.h:8
 msgid "A Pango font name. Examples are “Sans 12” or “Monospace Bold 14”."
 msgstr "Назва шрыфту Pango. Напрыклад: \"Sans 12\" ці \"Monospace Bold 14\"."
 
@@ -3074,11 +3074,11 @@ msgid "Error when loading “%s”: No such directory"
 msgstr "Памылка падчас загрузкі \"%s\": каталог не існуе"
 
 #. ex:set ts=8 noet:
-#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:1
+#: ../plugins/filebrowser/com.bwhmather.bedit.plugins.filebrowser.gschema.xml.in.h:1
 msgid "Open With Tree View"
 msgstr "Адкрыццё ў рэжыме іерархіі"
 
-#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:2
+#: ../plugins/filebrowser/com.bwhmather.bedit.plugins.filebrowser.gschema.xml.in.h:2
 msgid ""
 "Open the tree view when the file browser plugin gets loaded instead of the "
 "bookmarks view"
@@ -3086,11 +3086,11 @@ msgstr ""
 "Пры загрузцы плугіна агляду файлаў адкрываць панэль у рэжыме іерархіі, а не "
 "закладак"
 
-#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:3
+#: ../plugins/filebrowser/com.bwhmather.bedit.plugins.filebrowser.gschema.xml.in.h:3
 msgid "File Browser Root Directory"
 msgstr "Каранёвы каталог пры аглядзе файлаў"
 
-#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:4
+#: ../plugins/filebrowser/com.bwhmather.bedit.plugins.filebrowser.gschema.xml.in.h:4
 msgid ""
 "The file browser root directory to use when loading the file browser plugin "
 "and onload/tree_view is TRUE."
@@ -3098,11 +3098,11 @@ msgstr ""
 "Каранёвы каталог пры аглядзе файлаў, які выкарыстоўваецца пры загрузцы "
 "плугіна і калі ўключана опцыя onload/tree_view."
 
-#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:5
+#: ../plugins/filebrowser/com.bwhmather.bedit.plugins.filebrowser.gschema.xml.in.h:5
 msgid "File Browser Virtual Root Directory"
 msgstr "Віртуальны каранёвы каталог пры аглядзе файлаў"
 
-#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:6
+#: ../plugins/filebrowser/com.bwhmather.bedit.plugins.filebrowser.gschema.xml.in.h:6
 msgid ""
 "The file browser virtual root directory to use when loading the file browser "
 "plugin when onload/tree_view is TRUE. The virtual root must always be below "
@@ -3112,19 +3112,19 @@ msgstr ""
 "загрузцы плугіна і калі ўключана опцыя onload/tree_view. Віртуальны каранёвы "
 "каталог заўсёды павінен быць ніжэй за сапраўдны корань."
 
-#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:7
+#: ../plugins/filebrowser/com.bwhmather.bedit.plugins.filebrowser.gschema.xml.in.h:7
 msgid "Enable Restore of Remote Locations"
 msgstr "Дазволіць аднаўленне для аддаленых месцапалажэнняў"
 
-#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:8
+#: ../plugins/filebrowser/com.bwhmather.bedit.plugins.filebrowser.gschema.xml.in.h:8
 msgid "Sets whether to enable restoring of remote locations."
 msgstr "Ці трэба дазволіць аднаўленне файлаў для аддаленых месцапалажэнняў."
 
-#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:9
+#: ../plugins/filebrowser/com.bwhmather.bedit.plugins.filebrowser.gschema.xml.in.h:9
 msgid "Set Location to First Document"
 msgstr "Прызначаць месцапалажэнне першага дакумента"
 
-#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:10
+#: ../plugins/filebrowser/com.bwhmather.bedit.plugins.filebrowser.gschema.xml.in.h:10
 msgid ""
 "If TRUE the file browser plugin will view the directory of the first opened "
 "document given that the file browser hasn’t been used yet. (Thus this "
@@ -3136,11 +3136,11 @@ msgstr ""
 "опцыя стасуецца толькі да сітуацый кшталту адкрыцця дакумента праз загадны "
 "радок або Наўтылус.)"
 
-#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:11
+#: ../plugins/filebrowser/com.bwhmather.bedit.plugins.filebrowser.gschema.xml.in.h:11
 msgid "File Browser Filter Mode"
 msgstr "Рэжым фільтра пры аглядзе файлаў"
 
-#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:12
+#: ../plugins/filebrowser/com.bwhmather.bedit.plugins.filebrowser.gschema.xml.in.h:12
 msgid ""
 "This value determines what files get filtered from the file browser. Valid "
 "values are: none (filter nothing), hide-hidden (filter hidden files) and "
@@ -3150,11 +3150,11 @@ msgstr ""
 "Магчымыя значэнні: \"none\" (не фільтраваць), \"hide-hidden\" (фільтраваць "
 "схаваныя файлы) і \"hide-binary\" (фільтраваць двайковыя файлы)."
 
-#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:13
+#: ../plugins/filebrowser/com.bwhmather.bedit.plugins.filebrowser.gschema.xml.in.h:13
 msgid "File Browser Filter Pattern"
 msgstr "Шаблон фільтра пры аглядзе файлаў"
 
-#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:14
+#: ../plugins/filebrowser/com.bwhmather.bedit.plugins.filebrowser.gschema.xml.in.h:14
 msgid ""
 "The filter pattern to filter the file browser with. This filter works on top "
 "of the filter_mode."
@@ -3162,11 +3162,11 @@ msgstr ""
 "Шаблон для фільтравання назваў пры аглядзе файлаў. Гэты фільтр працуе "
 "адносна дзейнага рэжыму фільтрацыі filter_mode."
 
-#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:15
+#: ../plugins/filebrowser/com.bwhmather.bedit.plugins.filebrowser.gschema.xml.in.h:15
 msgid "File Browser Binary Patterns"
 msgstr "Шаблоны бінарных файлаў пры аглядзе файлаў"
 
-#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:16
+#: ../plugins/filebrowser/com.bwhmather.bedit.plugins.filebrowser.gschema.xml.in.h:16
 msgid "The supplemental patterns to use when filtering binary files."
 msgstr "Дадатковыя шаблоны для фільтрацыі бінарных файлаў."
 
@@ -3234,23 +3234,23 @@ msgstr "Радкі рэжымаў"
 msgid "Emacs, Kate and Vim-style modelines support for gedit."
 msgstr "Падтрымка рэжымаў Emacs, Kate і Vim для gedit."
 
-#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.h:1
+#: ../plugins/pythonconsole/com.bwhmather.bedit.plugins.pythonconsole.gschema.xml.in.h:1
 msgid "Command Color Text"
 msgstr "Колер тэксту загаду"
 
-#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.h:2
+#: ../plugins/pythonconsole/com.bwhmather.bedit.plugins.pythonconsole.gschema.xml.in.h:2
 msgid "The command color text"
 msgstr "Колер тэксту загаду"
 
-#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.h:3
+#: ../plugins/pythonconsole/com.bwhmather.bedit.plugins.pythonconsole.gschema.xml.in.h:3
 msgid "Error Color Text"
 msgstr "Колер тэксту памылкі"
 
-#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.h:4
+#: ../plugins/pythonconsole/com.bwhmather.bedit.plugins.pythonconsole.gschema.xml.in.h:4
 msgid "The error color text"
 msgstr "Колер тэксту памылкі"
 
-#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.h:6
+#: ../plugins/pythonconsole/com.bwhmather.bedit.plugins.pythonconsole.gschema.xml.in.h:6
 msgid ""
 "If true, the terminal will use the desktop-global standard font if it’s "
 "monospace (and the most similar font it can come up with otherwise)."
@@ -3613,11 +3613,11 @@ msgid "Available formats"
 msgstr "Магчымыя фарматы"
 
 #. ex:set ts=8 noet:
-#: ../plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in.h:1
+#: ../plugins/time/com.bwhmather.bedit.plugins.time.gschema.xml.in.h:1
 msgid "Prompt Type"
 msgstr "Тып запыту"
 
-#: ../plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in.h:2
+#: ../plugins/time/com.bwhmather.bedit.plugins.time.gschema.xml.in.h:2
 msgid ""
 "If the user should be prompted for a format or if the selected or custom "
 "format should be used."
@@ -3625,19 +3625,19 @@ msgstr ""
 "Ці трэба пытацца ў карыстальніка аб фармаце або выкарыстоўваць вылучаны ці "
 "ўласны фармат."
 
-#: ../plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in.h:3
+#: ../plugins/time/com.bwhmather.bedit.plugins.time.gschema.xml.in.h:3
 msgid "Selected Format"
 msgstr "Выбраны фармат"
 
-#: ../plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in.h:4
+#: ../plugins/time/com.bwhmather.bedit.plugins.time.gschema.xml.in.h:4
 msgid "The selected format used when inserting the date/time."
 msgstr "Выбраны фармат для ўстаўкі даты/часу."
 
-#: ../plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in.h:5
+#: ../plugins/time/com.bwhmather.bedit.plugins.time.gschema.xml.in.h:5
 msgid "Custom Format"
 msgstr "Уласны фармат"
 
-#: ../plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in.h:6
+#: ../plugins/time/com.bwhmather.bedit.plugins.time.gschema.xml.in.h:6
 msgid "The custom format used when inserting the date/time."
 msgstr "Уласны фармат для ўстаўкі даты/часу."
 

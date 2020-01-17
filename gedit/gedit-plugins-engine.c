@@ -51,7 +51,7 @@ gedit_plugins_engine_init (GeditPluginsEngine *engine)
 
 	peas_engine_enable_loader (PEAS_ENGINE (engine), "python3");
 
-	engine->plugin_settings = g_settings_new ("org.gnome.gedit.plugins");
+	engine->plugin_settings = g_settings_new ("com.bwhmather.bedit.plugins");
 
 	/* Require gedit's typelib. */
 	typelib_dir = g_build_filename (gedit_dirs_get_gedit_lib_dir (),

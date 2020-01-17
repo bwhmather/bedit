@@ -23,7 +23,7 @@ libspell_sha = shared_module(
   name_suffix: module_suffix,
 )
 
-spell_gschema_file = files('org.gnome.gedit.plugins.spell.gschema.xml')
+spell_gschema_file = files('com.bwhmather.bedit.plugins.spell.gschema.xml')
 install_data(
   spell_gschema_file,
   install_dir: join_paths(get_option('prefix'), get_option('datadir'), 'glib-2.0/schemas')

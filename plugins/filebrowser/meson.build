@@ -75,15 +75,15 @@ libfilebrowser_sha = shared_module(
 
 # FIXME: https://github.com/mesonbuild/meson/issues/1687
 custom_target(
-  'org.gnome.gedit.plugins.filebrowser.enums.xml',
+  'com.bwhmather.bedit.plugins.filebrowser.enums.xml',
   input : libfilebrowser_sources + libfilebrowser_public_h,
-  output: 'org.gnome.gedit.plugins.filebrowser.enums.xml',
+  output: 'com.bwhmather.bedit.plugins.filebrowser.enums.xml',
   capture: true,
   command: [
     'glib-mkenums',
     '--comments', '<!-- @comment@ -->',
     '--fhead', '<schemalist>',
-    '--vhead', '  <@type@ id="org.gnome.gedit.plugins.filebrowser.@EnumName@">',
+    '--vhead', '  <@type@ id="com.bwhmather.bedit.plugins.filebrowser.@EnumName@">',
     '--vprod', '    <value nick="@valuenick@" value="@valuenum@"/>',
     '--vtail', '  </@type@>',
     '--ftail', '</schemalist>',
@@ -96,7 +96,7 @@ custom_target(
   )
 )
 
-filebrowser_gschema_file = files('org.gnome.gedit.plugins.filebrowser.gschema.xml')
+filebrowser_gschema_file = files('com.bwhmather.bedit.plugins.filebrowser.gschema.xml')
 install_data(
   filebrowser_gschema_file,
   install_dir: join_paths(get_option('prefix'), get_option('datadir'), 'glib-2.0/schemas')

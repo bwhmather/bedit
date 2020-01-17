@@ -23,56 +23,56 @@ msgstr ""
 "X-Launchpad-Export-Date: 2013-09-15 06:21+0000\n"
 "X-Project-Style: gnome\n"
 
-#: ../data/org.gnome.gedit.appdata.xml.in.h:1
-#: ../data/org.gnome.gedit.desktop.in.in.h:2
+#: ../data/com.bwhmather.bedit.appdata.xml.in.h:1
+#: ../data/com.bwhmather.bedit.desktop.in.in.h:2
 msgid "Edit text files"
 msgstr "Deasaich faidhlichean teacsa"
 
-#: ../data/org.gnome.gedit.appdata.xml.in.h:2
+#: ../data/com.bwhmather.bedit.appdata.xml.in.h:2
 msgid ""
 "gedit is the official text editor of the GNOME desktop environment. While "
 "aiming at simplicity and ease of use, gedit is a powerful general purpose "
 "text editor."
 msgstr "’S e an deasaiche teacsa oifigeil airson àrainneachd deasga GNOME a th’ anns an gedit. ’S e deasaiche teacsa coitcheann cumhachdach a th’ ann an gedit ged a tha e ag amas a bhith simplidh agus furasta cleachdadh."
 
-#: ../data/org.gnome.gedit.appdata.xml.in.h:3
+#: ../data/com.bwhmather.bedit.appdata.xml.in.h:3
 msgid ""
 "Whether you are writing the next bestseller, programming an innovative "
 "application, or simply taking some quick notes, gedit will be a reliable "
 "tool to accomplish your task."
 msgstr "Co-dhiù a bheil thu airson nobhail no prògram no gearr-nòtaichean a sgrìobhadh, ’s e acainn sheasmhach a bhios ann an gedit gus na tha fainear dhut a thoirt gu buil."
 
-#: ../data/org.gnome.gedit.appdata.xml.in.h:4
+#: ../data/com.bwhmather.bedit.appdata.xml.in.h:4
 msgid ""
 "Its flexible plugin system allows you to tailor the application to your "
 "needs and adapt it to your workflow."
 msgstr "Leigidh an siostam plugain sùbailte aige leat gun gnàthaich thu an aplacaid a-rèir nam feumalachdan ’s an dòigh-obrach agad."
 
-#: ../data/org.gnome.gedit.desktop.in.in.h:1 ../gedit/gedit-print-job.c:730
+#: ../data/com.bwhmather.bedit.desktop.in.in.h:1 ../gedit/gedit-print-job.c:730
 msgid "Text Editor"
 msgstr "Deasaiche teacsa"
 
-#: ../data/org.gnome.gedit.desktop.in.in.h:3
+#: ../data/com.bwhmather.bedit.desktop.in.in.h:3
 msgid "gedit Text Editor"
 msgstr "Deasaiche teacsa gedit"
 
-#: ../data/org.gnome.gedit.desktop.in.in.h:4
+#: ../data/com.bwhmather.bedit.desktop.in.in.h:4
 msgid "Text;Editor;Plaintext;Write;"
 msgstr "Teacsa;Deasaiche;Teacsa lom;Sgrìobh;"
 
-#: ../data/org.gnome.gedit.desktop.in.in.h:5
+#: ../data/com.bwhmather.bedit.desktop.in.in.h:5
 msgid "New Window"
 msgstr "Uinneag ùr"
 
-#: ../data/org.gnome.gedit.desktop.in.in.h:6
+#: ../data/com.bwhmather.bedit.desktop.in.in.h:6
 msgid "New Document"
 msgstr "Sgrìobhainn ùr"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:1
+#: ../data/com.bwhmather.bedit.gschema.xml.in.h:1
 msgid "Use Default Font"
 msgstr "Cleachd an cruth-clò bunaiteach"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:2
+#: ../data/com.bwhmather.bedit.gschema.xml.in.h:2
 #| msgid ""
 #| "Whether to use the system's default fixed width font for editing text "
 #| "instead of a font specific to gedit. If this option is turned off, then "
@@ -86,15 +86,15 @@ msgid ""
 msgstr "An dèid cruth-clò bunaiteach an t-siostaim le leud socraichte a chleachdadh gus teacsa a dheasachadh seach an cruth-clò sònraichte aig gedit. Ma tha an roghainn seo dheth, thèid an cruth-clò ainmichte san roghainn “Cruth-clò an deasaiche” a chleachdadh an àite cruth-clò an t-siostaim."
 
 #. Translators: This is a GSettings default value. Do NOT change or localize the quotation marks!
-#: ../data/org.gnome.gedit.gschema.xml.in.h:4
+#: ../data/com.bwhmather.bedit.gschema.xml.in.h:4
 msgid "'Monospace 12'"
 msgstr "'Monospace 12'"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:5
+#: ../data/com.bwhmather.bedit.gschema.xml.in.h:5
 msgid "Editor Font"
 msgstr "Cruth-clò an deasaiche"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:6
+#: ../data/com.bwhmather.bedit.gschema.xml.in.h:6
 #| msgid ""
 #| "A custom font that will be used for the editing area. This will only take "
 #| "effect if the \"Use Default Font\" option is turned off."
@@ -103,27 +103,27 @@ msgid ""
 "effect if the “Use Default Font” option is turned off."
 msgstr "Cruth-clò gnàthaichte a thèid a chleachdadh airson an raon deasachaidh. Cha dèid seo a chur an sàs ach ma bhios an roghainn “Cleachd an cruth-clò bunaiteach” air a chur dheth."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:7
+#: ../data/com.bwhmather.bedit.gschema.xml.in.h:7
 msgid "Style Scheme"
 msgstr "Sgeama stoidhle"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:8
+#: ../data/com.bwhmather.bedit.gschema.xml.in.h:8
 msgid "The ID of a GtkSourceView Style Scheme used to color the text."
 msgstr "An ID aig sgeama stoidhle GtkSourceView a thèid a chleachdadh gus dath a chur air an teacsa."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:9
+#: ../data/com.bwhmather.bedit.gschema.xml.in.h:9
 msgid "Create Backup Copies"
 msgstr "Cruthaich lethbhreacan-glèidhidh"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:10
+#: ../data/com.bwhmather.bedit.gschema.xml.in.h:10
 msgid "Whether gedit should create backup copies for the files it saves."
 msgstr "Co-dhiù an cruthaich gedit lethbhreac-glèidhidh dhe na faidhlichean a shàbhaileas e gus nach cruthaich."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:11
+#: ../data/com.bwhmather.bedit.gschema.xml.in.h:11
 msgid "Autosave"
 msgstr "Sàbhaladh fèin-obrachail"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:12
+#: ../data/com.bwhmather.bedit.gschema.xml.in.h:12
 #| msgid ""
 #| "Whether gedit should automatically save modified files after a time "
 #| "interval. You can set the time interval with the \"Autosave Interval\" "
@@ -133,11 +133,11 @@ msgid ""
 "interval. You can set the time interval with the “Autosave Interval” option."
 msgstr "An sàbhail gedit faidhlichean air an atharrachadh gu fèin-obrachail an ceann ùine. ’S urrainn dhut suidheachadh dè cho tric ’s a thèid seo a dhèanamh leis an roghainn “Earadamh an t-sàbhalaidh fhèin-obrachail”."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:13
+#: ../data/com.bwhmather.bedit.gschema.xml.in.h:13
 msgid "Autosave Interval"
 msgstr "Earadamh an t-sàbhalaidh fhèin-obrachail"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:14
+#: ../data/com.bwhmather.bedit.gschema.xml.in.h:14
 #| msgid ""
 #| "Number of minutes after which gedit will automatically save modified "
 #| "files. This will only take effect if the \"Autosave\" option is turned on."
@@ -146,11 +146,11 @@ msgid ""
 "This will only take effect if the “Autosave” option is turned on."
 msgstr "An ceann co mheud mionaid a thòisicheas gedit le sàbhaladh fèin-obrachail nam faidhlichean air an atharrachadh. Chan eil an roghainn seo an sàs ach nuair a bhios “Sàbhaladh fèin-obrachail” air a chur air."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:15
+#: ../data/com.bwhmather.bedit.gschema.xml.in.h:15
 msgid "Maximum Number of Undo Actions"
 msgstr "An àireamh as motha de ghnìomhan neo-dhèanaimh"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:16
+#: ../data/com.bwhmather.bedit.gschema.xml.in.h:16
 #| msgid ""
 #| "Maximum number of actions that gedit will be able to undo or redo. Use "
 #| "\"-1\" for unlimited number of actions."
@@ -159,11 +159,11 @@ msgid ""
 "for unlimited number of actions."
 msgstr "An àireamh as motha de ghnìomhan as urrainn dha gedit a neo-dhèanamh no ath-dhèanamh. Cleachd “-1” airson an gnìomhan gun chuingeachadh."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:17
+#: ../data/com.bwhmather.bedit.gschema.xml.in.h:17
 msgid "Line Wrapping Mode"
 msgstr "Modh pasgaidh loidhne"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:18
+#: ../data/com.bwhmather.bedit.gschema.xml.in.h:18
 #| msgid ""
 #| "Specifies how to wrap long lines in the editing area. Use \"none\" for no "
 #| "wrapping, \"word\" for wrapping at word boundaries, and \"char\" for "
@@ -176,11 +176,11 @@ msgid ""
 "make sure they appear exactly as mentioned here."
 msgstr "Sònraichidh seo mar a thèid loidhnichean fada a phasgadh san raon deasachaidh. Cleachd “neoni” mur eil thu airson pasgadh sam bith, “word” airson pasgadh eadar dà fhacal is “char” airson pasgadh eadar dà charactar sam bith. Thoir an aire gun toir na luachan an aire do litrichean mòra is beaga ’s mar sin dèan cinnteach gu nochd iad dìreach mar a thug sinn iomradh orra an-seo."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:19
+#: ../data/com.bwhmather.bedit.gschema.xml.in.h:19
 msgid "Last split mode choice for line wrapping mode"
 msgstr "Am modh sgoltaidh airson pasgadh loidhne mu dheireadh a chaidh a thaghadh"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:20
+#: ../data/com.bwhmather.bedit.gschema.xml.in.h:20
 #| msgid ""
 #| "Specifies the last split mode used with line wrapping mode, so that when "
 #| "wrapping mode is off we still remember the split mode choice. Use \"word"
@@ -193,93 +193,93 @@ msgid ""
 "boundaries."
 msgstr "Sònraichidh seo am modh sgoltaidh a chaidh a chleachdadh leis a’ mhodh pasgaidh loidhne an turas mu dheireadh ach an cuimhnich sinn na thagh thu fiù ’s ma tha am modh pasgaidh loidhne dheth. Cleachd “word” airson pasgadh aig crìochan facail agus “char” gus sgoltadh eadar caractaran."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:21
+#: ../data/com.bwhmather.bedit.gschema.xml.in.h:21
 msgid "Tab Size"
 msgstr "Meud nan tabaichean"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:22
+#: ../data/com.bwhmather.bedit.gschema.xml.in.h:22
 msgid ""
 "Specifies the number of spaces that should be displayed instead of Tab "
 "characters."
 msgstr "Sònraichidh seo an àireamh de spàsan a thèid a shealltainn an àite caractar taba."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:23
+#: ../data/com.bwhmather.bedit.gschema.xml.in.h:23
 msgid "Insert spaces"
 msgstr "Cuir a-steach spàsan"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:24
+#: ../data/com.bwhmather.bedit.gschema.xml.in.h:24
 msgid "Whether gedit should insert spaces instead of tabs."
 msgstr "Co-dhiù an cuir gedit spàsan a-steach an àite thabaichean gus nach cuir."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:25
+#: ../data/com.bwhmather.bedit.gschema.xml.in.h:25
 msgid "Automatic indent"
 msgstr "Eag fhèin-obrachail"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:26
+#: ../data/com.bwhmather.bedit.gschema.xml.in.h:26
 msgid "Whether gedit should enable automatic indentation."
 msgstr "Co-dhiù an cleachd gedit eagan fèin-obrachail gus nach cleachd."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:27
+#: ../data/com.bwhmather.bedit.gschema.xml.in.h:27
 msgid "Display Line Numbers"
 msgstr "Seall àireamhan loidhne"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:28
+#: ../data/com.bwhmather.bedit.gschema.xml.in.h:28
 msgid "Whether gedit should display line numbers in the editing area."
 msgstr "Co-dhiù an seall gedit àireamhan loidhne san raon deasachaidh gus nach seall."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:29
+#: ../data/com.bwhmather.bedit.gschema.xml.in.h:29
 msgid "Highlight Current Line"
 msgstr "Soillsich an loidhne làithreach"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:30
+#: ../data/com.bwhmather.bedit.gschema.xml.in.h:30
 msgid "Whether gedit should highlight the current line."
 msgstr "Co-dhiù an soillsich gedit an loidhne làithreadh gus nach soillsich."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:31
+#: ../data/com.bwhmather.bedit.gschema.xml.in.h:31
 msgid "Highlight Matching Brackets"
 msgstr "Soillsich camagan a cho-fhreagras"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:32
+#: ../data/com.bwhmather.bedit.gschema.xml.in.h:32
 msgid "Whether gedit should highlight matching brackets."
 msgstr "Co-dhiù an soillsich gedit camagan a cho-fhreagras gus nach soillsich."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:33
+#: ../data/com.bwhmather.bedit.gschema.xml.in.h:33
 msgid "Display Right Margin"
 msgstr "Seall am marghan deas"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:34
+#: ../data/com.bwhmather.bedit.gschema.xml.in.h:34
 msgid "Whether gedit should display the right margin in the editing area."
 msgstr "Co-dhiù an seall gedit am marghan deas gus nach seall."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:35
+#: ../data/com.bwhmather.bedit.gschema.xml.in.h:35
 msgid "Right Margin Position"
 msgstr "Ionad a’ mharghain dheis"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:36
+#: ../data/com.bwhmather.bedit.gschema.xml.in.h:36
 msgid "Specifies the position of the right margin."
 msgstr "Sònraichidh seo ionad a’ mharghain dheis."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:37
+#: ../data/com.bwhmather.bedit.gschema.xml.in.h:37
 msgid "Display Overview Map"
 msgstr "Seall mapa foir-sheallaidh"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:38
+#: ../data/com.bwhmather.bedit.gschema.xml.in.h:38
 msgid "Whether gedit should display the overview map for the document."
 msgstr "Co-dhiù an seall gedit mapa foir-sheallaidh deas gus nach seall."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:39
+#: ../data/com.bwhmather.bedit.gschema.xml.in.h:39
 msgid "Document background pattern type"
 msgstr "Seòrsa a’ phàtrain air cùlaibh na sgrìobhainn"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:40
+#: ../data/com.bwhmather.bedit.gschema.xml.in.h:40
 msgid "Whether the document will get a background pattern painted."
 msgstr "Co-dhiù an dèid pàtran a pheantadh air cùlaibh na sgrìobhainn gus nach dèid."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:41
+#: ../data/com.bwhmather.bedit.gschema.xml.in.h:41
 msgid "Smart Home End"
 msgstr "Home End glic"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:42
+#: ../data/com.bwhmather.bedit.gschema.xml.in.h:42
 #| msgid ""
 #| "Specifies how the cursor moves when the HOME and END keys are pressed. "
 #| "Use \"disabled\" to always move at the start/end of the line, \"after\" "
@@ -298,55 +298,55 @@ msgid ""
 "text instead of the start/end of the line."
 msgstr "Sònraichidh seo mar a ghluaiseas an cùrsair nuair a thèid an iuchair HOME agus END a bhrùthadh. Cleachd “disabled” airson ’s gun gluais e gu toiseach/deireadh na loidhne, “after” airson ’s gun gluais e gu toiseach/deireadh na loidhne a’ chiad turas a bhrùthar an dà iuchair còmhla agus gu toiseach/deireadh an teacsa (a’ leigeil seachad àitichean bàna) an dàrna turas a bhrùthar iad, “before” gus gluasad gu toiseach/deireadh an teacsa mus gluais e gu toiseach/deireadh na loidhne agus “always” airson ’s gun gluais e gu toiseach/deireadh an teacsa seach toiseach/deireadh na loidhne."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:43
+#: ../data/com.bwhmather.bedit.gschema.xml.in.h:43
 msgid "Restore Previous Cursor Position"
 msgstr "Aisig àite a’ chùrsair roimhe"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:44
+#: ../data/com.bwhmather.bedit.gschema.xml.in.h:44
 msgid ""
 "Whether gedit should restore the previous cursor position when a file is "
 "loaded."
 msgstr "Co-dhiù an aisig gedit àite a’ chùrsair roimhe nuair a thèid faidhle a luchdadh gus nach aisig."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:45
+#: ../data/com.bwhmather.bedit.gschema.xml.in.h:45
 msgid "Enable Syntax Highlighting"
 msgstr "Cuir an comas soillseachadh a’ cho-chàraidh"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:46
+#: ../data/com.bwhmather.bedit.gschema.xml.in.h:46
 msgid "Whether gedit should enable syntax highlighting."
 msgstr "Co-dhiù an cuir gedit soillseachadh a’ cho-chàraidh an comas gus nach cuir."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:47
+#: ../data/com.bwhmather.bedit.gschema.xml.in.h:47
 msgid "Enable Search Highlighting"
 msgstr "Cuir an comas soillseachadh an luirg"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:48
+#: ../data/com.bwhmather.bedit.gschema.xml.in.h:48
 msgid ""
 "Whether gedit should highlight all the occurrences of the searched text."
 msgstr "Co-dhiù an soillsich gedit gach ball-toraidh dhen teacsa a lorg thu gus nach soillsich."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:49
+#: ../data/com.bwhmather.bedit.gschema.xml.in.h:49
 msgid "Ensure Trailing Newline"
 msgstr "Dèan cinnteach gum bi loidhne ùr aig bonn an teacsa"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:50
+#: ../data/com.bwhmather.bedit.gschema.xml.in.h:50
 msgid ""
 "Whether gedit will ensure that documents always end with a trailing newline."
 msgstr "Tagh an dèan gedit cinnteach gum bidh loidhne ùr aig deireadh gach teacsa."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:51
+#: ../data/com.bwhmather.bedit.gschema.xml.in.h:51
 msgid "Toolbar is Visible"
 msgstr "Am bàr-inneal ri fhaicinn"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:52
+#: ../data/com.bwhmather.bedit.gschema.xml.in.h:52
 msgid "Whether the toolbar should be visible in editing windows."
 msgstr "Co-dhiù an dèid am bàr-inneal a shealltainn gus nach dèid."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:53
+#: ../data/com.bwhmather.bedit.gschema.xml.in.h:53
 msgid "Notebook Show Tabs Mode"
 msgstr "Sealladh tabaichean an leabhair-nòtaichean"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:54
+#: ../data/com.bwhmather.bedit.gschema.xml.in.h:54
 #| msgid ""
 #| "Specifies when to show the notebook tabs. Use \"never\" to never show the "
 #| "tabs, \"always\" to always show the tabs, and \"auto\" to show the tabs "
@@ -359,29 +359,29 @@ msgid ""
 "make sure they appear exactly as mentioned here."
 msgstr "Sònraichidh seo cuin a thèid tabaichean an leabhair-nòtaichean a shealltainn. Cleachd “never” ach nach dèid na tabaichean a shealltainn idir, “always” ach an dèid iad a shealltainn an-còmhnaidh is “auto” gus nach dèid na tabaichean a shealltainn ach nuair a bhios barrachd air aon dhiubh ann. Thoir an aire gun toir na luachan an aire do litrichean mòra is beaga is mar sin dèan cinnteach gun nochd iad dìreach mar a tha sinn a’ toirt iomradh dhaibh an-seo."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:55
+#: ../data/com.bwhmather.bedit.gschema.xml.in.h:55
 msgid "Status Bar is Visible"
 msgstr "Am bàr-staide ri fhaicinn"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:56
+#: ../data/com.bwhmather.bedit.gschema.xml.in.h:56
 msgid ""
 "Whether the status bar at the bottom of editing windows should be visible."
 msgstr "Co-dhiù an dèid am bàr-staide a shealltainn aig bonn nan uinneagan deasachaidh gus nach dèid."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:57
+#: ../data/com.bwhmather.bedit.gschema.xml.in.h:57
 msgid "Side panel is Visible"
 msgstr "A’ phanail-thaoibh ri fhaicinn"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:58
+#: ../data/com.bwhmather.bedit.gschema.xml.in.h:58
 msgid ""
 "Whether the side panel at the left of editing windows should be visible."
 msgstr "Co-dhiù an dèid a’ phanail taobh clì nan uinneagan deasachaidh a shealltainn gus nach dèid."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:59
+#: ../data/com.bwhmather.bedit.gschema.xml.in.h:59
 msgid "Maximum Recent Files"
 msgstr "An àireamh as motha de dh’fhaidhlichean o chionn ghoirid"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:60
+#: ../data/com.bwhmather.bedit.gschema.xml.in.h:60
 #| msgid ""
 #| "Specifies the maximum number of recently opened files that will be "
 #| "displayed in the \"Recent Files\" submenu."
@@ -390,27 +390,27 @@ msgid ""
 "in the “Recent Files” submenu."
 msgstr "Sònraichidh seo an àireamh nas motha de dh’fhaidhlichean air am fosgladh o chionn ghoirid a thèid a shealltainn sa fho-chlàr-taice “Faidhlichean o chionn ghoirid”."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:61
+#: ../data/com.bwhmather.bedit.gschema.xml.in.h:61
 msgid "Print Syntax Highlighting"
 msgstr "Clò-bhuail soillseachadh a’ cho-chàraidh"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:62
+#: ../data/com.bwhmather.bedit.gschema.xml.in.h:62
 msgid "Whether gedit should print syntax highlighting when printing documents."
 msgstr "Tagh an clò-bhuail gedit soillseachadh a’ cho-chàraidh nuair a thèid sgrìobhainn a chlò-bhualadh."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:63
+#: ../data/com.bwhmather.bedit.gschema.xml.in.h:63
 msgid "Print Header"
 msgstr "Clò-bhuail bann-cinn"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:64
+#: ../data/com.bwhmather.bedit.gschema.xml.in.h:64
 msgid "Whether gedit should include a document header when printing documents."
 msgstr "Co-dhiù an dèid bann-cinn sgrìobhainne a ghabhail a-steach gus nach dèid nuair a thèid sgrìobhainn a chlò-bhualadh."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:65
+#: ../data/com.bwhmather.bedit.gschema.xml.in.h:65
 msgid "Printing Line Wrapping Mode"
 msgstr "Pasgadh na loidhne airson clò-bhualadh"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:66
+#: ../data/com.bwhmather.bedit.gschema.xml.in.h:66
 #| msgid ""
 #| "Specifies how to wrap long lines for printing. Use \"none\" for no "
 #| "wrapping, \"word\" for wrapping at word boundaries, and \"char\" for "
@@ -423,11 +423,11 @@ msgid ""
 "make sure they appear exactly as mentioned here."
 msgstr "Sònraichidh seo ciamar a thèid loidhnichean fada a phasgadh airson clò-bhualadh. Cleachd “none” ach nach bith pasgadh sam bith ann, “word” airson pasgadh eadar da fhacal is “char” airson pasgadh eadar dà charactar sam bith. Thoir an aire gun toir na luachan aire do litrichean mòra is beaga is mar sin dèan cinnteach gun nochd iad dìreach mar a tha sinn a’ toirt iomradh dhaibh an-seo."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:67
+#: ../data/com.bwhmather.bedit.gschema.xml.in.h:67
 msgid "Print Line Numbers"
 msgstr "Clò-bhuail àireamhan loidhne"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:68
+#: ../data/com.bwhmather.bedit.gschema.xml.in.h:68
 msgid ""
 "If this value is 0, then no line numbers will be inserted when printing a "
 "document. Otherwise, gedit will print line numbers every such number of "
@@ -435,15 +435,15 @@ msgid ""
 msgstr "Mas e 0 a tha san luach seo, cha dèid àireamh loidhne sam bith a chur a-steach nuair a chlò-bhuaileas tu sgrìobhainn. Mas e luach eile a tha ann, mìnichidh e dè cho tric ’s a chlò-bhuaileas gedit àireamh loidhne. Mar eisimpleir, thèid àireamh a chlò-bhualadh gach treas loidhne ma chuireas tu 3 a-steach."
 
 #. Translators: This is a GSettings default value. Do NOT change or localize the quotation marks!
-#: ../data/org.gnome.gedit.gschema.xml.in.h:70
+#: ../data/com.bwhmather.bedit.gschema.xml.in.h:70
 msgid "'Monospace 9'"
 msgstr "'Monospace 9'"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:71
+#: ../data/com.bwhmather.bedit.gschema.xml.in.h:71
 msgid "Body Font for Printing"
 msgstr "Cruth-clò na bodhaige airson clò-bhualadh"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:72
+#: ../data/com.bwhmather.bedit.gschema.xml.in.h:72
 #| msgid ""
 #| "Specifies the font to use for a document's body when printing documents."
 msgid ""
@@ -451,15 +451,15 @@ msgid ""
 msgstr "Sònraichidh seo an cruth-clò a thèid a chleachdadh airson bodhaig an teacsa nuair a thèid sgrìobhainn a chlò-bhualadh."
 
 #. Translators: This is a GSettings default value. Do NOT change or localize the quotation marks!
-#: ../data/org.gnome.gedit.gschema.xml.in.h:74
+#: ../data/com.bwhmather.bedit.gschema.xml.in.h:74
 msgid "'Sans 11'"
 msgstr "'Sans 11'"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:75
+#: ../data/com.bwhmather.bedit.gschema.xml.in.h:75
 msgid "Header Font for Printing"
 msgstr "Cruth-clò a’ bhanna-chinn airson clò-bhualadh"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:76
+#: ../data/com.bwhmather.bedit.gschema.xml.in.h:76
 #| msgid ""
 #| "Specifies the font to use for page headers when printing a document. This "
 #| "will only take effect if the \"Print Header\" option is turned on."
@@ -469,15 +469,15 @@ msgid ""
 msgstr "Sònraichidh seo an cruth-clò a thèid a chleachdadh airson bannan-cinn na duilleige nuair a thèid sgrìobhainn a chlò-bhualadh. Cha bhith seo an sàs ach ma bhios an roghainn “Clò-bhuail bann-cinn” air."
 
 #. Translators: This is a GSettings default value. Do NOT change or localize the quotation marks!
-#: ../data/org.gnome.gedit.gschema.xml.in.h:78
+#: ../data/com.bwhmather.bedit.gschema.xml.in.h:78
 msgid "'Sans 8'"
 msgstr "'Sans 8'"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:79
+#: ../data/com.bwhmather.bedit.gschema.xml.in.h:79
 msgid "Line Number Font for Printing"
 msgstr "Cruth-clò na h-àireamh loidhne airson clò-bhualadh"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:80
+#: ../data/com.bwhmather.bedit.gschema.xml.in.h:80
 #| msgid ""
 #| "Specifies the font to use for line numbers when printing. This will only "
 #| "take effect if the \"Print Line Numbers\" option is non-zero."
@@ -486,43 +486,43 @@ msgid ""
 "take effect if the “Print Line Numbers” option is non-zero."
 msgstr "Sònraichidh seo an cruth-clò a thèid a chleachdadh airson àireamhan loidhne leis a’ chlò-bhualadh. Cha bhi seo an sàs ach ma bhios an roghainn “Clò-bhuail àireamhan loidhne” nas motha na neoni."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:81
+#: ../data/com.bwhmather.bedit.gschema.xml.in.h:81
 msgid "Margin Left"
 msgstr "Marghan clì"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:82
+#: ../data/com.bwhmather.bedit.gschema.xml.in.h:82
 msgid "The left margin, in millimeters."
 msgstr "Am marghan clì ann am millemeatair."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:83
+#: ../data/com.bwhmather.bedit.gschema.xml.in.h:83
 msgid "Margin Top"
 msgstr "Marghan aig a’ bharr"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:84
+#: ../data/com.bwhmather.bedit.gschema.xml.in.h:84
 msgid "The top margin, in millimeters."
 msgstr "Am marghan aig a’ bharr ann am millemeatair."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:85
+#: ../data/com.bwhmather.bedit.gschema.xml.in.h:85
 msgid "Margin Right"
 msgstr "Marghan deas"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:86
+#: ../data/com.bwhmather.bedit.gschema.xml.in.h:86
 msgid "The right margin, in millimeters."
 msgstr "Am marghan deas ann am millemeatair."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:87
+#: ../data/com.bwhmather.bedit.gschema.xml.in.h:87
 msgid "Margin Bottom"
 msgstr "Marghan aig a’ bhonn"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:88
+#: ../data/com.bwhmather.bedit.gschema.xml.in.h:88
 msgid "The bottom margin, in millimeters."
 msgstr "Am marghan aig a’ bhonn ann am millemeatair."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:89
+#: ../data/com.bwhmather.bedit.gschema.xml.in.h:89
 msgid "Candidate Encodings"
 msgstr "Còdachaidhean molta"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:90
+#: ../data/com.bwhmather.bedit.gschema.xml.in.h:90
 #| msgid ""
 #| "List of candidate encodings shown in the Character Encoding menu in the "
 #| "open/save file chooser. \"CURRENT\" represents the current locale "
@@ -536,11 +536,11 @@ msgid ""
 "case gedit will choose good defaults depending on the country and language."
 msgstr "Liosta dhe na còdachaidhean a thèid a mholadh dhut ann an clàr-taice còdachadh charactaran fhad ’s a bhios tu a’ taghadh faidhle airson fosgladh/sàbhaladh. Tha “CURRENT” a’ riochdachadh còdachadh an sgeama ionadail làithrich. Cha dèid ach còdachaidhean as aithne dhuinn a chleachdadh. ’S e an liosta fhalamh a tha sa bhun-roghainn leis a thaghas gedit bun-roghainnean matha a-rèir do dhùthaich is cànan."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:91
+#: ../data/com.bwhmather.bedit.gschema.xml.in.h:91
 msgid "Active plugins"
 msgstr "Plugain ghnìomhach"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:92
+#: ../data/com.bwhmather.bedit.gschema.xml.in.h:92
 #| msgid ""
 #| "List of active plugins. It contains the \"Location\" of the active "
 #| "plugins. See the .gedit-plugin file for obtaining the \"Location\" of a "
@@ -2078,8 +2078,8 @@ msgid "Editor"
 msgstr "Deasaiche"
 
 #: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:23
-#: ../plugins/externaltools/org.gnome.gedit.plugins.externaltools.gschema.xml.in.h:3
-#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.h:7
+#: ../plugins/externaltools/com.bwhmather.bedit.plugins.externaltools.gschema.xml.in.h:3
+#: ../plugins/pythonconsole/com.bwhmather.bedit.plugins.pythonconsole.gschema.xml.in.h:7
 msgid "Font"
 msgstr "Cruth-clò"
 
@@ -2600,12 +2600,12 @@ msgid ""
 msgstr "’S urrainn dhut an tionndadh ùr aig gedit a luchdadh a-nuas ’s tu a’ briogadh air air a’ phutan luchdaidh a-nuas no an tionndadh seo a leigeil seachad is feitheamh airson an ath fhir"
 
 #. ex:set ts=8 noet:
-#: ../plugins/checkupdate/org.gnome.gedit.plugins.checkupdate.gschema.xml.in.h:1
+#: ../plugins/checkupdate/com.bwhmather.bedit.plugins.checkupdate.gschema.xml.in.h:1
 msgid "Version to Ignore"
 msgstr "Tionndadh ri leigeil seachad"
 
 #. This is releated to the next gedit version to be released
-#: ../plugins/checkupdate/org.gnome.gedit.plugins.checkupdate.gschema.xml.in.h:3
+#: ../plugins/checkupdate/com.bwhmather.bedit.plugins.checkupdate.gschema.xml.in.h:3
 msgid "Version to ignore until a newer version is released."
 msgstr "An tionndadh a thèid a leigeil seachad mus dèid tionndadh nas ùire a sgaoileadh."
 
@@ -2702,12 +2702,12 @@ msgstr "Innealan taobh a-muigh"
 msgid "Execute external commands and shell scripts."
 msgstr "Gnìomhaich àitheantan taobh a-muigh is sgriobtaichean shell."
 
-#: ../plugins/externaltools/org.gnome.gedit.plugins.externaltools.gschema.xml.in.h:1
-#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.h:5
+#: ../plugins/externaltools/com.bwhmather.bedit.plugins.externaltools.gschema.xml.in.h:1
+#: ../plugins/pythonconsole/com.bwhmather.bedit.plugins.pythonconsole.gschema.xml.in.h:5
 msgid "Whether to use the system font"
 msgstr "Co-dhiù an dèid cruth-clò an t-siostaim a chleachdadh gus nach dèid"
 
-#: ../plugins/externaltools/org.gnome.gedit.plugins.externaltools.gschema.xml.in.h:2
+#: ../plugins/externaltools/com.bwhmather.bedit.plugins.externaltools.gschema.xml.in.h:2
 #| msgid ""
 #| "If true, the external tools will use the desktop-global standard font if "
 #| "it's monospace (and the most similar font it can come up with otherwise)."
@@ -2716,8 +2716,8 @@ msgid ""
 "it’s monospace (and the most similar font it can come up with otherwise)."
 msgstr "Mas e “true” a th’ ann, cleachdaidh innealan taobh a-muigh cruth-clò stannardach coitcheann an deasg mas e monospace a th’ ann (is mur eil, an cruth-clò as coltaiche ris)."
 
-#: ../plugins/externaltools/org.gnome.gedit.plugins.externaltools.gschema.xml.in.h:4
-#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.h:8
+#: ../plugins/externaltools/com.bwhmather.bedit.plugins.externaltools.gschema.xml.in.h:4
+#: ../plugins/pythonconsole/com.bwhmather.bedit.plugins.pythonconsole.gschema.xml.in.h:8
 #| msgid ""
 #| "A Pango font name. Examples are \"Sans 12\" or \"Monospace Bold 14\"."
 msgid "A Pango font name. Examples are “Sans 12” or “Monospace Bold 14”."
@@ -3051,50 +3051,50 @@ msgid "Error when loading “%s”: No such directory"
 msgstr "Thachair mearachd rè luchdadh “%s”: Chan eil am pasgan seo ann"
 
 #. ex:set ts=8 noet:
-#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:1
+#: ../plugins/filebrowser/com.bwhmather.bedit.plugins.filebrowser.gschema.xml.in.h:1
 msgid "Open With Tree View"
 msgstr "Fosgail le sealladh craoibhe"
 
-#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:2
+#: ../plugins/filebrowser/com.bwhmather.bedit.plugins.filebrowser.gschema.xml.in.h:2
 msgid ""
 "Open the tree view when the file browser plugin gets loaded instead of the "
 "bookmarks view"
 msgstr "Fosgail an t-sealladh craoibhe nuair a thèid plugan brabhsair nam faidhle a luchdadh an àite sealladh nan comharran-leabhair"
 
-#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:3
+#: ../plugins/filebrowser/com.bwhmather.bedit.plugins.filebrowser.gschema.xml.in.h:3
 msgid "File Browser Root Directory"
 msgstr "Am freumh-phasgan aig brabhsair nam faidhle"
 
-#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:4
+#: ../plugins/filebrowser/com.bwhmather.bedit.plugins.filebrowser.gschema.xml.in.h:4
 msgid ""
 "The file browser root directory to use when loading the file browser plugin "
 "and onload/tree_view is TRUE."
 msgstr "Am freumh-phasgan a chleachdas brabhsair nam faidhle nuair a thèid plugan brabhsair nam faidhle a luchdadh is onload/tree_view air “TRUE”."
 
-#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:5
+#: ../plugins/filebrowser/com.bwhmather.bedit.plugins.filebrowser.gschema.xml.in.h:5
 msgid "File Browser Virtual Root Directory"
 msgstr "Am freumh-phasgan biortail air brabhsair nam faidhle"
 
-#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:6
+#: ../plugins/filebrowser/com.bwhmather.bedit.plugins.filebrowser.gschema.xml.in.h:6
 msgid ""
 "The file browser virtual root directory to use when loading the file browser "
 "plugin when onload/tree_view is TRUE. The virtual root must always be below "
 "the actual root."
 msgstr "Am freumh-phasgan biortail a chleachdas brabhsair nam faidhle nuair a thèid plugan brabhsair nam faidhle a luchdadh is onload/tree_view air “TRUE”. Feumaidh am freumh biortail a bhith fon fhìor-fhreumh an-còmhnaidh."
 
-#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:7
+#: ../plugins/filebrowser/com.bwhmather.bedit.plugins.filebrowser.gschema.xml.in.h:7
 msgid "Enable Restore of Remote Locations"
 msgstr "Cuir an comas aiseag nan ionadan cèine"
 
-#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:8
+#: ../plugins/filebrowser/com.bwhmather.bedit.plugins.filebrowser.gschema.xml.in.h:8
 msgid "Sets whether to enable restoring of remote locations."
 msgstr "Suidhich am bi aiseag nan ionadan cèine air no dheth."
 
-#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:9
+#: ../plugins/filebrowser/com.bwhmather.bedit.plugins.filebrowser.gschema.xml.in.h:9
 msgid "Set Location to First Document"
 msgstr "Suidhich an t-ionad air a’ chiad sgrìobhainn"
 
-#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:10
+#: ../plugins/filebrowser/com.bwhmather.bedit.plugins.filebrowser.gschema.xml.in.h:10
 #| msgid ""
 #| "If TRUE the file browser plugin will view the directory of the first "
 #| "opened document given that the file browser hasn't been used yet. (Thus "
@@ -3107,32 +3107,32 @@ msgid ""
 "with Nautilus, etc.)"
 msgstr "Mas e \"TRUE\" a th’ ann, seallaidh plugan brabhsair nam faidhle am pasgan aig a’ chiad sgrìobhainn a chaidh fhosgladh mur deach brabhsair nam faidhle a chleachdadh fhathast. (Bidh seo an sàs air fosgladh sgrìobhainnean on loidhne-àithne no le Nautilus agus msaa.)"
 
-#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:11
+#: ../plugins/filebrowser/com.bwhmather.bedit.plugins.filebrowser.gschema.xml.in.h:11
 msgid "File Browser Filter Mode"
 msgstr "Modh criathraige aig brabhsair nam faidhle"
 
-#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:12
+#: ../plugins/filebrowser/com.bwhmather.bedit.plugins.filebrowser.gschema.xml.in.h:12
 msgid ""
 "This value determines what files get filtered from the file browser. Valid "
 "values are: none (filter nothing), hide-hidden (filter hidden files) and "
 "hide-binary (filter binary files)."
 msgstr "Suidhichidh an luach seo dè na faidhlichean a thèid a chriathradh air falbh o bhrabhsair nam faidhle. Seo na luachan dligheach: none (na criathraich dad), hide-hidden (criathraich faidhlichean falaichte air falbh) is hide-binary (criathraich faidhlichean bìnearaidh air falbh) ."
 
-#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:13
+#: ../plugins/filebrowser/com.bwhmather.bedit.plugins.filebrowser.gschema.xml.in.h:13
 msgid "File Browser Filter Pattern"
 msgstr "Pàtran criathraidh aig brabhsair nam faidhle"
 
-#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:14
+#: ../plugins/filebrowser/com.bwhmather.bedit.plugins.filebrowser.gschema.xml.in.h:14
 msgid ""
 "The filter pattern to filter the file browser with. This filter works on top "
 "of the filter_mode."
 msgstr "Am pàtran leis a thèid brabhsair nam faidhle a chriathradh. Obraichidh a’ chriathrag seo air barr filter_mode."
 
-#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:15
+#: ../plugins/filebrowser/com.bwhmather.bedit.plugins.filebrowser.gschema.xml.in.h:15
 msgid "File Browser Binary Patterns"
 msgstr "Pàtrain bhìnearaidh aig brabhsair nam faidhle"
 
-#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:16
+#: ../plugins/filebrowser/com.bwhmather.bedit.plugins.filebrowser.gschema.xml.in.h:16
 msgid "The supplemental patterns to use when filtering binary files."
 msgstr "Na pàtranan foirlionaidh a thèid a chleachdadh le criathradh fhaidhlichean bìnearaidh."
 
@@ -3201,23 +3201,23 @@ msgstr "Modh-loidhnichean"
 msgid "Emacs, Kate and Vim-style modelines support for gedit."
 msgstr "Taic ri modh-loidhnichean le stoidhle Emacs, Kate is Vim airson gedit."
 
-#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.h:1
+#: ../plugins/pythonconsole/com.bwhmather.bedit.plugins.pythonconsole.gschema.xml.in.h:1
 msgid "Command Color Text"
 msgstr "Dath aig teacsa nan àitheantan"
 
-#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.h:2
+#: ../plugins/pythonconsole/com.bwhmather.bedit.plugins.pythonconsole.gschema.xml.in.h:2
 msgid "The command color text"
 msgstr "An dath a bhios air teacsa nan àitheantan"
 
-#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.h:3
+#: ../plugins/pythonconsole/com.bwhmather.bedit.plugins.pythonconsole.gschema.xml.in.h:3
 msgid "Error Color Text"
 msgstr "Dath teacsa nam mearachdan"
 
-#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.h:4
+#: ../plugins/pythonconsole/com.bwhmather.bedit.plugins.pythonconsole.gschema.xml.in.h:4
 msgid "The error color text"
 msgstr "An dath a bhios air teacsa nam mearachdan"
 
-#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.h:6
+#: ../plugins/pythonconsole/com.bwhmather.bedit.plugins.pythonconsole.gschema.xml.in.h:6
 #| msgid ""
 #| "If true, the terminal will use the desktop-global standard font if it's "
 #| "monospace (and the most similar font it can come up with otherwise)."
@@ -3581,29 +3581,29 @@ msgid "Available formats"
 msgstr "Fòrmatan ri làimh"
 
 #. ex:set ts=8 noet:
-#: ../plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in.h:1
+#: ../plugins/time/com.bwhmather.bedit.plugins.time.gschema.xml.in.h:1
 msgid "Prompt Type"
 msgstr "Iarr seòrsa"
 
-#: ../plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in.h:2
+#: ../plugins/time/com.bwhmather.bedit.plugins.time.gschema.xml.in.h:2
 msgid ""
 "If the user should be prompted for a format or if the selected or custom "
 "format should be used."
 msgstr "An dèid am fòrmat fhaighneachd dhan chleachdaiche no an dèid am fòrmat gnàthaichte no air a thaghadh a chleachdadh."
 
-#: ../plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in.h:3
+#: ../plugins/time/com.bwhmather.bedit.plugins.time.gschema.xml.in.h:3
 msgid "Selected Format"
 msgstr "Am fòrmat air a thaghadh"
 
-#: ../plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in.h:4
+#: ../plugins/time/com.bwhmather.bedit.plugins.time.gschema.xml.in.h:4
 msgid "The selected format used when inserting the date/time."
 msgstr "Am fòrmat air a thaghadh a thèid a chleachdadh le cur a-steach a’ chinn-là ’s ama."
 
-#: ../plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in.h:5
+#: ../plugins/time/com.bwhmather.bedit.plugins.time.gschema.xml.in.h:5
 msgid "Custom Format"
 msgstr "Fòrmat gnàthaichte"
 
-#: ../plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in.h:6
+#: ../plugins/time/com.bwhmather.bedit.plugins.time.gschema.xml.in.h:6
 msgid "The custom format used when inserting the date/time."
 msgstr "Am fòrmat gnàthaichte a thèid a chleachdadh le cur a-steach a’ chinn-là ’s ama."
 

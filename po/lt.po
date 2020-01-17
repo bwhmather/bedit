@@ -27,15 +27,15 @@ msgstr ""
 "%100<10 || n%100>=20) ? 1 : 2)\n"
 "X-Generator: Gtranslator 3.32.1\n"
 
-#: data/org.gnome.gedit.appdata.xml.in:7
+#: data/com.bwhmather.bedit.appdata.xml.in:7
 msgid "gedit"
 msgstr "gedit"
 
-#: data/org.gnome.gedit.appdata.xml.in:8 data/org.gnome.gedit.desktop.in.in:4
+#: data/com.bwhmather.bedit.appdata.xml.in:8 data/com.bwhmather.bedit.desktop.in.in:4
 msgid "Edit text files"
 msgstr "Redaguoti tekstinius failus"
 
-#: data/org.gnome.gedit.appdata.xml.in:10
+#: data/com.bwhmather.bedit.appdata.xml.in:10
 msgid ""
 "gedit is the official text editor of the GNOME desktop environment. While "
 "aiming at simplicity and ease of use, gedit is a powerful general purpose "
@@ -45,7 +45,7 @@ msgstr ""
 "siekia būti paprastu ir lengvai naudojama, gedit yra galingas bendrosios "
 "paskirties teksto redaktorius."
 
-#: data/org.gnome.gedit.appdata.xml.in:15
+#: data/com.bwhmather.bedit.appdata.xml.in:15
 msgid ""
 "Whether you are writing the next bestseller, programming an innovative "
 "application, or simply taking some quick notes, gedit will be a reliable "
@@ -55,7 +55,7 @@ msgstr ""
 "programą ar paprasčiausiai rašote paprasčiausius užrašus, gedit bus "
 "patikimas įrankis užduočiai atlikti."
 
-#: data/org.gnome.gedit.appdata.xml.in:20
+#: data/com.bwhmather.bedit.appdata.xml.in:20
 msgid ""
 "Its flexible plugin system allows you to tailor the application to your "
 "needs and adapt it to your workflow."
@@ -63,31 +63,31 @@ msgstr ""
 "Jo lanksti įskiepių sistema leidžia pritaikyti programą jūsų poreikiams bei "
 "pritaikyti prie jūsų darbo įpročių."
 
-#: data/org.gnome.gedit.desktop.in.in:3 gedit/gedit-print-job.c:730
+#: data/com.bwhmather.bedit.desktop.in.in:3 gedit/gedit-print-job.c:730
 msgid "Text Editor"
 msgstr "Tekstų redaktorius"
 
 #. TRANSLATORS: Do NOT translate or localize the semicolons!
 #. The list MUST also end with a semicolon!
 #. Search terms to find this application.
-#: data/org.gnome.gedit.desktop.in.in:18
+#: data/com.bwhmather.bedit.desktop.in.in:18
 #| msgid "Text;Editor;Plaintext;Write;"
 msgid "Text;Editor;Plaintext;Write;gedit;"
 msgstr "Tekstas;Redaktorius;Grynasis tekstas;Rašymas;gedit;"
 
-#: data/org.gnome.gedit.desktop.in.in:22
+#: data/com.bwhmather.bedit.desktop.in.in:22
 msgid "New Window"
 msgstr "Naujas langas"
 
-#: data/org.gnome.gedit.desktop.in.in:26
+#: data/com.bwhmather.bedit.desktop.in.in:26
 msgid "New Document"
 msgstr "Naujas dokumentas"
 
-#: data/org.gnome.gedit.gschema.xml.in:36
+#: data/com.bwhmather.bedit.gschema.xml.in:36
 msgid "Use Default Font"
 msgstr "Naudoti numatytąjį šriftą"
 
-#: data/org.gnome.gedit.gschema.xml.in:37
+#: data/com.bwhmather.bedit.gschema.xml.in:37
 msgid ""
 "Whether to use the system’s default fixed width font for editing text "
 "instead of a font specific to gedit. If this option is turned off, then the "
@@ -99,15 +99,15 @@ msgstr ""
 "šriftas, pasirinktas „Redaktoriaus šriftas“ parametre."
 
 #. Translators: This is a GSettings default value. Do NOT change or localize the quotation marks!
-#: data/org.gnome.gedit.gschema.xml.in:41
+#: data/com.bwhmather.bedit.gschema.xml.in:41
 msgid "'Monospace 12'"
 msgstr "'Monospace 12'"
 
-#: data/org.gnome.gedit.gschema.xml.in:42
+#: data/com.bwhmather.bedit.gschema.xml.in:42
 msgid "Editor Font"
 msgstr "Redaktoriaus šriftas"
 
-#: data/org.gnome.gedit.gschema.xml.in:43
+#: data/com.bwhmather.bedit.gschema.xml.in:43
 msgid ""
 "A custom font that will be used for the editing area. This will only take "
 "effect if the “Use Default Font” option is turned off."
@@ -115,27 +115,27 @@ msgstr ""
 "Redagavimo vietoje naudojamas pasirinktinis šriftas. Jis galios tik tada, "
 "jei parametras „Naudoti numatytąjį šriftą“ yra išjungtas."
 
-#: data/org.gnome.gedit.gschema.xml.in:47
+#: data/com.bwhmather.bedit.gschema.xml.in:47
 msgid "Style Scheme"
 msgstr "Stiliaus schema"
 
-#: data/org.gnome.gedit.gschema.xml.in:48
+#: data/com.bwhmather.bedit.gschema.xml.in:48
 msgid "The ID of a GtkSourceView Style Scheme used to color the text."
 msgstr "GtkSourceView stiliaus schemos, naudojamos spalvinti tekstui, ID."
 
-#: data/org.gnome.gedit.gschema.xml.in:52
+#: data/com.bwhmather.bedit.gschema.xml.in:52
 msgid "Create Backup Copies"
 msgstr "Kurti atsargines kopijas"
 
-#: data/org.gnome.gedit.gschema.xml.in:53
+#: data/com.bwhmather.bedit.gschema.xml.in:53
 msgid "Whether gedit should create backup copies for the files it saves."
 msgstr "Ar gedit įkėlus failą turėtų sukurti įrašomų failų atsargines kopijas."
 
-#: data/org.gnome.gedit.gschema.xml.in:57
+#: data/com.bwhmather.bedit.gschema.xml.in:57
 msgid "Autosave"
 msgstr "Automatinis įrašymas"
 
-#: data/org.gnome.gedit.gschema.xml.in:58
+#: data/com.bwhmather.bedit.gschema.xml.in:58
 msgid ""
 "Whether gedit should automatically save modified files after a time "
 "interval. You can set the time interval with the “Autosave Interval” option."
@@ -143,11 +143,11 @@ msgstr ""
 "Ar gedit turėtų periodiškai įrašyti pakeistus failus. Periodą galima "
 "nustatyti \"Autosave Interval\" parametre."
 
-#: data/org.gnome.gedit.gschema.xml.in:62
+#: data/com.bwhmather.bedit.gschema.xml.in:62
 msgid "Autosave Interval"
 msgstr "Automatinio įrašymo intervalas"
 
-#: data/org.gnome.gedit.gschema.xml.in:63
+#: data/com.bwhmather.bedit.gschema.xml.in:63
 msgid ""
 "Number of minutes after which gedit will automatically save modified files. "
 "This will only take effect if the “Autosave” option is turned on."
@@ -155,11 +155,11 @@ msgstr ""
 "Minučių skaičius, kurioms praėjus Gedit automatiškai įrašys pakeistus "
 "failus. Galioja tik tada, jei parametras „Automatinis įrašymas“ yra įjungtas."
 
-#: data/org.gnome.gedit.gschema.xml.in:67
+#: data/com.bwhmather.bedit.gschema.xml.in:67
 msgid "Maximum Number of Undo Actions"
 msgstr "Maksimalus atšaukiamų veiksmų skaičius"
 
-#: data/org.gnome.gedit.gschema.xml.in:68
+#: data/com.bwhmather.bedit.gschema.xml.in:68
 msgid ""
 "Maximum number of actions that gedit will be able to undo or redo. Use “-1” "
 "for unlimited number of actions."
@@ -167,11 +167,11 @@ msgstr ""
 "Maksimalus veiksmų skaičius, kuriuos gedit galės atstatyti arba daryti iš "
 "naujo. Naudoti „-1“ neribotam veiksmų skaičiui."
 
-#: data/org.gnome.gedit.gschema.xml.in:77
+#: data/com.bwhmather.bedit.gschema.xml.in:77
 msgid "Line Wrapping Mode"
 msgstr "Eilučių laužymo būdas"
 
-#: data/org.gnome.gedit.gschema.xml.in:78
+#: data/com.bwhmather.bedit.gschema.xml.in:78
 msgid ""
 "Specifies how to wrap long lines in the editing area. Use “none” for no "
 "wrapping, “word” for wrapping at word boundaries, and “char” for wrapping at "
@@ -184,11 +184,11 @@ msgstr ""
 "reikšmės skiria didžiąsias ir mažąsias reikšmes, todėl pasistenkite, kad jos "
 "būtų įrašytos tiksliai tokios kokios yra čia."
 
-#: data/org.gnome.gedit.gschema.xml.in:86
+#: data/com.bwhmather.bedit.gschema.xml.in:86
 msgid "Last split mode choice for line wrapping mode"
 msgstr "Paskutinis padalinimo pasirinkimas eilučių laužymo veiksenai"
 
-#: data/org.gnome.gedit.gschema.xml.in:87
+#: data/com.bwhmather.bedit.gschema.xml.in:87
 msgid ""
 "Specifies the last split mode used with line wrapping mode, so that when "
 "wrapping mode is off we still remember the split mode choice. Use “word” for "
@@ -200,93 +200,93 @@ msgstr ""
 "Naudokite „word“ laužymui ties žodžių ribomis ir „char“ laužymui ties "
 "pavieniais simboliais."
 
-#: data/org.gnome.gedit.gschema.xml.in:91
+#: data/com.bwhmather.bedit.gschema.xml.in:91
 msgid "Tab Size"
 msgstr "Tabuliacijos dydis"
 
-#: data/org.gnome.gedit.gschema.xml.in:92
+#: data/com.bwhmather.bedit.gschema.xml.in:92
 msgid ""
 "Specifies the number of spaces that should be displayed instead of Tab "
 "characters."
 msgstr "Nurodo, kiek tarpų turėtų būti rodoma vietoj tabuliavimo simbolio."
 
-#: data/org.gnome.gedit.gschema.xml.in:96
+#: data/com.bwhmather.bedit.gschema.xml.in:96
 msgid "Insert spaces"
 msgstr "Įterpti tarpus"
 
-#: data/org.gnome.gedit.gschema.xml.in:97
+#: data/com.bwhmather.bedit.gschema.xml.in:97
 msgid "Whether gedit should insert spaces instead of tabs."
 msgstr "Ar gedit turėtų įterpti tarpus vietoj tabuliacijos."
 
-#: data/org.gnome.gedit.gschema.xml.in:101
+#: data/com.bwhmather.bedit.gschema.xml.in:101
 msgid "Automatic indent"
 msgstr "Automatinis atitraukimas"
 
-#: data/org.gnome.gedit.gschema.xml.in:102
+#: data/com.bwhmather.bedit.gschema.xml.in:102
 msgid "Whether gedit should enable automatic indentation."
 msgstr "Ar gedit turėtų įjungti automatinį atitraukimą."
 
-#: data/org.gnome.gedit.gschema.xml.in:106
+#: data/com.bwhmather.bedit.gschema.xml.in:106
 msgid "Display Line Numbers"
 msgstr "Rodyti eilučių numerius"
 
-#: data/org.gnome.gedit.gschema.xml.in:107
+#: data/com.bwhmather.bedit.gschema.xml.in:107
 msgid "Whether gedit should display line numbers in the editing area."
 msgstr "Ar gedit turėtų rodyti eilučių numerius redagavimo lange."
 
-#: data/org.gnome.gedit.gschema.xml.in:111
+#: data/com.bwhmather.bedit.gschema.xml.in:111
 msgid "Highlight Current Line"
 msgstr "Paryškinti esamą eilutę"
 
-#: data/org.gnome.gedit.gschema.xml.in:112
+#: data/com.bwhmather.bedit.gschema.xml.in:112
 msgid "Whether gedit should highlight the current line."
 msgstr "Ar gedit turėtų paryškinti esamą eilutę."
 
-#: data/org.gnome.gedit.gschema.xml.in:116
+#: data/com.bwhmather.bedit.gschema.xml.in:116
 msgid "Highlight Matching Brackets"
 msgstr "Paryškinti porinius skliaustus"
 
-#: data/org.gnome.gedit.gschema.xml.in:117
+#: data/com.bwhmather.bedit.gschema.xml.in:117
 msgid "Whether gedit should highlight matching brackets."
 msgstr "Ar gedit turėtų paryškinti porinį skliaustelį."
 
-#: data/org.gnome.gedit.gschema.xml.in:121
+#: data/com.bwhmather.bedit.gschema.xml.in:121
 msgid "Display Right Margin"
 msgstr "Rodyti dešinę paraštę"
 
-#: data/org.gnome.gedit.gschema.xml.in:122
+#: data/com.bwhmather.bedit.gschema.xml.in:122
 msgid "Whether gedit should display the right margin in the editing area."
 msgstr "Ar gedit turėtų rodyti dešinę paraštę redagavimo lange."
 
-#: data/org.gnome.gedit.gschema.xml.in:126
+#: data/com.bwhmather.bedit.gschema.xml.in:126
 msgid "Right Margin Position"
 msgstr "Dešinės paraštės pozicija"
 
-#: data/org.gnome.gedit.gschema.xml.in:127
+#: data/com.bwhmather.bedit.gschema.xml.in:127
 msgid "Specifies the position of the right margin."
 msgstr "Nurodo dešinės paraštės poziciją."
 
-#: data/org.gnome.gedit.gschema.xml.in:131
+#: data/com.bwhmather.bedit.gschema.xml.in:131
 msgid "Display Overview Map"
 msgstr "Rodyti apžvalgos žemėlapį"
 
-#: data/org.gnome.gedit.gschema.xml.in:132
+#: data/com.bwhmather.bedit.gschema.xml.in:132
 msgid "Whether gedit should display the overview map for the document."
 msgstr "Ar gedit turėtų rodyti dokumento apžvalgą."
 
-#: data/org.gnome.gedit.gschema.xml.in:136
+#: data/com.bwhmather.bedit.gschema.xml.in:136
 msgid "Document background pattern type"
 msgstr "Dokumento fono šablono tipas"
 
-#: data/org.gnome.gedit.gschema.xml.in:137
+#: data/com.bwhmather.bedit.gschema.xml.in:137
 msgid "Whether the document will get a background pattern painted."
 msgstr "Ar bus piešiamas dokumento fono šablonas."
 
-#: data/org.gnome.gedit.gschema.xml.in:147
+#: data/com.bwhmather.bedit.gschema.xml.in:147
 msgid "Smart Home End"
 msgstr "Išmanūs Home ir End"
 
-#: data/org.gnome.gedit.gschema.xml.in:148
+#: data/com.bwhmather.bedit.gschema.xml.in:148
 msgid ""
 "Specifies how the cursor moves when the HOME and END keys are pressed. Use "
 "“disabled” to always move at the start/end of the line, “after” to move to "
@@ -304,55 +304,55 @@ msgstr ""
 "eilutės pradžią/pabaigą, ir „always“ – užuot perkėlus į eilutės pradžią/"
 "pabaigą, visada perkelti į teksto pradžią/pabaigą."
 
-#: data/org.gnome.gedit.gschema.xml.in:152
+#: data/com.bwhmather.bedit.gschema.xml.in:152
 msgid "Restore Previous Cursor Position"
 msgstr "Perkelti žymeklį į ankstesnę poziciją"
 
-#: data/org.gnome.gedit.gschema.xml.in:153
+#: data/com.bwhmather.bedit.gschema.xml.in:153
 msgid ""
 "Whether gedit should restore the previous cursor position when a file is "
 "loaded."
 msgstr "Ar gedit įkėlus failą turėtų perkelti žymeklį į buvusią poziciją."
 
-#: data/org.gnome.gedit.gschema.xml.in:157
+#: data/com.bwhmather.bedit.gschema.xml.in:157
 msgid "Enable Syntax Highlighting"
 msgstr "Įjungti sintaksės paryškinimus"
 
-#: data/org.gnome.gedit.gschema.xml.in:158
+#: data/com.bwhmather.bedit.gschema.xml.in:158
 msgid "Whether gedit should enable syntax highlighting."
 msgstr "Ar gedit turėtų įjungti sintaksės paryškinimą."
 
-#: data/org.gnome.gedit.gschema.xml.in:162
+#: data/com.bwhmather.bedit.gschema.xml.in:162
 msgid "Enable Search Highlighting"
 msgstr "Įjungti paieškos paryškinimus"
 
-#: data/org.gnome.gedit.gschema.xml.in:163
+#: data/com.bwhmather.bedit.gschema.xml.in:163
 msgid ""
 "Whether gedit should highlight all the occurrences of the searched text."
 msgstr "Ar gedit turėtų paryškinti visus ieškomo teksto pasikartojimus."
 
-#: data/org.gnome.gedit.gschema.xml.in:167
+#: data/com.bwhmather.bedit.gschema.xml.in:167
 msgid "Ensure Trailing Newline"
 msgstr "Užtikrinti, kad failas baigiasi nauja eilute"
 
-#: data/org.gnome.gedit.gschema.xml.in:168
+#: data/com.bwhmather.bedit.gschema.xml.in:168
 msgid ""
 "Whether gedit will ensure that documents always end with a trailing newline."
 msgstr "Ar gedit užtikrins, kad dokumentas baigtūsi nauja eilute."
 
-#: data/org.gnome.gedit.gschema.xml.in:174
+#: data/com.bwhmather.bedit.gschema.xml.in:174
 msgid "Toolbar is Visible"
 msgstr "Įrankinė yra matoma"
 
-#: data/org.gnome.gedit.gschema.xml.in:175
+#: data/com.bwhmather.bedit.gschema.xml.in:175
 msgid "Whether the toolbar should be visible in editing windows."
 msgstr "Ar redagavimo languose turi matytis įrankių juosta."
 
-#: data/org.gnome.gedit.gschema.xml.in:179
+#: data/com.bwhmather.bedit.gschema.xml.in:179
 msgid "Notebook Show Tabs Mode"
 msgstr "Užrašinės kortelių veiksena"
 
-#: data/org.gnome.gedit.gschema.xml.in:180
+#: data/com.bwhmather.bedit.gschema.xml.in:180
 msgid ""
 "Specifies when to show the notebook tabs. Use “never” to never show the "
 "tabs, “always” to always show the tabs, and “auto” to show the tabs only "
@@ -364,29 +364,29 @@ msgstr ""
 "rodyti tik kai yra daugiau nei viena kortelė. Reikšmėse turi įtakos raidžių "
 "registras, nurodykite tiksliai, kaip čia nurodyta."
 
-#: data/org.gnome.gedit.gschema.xml.in:184
+#: data/com.bwhmather.bedit.gschema.xml.in:184
 msgid "Status Bar is Visible"
 msgstr "Būsenos juosta yra matoma"
 
-#: data/org.gnome.gedit.gschema.xml.in:185
+#: data/com.bwhmather.bedit.gschema.xml.in:185
 msgid ""
 "Whether the status bar at the bottom of editing windows should be visible."
 msgstr "Ar turi matytis būsenos juosta redagavimo lango apačioje."
 
-#: data/org.gnome.gedit.gschema.xml.in:189
+#: data/com.bwhmather.bedit.gschema.xml.in:189
 msgid "Side panel is Visible"
 msgstr "Šoninis skydelis yra matomas"
 
-#: data/org.gnome.gedit.gschema.xml.in:190
+#: data/com.bwhmather.bedit.gschema.xml.in:190
 msgid ""
 "Whether the side panel at the left of editing windows should be visible."
 msgstr "Ar turi būti matomas šoninis skydelis redagavimo langų kairėje."
 
-#: data/org.gnome.gedit.gschema.xml.in:197
+#: data/com.bwhmather.bedit.gschema.xml.in:197
 msgid "Maximum Recent Files"
 msgstr "Maksimalus neseniai naudotų failų skaičius"
 
-#: data/org.gnome.gedit.gschema.xml.in:198
+#: data/com.bwhmather.bedit.gschema.xml.in:198
 msgid ""
 "Specifies the maximum number of recently opened files that will be displayed "
 "in the “Recent Files” submenu."
@@ -394,28 +394,28 @@ msgstr ""
 "Nurodo maksimalų skaičių neseniai naudotų failų, kurie bus rodomi „Naudoti "
 "failai“ po-meniu."
 
-#: data/org.gnome.gedit.gschema.xml.in:204
+#: data/com.bwhmather.bedit.gschema.xml.in:204
 msgid "Print Syntax Highlighting"
 msgstr "Spausdinti sintaksės paryškinimus"
 
-#: data/org.gnome.gedit.gschema.xml.in:205
+#: data/com.bwhmather.bedit.gschema.xml.in:205
 msgid "Whether gedit should print syntax highlighting when printing documents."
 msgstr ""
 "Ar gedit turėtų spausdinti sintaksės paryškinimus, spausdinant dokumentus."
 
-#: data/org.gnome.gedit.gschema.xml.in:209
+#: data/com.bwhmather.bedit.gschema.xml.in:209
 msgid "Print Header"
 msgstr "Spausdinti antraštę"
 
-#: data/org.gnome.gedit.gschema.xml.in:210
+#: data/com.bwhmather.bedit.gschema.xml.in:210
 msgid "Whether gedit should include a document header when printing documents."
 msgstr "Ar gedit turėtų įtraukti dokumento antraštę, juos spausdinant."
 
-#: data/org.gnome.gedit.gschema.xml.in:219
+#: data/com.bwhmather.bedit.gschema.xml.in:219
 msgid "Printing Line Wrapping Mode"
 msgstr "Eilučių laužymo būdas spausdinant"
 
-#: data/org.gnome.gedit.gschema.xml.in:220
+#: data/com.bwhmather.bedit.gschema.xml.in:220
 msgid ""
 "Specifies how to wrap long lines for printing. Use “none” for no wrapping, "
 "“word” for wrapping at word boundaries, and “char” for wrapping at "
@@ -428,11 +428,11 @@ msgstr ""
 "didžiąsias ir mažąsias raides, todėl pasistenkite, kad jos būtų įrašytos "
 "tiksliai taip, kaip parašyta čia."
 
-#: data/org.gnome.gedit.gschema.xml.in:224
+#: data/com.bwhmather.bedit.gschema.xml.in:224
 msgid "Print Line Numbers"
 msgstr "Spausdinti eilučių numerius"
 
-#: data/org.gnome.gedit.gschema.xml.in:225
+#: data/com.bwhmather.bedit.gschema.xml.in:225
 msgid ""
 "If this value is 0, then no line numbers will be inserted when printing a "
 "document. Otherwise, gedit will print line numbers every such number of "
@@ -442,29 +442,29 @@ msgstr ""
 "numeris. Kitu atveju gedit spausdins eilučių numerius kas tiek eilučių."
 
 #. Translators: This is a GSettings default value. Do NOT change or localize the quotation marks!
-#: data/org.gnome.gedit.gschema.xml.in:229
+#: data/com.bwhmather.bedit.gschema.xml.in:229
 msgid "'Monospace 9'"
 msgstr "'Monospace 9'"
 
-#: data/org.gnome.gedit.gschema.xml.in:230
+#: data/com.bwhmather.bedit.gschema.xml.in:230
 msgid "Body Font for Printing"
 msgstr "Paprasto teksto šriftas spausdinimui"
 
-#: data/org.gnome.gedit.gschema.xml.in:231
+#: data/com.bwhmather.bedit.gschema.xml.in:231
 msgid ""
 "Specifies the font to use for a document’s body when printing documents."
 msgstr "Šriftas, kuriuo bus spausdinamas pagrindinis tekstas."
 
 #. Translators: This is a GSettings default value. Do NOT change or localize the quotation marks!
-#: data/org.gnome.gedit.gschema.xml.in:235
+#: data/com.bwhmather.bedit.gschema.xml.in:235
 msgid "'Sans 11'"
 msgstr "'Sans 11'"
 
-#: data/org.gnome.gedit.gschema.xml.in:236
+#: data/com.bwhmather.bedit.gschema.xml.in:236
 msgid "Header Font for Printing"
 msgstr "Antraštės šriftas spausdinimui"
 
-#: data/org.gnome.gedit.gschema.xml.in:237
+#: data/com.bwhmather.bedit.gschema.xml.in:237
 msgid ""
 "Specifies the font to use for page headers when printing a document. This "
 "will only take effect if the “Print Header” option is turned on."
@@ -473,15 +473,15 @@ msgstr ""
 "jei parametras \"Spausdinti antraštę\" yra įjungtas."
 
 #. Translators: This is a GSettings default value. Do NOT change or localize the quotation marks!
-#: data/org.gnome.gedit.gschema.xml.in:241
+#: data/com.bwhmather.bedit.gschema.xml.in:241
 msgid "'Sans 8'"
 msgstr "'Sans 8'"
 
-#: data/org.gnome.gedit.gschema.xml.in:242
+#: data/com.bwhmather.bedit.gschema.xml.in:242
 msgid "Line Number Font for Printing"
 msgstr "Eilučių numerių šriftas spausdinimui"
 
-#: data/org.gnome.gedit.gschema.xml.in:243
+#: data/com.bwhmather.bedit.gschema.xml.in:243
 msgid ""
 "Specifies the font to use for line numbers when printing. This will only "
 "take effect if the “Print Line Numbers” option is non-zero."
@@ -489,43 +489,43 @@ msgstr ""
 "Šriftas, kuriuo bus spausdinami eilučių numeriai. Jis galios tik tada, jei "
 "parametras „Spausdinti eilučių numerius“ yra ne nulinis."
 
-#: data/org.gnome.gedit.gschema.xml.in:247
+#: data/com.bwhmather.bedit.gschema.xml.in:247
 msgid "Margin Left"
 msgstr "Kairė paraštė"
 
-#: data/org.gnome.gedit.gschema.xml.in:248
+#: data/com.bwhmather.bedit.gschema.xml.in:248
 msgid "The left margin, in millimeters."
 msgstr "Kairė paraštė milimetrais."
 
-#: data/org.gnome.gedit.gschema.xml.in:252
+#: data/com.bwhmather.bedit.gschema.xml.in:252
 msgid "Margin Top"
 msgstr "Viršutinė paraštė"
 
-#: data/org.gnome.gedit.gschema.xml.in:253
+#: data/com.bwhmather.bedit.gschema.xml.in:253
 msgid "The top margin, in millimeters."
 msgstr "Viršutinė paraštė milimetrais."
 
-#: data/org.gnome.gedit.gschema.xml.in:257
+#: data/com.bwhmather.bedit.gschema.xml.in:257
 msgid "Margin Right"
 msgstr "Dešinė paraštė"
 
-#: data/org.gnome.gedit.gschema.xml.in:258
+#: data/com.bwhmather.bedit.gschema.xml.in:258
 msgid "The right margin, in millimeters."
 msgstr "Dešinė paraštė milimetrais."
 
-#: data/org.gnome.gedit.gschema.xml.in:262
+#: data/com.bwhmather.bedit.gschema.xml.in:262
 msgid "Margin Bottom"
 msgstr "Apatinė paraštė"
 
-#: data/org.gnome.gedit.gschema.xml.in:263
+#: data/com.bwhmather.bedit.gschema.xml.in:263
 msgid "The bottom margin, in millimeters."
 msgstr "Apatinė paraštė milimetrais."
 
-#: data/org.gnome.gedit.gschema.xml.in:269
+#: data/com.bwhmather.bedit.gschema.xml.in:269
 msgid "Candidate Encodings"
 msgstr "Galimos koduotės"
 
-#: data/org.gnome.gedit.gschema.xml.in:270
+#: data/com.bwhmather.bedit.gschema.xml.in:270
 msgid ""
 "List of candidate encodings shown in the Character Encoding menu in the open/"
 "save file chooser. “CURRENT” represents the current locale encoding. Only "
@@ -537,11 +537,11 @@ msgstr ""
 "tik atpažintos koduotės. Numatytoji vertė yra tuščias sąrašas, tokiu atveju "
 "gedit pasirinks gerus numatytuosius nustatymus pagal šalį ir kalbą."
 
-#: data/org.gnome.gedit.gschema.xml.in:316
+#: data/com.bwhmather.bedit.gschema.xml.in:316
 msgid "Active plugins"
 msgstr "Aktyvūs įskiepiai"
 
-#: data/org.gnome.gedit.gschema.xml.in:317
+#: data/com.bwhmather.bedit.gschema.xml.in:317
 msgid ""
 "List of active plugins. It contains the “Location” of the active plugins. "
 "See the .gedit-plugin file for obtaining the “Location” of a given plugin."
@@ -2049,8 +2049,8 @@ msgid "Editor"
 msgstr "Redaktorius"
 
 #: gedit/resources/ui/gedit-preferences-dialog.ui:529
-#: plugins/externaltools/org.gnome.gedit.plugins.externaltools.gschema.xml.in:14
-#: plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in:24
+#: plugins/externaltools/com.bwhmather.bedit.plugins.externaltools.gschema.xml.in:14
+#: plugins/pythonconsole/com.bwhmather.bedit.plugins.pythonconsole.gschema.xml.in:24
 msgid "Font"
 msgstr "Šriftas"
 
@@ -2623,12 +2623,12 @@ msgstr ""
 "Galite parsisiųsti naują gedit versiją paspaudę mygtuką „Parsisiųsti“ arba "
 "nekreipti dėmesio į tą versiją ir laukti naujesnės"
 
-#: plugins/checkupdate/org.gnome.gedit.plugins.checkupdate.gschema.xml.in:5
+#: plugins/checkupdate/com.bwhmather.bedit.plugins.checkupdate.gschema.xml.in:5
 msgid "Version to Ignore"
 msgstr "Ignoruojama versija"
 
 #. This is releated to the next gedit version to be released
-#: plugins/checkupdate/org.gnome.gedit.plugins.checkupdate.gschema.xml.in:7
+#: plugins/checkupdate/com.bwhmather.bedit.plugins.checkupdate.gschema.xml.in:7
 msgid "Version to ignore until a newer version is released."
 msgstr "Nepaisoma versija iki kitos versijos išleidimo"
 
@@ -2724,12 +2724,12 @@ msgstr "Išoriniai įrankiai"
 msgid "Execute external commands and shell scripts."
 msgstr "Vykdyti išorines komandas ir shell scenarijus."
 
-#: plugins/externaltools/org.gnome.gedit.plugins.externaltools.gschema.xml.in:5
-#: plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in:15
+#: plugins/externaltools/com.bwhmather.bedit.plugins.externaltools.gschema.xml.in:5
+#: plugins/pythonconsole/com.bwhmather.bedit.plugins.pythonconsole.gschema.xml.in:15
 msgid "Whether to use the system font"
 msgstr "Ar naudoti sistemos šriftą"
 
-#: plugins/externaltools/org.gnome.gedit.plugins.externaltools.gschema.xml.in:6
+#: plugins/externaltools/com.bwhmather.bedit.plugins.externaltools.gschema.xml.in:6
 msgid ""
 "If true, the external tools will use the desktop-global standard font if "
 "it’s monospace (and the most similar font it can come up with otherwise)."
@@ -2737,8 +2737,8 @@ msgstr ""
 "Jei teigiama, išoriniai įrankiai naudos desktop-global standartinį šriftą, "
 "jei jis vienodo pločio (ir panašiausią įmanomą šriftą priešingu atveju)."
 
-#: plugins/externaltools/org.gnome.gedit.plugins.externaltools.gschema.xml.in:15
-#: plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in:25
+#: plugins/externaltools/com.bwhmather.bedit.plugins.externaltools.gschema.xml.in:15
+#: plugins/pythonconsole/com.bwhmather.bedit.plugins.pythonconsole.gschema.xml.in:25
 msgid "A Pango font name. Examples are “Sans 12” or “Monospace Bold 14”."
 msgstr "Pango šrifto vardas. Pavyzdžiai: „Sans 12“ arba „Monospace Bold 14“."
 
@@ -3075,11 +3075,11 @@ msgstr "Nepavyko prijungti skirsnio: %s"
 msgid "Error when loading “%s”: No such directory"
 msgstr "Klaida įkeliant „%s“: nėra tokio aplanko"
 
-#: plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in:5
+#: plugins/filebrowser/com.bwhmather.bedit.plugins.filebrowser.gschema.xml.in:5
 msgid "Open With Tree View"
 msgstr "Atverti su medžio vaizdu"
 
-#: plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in:6
+#: plugins/filebrowser/com.bwhmather.bedit.plugins.filebrowser.gschema.xml.in:6
 msgid ""
 "Open the tree view when the file browser plugin gets loaded instead of the "
 "bookmarks view"
@@ -3087,11 +3087,11 @@ msgstr ""
 "Atverti medžio rodinį, vietoje žymelių rodinio, kai įkeliamas failų "
 "naršyklės įskiepis"
 
-#: plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in:10
+#: plugins/filebrowser/com.bwhmather.bedit.plugins.filebrowser.gschema.xml.in:10
 msgid "File Browser Root Directory"
 msgstr "Failų naršyklės šakninis aplankas"
 
-#: plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in:11
+#: plugins/filebrowser/com.bwhmather.bedit.plugins.filebrowser.gschema.xml.in:11
 msgid ""
 "The file browser root directory to use when loading the file browser plugin "
 "and onload/tree_view is TRUE."
@@ -3099,11 +3099,11 @@ msgstr ""
 "failų naršyklės šakninis aplankas naudojamas įkeliant failų naršyklės "
 "įskiepį ir esant onload/tree_view TEIGIAMOMS reikšmėms."
 
-#: plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in:15
+#: plugins/filebrowser/com.bwhmather.bedit.plugins.filebrowser.gschema.xml.in:15
 msgid "File Browser Virtual Root Directory"
 msgstr "Failų naršyklės virtualus šakninis aplankas"
 
-#: plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in:16
+#: plugins/filebrowser/com.bwhmather.bedit.plugins.filebrowser.gschema.xml.in:16
 msgid ""
 "The file browser virtual root directory to use when loading the file browser "
 "plugin when onload/tree_view is TRUE. The virtual root must always be below "
@@ -3113,19 +3113,19 @@ msgstr ""
 "naršyklės įskiepį ir esant onload/tree_view TEIGIAMOMS reikšmėms. Virtualus "
 "šakninis aplankas visada turi būti žemiau tikrojo šakninio."
 
-#: plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in:20
+#: plugins/filebrowser/com.bwhmather.bedit.plugins.filebrowser.gschema.xml.in:20
 msgid "Enable Restore of Remote Locations"
 msgstr "Įjungti nutolusių vietų atstatymą"
 
-#: plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in:21
+#: plugins/filebrowser/com.bwhmather.bedit.plugins.filebrowser.gschema.xml.in:21
 msgid "Sets whether to enable restoring of remote locations."
 msgstr "Nurodo ar įjungti nutolusių vietų atstatymą."
 
-#: plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in:25
+#: plugins/filebrowser/com.bwhmather.bedit.plugins.filebrowser.gschema.xml.in:25
 msgid "Set Location to First Document"
 msgstr "Nustatyti vietą į pirmą dokumentą"
 
-#: plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in:26
+#: plugins/filebrowser/com.bwhmather.bedit.plugins.filebrowser.gschema.xml.in:26
 msgid ""
 "If TRUE the file browser plugin will view the directory of the first opened "
 "document given that the file browser hasn’t been used yet. (Thus this "
@@ -3137,11 +3137,11 @@ msgstr ""
 "taikoma dokumento atvėrimui iš komandų eilutės arba atveriant jį su "
 "nautilus, ir t.t.)"
 
-#: plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in:30
+#: plugins/filebrowser/com.bwhmather.bedit.plugins.filebrowser.gschema.xml.in:30
 msgid "File Browser Filter Mode"
 msgstr "Failų naršyklės filtravimo režimas"
 
-#: plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in:31
+#: plugins/filebrowser/com.bwhmather.bedit.plugins.filebrowser.gschema.xml.in:31
 msgid ""
 "This value determines what files get filtered from the file browser. Valid "
 "values are: none (filter nothing), hide-hidden (filter hidden files) and "
@@ -3151,11 +3151,11 @@ msgstr ""
 "reikšmės yra: none (nieko nefiltruoti), hide-hidden (filtruoti paslėptus "
 "failus) ir hide-binary (filtruoti dvejetainius failus)."
 
-#: plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in:35
+#: plugins/filebrowser/com.bwhmather.bedit.plugins.filebrowser.gschema.xml.in:35
 msgid "File Browser Filter Pattern"
 msgstr "Failų naršyklės filtravimo šablonas"
 
-#: plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in:36
+#: plugins/filebrowser/com.bwhmather.bedit.plugins.filebrowser.gschema.xml.in:36
 msgid ""
 "The filter pattern to filter the file browser with. This filter works on top "
 "of the filter_mode."
@@ -3163,11 +3163,11 @@ msgstr ""
 "Filtravimo šablonas, kuriuo filtruoti failų naršyklę. Šis filtras veikia ant "
 "filter_mode."
 
-#: plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in:40
+#: plugins/filebrowser/com.bwhmather.bedit.plugins.filebrowser.gschema.xml.in:40
 msgid "File Browser Binary Patterns"
 msgstr "Failų naršyklės dvejetainiai šablonai"
 
-#: plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in:41
+#: plugins/filebrowser/com.bwhmather.bedit.plugins.filebrowser.gschema.xml.in:41
 msgid "The supplemental patterns to use when filtering binary files."
 msgstr "Papildomi šablonai, naudojami filtruojant dvejetainius failus."
 
@@ -3236,23 +3236,23 @@ msgstr "Veiksenų eilutės"
 msgid "Emacs, Kate and Vim-style modelines support for gedit."
 msgstr "Emacs, Kate ir Vim stiliaus veiksenų eilučių palaikymas."
 
-#: plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in:5
+#: plugins/pythonconsole/com.bwhmather.bedit.plugins.pythonconsole.gschema.xml.in:5
 msgid "Command Color Text"
 msgstr "Komandos teksto spalva"
 
-#: plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in:6
+#: plugins/pythonconsole/com.bwhmather.bedit.plugins.pythonconsole.gschema.xml.in:6
 msgid "The command color text"
 msgstr "Komandos teksto spalva"
 
-#: plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in:10
+#: plugins/pythonconsole/com.bwhmather.bedit.plugins.pythonconsole.gschema.xml.in:10
 msgid "Error Color Text"
 msgstr "Klaidos teksto spalva"
 
-#: plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in:11
+#: plugins/pythonconsole/com.bwhmather.bedit.plugins.pythonconsole.gschema.xml.in:11
 msgid "The error color text"
 msgstr "_Klaidos spalva:Klaidos teksto spalva"
 
-#: plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in:16
+#: plugins/pythonconsole/com.bwhmather.bedit.plugins.pythonconsole.gschema.xml.in:16
 msgid ""
 "If true, the terminal will use the desktop-global standard font if it’s "
 "monospace (and the most similar font it can come up with otherwise)."
@@ -3595,13 +3595,13 @@ msgstr "Nustatyti ka_lbą…"
 msgid "_Highlight Misspelled Words"
 msgstr "_Paryškinti klaidingus žodžius"
 
-#: plugins/spell/org.gnome.gedit.plugins.spell.gschema.xml.in:5
+#: plugins/spell/com.bwhmather.bedit.plugins.spell.gschema.xml.in:5
 #: plugins/spell/resources/ui/gedit-spell-setup-dialog.ui:75
 #| msgid "_Highlight Misspelled Words"
 msgid "Highlight misspelled words"
 msgstr "Paryškinti klaidingus žodžius"
 
-#: plugins/spell/org.gnome.gedit.plugins.spell.gschema.xml.in:6
+#: plugins/spell/com.bwhmather.bedit.plugins.spell.gschema.xml.in:6
 #| msgid "_Highlight Misspelled Words"
 msgid "Default setting for highlight misspelled words."
 msgstr "Numatytasis nustatymas klaidingų žodžių paryškinimui."
@@ -3632,11 +3632,11 @@ msgstr "Į_terpti datą ir laiką…"
 msgid "Available formats"
 msgstr "Galimi formatai"
 
-#: plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in:5
+#: plugins/time/com.bwhmather.bedit.plugins.time.gschema.xml.in:5
 msgid "Prompt Type"
 msgstr "Klausti tipo"
 
-#: plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in:6
+#: plugins/time/com.bwhmather.bedit.plugins.time.gschema.xml.in:6
 msgid ""
 "If the user should be prompted for a format or if the selected or custom "
 "format should be used."
@@ -3644,19 +3644,19 @@ msgstr ""
 "Ar naudotojo paklausti formato, ar turėtų būti naudojamas pažymėtas arba "
 "pasirinktinis formatas."
 
-#: plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in:10
+#: plugins/time/com.bwhmather.bedit.plugins.time.gschema.xml.in:10
 msgid "Selected Format"
 msgstr "Pažymėtas formatas"
 
-#: plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in:11
+#: plugins/time/com.bwhmather.bedit.plugins.time.gschema.xml.in:11
 msgid "The selected format used when inserting the date/time."
 msgstr "Pasirinktas formatas, naudojamas įterpiant datą ir laiką."
 
-#: plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in:15
+#: plugins/time/com.bwhmather.bedit.plugins.time.gschema.xml.in:15
 msgid "Custom Format"
 msgstr "Pasirinktinis formatas"
 
-#: plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in:16
+#: plugins/time/com.bwhmather.bedit.plugins.time.gschema.xml.in:16
 msgid "The custom format used when inserting the date/time."
 msgstr "Pasirinktinis formatas, naudojamas įterpiant datą ir laiką."
 
@@ -3710,8 +3710,8 @@ msgstr "Įterpti datą/laiką"
 msgid "Inserts current date and time at the cursor position."
 msgstr "Žymeklio vietoje įterpia esamą datą ir laiką"
 
-#~ msgid "org.gnome.gedit"
-#~ msgstr "org.gnome.gedit"
+#~ msgid "com.bwhmather.bedit"
+#~ msgstr "com.bwhmather.bedit"
 
 #~ msgid "Please check your installation."
 #~ msgstr "Patikrinkite Jūsų įdiegimą."

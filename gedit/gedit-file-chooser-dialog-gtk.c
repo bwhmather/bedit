@@ -585,7 +585,7 @@ all_text_files_filter (const GtkFileFilterInfo *filter_info,
 static void
 gedit_file_chooser_dialog_gtk_init (GeditFileChooserDialogGtk *dialog)
 {
-	dialog->filter_settings = g_settings_new ("org.gnome.gedit.state.file-filter");
+	dialog->filter_settings = g_settings_new ("com.bwhmather.bedit.state.file-filter");
 }
 
 GeditFileChooserDialog *

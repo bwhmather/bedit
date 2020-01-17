@@ -70,7 +70,7 @@ gedit_highlight_mode_dialog_class_init (GeditHighlightModeDialogClass *klass)
 
 	/* Bind class to template */
 	gtk_widget_class_set_template_from_resource (widget_class,
-	                                             "/org/gnome/gedit/ui/gedit-highlight-mode-dialog.ui");
+	                                             "/com/bwhmather/bedit/ui/gedit-highlight-mode-dialog.ui");
 	gtk_widget_class_bind_template_child (widget_class, GeditHighlightModeDialog, selector);
 }
 

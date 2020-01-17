@@ -93,7 +93,7 @@ gedit_progress_info_bar_class_init (GeditProgressInfoBarClass *klass)
 
 	/* Bind class to template */
 	gtk_widget_class_set_template_from_resource (widget_class,
-	                                             "/org/gnome/gedit/ui/gedit-progress-info-bar.ui");
+	                                             "/com/bwhmather/bedit/ui/gedit-progress-info-bar.ui");
 	gtk_widget_class_bind_template_child (widget_class, GeditProgressInfoBar, image);
 	gtk_widget_class_bind_template_child (widget_class, GeditProgressInfoBar, label);
 	gtk_widget_class_bind_template_child (widget_class, GeditProgressInfoBar, progress);

@@ -1,6 +1,6 @@
 subdir('pythonconsole')
 
-pythonconsole_gschema_file = files('org.gnome.gedit.plugins.pythonconsole.gschema.xml')
+pythonconsole_gschema_file = files('com.bwhmather.bedit.plugins.pythonconsole.gschema.xml')
 install_data(
   pythonconsole_gschema_file,
   install_dir: join_paths(get_option('prefix'), get_option('datadir'), 'glib-2.0/schemas')

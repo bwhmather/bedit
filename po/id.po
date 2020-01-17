@@ -24,15 +24,15 @@ msgstr ""
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Generator: Poedit 2.2.1\n"
 
-#: data/org.gnome.gedit.appdata.xml.in:7
+#: data/com.bwhmather.bedit.appdata.xml.in:7
 msgid "gedit"
 msgstr "gedit"
 
-#: data/org.gnome.gedit.appdata.xml.in:8 data/org.gnome.gedit.desktop.in.in:4
+#: data/com.bwhmather.bedit.appdata.xml.in:8 data/com.bwhmather.bedit.desktop.in.in:4
 msgid "Edit text files"
 msgstr "Menyunting berkas teks"
 
-#: data/org.gnome.gedit.appdata.xml.in:10
+#: data/com.bwhmather.bedit.appdata.xml.in:10
 msgid ""
 "gedit is the official text editor of the GNOME desktop environment. While "
 "aiming at simplicity and ease of use, gedit is a powerful general purpose "
@@ -42,7 +42,7 @@ msgstr ""
 "mengejar kesederhanaan dan kemudahan pemakaian, gedit adalah penyunting teks "
 "tujuan umum yang hebat."
 
-#: data/org.gnome.gedit.appdata.xml.in:15
+#: data/com.bwhmather.bedit.appdata.xml.in:15
 msgid ""
 "Whether you are writing the next bestseller, programming an innovative "
 "application, or simply taking some quick notes, gedit will be a reliable "
@@ -52,7 +52,7 @@ msgstr ""
 "aplikasi inovatif, atau sekedar hanya menulis cepat catatan, gedit adalah "
 "alat yang dapat diandalkan untuk menyelesaikan tugas Anda."
 
-#: data/org.gnome.gedit.appdata.xml.in:20
+#: data/com.bwhmather.bedit.appdata.xml.in:20
 msgid ""
 "Its flexible plugin system allows you to tailor the application to your "
 "needs and adapt it to your workflow."
@@ -60,30 +60,30 @@ msgstr ""
 "Sistem pengayanya yang luwes memungkinkan Anda menata aplikasi ke keperluan "
 "Anda dan menyesuaikannya ke alur kerja Anda."
 
-#: data/org.gnome.gedit.desktop.in.in:3 gedit/gedit-print-job.c:730
+#: data/com.bwhmather.bedit.desktop.in.in:3 gedit/gedit-print-job.c:730
 msgid "Text Editor"
 msgstr "Penyunting Teks"
 
 #. TRANSLATORS: Do NOT translate or localize the semicolons!
 #. The list MUST also end with a semicolon!
 #. Search terms to find this application.
-#: data/org.gnome.gedit.desktop.in.in:18
+#: data/com.bwhmather.bedit.desktop.in.in:18
 msgid "Text;Editor;Plaintext;Write;gedit;"
 msgstr "Teks;Penyunting;Teks Polos;Tulis;gedit;"
 
-#: data/org.gnome.gedit.desktop.in.in:22
+#: data/com.bwhmather.bedit.desktop.in.in:22
 msgid "New Window"
 msgstr "Jendela Baru"
 
-#: data/org.gnome.gedit.desktop.in.in:26
+#: data/com.bwhmather.bedit.desktop.in.in:26
 msgid "New Document"
 msgstr "Dokumen Baru"
 
-#: data/org.gnome.gedit.gschema.xml.in:36
+#: data/com.bwhmather.bedit.gschema.xml.in:36
 msgid "Use Default Font"
 msgstr "Gunakan Fonta Baku"
 
-#: data/org.gnome.gedit.gschema.xml.in:37
+#: data/com.bwhmather.bedit.gschema.xml.in:37
 msgid ""
 "Whether to use the system’s default fixed width font for editing text "
 "instead of a font specific to gedit. If this option is turned off, then the "
@@ -96,15 +96,15 @@ msgstr ""
 "fonta system."
 
 #. Translators: This is a GSettings default value. Do NOT change or localize the quotation marks!
-#: data/org.gnome.gedit.gschema.xml.in:41
+#: data/com.bwhmather.bedit.gschema.xml.in:41
 msgid "'Monospace 12'"
 msgstr "'Monospace 12'"
 
-#: data/org.gnome.gedit.gschema.xml.in:42
+#: data/com.bwhmather.bedit.gschema.xml.in:42
 msgid "Editor Font"
 msgstr "Fonta Penyunting"
 
-#: data/org.gnome.gedit.gschema.xml.in:43
+#: data/com.bwhmather.bedit.gschema.xml.in:43
 msgid ""
 "A custom font that will be used for the editing area. This will only take "
 "effect if the “Use Default Font” option is turned off."
@@ -112,29 +112,29 @@ msgstr ""
 "Sebuah fonta ubahan yang akan dipergunakan untuk daerah penyuntingan. Ini "
 "hanya akan berakibat jika pilihan \"Gunakan Fonta Baku\" dimatikan."
 
-#: data/org.gnome.gedit.gschema.xml.in:47
+#: data/com.bwhmather.bedit.gschema.xml.in:47
 msgid "Style Scheme"
 msgstr "Skema Gaya"
 
-#: data/org.gnome.gedit.gschema.xml.in:48
+#: data/com.bwhmather.bedit.gschema.xml.in:48
 msgid "The ID of a GtkSourceView Style Scheme used to color the text."
 msgstr "ID dari Skema Gaya GtkSourceView yang dipakai untuk mewarnai teks."
 
-#: data/org.gnome.gedit.gschema.xml.in:52
+#: data/com.bwhmather.bedit.gschema.xml.in:52
 msgid "Create Backup Copies"
 msgstr "Buat Salinan Cadangan"
 
-#: data/org.gnome.gedit.gschema.xml.in:53
+#: data/com.bwhmather.bedit.gschema.xml.in:53
 msgid "Whether gedit should create backup copies for the files it saves."
 msgstr ""
 "Apakah gedit harus membuat salinan cadangan bagi berkas-berkas yang "
 "disimpannya."
 
-#: data/org.gnome.gedit.gschema.xml.in:57
+#: data/com.bwhmather.bedit.gschema.xml.in:57
 msgid "Autosave"
 msgstr "Menyimpan otomatis"
 
-#: data/org.gnome.gedit.gschema.xml.in:58
+#: data/com.bwhmather.bedit.gschema.xml.in:58
 msgid ""
 "Whether gedit should automatically save modified files after a time "
 "interval. You can set the time interval with the “Autosave Interval” option."
@@ -143,11 +143,11 @@ msgstr ""
 "setelah waktu tertentu. Anda dapat menentukan jarak waktu dengan pilihan "
 "\"Interval Penyimpanan Otomatis\"."
 
-#: data/org.gnome.gedit.gschema.xml.in:62
+#: data/com.bwhmather.bedit.gschema.xml.in:62
 msgid "Autosave Interval"
 msgstr "Selang Waktu Simpan Otomatis"
 
-#: data/org.gnome.gedit.gschema.xml.in:63
+#: data/com.bwhmather.bedit.gschema.xml.in:63
 msgid ""
 "Number of minutes after which gedit will automatically save modified files. "
 "This will only take effect if the “Autosave” option is turned on."
@@ -156,11 +156,11 @@ msgstr ""
 "yang telah dimodifikasi. Hal ini hanya akan berakibat jika pilihan \"Simpan "
 "Auto\" dinyalakan."
 
-#: data/org.gnome.gedit.gschema.xml.in:67
+#: data/com.bwhmather.bedit.gschema.xml.in:67
 msgid "Maximum Number of Undo Actions"
 msgstr "Maksimal Aksi \"Tak Jadi\" (Undo)"
 
-#: data/org.gnome.gedit.gschema.xml.in:68
+#: data/com.bwhmather.bedit.gschema.xml.in:68
 msgid ""
 "Maximum number of actions that gedit will be able to undo or redo. Use “-1” "
 "for unlimited number of actions."
@@ -168,11 +168,11 @@ msgstr ""
 "Banyaknya aksi maksimal yang tak jadi dilakukan ataupun diterapkan ulang "
 "oleh gedit. Isi dengan \"-1\" untuk tidak terbatas."
 
-#: data/org.gnome.gedit.gschema.xml.in:77
+#: data/com.bwhmather.bedit.gschema.xml.in:77
 msgid "Line Wrapping Mode"
 msgstr "Mode baris wraping"
 
-#: data/org.gnome.gedit.gschema.xml.in:78
+#: data/com.bwhmather.bedit.gschema.xml.in:78
 msgid ""
 "Specifies how to wrap long lines in the editing area. Use “none” for no "
 "wrapping, “word” for wrapping at word boundaries, and “char” for wrapping at "
@@ -185,11 +185,11 @@ msgstr ""
 "membedakan huruf besar kecil, jadi pastikan mereka kelihatan pas seperti "
 "yang disebutkan di sini."
 
-#: data/org.gnome.gedit.gschema.xml.in:86
+#: data/com.bwhmather.bedit.gschema.xml.in:86
 msgid "Last split mode choice for line wrapping mode"
 msgstr "Mode pembagian terakhir bagi mode pelipatan baris"
 
-#: data/org.gnome.gedit.gschema.xml.in:87
+#: data/com.bwhmather.bedit.gschema.xml.in:87
 msgid ""
 "Specifies the last split mode used with line wrapping mode, so that when "
 "wrapping mode is off we still remember the split mode choice. Use “word” for "
@@ -202,86 +202,86 @@ msgstr ""
 "pelipatan pada perbatasan kata, dan \"char\" untuk pelipatan pada perbatasan "
 "masing-masing karakter."
 
-#: data/org.gnome.gedit.gschema.xml.in:91
+#: data/com.bwhmather.bedit.gschema.xml.in:91
 msgid "Tab Size"
 msgstr "Ukuran Tab"
 
-#: data/org.gnome.gedit.gschema.xml.in:92
+#: data/com.bwhmather.bedit.gschema.xml.in:92
 msgid ""
 "Specifies the number of spaces that should be displayed instead of Tab "
 "characters."
 msgstr "Tentukan jumlah spasi yang harus ditampilkan dari pada karakter tab."
 
-#: data/org.gnome.gedit.gschema.xml.in:96
+#: data/com.bwhmather.bedit.gschema.xml.in:96
 msgid "Insert spaces"
 msgstr "Masukkan spasi"
 
-#: data/org.gnome.gedit.gschema.xml.in:97
+#: data/com.bwhmather.bedit.gschema.xml.in:97
 msgid "Whether gedit should insert spaces instead of tabs."
 msgstr "Apakah gedit harus memasukkan spasi daripada tab."
 
-#: data/org.gnome.gedit.gschema.xml.in:101
+#: data/com.bwhmather.bedit.gschema.xml.in:101
 msgid "Automatic indent"
 msgstr "Inden otomatis"
 
-#: data/org.gnome.gedit.gschema.xml.in:102
+#: data/com.bwhmather.bedit.gschema.xml.in:102
 msgid "Whether gedit should enable automatic indentation."
 msgstr "Apakah gedit harus mengaktifkan indentasi otomatis."
 
-#: data/org.gnome.gedit.gschema.xml.in:106
+#: data/com.bwhmather.bedit.gschema.xml.in:106
 msgid "Display Line Numbers"
 msgstr "Tampilkan Nomor Baris"
 
-#: data/org.gnome.gedit.gschema.xml.in:107
+#: data/com.bwhmather.bedit.gschema.xml.in:107
 msgid "Whether gedit should display line numbers in the editing area."
 msgstr ""
 "Apakah gedit harus menampilkan nomor baris di dalam daerah penyuntingan."
 
-#: data/org.gnome.gedit.gschema.xml.in:111
+#: data/com.bwhmather.bedit.gschema.xml.in:111
 msgid "Highlight Current Line"
 msgstr "Tandai Baris Kini"
 
-#: data/org.gnome.gedit.gschema.xml.in:112
+#: data/com.bwhmather.bedit.gschema.xml.in:112
 msgid "Whether gedit should highlight the current line."
 msgstr "Apakah gedit harus menandai baris ini."
 
-#: data/org.gnome.gedit.gschema.xml.in:116
+#: data/com.bwhmather.bedit.gschema.xml.in:116
 msgid "Highlight Matching Brackets"
 msgstr "Sorot Tanda Kurung yang Berpasangan"
 
-#: data/org.gnome.gedit.gschema.xml.in:117
+#: data/com.bwhmather.bedit.gschema.xml.in:117
 msgid "Whether gedit should highlight matching brackets."
 msgstr "Menentukan gedit untuk menyorot tanda kurung yang berpasangan."
 
-#: data/org.gnome.gedit.gschema.xml.in:121
+#: data/com.bwhmather.bedit.gschema.xml.in:121
 msgid "Display Right Margin"
 msgstr "Tampilkan Batas Kanan"
 
-#: data/org.gnome.gedit.gschema.xml.in:122
+#: data/com.bwhmather.bedit.gschema.xml.in:122
 msgid "Whether gedit should display the right margin in the editing area."
 msgstr "Apakah gedit harus menampilkan batas kanan dalam daerah penyuntingan."
 
-#: data/org.gnome.gedit.gschema.xml.in:126
+#: data/com.bwhmather.bedit.gschema.xml.in:126
 msgid "Right Margin Position"
 msgstr "Posis Batas Kanan"
 
-#: data/org.gnome.gedit.gschema.xml.in:127
+#: data/com.bwhmather.bedit.gschema.xml.in:127
 msgid "Specifies the position of the right margin."
 msgstr "Tentukan posisi dari batas kanan."
 
-#: data/org.gnome.gedit.gschema.xml.in:131
+#: data/com.bwhmather.bedit.gschema.xml.in:131
 msgid "Document background pattern type"
 msgstr "Tipe pola latar dokumen"
 
-#: data/org.gnome.gedit.gschema.xml.in:132
+#: data/com.bwhmather.bedit.gschema.xml.in:132
 msgid "Whether the document will get a background pattern painted."
 msgstr "Apakah pola latar dokumen akan digambar."
 
-#: data/org.gnome.gedit.gschema.xml.in:142
+#: data/com.bwhmather.bedit.gschema.xml.in:142
 msgid "Smart Home End"
 msgstr "Home End Cerdas"
 
-#: data/org.gnome.gedit.gschema.xml.in:143
+#: data/com.bwhmather.bedit.gschema.xml.in:143
 msgid ""
 "Specifies how the cursor moves when the HOME and END keys are pressed. Use "
 "“disabled” to always move at the start/end of the line, “after” to move to "
@@ -299,11 +299,11 @@ msgstr ""
 "baris, dan \"always\" untuk selalu pindah ke awal/akhir teks alih-alih awal/"
 "akhir baris."
 
-#: data/org.gnome.gedit.gschema.xml.in:147
+#: data/com.bwhmather.bedit.gschema.xml.in:147
 msgid "Restore Previous Cursor Position"
 msgstr "Kembalikan Posisi Kursor Pada Keadaan Sebelumnya"
 
-#: data/org.gnome.gedit.gschema.xml.in:148
+#: data/com.bwhmather.bedit.gschema.xml.in:148
 msgid ""
 "Whether gedit should restore the previous cursor position when a file is "
 "loaded."
@@ -311,39 +311,39 @@ msgstr ""
 "Apakah gedit harus mengembalikan posisi kursor ketika sebuah berkas telah "
 "dibaca."
 
-#: data/org.gnome.gedit.gschema.xml.in:152
+#: data/com.bwhmather.bedit.gschema.xml.in:152
 msgid "Enable Syntax Highlighting"
 msgstr "Fungsikan Pewarnaan Sintaksis"
 
-#: data/org.gnome.gedit.gschema.xml.in:153
+#: data/com.bwhmather.bedit.gschema.xml.in:153
 msgid "Whether gedit should enable syntax highlighting."
 msgstr "Apakah gedit harus mengaktifkan penandaan syntax."
 
-#: data/org.gnome.gedit.gschema.xml.in:157
+#: data/com.bwhmather.bedit.gschema.xml.in:157
 msgid "Enable Search Highlighting"
 msgstr "Fungsikan Penyorotan Pencarian"
 
-#: data/org.gnome.gedit.gschema.xml.in:158
+#: data/com.bwhmather.bedit.gschema.xml.in:158
 msgid ""
 "Whether gedit should highlight all the occurrences of the searched text."
 msgstr "Apakah gedit harus menandai baris ini dari teks yang telah dicari."
 
-#: data/org.gnome.gedit.gschema.xml.in:162
+#: data/com.bwhmather.bedit.gschema.xml.in:162
 msgid "Ensure Trailing Newline"
 msgstr "Pastikan Baris Baru Mengikuti"
 
-#: data/org.gnome.gedit.gschema.xml.in:163
+#: data/com.bwhmather.bedit.gschema.xml.in:163
 msgid ""
 "Whether gedit will ensure that documents always end with a trailing newline."
 msgstr ""
 "Apakah gedit harus memastikan bahwa dokumen selalu diakhiri dengan baris "
 "baru."
 
-#: data/org.gnome.gedit.gschema.xml.in:169
+#: data/com.bwhmather.bedit.gschema.xml.in:169
 msgid "Notebook Show Tabs Mode"
 msgstr "Notebook Menampilkan Mode Tab"
 
-#: data/org.gnome.gedit.gschema.xml.in:170
+#: data/com.bwhmather.bedit.gschema.xml.in:170
 msgid ""
 "Specifies when to show the notebook tabs. Use “never” to never show the "
 "tabs, “always” to always show the tabs, and “auto” to show the tabs only "
@@ -356,47 +356,47 @@ msgstr ""
 "nilai ini case sensitive, jadi pastikan mereka kelihatan pas seperti yang "
 "disebutkan di sini."
 
-#: data/org.gnome.gedit.gschema.xml.in:174
+#: data/com.bwhmather.bedit.gschema.xml.in:174
 msgid "Status Bar is Visible"
 msgstr "Batang status terlihat"
 
-#: data/org.gnome.gedit.gschema.xml.in:175
+#: data/com.bwhmather.bedit.gschema.xml.in:175
 msgid ""
 "Whether the status bar at the bottom of editing windows should be visible."
 msgstr ""
 "Apakah batang status pada bagian bawah jendela penyuntingan harus terlihat."
 
-#: data/org.gnome.gedit.gschema.xml.in:179
+#: data/com.bwhmather.bedit.gschema.xml.in:179
 msgid "Side panel is Visible"
 msgstr "Panel sisi Terlihat"
 
-#: data/org.gnome.gedit.gschema.xml.in:180
+#: data/com.bwhmather.bedit.gschema.xml.in:180
 msgid ""
 "Whether the side panel at the left of editing windows should be visible."
 msgstr "Menentukan panel sisi di kiri jendela sunting untuk terlihat."
 
-#: data/org.gnome.gedit.gschema.xml.in:189
+#: data/com.bwhmather.bedit.gschema.xml.in:189
 msgid "Print Syntax Highlighting"
 msgstr "Cetak Pewarnaan Sintaksis"
 
-#: data/org.gnome.gedit.gschema.xml.in:190
+#: data/com.bwhmather.bedit.gschema.xml.in:190
 msgid "Whether gedit should print syntax highlighting when printing documents."
 msgstr "Apakah gedit harus mencetak penandaan sintaks ketika mencetak dokumen."
 
-#: data/org.gnome.gedit.gschema.xml.in:194
+#: data/com.bwhmather.bedit.gschema.xml.in:194
 msgid "Print Header"
 msgstr "Kepala Cetak"
 
-#: data/org.gnome.gedit.gschema.xml.in:195
+#: data/com.bwhmather.bedit.gschema.xml.in:195
 msgid "Whether gedit should include a document header when printing documents."
 msgstr ""
 "Apakah gedit harus memasukkan sebuah kepala dokumen ketika mencetak dokumen."
 
-#: data/org.gnome.gedit.gschema.xml.in:204
+#: data/com.bwhmather.bedit.gschema.xml.in:204
 msgid "Printing Line Wrapping Mode"
 msgstr "Pencetakan dengan Model Baris Wraping"
 
-#: data/org.gnome.gedit.gschema.xml.in:205
+#: data/com.bwhmather.bedit.gschema.xml.in:205
 msgid ""
 "Specifies how to wrap long lines for printing. Use “none” for no wrapping, "
 "“word” for wrapping at word boundaries, and “char” for wrapping at "
@@ -409,11 +409,11 @@ msgstr ""
 "membedakan besar kecil huruf, jadi pastikan mereka kelihatan pas seperti "
 "yang disebutkan di sini."
 
-#: data/org.gnome.gedit.gschema.xml.in:209
+#: data/com.bwhmather.bedit.gschema.xml.in:209
 msgid "Print Line Numbers"
 msgstr "Cetak Nomor Baris"
 
-#: data/org.gnome.gedit.gschema.xml.in:210
+#: data/com.bwhmather.bedit.gschema.xml.in:210
 msgid ""
 "If this value is 0, then no line numbers will be inserted when printing a "
 "document. Otherwise, gedit will print line numbers every such number of "
@@ -424,15 +424,15 @@ msgstr ""
 "nomor baris."
 
 #. Translators: This is a GSettings default value. Do NOT change or localize the quotation marks!
-#: data/org.gnome.gedit.gschema.xml.in:214
+#: data/com.bwhmather.bedit.gschema.xml.in:214
 msgid "'Monospace 9'"
 msgstr "'Monospace 9'"
 
-#: data/org.gnome.gedit.gschema.xml.in:215
+#: data/com.bwhmather.bedit.gschema.xml.in:215
 msgid "Body Font for Printing"
 msgstr "Tubuh huruf untuk Pencetakan"
 
-#: data/org.gnome.gedit.gschema.xml.in:216
+#: data/com.bwhmather.bedit.gschema.xml.in:216
 msgid ""
 "Specifies the font to use for a document’s body when printing documents."
 msgstr ""
@@ -440,15 +440,15 @@ msgstr ""
 "dokumen."
 
 #. Translators: This is a GSettings default value. Do NOT change or localize the quotation marks!
-#: data/org.gnome.gedit.gschema.xml.in:220
+#: data/com.bwhmather.bedit.gschema.xml.in:220
 msgid "'Sans 11'"
 msgstr "'Sans 11'"
 
-#: data/org.gnome.gedit.gschema.xml.in:221
+#: data/com.bwhmather.bedit.gschema.xml.in:221
 msgid "Header Font for Printing"
 msgstr "Fonta Kepala untuk Pencetakan"
 
-#: data/org.gnome.gedit.gschema.xml.in:222
+#: data/com.bwhmather.bedit.gschema.xml.in:222
 msgid ""
 "Specifies the font to use for page headers when printing a document. This "
 "will only take effect if the “Print Header” option is turned on."
@@ -458,15 +458,15 @@ msgstr ""
 "dihidupkan."
 
 #. Translators: This is a GSettings default value. Do NOT change or localize the quotation marks!
-#: data/org.gnome.gedit.gschema.xml.in:226
+#: data/com.bwhmather.bedit.gschema.xml.in:226
 msgid "'Sans 8'"
 msgstr "'Sans 8'"
 
-#: data/org.gnome.gedit.gschema.xml.in:227
+#: data/com.bwhmather.bedit.gschema.xml.in:227
 msgid "Line Number Font for Printing"
 msgstr "Fonta Nomor Baris untuk Pencetakan"
 
-#: data/org.gnome.gedit.gschema.xml.in:228
+#: data/com.bwhmather.bedit.gschema.xml.in:228
 msgid ""
 "Specifies the font to use for line numbers when printing. This will only "
 "take effect if the “Print Line Numbers” option is non-zero."
@@ -474,43 +474,43 @@ msgstr ""
 "Menentukan fonta yang digunakan untuk nomor baris ketika mencetak. Hal ini "
 "hanya akan berakibat jika pilihan \"Cetak Nomor Baris\" tidak nol."
 
-#: data/org.gnome.gedit.gschema.xml.in:232
+#: data/com.bwhmather.bedit.gschema.xml.in:232
 msgid "Margin Left"
 msgstr "Marjin Kiri"
 
-#: data/org.gnome.gedit.gschema.xml.in:233
+#: data/com.bwhmather.bedit.gschema.xml.in:233
 msgid "The left margin, in millimeters."
 msgstr "Marjin kiri, dalam milimeter."
 
-#: data/org.gnome.gedit.gschema.xml.in:237
+#: data/com.bwhmather.bedit.gschema.xml.in:237
 msgid "Margin Top"
 msgstr "Marjin Atas"
 
-#: data/org.gnome.gedit.gschema.xml.in:238
+#: data/com.bwhmather.bedit.gschema.xml.in:238
 msgid "The top margin, in millimeters."
 msgstr "Marjin bagian atas, dalam milimeter."
 
-#: data/org.gnome.gedit.gschema.xml.in:242
+#: data/com.bwhmather.bedit.gschema.xml.in:242
 msgid "Margin Right"
 msgstr "Marjin Kanan"
 
-#: data/org.gnome.gedit.gschema.xml.in:243
+#: data/com.bwhmather.bedit.gschema.xml.in:243
 msgid "The right margin, in millimeters."
 msgstr "Marjin bagian kanan, dalam milimeter."
 
-#: data/org.gnome.gedit.gschema.xml.in:247
+#: data/com.bwhmather.bedit.gschema.xml.in:247
 msgid "Margin Bottom"
 msgstr "Marjin Bawah"
 
-#: data/org.gnome.gedit.gschema.xml.in:248
+#: data/com.bwhmather.bedit.gschema.xml.in:248
 msgid "The bottom margin, in millimeters."
 msgstr "Marjin pada bagian dasar, dalam milimeter."
 
-#: data/org.gnome.gedit.gschema.xml.in:254
+#: data/com.bwhmather.bedit.gschema.xml.in:254
 msgid "Candidate Encodings"
 msgstr "Kandidat Pengkodean"
 
-#: data/org.gnome.gedit.gschema.xml.in:255
+#: data/com.bwhmather.bedit.gschema.xml.in:255
 msgid ""
 "List of candidate encodings shown in the Character Encoding menu in the open/"
 "save file chooser. “CURRENT” represents the current locale encoding. Only "
@@ -523,11 +523,11 @@ msgstr ""
 "kosong, yang dalam hal ini gedit akan memilih nilai baku yang baik "
 "bergantung kepada negara dan bahasa."
 
-#: data/org.gnome.gedit.gschema.xml.in:301
+#: data/com.bwhmather.bedit.gschema.xml.in:301
 msgid "Active plugins"
 msgstr "Pengaya aktif"
 
-#: data/org.gnome.gedit.gschema.xml.in:302
+#: data/com.bwhmather.bedit.gschema.xml.in:302
 msgid ""
 "List of active plugins. It contains the “Location” of the active plugins. "
 "See the .gedit-plugin file for obtaining the “Location” of a given plugin."
@@ -2006,8 +2006,8 @@ msgid "Editor"
 msgstr "Penyunting"
 
 #: gedit/resources/ui/gedit-preferences-dialog.ui:514
-#: plugins/externaltools/org.gnome.gedit.plugins.externaltools.gschema.xml.in:14
-#: plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in:24
+#: plugins/externaltools/com.bwhmather.bedit.plugins.externaltools.gschema.xml.in:14
+#: plugins/pythonconsole/com.bwhmather.bedit.plugins.pythonconsole.gschema.xml.in:24
 msgid "Font"
 msgstr "Fonta"
 
@@ -2560,12 +2560,12 @@ msgstr ""
 "Anda dapat mengunduh versi baru gedit dengan mengklik tombol unduh atau "
 "mengabaikan versi tersebut dan menunggu yang baru"
 
-#: plugins/checkupdate/org.gnome.gedit.plugins.checkupdate.gschema.xml.in:5
+#: plugins/checkupdate/com.bwhmather.bedit.plugins.checkupdate.gschema.xml.in:5
 msgid "Version to Ignore"
 msgstr "Versi untuk Diabaikan"
 
 #. This is releated to the next gedit version to be released
-#: plugins/checkupdate/org.gnome.gedit.plugins.checkupdate.gschema.xml.in:7
+#: plugins/checkupdate/com.bwhmather.bedit.plugins.checkupdate.gschema.xml.in:7
 msgid "Version to ignore until a newer version is released."
 msgstr "Versi yang diabaikan sampai versi berikutnya dirilis."
 
@@ -2661,12 +2661,12 @@ msgstr "Alat Luar"
 msgid "Execute external commands and shell scripts."
 msgstr "Jalankan perintah luar dan skrip shell."
 
-#: plugins/externaltools/org.gnome.gedit.plugins.externaltools.gschema.xml.in:5
-#: plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in:15
+#: plugins/externaltools/com.bwhmather.bedit.plugins.externaltools.gschema.xml.in:5
+#: plugins/pythonconsole/com.bwhmather.bedit.plugins.pythonconsole.gschema.xml.in:15
 msgid "Whether to use the system font"
 msgstr "Menentukan memakai fonta sistem"
 
-#: plugins/externaltools/org.gnome.gedit.plugins.externaltools.gschema.xml.in:6
+#: plugins/externaltools/com.bwhmather.bedit.plugins.externaltools.gschema.xml.in:6
 msgid ""
 "If true, the external tools will use the desktop-global standard font if "
 "it’s monospace (and the most similar font it can come up with otherwise)."
@@ -2675,8 +2675,8 @@ msgstr ""
 "diterapkan oleh desktop secara global jika berjenis monospace (dan fonta "
 "lainnya yang sejenis)."
 
-#: plugins/externaltools/org.gnome.gedit.plugins.externaltools.gschema.xml.in:15
-#: plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in:25
+#: plugins/externaltools/com.bwhmather.bedit.plugins.externaltools.gschema.xml.in:15
+#: plugins/pythonconsole/com.bwhmather.bedit.plugins.pythonconsole.gschema.xml.in:25
 msgid "A Pango font name. Examples are “Sans 12” or “Monospace Bold 14”."
 msgstr ""
 "Nama fonta Pango. Sebagai contoh \"Sans 12\" atau \"Monospace Bold 14\"."
@@ -3013,11 +3013,11 @@ msgstr "Tak dapat mengaitkan volume: %s"
 msgid "Error when loading “%s”: No such directory"
 msgstr "Terjadi galat ketika memuat '%s': Direktori itu tak ada"
 
-#: plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in:5
+#: plugins/filebrowser/com.bwhmather.bedit.plugins.filebrowser.gschema.xml.in:5
 msgid "Open With Tree View"
 msgstr "Buka Dengan Tampilan Pohon"
 
-#: plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in:6
+#: plugins/filebrowser/com.bwhmather.bedit.plugins.filebrowser.gschema.xml.in:6
 msgid ""
 "Open the tree view when the file browser plugin gets loaded instead of the "
 "bookmarks view"
@@ -3025,11 +3025,11 @@ msgstr ""
 "Buka tampilan pohon ketika pengaya penjelajah berkas terbaca dari tampilan "
 "penanda"
 
-#: plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in:10
+#: plugins/filebrowser/com.bwhmather.bedit.plugins.filebrowser.gschema.xml.in:10
 msgid "File Browser Root Directory"
 msgstr "Akar Direktori Penjelajah Berkas"
 
-#: plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in:11
+#: plugins/filebrowser/com.bwhmather.bedit.plugins.filebrowser.gschema.xml.in:11
 msgid ""
 "The file browser root directory to use when loading the file browser plugin "
 "and onload/tree_view is TRUE."
@@ -3037,11 +3037,11 @@ msgstr ""
 "Akar direktori penjelajah berkas yang dipergunakan ketika membaca pengaya "
 "penjelajah berkas dan onload/tree_view adalah BENAR."
 
-#: plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in:15
+#: plugins/filebrowser/com.bwhmather.bedit.plugins.filebrowser.gschema.xml.in:15
 msgid "File Browser Virtual Root Directory"
 msgstr "Akar Virtual Direktori Penjelajah Berkas"
 
-#: plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in:16
+#: plugins/filebrowser/com.bwhmather.bedit.plugins.filebrowser.gschema.xml.in:16
 msgid ""
 "The file browser virtual root directory to use when loading the file browser "
 "plugin when onload/tree_view is TRUE. The virtual root must always be below "
@@ -3051,19 +3051,19 @@ msgstr ""
 "pengaya penjelajah berkas ketika onload/tree_view adalah BENAR. Akar virtual "
 "harus selalu di bawah akar sebenarnya."
 
-#: plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in:20
+#: plugins/filebrowser/com.bwhmather.bedit.plugins.filebrowser.gschema.xml.in:20
 msgid "Enable Restore of Remote Locations"
 msgstr "Fungsikan Pemulihan Lokasi Jauh"
 
-#: plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in:21
+#: plugins/filebrowser/com.bwhmather.bedit.plugins.filebrowser.gschema.xml.in:21
 msgid "Sets whether to enable restoring of remote locations."
 msgstr "Tentukan apakah mengaktifkan pengembalian dari lokasi jauh."
 
-#: plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in:25
+#: plugins/filebrowser/com.bwhmather.bedit.plugins.filebrowser.gschema.xml.in:25
 msgid "Set Location to First Document"
 msgstr "Tata Lokasi Ke Dokumen Pertama"
 
-#: plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in:26
+#: plugins/filebrowser/com.bwhmather.bedit.plugins.filebrowser.gschema.xml.in:26
 msgid ""
 "If TRUE the file browser plugin will view the directory of the first opened "
 "document given that the file browser hasn’t been used yet. (Thus this "
@@ -3075,11 +3075,11 @@ msgstr ""
 "berkas. (Hal ini secara umum diterapkan pada pembukaan dokumen dari baris "
 "perintah atau membukanya dari Nautilus dll)"
 
-#: plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in:30
+#: plugins/filebrowser/com.bwhmather.bedit.plugins.filebrowser.gschema.xml.in:30
 msgid "File Browser Filter Mode"
 msgstr "Mode Saringan Penjelah Berkas"
 
-#: plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in:31
+#: plugins/filebrowser/com.bwhmather.bedit.plugins.filebrowser.gschema.xml.in:31
 msgid ""
 "This value determines what files get filtered from the file browser. Valid "
 "values are: none (filter nothing), hide-hidden (filter hidden files) and "
@@ -3089,11 +3089,11 @@ msgstr ""
 "valid adalah: none (tanpa saringan), hide-hidden (saring berkas "
 "tersembunyi), dan hide-binary (saring berkas biner)."
 
-#: plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in:35
+#: plugins/filebrowser/com.bwhmather.bedit.plugins.filebrowser.gschema.xml.in:35
 msgid "File Browser Filter Pattern"
 msgstr "Bentuk Saringan Penjelajah Berkas"
 
-#: plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in:36
+#: plugins/filebrowser/com.bwhmather.bedit.plugins.filebrowser.gschema.xml.in:36
 msgid ""
 "The filter pattern to filter the file browser with. This filter works on top "
 "of the filter_mode."
@@ -3101,11 +3101,11 @@ msgstr ""
 "Pola saringan untuk menyaring penjelajah berkas. Saringan ini bekerja di "
 "atas filter_mode."
 
-#: plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in:40
+#: plugins/filebrowser/com.bwhmather.bedit.plugins.filebrowser.gschema.xml.in:40
 msgid "File Browser Binary Patterns"
 msgstr "Pola Biner Peramban Berkas"
 
-#: plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in:41
+#: plugins/filebrowser/com.bwhmather.bedit.plugins.filebrowser.gschema.xml.in:41
 msgid "The supplemental patterns to use when filtering binary files."
 msgstr "Pola pelengkap untuk dipakai ketika menyaring berkas biner."
 
@@ -3174,23 +3174,23 @@ msgstr "Baris mode"
 msgid "Emacs, Kate and Vim-style modelines support for gedit."
 msgstr "Dukungan baris mode gaya Emacs, Kate, dan Vim untuk gedit."
 
-#: plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in:5
+#: plugins/pythonconsole/com.bwhmather.bedit.plugins.pythonconsole.gschema.xml.in:5
 msgid "Command Color Text"
 msgstr "Warna Teks Perintah"
 
-#: plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in:6
+#: plugins/pythonconsole/com.bwhmather.bedit.plugins.pythonconsole.gschema.xml.in:6
 msgid "The command color text"
 msgstr "Warna teks perintah"
 
-#: plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in:10
+#: plugins/pythonconsole/com.bwhmather.bedit.plugins.pythonconsole.gschema.xml.in:10
 msgid "Error Color Text"
 msgstr "Warna Teks Galat"
 
-#: plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in:11
+#: plugins/pythonconsole/com.bwhmather.bedit.plugins.pythonconsole.gschema.xml.in:11
 msgid "The error color text"
 msgstr "Warna teks galat"
 
-#: plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in:16
+#: plugins/pythonconsole/com.bwhmather.bedit.plugins.pythonconsole.gschema.xml.in:16
 msgid ""
 "If true, the terminal will use the desktop-global standard font if it’s "
 "monospace (and the most similar font it can come up with otherwise)."
@@ -3529,12 +3529,12 @@ msgstr "Pi_lih Bahasa…"
 msgid "_Highlight Misspelled Words"
 msgstr "_Sorot Kata-kata Salah Eja"
 
-#: plugins/spell/org.gnome.gedit.plugins.spell.gschema.xml.in:5
+#: plugins/spell/com.bwhmather.bedit.plugins.spell.gschema.xml.in:5
 #: plugins/spell/resources/ui/gedit-spell-setup-dialog.ui:75
 msgid "Highlight misspelled words"
 msgstr "Sorot Kata-kata Salah Eja"
 
-#: plugins/spell/org.gnome.gedit.plugins.spell.gschema.xml.in:6
+#: plugins/spell/com.bwhmather.bedit.plugins.spell.gschema.xml.in:6
 msgid "Default setting for highlight misspelled words."
 msgstr "Pengaturan bawaan untuk sorot kata-kata salah eja."
 
@@ -3562,11 +3562,11 @@ msgstr "Sisipka_n Tanggal dan Jam…"
 msgid "Available formats"
 msgstr "Bentuk tersedia"
 
-#: plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in:5
+#: plugins/time/com.bwhmather.bedit.plugins.time.gschema.xml.in:5
 msgid "Prompt Type"
 msgstr "Jenis Prompt"
 
-#: plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in:6
+#: plugins/time/com.bwhmather.bedit.plugins.time.gschema.xml.in:6
 msgid ""
 "If the user should be prompted for a format or if the selected or custom "
 "format should be used."
@@ -3574,19 +3574,19 @@ msgstr ""
 "Bila pengguna mesti disapa untuk suatu format atau bila format yang dipilih "
 "atau gubahan mesti dipakai."
 
-#: plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in:10
+#: plugins/time/com.bwhmather.bedit.plugins.time.gschema.xml.in:10
 msgid "Selected Format"
 msgstr "Format yang Dipilih"
 
-#: plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in:11
+#: plugins/time/com.bwhmather.bedit.plugins.time.gschema.xml.in:11
 msgid "The selected format used when inserting the date/time."
 msgstr "Format yang dipakai ketika menyisipkan tanggal/waktu."
 
-#: plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in:15
+#: plugins/time/com.bwhmather.bedit.plugins.time.gschema.xml.in:15
 msgid "Custom Format"
 msgstr "Format Gubahan"
 
-#: plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in:16
+#: plugins/time/com.bwhmather.bedit.plugins.time.gschema.xml.in:16
 msgid "The custom format used when inserting the date/time."
 msgstr "Format ubahan yang dipakai ketika menyisipkan tanggal/waktu."
 

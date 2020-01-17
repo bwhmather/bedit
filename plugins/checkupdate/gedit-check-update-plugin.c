@@ -28,7 +28,7 @@
 #include <gtk/gtk.h>
 #include <stdlib.h>
 
-#define CHECKUPDATE_BASE_SETTINGS	"org.gnome.gedit.plugins.checkupdate"
+#define CHECKUPDATE_BASE_SETTINGS	"com.bwhmather.bedit.plugins.checkupdate"
 #define CHECKUPDATE_KEY_IGNORE_VERSION	"ignore-version"
 
 #define VERSION_PLACE "<a href=\"[0-9]\\.[0-9]+/\">"

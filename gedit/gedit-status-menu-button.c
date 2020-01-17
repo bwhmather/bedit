@@ -103,7 +103,7 @@ gedit_status_menu_button_class_init (GeditStatusMenuButtonClass *klass)
 
 	/* Bind class to template */
 	gtk_widget_class_set_template_from_resource (widget_class,
-	                                             "/org/gnome/gedit/ui/gedit-status-menu-button.ui");
+	                                             "/com/bwhmather/bedit/ui/gedit-status-menu-button.ui");
 	gtk_widget_class_bind_template_child_internal (widget_class, GeditStatusMenuButton, label);
 
 	/* Store the CSS provider in the class private data so it is shared among all instances */

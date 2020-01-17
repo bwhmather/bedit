@@ -25,15 +25,15 @@ msgstr ""
 "X-Project-Style: gnome\n"
 "X-DamnedLies-Scope: partial\n"
 
-#: data/org.gnome.gedit.appdata.xml.in:7
+#: data/com.bwhmather.bedit.appdata.xml.in:7
 msgid "gedit"
 msgstr "gedit"
 
-#: data/org.gnome.gedit.appdata.xml.in:8 data/org.gnome.gedit.desktop.in.in:4
+#: data/com.bwhmather.bedit.appdata.xml.in:8 data/com.bwhmather.bedit.desktop.in.in:4
 msgid "Edit text files"
 msgstr "Redakti tekstdosierojn"
 
-#: data/org.gnome.gedit.appdata.xml.in:10
+#: data/com.bwhmather.bedit.appdata.xml.in:10
 msgid ""
 "gedit is the official text editor of the GNOME desktop environment. While "
 "aiming at simplicity and ease of use, gedit is a powerful general purpose "
@@ -42,7 +42,7 @@ msgstr ""
 "Gedit estas la oficiala tekstredaktilo de la GNOME-labortablo. Gedit celas "
 "simplecon kaj facilecon, tamen estas forta ĝeneralcela tekstredaktilo."
 
-#: data/org.gnome.gedit.appdata.xml.in:15
+#: data/com.bwhmather.bedit.appdata.xml.in:15
 msgid ""
 "Whether you are writing the next bestseller, programming an innovative "
 "application, or simply taking some quick notes, gedit will be a reliable "
@@ -51,7 +51,7 @@ msgstr ""
 "Ĉu vi skribas la venontan furorlibron, aŭ programas elpenseman aplikaĵon, aŭ "
 "simple faras promptajn notojn, Gedit estos fidinda ilo por fari vian taskon."
 
-#: data/org.gnome.gedit.appdata.xml.in:20
+#: data/com.bwhmather.bedit.appdata.xml.in:20
 msgid ""
 "Its flexible plugin system allows you to tailor the application to your "
 "needs and adapt it to your workflow."
@@ -59,31 +59,31 @@ msgstr ""
 "Ĝia fleksa kromprogramsistemo permesas al vi alĝustigi la aplikaĵon laŭ via "
 "deziro por via laborfluo."
 
-#: data/org.gnome.gedit.desktop.in.in:3 gedit/gedit-print-job.c:730
+#: data/com.bwhmather.bedit.desktop.in.in:3 gedit/gedit-print-job.c:730
 msgid "Text Editor"
 msgstr "Tekstredaktilo"
 
 #. TRANSLATORS: Do NOT translate or localize the semicolons!
 #. The list MUST also end with a semicolon!
 #. Search terms to find this application.
-#: data/org.gnome.gedit.desktop.in.in:18
+#: data/com.bwhmather.bedit.desktop.in.in:18
 #| msgid "Text;Editor;Plaintext;Write;"
 msgid "Text;Editor;Plaintext;Write;gedit;"
 msgstr "Teksto;Redaktilo;Plata teksto;Skribi;gedit;"
 
-#: data/org.gnome.gedit.desktop.in.in:22
+#: data/com.bwhmather.bedit.desktop.in.in:22
 msgid "New Window"
 msgstr "Nova fenestro"
 
-#: data/org.gnome.gedit.desktop.in.in:26
+#: data/com.bwhmather.bedit.desktop.in.in:26
 msgid "New Document"
 msgstr "Nova dokumento"
 
-#: data/org.gnome.gedit.gschema.xml.in:36
+#: data/com.bwhmather.bedit.gschema.xml.in:36
 msgid "Use Default Font"
 msgstr "Uzi implicitan tiparon"
 
-#: data/org.gnome.gedit.gschema.xml.in:37
+#: data/com.bwhmather.bedit.gschema.xml.in:37
 msgid ""
 "Whether to use the system’s default fixed width font for editing text "
 "instead of a font specific to gedit. If this option is turned off, then the "
@@ -96,15 +96,15 @@ msgstr ""
 "la sistema tiparo."
 
 #. Translators: This is a GSettings default value. Do NOT change or localize the quotation marks!
-#: data/org.gnome.gedit.gschema.xml.in:41
+#: data/com.bwhmather.bedit.gschema.xml.in:41
 msgid "'Monospace 12'"
 msgstr "'Monospace 12'"
 
-#: data/org.gnome.gedit.gschema.xml.in:42
+#: data/com.bwhmather.bedit.gschema.xml.in:42
 msgid "Editor Font"
 msgstr "Redaktil-tiparo"
 
-#: data/org.gnome.gedit.gschema.xml.in:43
+#: data/com.bwhmather.bedit.gschema.xml.in:43
 msgid ""
 "A custom font that will be used for the editing area. This will only take "
 "effect if the “Use Default Font” option is turned off."
@@ -112,29 +112,29 @@ msgstr ""
 "Propra tiparo uzota en redakta areo. Nur efektiviĝos se la atributo “Uzi "
 "implicitan tiparon” estas malŝaltita."
 
-#: data/org.gnome.gedit.gschema.xml.in:47
+#: data/com.bwhmather.bedit.gschema.xml.in:47
 msgid "Style Scheme"
 msgstr "Stila skemo"
 
-#: data/org.gnome.gedit.gschema.xml.in:48
+#: data/com.bwhmather.bedit.gschema.xml.in:48
 msgid "The ID of a GtkSourceView Style Scheme used to color the text."
 msgstr ""
 "La identigilo de stilo-skemo de GtkSourceView, kiu estas uzita por kolori la "
 "teksto."
 
-#: data/org.gnome.gedit.gschema.xml.in:52
+#: data/com.bwhmather.bedit.gschema.xml.in:52
 msgid "Create Backup Copies"
 msgstr "Krei sekurajn kopiojn"
 
-#: data/org.gnome.gedit.gschema.xml.in:53
+#: data/com.bwhmather.bedit.gschema.xml.in:53
 msgid "Whether gedit should create backup copies for the files it saves."
 msgstr "Ĉu Gedit metu la kursoron en la antaŭan lokon kiam ŝargante dosieron."
 
-#: data/org.gnome.gedit.gschema.xml.in:57
+#: data/com.bwhmather.bedit.gschema.xml.in:57
 msgid "Autosave"
 msgstr "Aŭtomata konservado"
 
-#: data/org.gnome.gedit.gschema.xml.in:58
+#: data/com.bwhmather.bedit.gschema.xml.in:58
 msgid ""
 "Whether gedit should automatically save modified files after a time "
 "interval. You can set the time interval with the “Autosave Interval” option."
@@ -142,11 +142,11 @@ msgstr ""
 "Ĉu gedit aŭtomate konservu modifitajn dosierojn post intertempo. Vi povas "
 "agordi la intertempon per la opcio “Aŭtomata konserva intertempo”."
 
-#: data/org.gnome.gedit.gschema.xml.in:62
+#: data/com.bwhmather.bedit.gschema.xml.in:62
 msgid "Autosave Interval"
 msgstr "Konservi intertempa aŭtomate"
 
-#: data/org.gnome.gedit.gschema.xml.in:63
+#: data/com.bwhmather.bedit.gschema.xml.in:63
 msgid ""
 "Number of minutes after which gedit will automatically save modified files. "
 "This will only take effect if the “Autosave” option is turned on."
@@ -154,11 +154,11 @@ msgstr ""
 "Nombro da minutoj, post kiuj Gedit aŭtomate konservas modifitajn dosierojn. "
 "Ĉi tio efikas nur, se “aŭtokonservado” estas ŝaltita."
 
-#: data/org.gnome.gedit.gschema.xml.in:67
+#: data/com.bwhmather.bedit.gschema.xml.in:67
 msgid "Maximum Number of Undo Actions"
 msgstr "Maksimuma nombro da malfaroj"
 
-#: data/org.gnome.gedit.gschema.xml.in:68
+#: data/com.bwhmather.bedit.gschema.xml.in:68
 msgid ""
 "Maximum number of actions that gedit will be able to undo or redo. Use “-1” "
 "for unlimited number of actions."
@@ -166,11 +166,11 @@ msgstr ""
 "Maksimuma nombro da agoj malfareblaj aŭ refareblaj de Gedit. Uzu “-1” por "
 "senlima nombro de agoj."
 
-#: data/org.gnome.gedit.gschema.xml.in:77
+#: data/com.bwhmather.bedit.gschema.xml.in:77
 msgid "Line Wrapping Mode"
 msgstr "Linio-ĉirkaŭflua reĝimo"
 
-#: data/org.gnome.gedit.gschema.xml.in:78
+#: data/com.bwhmather.bedit.gschema.xml.in:78
 msgid ""
 "Specifies how to wrap long lines in the editing area. Use “none” for no "
 "wrapping, “word” for wrapping at word boundaries, and “char” for wrapping at "
@@ -182,85 +182,85 @@ msgstr ""
 "“char” (signo) por fluigi ĉe signofinoj. Notu ke la valoroj estas "
 "usklecodistingaj, do certigu ke ili aspektas precize kiel mencitaj ĉi tie."
 
-#: data/org.gnome.gedit.gschema.xml.in:91
+#: data/com.bwhmather.bedit.gschema.xml.in:91
 msgid "Tab Size"
 msgstr "Tabgrando"
 
-#: data/org.gnome.gedit.gschema.xml.in:92
+#: data/com.bwhmather.bedit.gschema.xml.in:92
 msgid ""
 "Specifies the number of spaces that should be displayed instead of Tab "
 "characters."
 msgstr "Tio specifas la nombron da spacetoj vidigotaj anstataŭ tab-signoj."
 
-#: data/org.gnome.gedit.gschema.xml.in:96
+#: data/com.bwhmather.bedit.gschema.xml.in:96
 msgid "Insert spaces"
 msgstr "Enmeti spacetojn"
 
-#: data/org.gnome.gedit.gschema.xml.in:97
+#: data/com.bwhmather.bedit.gschema.xml.in:97
 msgid "Whether gedit should insert spaces instead of tabs."
 msgstr "Ĉu Gedit enmetu spacetojn anstataŭ tabojn."
 
-#: data/org.gnome.gedit.gschema.xml.in:101
+#: data/com.bwhmather.bedit.gschema.xml.in:101
 msgid "Automatic indent"
 msgstr "Aŭtomata deŝovo"
 
-#: data/org.gnome.gedit.gschema.xml.in:102
+#: data/com.bwhmather.bedit.gschema.xml.in:102
 msgid "Whether gedit should enable automatic indentation."
 msgstr "Ĉu Gedit ŝaltu aŭtomatan deŝovon."
 
-#: data/org.gnome.gedit.gschema.xml.in:106
+#: data/com.bwhmather.bedit.gschema.xml.in:106
 msgid "Display Line Numbers"
 msgstr "Vidigi lininumerojn"
 
-#: data/org.gnome.gedit.gschema.xml.in:107
+#: data/com.bwhmather.bedit.gschema.xml.in:107
 msgid "Whether gedit should display line numbers in the editing area."
 msgstr "Ĉu Gedit montru lininumerojn en la redakta areo."
 
-#: data/org.gnome.gedit.gschema.xml.in:111
+#: data/com.bwhmather.bedit.gschema.xml.in:111
 msgid "Highlight Current Line"
 msgstr "Emfazi la aktualan linion"
 
-#: data/org.gnome.gedit.gschema.xml.in:112
+#: data/com.bwhmather.bedit.gschema.xml.in:112
 msgid "Whether gedit should highlight the current line."
 msgstr "Ĉu Gedit emfazu la aktualan linion."
 
-#: data/org.gnome.gedit.gschema.xml.in:116
+#: data/com.bwhmather.bedit.gschema.xml.in:116
 msgid "Highlight Matching Brackets"
 msgstr "Emfazi parajn krampojn"
 
-#: data/org.gnome.gedit.gschema.xml.in:117
+#: data/com.bwhmather.bedit.gschema.xml.in:117
 msgid "Whether gedit should highlight matching brackets."
 msgstr "Ĉu Gedit emfazu parajn krampojn."
 
-#: data/org.gnome.gedit.gschema.xml.in:121
+#: data/com.bwhmather.bedit.gschema.xml.in:121
 msgid "Display Right Margin"
 msgstr "Vidigi dekstran marĝenon"
 
-#: data/org.gnome.gedit.gschema.xml.in:122
+#: data/com.bwhmather.bedit.gschema.xml.in:122
 msgid "Whether gedit should display the right margin in the editing area."
 msgstr "Ĉu Gedit montru la dekstran marĝenon en la redakta areo."
 
-#: data/org.gnome.gedit.gschema.xml.in:126
+#: data/com.bwhmather.bedit.gschema.xml.in:126
 msgid "Right Margin Position"
 msgstr "Pozicio de dekstra marĝeno"
 
-#: data/org.gnome.gedit.gschema.xml.in:127
+#: data/com.bwhmather.bedit.gschema.xml.in:127
 msgid "Specifies the position of the right margin."
 msgstr "Specifas la lokon de la desktra marĝeno."
 
-#: data/org.gnome.gedit.gschema.xml.in:131
+#: data/com.bwhmather.bedit.gschema.xml.in:131
 msgid "Display Overview Map"
 msgstr "Montri superrigardon"
 
-#: data/org.gnome.gedit.gschema.xml.in:132
+#: data/com.bwhmather.bedit.gschema.xml.in:132
 msgid "Whether gedit should display the overview map for the document."
 msgstr "Ĉu Gedit montru la superrigardan mapon por la dokumento."
 
-#: data/org.gnome.gedit.gschema.xml.in:147
+#: data/com.bwhmather.bedit.gschema.xml.in:147
 msgid "Smart Home End"
 msgstr "Inteligenta hejmofino"
 
-#: data/org.gnome.gedit.gschema.xml.in:148
+#: data/com.bwhmather.bedit.gschema.xml.in:148
 msgid ""
 "Specifies how the cursor moves when the HOME and END keys are pressed. Use "
 "“disabled” to always move at the start/end of the line, “after” to move to "
@@ -279,51 +279,51 @@ msgstr ""
 "por moviĝi ĉiam al la komenco/fino de la teksto anstataŭ al la komenco/fino "
 "de la linio."
 
-#: data/org.gnome.gedit.gschema.xml.in:152
+#: data/com.bwhmather.bedit.gschema.xml.in:152
 msgid "Restore Previous Cursor Position"
 msgstr "Restaŭri antaŭan pozicion de la kursoro"
 
-#: data/org.gnome.gedit.gschema.xml.in:153
+#: data/com.bwhmather.bedit.gschema.xml.in:153
 msgid ""
 "Whether gedit should restore the previous cursor position when a file is "
 "loaded."
 msgstr "Ĉu Gedit metu la kursoron en la antaŭan lokon kiam ŝargante dosieron."
 
-#: data/org.gnome.gedit.gschema.xml.in:157
+#: data/com.bwhmather.bedit.gschema.xml.in:157
 msgid "Enable Syntax Highlighting"
 msgstr "Enŝalti sintaksan emfazon"
 
-#: data/org.gnome.gedit.gschema.xml.in:158
+#: data/com.bwhmather.bedit.gschema.xml.in:158
 msgid "Whether gedit should enable syntax highlighting."
 msgstr "Ĉu Gedit ŝaltu sintaksan emfazon."
 
-#: data/org.gnome.gedit.gschema.xml.in:162
+#: data/com.bwhmather.bedit.gschema.xml.in:162
 msgid "Enable Search Highlighting"
 msgstr "Enŝalti serĉan emfazon"
 
-#: data/org.gnome.gedit.gschema.xml.in:163
+#: data/com.bwhmather.bedit.gschema.xml.in:163
 msgid ""
 "Whether gedit should highlight all the occurrences of the searched text."
 msgstr "Ĉu Gedit emfazu ĉiujn okazojn de la serĉata teksto."
 
-#: data/org.gnome.gedit.gschema.xml.in:168
+#: data/com.bwhmather.bedit.gschema.xml.in:168
 msgid ""
 "Whether gedit will ensure that documents always end with a trailing newline."
 msgstr "Ĉu Gedit certigu ke dokumentoj ĉiam finas kun vosta linifino."
 
-#: data/org.gnome.gedit.gschema.xml.in:174
+#: data/com.bwhmather.bedit.gschema.xml.in:174
 msgid "Toolbar is Visible"
 msgstr "Ilobreto estas videbla"
 
-#: data/org.gnome.gedit.gschema.xml.in:175
+#: data/com.bwhmather.bedit.gschema.xml.in:175
 msgid "Whether the toolbar should be visible in editing windows."
 msgstr "Ĉu la ilobreto estu videbla en redaktaj fenestroj."
 
-#: data/org.gnome.gedit.gschema.xml.in:179
+#: data/com.bwhmather.bedit.gschema.xml.in:179
 msgid "Notebook Show Tabs Mode"
 msgstr "Montri-langetojn reĝimo de notlibro"
 
-#: data/org.gnome.gedit.gschema.xml.in:180
+#: data/com.bwhmather.bedit.gschema.xml.in:180
 msgid ""
 "Specifies when to show the notebook tabs. Use “never” to never show the "
 "tabs, “always” to always show the tabs, and “auto” to show the tabs only "
@@ -336,29 +336,29 @@ msgstr ""
 "Notu ke la valoroj estas usklecodistingaj, do certigu ke ili aspektas "
 "precize kiel menciitaj ĉi tie."
 
-#: data/org.gnome.gedit.gschema.xml.in:184
+#: data/com.bwhmather.bedit.gschema.xml.in:184
 msgid "Status Bar is Visible"
 msgstr "Statobreto estas videbla"
 
-#: data/org.gnome.gedit.gschema.xml.in:185
+#: data/com.bwhmather.bedit.gschema.xml.in:185
 msgid ""
 "Whether the status bar at the bottom of editing windows should be visible."
 msgstr "Ĉu la statobreto ĉe la malsupro de redaktaj fenestroj estu videbla."
 
-#: data/org.gnome.gedit.gschema.xml.in:189
+#: data/com.bwhmather.bedit.gschema.xml.in:189
 msgid "Side panel is Visible"
 msgstr "Flanka panelo videblas"
 
-#: data/org.gnome.gedit.gschema.xml.in:190
+#: data/com.bwhmather.bedit.gschema.xml.in:190
 msgid ""
 "Whether the side panel at the left of editing windows should be visible."
 msgstr "Ĉu montri la flankan panelon maldekstre de la redakta fenestro."
 
-#: data/org.gnome.gedit.gschema.xml.in:197
+#: data/com.bwhmather.bedit.gschema.xml.in:197
 msgid "Maximum Recent Files"
 msgstr "Maksimuma de lastaj dosieroj"
 
-#: data/org.gnome.gedit.gschema.xml.in:198
+#: data/com.bwhmather.bedit.gschema.xml.in:198
 msgid ""
 "Specifies the maximum number of recently opened files that will be displayed "
 "in the “Recent Files” submenu."
@@ -366,27 +366,27 @@ msgstr ""
 "Specifas la maksimuman nombron da laste malfermitaj dosieroj kiu estos "
 "montri en la submenuo de “Lastaj dosieroj”."
 
-#: data/org.gnome.gedit.gschema.xml.in:204
+#: data/com.bwhmather.bedit.gschema.xml.in:204
 msgid "Print Syntax Highlighting"
 msgstr "Presi sintaksan emfazon"
 
-#: data/org.gnome.gedit.gschema.xml.in:205
+#: data/com.bwhmather.bedit.gschema.xml.in:205
 msgid "Whether gedit should print syntax highlighting when printing documents."
 msgstr "Ĉu Gedit presu sintaksan emfazon dum dokumentpresado."
 
-#: data/org.gnome.gedit.gschema.xml.in:209
+#: data/com.bwhmather.bedit.gschema.xml.in:209
 msgid "Print Header"
 msgstr "Presi paĝokapon"
 
-#: data/org.gnome.gedit.gschema.xml.in:210
+#: data/com.bwhmather.bedit.gschema.xml.in:210
 msgid "Whether gedit should include a document header when printing documents."
 msgstr "Ĉu Gedit enmetu dokumentan paĝokapon kiam presante dokumentojn."
 
-#: data/org.gnome.gedit.gschema.xml.in:219
+#: data/com.bwhmather.bedit.gschema.xml.in:219
 msgid "Printing Line Wrapping Mode"
 msgstr "Ĉirkaŭflua reĝimo de presa linio"
 
-#: data/org.gnome.gedit.gschema.xml.in:220
+#: data/com.bwhmather.bedit.gschema.xml.in:220
 msgid ""
 "Specifies how to wrap long lines for printing. Use “none” for no wrapping, "
 "“word” for wrapping at word boundaries, and “char” for wrapping at "
@@ -399,11 +399,11 @@ msgstr ""
 "estas usklecodistingaj, do certigu ke ili aspektas precize kiel menciitaj ĉi "
 "tie."
 
-#: data/org.gnome.gedit.gschema.xml.in:224
+#: data/com.bwhmather.bedit.gschema.xml.in:224
 msgid "Print Line Numbers"
 msgstr "Presi lininumerojn"
 
-#: data/org.gnome.gedit.gschema.xml.in:225
+#: data/com.bwhmather.bedit.gschema.xml.in:225
 msgid ""
 "If this value is 0, then no line numbers will be inserted when printing a "
 "document. Otherwise, gedit will print line numbers every such number of "
@@ -413,30 +413,30 @@ msgstr ""
 "dokumento. Se ne, Gedit presos liniajn numerojn ĉiu kelkaj linioj."
 
 #. Translators: This is a GSettings default value. Do NOT change or localize the quotation marks!
-#: data/org.gnome.gedit.gschema.xml.in:229
+#: data/com.bwhmather.bedit.gschema.xml.in:229
 msgid "'Monospace 9'"
 msgstr "'Monospace 9'"
 
-#: data/org.gnome.gedit.gschema.xml.in:230
+#: data/com.bwhmather.bedit.gschema.xml.in:230
 msgid "Body Font for Printing"
 msgstr "Korpa tiparo por presado"
 
-#: data/org.gnome.gedit.gschema.xml.in:231
+#: data/com.bwhmather.bedit.gschema.xml.in:231
 msgid ""
 "Specifies the font to use for a document’s body when printing documents."
 msgstr ""
 "Specifas la tiparon uzi por la korpo de la dokumento presante dokumentojn."
 
 #. Translators: This is a GSettings default value. Do NOT change or localize the quotation marks!
-#: data/org.gnome.gedit.gschema.xml.in:235
+#: data/com.bwhmather.bedit.gschema.xml.in:235
 msgid "'Sans 11'"
 msgstr "'Sans 11'"
 
-#: data/org.gnome.gedit.gschema.xml.in:236
+#: data/com.bwhmather.bedit.gschema.xml.in:236
 msgid "Header Font for Printing"
 msgstr "Paĝokapa tiparo por presado"
 
-#: data/org.gnome.gedit.gschema.xml.in:237
+#: data/com.bwhmather.bedit.gschema.xml.in:237
 msgid ""
 "Specifies the font to use for page headers when printing a document. This "
 "will only take effect if the “Print Header” option is turned on."
@@ -445,15 +445,15 @@ msgstr ""
 "opcio “Presi paĝokapon” estas ŝaltita."
 
 #. Translators: This is a GSettings default value. Do NOT change or localize the quotation marks!
-#: data/org.gnome.gedit.gschema.xml.in:241
+#: data/com.bwhmather.bedit.gschema.xml.in:241
 msgid "'Sans 8'"
 msgstr "'Sans 8'"
 
-#: data/org.gnome.gedit.gschema.xml.in:242
+#: data/com.bwhmather.bedit.gschema.xml.in:242
 msgid "Line Number Font for Printing"
 msgstr "Tiparo de lininumeroj dum presado"
 
-#: data/org.gnome.gedit.gschema.xml.in:243
+#: data/com.bwhmather.bedit.gschema.xml.in:243
 msgid ""
 "Specifies the font to use for line numbers when printing. This will only "
 "take effect if the “Print Line Numbers” option is non-zero."
@@ -461,34 +461,34 @@ msgstr ""
 "Specifas la tiparon uzi por lininumeroj dum presado. Tio efikos nur se la "
 "atributo “Presi lininumerojn” ne estas nulo."
 
-#: data/org.gnome.gedit.gschema.xml.in:247
+#: data/com.bwhmather.bedit.gschema.xml.in:247
 #| msgid "Margin Right"
 msgid "Margin Left"
 msgstr "Maldekstra marĝeno"
 
-#: data/org.gnome.gedit.gschema.xml.in:252
+#: data/com.bwhmather.bedit.gschema.xml.in:252
 #| msgid "Margin Right"
 msgid "Margin Top"
 msgstr "Supra marĝeno"
 
-#: data/org.gnome.gedit.gschema.xml.in:257
+#: data/com.bwhmather.bedit.gschema.xml.in:257
 msgid "Margin Right"
 msgstr "Dekstra marĝeno"
 
-#: data/org.gnome.gedit.gschema.xml.in:262
+#: data/com.bwhmather.bedit.gschema.xml.in:262
 #| msgid "Margin Right"
 msgid "Margin Bottom"
 msgstr "Suba marĝeno"
 
-#: data/org.gnome.gedit.gschema.xml.in:269
+#: data/com.bwhmather.bedit.gschema.xml.in:269
 msgid "Candidate Encodings"
 msgstr "Kandidataj kodoprezentoj"
 
-#: data/org.gnome.gedit.gschema.xml.in:316
+#: data/com.bwhmather.bedit.gschema.xml.in:316
 msgid "Active plugins"
 msgstr "Aktivaj kromprogramoj"
 
-#: data/org.gnome.gedit.gschema.xml.in:317
+#: data/com.bwhmather.bedit.gschema.xml.in:317
 msgid ""
 "List of active plugins. It contains the “Location” of the active plugins. "
 "See the .gedit-plugin file for obtaining the “Location” of a given plugin."
@@ -1973,8 +1973,8 @@ msgid "Editor"
 msgstr "Redaktilo"
 
 #: gedit/resources/ui/gedit-preferences-dialog.ui:529
-#: plugins/externaltools/org.gnome.gedit.plugins.externaltools.gschema.xml.in:14
-#: plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in:24
+#: plugins/externaltools/com.bwhmather.bedit.plugins.externaltools.gschema.xml.in:14
+#: plugins/pythonconsole/com.bwhmather.bedit.plugins.pythonconsole.gschema.xml.in:24
 msgid "Font"
 msgstr "Tiparo"
 
@@ -2547,12 +2547,12 @@ msgstr ""
 "Vi povas elŝuti la novan version de Gedit per klako de la elŝutbutono aŭ "
 "ignori tiu versio kaj atendi novan"
 
-#: plugins/checkupdate/org.gnome.gedit.plugins.checkupdate.gschema.xml.in:5
+#: plugins/checkupdate/com.bwhmather.bedit.plugins.checkupdate.gschema.xml.in:5
 msgid "Version to Ignore"
 msgstr "Ignorata versio"
 
 #. This is releated to the next gedit version to be released
-#: plugins/checkupdate/org.gnome.gedit.plugins.checkupdate.gschema.xml.in:7
+#: plugins/checkupdate/com.bwhmather.bedit.plugins.checkupdate.gschema.xml.in:7
 msgid "Version to ignore until a newer version is released."
 msgstr "Ignorataj versioj ĝis pli nova versio eldoniĝas."
 
@@ -2648,13 +2648,13 @@ msgstr "Eksteraj iloj"
 msgid "Execute external commands and shell scripts."
 msgstr "Plenumi eksterajn komandojn kaj ŝelajn skriptojn."
 
-#: plugins/externaltools/org.gnome.gedit.plugins.externaltools.gschema.xml.in:5
-#: plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in:15
+#: plugins/externaltools/com.bwhmather.bedit.plugins.externaltools.gschema.xml.in:5
+#: plugins/pythonconsole/com.bwhmather.bedit.plugins.pythonconsole.gschema.xml.in:15
 msgid "Whether to use the system font"
 msgstr "Ĉu uzi sistemtiparon"
 
-#: plugins/externaltools/org.gnome.gedit.plugins.externaltools.gschema.xml.in:15
-#: plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in:25
+#: plugins/externaltools/com.bwhmather.bedit.plugins.externaltools.gschema.xml.in:15
+#: plugins/pythonconsole/com.bwhmather.bedit.plugins.pythonconsole.gschema.xml.in:25
 msgid "A Pango font name. Examples are “Sans 12” or “Monospace Bold 14”."
 msgstr "Pango-tiparnomo. Ekzemploj estas “Sans 12” aŭ “Monospace Bold 14”."
 
@@ -2990,11 +2990,11 @@ msgstr "Ne eblis munti datumportilon: %s"
 msgid "Error when loading “%s”: No such directory"
 msgstr "Eraro okazis ŝargante “%s”: Neniu tia dosierujo"
 
-#: plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in:5
+#: plugins/filebrowser/com.bwhmather.bedit.plugins.filebrowser.gschema.xml.in:5
 msgid "Open With Tree View"
 msgstr "Malfermi per arba rigardo"
 
-#: plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in:6
+#: plugins/filebrowser/com.bwhmather.bedit.plugins.filebrowser.gschema.xml.in:6
 msgid ""
 "Open the tree view when the file browser plugin gets loaded instead of the "
 "bookmarks view"
@@ -3002,11 +3002,11 @@ msgstr ""
 "Malfermi la arban rigardon kiam la dosierfoliumila kromprogramo estas "
 "ŝargata anstataŭ ol la legosignan rigardon"
 
-#: plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in:10
+#: plugins/filebrowser/com.bwhmather.bedit.plugins.filebrowser.gschema.xml.in:10
 msgid "File Browser Root Directory"
 msgstr "Dosierfoliumila baza dosierujo"
 
-#: plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in:11
+#: plugins/filebrowser/com.bwhmather.bedit.plugins.filebrowser.gschema.xml.in:11
 msgid ""
 "The file browser root directory to use when loading the file browser plugin "
 "and onload/tree_view is TRUE."
@@ -3014,11 +3014,11 @@ msgstr ""
 "La dosierfoliumila baza dosierujo uzata por ŝargi la dosierfoliumilan "
 "kromprogramon kaj onload/tree_view estas VERA."
 
-#: plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in:15
+#: plugins/filebrowser/com.bwhmather.bedit.plugins.filebrowser.gschema.xml.in:15
 msgid "File Browser Virtual Root Directory"
 msgstr "Dosierfoliumila virtuala baza dosierujo"
 
-#: plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in:16
+#: plugins/filebrowser/com.bwhmather.bedit.plugins.filebrowser.gschema.xml.in:16
 msgid ""
 "The file browser virtual root directory to use when loading the file browser "
 "plugin when onload/tree_view is TRUE. The virtual root must always be below "
@@ -3028,19 +3028,19 @@ msgstr ""
 "dosierfoliumilan kromprogramon kiam onload/tree_view estas VERA. La virtuala "
 "radikoĉiam estu sube de la efektiva tutsistema radikdosierujo."
 
-#: plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in:20
+#: plugins/filebrowser/com.bwhmather.bedit.plugins.filebrowser.gschema.xml.in:20
 msgid "Enable Restore of Remote Locations"
 msgstr "Enŝalti restarigon de foraj lokoj"
 
-#: plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in:21
+#: plugins/filebrowser/com.bwhmather.bedit.plugins.filebrowser.gschema.xml.in:21
 msgid "Sets whether to enable restoring of remote locations."
 msgstr "Agordas ĉu ŝalti restarigon de foraj lokoj."
 
-#: plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in:25
+#: plugins/filebrowser/com.bwhmather.bedit.plugins.filebrowser.gschema.xml.in:25
 msgid "Set Location to First Document"
 msgstr "Agordi lokon al unua dokumento"
 
-#: plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in:26
+#: plugins/filebrowser/com.bwhmather.bedit.plugins.filebrowser.gschema.xml.in:26
 msgid ""
 "If TRUE the file browser plugin will view the directory of the first opened "
 "document given that the file browser hasn’t been used yet. (Thus this "
@@ -3052,11 +3052,11 @@ msgstr ""
 "(Do ĉi tio ĝenerale aplikas al la malfermado de dokumento de la komandlinio "
 "aŭ la malfermado de ĝi per Naŭtilo ktp.)"
 
-#: plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in:30
+#: plugins/filebrowser/com.bwhmather.bedit.plugins.filebrowser.gschema.xml.in:30
 msgid "File Browser Filter Mode"
 msgstr "Dosierfoliumila filtra reĝimo"
 
-#: plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in:31
+#: plugins/filebrowser/com.bwhmather.bedit.plugins.filebrowser.gschema.xml.in:31
 msgid ""
 "This value determines what files get filtered from the file browser. Valid "
 "values are: none (filter nothing), hide-hidden (filter hidden files) and "
@@ -3067,11 +3067,11 @@ msgstr ""
 "kaŝitajn dosierojn) kaj hidden-binary (filtri ambaŭ kaŝitajn kaj duumajn "
 "dosierojn)."
 
-#: plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in:35
+#: plugins/filebrowser/com.bwhmather.bedit.plugins.filebrowser.gschema.xml.in:35
 msgid "File Browser Filter Pattern"
 msgstr "Dosierfoliumila filtra ŝablono"
 
-#: plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in:36
+#: plugins/filebrowser/com.bwhmather.bedit.plugins.filebrowser.gschema.xml.in:36
 msgid ""
 "The filter pattern to filter the file browser with. This filter works on top "
 "of the filter_mode."
@@ -3079,7 +3079,7 @@ msgstr ""
 "La filtra ŝablono per kiu la dosierfoliumilo filtras. Ĉi tiu filtro funkcias "
 "supre de la filtra _reĝimo."
 
-#: plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in:40
+#: plugins/filebrowser/com.bwhmather.bedit.plugins.filebrowser.gschema.xml.in:40
 msgid "File Browser Binary Patterns"
 msgstr "Dosierfoliumilaj duumaj ŝablonoj"
 
@@ -3148,19 +3148,19 @@ msgstr "Modlinioj"
 msgid "Emacs, Kate and Vim-style modelines support for gedit."
 msgstr "Emacs, Kate kaj Vim-stila liniaj de reĝimo estas subtenita por Gedit."
 
-#: plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in:5
+#: plugins/pythonconsole/com.bwhmather.bedit.plugins.pythonconsole.gschema.xml.in:5
 msgid "Command Color Text"
 msgstr "Komanda tekstkoloro"
 
-#: plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in:6
+#: plugins/pythonconsole/com.bwhmather.bedit.plugins.pythonconsole.gschema.xml.in:6
 msgid "The command color text"
 msgstr "Komanda tekstkoloro"
 
-#: plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in:10
+#: plugins/pythonconsole/com.bwhmather.bedit.plugins.pythonconsole.gschema.xml.in:10
 msgid "Error Color Text"
 msgstr "Eraro kolor-teksto"
 
-#: plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in:11
+#: plugins/pythonconsole/com.bwhmather.bedit.plugins.pythonconsole.gschema.xml.in:11
 msgid "The error color text"
 msgstr "Erarkoloro"
 
@@ -3500,13 +3500,13 @@ msgstr "Agordi _lingvon…"
 msgid "_Highlight Misspelled Words"
 msgstr "_Emfazi misliterumitajn vortojn"
 
-#: plugins/spell/org.gnome.gedit.plugins.spell.gschema.xml.in:5
+#: plugins/spell/com.bwhmather.bedit.plugins.spell.gschema.xml.in:5
 #: plugins/spell/resources/ui/gedit-spell-setup-dialog.ui:75
 #| msgid "_Highlight Misspelled Words"
 msgid "Highlight misspelled words"
 msgstr "Emfazi misliterumitajn vortojn"
 
-#: plugins/spell/org.gnome.gedit.plugins.spell.gschema.xml.in:6
+#: plugins/spell/com.bwhmather.bedit.plugins.spell.gschema.xml.in:6
 #, fuzzy
 #| msgid "_Highlight Misspelled Words"
 msgid "Default setting for highlight misspelled words."
@@ -3539,11 +3539,11 @@ msgstr "E_nmeti daton kaj horon…"
 msgid "Available formats"
 msgstr "Disponeblaj formoj"
 
-#: plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in:5
+#: plugins/time/com.bwhmather.bedit.plugins.time.gschema.xml.in:5
 msgid "Prompt Type"
 msgstr "Invittipo"
 
-#: plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in:6
+#: plugins/time/com.bwhmather.bedit.plugins.time.gschema.xml.in:6
 msgid ""
 "If the user should be prompted for a format or if the selected or custom "
 "format should be used."
@@ -3551,19 +3551,19 @@ msgstr ""
 "Se la uzanto estu petita elekti formon aŭ ĉu la elektita aŭ propra formon "
 "estu uzota."
 
-#: plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in:10
+#: plugins/time/com.bwhmather.bedit.plugins.time.gschema.xml.in:10
 msgid "Selected Format"
 msgstr "Elektita formo"
 
-#: plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in:11
+#: plugins/time/com.bwhmather.bedit.plugins.time.gschema.xml.in:11
 msgid "The selected format used when inserting the date/time."
 msgstr "La elektita formo uzata dum enmeto de dato/horo."
 
-#: plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in:15
+#: plugins/time/com.bwhmather.bedit.plugins.time.gschema.xml.in:15
 msgid "Custom Format"
 msgstr "Propra formo"
 
-#: plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in:16
+#: plugins/time/com.bwhmather.bedit.plugins.time.gschema.xml.in:16
 msgid "The custom format used when inserting the date/time."
 msgstr "La propra formo uzita dum enmeto de dato/horo."
 
@@ -3617,8 +3617,8 @@ msgstr "Enmeti Daton/Horon"
 msgid "Inserts current date and time at the cursor position."
 msgstr "Enmetas aktualan daton kaj horon ĉe kursora pozicio."
 
-#~ msgid "org.gnome.gedit"
-#~ msgstr "org.gnome.gedit"
+#~ msgid "com.bwhmather.bedit"
+#~ msgstr "com.bwhmather.bedit"
 
 #~ msgid "Please check your installation."
 #~ msgstr "Bonvolu kontroli vian instalaĵon."

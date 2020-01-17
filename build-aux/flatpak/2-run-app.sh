@@ -1,3 +1,3 @@
 #!/bin/sh
 
-flatpak run org.gnome.gedit
+flatpak run com.bwhmather.bedit

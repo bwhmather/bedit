@@ -24,15 +24,15 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: Lokalize 19.11.80\n"
 
-#: data/org.gnome.gedit.appdata.xml.in:7
+#: data/com.bwhmather.bedit.appdata.xml.in:7
 msgid "gedit"
 msgstr "gedit"
 
-#: data/org.gnome.gedit.appdata.xml.in:8 data/org.gnome.gedit.desktop.in.in:4
+#: data/com.bwhmather.bedit.appdata.xml.in:8 data/com.bwhmather.bedit.desktop.in.in:4
 msgid "Edit text files"
 msgstr "編輯文字檔"
 
-#: data/org.gnome.gedit.appdata.xml.in:10
+#: data/com.bwhmather.bedit.appdata.xml.in:10
 msgid ""
 "gedit is the official text editor of the GNOME desktop environment. While "
 "aiming at simplicity and ease of use, gedit is a powerful general purpose "
@@ -41,7 +41,7 @@ msgstr ""
 "gedit 是 GNOME 桌面環境的官方文字編輯器。著重於簡單、易用，gedit 是一個功能強"
 "大的多用途文字編輯器。"
 
-#: data/org.gnome.gedit.appdata.xml.in:15
+#: data/com.bwhmather.bedit.appdata.xml.in:15
 msgid ""
 "Whether you are writing the next bestseller, programming an innovative "
 "application, or simply taking some quick notes, gedit will be a reliable "
@@ -50,37 +50,37 @@ msgstr ""
 "無論您是在寫下一本暢銷書、設計創新的應用程式、單純做個快速筆記等，gedit 都是"
 "能完成您工作的可靠工具。"
 
-#: data/org.gnome.gedit.appdata.xml.in:20
+#: data/com.bwhmather.bedit.appdata.xml.in:20
 msgid ""
 "Its flexible plugin system allows you to tailor the application to your "
 "needs and adapt it to your workflow."
 msgstr "它多樣化的外掛程式系統允許您自訂應用程式以符合您的需求與工作流程。"
 
-#: data/org.gnome.gedit.desktop.in.in:3 gedit/gedit-print-job.c:730
+#: data/com.bwhmather.bedit.desktop.in.in:3 gedit/gedit-print-job.c:730
 msgid "Text Editor"
 msgstr "文字編輯器"
 
 #. TRANSLATORS: Do NOT translate or localize the semicolons!
 #. The list MUST also end with a semicolon!
 #. Search terms to find this application.
-#: data/org.gnome.gedit.desktop.in.in:18
+#: data/com.bwhmather.bedit.desktop.in.in:18
 #| msgid "Text;Editor;Plaintext;Write;"
 msgid "Text;Editor;Plaintext;Write;gedit;"
 msgstr "Text;Editor;Plaintext;Write;gedit;文字;編輯器;純文字;撰寫;編寫;"
 
-#: data/org.gnome.gedit.desktop.in.in:22
+#: data/com.bwhmather.bedit.desktop.in.in:22
 msgid "New Window"
 msgstr "新增視窗"
 
-#: data/org.gnome.gedit.desktop.in.in:26
+#: data/com.bwhmather.bedit.desktop.in.in:26
 msgid "New Document"
 msgstr "新增文件"
 
-#: data/org.gnome.gedit.gschema.xml.in:36
+#: data/com.bwhmather.bedit.gschema.xml.in:36
 msgid "Use Default Font"
 msgstr "使用預設字型"
 
-#: data/org.gnome.gedit.gschema.xml.in:37
+#: data/com.bwhmather.bedit.gschema.xml.in:37
 msgid ""
 "Whether to use the system’s default fixed width font for editing text "
 "instead of a font specific to gedit. If this option is turned off, then the "
@@ -91,41 +91,41 @@ msgstr ""
 "型。如果關閉本選項，則會使用「編輯器字型」選項中的字型，而不用系統字型。"
 
 #. Translators: This is a GSettings default value. Do NOT change or localize the quotation marks!
-#: data/org.gnome.gedit.gschema.xml.in:41
+#: data/com.bwhmather.bedit.gschema.xml.in:41
 msgid "'Monospace 12'"
 msgstr "'Monospace 12'"
 
-#: data/org.gnome.gedit.gschema.xml.in:42
+#: data/com.bwhmather.bedit.gschema.xml.in:42
 msgid "Editor Font"
 msgstr "編輯器字型"
 
-#: data/org.gnome.gedit.gschema.xml.in:43
+#: data/com.bwhmather.bedit.gschema.xml.in:43
 msgid ""
 "A custom font that will be used for the editing area. This will only take "
 "effect if the “Use Default Font” option is turned off."
 msgstr "在編輯區域中使用的自訂字型。本選項只有在關閉「使用預設字型」選項後才會生效。"
 
-#: data/org.gnome.gedit.gschema.xml.in:47
+#: data/com.bwhmather.bedit.gschema.xml.in:47
 msgid "Style Scheme"
 msgstr "樣式架構"
 
-#: data/org.gnome.gedit.gschema.xml.in:48
+#: data/com.bwhmather.bedit.gschema.xml.in:48
 msgid "The ID of a GtkSourceView Style Scheme used to color the text."
 msgstr "用於文字顏色的 GtkSourceView 樣式架構 ID。"
 
-#: data/org.gnome.gedit.gschema.xml.in:52
+#: data/com.bwhmather.bedit.gschema.xml.in:52
 msgid "Create Backup Copies"
 msgstr "製作備份"
 
-#: data/org.gnome.gedit.gschema.xml.in:53
+#: data/com.bwhmather.bedit.gschema.xml.in:53
 msgid "Whether gedit should create backup copies for the files it saves."
 msgstr "gedit 儲存檔案時是否建立備份複本。"
 
-#: data/org.gnome.gedit.gschema.xml.in:57
+#: data/com.bwhmather.bedit.gschema.xml.in:57
 msgid "Autosave"
 msgstr "自動儲存"
 
-#: data/org.gnome.gedit.gschema.xml.in:58
+#: data/com.bwhmather.bedit.gschema.xml.in:58
 msgid ""
 "Whether gedit should automatically save modified files after a time "
 "interval. You can set the time interval with the “Autosave Interval” option."
@@ -133,11 +133,11 @@ msgstr ""
 "gedit 是否應每隔一段時間後自動儲存修改過的檔案。您可以在「自動儲存周期」選項"
 "中指定時間。"
 
-#: data/org.gnome.gedit.gschema.xml.in:62
+#: data/com.bwhmather.bedit.gschema.xml.in:62
 msgid "Autosave Interval"
 msgstr "自動儲存周期"
 
-#: data/org.gnome.gedit.gschema.xml.in:63
+#: data/com.bwhmather.bedit.gschema.xml.in:63
 msgid ""
 "Number of minutes after which gedit will automatically save modified files. "
 "This will only take effect if the “Autosave” option is turned on."
@@ -145,21 +145,21 @@ msgstr ""
 "gedit 會在幾分鐘後自動儲存修改過的檔案。本選項只有在「自動儲存」選項開啟後才"
 "會生效。"
 
-#: data/org.gnome.gedit.gschema.xml.in:67
+#: data/com.bwhmather.bedit.gschema.xml.in:67
 msgid "Maximum Number of Undo Actions"
 msgstr "復原動作次數上限"
 
-#: data/org.gnome.gedit.gschema.xml.in:68
+#: data/com.bwhmather.bedit.gschema.xml.in:68
 msgid ""
 "Maximum number of actions that gedit will be able to undo or redo. Use “-1” "
 "for unlimited number of actions."
 msgstr "gedit 中復原或取消復原次數的上限。設為「-1」則為無限次。y"
 
-#: data/org.gnome.gedit.gschema.xml.in:77
+#: data/com.bwhmather.bedit.gschema.xml.in:77
 msgid "Line Wrapping Mode"
 msgstr "換列模式"
 
-#: data/org.gnome.gedit.gschema.xml.in:78
+#: data/com.bwhmather.bedit.gschema.xml.in:78
 msgid ""
 "Specifies how to wrap long lines in the editing area. Use “none” for no "
 "wrapping, “word” for wrapping at word boundaries, and “char” for wrapping at "
@@ -170,11 +170,11 @@ msgstr ""
 "「char」代表在個別字元間換列等。請注意，設定值是會分辨大小寫的，所以請確保設"
 "定值和上面所列出的完全一致。"
 
-#: data/org.gnome.gedit.gschema.xml.in:86
+#: data/com.bwhmather.bedit.gschema.xml.in:86
 msgid "Last split mode choice for line wrapping mode"
 msgstr "用於換列模式的上次分隔模式選項"
 
-#: data/org.gnome.gedit.gschema.xml.in:87
+#: data/com.bwhmather.bedit.gschema.xml.in:87
 msgid ""
 "Specifies the last split mode used with line wrapping mode, so that when "
 "wrapping mode is off we still remember the split mode choice. Use “word” for "
@@ -184,93 +184,93 @@ msgstr ""
 "指定上次用於換列模式的分隔模式，如此當換列模式關閉時我們仍能記住分隔模式選"
 "項。使用「word」表示以單字為換列依據，而「char」表示以每個字元為換列依據。"
 
-#: data/org.gnome.gedit.gschema.xml.in:91
+#: data/com.bwhmather.bedit.gschema.xml.in:91
 msgid "Tab Size"
 msgstr "Tab 字元寬度"
 
-#: data/org.gnome.gedit.gschema.xml.in:92
+#: data/com.bwhmather.bedit.gschema.xml.in:92
 msgid ""
 "Specifies the number of spaces that should be displayed instead of Tab "
 "characters."
 msgstr "指定顯示 Tab 字元時會以多少個空格代替。"
 
-#: data/org.gnome.gedit.gschema.xml.in:96
+#: data/com.bwhmather.bedit.gschema.xml.in:96
 msgid "Insert spaces"
 msgstr "插入空格"
 
-#: data/org.gnome.gedit.gschema.xml.in:97
+#: data/com.bwhmather.bedit.gschema.xml.in:97
 msgid "Whether gedit should insert spaces instead of tabs."
 msgstr "gedit 應否使用空格來代替 Tab 字元。"
 
-#: data/org.gnome.gedit.gschema.xml.in:101
+#: data/com.bwhmather.bedit.gschema.xml.in:101
 msgid "Automatic indent"
 msgstr "自動縮排"
 
-#: data/org.gnome.gedit.gschema.xml.in:102
+#: data/com.bwhmather.bedit.gschema.xml.in:102
 msgid "Whether gedit should enable automatic indentation."
 msgstr "gedit 是否應啟用自動縮排的功能。"
 
-#: data/org.gnome.gedit.gschema.xml.in:106
+#: data/com.bwhmather.bedit.gschema.xml.in:106
 msgid "Display Line Numbers"
 msgstr "顯示列號"
 
-#: data/org.gnome.gedit.gschema.xml.in:107
+#: data/com.bwhmather.bedit.gschema.xml.in:107
 msgid "Whether gedit should display line numbers in the editing area."
 msgstr "gedit 應否在編輯區域中顯示列號。"
 
-#: data/org.gnome.gedit.gschema.xml.in:111
+#: data/com.bwhmather.bedit.gschema.xml.in:111
 msgid "Highlight Current Line"
 msgstr "標明目前的行"
 
-#: data/org.gnome.gedit.gschema.xml.in:112
+#: data/com.bwhmather.bedit.gschema.xml.in:112
 msgid "Whether gedit should highlight the current line."
 msgstr "gedit 應否在當前的行上啟用色彩標明功能。"
 
-#: data/org.gnome.gedit.gschema.xml.in:116
+#: data/com.bwhmather.bedit.gschema.xml.in:116
 msgid "Highlight Matching Brackets"
 msgstr "標明顯示成對的括號"
 
-#: data/org.gnome.gedit.gschema.xml.in:117
+#: data/com.bwhmather.bedit.gschema.xml.in:117
 msgid "Whether gedit should highlight matching brackets."
 msgstr "gedit 是否應以色彩標明與目前選取的成對的弧號。"
 
-#: data/org.gnome.gedit.gschema.xml.in:121
+#: data/com.bwhmather.bedit.gschema.xml.in:121
 msgid "Display Right Margin"
 msgstr "顯示右邊邊界"
 
-#: data/org.gnome.gedit.gschema.xml.in:122
+#: data/com.bwhmather.bedit.gschema.xml.in:122
 msgid "Whether gedit should display the right margin in the editing area."
 msgstr "gedit 應否在編輯區域中顯示右邊邊界。"
 
-#: data/org.gnome.gedit.gschema.xml.in:126
+#: data/com.bwhmather.bedit.gschema.xml.in:126
 msgid "Right Margin Position"
 msgstr "右邊邊界位置"
 
-#: data/org.gnome.gedit.gschema.xml.in:127
+#: data/com.bwhmather.bedit.gschema.xml.in:127
 msgid "Specifies the position of the right margin."
 msgstr "指定右邊邊界位置。"
 
-#: data/org.gnome.gedit.gschema.xml.in:131
+#: data/com.bwhmather.bedit.gschema.xml.in:131
 msgid "Display Overview Map"
 msgstr "顯示概覽地圖"
 
-#: data/org.gnome.gedit.gschema.xml.in:132
+#: data/com.bwhmather.bedit.gschema.xml.in:132
 msgid "Whether gedit should display the overview map for the document."
 msgstr "gedit 是否應顯示文件的概覽。"
 
-#: data/org.gnome.gedit.gschema.xml.in:136
+#: data/com.bwhmather.bedit.gschema.xml.in:136
 msgid "Document background pattern type"
 msgstr "文件背景圖案類型"
 
-#: data/org.gnome.gedit.gschema.xml.in:137
+#: data/com.bwhmather.bedit.gschema.xml.in:137
 msgid "Whether the document will get a background pattern painted."
 msgstr "文件是否要加上背景圖案。"
 
-#: data/org.gnome.gedit.gschema.xml.in:147
+#: data/com.bwhmather.bedit.gschema.xml.in:147
 msgid "Smart Home End"
 msgstr "智慧式 Home End"
 
-#: data/org.gnome.gedit.gschema.xml.in:148
+#: data/com.bwhmather.bedit.gschema.xml.in:148
 msgid ""
 "Specifies how the cursor moves when the HOME and END keys are pressed. Use "
 "“disabled” to always move at the start/end of the line, “after” to move to "
@@ -286,55 +286,55 @@ msgstr ""
 "游標會在移至行的開始/結束前先移到文字的開始/結束處。使用「always」(永遠) 游標"
 "會以移至文字的開始/結束處代替移至行的開始/結束處。"
 
-#: data/org.gnome.gedit.gschema.xml.in:152
+#: data/com.bwhmather.bedit.gschema.xml.in:152
 msgid "Restore Previous Cursor Position"
 msgstr "回復先前的游標位置"
 
-#: data/org.gnome.gedit.gschema.xml.in:153
+#: data/com.bwhmather.bedit.gschema.xml.in:153
 msgid ""
 "Whether gedit should restore the previous cursor position when a file is "
 "loaded."
 msgstr "gedit 載入檔案後應否回到先前的游標位置。"
 
-#: data/org.gnome.gedit.gschema.xml.in:157
+#: data/com.bwhmather.bedit.gschema.xml.in:157
 msgid "Enable Syntax Highlighting"
 msgstr "啟用語法色彩標明"
 
-#: data/org.gnome.gedit.gschema.xml.in:158
+#: data/com.bwhmather.bedit.gschema.xml.in:158
 msgid "Whether gedit should enable syntax highlighting."
 msgstr "gedit 應否啟用語法色彩標明的功能。"
 
-#: data/org.gnome.gedit.gschema.xml.in:162
+#: data/com.bwhmather.bedit.gschema.xml.in:162
 msgid "Enable Search Highlighting"
 msgstr "啟用搜尋標明功能"
 
-#: data/org.gnome.gedit.gschema.xml.in:163
+#: data/com.bwhmather.bedit.gschema.xml.in:163
 msgid ""
 "Whether gedit should highlight all the occurrences of the searched text."
 msgstr "gedit 應否在搜尋後替比對到的字串處加上標明。"
 
-#: data/org.gnome.gedit.gschema.xml.in:167
+#: data/com.bwhmather.bedit.gschema.xml.in:167
 msgid "Ensure Trailing Newline"
 msgstr "確保結尾以 Newline 結束"
 
-#: data/org.gnome.gedit.gschema.xml.in:168
+#: data/com.bwhmather.bedit.gschema.xml.in:168
 msgid ""
 "Whether gedit will ensure that documents always end with a trailing newline."
 msgstr "gedit 應否確保文件結尾是以新列(newline)結束。"
 
-#: data/org.gnome.gedit.gschema.xml.in:174
+#: data/com.bwhmather.bedit.gschema.xml.in:174
 msgid "Toolbar is Visible"
 msgstr "顯示工具列"
 
-#: data/org.gnome.gedit.gschema.xml.in:175
+#: data/com.bwhmather.bedit.gschema.xml.in:175
 msgid "Whether the toolbar should be visible in editing windows."
 msgstr "編輯視窗應否顯示工具列。"
 
-#: data/org.gnome.gedit.gschema.xml.in:179
+#: data/com.bwhmather.bedit.gschema.xml.in:179
 msgid "Notebook Show Tabs Mode"
 msgstr "筆記本顯示分頁模式"
 
-#: data/org.gnome.gedit.gschema.xml.in:180
+#: data/com.bwhmather.bedit.gschema.xml.in:180
 msgid ""
 "Specifies when to show the notebook tabs. Use “never” to never show the "
 "tabs, “always” to always show the tabs, and “auto” to show the tabs only "
@@ -345,55 +345,55 @@ msgstr ""
 "示分頁，及「auto」代表只在有一個以上分頁時才顯示分頁。請注意，設定值是會分辨"
 "大小寫的，所以請確保設定值和上面所列出的完全一致。"
 
-#: data/org.gnome.gedit.gschema.xml.in:184
+#: data/com.bwhmather.bedit.gschema.xml.in:184
 msgid "Status Bar is Visible"
 msgstr "顯示狀態列"
 
-#: data/org.gnome.gedit.gschema.xml.in:185
+#: data/com.bwhmather.bedit.gschema.xml.in:185
 msgid ""
 "Whether the status bar at the bottom of editing windows should be visible."
 msgstr "編輯視窗的底部應否顯示狀態列。"
 
-#: data/org.gnome.gedit.gschema.xml.in:189
+#: data/com.bwhmather.bedit.gschema.xml.in:189
 msgid "Side panel is Visible"
 msgstr "顯示側邊面板"
 
-#: data/org.gnome.gedit.gschema.xml.in:190
+#: data/com.bwhmather.bedit.gschema.xml.in:190
 msgid ""
 "Whether the side panel at the left of editing windows should be visible."
 msgstr "編輯視窗左側是否應顯示側邊面板。"
 
-#: data/org.gnome.gedit.gschema.xml.in:197
+#: data/com.bwhmather.bedit.gschema.xml.in:197
 msgid "Maximum Recent Files"
 msgstr "最近檔案數目上限"
 
-#: data/org.gnome.gedit.gschema.xml.in:198
+#: data/com.bwhmather.bedit.gschema.xml.in:198
 msgid ""
 "Specifies the maximum number of recently opened files that will be displayed "
 "in the “Recent Files” submenu."
 msgstr "指定在「最近檔案」副選單中，可以顯示多少個最近開啟的檔案。"
 
-#: data/org.gnome.gedit.gschema.xml.in:204
+#: data/com.bwhmather.bedit.gschema.xml.in:204
 msgid "Print Syntax Highlighting"
 msgstr "列印語法色彩標明"
 
-#: data/org.gnome.gedit.gschema.xml.in:205
+#: data/com.bwhmather.bedit.gschema.xml.in:205
 msgid "Whether gedit should print syntax highlighting when printing documents."
 msgstr "gedit 應否在列印文件時加上語法色彩標明。"
 
-#: data/org.gnome.gedit.gschema.xml.in:209
+#: data/com.bwhmather.bedit.gschema.xml.in:209
 msgid "Print Header"
 msgstr "列印頁首"
 
-#: data/org.gnome.gedit.gschema.xml.in:210
+#: data/com.bwhmather.bedit.gschema.xml.in:210
 msgid "Whether gedit should include a document header when printing documents."
 msgstr "gedit 應否在列印文件時加上頁首。"
 
-#: data/org.gnome.gedit.gschema.xml.in:219
+#: data/com.bwhmather.bedit.gschema.xml.in:219
 msgid "Printing Line Wrapping Mode"
 msgstr "列印換列模式"
 
-#: data/org.gnome.gedit.gschema.xml.in:220
+#: data/com.bwhmather.bedit.gschema.xml.in:220
 msgid ""
 "Specifies how to wrap long lines for printing. Use “none” for no wrapping, "
 "“word” for wrapping at word boundaries, and “char” for wrapping at "
@@ -404,12 +404,12 @@ msgstr ""
 "「char」代表在個別字元間換列等。請注意，設定值是會分辨大小寫的，所以請確保設"
 "定值和上面所列出的完全一致。"
 
-#: data/org.gnome.gedit.gschema.xml.in:224
+#: data/com.bwhmather.bedit.gschema.xml.in:224
 msgid "Print Line Numbers"
 msgstr "列印列號"
 
 # zh_HK: msgstr "如果數值是 0，當打印文件時不會打印列號。否則，gedit 會每隔指定的列數打印列號。"
-#: data/org.gnome.gedit.gschema.xml.in:225
+#: data/com.bwhmather.bedit.gschema.xml.in:225
 msgid ""
 "If this value is 0, then no line numbers will be inserted when printing a "
 "document. Otherwise, gedit will print line numbers every such number of "
@@ -419,32 +419,32 @@ msgstr ""
 "號。"
 
 #. Translators: This is a GSettings default value. Do NOT change or localize the quotation marks!
-#: data/org.gnome.gedit.gschema.xml.in:229
+#: data/com.bwhmather.bedit.gschema.xml.in:229
 msgid "'Monospace 9'"
 msgstr "'Monospace 9'"
 
-#: data/org.gnome.gedit.gschema.xml.in:230
+#: data/com.bwhmather.bedit.gschema.xml.in:230
 msgid "Body Font for Printing"
 msgstr "列印時使用的內文字型"
 
 # zh_HK: msgstr "指定打印文件時文件內容所用的字型。"
-#: data/org.gnome.gedit.gschema.xml.in:231
+#: data/com.bwhmather.bedit.gschema.xml.in:231
 msgid ""
 "Specifies the font to use for a document’s body when printing documents."
 msgstr "指定列印文件時文件內容所用的字型。"
 
 #. Translators: This is a GSettings default value. Do NOT change or localize the quotation marks!
-#: data/org.gnome.gedit.gschema.xml.in:235
+#: data/com.bwhmather.bedit.gschema.xml.in:235
 msgid "'Sans 11'"
 msgstr "'Sans 11'"
 
 # zh_HK: msgstr "打印時使用的頁首字型"
-#: data/org.gnome.gedit.gschema.xml.in:236
+#: data/com.bwhmather.bedit.gschema.xml.in:236
 msgid "Header Font for Printing"
 msgstr "列印時使用的頁首字型"
 
 # zh_HK: msgstr "指定打印文件時頁首所用的字型。本選項只有在「打印頁首」選項的值開啟的時候生效。"
-#: data/org.gnome.gedit.gschema.xml.in:237
+#: data/com.bwhmather.bedit.gschema.xml.in:237
 msgid ""
 "Specifies the font to use for page headers when printing a document. This "
 "will only take effect if the “Print Header” option is turned on."
@@ -453,59 +453,59 @@ msgstr ""
 "效。"
 
 #. Translators: This is a GSettings default value. Do NOT change or localize the quotation marks!
-#: data/org.gnome.gedit.gschema.xml.in:241
+#: data/com.bwhmather.bedit.gschema.xml.in:241
 msgid "'Sans 8'"
 msgstr "'Sans 8'"
 
 # zh_HK: msgstr "打印列號時使用的字型"
-#: data/org.gnome.gedit.gschema.xml.in:242
+#: data/com.bwhmather.bedit.gschema.xml.in:242
 msgid "Line Number Font for Printing"
 msgstr "列印列號時使用的字型"
 
 # zh_HK: msgstr "指定打印時列號所用的字型。本選項只有在「打印列號」選項的值不是零的時候生效。"
-#: data/org.gnome.gedit.gschema.xml.in:243
+#: data/com.bwhmather.bedit.gschema.xml.in:243
 msgid ""
 "Specifies the font to use for line numbers when printing. This will only "
 "take effect if the “Print Line Numbers” option is non-zero."
 msgstr "指定列印時列號所用的字型。本選項只有在「列印列號」選項的值不是零的時候生效。"
 
-#: data/org.gnome.gedit.gschema.xml.in:247
+#: data/com.bwhmather.bedit.gschema.xml.in:247
 msgid "Margin Left"
 msgstr "左邊邊界"
 
-#: data/org.gnome.gedit.gschema.xml.in:248
+#: data/com.bwhmather.bedit.gschema.xml.in:248
 msgid "The left margin, in millimeters."
 msgstr "左邊邊界，以公釐計。"
 
-#: data/org.gnome.gedit.gschema.xml.in:252
+#: data/com.bwhmather.bedit.gschema.xml.in:252
 msgid "Margin Top"
 msgstr "頂端邊界"
 
-#: data/org.gnome.gedit.gschema.xml.in:253
+#: data/com.bwhmather.bedit.gschema.xml.in:253
 msgid "The top margin, in millimeters."
 msgstr "頂端邊界，以公釐計。"
 
-#: data/org.gnome.gedit.gschema.xml.in:257
+#: data/com.bwhmather.bedit.gschema.xml.in:257
 msgid "Margin Right"
 msgstr "右邊邊界"
 
-#: data/org.gnome.gedit.gschema.xml.in:258
+#: data/com.bwhmather.bedit.gschema.xml.in:258
 msgid "The right margin, in millimeters."
 msgstr "右邊邊界，以公釐計。"
 
-#: data/org.gnome.gedit.gschema.xml.in:262
+#: data/com.bwhmather.bedit.gschema.xml.in:262
 msgid "Margin Bottom"
 msgstr "底部邊界"
 
-#: data/org.gnome.gedit.gschema.xml.in:263
+#: data/com.bwhmather.bedit.gschema.xml.in:263
 msgid "The bottom margin, in millimeters."
 msgstr "底部邊界，以公釐計。"
 
-#: data/org.gnome.gedit.gschema.xml.in:269
+#: data/com.bwhmather.bedit.gschema.xml.in:269
 msgid "Candidate Encodings"
 msgstr "候選編碼"
 
-#: data/org.gnome.gedit.gschema.xml.in:270
+#: data/com.bwhmather.bedit.gschema.xml.in:270
 msgid ""
 "List of candidate encodings shown in the Character Encoding menu in the open/"
 "save file chooser. “CURRENT” represents the current locale encoding. Only "
@@ -516,11 +516,11 @@ msgstr ""
 "的地區編碼。只能使用可辨認的編碼。預設值為空的列表，在此情況下 gedit 會根據國"
 "家與語言選擇良好的預設值。"
 
-#: data/org.gnome.gedit.gschema.xml.in:316
+#: data/com.bwhmather.bedit.gschema.xml.in:316
 msgid "Active plugins"
 msgstr "啟用外掛程式"
 
-#: data/org.gnome.gedit.gschema.xml.in:317
+#: data/com.bwhmather.bedit.gschema.xml.in:317
 msgid ""
 "List of active plugins. It contains the “Location” of the active plugins. "
 "See the .gedit-plugin file for obtaining the “Location” of a given plugin."
@@ -1920,8 +1920,8 @@ msgid "Editor"
 msgstr "編輯器"
 
 #: gedit/resources/ui/gedit-preferences-dialog.ui:529
-#: plugins/externaltools/org.gnome.gedit.plugins.externaltools.gschema.xml.in:14
-#: plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in:24
+#: plugins/externaltools/com.bwhmather.bedit.plugins.externaltools.gschema.xml.in:14
+#: plugins/pythonconsole/com.bwhmather.bedit.plugins.pythonconsole.gschema.xml.in:24
 msgid "Font"
 msgstr "字型"
 
@@ -2494,12 +2494,12 @@ msgid ""
 "or ignore that version and wait for a new one"
 msgstr "您可以按「下載」按鈕來下載最新版 gedit 或是忽略那個版本等待更新的"
 
-#: plugins/checkupdate/org.gnome.gedit.plugins.checkupdate.gschema.xml.in:5
+#: plugins/checkupdate/com.bwhmather.bedit.plugins.checkupdate.gschema.xml.in:5
 msgid "Version to Ignore"
 msgstr "要忽略的版本"
 
 #. This is releated to the next gedit version to be released
-#: plugins/checkupdate/org.gnome.gedit.plugins.checkupdate.gschema.xml.in:7
+#: plugins/checkupdate/com.bwhmather.bedit.plugins.checkupdate.gschema.xml.in:7
 msgid "Version to ignore until a newer version is released."
 msgstr "在下個版本釋出前要忽略的版本。"
 
@@ -2595,12 +2595,12 @@ msgstr "外部工具"
 msgid "Execute external commands and shell scripts."
 msgstr "執行外部指令及 shell script。"
 
-#: plugins/externaltools/org.gnome.gedit.plugins.externaltools.gschema.xml.in:5
-#: plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in:15
+#: plugins/externaltools/com.bwhmather.bedit.plugins.externaltools.gschema.xml.in:5
+#: plugins/pythonconsole/com.bwhmather.bedit.plugins.pythonconsole.gschema.xml.in:15
 msgid "Whether to use the system font"
 msgstr "是否使用系統字型"
 
-#: plugins/externaltools/org.gnome.gedit.plugins.externaltools.gschema.xml.in:6
+#: plugins/externaltools/com.bwhmather.bedit.plugins.externaltools.gschema.xml.in:6
 msgid ""
 "If true, the external tools will use the desktop-global standard font if "
 "it’s monospace (and the most similar font it can come up with otherwise)."
@@ -2608,8 +2608,8 @@ msgstr ""
 "如設定為 true，外部工具會採用桌面整體指定的標準字型 (如果它是固定寬度字型；否"
 "則會使用最接近的字型)。"
 
-#: plugins/externaltools/org.gnome.gedit.plugins.externaltools.gschema.xml.in:15
-#: plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in:25
+#: plugins/externaltools/com.bwhmather.bedit.plugins.externaltools.gschema.xml.in:15
+#: plugins/pythonconsole/com.bwhmather.bedit.plugins.pythonconsole.gschema.xml.in:25
 msgid "A Pango font name. Examples are “Sans 12” or “Monospace Bold 14”."
 msgstr "Pango 字型名稱，例如：「Sans 12」、「Monospace Bold 14」"
 
@@ -2939,21 +2939,21 @@ msgstr "無法掛載儲存裝置：%s"
 msgid "Error when loading “%s”: No such directory"
 msgstr "載入「%s」時發生錯誤：沒有這個目錄"
 
-#: plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in:5
+#: plugins/filebrowser/com.bwhmather.bedit.plugins.filebrowser.gschema.xml.in:5
 msgid "Open With Tree View"
 msgstr "以樹狀顯示模式開啟"
 
-#: plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in:6
+#: plugins/filebrowser/com.bwhmather.bedit.plugins.filebrowser.gschema.xml.in:6
 msgid ""
 "Open the tree view when the file browser plugin gets loaded instead of the "
 "bookmarks view"
 msgstr "載入檔案瀏覽器外掛程式時，是否開啟樹狀顯示模式取代書籤顯示模式"
 
-#: plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in:10
+#: plugins/filebrowser/com.bwhmather.bedit.plugins.filebrowser.gschema.xml.in:10
 msgid "File Browser Root Directory"
 msgstr "檔案瀏覽器根資料夾"
 
-#: plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in:11
+#: plugins/filebrowser/com.bwhmather.bedit.plugins.filebrowser.gschema.xml.in:11
 msgid ""
 "The file browser root directory to use when loading the file browser plugin "
 "and onload/tree_view is TRUE."
@@ -2961,11 +2961,11 @@ msgstr ""
 "檔案瀏覽器根資料夾是用於載入檔案瀏覽器外掛程式及 onload/tree_view 設定為"
 "「TRUE」時。"
 
-#: plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in:15
+#: plugins/filebrowser/com.bwhmather.bedit.plugins.filebrowser.gschema.xml.in:15
 msgid "File Browser Virtual Root Directory"
 msgstr "檔案瀏覽器虛擬根資料夾"
 
-#: plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in:16
+#: plugins/filebrowser/com.bwhmather.bedit.plugins.filebrowser.gschema.xml.in:16
 msgid ""
 "The file browser virtual root directory to use when loading the file browser "
 "plugin when onload/tree_view is TRUE. The virtual root must always be below "
@@ -2974,19 +2974,19 @@ msgstr ""
 "檔案瀏覽器虛擬根資料夾是用於載入檔案瀏覽器外掛程式及 onload/tree_view 設定為"
 "「TRUE」時。虛擬根資料夾必須是處於真正的根資料夾之下。"
 
-#: plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in:20
+#: plugins/filebrowser/com.bwhmather.bedit.plugins.filebrowser.gschema.xml.in:20
 msgid "Enable Restore of Remote Locations"
 msgstr "啟用遠端位置回復"
 
-#: plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in:21
+#: plugins/filebrowser/com.bwhmather.bedit.plugins.filebrowser.gschema.xml.in:21
 msgid "Sets whether to enable restoring of remote locations."
 msgstr "設定是否啟用遠端位置回復。"
 
-#: plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in:25
+#: plugins/filebrowser/com.bwhmather.bedit.plugins.filebrowser.gschema.xml.in:25
 msgid "Set Location to First Document"
 msgstr "設定第一個文件的位置"
 
-#: plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in:26
+#: plugins/filebrowser/com.bwhmather.bedit.plugins.filebrowser.gschema.xml.in:26
 msgid ""
 "If TRUE the file browser plugin will view the directory of the first opened "
 "document given that the file browser hasn’t been used yet. (Thus this "
@@ -2996,11 +2996,11 @@ msgstr ""
 "如設定為 TRUE，當從未使用過檔案瀏覽器時，則檔案瀏覽器外掛程式會顯示第一個開啟"
 "的檔案所在的目錄。（這通常會用於在命令列或 Nautilus 等程式中開啟文件時）"
 
-#: plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in:30
+#: plugins/filebrowser/com.bwhmather.bedit.plugins.filebrowser.gschema.xml.in:30
 msgid "File Browser Filter Mode"
 msgstr "檔案瀏覽器過濾器模式"
 
-#: plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in:31
+#: plugins/filebrowser/com.bwhmather.bedit.plugins.filebrowser.gschema.xml.in:31
 msgid ""
 "This value determines what files get filtered from the file browser. Valid "
 "values are: none (filter nothing), hide-hidden (filter hidden files) and "
@@ -3009,21 +3009,21 @@ msgstr ""
 "本數值決定哪些檔案在檔案瀏覽器中會被過濾。有效的數值為「none」 (不過濾)，"
 "「hide-hidden」(只過濾隱藏檔) 和「hide-binary」(只過濾二位元檔)。"
 
-#: plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in:35
+#: plugins/filebrowser/com.bwhmather.bedit.plugins.filebrowser.gschema.xml.in:35
 msgid "File Browser Filter Pattern"
 msgstr "檔案瀏覽器過濾器樣式"
 
-#: plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in:36
+#: plugins/filebrowser/com.bwhmather.bedit.plugins.filebrowser.gschema.xml.in:36
 msgid ""
 "The filter pattern to filter the file browser with. This filter works on top "
 "of the filter_mode."
 msgstr "過濾器樣式用於檔案瀏覽器過濾檔案。此過濾器會在 filter_mode 上使用。"
 
-#: plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in:40
+#: plugins/filebrowser/com.bwhmather.bedit.plugins.filebrowser.gschema.xml.in:40
 msgid "File Browser Binary Patterns"
 msgstr "檔案瀏覽器二元檔樣式"
 
-#: plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in:41
+#: plugins/filebrowser/com.bwhmather.bedit.plugins.filebrowser.gschema.xml.in:41
 msgid "The supplemental patterns to use when filtering binary files."
 msgstr "過濾二元檔案時要使用的補充樣式。"
 
@@ -3092,23 +3092,23 @@ msgstr "Modelines"
 msgid "Emacs, Kate and Vim-style modelines support for gedit."
 msgstr "gedit 的 Emacs, Kate 及 Vim 風格的 modeline 支援。"
 
-#: plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in:5
+#: plugins/pythonconsole/com.bwhmather.bedit.plugins.pythonconsole.gschema.xml.in:5
 msgid "Command Color Text"
 msgstr "指令顏色文字"
 
-#: plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in:6
+#: plugins/pythonconsole/com.bwhmather.bedit.plugins.pythonconsole.gschema.xml.in:6
 msgid "The command color text"
 msgstr "指令顏色文字"
 
-#: plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in:10
+#: plugins/pythonconsole/com.bwhmather.bedit.plugins.pythonconsole.gschema.xml.in:10
 msgid "Error Color Text"
 msgstr "錯誤顏色文字"
 
-#: plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in:11
+#: plugins/pythonconsole/com.bwhmather.bedit.plugins.pythonconsole.gschema.xml.in:11
 msgid "The error color text"
 msgstr "錯誤顏色文字"
 
-#: plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in:16
+#: plugins/pythonconsole/com.bwhmather.bedit.plugins.pythonconsole.gschema.xml.in:16
 msgid ""
 "If true, the terminal will use the desktop-global standard font if it’s "
 "monospace (and the most similar font it can come up with otherwise)."
@@ -3445,13 +3445,13 @@ msgstr "設定語言(_L)…"
 msgid "_Highlight Misspelled Words"
 msgstr "標明拼錯字詞(_H)"
 
-#: plugins/spell/org.gnome.gedit.plugins.spell.gschema.xml.in:5
+#: plugins/spell/com.bwhmather.bedit.plugins.spell.gschema.xml.in:5
 #: plugins/spell/resources/ui/gedit-spell-setup-dialog.ui:75
 #| msgid "_Highlight Misspelled Words"
 msgid "Highlight misspelled words"
 msgstr "標明拼錯字詞"
 
-#: plugins/spell/org.gnome.gedit.plugins.spell.gschema.xml.in:6
+#: plugins/spell/com.bwhmather.bedit.plugins.spell.gschema.xml.in:6
 #| msgid "_Highlight Misspelled Words"
 msgid "Default setting for highlight misspelled words."
 msgstr "標明拼錯字詞的預設設定。"
@@ -3482,29 +3482,29 @@ msgstr "插入日期及時間(_S)…"
 msgid "Available formats"
 msgstr "可用的格式"
 
-#: plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in:5
+#: plugins/time/com.bwhmather.bedit.plugins.time.gschema.xml.in:5
 msgid "Prompt Type"
 msgstr "提示類型"
 
-#: plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in:6
+#: plugins/time/com.bwhmather.bedit.plugins.time.gschema.xml.in:6
 msgid ""
 "If the user should be prompted for a format or if the selected or custom "
 "format should be used."
 msgstr "要提示使用者關於格式的問題或是使用已選取或自訂的格式。"
 
-#: plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in:10
+#: plugins/time/com.bwhmather.bedit.plugins.time.gschema.xml.in:10
 msgid "Selected Format"
 msgstr "選取的格式"
 
-#: plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in:11
+#: plugins/time/com.bwhmather.bedit.plugins.time.gschema.xml.in:11
 msgid "The selected format used when inserting the date/time."
 msgstr "當插入日期/時刻的時候使用選取的格式。"
 
-#: plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in:15
+#: plugins/time/com.bwhmather.bedit.plugins.time.gschema.xml.in:15
 msgid "Custom Format"
 msgstr "自訂格式"
 
-#: plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in:16
+#: plugins/time/com.bwhmather.bedit.plugins.time.gschema.xml.in:16
 msgid "The custom format used when inserting the date/time."
 msgstr "當加入日期/時刻時使用自訂的格式。"
 
@@ -3558,8 +3558,8 @@ msgstr "插入日期/時間"
 msgid "Inserts current date and time at the cursor position."
 msgstr "在游標目前的位置插入現在的日期及時間。"
 
-#~ msgid "org.gnome.gedit"
-#~ msgstr "org.gnome.gedit"
+#~ msgid "com.bwhmather.bedit"
+#~ msgstr "com.bwhmather.bedit"
 
 #~ msgid "Please check your installation."
 #~ msgstr "請檢查安裝是否正確。"

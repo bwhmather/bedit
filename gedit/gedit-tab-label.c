@@ -258,7 +258,7 @@ gedit_tab_label_class_init (GeditTabLabelClass *klass)
 
 	/* Bind class to template */
 	gtk_widget_class_set_template_from_resource (widget_class,
-	                                             "/org/gnome/gedit/ui/gedit-tab-label.ui");
+	                                             "/com/bwhmather/bedit/ui/gedit-tab-label.ui");
 	gtk_widget_class_bind_template_child (widget_class, GeditTabLabel, spinner);
 	gtk_widget_class_bind_template_child (widget_class, GeditTabLabel, icon);
 	gtk_widget_class_bind_template_child (widget_class, GeditTabLabel, label);

@@ -177,7 +177,7 @@ gedit_preferences_dialog_class_init (GeditPreferencesDialogClass *klass)
 
 	/* Bind class to template */
 	gtk_widget_class_set_template_from_resource (widget_class,
-	                                             "/org/gnome/gedit/ui/gedit-preferences-dialog.ui");
+	                                             "/com/bwhmather/bedit/ui/gedit-preferences-dialog.ui");
 	gtk_widget_class_bind_template_child (widget_class, GeditPreferencesDialog, notebook);
 	gtk_widget_class_bind_template_child (widget_class, GeditPreferencesDialog, display_line_numbers_checkbutton);
 	gtk_widget_class_bind_template_child (widget_class, GeditPreferencesDialog, display_statusbar_checkbutton);
@@ -909,8 +909,8 @@ gedit_preferences_dialog_init (GeditPreferencesDialog *dlg)
 {
 	gedit_debug (DEBUG_PREFS);
 
-	dlg->editor = g_settings_new ("org.gnome.gedit.preferences.editor");
-	dlg->uisettings = g_settings_new ("org.gnome.gedit.preferences.ui");
+	dlg->editor = g_settings_new ("com.bwhmather.bedit.preferences.editor");
+	dlg->uisettings = g_settings_new ("com.bwhmather.bedit.preferences.ui");
 
 	gtk_widget_init_template (GTK_WIDGET (dlg));
 

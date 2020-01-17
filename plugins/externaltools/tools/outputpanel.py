@@ -105,7 +105,7 @@ class OutputPanel(UniqueById):
 
     def get_profile_settings(self):
         #FIXME return either the gnome-terminal settings or the gedit one
-        return Gio.Settings.new("org.gnome.gedit.plugins.externaltools")
+        return Gio.Settings.new("com.bwhmather.bedit.plugins.externaltools")
 
     def font_changed(self, settings=None, key=None):
         if self.profile_settings.get_boolean("use-system-font"):

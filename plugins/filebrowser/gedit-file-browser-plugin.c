@@ -37,7 +37,7 @@
 #include "gedit-file-browser-widget.h"
 #include "gedit-file-browser-messages.h"
 
-#define FILEBROWSER_BASE_SETTINGS	"org.gnome.gedit.plugins.filebrowser"
+#define FILEBROWSER_BASE_SETTINGS	"com.bwhmather.bedit.plugins.filebrowser"
 #define FILEBROWSER_TREE_VIEW		"tree-view"
 #define FILEBROWSER_ROOT		"root"
 #define FILEBROWSER_VIRTUAL_ROOT	"virtual-root"
@@ -48,7 +48,7 @@
 #define FILEBROWSER_BINARY_PATTERNS	"binary-patterns"
 
 #define NAUTILUS_BASE_SETTINGS		"org.gnome.nautilus.preferences"
-#define NAUTILUS_FALLBACK_SETTINGS	"org.gnome.gedit.plugins.filebrowser.nautilus"
+#define NAUTILUS_FALLBACK_SETTINGS	"com.bwhmather.bedit.plugins.filebrowser.nautilus"
 #define NAUTILUS_CLICK_POLICY_KEY	"click-policy"
 #define NAUTILUS_CONFIRM_TRASH_KEY	"confirm-trash"
 

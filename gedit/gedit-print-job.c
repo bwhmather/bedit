@@ -221,7 +221,7 @@ gedit_print_job_class_init (GeditPrintJobClass *klass)
 static void
 gedit_print_job_init (GeditPrintJob *job)
 {
-	job->gsettings = g_settings_new ("org.gnome.gedit.preferences.print");
+	job->gsettings = g_settings_new ("com.bwhmather.bedit.preferences.print");
 
 	job->status_string = g_strdup (_("Preparing…"));
 }
@@ -254,7 +254,7 @@ create_custom_widget_cb (GtkPrintOperation *operation,
 	};
 
 	builder = gtk_builder_new ();
-	gtk_builder_add_objects_from_resource (builder, "/org/gnome/gedit/ui/gedit-print-preferences.ui",
+	gtk_builder_add_objects_from_resource (builder, "/com/bwhmather/bedit/ui/gedit-print-preferences.ui",
 	                                       root_objects, NULL);
 	contents = GTK_WIDGET (gtk_builder_get_object (builder, "contents"));
 	g_object_ref (contents);

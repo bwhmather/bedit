@@ -126,7 +126,7 @@ gedit_print_preview_class_init (GeditPrintPreviewClass *klass)
 
 	/* Bind class to template */
 	gtk_widget_class_set_template_from_resource (widget_class,
-	                                             "/org/gnome/gedit/ui/gedit-print-preview.ui");
+	                                             "/com/bwhmather/bedit/ui/gedit-print-preview.ui");
 	gtk_widget_class_bind_template_child (widget_class, GeditPrintPreview, prev_button);
 	gtk_widget_class_bind_template_child (widget_class, GeditPrintPreview, next_button);
 	gtk_widget_class_bind_template_child (widget_class, GeditPrintPreview, page_entry);

@@ -7,11 +7,11 @@ libtime_deps = [
 ]
 
 gnome.mkenums(
-  'org.gnome.gedit.plugins.time.enums.xml',
+  'com.bwhmather.bedit.plugins.time.enums.xml',
   sources: libtime_sources,
   comments: '<!-- @comment@ -->',
   fhead: '<schemalist>',
-  vhead: '  <@type@ id="org.gnome.gedit.plugins.time.@EnumName@">',
+  vhead: '  <@type@ id="com.bwhmather.bedit.plugins.time.@EnumName@">',
   vprod: '    <value nick="@valuenick@" value="@valuenum@"/>',
   vtail: '  </@type@>',
   ftail: '</schemalist>',
@@ -37,7 +37,7 @@ libtime_sha = shared_module(
   name_suffix: module_suffix,
 )
 
-time_gschema_file = files('org.gnome.gedit.plugins.time.gschema.xml')
+time_gschema_file = files('com.bwhmather.bedit.plugins.time.gschema.xml')
 install_data(
   time_gschema_file,
   install_dir: join_paths(get_option('prefix'), get_option('datadir'), 'glib-2.0/schemas')

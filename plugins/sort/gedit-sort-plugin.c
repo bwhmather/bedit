@@ -162,7 +162,7 @@ create_sort_dialog (GeditSortPlugin *plugin)
 	priv = plugin->priv;
 
 	builder = gtk_builder_new ();
-	gtk_builder_add_from_resource (builder, "/org/gnome/gedit/plugins/sort/ui/gedit-sort-plugin.ui", NULL);
+	gtk_builder_add_from_resource (builder, "/com/bwhmather/bedit/plugins/sort/ui/gedit-sort-plugin.ui", NULL);
 	priv->dialog = GTK_WIDGET (gtk_builder_get_object (builder, "sort_dialog"));
 	priv->reverse_order_checkbutton = GTK_WIDGET (gtk_builder_get_object (builder, "reverse_order_checkbutton"));
 	priv->col_num_spinbutton = GTK_WIDGET (gtk_builder_get_object (builder, "col_num_spinbutton"));

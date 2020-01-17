@@ -32,7 +32,7 @@
 #include "gedit-time-plugin.h"
 
 /* gsettings keys */
-#define TIME_BASE_SETTINGS	"org.gnome.gedit.plugins.time"
+#define TIME_BASE_SETTINGS	"com.bwhmather.bedit.plugins.time"
 #define PROMPT_TYPE_KEY	"prompt-type"
 #define SELECTED_FORMAT_KEY	"selected-format"
 #define CUSTOM_FORMAT_KEY	"custom-format"
@@ -658,7 +658,7 @@ get_configure_widget (GeditTimePlugin *plugin)
 	widget->settings = g_object_ref (plugin->priv->settings);
 
 	builder = gtk_builder_new ();
-	gtk_builder_add_objects_from_resource (builder, "/org/gnome/gedit/plugins/time/ui/gedit-time-setup-dialog.ui",
+	gtk_builder_add_objects_from_resource (builder, "/com/bwhmather/bedit/plugins/time/ui/gedit-time-setup-dialog.ui",
 	                                       root_objects, NULL);
 	widget->content = GTK_WIDGET (gtk_builder_get_object (builder, "time_dialog_content"));
 	g_object_ref (widget->content);
@@ -803,7 +803,7 @@ get_choose_format_dialog (GtkWindow                 *parent,
 	dialog->settings = plugin->priv->settings;
 
 	builder = gtk_builder_new ();
-	gtk_builder_add_from_resource (builder, "/org/gnome/gedit/plugins/time/ui/gedit-time-dialog.ui",
+	gtk_builder_add_from_resource (builder, "/com/bwhmather/bedit/plugins/time/ui/gedit-time-dialog.ui",
 	                               NULL);
 	dialog->dialog = GTK_WIDGET (gtk_builder_get_object (builder, "choose_format_dialog"));
 	dialog->list = GTK_WIDGET (gtk_builder_get_object (builder, "choice_list"));

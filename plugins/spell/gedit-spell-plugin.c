@@ -34,7 +34,7 @@
 #define GEDIT_METADATA_ATTRIBUTE_SPELL_ENABLED  "gedit-spell-enabled"
 
 #define SPELL_ENABLED_STR "1"
-#define SPELL_BASE_SETTINGS	"org.gnome.gedit.plugins.spell"
+#define SPELL_BASE_SETTINGS	"com.bwhmather.bedit.plugins.spell"
 #define SETTINGS_KEY_HIGHLIGHT_MISSPELLED "highlight-misspelled"
 
 static void gedit_window_activatable_iface_init (GeditWindowActivatableInterface *iface);
@@ -766,7 +766,7 @@ get_configure_widget (GeditSpellPlugin *plugin)
 	widget->settings = g_object_ref (plugin->priv->settings);
 
 	builder = gtk_builder_new ();
-	gtk_builder_add_objects_from_resource (builder, "/org/gnome/gedit/plugins/spell/ui/gedit-spell-setup-dialog.ui",
+	gtk_builder_add_objects_from_resource (builder, "/com/bwhmather/bedit/plugins/spell/ui/gedit-spell-setup-dialog.ui",
 	                                       root_objects, NULL);
 	widget->content = GTK_WIDGET (gtk_builder_get_object (builder, "spell_dialog_content"));
 	g_object_ref (widget->content);

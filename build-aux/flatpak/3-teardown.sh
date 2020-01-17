@@ -1,3 +1,3 @@
 #!/bin/sh
 
-flatpak uninstall --user org.gnome.gedit
+flatpak uninstall --user com.bwhmather.bedit

@@ -76,7 +76,7 @@ gedit_highlight_mode_selector_class_init (GeditHighlightModeSelectorClass *klass
 
 	/* Bind class to template */
 	gtk_widget_class_set_template_from_resource (widget_class,
-	                                             "/org/gnome/gedit/ui/gedit-highlight-mode-selector.ui");
+	                                             "/com/bwhmather/bedit/ui/gedit-highlight-mode-selector.ui");
 	gtk_widget_class_bind_template_child (widget_class, GeditHighlightModeSelector, treeview);
 	gtk_widget_class_bind_template_child (widget_class, GeditHighlightModeSelector, entry);
 	gtk_widget_class_bind_template_child (widget_class, GeditHighlightModeSelector, liststore);

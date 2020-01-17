@@ -21,7 +21,7 @@ libcheckupdate_sha = shared_module(
 )
 
 install_data(
-  'org.gnome.gedit.plugins.checkupdate.gschema.xml',
+  'com.bwhmather.bedit.plugins.checkupdate.gschema.xml',
   install_dir: join_paths(get_option('prefix'), get_option('datadir'), 'glib-2.0/schemas')
 )
 

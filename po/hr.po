@@ -18,15 +18,15 @@ msgstr ""
 "X-Launchpad-Export-Date: 2016-09-22 10:43+0000\n"
 "X-Generator: Poedit 2.0.6\n"
 
-#: data/org.gnome.gedit.appdata.xml.in:7
+#: data/com.bwhmather.bedit.appdata.xml.in:7
 msgid "gedit"
 msgstr "gedit"
 
-#: data/org.gnome.gedit.appdata.xml.in:8 data/org.gnome.gedit.desktop.in.in:4
+#: data/com.bwhmather.bedit.appdata.xml.in:8 data/com.bwhmather.bedit.desktop.in.in:4
 msgid "Edit text files"
 msgstr "Uređivanje tekstovnih datoteka"
 
-#: data/org.gnome.gedit.appdata.xml.in:10
+#: data/com.bwhmather.bedit.appdata.xml.in:10
 msgid ""
 "gedit is the official text editor of the GNOME desktop environment. While "
 "aiming at simplicity and ease of use, gedit is a powerful general purpose "
@@ -36,7 +36,7 @@ msgstr ""
 "na jednostavnost i lako korištenje, gedit je snažan uređivač teksta opće "
 "namjene."
 
-#: data/org.gnome.gedit.appdata.xml.in:15
+#: data/com.bwhmather.bedit.appdata.xml.in:15
 msgid ""
 "Whether you are writing the next bestseller, programming an innovative "
 "application, or simply taking some quick notes, gedit will be a reliable "
@@ -46,7 +46,7 @@ msgstr ""
 "jednostavno zapisujete neke kratke bilješke, gedit je pouzdan alat za "
 "obavljanje vaših zadataka."
 
-#: data/org.gnome.gedit.appdata.xml.in:20
+#: data/com.bwhmather.bedit.appdata.xml.in:20
 msgid ""
 "Its flexible plugin system allows you to tailor the application to your "
 "needs and adapt it to your workflow."
@@ -54,30 +54,30 @@ msgstr ""
 "Ima prilagodljiv sustav priključaka koji vam dopušta prilagođavanje "
 "aplikacije vašim potrebama i vašem radu."
 
-#: data/org.gnome.gedit.desktop.in.in:3 gedit/gedit-print-job.c:730
+#: data/com.bwhmather.bedit.desktop.in.in:3 gedit/gedit-print-job.c:730
 msgid "Text Editor"
 msgstr "Uređivač teksta"
 
 #. TRANSLATORS: Do NOT translate or localize the semicolons!
 #. The list MUST also end with a semicolon!
 #. Search terms to find this application.
-#: data/org.gnome.gedit.desktop.in.in:18
+#: data/com.bwhmather.bedit.desktop.in.in:18
 msgid "Text;Editor;Plaintext;Write;gedit;"
 msgstr "Tekst;Uređivač;Izvoran tekst;Piši;gedit;"
 
-#: data/org.gnome.gedit.desktop.in.in:22
+#: data/com.bwhmather.bedit.desktop.in.in:22
 msgid "New Window"
 msgstr "Novi prozor"
 
-#: data/org.gnome.gedit.desktop.in.in:26
+#: data/com.bwhmather.bedit.desktop.in.in:26
 msgid "New Document"
 msgstr "Novi dokument"
 
-#: data/org.gnome.gedit.gschema.xml.in:36
+#: data/com.bwhmather.bedit.gschema.xml.in:36
 msgid "Use Default Font"
 msgstr "Koristi uobičajena slova"
 
-#: data/org.gnome.gedit.gschema.xml.in:37
+#: data/com.bwhmather.bedit.gschema.xml.in:37
 msgid ""
 "Whether to use the system’s default fixed width font for editing text "
 "instead of a font specific to gedit. If this option is turned off, then the "
@@ -90,15 +90,15 @@ msgstr ""
 "\"Uređivač slova\"."
 
 #. Translators: This is a GSettings default value. Do NOT change or localize the quotation marks!
-#: data/org.gnome.gedit.gschema.xml.in:41
+#: data/com.bwhmather.bedit.gschema.xml.in:41
 msgid "'Monospace 12'"
 msgstr "'Monospace 12'"
 
-#: data/org.gnome.gedit.gschema.xml.in:42
+#: data/com.bwhmather.bedit.gschema.xml.in:42
 msgid "Editor Font"
 msgstr "Slova uređivača"
 
-#: data/org.gnome.gedit.gschema.xml.in:43
+#: data/com.bwhmather.bedit.gschema.xml.in:43
 msgid ""
 "A custom font that will be used for the editing area. This will only take "
 "effect if the “Use Default Font” option is turned off."
@@ -106,27 +106,27 @@ msgstr ""
 "Odabrana slova koja će biti korištena u prostoru za uređivanje teksta. Nema "
 "učinka ako je postavka \"Koristi uobičajena slova\" uključena."
 
-#: data/org.gnome.gedit.gschema.xml.in:47
+#: data/com.bwhmather.bedit.gschema.xml.in:47
 msgid "Style Scheme"
 msgstr "Shema izgleda"
 
-#: data/org.gnome.gedit.gschema.xml.in:48
+#: data/com.bwhmather.bedit.gschema.xml.in:48
 msgid "The ID of a GtkSourceView Style Scheme used to color the text."
 msgstr "ID GtkSourceWiew shema izgleda koje će se koristiti za boju teksta."
 
-#: data/org.gnome.gedit.gschema.xml.in:52
+#: data/com.bwhmather.bedit.gschema.xml.in:52
 msgid "Create Backup Copies"
 msgstr "Stvori sigurnosne kopije"
 
-#: data/org.gnome.gedit.gschema.xml.in:53
+#: data/com.bwhmather.bedit.gschema.xml.in:53
 msgid "Whether gedit should create backup copies for the files it saves."
 msgstr "Treba li gedit stvoriti sigurnosne kopije za datoteke koju sprema."
 
-#: data/org.gnome.gedit.gschema.xml.in:57
+#: data/com.bwhmather.bedit.gschema.xml.in:57
 msgid "Autosave"
 msgstr "Automatsko spremanje"
 
-#: data/org.gnome.gedit.gschema.xml.in:58
+#: data/com.bwhmather.bedit.gschema.xml.in:58
 msgid ""
 "Whether gedit should automatically save modified files after a time "
 "interval. You can set the time interval with the “Autosave Interval” option."
@@ -135,11 +135,11 @@ msgstr ""
 "vremenskog razdoblja? Vremensko razdoblje možete postaviti s \"Razdoblje "
 "automatskog spremanja\" mogućnosti."
 
-#: data/org.gnome.gedit.gschema.xml.in:62
+#: data/com.bwhmather.bedit.gschema.xml.in:62
 msgid "Autosave Interval"
 msgstr "Razdoblje automatskog spremanja"
 
-#: data/org.gnome.gedit.gschema.xml.in:63
+#: data/com.bwhmather.bedit.gschema.xml.in:63
 msgid ""
 "Number of minutes after which gedit will automatically save modified files. "
 "This will only take effect if the “Autosave” option is turned on."
@@ -148,11 +148,11 @@ msgstr ""
 "To će biti primijenjeno samo ako je mogućnost \"Automatsko spremanje\" "
 "isključena."
 
-#: data/org.gnome.gedit.gschema.xml.in:67
+#: data/com.bwhmather.bedit.gschema.xml.in:67
 msgid "Maximum Number of Undo Actions"
 msgstr "Najveći broj radnji poništavanja"
 
-#: data/org.gnome.gedit.gschema.xml.in:68
+#: data/com.bwhmather.bedit.gschema.xml.in:68
 msgid ""
 "Maximum number of actions that gedit will be able to undo or redo. Use “-1” "
 "for unlimited number of actions."
@@ -160,11 +160,11 @@ msgstr ""
 "Najveći broj radnji koje će gedit moći poništiti ili vratiti. Koristite "
 "\"-1\" za neograničen broj radnji."
 
-#: data/org.gnome.gedit.gschema.xml.in:77
+#: data/com.bwhmather.bedit.gschema.xml.in:77
 msgid "Line Wrapping Mode"
 msgstr "Način prijeloma retka"
 
-#: data/org.gnome.gedit.gschema.xml.in:78
+#: data/com.bwhmather.bedit.gschema.xml.in:78
 msgid ""
 "Specifies how to wrap long lines in the editing area. Use “none” for no "
 "wrapping, “word” for wrapping at word boundaries, and “char” for wrapping at "
@@ -176,11 +176,11 @@ msgstr ""
 "\" za prijelom na granicama znakova. Vrijednosti su osjetljive na velika i "
 "mala slova, stoga pazite da se pojavljuju na isti način kao i ovdje."
 
-#: data/org.gnome.gedit.gschema.xml.in:86
+#: data/com.bwhmather.bedit.gschema.xml.in:86
 msgid "Last split mode choice for line wrapping mode"
 msgstr "Posljednji odabir načina prijeloma prijelom redaka"
 
-#: data/org.gnome.gedit.gschema.xml.in:87
+#: data/com.bwhmather.bedit.gschema.xml.in:87
 msgid ""
 "Specifies the last split mode used with line wrapping mode, so that when "
 "wrapping mode is off we still remember the split mode choice. Use “word” for "
@@ -192,86 +192,86 @@ msgstr ""
 "prijeloma. Koristite \"word\" za prijelom kod riječi ili \"char\" za "
 "prijelom kod pojedinog znaka."
 
-#: data/org.gnome.gedit.gschema.xml.in:91
+#: data/com.bwhmather.bedit.gschema.xml.in:91
 msgid "Tab Size"
 msgstr "Tab veličina"
 
-#: data/org.gnome.gedit.gschema.xml.in:92
+#: data/com.bwhmather.bedit.gschema.xml.in:92
 msgid ""
 "Specifies the number of spaces that should be displayed instead of Tab "
 "characters."
 msgstr "Određuje broj razmaka koji se prikazuju umjesto Tab znaka."
 
-#: data/org.gnome.gedit.gschema.xml.in:96
+#: data/com.bwhmather.bedit.gschema.xml.in:96
 msgid "Insert spaces"
 msgstr "Umetni razmake"
 
-#: data/org.gnome.gedit.gschema.xml.in:97
+#: data/com.bwhmather.bedit.gschema.xml.in:97
 msgid "Whether gedit should insert spaces instead of tabs."
 msgstr "Treba li gedit umetnuti razmake umjesto tabova."
 
-#: data/org.gnome.gedit.gschema.xml.in:101
+#: data/com.bwhmather.bedit.gschema.xml.in:101
 msgid "Automatic indent"
 msgstr "Automatsko poravnavanje"
 
-#: data/org.gnome.gedit.gschema.xml.in:102
+#: data/com.bwhmather.bedit.gschema.xml.in:102
 msgid "Whether gedit should enable automatic indentation."
 msgstr "Treba li gedit omogućiti automatsko poravnavanje."
 
-#: data/org.gnome.gedit.gschema.xml.in:106
+#: data/com.bwhmather.bedit.gschema.xml.in:106
 msgid "Display Line Numbers"
 msgstr "Prikaži brojeve redaka"
 
-#: data/org.gnome.gedit.gschema.xml.in:107
+#: data/com.bwhmather.bedit.gschema.xml.in:107
 msgid "Whether gedit should display line numbers in the editing area."
 msgstr ""
 "Treba li gedit prikazivati brojeve redaka u prostoru za izmjenu teksta."
 
-#: data/org.gnome.gedit.gschema.xml.in:111
+#: data/com.bwhmather.bedit.gschema.xml.in:111
 msgid "Highlight Current Line"
 msgstr "Istakni trenutni redak"
 
-#: data/org.gnome.gedit.gschema.xml.in:112
+#: data/com.bwhmather.bedit.gschema.xml.in:112
 msgid "Whether gedit should highlight the current line."
 msgstr "Treba li gedit istaknuti trenutni redak."
 
-#: data/org.gnome.gedit.gschema.xml.in:116
+#: data/com.bwhmather.bedit.gschema.xml.in:116
 msgid "Highlight Matching Brackets"
 msgstr "Istakni odgovarajuće zagrade"
 
-#: data/org.gnome.gedit.gschema.xml.in:117
+#: data/com.bwhmather.bedit.gschema.xml.in:117
 msgid "Whether gedit should highlight matching brackets."
 msgstr "Treba li gedit istaknuti odgovarajuće zagrade."
 
-#: data/org.gnome.gedit.gschema.xml.in:121
+#: data/com.bwhmather.bedit.gschema.xml.in:121
 msgid "Display Right Margin"
 msgstr "Prikaži desni rub"
 
-#: data/org.gnome.gedit.gschema.xml.in:122
+#: data/com.bwhmather.bedit.gschema.xml.in:122
 msgid "Whether gedit should display the right margin in the editing area."
 msgstr "Treba li gedit prikazivati desni rub u prostoru uređivanja teksta."
 
-#: data/org.gnome.gedit.gschema.xml.in:126
+#: data/com.bwhmather.bedit.gschema.xml.in:126
 msgid "Right Margin Position"
 msgstr "Položaj desnog ruba"
 
-#: data/org.gnome.gedit.gschema.xml.in:127
+#: data/com.bwhmather.bedit.gschema.xml.in:127
 msgid "Specifies the position of the right margin."
 msgstr "Određuje položaj desnog ruba."
 
-#: data/org.gnome.gedit.gschema.xml.in:131
+#: data/com.bwhmather.bedit.gschema.xml.in:131
 msgid "Document background pattern type"
 msgstr "Vrsta uzorka pozadine dokumenta"
 
-#: data/org.gnome.gedit.gschema.xml.in:132
+#: data/com.bwhmather.bedit.gschema.xml.in:132
 msgid "Whether the document will get a background pattern painted."
 msgstr "Treba li pozadini dokumenta dodati obojani uzorak."
 
-#: data/org.gnome.gedit.gschema.xml.in:142
+#: data/com.bwhmather.bedit.gschema.xml.in:142
 msgid "Smart Home End"
 msgstr "Pametne Home i End tipke"
 
-#: data/org.gnome.gedit.gschema.xml.in:143
+#: data/com.bwhmather.bedit.gschema.xml.in:143
 msgid ""
 "Specifies how the cursor moves when the HOME and END keys are pressed. Use "
 "“disabled” to always move at the start/end of the line, “after” to move to "
@@ -289,11 +289,11 @@ msgstr ""
 "početak/kraj retka i \"uvijek\" kako biste se uvijek pomaknuli na početak/"
 "kraj teksta umjesto na početak/kraj retka."
 
-#: data/org.gnome.gedit.gschema.xml.in:147
+#: data/com.bwhmather.bedit.gschema.xml.in:147
 msgid "Restore Previous Cursor Position"
 msgstr "Vrati prijašnji položaj pokazivača"
 
-#: data/org.gnome.gedit.gschema.xml.in:148
+#: data/com.bwhmather.bedit.gschema.xml.in:148
 msgid ""
 "Whether gedit should restore the previous cursor position when a file is "
 "loaded."
@@ -301,39 +301,39 @@ msgstr ""
 "Treba li gedit postaviti pokazivač na prijašnji položaj prilikom učitavanja "
 "datoteke."
 
-#: data/org.gnome.gedit.gschema.xml.in:152
+#: data/com.bwhmather.bedit.gschema.xml.in:152
 msgid "Enable Syntax Highlighting"
 msgstr "Uključi isticanje sintakse"
 
-#: data/org.gnome.gedit.gschema.xml.in:153
+#: data/com.bwhmather.bedit.gschema.xml.in:153
 msgid "Whether gedit should enable syntax highlighting."
 msgstr "Treba li gedit omogućiti isticanje sintakse."
 
-#: data/org.gnome.gedit.gschema.xml.in:157
+#: data/com.bwhmather.bedit.gschema.xml.in:157
 msgid "Enable Search Highlighting"
 msgstr "Omogući isticanje pretraga"
 
-#: data/org.gnome.gedit.gschema.xml.in:158
+#: data/com.bwhmather.bedit.gschema.xml.in:158
 msgid ""
 "Whether gedit should highlight all the occurrences of the searched text."
 msgstr ""
 "Treba li gedit isticati sva pojavljivanja teksta za kojm se pretražuje."
 
-#: data/org.gnome.gedit.gschema.xml.in:162
+#: data/com.bwhmather.bedit.gschema.xml.in:162
 msgid "Ensure Trailing Newline"
 msgstr "Osiguraj novi redak na kraju"
 
-#: data/org.gnome.gedit.gschema.xml.in:163
+#: data/com.bwhmather.bedit.gschema.xml.in:163
 msgid ""
 "Whether gedit will ensure that documents always end with a trailing newline."
 msgstr ""
 "Treba li gedit osigurati da dokumenti uvijek imaju novi redak na kraju."
 
-#: data/org.gnome.gedit.gschema.xml.in:169
+#: data/com.bwhmather.bedit.gschema.xml.in:169
 msgid "Notebook Show Tabs Mode"
 msgstr "Prikazivanje kartica na prijenosnicima"
 
-#: data/org.gnome.gedit.gschema.xml.in:170
+#: data/com.bwhmather.bedit.gschema.xml.in:170
 msgid ""
 "Specifies when to show the notebook tabs. Use “never” to never show the "
 "tabs, “always” to always show the tabs, and “auto” to show the tabs only "
@@ -346,46 +346,46 @@ msgstr ""
 "osjetljive na velika i mala slova, stoga pazite da se pojavljuju na isti "
 "način kao i ovdje."
 
-#: data/org.gnome.gedit.gschema.xml.in:174
+#: data/com.bwhmather.bedit.gschema.xml.in:174
 msgid "Status Bar is Visible"
 msgstr "Statusna traka je vidljiva"
 
-#: data/org.gnome.gedit.gschema.xml.in:175
+#: data/com.bwhmather.bedit.gschema.xml.in:175
 msgid ""
 "Whether the status bar at the bottom of editing windows should be visible."
 msgstr "Treba li statusna traka u dnu prozora za uređivanje biti vidljiva."
 
-#: data/org.gnome.gedit.gschema.xml.in:179
+#: data/com.bwhmather.bedit.gschema.xml.in:179
 msgid "Side panel is Visible"
 msgstr "Bočni panel je vidljiv"
 
-#: data/org.gnome.gedit.gschema.xml.in:180
+#: data/com.bwhmather.bedit.gschema.xml.in:180
 msgid ""
 "Whether the side panel at the left of editing windows should be visible."
 msgstr "Treba li bočni panel lijevo od prozora za uređivanje biti vidljiv."
 
-#: data/org.gnome.gedit.gschema.xml.in:189
+#: data/com.bwhmather.bedit.gschema.xml.in:189
 msgid "Print Syntax Highlighting"
 msgstr "Ispis isticanja sintakse"
 
-#: data/org.gnome.gedit.gschema.xml.in:190
+#: data/com.bwhmather.bedit.gschema.xml.in:190
 msgid "Whether gedit should print syntax highlighting when printing documents."
 msgstr ""
 "Treba li gedit ispisivati istaknutu sintaksu prilikom ispisa dokumenata."
 
-#: data/org.gnome.gedit.gschema.xml.in:194
+#: data/com.bwhmather.bedit.gschema.xml.in:194
 msgid "Print Header"
 msgstr "Ispis zaglavlja"
 
-#: data/org.gnome.gedit.gschema.xml.in:195
+#: data/com.bwhmather.bedit.gschema.xml.in:195
 msgid "Whether gedit should include a document header when printing documents."
 msgstr "Treba li gedit uključiti zaglavlje dokumenta prilikom ispisa."
 
-#: data/org.gnome.gedit.gschema.xml.in:204
+#: data/com.bwhmather.bedit.gschema.xml.in:204
 msgid "Printing Line Wrapping Mode"
 msgstr "Ispis načina prijeloma redaka"
 
-#: data/org.gnome.gedit.gschema.xml.in:205
+#: data/com.bwhmather.bedit.gschema.xml.in:205
 msgid ""
 "Specifies how to wrap long lines for printing. Use “none” for no wrapping, "
 "“word” for wrapping at word boundaries, and “char” for wrapping at "
@@ -397,11 +397,11 @@ msgstr ""
 "prijelom na granicama znakova. Vrijednosti su osjetljive na velika i mala "
 "slova, stoga pazite da se pojavljuju na isti način kao i ovdje."
 
-#: data/org.gnome.gedit.gschema.xml.in:209
+#: data/com.bwhmather.bedit.gschema.xml.in:209
 msgid "Print Line Numbers"
 msgstr "Ispis brojeva redaka"
 
-#: data/org.gnome.gedit.gschema.xml.in:210
+#: data/com.bwhmather.bedit.gschema.xml.in:210
 msgid ""
 "If this value is 0, then no line numbers will be inserted when printing a "
 "document. Otherwise, gedit will print line numbers every such number of "
@@ -412,15 +412,15 @@ msgstr ""
 "redaka."
 
 #. Translators: This is a GSettings default value. Do NOT change or localize the quotation marks!
-#: data/org.gnome.gedit.gschema.xml.in:214
+#: data/com.bwhmather.bedit.gschema.xml.in:214
 msgid "'Monospace 9'"
 msgstr "'Monospace 9'"
 
-#: data/org.gnome.gedit.gschema.xml.in:215
+#: data/com.bwhmather.bedit.gschema.xml.in:215
 msgid "Body Font for Printing"
 msgstr "Slova glavnog teksta pri ispisu"
 
-#: data/org.gnome.gedit.gschema.xml.in:216
+#: data/com.bwhmather.bedit.gschema.xml.in:216
 msgid ""
 "Specifies the font to use for a document’s body when printing documents."
 msgstr ""
@@ -428,15 +428,15 @@ msgstr ""
 "ispisa."
 
 #. Translators: This is a GSettings default value. Do NOT change or localize the quotation marks!
-#: data/org.gnome.gedit.gschema.xml.in:220
+#: data/com.bwhmather.bedit.gschema.xml.in:220
 msgid "'Sans 11'"
 msgstr "'Sans 11'"
 
-#: data/org.gnome.gedit.gschema.xml.in:221
+#: data/com.bwhmather.bedit.gschema.xml.in:221
 msgid "Header Font for Printing"
 msgstr "Slova zaglavlja prilikom ispisa"
 
-#: data/org.gnome.gedit.gschema.xml.in:222
+#: data/com.bwhmather.bedit.gschema.xml.in:222
 msgid ""
 "Specifies the font to use for page headers when printing a document. This "
 "will only take effect if the “Print Header” option is turned on."
@@ -445,15 +445,15 @@ msgstr ""
 "samo ako je uključena mogućnost \"Ispisuj zaglavlje\"."
 
 #. Translators: This is a GSettings default value. Do NOT change or localize the quotation marks!
-#: data/org.gnome.gedit.gschema.xml.in:226
+#: data/com.bwhmather.bedit.gschema.xml.in:226
 msgid "'Sans 8'"
 msgstr "'Sans 8'"
 
-#: data/org.gnome.gedit.gschema.xml.in:227
+#: data/com.bwhmather.bedit.gschema.xml.in:227
 msgid "Line Number Font for Printing"
 msgstr "Slova broja retka prilikom ispisa"
 
-#: data/org.gnome.gedit.gschema.xml.in:228
+#: data/com.bwhmather.bedit.gschema.xml.in:228
 msgid ""
 "Specifies the font to use for line numbers when printing. This will only "
 "take effect if the “Print Line Numbers” option is non-zero."
@@ -461,43 +461,43 @@ msgstr ""
 "Određuje slova koja se koriste za ispis brojeva redaka. Ovo ima učinak samo "
 "ako mogućnost \"Ispisuj brojeve redaka\" nije postavljena na 0."
 
-#: data/org.gnome.gedit.gschema.xml.in:232
+#: data/com.bwhmather.bedit.gschema.xml.in:232
 msgid "Margin Left"
 msgstr "Lijevi rub"
 
-#: data/org.gnome.gedit.gschema.xml.in:233
+#: data/com.bwhmather.bedit.gschema.xml.in:233
 msgid "The left margin, in millimeters."
 msgstr "Lijevi rub u milimetrima."
 
-#: data/org.gnome.gedit.gschema.xml.in:237
+#: data/com.bwhmather.bedit.gschema.xml.in:237
 msgid "Margin Top"
 msgstr "Gornji rub"
 
-#: data/org.gnome.gedit.gschema.xml.in:238
+#: data/com.bwhmather.bedit.gschema.xml.in:238
 msgid "The top margin, in millimeters."
 msgstr "Gornji rub u milimetrima."
 
-#: data/org.gnome.gedit.gschema.xml.in:242
+#: data/com.bwhmather.bedit.gschema.xml.in:242
 msgid "Margin Right"
 msgstr "Desni rub"
 
-#: data/org.gnome.gedit.gschema.xml.in:243
+#: data/com.bwhmather.bedit.gschema.xml.in:243
 msgid "The right margin, in millimeters."
 msgstr "Desni rub u milimetrima."
 
-#: data/org.gnome.gedit.gschema.xml.in:247
+#: data/com.bwhmather.bedit.gschema.xml.in:247
 msgid "Margin Bottom"
 msgstr "Donji rub"
 
-#: data/org.gnome.gedit.gschema.xml.in:248
+#: data/com.bwhmather.bedit.gschema.xml.in:248
 msgid "The bottom margin, in millimeters."
 msgstr "Donji rub u milimetrima."
 
-#: data/org.gnome.gedit.gschema.xml.in:254
+#: data/com.bwhmather.bedit.gschema.xml.in:254
 msgid "Candidate Encodings"
 msgstr "Kôdne stranice"
 
-#: data/org.gnome.gedit.gschema.xml.in:255
+#: data/com.bwhmather.bedit.gschema.xml.in:255
 msgid ""
 "List of candidate encodings shown in the Character Encoding menu in the open/"
 "save file chooser. “CURRENT” represents the current locale encoding. Only "
@@ -509,11 +509,11 @@ msgstr ""
 "kôdne stranice koriste. Zadana vrijednost je prazan popis, za koji će gedit "
 "odabrati najbolju zadanu kôdnu stranicu ovisno o zemlji i jeziku."
 
-#: data/org.gnome.gedit.gschema.xml.in:301
+#: data/com.bwhmather.bedit.gschema.xml.in:301
 msgid "Active plugins"
 msgstr "Aktivni priključci"
 
-#: data/org.gnome.gedit.gschema.xml.in:302
+#: data/com.bwhmather.bedit.gschema.xml.in:302
 msgid ""
 "List of active plugins. It contains the “Location” of the active plugins. "
 "See the .gedit-plugin file for obtaining the “Location” of a given plugin."
@@ -2042,8 +2042,8 @@ msgid "Editor"
 msgstr "Uređivač"
 
 #: gedit/resources/ui/gedit-preferences-dialog.ui:514
-#: plugins/externaltools/org.gnome.gedit.plugins.externaltools.gschema.xml.in:14
-#: plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in:24
+#: plugins/externaltools/com.bwhmather.bedit.plugins.externaltools.gschema.xml.in:14
+#: plugins/pythonconsole/com.bwhmather.bedit.plugins.pythonconsole.gschema.xml.in:24
 msgid "Font"
 msgstr "Slova"
 
@@ -2596,12 +2596,12 @@ msgstr ""
 "Možete preuzeti novu inačicu gedita klikom na tipku \"Preuzmi\" dolje ili "
 "možete zanemariti tu inačicu i pričekati novu"
 
-#: plugins/checkupdate/org.gnome.gedit.plugins.checkupdate.gschema.xml.in:5
+#: plugins/checkupdate/com.bwhmather.bedit.plugins.checkupdate.gschema.xml.in:5
 msgid "Version to Ignore"
 msgstr "Inačica za zanemariti"
 
 #. This is releated to the next gedit version to be released
-#: plugins/checkupdate/org.gnome.gedit.plugins.checkupdate.gschema.xml.in:7
+#: plugins/checkupdate/com.bwhmather.bedit.plugins.checkupdate.gschema.xml.in:7
 msgid "Version to ignore until a newer version is released."
 msgstr "Inačica za zanemariti dok ne bude dostupna nova."
 
@@ -2697,12 +2697,12 @@ msgstr "Vanjski alati"
 msgid "Execute external commands and shell scripts."
 msgstr "Pokreni vanjske (eksterne) naredbe i skripte ljuske."
 
-#: plugins/externaltools/org.gnome.gedit.plugins.externaltools.gschema.xml.in:5
-#: plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in:15
+#: plugins/externaltools/com.bwhmather.bedit.plugins.externaltools.gschema.xml.in:5
+#: plugins/pythonconsole/com.bwhmather.bedit.plugins.pythonconsole.gschema.xml.in:15
 msgid "Whether to use the system font"
 msgstr "Treba li koristiti slova sustava"
 
-#: plugins/externaltools/org.gnome.gedit.plugins.externaltools.gschema.xml.in:6
+#: plugins/externaltools/com.bwhmather.bedit.plugins.externaltools.gschema.xml.in:6
 msgid ""
 "If true, the external tools will use the desktop-global standard font if "
 "it’s monospace (and the most similar font it can come up with otherwise)."
@@ -2710,8 +2710,8 @@ msgstr ""
 "Ako je odabrano, vanjski alati će koristiti standardna slova radne površine "
 "ako je ono monospace (i najsličnija moguća slova)."
 
-#: plugins/externaltools/org.gnome.gedit.plugins.externaltools.gschema.xml.in:15
-#: plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in:25
+#: plugins/externaltools/com.bwhmather.bedit.plugins.externaltools.gschema.xml.in:15
+#: plugins/pythonconsole/com.bwhmather.bedit.plugins.pythonconsole.gschema.xml.in:25
 msgid "A Pango font name. Examples are “Sans 12” or “Monospace Bold 14”."
 msgstr "Naziv slova Pango. Primjeri su \"Sans 12\" ili \"Monospace Bold 14\"."
 
@@ -3048,11 +3048,11 @@ msgstr "Nemoguće montirati uređaj: %s"
 msgid "Error when loading “%s”: No such directory"
 msgstr "Greška pri učitavanju “%s“: Nema takvog direktorija"
 
-#: plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in:5
+#: plugins/filebrowser/com.bwhmather.bedit.plugins.filebrowser.gschema.xml.in:5
 msgid "Open With Tree View"
 msgstr "Otvori u pogledu stabla"
 
-#: plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in:6
+#: plugins/filebrowser/com.bwhmather.bedit.plugins.filebrowser.gschema.xml.in:6
 msgid ""
 "Open the tree view when the file browser plugin gets loaded instead of the "
 "bookmarks view"
@@ -3060,11 +3060,11 @@ msgstr ""
 "Otvori pogled stabla kada se učita priključak datotečnog preglednika umjesto "
 "pogleda zabilješka"
 
-#: plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in:10
+#: plugins/filebrowser/com.bwhmather.bedit.plugins.filebrowser.gschema.xml.in:10
 msgid "File Browser Root Directory"
 msgstr "Korjenski direktorij preglednika datoteka"
 
-#: plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in:11
+#: plugins/filebrowser/com.bwhmather.bedit.plugins.filebrowser.gschema.xml.in:11
 msgid ""
 "The file browser root directory to use when loading the file browser plugin "
 "and onload/tree_view is TRUE."
@@ -3073,11 +3073,11 @@ msgstr ""
 "učitava priključak datotečnog preglednika kad je onload/stablasti_pogled "
 "ISTINITO."
 
-#: plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in:15
+#: plugins/filebrowser/com.bwhmather.bedit.plugins.filebrowser.gschema.xml.in:15
 msgid "File Browser Virtual Root Directory"
 msgstr "Virtualni korjenski direktorij preglednika datoteka"
 
-#: plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in:16
+#: plugins/filebrowser/com.bwhmather.bedit.plugins.filebrowser.gschema.xml.in:16
 msgid ""
 "The file browser virtual root directory to use when loading the file browser "
 "plugin when onload/tree_view is TRUE. The virtual root must always be below "
@@ -3087,19 +3087,19 @@ msgstr ""
 "kad se učitava priključak datotečnog preglednika kad je onload/"
 "stablasti_pogled ISTINITO."
 
-#: plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in:20
+#: plugins/filebrowser/com.bwhmather.bedit.plugins.filebrowser.gschema.xml.in:20
 msgid "Enable Restore of Remote Locations"
 msgstr "Omogući obnavljanje udaljenih lokacija"
 
-#: plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in:21
+#: plugins/filebrowser/com.bwhmather.bedit.plugins.filebrowser.gschema.xml.in:21
 msgid "Sets whether to enable restoring of remote locations."
 msgstr "Određuje hoće li se omogućiti obnavljanje udaljenih lokacija."
 
-#: plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in:25
+#: plugins/filebrowser/com.bwhmather.bedit.plugins.filebrowser.gschema.xml.in:25
 msgid "Set Location to First Document"
 msgstr "Postavi lokaciju na prvi dokument"
 
-#: plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in:26
+#: plugins/filebrowser/com.bwhmather.bedit.plugins.filebrowser.gschema.xml.in:26
 msgid ""
 "If TRUE the file browser plugin will view the directory of the first opened "
 "document given that the file browser hasn’t been used yet. (Thus this "
@@ -3111,11 +3111,11 @@ msgstr ""
 "upotrijebljen. (Ovo se onda uobičajeno odnosi na otvaranje dokumenta iz "
 "naredbenog redka ili iz Nautilusa itd.)"
 
-#: plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in:30
+#: plugins/filebrowser/com.bwhmather.bedit.plugins.filebrowser.gschema.xml.in:30
 msgid "File Browser Filter Mode"
 msgstr "Način rada filtra za preglednik datoteka"
 
-#: plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in:31
+#: plugins/filebrowser/com.bwhmather.bedit.plugins.filebrowser.gschema.xml.in:31
 msgid ""
 "This value determines what files get filtered from the file browser. Valid "
 "values are: none (filter nothing), hide-hidden (filter hidden files) and "
@@ -3125,11 +3125,11 @@ msgstr ""
 "Valjane vrijednosti su: ništa (nemoj ništa filtrirati), sakrij-skrivene "
 "(filtriraj skrivene datoteke) i sakrij-binarne (filtriraj binarne datoteke)."
 
-#: plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in:35
+#: plugins/filebrowser/com.bwhmather.bedit.plugins.filebrowser.gschema.xml.in:35
 msgid "File Browser Filter Pattern"
 msgstr "Način filtriranja preglednika datoteka"
 
-#: plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in:36
+#: plugins/filebrowser/com.bwhmather.bedit.plugins.filebrowser.gschema.xml.in:36
 msgid ""
 "The filter pattern to filter the file browser with. This filter works on top "
 "of the filter_mode."
@@ -3137,11 +3137,11 @@ msgstr ""
 "Način filtriranja za filtriranje preglednika datoteka. Ovaj filter radi "
 "povrh filter_način rada."
 
-#: plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in:40
+#: plugins/filebrowser/com.bwhmather.bedit.plugins.filebrowser.gschema.xml.in:40
 msgid "File Browser Binary Patterns"
 msgstr "Binarni uzorci preglednika datoteka"
 
-#: plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in:41
+#: plugins/filebrowser/com.bwhmather.bedit.plugins.filebrowser.gschema.xml.in:41
 msgid "The supplemental patterns to use when filtering binary files."
 msgstr "Dodatni uzorci za korištenje pri filtriranju binarnih datoteka."
 
@@ -3210,23 +3210,23 @@ msgstr "Modelines"
 msgid "Emacs, Kate and Vim-style modelines support for gedit."
 msgstr "Emacs, Kate i Vim modelines podržane u geditu."
 
-#: plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in:5
+#: plugins/pythonconsole/com.bwhmather.bedit.plugins.pythonconsole.gschema.xml.in:5
 msgid "Command Color Text"
 msgstr "Boja teksta naredbe"
 
-#: plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in:6
+#: plugins/pythonconsole/com.bwhmather.bedit.plugins.pythonconsole.gschema.xml.in:6
 msgid "The command color text"
 msgstr "Boja teksta naredbe"
 
-#: plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in:10
+#: plugins/pythonconsole/com.bwhmather.bedit.plugins.pythonconsole.gschema.xml.in:10
 msgid "Error Color Text"
 msgstr "Boja teksta greške"
 
-#: plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in:11
+#: plugins/pythonconsole/com.bwhmather.bedit.plugins.pythonconsole.gschema.xml.in:11
 msgid "The error color text"
 msgstr "Boja teksta greške"
 
-#: plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in:16
+#: plugins/pythonconsole/com.bwhmather.bedit.plugins.pythonconsole.gschema.xml.in:16
 msgid ""
 "If true, the terminal will use the desktop-global standard font if it’s "
 "monospace (and the most similar font it can come up with otherwise)."
@@ -3565,12 +3565,12 @@ msgstr "Postavi _jezik…"
 msgid "_Highlight Misspelled Words"
 msgstr "_Istakni krivo napisane riječi"
 
-#: plugins/spell/org.gnome.gedit.plugins.spell.gschema.xml.in:5
+#: plugins/spell/com.bwhmather.bedit.plugins.spell.gschema.xml.in:5
 #: plugins/spell/resources/ui/gedit-spell-setup-dialog.ui:75
 msgid "Highlight misspelled words"
 msgstr "Istakni krivo napisane riječi"
 
-#: plugins/spell/org.gnome.gedit.plugins.spell.gschema.xml.in:6
+#: plugins/spell/com.bwhmather.bedit.plugins.spell.gschema.xml.in:6
 msgid "Default setting for highlight misspelled words."
 msgstr "Zadane postavke za isticanje krivo napisanih riječi."
 
@@ -3598,11 +3598,11 @@ msgstr "Umetni _datum i vrijeme…"
 msgid "Available formats"
 msgstr "Dostupni formati"
 
-#: plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in:5
+#: plugins/time/com.bwhmather.bedit.plugins.time.gschema.xml.in:5
 msgid "Prompt Type"
 msgstr "Vrsta upita"
 
-#: plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in:6
+#: plugins/time/com.bwhmather.bedit.plugins.time.gschema.xml.in:6
 msgid ""
 "If the user should be prompted for a format or if the selected or custom "
 "format should be used."
@@ -3610,19 +3610,19 @@ msgstr ""
 "Treba li korisnika pitati za format ili će se koristiti odabrani ili "
 "prilagođeni format."
 
-#: plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in:10
+#: plugins/time/com.bwhmather.bedit.plugins.time.gschema.xml.in:10
 msgid "Selected Format"
 msgstr "Odabrani format"
 
-#: plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in:11
+#: plugins/time/com.bwhmather.bedit.plugins.time.gschema.xml.in:11
 msgid "The selected format used when inserting the date/time."
 msgstr "Odabrani format koji je korišten pri umetanju datuma/vremena."
 
-#: plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in:15
+#: plugins/time/com.bwhmather.bedit.plugins.time.gschema.xml.in:15
 msgid "Custom Format"
 msgstr "Prilagođeni format"
 
-#: plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in:16
+#: plugins/time/com.bwhmather.bedit.plugins.time.gschema.xml.in:16
 msgid "The custom format used when inserting the date/time."
 msgstr "Prilagođeni format koji je korišten pri umetanju datuma/vremena."
 

@@ -333,8 +333,8 @@ static void
 gedit_settings_init (GeditSettings *gs)
 {
 	gs->old_scheme = NULL;
-	gs->editor = g_settings_new ("org.gnome.gedit.preferences.editor");
-	gs->ui = g_settings_new ("org.gnome.gedit.preferences.ui");
+	gs->editor = g_settings_new ("com.bwhmather.bedit.preferences.editor");
+	gs->ui = g_settings_new ("com.bwhmather.bedit.preferences.ui");
 
 	/* Load settings */
 	gs->lockdown = g_settings_new ("org.gnome.desktop.lockdown");
@@ -547,7 +547,7 @@ gedit_settings_get_candidate_encodings (gboolean *default_candidates)
 	utf8_encoding = gtk_source_encoding_get_utf8 ();
 	current_encoding = gtk_source_encoding_get_current ();
 
-	settings = g_settings_new ("org.gnome.gedit.preferences.encodings");
+	settings = g_settings_new ("com.bwhmather.bedit.preferences.encodings");
 
 	settings_strv = g_settings_get_strv (settings, GEDIT_SETTINGS_CANDIDATE_ENCODINGS);
 

@@ -334,7 +334,7 @@ gedit_encodings_dialog_class_init (GeditEncodingsDialogClass *klass)
 
 	/* Bind class to template */
 	gtk_widget_class_set_template_from_resource (widget_class,
-	                                             "/org/gnome/gedit/ui/gedit-encodings-dialog.ui");
+	                                             "/com/bwhmather/bedit/ui/gedit-encodings-dialog.ui");
 	gtk_widget_class_bind_template_child (widget_class, GeditEncodingsDialog, liststore_available);
 	gtk_widget_class_bind_template_child (widget_class, GeditEncodingsDialog, liststore_chosen);
 	gtk_widget_class_bind_template_child (widget_class, GeditEncodingsDialog, sort_available);
@@ -839,7 +839,7 @@ gedit_encodings_dialog_init (GeditEncodingsDialog *dialog)
 {
 	GtkTreeSelection *selection;
 
-	dialog->enc_settings = g_settings_new ("org.gnome.gedit.preferences.encodings");
+	dialog->enc_settings = g_settings_new ("com.bwhmather.bedit.preferences.encodings");
 
 	gtk_widget_init_template (GTK_WIDGET (dialog));
 

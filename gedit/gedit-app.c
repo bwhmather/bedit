@@ -632,7 +632,7 @@ load_css_from_resource (const gchar *filename,
 	GtkCssProvider *provider;
 	gchar *resource_name;
 
-	resource_name = g_strdup_printf ("resource:///org/gnome/gedit/css/%s", filename);
+	resource_name = g_strdup_printf ("resource:///com/bwhmather/bedit/css/%s", filename);
 	css_file = g_file_new_for_uri (resource_name);
 	g_free (resource_name);
 
@@ -773,8 +773,8 @@ gedit_app_startup (GApplication *application)
 
 	/* Load settings */
 	priv->settings = gedit_settings_new ();
-	priv->ui_settings = g_settings_new ("org.gnome.gedit.preferences.ui");
-	priv->window_settings = g_settings_new ("org.gnome.gedit.state.window");
+	priv->ui_settings = g_settings_new ("com.bwhmather.bedit.preferences.ui");
+	priv->window_settings = g_settings_new ("com.bwhmather.bedit.state.window");
 
 	/* initial lockdown state */
 	priv->lockdown = gedit_settings_get_lockdown (priv->settings);

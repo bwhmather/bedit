@@ -30,7 +30,7 @@ __all__ = ('PythonConsoleConfigWidget')
 
 class PythonConsoleConfigWidget(object):
 
-    CONSOLE_KEY_BASE = 'org.gnome.gedit.plugins.pythonconsole'
+    CONSOLE_KEY_BASE = 'com.bwhmather.bedit.plugins.pythonconsole'
     CONSOLE_KEY_COMMAND_COLOR = 'command-color'
     CONSOLE_KEY_ERROR_COLOR = 'error-color'
 

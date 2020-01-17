@@ -2,7 +2,7 @@ subdir('icons')
 
 install_man('gedit.1')
 
-appdata = 'org.gnome.gedit.appdata.xml'
+appdata = 'com.bwhmather.bedit.appdata.xml'
 appdata_file = i18n.merge_file(
   appdata,
   input: appdata + '.in',
@@ -25,7 +25,7 @@ if appstream_util.found()
   )
 endif
 
-desktop_file = 'org.gnome.gedit.desktop'
+desktop_file = 'com.bwhmather.bedit.desktop'
 desktop_output_file = i18n.merge_file(
   desktop_file,
   type: 'desktop',
@@ -56,8 +56,8 @@ gschema_in = configuration_data()
 gschema_in.set('ACTIVE_PLUGINS', ', '.join(quoted_plugins))
 
 gschema_file = configure_file(
-  input: 'org.gnome.gedit.gschema.xml.in',
-  output: 'org.gnome.gedit.gschema.xml',
+  input: 'com.bwhmather.bedit.gschema.xml.in',
+  output: 'com.bwhmather.bedit.gschema.xml',
   configuration: gschema_in,
   install_dir: join_paths(get_option('prefix'), get_option('datadir'), 'glib-2.0/schemas')
 )
@@ -84,8 +84,8 @@ service_in = configuration_data()
 service_in.set('bindir', join_paths(get_option('prefix'), get_option('bindir')))
 
 configure_file(
-  input: 'org.gnome.gedit.service.in',
-  output: 'org.gnome.gedit.service',
+  input: 'com.bwhmather.bedit.service.in',
+  output: 'com.bwhmather.bedit.service',
   configuration: service_in,
   install_dir: join_paths(get_option('prefix'), get_option('datadir'), 'dbus-1/services')
 )

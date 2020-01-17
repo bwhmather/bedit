@@ -1,5 +1,5 @@
 <schemalist gettext-domain="gedit">
-  <schema id="org.gnome.gedit.plugins.filebrowser" path="/org/gnome/gedit/plugins/filebrowser/">
+  <schema id="com.bwhmather.bedit.plugins.filebrowser" path="/com/bwhmather/bedit/plugins/filebrowser/">
     <key name="tree-view" type="b">
       <default>true</default>
       <summary>Open With Tree View</summary>
@@ -25,7 +25,7 @@
       <summary>Set Location to First Document</summary>
       <description>If TRUE the file browser plugin will view the directory of the first opened document given that the file browser hasn’t been used yet. (Thus this generally applies to opening a document from the command line or opening it with Nautilus, etc.)</description>
     </key>
-    <key name="filter-mode" flags="org.gnome.gedit.plugins.filebrowser.GeditFileBrowserStoreFilterMode">
+    <key name="filter-mode" flags="com.bwhmather.bedit.plugins.filebrowser.GeditFileBrowserStoreFilterMode">
       <default>['hide-hidden', 'hide-binary']</default>
       <summary>File Browser Filter Mode</summary>
       <description>This value determines what files get filtered from the file browser. Valid values are: none (filter nothing), hide-hidden (filter hidden files) and hide-binary (filter binary files).</description>
@@ -42,13 +42,13 @@
     </key>
   </schema>
 
-  <enum id="org.gnome.gedit.plugins.filebrowser.nautilus.ClickPolicy">
+  <enum id="com.bwhmather.bedit.plugins.filebrowser.nautilus.ClickPolicy">
     <value value="0" nick="single"/>
     <value value="1" nick="double"/>
   </enum>
 
-  <schema id="org.gnome.gedit.plugins.filebrowser.nautilus" path="/org/gnome/gedit/plugins/filebrowser/nautilus/">
-    <key name="click-policy" enum="org.gnome.gedit.plugins.filebrowser.nautilus.ClickPolicy">
+  <schema id="com.bwhmather.bedit.plugins.filebrowser.nautilus" path="/com/bwhmather/bedit/plugins/filebrowser/nautilus/">
+    <key name="click-policy" enum="com.bwhmather.bedit.plugins.filebrowser.nautilus.ClickPolicy">
       <default>'double'</default>
     </key>
     <key name="confirm-trash" type="b">

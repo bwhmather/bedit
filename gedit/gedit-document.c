@@ -773,7 +773,7 @@ gedit_document_init (GeditDocument *doc)
 
 	priv = gedit_document_get_instance_private (doc);
 
-	priv->editor_settings = g_settings_new ("org.gnome.gedit.preferences.editor");
+	priv->editor_settings = g_settings_new ("com.bwhmather.bedit.preferences.editor");
 	priv->untitled_number = get_untitled_number ();
 	priv->content_type = get_default_content_type ();
 	priv->language_set_by_user = FALSE;

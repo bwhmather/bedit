@@ -131,7 +131,7 @@ gedit_view_init (GeditView *view)
 
 	view->priv = gedit_view_get_instance_private (view);
 
-	view->priv->editor_settings = g_settings_new ("org.gnome.gedit.preferences.editor");
+	view->priv->editor_settings = g_settings_new ("com.bwhmather.bedit.preferences.editor");
 
 	/* Drag and drop support */
 	view->priv->direct_save_uri = NULL;

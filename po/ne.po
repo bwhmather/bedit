@@ -22,22 +22,22 @@ msgstr ""
 "First Translator: Pawan Chitrakar <pawan@nplinux.org>\n"
 "X-Generator: Poedit 2.2.3\n"
 
-#: data/org.gnome.gedit.appdata.xml.in:7
+#: data/com.bwhmather.bedit.appdata.xml.in:7
 #, fuzzy
 msgid "gedit"
 msgstr "gedit ले सम्पादित क्षेत्रमा लाइन सङ्ख्याहरू प्रदर्शन गर्नुपर्दछ या पर्दैन ।"
 
-#: data/org.gnome.gedit.appdata.xml.in:8 data/org.gnome.gedit.desktop.in.in:4
+#: data/com.bwhmather.bedit.appdata.xml.in:8 data/com.bwhmather.bedit.desktop.in.in:4
 msgid "Edit text files"
 msgstr "पाठ फाइल सम्पादन गर्नुहोस्"
 
-#: data/org.gnome.gedit.appdata.xml.in:10
+#: data/com.bwhmather.bedit.appdata.xml.in:10
 msgid ""
 "gedit is the official text editor of the GNOME desktop environment. While aiming at simplicity "
 "and ease of use, gedit is a powerful general purpose text editor."
 msgstr ""
 
-#: data/org.gnome.gedit.appdata.xml.in:15
+#: data/com.bwhmather.bedit.appdata.xml.in:15
 msgid ""
 "Whether you are writing the next bestseller, programming an innovative application, or simply "
 "taking some quick notes, gedit will be a reliable tool to accomplish your task."
@@ -45,38 +45,38 @@ msgstr ""
 "तपाईं अर्को सर्बाधिक विक्री हुने पुस्तक लेख्दै हुनुहुन्छ, एउटा इनोभेटिव प्रोग्रामिङ अथवा साधारण नोट लिँदै हुनुहुन्छ भने "
 "पनि जिएडिट विश्वसनीय उपकरण हुनेछ ।"
 
-#: data/org.gnome.gedit.appdata.xml.in:20
+#: data/com.bwhmather.bedit.appdata.xml.in:20
 msgid ""
 "Its flexible plugin system allows you to tailor the application to your needs and adapt it to "
 "your workflow."
 msgstr ""
 
-#: data/org.gnome.gedit.desktop.in.in:3 gedit/gedit-print-job.c:730
+#: data/com.bwhmather.bedit.desktop.in.in:3 gedit/gedit-print-job.c:730
 msgid "Text Editor"
 msgstr "पाठ सम्पादक"
 
 #. TRANSLATORS: Do NOT translate or localize the semicolons!
 #. The list MUST also end with a semicolon!
 #. Search terms to find this application.
-#: data/org.gnome.gedit.desktop.in.in:18
+#: data/com.bwhmather.bedit.desktop.in.in:18
 #, fuzzy
 #| msgid "Text;Editor;Plaintext;Write;"
 msgid "Text;Editor;Plaintext;Write;gedit;"
 msgstr "जीनोम डेस्कटपका लागि gedit सानो र हल्का पाठ सम्पादक हो"
 
-#: data/org.gnome.gedit.desktop.in.in:22
+#: data/com.bwhmather.bedit.desktop.in.in:22
 msgid "New Window"
 msgstr "नयाँ सञ्झ्याल"
 
-#: data/org.gnome.gedit.desktop.in.in:26
+#: data/com.bwhmather.bedit.desktop.in.in:26
 msgid "New Document"
 msgstr "नयाँ कागजात"
 
-#: data/org.gnome.gedit.gschema.xml.in:36
+#: data/com.bwhmather.bedit.gschema.xml.in:36
 msgid "Use Default Font"
 msgstr "पूर्वनिर्धारित फन्ट प्रयोग गर्नुहोस्"
 
-#: data/org.gnome.gedit.gschema.xml.in:37
+#: data/com.bwhmather.bedit.gschema.xml.in:37
 #, fuzzy
 #| msgid ""
 #| "Whether to use the system's default fixed width font for editing text instead of a font "
@@ -92,15 +92,15 @@ msgstr ""
 "प्रयोग गरिनेछ ।"
 
 #. Translators: This is a GSettings default value. Do NOT change or localize the quotation marks!
-#: data/org.gnome.gedit.gschema.xml.in:41
+#: data/com.bwhmather.bedit.gschema.xml.in:41
 msgid "'Monospace 12'"
 msgstr "'Monospace 12'"
 
-#: data/org.gnome.gedit.gschema.xml.in:42
+#: data/com.bwhmather.bedit.gschema.xml.in:42
 msgid "Editor Font"
 msgstr "सम्पादक फन्ट"
 
-#: data/org.gnome.gedit.gschema.xml.in:43
+#: data/com.bwhmather.bedit.gschema.xml.in:43
 #, fuzzy
 #| msgid ""
 #| "A custom font that will be used for the editing area. This will only take effect if the \"Use "
@@ -112,31 +112,31 @@ msgstr ""
 "एउटा अनुकुल फन्ट जुन सम्पादित क्षेत्रका लागि प्रयोग गरिनेछ । यदि \"पूर्वनिर्धारित फन्ट प्रयोग गर्नुहोस्\" विकल्प बन्द "
 "गरिएको भए मात्र यो प्रभावकारी हुनेछ ।"
 
-#: data/org.gnome.gedit.gschema.xml.in:47
+#: data/com.bwhmather.bedit.gschema.xml.in:47
 msgid "Style Scheme"
 msgstr "शैली योजना"
 
-#: data/org.gnome.gedit.gschema.xml.in:48
+#: data/com.bwhmather.bedit.gschema.xml.in:48
 #, fuzzy
 #| msgid "The id of a GtkSourceView Style Scheme used to color the text."
 msgid "The ID of a GtkSourceView Style Scheme used to color the text."
 msgstr "Gtk स्रित दृश्य शैली योजनाको आईडी पाठ रङ लगाउन प्रयोग गरिन्छ ।"
 
-#: data/org.gnome.gedit.gschema.xml.in:52
+#: data/com.bwhmather.bedit.gschema.xml.in:52
 msgid "Create Backup Copies"
 msgstr "जगेडा प्रतिलिपिहरू सिर्जना गर्नुहोस्"
 
-#: data/org.gnome.gedit.gschema.xml.in:53
+#: data/com.bwhmather.bedit.gschema.xml.in:53
 #, fuzzy
 #| msgid "Whether gedit should restore the previous cursor position when a file is loaded."
 msgid "Whether gedit should create backup copies for the files it saves."
 msgstr "फाइल लोड गरिएको बेला gedit ले अघिल्लो कर्सर स्थिति पुन: भण्डारण गर्नु पर्दछ या पर्दैन ।"
 
-#: data/org.gnome.gedit.gschema.xml.in:57
+#: data/com.bwhmather.bedit.gschema.xml.in:57
 msgid "Autosave"
 msgstr "स्वत: बचत"
 
-#: data/org.gnome.gedit.gschema.xml.in:58
+#: data/com.bwhmather.bedit.gschema.xml.in:58
 #, fuzzy
 #| msgid ""
 #| "Whether gedit should automatically save modified files after a time interval. You can set the "
@@ -148,11 +148,11 @@ msgstr ""
 "gedit ले एउटा समय अन्तराल पछि परिमार्जित फाइलहरू स्वाचालित रूपमा बचत गर्नुपर्दछ या पर्दैन । तपाईँले समय अन्तराल "
 "\"स्वत बचत अन्तराल\" सँग सेट गर्न सक्नुहुन्छ ।"
 
-#: data/org.gnome.gedit.gschema.xml.in:62
+#: data/com.bwhmather.bedit.gschema.xml.in:62
 msgid "Autosave Interval"
 msgstr "स्वत: बचत अन्तराल"
 
-#: data/org.gnome.gedit.gschema.xml.in:63
+#: data/com.bwhmather.bedit.gschema.xml.in:63
 #, fuzzy
 #| msgid ""
 #| "Number of minutes after which gedit will automatically save modified files. This will only "
@@ -164,11 +164,11 @@ msgstr ""
 "मिनटको सङ्ख्या जुन पछि gedit ले परिमार्जित फाइलहरू स्वत बचत गर्नेछ । यदि \"स्वत बचत\"विकल्प खुला छ भने मात्र "
 "यसले प्रभाव लिनेछ ।"
 
-#: data/org.gnome.gedit.gschema.xml.in:67
+#: data/com.bwhmather.bedit.gschema.xml.in:67
 msgid "Maximum Number of Undo Actions"
 msgstr "पूर्वस्थितिमा फर्काउने कार्यको अधिकतम सङ्ख्या"
 
-#: data/org.gnome.gedit.gschema.xml.in:68
+#: data/com.bwhmather.bedit.gschema.xml.in:68
 #, fuzzy
 #| msgid ""
 #| "Maximum number of actions that gedit will be able to undo or redo. Use \"-1\" for unlimited "
@@ -180,11 +180,11 @@ msgstr ""
 "gedit ले पूर्वस्थितिमा फर्काउन वा रिडू गर्न सक्षम हुने कार्यहरूको अधिकतम सङ्ख्या । कार्यहरूको असिमित सङ्ख्याका लागि "
 "\"-१\" प्रयोग गर्नुहोस् ।"
 
-#: data/org.gnome.gedit.gschema.xml.in:77
+#: data/com.bwhmather.bedit.gschema.xml.in:77
 msgid "Line Wrapping Mode"
 msgstr "लाइन बेराइ मोड"
 
-#: data/org.gnome.gedit.gschema.xml.in:78
+#: data/com.bwhmather.bedit.gschema.xml.in:78
 #, fuzzy
 #| msgid ""
 #| "Specifies how to wrap long lines in the editing area. Use \"GTK_WRAP_NONE\" for no wrapping, "
@@ -200,111 +200,111 @@ msgstr ""
 "लागि \"GTK_WRAP_WORD\", र ब्यक्तिगत क्यारेकटर सिमाका लागि \"GTK_WRAP_CHAR\" प्रयोग गर्नुहोस् । याद "
 "राख्नुहोस् मानहरू केस संवेदनशिल छन्, त्यसैले तिनीहरू हयाँ उल्लेख भए जस्तै दुरुस्तै देखिने निश्चित गर्नुहोस् ।"
 
-#: data/org.gnome.gedit.gschema.xml.in:86
+#: data/com.bwhmather.bedit.gschema.xml.in:86
 msgid "Last split mode choice for line wrapping mode"
 msgstr ""
 
-#: data/org.gnome.gedit.gschema.xml.in:87
+#: data/com.bwhmather.bedit.gschema.xml.in:87
 msgid ""
 "Specifies the last split mode used with line wrapping mode, so that when wrapping mode is off we "
 "still remember the split mode choice. Use “word” for wrapping at word boundaries, and “char” for "
 "wrapping at individual character boundaries."
 msgstr ""
 
-#: data/org.gnome.gedit.gschema.xml.in:91
+#: data/com.bwhmather.bedit.gschema.xml.in:91
 msgid "Tab Size"
 msgstr "ट्याब साइज"
 
-#: data/org.gnome.gedit.gschema.xml.in:92
+#: data/com.bwhmather.bedit.gschema.xml.in:92
 msgid "Specifies the number of spaces that should be displayed instead of Tab characters."
 msgstr "ट्याब क्यारेक्टरहरूको सट्टामा प्रदर्शित गरिनु पर्ने खालीस्थानहरूको सङ्ख्या निर्दिष्ट गर्दछ ।"
 
-#: data/org.gnome.gedit.gschema.xml.in:96
+#: data/com.bwhmather.bedit.gschema.xml.in:96
 msgid "Insert spaces"
 msgstr "खालीस्थान घुसाउनुहोस्"
 
-#: data/org.gnome.gedit.gschema.xml.in:97
+#: data/com.bwhmather.bedit.gschema.xml.in:97
 msgid "Whether gedit should insert spaces instead of tabs."
 msgstr "gedit ले ट्याबहरूको सट्टा खालीस्थान घुसाउनु पर्दछ या पर्दैन ।"
 
-#: data/org.gnome.gedit.gschema.xml.in:101
+#: data/com.bwhmather.bedit.gschema.xml.in:101
 #, fuzzy
 #| msgid "Auto indent"
 msgid "Automatic indent"
 msgstr "स्वाचालित"
 
-#: data/org.gnome.gedit.gschema.xml.in:102
+#: data/com.bwhmather.bedit.gschema.xml.in:102
 #, fuzzy
 #| msgid "Whether gedit should enable auto indentation."
 msgid "Whether gedit should enable automatic indentation."
 msgstr "geditले वाक्य संरचना हाइलाइट गर्ने सक्षम पार्नु पर्दछ या पर्दैन ।"
 
-#: data/org.gnome.gedit.gschema.xml.in:106
+#: data/com.bwhmather.bedit.gschema.xml.in:106
 msgid "Display Line Numbers"
 msgstr "पङ्क्ति सङ्ख्या प्रदर्शन गर्नुहोस्"
 
-#: data/org.gnome.gedit.gschema.xml.in:107
+#: data/com.bwhmather.bedit.gschema.xml.in:107
 msgid "Whether gedit should display line numbers in the editing area."
 msgstr "gedit ले सम्पादित क्षेत्रमा लाइन सङ्ख्याहरू प्रदर्शन गर्नुपर्दछ या पर्दैन ।"
 
-#: data/org.gnome.gedit.gschema.xml.in:111
+#: data/com.bwhmather.bedit.gschema.xml.in:111
 msgid "Highlight Current Line"
 msgstr "हालको लाइन हाइलाइट गर्नुहोस्"
 
-#: data/org.gnome.gedit.gschema.xml.in:112
+#: data/com.bwhmather.bedit.gschema.xml.in:112
 msgid "Whether gedit should highlight the current line."
 msgstr "gedit ले हालको लाइन हाइलाइट गर्नु पर्दछ या पर्दैन ।"
 
-#: data/org.gnome.gedit.gschema.xml.in:116
+#: data/com.bwhmather.bedit.gschema.xml.in:116
 msgid "Highlight Matching Brackets"
 msgstr "मिल्ने कोष्ठकलाई हाइलाइट गर्नुहोस्"
 
-#: data/org.gnome.gedit.gschema.xml.in:117
+#: data/com.bwhmather.bedit.gschema.xml.in:117
 #, fuzzy
 #| msgid "Whether gedit should highlight matching bracket."
 msgid "Whether gedit should highlight matching brackets."
 msgstr "gedit ले हालको लाइन हाइलाइट गर्नु पर्दछ या पर्दैन ।"
 
-#: data/org.gnome.gedit.gschema.xml.in:121
+#: data/com.bwhmather.bedit.gschema.xml.in:121
 msgid "Display Right Margin"
 msgstr "दायाँ सीमान्त प्रदर्शन गर्नुहोस्"
 
-#: data/org.gnome.gedit.gschema.xml.in:122
+#: data/com.bwhmather.bedit.gschema.xml.in:122
 msgid "Whether gedit should display the right margin in the editing area."
 msgstr "gedit ले सम्पादन क्षेत्रमा दायाँ सिमान्त प्रदर्शन गर्नु पर्दछ या पर्दैन ।"
 
-#: data/org.gnome.gedit.gschema.xml.in:126
+#: data/com.bwhmather.bedit.gschema.xml.in:126
 msgid "Right Margin Position"
 msgstr "दायाँ सीमान्त स्थिति"
 
-#: data/org.gnome.gedit.gschema.xml.in:127
+#: data/com.bwhmather.bedit.gschema.xml.in:127
 msgid "Specifies the position of the right margin."
 msgstr "दायाँ सीमान्तको स्थिति निर्दिष्ट गर्दछ ।"
 
-#: data/org.gnome.gedit.gschema.xml.in:131
+#: data/com.bwhmather.bedit.gschema.xml.in:131
 msgid "Display Overview Map"
 msgstr "अवलोकन मानचित्र देखाउनुहोस्"
 
-#: data/org.gnome.gedit.gschema.xml.in:132
+#: data/com.bwhmather.bedit.gschema.xml.in:132
 #, fuzzy
 #| msgid "Whether gedit should display the right margin in the editing area."
 msgid "Whether gedit should display the overview map for the document."
 msgstr "gedit ले सम्पादन क्षेत्रमा दायाँ सिमान्त प्रदर्शन गर्नु पर्दछ या पर्दैन ।"
 
-#: data/org.gnome.gedit.gschema.xml.in:136
+#: data/com.bwhmather.bedit.gschema.xml.in:136
 #, fuzzy
 msgid "Document background pattern type"
 msgstr "स्क्यान गरिँदै कागजातको प्रकार"
 
-#: data/org.gnome.gedit.gschema.xml.in:137
+#: data/com.bwhmather.bedit.gschema.xml.in:137
 msgid "Whether the document will get a background pattern painted."
 msgstr ""
 
-#: data/org.gnome.gedit.gschema.xml.in:147
+#: data/com.bwhmather.bedit.gschema.xml.in:147
 msgid "Smart Home End"
 msgstr "छरितो गृह समाप्ति"
 
-#: data/org.gnome.gedit.gschema.xml.in:148
+#: data/com.bwhmather.bedit.gschema.xml.in:148
 #, fuzzy
 #| msgid ""
 #| "Specifies how the cursor moves when the HOME and END keys are pressed. Use \"DISABLED\" to "
@@ -326,55 +326,55 @@ msgstr ""
 "अन्त्यमा सार्न \"AFTER\", लाइनको सुरु/अन्त्यमा सार्नु पहिला पाठको सुरु/अन्त्यमा सार्न \"BEFORE\" र लाइनको सुरु/"
 "अन्त्यको सट्टामा पाठको सुरु/अन्त्यमा सार्न \"ALWAYS\" प्रयोग गर्नुहोस् ।"
 
-#: data/org.gnome.gedit.gschema.xml.in:152
+#: data/com.bwhmather.bedit.gschema.xml.in:152
 msgid "Restore Previous Cursor Position"
 msgstr "अघिल्लो कर्सर स्थिति पुन: भण्डारण गर्नुहोस्"
 
-#: data/org.gnome.gedit.gschema.xml.in:153
+#: data/com.bwhmather.bedit.gschema.xml.in:153
 msgid "Whether gedit should restore the previous cursor position when a file is loaded."
 msgstr "फाइल लोड गरिएको बेला gedit ले अघिल्लो कर्सर स्थिति पुन: भण्डारण गर्नु पर्दछ या पर्दैन ।"
 
-#: data/org.gnome.gedit.gschema.xml.in:157
+#: data/com.bwhmather.bedit.gschema.xml.in:157
 msgid "Enable Syntax Highlighting"
 msgstr "वाक्य संरचना हाइलाइटिङ सक्षम पार्नुहोस्"
 
-#: data/org.gnome.gedit.gschema.xml.in:158
+#: data/com.bwhmather.bedit.gschema.xml.in:158
 msgid "Whether gedit should enable syntax highlighting."
 msgstr "geditले वाक्य संरचना हाइलाइट गर्ने सक्षम पार्नु पर्दछ या पर्दैन ।"
 
-#: data/org.gnome.gedit.gschema.xml.in:162
+#: data/com.bwhmather.bedit.gschema.xml.in:162
 msgid "Enable Search Highlighting"
 msgstr "हाइलाइटिङ खोजी सक्षम पार्नुहोस्"
 
-#: data/org.gnome.gedit.gschema.xml.in:163
+#: data/com.bwhmather.bedit.gschema.xml.in:163
 msgid "Whether gedit should highlight all the occurrences of the searched text."
 msgstr "gedit ले खोजी पाठको सबै घटनाहरू हाइलाइट गर्नु पर्दछ या पर्दैन ।"
 
-#: data/org.gnome.gedit.gschema.xml.in:167
+#: data/com.bwhmather.bedit.gschema.xml.in:167
 #, fuzzy
 msgid "Ensure Trailing Newline"
 msgstr "नयाँ पङ्ति"
 
-#: data/org.gnome.gedit.gschema.xml.in:168
+#: data/com.bwhmather.bedit.gschema.xml.in:168
 #, fuzzy
 #| msgid "Whether gedit should include a document header when printing documents."
 msgid "Whether gedit will ensure that documents always end with a trailing newline."
 msgstr "कागजात मुद्रण गर्दा gedit ले कागजात हेडर समाविष्ट गर्नु पर्दछ या पर्दैन ।"
 
-#: data/org.gnome.gedit.gschema.xml.in:174
+#: data/com.bwhmather.bedit.gschema.xml.in:174
 msgid "Toolbar is Visible"
 msgstr "उपकरणपट्टी दृश्यात्मक छ"
 
-#: data/org.gnome.gedit.gschema.xml.in:175
+#: data/com.bwhmather.bedit.gschema.xml.in:175
 msgid "Whether the toolbar should be visible in editing windows."
 msgstr "सम्पादन सञ्झ्यालमा उपकरणपट्टी दृश्यात्मक हुनुपर्दछ या पर्दैन ।"
 
-#: data/org.gnome.gedit.gschema.xml.in:179
+#: data/com.bwhmather.bedit.gschema.xml.in:179
 #, fuzzy
 msgid "Notebook Show Tabs Mode"
 msgstr "ट्याबहरु देखाऊ"
 
-#: data/org.gnome.gedit.gschema.xml.in:180
+#: data/com.bwhmather.bedit.gschema.xml.in:180
 #, fuzzy
 #| msgid ""
 #| "Specifies how to wrap long lines for printing. Use \"GTK_WRAP_NONE\" for no wrapping, "
@@ -390,29 +390,29 @@ msgstr ""
 "बेर्नका लागि \"GTK_WRAP_WORD\", र ब्यक्तिगत क्यारेक्टर सिमामा बेर्नका लागि \"GTK_WRAP_CHAR\" प्रयोग गर्नुहोस् "
 "। याद राख्नुहोस मानहरू केस संवेदनशिल हुन्छन्, त्यसैले तिनीहरू यहाँ उल्लेख गरे जस्तै उस्तै देखिने निश्चित गर्नुहोस् ।"
 
-#: data/org.gnome.gedit.gschema.xml.in:184
+#: data/com.bwhmather.bedit.gschema.xml.in:184
 msgid "Status Bar is Visible"
 msgstr "वस्तुस्थिति पट्टी दृश्यात्मक छ"
 
-#: data/org.gnome.gedit.gschema.xml.in:185
+#: data/com.bwhmather.bedit.gschema.xml.in:185
 msgid "Whether the status bar at the bottom of editing windows should be visible."
 msgstr "सम्पादन सञ्झ्यालको तलतिर वस्तुस्थिति पट्टी दृश्यात्मक हुनुपर्दछ या पर्दैन ।"
 
-#: data/org.gnome.gedit.gschema.xml.in:189
+#: data/com.bwhmather.bedit.gschema.xml.in:189
 msgid "Side panel is Visible"
 msgstr "छेउपट्टी देखाउनुहोस्"
 
-#: data/org.gnome.gedit.gschema.xml.in:190
+#: data/com.bwhmather.bedit.gschema.xml.in:190
 #, fuzzy
 #| msgid "Whether the side pane at the left of the editing window should be visible."
 msgid "Whether the side panel at the left of editing windows should be visible."
 msgstr "सम्पादन सञ्झ्यालको वायाँमा छेउ फलक दृश्यात्मक हुनुपर्दछ या पर्दैन ।"
 
-#: data/org.gnome.gedit.gschema.xml.in:197
+#: data/com.bwhmather.bedit.gschema.xml.in:197
 msgid "Maximum Recent Files"
 msgstr "हालको अधिकतम फाइल"
 
-#: data/org.gnome.gedit.gschema.xml.in:198
+#: data/com.bwhmather.bedit.gschema.xml.in:198
 #, fuzzy
 #| msgid ""
 #| "Specifies the maximum number of recently opened files that will be displayed in the \"Recent "
@@ -422,27 +422,27 @@ msgid ""
 "Files” submenu."
 msgstr "हालै खोलिएको फाइलहरूको अधिकतम सङ्ख्या निर्दिष्ट गर्दछ जुन \"हालको फाइल\" सहायक मेनुमा प्रदर्शित हुनेछ ।"
 
-#: data/org.gnome.gedit.gschema.xml.in:204
+#: data/com.bwhmather.bedit.gschema.xml.in:204
 msgid "Print Syntax Highlighting"
 msgstr "वाक्यसंरचना हाइलाइटिङ मुद्रण गर्नुहोस्"
 
-#: data/org.gnome.gedit.gschema.xml.in:205
+#: data/com.bwhmather.bedit.gschema.xml.in:205
 msgid "Whether gedit should print syntax highlighting when printing documents."
 msgstr "कागजात मुद्रण गर्दा gedit ले वाक्य संरचना हाइलाइट मुद्रण गर्नुपर्दछ या पर्दैन ।"
 
-#: data/org.gnome.gedit.gschema.xml.in:209
+#: data/com.bwhmather.bedit.gschema.xml.in:209
 msgid "Print Header"
 msgstr "हेडर मुद्रण गर्नुहोस्"
 
-#: data/org.gnome.gedit.gschema.xml.in:210
+#: data/com.bwhmather.bedit.gschema.xml.in:210
 msgid "Whether gedit should include a document header when printing documents."
 msgstr "कागजात मुद्रण गर्दा gedit ले कागजात हेडर समाविष्ट गर्नु पर्दछ या पर्दैन ।"
 
-#: data/org.gnome.gedit.gschema.xml.in:219
+#: data/com.bwhmather.bedit.gschema.xml.in:219
 msgid "Printing Line Wrapping Mode"
 msgstr "मुद्रण लाइन बेराइ मोड"
 
-#: data/org.gnome.gedit.gschema.xml.in:220
+#: data/com.bwhmather.bedit.gschema.xml.in:220
 #, fuzzy
 #| msgid ""
 #| "Specifies how to wrap long lines for printing. Use \"GTK_WRAP_NONE\" for no wrapping, "
@@ -458,11 +458,11 @@ msgstr ""
 "बेर्नका लागि \"GTK_WRAP_WORD\", र ब्यक्तिगत क्यारेक्टर सिमामा बेर्नका लागि \"GTK_WRAP_CHAR\" प्रयोग गर्नुहोस् "
 "। याद राख्नुहोस मानहरू केस संवेदनशिल हुन्छन्, त्यसैले तिनीहरू यहाँ उल्लेख गरे जस्तै उस्तै देखिने निश्चित गर्नुहोस् ।"
 
-#: data/org.gnome.gedit.gschema.xml.in:224
+#: data/com.bwhmather.bedit.gschema.xml.in:224
 msgid "Print Line Numbers"
 msgstr "लाइन सङ्ख्यामुद्रण गर्नुहोस्"
 
-#: data/org.gnome.gedit.gschema.xml.in:225
+#: data/com.bwhmather.bedit.gschema.xml.in:225
 msgid ""
 "If this value is 0, then no line numbers will be inserted when printing a document. Otherwise, "
 "gedit will print line numbers every such number of lines."
@@ -471,30 +471,30 @@ msgstr ""
 "गर्नेछ ।"
 
 #. Translators: This is a GSettings default value. Do NOT change or localize the quotation marks!
-#: data/org.gnome.gedit.gschema.xml.in:229
+#: data/com.bwhmather.bedit.gschema.xml.in:229
 msgid "'Monospace 9'"
 msgstr "'Monospace 9'"
 
-#: data/org.gnome.gedit.gschema.xml.in:230
+#: data/com.bwhmather.bedit.gschema.xml.in:230
 msgid "Body Font for Printing"
 msgstr "मुद्रणका लागि मुख्य फन्ट"
 
-#: data/org.gnome.gedit.gschema.xml.in:231
+#: data/com.bwhmather.bedit.gschema.xml.in:231
 #, fuzzy
 #| msgid "Specifies the font to use for a document's body when printing documents."
 msgid "Specifies the font to use for a document’s body when printing documents."
 msgstr "कागजातहरू मुद्रण गर्दा कागजातको मुख्य भागका लागि प्रयोग गर्न फन्ट निर्दिष्ट गर्दछ ।"
 
 #. Translators: This is a GSettings default value. Do NOT change or localize the quotation marks!
-#: data/org.gnome.gedit.gschema.xml.in:235
+#: data/com.bwhmather.bedit.gschema.xml.in:235
 msgid "'Sans 11'"
 msgstr "'Sans 11'"
 
-#: data/org.gnome.gedit.gschema.xml.in:236
+#: data/com.bwhmather.bedit.gschema.xml.in:236
 msgid "Header Font for Printing"
 msgstr "मुद्रणका लागि हेडर फन्ट"
 
-#: data/org.gnome.gedit.gschema.xml.in:237
+#: data/com.bwhmather.bedit.gschema.xml.in:237
 #, fuzzy
 #| msgid ""
 #| "Specifies the font to use for page headers when printing a document. This will only take "
@@ -507,15 +507,15 @@ msgstr ""
 "विकल्प खुला छ भने मात्र यसले प्रभाव पार्नेछ ।"
 
 #. Translators: This is a GSettings default value. Do NOT change or localize the quotation marks!
-#: data/org.gnome.gedit.gschema.xml.in:241
+#: data/com.bwhmather.bedit.gschema.xml.in:241
 msgid "'Sans 8'"
 msgstr "'Sans 8'"
 
-#: data/org.gnome.gedit.gschema.xml.in:242
+#: data/com.bwhmather.bedit.gschema.xml.in:242
 msgid "Line Number Font for Printing"
 msgstr "मुद्रणका लागि लाइन नम्बर फन्ट"
 
-#: data/org.gnome.gedit.gschema.xml.in:243
+#: data/com.bwhmather.bedit.gschema.xml.in:243
 #, fuzzy
 #| msgid ""
 #| "Specifies the font to use for line numbers when printing. This will only take effect if the "
@@ -527,50 +527,50 @@ msgstr ""
 "मुद्रण गर्दा लाइन सङ्ख्याका लागि प्रयोग गर्नुपर्ने फन्ट निर्दिष्ट गर्दछ । यदि \"Print Line Numbers\" विकल्प शून्य "
 "रहित छ भने मात्र यसले प्रभाव पार्नेछ ।"
 
-#: data/org.gnome.gedit.gschema.xml.in:247
+#: data/com.bwhmather.bedit.gschema.xml.in:247
 msgid "Margin Left"
 msgstr "देब्रे सीमान्त"
 
-#: data/org.gnome.gedit.gschema.xml.in:248
+#: data/com.bwhmather.bedit.gschema.xml.in:248
 #, fuzzy
 msgid "The left margin, in millimeters."
 msgstr "पिक्सलभित्र देब्रेकिनारको चौडाइ"
 
-#: data/org.gnome.gedit.gschema.xml.in:252
+#: data/com.bwhmather.bedit.gschema.xml.in:252
 msgid "Margin Top"
 msgstr "माथिल्लो सीमान्त"
 
-#: data/org.gnome.gedit.gschema.xml.in:253
+#: data/com.bwhmather.bedit.gschema.xml.in:253
 #, fuzzy
 #| msgid "Topmargin in pixels"
 msgid "The top margin, in millimeters."
 msgstr "मिलिमिटर"
 
-#: data/org.gnome.gedit.gschema.xml.in:257
+#: data/com.bwhmather.bedit.gschema.xml.in:257
 msgid "Margin Right"
 msgstr "दायाँ सीमान्त"
 
-#: data/org.gnome.gedit.gschema.xml.in:258
+#: data/com.bwhmather.bedit.gschema.xml.in:258
 #, fuzzy
 msgid "The right margin, in millimeters."
 msgstr "पिक्सलभित्र दाहिनेकिनारको चौडाइ"
 
-#: data/org.gnome.gedit.gschema.xml.in:262
+#: data/com.bwhmather.bedit.gschema.xml.in:262
 msgid "Margin Bottom"
 msgstr "तल्लो सीमान्त"
 
-#: data/org.gnome.gedit.gschema.xml.in:263
+#: data/com.bwhmather.bedit.gschema.xml.in:263
 #, fuzzy
 msgid "The bottom margin, in millimeters."
 msgstr "तल्लो सीमान्त"
 
-#: data/org.gnome.gedit.gschema.xml.in:269
+#: data/com.bwhmather.bedit.gschema.xml.in:269
 #, fuzzy
 #| msgid "Character codings"
 msgid "Candidate Encodings"
 msgstr "उमेद्वार"
 
-#: data/org.gnome.gedit.gschema.xml.in:270
+#: data/com.bwhmather.bedit.gschema.xml.in:270
 msgid ""
 "List of candidate encodings shown in the Character Encoding menu in the open/save file chooser. "
 "“CURRENT” represents the current locale encoding. Only recognized encodings are used. The default "
@@ -578,11 +578,11 @@ msgid ""
 "and language."
 msgstr ""
 
-#: data/org.gnome.gedit.gschema.xml.in:316
+#: data/com.bwhmather.bedit.gschema.xml.in:316
 msgid "Active plugins"
 msgstr "सक्रिय प्लगइनहरू"
 
-#: data/org.gnome.gedit.gschema.xml.in:317
+#: data/com.bwhmather.bedit.gschema.xml.in:317
 #, fuzzy
 #| msgid ""
 #| "List of active plugins. It contains the \"Location\" of the active plugins. See the .gedit-"
@@ -2105,8 +2105,8 @@ msgid "Editor"
 msgstr "सम्पादक"
 
 #: gedit/resources/ui/gedit-preferences-dialog.ui:529
-#: plugins/externaltools/org.gnome.gedit.plugins.externaltools.gschema.xml.in:14
-#: plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in:24
+#: plugins/externaltools/com.bwhmather.bedit.plugins.externaltools.gschema.xml.in:14
+#: plugins/pythonconsole/com.bwhmather.bedit.plugins.pythonconsole.gschema.xml.in:24
 msgid "Font"
 msgstr "फन्ट"
 
@@ -2756,13 +2756,13 @@ msgid ""
 "version and wait for a new one"
 msgstr ""
 
-#: plugins/checkupdate/org.gnome.gedit.plugins.checkupdate.gschema.xml.in:5
+#: plugins/checkupdate/com.bwhmather.bedit.plugins.checkupdate.gschema.xml.in:5
 #, fuzzy
 msgid "Version to Ignore"
 msgstr "वेवास्ता गर्नुहोस"
 
 #. This is releated to the next gedit version to be released
-#: plugins/checkupdate/org.gnome.gedit.plugins.checkupdate.gschema.xml.in:7
+#: plugins/checkupdate/com.bwhmather.bedit.plugins.checkupdate.gschema.xml.in:7
 msgid "Version to ignore until a newer version is released."
 msgstr ""
 
@@ -2870,19 +2870,19 @@ msgstr "बाह्य उपकरणहरू"
 msgid "Execute external commands and shell scripts."
 msgstr "बाह्य आदेशहरू र शेल स्क्रिप्टहरू कार्यान्वयन गर्नुहोस् ।"
 
-#: plugins/externaltools/org.gnome.gedit.plugins.externaltools.gschema.xml.in:5
-#: plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in:15
+#: plugins/externaltools/com.bwhmather.bedit.plugins.externaltools.gschema.xml.in:5
+#: plugins/pythonconsole/com.bwhmather.bedit.plugins.pythonconsole.gschema.xml.in:15
 msgid "Whether to use the system font"
 msgstr "प्रणाली फन्ट प्रयोग गर्नुहोस्"
 
-#: plugins/externaltools/org.gnome.gedit.plugins.externaltools.gschema.xml.in:6
+#: plugins/externaltools/com.bwhmather.bedit.plugins.externaltools.gschema.xml.in:6
 msgid ""
 "If true, the external tools will use the desktop-global standard font if it’s monospace (and the "
 "most similar font it can come up with otherwise)."
 msgstr ""
 
-#: plugins/externaltools/org.gnome.gedit.plugins.externaltools.gschema.xml.in:15
-#: plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in:25
+#: plugins/externaltools/com.bwhmather.bedit.plugins.externaltools.gschema.xml.in:15
+#: plugins/pythonconsole/com.bwhmather.bedit.plugins.pythonconsole.gschema.xml.in:25
 msgid "A Pango font name. Examples are “Sans 12” or “Monospace Bold 14”."
 msgstr ""
 
@@ -3250,29 +3250,29 @@ msgstr "%s माउण्ट गर्न सकेन"
 msgid "Error when loading “%s”: No such directory"
 msgstr "डाइरेक्टरी लोड गर्दा एउटा त्रुटि देखा पर्यो"
 
-#: plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in:5
+#: plugins/filebrowser/com.bwhmather.bedit.plugins.filebrowser.gschema.xml.in:5
 msgid "Open With Tree View"
 msgstr "ट्रि दृश्यसँग खोल्नुहोस्"
 
-#: plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in:6
+#: plugins/filebrowser/com.bwhmather.bedit.plugins.filebrowser.gschema.xml.in:6
 msgid "Open the tree view when the file browser plugin gets loaded instead of the bookmarks view"
 msgstr "फाइल ब्राउजर प्लगइनले पुस्तकचिनोहरूको दृश्यको सट्टा लोड गरिएको प्राप्त गर्दा ट्रि दृश्य खोल्नुहोस्"
 
-#: plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in:10
+#: plugins/filebrowser/com.bwhmather.bedit.plugins.filebrowser.gschema.xml.in:10
 msgid "File Browser Root Directory"
 msgstr "फाइल ब्राउजर मूल डाइरेक्टरी"
 
-#: plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in:11
+#: plugins/filebrowser/com.bwhmather.bedit.plugins.filebrowser.gschema.xml.in:11
 msgid ""
 "The file browser root directory to use when loading the file browser plugin and onload/tree_view "
 "is TRUE."
 msgstr "फाइल ब्राउजर प्लगइन लोड गर्दा र अनलोड/ट्रि दृश्य TRUE हुँदा प्रयोग गर्नलाई फाइल ब्राउजर मूल डाइरेक्टरी ।"
 
-#: plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in:15
+#: plugins/filebrowser/com.bwhmather.bedit.plugins.filebrowser.gschema.xml.in:15
 msgid "File Browser Virtual Root Directory"
 msgstr "फाइल ब्राउजर अवास्तविक मूल डाइरेक्टरी"
 
-#: plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in:16
+#: plugins/filebrowser/com.bwhmather.bedit.plugins.filebrowser.gschema.xml.in:16
 msgid ""
 "The file browser virtual root directory to use when loading the file browser plugin when onload/"
 "tree_view is TRUE. The virtual root must always be below the actual root."
@@ -3280,21 +3280,21 @@ msgstr ""
 "अनलोड/ट्रि दृश्य TRUE हुँदा फाइल ब्राउजर प्लगइन लोड गरिरहेको बेला प्रयोग गर्नलाई फाइल ब्राउजर अवास्तविक मूल "
 "डाइरेक्टरी । अवास्तविक मूल सधैँ वास्तविक मूल भन्दा तल हुनु पर्दछ ।"
 
-#: plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in:20
+#: plugins/filebrowser/com.bwhmather.bedit.plugins.filebrowser.gschema.xml.in:20
 msgid "Enable Restore of Remote Locations"
 msgstr "टाढाको स्थानको पुन: भण्डारण सक्षम पार्नुहोस्"
 
-#: plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in:21
+#: plugins/filebrowser/com.bwhmather.bedit.plugins.filebrowser.gschema.xml.in:21
 msgid "Sets whether to enable restoring of remote locations."
 msgstr "टाढाको स्थानहरूको पुन: भण्डारण सक्षम पार्ने या नपार्ने सेट गर्दछ ।"
 
-#: plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in:25
+#: plugins/filebrowser/com.bwhmather.bedit.plugins.filebrowser.gschema.xml.in:25
 #, fuzzy
 #| msgid "Set Location To First Document"
 msgid "Set Location to First Document"
 msgstr "कागजात स्थानमा टर्मिनल खोल्नुहोस्"
 
-#: plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in:26
+#: plugins/filebrowser/com.bwhmather.bedit.plugins.filebrowser.gschema.xml.in:26
 #, fuzzy
 #| msgid ""
 #| "If TRUE the file browser plugin will view the directory of the first opened document given "
@@ -3308,11 +3308,11 @@ msgstr ""
 "यदि TRUE भए फाइल ब्राउजर प्लगइनले पहिला खोजिएको कागजातको डाइरेक्टरी हेर्नेछ जुन फाइल ब्राउजर अझै सम्म प्रयोग "
 "गरिएको छैन । (यसैले यो साधारणतया आदेश रेखाबाट खुला कागजातमा लागु गरिन्छ वा नटिलस आदिसँग यसलाई खोलिन्छ)"
 
-#: plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in:30
+#: plugins/filebrowser/com.bwhmather.bedit.plugins.filebrowser.gschema.xml.in:30
 msgid "File Browser Filter Mode"
 msgstr "फाइल ब्राउजर फिल्टर मोड"
 
-#: plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in:31
+#: plugins/filebrowser/com.bwhmather.bedit.plugins.filebrowser.gschema.xml.in:31
 #, fuzzy
 #| msgid ""
 #| "This value determines what files get filtered from the file browser. Valid values are: none "
@@ -3326,22 +3326,22 @@ msgstr ""
 "फिलटर गर्दैन), लुकाइएको (लुकाइएको फाइलहरू फिल्टर गर्दछ), बाइनरी (बाइनरी फाइलहरू फिल्टर गर्दछ) र लुकाइएको र "
 "बाइनरी (लुकाइएको र बाइनरी दुवै फाइलहरू फिल्टर गर्दछ)"
 
-#: plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in:35
+#: plugins/filebrowser/com.bwhmather.bedit.plugins.filebrowser.gschema.xml.in:35
 msgid "File Browser Filter Pattern"
 msgstr "फाइल ब्राउजर फिल्टर बान्की"
 
-#: plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in:36
+#: plugins/filebrowser/com.bwhmather.bedit.plugins.filebrowser.gschema.xml.in:36
 msgid ""
 "The filter pattern to filter the file browser with. This filter works on top of the filter_mode."
 msgstr "यससँग फाइल ब्राउजर फिल्टर गर्न फिल्टर बान्की । यो फिल्टरले फिल्टरमोडको माथि कार्य गर्दछ ।"
 
-#: plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in:40
+#: plugins/filebrowser/com.bwhmather.bedit.plugins.filebrowser.gschema.xml.in:40
 #, fuzzy
 #| msgid "File Browser Filter Pattern"
 msgid "File Browser Binary Patterns"
 msgstr "नराखिने फाइल ढाँचाहरूको सूची"
 
-#: plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in:41
+#: plugins/filebrowser/com.bwhmather.bedit.plugins.filebrowser.gschema.xml.in:41
 msgid "The supplemental patterns to use when filtering binary files."
 msgstr ""
 
@@ -3420,27 +3420,27 @@ msgstr "मोडलाइनहरू"
 msgid "Emacs, Kate and Vim-style modelines support for gedit."
 msgstr "gedit का लागि एमाकस, केट र भिम-शैली मोडलाइन समर्थन ।"
 
-#: plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in:5
+#: plugins/pythonconsole/com.bwhmather.bedit.plugins.pythonconsole.gschema.xml.in:5
 #, fuzzy
 msgid "Command Color Text"
 msgstr "टर्मिनलमा पाठको पूर्वनिर्धारित रङ"
 
-#: plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in:6
+#: plugins/pythonconsole/com.bwhmather.bedit.plugins.pythonconsole.gschema.xml.in:6
 #, fuzzy
 msgid "The command color text"
 msgstr "टर्मिनलमा पाठको पूर्वनिर्धारित रङ"
 
-#: plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in:10
+#: plugins/pythonconsole/com.bwhmather.bedit.plugins.pythonconsole.gschema.xml.in:10
 #, fuzzy
 msgid "Error Color Text"
 msgstr "कच रङ्गमा गल्ती"
 
-#: plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in:11
+#: plugins/pythonconsole/com.bwhmather.bedit.plugins.pythonconsole.gschema.xml.in:11
 #, fuzzy
 msgid "The error color text"
 msgstr "कच रङ्गमा गल्ती"
 
-#: plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in:16
+#: plugins/pythonconsole/com.bwhmather.bedit.plugins.pythonconsole.gschema.xml.in:16
 msgid ""
 "If true, the terminal will use the desktop-global standard font if it’s monospace (and the most "
 "similar font it can come up with otherwise)."
@@ -3818,14 +3818,14 @@ msgstr "भाषा सेट गर्नुहोस्"
 msgid "_Highlight Misspelled Words"
 msgstr "गलत हिज्जे शब्द छैन"
 
-#: plugins/spell/org.gnome.gedit.plugins.spell.gschema.xml.in:5
+#: plugins/spell/com.bwhmather.bedit.plugins.spell.gschema.xml.in:5
 #: plugins/spell/resources/ui/gedit-spell-setup-dialog.ui:75
 #, fuzzy
 #| msgid "_Highlight Mode"
 msgid "Highlight misspelled words"
 msgstr "गलत हिज्जे शब्द छैन"
 
-#: plugins/spell/org.gnome.gedit.plugins.spell.gschema.xml.in:6
+#: plugins/spell/com.bwhmather.bedit.plugins.spell.gschema.xml.in:6
 #, fuzzy
 #| msgid "_Highlight Mode"
 msgid "Default setting for highlight misspelled words."
@@ -3861,34 +3861,34 @@ msgstr "मिति र समय सेटिङ्ग"
 msgid "Available formats"
 msgstr "उपलब्ध ढाँचाहरू"
 
-#: plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in:5
+#: plugins/time/com.bwhmather.bedit.plugins.time.gschema.xml.in:5
 #, fuzzy
 #| msgid "Prompt message"
 msgid "Prompt Type"
 msgstr "तत्काल लगआउट"
 
-#: plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in:6
+#: plugins/time/com.bwhmather.bedit.plugins.time.gschema.xml.in:6
 msgid ""
 "If the user should be prompted for a format or if the selected or custom format should be used."
 msgstr ""
 
-#: plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in:10
+#: plugins/time/com.bwhmather.bedit.plugins.time.gschema.xml.in:10
 #, fuzzy
 #| msgid "Selected"
 msgid "Selected Format"
 msgstr "चयन गरिएको ढाँचा प्रयोग गर्नुहोस्"
 
-#: plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in:11
+#: plugins/time/com.bwhmather.bedit.plugins.time.gschema.xml.in:11
 msgid "The selected format used when inserting the date/time."
 msgstr ""
 
-#: plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in:15
+#: plugins/time/com.bwhmather.bedit.plugins.time.gschema.xml.in:15
 #, fuzzy
 #| msgid "_Use custom format"
 msgid "Custom Format"
 msgstr "अनुकुलन ढाँचा प्रयोग गर्नुहोस्"
 
-#: plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in:16
+#: plugins/time/com.bwhmather.bedit.plugins.time.gschema.xml.in:16
 msgid "The custom format used when inserting the date/time."
 msgstr ""
 

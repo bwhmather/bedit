@@ -1359,7 +1359,7 @@ gedit_tab_init (GeditTab *tab)
 
 	tab->state = GEDIT_TAB_STATE_NORMAL;
 
-	tab->editor_settings = g_settings_new ("org.gnome.gedit.preferences.editor");
+	tab->editor_settings = g_settings_new ("com.bwhmather.bedit.preferences.editor");
 
 	tab->editable = TRUE;
 

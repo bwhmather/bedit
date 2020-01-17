@@ -50,11 +50,11 @@ msgstr "បើក​បង្អួច​ថ្មី"
 msgid "Open a New Document"
 msgstr "បើក​ឯកសារ​ថ្មី"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:1
+#: ../data/com.bwhmather.bedit.gschema.xml.in.in.h:1
 msgid "Use Default Font"
 msgstr "ប្រើ​ពុម្ពអក្សរ​លំនាំដើម"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:2
+#: ../data/com.bwhmather.bedit.gschema.xml.in.in.h:2
 msgid ""
 "Whether to use the system's default fixed width font for editing text "
 "instead of a font specific to gedit. If this option is turned off, then the "
@@ -65,11 +65,11 @@ msgstr ""
 "ចំពោះ gedit ដែរ​ឬទេ ។ ប្រសិនបើ​ជម្រើស​នេះ​ត្រូវ​បានបិទ នោះពុម្ពអក្សរ​ដែលមាន​ឈ្មោះ​នៅ​ក្នុង​ជម្រើស​ "
 "\"កម្មវិធី​កែសម្រួល​ពុម្ពអក្សរ\" នឹង​ត្រូវ​បាន​ប្រើ​ជំនួស​ឲ្យ​ពុម្ពអក្សរ​ប្រព័ន្ធ ។"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:3
+#: ../data/com.bwhmather.bedit.gschema.xml.in.in.h:3
 msgid "Editor Font"
 msgstr "កម្មវិធី​កែសម្រួល​ពុម្ពអក្សរ"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:4
+#: ../data/com.bwhmather.bedit.gschema.xml.in.in.h:4
 msgid ""
 "A custom font that will be used for the editing area. This will only take "
 "effect if the \"Use Default Font\" option is turned off."
@@ -77,19 +77,19 @@ msgstr ""
 "ពុម្ពអក្សរ​ផ្ទាល់ខ្លួន​នឹង​ត្រូវ​បាន​ប្រើ​សម្រាប់​ផ្ទៃ​កែសម្រួល ។ វា​នឹង​មាន​ប្រសិទ្ធិភាព​តែ​ក្នុង​ករណី​ដែល​​ជម្រើស "
 "\"ប្រើ​ពុម្ពអក្សរ​លំនាំដើម\" ត្រូវ​បាន​បិទ ។"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:5
+#: ../data/com.bwhmather.bedit.gschema.xml.in.in.h:5
 msgid "Style Scheme"
 msgstr "គ្រោងការណ៍​រចនាសម្ព័ន្ធ"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:6
+#: ../data/com.bwhmather.bedit.gschema.xml.in.in.h:6
 msgid "The ID of a GtkSourceView Style Scheme used to color the text."
 msgstr "លេខ​សម្គាល់​គ្រោងការណ៍​រចនាសម្ព័ន្ធ GtkSourceView បាន​ប្រើ​សម្រាប់​ពណ៌​អត្ថបទ ។"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:7
+#: ../data/com.bwhmather.bedit.gschema.xml.in.in.h:7
 msgid "Create Backup Copies"
 msgstr "បង្កើត​ច្បាប់​ចម្លង​បម្រុង​ទុក"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:8
+#: ../data/com.bwhmather.bedit.gschema.xml.in.in.h:8
 msgid ""
 "Whether gedit should create backup copies for the files it saves. You can "
 "set the backup file extension with the \"Backup Copy Extension\" option."
@@ -97,11 +97,11 @@ msgstr ""
 "ថាតើ gedit គួរ​បង្កើត​ច្បាប់​ចម្លង​បម្រុងទុក​សម្រាប់​ឯកសារ​ដែល​វា​រក្សាទុក​ដែរឬទេ ។ អ្នក​អាច​កំណត់​​​កន្ទុយ​"
 "ឯកសារ​បម្រុង​ទុក​ដោយ​ប្រើ​ជម្រើស \"កន្ទុយ​ឯកសារ​ច្បាប់​ចម្លង​បម្រុងទុក\" ។"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:9
+#: ../data/com.bwhmather.bedit.gschema.xml.in.in.h:9
 msgid "Autosave"
 msgstr "រក្សាទុក​ស្វ័យប្រវត្តិ"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:10
+#: ../data/com.bwhmather.bedit.gschema.xml.in.in.h:10
 msgid ""
 "Whether gedit should automatically save modified files after a time "
 "interval. You can set the time interval with the \"Autosave Interval\" "
@@ -110,11 +110,11 @@ msgstr ""
 "ថាតើ​ gedit គួរ​រក្សាទុក​ឯកសារ​ដែល​បាន​កែប្រែ​ដោយ​ស្វ័យ​ប្រវត្តិ​បន្ទាប់ពី​ចន្លោះ​​ពេល​ជាក់លាក់​ដែរ​ឬទេ ។ "
 "អ្នក​អាច​កំណត់​ចន្លោះ​ពេល​ដោយ​ប្រើ​ជម្រើស \"ចន្លោះ​ពេល​រក្សាទុក​ដោយ​ស្វ័យ​ប្រវត្តិ\" ។"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:11
+#: ../data/com.bwhmather.bedit.gschema.xml.in.in.h:11
 msgid "Autosave Interval"
 msgstr "ចន្លោះ​ពេល​រក្សាទុក​ដោយ​ស្វ័យ​ប្រវត្តិ"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:12
+#: ../data/com.bwhmather.bedit.gschema.xml.in.in.h:12
 msgid ""
 "Number of minutes after which gedit will automatically save modified files. "
 "This will only take effect if the \"Autosave\" option is turned on."
@@ -122,11 +122,11 @@ msgstr ""
 "ចំនួន​នាទី​បន្ទាប់​ពី​ gedit នឹង​រក្សាទុក​ឯកសារ​ដែលបានកែប្រែ​ដោយ​ស្វ័យ​ប្រវត្តិ ។ វា​មាន​ប្រសិទ្ធភាព​តែ​"
 "ក្នុងករណី​បាន​បើក​ជម្រើស \"រក្សាទុក​ដោយ​ស្វ័យ​ប្រវត្តិ\" ប៉ុណ្ណោះ ។"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:13
+#: ../data/com.bwhmather.bedit.gschema.xml.in.in.h:13
 msgid "Undo Actions Limit (DEPRECATED)"
 msgstr "មិន​ធ្វើ​ដែន​កំណត់​សកម្មភាព​វិញ (បដិសេធ)"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:14
+#: ../data/com.bwhmather.bedit.gschema.xml.in.in.h:14
 msgid ""
 "Maximum number of actions that gedit will be able to undo or redo. Use "
 "\"-1\" for unlimited number of actions. Deprecated since 2.12.0"
@@ -134,11 +134,11 @@ msgstr ""
 "ចំនួន​សកម្មភាព​អតិបរមា​ដែល​ gedit អាច​មិន​ធ្វើ​វិញ ឬ​ធ្វើវិញ ។ ប្រើ \"-1\" សម្រាប់​ចំនួន​សកម្មភាព​គ្មាន​"
 "កំណត់ ។ បាន​បដិសេធ​ទាំង​ពីកំណែ ២.១២.០"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:15
+#: ../data/com.bwhmather.bedit.gschema.xml.in.in.h:15
 msgid "Maximum Number of Undo Actions"
 msgstr "ចំនួន​សកម្មភាព​មិន​ធ្វើ​វិញ​អតិបរមា"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:16
+#: ../data/com.bwhmather.bedit.gschema.xml.in.in.h:16
 msgid ""
 "Maximum number of actions that gedit will be able to undo or redo. Use "
 "\"-1\" for unlimited number of actions."
@@ -146,11 +146,11 @@ msgstr ""
 "ចំនួន​សកម្មភាព​អតិបរមា​ដែល​ gedit អាច​មិន​ធ្វើ​វិញ ឬ​ធ្វើ​វិញ ។ ប្រើ \"-1\" សម្រាប់​ចំនួន​សកម្មភាព​គ្មាន​"
 "កំណត់ ។"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:17
+#: ../data/com.bwhmather.bedit.gschema.xml.in.in.h:17
 msgid "Line Wrapping Mode"
 msgstr "របៀប​រុំ​បន្ទាត់"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:18
+#: ../data/com.bwhmather.bedit.gschema.xml.in.in.h:18
 msgid ""
 "Specifies how to wrap long lines in the editing area. Use \"none\" for no "
 "wrapping, \"word\" for wrapping at word boundaries, and \"char\" for "
@@ -161,77 +161,77 @@ msgstr ""
 "ការ​រុំ​ជុំវិញ​​ពាក្យ និង \"តួអក្សរ\" សម្រាប់​រុំ​ជុំវិញ​តួអក្សរ​នីមួយៗ ។ ចំណាំ​ថា តម្លៃ​ប្រកាន់​អក្សរ​តូចធំ ដូច្នេះ​ត្រូវ​"
 "ប្រាកថា ពួក​វា​បង្ហាញ​យ៉ាង​ត្រឹមត្រូវ​ដូច​ដែលបាន​អធិប្បាយ​ខាង​លើ ។"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:19
+#: ../data/com.bwhmather.bedit.gschema.xml.in.in.h:19
 msgid "Tab Size"
 msgstr "ទំហំ​ថេប"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:20
+#: ../data/com.bwhmather.bedit.gschema.xml.in.in.h:20
 msgid ""
 "Specifies the number of spaces that should be displayed instead of Tab "
 "characters."
 msgstr "បញ្ជាក់​ចំនួន​ដកឃ្លា ដែល​គួរ​ត្រូវ​បាន​បង្ហាញ​ជំនួស​ឲ្យ​តួអក្សរ​ថេប ។"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:21
+#: ../data/com.bwhmather.bedit.gschema.xml.in.in.h:21
 msgid "Insert spaces"
 msgstr "បញ្ចូល​ចន្លោះ"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:22
+#: ../data/com.bwhmather.bedit.gschema.xml.in.in.h:22
 msgid "Whether gedit should insert spaces instead of tabs."
 msgstr "ថាតើ gedit គួរ​បញ្ចូល​ដកឃ្លា​ជំនួស​ឲ្យ​ថេប​ឬ ។"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:23
+#: ../data/com.bwhmather.bedit.gschema.xml.in.in.h:23
 msgid "Automatic indent"
 msgstr "ចូល​បន្ទាត់​ដោយ​ស្វ័យ​ប្រវត្តិ"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:24
+#: ../data/com.bwhmather.bedit.gschema.xml.in.in.h:24
 msgid "Whether gedit should enable automatic indentation."
 msgstr "ថាតើ gedit គួរ​បើក​ការ​ចូល​បន្ទាត់​ដោយ​ស្វ័យ​ប្រវត្តិ ។"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:25
+#: ../data/com.bwhmather.bedit.gschema.xml.in.in.h:25
 msgid "Display Line Numbers"
 msgstr "បង្ហាញ​លេខ​បន្ទាត់"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:26
+#: ../data/com.bwhmather.bedit.gschema.xml.in.in.h:26
 msgid "Whether gedit should display line numbers in the editing area."
 msgstr "ថាតើ gedit គួរ​បង្ហាញ​លេខ​បន្ទាត់​ក្នុង​ផ្ទៃ​កែសម្រួល​ដែរឬទេ ។"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:27
+#: ../data/com.bwhmather.bedit.gschema.xml.in.in.h:27
 msgid "Highlight Current Line"
 msgstr "រំលេច​បន្ទាត់​បច្ចុប្បន្ន"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:28
+#: ../data/com.bwhmather.bedit.gschema.xml.in.in.h:28
 msgid "Whether gedit should highlight the current line."
 msgstr "ថាតើ gedit គួរ​រំលេច​បន្ទាត់​បច្ចុប្បន្ន ។"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:29
+#: ../data/com.bwhmather.bedit.gschema.xml.in.in.h:29
 msgid "Highlight Matching Brackets"
 msgstr "រំលេច​វង់ក្រចក​ដែល​ផ្គូផ្គង"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:30
+#: ../data/com.bwhmather.bedit.gschema.xml.in.in.h:30
 msgid "Whether gedit should highlight matching brackets."
 msgstr "ថាតើ gedit គួរ​រំលេច​វង់ក្រចក​ដែល​ផ្គូផ្គង ។"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:31
+#: ../data/com.bwhmather.bedit.gschema.xml.in.in.h:31
 msgid "Display Right Margin"
 msgstr "បង្ហាញ​រឹម​ខាង​ស្ដាំ"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:32
+#: ../data/com.bwhmather.bedit.gschema.xml.in.in.h:32
 msgid "Whether gedit should display the right margin in the editing area."
 msgstr "ថាតើ gedit គួរ​បង្ហាញ​រឹម​ខាង​ស្ដាំ​នៅ​ក្នុង​ផ្ទៃ​កែសម្រួល ។"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:33
+#: ../data/com.bwhmather.bedit.gschema.xml.in.in.h:33
 msgid "Right Margin Position"
 msgstr "ទីតាំង​រឹម​ខាង​ស្ដាំ"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:34
+#: ../data/com.bwhmather.bedit.gschema.xml.in.in.h:34
 msgid "Specifies the position of the right margin."
 msgstr "បញ្ជាក់​ទីតាំង​របស់​រឹម​ខាង​ស្ដាំ ។"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:35
+#: ../data/com.bwhmather.bedit.gschema.xml.in.in.h:35
 msgid "Smart Home End"
 msgstr "Smart Home End"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:36
+#: ../data/com.bwhmather.bedit.gschema.xml.in.in.h:36
 msgid ""
 "Specifies how the cursor moves when the HOME and END keys are pressed. Use "
 "\"disabled\" to always move at the start/end of the line, \"after\" to move "
@@ -249,55 +249,55 @@ msgstr ""
 "the start/end of the line and \"always\" to always move to the start/end of "
 "the text instead of the start/end of the line."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:37
+#: ../data/com.bwhmather.bedit.gschema.xml.in.in.h:37
 msgid "Restore Previous Cursor Position"
 msgstr "ស្ដារ​ទីតាំង​ទស្សន៍​ទ្រនិច​មុន"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:38
+#: ../data/com.bwhmather.bedit.gschema.xml.in.in.h:38
 msgid ""
 "Whether gedit should restore the previous cursor position when a file is "
 "loaded."
 msgstr "ថាតើ gedit គួរ​ស្ដារ​ទីតាំង​ទស្សន៍​ទ្រនិច​មុន​នៅ​ពេល​ឯកសារ​ត្រូវ​បាន​ផ្ទុក​ដែរឬទេ ។"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:39
+#: ../data/com.bwhmather.bedit.gschema.xml.in.in.h:39
 msgid "Enable Syntax Highlighting"
 msgstr "បើក​ការ​រំលេច​វាក្យសម្ពន្ធ"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:40
+#: ../data/com.bwhmather.bedit.gschema.xml.in.in.h:40
 msgid "Whether gedit should enable syntax highlighting."
 msgstr "ថាតើ gedit គួរ​បើក​ការ​រំលេច​វាក្យសម្ពន្ធ​ដែរ​ឬទេ ។"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:41
+#: ../data/com.bwhmather.bedit.gschema.xml.in.in.h:41
 msgid "Enable Search Highlighting"
 msgstr "បើក​ការ​រំលេច​ការ​ស្វែងរក"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:42
+#: ../data/com.bwhmather.bedit.gschema.xml.in.in.h:42
 msgid ""
 "Whether gedit should highlight all the occurrences of the searched text."
 msgstr "ថាតើ gedit គួរ​រំលេច​ការ​កើត​ឡើង​​ទាំងអស់​នៃ​អត្ថបទ​ដែល​បាន​ស្វែងរក​ដែរ​ឬទេ ។"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:43
+#: ../data/com.bwhmather.bedit.gschema.xml.in.in.h:43
 msgid "Ensure Trailing Newline"
 msgstr "ប្រាកដ​បន្ទាត់​ថ្មី"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:44
+#: ../data/com.bwhmather.bedit.gschema.xml.in.in.h:44
 msgid ""
 "Whether gedit will ensure that documents always end with a trailing newline."
 msgstr "ថា​តើ​ gedit នឹង​ប្រាកដ​ថា​ឯកសារ​តែងតែ​បញ្ចប់​ដោយ​គ្មាន​បន្ទាត់ថ្មី ។"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:45
+#: ../data/com.bwhmather.bedit.gschema.xml.in.in.h:45
 msgid "Toolbar is Visible"
 msgstr "របារ​ឧបករណ៍​មើល​ឃើញ"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:46
+#: ../data/com.bwhmather.bedit.gschema.xml.in.in.h:46
 msgid "Whether the toolbar should be visible in editing windows."
 msgstr "ថាតើរបារ​ឧបករណ៍​គួរ​មើលឃើញ​ក្នុង​បង្អួច​កែសម្រួល​ដែរឬទេ ។"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:47
+#: ../data/com.bwhmather.bedit.gschema.xml.in.in.h:47
 msgid "Notebook Show Tabs Mode"
 msgstr "Notebook បង្ហាញ​របៀប​ថេប"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:48
+#: ../data/com.bwhmather.bedit.gschema.xml.in.in.h:48
 msgid ""
 "Specifies when to show the notebook tabs. Use \"never\" to never show the "
 "tabs, \"always\" to always show the tabs, and \"auto\" to show the tabs only "
@@ -309,55 +309,55 @@ msgstr ""
 "ចំណាំថា តម្លៃ​ប្រកាន់​អក្សរតូចធំ ដូច្នេះ​ត្រូវ​ប្រាកដថា ពួកវា​បង្ហាញ​យ៉ាង​ត្រឹមត្រូវ​ដូច​ដែល​បាន​អធិប្បា​នៅ​ទីនេះ "
 "។"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:49
+#: ../data/com.bwhmather.bedit.gschema.xml.in.in.h:49
 msgid "Status Bar is Visible"
 msgstr "របារ​ស្ថានភាព​មើលឃើញ"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:50
+#: ../data/com.bwhmather.bedit.gschema.xml.in.in.h:50
 msgid ""
 "Whether the status bar at the bottom of editing windows should be visible."
 msgstr "ថាតើ​របារ​ស្ថានភាព​នៅ​ខាង​ក្រោម​បង្អួច​កែសម្រួល​គួរ​មើលឃើញ​ដែរឬទេ ។"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:51
+#: ../data/com.bwhmather.bedit.gschema.xml.in.in.h:51
 msgid "Side panel is Visible"
 msgstr "បន្ទះ​ចំហៀង​មើលឃើញ"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:52
+#: ../data/com.bwhmather.bedit.gschema.xml.in.in.h:52
 msgid ""
 "Whether the side panel at the left of editing windows should be visible."
 msgstr "ថាតើ​បន្ទះ​ចំហៀង​នៅ​ខាង​ឆ្វេង​បង្អួច​កែសម្រួល​គួរ​មើល​ឃើញ​ដែរឬទេ ។"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:53
+#: ../data/com.bwhmather.bedit.gschema.xml.in.in.h:53
 msgid "Maximum Recent Files"
 msgstr "ឯកសារ​ថ្មីៗ​អតិបរមា"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:54
+#: ../data/com.bwhmather.bedit.gschema.xml.in.in.h:54
 msgid ""
 "Specifies the maximum number of recently opened files that will be displayed "
 "in the \"Recent Files\" submenu."
 msgstr "បញ្ជាក់​ចំនួន​ឯកសារ​ដែលបាន​បើក​ថ្មី​ ដែល​នឹង​ត្រូវ​បាន​បង្ហាញ​ក្នុង​ម៉ឺនុយ​រង \"ឯកសារ​ថ្មីៗ\" ។"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:55
+#: ../data/com.bwhmather.bedit.gschema.xml.in.in.h:55
 msgid "Print Syntax Highlighting"
 msgstr "បោះពុម្ព​ការ​រំលេច​វាក្យសម្ពន្ធ"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:56
+#: ../data/com.bwhmather.bedit.gschema.xml.in.in.h:56
 msgid "Whether gedit should print syntax highlighting when printing documents."
 msgstr "ថាតើ​ gedit គួរ​បោះពុម្ព​ការ​រំលេច​វាក្យសម្ពន្ធ​នៅ​ពេល​បោះពុម្ព​ឯកសារ​ដែរឬទេ ។"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:57
+#: ../data/com.bwhmather.bedit.gschema.xml.in.in.h:57
 msgid "Print Header"
 msgstr "បោះពុម្ព​ក្បាល"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:58
+#: ../data/com.bwhmather.bedit.gschema.xml.in.in.h:58
 msgid "Whether gedit should include a document header when printing documents."
 msgstr "ថាតើ gedit គួរ​ដាក់​បញ្ចូល​ក្បាល​ឯកសារ​នៅ​ពេល​បោះពុម្ព​ឯកសារ​ដែរ​ឬទេ ។"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:59
+#: ../data/com.bwhmather.bedit.gschema.xml.in.in.h:59
 msgid "Printing Line Wrapping Mode"
 msgstr "បោះពុម្ព​របៀប​រុំ​បន្ទាត់"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:60
+#: ../data/com.bwhmather.bedit.gschema.xml.in.in.h:60
 msgid ""
 "Specifies how to wrap long lines for printing. Use \"none\" for no wrapping, "
 "\"word\" for wrapping at word boundaries, and \"char\" for wrapping at "
@@ -368,11 +368,11 @@ msgstr ""
 "ពាក្យ និង \"តួអក្សរ\" សម្រាប់​រុំ​តួអក្សរ ។ ចំណាំ​ថា តម្លៃ​ប្រកាន់​អក្សរ​តូចធំ ដូច្នេះ​ត្រូវ​ប្រាកដថា ពួកវា​"
 "បង្ហាញ​យ៉ាង​ត្រឹមត្រូវ​ដូច​ដែលបានអធិប្បាយ​នៅ​ទីនេះ ។"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:61
+#: ../data/com.bwhmather.bedit.gschema.xml.in.in.h:61
 msgid "Print Line Numbers"
 msgstr "បោះពុម្ព​​លេខ​បន្ទាត់"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:62
+#: ../data/com.bwhmather.bedit.gschema.xml.in.in.h:62
 msgid ""
 "If this value is 0, then no line numbers will be inserted when printing a "
 "document. Otherwise, gedit will print line numbers every such number of "
@@ -381,20 +381,20 @@ msgstr ""
 "ប្រសិនបើ​តម្លៃ ០ នោះ​គ្មាន​លេខ​បន្ទាត់​នឹង​ត្រូវ​បាន​បញ្ចូល​នៅ​ពេលបោះពុម្ព​ឯកសារ​ទេ ។ បើ​មិន​ដូច្នេះ​ទេ "
 "gedit នឹង​បោះពុម្ព​លេខ​បន្ទាត់​រាល់​លេខ​ដែល​បន្ទាត់​មាន ។"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:63
+#: ../data/com.bwhmather.bedit.gschema.xml.in.in.h:63
 msgid "Body Font for Printing"
 msgstr "ពុម្ពអក្សរ​តួ​សម្រាប់​បោះពុម្ព"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:64
+#: ../data/com.bwhmather.bedit.gschema.xml.in.in.h:64
 msgid ""
 "Specifies the font to use for a document's body when printing documents."
 msgstr "បញ្ជាក់​ពុម្ព​អក្សរ​ ត្រូវ​ប្រើ​សម្រាប់​តួ​ឯកសារ​នៅ​ពេល​បោះពុម្ព ។"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:65
+#: ../data/com.bwhmather.bedit.gschema.xml.in.in.h:65
 msgid "Header Font for Printing"
 msgstr "ពុម្ពអក្សរ​សម្រាប់ក្បាលនៅ​ពេល​បោះពុម្ព"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:66
+#: ../data/com.bwhmather.bedit.gschema.xml.in.in.h:66
 msgid ""
 "Specifies the font to use for page headers when printing a document. This "
 "will only take effect if the \"Print Header\" option is turned on."
@@ -402,11 +402,11 @@ msgstr ""
 "បញ្ជាក់ពុម្ពអក្សរ​ត្រូវ​ប្រើ​សម្រាប់​ក្បាល​នៅ​ពេល​បោះពុម្ព​ឯកសារ ។ វា​នឹង​មាន​ប្រសិទ្ធភាព​តែ​ក្នុង​ករណី​ដែល​"
 "ជម្រើស \"បោះពុម្ព​ក្បាល\" ត្រូវ​បាន​បើក ។"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:67
+#: ../data/com.bwhmather.bedit.gschema.xml.in.in.h:67
 msgid "Line Number Font for Printing"
 msgstr "ពុម្ពអក្សរ​លេខ​បន្ទាត់​សម្រាប់បោះពុម្ព"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:68
+#: ../data/com.bwhmather.bedit.gschema.xml.in.in.h:68
 msgid ""
 "Specifies the font to use for line numbers when printing. This will only "
 "take effect if the \"Print Line Numbers\" option is non-zero."
@@ -425,15 +425,15 @@ msgstr ""
 #. Only recognized encodings are used.
 #. See http://git.gnome.org/browse/gedit/tree/gedit/gedit-encodings.c#n152 for
 #. a list of supported encodings
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:80
+#: ../data/com.bwhmather.bedit.gschema.xml.in.in.h:80
 msgid "['UTF-8', 'CURRENT', 'ISO-8859-15', 'UTF-16']"
 msgstr "['UTF-8', 'CURRENT', 'ISO-8859-15', 'UTF-16']"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:81
+#: ../data/com.bwhmather.bedit.gschema.xml.in.in.h:81
 msgid "Automatically Detected Encodings"
 msgstr "រកឃើញ​ការ​អ៊ិនកូដ​ដោយ​ស្វ័យ​ប្រវត្តិ"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:82
+#: ../data/com.bwhmather.bedit.gschema.xml.in.in.h:82
 msgid ""
 "Sorted list of encodings used by gedit for automatically detecting the "
 "encoding of a file. \"CURRENT\" represents the current locale encoding. Only "
@@ -444,15 +444,15 @@ msgstr ""
 
 #. Translators: This is the list of encodings shown by default in the Character Encoding
 #. menu in open/save file selector. Only recognized encodings are displayed.
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:85
+#: ../data/com.bwhmather.bedit.gschema.xml.in.in.h:85
 msgid "['ISO-8859-15']"
 msgstr "['ISO-8859-15']"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:86
+#: ../data/com.bwhmather.bedit.gschema.xml.in.in.h:86
 msgid "Encodings shown in menu"
 msgstr "ការ​អ៊ិនកូដ​បង្ហាញ​ក្នុង​ម៉ឺនុយ"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:87
+#: ../data/com.bwhmather.bedit.gschema.xml.in.in.h:87
 msgid ""
 "List of encodings shown in the Character Encoding menu in open/save file "
 "selector. Only recognized encodings are used."
@@ -460,11 +460,11 @@ msgstr ""
 "បញ្ជី​អ៊ិនកូដ​បាន​បង្ហាញ​ក្នុង​ម៉ឺនុយ​អ៊ិនកូដ​តួអក្សរ​​នៅ​ក្នុង​កម្មវិធី​ជ្រើស​បើក/រក្សាទុក​ឯកសារ ។ មាន​តែ​ការ​អ៊ិនកូដ​ដែល​"
 "ស្គាល់​ប៉ុណ្ណោះ​ត្រូវ​បាន​ប្រើ ។"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:88
+#: ../data/com.bwhmather.bedit.gschema.xml.in.in.h:88
 msgid "Active plugins"
 msgstr "កម្មវិធី​ជំនួយ​សកម្ម"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:89
+#: ../data/com.bwhmather.bedit.gschema.xml.in.in.h:89
 msgid ""
 "List of active plugins. It contains the \"Location\" of the active plugins. "
 "See the .gedit-plugin file for obtaining the \"Location\" of a given plugin."
@@ -1497,8 +1497,8 @@ msgid "Editor"
 msgstr "កម្មវិធី​កែសម្រួល"
 
 #: ../gedit/gedit-preferences-dialog.ui.h:20
-#: ../plugins/externaltools/org.gnome.gedit.plugins.externaltools.gschema.xml.in.in.h:3
-#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.in.h:7
+#: ../plugins/externaltools/com.bwhmather.bedit.plugins.externaltools.gschema.xml.in.in.h:3
+#: ../plugins/pythonconsole/com.bwhmather.bedit.plugins.pythonconsole.gschema.xml.in.in.h:7
 msgid "Font"
 msgstr "ពុម្ព​អក្សរ"
 
@@ -2284,12 +2284,12 @@ msgstr ""
 "អ្នក​អាចទាញយក​កំណែ​របស់ gedit ថ្មី ដោយ​ចុច​​ប៊ូតុង​ទាញយក ឬ​មិន​អើពើ​កំណែ​នោះ ហើយ​រង់ចាំ​កំណែ​ថ្មី​មួយ​ទៀត"
 
 #. ex:set ts=8 noet:
-#: ../plugins/checkupdate/org.gnome.gedit.plugins.checkupdate.gschema.xml.in.in.h:1
+#: ../plugins/checkupdate/com.bwhmather.bedit.plugins.checkupdate.gschema.xml.in.in.h:1
 msgid "Version to Ignore"
 msgstr "កំណែ​ត្រូវ​អើពើ"
 
 #. This is releated to the next gedit version to be released
-#: ../plugins/checkupdate/org.gnome.gedit.plugins.checkupdate.gschema.xml.in.in.h:3
+#: ../plugins/checkupdate/com.bwhmather.bedit.plugins.checkupdate.gschema.xml.in.in.h:3
 msgid "Version to ignore until a newer version is released."
 msgstr "កំណែ​ត្រូវ​អើពើ​រហូត​ដល់​កំណែ​ថ្មី​ចេញ​ផ្សាយ ។"
 
@@ -2398,12 +2398,12 @@ msgstr "ឧបករណ៍​ខាង​ក្រៅ"
 msgid "Execute external commands and shell scripts."
 msgstr "ប្រតិបត្តិ​ពាក្យ​បញ្ជា​ស្ថានីយ និង​ស្គ្រីប​សែល"
 
-#: ../plugins/externaltools/org.gnome.gedit.plugins.externaltools.gschema.xml.in.in.h:1
-#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.in.h:5
+#: ../plugins/externaltools/com.bwhmather.bedit.plugins.externaltools.gschema.xml.in.in.h:1
+#: ../plugins/pythonconsole/com.bwhmather.bedit.plugins.pythonconsole.gschema.xml.in.in.h:5
 msgid "Whether to use the system font"
 msgstr "ថាតើ​ត្រូវ​ប្រើ​ពុម្ពអក្សរ​ប្រព័ន្ធ​ដែរឬទេ"
 
-#: ../plugins/externaltools/org.gnome.gedit.plugins.externaltools.gschema.xml.in.in.h:2
+#: ../plugins/externaltools/com.bwhmather.bedit.plugins.externaltools.gschema.xml.in.in.h:2
 msgid ""
 "If true, the external tools will use the desktop-global standard font if "
 "it's monospace (and the most similar font it can come up with otherwise)."
@@ -2411,8 +2411,8 @@ msgstr ""
 "ប្រសិនបើ​ពិត ឧបករណ៍​ខាង​ក្រៅ​នឹង​ប្រើ​ពុម្ពអក្សរ​ស្តង់ដារ​សកម្ម​របស់​ផ្ទៃតុ ប្រសិនបើ​វា​ជា​ monospace (ហើយ​"
 "ស្រដៀង​គ្នា​នឹង​​ពុម្ពអក្សរ​ដេល​មាន​ជា​មួយ) ។"
 
-#: ../plugins/externaltools/org.gnome.gedit.plugins.externaltools.gschema.xml.in.in.h:4
-#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.in.h:8
+#: ../plugins/externaltools/com.bwhmather.bedit.plugins.externaltools.gschema.xml.in.in.h:4
+#: ../plugins/pythonconsole/com.bwhmather.bedit.plugins.pythonconsole.gschema.xml.in.in.h:8
 msgid "A Pango font name. Examples are \"Sans 12\" or \"Monospace Bold 14\"."
 msgstr "ឈ្មោះ​ពុម្ពអក្សរ​របស់ Pango ។ ឧទាហរណ៍ \"Sans 12\" ឬ \"Monospace Bold 14\" ។"
 
@@ -2876,21 +2876,21 @@ msgid "Could not mount volume: %s"
 msgstr "មិន​អាច​ម៉ោន​ភាគ​បាន​ទេ ៖ %s"
 
 #. ex:ts=8:noet:
-#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:1
+#: ../plugins/filebrowser/com.bwhmather.bedit.plugins.filebrowser.gschema.xml.in.in.h:1
 msgid "Open With Tree View"
 msgstr "បើក​​ជា​មួយទិដ្ឋភាព​មែកធាង"
 
-#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:2
+#: ../plugins/filebrowser/com.bwhmather.bedit.plugins.filebrowser.gschema.xml.in.in.h:2
 msgid ""
 "Open the tree view when the file browser plugin gets loaded instead of the "
 "bookmarks view"
 msgstr "បើក​ទិដ្ឋភាព​មែកធាង នៅ​ពេល​កម្មវិធី​ជំនួយ​របស់​កម្មវិធី​រុករក​ឯកសារ ត្រូវ​បាន​ផ្ទុក​ជំនួយ​ឲ្យ​ទិដ្ឋភាព​ចំណាំ"
 
-#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:3
+#: ../plugins/filebrowser/com.bwhmather.bedit.plugins.filebrowser.gschema.xml.in.in.h:3
 msgid "File Browser Root Directory"
 msgstr "ថត​ Root របស់​កម្មវិធី​រុករក​ឯកសារ"
 
-#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:4
+#: ../plugins/filebrowser/com.bwhmather.bedit.plugins.filebrowser.gschema.xml.in.in.h:4
 msgid ""
 "The file browser root directory to use when loading the file browser plugin "
 "and onload/tree_view is TRUE."
@@ -2898,11 +2898,11 @@ msgstr ""
 "ថ root របស់​កម្មវិធី​រុករក​ឯកសារ​ត្រូវ​ប្រើ​ នៅ​ពេល​ផ្ទុក​​កម្មវិធី​ជំនួយ​របស់​កម្មវិធី​រុករក​ឯកសារ និង onload/"
 "tree_view គឺ​ពិត ។"
 
-#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:5
+#: ../plugins/filebrowser/com.bwhmather.bedit.plugins.filebrowser.gschema.xml.in.in.h:5
 msgid "File Browser Virtual Root Directory"
 msgstr "ថត Root និម្មិត​របស់​កម្មវិធី​រុករក​ឯកសារ"
 
-#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:6
+#: ../plugins/filebrowser/com.bwhmather.bedit.plugins.filebrowser.gschema.xml.in.in.h:6
 msgid ""
 "The file browser virtual root directory to use when loading the file browser "
 "plugin when onload/tree_view is TRUE. The virtual root must always be below "
@@ -2911,19 +2911,19 @@ msgstr ""
 "ថត root និម្មិត​របស់​កម្មវិធី​រុករក​ឯកសារ ត្រូវ​ប្រើ​នៅ​ពេល​ផ្ទុក​កម្មវិធី​ជំនួយ​របស់​កម្មវិធី​រុករក​នៅ​​ពេល onload/"
 "tree_view ពិត ។ root និម្មិត​ត្រូវ​តែ​នៅ​ក្រោម​ root ពិតប្រាកដ​ជា​និច្ច ។"
 
-#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:7
+#: ../plugins/filebrowser/com.bwhmather.bedit.plugins.filebrowser.gschema.xml.in.in.h:7
 msgid "Enable Restore of Remote Locations"
 msgstr "បើក​ការ​ស្ដារ​ទីតាំង​ពី​ចម្ងាយ​ឡើងវិញ"
 
-#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:8
+#: ../plugins/filebrowser/com.bwhmather.bedit.plugins.filebrowser.gschema.xml.in.in.h:8
 msgid "Sets whether to enable restoring of remote locations."
 msgstr "កំណត់​ថាតើ​ត្រូវ​បើក​ការ​ស្ដារ​ទីតាំង​ពី​ចម្ងាយ​ឡើងវិញ​ដែរឬទេ ។"
 
-#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:9
+#: ../plugins/filebrowser/com.bwhmather.bedit.plugins.filebrowser.gschema.xml.in.in.h:9
 msgid "Set Location to First Document"
 msgstr "កំណត់​ទីតាំង​ទៅ​ឯកសារ​ដំបូង"
 
-#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:10
+#: ../plugins/filebrowser/com.bwhmather.bedit.plugins.filebrowser.gschema.xml.in.in.h:10
 msgid ""
 "If TRUE the file browser plugin will view the directory of the first opened "
 "document given that the file browser hasn't been used yet. (Thus this "
@@ -2934,11 +2934,11 @@ msgstr ""
 "ឯកសារ​មិន​ត្រូវ​បាន​ប្រើ​នៅ​ឡើយ ។ (ដូច្នេះ​វា​ជាទូទៅ អនុវត្ត​លើ​ឯកសារ​ដែល​បានបើក​ពី​បន្ទាត់​ពាក្យ​បញ្ជា ឬ​​"
 "បើក​វា​ជា​មួយ Nautilus ។ល។)"
 
-#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:11
+#: ../plugins/filebrowser/com.bwhmather.bedit.plugins.filebrowser.gschema.xml.in.in.h:11
 msgid "File Browser Filter Mode"
 msgstr "របៀប​ត្រង​របស់​កម្មវិធី​រុករក​ឯកសារ"
 
-#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:12
+#: ../plugins/filebrowser/com.bwhmather.bedit.plugins.filebrowser.gschema.xml.in.in.h:12
 msgid ""
 "This value determines what files get filtered from the file browser. Valid "
 "values are: none (filter nothing), hide-hidden (filter hidden files) and "
@@ -2947,11 +2947,11 @@ msgstr ""
 "តម្លៃ​នេះ​កំណត់​ថាត​ឯកសារ​អ្វីត្រូ​វបាន​ត្រង​ពី​កម្មវិធីរុករក​ឯកសារ ។ តម្លៃ​ត្រឹមត្រូវ​គឺ ៖ គ្មាន (មិន​ត្រង) "
 "លាក់ឯកសារ​​ដែល​បាន​លាក់ (ត្រង​ឯកសារ​ដែលលាក់) និង​លាក់​ឯកសារ​គោលពីរ (ត្រង​ឯកសារ​គោលពីរ) ។"
 
-#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:13
+#: ../plugins/filebrowser/com.bwhmather.bedit.plugins.filebrowser.gschema.xml.in.in.h:13
 msgid "File Browser Filter Pattern"
 msgstr "លំនាំ​តម្រង​កម្មវិធី​រុករក​ឯកសារ"
 
-#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:14
+#: ../plugins/filebrowser/com.bwhmather.bedit.plugins.filebrowser.gschema.xml.in.in.h:14
 msgid ""
 "The filter pattern to filter the file browser with. This filter works on top "
 "of the filter_mode."
@@ -2965,23 +2965,23 @@ msgstr "របៀប​បន្ទាត់"
 msgid "Emacs, Kate and Vim-style modelines support for gedit."
 msgstr "របៀប​បន្ទាត់​តាម​រចនាប័ទ្ម Emacs, Kate និង Vim គាំទ្រ​សម្រាប់  gedit ។"
 
-#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.in.h:1
+#: ../plugins/pythonconsole/com.bwhmather.bedit.plugins.pythonconsole.gschema.xml.in.in.h:1
 msgid "Command Color Text"
 msgstr "ពណ៌​អត្ថបទ​ពាក្យ​បញ្ជា"
 
-#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.in.h:2
+#: ../plugins/pythonconsole/com.bwhmather.bedit.plugins.pythonconsole.gschema.xml.in.in.h:2
 msgid "The command color text"
 msgstr "ពណ៌​អត្ថបទ​ពាក្យ​បញ្ជា"
 
-#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.in.h:3
+#: ../plugins/pythonconsole/com.bwhmather.bedit.plugins.pythonconsole.gschema.xml.in.in.h:3
 msgid "Error Color Text"
 msgstr "ពណ៌​អត្ថបទ​កំហុស"
 
-#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.in.h:4
+#: ../plugins/pythonconsole/com.bwhmather.bedit.plugins.pythonconsole.gschema.xml.in.in.h:4
 msgid "The error color text"
 msgstr "ពណ៌​អត្ថបទ​កំហុស"
 
-#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.in.h:6
+#: ../plugins/pythonconsole/com.bwhmather.bedit.plugins.pythonconsole.gschema.xml.in.in.h:6
 msgid ""
 "If true, the terminal will use the desktop-global standard font if it's "
 "monospace (and the most similar font it can come up with otherwise)."
@@ -3550,29 +3550,29 @@ msgstr "នៅ​ពេល​បញ្ចូល​កាលបរិច្ឆេ
 msgid "_Prompt for a format"
 msgstr "ប្រអប់​បញ្ចូល​សម្រាប់​ទ្រង់ទ្រាយ"
 
-#: ../plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in.in.h:1
+#: ../plugins/time/com.bwhmather.bedit.plugins.time.gschema.xml.in.in.h:1
 msgid "Prompt Type"
 msgstr "ប្រភេទ​ប្រអប់​បញ្ចូល"
 
-#: ../plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in.in.h:2
+#: ../plugins/time/com.bwhmather.bedit.plugins.time.gschema.xml.in.in.h:2
 msgid ""
 "If the user should be prompted for a format or if the selected or custom "
 "format should be used."
 msgstr "ប្រសិនបើ​អ្នក​ប្រើ​​​សួរ​រក​ទ្រង់ទ្រាយ ឬ​ប្រសិនបើ​បាន​ជ្រើស ឬ​ទ្រង់ទ្រាយ​ផ្ទាល់​ខ្លួន​គួរ​ត្រូវ​បាន​ប្រើ ។"
 
-#: ../plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in.in.h:3
+#: ../plugins/time/com.bwhmather.bedit.plugins.time.gschema.xml.in.in.h:3
 msgid "Selected Format"
 msgstr "ទ្រង់ទ្រាយ​ដែល​បាន​ជ្រើស"
 
-#: ../plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in.in.h:4
+#: ../plugins/time/com.bwhmather.bedit.plugins.time.gschema.xml.in.in.h:4
 msgid "The selected format used when inserting the date/time."
 msgstr "ទ្រង់ទ្រាយ​ដែល​បាន​ជ្រើស​ បាន​ប្រើនៅ​ពេល​បញ្ចូល​កាលបរិច្ឆេទ/ពេលវេលា ។"
 
-#: ../plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in.in.h:5
+#: ../plugins/time/com.bwhmather.bedit.plugins.time.gschema.xml.in.in.h:5
 msgid "Custom Format"
 msgstr "ទ្រង់ទ្រាយ​ផ្ទាល់ខ្លួន"
 
-#: ../plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in.in.h:6
+#: ../plugins/time/com.bwhmather.bedit.plugins.time.gschema.xml.in.in.h:6
 msgid "The custom format used when inserting the date/time."
 msgstr "ទ្រង់ទ្រាយ​ផ្ទាល់​ខ្លួន​បាន​ប្រើ​នៅ​ពេល​បញ្ចូល​កាលបរិច្ឆេទ/ពេលវេលា ។"
 

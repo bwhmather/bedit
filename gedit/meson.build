@@ -264,15 +264,15 @@ libgedit_pc = pkg.generate(
 
 # FIXME: https://github.com/mesonbuild/meson/issues/1687
 custom_target(
-  'org.gnome.gedit.enums.xml',
+  'com.bwhmather.bedit.enums.xml',
   input : libgedit_sources + libgedit_public_h + ['gedit-notebook.h'],
-  output: 'org.gnome.gedit.enums.xml',
+  output: 'com.bwhmather.bedit.enums.xml',
   capture: true,
   command: [
     'glib-mkenums',
     '--comments', '<!-- @comment@ -->',
     '--fhead', '<schemalist>',
-    '--vhead', '  <@type@ id="org.gnome.gedit.@EnumName@">',
+    '--vhead', '  <@type@ id="com.bwhmather.bedit.@EnumName@">',
     '--vprod', '    <value nick="@valuenick@" value="@valuenum@"/>',
     '--vtail', '  </@type@>',
     '--ftail', '</schemalist>',

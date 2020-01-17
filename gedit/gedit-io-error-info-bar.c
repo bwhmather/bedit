@@ -949,7 +949,7 @@ gedit_no_backup_saving_error_info_bar_new (GFile        *location,
 	vbox = gtk_box_new (GTK_ORIENTATION_VERTICAL, 6);
 	gtk_box_pack_start (GTK_BOX (hbox_content), vbox, TRUE, TRUE, 0);
 
-	editor_settings = g_settings_new ("org.gnome.gedit.preferences.editor");
+	editor_settings = g_settings_new ("com.bwhmather.bedit.preferences.editor");
 
 	create_backup_copy = g_settings_get_boolean (editor_settings,
 						     GEDIT_SETTINGS_CREATE_BACKUP_COPY);

@@ -40,7 +40,7 @@ class PythonConsole(Gtk.ScrolledWindow):
 
     DEFAULT_FONT = "Monospace 10"
 
-    CONSOLE_KEY_BASE = 'org.gnome.gedit.plugins.pythonconsole'
+    CONSOLE_KEY_BASE = 'com.bwhmather.bedit.plugins.pythonconsole'
     SETTINGS_INTERFACE_DIR = "org.gnome.desktop.interface"
     SETTINGS_PROFILE_DIR = "org.gnome.GnomeTerminal.profiles.Default"
 

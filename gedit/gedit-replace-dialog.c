@@ -535,7 +535,7 @@ gedit_replace_dialog_class_init (GeditReplaceDialogClass *klass)
 
 	/* Bind class to template */
 	gtk_widget_class_set_template_from_resource (widget_class,
-	                                             "/org/gnome/gedit/ui/gedit-replace-dialog.ui");
+	                                             "/com/bwhmather/bedit/ui/gedit-replace-dialog.ui");
 	gtk_widget_class_bind_template_child (widget_class, GeditReplaceDialog, grid);
 	gtk_widget_class_bind_template_child (widget_class, GeditReplaceDialog, search_label);
 	gtk_widget_class_bind_template_child (widget_class, GeditReplaceDialog, replace_label);
