@@ -70,13 +70,10 @@ const gchar               *gedit_utils_newline_type_to_string                 (G
 G_DEPRECATED_FOR (g_utf8_make_valid)
 gchar                     *gedit_utils_make_valid_utf8                         (const char     *name);
 
-G_DEPRECATED_FOR (tepl_utils_str_middle_truncate)
 gchar                     *gedit_utils_str_middle_truncate                    (const gchar     *string,
                                                                                guint            truncate_length);
-G_DEPRECATED_FOR (tepl_utils_str_end_truncate)
 gchar                     *gedit_utils_str_end_truncate                       (const gchar     *string,
                                                                                guint            truncate_length);
-G_DEPRECATED_FOR (tepl_utils_replace_home_dir_with_tilde)
 gchar                     *gedit_utils_replace_home_dir_with_tilde             (const gchar    *uri);
 
 G_DEPRECATED_FOR (gtk_menu_popup_at_widget)

@@ -24,7 +24,6 @@
 
 #include <string.h>
 #include <glib/gi18n.h>
-#include <tepl/tepl.h>
 
 /* For the workspace/viewport stuff */
 #ifdef GDK_WINDOWING_X11
@@ -228,19 +227,77 @@ gedit_warning (GtkWindow *parent, const gchar *format, ...)
 	gtk_widget_show (dialog);
 }
 
+static gchar *
+str_truncate (const gchar *string,
+	      guint        truncate_length,
+	      gboolean     middle)
+{
+	GString *truncated;
+	guint length;
+	guint n_chars;
+	guint num_left_chars;
+	guint right_offset;
+	guint delimiter_length;
+	const gchar *delimiter = "\342\200\246"; /* The character: … */
+
+	g_return_val_if_fail (string != NULL, NULL);
+
+	length = strlen (string);
+
+	g_return_val_if_fail (g_utf8_validate (string, length, NULL), NULL);
+
+	/* It doesnt make sense to truncate strings to less than
+	 * the size of the delimiter plus 2 characters (one on each
+	 * side)
+	 */
+	delimiter_length = g_utf8_strlen (delimiter, -1);
+	if (truncate_length < (delimiter_length + 2))
+	{
+		return g_strdup (string);
+	}
+
+	n_chars = g_utf8_strlen (string, length);
+
+	/* Make sure the string is not already small enough. */
+	if (n_chars <= truncate_length)
+	{
+		return g_strdup (string);
+	}
+
+	/* Find the 'middle' where the truncation will occur. */
+	if (middle)
+	{
+		num_left_chars = (truncate_length - delimiter_length) / 2;
+		right_offset = n_chars - truncate_length + num_left_chars + delimiter_length;
+
+		truncated = g_string_new_len (string,
+					      g_utf8_offset_to_pointer (string, num_left_chars) - string);
+		g_string_append (truncated, delimiter);
+		g_string_append (truncated, g_utf8_offset_to_pointer (string, right_offset));
+	}
+	else
+	{
+		num_left_chars = truncate_length - delimiter_length;
+		truncated = g_string_new_len (string,
+					      g_utf8_offset_to_pointer (string, num_left_chars) - string);
+		g_string_append (truncated, delimiter);
+	}
+
+	return g_string_free (truncated, FALSE);
+}
+
 /**
  * gedit_utils_str_middle_truncate:
  * @string:
  * @truncate_length:
  *
  * Returns:
- * Deprecated: 3.36: Use tepl_utils_str_middle_truncate() instead.
  */
 gchar *
 gedit_utils_str_middle_truncate (const gchar *string,
 				 guint        truncate_length)
 {
-	return tepl_utils_str_middle_truncate (string, truncate_length);
+	return str_truncate (string, truncate_length, TRUE);
 }
 
 /**
@@ -249,13 +306,12 @@ gedit_utils_str_middle_truncate (const gchar *string,
  * @truncate_length:
  *
  * Returns:
- * Deprecated: 3.36: Use tepl_utils_str_end_truncate() instead.
  */
 gchar *
 gedit_utils_str_end_truncate (const gchar *string,
 			      guint        truncate_length)
 {
-	return tepl_utils_str_end_truncate (string, truncate_length);
+	return str_truncate (string, truncate_length, FALSE);
 }
 
 /**
@@ -290,7 +346,7 @@ uri_get_dirname (const gchar *uri)
 		return NULL;
 	}
 
-	res = tepl_utils_replace_home_dir_with_tilde (str);
+	res = gedit_utils_replace_home_dir_with_tilde (str);
 
 	g_free (str);
 
@@ -376,12 +432,49 @@ gedit_utils_location_get_dirname_for_display (GFile *location)
  * @uri:
  *
  * Returns:
- * Deprecated: 3.36: Use tepl_utils_replace_home_dir_with_tilde() instead.
  */
 gchar *
-gedit_utils_replace_home_dir_with_tilde (const gchar *uri)
+gedit_utils_replace_home_dir_with_tilde (const gchar *filename)
 {
-	return tepl_utils_replace_home_dir_with_tilde (uri);
+	gchar *tmp;
+	gchar *home;
+
+	g_return_val_if_fail (filename != NULL, NULL);
+
+	/* Note that g_get_home_dir returns a const string */
+	tmp = (gchar *) g_get_home_dir ();
+
+	if (tmp == NULL)
+	{
+		return g_strdup (filename);
+	}
+
+	home = g_filename_to_utf8 (tmp, -1, NULL, NULL, NULL);
+	if (home == NULL)
+	{
+		return g_strdup (filename);
+	}
+
+	if (g_str_equal (filename, home))
+	{
+		g_free (home);
+		return g_strdup ("~");
+	}
+
+	tmp = home;
+	home = g_strdup_printf ("%s/", tmp);
+	g_free (tmp);
+
+	if (g_str_has_prefix (filename, home))
+	{
+		gchar *res = g_strdup_printf ("~/%s", filename + strlen (home));
+		g_free (home);
+		return res;
+	}
+
+	g_free (home);
+	return g_strdup (filename);
+
 }
 
 /* the following two functions are courtesy of galeon */
