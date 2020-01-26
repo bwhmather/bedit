@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 #    Bedit External Tools plugin
 #    Copyright (C) 2005-2006  Steve Frécinaux <steve@istique.net>
 #
@@ -362,4 +361,3 @@ def capture_delayed_replace(capture, line, document, start_iter, end_iter):
     capture.disconnect_by_func(capture_delayed_replace)
     capture.connect('stdout-line', capture_stdout_line_document, document, pos)
 
-# ex:ts=4:et:

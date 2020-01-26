@@ -670,4 +670,3 @@ GtkPageSetup *bedit_print_job_get_page_setup(BeditPrintJob *job) {
     return gtk_print_operation_get_default_page_setup(job->operation);
 }
 
-/* ex:set ts=8 noet: */

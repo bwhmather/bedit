@@ -242,4 +242,3 @@ GtkWidget *bedit_notebook_popup_menu_new(BeditWindow *window, BeditTab *tab) {
         GEDIT_TYPE_NOTEBOOK_POPUP_MENU, "window", window, "tab", tab, NULL);
 }
 
-/* ex:set ts=8 noet: */

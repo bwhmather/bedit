@@ -2619,4 +2619,3 @@ BeditViewFrame *_bedit_tab_get_view_frame(BeditTab *tab) {
     return tab->frame;
 }
 
-/* ex:set ts=8 noet: */

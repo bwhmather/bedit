@@ -3086,4 +3086,3 @@ BeditMessageBus *bedit_window_get_message_bus(BeditWindow *window) {
     return window->priv->message_bus;
 }
 
-/* ex:set ts=8 noet: */

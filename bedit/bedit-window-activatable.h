@@ -47,4 +47,4 @@ void bedit_window_activatable_update_state(BeditWindowActivatable *activatable);
 G_END_DECLS
 
 #endif /* GEDIT_WINDOW_ACTIVATABLE_H */
-/* ex:set ts=8 noet: */
+

@@ -743,4 +743,3 @@ void modeline_parser_apply_modeline(GtkSourceView *view) {
     g_free(options.language_id);
 }
 
-/* vi:ts=8 */

@@ -42,4 +42,3 @@ G_END_DECLS
 
 #endif /* GEDIT_STATUS_MENU_BUTTON_H */
 
-/* ex:set ts=8 noet: */

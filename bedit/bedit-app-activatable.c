@@ -103,4 +103,3 @@ BeditMenuExtension *bedit_app_activatable_extend_menu(
     return ext;
 }
 
-/* ex:set ts=8 noet: */

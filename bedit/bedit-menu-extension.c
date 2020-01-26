@@ -144,4 +144,3 @@ void bedit_menu_extension_remove_items(BeditMenuExtension *menu) {
     }
 }
 
-/* ex:set ts=8 noet: */

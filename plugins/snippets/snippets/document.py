@@ -1093,5 +1093,3 @@ class Document(GObject.Object, Bedit.ViewActivatable, Signals):
             ctx.restore()
 
         return False
-
-# ex:ts=4:et:

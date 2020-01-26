@@ -354,4 +354,3 @@ void bedit_encodings_combo_box_set_selected_encoding(
     }
 }
 
-/* ex:set ts=8 noet: */

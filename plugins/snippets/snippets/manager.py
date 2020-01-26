@@ -1139,5 +1139,3 @@ class Manager(Gtk.Window, Gtk.Buildable):
         context.finish(True, False, timestamp)
 
         entry.stop_emission('drag_data_received')
-
-# ex:ts=4:et:

@@ -70,4 +70,3 @@ G_END_DECLS
 
 #endif /* GEDIT_QUICK_HIGHLIGHT_PLUGIN_H */
 
-/* ex:set ts=8 noet: */

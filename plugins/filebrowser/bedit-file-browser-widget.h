@@ -120,4 +120,4 @@ void _bedit_file_browser_widget_register_type(GTypeModule *type_module);
 G_END_DECLS
 
 #endif /* GEDIT_FILE_BROWSER_WIDGET_H */
-/* ex:set ts=8 noet: */
+

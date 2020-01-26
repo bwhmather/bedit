@@ -31,3 +31,4 @@ gchar *bedit_pango_font_description_to_css(
 G_END_DECLS
 
 #endif /* GEDIT_PANGO_H */
+

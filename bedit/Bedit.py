@@ -96,4 +96,3 @@ def debug_plugin_message(format, *format_args):
     orig_debug_plugin_message_func(filename, lineno, func_name, format % format_args)
 __all__.append(debug_plugin_message)
 
-# vi:ex:ts=4:et

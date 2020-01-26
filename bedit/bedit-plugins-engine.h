@@ -37,4 +37,3 @@ G_END_DECLS
 
 #endif /* GEDIT_PLUGINS_ENGINE_H */
 
-/* ex:set ts=8 noet: */

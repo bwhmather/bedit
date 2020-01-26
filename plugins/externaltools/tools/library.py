@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 #    Bedit External Tools plugin
 #    Copyright (C) 2006  Steve Frécinaux <code@istique.net>
 #
@@ -517,4 +516,3 @@ if __name__ == '__main__':
 
     print_dir(library.tree, 0)
 
-# ex:ts=4:et:

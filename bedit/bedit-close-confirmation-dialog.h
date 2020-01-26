@@ -46,4 +46,4 @@ GList *bedit_close_confirmation_dialog_get_selected_documents(
     BeditCloseConfirmationDialog *dlg);
 
 #endif /* GEDIT_CLOSE_CONFIRMATION_DIALOG_H */
-/* ex:set ts=8 noet: */
+

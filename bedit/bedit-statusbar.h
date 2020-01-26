@@ -49,4 +49,3 @@ G_END_DECLS
 
 #endif
 
-/* ex:set ts=8 noet: */

@@ -44,4 +44,3 @@ G_END_DECLS
 
 #endif /* GEDIT_FILE_CHOOSER_DIALOG_GTK_H */
 
-/* ex:set ts=8 noet: */

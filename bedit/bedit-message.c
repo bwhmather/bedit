@@ -264,4 +264,3 @@ gboolean bedit_message_type_check(
     return ret;
 }
 
-/* ex:set ts=8 noet: */

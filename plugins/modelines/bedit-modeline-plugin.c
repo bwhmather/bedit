@@ -181,4 +181,3 @@ G_MODULE_EXPORT void peas_register_types(PeasObjectModule *module) {
         module, GEDIT_TYPE_VIEW_ACTIVATABLE, GEDIT_TYPE_MODELINE_PLUGIN);
 }
 
-/* ex:set ts=8 noet: */

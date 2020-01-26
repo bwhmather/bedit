@@ -51,4 +51,3 @@ G_END_DECLS
 
 #endif /* GEDIT_PROGRESS_INFO_BAR_H  */
 
-/* ex:set ts=8 noet: */

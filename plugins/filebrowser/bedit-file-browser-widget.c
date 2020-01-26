@@ -2743,4 +2743,3 @@ void _bedit_file_browser_widget_register_type(GTypeModule *type_module) {
     bedit_file_browser_widget_register_type(type_module);
 }
 
-/* ex:set ts=8 noet: */

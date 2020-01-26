@@ -183,5 +183,3 @@ class Defaults(GObject.Object, GtkSource.CompletionProvider):
 
     def do_get_activation(self):
         return GtkSource.CompletionActivation.USER_REQUESTED
-
-# ex:ts=4:et:

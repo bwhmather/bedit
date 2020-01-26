@@ -562,4 +562,3 @@ void bedit_notebook_remove_all_tabs(BeditNotebook *notebook) {
     g_list_free(tabs);
 }
 
-/* ex:set ts=8 noet: */

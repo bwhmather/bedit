@@ -356,5 +356,3 @@ class Snippet:
 
     def end_iter(self):
         return self.end_mark.get_buffer().get_iter_at_mark(self.end_mark)
-
-# ex:ts=4:et:

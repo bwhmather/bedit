@@ -697,4 +697,3 @@ const gchar *bedit_replace_dialog_get_search_text(BeditReplaceDialog *dialog) {
     return gtk_entry_get_text(GTK_ENTRY(dialog->search_text_entry));
 }
 
-/* ex:set ts=8 noet: */

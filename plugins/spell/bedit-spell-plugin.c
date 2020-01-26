@@ -690,4 +690,3 @@ static void peas_gtk_configurable_iface_init(
     iface->create_configure_widget = bedit_spell_plugin_create_configure_widget;
 }
 
-/* ex:set ts=8 noet: */

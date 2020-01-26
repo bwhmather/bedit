@@ -55,4 +55,3 @@ G_END_DECLS
 
 #endif /* GEDIT_REPLACE_DIALOG_H  */
 
-/* ex:set ts=8 noet: */

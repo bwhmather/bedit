@@ -200,4 +200,3 @@ class SubstitutionParser:
     def escape_substitution(substitution):
         return re.sub('(%s|%s)' % (SubstitutionParser.REG_GROUP, SubstitutionParser.REG_ESCAPE), '\\\\\\1', substitution)
 
-# ex:ts=4:et:

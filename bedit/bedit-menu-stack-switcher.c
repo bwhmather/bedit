@@ -369,4 +369,3 @@ GtkWidget *bedit_menu_stack_switcher_new(void) {
     return g_object_new(GEDIT_TYPE_MENU_STACK_SWITCHER, NULL);
 }
 
-/* ex:set ts=2 sw=2 et: */

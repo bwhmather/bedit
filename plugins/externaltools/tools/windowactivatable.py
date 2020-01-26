@@ -1,4 +1,3 @@
-# -*- coding: UTF-8 -*-
 #    Bedit External Tools plugin
 #    Copyright (C) 2005-2006  Steve Frécinaux <steve@istique.net>
 #
@@ -138,4 +137,3 @@ class WindowActivatable(GObject.Object, Bedit.WindowActivatable):
     def update_actions(self):
         self.actions.update()
 
-# ex:ts=4:et:

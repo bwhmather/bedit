@@ -85,4 +85,4 @@ GtkSourceSearchContext *bedit_document_get_search_context(BeditDocument *doc);
 G_END_DECLS
 
 #endif /* GEDIT_DOCUMENT_H */
-/* ex:set ts=8 noet: */
+

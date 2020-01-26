@@ -1404,4 +1404,3 @@ gboolean _bedit_document_get_create(BeditDocument *doc) {
     return priv->create;
 }
 
-/* ex:set ts=8 noet: */

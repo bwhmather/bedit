@@ -874,4 +874,4 @@ void bedit_file_browser_messages_unregister(BeditWindow *window) {
 
     window_data_free(window);
 }
-/* ex:set ts=8 noet: */
+

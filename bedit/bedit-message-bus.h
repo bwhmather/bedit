@@ -133,4 +133,3 @@ G_END_DECLS
 
 #endif /* GEDIT_MESSAGE_BUS_H */
 
-/* ex:set ts=8 noet: */

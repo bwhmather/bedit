@@ -527,4 +527,3 @@ const GList *bedit_close_confirmation_dialog_get_unsaved_documents(
     return dlg->unsaved_documents;
 }
 
-/* ex:set ts=8 noet: */

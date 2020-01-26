@@ -711,4 +711,3 @@ class PlaceholderRegex(PlaceholderExpand):
 
         return True
 
-# ex:ts=4:et:

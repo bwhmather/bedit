@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 #
 #    Copyright (C) 2009-2010  Per Arneng <per.arneng@anyplanet.com>
 #
@@ -200,4 +199,3 @@ test.rb:5: undefined method `fake_method' for main:Object (NoMethodError)
 if __name__ == '__main__':
     unittest.main()
 
-# ex:ts=4:et:

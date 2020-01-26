@@ -1,4 +1,3 @@
-# -*- coding: UTF-8 -*-
 #    Bedit External Tools plugin
 #    Copyright (C) 2010 Ignacio Casal Quinteiro <icq@gnome.org>
 #
@@ -23,4 +22,3 @@ gi.require_version('Gtk', '3.0')
 from .appactivatable import AppActivatable
 from .windowactivatable import WindowActivatable
 
-# ex:ts=4:et:

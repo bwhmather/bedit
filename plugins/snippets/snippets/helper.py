@@ -200,5 +200,3 @@ def drop_get_uris(selection):
                 uris.append(line)
 
     return uris
-
-# ex:ts=4:et:

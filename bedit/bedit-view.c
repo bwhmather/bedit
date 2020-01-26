@@ -832,4 +832,3 @@ void bedit_view_set_font(
     update_css_provider(view);
 }
 
-/* ex:set ts=8 noet: */

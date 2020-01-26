@@ -92,4 +92,3 @@ G_END_DECLS
 
 #endif /* GEDIT_NOTEBOOK_H */
 
-/* ex:set ts=8 noet: */

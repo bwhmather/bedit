@@ -578,4 +578,3 @@ BeditFileChooserDialog *bedit_file_chooser_dialog_gtk_create(
     return GEDIT_FILE_CHOOSER_DIALOG(result);
 }
 
-/* ex:set ts=8 noet: */

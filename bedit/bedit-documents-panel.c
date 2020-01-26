@@ -1495,4 +1495,3 @@ static GtkWidget *bedit_documents_group_row_new(
     return GTK_WIDGET(row);
 }
 
-/* ex:set ts=8 noet: */

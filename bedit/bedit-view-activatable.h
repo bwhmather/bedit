@@ -45,4 +45,4 @@ void bedit_view_activatable_deactivate(BeditViewActivatable *activatable);
 G_END_DECLS
 
 #endif /* GEDIT_VIEW_ACTIVATABLE_H */
-/* ex:set ts=8 noet: */
+

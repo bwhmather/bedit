@@ -1,4 +1,3 @@
-/* -*- Mode: C; tab-width: 8; indent-tabs-mode: t; c-basic-offset: 8 -*- */
 /*
  * bedit-preferences-dialog.c
  * This file is part of bedit
@@ -32,4 +31,3 @@ G_END_DECLS
 
 #endif /* GEDIT_PREFERENCES_DIALOG_H */
 
-/* ex:set ts=8 noet: */

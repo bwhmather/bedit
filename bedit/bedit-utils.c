@@ -1036,4 +1036,3 @@ const gchar *bedit_utils_newline_type_to_string(
     return NULL;
 }
 
-/* ex:set ts=8 noet: */

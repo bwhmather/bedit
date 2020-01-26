@@ -70,4 +70,3 @@ G_END_DECLS
 
 #endif /* GEDIT_TAB_H  */
 
-/* ex:set ts=8 noet: */

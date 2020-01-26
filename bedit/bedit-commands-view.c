@@ -138,4 +138,3 @@ void _bedit_cmd_view_highlight_mode(
     gtk_widget_show(GTK_WIDGET(dlg));
 }
 
-/* ex:set ts=8 noet: */

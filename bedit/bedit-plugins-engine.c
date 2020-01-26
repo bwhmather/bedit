@@ -118,4 +118,3 @@ BeditPluginsEngine *bedit_plugins_engine_get_default(void) {
     return default_engine;
 }
 
-/* ex:set ts=8 noet: */

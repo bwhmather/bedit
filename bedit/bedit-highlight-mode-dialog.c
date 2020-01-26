@@ -91,4 +91,3 @@ BeditHighlightModeSelector *bedit_highlight_mode_dialog_get_selector(
     return dlg->selector;
 }
 
-/* ex:set ts=8 noet: */

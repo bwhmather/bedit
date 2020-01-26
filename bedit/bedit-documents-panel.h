@@ -38,4 +38,3 @@ G_END_DECLS
 
 #endif /* GEDIT_DOCUMENTS_PANEL_H  */
 
-/* ex:set ts=8 noet: */

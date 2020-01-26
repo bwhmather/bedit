@@ -79,5 +79,3 @@ class SharedData(object, metaclass=Singleton):
 
         self.dlg.set_transient_for(window)
         self.dlg.present()
-
-# vi:ex:ts=4:et

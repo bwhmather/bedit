@@ -114,4 +114,3 @@ static void bedit_app_win32_class_init(BeditAppWin32Class *klass) {
 
 static void bedit_app_win32_init(BeditAppWin32 *self) {}
 
-/* ex:set ts=8 noet: */

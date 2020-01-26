@@ -327,4 +327,3 @@ void bedit_highlight_mode_selector_activate_selected_language(
     }
 }
 
-/* ex:set ts=8 noet: */

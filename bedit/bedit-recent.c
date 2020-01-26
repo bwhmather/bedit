@@ -275,4 +275,3 @@ GList *bedit_recent_get_items(BeditRecentConfiguration *config) {
     return retitems;
 }
 
-/* ex:set ts=8 noet: */

@@ -42,4 +42,3 @@ G_END_DECLS
 
 #endif /* GEDIT_MENU_STACK_SWITCHER_H  */
 
-/* ex:set ts=2 sw=2 et: */

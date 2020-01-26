@@ -1172,4 +1172,3 @@ GtkWidget *bedit_invalid_character_info_bar_new(GFile *location) {
     return info_bar;
 }
 
-/* ex:set ts=8 noet: */

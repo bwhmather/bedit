@@ -183,4 +183,3 @@ class WindowActivatable(GObject.Object, Bedit.WindowActivatable, Signals):
         else:
             return False
 
-# ex:ts=4:et:

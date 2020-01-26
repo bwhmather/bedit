@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 #    Bedit External Tools plugin
 #    Copyright (C) 2005-2006  Steve Frécinaux <steve@istique.net>
 #    Copyright (C) 2010  Per Arneng <per.arneng@anyplanet.com>
@@ -244,4 +243,3 @@ class OutputPanel(UniqueById):
             Bedit.commands_load_location(self.window, gfile, None, link.line_nr, link.col_nr)
             GLib.idle_add(self.idle_grab_focus)
 
-# ex:ts=4:et:

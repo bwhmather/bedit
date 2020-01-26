@@ -767,4 +767,3 @@ GtkWidget *bedit_encodings_dialog_new(void) {
         GEDIT_TYPE_ENCODINGS_DIALOG, "use-header-bar", TRUE, NULL);
 }
 
-/* ex:set ts=8 noet: */

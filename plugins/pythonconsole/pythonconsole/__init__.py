@@ -72,4 +72,3 @@ class PythonConsolePlugin(GObject.Object, Bedit.WindowActivatable, PeasGtk.Confi
 
         return config_widget.configure_widget()
 
-# ex:et:ts=4:

@@ -121,4 +121,3 @@ void _bedit_cmd_help_about(BeditWindow *window) {
     g_clear_object(&logo);
 }
 
-/* ex:set ts=8 noet: */

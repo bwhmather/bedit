@@ -420,4 +420,3 @@ GtkWidget *bedit_history_entry_get_entry(BeditHistoryEntry *entry) {
     return gtk_bin_get_child(GTK_BIN(entry));
 }
 
-/* ex:set ts=8 noet: */

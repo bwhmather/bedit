@@ -1588,4 +1588,3 @@ BeditMenuExtension *_bedit_app_extend_menu(
     return section != NULL ? bedit_menu_extension_new(G_MENU(section)) : NULL;
 }
 
-/* ex:set ts=8 noet: */

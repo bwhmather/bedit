@@ -42,4 +42,3 @@ void _bedit_cmd_file_print(
     }
 }
 
-/* ex:set ts=8 noet: */

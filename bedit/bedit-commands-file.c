@@ -1864,4 +1864,3 @@ void _bedit_cmd_file_quit(
     file_close_all(window, TRUE);
 }
 
-/* ex:set ts=8 noet: */

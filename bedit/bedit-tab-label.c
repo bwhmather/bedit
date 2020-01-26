@@ -224,4 +224,3 @@ GtkWidget *bedit_tab_label_new(BeditTab *tab) {
     return g_object_new(GEDIT_TYPE_TAB_LABEL, "tab", tab, NULL);
 }
 
-/* ex:set ts=8 noet: */

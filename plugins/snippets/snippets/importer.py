@@ -130,5 +130,3 @@ class Importer:
                 return v()
 
         return _('File “%s” is not a valid snippets archive') % self.filename
-
-# ex:ts=4:et:

@@ -36,5 +36,3 @@ def get_language_manager():
         manager.set_search_path(dirs + manager.get_search_path())
 
     return manager
-
-# ex:ts=4:et:

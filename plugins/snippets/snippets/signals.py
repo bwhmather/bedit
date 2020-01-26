@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 #
 #  signals.py
 #
@@ -86,5 +85,3 @@ class Signals:
             del self._signals[obj]
 
         return True
-
-# ex:ts=4:et:

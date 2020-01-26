@@ -1,4 +1,3 @@
-/* -*- Mode: C; tab-width: 8; indent-tabs-mode: t; c-basic-offset: 8 -*- */
 /*
  * bedit-commands.h
  * This file is part of bedit
@@ -128,4 +127,4 @@ void _bedit_cmd_file_close_notebook(
 G_END_DECLS
 
 #endif /* GEDIT_COMMANDS_PRIVATE_H */
-/* ex:set ts=8 noet: */
+

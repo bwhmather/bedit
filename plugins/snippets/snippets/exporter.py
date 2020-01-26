@@ -118,5 +118,3 @@ class Exporter:
                 return v()
 
         return self.export_targz()
-
-# ex:ts=4:et:

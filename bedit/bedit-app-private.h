@@ -62,4 +62,3 @@ G_END_DECLS
 
 #endif /* GEDIT_APP_PRIVATE_H */
 
-/* ex:set ts=8 noet: */

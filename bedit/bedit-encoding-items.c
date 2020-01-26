@@ -90,4 +90,3 @@ GSList *bedit_encoding_items_get(void) {
     return g_slist_reverse(items);
 }
 
-/* ex:set ts=8 noet: */

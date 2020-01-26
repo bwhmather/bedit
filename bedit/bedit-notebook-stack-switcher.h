@@ -80,4 +80,3 @@ G_END_DECLS
 
 #endif /* GEDIT_NOTEBOOK_STACK_SWITCHER_H  */
 
-/* ex:set ts=8 noet: */

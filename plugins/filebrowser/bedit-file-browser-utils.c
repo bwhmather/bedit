@@ -180,4 +180,3 @@ gboolean bedit_file_browser_utils_confirmation_dialog(
     return (ret == GTK_RESPONSE_OK);
 }
 
-/* ex:set ts=8 noet: */

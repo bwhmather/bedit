@@ -1017,4 +1017,3 @@ BeditMessage *bedit_message_bus_send_sync(
     return message;
 }
 
-/* ex:set ts=8 noet: */

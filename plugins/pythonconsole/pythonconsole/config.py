@@ -71,4 +71,3 @@ class PythonConsoleConfigWidget(object):
         self._settings.set_string(self.CONSOLE_KEY_ERROR_COLOR,
                                   colorbutton.get_color().to_string())
 
-# ex:et:ts=4:

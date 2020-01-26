@@ -1295,3 +1295,4 @@ void bedit_view_frame_clear_search(BeditViewFrame *frame) {
 
     gtk_widget_grab_focus(GTK_WIDGET(frame->view));
 }
+

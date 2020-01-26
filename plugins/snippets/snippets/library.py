@@ -985,5 +985,3 @@ class Library(Singleton):
     # Get snippets for a given drop target
     def from_drop_target(self, drop_target, language=None):
         return self._from_prop('drop-targets', drop_target, language)
-
-# ex:ts=4:et:

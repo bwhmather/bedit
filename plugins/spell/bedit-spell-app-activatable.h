@@ -35,4 +35,3 @@ void bedit_spell_app_activatable_register(GTypeModule *module);
 
 G_END_DECLS
 
-#endif /* GEDIT_SPELL_APP_ACTIVATABLE_H */

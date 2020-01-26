@@ -41,4 +41,3 @@ G_END_DECLS
 
 #endif /* GEDIT_APP_OSX_H */
 
-/* ex:set ts=8 noet: */

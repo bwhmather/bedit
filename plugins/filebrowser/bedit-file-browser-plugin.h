@@ -73,4 +73,3 @@ G_END_DECLS
 
 #endif /* GEDIT_FILE_BROWSER_PLUGIN_H */
 
-/* ex:set ts=8 noet: */

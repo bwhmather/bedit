@@ -33,4 +33,4 @@ void modeline_parser_apply_modeline(GtkSourceView *view);
 G_END_DECLS
 
 #endif /* MODELINE_PARSER_H */
-/* ex:set ts=8 noet: */
+

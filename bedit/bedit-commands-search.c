@@ -546,4 +546,3 @@ void _bedit_cmd_search_goto_line(
     bedit_view_frame_popup_goto_line(frame);
 }
 
-/* ex:set ts=8 noet: */

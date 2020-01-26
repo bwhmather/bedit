@@ -45,4 +45,4 @@ gboolean _bedit_document_get_create(BeditDocument *doc);
 G_END_DECLS
 
 #endif /* GEDIT_DOCUMENT_PRIVATE_H */
-/* ex:set ts=8 noet: */
+

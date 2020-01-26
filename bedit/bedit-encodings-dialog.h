@@ -36,4 +36,4 @@ GtkWidget *bedit_encodings_dialog_new(void);
 G_END_DECLS
 
 #endif /* GEDIT_ENCODINGS_DIALOG_H */
-/* ex:set ts=8 noet: */
+

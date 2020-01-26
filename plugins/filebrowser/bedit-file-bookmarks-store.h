@@ -102,4 +102,4 @@ void _bedit_file_bookmarks_store_register_type(GTypeModule *type_module);
 G_END_DECLS
 
 #endif /* GEDIT_FILE_BOOKMARKS_STORE_H */
-/* ex:set ts=8 noet: */
+

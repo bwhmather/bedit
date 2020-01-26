@@ -485,4 +485,3 @@ GSList *bedit_settings_get_candidate_encodings(gboolean *default_candidates) {
     return candidates;
 }
 
-/* ex:set ts=8 noet: */

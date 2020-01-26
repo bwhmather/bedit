@@ -116,4 +116,4 @@ struct _BeditWindowPrivate {
 G_END_DECLS
 
 #endif /* GEDIT_WINDOW_PRIVATE_H  */
-/* ex:set ts=8 noet: */
+

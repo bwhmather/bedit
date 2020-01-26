@@ -595,4 +595,3 @@ bedit_app_osx_init (BeditAppOSX *app)
 	                                       forKey:@"NSTreatUnknownArgumentsAsOpen"];
 }
 
-/* ex:set ts=8 noet: */

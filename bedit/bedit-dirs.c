@@ -120,4 +120,3 @@ const gchar *bedit_dirs_get_bedit_plugins_data_dir(void) {
     return bedit_plugins_data_dir;
 }
 
-/* ex:set ts=8 noet: */

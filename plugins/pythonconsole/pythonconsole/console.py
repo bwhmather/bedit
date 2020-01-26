@@ -412,4 +412,3 @@ class OutFile:
     def tell(self):          raise IOError((29, 'Illegal seek'))
     truncate = tell
 
-# ex:et:ts=4:

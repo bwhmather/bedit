@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 #  Copyright (C) 2009 - Jesse van den Kieboom
 #
 #  This program is free software; you can redistribute it and/or modify
@@ -83,5 +81,3 @@ class CurrentDocumentsDirectory(VirtualDirectory):
 
             if location:
                 self.append(location)
-
-# ex:ts=4:et:

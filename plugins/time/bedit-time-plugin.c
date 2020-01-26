@@ -916,5 +916,3 @@ G_MODULE_EXPORT void peas_register_types(PeasObjectModule *module) {
     peas_object_module_register_extension_type(
         module, PEAS_GTK_TYPE_CONFIGURABLE, GEDIT_TYPE_TIME_PLUGIN);
 }
-
-/* ex:set ts=8 noet: */

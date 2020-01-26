@@ -77,4 +77,3 @@ void bedit_debug_plugin_message(
     const gchar *file, gint line, const gchar *function, const gchar *message);
 
 #endif /* GEDIT_DEBUG_H */
-/* ex:set ts=8 noet: */

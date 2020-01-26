@@ -66,4 +66,3 @@ G_END_DECLS
 
 #endif /* GEDIT_DOCINFO_PLUGIN_H */
 
-/* ex:set ts=8 noet: */

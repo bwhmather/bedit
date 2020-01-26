@@ -60,4 +60,3 @@ G_MODULE_EXPORT void peas_register_types(PeasObjectModule *module);
 G_END_DECLS
 
 #endif /* GEDIT_SORT_PLUGIN_H */
-/* ex:set ts=8 noet: */

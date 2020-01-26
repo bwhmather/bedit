@@ -143,4 +143,3 @@ void bedit_progress_info_bar_pulse(BeditProgressInfoBar *bar) {
     gtk_progress_bar_pulse(GTK_PROGRESS_BAR(bar->progress));
 }
 
-/* ex:set ts=8 noet: */

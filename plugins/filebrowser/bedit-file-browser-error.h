@@ -38,4 +38,4 @@ typedef enum {
 G_END_DECLS
 
 #endif /* GEDIT_FILE_BROWSER_ERROR_H */
-/* ex:set ts=8 noet: */
+

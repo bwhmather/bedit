@@ -45,4 +45,3 @@ G_END_DECLS
 
 #endif /* GEDIT_MENU_EXTENSION_H */
 
-/* ex:set ts=8 noet: */

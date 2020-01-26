@@ -176,4 +176,3 @@ void _bedit_cmd_edit_overwrite_mode(
     gtk_widget_grab_focus(GTK_WIDGET(active_view));
 }
 
-/* ex:set ts=8 noet: */

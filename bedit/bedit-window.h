@@ -158,4 +158,3 @@ G_END_DECLS
 
 #endif /* GEDIT_WINDOW_H  */
 
-/* ex:set ts=8 noet: */

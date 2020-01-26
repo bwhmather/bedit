@@ -228,4 +228,3 @@ void bedit_statusbar_set_window_state(
     }
 }
 
-/* ex:set ts=8 noet: */

@@ -107,4 +107,3 @@ void bedit_window_activatable_update_state(
     }
 }
 
-/* ex:set ts=8 noet: */

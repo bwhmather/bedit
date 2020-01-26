@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 #  Copyright (C) 2009 - Jesse van den Kieboom
 #
 #  This program is free software; you can redistribute it and/or modify
@@ -190,4 +188,3 @@ class QuickOpenPlugin(GObject.Object, Bedit.WindowActivatable):
         Bedit.commands_load_location(self.window, gfile, None, -1, -1)
         return True
 
-# ex:ts=4:et:

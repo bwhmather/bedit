@@ -22,5 +22,3 @@ gi.require_version('Gtk', '3.0')
 from .appactivatable import AppActivatable
 from .windowactivatable import WindowActivatable
 from .document import Document
-
-# ex:ts=4:et:

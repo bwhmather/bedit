@@ -266,4 +266,3 @@ void bedit_file_chooser_dialog_add_pattern_filter(
     }
 }
 
-/* ex:set ts=8 noet: */

@@ -1,4 +1,3 @@
-# -*- coding: UTF-8 -*-
 #    Bedit External Tools plugin
 #    Copyright (C) 2005-2006  Steve Frécinaux <steve@istique.net>
 #
@@ -175,4 +174,3 @@ class AppActivatable(GObject.Object, Bedit.AppActivatable):
             window.external_tools_window_activatable.update_actions()
         self.menu.update()
 
-# ex:ts=4:et:

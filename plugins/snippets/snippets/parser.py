@@ -253,4 +253,3 @@ class Parser:
 
         return Token('regex', {'tabstop': tabstop, 'input': inp, 'pattern': pattern, 'substitution': substitution, 'modifiers': modifiers})
 
-# ex:ts=4:et:

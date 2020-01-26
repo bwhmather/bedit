@@ -1,4 +1,3 @@
-/* -*- Mode: C; tab-width: 8; indent-tabs-mode: t; c-basic-offset: 8 -*- */
 /*
  * bedit-preferences-dialog.c
  * This file is part of bedit
@@ -846,4 +845,3 @@ void bedit_show_preferences_dialog(BeditWindow *parent) {
     gtk_window_present(GTK_WINDOW(preferences_dialog));
 }
 
-/* ex:set ts=8 noet: */

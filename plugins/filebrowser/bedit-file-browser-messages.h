@@ -30,4 +30,4 @@ void bedit_file_browser_messages_register(
 void bedit_file_browser_messages_unregister(BeditWindow *window);
 
 #endif /* GEDIT_FILE_BROWSER_MESSAGES_H */
-/* ex:set ts=8 noet: */
+

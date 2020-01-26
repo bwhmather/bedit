@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 #    Bedit External Tools plugin
 #    Copyright (C) 2005-2006  Steve Frécinaux <steve@istique.net>
 #
@@ -265,4 +264,3 @@ class Capture(GObject.Object):
         # have been intercepted
         GLib.idle_add(self.emit_end_execute, error_code)
 
-# ex:ts=4:et:

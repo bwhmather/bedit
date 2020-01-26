@@ -87,4 +87,4 @@ void _bedit_file_browser_view_register_type(GTypeModule *type_module);
 G_END_DECLS
 
 #endif /* GEDIT_FILE_BROWSER_VIEW_H */
-/* ex:set ts=8 noet: */
+

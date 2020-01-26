@@ -139,4 +139,3 @@ const gchar *bedit_status_menu_button_get_label(BeditStatusMenuButton *button) {
     return gtk_label_get_label(GTK_LABEL(button->label));
 }
 
-/* ex:set ts=8 noet: */

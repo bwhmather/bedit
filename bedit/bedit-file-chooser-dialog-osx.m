@@ -954,4 +954,3 @@ bedit_file_chooser_dialog_osx_create (const gchar             *title,
 	return GEDIT_FILE_CHOOSER_DIALOG (ret);
 }
 
-/* ex:set ts=8 noet: */

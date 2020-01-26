@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 #
 #    Copyright (C) 2009-2010  Per Arneng <per.arneng@anyplanet.com>
 #
@@ -162,4 +161,3 @@ class OpenDocumentFileLookupProvider(FileLookupProvider):
                     return location
         return None
 
-# ex:ts=4:et:

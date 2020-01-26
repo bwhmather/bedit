@@ -315,4 +315,3 @@ GtkWidget *bedit_notebook_stack_switcher_new(void) {
     return g_object_new(GEDIT_TYPE_NOTEBOOK_STACK_SWITCHER, NULL);
 }
 
-/* ex:set ts=8 noet: */

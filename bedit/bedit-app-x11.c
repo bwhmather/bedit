@@ -106,4 +106,3 @@ static void bedit_app_x11_class_init(BeditAppX11Class *klass) {
 
 static void bedit_app_x11_init(BeditAppX11 *self) {}
 
-/* ex:set ts=8 noet: */

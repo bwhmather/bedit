@@ -204,4 +204,3 @@ void bedit_debug_plugin_message(
         GEDIT_DEBUG_PLUGINS, file, line, function, "%s", message);
 }
 
-/* ex:set ts=8 noet: */

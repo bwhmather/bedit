@@ -88,4 +88,3 @@ void _bedit_cmd_documents_next_tab_group(
         _bedit_window_get_multi_notebook(GEDIT_WINDOW(user_data))));
 }
 
-/* ex:set ts=8 noet: */

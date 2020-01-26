@@ -877,4 +877,3 @@ void _bedit_multi_notebook_set_show_tabs(
     update_tabs_visibility(mnb);
 }
 
-/* ex:set ts=8 noet: */

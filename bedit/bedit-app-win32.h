@@ -35,4 +35,3 @@ G_END_DECLS
 
 #endif /* GEDIT_APP_WIN32_H */
 
-/* ex:set ts=8 noet: */

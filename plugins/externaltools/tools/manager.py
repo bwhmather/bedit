@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 #    Bedit External Tools plugin
 #    Copyright (C) 2005-2006  Steve Frécinaux <steve@istique.net>
 #
@@ -875,4 +874,3 @@ class Manager(GObject.Object):
         popup.show()
         popup.connect('closed', self.update_languages)
 
-# ex:et:ts=4:

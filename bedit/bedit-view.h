@@ -79,4 +79,3 @@ G_END_DECLS
 
 #endif /* GEDIT_VIEW_H */
 
-/* ex:set ts=8 noet: */

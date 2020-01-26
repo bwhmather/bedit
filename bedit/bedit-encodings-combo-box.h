@@ -43,4 +43,3 @@ G_END_DECLS
 
 #endif /* GEDIT_ENCODINGS_COMBO_BOX_H */
 
-/* ex:set ts=8 noet: */

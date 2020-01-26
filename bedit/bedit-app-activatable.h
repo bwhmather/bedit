@@ -61,4 +61,4 @@ BeditMenuExtension *bedit_app_activatable_extend_menu(
 G_END_DECLS
 
 #endif /* GEDIT_APP_ACTIVATABLE_H */
-/* ex:set ts=8 noet: */
+

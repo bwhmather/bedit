@@ -129,5 +129,3 @@ class AppActivatable(GObject.Object, Bedit.AppActivatable):
 
     def on_action_snippets_activate(self, action, parameter):
         self.create_configure_dialog()
-
-# vi:ex:ts=4:et

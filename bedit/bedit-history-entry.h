@@ -58,4 +58,3 @@ G_END_DECLS
 
 #endif /* GEDIT_HISTORY_ENTRY_H */
 
-/* ex:set ts=8 noet: */

@@ -972,4 +972,3 @@ GtkWidget *bedit_print_preview_new(
     return GTK_WIDGET(preview);
 }
 
-/* ex:set ts=8 noet: */
