@@ -57,7 +57,6 @@ struct _BeditWindowPrivate {
     GtkWidget *fullscreen_eventbox;
     GtkRevealer *fullscreen_revealer;
     GtkWidget *fullscreen_headerbar;
-    GtkWidget *fullscreen_new_button;
     GtkMenuButton *fullscreen_gear_button;
     GtkMenuButton *fullscreen_open_recent_button;
 

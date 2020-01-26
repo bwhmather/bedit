@@ -426,8 +426,6 @@ static void bedit_window_class_init(BeditWindowClass *klass) {
     gtk_widget_class_bind_template_child_private(
         widget_class, BeditWindow, fullscreen_headerbar);
     gtk_widget_class_bind_template_child_private(
-        widget_class, BeditWindow, fullscreen_new_button);
-    gtk_widget_class_bind_template_child_private(
         widget_class, BeditWindow, fullscreen_gear_button);
 }
 
