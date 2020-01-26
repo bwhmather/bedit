@@ -212,8 +212,6 @@ static void bedit_window_dispose(GObject *object) {
      */
     remove_actions(window);
 
-    window->priv->fullscreen_open_recent_button = NULL;
-
     G_OBJECT_CLASS(bedit_window_parent_class)->dispose(object);
 }
 
@@ -1543,8 +1541,6 @@ static void update_fullscreen_revealer_state(BeditWindow *window) {
     gboolean open_recent_menu_is_active;
     gboolean hamburger_menu_is_active;
 
-    open_recent_menu_is_active = gtk_toggle_button_get_active(
-        GTK_TOGGLE_BUTTON(window->priv->fullscreen_open_recent_button));
     hamburger_menu_is_active = gtk_toggle_button_get_active(
         GTK_TOGGLE_BUTTON(window->priv->fullscreen_gear_button));
 
@@ -2278,64 +2274,6 @@ static void init_amtk_application_window(BeditWindow *bedit_window) {
         amtk_window, GTK_STATUSBAR(bedit_window->priv->statusbar));
 }
 
-static GtkWidget *create_open_buttons(
-    BeditWindow *window, GtkMenuButton **open_recent_button) {
-    GtkWidget *hgrid;
-    GtkStyleContext *style_context;
-    GtkWidget *open_dialog_button;
-    GtkWidget *my_open_recent_button;
-    AmtkApplicationWindow *amtk_window;
-    GtkWidget *recent_menu;
-
-    hgrid = gtk_grid_new();
-    style_context = gtk_widget_get_style_context(hgrid);
-    gtk_style_context_add_class(style_context, GTK_STYLE_CLASS_LINKED);
-
-    open_dialog_button = gtk_button_new_with_mnemonic(_("_Open"));
-    gtk_widget_set_tooltip_text(open_dialog_button, _("Open a file"));
-    gtk_actionable_set_action_name(
-        GTK_ACTIONABLE(open_dialog_button), "win.open");
-
-    my_open_recent_button = gtk_menu_button_new();
-    gtk_widget_set_tooltip_text(
-        my_open_recent_button, _("Open a recently used file"));
-
-    amtk_window = amtk_application_window_get_from_gtk_application_window(
-        GTK_APPLICATION_WINDOW(window));
-    recent_menu = amtk_application_window_create_open_recent_menu(amtk_window);
-    gtk_menu_button_set_popup(
-        GTK_MENU_BUTTON(my_open_recent_button), recent_menu);
-
-    gtk_container_add(GTK_CONTAINER(hgrid), open_dialog_button);
-    gtk_container_add(GTK_CONTAINER(hgrid), my_open_recent_button);
-    gtk_widget_show_all(hgrid);
-
-    if (open_recent_button != NULL) {
-        *open_recent_button = GTK_MENU_BUTTON(my_open_recent_button);
-    }
-
-    return hgrid;
-}
-
-static void init_open_buttons(BeditWindow *window) {
-    gtk_container_add_with_properties(
-        GTK_CONTAINER(window->priv->headerbar),
-        create_open_buttons(window, NULL), "position",
-        0, /* The first on the left. */
-        NULL);
-
-    gtk_container_add_with_properties(
-        GTK_CONTAINER(window->priv->fullscreen_headerbar),
-        create_open_buttons(
-            window, &(window->priv->fullscreen_open_recent_button)),
-        "position", 0, /* The first on the left. */
-        NULL);
-
-    g_signal_connect(
-        GTK_TOGGLE_BUTTON(window->priv->fullscreen_open_recent_button),
-        "toggled", G_CALLBACK(on_fullscreen_toggle_button_toggled), window);
-}
-
 static void bedit_window_init(BeditWindow *window) {
     GtkTargetList *tl;
     GMenuModel *hamburger_menu;
@@ -2365,7 +2303,6 @@ static void bedit_window_init(BeditWindow *window) {
 
     gtk_widget_init_template(GTK_WIDGET(window));
     init_amtk_application_window(window);
-    init_open_buttons(window);
 
     g_action_map_add_action_entries(
         G_ACTION_MAP(window), win_entries, G_N_ELEMENTS(win_entries), window);
