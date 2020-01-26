@@ -80,8 +80,6 @@ struct _BeditWindowPrivate {
     GtkWidget *side_headerbar;
     GtkWidget *headerbar;
 
-    GtkWidget *new_button;
-
     GtkMenuButton *gear_button;
 
     gint num_tabs_with_error;

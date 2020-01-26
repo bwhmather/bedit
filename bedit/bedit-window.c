@@ -394,8 +394,6 @@ static void bedit_window_class_init(BeditWindowClass *klass) {
     gtk_widget_class_bind_template_child_private(
         widget_class, BeditWindow, headerbar);
     gtk_widget_class_bind_template_child_private(
-        widget_class, BeditWindow, new_button);
-    gtk_widget_class_bind_template_child_private(
         widget_class, BeditWindow, gear_button);
     gtk_widget_class_bind_template_child_private(
         widget_class, BeditWindow, hpaned);
