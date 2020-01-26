@@ -23,34 +23,33 @@
 #ifndef GEDIT_RECENT_H
 #define GEDIT_RECENT_H
 
-#include <gtk/gtk.h>
 #include <bedit/bedit-document.h>
+#include <gtk/gtk.h>
 
 G_BEGIN_DECLS
 
-typedef struct
-{
-	GtkRecentManager *manager;
-	GtkRecentFilter *filter;
+typedef struct {
+    GtkRecentManager *manager;
+    GtkRecentFilter *filter;
 
-	gint limit;
-	gchar *substring_filter;
+    gint limit;
+    gchar *substring_filter;
 
-	guint show_private : 1;
-	guint show_not_found : 1;
-	guint local_only : 1;
+    guint show_private : 1;
+    guint show_not_found : 1;
+    guint local_only : 1;
 } BeditRecentConfiguration;
 
-void		 bedit_recent_add_document		 (BeditDocument            *document);
+void bedit_recent_add_document(BeditDocument *document);
 
-void		 bedit_recent_remove_if_local		 (GFile                    *location);
+void bedit_recent_remove_if_local(GFile *location);
 
-void		 bedit_recent_configuration_init_default (BeditRecentConfiguration *config);
-void		 bedit_recent_configuration_destroy	 (BeditRecentConfiguration *config);
-GList		*bedit_recent_get_items			 (BeditRecentConfiguration *config);
+void bedit_recent_configuration_init_default(BeditRecentConfiguration *config);
+void bedit_recent_configuration_destroy(BeditRecentConfiguration *config);
+GList *bedit_recent_get_items(BeditRecentConfiguration *config);
 
 G_END_DECLS
 
-#endif  /* GEDIT_RECENT_H  */
+#endif /* GEDIT_RECENT_H  */
 
 /* ex:set ts=8 noet: */

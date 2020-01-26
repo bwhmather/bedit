@@ -50,68 +50,53 @@ static BeditDebugSection enabled_sections = GEDIT_NO_DEBUG;
  * This function must be called before any of the other debug functions are
  * called. It must only be called once.
  */
-void
-bedit_debug_init (void)
-{
-	if (g_getenv ("GEDIT_DEBUG") != NULL)
-	{
-		/* enable all debugging */
-		enabled_sections = ~GEDIT_NO_DEBUG;
-		goto out;
-	}
+void bedit_debug_init(void) {
+    if (g_getenv("GEDIT_DEBUG") != NULL) {
+        /* enable all debugging */
+        enabled_sections = ~GEDIT_NO_DEBUG;
+        goto out;
+    }
 
-	if (g_getenv ("GEDIT_DEBUG_VIEW") != NULL)
-	{
-		enabled_sections |= GEDIT_DEBUG_VIEW;
-	}
-	if (g_getenv ("GEDIT_DEBUG_PREFS") != NULL)
-	{
-		enabled_sections |= GEDIT_DEBUG_PREFS;
-	}
-	if (g_getenv ("GEDIT_DEBUG_WINDOW") != NULL)
-	{
-		enabled_sections |= GEDIT_DEBUG_WINDOW;
-	}
-	if (g_getenv ("GEDIT_DEBUG_PANEL") != NULL)
-	{
-		enabled_sections |= GEDIT_DEBUG_PANEL;
-	}
-	if (g_getenv ("GEDIT_DEBUG_PLUGINS") != NULL)
-	{
-		enabled_sections |= GEDIT_DEBUG_PLUGINS;
-	}
-	if (g_getenv ("GEDIT_DEBUG_TAB") != NULL)
-	{
-		enabled_sections |= GEDIT_DEBUG_TAB;
-	}
-	if (g_getenv ("GEDIT_DEBUG_DOCUMENT") != NULL)
-	{
-		enabled_sections |= GEDIT_DEBUG_DOCUMENT;
-	}
-	if (g_getenv ("GEDIT_DEBUG_COMMANDS") != NULL)
-	{
-		enabled_sections |= GEDIT_DEBUG_COMMANDS;
-	}
-	if (g_getenv ("GEDIT_DEBUG_APP") != NULL)
-	{
-		enabled_sections |= GEDIT_DEBUG_APP;
-	}
-	if (g_getenv ("GEDIT_DEBUG_UTILS") != NULL)
-	{
-		enabled_sections |= GEDIT_DEBUG_UTILS;
-	}
-	if (g_getenv ("GEDIT_DEBUG_METADATA") != NULL)
-	{
-		enabled_sections |= GEDIT_DEBUG_METADATA;
-	}
+    if (g_getenv("GEDIT_DEBUG_VIEW") != NULL) {
+        enabled_sections |= GEDIT_DEBUG_VIEW;
+    }
+    if (g_getenv("GEDIT_DEBUG_PREFS") != NULL) {
+        enabled_sections |= GEDIT_DEBUG_PREFS;
+    }
+    if (g_getenv("GEDIT_DEBUG_WINDOW") != NULL) {
+        enabled_sections |= GEDIT_DEBUG_WINDOW;
+    }
+    if (g_getenv("GEDIT_DEBUG_PANEL") != NULL) {
+        enabled_sections |= GEDIT_DEBUG_PANEL;
+    }
+    if (g_getenv("GEDIT_DEBUG_PLUGINS") != NULL) {
+        enabled_sections |= GEDIT_DEBUG_PLUGINS;
+    }
+    if (g_getenv("GEDIT_DEBUG_TAB") != NULL) {
+        enabled_sections |= GEDIT_DEBUG_TAB;
+    }
+    if (g_getenv("GEDIT_DEBUG_DOCUMENT") != NULL) {
+        enabled_sections |= GEDIT_DEBUG_DOCUMENT;
+    }
+    if (g_getenv("GEDIT_DEBUG_COMMANDS") != NULL) {
+        enabled_sections |= GEDIT_DEBUG_COMMANDS;
+    }
+    if (g_getenv("GEDIT_DEBUG_APP") != NULL) {
+        enabled_sections |= GEDIT_DEBUG_APP;
+    }
+    if (g_getenv("GEDIT_DEBUG_UTILS") != NULL) {
+        enabled_sections |= GEDIT_DEBUG_UTILS;
+    }
+    if (g_getenv("GEDIT_DEBUG_METADATA") != NULL) {
+        enabled_sections |= GEDIT_DEBUG_METADATA;
+    }
 
 out:
 
 #ifdef ENABLE_PROFILING
-	if (enabled_sections != GEDIT_NO_DEBUG)
-	{
-		timer = g_timer_new ();
-	}
+    if (enabled_sections != GEDIT_NO_DEBUG) {
+        timer = g_timer_new();
+    }
 #endif
 }
 
@@ -125,13 +110,10 @@ out:
  * If @section is enabled, then logs the trace information @file, @line, and
  * @function.
  */
-void
-bedit_debug (BeditDebugSection  section,
-	     const gchar       *file,
-	     gint               line,
-	     const gchar       *function)
-{
-	bedit_debug_message (section, file, line, function, "%s", "");
+void bedit_debug(
+    BeditDebugSection section, const gchar *file, gint line,
+    const gchar *function) {
+    bedit_debug_message(section, file, line, function, "%s", "");
 }
 
 /**
@@ -147,51 +129,41 @@ bedit_debug (BeditDebugSection  section,
  * @function along with the message obtained by formatting @format with the
  * given format string arguments.
  */
-void
-bedit_debug_message (BeditDebugSection  section,
-		     const gchar       *file,
-		     gint               line,
-		     const gchar       *function,
-		     const gchar       *format,
-		     ...)
-{
-	if (G_UNLIKELY (DEBUG_IS_ENABLED (section)))
-	{
-		va_list args;
-		gchar *msg;
+void bedit_debug_message(
+    BeditDebugSection section, const gchar *file, gint line,
+    const gchar *function, const gchar *format, ...) {
+    if (G_UNLIKELY(DEBUG_IS_ENABLED(section))) {
+        va_list args;
+        gchar *msg;
 
 #ifdef ENABLE_PROFILING
-		gdouble seconds;
+        gdouble seconds;
 
-		g_return_if_fail (timer != NULL);
+        g_return_if_fail(timer != NULL);
 
-		seconds = g_timer_elapsed (timer, NULL);
+        seconds = g_timer_elapsed(timer, NULL);
 #endif
 
-		g_return_if_fail (format != NULL);
+        g_return_if_fail(format != NULL);
 
-		va_start (args, format);
-		msg = g_strdup_vprintf (format, args);
-		va_end (args);
+        va_start(args, format);
+        msg = g_strdup_vprintf(format, args);
+        va_end(args);
 
 #ifdef ENABLE_PROFILING
-		g_print ("[%f (%f)] %s:%d (%s) %s\n",
-			 seconds,
-			 seconds - last_time,
-			 file,
-			 line,
-			 function,
-			 msg);
+        g_print(
+            "[%f (%f)] %s:%d (%s) %s\n", seconds, seconds - last_time, file,
+            line, function, msg);
 
-		last_time = seconds;
+        last_time = seconds;
 #else
-		g_print ("%s:%d (%s) %s\n", file, line, function, msg);
+        g_print("%s:%d (%s) %s\n", file, line, function, msg);
 #endif
 
-		fflush (stdout);
+        fflush(stdout);
 
-		g_free (msg);
-	}
+        g_free(msg);
+    }
 }
 
 /**
@@ -220,17 +192,16 @@ bedit_debug_message (BeditDebugSection  section,
  * It automatically supplies parameters @file, @line, and @function, and it
  * formats <code>format_str</code> with the given format arguments. The syntax
  * of the format string is the usual Python string formatting syntax described
- * by <ulink url="http://docs.python.org/library/stdtypes.html#string-formatting">5.6.2. String Formatting Operations</ulink>.
+ * by <ulink
+ * url="http://docs.python.org/library/stdtypes.html#string-formatting">5.6.2.
+ * String Formatting Operations</ulink>.
  *
  * Since: 3.4
  */
-void
-bedit_debug_plugin_message (const gchar       *file,
-			    gint               line,
-			    const gchar       *function,
-			    const gchar       *message)
-{
-	bedit_debug_message (GEDIT_DEBUG_PLUGINS, file, line, function, "%s", message);
+void bedit_debug_plugin_message(
+    const gchar *file, gint line, const gchar *function, const gchar *message) {
+    bedit_debug_message(
+        GEDIT_DEBUG_PLUGINS, file, line, function, "%s", message);
 }
 
 /* ex:set ts=8 noet: */

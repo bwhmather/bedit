@@ -29,12 +29,13 @@ G_BEGIN_DECLS
 
 #define GEDIT_TYPE_DOCUMENTS_PANEL (bedit_documents_panel_get_type())
 
-G_DECLARE_FINAL_TYPE (BeditDocumentsPanel, bedit_documents_panel, GEDIT, DOCUMENTS_PANEL, GtkBox)
+G_DECLARE_FINAL_TYPE(
+    BeditDocumentsPanel, bedit_documents_panel, GEDIT, DOCUMENTS_PANEL, GtkBox)
 
-GtkWidget	*bedit_documents_panel_new 	(BeditWindow *window);
+GtkWidget *bedit_documents_panel_new(BeditWindow *window);
 
 G_END_DECLS
 
-#endif  /* GEDIT_DOCUMENTS_PANEL_H  */
+#endif /* GEDIT_DOCUMENTS_PANEL_H  */
 
 /* ex:set ts=8 noet: */

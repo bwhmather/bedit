@@ -35,25 +35,23 @@
  * extensions that should be activated on a bedit main window.
  **/
 
-G_DEFINE_INTERFACE(BeditWindowActivatable, bedit_window_activatable, G_TYPE_OBJECT)
+G_DEFINE_INTERFACE(
+    BeditWindowActivatable, bedit_window_activatable, G_TYPE_OBJECT)
 
-static void
-bedit_window_activatable_default_init (BeditWindowActivatableInterface *iface)
-{
-	/**
-	 * BeditWindowActivatable:window:
-	 *
-	 * The window property contains the bedit window for this
-	 * #BeditWindowActivatable instance.
-	 */
-	g_object_interface_install_property (iface,
-	                                     g_param_spec_object ("window",
-	                                                          "Window",
-	                                                          "The bedit window",
-	                                                          GEDIT_TYPE_WINDOW,
-	                                                          G_PARAM_READWRITE |
-	                                                          G_PARAM_CONSTRUCT_ONLY |
-	                                                          G_PARAM_STATIC_STRINGS));
+static void bedit_window_activatable_default_init(
+    BeditWindowActivatableInterface *iface) {
+    /**
+     * BeditWindowActivatable:window:
+     *
+     * The window property contains the bedit window for this
+     * #BeditWindowActivatable instance.
+     */
+    g_object_interface_install_property(
+        iface,
+        g_param_spec_object(
+            "window", "Window", "The bedit window", GEDIT_TYPE_WINDOW,
+            G_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY |
+                G_PARAM_STATIC_STRINGS));
 }
 
 /**
@@ -62,18 +60,15 @@ bedit_window_activatable_default_init (BeditWindowActivatableInterface *iface)
  *
  * Activates the extension on the window property.
  */
-void
-bedit_window_activatable_activate (BeditWindowActivatable *activatable)
-{
-	BeditWindowActivatableInterface *iface;
+void bedit_window_activatable_activate(BeditWindowActivatable *activatable) {
+    BeditWindowActivatableInterface *iface;
 
-	g_return_if_fail (GEDIT_IS_WINDOW_ACTIVATABLE (activatable));
+    g_return_if_fail(GEDIT_IS_WINDOW_ACTIVATABLE(activatable));
 
-	iface = GEDIT_WINDOW_ACTIVATABLE_GET_IFACE (activatable);
-	if (iface->activate != NULL)
-	{
-		iface->activate (activatable);
-	}
+    iface = GEDIT_WINDOW_ACTIVATABLE_GET_IFACE(activatable);
+    if (iface->activate != NULL) {
+        iface->activate(activatable);
+    }
 }
 
 /**
@@ -82,18 +77,15 @@ bedit_window_activatable_activate (BeditWindowActivatable *activatable)
  *
  * Deactivates the extension on the window property.
  */
-void
-bedit_window_activatable_deactivate (BeditWindowActivatable *activatable)
-{
-	BeditWindowActivatableInterface *iface;
+void bedit_window_activatable_deactivate(BeditWindowActivatable *activatable) {
+    BeditWindowActivatableInterface *iface;
 
-	g_return_if_fail (GEDIT_IS_WINDOW_ACTIVATABLE (activatable));
+    g_return_if_fail(GEDIT_IS_WINDOW_ACTIVATABLE(activatable));
 
-	iface = GEDIT_WINDOW_ACTIVATABLE_GET_IFACE (activatable);
-	if (iface->deactivate != NULL)
-	{
-		iface->deactivate (activatable);
-	}
+    iface = GEDIT_WINDOW_ACTIVATABLE_GET_IFACE(activatable);
+    if (iface->deactivate != NULL) {
+        iface->deactivate(activatable);
+    }
 }
 
 /**
@@ -103,18 +95,16 @@ bedit_window_activatable_deactivate (BeditWindowActivatable *activatable)
  * Triggers an update of the extension internal state to take into account
  * state changes in the window, due to some event or user action.
  */
-void
-bedit_window_activatable_update_state (BeditWindowActivatable *activatable)
-{
-	BeditWindowActivatableInterface *iface;
+void bedit_window_activatable_update_state(
+    BeditWindowActivatable *activatable) {
+    BeditWindowActivatableInterface *iface;
 
-	g_return_if_fail (GEDIT_IS_WINDOW_ACTIVATABLE (activatable));
+    g_return_if_fail(GEDIT_IS_WINDOW_ACTIVATABLE(activatable));
 
-	iface = GEDIT_WINDOW_ACTIVATABLE_GET_IFACE (activatable);
-	if (iface->update_state != NULL)
-	{
-		iface->update_state (activatable);
-	}
+    iface = GEDIT_WINDOW_ACTIVATABLE_GET_IFACE(activatable);
+    if (iface->update_state != NULL) {
+        iface->update_state(activatable);
+    }
 }
 
 /* ex:set ts=8 noet: */

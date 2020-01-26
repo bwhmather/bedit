@@ -27,13 +27,14 @@
 
 G_BEGIN_DECLS
 
-#define GEDIT_TYPE_PLUGINS_ENGINE (bedit_plugins_engine_get_type ())
-G_DECLARE_FINAL_TYPE(BeditPluginsEngine, bedit_plugins_engine, GEDIT, PLUGINS_ENGINE, PeasEngine)
+#define GEDIT_TYPE_PLUGINS_ENGINE (bedit_plugins_engine_get_type())
+G_DECLARE_FINAL_TYPE(
+    BeditPluginsEngine, bedit_plugins_engine, GEDIT, PLUGINS_ENGINE, PeasEngine)
 
-BeditPluginsEngine	*bedit_plugins_engine_get_default	(void);
+BeditPluginsEngine *bedit_plugins_engine_get_default(void);
 
 G_END_DECLS
 
-#endif  /* GEDIT_PLUGINS_ENGINE_H */
+#endif /* GEDIT_PLUGINS_ENGINE_H */
 
 /* ex:set ts=8 noet: */

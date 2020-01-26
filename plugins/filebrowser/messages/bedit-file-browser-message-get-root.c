@@ -26,102 +26,82 @@
 #include "bedit-file-browser-message-get-root.h"
 #include "gio/gio.h"
 
-enum
-{
-	PROP_0,
+enum {
+    PROP_0,
 
-	PROP_LOCATION,
+    PROP_LOCATION,
 };
 
-struct _BeditFileBrowserMessageGetRootPrivate
-{
-	GFile *location;
+struct _BeditFileBrowserMessageGetRootPrivate {
+    GFile *location;
 };
 
-G_DEFINE_TYPE_EXTENDED (BeditFileBrowserMessageGetRoot,
-                        bedit_file_browser_message_get_root,
-                        GEDIT_TYPE_MESSAGE,
-                        0,
-                        G_ADD_PRIVATE (BeditFileBrowserMessageGetRoot))
+G_DEFINE_TYPE_EXTENDED(
+    BeditFileBrowserMessageGetRoot, bedit_file_browser_message_get_root,
+    GEDIT_TYPE_MESSAGE, 0, G_ADD_PRIVATE(BeditFileBrowserMessageGetRoot))
 
-static void
-bedit_file_browser_message_get_root_finalize (GObject *obj)
-{
-	BeditFileBrowserMessageGetRoot *msg = GEDIT_FILE_BROWSER_MESSAGE_GET_ROOT (obj);
+static void bedit_file_browser_message_get_root_finalize(GObject *obj) {
+    BeditFileBrowserMessageGetRoot *msg =
+        GEDIT_FILE_BROWSER_MESSAGE_GET_ROOT(obj);
 
-	if (msg->priv->location)
-	{
-		g_object_unref (msg->priv->location);
-	}
+    if (msg->priv->location) {
+        g_object_unref(msg->priv->location);
+    }
 
-	G_OBJECT_CLASS (bedit_file_browser_message_get_root_parent_class)->finalize (obj);
+    G_OBJECT_CLASS(bedit_file_browser_message_get_root_parent_class)
+        ->finalize(obj);
 }
 
-static void
-bedit_file_browser_message_get_root_get_property (GObject    *obj,
-                                                  guint       prop_id,
-                                                  GValue     *value,
-                                                  GParamSpec *pspec)
-{
-	BeditFileBrowserMessageGetRoot *msg;
+static void bedit_file_browser_message_get_root_get_property(
+    GObject *obj, guint prop_id, GValue *value, GParamSpec *pspec) {
+    BeditFileBrowserMessageGetRoot *msg;
 
-	msg = GEDIT_FILE_BROWSER_MESSAGE_GET_ROOT (obj);
+    msg = GEDIT_FILE_BROWSER_MESSAGE_GET_ROOT(obj);
 
-	switch (prop_id)
-	{
-		case PROP_LOCATION:
-			g_value_set_object (value, msg->priv->location);
-			break;
-	}
+    switch (prop_id) {
+    case PROP_LOCATION:
+        g_value_set_object(value, msg->priv->location);
+        break;
+    }
 }
 
-static void
-bedit_file_browser_message_get_root_set_property (GObject      *obj,
-                                                  guint         prop_id,
-                                                  GValue const *value,
-                                                  GParamSpec   *pspec)
-{
-	BeditFileBrowserMessageGetRoot *msg;
+static void bedit_file_browser_message_get_root_set_property(
+    GObject *obj, guint prop_id, GValue const *value, GParamSpec *pspec) {
+    BeditFileBrowserMessageGetRoot *msg;
 
-	msg = GEDIT_FILE_BROWSER_MESSAGE_GET_ROOT (obj);
+    msg = GEDIT_FILE_BROWSER_MESSAGE_GET_ROOT(obj);
 
-	switch (prop_id)
-	{
-		case PROP_LOCATION:
-		{
-			if (msg->priv->location)
-			{
-				g_object_unref (msg->priv->location);
-			}
-			msg->priv->location = g_value_dup_object (value);
-			break;
-		}
-	}
+    switch (prop_id) {
+    case PROP_LOCATION: {
+        if (msg->priv->location) {
+            g_object_unref(msg->priv->location);
+        }
+        msg->priv->location = g_value_dup_object(value);
+        break;
+    }
+    }
 }
 
-static void
-bedit_file_browser_message_get_root_class_init (BeditFileBrowserMessageGetRootClass *klass)
-{
-	GObjectClass *object_class = G_OBJECT_CLASS(klass);
+static void bedit_file_browser_message_get_root_class_init(
+    BeditFileBrowserMessageGetRootClass *klass) {
+    GObjectClass *object_class = G_OBJECT_CLASS(klass);
 
-	object_class->finalize = bedit_file_browser_message_get_root_finalize;
+    object_class->finalize = bedit_file_browser_message_get_root_finalize;
 
-	object_class->get_property = bedit_file_browser_message_get_root_get_property;
-	object_class->set_property = bedit_file_browser_message_get_root_set_property;
+    object_class->get_property =
+        bedit_file_browser_message_get_root_get_property;
+    object_class->set_property =
+        bedit_file_browser_message_get_root_set_property;
 
-	g_object_class_install_property (object_class,
-	                                 PROP_LOCATION,
-	                                 g_param_spec_object ("location",
-	                                                      "Location",
-	                                                      "Location",
-	                                                      G_TYPE_FILE,
-	                                                      G_PARAM_READWRITE |
-	                                                      G_PARAM_CONSTRUCT |
-	                                                      G_PARAM_STATIC_STRINGS));
+    g_object_class_install_property(
+        object_class, PROP_LOCATION,
+        g_param_spec_object(
+            "location", "Location", "Location", G_TYPE_FILE,
+            G_PARAM_READWRITE | G_PARAM_CONSTRUCT | G_PARAM_STATIC_STRINGS));
 }
 
-static void
-bedit_file_browser_message_get_root_init (BeditFileBrowserMessageGetRoot *message)
-{
-	message->priv = bedit_file_browser_message_get_root_get_instance_private (message);
+static void bedit_file_browser_message_get_root_init(
+    BeditFileBrowserMessageGetRoot *message) {
+    message->priv =
+        bedit_file_browser_message_get_root_get_instance_private(message);
 }

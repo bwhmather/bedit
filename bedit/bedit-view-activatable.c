@@ -35,23 +35,20 @@
 
 G_DEFINE_INTERFACE(BeditViewActivatable, bedit_view_activatable, G_TYPE_OBJECT)
 
-static void
-bedit_view_activatable_default_init (BeditViewActivatableInterface *iface)
-{
-	/**
-	 * BeditViewActivatable:view:
-	 *
-	 * The window property contains the bedit window for this
-	 * #BeditViewActivatable instance.
-	 */
-	g_object_interface_install_property (iface,
-	                                     g_param_spec_object ("view",
-	                                                          "view",
-	                                                          "A bedit view",
-	                                                          GEDIT_TYPE_VIEW,
-	                                                          G_PARAM_READWRITE |
-	                                                          G_PARAM_CONSTRUCT_ONLY |
-	                                                          G_PARAM_STATIC_STRINGS));
+static void bedit_view_activatable_default_init(
+    BeditViewActivatableInterface *iface) {
+    /**
+     * BeditViewActivatable:view:
+     *
+     * The window property contains the bedit window for this
+     * #BeditViewActivatable instance.
+     */
+    g_object_interface_install_property(
+        iface,
+        g_param_spec_object(
+            "view", "view", "A bedit view", GEDIT_TYPE_VIEW,
+            G_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY |
+                G_PARAM_STATIC_STRINGS));
 }
 
 /**
@@ -60,18 +57,15 @@ bedit_view_activatable_default_init (BeditViewActivatableInterface *iface)
  *
  * Activates the extension on the window property.
  */
-void
-bedit_view_activatable_activate (BeditViewActivatable *activatable)
-{
-	BeditViewActivatableInterface *iface;
+void bedit_view_activatable_activate(BeditViewActivatable *activatable) {
+    BeditViewActivatableInterface *iface;
 
-	g_return_if_fail (GEDIT_IS_VIEW_ACTIVATABLE (activatable));
+    g_return_if_fail(GEDIT_IS_VIEW_ACTIVATABLE(activatable));
 
-	iface = GEDIT_VIEW_ACTIVATABLE_GET_IFACE (activatable);
-	if (iface->activate != NULL)
-	{
-		iface->activate (activatable);
-	}
+    iface = GEDIT_VIEW_ACTIVATABLE_GET_IFACE(activatable);
+    if (iface->activate != NULL) {
+        iface->activate(activatable);
+    }
 }
 
 /**
@@ -80,17 +74,13 @@ bedit_view_activatable_activate (BeditViewActivatable *activatable)
  *
  * Deactivates the extension on the window property.
  */
-void
-bedit_view_activatable_deactivate (BeditViewActivatable *activatable)
-{
-	BeditViewActivatableInterface *iface;
+void bedit_view_activatable_deactivate(BeditViewActivatable *activatable) {
+    BeditViewActivatableInterface *iface;
 
-	g_return_if_fail (GEDIT_IS_VIEW_ACTIVATABLE (activatable));
+    g_return_if_fail(GEDIT_IS_VIEW_ACTIVATABLE(activatable));
 
-	iface = GEDIT_VIEW_ACTIVATABLE_GET_IFACE (activatable);
-	if (iface->deactivate != NULL)
-	{
-		iface->deactivate (activatable);
-	}
+    iface = GEDIT_VIEW_ACTIVATABLE_GET_IFACE(activatable);
+    if (iface->deactivate != NULL) {
+        iface->deactivate(activatable);
+    }
 }
-

@@ -22,25 +22,28 @@
 #ifndef GEDIT_CLOSE_CONFIRMATION_DIALOG_H
 #define GEDIT_CLOSE_CONFIRMATION_DIALOG_H
 
+#include <bedit/bedit-document.h>
 #include <glib.h>
 #include <gtk/gtk.h>
-#include <bedit/bedit-document.h>
 
-#define GEDIT_TYPE_CLOSE_CONFIRMATION_DIALOG (bedit_close_confirmation_dialog_get_type ())
+#define GEDIT_TYPE_CLOSE_CONFIRMATION_DIALOG                                   \
+    (bedit_close_confirmation_dialog_get_type())
 
-G_DECLARE_FINAL_TYPE (BeditCloseConfirmationDialog, bedit_close_confirmation_dialog,
-		      GEDIT, CLOSE_CONFIRMATION_DIALOG,
-		      GtkMessageDialog)
+G_DECLARE_FINAL_TYPE(
+    BeditCloseConfirmationDialog, bedit_close_confirmation_dialog, GEDIT,
+    CLOSE_CONFIRMATION_DIALOG, GtkMessageDialog)
 
-GtkWidget	*bedit_close_confirmation_dialog_new			(GtkWindow     *parent,
-									 GList         *unsaved_documents);
+GtkWidget *bedit_close_confirmation_dialog_new(
+    GtkWindow *parent, GList *unsaved_documents);
 
-GtkWidget 	*bedit_close_confirmation_dialog_new_single 		(GtkWindow     *parent,
-									 BeditDocument *doc);
+GtkWidget *bedit_close_confirmation_dialog_new_single(
+    GtkWindow *parent, BeditDocument *doc);
 
-const GList	*bedit_close_confirmation_dialog_get_unsaved_documents  (BeditCloseConfirmationDialog *dlg);
+const GList *bedit_close_confirmation_dialog_get_unsaved_documents(
+    BeditCloseConfirmationDialog *dlg);
 
-GList		*bedit_close_confirmation_dialog_get_selected_documents	(BeditCloseConfirmationDialog *dlg);
+GList *bedit_close_confirmation_dialog_get_selected_documents(
+    BeditCloseConfirmationDialog *dlg);
 
 #endif /* GEDIT_CLOSE_CONFIRMATION_DIALOG_H */
 /* ex:set ts=8 noet: */

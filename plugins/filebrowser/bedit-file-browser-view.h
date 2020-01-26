@@ -24,59 +24,65 @@
 #include <gtk/gtk.h>
 
 G_BEGIN_DECLS
-#define GEDIT_TYPE_FILE_BROWSER_VIEW			(bedit_file_browser_view_get_type ())
-#define GEDIT_FILE_BROWSER_VIEW(obj)			(G_TYPE_CHECK_INSTANCE_CAST ((obj), GEDIT_TYPE_FILE_BROWSER_VIEW, BeditFileBrowserView))
-#define GEDIT_FILE_BROWSER_VIEW_CONST(obj)		(G_TYPE_CHECK_INSTANCE_CAST ((obj), GEDIT_TYPE_FILE_BROWSER_VIEW, BeditFileBrowserView const))
-#define GEDIT_FILE_BROWSER_VIEW_CLASS(klass)		(G_TYPE_CHECK_CLASS_CAST ((klass), GEDIT_TYPE_FILE_BROWSER_VIEW, BeditFileBrowserViewClass))
-#define GEDIT_IS_FILE_BROWSER_VIEW(obj)			(G_TYPE_CHECK_INSTANCE_TYPE ((obj), GEDIT_TYPE_FILE_BROWSER_VIEW))
-#define GEDIT_IS_FILE_BROWSER_VIEW_CLASS(klass)		(G_TYPE_CHECK_CLASS_TYPE ((klass), GEDIT_TYPE_FILE_BROWSER_VIEW))
-#define GEDIT_FILE_BROWSER_VIEW_GET_CLASS(obj)		(G_TYPE_INSTANCE_GET_CLASS ((obj), GEDIT_TYPE_FILE_BROWSER_VIEW, BeditFileBrowserViewClass))
+#define GEDIT_TYPE_FILE_BROWSER_VIEW (bedit_file_browser_view_get_type())
+#define GEDIT_FILE_BROWSER_VIEW(obj)                                           \
+    (G_TYPE_CHECK_INSTANCE_CAST(                                               \
+        (obj), GEDIT_TYPE_FILE_BROWSER_VIEW, BeditFileBrowserView))
+#define GEDIT_FILE_BROWSER_VIEW_CONST(obj)                                     \
+    (G_TYPE_CHECK_INSTANCE_CAST(                                               \
+        (obj), GEDIT_TYPE_FILE_BROWSER_VIEW, BeditFileBrowserView const))
+#define GEDIT_FILE_BROWSER_VIEW_CLASS(klass)                                   \
+    (G_TYPE_CHECK_CLASS_CAST(                                                  \
+        (klass), GEDIT_TYPE_FILE_BROWSER_VIEW, BeditFileBrowserViewClass))
+#define GEDIT_IS_FILE_BROWSER_VIEW(obj)                                        \
+    (G_TYPE_CHECK_INSTANCE_TYPE((obj), GEDIT_TYPE_FILE_BROWSER_VIEW))
+#define GEDIT_IS_FILE_BROWSER_VIEW_CLASS(klass)                                \
+    (G_TYPE_CHECK_CLASS_TYPE((klass), GEDIT_TYPE_FILE_BROWSER_VIEW))
+#define GEDIT_FILE_BROWSER_VIEW_GET_CLASS(obj)                                 \
+    (G_TYPE_INSTANCE_GET_CLASS(                                                \
+        (obj), GEDIT_TYPE_FILE_BROWSER_VIEW, BeditFileBrowserViewClass))
 
-typedef struct _BeditFileBrowserView        BeditFileBrowserView;
-typedef struct _BeditFileBrowserViewClass   BeditFileBrowserViewClass;
+typedef struct _BeditFileBrowserView BeditFileBrowserView;
+typedef struct _BeditFileBrowserViewClass BeditFileBrowserViewClass;
 typedef struct _BeditFileBrowserViewPrivate BeditFileBrowserViewPrivate;
 
 typedef enum {
-	GEDIT_FILE_BROWSER_VIEW_CLICK_POLICY_SINGLE,
-	GEDIT_FILE_BROWSER_VIEW_CLICK_POLICY_DOUBLE
+    GEDIT_FILE_BROWSER_VIEW_CLICK_POLICY_SINGLE,
+    GEDIT_FILE_BROWSER_VIEW_CLICK_POLICY_DOUBLE
 } BeditFileBrowserViewClickPolicy;
 
-struct _BeditFileBrowserView
-{
-	GtkTreeView                  parent;
+struct _BeditFileBrowserView {
+    GtkTreeView parent;
 
-	BeditFileBrowserViewPrivate *priv;
+    BeditFileBrowserViewPrivate *priv;
 };
 
-struct _BeditFileBrowserViewClass
-{
-	GtkTreeViewClass parent_class;
+struct _BeditFileBrowserViewClass {
+    GtkTreeViewClass parent_class;
 
-	/* Signals */
-	void (* error)			(BeditFileBrowserView *filetree,
-					 guint                 code,
-					 gchar const          *message);
-	void (* file_activated)		(BeditFileBrowserView *filetree,
-					 GtkTreeIter          *iter);
-	void (* directory_activated)	(BeditFileBrowserView *filetree,
-					 GtkTreeIter          *iter);
-	void (* bookmark_activated)	(BeditFileBrowserView *filetree,
-					 GtkTreeIter          *iter);
+    /* Signals */
+    void (*error)(
+        BeditFileBrowserView *filetree, guint code, gchar const *message);
+    void (*file_activated)(BeditFileBrowserView *filetree, GtkTreeIter *iter);
+    void (*directory_activated)(
+        BeditFileBrowserView *filetree, GtkTreeIter *iter);
+    void (*bookmark_activated)(
+        BeditFileBrowserView *filetree, GtkTreeIter *iter);
 };
 
-GType		 bedit_file_browser_view_get_type			(void) G_GNUC_CONST;
+GType bedit_file_browser_view_get_type(void) G_GNUC_CONST;
 
-GtkWidget	*bedit_file_browser_view_new				(void);
-void		 bedit_file_browser_view_set_model			(BeditFileBrowserView            *tree_view,
-									 GtkTreeModel                    *model);
-void		 bedit_file_browser_view_start_rename			(BeditFileBrowserView            *tree_view,
-									 GtkTreeIter                     *iter);
-void		 bedit_file_browser_view_set_click_policy		(BeditFileBrowserView            *tree_view,
-							 		 BeditFileBrowserViewClickPolicy  policy);
-void		 bedit_file_browser_view_set_restore_expand_state	(BeditFileBrowserView            *tree_view,
-									 gboolean                         restore_expand_state);
+GtkWidget *bedit_file_browser_view_new(void);
+void bedit_file_browser_view_set_model(
+    BeditFileBrowserView *tree_view, GtkTreeModel *model);
+void bedit_file_browser_view_start_rename(
+    BeditFileBrowserView *tree_view, GtkTreeIter *iter);
+void bedit_file_browser_view_set_click_policy(
+    BeditFileBrowserView *tree_view, BeditFileBrowserViewClickPolicy policy);
+void bedit_file_browser_view_set_restore_expand_state(
+    BeditFileBrowserView *tree_view, gboolean restore_expand_state);
 
-void		 _bedit_file_browser_view_register_type			(GTypeModule                     *type_module);
+void _bedit_file_browser_view_register_type(GTypeModule *type_module);
 
 G_END_DECLS
 

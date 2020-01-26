@@ -18,7 +18,6 @@
  * along with bedit. If not, see <http://www.gnu.org/licenses/>.
  */
 
-
 #ifndef GEDIT_SPELL_APP_ACTIVATABLE_H
 #define GEDIT_SPELL_APP_ACTIVATABLE_H
 
@@ -26,12 +25,13 @@
 
 G_BEGIN_DECLS
 
-#define GEDIT_TYPE_SPELL_APP_ACTIVATABLE (bedit_spell_app_activatable_get_type ())
-G_DECLARE_FINAL_TYPE (BeditSpellAppActivatable, bedit_spell_app_activatable,
-		      GEDIT, SPELL_APP_ACTIVATABLE,
-		      GObject)
+#define GEDIT_TYPE_SPELL_APP_ACTIVATABLE                                       \
+    (bedit_spell_app_activatable_get_type())
+G_DECLARE_FINAL_TYPE(
+    BeditSpellAppActivatable, bedit_spell_app_activatable, GEDIT,
+    SPELL_APP_ACTIVATABLE, GObject)
 
-void	bedit_spell_app_activatable_register	(GTypeModule *module);
+void bedit_spell_app_activatable_register(GTypeModule *module);
 
 G_END_DECLS
 

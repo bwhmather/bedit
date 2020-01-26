@@ -25,23 +25,24 @@
 
 G_BEGIN_DECLS
 
-#define GEDIT_TYPE_WINDOW_ACTIVATABLE (bedit_window_activatable_get_type ())
+#define GEDIT_TYPE_WINDOW_ACTIVATABLE (bedit_window_activatable_get_type())
 
-G_DECLARE_INTERFACE (BeditWindowActivatable, bedit_window_activatable, GEDIT, WINDOW_ACTIVATABLE, GObject)
+G_DECLARE_INTERFACE(
+    BeditWindowActivatable, bedit_window_activatable, GEDIT, WINDOW_ACTIVATABLE,
+    GObject)
 
-struct _BeditWindowActivatableInterface
-{
-	GTypeInterface g_iface;
+struct _BeditWindowActivatableInterface {
+    GTypeInterface g_iface;
 
-	/* Virtual public methods */
-	void	(*activate)		(BeditWindowActivatable *activatable);
-	void	(*deactivate)		(BeditWindowActivatable *activatable);
-	void	(*update_state)		(BeditWindowActivatable *activatable);
+    /* Virtual public methods */
+    void (*activate)(BeditWindowActivatable *activatable);
+    void (*deactivate)(BeditWindowActivatable *activatable);
+    void (*update_state)(BeditWindowActivatable *activatable);
 };
 
-void	 bedit_window_activatable_activate	(BeditWindowActivatable *activatable);
-void	 bedit_window_activatable_deactivate	(BeditWindowActivatable *activatable);
-void	 bedit_window_activatable_update_state	(BeditWindowActivatable *activatable);
+void bedit_window_activatable_activate(BeditWindowActivatable *activatable);
+void bedit_window_activatable_deactivate(BeditWindowActivatable *activatable);
+void bedit_window_activatable_update_state(BeditWindowActivatable *activatable);
 
 G_END_DECLS
 

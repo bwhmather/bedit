@@ -26,102 +26,82 @@
 #include "bedit-file-browser-message-get-view.h"
 #include "plugins/filebrowser/bedit-file-browser-view.h"
 
-enum
-{
-	PROP_0,
+enum {
+    PROP_0,
 
-	PROP_VIEW,
+    PROP_VIEW,
 };
 
-struct _BeditFileBrowserMessageGetViewPrivate
-{
-	BeditFileBrowserView *view;
+struct _BeditFileBrowserMessageGetViewPrivate {
+    BeditFileBrowserView *view;
 };
 
-G_DEFINE_TYPE_EXTENDED (BeditFileBrowserMessageGetView,
-                        bedit_file_browser_message_get_view,
-                        GEDIT_TYPE_MESSAGE,
-                        0,
-                        G_ADD_PRIVATE (BeditFileBrowserMessageGetView))
+G_DEFINE_TYPE_EXTENDED(
+    BeditFileBrowserMessageGetView, bedit_file_browser_message_get_view,
+    GEDIT_TYPE_MESSAGE, 0, G_ADD_PRIVATE(BeditFileBrowserMessageGetView))
 
-static void
-bedit_file_browser_message_get_view_finalize (GObject *obj)
-{
-	BeditFileBrowserMessageGetView *msg = GEDIT_FILE_BROWSER_MESSAGE_GET_VIEW (obj);
+static void bedit_file_browser_message_get_view_finalize(GObject *obj) {
+    BeditFileBrowserMessageGetView *msg =
+        GEDIT_FILE_BROWSER_MESSAGE_GET_VIEW(obj);
 
-	if (msg->priv->view)
-	{
-		g_object_unref (msg->priv->view);
-	}
+    if (msg->priv->view) {
+        g_object_unref(msg->priv->view);
+    }
 
-	G_OBJECT_CLASS (bedit_file_browser_message_get_view_parent_class)->finalize (obj);
+    G_OBJECT_CLASS(bedit_file_browser_message_get_view_parent_class)
+        ->finalize(obj);
 }
 
-static void
-bedit_file_browser_message_get_view_get_property (GObject    *obj,
-                                                  guint       prop_id,
-                                                  GValue     *value,
-                                                  GParamSpec *pspec)
-{
-	BeditFileBrowserMessageGetView *msg;
+static void bedit_file_browser_message_get_view_get_property(
+    GObject *obj, guint prop_id, GValue *value, GParamSpec *pspec) {
+    BeditFileBrowserMessageGetView *msg;
 
-	msg = GEDIT_FILE_BROWSER_MESSAGE_GET_VIEW (obj);
+    msg = GEDIT_FILE_BROWSER_MESSAGE_GET_VIEW(obj);
 
-	switch (prop_id)
-	{
-		case PROP_VIEW:
-			g_value_set_object (value, msg->priv->view);
-			break;
-	}
+    switch (prop_id) {
+    case PROP_VIEW:
+        g_value_set_object(value, msg->priv->view);
+        break;
+    }
 }
 
-static void
-bedit_file_browser_message_get_view_set_property (GObject      *obj,
-                                                  guint         prop_id,
-                                                  GValue const *value,
-                                                  GParamSpec   *pspec)
-{
-	BeditFileBrowserMessageGetView *msg;
+static void bedit_file_browser_message_get_view_set_property(
+    GObject *obj, guint prop_id, GValue const *value, GParamSpec *pspec) {
+    BeditFileBrowserMessageGetView *msg;
 
-	msg = GEDIT_FILE_BROWSER_MESSAGE_GET_VIEW (obj);
+    msg = GEDIT_FILE_BROWSER_MESSAGE_GET_VIEW(obj);
 
-	switch (prop_id)
-	{
-		case PROP_VIEW:
-		{
-			if (msg->priv->view)
-			{
-				g_object_unref (msg->priv->view);
-			}
-			msg->priv->view = g_value_dup_object (value);
-			break;
-		}
-	}
+    switch (prop_id) {
+    case PROP_VIEW: {
+        if (msg->priv->view) {
+            g_object_unref(msg->priv->view);
+        }
+        msg->priv->view = g_value_dup_object(value);
+        break;
+    }
+    }
 }
 
-static void
-bedit_file_browser_message_get_view_class_init (BeditFileBrowserMessageGetViewClass *klass)
-{
-	GObjectClass *object_class = G_OBJECT_CLASS(klass);
+static void bedit_file_browser_message_get_view_class_init(
+    BeditFileBrowserMessageGetViewClass *klass) {
+    GObjectClass *object_class = G_OBJECT_CLASS(klass);
 
-	object_class->finalize = bedit_file_browser_message_get_view_finalize;
+    object_class->finalize = bedit_file_browser_message_get_view_finalize;
 
-	object_class->get_property = bedit_file_browser_message_get_view_get_property;
-	object_class->set_property = bedit_file_browser_message_get_view_set_property;
+    object_class->get_property =
+        bedit_file_browser_message_get_view_get_property;
+    object_class->set_property =
+        bedit_file_browser_message_get_view_set_property;
 
-	g_object_class_install_property (object_class,
-	                                 PROP_VIEW,
-	                                 g_param_spec_object ("view",
-	                                                      "View",
-	                                                      "View",
-	                                                      GEDIT_TYPE_FILE_BROWSER_VIEW,
-	                                                      G_PARAM_READWRITE |
-	                                                      G_PARAM_CONSTRUCT |
-	                                                      G_PARAM_STATIC_STRINGS));
+    g_object_class_install_property(
+        object_class, PROP_VIEW,
+        g_param_spec_object(
+            "view", "View", "View", GEDIT_TYPE_FILE_BROWSER_VIEW,
+            G_PARAM_READWRITE | G_PARAM_CONSTRUCT | G_PARAM_STATIC_STRINGS));
 }
 
-static void
-bedit_file_browser_message_get_view_init (BeditFileBrowserMessageGetView *message)
-{
-	message->priv = bedit_file_browser_message_get_view_get_instance_private (message);
+static void bedit_file_browser_message_get_view_init(
+    BeditFileBrowserMessageGetView *message) {
+    message->priv =
+        bedit_file_browser_message_get_view_get_instance_private(message);
 }

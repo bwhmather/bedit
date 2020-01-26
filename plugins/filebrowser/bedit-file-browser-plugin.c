@@ -20,953 +20,785 @@
 
 #include "config.h"
 
-#include <string.h>
-#include <glib/gi18n-lib.h>
-#include <gmodule.h>
 #include <bedit/bedit-app.h>
 #include <bedit/bedit-commands.h>
 #include <bedit/bedit-debug.h>
-#include <bedit/bedit-window.h>
-#include <bedit/bedit-window-activatable.h>
 #include <bedit/bedit-utils.h>
+#include <bedit/bedit-window-activatable.h>
+#include <bedit/bedit-window.h>
+#include <glib/gi18n-lib.h>
+#include <gmodule.h>
+#include <string.h>
 
 #include "bedit-file-browser-enum-types.h"
+#include "bedit-file-browser-error.h"
+#include "bedit-file-browser-messages.h"
 #include "bedit-file-browser-plugin.h"
 #include "bedit-file-browser-utils.h"
-#include "bedit-file-browser-error.h"
 #include "bedit-file-browser-widget.h"
-#include "bedit-file-browser-messages.h"
 
-#define FILEBROWSER_BASE_SETTINGS	"com.bwhmather.bedit.plugins.filebrowser"
-#define FILEBROWSER_TREE_VIEW		"tree-view"
-#define FILEBROWSER_ROOT		"root"
-#define FILEBROWSER_VIRTUAL_ROOT	"virtual-root"
-#define FILEBROWSER_ENABLE_REMOTE	"enable-remote"
-#define FILEBROWSER_OPEN_AT_FIRST_DOC	"open-at-first-doc"
-#define FILEBROWSER_FILTER_MODE		"filter-mode"
-#define FILEBROWSER_FILTER_PATTERN	"filter-pattern"
-#define FILEBROWSER_BINARY_PATTERNS	"binary-patterns"
+#define FILEBROWSER_BASE_SETTINGS "com.bwhmather.bedit.plugins.filebrowser"
+#define FILEBROWSER_TREE_VIEW "tree-view"
+#define FILEBROWSER_ROOT "root"
+#define FILEBROWSER_VIRTUAL_ROOT "virtual-root"
+#define FILEBROWSER_ENABLE_REMOTE "enable-remote"
+#define FILEBROWSER_OPEN_AT_FIRST_DOC "open-at-first-doc"
+#define FILEBROWSER_FILTER_MODE "filter-mode"
+#define FILEBROWSER_FILTER_PATTERN "filter-pattern"
+#define FILEBROWSER_BINARY_PATTERNS "binary-patterns"
 
-#define NAUTILUS_BASE_SETTINGS		"org.gnome.nautilus.preferences"
-#define NAUTILUS_FALLBACK_SETTINGS	"com.bwhmather.bedit.plugins.filebrowser.nautilus"
-#define NAUTILUS_CLICK_POLICY_KEY	"click-policy"
-#define NAUTILUS_CONFIRM_TRASH_KEY	"confirm-trash"
+#define NAUTILUS_BASE_SETTINGS "org.gnome.nautilus.preferences"
+#define NAUTILUS_FALLBACK_SETTINGS                                             \
+    "com.bwhmather.bedit.plugins.filebrowser.nautilus"
+#define NAUTILUS_CLICK_POLICY_KEY "click-policy"
+#define NAUTILUS_CONFIRM_TRASH_KEY "confirm-trash"
 
-#define TERMINAL_BASE_SETTINGS		"org.gnome.desktop.default-applications.terminal"
-#define TERMINAL_EXEC_KEY		"exec"
+#define TERMINAL_BASE_SETTINGS "org.gnome.desktop.default-applications.terminal"
+#define TERMINAL_EXEC_KEY "exec"
 
-struct _BeditFileBrowserPluginPrivate
-{
-	GSettings              *settings;
-	GSettings              *nautilus_settings;
-	GSettings              *terminal_settings;
+struct _BeditFileBrowserPluginPrivate {
+    GSettings *settings;
+    GSettings *nautilus_settings;
+    GSettings *terminal_settings;
 
-	BeditWindow            *window;
+    BeditWindow *window;
 
-	BeditFileBrowserWidget *tree_widget;
-	gboolean	        auto_root;
-	gulong                  end_loading_handle;
-	gboolean		confirm_trash;
+    BeditFileBrowserWidget *tree_widget;
+    gboolean auto_root;
+    gulong end_loading_handle;
+    gboolean confirm_trash;
 
-	guint			click_policy_handle;
-	guint			confirm_trash_handle;
+    guint click_policy_handle;
+    guint confirm_trash_handle;
 };
 
-enum
-{
-	PROP_0,
-	PROP_WINDOW
-};
+enum { PROP_0, PROP_WINDOW };
 
-static void bedit_window_activatable_iface_init	(BeditWindowActivatableInterface *iface);
+static void bedit_window_activatable_iface_init(
+    BeditWindowActivatableInterface *iface);
 
-static void on_location_activated_cb     (BeditFileBrowserWidget        *widget,
-                                          GFile                         *location,
-                                          BeditWindow                   *window);
-static void on_error_cb                  (BeditFileBrowserWidget        *widget,
-                                          guint                          code,
-                                          gchar const                   *message,
-                                          BeditFileBrowserPlugin        *plugin);
-static void on_model_set_cb              (BeditFileBrowserView          *widget,
-                                          GParamSpec                    *param,
-                                          BeditFileBrowserPlugin        *plugin);
-static void on_virtual_root_changed_cb   (BeditFileBrowserStore         *model,
-                                          GParamSpec                    *param,
-                                          BeditFileBrowserPlugin        *plugin);
-static void on_rename_cb		 (BeditFileBrowserStore         *model,
-					  GFile                         *oldfile,
-					  GFile                         *newfile,
-					  BeditWindow                   *window);
-static void on_tab_added_cb              (BeditWindow                   *window,
-                                          BeditTab                      *tab,
-                                          BeditFileBrowserPlugin        *plugin);
-static gboolean on_confirm_delete_cb     (BeditFileBrowserWidget        *widget,
-                                          BeditFileBrowserStore         *store,
-                                          GList                         *rows,
-                                          BeditFileBrowserPlugin        *plugin);
-static gboolean on_confirm_no_trash_cb   (BeditFileBrowserWidget        *widget,
-                                          GList                         *files,
-                                          BeditWindow                   *window);
+static void on_location_activated_cb(
+    BeditFileBrowserWidget *widget, GFile *location, BeditWindow *window);
+static void on_error_cb(
+    BeditFileBrowserWidget *widget, guint code, gchar const *message,
+    BeditFileBrowserPlugin *plugin);
+static void on_model_set_cb(
+    BeditFileBrowserView *widget, GParamSpec *param,
+    BeditFileBrowserPlugin *plugin);
+static void on_virtual_root_changed_cb(
+    BeditFileBrowserStore *model, GParamSpec *param,
+    BeditFileBrowserPlugin *plugin);
+static void on_rename_cb(
+    BeditFileBrowserStore *model, GFile *oldfile, GFile *newfile,
+    BeditWindow *window);
+static void on_tab_added_cb(
+    BeditWindow *window, BeditTab *tab, BeditFileBrowserPlugin *plugin);
+static gboolean on_confirm_delete_cb(
+    BeditFileBrowserWidget *widget, BeditFileBrowserStore *store, GList *rows,
+    BeditFileBrowserPlugin *plugin);
+static gboolean on_confirm_no_trash_cb(
+    BeditFileBrowserWidget *widget, GList *files, BeditWindow *window);
 
-G_DEFINE_DYNAMIC_TYPE_EXTENDED (BeditFileBrowserPlugin,
-				bedit_file_browser_plugin,
-				G_TYPE_OBJECT,
-				0,
-				G_ADD_PRIVATE_DYNAMIC (BeditFileBrowserPlugin)
-				G_IMPLEMENT_INTERFACE_DYNAMIC (GEDIT_TYPE_WINDOW_ACTIVATABLE,
-							       bedit_window_activatable_iface_init)	\
-													\
-				bedit_file_browser_enum_and_flag_register_type	(type_module);		\
-				_bedit_file_bookmarks_store_register_type	(type_module);		\
-				_bedit_file_browser_store_register_type		(type_module);		\
-				_bedit_file_browser_view_register_type		(type_module);		\
-				_bedit_file_browser_widget_register_type	(type_module);		\
-)
+G_DEFINE_DYNAMIC_TYPE_EXTENDED(
+    BeditFileBrowserPlugin, bedit_file_browser_plugin, G_TYPE_OBJECT, 0,
+    G_ADD_PRIVATE_DYNAMIC(BeditFileBrowserPlugin) G_IMPLEMENT_INTERFACE_DYNAMIC(
+        GEDIT_TYPE_WINDOW_ACTIVATABLE, bedit_window_activatable_iface_init)
 
-static GSettings *
-settings_try_new (const gchar *schema_id)
-{
-	GSettings *settings = NULL;
-	GSettingsSchemaSource *source;
-	GSettingsSchema *schema;
+        bedit_file_browser_enum_and_flag_register_type(type_module);
+    _bedit_file_bookmarks_store_register_type(type_module);
+    _bedit_file_browser_store_register_type(type_module);
+    _bedit_file_browser_view_register_type(type_module);
+    _bedit_file_browser_widget_register_type(type_module);)
 
-	source = g_settings_schema_source_get_default ();
+static GSettings *settings_try_new(const gchar *schema_id) {
+    GSettings *settings = NULL;
+    GSettingsSchemaSource *source;
+    GSettingsSchema *schema;
 
-	schema = g_settings_schema_source_lookup (source, schema_id, TRUE);
+    source = g_settings_schema_source_get_default();
 
-	if (schema != NULL)
-	{
-		settings = g_settings_new_full (schema, NULL, NULL);
-		g_settings_schema_unref (schema);
-	}
+    schema = g_settings_schema_source_lookup(source, schema_id, TRUE);
 
-	return settings;
+    if (schema != NULL) {
+        settings = g_settings_new_full(schema, NULL, NULL);
+        g_settings_schema_unref(schema);
+    }
+
+    return settings;
 }
 
-static void
-bedit_file_browser_plugin_init (BeditFileBrowserPlugin *plugin)
-{
-	plugin->priv = bedit_file_browser_plugin_get_instance_private (plugin);
+static void bedit_file_browser_plugin_init(BeditFileBrowserPlugin *plugin) {
+    plugin->priv = bedit_file_browser_plugin_get_instance_private(plugin);
 
-	plugin->priv->settings = g_settings_new (FILEBROWSER_BASE_SETTINGS);
-	plugin->priv->terminal_settings = g_settings_new (TERMINAL_BASE_SETTINGS);
-	plugin->priv->nautilus_settings = settings_try_new (NAUTILUS_BASE_SETTINGS);
+    plugin->priv->settings = g_settings_new(FILEBROWSER_BASE_SETTINGS);
+    plugin->priv->terminal_settings = g_settings_new(TERMINAL_BASE_SETTINGS);
+    plugin->priv->nautilus_settings = settings_try_new(NAUTILUS_BASE_SETTINGS);
 
-	if (plugin->priv->nautilus_settings == NULL)
-	{
-		plugin->priv->nautilus_settings = g_settings_new (NAUTILUS_FALLBACK_SETTINGS);
-	}
+    if (plugin->priv->nautilus_settings == NULL) {
+        plugin->priv->nautilus_settings =
+            g_settings_new(NAUTILUS_FALLBACK_SETTINGS);
+    }
 }
 
-static void
-bedit_file_browser_plugin_dispose (GObject *object)
-{
-	BeditFileBrowserPlugin *plugin = GEDIT_FILE_BROWSER_PLUGIN (object);
+static void bedit_file_browser_plugin_dispose(GObject *object) {
+    BeditFileBrowserPlugin *plugin = GEDIT_FILE_BROWSER_PLUGIN(object);
 
-	g_clear_object (&plugin->priv->settings);
-	g_clear_object (&plugin->priv->nautilus_settings);
-	g_clear_object (&plugin->priv->terminal_settings);
-	g_clear_object (&plugin->priv->window);
+    g_clear_object(&plugin->priv->settings);
+    g_clear_object(&plugin->priv->nautilus_settings);
+    g_clear_object(&plugin->priv->terminal_settings);
+    g_clear_object(&plugin->priv->window);
 
-	G_OBJECT_CLASS (bedit_file_browser_plugin_parent_class)->dispose (object);
+    G_OBJECT_CLASS(bedit_file_browser_plugin_parent_class)->dispose(object);
 }
 
-static void
-bedit_file_browser_plugin_set_property (GObject      *object,
-                                        guint         prop_id,
-                                        const GValue *value,
-                                        GParamSpec   *pspec)
-{
-	BeditFileBrowserPlugin *plugin = GEDIT_FILE_BROWSER_PLUGIN (object);
+static void bedit_file_browser_plugin_set_property(
+    GObject *object, guint prop_id, const GValue *value, GParamSpec *pspec) {
+    BeditFileBrowserPlugin *plugin = GEDIT_FILE_BROWSER_PLUGIN(object);
 
-	switch (prop_id)
-	{
-		case PROP_WINDOW:
-			plugin->priv->window = GEDIT_WINDOW (g_value_dup_object (value));
-			break;
+    switch (prop_id) {
+    case PROP_WINDOW:
+        plugin->priv->window = GEDIT_WINDOW(g_value_dup_object(value));
+        break;
 
-		default:
-			G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
-			break;
-	}
+    default:
+        G_OBJECT_WARN_INVALID_PROPERTY_ID(object, prop_id, pspec);
+        break;
+    }
 }
 
-static void
-bedit_file_browser_plugin_get_property (GObject    *object,
-                                        guint       prop_id,
-                                        GValue     *value,
-                                        GParamSpec *pspec)
-{
-	BeditFileBrowserPlugin *plugin = GEDIT_FILE_BROWSER_PLUGIN (object);
+static void bedit_file_browser_plugin_get_property(
+    GObject *object, guint prop_id, GValue *value, GParamSpec *pspec) {
+    BeditFileBrowserPlugin *plugin = GEDIT_FILE_BROWSER_PLUGIN(object);
 
-	switch (prop_id)
-	{
-		case PROP_WINDOW:
-			g_value_set_object (value, plugin->priv->window);
-			break;
+    switch (prop_id) {
+    case PROP_WINDOW:
+        g_value_set_object(value, plugin->priv->window);
+        break;
 
-		default:
-			G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
-			break;
-	}
+    default:
+        G_OBJECT_WARN_INVALID_PROPERTY_ID(object, prop_id, pspec);
+        break;
+    }
 }
 
-static void
-on_end_loading_cb (BeditFileBrowserStore  *store,
-                   GtkTreeIter            *iter,
-                   BeditFileBrowserPlugin *plugin)
-{
-	BeditFileBrowserPluginPrivate *priv = plugin->priv;
+static void on_end_loading_cb(
+    BeditFileBrowserStore *store, GtkTreeIter *iter,
+    BeditFileBrowserPlugin *plugin) {
+    BeditFileBrowserPluginPrivate *priv = plugin->priv;
 
-	/* Disconnect the signal */
-	g_signal_handler_disconnect (store, priv->end_loading_handle);
-	priv->end_loading_handle = 0;
-	priv->auto_root = FALSE;
+    /* Disconnect the signal */
+    g_signal_handler_disconnect(store, priv->end_loading_handle);
+    priv->end_loading_handle = 0;
+    priv->auto_root = FALSE;
 }
 
-static void
-prepare_auto_root (BeditFileBrowserPlugin *plugin)
-{
-	BeditFileBrowserPluginPrivate *priv = plugin->priv;
-	BeditFileBrowserStore *store;
+static void prepare_auto_root(BeditFileBrowserPlugin *plugin) {
+    BeditFileBrowserPluginPrivate *priv = plugin->priv;
+    BeditFileBrowserStore *store;
 
-	priv->auto_root = TRUE;
+    priv->auto_root = TRUE;
 
-	store = bedit_file_browser_widget_get_browser_store (priv->tree_widget);
+    store = bedit_file_browser_widget_get_browser_store(priv->tree_widget);
 
-	if (priv->end_loading_handle != 0)
-	{
-		g_signal_handler_disconnect (store, priv->end_loading_handle);
-		priv->end_loading_handle = 0;
-	}
+    if (priv->end_loading_handle != 0) {
+        g_signal_handler_disconnect(store, priv->end_loading_handle);
+        priv->end_loading_handle = 0;
+    }
 
-	priv->end_loading_handle = g_signal_connect (store,
-	                                             "end-loading",
-	                                             G_CALLBACK (on_end_loading_cb),
-	                                             plugin);
+    priv->end_loading_handle = g_signal_connect(
+        store, "end-loading", G_CALLBACK(on_end_loading_cb), plugin);
 }
 
-static void
-restore_default_location (BeditFileBrowserPlugin *plugin)
-{
-	BeditFileBrowserPluginPrivate *priv = plugin->priv;
-	gchar *root;
-	gchar *virtual_root;
-	gboolean bookmarks;
-	gboolean remote;
+static void restore_default_location(BeditFileBrowserPlugin *plugin) {
+    BeditFileBrowserPluginPrivate *priv = plugin->priv;
+    gchar *root;
+    gchar *virtual_root;
+    gboolean bookmarks;
+    gboolean remote;
 
-	bookmarks = !g_settings_get_boolean (priv->settings,
-					     FILEBROWSER_TREE_VIEW);
+    bookmarks = !g_settings_get_boolean(priv->settings, FILEBROWSER_TREE_VIEW);
 
-	if (bookmarks)
-	{
-		bedit_file_browser_widget_show_bookmarks (priv->tree_widget);
-		return;
-	}
+    if (bookmarks) {
+        bedit_file_browser_widget_show_bookmarks(priv->tree_widget);
+        return;
+    }
 
-	root = g_settings_get_string (priv->settings,
-				      FILEBROWSER_ROOT);
-	virtual_root = g_settings_get_string (priv->settings,
-					      FILEBROWSER_VIRTUAL_ROOT);
+    root = g_settings_get_string(priv->settings, FILEBROWSER_ROOT);
+    virtual_root =
+        g_settings_get_string(priv->settings, FILEBROWSER_VIRTUAL_ROOT);
 
-	remote = g_settings_get_boolean (priv->settings,
-					 FILEBROWSER_ENABLE_REMOTE);
+    remote = g_settings_get_boolean(priv->settings, FILEBROWSER_ENABLE_REMOTE);
 
-	if (root != NULL && *root != '\0')
-	{
-		GFile *rootfile;
-		GFile *vrootfile;
+    if (root != NULL && *root != '\0') {
+        GFile *rootfile;
+        GFile *vrootfile;
 
-		rootfile = g_file_new_for_uri (root);
-		vrootfile = g_file_new_for_uri (virtual_root);
+        rootfile = g_file_new_for_uri(root);
+        vrootfile = g_file_new_for_uri(virtual_root);
 
-		if (remote || g_file_is_native (rootfile))
-		{
-			if (virtual_root != NULL && *virtual_root != '\0')
-			{
-				prepare_auto_root (plugin);
-				bedit_file_browser_widget_set_root_and_virtual_root (priv->tree_widget,
-					                                             rootfile,
-					                                             vrootfile);
-			}
-			else
-			{
-				prepare_auto_root (plugin);
-				bedit_file_browser_widget_set_root (priv->tree_widget,
-					                            rootfile,
-					                            TRUE);
-			}
-		}
+        if (remote || g_file_is_native(rootfile)) {
+            if (virtual_root != NULL && *virtual_root != '\0') {
+                prepare_auto_root(plugin);
+                bedit_file_browser_widget_set_root_and_virtual_root(
+                    priv->tree_widget, rootfile, vrootfile);
+            } else {
+                prepare_auto_root(plugin);
+                bedit_file_browser_widget_set_root(
+                    priv->tree_widget, rootfile, TRUE);
+            }
+        }
 
-		g_object_unref (rootfile);
-		g_object_unref (vrootfile);
-	}
+        g_object_unref(rootfile);
+        g_object_unref(vrootfile);
+    }
 
-	g_free (root);
-	g_free (virtual_root);
+    g_free(root);
+    g_free(virtual_root);
 }
 
-static void
-on_click_policy_changed (GSettings              *settings,
-			 const gchar            *key,
-			 BeditFileBrowserPlugin *plugin)
-{
-	BeditFileBrowserPluginPrivate *priv = plugin->priv;
-	BeditFileBrowserViewClickPolicy policy;
-	BeditFileBrowserView *view;
+static void on_click_policy_changed(
+    GSettings *settings, const gchar *key, BeditFileBrowserPlugin *plugin) {
+    BeditFileBrowserPluginPrivate *priv = plugin->priv;
+    BeditFileBrowserViewClickPolicy policy;
+    BeditFileBrowserView *view;
 
-	policy = g_settings_get_enum (settings, key);
+    policy = g_settings_get_enum(settings, key);
 
-	view = bedit_file_browser_widget_get_browser_view (priv->tree_widget);
-	bedit_file_browser_view_set_click_policy (view, policy);
+    view = bedit_file_browser_widget_get_browser_view(priv->tree_widget);
+    bedit_file_browser_view_set_click_policy(view, policy);
 }
 
-static void
-on_confirm_trash_changed (GSettings              *settings,
-		 	  const gchar            *key,
-			  BeditFileBrowserPlugin *plugin)
-{
-	plugin->priv->confirm_trash = g_settings_get_boolean (settings, key);
+static void on_confirm_trash_changed(
+    GSettings *settings, const gchar *key, BeditFileBrowserPlugin *plugin) {
+    plugin->priv->confirm_trash = g_settings_get_boolean(settings, key);
 }
 
-static void
-install_nautilus_prefs (BeditFileBrowserPlugin *plugin)
-{
-	BeditFileBrowserPluginPrivate *priv = plugin->priv;
-	gboolean prefb;
-	BeditFileBrowserViewClickPolicy policy;
-	BeditFileBrowserView *view;
+static void install_nautilus_prefs(BeditFileBrowserPlugin *plugin) {
+    BeditFileBrowserPluginPrivate *priv = plugin->priv;
+    gboolean prefb;
+    BeditFileBrowserViewClickPolicy policy;
+    BeditFileBrowserView *view;
 
-	/* Get click_policy */
-	policy = g_settings_get_enum (priv->nautilus_settings,
-				      NAUTILUS_CLICK_POLICY_KEY);
+    /* Get click_policy */
+    policy =
+        g_settings_get_enum(priv->nautilus_settings, NAUTILUS_CLICK_POLICY_KEY);
 
-	view = bedit_file_browser_widget_get_browser_view (priv->tree_widget);
-	bedit_file_browser_view_set_click_policy (view, policy);
+    view = bedit_file_browser_widget_get_browser_view(priv->tree_widget);
+    bedit_file_browser_view_set_click_policy(view, policy);
 
-	priv->click_policy_handle =
-		g_signal_connect (priv->nautilus_settings,
-				  "changed::" NAUTILUS_CLICK_POLICY_KEY,
-				  G_CALLBACK (on_click_policy_changed),
-				  plugin);
+    priv->click_policy_handle = g_signal_connect(
+        priv->nautilus_settings, "changed::" NAUTILUS_CLICK_POLICY_KEY,
+        G_CALLBACK(on_click_policy_changed), plugin);
 
-	/* Get confirm_trash */
-	prefb = g_settings_get_boolean (priv->nautilus_settings,
-					NAUTILUS_CONFIRM_TRASH_KEY);
+    /* Get confirm_trash */
+    prefb = g_settings_get_boolean(
+        priv->nautilus_settings, NAUTILUS_CONFIRM_TRASH_KEY);
 
-	priv->confirm_trash = prefb;
+    priv->confirm_trash = prefb;
 
-	priv->confirm_trash_handle =
-		g_signal_connect (priv->nautilus_settings,
-				  "changed::" NAUTILUS_CONFIRM_TRASH_KEY,
-				  G_CALLBACK (on_confirm_trash_changed),
-				  plugin);
+    priv->confirm_trash_handle = g_signal_connect(
+        priv->nautilus_settings, "changed::" NAUTILUS_CONFIRM_TRASH_KEY,
+        G_CALLBACK(on_confirm_trash_changed), plugin);
 }
 
-static void
-set_root_from_doc (BeditFileBrowserPlugin *plugin,
-                   BeditDocument          *doc)
-{
-	BeditFileBrowserPluginPrivate *priv = plugin->priv;
-	GtkSourceFile *file;
-	GFile *location;
-	GFile *parent;
+static void set_root_from_doc(
+    BeditFileBrowserPlugin *plugin, BeditDocument *doc) {
+    BeditFileBrowserPluginPrivate *priv = plugin->priv;
+    GtkSourceFile *file;
+    GFile *location;
+    GFile *parent;
 
-	if (doc == NULL)
-	{
-		return;
-	}
+    if (doc == NULL) {
+        return;
+    }
 
-	file = bedit_document_get_file (doc);
-	location = gtk_source_file_get_location (file);
-	if (location == NULL)
-	{
-		return;
-	}
+    file = bedit_document_get_file(doc);
+    location = gtk_source_file_get_location(file);
+    if (location == NULL) {
+        return;
+    }
 
-	parent = g_file_get_parent (location);
+    parent = g_file_get_parent(location);
 
-	if (parent != NULL)
-	{
-		bedit_file_browser_widget_set_root (priv->tree_widget,
-				                    parent,
-				                    TRUE);
+    if (parent != NULL) {
+        bedit_file_browser_widget_set_root(priv->tree_widget, parent, TRUE);
 
-		g_object_unref (parent);
-	}
+        g_object_unref(parent);
+    }
 }
 
-static void
-set_active_root (BeditFileBrowserWidget *widget,
-                 BeditFileBrowserPlugin *plugin)
-{
-	set_root_from_doc (plugin,
-	                   bedit_window_get_active_document (plugin->priv->window));
+static void set_active_root(
+    BeditFileBrowserWidget *widget, BeditFileBrowserPlugin *plugin) {
+    set_root_from_doc(
+        plugin, bedit_window_get_active_document(plugin->priv->window));
 }
 
-static gchar *
-get_terminal (BeditFileBrowserPlugin *plugin)
-{
-	BeditFileBrowserPluginPrivate *priv = plugin->priv;
-	gchar *terminal;
+static gchar *get_terminal(BeditFileBrowserPlugin *plugin) {
+    BeditFileBrowserPluginPrivate *priv = plugin->priv;
+    gchar *terminal;
 
-	terminal = g_settings_get_string (priv->terminal_settings,
-					  TERMINAL_EXEC_KEY);
+    terminal =
+        g_settings_get_string(priv->terminal_settings, TERMINAL_EXEC_KEY);
 
-	if (terminal == NULL)
-	{
-		const gchar *term = g_getenv ("TERM");
+    if (terminal == NULL) {
+        const gchar *term = g_getenv("TERM");
 
-		if (term != NULL)
-			terminal = g_strdup (term);
-		else
-			terminal = g_strdup ("xterm");
-	}
+        if (term != NULL)
+            terminal = g_strdup(term);
+        else
+            terminal = g_strdup("xterm");
+    }
 
-	return terminal;
+    return terminal;
 }
 
-static void
-open_in_terminal (BeditFileBrowserWidget *widget,
-                  GFile                  *location,
-                  BeditFileBrowserPlugin *plugin)
-{
-	if (location)
-	{
-		gchar *terminal;
-		gchar *local;
-		gchar *argv[2];
+static void open_in_terminal(
+    BeditFileBrowserWidget *widget, GFile *location,
+    BeditFileBrowserPlugin *plugin) {
+    if (location) {
+        gchar *terminal;
+        gchar *local;
+        gchar *argv[2];
 
-		terminal = get_terminal (plugin);
-		local = g_file_get_path (location);
+        terminal = get_terminal(plugin);
+        local = g_file_get_path(location);
 
-		argv[0] = terminal;
-		argv[1] = NULL;
+        argv[0] = terminal;
+        argv[1] = NULL;
 
-		g_spawn_async (local,
-			       argv,
-			       NULL,
-			       G_SPAWN_SEARCH_PATH,
-			       NULL,
-			       NULL,
-			       NULL,
-			       NULL);
+        g_spawn_async(
+            local, argv, NULL, G_SPAWN_SEARCH_PATH, NULL, NULL, NULL, NULL);
 
-		g_free (terminal);
-		g_free (local);
-	}
+        g_free(terminal);
+        g_free(local);
+    }
 }
 
-static void
-bedit_file_browser_plugin_update_state (BeditWindowActivatable *activatable)
-{
-	BeditFileBrowserPluginPrivate *priv = GEDIT_FILE_BROWSER_PLUGIN (activatable)->priv;
-	BeditDocument *doc;
+static void bedit_file_browser_plugin_update_state(
+    BeditWindowActivatable *activatable) {
+    BeditFileBrowserPluginPrivate *priv =
+        GEDIT_FILE_BROWSER_PLUGIN(activatable)->priv;
+    BeditDocument *doc;
 
-	doc = bedit_window_get_active_document (priv->window);
-	bedit_file_browser_widget_set_active_root_enabled (priv->tree_widget,
-	                                                   doc != NULL && !bedit_document_is_untitled (doc));
+    doc = bedit_window_get_active_document(priv->window);
+    bedit_file_browser_widget_set_active_root_enabled(
+        priv->tree_widget, doc != NULL && !bedit_document_is_untitled(doc));
 }
 
-static void
-bedit_file_browser_plugin_activate (BeditWindowActivatable *activatable)
-{
-	BeditFileBrowserPlugin *plugin = GEDIT_FILE_BROWSER_PLUGIN (activatable);
-	BeditFileBrowserPluginPrivate *priv;
-	GtkWidget *panel;
-	BeditFileBrowserStore *store;
+static void bedit_file_browser_plugin_activate(
+    BeditWindowActivatable *activatable) {
+    BeditFileBrowserPlugin *plugin = GEDIT_FILE_BROWSER_PLUGIN(activatable);
+    BeditFileBrowserPluginPrivate *priv;
+    GtkWidget *panel;
+    BeditFileBrowserStore *store;
 
-	priv = plugin->priv;
+    priv = plugin->priv;
 
-	priv->tree_widget = GEDIT_FILE_BROWSER_WIDGET (bedit_file_browser_widget_new ());
+    priv->tree_widget =
+        GEDIT_FILE_BROWSER_WIDGET(bedit_file_browser_widget_new());
 
-	g_signal_connect (priv->tree_widget,
-			  "location-activated",
-			  G_CALLBACK (on_location_activated_cb), priv->window);
+    g_signal_connect(
+        priv->tree_widget, "location-activated",
+        G_CALLBACK(on_location_activated_cb), priv->window);
 
-	g_signal_connect (priv->tree_widget,
-			  "error", G_CALLBACK (on_error_cb), plugin);
+    g_signal_connect(
+        priv->tree_widget, "error", G_CALLBACK(on_error_cb), plugin);
 
-	g_signal_connect (priv->tree_widget,
-	                  "confirm-delete",
-	                  G_CALLBACK (on_confirm_delete_cb),
-	                  plugin);
+    g_signal_connect(
+        priv->tree_widget, "confirm-delete", G_CALLBACK(on_confirm_delete_cb),
+        plugin);
 
-	g_signal_connect (priv->tree_widget,
-	                  "confirm-no-trash",
-	                  G_CALLBACK (on_confirm_no_trash_cb),
-	                  priv->window);
+    g_signal_connect(
+        priv->tree_widget, "confirm-no-trash",
+        G_CALLBACK(on_confirm_no_trash_cb), priv->window);
 
-	g_signal_connect (priv->tree_widget,
-	                  "open-in-terminal",
-	                  G_CALLBACK (open_in_terminal),
-	                  plugin);
+    g_signal_connect(
+        priv->tree_widget, "open-in-terminal", G_CALLBACK(open_in_terminal),
+        plugin);
 
-	g_signal_connect (priv->tree_widget,
-	                  "set-active-root",
-	                  G_CALLBACK (set_active_root),
-	                  plugin);
+    g_signal_connect(
+        priv->tree_widget, "set-active-root", G_CALLBACK(set_active_root),
+        plugin);
 
-	g_settings_bind (priv->settings,
-	                 FILEBROWSER_FILTER_PATTERN,
-	                 priv->tree_widget,
-	                 FILEBROWSER_FILTER_PATTERN,
-	                 G_SETTINGS_BIND_GET | G_SETTINGS_BIND_SET);
+    g_settings_bind(
+        priv->settings, FILEBROWSER_FILTER_PATTERN, priv->tree_widget,
+        FILEBROWSER_FILTER_PATTERN, G_SETTINGS_BIND_GET | G_SETTINGS_BIND_SET);
 
-	panel = bedit_window_get_side_panel (priv->window);
+    panel = bedit_window_get_side_panel(priv->window);
 
-	gtk_stack_add_titled (GTK_STACK (panel),
-	                      GTK_WIDGET (priv->tree_widget),
-	                      "BeditFileBrowserPanel",
-	                      _("File Browser"));
+    gtk_stack_add_titled(
+        GTK_STACK(panel), GTK_WIDGET(priv->tree_widget),
+        "BeditFileBrowserPanel", _("File Browser"));
 
-	gtk_widget_show (GTK_WIDGET (priv->tree_widget));
+    gtk_widget_show(GTK_WIDGET(priv->tree_widget));
 
-	/* Install nautilus preferences */
-	install_nautilus_prefs (plugin);
+    /* Install nautilus preferences */
+    install_nautilus_prefs(plugin);
 
-	/* Connect signals to store the last visited location */
-	g_signal_connect (bedit_file_browser_widget_get_browser_view (priv->tree_widget),
-	                  "notify::model",
-	                  G_CALLBACK (on_model_set_cb),
-	                  plugin);
+    /* Connect signals to store the last visited location */
+    g_signal_connect(
+        bedit_file_browser_widget_get_browser_view(priv->tree_widget),
+        "notify::model", G_CALLBACK(on_model_set_cb), plugin);
 
-	store = bedit_file_browser_widget_get_browser_store (priv->tree_widget);
+    store = bedit_file_browser_widget_get_browser_store(priv->tree_widget);
 
-	g_settings_bind (priv->settings,
-	                 FILEBROWSER_FILTER_MODE,
-	                 store,
-	                 FILEBROWSER_FILTER_MODE,
-	                 G_SETTINGS_BIND_GET | G_SETTINGS_BIND_SET);
+    g_settings_bind(
+        priv->settings, FILEBROWSER_FILTER_MODE, store, FILEBROWSER_FILTER_MODE,
+        G_SETTINGS_BIND_GET | G_SETTINGS_BIND_SET);
 
-	g_settings_bind (priv->settings,
-	                 FILEBROWSER_BINARY_PATTERNS,
-	                 store,
-	                 FILEBROWSER_BINARY_PATTERNS,
-	                 G_SETTINGS_BIND_GET | G_SETTINGS_BIND_SET);
+    g_settings_bind(
+        priv->settings, FILEBROWSER_BINARY_PATTERNS, store,
+        FILEBROWSER_BINARY_PATTERNS, G_SETTINGS_BIND_GET | G_SETTINGS_BIND_SET);
 
-	g_signal_connect (store,
-	                  "notify::virtual-root",
-	                  G_CALLBACK (on_virtual_root_changed_cb),
-	                  plugin);
+    g_signal_connect(
+        store, "notify::virtual-root", G_CALLBACK(on_virtual_root_changed_cb),
+        plugin);
 
-	g_signal_connect (store,
-			  "rename",
-			  G_CALLBACK (on_rename_cb),
-			  priv->window);
+    g_signal_connect(store, "rename", G_CALLBACK(on_rename_cb), priv->window);
 
-	g_signal_connect (priv->window,
-	                  "tab-added",
-	                  G_CALLBACK (on_tab_added_cb),
-	                  plugin);
+    g_signal_connect(
+        priv->window, "tab-added", G_CALLBACK(on_tab_added_cb), plugin);
 
-	/* Register messages on the bus */
-	bedit_file_browser_messages_register (priv->window, priv->tree_widget);
+    /* Register messages on the bus */
+    bedit_file_browser_messages_register(priv->window, priv->tree_widget);
 
-	bedit_file_browser_plugin_update_state (activatable);
+    bedit_file_browser_plugin_update_state(activatable);
 }
 
-static void
-bedit_file_browser_plugin_deactivate (BeditWindowActivatable *activatable)
-{
-	BeditFileBrowserPlugin *plugin = GEDIT_FILE_BROWSER_PLUGIN (activatable);
-	BeditFileBrowserPluginPrivate *priv = plugin->priv;
-	GtkWidget *panel;
+static void bedit_file_browser_plugin_deactivate(
+    BeditWindowActivatable *activatable) {
+    BeditFileBrowserPlugin *plugin = GEDIT_FILE_BROWSER_PLUGIN(activatable);
+    BeditFileBrowserPluginPrivate *priv = plugin->priv;
+    GtkWidget *panel;
 
+    /* Unregister messages from the bus */
+    bedit_file_browser_messages_unregister(priv->window);
 
-	/* Unregister messages from the bus */
-	bedit_file_browser_messages_unregister (priv->window);
+    /* Disconnect signals */
+    g_signal_handlers_disconnect_by_func(
+        priv->window, G_CALLBACK(on_tab_added_cb), plugin);
 
-	/* Disconnect signals */
-	g_signal_handlers_disconnect_by_func (priv->window,
-	                                      G_CALLBACK (on_tab_added_cb),
-	                                      plugin);
+    if (priv->click_policy_handle) {
+        g_signal_handler_disconnect(
+            priv->nautilus_settings, priv->click_policy_handle);
+    }
 
-	if (priv->click_policy_handle)
-	{
-		g_signal_handler_disconnect (priv->nautilus_settings,
-					     priv->click_policy_handle);
-	}
+    if (priv->confirm_trash_handle) {
+        g_signal_handler_disconnect(
+            priv->nautilus_settings, priv->confirm_trash_handle);
+    }
 
-	if (priv->confirm_trash_handle)
-	{
-		g_signal_handler_disconnect (priv->nautilus_settings,
-					     priv->confirm_trash_handle);
-	}
-
-	panel = bedit_window_get_side_panel (priv->window);
-	gtk_container_remove (GTK_CONTAINER (panel), GTK_WIDGET (priv->tree_widget));
+    panel = bedit_window_get_side_panel(priv->window);
+    gtk_container_remove(GTK_CONTAINER(panel), GTK_WIDGET(priv->tree_widget));
 }
 
-static void
-bedit_file_browser_plugin_class_init (BeditFileBrowserPluginClass *klass)
-{
-	GObjectClass *object_class = G_OBJECT_CLASS (klass);
+static void bedit_file_browser_plugin_class_init(
+    BeditFileBrowserPluginClass *klass) {
+    GObjectClass *object_class = G_OBJECT_CLASS(klass);
 
-	object_class->dispose = bedit_file_browser_plugin_dispose;
-	object_class->set_property = bedit_file_browser_plugin_set_property;
-	object_class->get_property = bedit_file_browser_plugin_get_property;
+    object_class->dispose = bedit_file_browser_plugin_dispose;
+    object_class->set_property = bedit_file_browser_plugin_set_property;
+    object_class->get_property = bedit_file_browser_plugin_get_property;
 
-	g_object_class_override_property (object_class, PROP_WINDOW, "window");
+    g_object_class_override_property(object_class, PROP_WINDOW, "window");
 }
 
-static void
-bedit_window_activatable_iface_init (BeditWindowActivatableInterface *iface)
-{
-	iface->activate = bedit_file_browser_plugin_activate;
-	iface->deactivate = bedit_file_browser_plugin_deactivate;
-	iface->update_state = bedit_file_browser_plugin_update_state;
+static void bedit_window_activatable_iface_init(
+    BeditWindowActivatableInterface *iface) {
+    iface->activate = bedit_file_browser_plugin_activate;
+    iface->deactivate = bedit_file_browser_plugin_deactivate;
+    iface->update_state = bedit_file_browser_plugin_update_state;
 }
 
-static void
-bedit_file_browser_plugin_class_finalize (BeditFileBrowserPluginClass *klass)
-{
-}
+static void bedit_file_browser_plugin_class_finalize(
+    BeditFileBrowserPluginClass *klass) {}
 
 /* Callbacks */
-static void
-on_location_activated_cb (BeditFileBrowserWidget *tree_widget,
-		          GFile                  *location,
-		          BeditWindow            *window)
-{
-	bedit_commands_load_location (window, location, NULL, 0, 0);
+static void on_location_activated_cb(
+    BeditFileBrowserWidget *tree_widget, GFile *location, BeditWindow *window) {
+    bedit_commands_load_location(window, location, NULL, 0, 0);
 }
 
-static void
-on_error_cb (BeditFileBrowserWidget *tree_widget,
-	     guint                   code,
-	     gchar const            *message,
-	     BeditFileBrowserPlugin *plugin)
-{
-	BeditFileBrowserPluginPrivate *priv = plugin->priv;
-	gchar *title;
-	GtkWidget *dlg;
+static void on_error_cb(
+    BeditFileBrowserWidget *tree_widget, guint code, gchar const *message,
+    BeditFileBrowserPlugin *plugin) {
+    BeditFileBrowserPluginPrivate *priv = plugin->priv;
+    gchar *title;
+    GtkWidget *dlg;
 
-	/* Do not show the error when the root has been set automatically */
-	if (priv->auto_root && (code == GEDIT_FILE_BROWSER_ERROR_SET_ROOT ||
-	                          code == GEDIT_FILE_BROWSER_ERROR_LOAD_DIRECTORY))
-	{
-		/* Show bookmarks */
-		bedit_file_browser_widget_show_bookmarks (priv->tree_widget);
-		return;
-	}
+    /* Do not show the error when the root has been set automatically */
+    if (priv->auto_root &&
+        (code == GEDIT_FILE_BROWSER_ERROR_SET_ROOT ||
+         code == GEDIT_FILE_BROWSER_ERROR_LOAD_DIRECTORY)) {
+        /* Show bookmarks */
+        bedit_file_browser_widget_show_bookmarks(priv->tree_widget);
+        return;
+    }
 
-	switch (code)
-	{
-		case GEDIT_FILE_BROWSER_ERROR_NEW_DIRECTORY:
-			title = _("An error occurred while creating a new directory");
-			break;
-		case GEDIT_FILE_BROWSER_ERROR_NEW_FILE:
-			title = _("An error occurred while creating a new file");
-			break;
-		case GEDIT_FILE_BROWSER_ERROR_RENAME:
-			title = _("An error occurred while renaming a file or directory");
-			break;
-		case GEDIT_FILE_BROWSER_ERROR_DELETE:
-			title = _("An error occurred while deleting a file or directory");
-			break;
-		case GEDIT_FILE_BROWSER_ERROR_OPEN_DIRECTORY:
-			title = _("An error occurred while opening a directory in the file manager");
-			break;
-		case GEDIT_FILE_BROWSER_ERROR_SET_ROOT:
-			title = _("An error occurred while setting a root directory");
-			break;
-		case GEDIT_FILE_BROWSER_ERROR_LOAD_DIRECTORY:
-			title = _("An error occurred while loading a directory");
-			break;
-		default:
-			title = _("An error occurred");
-			break;
-	}
+    switch (code) {
+    case GEDIT_FILE_BROWSER_ERROR_NEW_DIRECTORY:
+        title = _("An error occurred while creating a new directory");
+        break;
+    case GEDIT_FILE_BROWSER_ERROR_NEW_FILE:
+        title = _("An error occurred while creating a new file");
+        break;
+    case GEDIT_FILE_BROWSER_ERROR_RENAME:
+        title = _("An error occurred while renaming a file or directory");
+        break;
+    case GEDIT_FILE_BROWSER_ERROR_DELETE:
+        title = _("An error occurred while deleting a file or directory");
+        break;
+    case GEDIT_FILE_BROWSER_ERROR_OPEN_DIRECTORY:
+        title = _(
+            "An error occurred while opening a directory in the file manager");
+        break;
+    case GEDIT_FILE_BROWSER_ERROR_SET_ROOT:
+        title = _("An error occurred while setting a root directory");
+        break;
+    case GEDIT_FILE_BROWSER_ERROR_LOAD_DIRECTORY:
+        title = _("An error occurred while loading a directory");
+        break;
+    default:
+        title = _("An error occurred");
+        break;
+    }
 
-	dlg = gtk_message_dialog_new (GTK_WINDOW (priv->window),
-				      GTK_DIALOG_MODAL |
-				      GTK_DIALOG_DESTROY_WITH_PARENT,
-				      GTK_MESSAGE_ERROR, GTK_BUTTONS_OK,
-				      "%s", title);
-	gtk_message_dialog_format_secondary_text (GTK_MESSAGE_DIALOG (dlg),
-						  "%s", message);
+    dlg = gtk_message_dialog_new(
+        GTK_WINDOW(priv->window),
+        GTK_DIALOG_MODAL | GTK_DIALOG_DESTROY_WITH_PARENT, GTK_MESSAGE_ERROR,
+        GTK_BUTTONS_OK, "%s", title);
+    gtk_message_dialog_format_secondary_text(
+        GTK_MESSAGE_DIALOG(dlg), "%s", message);
 
-	gtk_dialog_run (GTK_DIALOG (dlg));
-	gtk_widget_destroy (dlg);
+    gtk_dialog_run(GTK_DIALOG(dlg));
+    gtk_widget_destroy(dlg);
 }
 
-static void
-on_model_set_cb (BeditFileBrowserView   *widget,
-                 GParamSpec             *param,
-                 BeditFileBrowserPlugin *plugin)
-{
-	BeditFileBrowserPluginPrivate *priv = plugin->priv;
-	GtkTreeModel *model;
+static void on_model_set_cb(
+    BeditFileBrowserView *widget, GParamSpec *param,
+    BeditFileBrowserPlugin *plugin) {
+    BeditFileBrowserPluginPrivate *priv = plugin->priv;
+    GtkTreeModel *model;
 
-	model = gtk_tree_view_get_model (GTK_TREE_VIEW (bedit_file_browser_widget_get_browser_view (priv->tree_widget)));
+    model = gtk_tree_view_get_model(GTK_TREE_VIEW(
+        bedit_file_browser_widget_get_browser_view(priv->tree_widget)));
 
-	if (model == NULL)
-		return;
+    if (model == NULL)
+        return;
 
-	g_settings_set_boolean (priv->settings,
-	                        FILEBROWSER_TREE_VIEW,
-	                        GEDIT_IS_FILE_BROWSER_STORE (model));
+    g_settings_set_boolean(
+        priv->settings, FILEBROWSER_TREE_VIEW,
+        GEDIT_IS_FILE_BROWSER_STORE(model));
 }
 
-static void
-on_rename_cb (BeditFileBrowserStore *store,
-	      GFile                 *oldfile,
-	      GFile                 *newfile,
-	      BeditWindow           *window)
-{
-	GList *documents;
-	GList *item;
+static void on_rename_cb(
+    BeditFileBrowserStore *store, GFile *oldfile, GFile *newfile,
+    BeditWindow *window) {
+    GList *documents;
+    GList *item;
 
-	/* Find all documents and set its uri to newuri where it matches olduri */
-	documents = bedit_app_get_documents (GEDIT_APP (g_application_get_default ()));
+    /* Find all documents and set its uri to newuri where it matches olduri */
+    documents = bedit_app_get_documents(GEDIT_APP(g_application_get_default()));
 
-	for (item = documents; item; item = item->next)
-	{
-		BeditDocument *doc;
-		GtkSourceFile *source_file;
-		GFile *docfile;
+    for (item = documents; item; item = item->next) {
+        BeditDocument *doc;
+        GtkSourceFile *source_file;
+        GFile *docfile;
 
-		doc = GEDIT_DOCUMENT (item->data);
-		source_file = bedit_document_get_file (doc);
-		docfile = gtk_source_file_get_location (source_file);
+        doc = GEDIT_DOCUMENT(item->data);
+        source_file = bedit_document_get_file(doc);
+        docfile = gtk_source_file_get_location(source_file);
 
-		if (docfile == NULL)
-		{
-			continue;
-		}
+        if (docfile == NULL) {
+            continue;
+        }
 
-		if (g_file_equal (docfile, oldfile))
-		{
-			gtk_source_file_set_location (source_file, newfile);
-		}
-		else
-		{
-			gchar *relative;
+        if (g_file_equal(docfile, oldfile)) {
+            gtk_source_file_set_location(source_file, newfile);
+        } else {
+            gchar *relative;
 
-			relative = g_file_get_relative_path (oldfile, docfile);
+            relative = g_file_get_relative_path(oldfile, docfile);
 
-			if (relative != NULL)
-			{
-				/* Relative now contains the part in docfile without
-				   the prefix oldfile */
+            if (relative != NULL) {
+                /* Relative now contains the part in docfile without
+                   the prefix oldfile */
 
-				docfile = g_file_get_child (newfile, relative);
+                docfile = g_file_get_child(newfile, relative);
 
-				gtk_source_file_set_location (source_file, docfile);
+                gtk_source_file_set_location(source_file, docfile);
 
-				g_object_unref (docfile);
-			}
+                g_object_unref(docfile);
+            }
 
-			g_free (relative);
-		}
-	}
+            g_free(relative);
+        }
+    }
 
-	g_list_free (documents);
+    g_list_free(documents);
 }
 
-static void
-on_virtual_root_changed_cb (BeditFileBrowserStore  *store,
-                            GParamSpec             *param,
-                            BeditFileBrowserPlugin *plugin)
-{
-	BeditFileBrowserPluginPrivate *priv = plugin->priv;
-	GFile *root;
-	GFile *virtual_root;
-	gchar *uri_root = NULL;
+static void on_virtual_root_changed_cb(
+    BeditFileBrowserStore *store, GParamSpec *param,
+    BeditFileBrowserPlugin *plugin) {
+    BeditFileBrowserPluginPrivate *priv = plugin->priv;
+    GFile *root;
+    GFile *virtual_root;
+    gchar *uri_root = NULL;
 
-	root = bedit_file_browser_store_get_root (store);
+    root = bedit_file_browser_store_get_root(store);
 
-	if (!root)
-	{
-		return;
-	}
-	else
-	{
-		uri_root = g_file_get_uri (root);
-		g_object_unref (root);
-	}
+    if (!root) {
+        return;
+    } else {
+        uri_root = g_file_get_uri(root);
+        g_object_unref(root);
+    }
 
-	g_settings_set_string (priv->settings,
-	                       FILEBROWSER_ROOT,
-	                       uri_root);
+    g_settings_set_string(priv->settings, FILEBROWSER_ROOT, uri_root);
 
-	virtual_root = bedit_file_browser_store_get_virtual_root (store);
+    virtual_root = bedit_file_browser_store_get_virtual_root(store);
 
-	if (!virtual_root)
-	{
-		/* Set virtual to same as root then */
-		g_settings_set_string (priv->settings,
-		                       FILEBROWSER_VIRTUAL_ROOT,
-		                       uri_root);
-	}
-	else
-	{
-		gchar *uri_vroot;
+    if (!virtual_root) {
+        /* Set virtual to same as root then */
+        g_settings_set_string(
+            priv->settings, FILEBROWSER_VIRTUAL_ROOT, uri_root);
+    } else {
+        gchar *uri_vroot;
 
-		uri_vroot = g_file_get_uri (virtual_root);
+        uri_vroot = g_file_get_uri(virtual_root);
 
-		g_settings_set_string (priv->settings,
-		                       FILEBROWSER_VIRTUAL_ROOT,
-		                       uri_vroot);
-		g_free (uri_vroot);
-		g_object_unref (virtual_root);
-	}
+        g_settings_set_string(
+            priv->settings, FILEBROWSER_VIRTUAL_ROOT, uri_vroot);
+        g_free(uri_vroot);
+        g_object_unref(virtual_root);
+    }
 
-	g_signal_handlers_disconnect_by_func (priv->window,
-	                                      G_CALLBACK (on_tab_added_cb),
-	                                      plugin);
-	g_free (uri_root);
+    g_signal_handlers_disconnect_by_func(
+        priv->window, G_CALLBACK(on_tab_added_cb), plugin);
+    g_free(uri_root);
 }
 
-static void
-on_tab_added_cb (BeditWindow            *window,
-                 BeditTab               *tab,
-                 BeditFileBrowserPlugin *plugin)
-{
-	BeditFileBrowserPluginPrivate *priv = plugin->priv;
-	gboolean open;
-	gboolean load_default = TRUE;
+static void on_tab_added_cb(
+    BeditWindow *window, BeditTab *tab, BeditFileBrowserPlugin *plugin) {
+    BeditFileBrowserPluginPrivate *priv = plugin->priv;
+    gboolean open;
+    gboolean load_default = TRUE;
 
-	open = g_settings_get_boolean (priv->settings,
-	                               FILEBROWSER_OPEN_AT_FIRST_DOC);
+    open =
+        g_settings_get_boolean(priv->settings, FILEBROWSER_OPEN_AT_FIRST_DOC);
 
-	if (open)
-	{
-		BeditDocument *doc;
-		GtkSourceFile *file;
-		GFile *location;
+    if (open) {
+        BeditDocument *doc;
+        GtkSourceFile *file;
+        GFile *location;
 
-		doc = bedit_tab_get_document (tab);
-		file = bedit_document_get_file (doc);
-		location = gtk_source_file_get_location (file);
+        doc = bedit_tab_get_document(tab);
+        file = bedit_document_get_file(doc);
+        location = gtk_source_file_get_location(file);
 
-		if (location != NULL)
-		{
-			if (g_file_has_uri_scheme (location, "file"))
-			{
-				prepare_auto_root (plugin);
-				set_root_from_doc (plugin, doc);
-				load_default = FALSE;
-			}
-		}
-	}
+        if (location != NULL) {
+            if (g_file_has_uri_scheme(location, "file")) {
+                prepare_auto_root(plugin);
+                set_root_from_doc(plugin, doc);
+                load_default = FALSE;
+            }
+        }
+    }
 
-	if (load_default)
-		restore_default_location (plugin);
+    if (load_default)
+        restore_default_location(plugin);
 
-	/* Disconnect this signal, it's only called once */
-	g_signal_handlers_disconnect_by_func (window,
-	                                      G_CALLBACK (on_tab_added_cb),
-	                                      plugin);
+    /* Disconnect this signal, it's only called once */
+    g_signal_handlers_disconnect_by_func(
+        window, G_CALLBACK(on_tab_added_cb), plugin);
 }
 
-static gchar *
-get_filename_from_path (GtkTreeModel *model,
-			GtkTreePath  *path)
-{
-	GtkTreeIter iter;
-	GFile *location;
-	gchar *ret = NULL;
+static gchar *get_filename_from_path(GtkTreeModel *model, GtkTreePath *path) {
+    GtkTreeIter iter;
+    GFile *location;
+    gchar *ret = NULL;
 
-	if (!gtk_tree_model_get_iter (model, &iter, path))
-	{
-		return NULL;
-	}
+    if (!gtk_tree_model_get_iter(model, &iter, path)) {
+        return NULL;
+    }
 
-	gtk_tree_model_get (model, &iter,
-			    GEDIT_FILE_BROWSER_STORE_COLUMN_LOCATION, &location,
-			    -1);
+    gtk_tree_model_get(
+        model, &iter, GEDIT_FILE_BROWSER_STORE_COLUMN_LOCATION, &location, -1);
 
-	if (location)
-	{
-		ret = bedit_file_browser_utils_file_basename (location);
-		g_object_unref (location);
-	}
+    if (location) {
+        ret = bedit_file_browser_utils_file_basename(location);
+        g_object_unref(location);
+    }
 
-	return ret;
+    return ret;
 }
 
-static gboolean
-on_confirm_no_trash_cb (BeditFileBrowserWidget *widget,
-                        GList                  *files,
-                        BeditWindow            *window)
-{
-	gchar *normal;
-	gchar *message;
-	gchar *secondary;
-	gboolean result;
+static gboolean on_confirm_no_trash_cb(
+    BeditFileBrowserWidget *widget, GList *files, BeditWindow *window) {
+    gchar *normal;
+    gchar *message;
+    gchar *secondary;
+    gboolean result;
 
-	message = _("Cannot move file to trash, do you\nwant to delete permanently?");
+    message =
+        _("Cannot move file to trash, do you\nwant to delete permanently?");
 
-	if (files->next == NULL)
-	{
-		normal = bedit_file_browser_utils_file_basename (G_FILE (files->data));
-	    	secondary = g_strdup_printf (_("The file “%s” cannot be moved to the trash."), normal);
-		g_free (normal);
-	}
-	else
-	{
-		secondary = g_strdup (_("The selected files cannot be moved to the trash."));
-	}
+    if (files->next == NULL) {
+        normal = bedit_file_browser_utils_file_basename(G_FILE(files->data));
+        secondary = g_strdup_printf(
+            _("The file “%s” cannot be moved to the trash."), normal);
+        g_free(normal);
+    } else {
+        secondary =
+            g_strdup(_("The selected files cannot be moved to the trash."));
+    }
 
-	result = bedit_file_browser_utils_confirmation_dialog (window,
-	                                                       GTK_MESSAGE_QUESTION,
-	                                                       message,
-	                                                       secondary,
-	                                                       _("_Delete"));
-	g_free (secondary);
+    result = bedit_file_browser_utils_confirmation_dialog(
+        window, GTK_MESSAGE_QUESTION, message, secondary, _("_Delete"));
+    g_free(secondary);
 
-	return result;
+    return result;
 }
 
-static gboolean
-on_confirm_delete_cb (BeditFileBrowserWidget *widget,
-                      BeditFileBrowserStore  *store,
-                      GList                  *paths,
-                      BeditFileBrowserPlugin *plugin)
-{
-	BeditFileBrowserPluginPrivate *priv = plugin->priv;
-	gchar *normal;
-	gchar *message;
-	gchar *secondary;
-	gboolean result;
+static gboolean on_confirm_delete_cb(
+    BeditFileBrowserWidget *widget, BeditFileBrowserStore *store, GList *paths,
+    BeditFileBrowserPlugin *plugin) {
+    BeditFileBrowserPluginPrivate *priv = plugin->priv;
+    gchar *normal;
+    gchar *message;
+    gchar *secondary;
+    gboolean result;
 
-	if (!priv->confirm_trash)
-		return TRUE;
+    if (!priv->confirm_trash)
+        return TRUE;
 
-	if (paths->next == NULL)
-	{
-		normal = get_filename_from_path (GTK_TREE_MODEL (store), (GtkTreePath *)(paths->data));
-		message = g_strdup_printf (_("Are you sure you want to permanently delete “%s”?"), normal);
-		g_free (normal);
-	}
-	else
-	{
-		message = g_strdup (_("Are you sure you want to permanently delete the selected files?"));
-	}
+    if (paths->next == NULL) {
+        normal = get_filename_from_path(
+            GTK_TREE_MODEL(store), (GtkTreePath *)(paths->data));
+        message = g_strdup_printf(
+            _("Are you sure you want to permanently delete “%s”?"), normal);
+        g_free(normal);
+    } else {
+        message = g_strdup(_(
+            "Are you sure you want to permanently delete the selected files?"));
+    }
 
-	secondary = _("If you delete an item, it is permanently lost.");
+    secondary = _("If you delete an item, it is permanently lost.");
 
-	result = bedit_file_browser_utils_confirmation_dialog (priv->window,
-	                                                       GTK_MESSAGE_QUESTION,
-	                                                       message,
-	                                                       secondary,
-	                                                       _("_Delete"));
+    result = bedit_file_browser_utils_confirmation_dialog(
+        priv->window, GTK_MESSAGE_QUESTION, message, secondary, _("_Delete"));
 
-	g_free (message);
+    g_free(message);
 
-	return result;
+    return result;
 }
 
-G_MODULE_EXPORT void
-peas_register_types (PeasObjectModule *module)
-{
-	bedit_file_browser_plugin_register_type (G_TYPE_MODULE (module));
+G_MODULE_EXPORT void peas_register_types(PeasObjectModule *module) {
+    bedit_file_browser_plugin_register_type(G_TYPE_MODULE(module));
 
-	peas_object_module_register_extension_type (module,
-						    GEDIT_TYPE_WINDOW_ACTIVATABLE,
-						    GEDIT_TYPE_FILE_BROWSER_PLUGIN);
+    peas_object_module_register_extension_type(
+        module, GEDIT_TYPE_WINDOW_ACTIVATABLE, GEDIT_TYPE_FILE_BROWSER_PLUGIN);
 }
 
 /* ex:set ts=8 noet: */

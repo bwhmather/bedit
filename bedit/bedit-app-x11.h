@@ -27,9 +27,9 @@
 
 G_BEGIN_DECLS
 
-#define GEDIT_TYPE_APP_X11		(bedit_app_x11_get_type ())
+#define GEDIT_TYPE_APP_X11 (bedit_app_x11_get_type())
 
-G_DECLARE_FINAL_TYPE (BeditAppX11, bedit_app_x11, GEDIT, APP_X11, BeditApp)
+G_DECLARE_FINAL_TYPE(BeditAppX11, bedit_app_x11, GEDIT, APP_X11, BeditApp)
 
 G_END_DECLS
 

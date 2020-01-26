@@ -20,144 +20,123 @@
 
 #include "bedit-status-menu-button.h"
 
-struct _BeditStatusMenuButton
-{
-	GtkMenuButton parent_instance;
+struct _BeditStatusMenuButton {
+    GtkMenuButton parent_instance;
 
-	GtkWidget *label;
+    GtkWidget *label;
 };
 
-typedef struct
-{
-	GtkCssProvider *css;
+typedef struct {
+    GtkCssProvider *css;
 } BeditStatusMenuButtonClassPrivate;
 
-enum
-{
-	PROP_0,
-	PROP_LABEL,
-	LAST_PROP
-};
+enum { PROP_0, PROP_LABEL, LAST_PROP };
 
-G_DEFINE_TYPE_WITH_CODE (BeditStatusMenuButton,
-			 bedit_status_menu_button,
-			 GTK_TYPE_MENU_BUTTON,
-			 g_type_add_class_private (g_define_type_id, sizeof (BeditStatusMenuButtonClassPrivate)))
+G_DEFINE_TYPE_WITH_CODE(
+    BeditStatusMenuButton, bedit_status_menu_button, GTK_TYPE_MENU_BUTTON,
+    g_type_add_class_private(
+        g_define_type_id, sizeof(BeditStatusMenuButtonClassPrivate)))
 
-static void
-bedit_status_menu_button_get_property (GObject    *object,
-				       guint       prop_id,
-				       GValue     *value,
-				       GParamSpec *pspec)
-{
-	BeditStatusMenuButton *obj = GEDIT_STATUS_MENU_BUTTON (object);
+static void bedit_status_menu_button_get_property(
+    GObject *object, guint prop_id, GValue *value, GParamSpec *pspec) {
+    BeditStatusMenuButton *obj = GEDIT_STATUS_MENU_BUTTON(object);
 
-	switch (prop_id)
-	{
-		case PROP_LABEL:
-			g_value_set_string (value, bedit_status_menu_button_get_label (obj));
-			break;
-		default:
-			G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
-			break;
-	}
+    switch (prop_id) {
+    case PROP_LABEL:
+        g_value_set_string(value, bedit_status_menu_button_get_label(obj));
+        break;
+    default:
+        G_OBJECT_WARN_INVALID_PROPERTY_ID(object, prop_id, pspec);
+        break;
+    }
 }
 
-static void
-bedit_status_menu_button_set_property (GObject      *object,
-				       guint         prop_id,
-				       const GValue *value,
-				       GParamSpec   *pspec)
-{
-	BeditStatusMenuButton *obj = GEDIT_STATUS_MENU_BUTTON (object);
+static void bedit_status_menu_button_set_property(
+    GObject *object, guint prop_id, const GValue *value, GParamSpec *pspec) {
+    BeditStatusMenuButton *obj = GEDIT_STATUS_MENU_BUTTON(object);
 
-	switch (prop_id)
-	{
-		case PROP_LABEL:
-			bedit_status_menu_button_set_label (obj, g_value_get_string (value));
-			break;
-		default:
-			G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
-			break;
-	}
+    switch (prop_id) {
+    case PROP_LABEL:
+        bedit_status_menu_button_set_label(obj, g_value_get_string(value));
+        break;
+    default:
+        G_OBJECT_WARN_INVALID_PROPERTY_ID(object, prop_id, pspec);
+        break;
+    }
 }
 
-static void
-bedit_status_menu_button_class_init (BeditStatusMenuButtonClass *klass)
-{
-	static const gchar style[] =
-		"* {\n"
-		  "padding: 1px 8px 2px 4px;\n"
-		  "border: 0;\n"
-		  "outline-width: 0;\n"
-		"}";
+static void bedit_status_menu_button_class_init(
+    BeditStatusMenuButtonClass *klass) {
+    static const gchar style[] =
+        "* {\n"
+        "padding: 1px 8px 2px 4px;\n"
+        "border: 0;\n"
+        "outline-width: 0;\n"
+        "}";
 
-	GObjectClass *object_class = G_OBJECT_CLASS (klass);
-	GtkWidgetClass *widget_class = GTK_WIDGET_CLASS (klass);
-	BeditStatusMenuButtonClassPrivate *class_priv;
+    GObjectClass *object_class = G_OBJECT_CLASS(klass);
+    GtkWidgetClass *widget_class = GTK_WIDGET_CLASS(klass);
+    BeditStatusMenuButtonClassPrivate *class_priv;
 
-	object_class->get_property = bedit_status_menu_button_get_property;
-	object_class->set_property = bedit_status_menu_button_set_property;
+    object_class->get_property = bedit_status_menu_button_get_property;
+    object_class->set_property = bedit_status_menu_button_set_property;
 
-	g_object_class_override_property (object_class, PROP_LABEL, "label");
+    g_object_class_override_property(object_class, PROP_LABEL, "label");
 
-	/* Bind class to template */
-	gtk_widget_class_set_template_from_resource (widget_class,
-	                                             "/com/bwhmather/bedit/ui/bedit-status-menu-button.ui");
-	gtk_widget_class_bind_template_child_internal (widget_class, BeditStatusMenuButton, label);
+    /* Bind class to template */
+    gtk_widget_class_set_template_from_resource(
+        widget_class, "/com/bwhmather/bedit/ui/bedit-status-menu-button.ui");
+    gtk_widget_class_bind_template_child_internal(
+        widget_class, BeditStatusMenuButton, label);
 
-	/* Store the CSS provider in the class private data so it is shared among all instances */
-	class_priv = G_TYPE_CLASS_GET_PRIVATE (klass, GEDIT_TYPE_STATUS_MENU_BUTTON, BeditStatusMenuButtonClassPrivate);
-	class_priv->css = gtk_css_provider_new ();
-	gtk_css_provider_load_from_data (class_priv->css, style, -1, NULL);
+    /* Store the CSS provider in the class private data so it is shared among
+     * all instances */
+    class_priv = G_TYPE_CLASS_GET_PRIVATE(
+        klass, GEDIT_TYPE_STATUS_MENU_BUTTON,
+        BeditStatusMenuButtonClassPrivate);
+    class_priv->css = gtk_css_provider_new();
+    gtk_css_provider_load_from_data(class_priv->css, style, -1, NULL);
 }
 
-static void
-bedit_status_menu_button_init (BeditStatusMenuButton *self)
-{
-	GtkStyleContext *context;
-	BeditStatusMenuButtonClassPrivate *class_priv;
+static void bedit_status_menu_button_init(BeditStatusMenuButton *self) {
+    GtkStyleContext *context;
+    BeditStatusMenuButtonClassPrivate *class_priv;
 
-	gtk_widget_init_template (GTK_WIDGET (self));
+    gtk_widget_init_template(GTK_WIDGET(self));
 
-	/* make it as small as possible */
-	context = gtk_widget_get_style_context (GTK_WIDGET (self));
-	class_priv = G_TYPE_CLASS_GET_PRIVATE (G_TYPE_INSTANCE_GET_CLASS (self, GEDIT_TYPE_STATUS_MENU_BUTTON, BeditStatusMenuButtonClass),
-	                                       GEDIT_TYPE_STATUS_MENU_BUTTON,
-	                                       BeditStatusMenuButtonClassPrivate);
-	gtk_style_context_add_provider (context,
-	                                GTK_STYLE_PROVIDER (class_priv->css),
-	                                GTK_STYLE_PROVIDER_PRIORITY_APPLICATION);
+    /* make it as small as possible */
+    context = gtk_widget_get_style_context(GTK_WIDGET(self));
+    class_priv = G_TYPE_CLASS_GET_PRIVATE(
+        G_TYPE_INSTANCE_GET_CLASS(
+            self, GEDIT_TYPE_STATUS_MENU_BUTTON, BeditStatusMenuButtonClass),
+        GEDIT_TYPE_STATUS_MENU_BUTTON, BeditStatusMenuButtonClassPrivate);
+    gtk_style_context_add_provider(
+        context, GTK_STYLE_PROVIDER(class_priv->css),
+        GTK_STYLE_PROVIDER_PRIORITY_APPLICATION);
 }
 
 /**
  * bedit_status_menu_button_new:
  * @label: (allow-none):
  */
-GtkWidget *
-bedit_status_menu_button_new (void)
-{
-	return g_object_new (GEDIT_TYPE_STATUS_MENU_BUTTON, NULL);
+GtkWidget *bedit_status_menu_button_new(void) {
+    return g_object_new(GEDIT_TYPE_STATUS_MENU_BUTTON, NULL);
 }
 
 /* we cannot rely on gtk_button_set_label since it manually replaces
  * the internal child instead of just setting the property :( */
 
-void
-bedit_status_menu_button_set_label (BeditStatusMenuButton *button,
-                                    const gchar           *label)
-{
-	g_return_if_fail (GEDIT_IS_STATUS_MENU_BUTTON (button));
+void bedit_status_menu_button_set_label(
+    BeditStatusMenuButton *button, const gchar *label) {
+    g_return_if_fail(GEDIT_IS_STATUS_MENU_BUTTON(button));
 
-	gtk_label_set_markup (GTK_LABEL (button->label), label);
+    gtk_label_set_markup(GTK_LABEL(button->label), label);
 }
 
-const gchar *
-bedit_status_menu_button_get_label (BeditStatusMenuButton *button)
-{
-	g_return_val_if_fail (GEDIT_IS_STATUS_MENU_BUTTON (button), NULL);
+const gchar *bedit_status_menu_button_get_label(BeditStatusMenuButton *button) {
+    g_return_val_if_fail(GEDIT_IS_STATUS_MENU_BUTTON(button), NULL);
 
-	return gtk_label_get_label (GTK_LABEL (button->label));
+    return gtk_label_get_label(GTK_LABEL(button->label));
 }
 
 /* ex:set ts=8 noet: */

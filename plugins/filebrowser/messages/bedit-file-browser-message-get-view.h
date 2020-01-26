@@ -28,41 +28,47 @@
 
 G_BEGIN_DECLS
 
-#define GEDIT_TYPE_FILE_BROWSER_MESSAGE_GET_VIEW            (bedit_file_browser_message_get_view_get_type ())
-#define GEDIT_FILE_BROWSER_MESSAGE_GET_VIEW(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj),\
-                                                             GEDIT_TYPE_FILE_BROWSER_MESSAGE_GET_VIEW,\
-                                                             BeditFileBrowserMessageGetView))
-#define GEDIT_FILE_BROWSER_MESSAGE_GET_VIEW_CONST(obj)      (G_TYPE_CHECK_INSTANCE_CAST ((obj),\
-                                                             GEDIT_TYPE_FILE_BROWSER_MESSAGE_GET_VIEW,\
-                                                             BeditFileBrowserMessageGetView const))
-#define GEDIT_FILE_BROWSER_MESSAGE_GET_VIEW_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass),\
-                                                             GEDIT_TYPE_FILE_BROWSER_MESSAGE_GET_VIEW,\
-                                                             BeditFileBrowserMessageGetViewClass))
-#define GEDIT_IS_FILE_BROWSER_MESSAGE_GET_VIEW(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj),\
-                                                             GEDIT_TYPE_FILE_BROWSER_MESSAGE_GET_VIEW))
-#define GEDIT_IS_FILE_BROWSER_MESSAGE_GET_VIEW_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass),\
-                                                             GEDIT_TYPE_FILE_BROWSER_MESSAGE_GET_VIEW))
-#define GEDIT_FILE_BROWSER_MESSAGE_GET_VIEW_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj),\
-                                                             GEDIT_TYPE_FILE_BROWSER_MESSAGE_GET_VIEW,\
-                                                             BeditFileBrowserMessageGetViewClass))
+#define GEDIT_TYPE_FILE_BROWSER_MESSAGE_GET_VIEW                               \
+    (bedit_file_browser_message_get_view_get_type())
+#define GEDIT_FILE_BROWSER_MESSAGE_GET_VIEW(obj)                               \
+    (G_TYPE_CHECK_INSTANCE_CAST(                                               \
+        (obj), GEDIT_TYPE_FILE_BROWSER_MESSAGE_GET_VIEW,                       \
+        BeditFileBrowserMessageGetView))
+#define GEDIT_FILE_BROWSER_MESSAGE_GET_VIEW_CONST(obj)                         \
+    (G_TYPE_CHECK_INSTANCE_CAST(                                               \
+        (obj), GEDIT_TYPE_FILE_BROWSER_MESSAGE_GET_VIEW,                       \
+        BeditFileBrowserMessageGetView const))
+#define GEDIT_FILE_BROWSER_MESSAGE_GET_VIEW_CLASS(klass)                       \
+    (G_TYPE_CHECK_CLASS_CAST(                                                  \
+        (klass), GEDIT_TYPE_FILE_BROWSER_MESSAGE_GET_VIEW,                     \
+        BeditFileBrowserMessageGetViewClass))
+#define GEDIT_IS_FILE_BROWSER_MESSAGE_GET_VIEW(obj)                            \
+    (G_TYPE_CHECK_INSTANCE_TYPE(                                               \
+        (obj), GEDIT_TYPE_FILE_BROWSER_MESSAGE_GET_VIEW))
+#define GEDIT_IS_FILE_BROWSER_MESSAGE_GET_VIEW_CLASS(klass)                    \
+    (G_TYPE_CHECK_CLASS_TYPE((klass), GEDIT_TYPE_FILE_BROWSER_MESSAGE_GET_VIEW))
+#define GEDIT_FILE_BROWSER_MESSAGE_GET_VIEW_GET_CLASS(obj)                     \
+    (G_TYPE_INSTANCE_GET_CLASS(                                                \
+        (obj), GEDIT_TYPE_FILE_BROWSER_MESSAGE_GET_VIEW,                       \
+        BeditFileBrowserMessageGetViewClass))
 
-typedef struct _BeditFileBrowserMessageGetView        BeditFileBrowserMessageGetView;
-typedef struct _BeditFileBrowserMessageGetViewClass   BeditFileBrowserMessageGetViewClass;
-typedef struct _BeditFileBrowserMessageGetViewPrivate BeditFileBrowserMessageGetViewPrivate;
+typedef struct _BeditFileBrowserMessageGetView BeditFileBrowserMessageGetView;
+typedef struct _BeditFileBrowserMessageGetViewClass
+    BeditFileBrowserMessageGetViewClass;
+typedef struct _BeditFileBrowserMessageGetViewPrivate
+    BeditFileBrowserMessageGetViewPrivate;
 
-struct _BeditFileBrowserMessageGetView
-{
-	BeditMessage parent;
+struct _BeditFileBrowserMessageGetView {
+    BeditMessage parent;
 
-	BeditFileBrowserMessageGetViewPrivate *priv;
+    BeditFileBrowserMessageGetViewPrivate *priv;
 };
 
-struct _BeditFileBrowserMessageGetViewClass
-{
-	BeditMessageClass parent_class;
+struct _BeditFileBrowserMessageGetViewClass {
+    BeditMessageClass parent_class;
 };
 
-GType bedit_file_browser_message_get_view_get_type (void) G_GNUC_CONST;
+GType bedit_file_browser_message_get_view_get_type(void) G_GNUC_CONST;
 
 G_END_DECLS
 

@@ -29,41 +29,49 @@
 
 G_BEGIN_DECLS
 
-#define GEDIT_TYPE_FILE_BROWSER_MESSAGE_SET_MARKUP            (bedit_file_browser_message_set_markup_get_type ())
-#define GEDIT_FILE_BROWSER_MESSAGE_SET_MARKUP(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj),\
-                                                               GEDIT_TYPE_FILE_BROWSER_MESSAGE_SET_MARKUP,\
-                                                               BeditFileBrowserMessageSetMarkup))
-#define GEDIT_FILE_BROWSER_MESSAGE_SET_MARKUP_CONST(obj)      (G_TYPE_CHECK_INSTANCE_CAST ((obj),\
-                                                               GEDIT_TYPE_FILE_BROWSER_MESSAGE_SET_MARKUP,\
-                                                               BeditFileBrowserMessageSetMarkup const))
-#define GEDIT_FILE_BROWSER_MESSAGE_SET_MARKUP_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass),\
-                                                               GEDIT_TYPE_FILE_BROWSER_MESSAGE_SET_MARKUP,\
-                                                               BeditFileBrowserMessageSetMarkupClass))
-#define GEDIT_IS_FILE_BROWSER_MESSAGE_SET_MARKUP(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj),\
-                                                               GEDIT_TYPE_FILE_BROWSER_MESSAGE_SET_MARKUP))
-#define GEDIT_IS_FILE_BROWSER_MESSAGE_SET_MARKUP_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass),\
-                                                               GEDIT_TYPE_FILE_BROWSER_MESSAGE_SET_MARKUP))
-#define GEDIT_FILE_BROWSER_MESSAGE_SET_MARKUP_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj),\
-                                                               GEDIT_TYPE_FILE_BROWSER_MESSAGE_SET_MARKUP,\
-                                                               BeditFileBrowserMessageSetMarkupClass))
+#define GEDIT_TYPE_FILE_BROWSER_MESSAGE_SET_MARKUP                             \
+    (bedit_file_browser_message_set_markup_get_type())
+#define GEDIT_FILE_BROWSER_MESSAGE_SET_MARKUP(obj)                             \
+    (G_TYPE_CHECK_INSTANCE_CAST(                                               \
+        (obj), GEDIT_TYPE_FILE_BROWSER_MESSAGE_SET_MARKUP,                     \
+        BeditFileBrowserMessageSetMarkup))
+#define GEDIT_FILE_BROWSER_MESSAGE_SET_MARKUP_CONST(obj)                       \
+    (G_TYPE_CHECK_INSTANCE_CAST(                                               \
+        (obj), GEDIT_TYPE_FILE_BROWSER_MESSAGE_SET_MARKUP,                     \
+        BeditFileBrowserMessageSetMarkup const))
+#define GEDIT_FILE_BROWSER_MESSAGE_SET_MARKUP_CLASS(klass)                     \
+    (G_TYPE_CHECK_CLASS_CAST(                                                  \
+        (klass), GEDIT_TYPE_FILE_BROWSER_MESSAGE_SET_MARKUP,                   \
+        BeditFileBrowserMessageSetMarkupClass))
+#define GEDIT_IS_FILE_BROWSER_MESSAGE_SET_MARKUP(obj)                          \
+    (G_TYPE_CHECK_INSTANCE_TYPE(                                               \
+        (obj), GEDIT_TYPE_FILE_BROWSER_MESSAGE_SET_MARKUP))
+#define GEDIT_IS_FILE_BROWSER_MESSAGE_SET_MARKUP_CLASS(klass)                  \
+    (G_TYPE_CHECK_CLASS_TYPE(                                                  \
+        (klass), GEDIT_TYPE_FILE_BROWSER_MESSAGE_SET_MARKUP))
+#define GEDIT_FILE_BROWSER_MESSAGE_SET_MARKUP_GET_CLASS(obj)                   \
+    (G_TYPE_INSTANCE_GET_CLASS(                                                \
+        (obj), GEDIT_TYPE_FILE_BROWSER_MESSAGE_SET_MARKUP,                     \
+        BeditFileBrowserMessageSetMarkupClass))
 
-typedef struct _BeditFileBrowserMessageSetMarkup        BeditFileBrowserMessageSetMarkup;
-typedef struct _BeditFileBrowserMessageSetMarkupClass   BeditFileBrowserMessageSetMarkupClass;
-typedef struct _BeditFileBrowserMessageSetMarkupPrivate BeditFileBrowserMessageSetMarkupPrivate;
+typedef struct _BeditFileBrowserMessageSetMarkup
+    BeditFileBrowserMessageSetMarkup;
+typedef struct _BeditFileBrowserMessageSetMarkupClass
+    BeditFileBrowserMessageSetMarkupClass;
+typedef struct _BeditFileBrowserMessageSetMarkupPrivate
+    BeditFileBrowserMessageSetMarkupPrivate;
 
-struct _BeditFileBrowserMessageSetMarkup
-{
-	BeditMessage parent;
+struct _BeditFileBrowserMessageSetMarkup {
+    BeditMessage parent;
 
-	BeditFileBrowserMessageSetMarkupPrivate *priv;
+    BeditFileBrowserMessageSetMarkupPrivate *priv;
 };
 
-struct _BeditFileBrowserMessageSetMarkupClass
-{
-	BeditMessageClass parent_class;
+struct _BeditFileBrowserMessageSetMarkupClass {
+    BeditMessageClass parent_class;
 };
 
-GType bedit_file_browser_message_set_markup_get_type (void) G_GNUC_CONST;
+GType bedit_file_browser_message_set_markup_get_type(void) G_GNUC_CONST;
 
 G_END_DECLS
 

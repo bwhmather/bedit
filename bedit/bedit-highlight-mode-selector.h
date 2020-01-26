@@ -27,17 +27,20 @@
 
 G_BEGIN_DECLS
 
-#define GEDIT_TYPE_HIGHLIGHT_MODE_SELECTOR (bedit_highlight_mode_selector_get_type ())
+#define GEDIT_TYPE_HIGHLIGHT_MODE_SELECTOR                                     \
+    (bedit_highlight_mode_selector_get_type())
 
-G_DECLARE_FINAL_TYPE (BeditHighlightModeSelector, bedit_highlight_mode_selector, GEDIT, HIGHLIGHT_MODE_SELECTOR, GtkGrid)
+G_DECLARE_FINAL_TYPE(
+    BeditHighlightModeSelector, bedit_highlight_mode_selector, GEDIT,
+    HIGHLIGHT_MODE_SELECTOR, GtkGrid)
 
-BeditHighlightModeSelector *bedit_highlight_mode_selector_new             (void);
+BeditHighlightModeSelector *bedit_highlight_mode_selector_new(void);
 
-void                        bedit_highlight_mode_selector_select_language (BeditHighlightModeSelector *selector,
-                                                                           GtkSourceLanguage          *language);
+void bedit_highlight_mode_selector_select_language(
+    BeditHighlightModeSelector *selector, GtkSourceLanguage *language);
 
-void                        bedit_highlight_mode_selector_activate_selected_language
-                                                                          (BeditHighlightModeSelector *selector);
+void bedit_highlight_mode_selector_activate_selected_language(
+    BeditHighlightModeSelector *selector);
 
 G_END_DECLS
 

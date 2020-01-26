@@ -27,48 +27,49 @@
 
 G_BEGIN_DECLS
 
-#define GEDIT_TYPE_MESSAGE			(bedit_message_get_type ())
-#define GEDIT_MESSAGE(obj)			(G_TYPE_CHECK_INSTANCE_CAST ((obj), GEDIT_TYPE_MESSAGE, BeditMessage))
-#define GEDIT_MESSAGE_CONST(obj)		(G_TYPE_CHECK_INSTANCE_CAST ((obj), GEDIT_TYPE_MESSAGE, BeditMessage const))
-#define GEDIT_MESSAGE_CLASS(klass)		(G_TYPE_CHECK_CLASS_CAST ((klass), GEDIT_TYPE_MESSAGE, BeditMessageClass))
-#define GEDIT_IS_MESSAGE(obj)			(G_TYPE_CHECK_INSTANCE_TYPE ((obj), GEDIT_TYPE_MESSAGE))
-#define GEDIT_IS_MESSAGE_CLASS(klass)		(G_TYPE_CHECK_CLASS_TYPE ((klass), GEDIT_TYPE_MESSAGE))
-#define GEDIT_MESSAGE_GET_CLASS(obj)		(G_TYPE_INSTANCE_GET_CLASS ((obj), GEDIT_TYPE_MESSAGE, BeditMessageClass))
+#define GEDIT_TYPE_MESSAGE (bedit_message_get_type())
+#define GEDIT_MESSAGE(obj)                                                     \
+    (G_TYPE_CHECK_INSTANCE_CAST((obj), GEDIT_TYPE_MESSAGE, BeditMessage))
+#define GEDIT_MESSAGE_CONST(obj)                                               \
+    (G_TYPE_CHECK_INSTANCE_CAST((obj), GEDIT_TYPE_MESSAGE, BeditMessage const))
+#define GEDIT_MESSAGE_CLASS(klass)                                             \
+    (G_TYPE_CHECK_CLASS_CAST((klass), GEDIT_TYPE_MESSAGE, BeditMessageClass))
+#define GEDIT_IS_MESSAGE(obj)                                                  \
+    (G_TYPE_CHECK_INSTANCE_TYPE((obj), GEDIT_TYPE_MESSAGE))
+#define GEDIT_IS_MESSAGE_CLASS(klass)                                          \
+    (G_TYPE_CHECK_CLASS_TYPE((klass), GEDIT_TYPE_MESSAGE))
+#define GEDIT_MESSAGE_GET_CLASS(obj)                                           \
+    (G_TYPE_INSTANCE_GET_CLASS((obj), GEDIT_TYPE_MESSAGE, BeditMessageClass))
 
-typedef struct _BeditMessage        BeditMessage;
-typedef struct _BeditMessageClass   BeditMessageClass;
+typedef struct _BeditMessage BeditMessage;
+typedef struct _BeditMessageClass BeditMessageClass;
 typedef struct _BeditMessagePrivate BeditMessagePrivate;
 
-struct _BeditMessage
-{
-	GObject parent;
+struct _BeditMessage {
+    GObject parent;
 
-	BeditMessagePrivate *priv;
+    BeditMessagePrivate *priv;
 };
 
-struct _BeditMessageClass
-{
-	GObjectClass parent_class;
+struct _BeditMessageClass {
+    GObjectClass parent_class;
 };
 
-GType        bedit_message_get_type             (void) G_GNUC_CONST;
+GType bedit_message_get_type(void) G_GNUC_CONST;
 
-const gchar *bedit_message_get_object_path      (BeditMessage *message);
-const gchar *bedit_message_get_method           (BeditMessage *message);
+const gchar *bedit_message_get_object_path(BeditMessage *message);
+const gchar *bedit_message_get_method(BeditMessage *message);
 
-gboolean     bedit_message_type_has             (GType         gtype,
-                                                 const gchar  *propname);
+gboolean bedit_message_type_has(GType gtype, const gchar *propname);
 
-gboolean     bedit_message_type_check           (GType         gtype,
-                                                 const gchar  *propname,
-                                                 GType         value_type);
+gboolean bedit_message_type_check(
+    GType gtype, const gchar *propname, GType value_type);
 
-gboolean     bedit_message_has                  (BeditMessage *message,
-                                                 const gchar  *propname);
+gboolean bedit_message_has(BeditMessage *message, const gchar *propname);
 
-gboolean     bedit_message_is_valid_object_path (const gchar  *object_path);
-gchar       *bedit_message_type_identifier      (const gchar  *object_path,
-                                                 const gchar  *method);
+gboolean bedit_message_is_valid_object_path(const gchar *object_path);
+gchar *bedit_message_type_identifier(
+    const gchar *object_path, const gchar *method);
 
 G_END_DECLS
 

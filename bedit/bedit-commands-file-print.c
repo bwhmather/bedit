@@ -20,30 +20,26 @@
  * along with this program; if not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "bedit-commands.h"
 #include "bedit-commands-private.h"
+#include "bedit-commands.h"
 
-#include "bedit-window.h"
-#include "bedit-tab.h"
-#include "bedit-tab-private.h"
 #include "bedit-debug.h"
+#include "bedit-tab-private.h"
+#include "bedit-tab.h"
+#include "bedit-window.h"
 
-void
-_bedit_cmd_file_print (GSimpleAction *action,
-                       GVariant      *parameter,
-                       gpointer       user_data)
-{
-	BeditWindow *window = GEDIT_WINDOW (user_data);
-	BeditTab *tab;
+void _bedit_cmd_file_print(
+    GSimpleAction *action, GVariant *parameter, gpointer user_data) {
+    BeditWindow *window = GEDIT_WINDOW(user_data);
+    BeditTab *tab;
 
-	bedit_debug (DEBUG_COMMANDS);
+    bedit_debug(DEBUG_COMMANDS);
 
-	tab = bedit_window_get_active_tab (window);
+    tab = bedit_window_get_active_tab(window);
 
-	if (tab != NULL)
-	{
-		_bedit_tab_print (tab);
-	}
+    if (tab != NULL) {
+        _bedit_tab_print(tab);
+    }
 }
 
 /* ex:set ts=8 noet: */

@@ -28,41 +28,47 @@
 
 G_BEGIN_DECLS
 
-#define GEDIT_TYPE_FILE_BROWSER_MESSAGE_GET_ROOT            (bedit_file_browser_message_get_root_get_type ())
-#define GEDIT_FILE_BROWSER_MESSAGE_GET_ROOT(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj),\
-                                                             GEDIT_TYPE_FILE_BROWSER_MESSAGE_GET_ROOT,\
-                                                             BeditFileBrowserMessageGetRoot))
-#define GEDIT_FILE_BROWSER_MESSAGE_GET_ROOT_CONST(obj)      (G_TYPE_CHECK_INSTANCE_CAST ((obj),\
-                                                             GEDIT_TYPE_FILE_BROWSER_MESSAGE_GET_ROOT,\
-                                                             BeditFileBrowserMessageGetRoot const))
-#define GEDIT_FILE_BROWSER_MESSAGE_GET_ROOT_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass),\
-                                                             GEDIT_TYPE_FILE_BROWSER_MESSAGE_GET_ROOT,\
-                                                             BeditFileBrowserMessageGetRootClass))
-#define GEDIT_IS_FILE_BROWSER_MESSAGE_GET_ROOT(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj),\
-                                                             GEDIT_TYPE_FILE_BROWSER_MESSAGE_GET_ROOT))
-#define GEDIT_IS_FILE_BROWSER_MESSAGE_GET_ROOT_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass),\
-                                                             GEDIT_TYPE_FILE_BROWSER_MESSAGE_GET_ROOT))
-#define GEDIT_FILE_BROWSER_MESSAGE_GET_ROOT_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj),\
-                                                             GEDIT_TYPE_FILE_BROWSER_MESSAGE_GET_ROOT,\
-                                                             BeditFileBrowserMessageGetRootClass))
+#define GEDIT_TYPE_FILE_BROWSER_MESSAGE_GET_ROOT                               \
+    (bedit_file_browser_message_get_root_get_type())
+#define GEDIT_FILE_BROWSER_MESSAGE_GET_ROOT(obj)                               \
+    (G_TYPE_CHECK_INSTANCE_CAST(                                               \
+        (obj), GEDIT_TYPE_FILE_BROWSER_MESSAGE_GET_ROOT,                       \
+        BeditFileBrowserMessageGetRoot))
+#define GEDIT_FILE_BROWSER_MESSAGE_GET_ROOT_CONST(obj)                         \
+    (G_TYPE_CHECK_INSTANCE_CAST(                                               \
+        (obj), GEDIT_TYPE_FILE_BROWSER_MESSAGE_GET_ROOT,                       \
+        BeditFileBrowserMessageGetRoot const))
+#define GEDIT_FILE_BROWSER_MESSAGE_GET_ROOT_CLASS(klass)                       \
+    (G_TYPE_CHECK_CLASS_CAST(                                                  \
+        (klass), GEDIT_TYPE_FILE_BROWSER_MESSAGE_GET_ROOT,                     \
+        BeditFileBrowserMessageGetRootClass))
+#define GEDIT_IS_FILE_BROWSER_MESSAGE_GET_ROOT(obj)                            \
+    (G_TYPE_CHECK_INSTANCE_TYPE(                                               \
+        (obj), GEDIT_TYPE_FILE_BROWSER_MESSAGE_GET_ROOT))
+#define GEDIT_IS_FILE_BROWSER_MESSAGE_GET_ROOT_CLASS(klass)                    \
+    (G_TYPE_CHECK_CLASS_TYPE((klass), GEDIT_TYPE_FILE_BROWSER_MESSAGE_GET_ROOT))
+#define GEDIT_FILE_BROWSER_MESSAGE_GET_ROOT_GET_CLASS(obj)                     \
+    (G_TYPE_INSTANCE_GET_CLASS(                                                \
+        (obj), GEDIT_TYPE_FILE_BROWSER_MESSAGE_GET_ROOT,                       \
+        BeditFileBrowserMessageGetRootClass))
 
-typedef struct _BeditFileBrowserMessageGetRoot        BeditFileBrowserMessageGetRoot;
-typedef struct _BeditFileBrowserMessageGetRootClass   BeditFileBrowserMessageGetRootClass;
-typedef struct _BeditFileBrowserMessageGetRootPrivate BeditFileBrowserMessageGetRootPrivate;
+typedef struct _BeditFileBrowserMessageGetRoot BeditFileBrowserMessageGetRoot;
+typedef struct _BeditFileBrowserMessageGetRootClass
+    BeditFileBrowserMessageGetRootClass;
+typedef struct _BeditFileBrowserMessageGetRootPrivate
+    BeditFileBrowserMessageGetRootPrivate;
 
-struct _BeditFileBrowserMessageGetRoot
-{
-	BeditMessage parent;
+struct _BeditFileBrowserMessageGetRoot {
+    BeditMessage parent;
 
-	BeditFileBrowserMessageGetRootPrivate *priv;
+    BeditFileBrowserMessageGetRootPrivate *priv;
 };
 
-struct _BeditFileBrowserMessageGetRootClass
-{
-	BeditMessageClass parent_class;
+struct _BeditFileBrowserMessageGetRootClass {
+    BeditMessageClass parent_class;
 };
 
-GType bedit_file_browser_message_get_root_get_type (void) G_GNUC_CONST;
+GType bedit_file_browser_message_get_root_get_type(void) G_GNUC_CONST;
 
 G_END_DECLS
 

@@ -27,32 +27,32 @@
 
 G_BEGIN_DECLS
 
-#define GEDIT_TYPE_REPLACE_DIALOG (bedit_replace_dialog_get_type ())
-G_DECLARE_FINAL_TYPE (BeditReplaceDialog, bedit_replace_dialog, GEDIT, REPLACE_DIALOG, GtkDialog)
+#define GEDIT_TYPE_REPLACE_DIALOG (bedit_replace_dialog_get_type())
+G_DECLARE_FINAL_TYPE(
+    BeditReplaceDialog, bedit_replace_dialog, GEDIT, REPLACE_DIALOG, GtkDialog)
 
-enum
-{
-	GEDIT_REPLACE_DIALOG_FIND_RESPONSE = 100,
-	GEDIT_REPLACE_DIALOG_REPLACE_RESPONSE,
-	GEDIT_REPLACE_DIALOG_REPLACE_ALL_RESPONSE
+enum {
+    GEDIT_REPLACE_DIALOG_FIND_RESPONSE = 100,
+    GEDIT_REPLACE_DIALOG_REPLACE_RESPONSE,
+    GEDIT_REPLACE_DIALOG_REPLACE_ALL_RESPONSE
 };
 
-GtkWidget		*bedit_replace_dialog_new			(BeditWindow        *window);
+GtkWidget *bedit_replace_dialog_new(BeditWindow *window);
 
-void			 bedit_replace_dialog_present_with_time		(BeditReplaceDialog *dialog,
-									 guint32             timestamp);
+void bedit_replace_dialog_present_with_time(
+    BeditReplaceDialog *dialog, guint32 timestamp);
 
-const gchar		*bedit_replace_dialog_get_search_text		(BeditReplaceDialog *dialog);
+const gchar *bedit_replace_dialog_get_search_text(BeditReplaceDialog *dialog);
 
-const gchar		*bedit_replace_dialog_get_replace_text		(BeditReplaceDialog *dialog);
+const gchar *bedit_replace_dialog_get_replace_text(BeditReplaceDialog *dialog);
 
-gboolean		 bedit_replace_dialog_get_backwards		(BeditReplaceDialog *dialog);
+gboolean bedit_replace_dialog_get_backwards(BeditReplaceDialog *dialog);
 
-void			 bedit_replace_dialog_set_replace_error		(BeditReplaceDialog *dialog,
-									 const gchar        *error_msg);
+void bedit_replace_dialog_set_replace_error(
+    BeditReplaceDialog *dialog, const gchar *error_msg);
 
 G_END_DECLS
 
-#endif  /* GEDIT_REPLACE_DIALOG_H  */
+#endif /* GEDIT_REPLACE_DIALOG_H  */
 
 /* ex:set ts=8 noet: */

@@ -22,44 +22,41 @@
 #define GEDIT_APP_PRIVATE_H
 
 #include "bedit-app.h"
-#include "bedit-settings.h"
 #include "bedit-menu-extension.h"
+#include "bedit-settings.h"
 
 G_BEGIN_DECLS
 
-void		 _bedit_app_set_lockdown		(BeditApp          *app,
-							 BeditLockdownMask  lockdown);
+void _bedit_app_set_lockdown(BeditApp *app, BeditLockdownMask lockdown);
 
-void		 _bedit_app_set_lockdown_bit		(BeditApp          *app,
-							 BeditLockdownMask  bit,
-							 gboolean           value);
+void _bedit_app_set_lockdown_bit(
+    BeditApp *app, BeditLockdownMask bit, gboolean value);
 
 /* This one is a bedit-window function, but we declare it here to avoid
  * #include headaches since it needs the BeditLockdownMask declaration.
  */
-void		 _bedit_window_set_lockdown		(BeditWindow       *window,
-							 BeditLockdownMask  lockdown);
+void _bedit_window_set_lockdown(
+    BeditWindow *window, BeditLockdownMask lockdown);
 
 /* global print config */
-GtkPageSetup		*_bedit_app_get_default_page_setup	(BeditApp         *app);
-void			 _bedit_app_set_default_page_setup	(BeditApp         *app,
-								 GtkPageSetup     *page_setup);
-GtkPrintSettings	*_bedit_app_get_default_print_settings	(BeditApp         *app);
-void			 _bedit_app_set_default_print_settings	(BeditApp         *app,
-								 GtkPrintSettings *settings);
+GtkPageSetup *_bedit_app_get_default_page_setup(BeditApp *app);
+void _bedit_app_set_default_page_setup(BeditApp *app, GtkPageSetup *page_setup);
+GtkPrintSettings *_bedit_app_get_default_print_settings(BeditApp *app);
+void _bedit_app_set_default_print_settings(
+    BeditApp *app, GtkPrintSettings *settings);
 
-BeditSettings		*_bedit_app_get_settings		(BeditApp  *app);
+BeditSettings *_bedit_app_get_settings(BeditApp *app);
 
-GMenuModel		*_bedit_app_get_hamburger_menu		(BeditApp  *app);
+GMenuModel *_bedit_app_get_hamburger_menu(BeditApp *app);
 
-GMenuModel		*_bedit_app_get_notebook_menu		(BeditApp  *app);
+GMenuModel *_bedit_app_get_notebook_menu(BeditApp *app);
 
-GMenuModel		*_bedit_app_get_tab_width_menu		(BeditApp  *app);
+GMenuModel *_bedit_app_get_tab_width_menu(BeditApp *app);
 
-GMenuModel		*_bedit_app_get_line_col_menu		(BeditApp  *app);
+GMenuModel *_bedit_app_get_line_col_menu(BeditApp *app);
 
-BeditMenuExtension	*_bedit_app_extend_menu			(BeditApp    *app,
-								 const gchar *extension_point);
+BeditMenuExtension *_bedit_app_extend_menu(
+    BeditApp *app, const gchar *extension_point);
 
 G_END_DECLS
 

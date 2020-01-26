@@ -35,63 +35,58 @@
 
 G_BEGIN_DECLS
 
-#define GEDIT_TYPE_NOTEBOOK		(bedit_notebook_get_type ())
-#define GEDIT_NOTEBOOK(o)		(G_TYPE_CHECK_INSTANCE_CAST ((o), GEDIT_TYPE_NOTEBOOK, BeditNotebook))
-#define GEDIT_NOTEBOOK_CLASS(k)		(G_TYPE_CHECK_CLASS_CAST((k), GEDIT_TYPE_NOTEBOOK, BeditNotebookClass))
-#define GEDIT_IS_NOTEBOOK(o)		(G_TYPE_CHECK_INSTANCE_TYPE ((o), GEDIT_TYPE_NOTEBOOK))
-#define GEDIT_IS_NOTEBOOK_CLASS(k)	(G_TYPE_CHECK_CLASS_TYPE ((k), GEDIT_TYPE_NOTEBOOK))
-#define GEDIT_NOTEBOOK_GET_CLASS(o)	(G_TYPE_INSTANCE_GET_CLASS ((o), GEDIT_TYPE_NOTEBOOK, BeditNotebookClass))
+#define GEDIT_TYPE_NOTEBOOK (bedit_notebook_get_type())
+#define GEDIT_NOTEBOOK(o)                                                      \
+    (G_TYPE_CHECK_INSTANCE_CAST((o), GEDIT_TYPE_NOTEBOOK, BeditNotebook))
+#define GEDIT_NOTEBOOK_CLASS(k)                                                \
+    (G_TYPE_CHECK_CLASS_CAST((k), GEDIT_TYPE_NOTEBOOK, BeditNotebookClass))
+#define GEDIT_IS_NOTEBOOK(o)                                                   \
+    (G_TYPE_CHECK_INSTANCE_TYPE((o), GEDIT_TYPE_NOTEBOOK))
+#define GEDIT_IS_NOTEBOOK_CLASS(k)                                             \
+    (G_TYPE_CHECK_CLASS_TYPE((k), GEDIT_TYPE_NOTEBOOK))
+#define GEDIT_NOTEBOOK_GET_CLASS(o)                                            \
+    (G_TYPE_INSTANCE_GET_CLASS((o), GEDIT_TYPE_NOTEBOOK, BeditNotebookClass))
 
-typedef struct _BeditNotebook		BeditNotebook;
-typedef struct _BeditNotebookClass	BeditNotebookClass;
-typedef struct _BeditNotebookPrivate	BeditNotebookPrivate;
+typedef struct _BeditNotebook BeditNotebook;
+typedef struct _BeditNotebookClass BeditNotebookClass;
+typedef struct _BeditNotebookPrivate BeditNotebookPrivate;
 
 /* This is now used in multi-notebook but we keep the same enum for
  * backward compatibility since it is used in the gsettings schema */
-typedef enum
-{
-	GEDIT_NOTEBOOK_SHOW_TABS_NEVER,
-	GEDIT_NOTEBOOK_SHOW_TABS_AUTO,
-	GEDIT_NOTEBOOK_SHOW_TABS_ALWAYS
+typedef enum {
+    GEDIT_NOTEBOOK_SHOW_TABS_NEVER,
+    GEDIT_NOTEBOOK_SHOW_TABS_AUTO,
+    GEDIT_NOTEBOOK_SHOW_TABS_ALWAYS
 } BeditNotebookShowTabsModeType;
 
-struct _BeditNotebook
-{
-	GtkNotebook notebook;
+struct _BeditNotebook {
+    GtkNotebook notebook;
 
-	/*< private >*/
-	BeditNotebookPrivate *priv;
+    /*< private >*/
+    BeditNotebookPrivate *priv;
 };
 
-struct _BeditNotebookClass
-{
-	GtkNotebookClass parent_class;
+struct _BeditNotebookClass {
+    GtkNotebookClass parent_class;
 
-	/* Signals */
-	void	(* tab_close_request)	(BeditNotebook *notebook,
-					 BeditTab      *tab);
-	void	(* show_popup_menu)	(BeditNotebook *notebook,
-					 GdkEvent      *event,
-					 BeditTab      *tab);
-	gboolean(* change_to_page)      (BeditNotebook *notebook,
-	                                 gint           page_num);
+    /* Signals */
+    void (*tab_close_request)(BeditNotebook *notebook, BeditTab *tab);
+    void (*show_popup_menu)(
+        BeditNotebook *notebook, GdkEvent *event, BeditTab *tab);
+    gboolean (*change_to_page)(BeditNotebook *notebook, gint page_num);
 };
 
-GType		bedit_notebook_get_type		(void) G_GNUC_CONST;
+GType bedit_notebook_get_type(void) G_GNUC_CONST;
 
-GtkWidget      *bedit_notebook_new		(void);
+GtkWidget *bedit_notebook_new(void);
 
-void		bedit_notebook_add_tab		(BeditNotebook *nb,
-						 BeditTab      *tab,
-						 gint           position,
-						 gboolean       jump_to);
+void bedit_notebook_add_tab(
+    BeditNotebook *nb, BeditTab *tab, gint position, gboolean jump_to);
 
-void		bedit_notebook_move_tab		(BeditNotebook *src,
-						 BeditNotebook *dest,
-						 BeditTab      *tab,
-						 gint           dest_position);
+void bedit_notebook_move_tab(
+    BeditNotebook *src, BeditNotebook *dest, BeditTab *tab, gint dest_position);
 
-void		bedit_notebook_remove_all_tabs 	(BeditNotebook *nb);
+void bedit_notebook_remove_all_tabs(BeditNotebook *nb);
 
 G_END_DECLS
 

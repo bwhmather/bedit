@@ -18,21 +18,21 @@
  * along with bedit. If not, see <http://www.gnu.org/licenses/>.
  */
 
-
 #ifndef GEDIT_NOTEBOOK_POPUP_MENU_H
 #define GEDIT_NOTEBOOK_POPUP_MENU_H
 
 #include <gtk/gtk.h>
-#include "bedit-window.h"
 #include "bedit-tab.h"
+#include "bedit-window.h"
 
 G_BEGIN_DECLS
 
-#define GEDIT_TYPE_NOTEBOOK_POPUP_MENU			(bedit_notebook_popup_menu_get_type ())
-G_DECLARE_FINAL_TYPE (BeditNotebookPopupMenu, bedit_notebook_popup_menu, GEDIT, NOTEBOOK_POPUP_MENU, GtkMenu)
+#define GEDIT_TYPE_NOTEBOOK_POPUP_MENU (bedit_notebook_popup_menu_get_type())
+G_DECLARE_FINAL_TYPE(
+    BeditNotebookPopupMenu, bedit_notebook_popup_menu, GEDIT,
+    NOTEBOOK_POPUP_MENU, GtkMenu)
 
-GtkWidget           *bedit_notebook_popup_menu_new          (BeditWindow *window,
-                                                             BeditTab    *tab);
+GtkWidget *bedit_notebook_popup_menu_new(BeditWindow *window, BeditTab *tab);
 
 G_END_DECLS
 

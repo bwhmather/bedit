@@ -27,9 +27,9 @@
 
 G_BEGIN_DECLS
 
-#define GEDIT_TYPE_APP_WIN32 (bedit_app_win32_get_type ())
+#define GEDIT_TYPE_APP_WIN32 (bedit_app_win32_get_type())
 
-G_DECLARE_FINAL_TYPE (BeditAppWin32, bedit_app_win32, GEDIT, APP_WIN32, BeditApp)
+G_DECLARE_FINAL_TYPE(BeditAppWin32, bedit_app_win32, GEDIT, APP_WIN32, BeditApp)
 
 G_END_DECLS
 

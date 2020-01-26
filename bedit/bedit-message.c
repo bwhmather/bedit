@@ -39,126 +39,95 @@
  * between methods and signals.
  */
 
-struct _BeditMessagePrivate
-{
-	gchar *object_path;
-	gchar *method;
+struct _BeditMessagePrivate {
+    gchar *object_path;
+    gchar *method;
 };
 
-enum
-{
-	PROP_0,
-	PROP_OBJECT_PATH,
-	PROP_METHOD,
-	LAST_PROP
-};
+enum { PROP_0, PROP_OBJECT_PATH, PROP_METHOD, LAST_PROP };
 
 static GParamSpec *properties[LAST_PROP];
 
-G_DEFINE_TYPE_WITH_PRIVATE (BeditMessage, bedit_message, G_TYPE_OBJECT)
+G_DEFINE_TYPE_WITH_PRIVATE(BeditMessage, bedit_message, G_TYPE_OBJECT)
 
-static void
-bedit_message_finalize (GObject *object)
-{
-	BeditMessage *message = GEDIT_MESSAGE (object);
+static void bedit_message_finalize(GObject *object) {
+    BeditMessage *message = GEDIT_MESSAGE(object);
 
-	g_free (message->priv->object_path);
-	g_free (message->priv->method);
+    g_free(message->priv->object_path);
+    g_free(message->priv->method);
 
-	G_OBJECT_CLASS (bedit_message_parent_class)->finalize (object);
+    G_OBJECT_CLASS(bedit_message_parent_class)->finalize(object);
 }
 
-static void
-bedit_message_get_property (GObject    *object,
-                            guint       prop_id,
-                            GValue     *value,
-                            GParamSpec *pspec)
-{
-	BeditMessage *msg = GEDIT_MESSAGE (object);
+static void bedit_message_get_property(
+    GObject *object, guint prop_id, GValue *value, GParamSpec *pspec) {
+    BeditMessage *msg = GEDIT_MESSAGE(object);
 
-	switch (prop_id)
-	{
-		case PROP_OBJECT_PATH:
-			g_value_set_string (value,
-			                    msg->priv->object_path);
-			break;
-		case PROP_METHOD:
-			g_value_set_string (value,
-			                    msg->priv->method);
-			break;
-		default:
-			G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
-			break;
-	}
+    switch (prop_id) {
+    case PROP_OBJECT_PATH:
+        g_value_set_string(value, msg->priv->object_path);
+        break;
+    case PROP_METHOD:
+        g_value_set_string(value, msg->priv->method);
+        break;
+    default:
+        G_OBJECT_WARN_INVALID_PROPERTY_ID(object, prop_id, pspec);
+        break;
+    }
 }
 
-static void
-bedit_message_set_property (GObject      *object,
-                            guint         prop_id,
-                            const GValue *value,
-                            GParamSpec   *pspec)
-{
-	BeditMessage *msg = GEDIT_MESSAGE (object);
+static void bedit_message_set_property(
+    GObject *object, guint prop_id, const GValue *value, GParamSpec *pspec) {
+    BeditMessage *msg = GEDIT_MESSAGE(object);
 
-	switch (prop_id)
-	{
-		case PROP_OBJECT_PATH:
-			g_free (msg->priv->object_path);
-			msg->priv->object_path = g_value_dup_string (value);
-			break;
-		case PROP_METHOD:
-			g_free (msg->priv->method);
-			msg->priv->method = g_value_dup_string (value);
-			break;
-		default:
-			G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
-			break;
-	}
+    switch (prop_id) {
+    case PROP_OBJECT_PATH:
+        g_free(msg->priv->object_path);
+        msg->priv->object_path = g_value_dup_string(value);
+        break;
+    case PROP_METHOD:
+        g_free(msg->priv->method);
+        msg->priv->method = g_value_dup_string(value);
+        break;
+    default:
+        G_OBJECT_WARN_INVALID_PROPERTY_ID(object, prop_id, pspec);
+        break;
+    }
 }
 
-static void
-bedit_message_class_init (BeditMessageClass *klass)
-{
-	GObjectClass *object_class = G_OBJECT_CLASS(klass);
+static void bedit_message_class_init(BeditMessageClass *klass) {
+    GObjectClass *object_class = G_OBJECT_CLASS(klass);
 
-	object_class->finalize = bedit_message_finalize;
+    object_class->finalize = bedit_message_finalize;
 
-	object_class->get_property = bedit_message_get_property;
-	object_class->set_property = bedit_message_set_property;
+    object_class->get_property = bedit_message_get_property;
+    object_class->set_property = bedit_message_set_property;
 
-	/**
-	 * BeditMessage:object_path:
-	 *
-	 * The messages object path (e.g. /bedit/object/path).
-	 *
-	 */
-	properties[PROP_OBJECT_PATH] =
-		g_param_spec_string ("object-path",
-		                     "OBJECT_PATH",
-		                     "The message object path",
-		                     NULL,
-		                     G_PARAM_READWRITE | G_PARAM_CONSTRUCT | G_PARAM_STATIC_STRINGS);
+    /**
+     * BeditMessage:object_path:
+     *
+     * The messages object path (e.g. /bedit/object/path).
+     *
+     */
+    properties[PROP_OBJECT_PATH] = g_param_spec_string(
+        "object-path", "OBJECT_PATH", "The message object path", NULL,
+        G_PARAM_READWRITE | G_PARAM_CONSTRUCT | G_PARAM_STATIC_STRINGS);
 
-	/**
-	 * BeditMessage:method:
-	 *
-	 * The messages method.
-	 *
-	 */
-	properties[PROP_METHOD] =
-		g_param_spec_string ("method",
-		                     "METHOD",
-		                     "The message method",
-		                     NULL,
-		                     G_PARAM_READWRITE | G_PARAM_CONSTRUCT | G_PARAM_STATIC_STRINGS);
+    /**
+     * BeditMessage:method:
+     *
+     * The messages method.
+     *
+     */
+    properties[PROP_METHOD] = g_param_spec_string(
+        "method", "METHOD", "The message method", NULL,
+        G_PARAM_READWRITE | G_PARAM_CONSTRUCT | G_PARAM_STATIC_STRINGS);
 
-	g_object_class_install_properties (object_class, LAST_PROP, properties);
+    g_object_class_install_properties(object_class, LAST_PROP, properties);
 }
 
-static void
-bedit_message_init (BeditMessage *self)
-{
-	self->priv = bedit_message_get_instance_private (self);
+static void bedit_message_init(BeditMessage *self) {
+    self->priv = bedit_message_get_instance_private(self);
 }
 
 /**
@@ -170,12 +139,10 @@ bedit_message_init (BeditMessage *self)
  * Return value: the message method
  *
  */
-const gchar *
-bedit_message_get_method (BeditMessage *message)
-{
-	g_return_val_if_fail (GEDIT_IS_MESSAGE (message), NULL);
+const gchar *bedit_message_get_method(BeditMessage *message) {
+    g_return_val_if_fail(GEDIT_IS_MESSAGE(message), NULL);
 
-	return message->priv->method;
+    return message->priv->method;
 }
 
 /**
@@ -187,12 +154,10 @@ bedit_message_get_method (BeditMessage *message)
  * Return value: the message object path
  *
  */
-const gchar *
-bedit_message_get_object_path (BeditMessage *message)
-{
-	g_return_val_if_fail (GEDIT_IS_MESSAGE (message), NULL);
+const gchar *bedit_message_get_object_path(BeditMessage *message) {
+    g_return_val_if_fail(GEDIT_IS_MESSAGE(message), NULL);
 
-	return message->priv->object_path;
+    return message->priv->object_path;
 }
 
 /**
@@ -204,40 +169,32 @@ bedit_message_get_object_path (BeditMessage *message)
  * Return value: %TRUE if @object_path is a valid object path
  *
  */
-gboolean
-bedit_message_is_valid_object_path (const gchar *object_path)
-{
-	if (!object_path)
-	{
-		return FALSE;
-	}
+gboolean bedit_message_is_valid_object_path(const gchar *object_path) {
+    if (!object_path) {
+        return FALSE;
+    }
 
-	/* needs to start with / */
-	if (*object_path != '/')
-	{
-		return FALSE;
-	}
+    /* needs to start with / */
+    if (*object_path != '/') {
+        return FALSE;
+    }
 
-	while (*object_path)
-	{
-		if (*object_path == '/')
-		{
-			++object_path;
+    while (*object_path) {
+        if (*object_path == '/') {
+            ++object_path;
 
-			if (!*object_path || !(g_ascii_isalpha (*object_path) || *object_path == '_'))
-			{
-				return FALSE;
-			}
-		}
-		else if (!(g_ascii_isalnum (*object_path) || *object_path == '_'))
-		{
-			return FALSE;
-		}
+            if (!*object_path ||
+                !(g_ascii_isalpha(*object_path) || *object_path == '_')) {
+                return FALSE;
+            }
+        } else if (!(g_ascii_isalnum(*object_path) || *object_path == '_')) {
+            return FALSE;
+        }
 
-		++object_path;
-	}
+        ++object_path;
+    }
 
-	return TRUE;
+    return TRUE;
 }
 
 /**
@@ -250,11 +207,9 @@ bedit_message_is_valid_object_path (const gchar *object_path)
  * Return value: the identifier for @method at @object_path
  *
  */
-gchar *
-bedit_message_type_identifier (const gchar *object_path,
-                               const gchar *method)
-{
-	return g_strconcat (object_path, ".", method, NULL);
+gchar *bedit_message_type_identifier(
+    const gchar *object_path, const gchar *method) {
+    return g_strconcat(object_path, ".", method, NULL);
 }
 
 /**
@@ -267,55 +222,46 @@ bedit_message_type_identifier (const gchar *object_path,
  * Return Value: %TRUE if message has @propname, %FALSE otherwise
  *
  */
-gboolean
-bedit_message_has (BeditMessage *message,
-                   const gchar  *propname)
-{
-	GObjectClass *klass;
+gboolean bedit_message_has(BeditMessage *message, const gchar *propname) {
+    GObjectClass *klass;
 
-	g_return_val_if_fail (GEDIT_IS_MESSAGE (message), FALSE);
-	g_return_val_if_fail (propname != NULL, FALSE);
+    g_return_val_if_fail(GEDIT_IS_MESSAGE(message), FALSE);
+    g_return_val_if_fail(propname != NULL, FALSE);
 
-	klass = G_OBJECT_GET_CLASS (G_OBJECT (message));
+    klass = G_OBJECT_GET_CLASS(G_OBJECT(message));
 
-	return g_object_class_find_property (klass, propname) != NULL;
+    return g_object_class_find_property(klass, propname) != NULL;
 }
 
-gboolean
-bedit_message_type_has (GType         gtype,
-                        const gchar  *propname)
-{
-	GObjectClass *klass;
-	gboolean ret;
+gboolean bedit_message_type_has(GType gtype, const gchar *propname) {
+    GObjectClass *klass;
+    gboolean ret;
 
-	g_return_val_if_fail (g_type_is_a (gtype, GEDIT_TYPE_MESSAGE), FALSE);
-	g_return_val_if_fail (propname != NULL, FALSE);
+    g_return_val_if_fail(g_type_is_a(gtype, GEDIT_TYPE_MESSAGE), FALSE);
+    g_return_val_if_fail(propname != NULL, FALSE);
 
-	klass = g_type_class_ref (gtype);
-	ret = g_object_class_find_property (klass, propname) != NULL;
-	g_type_class_unref (klass);
+    klass = g_type_class_ref(gtype);
+    ret = g_object_class_find_property(klass, propname) != NULL;
+    g_type_class_unref(klass);
 
-	return ret;
+    return ret;
 }
 
-gboolean
-bedit_message_type_check (GType         gtype,
-                          const gchar  *propname,
-                          GType         value_type)
-{
-	GObjectClass *klass;
-	gboolean ret;
-	GParamSpec *spec;
+gboolean bedit_message_type_check(
+    GType gtype, const gchar *propname, GType value_type) {
+    GObjectClass *klass;
+    gboolean ret;
+    GParamSpec *spec;
 
-	g_return_val_if_fail (g_type_is_a (gtype, GEDIT_TYPE_MESSAGE), FALSE);
-	g_return_val_if_fail (propname != NULL, FALSE);
+    g_return_val_if_fail(g_type_is_a(gtype, GEDIT_TYPE_MESSAGE), FALSE);
+    g_return_val_if_fail(propname != NULL, FALSE);
 
-	klass = g_type_class_ref (gtype);
-	spec = g_object_class_find_property (klass, propname);
-	ret = spec != NULL && spec->value_type == value_type;
-	g_type_class_unref (klass);
+    klass = g_type_class_ref(gtype);
+    spec = g_object_class_find_property(klass, propname);
+    ret = spec != NULL && spec->value_type == value_type;
+    g_type_class_unref(klass);
 
-	return ret;
+    return ret;
 }
 
 /* ex:set ts=8 noet: */

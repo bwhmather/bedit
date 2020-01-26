@@ -29,41 +29,49 @@
 
 G_BEGIN_DECLS
 
-#define GEDIT_TYPE_FILE_BROWSER_MESSAGE_ID_LOCATION            (bedit_file_browser_message_id_location_get_type ())
-#define GEDIT_FILE_BROWSER_MESSAGE_ID_LOCATION(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj),\
-                                                                GEDIT_TYPE_FILE_BROWSER_MESSAGE_ID_LOCATION,\
-                                                                BeditFileBrowserMessageIdLocation))
-#define GEDIT_FILE_BROWSER_MESSAGE_ID_LOCATION_CONST(obj)      (G_TYPE_CHECK_INSTANCE_CAST ((obj),\
-                                                                GEDIT_TYPE_FILE_BROWSER_MESSAGE_ID_LOCATION,\
-                                                                BeditFileBrowserMessageIdLocation const))
-#define GEDIT_FILE_BROWSER_MESSAGE_ID_LOCATION_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass),\
-                                                                GEDIT_TYPE_FILE_BROWSER_MESSAGE_ID_LOCATION,\
-                                                                BeditFileBrowserMessageIdLocationClass))
-#define GEDIT_IS_FILE_BROWSER_MESSAGE_ID_LOCATION(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj),\
-                                                                GEDIT_TYPE_FILE_BROWSER_MESSAGE_ID_LOCATION))
-#define GEDIT_IS_FILE_BROWSER_MESSAGE_ID_LOCATION_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass),\
-                                                                GEDIT_TYPE_FILE_BROWSER_MESSAGE_ID_LOCATION))
-#define GEDIT_FILE_BROWSER_MESSAGE_ID_LOCATION_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj),\
-                                                                GEDIT_TYPE_FILE_BROWSER_MESSAGE_ID_LOCATION,\
-                                                                BeditFileBrowserMessageIdLocationClass))
+#define GEDIT_TYPE_FILE_BROWSER_MESSAGE_ID_LOCATION                            \
+    (bedit_file_browser_message_id_location_get_type())
+#define GEDIT_FILE_BROWSER_MESSAGE_ID_LOCATION(obj)                            \
+    (G_TYPE_CHECK_INSTANCE_CAST(                                               \
+        (obj), GEDIT_TYPE_FILE_BROWSER_MESSAGE_ID_LOCATION,                    \
+        BeditFileBrowserMessageIdLocation))
+#define GEDIT_FILE_BROWSER_MESSAGE_ID_LOCATION_CONST(obj)                      \
+    (G_TYPE_CHECK_INSTANCE_CAST(                                               \
+        (obj), GEDIT_TYPE_FILE_BROWSER_MESSAGE_ID_LOCATION,                    \
+        BeditFileBrowserMessageIdLocation const))
+#define GEDIT_FILE_BROWSER_MESSAGE_ID_LOCATION_CLASS(klass)                    \
+    (G_TYPE_CHECK_CLASS_CAST(                                                  \
+        (klass), GEDIT_TYPE_FILE_BROWSER_MESSAGE_ID_LOCATION,                  \
+        BeditFileBrowserMessageIdLocationClass))
+#define GEDIT_IS_FILE_BROWSER_MESSAGE_ID_LOCATION(obj)                         \
+    (G_TYPE_CHECK_INSTANCE_TYPE(                                               \
+        (obj), GEDIT_TYPE_FILE_BROWSER_MESSAGE_ID_LOCATION))
+#define GEDIT_IS_FILE_BROWSER_MESSAGE_ID_LOCATION_CLASS(klass)                 \
+    (G_TYPE_CHECK_CLASS_TYPE(                                                  \
+        (klass), GEDIT_TYPE_FILE_BROWSER_MESSAGE_ID_LOCATION))
+#define GEDIT_FILE_BROWSER_MESSAGE_ID_LOCATION_GET_CLASS(obj)                  \
+    (G_TYPE_INSTANCE_GET_CLASS(                                                \
+        (obj), GEDIT_TYPE_FILE_BROWSER_MESSAGE_ID_LOCATION,                    \
+        BeditFileBrowserMessageIdLocationClass))
 
-typedef struct _BeditFileBrowserMessageIdLocation        BeditFileBrowserMessageIdLocation;
-typedef struct _BeditFileBrowserMessageIdLocationClass   BeditFileBrowserMessageIdLocationClass;
-typedef struct _BeditFileBrowserMessageIdLocationPrivate BeditFileBrowserMessageIdLocationPrivate;
+typedef struct _BeditFileBrowserMessageIdLocation
+    BeditFileBrowserMessageIdLocation;
+typedef struct _BeditFileBrowserMessageIdLocationClass
+    BeditFileBrowserMessageIdLocationClass;
+typedef struct _BeditFileBrowserMessageIdLocationPrivate
+    BeditFileBrowserMessageIdLocationPrivate;
 
-struct _BeditFileBrowserMessageIdLocation
-{
-	BeditMessage parent;
+struct _BeditFileBrowserMessageIdLocation {
+    BeditMessage parent;
 
-	BeditFileBrowserMessageIdLocationPrivate *priv;
+    BeditFileBrowserMessageIdLocationPrivate *priv;
 };
 
-struct _BeditFileBrowserMessageIdLocationClass
-{
-	BeditMessageClass parent_class;
+struct _BeditFileBrowserMessageIdLocationClass {
+    BeditMessageClass parent_class;
 };
 
-GType bedit_file_browser_message_id_location_get_type (void) G_GNUC_CONST;
+GType bedit_file_browser_message_id_location_get_type(void) G_GNUC_CONST;
 
 G_END_DECLS
 

@@ -22,26 +22,26 @@
 #ifndef GEDIT_APP_ACTIVATABLE_H
 #define GEDIT_APP_ACTIVATABLE_H
 
-#include <glib-object.h>
 #include <bedit/bedit-menu-extension.h>
+#include <glib-object.h>
 
 G_BEGIN_DECLS
 
-#define GEDIT_TYPE_APP_ACTIVATABLE (bedit_app_activatable_get_type ())
+#define GEDIT_TYPE_APP_ACTIVATABLE (bedit_app_activatable_get_type())
 
-G_DECLARE_INTERFACE (BeditAppActivatable, bedit_app_activatable, GEDIT, APP_ACTIVATABLE, GObject)
+G_DECLARE_INTERFACE(
+    BeditAppActivatable, bedit_app_activatable, GEDIT, APP_ACTIVATABLE, GObject)
 
-struct _BeditAppActivatableInterface
-{
-	GTypeInterface g_iface;
+struct _BeditAppActivatableInterface {
+    GTypeInterface g_iface;
 
-	/* Virtual public methods */
-	void	(*activate)		(BeditAppActivatable *activatable);
-	void	(*deactivate)		(BeditAppActivatable *activatable);
+    /* Virtual public methods */
+    void (*activate)(BeditAppActivatable *activatable);
+    void (*deactivate)(BeditAppActivatable *activatable);
 };
 
-void	 bedit_app_activatable_activate			(BeditAppActivatable *activatable);
-void	 bedit_app_activatable_deactivate		(BeditAppActivatable *activatable);
+void bedit_app_activatable_activate(BeditAppActivatable *activatable);
+void bedit_app_activatable_deactivate(BeditAppActivatable *activatable);
 
 /**
  * bedit_app_activatable_extend_menu:
@@ -55,8 +55,8 @@ void	 bedit_app_activatable_deactivate		(BeditAppActivatable *activatable);
  * Returns: (transfer full): a #BeditMenuExtension for the specific section
  * or %NULL if not found.
  */
-BeditMenuExtension	*bedit_app_activatable_extend_menu	(BeditAppActivatable *activatable,
-								 const gchar *extension_point);
+BeditMenuExtension *bedit_app_activatable_extend_menu(
+    BeditAppActivatable *activatable, const gchar *extension_point);
 
 G_END_DECLS
 

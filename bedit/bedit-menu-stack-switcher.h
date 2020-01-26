@@ -27,17 +27,19 @@ G_BEGIN_DECLS
 
 #define GEDIT_TYPE_MENU_STACK_SWITCHER (bedit_menu_stack_switcher_get_type())
 
-G_DECLARE_FINAL_TYPE (BeditMenuStackSwitcher, bedit_menu_stack_switcher, GEDIT, MENU_STACK_SWITCHER, GtkMenuButton)
+G_DECLARE_FINAL_TYPE(
+    BeditMenuStackSwitcher, bedit_menu_stack_switcher, GEDIT,
+    MENU_STACK_SWITCHER, GtkMenuButton)
 
-GtkWidget *  bedit_menu_stack_switcher_new 	      (void);
+GtkWidget *bedit_menu_stack_switcher_new(void);
 
-void         bedit_menu_stack_switcher_set_stack  (BeditMenuStackSwitcher *switcher,
-                                                   GtkStack               *stack);
+void bedit_menu_stack_switcher_set_stack(
+    BeditMenuStackSwitcher *switcher, GtkStack *stack);
 
-GtkStack *   bedit_menu_stack_switcher_get_stack  (BeditMenuStackSwitcher *switcher);
+GtkStack *bedit_menu_stack_switcher_get_stack(BeditMenuStackSwitcher *switcher);
 
 G_END_DECLS
 
-#endif  /* GEDIT_MENU_STACK_SWITCHER_H  */
+#endif /* GEDIT_MENU_STACK_SWITCHER_H  */
 
 /* ex:set ts=2 sw=2 et: */

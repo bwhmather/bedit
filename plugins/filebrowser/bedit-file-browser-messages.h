@@ -21,13 +21,13 @@
 #ifndef GEDIT_FILE_BROWSER_MESSAGES_H
 #define GEDIT_FILE_BROWSER_MESSAGES_H
 
-#include <bedit/bedit-window.h>
 #include <bedit/bedit-message-bus.h>
+#include <bedit/bedit-window.h>
 #include "bedit-file-browser-widget.h"
 
-void bedit_file_browser_messages_register   (BeditWindow            *window,
-					     BeditFileBrowserWidget *widget);
-void bedit_file_browser_messages_unregister (BeditWindow            *window);
+void bedit_file_browser_messages_register(
+    BeditWindow *window, BeditFileBrowserWidget *widget);
+void bedit_file_browser_messages_unregister(BeditWindow *window);
 
 #endif /* GEDIT_FILE_BROWSER_MESSAGES_H */
 /* ex:set ts=8 noet: */

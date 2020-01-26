@@ -30,50 +30,50 @@
 
 G_BEGIN_DECLS
 
-#define GEDIT_TYPE_VIEW            (bedit_view_get_type ())
-#define GEDIT_VIEW(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), GEDIT_TYPE_VIEW, BeditView))
-#define GEDIT_VIEW_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass), GEDIT_TYPE_VIEW, BeditViewClass))
-#define GEDIT_IS_VIEW(obj)         (G_TYPE_CHECK_INSTANCE_TYPE((obj), GEDIT_TYPE_VIEW))
-#define GEDIT_IS_VIEW_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), GEDIT_TYPE_VIEW))
-#define GEDIT_VIEW_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj), GEDIT_TYPE_VIEW, BeditViewClass))
+#define GEDIT_TYPE_VIEW (bedit_view_get_type())
+#define GEDIT_VIEW(obj)                                                        \
+    (G_TYPE_CHECK_INSTANCE_CAST((obj), GEDIT_TYPE_VIEW, BeditView))
+#define GEDIT_VIEW_CLASS(klass)                                                \
+    (G_TYPE_CHECK_CLASS_CAST((klass), GEDIT_TYPE_VIEW, BeditViewClass))
+#define GEDIT_IS_VIEW(obj) (G_TYPE_CHECK_INSTANCE_TYPE((obj), GEDIT_TYPE_VIEW))
+#define GEDIT_IS_VIEW_CLASS(klass)                                             \
+    (G_TYPE_CHECK_CLASS_TYPE((klass), GEDIT_TYPE_VIEW))
+#define GEDIT_VIEW_GET_CLASS(obj)                                              \
+    (G_TYPE_INSTANCE_GET_CLASS((obj), GEDIT_TYPE_VIEW, BeditViewClass))
 
-typedef struct _BeditView		BeditView;
-typedef struct _BeditViewClass		BeditViewClass;
-typedef struct _BeditViewPrivate	BeditViewPrivate;
+typedef struct _BeditView BeditView;
+typedef struct _BeditViewClass BeditViewClass;
+typedef struct _BeditViewPrivate BeditViewPrivate;
 
-struct _BeditView
-{
-	GtkSourceView     view;
+struct _BeditView {
+    GtkSourceView view;
 
-	/*< private >*/
-	BeditViewPrivate *priv;
+    /*< private >*/
+    BeditViewPrivate *priv;
 };
 
-struct _BeditViewClass
-{
-	GtkSourceViewClass   parent_class;
+struct _BeditViewClass {
+    GtkSourceViewClass parent_class;
 
-	void	           (*drop_uris)     (BeditView  *view,
-					     gchar     **uri_list);
+    void (*drop_uris)(BeditView *view, gchar **uri_list);
 
-	gpointer             padding;
+    gpointer padding;
 };
 
-GType		 bedit_view_get_type     	(void) G_GNUC_CONST;
+GType bedit_view_get_type(void) G_GNUC_CONST;
 
-GtkWidget	*bedit_view_new			(BeditDocument   *doc);
+GtkWidget *bedit_view_new(BeditDocument *doc);
 
-void		 bedit_view_cut_clipboard 	(BeditView       *view);
-void		 bedit_view_copy_clipboard 	(BeditView       *view);
-void		 bedit_view_paste_clipboard	(BeditView       *view);
-void		 bedit_view_delete_selection	(BeditView       *view);
-void		 bedit_view_select_all		(BeditView       *view);
+void bedit_view_cut_clipboard(BeditView *view);
+void bedit_view_copy_clipboard(BeditView *view);
+void bedit_view_paste_clipboard(BeditView *view);
+void bedit_view_delete_selection(BeditView *view);
+void bedit_view_select_all(BeditView *view);
 
-void		 bedit_view_scroll_to_cursor 	(BeditView       *view);
+void bedit_view_scroll_to_cursor(BeditView *view);
 
-void 		 bedit_view_set_font		(BeditView       *view,
-						 gboolean         default_font,
-						 const gchar     *font_name);
+void bedit_view_set_font(
+    BeditView *view, gboolean default_font, const gchar *font_name);
 
 G_END_DECLS
 

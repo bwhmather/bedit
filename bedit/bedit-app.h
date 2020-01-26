@@ -21,73 +21,62 @@
 #ifndef GEDIT_APP_H
 #define GEDIT_APP_H
 
-#include <gtk/gtk.h>
 #include <bedit/bedit-window.h>
+#include <gtk/gtk.h>
 
 G_BEGIN_DECLS
 
 #define GEDIT_TYPE_APP (bedit_app_get_type())
 
-G_DECLARE_DERIVABLE_TYPE (BeditApp, bedit_app, GEDIT, APP, GtkApplication)
+G_DECLARE_DERIVABLE_TYPE(BeditApp, bedit_app, GEDIT, APP, GtkApplication)
 
-struct _BeditAppClass
-{
-	GtkApplicationClass parent_class;
+struct _BeditAppClass {
+    GtkApplicationClass parent_class;
 
-	gboolean (*show_help)                   (BeditApp    *app,
-	                                         GtkWindow   *parent,
-	                                         const gchar *name,
-	                                         const gchar *link_id);
+    gboolean (*show_help)(
+        BeditApp *app, GtkWindow *parent, const gchar *name,
+        const gchar *link_id);
 
-	gchar *(*help_link_id)                  (BeditApp    *app,
-	                                         const gchar *name,
-	                                         const gchar *link_id);
+    gchar *(*help_link_id)(
+        BeditApp *app, const gchar *name, const gchar *link_id);
 
-	void (*set_window_title)                (BeditApp    *app,
-	                                         BeditWindow *window,
-	                                         const gchar *title);
+    void (*set_window_title)(
+        BeditApp *app, BeditWindow *window, const gchar *title);
 
-	BeditWindow *(*create_window)           (BeditApp    *app);
+    BeditWindow *(*create_window)(BeditApp *app);
 
-	gboolean (*process_window_event)        (BeditApp    *app,
-	                                         BeditWindow *window,
-	                                         GdkEvent    *event);
+    gboolean (*process_window_event)(
+        BeditApp *app, BeditWindow *window, GdkEvent *event);
 };
 
-typedef enum
-{
-	GEDIT_LOCKDOWN_COMMAND_LINE	= 1 << 0,
-	GEDIT_LOCKDOWN_PRINTING		= 1 << 1,
-	GEDIT_LOCKDOWN_PRINT_SETUP	= 1 << 2,
-	GEDIT_LOCKDOWN_SAVE_TO_DISK	= 1 << 3
+typedef enum {
+    GEDIT_LOCKDOWN_COMMAND_LINE = 1 << 0,
+    GEDIT_LOCKDOWN_PRINTING = 1 << 1,
+    GEDIT_LOCKDOWN_PRINT_SETUP = 1 << 2,
+    GEDIT_LOCKDOWN_SAVE_TO_DISK = 1 << 3
 } BeditLockdownMask;
 
 /* We need to define this here to avoid problems with bindings and gsettings */
 #define GEDIT_LOCKDOWN_ALL 0xF
 
-BeditWindow	*bedit_app_create_window		(BeditApp    *app,
-							 GdkScreen   *screen);
+BeditWindow *bedit_app_create_window(BeditApp *app, GdkScreen *screen);
 
-GList		*bedit_app_get_main_windows		(BeditApp    *app);
+GList *bedit_app_get_main_windows(BeditApp *app);
 
-GList		*bedit_app_get_documents		(BeditApp    *app);
+GList *bedit_app_get_documents(BeditApp *app);
 
-GList		*bedit_app_get_views			(BeditApp    *app);
+GList *bedit_app_get_views(BeditApp *app);
 
 /* Lockdown state */
-BeditLockdownMask bedit_app_get_lockdown		(BeditApp    *app);
+BeditLockdownMask bedit_app_get_lockdown(BeditApp *app);
 
-gboolean	 bedit_app_show_help			(BeditApp    *app,
-                                                         GtkWindow   *parent,
-                                                         const gchar *name,
-                                                         const gchar *link_id);
+gboolean bedit_app_show_help(
+    BeditApp *app, GtkWindow *parent, const gchar *name, const gchar *link_id);
 
-void		 bedit_app_set_window_title		(BeditApp    *app,
-                                                         BeditWindow *window,
-                                                         const gchar *title);
-gboolean	bedit_app_process_window_event		(BeditApp    *app,
-							 BeditWindow *window,
-							 GdkEvent    *event);
+void bedit_app_set_window_title(
+    BeditApp *app, BeditWindow *window, const gchar *title);
+gboolean bedit_app_process_window_event(
+    BeditApp *app, BeditWindow *window, GdkEvent *event);
 
 G_END_DECLS
 

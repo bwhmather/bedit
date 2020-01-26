@@ -21,57 +21,53 @@
 #ifndef GEDIT_TAB_H
 #define GEDIT_TAB_H
 
-#include <gtksourceview/gtksource.h>
-#include <bedit/bedit-view.h>
 #include <bedit/bedit-document.h>
+#include <bedit/bedit-view.h>
+#include <gtksourceview/gtksource.h>
 
 G_BEGIN_DECLS
 
-typedef enum
-{
-	GEDIT_TAB_STATE_NORMAL = 0,
-	GEDIT_TAB_STATE_LOADING,
-	GEDIT_TAB_STATE_REVERTING,
-	GEDIT_TAB_STATE_SAVING,
-	GEDIT_TAB_STATE_PRINTING,
-	GEDIT_TAB_STATE_SHOWING_PRINT_PREVIEW,
-	GEDIT_TAB_STATE_LOADING_ERROR,
-	GEDIT_TAB_STATE_REVERTING_ERROR,
-	GEDIT_TAB_STATE_SAVING_ERROR,
-	GEDIT_TAB_STATE_GENERIC_ERROR,
-	GEDIT_TAB_STATE_CLOSING,
-	GEDIT_TAB_STATE_EXTERNALLY_MODIFIED_NOTIFICATION,
-	GEDIT_TAB_NUM_OF_STATES /* This is not a valid state */
+typedef enum {
+    GEDIT_TAB_STATE_NORMAL = 0,
+    GEDIT_TAB_STATE_LOADING,
+    GEDIT_TAB_STATE_REVERTING,
+    GEDIT_TAB_STATE_SAVING,
+    GEDIT_TAB_STATE_PRINTING,
+    GEDIT_TAB_STATE_SHOWING_PRINT_PREVIEW,
+    GEDIT_TAB_STATE_LOADING_ERROR,
+    GEDIT_TAB_STATE_REVERTING_ERROR,
+    GEDIT_TAB_STATE_SAVING_ERROR,
+    GEDIT_TAB_STATE_GENERIC_ERROR,
+    GEDIT_TAB_STATE_CLOSING,
+    GEDIT_TAB_STATE_EXTERNALLY_MODIFIED_NOTIFICATION,
+    GEDIT_TAB_NUM_OF_STATES /* This is not a valid state */
 } BeditTabState;
 
 #define GEDIT_TYPE_TAB (bedit_tab_get_type())
 
-G_DECLARE_FINAL_TYPE (BeditTab, bedit_tab, GEDIT, TAB, GtkBox)
+G_DECLARE_FINAL_TYPE(BeditTab, bedit_tab, GEDIT, TAB, GtkBox)
 
-BeditView	*bedit_tab_get_view			(BeditTab            *tab);
+BeditView *bedit_tab_get_view(BeditTab *tab);
 
 /* This is only an helper function */
-BeditDocument	*bedit_tab_get_document			(BeditTab            *tab);
+BeditDocument *bedit_tab_get_document(BeditTab *tab);
 
-BeditTab	*bedit_tab_get_from_document		(BeditDocument       *doc);
+BeditTab *bedit_tab_get_from_document(BeditDocument *doc);
 
-BeditTabState	 bedit_tab_get_state			(BeditTab            *tab);
+BeditTabState bedit_tab_get_state(BeditTab *tab);
 
-gboolean	 bedit_tab_get_auto_save_enabled	(BeditTab            *tab);
+gboolean bedit_tab_get_auto_save_enabled(BeditTab *tab);
 
-void		 bedit_tab_set_auto_save_enabled	(BeditTab            *tab,
-							 gboolean            enable);
+void bedit_tab_set_auto_save_enabled(BeditTab *tab, gboolean enable);
 
-gint		 bedit_tab_get_auto_save_interval	(BeditTab            *tab);
+gint bedit_tab_get_auto_save_interval(BeditTab *tab);
 
-void		 bedit_tab_set_auto_save_interval	(BeditTab            *tab,
-							 gint                interval);
+void bedit_tab_set_auto_save_interval(BeditTab *tab, gint interval);
 
-void		 bedit_tab_set_info_bar			(BeditTab            *tab,
-							 GtkWidget           *info_bar);
+void bedit_tab_set_info_bar(BeditTab *tab, GtkWidget *info_bar);
 
 G_END_DECLS
 
-#endif  /* GEDIT_TAB_H  */
+#endif /* GEDIT_TAB_H  */
 
 /* ex:set ts=8 noet: */

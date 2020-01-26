@@ -26,7 +26,7 @@
 
 G_BEGIN_DECLS
 
-void		 bedit_show_preferences_dialog		(BeditWindow *parent);
+void bedit_show_preferences_dialog(BeditWindow *parent);
 
 G_END_DECLS
 

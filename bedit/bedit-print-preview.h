@@ -24,13 +24,14 @@
 
 G_BEGIN_DECLS
 
-#define GEDIT_TYPE_PRINT_PREVIEW (bedit_print_preview_get_type ())
+#define GEDIT_TYPE_PRINT_PREVIEW (bedit_print_preview_get_type())
 
-G_DECLARE_FINAL_TYPE (BeditPrintPreview, bedit_print_preview, GEDIT, PRINT_PREVIEW, GtkGrid)
+G_DECLARE_FINAL_TYPE(
+    BeditPrintPreview, bedit_print_preview, GEDIT, PRINT_PREVIEW, GtkGrid)
 
-GtkWidget	*bedit_print_preview_new	(GtkPrintOperation        *operation,
-						 GtkPrintOperationPreview *gtk_preview,
-						 GtkPrintContext          *context);
+GtkWidget *bedit_print_preview_new(
+    GtkPrintOperation *operation, GtkPrintOperationPreview *gtk_preview,
+    GtkPrintContext *context);
 
 G_END_DECLS
 

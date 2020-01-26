@@ -21,104 +21,101 @@
 #ifndef GEDIT_FILE_BROWSER_WIDGET_H
 #define GEDIT_FILE_BROWSER_WIDGET_H
 
-#include <gtk/gtk.h>
 #include <bedit/bedit-menu-extension.h>
-#include "bedit-file-browser-store.h"
+#include <gtk/gtk.h>
 #include "bedit-file-bookmarks-store.h"
+#include "bedit-file-browser-store.h"
 #include "bedit-file-browser-view.h"
 
 G_BEGIN_DECLS
-#define GEDIT_TYPE_FILE_BROWSER_WIDGET			(bedit_file_browser_widget_get_type ())
-#define GEDIT_FILE_BROWSER_WIDGET(obj)			(G_TYPE_CHECK_INSTANCE_CAST ((obj), GEDIT_TYPE_FILE_BROWSER_WIDGET, BeditFileBrowserWidget))
-#define GEDIT_FILE_BROWSER_WIDGET_CONST(obj)		(G_TYPE_CHECK_INSTANCE_CAST ((obj), GEDIT_TYPE_FILE_BROWSER_WIDGET, BeditFileBrowserWidget const))
-#define GEDIT_FILE_BROWSER_WIDGET_CLASS(klass)		(G_TYPE_CHECK_CLASS_CAST ((klass), GEDIT_TYPE_FILE_BROWSER_WIDGET, BeditFileBrowserWidgetClass))
-#define GEDIT_IS_FILE_BROWSER_WIDGET(obj)		(G_TYPE_CHECK_INSTANCE_TYPE ((obj), GEDIT_TYPE_FILE_BROWSER_WIDGET))
-#define GEDIT_IS_FILE_BROWSER_WIDGET_CLASS(klass)	(G_TYPE_CHECK_CLASS_TYPE ((klass), GEDIT_TYPE_FILE_BROWSER_WIDGET))
-#define GEDIT_FILE_BROWSER_WIDGET_GET_CLASS(obj)	(G_TYPE_INSTANCE_GET_CLASS ((obj), GEDIT_TYPE_FILE_BROWSER_WIDGET, BeditFileBrowserWidgetClass))
+#define GEDIT_TYPE_FILE_BROWSER_WIDGET (bedit_file_browser_widget_get_type())
+#define GEDIT_FILE_BROWSER_WIDGET(obj)                                         \
+    (G_TYPE_CHECK_INSTANCE_CAST(                                               \
+        (obj), GEDIT_TYPE_FILE_BROWSER_WIDGET, BeditFileBrowserWidget))
+#define GEDIT_FILE_BROWSER_WIDGET_CONST(obj)                                   \
+    (G_TYPE_CHECK_INSTANCE_CAST(                                               \
+        (obj), GEDIT_TYPE_FILE_BROWSER_WIDGET, BeditFileBrowserWidget const))
+#define GEDIT_FILE_BROWSER_WIDGET_CLASS(klass)                                 \
+    (G_TYPE_CHECK_CLASS_CAST(                                                  \
+        (klass), GEDIT_TYPE_FILE_BROWSER_WIDGET, BeditFileBrowserWidgetClass))
+#define GEDIT_IS_FILE_BROWSER_WIDGET(obj)                                      \
+    (G_TYPE_CHECK_INSTANCE_TYPE((obj), GEDIT_TYPE_FILE_BROWSER_WIDGET))
+#define GEDIT_IS_FILE_BROWSER_WIDGET_CLASS(klass)                              \
+    (G_TYPE_CHECK_CLASS_TYPE((klass), GEDIT_TYPE_FILE_BROWSER_WIDGET))
+#define GEDIT_FILE_BROWSER_WIDGET_GET_CLASS(obj)                               \
+    (G_TYPE_INSTANCE_GET_CLASS(                                                \
+        (obj), GEDIT_TYPE_FILE_BROWSER_WIDGET, BeditFileBrowserWidgetClass))
 
-typedef struct _BeditFileBrowserWidget        BeditFileBrowserWidget;
-typedef struct _BeditFileBrowserWidgetClass   BeditFileBrowserWidgetClass;
+typedef struct _BeditFileBrowserWidget BeditFileBrowserWidget;
+typedef struct _BeditFileBrowserWidgetClass BeditFileBrowserWidgetClass;
 typedef struct _BeditFileBrowserWidgetPrivate BeditFileBrowserWidgetPrivate;
 
-typedef
-gboolean (*BeditFileBrowserWidgetFilterFunc) (BeditFileBrowserWidget *obj,
-					      BeditFileBrowserStore  *model,
-					      GtkTreeIter            *iter,
-					      gpointer                user_data);
+typedef gboolean (*BeditFileBrowserWidgetFilterFunc)(
+    BeditFileBrowserWidget *obj, BeditFileBrowserStore *model,
+    GtkTreeIter *iter, gpointer user_data);
 
-struct _BeditFileBrowserWidget
-{
-	GtkBox parent;
+struct _BeditFileBrowserWidget {
+    GtkBox parent;
 
-	BeditFileBrowserWidgetPrivate *priv;
+    BeditFileBrowserWidgetPrivate *priv;
 };
 
-struct _BeditFileBrowserWidgetClass
-{
-	GtkBoxClass parent_class;
+struct _BeditFileBrowserWidgetClass {
+    GtkBoxClass parent_class;
 
-	/* Signals */
-	void (* location_activated)	(BeditFileBrowserWidget *widget,
-					 GFile                  *location);
-	void (* error)			(BeditFileBrowserWidget *widget,
-					 guint                   code,
-					 gchar const            *message);
-	gboolean (* confirm_delete)	(BeditFileBrowserWidget *widget,
-					 BeditFileBrowserStore  *model,
-					 GList                  *list);
-	gboolean (* confirm_no_trash)	(BeditFileBrowserWidget *widget,
-					 GList                  *list);
-	void (* open_in_terminal)       (BeditFileBrowserWidget *widget,
-	                                 GFile                  *location);
-	void (* set_active_root)        (BeditFileBrowserWidget *widget);
+    /* Signals */
+    void (*location_activated)(BeditFileBrowserWidget *widget, GFile *location);
+    void (*error)(
+        BeditFileBrowserWidget *widget, guint code, gchar const *message);
+    gboolean (*confirm_delete)(
+        BeditFileBrowserWidget *widget, BeditFileBrowserStore *model,
+        GList *list);
+    gboolean (*confirm_no_trash)(BeditFileBrowserWidget *widget, GList *list);
+    void (*open_in_terminal)(BeditFileBrowserWidget *widget, GFile *location);
+    void (*set_active_root)(BeditFileBrowserWidget *widget);
 };
 
-GType		 bedit_file_browser_widget_get_type            (void) G_GNUC_CONST;
+GType bedit_file_browser_widget_get_type(void) G_GNUC_CONST;
 
-GtkWidget	*bedit_file_browser_widget_new            	(void);
+GtkWidget *bedit_file_browser_widget_new(void);
 
-void		 bedit_file_browser_widget_show_bookmarks       (BeditFileBrowserWidget *obj);
-void		 bedit_file_browser_widget_show_files           (BeditFileBrowserWidget *obj);
+void bedit_file_browser_widget_show_bookmarks(BeditFileBrowserWidget *obj);
+void bedit_file_browser_widget_show_files(BeditFileBrowserWidget *obj);
 
-void		 bedit_file_browser_widget_set_root		(BeditFileBrowserWidget *obj,
-								 GFile                  *root,
-								 gboolean                virtual_root);
-void		bedit_file_browser_widget_set_root_and_virtual_root
-								(BeditFileBrowserWidget *obj,
-								 GFile                  *root,
-								 GFile                  *virtual_root);
+void bedit_file_browser_widget_set_root(
+    BeditFileBrowserWidget *obj, GFile *root, gboolean virtual_root);
+void bedit_file_browser_widget_set_root_and_virtual_root(
+    BeditFileBrowserWidget *obj, GFile *root, GFile *virtual_root);
 
-gboolean	 bedit_file_browser_widget_get_selected_directory
-								(BeditFileBrowserWidget *obj,
-								 GtkTreeIter            *iter);
+gboolean bedit_file_browser_widget_get_selected_directory(
+    BeditFileBrowserWidget *obj, GtkTreeIter *iter);
 
-void             bedit_file_browser_widget_set_active_root_enabled (BeditFileBrowserWidget *widget,
-                                                                    gboolean                enabled);
+void bedit_file_browser_widget_set_active_root_enabled(
+    BeditFileBrowserWidget *widget, gboolean enabled);
 
-BeditFileBrowserStore *
-bedit_file_browser_widget_get_browser_store         		(BeditFileBrowserWidget *obj);
-BeditFileBookmarksStore *
-bedit_file_browser_widget_get_bookmarks_store			(BeditFileBrowserWidget *obj);
-BeditFileBrowserView *
-bedit_file_browser_widget_get_browser_view			(BeditFileBrowserWidget *obj);
-GtkWidget *
-bedit_file_browser_widget_get_filter_entry			(BeditFileBrowserWidget *obj);
+BeditFileBrowserStore *bedit_file_browser_widget_get_browser_store(
+    BeditFileBrowserWidget *obj);
+BeditFileBookmarksStore *bedit_file_browser_widget_get_bookmarks_store(
+    BeditFileBrowserWidget *obj);
+BeditFileBrowserView *bedit_file_browser_widget_get_browser_view(
+    BeditFileBrowserWidget *obj);
+GtkWidget *bedit_file_browser_widget_get_filter_entry(
+    BeditFileBrowserWidget *obj);
 
-gulong bedit_file_browser_widget_add_filter			(BeditFileBrowserWidget *obj,
-								 BeditFileBrowserWidgetFilterFunc func,
-								 gpointer                user_data,
-								 GDestroyNotify          notify);
-void		 bedit_file_browser_widget_remove_filter	(BeditFileBrowserWidget *obj,
-								 gulong                  id);
-void		 bedit_file_browser_widget_set_filter_pattern	(BeditFileBrowserWidget *obj,
-								 gchar const            *pattern);
-BeditMenuExtension *
-		 bedit_file_browser_widget_extend_context_menu	(BeditFileBrowserWidget *obj);
-void		 bedit_file_browser_widget_refresh		(BeditFileBrowserWidget *obj);
-void		 bedit_file_browser_widget_history_back		(BeditFileBrowserWidget *obj);
-void		 bedit_file_browser_widget_history_forward	(BeditFileBrowserWidget *obj);
+gulong bedit_file_browser_widget_add_filter(
+    BeditFileBrowserWidget *obj, BeditFileBrowserWidgetFilterFunc func,
+    gpointer user_data, GDestroyNotify notify);
+void bedit_file_browser_widget_remove_filter(
+    BeditFileBrowserWidget *obj, gulong id);
+void bedit_file_browser_widget_set_filter_pattern(
+    BeditFileBrowserWidget *obj, gchar const *pattern);
+BeditMenuExtension *bedit_file_browser_widget_extend_context_menu(
+    BeditFileBrowserWidget *obj);
+void bedit_file_browser_widget_refresh(BeditFileBrowserWidget *obj);
+void bedit_file_browser_widget_history_back(BeditFileBrowserWidget *obj);
+void bedit_file_browser_widget_history_forward(BeditFileBrowserWidget *obj);
 
-void		 _bedit_file_browser_widget_register_type      (GTypeModule            *type_module);
+void _bedit_file_browser_widget_register_type(GTypeModule *type_module);
 
 G_END_DECLS
 

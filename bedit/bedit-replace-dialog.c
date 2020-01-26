@@ -23,60 +23,56 @@
 
 #include "bedit-replace-dialog.h"
 
-#include <string.h>
-#include <glib/gi18n.h>
 #include <gdk/gdkkeysyms.h>
+#include <glib/gi18n.h>
+#include <string.h>
 
-#include "bedit-history-entry.h"
 #include "bedit-document.h"
+#include "bedit-history-entry.h"
 
 #define GEDIT_SEARCH_CONTEXT_KEY "bedit-search-context-key"
 
-struct _BeditReplaceDialog
-{
-	GtkDialog parent_instance;
+struct _BeditReplaceDialog {
+    GtkDialog parent_instance;
 
-	GtkWidget *grid;
-	GtkWidget *search_label;
-	GtkWidget *search_entry;
-	GtkWidget *search_text_entry;
-	GtkWidget *replace_label;
-	GtkWidget *replace_entry;
-	GtkWidget *replace_text_entry;
-	GtkWidget *match_case_checkbutton;
-	GtkWidget *entire_word_checkbutton;
-	GtkWidget *regex_checkbutton;
-	GtkWidget *backwards_checkbutton;
-	GtkWidget *wrap_around_checkbutton;
-	GtkWidget *close_button;
+    GtkWidget *grid;
+    GtkWidget *search_label;
+    GtkWidget *search_entry;
+    GtkWidget *search_text_entry;
+    GtkWidget *replace_label;
+    GtkWidget *replace_entry;
+    GtkWidget *replace_text_entry;
+    GtkWidget *match_case_checkbutton;
+    GtkWidget *entire_word_checkbutton;
+    GtkWidget *regex_checkbutton;
+    GtkWidget *backwards_checkbutton;
+    GtkWidget *wrap_around_checkbutton;
+    GtkWidget *close_button;
 
-	BeditDocument *active_document;
+    BeditDocument *active_document;
 
-	guint idle_update_sensitivity_id;
+    guint idle_update_sensitivity_id;
 };
 
-G_DEFINE_TYPE (BeditReplaceDialog, bedit_replace_dialog, GTK_TYPE_DIALOG)
+G_DEFINE_TYPE(BeditReplaceDialog, bedit_replace_dialog, GTK_TYPE_DIALOG)
 
-static GtkSourceSearchContext *
-get_search_context (BeditReplaceDialog *dialog,
-		    BeditDocument      *doc)
-{
-	GtkSourceSearchContext *search_context;
+static GtkSourceSearchContext *get_search_context(
+    BeditReplaceDialog *dialog, BeditDocument *doc) {
+    GtkSourceSearchContext *search_context;
 
-	if (doc == NULL)
-	{
-		return NULL;
-	}
+    if (doc == NULL) {
+        return NULL;
+    }
 
-	search_context = bedit_document_get_search_context (doc);
+    search_context = bedit_document_get_search_context(doc);
 
-	if (search_context != NULL &&
-	    g_object_get_data (G_OBJECT (search_context), GEDIT_SEARCH_CONTEXT_KEY) == dialog)
-	{
-		return search_context;
-	}
+    if (search_context != NULL &&
+        g_object_get_data(G_OBJECT(search_context), GEDIT_SEARCH_CONTEXT_KEY) ==
+            dialog) {
+        return search_context;
+    }
 
-	return NULL;
+    return NULL;
 }
 
 /* The search settings between the dialog's widgets (checkbuttons and the text
@@ -102,718 +98,603 @@ get_search_context (BeditReplaceDialog *dialog,
  * document tab (and thus one SearchSettings), it doesn't have an effect on the
  * other tabs. But the dialog widgets don't change.
  */
-static void
-set_search_settings (BeditReplaceDialog *dialog)
-{
-	GtkSourceSearchContext *search_context;
-	GtkSourceSearchSettings *search_settings;
-	gboolean case_sensitive;
-	gboolean at_word_boundaries;
-	gboolean regex_enabled;
-	gboolean wrap_around;
-	const gchar *search_text;
+static void set_search_settings(BeditReplaceDialog *dialog) {
+    GtkSourceSearchContext *search_context;
+    GtkSourceSearchSettings *search_settings;
+    gboolean case_sensitive;
+    gboolean at_word_boundaries;
+    gboolean regex_enabled;
+    gboolean wrap_around;
+    const gchar *search_text;
 
-	search_context = get_search_context (dialog, dialog->active_document);
+    search_context = get_search_context(dialog, dialog->active_document);
 
-	if (search_context == NULL)
-	{
-		return;
-	}
+    if (search_context == NULL) {
+        return;
+    }
 
-	search_settings = gtk_source_search_context_get_settings (search_context);
+    search_settings = gtk_source_search_context_get_settings(search_context);
 
-	case_sensitive = gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (dialog->match_case_checkbutton));
-	gtk_source_search_settings_set_case_sensitive (search_settings, case_sensitive);
+    case_sensitive = gtk_toggle_button_get_active(
+        GTK_TOGGLE_BUTTON(dialog->match_case_checkbutton));
+    gtk_source_search_settings_set_case_sensitive(
+        search_settings, case_sensitive);
 
-	at_word_boundaries = gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (dialog->entire_word_checkbutton));
-	gtk_source_search_settings_set_at_word_boundaries (search_settings, at_word_boundaries);
+    at_word_boundaries = gtk_toggle_button_get_active(
+        GTK_TOGGLE_BUTTON(dialog->entire_word_checkbutton));
+    gtk_source_search_settings_set_at_word_boundaries(
+        search_settings, at_word_boundaries);
 
-	regex_enabled = gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (dialog->regex_checkbutton));
-	gtk_source_search_settings_set_regex_enabled (search_settings, regex_enabled);
+    regex_enabled = gtk_toggle_button_get_active(
+        GTK_TOGGLE_BUTTON(dialog->regex_checkbutton));
+    gtk_source_search_settings_set_regex_enabled(
+        search_settings, regex_enabled);
 
-	wrap_around = gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (dialog->wrap_around_checkbutton));
-	gtk_source_search_settings_set_wrap_around (search_settings, wrap_around);
+    wrap_around = gtk_toggle_button_get_active(
+        GTK_TOGGLE_BUTTON(dialog->wrap_around_checkbutton));
+    gtk_source_search_settings_set_wrap_around(search_settings, wrap_around);
 
-	search_text = gtk_entry_get_text (GTK_ENTRY (dialog->search_text_entry));
+    search_text = gtk_entry_get_text(GTK_ENTRY(dialog->search_text_entry));
 
-	if (regex_enabled)
-	{
-		gtk_source_search_settings_set_search_text (search_settings, search_text);
-	}
-	else
-	{
-		gchar *unescaped_search_text = gtk_source_utils_unescape_search_text (search_text);
-		gtk_source_search_settings_set_search_text (search_settings, unescaped_search_text);
-		g_free (unescaped_search_text);
-	}
+    if (regex_enabled) {
+        gtk_source_search_settings_set_search_text(
+            search_settings, search_text);
+    } else {
+        gchar *unescaped_search_text =
+            gtk_source_utils_unescape_search_text(search_text);
+        gtk_source_search_settings_set_search_text(
+            search_settings, unescaped_search_text);
+        g_free(unescaped_search_text);
+    }
 }
 
-static BeditWindow *
-get_bedit_window (BeditReplaceDialog *dialog)
-{
-	GtkWindow *transient_for = gtk_window_get_transient_for (GTK_WINDOW (dialog));
+static BeditWindow *get_bedit_window(BeditReplaceDialog *dialog) {
+    GtkWindow *transient_for = gtk_window_get_transient_for(GTK_WINDOW(dialog));
 
-	return transient_for != NULL ? GEDIT_WINDOW (transient_for) : NULL;
+    return transient_for != NULL ? GEDIT_WINDOW(transient_for) : NULL;
 }
 
-static BeditDocument *
-get_active_document (BeditReplaceDialog *dialog)
-{
-	BeditWindow *window = get_bedit_window (dialog);
+static BeditDocument *get_active_document(BeditReplaceDialog *dialog) {
+    BeditWindow *window = get_bedit_window(dialog);
 
-	return window != NULL ? bedit_window_get_active_document (window) : NULL;
+    return window != NULL ? bedit_window_get_active_document(window) : NULL;
 }
 
-void
-bedit_replace_dialog_present_with_time (BeditReplaceDialog *dialog,
-					guint32             timestamp)
-{
-	g_return_if_fail (GEDIT_REPLACE_DIALOG (dialog));
+void bedit_replace_dialog_present_with_time(
+    BeditReplaceDialog *dialog, guint32 timestamp) {
+    g_return_if_fail(GEDIT_REPLACE_DIALOG(dialog));
 
-	gtk_window_present_with_time (GTK_WINDOW (dialog), timestamp);
+    gtk_window_present_with_time(GTK_WINDOW(dialog), timestamp);
 
-	gtk_widget_grab_focus (dialog->search_text_entry);
+    gtk_widget_grab_focus(dialog->search_text_entry);
 }
 
-static gboolean
-bedit_replace_dialog_delete_event (GtkWidget   *widget,
-                                   GdkEventAny *event)
-{
-	/* prevent destruction */
-	return TRUE;
+static gboolean bedit_replace_dialog_delete_event(
+    GtkWidget *widget, GdkEventAny *event) {
+    /* prevent destruction */
+    return TRUE;
 }
 
-static void
-set_error (GtkEntry    *entry,
-	   const gchar *error_msg)
-{
-	if (error_msg == NULL || error_msg[0] == '\0')
-	{
-		gtk_entry_set_icon_from_gicon (entry, GTK_ENTRY_ICON_SECONDARY, NULL);
-		gtk_entry_set_icon_tooltip_text (entry, GTK_ENTRY_ICON_SECONDARY, NULL);
-	}
-	else
-	{
-		GIcon *icon = g_themed_icon_new_with_default_fallbacks ("dialog-error-symbolic");
+static void set_error(GtkEntry *entry, const gchar *error_msg) {
+    if (error_msg == NULL || error_msg[0] == '\0') {
+        gtk_entry_set_icon_from_gicon(entry, GTK_ENTRY_ICON_SECONDARY, NULL);
+        gtk_entry_set_icon_tooltip_text(entry, GTK_ENTRY_ICON_SECONDARY, NULL);
+    } else {
+        GIcon *icon =
+            g_themed_icon_new_with_default_fallbacks("dialog-error-symbolic");
 
-		gtk_entry_set_icon_from_gicon (entry, GTK_ENTRY_ICON_SECONDARY, icon);
-		gtk_entry_set_icon_tooltip_text (entry, GTK_ENTRY_ICON_SECONDARY, error_msg);
+        gtk_entry_set_icon_from_gicon(entry, GTK_ENTRY_ICON_SECONDARY, icon);
+        gtk_entry_set_icon_tooltip_text(
+            entry, GTK_ENTRY_ICON_SECONDARY, error_msg);
 
-		g_object_unref (icon);
-	}
+        g_object_unref(icon);
+    }
 }
 
-static void
-set_search_error (BeditReplaceDialog *dialog,
-		  const gchar        *error_msg)
-{
-	set_error (GTK_ENTRY (dialog->search_text_entry), error_msg);
+static void set_search_error(
+    BeditReplaceDialog *dialog, const gchar *error_msg) {
+    set_error(GTK_ENTRY(dialog->search_text_entry), error_msg);
 }
 
-void
-bedit_replace_dialog_set_replace_error (BeditReplaceDialog *dialog,
-					const gchar        *error_msg)
-{
-	set_error (GTK_ENTRY (dialog->replace_text_entry), error_msg);
+void bedit_replace_dialog_set_replace_error(
+    BeditReplaceDialog *dialog, const gchar *error_msg) {
+    set_error(GTK_ENTRY(dialog->replace_text_entry), error_msg);
 }
 
-static gboolean
-has_search_error (BeditReplaceDialog *dialog)
-{
-	GIcon *icon;
+static gboolean has_search_error(BeditReplaceDialog *dialog) {
+    GIcon *icon;
 
-	icon = gtk_entry_get_icon_gicon (GTK_ENTRY (dialog->search_text_entry),
-	                                 GTK_ENTRY_ICON_SECONDARY);
+    icon = gtk_entry_get_icon_gicon(
+        GTK_ENTRY(dialog->search_text_entry), GTK_ENTRY_ICON_SECONDARY);
 
-	return icon != NULL;
+    return icon != NULL;
 }
 
-static gboolean
-has_replace_error (BeditReplaceDialog *dialog)
-{
-	GIcon *icon;
+static gboolean has_replace_error(BeditReplaceDialog *dialog) {
+    GIcon *icon;
 
-	icon = gtk_entry_get_icon_gicon (GTK_ENTRY (dialog->replace_text_entry),
-	                                 GTK_ENTRY_ICON_SECONDARY);
+    icon = gtk_entry_get_icon_gicon(
+        GTK_ENTRY(dialog->replace_text_entry), GTK_ENTRY_ICON_SECONDARY);
 
-	return icon != NULL;
+    return icon != NULL;
 }
 
-static void
-update_regex_error (BeditReplaceDialog *dialog)
-{
-	GtkSourceSearchContext *search_context;
-	GError *regex_error;
+static void update_regex_error(BeditReplaceDialog *dialog) {
+    GtkSourceSearchContext *search_context;
+    GError *regex_error;
 
-	set_search_error (dialog, NULL);
+    set_search_error(dialog, NULL);
 
-	search_context = get_search_context (dialog, dialog->active_document);
+    search_context = get_search_context(dialog, dialog->active_document);
 
-	if (search_context == NULL)
-	{
-		return;
-	}
+    if (search_context == NULL) {
+        return;
+    }
 
-	regex_error = gtk_source_search_context_get_regex_error (search_context);
+    regex_error = gtk_source_search_context_get_regex_error(search_context);
 
-	if (regex_error != NULL)
-	{
-		set_search_error (dialog, regex_error->message);
-		g_error_free (regex_error);
-	}
+    if (regex_error != NULL) {
+        set_search_error(dialog, regex_error->message);
+        g_error_free(regex_error);
+    }
 }
 
-static gboolean
-update_replace_response_sensitivity_cb (BeditReplaceDialog *dialog)
-{
-	GtkSourceSearchContext *search_context;
-	GtkTextIter start;
-	GtkTextIter end;
-	gint pos;
+static gboolean update_replace_response_sensitivity_cb(
+    BeditReplaceDialog *dialog) {
+    GtkSourceSearchContext *search_context;
+    GtkTextIter start;
+    GtkTextIter end;
+    gint pos;
 
-	if (has_replace_error (dialog))
-	{
-		gtk_dialog_set_response_sensitive (GTK_DIALOG (dialog),
-						   GEDIT_REPLACE_DIALOG_REPLACE_RESPONSE,
-						   FALSE);
+    if (has_replace_error(dialog)) {
+        gtk_dialog_set_response_sensitive(
+            GTK_DIALOG(dialog), GEDIT_REPLACE_DIALOG_REPLACE_RESPONSE, FALSE);
 
-		dialog->idle_update_sensitivity_id = 0;
-		return G_SOURCE_REMOVE;
-	}
+        dialog->idle_update_sensitivity_id = 0;
+        return G_SOURCE_REMOVE;
+    }
 
-	search_context = get_search_context (dialog, dialog->active_document);
+    search_context = get_search_context(dialog, dialog->active_document);
 
-	if (search_context == NULL)
-	{
-		dialog->idle_update_sensitivity_id = 0;
-		return G_SOURCE_REMOVE;
-	}
+    if (search_context == NULL) {
+        dialog->idle_update_sensitivity_id = 0;
+        return G_SOURCE_REMOVE;
+    }
 
-	gtk_text_buffer_get_selection_bounds (GTK_TEXT_BUFFER (dialog->active_document),
-					      &start,
-					      &end);
+    gtk_text_buffer_get_selection_bounds(
+        GTK_TEXT_BUFFER(dialog->active_document), &start, &end);
 
-	pos = gtk_source_search_context_get_occurrence_position (search_context,
-								 &start,
-								 &end);
+    pos = gtk_source_search_context_get_occurrence_position(
+        search_context, &start, &end);
 
-	if (pos < 0)
-	{
-		return G_SOURCE_CONTINUE;
-	}
+    if (pos < 0) {
+        return G_SOURCE_CONTINUE;
+    }
 
-	gtk_dialog_set_response_sensitive (GTK_DIALOG (dialog),
-					   GEDIT_REPLACE_DIALOG_REPLACE_RESPONSE,
-					   pos > 0);
+    gtk_dialog_set_response_sensitive(
+        GTK_DIALOG(dialog), GEDIT_REPLACE_DIALOG_REPLACE_RESPONSE, pos > 0);
 
-	dialog->idle_update_sensitivity_id = 0;
-	return G_SOURCE_REMOVE;
+    dialog->idle_update_sensitivity_id = 0;
+    return G_SOURCE_REMOVE;
 }
 
-static void
-install_idle_update_sensitivity (BeditReplaceDialog *dialog)
-{
-	if (dialog->idle_update_sensitivity_id != 0)
-	{
-		return;
-	}
+static void install_idle_update_sensitivity(BeditReplaceDialog *dialog) {
+    if (dialog->idle_update_sensitivity_id != 0) {
+        return;
+    }
 
-	dialog->idle_update_sensitivity_id =
-		g_idle_add ((GSourceFunc)update_replace_response_sensitivity_cb,
-			    dialog);
+    dialog->idle_update_sensitivity_id =
+        g_idle_add((GSourceFunc)update_replace_response_sensitivity_cb, dialog);
 }
 
-static void
-mark_set_cb (GtkTextBuffer      *buffer,
-	     GtkTextIter        *location,
-	     GtkTextMark        *mark,
-	     BeditReplaceDialog *dialog)
-{
-	GtkTextMark *insert;
-	GtkTextMark *selection_bound;
+static void mark_set_cb(
+    GtkTextBuffer *buffer, GtkTextIter *location, GtkTextMark *mark,
+    BeditReplaceDialog *dialog) {
+    GtkTextMark *insert;
+    GtkTextMark *selection_bound;
 
-	insert = gtk_text_buffer_get_insert (buffer);
-	selection_bound = gtk_text_buffer_get_selection_bound (buffer);
+    insert = gtk_text_buffer_get_insert(buffer);
+    selection_bound = gtk_text_buffer_get_selection_bound(buffer);
 
-	if (mark == insert || mark == selection_bound)
-	{
-		install_idle_update_sensitivity (dialog);
-	}
+    if (mark == insert || mark == selection_bound) {
+        install_idle_update_sensitivity(dialog);
+    }
 }
 
-static void
-update_responses_sensitivity (BeditReplaceDialog *dialog)
-{
-	const gchar *search_text;
-	gboolean sensitive = TRUE;
+static void update_responses_sensitivity(BeditReplaceDialog *dialog) {
+    const gchar *search_text;
+    gboolean sensitive = TRUE;
 
-	install_idle_update_sensitivity (dialog);
+    install_idle_update_sensitivity(dialog);
 
-	search_text = gtk_entry_get_text (GTK_ENTRY (dialog->search_text_entry));
+    search_text = gtk_entry_get_text(GTK_ENTRY(dialog->search_text_entry));
 
-	if (search_text[0] == '\0')
-	{
-		gtk_dialog_set_response_sensitive (GTK_DIALOG (dialog),
-						   GEDIT_REPLACE_DIALOG_FIND_RESPONSE,
-						   FALSE);
+    if (search_text[0] == '\0') {
+        gtk_dialog_set_response_sensitive(
+            GTK_DIALOG(dialog), GEDIT_REPLACE_DIALOG_FIND_RESPONSE, FALSE);
 
-		gtk_dialog_set_response_sensitive (GTK_DIALOG (dialog),
-						   GEDIT_REPLACE_DIALOG_REPLACE_ALL_RESPONSE,
-						   FALSE);
+        gtk_dialog_set_response_sensitive(
+            GTK_DIALOG(dialog), GEDIT_REPLACE_DIALOG_REPLACE_ALL_RESPONSE,
+            FALSE);
 
-		return;
-	}
+        return;
+    }
 
-	sensitive = !has_search_error (dialog);
+    sensitive = !has_search_error(dialog);
 
-	gtk_dialog_set_response_sensitive (GTK_DIALOG (dialog),
-					   GEDIT_REPLACE_DIALOG_FIND_RESPONSE,
-					   sensitive);
+    gtk_dialog_set_response_sensitive(
+        GTK_DIALOG(dialog), GEDIT_REPLACE_DIALOG_FIND_RESPONSE, sensitive);
 
-	if (has_replace_error (dialog))
-	{
-		sensitive = FALSE;
-	}
+    if (has_replace_error(dialog)) {
+        sensitive = FALSE;
+    }
 
-	gtk_dialog_set_response_sensitive (GTK_DIALOG (dialog),
-					   GEDIT_REPLACE_DIALOG_REPLACE_ALL_RESPONSE,
-					   sensitive);
+    gtk_dialog_set_response_sensitive(
+        GTK_DIALOG(dialog), GEDIT_REPLACE_DIALOG_REPLACE_ALL_RESPONSE,
+        sensitive);
 }
 
-static void
-regex_error_notify_cb (BeditReplaceDialog *dialog)
-{
-	update_regex_error (dialog);
-	update_responses_sensitivity (dialog);
+static void regex_error_notify_cb(BeditReplaceDialog *dialog) {
+    update_regex_error(dialog);
+    update_responses_sensitivity(dialog);
 }
 
-static void
-disconnect_document (BeditReplaceDialog *dialog)
-{
-	GtkSourceSearchContext *search_context;
+static void disconnect_document(BeditReplaceDialog *dialog) {
+    GtkSourceSearchContext *search_context;
 
-	if (dialog->active_document == NULL)
-	{
-		return;
-	}
+    if (dialog->active_document == NULL) {
+        return;
+    }
 
-	search_context = get_search_context (dialog, dialog->active_document);
+    search_context = get_search_context(dialog, dialog->active_document);
 
-	if (search_context != NULL)
-	{
-		g_signal_handlers_disconnect_by_func (search_context,
-						      regex_error_notify_cb,
-						      dialog);
-	}
+    if (search_context != NULL) {
+        g_signal_handlers_disconnect_by_func(
+            search_context, regex_error_notify_cb, dialog);
+    }
 
-	g_signal_handlers_disconnect_by_func (dialog->active_document,
-					      mark_set_cb,
-					      dialog);
+    g_signal_handlers_disconnect_by_func(
+        dialog->active_document, mark_set_cb, dialog);
 
-	g_clear_object (&dialog->active_document);
+    g_clear_object(&dialog->active_document);
 }
 
-static void
-connect_active_document (BeditReplaceDialog *dialog)
-{
-	BeditDocument *doc;
-	GtkSourceSearchContext *search_context;
+static void connect_active_document(BeditReplaceDialog *dialog) {
+    BeditDocument *doc;
+    GtkSourceSearchContext *search_context;
 
-	disconnect_document (dialog);
+    disconnect_document(dialog);
 
-	doc = get_active_document (dialog);
+    doc = get_active_document(dialog);
 
-	if (doc == NULL)
-	{
-		return;
-	}
+    if (doc == NULL) {
+        return;
+    }
 
-	dialog->active_document = g_object_ref (doc);
+    dialog->active_document = g_object_ref(doc);
 
-	search_context = get_search_context (dialog, doc);
+    search_context = get_search_context(dialog, doc);
 
-	if (search_context == NULL)
-	{
-		GtkSourceSearchSettings *settings = gtk_source_search_settings_new ();
+    if (search_context == NULL) {
+        GtkSourceSearchSettings *settings = gtk_source_search_settings_new();
 
-		search_context = gtk_source_search_context_new (GTK_SOURCE_BUFFER (doc),
-								settings);
+        search_context =
+            gtk_source_search_context_new(GTK_SOURCE_BUFFER(doc), settings);
 
-		/* Mark the search context that it comes from the search and
-		 * replace dialog. Search contexts can be created also from the
-		 * BeditViewFrame.
-		 */
-		g_object_set_data (G_OBJECT (search_context),
-				   GEDIT_SEARCH_CONTEXT_KEY,
-				   dialog);
+        /* Mark the search context that it comes from the search and
+         * replace dialog. Search contexts can be created also from the
+         * BeditViewFrame.
+         */
+        g_object_set_data(
+            G_OBJECT(search_context), GEDIT_SEARCH_CONTEXT_KEY, dialog);
 
-		bedit_document_set_search_context (doc, search_context);
+        bedit_document_set_search_context(doc, search_context);
 
-		g_object_unref (settings);
-		g_object_unref (search_context);
-	}
+        g_object_unref(settings);
+        g_object_unref(search_context);
+    }
 
-	g_signal_connect_object (search_context,
-				 "notify::regex-error",
-				 G_CALLBACK (regex_error_notify_cb),
-				 dialog,
-				 G_CONNECT_SWAPPED);
+    g_signal_connect_object(
+        search_context, "notify::regex-error",
+        G_CALLBACK(regex_error_notify_cb), dialog, G_CONNECT_SWAPPED);
 
-	g_signal_connect_object (doc,
-				 "mark-set",
-				 G_CALLBACK (mark_set_cb),
-				 dialog,
-				 0);
+    g_signal_connect_object(
+        doc, "mark-set", G_CALLBACK(mark_set_cb), dialog, 0);
 
-	update_regex_error (dialog);
-	update_responses_sensitivity (dialog);
+    update_regex_error(dialog);
+    update_responses_sensitivity(dialog);
 }
 
-static void
-response_cb (GtkDialog *dialog,
-	     gint       response_id)
-{
-	BeditReplaceDialog *dlg = GEDIT_REPLACE_DIALOG (dialog);
-	const gchar *str;
+static void response_cb(GtkDialog *dialog, gint response_id) {
+    BeditReplaceDialog *dlg = GEDIT_REPLACE_DIALOG(dialog);
+    const gchar *str;
 
-	switch (response_id)
-	{
-		case GEDIT_REPLACE_DIALOG_REPLACE_RESPONSE:
-		case GEDIT_REPLACE_DIALOG_REPLACE_ALL_RESPONSE:
-			str = gtk_entry_get_text (GTK_ENTRY (dlg->replace_text_entry));
-			if (*str != '\0')
-			{
-				bedit_history_entry_prepend_text
-						(GEDIT_HISTORY_ENTRY (dlg->replace_entry),
-						 str);
-			}
-			/* fall through, so that we also save the find entry */
-		case GEDIT_REPLACE_DIALOG_FIND_RESPONSE:
-			str = gtk_entry_get_text (GTK_ENTRY (dlg->search_text_entry));
-			if (*str != '\0')
-			{
-				bedit_history_entry_prepend_text
-						(GEDIT_HISTORY_ENTRY (dlg->search_entry),
-						 str);
-			}
-	}
+    switch (response_id) {
+    case GEDIT_REPLACE_DIALOG_REPLACE_RESPONSE:
+    case GEDIT_REPLACE_DIALOG_REPLACE_ALL_RESPONSE:
+        str = gtk_entry_get_text(GTK_ENTRY(dlg->replace_text_entry));
+        if (*str != '\0') {
+            bedit_history_entry_prepend_text(
+                GEDIT_HISTORY_ENTRY(dlg->replace_entry), str);
+        }
+        /* fall through, so that we also save the find entry */
+    case GEDIT_REPLACE_DIALOG_FIND_RESPONSE:
+        str = gtk_entry_get_text(GTK_ENTRY(dlg->search_text_entry));
+        if (*str != '\0') {
+            bedit_history_entry_prepend_text(
+                GEDIT_HISTORY_ENTRY(dlg->search_entry), str);
+        }
+    }
 
-	switch (response_id)
-	{
-		case GEDIT_REPLACE_DIALOG_REPLACE_RESPONSE:
-		case GEDIT_REPLACE_DIALOG_REPLACE_ALL_RESPONSE:
-		case GEDIT_REPLACE_DIALOG_FIND_RESPONSE:
-			connect_active_document (GEDIT_REPLACE_DIALOG (dialog));
-			set_search_settings (GEDIT_REPLACE_DIALOG (dialog));
-	}
+    switch (response_id) {
+    case GEDIT_REPLACE_DIALOG_REPLACE_RESPONSE:
+    case GEDIT_REPLACE_DIALOG_REPLACE_ALL_RESPONSE:
+    case GEDIT_REPLACE_DIALOG_FIND_RESPONSE:
+        connect_active_document(GEDIT_REPLACE_DIALOG(dialog));
+        set_search_settings(GEDIT_REPLACE_DIALOG(dialog));
+    }
 }
 
-static void
-bedit_replace_dialog_dispose (GObject *object)
-{
-	BeditReplaceDialog *dialog = GEDIT_REPLACE_DIALOG (object);
+static void bedit_replace_dialog_dispose(GObject *object) {
+    BeditReplaceDialog *dialog = GEDIT_REPLACE_DIALOG(object);
 
-	g_clear_object (&dialog->active_document);
+    g_clear_object(&dialog->active_document);
 
-	if (dialog->idle_update_sensitivity_id != 0)
-	{
-		g_source_remove (dialog->idle_update_sensitivity_id);
-		dialog->idle_update_sensitivity_id = 0;
-	}
+    if (dialog->idle_update_sensitivity_id != 0) {
+        g_source_remove(dialog->idle_update_sensitivity_id);
+        dialog->idle_update_sensitivity_id = 0;
+    }
 
-	G_OBJECT_CLASS (bedit_replace_dialog_parent_class)->dispose (object);
+    G_OBJECT_CLASS(bedit_replace_dialog_parent_class)->dispose(object);
 }
 
-static void
-bedit_replace_dialog_class_init (BeditReplaceDialogClass *klass)
-{
-	GObjectClass *gobject_class = G_OBJECT_CLASS (klass);
-	GtkWidgetClass *widget_class = GTK_WIDGET_CLASS (klass);
+static void bedit_replace_dialog_class_init(BeditReplaceDialogClass *klass) {
+    GObjectClass *gobject_class = G_OBJECT_CLASS(klass);
+    GtkWidgetClass *widget_class = GTK_WIDGET_CLASS(klass);
 
-	gobject_class->dispose = bedit_replace_dialog_dispose;
-	widget_class->delete_event = bedit_replace_dialog_delete_event;
+    gobject_class->dispose = bedit_replace_dialog_dispose;
+    widget_class->delete_event = bedit_replace_dialog_delete_event;
 
-	/* Bind class to template */
-	gtk_widget_class_set_template_from_resource (widget_class,
-	                                             "/com/bwhmather/bedit/ui/bedit-replace-dialog.ui");
-	gtk_widget_class_bind_template_child (widget_class, BeditReplaceDialog, grid);
-	gtk_widget_class_bind_template_child (widget_class, BeditReplaceDialog, search_label);
-	gtk_widget_class_bind_template_child (widget_class, BeditReplaceDialog, replace_label);
-	gtk_widget_class_bind_template_child (widget_class, BeditReplaceDialog, match_case_checkbutton);
-	gtk_widget_class_bind_template_child (widget_class, BeditReplaceDialog, entire_word_checkbutton);
-	gtk_widget_class_bind_template_child (widget_class, BeditReplaceDialog, regex_checkbutton);
-	gtk_widget_class_bind_template_child (widget_class, BeditReplaceDialog, backwards_checkbutton);
-	gtk_widget_class_bind_template_child (widget_class, BeditReplaceDialog, wrap_around_checkbutton);
-	gtk_widget_class_bind_template_child (widget_class, BeditReplaceDialog, close_button);
+    /* Bind class to template */
+    gtk_widget_class_set_template_from_resource(
+        widget_class, "/com/bwhmather/bedit/ui/bedit-replace-dialog.ui");
+    gtk_widget_class_bind_template_child(
+        widget_class, BeditReplaceDialog, grid);
+    gtk_widget_class_bind_template_child(
+        widget_class, BeditReplaceDialog, search_label);
+    gtk_widget_class_bind_template_child(
+        widget_class, BeditReplaceDialog, replace_label);
+    gtk_widget_class_bind_template_child(
+        widget_class, BeditReplaceDialog, match_case_checkbutton);
+    gtk_widget_class_bind_template_child(
+        widget_class, BeditReplaceDialog, entire_word_checkbutton);
+    gtk_widget_class_bind_template_child(
+        widget_class, BeditReplaceDialog, regex_checkbutton);
+    gtk_widget_class_bind_template_child(
+        widget_class, BeditReplaceDialog, backwards_checkbutton);
+    gtk_widget_class_bind_template_child(
+        widget_class, BeditReplaceDialog, wrap_around_checkbutton);
+    gtk_widget_class_bind_template_child(
+        widget_class, BeditReplaceDialog, close_button);
 }
 
-static void
-search_text_entry_changed (GtkEditable        *editable,
-			   BeditReplaceDialog *dialog)
-{
-	set_search_error (dialog, NULL);
+static void search_text_entry_changed(
+    GtkEditable *editable, BeditReplaceDialog *dialog) {
+    set_search_error(dialog, NULL);
 
-	update_responses_sensitivity (dialog);
+    update_responses_sensitivity(dialog);
 }
 
-static void
-replace_text_entry_changed (GtkEditable        *editable,
-			    BeditReplaceDialog *dialog)
-{
-	bedit_replace_dialog_set_replace_error (dialog, NULL);
+static void replace_text_entry_changed(
+    GtkEditable *editable, BeditReplaceDialog *dialog) {
+    bedit_replace_dialog_set_replace_error(dialog, NULL);
 
-	update_responses_sensitivity (dialog);
+    update_responses_sensitivity(dialog);
 }
 
-static void
-regex_checkbutton_toggled (GtkToggleButton    *checkbutton,
-			   BeditReplaceDialog *dialog)
-{
-	if (!gtk_toggle_button_get_active (checkbutton))
-	{
-		/* Remove the regex error state so the user can search again */
-		set_search_error (dialog, NULL);
-		update_responses_sensitivity (dialog);
-	}
+static void regex_checkbutton_toggled(
+    GtkToggleButton *checkbutton, BeditReplaceDialog *dialog) {
+    if (!gtk_toggle_button_get_active(checkbutton)) {
+        /* Remove the regex error state so the user can search again */
+        set_search_error(dialog, NULL);
+        update_responses_sensitivity(dialog);
+    }
 }
 
 /* TODO: move in bedit-document.c and share it with bedit-view-frame */
-static gboolean
-get_selected_text (GtkTextBuffer  *doc,
-		   gchar         **selected_text,
-		   gint           *len)
-{
-	GtkTextIter start, end;
+static gboolean get_selected_text(
+    GtkTextBuffer *doc, gchar **selected_text, gint *len) {
+    GtkTextIter start, end;
 
-	g_return_val_if_fail (selected_text != NULL, FALSE);
-	g_return_val_if_fail (*selected_text == NULL, FALSE);
+    g_return_val_if_fail(selected_text != NULL, FALSE);
+    g_return_val_if_fail(*selected_text == NULL, FALSE);
 
-	if (!gtk_text_buffer_get_selection_bounds (doc, &start, &end))
-	{
-		if (len != NULL)
-		{
-			len = 0;
-		}
+    if (!gtk_text_buffer_get_selection_bounds(doc, &start, &end)) {
+        if (len != NULL) {
+            len = 0;
+        }
 
-		return FALSE;
-	}
+        return FALSE;
+    }
 
-	*selected_text = gtk_text_buffer_get_slice (doc, &start, &end, TRUE);
+    *selected_text = gtk_text_buffer_get_slice(doc, &start, &end, TRUE);
 
-	if (len != NULL)
-	{
-		*len = g_utf8_strlen (*selected_text, -1);
-	}
+    if (len != NULL) {
+        *len = g_utf8_strlen(*selected_text, -1);
+    }
 
-	return TRUE;
+    return TRUE;
 }
 
-static void
-show_cb (BeditReplaceDialog *dialog)
-{
-	BeditWindow *window;
-	BeditDocument *doc;
-	gboolean selection_exists;
-	gchar *selection = NULL;
-	gint selection_length;
+static void show_cb(BeditReplaceDialog *dialog) {
+    BeditWindow *window;
+    BeditDocument *doc;
+    gboolean selection_exists;
+    gchar *selection = NULL;
+    gint selection_length;
 
-	window = get_bedit_window (dialog);
+    window = get_bedit_window(dialog);
 
-	if (window == NULL)
-	{
-		return;
-	}
+    if (window == NULL) {
+        return;
+    }
 
-	doc = get_active_document (dialog);
+    doc = get_active_document(dialog);
 
-	if (doc == NULL)
-	{
-		return;
-	}
+    if (doc == NULL) {
+        return;
+    }
 
-	selection_exists = get_selected_text (GTK_TEXT_BUFFER (doc),
-					      &selection,
-					      &selection_length);
+    selection_exists =
+        get_selected_text(GTK_TEXT_BUFFER(doc), &selection, &selection_length);
 
-	if (selection_exists && selection != NULL && selection_length < 80)
-	{
-		gboolean regex_enabled;
-		gchar *escaped_selection;
+    if (selection_exists && selection != NULL && selection_length < 80) {
+        gboolean regex_enabled;
+        gchar *escaped_selection;
 
-		regex_enabled = gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (dialog->regex_checkbutton));
+        regex_enabled = gtk_toggle_button_get_active(
+            GTK_TOGGLE_BUTTON(dialog->regex_checkbutton));
 
-		if (regex_enabled)
-		{
-			escaped_selection = g_regex_escape_string (selection, -1);
-		}
-		else
-		{
-			escaped_selection = gtk_source_utils_escape_search_text (selection);
-		}
+        if (regex_enabled) {
+            escaped_selection = g_regex_escape_string(selection, -1);
+        } else {
+            escaped_selection = gtk_source_utils_escape_search_text(selection);
+        }
 
-		gtk_entry_set_text (GTK_ENTRY (dialog->search_text_entry),
-				    escaped_selection);
+        gtk_entry_set_text(
+            GTK_ENTRY(dialog->search_text_entry), escaped_selection);
 
-		g_free (escaped_selection);
-	}
+        g_free(escaped_selection);
+    }
 
-	g_free (selection);
+    g_free(selection);
 }
 
-static void
-hide_cb (BeditReplaceDialog *dialog)
-{
-	disconnect_document (dialog);
+static void hide_cb(BeditReplaceDialog *dialog) {
+    disconnect_document(dialog);
 }
 
-static void
-bedit_replace_dialog_init (BeditReplaceDialog *dlg)
-{
-	gtk_widget_init_template (GTK_WIDGET (dlg));
+static void bedit_replace_dialog_init(BeditReplaceDialog *dlg) {
+    gtk_widget_init_template(GTK_WIDGET(dlg));
 
-	dlg->search_entry = bedit_history_entry_new ("search-for-entry", TRUE);
-	gtk_widget_set_size_request (dlg->search_entry, 300, -1);
-	gtk_widget_set_hexpand (GTK_WIDGET (dlg->search_entry), TRUE);
-	dlg->search_text_entry = bedit_history_entry_get_entry (GEDIT_HISTORY_ENTRY (dlg->search_entry));
-	gtk_entry_set_activates_default (GTK_ENTRY (dlg->search_text_entry), TRUE);
-	gtk_grid_attach_next_to (GTK_GRID (dlg->grid),
-				 dlg->search_entry,
-				 dlg->search_label,
-				 GTK_POS_RIGHT, 1, 1);
-	gtk_widget_show_all (dlg->search_entry);
+    dlg->search_entry = bedit_history_entry_new("search-for-entry", TRUE);
+    gtk_widget_set_size_request(dlg->search_entry, 300, -1);
+    gtk_widget_set_hexpand(GTK_WIDGET(dlg->search_entry), TRUE);
+    dlg->search_text_entry =
+        bedit_history_entry_get_entry(GEDIT_HISTORY_ENTRY(dlg->search_entry));
+    gtk_entry_set_activates_default(GTK_ENTRY(dlg->search_text_entry), TRUE);
+    gtk_grid_attach_next_to(
+        GTK_GRID(dlg->grid), dlg->search_entry, dlg->search_label,
+        GTK_POS_RIGHT, 1, 1);
+    gtk_widget_show_all(dlg->search_entry);
 
-	dlg->replace_entry = bedit_history_entry_new ("replace-with-entry", TRUE);
-	gtk_widget_set_hexpand (GTK_WIDGET (dlg->replace_entry), TRUE);
-	dlg->replace_text_entry = bedit_history_entry_get_entry (GEDIT_HISTORY_ENTRY (dlg->replace_entry));
-	gtk_entry_set_placeholder_text (GTK_ENTRY (dlg->replace_text_entry), _("Nothing"));
-	gtk_entry_set_activates_default (GTK_ENTRY (dlg->replace_text_entry), TRUE);
-	gtk_grid_attach_next_to (GTK_GRID (dlg->grid),
-				 dlg->replace_entry,
-				 dlg->replace_label,
-				 GTK_POS_RIGHT, 1, 1);
-	gtk_widget_show_all (dlg->replace_entry);
+    dlg->replace_entry = bedit_history_entry_new("replace-with-entry", TRUE);
+    gtk_widget_set_hexpand(GTK_WIDGET(dlg->replace_entry), TRUE);
+    dlg->replace_text_entry =
+        bedit_history_entry_get_entry(GEDIT_HISTORY_ENTRY(dlg->replace_entry));
+    gtk_entry_set_placeholder_text(
+        GTK_ENTRY(dlg->replace_text_entry), _("Nothing"));
+    gtk_entry_set_activates_default(GTK_ENTRY(dlg->replace_text_entry), TRUE);
+    gtk_grid_attach_next_to(
+        GTK_GRID(dlg->grid), dlg->replace_entry, dlg->replace_label,
+        GTK_POS_RIGHT, 1, 1);
+    gtk_widget_show_all(dlg->replace_entry);
 
-	gtk_label_set_mnemonic_widget (GTK_LABEL (dlg->search_label),
-				       dlg->search_entry);
-	gtk_label_set_mnemonic_widget (GTK_LABEL (dlg->replace_label),
-				       dlg->replace_entry);
+    gtk_label_set_mnemonic_widget(
+        GTK_LABEL(dlg->search_label), dlg->search_entry);
+    gtk_label_set_mnemonic_widget(
+        GTK_LABEL(dlg->replace_label), dlg->replace_entry);
 
-	gtk_dialog_set_default_response (GTK_DIALOG (dlg),
-					 GEDIT_REPLACE_DIALOG_FIND_RESPONSE);
+    gtk_dialog_set_default_response(
+        GTK_DIALOG(dlg), GEDIT_REPLACE_DIALOG_FIND_RESPONSE);
 
-	/* insensitive by default */
-	gtk_dialog_set_response_sensitive (GTK_DIALOG (dlg),
-					   GEDIT_REPLACE_DIALOG_FIND_RESPONSE,
-					   FALSE);
-	gtk_dialog_set_response_sensitive (GTK_DIALOG (dlg),
-					   GEDIT_REPLACE_DIALOG_REPLACE_RESPONSE,
-					   FALSE);
-	gtk_dialog_set_response_sensitive (GTK_DIALOG (dlg),
-					   GEDIT_REPLACE_DIALOG_REPLACE_ALL_RESPONSE,
-					   FALSE);
+    /* insensitive by default */
+    gtk_dialog_set_response_sensitive(
+        GTK_DIALOG(dlg), GEDIT_REPLACE_DIALOG_FIND_RESPONSE, FALSE);
+    gtk_dialog_set_response_sensitive(
+        GTK_DIALOG(dlg), GEDIT_REPLACE_DIALOG_REPLACE_RESPONSE, FALSE);
+    gtk_dialog_set_response_sensitive(
+        GTK_DIALOG(dlg), GEDIT_REPLACE_DIALOG_REPLACE_ALL_RESPONSE, FALSE);
 
-	g_signal_connect (dlg->search_text_entry,
-			  "changed",
-			  G_CALLBACK (search_text_entry_changed),
-			  dlg);
+    g_signal_connect(
+        dlg->search_text_entry, "changed",
+        G_CALLBACK(search_text_entry_changed), dlg);
 
-	g_signal_connect (dlg->replace_text_entry,
-			  "changed",
-			  G_CALLBACK (replace_text_entry_changed),
-			  dlg);
+    g_signal_connect(
+        dlg->replace_text_entry, "changed",
+        G_CALLBACK(replace_text_entry_changed), dlg);
 
-	g_signal_connect (dlg->regex_checkbutton,
-			  "toggled",
-			  G_CALLBACK (regex_checkbutton_toggled),
-			  dlg);
+    g_signal_connect(
+        dlg->regex_checkbutton, "toggled",
+        G_CALLBACK(regex_checkbutton_toggled), dlg);
 
-	g_signal_connect (dlg,
-			  "show",
-			  G_CALLBACK (show_cb),
-			  NULL);
+    g_signal_connect(dlg, "show", G_CALLBACK(show_cb), NULL);
 
-	g_signal_connect (dlg,
-			  "hide",
-			  G_CALLBACK (hide_cb),
-			  NULL);
+    g_signal_connect(dlg, "hide", G_CALLBACK(hide_cb), NULL);
 
-	/* We connect here to make sure this handler runs before the others so
-	 * that the search context is created.
-	 */
-	g_signal_connect (dlg,
-			  "response",
-			  G_CALLBACK (response_cb),
-			  NULL);
+    /* We connect here to make sure this handler runs before the others so
+     * that the search context is created.
+     */
+    g_signal_connect(dlg, "response", G_CALLBACK(response_cb), NULL);
 }
 
-GtkWidget *
-bedit_replace_dialog_new (BeditWindow *window)
-{
-	BeditReplaceDialog *dialog;
-	gboolean use_header;
+GtkWidget *bedit_replace_dialog_new(BeditWindow *window) {
+    BeditReplaceDialog *dialog;
+    gboolean use_header;
 
-	g_return_val_if_fail (GEDIT_IS_WINDOW (window), NULL);
+    g_return_val_if_fail(GEDIT_IS_WINDOW(window), NULL);
 
-	dialog = g_object_new (GEDIT_TYPE_REPLACE_DIALOG,
-			       "transient-for", window,
-			       "destroy-with-parent", TRUE,
-			       "use-header-bar", FALSE,
-			       NULL);
+    dialog = g_object_new(
+        GEDIT_TYPE_REPLACE_DIALOG, "transient-for", window,
+        "destroy-with-parent", TRUE, "use-header-bar", FALSE, NULL);
 
-	/* We want the Find/Replace/ReplaceAll buttons at the bottom,
-	 * so we turn off the automatic header bar, but we check the
-	 * setting and if a header bar should be used, we create it
-	 * manually and use it for the close button.
-	 */
-	g_object_get (gtk_settings_get_default (),
-	              "gtk-dialogs-use-header", &use_header,
-	              NULL);
+    /* We want the Find/Replace/ReplaceAll buttons at the bottom,
+     * so we turn off the automatic header bar, but we check the
+     * setting and if a header bar should be used, we create it
+     * manually and use it for the close button.
+     */
+    g_object_get(
+        gtk_settings_get_default(), "gtk-dialogs-use-header", &use_header,
+        NULL);
 
-	if (use_header)
-	{
-		GtkWidget *header_bar;
+    if (use_header) {
+        GtkWidget *header_bar;
 
-		header_bar = gtk_header_bar_new ();
-		gtk_header_bar_set_title (GTK_HEADER_BAR (header_bar), _("Find and Replace"));
-		gtk_header_bar_set_show_close_button (GTK_HEADER_BAR (header_bar), TRUE);
-		gtk_widget_show (header_bar);
-		gtk_window_set_titlebar (GTK_WINDOW (dialog), header_bar);
-	}
-	else
-	{
-		gtk_widget_set_no_show_all (dialog->close_button, FALSE);
-		gtk_widget_show (dialog->close_button);
-	}
+        header_bar = gtk_header_bar_new();
+        gtk_header_bar_set_title(
+            GTK_HEADER_BAR(header_bar), _("Find and Replace"));
+        gtk_header_bar_set_show_close_button(GTK_HEADER_BAR(header_bar), TRUE);
+        gtk_widget_show(header_bar);
+        gtk_window_set_titlebar(GTK_WINDOW(dialog), header_bar);
+    } else {
+        gtk_widget_set_no_show_all(dialog->close_button, FALSE);
+        gtk_widget_show(dialog->close_button);
+    }
 
-	return GTK_WIDGET (dialog);
+    return GTK_WIDGET(dialog);
 }
 
-const gchar *
-bedit_replace_dialog_get_replace_text (BeditReplaceDialog *dialog)
-{
-	g_return_val_if_fail (GEDIT_IS_REPLACE_DIALOG (dialog), NULL);
+const gchar *bedit_replace_dialog_get_replace_text(BeditReplaceDialog *dialog) {
+    g_return_val_if_fail(GEDIT_IS_REPLACE_DIALOG(dialog), NULL);
 
-	return gtk_entry_get_text (GTK_ENTRY (dialog->replace_text_entry));
+    return gtk_entry_get_text(GTK_ENTRY(dialog->replace_text_entry));
 }
 
-gboolean
-bedit_replace_dialog_get_backwards (BeditReplaceDialog *dialog)
-{
-	g_return_val_if_fail (GEDIT_IS_REPLACE_DIALOG (dialog), FALSE);
+gboolean bedit_replace_dialog_get_backwards(BeditReplaceDialog *dialog) {
+    g_return_val_if_fail(GEDIT_IS_REPLACE_DIALOG(dialog), FALSE);
 
-	return gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (dialog->backwards_checkbutton));
+    return gtk_toggle_button_get_active(
+        GTK_TOGGLE_BUTTON(dialog->backwards_checkbutton));
 }
 
 /* This function returns the original search text. The search text from the
  * search settings has been unescaped, and the escape function is not
  * reciprocal. So to avoid bugs, we have to deal with the original search text.
  */
-const gchar *
-bedit_replace_dialog_get_search_text (BeditReplaceDialog *dialog)
-{
-	g_return_val_if_fail (GEDIT_IS_REPLACE_DIALOG (dialog), NULL);
+const gchar *bedit_replace_dialog_get_search_text(BeditReplaceDialog *dialog) {
+    g_return_val_if_fail(GEDIT_IS_REPLACE_DIALOG(dialog), NULL);
 
-	return gtk_entry_get_text (GTK_ENTRY (dialog->search_text_entry));
+    return gtk_entry_get_text(GTK_ENTRY(dialog->search_text_entry));
 }
 
 /* ex:set ts=8 noet: */

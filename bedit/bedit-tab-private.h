@@ -26,59 +26,48 @@
 
 G_BEGIN_DECLS
 
-BeditTab	*_bedit_tab_new				(void);
+BeditTab *_bedit_tab_new(void);
 
-gchar 		*_bedit_tab_get_name			(BeditTab                *tab);
+gchar *_bedit_tab_get_name(BeditTab *tab);
 
-gchar 		*_bedit_tab_get_tooltip			(BeditTab                *tab);
+gchar *_bedit_tab_get_tooltip(BeditTab *tab);
 
-GdkPixbuf 	*_bedit_tab_get_icon			(BeditTab                *tab);
+GdkPixbuf *_bedit_tab_get_icon(BeditTab *tab);
 
-void		 _bedit_tab_load			(BeditTab                *tab,
-							 GFile                   *location,
-							 const GtkSourceEncoding *encoding,
-							 gint                     line_pos,
-							 gint                     column_pos,
-							 gboolean                 create);
+void _bedit_tab_load(
+    BeditTab *tab, GFile *location, const GtkSourceEncoding *encoding,
+    gint line_pos, gint column_pos, gboolean create);
 
-void		 _bedit_tab_load_stream			(BeditTab                *tab,
-							 GInputStream            *location,
-							 const GtkSourceEncoding *encoding,
-							 gint                     line_pos,
-							 gint                     column_pos);
+void _bedit_tab_load_stream(
+    BeditTab *tab, GInputStream *location, const GtkSourceEncoding *encoding,
+    gint line_pos, gint column_pos);
 
-void		 _bedit_tab_revert			(BeditTab                *tab);
+void _bedit_tab_revert(BeditTab *tab);
 
-void		 _bedit_tab_save_async			(BeditTab                *tab,
-							 GCancellable            *cancellable,
-							 GAsyncReadyCallback      callback,
-							 gpointer                 user_data);
+void _bedit_tab_save_async(
+    BeditTab *tab, GCancellable *cancellable, GAsyncReadyCallback callback,
+    gpointer user_data);
 
-gboolean	 _bedit_tab_save_finish			(BeditTab                *tab,
-							 GAsyncResult            *result);
+gboolean _bedit_tab_save_finish(BeditTab *tab, GAsyncResult *result);
 
-void		 _bedit_tab_save_as_async		(BeditTab                 *tab,
-							 GFile                    *location,
-							 const GtkSourceEncoding  *encoding,
-							 GtkSourceNewlineType      newline_type,
-							 GtkSourceCompressionType  compression_type,
-							 GCancellable             *cancellable,
-							 GAsyncReadyCallback       callback,
-							 gpointer                  user_data);
+void _bedit_tab_save_as_async(
+    BeditTab *tab, GFile *location, const GtkSourceEncoding *encoding,
+    GtkSourceNewlineType newline_type,
+    GtkSourceCompressionType compression_type, GCancellable *cancellable,
+    GAsyncReadyCallback callback, gpointer user_data);
 
-void		 _bedit_tab_print			(BeditTab                 *tab);
+void _bedit_tab_print(BeditTab *tab);
 
-void		 _bedit_tab_mark_for_closing		(BeditTab                 *tab);
+void _bedit_tab_mark_for_closing(BeditTab *tab);
 
-gboolean	 _bedit_tab_get_can_close		(BeditTab                 *tab);
+gboolean _bedit_tab_get_can_close(BeditTab *tab);
 
-BeditViewFrame	*_bedit_tab_get_view_frame		(BeditTab                 *tab);
+BeditViewFrame *_bedit_tab_get_view_frame(BeditTab *tab);
 
-void		 _bedit_tab_set_network_available	(BeditTab	     *tab,
-							 gboolean	     enable);
+void _bedit_tab_set_network_available(BeditTab *tab, gboolean enable);
 
 G_END_DECLS
 
-#endif  /* GEDIT_TAB_PRIVATE_H */
+#endif /* GEDIT_TAB_PRIVATE_H */
 
 /* ex:set ts=8 noet: */

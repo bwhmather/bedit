@@ -26,9 +26,9 @@
 
 G_BEGIN_DECLS
 
-void	modeline_parser_init		(const gchar *data_dir);
-void	modeline_parser_shutdown	(void);
-void	modeline_parser_apply_modeline	(GtkSourceView *view);
+void modeline_parser_init(const gchar *data_dir);
+void modeline_parser_shutdown(void);
+void modeline_parser_apply_modeline(GtkSourceView *view);
 
 G_END_DECLS
 

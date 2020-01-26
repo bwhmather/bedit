@@ -25,81 +25,64 @@
 
 #include "bedit-file-browser-message-activation.h"
 
-enum
-{
-	PROP_0,
+enum {
+    PROP_0,
 
-	PROP_ACTIVE,
+    PROP_ACTIVE,
 };
 
-struct _BeditFileBrowserMessageActivationPrivate
-{
-	gboolean active;
+struct _BeditFileBrowserMessageActivationPrivate {
+    gboolean active;
 };
 
-G_DEFINE_TYPE_EXTENDED (BeditFileBrowserMessageActivation,
-                        bedit_file_browser_message_activation,
-                        GEDIT_TYPE_MESSAGE,
-                        0,
-                        G_ADD_PRIVATE (BeditFileBrowserMessageActivation))
+G_DEFINE_TYPE_EXTENDED(
+    BeditFileBrowserMessageActivation, bedit_file_browser_message_activation,
+    GEDIT_TYPE_MESSAGE, 0, G_ADD_PRIVATE(BeditFileBrowserMessageActivation))
 
-static void
-bedit_file_browser_message_activation_get_property (GObject    *obj,
-                                                    guint       prop_id,
-                                                    GValue     *value,
-                                                    GParamSpec *pspec)
-{
-	BeditFileBrowserMessageActivation *msg;
+static void bedit_file_browser_message_activation_get_property(
+    GObject *obj, guint prop_id, GValue *value, GParamSpec *pspec) {
+    BeditFileBrowserMessageActivation *msg;
 
-	msg = GEDIT_FILE_BROWSER_MESSAGE_ACTIVATION (obj);
+    msg = GEDIT_FILE_BROWSER_MESSAGE_ACTIVATION(obj);
 
-	switch (prop_id)
-	{
-		case PROP_ACTIVE:
-			g_value_set_boolean (value, msg->priv->active);
-			break;
-	}
+    switch (prop_id) {
+    case PROP_ACTIVE:
+        g_value_set_boolean(value, msg->priv->active);
+        break;
+    }
 }
 
-static void
-bedit_file_browser_message_activation_set_property (GObject      *obj,
-                                                    guint         prop_id,
-                                                    GValue const *value,
-                                                    GParamSpec   *pspec)
-{
-	BeditFileBrowserMessageActivation *msg;
+static void bedit_file_browser_message_activation_set_property(
+    GObject *obj, guint prop_id, GValue const *value, GParamSpec *pspec) {
+    BeditFileBrowserMessageActivation *msg;
 
-	msg = GEDIT_FILE_BROWSER_MESSAGE_ACTIVATION (obj);
+    msg = GEDIT_FILE_BROWSER_MESSAGE_ACTIVATION(obj);
 
-	switch (prop_id)
-	{
-		case PROP_ACTIVE:
-			msg->priv->active = g_value_get_boolean (value);
-			break;
-	}
+    switch (prop_id) {
+    case PROP_ACTIVE:
+        msg->priv->active = g_value_get_boolean(value);
+        break;
+    }
 }
 
-static void
-bedit_file_browser_message_activation_class_init (BeditFileBrowserMessageActivationClass *klass)
-{
-	GObjectClass *object_class = G_OBJECT_CLASS(klass);
+static void bedit_file_browser_message_activation_class_init(
+    BeditFileBrowserMessageActivationClass *klass) {
+    GObjectClass *object_class = G_OBJECT_CLASS(klass);
 
-	object_class->get_property = bedit_file_browser_message_activation_get_property;
-	object_class->set_property = bedit_file_browser_message_activation_set_property;
+    object_class->get_property =
+        bedit_file_browser_message_activation_get_property;
+    object_class->set_property =
+        bedit_file_browser_message_activation_set_property;
 
-	g_object_class_install_property (object_class,
-	                                 PROP_ACTIVE,
-	                                 g_param_spec_boolean ("active",
-	                                                       "Active",
-	                                                       "Active",
-	                                                       FALSE,
-	                                                       G_PARAM_READWRITE |
-	                                                       G_PARAM_CONSTRUCT |
-	                                                       G_PARAM_STATIC_STRINGS));
+    g_object_class_install_property(
+        object_class, PROP_ACTIVE,
+        g_param_spec_boolean(
+            "active", "Active", "Active", FALSE,
+            G_PARAM_READWRITE | G_PARAM_CONSTRUCT | G_PARAM_STATIC_STRINGS));
 }
 
-static void
-bedit_file_browser_message_activation_init (BeditFileBrowserMessageActivation *message)
-{
-	message->priv = bedit_file_browser_message_activation_get_instance_private (message);
+static void bedit_file_browser_message_activation_init(
+    BeditFileBrowserMessageActivation *message) {
+    message->priv =
+        bedit_file_browser_message_activation_get_instance_private(message);
 }

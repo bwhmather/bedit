@@ -21,24 +21,25 @@
 #ifndef GEDIT_MENU_EXTENSION_H
 #define GEDIT_MENU_EXTENSION_H
 
-#include <glib-object.h>
 #include <gio/gio.h>
+#include <glib-object.h>
 
 G_BEGIN_DECLS
 
-#define GEDIT_TYPE_MENU_EXTENSION (bedit_menu_extension_get_type ())
+#define GEDIT_TYPE_MENU_EXTENSION (bedit_menu_extension_get_type())
 
-G_DECLARE_FINAL_TYPE (BeditMenuExtension, bedit_menu_extension, GEDIT, MENU_EXTENSION, GObject)
+G_DECLARE_FINAL_TYPE(
+    BeditMenuExtension, bedit_menu_extension, GEDIT, MENU_EXTENSION, GObject)
 
-BeditMenuExtension       *bedit_menu_extension_new                 (GMenu                *menu);
+BeditMenuExtension *bedit_menu_extension_new(GMenu *menu);
 
-void                      bedit_menu_extension_append_menu_item    (BeditMenuExtension   *menu,
-                                                                    GMenuItem            *item);
+void bedit_menu_extension_append_menu_item(
+    BeditMenuExtension *menu, GMenuItem *item);
 
-void                      bedit_menu_extension_prepend_menu_item   (BeditMenuExtension   *menu,
-                                                                    GMenuItem            *item);
+void bedit_menu_extension_prepend_menu_item(
+    BeditMenuExtension *menu, GMenuItem *item);
 
-void                      bedit_menu_extension_remove_items        (BeditMenuExtension   *menu);
+void bedit_menu_extension_remove_items(BeditMenuExtension *menu);
 
 G_END_DECLS
 

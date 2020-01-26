@@ -22,9 +22,9 @@
 
 #include "bedit-message-bus.h"
 
-#include <string.h>
-#include <stdarg.h>
 #include <gobject/gvaluecollector.h>
+#include <stdarg.h>
+#include <string.h>
 
 /**
  * BeditMessageCallback:
@@ -110,491 +110,386 @@
  * </example>
  */
 
-typedef struct
-{
-	gchar *object_path;
-	gchar *method;
+typedef struct {
+    gchar *object_path;
+    gchar *method;
 
-	gchar *identifier;
+    gchar *identifier;
 } MessageIdentifier;
 
-typedef struct
-{
-	MessageIdentifier *identifier;
+typedef struct {
+    MessageIdentifier *identifier;
 
-	GList *listeners;
+    GList *listeners;
 } Message;
 
-typedef struct
-{
-	guint id;
-	gboolean blocked;
+typedef struct {
+    guint id;
+    gboolean blocked;
 
-	GDestroyNotify destroy_data;
-	BeditMessageCallback callback;
-	gpointer user_data;
+    GDestroyNotify destroy_data;
+    BeditMessageCallback callback;
+    gpointer user_data;
 } Listener;
 
-typedef struct
-{
-	Message *message;
-	GList *listener;
+typedef struct {
+    Message *message;
+    GList *listener;
 } IdMap;
 
-struct _BeditMessageBusPrivate
-{
-	GHashTable *messages;
-	GHashTable *idmap;
+struct _BeditMessageBusPrivate {
+    GHashTable *messages;
+    GHashTable *idmap;
 
-	GList *message_queue;
-	guint idle_id;
+    GList *message_queue;
+    guint idle_id;
 
-	guint next_id;
+    guint next_id;
 
-	GHashTable *types; /* mapping from identifier to BeditMessageType */
+    GHashTable *types; /* mapping from identifier to BeditMessageType */
 };
 
 /* signals */
-enum
-{
-	DISPATCH,
-	REGISTERED,
-	UNREGISTERED,
-	LAST_SIGNAL
-};
+enum { DISPATCH, REGISTERED, UNREGISTERED, LAST_SIGNAL };
 
 static guint message_bus_signals[LAST_SIGNAL];
 
-static void bedit_message_bus_dispatch_real (BeditMessageBus *bus,
-                                             BeditMessage    *message);
+static void bedit_message_bus_dispatch_real(
+    BeditMessageBus *bus, BeditMessage *message);
 
-G_DEFINE_TYPE_WITH_PRIVATE (BeditMessageBus, bedit_message_bus, G_TYPE_OBJECT)
+G_DEFINE_TYPE_WITH_PRIVATE(BeditMessageBus, bedit_message_bus, G_TYPE_OBJECT)
 
-static MessageIdentifier *
-message_identifier_new (const gchar *object_path,
-                        const gchar *method)
-{
-	MessageIdentifier *ret;
+static MessageIdentifier *message_identifier_new(
+    const gchar *object_path, const gchar *method) {
+    MessageIdentifier *ret;
 
-	ret = g_slice_new (MessageIdentifier);
+    ret = g_slice_new(MessageIdentifier);
 
-	ret->object_path = g_strdup (object_path);
-	ret->method = g_strdup (method);
+    ret->object_path = g_strdup(object_path);
+    ret->method = g_strdup(method);
 
-	ret->identifier = bedit_message_type_identifier (object_path, method);
+    ret->identifier = bedit_message_type_identifier(object_path, method);
 
-	return ret;
+    return ret;
 }
 
-static void
-message_identifier_free (MessageIdentifier *identifier)
-{
-	g_free (identifier->object_path);
-	g_free (identifier->method);
-	g_free (identifier->identifier);
+static void message_identifier_free(MessageIdentifier *identifier) {
+    g_free(identifier->object_path);
+    g_free(identifier->method);
+    g_free(identifier->identifier);
 
-	g_slice_free (MessageIdentifier, identifier);
+    g_slice_free(MessageIdentifier, identifier);
 }
 
-static guint
-message_identifier_hash (gconstpointer id)
-{
-	return g_str_hash (((MessageIdentifier *)id)->identifier);
+static guint message_identifier_hash(gconstpointer id) {
+    return g_str_hash(((MessageIdentifier *)id)->identifier);
 }
 
-static gboolean
-message_identifier_equal (gconstpointer id1,
-                          gconstpointer id2)
-{
-	return g_str_equal (((MessageIdentifier *)id1)->identifier,
-	                    ((MessageIdentifier *)id2)->identifier);
+static gboolean message_identifier_equal(gconstpointer id1, gconstpointer id2) {
+    return g_str_equal(
+        ((MessageIdentifier *)id1)->identifier,
+        ((MessageIdentifier *)id2)->identifier);
 }
 
-static void
-listener_free (Listener *listener)
-{
-	if (listener->destroy_data)
-	{
-		listener->destroy_data (listener->user_data);
-	}
+static void listener_free(Listener *listener) {
+    if (listener->destroy_data) {
+        listener->destroy_data(listener->user_data);
+    }
 
-	g_slice_free (Listener, listener);
+    g_slice_free(Listener, listener);
 }
 
-static void
-message_free (Message *message)
-{
-	message_identifier_free (message->identifier);
+static void message_free(Message *message) {
+    message_identifier_free(message->identifier);
 
-	g_list_free_full (message->listeners, (GDestroyNotify) listener_free);
-	g_slice_free (Message, message);
+    g_list_free_full(message->listeners, (GDestroyNotify)listener_free);
+    g_slice_free(Message, message);
 }
 
-static void
-message_queue_free (GList *queue)
-{
-	g_list_free_full (queue, g_object_unref);
+static void message_queue_free(GList *queue) {
+    g_list_free_full(queue, g_object_unref);
 }
 
-static void
-bedit_message_bus_finalize (GObject *object)
-{
-	BeditMessageBus *bus = GEDIT_MESSAGE_BUS (object);
+static void bedit_message_bus_finalize(GObject *object) {
+    BeditMessageBus *bus = GEDIT_MESSAGE_BUS(object);
 
-	if (bus->priv->idle_id != 0)
-	{
-		g_source_remove (bus->priv->idle_id);
-	}
+    if (bus->priv->idle_id != 0) {
+        g_source_remove(bus->priv->idle_id);
+    }
 
-	message_queue_free (bus->priv->message_queue);
+    message_queue_free(bus->priv->message_queue);
 
-	g_hash_table_destroy (bus->priv->messages);
-	g_hash_table_destroy (bus->priv->idmap);
-	g_hash_table_destroy (bus->priv->types);
+    g_hash_table_destroy(bus->priv->messages);
+    g_hash_table_destroy(bus->priv->idmap);
+    g_hash_table_destroy(bus->priv->types);
 
-	G_OBJECT_CLASS (bedit_message_bus_parent_class)->finalize (object);
+    G_OBJECT_CLASS(bedit_message_bus_parent_class)->finalize(object);
 }
 
-static void
-bedit_message_bus_class_init (BeditMessageBusClass *klass)
-{
-	GObjectClass *object_class = G_OBJECT_CLASS (klass);
+static void bedit_message_bus_class_init(BeditMessageBusClass *klass) {
+    GObjectClass *object_class = G_OBJECT_CLASS(klass);
 
-	object_class->finalize = bedit_message_bus_finalize;
+    object_class->finalize = bedit_message_bus_finalize;
 
-	klass->dispatch = bedit_message_bus_dispatch_real;
+    klass->dispatch = bedit_message_bus_dispatch_real;
 
-	/**
-	 * BeditMessageBus::dispatch:
-	 * @bus: a #BeditMessageBus
-	 * @message: the #BeditMessage to dispatch
-	 *
-	 * The "dispatch" signal is emitted when a message is to be dispatched.
-	 * The message is dispatched in the default handler of this signal.
-	 * Primary use of this signal is to customize the dispatch of a message
-	 * (for instance to automatically dispatch all messages over DBus).
-	 *
-	 */
-	message_bus_signals[DISPATCH] =
-		g_signal_new ("dispatch",
-		              G_OBJECT_CLASS_TYPE (object_class),
-		              G_SIGNAL_RUN_LAST,
-		              G_STRUCT_OFFSET (BeditMessageBusClass, dispatch),
-		              NULL, NULL, NULL,
-		              G_TYPE_NONE,
-		              1,
-		              GEDIT_TYPE_MESSAGE);
+    /**
+     * BeditMessageBus::dispatch:
+     * @bus: a #BeditMessageBus
+     * @message: the #BeditMessage to dispatch
+     *
+     * The "dispatch" signal is emitted when a message is to be dispatched.
+     * The message is dispatched in the default handler of this signal.
+     * Primary use of this signal is to customize the dispatch of a message
+     * (for instance to automatically dispatch all messages over DBus).
+     *
+     */
+    message_bus_signals[DISPATCH] = g_signal_new(
+        "dispatch", G_OBJECT_CLASS_TYPE(object_class), G_SIGNAL_RUN_LAST,
+        G_STRUCT_OFFSET(BeditMessageBusClass, dispatch), NULL, NULL, NULL,
+        G_TYPE_NONE, 1, GEDIT_TYPE_MESSAGE);
 
-	/**
-	 * BeditMessageBus::registered:
-	 * @bus: a #BeditMessageBus
-	 * @object_path: the registered object path.
-	 * @method: the registered method
-	 *
-	 * The "registered" signal is emitted when a message has been registered
-	 * on the bus.
-	 *
-	 */
-	message_bus_signals[REGISTERED] =
-		g_signal_new ("registered",
-		              G_OBJECT_CLASS_TYPE (object_class),
-		              G_SIGNAL_RUN_LAST,
-		              G_STRUCT_OFFSET (BeditMessageBusClass, registered),
-		              NULL, NULL, NULL,
-		              G_TYPE_NONE,
-		              2,
-		              G_TYPE_STRING,
-		              G_TYPE_STRING);
+    /**
+     * BeditMessageBus::registered:
+     * @bus: a #BeditMessageBus
+     * @object_path: the registered object path.
+     * @method: the registered method
+     *
+     * The "registered" signal is emitted when a message has been registered
+     * on the bus.
+     *
+     */
+    message_bus_signals[REGISTERED] = g_signal_new(
+        "registered", G_OBJECT_CLASS_TYPE(object_class), G_SIGNAL_RUN_LAST,
+        G_STRUCT_OFFSET(BeditMessageBusClass, registered), NULL, NULL, NULL,
+        G_TYPE_NONE, 2, G_TYPE_STRING, G_TYPE_STRING);
 
-	/**
-	 * BeditMessageBus::unregistered:
-	 * @bus: a #BeditMessageBus
-	 * @object_path: the unregistered object path.
-	 * @method: the unregistered method
-	 *
-	 * The "unregistered" signal is emitted when a message has been
-	 * unregistered from the bus.
-	 *
-	 */
-	message_bus_signals[UNREGISTERED] =
-		g_signal_new ("unregistered",
-		              G_OBJECT_CLASS_TYPE (object_class),
-		              G_SIGNAL_RUN_LAST,
-		              G_STRUCT_OFFSET (BeditMessageBusClass, unregistered),
-		              NULL, NULL, NULL,
-		              G_TYPE_NONE,
-		              2,
-		              G_TYPE_STRING,
-		              G_TYPE_STRING);
+    /**
+     * BeditMessageBus::unregistered:
+     * @bus: a #BeditMessageBus
+     * @object_path: the unregistered object path.
+     * @method: the unregistered method
+     *
+     * The "unregistered" signal is emitted when a message has been
+     * unregistered from the bus.
+     *
+     */
+    message_bus_signals[UNREGISTERED] = g_signal_new(
+        "unregistered", G_OBJECT_CLASS_TYPE(object_class), G_SIGNAL_RUN_LAST,
+        G_STRUCT_OFFSET(BeditMessageBusClass, unregistered), NULL, NULL, NULL,
+        G_TYPE_NONE, 2, G_TYPE_STRING, G_TYPE_STRING);
 }
 
-static Message *
-message_new (BeditMessageBus *bus,
-             const gchar     *object_path,
-             const gchar     *method)
-{
-	Message *message = g_slice_new (Message);
+static Message *message_new(
+    BeditMessageBus *bus, const gchar *object_path, const gchar *method) {
+    Message *message = g_slice_new(Message);
 
-	message->identifier = message_identifier_new (object_path, method);
-	message->listeners = NULL;
+    message->identifier = message_identifier_new(object_path, method);
+    message->listeners = NULL;
 
-	g_hash_table_insert (bus->priv->messages,
-	                     message->identifier,
-	                     message);
+    g_hash_table_insert(bus->priv->messages, message->identifier, message);
 
-	return message;
+    return message;
 }
 
-static Message *
-lookup_message (BeditMessageBus *bus,
-                const gchar      *object_path,
-                const gchar      *method,
-                gboolean          create)
-{
-	MessageIdentifier *identifier;
-	Message *message;
+static Message *lookup_message(
+    BeditMessageBus *bus, const gchar *object_path, const gchar *method,
+    gboolean create) {
+    MessageIdentifier *identifier;
+    Message *message;
 
-	identifier = message_identifier_new (object_path, method);
-	message = g_hash_table_lookup (bus->priv->messages, identifier);
-	message_identifier_free (identifier);
+    identifier = message_identifier_new(object_path, method);
+    message = g_hash_table_lookup(bus->priv->messages, identifier);
+    message_identifier_free(identifier);
 
-	if (!message && !create)
-	{
-		return NULL;
-	}
+    if (!message && !create) {
+        return NULL;
+    }
 
-	if (!message)
-	{
-		message = message_new (bus, object_path, method);
-	}
+    if (!message) {
+        message = message_new(bus, object_path, method);
+    }
 
-	return message;
+    return message;
 }
 
-static guint
-add_listener (BeditMessageBus      *bus,
-              Message		   *message,
-              BeditMessageCallback  callback,
-              gpointer		    user_data,
-              GDestroyNotify        destroy_data)
-{
-	Listener *listener;
-	IdMap *idmap;
+static guint add_listener(
+    BeditMessageBus *bus, Message *message, BeditMessageCallback callback,
+    gpointer user_data, GDestroyNotify destroy_data) {
+    Listener *listener;
+    IdMap *idmap;
 
-	listener = g_slice_new (Listener);
-	listener->id = ++bus->priv->next_id;
-	listener->callback = callback;
-	listener->user_data = user_data;
-	listener->blocked = FALSE;
-	listener->destroy_data = destroy_data;
+    listener = g_slice_new(Listener);
+    listener->id = ++bus->priv->next_id;
+    listener->callback = callback;
+    listener->user_data = user_data;
+    listener->blocked = FALSE;
+    listener->destroy_data = destroy_data;
 
-	message->listeners = g_list_append (message->listeners, listener);
+    message->listeners = g_list_append(message->listeners, listener);
 
-	idmap = g_new (IdMap, 1);
-	idmap->message = message;
-	idmap->listener = g_list_last (message->listeners);
+    idmap = g_new(IdMap, 1);
+    idmap->message = message;
+    idmap->listener = g_list_last(message->listeners);
 
-	g_hash_table_insert (bus->priv->idmap, GINT_TO_POINTER (listener->id), idmap);
+    g_hash_table_insert(bus->priv->idmap, GINT_TO_POINTER(listener->id), idmap);
 
-	return listener->id;
+    return listener->id;
 }
 
-static void
-remove_listener (BeditMessageBus *bus,
-                 Message         *message,
-                 GList		 *listener)
-{
-	Listener *lst;
+static void remove_listener(
+    BeditMessageBus *bus, Message *message, GList *listener) {
+    Listener *lst;
 
-	lst = (Listener *)listener->data;
+    lst = (Listener *)listener->data;
 
-	/* remove from idmap */
-	g_hash_table_remove (bus->priv->idmap, GINT_TO_POINTER (lst->id));
-	listener_free (lst);
+    /* remove from idmap */
+    g_hash_table_remove(bus->priv->idmap, GINT_TO_POINTER(lst->id));
+    listener_free(lst);
 
-	/* remove from list of listeners */
-	message->listeners = g_list_delete_link (message->listeners, listener);
+    /* remove from list of listeners */
+    message->listeners = g_list_delete_link(message->listeners, listener);
 
-	if (!message->listeners)
-	{
-		/* remove message because it does not have any listeners */
-		g_hash_table_remove (bus->priv->messages, message->identifier);
-	}
+    if (!message->listeners) {
+        /* remove message because it does not have any listeners */
+        g_hash_table_remove(bus->priv->messages, message->identifier);
+    }
 }
 
-static void
-block_listener (BeditMessageBus *bus,
-                Message         *message,
-                GList           *listener)
-{
-	Listener *lst;
+static void block_listener(
+    BeditMessageBus *bus, Message *message, GList *listener) {
+    Listener *lst;
 
-	lst = listener->data;
-	lst->blocked = TRUE;
+    lst = listener->data;
+    lst->blocked = TRUE;
 }
 
-static void
-unblock_listener (BeditMessageBus *bus,
-                  Message         *message,
-                  GList           *listener)
-{
-	Listener *lst;
+static void unblock_listener(
+    BeditMessageBus *bus, Message *message, GList *listener) {
+    Listener *lst;
 
-	lst = listener->data;
-	lst->blocked = FALSE;
+    lst = listener->data;
+    lst->blocked = FALSE;
 }
 
-static void
-dispatch_message_real (BeditMessageBus *bus,
-                       Message         *msg,
-                       BeditMessage    *message)
-{
-	GList *item;
+static void dispatch_message_real(
+    BeditMessageBus *bus, Message *msg, BeditMessage *message) {
+    GList *item;
 
-	for (item = msg->listeners; item; item = item->next)
-	{
-		Listener *listener = (Listener *)item->data;
+    for (item = msg->listeners; item; item = item->next) {
+        Listener *listener = (Listener *)item->data;
 
-		if (!listener->blocked)
-		{
-			listener->callback (bus, message, listener->user_data);
-		}
-	}
+        if (!listener->blocked) {
+            listener->callback(bus, message, listener->user_data);
+        }
+    }
 }
 
-static void
-bedit_message_bus_dispatch_real (BeditMessageBus *bus,
-                                 BeditMessage    *message)
-{
-	const gchar *object_path;
-	const gchar *method;
-	Message *msg;
+static void bedit_message_bus_dispatch_real(
+    BeditMessageBus *bus, BeditMessage *message) {
+    const gchar *object_path;
+    const gchar *method;
+    Message *msg;
 
-	object_path = bedit_message_get_object_path (message);
-	method = bedit_message_get_method (message);
+    object_path = bedit_message_get_object_path(message);
+    method = bedit_message_get_method(message);
 
-	g_return_if_fail (object_path != NULL);
-	g_return_if_fail (method != NULL);
+    g_return_if_fail(object_path != NULL);
+    g_return_if_fail(method != NULL);
 
-	msg = lookup_message (bus, object_path, method, FALSE);
+    msg = lookup_message(bus, object_path, method, FALSE);
 
-	if (msg)
-	{
-		dispatch_message_real (bus, msg, message);
-	}
+    if (msg) {
+        dispatch_message_real(bus, msg, message);
+    }
 }
 
-static void
-dispatch_message (BeditMessageBus *bus,
-                  BeditMessage    *message)
-{
-	g_signal_emit (bus, message_bus_signals[DISPATCH], 0, message);
+static void dispatch_message(BeditMessageBus *bus, BeditMessage *message) {
+    g_signal_emit(bus, message_bus_signals[DISPATCH], 0, message);
 }
 
-static gboolean
-idle_dispatch (BeditMessageBus *bus)
-{
-	GList *list;
-	GList *item;
+static gboolean idle_dispatch(BeditMessageBus *bus) {
+    GList *list;
+    GList *item;
 
-	/* make sure to set idle_id to 0 first so that any new async messages
-	   will be queued properly */
-	bus->priv->idle_id = 0;
+    /* make sure to set idle_id to 0 first so that any new async messages
+       will be queued properly */
+    bus->priv->idle_id = 0;
 
-	/* reverse queue to get correct delivery order */
-	list = g_list_reverse (bus->priv->message_queue);
-	bus->priv->message_queue = NULL;
+    /* reverse queue to get correct delivery order */
+    list = g_list_reverse(bus->priv->message_queue);
+    bus->priv->message_queue = NULL;
 
-	for (item = list; item; item = item->next)
-	{
-		BeditMessage *msg = GEDIT_MESSAGE (item->data);
+    for (item = list; item; item = item->next) {
+        BeditMessage *msg = GEDIT_MESSAGE(item->data);
 
-		dispatch_message (bus, msg);
-	}
+        dispatch_message(bus, msg);
+    }
 
-	message_queue_free (list);
-	return FALSE;
+    message_queue_free(list);
+    return FALSE;
 }
 
-typedef void (*MatchCallback) (BeditMessageBus *, Message *, GList *);
+typedef void (*MatchCallback)(BeditMessageBus *, Message *, GList *);
 
-static void
-process_by_id (BeditMessageBus *bus,
-               guint            id,
-               MatchCallback    processor)
-{
-	IdMap *idmap;
+static void process_by_id(
+    BeditMessageBus *bus, guint id, MatchCallback processor) {
+    IdMap *idmap;
 
-	idmap = (IdMap *)g_hash_table_lookup (bus->priv->idmap, GINT_TO_POINTER (id));
+    idmap = (IdMap *)g_hash_table_lookup(bus->priv->idmap, GINT_TO_POINTER(id));
 
-	if (idmap == NULL)
-	{
-		g_warning ("No handler registered with id `%d'", id);
-		return;
-	}
+    if (idmap == NULL) {
+        g_warning("No handler registered with id `%d'", id);
+        return;
+    }
 
-	processor (bus, idmap->message, idmap->listener);
+    processor(bus, idmap->message, idmap->listener);
 }
 
-static void
-process_by_match (BeditMessageBus      *bus,
-                  const gchar          *object_path,
-                  const gchar          *method,
-                  BeditMessageCallback  callback,
-                  gpointer              user_data,
-                  MatchCallback         processor)
-{
-	Message *message;
-	GList *item;
+static void process_by_match(
+    BeditMessageBus *bus, const gchar *object_path, const gchar *method,
+    BeditMessageCallback callback, gpointer user_data,
+    MatchCallback processor) {
+    Message *message;
+    GList *item;
 
-	message = lookup_message (bus, object_path, method, FALSE);
+    message = lookup_message(bus, object_path, method, FALSE);
 
-	if (!message)
-	{
-		g_warning ("No such handler registered for %s.%s", object_path, method);
-		return;
-	}
+    if (!message) {
+        g_warning("No such handler registered for %s.%s", object_path, method);
+        return;
+    }
 
-	for (item = message->listeners; item; item = item->next)
-	{
-		Listener *listener = (Listener *)item->data;
+    for (item = message->listeners; item; item = item->next) {
+        Listener *listener = (Listener *)item->data;
 
-		if (listener->callback == callback &&
-		    listener->user_data == user_data)
-		{
-			processor (bus, message, item);
-			return;
-		}
-	}
+        if (listener->callback == callback &&
+            listener->user_data == user_data) {
+            processor(bus, message, item);
+            return;
+        }
+    }
 
-	g_warning ("No such handler registered for %s.%s", object_path, method);
+    g_warning("No such handler registered for %s.%s", object_path, method);
 }
 
-static void
-free_type (gpointer data)
-{
-	g_slice_free (GType, data);
+static void free_type(gpointer data) {
+    g_slice_free(GType, data);
 }
 
-static void
-bedit_message_bus_init (BeditMessageBus *self)
-{
-	self->priv = bedit_message_bus_get_instance_private (self);
+static void bedit_message_bus_init(BeditMessageBus *self) {
+    self->priv = bedit_message_bus_get_instance_private(self);
 
-	self->priv->messages = g_hash_table_new_full (message_identifier_hash,
-	                                              message_identifier_equal,
-	                                              NULL,
-	                                              (GDestroyNotify) message_free);
+    self->priv->messages = g_hash_table_new_full(
+        message_identifier_hash, message_identifier_equal, NULL,
+        (GDestroyNotify)message_free);
 
-	self->priv->idmap = g_hash_table_new_full (g_direct_hash,
-	                                           g_direct_equal,
-	                                           NULL,
-	                                           (GDestroyNotify) g_free);
+    self->priv->idmap = g_hash_table_new_full(
+        g_direct_hash, g_direct_equal, NULL, (GDestroyNotify)g_free);
 
-	self->priv->types = g_hash_table_new_full (message_identifier_hash,
-	                                           message_identifier_equal,
-	                                           (GDestroyNotify) message_identifier_free,
-	                                           (GDestroyNotify) free_type);
+    self->priv->types = g_hash_table_new_full(
+        message_identifier_hash, message_identifier_equal,
+        (GDestroyNotify)message_identifier_free, (GDestroyNotify)free_type);
 }
 
 /**
@@ -605,20 +500,17 @@ bedit_message_bus_init (BeditMessageBus *self)
  * Return value: (transfer none): the default #BeditMessageBus
  *
  */
-BeditMessageBus *
-bedit_message_bus_get_default (void)
-{
-	static BeditMessageBus *default_bus = NULL;
+BeditMessageBus *bedit_message_bus_get_default(void) {
+    static BeditMessageBus *default_bus = NULL;
 
-	if (G_UNLIKELY (default_bus == NULL))
-	{
-		default_bus = g_object_new (GEDIT_TYPE_MESSAGE_BUS, NULL);
+    if (G_UNLIKELY(default_bus == NULL)) {
+        default_bus = g_object_new(GEDIT_TYPE_MESSAGE_BUS, NULL);
 
-		g_object_add_weak_pointer (G_OBJECT (default_bus),
-		                           (gpointer) &default_bus);
-	}
+        g_object_add_weak_pointer(
+            G_OBJECT(default_bus), (gpointer)&default_bus);
+    }
 
-	return default_bus;
+    return default_bus;
 }
 
 /**
@@ -631,10 +523,8 @@ bedit_message_bus_get_default (void)
  * Return value: a new #BeditMessageBus
  *
  */
-BeditMessageBus *
-bedit_message_bus_new (void)
-{
-	return GEDIT_MESSAGE_BUS (g_object_new (GEDIT_TYPE_MESSAGE_BUS, NULL));
+BeditMessageBus *bedit_message_bus_new(void) {
+    return GEDIT_MESSAGE_BUS(g_object_new(GEDIT_TYPE_MESSAGE_BUS, NULL));
 }
 
 /**
@@ -650,30 +540,24 @@ bedit_message_bus_new (void)
  *               is registered for @method at @object_path
  *
  */
-GType
-bedit_message_bus_lookup (BeditMessageBus *bus,
-                          const gchar	  *object_path,
-                          const gchar	  *method)
-{
-	MessageIdentifier *identifier;
-	GType *message_type;
+GType bedit_message_bus_lookup(
+    BeditMessageBus *bus, const gchar *object_path, const gchar *method) {
+    MessageIdentifier *identifier;
+    GType *message_type;
 
-	g_return_val_if_fail (GEDIT_IS_MESSAGE_BUS (bus), G_TYPE_INVALID);
-	g_return_val_if_fail (object_path != NULL, G_TYPE_INVALID);
-	g_return_val_if_fail (method != NULL, G_TYPE_INVALID);
+    g_return_val_if_fail(GEDIT_IS_MESSAGE_BUS(bus), G_TYPE_INVALID);
+    g_return_val_if_fail(object_path != NULL, G_TYPE_INVALID);
+    g_return_val_if_fail(method != NULL, G_TYPE_INVALID);
 
-	identifier = message_identifier_new (object_path, method);
-	message_type = g_hash_table_lookup (bus->priv->types, identifier);
-	message_identifier_free (identifier);
+    identifier = message_identifier_new(object_path, method);
+    message_type = g_hash_table_lookup(bus->priv->types, identifier);
+    message_identifier_free(identifier);
 
-	if (!message_type)
-	{
-		return G_TYPE_INVALID;
-	}
-	else
-	{
-		return *message_type;
-	}
+    if (!message_type) {
+        return G_TYPE_INVALID;
+    } else {
+        return *message_type;
+    }
 }
 
 /**
@@ -690,63 +574,46 @@ bedit_message_bus_lookup (BeditMessageBus *bus,
  * This function emits a #BeditMessageBus::registered signal.
  *
  */
-void
-bedit_message_bus_register (BeditMessageBus *bus,
-                            GType            message_type,
-                            const gchar     *object_path,
-                            const gchar	    *method)
-{
-	MessageIdentifier *identifier;
-	GType *ntype;
+void bedit_message_bus_register(
+    BeditMessageBus *bus, GType message_type, const gchar *object_path,
+    const gchar *method) {
+    MessageIdentifier *identifier;
+    GType *ntype;
 
-	g_return_if_fail (GEDIT_IS_MESSAGE_BUS (bus));
-	g_return_if_fail (bedit_message_is_valid_object_path (object_path));
-	g_return_if_fail (g_type_is_a (message_type, GEDIT_TYPE_MESSAGE));
+    g_return_if_fail(GEDIT_IS_MESSAGE_BUS(bus));
+    g_return_if_fail(bedit_message_is_valid_object_path(object_path));
+    g_return_if_fail(g_type_is_a(message_type, GEDIT_TYPE_MESSAGE));
 
-	if (bedit_message_bus_is_registered (bus, object_path, method))
-	{
-		g_warning ("Message type for '%s.%s' is already registered",
-		           object_path,
-		           method);
-	}
+    if (bedit_message_bus_is_registered(bus, object_path, method)) {
+        g_warning(
+            "Message type for '%s.%s' is already registered", object_path,
+            method);
+    }
 
-	identifier = message_identifier_new (object_path, method);
-	ntype = g_slice_new (GType);
+    identifier = message_identifier_new(object_path, method);
+    ntype = g_slice_new(GType);
 
-	*ntype = message_type;
+    *ntype = message_type;
 
-	g_hash_table_insert (bus->priv->types,
-	                     identifier,
-	                     ntype);
+    g_hash_table_insert(bus->priv->types, identifier, ntype);
 
-	g_signal_emit (bus,
-	               message_bus_signals[REGISTERED],
-	               0,
-	               object_path,
-	               method);
+    g_signal_emit(bus, message_bus_signals[REGISTERED], 0, object_path, method);
 }
 
-static void
-bedit_message_bus_unregister_real (BeditMessageBus  *bus,
-                                   const gchar      *object_path,
-                                   const gchar      *method,
-                                   gboolean          remove_from_store)
-{
-	MessageIdentifier *identifier;
+static void bedit_message_bus_unregister_real(
+    BeditMessageBus *bus, const gchar *object_path, const gchar *method,
+    gboolean remove_from_store) {
+    MessageIdentifier *identifier;
 
-	identifier = message_identifier_new (object_path, method);
+    identifier = message_identifier_new(object_path, method);
 
-	if (!remove_from_store || g_hash_table_remove (bus->priv->types,
-	                                               identifier))
-	{
-		g_signal_emit (bus,
-		               message_bus_signals[UNREGISTERED],
-		               0,
-		               object_path,
-		               method);
-	}
+    if (!remove_from_store ||
+        g_hash_table_remove(bus->priv->types, identifier)) {
+        g_signal_emit(
+            bus, message_bus_signals[UNREGISTERED], 0, object_path, method);
+    }
 
-	message_identifier_free (identifier);
+    message_identifier_free(identifier);
 }
 
 /**
@@ -761,43 +628,30 @@ bedit_message_bus_unregister_real (BeditMessageBus  *bus,
  * This function emits the #BeditMessageBus::unregistered signal.
  *
  */
-void
-bedit_message_bus_unregister (BeditMessageBus  *bus,
-                              const gchar      *object_path,
-                              const gchar      *method)
-{
-	g_return_if_fail (GEDIT_IS_MESSAGE_BUS (bus));
-	g_return_if_fail (object_path != NULL);
-	g_return_if_fail (method != NULL);
+void bedit_message_bus_unregister(
+    BeditMessageBus *bus, const gchar *object_path, const gchar *method) {
+    g_return_if_fail(GEDIT_IS_MESSAGE_BUS(bus));
+    g_return_if_fail(object_path != NULL);
+    g_return_if_fail(method != NULL);
 
-	bedit_message_bus_unregister_real (bus,
-	                                   object_path,
-	                                   method,
-	                                   TRUE);
+    bedit_message_bus_unregister_real(bus, object_path, method, TRUE);
 }
 
-typedef struct
-{
-	BeditMessageBus *bus;
-	const gchar *object_path;
+typedef struct {
+    BeditMessageBus *bus;
+    const gchar *object_path;
 } UnregisterInfo;
 
-static gboolean
-unregister_each (MessageIdentifier *identifier,
-                 GType             *gtype,
-                 UnregisterInfo    *info)
-{
-	if (g_strcmp0 (identifier->object_path, info->object_path) == 0)
-	{
-		bedit_message_bus_unregister_real (info->bus,
-		                                   identifier->object_path,
-		                                   identifier->method,
-		                                   FALSE);
+static gboolean unregister_each(
+    MessageIdentifier *identifier, GType *gtype, UnregisterInfo *info) {
+    if (g_strcmp0(identifier->object_path, info->object_path) == 0) {
+        bedit_message_bus_unregister_real(
+            info->bus, identifier->object_path, identifier->method, FALSE);
 
-		return TRUE;
-	}
+        return TRUE;
+    }
 
-	return FALSE;
+    return FALSE;
 }
 
 /**
@@ -812,18 +666,15 @@ unregister_each (MessageIdentifier *identifier,
  * unregistered message types.
  *
  */
-void
-bedit_message_bus_unregister_all (BeditMessageBus *bus,
-                                  const gchar     *object_path)
-{
-	UnregisterInfo info = {bus, object_path};
+void bedit_message_bus_unregister_all(
+    BeditMessageBus *bus, const gchar *object_path) {
+    UnregisterInfo info = {bus, object_path};
 
-	g_return_if_fail (GEDIT_IS_MESSAGE_BUS (bus));
-	g_return_if_fail (object_path != NULL);
+    g_return_if_fail(GEDIT_IS_MESSAGE_BUS(bus));
+    g_return_if_fail(object_path != NULL);
 
-	g_hash_table_foreach_remove (bus->priv->types,
-	                             (GHRFunc)unregister_each,
-	                             &info);
+    g_hash_table_foreach_remove(
+        bus->priv->types, (GHRFunc)unregister_each, &info);
 }
 
 /**
@@ -839,39 +690,30 @@ bedit_message_bus_unregister_all (BeditMessageBus *bus,
  *               type on the bus
  *
  */
-gboolean
-bedit_message_bus_is_registered (BeditMessageBus  *bus,
-                                 const gchar	  *object_path,
-                                 const gchar      *method)
-{
-	MessageIdentifier *identifier;
-	gboolean ret;
+gboolean bedit_message_bus_is_registered(
+    BeditMessageBus *bus, const gchar *object_path, const gchar *method) {
+    MessageIdentifier *identifier;
+    gboolean ret;
 
-	g_return_val_if_fail (GEDIT_IS_MESSAGE_BUS (bus), FALSE);
-	g_return_val_if_fail (object_path != NULL, FALSE);
-	g_return_val_if_fail (method != NULL, FALSE);
+    g_return_val_if_fail(GEDIT_IS_MESSAGE_BUS(bus), FALSE);
+    g_return_val_if_fail(object_path != NULL, FALSE);
+    g_return_val_if_fail(method != NULL, FALSE);
 
-	identifier = message_identifier_new (object_path, method);
-	ret = g_hash_table_lookup (bus->priv->types, identifier) != NULL;
-	message_identifier_free (identifier);
+    identifier = message_identifier_new(object_path, method);
+    ret = g_hash_table_lookup(bus->priv->types, identifier) != NULL;
+    message_identifier_free(identifier);
 
-	return ret;
+    return ret;
 }
 
-typedef struct
-{
-	BeditMessageBusForeach func;
-	gpointer user_data;
+typedef struct {
+    BeditMessageBusForeach func;
+    gpointer user_data;
 } ForeachInfo;
 
-static void
-foreach_type (MessageIdentifier *identifier,
-              GType              *message_type,
-              ForeachInfo       *info)
-{
-	info->func (identifier->object_path,
-	            identifier->method,
-	            info->user_data);
+static void foreach_type(
+    MessageIdentifier *identifier, GType *message_type, ForeachInfo *info) {
+    info->func(identifier->object_path, identifier->method, info->user_data);
 }
 
 /**
@@ -883,17 +725,14 @@ foreach_type (MessageIdentifier *identifier,
  * Calls @func for each message type registered on the bus
  *
  */
-void
-bedit_message_bus_foreach (BeditMessageBus        *bus,
-                           BeditMessageBusForeach  func,
-                           gpointer		   user_data)
-{
-	ForeachInfo info = {func, user_data};
+void bedit_message_bus_foreach(
+    BeditMessageBus *bus, BeditMessageBusForeach func, gpointer user_data) {
+    ForeachInfo info = {func, user_data};
 
-	g_return_if_fail (GEDIT_IS_MESSAGE_BUS (bus));
-	g_return_if_fail (func != NULL);
+    g_return_if_fail(GEDIT_IS_MESSAGE_BUS(bus));
+    g_return_if_fail(func != NULL);
 
-	g_hash_table_foreach (bus->priv->types, (GHFunc)foreach_type, &info);
+    g_hash_table_foreach(bus->priv->types, (GHFunc)foreach_type, &info);
 }
 
 /**
@@ -903,8 +742,8 @@ bedit_message_bus_foreach (BeditMessageBus        *bus,
  * @method: the method
  * @callback: function to be called when message @method at @object_path is sent
  * @user_data: (allow-none): user_data to use for the callback
- * @destroy_data: (allow-none): function to evoke with @user_data as argument when @user_data
- *                needs to be freed
+ * @destroy_data: (allow-none): function to evoke with @user_data as argument
+ * when @user_data needs to be freed
  *
  * Connect a callback handler to be evoked when message @method at @object_path
  * is sent over the bus.
@@ -912,25 +751,21 @@ bedit_message_bus_foreach (BeditMessageBus        *bus,
  * Return value: the callback identifier
  *
  */
-guint
-bedit_message_bus_connect (BeditMessageBus	*bus,
-                           const gchar		*object_path,
-                           const gchar		*method,
-                           BeditMessageCallback  callback,
-                           gpointer		 user_data,
-                           GDestroyNotify	 destroy_data)
-{
-	Message *message;
+guint bedit_message_bus_connect(
+    BeditMessageBus *bus, const gchar *object_path, const gchar *method,
+    BeditMessageCallback callback, gpointer user_data,
+    GDestroyNotify destroy_data) {
+    Message *message;
 
-	g_return_val_if_fail (GEDIT_IS_MESSAGE_BUS (bus), 0);
-	g_return_val_if_fail (object_path != NULL, 0);
-	g_return_val_if_fail (method != NULL, 0);
-	g_return_val_if_fail (callback != NULL, 0);
+    g_return_val_if_fail(GEDIT_IS_MESSAGE_BUS(bus), 0);
+    g_return_val_if_fail(object_path != NULL, 0);
+    g_return_val_if_fail(method != NULL, 0);
+    g_return_val_if_fail(callback != NULL, 0);
 
-	/* lookup the message and create if it does not exist yet */
-	message = lookup_message (bus, object_path, method, TRUE);
+    /* lookup the message and create if it does not exist yet */
+    message = lookup_message(bus, object_path, method, TRUE);
 
-	return add_listener (bus, message, callback, user_data, destroy_data);
+    return add_listener(bus, message, callback, user_data, destroy_data);
 }
 
 /**
@@ -941,13 +776,10 @@ bedit_message_bus_connect (BeditMessageBus	*bus,
  * Disconnects a previously connected message callback.
  *
  */
-void
-bedit_message_bus_disconnect (BeditMessageBus *bus,
-                              guint            id)
-{
-	g_return_if_fail (GEDIT_IS_MESSAGE_BUS (bus));
+void bedit_message_bus_disconnect(BeditMessageBus *bus, guint id) {
+    g_return_if_fail(GEDIT_IS_MESSAGE_BUS(bus));
 
-	process_by_id (bus, id, remove_listener);
+    process_by_id(bus, id, remove_listener);
 }
 
 /**
@@ -963,21 +795,13 @@ bedit_message_bus_disconnect (BeditMessageBus *bus,
  * bedit_message_bus_disconnect().
  *
  */
-void
-bedit_message_bus_disconnect_by_func (BeditMessageBus      *bus,
-                                      const gchar	   *object_path,
-                                      const gchar	   *method,
-                                      BeditMessageCallback  callback,
-                                      gpointer		    user_data)
-{
-	g_return_if_fail (GEDIT_IS_MESSAGE_BUS (bus));
+void bedit_message_bus_disconnect_by_func(
+    BeditMessageBus *bus, const gchar *object_path, const gchar *method,
+    BeditMessageCallback callback, gpointer user_data) {
+    g_return_if_fail(GEDIT_IS_MESSAGE_BUS(bus));
 
-	process_by_match (bus,
-	                  object_path,
-	                  method,
-	                  callback,
-	                  user_data,
-	                  remove_listener);
+    process_by_match(
+        bus, object_path, method, callback, user_data, remove_listener);
 }
 
 /**
@@ -989,13 +813,10 @@ bedit_message_bus_disconnect_by_func (BeditMessageBus      *bus,
  * using bedit_message_bus_unblock().
  *
  */
-void
-bedit_message_bus_block (BeditMessageBus *bus,
-                         guint		  id)
-{
-	g_return_if_fail (GEDIT_IS_MESSAGE_BUS (bus));
+void bedit_message_bus_block(BeditMessageBus *bus, guint id) {
+    g_return_if_fail(GEDIT_IS_MESSAGE_BUS(bus));
 
-	process_by_id (bus, id, block_listener);
+    process_by_id(bus, id, block_listener);
 }
 
 /**
@@ -1010,21 +831,13 @@ bedit_message_bus_block (BeditMessageBus *bus,
  * Unblock the callback using bedit_message_bus_unblock_by_func().
  *
  */
-void
-bedit_message_bus_block_by_func (BeditMessageBus      *bus,
-                                 const gchar	      *object_path,
-                                 const gchar	      *method,
-                                 BeditMessageCallback  callback,
-                                 gpointer	       user_data)
-{
-	g_return_if_fail (GEDIT_IS_MESSAGE_BUS (bus));
+void bedit_message_bus_block_by_func(
+    BeditMessageBus *bus, const gchar *object_path, const gchar *method,
+    BeditMessageCallback callback, gpointer user_data) {
+    g_return_if_fail(GEDIT_IS_MESSAGE_BUS(bus));
 
-	process_by_match (bus,
-	                  object_path,
-	                  method,
-	                  callback,
-	                  user_data,
-	                  block_listener);
+    process_by_match(
+        bus, object_path, method, callback, user_data, block_listener);
 }
 
 /**
@@ -1035,13 +848,10 @@ bedit_message_bus_block_by_func (BeditMessageBus      *bus,
  * Unblocks the callback specified by @id.
  *
  */
-void
-bedit_message_bus_unblock (BeditMessageBus *bus,
-                           guint	    id)
-{
-	g_return_if_fail (GEDIT_IS_MESSAGE_BUS (bus));
+void bedit_message_bus_unblock(BeditMessageBus *bus, guint id) {
+    g_return_if_fail(GEDIT_IS_MESSAGE_BUS(bus));
 
-	process_by_id (bus, id, unblock_listener);
+    process_by_id(bus, id, unblock_listener);
 }
 
 /**
@@ -1055,37 +865,23 @@ bedit_message_bus_unblock (BeditMessageBus *bus,
  * Unblocks the callback that matches provided @callback and @user_data.
  *
  */
-void
-bedit_message_bus_unblock_by_func (BeditMessageBus      *bus,
-                                   const gchar	        *object_path,
-                                   const gchar	        *method,
-                                   BeditMessageCallback  callback,
-                                   gpointer	         user_data)
-{
-	g_return_if_fail (GEDIT_IS_MESSAGE_BUS (bus));
+void bedit_message_bus_unblock_by_func(
+    BeditMessageBus *bus, const gchar *object_path, const gchar *method,
+    BeditMessageCallback callback, gpointer user_data) {
+    g_return_if_fail(GEDIT_IS_MESSAGE_BUS(bus));
 
-	process_by_match (bus,
-	                  object_path,
-	                  method,
-	                  callback,
-	                  user_data,
-	                  unblock_listener);
+    process_by_match(
+        bus, object_path, method, callback, user_data, unblock_listener);
 }
 
-static void
-send_message_real (BeditMessageBus *bus,
-                   BeditMessage    *message)
-{
-	bus->priv->message_queue = g_list_prepend (bus->priv->message_queue,
-	                                           g_object_ref (message));
+static void send_message_real(BeditMessageBus *bus, BeditMessage *message) {
+    bus->priv->message_queue =
+        g_list_prepend(bus->priv->message_queue, g_object_ref(message));
 
-	if (bus->priv->idle_id == 0)
-	{
-		bus->priv->idle_id = g_idle_add_full (G_PRIORITY_HIGH,
-		                                      (GSourceFunc)idle_dispatch,
-		                                      bus,
-		                                      NULL);
-	}
+    if (bus->priv->idle_id == 0) {
+        bus->priv->idle_id = g_idle_add_full(
+            G_PRIORITY_HIGH, (GSourceFunc)idle_dispatch, bus, NULL);
+    }
 }
 
 /**
@@ -1099,14 +895,12 @@ send_message_real (BeditMessageBus *bus,
  * a message without constructing the message object explicitly first.
  *
  */
-void
-bedit_message_bus_send_message (BeditMessageBus *bus,
-                                BeditMessage    *message)
-{
-	g_return_if_fail (GEDIT_IS_MESSAGE_BUS (bus));
-	g_return_if_fail (GEDIT_IS_MESSAGE (message));
+void bedit_message_bus_send_message(
+    BeditMessageBus *bus, BeditMessage *message) {
+    g_return_if_fail(GEDIT_IS_MESSAGE_BUS(bus));
+    g_return_if_fail(GEDIT_IS_MESSAGE(message));
 
-	send_message_real (bus, message);
+    send_message_real(bus, message);
 }
 
 /**
@@ -1120,52 +914,37 @@ bedit_message_bus_send_message (BeditMessageBus *bus,
  * a message without constructing the message object explicitly first.
  *
  */
-void
-bedit_message_bus_send_message_sync (BeditMessageBus *bus,
-                                     BeditMessage    *message)
-{
-	g_return_if_fail (GEDIT_IS_MESSAGE_BUS (bus));
-	g_return_if_fail (GEDIT_IS_MESSAGE (message));
+void bedit_message_bus_send_message_sync(
+    BeditMessageBus *bus, BeditMessage *message) {
+    g_return_if_fail(GEDIT_IS_MESSAGE_BUS(bus));
+    g_return_if_fail(GEDIT_IS_MESSAGE(message));
 
-	dispatch_message (bus, message);
+    dispatch_message(bus, message);
 }
 
-static BeditMessage *
-create_message (BeditMessageBus *bus,
-                const gchar     *object_path,
-                const gchar     *method,
-                const gchar     *first_property,
-                va_list          var_args)
-{
-	GType message_type;
-	BeditMessage *msg;
+static BeditMessage *create_message(
+    BeditMessageBus *bus, const gchar *object_path, const gchar *method,
+    const gchar *first_property, va_list var_args) {
+    GType message_type;
+    BeditMessage *msg;
 
-	message_type = bedit_message_bus_lookup (bus, object_path, method);
+    message_type = bedit_message_bus_lookup(bus, object_path, method);
 
-	if (message_type == G_TYPE_INVALID)
-	{
-		g_warning ("Could not find message type for '%s.%s'",
-		           object_path,
-		           method);
+    if (message_type == G_TYPE_INVALID) {
+        g_warning(
+            "Could not find message type for '%s.%s'", object_path, method);
 
-		return NULL;
-	}
+        return NULL;
+    }
 
-	msg = GEDIT_MESSAGE (g_object_new_valist (message_type,
-	                                          first_property,
-	                                          var_args));
+    msg = GEDIT_MESSAGE(
+        g_object_new_valist(message_type, first_property, var_args));
 
-	if (msg)
-	{
-		g_object_set (msg,
-		              "object_path",
-		              object_path,
-		              "method",
-		              method,
-		              NULL);
-	}
+    if (msg) {
+        g_object_set(msg, "object_path", object_path, "method", method, NULL);
+    }
 
-	return msg;
+    return msg;
 }
 
 /**
@@ -1181,35 +960,25 @@ create_message (BeditMessageBus *bus,
  * specifies key (string) value pairs used to construct the message arguments.
  * To send a message synchronously use bedit_message_bus_send_sync().
  */
-void
-bedit_message_bus_send (BeditMessageBus *bus,
-                        const gchar     *object_path,
-                        const gchar     *method,
-                        const gchar     *first_property,
-                        ...)
-{
-	va_list var_args;
-	BeditMessage *message;
+void bedit_message_bus_send(
+    BeditMessageBus *bus, const gchar *object_path, const gchar *method,
+    const gchar *first_property, ...) {
+    va_list var_args;
+    BeditMessage *message;
 
-	va_start (var_args, first_property);
+    va_start(var_args, first_property);
 
-	message = create_message (bus,
-	                          object_path,
-	                          method,
-	                          first_property,
-	                          var_args);
+    message =
+        create_message(bus, object_path, method, first_property, var_args);
 
-	if (message)
-	{
-		send_message_real (bus, message);
-		g_object_unref (message);
-	}
-	else
-	{
-		g_warning ("Could not instantiate message");
-	}
+    if (message) {
+        send_message_real(bus, message);
+        g_object_unref(message);
+    } else {
+        g_warning("Could not instantiate message");
+    }
 
-	va_end (var_args);
+    va_end(var_args);
 }
 
 /**
@@ -1229,31 +998,23 @@ bedit_message_bus_send (BeditMessageBus *bus,
  *               The caller owns a reference to the #BeditMessage and should
  *               call g_object_unref() when it is no longer needed.
  */
-BeditMessage *
-bedit_message_bus_send_sync (BeditMessageBus *bus,
-                             const gchar     *object_path,
-                             const gchar     *method,
-                             const gchar     *first_property,
-                             ...)
-{
-	va_list var_args;
-	BeditMessage *message;
+BeditMessage *bedit_message_bus_send_sync(
+    BeditMessageBus *bus, const gchar *object_path, const gchar *method,
+    const gchar *first_property, ...) {
+    va_list var_args;
+    BeditMessage *message;
 
-	va_start (var_args, first_property);
-	message = create_message (bus,
-	                          object_path,
-	                          method,
-	                          first_property,
-	                          var_args);
+    va_start(var_args, first_property);
+    message =
+        create_message(bus, object_path, method, first_property, var_args);
 
-	if (message)
-	{
-		dispatch_message (bus, message);
-	}
+    if (message) {
+        dispatch_message(bus, message);
+    }
 
-	va_end (var_args);
+    va_end(var_args);
 
-	return message;
+    return message;
 }
 
 /* ex:set ts=8 noet: */

@@ -24,85 +24,70 @@
 
 #include "bedit-settings.h"
 
-struct _BeditEncodingItem
-{
-	const GtkSourceEncoding *encoding;
-	gchar *name;
+struct _BeditEncodingItem {
+    const GtkSourceEncoding *encoding;
+    gchar *name;
 };
 
-static BeditEncodingItem *
-bedit_encoding_item_new (const GtkSourceEncoding *encoding,
-                         gchar                   *name)
-{
-	BeditEncodingItem *item = g_slice_new (BeditEncodingItem);
+static BeditEncodingItem *bedit_encoding_item_new(
+    const GtkSourceEncoding *encoding, gchar *name) {
+    BeditEncodingItem *item = g_slice_new(BeditEncodingItem);
 
-	item->encoding = encoding;
-	item->name = name;
+    item->encoding = encoding;
+    item->name = name;
 
-	return item;
+    return item;
 }
 
-void
-bedit_encoding_item_free (BeditEncodingItem *item)
-{
-	if (item == NULL)
-	{
-		return;
-	}
+void bedit_encoding_item_free(BeditEncodingItem *item) {
+    if (item == NULL) {
+        return;
+    }
 
-	g_free (item->name);
-	g_slice_free (BeditEncodingItem, item);
+    g_free(item->name);
+    g_slice_free(BeditEncodingItem, item);
 }
 
-const GtkSourceEncoding *
-bedit_encoding_item_get_encoding (BeditEncodingItem *item)
-{
-	g_return_val_if_fail (item != NULL, NULL);
+const GtkSourceEncoding *bedit_encoding_item_get_encoding(
+    BeditEncodingItem *item) {
+    g_return_val_if_fail(item != NULL, NULL);
 
-	return item->encoding;
+    return item->encoding;
 }
 
-const gchar *
-bedit_encoding_item_get_name (BeditEncodingItem *item)
-{
-	g_return_val_if_fail (item != NULL, NULL);
+const gchar *bedit_encoding_item_get_name(BeditEncodingItem *item) {
+    g_return_val_if_fail(item != NULL, NULL);
 
-	return item->name;
+    return item->name;
 }
 
-GSList *
-bedit_encoding_items_get (void)
-{
-	const GtkSourceEncoding *current_encoding;
-	GSList *encodings;
-	GSList *items = NULL;
-	GSList *l;
+GSList *bedit_encoding_items_get(void) {
+    const GtkSourceEncoding *current_encoding;
+    GSList *encodings;
+    GSList *items = NULL;
+    GSList *l;
 
-	encodings = bedit_settings_get_candidate_encodings (NULL);
+    encodings = bedit_settings_get_candidate_encodings(NULL);
 
-	current_encoding = gtk_source_encoding_get_current ();
+    current_encoding = gtk_source_encoding_get_current();
 
-	for (l = encodings; l != NULL; l = l->next)
-	{
-		const GtkSourceEncoding *enc = l->data;
-		gchar *name;
+    for (l = encodings; l != NULL; l = l->next) {
+        const GtkSourceEncoding *enc = l->data;
+        gchar *name;
 
-		if (enc == current_encoding)
-		{
-			name = g_strdup_printf (_("Current Locale (%s)"),
-						gtk_source_encoding_get_charset (enc));
-		}
-		else
-		{
-			name = gtk_source_encoding_to_string (enc);
-		}
+        if (enc == current_encoding) {
+            name = g_strdup_printf(
+                _("Current Locale (%s)"), gtk_source_encoding_get_charset(enc));
+        } else {
+            name = gtk_source_encoding_to_string(enc);
+        }
 
-		items = g_slist_prepend (items, bedit_encoding_item_new (enc, name));
-	}
+        items = g_slist_prepend(items, bedit_encoding_item_new(enc, name));
+    }
 
-	g_slist_free (encodings);
+    g_slist_free(encodings);
 
-	return g_slist_reverse (items);
+    return g_slist_reverse(items);
 }
 
 /* ex:set ts=8 noet: */
