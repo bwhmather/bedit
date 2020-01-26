@@ -1,13 +1,13 @@
-This is a guide to building gedit on OS X. This guide assumes that you are
+This is a guide to building bedit on OS X. This guide assumes that you are
 already familiar with building gtk+ software on OS X (natively) using jhbuild.
 Please make sure to read https://live.gnome.org/GTK%2B/OSX/Building
 before proceeding.
 
 
-Building gedit for OS X
+Building bedit for OS X
 =============================================================================
 
-Since version 3.14, gedit hosts a self-contained, in-tree guided build
+Since version 3.14, bedit hosts a self-contained, in-tree guided build
 process using jhbuild. The ./build script in this directory is the main
 entry-point which handles:
 
@@ -20,7 +20,7 @@ The basic build procedure in a pristine environment is:
     ./build all
 
 This will first initialize the build environment (if necessary), install
-jhbuild if needed, bootstrap jhbuild and then continue to build gedit and
+jhbuild if needed, bootstrap jhbuild and then continue to build bedit and
 all its dependencies. Each of these stages can also be invoked manually:
 
     ./build init
@@ -45,20 +45,20 @@ extract the SDK directory and copy it to the right location. For 10.7,
 the latest Xcode version to support it is 4.3.3, which can be downloaded
 at [2] (links subject to change).
 
-It is also possible to build gedit against a different SDK by exporting
+It is also possible to build bedit against a different SDK by exporting
 the GEDIT_SDK environment variable (defaults to 10.7). For example:
 
     export GEDIT_SDK=10.9
     ./build all
 
-Would build gedit against the 10.9 SDK and install in .build/10.9
+Would build bedit against the 10.9 SDK and install in .build/10.9
 (see Directory structure below).
 
-Note that building gedit for OS X, although made easier by use of this
+Note that building bedit for OS X, although made easier by use of this
 ./build script, often still requires expertise and manual intervention
 when things go wrong. If this is the case, please feel free to visit the
-#gedit channel on GIMPnet IRC or send an e-mail to the gedit mailing list
-(gedit-list@gnome.org).
+#bedit channel on GIMPnet IRC or send an e-mail to the bedit mailing list
+(bedit-list@gnome.org).
 
 
 Directory structure
@@ -82,22 +82,22 @@ The general structure is as follows:
    install jhbuild itself.
 
  /config
-     /jhbuildrc-gedit : the gedit specific jhbuild environment configuration
+     /jhbuildrc-bedit : the bedit specific jhbuild environment configuration
 
  /modulesets
-   the jhbuild modulesets used to build gedit. Note that these are
+   the jhbuild modulesets used to build bedit. Note that these are
    self-contained and are updated each release.
 
      /patches           : directory with jhbuild patches
      /bootstrap.modules : the bootstrap modules
-     /gedit.modules     : modules for gedit and all its dependencies
+     /bedit.modules     : modules for bedit and all its dependencies
 
  /updater
-     /gedit-bootstrap-overrides.modules
+     /bedit-bootstrap-overrides.modules
        jhbuild moduleset overrides for bootstrap
 
-     /gedit-overrides.modules
-       jhbuild moduleset overrides for gedit
+     /bedit-overrides.modules
+       jhbuild moduleset overrides for bedit
 
      /update_modulesets.py
        an application which is used to update and merge jhbuild moduleset
@@ -105,9 +105,9 @@ The general structure is as follows:
 
        1) It merges the override module files with the latest gtk-osx stable
           modulesets, allowing for clean separation. The overrides files
-          contain only gedit specific changes on top of the gtk-osx stable
-          modulesets to obtain a gedit build. Additionally, it creates a
-          single moduleset file with only modules required for gedit in it and
+          contain only bedit specific changes on top of the gtk-osx stable
+          modulesets to obtain a bedit build. Additionally, it creates a
+          single moduleset file with only modules required for bedit in it and
           copies any required patches specified in the moduleset to a local
           directory.
 

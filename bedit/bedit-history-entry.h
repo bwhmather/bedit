@@ -1,6 +1,6 @@
 /*
- * gedit-history-entry.h
- * This file is part of gedit
+ * bedit-history-entry.h
+ * This file is part of bedit
  *
  * Copyright (C) 2006 - Paolo Borelli
  *
@@ -25,32 +25,32 @@
 
 G_BEGIN_DECLS
 
-#define GEDIT_TYPE_HISTORY_ENTRY (gedit_history_entry_get_type ())
+#define GEDIT_TYPE_HISTORY_ENTRY (bedit_history_entry_get_type ())
 
-G_DECLARE_FINAL_TYPE (BeditHistoryEntry, gedit_history_entry, GEDIT, HISTORY_ENTRY, GtkComboBoxText)
+G_DECLARE_FINAL_TYPE (BeditHistoryEntry, bedit_history_entry, GEDIT, HISTORY_ENTRY, GtkComboBoxText)
 
-GtkWidget	*gedit_history_entry_new			(const gchar       *history_id,
+GtkWidget	*bedit_history_entry_new			(const gchar       *history_id,
 								 gboolean           enable_completion);
 
-void		 gedit_history_entry_prepend_text		(BeditHistoryEntry *entry,
+void		 bedit_history_entry_prepend_text		(BeditHistoryEntry *entry,
 								 const gchar       *text);
 
-void		 gedit_history_entry_append_text		(BeditHistoryEntry *entry,
+void		 bedit_history_entry_append_text		(BeditHistoryEntry *entry,
 								 const gchar       *text);
 
-void		 gedit_history_entry_clear			(BeditHistoryEntry *entry);
+void		 bedit_history_entry_clear			(BeditHistoryEntry *entry);
 
-void		 gedit_history_entry_set_history_length		(BeditHistoryEntry *entry,
+void		 bedit_history_entry_set_history_length		(BeditHistoryEntry *entry,
 								 guint              max_saved);
 
-guint		 gedit_history_entry_get_history_length		(BeditHistoryEntry *gentry);
+guint		 bedit_history_entry_get_history_length		(BeditHistoryEntry *gentry);
 
-void		gedit_history_entry_set_enable_completion	(BeditHistoryEntry *entry,
+void		bedit_history_entry_set_enable_completion	(BeditHistoryEntry *entry,
 								 gboolean           enable);
 
-gboolean	gedit_history_entry_get_enable_completion	(BeditHistoryEntry *entry);
+gboolean	bedit_history_entry_get_enable_completion	(BeditHistoryEntry *entry);
 
-GtkWidget	*gedit_history_entry_get_entry			(BeditHistoryEntry *entry);
+GtkWidget	*bedit_history_entry_get_entry			(BeditHistoryEntry *entry);
 
 G_END_DECLS
 

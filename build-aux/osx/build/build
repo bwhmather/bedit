@@ -28,11 +28,11 @@ function do_exit() {
 }
 
 if [ ! which git &>/dev/null ]; then
-	do_exit "You need to have git installed to build gedit for OS X"
+	do_exit "You need to have git installed to build bedit for OS X"
 fi
 
 if [ ! xcodebuild -version &>/dev/null ]; then
-	do_exit "You need to have Xcode installed to build gedit for OS X"
+	do_exit "You need to have Xcode installed to build bedit for OS X"
 fi
 
 xcodebase=$(xcode-select -p)
@@ -76,8 +76,8 @@ function setup_jhbuildrc() {
     curl -ks "$GTK_OSX_BASE_URL/jhbuildrc-gtk-osx" | \
     	sed -e 's/^.*PYTHONPATH.*$//g' -e 's/^.*PYTHON_SITE_PACKAGES.*$//g' > "$HOMED/.jhbuildrc" || do_exit "Failed to get jhbuildrc."
 
-    rm -f "$HOMED/.jhbuildrc-gedit"
-    ln -s "$D/config/jhbuildrc-gedit" "$HOMED/.jhbuildrc-gedit" || exit 1
+    rm -f "$HOMED/.jhbuildrc-bedit"
+    ln -s "$D/config/jhbuildrc-bedit" "$HOMED/.jhbuildrc-bedit" || exit 1
 }
 
 function init_help_short() {
@@ -94,9 +94,9 @@ function cmd_init() {
 	build_jhbuild
 	setup_jhbuildrc
 
-	rm -f "$BASED/$GEDIT_SDK/source/gedit"
+	rm -f "$BASED/$GEDIT_SDK/source/bedit"
 	mkdir -p "$BASED/$GEDIT_SDK/source"
-	ln -s $(cd "$D/../../" && pwd) "$BASED/$GEDIT_SDK/source/gedit"
+	ln -s $(cd "$D/../../" && pwd) "$BASED/$GEDIT_SDK/source/bedit"
 }
 
 function bootstrap_help_short() {
@@ -130,7 +130,7 @@ function cmd_jh() {
 	export GEDIT_OSX_BUILD_BASE="$BASED"
 	export __GEDIT_OSX_OLD_HOME="$HOME"
 	export HOME="$HOMED"
-	export JHB=gedit
+	export JHB=bedit
 
 	# We set this because without it, GNU gettext intltool or whatever the cause
 	# may be, will set DATADIRNAME=lib during configure because gettext is not part

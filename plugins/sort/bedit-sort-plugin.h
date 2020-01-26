@@ -1,5 +1,5 @@
 /*
- * gedit-sort-plugin.h
+ * bedit-sort-plugin.h
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -25,7 +25,7 @@
 
 G_BEGIN_DECLS
 
-#define GEDIT_TYPE_SORT_PLUGIN		(gedit_sort_plugin_get_type ())
+#define GEDIT_TYPE_SORT_PLUGIN		(bedit_sort_plugin_get_type ())
 #define GEDIT_SORT_PLUGIN(o)		(G_TYPE_CHECK_INSTANCE_CAST ((o), GEDIT_TYPE_SORT_PLUGIN, BeditSortPlugin))
 #define GEDIT_SORT_PLUGIN_CLASS(k)	(G_TYPE_CHECK_CLASS_CAST((k), GEDIT_TYPE_SORT_PLUGIN, BeditSortPluginClass))
 #define GEDIT_IS_SORT_PLUGIN(o)		(G_TYPE_CHECK_INSTANCE_TYPE ((o), GEDIT_TYPE_SORT_PLUGIN))
@@ -49,7 +49,7 @@ struct _BeditSortPluginClass
 	PeasExtensionBaseClass parent_class;
 };
 
-GType			gedit_sort_plugin_get_type	(void) G_GNUC_CONST;
+GType			bedit_sort_plugin_get_type	(void) G_GNUC_CONST;
 
 G_MODULE_EXPORT void	peas_register_types		(PeasObjectModule *module);
 

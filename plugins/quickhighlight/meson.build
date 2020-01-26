@@ -1,9 +1,9 @@
 libquickhighlight_sources = files(
-  'gedit-quick-highlight-plugin.c',
+  'bedit-quick-highlight-plugin.c',
 )
 
 libquickhighlight_deps = [
-  libgedit_dep,
+  libbedit_dep,
 ]
 
 libquickhighlight_sha = shared_module(

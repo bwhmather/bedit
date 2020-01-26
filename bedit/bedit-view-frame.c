@@ -1,36 +1,36 @@
 /*
- * gedit-view-frame.c
- * This file is part of gedit
+ * bedit-view-frame.c
+ * This file is part of bedit
  *
  * Copyright (C) 2010 - Ignacio Casal Quinteiro
  * Copyright (C) 2013, 2019 - Sébastien Wilmet
  *
- * gedit is free software; you can redistribute it and/or modify
+ * bedit is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 2 of the License, or
  * (at your option) any later version.
  *
- * gedit is distributed in the hope that it will be useful,
+ * bedit is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with gedit; if not, write to the Free Software
+ * along with bedit; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin St, Fifth Floor,
  * Boston, MA  02110-1301  USA
  */
 
-#include "gedit-view-frame.h"
+#include "bedit-view-frame.h"
 
 #include <gtksourceview/gtksource.h>
 #include <gdk/gdkkeysyms.h>
 #include <glib/gi18n.h>
 #include <stdlib.h>
 
-#include "gedit-debug.h"
-#include "gedit-utils.h"
-#include "gedit-settings.h"
+#include "bedit-debug.h"
+#include "bedit-utils.h"
+#include "bedit-settings.h"
 #include "libgd/gd.h"
 
 #define FLUSH_TIMEOUT_DURATION 30 /* in seconds */
@@ -91,7 +91,7 @@ struct _BeditViewFrame
 	gchar *old_search_text;
 };
 
-G_DEFINE_TYPE (BeditViewFrame, gedit_view_frame, GTK_TYPE_OVERLAY)
+G_DEFINE_TYPE (BeditViewFrame, bedit_view_frame, GTK_TYPE_OVERLAY)
 
 static BeditDocument *
 get_document (BeditViewFrame *frame)
@@ -119,7 +119,7 @@ get_iter_at_start_mark (BeditViewFrame *frame,
 }
 
 static void
-gedit_view_frame_dispose (GObject *object)
+bedit_view_frame_dispose (GObject *object)
 {
 	BeditViewFrame *frame = GEDIT_VIEW_FRAME (object);
 	GtkTextBuffer *buffer = NULL;
@@ -155,7 +155,7 @@ gedit_view_frame_dispose (GObject *object)
 
 	if (buffer != NULL)
 	{
-		GtkSourceFile *file = gedit_document_get_file (GEDIT_DOCUMENT (buffer));
+		GtkSourceFile *file = bedit_document_get_file (GEDIT_DOCUMENT (buffer));
 		gtk_source_file_set_mount_operation_factory (file, NULL, NULL, NULL);
 	}
 
@@ -163,18 +163,18 @@ gedit_view_frame_dispose (GObject *object)
 	g_clear_object (&frame->search_settings);
 	g_clear_object (&frame->old_search_settings);
 
-	G_OBJECT_CLASS (gedit_view_frame_parent_class)->dispose (object);
+	G_OBJECT_CLASS (bedit_view_frame_parent_class)->dispose (object);
 }
 
 static void
-gedit_view_frame_finalize (GObject *object)
+bedit_view_frame_finalize (GObject *object)
 {
 	BeditViewFrame *frame = GEDIT_VIEW_FRAME (object);
 
 	g_free (frame->search_text);
 	g_free (frame->old_search_text);
 
-	G_OBJECT_CLASS (gedit_view_frame_parent_class)->finalize (object);
+	G_OBJECT_CLASS (bedit_view_frame_parent_class)->finalize (object);
 }
 
 static void
@@ -213,7 +213,7 @@ hide_search_widget (BeditViewFrame *frame,
 		                                  frame->start_mark);
 		gtk_text_buffer_place_cursor (buffer, &iter);
 
-		gedit_view_scroll_to_cursor (frame->view);
+		bedit_view_scroll_to_cursor (frame->view);
 	}
 
 	if (frame->start_mark != NULL)
@@ -254,7 +254,7 @@ get_search_context (BeditViewFrame *frame)
 	GtkSourceSearchSettings *search_settings;
 
 	doc = get_document (frame);
-	search_context = gedit_document_get_search_context (doc);
+	search_context = bedit_document_get_search_context (doc);
 
 	if (search_context == NULL)
 	{
@@ -297,7 +297,7 @@ finish_search (BeditViewFrame    *frame,
 
 	if (found || (entry_text[0] == '\0'))
 	{
-		gedit_view_scroll_to_cursor (frame->view);
+		bedit_view_scroll_to_cursor (frame->view);
 
 		set_search_state (frame, SEARCH_STATE_NORMAL);
 	}
@@ -855,7 +855,7 @@ search_entry_escaped (GtkSearchEntry *entry,
 		buffer = gtk_text_view_get_buffer (GTK_TEXT_VIEW (frame->view));
 		search_context = gtk_source_search_context_new (GTK_SOURCE_BUFFER (buffer),
 		                                                frame->search_settings);
-		gedit_document_set_search_context (GEDIT_DOCUMENT (buffer), search_context);
+		bedit_document_set_search_context (GEDIT_DOCUMENT (buffer), search_context);
 		g_object_unref (search_context);
 
 		g_free (frame->search_text);
@@ -1118,10 +1118,10 @@ update_goto_line (BeditViewFrame *frame)
 	g_strfreev (split_text);
 
 	doc = get_document (frame);
-	moved = gedit_document_goto_line (doc, line);
-	moved_offset = gedit_document_goto_line_offset (doc, line, line_offset);
+	moved = bedit_document_goto_line (doc, line);
+	moved_offset = bedit_document_goto_line_offset (doc, line, line_offset);
 
-	gedit_view_scroll_to_cursor (frame->view);
+	bedit_view_scroll_to_cursor (frame->view);
 
 	if (!moved || !moved_offset)
 	{
@@ -1265,7 +1265,7 @@ init_search_entry (BeditViewFrame *frame)
 			search_context = gtk_source_search_context_new (GTK_SOURCE_BUFFER (buffer),
 									frame->search_settings);
 
-			gedit_document_set_search_context (GEDIT_DOCUMENT (buffer),
+			bedit_document_set_search_context (GEDIT_DOCUMENT (buffer),
 							   search_context);
 
 			g_signal_connect_swapped (search_context,
@@ -1420,17 +1420,17 @@ start_interactive_search_real (BeditViewFrame *frame,
 }
 
 static void
-gedit_view_frame_class_init (BeditViewFrameClass *klass)
+bedit_view_frame_class_init (BeditViewFrameClass *klass)
 {
 	GObjectClass *object_class = G_OBJECT_CLASS (klass);
 	GtkWidgetClass *widget_class = GTK_WIDGET_CLASS (klass);
 
-	object_class->dispose = gedit_view_frame_dispose;
-	object_class->finalize = gedit_view_frame_finalize;
+	object_class->dispose = bedit_view_frame_dispose;
+	object_class->finalize = bedit_view_frame_finalize;
 
 	/* Bind class to template */
 	gtk_widget_class_set_template_from_resource (widget_class,
-	                                             "/com/bwhmather/bedit/ui/gedit-view-frame.ui");
+	                                             "/com/bwhmather/bedit/ui/bedit-view-frame.ui");
 	gtk_widget_class_bind_template_child (widget_class, BeditViewFrame, view);
 	gtk_widget_class_bind_template_child (widget_class, BeditViewFrame, revealer);
 	gtk_widget_class_bind_template_child (widget_class, BeditViewFrame, search_entry);
@@ -1449,17 +1449,17 @@ view_frame_mount_operation_factory (GtkSourceFile *file,
 }
 
 static void
-gedit_view_frame_init (BeditViewFrame *frame)
+bedit_view_frame_init (BeditViewFrame *frame)
 {
 	BeditDocument *doc;
 	GtkSourceFile *file;
 
-	gedit_debug (DEBUG_WINDOW);
+	bedit_debug (DEBUG_WINDOW);
 
 	gtk_widget_init_template (GTK_WIDGET (frame));
 
 	doc = get_document (frame);
-	file = gedit_document_get_file (doc);
+	file = bedit_document_get_file (doc);
 
 	gtk_source_file_set_mount_operation_factory (file,
 						     view_frame_mount_operation_factory,
@@ -1469,7 +1469,7 @@ gedit_view_frame_init (BeditViewFrame *frame)
 	frame->entry_tag = gd_tagged_entry_tag_new ("");
 
 	gd_tagged_entry_tag_set_style (frame->entry_tag,
-				       "gedit-search-entry-occurrences-tag");
+				       "bedit-search-entry-occurrences-tag");
 
 	gd_tagged_entry_tag_set_has_close_button (frame->entry_tag, FALSE);
 
@@ -1550,13 +1550,13 @@ gedit_view_frame_init (BeditViewFrame *frame)
 }
 
 BeditViewFrame *
-gedit_view_frame_new (void)
+bedit_view_frame_new (void)
 {
 	return g_object_new (GEDIT_TYPE_VIEW_FRAME, NULL);
 }
 
 BeditView *
-gedit_view_frame_get_view (BeditViewFrame *frame)
+bedit_view_frame_get_view (BeditViewFrame *frame)
 {
 	g_return_val_if_fail (GEDIT_IS_VIEW_FRAME (frame), NULL);
 
@@ -1564,7 +1564,7 @@ gedit_view_frame_get_view (BeditViewFrame *frame)
 }
 
 void
-gedit_view_frame_popup_search (BeditViewFrame *frame)
+bedit_view_frame_popup_search (BeditViewFrame *frame)
 {
 	g_return_if_fail (GEDIT_IS_VIEW_FRAME (frame));
 
@@ -1572,7 +1572,7 @@ gedit_view_frame_popup_search (BeditViewFrame *frame)
 }
 
 void
-gedit_view_frame_popup_goto_line (BeditViewFrame *frame)
+bedit_view_frame_popup_goto_line (BeditViewFrame *frame)
 {
 	g_return_if_fail (GEDIT_IS_VIEW_FRAME (frame));
 
@@ -1580,7 +1580,7 @@ gedit_view_frame_popup_goto_line (BeditViewFrame *frame)
 }
 
 void
-gedit_view_frame_clear_search (BeditViewFrame *frame)
+bedit_view_frame_clear_search (BeditViewFrame *frame)
 {
 	g_return_if_fail (GEDIT_IS_VIEW_FRAME (frame));
 

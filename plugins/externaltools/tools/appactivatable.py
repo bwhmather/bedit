@@ -23,8 +23,8 @@ import os
 
 try:
     import gettext
-    gettext.bindtextdomain('gedit')
-    gettext.textdomain('gedit')
+    gettext.bindtextdomain('bedit')
+    gettext.textdomain('bedit')
     _ = gettext.gettext
 except:
     _ = lambda s: s
@@ -96,32 +96,32 @@ class AppActivatable(GObject.Object, Bedit.AppActivatable):
 
         self.css = Gtk.CssProvider()
         self.css.load_from_data("""
-.gedit-tool-manager-paned {
+.bedit-tool-manager-paned {
   border-style: solid;
   border-color: @borders;
 }
 
-.gedit-tool-manager-paned:dir(ltr) {
+.bedit-tool-manager-paned:dir(ltr) {
   border-width: 0 1px 0 0;
 }
 
-.gedit-tool-manager-paned:dir(rtl) {
+.bedit-tool-manager-paned:dir(rtl) {
   border-width: 0 0 0 1px;
 }
 
-.gedit-tool-manager-view {
+.bedit-tool-manager-view {
   border-width: 0 0 1px 0;
 }
 
-.gedit-tool-manager-treeview {
+.bedit-tool-manager-treeview {
   border-top-width: 0;
 }
 
-.gedit-tool-manager-treeview:dir(ltr) {
+.bedit-tool-manager-treeview:dir(ltr) {
   border-left-width: 0;
 }
 
-.gedit-tool-manager-treeview:dir(rtl) {
+.bedit-tool-manager-treeview:dir(rtl) {
   border-right-width: 0;
 }
 """.encode('utf-8'))

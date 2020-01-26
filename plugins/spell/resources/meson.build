@@ -1,6 +1,6 @@
 libspell_res = gnome.compile_resources(
-  'gedit-spell-resources',
-  'gedit-spell.gresource.xml',
+  'bedit-spell-resources',
+  'bedit-spell.gresource.xml',
 )
 
 libspell_sources += [

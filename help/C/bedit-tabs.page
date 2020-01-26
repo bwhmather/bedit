@@ -1,13 +1,13 @@
 <page xmlns="http://projectmallard.org/1.0/"
       xmlns:its="http://www.w3.org/2005/11/its"
       type="topic" style="task"
-      id="gedit-tabs">
+      id="bedit-tabs">
 
   <info>
-    <link type="guide" xref="index#gedit-working-with-files" group="second"/>
-    <link type="seealso" xref="gedit-tabs-moving"/>
-    <link type="seealso" xref="gedit-tab-groups"/>
-    <desc>Create or close tabs in the gedit window.</desc>
+    <link type="guide" xref="index#bedit-working-with-files" group="second"/>
+    <link type="seealso" xref="bedit-tabs-moving"/>
+    <link type="seealso" xref="bedit-tab-groups"/>
+    <desc>Create or close tabs in the bedit window.</desc>
     <revision pkgversion="3.8" date="2013-02-24" status="review"/>
     <revision pkgversion="3.12" date="2014-02-12" status="review"/>
     <credit type="author">
@@ -36,19 +36,19 @@
   </info>
 
   <title>Add and remove tabs</title>
-  <p>Working with tabs in <app>gedit</app> allows you to keep an eye on several
+  <p>Working with tabs in <app>bedit</app> allows you to keep an eye on several
   files in a single window. The tab that is larger than the other tabs indicates
   the file that is currently open. The smaller tabs indicate other files that
   are available to work on.</p>
 
-  <section id="gedit-adding-tabs">
+  <section id="bedit-adding-tabs">
     <title>Adding tabs</title>
     <p>To add a new tab, create a new file with <keyseq><key>Ctrl</key>
     <key>T</key></keyseq>. The tab will be added to the right side of any other
     tabs.</p>
   </section>
 
-  <section id="gedit-removing-tabs">
+  <section id="bedit-removing-tabs">
     <title>Removing tabs</title>
     <p>To remove a tab, click the <gui style="button">×</gui> on the tab's
     right side. To remove all open tabs, press <keyseq><key>Ctrl</key>

@@ -63,7 +63,7 @@ class RecentDocumentsDirectory(VirtualDirectory):
         added = 0
 
         for item in items:
-            if item.has_group('gedit'):
+            if item.has_group('bedit'):
                 self.append(Gio.file_new_for_uri(item.get_uri()))
                 added += 1
 

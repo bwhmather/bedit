@@ -1,6 +1,6 @@
 /*
  * modeline-parser.c
- * Emacs, Kate and Vim-style modelines support for gedit.
+ * Emacs, Kate and Vim-style modelines support for bedit.
  *
  * Copyright (C) 2005-2007 - Steve Frécinaux <code@istique.net>
  *
@@ -22,10 +22,10 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <gtksourceview/gtksource.h>
-#include <gedit/gedit-debug.h>
-#include <gedit/gedit-document.h>
-#include <gedit/gedit-settings.h>
-#include <gedit/gedit-utils.h>
+#include <bedit/bedit-debug.h>
+#include <bedit/bedit-document.h>
+#include <bedit/bedit-settings.h>
+#include <bedit/bedit-utils.h>
 #include "modeline-parser.h"
 
 #define MODELINES_LANGUAGE_MAPPINGS_FILE "language-mappings"
@@ -117,7 +117,7 @@ load_language_mappings_group (GKeyFile *key_file, const gchar *group)
 
 	keys = g_key_file_get_keys (key_file, group, &length, NULL);
 
-	gedit_debug_message (DEBUG_PLUGINS,
+	bedit_debug_message (DEBUG_PLUGINS,
 			     "%" G_GSIZE_FORMAT " mappings in group %s",
 			     length, group);
 
@@ -149,7 +149,7 @@ load_language_mappings (void)
 
 	if (g_key_file_load_from_file (mappings, fname, 0, &error))
 	{
-		gedit_debug_message (DEBUG_PLUGINS,
+		bedit_debug_message (DEBUG_PLUGINS,
 				     "Loaded language mappings from %s",
 				     fname);
 
@@ -159,7 +159,7 @@ load_language_mappings (void)
 	}
 	else
 	{
-		gedit_debug_message (DEBUG_PLUGINS,
+		bedit_debug_message (DEBUG_PLUGINS,
 				     "Failed to loaded language mappings from %s: %s",
 				     fname, error->message);
 
@@ -403,7 +403,7 @@ parse_emacs_modeline (gchar           *s,
 			s++;
 		}
 
-		gedit_debug_message (DEBUG_PLUGINS,
+		bedit_debug_message (DEBUG_PLUGINS,
 				     "Emacs modeline bit: %s = %s",
 				     key->str, value->str);
 
@@ -503,7 +503,7 @@ parse_kate_modeline (gchar           *s,
 			s++;
 		}
 
-		gedit_debug_message (DEBUG_PLUGINS,
+		bedit_debug_message (DEBUG_PLUGINS,
 				     "Kate modeline bit: %s = %s",
 				     key->str, value->str);
 
@@ -595,7 +595,7 @@ parse_modeline (gchar           *line,
 		     strncmp (s, "vi:", 3) == 0 ||
 		     strncmp (s, "vim:", 4) == 0))
 		{
-			gedit_debug_message (DEBUG_PLUGINS, "Vim modeline on line %d", line_number);
+			bedit_debug_message (DEBUG_PLUGINS, "Vim modeline on line %d", line_number);
 
 			while (*s != ':')
 			{
@@ -606,14 +606,14 @@ parse_modeline (gchar           *line,
 		}
 		else if (line_number <= 2 && strncmp (s, "-*-", 3) == 0)
 		{
-			gedit_debug_message (DEBUG_PLUGINS, "Emacs modeline on line %d", line_number);
+			bedit_debug_message (DEBUG_PLUGINS, "Emacs modeline on line %d", line_number);
 
 			s = parse_emacs_modeline (s + 3, options);
 		}
 		else if ((line_number <= 10 || line_number > line_count - 10) &&
 			 strncmp (s, "kate:", 5) == 0)
 		{
-			gedit_debug_message (DEBUG_PLUGINS, "Kate modeline on line %d", line_number);
+			bedit_debug_message (DEBUG_PLUGINS, "Kate modeline on line %d", line_number);
 
 			s = parse_kate_modeline (s + 5, options);
 		}
@@ -765,7 +765,7 @@ modeline_parser_apply_modeline (GtkSourceView *view)
 	{
 		if (g_ascii_strcasecmp (options.language_id, "text") == 0)
 		{
-			gedit_document_set_language (GEDIT_DOCUMENT (buffer),
+			bedit_document_set_language (GEDIT_DOCUMENT (buffer),
 			                             NULL);
 		}
 		else
@@ -779,12 +779,12 @@ modeline_parser_apply_modeline (GtkSourceView *view)
 					(manager, options.language_id);
 			if (language != NULL)
 			{
-				gedit_document_set_language (GEDIT_DOCUMENT (buffer),
+				bedit_document_set_language (GEDIT_DOCUMENT (buffer),
 				                             language);
 			}
 			else
 			{
-				gedit_debug_message (DEBUG_PLUGINS,
+				bedit_debug_message (DEBUG_PLUGINS,
 						     "Unknown language `%s'",
 						     options.language_id);
 			}

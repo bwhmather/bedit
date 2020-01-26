@@ -155,7 +155,7 @@
         <property name="position">275</property>
         <property name="position_set">True</property>
         <style>
-          <class name="gedit-tool-manager-paned"/>
+          <class name="bedit-tool-manager-paned"/>
         </style>
         <child>
           <object class="GtkBox" id="vbox2">
@@ -168,7 +168,7 @@
                 <property name="can_focus">True</property>
                 <property name="shadow_type">in</property>
                 <style>
-                  <class name="gedit-tool-manager-treeview"/>
+                  <class name="bedit-tool-manager-treeview"/>
                 </style>
                 <child>
                   <object class="GtkTreeView" id="view">
@@ -506,7 +506,7 @@
                         <property name="vexpand">True</property>
                         <property name="shadow_type">in</property>
                         <style>
-                          <class name="gedit-tool-manager-view"/>
+                          <class name="bedit-tool-manager-view"/>
                         </style>
                         <child>
                           <object class="BeditView" id="commands">

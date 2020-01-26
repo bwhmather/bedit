@@ -1,6 +1,6 @@
 /*
- * gedit-encodings-dialog.c
- * This file is part of gedit
+ * bedit-encodings-dialog.c
+ * This file is part of bedit
  *
  * Copyright (C) 2002-2005 Paolo Maggi
  * Copyright (C) 2015 Sébastien Wilmet
@@ -21,13 +21,13 @@
 
 #include "config.h"
 
-#include "gedit-encodings-dialog.h"
+#include "bedit-encodings-dialog.h"
 
 #include <string.h>
 #include <glib/gi18n.h>
 #include <gtksourceview/gtksource.h>
 
-#include "gedit-settings.h"
+#include "bedit-settings.h"
 
 typedef enum _State
 {
@@ -67,7 +67,7 @@ enum
 	N_COLUMNS
 };
 
-G_DEFINE_TYPE (BeditEncodingsDialog, gedit_encodings_dialog, GTK_TYPE_DIALOG)
+G_DEFINE_TYPE (BeditEncodingsDialog, bedit_encodings_dialog, GTK_TYPE_DIALOG)
 
 static void
 set_modified (BeditEncodingsDialog *dialog)
@@ -125,7 +125,7 @@ init_liststores (BeditEncodingsDialog *dialog,
 	}
 	else
 	{
-		chosen_encodings = gedit_settings_get_candidate_encodings (&default_candidates);
+		chosen_encodings = bedit_settings_get_candidate_encodings (&default_candidates);
 	}
 
 	gtk_widget_set_sensitive (dialog->reset_button, !default_candidates);
@@ -288,7 +288,7 @@ apply_settings (BeditEncodingsDialog *dialog)
 }
 
 static void
-gedit_encodings_dialog_response (GtkDialog *gtk_dialog,
+bedit_encodings_dialog_response (GtkDialog *gtk_dialog,
                                  gint       response_id)
 {
 	BeditEncodingsDialog *dialog = GEDIT_ENCODINGS_DIALOG (gtk_dialog);
@@ -307,7 +307,7 @@ gedit_encodings_dialog_response (GtkDialog *gtk_dialog,
 }
 
 static void
-gedit_encodings_dialog_dispose (GObject *object)
+bedit_encodings_dialog_dispose (GObject *object)
 {
 	BeditEncodingsDialog *dialog = GEDIT_ENCODINGS_DIALOG (object);
 
@@ -318,23 +318,23 @@ gedit_encodings_dialog_dispose (GObject *object)
 	g_clear_object (&dialog->down_button);
 	g_clear_object (&dialog->reset_button);
 
-	G_OBJECT_CLASS (gedit_encodings_dialog_parent_class)->dispose (object);
+	G_OBJECT_CLASS (bedit_encodings_dialog_parent_class)->dispose (object);
 }
 
 static void
-gedit_encodings_dialog_class_init (BeditEncodingsDialogClass *klass)
+bedit_encodings_dialog_class_init (BeditEncodingsDialogClass *klass)
 {
 	GObjectClass *object_class = G_OBJECT_CLASS (klass);
 	GtkWidgetClass *widget_class = GTK_WIDGET_CLASS (klass);
 	GtkDialogClass *dialog_class = GTK_DIALOG_CLASS (klass);
 
-	object_class->dispose = gedit_encodings_dialog_dispose;
+	object_class->dispose = bedit_encodings_dialog_dispose;
 
-	dialog_class->response = gedit_encodings_dialog_response;
+	dialog_class->response = bedit_encodings_dialog_response;
 
 	/* Bind class to template */
 	gtk_widget_class_set_template_from_resource (widget_class,
-	                                             "/com/bwhmather/bedit/ui/gedit-encodings-dialog.ui");
+	                                             "/com/bwhmather/bedit/ui/bedit-encodings-dialog.ui");
 	gtk_widget_class_bind_template_child (widget_class, BeditEncodingsDialog, liststore_available);
 	gtk_widget_class_bind_template_child (widget_class, BeditEncodingsDialog, liststore_chosen);
 	gtk_widget_class_bind_template_child (widget_class, BeditEncodingsDialog, sort_available);
@@ -835,7 +835,7 @@ init_toolbar_chosen (BeditEncodingsDialog *dialog)
 }
 
 static void
-gedit_encodings_dialog_init (BeditEncodingsDialog *dialog)
+bedit_encodings_dialog_init (BeditEncodingsDialog *dialog)
 {
 	GtkTreeSelection *selection;
 
@@ -874,7 +874,7 @@ gedit_encodings_dialog_init (BeditEncodingsDialog *dialog)
 }
 
 GtkWidget *
-gedit_encodings_dialog_new (void)
+bedit_encodings_dialog_new (void)
 {
 	return g_object_new (GEDIT_TYPE_ENCODINGS_DIALOG,
 			     "use-header-bar", TRUE,

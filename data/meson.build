@@ -1,6 +1,6 @@
 subdir('icons')
 
-install_man('gedit.1')
+install_man('bedit.1')
 
 appdata = 'com.bwhmather.bedit.appdata.xml'
 appdata_file = i18n.merge_file(

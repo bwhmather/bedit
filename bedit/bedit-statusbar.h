@@ -1,6 +1,6 @@
 /*
- * gedit-statusbar.h
- * This file is part of gedit
+ * bedit-statusbar.h
+ * This file is part of bedit
  *
  * Copyright (C) 2005 - Paolo Borelli
  *
@@ -22,26 +22,26 @@
 #define GEDIT_STATUSBAR_H
 
 #include <gtk/gtk.h>
-#include <gedit/gedit-window.h>
+#include <bedit/bedit-window.h>
 
 G_BEGIN_DECLS
 
-#define GEDIT_TYPE_STATUSBAR (gedit_statusbar_get_type ())
+#define GEDIT_TYPE_STATUSBAR (bedit_statusbar_get_type ())
 
-G_DECLARE_FINAL_TYPE (BeditStatusbar, gedit_statusbar, GEDIT, STATUSBAR, GtkStatusbar)
+G_DECLARE_FINAL_TYPE (BeditStatusbar, bedit_statusbar, GEDIT, STATUSBAR, GtkStatusbar)
 
-GtkWidget	*gedit_statusbar_new			(void);
+GtkWidget	*bedit_statusbar_new			(void);
 
-void		 gedit_statusbar_set_window_state	(BeditStatusbar   *statusbar,
+void		 bedit_statusbar_set_window_state	(BeditStatusbar   *statusbar,
 							 BeditWindowState  state,
 							 gint              num_of_errors);
 
-void		 gedit_statusbar_set_overwrite		(BeditStatusbar   *statusbar,
+void		 bedit_statusbar_set_overwrite		(BeditStatusbar   *statusbar,
 							 gboolean          overwrite);
 
-void		 gedit_statusbar_clear_overwrite 	(BeditStatusbar   *statusbar);
+void		 bedit_statusbar_clear_overwrite 	(BeditStatusbar   *statusbar);
 
-void		 gedit_statusbar_flash_message		(BeditStatusbar   *statusbar,
+void		 bedit_statusbar_flash_message		(BeditStatusbar   *statusbar,
 							 guint             context_id,
 							 const gchar      *format,
 							 ...) G_GNUC_PRINTF(3, 4);

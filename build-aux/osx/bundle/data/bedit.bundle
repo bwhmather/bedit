@@ -36,7 +36,7 @@
        identifier are taken from the plist file.
   -->
   <plist>${project}/Info.plist</plist>
-  <main-binary>${prefix}/bin/gedit</main-binary>
+  <main-binary>${prefix}/bin/bedit</main-binary>
 
   <!-- Copy in dependencies of python plugins -->
   <binary>${prefix}/lib/libgit2-glib*.dylib</binary>
@@ -55,7 +55,7 @@
 
   <!-- Copy in plugins and plugin loaders -->
   <binary>${prefix}/lib/libpeas-1.0/loaders/*.so</binary>
-  <binary>${prefix}/lib/gedit/plugins/*.so</binary>
+  <binary>${prefix}/lib/bedit/plugins/*.so</binary>
 
   <!-- Take the applespell enchant provider -->
   <binary>${prefix}/lib/enchant/libenchant_applespell.so</binary>
@@ -66,8 +66,8 @@
   <!-- Copy in girepository typelibs -->
   <data>${prefix}/lib/girepository-1.0</data>
 
-  <!-- Copy in gedit private girepository typelibs -->
-  <data>${prefix}/lib/gedit/girepository-1.0</data>
+  <!-- Copy in bedit private girepository typelibs -->
+  <data>${prefix}/lib/bedit/girepository-1.0</data>
 
 
   <!-- python -->
@@ -89,9 +89,9 @@
   <!-- gtksourceview -->
   <data>${prefix}/share/gtksourceview-4</data>
 
-  <!-- gedit -->
-  <data>${prefix}/share/gedit</data>
-  <data>${prefix}/lib/gedit</data>
+  <!-- bedit -->
+  <data>${prefix}/share/bedit</data>
+  <data>${prefix}/lib/bedit</data>
 
   <!-- locale (TODO: trim) -->
   <data>${prefix}/share/locale</data>
@@ -110,8 +110,8 @@
   <data>${prefix}/share/themes/Mac</data>
 
   <!-- App icon -->
-  <data dest="${bundle}/Contents/Resources">${project}/gedit.icns</data>
-  <data dest="${bundle}/Contents/Resources">${project}/geditdoc.icns</data>
+  <data dest="${bundle}/Contents/Resources">${project}/bedit.icns</data>
+  <data dest="${bundle}/Contents/Resources">${project}/beditdoc.icns</data>
 
   <!-- gsettings schema -->
   <data>${prefix}/share/glib-2.0/schemas/gschemas.compiled</data>

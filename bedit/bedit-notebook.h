@@ -1,6 +1,6 @@
 /*
- * gedit-notebook.h
- * This file is part of gedit
+ * bedit-notebook.h
+ * This file is part of bedit
  *
  * Copyright (C) 2005 - Paolo Maggi
  *
@@ -30,12 +30,12 @@
 #ifndef GEDIT_NOTEBOOK_H
 #define GEDIT_NOTEBOOK_H
 
-#include <gedit/gedit-tab.h>
+#include <bedit/bedit-tab.h>
 #include <gtk/gtk.h>
 
 G_BEGIN_DECLS
 
-#define GEDIT_TYPE_NOTEBOOK		(gedit_notebook_get_type ())
+#define GEDIT_TYPE_NOTEBOOK		(bedit_notebook_get_type ())
 #define GEDIT_NOTEBOOK(o)		(G_TYPE_CHECK_INSTANCE_CAST ((o), GEDIT_TYPE_NOTEBOOK, BeditNotebook))
 #define GEDIT_NOTEBOOK_CLASS(k)		(G_TYPE_CHECK_CLASS_CAST((k), GEDIT_TYPE_NOTEBOOK, BeditNotebookClass))
 #define GEDIT_IS_NOTEBOOK(o)		(G_TYPE_CHECK_INSTANCE_TYPE ((o), GEDIT_TYPE_NOTEBOOK))
@@ -77,21 +77,21 @@ struct _BeditNotebookClass
 	                                 gint           page_num);
 };
 
-GType		gedit_notebook_get_type		(void) G_GNUC_CONST;
+GType		bedit_notebook_get_type		(void) G_GNUC_CONST;
 
-GtkWidget      *gedit_notebook_new		(void);
+GtkWidget      *bedit_notebook_new		(void);
 
-void		gedit_notebook_add_tab		(BeditNotebook *nb,
+void		bedit_notebook_add_tab		(BeditNotebook *nb,
 						 BeditTab      *tab,
 						 gint           position,
 						 gboolean       jump_to);
 
-void		gedit_notebook_move_tab		(BeditNotebook *src,
+void		bedit_notebook_move_tab		(BeditNotebook *src,
 						 BeditNotebook *dest,
 						 BeditTab      *tab,
 						 gint           dest_position);
 
-void		gedit_notebook_remove_all_tabs 	(BeditNotebook *nb);
+void		bedit_notebook_remove_all_tabs 	(BeditNotebook *nb);
 
 G_END_DECLS
 

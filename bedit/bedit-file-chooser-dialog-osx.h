@@ -1,6 +1,6 @@
 /*
- * gedit-file-chooser-dialog-gtk.h
- * This file is part of gedit
+ * bedit-file-chooser-dialog-gtk.h
+ * This file is part of bedit
  *
  * Copyright (C) 2005 - Paolo Maggi
  * Copyright (C) 2014 - Jesse van den Kieboom
@@ -23,15 +23,15 @@
 #define GEDIT_FILE_CHOOSER_DIALOG_OSX_H
 
 #include <gtk/gtk.h>
-#include "gedit-file-chooser-dialog.h"
+#include "bedit-file-chooser-dialog.h"
 
 G_BEGIN_DECLS
 
-#define GEDIT_TYPE_FILE_CHOOSER_DIALOG_OSX (gedit_file_chooser_dialog_osx_get_type ())
+#define GEDIT_TYPE_FILE_CHOOSER_DIALOG_OSX (bedit_file_chooser_dialog_osx_get_type ())
 
-G_DECLARE_FINAL_TYPE (BeditFileChooserDialogOSX, gedit_file_chooser_dialog_osx, GEDIT, FILE_CHOOSER_DIALOG_OSX, GObject)
+G_DECLARE_FINAL_TYPE (BeditFileChooserDialogOSX, bedit_file_chooser_dialog_osx, GEDIT, FILE_CHOOSER_DIALOG_OSX, GObject)
 
-BeditFileChooserDialog	*gedit_file_chooser_dialog_osx_create		(const gchar              *title,
+BeditFileChooserDialog	*bedit_file_chooser_dialog_osx_create		(const gchar              *title,
 									 GtkWindow                *parent,
 									 BeditFileChooserFlags     flags,
 									 const GtkSourceEncoding  *encoding,

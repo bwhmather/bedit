@@ -1,6 +1,6 @@
 /*
- * gedit-notebook.c
- * This file is part of gedit
+ * bedit-notebook.c
+ * This file is part of bedit
  *
  * Copyright (C) 2005 - Paolo Maggi
  * Copyright (C) 2015 - Sébastien Wilmet
@@ -27,8 +27,8 @@
  *  Copyright (C) 2003, 2004 Christian Persch
  */
 
-#include "gedit-notebook.h"
-#include "gedit-tab-label.h"
+#include "bedit-notebook.h"
+#include "bedit-tab-label.h"
 
 #define GEDIT_NOTEBOOK_GROUP_NAME "BeditNotebookGroup"
 
@@ -47,7 +47,7 @@ struct _BeditNotebookPrivate
 	guint ignore_focused_page_update : 1;
 };
 
-G_DEFINE_TYPE_WITH_PRIVATE (BeditNotebook, gedit_notebook, GTK_TYPE_NOTEBOOK)
+G_DEFINE_TYPE_WITH_PRIVATE (BeditNotebook, bedit_notebook, GTK_TYPE_NOTEBOOK)
 
 enum
 {
@@ -60,17 +60,17 @@ enum
 static guint signals[LAST_SIGNAL] = { 0 };
 
 static void
-gedit_notebook_finalize (GObject *object)
+bedit_notebook_finalize (GObject *object)
 {
 	BeditNotebook *notebook = GEDIT_NOTEBOOK (object);
 
 	g_list_free (notebook->priv->focused_pages);
 
-	G_OBJECT_CLASS (gedit_notebook_parent_class)->finalize (object);
+	G_OBJECT_CLASS (bedit_notebook_parent_class)->finalize (object);
 }
 
 static void
-gedit_notebook_grab_focus (GtkWidget *widget)
+bedit_notebook_grab_focus (GtkWidget *widget)
 {
 	GtkNotebook *notebook = GTK_NOTEBOOK (widget);
 	gint current_page;
@@ -140,7 +140,7 @@ find_tab_num_at_pos (GtkNotebook *notebook,
 }
 
 static gboolean
-gedit_notebook_button_press_event (GtkWidget      *widget,
+bedit_notebook_button_press_event (GtkWidget      *widget,
 				   GdkEventButton *event)
 {
 	GtkNotebook *notebook = GTK_NOTEBOOK (widget);
@@ -172,7 +172,7 @@ gedit_notebook_button_press_event (GtkWidget      *widget,
 		}
 	}
 
-	return GTK_WIDGET_CLASS (gedit_notebook_parent_class)->button_press_event (widget, event);
+	return GTK_WIDGET_CLASS (bedit_notebook_parent_class)->button_press_event (widget, event);
 }
 
 /*
@@ -180,7 +180,7 @@ gedit_notebook_button_press_event (GtkWidget      *widget,
  * fullscreen we need to have wrap around too
  */
 static gboolean
-gedit_notebook_change_current_page (GtkNotebook *notebook,
+bedit_notebook_change_current_page (GtkNotebook *notebook,
 				    gint         offset)
 {
 	gint current;
@@ -221,13 +221,13 @@ gedit_notebook_change_current_page (GtkNotebook *notebook,
 }
 
 static void
-gedit_notebook_switch_page (GtkNotebook *notebook,
+bedit_notebook_switch_page (GtkNotebook *notebook,
                             GtkWidget   *page,
                             guint        page_num)
 {
 	BeditNotebookPrivate *priv = GEDIT_NOTEBOOK (notebook)->priv;
 
-	GTK_NOTEBOOK_CLASS (gedit_notebook_parent_class)->switch_page (notebook, page, page_num);
+	GTK_NOTEBOOK_CLASS (bedit_notebook_parent_class)->switch_page (notebook, page, page_num);
 
 	if (!priv->ignore_focused_page_update)
 	{
@@ -261,7 +261,7 @@ close_button_clicked_cb (BeditTabLabel *tab_label,
 {
 	BeditTab *tab;
 
-	tab = gedit_tab_label_get_tab (tab_label);
+	tab = bedit_tab_label_get_tab (tab_label);
 	g_signal_emit (notebook, signals[TAB_CLOSE_REQUEST], 0, tab);
 }
 
@@ -321,7 +321,7 @@ drag_data_received_cb (GtkWidget        *widget,
 
 	if (notebook != new_notebook)
 	{
-		gedit_notebook_move_tab (GEDIT_NOTEBOOK (notebook),
+		bedit_notebook_move_tab (GEDIT_NOTEBOOK (notebook),
 					 GEDIT_NOTEBOOK (new_notebook),
 					 GEDIT_TAB (page),
 					 0);
@@ -331,7 +331,7 @@ drag_data_received_cb (GtkWidget        *widget,
 }
 
 static void
-gedit_notebook_page_removed (GtkNotebook *notebook,
+bedit_notebook_page_removed (GtkNotebook *notebook,
                              GtkWidget   *page,
                              guint        page_num)
 {
@@ -352,7 +352,7 @@ gedit_notebook_page_removed (GtkNotebook *notebook,
 }
 
 static void
-gedit_notebook_page_added (GtkNotebook *notebook,
+bedit_notebook_page_added (GtkNotebook *notebook,
                            GtkWidget   *page,
                            guint        page_num)
 {
@@ -375,7 +375,7 @@ gedit_notebook_page_added (GtkNotebook *notebook,
 	                  G_CALLBACK (close_button_clicked_cb),
 	                  notebook);
 
-	view = gedit_tab_get_view (GEDIT_TAB (page));
+	view = bedit_tab_get_view (GEDIT_TAB (page));
 	g_signal_connect (view,
 			  "drag-data-received",
 			  G_CALLBACK (drag_data_received_cb),
@@ -383,7 +383,7 @@ gedit_notebook_page_added (GtkNotebook *notebook,
 }
 
 static void
-gedit_notebook_remove (GtkContainer *container,
+bedit_notebook_remove (GtkContainer *container,
                        GtkWidget    *widget)
 {
 	GtkNotebook *notebook = GTK_NOTEBOOK (container);
@@ -403,7 +403,7 @@ gedit_notebook_remove (GtkContainer *container,
 					      G_CALLBACK (close_button_clicked_cb),
 					      notebook);
 
-	view = gedit_tab_get_view (GEDIT_TAB (widget));
+	view = bedit_tab_get_view (GEDIT_TAB (widget));
 	g_signal_handlers_disconnect_by_func (view, drag_data_received_cb, NULL);
 
 	/* This is where GtkNotebook will remove the page. By doing so, it
@@ -412,9 +412,9 @@ gedit_notebook_remove (GtkContainer *container,
 	 */
 	priv->ignore_focused_page_update = TRUE;
 
-	if (GTK_CONTAINER_CLASS (gedit_notebook_parent_class)->remove != NULL)
+	if (GTK_CONTAINER_CLASS (bedit_notebook_parent_class)->remove != NULL)
 	{
-		GTK_CONTAINER_CLASS (gedit_notebook_parent_class)->remove (container,
+		GTK_CONTAINER_CLASS (bedit_notebook_parent_class)->remove (container,
 									   widget);
 	}
 
@@ -422,7 +422,7 @@ gedit_notebook_remove (GtkContainer *container,
 }
 
 static gboolean
-gedit_notebook_change_to_page (BeditNotebook *notebook,
+bedit_notebook_change_to_page (BeditNotebook *notebook,
                                gint           page_num)
 {
 	gint n_pages;
@@ -441,7 +441,7 @@ gedit_notebook_change_to_page (BeditNotebook *notebook,
 }
 
 static void
-gedit_notebook_class_init (BeditNotebookClass *klass)
+bedit_notebook_class_init (BeditNotebookClass *klass)
 {
 	GObjectClass *object_class = G_OBJECT_CLASS (klass);
 	GtkWidgetClass *widget_class = GTK_WIDGET_CLASS (klass);
@@ -450,19 +450,19 @@ gedit_notebook_class_init (BeditNotebookClass *klass)
 	GtkBindingSet *binding_set;
 	gint i;
 
-	object_class->finalize = gedit_notebook_finalize;
+	object_class->finalize = bedit_notebook_finalize;
 
-	widget_class->grab_focus = gedit_notebook_grab_focus;
-	widget_class->button_press_event = gedit_notebook_button_press_event;
+	widget_class->grab_focus = bedit_notebook_grab_focus;
+	widget_class->button_press_event = bedit_notebook_button_press_event;
 
-	container_class->remove = gedit_notebook_remove;
+	container_class->remove = bedit_notebook_remove;
 
-	notebook_class->change_current_page = gedit_notebook_change_current_page;
-	notebook_class->switch_page = gedit_notebook_switch_page;
-	notebook_class->page_removed = gedit_notebook_page_removed;
-	notebook_class->page_added = gedit_notebook_page_added;
+	notebook_class->change_current_page = bedit_notebook_change_current_page;
+	notebook_class->switch_page = bedit_notebook_switch_page;
+	notebook_class->page_removed = bedit_notebook_page_removed;
+	notebook_class->page_added = bedit_notebook_page_added;
 
-	klass->change_to_page = gedit_notebook_change_to_page;
+	klass->change_to_page = bedit_notebook_change_to_page;
 
 	signals[TAB_CLOSE_REQUEST] =
 		g_signal_new ("tab-close-request",
@@ -505,22 +505,22 @@ gedit_notebook_class_init (BeditNotebookClass *klass)
 }
 
 /**
- * gedit_notebook_new:
+ * bedit_notebook_new:
  *
  * Creates a new #BeditNotebook object.
  *
  * Returns: a new #BeditNotebook
  */
 GtkWidget *
-gedit_notebook_new (void)
+bedit_notebook_new (void)
 {
 	return GTK_WIDGET (g_object_new (GEDIT_TYPE_NOTEBOOK, NULL));
 }
 
 static void
-gedit_notebook_init (BeditNotebook *notebook)
+bedit_notebook_init (BeditNotebook *notebook)
 {
-	notebook->priv = gedit_notebook_get_instance_private (notebook);
+	notebook->priv = bedit_notebook_get_instance_private (notebook);
 
 	gtk_notebook_set_scrollable (GTK_NOTEBOOK (notebook), TRUE);
 	gtk_notebook_set_show_border (GTK_NOTEBOOK (notebook), FALSE);
@@ -531,7 +531,7 @@ gedit_notebook_init (BeditNotebook *notebook)
 }
 
 /**
- * gedit_notebook_add_tab:
+ * bedit_notebook_add_tab:
  * @notebook: a #BeditNotebook
  * @tab: a #BeditTab
  * @position: the position where the @tab should be added
@@ -540,7 +540,7 @@ gedit_notebook_init (BeditNotebook *notebook)
  * Adds the specified @tab to the @notebook.
  */
 void
-gedit_notebook_add_tab (BeditNotebook *notebook,
+bedit_notebook_add_tab (BeditNotebook *notebook,
 		        BeditTab      *tab,
 		        gint           position,
 		        gboolean       jump_to)
@@ -552,7 +552,7 @@ gedit_notebook_add_tab (BeditNotebook *notebook,
 	g_return_if_fail (GEDIT_IS_NOTEBOOK (notebook));
 	g_return_if_fail (GEDIT_IS_TAB (tab));
 
-	tab_label = gedit_tab_label_new (tab);
+	tab_label = bedit_tab_label_new (tab);
 
 	gtk_notebook_insert_page (GTK_NOTEBOOK (notebook),
 				  GTK_WIDGET (tab),
@@ -576,7 +576,7 @@ gedit_notebook_add_tab (BeditNotebook *notebook,
 	 * zone in the BeditView. The drop zone in the tab labels is already
 	 * implemented by GtkNotebook.
 	 */
-	view = gedit_tab_get_view (tab);
+	view = bedit_tab_get_view (tab);
 	target_list = gtk_drag_dest_get_target_list (GTK_WIDGET (view));
 
 	if (target_list != NULL)
@@ -599,7 +599,7 @@ gedit_notebook_add_tab (BeditNotebook *notebook,
 }
 
 /**
- * gedit_notebook_move_tab:
+ * bedit_notebook_move_tab:
  * @src: a #BeditNotebook
  * @dest: a #BeditNotebook
  * @tab: a #BeditTab
@@ -611,7 +611,7 @@ gedit_notebook_add_tab (BeditNotebook *notebook,
  * end of the tabs.
  */
 void
-gedit_notebook_move_tab (BeditNotebook *src,
+bedit_notebook_move_tab (BeditNotebook *src,
                          BeditNotebook *dest,
                          BeditTab      *tab,
                          gint           dest_position)
@@ -634,19 +634,19 @@ gedit_notebook_move_tab (BeditNotebook *src,
 	gtk_notebook_detach_tab (GTK_NOTEBOOK (src), GTK_WIDGET (tab));
 	g_object_unref (src);
 
-	gedit_notebook_add_tab (dest, tab, dest_position, TRUE);
+	bedit_notebook_add_tab (dest, tab, dest_position, TRUE);
 
 	g_object_unref (tab);
 }
 
 /**
- * gedit_notebook_remove_all_tabs:
+ * bedit_notebook_remove_all_tabs:
  * @notebook: a #BeditNotebook
  *
  * Removes all #BeditTab from @notebook.
  */
 void
-gedit_notebook_remove_all_tabs (BeditNotebook *notebook)
+bedit_notebook_remove_all_tabs (BeditNotebook *notebook)
 {
 	GList *tabs;
 	GList *t;

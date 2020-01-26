@@ -1,6 +1,6 @@
 libsort_res = gnome.compile_resources(
-  'gedit-sort-resources',
-  'gedit-sort.gresource.xml',
+  'bedit-sort-resources',
+  'bedit-sort.gresource.xml',
 )
 
 libsort_sources += [

@@ -1,42 +1,42 @@
 libfilebrowser_public_h = files(
-  'gedit-file-bookmarks-store.h',
-  'gedit-file-browser-error.h',
-  'gedit-file-browser-store.h',
-  'gedit-file-browser-view.h',
-  'gedit-file-browser-widget.h',
-  'gedit-file-browser-utils.h',
-  'gedit-file-browser-plugin.h',
-  'gedit-file-browser-messages.h',
+  'bedit-file-bookmarks-store.h',
+  'bedit-file-browser-error.h',
+  'bedit-file-browser-store.h',
+  'bedit-file-browser-view.h',
+  'bedit-file-browser-widget.h',
+  'bedit-file-browser-utils.h',
+  'bedit-file-browser-plugin.h',
+  'bedit-file-browser-messages.h',
 )
 
 libfilebrowser_sources = files(
-  'gedit-file-bookmarks-store.c',
-  'gedit-file-browser-messages.c',
-  'gedit-file-browser-plugin.c',
-  'gedit-file-browser-store.c',
-  'gedit-file-browser-utils.c',
-  'gedit-file-browser-view.c',
-  'gedit-file-browser-widget.c',
+  'bedit-file-bookmarks-store.c',
+  'bedit-file-browser-messages.c',
+  'bedit-file-browser-plugin.c',
+  'bedit-file-browser-store.c',
+  'bedit-file-browser-utils.c',
+  'bedit-file-browser-view.c',
+  'bedit-file-browser-widget.c',
 )
 
 libfilebrowser_deps = [
-  libgedit_dep,
+  libbedit_dep,
 ]
 
 subdir('messages')
 
 libfilebrowser_register_enums = gnome.mkenums(
-  'gedit-file-browser-enum-register',
+  'bedit-file-browser-enum-register',
   sources: libfilebrowser_public_h,
-  c_template: 'gedit-file-browser-enum-register.c.template',
+  c_template: 'bedit-file-browser-enum-register.c.template',
 )
 
 libfilebrowser_type_enums = gnome.mkenums(
-  'gedit-file-browser-enum-types',
+  'bedit-file-browser-enum-types',
   depends : [libfilebrowser_register_enums],
   sources: libfilebrowser_public_h,
-  h_template: 'gedit-file-browser-enum-types.h.template',
-  c_template: 'gedit-file-browser-enum-types-stage1.c.template',
+  h_template: 'bedit-file-browser-enum-types.h.template',
+  c_template: 'bedit-file-browser-enum-types-stage1.c.template',
 )
 
 # cat won't work on Windows so this
@@ -47,7 +47,7 @@ cat = find_program('cat')
 libfilebrowser_enums_c = custom_target('libfilebrowser_enums_c',
   input: [libfilebrowser_type_enums.get(0),
           libfilebrowser_register_enums],
-  output: 'gedit-file-browser-enum-types.c',
+  output: 'bedit-file-browser-enum-types.c',
   command: [cat, '@INPUT0@', '@INPUT1@'],
   # redirects the command output since we can't use >> here
   capture: true,

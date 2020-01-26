@@ -1,6 +1,6 @@
 /*
- * gedit-window-activatable.h
- * This file is part of gedit
+ * bedit-window-activatable.h
+ * This file is part of bedit
  *
  * Copyright (C) 2010 - Steve Frécinaux
  *
@@ -25,9 +25,9 @@
 
 G_BEGIN_DECLS
 
-#define GEDIT_TYPE_WINDOW_ACTIVATABLE (gedit_window_activatable_get_type ())
+#define GEDIT_TYPE_WINDOW_ACTIVATABLE (bedit_window_activatable_get_type ())
 
-G_DECLARE_INTERFACE (BeditWindowActivatable, gedit_window_activatable, GEDIT, WINDOW_ACTIVATABLE, GObject)
+G_DECLARE_INTERFACE (BeditWindowActivatable, bedit_window_activatable, GEDIT, WINDOW_ACTIVATABLE, GObject)
 
 struct _BeditWindowActivatableInterface
 {
@@ -39,9 +39,9 @@ struct _BeditWindowActivatableInterface
 	void	(*update_state)		(BeditWindowActivatable *activatable);
 };
 
-void	 gedit_window_activatable_activate	(BeditWindowActivatable *activatable);
-void	 gedit_window_activatable_deactivate	(BeditWindowActivatable *activatable);
-void	 gedit_window_activatable_update_state	(BeditWindowActivatable *activatable);
+void	 bedit_window_activatable_activate	(BeditWindowActivatable *activatable);
+void	 bedit_window_activatable_deactivate	(BeditWindowActivatable *activatable);
+void	 bedit_window_activatable_update_state	(BeditWindowActivatable *activatable);
 
 G_END_DECLS
 

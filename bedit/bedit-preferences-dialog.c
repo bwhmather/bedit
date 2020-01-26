@@ -1,7 +1,7 @@
 /* -*- Mode: C; tab-width: 8; indent-tabs-mode: t; c-basic-offset: 8 -*- */
 /*
- * gedit-preferences-dialog.c
- * This file is part of gedit
+ * bedit-preferences-dialog.c
+ * This file is part of bedit
  *
  * Copyright (C) 2001-2005 Paolo Maggi
  *
@@ -21,7 +21,7 @@
 
 #include "config.h"
 
-#include "gedit-preferences-dialog.h"
+#include "bedit-preferences-dialog.h"
 
 #include <stdio.h>
 #include <string.h>
@@ -32,32 +32,32 @@
 #include <gtksourceview/gtksource.h>
 #include <libpeas-gtk/peas-gtk.h>
 
-#include "gedit-utils.h"
-#include "gedit-debug.h"
-#include "gedit-document.h"
-#include "gedit-dirs.h"
-#include "gedit-settings.h"
-#include "gedit-utils.h"
-#include "gedit-file-chooser-dialog.h"
-#include "gedit-app.h"
-#include "gedit-app-private.h"
+#include "bedit-utils.h"
+#include "bedit-debug.h"
+#include "bedit-document.h"
+#include "bedit-dirs.h"
+#include "bedit-settings.h"
+#include "bedit-utils.h"
+#include "bedit-file-chooser-dialog.h"
+#include "bedit-app.h"
+#include "bedit-app-private.h"
 
 /*
- * gedit-preferences dialog is a singleton since we don't
+ * bedit-preferences dialog is a singleton since we don't
  * want two dialogs showing an inconsistent state of the
  * preferences.
- * When gedit_show_preferences_dialog is called and there
+ * When bedit_show_preferences_dialog is called and there
  * is already a prefs dialog dialog open, it is reparented
  * and shown.
  */
 
 static GtkWidget *preferences_dialog = NULL;
 
-#define GEDIT_SCHEME_ROW_ID_KEY "gedit-scheme-row-id"
+#define GEDIT_SCHEME_ROW_ID_KEY "bedit-scheme-row-id"
 
-#define GEDIT_TYPE_PREFERENCES_DIALOG (gedit_preferences_dialog_get_type())
+#define GEDIT_TYPE_PREFERENCES_DIALOG (bedit_preferences_dialog_get_type())
 
-G_DECLARE_FINAL_TYPE (BeditPreferencesDialog, gedit_preferences_dialog, GEDIT, PREFERENCES_DIALOG, GtkWindow)
+G_DECLARE_FINAL_TYPE (BeditPreferencesDialog, bedit_preferences_dialog, GEDIT, PREFERENCES_DIALOG, GtkWindow)
 
 enum
 {
@@ -132,27 +132,27 @@ struct _BeditPreferencesDialog
 	GtkWidget	*plugin_manager;
 };
 
-G_DEFINE_TYPE (BeditPreferencesDialog, gedit_preferences_dialog, GTK_TYPE_WINDOW)
+G_DEFINE_TYPE (BeditPreferencesDialog, bedit_preferences_dialog, GTK_TYPE_WINDOW)
 
 static void
-gedit_preferences_dialog_dispose (GObject *object)
+bedit_preferences_dialog_dispose (GObject *object)
 {
 	BeditPreferencesDialog *dlg = GEDIT_PREFERENCES_DIALOG (object);
 
 	g_clear_object (&dlg->editor);
 	g_clear_object (&dlg->uisettings);
 
-	G_OBJECT_CLASS (gedit_preferences_dialog_parent_class)->dispose (object);
+	G_OBJECT_CLASS (bedit_preferences_dialog_parent_class)->dispose (object);
 }
 
 static void
-gedit_preferences_dialog_close (BeditPreferencesDialog *dialog)
+bedit_preferences_dialog_close (BeditPreferencesDialog *dialog)
 {
 	gtk_window_close (GTK_WINDOW (dialog));
 }
 
 static void
-gedit_preferences_dialog_class_init (BeditPreferencesDialogClass *klass)
+bedit_preferences_dialog_class_init (BeditPreferencesDialogClass *klass)
 {
 	GObjectClass *object_class = G_OBJECT_CLASS (klass);
 	GtkWidgetClass *widget_class = GTK_WIDGET_CLASS (klass);
@@ -161,13 +161,13 @@ gedit_preferences_dialog_class_init (BeditPreferencesDialogClass *klass)
 	/* Otherwise libpeas-gtk might not be linked */
 	g_type_ensure (PEAS_GTK_TYPE_PLUGIN_MANAGER);
 
-	object_class->dispose = gedit_preferences_dialog_dispose;
+	object_class->dispose = bedit_preferences_dialog_dispose;
 
 	signals[CLOSE] =
 		g_signal_new_class_handler ("close",
 		                            G_TYPE_FROM_CLASS (klass),
 		                            G_SIGNAL_RUN_LAST | G_SIGNAL_ACTION,
-		                            G_CALLBACK (gedit_preferences_dialog_close),
+		                            G_CALLBACK (bedit_preferences_dialog_close),
 		                            NULL, NULL, NULL,
 		                            G_TYPE_NONE,
 		                            0);
@@ -177,7 +177,7 @@ gedit_preferences_dialog_class_init (BeditPreferencesDialogClass *klass)
 
 	/* Bind class to template */
 	gtk_widget_class_set_template_from_resource (widget_class,
-	                                             "/com/bwhmather/bedit/ui/gedit-preferences-dialog.ui");
+	                                             "/com/bwhmather/bedit/ui/bedit-preferences-dialog.ui");
 	gtk_widget_class_bind_template_child (widget_class, BeditPreferencesDialog, notebook);
 	gtk_widget_class_bind_template_child (widget_class, BeditPreferencesDialog, display_line_numbers_checkbutton);
 	gtk_widget_class_bind_template_child (widget_class, BeditPreferencesDialog, display_statusbar_checkbutton);
@@ -209,7 +209,7 @@ gedit_preferences_dialog_class_init (BeditPreferencesDialogClass *klass)
 static void
 setup_editor_page (BeditPreferencesDialog *dlg)
 {
-	gedit_debug (DEBUG_PREFS);
+	bedit_debug (DEBUG_PREFS);
 
 	/* Connect signal */
 	g_settings_bind (dlg->editor,
@@ -324,7 +324,7 @@ setup_view_page (BeditPreferencesDialog *dlg)
 	gboolean display_right_margin;
 	guint right_margin_position;
 
-	gedit_debug (DEBUG_PREFS);
+	bedit_debug (DEBUG_PREFS);
 
 	/* Get values */
 	display_right_margin = g_settings_get_boolean (dlg->editor,
@@ -440,14 +440,14 @@ setup_font_colors_page_font_section (BeditPreferencesDialog *dlg)
 	gchar *system_font = NULL;
 	gchar *label;
 
-	gedit_debug (DEBUG_PREFS);
+	bedit_debug (DEBUG_PREFS);
 
 	gtk_widget_set_tooltip_text (dlg->font_button,
 			 _("Click on this button to select the font to be used by the editor"));
 
 	/* Get values */
-	settings = _gedit_app_get_settings (GEDIT_APP (g_application_get_default ()));
-	system_font = gedit_settings_get_system_font (settings);
+	settings = _bedit_app_get_settings (GEDIT_APP (g_application_get_default ()));
+	system_font = bedit_settings_get_system_font (settings);
 
 	label = g_strdup_printf(_("_Use the system fixed width font (%s)"),
 				system_font);
@@ -487,7 +487,7 @@ set_buttons_sensisitivity_according_to_scheme (BeditPreferencesDialog *dlg,
 		filename = gtk_source_style_scheme_get_filename (scheme);
 		if (filename != NULL)
 		{
-			editable = g_str_has_prefix (filename, gedit_dirs_get_user_styles_dir ());
+			editable = g_str_has_prefix (filename, bedit_dirs_get_user_styles_dir ());
 		}
 	}
 
@@ -646,7 +646,7 @@ install_style_scheme (const gchar *fname)
 	manager = gtk_source_style_scheme_manager_get_default ();
 
 	dirname = g_path_get_dirname (fname);
-	styles_dir = gedit_dirs_get_user_styles_dir ();
+	styles_dir = bedit_dirs_get_user_styles_dir ();
 
 	if (strcmp (dirname, styles_dir) != 0)
 	{
@@ -759,11 +759,11 @@ add_scheme_chooser_response_cb (BeditFileChooserDialog *chooser,
 
 	if (res_id != GTK_RESPONSE_ACCEPT)
 	{
-		gedit_file_chooser_dialog_hide (chooser);
+		bedit_file_chooser_dialog_hide (chooser);
 		return;
 	}
 
-	file = gedit_file_chooser_dialog_get_file (chooser);
+	file = bedit_file_chooser_dialog_get_file (chooser);
 
 	if (file == NULL)
 	{
@@ -778,14 +778,14 @@ add_scheme_chooser_response_cb (BeditFileChooserDialog *chooser,
 		return;
 	}
 
-	gedit_file_chooser_dialog_hide (chooser);
+	bedit_file_chooser_dialog_hide (chooser);
 
 	scheme = install_style_scheme (filename);
 	g_free (filename);
 
 	if (scheme == NULL)
 	{
-		gedit_warning (GTK_WINDOW (dlg),
+		bedit_warning (GTK_WINDOW (dlg),
 		               _("The selected color scheme cannot be installed."));
 
 		return;
@@ -805,11 +805,11 @@ install_scheme_clicked (GtkButton              *button,
 
 	if (dlg->install_scheme_file_schooser != NULL)
 	{
-		gedit_file_chooser_dialog_show (dlg->install_scheme_file_schooser);
+		bedit_file_chooser_dialog_show (dlg->install_scheme_file_schooser);
 		return;
 	}
 
-	chooser = gedit_file_chooser_dialog_create (_("Add Scheme"),
+	chooser = bedit_file_chooser_dialog_create (_("Add Scheme"),
 						    GTK_WINDOW (dlg),
 						    GEDIT_FILE_CHOOSER_OPEN,
 						    NULL,
@@ -817,11 +817,11 @@ install_scheme_clicked (GtkButton              *button,
 						    _("A_dd Scheme"), GTK_RESPONSE_ACCEPT);
 
 	/* Filters */
-	gedit_file_chooser_dialog_add_pattern_filter (chooser,
+	bedit_file_chooser_dialog_add_pattern_filter (chooser,
 	                                              _("Color Scheme Files"),
 	                                              "*.xml");
 
-	gedit_file_chooser_dialog_add_pattern_filter (chooser,
+	bedit_file_chooser_dialog_add_pattern_filter (chooser,
 	                                              _("All Files"),
 	                                              "*");
 
@@ -835,7 +835,7 @@ install_scheme_clicked (GtkButton              *button,
 	g_object_add_weak_pointer (G_OBJECT (chooser),
 				   (gpointer) &dlg->install_scheme_file_schooser);
 
-	gedit_file_chooser_dialog_show (chooser);
+	bedit_file_chooser_dialog_show (chooser);
 }
 
 static void
@@ -848,7 +848,7 @@ uninstall_scheme_clicked (GtkButton              *button,
 
 	if (!uninstall_style_scheme (scheme))
 	{
-		gedit_warning (GTK_WINDOW (dlg),
+		bedit_warning (GTK_WINDOW (dlg),
 		               _("Could not remove color scheme “%s”."),
 		               gtk_source_style_scheme_get_name (scheme));
 	}
@@ -860,7 +860,7 @@ setup_font_colors_page_style_scheme_section (BeditPreferencesDialog *dlg)
 	GtkStyleContext *context;
 	GtkSourceStyleScheme *scheme;
 
-	gedit_debug (DEBUG_PREFS);
+	bedit_debug (DEBUG_PREFS);
 
 	scheme = get_default_color_scheme (dlg);
 
@@ -905,9 +905,9 @@ setup_plugins_page (BeditPreferencesDialog *dlg)
 }
 
 static void
-gedit_preferences_dialog_init (BeditPreferencesDialog *dlg)
+bedit_preferences_dialog_init (BeditPreferencesDialog *dlg)
 {
-	gedit_debug (DEBUG_PREFS);
+	bedit_debug (DEBUG_PREFS);
 
 	dlg->editor = g_settings_new ("com.bwhmather.bedit.preferences.editor");
 	dlg->uisettings = g_settings_new ("com.bwhmather.bedit.preferences.ui");
@@ -921,9 +921,9 @@ gedit_preferences_dialog_init (BeditPreferencesDialog *dlg)
 }
 
 void
-gedit_show_preferences_dialog (BeditWindow *parent)
+bedit_show_preferences_dialog (BeditWindow *parent)
 {
-	gedit_debug (DEBUG_PREFS);
+	bedit_debug (DEBUG_PREFS);
 
 	if (preferences_dialog == NULL)
 	{

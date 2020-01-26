@@ -1,5 +1,5 @@
 /*
- * gedit-file-browser-view.h - Bedit plugin providing easy file access
+ * bedit-file-browser-view.h - Bedit plugin providing easy file access
  * from the sidepanel
  *
  * Copyright (C) 2006 - Jesse van den Kieboom <jesse@icecrew.nl>
@@ -24,7 +24,7 @@
 #include <gtk/gtk.h>
 
 G_BEGIN_DECLS
-#define GEDIT_TYPE_FILE_BROWSER_VIEW			(gedit_file_browser_view_get_type ())
+#define GEDIT_TYPE_FILE_BROWSER_VIEW			(bedit_file_browser_view_get_type ())
 #define GEDIT_FILE_BROWSER_VIEW(obj)			(G_TYPE_CHECK_INSTANCE_CAST ((obj), GEDIT_TYPE_FILE_BROWSER_VIEW, BeditFileBrowserView))
 #define GEDIT_FILE_BROWSER_VIEW_CONST(obj)		(G_TYPE_CHECK_INSTANCE_CAST ((obj), GEDIT_TYPE_FILE_BROWSER_VIEW, BeditFileBrowserView const))
 #define GEDIT_FILE_BROWSER_VIEW_CLASS(klass)		(G_TYPE_CHECK_CLASS_CAST ((klass), GEDIT_TYPE_FILE_BROWSER_VIEW, BeditFileBrowserViewClass))
@@ -64,19 +64,19 @@ struct _BeditFileBrowserViewClass
 					 GtkTreeIter          *iter);
 };
 
-GType		 gedit_file_browser_view_get_type			(void) G_GNUC_CONST;
+GType		 bedit_file_browser_view_get_type			(void) G_GNUC_CONST;
 
-GtkWidget	*gedit_file_browser_view_new				(void);
-void		 gedit_file_browser_view_set_model			(BeditFileBrowserView            *tree_view,
+GtkWidget	*bedit_file_browser_view_new				(void);
+void		 bedit_file_browser_view_set_model			(BeditFileBrowserView            *tree_view,
 									 GtkTreeModel                    *model);
-void		 gedit_file_browser_view_start_rename			(BeditFileBrowserView            *tree_view,
+void		 bedit_file_browser_view_start_rename			(BeditFileBrowserView            *tree_view,
 									 GtkTreeIter                     *iter);
-void		 gedit_file_browser_view_set_click_policy		(BeditFileBrowserView            *tree_view,
+void		 bedit_file_browser_view_set_click_policy		(BeditFileBrowserView            *tree_view,
 							 		 BeditFileBrowserViewClickPolicy  policy);
-void		 gedit_file_browser_view_set_restore_expand_state	(BeditFileBrowserView            *tree_view,
+void		 bedit_file_browser_view_set_restore_expand_state	(BeditFileBrowserView            *tree_view,
 									 gboolean                         restore_expand_state);
 
-void		 _gedit_file_browser_view_register_type			(GTypeModule                     *type_module);
+void		 _bedit_file_browser_view_register_type			(GTypeModule                     *type_module);
 
 G_END_DECLS
 

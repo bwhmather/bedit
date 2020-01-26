@@ -1,6 +1,6 @@
 /*
- * gedit-utils.c
- * This file is part of gedit
+ * bedit-utils.c
+ * This file is part of bedit
  *
  * Copyright (C) 1998, 1999 Alex Roberts, Evan Lawrence
  * Copyright (C) 2000, 2002 Chema Celorio, Paolo Maggi
@@ -20,7 +20,7 @@
  * along with this program; if not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "gedit-utils.h"
+#include "bedit-utils.h"
 
 #include <string.h>
 #include <glib/gi18n.h>
@@ -31,7 +31,7 @@
 #include <X11/Xatom.h>
 #endif
 
-#include "gedit-debug.h"
+#include "bedit-debug.h"
 
 static void
 widget_get_origin (GtkWidget *widget,
@@ -46,7 +46,7 @@ widget_get_origin (GtkWidget *widget,
 }
 
 /**
- * gedit_utils_menu_position_under_widget:
+ * bedit_utils_menu_position_under_widget:
  * @menu:
  * @x:
  * @y:
@@ -56,7 +56,7 @@ widget_get_origin (GtkWidget *widget,
  * Deprecated: 3.36: Use gtk_menu_popup_at_widget() instead.
  */
 void
-gedit_utils_menu_position_under_widget (GtkMenu  *menu,
+bedit_utils_menu_position_under_widget (GtkMenu  *menu,
 					gint     *x,
 					gint     *y,
 					gboolean *push_in,
@@ -89,7 +89,7 @@ gedit_utils_menu_position_under_widget (GtkMenu  *menu,
 }
 
 gboolean
-gedit_utils_menu_position_under_tree_view (GtkTreeView  *tree_view,
+bedit_utils_menu_position_under_tree_view (GtkTreeView  *tree_view,
 					   GdkRectangle *rect)
 {
 	GtkTreeSelection *selection;
@@ -122,7 +122,7 @@ gedit_utils_menu_position_under_tree_view (GtkTreeView  *tree_view,
 }
 
 /**
- * gedit_utils_set_atk_name_description:
+ * bedit_utils_set_atk_name_description:
  * @widget: The Gtk widget for which name/description to be set
  * @name: Atk name string
  * @description: Atk description string
@@ -131,7 +131,7 @@ gedit_utils_menu_position_under_tree_view (GtkTreeView  *tree_view,
  * for a specified gtk widget.
  */
 void
-gedit_utils_set_atk_name_description (GtkWidget   *widget,
+bedit_utils_set_atk_name_description (GtkWidget   *widget,
 				      const gchar *name,
 				      const gchar *description)
 {
@@ -150,7 +150,7 @@ gedit_utils_set_atk_name_description (GtkWidget   *widget,
 }
 
 /**
- * gedit_utils_set_atk_relation:
+ * bedit_utils_set_atk_relation:
  * @obj1: specified widget.
  * @obj2: specified widget.
  * @rel_type: the type of relation to set up.
@@ -158,11 +158,11 @@ gedit_utils_set_atk_name_description (GtkWidget   *widget,
  * This function establishes atk relation
  * between 2 specified widgets.
  *
- * Deprecated: 3.36: This function is no longer used by gedit. If you need it,
+ * Deprecated: 3.36: This function is no longer used by bedit. If you need it,
  * copy it.
  */
 void
-gedit_utils_set_atk_relation (GtkWidget       *obj1,
+bedit_utils_set_atk_relation (GtkWidget       *obj1,
 			      GtkWidget       *obj2,
 			      AtkRelationType  rel_type)
 {
@@ -187,7 +187,7 @@ gedit_utils_set_atk_relation (GtkWidget       *obj1,
 }
 
 void
-gedit_warning (GtkWindow *parent, const gchar *format, ...)
+bedit_warning (GtkWindow *parent, const gchar *format, ...)
 {
 	va_list         args;
 	gchar          *str;
@@ -287,42 +287,42 @@ str_truncate (const gchar *string,
 }
 
 /**
- * gedit_utils_str_middle_truncate:
+ * bedit_utils_str_middle_truncate:
  * @string:
  * @truncate_length:
  *
  * Returns:
  */
 gchar *
-gedit_utils_str_middle_truncate (const gchar *string,
+bedit_utils_str_middle_truncate (const gchar *string,
 				 guint        truncate_length)
 {
 	return str_truncate (string, truncate_length, TRUE);
 }
 
 /**
- * gedit_utils_str_end_truncate:
+ * bedit_utils_str_end_truncate:
  * @string:
  * @truncate_length:
  *
  * Returns:
  */
 gchar *
-gedit_utils_str_end_truncate (const gchar *string,
+bedit_utils_str_end_truncate (const gchar *string,
 			      guint        truncate_length)
 {
 	return str_truncate (string, truncate_length, FALSE);
 }
 
 /**
- * gedit_utils_make_valid_utf8:
+ * bedit_utils_make_valid_utf8:
  * @name:
  *
  * Returns:
  * Deprecated: 3.36: Use g_utf8_make_valid() instead.
  */
 gchar *
-gedit_utils_make_valid_utf8 (const char *name)
+bedit_utils_make_valid_utf8 (const char *name)
 {
 	return g_utf8_make_valid (name, -1);
 }
@@ -346,7 +346,7 @@ uri_get_dirname (const gchar *uri)
 		return NULL;
 	}
 
-	res = gedit_utils_replace_home_dir_with_tilde (str);
+	res = bedit_utils_replace_home_dir_with_tilde (str);
 
 	g_free (str);
 
@@ -354,7 +354,7 @@ uri_get_dirname (const gchar *uri)
 }
 
 /**
- * gedit_utils_location_get_dirname_for_display:
+ * bedit_utils_location_get_dirname_for_display:
  * @location: the location
  *
  * Returns a string suitable to be displayed in the UI indicating
@@ -365,7 +365,7 @@ uri_get_dirname (const gchar *uri)
  * Returns: (transfer full): a string to display the dirname
  */
 gchar *
-gedit_utils_location_get_dirname_for_display (GFile *location)
+bedit_utils_location_get_dirname_for_display (GFile *location)
 {
 	gchar *uri;
 	gchar *res;
@@ -389,7 +389,7 @@ gedit_utils_location_get_dirname_for_display (GFile *location)
 		g_object_unref (mount);
 
 		/* obtain the "path" part of the uri */
-		gedit_utils_decode_uri (uri,
+		bedit_utils_decode_uri (uri,
 					NULL, NULL,
 					NULL, NULL,
 					&path);
@@ -428,13 +428,13 @@ gedit_utils_location_get_dirname_for_display (GFile *location)
 }
 
 /**
- * gedit_utils_replace_home_dir_with_tilde:
+ * bedit_utils_replace_home_dir_with_tilde:
  * @uri:
  *
  * Returns:
  */
 gchar *
-gedit_utils_replace_home_dir_with_tilde (const gchar *filename)
+bedit_utils_replace_home_dir_with_tilde (const gchar *filename)
 {
 	gchar *tmp;
 	gchar *home;
@@ -480,7 +480,7 @@ gedit_utils_replace_home_dir_with_tilde (const gchar *filename)
 /* the following two functions are courtesy of galeon */
 
 /**
- * gedit_utils_get_current_workspace:
+ * bedit_utils_get_current_workspace:
  * @screen: a #GdkScreen
  *
  * Get the currently visible workspace for the #GdkScreen.
@@ -489,7 +489,7 @@ gedit_utils_replace_home_dir_with_tilde (const gchar *filename)
  * is returned.
  */
 guint
-gedit_utils_get_current_workspace (GdkScreen *screen)
+bedit_utils_get_current_workspace (GdkScreen *screen)
 {
 #ifdef GDK_WINDOWING_X11
 	GdkWindow *root_win;
@@ -535,7 +535,7 @@ gedit_utils_get_current_workspace (GdkScreen *screen)
 }
 
 /**
- * gedit_utils_get_window_workspace:
+ * bedit_utils_get_window_workspace:
  * @gtkwindow: a #GtkWindow.
  *
  * Get the workspace the window is on.
@@ -547,7 +547,7 @@ gedit_utils_get_current_workspace (GdkScreen *screen)
  * Returns: the workspace the window is on.
  */
 guint
-gedit_utils_get_window_workspace (GtkWindow *gtkwindow)
+bedit_utils_get_window_workspace (GtkWindow *gtkwindow)
 {
 #ifdef GDK_WINDOWING_X11
 	GdkWindow *window;
@@ -593,7 +593,7 @@ gedit_utils_get_window_workspace (GtkWindow *gtkwindow)
 }
 
 /**
- * gedit_utils_get_current_viewport:
+ * bedit_utils_get_current_viewport:
  * @screen: a #GdkScreen
  * @x: (out): x-axis point.
  * @y: (out): y-axis point.
@@ -603,7 +603,7 @@ gedit_utils_get_window_workspace (GtkWindow *gtkwindow)
  * If the X11 window property isn't found, (0, 0) is returned.
  */
 void
-gedit_utils_get_current_viewport (GdkScreen    *screen,
+bedit_utils_get_current_viewport (GdkScreen    *screen,
 				  gint         *x,
 				  gint         *y)
 {
@@ -684,7 +684,7 @@ has_valid_scheme (const gchar *uri)
 }
 
 gboolean
-gedit_utils_is_valid_location (GFile *location)
+bedit_utils_is_valid_location (GFile *location)
 {
 	const guchar *p;
 	gchar *uri;
@@ -759,13 +759,13 @@ make_canonical_uri_from_shell_arg (const gchar *str)
 	 * contains only ASCII chars
 	 * <federico> paolo: hmmmm, isn't there
 	 * gnome_vfs_is_uri_valid() or something?
-	 * <paolo>: I will use gedit_utils_is_valid_uri ()
+	 * <paolo>: I will use bedit_utils_is_valid_uri ()
 	 *
 	 */
 
 	gfile = g_file_new_for_commandline_arg (str);
 
-	if (gedit_utils_is_valid_location (gfile))
+	if (bedit_utils_is_valid_location (gfile))
 	{
 		uri = g_file_get_uri (gfile);
 		g_object_unref (gfile);
@@ -778,13 +778,13 @@ make_canonical_uri_from_shell_arg (const gchar *str)
 
 
 /**
- * gedit_utils_basename_for_display:
+ * bedit_utils_basename_for_display:
  * @location: location for which the basename should be displayed
  *
  * Returns: (transfer full): the basename of a file suitable for display to users.
  */
 gchar *
-gedit_utils_basename_for_display (GFile *location)
+bedit_utils_basename_for_display (GFile *location)
 {
 	gchar *name;
 	gchar *hn;
@@ -823,7 +823,7 @@ gedit_utils_basename_for_display (GFile *location)
 		}
 	}
 	else if (g_file_has_parent (location, NULL) ||
-	          !gedit_utils_decode_uri (uri, NULL, NULL, &hn, NULL, NULL))
+	          !bedit_utils_decode_uri (uri, NULL, NULL, &hn, NULL, NULL))
 	{
 		/* For remote files with a parent (so not just http://foo.com)
 		   or remote file for which the decoding of the host name fails,
@@ -866,7 +866,7 @@ gedit_utils_basename_for_display (GFile *location)
 }
 
 /**
- * gedit_utils_drop_get_uris:
+ * bedit_utils_drop_get_uris:
  * @selection_data: the #GtkSelectionData from drag_data_received
  *
  * Create a list of valid uri's from a uri-list drop.
@@ -876,7 +876,7 @@ gedit_utils_basename_for_display (GFile *location)
  *           the string array is no longer used
  */
 gchar **
-gedit_utils_drop_get_uris (GtkSelectionData *selection_data)
+bedit_utils_drop_get_uris (GtkSelectionData *selection_data)
 {
 	gchar **uris;
 	gint i;
@@ -916,7 +916,7 @@ null_ptr (gchar **ptr)
 }
 
 /**
- * gedit_utils_decode_uri:
+ * bedit_utils_decode_uri:
  * @uri: the uri to decode
  * @scheme: (out) (allow-none): return value pointer for the uri's
  * scheme (e.g. http, sftp, ...), or %NULL
@@ -933,7 +933,7 @@ null_ptr (gchar **ptr)
  * Return value: %TRUE if the uri could be properly decoded, %FALSE otherwise.
  */
 gboolean
-gedit_utils_decode_uri (const gchar  *uri,
+bedit_utils_decode_uri (const gchar  *uri,
 			gchar       **scheme,
 			gchar       **user,
 			gchar       **host,
@@ -1068,7 +1068,7 @@ gedit_utils_decode_uri (const gchar  *uri,
 }
 
 GtkSourceCompressionType
-gedit_utils_get_compression_type_from_content_type (const gchar *content_type)
+bedit_utils_get_compression_type_from_content_type (const gchar *content_type)
 {
 	if (content_type == NULL)
 	{
@@ -1103,7 +1103,7 @@ get_direct_save_filename (GdkDragContext *context)
 	/* Verify that the file name provided by the source is valid */
 	if (*prop_text == '\0' ||
 	    strchr ((const gchar *) prop_text, G_DIR_SEPARATOR) != NULL) {
-		gedit_debug_message (DEBUG_UTILS, "Invalid filename provided by XDS drag site");
+		bedit_debug_message (DEBUG_UTILS, "Invalid filename provided by XDS drag site");
 		g_free (prop_text);
 		return NULL;
 	}
@@ -1112,7 +1112,7 @@ get_direct_save_filename (GdkDragContext *context)
 }
 
 gchar *
-gedit_utils_set_direct_save_filename (GdkDragContext *context)
+bedit_utils_set_direct_save_filename (GdkDragContext *context)
 {
 	gchar *uri;
 	gchar *filename;
@@ -1125,7 +1125,7 @@ gedit_utils_set_direct_save_filename (GdkDragContext *context)
 		gchar *tempdir;
 		gchar *path;
 
-		tempdir = g_dir_make_tmp ("gedit-drop-XXXXXX", NULL);
+		tempdir = g_dir_make_tmp ("bedit-drop-XXXXXX", NULL);
 		if (tempdir == NULL)
 		{
 			tempdir = g_strdup (g_get_tmp_dir ());
@@ -1153,7 +1153,7 @@ gedit_utils_set_direct_save_filename (GdkDragContext *context)
 }
 
 const gchar *
-gedit_utils_newline_type_to_string (GtkSourceNewlineType newline_type)
+bedit_utils_newline_type_to_string (GtkSourceNewlineType newline_type)
 {
 	switch (newline_type)
 	{

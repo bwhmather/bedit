@@ -10,7 +10,7 @@ gtk_docpath = join_paths(gtk_prefix, 'share', 'gtk-doc', 'html', 'gtk')
 tepl_prefix = tepl_dep.get_pkgconfig_variable('prefix')
 tepl_docpath = join_paths(tepl_prefix, 'share', 'gtk-doc', 'html', 'tepl-4.0')
 
-gedit_doc_deps = [
+bedit_doc_deps = [
   glib_dep,
   gobject_dep,
   gio_dep,
@@ -21,65 +21,65 @@ gedit_doc_deps = [
   libpeas_gtk_dep,
 ]
 
-gedit_doc_dep = declare_dependency(
-  link_with: libgedit_sha,
+bedit_doc_dep = declare_dependency(
+  link_with: libbedit_sha,
   include_directories: root_include_dir,
-  dependencies: gedit_doc_deps,
-  sources: libgedit_dep_sources,
+  dependencies: bedit_doc_deps,
+  sources: libbedit_dep_sources,
 )
 
-libgedit_reference_ignored_h = [
-  'gedit-app-osx.h',
-  'gedit-app-win32.h',
-  'gedit-app-x11.h',
-  'gedit-close-confirmation-dialog.h',
-  'gedit-dirs.h',
-  'gedit-document-private.h',
-  'gedit-documents-panel.h',
-  'gedit-encoding-items.h',
-  'gedit-encodings-dialog.h',
-  'gedit-enum-types.h',
-  'gedit-file-chooser-dialog-gtk.h',
-  'gedit-file-chooser-dialog-osx.h',
-  'gedit-file-chooser-dialog.h',
-  'gedit-highlight-mode-dialog.h',
-  'gedit-highlight-mode-selector.h',
-  'gedit-history-entry.h',
-  'gedit-io-error-info-bar.h',
-  'gedit-menu-stack-switcher.h',
-  'gedit-multi-notebook.h',
-  'gedit-notebook-popup-menu.h',
-  'gedit-notebook-stack-switcher.h',
-  'gedit-notebook.h',
-  'gedit-open-menu-button.h',
-  'gedit-pango.h',
-  'gedit-plugins-engine.h',
-  'gedit-preferences-dialog.h',
-  'gedit-print-job.h',
-  'gedit-print-preview.h',
-  'gedit-recent.h',
-  'gedit-replace-dialog.h',
-  'gedit-settings.h',
-  'gedit-small-button.h',
-  'gedit-status-menu-button.h',
-  'gedit-tab-label.h',
-  'gedit-view-frame.h',
-  'gedit-window-private.h',
+libbedit_reference_ignored_h = [
+  'bedit-app-osx.h',
+  'bedit-app-win32.h',
+  'bedit-app-x11.h',
+  'bedit-close-confirmation-dialog.h',
+  'bedit-dirs.h',
+  'bedit-document-private.h',
+  'bedit-documents-panel.h',
+  'bedit-encoding-items.h',
+  'bedit-encodings-dialog.h',
+  'bedit-enum-types.h',
+  'bedit-file-chooser-dialog-gtk.h',
+  'bedit-file-chooser-dialog-osx.h',
+  'bedit-file-chooser-dialog.h',
+  'bedit-highlight-mode-dialog.h',
+  'bedit-highlight-mode-selector.h',
+  'bedit-history-entry.h',
+  'bedit-io-error-info-bar.h',
+  'bedit-menu-stack-switcher.h',
+  'bedit-multi-notebook.h',
+  'bedit-notebook-popup-menu.h',
+  'bedit-notebook-stack-switcher.h',
+  'bedit-notebook.h',
+  'bedit-open-menu-button.h',
+  'bedit-pango.h',
+  'bedit-plugins-engine.h',
+  'bedit-preferences-dialog.h',
+  'bedit-print-job.h',
+  'bedit-print-preview.h',
+  'bedit-recent.h',
+  'bedit-replace-dialog.h',
+  'bedit-settings.h',
+  'bedit-small-button.h',
+  'bedit-status-menu-button.h',
+  'bedit-tab-label.h',
+  'bedit-view-frame.h',
+  'bedit-window-private.h',
 ]
 
-libgedit_reference_scan_args = [
+libbedit_reference_scan_args = [
   '--rebuild-types',
   '--deprecated-guards=GEDIT_DISABLE_DEPRECATED',
-  '--ignore-headers=' + ' '.join(libgedit_reference_ignored_h),
+  '--ignore-headers=' + ' '.join(libbedit_reference_ignored_h),
 ]
 
-libgedit_reference_mkdb_args = [
+libbedit_reference_mkdb_args = [
   '--xml-mode',
   '--output-format=xml',
-  '--name-space=gedit',
+  '--name-space=bedit',
 ]
 
-libgedit_reference_fixxref_args = [
+libbedit_reference_fixxref_args = [
   '--html-dir=@0@'.format(join_paths(gtkdocdir, 'html', package_string)),
   '--extra-dir=@0@'.format(glib_docpath),
   '--extra-dir=@0@'.format(gobject_docpath),
@@ -89,12 +89,12 @@ libgedit_reference_fixxref_args = [
 
 gnome.gtkdoc(
   meson.project_name(),
-  main_sgml: 'gedit-docs.xml',
-  src_dir: join_paths(srcdir, 'gedit'),
-  dependencies: gedit_doc_dep,
-  scan_args: libgedit_reference_scan_args,
-  mkdb_args: libgedit_reference_mkdb_args,
-  fixxref_args: libgedit_reference_fixxref_args,
+  main_sgml: 'bedit-docs.xml',
+  src_dir: join_paths(srcdir, 'bedit'),
+  dependencies: bedit_doc_dep,
+  scan_args: libbedit_reference_scan_args,
+  mkdb_args: libbedit_reference_mkdb_args,
+  fixxref_args: libbedit_reference_fixxref_args,
   content_files : [
     'api-breaks.xml'
   ],

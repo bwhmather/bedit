@@ -1,6 +1,6 @@
 /*
- * gedit-file-chooser-dialog.h
- * This file is part of gedit
+ * bedit-file-chooser-dialog.h
+ * This file is part of bedit
  *
  * Copyright (C) 2014 - Jesse van den Kieboom
  *
@@ -26,9 +26,9 @@
 
 G_BEGIN_DECLS
 
-#define GEDIT_TYPE_FILE_CHOOSER_DIALOG (gedit_file_chooser_dialog_get_type ())
+#define GEDIT_TYPE_FILE_CHOOSER_DIALOG (bedit_file_chooser_dialog_get_type ())
 
-G_DECLARE_INTERFACE (BeditFileChooserDialog, gedit_file_chooser_dialog, GEDIT, FILE_CHOOSER_DIALOG, GObject)
+G_DECLARE_INTERFACE (BeditFileChooserDialog, bedit_file_chooser_dialog, GEDIT, FILE_CHOOSER_DIALOG, GObject)
 
 struct _BeditFileChooserDialogInterface
 {
@@ -90,7 +90,7 @@ typedef enum
 } BeditFileChooserFlags;
 
 BeditFileChooserDialog *
-		gedit_file_chooser_dialog_create		(const gchar              *title,
+		bedit_file_chooser_dialog_create		(const gchar              *title,
 								 GtkWindow                *parent,
 								 BeditFileChooserFlags     flags,
 								 const GtkSourceEncoding  *encoding,
@@ -99,46 +99,46 @@ BeditFileChooserDialog *
 								 const gchar              *accept_label,
 								 GtkResponseType           accept_response);
 
-void		 gedit_file_chooser_dialog_destroy		(BeditFileChooserDialog   *dialog);
+void		 bedit_file_chooser_dialog_destroy		(BeditFileChooserDialog   *dialog);
 
-void		 gedit_file_chooser_dialog_set_encoding		(BeditFileChooserDialog   *dialog,
+void		 bedit_file_chooser_dialog_set_encoding		(BeditFileChooserDialog   *dialog,
 								 const GtkSourceEncoding  *encoding);
 
 const GtkSourceEncoding *
-		 gedit_file_chooser_dialog_get_encoding		(BeditFileChooserDialog   *dialog);
+		 bedit_file_chooser_dialog_get_encoding		(BeditFileChooserDialog   *dialog);
 
-void		 gedit_file_chooser_dialog_set_newline_type	(BeditFileChooserDialog   *dialog,
+void		 bedit_file_chooser_dialog_set_newline_type	(BeditFileChooserDialog   *dialog,
 								 GtkSourceNewlineType      newline_type);
 
 GtkSourceNewlineType
-		 gedit_file_chooser_dialog_get_newline_type	(BeditFileChooserDialog   *dialog);
+		 bedit_file_chooser_dialog_get_newline_type	(BeditFileChooserDialog   *dialog);
 
-void		 gedit_file_chooser_dialog_set_current_folder	(BeditFileChooserDialog   *dialog,
+void		 bedit_file_chooser_dialog_set_current_folder	(BeditFileChooserDialog   *dialog,
 								 GFile                    *folder);
 
-void		 gedit_file_chooser_dialog_set_current_name	(BeditFileChooserDialog   *dialog,
+void		 bedit_file_chooser_dialog_set_current_name	(BeditFileChooserDialog   *dialog,
 								 const gchar              *name);
 
-void		 gedit_file_chooser_dialog_set_file		(BeditFileChooserDialog   *dialog,
+void		 bedit_file_chooser_dialog_set_file		(BeditFileChooserDialog   *dialog,
 								 GFile                    *file);
 
-GFile		*gedit_file_chooser_dialog_get_file		(BeditFileChooserDialog   *dialog);
+GFile		*bedit_file_chooser_dialog_get_file		(BeditFileChooserDialog   *dialog);
 
-GSList		*gedit_file_chooser_dialog_get_files		(BeditFileChooserDialog   *dialog);
+GSList		*bedit_file_chooser_dialog_get_files		(BeditFileChooserDialog   *dialog);
 
-void		 gedit_file_chooser_dialog_set_do_overwrite_confirmation (
+void		 bedit_file_chooser_dialog_set_do_overwrite_confirmation (
 								 BeditFileChooserDialog   *dialog,
 								 gboolean                  overwrite_confirmation);
 
-void		 gedit_file_chooser_dialog_show			(BeditFileChooserDialog   *dialog);
-void		 gedit_file_chooser_dialog_hide			(BeditFileChooserDialog   *dialog);
+void		 bedit_file_chooser_dialog_show			(BeditFileChooserDialog   *dialog);
+void		 bedit_file_chooser_dialog_hide			(BeditFileChooserDialog   *dialog);
 
-void		 gedit_file_chooser_dialog_set_modal		(BeditFileChooserDialog   *dialog,
+void		 bedit_file_chooser_dialog_set_modal		(BeditFileChooserDialog   *dialog,
 								 gboolean                  is_modal);
 
-GtkWindow	*gedit_file_chooser_dialog_get_window		(BeditFileChooserDialog   *dialog);
+GtkWindow	*bedit_file_chooser_dialog_get_window		(BeditFileChooserDialog   *dialog);
 
-void		 gedit_file_chooser_dialog_add_pattern_filter	(BeditFileChooserDialog   *dialog,
+void		 bedit_file_chooser_dialog_add_pattern_filter	(BeditFileChooserDialog   *dialog,
 								 const gchar              *name,
 								 const gchar              *pattern);
 

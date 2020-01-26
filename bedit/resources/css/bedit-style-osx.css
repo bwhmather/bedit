@@ -89,7 +89,7 @@
   unbind "<control><shift>z";
 }
 
-@binding-set gedit-osx-view {
+@binding-set bedit-osx-view {
   bind "<primary>d" { "delete-from-cursor" (GTK_DELETE_PARAGRAPHS, 1) };
   unbind "<control>d";
 }
@@ -106,8 +106,8 @@ textview.sourceview {
   -gtk-key-bindings: gtk-osx-editable, gtk-osx-text-view, gtk-osx-source-view;
 }
 
-textview.gedit-view {
-  -gtk-key-bindings: gtk-osx-editable, gtk-osx-text-view, gtk-osx-source-view, gedit-osx-view;
+textview.bedit-view {
+  -gtk-key-bindings: gtk-osx-editable, gtk-osx-text-view, gtk-osx-source-view, bedit-osx-view;
 }
 
 treeview {
@@ -122,7 +122,7 @@ notebook tab {
   padding: 4px 2px 2px 2px;
 }
 
-.gedit-side-panel-stack-switcher {
+.bedit-side-panel-stack-switcher {
   border: 0;
   border-radius: 0;
   border-bottom: 1px solid @borders;

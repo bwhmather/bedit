@@ -9,13 +9,13 @@ else
   gresource_xml.set('OS_DEPENDENT_RESOURCE_FILES', '')
 endif
 
-libgedit_res_xml = configure_file(
-  input: 'gedit.gresource.xml.in',
-  output: 'gedit.gresource.xml',
+libbedit_res_xml = configure_file(
+  input: 'bedit.gresource.xml.in',
+  output: 'bedit.gresource.xml',
   configuration: gresource_xml
 )
 
-libgedit_res = gnome.compile_resources(
-  'gedit-resources',
-  libgedit_res_xml,
+libbedit_res = gnome.compile_resources(
+  'bedit-resources',
+  libbedit_res_xml,
 )

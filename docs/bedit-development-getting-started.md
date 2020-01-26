@@ -1,4 +1,4 @@
-gedit development - getting started
+bedit development - getting started
 ===================================
 
 The following explanations can be improved over time, if you see something
@@ -7,7 +7,7 @@ missing, a feedback is welcome.
 Programming languages and paradigms
 -----------------------------------
 
-gedit is mostly written in C, with some plugins in Python or
+bedit is mostly written in C, with some plugins in Python or
 [Vala](https://wiki.gnome.org/Projects/Vala/). The build system is in
 [Meson](https://mesonbuild.com/).
 
@@ -20,41 +20,41 @@ once you've learned GObject, you will no longer be afraid ;-)
 Libraries used
 --------------
 
-As every GNOME application, gedit uses the GLib, GObject and GTK libraries. To
-modify the gedit source code, you should be familiar with those libraries. See
+As every GNOME application, bedit uses the GLib, GObject and GTK libraries. To
+modify the bedit source code, you should be familiar with those libraries. See
 the [GTK website](https://www.gtk.org/) and the document
 [The GLib/GTK Development Platform – A Getting Started Guide](https://people.gnome.org/~swilmet/glib-gtk-book/).
 
-The main widget used by gedit is GtkTextView, a general-purpose multiline text
+The main widget used by bedit is GtkTextView, a general-purpose multiline text
 editor. To learn that widget API, read the excellent
 [GtkTextView tutorial](http://www.bravegnu.org/gtktext/) (a bit old but still
-mostly valid). But GtkTextView is not enough for source code edition. gedit
+mostly valid). But GtkTextView is not enough for source code edition. bedit
 actually uses the
 [GtkSourceView](https://wiki.gnome.org/Projects/GtkSourceView) library, which
 contains a subclass of GtkTextView with syntax highlighting, a completion
 framework, the search and replace, and many other features useful for a text
 editor or an IDE.
 
-For its plugin system, gedit uses the
+For its plugin system, bedit uses the
 [libpeas](https://wiki.gnome.org/Projects/Libpeas) library.
 
 Plugins may have other dependencies, for example the spell-checking plugin uses
 [gspell](https://wiki.gnome.org/Projects/gspell).
 
-gedit architecture
+bedit architecture
 ------------------
 
-The [gedit Git repository](https://gitlab.gnome.org/GNOME/gedit) contains the
-_gedit core_ plus the default plugins. There is also the
-[gedit-plugins Git repository](https://gitlab.gnome.org/GNOME/gedit-plugins)
-for additional official plugins. The gedit core source code is in the `gedit/`
+The [bedit Git repository](https://gitlab.gnome.org/GNOME/bedit) contains the
+_bedit core_ plus the default plugins. There is also the
+[bedit-plugins Git repository](https://gitlab.gnome.org/GNOME/bedit-plugins)
+for additional official plugins. The bedit core source code is in the `bedit/`
 directory. The plugins are in … `plugins/`!
 
-gedit core provides:
+bedit core provides:
 - A basic text editor.
 - The integration of libpeas, with an API for plugins.
 
-There is a class diagram of gedit core in the file
+There is a class diagram of bedit core in the file
 [class-diagram.dia](class-diagram.dia) (but it may be outdated, see the Git log
 for that file).
 
@@ -69,13 +69,13 @@ First contribution
 See the [Newcomers](https://wiki.gnome.org/Newcomers/) page to start
 contributing to GNOME in general.
 
-To know how to contribute to gedit specifically, read the
+To know how to contribute to bedit specifically, read the
 [README.md](../README.md) and [CONTRIBUTING.md](../CONTRIBUTING.md) files
 present in the Git repository (and then you'll see that the `CONTRIBUTING.md`
 file refers to this file, but please don't end up in an infinite reading loop).
 
 To find something interesting to do, […]. TODO: provide list of easy tasks in
-gedit itself.
+bedit itself.
 
 A good way to learn a lot of things is to write a new plugin (as a third-party
 plugin first). To have some inspiration, see the wiki page
@@ -92,4 +92,4 @@ Interesting article to read, written by a GNOME developer:
 [Working on Free Software](http://ometer.com/hacking.html)
 
 Happy hacking!\
-the gedit developers.
+the bedit developers.

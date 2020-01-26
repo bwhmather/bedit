@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=Text Editor
 Comment=Edit text files
-Exec=gedit %U
+Exec=bedit %U
 Terminal=false
 Type=Application
 StartupNotify=true
@@ -14,13 +14,13 @@ Actions=new-window;new-document;
 # TRANSLATORS: Do NOT translate or localize the semicolons!
 #              The list MUST also end with a semicolon!
 #              Search terms to find this application.
-Keywords=Text;Editor;Plaintext;Write;gedit;
+Keywords=Text;Editor;Plaintext;Write;bedit;
 DBusActivatable=true
 
 [Desktop Action new-window]
 Name=New Window
-Exec=gedit --new-window
+Exec=bedit --new-window
 
 [Desktop Action new-document]
 Name=New Document
-Exec=gedit --new-document
+Exec=bedit --new-document

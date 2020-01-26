@@ -1,6 +1,6 @@
 /*
- * gedit-close-confirmation-dialog.c
- * This file is part of gedit
+ * bedit-close-confirmation-dialog.c
+ * This file is part of bedit
  *
  * Copyright (C) 2004-2005 GNOME Foundation
  * Copyright (C) 2015 Sébastien Wilmet
@@ -21,15 +21,15 @@
 
 #include "config.h"
 
-#include "gedit-close-confirmation-dialog.h"
+#include "bedit-close-confirmation-dialog.h"
 
 #include <glib/gi18n.h>
 
-#include <gedit/gedit-app.h>
-#include <gedit/gedit-document.h>
-#include <gedit/gedit-document-private.h>
-#include <gedit/gedit-utils.h>
-#include <gedit/gedit-window.h>
+#include <bedit/bedit-app.h>
+#include <bedit/bedit-document.h>
+#include <bedit/bedit-document-private.h>
+#include <bedit/bedit-utils.h>
+#include <bedit/bedit-window.h>
 
 /* Mode */
 enum
@@ -42,7 +42,7 @@ enum
                        (dlg->unsaved_documents->next == NULL)) ? \
                        SINGLE_DOC_MODE : MULTIPLE_DOCS_MODE)
 
-#define GEDIT_SAVE_DOCUMENT_KEY "gedit-save-document"
+#define GEDIT_SAVE_DOCUMENT_KEY "bedit-save-document"
 
 struct _BeditCloseConfirmationDialog
 {
@@ -64,7 +64,7 @@ enum
 static GParamSpec *properties[LAST_PROP];
 
 G_DEFINE_TYPE (BeditCloseConfirmationDialog,
-	       gedit_close_confirmation_dialog,
+	       bedit_close_confirmation_dialog,
 	       GTK_TYPE_MESSAGE_DIALOG)
 
 static void 	 set_unsaved_document 		(BeditCloseConfirmationDialog *dlg,
@@ -130,11 +130,11 @@ response_cb (BeditCloseConfirmationDialog *dlg,
 }
 
 static void
-gedit_close_confirmation_dialog_init (BeditCloseConfirmationDialog *dlg)
+bedit_close_confirmation_dialog_init (BeditCloseConfirmationDialog *dlg)
 {
 	BeditLockdownMask lockdown;
 
-	lockdown = gedit_app_get_lockdown (GEDIT_APP (g_application_get_default ()));
+	lockdown = bedit_app_get_lockdown (GEDIT_APP (g_application_get_default ()));
 
 	dlg->disable_save_to_disk = (lockdown & GEDIT_LOCKDOWN_SAVE_TO_DISK) != 0;
 
@@ -149,7 +149,7 @@ gedit_close_confirmation_dialog_init (BeditCloseConfirmationDialog *dlg)
 }
 
 static void
-gedit_close_confirmation_dialog_finalize (GObject *object)
+bedit_close_confirmation_dialog_finalize (GObject *object)
 {
 	BeditCloseConfirmationDialog *dlg = GEDIT_CLOSE_CONFIRMATION_DIALOG (object);
 
@@ -157,11 +157,11 @@ gedit_close_confirmation_dialog_finalize (GObject *object)
 	g_list_free (dlg->selected_documents);
 
 	/* Call the parent's destructor */
-	G_OBJECT_CLASS (gedit_close_confirmation_dialog_parent_class)->finalize (object);
+	G_OBJECT_CLASS (bedit_close_confirmation_dialog_parent_class)->finalize (object);
 }
 
 static void
-gedit_close_confirmation_dialog_set_property (GObject      *object,
+bedit_close_confirmation_dialog_set_property (GObject      *object,
 					      guint         prop_id,
 					      const GValue *value,
 					      GParamSpec   *pspec)
@@ -183,7 +183,7 @@ gedit_close_confirmation_dialog_set_property (GObject      *object,
 }
 
 static void
-gedit_close_confirmation_dialog_get_property (GObject    *object,
+bedit_close_confirmation_dialog_get_property (GObject    *object,
 					      guint       prop_id,
 					      GValue     *value,
 					      GParamSpec *pspec)
@@ -203,13 +203,13 @@ gedit_close_confirmation_dialog_get_property (GObject    *object,
 }
 
 static void
-gedit_close_confirmation_dialog_class_init (BeditCloseConfirmationDialogClass *klass)
+bedit_close_confirmation_dialog_class_init (BeditCloseConfirmationDialogClass *klass)
 {
 	GObjectClass *gobject_class = G_OBJECT_CLASS (klass);
 
-	gobject_class->set_property = gedit_close_confirmation_dialog_set_property;
-	gobject_class->get_property = gedit_close_confirmation_dialog_get_property;
-	gobject_class->finalize = gedit_close_confirmation_dialog_finalize;
+	gobject_class->set_property = bedit_close_confirmation_dialog_set_property;
+	gobject_class->get_property = bedit_close_confirmation_dialog_get_property;
+	gobject_class->finalize = bedit_close_confirmation_dialog_finalize;
 
 	properties[PROP_UNSAVED_DOCUMENTS] =
 		g_param_spec_pointer ("unsaved-documents",
@@ -221,7 +221,7 @@ gedit_close_confirmation_dialog_class_init (BeditCloseConfirmationDialogClass *k
 }
 
 GList *
-gedit_close_confirmation_dialog_get_selected_documents (BeditCloseConfirmationDialog *dlg)
+bedit_close_confirmation_dialog_get_selected_documents (BeditCloseConfirmationDialog *dlg)
 {
 	g_return_val_if_fail (GEDIT_IS_CLOSE_CONFIRMATION_DIALOG (dlg), NULL);
 
@@ -229,7 +229,7 @@ gedit_close_confirmation_dialog_get_selected_documents (BeditCloseConfirmationDi
 }
 
 GtkWidget *
-gedit_close_confirmation_dialog_new (GtkWindow *parent,
+bedit_close_confirmation_dialog_new (GtkWindow *parent,
 				     GList     *unsaved_documents)
 {
 	GtkWidget *dlg;
@@ -243,7 +243,7 @@ gedit_close_confirmation_dialog_new (GtkWindow *parent,
 
 	if (parent != NULL)
 	{
-		gtk_window_group_add_window (gedit_window_get_group (GEDIT_WINDOW (parent)),
+		gtk_window_group_add_window (bedit_window_get_group (GEDIT_WINDOW (parent)),
 					     GTK_WINDOW (dlg));
 
 		gtk_window_set_transient_for (GTK_WINDOW (dlg), parent);
@@ -253,7 +253,7 @@ gedit_close_confirmation_dialog_new (GtkWindow *parent,
 }
 
 GtkWidget *
-gedit_close_confirmation_dialog_new_single (GtkWindow     *parent,
+bedit_close_confirmation_dialog_new_single (GtkWindow     *parent,
 					    BeditDocument *doc)
 {
 	GtkWidget *dlg;
@@ -262,7 +262,7 @@ gedit_close_confirmation_dialog_new_single (GtkWindow     *parent,
 	g_return_val_if_fail (doc != NULL, NULL);
 
 	unsaved_documents = g_list_prepend (NULL, doc);
-	dlg = gedit_close_confirmation_dialog_new (parent, unsaved_documents);
+	dlg = bedit_close_confirmation_dialog_new (parent, unsaved_documents);
 	g_list_free (unsaved_documents);
 
 	return dlg;
@@ -297,10 +297,10 @@ add_buttons (BeditCloseConfirmationDialog *dlg)
 			GtkSourceFile *file;
 
 			doc = GEDIT_DOCUMENT (dlg->unsaved_documents->data);
-			file = gedit_document_get_file (doc);
+			file = bedit_document_get_file (doc);
 
 			if (gtk_source_file_is_readonly (file) ||
-			    gedit_document_is_untitled (doc))
+			    bedit_document_is_untitled (doc))
 			{
 				save_as = TRUE;
 			}
@@ -320,7 +320,7 @@ get_text_secondary_label (BeditDocument *doc)
 	glong  seconds;
 	gchar *secondary_msg;
 
-	seconds = MAX (1, _gedit_document_get_seconds_since_last_save_or_load (doc));
+	seconds = MAX (1, _bedit_document_get_seconds_since_last_save_or_load (doc));
 
 	if (seconds < 55)
 	{
@@ -411,7 +411,7 @@ build_single_doc_dialog (BeditCloseConfirmationDialog *dlg)
 	add_buttons (dlg);
 
 	/* Primary message */
-	doc_name = gedit_document_get_short_name_for_display (doc);
+	doc_name = bedit_document_get_short_name_for_display (doc);
 
 	if (dlg->disable_save_to_disk)
 	{
@@ -461,7 +461,7 @@ create_list_box (BeditCloseConfirmationDialog *dlg)
 		GtkWidget *check_button;
 		GtkWidget *row;
 
-		name = gedit_document_get_short_name_for_display (doc);
+		name = bedit_document_get_short_name_for_display (doc);
 		check_button = gtk_check_button_new_with_label (name);
 		gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (check_button), TRUE);
 		gtk_widget_set_halign (check_button, GTK_ALIGN_START);
@@ -600,7 +600,7 @@ set_unsaved_document (BeditCloseConfirmationDialog *dlg,
 }
 
 const GList *
-gedit_close_confirmation_dialog_get_unsaved_documents (BeditCloseConfirmationDialog *dlg)
+bedit_close_confirmation_dialog_get_unsaved_documents (BeditCloseConfirmationDialog *dlg)
 {
 	g_return_val_if_fail (GEDIT_IS_CLOSE_CONFIRMATION_DIALOG (dlg), NULL);
 

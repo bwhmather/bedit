@@ -23,8 +23,8 @@ if 'DESTDIR' not in os.environ:
 
     print('Compiling python modules...')
     subprocess.call([sys.executable, '-m', 'compileall', '-f', '-q',
-                     os.path.join(libdir, 'gedit', 'plugins')])
+                     os.path.join(libdir, 'bedit', 'plugins')])
 
     print('Compiling python modules (optimized versions) ...')
     subprocess.call([sys.executable, '-O', '-m', 'compileall', '-f', '-q',
-                     os.path.join(libdir, 'gedit', 'plugins')])
+                     os.path.join(libdir, 'bedit', 'plugins')])

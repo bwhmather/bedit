@@ -26,14 +26,14 @@
     <property name="id" type="uint"/>
   </message>
   <message namespace="Bedit" name="FileBrowserMessageExtendContextMenu">
-    <include system="yes">gedit/gedit-menu-extension.h</include>
+    <include system="yes">bedit/bedit-menu-extension.h</include>
     <property name="extension" type="object" gtype="GEDIT_TYPE_MENU_EXTENSION"/>
   </message>
     <message namespace="Bedit" name="FileBrowserMessageActivation">
     <property name="active" type="boolean"/>
   </message>
   <message namespace="Bedit" name="FileBrowserMessageGetView">
-    <include>plugins/filebrowser/gedit-file-browser-view.h</include>
+    <include>plugins/filebrowser/bedit-file-browser-view.h</include>
     <property name="view" type="object" gtype="GEDIT_TYPE_FILE_BROWSER_VIEW"/>
   </message>
   <message namespace="Bedit" name="FileBrowserMessageIdLocation">

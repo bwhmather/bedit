@@ -1,5 +1,5 @@
 /*
- * gedit-file-browser-store.h - Bedit plugin providing easy file access
+ * bedit-file-browser-store.h - Bedit plugin providing easy file access
  * from the sidepanel
  *
  * Copyright (C) 2006 - Jesse van den Kieboom <jesse@icecrew.nl>
@@ -24,7 +24,7 @@
 #include <gtk/gtk.h>
 
 G_BEGIN_DECLS
-#define GEDIT_TYPE_FILE_BROWSER_STORE			(gedit_file_browser_store_get_type ())
+#define GEDIT_TYPE_FILE_BROWSER_STORE			(bedit_file_browser_store_get_type ())
 #define GEDIT_FILE_BROWSER_STORE(obj)			(G_TYPE_CHECK_INSTANCE_CAST ((obj), GEDIT_TYPE_FILE_BROWSER_STORE, BeditFileBrowserStore))
 #define GEDIT_FILE_BROWSER_STORE_CONST(obj)		(G_TYPE_CHECK_INSTANCE_CAST ((obj), GEDIT_TYPE_FILE_BROWSER_STORE, BeditFileBrowserStore const))
 #define GEDIT_FILE_BROWSER_STORE_CLASS(klass)		(G_TYPE_CHECK_CLASS_CAST ((klass), GEDIT_TYPE_FILE_BROWSER_STORE, BeditFileBrowserStoreClass))
@@ -119,68 +119,68 @@ struct _BeditFileBrowserStoreClass {
 	                             GtkTreePath           *path);
 };
 
-GType                            gedit_file_browser_store_get_type                       (void) G_GNUC_CONST;
+GType                            bedit_file_browser_store_get_type                       (void) G_GNUC_CONST;
 
-BeditFileBrowserStore           *gedit_file_browser_store_new                            (GFile                            *root);
-BeditFileBrowserStoreResult      gedit_file_browser_store_set_root_and_virtual_root      (BeditFileBrowserStore            *model,
+BeditFileBrowserStore           *bedit_file_browser_store_new                            (GFile                            *root);
+BeditFileBrowserStoreResult      bedit_file_browser_store_set_root_and_virtual_root      (BeditFileBrowserStore            *model,
                                                                                           GFile                            *root,
                                                                                           GFile                            *virtual_root);
-BeditFileBrowserStoreResult      gedit_file_browser_store_set_root                       (BeditFileBrowserStore            *model,
+BeditFileBrowserStoreResult      bedit_file_browser_store_set_root                       (BeditFileBrowserStore            *model,
                                                                                           GFile                            *root);
-BeditFileBrowserStoreResult      gedit_file_browser_store_set_virtual_root               (BeditFileBrowserStore            *model,
+BeditFileBrowserStoreResult      bedit_file_browser_store_set_virtual_root               (BeditFileBrowserStore            *model,
                                                                                           GtkTreeIter                      *iter);
-BeditFileBrowserStoreResult      gedit_file_browser_store_set_virtual_root_from_location (BeditFileBrowserStore            *model,
+BeditFileBrowserStoreResult      bedit_file_browser_store_set_virtual_root_from_location (BeditFileBrowserStore            *model,
                                                                                           GFile                            *root);
-BeditFileBrowserStoreResult      gedit_file_browser_store_set_virtual_root_up            (BeditFileBrowserStore            *model);
-BeditFileBrowserStoreResult      gedit_file_browser_store_set_virtual_root_top           (BeditFileBrowserStore            *model);
-gboolean                         gedit_file_browser_store_get_iter_virtual_root          (BeditFileBrowserStore            *model,
+BeditFileBrowserStoreResult      bedit_file_browser_store_set_virtual_root_up            (BeditFileBrowserStore            *model);
+BeditFileBrowserStoreResult      bedit_file_browser_store_set_virtual_root_top           (BeditFileBrowserStore            *model);
+gboolean                         bedit_file_browser_store_get_iter_virtual_root          (BeditFileBrowserStore            *model,
                                                                                           GtkTreeIter                      *iter);
-gboolean                         gedit_file_browser_store_get_iter_root                  (BeditFileBrowserStore            *model,
+gboolean                         bedit_file_browser_store_get_iter_root                  (BeditFileBrowserStore            *model,
                                                                                           GtkTreeIter                      *iter);
-GFile                           *gedit_file_browser_store_get_root                       (BeditFileBrowserStore            *model);
-GFile                           *gedit_file_browser_store_get_virtual_root               (BeditFileBrowserStore            *model);
-gboolean                         gedit_file_browser_store_iter_equal                     (BeditFileBrowserStore            *model,
+GFile                           *bedit_file_browser_store_get_root                       (BeditFileBrowserStore            *model);
+GFile                           *bedit_file_browser_store_get_virtual_root               (BeditFileBrowserStore            *model);
+gboolean                         bedit_file_browser_store_iter_equal                     (BeditFileBrowserStore            *model,
                                                                                           GtkTreeIter                      *iter1,
                                                                                           GtkTreeIter                      *iter2);
-void                             gedit_file_browser_store_set_value                      (BeditFileBrowserStore            *tree_model,
+void                             bedit_file_browser_store_set_value                      (BeditFileBrowserStore            *tree_model,
                                                                                           GtkTreeIter                      *iter,
                                                                                           gint                              column,
                                                                                           GValue                           *value);
-void                             _gedit_file_browser_store_iter_expanded                 (BeditFileBrowserStore            *model,
+void                             _bedit_file_browser_store_iter_expanded                 (BeditFileBrowserStore            *model,
                                                                                           GtkTreeIter                      *iter);
-void                             _gedit_file_browser_store_iter_collapsed                (BeditFileBrowserStore            *model,
+void                             _bedit_file_browser_store_iter_collapsed                (BeditFileBrowserStore            *model,
                                                                                           GtkTreeIter                      *iter);
-BeditFileBrowserStoreFilterMode  gedit_file_browser_store_get_filter_mode                (BeditFileBrowserStore            *model);
-void                             gedit_file_browser_store_set_filter_mode                (BeditFileBrowserStore            *model,
+BeditFileBrowserStoreFilterMode  bedit_file_browser_store_get_filter_mode                (BeditFileBrowserStore            *model);
+void                             bedit_file_browser_store_set_filter_mode                (BeditFileBrowserStore            *model,
                                                                                           BeditFileBrowserStoreFilterMode   mode);
-void                             gedit_file_browser_store_set_filter_func                (BeditFileBrowserStore            *model,
+void                             bedit_file_browser_store_set_filter_func                (BeditFileBrowserStore            *model,
                                                                                           BeditFileBrowserStoreFilterFunc   func,
                                                                                           gpointer                          user_data);
-const gchar * const             *gedit_file_browser_store_get_binary_patterns            (BeditFileBrowserStore            *model);
-void                             gedit_file_browser_store_set_binary_patterns            (BeditFileBrowserStore            *model,
+const gchar * const             *bedit_file_browser_store_get_binary_patterns            (BeditFileBrowserStore            *model);
+void                             bedit_file_browser_store_set_binary_patterns            (BeditFileBrowserStore            *model,
                                                                                           const gchar                     **binary_patterns);
-void                             gedit_file_browser_store_refilter                       (BeditFileBrowserStore            *model);
-BeditFileBrowserStoreFilterMode  gedit_file_browser_store_filter_mode_get_default        (void);
-void                             gedit_file_browser_store_refresh                        (BeditFileBrowserStore            *model);
-gboolean                         gedit_file_browser_store_rename                         (BeditFileBrowserStore            *model,
+void                             bedit_file_browser_store_refilter                       (BeditFileBrowserStore            *model);
+BeditFileBrowserStoreFilterMode  bedit_file_browser_store_filter_mode_get_default        (void);
+void                             bedit_file_browser_store_refresh                        (BeditFileBrowserStore            *model);
+gboolean                         bedit_file_browser_store_rename                         (BeditFileBrowserStore            *model,
                                                                                           GtkTreeIter                      *iter,
                                                                                           gchar const                      *new_name,
                                                                                           GError                          **error);
-BeditFileBrowserStoreResult      gedit_file_browser_store_delete                         (BeditFileBrowserStore            *model,
+BeditFileBrowserStoreResult      bedit_file_browser_store_delete                         (BeditFileBrowserStore            *model,
                                                                                           GtkTreeIter                      *iter,
                                                                                           gboolean                          trash);
-BeditFileBrowserStoreResult      gedit_file_browser_store_delete_all                     (BeditFileBrowserStore            *model,
+BeditFileBrowserStoreResult      bedit_file_browser_store_delete_all                     (BeditFileBrowserStore            *model,
                                                                                           GList                            *rows,
                                                                                           gboolean                          trash);
-gboolean                         gedit_file_browser_store_new_file                       (BeditFileBrowserStore            *model,
+gboolean                         bedit_file_browser_store_new_file                       (BeditFileBrowserStore            *model,
                                                                                           GtkTreeIter                      *parent,
                                                                                           GtkTreeIter                      *iter);
-gboolean                         gedit_file_browser_store_new_directory                  (BeditFileBrowserStore            *model,
+gboolean                         bedit_file_browser_store_new_directory                  (BeditFileBrowserStore            *model,
                                                                                           GtkTreeIter                      *parent,
                                                                                           GtkTreeIter                      *iter);
-void                             gedit_file_browser_store_cancel_mount_operation         (BeditFileBrowserStore            *store);
+void                             bedit_file_browser_store_cancel_mount_operation         (BeditFileBrowserStore            *store);
 
-void                             _gedit_file_browser_store_register_type                 (GTypeModule                      *type_module);
+void                             _bedit_file_browser_store_register_type                 (GTypeModule                      *type_module);
 
 G_END_DECLS
 

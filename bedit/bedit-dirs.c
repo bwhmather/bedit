@@ -1,6 +1,6 @@
 /*
- * gedit-dirs.c
- * This file is part of gedit
+ * bedit-dirs.c
+ * This file is part of bedit
  *
  * Copyright (C) 2008 Ignacio Casal Quinteiro
  *
@@ -20,7 +20,7 @@
 
 #include "config.h"
 
-#include "gedit-dirs.h"
+#include "bedit-dirs.h"
 
 #ifdef OS_OSX
 #include <gtkosxapplication.h>
@@ -30,30 +30,30 @@ static gchar *user_config_dir        = NULL;
 static gchar *user_data_dir          = NULL;
 static gchar *user_styles_dir        = NULL;
 static gchar *user_plugins_dir       = NULL;
-static gchar *gedit_locale_dir       = NULL;
-static gchar *gedit_lib_dir          = NULL;
-static gchar *gedit_plugins_dir      = NULL;
-static gchar *gedit_plugins_data_dir = NULL;
+static gchar *bedit_locale_dir       = NULL;
+static gchar *bedit_lib_dir          = NULL;
+static gchar *bedit_plugins_dir      = NULL;
+static gchar *bedit_plugins_data_dir = NULL;
 
 void
-gedit_dirs_init ()
+bedit_dirs_init ()
 {
 #ifdef G_OS_WIN32
 	gchar *win32_dir;
 
 	win32_dir = g_win32_get_package_installation_directory_of_module (NULL);
 
-	gedit_locale_dir = g_build_filename (win32_dir,
+	bedit_locale_dir = g_build_filename (win32_dir,
 					     "share",
 					     "locale",
 					     NULL);
-	gedit_lib_dir = g_build_filename (win32_dir,
+	bedit_lib_dir = g_build_filename (win32_dir,
 					  "lib",
-					  "gedit",
+					  "bedit",
 					  NULL);
-	gedit_plugins_data_dir = g_build_filename (win32_dir,
+	bedit_plugins_data_dir = g_build_filename (win32_dir,
 						   "share",
-						   "gedit",
+						   "bedit",
 						   "plugins",
 						   NULL);
 
@@ -65,41 +65,41 @@ gedit_dirs_init ()
 	{
 		const gchar *bundle_resource_dir = gtkosx_application_get_resource_path ();
 
-		gedit_locale_dir = g_build_filename (bundle_resource_dir,
+		bedit_locale_dir = g_build_filename (bundle_resource_dir,
 						     "share",
 						     "locale",
 						     NULL);
-		gedit_lib_dir = g_build_filename (bundle_resource_dir,
+		bedit_lib_dir = g_build_filename (bundle_resource_dir,
 						  "lib",
-						  "gedit",
+						  "bedit",
 						  NULL);
-		gedit_plugins_data_dir = g_build_filename (bundle_resource_dir,
+		bedit_plugins_data_dir = g_build_filename (bundle_resource_dir,
 							   "share",
-							   "gedit",
+							   "bedit",
 							   "plugins",
 							   NULL);
 	}
 #endif /* OS_OSX */
 
-	if (gedit_locale_dir == NULL)
+	if (bedit_locale_dir == NULL)
 	{
-		gedit_locale_dir = g_build_filename (DATADIR,
+		bedit_locale_dir = g_build_filename (DATADIR,
 						     "locale",
 						     NULL);
-		gedit_lib_dir = g_build_filename (LIBDIR,
-						  "gedit",
+		bedit_lib_dir = g_build_filename (LIBDIR,
+						  "bedit",
 						  NULL);
-		gedit_plugins_data_dir = g_build_filename (DATADIR,
-							   "gedit",
+		bedit_plugins_data_dir = g_build_filename (DATADIR,
+							   "bedit",
 							   "plugins",
 							   NULL);
 	}
 
 	user_config_dir = g_build_filename (g_get_user_config_dir (),
-					    "gedit",
+					    "bedit",
 					    NULL);
 	user_data_dir = g_build_filename (g_get_user_data_dir (),
-					  "gedit",
+					  "bedit",
 					  NULL);
 	user_styles_dir = g_build_filename (user_data_dir,
 					    "styles",
@@ -107,70 +107,70 @@ gedit_dirs_init ()
 	user_plugins_dir = g_build_filename (user_data_dir,
 					     "plugins",
 					     NULL);
-	gedit_plugins_dir = g_build_filename (gedit_lib_dir,
+	bedit_plugins_dir = g_build_filename (bedit_lib_dir,
 					      "plugins",
 					      NULL);
 }
 
 void
-gedit_dirs_shutdown ()
+bedit_dirs_shutdown ()
 {
 	g_free (user_config_dir);
 	g_free (user_data_dir);
 	g_free (user_styles_dir);
 	g_free (user_plugins_dir);
-	g_free (gedit_locale_dir);
-	g_free (gedit_lib_dir);
-	g_free (gedit_plugins_dir);
-	g_free (gedit_plugins_data_dir);
+	g_free (bedit_locale_dir);
+	g_free (bedit_lib_dir);
+	g_free (bedit_plugins_dir);
+	g_free (bedit_plugins_data_dir);
 }
 
 const gchar *
-gedit_dirs_get_user_config_dir (void)
+bedit_dirs_get_user_config_dir (void)
 {
 	return user_config_dir;
 }
 
 const gchar *
-gedit_dirs_get_user_data_dir (void)
+bedit_dirs_get_user_data_dir (void)
 {
 	return user_data_dir;
 }
 
 const gchar *
-gedit_dirs_get_user_styles_dir (void)
+bedit_dirs_get_user_styles_dir (void)
 {
 	return user_styles_dir;
 }
 
 const gchar *
-gedit_dirs_get_user_plugins_dir (void)
+bedit_dirs_get_user_plugins_dir (void)
 {
 	return user_plugins_dir;
 }
 
 const gchar *
-gedit_dirs_get_gedit_locale_dir (void)
+bedit_dirs_get_bedit_locale_dir (void)
 {
-	return gedit_locale_dir;
+	return bedit_locale_dir;
 }
 
 const gchar *
-gedit_dirs_get_gedit_lib_dir (void)
+bedit_dirs_get_bedit_lib_dir (void)
 {
-	return gedit_lib_dir;
+	return bedit_lib_dir;
 }
 
 const gchar *
-gedit_dirs_get_gedit_plugins_dir (void)
+bedit_dirs_get_bedit_plugins_dir (void)
 {
-	return gedit_plugins_dir;
+	return bedit_plugins_dir;
 }
 
 const gchar *
-gedit_dirs_get_gedit_plugins_data_dir (void)
+bedit_dirs_get_bedit_plugins_data_dir (void)
 {
-	return gedit_plugins_data_dir;
+	return bedit_plugins_data_dir;
 }
 
 /* ex:set ts=8 noet: */

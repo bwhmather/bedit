@@ -1,6 +1,6 @@
 /*
- * gedit-view.h
- * This file is part of gedit
+ * bedit-view.h
+ * This file is part of bedit
  *
  * Copyright (C) 1998, 1999 Alex Roberts, Evan Lawrence
  * Copyright (C) 2000, 2001 Chema Celorio, Paolo Maggi
@@ -25,12 +25,12 @@
 
 #include <gtk/gtk.h>
 
-#include <gedit/gedit-document.h>
+#include <bedit/bedit-document.h>
 #include <gtksourceview/gtksource.h>
 
 G_BEGIN_DECLS
 
-#define GEDIT_TYPE_VIEW            (gedit_view_get_type ())
+#define GEDIT_TYPE_VIEW            (bedit_view_get_type ())
 #define GEDIT_VIEW(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), GEDIT_TYPE_VIEW, BeditView))
 #define GEDIT_VIEW_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass), GEDIT_TYPE_VIEW, BeditViewClass))
 #define GEDIT_IS_VIEW(obj)         (G_TYPE_CHECK_INSTANCE_TYPE((obj), GEDIT_TYPE_VIEW))
@@ -59,19 +59,19 @@ struct _BeditViewClass
 	gpointer             padding;
 };
 
-GType		 gedit_view_get_type     	(void) G_GNUC_CONST;
+GType		 bedit_view_get_type     	(void) G_GNUC_CONST;
 
-GtkWidget	*gedit_view_new			(BeditDocument   *doc);
+GtkWidget	*bedit_view_new			(BeditDocument   *doc);
 
-void		 gedit_view_cut_clipboard 	(BeditView       *view);
-void		 gedit_view_copy_clipboard 	(BeditView       *view);
-void		 gedit_view_paste_clipboard	(BeditView       *view);
-void		 gedit_view_delete_selection	(BeditView       *view);
-void		 gedit_view_select_all		(BeditView       *view);
+void		 bedit_view_cut_clipboard 	(BeditView       *view);
+void		 bedit_view_copy_clipboard 	(BeditView       *view);
+void		 bedit_view_paste_clipboard	(BeditView       *view);
+void		 bedit_view_delete_selection	(BeditView       *view);
+void		 bedit_view_select_all		(BeditView       *view);
 
-void		 gedit_view_scroll_to_cursor 	(BeditView       *view);
+void		 bedit_view_scroll_to_cursor 	(BeditView       *view);
 
-void 		 gedit_view_set_font		(BeditView       *view,
+void 		 bedit_view_set_font		(BeditView       *view,
 						 gboolean         default_font,
 						 const gchar     *font_name);
 

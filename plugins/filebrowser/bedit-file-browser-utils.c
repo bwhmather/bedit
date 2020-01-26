@@ -1,5 +1,5 @@
 /*
- * gedit-file-bookmarks-utils.c - Bedit plugin providing easy file access
+ * bedit-file-bookmarks-utils.c - Bedit plugin providing easy file access
  * from the sidepanel
  *
  * Copyright (C) 2006 - Jesse van den Kieboom <jesse@icecrew.nl>
@@ -21,9 +21,9 @@
 #include "config.h"
 
 #include <glib/gi18n-lib.h>
-#include <gedit/gedit-utils.h>
+#include <bedit/bedit-utils.h>
 
-#include "gedit-file-browser-utils.h"
+#include "bedit-file-browser-utils.h"
 
 static GdkPixbuf *
 process_icon_pixbuf (GdkPixbuf   *pixbuf,
@@ -55,7 +55,7 @@ process_icon_pixbuf (GdkPixbuf   *pixbuf,
 }
 
 GdkPixbuf *
-gedit_file_browser_utils_pixbuf_from_theme (gchar const *name,
+bedit_file_browser_utils_pixbuf_from_theme (gchar const *name,
                                             GtkIconSize  size)
 {
 	gint width;
@@ -76,7 +76,7 @@ gedit_file_browser_utils_pixbuf_from_theme (gchar const *name,
 }
 
 GdkPixbuf *
-gedit_file_browser_utils_pixbuf_from_icon (GIcon       *icon,
+bedit_file_browser_utils_pixbuf_from_icon (GIcon       *icon,
                                            GtkIconSize  size)
 {
 	GdkPixbuf *ret = NULL;
@@ -105,7 +105,7 @@ gedit_file_browser_utils_pixbuf_from_icon (GIcon       *icon,
 }
 
 GdkPixbuf *
-gedit_file_browser_utils_pixbuf_from_file (GFile       *file,
+bedit_file_browser_utils_pixbuf_from_file (GFile       *file,
                                            GtkIconSize  size,
                                            gboolean     use_symbolic)
 {
@@ -129,7 +129,7 @@ gedit_file_browser_utils_pixbuf_from_file (GFile       *file,
 	icon = use_symbolic ? g_file_info_get_symbolic_icon (info) :
 	                      g_file_info_get_icon (info);
 	if (icon != NULL)
-		ret = gedit_file_browser_utils_pixbuf_from_icon (icon, size);
+		ret = bedit_file_browser_utils_pixbuf_from_icon (icon, size);
 
 	g_object_unref (info);
 
@@ -137,7 +137,7 @@ gedit_file_browser_utils_pixbuf_from_file (GFile       *file,
 }
 
 gchar *
-gedit_file_browser_utils_symbolic_icon_name_from_file (GFile *file)
+bedit_file_browser_utils_symbolic_icon_name_from_file (GFile *file)
 {
 	GFileInfo *info;
 	GIcon *icon;
@@ -162,7 +162,7 @@ gedit_file_browser_utils_symbolic_icon_name_from_file (GFile *file)
 }
 
 gchar *
-gedit_file_browser_utils_name_from_themed_icon (GIcon *icon)
+bedit_file_browser_utils_name_from_themed_icon (GIcon *icon)
 {
 	GtkIconTheme *theme;
 	const gchar * const *names;
@@ -180,13 +180,13 @@ gedit_file_browser_utils_name_from_themed_icon (GIcon *icon)
 }
 
 gchar *
-gedit_file_browser_utils_file_basename (GFile *file)
+bedit_file_browser_utils_file_basename (GFile *file)
 {
-	return gedit_utils_basename_for_display (file);
+	return bedit_utils_basename_for_display (file);
 }
 
 gboolean
-gedit_file_browser_utils_confirmation_dialog (BeditWindow    *window,
+bedit_file_browser_utils_confirmation_dialog (BeditWindow    *window,
                                               GtkMessageType  type,
                                               gchar const    *message,
 		                              gchar const    *secondary,

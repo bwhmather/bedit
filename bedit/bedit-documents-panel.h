@@ -1,6 +1,6 @@
 /*
- * gedit-documents-panel.h
- * This file is part of gedit
+ * bedit-documents-panel.h
+ * This file is part of bedit
  *
  * Copyright (C) 2005 - Paolo Maggi
  *
@@ -23,15 +23,15 @@
 
 #include <gtk/gtk.h>
 
-#include <gedit/gedit-window.h>
+#include <bedit/bedit-window.h>
 
 G_BEGIN_DECLS
 
-#define GEDIT_TYPE_DOCUMENTS_PANEL (gedit_documents_panel_get_type())
+#define GEDIT_TYPE_DOCUMENTS_PANEL (bedit_documents_panel_get_type())
 
-G_DECLARE_FINAL_TYPE (BeditDocumentsPanel, gedit_documents_panel, GEDIT, DOCUMENTS_PANEL, GtkBox)
+G_DECLARE_FINAL_TYPE (BeditDocumentsPanel, bedit_documents_panel, GEDIT, DOCUMENTS_PANEL, GtkBox)
 
-GtkWidget	*gedit_documents_panel_new 	(BeditWindow *window);
+GtkWidget	*bedit_documents_panel_new 	(BeditWindow *window);
 
 G_END_DECLS
 

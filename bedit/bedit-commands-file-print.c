@@ -1,6 +1,6 @@
 /*
- * gedit-commands-file-print.c
- * This file is part of gedit
+ * bedit-commands-file-print.c
+ * This file is part of bedit
  *
  * Copyright (C) 1998, 1999 Alex Roberts, Evan Lawrence
  * Copyright (C) 2000, 2001 Chema Celorio, Paolo Maggi
@@ -20,29 +20,29 @@
  * along with this program; if not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "gedit-commands.h"
-#include "gedit-commands-private.h"
+#include "bedit-commands.h"
+#include "bedit-commands-private.h"
 
-#include "gedit-window.h"
-#include "gedit-tab.h"
-#include "gedit-tab-private.h"
-#include "gedit-debug.h"
+#include "bedit-window.h"
+#include "bedit-tab.h"
+#include "bedit-tab-private.h"
+#include "bedit-debug.h"
 
 void
-_gedit_cmd_file_print (GSimpleAction *action,
+_bedit_cmd_file_print (GSimpleAction *action,
                        GVariant      *parameter,
                        gpointer       user_data)
 {
 	BeditWindow *window = GEDIT_WINDOW (user_data);
 	BeditTab *tab;
 
-	gedit_debug (DEBUG_COMMANDS);
+	bedit_debug (DEBUG_COMMANDS);
 
-	tab = gedit_window_get_active_tab (window);
+	tab = bedit_window_get_active_tab (window);
 
 	if (tab != NULL)
 	{
-		_gedit_tab_print (tab);
+		_bedit_tab_print (tab);
 	}
 }
 

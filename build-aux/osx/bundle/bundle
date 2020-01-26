@@ -156,13 +156,13 @@ function cmd_make_fake() {
 
 	bin="$fake/Contents/MacOS/Bedit"
 
-	printf "#!/bin/bash\n\nexec $b run \"$source/gedit/gedit/gedit\"\n" > "$bin"
+	printf "#!/bin/bash\n\nexec $b run \"$source/bedit/bedit/bedit\"\n" > "$bin"
 	chmod u+x "$bin"
 
 	echo "APPL????" > "$fake/Contents/PkgInfo"
 
 	cp "$D/data/Info.plist" "$fake/Contents/"
-	cp "$D/data/gedit.icns" "$fake/Contents/Resources/"
+	cp "$D/data/bedit.icns" "$fake/Contents/Resources/"
 }
 
 function cmd_make() {
@@ -189,19 +189,19 @@ function cmd_make() {
 	echo "Removing unneeded files from bundle"
 
 	# Remove pyc and pyo files
-	for d in lib share/gedit/plugins; do
+	for d in lib share/bedit/plugins; do
 		find "$BUNDLE/Contents/Resources/$d/"* -type f -regex '.*\.py[oc]' -exec 'rm -f {}' 2>/dev/null
 		find "$BUNDLE/Contents/Resources/$d/"* -type d -name '__pycache__' -exec 'rmdir {}' 2>/dev/null
 	done
 
 	echo "Creating localized names..."
-	locales=$(find "$inst/share/locale" -name gedit.mo | sed 's/.*locale\/\([^\/]*\)\/.*/\1/g' | /usr/bin/grep -v @)
+	locales=$(find "$inst/share/locale" -name bedit.mo | sed 's/.*locale\/\([^\/]*\)\/.*/\1/g' | /usr/bin/grep -v @)
 
 	for locale in en $locales; do
 		printf "$locale "
 		ldir="$BUNDLE/Contents/Resources/$locale.lproj"
 
-		lname=$(LANG=$locale "$b" run gettext gedit "Text Editor")
+		lname=$(LANG=$locale "$b" run gettext bedit "Text Editor")
 
 		mkdir -p "$ldir"
 
@@ -228,7 +228,7 @@ function cmd_make() {
 		done
 
 		# Strip debug symbols from main binary
-		do_strip "$BUNDLE/Contents/MacOS/gedit-bin"
+		do_strip "$BUNDLE/Contents/MacOS/bedit-bin"
 	fi
 }
 

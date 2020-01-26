@@ -1,5 +1,5 @@
 /*
- * gedit-file-bookmarks-store.c - Bedit plugin providing easy file access
+ * bedit-file-bookmarks-store.c - Bedit plugin providing easy file access
  * from the sidepanel
  *
  * Copyright (C) 2006 - Jesse van den Kieboom <jesse@icecrew.nl>
@@ -21,10 +21,10 @@
 #include <string.h>
 #include <glib/gi18n.h>
 #include <gio/gio.h>
-#include <gedit/gedit-utils.h>
+#include <bedit/bedit-utils.h>
 
-#include "gedit-file-bookmarks-store.h"
-#include "gedit-file-browser-utils.h"
+#include "bedit-file-bookmarks-store.h"
+#include "bedit-file-browser-utils.h"
 
 struct _BeditFileBookmarksStorePrivate
 {
@@ -51,13 +51,13 @@ static gboolean find_with_flags       (GtkTreeModel            *model,
                                        guint                    notflags);
 
 G_DEFINE_DYNAMIC_TYPE_EXTENDED (BeditFileBookmarksStore,
-				gedit_file_bookmarks_store,
+				bedit_file_bookmarks_store,
 				GTK_TYPE_TREE_STORE,
 				0,
 				G_ADD_PRIVATE_DYNAMIC (BeditFileBookmarksStore))
 
 static void
-gedit_file_bookmarks_store_dispose (GObject *object)
+bedit_file_bookmarks_store_dispose (GObject *object)
 {
 	BeditFileBookmarksStore *obj = GEDIT_FILE_BOOKMARKS_STORE (object);
 
@@ -73,26 +73,26 @@ gedit_file_bookmarks_store_dispose (GObject *object)
 
 	g_clear_object (&obj->priv->bookmarks_monitor);
 
-	G_OBJECT_CLASS (gedit_file_bookmarks_store_parent_class)->dispose (object);
+	G_OBJECT_CLASS (bedit_file_bookmarks_store_parent_class)->dispose (object);
 }
 
 static void
-gedit_file_bookmarks_store_class_init (BeditFileBookmarksStoreClass *klass)
+bedit_file_bookmarks_store_class_init (BeditFileBookmarksStoreClass *klass)
 {
 	GObjectClass *object_class = G_OBJECT_CLASS (klass);
 
-	object_class->dispose = gedit_file_bookmarks_store_dispose;
+	object_class->dispose = bedit_file_bookmarks_store_dispose;
 }
 
 static void
-gedit_file_bookmarks_store_class_finalize (BeditFileBookmarksStoreClass *klass)
+bedit_file_bookmarks_store_class_finalize (BeditFileBookmarksStoreClass *klass)
 {
 }
 
 static void
-gedit_file_bookmarks_store_init (BeditFileBookmarksStore *obj)
+bedit_file_bookmarks_store_init (BeditFileBookmarksStore *obj)
 {
-	obj->priv = gedit_file_bookmarks_store_get_instance_private (obj);
+	obj->priv = bedit_file_bookmarks_store_get_instance_private (obj);
 }
 
 /* Private */
@@ -145,13 +145,13 @@ add_file (BeditFileBookmarksStore *model,
 	{
 		/* getting the icon is a sync get_info call, so we just do it for local files */
 		if (native)
-			icon_name = gedit_file_browser_utils_symbolic_icon_name_from_file (file);
+			icon_name = bedit_file_browser_utils_symbolic_icon_name_from_file (file);
 		else
 			icon_name = g_strdup ("folder-symbolic");
 	}
 
 	if (name == NULL)
-		newname = gedit_file_browser_utils_file_basename (file);
+		newname = bedit_file_browser_utils_file_basename (file);
 	else
 		newname = g_strdup (name);
 
@@ -252,7 +252,7 @@ get_fs_properties (gpointer   fs,
 	{
 		icon = g_drive_get_symbolic_icon (G_DRIVE (fs));
 		*name = g_drive_get_name (G_DRIVE (fs));
-		*icon_name = gedit_file_browser_utils_name_from_themed_icon (icon);
+		*icon_name = bedit_file_browser_utils_name_from_themed_icon (icon);
 
 		*flags |= GEDIT_FILE_BOOKMARKS_STORE_IS_DRIVE;
 	}
@@ -260,7 +260,7 @@ get_fs_properties (gpointer   fs,
 	{
 		icon = g_volume_get_symbolic_icon (G_VOLUME (fs));
 		*name = g_volume_get_name (G_VOLUME (fs));
-		*icon_name = gedit_file_browser_utils_name_from_themed_icon (icon);
+		*icon_name = bedit_file_browser_utils_name_from_themed_icon (icon);
 
 		*flags |= GEDIT_FILE_BOOKMARKS_STORE_IS_VOLUME;
 	}
@@ -268,7 +268,7 @@ get_fs_properties (gpointer   fs,
 	{
 		icon = g_mount_get_symbolic_icon (G_MOUNT (fs));
 		*name = g_mount_get_name (G_MOUNT (fs));
-		*icon_name = gedit_file_browser_utils_name_from_themed_icon (icon);
+		*icon_name = bedit_file_browser_utils_name_from_themed_icon (icon);
 
 		*flags |= GEDIT_FILE_BOOKMARKS_STORE_IS_MOUNT;
 	}
@@ -522,7 +522,7 @@ parse_bookmarks_file (BeditFileBookmarksStore *model,
 			/* the bookmarks file should contain valid
 			 * URIs, but paranoia is good */
 			location = g_file_new_for_uri (*line);
-			if (gedit_utils_is_valid_location (location))
+			if (bedit_utils_is_valid_location (location))
 			{
 				*added |= add_bookmark (model, name, *line);
 			}
@@ -791,7 +791,7 @@ initialize_fill (BeditFileBookmarksStore *model)
 
 /* Public */
 BeditFileBookmarksStore *
-gedit_file_bookmarks_store_new (void)
+bedit_file_bookmarks_store_new (void)
 {
 	BeditFileBookmarksStore *model;
 	GType column_types[] = {
@@ -820,7 +820,7 @@ gedit_file_bookmarks_store_new (void)
 }
 
 GFile *
-gedit_file_bookmarks_store_get_location (BeditFileBookmarksStore *model,
+bedit_file_bookmarks_store_get_location (BeditFileBookmarksStore *model,
 					 GtkTreeIter             *iter)
 {
 	GObject *obj;
@@ -860,7 +860,7 @@ gedit_file_bookmarks_store_get_location (BeditFileBookmarksStore *model,
 }
 
 void
-gedit_file_bookmarks_store_refresh (BeditFileBookmarksStore *model)
+bedit_file_bookmarks_store_refresh (BeditFileBookmarksStore *model)
 {
 	gtk_tree_store_clear (GTK_TREE_STORE (model));
 	initialize_fill (model);
@@ -912,9 +912,9 @@ on_bookmarks_file_changed (GFileMonitor            *monitor,
 }
 
 void
-_gedit_file_bookmarks_store_register_type (GTypeModule *type_module)
+_bedit_file_bookmarks_store_register_type (GTypeModule *type_module)
 {
-	gedit_file_bookmarks_store_register_type (type_module);
+	bedit_file_bookmarks_store_register_type (type_module);
 }
 
 /* ex:set ts=8 noet: */

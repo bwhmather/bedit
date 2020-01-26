@@ -1,5 +1,5 @@
-# translation of gedit.HEAD.he.po to Hebrew
-# translation of gedit.HEAD.po to Hebrew
+# translation of bedit.HEAD.he.po to Hebrew
+# translation of bedit.HEAD.po to Hebrew
 # This file is distributed under the same license as the PACKAGE package.
 # Copyright (C) 2005 THE PACKAGE'S COPYRIGHT HOLDER.
 # Meir Kriheli <meirkr@mksoft.co.il>, 2003.
@@ -10,7 +10,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: gedit.HEAD.he\n"
+"Project-Id-Version: bedit.HEAD.he\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-09-06 11:57+0300\n"
 "PO-Revision-Date: 2016-09-06 11:58+0300\n"
@@ -25,21 +25,21 @@ msgstr ""
 
 #: ../data/com.bwhmather.bedit.appdata.xml.in.h:1
 msgid ""
-"gedit is the official text editor of the GNOME desktop environment. While "
-"aiming at simplicity and ease of use, gedit is a powerful general purpose "
+"bedit is the official text editor of the GNOME desktop environment. While "
+"aiming at simplicity and ease of use, bedit is a powerful general purpose "
 "text editor."
 msgstr ""
-"‏gedit הוא עורך הטקסט הרשמי של סביבת שולחן העבודה GNOME. תוך שהוא שואף להיות "
-"קל ופשוט לשימוש, gedit הוא עורך טקסט רב עצמה."
+"‏bedit הוא עורך הטקסט הרשמי של סביבת שולחן העבודה GNOME. תוך שהוא שואף להיות "
+"קל ופשוט לשימוש, bedit הוא עורך טקסט רב עצמה."
 
 #: ../data/com.bwhmather.bedit.appdata.xml.in.h:2
 msgid ""
 "Whether you are writing the next bestseller, programming an innovative "
-"application, or simply taking some quick notes, gedit will be a reliable "
+"application, or simply taking some quick notes, bedit will be a reliable "
 "tool to accomplish your task."
 msgstr ""
 "בין אם אתה כותב את רב המכר הבא, מתכנת יישום חדשני או פשוט כותב כמה הערות "
-"קצרות, gedit יהיה כלי אמין להשגת מטרותיך."
+"קצרות, bedit יהיה כלי אמין להשגת מטרותיך."
 
 #: ../data/com.bwhmather.bedit.appdata.xml.in.h:3
 msgid ""
@@ -49,7 +49,7 @@ msgstr ""
 "תוספי מערכת גמישים מאפשרים לך להתאים את היישום לצרכיך ולסגל אותו למהלך "
 "העבודה שלך."
 
-#: ../data/com.bwhmather.bedit.desktop.in.in.h:1 ../gedit/gedit-print-job.c:730
+#: ../data/com.bwhmather.bedit.desktop.in.in.h:1 ../bedit/bedit-print-job.c:730
 msgid "Text Editor"
 msgstr "עורך טקסט"
 
@@ -58,8 +58,8 @@ msgid "Edit text files"
 msgstr "עריכת קובצי טקסט"
 
 #: ../data/com.bwhmather.bedit.desktop.in.in.h:3
-msgid "gedit Text Editor"
-msgstr "עורך הטקסט gedit"
+msgid "bedit Text Editor"
+msgstr "עורך הטקסט bedit"
 
 #: ../data/com.bwhmather.bedit.desktop.in.in.h:4
 msgid "Text;Editor;Plaintext;Write;"
@@ -80,12 +80,12 @@ msgstr "Use Default Font"
 #: ../data/com.bwhmather.bedit.gschema.xml.in.h:2
 msgid ""
 "Whether to use the system's default fixed width font for editing text "
-"instead of a font specific to gedit. If this option is turned off, then the "
+"instead of a font specific to bedit. If this option is turned off, then the "
 "font named in the \"Editor Font\" option will be used instead of the system "
 "font."
 msgstr ""
 "Whether to use the system's default fixed width font for editing text "
-"instead of a font specific to gedit. If this option is turned off, then the "
+"instead of a font specific to bedit. If this option is turned off, then the "
 "font named in the \"Editor Font\" option will be used instead of the system "
 "font."
 
@@ -118,9 +118,9 @@ msgid "Create Backup Copies"
 msgstr "Create Backup Copies"
 
 #: ../data/com.bwhmather.bedit.gschema.xml.in.h:9
-msgid "Whether gedit should create backup copies for the files it saves."
+msgid "Whether bedit should create backup copies for the files it saves."
 msgstr ""
-"Whether gedit should restore the previous cursor position when a file is "
+"Whether bedit should restore the previous cursor position when a file is "
 "loaded."
 
 #: ../data/com.bwhmather.bedit.gschema.xml.in.h:10
@@ -129,11 +129,11 @@ msgstr "Autosave"
 
 #: ../data/com.bwhmather.bedit.gschema.xml.in.h:11
 msgid ""
-"Whether gedit should automatically save modified files after a time "
+"Whether bedit should automatically save modified files after a time "
 "interval. You can set the time interval with the \"Autosave Interval\" "
 "option."
 msgstr ""
-"Whether gedit should automatically save modified files after a time "
+"Whether bedit should automatically save modified files after a time "
 "interval. You can set the time interval with the \"Autosave Interval\" "
 "option."
 
@@ -143,10 +143,10 @@ msgstr "Autosave Interval"
 
 #: ../data/com.bwhmather.bedit.gschema.xml.in.h:13
 msgid ""
-"Number of minutes after which gedit will automatically save modified files. "
+"Number of minutes after which bedit will automatically save modified files. "
 "This will only take effect if the \"Autosave\" option is turned on."
 msgstr ""
-"Number of minutes after which gedit will automatically save modified files. "
+"Number of minutes after which bedit will automatically save modified files. "
 "This will only take effect if the \"Autosave\" option is turned on."
 
 #: ../data/com.bwhmather.bedit.gschema.xml.in.h:14
@@ -155,10 +155,10 @@ msgstr "Maximum Number of Undo Actions"
 
 #: ../data/com.bwhmather.bedit.gschema.xml.in.h:15
 msgid ""
-"Maximum number of actions that gedit will be able to undo or redo. Use "
+"Maximum number of actions that bedit will be able to undo or redo. Use "
 "\"-1\" for unlimited number of actions."
 msgstr ""
-"Maximum number of actions that gedit will be able to undo or redo. Use "
+"Maximum number of actions that bedit will be able to undo or redo. Use "
 "\"-1\" for unlimited number of actions."
 
 #: ../data/com.bwhmather.bedit.gschema.xml.in.h:16
@@ -210,48 +210,48 @@ msgid "Insert spaces"
 msgstr "Insert spaces"
 
 #: ../data/com.bwhmather.bedit.gschema.xml.in.h:23
-msgid "Whether gedit should insert spaces instead of tabs."
-msgstr "Whether gedit should insert spaces instead of tabs."
+msgid "Whether bedit should insert spaces instead of tabs."
+msgstr "Whether bedit should insert spaces instead of tabs."
 
 #: ../data/com.bwhmather.bedit.gschema.xml.in.h:24
 msgid "Automatic indent"
 msgstr "Automatic indent"
 
 #: ../data/com.bwhmather.bedit.gschema.xml.in.h:25
-msgid "Whether gedit should enable automatic indentation."
-msgstr "Whether gedit should enable automatic indentation."
+msgid "Whether bedit should enable automatic indentation."
+msgstr "Whether bedit should enable automatic indentation."
 
 #: ../data/com.bwhmather.bedit.gschema.xml.in.h:26
 msgid "Display Line Numbers"
 msgstr "Display Line Numbers"
 
 #: ../data/com.bwhmather.bedit.gschema.xml.in.h:27
-msgid "Whether gedit should display line numbers in the editing area."
-msgstr "Whether gedit should display line numbers in the editing area."
+msgid "Whether bedit should display line numbers in the editing area."
+msgstr "Whether bedit should display line numbers in the editing area."
 
 #: ../data/com.bwhmather.bedit.gschema.xml.in.h:28
 msgid "Highlight Current Line"
 msgstr "Highlight Current Line"
 
 #: ../data/com.bwhmather.bedit.gschema.xml.in.h:29
-msgid "Whether gedit should highlight the current line."
-msgstr "Whether gedit should highlight the current line."
+msgid "Whether bedit should highlight the current line."
+msgstr "Whether bedit should highlight the current line."
 
 #: ../data/com.bwhmather.bedit.gschema.xml.in.h:30
 msgid "Highlight Matching Brackets"
 msgstr "Highlight Matching Brackets"
 
 #: ../data/com.bwhmather.bedit.gschema.xml.in.h:31
-msgid "Whether gedit should highlight matching brackets."
-msgstr "Whether gedit should highlight matching brackets."
+msgid "Whether bedit should highlight matching brackets."
+msgstr "Whether bedit should highlight matching brackets."
 
 #: ../data/com.bwhmather.bedit.gschema.xml.in.h:32
 msgid "Display Right Margin"
 msgstr "Display Right Margin"
 
 #: ../data/com.bwhmather.bedit.gschema.xml.in.h:33
-msgid "Whether gedit should display the right margin in the editing area."
-msgstr "Whether gedit should display the right margin in the editing area."
+msgid "Whether bedit should display the right margin in the editing area."
+msgstr "Whether bedit should display the right margin in the editing area."
 
 #: ../data/com.bwhmather.bedit.gschema.xml.in.h:34
 msgid "Right Margin Position"
@@ -266,8 +266,8 @@ msgid "Display Overview Map"
 msgstr "Display Overview Map"
 
 #: ../data/com.bwhmather.bedit.gschema.xml.in.h:37
-msgid "Whether gedit should display the overview map for the document."
-msgstr "Whether gedit should display the overview map for the document."
+msgid "Whether bedit should display the overview map for the document."
+msgstr "Whether bedit should display the overview map for the document."
 
 #: ../data/com.bwhmather.bedit.gschema.xml.in.h:38
 msgid "Document background pattern type"
@@ -305,10 +305,10 @@ msgstr "Restore Previous Cursor Position"
 
 #: ../data/com.bwhmather.bedit.gschema.xml.in.h:43
 msgid ""
-"Whether gedit should restore the previous cursor position when a file is "
+"Whether bedit should restore the previous cursor position when a file is "
 "loaded."
 msgstr ""
-"Whether gedit should restore the previous cursor position when a file is "
+"Whether bedit should restore the previous cursor position when a file is "
 "loaded."
 
 #: ../data/com.bwhmather.bedit.gschema.xml.in.h:44
@@ -316,8 +316,8 @@ msgid "Enable Syntax Highlighting"
 msgstr "Enable Syntax Highlighting"
 
 #: ../data/com.bwhmather.bedit.gschema.xml.in.h:45
-msgid "Whether gedit should enable syntax highlighting."
-msgstr "Whether gedit should enable syntax highlighting."
+msgid "Whether bedit should enable syntax highlighting."
+msgstr "Whether bedit should enable syntax highlighting."
 
 #: ../data/com.bwhmather.bedit.gschema.xml.in.h:46
 msgid "Enable Search Highlighting"
@@ -325,9 +325,9 @@ msgstr "Enable Search Highlighting"
 
 #: ../data/com.bwhmather.bedit.gschema.xml.in.h:47
 msgid ""
-"Whether gedit should highlight all the occurrences of the searched text."
+"Whether bedit should highlight all the occurrences of the searched text."
 msgstr ""
-"Whether gedit should highlight all the occurrences of the searched text."
+"Whether bedit should highlight all the occurrences of the searched text."
 
 #: ../data/com.bwhmather.bedit.gschema.xml.in.h:48
 msgid "Ensure Trailing Newline"
@@ -335,9 +335,9 @@ msgstr "Ensure Trailing Newline"
 
 #: ../data/com.bwhmather.bedit.gschema.xml.in.h:49
 msgid ""
-"Whether gedit will ensure that documents always end with a trailing newline."
+"Whether bedit will ensure that documents always end with a trailing newline."
 msgstr ""
-"Whether gedit will ensure that documents always end with a trailing newline."
+"Whether bedit will ensure that documents always end with a trailing newline."
 
 #: ../data/com.bwhmather.bedit.gschema.xml.in.h:50
 msgid "Toolbar is Visible"
@@ -400,18 +400,18 @@ msgid "Print Syntax Highlighting"
 msgstr "Print Syntax Highlighting"
 
 #: ../data/com.bwhmather.bedit.gschema.xml.in.h:61
-msgid "Whether gedit should print syntax highlighting when printing documents."
+msgid "Whether bedit should print syntax highlighting when printing documents."
 msgstr ""
-"Whether gedit should print syntax highlighting when printing documents."
+"Whether bedit should print syntax highlighting when printing documents."
 
 #: ../data/com.bwhmather.bedit.gschema.xml.in.h:62
 msgid "Print Header"
 msgstr "Print Header"
 
 #: ../data/com.bwhmather.bedit.gschema.xml.in.h:63
-msgid "Whether gedit should include a document header when printing documents."
+msgid "Whether bedit should include a document header when printing documents."
 msgstr ""
-"Whether gedit should include a document header when printing documents."
+"Whether bedit should include a document header when printing documents."
 
 #: ../data/com.bwhmather.bedit.gschema.xml.in.h:64
 msgid "Printing Line Wrapping Mode"
@@ -436,11 +436,11 @@ msgstr "Print Line Numbers"
 #: ../data/com.bwhmather.bedit.gschema.xml.in.h:67
 msgid ""
 "If this value is 0, then no line numbers will be inserted when printing a "
-"document. Otherwise, gedit will print line numbers every such number of "
+"document. Otherwise, bedit will print line numbers every such number of "
 "lines."
 msgstr ""
 "If this value is 0, then no line numbers will be inserted when printing a "
-"document. Otherwise, gedit will print line numbers every such number of "
+"document. Otherwise, bedit will print line numbers every such number of "
 "lines."
 
 #: ../data/com.bwhmather.bedit.gschema.xml.in.h:68
@@ -530,12 +530,12 @@ msgid ""
 "List of candidate encodings shown in the Character Encoding menu in the open/"
 "save file chooser. \"CURRENT\" represents the current locale encoding. Only "
 "recognized encodings are used. The default value is the empty list, in which "
-"case gedit will choose good defaults depending on the country and language."
+"case bedit will choose good defaults depending on the country and language."
 msgstr ""
 "List of candidate encodings shown in the Character Encoding menu in the open/"
 "save file chooser. \"CURRENT\" represents the current locale encoding. Only "
 "recognized encodings are used. The default value is the empty list, in which "
-"case gedit will choose good defaults depending on the country and language."
+"case bedit will choose good defaults depending on the country and language."
 
 #: ../data/com.bwhmather.bedit.gschema.xml.in.h:87
 msgid "Active plugins"
@@ -544,20 +544,20 @@ msgstr "Active plugins"
 #: ../data/com.bwhmather.bedit.gschema.xml.in.h:88
 msgid ""
 "List of active plugins. It contains the \"Location\" of the active plugins. "
-"See the .gedit-plugin file for obtaining the \"Location\" of a given plugin."
+"See the .bedit-plugin file for obtaining the \"Location\" of a given plugin."
 msgstr ""
 "List of active plugins. It contains the \"Location\" of the active plugins. "
-"See the .gedit-plugin file for obtaining the \"Location\" of a given plugin."
+"See the .bedit-plugin file for obtaining the \"Location\" of a given plugin."
 
-#: ../gedit/gedit-app.c:110
+#: ../bedit/bedit-app.c:110
 msgid "Show the application's version"
 msgstr "Show the application's version"
 
-#: ../gedit/gedit-app.c:116
+#: ../bedit/bedit-app.c:116
 msgid "Display list of possible values for the encoding option"
 msgstr "Display list of possible values for the encoding option"
 
-#: ../gedit/gedit-app.c:123
+#: ../bedit/bedit-app.c:123
 msgid ""
 "Set the character encoding to be used to open the files listed on the "
 "command line"
@@ -565,79 +565,79 @@ msgstr ""
 "Set the character encoding to be used to open the files listed on the "
 "command line"
 
-#: ../gedit/gedit-app.c:124
+#: ../bedit/bedit-app.c:124
 msgid "ENCODING"
 msgstr "ENCODING"
 
-#: ../gedit/gedit-app.c:130
-msgid "Create a new top-level window in an existing instance of gedit"
-msgstr "Create a new top-level window in an existing instance of gedit"
+#: ../bedit/bedit-app.c:130
+msgid "Create a new top-level window in an existing instance of bedit"
+msgstr "Create a new top-level window in an existing instance of bedit"
 
-#: ../gedit/gedit-app.c:137
-msgid "Create a new document in an existing instance of gedit"
-msgstr "Create a new document in an existing instance of gedit"
+#: ../bedit/bedit-app.c:137
+msgid "Create a new document in an existing instance of bedit"
+msgstr "Create a new document in an existing instance of bedit"
 
-#: ../gedit/gedit-app.c:144
+#: ../bedit/bedit-app.c:144
 msgid "Open files and block process until files are closed"
 msgstr "Open files and block process until files are closed"
 
-#: ../gedit/gedit-app.c:151
-msgid "Run gedit in standalone mode"
-msgstr "Run gedit in standalone mode"
+#: ../bedit/bedit-app.c:151
+msgid "Run bedit in standalone mode"
+msgstr "Run bedit in standalone mode"
 
-#: ../gedit/gedit-app.c:158
+#: ../bedit/bedit-app.c:158
 msgid "[FILE...] [+LINE[:COLUMN]]"
 msgstr "[FILE...] [+LINE[:COLUMN]]"
 
-#: ../gedit/gedit-app.c:273
+#: ../bedit/bedit-app.c:273
 msgid "There was an error displaying the help."
 msgstr "ארעה שגיאה בהצגת העזרה."
 
-#: ../gedit/gedit-app.c:967
+#: ../bedit/bedit-app.c:967
 #, c-format
 msgid "%s: invalid encoding."
 msgstr "%s: invalid encoding."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:277
+#: ../bedit/bedit-close-confirmation-dialog.c:277
 msgid "Close _without Saving"
 msgstr "סגירה _ללא שמירה"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:278
-#: ../gedit/gedit-commands-file.c:462 ../gedit/gedit-commands-file.c:567
-#: ../gedit/gedit-commands-file.c:643 ../gedit/gedit-commands-file.c:854
-#: ../gedit/gedit-commands-file.c:1568 ../gedit/gedit-encodings-dialog.c:194
-#: ../gedit/gedit-io-error-info-bar.c:130
-#: ../gedit/gedit-io-error-info-bar.c:511
-#: ../gedit/gedit-preferences-dialog.c:825
-#: ../gedit/gedit-progress-info-bar.c:49
-#: ../gedit/resources/ui/gedit-encodings-dialog.ui.h:2
-#: ../gedit/resources/ui/gedit-highlight-mode-dialog.ui.h:2
-#: ../plugins/filebrowser/gedit-file-browser-utils.c:170
+#: ../bedit/bedit-close-confirmation-dialog.c:278
+#: ../bedit/bedit-commands-file.c:462 ../bedit/bedit-commands-file.c:567
+#: ../bedit/bedit-commands-file.c:643 ../bedit/bedit-commands-file.c:854
+#: ../bedit/bedit-commands-file.c:1568 ../bedit/bedit-encodings-dialog.c:194
+#: ../bedit/bedit-io-error-info-bar.c:130
+#: ../bedit/bedit-io-error-info-bar.c:511
+#: ../bedit/bedit-preferences-dialog.c:825
+#: ../bedit/bedit-progress-info-bar.c:49
+#: ../bedit/resources/ui/bedit-encodings-dialog.ui.h:2
+#: ../bedit/resources/ui/bedit-highlight-mode-dialog.ui.h:2
+#: ../plugins/filebrowser/bedit-file-browser-utils.c:170
 #: ../plugins/quickopen/quickopen/popup.py:38
 #: ../plugins/snippets/snippets/manager.py:781
 #: ../plugins/snippets/snippets/manager.py:866
 #: ../plugins/snippets/snippets/manager.py:904
-#: ../plugins/sort/resources/ui/gedit-sort-plugin.ui.h:6
-#: ../plugins/time/resources/ui/gedit-time-dialog.ui.h:8
+#: ../plugins/sort/resources/ui/bedit-sort-plugin.ui.h:6
+#: ../plugins/time/resources/ui/bedit-time-dialog.ui.h:8
 msgid "_Cancel"
 msgstr "_ביטול"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:306
-#: ../gedit/resources/gtk/menus.ui.h:10
-#: ../gedit/resources/gtk/menus-traditional.ui.h:4
+#: ../bedit/bedit-close-confirmation-dialog.c:306
+#: ../bedit/resources/gtk/menus.ui.h:10
+#: ../bedit/resources/gtk/menus-traditional.ui.h:4
 msgid "_Save As…"
 msgstr "שמירה _בשם…"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:306
-#: ../gedit/gedit-commands-file.c:855
-#: ../gedit/resources/gtk/menus-common.ui.h:18
-#: ../gedit/resources/ui/gedit-window.ui.h:7
+#: ../bedit/bedit-close-confirmation-dialog.c:306
+#: ../bedit/bedit-commands-file.c:855
+#: ../bedit/resources/gtk/menus-common.ui.h:18
+#: ../bedit/resources/ui/bedit-window.ui.h:7
 #: ../plugins/snippets/snippets/manager.py:867
 #: ../plugins/snippets/snippets/manager.py:905
 msgid "_Save"
 msgstr "_שמירה"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:324
+#: ../bedit/bedit-close-confirmation-dialog.c:324
 #, c-format
 msgid ""
 "If you don't save, changes from the last %ld second will be permanently lost."
@@ -647,12 +647,12 @@ msgid_plural ""
 msgstr[0] "אם לא תתבצע שמירה, כל השינויים מהשנייה האחרונה יאבדו."
 msgstr[1] "אם לא תתבצע שמירה, כל השינויים מ־%ld השניות האחרונות יאבדו."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:333
+#: ../bedit/bedit-close-confirmation-dialog.c:333
 msgid ""
 "If you don't save, changes from the last minute will be permanently lost."
 msgstr "אם לא תתבצע שמירה, שינויים מהדקה האחרונה יאבדו."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:339
+#: ../bedit/bedit-close-confirmation-dialog.c:339
 #, c-format
 msgid ""
 "If you don't save, changes from the last minute and %ld second will be "
@@ -663,7 +663,7 @@ msgid_plural ""
 msgstr[0] "אם לא תתבצע שמירה, כל השינויים מהדקה והשנייה האחרונות יאבדו."
 msgstr[1] "אם לא תתבצע שמירה, כל השינויים מהדקה ו־%ld השניות האחרונות יאבדו."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:349
+#: ../bedit/bedit-close-confirmation-dialog.c:349
 #, c-format
 msgid ""
 "If you don't save, changes from the last %ld minute will be permanently lost."
@@ -673,11 +673,11 @@ msgid_plural ""
 msgstr[0] "אם לא תתבצע שמירה, השינויים מהדקה האחרונה יאבדו."
 msgstr[1] "אם לא תתבצע שמירה, השינויים מ־%ld הדקות האחרונות יאבדו."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:364
+#: ../bedit/bedit-close-confirmation-dialog.c:364
 msgid "If you don't save, changes from the last hour will be permanently lost."
 msgstr "אם לא תתבצע שמירה, השינויים מהשעה האחרונה יאבדו."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:370
+#: ../bedit/bedit-close-confirmation-dialog.c:370
 #, c-format
 msgid ""
 "If you don't save, changes from the last hour and %d minute will be "
@@ -688,7 +688,7 @@ msgid_plural ""
 msgstr[0] "אם לא תתבצע שמירה, שינויים מהשעה והדקה האחרונות יאבדו."
 msgstr[1] "אם לא תתבצע שמירה, השינויים מהשעה ו־%d הדקות האחרונות יאבדו."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:385
+#: ../bedit/bedit-close-confirmation-dialog.c:385
 #, c-format
 msgid ""
 "If you don't save, changes from the last %d hour will be permanently lost."
@@ -697,29 +697,29 @@ msgid_plural ""
 msgstr[0] "אם לא תתבצע שמירה, השינויים מהשעה האחרונה יאבדו."
 msgstr[1] "אם לא תתבצע שמירה, השינויים מ־%d השעות האחרונות יאבדו."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:414
+#: ../bedit/bedit-close-confirmation-dialog.c:414
 #, c-format
 msgid "Changes to document “%s” will be permanently lost."
 msgstr "השינויים שנערכו במסמך „%s“ ילכו לאיבוד."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:419
+#: ../bedit/bedit-close-confirmation-dialog.c:419
 #, c-format
 msgid "Save changes to document “%s” before closing?"
 msgstr "האם לשמור את השינויים למסמך „%s“ לפני הסגירה?"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:434
-#: ../gedit/gedit-close-confirmation-dialog.c:558
+#: ../bedit/bedit-close-confirmation-dialog.c:434
+#: ../bedit/bedit-close-confirmation-dialog.c:558
 msgid "Saving has been disabled by the system administrator."
 msgstr "אפשרות השמירה בוטלה על ידי מנהל מערכת."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:500
+#: ../bedit/bedit-close-confirmation-dialog.c:500
 #, c-format
 msgid "Changes to %d document will be permanently lost."
 msgid_plural "Changes to %d documents will be permanently lost."
 msgstr[0] "השינויים למסמך אחד יאבדו."
 msgstr[1] "השינויים ל־%d מסמכים יאבדו."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:508
+#: ../bedit/bedit-close-confirmation-dialog.c:508
 #, c-format
 msgid "There is %d document with unsaved changes. Save changes before closing?"
 msgid_plural ""
@@ -728,25 +728,25 @@ msgstr[0] "יש מסמך עם שינויים לא שמורים. האם לשמו�
 msgstr[1] ""
 "יש %d מסמכים עם שינויים לא שמורים. האם לשמור את השינויים לפני הסגירה?"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:534
+#: ../bedit/bedit-close-confirmation-dialog.c:534
 msgid "Docum_ents with unsaved changes:"
 msgstr "מסמכים עם _שינויים לא שמורים:"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:538
+#: ../bedit/bedit-close-confirmation-dialog.c:538
 msgid "S_elect the documents you want to save:"
 msgstr "נא ל_בחור את הקובץ שברצונך לשמור:"
 
 #  Secondary label
-#: ../gedit/gedit-close-confirmation-dialog.c:562
+#: ../bedit/bedit-close-confirmation-dialog.c:562
 msgid "If you don't save, all your changes will be permanently lost."
 msgstr "אם לא תתבצע שמירה, כל השינויים יאבדו."
 
-#: ../gedit/gedit-commands-file.c:261
+#: ../bedit/bedit-commands-file.c:261
 #, c-format
 msgid "Loading file '%s'…"
 msgstr "הקובץ '%s' בטעינה…"
 
-#: ../gedit/gedit-commands-file.c:270
+#: ../bedit/bedit-commands-file.c:270
 #, c-format
 msgid "Loading %d file…"
 msgid_plural "Loading %d files…"
@@ -754,86 +754,86 @@ msgstr[0] "קובץ אחד בטעינה…"
 msgstr[1] "%d קבצים בטעינה…"
 
 #. Translators: "Open" is the title of the file chooser window.
-#: ../gedit/gedit-commands-file.c:456
+#: ../bedit/bedit-commands-file.c:456
 msgctxt "window title"
 msgid "Open"
 msgstr "פתיחה"
 
-#: ../gedit/gedit-commands-file.c:463
-#: ../gedit/resources/gtk/menus-common.ui.h:15
-#: ../gedit/resources/ui/gedit-window.ui.h:3
-#: ../plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui.h:1
+#: ../bedit/bedit-commands-file.c:463
+#: ../bedit/resources/gtk/menus-common.ui.h:15
+#: ../bedit/resources/ui/bedit-window.ui.h:3
+#: ../plugins/filebrowser/resources/ui/bedit-file-browser-menus.ui.h:1
 #: ../plugins/quickopen/quickopen/popup.py:39
 #: ../plugins/snippets/snippets/manager.py:782
 msgid "_Open"
 msgstr "_פתיחה"
 
-#: ../gedit/gedit-commands-file.c:558
+#: ../bedit/bedit-commands-file.c:558
 #, c-format
 msgid "The file \"%s\" is read-only."
 msgstr "הקובץ \"%s\" הנו לקריאה בלבד."
 
-#: ../gedit/gedit-commands-file.c:563
+#: ../bedit/bedit-commands-file.c:563
 msgid "Do you want to try to replace it with the one you are saving?"
 msgstr "האם ברצונך לנסות להחליפו עם הקובץ שנשמר?"
 
-#: ../gedit/gedit-commands-file.c:568
-#: ../gedit/resources/ui/gedit-replace-dialog.ui.h:4
+#: ../bedit/bedit-commands-file.c:568
+#: ../bedit/resources/ui/bedit-replace-dialog.ui.h:4
 msgid "_Replace"
 msgstr "ה_חלפה"
 
-#: ../gedit/gedit-commands-file.c:608
+#: ../bedit/bedit-commands-file.c:608
 msgid "Save the file using compression?"
 msgstr "האם לשמור את הקובץ באמצעות דחיסה?"
 
-#: ../gedit/gedit-commands-file.c:612
+#: ../bedit/bedit-commands-file.c:612
 msgid "Save the file as plain text?"
 msgstr "האם לשמור את הקובץ כקובץ טקסט פשוט?"
 
-#: ../gedit/gedit-commands-file.c:625
+#: ../bedit/bedit-commands-file.c:625
 #, c-format
 msgid ""
 "The file \"%s\" was previously saved as plain text and will now be saved "
 "using compression."
 msgstr "הקובץ \"%s\" נשמר בעבר כקובץ טקסט פשוט וכעת ישמר באמצעות דחיסה."
 
-#: ../gedit/gedit-commands-file.c:629
+#: ../bedit/bedit-commands-file.c:629
 msgid "_Save Using Compression"
 msgstr "שמירה באמצעות _דחיסה"
 
-#: ../gedit/gedit-commands-file.c:634
+#: ../bedit/bedit-commands-file.c:634
 #, c-format
 msgid ""
 "The file \"%s\" was previously saved using compression and will now be saved "
 "as plain text."
 msgstr "הקובץ \"%s\" נשמר בעבר באמצעות דחיסה וכעת ישמר כקובץ טקסט פשוט."
 
-#: ../gedit/gedit-commands-file.c:637
+#: ../bedit/bedit-commands-file.c:637
 msgid "_Save As Plain Text"
 msgstr "שמירה כ_טקסט פשוט"
 
-#: ../gedit/gedit-commands-file.c:752 ../gedit/gedit-commands-file.c:1019
+#: ../bedit/bedit-commands-file.c:752 ../bedit/bedit-commands-file.c:1019
 #, c-format
 msgid "Saving file '%s'…"
 msgstr "הקובץ '%s' נשמר…"
 
 #. Translators: "Save As" is the title of the file chooser window.
-#: ../gedit/gedit-commands-file.c:847
+#: ../bedit/bedit-commands-file.c:847
 msgctxt "window title"
 msgid "Save As"
 msgstr "שמירה בשם"
 
-#: ../gedit/gedit-commands-file.c:1429
+#: ../bedit/bedit-commands-file.c:1429
 #, c-format
 msgid "Reverting the document '%s'…"
 msgstr "המסמך '%s' משוחזר…"
 
-#: ../gedit/gedit-commands-file.c:1476
+#: ../bedit/bedit-commands-file.c:1476
 #, c-format
 msgid "Revert unsaved changes to document '%s'?"
 msgstr "האם לבטל את השינויים שלא נשמרו במסמך '%s'?"
 
-#: ../gedit/gedit-commands-file.c:1485
+#: ../bedit/bedit-commands-file.c:1485
 #, c-format
 msgid ""
 "Changes made to the document in the last %ld second will be permanently lost."
@@ -843,12 +843,12 @@ msgid_plural ""
 msgstr[0] "השינויים שנערכו במסמך בשנייה האחרונה יאבדו."
 msgstr[1] "השינויים שנערכו במסמך ב־%ld השניות האחרונות יאבדו."
 
-#: ../gedit/gedit-commands-file.c:1494
+#: ../bedit/bedit-commands-file.c:1494
 msgid ""
 "Changes made to the document in the last minute will be permanently lost."
 msgstr "השינויים שנערכו במסמך בדקה האחרונה יאבדו."
 
-#: ../gedit/gedit-commands-file.c:1500
+#: ../bedit/bedit-commands-file.c:1500
 #, c-format
 msgid ""
 "Changes made to the document in the last minute and %ld second will be "
@@ -859,7 +859,7 @@ msgid_plural ""
 msgstr[0] "השינויים שנערכו במסמך בדקה והשנייה האחרונות יאבדו."
 msgstr[1] "השינויים שנערכו במסמך בדקה ו־%ld השניות האחרונות יאבדו."
 
-#: ../gedit/gedit-commands-file.c:1510
+#: ../bedit/bedit-commands-file.c:1510
 #, c-format
 msgid ""
 "Changes made to the document in the last %ld minute will be permanently lost."
@@ -869,11 +869,11 @@ msgid_plural ""
 msgstr[0] "השינויים שנערכו במסמך בדקה האחרונה יאבדו."
 msgstr[1] "השינויים שנערכו במסמך ב־%ld הדקות האחרונות יאבדו."
 
-#: ../gedit/gedit-commands-file.c:1525
+#: ../bedit/bedit-commands-file.c:1525
 msgid "Changes made to the document in the last hour will be permanently lost."
 msgstr "השינויים שנערכו במסמך בשעה האחרונה יאבדו."
 
-#: ../gedit/gedit-commands-file.c:1531
+#: ../bedit/bedit-commands-file.c:1531
 #, c-format
 msgid ""
 "Changes made to the document in the last hour and %d minute will be "
@@ -884,7 +884,7 @@ msgid_plural ""
 msgstr[0] "השינויים שנערכו במסמך בשעה ובדקה האחרונות יאבדו."
 msgstr[1] "השינויים שנערכו במסמך בשעה וב־%d הדקות האחרונות יאבדו."
 
-#: ../gedit/gedit-commands-file.c:1546
+#: ../bedit/bedit-commands-file.c:1546
 #, c-format
 msgid ""
 "Changes made to the document in the last %d hour will be permanently lost."
@@ -893,15 +893,15 @@ msgid_plural ""
 msgstr[0] "השינויים שנערכו במסמך בשעה האחרונה יאבדו."
 msgstr[1] "השינויים שנערכו במסמך ב־%d השעות האחרונות יאבדו."
 
-#: ../gedit/gedit-commands-file.c:1569
+#: ../bedit/bedit-commands-file.c:1569
 msgid "_Revert"
 msgstr "_שחזור"
 
-#: ../gedit/gedit-commands-help.c:110
-msgid "gedit is a small and lightweight text editor for the GNOME Desktop"
-msgstr "‏gedit הינו עורך טקסט קטן וקל עבור סביבת Gnome"
+#: ../bedit/bedit-commands-help.c:110
+msgid "bedit is a small and lightweight text editor for the GNOME Desktop"
+msgstr "‏bedit הינו עורך טקסט קטן וקל עבור סביבת Gnome"
 
-#: ../gedit/gedit-commands-help.c:132
+#: ../bedit/bedit-commands-help.c:132
 msgid "translator-credits"
 msgstr ""
 "מאיר קריחלי <meir@mksoft.co.il>\n"
@@ -914,110 +914,110 @@ msgstr ""
 "מיזם תרגום GNOME לעברית:\n"
 "‏http://gnome-il.berlios.de"
 
-#: ../gedit/gedit-commands-search.c:107
+#: ../bedit/bedit-commands-search.c:107
 #, c-format
 msgid "Found and replaced %d occurrence"
 msgid_plural "Found and replaced %d occurrences"
 msgstr[0] "מופע אחד נמצא והוחלף"
 msgstr[1] "%d מופעים נמצאו והוחלפו"
 
-#: ../gedit/gedit-commands-search.c:116
+#: ../bedit/bedit-commands-search.c:116
 msgid "Found and replaced one occurrence"
 msgstr "מופע אחד נמצא והוחלף"
 
 #. Translators: %s is replaced by the text
 #. entered by the user in the search box
-#: ../gedit/gedit-commands-search.c:142
+#: ../bedit/bedit-commands-search.c:142
 #, c-format
 msgid "\"%s\" not found"
 msgstr "‏\"%s\" לא נמצא"
 
-#: ../gedit/gedit-document.c:1103 ../gedit/gedit-document.c:1136
+#: ../bedit/bedit-document.c:1103 ../bedit/bedit-document.c:1136
 #, c-format
 msgid "Untitled Document %d"
 msgstr "מסמך שלא נשמר %d"
 
-#: ../gedit/gedit-documents-panel.c:399
+#: ../bedit/bedit-documents-panel.c:399
 #, c-format
 msgid "Tab Group %i"
 msgstr "קבוצת לשוניות %i"
 
-#: ../gedit/gedit-documents-panel.c:499 ../gedit/gedit-window.c:1161
-#: ../gedit/gedit-window.c:1167 ../gedit/gedit-window.c:1175
+#: ../bedit/bedit-documents-panel.c:499 ../bedit/bedit-window.c:1161
+#: ../bedit/bedit-window.c:1167 ../bedit/bedit-window.c:1175
 msgid "Read-Only"
 msgstr "(קריאה בלבד)"
 
-#: ../gedit/gedit-encodings-combo-box.c:299
-#: ../gedit/gedit-file-chooser-dialog-osx.c:565
+#: ../bedit/bedit-encodings-combo-box.c:299
+#: ../bedit/bedit-file-chooser-dialog-osx.c:565
 msgid "Automatically Detected"
 msgstr "זיהוי אוטומטי"
 
-#: ../gedit/gedit-encodings-combo-box.c:328
-#: ../gedit/gedit-file-chooser-dialog-osx.c:574
+#: ../bedit/bedit-encodings-combo-box.c:328
+#: ../bedit/bedit-file-chooser-dialog-osx.c:574
 msgid "Add or Remove..."
 msgstr "הוספה או הסרה..."
 
-#: ../gedit/gedit-encoding-items.c:92
+#: ../bedit/bedit-encoding-items.c:92
 #, c-format
 msgid "Current Locale (%s)"
 msgstr "מיקום נוכחי (%s)"
 
-#: ../gedit/gedit-encodings-dialog.c:95
+#: ../bedit/bedit-encodings-dialog.c:95
 #, c-format
 msgid "%s (Current Locale)"
 msgstr "‏%s ‏(מיקום נוכחי)"
 
-#: ../gedit/gedit-encodings-dialog.c:190
+#: ../bedit/bedit-encodings-dialog.c:190
 msgid "Do you really want to reset the character encodings' preferences?"
 msgstr "האם אכן ברצונך לאפס את העדפות קידוד תווים?"
 
 #. Reset button
-#: ../gedit/gedit-encodings-dialog.c:195 ../gedit/gedit-encodings-dialog.c:820
+#: ../bedit/bedit-encodings-dialog.c:195 ../bedit/bedit-encodings-dialog.c:820
 msgid "_Reset"
 msgstr "_איפוס"
 
-#: ../gedit/gedit-encodings-dialog.c:731
+#: ../bedit/bedit-encodings-dialog.c:731
 msgid "Add"
 msgstr "הוספה"
 
-#: ../gedit/gedit-encodings-dialog.c:774
+#: ../bedit/bedit-encodings-dialog.c:774
 msgid "Remove"
 msgstr "הסרה"
 
-#: ../gedit/gedit-encodings-dialog.c:785
+#: ../bedit/bedit-encodings-dialog.c:785
 msgid "Move to a higher priority"
 msgstr "העברה לעדיפות גבוהה יותר"
 
-#: ../gedit/gedit-encodings-dialog.c:796
+#: ../bedit/bedit-encodings-dialog.c:796
 msgid "Move to a lower priority"
 msgstr "העברה לעדיפות נמוכה יותר"
 
-#: ../gedit/gedit-file-chooser-dialog-gtk.c:41
-#: ../gedit/gedit-preferences-dialog.c:834
+#: ../bedit/bedit-file-chooser-dialog-gtk.c:41
+#: ../bedit/bedit-preferences-dialog.c:834
 msgid "All Files"
 msgstr "כל הקבצים"
 
-#: ../gedit/gedit-file-chooser-dialog-gtk.c:42
+#: ../bedit/bedit-file-chooser-dialog-gtk.c:42
 msgid "All Text Files"
 msgstr "כל קובצי הטקסט"
 
-#: ../gedit/gedit-file-chooser-dialog-gtk.c:307
+#: ../bedit/bedit-file-chooser-dialog-gtk.c:307
 msgid "C_haracter Encoding:"
 msgstr "קידוד _תווים:"
 
-#: ../gedit/gedit-file-chooser-dialog-gtk.c:366
+#: ../bedit/bedit-file-chooser-dialog-gtk.c:366
 msgid "L_ine Ending:"
 msgstr "_סיום שורה:"
 
-#: ../gedit/gedit-file-chooser-dialog-osx.c:547
+#: ../bedit/bedit-file-chooser-dialog-osx.c:547
 msgid "Character Encoding:"
 msgstr "קידוד תווים:"
 
-#: ../gedit/gedit-file-chooser-dialog-osx.c:620
+#: ../bedit/bedit-file-chooser-dialog-osx.c:620
 msgid "Line Ending:"
 msgstr "סיום שורה:"
 
-#: ../gedit/gedit-highlight-mode-selector.c:269 ../gedit/gedit-window.c:1245
+#: ../bedit/bedit-highlight-mode-selector.c:269 ../bedit/bedit-window.c:1245
 #: ../plugins/externaltools/tools/manager.py:108
 #: ../plugins/externaltools/tools/manager.py:317
 #: ../plugins/externaltools/tools/manager.py:433
@@ -1025,47 +1025,47 @@ msgstr "סיום שורה:"
 msgid "Plain Text"
 msgstr "טקסט פשוט"
 
-#: ../gedit/gedit-io-error-info-bar.c:143
-#: ../gedit/gedit-io-error-info-bar.c:491
+#: ../bedit/bedit-io-error-info-bar.c:143
+#: ../bedit/bedit-io-error-info-bar.c:491
 msgid "_Retry"
 msgstr "_ניסיון חוזר"
 
-#: ../gedit/gedit-io-error-info-bar.c:163
+#: ../bedit/bedit-io-error-info-bar.c:163
 #, c-format
 msgid "Could not find the file “%s”."
 msgstr "לא ניתן למצוא את הקובץ „%s“."
 
-#: ../gedit/gedit-io-error-info-bar.c:165
-#: ../gedit/gedit-io-error-info-bar.c:205
-#: ../gedit/gedit-io-error-info-bar.c:212
+#: ../bedit/bedit-io-error-info-bar.c:165
+#: ../bedit/bedit-io-error-info-bar.c:205
+#: ../bedit/bedit-io-error-info-bar.c:212
 msgid "Please check that you typed the location correctly and try again."
 msgstr "נא לוודא שהמיקום הוקלד נכון ולנסות שנית."
 
 #. Translators: %s is a URI scheme (like for example http:, ftp:, etc.)
-#: ../gedit/gedit-io-error-info-bar.c:184
+#: ../bedit/bedit-io-error-info-bar.c:184
 #, c-format
 msgid "Unable to handle “%s:” locations."
 msgstr "לא ניתן לטפל במיקומים מסוג „%s:“."
 
-#: ../gedit/gedit-io-error-info-bar.c:190
+#: ../bedit/bedit-io-error-info-bar.c:190
 msgid "Unable to handle this location."
 msgstr "לא ניתן לטפל במיקום זה."
 
-#: ../gedit/gedit-io-error-info-bar.c:199
+#: ../bedit/bedit-io-error-info-bar.c:199
 msgid "The location of the file cannot be accessed."
 msgstr "לא ניתן לגשת למיקום הקובץ."
 
-#: ../gedit/gedit-io-error-info-bar.c:203
+#: ../bedit/bedit-io-error-info-bar.c:203
 #, c-format
 msgid "“%s” is a directory."
 msgstr "„‏%s“ הנה תיקייה"
 
-#: ../gedit/gedit-io-error-info-bar.c:210
+#: ../bedit/bedit-io-error-info-bar.c:210
 #, c-format
 msgid "“%s” is not a valid location."
 msgstr "‏„%s“ אינו מיקום תקין."
 
-#: ../gedit/gedit-io-error-info-bar.c:246
+#: ../bedit/bedit-io-error-info-bar.c:246
 #, c-format
 msgid ""
 "Host “%s” could not be found. Please check that your proxy settings are "
@@ -1073,57 +1073,57 @@ msgid ""
 msgstr ""
 "לא ניתן למצוא את המארח „%s“. נא לבדוק את הגדרות מתווך הרשת ולנסות שנית."
 
-#: ../gedit/gedit-io-error-info-bar.c:261
+#: ../bedit/bedit-io-error-info-bar.c:261
 #, c-format
 msgid ""
 "Hostname was invalid. Please check that you typed the location correctly and "
 "try again."
 msgstr "שם המארח לא היה תקין. נא לבדוק שהמיקום שהוזן נכון ולנסות שוב."
 
-#: ../gedit/gedit-io-error-info-bar.c:269
+#: ../bedit/bedit-io-error-info-bar.c:269
 #, c-format
 msgid "“%s” is not a regular file."
 msgstr "„‏%s“ אינו קובץ רגיל."
 
-#: ../gedit/gedit-io-error-info-bar.c:274
+#: ../bedit/bedit-io-error-info-bar.c:274
 msgid "Connection timed out. Please try again."
 msgstr "זמן תפוגת החיבור הגיעה. נא לנסות שוב."
 
-#: ../gedit/gedit-io-error-info-bar.c:307
+#: ../bedit/bedit-io-error-info-bar.c:307
 #, c-format
 msgid "Unexpected error: %s"
 msgstr "שגיאה בלתי צפויה: %s"
 
-#: ../gedit/gedit-io-error-info-bar.c:343
+#: ../bedit/bedit-io-error-info-bar.c:343
 msgid "Cannot find the requested file. Perhaps it has recently been deleted."
 msgstr "לא ניתן לשחזר את הקובץ המבוקש. ככל הנראה, הוא נמחק לאחרונה."
 
-#: ../gedit/gedit-io-error-info-bar.c:353
+#: ../bedit/bedit-io-error-info-bar.c:353
 #, c-format
 msgid "Could not revert the file “%s”."
 msgstr "לא ניתן לשחזר את הקובץ „%s“."
 
-#: ../gedit/gedit-io-error-info-bar.c:380
+#: ../bedit/bedit-io-error-info-bar.c:380
 msgid "Ch_aracter Encoding:"
 msgstr "קידוד ה_תווים:"
 
-#: ../gedit/gedit-io-error-info-bar.c:441
+#: ../bedit/bedit-io-error-info-bar.c:441
 #, c-format
 msgid "The location “%s” is not currently reachable."
 msgstr "המיקום „%s“ אינו נגיש כרגע."
 
-#: ../gedit/gedit-io-error-info-bar.c:456
+#: ../bedit/bedit-io-error-info-bar.c:456
 msgid "Your system is offline. Check your network."
 msgstr "המערכת שלך אינה מחוברת לרשת. נא לבדוק את החיבור."
 
 #. Translators: the access key chosen for this string should be
 #. different from other main menu access keys (Open, Edit, View...)
-#: ../gedit/gedit-io-error-info-bar.c:499
-#: ../gedit/gedit-io-error-info-bar.c:768
+#: ../bedit/bedit-io-error-info-bar.c:499
+#: ../bedit/bedit-io-error-info-bar.c:768
 msgid "Edit Any_way"
 msgstr "_עריכה בכל זאת"
 
-#: ../gedit/gedit-io-error-info-bar.c:591
+#: ../bedit/bedit-io-error-info-bar.c:591
 msgid ""
 "The number of followed links is limited and the actual file could not be "
 "found within this limit."
@@ -1131,29 +1131,29 @@ msgstr ""
 "מספר הקישורים שנמצאים תחת מעקב מוגבל ולא ניתן היה למצוא את הקובץ במסגרת "
 "מגבלה זו."
 
-#: ../gedit/gedit-io-error-info-bar.c:595
+#: ../bedit/bedit-io-error-info-bar.c:595
 msgid "You do not have the permissions necessary to open the file."
 msgstr "אין לך את ההרשאות הדרושות לפתיחת הקובץ."
 
-#: ../gedit/gedit-io-error-info-bar.c:601
+#: ../bedit/bedit-io-error-info-bar.c:601
 msgid "Unable to detect the character encoding."
 msgstr "לא ניתן לזהות את קידוד התווים."
 
-#: ../gedit/gedit-io-error-info-bar.c:602
-#: ../gedit/gedit-io-error-info-bar.c:626
+#: ../bedit/bedit-io-error-info-bar.c:602
+#: ../bedit/bedit-io-error-info-bar.c:626
 msgid "Please check that you are not trying to open a binary file."
 msgstr "נא לוודא שלא מתבצע ניסיון לפתיחת קובץ בינרי."
 
-#: ../gedit/gedit-io-error-info-bar.c:603
+#: ../bedit/bedit-io-error-info-bar.c:603
 msgid "Select a character encoding from the menu and try again."
 msgstr "נא לבחור קידוד תווים מהתפריט ולנסות שוב."
 
-#: ../gedit/gedit-io-error-info-bar.c:609
+#: ../bedit/bedit-io-error-info-bar.c:609
 #, c-format
 msgid "There was a problem opening the file “%s”."
 msgstr "ארעה שגיאה בפתיחת הקובץ „%s“."
 
-#: ../gedit/gedit-io-error-info-bar.c:611
+#: ../bedit/bedit-io-error-info-bar.c:611
 msgid ""
 "The file you opened has some invalid characters. If you continue editing "
 "this file you could corrupt this document."
@@ -1161,31 +1161,31 @@ msgstr ""
 "בקובץ שפתחת יש מספר תווים שגויים. אם עריכת הקובץ תימשך יתכן שהמסמך יהפוך "
 "לפגום."
 
-#: ../gedit/gedit-io-error-info-bar.c:614
+#: ../bedit/bedit-io-error-info-bar.c:614
 msgid "You can also choose another character encoding and try again."
 msgstr "ניתן גם לבחור בקידוד תווים אחר מהתפריט ולנסות שוב."
 
-#: ../gedit/gedit-io-error-info-bar.c:623
+#: ../bedit/bedit-io-error-info-bar.c:623
 #, c-format
 msgid "Could not open the file “%s” using the “%s” character encoding."
 msgstr "לא ניתן לפתוח את הקובץ „%s“ עם קידוד התווים „%s“."
 
-#: ../gedit/gedit-io-error-info-bar.c:627
-#: ../gedit/gedit-io-error-info-bar.c:702
+#: ../bedit/bedit-io-error-info-bar.c:627
+#: ../bedit/bedit-io-error-info-bar.c:702
 msgid "Select a different character encoding from the menu and try again."
 msgstr "נא לבחור בקידוד תווים שונה מהתפריט ולנסות שוב."
 
-#: ../gedit/gedit-io-error-info-bar.c:639
+#: ../bedit/bedit-io-error-info-bar.c:639
 #, c-format
 msgid "Could not open the file “%s”."
 msgstr "לא ניתן לפתוח את הקובץ „%s“."
 
-#: ../gedit/gedit-io-error-info-bar.c:697
+#: ../bedit/bedit-io-error-info-bar.c:697
 #, c-format
 msgid "Could not save the file “%s” using the “%s” character encoding."
 msgstr "לא ניתן לשמור את הקובץ „%s“ עם קידוד התווים „%s“."
 
-#: ../gedit/gedit-io-error-info-bar.c:700
+#: ../bedit/bedit-io-error-info-bar.c:700
 msgid ""
 "The document contains one or more characters that cannot be encoded using "
 "the specified character encoding."
@@ -1194,28 +1194,28 @@ msgstr ""
 
 #. Translators: the access key chosen for this string should be
 #. different from other main menu access keys (Open, Edit, View...)
-#: ../gedit/gedit-io-error-info-bar.c:773
+#: ../bedit/bedit-io-error-info-bar.c:773
 msgid "D_on't Edit"
 msgstr "_אין לערוך"
 
-#: ../gedit/gedit-io-error-info-bar.c:783
+#: ../bedit/bedit-io-error-info-bar.c:783
 #, c-format
 msgid "This file “%s” is already open in another window."
 msgstr "הקובץ הזה (%s) כבר פתוח בחלון אחר."
 
-#: ../gedit/gedit-io-error-info-bar.c:797
+#: ../bedit/bedit-io-error-info-bar.c:797
 msgid "Do you want to edit it anyway?"
 msgstr "האם לערוך את הקובץ בכל זאת?"
 
-#: ../gedit/gedit-io-error-info-bar.c:853
-#: ../gedit/gedit-io-error-info-bar.c:943
-#: ../gedit/gedit-io-error-info-bar.c:1235
+#: ../bedit/bedit-io-error-info-bar.c:853
+#: ../bedit/bedit-io-error-info-bar.c:943
+#: ../bedit/bedit-io-error-info-bar.c:1235
 msgid "S_ave Anyway"
 msgstr "_שמירה בכל זאת"
 
-#: ../gedit/gedit-io-error-info-bar.c:856
-#: ../gedit/gedit-io-error-info-bar.c:946
-#: ../gedit/gedit-io-error-info-bar.c:1238
+#: ../bedit/bedit-io-error-info-bar.c:856
+#: ../bedit/bedit-io-error-info-bar.c:946
+#: ../bedit/bedit-io-error-info-bar.c:1238
 msgid "D_on't Save"
 msgstr "_אין לשמור"
 
@@ -1223,28 +1223,28 @@ msgstr "_אין לשמור"
 #. * could be interpreted as the changes he made in the document. beside "reading" is
 #. * not accurate (since last load/save)
 #.
-#: ../gedit/gedit-io-error-info-bar.c:870
+#: ../bedit/bedit-io-error-info-bar.c:870
 #, c-format
 msgid "The file “%s” has been modified since reading it."
 msgstr "הקובץ „%s“ השתנה מאז הפעם האחרונה שהוא נקרא."
 
-#: ../gedit/gedit-io-error-info-bar.c:885
+#: ../bedit/bedit-io-error-info-bar.c:885
 msgid "If you save it, all the external changes could be lost. Save it anyway?"
 msgstr ""
 "אם תתבצע עבורו שמירה, כל השינויים החיצוניים עלולים ללכת לאיבוד. האם לשמור "
 "בכל זאת?"
 
-#: ../gedit/gedit-io-error-info-bar.c:965
+#: ../bedit/bedit-io-error-info-bar.c:965
 #, c-format
 msgid "Could not create a backup file while saving “%s”"
 msgstr "לא ניתן ליצור קובץ גיבוי בעת שמירת „%s“"
 
-#: ../gedit/gedit-io-error-info-bar.c:970
+#: ../bedit/bedit-io-error-info-bar.c:970
 #, c-format
 msgid "Could not create a temporary backup file while saving “%s”"
 msgstr "לא ניתן ליצור קובץ גיבוי זמני בעת שמירת „%s“"
 
-#: ../gedit/gedit-io-error-info-bar.c:987
+#: ../bedit/bedit-io-error-info-bar.c:987
 msgid ""
 "Could not back up the old copy of the file before saving the new one. You "
 "can ignore this warning and save the file anyway, but if an error occurs "
@@ -1255,7 +1255,7 @@ msgstr ""
 "ללכת לאיבוד. האם לשמור בכל זאת?"
 
 #. Translators: %s is a URI scheme (like for example http:, ftp:, etc.)
-#: ../gedit/gedit-io-error-info-bar.c:1047
+#: ../bedit/bedit-io-error-info-bar.c:1047
 #, c-format
 msgid ""
 "Cannot handle “%s:” locations in write mode. Please check that you typed the "
@@ -1264,21 +1264,21 @@ msgstr ""
 "לא ניתן לטפל במיקומי „%s:“ במצב כתיבה. נא לבדוק שהמיקום הוזן כראוי ולנסות "
 "שוב."
 
-#: ../gedit/gedit-io-error-info-bar.c:1055
+#: ../bedit/bedit-io-error-info-bar.c:1055
 msgid ""
 "Cannot handle this location in write mode. Please check that you typed the "
 "location correctly and try again."
 msgstr ""
 "לא ניתן לטפל במיקום זה במצב כתיבה. נא לבדוק שהמיקום הוזן כראוי ולנסות שוב."
 
-#: ../gedit/gedit-io-error-info-bar.c:1064
+#: ../bedit/bedit-io-error-info-bar.c:1064
 #, c-format
 msgid ""
 "“%s” is not a valid location. Please check that you typed the location "
 "correctly and try again."
 msgstr "„‏%s“ אינו מיקום תקין. נא לוודא שהמיקום הוקלד כראוי ולנסות שוב."
 
-#: ../gedit/gedit-io-error-info-bar.c:1071
+#: ../bedit/bedit-io-error-info-bar.c:1071
 msgid ""
 "You do not have the permissions necessary to save the file. Please check "
 "that you typed the location correctly and try again."
@@ -1286,7 +1286,7 @@ msgstr ""
 "אין לך את ההרשאות המתאימות כדי לשמור את הקובץ. נא לבדוק שהמיקום הוקלד נכון "
 "ולנסות שוב."
 
-#: ../gedit/gedit-io-error-info-bar.c:1077
+#: ../bedit/bedit-io-error-info-bar.c:1077
 msgid ""
 "There is not enough disk space to save the file. Please free some disk space "
 "and try again."
@@ -1294,7 +1294,7 @@ msgstr ""
 "אין מספיק מקום פנוי בכונן כדי לשמור את הקובץ. נא לפנות מעט מקום בכונן ולנסות "
 "שוב."
 
-#: ../gedit/gedit-io-error-info-bar.c:1082
+#: ../bedit/bedit-io-error-info-bar.c:1082
 msgid ""
 "You are trying to save the file on a read-only disk. Please check that you "
 "typed the location correctly and try again."
@@ -1302,11 +1302,11 @@ msgstr ""
 "ניסיון שמירת הקובץ בוצע על כונן לקריאה בלבד. נא לבדוק שהמיקום שהוקלד נכון "
 "ולנסות שוב."
 
-#: ../gedit/gedit-io-error-info-bar.c:1088
+#: ../bedit/bedit-io-error-info-bar.c:1088
 msgid "A file with the same name already exists. Please use a different name."
 msgstr "קובץ בשם זהה כבר קיים. נא להשתמש בשם אחר."
 
-#: ../gedit/gedit-io-error-info-bar.c:1093
+#: ../bedit/bedit-io-error-info-bar.c:1093
 msgid ""
 "The disk where you are trying to save the file has a limitation on length of "
 "the file names. Please use a shorter name."
@@ -1314,7 +1314,7 @@ msgstr ""
 "בכונן בו מתבצע הניסיון לשמירת הקובץ יש הגבלה על אורך שמות הקבצים. נא להשתמש "
 "בשם קצר יותר."
 
-#: ../gedit/gedit-io-error-info-bar.c:1104
+#: ../bedit/bedit-io-error-info-bar.c:1104
 msgid ""
 "The disk where you are trying to save the file has a limitation on file "
 "sizes. Please try saving a smaller file or saving it to a disk that does not "
@@ -1323,119 +1323,119 @@ msgstr ""
 "לדיסק שעליו אתה מנסה לשמור את הקובץ יש הגבלה בגדלי הקבצים. נא לנסות לשמור "
 "קובץ קטן יותר או לשמור את הקובץ לדיסק שאין לו הגבלה זו."
 
-#: ../gedit/gedit-io-error-info-bar.c:1121
+#: ../bedit/bedit-io-error-info-bar.c:1121
 #, c-format
 msgid "Could not save the file “%s”."
 msgstr "לא ניתן לשמור את הקובץ „%s“."
 
-#: ../gedit/gedit-io-error-info-bar.c:1161
+#: ../bedit/bedit-io-error-info-bar.c:1161
 #, c-format
 msgid "The file “%s” changed on disk."
 msgstr "הקובץ „%s“ השתנה בכונן."
 
-#: ../gedit/gedit-io-error-info-bar.c:1172
+#: ../bedit/bedit-io-error-info-bar.c:1172
 msgid "Drop Changes and _Reload"
 msgstr "השמטת השינויים ו_רענון"
 
-#: ../gedit/gedit-io-error-info-bar.c:1182
-#: ../gedit/resources/gtk/menus-common.ui.h:21
-#: ../gedit/resources/gtk/menus.ui.h:7
-#: ../gedit/resources/gtk/menus-traditional.ui.h:1
+#: ../bedit/bedit-io-error-info-bar.c:1182
+#: ../bedit/resources/gtk/menus-common.ui.h:21
+#: ../bedit/resources/gtk/menus.ui.h:7
+#: ../bedit/resources/gtk/menus-traditional.ui.h:1
 msgid "_Reload"
 msgstr "_טעינה מחדש"
 
-#: ../gedit/gedit-io-error-info-bar.c:1187
+#: ../bedit/bedit-io-error-info-bar.c:1187
 msgid "_Ignore"
 msgstr "ה_תעלמות"
 
-#: ../gedit/gedit-io-error-info-bar.c:1248
+#: ../bedit/bedit-io-error-info-bar.c:1248
 #, c-format
 msgid "Some invalid chars have been detected while saving “%s”"
 msgstr "התגלו מספר תווים שגויים בעת שמירת „%s“"
 
-#: ../gedit/gedit-io-error-info-bar.c:1264
+#: ../bedit/bedit-io-error-info-bar.c:1264
 msgid ""
 "If you continue saving this file you can corrupt the document.  Save anyway?"
 msgstr "אם עריכת הקובץ תימשך המסמך יכול להפוך לפגום. האם להמשיך בכל זאת?"
 
-#: ../gedit/gedit-preferences-dialog.c:455
+#: ../bedit/bedit-preferences-dialog.c:455
 msgid "Click on this button to select the font to be used by the editor"
 msgstr "יש ללחוץ על כפתור זה כדי לבחור גופן לשימוש על־ידי העורך"
 
-#: ../gedit/gedit-preferences-dialog.c:461
+#: ../bedit/bedit-preferences-dialog.c:461
 #, c-format
 msgid "_Use the system fixed width font (%s)"
 msgstr "יש ל_השתמש בגופן המערכת בעל רוחב קבוע (%s)"
 
-#: ../gedit/gedit-preferences-dialog.c:601
+#: ../bedit/bedit-preferences-dialog.c:601
 #, c-format
 msgid "Directory '%s' could not be created: g_mkdir_with_parents() failed: %s"
 msgstr "לא ניתן ליצור את התיקייה '%s'‏:‏ ()g_mkdir_with_parents נכשלה: %s"
 
-#: ../gedit/gedit-preferences-dialog.c:798
+#: ../bedit/bedit-preferences-dialog.c:798
 msgid "The selected color scheme cannot be installed."
 msgstr "לא ניתן להתקין את סכימת הצבעים שנבחרה."
 
-#: ../gedit/gedit-preferences-dialog.c:821
+#: ../bedit/bedit-preferences-dialog.c:821
 msgid "Add Scheme"
 msgstr "הוספת סכימה"
 
-#: ../gedit/gedit-preferences-dialog.c:826
+#: ../bedit/bedit-preferences-dialog.c:826
 msgid "A_dd Scheme"
 msgstr "ה_וספת סכימה"
 
-#: ../gedit/gedit-preferences-dialog.c:830
+#: ../bedit/bedit-preferences-dialog.c:830
 msgid "Color Scheme Files"
 msgstr "קובצי סכימת צבעים"
 
-#: ../gedit/gedit-preferences-dialog.c:861
+#: ../bedit/bedit-preferences-dialog.c:861
 #, c-format
 msgid "Could not remove color scheme \"%s\"."
 msgstr "לא ניתן להסיר את סכימת הצבעים \"%s\"."
 
-#: ../gedit/gedit-print-job.c:227
+#: ../bedit/bedit-print-job.c:227
 msgid "Preparing..."
 msgstr "בהכנה..."
 
-#: ../gedit/gedit-print-job.c:539
+#: ../bedit/bedit-print-job.c:539
 #, c-format
 msgid "File: %s"
 msgstr "קובץ: %s"
 
-#: ../gedit/gedit-print-job.c:548
+#: ../bedit/bedit-print-job.c:548
 msgid "Page %N of %Q"
 msgstr "עמוד %N מתוך %Q"
 
-#: ../gedit/gedit-print-job.c:626
+#: ../bedit/bedit-print-job.c:626
 #, c-format
 msgid "Rendering page %d of %d..."
 msgstr "מעבד עמוד %d מתוך %d…"
 
-#: ../gedit/gedit-print-preview.c:653
+#: ../bedit/bedit-print-preview.c:653
 #, c-format
 msgid "Page %d of %d"
 msgstr "עמוד %d מתוך %d"
 
-#: ../gedit/gedit-replace-dialog.c:690
+#: ../bedit/bedit-replace-dialog.c:690
 #: ../plugins/externaltools/tools/tools.ui.h:7
 msgid "Nothing"
 msgstr "כלום"
 
-#: ../gedit/gedit-replace-dialog.c:779
-#: ../gedit/resources/ui/gedit-replace-dialog.ui.h:1
+#: ../bedit/bedit-replace-dialog.c:779
+#: ../bedit/resources/ui/bedit-replace-dialog.ui.h:1
 msgid "Find and Replace"
 msgstr "חיפוש והחלפה"
 
 #. Use spaces to leave padding proportional to the font size
-#: ../gedit/gedit-statusbar.c:58 ../gedit/gedit-statusbar.c:64
+#: ../bedit/bedit-statusbar.c:58 ../bedit/bedit-statusbar.c:64
 msgid "OVR"
 msgstr "  OVR"
 
-#: ../gedit/gedit-statusbar.c:58 ../gedit/gedit-statusbar.c:64
+#: ../bedit/bedit-statusbar.c:58 ../bedit/bedit-statusbar.c:64
 msgid "INS"
 msgstr "  INS"
 
-#: ../gedit/gedit-statusbar.c:244
+#: ../bedit/bedit-statusbar.c:244
 #, c-format
 msgid "There is a tab with errors"
 msgid_plural "There are %d tabs with errors"
@@ -1444,101 +1444,101 @@ msgstr[1] "קיימות %d לשוניות עם שגיאות"
 
 #. Translators: the first %s is a file name (e.g. test.txt) the second one
 #. is a directory (e.g. ssh://master.gnome.org/home/users/paolo)
-#: ../gedit/gedit-tab.c:814
+#: ../bedit/bedit-tab.c:814
 #, c-format
 msgid "Reverting %s from %s"
 msgstr "‏%s משוחזר מ־%s"
 
-#: ../gedit/gedit-tab.c:821
+#: ../bedit/bedit-tab.c:821
 #, c-format
 msgid "Reverting %s"
 msgstr "‏%s משוחזר"
 
 #. Translators: the first %s is a file name (e.g. test.txt) the second one
 #. is a directory (e.g. ssh://master.gnome.org/home/users/paolo)
-#: ../gedit/gedit-tab.c:834
+#: ../bedit/bedit-tab.c:834
 #, c-format
 msgid "Loading %s from %s"
 msgstr "‏%s נטען מ־%s"
 
-#: ../gedit/gedit-tab.c:841
+#: ../bedit/bedit-tab.c:841
 #, c-format
 msgid "Loading %s"
 msgstr "‏%s נטען"
 
 #. Translators: the first %s is a file name (e.g. test.txt) the second one
 #. is a directory (e.g. ssh://master.gnome.org/home/users/paolo)
-#: ../gedit/gedit-tab.c:921
+#: ../bedit/bedit-tab.c:921
 #, c-format
 msgid "Saving %s to %s"
 msgstr "%s נשמר אל %s"
 
-#: ../gedit/gedit-tab.c:926
+#: ../bedit/bedit-tab.c:926
 #, c-format
 msgid "Saving %s"
 msgstr "שומר %s"
 
-#: ../gedit/gedit-tab.c:1529
+#: ../bedit/bedit-tab.c:1529
 #, c-format
 msgid "Error opening file %s"
 msgstr "שגיאה בטעינת הקובץ %s"
 
-#: ../gedit/gedit-tab.c:1534
+#: ../bedit/bedit-tab.c:1534
 #, c-format
 msgid "Error reverting file %s"
 msgstr "שגיאה בשחזור הקובץ %s"
 
-#: ../gedit/gedit-tab.c:1539
+#: ../bedit/bedit-tab.c:1539
 #, c-format
 msgid "Error saving file %s"
 msgstr "שגיאה בשמירת הקובץ %s"
 
-#: ../gedit/gedit-tab.c:1570
+#: ../bedit/bedit-tab.c:1570
 msgid "Name:"
 msgstr "שם:"
 
-#: ../gedit/gedit-tab.c:1571
+#: ../bedit/bedit-tab.c:1571
 msgid "MIME Type:"
 msgstr "סוג MIME:"
 
-#: ../gedit/gedit-tab.c:1572
+#: ../bedit/bedit-tab.c:1572
 msgid "Encoding:"
 msgstr "קידוד:"
 
-#: ../gedit/gedit-utils.c:841
+#: ../bedit/bedit-utils.c:841
 msgid "Please check your installation."
 msgstr "נא לבדוק את ההתקנה שלך."
 
-#: ../gedit/gedit-utils.c:902
+#: ../bedit/bedit-utils.c:902
 #, c-format
 msgid "Unable to open UI file %s. Error: %s"
 msgstr "לא ניתן לפתוח את קובץ המנשק %s. שגיאה: %s"
 
-#: ../gedit/gedit-utils.c:921
+#: ../bedit/bedit-utils.c:921
 #, c-format
 msgid "Unable to find the object '%s' inside file %s."
 msgstr "לא ניתן למצוא את הפריט '%s' בתוך הקובץ %s."
 
 #. Translators: '/ on <remote-share>'
-#: ../gedit/gedit-utils.c:1159
+#: ../bedit/bedit-utils.c:1159
 #, c-format
 msgid "/ on %s"
 msgstr "/ תחת %s"
 
-#: ../gedit/gedit-utils.c:1463
+#: ../bedit/bedit-utils.c:1463
 msgid "Unix/Linux"
 msgstr "Unix/Linux"
 
-#: ../gedit/gedit-utils.c:1465
+#: ../bedit/bedit-utils.c:1465
 msgid "Mac OS Classic"
 msgstr "Mac OS קלסי"
 
-#: ../gedit/gedit-utils.c:1467
+#: ../bedit/bedit-utils.c:1467
 msgid "Windows"
 msgstr "Windows"
 
-#: ../gedit/gedit-view.c:468
-#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:2
+#: ../bedit/bedit-view.c:468
+#: ../bedit/resources/ui/bedit-preferences-dialog.ui.h:2
 msgid "_Display line numbers"
 msgstr "_הצגת מספרי שורות"
 
@@ -1546,973 +1546,973 @@ msgstr "_הצגת מספרי שורות"
 #. * occurrence, and the second %d is the total number of search
 #. * occurrences.
 #.
-#: ../gedit/gedit-view-frame.c:674
+#: ../bedit/bedit-view-frame.c:674
 #, c-format
 msgid "%d of %d"
 msgstr "%d מתוך %d"
 
 #. create "Wrap Around" menu item.
-#: ../gedit/gedit-view-frame.c:766
+#: ../bedit/bedit-view-frame.c:766
 msgid "_Wrap Around"
 msgstr "_גלישה מסביב"
 
 #. create "Match as Regular Expression" menu item.
-#: ../gedit/gedit-view-frame.c:776
+#: ../bedit/bedit-view-frame.c:776
 msgid "Match as _Regular Expression"
 msgstr "התאמה כ_ביטוי רגולרי"
 
 #. create "Match Entire Word Only" menu item.
-#: ../gedit/gedit-view-frame.c:790
+#: ../bedit/bedit-view-frame.c:790
 msgid "Match _Entire Word Only"
 msgstr "התאמת מילים _שלמות בלבד"
 
 #. create "Match Case" menu item.
-#: ../gedit/gedit-view-frame.c:804
+#: ../bedit/bedit-view-frame.c:804
 msgid "_Match Case"
 msgstr "הת_אמת רישיות"
 
-#: ../gedit/gedit-view-frame.c:1026
+#: ../bedit/bedit-view-frame.c:1026
 msgid "String you want to search for"
 msgstr "המחרוזת שברצונך לחפש"
 
-#: ../gedit/gedit-view-frame.c:1038
+#: ../bedit/bedit-view-frame.c:1038
 msgid "Line you want to move the cursor to"
 msgstr "השורה אליה להעביר את הסמן"
 
-#: ../gedit/gedit-window.c:998
+#: ../bedit/bedit-window.c:998
 msgid "Bracket match is out of range"
 msgstr "הסוגר התואם הוא מחוץ לטווח"
 
-#: ../gedit/gedit-window.c:1003
+#: ../bedit/bedit-window.c:1003
 msgid "Bracket match not found"
 msgstr "הסוגר התואם לא נמצא"
 
-#: ../gedit/gedit-window.c:1008
+#: ../bedit/bedit-window.c:1008
 #, c-format
 msgid "Bracket match found on line: %d"
 msgstr "הסוגר התואם נמצא בשורה: %d"
 
 #. Translators: "Ln" is an abbreviation for "Line", Col is an abbreviation for "Column". Please,
 #. use abbreviations if possible to avoid space problems.
-#: ../gedit/gedit-window.c:1043
+#: ../bedit/bedit-window.c:1043
 #, c-format
 msgid "  Ln %d, Col %d"
 msgstr "  שורה %d, עמודה %d"
 
-#: ../gedit/gedit-window.c:1227
+#: ../bedit/bedit-window.c:1227
 #, c-format
 msgid "Tab Width: %u"
 msgstr "רוחב טאב: %u"
 
-#: ../gedit/gedit-window.c:1596
+#: ../bedit/bedit-window.c:1596
 msgid "There are unsaved documents"
 msgstr "ישנם מסמכים שלא נשמרו"
 
-#: ../gedit/gedit-window.c:2444
+#: ../bedit/bedit-window.c:2444
 msgid "Change side panel page"
 msgstr "שינוי דף הסרגל הצדי"
 
-#: ../gedit/gedit-window.c:2464 ../gedit/resources/ui/gedit-window.ui.h:1
+#: ../bedit/bedit-window.c:2464 ../bedit/resources/ui/bedit-window.ui.h:1
 msgid "Documents"
 msgstr "מסמכים"
 
 #. ex:set ts=8 noet:
-#: ../gedit/resources/gtk/menus-common.ui.h:1
+#: ../bedit/resources/gtk/menus-common.ui.h:1
 msgid "Move _Left"
 msgstr "ה_עברה לשמאל"
 
-#: ../gedit/resources/gtk/menus-common.ui.h:2
+#: ../bedit/resources/gtk/menus-common.ui.h:2
 msgid "Move _Right"
 msgstr "ה_עברה לימין"
 
-#: ../gedit/resources/gtk/menus-common.ui.h:3
+#: ../bedit/resources/gtk/menus-common.ui.h:3
 msgid "Move to New _Window"
 msgstr "ה_עברה לחלון חדש"
 
-#: ../gedit/resources/gtk/menus-common.ui.h:4
+#: ../bedit/resources/gtk/menus-common.ui.h:4
 msgid "Move to New Tab _Group"
 msgstr "ה_עברה לקבוצת לשוניות חדשה"
 
-#: ../gedit/resources/gtk/menus-common.ui.h:5
-#: ../gedit/resources/gtk/menus.ui.h:22
-#: ../gedit/resources/gtk/menus-traditional.ui.h:20
-#: ../gedit/resources/ui/gedit-replace-dialog.ui.h:2
-#: ../plugins/time/resources/ui/gedit-time-setup-dialog.ui.h:2
+#: ../bedit/resources/gtk/menus-common.ui.h:5
+#: ../bedit/resources/gtk/menus.ui.h:22
+#: ../bedit/resources/gtk/menus-traditional.ui.h:20
+#: ../bedit/resources/ui/bedit-replace-dialog.ui.h:2
+#: ../plugins/time/resources/ui/bedit-time-setup-dialog.ui.h:2
 msgid "_Close"
 msgstr "_סגירה"
 
-#: ../gedit/resources/gtk/menus-common.ui.h:6
+#: ../bedit/resources/gtk/menus-common.ui.h:6
 msgid "Automatic Indentation"
 msgstr "הזחה אוטומטית"
 
-#: ../gedit/resources/gtk/menus-common.ui.h:7
+#: ../bedit/resources/gtk/menus-common.ui.h:7
 msgid "Use Spaces"
 msgstr "שימוש ברווחים"
 
-#: ../gedit/resources/gtk/menus-common.ui.h:8
+#: ../bedit/resources/gtk/menus-common.ui.h:8
 msgid "Display line numbers"
 msgstr "הצגת מספרי שורות"
 
-#: ../gedit/resources/gtk/menus-common.ui.h:9
+#: ../bedit/resources/gtk/menus-common.ui.h:9
 msgid "Display right margin"
 msgstr "הצגת השול הימני"
 
-#: ../gedit/resources/gtk/menus-common.ui.h:10
+#: ../bedit/resources/gtk/menus-common.ui.h:10
 msgid "Highlight current line"
 msgstr "הדגשת את השורה הנוכחית"
 
-#: ../gedit/resources/gtk/menus-common.ui.h:11
+#: ../bedit/resources/gtk/menus-common.ui.h:11
 msgid "Text wrapping"
 msgstr "גלישת טקסט"
 
-#: ../gedit/resources/gtk/menus-common.ui.h:12
+#: ../bedit/resources/gtk/menus-common.ui.h:12
 msgid "_File"
 msgstr "_קובץ"
 
 #. _New is the menu item under the File menu on OS X which creates a new empty document.
-#: ../gedit/resources/gtk/menus-common.ui.h:14
+#: ../bedit/resources/gtk/menus-common.ui.h:14
 msgid "_New"
 msgstr "_חדש"
 
-#: ../gedit/resources/gtk/menus-common.ui.h:16
+#: ../bedit/resources/gtk/menus-common.ui.h:16
 msgid "Open _Recent"
 msgstr "פתיחת מסמך _אחרון"
 
-#: ../gedit/resources/gtk/menus-common.ui.h:17
+#: ../bedit/resources/gtk/menus-common.ui.h:17
 msgid "Reopen Closed _Tab"
 msgstr "פתיחה מחדש ל_שונית שנסגרה"
 
-#: ../gedit/resources/gtk/menus-common.ui.h:19
+#: ../bedit/resources/gtk/menus-common.ui.h:19
 msgid "Save _As…"
 msgstr "שמירה _בשם…"
 
-#: ../gedit/resources/gtk/menus-common.ui.h:20
-#: ../gedit/resources/gtk/menus.ui.h:1
+#: ../bedit/resources/gtk/menus-common.ui.h:20
+#: ../bedit/resources/gtk/menus.ui.h:1
 msgid "_New Window"
 msgstr "_חלון חדש"
 
-#: ../gedit/resources/gtk/menus-common.ui.h:22
-#: ../gedit/resources/gtk/menus.ui.h:8
-#: ../gedit/resources/gtk/menus-traditional.ui.h:2
+#: ../bedit/resources/gtk/menus-common.ui.h:22
+#: ../bedit/resources/gtk/menus.ui.h:8
+#: ../bedit/resources/gtk/menus-traditional.ui.h:2
 msgid "_Print…"
 msgstr "ה_דפסה…"
 
-#: ../gedit/resources/gtk/menus-common.ui.h:23
-#: ../gedit/resources/gtk/menus.ui.h:6
-#: ../gedit/resources/gtk/menus-traditional.ui.h:21
+#: ../bedit/resources/gtk/menus-common.ui.h:23
+#: ../bedit/resources/gtk/menus.ui.h:6
+#: ../bedit/resources/gtk/menus-traditional.ui.h:21
 msgid "_Quit"
 msgstr "י_ציאה"
 
-#: ../gedit/resources/gtk/menus-common.ui.h:24
+#: ../bedit/resources/gtk/menus-common.ui.h:24
 msgid "_Edit"
 msgstr "_עריכה"
 
-#: ../gedit/resources/gtk/menus-common.ui.h:25
+#: ../bedit/resources/gtk/menus-common.ui.h:25
 msgid "_Undo"
 msgstr "_ביטול"
 
-#: ../gedit/resources/gtk/menus-common.ui.h:26
+#: ../bedit/resources/gtk/menus-common.ui.h:26
 msgid "_Redo"
 msgstr "_ביצוע שוב"
 
-#: ../gedit/resources/gtk/menus-common.ui.h:27
+#: ../bedit/resources/gtk/menus-common.ui.h:27
 msgid "C_ut"
 msgstr "_גזירה"
 
-#: ../gedit/resources/gtk/menus-common.ui.h:28
+#: ../bedit/resources/gtk/menus-common.ui.h:28
 msgid "_Copy"
 msgstr "ה_עתקה"
 
-#: ../gedit/resources/gtk/menus-common.ui.h:29
+#: ../bedit/resources/gtk/menus-common.ui.h:29
 msgid "_Paste"
 msgstr "ה_דבקה"
 
-#: ../gedit/resources/gtk/menus-common.ui.h:30
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:915
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:953
-#: ../plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui.h:7
+#: ../bedit/resources/gtk/menus-common.ui.h:30
+#: ../plugins/filebrowser/bedit-file-browser-plugin.c:915
+#: ../plugins/filebrowser/bedit-file-browser-plugin.c:953
+#: ../plugins/filebrowser/resources/ui/bedit-file-browser-menus.ui.h:7
 msgid "_Delete"
 msgstr "_מחיקה"
 
-#: ../gedit/resources/gtk/menus-common.ui.h:31
+#: ../bedit/resources/gtk/menus-common.ui.h:31
 msgid "Overwrite _Mode"
 msgstr "_מצב דריסה"
 
-#: ../gedit/resources/gtk/menus-common.ui.h:32
+#: ../bedit/resources/gtk/menus-common.ui.h:32
 msgid "Select _All"
 msgstr "בחירת _הכול"
 
-#: ../gedit/resources/gtk/menus-common.ui.h:33
-#: ../gedit/resources/gtk/menus.ui.h:2
-#: ../gedit/resources/gtk/menus-traditional.ui.h:15
+#: ../bedit/resources/gtk/menus-common.ui.h:33
+#: ../bedit/resources/gtk/menus.ui.h:2
+#: ../bedit/resources/gtk/menus-traditional.ui.h:15
 msgid "_Preferences"
 msgstr "ה_עדפות"
 
-#: ../gedit/resources/gtk/menus-common.ui.h:34
+#: ../bedit/resources/gtk/menus-common.ui.h:34
 msgid "_View"
 msgstr "_תצוגה"
 
-#: ../gedit/resources/gtk/menus-common.ui.h:35
-#: ../gedit/resources/gtk/menus.ui.h:17
-#: ../gedit/resources/gtk/menus-traditional.ui.h:11
+#: ../bedit/resources/gtk/menus-common.ui.h:35
+#: ../bedit/resources/gtk/menus.ui.h:17
+#: ../bedit/resources/gtk/menus-traditional.ui.h:11
 msgid "Side _Panel"
 msgstr "חלונית ה_צד"
 
-#: ../gedit/resources/gtk/menus-common.ui.h:36
-#: ../gedit/resources/gtk/menus.ui.h:18
-#: ../gedit/resources/gtk/menus-traditional.ui.h:12
+#: ../bedit/resources/gtk/menus-common.ui.h:36
+#: ../bedit/resources/gtk/menus.ui.h:18
+#: ../bedit/resources/gtk/menus-traditional.ui.h:12
 msgid "_Bottom Panel"
 msgstr "החלונית ה_תחתונה"
 
-#: ../gedit/resources/gtk/menus-common.ui.h:37
-#: ../gedit/resources/gtk/menus.ui.h:9
-#: ../gedit/resources/gtk/menus-traditional.ui.h:3
+#: ../bedit/resources/gtk/menus-common.ui.h:37
+#: ../bedit/resources/gtk/menus.ui.h:9
+#: ../bedit/resources/gtk/menus-traditional.ui.h:3
 msgid "_Fullscreen"
 msgstr "_מסך מלא"
 
-#: ../gedit/resources/gtk/menus-common.ui.h:38
-#: ../gedit/resources/gtk/menus.ui.h:19
-#: ../gedit/resources/gtk/menus-traditional.ui.h:13
+#: ../bedit/resources/gtk/menus-common.ui.h:38
+#: ../bedit/resources/gtk/menus.ui.h:19
+#: ../bedit/resources/gtk/menus-traditional.ui.h:13
 msgid "_Highlight Mode…"
 msgstr "מצב הד_גשה…"
 
-#: ../gedit/resources/gtk/menus-common.ui.h:39
+#: ../bedit/resources/gtk/menus-common.ui.h:39
 msgid "_Search"
 msgstr "_חיפוש"
 
-#: ../gedit/resources/gtk/menus-common.ui.h:40
-#: ../gedit/resources/gtk/menus.ui.h:12
-#: ../gedit/resources/gtk/menus-traditional.ui.h:6
+#: ../bedit/resources/gtk/menus-common.ui.h:40
+#: ../bedit/resources/gtk/menus.ui.h:12
+#: ../bedit/resources/gtk/menus-traditional.ui.h:6
 msgid "_Find…"
 msgstr "_חיפוש…"
 
-#: ../gedit/resources/gtk/menus-common.ui.h:41
+#: ../bedit/resources/gtk/menus-common.ui.h:41
 msgid "Find Ne_xt"
 msgstr "חיפוש ה_בא"
 
-#: ../gedit/resources/gtk/menus-common.ui.h:42
+#: ../bedit/resources/gtk/menus-common.ui.h:42
 msgid "Find Pre_vious"
 msgstr "חיפוש ה_קודם"
 
-#: ../gedit/resources/gtk/menus-common.ui.h:43
+#: ../bedit/resources/gtk/menus-common.ui.h:43
 msgid "Find and _Replace…"
 msgstr "חיפוש והח_לפה…"
 
-#: ../gedit/resources/gtk/menus-common.ui.h:44
-#: ../gedit/resources/gtk/menus.ui.h:14
-#: ../gedit/resources/gtk/menus-traditional.ui.h:8
+#: ../bedit/resources/gtk/menus-common.ui.h:44
+#: ../bedit/resources/gtk/menus.ui.h:14
+#: ../bedit/resources/gtk/menus-traditional.ui.h:8
 msgid "_Clear Highlight"
 msgstr "ניקוי הה_דגשה"
 
-#: ../gedit/resources/gtk/menus-common.ui.h:45
+#: ../bedit/resources/gtk/menus-common.ui.h:45
 msgid "Go to _Line…"
 msgstr "מעבר _לשורה…"
 
-#: ../gedit/resources/gtk/menus-common.ui.h:46
+#: ../bedit/resources/gtk/menus-common.ui.h:46
 msgid "_Tools"
 msgstr "_כלים"
 
-#: ../gedit/resources/gtk/menus-common.ui.h:47
+#: ../bedit/resources/gtk/menus-common.ui.h:47
 msgid "_Documents"
 msgstr "_מסמכים"
 
-#: ../gedit/resources/gtk/menus-common.ui.h:48
+#: ../bedit/resources/gtk/menus-common.ui.h:48
 msgid "_Save All"
 msgstr "_שמירת הכול"
 
-#: ../gedit/resources/gtk/menus-common.ui.h:49
-#: ../gedit/resources/gtk/menus.ui.h:21
-#: ../gedit/resources/gtk/menus-traditional.ui.h:19
+#: ../bedit/resources/gtk/menus-common.ui.h:49
+#: ../bedit/resources/gtk/menus.ui.h:21
+#: ../bedit/resources/gtk/menus-traditional.ui.h:19
 msgid "_Close All"
 msgstr "_סגירת הכל"
 
-#: ../gedit/resources/gtk/menus-common.ui.h:50
+#: ../bedit/resources/gtk/menus-common.ui.h:50
 msgid "_New Tab Group"
 msgstr "קבוצת לשוניות _חדשה"
 
-#: ../gedit/resources/gtk/menus-common.ui.h:51
+#: ../bedit/resources/gtk/menus-common.ui.h:51
 msgid "P_revious Tab Group"
 msgstr "קבוצת הלשוניות ה_קודמת"
 
-#: ../gedit/resources/gtk/menus-common.ui.h:52
+#: ../bedit/resources/gtk/menus-common.ui.h:52
 msgid "Nex_t Tab Group"
 msgstr "קבוצת הלשוניות ה_באה"
 
-#: ../gedit/resources/gtk/menus-common.ui.h:53
+#: ../bedit/resources/gtk/menus-common.ui.h:53
 msgid "_Previous Document"
 msgstr "ה_מסמך הקודם"
 
-#: ../gedit/resources/gtk/menus-common.ui.h:54
+#: ../bedit/resources/gtk/menus-common.ui.h:54
 msgid "N_ext Document"
 msgstr "המסמך ה_בא"
 
-#: ../gedit/resources/gtk/menus-common.ui.h:55
+#: ../bedit/resources/gtk/menus-common.ui.h:55
 msgid "_Move To New Window"
 msgstr "ה_עברה לחלון חדש"
 
-#: ../gedit/resources/gtk/menus-common.ui.h:56
-#: ../gedit/resources/gtk/menus.ui.h:4
-#: ../gedit/resources/gtk/menus-traditional.ui.h:17
-#: ../plugins/spell/gedit-spell-plugin.c:246
-#: ../plugins/time/resources/ui/gedit-time-dialog.ui.h:7
+#: ../bedit/resources/gtk/menus-common.ui.h:56
+#: ../bedit/resources/gtk/menus.ui.h:4
+#: ../bedit/resources/gtk/menus-traditional.ui.h:17
+#: ../plugins/spell/bedit-spell-plugin.c:246
+#: ../plugins/time/resources/ui/bedit-time-dialog.ui.h:7
 msgid "_Help"
 msgstr "ע_זרה"
 
-#: ../gedit/resources/gtk/menus-common.ui.h:57
-#: ../gedit/resources/gtk/menus.ui.h:5
-#: ../gedit/resources/gtk/menus-traditional.ui.h:18
+#: ../bedit/resources/gtk/menus-common.ui.h:57
+#: ../bedit/resources/gtk/menus.ui.h:5
+#: ../bedit/resources/gtk/menus-traditional.ui.h:18
 msgid "_About"
 msgstr "על _אודות"
 
-#: ../gedit/resources/gtk/menus.ui.h:3
-#: ../gedit/resources/gtk/menus-traditional.ui.h:16
+#: ../bedit/resources/gtk/menus.ui.h:3
+#: ../bedit/resources/gtk/menus-traditional.ui.h:16
 msgid "_Keyboard Shortcuts"
 msgstr "_צירופי מקשים"
 
-#: ../gedit/resources/gtk/menus.ui.h:11
-#: ../gedit/resources/gtk/menus-traditional.ui.h:5
+#: ../bedit/resources/gtk/menus.ui.h:11
+#: ../bedit/resources/gtk/menus-traditional.ui.h:5
 msgid "Save _All"
 msgstr "_שמירת הכול"
 
-#: ../gedit/resources/gtk/menus.ui.h:13
-#: ../gedit/resources/gtk/menus-traditional.ui.h:7
+#: ../bedit/resources/gtk/menus.ui.h:13
+#: ../bedit/resources/gtk/menus-traditional.ui.h:7
 msgid "_Find and Replace…"
 msgstr "חיפוש והח_לפה…"
 
-#: ../gedit/resources/gtk/menus.ui.h:15
-#: ../gedit/resources/gtk/menus-traditional.ui.h:9
+#: ../bedit/resources/gtk/menus.ui.h:15
+#: ../bedit/resources/gtk/menus-traditional.ui.h:9
 msgid "_Go to Line…"
 msgstr "מעבר _לשורה…"
 
-#: ../gedit/resources/gtk/menus.ui.h:16
-#: ../gedit/resources/gtk/menus-traditional.ui.h:10
-#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:13
+#: ../bedit/resources/gtk/menus.ui.h:16
+#: ../bedit/resources/gtk/menus-traditional.ui.h:10
+#: ../bedit/resources/ui/bedit-preferences-dialog.ui.h:13
 msgid "View"
 msgstr "תצוגה"
 
-#: ../gedit/resources/gtk/menus.ui.h:20
-#: ../gedit/resources/gtk/menus-traditional.ui.h:14
+#: ../bedit/resources/gtk/menus.ui.h:20
+#: ../bedit/resources/gtk/menus-traditional.ui.h:14
 msgid "Tools"
 msgstr "כלים"
 
-#: ../gedit/resources/ui/gedit-encodings-dialog.ui.h:1
+#: ../bedit/resources/ui/bedit-encodings-dialog.ui.h:1
 msgid "Character Encodings"
 msgstr "קידוד תווים"
 
-#: ../gedit/resources/ui/gedit-encodings-dialog.ui.h:3
+#: ../bedit/resources/ui/bedit-encodings-dialog.ui.h:3
 msgid "_Apply"
 msgstr "ה_חלה"
 
-#: ../gedit/resources/ui/gedit-encodings-dialog.ui.h:4
+#: ../bedit/resources/ui/bedit-encodings-dialog.ui.h:4
 msgid "A_vailable Encodings"
 msgstr "קידודים _זמינים"
 
-#: ../gedit/resources/ui/gedit-encodings-dialog.ui.h:5
+#: ../bedit/resources/ui/bedit-encodings-dialog.ui.h:5
 msgid "Cho_sen Encodings"
 msgstr "קידודים נ_בחרים"
 
-#: ../gedit/resources/ui/gedit-encodings-dialog.ui.h:6
+#: ../bedit/resources/ui/bedit-encodings-dialog.ui.h:6
 msgid "_Description"
 msgstr "_תיאור"
 
-#: ../gedit/resources/ui/gedit-encodings-dialog.ui.h:7
+#: ../bedit/resources/ui/bedit-encodings-dialog.ui.h:7
 msgid "_Encoding"
 msgstr "_קידוד"
 
-#: ../gedit/resources/ui/gedit-highlight-mode-dialog.ui.h:1
+#: ../bedit/resources/ui/bedit-highlight-mode-dialog.ui.h:1
 msgid "Highlight Mode"
 msgstr "מצב הדגשה"
 
-#: ../gedit/resources/ui/gedit-highlight-mode-dialog.ui.h:3
+#: ../bedit/resources/ui/bedit-highlight-mode-dialog.ui.h:3
 msgid "_Select"
 msgstr "_בחירה"
 
-#: ../gedit/resources/ui/gedit-highlight-mode-selector.ui.h:1
+#: ../bedit/resources/ui/bedit-highlight-mode-selector.ui.h:1
 msgid "Search highlight mode..."
 msgstr "חיפוש במצב הדגשה…"
 
-#: ../gedit/resources/ui/gedit-open-document-selector.ui.h:1
+#: ../bedit/resources/ui/bedit-open-document-selector.ui.h:1
 msgid "No results"
 msgstr "לא נמצאו תוצאות"
 
-#: ../gedit/resources/ui/gedit-open-document-selector.ui.h:2
+#: ../bedit/resources/ui/bedit-open-document-selector.ui.h:2
 msgid "Other _Documents…"
 msgstr "_מסמכים אחרים…"
 
-#: ../gedit/resources/ui/gedit-open-document-selector.ui.h:3
+#: ../bedit/resources/ui/bedit-open-document-selector.ui.h:3
 msgid "Open another file"
 msgstr "פתיחת קובץ אחר"
 
-#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:1
+#: ../bedit/resources/ui/bedit-preferences-dialog.ui.h:1
 msgid "Preferences"
 msgstr "העדפות"
 
-#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:3
+#: ../bedit/resources/ui/bedit-preferences-dialog.ui.h:3
 msgid "Display right _margin at column:"
 msgstr "_הצגת השוליים הימניים בעמודה:"
 
-#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:4
+#: ../bedit/resources/ui/bedit-preferences-dialog.ui.h:4
 msgid "Display _statusbar"
 msgstr "הצגת _שורת מצב"
 
-#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:5
+#: ../bedit/resources/ui/bedit-preferences-dialog.ui.h:5
 msgid "Display _overview map"
 msgstr "הצגת מפת _סקירה"
 
-#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:6
+#: ../bedit/resources/ui/bedit-preferences-dialog.ui.h:6
 msgid "Display _grid pattern"
 msgstr "הצגת תבנית _רשת"
 
-#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:7
-#: ../gedit/resources/ui/gedit-print-preferences.ui.h:9
+#: ../bedit/resources/ui/bedit-preferences-dialog.ui.h:7
+#: ../bedit/resources/ui/bedit-print-preferences.ui.h:9
 msgid "Text Wrapping"
 msgstr "גלישת טקסט"
 
-#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:8
-#: ../gedit/resources/ui/gedit-print-preferences.ui.h:10
+#: ../bedit/resources/ui/bedit-preferences-dialog.ui.h:8
+#: ../bedit/resources/ui/bedit-print-preferences.ui.h:10
 msgid "Enable text _wrapping"
 msgstr "אפשור _גלישת טקסט"
 
-#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:9
-#: ../gedit/resources/ui/gedit-print-preferences.ui.h:11
+#: ../bedit/resources/ui/bedit-preferences-dialog.ui.h:9
+#: ../bedit/resources/ui/bedit-print-preferences.ui.h:11
 msgid "Do not _split words over two lines"
 msgstr "אין ל_פצל מילים ליותר משתי שורות"
 
-#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:10
+#: ../bedit/resources/ui/bedit-preferences-dialog.ui.h:10
 msgid "Highlighting"
 msgstr "הדגשה"
 
-#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:11
+#: ../bedit/resources/ui/bedit-preferences-dialog.ui.h:11
 msgid "Highlight current _line"
 msgstr "ה_דגשת את השורה הנוכחית"
 
-#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:12
+#: ../bedit/resources/ui/bedit-preferences-dialog.ui.h:12
 msgid "Highlight matching _brackets"
 msgstr "הדגשת ה_סוגר התואם"
 
-#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:14
+#: ../bedit/resources/ui/bedit-preferences-dialog.ui.h:14
 msgid "Tab Stops"
 msgstr "עצירות טאב"
 
-#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:15
+#: ../bedit/resources/ui/bedit-preferences-dialog.ui.h:15
 msgid "_Tab width:"
 msgstr "_רוחב טאב:"
 
-#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:16
+#: ../bedit/resources/ui/bedit-preferences-dialog.ui.h:16
 msgid "Insert _spaces instead of tabs"
 msgstr "הוספת _רווחים במקום טאבים"
 
-#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:17
+#: ../bedit/resources/ui/bedit-preferences-dialog.ui.h:17
 msgid "_Enable automatic indentation"
 msgstr "_אפשור הזחה אוטומטית"
 
-#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:18
+#: ../bedit/resources/ui/bedit-preferences-dialog.ui.h:18
 msgid "File Saving"
 msgstr "שמירת קובץ"
 
-#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:19
+#: ../bedit/resources/ui/bedit-preferences-dialog.ui.h:19
 msgid "Create a _backup copy of files before saving"
 msgstr "יש ליצור עותק _גיבוי של הקבצים לפני השמירה"
 
-#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:20
+#: ../bedit/resources/ui/bedit-preferences-dialog.ui.h:20
 msgid "_Autosave files every"
 msgstr "שמירה _אוטומטית בכול"
 
-#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:21
+#: ../bedit/resources/ui/bedit-preferences-dialog.ui.h:21
 msgid "_minutes"
 msgstr "_דקות"
 
-#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:22
+#: ../bedit/resources/ui/bedit-preferences-dialog.ui.h:22
 msgid "Editor"
 msgstr "עורך"
 
-#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:23
+#: ../bedit/resources/ui/bedit-preferences-dialog.ui.h:23
 #: ../plugins/externaltools/com.bwhmather.bedit.plugins.externaltools.gschema.xml.in.h:3
 #: ../plugins/pythonconsole/com.bwhmather.bedit.plugins.pythonconsole.gschema.xml.in.h:7
 msgid "Font"
 msgstr "גופן"
 
-#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:24
+#: ../bedit/resources/ui/bedit-preferences-dialog.ui.h:24
 msgid "Editor _font: "
 msgstr "_גופן העורך: "
 
-#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:25
+#: ../bedit/resources/ui/bedit-preferences-dialog.ui.h:25
 msgid "Pick the editor font"
 msgstr "בחירת גופן לעורך"
 
-#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:26
+#: ../bedit/resources/ui/bedit-preferences-dialog.ui.h:26
 msgid "Color Scheme"
 msgstr "סכימת צבעים"
 
-#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:27
+#: ../bedit/resources/ui/bedit-preferences-dialog.ui.h:27
 msgid "Install scheme"
 msgstr "התקנת ערכה"
 
-#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:28
+#: ../bedit/resources/ui/bedit-preferences-dialog.ui.h:28
 msgid "Install Scheme"
 msgstr "התקנת ערכה"
 
-#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:29
+#: ../bedit/resources/ui/bedit-preferences-dialog.ui.h:29
 msgid "Uninstall scheme"
 msgstr "הסרת ערכה"
 
-#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:30
+#: ../bedit/resources/ui/bedit-preferences-dialog.ui.h:30
 msgid "Uninstall Scheme"
 msgstr "הסרת ערכה"
 
-#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:31
+#: ../bedit/resources/ui/bedit-preferences-dialog.ui.h:31
 msgid "Font & Colors"
 msgstr "גופן וצבעים"
 
-#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:32
+#: ../bedit/resources/ui/bedit-preferences-dialog.ui.h:32
 msgid "Plugins"
 msgstr "תוספים"
 
-#: ../gedit/resources/ui/gedit-print-preferences.ui.h:1
+#: ../bedit/resources/ui/bedit-print-preferences.ui.h:1
 msgid "Syntax Highlighting"
 msgstr "הדגשת תחביר"
 
-#: ../gedit/resources/ui/gedit-print-preferences.ui.h:2
+#: ../bedit/resources/ui/bedit-print-preferences.ui.h:2
 msgid "Print synta_x highlighting"
 msgstr "הדפסת הדגשת הת_חביר"
 
-#: ../gedit/resources/ui/gedit-print-preferences.ui.h:3
+#: ../bedit/resources/ui/bedit-print-preferences.ui.h:3
 msgid "Line Numbers"
 msgstr "מספרי שורות"
 
-#: ../gedit/resources/ui/gedit-print-preferences.ui.h:4
+#: ../bedit/resources/ui/bedit-print-preferences.ui.h:4
 msgid "Print line nu_mbers"
 msgstr "הדפסת מס_פרי שורות"
 
 #.
-#: ../gedit/resources/ui/gedit-print-preferences.ui.h:6
+#: ../bedit/resources/ui/bedit-print-preferences.ui.h:6
 msgid "_Number every"
 msgstr "_מספר בכול"
 
 #.
-#: ../gedit/resources/ui/gedit-print-preferences.ui.h:8
+#: ../bedit/resources/ui/bedit-print-preferences.ui.h:8
 msgid "lines"
 msgstr "שורות"
 
-#: ../gedit/resources/ui/gedit-print-preferences.ui.h:12
+#: ../bedit/resources/ui/bedit-print-preferences.ui.h:12
 msgid "Page header"
 msgstr "כותרת העמוד"
 
-#: ../gedit/resources/ui/gedit-print-preferences.ui.h:13
+#: ../bedit/resources/ui/bedit-print-preferences.ui.h:13
 msgid "Print page _headers"
 msgstr "הדפסת _כותרות העמוד"
 
-#: ../gedit/resources/ui/gedit-print-preferences.ui.h:14
+#: ../bedit/resources/ui/bedit-print-preferences.ui.h:14
 msgid "Fonts"
 msgstr "גופנים"
 
-#: ../gedit/resources/ui/gedit-print-preferences.ui.h:15
+#: ../bedit/resources/ui/bedit-print-preferences.ui.h:15
 msgid "_Body:"
 msgstr "_גוף:"
 
-#: ../gedit/resources/ui/gedit-print-preferences.ui.h:16
+#: ../bedit/resources/ui/bedit-print-preferences.ui.h:16
 msgid "_Line numbers:"
 msgstr "מספרי _שורות:"
 
-#: ../gedit/resources/ui/gedit-print-preferences.ui.h:17
+#: ../bedit/resources/ui/bedit-print-preferences.ui.h:17
 msgid "He_aders and footers:"
 msgstr "כו_תרות עיליות ותחתונות:"
 
-#: ../gedit/resources/ui/gedit-print-preferences.ui.h:18
+#: ../bedit/resources/ui/bedit-print-preferences.ui.h:18
 msgid "_Restore Default Fonts"
 msgstr "_שחזור גופני ברירת המחדל"
 
-#: ../gedit/resources/ui/gedit-print-preview.ui.h:1
+#: ../bedit/resources/ui/bedit-print-preview.ui.h:1
 msgid "Show the previous page"
 msgstr "הצגת העמוד הקודם"
 
-#: ../gedit/resources/ui/gedit-print-preview.ui.h:2
+#: ../bedit/resources/ui/bedit-print-preview.ui.h:2
 msgid "Show the next page"
 msgstr "הצגת העמוד הבא"
 
-#: ../gedit/resources/ui/gedit-print-preview.ui.h:3
+#: ../bedit/resources/ui/bedit-print-preview.ui.h:3
 msgid "Current page (Alt+P)"
 msgstr "עמוד נוכחי (Alt+P)"
 
 #. the "of" from "1 of 19" in print preview
-#: ../gedit/resources/ui/gedit-print-preview.ui.h:5
+#: ../bedit/resources/ui/bedit-print-preview.ui.h:5
 msgid "of"
 msgstr "מתוך"
 
-#: ../gedit/resources/ui/gedit-print-preview.ui.h:6
+#: ../bedit/resources/ui/bedit-print-preview.ui.h:6
 msgid "Page total"
 msgstr "סה\"כ דפים"
 
-#: ../gedit/resources/ui/gedit-print-preview.ui.h:7
+#: ../bedit/resources/ui/bedit-print-preview.ui.h:7
 msgid "The total number of pages in the document"
 msgstr "סך כל הדפים במסמך"
 
-#: ../gedit/resources/ui/gedit-print-preview.ui.h:8
+#: ../bedit/resources/ui/bedit-print-preview.ui.h:8
 msgid "Show multiple pages"
 msgstr "הצגת מספר עמודים"
 
-#: ../gedit/resources/ui/gedit-print-preview.ui.h:9
+#: ../bedit/resources/ui/bedit-print-preview.ui.h:9
 msgid "Zoom 1:1"
 msgstr "תקריב 1:1"
 
-#: ../gedit/resources/ui/gedit-print-preview.ui.h:10
+#: ../bedit/resources/ui/bedit-print-preview.ui.h:10
 msgid "Zoom to fit the whole page"
 msgstr "הגדרת התקריב להתאמה לעמוד כולו"
 
-#: ../gedit/resources/ui/gedit-print-preview.ui.h:11
+#: ../bedit/resources/ui/bedit-print-preview.ui.h:11
 msgid "Zoom the page in"
 msgstr "התקרבות לעמוד"
 
-#: ../gedit/resources/ui/gedit-print-preview.ui.h:12
+#: ../bedit/resources/ui/bedit-print-preview.ui.h:12
 msgid "Zoom the page out"
 msgstr "התרחקות מהעמוד"
 
-#: ../gedit/resources/ui/gedit-print-preview.ui.h:13
+#: ../bedit/resources/ui/bedit-print-preview.ui.h:13
 msgid "Close print preview"
 msgstr "סגירת התצוגה המקדימה"
 
-#: ../gedit/resources/ui/gedit-print-preview.ui.h:14
+#: ../bedit/resources/ui/bedit-print-preview.ui.h:14
 msgid "_Close Preview"
 msgstr "_סגירת תצוגה מקדימה"
 
-#: ../gedit/resources/ui/gedit-print-preview.ui.h:15
+#: ../bedit/resources/ui/bedit-print-preview.ui.h:15
 msgid "Page Preview"
 msgstr "תצוגה מקדימה"
 
-#: ../gedit/resources/ui/gedit-print-preview.ui.h:16
+#: ../bedit/resources/ui/bedit-print-preview.ui.h:16
 msgid "The preview of a page in the document to be printed"
 msgstr "תצוגה מקדימה של דף מהמסמך המיועד להדפסה"
 
-#: ../gedit/resources/ui/gedit-replace-dialog.ui.h:3
+#: ../bedit/resources/ui/bedit-replace-dialog.ui.h:3
 msgid "Replace _All"
 msgstr "החלפה ב_כול"
 
-#: ../gedit/resources/ui/gedit-replace-dialog.ui.h:5
+#: ../bedit/resources/ui/bedit-replace-dialog.ui.h:5
 msgctxt "label of the find button"
 msgid "_Find"
 msgstr "_חיפוש"
 
-#: ../gedit/resources/ui/gedit-replace-dialog.ui.h:6
+#: ../bedit/resources/ui/bedit-replace-dialog.ui.h:6
 msgctxt "label on the left of the GtkEntry containing text to search"
 msgid "F_ind "
 msgstr "_חיפוש"
 
-#: ../gedit/resources/ui/gedit-replace-dialog.ui.h:7
+#: ../bedit/resources/ui/bedit-replace-dialog.ui.h:7
 msgid "Replace _with "
 msgstr "החלפה _עם"
 
-#: ../gedit/resources/ui/gedit-replace-dialog.ui.h:8
+#: ../bedit/resources/ui/bedit-replace-dialog.ui.h:8
 msgid "_Match case"
 msgstr "הת_אמת רישיות"
 
-#: ../gedit/resources/ui/gedit-replace-dialog.ui.h:9
+#: ../bedit/resources/ui/bedit-replace-dialog.ui.h:9
 msgid "Match _entire word only"
 msgstr "התאמת מילים _שלמות בלבד"
 
-#: ../gedit/resources/ui/gedit-replace-dialog.ui.h:10
+#: ../bedit/resources/ui/bedit-replace-dialog.ui.h:10
 msgid "Re_gular expression"
 msgstr "ביטוי _רגולרי"
 
-#: ../gedit/resources/ui/gedit-replace-dialog.ui.h:11
+#: ../bedit/resources/ui/bedit-replace-dialog.ui.h:11
 msgid "Search _backwards"
 msgstr "חיפוש _אחורה"
 
-#: ../gedit/resources/ui/gedit-replace-dialog.ui.h:12
+#: ../bedit/resources/ui/bedit-replace-dialog.ui.h:12
 msgid "Wra_p around"
 msgstr "_גלישה מסביב"
 
-#: ../gedit/resources/ui/gedit-shortcuts.ui.h:1
+#: ../bedit/resources/ui/bedit-shortcuts.ui.h:1
 msgctxt "shortcut window"
 msgid "Documents"
 msgstr "מסמכים"
 
-#: ../gedit/resources/ui/gedit-shortcuts.ui.h:2
+#: ../bedit/resources/ui/bedit-shortcuts.ui.h:2
 msgctxt "shortcut window"
 msgid "Create a new document in a tab"
 msgstr "יצירת מסמך חדש בלשוניתו"
 
-#: ../gedit/resources/ui/gedit-shortcuts.ui.h:3
+#: ../bedit/resources/ui/bedit-shortcuts.ui.h:3
 msgctxt "shortcut window"
 msgid "Open a document"
 msgstr "פתיחת מסמך"
 
-#: ../gedit/resources/ui/gedit-shortcuts.ui.h:4
+#: ../bedit/resources/ui/bedit-shortcuts.ui.h:4
 msgctxt "shortcut window"
 msgid "Save the document"
 msgstr "שמירת המסמך"
 
-#: ../gedit/resources/ui/gedit-shortcuts.ui.h:5
+#: ../bedit/resources/ui/bedit-shortcuts.ui.h:5
 msgctxt "shortcut window"
 msgid "Save the document with a new filename"
 msgstr "שמירת המסמך בשם קובץ חדש"
 
-#: ../gedit/resources/ui/gedit-shortcuts.ui.h:6
+#: ../bedit/resources/ui/bedit-shortcuts.ui.h:6
 msgctxt "shortcut window"
 msgid "Save all the documents"
 msgstr "שמירת כל המסמכים"
 
-#: ../gedit/resources/ui/gedit-shortcuts.ui.h:7
+#: ../bedit/resources/ui/bedit-shortcuts.ui.h:7
 msgctxt "shortcut window"
 msgid "Close the document"
 msgstr "סגירת המסמך"
 
-#: ../gedit/resources/ui/gedit-shortcuts.ui.h:8
+#: ../bedit/resources/ui/bedit-shortcuts.ui.h:8
 msgctxt "shortcut window"
 msgid "Close all the documents"
 msgstr "סגירת כל המסמכים"
 
-#: ../gedit/resources/ui/gedit-shortcuts.ui.h:9
+#: ../bedit/resources/ui/bedit-shortcuts.ui.h:9
 msgctxt "shortcut window"
 msgid "Reopen the most recently closed document"
 msgstr "פתיחה מחדש של המסמך האחרון שנסגר"
 
-#: ../gedit/resources/ui/gedit-shortcuts.ui.h:10
+#: ../bedit/resources/ui/bedit-shortcuts.ui.h:10
 msgctxt "shortcut window"
 msgid "Switch to the next document"
 msgstr "מעבר למסמך הבא"
 
-#: ../gedit/resources/ui/gedit-shortcuts.ui.h:11
+#: ../bedit/resources/ui/bedit-shortcuts.ui.h:11
 msgctxt "shortcut window"
 msgid "Switch to the previous document"
 msgstr "מעבר למסמך הקודם"
 
-#: ../gedit/resources/ui/gedit-shortcuts.ui.h:12
+#: ../bedit/resources/ui/bedit-shortcuts.ui.h:12
 msgctxt "shortcut window"
 msgid "Switch to the first - ninth document"
 msgstr "מעבר למסמך הראשון - התשיעי"
 
-#: ../gedit/resources/ui/gedit-shortcuts.ui.h:13
+#: ../bedit/resources/ui/bedit-shortcuts.ui.h:13
 msgctxt "shortcut window"
 msgid "Windows and Panels"
 msgstr "חלונות ולוחות"
 
-#: ../gedit/resources/ui/gedit-shortcuts.ui.h:14
+#: ../bedit/resources/ui/bedit-shortcuts.ui.h:14
 msgctxt "shortcut window"
 msgid "Create a new document in a window"
 msgstr "יצירת מסמך חדש בחלון"
 
-#: ../gedit/resources/ui/gedit-shortcuts.ui.h:15
+#: ../bedit/resources/ui/bedit-shortcuts.ui.h:15
 msgctxt "shortcut window"
 msgid "Create a new tab group"
 msgstr "יצירת קבוצת לשוניות חדשה"
 
-#: ../gedit/resources/ui/gedit-shortcuts.ui.h:16
+#: ../bedit/resources/ui/bedit-shortcuts.ui.h:16
 msgctxt "shortcut window"
 msgid "Show side panel"
 msgstr "הצגת הלוח הצדי"
 
-#: ../gedit/resources/ui/gedit-shortcuts.ui.h:17
+#: ../bedit/resources/ui/bedit-shortcuts.ui.h:17
 msgctxt "shortcut window"
 msgid "Show bottom panel"
 msgstr "הצגת הלוח התחתון"
 
-#: ../gedit/resources/ui/gedit-shortcuts.ui.h:18
+#: ../bedit/resources/ui/bedit-shortcuts.ui.h:18
 msgctxt "shortcut window"
 msgid "Fullscreen on / off"
 msgstr "מסך מלא"
 
-#: ../gedit/resources/ui/gedit-shortcuts.ui.h:19
+#: ../bedit/resources/ui/bedit-shortcuts.ui.h:19
 msgctxt "shortcut window"
 msgid "Quit the application"
 msgstr "יציאה מהיישום"
 
-#: ../gedit/resources/ui/gedit-shortcuts.ui.h:20
+#: ../bedit/resources/ui/bedit-shortcuts.ui.h:20
 msgctxt "shortcut window"
 msgid "Find and Replace"
 msgstr "חיפוש והחלפה"
 
-#: ../gedit/resources/ui/gedit-shortcuts.ui.h:21
+#: ../bedit/resources/ui/bedit-shortcuts.ui.h:21
 msgctxt "shortcut window"
 msgid "Find"
 msgstr "חיפוש"
 
-#: ../gedit/resources/ui/gedit-shortcuts.ui.h:22
+#: ../bedit/resources/ui/bedit-shortcuts.ui.h:22
 msgctxt "shortcut window"
 msgid "Find the next match"
 msgstr "חיפוש ההתאמה הבאה"
 
-#: ../gedit/resources/ui/gedit-shortcuts.ui.h:23
+#: ../bedit/resources/ui/bedit-shortcuts.ui.h:23
 msgctxt "shortcut window"
 msgid "Find the previous match"
 msgstr "חיפוש ההתאמה הקודמת"
 
-#: ../gedit/resources/ui/gedit-shortcuts.ui.h:24
+#: ../bedit/resources/ui/bedit-shortcuts.ui.h:24
 msgctxt "shortcut window"
 msgid "Clear highlight"
 msgstr "ניקוי הדגשה"
 
-#: ../gedit/resources/ui/gedit-shortcuts.ui.h:25
+#: ../bedit/resources/ui/bedit-shortcuts.ui.h:25
 msgctxt "shortcut window"
 msgid "Go to line"
 msgstr "מעבר לשורה"
 
-#: ../gedit/resources/ui/gedit-shortcuts.ui.h:26
+#: ../bedit/resources/ui/bedit-shortcuts.ui.h:26
 msgctxt "shortcut window"
 msgid "Copy and Paste"
 msgstr "העתקה והדבקה"
 
-#: ../gedit/resources/ui/gedit-shortcuts.ui.h:27
+#: ../bedit/resources/ui/bedit-shortcuts.ui.h:27
 msgctxt "shortcut window"
 msgid "Copy selected text to clipboard"
 msgstr "התקהת הטקסט הנבחר ללוח הגזירים"
 
-#: ../gedit/resources/ui/gedit-shortcuts.ui.h:28
+#: ../bedit/resources/ui/bedit-shortcuts.ui.h:28
 msgctxt "shortcut window"
 msgid "Cut selected text to clipboard"
 msgstr "גזירת הטקסט הנבחר ללוח הגזירים"
 
-#: ../gedit/resources/ui/gedit-shortcuts.ui.h:29
+#: ../bedit/resources/ui/bedit-shortcuts.ui.h:29
 msgctxt "shortcut window"
 msgid "Paste text from clipboard"
 msgstr "הדבקת טקסט מלוח הגזירים"
 
-#: ../gedit/resources/ui/gedit-shortcuts.ui.h:30
+#: ../bedit/resources/ui/bedit-shortcuts.ui.h:30
 msgctxt "shortcut window"
 msgid "Undo and Redo"
 msgstr "ביטול וביצוע חוזר"
 
-#: ../gedit/resources/ui/gedit-shortcuts.ui.h:31
+#: ../bedit/resources/ui/bedit-shortcuts.ui.h:31
 msgctxt "shortcut window"
 msgid "Undo previous command"
 msgstr "ביטול הפקודה האחרונה"
 
-#: ../gedit/resources/ui/gedit-shortcuts.ui.h:32
+#: ../bedit/resources/ui/bedit-shortcuts.ui.h:32
 msgctxt "shortcut window"
 msgid "Redo previous command"
 msgstr "ביצוע חוזר של הפקודה האחרונה"
 
-#: ../gedit/resources/ui/gedit-shortcuts.ui.h:33
+#: ../bedit/resources/ui/bedit-shortcuts.ui.h:33
 msgctxt "shortcut window"
 msgid "Selection"
 msgstr "בחירה"
 
-#: ../gedit/resources/ui/gedit-shortcuts.ui.h:34
+#: ../bedit/resources/ui/bedit-shortcuts.ui.h:34
 msgctxt "shortcut window"
 msgid "Select all text"
 msgstr "בחירת כל הטקסט"
 
-#: ../gedit/resources/ui/gedit-shortcuts.ui.h:35
+#: ../bedit/resources/ui/bedit-shortcuts.ui.h:35
 msgctxt "shortcut window"
 msgid "Editing"
 msgstr "עריכה"
 
-#: ../gedit/resources/ui/gedit-shortcuts.ui.h:36
+#: ../bedit/resources/ui/bedit-shortcuts.ui.h:36
 msgctxt "shortcut window"
 msgid "Toggle insert / overwrite"
 msgstr "מעבר בין מצב הכנסה / דריסה"
 
-#: ../gedit/resources/ui/gedit-shortcuts.ui.h:37
+#: ../bedit/resources/ui/bedit-shortcuts.ui.h:37
 msgctxt "shortcut window"
 msgid "Delete current line"
 msgstr "מחיקת השורה הנוכחית"
 
-#: ../gedit/resources/ui/gedit-shortcuts.ui.h:38
+#: ../bedit/resources/ui/bedit-shortcuts.ui.h:38
 msgctxt "shortcut window"
 msgid "Join selected lines"
 msgstr "צירוף השורות הנבחרות"
 
-#: ../gedit/resources/ui/gedit-shortcuts.ui.h:39
+#: ../bedit/resources/ui/bedit-shortcuts.ui.h:39
 msgctxt "shortcut window"
 msgid "Move current line up"
 msgstr "העברת השורה הנוכחית מעלה"
 
-#: ../gedit/resources/ui/gedit-shortcuts.ui.h:40
+#: ../bedit/resources/ui/bedit-shortcuts.ui.h:40
 msgctxt "shortcut window"
 msgid "Move current line down"
 msgstr "העברת השורה הנוכחית מטה"
 
-#: ../gedit/resources/ui/gedit-shortcuts.ui.h:41
+#: ../bedit/resources/ui/bedit-shortcuts.ui.h:41
 msgctxt "shortcut window"
 msgid "Move current word left"
 msgstr "העברה המילה הנוכחית שמאלה"
 
-#: ../gedit/resources/ui/gedit-shortcuts.ui.h:42
+#: ../bedit/resources/ui/bedit-shortcuts.ui.h:42
 msgctxt "shortcut window"
 msgid "Move current word right"
 msgstr "העברת השורה הנוכחית ימינה"
 
-#: ../gedit/resources/ui/gedit-shortcuts.ui.h:43
+#: ../bedit/resources/ui/bedit-shortcuts.ui.h:43
 msgctxt "shortcut window"
 msgid "Convert to uppercase"
 msgstr "המרה לאותיות רישיות"
 
-#: ../gedit/resources/ui/gedit-shortcuts.ui.h:44
+#: ../bedit/resources/ui/bedit-shortcuts.ui.h:44
 msgctxt "shortcut window"
 msgid "Convert to lowercase"
 msgstr "המרה לאותיות קטנות"
 
-#: ../gedit/resources/ui/gedit-shortcuts.ui.h:45
+#: ../bedit/resources/ui/bedit-shortcuts.ui.h:45
 msgctxt "shortcut window"
 msgid "Invert case"
 msgstr "החלפה בין אותיות רישיות וקטנות"
 
-#: ../gedit/resources/ui/gedit-shortcuts.ui.h:46
+#: ../bedit/resources/ui/bedit-shortcuts.ui.h:46
 msgctxt "shortcut window"
 msgid "Increment number at cursor"
 msgstr "הגדלת המספר שתחת הסמן"
 
-#: ../gedit/resources/ui/gedit-shortcuts.ui.h:47
+#: ../bedit/resources/ui/bedit-shortcuts.ui.h:47
 msgctxt "shortcut window"
 msgid "Decrement number at cursor"
 msgstr "הקטנת המספר שתחת הסמן"
 
-#: ../gedit/resources/ui/gedit-shortcuts.ui.h:48
+#: ../bedit/resources/ui/bedit-shortcuts.ui.h:48
 msgctxt "shortcut window"
 msgid "Tools"
 msgstr "כלים"
 
-#: ../gedit/resources/ui/gedit-shortcuts.ui.h:49
+#: ../bedit/resources/ui/bedit-shortcuts.ui.h:49
 msgctxt "shortcut window"
 msgid "Check spelling"
 msgstr "בדיקת איות"
 
-#: ../gedit/resources/ui/gedit-shortcuts.ui.h:50
+#: ../bedit/resources/ui/bedit-shortcuts.ui.h:50
 msgctxt "shortcut window"
 msgid "Print the document"
 msgstr "הדפסת המסמך"
 
-#: ../gedit/resources/ui/gedit-shortcuts.ui.h:51
+#: ../bedit/resources/ui/bedit-shortcuts.ui.h:51
 msgctxt "shortcut window"
 msgid "Show completion window"
 msgstr "הצגת חלון הידור"
 
-#: ../gedit/resources/ui/gedit-tab-label.ui.h:1
+#: ../bedit/resources/ui/bedit-tab-label.ui.h:1
 msgid "Close Document"
 msgstr "סגירת מסמך"
 
-#: ../gedit/resources/ui/gedit-window.ui.h:2
+#: ../bedit/resources/ui/bedit-window.ui.h:2
 msgid "Open a file"
 msgstr "פתיחת קובץ"
 
-#: ../gedit/resources/ui/gedit-window.ui.h:4
+#: ../bedit/resources/ui/bedit-window.ui.h:4
 msgid "Open"
 msgstr "פתיחה"
 
-#: ../gedit/resources/ui/gedit-window.ui.h:5
+#: ../bedit/resources/ui/bedit-window.ui.h:5
 msgid "Create a new document"
 msgstr "יצירת מסמך חדש"
 
-#: ../gedit/resources/ui/gedit-window.ui.h:6
+#: ../bedit/resources/ui/bedit-window.ui.h:6
 msgid "New"
 msgstr "חדש"
 
-#: ../gedit/resources/ui/gedit-window.ui.h:8
+#: ../bedit/resources/ui/bedit-window.ui.h:8
 msgid "Save the current file"
 msgstr "שמירת הקובץ הנוכחי"
 
-#: ../gedit/resources/ui/gedit-window.ui.h:9
+#: ../bedit/resources/ui/bedit-window.ui.h:9
 msgid "Save"
 msgstr "שמירה"
 
-#: ../gedit/resources/ui/gedit-window.ui.h:10
+#: ../bedit/resources/ui/bedit-window.ui.h:10
 msgid "Hide panel"
 msgstr "הסתרת הלוח"
 
-#: ../gedit/resources/ui/gedit-window.ui.h:11
+#: ../bedit/resources/ui/bedit-window.ui.h:11
 msgid "Open a file dialog"
 msgstr "דו שיח לפתיחת קובץ"
 
-#: ../gedit/resources/ui/gedit-window.ui.h:12
+#: ../bedit/resources/ui/bedit-window.ui.h:12
 msgid "Leave Fullscreen"
 msgstr "יציאה ממצב מסך מלא"
 
@@ -2521,31 +2521,31 @@ msgid "Check update"
 msgstr "בדיקה אחר עדכון"
 
 #: ../plugins/checkupdate/checkupdate.plugin.desktop.in.h:2
-msgid "Check for latest version of gedit"
-msgstr "בדיקה אחר הגרסה האחרונה של gedit"
+msgid "Check for latest version of bedit"
+msgstr "בדיקה אחר הגרסה האחרונה של bedit"
 
-#: ../plugins/checkupdate/gedit-check-update-plugin.c:245
+#: ../plugins/checkupdate/bedit-check-update-plugin.c:245
 msgid "There was an error displaying the URI."
 msgstr "ארעה שגיאה בעת הצגת הכתובת."
 
-#: ../plugins/checkupdate/gedit-check-update-plugin.c:282
+#: ../plugins/checkupdate/bedit-check-update-plugin.c:282
 msgid "_Download"
 msgstr "ה_רדה"
 
-#: ../plugins/checkupdate/gedit-check-update-plugin.c:283
+#: ../plugins/checkupdate/bedit-check-update-plugin.c:283
 msgid "_Ignore Version"
 msgstr "ה_תעלמות מגרסה"
 
-#: ../plugins/checkupdate/gedit-check-update-plugin.c:288
-msgid "There is a new version of gedit"
-msgstr "ישנה גרסה חדשה של gedit"
+#: ../plugins/checkupdate/bedit-check-update-plugin.c:288
+msgid "There is a new version of bedit"
+msgstr "ישנה גרסה חדשה של bedit"
 
-#: ../plugins/checkupdate/gedit-check-update-plugin.c:291
+#: ../plugins/checkupdate/bedit-check-update-plugin.c:291
 msgid ""
-"You can download the new version of gedit by clicking on the download button "
+"You can download the new version of bedit by clicking on the download button "
 "or ignore that version and wait for a new one"
 msgstr ""
-"ניתן להוריד את הגרסה החדשה של gedit על ידי לחיצה על לחצן ההורדה או להתעלם "
+"ניתן להוריד את הגרסה החדשה של bedit על ידי לחיצה על לחצן ההורדה או להתעלם "
 "מגרסה זו ולהמתין לגרסה חדשה יותר"
 
 #. ex:set ts=8 noet:
@@ -2553,14 +2553,14 @@ msgstr ""
 msgid "Version to Ignore"
 msgstr "גרסה להתעלמות"
 
-#. This is releated to the next gedit version to be released
+#. This is releated to the next bedit version to be released
 #: ../plugins/checkupdate/com.bwhmather.bedit.plugins.checkupdate.gschema.xml.in.h:3
 msgid "Version to ignore until a newer version is released."
 msgstr "גרסה להתעלמות עד שתשוחרר גרסה חדשה יותר."
 
 #. ex:set ts=8 noet:
 #: ../plugins/docinfo/docinfo.plugin.desktop.in.h:1
-#: ../plugins/docinfo/resources/ui/gedit-docinfo-plugin.ui.h:1
+#: ../plugins/docinfo/resources/ui/bedit-docinfo-plugin.ui.h:1
 msgid "Document Statistics"
 msgstr "סטטיסטיקת המסמך"
 
@@ -2568,35 +2568,35 @@ msgstr "סטטיסטיקת המסמך"
 msgid "Report the number of words, lines and characters in a document."
 msgstr "דיווח על מספר המילים, השורות והתווים במסמך."
 
-#: ../plugins/docinfo/gedit-docinfo-plugin.c:537
+#: ../plugins/docinfo/bedit-docinfo-plugin.c:537
 msgid "_Document Statistics"
 msgstr "סטטיסטיקת ה_מסמך"
 
-#: ../plugins/docinfo/resources/ui/gedit-docinfo-plugin.ui.h:2
+#: ../plugins/docinfo/resources/ui/bedit-docinfo-plugin.ui.h:2
 msgid "Document"
 msgstr "מסמך"
 
-#: ../plugins/docinfo/resources/ui/gedit-docinfo-plugin.ui.h:3
+#: ../plugins/docinfo/resources/ui/bedit-docinfo-plugin.ui.h:3
 msgid "Selection"
 msgstr "בחירה"
 
-#: ../plugins/docinfo/resources/ui/gedit-docinfo-plugin.ui.h:4
+#: ../plugins/docinfo/resources/ui/bedit-docinfo-plugin.ui.h:4
 msgid "Lines"
 msgstr "שורות"
 
-#: ../plugins/docinfo/resources/ui/gedit-docinfo-plugin.ui.h:5
+#: ../plugins/docinfo/resources/ui/bedit-docinfo-plugin.ui.h:5
 msgid "Words"
 msgstr "מילים"
 
-#: ../plugins/docinfo/resources/ui/gedit-docinfo-plugin.ui.h:6
+#: ../plugins/docinfo/resources/ui/bedit-docinfo-plugin.ui.h:6
 msgid "Characters (with spaces)"
 msgstr "תווים (כולל רווחים)"
 
-#: ../plugins/docinfo/resources/ui/gedit-docinfo-plugin.ui.h:7
+#: ../plugins/docinfo/resources/ui/bedit-docinfo-plugin.ui.h:7
 msgid "Characters (no spaces)"
 msgstr "תווים (ללא רווחים)"
 
-#: ../plugins/docinfo/resources/ui/gedit-docinfo-plugin.ui.h:8
+#: ../plugins/docinfo/resources/ui/bedit-docinfo-plugin.ui.h:8
 msgid "Bytes"
 msgstr "בתים"
 
@@ -2863,51 +2863,51 @@ msgstr "חלונית סייר הקבצים"
 msgid "Easy file access from the side panel"
 msgstr "גישה קלה לקבצים מחלונית הצד"
 
-#: ../plugins/filebrowser/gedit-file-bookmarks-store.c:205
+#: ../plugins/filebrowser/bedit-file-bookmarks-store.c:205
 msgid "Home"
 msgstr "בית"
 
-#: ../plugins/filebrowser/gedit-file-bookmarks-store.c:231
+#: ../plugins/filebrowser/bedit-file-bookmarks-store.c:231
 msgid "File System"
 msgstr "מערכת קבצים"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:523
+#: ../plugins/filebrowser/bedit-file-browser-plugin.c:523
 msgid "File Browser"
 msgstr "דפדפן קבצים"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:659
+#: ../plugins/filebrowser/bedit-file-browser-plugin.c:659
 msgid "An error occurred while creating a new directory"
 msgstr "ארעה שגיאה בעת יצירת תיקייה חדשה"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:662
+#: ../plugins/filebrowser/bedit-file-browser-plugin.c:662
 msgid "An error occurred while creating a new file"
 msgstr "ארעה שגיאה בעת יצירת קובץ חדש"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:665
+#: ../plugins/filebrowser/bedit-file-browser-plugin.c:665
 msgid "An error occurred while renaming a file or directory"
 msgstr "ארעה שגיאה בעת החלפת שם קובץ או ספרייה"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:668
+#: ../plugins/filebrowser/bedit-file-browser-plugin.c:668
 msgid "An error occurred while deleting a file or directory"
 msgstr "ארעה שגיאה בעת מחיקת קובץ או ספרייה"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:671
+#: ../plugins/filebrowser/bedit-file-browser-plugin.c:671
 msgid "An error occurred while opening a directory in the file manager"
 msgstr "ארעה שגיאה בעת פתיחת תיקייה במנהל הקבצים"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:674
+#: ../plugins/filebrowser/bedit-file-browser-plugin.c:674
 msgid "An error occurred while setting a root directory"
 msgstr "ארעה שגיאה בעת הגדרת תיקיית השורש"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:677
+#: ../plugins/filebrowser/bedit-file-browser-plugin.c:677
 msgid "An error occurred while loading a directory"
 msgstr "ארעה שגיאה בעת טעינת תיקייה"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:680
+#: ../plugins/filebrowser/bedit-file-browser-plugin.c:680
 msgid "An error occurred"
 msgstr "ארעה שגיאה"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:898
+#: ../plugins/filebrowser/bedit-file-browser-plugin.c:898
 msgid ""
 "Cannot move file to trash, do you\n"
 "want to delete permanently?"
@@ -2915,33 +2915,33 @@ msgstr ""
 "לא ניתן להעביר לאשפה\n"
 "האם למחוק לצמיתות?"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:903
+#: ../plugins/filebrowser/bedit-file-browser-plugin.c:903
 #, c-format
 msgid "The file \"%s\" cannot be moved to the trash."
 msgstr "לא ניתן להעביר את הקובץ ״%s״ לאשפה."
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:908
+#: ../plugins/filebrowser/bedit-file-browser-plugin.c:908
 msgid "The selected files cannot be moved to the trash."
 msgstr "לא ניתן להעביר את הקבצים הנבחרים לאשפה."
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:939
+#: ../plugins/filebrowser/bedit-file-browser-plugin.c:939
 #, c-format
 msgid "Are you sure you want to permanently delete \"%s\"?"
 msgstr "האם למחוק את ״%s״ לצמיתות?"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:944
+#: ../plugins/filebrowser/bedit-file-browser-plugin.c:944
 msgid "Are you sure you want to permanently delete the selected files?"
 msgstr "האם למחוק את הקבצים המסומנים?"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:947
+#: ../plugins/filebrowser/bedit-file-browser-plugin.c:947
 msgid "If you delete an item, it is permanently lost."
 msgstr "אם פריט ימחק, הוא יאבד."
 
-#: ../plugins/filebrowser/gedit-file-browser-store.c:1794
+#: ../plugins/filebrowser/bedit-file-browser-store.c:1794
 msgid "(Empty)"
 msgstr "(ריק)"
 
-#: ../plugins/filebrowser/gedit-file-browser-store.c:3515
+#: ../plugins/filebrowser/bedit-file-browser-store.c:3515
 msgid ""
 "The renamed file is currently filtered out. You need to adjust your filter "
 "settings to make the file visible"
@@ -2950,11 +2950,11 @@ msgstr ""
 "כדי שהקובץ יופיע"
 
 #. Translators: This is the default name of new files created by the file browser pane.
-#: ../plugins/filebrowser/gedit-file-browser-store.c:3772
+#: ../plugins/filebrowser/bedit-file-browser-store.c:3772
 msgid "Untitled File"
 msgstr "קובץ ללא שם"
 
-#: ../plugins/filebrowser/gedit-file-browser-store.c:3800
+#: ../plugins/filebrowser/bedit-file-browser-store.c:3800
 msgid ""
 "The new file is currently filtered out. You need to adjust your filter "
 "settings to make the file visible"
@@ -2963,11 +2963,11 @@ msgstr ""
 "הקובץ יופיע"
 
 #. Translators: This is the default name of new directories created by the file browser pane.
-#: ../plugins/filebrowser/gedit-file-browser-store.c:3831
+#: ../plugins/filebrowser/bedit-file-browser-store.c:3831
 msgid "Untitled Folder"
 msgstr "תיקייה ללא שם"
 
-#: ../plugins/filebrowser/gedit-file-browser-store.c:3856
+#: ../plugins/filebrowser/bedit-file-browser-store.c:3856
 msgid ""
 "The new directory is currently filtered out. You need to adjust your filter "
 "settings to make the directory visible"
@@ -2975,26 +2975,26 @@ msgstr ""
 "התיקייה החדשה לא נכללת עקב סינון. יהיה עליך להתאים את הגדרות המסנן שלך כך "
 "שהתיקייה תופיע"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:754
+#: ../plugins/filebrowser/bedit-file-browser-widget.c:754
 msgid "Bookmarks"
 msgstr "סימניות"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:1995
+#: ../plugins/filebrowser/bedit-file-browser-widget.c:1995
 #, c-format
 msgid "No mount object for mounted volume: %s"
 msgstr "אין פריט עגינה עבור הכרך שעוגן: %s"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:2072
+#: ../plugins/filebrowser/bedit-file-browser-widget.c:2072
 #, c-format
 msgid "Could not open media: %s"
 msgstr "לא ניתן לפתוח את המדיה: %s"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:2119
+#: ../plugins/filebrowser/bedit-file-browser-widget.c:2119
 #, c-format
 msgid "Could not mount volume: %s"
 msgstr "לא ניתן לעגון את הכרך: %s"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:2769
+#: ../plugins/filebrowser/bedit-file-browser-widget.c:2769
 #, c-format
 msgid "Error when loading '%s': No such directory"
 msgstr "אירעה שגיאה בעת טעינת '%s': אין כזאת תיקייה"
@@ -3096,59 +3096,59 @@ msgstr "File Browser Binary Patterns"
 msgid "The supplemental patterns to use when filtering binary files."
 msgstr "התבניות המשלימות לשימוש בעת סינון קבצים בינריים."
 
-#: ../plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui.h:2
+#: ../plugins/filebrowser/resources/ui/bedit-file-browser-menus.ui.h:2
 msgid "_Set Root to Active Document"
 msgstr "ה_גדרת השורש למסמך הפעיל"
 
-#: ../plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui.h:3
+#: ../plugins/filebrowser/resources/ui/bedit-file-browser-menus.ui.h:3
 msgid "_New Folder"
 msgstr "_תיקייה חדשה"
 
-#: ../plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui.h:4
+#: ../plugins/filebrowser/resources/ui/bedit-file-browser-menus.ui.h:4
 msgid "New F_ile"
 msgstr "_קובץ חדש"
 
-#: ../plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui.h:5
+#: ../plugins/filebrowser/resources/ui/bedit-file-browser-menus.ui.h:5
 msgid "_Rename..."
 msgstr "ה_חלפת שם…"
 
-#: ../plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui.h:6
+#: ../plugins/filebrowser/resources/ui/bedit-file-browser-menus.ui.h:6
 msgid "_Move to Trash"
 msgstr "העברה ל_אשפה"
 
-#: ../plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui.h:8
+#: ../plugins/filebrowser/resources/ui/bedit-file-browser-menus.ui.h:8
 msgid "Re_fresh View"
 msgstr "ר_ענון התצוגה"
 
-#: ../plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui.h:9
+#: ../plugins/filebrowser/resources/ui/bedit-file-browser-menus.ui.h:9
 msgid "_View Folder"
 msgstr "_הצגת תיקיה"
 
-#: ../plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui.h:10
+#: ../plugins/filebrowser/resources/ui/bedit-file-browser-menus.ui.h:10
 msgid "_Open in Terminal"
 msgstr "פתיחה ב_מסוף"
 
-#: ../plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui.h:11
+#: ../plugins/filebrowser/resources/ui/bedit-file-browser-menus.ui.h:11
 msgid "_Filter"
 msgstr "_מסנן"
 
-#: ../plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui.h:12
+#: ../plugins/filebrowser/resources/ui/bedit-file-browser-menus.ui.h:12
 msgid "Show _Hidden"
 msgstr "הצגת _נסתרים"
 
-#: ../plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui.h:13
+#: ../plugins/filebrowser/resources/ui/bedit-file-browser-menus.ui.h:13
 msgid "Show _Binary"
 msgstr "הצגה _בינרית"
 
-#: ../plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui.h:14
+#: ../plugins/filebrowser/resources/ui/bedit-file-browser-menus.ui.h:14
 msgid "Match Filename"
 msgstr "התאמת שם קובץ"
 
-#: ../plugins/filebrowser/resources/ui/gedit-file-browser-widget.ui.h:1
+#: ../plugins/filebrowser/resources/ui/bedit-file-browser-widget.ui.h:1
 msgid "History"
 msgstr "היסטוריה"
 
-#: ../plugins/filebrowser/resources/ui/gedit-file-browser-widget.ui.h:2
+#: ../plugins/filebrowser/resources/ui/bedit-file-browser-widget.ui.h:2
 msgid "Open history menu"
 msgstr "פתיחת תפריט היסטוריה"
 
@@ -3157,8 +3157,8 @@ msgid "Modelines"
 msgstr "מצבי שורה"
 
 #: ../plugins/modelines/modelines.plugin.desktop.in.h:2
-msgid "Emacs, Kate and Vim-style modelines support for gedit."
-msgstr "תמיכה במצבי שורה בסגנונות של Emacs, Kate ו־Vim עבור gedit."
+msgid "Emacs, Kate and Vim-style modelines support for bedit."
+msgstr "תמיכה במצבי שורה בסגנונות של Emacs, Kate ו־Vim עבור bedit."
 
 #: ../plugins/pythonconsole/com.bwhmather.bedit.plugins.pythonconsole.gschema.xml.in.h:1
 msgid "Command Color Text"
@@ -3461,33 +3461,33 @@ msgstr "מקש קיצור להפעלת המקטע"
 msgid "_Drop targets:"
 msgstr "י_עדי השלכה:"
 
-#: ../plugins/sort/gedit-sort-plugin.c:243
+#: ../plugins/sort/bedit-sort-plugin.c:243
 msgid "S_ort..."
 msgstr "_מיון..."
 
 #. ex:set ts=8 noet:
-#: ../plugins/sort/resources/ui/gedit-sort-plugin.ui.h:1
+#: ../plugins/sort/resources/ui/bedit-sort-plugin.ui.h:1
 #: ../plugins/sort/sort.plugin.desktop.in.h:1
 msgid "Sort"
 msgstr "מיון"
 
-#: ../plugins/sort/resources/ui/gedit-sort-plugin.ui.h:2
+#: ../plugins/sort/resources/ui/bedit-sort-plugin.ui.h:2
 msgid "_Reverse order"
 msgstr "סדר יור_ד"
 
-#: ../plugins/sort/resources/ui/gedit-sort-plugin.ui.h:3
+#: ../plugins/sort/resources/ui/bedit-sort-plugin.ui.h:3
 msgid "R_emove duplicates"
 msgstr "הסרת _כפולים"
 
-#: ../plugins/sort/resources/ui/gedit-sort-plugin.ui.h:4
+#: ../plugins/sort/resources/ui/bedit-sort-plugin.ui.h:4
 msgid "C_ase sensitive"
 msgstr "התאמת אותיות _רישיות"
 
-#: ../plugins/sort/resources/ui/gedit-sort-plugin.ui.h:5
+#: ../plugins/sort/resources/ui/bedit-sort-plugin.ui.h:5
 msgid "S_tart at column:"
 msgstr "התחלה ב_עמודה:"
 
-#: ../plugins/sort/resources/ui/gedit-sort-plugin.ui.h:7
+#: ../plugins/sort/resources/ui/bedit-sort-plugin.ui.h:7
 msgid "_Sort"
 msgstr "_מיון"
 
@@ -3495,15 +3495,15 @@ msgstr "_מיון"
 msgid "Sorts a document or selected text."
 msgstr "ממיין מסמך או טקסט מסומן."
 
-#: ../plugins/spell/gedit-spell-app-activatable.c:143
+#: ../plugins/spell/bedit-spell-app-activatable.c:143
 msgid "_Check Spelling..."
 msgstr "_בדיקת איות..."
 
-#: ../plugins/spell/gedit-spell-app-activatable.c:147
+#: ../plugins/spell/bedit-spell-app-activatable.c:147
 msgid "Set _Language..."
 msgstr "הגדרת _שפה..."
 
-#: ../plugins/spell/gedit-spell-app-activatable.c:151
+#: ../plugins/spell/bedit-spell-app-activatable.c:151
 msgid "_Highlight Misspelled Words"
 msgstr "ה_דגשת מילים בעלות איות שגוי"
 
@@ -3516,11 +3516,11 @@ msgstr "בודק איות"
 msgid "Checks the spelling of the current document."
 msgstr "בדיקת האיות במסמך הנוכחי."
 
-#: ../plugins/time/gedit-time-plugin.c:270
+#: ../plugins/time/bedit-time-plugin.c:270
 msgid "In_sert Date and Time..."
 msgstr "הו_ספת תאריך ושעה..."
 
-#: ../plugins/time/gedit-time-plugin.c:496
+#: ../plugins/time/bedit-time-plugin.c:496
 msgid "Available formats"
 msgstr "מבנים זמינים"
 
@@ -3553,46 +3553,46 @@ msgstr "מבנה מותאם"
 msgid "The custom format used when inserting the date/time."
 msgstr "המבנה המתואם לשימוש בעת הוספת שעה/תאריך."
 
-#: ../plugins/time/resources/ui/gedit-time-dialog.ui.h:1
+#: ../plugins/time/resources/ui/bedit-time-dialog.ui.h:1
 msgid "Insert Date and Time"
 msgstr "הוספת תאריך ושעה"
 
-#: ../plugins/time/resources/ui/gedit-time-dialog.ui.h:2
-#: ../plugins/time/resources/ui/gedit-time-setup-dialog.ui.h:5
+#: ../plugins/time/resources/ui/bedit-time-dialog.ui.h:2
+#: ../plugins/time/resources/ui/bedit-time-setup-dialog.ui.h:5
 msgid "Use the _selected format"
 msgstr "שימוש ב_מבנה הנבחר"
 
-#: ../plugins/time/resources/ui/gedit-time-dialog.ui.h:3
-#: ../plugins/time/resources/ui/gedit-time-setup-dialog.ui.h:6
+#: ../plugins/time/resources/ui/bedit-time-dialog.ui.h:3
+#: ../plugins/time/resources/ui/bedit-time-setup-dialog.ui.h:6
 msgid "_Use custom format"
 msgstr "שימוש במבנה _מותאם"
 
 #. Translators: Use the more common date format in your locale
-#: ../plugins/time/resources/ui/gedit-time-dialog.ui.h:5
-#: ../plugins/time/resources/ui/gedit-time-setup-dialog.ui.h:9
+#: ../plugins/time/resources/ui/bedit-time-dialog.ui.h:5
+#: ../plugins/time/resources/ui/bedit-time-setup-dialog.ui.h:9
 #, no-c-format
 msgid "%d/%m/%Y %H:%M:%S"
 msgstr "%d/%m/%Y %H:%M:%S"
 
 #. Translators: This example should follow the date format defined in the entry above
-#: ../plugins/time/resources/ui/gedit-time-dialog.ui.h:6
-#: ../plugins/time/resources/ui/gedit-time-setup-dialog.ui.h:11
+#: ../plugins/time/resources/ui/bedit-time-dialog.ui.h:6
+#: ../plugins/time/resources/ui/bedit-time-setup-dialog.ui.h:11
 msgid "01/11/2009 17:52:00"
 msgstr "01/11/2009 17:52:00"
 
-#: ../plugins/time/resources/ui/gedit-time-dialog.ui.h:9
+#: ../plugins/time/resources/ui/bedit-time-dialog.ui.h:9
 msgid "_Insert"
 msgstr "הו_ספה"
 
-#: ../plugins/time/resources/ui/gedit-time-setup-dialog.ui.h:1
+#: ../plugins/time/resources/ui/bedit-time-setup-dialog.ui.h:1
 msgid "Configure date/time plugin"
 msgstr "תצורת התוסף תאריך/שעה"
 
-#: ../plugins/time/resources/ui/gedit-time-setup-dialog.ui.h:3
+#: ../plugins/time/resources/ui/bedit-time-setup-dialog.ui.h:3
 msgid "When inserting date/time..."
 msgstr "בעת הוספת תאריך/שעה..."
 
-#: ../plugins/time/resources/ui/gedit-time-setup-dialog.ui.h:4
+#: ../plugins/time/resources/ui/bedit-time-setup-dialog.ui.h:4
 msgid "_Prompt for a format"
 msgstr "הצגת _שאלה על המבנה"
 
@@ -3616,8 +3616,8 @@ msgstr "הוספת התאריך והשעה הנוכחיים במיקום הסמ�
 #~ msgid "GEOMETRY"
 #~ msgstr "GEOMETRY"
 
-#~ msgid "gedit"
-#~ msgstr "gedit"
+#~ msgid "bedit"
+#~ msgstr "bedit"
 
 #~ msgid "Edit"
 #~ msgstr "עריכה"
@@ -3750,11 +3750,11 @@ msgstr "הוספת התאריך והשעה הנוכחיים במיקום הסמ�
 #~ msgstr "Automatically Detected Encodings"
 
 #~ msgid ""
-#~ "Sorted list of encodings used by gedit for automatically detecting the "
+#~ "Sorted list of encodings used by bedit for automatically detecting the "
 #~ "encoding of a file. \"CURRENT\" represents the current locale encoding. "
 #~ "Only recognized encodings are used."
 #~ msgstr ""
-#~ "Sorted list of encodings used by gedit for automatically detecting the "
+#~ "Sorted list of encodings used by bedit for automatically detecting the "
 #~ "encoding of a file. \"CURRENT\" represents the current locale encoding. "
 #~ "Only recognized encodings are used."
 
@@ -3789,14 +3789,14 @@ msgstr "הוספת התאריך והשעה הנוכחיים במיקום הסמ�
 #~ msgid "_Search for: "
 #~ msgstr "_חיפוש אחר: "
 
-#~ msgid "About gedit"
-#~ msgstr "על אודות gedit"
+#~ msgid "About bedit"
+#~ msgstr "על אודות bedit"
 
 #~ msgid ""
-#~ "Whether gedit should create backup copies for the files it saves. You can "
+#~ "Whether bedit should create backup copies for the files it saves. You can "
 #~ "set the backup file extension with the \"Backup Copy Extension\" option."
 #~ msgstr ""
-#~ "Whether gedit should create backup copies for the files it saves. You can "
+#~ "Whether bedit should create backup copies for the files it saves. You can "
 #~ "set the backup file extension with the \"Backup Copy Extension\" option."
 
 #~ msgid "Unicode (UTF-8)"
@@ -3889,14 +3889,14 @@ msgstr "הוספת התאריך והשעה הנוכחיים במיקום הסמ�
 #~ msgid "Zeitgeist dataprovider"
 #~ msgstr "ספק נתוני שימוש"
 
-#~ msgid "Logs access and leave event for documents used with gedit"
-#~ msgstr "רישום אירועי הגישה והעזיבה עבור מסמכים בהם נעשה שימוש ב־gedit"
+#~ msgid "Logs access and leave event for documents used with bedit"
+#~ msgstr "רישום אירועי הגישה והעזיבה עבור מסמכים בהם נעשה שימוש ב־bedit"
 
 #~ msgid "Need help?"
 #~ msgstr "יש צורך בעזרה?"
 
-#~ msgid "gedit Preferences"
-#~ msgstr "העדפות gedit"
+#~ msgid "bedit Preferences"
+#~ msgstr "העדפות bedit"
 
 #~ msgid "_Snippets:"
 #~ msgstr "מ_קטעים:"
@@ -4111,10 +4111,10 @@ msgstr "הוספת התאריך והשעה הנוכחיים במיקום הסמ�
 #~ msgstr "Undo Actions Limit (DEPRECATED)"
 
 #~ msgid ""
-#~ "Maximum number of actions that gedit will be able to undo or redo. Use "
+#~ "Maximum number of actions that bedit will be able to undo or redo. Use "
 #~ "\"-1\" for unlimited number of actions. Deprecated since 2.12.0"
 #~ msgstr ""
-#~ "Maximum number of actions that gedit will be able to undo or redo. Use "
+#~ "Maximum number of actions that bedit will be able to undo or redo. Use "
 #~ "\"-1\" for unlimited number of actions. Deprecated since 2.12.0"
 
 #~ msgid ""
@@ -4122,10 +4122,10 @@ msgstr "הוספת התאריך והשעה הנוכחיים במיקום הסמ�
 #~ msgstr "לא ניתן לגשת למיקום הקובץ מכיוון שהוא לא מעוגן."
 
 #~ msgid ""
-#~ "gedit opened this instance of the file in a non-editable way. Do you want "
+#~ "bedit opened this instance of the file in a non-editable way. Do you want "
 #~ "to edit it anyway?"
 #~ msgstr ""
-#~ "‏gedit פתח מופע זה של הקובץ עבור קריאה בלבד. האם להמשיך בעריכה למרות זאת?"
+#~ "‏bedit פתח מופע זה של הקובץ עבור קריאה בלבד. האם להמשיך בעריכה למרות זאת?"
 
 #~ msgid "Do you want to drop your changes and reload the file?"
 #~ msgstr "האם ברצונך להתעלם מהשינויים שלך ולטעון מחדש את הקובץ?"
@@ -4202,8 +4202,8 @@ msgstr "הוספת התאריך והשעה הנוכחיים במיקום הסמ�
 #~ msgid "Log Out _without Saving"
 #~ msgstr "יציאה _ללא שמירה"
 
-#~ msgid "Run gedit in the background"
-#~ msgstr "הפעלת gedit ברקע"
+#~ msgid "Run bedit in the background"
+#~ msgstr "הפעלת bedit ברקע"
 
 #~ msgid "toolbutton1"
 #~ msgstr "toolbutton1"
@@ -4227,10 +4227,10 @@ msgstr "הוספת התאריך והשעה הנוכחיים במיקום הסמ�
 #~ msgstr "מעבר למיקום הבא"
 
 #~ msgid ""
-#~ "List of VFS schemes gedit supports in write mode. The 'file' scheme is "
+#~ "List of VFS schemes bedit supports in write mode. The 'file' scheme is "
 #~ "writable by default."
 #~ msgstr ""
-#~ "List of VFS schemes gedit supports in write mode. The 'file' scheme is "
+#~ "List of VFS schemes bedit supports in write mode. The 'file' scheme is "
 #~ "writable by default."
 
 #~ msgid "Writable VFS schemes"
@@ -5383,9 +5383,9 @@ msgstr "הוספת התאריך והשעה הנוכחיים במיקום הסמ�
 #~ msgstr "Bottom Panel is Visible"
 
 #~ msgid ""
-#~ "Whether gedit should highlight the bracket matching the selected one."
+#~ "Whether bedit should highlight the bracket matching the selected one."
 #~ msgstr ""
-#~ "Whether gedit should highlight the bracket matching the selected one."
+#~ "Whether bedit should highlight the bracket matching the selected one."
 
 #~ msgid ""
 #~ "Whether the bottom panel at the bottom of editing windows should be "
@@ -5635,8 +5635,8 @@ msgstr "הוספת התאריך והשעה הנוכחיים במיקום הסמ�
 #~ msgid "_Selected text color:"
 #~ msgstr "צבע ה_טקסט הנבחר:"
 
-#~ msgid "gedit Style Scheme editor"
-#~ msgstr "עורך סכימת הסגנון של gedit"
+#~ msgid "bedit Style Scheme editor"
+#~ msgstr "עורך סכימת הסגנון של bedit"
 
 #~ msgid "The file contains corrupted data."
 #~ msgstr "הקובץ מכיל מידע פגום."

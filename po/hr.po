@@ -1,10 +1,10 @@
-# Translation of gedit to Croatiann
+# Translation of bedit to Croatiann
 # Copyright (C) Croatiann team
 # Translators: Automatski Prijevod <>,Bozo Juretic <bjuretic@srce.hr>,Danijel Studen <dstuden@vuka.hr>,Denis Lackovic <delacko@fly.srk.fer.hr>,Mato Kutlić <mate@iskraemeco.hr>,pr pr <delacko@192.168.0.1>,Robert Sedak <robert.sedak@sk.t-com.hr>,Vlatko Kosturjak <kost@linux.hr>,
 msgid ""
 msgstr ""
-"Project-Id-Version: gedit 0\n"
-"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gedit/issues\n"
+"Project-Id-Version: bedit 0\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/bedit/issues\n"
 "POT-Creation-Date: 2019-12-02 10:12+0000\n"
 "PO-Revision-Date: 2020-01-17 19:44+0100\n"
 "Last-Translator: gogo <linux.hr@protonmail.com>\n"
@@ -19,8 +19,8 @@ msgstr ""
 "X-Generator: Poedit 2.0.6\n"
 
 #: data/com.bwhmather.bedit.appdata.xml.in:7
-msgid "gedit"
-msgstr "gedit"
+msgid "bedit"
+msgstr "bedit"
 
 #: data/com.bwhmather.bedit.appdata.xml.in:8 data/com.bwhmather.bedit.desktop.in.in:4
 msgid "Edit text files"
@@ -28,22 +28,22 @@ msgstr "Uređivanje tekstovnih datoteka"
 
 #: data/com.bwhmather.bedit.appdata.xml.in:10
 msgid ""
-"gedit is the official text editor of the GNOME desktop environment. While "
-"aiming at simplicity and ease of use, gedit is a powerful general purpose "
+"bedit is the official text editor of the GNOME desktop environment. While "
+"aiming at simplicity and ease of use, bedit is a powerful general purpose "
 "text editor."
 msgstr ""
-"gedit je službeni uređivač teksta za GNOME radno okruženje. Dok je usmjeren "
-"na jednostavnost i lako korištenje, gedit je snažan uređivač teksta opće "
+"bedit je službeni uređivač teksta za GNOME radno okruženje. Dok je usmjeren "
+"na jednostavnost i lako korištenje, bedit je snažan uređivač teksta opće "
 "namjene."
 
 #: data/com.bwhmather.bedit.appdata.xml.in:15
 msgid ""
 "Whether you are writing the next bestseller, programming an innovative "
-"application, or simply taking some quick notes, gedit will be a reliable "
+"application, or simply taking some quick notes, bedit will be a reliable "
 "tool to accomplish your task."
 msgstr ""
 "Bilo da pišete sljedeći bestseler, programirate inovativnu aplikaciju, ili "
-"jednostavno zapisujete neke kratke bilješke, gedit je pouzdan alat za "
+"jednostavno zapisujete neke kratke bilješke, bedit je pouzdan alat za "
 "obavljanje vaših zadataka."
 
 #: data/com.bwhmather.bedit.appdata.xml.in:20
@@ -54,7 +54,7 @@ msgstr ""
 "Ima prilagodljiv sustav priključaka koji vam dopušta prilagođavanje "
 "aplikacije vašim potrebama i vašem radu."
 
-#: data/com.bwhmather.bedit.desktop.in.in:3 gedit/gedit-print-job.c:730
+#: data/com.bwhmather.bedit.desktop.in.in:3 bedit/bedit-print-job.c:730
 msgid "Text Editor"
 msgstr "Uređivač teksta"
 
@@ -62,8 +62,8 @@ msgstr "Uređivač teksta"
 #. The list MUST also end with a semicolon!
 #. Search terms to find this application.
 #: data/com.bwhmather.bedit.desktop.in.in:18
-msgid "Text;Editor;Plaintext;Write;gedit;"
-msgstr "Tekst;Uređivač;Izvoran tekst;Piši;gedit;"
+msgid "Text;Editor;Plaintext;Write;bedit;"
+msgstr "Tekst;Uređivač;Izvoran tekst;Piši;bedit;"
 
 #: data/com.bwhmather.bedit.desktop.in.in:22
 msgid "New Window"
@@ -80,12 +80,12 @@ msgstr "Koristi uobičajena slova"
 #: data/com.bwhmather.bedit.gschema.xml.in:37
 msgid ""
 "Whether to use the system’s default fixed width font for editing text "
-"instead of a font specific to gedit. If this option is turned off, then the "
+"instead of a font specific to bedit. If this option is turned off, then the "
 "font named in the “Editor Font” option will be used instead of the system "
 "font."
 msgstr ""
 "Treba li koristiti sustavom zadana slova nepromjenjive širine za uređivanje "
-"teksta umjesto slova određenih za gedit. Ako je ova mogućnost isključena, "
+"teksta umjesto slova određenih za bedit. Ako je ova mogućnost isključena, "
 "onda će se umjesto slova sustava koristiti slova navedena u mogućnosti "
 "\"Uređivač slova\"."
 
@@ -119,8 +119,8 @@ msgid "Create Backup Copies"
 msgstr "Stvori sigurnosne kopije"
 
 #: data/com.bwhmather.bedit.gschema.xml.in:53
-msgid "Whether gedit should create backup copies for the files it saves."
-msgstr "Treba li gedit stvoriti sigurnosne kopije za datoteke koju sprema."
+msgid "Whether bedit should create backup copies for the files it saves."
+msgstr "Treba li bedit stvoriti sigurnosne kopije za datoteke koju sprema."
 
 #: data/com.bwhmather.bedit.gschema.xml.in:57
 msgid "Autosave"
@@ -128,10 +128,10 @@ msgstr "Automatsko spremanje"
 
 #: data/com.bwhmather.bedit.gschema.xml.in:58
 msgid ""
-"Whether gedit should automatically save modified files after a time "
+"Whether bedit should automatically save modified files after a time "
 "interval. You can set the time interval with the “Autosave Interval” option."
 msgstr ""
-"Treba li gedit automatski spremati promijenjene datoteke nakon određenog "
+"Treba li bedit automatski spremati promijenjene datoteke nakon određenog "
 "vremenskog razdoblja? Vremensko razdoblje možete postaviti s \"Razdoblje "
 "automatskog spremanja\" mogućnosti."
 
@@ -141,10 +141,10 @@ msgstr "Razdoblje automatskog spremanja"
 
 #: data/com.bwhmather.bedit.gschema.xml.in:63
 msgid ""
-"Number of minutes after which gedit will automatically save modified files. "
+"Number of minutes after which bedit will automatically save modified files. "
 "This will only take effect if the “Autosave” option is turned on."
 msgstr ""
-"Broj minuta nakon kojih će gedit automatski spremiti promijenjene datoteke. "
+"Broj minuta nakon kojih će bedit automatski spremiti promijenjene datoteke. "
 "To će biti primijenjeno samo ako je mogućnost \"Automatsko spremanje\" "
 "isključena."
 
@@ -154,10 +154,10 @@ msgstr "Najveći broj radnji poništavanja"
 
 #: data/com.bwhmather.bedit.gschema.xml.in:68
 msgid ""
-"Maximum number of actions that gedit will be able to undo or redo. Use “-1” "
+"Maximum number of actions that bedit will be able to undo or redo. Use “-1” "
 "for unlimited number of actions."
 msgstr ""
-"Najveći broj radnji koje će gedit moći poništiti ili vratiti. Koristite "
+"Najveći broj radnji koje će bedit moći poništiti ili vratiti. Koristite "
 "\"-1\" za neograničen broj radnji."
 
 #: data/com.bwhmather.bedit.gschema.xml.in:77
@@ -207,49 +207,49 @@ msgid "Insert spaces"
 msgstr "Umetni razmake"
 
 #: data/com.bwhmather.bedit.gschema.xml.in:97
-msgid "Whether gedit should insert spaces instead of tabs."
-msgstr "Treba li gedit umetnuti razmake umjesto tabova."
+msgid "Whether bedit should insert spaces instead of tabs."
+msgstr "Treba li bedit umetnuti razmake umjesto tabova."
 
 #: data/com.bwhmather.bedit.gschema.xml.in:101
 msgid "Automatic indent"
 msgstr "Automatsko poravnavanje"
 
 #: data/com.bwhmather.bedit.gschema.xml.in:102
-msgid "Whether gedit should enable automatic indentation."
-msgstr "Treba li gedit omogućiti automatsko poravnavanje."
+msgid "Whether bedit should enable automatic indentation."
+msgstr "Treba li bedit omogućiti automatsko poravnavanje."
 
 #: data/com.bwhmather.bedit.gschema.xml.in:106
 msgid "Display Line Numbers"
 msgstr "Prikaži brojeve redaka"
 
 #: data/com.bwhmather.bedit.gschema.xml.in:107
-msgid "Whether gedit should display line numbers in the editing area."
+msgid "Whether bedit should display line numbers in the editing area."
 msgstr ""
-"Treba li gedit prikazivati brojeve redaka u prostoru za izmjenu teksta."
+"Treba li bedit prikazivati brojeve redaka u prostoru za izmjenu teksta."
 
 #: data/com.bwhmather.bedit.gschema.xml.in:111
 msgid "Highlight Current Line"
 msgstr "Istakni trenutni redak"
 
 #: data/com.bwhmather.bedit.gschema.xml.in:112
-msgid "Whether gedit should highlight the current line."
-msgstr "Treba li gedit istaknuti trenutni redak."
+msgid "Whether bedit should highlight the current line."
+msgstr "Treba li bedit istaknuti trenutni redak."
 
 #: data/com.bwhmather.bedit.gschema.xml.in:116
 msgid "Highlight Matching Brackets"
 msgstr "Istakni odgovarajuće zagrade"
 
 #: data/com.bwhmather.bedit.gschema.xml.in:117
-msgid "Whether gedit should highlight matching brackets."
-msgstr "Treba li gedit istaknuti odgovarajuće zagrade."
+msgid "Whether bedit should highlight matching brackets."
+msgstr "Treba li bedit istaknuti odgovarajuće zagrade."
 
 #: data/com.bwhmather.bedit.gschema.xml.in:121
 msgid "Display Right Margin"
 msgstr "Prikaži desni rub"
 
 #: data/com.bwhmather.bedit.gschema.xml.in:122
-msgid "Whether gedit should display the right margin in the editing area."
-msgstr "Treba li gedit prikazivati desni rub u prostoru uređivanja teksta."
+msgid "Whether bedit should display the right margin in the editing area."
+msgstr "Treba li bedit prikazivati desni rub u prostoru uređivanja teksta."
 
 #: data/com.bwhmather.bedit.gschema.xml.in:126
 msgid "Right Margin Position"
@@ -295,10 +295,10 @@ msgstr "Vrati prijašnji položaj pokazivača"
 
 #: data/com.bwhmather.bedit.gschema.xml.in:148
 msgid ""
-"Whether gedit should restore the previous cursor position when a file is "
+"Whether bedit should restore the previous cursor position when a file is "
 "loaded."
 msgstr ""
-"Treba li gedit postaviti pokazivač na prijašnji položaj prilikom učitavanja "
+"Treba li bedit postaviti pokazivač na prijašnji položaj prilikom učitavanja "
 "datoteke."
 
 #: data/com.bwhmather.bedit.gschema.xml.in:152
@@ -306,8 +306,8 @@ msgid "Enable Syntax Highlighting"
 msgstr "Uključi isticanje sintakse"
 
 #: data/com.bwhmather.bedit.gschema.xml.in:153
-msgid "Whether gedit should enable syntax highlighting."
-msgstr "Treba li gedit omogućiti isticanje sintakse."
+msgid "Whether bedit should enable syntax highlighting."
+msgstr "Treba li bedit omogućiti isticanje sintakse."
 
 #: data/com.bwhmather.bedit.gschema.xml.in:157
 msgid "Enable Search Highlighting"
@@ -315,9 +315,9 @@ msgstr "Omogući isticanje pretraga"
 
 #: data/com.bwhmather.bedit.gschema.xml.in:158
 msgid ""
-"Whether gedit should highlight all the occurrences of the searched text."
+"Whether bedit should highlight all the occurrences of the searched text."
 msgstr ""
-"Treba li gedit isticati sva pojavljivanja teksta za kojm se pretražuje."
+"Treba li bedit isticati sva pojavljivanja teksta za kojm se pretražuje."
 
 #: data/com.bwhmather.bedit.gschema.xml.in:162
 msgid "Ensure Trailing Newline"
@@ -325,9 +325,9 @@ msgstr "Osiguraj novi redak na kraju"
 
 #: data/com.bwhmather.bedit.gschema.xml.in:163
 msgid ""
-"Whether gedit will ensure that documents always end with a trailing newline."
+"Whether bedit will ensure that documents always end with a trailing newline."
 msgstr ""
-"Treba li gedit osigurati da dokumenti uvijek imaju novi redak na kraju."
+"Treba li bedit osigurati da dokumenti uvijek imaju novi redak na kraju."
 
 #: data/com.bwhmather.bedit.gschema.xml.in:169
 msgid "Notebook Show Tabs Mode"
@@ -369,17 +369,17 @@ msgid "Print Syntax Highlighting"
 msgstr "Ispis isticanja sintakse"
 
 #: data/com.bwhmather.bedit.gschema.xml.in:190
-msgid "Whether gedit should print syntax highlighting when printing documents."
+msgid "Whether bedit should print syntax highlighting when printing documents."
 msgstr ""
-"Treba li gedit ispisivati istaknutu sintaksu prilikom ispisa dokumenata."
+"Treba li bedit ispisivati istaknutu sintaksu prilikom ispisa dokumenata."
 
 #: data/com.bwhmather.bedit.gschema.xml.in:194
 msgid "Print Header"
 msgstr "Ispis zaglavlja"
 
 #: data/com.bwhmather.bedit.gschema.xml.in:195
-msgid "Whether gedit should include a document header when printing documents."
-msgstr "Treba li gedit uključiti zaglavlje dokumenta prilikom ispisa."
+msgid "Whether bedit should include a document header when printing documents."
+msgstr "Treba li bedit uključiti zaglavlje dokumenta prilikom ispisa."
 
 #: data/com.bwhmather.bedit.gschema.xml.in:204
 msgid "Printing Line Wrapping Mode"
@@ -404,7 +404,7 @@ msgstr "Ispis brojeva redaka"
 #: data/com.bwhmather.bedit.gschema.xml.in:210
 msgid ""
 "If this value is 0, then no line numbers will be inserted when printing a "
-"document. Otherwise, gedit will print line numbers every such number of "
+"document. Otherwise, bedit will print line numbers every such number of "
 "lines."
 msgstr ""
 "Ukoliko je ova vrijednost 0 prilikom ispisa dokumenta neće biti umetnuti "
@@ -502,11 +502,11 @@ msgid ""
 "List of candidate encodings shown in the Character Encoding menu in the open/"
 "save file chooser. “CURRENT” represents the current locale encoding. Only "
 "recognized encodings are used. The default value is the empty list, in which "
-"case gedit will choose good defaults depending on the country and language."
+"case bedit will choose good defaults depending on the country and language."
 msgstr ""
 "Popis kôdnih stranica prikazanih u izborniku kôdnih stranica. \"CURRENT\" "
 "Predstavlja trenutnu lokalnu kôdnu stranicu. Samo se prepoznate lokalne "
-"kôdne stranice koriste. Zadana vrijednost je prazan popis, za koji će gedit "
+"kôdne stranice koriste. Zadana vrijednost je prazan popis, za koji će bedit "
 "odabrati najbolju zadanu kôdnu stranicu ovisno o zemlji i jeziku."
 
 #: data/com.bwhmather.bedit.gschema.xml.in:301
@@ -516,20 +516,20 @@ msgstr "Aktivni priključci"
 #: data/com.bwhmather.bedit.gschema.xml.in:302
 msgid ""
 "List of active plugins. It contains the “Location” of the active plugins. "
-"See the .gedit-plugin file for obtaining the “Location” of a given plugin."
+"See the .bedit-plugin file for obtaining the “Location” of a given plugin."
 msgstr ""
 "Popis aktivnih priključaka. Sadrži 'Lokaciju' aktivnih priključaka. "
-"Pogledajte .gedit-plugin datoteku za 'Lokaciju' datog priključka."
+"Pogledajte .bedit-plugin datoteku za 'Lokaciju' datog priključka."
 
-#: gedit/gedit-app.c:103
+#: bedit/bedit-app.c:103
 msgid "Show the application’s version"
 msgstr "Prikaži inačicu aplikacije"
 
-#: gedit/gedit-app.c:109
+#: bedit/bedit-app.c:109
 msgid "Display list of possible values for the encoding option"
 msgstr "Prikaži popis mogućih vrijednosti za mogućnosti kôdiranja"
 
-#: gedit/gedit-app.c:116
+#: bedit/bedit-app.c:116
 msgid ""
 "Set the character encoding to be used to open the files listed on the "
 "command line"
@@ -537,74 +537,74 @@ msgstr ""
 "Kôdna stranica koja će se koristiti za otvaranje datoteka popisanih u "
 "naredbenom retku"
 
-#: gedit/gedit-app.c:117
+#: bedit/bedit-app.c:117
 msgid "ENCODING"
 msgstr "KÔDIRANJE"
 
-#: gedit/gedit-app.c:123
-msgid "Create a new top-level window in an existing instance of gedit"
-msgstr "Stvori novi sadržajni prozor u postojećem gedit primjerku"
+#: bedit/bedit-app.c:123
+msgid "Create a new top-level window in an existing instance of bedit"
+msgstr "Stvori novi sadržajni prozor u postojećem bedit primjerku"
 
-#: gedit/gedit-app.c:130
-msgid "Create a new document in an existing instance of gedit"
-msgstr "Stvori novi dokument u postojećem gedit primjerku"
+#: bedit/bedit-app.c:130
+msgid "Create a new document in an existing instance of bedit"
+msgstr "Stvori novi dokument u postojećem bedit primjerku"
 
-#: gedit/gedit-app.c:137
+#: bedit/bedit-app.c:137
 msgid "Open files and block process until files are closed"
 msgstr "Otvori datoteke i blokiraj procese dok se datoteke ne zatvore"
 
-#: gedit/gedit-app.c:144
-msgid "Run gedit in standalone mode"
-msgstr "Pokreni gedit u samostalnom načinu rada"
+#: bedit/bedit-app.c:144
+msgid "Run bedit in standalone mode"
+msgstr "Pokreni bedit u samostalnom načinu rada"
 
-#: gedit/gedit-app.c:151
+#: bedit/bedit-app.c:151
 msgid "[FILE…] [+LINE[:COLUMN]]"
 msgstr "[DATOTEKA…][+REDAK[:STUPAC]]"
 
-#: gedit/gedit-app.c:261
+#: bedit/bedit-app.c:261
 msgid "There was an error displaying the help."
 msgstr "Došlo je do greške pri prikazivanju pomoći."
 
-#: gedit/gedit-app.c:957
+#: bedit/bedit-app.c:957
 #, c-format
 msgid "%s: invalid encoding."
 msgstr "%s: pogrešno kôdiranje."
 
-#: gedit/gedit-close-confirmation-dialog.c:277
+#: bedit/bedit-close-confirmation-dialog.c:277
 msgid "Close _without Saving"
 msgstr "Zatvori _bez spremanja"
 
-#: gedit/gedit-close-confirmation-dialog.c:283 gedit/gedit-commands-file.c:457
-#: gedit/gedit-commands-file.c:562 gedit/gedit-commands-file.c:638
-#: gedit/gedit-commands-file.c:849 gedit/gedit-commands-file.c:1563
-#: gedit/gedit-encodings-dialog.c:192 gedit/gedit-preferences-dialog.c:816
-#: gedit/gedit-progress-info-bar.c:49
-#: gedit/resources/ui/gedit-encodings-dialog.ui:44
-#: gedit/resources/ui/gedit-highlight-mode-dialog.ui:31
-#: plugins/filebrowser/gedit-file-browser-utils.c:213
+#: bedit/bedit-close-confirmation-dialog.c:283 bedit/bedit-commands-file.c:457
+#: bedit/bedit-commands-file.c:562 bedit/bedit-commands-file.c:638
+#: bedit/bedit-commands-file.c:849 bedit/bedit-commands-file.c:1563
+#: bedit/bedit-encodings-dialog.c:192 bedit/bedit-preferences-dialog.c:816
+#: bedit/bedit-progress-info-bar.c:49
+#: bedit/resources/ui/bedit-encodings-dialog.ui:44
+#: bedit/resources/ui/bedit-highlight-mode-dialog.ui:31
+#: plugins/filebrowser/bedit-file-browser-utils.c:213
 #: plugins/quickopen/quickopen/popup.py:45
 #: plugins/snippets/snippets/manager.py:789
 #: plugins/snippets/snippets/manager.py:874
 #: plugins/snippets/snippets/manager.py:912
-#: plugins/sort/resources/ui/gedit-sort-plugin.ui:143
-#: plugins/time/resources/ui/gedit-time-dialog.ui:150
+#: plugins/sort/resources/ui/bedit-sort-plugin.ui:143
+#: plugins/time/resources/ui/bedit-time-dialog.ui:150
 msgid "_Cancel"
 msgstr "_Odustani"
 
-#: gedit/gedit-close-confirmation-dialog.c:310 gedit/resources/gtk/menus.ui:37
-#: gedit/resources/gtk/menus-traditional.ui:33
+#: bedit/bedit-close-confirmation-dialog.c:310 bedit/resources/gtk/menus.ui:37
+#: bedit/resources/gtk/menus-traditional.ui:33
 msgid "_Save As…"
 msgstr "_Spremi kao…"
 
-#: gedit/gedit-close-confirmation-dialog.c:310 gedit/gedit-commands-file.c:850
-#: gedit/resources/gtk/menus-common.ui:127
-#: gedit/resources/ui/gedit-window.ui:61
+#: bedit/bedit-close-confirmation-dialog.c:310 bedit/bedit-commands-file.c:850
+#: bedit/resources/gtk/menus-common.ui:127
+#: bedit/resources/ui/bedit-window.ui:61
 #: plugins/snippets/snippets/manager.py:875
 #: plugins/snippets/snippets/manager.py:913
 msgid "_Save"
 msgstr "_Spremi"
 
-#: gedit/gedit-close-confirmation-dialog.c:328
+#: bedit/bedit-close-confirmation-dialog.c:328
 #, c-format
 msgid ""
 "If you don’t save, changes from the last %ld second will be permanently lost."
@@ -618,13 +618,13 @@ msgstr[1] ""
 msgstr[2] ""
 "Ako ne spremite, promjene u zadnjih %ld sekundi će biti zauvijek izgubljene."
 
-#: gedit/gedit-close-confirmation-dialog.c:337
+#: bedit/bedit-close-confirmation-dialog.c:337
 msgid ""
 "If you don’t save, changes from the last minute will be permanently lost."
 msgstr ""
 "Ako ne spremite, promjene u zadnjoj minuti će biti zauvijek izgubljene."
 
-#: gedit/gedit-close-confirmation-dialog.c:343
+#: bedit/bedit-close-confirmation-dialog.c:343
 #, c-format
 msgid ""
 "If you don’t save, changes from the last minute and %ld second will be "
@@ -642,7 +642,7 @@ msgstr[2] ""
 "Ako ne spremite, promjene u zadnjoj minuti i %ld sekundi će biti zauvijek "
 "izgubljene."
 
-#: gedit/gedit-close-confirmation-dialog.c:353
+#: bedit/bedit-close-confirmation-dialog.c:353
 #, c-format
 msgid ""
 "If you don’t save, changes from the last %ld minute will be permanently lost."
@@ -656,11 +656,11 @@ msgstr[1] ""
 msgstr[2] ""
 "Ako ne spremite, promjene u zadnjih %ld minuti će biti zauvijek izgubljene."
 
-#: gedit/gedit-close-confirmation-dialog.c:368
+#: bedit/bedit-close-confirmation-dialog.c:368
 msgid "If you don’t save, changes from the last hour will be permanently lost."
 msgstr "Ako ne spremite, promjene u zadnjem satu će biti zauvijek izgubljene."
 
-#: gedit/gedit-close-confirmation-dialog.c:374
+#: bedit/bedit-close-confirmation-dialog.c:374
 #, c-format
 msgid ""
 "If you don’t save, changes from the last hour and %d minute will be "
@@ -678,7 +678,7 @@ msgstr[2] ""
 "Ako ne spremite, promjene u zadnjem satu i %d minuti će biti zauvijek "
 "izgubljene."
 
-#: gedit/gedit-close-confirmation-dialog.c:389
+#: bedit/bedit-close-confirmation-dialog.c:389
 #, c-format
 msgid ""
 "If you don’t save, changes from the last %d hour will be permanently lost."
@@ -691,22 +691,22 @@ msgstr[1] ""
 msgstr[2] ""
 "Ako ne spremite, promjene u zadnjih %d sati će biti zauvijek izgubljene."
 
-#: gedit/gedit-close-confirmation-dialog.c:418
+#: bedit/bedit-close-confirmation-dialog.c:418
 #, c-format
 msgid "Changes to document “%s” will be permanently lost."
 msgstr "Promjene dokumenta “%s” će biti trajno izgubljene."
 
-#: gedit/gedit-close-confirmation-dialog.c:423
+#: bedit/bedit-close-confirmation-dialog.c:423
 #, c-format
 msgid "Save changes to document “%s” before closing?"
 msgstr "Spremi promjene dokumenta “%s” prije zatvaranja?"
 
-#: gedit/gedit-close-confirmation-dialog.c:438
-#: gedit/gedit-close-confirmation-dialog.c:562
+#: bedit/bedit-close-confirmation-dialog.c:438
+#: bedit/bedit-close-confirmation-dialog.c:562
 msgid "Saving has been disabled by the system administrator."
 msgstr "Administrator sustava je onemogućio spremanje."
 
-#: gedit/gedit-close-confirmation-dialog.c:504
+#: bedit/bedit-close-confirmation-dialog.c:504
 #, c-format
 msgid "Changes to %d document will be permanently lost."
 msgid_plural "Changes to %d documents will be permanently lost."
@@ -714,7 +714,7 @@ msgstr[0] "Promjene na %d dokumentu će biti zauvijek izgubljene."
 msgstr[1] "Promjene na %d dokumenta će biti zauvijek izgubljene."
 msgstr[2] "Promjene na %d dokumenata će biti zauvijek izgubljene."
 
-#: gedit/gedit-close-confirmation-dialog.c:512
+#: bedit/bedit-close-confirmation-dialog.c:512
 #, c-format
 msgid "There is %d document with unsaved changes. Save changes before closing?"
 msgid_plural ""
@@ -729,24 +729,24 @@ msgstr[2] ""
 "Postoji %d dokumenata s promjenama koje nisu spremljene. Želite li spremiti "
 "promjene prije zatvaranja?"
 
-#: gedit/gedit-close-confirmation-dialog.c:538
+#: bedit/bedit-close-confirmation-dialog.c:538
 msgid "Docum_ents with unsaved changes:"
 msgstr "Dokum_enti s promjenama koje nisu spremljene:"
 
-#: gedit/gedit-close-confirmation-dialog.c:542
+#: bedit/bedit-close-confirmation-dialog.c:542
 msgid "S_elect the documents you want to save:"
 msgstr "O_daberite dokumente koje želite spremiti:"
 
-#: gedit/gedit-close-confirmation-dialog.c:566
+#: bedit/bedit-close-confirmation-dialog.c:566
 msgid "If you don’t save, all your changes will be permanently lost."
 msgstr "Ako ne spremite, sve vaše promjene će biti zauvijek izgubljene."
 
-#: gedit/gedit-commands-file.c:260
+#: bedit/bedit-commands-file.c:260
 #, c-format
 msgid "Loading file “%s”…"
 msgstr "Učitavanje datoteke '%s'…"
 
-#: gedit/gedit-commands-file.c:269
+#: bedit/bedit-commands-file.c:269
 #, c-format
 msgid "Loading %d file…"
 msgid_plural "Loading %d files…"
@@ -755,43 +755,43 @@ msgstr[1] "Učitavanje %d datoteke…"
 msgstr[2] "Učitavanje %d datoteka…"
 
 #. Translators: "Open" is the title of the file chooser window.
-#: gedit/gedit-commands-file.c:451
+#: bedit/bedit-commands-file.c:451
 msgctxt "window title"
 msgid "Open"
 msgstr "Otvori"
 
-#: gedit/gedit-commands-file.c:458 gedit/gedit-window.c:2676
-#: gedit/resources/gtk/menus-common.ui:100
-#: gedit/resources/gtk/menus-common.ui:106
-#: plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui:7
+#: bedit/bedit-commands-file.c:458 bedit/bedit-window.c:2676
+#: bedit/resources/gtk/menus-common.ui:100
+#: bedit/resources/gtk/menus-common.ui:106
+#: plugins/filebrowser/resources/ui/bedit-file-browser-menus.ui:7
 #: plugins/quickopen/quickopen/popup.py:46
 #: plugins/snippets/snippets/manager.py:790
 msgid "_Open"
 msgstr "_Otvori"
 
-#: gedit/gedit-commands-file.c:553
+#: bedit/bedit-commands-file.c:553
 #, c-format
 msgid "The file “%s” is read-only."
 msgstr "Datoteka \"%s\" je samo za čitanje."
 
-#: gedit/gedit-commands-file.c:558
+#: bedit/bedit-commands-file.c:558
 msgid "Do you want to try to replace it with the one you are saving?"
 msgstr "Želite li ju pokušati zamijeniti s ovom koju spremate?"
 
-#: gedit/gedit-commands-file.c:563
-#: gedit/resources/ui/gedit-replace-dialog.ui:55
+#: bedit/bedit-commands-file.c:563
+#: bedit/resources/ui/bedit-replace-dialog.ui:55
 msgid "_Replace"
 msgstr "_Zamijeni"
 
-#: gedit/gedit-commands-file.c:603
+#: bedit/bedit-commands-file.c:603
 msgid "Save the file using compression?"
 msgstr "Spremi datoteku koristeći sažimanje?"
 
-#: gedit/gedit-commands-file.c:607
+#: bedit/bedit-commands-file.c:607
 msgid "Save the file as plain text?"
 msgstr "Želite li spremiti datoteku kao običan tekst?"
 
-#: gedit/gedit-commands-file.c:620
+#: bedit/bedit-commands-file.c:620
 #, c-format
 msgid ""
 "The file “%s” was previously saved as plain text and will now be saved using "
@@ -800,11 +800,11 @@ msgstr ""
 "Datoteka \"%s\" je bila spremljena kao običan tekst te će sada biti "
 "spremljena koristeći sažimanje."
 
-#: gedit/gedit-commands-file.c:624
+#: bedit/bedit-commands-file.c:624
 msgid "_Save Using Compression"
 msgstr "_Spremi koristeći sažimanje"
 
-#: gedit/gedit-commands-file.c:629
+#: bedit/bedit-commands-file.c:629
 #, c-format
 msgid ""
 "The file “%s” was previously saved using compression and will now be saved "
@@ -813,33 +813,33 @@ msgstr ""
 "Datoteka \"%s\" je bila spremljena u sažetom obliku te će sada biti "
 "spremljena kao običan tekst."
 
-#: gedit/gedit-commands-file.c:632
+#: bedit/bedit-commands-file.c:632
 msgid "_Save As Plain Text"
 msgstr "_Spremi kao običan tekst"
 
-#: gedit/gedit-commands-file.c:747 gedit/gedit-commands-file.c:1014
+#: bedit/bedit-commands-file.c:747 bedit/bedit-commands-file.c:1014
 #, c-format
 msgid "Saving file “%s”…"
 msgstr "Spremanje datoteke \"%s\"…"
 
 #. Translators: "Save As" is the title of the file chooser window.
-#: gedit/gedit-commands-file.c:842
+#: bedit/bedit-commands-file.c:842
 msgctxt "window title"
 msgid "Save As"
 msgstr "Spremi kao"
 
-#: gedit/gedit-commands-file.c:1424
+#: bedit/bedit-commands-file.c:1424
 #, c-format
 msgid "Reverting the document “%s”…"
 msgstr "Vraćanje dokumenta \"%s\" u izvorno stanje…"
 
-#: gedit/gedit-commands-file.c:1471
+#: bedit/bedit-commands-file.c:1471
 #, c-format
 msgid "Revert unsaved changes to document “%s”?"
 msgstr ""
 "Želite li vratiti nespremljene promjene u izvorno stanje u dokumentu \"%s\"?"
 
-#: gedit/gedit-commands-file.c:1480
+#: bedit/bedit-commands-file.c:1480
 #, c-format
 msgid ""
 "Changes made to the document in the last %ld second will be permanently lost."
@@ -856,13 +856,13 @@ msgstr[2] ""
 "Promjene učinjene u dokumentu u zadnjih %ld sekundi će biti zauvijek "
 "izgubljene."
 
-#: gedit/gedit-commands-file.c:1489
+#: bedit/bedit-commands-file.c:1489
 msgid ""
 "Changes made to the document in the last minute will be permanently lost."
 msgstr ""
 "Promjene učinjene u dokumentu u zadnjoj minuti će biti zauvijek izgubljene."
 
-#: gedit/gedit-commands-file.c:1495
+#: bedit/bedit-commands-file.c:1495
 #, c-format
 msgid ""
 "Changes made to the document in the last minute and %ld second will be "
@@ -880,7 +880,7 @@ msgstr[2] ""
 "Promjene učinjene u dokumentu u zadnjoj minuti i %ld sekundi će biti "
 "zauvijek izgubljene."
 
-#: gedit/gedit-commands-file.c:1505
+#: bedit/bedit-commands-file.c:1505
 #, c-format
 msgid ""
 "Changes made to the document in the last %ld minute will be permanently lost."
@@ -897,12 +897,12 @@ msgstr[2] ""
 "Promjene učinjene u dokumentu u zadnjih %ld minuti će biti zauvijek "
 "izgubljene."
 
-#: gedit/gedit-commands-file.c:1520
+#: bedit/bedit-commands-file.c:1520
 msgid "Changes made to the document in the last hour will be permanently lost."
 msgstr ""
 "Promjene učinjene u dokumentu u zadnjem satu će biti zauvijek izgubljene."
 
-#: gedit/gedit-commands-file.c:1526
+#: bedit/bedit-commands-file.c:1526
 #, c-format
 msgid ""
 "Changes made to the document in the last hour and %d minute will be "
@@ -920,7 +920,7 @@ msgstr[2] ""
 "Promjene učinjene u dokumentu u zadnjem satu i %d minuti će biti zauvijek "
 "izgubljene."
 
-#: gedit/gedit-commands-file.c:1541
+#: bedit/bedit-commands-file.c:1541
 #, c-format
 msgid ""
 "Changes made to the document in the last %d hour will be permanently lost."
@@ -933,15 +933,15 @@ msgstr[1] ""
 msgstr[2] ""
 "Promjene učinjene u dokumentu u zadnjih %d sati će biti zauvijek izgubljene."
 
-#: gedit/gedit-commands-file.c:1564
+#: bedit/bedit-commands-file.c:1564
 msgid "_Revert"
 msgstr "_Vrati u izvorno stanje"
 
-#: gedit/gedit-commands-help.c:108
-msgid "gedit is a small and lightweight text editor for the GNOME Desktop"
-msgstr "gedit je mali i jednostavani uređivač teksta za GNOME radno okruženje"
+#: bedit/bedit-commands-help.c:108
+msgid "bedit is a small and lightweight text editor for the GNOME Desktop"
+msgstr "bedit je mali i jednostavani uređivač teksta za GNOME radno okruženje"
 
-#: gedit/gedit-commands-help.c:130
+#: bedit/bedit-commands-help.c:130
 msgid "translator-credits"
 msgstr ""
 "lokalizacija@linux.hr\n"
@@ -963,7 +963,7 @@ msgstr ""
 "  gogo https://launchpad.net/~trebelnik-stefina\n"
 "  zvacet https://launchpad.net/~ivicakolic"
 
-#: gedit/gedit-commands-search.c:106
+#: bedit/bedit-commands-search.c:106
 #, c-format
 msgid "Found and replaced %d occurrence"
 msgid_plural "Found and replaced %d occurrences"
@@ -971,103 +971,103 @@ msgstr[0] "Pronađeno i zamijenjeno %d pojavljivanje"
 msgstr[1] "Pronađena i zamijenjena %d pojavljivanja"
 msgstr[2] "Pronađeno i zamijenjeno %d pojavljivanja"
 
-#: gedit/gedit-commands-search.c:115
+#: bedit/bedit-commands-search.c:115
 msgid "Found and replaced one occurrence"
 msgstr "Pronađeno i zamijenjeno jedno pojavljivanje"
 
 #. Translators: %s is replaced by the text
 #. entered by the user in the search box
-#: gedit/gedit-commands-search.c:141
+#: bedit/bedit-commands-search.c:141
 #, c-format
 msgid "“%s” not found"
 msgstr "\"%s\" nije pronađen"
 
-#: gedit/gedit-document.c:969 gedit/gedit-document.c:998
+#: bedit/bedit-document.c:969 bedit/bedit-document.c:998
 #, c-format
 msgid "Untitled Document %d"
 msgstr "Bezimeni dokument %d"
 
-#: gedit/gedit-documents-panel.c:398
+#: bedit/bedit-documents-panel.c:398
 #, c-format
 msgid "Tab Group %i"
 msgstr "Grupa kartica %i"
 
-#: gedit/gedit-documents-panel.c:498 gedit/gedit-window.c:1094
-#: gedit/gedit-window.c:1100 gedit/gedit-window.c:1108
+#: bedit/bedit-documents-panel.c:498 bedit/bedit-window.c:1094
+#: bedit/bedit-window.c:1100 bedit/bedit-window.c:1108
 msgid "Read-Only"
 msgstr "Samo za čitanje"
 
-#: gedit/gedit-encodings-combo-box.c:297
-#: gedit/gedit-file-chooser-dialog-osx.m:562
+#: bedit/bedit-encodings-combo-box.c:297
+#: bedit/bedit-file-chooser-dialog-osx.m:562
 msgid "Automatically Detected"
 msgstr "Automatski otkriveno"
 
-#: gedit/gedit-encodings-combo-box.c:326
-#: gedit/gedit-file-chooser-dialog-osx.m:571
+#: bedit/bedit-encodings-combo-box.c:326
+#: bedit/bedit-file-chooser-dialog-osx.m:571
 msgid "Add or Remove…"
 msgstr "Dodaj ili ukloni…"
 
-#: gedit/gedit-encoding-items.c:92
+#: bedit/bedit-encoding-items.c:92
 #, c-format
 msgid "Current Locale (%s)"
 msgstr "Trenutni lokalni jezik (%s)"
 
-#: gedit/gedit-encodings-dialog.c:93
+#: bedit/bedit-encodings-dialog.c:93
 #, c-format
 msgid "%s (Current Locale)"
 msgstr "%s (Trenutni lokalni jezik)"
 
-#: gedit/gedit-encodings-dialog.c:188
+#: bedit/bedit-encodings-dialog.c:188
 msgid "Do you really want to reset the character encodings’ preferences?"
 msgstr "Želite li stvarno vratiti na zadano osobitosti kôdiranja znakova?"
 
 #. Reset button
-#: gedit/gedit-encodings-dialog.c:193 gedit/gedit-encodings-dialog.c:818
+#: bedit/bedit-encodings-dialog.c:193 bedit/bedit-encodings-dialog.c:818
 msgid "_Reset"
 msgstr "_Vrati zadano"
 
-#: gedit/gedit-encodings-dialog.c:729
+#: bedit/bedit-encodings-dialog.c:729
 msgid "Add"
 msgstr "Dodaj"
 
-#: gedit/gedit-encodings-dialog.c:772
+#: bedit/bedit-encodings-dialog.c:772
 msgid "Remove"
 msgstr "Ukloni"
 
-#: gedit/gedit-encodings-dialog.c:783
+#: bedit/bedit-encodings-dialog.c:783
 msgid "Move to a higher priority"
 msgstr "Premjesti u viši prioritet"
 
-#: gedit/gedit-encodings-dialog.c:794
+#: bedit/bedit-encodings-dialog.c:794
 msgid "Move to a lower priority"
 msgstr "Premjesti u niži prioritet"
 
-#: gedit/gedit-file-chooser-dialog-gtk.c:39
-#: gedit/gedit-preferences-dialog.c:825
+#: bedit/bedit-file-chooser-dialog-gtk.c:39
+#: bedit/bedit-preferences-dialog.c:825
 msgid "All Files"
 msgstr "Sve datoteke"
 
-#: gedit/gedit-file-chooser-dialog-gtk.c:40
+#: bedit/bedit-file-chooser-dialog-gtk.c:40
 msgid "All Text Files"
 msgstr "Sve tekstovne datoteke"
 
-#: gedit/gedit-file-chooser-dialog-gtk.c:305
+#: bedit/bedit-file-chooser-dialog-gtk.c:305
 msgid "C_haracter Encoding:"
 msgstr "Kôdiranje z_nakova:"
 
-#: gedit/gedit-file-chooser-dialog-gtk.c:364
+#: bedit/bedit-file-chooser-dialog-gtk.c:364
 msgid "L_ine Ending:"
 msgstr "Završetak r_etka:"
 
-#: gedit/gedit-file-chooser-dialog-osx.m:544
+#: bedit/bedit-file-chooser-dialog-osx.m:544
 msgid "Character Encoding:"
 msgstr "Kôdne stranice:"
 
-#: gedit/gedit-file-chooser-dialog-osx.m:617
+#: bedit/bedit-file-chooser-dialog-osx.m:617
 msgid "Line Ending:"
 msgstr "Završetak retka:"
 
-#: gedit/gedit-highlight-mode-selector.c:269 gedit/gedit-window.c:1178
+#: bedit/bedit-highlight-mode-selector.c:269 bedit/bedit-window.c:1178
 #: plugins/externaltools/tools/manager.py:115
 #: plugins/externaltools/tools/manager.py:324
 #: plugins/externaltools/tools/manager.py:440
@@ -1075,46 +1075,46 @@ msgstr "Završetak retka:"
 msgid "Plain Text"
 msgstr "Običan tekst"
 
-#: gedit/gedit-io-error-info-bar.c:143 gedit/gedit-io-error-info-bar.c:492
+#: bedit/bedit-io-error-info-bar.c:143 bedit/bedit-io-error-info-bar.c:492
 msgid "_Retry"
 msgstr "_Pokušaj ponovno"
 
-#: gedit/gedit-io-error-info-bar.c:163
+#: bedit/bedit-io-error-info-bar.c:163
 #, c-format
 msgid "Could not find the file “%s”."
 msgstr "Nemoguće je pronaći datoteku “%s”."
 
-#: gedit/gedit-io-error-info-bar.c:165 gedit/gedit-io-error-info-bar.c:205
-#: gedit/gedit-io-error-info-bar.c:212
+#: bedit/bedit-io-error-info-bar.c:165 bedit/bedit-io-error-info-bar.c:205
+#: bedit/bedit-io-error-info-bar.c:212
 msgid "Please check that you typed the location correctly and try again."
 msgstr "Provjerite jeste li ispravno upisali lokaciju i pokušajte ponovo."
 
 #. Translators: %s is a URI scheme (like for example http:, ftp:, etc.)
-#: gedit/gedit-io-error-info-bar.c:184
+#: bedit/bedit-io-error-info-bar.c:184
 #, c-format
 msgid "Unable to handle “%s:” locations."
 msgstr "Nemoguće rukovanje s “%s:” lokacijom."
 
-#: gedit/gedit-io-error-info-bar.c:190
+#: bedit/bedit-io-error-info-bar.c:190
 msgid "Unable to handle this location."
 msgstr "Nemoguće rukovanje s ovom lokacijom."
 
-#: gedit/gedit-io-error-info-bar.c:199
+#: bedit/bedit-io-error-info-bar.c:199
 msgid "The location of the file cannot be accessed."
 msgstr "Lokaciji datoteke se ne može pristupiti."
 
-#: gedit/gedit-io-error-info-bar.c:203
+#: bedit/bedit-io-error-info-bar.c:203
 #, c-format
 msgid "“%s” is a directory."
 msgstr "“%s” je direktorij."
 
-#: gedit/gedit-io-error-info-bar.c:210
+#: bedit/bedit-io-error-info-bar.c:210
 #, c-format
 msgid "“%s” is not a valid location."
 msgstr "“%s” nije valjana lokacija."
 
 #. Translators: %s is a host name
-#: gedit/gedit-io-error-info-bar.c:246
+#: bedit/bedit-io-error-info-bar.c:246
 #, c-format
 msgid ""
 "Host “%s” could not be found. Please check that your proxy settings are "
@@ -1123,7 +1123,7 @@ msgstr ""
 "Računalo “%s” se ne može pronaći. Provjerite jesu li vaše proxy postavke "
 "ispravne i pokušajte ponovno."
 
-#: gedit/gedit-io-error-info-bar.c:261
+#: bedit/bedit-io-error-info-bar.c:261
 #, c-format
 msgid ""
 "Hostname was invalid. Please check that you typed the location correctly and "
@@ -1132,49 +1132,49 @@ msgstr ""
 "Naziv računala nije valjan. Provjerite jeste li ispravno upisali lokaciju i "
 "pokušajte ponovo."
 
-#: gedit/gedit-io-error-info-bar.c:269
+#: bedit/bedit-io-error-info-bar.c:269
 #, c-format
 msgid "“%s” is not a regular file."
 msgstr "“%s” nije ispravna datoteka."
 
-#: gedit/gedit-io-error-info-bar.c:274
+#: bedit/bedit-io-error-info-bar.c:274
 msgid "Connection timed out. Please try again."
 msgstr "Vrijeme povezivanja isteklo. Pokušajte ponovno."
 
-#: gedit/gedit-io-error-info-bar.c:307
+#: bedit/bedit-io-error-info-bar.c:307
 #, c-format
 msgid "Unexpected error: %s"
 msgstr "Neočekivana greška: %s"
 
-#: gedit/gedit-io-error-info-bar.c:343
+#: bedit/bedit-io-error-info-bar.c:343
 msgid "Cannot find the requested file. Perhaps it has recently been deleted."
 msgstr "Nemoguć pronalazak zatražene datoteke. Možda je nedavno obrisana."
 
-#: gedit/gedit-io-error-info-bar.c:353
+#: bedit/bedit-io-error-info-bar.c:353
 #, c-format
 msgid "Could not revert the file “%s”."
 msgstr "Nemoguće vraćanje datoteke “%s”."
 
-#: gedit/gedit-io-error-info-bar.c:380
+#: bedit/bedit-io-error-info-bar.c:380
 msgid "Ch_aracter Encoding:"
 msgstr "Kôdiranje zn_akova:"
 
-#: gedit/gedit-io-error-info-bar.c:441
+#: bedit/bedit-io-error-info-bar.c:441
 #, c-format
 msgid "The location “%s” is not currently reachable."
 msgstr "Lokacija “%s” nije trenutno dostupna."
 
-#: gedit/gedit-io-error-info-bar.c:456
+#: bedit/bedit-io-error-info-bar.c:456
 msgid "Your system is offline. Check your network."
 msgstr "Vaš sustav nema pristup internetu. Provjerite svoju mrežu."
 
 #. Translators: the access key chosen for this string should be
 #. different from other main menu access keys (Open, Edit, View...)
-#: gedit/gedit-io-error-info-bar.c:500 gedit/gedit-io-error-info-bar.c:765
+#: bedit/bedit-io-error-info-bar.c:500 bedit/bedit-io-error-info-bar.c:765
 msgid "Edit Any_way"
 msgstr "Sve_jedno uredi"
 
-#: gedit/gedit-io-error-info-bar.c:588
+#: bedit/bedit-io-error-info-bar.c:588
 msgid ""
 "The number of followed links is limited and the actual file could not be "
 "found within this limit."
@@ -1182,28 +1182,28 @@ msgstr ""
 "Broj poveznica koje se slijede je ograničen i stvarna datoteka nije "
 "pronađena unutar ovih ograničenja."
 
-#: gedit/gedit-io-error-info-bar.c:592
+#: bedit/bedit-io-error-info-bar.c:592
 msgid "You do not have the permissions necessary to open the file."
 msgstr "Nemate potrebne dozvole potrebne za otvaranje datoteke."
 
-#: gedit/gedit-io-error-info-bar.c:598
+#: bedit/bedit-io-error-info-bar.c:598
 msgid "Unable to detect the character encoding."
 msgstr "Nemoguće otkrivanje kôdiranja znakova."
 
-#: gedit/gedit-io-error-info-bar.c:599 gedit/gedit-io-error-info-bar.c:623
+#: bedit/bedit-io-error-info-bar.c:599 bedit/bedit-io-error-info-bar.c:623
 msgid "Please check that you are not trying to open a binary file."
 msgstr "Provjerite da ne pokušavate otvoriti izvršnu datoteku."
 
-#: gedit/gedit-io-error-info-bar.c:600
+#: bedit/bedit-io-error-info-bar.c:600
 msgid "Select a character encoding from the menu and try again."
 msgstr "Odaberite kôdnu stranicu u izborniku i pokušajte ponovno."
 
-#: gedit/gedit-io-error-info-bar.c:606
+#: bedit/bedit-io-error-info-bar.c:606
 #, c-format
 msgid "There was a problem opening the file “%s”."
 msgstr "Dogodila se greška pri otvaranju datoteke “%s”."
 
-#: gedit/gedit-io-error-info-bar.c:608
+#: bedit/bedit-io-error-info-bar.c:608
 msgid ""
 "The file you opened has some invalid characters. If you continue editing "
 "this file you could corrupt this document."
@@ -1211,30 +1211,30 @@ msgstr ""
 "Datoteka koju ste otvorili sadrži nevaljane znakove. Ako nastavite s "
 "uređivanjem ove datoteke možete ju oštetiti."
 
-#: gedit/gedit-io-error-info-bar.c:611
+#: bedit/bedit-io-error-info-bar.c:611
 msgid "You can also choose another character encoding and try again."
 msgstr "Još možete odabrati drugu kôdnu stranicu i pokušati ponovno."
 
-#: gedit/gedit-io-error-info-bar.c:620
+#: bedit/bedit-io-error-info-bar.c:620
 #, c-format
 msgid "Could not open the file “%s” using the “%s” character encoding."
 msgstr "Nemoguće otvaranje datoteke “%s” koja koristi“%s” kôdiranje znakova."
 
-#: gedit/gedit-io-error-info-bar.c:624 gedit/gedit-io-error-info-bar.c:699
+#: bedit/bedit-io-error-info-bar.c:624 bedit/bedit-io-error-info-bar.c:699
 msgid "Select a different character encoding from the menu and try again."
 msgstr "Odaberite neku drugu kôdnu stranicu i pokušajte ponovno."
 
-#: gedit/gedit-io-error-info-bar.c:636
+#: bedit/bedit-io-error-info-bar.c:636
 #, c-format
 msgid "Could not open the file “%s”."
 msgstr "Nemoguće otvaranje datoteke “%s”."
 
-#: gedit/gedit-io-error-info-bar.c:694
+#: bedit/bedit-io-error-info-bar.c:694
 #, c-format
 msgid "Could not save the file “%s” using the “%s” character encoding."
 msgstr "Nemoguće spremanje datoteke “%s” koja koristi “%s” kôdiranje znakova."
 
-#: gedit/gedit-io-error-info-bar.c:697
+#: bedit/bedit-io-error-info-bar.c:697
 msgid ""
 "The document contains one or more characters that cannot be encoded using "
 "the specified character encoding."
@@ -1244,26 +1244,26 @@ msgstr ""
 
 #. Translators: the access key chosen for this string should be
 #. different from other main menu access keys (Open, Edit, View...)
-#: gedit/gedit-io-error-info-bar.c:770
+#: bedit/bedit-io-error-info-bar.c:770
 msgid "D_on’t Edit"
 msgstr "N_emoj urediti"
 
-#: gedit/gedit-io-error-info-bar.c:780
+#: bedit/bedit-io-error-info-bar.c:780
 #, c-format
 msgid "This file “%s” is already open in another window."
 msgstr "Datoteka “%s” je već otvorena u drugom prozoru."
 
-#: gedit/gedit-io-error-info-bar.c:794
+#: bedit/bedit-io-error-info-bar.c:794
 msgid "Do you want to edit it anyway?"
 msgstr "Želite li ju ipak urediti?"
 
-#: gedit/gedit-io-error-info-bar.c:850 gedit/gedit-io-error-info-bar.c:940
-#: gedit/gedit-io-error-info-bar.c:1230
+#: bedit/bedit-io-error-info-bar.c:850 bedit/bedit-io-error-info-bar.c:940
+#: bedit/bedit-io-error-info-bar.c:1230
 msgid "S_ave Anyway"
 msgstr "S_premi svejedno"
 
-#: gedit/gedit-io-error-info-bar.c:853 gedit/gedit-io-error-info-bar.c:943
-#: gedit/gedit-io-error-info-bar.c:1233
+#: bedit/bedit-io-error-info-bar.c:853 bedit/bedit-io-error-info-bar.c:943
+#: bedit/bedit-io-error-info-bar.c:1233
 msgid "D_on’t Save"
 msgstr "_Ne spremaj"
 
@@ -1271,29 +1271,29 @@ msgstr "_Ne spremaj"
 #. * could be interpreted as the changes he made in the document. beside "reading" is
 #. * not accurate (since last load/save)
 #.
-#: gedit/gedit-io-error-info-bar.c:867
+#: bedit/bedit-io-error-info-bar.c:867
 #, c-format
 msgid "The file “%s” has been modified since reading it."
 msgstr "Datoteka “%s” je promijenjena od kada ste ju čitali."
 
-#: gedit/gedit-io-error-info-bar.c:882
+#: bedit/bedit-io-error-info-bar.c:882
 msgid "If you save it, all the external changes could be lost. Save it anyway?"
 msgstr ""
-"Ukoliko ju sada spremite sve promjene napravljene izvan gedita biti će "
+"Ukoliko ju sada spremite sve promjene napravljene izvan bedita biti će "
 "izgubljene Jeste li sigurni?"
 
-#: gedit/gedit-io-error-info-bar.c:962
+#: bedit/bedit-io-error-info-bar.c:962
 #, c-format
 msgid "Could not create a backup file while saving “%s”"
 msgstr "Nemoguće stvaranje sigurnosne kopije datoteke pri spremanju “%s”"
 
-#: gedit/gedit-io-error-info-bar.c:967
+#: bedit/bedit-io-error-info-bar.c:967
 #, c-format
 msgid "Could not create a temporary backup file while saving “%s”"
 msgstr ""
 "Nemoguće stvaranje privremene sigurnosne kopije datoteke pri spremanju “%s”"
 
-#: gedit/gedit-io-error-info-bar.c:984
+#: bedit/bedit-io-error-info-bar.c:984
 msgid ""
 "Could not back up the old copy of the file before saving the new one. You "
 "can ignore this warning and save the file anyway, but if an error occurs "
@@ -1305,7 +1305,7 @@ msgstr ""
 "li ipak spremi?"
 
 #. Translators: %s is a URI scheme (like for example http:, ftp:, etc.)
-#: gedit/gedit-io-error-info-bar.c:1044
+#: bedit/bedit-io-error-info-bar.c:1044
 #, c-format
 msgid ""
 "Cannot handle “%s:” locations in write mode. Please check that you typed the "
@@ -1314,7 +1314,7 @@ msgstr ""
 "Nemoguće rukovanje “%s:” lokacijom u načinu zapisivanja. Provjerite jeste li "
 "upisali lokaciju ispravno i ponovno pokušajte."
 
-#: gedit/gedit-io-error-info-bar.c:1052
+#: bedit/bedit-io-error-info-bar.c:1052
 msgid ""
 "Cannot handle this location in write mode. Please check that you typed the "
 "location correctly and try again."
@@ -1322,7 +1322,7 @@ msgstr ""
 "Nemoguće rukovanje ovom lokacijom u načinu zapisivanja. Provjerite jeste li "
 "upisali lokaciju ispravno i ponovno pokušajte."
 
-#: gedit/gedit-io-error-info-bar.c:1061
+#: bedit/bedit-io-error-info-bar.c:1061
 #, c-format
 msgid ""
 "“%s” is not a valid location. Please check that you typed the location "
@@ -1331,7 +1331,7 @@ msgstr ""
 "“%s” nije valjana lokacija. Provjerite jeste li upisali lokaciju ispravno i "
 "ponovno pokušajte."
 
-#: gedit/gedit-io-error-info-bar.c:1068
+#: bedit/bedit-io-error-info-bar.c:1068
 msgid ""
 "You do not have the permissions necessary to save the file. Please check "
 "that you typed the location correctly and try again."
@@ -1339,7 +1339,7 @@ msgstr ""
 "Nemate potrebne dozvole za spremanje datoteke. Provjerite jeste li ispravno "
 "upisali lokaciju i probajte ponovno."
 
-#: gedit/gedit-io-error-info-bar.c:1074
+#: bedit/bedit-io-error-info-bar.c:1074
 msgid ""
 "There is not enough disk space to save the file. Please free some disk space "
 "and try again."
@@ -1347,7 +1347,7 @@ msgstr ""
 "Nema dovoljno prostora na disku za spremanje datoteke. Oslobodite nešto "
 "prostora na disku i pokušajte ponovno."
 
-#: gedit/gedit-io-error-info-bar.c:1079
+#: bedit/bedit-io-error-info-bar.c:1079
 msgid ""
 "You are trying to save the file on a read-only disk. Please check that you "
 "typed the location correctly and try again."
@@ -1355,11 +1355,11 @@ msgstr ""
 "Pokušavate spremiti datoteku na disk koji je samo za čitanje. Provjerite "
 "jeste li ispravno upisali lokaciju i probajte ponovno."
 
-#: gedit/gedit-io-error-info-bar.c:1085
+#: bedit/bedit-io-error-info-bar.c:1085
 msgid "A file with the same name already exists. Please use a different name."
 msgstr "Datoteka s istim nazivom već postoji. Koristite drugi naziv."
 
-#: gedit/gedit-io-error-info-bar.c:1090
+#: bedit/bedit-io-error-info-bar.c:1090
 msgid ""
 "The disk where you are trying to save the file has a limitation on length of "
 "the file names. Please use a shorter name."
@@ -1367,7 +1367,7 @@ msgstr ""
 "Disk na koji pokušavate spremiti datoteku ima ograničenje na dužinu naziva "
 "datoteke. Koristite kraći naziv."
 
-#: gedit/gedit-io-error-info-bar.c:1101
+#: bedit/bedit-io-error-info-bar.c:1101
 msgid ""
 "The disk where you are trying to save the file has a limitation on file "
 "sizes. Please try saving a smaller file or saving it to a disk that does not "
@@ -1377,77 +1377,77 @@ msgstr ""
 "datoteka. Pokušajte spremiti datoteku manje veličine ili na neki drugi disk "
 "koji nema ovo ograničenje."
 
-#: gedit/gedit-io-error-info-bar.c:1118
+#: bedit/bedit-io-error-info-bar.c:1118
 #, c-format
 msgid "Could not save the file “%s”."
 msgstr "Nemoguće spremanje datoteke “%s”."
 
-#: gedit/gedit-io-error-info-bar.c:1158
+#: bedit/bedit-io-error-info-bar.c:1158
 #, c-format
 msgid "The file “%s” changed on disk."
 msgstr "Datoteka “%s” je promijenjena na disku."
 
-#: gedit/gedit-io-error-info-bar.c:1169
+#: bedit/bedit-io-error-info-bar.c:1169
 msgid "Drop Changes and _Reload"
 msgstr "Odbaci promjene i _učitaj ponovno"
 
-#: gedit/gedit-io-error-info-bar.c:1179 gedit/resources/gtk/menus-common.ui:148
-#: gedit/resources/gtk/menus.ui:9 gedit/resources/gtk/menus-traditional.ui:9
+#: bedit/bedit-io-error-info-bar.c:1179 bedit/resources/gtk/menus-common.ui:148
+#: bedit/resources/gtk/menus.ui:9 bedit/resources/gtk/menus-traditional.ui:9
 msgid "_Reload"
 msgstr "_Učitaj ponovo"
 
-#: gedit/gedit-io-error-info-bar.c:1243
+#: bedit/bedit-io-error-info-bar.c:1243
 #, c-format
 msgid "Some invalid chars have been detected while saving “%s”"
 msgstr "Neki neispravni znakovi su otkriveni pri spremanju “%s”"
 
-#: gedit/gedit-io-error-info-bar.c:1259
+#: bedit/bedit-io-error-info-bar.c:1259
 msgid ""
 "If you continue saving this file you can corrupt the document.  Save anyway?"
 msgstr ""
 "Ako nastavite sa spremanjem ove datoteke možete oštetiti dokument. Želite li "
 "svejedno spremiti?"
 
-#: gedit/gedit-preferences-dialog.c:446
+#: bedit/bedit-preferences-dialog.c:446
 msgid "Click on this button to select the font to be used by the editor"
 msgstr "Kliknite na ovu tipku za odabir slova koje će koristiti uređivač"
 
-#: gedit/gedit-preferences-dialog.c:452
+#: bedit/bedit-preferences-dialog.c:452
 #, c-format
 msgid "_Use the system fixed width font (%s)"
 msgstr "_Koristi širinu slova određenu sustavom (%s)"
 
-#: gedit/gedit-preferences-dialog.c:592
+#: bedit/bedit-preferences-dialog.c:592
 #, c-format
 msgid "Directory “%s” could not be created: g_mkdir_with_parents() failed: %s"
 msgstr "Direktorij '%s' nije stvoren: g_mkdir_with_parents() neuspjelo: %s"
 
-#: gedit/gedit-preferences-dialog.c:789
+#: bedit/bedit-preferences-dialog.c:789
 msgid "The selected color scheme cannot be installed."
 msgstr "Odabrana shema boja se ne može instalirati."
 
-#: gedit/gedit-preferences-dialog.c:812
+#: bedit/bedit-preferences-dialog.c:812
 msgid "Add Scheme"
 msgstr "Dodaj shemu"
 
-#: gedit/gedit-preferences-dialog.c:817
+#: bedit/bedit-preferences-dialog.c:817
 msgid "A_dd Scheme"
 msgstr "D_odaj shemu"
 
-#: gedit/gedit-preferences-dialog.c:821
+#: bedit/bedit-preferences-dialog.c:821
 msgid "Color Scheme Files"
 msgstr "Datoteke shema boja"
 
-#: gedit/gedit-preferences-dialog.c:852
+#: bedit/bedit-preferences-dialog.c:852
 #, c-format
 msgid "Could not remove color scheme “%s”."
 msgstr "Shemu boja \"%s\" nije moguće ukloniti."
 
-#: gedit/gedit-print-job.c:227
+#: bedit/bedit-print-job.c:227
 msgid "Preparing…"
 msgstr "Pripremanje…"
 
-#: gedit/gedit-print-job.c:539
+#: bedit/bedit-print-job.c:539
 #, c-format
 msgid "File: %s"
 msgstr "Datoteka: %s"
@@ -1455,41 +1455,41 @@ msgstr "Datoteka: %s"
 #. Translators: %N is the current page number, %Q is the total
 #. * number of pages (ex. Page 2 of 10)
 #.
-#: gedit/gedit-print-job.c:548
+#: bedit/bedit-print-job.c:548
 msgid "Page %N of %Q"
 msgstr "Stranica %N od %Q"
 
-#: gedit/gedit-print-job.c:626
+#: bedit/bedit-print-job.c:626
 #, c-format
 msgid "Rendering page %d of %d…"
 msgstr "Iscrtavanje stranice %d od %d…"
 
-#: gedit/gedit-print-preview.c:651
+#: bedit/bedit-print-preview.c:651
 #, c-format
 msgid "Page %d of %d"
 msgstr "Stranica %d od %d"
 
-#: gedit/gedit-replace-dialog.c:688 plugins/externaltools/tools/tools.ui:49
+#: bedit/bedit-replace-dialog.c:688 plugins/externaltools/tools/tools.ui:49
 #: plugins/externaltools/tools/tools.ui:83
 #: plugins/externaltools/tools/tools.ui:121
 msgid "Nothing"
 msgstr "Ništa"
 
-#: gedit/gedit-replace-dialog.c:777
-#: gedit/resources/ui/gedit-replace-dialog.ui:7
+#: bedit/bedit-replace-dialog.c:777
+#: bedit/resources/ui/bedit-replace-dialog.ui:7
 msgid "Find and Replace"
 msgstr "Potraži i zamijeni"
 
 #. Use spaces to leave padding proportional to the font size
-#: gedit/gedit-statusbar.c:56 gedit/gedit-statusbar.c:62
+#: bedit/bedit-statusbar.c:56 bedit/bedit-statusbar.c:62
 msgid "OVR"
 msgstr "OVR"
 
-#: gedit/gedit-statusbar.c:56 gedit/gedit-statusbar.c:62
+#: bedit/bedit-statusbar.c:56 bedit/bedit-statusbar.c:62
 msgid "INS"
 msgstr "INS"
 
-#: gedit/gedit-statusbar.c:242
+#: bedit/bedit-statusbar.c:242
 #, c-format
 msgid "There is a tab with errors"
 msgid_plural "There are %d tabs with errors"
@@ -1499,86 +1499,86 @@ msgstr[2] "Postoji %d Tab razmaka s greškama"
 
 #. Translators: the first %s is a file name (e.g. test.txt) the second one
 #. is a directory (e.g. ssh://master.gnome.org/home/users/paolo)
-#: gedit/gedit-tab.c:824
+#: bedit/bedit-tab.c:824
 #, c-format
 msgid "Reverting %s from %s"
 msgstr "Vraćanje u izvorno stanje %s iz %s"
 
-#: gedit/gedit-tab.c:831
+#: bedit/bedit-tab.c:831
 #, c-format
 msgid "Reverting %s"
 msgstr "Vraćanje u izvorno stanje %s"
 
 #. Translators: the first %s is a file name (e.g. test.txt) the second one
 #. is a directory (e.g. ssh://master.gnome.org/home/users/paolo)
-#: gedit/gedit-tab.c:844
+#: bedit/bedit-tab.c:844
 #, c-format
 msgid "Loading %s from %s"
 msgstr "Učitavanje %s iz %s"
 
-#: gedit/gedit-tab.c:851
+#: bedit/bedit-tab.c:851
 #, c-format
 msgid "Loading %s"
 msgstr "Učitavanje %s"
 
 #. Translators: the first %s is a file name (e.g. test.txt) the second one
 #. is a directory (e.g. ssh://master.gnome.org/home/users/paolo)
-#: gedit/gedit-tab.c:931
+#: bedit/bedit-tab.c:931
 #, c-format
 msgid "Saving %s to %s"
 msgstr "Spremanje %s u %s"
 
-#: gedit/gedit-tab.c:936
+#: bedit/bedit-tab.c:936
 #, c-format
 msgid "Saving %s"
 msgstr "Spremanje %s"
 
-#: gedit/gedit-tab.c:1539
+#: bedit/bedit-tab.c:1539
 #, c-format
 msgid "Error opening file %s"
 msgstr "Greška pri otvaranju datoteke %s"
 
-#: gedit/gedit-tab.c:1544
+#: bedit/bedit-tab.c:1544
 #, c-format
 msgid "Error reverting file %s"
 msgstr "Greška pri vraćanju datoteke %s u izvorno stanje"
 
-#: gedit/gedit-tab.c:1549
+#: bedit/bedit-tab.c:1549
 #, c-format
 msgid "Error saving file %s"
 msgstr "Greška pri spremanju datoteke %s"
 
-#: gedit/gedit-tab.c:1580
+#: bedit/bedit-tab.c:1580
 msgid "Name:"
 msgstr "Naziv:"
 
-#: gedit/gedit-tab.c:1581
+#: bedit/bedit-tab.c:1581
 msgid "MIME Type:"
 msgstr "MIME vrsta:"
 
-#: gedit/gedit-tab.c:1582
+#: bedit/bedit-tab.c:1582
 msgid "Encoding:"
 msgstr "Kôdna stranica:"
 
 #. Translators: '/ on <remote-share>'
-#: gedit/gedit-utils.c:764
+#: bedit/bedit-utils.c:764
 #, c-format
 msgid "/ on %s"
 msgstr "/ na %s"
 
-#: gedit/gedit-utils.c:1068
+#: bedit/bedit-utils.c:1068
 msgid "Unix/Linux"
 msgstr "Unix/Linux"
 
-#: gedit/gedit-utils.c:1070
+#: bedit/bedit-utils.c:1070
 msgid "Mac OS Classic"
 msgstr "Mac OS Classic"
 
-#: gedit/gedit-utils.c:1072
+#: bedit/bedit-utils.c:1072
 msgid "Windows"
 msgstr "Windows"
 
-#: gedit/gedit-view.c:481 gedit/resources/ui/gedit-preferences-dialog.ui:41
+#: bedit/bedit-view.c:481 bedit/resources/ui/bedit-preferences-dialog.ui:41
 msgid "_Display line numbers"
 msgstr "_Prikaži brojeve redaka"
 
@@ -1586,981 +1586,981 @@ msgstr "_Prikaži brojeve redaka"
 #. * occurrence, and the second %d is the total number of search
 #. * occurrences.
 #.
-#: gedit/gedit-view-frame.c:668
+#: bedit/bedit-view-frame.c:668
 #, c-format
 msgid "%d of %d"
 msgstr "%d od %d"
 
 #. create "Wrap Around" menu item.
-#: gedit/gedit-view-frame.c:760
+#: bedit/bedit-view-frame.c:760
 msgid "_Wrap Around"
 msgstr "_Omotaj oko"
 
 #. create "Match as Regular Expression" menu item.
-#: gedit/gedit-view-frame.c:770
+#: bedit/bedit-view-frame.c:770
 msgid "Match as _Regular Expression"
 msgstr "Podudaranje s _običnim izrazom"
 
 #. create "Match Entire Word Only" menu item.
-#: gedit/gedit-view-frame.c:784
+#: bedit/bedit-view-frame.c:784
 msgid "Match _Entire Word Only"
 msgstr "Pretraži samo _cijelu riječ"
 
 #. create "Match Case" menu item.
-#: gedit/gedit-view-frame.c:798
+#: bedit/bedit-view-frame.c:798
 msgid "_Match Case"
 msgstr "Pretraži pazeći na velika/mala slova"
 
-#: gedit/gedit-view-frame.c:1023
+#: bedit/bedit-view-frame.c:1023
 msgid "String you want to search for"
 msgstr "Niz znakova koji se pretražuju"
 
-#: gedit/gedit-view-frame.c:1035
+#: bedit/bedit-view-frame.c:1035
 msgid "Line you want to move the cursor to"
 msgstr "Redak na koji želite pomaknuti pokazivač"
 
-#: gedit/gedit-window.c:931
+#: bedit/bedit-window.c:931
 msgid "Bracket match is out of range"
 msgstr "Odgovarajuće zagrade su van raspona"
 
-#: gedit/gedit-window.c:936
+#: bedit/bedit-window.c:936
 msgid "Bracket match not found"
 msgstr "Nisu pronađene odgovarajuće zagrade"
 
-#: gedit/gedit-window.c:941
+#: bedit/bedit-window.c:941
 #, c-format
 msgid "Bracket match found on line: %d"
 msgstr "Odgovarajuće zagrade pronađene u retku: %d"
 
 #. Translators: "Ln" is an abbreviation for "Line", Col is an abbreviation for "Column". Please,
 #. use abbreviations if possible to avoid space problems.
-#: gedit/gedit-window.c:976
+#: bedit/bedit-window.c:976
 #, c-format
 msgid "  Ln %d, Col %d"
 msgstr "  Red %d, stupac %d"
 
-#: gedit/gedit-window.c:1160
+#: bedit/bedit-window.c:1160
 #, c-format
 msgid "Tab Width: %u"
 msgstr "Širina kartice: %u"
 
-#: gedit/gedit-window.c:1529
+#: bedit/bedit-window.c:1529
 msgid "There are unsaved documents"
 msgstr "Postoje nespremljeni dokumenti"
 
-#: gedit/gedit-window.c:2366
+#: bedit/bedit-window.c:2366
 msgid "Change side panel page"
 msgstr "Promijeni stranicu bočnog panela"
 
-#: gedit/gedit-window.c:2386 gedit/resources/ui/gedit-window.ui:19
+#: bedit/bedit-window.c:2386 bedit/resources/ui/bedit-window.ui:19
 msgid "Documents"
 msgstr "Dokumenti"
 
-#: gedit/gedit-window.c:2677
+#: bedit/bedit-window.c:2677
 msgid "Open a file"
 msgstr "Otvori datoteku"
 
-#: gedit/gedit-window.c:2681
+#: bedit/bedit-window.c:2681
 msgid "Open a recently used file"
 msgstr "Otvori nedavno korištenu datoteku"
 
-#: gedit/resources/gtk/menus-common.ui:7
+#: bedit/resources/gtk/menus-common.ui:7
 msgid "Move _Left"
 msgstr "Premjesti _lijevo"
 
-#: gedit/resources/gtk/menus-common.ui:11
+#: bedit/resources/gtk/menus-common.ui:11
 msgid "Move _Right"
 msgstr "Premjesti _desno"
 
-#: gedit/resources/gtk/menus-common.ui:17
+#: bedit/resources/gtk/menus-common.ui:17
 msgid "Move to New _Window"
 msgstr "Premjesti u novi _prozor"
 
-#: gedit/resources/gtk/menus-common.ui:21
+#: bedit/resources/gtk/menus-common.ui:21
 msgid "Move to New Tab _Group"
 msgstr "Premjesti u novu grupu _kartica"
 
-#: gedit/resources/gtk/menus-common.ui:27
-#: gedit/resources/gtk/menus-common.ui:163
-#: gedit/resources/gtk/menus-traditional.ui:134
-#: gedit/resources/ui/gedit-replace-dialog.ui:23
-#: plugins/spell/resources/ui/gedit-spell-setup-dialog.ui:25
-#: plugins/time/resources/ui/gedit-time-setup-dialog.ui:21
+#: bedit/resources/gtk/menus-common.ui:27
+#: bedit/resources/gtk/menus-common.ui:163
+#: bedit/resources/gtk/menus-traditional.ui:134
+#: bedit/resources/ui/bedit-replace-dialog.ui:23
+#: plugins/spell/resources/ui/bedit-spell-setup-dialog.ui:25
+#: plugins/time/resources/ui/bedit-time-setup-dialog.ui:21
 msgid "_Close"
 msgstr "_Zatvori"
 
-#: gedit/resources/gtk/menus-common.ui:35
+#: bedit/resources/gtk/menus-common.ui:35
 msgid "Automatic Indentation"
 msgstr "Automatsko poravnavanje"
 
-#: gedit/resources/gtk/menus-common.ui:58
+#: bedit/resources/gtk/menus-common.ui:58
 msgid "Use Spaces"
 msgstr "Koristi razmake"
 
-#: gedit/resources/gtk/menus-common.ui:66
+#: bedit/resources/gtk/menus-common.ui:66
 msgid "Display line numbers"
 msgstr "Prikaži brojeve redaka"
 
-#: gedit/resources/gtk/menus-common.ui:70
+#: bedit/resources/gtk/menus-common.ui:70
 msgid "Display right margin"
 msgstr "Prikaži desni rub"
 
-#: gedit/resources/gtk/menus-common.ui:74
+#: bedit/resources/gtk/menus-common.ui:74
 msgid "Highlight current line"
 msgstr "Istakni trenutni redak"
 
-#: gedit/resources/gtk/menus-common.ui:78
+#: bedit/resources/gtk/menus-common.ui:78
 msgid "Text wrapping"
 msgstr "Prijelom teksta"
 
-#: gedit/resources/gtk/menus-common.ui:88
+#: bedit/resources/gtk/menus-common.ui:88
 msgid "_File"
 msgstr "_Datoteka"
 
 #. _New is the menu item under the File menu on OS X which creates a new empty document.
-#: gedit/resources/gtk/menus-common.ui:92
+#: bedit/resources/gtk/menus-common.ui:92
 msgid "_New"
 msgstr "_Novi"
 
-#: gedit/resources/gtk/menus-common.ui:111
+#: bedit/resources/gtk/menus-common.ui:111
 msgid "Open _Recent"
 msgstr "Otvori _nedavno"
 
-#: gedit/resources/gtk/menus-common.ui:114
+#: bedit/resources/gtk/menus-common.ui:114
 msgid "Reopen Closed _Tab"
 msgstr "Ponovno otvori zatvorenu _karticu"
 
-#: gedit/resources/gtk/menus-common.ui:132
+#: bedit/resources/gtk/menus-common.ui:132
 msgid "Save _As…"
 msgstr "Spremi _kao…"
 
-#: gedit/resources/gtk/menus-common.ui:140 gedit/resources/gtk/menus.ui:27
+#: bedit/resources/gtk/menus-common.ui:140 bedit/resources/gtk/menus.ui:27
 msgid "_New Window"
 msgstr "_Novi prozor"
 
-#: gedit/resources/gtk/menus-common.ui:155 gedit/resources/gtk/menus.ui:14
-#: gedit/resources/gtk/menus-traditional.ui:14
+#: bedit/resources/gtk/menus-common.ui:155 bedit/resources/gtk/menus.ui:14
+#: bedit/resources/gtk/menus-traditional.ui:14
 msgid "_Print…"
 msgstr "_Ispiši…"
 
-#: gedit/resources/gtk/menus-common.ui:168
-#: gedit/resources/gtk/menus-traditional.ui:138
+#: bedit/resources/gtk/menus-common.ui:168
+#: bedit/resources/gtk/menus-traditional.ui:138
 msgid "_Quit"
 msgstr "_Odustani"
 
-#: gedit/resources/gtk/menus-common.ui:176
+#: bedit/resources/gtk/menus-common.ui:176
 msgid "_Edit"
 msgstr "_Uredi"
 
-#: gedit/resources/gtk/menus-common.ui:180
+#: bedit/resources/gtk/menus-common.ui:180
 msgid "_Undo"
 msgstr "_Vrati"
 
-#: gedit/resources/gtk/menus-common.ui:185
+#: bedit/resources/gtk/menus-common.ui:185
 msgid "_Redo"
 msgstr "_Ponovi"
 
-#: gedit/resources/gtk/menus-common.ui:192
+#: bedit/resources/gtk/menus-common.ui:192
 msgid "C_ut"
 msgstr "I_zreži"
 
-#: gedit/resources/gtk/menus-common.ui:197
+#: bedit/resources/gtk/menus-common.ui:197
 msgid "_Copy"
 msgstr "_Kopiraj"
 
-#: gedit/resources/gtk/menus-common.ui:202
+#: bedit/resources/gtk/menus-common.ui:202
 msgid "_Paste"
 msgstr "_Zalijepi"
 
-#: gedit/resources/gtk/menus-common.ui:207
-#: plugins/filebrowser/gedit-file-browser-plugin.c:919
-#: plugins/filebrowser/gedit-file-browser-plugin.c:957
-#: plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui:37
+#: bedit/resources/gtk/menus-common.ui:207
+#: plugins/filebrowser/bedit-file-browser-plugin.c:919
+#: plugins/filebrowser/bedit-file-browser-plugin.c:957
+#: plugins/filebrowser/resources/ui/bedit-file-browser-menus.ui:37
 msgid "_Delete"
 msgstr "_Obriši"
 
-#: gedit/resources/gtk/menus-common.ui:215
+#: bedit/resources/gtk/menus-common.ui:215
 msgid "Overwrite _Mode"
 msgstr "_Način prebrisivanja"
 
-#: gedit/resources/gtk/menus-common.ui:223
+#: bedit/resources/gtk/menus-common.ui:223
 msgid "Select _All"
 msgstr "Odaberi _sve"
 
-#: gedit/resources/gtk/menus-common.ui:230 gedit/resources/gtk/menus.ui:112
-#: gedit/resources/gtk/menus-traditional.ui:108
+#: bedit/resources/gtk/menus-common.ui:230 bedit/resources/gtk/menus.ui:112
+#: bedit/resources/gtk/menus-traditional.ui:108
 msgid "_Preferences"
 msgstr "_Osobitosti"
 
-#: gedit/resources/gtk/menus-common.ui:237 gedit/resources/gtk/menus.ui:72
-#: gedit/resources/gtk/menus-traditional.ui:68
+#: bedit/resources/gtk/menus-common.ui:237 bedit/resources/gtk/menus.ui:72
+#: bedit/resources/gtk/menus-traditional.ui:68
 msgid "_View"
 msgstr "_Pogled"
 
-#: gedit/resources/gtk/menus-common.ui:241 gedit/resources/gtk/menus.ui:76
-#: gedit/resources/gtk/menus-traditional.ui:72
+#: bedit/resources/gtk/menus-common.ui:241 bedit/resources/gtk/menus.ui:76
+#: bedit/resources/gtk/menus-traditional.ui:72
 msgid "Side _Panel"
 msgstr "Bočni _panel"
 
-#: gedit/resources/gtk/menus-common.ui:246 gedit/resources/gtk/menus.ui:80
-#: gedit/resources/gtk/menus-traditional.ui:76
+#: bedit/resources/gtk/menus-common.ui:246 bedit/resources/gtk/menus.ui:80
+#: bedit/resources/gtk/menus-traditional.ui:76
 msgid "_Bottom Panel"
 msgstr "_Donji panel"
 
-#: gedit/resources/gtk/menus-common.ui:255 gedit/resources/gtk/menus.ui:19
-#: gedit/resources/gtk/menus-traditional.ui:19
+#: bedit/resources/gtk/menus-common.ui:255 bedit/resources/gtk/menus.ui:19
+#: bedit/resources/gtk/menus-traditional.ui:19
 msgid "_Fullscreen"
 msgstr "_Cjelozaslonski prikaz"
 
-#: gedit/resources/gtk/menus-common.ui:263 gedit/resources/gtk/menus.ui:91
-#: gedit/resources/gtk/menus-traditional.ui:87
+#: bedit/resources/gtk/menus-common.ui:263 bedit/resources/gtk/menus.ui:91
+#: bedit/resources/gtk/menus-traditional.ui:87
 msgid "_Highlight Mode…"
 msgstr "_Način isticanja…"
 
-#: gedit/resources/gtk/menus-common.ui:269
+#: bedit/resources/gtk/menus-common.ui:269
 msgid "_Search"
 msgstr "_Pretraži"
 
-#: gedit/resources/gtk/menus-common.ui:273 gedit/resources/gtk/menus.ui:54
-#: gedit/resources/gtk/menus-traditional.ui:50
+#: bedit/resources/gtk/menus-common.ui:273 bedit/resources/gtk/menus.ui:54
+#: bedit/resources/gtk/menus-traditional.ui:50
 msgid "_Find…"
 msgstr "_Potraži…"
 
-#: gedit/resources/gtk/menus-common.ui:278
+#: bedit/resources/gtk/menus-common.ui:278
 msgid "Find Ne_xt"
 msgstr "Pretaži _sljedeće"
 
-#: gedit/resources/gtk/menus-common.ui:283
+#: bedit/resources/gtk/menus-common.ui:283
 msgid "Find Pre_vious"
 msgstr "Pronađi pri_jašnje"
 
-#: gedit/resources/gtk/menus-common.ui:291
+#: bedit/resources/gtk/menus-common.ui:291
 msgid "Find and _Replace…"
 msgstr "Potraži i _zamijeni…"
 
-#: gedit/resources/gtk/menus-common.ui:299 gedit/resources/gtk/menus.ui:62
-#: gedit/resources/gtk/menus-traditional.ui:58
+#: bedit/resources/gtk/menus-common.ui:299 bedit/resources/gtk/menus.ui:62
+#: bedit/resources/gtk/menus-traditional.ui:58
 msgid "_Clear Highlight"
 msgstr "_Ukloni isticanje"
 
-#: gedit/resources/gtk/menus-common.ui:307
+#: bedit/resources/gtk/menus-common.ui:307
 msgid "Go to _Line…"
 msgstr "Idi na _redak…"
 
-#: gedit/resources/gtk/menus-common.ui:314 gedit/resources/gtk/menus.ui:97
-#: gedit/resources/gtk/menus-traditional.ui:93
+#: bedit/resources/gtk/menus-common.ui:314 bedit/resources/gtk/menus.ui:97
+#: bedit/resources/gtk/menus-traditional.ui:93
 msgid "_Tools"
 msgstr "_Alati"
 
-#: gedit/resources/gtk/menus-common.ui:329
+#: bedit/resources/gtk/menus-common.ui:329
 msgid "_Documents"
 msgstr "_Dokumenti"
 
-#: gedit/resources/gtk/menus-common.ui:333
+#: bedit/resources/gtk/menus-common.ui:333
 msgid "_Save All"
 msgstr "_Spremi sve"
 
-#: gedit/resources/gtk/menus-common.ui:338
-#: gedit/resources/gtk/menus-traditional.ui:130
+#: bedit/resources/gtk/menus-common.ui:338
+#: bedit/resources/gtk/menus-traditional.ui:130
 msgid "_Close All"
 msgstr "_Zatvori sve"
 
-#: gedit/resources/gtk/menus-common.ui:346
+#: bedit/resources/gtk/menus-common.ui:346
 msgid "_New Tab Group"
 msgstr "_Nova grupa kartica"
 
-#: gedit/resources/gtk/menus-common.ui:351
+#: bedit/resources/gtk/menus-common.ui:351
 msgid "P_revious Tab Group"
 msgstr "P_rijašnja grupa kartica"
 
-#: gedit/resources/gtk/menus-common.ui:356
+#: bedit/resources/gtk/menus-common.ui:356
 msgid "Nex_t Tab Group"
 msgstr "Sljedeć_a grupa kartica"
 
-#: gedit/resources/gtk/menus-common.ui:364
+#: bedit/resources/gtk/menus-common.ui:364
 msgid "_Previous Document"
 msgstr "_Prijašnjni dokument"
 
-#: gedit/resources/gtk/menus-common.ui:369
+#: bedit/resources/gtk/menus-common.ui:369
 msgid "N_ext Document"
 msgstr "S_ljedeći dokument"
 
-#: gedit/resources/gtk/menus-common.ui:377
+#: bedit/resources/gtk/menus-common.ui:377
 msgid "_Move To New Window"
 msgstr "_Premjesti u novi prozor"
 
-#: gedit/resources/gtk/menus-common.ui:383
-#: gedit/resources/gtk/menus-common.ui:387 gedit/resources/gtk/menus.ui:123
-#: gedit/resources/gtk/menus-traditional.ui:119
-#: plugins/spell/gedit-spell-plugin.c:260
-#: plugins/time/resources/ui/gedit-time-dialog.ui:133
+#: bedit/resources/gtk/menus-common.ui:383
+#: bedit/resources/gtk/menus-common.ui:387 bedit/resources/gtk/menus.ui:123
+#: bedit/resources/gtk/menus-traditional.ui:119
+#: plugins/spell/bedit-spell-plugin.c:260
+#: plugins/time/resources/ui/bedit-time-dialog.ui:133
 msgid "_Help"
 msgstr "_Priručnik"
 
-#: gedit/resources/gtk/menus-common.ui:394 gedit/resources/gtk/menus.ui:127
-#: gedit/resources/gtk/menus-traditional.ui:123
+#: bedit/resources/gtk/menus-common.ui:394 bedit/resources/gtk/menus.ui:127
+#: bedit/resources/gtk/menus-traditional.ui:123
 msgid "_About Text Editor"
 msgstr "_O Uređivaču teksta"
 
-#: gedit/resources/gtk/menus.ui:41 gedit/resources/gtk/menus-traditional.ui:37
+#: bedit/resources/gtk/menus.ui:41 bedit/resources/gtk/menus-traditional.ui:37
 msgid "Save _All"
 msgstr "_Spremi sve"
 
-#: gedit/resources/gtk/menus.ui:58 gedit/resources/gtk/menus-traditional.ui:54
+#: bedit/resources/gtk/menus.ui:58 bedit/resources/gtk/menus-traditional.ui:54
 msgid "_Find and Replace…"
 msgstr "_Potraži i zamijeni…"
 
-#: gedit/resources/gtk/menus.ui:66 gedit/resources/gtk/menus-traditional.ui:62
+#: bedit/resources/gtk/menus.ui:66 bedit/resources/gtk/menus-traditional.ui:62
 msgid "_Go to Line…"
 msgstr "_Idi na redak…"
 
-#: gedit/resources/gtk/menus.ui:119
-#: gedit/resources/gtk/menus-traditional.ui:115
+#: bedit/resources/gtk/menus.ui:119
+#: bedit/resources/gtk/menus-traditional.ui:115
 msgid "_Keyboard Shortcuts"
 msgstr "_Prečaci tipkovnice"
 
-#: gedit/resources/ui/gedit-encodings-dialog.ui:41
+#: bedit/resources/ui/bedit-encodings-dialog.ui:41
 msgid "Character Encodings"
 msgstr "Kodne stranice"
 
-#: gedit/resources/ui/gedit-encodings-dialog.ui:51
+#: bedit/resources/ui/bedit-encodings-dialog.ui:51
 msgid "_Apply"
 msgstr "_Primijeni"
 
-#: gedit/resources/ui/gedit-encodings-dialog.ui:82
+#: bedit/resources/ui/bedit-encodings-dialog.ui:82
 msgid "A_vailable Encodings"
 msgstr "D_ostupne kôdne stranice"
 
-#: gedit/resources/ui/gedit-encodings-dialog.ui:100
+#: bedit/resources/ui/bedit-encodings-dialog.ui:100
 msgid "Cho_sen Encodings"
 msgstr "Odabrane kodne stranice"
 
-#: gedit/resources/ui/gedit-encodings-dialog.ui:139
-#: gedit/resources/ui/gedit-encodings-dialog.ui:217
+#: bedit/resources/ui/bedit-encodings-dialog.ui:139
+#: bedit/resources/ui/bedit-encodings-dialog.ui:217
 msgid "_Description"
 msgstr "_Opis"
 
-#: gedit/resources/ui/gedit-encodings-dialog.ui:151
-#: gedit/resources/ui/gedit-encodings-dialog.ui:228
+#: bedit/resources/ui/bedit-encodings-dialog.ui:151
+#: bedit/resources/ui/bedit-encodings-dialog.ui:228
 msgid "_Encoding"
 msgstr "_Kôdne stranice"
 
-#: gedit/resources/ui/gedit-highlight-mode-dialog.ui:11
+#: bedit/resources/ui/bedit-highlight-mode-dialog.ui:11
 msgid "Highlight Mode"
 msgstr "Način isticanja"
 
-#: gedit/resources/ui/gedit-highlight-mode-dialog.ui:47
+#: bedit/resources/ui/bedit-highlight-mode-dialog.ui:47
 msgid "_Select"
 msgstr "_Odaberi"
 
-#: gedit/resources/ui/gedit-highlight-mode-selector.ui:31
+#: bedit/resources/ui/bedit-highlight-mode-selector.ui:31
 msgid "Search highlight mode…"
 msgstr "Pretraži način isticanja…"
 
-#: gedit/resources/ui/gedit-preferences-dialog.ui:8
-#: gedit/resources/ui/gedit-preferences-dialog.ui:15
+#: bedit/resources/ui/bedit-preferences-dialog.ui:8
+#: bedit/resources/ui/bedit-preferences-dialog.ui:15
 msgid "Preferences"
 msgstr "Osobitosti"
 
-#: gedit/resources/ui/gedit-preferences-dialog.ui:56
+#: bedit/resources/ui/bedit-preferences-dialog.ui:56
 msgid "Display right _margin at column:"
 msgstr "Prikaži desni _rub kod stupca:"
 
-#: gedit/resources/ui/gedit-preferences-dialog.ui:95
+#: bedit/resources/ui/bedit-preferences-dialog.ui:95
 msgid "Display _statusbar"
 msgstr "Prikaži _statusnu traku"
 
-#: gedit/resources/ui/gedit-preferences-dialog.ui:110
+#: bedit/resources/ui/bedit-preferences-dialog.ui:110
 msgid "Display _grid pattern"
 msgstr "Prikaži _rešetkasi uzorak"
 
-#: gedit/resources/ui/gedit-preferences-dialog.ui:139
-#: gedit/resources/ui/gedit-print-preferences.ui:197
+#: bedit/resources/ui/bedit-preferences-dialog.ui:139
+#: bedit/resources/ui/bedit-print-preferences.ui:197
 msgid "Text Wrapping"
 msgstr "Prijelom teksta"
 
-#: gedit/resources/ui/gedit-preferences-dialog.ui:157
-#: gedit/resources/ui/gedit-print-preferences.ui:217
+#: bedit/resources/ui/bedit-preferences-dialog.ui:157
+#: bedit/resources/ui/bedit-print-preferences.ui:217
 msgid "Enable text _wrapping"
 msgstr "Omogući _prijelom teksta"
 
-#: gedit/resources/ui/gedit-preferences-dialog.ui:171
-#: gedit/resources/ui/gedit-print-preferences.ui:237
+#: bedit/resources/ui/bedit-preferences-dialog.ui:171
+#: bedit/resources/ui/bedit-print-preferences.ui:237
 msgid "Do not _split words over two lines"
 msgstr "Ne _dijeli riječi u dva retka"
 
-#: gedit/resources/ui/gedit-preferences-dialog.ui:205
+#: bedit/resources/ui/bedit-preferences-dialog.ui:205
 msgid "Highlighting"
 msgstr "Isticanje"
 
-#: gedit/resources/ui/gedit-preferences-dialog.ui:223
+#: bedit/resources/ui/bedit-preferences-dialog.ui:223
 msgid "Highlight current _line"
 msgstr "Istakni trenutni _redak"
 
-#: gedit/resources/ui/gedit-preferences-dialog.ui:237
+#: bedit/resources/ui/bedit-preferences-dialog.ui:237
 msgid "Highlight matching _brackets"
 msgstr "Isticanje odgovarajućih _zagrada"
 
-#: gedit/resources/ui/gedit-preferences-dialog.ui:270
+#: bedit/resources/ui/bedit-preferences-dialog.ui:270
 msgid "View"
 msgstr "Pogled"
 
-#: gedit/resources/ui/gedit-preferences-dialog.ui:292
+#: bedit/resources/ui/bedit-preferences-dialog.ui:292
 msgid "Tab Stops"
 msgstr "Tab"
 
-#: gedit/resources/ui/gedit-preferences-dialog.ui:315
+#: bedit/resources/ui/bedit-preferences-dialog.ui:315
 msgid "_Tab width:"
 msgstr "_Tab širina:"
 
-#: gedit/resources/ui/gedit-preferences-dialog.ui:344
+#: bedit/resources/ui/bedit-preferences-dialog.ui:344
 msgid "Insert _spaces instead of tabs"
 msgstr "Umetni razmake umje_sto Tabova"
 
-#: gedit/resources/ui/gedit-preferences-dialog.ui:359
+#: bedit/resources/ui/bedit-preferences-dialog.ui:359
 msgid "_Enable automatic indentation"
 msgstr "_Omogući automatsko poravnavanje"
 
-#: gedit/resources/ui/gedit-preferences-dialog.ui:394
+#: bedit/resources/ui/bedit-preferences-dialog.ui:394
 msgid "File Saving"
 msgstr "Spremanje datoteke"
 
-#: gedit/resources/ui/gedit-preferences-dialog.ui:413
+#: bedit/resources/ui/bedit-preferences-dialog.ui:413
 msgid "Create a _backup copy of files before saving"
 msgstr "Stvori _sigurnosnu kopiju datoteka prije spremanja"
 
-#: gedit/resources/ui/gedit-preferences-dialog.ui:428
+#: bedit/resources/ui/bedit-preferences-dialog.ui:428
 msgid "_Autosave files every"
 msgstr "_Automatsko spremanje datoteka svakih"
 
-#: gedit/resources/ui/gedit-preferences-dialog.ui:444
+#: bedit/resources/ui/bedit-preferences-dialog.ui:444
 msgid "_minutes"
 msgstr "_minuta"
 
-#: gedit/resources/ui/gedit-preferences-dialog.ui:491
+#: bedit/resources/ui/bedit-preferences-dialog.ui:491
 msgid "Editor"
 msgstr "Uređivač"
 
-#: gedit/resources/ui/gedit-preferences-dialog.ui:514
+#: bedit/resources/ui/bedit-preferences-dialog.ui:514
 #: plugins/externaltools/com.bwhmather.bedit.plugins.externaltools.gschema.xml.in:14
 #: plugins/pythonconsole/com.bwhmather.bedit.plugins.pythonconsole.gschema.xml.in:24
 msgid "Font"
 msgstr "Slova"
 
-#: gedit/resources/ui/gedit-preferences-dialog.ui:558
+#: bedit/resources/ui/bedit-preferences-dialog.ui:558
 msgid "Editor _font: "
 msgstr "Slova _uređivača: "
 
-#: gedit/resources/ui/gedit-preferences-dialog.ui:575
+#: bedit/resources/ui/bedit-preferences-dialog.ui:575
 msgid "Pick the editor font"
 msgstr "Odaberite slova uređivača"
 
-#: gedit/resources/ui/gedit-preferences-dialog.ui:616
+#: bedit/resources/ui/bedit-preferences-dialog.ui:616
 msgid "Color Scheme"
 msgstr "Shema boja"
 
-#: gedit/resources/ui/gedit-preferences-dialog.ui:663
-#: gedit/resources/ui/gedit-preferences-dialog.ui:664
+#: bedit/resources/ui/bedit-preferences-dialog.ui:663
+#: bedit/resources/ui/bedit-preferences-dialog.ui:664
 msgid "Install scheme"
 msgstr "Instaliraj shemu"
 
-#: gedit/resources/ui/gedit-preferences-dialog.ui:665
+#: bedit/resources/ui/bedit-preferences-dialog.ui:665
 msgid "Install Scheme"
 msgstr "Instaliraj shemu"
 
-#: gedit/resources/ui/gedit-preferences-dialog.ui:679
-#: gedit/resources/ui/gedit-preferences-dialog.ui:680
+#: bedit/resources/ui/bedit-preferences-dialog.ui:679
+#: bedit/resources/ui/bedit-preferences-dialog.ui:680
 msgid "Uninstall scheme"
 msgstr "Ukloni shemu"
 
-#: gedit/resources/ui/gedit-preferences-dialog.ui:681
+#: bedit/resources/ui/bedit-preferences-dialog.ui:681
 msgid "Uninstall Scheme"
 msgstr "Ukloni shemu"
 
-#: gedit/resources/ui/gedit-preferences-dialog.ui:721
+#: bedit/resources/ui/bedit-preferences-dialog.ui:721
 msgid "Font & Colors"
 msgstr "Slova i boje"
 
-#: gedit/resources/ui/gedit-preferences-dialog.ui:746
+#: bedit/resources/ui/bedit-preferences-dialog.ui:746
 msgid "Plugins"
 msgstr "Priključci"
 
-#: gedit/resources/ui/gedit-print-preferences.ui:39
+#: bedit/resources/ui/bedit-print-preferences.ui:39
 msgid "Syntax Highlighting"
 msgstr "Isticanje sintakse"
 
-#: gedit/resources/ui/gedit-print-preferences.ui:52
+#: bedit/resources/ui/bedit-print-preferences.ui:52
 msgid "Print synta_x highlighting"
 msgstr "Ispiši isticanje sintaks_e"
 
-#: gedit/resources/ui/gedit-print-preferences.ui:85
+#: bedit/resources/ui/bedit-print-preferences.ui:85
 msgid "Line Numbers"
 msgstr "Brojevi redaka"
 
-#: gedit/resources/ui/gedit-print-preferences.ui:105
+#: bedit/resources/ui/bedit-print-preferences.ui:105
 msgid "Print line nu_mbers"
 msgstr "Ispiši brojeve _redaka"
 
 #. 'Number every' from 'Number every 3 lines' in the 'Text Editor' tab of the print preferences.
-#: gedit/resources/ui/gedit-print-preferences.ui:129
+#: bedit/resources/ui/bedit-print-preferences.ui:129
 msgid "_Number every"
 msgstr "_Broj svaki"
 
 #. 'lines' from 'Number every 3 lines' in the 'Text Editor' tab of the print preferences.
-#: gedit/resources/ui/gedit-print-preferences.ui:157
+#: bedit/resources/ui/bedit-print-preferences.ui:157
 msgid "lines"
 msgstr "redka"
 
-#: gedit/resources/ui/gedit-print-preferences.ui:283
+#: bedit/resources/ui/bedit-print-preferences.ui:283
 msgid "Page header"
 msgstr "Zaglavlje stranice"
 
-#: gedit/resources/ui/gedit-print-preferences.ui:296
+#: bedit/resources/ui/bedit-print-preferences.ui:296
 msgid "Print page _headers"
 msgstr "Ispiši zaglavlja _stranica"
 
-#: gedit/resources/ui/gedit-print-preferences.ui:342
+#: bedit/resources/ui/bedit-print-preferences.ui:342
 msgid "Fonts"
 msgstr "Slova"
 
-#: gedit/resources/ui/gedit-print-preferences.ui:371
+#: bedit/resources/ui/bedit-print-preferences.ui:371
 msgid "_Body:"
 msgstr "_Glavni tekst:"
 
-#: gedit/resources/ui/gedit-print-preferences.ui:402
+#: bedit/resources/ui/bedit-print-preferences.ui:402
 msgid "_Line numbers:"
 msgstr "Brojevi _redaka:"
 
-#: gedit/resources/ui/gedit-print-preferences.ui:433
+#: bedit/resources/ui/bedit-print-preferences.ui:433
 msgid "He_aders and footers:"
 msgstr "Za_glavlja i podnožja:"
 
-#: gedit/resources/ui/gedit-print-preferences.ui:474
+#: bedit/resources/ui/bedit-print-preferences.ui:474
 msgid "_Restore Default Fonts"
 msgstr "V_rati zadana slova"
 
-#: gedit/resources/ui/gedit-print-preview.ui:34
+#: bedit/resources/ui/bedit-print-preview.ui:34
 msgid "Show the previous page"
 msgstr "Prikaži prijašnju stranicu"
 
-#: gedit/resources/ui/gedit-print-preview.ui:48
+#: bedit/resources/ui/bedit-print-preview.ui:48
 msgid "Show the next page"
 msgstr "Prikaži sljedeću stranicu"
 
-#: gedit/resources/ui/gedit-print-preview.ui:103
+#: bedit/resources/ui/bedit-print-preview.ui:103
 msgid "Current page (Alt+P)"
 msgstr "Trenutna stranica (Alt+P)"
 
 #. the "of" from "1 of 19" in print preview
-#: gedit/resources/ui/gedit-print-preview.ui:118
+#: bedit/resources/ui/bedit-print-preview.ui:118
 msgid "of"
 msgstr "od"
 
-#: gedit/resources/ui/gedit-print-preview.ui:135
+#: bedit/resources/ui/bedit-print-preview.ui:135
 msgid "Page total"
 msgstr "Ukupno stranica"
 
-#: gedit/resources/ui/gedit-print-preview.ui:136
+#: bedit/resources/ui/bedit-print-preview.ui:136
 msgid "The total number of pages in the document"
 msgstr "Ukupan broj stranica u dokumentu"
 
-#: gedit/resources/ui/gedit-print-preview.ui:185
+#: bedit/resources/ui/bedit-print-preview.ui:185
 msgid "Show multiple pages"
 msgstr "Prikaži više stranica"
 
-#: gedit/resources/ui/gedit-print-preview.ui:233
+#: bedit/resources/ui/bedit-print-preview.ui:233
 msgid "Zoom 1:1"
 msgstr "Uvećanje 1:1"
 
-#: gedit/resources/ui/gedit-print-preview.ui:247
+#: bedit/resources/ui/bedit-print-preview.ui:247
 msgid "Zoom to fit the whole page"
 msgstr "Prilagodi uvećanje za prikaz cijele stranice"
 
-#: gedit/resources/ui/gedit-print-preview.ui:261
+#: bedit/resources/ui/bedit-print-preview.ui:261
 msgid "Zoom the page in"
 msgstr "Povećaj stranicu"
 
-#: gedit/resources/ui/gedit-print-preview.ui:275
+#: bedit/resources/ui/bedit-print-preview.ui:275
 msgid "Zoom the page out"
 msgstr "Smanji stranicu"
 
-#: gedit/resources/ui/gedit-print-preview.ui:326
+#: bedit/resources/ui/bedit-print-preview.ui:326
 msgid "Close print preview"
 msgstr "Zatvori pregled ispisa"
 
-#: gedit/resources/ui/gedit-print-preview.ui:327
+#: bedit/resources/ui/bedit-print-preview.ui:327
 msgid "_Close Preview"
 msgstr "_Zatvori pregled"
 
-#: gedit/resources/ui/gedit-print-preview.ui:374
+#: bedit/resources/ui/bedit-print-preview.ui:374
 msgid "Page Preview"
 msgstr "Pregled stranice"
 
-#: gedit/resources/ui/gedit-print-preview.ui:375
+#: bedit/resources/ui/bedit-print-preview.ui:375
 msgid "The preview of a page in the document to be printed"
 msgstr "Pregled stranice u dokumentu koji treba ispisati"
 
-#: gedit/resources/ui/gedit-replace-dialog.ui:39
+#: bedit/resources/ui/bedit-replace-dialog.ui:39
 msgid "Replace _All"
 msgstr "_Zamijeni sve"
 
-#: gedit/resources/ui/gedit-replace-dialog.ui:71
+#: bedit/resources/ui/bedit-replace-dialog.ui:71
 msgctxt "label of the find button"
 msgid "_Find"
 msgstr "_Potraži"
 
-#: gedit/resources/ui/gedit-replace-dialog.ui:105
+#: bedit/resources/ui/bedit-replace-dialog.ui:105
 msgctxt "label on the left of the GtkEntry containing text to search"
 msgid "F_ind "
 msgstr "P_otraži "
 
-#: gedit/resources/ui/gedit-replace-dialog.ui:120
+#: bedit/resources/ui/bedit-replace-dialog.ui:120
 msgid "Replace _with "
 msgstr "Zamijeni _s "
 
-#: gedit/resources/ui/gedit-replace-dialog.ui:138
+#: bedit/resources/ui/bedit-replace-dialog.ui:138
 msgid "_Match case"
 msgstr "_Traži velika i mala slova"
 
-#: gedit/resources/ui/gedit-replace-dialog.ui:155
+#: bedit/resources/ui/bedit-replace-dialog.ui:155
 msgid "Match _entire word only"
 msgstr "Traži samo _cijelu riječ"
 
-#: gedit/resources/ui/gedit-replace-dialog.ui:172
+#: bedit/resources/ui/bedit-replace-dialog.ui:172
 msgid "Re_gular expression"
 msgstr "Uo_bičajeni izraz"
 
-#: gedit/resources/ui/gedit-replace-dialog.ui:189
+#: bedit/resources/ui/bedit-replace-dialog.ui:189
 msgid "Search _backwards"
 msgstr "Traži _unatrag"
 
-#: gedit/resources/ui/gedit-replace-dialog.ui:206
+#: bedit/resources/ui/bedit-replace-dialog.ui:206
 msgid "Wra_p around"
 msgstr "_Omotaj oko"
 
-#: gedit/resources/ui/gedit-shortcuts.ui:14
+#: bedit/resources/ui/bedit-shortcuts.ui:14
 msgctxt "shortcut window"
 msgid "Documents"
 msgstr "Dokumenti"
 
-#: gedit/resources/ui/gedit-shortcuts.ui:19
+#: bedit/resources/ui/bedit-shortcuts.ui:19
 msgctxt "shortcut window"
 msgid "Create a new document in a tab"
 msgstr "Stvori novi dokument u kartici"
 
-#: gedit/resources/ui/gedit-shortcuts.ui:26
+#: bedit/resources/ui/bedit-shortcuts.ui:26
 msgctxt "shortcut window"
 msgid "Open a document"
 msgstr "Otvori dokument"
 
-#: gedit/resources/ui/gedit-shortcuts.ui:33
+#: bedit/resources/ui/bedit-shortcuts.ui:33
 msgctxt "shortcut window"
 msgid "Save the document"
 msgstr "Spremi dokument"
 
-#: gedit/resources/ui/gedit-shortcuts.ui:40
+#: bedit/resources/ui/bedit-shortcuts.ui:40
 msgctxt "shortcut window"
 msgid "Save the document with a new filename"
 msgstr "Spremi dokument pod novim nazivom"
 
-#: gedit/resources/ui/gedit-shortcuts.ui:47
+#: bedit/resources/ui/bedit-shortcuts.ui:47
 msgctxt "shortcut window"
 msgid "Save all the documents"
 msgstr "Spremi sve dokumente"
 
-#: gedit/resources/ui/gedit-shortcuts.ui:54
+#: bedit/resources/ui/bedit-shortcuts.ui:54
 msgctxt "shortcut window"
 msgid "Close the document"
 msgstr "Zatvori dokument"
 
-#: gedit/resources/ui/gedit-shortcuts.ui:61
+#: bedit/resources/ui/bedit-shortcuts.ui:61
 msgctxt "shortcut window"
 msgid "Close all the documents"
 msgstr "Zatvori sve dokumente"
 
-#: gedit/resources/ui/gedit-shortcuts.ui:68
+#: bedit/resources/ui/bedit-shortcuts.ui:68
 msgctxt "shortcut window"
 msgid "Reopen the most recently closed document"
 msgstr "Ponovno otvori nedavno zatvorene dokumente"
 
-#: gedit/resources/ui/gedit-shortcuts.ui:75
+#: bedit/resources/ui/bedit-shortcuts.ui:75
 msgctxt "shortcut window"
 msgid "Switch to the next document"
 msgstr "Prebaci na sljedeći dokument"
 
-#: gedit/resources/ui/gedit-shortcuts.ui:82
+#: bedit/resources/ui/bedit-shortcuts.ui:82
 msgctxt "shortcut window"
 msgid "Switch to the previous document"
 msgstr "Prebaci na prijašnji dokument"
 
-#: gedit/resources/ui/gedit-shortcuts.ui:89
+#: bedit/resources/ui/bedit-shortcuts.ui:89
 msgctxt "shortcut window"
 msgid "Switch to the first — ninth document"
 msgstr "Prebaci na prvi — deveti dokument"
 
-#: gedit/resources/ui/gedit-shortcuts.ui:97
+#: bedit/resources/ui/bedit-shortcuts.ui:97
 msgctxt "shortcut window"
 msgid "Windows and Panels"
 msgstr "Prozori i paneli"
 
-#: gedit/resources/ui/gedit-shortcuts.ui:102
+#: bedit/resources/ui/bedit-shortcuts.ui:102
 msgctxt "shortcut window"
 msgid "Create a new document in a window"
 msgstr "Stvori novi dokument u prozoru"
 
-#: gedit/resources/ui/gedit-shortcuts.ui:109
+#: bedit/resources/ui/bedit-shortcuts.ui:109
 msgctxt "shortcut window"
 msgid "Create a new tab group"
 msgstr "Stvori novi grupu kartica"
 
-#: gedit/resources/ui/gedit-shortcuts.ui:116
+#: bedit/resources/ui/bedit-shortcuts.ui:116
 msgctxt "shortcut window"
 msgid "Show side panel"
 msgstr "Prikaži bočni panel"
 
-#: gedit/resources/ui/gedit-shortcuts.ui:123
+#: bedit/resources/ui/bedit-shortcuts.ui:123
 msgctxt "shortcut window"
 msgid "Show bottom panel"
 msgstr "Prikaži donji panel"
 
-#: gedit/resources/ui/gedit-shortcuts.ui:130
+#: bedit/resources/ui/bedit-shortcuts.ui:130
 msgctxt "shortcut window"
 msgid "Fullscreen on / off"
 msgstr "Cjelozaslonski prikaz uklj / isklj"
 
-#: gedit/resources/ui/gedit-shortcuts.ui:137
+#: bedit/resources/ui/bedit-shortcuts.ui:137
 msgctxt "shortcut window"
 msgid "Quit the application"
 msgstr "Zatvori aplikaciju"
 
-#: gedit/resources/ui/gedit-shortcuts.ui:145
-#: gedit/resources/ui/gedit-shortcuts.ui:171
+#: bedit/resources/ui/bedit-shortcuts.ui:145
+#: bedit/resources/ui/bedit-shortcuts.ui:171
 msgctxt "shortcut window"
 msgid "Find and Replace"
 msgstr "Potraži i zamijeni"
 
-#: gedit/resources/ui/gedit-shortcuts.ui:150
+#: bedit/resources/ui/bedit-shortcuts.ui:150
 msgctxt "shortcut window"
 msgid "Find"
 msgstr "Potraži"
 
-#: gedit/resources/ui/gedit-shortcuts.ui:157
+#: bedit/resources/ui/bedit-shortcuts.ui:157
 msgctxt "shortcut window"
 msgid "Find the next match"
 msgstr "Potraži sljedeće podudaranje"
 
-#: gedit/resources/ui/gedit-shortcuts.ui:164
+#: bedit/resources/ui/bedit-shortcuts.ui:164
 msgctxt "shortcut window"
 msgid "Find the previous match"
 msgstr "Potraži prijašnje podudaranje"
 
-#: gedit/resources/ui/gedit-shortcuts.ui:178
+#: bedit/resources/ui/bedit-shortcuts.ui:178
 msgctxt "shortcut window"
 msgid "Clear highlight"
 msgstr "Ukloni isticanje"
 
-#: gedit/resources/ui/gedit-shortcuts.ui:186
+#: bedit/resources/ui/bedit-shortcuts.ui:186
 msgctxt "shortcut window"
 msgid "Undo and Redo"
 msgstr "Poništi i ponovi"
 
-#: gedit/resources/ui/gedit-shortcuts.ui:191
+#: bedit/resources/ui/bedit-shortcuts.ui:191
 msgctxt "shortcut window"
 msgid "Undo previous command"
 msgstr "Poništi prijašnju naredbu"
 
-#: gedit/resources/ui/gedit-shortcuts.ui:198
+#: bedit/resources/ui/bedit-shortcuts.ui:198
 msgctxt "shortcut window"
 msgid "Redo previous command"
 msgstr "Ponovi prijašnju naredbu"
 
-#: gedit/resources/ui/gedit-shortcuts.ui:206
+#: bedit/resources/ui/bedit-shortcuts.ui:206
 msgctxt "shortcut window"
 msgid "Selection"
 msgstr "Odabir"
 
-#: gedit/resources/ui/gedit-shortcuts.ui:211
+#: bedit/resources/ui/bedit-shortcuts.ui:211
 msgctxt "shortcut window"
 msgid "Select all text"
 msgstr "Odaberi sav tekst"
 
-#: gedit/resources/ui/gedit-shortcuts.ui:218
+#: bedit/resources/ui/bedit-shortcuts.ui:218
 msgctxt "shortcut window"
 msgid "Unselect all text"
 msgstr "Ukloni sav odabir teksta"
 
-#: gedit/resources/ui/gedit-shortcuts.ui:226
+#: bedit/resources/ui/bedit-shortcuts.ui:226
 msgctxt "shortcut window"
 msgid "Copy and Paste"
 msgstr "Kopiraj i zalijepi"
 
-#: gedit/resources/ui/gedit-shortcuts.ui:231
+#: bedit/resources/ui/bedit-shortcuts.ui:231
 msgctxt "shortcut window"
 msgid "Copy selected text to clipboard"
 msgstr "Kopiraj odabrani tekst u međuspremnik"
 
-#: gedit/resources/ui/gedit-shortcuts.ui:238
+#: bedit/resources/ui/bedit-shortcuts.ui:238
 msgctxt "shortcut window"
 msgid "Cut selected text to clipboard"
 msgstr "Izreži odabrani tekst u međuspremnik"
 
-#: gedit/resources/ui/gedit-shortcuts.ui:245
+#: bedit/resources/ui/bedit-shortcuts.ui:245
 msgctxt "shortcut window"
 msgid "Paste text from clipboard"
 msgstr "Zalijepi sadržaj iz međuspremnika"
 
-#: gedit/resources/ui/gedit-shortcuts.ui:253
+#: bedit/resources/ui/bedit-shortcuts.ui:253
 msgctxt "shortcut window"
 msgid "Navigation"
 msgstr "Navigacija"
 
-#: gedit/resources/ui/gedit-shortcuts.ui:258
+#: bedit/resources/ui/bedit-shortcuts.ui:258
 msgctxt "shortcut window"
 msgid "Go to line"
 msgstr "Idi na redak"
 
-#: gedit/resources/ui/gedit-shortcuts.ui:265
+#: bedit/resources/ui/bedit-shortcuts.ui:265
 msgctxt "shortcut window"
 msgid "Move viewport up within the file"
 msgstr ""
 
-#: gedit/resources/ui/gedit-shortcuts.ui:272
+#: bedit/resources/ui/bedit-shortcuts.ui:272
 msgctxt "shortcut window"
 msgid "Move viewport down within the file"
 msgstr ""
 
-#: gedit/resources/ui/gedit-shortcuts.ui:279
+#: bedit/resources/ui/bedit-shortcuts.ui:279
 msgctxt "shortcut window"
 msgid "Move viewport to end of file"
 msgstr ""
 
-#: gedit/resources/ui/gedit-shortcuts.ui:286
+#: bedit/resources/ui/bedit-shortcuts.ui:286
 msgctxt "shortcut window"
 msgid "Move viewport to beginning of file"
 msgstr ""
 
-#: gedit/resources/ui/gedit-shortcuts.ui:293
+#: bedit/resources/ui/bedit-shortcuts.ui:293
 msgctxt "shortcut window"
 msgid "Move to matching bracket"
 msgstr "Pomakni na odgovarajuće zagrade"
 
-#: gedit/resources/ui/gedit-shortcuts.ui:301
+#: bedit/resources/ui/bedit-shortcuts.ui:301
 msgctxt "shortcut window"
 msgid "Editing"
 msgstr "Uređivanje"
 
-#: gedit/resources/ui/gedit-shortcuts.ui:306
+#: bedit/resources/ui/bedit-shortcuts.ui:306
 msgctxt "shortcut window"
 msgid "Toggle insert / overwrite"
 msgstr "Uklj./Isklj. umetanje / prebrisivanje"
 
-#: gedit/resources/ui/gedit-shortcuts.ui:313
+#: bedit/resources/ui/bedit-shortcuts.ui:313
 msgctxt "shortcut window"
 msgid "Delete current line"
 msgstr "Obriši trenutni redak"
 
-#: gedit/resources/ui/gedit-shortcuts.ui:320
+#: bedit/resources/ui/bedit-shortcuts.ui:320
 msgctxt "shortcut window"
 msgid "Join selected lines"
 msgstr "Spoji odabrane redke"
 
-#: gedit/resources/ui/gedit-shortcuts.ui:327
+#: bedit/resources/ui/bedit-shortcuts.ui:327
 msgctxt "shortcut window"
 msgid "Move current line up"
 msgstr "Pomakni trenutni redak gore"
 
-#: gedit/resources/ui/gedit-shortcuts.ui:334
+#: bedit/resources/ui/bedit-shortcuts.ui:334
 msgctxt "shortcut window"
 msgid "Move current line down"
 msgstr "Pomakni trenutni redak dolje"
 
-#: gedit/resources/ui/gedit-shortcuts.ui:341
+#: bedit/resources/ui/bedit-shortcuts.ui:341
 msgctxt "shortcut window"
 msgid "Move current word left"
 msgstr "Pomakni trenutnu riječ lijevo"
 
-#: gedit/resources/ui/gedit-shortcuts.ui:348
+#: bedit/resources/ui/bedit-shortcuts.ui:348
 msgctxt "shortcut window"
 msgid "Move current word right"
 msgstr "Pomakni trenutnu riječ desno"
 
-#: gedit/resources/ui/gedit-shortcuts.ui:355
+#: bedit/resources/ui/bedit-shortcuts.ui:355
 msgctxt "shortcut window"
 msgid "Convert to uppercase"
 msgstr "Pretvori u velika slova"
 
-#: gedit/resources/ui/gedit-shortcuts.ui:362
+#: bedit/resources/ui/bedit-shortcuts.ui:362
 msgctxt "shortcut window"
 msgid "Convert to lowercase"
 msgstr "Pretvori u mala slova"
 
-#: gedit/resources/ui/gedit-shortcuts.ui:369
+#: bedit/resources/ui/bedit-shortcuts.ui:369
 msgctxt "shortcut window"
 msgid "Invert case"
 msgstr "Obrni velika/mala slova"
 
-#: gedit/resources/ui/gedit-shortcuts.ui:376
+#: bedit/resources/ui/bedit-shortcuts.ui:376
 msgctxt "shortcut window"
 msgid "Increment number at cursor"
 msgstr "Povećaj broj pri pokazivaču miša"
 
-#: gedit/resources/ui/gedit-shortcuts.ui:383
+#: bedit/resources/ui/bedit-shortcuts.ui:383
 msgctxt "shortcut window"
 msgid "Decrement number at cursor"
 msgstr "Smanji broj pri pokazivaču miša"
 
-#: gedit/resources/ui/gedit-shortcuts.ui:391
+#: bedit/resources/ui/bedit-shortcuts.ui:391
 msgctxt "shortcut window"
 msgid "Tools"
 msgstr "Alati"
 
-#: gedit/resources/ui/gedit-shortcuts.ui:396
+#: bedit/resources/ui/bedit-shortcuts.ui:396
 msgctxt "shortcut window"
 msgid "Check spelling"
 msgstr "Provjera pravopisa"
 
-#: gedit/resources/ui/gedit-shortcuts.ui:403
+#: bedit/resources/ui/bedit-shortcuts.ui:403
 msgctxt "shortcut window"
 msgid "Print the document"
 msgstr "Ispiši dokument"
 
-#: gedit/resources/ui/gedit-shortcuts.ui:410
+#: bedit/resources/ui/bedit-shortcuts.ui:410
 msgctxt "shortcut window"
 msgid "Show completion window"
 msgstr "Prikaži prozor dovršavanja"
 
-#: gedit/resources/ui/gedit-tab-label.ui:34
+#: bedit/resources/ui/bedit-tab-label.ui:34
 msgid "Close Document"
 msgstr "Zatvori dokument"
 
-#: gedit/resources/ui/gedit-window.ui:36 gedit/resources/ui/gedit-window.ui:43
-#: gedit/resources/ui/gedit-window.ui:330
-#: gedit/resources/ui/gedit-window.ui:337
+#: bedit/resources/ui/bedit-window.ui:36 bedit/resources/ui/bedit-window.ui:43
+#: bedit/resources/ui/bedit-window.ui:330
+#: bedit/resources/ui/bedit-window.ui:337
 msgid "Create a new document"
 msgstr "Stvori novi dokument"
 
-#: gedit/resources/ui/gedit-window.ui:42 gedit/resources/ui/gedit-window.ui:336
+#: bedit/resources/ui/bedit-window.ui:42 bedit/resources/ui/bedit-window.ui:336
 msgid "New"
 msgstr "_Novi"
 
-#: gedit/resources/ui/gedit-window.ui:65 gedit/resources/ui/gedit-window.ui:70
-#: gedit/resources/ui/gedit-window.ui:375
-#: gedit/resources/ui/gedit-window.ui:380
+#: bedit/resources/ui/bedit-window.ui:65 bedit/resources/ui/bedit-window.ui:70
+#: bedit/resources/ui/bedit-window.ui:375
+#: bedit/resources/ui/bedit-window.ui:380
 msgid "Save the current file"
 msgstr "Spremi trenutnu datoteku"
 
-#: gedit/resources/ui/gedit-window.ui:69 gedit/resources/ui/gedit-window.ui:372
-#: gedit/resources/ui/gedit-window.ui:379
+#: bedit/resources/ui/bedit-window.ui:69 bedit/resources/ui/bedit-window.ui:372
+#: bedit/resources/ui/bedit-window.ui:379
 msgid "Save"
 msgstr "Spremi"
 
-#: gedit/resources/ui/gedit-window.ui:212
+#: bedit/resources/ui/bedit-window.ui:212
 msgid "Hide panel"
 msgstr "Sakrij panel"
 
-#: gedit/resources/ui/gedit-window.ui:346
-#: gedit/resources/ui/gedit-window.ui:351
-#: gedit/resources/ui/gedit-window.ui:352
+#: bedit/resources/ui/bedit-window.ui:346
+#: bedit/resources/ui/bedit-window.ui:351
+#: bedit/resources/ui/bedit-window.ui:352
 msgid "Leave Fullscreen"
 msgstr "Napusti cijeli zaslon"
 
@@ -2569,45 +2569,45 @@ msgid "Check update"
 msgstr "Provjeri za nadopune"
 
 #: plugins/checkupdate/checkupdate.plugin.desktop.in:6
-msgid "Check for latest version of gedit"
-msgstr "Potraži najnoviju inačicu gedita"
+msgid "Check for latest version of bedit"
+msgstr "Potraži najnoviju inačicu bedita"
 
-#: plugins/checkupdate/gedit-check-update-plugin.c:245
+#: plugins/checkupdate/bedit-check-update-plugin.c:245
 msgid "There was an error displaying the URI."
 msgstr "Dogodila se greška u prikazivanju URI-ja."
 
-#: plugins/checkupdate/gedit-check-update-plugin.c:282
+#: plugins/checkupdate/bedit-check-update-plugin.c:282
 msgid "_Download"
 msgstr "_Preuzmi"
 
-#: plugins/checkupdate/gedit-check-update-plugin.c:283
+#: plugins/checkupdate/bedit-check-update-plugin.c:283
 msgid "_Ignore Version"
 msgstr "_Zanemari inačicu"
 
-#: plugins/checkupdate/gedit-check-update-plugin.c:288
-msgid "There is a new version of gedit"
-msgstr "Dostupna je nova inačica gedita"
+#: plugins/checkupdate/bedit-check-update-plugin.c:288
+msgid "There is a new version of bedit"
+msgstr "Dostupna je nova inačica bedita"
 
-#: plugins/checkupdate/gedit-check-update-plugin.c:291
+#: plugins/checkupdate/bedit-check-update-plugin.c:291
 msgid ""
-"You can download the new version of gedit by clicking on the download button "
+"You can download the new version of bedit by clicking on the download button "
 "or ignore that version and wait for a new one"
 msgstr ""
-"Možete preuzeti novu inačicu gedita klikom na tipku \"Preuzmi\" dolje ili "
+"Možete preuzeti novu inačicu bedita klikom na tipku \"Preuzmi\" dolje ili "
 "možete zanemariti tu inačicu i pričekati novu"
 
 #: plugins/checkupdate/com.bwhmather.bedit.plugins.checkupdate.gschema.xml.in:5
 msgid "Version to Ignore"
 msgstr "Inačica za zanemariti"
 
-#. This is releated to the next gedit version to be released
+#. This is releated to the next bedit version to be released
 #: plugins/checkupdate/com.bwhmather.bedit.plugins.checkupdate.gschema.xml.in:7
 msgid "Version to ignore until a newer version is released."
 msgstr "Inačica za zanemariti dok ne bude dostupna nova."
 
 #: plugins/docinfo/docinfo.plugin.desktop.in:5
-#: plugins/docinfo/resources/ui/gedit-docinfo-plugin.ui:7
-#: plugins/docinfo/resources/ui/gedit-docinfo-plugin.ui:13
+#: plugins/docinfo/resources/ui/bedit-docinfo-plugin.ui:7
+#: plugins/docinfo/resources/ui/bedit-docinfo-plugin.ui:13
 msgid "Document Statistics"
 msgstr "Statistika dokumenta"
 
@@ -2615,35 +2615,35 @@ msgstr "Statistika dokumenta"
 msgid "Report the number of words, lines and characters in a document."
 msgstr "Prijavi broj riječi, redaka i znakova u dokumentu."
 
-#: plugins/docinfo/gedit-docinfo-plugin.c:537
+#: plugins/docinfo/bedit-docinfo-plugin.c:537
 msgid "_Document Statistics"
 msgstr "_Statistika dokumenta"
 
-#: plugins/docinfo/resources/ui/gedit-docinfo-plugin.ui:64
+#: plugins/docinfo/resources/ui/bedit-docinfo-plugin.ui:64
 msgid "Document"
 msgstr "Dokument"
 
-#: plugins/docinfo/resources/ui/gedit-docinfo-plugin.ui:82
+#: plugins/docinfo/resources/ui/bedit-docinfo-plugin.ui:82
 msgid "Selection"
 msgstr "Odabir"
 
-#: plugins/docinfo/resources/ui/gedit-docinfo-plugin.ui:97
+#: plugins/docinfo/resources/ui/bedit-docinfo-plugin.ui:97
 msgid "Lines"
 msgstr "Redci"
 
-#: plugins/docinfo/resources/ui/gedit-docinfo-plugin.ui:112
+#: plugins/docinfo/resources/ui/bedit-docinfo-plugin.ui:112
 msgid "Words"
 msgstr "Riječi"
 
-#: plugins/docinfo/resources/ui/gedit-docinfo-plugin.ui:127
+#: plugins/docinfo/resources/ui/bedit-docinfo-plugin.ui:127
 msgid "Characters (with spaces)"
 msgstr "Znakova (s razmacima)"
 
-#: plugins/docinfo/resources/ui/gedit-docinfo-plugin.ui:142
+#: plugins/docinfo/resources/ui/bedit-docinfo-plugin.ui:142
 msgid "Characters (no spaces)"
 msgstr "Znakova (bez razmaka)"
 
-#: plugins/docinfo/resources/ui/gedit-docinfo-plugin.ui:157
+#: plugins/docinfo/resources/ui/bedit-docinfo-plugin.ui:157
 msgid "Bytes"
 msgstr "Bajtova"
 
@@ -2911,52 +2911,52 @@ msgstr "Panel pregleda datoteka"
 msgid "Easy file access from the side panel"
 msgstr "Lagano pristupanje datotekama iz bočnog panela"
 
-#: plugins/filebrowser/gedit-file-bookmarks-store.c:200
+#: plugins/filebrowser/bedit-file-bookmarks-store.c:200
 msgid "Home"
 msgstr "Naslovnica"
 
-#: plugins/filebrowser/gedit-file-bookmarks-store.c:233
+#: plugins/filebrowser/bedit-file-bookmarks-store.c:233
 msgid "File System"
 msgstr "Datotečni sustav"
 
-#: plugins/filebrowser/gedit-file-browser-plugin.c:523
+#: plugins/filebrowser/bedit-file-browser-plugin.c:523
 msgid "File Browser"
 msgstr "Preglednik datoteka"
 
-#: plugins/filebrowser/gedit-file-browser-plugin.c:659
+#: plugins/filebrowser/bedit-file-browser-plugin.c:659
 msgid "An error occurred while creating a new directory"
 msgstr "Pojavila se greška prilikom stvaranja novog direktorija"
 
-#: plugins/filebrowser/gedit-file-browser-plugin.c:662
+#: plugins/filebrowser/bedit-file-browser-plugin.c:662
 msgid "An error occurred while creating a new file"
 msgstr "Pojavila se greška prilikom stvaranja nove datoteke"
 
-#: plugins/filebrowser/gedit-file-browser-plugin.c:665
+#: plugins/filebrowser/bedit-file-browser-plugin.c:665
 msgid "An error occurred while renaming a file or directory"
 msgstr "Pojavila se greška prilikom preimenovanja datoteke ili direktorija"
 
-#: plugins/filebrowser/gedit-file-browser-plugin.c:668
+#: plugins/filebrowser/bedit-file-browser-plugin.c:668
 msgid "An error occurred while deleting a file or directory"
 msgstr "Pojavila se greška prilikom brisanja datoteke ili direktorija"
 
-#: plugins/filebrowser/gedit-file-browser-plugin.c:671
+#: plugins/filebrowser/bedit-file-browser-plugin.c:671
 msgid "An error occurred while opening a directory in the file manager"
 msgstr ""
 "Pojavila se greška prilikom otvaranja direktorija u upravitelju datoteka"
 
-#: plugins/filebrowser/gedit-file-browser-plugin.c:674
+#: plugins/filebrowser/bedit-file-browser-plugin.c:674
 msgid "An error occurred while setting a root directory"
 msgstr "Pojavila se greška prilikom postavljanja korijenskog direktorija"
 
-#: plugins/filebrowser/gedit-file-browser-plugin.c:677
+#: plugins/filebrowser/bedit-file-browser-plugin.c:677
 msgid "An error occurred while loading a directory"
 msgstr "Pojavila se greška prilikom učitavanja direktorija"
 
-#: plugins/filebrowser/gedit-file-browser-plugin.c:680
+#: plugins/filebrowser/bedit-file-browser-plugin.c:680
 msgid "An error occurred"
 msgstr "Došlo je do greške"
 
-#: plugins/filebrowser/gedit-file-browser-plugin.c:902
+#: plugins/filebrowser/bedit-file-browser-plugin.c:902
 msgid ""
 "Cannot move file to trash, do you\n"
 "want to delete permanently?"
@@ -2964,33 +2964,33 @@ msgstr ""
 "Nije moguće premjestiti datoteku u\n"
 "smeće, želite li je trajno obrisati?"
 
-#: plugins/filebrowser/gedit-file-browser-plugin.c:907
+#: plugins/filebrowser/bedit-file-browser-plugin.c:907
 #, c-format
 msgid "The file “%s” cannot be moved to the trash."
 msgstr "Datoteka \"%s\" se ne može premjestiti u smeće."
 
-#: plugins/filebrowser/gedit-file-browser-plugin.c:912
+#: plugins/filebrowser/bedit-file-browser-plugin.c:912
 msgid "The selected files cannot be moved to the trash."
 msgstr "Odabrane datoteke se ne mogu premjestiti u smeće."
 
-#: plugins/filebrowser/gedit-file-browser-plugin.c:943
+#: plugins/filebrowser/bedit-file-browser-plugin.c:943
 #, c-format
 msgid "Are you sure you want to permanently delete “%s”?"
 msgstr "Sigurno želite trajno obrisati \"%s\"?"
 
-#: plugins/filebrowser/gedit-file-browser-plugin.c:948
+#: plugins/filebrowser/bedit-file-browser-plugin.c:948
 msgid "Are you sure you want to permanently delete the selected files?"
 msgstr "Sigurno želite trajno obrisati odabrane datoteke?"
 
-#: plugins/filebrowser/gedit-file-browser-plugin.c:951
+#: plugins/filebrowser/bedit-file-browser-plugin.c:951
 msgid "If you delete an item, it is permanently lost."
 msgstr "Ukoliko obrišete stavku, biti će trajno izgubljena."
 
-#: plugins/filebrowser/gedit-file-browser-store.c:1703
+#: plugins/filebrowser/bedit-file-browser-store.c:1703
 msgid "(Empty)"
 msgstr "(Prazno)"
 
-#: plugins/filebrowser/gedit-file-browser-store.c:3327
+#: plugins/filebrowser/bedit-file-browser-store.c:3327
 msgid ""
 "The renamed file is currently filtered out. You need to adjust your filter "
 "settings to make the file visible"
@@ -2999,11 +2999,11 @@ msgstr ""
 "postavke filtra kako bi datoteku učinili vidljivom"
 
 #. Translators: This is the default name of new files created by the file browser pane.
-#: plugins/filebrowser/gedit-file-browser-store.c:3578
+#: plugins/filebrowser/bedit-file-browser-store.c:3578
 msgid "Untitled File"
 msgstr "Neimenovana datoteka"
 
-#: plugins/filebrowser/gedit-file-browser-store.c:3606
+#: plugins/filebrowser/bedit-file-browser-store.c:3606
 msgid ""
 "The new file is currently filtered out. You need to adjust your filter "
 "settings to make the file visible"
@@ -3012,11 +3012,11 @@ msgstr ""
 "filtra kako bi datoteku učinili vidljivom"
 
 #. Translators: This is the default name of new directories created by the file browser pane.
-#: plugins/filebrowser/gedit-file-browser-store.c:3635
+#: plugins/filebrowser/bedit-file-browser-store.c:3635
 msgid "Untitled Folder"
 msgstr "Neimenovana mapa"
 
-#: plugins/filebrowser/gedit-file-browser-store.c:3658
+#: plugins/filebrowser/bedit-file-browser-store.c:3658
 msgid ""
 "The new directory is currently filtered out. You need to adjust your filter "
 "settings to make the directory visible"
@@ -3024,26 +3024,26 @@ msgstr ""
 "Novi direktorij je trenutno filtriran. Trebate prilagoditi vaše postavke "
 "filtra kako bi direktorij učinili vidljivim"
 
-#: plugins/filebrowser/gedit-file-browser-widget.c:757
+#: plugins/filebrowser/bedit-file-browser-widget.c:757
 msgid "Bookmarks"
 msgstr "Zabilješke"
 
-#: plugins/filebrowser/gedit-file-browser-widget.c:1957
+#: plugins/filebrowser/bedit-file-browser-widget.c:1957
 #, c-format
 msgid "No mount object for mounted volume: %s"
 msgstr "Nema objekta montiranja za montirani uređaj: %s"
 
-#: plugins/filebrowser/gedit-file-browser-widget.c:2026
+#: plugins/filebrowser/bedit-file-browser-widget.c:2026
 #, c-format
 msgid "Could not open media: %s"
 msgstr "Nemoguće otvoriti medij: %s"
 
-#: plugins/filebrowser/gedit-file-browser-widget.c:2069
+#: plugins/filebrowser/bedit-file-browser-widget.c:2069
 #, c-format
 msgid "Could not mount volume: %s"
 msgstr "Nemoguće montirati uređaj: %s"
 
-#: plugins/filebrowser/gedit-file-browser-widget.c:2581
+#: plugins/filebrowser/bedit-file-browser-widget.c:2581
 #, c-format
 msgid "Error when loading “%s”: No such directory"
 msgstr "Greška pri učitavanju “%s“: Nema takvog direktorija"
@@ -3145,60 +3145,60 @@ msgstr "Binarni uzorci preglednika datoteka"
 msgid "The supplemental patterns to use when filtering binary files."
 msgstr "Dodatni uzorci za korištenje pri filtriranju binarnih datoteka."
 
-#: plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui:13
-#: plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui:79
+#: plugins/filebrowser/resources/ui/bedit-file-browser-menus.ui:13
+#: plugins/filebrowser/resources/ui/bedit-file-browser-menus.ui:79
 msgid "_Set Root to Active Document"
 msgstr "_Postavi korijenski pristup aktivnom dokumentu"
 
-#: plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui:19
+#: plugins/filebrowser/resources/ui/bedit-file-browser-menus.ui:19
 msgid "_New Folder"
 msgstr "_Nova mapa"
 
-#: plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui:23
+#: plugins/filebrowser/resources/ui/bedit-file-browser-menus.ui:23
 msgid "New F_ile"
 msgstr "Nova d_atoteka"
 
-#: plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui:29
+#: plugins/filebrowser/resources/ui/bedit-file-browser-menus.ui:29
 msgid "_Rename…"
 msgstr "_Preimenuj…"
 
-#: plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui:33
+#: plugins/filebrowser/resources/ui/bedit-file-browser-menus.ui:33
 msgid "_Move to Trash"
 msgstr "_Premjesti u smeće"
 
-#: plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui:43
+#: plugins/filebrowser/resources/ui/bedit-file-browser-menus.ui:43
 msgid "Re_fresh View"
 msgstr "Os_vježi pogled"
 
-#: plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui:47
+#: plugins/filebrowser/resources/ui/bedit-file-browser-menus.ui:47
 msgid "_View Folder"
 msgstr "_Pregledaj mapu"
 
-#: plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui:51
+#: plugins/filebrowser/resources/ui/bedit-file-browser-menus.ui:51
 msgid "_Open in Terminal"
 msgstr "_Otvori u terminalu"
 
-#: plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui:56
+#: plugins/filebrowser/resources/ui/bedit-file-browser-menus.ui:56
 msgid "_Filter"
 msgstr "_Filter"
 
-#: plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui:59
+#: plugins/filebrowser/resources/ui/bedit-file-browser-menus.ui:59
 msgid "Show _Hidden"
 msgstr "Prikaži _skrivene"
 
-#: plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui:63
+#: plugins/filebrowser/resources/ui/bedit-file-browser-menus.ui:63
 msgid "Show _Binary"
 msgstr "Prikaži _binarne"
 
-#: plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui:67
+#: plugins/filebrowser/resources/ui/bedit-file-browser-menus.ui:67
 msgid "Match Filename"
 msgstr "Podudaraj naziv datoteke"
 
-#: plugins/filebrowser/resources/ui/gedit-file-browser-widget.ui:183
+#: plugins/filebrowser/resources/ui/bedit-file-browser-widget.ui:183
 msgid "History"
 msgstr "Povijest"
 
-#: plugins/filebrowser/resources/ui/gedit-file-browser-widget.ui:184
+#: plugins/filebrowser/resources/ui/bedit-file-browser-widget.ui:184
 msgid "Open history menu"
 msgstr "Otvori izbornik povijesti"
 
@@ -3207,8 +3207,8 @@ msgid "Modelines"
 msgstr "Modelines"
 
 #: plugins/modelines/modelines.plugin.desktop.in:6
-msgid "Emacs, Kate and Vim-style modelines support for gedit."
-msgstr "Emacs, Kate i Vim modelines podržane u geditu."
+msgid "Emacs, Kate and Vim-style modelines support for bedit."
+msgstr "Emacs, Kate i Vim modelines podržane u beditu."
 
 #: plugins/pythonconsole/com.bwhmather.bedit.plugins.pythonconsole.gschema.xml.in:5
 msgid "Command Color Text"
@@ -3520,32 +3520,32 @@ msgstr "Prečac tipkovnice kojim se aktivira isječak"
 msgid "_Drop targets:"
 msgstr "_Otkaži mete:"
 
-#: plugins/sort/gedit-sort-plugin.c:243
+#: plugins/sort/bedit-sort-plugin.c:243
 msgid "S_ort…"
 msgstr "R_azvrstaj…"
 
-#: plugins/sort/resources/ui/gedit-sort-plugin.ui:13
+#: plugins/sort/resources/ui/bedit-sort-plugin.ui:13
 #: plugins/sort/sort.plugin.desktop.in:5
 msgid "Sort"
 msgstr "Razvrstaj"
 
-#: plugins/sort/resources/ui/gedit-sort-plugin.ui:38
+#: plugins/sort/resources/ui/bedit-sort-plugin.ui:38
 msgid "_Reverse order"
 msgstr "_Obrnuti poredak"
 
-#: plugins/sort/resources/ui/gedit-sort-plugin.ui:54
+#: plugins/sort/resources/ui/bedit-sort-plugin.ui:54
 msgid "R_emove duplicates"
 msgstr "U_kloni duplikate"
 
-#: plugins/sort/resources/ui/gedit-sort-plugin.ui:70
+#: plugins/sort/resources/ui/bedit-sort-plugin.ui:70
 msgid "C_ase sensitive"
 msgstr "O_sjetljivo na velika ili mala slova"
 
-#: plugins/sort/resources/ui/gedit-sort-plugin.ui:93
+#: plugins/sort/resources/ui/bedit-sort-plugin.ui:93
 msgid "S_tart at column:"
 msgstr "K_reni od stupca:"
 
-#: plugins/sort/resources/ui/gedit-sort-plugin.ui:150
+#: plugins/sort/resources/ui/bedit-sort-plugin.ui:150
 msgid "_Sort"
 msgstr "_Razvrstaj"
 
@@ -3553,20 +3553,20 @@ msgstr "_Razvrstaj"
 msgid "Sorts a document or selected text."
 msgstr "Razvrstava dokument ili odabrani tekst."
 
-#: plugins/spell/gedit-spell-app-activatable.c:143
+#: plugins/spell/bedit-spell-app-activatable.c:143
 msgid "_Check Spelling…"
 msgstr "_Provjera pravopisa…"
 
-#: plugins/spell/gedit-spell-app-activatable.c:147
+#: plugins/spell/bedit-spell-app-activatable.c:147
 msgid "Set _Language…"
 msgstr "Postavi _jezik…"
 
-#: plugins/spell/gedit-spell-app-activatable.c:151
+#: plugins/spell/bedit-spell-app-activatable.c:151
 msgid "_Highlight Misspelled Words"
 msgstr "_Istakni krivo napisane riječi"
 
 #: plugins/spell/com.bwhmather.bedit.plugins.spell.gschema.xml.in:5
-#: plugins/spell/resources/ui/gedit-spell-setup-dialog.ui:75
+#: plugins/spell/resources/ui/bedit-spell-setup-dialog.ui:75
 msgid "Highlight misspelled words"
 msgstr "Istakni krivo napisane riječi"
 
@@ -3574,11 +3574,11 @@ msgstr "Istakni krivo napisane riječi"
 msgid "Default setting for highlight misspelled words."
 msgstr "Zadane postavke za isticanje krivo napisanih riječi."
 
-#: plugins/spell/resources/ui/gedit-spell-setup-dialog.ui:7
+#: plugins/spell/resources/ui/bedit-spell-setup-dialog.ui:7
 msgid "Configure spell plugin"
 msgstr "Podesi priključak pravopisa"
 
-#: plugins/spell/resources/ui/gedit-spell-setup-dialog.ui:61
+#: plugins/spell/resources/ui/bedit-spell-setup-dialog.ui:61
 msgid "Defaults for new documents"
 msgstr "Zadano za nove dokumente"
 
@@ -3590,11 +3590,11 @@ msgstr "Alat za provjeru pravopisa"
 msgid "Checks the spelling of the current document."
 msgstr "Provjerava pravopis u trenuntom dokumentu."
 
-#: plugins/time/gedit-time-plugin.c:265
+#: plugins/time/bedit-time-plugin.c:265
 msgid "In_sert Date and Time…"
 msgstr "Umetni _datum i vrijeme…"
 
-#: plugins/time/gedit-time-plugin.c:491
+#: plugins/time/bedit-time-plugin.c:491
 msgid "Available formats"
 msgstr "Dostupni formati"
 
@@ -3626,45 +3626,45 @@ msgstr "Prilagođeni format"
 msgid "The custom format used when inserting the date/time."
 msgstr "Prilagođeni format koji je korišten pri umetanju datuma/vremena."
 
-#: plugins/time/resources/ui/gedit-time-dialog.ui:7
+#: plugins/time/resources/ui/bedit-time-dialog.ui:7
 msgid "Insert Date and Time"
 msgstr "Umetni datum i vrijeme"
 
-#: plugins/time/resources/ui/gedit-time-dialog.ui:23
-#: plugins/time/resources/ui/gedit-time-setup-dialog.ui:94
+#: plugins/time/resources/ui/bedit-time-dialog.ui:23
+#: plugins/time/resources/ui/bedit-time-setup-dialog.ui:94
 msgid "Use the _selected format"
 msgstr "Koristi _odabrani format"
 
-#: plugins/time/resources/ui/gedit-time-dialog.ui:65
-#: plugins/time/resources/ui/gedit-time-setup-dialog.ui:141
+#: plugins/time/resources/ui/bedit-time-dialog.ui:65
+#: plugins/time/resources/ui/bedit-time-setup-dialog.ui:141
 msgid "_Use custom format"
 msgstr "_Koristi prilagođeni format"
 
 #. Translators: Use the more common date format in your locale
-#: plugins/time/resources/ui/gedit-time-dialog.ui:89
-#: plugins/time/resources/ui/gedit-time-setup-dialog.ui:165
+#: plugins/time/resources/ui/bedit-time-dialog.ui:89
+#: plugins/time/resources/ui/bedit-time-setup-dialog.ui:165
 msgid "%d/%m/%Y %H:%M:%S"
 msgstr "%d/%m/%Y %H:%M:%S"
 
 #. Translators: This example should follow the date format defined in the entry above
-#: plugins/time/resources/ui/gedit-time-dialog.ui:106
-#: plugins/time/resources/ui/gedit-time-setup-dialog.ui:181
+#: plugins/time/resources/ui/bedit-time-dialog.ui:106
+#: plugins/time/resources/ui/bedit-time-setup-dialog.ui:181
 msgid "01/11/2009 17:52:00"
 msgstr "01/11/2009 17:52:00"
 
-#: plugins/time/resources/ui/gedit-time-dialog.ui:167
+#: plugins/time/resources/ui/bedit-time-dialog.ui:167
 msgid "_Insert"
 msgstr "_Umetni"
 
-#: plugins/time/resources/ui/gedit-time-setup-dialog.ui:6
+#: plugins/time/resources/ui/bedit-time-setup-dialog.ui:6
 msgid "Configure date/time plugin"
 msgstr "Podesi priključak za datum/vrijeme"
 
-#: plugins/time/resources/ui/gedit-time-setup-dialog.ui:57
+#: plugins/time/resources/ui/bedit-time-setup-dialog.ui:57
 msgid "When inserting date/time…"
 msgstr "Pri umetanju datuma/vremena…"
 
-#: plugins/time/resources/ui/gedit-time-setup-dialog.ui:75
+#: plugins/time/resources/ui/bedit-time-setup-dialog.ui:75
 msgid "_Prompt for a format"
 msgstr "_Upitaj za format"
 
@@ -3679,8 +3679,8 @@ msgstr "Umeće trenutni datum i vrijeme na mjesto pokazivača."
 #~ msgid "Display Overview Map"
 #~ msgstr "Prikaži pregled mape"
 
-#~ msgid "Whether gedit should display the overview map for the document."
-#~ msgstr "Treba li gedit prikazati pregled mape za dokument."
+#~ msgid "Whether bedit should display the overview map for the document."
+#~ msgstr "Treba li bedit prikazati pregled mape za dokument."
 
 #~ msgid "Toolbar is Visible"
 #~ msgstr "Alatna traka je vidljiva"
@@ -3732,8 +3732,8 @@ msgstr "Umeće trenutni datum i vrijeme na mjesto pokazivača."
 #~ msgid "Unable to find the object “%s” inside file %s."
 #~ msgstr "Nemoguće pronaći objekt ”%s” unutar datoteke %s."
 
-#~ msgid "gedit Text Editor"
-#~ msgstr "gedit uređivač teksta"
+#~ msgid "bedit Text Editor"
+#~ msgstr "bedit uređivač teksta"
 
 #~ msgid "_About"
 #~ msgstr "_O programu"

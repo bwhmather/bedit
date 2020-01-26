@@ -1,9 +1,9 @@
 libcheckupdate_sources = files(
-  'gedit-check-update-plugin.c',
+  'bedit-check-update-plugin.c',
 )
 
 libcheckupdate_deps = [
-  libgedit_dep,
+  libbedit_dep,
   libsoup_dep,
 ]
 

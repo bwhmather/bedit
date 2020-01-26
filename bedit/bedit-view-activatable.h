@@ -1,6 +1,6 @@
 /*
- * gedit-view-activatable.h
- * This file is part of gedit
+ * bedit-view-activatable.h
+ * This file is part of bedit
  *
  * Copyright (C) 2010 - Steve Frécinaux
  *
@@ -25,9 +25,9 @@
 
 G_BEGIN_DECLS
 
-#define GEDIT_TYPE_VIEW_ACTIVATABLE (gedit_view_activatable_get_type ())
+#define GEDIT_TYPE_VIEW_ACTIVATABLE (bedit_view_activatable_get_type ())
 
-G_DECLARE_INTERFACE (BeditViewActivatable, gedit_view_activatable, GEDIT, VIEW_ACTIVATABLE, GObject)
+G_DECLARE_INTERFACE (BeditViewActivatable, bedit_view_activatable, GEDIT, VIEW_ACTIVATABLE, GObject)
 
 struct _BeditViewActivatableInterface
 {
@@ -38,8 +38,8 @@ struct _BeditViewActivatableInterface
 	void	(*deactivate)		(BeditViewActivatable *activatable);
 };
 
-void	 gedit_view_activatable_activate	(BeditViewActivatable *activatable);
-void	 gedit_view_activatable_deactivate	(BeditViewActivatable *activatable);
+void	 bedit_view_activatable_activate	(BeditViewActivatable *activatable);
+void	 bedit_view_activatable_deactivate	(BeditViewActivatable *activatable);
 
 G_END_DECLS
 

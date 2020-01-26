@@ -1,9 +1,9 @@
 <Include>
   <?if $(sys.BUILDARCH) = x64 ?>
-    <?define ProductName = "gedit Text Editor (64 bit)" ?>
+    <?define ProductName = "bedit Text Editor (64 bit)" ?>
     <?define PlatformProgramFilesFolder = "ProgramFiles64Folder" ?>
   <?else ?>
-    <?define ProductName = "gedit Text Editor" ?>
+    <?define ProductName = "bedit Text Editor" ?>
     <?define PlatformProgramFilesFolder = "ProgramFilesFolder" ?>
   <?endif ?>
   <?define ProductVersion = "@VERSION@"?>

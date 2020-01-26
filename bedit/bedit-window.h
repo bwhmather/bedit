@@ -1,6 +1,6 @@
 /*
- * gedit-window.h
- * This file is part of gedit
+ * bedit-window.h
+ * This file is part of bedit
  *
  * Copyright (C) 2005 - Paolo Maggi
  *
@@ -25,8 +25,8 @@
 #include <gio/gio.h>
 #include <gtk/gtk.h>
 
-#include <gedit/gedit-tab.h>
-#include <gedit/gedit-message-bus.h>
+#include <bedit/bedit-tab.h>
+#include <bedit/bedit-message-bus.h>
 
 G_BEGIN_DECLS
 
@@ -39,7 +39,7 @@ typedef enum
 	GEDIT_WINDOW_STATE_ERROR		= 1 << 4
 } BeditWindowState;
 
-#define GEDIT_TYPE_WINDOW              (gedit_window_get_type())
+#define GEDIT_TYPE_WINDOW              (bedit_window_get_type())
 #define GEDIT_WINDOW(obj)              (G_TYPE_CHECK_INSTANCE_CAST((obj), GEDIT_TYPE_WINDOW, BeditWindow))
 #define GEDIT_WINDOW_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST((klass), GEDIT_TYPE_WINDOW, BeditWindowClass))
 #define GEDIT_IS_WINDOW(obj)           (G_TYPE_CHECK_INSTANCE_TYPE((obj), GEDIT_TYPE_WINDOW))
@@ -75,12 +75,12 @@ struct _BeditWindowClass
 };
 
 /* Public methods */
-GType 		 gedit_window_get_type 			(void) G_GNUC_CONST;
+GType 		 bedit_window_get_type 			(void) G_GNUC_CONST;
 
-BeditTab	*gedit_window_create_tab		(BeditWindow         *window,
+BeditTab	*bedit_window_create_tab		(BeditWindow         *window,
 							 gboolean             jump_to);
 
-BeditTab	*gedit_window_create_tab_from_location	(BeditWindow             *window,
+BeditTab	*bedit_window_create_tab_from_location	(BeditWindow             *window,
 							 GFile                   *location,
 							 const GtkSourceEncoding *encoding,
 							 gint                     line_pos,
@@ -88,84 +88,84 @@ BeditTab	*gedit_window_create_tab_from_location	(BeditWindow             *window
 							 gboolean                 create,
 							 gboolean                 jump_to);
 
-BeditTab	*gedit_window_create_tab_from_stream	(BeditWindow             *window,
+BeditTab	*bedit_window_create_tab_from_stream	(BeditWindow             *window,
 							 GInputStream            *stream,
 							 const GtkSourceEncoding *encoding,
 							 gint                     line_pos,
 							 gint                     column_pos,
 							 gboolean                 jump_to);
 
-void		 gedit_window_close_tab			(BeditWindow         *window,
+void		 bedit_window_close_tab			(BeditWindow         *window,
 							 BeditTab            *tab);
 
-void		 gedit_window_close_all_tabs		(BeditWindow         *window);
+void		 bedit_window_close_all_tabs		(BeditWindow         *window);
 
-void		 gedit_window_close_tabs		(BeditWindow         *window,
+void		 bedit_window_close_tabs		(BeditWindow         *window,
 							 const GList         *tabs);
 
-BeditTab	*gedit_window_get_active_tab		(BeditWindow         *window);
+BeditTab	*bedit_window_get_active_tab		(BeditWindow         *window);
 
-void		 gedit_window_set_active_tab		(BeditWindow         *window,
+void		 bedit_window_set_active_tab		(BeditWindow         *window,
 							 BeditTab            *tab);
 
 /* Helper functions */
-BeditView	*gedit_window_get_active_view		(BeditWindow         *window);
-BeditDocument	*gedit_window_get_active_document	(BeditWindow         *window);
+BeditView	*bedit_window_get_active_view		(BeditWindow         *window);
+BeditDocument	*bedit_window_get_active_document	(BeditWindow         *window);
 
 /* Returns a newly allocated list with all the documents in the window */
-GList		*gedit_window_get_documents		(BeditWindow         *window);
+GList		*bedit_window_get_documents		(BeditWindow         *window);
 
 /* Returns a newly allocated list with all the documents that need to be
    saved before closing the window */
-GList		*gedit_window_get_unsaved_documents 	(BeditWindow         *window);
+GList		*bedit_window_get_unsaved_documents 	(BeditWindow         *window);
 
 /* Returns a newly allocated list with all the views in the window */
-GList		*gedit_window_get_views			(BeditWindow         *window);
+GList		*bedit_window_get_views			(BeditWindow         *window);
 
-GtkWindowGroup  *gedit_window_get_group			(BeditWindow         *window);
+GtkWindowGroup  *bedit_window_get_group			(BeditWindow         *window);
 
-GtkWidget	*gedit_window_get_side_panel		(BeditWindow         *window);
+GtkWidget	*bedit_window_get_side_panel		(BeditWindow         *window);
 
-GtkWidget	*gedit_window_get_bottom_panel		(BeditWindow         *window);
+GtkWidget	*bedit_window_get_bottom_panel		(BeditWindow         *window);
 
-GtkWidget	*gedit_window_get_statusbar		(BeditWindow         *window);
+GtkWidget	*bedit_window_get_statusbar		(BeditWindow         *window);
 
-BeditWindowState gedit_window_get_state 		(BeditWindow         *window);
+BeditWindowState bedit_window_get_state 		(BeditWindow         *window);
 
-BeditTab        *gedit_window_get_tab_from_location	(BeditWindow         *window,
+BeditTab        *bedit_window_get_tab_from_location	(BeditWindow         *window,
 							 GFile               *location);
 
 /* Message bus */
-BeditMessageBus	*gedit_window_get_message_bus		(BeditWindow         *window);
+BeditMessageBus	*bedit_window_get_message_bus		(BeditWindow         *window);
 
 /*
  * Non exported functions
  */
-GtkWidget	*_gedit_window_get_multi_notebook	(BeditWindow         *window);
-GtkWidget	*_gedit_window_get_notebook		(BeditWindow         *window);
+GtkWidget	*_bedit_window_get_multi_notebook	(BeditWindow         *window);
+GtkWidget	*_bedit_window_get_notebook		(BeditWindow         *window);
 
-GMenuModel	*_gedit_window_get_hamburger_menu	(BeditWindow         *window);
+GMenuModel	*_bedit_window_get_hamburger_menu	(BeditWindow         *window);
 
-BeditWindow	*_gedit_window_move_tab_to_new_window	(BeditWindow         *window,
+BeditWindow	*_bedit_window_move_tab_to_new_window	(BeditWindow         *window,
 							 BeditTab            *tab);
-void             _gedit_window_move_tab_to_new_tab_group(BeditWindow         *window,
+void             _bedit_window_move_tab_to_new_tab_group(BeditWindow         *window,
                                                          BeditTab            *tab);
-gboolean	 _gedit_window_is_removing_tabs		(BeditWindow         *window);
+gboolean	 _bedit_window_is_removing_tabs		(BeditWindow         *window);
 
-GFile		*_gedit_window_get_default_location 	(BeditWindow         *window);
+GFile		*_bedit_window_get_default_location 	(BeditWindow         *window);
 
-void		 _gedit_window_set_default_location 	(BeditWindow         *window,
+void		 _bedit_window_set_default_location 	(BeditWindow         *window,
 							 GFile               *location);
 
-void		 _gedit_window_fullscreen		(BeditWindow         *window);
+void		 _bedit_window_fullscreen		(BeditWindow         *window);
 
-void		 _gedit_window_unfullscreen		(BeditWindow         *window);
+void		 _bedit_window_unfullscreen		(BeditWindow         *window);
 
-gboolean	 _gedit_window_is_fullscreen		(BeditWindow         *window);
+gboolean	 _bedit_window_is_fullscreen		(BeditWindow         *window);
 
-GList		*_gedit_window_get_all_tabs		(BeditWindow         *window);
+GList		*_bedit_window_get_all_tabs		(BeditWindow         *window);
 
-GFile		*_gedit_window_pop_last_closed_doc	(BeditWindow         *window);
+GFile		*_bedit_window_pop_last_closed_doc	(BeditWindow         *window);
 
 G_END_DECLS
 

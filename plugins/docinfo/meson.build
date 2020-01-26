@@ -1,9 +1,9 @@
 libdocinfo_sources = files(
-  'gedit-docinfo-plugin.c',
+  'bedit-docinfo-plugin.c',
 )
 
 libdocinfo_deps = [
-  libgedit_dep,
+  libbedit_dep,
 ]
 
 subdir('resources')

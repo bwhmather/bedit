@@ -1,5 +1,5 @@
 /*
- * gedit-time-plugin.c
+ * bedit-time-plugin.c
  *
  * Copyright (C) 2002-2005 - Paolo Maggi
  *
@@ -22,14 +22,14 @@
 #include <string.h>
 #include <glib/gi18n-lib.h>
 #include <glib.h>
-#include <gedit/gedit-debug.h>
-#include <gedit/gedit-utils.h>
-#include <gedit/gedit-window.h>
-#include <gedit/gedit-app-activatable.h>
-#include <gedit/gedit-window-activatable.h>
+#include <bedit/bedit-debug.h>
+#include <bedit/bedit-utils.h>
+#include <bedit/bedit-window.h>
+#include <bedit/bedit-app-activatable.h>
+#include <bedit/bedit-window-activatable.h>
 #include <libpeas-gtk/peas-gtk-configurable.h>
-#include <gedit/gedit-app.h>
-#include "gedit-time-plugin.h"
+#include <bedit/bedit-app.h>
+#include "bedit-time-plugin.h"
 
 /* gsettings keys */
 #define TIME_BASE_SETTINGS	"com.bwhmather.bedit.plugins.time"
@@ -145,18 +145,18 @@ enum
 	PROP_APP
 };
 
-static void gedit_app_activatable_iface_init (BeditAppActivatableInterface *iface);
-static void gedit_window_activatable_iface_init (BeditWindowActivatableInterface *iface);
+static void bedit_app_activatable_iface_init (BeditAppActivatableInterface *iface);
+static void bedit_window_activatable_iface_init (BeditWindowActivatableInterface *iface);
 static void peas_gtk_configurable_iface_init (PeasGtkConfigurableInterface *iface);
 
 G_DEFINE_DYNAMIC_TYPE_EXTENDED (BeditTimePlugin,
-				gedit_time_plugin,
+				bedit_time_plugin,
 				PEAS_TYPE_EXTENSION_BASE,
 				0,
 				G_IMPLEMENT_INTERFACE_DYNAMIC (GEDIT_TYPE_APP_ACTIVATABLE,
-							       gedit_app_activatable_iface_init)
+							       bedit_app_activatable_iface_init)
 				G_IMPLEMENT_INTERFACE_DYNAMIC (GEDIT_TYPE_WINDOW_ACTIVATABLE,
-							       gedit_window_activatable_iface_init)
+							       bedit_window_activatable_iface_init)
 				G_IMPLEMENT_INTERFACE_DYNAMIC (PEAS_GTK_TYPE_CONFIGURABLE,
 							       peas_gtk_configurable_iface_init)
 				G_ADD_PRIVATE_DYNAMIC (BeditTimePlugin))
@@ -164,21 +164,21 @@ G_DEFINE_DYNAMIC_TYPE_EXTENDED (BeditTimePlugin,
 static void time_cb (GAction *action, GVariant *parameter, BeditTimePlugin *plugin);
 
 static void
-gedit_time_plugin_init (BeditTimePlugin *plugin)
+bedit_time_plugin_init (BeditTimePlugin *plugin)
 {
-	gedit_debug_message (DEBUG_PLUGINS, "BeditTimePlugin initializing");
+	bedit_debug_message (DEBUG_PLUGINS, "BeditTimePlugin initializing");
 
-	plugin->priv = gedit_time_plugin_get_instance_private (plugin);
+	plugin->priv = bedit_time_plugin_get_instance_private (plugin);
 
 	plugin->priv->settings = g_settings_new (TIME_BASE_SETTINGS);
 }
 
 static void
-gedit_time_plugin_dispose (GObject *object)
+bedit_time_plugin_dispose (GObject *object)
 {
 	BeditTimePlugin *plugin = GEDIT_TIME_PLUGIN (object);
 
-	gedit_debug_message (DEBUG_PLUGINS, "BeditTimePlugin disposing");
+	bedit_debug_message (DEBUG_PLUGINS, "BeditTimePlugin disposing");
 
 	g_clear_object (&plugin->priv->settings);
 	g_clear_object (&plugin->priv->action);
@@ -186,11 +186,11 @@ gedit_time_plugin_dispose (GObject *object)
 	g_clear_object (&plugin->priv->menu_ext);
 	g_clear_object (&plugin->priv->app);
 
-	G_OBJECT_CLASS (gedit_time_plugin_parent_class)->dispose (object);
+	G_OBJECT_CLASS (bedit_time_plugin_parent_class)->dispose (object);
 }
 
 static void
-gedit_time_plugin_set_property (GObject      *object,
+bedit_time_plugin_set_property (GObject      *object,
                                 guint         prop_id,
                                 const GValue *value,
                                 GParamSpec   *pspec)
@@ -212,7 +212,7 @@ gedit_time_plugin_set_property (GObject      *object,
 }
 
 static void
-gedit_time_plugin_get_property (GObject    *object,
+bedit_time_plugin_get_property (GObject    *object,
                                 guint       prop_id,
                                 GValue     *value,
                                 GParamSpec *pspec)
@@ -238,11 +238,11 @@ update_ui (BeditTimePlugin *plugin)
 {
 	BeditView *view;
 
-	gedit_debug (DEBUG_PLUGINS);
+	bedit_debug (DEBUG_PLUGINS);
 
-	view = gedit_window_get_active_view (plugin->priv->window);
+	view = bedit_window_get_active_view (plugin->priv->window);
 
-	gedit_debug_message (DEBUG_PLUGINS, "View: %p", view);
+	bedit_debug_message (DEBUG_PLUGINS, "View: %p", view);
 
 	g_simple_action_set_enabled (plugin->priv->action,
 	                             (view != NULL) &&
@@ -250,27 +250,27 @@ update_ui (BeditTimePlugin *plugin)
 }
 
 static void
-gedit_time_plugin_app_activate (BeditAppActivatable *activatable)
+bedit_time_plugin_app_activate (BeditAppActivatable *activatable)
 {
 	BeditTimePluginPrivate *priv;
 	GMenuItem *item;
 
-	gedit_debug (DEBUG_PLUGINS);
+	bedit_debug (DEBUG_PLUGINS);
 
 	priv = GEDIT_TIME_PLUGIN (activatable)->priv;
 
-	priv->menu_ext = gedit_app_activatable_extend_menu (activatable, "tools-section");
+	priv->menu_ext = bedit_app_activatable_extend_menu (activatable, "tools-section");
 	item = g_menu_item_new (_("In_sert Date and Time…"), "win.time");
-	gedit_menu_extension_append_menu_item (priv->menu_ext, item);
+	bedit_menu_extension_append_menu_item (priv->menu_ext, item);
 	g_object_unref (item);
 }
 
 static void
-gedit_time_plugin_app_deactivate (BeditAppActivatable *activatable)
+bedit_time_plugin_app_deactivate (BeditAppActivatable *activatable)
 {
 	BeditTimePluginPrivate *priv;
 
-	gedit_debug (DEBUG_PLUGINS);
+	bedit_debug (DEBUG_PLUGINS);
 
 	priv = GEDIT_TIME_PLUGIN (activatable)->priv;
 
@@ -278,11 +278,11 @@ gedit_time_plugin_app_deactivate (BeditAppActivatable *activatable)
 }
 
 static void
-gedit_time_plugin_window_activate (BeditWindowActivatable *activatable)
+bedit_time_plugin_window_activate (BeditWindowActivatable *activatable)
 {
 	BeditTimePluginPrivate *priv;
 
-	gedit_debug (DEBUG_PLUGINS);
+	bedit_debug (DEBUG_PLUGINS);
 
 	priv = GEDIT_TIME_PLUGIN (activatable)->priv;
 
@@ -296,11 +296,11 @@ gedit_time_plugin_window_activate (BeditWindowActivatable *activatable)
 }
 
 static void
-gedit_time_plugin_window_deactivate (BeditWindowActivatable *activatable)
+bedit_time_plugin_window_deactivate (BeditWindowActivatable *activatable)
 {
 	BeditTimePluginPrivate *priv;
 
-	gedit_debug (DEBUG_PLUGINS);
+	bedit_debug (DEBUG_PLUGINS);
 
 	priv = GEDIT_TIME_PLUGIN (activatable)->priv;
 
@@ -308,9 +308,9 @@ gedit_time_plugin_window_deactivate (BeditWindowActivatable *activatable)
 }
 
 static void
-gedit_time_plugin_window_update_state (BeditWindowActivatable *activatable)
+bedit_time_plugin_window_update_state (BeditWindowActivatable *activatable)
 {
-	gedit_debug (DEBUG_PLUGINS);
+	bedit_debug (DEBUG_PLUGINS);
 
 	update_ui (GEDIT_TIME_PLUGIN (activatable));
 }
@@ -345,7 +345,7 @@ get_time (const gchar *format)
 	gchar *out;
 	GDateTime *now;
 
-	gedit_debug (DEBUG_PLUGINS);
+	bedit_debug (DEBUG_PLUGINS);
 
 	g_return_val_if_fail (format != NULL, NULL);
 
@@ -365,23 +365,23 @@ configure_widget_destroyed (GtkWidget *widget,
 {
 	TimeConfigureWidget *conf_widget = (TimeConfigureWidget *)data;
 
-	gedit_debug (DEBUG_PLUGINS);
+	bedit_debug (DEBUG_PLUGINS);
 
 	g_object_unref (conf_widget->settings);
 	g_slice_free (TimeConfigureWidget, data);
 
-	gedit_debug_message (DEBUG_PLUGINS, "END");
+	bedit_debug_message (DEBUG_PLUGINS, "END");
 }
 
 static void
 choose_format_dialog_destroyed (GtkWidget *widget,
 				gpointer   dialog_pointer)
 {
-	gedit_debug (DEBUG_PLUGINS);
+	bedit_debug (DEBUG_PLUGINS);
 
 	g_slice_free (ChooseFormatDialog, dialog_pointer);
 
-	gedit_debug_message (DEBUG_PLUGINS, "END");
+	bedit_debug_message (DEBUG_PLUGINS, "END");
 }
 
 static GtkTreeModel *
@@ -394,7 +394,7 @@ create_model (GtkWidget       *listview,
 	GtkTreeSelection *selection;
 	GtkTreeIter iter;
 
-	gedit_debug (DEBUG_PLUGINS);
+	bedit_debug (DEBUG_PLUGINS);
 
 	/* create list store */
 	store = gtk_list_store_new (NUM_COLUMNS, G_TYPE_STRING, G_TYPE_INT);
@@ -417,7 +417,7 @@ create_model (GtkWidget       *listview,
 
 		str = get_time (formats[i]);
 
-		gedit_debug_message (DEBUG_PLUGINS, "%d : %s", i, str);
+		bedit_debug_message (DEBUG_PLUGINS, "%d : %s", i, str);
 		gtk_list_store_append (store, &iter);
 		gtk_list_store_set (store, &iter,
 				    COLUMN_FORMATS, str,
@@ -448,7 +448,7 @@ scroll_to_selected (GtkTreeView *tree_view)
 	GtkTreeSelection *selection;
 	GtkTreeIter iter;
 
-	gedit_debug (DEBUG_PLUGINS);
+	bedit_debug (DEBUG_PLUGINS);
 
 	model = gtk_tree_view_get_model (tree_view);
 	g_return_if_fail (model != NULL);
@@ -478,7 +478,7 @@ create_formats_list (GtkWidget       *listview,
 	GtkTreeViewColumn *column;
 	GtkCellRenderer *cell;
 
-	gedit_debug (DEBUG_PLUGINS);
+	bedit_debug (DEBUG_PLUGINS);
 
 	g_return_if_fail (listview != NULL);
 	g_return_if_fail (sel_format != NULL);
@@ -512,7 +512,7 @@ updated_custom_format_example (GtkEntry *format_entry,
 	gchar *str;
 	gchar *escaped_time;
 
-	gedit_debug (DEBUG_PLUGINS);
+	bedit_debug (DEBUG_PLUGINS);
 
 	g_return_if_fail (GTK_IS_ENTRY (format_entry));
 	g_return_if_fail (GTK_IS_LABEL (format_example));
@@ -535,7 +535,7 @@ static void
 choose_format_dialog_button_toggled (GtkToggleButton    *button,
 				     ChooseFormatDialog *dialog)
 {
-	gedit_debug (DEBUG_PLUGINS);
+	bedit_debug (DEBUG_PLUGINS);
 
 	if (gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (dialog->custom)))
 	{
@@ -561,7 +561,7 @@ configure_widget_button_toggled (GtkToggleButton     *button,
 {
 	BeditTimePluginPromptType prompt_type;
 
-	gedit_debug (DEBUG_PLUGINS);
+	bedit_debug (DEBUG_PLUGINS);
 
 	if (gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (conf_widget->custom)))
 	{
@@ -604,7 +604,7 @@ get_format_from_list (GtkWidget *listview)
 	GtkTreeSelection *selection;
 	GtkTreeIter iter;
 
-	gedit_debug (DEBUG_PLUGINS);
+	bedit_debug (DEBUG_PLUGINS);
 
 	model = gtk_tree_view_get_model (GTK_TREE_VIEW (listview));
 	g_return_val_if_fail (model != NULL, 0);
@@ -618,7 +618,7 @@ get_format_from_list (GtkWidget *listview)
 
 		gtk_tree_model_get (model, &iter, COLUMN_INDEX, &selected_value, -1);
 
-		gedit_debug_message (DEBUG_PLUGINS, "Sel value: %d", selected_value);
+		bedit_debug_message (DEBUG_PLUGINS, "Sel value: %d", selected_value);
 
 		return selected_value;
 	}
@@ -652,13 +652,13 @@ get_configure_widget (BeditTimePlugin *plugin)
 		NULL
 	};
 
-	gedit_debug (DEBUG_PLUGINS);
+	bedit_debug (DEBUG_PLUGINS);
 
 	widget = g_slice_new (TimeConfigureWidget);
 	widget->settings = g_object_ref (plugin->priv->settings);
 
 	builder = gtk_builder_new ();
-	gtk_builder_add_objects_from_resource (builder, "/com/bwhmather/bedit/plugins/time/ui/gedit-time-setup-dialog.ui",
+	gtk_builder_add_objects_from_resource (builder, "/com/bwhmather/bedit/plugins/time/ui/bedit-time-setup-dialog.ui",
 	                                       root_objects, NULL);
 	widget->content = GTK_WIDGET (gtk_builder_get_object (builder, "time_dialog_content"));
 	g_object_ref (widget->content);
@@ -750,7 +750,7 @@ static void
 real_insert_time (GtkTextBuffer *buffer,
 		  const gchar   *the_time)
 {
-	gedit_debug_message (DEBUG_PLUGINS, "Insert: %s", the_time);
+	bedit_debug_message (DEBUG_PLUGINS, "Insert: %s", the_time);
 
 	gtk_text_buffer_begin_user_action (buffer);
 
@@ -803,7 +803,7 @@ get_choose_format_dialog (GtkWindow                 *parent,
 	dialog->settings = plugin->priv->settings;
 
 	builder = gtk_builder_new ();
-	gtk_builder_add_from_resource (builder, "/com/bwhmather/bedit/plugins/time/ui/gedit-time-dialog.ui",
+	gtk_builder_add_from_resource (builder, "/com/bwhmather/bedit/plugins/time/ui/bedit-time-dialog.ui",
 	                               NULL);
 	dialog->dialog = GTK_WIDGET (gtk_builder_get_object (builder, "choose_format_dialog"));
 	dialog->list = GTK_WIDGET (gtk_builder_get_object (builder, "choice_list"));
@@ -891,18 +891,18 @@ choose_format_dialog_response_cb (GtkWidget          *widget,
 	{
 		case GTK_RESPONSE_HELP:
 		{
-			gedit_debug_message (DEBUG_PLUGINS, "GTK_RESPONSE_HELP");
-			gedit_app_show_help (GEDIT_APP (g_application_get_default ()),
+			bedit_debug_message (DEBUG_PLUGINS, "GTK_RESPONSE_HELP");
+			bedit_app_show_help (GEDIT_APP (g_application_get_default ()),
 					     GTK_WINDOW (widget),
 					     NULL,
-					     "gedit-plugins-insert-date-time");
+					     "bedit-plugins-insert-date-time");
 			break;
 		}
 		case GTK_RESPONSE_OK:
 		{
 			gchar *the_time;
 
-			gedit_debug_message (DEBUG_PLUGINS, "GTK_RESPONSE_OK");
+			bedit_debug_message (DEBUG_PLUGINS, "GTK_RESPONSE_OK");
 
 			/* Get the user's chosen format */
 			if (gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (dialog->use_list)))
@@ -943,7 +943,7 @@ choose_format_dialog_response_cb (GtkWidget          *widget,
 			break;
 		}
 		case GTK_RESPONSE_CANCEL:
-			gedit_debug_message (DEBUG_PLUGINS, "GTK_RESPONSE_CANCEL");
+			bedit_debug_message (DEBUG_PLUGINS, "GTK_RESPONSE_CANCEL");
 			gtk_widget_destroy (dialog->dialog);
 	}
 }
@@ -958,11 +958,11 @@ time_cb (GAction         *action,
 	BeditTimePluginPromptType prompt_type;
 	gchar *the_time = NULL;
 
-	gedit_debug (DEBUG_PLUGINS);
+	bedit_debug (DEBUG_PLUGINS);
 
 	priv = plugin->priv;
 
-	buffer = GTK_TEXT_BUFFER (gedit_window_get_active_document (priv->window));
+	buffer = GTK_TEXT_BUFFER (bedit_window_get_active_document (priv->window));
 	g_return_if_fail (buffer != NULL);
 
 	prompt_type = g_settings_get_enum (plugin->priv->settings,
@@ -1011,7 +1011,7 @@ time_cb (GAction         *action,
 }
 
 static GtkWidget *
-gedit_time_plugin_create_configure_widget (PeasGtkConfigurable *configurable)
+bedit_time_plugin_create_configure_widget (PeasGtkConfigurable *configurable)
 {
 	TimeConfigureWidget *widget;
 
@@ -1021,48 +1021,48 @@ gedit_time_plugin_create_configure_widget (PeasGtkConfigurable *configurable)
 }
 
 static void
-gedit_time_plugin_class_init (BeditTimePluginClass *klass)
+bedit_time_plugin_class_init (BeditTimePluginClass *klass)
 {
 	GObjectClass *object_class = G_OBJECT_CLASS (klass);
 
-	object_class->dispose = gedit_time_plugin_dispose;
-	object_class->set_property = gedit_time_plugin_set_property;
-	object_class->get_property = gedit_time_plugin_get_property;
+	object_class->dispose = bedit_time_plugin_dispose;
+	object_class->set_property = bedit_time_plugin_set_property;
+	object_class->get_property = bedit_time_plugin_get_property;
 
 	g_object_class_override_property (object_class, PROP_WINDOW, "window");
 	g_object_class_override_property (object_class, PROP_APP, "app");
 }
 
 static void
-gedit_time_plugin_class_finalize (BeditTimePluginClass *klass)
+bedit_time_plugin_class_finalize (BeditTimePluginClass *klass)
 {
 }
 
 static void
 peas_gtk_configurable_iface_init (PeasGtkConfigurableInterface *iface)
 {
-	iface->create_configure_widget = gedit_time_plugin_create_configure_widget;
+	iface->create_configure_widget = bedit_time_plugin_create_configure_widget;
 }
 
 static void
-gedit_app_activatable_iface_init (BeditAppActivatableInterface *iface)
+bedit_app_activatable_iface_init (BeditAppActivatableInterface *iface)
 {
-	iface->activate = gedit_time_plugin_app_activate;
-	iface->deactivate = gedit_time_plugin_app_deactivate;
+	iface->activate = bedit_time_plugin_app_activate;
+	iface->deactivate = bedit_time_plugin_app_deactivate;
 }
 
 static void
-gedit_window_activatable_iface_init (BeditWindowActivatableInterface *iface)
+bedit_window_activatable_iface_init (BeditWindowActivatableInterface *iface)
 {
-	iface->activate = gedit_time_plugin_window_activate;
-	iface->deactivate = gedit_time_plugin_window_deactivate;
-	iface->update_state = gedit_time_plugin_window_update_state;
+	iface->activate = bedit_time_plugin_window_activate;
+	iface->deactivate = bedit_time_plugin_window_deactivate;
+	iface->update_state = bedit_time_plugin_window_update_state;
 }
 
 G_MODULE_EXPORT void
 peas_register_types (PeasObjectModule *module)
 {
-	gedit_time_plugin_register_type (G_TYPE_MODULE (module));
+	bedit_time_plugin_register_type (G_TYPE_MODULE (module));
 
 	peas_object_module_register_extension_type (module,
 						    GEDIT_TYPE_APP_ACTIVATABLE,

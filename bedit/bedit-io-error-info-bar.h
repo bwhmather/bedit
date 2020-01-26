@@ -1,6 +1,6 @@
 /*
- * gedit-io-error-info-bar.h
- * This file is part of gedit
+ * bedit-io-error-info-bar.h
+ * This file is part of bedit
  *
  * Copyright (C) 2005 - Paolo Maggi
  *
@@ -25,37 +25,37 @@
 
 G_BEGIN_DECLS
 
-GtkWidget	*gedit_io_loading_error_info_bar_new			(GFile                   *location,
+GtkWidget	*bedit_io_loading_error_info_bar_new			(GFile                   *location,
 									 const GtkSourceEncoding *encoding,
 									 const GError            *error);
 
-GtkWidget	*gedit_unrecoverable_reverting_error_info_bar_new	(GFile               *location,
+GtkWidget	*bedit_unrecoverable_reverting_error_info_bar_new	(GFile               *location,
 									 const GError        *error);
 
-GtkWidget	*gedit_conversion_error_while_saving_info_bar_new	(GFile                   *location,
+GtkWidget	*bedit_conversion_error_while_saving_info_bar_new	(GFile                   *location,
 									 const GtkSourceEncoding *encoding,
 									 const GError            *error);
 
 const GtkSourceEncoding
-		*gedit_conversion_error_info_bar_get_encoding		(GtkWidget           *info_bar);
+		*bedit_conversion_error_info_bar_get_encoding		(GtkWidget           *info_bar);
 
-GtkWidget	*gedit_file_already_open_warning_info_bar_new		(GFile               *location);
+GtkWidget	*bedit_file_already_open_warning_info_bar_new		(GFile               *location);
 
-GtkWidget	*gedit_externally_modified_saving_error_info_bar_new	(GFile               *location,
+GtkWidget	*bedit_externally_modified_saving_error_info_bar_new	(GFile               *location,
 									 const GError        *error);
 
-GtkWidget	*gedit_no_backup_saving_error_info_bar_new		 (GFile               *location,
+GtkWidget	*bedit_no_backup_saving_error_info_bar_new		 (GFile               *location,
 									  const GError        *error);
 
-GtkWidget	*gedit_unrecoverable_saving_error_info_bar_new		(GFile               *location,
+GtkWidget	*bedit_unrecoverable_saving_error_info_bar_new		(GFile               *location,
 									 const GError        *error);
 
-GtkWidget	*gedit_externally_modified_info_bar_new		 	(GFile               *location,
+GtkWidget	*bedit_externally_modified_info_bar_new		 	(GFile               *location,
 									 gboolean             document_modified);
 
-GtkWidget	*gedit_invalid_character_info_bar_new			(GFile               *location);
+GtkWidget	*bedit_invalid_character_info_bar_new			(GFile               *location);
 
-GtkWidget	*gedit_network_unavailable_info_bar_new			(GFile               *location);
+GtkWidget	*bedit_network_unavailable_info_bar_new			(GFile               *location);
 
 G_END_DECLS
 

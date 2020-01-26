@@ -1,6 +1,6 @@
 /*
- * gedit-plugins-engine.h
- * This file is part of gedit
+ * bedit-plugins-engine.h
+ * This file is part of bedit
  *
  * Copyright (C) 2002-2005 - Paolo Maggi
  * Copyright (C) 2010 - Steve Frécinaux
@@ -27,10 +27,10 @@
 
 G_BEGIN_DECLS
 
-#define GEDIT_TYPE_PLUGINS_ENGINE (gedit_plugins_engine_get_type ())
-G_DECLARE_FINAL_TYPE(BeditPluginsEngine, gedit_plugins_engine, GEDIT, PLUGINS_ENGINE, PeasEngine)
+#define GEDIT_TYPE_PLUGINS_ENGINE (bedit_plugins_engine_get_type ())
+G_DECLARE_FINAL_TYPE(BeditPluginsEngine, bedit_plugins_engine, GEDIT, PLUGINS_ENGINE, PeasEngine)
 
-BeditPluginsEngine	*gedit_plugins_engine_get_default	(void);
+BeditPluginsEngine	*bedit_plugins_engine_get_default	(void);
 
 G_END_DECLS
 

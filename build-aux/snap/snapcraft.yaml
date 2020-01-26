@@ -1,6 +1,6 @@
-name: gedit
+name: bedit
 version: git
-adopt-info: gedit
+adopt-info: bedit
 grade: stable # must be 'stable' to release into candidate/stable channels
 confinement: strict
 base: core18
@@ -8,21 +8,21 @@ base: core18
 layout:
   /usr/lib/$SNAPCRAFT_ARCH_TRIPLET/libpeas-1.0:
     symlink: $SNAP/gnome-platform/usr/lib/$SNAPCRAFT_ARCH_TRIPLET/libpeas-1.0
-  /usr/lib/$SNAPCRAFT_ARCH_TRIPLET/gedit:
-    symlink: $SNAP/usr/lib/$SNAPCRAFT_ARCH_TRIPLET/gedit
-  /usr/share/gedit:
-    symlink: $SNAP/usr/share/gedit
+  /usr/lib/$SNAPCRAFT_ARCH_TRIPLET/bedit:
+    symlink: $SNAP/usr/lib/$SNAPCRAFT_ARCH_TRIPLET/bedit
+  /usr/share/bedit:
+    symlink: $SNAP/usr/share/bedit
 
 slots:
   # for GtkApplication registration
-  gedit:
+  bedit:
     interface: dbus
     bus: session
     name: com.bwhmather.bedit
 
 apps:
-  gedit:
-    command: usr/bin/gedit
+  bedit:
+    command: usr/bin/bedit
     extensions: [gnome-3-28]
     plugs:
       - avahi-observe
@@ -35,8 +35,8 @@ apps:
     common-id: com.bwhmather.bedit.desktop
     environment:
       GSETTINGS_SCHEMA_DIR: $SNAP/share/glib-2.0/schemas
-      LD_LIBRARY_PATH: $LD_LIBRARY_PATH:$SNAP/lib/$SNAPCRAFT_ARCH_TRIPLET/gedit:$SNAP/usr/lib/$SNAPCRAFT_ARCH_TRIPLET:$SNAP/gnome-platform/usr/lib/$SNAPCRAFT_ARCH_TRIPLET
-      GI_TYPELIB_PATH: $SNAP/usr/lib/girepository-1.0:$SNAP/usr/lib/$SNAPCRAFT_ARCH_TRIPLET/gedit/girepository-1.0:$SNAP/usr/lib/$SNAPCRAFT_ARCH_TRIPLET/girepository-1.0:$SNAP/gnome-platform/usr/lib/girepository-1.0:$SNAP/gnome-platform/usr/lib/$SNAPCRAFT_ARCH_TRIPLET/girepository-1.0
+      LD_LIBRARY_PATH: $LD_LIBRARY_PATH:$SNAP/lib/$SNAPCRAFT_ARCH_TRIPLET/bedit:$SNAP/usr/lib/$SNAPCRAFT_ARCH_TRIPLET:$SNAP/gnome-platform/usr/lib/$SNAPCRAFT_ARCH_TRIPLET
+      GI_TYPELIB_PATH: $SNAP/usr/lib/girepository-1.0:$SNAP/usr/lib/$SNAPCRAFT_ARCH_TRIPLET/bedit/girepository-1.0:$SNAP/usr/lib/$SNAPCRAFT_ARCH_TRIPLET/girepository-1.0:$SNAP/gnome-platform/usr/lib/girepository-1.0:$SNAP/gnome-platform/usr/lib/$SNAPCRAFT_ARCH_TRIPLET/girepository-1.0
       PYTHONPATH: $SNAP/usr/lib/python3/dist-packages:$SNAP/gnome-platform/usr/lib/python3/dist-packages
       GTK_USE_PORTAL: 1
 
@@ -49,7 +49,7 @@ parts:
       - --prefix=/usr
       - --enable-introspection=no
     organize:
-      snap/gedit/current/usr: usr
+      snap/bedit/current/usr: usr
 
   tepl:
     after: [amtk, gtksourceview]
@@ -60,7 +60,7 @@ parts:
       - --prefix=/usr
       - --enable-introspection=no
     organize:
-      snap/gedit/current/usr: usr
+      snap/bedit/current/usr: usr
     build-packages:
       - libuchardet-dev
     stage-packages:
@@ -74,7 +74,7 @@ parts:
       - --prefix=/usr
       - -Dc_args="-Wno-error=undef"
     organize:
-      snap/gedit/current/usr: usr
+      snap/bedit/current/usr: usr
     build-packages:
       - autoconf-archive
       - gettext
@@ -94,7 +94,7 @@ parts:
        cp $SNAPCRAFT_PART_INSTALL/usr/share/gir-1.0/GtkSource* /usr/share/gir-1.0
        cp $SNAPCRAFT_PART_INSTALL/usr/share/vala/vapi/gtksource* /usr/share/vala/vapi
 
-  gedit:
+  bedit:
     after: [gtksourceview, tepl]
     source: .
     source-type: git
@@ -133,13 +133,13 @@ parts:
     stage-packages:
       - libfribidi0
 
-  gedit-plugins:
-    after: [gedit]
-    source: https://gitlab.gnome.org/GNOME/gedit-plugins.git
+  bedit-plugins:
+    after: [bedit]
+    source: https://gitlab.gnome.org/GNOME/bedit-plugins.git
     source-type: git
     plugin: meson
     meson-parameters:
-      - --prefix=/snap/gedit/current/usr
+      - --prefix=/snap/bedit/current/usr
       - -Dplugin_bookmarks=true
       - -Dplugin_bracketcompletion=true
       - -Dplugin_charmap=true
@@ -159,10 +159,10 @@ parts:
       - -Dplugin_wordcompletion=true
       - -Dplugin_zeitgeist=false
     organize:
-      snap/gedit/current/usr: usr
+      snap/bedit/current/usr: usr
     build-environment:
-      - C_INCLUDE_PATH: $SNAPCRAFT_STAGE/usr/include:$SNAPCRAFT_STAGE/usr/include/gedit-3.14:$SNAPCRAFT_STAGE/usr/include/gtksourceview-4
-      - LD_LIBRARY_PATH: $LD_LIBRARY_PATH:$SNAPCRAFT_STAGE/usr/lib/$SNAPCRAFT_ARCH_TRIPLET/gedit
+      - C_INCLUDE_PATH: $SNAPCRAFT_STAGE/usr/include:$SNAPCRAFT_STAGE/usr/include/bedit-3.14:$SNAPCRAFT_STAGE/usr/include/gtksourceview-4
+      - LD_LIBRARY_PATH: $LD_LIBRARY_PATH:$SNAPCRAFT_STAGE/usr/lib/$SNAPCRAFT_ARCH_TRIPLET/bedit
       - PKG_CONFIG_PATH: $PKG_CONFIG_PATH:$SNAPCRAFT_STAGE/usr/lib/$SNAPCRAFT_ARCH_TRIPLET/pkgconfig
     build-packages:
       - appstream
@@ -187,7 +187,7 @@ parts:
       - python3-setuptools
 # Zeitgeist plugin isn't as useful in a Snap.
     stage:
-      - -usr/lib/gedit/plugins/libzeitgeist.so
-      - -usr/lib/gedit/plugins/zeitgeist.plugin
-      - -usr/share/help/*/gedit/zeitgeist-dataprovider.page
-      - -usr/share/metainfo/gedit-zeitgeist.metainfo.xml
+      - -usr/lib/bedit/plugins/libzeitgeist.so
+      - -usr/lib/bedit/plugins/zeitgeist.plugin
+      - -usr/share/help/*/bedit/zeitgeist-dataprovider.page
+      - -usr/share/metainfo/bedit-zeitgeist.metainfo.xml

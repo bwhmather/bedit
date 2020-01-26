@@ -1,9 +1,9 @@
 <page xmlns="http://projectmallard.org/1.0/"
   type="topic" style="task" 
-  id="gedit-spellcheck">
+  id="bedit-spellcheck">
   
   <info>
-    <link type="guide" xref="gedit-plugin-guide#gedit-default-plugins" /> 
+    <link type="guide" xref="bedit-plugin-guide#bedit-default-plugins" /> 
     <desc>Check your files for spelling errors.</desc>
     <revision pkgversion="3.8" date="2013-02-24" status="review"/>
     <revision pkgversion="3.8" date="2013-03-21" status="review"/>
@@ -28,12 +28,12 @@
   <title>Spell-check your document</title>
   <section id="enable-spell-check">
     <title>Enable the spell checker</title>
-    <p>The Spell-check feature is provided as a plugin in <app>gedit</app> which
+    <p>The Spell-check feature is provided as a plugin in <app>bedit</app> which
     can be enabled as required. To enable the plugin:</p>
 
     <steps>
       <item>
-        <p>Select <guiseq><gui style="menu">gedit</gui>
+        <p>Select <guiseq><gui style="menu">bedit</gui>
         <gui style="menuitem">Preferences</gui>
         <gui style="tab">Plugins</gui></guiseq>.</p>
       </item>
@@ -58,7 +58,7 @@
     </steps>
 
     <note style="tip">
-      <p>To have <app>gedit</app> automatically highlight misspelt words in your
+      <p>To have <app>bedit</app> automatically highlight misspelt words in your
       document as you type, select <guiseq><gui style="menu">Tools</gui><gui
       style="menuitem">Highlight Misspelled Words</gui></guiseq>.</p>
     </note>
@@ -102,8 +102,8 @@
       </item>
       <item>
         <p><gui style="button">Add word</gui> allows you to add the current word
-        to the <app>gedit</app> <gui>User dictionary</gui>. Adding custom words
-        to the <gui>User dictionary</gui> will allow <app>gedit</app> to
+        to the <app>bedit</app> <gui>User dictionary</gui>. Adding custom words
+        to the <gui>User dictionary</gui> will allow <app>bedit</app> to
         recognize the word in documents and thus will not be highlighted as a
         misspelt word.</p>
       </item>
@@ -113,7 +113,7 @@
 
   <section id="define-spell-check-language">
     <title>Define the language to use for spell checking</title>
-    <p>By default, <app>gedit</app> will use your current language to spell
+    <p>By default, <app>bedit</app> will use your current language to spell
     check your document. If you need to use another language, choose
     <guiseq><gui style="menu">Tools</gui><gui style="menuitem">Set
     Language…</gui></guiseq>, then choose the language you want to use.</p>
@@ -122,13 +122,13 @@
   <section id="dict">
     <title>Dictionaries</title>
 
-    <p><app>gedit</app> uses
+    <p><app>bedit</app> uses
     <link href="https://www.abisource.com/projects/enchant/">Enchant</link>,
     a small system utility, for spell checking. Enchant can use
     several different dictionaries to check your spelling. Two such
     dictionary back-ends are <em>Hunspell</em> and <em>Aspell</em>.</p>
 
-    <p>If the language you want to use is not available in <app>gedit</app>,
+    <p>If the language you want to use is not available in <app>bedit</app>,
     use your computer's software installer or package manager to install the
     dictionary back-end that you want.</p>
   </section>

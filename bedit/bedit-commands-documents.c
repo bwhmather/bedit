@@ -1,6 +1,6 @@
 /*
- * gedit-documents-commands.c
- * This file is part of gedit
+ * bedit-documents-commands.c
+ * This file is part of bedit
  *
  * Copyright (C) 1998, 1999 Alex Roberts, Evan Lawrence
  * Copyright (C) 2000, 2001 Chema Celorio, Paolo Maggi
@@ -22,85 +22,85 @@
 
 #include "config.h"
 
-#include "gedit-commands.h"
-#include "gedit-commands-private.h"
+#include "bedit-commands.h"
+#include "bedit-commands-private.h"
 
 #include <gtk/gtk.h>
 
-#include "gedit-window.h"
-#include "gedit-notebook.h"
-#include "gedit-multi-notebook.h"
-#include "gedit-debug.h"
+#include "bedit-window.h"
+#include "bedit-notebook.h"
+#include "bedit-multi-notebook.h"
+#include "bedit-debug.h"
 
 void
-_gedit_cmd_documents_previous_document (GSimpleAction *action,
+_bedit_cmd_documents_previous_document (GSimpleAction *action,
                                         GVariant      *parameter,
                                         gpointer       user_data)
 {
 	BeditWindow *window = GEDIT_WINDOW (user_data);
 	GtkNotebook *notebook;
 
-	gedit_debug (DEBUG_COMMANDS);
+	bedit_debug (DEBUG_COMMANDS);
 
-	notebook = GTK_NOTEBOOK (_gedit_window_get_notebook (window));
+	notebook = GTK_NOTEBOOK (_bedit_window_get_notebook (window));
 	gtk_notebook_prev_page (notebook);
 }
 
 void
-_gedit_cmd_documents_next_document (GSimpleAction *action,
+_bedit_cmd_documents_next_document (GSimpleAction *action,
                                     GVariant      *parameter,
                                     gpointer       user_data)
 {
 	BeditWindow *window = GEDIT_WINDOW (user_data);
 	GtkNotebook *notebook;
 
-	gedit_debug (DEBUG_COMMANDS);
+	bedit_debug (DEBUG_COMMANDS);
 
-	notebook = GTK_NOTEBOOK (_gedit_window_get_notebook (window));
+	notebook = GTK_NOTEBOOK (_bedit_window_get_notebook (window));
 	gtk_notebook_next_page (notebook);
 }
 
 void
-_gedit_cmd_documents_move_to_new_window (GSimpleAction *action,
+_bedit_cmd_documents_move_to_new_window (GSimpleAction *action,
                                          GVariant      *parameter,
                                          gpointer       user_data)
 {
 	BeditWindow *window = GEDIT_WINDOW (user_data);
 	BeditTab *tab;
 
-	gedit_debug (DEBUG_COMMANDS);
+	bedit_debug (DEBUG_COMMANDS);
 
-	tab = gedit_window_get_active_tab (window);
+	tab = bedit_window_get_active_tab (window);
 
 	if (tab == NULL)
 		return;
 
-	_gedit_window_move_tab_to_new_window (window, tab);
+	_bedit_window_move_tab_to_new_window (window, tab);
 }
 
 /* Methods releated with the tab groups */
 void
-_gedit_cmd_documents_new_tab_group (GSimpleAction *action,
+_bedit_cmd_documents_new_tab_group (GSimpleAction *action,
                                     GVariant      *parameter,
                                     gpointer       user_data)
 {
-	gedit_multi_notebook_add_new_notebook (GEDIT_MULTI_NOTEBOOK (_gedit_window_get_multi_notebook (GEDIT_WINDOW (user_data))));
+	bedit_multi_notebook_add_new_notebook (GEDIT_MULTI_NOTEBOOK (_bedit_window_get_multi_notebook (GEDIT_WINDOW (user_data))));
 }
 
 void
-_gedit_cmd_documents_previous_tab_group (GSimpleAction *action,
+_bedit_cmd_documents_previous_tab_group (GSimpleAction *action,
                                          GVariant      *parameter,
                                          gpointer       user_data)
 {
-	gedit_multi_notebook_previous_notebook (GEDIT_MULTI_NOTEBOOK (_gedit_window_get_multi_notebook (GEDIT_WINDOW (user_data))));
+	bedit_multi_notebook_previous_notebook (GEDIT_MULTI_NOTEBOOK (_bedit_window_get_multi_notebook (GEDIT_WINDOW (user_data))));
 }
 
 void
-_gedit_cmd_documents_next_tab_group (GSimpleAction *action,
+_bedit_cmd_documents_next_tab_group (GSimpleAction *action,
                                      GVariant      *parameter,
                                      gpointer       user_data)
 {
-	gedit_multi_notebook_next_notebook (GEDIT_MULTI_NOTEBOOK (_gedit_window_get_multi_notebook (GEDIT_WINDOW (user_data))));
+	bedit_multi_notebook_next_notebook (GEDIT_MULTI_NOTEBOOK (_bedit_window_get_multi_notebook (GEDIT_WINDOW (user_data))));
 }
 
 /* ex:set ts=8 noet: */

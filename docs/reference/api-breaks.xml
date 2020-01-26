@@ -9,9 +9,9 @@
   <title>API Breaks</title>
 
   <para>
-    gedit is a quite old piece of software (created in 1998, at the beginnings
+    bedit is a quite old piece of software (created in 1998, at the beginnings
     of the GNOME project), and as every software, the code evolves during its
-    lifetime. So there are sometimes API breaks for gedit plugins, there are no
+    lifetime. So there are sometimes API breaks for bedit plugins, there are no
     API stability guarantees.
   </para>
 
@@ -33,16 +33,16 @@
         <para>
           The <code>BeditDocument:use-gvfs-metadata</code> property has been
           removed. But there was anyway a warning for not using that property in
-          a gedit plugin.
+          a bedit plugin.
         </para>
       </listitem>
       <listitem>
         <para>
-          For <link linkend="gedit-document-get-metadata">gedit_document_get_metadata()</link>
-          and <link linkend="gedit-document-set-metadata">gedit_document_set_metadata()</link>,
-          the key names should now have the prefix <code>"gedit-"</code> with
+          For <link linkend="bedit-document-get-metadata">bedit_document_get_metadata()</link>
+          and <link linkend="bedit-document-set-metadata">bedit_document_set_metadata()</link>,
+          the key names should now have the prefix <code>"bedit-"</code> with
           possibly an additional namespace for the plugin name, for example
-          <code>"gedit-spell-foobar"</code>. So the key names are now the same
+          <code>"bedit-spell-foobar"</code>. So the key names are now the same
           regardless of the operating system, and the key names should no longer
           start with <code>"metadata::"</code>.
         </para>

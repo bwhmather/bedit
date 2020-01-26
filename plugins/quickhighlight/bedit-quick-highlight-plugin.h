@@ -1,5 +1,5 @@
 /*
- * gedit-quick-highlight-plugin.h
+ * bedit-quick-highlight-plugin.h
  *
  * Copyright (C) 2018 Martin Blanchard
  *
@@ -28,7 +28,7 @@
 
 G_BEGIN_DECLS
 
-#define GEDIT_TYPE_QUICK_HIGHLIGHT_PLUGIN	 (gedit_quick_highlight_plugin_get_type ())
+#define GEDIT_TYPE_QUICK_HIGHLIGHT_PLUGIN	 (bedit_quick_highlight_plugin_get_type ())
 #define GEDIT_QUICK_HIGHLIGHT_PLUGIN(o)		 (G_TYPE_CHECK_INSTANCE_CAST ((o), GEDIT_TYPE_QUICK_HIGHLIGHT_PLUGIN, BeditQuickHighlightPlugin))
 #define GEDIT_QUICK_HIGHLIGHT_PLUGIN_CLASS(k)	 (G_TYPE_CHECK_CLASS_CAST((k), GEDIT_TYPE_QUICK_HIGHLIGHT_PLUGIN, BeditQuickHighlightPluginClass))
 #define GEDIT_IS_QUICK_HIGHLIGHT_PLUGIN(o)	 (G_TYPE_CHECK_INSTANCE_TYPE ((o), GEDIT_TYPE_QUICK_HIGHLIGHT_PLUGIN))
@@ -52,7 +52,7 @@ struct _BeditQuickHighlightPluginClass
 	PeasExtensionBaseClass parent_class;
 };
 
-GType                gedit_quick_highlight_plugin_get_type (void) G_GNUC_CONST;
+GType                bedit_quick_highlight_plugin_get_type (void) G_GNUC_CONST;
 
 G_MODULE_EXPORT void peas_register_types                   (PeasObjectModule *module);
 

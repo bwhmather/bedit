@@ -1,21 +1,21 @@
 /*
- * gedit-message.h
- * This file is part of gedit
+ * bedit-message.h
+ * This file is part of bedit
  *
  * Copyright (C) 2008, 2010 - Jesse van den Kieboom
  *
- * gedit is free software; you can redistribute it and/or modify
+ * bedit is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 2 of the License, or
  * (at your option) any later version.
  *
- * gedit is distributed in the hope that it will be useful,
+ * bedit is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with gedit; if not, write to the Free Software
+ * along with bedit; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin St, Fifth Floor,
  * Boston, MA  02110-1301  USA
  */
@@ -27,7 +27,7 @@
 
 G_BEGIN_DECLS
 
-#define GEDIT_TYPE_MESSAGE			(gedit_message_get_type ())
+#define GEDIT_TYPE_MESSAGE			(bedit_message_get_type ())
 #define GEDIT_MESSAGE(obj)			(G_TYPE_CHECK_INSTANCE_CAST ((obj), GEDIT_TYPE_MESSAGE, BeditMessage))
 #define GEDIT_MESSAGE_CONST(obj)		(G_TYPE_CHECK_INSTANCE_CAST ((obj), GEDIT_TYPE_MESSAGE, BeditMessage const))
 #define GEDIT_MESSAGE_CLASS(klass)		(G_TYPE_CHECK_CLASS_CAST ((klass), GEDIT_TYPE_MESSAGE, BeditMessageClass))
@@ -51,23 +51,23 @@ struct _BeditMessageClass
 	GObjectClass parent_class;
 };
 
-GType        gedit_message_get_type             (void) G_GNUC_CONST;
+GType        bedit_message_get_type             (void) G_GNUC_CONST;
 
-const gchar *gedit_message_get_object_path      (BeditMessage *message);
-const gchar *gedit_message_get_method           (BeditMessage *message);
+const gchar *bedit_message_get_object_path      (BeditMessage *message);
+const gchar *bedit_message_get_method           (BeditMessage *message);
 
-gboolean     gedit_message_type_has             (GType         gtype,
+gboolean     bedit_message_type_has             (GType         gtype,
                                                  const gchar  *propname);
 
-gboolean     gedit_message_type_check           (GType         gtype,
+gboolean     bedit_message_type_check           (GType         gtype,
                                                  const gchar  *propname,
                                                  GType         value_type);
 
-gboolean     gedit_message_has                  (BeditMessage *message,
+gboolean     bedit_message_has                  (BeditMessage *message,
                                                  const gchar  *propname);
 
-gboolean     gedit_message_is_valid_object_path (const gchar  *object_path);
-gchar       *gedit_message_type_identifier      (const gchar  *object_path,
+gboolean     bedit_message_is_valid_object_path (const gchar  *object_path);
+gchar       *bedit_message_type_identifier      (const gchar  *object_path,
                                                  const gchar  *method);
 
 G_END_DECLS

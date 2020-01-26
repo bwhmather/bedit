@@ -3,7 +3,7 @@ app-id: com.bwhmather.bedit
 runtime: org.gnome.Platform
 runtime-version: master
 sdk: org.gnome.Sdk
-command: gedit
+command: bedit
 tags:
   - nightly
 desktop-file-name-prefix: "(Nightly) "
@@ -89,17 +89,17 @@ modules:
       - type: git
         url: https://gitlab.gnome.org/GNOME/tepl.git
 
-  - name: gedit
+  - name: bedit
     buildsystem: meson
     config-opts:
       - "-Dvapi=true"
       - "-Dgtk_doc=false"
     sources:
       - type: git
-        url: https://gitlab.gnome.org/GNOME/gedit.git
+        url: https://gitlab.gnome.org/GNOME/bedit.git
 
-  - name: gedit-plugins
+  - name: bedit-plugins
     buildsystem: meson
     sources:
       - type: git
-        url: https://gitlab.gnome.org/GNOME/gedit-plugins.git
+        url: https://gitlab.gnome.org/GNOME/bedit-plugins.git

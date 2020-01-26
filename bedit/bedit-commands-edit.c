@@ -1,6 +1,6 @@
 /*
- * gedit-commands-edit.c
- * This file is part of gedit
+ * bedit-commands-edit.c
+ * This file is part of bedit
  *
  * Copyright (C) 1998, 1999 Alex Roberts, Evan Lawrence
  * Copyright (C) 2000, 2001 Chema Celorio, Paolo Maggi
@@ -22,18 +22,18 @@
 
 #include "config.h"
 
-#include "gedit-commands.h"
-#include "gedit-commands-private.h"
+#include "bedit-commands.h"
+#include "bedit-commands-private.h"
 
 #include <gtk/gtk.h>
 
-#include "gedit-window.h"
-#include "gedit-debug.h"
-#include "gedit-view.h"
-#include "gedit-preferences-dialog.h"
+#include "bedit-window.h"
+#include "bedit-debug.h"
+#include "bedit-view.h"
+#include "bedit-preferences-dialog.h"
 
 void
-_gedit_cmd_edit_undo (GSimpleAction *action,
+_bedit_cmd_edit_undo (GSimpleAction *action,
                       GVariant      *parameter,
                       gpointer       user_data)
 {
@@ -41,22 +41,22 @@ _gedit_cmd_edit_undo (GSimpleAction *action,
 	BeditView *active_view;
 	GtkSourceBuffer *active_document;
 
-	gedit_debug (DEBUG_COMMANDS);
+	bedit_debug (DEBUG_COMMANDS);
 
-	active_view = gedit_window_get_active_view (window);
+	active_view = bedit_window_get_active_view (window);
 	g_return_if_fail (active_view);
 
 	active_document = GTK_SOURCE_BUFFER (gtk_text_view_get_buffer (GTK_TEXT_VIEW (active_view)));
 
 	gtk_source_buffer_undo (active_document);
 
-	gedit_view_scroll_to_cursor (active_view);
+	bedit_view_scroll_to_cursor (active_view);
 
 	gtk_widget_grab_focus (GTK_WIDGET (active_view));
 }
 
 void
-_gedit_cmd_edit_redo (GSimpleAction *action,
+_bedit_cmd_edit_redo (GSimpleAction *action,
                       GVariant      *parameter,
                       gpointer       user_data)
 {
@@ -64,124 +64,124 @@ _gedit_cmd_edit_redo (GSimpleAction *action,
 	BeditView *active_view;
 	GtkSourceBuffer *active_document;
 
-	gedit_debug (DEBUG_COMMANDS);
+	bedit_debug (DEBUG_COMMANDS);
 
-	active_view = gedit_window_get_active_view (window);
+	active_view = bedit_window_get_active_view (window);
 	g_return_if_fail (active_view);
 
 	active_document = GTK_SOURCE_BUFFER (gtk_text_view_get_buffer (GTK_TEXT_VIEW (active_view)));
 
 	gtk_source_buffer_redo (active_document);
 
-	gedit_view_scroll_to_cursor (active_view);
+	bedit_view_scroll_to_cursor (active_view);
 
 	gtk_widget_grab_focus (GTK_WIDGET (active_view));
 }
 
 void
-_gedit_cmd_edit_cut (GSimpleAction *action,
+_bedit_cmd_edit_cut (GSimpleAction *action,
                      GVariant      *parameter,
                      gpointer       user_data)
 {
 	BeditWindow *window = GEDIT_WINDOW (user_data);
 	BeditView *active_view;
 
-	gedit_debug (DEBUG_COMMANDS);
+	bedit_debug (DEBUG_COMMANDS);
 
-	active_view = gedit_window_get_active_view (window);
+	active_view = bedit_window_get_active_view (window);
 	g_return_if_fail (active_view);
 
-	gedit_view_cut_clipboard (active_view);
+	bedit_view_cut_clipboard (active_view);
 
 	gtk_widget_grab_focus (GTK_WIDGET (active_view));
 }
 
 void
-_gedit_cmd_edit_copy (GSimpleAction *action,
+_bedit_cmd_edit_copy (GSimpleAction *action,
                       GVariant      *parameter,
                       gpointer       user_data)
 {
 	BeditWindow *window = GEDIT_WINDOW (user_data);
 	BeditView *active_view;
 
-	gedit_debug (DEBUG_COMMANDS);
+	bedit_debug (DEBUG_COMMANDS);
 
-	active_view = gedit_window_get_active_view (window);
+	active_view = bedit_window_get_active_view (window);
 	g_return_if_fail (active_view);
 
-	gedit_view_copy_clipboard (active_view);
+	bedit_view_copy_clipboard (active_view);
 
 	gtk_widget_grab_focus (GTK_WIDGET (active_view));
 }
 
 void
-_gedit_cmd_edit_paste (GSimpleAction *action,
+_bedit_cmd_edit_paste (GSimpleAction *action,
                        GVariant      *parameter,
                        gpointer       user_data)
 {
 	BeditWindow *window = GEDIT_WINDOW (user_data);
 	BeditView *active_view;
 
-	gedit_debug (DEBUG_COMMANDS);
+	bedit_debug (DEBUG_COMMANDS);
 
-	active_view = gedit_window_get_active_view (window);
+	active_view = bedit_window_get_active_view (window);
 	g_return_if_fail (active_view);
 
-	gedit_view_paste_clipboard (active_view);
+	bedit_view_paste_clipboard (active_view);
 
 	gtk_widget_grab_focus (GTK_WIDGET (active_view));
 }
 
 void
-_gedit_cmd_edit_delete (GSimpleAction *action,
+_bedit_cmd_edit_delete (GSimpleAction *action,
                         GVariant      *parameter,
                         gpointer       user_data)
 {
 	BeditWindow *window = GEDIT_WINDOW (user_data);
 	BeditView *active_view;
 
-	gedit_debug (DEBUG_COMMANDS);
+	bedit_debug (DEBUG_COMMANDS);
 
-	active_view = gedit_window_get_active_view (window);
+	active_view = bedit_window_get_active_view (window);
 	g_return_if_fail (active_view);
 
-	gedit_view_delete_selection (active_view);
+	bedit_view_delete_selection (active_view);
 
 	gtk_widget_grab_focus (GTK_WIDGET (active_view));
 }
 
 void
-_gedit_cmd_edit_select_all (GSimpleAction *action,
+_bedit_cmd_edit_select_all (GSimpleAction *action,
                             GVariant      *parameter,
                             gpointer       user_data)
 {
 	BeditWindow *window = GEDIT_WINDOW (user_data);
 	BeditView *active_view;
 
-	gedit_debug (DEBUG_COMMANDS);
+	bedit_debug (DEBUG_COMMANDS);
 
-	active_view = gedit_window_get_active_view (window);
+	active_view = bedit_window_get_active_view (window);
 	g_return_if_fail (active_view);
 
-	gedit_view_select_all (active_view);
+	bedit_view_select_all (active_view);
 
 	gtk_widget_grab_focus (GTK_WIDGET (active_view));
 }
 
 void
-_gedit_cmd_edit_preferences (GSimpleAction *action,
+_bedit_cmd_edit_preferences (GSimpleAction *action,
                              GVariant      *parameter,
                              gpointer       user_data)
 {
 	BeditWindow *window = GEDIT_WINDOW (user_data);
 
-	gedit_debug (DEBUG_COMMANDS);
+	bedit_debug (DEBUG_COMMANDS);
 
-	gedit_show_preferences_dialog (window);
+	bedit_show_preferences_dialog (window);
 }
 
 void
-_gedit_cmd_edit_overwrite_mode (GSimpleAction *action,
+_bedit_cmd_edit_overwrite_mode (GSimpleAction *action,
                                 GVariant      *state,
                                 gpointer       user_data)
 {
@@ -189,9 +189,9 @@ _gedit_cmd_edit_overwrite_mode (GSimpleAction *action,
 	BeditView *active_view;
 	gboolean overwrite;
 
-	gedit_debug (DEBUG_COMMANDS);
+	bedit_debug (DEBUG_COMMANDS);
 
-	active_view = gedit_window_get_active_view (window);
+	active_view = bedit_window_get_active_view (window);
 	g_return_if_fail (active_view);
 
 	overwrite = g_variant_get_boolean (state);

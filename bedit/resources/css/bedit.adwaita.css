@@ -1,27 +1,27 @@
-.gedit-document-panel {
+.bedit-document-panel {
     background-color: @sidebar_bg;
 }
 
-.gedit-document-panel:backdrop {
+.bedit-document-panel:backdrop {
     color: #b0b2b2;
 }
 
-.gedit-document-panel row:selected:backdrop {
+.bedit-document-panel row:selected:backdrop {
     background-color: #8b8e8f;
 }
 
-.gedit-document-panel-group-row,
-.gedit-document-panel-group-row:hover {
+.bedit-document-panel-group-row,
+.bedit-document-panel-group-row:hover {
     border-top: 1px solid alpha(currentColor, 0.3);
 }
 
-.gedit-document-panel-group-row:first-child,
-.gedit-document-panel-group-row:first-child:hover {
+.bedit-document-panel-group-row:first-child,
+.bedit-document-panel-group-row:first-child:hover {
     border-top: 0px;
 }
 
 /* Try to look as the notebook tab close button */
-.gedit-document-panel row button.flat {
+.bedit-document-panel row button.flat {
     padding: 0;
     margin-top: 8px;
     margin-bottom: 8px;
@@ -30,11 +30,11 @@
     color: alpha(currentColor,0.3);
 }
 
-.gedit-document-panel row:hover button.flat {
+.bedit-document-panel row:hover button.flat {
     color: alpha(currentColor,0.5);
 }
 
-.gedit-document-panel row button.flat:hover {
+.bedit-document-panel row button.flat:hover {
     color: @theme_fg_color;
 }
 
@@ -42,7 +42,7 @@ statusbar {
     border-top: 1px solid @borders;
 }
 
-.gedit-search-slider {
+.bedit-search-slider {
     background-color: @theme_base_color;
     padding: 6px;
     border-color: @borders;
@@ -51,7 +51,7 @@ statusbar {
     border-style: solid;
 }
 
-.gedit-search-entry-occurrences-tag {
+.bedit-search-entry-occurrences-tag {
     background-color: @theme_base_color;
     background-image: none;
     color: shade (@theme_unfocused_fg_color, 0.8);

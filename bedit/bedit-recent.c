@@ -1,6 +1,6 @@
 /*
- * gedit-recent.c
- * This file is part of gedit
+ * bedit-recent.c
+ * This file is part of bedit
  *
  * Copyright (C) 2005 - Paolo Maggi
  * Copyright (C) 2014 - Paolo Borelli
@@ -20,16 +20,16 @@
  * along with this program; if not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "gedit-recent.h"
+#include "bedit-recent.h"
 
 #include <gtk/gtk.h>
-#include <gedit/gedit-document.h>
+#include <bedit/bedit-document.h>
 #include <string.h>
 
-#include "gedit-settings.h"
+#include "bedit-settings.h"
 
 void
-gedit_recent_add_document (BeditDocument *document)
+bedit_recent_add_document (BeditDocument *document)
 {
 	GtkSourceFile *file;
 	GFile *location;
@@ -40,7 +40,7 @@ gedit_recent_add_document (BeditDocument *document)
 
 	g_return_if_fail (GEDIT_IS_DOCUMENT (document));
 
-	file = gedit_document_get_file (document);
+	file = bedit_document_get_file (document);
 	location = gtk_source_file_get_location (file);
 
 	if (location == NULL)
@@ -55,7 +55,7 @@ gedit_recent_add_document (BeditDocument *document)
 
 	recent_data.display_name = NULL;
 	recent_data.description = NULL;
-	recent_data.mime_type = gedit_document_get_mime_type (document);
+	recent_data.mime_type = bedit_document_get_mime_type (document);
 	recent_data.app_name = (gchar *) g_get_application_name ();
 	recent_data.app_exec = g_strjoin (" ", g_get_prgname (), "%u", NULL);
 	recent_data.groups = groups;
@@ -74,7 +74,7 @@ gedit_recent_add_document (BeditDocument *document)
 }
 
 void
-gedit_recent_remove_if_local (GFile *location)
+bedit_recent_remove_if_local (GFile *location)
 {
 	g_return_if_fail (G_IS_FILE (location));
 
@@ -158,7 +158,7 @@ populate_filter_info (GtkRecentInfo        *info,
 
 /* The BeditRecentConfiguration struct is allocated and owned by the caller */
 void
-gedit_recent_configuration_init_default (BeditRecentConfiguration *config)
+bedit_recent_configuration_init_default (BeditRecentConfiguration *config)
 {
 	config->manager = gtk_recent_manager_get_default ();
 
@@ -182,7 +182,7 @@ gedit_recent_configuration_init_default (BeditRecentConfiguration *config)
 
 /* The BeditRecentConfiguration struct is owned and destroyed by the caller */
 void
-gedit_recent_configuration_destroy (BeditRecentConfiguration *config)
+bedit_recent_configuration_destroy (BeditRecentConfiguration *config)
 {
 	g_clear_object (&config->filter);
 	config->manager = NULL;
@@ -191,7 +191,7 @@ gedit_recent_configuration_destroy (BeditRecentConfiguration *config)
 }
 
 GList *
-gedit_recent_get_items (BeditRecentConfiguration *config)
+bedit_recent_get_items (BeditRecentConfiguration *config)
 {
 	GtkRecentFilterFlags needed;
 	GList *items;

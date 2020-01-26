@@ -17,13 +17,13 @@
 
 #include "config.h"
 
-#include "gedit-check-update-plugin.h"
+#include "bedit-check-update-plugin.h"
 
 #include <glib/gi18n.h>
-#include <gedit/gedit-window.h>
-#include <gedit/gedit-window-activatable.h>
-#include <gedit/gedit-debug.h>
-#include <gedit/gedit-utils.h>
+#include <bedit/bedit-window.h>
+#include <bedit/bedit-window-activatable.h>
+#include <bedit/bedit-debug.h>
+#include <bedit/bedit-utils.h>
 #include <libsoup/soup.h>
 #include <gtk/gtk.h>
 #include <stdlib.h>
@@ -34,18 +34,18 @@
 #define VERSION_PLACE "<a href=\"[0-9]\\.[0-9]+/\">"
 
 #ifdef G_OS_WIN32
-#define GEDIT_URL "http://ftp.acc.umu.se/pub/gnome/binaries/win32/gedit/"
-#define FILE_REGEX "gedit\\-setup\\-[0-9]+\\.[0-9]+\\.[0-9]+(\\-[0-9]+)?\\.exe"
+#define GEDIT_URL "http://ftp.acc.umu.se/pub/gnome/binaries/win32/bedit/"
+#define FILE_REGEX "bedit\\-setup\\-[0-9]+\\.[0-9]+\\.[0-9]+(\\-[0-9]+)?\\.exe"
 #else
-#define GEDIT_URL "http://ftp.acc.umu.se/pub/gnome/binaries/mac/gedit/"
-#define FILE_REGEX "gedit\\-[0-9]+\\.[0-9]+\\.[0-9]+(\\-[0-9]+)?(_.*)?\\.dmg"
+#define GEDIT_URL "http://ftp.acc.umu.se/pub/gnome/binaries/mac/bedit/"
+#define FILE_REGEX "bedit\\-[0-9]+\\.[0-9]+\\.[0-9]+(\\-[0-9]+)?(_.*)?\\.dmg"
 #endif
 
 #ifdef OS_OSX
-#include "gedit/gedit-app-osx.h"
+#include "bedit/bedit-app-osx.h"
 #endif
 
-static void gedit_window_activatable_iface_init (BeditWindowActivatableInterface *iface);
+static void bedit_window_activatable_iface_init (BeditWindowActivatableInterface *iface);
 
 
 struct _BeditCheckUpdatePluginPrivate
@@ -67,19 +67,19 @@ enum
 };
 
 G_DEFINE_DYNAMIC_TYPE_EXTENDED (BeditCheckUpdatePlugin,
-				gedit_check_update_plugin,
+				bedit_check_update_plugin,
 				PEAS_TYPE_EXTENSION_BASE,
 				0,
 				G_IMPLEMENT_INTERFACE_DYNAMIC (GEDIT_TYPE_WINDOW_ACTIVATABLE,
-							       gedit_window_activatable_iface_init)
+							       bedit_window_activatable_iface_init)
 				G_ADD_PRIVATE_DYNAMIC (BeditCheckUpdatePlugin))
 
 static void
-gedit_check_update_plugin_init (BeditCheckUpdatePlugin *plugin)
+bedit_check_update_plugin_init (BeditCheckUpdatePlugin *plugin)
 {
-	plugin->priv = gedit_check_update_plugin_get_instance_private (plugin);
+	plugin->priv = bedit_check_update_plugin_get_instance_private (plugin);
 
-	gedit_debug_message (DEBUG_PLUGINS,
+	bedit_debug_message (DEBUG_PLUGINS,
 			     "BeditCheckUpdatePlugin initializing");
 
 	plugin->priv->session = soup_session_async_new ();
@@ -88,7 +88,7 @@ gedit_check_update_plugin_init (BeditCheckUpdatePlugin *plugin)
 }
 
 static void
-gedit_check_update_plugin_dispose (GObject *object)
+bedit_check_update_plugin_dispose (GObject *object)
 {
 	BeditCheckUpdatePlugin *plugin = GEDIT_CHECK_UPDATE_PLUGIN (object);
 
@@ -96,28 +96,28 @@ gedit_check_update_plugin_dispose (GObject *object)
 	g_clear_object (&plugin->priv->settings);
 	g_clear_object (&plugin->priv->window);
 
-	gedit_debug_message (DEBUG_PLUGINS,
+	bedit_debug_message (DEBUG_PLUGINS,
 			     "BeditCheckUpdatePlugin disposing");
 
-	G_OBJECT_CLASS (gedit_check_update_plugin_parent_class)->dispose (object);
+	G_OBJECT_CLASS (bedit_check_update_plugin_parent_class)->dispose (object);
 }
 
 static void
-gedit_check_update_plugin_finalize (GObject *object)
+bedit_check_update_plugin_finalize (GObject *object)
 {
 	BeditCheckUpdatePlugin *plugin = GEDIT_CHECK_UPDATE_PLUGIN (object);
 
-	gedit_debug_message (DEBUG_PLUGINS,
+	bedit_debug_message (DEBUG_PLUGINS,
 			     "BeditCheckUpdatePlugin finalizing");
 
 	g_free (plugin->priv->url);
 	g_free (plugin->priv->version);
 
-	G_OBJECT_CLASS (gedit_check_update_plugin_parent_class)->finalize (object);
+	G_OBJECT_CLASS (bedit_check_update_plugin_parent_class)->finalize (object);
 }
 
 static void
-gedit_check_update_plugin_set_property (GObject      *object,
+bedit_check_update_plugin_set_property (GObject      *object,
                                         guint         prop_id,
                                         const GValue *value,
                                         GParamSpec   *pspec)
@@ -137,7 +137,7 @@ gedit_check_update_plugin_set_property (GObject      *object,
 }
 
 static void
-gedit_check_update_plugin_get_property (GObject    *object,
+bedit_check_update_plugin_get_property (GObject    *object,
                                         guint       prop_id,
                                         GValue     *value,
                                         GParamSpec *pspec)
@@ -224,7 +224,7 @@ on_response_cb (GtkWidget              *infobar,
 		GError *error = NULL;
 
 #ifdef OS_OSX
-		gedit_app_osx_show_url (GEDIT_APP_OSX (g_application_get_default ()),
+		bedit_app_osx_show_url (GEDIT_APP_OSX (g_application_get_default ()),
 		                        plugin->priv->url);
 #else
 		gtk_show_uri (gtk_widget_get_screen (GTK_WIDGET (plugin->priv->window)),
@@ -283,10 +283,10 @@ create_infobar (BeditWindow *window,
 	gtk_info_bar_set_show_close_button (GTK_INFO_BAR (infobar), TRUE);
 	gtk_info_bar_set_message_type (GTK_INFO_BAR (infobar), GTK_MESSAGE_INFO);
 
-	message = g_strdup_printf ("%s (%s)", _("There is a new version of gedit"), version);
+	message = g_strdup_printf ("%s (%s)", _("There is a new version of bedit"), version);
 	set_message_area_text_and_icon (infobar,
 					message,
-					_("You can download the new version of gedit"
+					_("You can download the new version of bedit"
 					  " by clicking on the download button or"
 					  " ignore that version and wait for a new one"));
 
@@ -580,12 +580,12 @@ parse_page_version (SoupSession            *session,
 }
 
 static void
-gedit_check_update_plugin_activate (BeditWindowActivatable *activatable)
+bedit_check_update_plugin_activate (BeditWindowActivatable *activatable)
 {
 	BeditCheckUpdatePluginPrivate *priv;
 	SoupMessage *msg;
 
-	gedit_debug (DEBUG_PLUGINS);
+	bedit_debug (DEBUG_PLUGINS);
 
 	priv = GEDIT_CHECK_UPDATE_PLUGIN (activatable)->priv;
 
@@ -597,43 +597,43 @@ gedit_check_update_plugin_activate (BeditWindowActivatable *activatable)
 }
 
 static void
-gedit_check_update_plugin_deactivate (BeditWindowActivatable *activatable)
+bedit_check_update_plugin_deactivate (BeditWindowActivatable *activatable)
 {
 
-	gedit_debug (DEBUG_PLUGINS);
+	bedit_debug (DEBUG_PLUGINS);
 
 	soup_session_abort (GEDIT_CHECK_UPDATE_PLUGIN (activatable)->priv->session);
 }
 
 static void
-gedit_check_update_plugin_class_init (BeditCheckUpdatePluginClass *klass)
+bedit_check_update_plugin_class_init (BeditCheckUpdatePluginClass *klass)
 {
 	GObjectClass *object_class = G_OBJECT_CLASS (klass);
 
-	object_class->finalize = gedit_check_update_plugin_finalize;
-	object_class->dispose = gedit_check_update_plugin_dispose;
-	object_class->set_property = gedit_check_update_plugin_set_property;
-	object_class->get_property = gedit_check_update_plugin_get_property;
+	object_class->finalize = bedit_check_update_plugin_finalize;
+	object_class->dispose = bedit_check_update_plugin_dispose;
+	object_class->set_property = bedit_check_update_plugin_set_property;
+	object_class->get_property = bedit_check_update_plugin_get_property;
 
 	g_object_class_override_property (object_class, PROP_WINDOW, "window");
 }
 
 static void
-gedit_check_update_plugin_class_finalize (BeditCheckUpdatePluginClass *klass)
+bedit_check_update_plugin_class_finalize (BeditCheckUpdatePluginClass *klass)
 {
 }
 
 static void
-gedit_window_activatable_iface_init (BeditWindowActivatableInterface *iface)
+bedit_window_activatable_iface_init (BeditWindowActivatableInterface *iface)
 {
-	iface->activate = gedit_check_update_plugin_activate;
-	iface->deactivate = gedit_check_update_plugin_deactivate;
+	iface->activate = bedit_check_update_plugin_activate;
+	iface->deactivate = bedit_check_update_plugin_deactivate;
 }
 
 G_MODULE_EXPORT void
 peas_register_types (PeasObjectModule *module)
 {
-	gedit_check_update_plugin_register_type (G_TYPE_MODULE (module));
+	bedit_check_update_plugin_register_type (G_TYPE_MODULE (module));
 
 	peas_object_module_register_extension_type (module,
 						    GEDIT_TYPE_WINDOW_ACTIVATABLE,

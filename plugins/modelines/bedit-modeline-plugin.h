@@ -1,6 +1,6 @@
 /*
- * gedit-modeline-plugin.h
- * Emacs, Kate and Vim-style modelines support for gedit.
+ * bedit-modeline-plugin.h
+ * Emacs, Kate and Vim-style modelines support for bedit.
  *
  * Copyright (C) 2005-2007 - Steve Frécinaux <code@istique.net>
  *
@@ -28,7 +28,7 @@
 
 G_BEGIN_DECLS
 
-#define GEDIT_TYPE_MODELINE_PLUGIN		(gedit_modeline_plugin_get_type ())
+#define GEDIT_TYPE_MODELINE_PLUGIN		(bedit_modeline_plugin_get_type ())
 #define GEDIT_MODELINE_PLUGIN(o)		(G_TYPE_CHECK_INSTANCE_CAST ((o), GEDIT_TYPE_MODELINE_PLUGIN, BeditModelinePlugin))
 #define GEDIT_MODELINE_PLUGIN_CLASS(k)		(G_TYPE_CHECK_CLASS_CAST((k), GEDIT_TYPE_MODELINE_PLUGIN, BeditModelinePluginClass))
 #define GEDIT_IS_MODELINE_PLUGIN(o)		(G_TYPE_CHECK_INSTANCE_TYPE ((o), GEDIT_TYPE_MODELINE_PLUGIN))
@@ -50,7 +50,7 @@ struct _BeditModelinePluginClass {
 	PeasExtensionBaseClass parent_class;
 };
 
-GType	gedit_modeline_plugin_get_type		(void) G_GNUC_CONST;
+GType	bedit_modeline_plugin_get_type		(void) G_GNUC_CONST;
 
 G_MODULE_EXPORT void peas_register_types (PeasObjectModule *module);
 

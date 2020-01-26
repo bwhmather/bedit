@@ -1,22 +1,22 @@
 #!/usr/bin/env perl
 
-# gedit-tool-merge.pl
-# This file is part of gedit
+# bedit-tool-merge.pl
+# This file is part of bedit
 #
 # Copyright (C) 2006 - Steve Frécinaux <code@istique.net>
 #
-# gedit is free software; you can redistribute it and/or modify
+# bedit is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation; either version 2 of the License, or
 # (at your option) any later version.
 #
-# gedit is distributed in the hope that it will be useful,
+# bedit is distributed in the hope that it will be useful,
 # but WITHOUT ANY WARRANTY; without even the implied warranty of
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 # GNU General Public License for more details.
 #
 # You should have received a copy of the GNU General Public License
-# along with gedit; if not, write to the Free Software
+# along with bedit; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, 
 # Boston, MA  02110-1301  USA
 

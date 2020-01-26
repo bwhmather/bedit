@@ -9,5 +9,5 @@ msgfmt_externaltools_cmd = [
 ]
 
 merge_tool_prg = find_program(
-  files('gedit-tool-merge.pl'),
+  files('bedit-tool-merge.pl'),
 )

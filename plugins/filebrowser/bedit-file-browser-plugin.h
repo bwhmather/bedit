@@ -1,5 +1,5 @@
 /*
- * gedit-file-browser-plugin.h - Bedit plugin providing easy file access
+ * bedit-file-browser-plugin.h - Bedit plugin providing easy file access
  * from the sidepanel
  *
  * Copyright (C) 2006 - Jesse van den Kieboom <jesse@icecrew.nl>
@@ -30,7 +30,7 @@ G_BEGIN_DECLS
 /*
  * Type checking and casting macros
  */
-#define GEDIT_TYPE_FILE_BROWSER_PLUGIN		(gedit_file_browser_plugin_get_type ())
+#define GEDIT_TYPE_FILE_BROWSER_PLUGIN		(bedit_file_browser_plugin_get_type ())
 #define GEDIT_FILE_BROWSER_PLUGIN(o)		(G_TYPE_CHECK_INSTANCE_CAST ((o), GEDIT_TYPE_FILE_BROWSER_PLUGIN, BeditFileBrowserPlugin))
 #define GEDIT_FILE_BROWSER_PLUGIN_CLASS(k)	(G_TYPE_CHECK_CLASS_CAST((k), GEDIT_TYPE_FILE_BROWSER_PLUGIN, BeditFileBrowserPluginClass))
 #define GEDIT_IS_FILE_BROWSER_PLUGIN(o)		(G_TYPE_CHECK_INSTANCE_TYPE ((o), GEDIT_TYPE_FILE_BROWSER_PLUGIN))
@@ -58,7 +58,7 @@ struct _BeditFileBrowserPluginClass
 /*
  * Public methods
  */
-GType			gedit_file_browser_plugin_get_type	(void) G_GNUC_CONST;
+GType			bedit_file_browser_plugin_get_type	(void) G_GNUC_CONST;
 
 /* All the plugins must implement this function */
 G_MODULE_EXPORT void	peas_register_types			(PeasObjectModule *module);

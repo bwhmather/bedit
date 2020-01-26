@@ -1,9 +1,9 @@
 libtime_sources = files(
-  'gedit-time-plugin.c',
+  'bedit-time-plugin.c',
 )
 
 libtime_deps = [
-  libgedit_dep,
+  libbedit_dep,
 ]
 
 gnome.mkenums(

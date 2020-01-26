@@ -1,6 +1,6 @@
 /*
- * gedit-menu-stack-switcher.h
- * This file is part of gedit
+ * bedit-menu-stack-switcher.h
+ * This file is part of bedit
  *
  * Copyright (C) 2014 - Steve Frécinaux
  *
@@ -25,16 +25,16 @@
 
 G_BEGIN_DECLS
 
-#define GEDIT_TYPE_MENU_STACK_SWITCHER (gedit_menu_stack_switcher_get_type())
+#define GEDIT_TYPE_MENU_STACK_SWITCHER (bedit_menu_stack_switcher_get_type())
 
-G_DECLARE_FINAL_TYPE (BeditMenuStackSwitcher, gedit_menu_stack_switcher, GEDIT, MENU_STACK_SWITCHER, GtkMenuButton)
+G_DECLARE_FINAL_TYPE (BeditMenuStackSwitcher, bedit_menu_stack_switcher, GEDIT, MENU_STACK_SWITCHER, GtkMenuButton)
 
-GtkWidget *  gedit_menu_stack_switcher_new 	      (void);
+GtkWidget *  bedit_menu_stack_switcher_new 	      (void);
 
-void         gedit_menu_stack_switcher_set_stack  (BeditMenuStackSwitcher *switcher,
+void         bedit_menu_stack_switcher_set_stack  (BeditMenuStackSwitcher *switcher,
                                                    GtkStack               *stack);
 
-GtkStack *   gedit_menu_stack_switcher_get_stack  (BeditMenuStackSwitcher *switcher);
+GtkStack *   bedit_menu_stack_switcher_get_stack  (BeditMenuStackSwitcher *switcher);
 
 G_END_DECLS
 

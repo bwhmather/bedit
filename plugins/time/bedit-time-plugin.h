@@ -1,5 +1,5 @@
 /*
- * gedit-time-plugin.h
+ * bedit-time-plugin.h
  *
  * Copyright (C) 2002-2005 - Paolo Maggi
  *
@@ -27,7 +27,7 @@
 
 G_BEGIN_DECLS
 
-#define GEDIT_TYPE_TIME_PLUGIN		(gedit_time_plugin_get_type ())
+#define GEDIT_TYPE_TIME_PLUGIN		(bedit_time_plugin_get_type ())
 #define GEDIT_TIME_PLUGIN(o)		(G_TYPE_CHECK_INSTANCE_CAST ((o), GEDIT_TYPE_TIME_PLUGIN, BeditTimePlugin))
 #define GEDIT_TIME_PLUGIN_CLASS(k)	(G_TYPE_CHECK_CLASS_CAST((k), GEDIT_TYPE_TIME_PLUGIN, BeditTimePluginClass))
 #define GEDIT_IS_TIME_PLUGIN(o)		(G_TYPE_CHECK_INSTANCE_TYPE ((o), GEDIT_TYPE_TIME_PLUGIN))
@@ -51,7 +51,7 @@ struct _BeditTimePluginClass
 	PeasExtensionBaseClass parent_class;
 };
 
-GType			gedit_time_plugin_get_type	(void) G_GNUC_CONST;
+GType			bedit_time_plugin_get_type	(void) G_GNUC_CONST;
 
 G_MODULE_EXPORT void	peas_register_types		(PeasObjectModule *module);
 

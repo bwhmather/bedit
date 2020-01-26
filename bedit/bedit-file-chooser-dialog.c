@@ -1,6 +1,6 @@
 /*
- * gedit-app-file-chooser-dialog.h
- * This file is part of gedit
+ * bedit-app-file-chooser-dialog.h
+ * This file is part of bedit
  *
  * Copyright (C) 2014 Jesse van den Kieboom
  *
@@ -20,15 +20,15 @@
 
 #include "config.h"
 
-#include "gedit-file-chooser-dialog.h"
+#include "bedit-file-chooser-dialog.h"
 
 #ifdef OS_OSX
-#include "gedit-file-chooser-dialog-osx.h"
+#include "bedit-file-chooser-dialog-osx.h"
 #else
-#include "gedit-file-chooser-dialog-gtk.h"
+#include "bedit-file-chooser-dialog-gtk.h"
 #endif
 
-G_DEFINE_INTERFACE (BeditFileChooserDialog, gedit_file_chooser_dialog, G_TYPE_OBJECT)
+G_DEFINE_INTERFACE (BeditFileChooserDialog, bedit_file_chooser_dialog, G_TYPE_OBJECT)
 
 static gboolean
 confirm_overwrite_accumulator (GSignalInvocationHint *ihint,
@@ -47,7 +47,7 @@ confirm_overwrite_accumulator (GSignalInvocationHint *ihint,
 }
 
 static void
-gedit_file_chooser_dialog_default_init (BeditFileChooserDialogInterface *iface)
+bedit_file_chooser_dialog_default_init (BeditFileChooserDialogInterface *iface)
 {
 	g_signal_new ("response",
 	              G_TYPE_FROM_INTERFACE (iface),
@@ -68,7 +68,7 @@ gedit_file_chooser_dialog_default_init (BeditFileChooserDialogInterface *iface)
 }
 
 BeditFileChooserDialog *
-gedit_file_chooser_dialog_create (const gchar              *title,
+bedit_file_chooser_dialog_create (const gchar              *title,
                                   GtkWindow                *parent,
                                   BeditFileChooserFlags    flags,
                                   const GtkSourceEncoding *encoding,
@@ -78,7 +78,7 @@ gedit_file_chooser_dialog_create (const gchar              *title,
                                   GtkResponseType           accept_response)
 {
 #ifdef OS_OSX
-	return gedit_file_chooser_dialog_osx_create (title,
+	return bedit_file_chooser_dialog_osx_create (title,
 	                                             parent,
 	                                             flags,
 	                                             encoding,
@@ -87,7 +87,7 @@ gedit_file_chooser_dialog_create (const gchar              *title,
 	                                             accept_label,
 	                                             accept_response);
 #else
-	return gedit_file_chooser_dialog_gtk_create (title,
+	return bedit_file_chooser_dialog_gtk_create (title,
 	                                             parent,
 	                                             flags,
 	                                             encoding,
@@ -99,7 +99,7 @@ gedit_file_chooser_dialog_create (const gchar              *title,
 }
 
 void
-gedit_file_chooser_dialog_set_encoding (BeditFileChooserDialog  *dialog,
+bedit_file_chooser_dialog_set_encoding (BeditFileChooserDialog  *dialog,
                                         const GtkSourceEncoding *encoding)
 {
 	BeditFileChooserDialogInterface *iface;
@@ -113,7 +113,7 @@ gedit_file_chooser_dialog_set_encoding (BeditFileChooserDialog  *dialog,
 }
 
 const GtkSourceEncoding *
-gedit_file_chooser_dialog_get_encoding (BeditFileChooserDialog *dialog)
+bedit_file_chooser_dialog_get_encoding (BeditFileChooserDialog *dialog)
 {
 	BeditFileChooserDialogInterface *iface;
 
@@ -126,7 +126,7 @@ gedit_file_chooser_dialog_get_encoding (BeditFileChooserDialog *dialog)
 }
 
 void
-gedit_file_chooser_dialog_set_newline_type (BeditFileChooserDialog *dialog,
+bedit_file_chooser_dialog_set_newline_type (BeditFileChooserDialog *dialog,
                                             GtkSourceNewlineType    newline_type)
 {
 	BeditFileChooserDialogInterface *iface;
@@ -140,7 +140,7 @@ gedit_file_chooser_dialog_set_newline_type (BeditFileChooserDialog *dialog,
 }
 
 GtkSourceNewlineType
-gedit_file_chooser_dialog_get_newline_type (BeditFileChooserDialog *dialog)
+bedit_file_chooser_dialog_get_newline_type (BeditFileChooserDialog *dialog)
 {
 	BeditFileChooserDialogInterface *iface;
 
@@ -154,7 +154,7 @@ gedit_file_chooser_dialog_get_newline_type (BeditFileChooserDialog *dialog)
 
 
 void
-gedit_file_chooser_dialog_set_current_folder (BeditFileChooserDialog *dialog,
+bedit_file_chooser_dialog_set_current_folder (BeditFileChooserDialog *dialog,
                                               GFile                  *folder)
 {
 	BeditFileChooserDialogInterface *iface;
@@ -168,7 +168,7 @@ gedit_file_chooser_dialog_set_current_folder (BeditFileChooserDialog *dialog,
 }
 
 void
-gedit_file_chooser_dialog_set_current_name (BeditFileChooserDialog *dialog,
+bedit_file_chooser_dialog_set_current_name (BeditFileChooserDialog *dialog,
                                             const gchar            *name)
 {
 	BeditFileChooserDialogInterface *iface;
@@ -182,7 +182,7 @@ gedit_file_chooser_dialog_set_current_name (BeditFileChooserDialog *dialog,
 }
 
 void
-gedit_file_chooser_dialog_set_file (BeditFileChooserDialog *dialog,
+bedit_file_chooser_dialog_set_file (BeditFileChooserDialog *dialog,
                                     GFile                  *file)
 {
 	BeditFileChooserDialogInterface *iface;
@@ -197,7 +197,7 @@ gedit_file_chooser_dialog_set_file (BeditFileChooserDialog *dialog,
 }
 
 GSList *
-gedit_file_chooser_dialog_get_files (BeditFileChooserDialog *dialog)
+bedit_file_chooser_dialog_get_files (BeditFileChooserDialog *dialog)
 {
 	BeditFileChooserDialogInterface *iface;
 
@@ -210,7 +210,7 @@ gedit_file_chooser_dialog_get_files (BeditFileChooserDialog *dialog)
 }
 
 GFile *
-gedit_file_chooser_dialog_get_file (BeditFileChooserDialog *dialog)
+bedit_file_chooser_dialog_get_file (BeditFileChooserDialog *dialog)
 {
 	BeditFileChooserDialogInterface *iface;
 
@@ -223,7 +223,7 @@ gedit_file_chooser_dialog_get_file (BeditFileChooserDialog *dialog)
 }
 
 void
-gedit_file_chooser_dialog_set_do_overwrite_confirmation (BeditFileChooserDialog *dialog,
+bedit_file_chooser_dialog_set_do_overwrite_confirmation (BeditFileChooserDialog *dialog,
                                                          gboolean                overwrite_confirmation)
 {
 	BeditFileChooserDialogInterface *iface;
@@ -237,7 +237,7 @@ gedit_file_chooser_dialog_set_do_overwrite_confirmation (BeditFileChooserDialog 
 }
 
 void
-gedit_file_chooser_dialog_show (BeditFileChooserDialog *dialog)
+bedit_file_chooser_dialog_show (BeditFileChooserDialog *dialog)
 {
 	BeditFileChooserDialogInterface *iface;
 
@@ -250,7 +250,7 @@ gedit_file_chooser_dialog_show (BeditFileChooserDialog *dialog)
 }
 
 void
-gedit_file_chooser_dialog_hide (BeditFileChooserDialog *dialog)
+bedit_file_chooser_dialog_hide (BeditFileChooserDialog *dialog)
 {
 	BeditFileChooserDialogInterface *iface;
 
@@ -263,7 +263,7 @@ gedit_file_chooser_dialog_hide (BeditFileChooserDialog *dialog)
 }
 
 void
-gedit_file_chooser_dialog_destroy (BeditFileChooserDialog *dialog)
+bedit_file_chooser_dialog_destroy (BeditFileChooserDialog *dialog)
 {
 	BeditFileChooserDialogInterface *iface;
 
@@ -276,7 +276,7 @@ gedit_file_chooser_dialog_destroy (BeditFileChooserDialog *dialog)
 }
 
 void
-gedit_file_chooser_dialog_set_modal (BeditFileChooserDialog *dialog,
+bedit_file_chooser_dialog_set_modal (BeditFileChooserDialog *dialog,
                                      gboolean                is_modal)
 {
 	BeditFileChooserDialogInterface *iface;
@@ -290,7 +290,7 @@ gedit_file_chooser_dialog_set_modal (BeditFileChooserDialog *dialog,
 }
 
 GtkWindow *
-gedit_file_chooser_dialog_get_window (BeditFileChooserDialog *dialog)
+bedit_file_chooser_dialog_get_window (BeditFileChooserDialog *dialog)
 {
 	BeditFileChooserDialogInterface *iface;
 
@@ -307,7 +307,7 @@ gedit_file_chooser_dialog_get_window (BeditFileChooserDialog *dialog)
 }
 
 void
-gedit_file_chooser_dialog_add_pattern_filter (BeditFileChooserDialog   *dialog,
+bedit_file_chooser_dialog_add_pattern_filter (BeditFileChooserDialog   *dialog,
                                               const gchar              *name,
                                               const gchar              *pattern)
 {

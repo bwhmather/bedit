@@ -1,6 +1,6 @@
 /*
- * gedit-history-entry.c
- * This file is part of gedit
+ * bedit-history-entry.c
+ * This file is part of bedit
  *
  * Copyright (C) 2006 - Paolo Borelli
  *
@@ -20,7 +20,7 @@
 
 #include "config.h"
 
-#include "gedit-history-entry.h"
+#include "bedit-history-entry.h"
 
 #include <string.h>
 #include <glib/gi18n.h>
@@ -52,10 +52,10 @@ enum {
 
 static GParamSpec *properties[LAST_PROP];
 
-G_DEFINE_TYPE (BeditHistoryEntry, gedit_history_entry, GTK_TYPE_COMBO_BOX_TEXT)
+G_DEFINE_TYPE (BeditHistoryEntry, bedit_history_entry, GTK_TYPE_COMBO_BOX_TEXT)
 
 static void
-gedit_history_entry_set_property (GObject      *object,
+bedit_history_entry_set_property (GObject      *object,
 				  guint         prop_id,
 				  const GValue *value,
 				  GParamSpec   *spec)
@@ -72,11 +72,11 @@ gedit_history_entry_set_property (GObject      *object,
 			entry->history_id = g_value_dup_string (value);
 			break;
 		case PROP_HISTORY_LENGTH:
-			gedit_history_entry_set_history_length (entry,
+			bedit_history_entry_set_history_length (entry,
 								g_value_get_uint (value));
 			break;
 		case PROP_ENABLE_COMPLETION:
-			gedit_history_entry_set_enable_completion (entry,
+			bedit_history_entry_set_enable_completion (entry,
 			                                           g_value_get_boolean (value));
 			break;
 		default:
@@ -85,7 +85,7 @@ gedit_history_entry_set_property (GObject      *object,
 }
 
 static void
-gedit_history_entry_get_property (GObject    *object,
+bedit_history_entry_get_property (GObject    *object,
 				  guint       prop_id,
 				  GValue     *value,
 				  GParamSpec *spec)
@@ -105,7 +105,7 @@ gedit_history_entry_get_property (GObject    *object,
 			g_value_set_uint (value, entry->history_length);
 			break;
 		case PROP_ENABLE_COMPLETION:
-			g_value_set_boolean (value, gedit_history_entry_get_enable_completion (GEDIT_HISTORY_ENTRY (object)));
+			g_value_set_boolean (value, bedit_history_entry_get_enable_completion (GEDIT_HISTORY_ENTRY (object)));
 			break;
 		default:
 			G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, spec);
@@ -113,29 +113,29 @@ gedit_history_entry_get_property (GObject    *object,
 }
 
 static void
-gedit_history_entry_dispose (GObject *object)
+bedit_history_entry_dispose (GObject *object)
 {
 	BeditHistoryEntry *entry = GEDIT_HISTORY_ENTRY (object);
 
-	gedit_history_entry_set_enable_completion (entry, FALSE);
+	bedit_history_entry_set_enable_completion (entry, FALSE);
 
 	g_clear_object (&entry->settings);
 
-	G_OBJECT_CLASS (gedit_history_entry_parent_class)->dispose (object);
+	G_OBJECT_CLASS (bedit_history_entry_parent_class)->dispose (object);
 }
 
 static void
-gedit_history_entry_finalize (GObject *object)
+bedit_history_entry_finalize (GObject *object)
 {
 	BeditHistoryEntry *entry = GEDIT_HISTORY_ENTRY (object);
 
 	g_free (entry->history_id);
 
-	G_OBJECT_CLASS (gedit_history_entry_parent_class)->finalize (object);
+	G_OBJECT_CLASS (bedit_history_entry_parent_class)->finalize (object);
 }
 
 static void
-gedit_history_entry_load_history (BeditHistoryEntry *entry)
+bedit_history_entry_load_history (BeditHistoryEntry *entry)
 {
 	gchar **items;
 	gsize i;
@@ -158,14 +158,14 @@ gedit_history_entry_load_history (BeditHistoryEntry *entry)
 }
 
 static void
-gedit_history_entry_class_init (BeditHistoryEntryClass *klass)
+bedit_history_entry_class_init (BeditHistoryEntryClass *klass)
 {
 	GObjectClass *object_class = G_OBJECT_CLASS (klass);
 
-	object_class->set_property = gedit_history_entry_set_property;
-	object_class->get_property = gedit_history_entry_get_property;
-	object_class->dispose = gedit_history_entry_dispose;
-	object_class->finalize = gedit_history_entry_finalize;
+	object_class->set_property = bedit_history_entry_set_property;
+	object_class->get_property = bedit_history_entry_get_property;
+	object_class->dispose = bedit_history_entry_dispose;
+	object_class->finalize = bedit_history_entry_finalize;
 
 	properties[PROP_HISTORY_ID] =
 		g_param_spec_string ("history-id",
@@ -245,7 +245,7 @@ get_history_items (BeditHistoryEntry *entry)
 }
 
 static void
-gedit_history_entry_save_history (BeditHistoryEntry *entry)
+bedit_history_entry_save_history (BeditHistoryEntry *entry)
 {
 	gchar **items;
 
@@ -354,11 +354,11 @@ insert_history_item (BeditHistoryEntry *entry,
 		gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (entry), text);
 	}
 
-	gedit_history_entry_save_history (entry);
+	bedit_history_entry_save_history (entry);
 }
 
 void
-gedit_history_entry_prepend_text (BeditHistoryEntry *entry,
+bedit_history_entry_prepend_text (BeditHistoryEntry *entry,
 				  const gchar       *text)
 {
 	g_return_if_fail (GEDIT_IS_HISTORY_ENTRY (entry));
@@ -368,7 +368,7 @@ gedit_history_entry_prepend_text (BeditHistoryEntry *entry,
 }
 
 void
-gedit_history_entry_append_text (BeditHistoryEntry *entry,
+bedit_history_entry_append_text (BeditHistoryEntry *entry,
 				 const gchar       *text)
 {
 	g_return_if_fail (GEDIT_IS_HISTORY_ENTRY (entry));
@@ -378,17 +378,17 @@ gedit_history_entry_append_text (BeditHistoryEntry *entry,
 }
 
 void
-gedit_history_entry_clear (BeditHistoryEntry *entry)
+bedit_history_entry_clear (BeditHistoryEntry *entry)
 {
 	g_return_if_fail (GEDIT_IS_HISTORY_ENTRY (entry));
 
 	gtk_combo_box_text_remove_all (GTK_COMBO_BOX_TEXT (entry));
 
-	gedit_history_entry_save_history (entry);
+	bedit_history_entry_save_history (entry);
 }
 
 static void
-gedit_history_entry_init (BeditHistoryEntry *entry)
+bedit_history_entry_init (BeditHistoryEntry *entry)
 {
 	entry->history_id = NULL;
 	entry->history_length = GEDIT_HISTORY_ENTRY_HISTORY_LENGTH_DEFAULT;
@@ -399,7 +399,7 @@ gedit_history_entry_init (BeditHistoryEntry *entry)
 }
 
 void
-gedit_history_entry_set_history_length (BeditHistoryEntry *entry,
+bedit_history_entry_set_history_length (BeditHistoryEntry *entry,
 					guint              history_length)
 {
 	g_return_if_fail (GEDIT_IS_HISTORY_ENTRY (entry));
@@ -411,7 +411,7 @@ gedit_history_entry_set_history_length (BeditHistoryEntry *entry,
 }
 
 guint
-gedit_history_entry_get_history_length (BeditHistoryEntry *entry)
+bedit_history_entry_get_history_length (BeditHistoryEntry *entry)
 {
 	g_return_val_if_fail (GEDIT_IS_HISTORY_ENTRY (entry), 0);
 
@@ -419,7 +419,7 @@ gedit_history_entry_get_history_length (BeditHistoryEntry *entry)
 }
 
 void
-gedit_history_entry_set_enable_completion (BeditHistoryEntry *entry,
+bedit_history_entry_set_enable_completion (BeditHistoryEntry *entry,
 					   gboolean           enable)
 {
 	g_return_if_fail (GEDIT_IS_HISTORY_ENTRY (entry));
@@ -445,7 +445,7 @@ gedit_history_entry_set_enable_completion (BeditHistoryEntry *entry,
 		gtk_entry_completion_set_inline_completion (entry->completion, TRUE);
 
 		/* Assign the completion to the entry */
-		gtk_entry_set_completion (GTK_ENTRY (gedit_history_entry_get_entry (entry)),
+		gtk_entry_set_completion (GTK_ENTRY (bedit_history_entry_get_entry (entry)),
 					  entry->completion);
 	}
 	else
@@ -455,13 +455,13 @@ gedit_history_entry_set_enable_completion (BeditHistoryEntry *entry,
 			return;
 		}
 
-		gtk_entry_set_completion (GTK_ENTRY (gedit_history_entry_get_entry (entry)), NULL);
+		gtk_entry_set_completion (GTK_ENTRY (bedit_history_entry_get_entry (entry)), NULL);
 		g_clear_object (&entry->completion);
 	}
 }
 
 gboolean
-gedit_history_entry_get_enable_completion (BeditHistoryEntry *entry)
+bedit_history_entry_get_enable_completion (BeditHistoryEntry *entry)
 {
 	g_return_val_if_fail (GEDIT_IS_HISTORY_ENTRY (entry), FALSE);
 
@@ -469,7 +469,7 @@ gedit_history_entry_get_enable_completion (BeditHistoryEntry *entry)
 }
 
 GtkWidget *
-gedit_history_entry_new (const gchar *history_id,
+bedit_history_entry_new (const gchar *history_id,
 			 gboolean     enable_completion)
 {
 	BeditHistoryEntry *entry;
@@ -489,7 +489,7 @@ gedit_history_entry_new (const gchar *history_id,
 	/* We must load the history after the object has been constructed,
 	 * to ensure that the model is set properly.
 	 */
-	gedit_history_entry_load_history (entry);
+	bedit_history_entry_load_history (entry);
 
 	return GTK_WIDGET (entry);
 }
@@ -503,7 +503,7 @@ gedit_history_entry_new (const gchar *history_id,
  * handle the conflict.
  */
 GtkWidget *
-gedit_history_entry_get_entry (BeditHistoryEntry *entry)
+bedit_history_entry_get_entry (BeditHistoryEntry *entry)
 {
 	g_return_val_if_fail (GEDIT_IS_HISTORY_ENTRY (entry), NULL);
 

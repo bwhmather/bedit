@@ -43,19 +43,19 @@ class ToolLibrary(Singleton):
 
         if platform.platform() != 'Windows':
             for d in self.get_xdg_data_dirs():
-                self.locations.append(os.path.join(d, 'gedit', 'plugins', 'externaltools', 'tools'))
+                self.locations.append(os.path.join(d, 'bedit', 'plugins', 'externaltools', 'tools'))
 
         self.locations.append(datadir)
 
         # self.locations[0] is where we save the custom scripts
         if platform.platform() == 'Windows':
-            toolsdir = os.path.expanduser('~/gedit/tools')
+            toolsdir = os.path.expanduser('~/bedit/tools')
         else:
             userdir = os.getenv('GNOME22_USER_DIR')
             if userdir:
-                toolsdir = os.path.join(userdir, 'gedit/tools')
+                toolsdir = os.path.join(userdir, 'bedit/tools')
             else:
-                toolsdir = os.path.join(GLib.get_user_config_dir(), 'gedit/tools')
+                toolsdir = os.path.join(GLib.get_user_config_dir(), 'bedit/tools')
 
         self.locations.insert(0, toolsdir)
 
@@ -82,9 +82,9 @@ class ToolLibrary(Singleton):
         import xml.etree.ElementTree as et
         userdir = os.getenv('GNOME22_USER_DIR')
         if userdir:
-            filename = os.path.join(userdir, 'gedit/gedit-tools.xml')
+            filename = os.path.join(userdir, 'bedit/bedit-tools.xml')
         else:
-            filename = os.path.join(GLib.get_user_config_dir(), 'gedit/gedit-tools.xml')
+            filename = os.path.join(GLib.get_user_config_dir(), 'bedit/bedit-tools.xml')
 
         if not os.path.isfile(filename):
             return
@@ -503,7 +503,7 @@ class Tool(object):
 
 if __name__ == '__main__':
     library = ToolLibrary()
-    library.set_locations(os.path.expanduser("~/.config/gedit/tools"))
+    library.set_locations(os.path.expanduser("~/.config/bedit/tools"))
 
     def print_tool(t, indent):
         print(indent * "  " + "%s: %s" % (t.filename, t.name))

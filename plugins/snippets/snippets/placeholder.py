@@ -28,8 +28,8 @@ from .substitutionparser import SubstitutionParser
 
 try:
     import gettext
-    gettext.bindtextdomain('gedit')
-    gettext.textdomain('gedit')
+    gettext.bindtextdomain('bedit')
+    gettext.textdomain('bedit')
     _ = gettext.gettext
 except:
     _ = lambda s: s
@@ -535,7 +535,7 @@ class PlaceholderEval(PlaceholderExpand):
 
     # SIGALRM is not supported on all platforms (e.g. windows). Timeout
     # with SIGALRM will not be used on those platforms. This will
-    # potentially block gedit if you have a placeholder which gets stuck,
+    # potentially block bedit if you have a placeholder which gets stuck,
     # but it's better than not supporting them at all. At some point we
     # might have proper thread support and we can fix this in a better way
     def timeout_supported(self):
@@ -588,9 +588,9 @@ class PlaceholderEval(PlaceholderExpand):
         if 'process_snippet' in self.namespace:
             try:
                 # Install a sigalarm signal. This is a HACK to make sure
-                # gedit doesn't get freezed by someone creating a python
+                # bedit doesn't get freezed by someone creating a python
                 # placeholder which for instance loops indefinately. Since
-                # the code is executed synchronously it will hang gedit. With
+                # the code is executed synchronously it will hang bedit. With
                 # the alarm signal we raise an exception and catch this
                 # (see below). We show an error message and return False.
                 # ___this is a HACK___ and should be fixed properly (I just

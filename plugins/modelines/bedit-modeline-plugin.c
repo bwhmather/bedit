@@ -1,6 +1,6 @@
 /*
- * gedit-modeline-plugin.c
- * Emacs, Kate and Vim-style modelines support for gedit.
+ * bedit-modeline-plugin.c
+ * Emacs, Kate and Vim-style modelines support for bedit.
  *
  * Copyright (C) 2005-2010 - Steve Frécinaux <code@istique.net>
  *
@@ -22,12 +22,12 @@
 
 #include <glib/gi18n-lib.h>
 #include <gmodule.h>
-#include "gedit-modeline-plugin.h"
+#include "bedit-modeline-plugin.h"
 #include "modeline-parser.h"
 
-#include <gedit/gedit-debug.h>
-#include <gedit/gedit-view-activatable.h>
-#include <gedit/gedit-view.h>
+#include <bedit/bedit-debug.h>
+#include <bedit/bedit-view-activatable.h>
+#include <bedit/bedit-view.h>
 
 struct _BeditModelinePluginPrivate
 {
@@ -43,18 +43,18 @@ enum
 	PROP_VIEW
 };
 
-static void	gedit_view_activatable_iface_init (BeditViewActivatableInterface *iface);
+static void	bedit_view_activatable_iface_init (BeditViewActivatableInterface *iface);
 
 G_DEFINE_DYNAMIC_TYPE_EXTENDED (BeditModelinePlugin,
-				gedit_modeline_plugin,
+				bedit_modeline_plugin,
 				PEAS_TYPE_EXTENSION_BASE,
 				0,
 				G_IMPLEMENT_INTERFACE_DYNAMIC (GEDIT_TYPE_VIEW_ACTIVATABLE,
-							       gedit_view_activatable_iface_init)
+							       bedit_view_activatable_iface_init)
 				G_ADD_PRIVATE_DYNAMIC (BeditModelinePlugin))
 
 static void
-gedit_modeline_plugin_constructed (GObject *object)
+bedit_modeline_plugin_constructed (GObject *object)
 {
 	gchar *data_dir;
 
@@ -64,42 +64,42 @@ gedit_modeline_plugin_constructed (GObject *object)
 
 	g_free (data_dir);
 
-	G_OBJECT_CLASS (gedit_modeline_plugin_parent_class)->constructed (object);
+	G_OBJECT_CLASS (bedit_modeline_plugin_parent_class)->constructed (object);
 }
 
 static void
-gedit_modeline_plugin_init (BeditModelinePlugin *plugin)
+bedit_modeline_plugin_init (BeditModelinePlugin *plugin)
 {
-	gedit_debug_message (DEBUG_PLUGINS, "BeditModelinePlugin initializing");
+	bedit_debug_message (DEBUG_PLUGINS, "BeditModelinePlugin initializing");
 
-	plugin->priv = gedit_modeline_plugin_get_instance_private (plugin);
+	plugin->priv = bedit_modeline_plugin_get_instance_private (plugin);
 
 }
 
 static void
-gedit_modeline_plugin_dispose (GObject *object)
+bedit_modeline_plugin_dispose (GObject *object)
 {
 	BeditModelinePlugin *plugin = GEDIT_MODELINE_PLUGIN (object);
 
-	gedit_debug_message (DEBUG_PLUGINS, "BeditModelinePlugin disposing");
+	bedit_debug_message (DEBUG_PLUGINS, "BeditModelinePlugin disposing");
 
 	g_clear_object (&plugin->priv->view);
 
-	G_OBJECT_CLASS (gedit_modeline_plugin_parent_class)->dispose (object);
+	G_OBJECT_CLASS (bedit_modeline_plugin_parent_class)->dispose (object);
 }
 
 static void
-gedit_modeline_plugin_finalize (GObject *object)
+bedit_modeline_plugin_finalize (GObject *object)
 {
-	gedit_debug_message (DEBUG_PLUGINS, "BeditModelinePlugin finalizing");
+	bedit_debug_message (DEBUG_PLUGINS, "BeditModelinePlugin finalizing");
 
 	modeline_parser_shutdown ();
 
-	G_OBJECT_CLASS (gedit_modeline_plugin_parent_class)->finalize (object);
+	G_OBJECT_CLASS (bedit_modeline_plugin_parent_class)->finalize (object);
 }
 
 static void
-gedit_modeline_plugin_set_property (GObject      *object,
+bedit_modeline_plugin_set_property (GObject      *object,
                                     guint         prop_id,
                                     const GValue *value,
                                     GParamSpec   *pspec)
@@ -119,7 +119,7 @@ gedit_modeline_plugin_set_property (GObject      *object,
 }
 
 static void
-gedit_modeline_plugin_get_property (GObject    *object,
+bedit_modeline_plugin_get_property (GObject    *object,
                                     guint       prop_id,
                                     GValue     *value,
                                     GParamSpec *pspec)
@@ -146,12 +146,12 @@ on_document_loaded_or_saved (BeditDocument *document,
 }
 
 static void
-gedit_modeline_plugin_activate (BeditViewActivatable *activatable)
+bedit_modeline_plugin_activate (BeditViewActivatable *activatable)
 {
 	BeditModelinePlugin *plugin;
 	GtkTextBuffer *doc;
 
-	gedit_debug (DEBUG_PLUGINS);
+	bedit_debug (DEBUG_PLUGINS);
 
 	plugin = GEDIT_MODELINE_PLUGIN (activatable);
 
@@ -170,12 +170,12 @@ gedit_modeline_plugin_activate (BeditViewActivatable *activatable)
 }
 
 static void
-gedit_modeline_plugin_deactivate (BeditViewActivatable *activatable)
+bedit_modeline_plugin_deactivate (BeditViewActivatable *activatable)
 {
 	BeditModelinePlugin *plugin;
 	GtkTextBuffer *doc;
 
-	gedit_debug (DEBUG_PLUGINS);
+	bedit_debug (DEBUG_PLUGINS);
 
 	plugin = GEDIT_MODELINE_PLUGIN (activatable);
 
@@ -186,28 +186,28 @@ gedit_modeline_plugin_deactivate (BeditViewActivatable *activatable)
 }
 
 static void
-gedit_modeline_plugin_class_init (BeditModelinePluginClass *klass)
+bedit_modeline_plugin_class_init (BeditModelinePluginClass *klass)
 {
 	GObjectClass *object_class = G_OBJECT_CLASS (klass);
 
-	object_class->constructed = gedit_modeline_plugin_constructed;
-	object_class->dispose = gedit_modeline_plugin_dispose;
-	object_class->finalize = gedit_modeline_plugin_finalize;
-	object_class->set_property = gedit_modeline_plugin_set_property;
-	object_class->get_property = gedit_modeline_plugin_get_property;
+	object_class->constructed = bedit_modeline_plugin_constructed;
+	object_class->dispose = bedit_modeline_plugin_dispose;
+	object_class->finalize = bedit_modeline_plugin_finalize;
+	object_class->set_property = bedit_modeline_plugin_set_property;
+	object_class->get_property = bedit_modeline_plugin_get_property;
 
 	g_object_class_override_property (object_class, PROP_VIEW, "view");
 }
 
 static void
-gedit_view_activatable_iface_init (BeditViewActivatableInterface *iface)
+bedit_view_activatable_iface_init (BeditViewActivatableInterface *iface)
 {
-	iface->activate = gedit_modeline_plugin_activate;
-	iface->deactivate = gedit_modeline_plugin_deactivate;
+	iface->activate = bedit_modeline_plugin_activate;
+	iface->deactivate = bedit_modeline_plugin_deactivate;
 }
 
 static void
-gedit_modeline_plugin_class_finalize (BeditModelinePluginClass *klass)
+bedit_modeline_plugin_class_finalize (BeditModelinePluginClass *klass)
 {
 }
 
@@ -215,7 +215,7 @@ gedit_modeline_plugin_class_finalize (BeditModelinePluginClass *klass)
 G_MODULE_EXPORT void
 peas_register_types (PeasObjectModule *module)
 {
-	gedit_modeline_plugin_register_type (G_TYPE_MODULE (module));
+	bedit_modeline_plugin_register_type (G_TYPE_MODULE (module));
 
 	peas_object_module_register_extension_type (module,
 						    GEDIT_TYPE_VIEW_ACTIVATABLE,

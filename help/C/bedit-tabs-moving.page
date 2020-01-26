@@ -1,13 +1,13 @@
 <page xmlns="http://projectmallard.org/1.0/"
       xmlns:its="http://www.w3.org/2005/11/its"
       type="topic" style="task"
-      id="gedit-tabs-moving">
+      id="bedit-tabs-moving">
 
   <info>
-    <link type="guide" xref="index#gedit-working-with-files" group="last"/>
-    <link type="seealso" xref="gedit-tabs"/>
-    <link type="seealso" xref="gedit-tab-groups"/>
-    <desc>Change the position of a tab in the gedit window.</desc>
+    <link type="guide" xref="index#bedit-working-with-files" group="last"/>
+    <link type="seealso" xref="bedit-tabs"/>
+    <link type="seealso" xref="bedit-tab-groups"/>
+    <desc>Change the position of a tab in the bedit window.</desc>
     <revision pkgversion="3.8" date="2013-02-24" status="review"/>
     <credit type="author">
       <name>Jim Campbell</name>
@@ -30,13 +30,13 @@
   </info>
 
   <title>Move and re-order tabs</title>
-  <p>Tabs in <app>gedit</app> can be moved, making it easier to work with your 
+  <p>Tabs in <app>bedit</app> can be moved, making it easier to work with your 
   files. Tabs can be can re-ordered within the same window, moved outside of 
-  <app>gedit</app> (creating a new <app>gedit</app> window), and moved from one 
+  <app>bedit</app> (creating a new <app>bedit</app> window), and moved from one 
   window to another.</p>
 
   <section id="tabs-change-order">
-    <title>Change the order of tabs in the gedit window</title>
+    <title>Change the order of tabs in the bedit window</title>
 
     <p>To change the ordering of tabs in a window:</p>
 
@@ -58,7 +58,7 @@
   </section>
 
   <section id="tabs-moving-new-window">
-    <title>Move a tab, creating a new gedit window</title>
+    <title>Move a tab, creating a new bedit window</title>
     <p>To create a new window from an existing tab:</p>
 
     <steps>
@@ -66,7 +66,7 @@
         <p>Click and hold the mouse button on the tab.</p>
       </item>
       <item>
-        <p>Drag the tab out of the <app>gedit</app> window.</p>
+        <p>Drag the tab out of the <app>bedit</app> window.</p>
       </item>
       <item>
         <p>Release the mouse button.</p>
@@ -74,13 +74,13 @@
     </steps>
 
     <note style="tip">
-      <p>To move a tab into a new window when <app>gedit</app> is maximized, 
+      <p>To move a tab into a new window when <app>bedit</app> is maximized, 
       drag the tab onto the top bar at the top of the screen.</p>
     </note>
   </section>
 
   <section id="tabs-moving-other-window">
-    <title>Move a tab to another gedit window</title>
+    <title>Move a tab to another bedit window</title>
 
     <p>If you want to move a tab from one window to another:</p>
 
@@ -104,11 +104,11 @@
       <p>You may find it easier to move a tab from one window to another by
       dragging the tab to the <gui>Activities</gui> hot-corner of
       <gui>GNOME Shell</gui>. This will reveal each of the open
-      <app>gedit</app> windows. You can then release the tab on the
-      desired <app>gedit</app> window.</p>
+      <app>bedit</app> windows. You can then release the tab on the
+      desired <app>bedit</app> window.</p>
     </note>
 
-    <p>See the <link xref="gedit-shortcut-keys">tab-related shortcut
+    <p>See the <link xref="bedit-shortcut-keys">tab-related shortcut
     keys</link> table to make it easier to manage your tabs.</p>
 
   </section>

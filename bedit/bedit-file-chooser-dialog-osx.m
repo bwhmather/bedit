@@ -1,6 +1,6 @@
 /*
- * gedit-file-chooser-dialog-osx.c
- * This file is part of gedit
+ * bedit-file-chooser-dialog-osx.c
+ * This file is part of bedit
  *
  * Copyright (C) 2014 - Jesse van den Kieboom
  *
@@ -19,15 +19,15 @@
  */
 
 #include "config.h"
-#include "gedit-file-chooser-dialog-osx.h"
+#include "bedit-file-chooser-dialog-osx.h"
 
 #import <Cocoa/Cocoa.h>
 #include <gdk/gdkquartz.h>
 #include <glib/gi18n.h>
 
-#include "gedit-encoding-items.h"
-#include "gedit-encodings-dialog.h"
-#include "gedit-utils.h"
+#include "bedit-encoding-items.h"
+#include "bedit-encodings-dialog.h"
+#include "bedit-utils.h"
 
 struct _BeditFileChooserDialogOSX
 {
@@ -52,14 +52,14 @@ struct _BeditFileChooserDialogOSX
 	BeditFileChooserFlags flags;
 };
 
-static void gedit_file_chooser_dialog_osx_chooser_init (gpointer g_iface, gpointer iface_data);
+static void bedit_file_chooser_dialog_osx_chooser_init (gpointer g_iface, gpointer iface_data);
 
 G_DEFINE_TYPE_EXTENDED (BeditFileChooserDialogOSX,
-                        gedit_file_chooser_dialog_osx,
+                        bedit_file_chooser_dialog_osx,
                         G_TYPE_OBJECT,
                         0,
                         G_IMPLEMENT_INTERFACE (GEDIT_TYPE_FILE_CHOOSER_DIALOG,
-                                               gedit_file_chooser_dialog_osx_chooser_init))
+                                               bedit_file_chooser_dialog_osx_chooser_init))
 
 @interface NewlineItem : NSMenuItem
 
@@ -74,7 +74,7 @@ G_DEFINE_TYPE_EXTENDED (BeditFileChooserDialogOSX,
 {
 	NSString *title;
 
-	title = [NSString stringWithUTF8String:gedit_utils_newline_type_to_string (type)];
+	title = [NSString stringWithUTF8String:bedit_utils_newline_type_to_string (type)];
 
 	self = [super initWithTitle:title action:nil keyEquivalent:@""];
 
@@ -103,7 +103,7 @@ G_DEFINE_TYPE_EXTENDED (BeditFileChooserDialogOSX,
 {
 	NSString *title;
 
-	title = [NSString stringWithUTF8String:gedit_encoding_item_get_name (encoding)];
+	title = [NSString stringWithUTF8String:bedit_encoding_item_get_name (encoding)];
 
 	self = [super initWithTitle:title action:nil keyEquivalent:@""];
 
@@ -117,7 +117,7 @@ G_DEFINE_TYPE_EXTENDED (BeditFileChooserDialogOSX,
 
 -(void)dealloc
 {
-	gedit_encoding_item_free (_encoding);
+	bedit_encoding_item_free (_encoding);
 	_encoding = NULL;
 
 	[super dealloc];
@@ -127,7 +127,7 @@ G_DEFINE_TYPE_EXTENDED (BeditFileChooserDialogOSX,
 {
 	if (_encoding != NULL)
 	{
-		return gedit_encoding_item_get_encoding (_encoding);
+		return bedit_encoding_item_get_encoding (_encoding);
 	}
 
 	return NULL;
@@ -372,7 +372,7 @@ fill_encodings (BeditFileChooserDialogOSX *dialog)
 	gint first = 0;
 	const GtkSourceEncoding *encoding;
 
-	encoding = gedit_file_chooser_dialog_get_encoding (GEDIT_FILE_CHOOSER_DIALOG (dialog));
+	encoding = bedit_file_chooser_dialog_get_encoding (GEDIT_FILE_CHOOSER_DIALOG (dialog));
 
 	button = dialog->encoding_button;
 	menu = [button menu];
@@ -410,7 +410,7 @@ fill_encodings (BeditFileChooserDialogOSX *dialog)
 		}
 	}
 
-	encodings = gedit_encoding_items_get ();
+	encodings = bedit_encoding_items_get ();
 
 	while (encodings)
 	{
@@ -418,7 +418,7 @@ fill_encodings (BeditFileChooserDialogOSX *dialog)
 
 		[menu insertItem:[[EncodingItem alloc] initWithEncoding:item] atIndex:first];
 
-		if (encoding == gedit_encoding_item_get_encoding (item))
+		if (encoding == bedit_encoding_item_get_encoding (item))
 		{
 			[button selectItemAtIndex:first];
 		}
@@ -480,10 +480,10 @@ dialog_response_cb (GtkDialog                 *dialog,
 {
 	GtkWidget *dialog;
 
-	gedit_file_chooser_dialog_set_encoding (GEDIT_FILE_CHOOSER_DIALOG (_dialog),
+	bedit_file_chooser_dialog_set_encoding (GEDIT_FILE_CHOOSER_DIALOG (_dialog),
 	                                        _current);
 
-	dialog = gedit_encodings_dialog_new ();
+	dialog = bedit_encodings_dialog_new ();
 
 	if (_dialog->parent != NULL)
 	{
@@ -523,7 +523,7 @@ dialog_response_cb (GtkDialog                 *dialog,
 
 -(void)selectionChanged:(id)sender
 {
-	_current = gedit_file_chooser_dialog_get_encoding (GEDIT_FILE_CHOOSER_DIALOG (_dialog));
+	_current = bedit_file_chooser_dialog_get_encoding (GEDIT_FILE_CHOOSER_DIALOG (_dialog));
 }
 
 @end
@@ -806,7 +806,7 @@ chooser_set_modal (BeditFileChooserDialog *dialog,
 }
 
 static void
-gedit_file_chooser_dialog_osx_chooser_init (gpointer g_iface,
+bedit_file_chooser_dialog_osx_chooser_init (gpointer g_iface,
                                             gpointer iface_data)
 {
 	BeditFileChooserDialogInterface *iface = g_iface;
@@ -830,7 +830,7 @@ gedit_file_chooser_dialog_osx_chooser_init (gpointer g_iface,
 }
 
 static void
-gedit_file_chooser_dialog_osx_dispose (GObject *object)
+bedit_file_chooser_dialog_osx_dispose (GObject *object)
 {
 	BeditFileChooserDialogOSX *dialog_osx = GEDIT_FILE_CHOOSER_DIALOG_OSX (object);
 
@@ -840,22 +840,22 @@ gedit_file_chooser_dialog_osx_dispose (GObject *object)
 		dialog_osx->panel = NULL;
 	}
 
-	if (G_OBJECT_CLASS (gedit_file_chooser_dialog_osx_parent_class)->dispose != NULL)
+	if (G_OBJECT_CLASS (bedit_file_chooser_dialog_osx_parent_class)->dispose != NULL)
 	{
-		G_OBJECT_CLASS (gedit_file_chooser_dialog_osx_parent_class)->dispose (object);
+		G_OBJECT_CLASS (bedit_file_chooser_dialog_osx_parent_class)->dispose (object);
 	}
 }
 
 static void
-gedit_file_chooser_dialog_osx_class_init (BeditFileChooserDialogOSXClass *klass)
+bedit_file_chooser_dialog_osx_class_init (BeditFileChooserDialogOSXClass *klass)
 {
 	GObjectClass *object_class = G_OBJECT_CLASS (klass);
 
-	object_class->dispose = gedit_file_chooser_dialog_osx_dispose;
+	object_class->dispose = bedit_file_chooser_dialog_osx_dispose;
 }
 
 static void
-gedit_file_chooser_dialog_osx_init (BeditFileChooserDialogOSX *dialog)
+bedit_file_chooser_dialog_osx_init (BeditFileChooserDialogOSX *dialog)
 {
 }
 
@@ -890,7 +890,7 @@ on_parent_destroyed (GtkWindow                 *parent,
 }
 
 BeditFileChooserDialog *
-gedit_file_chooser_dialog_osx_create (const gchar             *title,
+bedit_file_chooser_dialog_osx_create (const gchar             *title,
 			              GtkWindow               *parent,
 			              BeditFileChooserFlags    flags,
 			              const GtkSourceEncoding *encoding,

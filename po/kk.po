@@ -1,12 +1,12 @@
-# Kazakh translation for gedit.
-# Copyright (C) 2016 gedit's COPYRIGHT HOLDER
-# This file is distributed under the same license as the gedit package.
+# Kazakh translation for bedit.
+# Copyright (C) 2016 bedit's COPYRIGHT HOLDER
+# This file is distributed under the same license as the bedit package.
 # Baurzhan Muftakhidinov <baurthefirst@gmail.com>, 2010-2016.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: gedit master\n"
-"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gedit/issues\n"
+"Project-Id-Version: bedit master\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/bedit/issues\n"
 "POT-Creation-Date: 2019-02-09 09:13+0000\n"
 "PO-Revision-Date: 2019-02-17 12:02+0500\n"
 "Last-Translator: Baurzhan Muftakhidinov <baurthefirst@gmail.com>\n"
@@ -19,8 +19,8 @@ msgstr ""
 "X-Generator: Poedit 2.2.1\n"
 
 #: data/com.bwhmather.bedit.appdata.xml.in:7
-msgid "gedit"
-msgstr "gedit"
+msgid "bedit"
+msgstr "bedit"
 
 #: data/com.bwhmather.bedit.appdata.xml.in:8 data/com.bwhmather.bedit.desktop.in.in:4
 msgid "Edit text files"
@@ -28,21 +28,21 @@ msgstr "Мәтіндік файлдарды түзету"
 
 #: data/com.bwhmather.bedit.appdata.xml.in:10
 msgid ""
-"gedit is the official text editor of the GNOME desktop environment. While "
-"aiming at simplicity and ease of use, gedit is a powerful general purpose "
+"bedit is the official text editor of the GNOME desktop environment. While "
+"aiming at simplicity and ease of use, bedit is a powerful general purpose "
 "text editor."
 msgstr ""
-"gedit - бұл GNOME жұмыс үстел ортасының мәтіндік файлдардың ресми түзеткіші. "
-"Қарапайымдылық және қолдану жеңілдігіне мақсатталған болса да, gedit "
+"bedit - бұл GNOME жұмыс үстел ортасының мәтіндік файлдардың ресми түзеткіші. "
+"Қарапайымдылық және қолдану жеңілдігіне мақсатталған болса да, bedit "
 "мүмкіндіктері көп мәтіндік түзеткіші болып табылады."
 
 #: data/com.bwhmather.bedit.appdata.xml.in:15
 msgid ""
 "Whether you are writing the next bestseller, programming an innovative "
-"application, or simply taking some quick notes, gedit will be a reliable "
+"application, or simply taking some quick notes, bedit will be a reliable "
 "tool to accomplish your task."
 msgstr ""
-"Кітап, қолданба бағдарламасын немесе жылдам естеліктерді жазсаңыз, gedit сіз "
+"Кітап, қолданба бағдарламасын немесе жылдам естеліктерді жазсаңыз, bedit сіз "
 "үшін тапсырманы орындаудың сенімді сайманы болады."
 
 #: data/com.bwhmather.bedit.appdata.xml.in:20
@@ -53,7 +53,7 @@ msgstr ""
 "Оның икемді плагиндер жүйесі қолданбаны өз ыңғайыңызға қарай баптап, жұмыс "
 "тәртібіңізге сай жасауды мүмкін қылады."
 
-#: data/com.bwhmather.bedit.desktop.in.in:3 gedit/gedit-print-job.c:730
+#: data/com.bwhmather.bedit.desktop.in.in:3 bedit/bedit-print-job.c:730
 msgid "Text Editor"
 msgstr "Мәтін түзетушісі"
 
@@ -85,7 +85,7 @@ msgstr "Бастапқы қаріпті қолдану"
 #: data/com.bwhmather.bedit.gschema.xml.in:37
 msgid ""
 "Whether to use the system’s default fixed width font for editing text "
-"instead of a font specific to gedit. If this option is turned off, then the "
+"instead of a font specific to bedit. If this option is turned off, then the "
 "font named in the “Editor Font” option will be used instead of the system "
 "font."
 msgstr ""
@@ -118,8 +118,8 @@ msgid "Create Backup Copies"
 msgstr "Қор көшірмелерін жасау"
 
 #: data/com.bwhmather.bedit.gschema.xml.in:53
-msgid "Whether gedit should create backup copies for the files it saves."
-msgstr "gedit сақталатын файлдардың қор көшірмелерін жасау керек пе."
+msgid "Whether bedit should create backup copies for the files it saves."
+msgstr "bedit сақталатын файлдардың қор көшірмелерін жасау керек пе."
 
 #: data/com.bwhmather.bedit.gschema.xml.in:57
 msgid "Autosave"
@@ -127,7 +127,7 @@ msgstr "Автосақтау"
 
 #: data/com.bwhmather.bedit.gschema.xml.in:58
 msgid ""
-"Whether gedit should automatically save modified files after a time "
+"Whether bedit should automatically save modified files after a time "
 "interval. You can set the time interval with the “Autosave Interval” option."
 msgstr ""
 
@@ -137,7 +137,7 @@ msgstr "Автосақтау мерзімі"
 
 #: data/com.bwhmather.bedit.gschema.xml.in:63
 msgid ""
-"Number of minutes after which gedit will automatically save modified files. "
+"Number of minutes after which bedit will automatically save modified files. "
 "This will only take effect if the “Autosave” option is turned on."
 msgstr ""
 
@@ -147,7 +147,7 @@ msgstr "Болдырмау әрекеттерінің максималды са�
 
 #: data/com.bwhmather.bedit.gschema.xml.in:68
 msgid ""
-"Maximum number of actions that gedit will be able to undo or redo. Use “-1” "
+"Maximum number of actions that bedit will be able to undo or redo. Use “-1” "
 "for unlimited number of actions."
 msgstr ""
 
@@ -190,48 +190,48 @@ msgid "Insert spaces"
 msgstr "Бос аралықтарды кірістіру"
 
 #: data/com.bwhmather.bedit.gschema.xml.in:97
-msgid "Whether gedit should insert spaces instead of tabs."
-msgstr "gedit табуляцияның орнына бос аралықтарды енгізу керек пе."
+msgid "Whether bedit should insert spaces instead of tabs."
+msgstr "bedit табуляцияның орнына бос аралықтарды енгізу керек пе."
 
 #: data/com.bwhmather.bedit.gschema.xml.in:101
 msgid "Automatic indent"
 msgstr "Автошегіну"
 
 #: data/com.bwhmather.bedit.gschema.xml.in:102
-msgid "Whether gedit should enable automatic indentation."
-msgstr "gedit автошегінуді іске қосу керек пе."
+msgid "Whether bedit should enable automatic indentation."
+msgstr "bedit автошегінуді іске қосу керек пе."
 
 #: data/com.bwhmather.bedit.gschema.xml.in:106
 msgid "Display Line Numbers"
 msgstr "Жолдар нөмірлерін көрсету"
 
 #: data/com.bwhmather.bedit.gschema.xml.in:107
-msgid "Whether gedit should display line numbers in the editing area."
-msgstr "gedit түзету аймағында жол нөмірлерін көрсету керек пе."
+msgid "Whether bedit should display line numbers in the editing area."
+msgstr "bedit түзету аймағында жол нөмірлерін көрсету керек пе."
 
 #: data/com.bwhmather.bedit.gschema.xml.in:111
 msgid "Highlight Current Line"
 msgstr "Ағымдағы жолды ерекшелеу"
 
 #: data/com.bwhmather.bedit.gschema.xml.in:112
-msgid "Whether gedit should highlight the current line."
-msgstr "gedit ағымдағы жолды түспен ерекшелеу керек пе."
+msgid "Whether bedit should highlight the current line."
+msgstr "bedit ағымдағы жолды түспен ерекшелеу керек пе."
 
 #: data/com.bwhmather.bedit.gschema.xml.in:116
 msgid "Highlight Matching Brackets"
 msgstr "Сәйкес жақшаны түспен ерекшелеу"
 
 #: data/com.bwhmather.bedit.gschema.xml.in:117
-msgid "Whether gedit should highlight matching brackets."
-msgstr "gedit сәйкес жақшаларды түспен ерекшелеу керек пе."
+msgid "Whether bedit should highlight matching brackets."
+msgstr "bedit сәйкес жақшаларды түспен ерекшелеу керек пе."
 
 #: data/com.bwhmather.bedit.gschema.xml.in:121
 msgid "Display Right Margin"
 msgstr "Оң жақ шет өрісін көрсету"
 
 #: data/com.bwhmather.bedit.gschema.xml.in:122
-msgid "Whether gedit should display the right margin in the editing area."
-msgstr "gedit түзету аймағының оң жақ шет өрісін көрсету керек пе."
+msgid "Whether bedit should display the right margin in the editing area."
+msgstr "bedit түзету аймағының оң жақ шет өрісін көрсету керек пе."
 
 #: data/com.bwhmather.bedit.gschema.xml.in:126
 msgid "Right Margin Position"
@@ -246,8 +246,8 @@ msgid "Display Overview Map"
 msgstr "Көрініс картасын көрсету"
 
 #: data/com.bwhmather.bedit.gschema.xml.in:132
-msgid "Whether gedit should display the overview map for the document."
-msgstr "gedit құжаттын көрініс картасын көрсету керек пе."
+msgid "Whether bedit should display the overview map for the document."
+msgstr "bedit құжаттын көрініс картасын көрсету керек пе."
 
 #: data/com.bwhmather.bedit.gschema.xml.in:136
 msgid "Document background pattern type"
@@ -278,10 +278,10 @@ msgstr "Курсордың алдыңғы орналасуын қалпына к
 
 #: data/com.bwhmather.bedit.gschema.xml.in:153
 msgid ""
-"Whether gedit should restore the previous cursor position when a file is "
+"Whether bedit should restore the previous cursor position when a file is "
 "loaded."
 msgstr ""
-"gedit файл жүктелген кезде курсордың алдыңғы орналасуын қалпына келтіру "
+"bedit файл жүктелген кезде курсордың алдыңғы орналасуын қалпына келтіру "
 "керек пе."
 
 #: data/com.bwhmather.bedit.gschema.xml.in:157
@@ -289,8 +289,8 @@ msgid "Enable Syntax Highlighting"
 msgstr "Синтаксисті түспен ерекшелеуді іске қосу"
 
 #: data/com.bwhmather.bedit.gschema.xml.in:158
-msgid "Whether gedit should enable syntax highlighting."
-msgstr "gedit синтаксисті түспен ерекшелеуді іске қосу керек пе."
+msgid "Whether bedit should enable syntax highlighting."
+msgstr "bedit синтаксисті түспен ерекшелеуді іске қосу керек пе."
 
 #: data/com.bwhmather.bedit.gschema.xml.in:162
 msgid "Enable Search Highlighting"
@@ -298,9 +298,9 @@ msgstr "Іздеуді түспен ерекшелеуді іске қосу"
 
 #: data/com.bwhmather.bedit.gschema.xml.in:163
 msgid ""
-"Whether gedit should highlight all the occurrences of the searched text."
+"Whether bedit should highlight all the occurrences of the searched text."
 msgstr ""
-"gedit ізделетін мәтіннің барлық кездесулерін түспен ерекшелеу керек пе."
+"bedit ізделетін мәтіннің барлық кездесулерін түспен ерекшелеу керек пе."
 
 #: data/com.bwhmather.bedit.gschema.xml.in:167
 msgid "Ensure Trailing Newline"
@@ -308,7 +308,7 @@ msgstr "Құжат жол тасымалдауымен аяқталуды қам
 
 #: data/com.bwhmather.bedit.gschema.xml.in:168
 msgid ""
-"Whether gedit will ensure that documents always end with a trailing newline."
+"Whether bedit will ensure that documents always end with a trailing newline."
 msgstr ""
 
 #: data/com.bwhmather.bedit.gschema.xml.in:174
@@ -364,9 +364,9 @@ msgid "Print Syntax Highlighting"
 msgstr "Синтаксисті түспен ерекшелеуді баспаға шығару"
 
 #: data/com.bwhmather.bedit.gschema.xml.in:205
-msgid "Whether gedit should print syntax highlighting when printing documents."
+msgid "Whether bedit should print syntax highlighting when printing documents."
 msgstr ""
-"gedit құжаттарды баспаға шығарған кезде синтаксисті түспен ерекшелеуді де "
+"bedit құжаттарды баспаға шығарған кезде синтаксисті түспен ерекшелеуді де "
 "баспаға шығару керек пе."
 
 #: data/com.bwhmather.bedit.gschema.xml.in:209
@@ -374,9 +374,9 @@ msgid "Print Header"
 msgstr "Тақырыптаманы баспаға шығару"
 
 #: data/com.bwhmather.bedit.gschema.xml.in:210
-msgid "Whether gedit should include a document header when printing documents."
+msgid "Whether bedit should include a document header when printing documents."
 msgstr ""
-"gedit құжаттарды баспаға шығарған кезде құжаттың жоғарғы колонтитулын де "
+"bedit құжаттарды баспаға шығарған кезде құжаттың жоғарғы колонтитулын де "
 "баспаға шығару керек пе."
 
 #: data/com.bwhmather.bedit.gschema.xml.in:219
@@ -398,7 +398,7 @@ msgstr "Жол нөмірлерін баспаға шығару"
 #: data/com.bwhmather.bedit.gschema.xml.in:225
 msgid ""
 "If this value is 0, then no line numbers will be inserted when printing a "
-"document. Otherwise, gedit will print line numbers every such number of "
+"document. Otherwise, bedit will print line numbers every such number of "
 "lines."
 msgstr ""
 
@@ -488,7 +488,7 @@ msgid ""
 "List of candidate encodings shown in the Character Encoding menu in the open/"
 "save file chooser. “CURRENT” represents the current locale encoding. Only "
 "recognized encodings are used. The default value is the empty list, in which "
-"case gedit will choose good defaults depending on the country and language."
+"case bedit will choose good defaults depending on the country and language."
 msgstr ""
 
 #: data/com.bwhmather.bedit.gschema.xml.in:316
@@ -498,18 +498,18 @@ msgstr "Белсенді плагиндер"
 #: data/com.bwhmather.bedit.gschema.xml.in:317
 msgid ""
 "List of active plugins. It contains the “Location” of the active plugins. "
-"See the .gedit-plugin file for obtaining the “Location” of a given plugin."
+"See the .bedit-plugin file for obtaining the “Location” of a given plugin."
 msgstr ""
 
-#: gedit/gedit-app.c:110
+#: bedit/bedit-app.c:110
 msgid "Show the application’s version"
 msgstr "Қолданба нұсқасын көрсету"
 
-#: gedit/gedit-app.c:116
+#: bedit/bedit-app.c:116
 msgid "Display list of possible values for the encoding option"
 msgstr "Кодталу опциясы үшін мүмкін мәндер тізімін көрсету"
 
-#: gedit/gedit-app.c:123
+#: bedit/bedit-app.c:123
 msgid ""
 "Set the character encoding to be used to open the files listed on the "
 "command line"
@@ -517,75 +517,75 @@ msgstr ""
 "Командалық жолда көрсетілген файлдарды ашуға қолданылатын таңбалар кодталуын "
 "орнату"
 
-#: gedit/gedit-app.c:124
+#: bedit/bedit-app.c:124
 msgid "ENCODING"
 msgstr "КОДТАЛУЫ"
 
-#: gedit/gedit-app.c:130
-msgid "Create a new top-level window in an existing instance of gedit"
+#: bedit/bedit-app.c:130
+msgid "Create a new top-level window in an existing instance of bedit"
 msgstr ""
-"Жаңа жоғары деңгейлі терезені gedit-тің бар болып тұрған нұсқасында жасау"
+"Жаңа жоғары деңгейлі терезені bedit-тің бар болып тұрған нұсқасында жасау"
 
-#: gedit/gedit-app.c:137
-msgid "Create a new document in an existing instance of gedit"
-msgstr "Жаңа құжатты gedit-тің бар болып тұрған нұсқасында жасау"
+#: bedit/bedit-app.c:137
+msgid "Create a new document in an existing instance of bedit"
+msgstr "Жаңа құжатты bedit-тің бар болып тұрған нұсқасында жасау"
 
-#: gedit/gedit-app.c:144
+#: bedit/bedit-app.c:144
 msgid "Open files and block process until files are closed"
 msgstr "Файлдарды ашу және файлдар жабылғанша дейін процесті блоктау"
 
-#: gedit/gedit-app.c:151
-msgid "Run gedit in standalone mode"
+#: bedit/bedit-app.c:151
+msgid "Run bedit in standalone mode"
 msgstr ""
 
-#: gedit/gedit-app.c:158
+#: bedit/bedit-app.c:158
 msgid "[FILE…] [+LINE[:COLUMN]]"
 msgstr "[ФАЙЛ…] [+ЖОЛ[:БАҒАН]]"
 
-#: gedit/gedit-app.c:273
+#: bedit/bedit-app.c:273
 msgid "There was an error displaying the help."
 msgstr "Көмекті көрсету кезінде қате кетті."
 
-#: gedit/gedit-app.c:964
+#: bedit/bedit-app.c:964
 #, c-format
 msgid "%s: invalid encoding."
 msgstr "%s: кодталуы қате."
 
-#: gedit/gedit-close-confirmation-dialog.c:277
+#: bedit/bedit-close-confirmation-dialog.c:277
 msgid "Close _without Saving"
 msgstr "Сақтамай-ақ _жабу"
 
-#: gedit/gedit-close-confirmation-dialog.c:278 gedit/gedit-commands-file.c:462
-#: gedit/gedit-commands-file.c:567 gedit/gedit-commands-file.c:643
-#: gedit/gedit-commands-file.c:854 gedit/gedit-commands-file.c:1568
-#: gedit/gedit-encodings-dialog.c:194 gedit/gedit-preferences-dialog.c:825
-#: gedit/gedit-progress-info-bar.c:49
-#: gedit/resources/ui/gedit-encodings-dialog.ui:44
-#: gedit/resources/ui/gedit-highlight-mode-dialog.ui:31
-#: plugins/filebrowser/gedit-file-browser-utils.c:213
+#: bedit/bedit-close-confirmation-dialog.c:278 bedit/bedit-commands-file.c:462
+#: bedit/bedit-commands-file.c:567 bedit/bedit-commands-file.c:643
+#: bedit/bedit-commands-file.c:854 bedit/bedit-commands-file.c:1568
+#: bedit/bedit-encodings-dialog.c:194 bedit/bedit-preferences-dialog.c:825
+#: bedit/bedit-progress-info-bar.c:49
+#: bedit/resources/ui/bedit-encodings-dialog.ui:44
+#: bedit/resources/ui/bedit-highlight-mode-dialog.ui:31
+#: plugins/filebrowser/bedit-file-browser-utils.c:213
 #: plugins/quickopen/quickopen/popup.py:45
 #: plugins/snippets/snippets/manager.py:789
 #: plugins/snippets/snippets/manager.py:874
 #: plugins/snippets/snippets/manager.py:912
-#: plugins/sort/resources/ui/gedit-sort-plugin.ui:143
-#: plugins/time/resources/ui/gedit-time-dialog.ui:150
+#: plugins/sort/resources/ui/bedit-sort-plugin.ui:143
+#: plugins/time/resources/ui/bedit-time-dialog.ui:150
 msgid "_Cancel"
 msgstr "Ба_с тарту"
 
-#: gedit/gedit-close-confirmation-dialog.c:306 gedit/resources/gtk/menus.ui:37
-#: gedit/resources/gtk/menus-traditional.ui:33
+#: bedit/bedit-close-confirmation-dialog.c:306 bedit/resources/gtk/menus.ui:37
+#: bedit/resources/gtk/menus-traditional.ui:33
 msgid "_Save As…"
 msgstr "Қала_йша сақтау…"
 
-#: gedit/gedit-close-confirmation-dialog.c:306 gedit/gedit-commands-file.c:855
-#: gedit/resources/gtk/menus-common.ui:127
-#: gedit/resources/ui/gedit-window.ui:105
+#: bedit/bedit-close-confirmation-dialog.c:306 bedit/bedit-commands-file.c:855
+#: bedit/resources/gtk/menus-common.ui:127
+#: bedit/resources/ui/bedit-window.ui:105
 #: plugins/snippets/snippets/manager.py:875
 #: plugins/snippets/snippets/manager.py:913
 msgid "_Save"
 msgstr "_Сақтау"
 
-#: gedit/gedit-close-confirmation-dialog.c:324
+#: bedit/bedit-close-confirmation-dialog.c:324
 #, c-format
 msgid ""
 "If you don’t save, changes from the last %ld second will be permanently lost."
@@ -594,12 +594,12 @@ msgid_plural ""
 "lost."
 msgstr[0] "Сақтамасаңыз, соңғы %ld секундта жасалған өзгерістер жоғалады."
 
-#: gedit/gedit-close-confirmation-dialog.c:333
+#: bedit/bedit-close-confirmation-dialog.c:333
 msgid ""
 "If you don’t save, changes from the last minute will be permanently lost."
 msgstr "Сақтамасаңыз, соңғы минутта жасалған өзгерістер жоғалады."
 
-#: gedit/gedit-close-confirmation-dialog.c:339
+#: bedit/bedit-close-confirmation-dialog.c:339
 #, c-format
 msgid ""
 "If you don’t save, changes from the last minute and %ld second will be "
@@ -610,7 +610,7 @@ msgid_plural ""
 msgstr[0] ""
 "Сақтамасаңыз, соңғы минут және %ld секундта жасалған өзгерістер жоғалады."
 
-#: gedit/gedit-close-confirmation-dialog.c:349
+#: bedit/bedit-close-confirmation-dialog.c:349
 #, c-format
 msgid ""
 "If you don’t save, changes from the last %ld minute will be permanently lost."
@@ -619,11 +619,11 @@ msgid_plural ""
 "lost."
 msgstr[0] "Сақтамасаңыз, соңғы %ld минутта жасалған өзгерістер жоғалады."
 
-#: gedit/gedit-close-confirmation-dialog.c:364
+#: bedit/bedit-close-confirmation-dialog.c:364
 msgid "If you don’t save, changes from the last hour will be permanently lost."
 msgstr "Сақтамасаңыз, соңғы сағатта жасалған өзгерістер жоғалады."
 
-#: gedit/gedit-close-confirmation-dialog.c:370
+#: bedit/bedit-close-confirmation-dialog.c:370
 #, c-format
 msgid ""
 "If you don’t save, changes from the last hour and %d minute will be "
@@ -634,7 +634,7 @@ msgid_plural ""
 msgstr[0] ""
 "Сақтамасаңыз, соңғы сағат және %d минутта жасалған өзгерістер жоғалады."
 
-#: gedit/gedit-close-confirmation-dialog.c:385
+#: bedit/bedit-close-confirmation-dialog.c:385
 #, c-format
 msgid ""
 "If you don’t save, changes from the last %d hour will be permanently lost."
@@ -642,28 +642,28 @@ msgid_plural ""
 "If you don’t save, changes from the last %d hours will be permanently lost."
 msgstr[0] "Сақтамасаңыз, соңғы %d сағатта жасалған өзгерістер жоғалады."
 
-#: gedit/gedit-close-confirmation-dialog.c:414
+#: bedit/bedit-close-confirmation-dialog.c:414
 #, c-format
 msgid "Changes to document “%s” will be permanently lost."
 msgstr "\"%s\" құжат өзгерістері қайтарылмастай жоғалады."
 
-#: gedit/gedit-close-confirmation-dialog.c:419
+#: bedit/bedit-close-confirmation-dialog.c:419
 #, c-format
 msgid "Save changes to document “%s” before closing?"
 msgstr "Жабу алдында \"%s\" құжат өзгерістерін сақтау керек пе?"
 
-#: gedit/gedit-close-confirmation-dialog.c:434
-#: gedit/gedit-close-confirmation-dialog.c:558
+#: bedit/bedit-close-confirmation-dialog.c:434
+#: bedit/bedit-close-confirmation-dialog.c:558
 msgid "Saving has been disabled by the system administrator."
 msgstr "Жүйелік әкімші сақтау мүмкіндігін сөндірген."
 
-#: gedit/gedit-close-confirmation-dialog.c:500
+#: bedit/bedit-close-confirmation-dialog.c:500
 #, c-format
 msgid "Changes to %d document will be permanently lost."
 msgid_plural "Changes to %d documents will be permanently lost."
 msgstr[0] "%d құжат өзгерістері қайтарылмастай жоғалатын болады."
 
-#: gedit/gedit-close-confirmation-dialog.c:508
+#: bedit/bedit-close-confirmation-dialog.c:508
 #, c-format
 msgid "There is %d document with unsaved changes. Save changes before closing?"
 msgid_plural ""
@@ -672,67 +672,67 @@ msgstr[0] ""
 "Сақталмаған өзгерістері бар %d құжат бар болып тұр. Жабу алдында "
 "өзгерістерді сақтау керек пе?"
 
-#: gedit/gedit-close-confirmation-dialog.c:534
+#: bedit/bedit-close-confirmation-dialog.c:534
 msgid "Docum_ents with unsaved changes:"
 msgstr "Сақталмаған өзгерістері бар құ_жаттар:"
 
-#: gedit/gedit-close-confirmation-dialog.c:538
+#: bedit/bedit-close-confirmation-dialog.c:538
 msgid "S_elect the documents you want to save:"
 msgstr "Сақ_тауға тиісті құжаттарды таңдаңыз:"
 
-#: gedit/gedit-close-confirmation-dialog.c:562
+#: bedit/bedit-close-confirmation-dialog.c:562
 msgid "If you don’t save, all your changes will be permanently lost."
 msgstr "Сақтамасаңыз, барлық өзгерістер қайтарылмастай жоғалады."
 
-#: gedit/gedit-commands-file.c:261
+#: bedit/bedit-commands-file.c:261
 #, c-format
 msgid "Loading file “%s”…"
 msgstr "\"%s\" файлы жүктелуде…"
 
-#: gedit/gedit-commands-file.c:270
+#: bedit/bedit-commands-file.c:270
 #, c-format
 msgid "Loading %d file…"
 msgid_plural "Loading %d files…"
 msgstr[0] "%d файл жүктелуде…"
 
 #. Translators: "Open" is the title of the file chooser window.
-#: gedit/gedit-commands-file.c:456
+#: bedit/bedit-commands-file.c:456
 msgctxt "window title"
 msgid "Open"
 msgstr "Ашу"
 
-#: gedit/gedit-commands-file.c:463 gedit/resources/gtk/menus-common.ui:100
-#: gedit/resources/gtk/menus-common.ui:106
-#: gedit/resources/ui/gedit-window.ui:48
-#: plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui:7
+#: bedit/bedit-commands-file.c:463 bedit/resources/gtk/menus-common.ui:100
+#: bedit/resources/gtk/menus-common.ui:106
+#: bedit/resources/ui/bedit-window.ui:48
+#: plugins/filebrowser/resources/ui/bedit-file-browser-menus.ui:7
 #: plugins/quickopen/quickopen/popup.py:46
 #: plugins/snippets/snippets/manager.py:790
 msgid "_Open"
 msgstr "А_шу"
 
-#: gedit/gedit-commands-file.c:558
+#: bedit/bedit-commands-file.c:558
 #, c-format
 msgid "The file “%s” is read-only."
 msgstr "\"%s\" файлы тек оқу үшін."
 
-#: gedit/gedit-commands-file.c:563
+#: bedit/bedit-commands-file.c:563
 msgid "Do you want to try to replace it with the one you are saving?"
 msgstr "Оны сіз сақтаймын деген нұсқамен алмастыру керек пе?"
 
-#: gedit/gedit-commands-file.c:568
-#: gedit/resources/ui/gedit-replace-dialog.ui:55
+#: bedit/bedit-commands-file.c:568
+#: bedit/resources/ui/bedit-replace-dialog.ui:55
 msgid "_Replace"
 msgstr "А_лмастыру"
 
-#: gedit/gedit-commands-file.c:608
+#: bedit/bedit-commands-file.c:608
 msgid "Save the file using compression?"
 msgstr "Файлды сығуды қолданып сақтау керек пе?"
 
-#: gedit/gedit-commands-file.c:612
+#: bedit/bedit-commands-file.c:612
 msgid "Save the file as plain text?"
 msgstr "Файлды қарапайым мәтін ретінде сақтау керек пе?"
 
-#: gedit/gedit-commands-file.c:625
+#: bedit/bedit-commands-file.c:625
 #, c-format
 msgid ""
 "The file “%s” was previously saved as plain text and will now be saved using "
@@ -741,11 +741,11 @@ msgstr ""
 "\"%s\" файлы алдында қарапайым мәтін ретінде сақталған болатын, енді ол "
 "сығуды қолданып сақталатын болады."
 
-#: gedit/gedit-commands-file.c:629
+#: bedit/bedit-commands-file.c:629
 msgid "_Save Using Compression"
 msgstr "Сығуды қолданып _сақтау"
 
-#: gedit/gedit-commands-file.c:634
+#: bedit/bedit-commands-file.c:634
 #, c-format
 msgid ""
 "The file “%s” was previously saved using compression and will now be saved "
@@ -754,32 +754,32 @@ msgstr ""
 "\"%s\" файлы алдында сығуды қолданып сақталған болатын, енді ол қарапайым "
 "мәтін ретінде сақталатын болады."
 
-#: gedit/gedit-commands-file.c:637
+#: bedit/bedit-commands-file.c:637
 msgid "_Save As Plain Text"
 msgstr "Қарапайым мәтін ретінде _сақтау"
 
-#: gedit/gedit-commands-file.c:752 gedit/gedit-commands-file.c:1019
+#: bedit/bedit-commands-file.c:752 bedit/bedit-commands-file.c:1019
 #, c-format
 msgid "Saving file “%s”…"
 msgstr "\"%s\" файлы сақталуда…"
 
 #. Translators: "Save As" is the title of the file chooser window.
-#: gedit/gedit-commands-file.c:847
+#: bedit/bedit-commands-file.c:847
 msgctxt "window title"
 msgid "Save As"
 msgstr "Қалайша сақтау"
 
-#: gedit/gedit-commands-file.c:1429
+#: bedit/bedit-commands-file.c:1429
 #, c-format
 msgid "Reverting the document “%s”…"
 msgstr "\"%s\" құжатын қайтару…"
 
-#: gedit/gedit-commands-file.c:1476
+#: bedit/bedit-commands-file.c:1476
 #, c-format
 msgid "Revert unsaved changes to document “%s”?"
 msgstr "\"%s\" құжатындағы сақталмаған өзгерістерді болдырмау керек пе?"
 
-#: gedit/gedit-commands-file.c:1485
+#: bedit/bedit-commands-file.c:1485
 #, c-format
 msgid ""
 "Changes made to the document in the last %ld second will be permanently lost."
@@ -788,12 +788,12 @@ msgid_plural ""
 "lost."
 msgstr[0] "Соңғы %ld секундта жасалған өзгерістер жоғалады."
 
-#: gedit/gedit-commands-file.c:1494
+#: bedit/bedit-commands-file.c:1494
 msgid ""
 "Changes made to the document in the last minute will be permanently lost."
 msgstr "Соңғы минутта жасалған өзгерістер жоғалады."
 
-#: gedit/gedit-commands-file.c:1500
+#: bedit/bedit-commands-file.c:1500
 #, c-format
 msgid ""
 "Changes made to the document in the last minute and %ld second will be "
@@ -803,7 +803,7 @@ msgid_plural ""
 "permanently lost."
 msgstr[0] "Соңғы минут және %ld секундта жасалған өзгерістер жоғалады."
 
-#: gedit/gedit-commands-file.c:1510
+#: bedit/bedit-commands-file.c:1510
 #, c-format
 msgid ""
 "Changes made to the document in the last %ld minute will be permanently lost."
@@ -812,11 +812,11 @@ msgid_plural ""
 "lost."
 msgstr[0] "Соңғы %ld минутта жасалған өзгерістер жоғалады."
 
-#: gedit/gedit-commands-file.c:1525
+#: bedit/bedit-commands-file.c:1525
 msgid "Changes made to the document in the last hour will be permanently lost."
 msgstr "Соңғы сағатта жасалған өзгерістер жоғалады."
 
-#: gedit/gedit-commands-file.c:1531
+#: bedit/bedit-commands-file.c:1531
 #, c-format
 msgid ""
 "Changes made to the document in the last hour and %d minute will be "
@@ -826,7 +826,7 @@ msgid_plural ""
 "permanently lost."
 msgstr[0] "Соңғы сағат және %d минутта жасалған өзгерістер жоғалады."
 
-#: gedit/gedit-commands-file.c:1546
+#: bedit/bedit-commands-file.c:1546
 #, c-format
 msgid ""
 "Changes made to the document in the last %d hour will be permanently lost."
@@ -834,116 +834,116 @@ msgid_plural ""
 "Changes made to the document in the last %d hours will be permanently lost."
 msgstr[0] "Соңғы %d сағатта жасалған өзгерістер жоғалады."
 
-#: gedit/gedit-commands-file.c:1569
+#: bedit/bedit-commands-file.c:1569
 msgid "_Revert"
 msgstr "Қай_тару"
 
-#: gedit/gedit-commands-help.c:110
-msgid "gedit is a small and lightweight text editor for the GNOME Desktop"
+#: bedit/bedit-commands-help.c:110
+msgid "bedit is a small and lightweight text editor for the GNOME Desktop"
 msgstr ""
-"gedit - бұл GNOME жұмыс үстелі үшін жеңіл әрі жылдам мәтіндік түзетушісі"
+"bedit - бұл GNOME жұмыс үстелі үшін жеңіл әрі жылдам мәтіндік түзетушісі"
 
-#: gedit/gedit-commands-help.c:132
+#: bedit/bedit-commands-help.c:132
 msgid "translator-credits"
 msgstr "Baurzhan Muftakhidinov <baurthefirst@gmail.com>"
 
-#: gedit/gedit-commands-search.c:107
+#: bedit/bedit-commands-search.c:107
 #, c-format
 msgid "Found and replaced %d occurrence"
 msgid_plural "Found and replaced %d occurrences"
 msgstr[0] "%d сәйкестік табылды және алмастырылды"
 
-#: gedit/gedit-commands-search.c:116
+#: bedit/bedit-commands-search.c:116
 msgid "Found and replaced one occurrence"
 msgstr "Бір сәйкестік табылды және алмастырылды"
 
 #. Translators: %s is replaced by the text
 #. entered by the user in the search box
-#: gedit/gedit-commands-search.c:142
+#: bedit/bedit-commands-search.c:142
 #, c-format
 msgid "“%s” not found"
 msgstr "\"%s\" табылмады"
 
-#: gedit/gedit-document.c:1103 gedit/gedit-document.c:1136
+#: bedit/bedit-document.c:1103 bedit/bedit-document.c:1136
 #, c-format
 msgid "Untitled Document %d"
 msgstr "Атаусыз құжат %d"
 
-#: gedit/gedit-documents-panel.c:399
+#: bedit/bedit-documents-panel.c:399
 #, c-format
 msgid "Tab Group %i"
 msgstr "Беттер тобы %i"
 
-#: gedit/gedit-documents-panel.c:499 gedit/gedit-window.c:1161
-#: gedit/gedit-window.c:1167 gedit/gedit-window.c:1175
+#: bedit/bedit-documents-panel.c:499 bedit/bedit-window.c:1161
+#: bedit/bedit-window.c:1167 bedit/bedit-window.c:1175
 msgid "Read-Only"
 msgstr "Тек оқу"
 
-#: gedit/gedit-encodings-combo-box.c:299
-#: gedit/gedit-file-chooser-dialog-osx.c:565
+#: bedit/bedit-encodings-combo-box.c:299
+#: bedit/bedit-file-chooser-dialog-osx.c:565
 msgid "Automatically Detected"
 msgstr "Автоанықтау"
 
-#: gedit/gedit-encodings-combo-box.c:328
-#: gedit/gedit-file-chooser-dialog-osx.c:574
+#: bedit/bedit-encodings-combo-box.c:328
+#: bedit/bedit-file-chooser-dialog-osx.c:574
 msgid "Add or Remove…"
 msgstr "Қосу немесе өшіру…"
 
-#: gedit/gedit-encoding-items.c:92
+#: bedit/bedit-encoding-items.c:92
 #, c-format
 msgid "Current Locale (%s)"
 msgstr "Ағымдағы локаль (%s)"
 
-#: gedit/gedit-encodings-dialog.c:95
+#: bedit/bedit-encodings-dialog.c:95
 #, c-format
 msgid "%s (Current Locale)"
 msgstr "%s (ағымдағы локаль)"
 
-#: gedit/gedit-encodings-dialog.c:190
+#: bedit/bedit-encodings-dialog.c:190
 msgid "Do you really want to reset the character encodings’ preferences?"
 msgstr "Таңбалар кодтаулар баптауларын тастауды шынымен қалайсыз ба?"
 
 #. Reset button
-#: gedit/gedit-encodings-dialog.c:195 gedit/gedit-encodings-dialog.c:820
+#: bedit/bedit-encodings-dialog.c:195 bedit/bedit-encodings-dialog.c:820
 msgid "_Reset"
 msgstr "_Тастау"
 
-#: gedit/gedit-encodings-dialog.c:731
+#: bedit/bedit-encodings-dialog.c:731
 msgid "Add"
 msgstr "Қосу"
 
-#: gedit/gedit-encodings-dialog.c:774
+#: bedit/bedit-encodings-dialog.c:774
 msgid "Remove"
 msgstr "Өшіру"
 
-#: gedit/gedit-encodings-dialog.c:785
+#: bedit/bedit-encodings-dialog.c:785
 msgid "Move to a higher priority"
 msgstr "Жоғарылау приоритетке жылжыту"
 
-#: gedit/gedit-encodings-dialog.c:796
+#: bedit/bedit-encodings-dialog.c:796
 msgid "Move to a lower priority"
 msgstr "Төмендеу приоритетке жылжыту"
 
-#: gedit/gedit-file-chooser-dialog-gtk.c:45
-#: gedit/gedit-preferences-dialog.c:834
+#: bedit/bedit-file-chooser-dialog-gtk.c:45
+#: bedit/bedit-preferences-dialog.c:834
 msgid "All Files"
 msgstr "Барлық файлдар"
 
-#: gedit/gedit-file-chooser-dialog-gtk.c:46
+#: bedit/bedit-file-chooser-dialog-gtk.c:46
 msgid "All Text Files"
 msgstr "Барлық мәтіндік файлдар"
 
-#: gedit/gedit-file-chooser-dialog-gtk.c:317
-#: gedit/gedit-file-chooser-dialog-osx.c:547
+#: bedit/bedit-file-chooser-dialog-gtk.c:317
+#: bedit/bedit-file-chooser-dialog-osx.c:547
 msgid "Character Encoding:"
 msgstr "Таңбалар кодталуы:"
 
-#: gedit/gedit-file-chooser-dialog-gtk.c:350
-#: gedit/gedit-file-chooser-dialog-osx.c:620
+#: bedit/bedit-file-chooser-dialog-gtk.c:350
+#: bedit/bedit-file-chooser-dialog-osx.c:620
 msgid "Line Ending:"
 msgstr "Жол аяқталуы:"
 
-#: gedit/gedit-highlight-mode-selector.c:269 gedit/gedit-window.c:1245
+#: bedit/bedit-highlight-mode-selector.c:269 bedit/bedit-window.c:1245
 #: plugins/externaltools/tools/manager.py:115
 #: plugins/externaltools/tools/manager.py:324
 #: plugins/externaltools/tools/manager.py:440
@@ -951,53 +951,53 @@ msgstr "Жол аяқталуы:"
 msgid "Plain Text"
 msgstr "Ашық мәтін"
 
-#: gedit/gedit-io-error-info-bar.c:142 gedit/gedit-io-error-info-bar.c:491
+#: bedit/bedit-io-error-info-bar.c:142 bedit/bedit-io-error-info-bar.c:491
 msgid "_Retry"
 msgstr "Қа_йталау"
 
-#: gedit/gedit-io-error-info-bar.c:162
+#: bedit/bedit-io-error-info-bar.c:162
 #, c-format
 msgid "Could not find the file “%s”."
 msgstr "\"%s\" файлын табу мүмкін емес."
 
-#: gedit/gedit-io-error-info-bar.c:164 gedit/gedit-io-error-info-bar.c:204
-#: gedit/gedit-io-error-info-bar.c:211
+#: bedit/bedit-io-error-info-bar.c:164 bedit/bedit-io-error-info-bar.c:204
+#: bedit/bedit-io-error-info-bar.c:211
 msgid "Please check that you typed the location correctly and try again."
 msgstr "Орналасуды дұрыс енгізгеніңізді тексеріп, қайталап көріңіз."
 
 #. Translators: %s is a URI scheme (like for example http:, ftp:, etc.)
-#: gedit/gedit-io-error-info-bar.c:183
+#: bedit/bedit-io-error-info-bar.c:183
 #, c-format
 msgid "Unable to handle “%s:” locations."
 msgstr "\"%s:\" тектес орналасуларды өңдеу мүмкін емес."
 
-#: gedit/gedit-io-error-info-bar.c:189
+#: bedit/bedit-io-error-info-bar.c:189
 msgid "Unable to handle this location."
 msgstr "Бұл орналасулды өңдеу мүмкін емес."
 
-#: gedit/gedit-io-error-info-bar.c:198
+#: bedit/bedit-io-error-info-bar.c:198
 msgid "The location of the file cannot be accessed."
 msgstr "Файл орналасуына қатынау мүмкін емес."
 
-#: gedit/gedit-io-error-info-bar.c:202
+#: bedit/bedit-io-error-info-bar.c:202
 #, c-format
 msgid "“%s” is a directory."
 msgstr "“%s” бума болып тұр."
 
-#: gedit/gedit-io-error-info-bar.c:209
+#: bedit/bedit-io-error-info-bar.c:209
 #, c-format
 msgid "“%s” is not a valid location."
 msgstr "“%s” дұрыс орналасу емес."
 
 #. Translators: %s is a host name
-#: gedit/gedit-io-error-info-bar.c:245
+#: bedit/bedit-io-error-info-bar.c:245
 #, c-format
 msgid ""
 "Host “%s” could not be found. Please check that your proxy settings are "
 "correct and try again."
 msgstr "\"%s\" хосты табылмады. Прокси баптауларын тексеріп, қайталап көріңіз."
 
-#: gedit/gedit-io-error-info-bar.c:260
+#: bedit/bedit-io-error-info-bar.c:260
 #, c-format
 msgid ""
 "Hostname was invalid. Please check that you typed the location correctly and "
@@ -1006,76 +1006,76 @@ msgstr ""
 "Хост аты жарамсыз. Орналасуды дұрыс енгізгеніңізді тексеріп, қайталап "
 "көріңіз."
 
-#: gedit/gedit-io-error-info-bar.c:268
+#: bedit/bedit-io-error-info-bar.c:268
 #, c-format
 msgid "“%s” is not a regular file."
 msgstr "“%s” қалыпты файл емес."
 
-#: gedit/gedit-io-error-info-bar.c:273
+#: bedit/bedit-io-error-info-bar.c:273
 msgid "Connection timed out. Please try again."
 msgstr "Байланыс орнату уақыты бітті. Қайталап көріңіз."
 
-#: gedit/gedit-io-error-info-bar.c:306
+#: bedit/bedit-io-error-info-bar.c:306
 #, c-format
 msgid "Unexpected error: %s"
 msgstr "Күтпеген қате: %s"
 
-#: gedit/gedit-io-error-info-bar.c:342
+#: bedit/bedit-io-error-info-bar.c:342
 msgid "Cannot find the requested file. Perhaps it has recently been deleted."
 msgstr "Сұралған файлды табу мүмкін емес. Ол жақында өшірілген шығар."
 
-#: gedit/gedit-io-error-info-bar.c:352
+#: bedit/bedit-io-error-info-bar.c:352
 #, c-format
 msgid "Could not revert the file “%s”."
 msgstr "\"%s\" файлын қайтару мүмкін емес."
 
-#: gedit/gedit-io-error-info-bar.c:379
+#: bedit/bedit-io-error-info-bar.c:379
 msgid "Ch_aracter Encoding:"
 msgstr "Таңбалар код_талуы:"
 
-#: gedit/gedit-io-error-info-bar.c:440
+#: bedit/bedit-io-error-info-bar.c:440
 #, c-format
 msgid "The location “%s” is not currently reachable."
 msgstr "\"%s\" орналасуы қолжетерсіз."
 
-#: gedit/gedit-io-error-info-bar.c:455
+#: bedit/bedit-io-error-info-bar.c:455
 msgid "Your system is offline. Check your network."
 msgstr "Жүйеңіз желіге қосылмаған. Желіні тексеріңіз."
 
 #. Translators: the access key chosen for this string should be
 #. different from other main menu access keys (Open, Edit, View...)
-#: gedit/gedit-io-error-info-bar.c:499 gedit/gedit-io-error-info-bar.c:764
+#: bedit/bedit-io-error-info-bar.c:499 bedit/bedit-io-error-info-bar.c:764
 msgid "Edit Any_way"
 msgstr "Со_нда да түзету"
 
-#: gedit/gedit-io-error-info-bar.c:587
+#: bedit/bedit-io-error-info-bar.c:587
 msgid ""
 "The number of followed links is limited and the actual file could not be "
 "found within this limit."
 msgstr ""
 
-#: gedit/gedit-io-error-info-bar.c:591
+#: bedit/bedit-io-error-info-bar.c:591
 msgid "You do not have the permissions necessary to open the file."
 msgstr "Файлды ашу үшін керек рұқсаттарыңыз жоқ."
 
-#: gedit/gedit-io-error-info-bar.c:597
+#: bedit/bedit-io-error-info-bar.c:597
 msgid "Unable to detect the character encoding."
 msgstr "Таңбалар кодталуын анықтау мүмкін емес."
 
-#: gedit/gedit-io-error-info-bar.c:598 gedit/gedit-io-error-info-bar.c:622
+#: bedit/bedit-io-error-info-bar.c:598 bedit/bedit-io-error-info-bar.c:622
 msgid "Please check that you are not trying to open a binary file."
 msgstr "Екілік (бинарлы) файлды ашып тұрмағаныңызға көз жеткізіңіз."
 
-#: gedit/gedit-io-error-info-bar.c:599
+#: bedit/bedit-io-error-info-bar.c:599
 msgid "Select a character encoding from the menu and try again."
 msgstr "Мәзірден таңбалар кодталуын таңдап, қайталап көріңіз."
 
-#: gedit/gedit-io-error-info-bar.c:605
+#: bedit/bedit-io-error-info-bar.c:605
 #, c-format
 msgid "There was a problem opening the file “%s”."
 msgstr "\"%s\" файлын ашу кезінде қате орын алды."
 
-#: gedit/gedit-io-error-info-bar.c:607
+#: bedit/bedit-io-error-info-bar.c:607
 msgid ""
 "The file you opened has some invalid characters. If you continue editing "
 "this file you could corrupt this document."
@@ -1083,30 +1083,30 @@ msgstr ""
 "Сіз ашқан файлда бірнеше жарамсыз таңбалар бар. Бұл файлды түзетуді "
 "жалғастырсаңыз, құжатты зақымдауыңыз мүмкін."
 
-#: gedit/gedit-io-error-info-bar.c:610
+#: bedit/bedit-io-error-info-bar.c:610
 msgid "You can also choose another character encoding and try again."
 msgstr "Басқа таңбалар кодталуын таңдап, қайталап көруге болады."
 
-#: gedit/gedit-io-error-info-bar.c:619
+#: bedit/bedit-io-error-info-bar.c:619
 #, c-format
 msgid "Could not open the file “%s” using the “%s” character encoding."
 msgstr "\"%s\" файлын \"%s\" кодталуын қолданып, ашу мүмкін емес."
 
-#: gedit/gedit-io-error-info-bar.c:623 gedit/gedit-io-error-info-bar.c:698
+#: bedit/bedit-io-error-info-bar.c:623 bedit/bedit-io-error-info-bar.c:698
 msgid "Select a different character encoding from the menu and try again."
 msgstr "Мәзірден басқа таңбалар кодталуын таңдап, қайталап көріңіз."
 
-#: gedit/gedit-io-error-info-bar.c:635
+#: bedit/bedit-io-error-info-bar.c:635
 #, c-format
 msgid "Could not open the file “%s”."
 msgstr "\"%s\" файлын ашу мүмкін емес."
 
-#: gedit/gedit-io-error-info-bar.c:693
+#: bedit/bedit-io-error-info-bar.c:693
 #, c-format
 msgid "Could not save the file “%s” using the “%s” character encoding."
 msgstr "\"%s\" файлын \"%s\" кодталуын қолданып, сақтау мүмкін емес."
 
-#: gedit/gedit-io-error-info-bar.c:696
+#: bedit/bedit-io-error-info-bar.c:696
 msgid ""
 "The document contains one or more characters that cannot be encoded using "
 "the specified character encoding."
@@ -1116,26 +1116,26 @@ msgstr ""
 
 #. Translators: the access key chosen for this string should be
 #. different from other main menu access keys (Open, Edit, View...)
-#: gedit/gedit-io-error-info-bar.c:769
+#: bedit/bedit-io-error-info-bar.c:769
 msgid "D_on’t Edit"
 msgstr "_Түзетпеу"
 
-#: gedit/gedit-io-error-info-bar.c:779
+#: bedit/bedit-io-error-info-bar.c:779
 #, c-format
 msgid "This file “%s” is already open in another window."
 msgstr "\"%s\" файлы басқа терезеде ашық тұр."
 
-#: gedit/gedit-io-error-info-bar.c:793
+#: bedit/bedit-io-error-info-bar.c:793
 msgid "Do you want to edit it anyway?"
 msgstr "Сонда да оны түзетуді қалайсыз ба?"
 
-#: gedit/gedit-io-error-info-bar.c:849 gedit/gedit-io-error-info-bar.c:939
-#: gedit/gedit-io-error-info-bar.c:1229
+#: bedit/bedit-io-error-info-bar.c:849 bedit/bedit-io-error-info-bar.c:939
+#: bedit/bedit-io-error-info-bar.c:1229
 msgid "S_ave Anyway"
 msgstr "Сонда да с_ақтау"
 
-#: gedit/gedit-io-error-info-bar.c:852 gedit/gedit-io-error-info-bar.c:942
-#: gedit/gedit-io-error-info-bar.c:1232
+#: bedit/bedit-io-error-info-bar.c:852 bedit/bedit-io-error-info-bar.c:942
+#: bedit/bedit-io-error-info-bar.c:1232
 msgid "D_on’t Save"
 msgstr "Сақ_тамау"
 
@@ -1143,28 +1143,28 @@ msgstr "Сақ_тамау"
 #. * could be interpreted as the changes he made in the document. beside "reading" is
 #. * not accurate (since last load/save)
 #.
-#: gedit/gedit-io-error-info-bar.c:866
+#: bedit/bedit-io-error-info-bar.c:866
 #, c-format
 msgid "The file “%s” has been modified since reading it."
 msgstr "\"%s\" файлы оны оқығаннан кейін өзгертілген."
 
-#: gedit/gedit-io-error-info-bar.c:881
+#: bedit/bedit-io-error-info-bar.c:881
 msgid "If you save it, all the external changes could be lost. Save it anyway?"
 msgstr ""
 "Оны сақтасаңыз, барлық сыртқы өзгерістер жоғалатын болады. Сонда да сақтау "
 "керек пе?"
 
-#: gedit/gedit-io-error-info-bar.c:961
+#: bedit/bedit-io-error-info-bar.c:961
 #, c-format
 msgid "Could not create a backup file while saving “%s”"
 msgstr "\"%s\" сақтау кезінде қор көшірме файлын жасау сәтсіз аяқталды"
 
-#: gedit/gedit-io-error-info-bar.c:966
+#: bedit/bedit-io-error-info-bar.c:966
 #, c-format
 msgid "Could not create a temporary backup file while saving “%s”"
 msgstr "\"%s\" сақтау кезінде уақытша қор көшірме файлын жасау сәтсіз аяқталды"
 
-#: gedit/gedit-io-error-info-bar.c:983
+#: bedit/bedit-io-error-info-bar.c:983
 msgid ""
 "Could not back up the old copy of the file before saving the new one. You "
 "can ignore this warning and save the file anyway, but if an error occurs "
@@ -1176,7 +1176,7 @@ msgstr ""
 "Сонда да сақтау керек пе?"
 
 #. Translators: %s is a URI scheme (like for example http:, ftp:, etc.)
-#: gedit/gedit-io-error-info-bar.c:1043
+#: bedit/bedit-io-error-info-bar.c:1043
 #, c-format
 msgid ""
 "Cannot handle “%s:” locations in write mode. Please check that you typed the "
@@ -1185,7 +1185,7 @@ msgstr ""
 "\"%s:\" түрдегі орналасуларды жазу режимінде өңдеу мүмкін емес. Мақсат "
 "орналасуын дұрыс енгізгеніңізді тексеріп, қайталап көріңіз."
 
-#: gedit/gedit-io-error-info-bar.c:1051
+#: bedit/bedit-io-error-info-bar.c:1051
 msgid ""
 "Cannot handle this location in write mode. Please check that you typed the "
 "location correctly and try again."
@@ -1193,7 +1193,7 @@ msgstr ""
 "Бұл орналасуды жазу режимінде өңдеу мүмкін емес. Мақсат орналасуын дұрыс "
 "енгізгеніңізді тексеріп, қайталап көріңіз."
 
-#: gedit/gedit-io-error-info-bar.c:1060
+#: bedit/bedit-io-error-info-bar.c:1060
 #, c-format
 msgid ""
 "“%s” is not a valid location. Please check that you typed the location "
@@ -1202,7 +1202,7 @@ msgstr ""
 "\"%s\" дұрыс орналасу емес. Мақсат орналасуын дұрыс енгізгеніңізді тексеріп, "
 "қайталап көріңіз."
 
-#: gedit/gedit-io-error-info-bar.c:1067
+#: bedit/bedit-io-error-info-bar.c:1067
 msgid ""
 "You do not have the permissions necessary to save the file. Please check "
 "that you typed the location correctly and try again."
@@ -1210,7 +1210,7 @@ msgstr ""
 "Файлды сақтауға керек рұқсаттарыңыз жоқ. Мақсат орналасуын дұрыс "
 "енгізгеніңізді тексеріп, қайталап көріңіз."
 
-#: gedit/gedit-io-error-info-bar.c:1073
+#: bedit/bedit-io-error-info-bar.c:1073
 msgid ""
 "There is not enough disk space to save the file. Please free some disk space "
 "and try again."
@@ -1218,7 +1218,7 @@ msgstr ""
 "Файлды сақтау үшін диск орны жеткіліксіз. Біраз орынды босатып, қайталап "
 "көріңіз."
 
-#: gedit/gedit-io-error-info-bar.c:1078
+#: bedit/bedit-io-error-info-bar.c:1078
 msgid ""
 "You are trying to save the file on a read-only disk. Please check that you "
 "typed the location correctly and try again."
@@ -1226,94 +1226,94 @@ msgstr ""
 "Сіз файлды тек оқу үшін қолжетерлік дискіге жазу талабын жасадыңыз. Мақсат "
 "орналасуын дұрыс енгізгеніңізді тексеріп, қайталап көріңіз."
 
-#: gedit/gedit-io-error-info-bar.c:1084
+#: bedit/bedit-io-error-info-bar.c:1084
 msgid "A file with the same name already exists. Please use a different name."
 msgstr "Олай аталатын файл бар болып тұр. Басқа атын таңдаңыз."
 
-#: gedit/gedit-io-error-info-bar.c:1089
+#: bedit/bedit-io-error-info-bar.c:1089
 msgid ""
 "The disk where you are trying to save the file has a limitation on length of "
 "the file names. Please use a shorter name."
 msgstr ""
 
-#: gedit/gedit-io-error-info-bar.c:1100
+#: bedit/bedit-io-error-info-bar.c:1100
 msgid ""
 "The disk where you are trying to save the file has a limitation on file "
 "sizes. Please try saving a smaller file or saving it to a disk that does not "
 "have this limitation."
 msgstr ""
 
-#: gedit/gedit-io-error-info-bar.c:1117
+#: bedit/bedit-io-error-info-bar.c:1117
 #, c-format
 msgid "Could not save the file “%s”."
 msgstr "\"%s\" файлын сақтау мүмкін емес."
 
-#: gedit/gedit-io-error-info-bar.c:1157
+#: bedit/bedit-io-error-info-bar.c:1157
 #, c-format
 msgid "The file “%s” changed on disk."
 msgstr "\"%s\" файлы дискте өзгертілген."
 
-#: gedit/gedit-io-error-info-bar.c:1168
+#: bedit/bedit-io-error-info-bar.c:1168
 msgid "Drop Changes and _Reload"
 msgstr "Өзгерістерді тастап, қа_йта жүктеу"
 
-#: gedit/gedit-io-error-info-bar.c:1178 gedit/resources/gtk/menus-common.ui:148
-#: gedit/resources/gtk/menus.ui:9 gedit/resources/gtk/menus-traditional.ui:9
+#: bedit/bedit-io-error-info-bar.c:1178 bedit/resources/gtk/menus-common.ui:148
+#: bedit/resources/gtk/menus.ui:9 bedit/resources/gtk/menus-traditional.ui:9
 msgid "_Reload"
 msgstr "Қа_йта жүктеу"
 
-#: gedit/gedit-io-error-info-bar.c:1242
+#: bedit/bedit-io-error-info-bar.c:1242
 #, c-format
 msgid "Some invalid chars have been detected while saving “%s”"
 msgstr "\"%s\" сақтау кезінде кейбір қате таңбалар табылды"
 
-#: gedit/gedit-io-error-info-bar.c:1258
+#: bedit/bedit-io-error-info-bar.c:1258
 msgid ""
 "If you continue saving this file you can corrupt the document.  Save anyway?"
 msgstr ""
 "Бұл файлды сақтауды жалғастырсаңыз, файл зақымдалуы мүмкін. Сонда да сақтау "
 "керек пе?"
 
-#: gedit/gedit-preferences-dialog.c:455
+#: bedit/bedit-preferences-dialog.c:455
 msgid "Click on this button to select the font to be used by the editor"
 msgstr "Түзеткіш қолданатын қаріпті орнату үшін бұл батырманы басыңыз"
 
-#: gedit/gedit-preferences-dialog.c:461
+#: bedit/bedit-preferences-dialog.c:461
 #, c-format
 msgid "_Use the system fixed width font (%s)"
 msgstr "Жүйелік ені біркелкі қаріпті қ_олдану (%s)"
 
-#: gedit/gedit-preferences-dialog.c:601
+#: bedit/bedit-preferences-dialog.c:601
 #, c-format
 msgid "Directory “%s” could not be created: g_mkdir_with_parents() failed: %s"
 msgstr "\"%s\" бумасын жасау мүмкін емес: g_mkdir_with_parents() сәтсіз: %s"
 
-#: gedit/gedit-preferences-dialog.c:798
+#: bedit/bedit-preferences-dialog.c:798
 msgid "The selected color scheme cannot be installed."
 msgstr "Таңдалған түстер схемасын орнату мүмкін емес."
 
-#: gedit/gedit-preferences-dialog.c:821
+#: bedit/bedit-preferences-dialog.c:821
 msgid "Add Scheme"
 msgstr "Схеманы қосу"
 
-#: gedit/gedit-preferences-dialog.c:826
+#: bedit/bedit-preferences-dialog.c:826
 msgid "A_dd Scheme"
 msgstr "Схеманы қ_осу"
 
-#: gedit/gedit-preferences-dialog.c:830
+#: bedit/bedit-preferences-dialog.c:830
 msgid "Color Scheme Files"
 msgstr "Түстер схемалар файлдары"
 
-#: gedit/gedit-preferences-dialog.c:861
+#: bedit/bedit-preferences-dialog.c:861
 #, c-format
 msgid "Could not remove color scheme “%s”."
 msgstr "\"%s\" түстер схемасын өшіру мүмкін емес."
 
-#: gedit/gedit-print-job.c:227
+#: bedit/bedit-print-job.c:227
 msgid "Preparing…"
 msgstr "Дайындау…"
 
-#: gedit/gedit-print-job.c:539
+#: bedit/bedit-print-job.c:539
 #, c-format
 msgid "File: %s"
 msgstr "Файл: %s"
@@ -1321,41 +1321,41 @@ msgstr "Файл: %s"
 #. Translators: %N is the current page number, %Q is the total
 #. * number of pages (ex. Page 2 of 10)
 #.
-#: gedit/gedit-print-job.c:548
+#: bedit/bedit-print-job.c:548
 msgid "Page %N of %Q"
 msgstr "Парақ %N, барлығы %Q"
 
-#: gedit/gedit-print-job.c:626
+#: bedit/bedit-print-job.c:626
 #, c-format
 msgid "Rendering page %d of %d…"
 msgstr "Бетті дайындау: %d, барлығы %d…"
 
-#: gedit/gedit-print-preview.c:651
+#: bedit/bedit-print-preview.c:651
 #, c-format
 msgid "Page %d of %d"
 msgstr "Парақ %d, барлығы %d"
 
-#: gedit/gedit-replace-dialog.c:690 plugins/externaltools/tools/tools.ui:49
+#: bedit/bedit-replace-dialog.c:690 plugins/externaltools/tools/tools.ui:49
 #: plugins/externaltools/tools/tools.ui:83
 #: plugins/externaltools/tools/tools.ui:121
 msgid "Nothing"
 msgstr "Ешнәрсе"
 
-#: gedit/gedit-replace-dialog.c:779
-#: gedit/resources/ui/gedit-replace-dialog.ui:7
+#: bedit/bedit-replace-dialog.c:779
+#: bedit/resources/ui/bedit-replace-dialog.ui:7
 msgid "Find and Replace"
 msgstr "Табу және алмастыру"
 
 #. Use spaces to leave padding proportional to the font size
-#: gedit/gedit-statusbar.c:58 gedit/gedit-statusbar.c:64
+#: bedit/bedit-statusbar.c:58 bedit/bedit-statusbar.c:64
 msgid "OVR"
 msgstr "ҮСТЖЗ"
 
-#: gedit/gedit-statusbar.c:58 gedit/gedit-statusbar.c:64
+#: bedit/bedit-statusbar.c:58 bedit/bedit-statusbar.c:64
 msgid "INS"
 msgstr "КІРСТ"
 
-#: gedit/gedit-statusbar.c:244
+#: bedit/bedit-statusbar.c:244
 #, c-format
 msgid "There is a tab with errors"
 msgid_plural "There are %d tabs with errors"
@@ -1363,100 +1363,100 @@ msgstr[0] "%d беттің қателері бар"
 
 #. Translators: the first %s is a file name (e.g. test.txt) the second one
 #. is a directory (e.g. ssh://master.gnome.org/home/users/paolo)
-#: gedit/gedit-tab.c:814
+#: bedit/bedit-tab.c:814
 #, c-format
 msgid "Reverting %s from %s"
 msgstr "%s қайтару, %s ішінен"
 
-#: gedit/gedit-tab.c:821
+#: bedit/bedit-tab.c:821
 #, c-format
 msgid "Reverting %s"
 msgstr "Қайтару %s"
 
 #. Translators: the first %s is a file name (e.g. test.txt) the second one
 #. is a directory (e.g. ssh://master.gnome.org/home/users/paolo)
-#: gedit/gedit-tab.c:834
+#: bedit/bedit-tab.c:834
 #, c-format
 msgid "Loading %s from %s"
 msgstr "%s жүктеу, %s ішінен"
 
-#: gedit/gedit-tab.c:841
+#: bedit/bedit-tab.c:841
 #, c-format
 msgid "Loading %s"
 msgstr "Жүктелуде %s"
 
 #. Translators: the first %s is a file name (e.g. test.txt) the second one
 #. is a directory (e.g. ssh://master.gnome.org/home/users/paolo)
-#: gedit/gedit-tab.c:921
+#: bedit/bedit-tab.c:921
 #, c-format
 msgid "Saving %s to %s"
 msgstr "%s сақтау, %s ішіне"
 
-#: gedit/gedit-tab.c:926
+#: bedit/bedit-tab.c:926
 #, c-format
 msgid "Saving %s"
 msgstr "%s сақтау"
 
-#: gedit/gedit-tab.c:1529
+#: bedit/bedit-tab.c:1529
 #, c-format
 msgid "Error opening file %s"
 msgstr "%s файлын ашу қатемен аяқталды"
 
-#: gedit/gedit-tab.c:1534
+#: bedit/bedit-tab.c:1534
 #, c-format
 msgid "Error reverting file %s"
 msgstr "%s файлын қайтару қатемен аяқталды"
 
-#: gedit/gedit-tab.c:1539
+#: bedit/bedit-tab.c:1539
 #, c-format
 msgid "Error saving file %s"
 msgstr "%s файлын сақтау қатемен аяқталды"
 
-#: gedit/gedit-tab.c:1570
+#: bedit/bedit-tab.c:1570
 msgid "Name:"
 msgstr "Аты:"
 
-#: gedit/gedit-tab.c:1571
+#: bedit/bedit-tab.c:1571
 msgid "MIME Type:"
 msgstr "MIME түрі:"
 
-#: gedit/gedit-tab.c:1572
+#: bedit/bedit-tab.c:1572
 msgid "Encoding:"
 msgstr "Кодталуы:"
 
-#: gedit/gedit-utils.c:823
+#: bedit/bedit-utils.c:823
 msgid "Please check your installation."
 msgstr "Орнатуыңызды тексеріңіз."
 
-#: gedit/gedit-utils.c:884
+#: bedit/bedit-utils.c:884
 #, c-format
 msgid "Unable to open UI file %s. Error: %s"
 msgstr "%s интерфейс файлын ашу қатесі. Қате: %s"
 
-#: gedit/gedit-utils.c:903
+#: bedit/bedit-utils.c:903
 #, c-format
 msgid "Unable to find the object “%s” inside file %s."
 msgstr "\"%s\" объектін %s файлынан табу мүмкін емес."
 
 #. Translators: '/ on <remote-share>'
-#: gedit/gedit-utils.c:1141
+#: bedit/bedit-utils.c:1141
 #, c-format
 msgid "/ on %s"
 msgstr "/, %s жерінде"
 
-#: gedit/gedit-utils.c:1445
+#: bedit/bedit-utils.c:1445
 msgid "Unix/Linux"
 msgstr "Unix/Linux"
 
-#: gedit/gedit-utils.c:1447
+#: bedit/bedit-utils.c:1447
 msgid "Mac OS Classic"
 msgstr "Mac OS Classic"
 
-#: gedit/gedit-utils.c:1449
+#: bedit/bedit-utils.c:1449
 msgid "Windows"
 msgstr "Windows"
 
-#: gedit/gedit-view.c:481 gedit/resources/ui/gedit-preferences-dialog.ui:41
+#: bedit/bedit-view.c:481 bedit/resources/ui/bedit-preferences-dialog.ui:41
 msgid "_Display line numbers"
 msgstr "Жо_лдар нөмірлерін көрсету"
 
@@ -1464,969 +1464,969 @@ msgstr "Жо_лдар нөмірлерін көрсету"
 #. * occurrence, and the second %d is the total number of search
 #. * occurrences.
 #.
-#: gedit/gedit-view-frame.c:674
+#: bedit/bedit-view-frame.c:674
 #, c-format
 msgid "%d of %d"
 msgstr "%d, барлығы %d"
 
 #. create "Wrap Around" menu item.
-#: gedit/gedit-view-frame.c:766
+#: bedit/bedit-view-frame.c:766
 msgid "_Wrap Around"
 msgstr "_Соңына жеткенде басына өту"
 
 #. create "Match as Regular Expression" menu item.
-#: gedit/gedit-view-frame.c:776
+#: bedit/bedit-view-frame.c:776
 msgid "Match as _Regular Expression"
 msgstr "Тұ_рақты өрнек ретінде сәйкестеу"
 
 #. create "Match Entire Word Only" menu item.
-#: gedit/gedit-view-frame.c:790
+#: bedit/bedit-view-frame.c:790
 msgid "Match _Entire Word Only"
 msgstr "Сөзді то_лығымен сәйкестеу"
 
 #. create "Match Case" menu item.
-#: gedit/gedit-view-frame.c:804
+#: bedit/bedit-view-frame.c:804
 msgid "_Match Case"
 msgstr "_Регистрді ескеру"
 
-#: gedit/gedit-view-frame.c:1029
+#: bedit/bedit-view-frame.c:1029
 msgid "String you want to search for"
 msgstr "Ізделетін жол"
 
-#: gedit/gedit-view-frame.c:1041
+#: bedit/bedit-view-frame.c:1041
 msgid "Line you want to move the cursor to"
 msgstr "Курсорды жылжыту үшін жол нөмірі"
 
-#: gedit/gedit-window.c:998
+#: bedit/bedit-window.c:998
 msgid "Bracket match is out of range"
 msgstr "Жақша сәйкестігі ауқымнан тыс"
 
-#: gedit/gedit-window.c:1003
+#: bedit/bedit-window.c:1003
 msgid "Bracket match not found"
 msgstr "Жақша сәйкестігі табылмады"
 
-#: gedit/gedit-window.c:1008
+#: bedit/bedit-window.c:1008
 #, c-format
 msgid "Bracket match found on line: %d"
 msgstr "Жақша сәйкестігі табылған жол нөмірі: %d"
 
 #. Translators: "Ln" is an abbreviation for "Line", Col is an abbreviation for "Column". Please,
 #. use abbreviations if possible to avoid space problems.
-#: gedit/gedit-window.c:1043
+#: bedit/bedit-window.c:1043
 #, c-format
 msgid "  Ln %d, Col %d"
 msgstr "  Жол %d, Бағ %d"
 
-#: gedit/gedit-window.c:1227
+#: bedit/bedit-window.c:1227
 #, c-format
 msgid "Tab Width: %u"
 msgstr "Табуляция ені: %u"
 
-#: gedit/gedit-window.c:1596
+#: bedit/bedit-window.c:1596
 msgid "There are unsaved documents"
 msgstr "Сақталмаған құжаттар бар"
 
-#: gedit/gedit-window.c:2442
+#: bedit/bedit-window.c:2442
 msgid "Change side panel page"
 msgstr "Бүйір панель бетін ауыстыру"
 
-#: gedit/gedit-window.c:2462 gedit/resources/ui/gedit-window.ui:19
+#: bedit/bedit-window.c:2462 bedit/resources/ui/bedit-window.ui:19
 msgid "Documents"
 msgstr "Құжаттар"
 
-#: gedit/resources/gtk/menus-common.ui:7
+#: bedit/resources/gtk/menus-common.ui:7
 msgid "Move _Left"
 msgstr "Со_лға жылжыту"
 
-#: gedit/resources/gtk/menus-common.ui:11
+#: bedit/resources/gtk/menus-common.ui:11
 msgid "Move _Right"
 msgstr "_Оңға жылжыту"
 
-#: gedit/resources/gtk/menus-common.ui:17
+#: bedit/resources/gtk/menus-common.ui:17
 msgid "Move to New _Window"
 msgstr "Жаңа тере_зеге жылжыту"
 
-#: gedit/resources/gtk/menus-common.ui:21
+#: bedit/resources/gtk/menus-common.ui:21
 msgid "Move to New Tab _Group"
 msgstr "Жаңа беттер то_бына жылжыту"
 
-#: gedit/resources/gtk/menus-common.ui:27
-#: gedit/resources/gtk/menus-common.ui:163
-#: gedit/resources/gtk/menus-traditional.ui:134
-#: gedit/resources/ui/gedit-replace-dialog.ui:23
-#: plugins/time/resources/ui/gedit-time-setup-dialog.ui:21
+#: bedit/resources/gtk/menus-common.ui:27
+#: bedit/resources/gtk/menus-common.ui:163
+#: bedit/resources/gtk/menus-traditional.ui:134
+#: bedit/resources/ui/bedit-replace-dialog.ui:23
+#: plugins/time/resources/ui/bedit-time-setup-dialog.ui:21
 msgid "_Close"
 msgstr "Жа_бу"
 
-#: gedit/resources/gtk/menus-common.ui:35
+#: bedit/resources/gtk/menus-common.ui:35
 msgid "Automatic Indentation"
 msgstr "Автошегіну"
 
-#: gedit/resources/gtk/menus-common.ui:58
+#: bedit/resources/gtk/menus-common.ui:58
 msgid "Use Spaces"
 msgstr "Бос аралықтарды қолдану"
 
-#: gedit/resources/gtk/menus-common.ui:66
+#: bedit/resources/gtk/menus-common.ui:66
 msgid "Display line numbers"
 msgstr "Жол нөмірлерін көрсету"
 
-#: gedit/resources/gtk/menus-common.ui:70
+#: bedit/resources/gtk/menus-common.ui:70
 msgid "Display right margin"
 msgstr "Оң жақ шет өрісін көрсету"
 
-#: gedit/resources/gtk/menus-common.ui:74
+#: bedit/resources/gtk/menus-common.ui:74
 msgid "Highlight current line"
 msgstr "Ағымдағы жолды түспен ерекшелеу"
 
-#: gedit/resources/gtk/menus-common.ui:78
+#: bedit/resources/gtk/menus-common.ui:78
 msgid "Text wrapping"
 msgstr "Мәтінді тасымалдау"
 
-#: gedit/resources/gtk/menus-common.ui:88
+#: bedit/resources/gtk/menus-common.ui:88
 msgid "_File"
 msgstr "_Файл"
 
 #. _New is the menu item under the File menu on OS X which creates a new empty document.
-#: gedit/resources/gtk/menus-common.ui:92
+#: bedit/resources/gtk/menus-common.ui:92
 msgid "_New"
 msgstr "_Жаңа"
 
-#: gedit/resources/gtk/menus-common.ui:111
+#: bedit/resources/gtk/menus-common.ui:111
 msgid "Open _Recent"
 msgstr "С_оңғысын ашу"
 
-#: gedit/resources/gtk/menus-common.ui:114
+#: bedit/resources/gtk/menus-common.ui:114
 msgid "Reopen Closed _Tab"
 msgstr "Жабылған бе_тті қайта ашу"
 
-#: gedit/resources/gtk/menus-common.ui:132
+#: bedit/resources/gtk/menus-common.ui:132
 msgid "Save _As…"
 msgstr "Қал_айша сақтау…"
 
-#: gedit/resources/gtk/menus-common.ui:140 gedit/resources/gtk/menus.ui:27
+#: bedit/resources/gtk/menus-common.ui:140 bedit/resources/gtk/menus.ui:27
 msgid "_New Window"
 msgstr "Жаңа тере_зе"
 
-#: gedit/resources/gtk/menus-common.ui:155 gedit/resources/gtk/menus.ui:14
-#: gedit/resources/gtk/menus-traditional.ui:14
+#: bedit/resources/gtk/menus-common.ui:155 bedit/resources/gtk/menus.ui:14
+#: bedit/resources/gtk/menus-traditional.ui:14
 msgid "_Print…"
 msgstr "Бас_паға шығару…"
 
-#: gedit/resources/gtk/menus-common.ui:168
-#: gedit/resources/gtk/menus-traditional.ui:138
+#: bedit/resources/gtk/menus-common.ui:168
+#: bedit/resources/gtk/menus-traditional.ui:138
 msgid "_Quit"
 msgstr "_Шығу"
 
-#: gedit/resources/gtk/menus-common.ui:176
+#: bedit/resources/gtk/menus-common.ui:176
 msgid "_Edit"
 msgstr "Тү_зету"
 
-#: gedit/resources/gtk/menus-common.ui:180
+#: bedit/resources/gtk/menus-common.ui:180
 msgid "_Undo"
 msgstr "Бол_дырмау"
 
-#: gedit/resources/gtk/menus-common.ui:185
+#: bedit/resources/gtk/menus-common.ui:185
 msgid "_Redo"
 msgstr "Қай_талау"
 
-#: gedit/resources/gtk/menus-common.ui:192
+#: bedit/resources/gtk/menus-common.ui:192
 msgid "C_ut"
 msgstr "Қ_иып алу"
 
-#: gedit/resources/gtk/menus-common.ui:197
+#: bedit/resources/gtk/menus-common.ui:197
 msgid "_Copy"
 msgstr "_Көшіру"
 
-#: gedit/resources/gtk/menus-common.ui:202
+#: bedit/resources/gtk/menus-common.ui:202
 msgid "_Paste"
 msgstr "Кірі_стіру"
 
-#: gedit/resources/gtk/menus-common.ui:207
-#: plugins/filebrowser/gedit-file-browser-plugin.c:919
-#: plugins/filebrowser/gedit-file-browser-plugin.c:957
-#: plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui:37
+#: bedit/resources/gtk/menus-common.ui:207
+#: plugins/filebrowser/bedit-file-browser-plugin.c:919
+#: plugins/filebrowser/bedit-file-browser-plugin.c:957
+#: plugins/filebrowser/resources/ui/bedit-file-browser-menus.ui:37
 msgid "_Delete"
 msgstr "Ө_шіру"
 
-#: gedit/resources/gtk/menus-common.ui:215
+#: bedit/resources/gtk/menus-common.ui:215
 msgid "Overwrite _Mode"
 msgstr "Үстінен жазу режи_мі"
 
-#: gedit/resources/gtk/menus-common.ui:223
+#: bedit/resources/gtk/menus-common.ui:223
 msgid "Select _All"
 msgstr "Б_арлығын таңдау"
 
-#: gedit/resources/gtk/menus-common.ui:230 gedit/resources/gtk/menus.ui:112
-#: gedit/resources/gtk/menus-traditional.ui:108
+#: bedit/resources/gtk/menus-common.ui:230 bedit/resources/gtk/menus.ui:112
+#: bedit/resources/gtk/menus-traditional.ui:108
 msgid "_Preferences"
 msgstr "Ба_птаулар"
 
-#: gedit/resources/gtk/menus-common.ui:237 gedit/resources/gtk/menus.ui:72
-#: gedit/resources/gtk/menus-traditional.ui:68
+#: bedit/resources/gtk/menus-common.ui:237 bedit/resources/gtk/menus.ui:72
+#: bedit/resources/gtk/menus-traditional.ui:68
 msgid "_View"
 msgstr "_Түрі"
 
-#: gedit/resources/gtk/menus-common.ui:241 gedit/resources/gtk/menus.ui:76
-#: gedit/resources/gtk/menus-traditional.ui:72
+#: bedit/resources/gtk/menus-common.ui:241 bedit/resources/gtk/menus.ui:76
+#: bedit/resources/gtk/menus-traditional.ui:72
 msgid "Side _Panel"
 msgstr "Бү_йір панелі"
 
-#: gedit/resources/gtk/menus-common.ui:246 gedit/resources/gtk/menus.ui:80
-#: gedit/resources/gtk/menus-traditional.ui:76
+#: bedit/resources/gtk/menus-common.ui:246 bedit/resources/gtk/menus.ui:80
+#: bedit/resources/gtk/menus-traditional.ui:76
 msgid "_Bottom Panel"
 msgstr "Төмен_гі панелі"
 
-#: gedit/resources/gtk/menus-common.ui:255 gedit/resources/gtk/menus.ui:19
-#: gedit/resources/gtk/menus-traditional.ui:19
+#: bedit/resources/gtk/menus-common.ui:255 bedit/resources/gtk/menus.ui:19
+#: bedit/resources/gtk/menus-traditional.ui:19
 msgid "_Fullscreen"
 msgstr "Т_олық экранға"
 
-#: gedit/resources/gtk/menus-common.ui:263 gedit/resources/gtk/menus.ui:91
-#: gedit/resources/gtk/menus-traditional.ui:87
+#: bedit/resources/gtk/menus-common.ui:263 bedit/resources/gtk/menus.ui:91
+#: bedit/resources/gtk/menus-traditional.ui:87
 msgid "_Highlight Mode…"
 msgstr "_Түспен ерекшелеу режимі…"
 
-#: gedit/resources/gtk/menus-common.ui:269
+#: bedit/resources/gtk/menus-common.ui:269
 msgid "_Search"
 msgstr "І_здеу"
 
-#: gedit/resources/gtk/menus-common.ui:273 gedit/resources/gtk/menus.ui:54
-#: gedit/resources/gtk/menus-traditional.ui:50
+#: bedit/resources/gtk/menus-common.ui:273 bedit/resources/gtk/menus.ui:54
+#: bedit/resources/gtk/menus-traditional.ui:50
 msgid "_Find…"
 msgstr "_Табу…"
 
-#: gedit/resources/gtk/menus-common.ui:278
+#: bedit/resources/gtk/menus-common.ui:278
 msgid "Find Ne_xt"
 msgstr "Ке_лесіні табу"
 
-#: gedit/resources/gtk/menus-common.ui:283
+#: bedit/resources/gtk/menus-common.ui:283
 msgid "Find Pre_vious"
 msgstr "Ал_дыңғысын табу"
 
-#: gedit/resources/gtk/menus-common.ui:291
+#: bedit/resources/gtk/menus-common.ui:291
 msgid "Find and _Replace…"
 msgstr "Табу жә_не алмастыру…"
 
-#: gedit/resources/gtk/menus-common.ui:299 gedit/resources/gtk/menus.ui:62
-#: gedit/resources/gtk/menus-traditional.ui:58
+#: bedit/resources/gtk/menus-common.ui:299 bedit/resources/gtk/menus.ui:62
+#: bedit/resources/gtk/menus-traditional.ui:58
 msgid "_Clear Highlight"
 msgstr "_Түспен ерекшелеуді тастау"
 
-#: gedit/resources/gtk/menus-common.ui:307
+#: bedit/resources/gtk/menus-common.ui:307
 msgid "Go to _Line…"
 msgstr "Жо_лға өту…"
 
-#: gedit/resources/gtk/menus-common.ui:314 gedit/resources/gtk/menus.ui:97
-#: gedit/resources/gtk/menus-traditional.ui:93
+#: bedit/resources/gtk/menus-common.ui:314 bedit/resources/gtk/menus.ui:97
+#: bedit/resources/gtk/menus-traditional.ui:93
 msgid "_Tools"
 msgstr "Са_ймандар"
 
-#: gedit/resources/gtk/menus-common.ui:329
+#: bedit/resources/gtk/menus-common.ui:329
 msgid "_Documents"
 msgstr "Құ_жаттар"
 
-#: gedit/resources/gtk/menus-common.ui:333
+#: bedit/resources/gtk/menus-common.ui:333
 msgid "_Save All"
 msgstr "Барл_ығын сақтау"
 
-#: gedit/resources/gtk/menus-common.ui:338
-#: gedit/resources/gtk/menus-traditional.ui:130
+#: bedit/resources/gtk/menus-common.ui:338
+#: bedit/resources/gtk/menus-traditional.ui:130
 msgid "_Close All"
 msgstr "Ба_рлығын жабу"
 
-#: gedit/resources/gtk/menus-common.ui:346
+#: bedit/resources/gtk/menus-common.ui:346
 msgid "_New Tab Group"
 msgstr "_Жаңа беттер тобы"
 
-#: gedit/resources/gtk/menus-common.ui:351
+#: bedit/resources/gtk/menus-common.ui:351
 msgid "P_revious Tab Group"
 msgstr "Ал_дыңғы беттер тобы"
 
-#: gedit/resources/gtk/menus-common.ui:356
+#: bedit/resources/gtk/menus-common.ui:356
 msgid "Nex_t Tab Group"
 msgstr "К_елесі беттер тобы"
 
-#: gedit/resources/gtk/menus-common.ui:364
+#: bedit/resources/gtk/menus-common.ui:364
 msgid "_Previous Document"
 msgstr "_Алдыңғы құжат"
 
-#: gedit/resources/gtk/menus-common.ui:369
+#: bedit/resources/gtk/menus-common.ui:369
 msgid "N_ext Document"
 msgstr "_Келесі құжат"
 
-#: gedit/resources/gtk/menus-common.ui:377
+#: bedit/resources/gtk/menus-common.ui:377
 msgid "_Move To New Window"
 msgstr "Жаңа тере_зеге жылжыту"
 
-#: gedit/resources/gtk/menus-common.ui:383
-#: gedit/resources/gtk/menus-common.ui:387 gedit/resources/gtk/menus.ui:123
-#: gedit/resources/gtk/menus-traditional.ui:119
-#: plugins/spell/gedit-spell-plugin.c:246
-#: plugins/time/resources/ui/gedit-time-dialog.ui:133
+#: bedit/resources/gtk/menus-common.ui:383
+#: bedit/resources/gtk/menus-common.ui:387 bedit/resources/gtk/menus.ui:123
+#: bedit/resources/gtk/menus-traditional.ui:119
+#: plugins/spell/bedit-spell-plugin.c:246
+#: plugins/time/resources/ui/bedit-time-dialog.ui:133
 msgid "_Help"
 msgstr "_Көмек"
 
-#: gedit/resources/gtk/menus-common.ui:394 gedit/resources/gtk/menus.ui:127
-#: gedit/resources/gtk/menus-traditional.ui:123
+#: bedit/resources/gtk/menus-common.ui:394 bedit/resources/gtk/menus.ui:127
+#: bedit/resources/gtk/menus-traditional.ui:123
 msgid "_About Text Editor"
 msgstr "Мәтін түзетушісі тур_алы"
 
-#: gedit/resources/gtk/menus.ui:41 gedit/resources/gtk/menus-traditional.ui:37
+#: bedit/resources/gtk/menus.ui:41 bedit/resources/gtk/menus-traditional.ui:37
 msgid "Save _All"
 msgstr "Б_арлығын сақтау"
 
-#: gedit/resources/gtk/menus.ui:58 gedit/resources/gtk/menus-traditional.ui:54
+#: bedit/resources/gtk/menus.ui:58 bedit/resources/gtk/menus-traditional.ui:54
 msgid "_Find and Replace…"
 msgstr "Табу жә_не алмастыру…"
 
-#: gedit/resources/gtk/menus.ui:66 gedit/resources/gtk/menus-traditional.ui:62
+#: bedit/resources/gtk/menus.ui:66 bedit/resources/gtk/menus-traditional.ui:62
 msgid "_Go to Line…"
 msgstr "Жолға ө_ту…"
 
-#: gedit/resources/gtk/menus.ui:119
-#: gedit/resources/gtk/menus-traditional.ui:115
+#: bedit/resources/gtk/menus.ui:119
+#: bedit/resources/gtk/menus-traditional.ui:115
 msgid "_Keyboard Shortcuts"
 msgstr "П_ернетақта жарлықтары"
 
-#: gedit/resources/ui/gedit-encodings-dialog.ui:41
+#: bedit/resources/ui/bedit-encodings-dialog.ui:41
 msgid "Character Encodings"
 msgstr "Таңбалар кодтаулары"
 
-#: gedit/resources/ui/gedit-encodings-dialog.ui:51
+#: bedit/resources/ui/bedit-encodings-dialog.ui:51
 msgid "_Apply"
 msgstr "Іске _асыру"
 
-#: gedit/resources/ui/gedit-encodings-dialog.ui:82
+#: bedit/resources/ui/bedit-encodings-dialog.ui:82
 msgid "A_vailable Encodings"
 msgstr "Қ_олжетерлік кодтаулар"
 
-#: gedit/resources/ui/gedit-encodings-dialog.ui:100
+#: bedit/resources/ui/bedit-encodings-dialog.ui:100
 msgid "Cho_sen Encodings"
 msgstr "Таңдалған код_талу"
 
-#: gedit/resources/ui/gedit-encodings-dialog.ui:139
-#: gedit/resources/ui/gedit-encodings-dialog.ui:217
+#: bedit/resources/ui/bedit-encodings-dialog.ui:139
+#: bedit/resources/ui/bedit-encodings-dialog.ui:217
 msgid "_Description"
 msgstr "А_нықтамасы"
 
-#: gedit/resources/ui/gedit-encodings-dialog.ui:151
-#: gedit/resources/ui/gedit-encodings-dialog.ui:228
+#: bedit/resources/ui/bedit-encodings-dialog.ui:151
+#: bedit/resources/ui/bedit-encodings-dialog.ui:228
 msgid "_Encoding"
 msgstr "Ко_дталуы"
 
-#: gedit/resources/ui/gedit-highlight-mode-dialog.ui:11
+#: bedit/resources/ui/bedit-highlight-mode-dialog.ui:11
 msgid "Highlight Mode"
 msgstr "Түспен ерекшелеу"
 
-#: gedit/resources/ui/gedit-highlight-mode-dialog.ui:47
+#: bedit/resources/ui/bedit-highlight-mode-dialog.ui:47
 msgid "_Select"
 msgstr "_Таңдау"
 
-#: gedit/resources/ui/gedit-highlight-mode-selector.ui:31
+#: bedit/resources/ui/bedit-highlight-mode-selector.ui:31
 msgid "Search highlight mode…"
 msgstr "Іздеуді түспен ерекшелеу режимі…"
 
-#: gedit/resources/ui/gedit-open-document-selector.ui:53
+#: bedit/resources/ui/bedit-open-document-selector.ui:53
 msgid "No results"
 msgstr "Нәтижелер жоқ"
 
-#: gedit/resources/ui/gedit-open-document-selector.ui:97
+#: bedit/resources/ui/bedit-open-document-selector.ui:97
 msgid "Other _Documents…"
 msgstr "Басқа құ_жаттар…"
 
-#: gedit/resources/ui/gedit-open-document-selector.ui:101
+#: bedit/resources/ui/bedit-open-document-selector.ui:101
 msgid "Open another file"
 msgstr "Басқа файлды ашу"
 
-#: gedit/resources/ui/gedit-preferences-dialog.ui:8
-#: gedit/resources/ui/gedit-preferences-dialog.ui:15
+#: bedit/resources/ui/bedit-preferences-dialog.ui:8
+#: bedit/resources/ui/bedit-preferences-dialog.ui:15
 msgid "Preferences"
 msgstr "Баптаулар"
 
-#: gedit/resources/ui/gedit-preferences-dialog.ui:56
+#: bedit/resources/ui/bedit-preferences-dialog.ui:56
 msgid "Display right _margin at column:"
 msgstr "Оң жақ шет өрісін көрсету, баға_ны:"
 
-#: gedit/resources/ui/gedit-preferences-dialog.ui:95
+#: bedit/resources/ui/bedit-preferences-dialog.ui:95
 msgid "Display _statusbar"
 msgstr "Қа_лып-күй жолағын көрсету"
 
-#: gedit/resources/ui/gedit-preferences-dialog.ui:110
+#: bedit/resources/ui/bedit-preferences-dialog.ui:110
 msgid "Display _overview map"
 msgstr "Көрі_ніс картасын көрсету"
 
-#: gedit/resources/ui/gedit-preferences-dialog.ui:125
+#: bedit/resources/ui/bedit-preferences-dialog.ui:125
 msgid "Display _grid pattern"
 msgstr "Тор _оюын көрсету"
 
-#: gedit/resources/ui/gedit-preferences-dialog.ui:154
-#: gedit/resources/ui/gedit-print-preferences.ui:197
+#: bedit/resources/ui/bedit-preferences-dialog.ui:154
+#: bedit/resources/ui/bedit-print-preferences.ui:197
 msgid "Text Wrapping"
 msgstr "Мәтінді тасымалдау"
 
-#: gedit/resources/ui/gedit-preferences-dialog.ui:172
-#: gedit/resources/ui/gedit-print-preferences.ui:217
+#: bedit/resources/ui/bedit-preferences-dialog.ui:172
+#: bedit/resources/ui/bedit-print-preferences.ui:217
 msgid "Enable text _wrapping"
 msgstr "Мәтінді тасы_малдау"
 
-#: gedit/resources/ui/gedit-preferences-dialog.ui:186
-#: gedit/resources/ui/gedit-print-preferences.ui:237
+#: bedit/resources/ui/bedit-preferences-dialog.ui:186
+#: bedit/resources/ui/bedit-print-preferences.ui:237
 msgid "Do not _split words over two lines"
 msgstr "Сөздерді екіге бөл_меу"
 
-#: gedit/resources/ui/gedit-preferences-dialog.ui:220
+#: bedit/resources/ui/bedit-preferences-dialog.ui:220
 msgid "Highlighting"
 msgstr "Түспен ерекшелеу"
 
-#: gedit/resources/ui/gedit-preferences-dialog.ui:238
+#: bedit/resources/ui/bedit-preferences-dialog.ui:238
 msgid "Highlight current _line"
 msgstr "Ағымдағы жо_лды түспен ерекшелеу"
 
-#: gedit/resources/ui/gedit-preferences-dialog.ui:252
+#: bedit/resources/ui/bedit-preferences-dialog.ui:252
 msgid "Highlight matching _brackets"
 msgstr "Сәйкес жақ_шаны түспен ерекшелеу"
 
-#: gedit/resources/ui/gedit-preferences-dialog.ui:285
+#: bedit/resources/ui/bedit-preferences-dialog.ui:285
 msgid "View"
 msgstr "Көрініс"
 
-#: gedit/resources/ui/gedit-preferences-dialog.ui:307
+#: bedit/resources/ui/bedit-preferences-dialog.ui:307
 msgid "Tab Stops"
 msgstr "Табуляция"
 
-#: gedit/resources/ui/gedit-preferences-dialog.ui:330
+#: bedit/resources/ui/bedit-preferences-dialog.ui:330
 msgid "_Tab width:"
 msgstr "_Табуляция ені:"
 
-#: gedit/resources/ui/gedit-preferences-dialog.ui:359
+#: bedit/resources/ui/bedit-preferences-dialog.ui:359
 msgid "Insert _spaces instead of tabs"
 msgstr "Табуляция орнына бо_с аралықтарды кірістіру"
 
-#: gedit/resources/ui/gedit-preferences-dialog.ui:374
+#: bedit/resources/ui/bedit-preferences-dialog.ui:374
 msgid "_Enable automatic indentation"
 msgstr "_Автошегінуді іске қосу"
 
-#: gedit/resources/ui/gedit-preferences-dialog.ui:409
+#: bedit/resources/ui/bedit-preferences-dialog.ui:409
 msgid "File Saving"
 msgstr "Файлды сақтау"
 
-#: gedit/resources/ui/gedit-preferences-dialog.ui:428
+#: bedit/resources/ui/bedit-preferences-dialog.ui:428
 msgid "Create a _backup copy of files before saving"
 msgstr "Сақтау алдында файлдардың қ_ор көшірмелерін жасау"
 
-#: gedit/resources/ui/gedit-preferences-dialog.ui:443
+#: bedit/resources/ui/bedit-preferences-dialog.ui:443
 msgid "_Autosave files every"
 msgstr "Файлдарды _автосақтау, әр"
 
-#: gedit/resources/ui/gedit-preferences-dialog.ui:459
+#: bedit/resources/ui/bedit-preferences-dialog.ui:459
 msgid "_minutes"
 msgstr "_минут"
 
-#: gedit/resources/ui/gedit-preferences-dialog.ui:506
+#: bedit/resources/ui/bedit-preferences-dialog.ui:506
 msgid "Editor"
 msgstr "Түзетуші"
 
-#: gedit/resources/ui/gedit-preferences-dialog.ui:529
+#: bedit/resources/ui/bedit-preferences-dialog.ui:529
 #: plugins/externaltools/com.bwhmather.bedit.plugins.externaltools.gschema.xml.in:14
 #: plugins/pythonconsole/com.bwhmather.bedit.plugins.pythonconsole.gschema.xml.in:24
 msgid "Font"
 msgstr "Қаріп"
 
-#: gedit/resources/ui/gedit-preferences-dialog.ui:573
+#: bedit/resources/ui/bedit-preferences-dialog.ui:573
 msgid "Editor _font: "
 msgstr "Түзекі_ш қарібі: "
 
-#: gedit/resources/ui/gedit-preferences-dialog.ui:590
+#: bedit/resources/ui/bedit-preferences-dialog.ui:590
 msgid "Pick the editor font"
 msgstr "Түзеткіш қарібін таңдаңыз"
 
-#: gedit/resources/ui/gedit-preferences-dialog.ui:631
+#: bedit/resources/ui/bedit-preferences-dialog.ui:631
 msgid "Color Scheme"
 msgstr "Түстер схемасы"
 
-#: gedit/resources/ui/gedit-preferences-dialog.ui:678
-#: gedit/resources/ui/gedit-preferences-dialog.ui:679
+#: bedit/resources/ui/bedit-preferences-dialog.ui:678
+#: bedit/resources/ui/bedit-preferences-dialog.ui:679
 msgid "Install scheme"
 msgstr "Схеманы орнату"
 
-#: gedit/resources/ui/gedit-preferences-dialog.ui:680
+#: bedit/resources/ui/bedit-preferences-dialog.ui:680
 msgid "Install Scheme"
 msgstr "Схеманы орнату"
 
-#: gedit/resources/ui/gedit-preferences-dialog.ui:694
-#: gedit/resources/ui/gedit-preferences-dialog.ui:695
+#: bedit/resources/ui/bedit-preferences-dialog.ui:694
+#: bedit/resources/ui/bedit-preferences-dialog.ui:695
 msgid "Uninstall scheme"
 msgstr "Схеманы өшіру"
 
-#: gedit/resources/ui/gedit-preferences-dialog.ui:696
+#: bedit/resources/ui/bedit-preferences-dialog.ui:696
 msgid "Uninstall Scheme"
 msgstr "Схеманы өшіру"
 
-#: gedit/resources/ui/gedit-preferences-dialog.ui:736
+#: bedit/resources/ui/bedit-preferences-dialog.ui:736
 msgid "Font & Colors"
 msgstr "Қаріп және түстер"
 
-#: gedit/resources/ui/gedit-preferences-dialog.ui:761
+#: bedit/resources/ui/bedit-preferences-dialog.ui:761
 msgid "Plugins"
 msgstr "Плагиндер"
 
-#: gedit/resources/ui/gedit-print-preferences.ui:39
+#: bedit/resources/ui/bedit-print-preferences.ui:39
 msgid "Syntax Highlighting"
 msgstr "Синтаксисті түспен ерекшелеу"
 
-#: gedit/resources/ui/gedit-print-preferences.ui:52
+#: bedit/resources/ui/bedit-print-preferences.ui:52
 msgid "Print synta_x highlighting"
 msgstr "Синт_аксисті түспен ерекшелеуді баспаға шығару"
 
-#: gedit/resources/ui/gedit-print-preferences.ui:85
+#: bedit/resources/ui/bedit-print-preferences.ui:85
 msgid "Line Numbers"
 msgstr "Жолдардың нөмірленуі"
 
-#: gedit/resources/ui/gedit-print-preferences.ui:105
+#: bedit/resources/ui/bedit-print-preferences.ui:105
 msgid "Print line nu_mbers"
 msgstr "Жол нө_мірлерін баспаға шығару"
 
 #. 'Number every' from 'Number every 3 lines' in the 'Text Editor' tab of the print preferences.
-#: gedit/resources/ui/gedit-print-preferences.ui:129
+#: bedit/resources/ui/bedit-print-preferences.ui:129
 msgid "_Number every"
 msgstr "_Нөмірлеу әр"
 
 #. 'lines' from 'Number every 3 lines' in the 'Text Editor' tab of the print preferences.
-#: gedit/resources/ui/gedit-print-preferences.ui:157
+#: bedit/resources/ui/bedit-print-preferences.ui:157
 msgid "lines"
 msgstr "жолдар"
 
-#: gedit/resources/ui/gedit-print-preferences.ui:283
+#: bedit/resources/ui/bedit-print-preferences.ui:283
 msgid "Page header"
 msgstr "Беттің жоғарғы колонтитулы"
 
-#: gedit/resources/ui/gedit-print-preferences.ui:296
+#: bedit/resources/ui/bedit-print-preferences.ui:296
 msgid "Print page _headers"
 msgstr "Бет _тақырыптамаларын баспаға шығару"
 
-#: gedit/resources/ui/gedit-print-preferences.ui:342
+#: bedit/resources/ui/bedit-print-preferences.ui:342
 msgid "Fonts"
 msgstr "Қаріптер"
 
-#: gedit/resources/ui/gedit-print-preferences.ui:371
+#: bedit/resources/ui/bedit-print-preferences.ui:371
 msgid "_Body:"
 msgstr "Құжат _денесі:"
 
-#: gedit/resources/ui/gedit-print-preferences.ui:402
+#: bedit/resources/ui/bedit-print-preferences.ui:402
 msgid "_Line numbers:"
 msgstr "Жо_лдар нөмірлері:"
 
-#: gedit/resources/ui/gedit-print-preferences.ui:433
+#: bedit/resources/ui/bedit-print-preferences.ui:433
 msgid "He_aders and footers:"
 msgstr "Жоғ_арғы және төменгі колонтитулдар:"
 
-#: gedit/resources/ui/gedit-print-preferences.ui:474
+#: bedit/resources/ui/bedit-print-preferences.ui:474
 msgid "_Restore Default Fonts"
 msgstr "_Бастапқы қаріптерді қалпына келтіру"
 
-#: gedit/resources/ui/gedit-print-preview.ui:34
+#: bedit/resources/ui/bedit-print-preview.ui:34
 msgid "Show the previous page"
 msgstr "Алдыңғы парақты көрсету"
 
-#: gedit/resources/ui/gedit-print-preview.ui:48
+#: bedit/resources/ui/bedit-print-preview.ui:48
 msgid "Show the next page"
 msgstr "Келесі парақты көрсету"
 
-#: gedit/resources/ui/gedit-print-preview.ui:103
+#: bedit/resources/ui/bedit-print-preview.ui:103
 msgid "Current page (Alt+P)"
 msgstr "Ағымдағы бет (Alt+P)"
 
 #. the "of" from "1 of 19" in print preview
-#: gedit/resources/ui/gedit-print-preview.ui:118
+#: bedit/resources/ui/bedit-print-preview.ui:118
 msgid "of"
 msgstr "барлығы"
 
-#: gedit/resources/ui/gedit-print-preview.ui:135
+#: bedit/resources/ui/bedit-print-preview.ui:135
 msgid "Page total"
 msgstr "Барлық парақтар"
 
-#: gedit/resources/ui/gedit-print-preview.ui:136
+#: bedit/resources/ui/bedit-print-preview.ui:136
 msgid "The total number of pages in the document"
 msgstr "Құжаттағы парақтар саны"
 
-#: gedit/resources/ui/gedit-print-preview.ui:185
+#: bedit/resources/ui/bedit-print-preview.ui:185
 msgid "Show multiple pages"
 msgstr "Бірнеше парақты көрсету"
 
-#: gedit/resources/ui/gedit-print-preview.ui:233
+#: bedit/resources/ui/bedit-print-preview.ui:233
 msgid "Zoom 1:1"
 msgstr "Масштабы 1:1"
 
-#: gedit/resources/ui/gedit-print-preview.ui:247
+#: bedit/resources/ui/bedit-print-preview.ui:247
 msgid "Zoom to fit the whole page"
 msgstr "Параққа сыйдыру"
 
-#: gedit/resources/ui/gedit-print-preview.ui:261
+#: bedit/resources/ui/bedit-print-preview.ui:261
 msgid "Zoom the page in"
 msgstr "Үлкейту"
 
-#: gedit/resources/ui/gedit-print-preview.ui:275
+#: bedit/resources/ui/bedit-print-preview.ui:275
 msgid "Zoom the page out"
 msgstr "Кішірейту"
 
-#: gedit/resources/ui/gedit-print-preview.ui:326
+#: bedit/resources/ui/bedit-print-preview.ui:326
 msgid "Close print preview"
 msgstr "Баспа алдында қарауды жабу"
 
-#: gedit/resources/ui/gedit-print-preview.ui:327
+#: bedit/resources/ui/bedit-print-preview.ui:327
 msgid "_Close Preview"
 msgstr "Алдын-ала қарауды _жабу"
 
-#: gedit/resources/ui/gedit-print-preview.ui:374
+#: bedit/resources/ui/bedit-print-preview.ui:374
 msgid "Page Preview"
 msgstr "Бетті алдын-ала қарау"
 
-#: gedit/resources/ui/gedit-print-preview.ui:375
+#: bedit/resources/ui/bedit-print-preview.ui:375
 msgid "The preview of a page in the document to be printed"
 msgstr ""
 
-#: gedit/resources/ui/gedit-replace-dialog.ui:39
+#: bedit/resources/ui/bedit-replace-dialog.ui:39
 msgid "Replace _All"
 msgstr "Барл_ығын алмастыру"
 
-#: gedit/resources/ui/gedit-replace-dialog.ui:71
+#: bedit/resources/ui/bedit-replace-dialog.ui:71
 msgctxt "label of the find button"
 msgid "_Find"
 msgstr "_Табу"
 
-#: gedit/resources/ui/gedit-replace-dialog.ui:105
+#: bedit/resources/ui/bedit-replace-dialog.ui:105
 msgctxt "label on the left of the GtkEntry containing text to search"
 msgid "F_ind "
 msgstr "Т_абу "
 
-#: gedit/resources/ui/gedit-replace-dialog.ui:120
+#: bedit/resources/ui/bedit-replace-dialog.ui:120
 msgid "Replace _with "
 msgstr "Не_мен алмастыру "
 
-#: gedit/resources/ui/gedit-replace-dialog.ui:138
+#: bedit/resources/ui/bedit-replace-dialog.ui:138
 msgid "_Match case"
 msgstr "_Регистрді ескеру"
 
-#: gedit/resources/ui/gedit-replace-dialog.ui:155
+#: bedit/resources/ui/bedit-replace-dialog.ui:155
 msgid "Match _entire word only"
 msgstr "Сө_зді тек толығымен сәйкестендіру"
 
-#: gedit/resources/ui/gedit-replace-dialog.ui:172
+#: bedit/resources/ui/bedit-replace-dialog.ui:172
 msgid "Re_gular expression"
 msgstr "Тұ_рақты өрнек"
 
-#: gedit/resources/ui/gedit-replace-dialog.ui:189
+#: bedit/resources/ui/bedit-replace-dialog.ui:189
 msgid "Search _backwards"
 msgstr "К_ері іздеу"
 
-#: gedit/resources/ui/gedit-replace-dialog.ui:206
+#: bedit/resources/ui/bedit-replace-dialog.ui:206
 msgid "Wra_p around"
 msgstr "Соң_ына жеткенде, басына апару"
 
-#: gedit/resources/ui/gedit-shortcuts.ui:14
+#: bedit/resources/ui/bedit-shortcuts.ui:14
 msgctxt "shortcut window"
 msgid "Documents"
 msgstr "Құжаттар"
 
-#: gedit/resources/ui/gedit-shortcuts.ui:19
+#: bedit/resources/ui/bedit-shortcuts.ui:19
 msgctxt "shortcut window"
 msgid "Create a new document in a tab"
 msgstr "Жаңа құжатты бетте жасау"
 
-#: gedit/resources/ui/gedit-shortcuts.ui:26
+#: bedit/resources/ui/bedit-shortcuts.ui:26
 msgctxt "shortcut window"
 msgid "Open a document"
 msgstr "Құжатты ашу"
 
-#: gedit/resources/ui/gedit-shortcuts.ui:33
+#: bedit/resources/ui/bedit-shortcuts.ui:33
 msgctxt "shortcut window"
 msgid "Save the document"
 msgstr "Құжатты сақтау"
 
-#: gedit/resources/ui/gedit-shortcuts.ui:40
+#: bedit/resources/ui/bedit-shortcuts.ui:40
 msgctxt "shortcut window"
 msgid "Save the document with a new filename"
 msgstr "Құжатты жаңа файл атымен сақтау"
 
-#: gedit/resources/ui/gedit-shortcuts.ui:47
+#: bedit/resources/ui/bedit-shortcuts.ui:47
 msgctxt "shortcut window"
 msgid "Save all the documents"
 msgstr "Барлық құжаттарды сақтау"
 
-#: gedit/resources/ui/gedit-shortcuts.ui:54
+#: bedit/resources/ui/bedit-shortcuts.ui:54
 msgctxt "shortcut window"
 msgid "Close the document"
 msgstr "Құжатты жабу"
 
-#: gedit/resources/ui/gedit-shortcuts.ui:61
+#: bedit/resources/ui/bedit-shortcuts.ui:61
 msgctxt "shortcut window"
 msgid "Close all the documents"
 msgstr "Барлық құжаттарды жабу"
 
-#: gedit/resources/ui/gedit-shortcuts.ui:68
+#: bedit/resources/ui/bedit-shortcuts.ui:68
 msgctxt "shortcut window"
 msgid "Reopen the most recently closed document"
 msgstr "Ең соңғы жабылған құжатты қайта ашу"
 
-#: gedit/resources/ui/gedit-shortcuts.ui:75
+#: bedit/resources/ui/bedit-shortcuts.ui:75
 msgctxt "shortcut window"
 msgid "Switch to the next document"
 msgstr "Жаңа құжатқа ауысу"
 
-#: gedit/resources/ui/gedit-shortcuts.ui:82
+#: bedit/resources/ui/bedit-shortcuts.ui:82
 msgctxt "shortcut window"
 msgid "Switch to the previous document"
 msgstr "Алдыңғы құжатқа ауысу"
 
-#: gedit/resources/ui/gedit-shortcuts.ui:89
+#: bedit/resources/ui/bedit-shortcuts.ui:89
 msgctxt "shortcut window"
 msgid "Switch to the first — ninth document"
 msgstr "Бірінші — тоғызыншы құжатқа ауысу"
 
-#: gedit/resources/ui/gedit-shortcuts.ui:97
+#: bedit/resources/ui/bedit-shortcuts.ui:97
 msgctxt "shortcut window"
 msgid "Windows and Panels"
 msgstr "Терезелер және панельдер"
 
-#: gedit/resources/ui/gedit-shortcuts.ui:102
+#: bedit/resources/ui/bedit-shortcuts.ui:102
 msgctxt "shortcut window"
 msgid "Create a new document in a window"
 msgstr "Терезеде жаңа құжатты жасау"
 
-#: gedit/resources/ui/gedit-shortcuts.ui:109
+#: bedit/resources/ui/bedit-shortcuts.ui:109
 msgctxt "shortcut window"
 msgid "Create a new tab group"
 msgstr "Жаңа беттер тобын жасау"
 
-#: gedit/resources/ui/gedit-shortcuts.ui:116
+#: bedit/resources/ui/bedit-shortcuts.ui:116
 msgctxt "shortcut window"
 msgid "Show side panel"
 msgstr "Бүйір панелді көрсету"
 
-#: gedit/resources/ui/gedit-shortcuts.ui:123
+#: bedit/resources/ui/bedit-shortcuts.ui:123
 msgctxt "shortcut window"
 msgid "Show bottom panel"
 msgstr "Төменгі панельді көрсету"
 
-#: gedit/resources/ui/gedit-shortcuts.ui:130
+#: bedit/resources/ui/bedit-shortcuts.ui:130
 msgctxt "shortcut window"
 msgid "Fullscreen on / off"
 msgstr "Толық экранға/одан шығу"
 
-#: gedit/resources/ui/gedit-shortcuts.ui:137
+#: bedit/resources/ui/bedit-shortcuts.ui:137
 msgctxt "shortcut window"
 msgid "Quit the application"
 msgstr "Қолданба жұмысын аяқтау"
 
-#: gedit/resources/ui/gedit-shortcuts.ui:145
-#: gedit/resources/ui/gedit-shortcuts.ui:171
+#: bedit/resources/ui/bedit-shortcuts.ui:145
+#: bedit/resources/ui/bedit-shortcuts.ui:171
 msgctxt "shortcut window"
 msgid "Find and Replace"
 msgstr "Табу және алмастыру"
 
-#: gedit/resources/ui/gedit-shortcuts.ui:150
+#: bedit/resources/ui/bedit-shortcuts.ui:150
 msgctxt "shortcut window"
 msgid "Find"
 msgstr "Табу"
 
-#: gedit/resources/ui/gedit-shortcuts.ui:157
+#: bedit/resources/ui/bedit-shortcuts.ui:157
 msgctxt "shortcut window"
 msgid "Find the next match"
 msgstr "Келесі сәйкестікті табу"
 
-#: gedit/resources/ui/gedit-shortcuts.ui:164
+#: bedit/resources/ui/bedit-shortcuts.ui:164
 msgctxt "shortcut window"
 msgid "Find the previous match"
 msgstr "Алдыңғы сәйкестікті табу"
 
-#: gedit/resources/ui/gedit-shortcuts.ui:178
+#: bedit/resources/ui/bedit-shortcuts.ui:178
 msgctxt "shortcut window"
 msgid "Clear highlight"
 msgstr "Түспен ерекшелеуді тастау"
 
-#: gedit/resources/ui/gedit-shortcuts.ui:185
+#: bedit/resources/ui/bedit-shortcuts.ui:185
 msgctxt "shortcut window"
 msgid "Go to line"
 msgstr "Жолға өту"
 
-#: gedit/resources/ui/gedit-shortcuts.ui:193
+#: bedit/resources/ui/bedit-shortcuts.ui:193
 msgctxt "shortcut window"
 msgid "Copy and Paste"
 msgstr "Көшіріп алу және кірістіру"
 
-#: gedit/resources/ui/gedit-shortcuts.ui:198
+#: bedit/resources/ui/bedit-shortcuts.ui:198
 msgctxt "shortcut window"
 msgid "Copy selected text to clipboard"
 msgstr "Таңдалған мәтінді алмасу буферіне көшіру"
 
-#: gedit/resources/ui/gedit-shortcuts.ui:205
+#: bedit/resources/ui/bedit-shortcuts.ui:205
 msgctxt "shortcut window"
 msgid "Cut selected text to clipboard"
 msgstr "Таңдалған мәтінді алмасу буферіне қиып алу"
 
-#: gedit/resources/ui/gedit-shortcuts.ui:212
+#: bedit/resources/ui/bedit-shortcuts.ui:212
 msgctxt "shortcut window"
 msgid "Paste text from clipboard"
 msgstr "Алмасу буферінен мәтінді кірістіру"
 
-#: gedit/resources/ui/gedit-shortcuts.ui:220
+#: bedit/resources/ui/bedit-shortcuts.ui:220
 msgctxt "shortcut window"
 msgid "Undo and Redo"
 msgstr "Болдырмау және қайталау"
 
-#: gedit/resources/ui/gedit-shortcuts.ui:225
+#: bedit/resources/ui/bedit-shortcuts.ui:225
 msgctxt "shortcut window"
 msgid "Undo previous command"
 msgstr "Алдыңғы команданы болдырмау"
 
-#: gedit/resources/ui/gedit-shortcuts.ui:232
+#: bedit/resources/ui/bedit-shortcuts.ui:232
 msgctxt "shortcut window"
 msgid "Redo previous command"
 msgstr "Алдыңғы команданы қайталау"
 
-#: gedit/resources/ui/gedit-shortcuts.ui:240
+#: bedit/resources/ui/bedit-shortcuts.ui:240
 msgctxt "shortcut window"
 msgid "Selection"
 msgstr "Таңдалған"
 
-#: gedit/resources/ui/gedit-shortcuts.ui:245
+#: bedit/resources/ui/bedit-shortcuts.ui:245
 msgctxt "shortcut window"
 msgid "Select all text"
 msgstr "Барлық мәтінді таңдау"
 
-#: gedit/resources/ui/gedit-shortcuts.ui:253
+#: bedit/resources/ui/bedit-shortcuts.ui:253
 msgctxt "shortcut window"
 msgid "Editing"
 msgstr "Түзету"
 
-#: gedit/resources/ui/gedit-shortcuts.ui:258
+#: bedit/resources/ui/bedit-shortcuts.ui:258
 msgctxt "shortcut window"
 msgid "Toggle insert / overwrite"
 msgstr "Енгізу/үстінен жазу режимдерін ауыстыру"
 
-#: gedit/resources/ui/gedit-shortcuts.ui:265
+#: bedit/resources/ui/bedit-shortcuts.ui:265
 msgctxt "shortcut window"
 msgid "Delete current line"
 msgstr "Ағымдағы жолды өшіру"
 
-#: gedit/resources/ui/gedit-shortcuts.ui:272
+#: bedit/resources/ui/bedit-shortcuts.ui:272
 msgctxt "shortcut window"
 msgid "Join selected lines"
 msgstr "Таңдалған жолдарды біріктіру"
 
-#: gedit/resources/ui/gedit-shortcuts.ui:279
+#: bedit/resources/ui/bedit-shortcuts.ui:279
 msgctxt "shortcut window"
 msgid "Move current line up"
 msgstr "Ағымдағы жолды жоғары жылжыту"
 
-#: gedit/resources/ui/gedit-shortcuts.ui:286
+#: bedit/resources/ui/bedit-shortcuts.ui:286
 msgctxt "shortcut window"
 msgid "Move current line down"
 msgstr "Ағымдағы жолды төмен жылжыту"
 
-#: gedit/resources/ui/gedit-shortcuts.ui:293
+#: bedit/resources/ui/bedit-shortcuts.ui:293
 msgctxt "shortcut window"
 msgid "Move current word left"
 msgstr "Ағымдағы сөзді солға жылжыту"
 
-#: gedit/resources/ui/gedit-shortcuts.ui:300
+#: bedit/resources/ui/bedit-shortcuts.ui:300
 msgctxt "shortcut window"
 msgid "Move current word right"
 msgstr "Ағымдағы сөзді оңға жылжыту"
 
-#: gedit/resources/ui/gedit-shortcuts.ui:307
+#: bedit/resources/ui/bedit-shortcuts.ui:307
 msgctxt "shortcut window"
 msgid "Convert to uppercase"
 msgstr "Бас әріптерге түрлендіру"
 
-#: gedit/resources/ui/gedit-shortcuts.ui:314
+#: bedit/resources/ui/bedit-shortcuts.ui:314
 msgctxt "shortcut window"
 msgid "Convert to lowercase"
 msgstr "Кіші әріптерге түрлендіру"
 
-#: gedit/resources/ui/gedit-shortcuts.ui:321
+#: bedit/resources/ui/bedit-shortcuts.ui:321
 msgctxt "shortcut window"
 msgid "Invert case"
 msgstr "Регистрді терістеу"
 
-#: gedit/resources/ui/gedit-shortcuts.ui:328
+#: bedit/resources/ui/bedit-shortcuts.ui:328
 msgctxt "shortcut window"
 msgid "Increment number at cursor"
 msgstr "Курсор астындағы санды арттыру"
 
-#: gedit/resources/ui/gedit-shortcuts.ui:335
+#: bedit/resources/ui/bedit-shortcuts.ui:335
 msgctxt "shortcut window"
 msgid "Decrement number at cursor"
 msgstr "Курсор астындағы санды кеміту"
 
-#: gedit/resources/ui/gedit-shortcuts.ui:343
+#: bedit/resources/ui/bedit-shortcuts.ui:343
 msgctxt "shortcut window"
 msgid "Tools"
 msgstr "Саймандар"
 
-#: gedit/resources/ui/gedit-shortcuts.ui:348
+#: bedit/resources/ui/bedit-shortcuts.ui:348
 msgctxt "shortcut window"
 msgid "Check spelling"
 msgstr "Емлені тексеру"
 
-#: gedit/resources/ui/gedit-shortcuts.ui:355
+#: bedit/resources/ui/bedit-shortcuts.ui:355
 msgctxt "shortcut window"
 msgid "Print the document"
 msgstr "Құжатты баспаға шығару"
 
-#: gedit/resources/ui/gedit-shortcuts.ui:362
+#: bedit/resources/ui/bedit-shortcuts.ui:362
 msgctxt "shortcut window"
 msgid "Show completion window"
 msgstr "Толықтырулар терезесін көрсету"
 
-#: gedit/resources/ui/gedit-tab-label.ui:34
+#: bedit/resources/ui/bedit-tab-label.ui:34
 msgid "Close Document"
 msgstr "Құжатты жабу"
 
-#: gedit/resources/ui/gedit-window.ui:33 gedit/resources/ui/gedit-window.ui:66
-#: gedit/resources/ui/gedit-window.ui:401
+#: bedit/resources/ui/bedit-window.ui:33 bedit/resources/ui/bedit-window.ui:66
+#: bedit/resources/ui/bedit-window.ui:401
 msgid "Open a file"
 msgstr "Файлды ашу"
 
-#: gedit/resources/ui/gedit-window.ui:65 gedit/resources/ui/gedit-window.ui:386
-#: gedit/resources/ui/gedit-window.ui:400
+#: bedit/resources/ui/bedit-window.ui:65 bedit/resources/ui/bedit-window.ui:386
+#: bedit/resources/ui/bedit-window.ui:400
 msgid "Open"
 msgstr "Ашу"
 
-#: gedit/resources/ui/gedit-window.ui:80 gedit/resources/ui/gedit-window.ui:87
-#: gedit/resources/ui/gedit-window.ui:415
-#: gedit/resources/ui/gedit-window.ui:422
+#: bedit/resources/ui/bedit-window.ui:80 bedit/resources/ui/bedit-window.ui:87
+#: bedit/resources/ui/bedit-window.ui:415
+#: bedit/resources/ui/bedit-window.ui:422
 msgid "Create a new document"
 msgstr "Жаңа құжатты жасау"
 
-#: gedit/resources/ui/gedit-window.ui:86 gedit/resources/ui/gedit-window.ui:421
+#: bedit/resources/ui/bedit-window.ui:86 bedit/resources/ui/bedit-window.ui:421
 msgid "New"
 msgstr "Жаңа"
 
-#: gedit/resources/ui/gedit-window.ui:109
-#: gedit/resources/ui/gedit-window.ui:114
-#: gedit/resources/ui/gedit-window.ui:460
-#: gedit/resources/ui/gedit-window.ui:465
+#: bedit/resources/ui/bedit-window.ui:109
+#: bedit/resources/ui/bedit-window.ui:114
+#: bedit/resources/ui/bedit-window.ui:460
+#: bedit/resources/ui/bedit-window.ui:465
 msgid "Save the current file"
 msgstr "Ағымдағы файлды сақтау"
 
-#: gedit/resources/ui/gedit-window.ui:113
-#: gedit/resources/ui/gedit-window.ui:457
-#: gedit/resources/ui/gedit-window.ui:464
+#: bedit/resources/ui/bedit-window.ui:113
+#: bedit/resources/ui/bedit-window.ui:457
+#: bedit/resources/ui/bedit-window.ui:464
 msgid "Save"
 msgstr "Сақтау"
 
-#: gedit/resources/ui/gedit-window.ui:256
+#: bedit/resources/ui/bedit-window.ui:256
 msgid "Hide panel"
 msgstr "Панельді жасыру"
 
-#: gedit/resources/ui/gedit-window.ui:371
+#: bedit/resources/ui/bedit-window.ui:371
 msgid "Open a file dialog"
 msgstr "Файлды сұхбатын ашу"
 
-#: gedit/resources/ui/gedit-window.ui:431
-#: gedit/resources/ui/gedit-window.ui:436
-#: gedit/resources/ui/gedit-window.ui:437
+#: bedit/resources/ui/bedit-window.ui:431
+#: bedit/resources/ui/bedit-window.ui:436
+#: bedit/resources/ui/bedit-window.ui:437
 msgid "Leave Fullscreen"
 msgstr "Толық экраннан шығу"
 
@@ -2435,28 +2435,28 @@ msgid "Check update"
 msgstr "Жаңартуды тексеру"
 
 #: plugins/checkupdate/checkupdate.plugin.desktop.in:6
-msgid "Check for latest version of gedit"
-msgstr "gedit-тің соңғы нұсқасын тексеру"
+msgid "Check for latest version of bedit"
+msgstr "bedit-тің соңғы нұсқасын тексеру"
 
-#: plugins/checkupdate/gedit-check-update-plugin.c:245
+#: plugins/checkupdate/bedit-check-update-plugin.c:245
 msgid "There was an error displaying the URI."
 msgstr "URI көрсету кезінде қате орын алды."
 
-#: plugins/checkupdate/gedit-check-update-plugin.c:282
+#: plugins/checkupdate/bedit-check-update-plugin.c:282
 msgid "_Download"
 msgstr "Жү_ктеп алу"
 
-#: plugins/checkupdate/gedit-check-update-plugin.c:283
+#: plugins/checkupdate/bedit-check-update-plugin.c:283
 msgid "_Ignore Version"
 msgstr "_Нұсқаны елемеу"
 
-#: plugins/checkupdate/gedit-check-update-plugin.c:288
-msgid "There is a new version of gedit"
-msgstr "gedit-тің жаңа нұсқасы бар"
+#: plugins/checkupdate/bedit-check-update-plugin.c:288
+msgid "There is a new version of bedit"
+msgstr "bedit-тің жаңа нұсқасы бар"
 
-#: plugins/checkupdate/gedit-check-update-plugin.c:291
+#: plugins/checkupdate/bedit-check-update-plugin.c:291
 msgid ""
-"You can download the new version of gedit by clicking on the download button "
+"You can download the new version of bedit by clicking on the download button "
 "or ignore that version and wait for a new one"
 msgstr ""
 
@@ -2464,14 +2464,14 @@ msgstr ""
 msgid "Version to Ignore"
 msgstr "Елемеу үшін нұсқа"
 
-#. This is releated to the next gedit version to be released
+#. This is releated to the next bedit version to be released
 #: plugins/checkupdate/com.bwhmather.bedit.plugins.checkupdate.gschema.xml.in:7
 msgid "Version to ignore until a newer version is released."
 msgstr ""
 
 #: plugins/docinfo/docinfo.plugin.desktop.in:5
-#: plugins/docinfo/resources/ui/gedit-docinfo-plugin.ui:7
-#: plugins/docinfo/resources/ui/gedit-docinfo-plugin.ui:13
+#: plugins/docinfo/resources/ui/bedit-docinfo-plugin.ui:7
+#: plugins/docinfo/resources/ui/bedit-docinfo-plugin.ui:13
 msgid "Document Statistics"
 msgstr "Құжат статистикасы"
 
@@ -2479,35 +2479,35 @@ msgstr "Құжат статистикасы"
 msgid "Report the number of words, lines and characters in a document."
 msgstr "Құжаттағы сөздер, жолдар және таңбалар санын хабарлау."
 
-#: plugins/docinfo/gedit-docinfo-plugin.c:537
+#: plugins/docinfo/bedit-docinfo-plugin.c:537
 msgid "_Document Statistics"
 msgstr "Құ_жат статистикасы"
 
-#: plugins/docinfo/resources/ui/gedit-docinfo-plugin.ui:64
+#: plugins/docinfo/resources/ui/bedit-docinfo-plugin.ui:64
 msgid "Document"
 msgstr "Құжат"
 
-#: plugins/docinfo/resources/ui/gedit-docinfo-plugin.ui:82
+#: plugins/docinfo/resources/ui/bedit-docinfo-plugin.ui:82
 msgid "Selection"
 msgstr "Таңдалған"
 
-#: plugins/docinfo/resources/ui/gedit-docinfo-plugin.ui:97
+#: plugins/docinfo/resources/ui/bedit-docinfo-plugin.ui:97
 msgid "Lines"
 msgstr "Жолдар"
 
-#: plugins/docinfo/resources/ui/gedit-docinfo-plugin.ui:112
+#: plugins/docinfo/resources/ui/bedit-docinfo-plugin.ui:112
 msgid "Words"
 msgstr "Сөздер"
 
-#: plugins/docinfo/resources/ui/gedit-docinfo-plugin.ui:127
+#: plugins/docinfo/resources/ui/bedit-docinfo-plugin.ui:127
 msgid "Characters (with spaces)"
 msgstr "Таңбалар (бас аралықтармен)"
 
-#: plugins/docinfo/resources/ui/gedit-docinfo-plugin.ui:142
+#: plugins/docinfo/resources/ui/bedit-docinfo-plugin.ui:142
 msgid "Characters (no spaces)"
 msgstr "Таңбалар (бас аралықтарсыз)"
 
-#: plugins/docinfo/resources/ui/gedit-docinfo-plugin.ui:157
+#: plugins/docinfo/resources/ui/bedit-docinfo-plugin.ui:157
 msgid "Bytes"
 msgstr "Байттар"
 
@@ -2779,51 +2779,51 @@ msgstr "Бүйір панелінен файлдарға жеңіл қатына
 msgid "system-file-manager"
 msgstr "system-file-manager"
 
-#: plugins/filebrowser/gedit-file-bookmarks-store.c:200
+#: plugins/filebrowser/bedit-file-bookmarks-store.c:200
 msgid "Home"
 msgstr "Үй бумасы"
 
-#: plugins/filebrowser/gedit-file-bookmarks-store.c:233
+#: plugins/filebrowser/bedit-file-bookmarks-store.c:233
 msgid "File System"
 msgstr "Файлдық жүйе"
 
-#: plugins/filebrowser/gedit-file-browser-plugin.c:523
+#: plugins/filebrowser/bedit-file-browser-plugin.c:523
 msgid "File Browser"
 msgstr "Файлдар шолушысы"
 
-#: plugins/filebrowser/gedit-file-browser-plugin.c:659
+#: plugins/filebrowser/bedit-file-browser-plugin.c:659
 msgid "An error occurred while creating a new directory"
 msgstr "Жаңа буманы жасау кезінде қате кетті"
 
-#: plugins/filebrowser/gedit-file-browser-plugin.c:662
+#: plugins/filebrowser/bedit-file-browser-plugin.c:662
 msgid "An error occurred while creating a new file"
 msgstr "Жаңа файлды жасау кезінде қате кетті"
 
-#: plugins/filebrowser/gedit-file-browser-plugin.c:665
+#: plugins/filebrowser/bedit-file-browser-plugin.c:665
 msgid "An error occurred while renaming a file or directory"
 msgstr "Файл не бума атын ауыстыру кезінде қате кетті"
 
-#: plugins/filebrowser/gedit-file-browser-plugin.c:668
+#: plugins/filebrowser/bedit-file-browser-plugin.c:668
 msgid "An error occurred while deleting a file or directory"
 msgstr "Файл не буманы өшіру кезінде қате кетті"
 
-#: plugins/filebrowser/gedit-file-browser-plugin.c:671
+#: plugins/filebrowser/bedit-file-browser-plugin.c:671
 msgid "An error occurred while opening a directory in the file manager"
 msgstr "Буманы файлдар басқарушысында ашу кезінде қате кетті"
 
-#: plugins/filebrowser/gedit-file-browser-plugin.c:674
+#: plugins/filebrowser/bedit-file-browser-plugin.c:674
 msgid "An error occurred while setting a root directory"
 msgstr "Түбірлік буманы орнату кезінде қате кетті"
 
-#: plugins/filebrowser/gedit-file-browser-plugin.c:677
+#: plugins/filebrowser/bedit-file-browser-plugin.c:677
 msgid "An error occurred while loading a directory"
 msgstr "Буманы жүктеу кезінде қате кетті"
 
-#: plugins/filebrowser/gedit-file-browser-plugin.c:680
+#: plugins/filebrowser/bedit-file-browser-plugin.c:680
 msgid "An error occurred"
 msgstr "Қате кетті"
 
-#: plugins/filebrowser/gedit-file-browser-plugin.c:902
+#: plugins/filebrowser/bedit-file-browser-plugin.c:902
 msgid ""
 "Cannot move file to trash, do you\n"
 "want to delete permanently?"
@@ -2831,80 +2831,80 @@ msgstr ""
 "Файлды қоқыс шелегіне тастау мүмкін емес, оны\n"
 "қайтарылмастай өшіруді қалайсыз ба?"
 
-#: plugins/filebrowser/gedit-file-browser-plugin.c:907
+#: plugins/filebrowser/bedit-file-browser-plugin.c:907
 #, c-format
 msgid "The file “%s” cannot be moved to the trash."
 msgstr "\"%s\" файлын қоқыс шелегіне тастау мүмкін емес."
 
-#: plugins/filebrowser/gedit-file-browser-plugin.c:912
+#: plugins/filebrowser/bedit-file-browser-plugin.c:912
 msgid "The selected files cannot be moved to the trash."
 msgstr "Таңдалған файлдарды қоқыс шелегіне тастау мүмкін емес."
 
-#: plugins/filebrowser/gedit-file-browser-plugin.c:943
+#: plugins/filebrowser/bedit-file-browser-plugin.c:943
 #, c-format
 msgid "Are you sure you want to permanently delete “%s”?"
 msgstr "\"%s\" толығымен өшіруді шынымен қалайсыз ба?"
 
-#: plugins/filebrowser/gedit-file-browser-plugin.c:948
+#: plugins/filebrowser/bedit-file-browser-plugin.c:948
 msgid "Are you sure you want to permanently delete the selected files?"
 msgstr "Таңдалған файлдарды толығымен өшіруді шынымен қалайсыз ба?"
 
-#: plugins/filebrowser/gedit-file-browser-plugin.c:951
+#: plugins/filebrowser/bedit-file-browser-plugin.c:951
 msgid "If you delete an item, it is permanently lost."
 msgstr "Нәрсені өшірсеңіз, ол қайтарылмастай жоғалады."
 
-#: plugins/filebrowser/gedit-file-browser-store.c:1703
+#: plugins/filebrowser/bedit-file-browser-store.c:1703
 msgid "(Empty)"
 msgstr "(Бос)"
 
-#: plugins/filebrowser/gedit-file-browser-store.c:3327
+#: plugins/filebrowser/bedit-file-browser-store.c:3327
 msgid ""
 "The renamed file is currently filtered out. You need to adjust your filter "
 "settings to make the file visible"
 msgstr ""
 
 #. Translators: This is the default name of new files created by the file browser pane.
-#: plugins/filebrowser/gedit-file-browser-store.c:3578
+#: plugins/filebrowser/bedit-file-browser-store.c:3578
 msgid "Untitled File"
 msgstr "Атаусыз файл"
 
-#: plugins/filebrowser/gedit-file-browser-store.c:3606
+#: plugins/filebrowser/bedit-file-browser-store.c:3606
 msgid ""
 "The new file is currently filtered out. You need to adjust your filter "
 "settings to make the file visible"
 msgstr ""
 
 #. Translators: This is the default name of new directories created by the file browser pane.
-#: plugins/filebrowser/gedit-file-browser-store.c:3635
+#: plugins/filebrowser/bedit-file-browser-store.c:3635
 msgid "Untitled Folder"
 msgstr "Атаусыз бума"
 
-#: plugins/filebrowser/gedit-file-browser-store.c:3658
+#: plugins/filebrowser/bedit-file-browser-store.c:3658
 msgid ""
 "The new directory is currently filtered out. You need to adjust your filter "
 "settings to make the directory visible"
 msgstr ""
 
-#: plugins/filebrowser/gedit-file-browser-widget.c:757
+#: plugins/filebrowser/bedit-file-browser-widget.c:757
 msgid "Bookmarks"
 msgstr "Бетбелгілер"
 
-#: plugins/filebrowser/gedit-file-browser-widget.c:1957
+#: plugins/filebrowser/bedit-file-browser-widget.c:1957
 #, c-format
 msgid "No mount object for mounted volume: %s"
 msgstr ""
 
-#: plugins/filebrowser/gedit-file-browser-widget.c:2026
+#: plugins/filebrowser/bedit-file-browser-widget.c:2026
 #, c-format
 msgid "Could not open media: %s"
 msgstr "Тасушыны ашу мүмкін емес: %s"
 
-#: plugins/filebrowser/gedit-file-browser-widget.c:2069
+#: plugins/filebrowser/bedit-file-browser-widget.c:2069
 #, c-format
 msgid "Could not mount volume: %s"
 msgstr "Томды тіркеу мүмкін емес: %s"
 
-#: plugins/filebrowser/gedit-file-browser-widget.c:2581
+#: plugins/filebrowser/bedit-file-browser-widget.c:2581
 #, c-format
 msgid "Error when loading “%s”: No such directory"
 msgstr "\"%s\" жүктеу қатесі: Ондай бума жоқ"
@@ -2989,60 +2989,60 @@ msgstr ""
 msgid "The supplemental patterns to use when filtering binary files."
 msgstr ""
 
-#: plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui:13
-#: plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui:79
+#: plugins/filebrowser/resources/ui/bedit-file-browser-menus.ui:13
+#: plugins/filebrowser/resources/ui/bedit-file-browser-menus.ui:79
 msgid "_Set Root to Active Document"
 msgstr ""
 
-#: plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui:19
+#: plugins/filebrowser/resources/ui/bedit-file-browser-menus.ui:19
 msgid "_New Folder"
 msgstr "Жаңа _бума"
 
-#: plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui:23
+#: plugins/filebrowser/resources/ui/bedit-file-browser-menus.ui:23
 msgid "New F_ile"
 msgstr "Жаңа фа_йл"
 
-#: plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui:29
+#: plugins/filebrowser/resources/ui/bedit-file-browser-menus.ui:29
 msgid "_Rename…"
 msgstr "Атын ө_згерту…"
 
-#: plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui:33
+#: plugins/filebrowser/resources/ui/bedit-file-browser-menus.ui:33
 msgid "_Move to Trash"
 msgstr "Қоқы_с шелегіне тастау"
 
-#: plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui:43
+#: plugins/filebrowser/resources/ui/bedit-file-browser-menus.ui:43
 msgid "Re_fresh View"
 msgstr "Көріністі жаң_арту"
 
-#: plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui:47
+#: plugins/filebrowser/resources/ui/bedit-file-browser-menus.ui:47
 msgid "_View Folder"
 msgstr "Буманы қ_арау"
 
-#: plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui:51
+#: plugins/filebrowser/resources/ui/bedit-file-browser-menus.ui:51
 msgid "_Open in Terminal"
 msgstr "Терминалда а_шу"
 
-#: plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui:56
+#: plugins/filebrowser/resources/ui/bedit-file-browser-menus.ui:56
 msgid "_Filter"
 msgstr "_Сүзгі"
 
-#: plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui:59
+#: plugins/filebrowser/resources/ui/bedit-file-browser-menus.ui:59
 msgid "Show _Hidden"
 msgstr "Жас_ырынды көрсету"
 
-#: plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui:63
+#: plugins/filebrowser/resources/ui/bedit-file-browser-menus.ui:63
 msgid "Show _Binary"
 msgstr ""
 
-#: plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui:67
+#: plugins/filebrowser/resources/ui/bedit-file-browser-menus.ui:67
 msgid "Match Filename"
 msgstr "Файл атын сәйкестеу"
 
-#: plugins/filebrowser/resources/ui/gedit-file-browser-widget.ui:183
+#: plugins/filebrowser/resources/ui/bedit-file-browser-widget.ui:183
 msgid "History"
 msgstr "Тарихы"
 
-#: plugins/filebrowser/resources/ui/gedit-file-browser-widget.ui:184
+#: plugins/filebrowser/resources/ui/bedit-file-browser-widget.ui:184
 msgid "Open history menu"
 msgstr "Тарих мәзірін ашу"
 
@@ -3051,7 +3051,7 @@ msgid "Modelines"
 msgstr "Режимдер"
 
 #: plugins/modelines/modelines.plugin.desktop.in:6
-msgid "Emacs, Kate and Vim-style modelines support for gedit."
+msgid "Emacs, Kate and Vim-style modelines support for bedit."
 msgstr ""
 
 #: plugins/pythonconsole/com.bwhmather.bedit.plugins.pythonconsole.gschema.xml.in:5
@@ -3376,32 +3376,32 @@ msgstr "Снипетті белсендіретін пернелер жарлы�
 msgid "_Drop targets:"
 msgstr ""
 
-#: plugins/sort/gedit-sort-plugin.c:243
+#: plugins/sort/bedit-sort-plugin.c:243
 msgid "S_ort…"
 msgstr "Сұр_ыптау…"
 
-#: plugins/sort/resources/ui/gedit-sort-plugin.ui:13
+#: plugins/sort/resources/ui/bedit-sort-plugin.ui:13
 #: plugins/sort/sort.plugin.desktop.in:5
 msgid "Sort"
 msgstr "Сұрыптау"
 
-#: plugins/sort/resources/ui/gedit-sort-plugin.ui:38
+#: plugins/sort/resources/ui/bedit-sort-plugin.ui:38
 msgid "_Reverse order"
 msgstr "К_ері ретпен"
 
-#: plugins/sort/resources/ui/gedit-sort-plugin.ui:54
+#: plugins/sort/resources/ui/bedit-sort-plugin.ui:54
 msgid "R_emove duplicates"
 msgstr "Қа_йталанатындарды өшіру"
 
-#: plugins/sort/resources/ui/gedit-sort-plugin.ui:70
+#: plugins/sort/resources/ui/bedit-sort-plugin.ui:70
 msgid "C_ase sensitive"
 msgstr "Р_егистрге тәуелді"
 
-#: plugins/sort/resources/ui/gedit-sort-plugin.ui:93
+#: plugins/sort/resources/ui/bedit-sort-plugin.ui:93
 msgid "S_tart at column:"
 msgstr "Бағаннан бас_тау:"
 
-#: plugins/sort/resources/ui/gedit-sort-plugin.ui:150
+#: plugins/sort/resources/ui/bedit-sort-plugin.ui:150
 msgid "_Sort"
 msgstr "_Сұрыптау"
 
@@ -3415,15 +3415,15 @@ msgstr "Құжатты не таңдалған мәтінді сұрыптау."
 msgid "view-sort-ascending"
 msgstr "view-sort-ascending"
 
-#: plugins/spell/gedit-spell-app-activatable.c:143
+#: plugins/spell/bedit-spell-app-activatable.c:143
 msgid "_Check Spelling…"
 msgstr "Емлені тек_серу…"
 
-#: plugins/spell/gedit-spell-app-activatable.c:147
+#: plugins/spell/bedit-spell-app-activatable.c:147
 msgid "Set _Language…"
 msgstr "Ті_лді орнату…"
 
-#: plugins/spell/gedit-spell-app-activatable.c:151
+#: plugins/spell/bedit-spell-app-activatable.c:151
 msgid "_Highlight Misspelled Words"
 msgstr "Қате жазылған сөздерді _түспен ерекшелеу"
 
@@ -3443,11 +3443,11 @@ msgstr "Ағымдағы құжаттың емлесін тексереді."
 msgid "tools-check-spelling"
 msgstr "tools-check-spelling"
 
-#: plugins/time/gedit-time-plugin.c:265
+#: plugins/time/bedit-time-plugin.c:265
 msgid "In_sert Date and Time…"
 msgstr "Күн және уақытты кірі_стіру…"
 
-#: plugins/time/gedit-time-plugin.c:491
+#: plugins/time/bedit-time-plugin.c:491
 msgid "Available formats"
 msgstr "Қолжетерлік пішімдер"
 
@@ -3477,45 +3477,45 @@ msgstr "Таңдауыңызша пішім"
 msgid "The custom format used when inserting the date/time."
 msgstr "Күн/уақытты кірістіру кезінде қолданылатын таңдауыңызша пішім."
 
-#: plugins/time/resources/ui/gedit-time-dialog.ui:7
+#: plugins/time/resources/ui/bedit-time-dialog.ui:7
 msgid "Insert Date and Time"
 msgstr "Күн және уақытты кірістіру"
 
-#: plugins/time/resources/ui/gedit-time-dialog.ui:23
-#: plugins/time/resources/ui/gedit-time-setup-dialog.ui:94
+#: plugins/time/resources/ui/bedit-time-dialog.ui:23
+#: plugins/time/resources/ui/bedit-time-setup-dialog.ui:94
 msgid "Use the _selected format"
 msgstr "Таң_далған пішімді қолдану"
 
-#: plugins/time/resources/ui/gedit-time-dialog.ui:65
-#: plugins/time/resources/ui/gedit-time-setup-dialog.ui:141
+#: plugins/time/resources/ui/bedit-time-dialog.ui:65
+#: plugins/time/resources/ui/bedit-time-setup-dialog.ui:141
 msgid "_Use custom format"
 msgstr "_Таңдауыңызша пішімді қолдану"
 
 #. Translators: Use the more common date format in your locale
-#: plugins/time/resources/ui/gedit-time-dialog.ui:89
-#: plugins/time/resources/ui/gedit-time-setup-dialog.ui:165
+#: plugins/time/resources/ui/bedit-time-dialog.ui:89
+#: plugins/time/resources/ui/bedit-time-setup-dialog.ui:165
 msgid "%d/%m/%Y %H:%M:%S"
 msgstr "%d/%m/%Y %H:%M:%S"
 
 #. Translators: This example should follow the date format defined in the entry above
-#: plugins/time/resources/ui/gedit-time-dialog.ui:106
-#: plugins/time/resources/ui/gedit-time-setup-dialog.ui:181
+#: plugins/time/resources/ui/bedit-time-dialog.ui:106
+#: plugins/time/resources/ui/bedit-time-setup-dialog.ui:181
 msgid "01/11/2009 17:52:00"
 msgstr "01/11/2014 17:52:00"
 
-#: plugins/time/resources/ui/gedit-time-dialog.ui:167
+#: plugins/time/resources/ui/bedit-time-dialog.ui:167
 msgid "_Insert"
 msgstr "Кірі_стіру"
 
-#: plugins/time/resources/ui/gedit-time-setup-dialog.ui:6
+#: plugins/time/resources/ui/bedit-time-setup-dialog.ui:6
 msgid "Configure date/time plugin"
 msgstr "Күн/уақыт плагинін баптау"
 
-#: plugins/time/resources/ui/gedit-time-setup-dialog.ui:57
+#: plugins/time/resources/ui/bedit-time-setup-dialog.ui:57
 msgid "When inserting date/time…"
 msgstr "Күн/уақытты кірістіру кезінде…"
 
-#: plugins/time/resources/ui/gedit-time-setup-dialog.ui:75
+#: plugins/time/resources/ui/bedit-time-setup-dialog.ui:75
 msgid "_Prompt for a format"
 msgstr "_Пішімді сұрау"
 
@@ -3527,8 +3527,8 @@ msgstr "Күн / Уақытты кірістіру"
 msgid "Inserts current date and time at the cursor position."
 msgstr "Курсор тұрған орынға ағымдағы күнді және уақытты кірістіру."
 
-#~ msgid "gedit Text Editor"
-#~ msgstr "gedit мәтіндік түзетушісі"
+#~ msgid "bedit Text Editor"
+#~ msgstr "bedit мәтіндік түзетушісі"
 
 #~ msgid "_About"
 #~ msgstr "О_сы туралы"
@@ -3704,8 +3704,8 @@ msgstr "Курсор тұрған орынға ағымдағы күнді жә�
 #~ msgid "_Search for: "
 #~ msgstr "_Нені іздеу керек:"
 
-#~ msgid "gedit Preferences"
-#~ msgstr "gedit қалаулары"
+#~ msgid "bedit Preferences"
+#~ msgstr "bedit қалаулары"
 
 #~ msgid "Current Line"
 #~ msgstr "Ағымдағы жол"

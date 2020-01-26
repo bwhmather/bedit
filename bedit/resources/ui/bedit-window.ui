@@ -6,7 +6,7 @@
     <property name="has_focus">False</property>
     <property name="is_focus">False</property>
     <style>
-      <class name="org-gnome-gedit"/>
+      <class name="org-gnome-bedit"/>
     </style>
     <child type="titlebar">
       <object class="GtkPaned" id="titlebar_paned">
@@ -99,7 +99,7 @@
                 <property name="has_focus">False</property>
                 <property name="is_focus">False</property>
                 <style>
-                  <class name="gedit-side-panel-paned"/>
+                  <class name="bedit-side-panel-paned"/>
                 </style>
                 <child>
                   <object class="GtkBox" id="side_panel_box">
@@ -110,7 +110,7 @@
                         <property name="visible">False</property>
                         <property name="stack">side_panel</property>
                         <style>
-                          <class name="gedit-side-panel-stack-switcher"/>
+                          <class name="bedit-side-panel-stack-switcher"/>
                         </style>
                       </object>
                       <packing>
@@ -147,7 +147,7 @@
                         <property name="is_focus">False</property>
                         <property name="orientation">vertical</property>
                         <style>
-                          <class name="gedit-bottom-panel-paned"/>
+                          <class name="bedit-bottom-panel-paned"/>
                         </style>
                         <child>
                           <object class="BeditMultiNotebook" id="multi_notebook">
@@ -163,7 +163,7 @@
                             <property name="visible" bind-source="bottom_panel" bind-property="visible" bind-flags="sync-create"/>
                             <property name="orientation">horizontal</property>
                             <style>
-                              <class name="gedit-bottom-panel"/>
+                              <class name="bedit-bottom-panel"/>
                             </style>
                             <child>
                               <object class="GtkBox" id="bottom_panel_stack_box">
@@ -184,7 +184,7 @@
                                     <property name="visible">True</property>
                                     <property name="stack">bottom_panel</property>
                                     <style>
-                                      <class name="gedit-bottom-panel-stack-switcher"/>
+                                      <class name="bedit-bottom-panel-stack-switcher"/>
                                     </style>
                                   </object>
                                   <packing>

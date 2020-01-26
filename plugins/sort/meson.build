@@ -1,9 +1,9 @@
 libsort_sources = files(
-  'gedit-sort-plugin.c',
+  'bedit-sort-plugin.c',
 )
 
 libsort_deps = [
-  libgedit_dep,
+  libbedit_dep,
 ]
 
 subdir('resources')

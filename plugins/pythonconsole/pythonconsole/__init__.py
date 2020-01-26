@@ -20,7 +20,7 @@
 # Parts from "Interactive Python-GTK Console" (stolen from epiphany's console.py)
 #     Copyright (C), 1998 James Henstridge <james@daa.com.au>
 #     Copyright (C), 2005 Adam Hooper <adamh@densi.com>
-# Bits from gedit Python Console Plugin
+# Bits from bedit Python Console Plugin
 #     Copyrignt (C), 2005 Raphaël Slinckx
 
 import gi
@@ -35,8 +35,8 @@ from .config import PythonConsoleConfigWidget
 
 try:
     import gettext
-    gettext.bindtextdomain('gedit')
-    gettext.textdomain('gedit')
+    gettext.bindtextdomain('bedit')
+    gettext.textdomain('bedit')
     _ = gettext.gettext
 except:
     _ = lambda s: s
@@ -51,7 +51,7 @@ class PythonConsolePlugin(GObject.Object, Bedit.WindowActivatable, PeasGtk.Confi
 
     def do_activate(self):
         self._console = PythonConsole(namespace = {'__builtins__' : __builtins__,
-                                                   'gedit' : Bedit,
+                                                   'bedit' : Bedit,
                                                    'window' : self.window})
         self._console.eval('print("You can access the main window through ' \
                            '\'window\' :\\n%s" % window)', False)

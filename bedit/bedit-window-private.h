@@ -1,6 +1,6 @@
 /*
- * gedit-window-private.h
- * This file is part of gedit
+ * bedit-window-private.h
+ * This file is part of bedit
  *
  * Copyright (C) 2005 - Paolo Maggi
  *
@@ -23,14 +23,14 @@
 
 #include <libpeas/peas-extension-set.h>
 
-#include "gedit/gedit-window.h"
-#include "gedit-message-bus.h"
-#include "gedit-settings.h"
-#include "gedit-multi-notebook.h"
+#include "bedit/bedit-window.h"
+#include "bedit-message-bus.h"
+#include "bedit-settings.h"
+#include "bedit-multi-notebook.h"
 
 G_BEGIN_DECLS
 
-/* WindowPrivate is in a separate .h so that we can access it from gedit-commands */
+/* WindowPrivate is in a separate .h so that we can access it from bedit-commands */
 
 struct _BeditWindowPrivate
 {

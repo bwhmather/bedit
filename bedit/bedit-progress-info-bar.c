@@ -1,6 +1,6 @@
 /*
- * gedit-progress-info-bar.c
- * This file is part of gedit
+ * bedit-progress-info-bar.c
+ * This file is part of bedit
  *
  * Copyright (C) 2005 - Paolo Maggi
  *
@@ -18,7 +18,7 @@
  * along with this program; if not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "gedit-progress-info-bar.h"
+#include "bedit-progress-info-bar.h"
 #include <glib/gi18n.h>
 
 enum {
@@ -38,10 +38,10 @@ struct _BeditProgressInfoBar
 	GtkWidget *progress;
 };
 
-G_DEFINE_TYPE (BeditProgressInfoBar, gedit_progress_info_bar, GTK_TYPE_INFO_BAR)
+G_DEFINE_TYPE (BeditProgressInfoBar, bedit_progress_info_bar, GTK_TYPE_INFO_BAR)
 
 static void
-gedit_progress_info_bar_set_has_cancel_button (BeditProgressInfoBar *bar,
+bedit_progress_info_bar_set_has_cancel_button (BeditProgressInfoBar *bar,
 					       gboolean              has_button)
 {
 	if (has_button)
@@ -51,7 +51,7 @@ gedit_progress_info_bar_set_has_cancel_button (BeditProgressInfoBar *bar,
 }
 
 static void
-gedit_progress_info_bar_set_property (GObject      *object,
+bedit_progress_info_bar_set_property (GObject      *object,
 				      guint         prop_id,
 				      const GValue *value,
 				      GParamSpec   *pspec)
@@ -63,7 +63,7 @@ gedit_progress_info_bar_set_property (GObject      *object,
 	switch (prop_id)
 	{
 		case PROP_HAS_CANCEL_BUTTON:
-			gedit_progress_info_bar_set_has_cancel_button (bar,
+			bedit_progress_info_bar_set_has_cancel_button (bar,
 								       g_value_get_boolean (value));
 			break;
 		default:
@@ -73,12 +73,12 @@ gedit_progress_info_bar_set_property (GObject      *object,
 }
 
 static void
-gedit_progress_info_bar_class_init (BeditProgressInfoBarClass *klass)
+bedit_progress_info_bar_class_init (BeditProgressInfoBarClass *klass)
 {
 	GObjectClass *gobject_class = G_OBJECT_CLASS (klass);
 	GtkWidgetClass *widget_class = GTK_WIDGET_CLASS (klass);
 
-	gobject_class->set_property = gedit_progress_info_bar_set_property;
+	gobject_class->set_property = bedit_progress_info_bar_set_property;
 
 	properties[PROP_HAS_CANCEL_BUTTON] =
 		 g_param_spec_boolean ("has-cancel-button",
@@ -93,20 +93,20 @@ gedit_progress_info_bar_class_init (BeditProgressInfoBarClass *klass)
 
 	/* Bind class to template */
 	gtk_widget_class_set_template_from_resource (widget_class,
-	                                             "/com/bwhmather/bedit/ui/gedit-progress-info-bar.ui");
+	                                             "/com/bwhmather/bedit/ui/bedit-progress-info-bar.ui");
 	gtk_widget_class_bind_template_child (widget_class, BeditProgressInfoBar, image);
 	gtk_widget_class_bind_template_child (widget_class, BeditProgressInfoBar, label);
 	gtk_widget_class_bind_template_child (widget_class, BeditProgressInfoBar, progress);
 }
 
 static void
-gedit_progress_info_bar_init (BeditProgressInfoBar *bar)
+bedit_progress_info_bar_init (BeditProgressInfoBar *bar)
 {
 	gtk_widget_init_template (GTK_WIDGET (bar));
 }
 
 GtkWidget *
-gedit_progress_info_bar_new (const gchar *icon_name,
+bedit_progress_info_bar_new (const gchar *icon_name,
 			     const gchar *markup,
 			     gboolean     has_cancel)
 {
@@ -119,14 +119,14 @@ gedit_progress_info_bar_new (const gchar *icon_name,
 						     "has-cancel-button", has_cancel,
 						     NULL));
 
-	gedit_progress_info_bar_set_icon_name (bar, icon_name);
-	gedit_progress_info_bar_set_markup (bar, markup);
+	bedit_progress_info_bar_set_icon_name (bar, icon_name);
+	bedit_progress_info_bar_set_markup (bar, markup);
 
 	return GTK_WIDGET (bar);
 }
 
 void
-gedit_progress_info_bar_set_icon_name (BeditProgressInfoBar *bar,
+bedit_progress_info_bar_set_icon_name (BeditProgressInfoBar *bar,
 				       const gchar          *icon_name)
 {
 	g_return_if_fail (GEDIT_IS_PROGRESS_INFO_BAR (bar));
@@ -138,7 +138,7 @@ gedit_progress_info_bar_set_icon_name (BeditProgressInfoBar *bar,
 }
 
 void
-gedit_progress_info_bar_set_markup (BeditProgressInfoBar *bar,
+bedit_progress_info_bar_set_markup (BeditProgressInfoBar *bar,
 				    const gchar          *markup)
 {
 	g_return_if_fail (GEDIT_IS_PROGRESS_INFO_BAR (bar));
@@ -148,7 +148,7 @@ gedit_progress_info_bar_set_markup (BeditProgressInfoBar *bar,
 }
 
 void
-gedit_progress_info_bar_set_text (BeditProgressInfoBar *bar,
+bedit_progress_info_bar_set_text (BeditProgressInfoBar *bar,
 				  const gchar          *text)
 {
 	g_return_if_fail (GEDIT_IS_PROGRESS_INFO_BAR (bar));
@@ -158,7 +158,7 @@ gedit_progress_info_bar_set_text (BeditProgressInfoBar *bar,
 }
 
 void
-gedit_progress_info_bar_set_fraction (BeditProgressInfoBar *bar,
+bedit_progress_info_bar_set_fraction (BeditProgressInfoBar *bar,
 				      gdouble               fraction)
 {
 	g_return_if_fail (GEDIT_IS_PROGRESS_INFO_BAR (bar));
@@ -167,7 +167,7 @@ gedit_progress_info_bar_set_fraction (BeditProgressInfoBar *bar,
 }
 
 void
-gedit_progress_info_bar_pulse (BeditProgressInfoBar *bar)
+bedit_progress_info_bar_pulse (BeditProgressInfoBar *bar)
 {
 	g_return_if_fail (GEDIT_IS_PROGRESS_INFO_BAR (bar));
 

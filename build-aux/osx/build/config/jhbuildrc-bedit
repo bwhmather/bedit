@@ -34,7 +34,7 @@ else:
 
 # Main module set
 modulesets_dir = os.path.join(_sourcedir, "modulesets")
-moduleset = "gedit.modules"
-modules = ["gedit-meta"]
+moduleset = "bedit.modules"
+modules = ["bedit-meta"]
 
 os.environ['HOME'] = os.environ['__GEDIT_OSX_OLD_HOME']

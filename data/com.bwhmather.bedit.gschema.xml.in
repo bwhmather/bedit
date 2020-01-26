@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<schemalist gettext-domain="gedit">
+<schemalist gettext-domain="bedit">
   <enum id="com.bwhmather.bedit.WrapMode">
     <value nick="none" value="0"/>
     <value nick="char" value="1"/>
@@ -34,7 +34,7 @@
     <key name="use-default-font" type="b">
       <default>true</default>
       <summary>Use Default Font</summary>
-      <description>Whether to use the system’s default fixed width font for editing text instead of a font specific to gedit. If this option is turned off, then the font named in the “Editor Font” option will be used instead of the system font.</description>
+      <description>Whether to use the system’s default fixed width font for editing text instead of a font specific to bedit. If this option is turned off, then the font named in the “Editor Font” option will be used instead of the system font.</description>
     </key>
     <key name="editor-font" type="s">
       <!-- Translators: This is a GSettings default value. Do NOT change or localize the quotation marks! -->
@@ -50,22 +50,22 @@
     <key name="create-backup-copy" type="b">
       <default>false</default>
       <summary>Create Backup Copies</summary>
-      <description>Whether gedit should create backup copies for the files it saves.</description>
+      <description>Whether bedit should create backup copies for the files it saves.</description>
     </key>
     <key name="auto-save" type="b">
       <default>false</default>
       <summary>Autosave</summary>
-      <description>Whether gedit should automatically save modified files after a time interval. You can set the time interval with the “Autosave Interval” option.</description>
+      <description>Whether bedit should automatically save modified files after a time interval. You can set the time interval with the “Autosave Interval” option.</description>
     </key>
     <key name="auto-save-interval" type="u">
       <default>10</default>
       <summary>Autosave Interval</summary>
-      <description>Number of minutes after which gedit will automatically save modified files. This will only take effect if the “Autosave” option is turned on.</description>
+      <description>Number of minutes after which bedit will automatically save modified files. This will only take effect if the “Autosave” option is turned on.</description>
     </key>
     <key name="max-undo-actions" type="i">
       <default>2000</default>
       <summary>Maximum Number of Undo Actions</summary>
-      <description>Maximum number of actions that gedit will be able to undo or redo. Use “-1” for unlimited number of actions.</description>
+      <description>Maximum number of actions that bedit will be able to undo or redo. Use “-1” for unlimited number of actions.</description>
     </key>
     <key name="wrap-mode" enum="com.bwhmather.bedit.WrapMode">
       <aliases>
@@ -94,32 +94,32 @@
     <key name="insert-spaces" type="b">
       <default>false</default>
       <summary>Insert spaces</summary>
-      <description>Whether gedit should insert spaces instead of tabs.</description>
+      <description>Whether bedit should insert spaces instead of tabs.</description>
     </key>
     <key name="auto-indent" type="b">
       <default>true</default>
       <summary>Automatic indent</summary>
-      <description>Whether gedit should enable automatic indentation.</description>
+      <description>Whether bedit should enable automatic indentation.</description>
     </key>
     <key name="display-line-numbers" type="b">
       <default>true</default>
       <summary>Display Line Numbers</summary>
-      <description>Whether gedit should display line numbers in the editing area.</description>
+      <description>Whether bedit should display line numbers in the editing area.</description>
     </key>
     <key name="highlight-current-line" type="b">
       <default>true</default>
       <summary>Highlight Current Line</summary>
-      <description>Whether gedit should highlight the current line.</description>
+      <description>Whether bedit should highlight the current line.</description>
     </key>
     <key name="bracket-matching" type="b">
       <default>true</default>
       <summary>Highlight Matching Brackets</summary>
-      <description>Whether gedit should highlight matching brackets.</description>
+      <description>Whether bedit should highlight matching brackets.</description>
     </key>
     <key name="display-right-margin" type="b">
       <default>false</default>
       <summary>Display Right Margin</summary>
-      <description>Whether gedit should display the right margin in the editing area.</description>
+      <description>Whether bedit should display the right margin in the editing area.</description>
     </key>
     <key name="right-margin-position" type="u">
       <default>80</default>
@@ -145,22 +145,22 @@
     <key name="restore-cursor-position" type="b">
       <default>true</default>
       <summary>Restore Previous Cursor Position</summary>
-      <description>Whether gedit should restore the previous cursor position when a file is loaded.</description>
+      <description>Whether bedit should restore the previous cursor position when a file is loaded.</description>
     </key>
     <key name="syntax-highlighting" type="b">
       <default>true</default>
       <summary>Enable Syntax Highlighting</summary>
-      <description>Whether gedit should enable syntax highlighting.</description>
+      <description>Whether bedit should enable syntax highlighting.</description>
     </key>
     <key name="search-highlighting" type="b">
       <default>true</default>
       <summary>Enable Search Highlighting</summary>
-      <description>Whether gedit should highlight all the occurrences of the searched text.</description>
+      <description>Whether bedit should highlight all the occurrences of the searched text.</description>
     </key>
     <key name="ensure-trailing-newline" type="b">
       <default>true</default>
       <summary>Ensure Trailing Newline</summary>
-      <description>Whether gedit will ensure that documents always end with a trailing newline.</description>
+      <description>Whether bedit will ensure that documents always end with a trailing newline.</description>
     </key>
   </schema>
   <schema id="com.bwhmather.bedit.preferences.ui" path="/com/bwhmather/bedit/preferences/ui/">
@@ -187,12 +187,12 @@
     <key name="print-syntax-highlighting" type="b">
       <default>true</default>
       <summary>Print Syntax Highlighting</summary>
-      <description>Whether gedit should print syntax highlighting when printing documents.</description>
+      <description>Whether bedit should print syntax highlighting when printing documents.</description>
     </key>
     <key name="print-header" type="b">
       <default>true</default>
       <summary>Print Header</summary>
-      <description>Whether gedit should include a document header when printing documents.</description>
+      <description>Whether bedit should include a document header when printing documents.</description>
     </key>
     <key name="print-wrap-mode" enum="com.bwhmather.bedit.WrapMode">
       <aliases>
@@ -207,7 +207,7 @@
     <key name="print-line-numbers" type="u">
       <default>0</default>
       <summary>Print Line Numbers</summary>
-      <description>If this value is 0, then no line numbers will be inserted when printing a document. Otherwise, gedit will print line numbers every such number of lines.</description>
+      <description>If this value is 0, then no line numbers will be inserted when printing a document. Otherwise, bedit will print line numbers every such number of lines.</description>
     </key>
     <key name="print-font-body-pango" type="s">
       <!-- Translators: This is a GSettings default value. Do NOT change or localize the quotation marks! -->
@@ -254,7 +254,7 @@
       <summary>Candidate Encodings</summary>
       <description>List of candidate encodings shown in the Character Encoding menu in the open/save file chooser.
       “CURRENT” represents the current locale encoding. Only recognized encodings are used.
-      The default value is the empty list, in which case gedit will choose good defaults depending on the country and language.</description>
+      The default value is the empty list, in which case bedit will choose good defaults depending on the country and language.</description>
     </key>
   </schema>
   <schema id="com.bwhmather.bedit.state" path="/com/bwhmather/bedit/state/">
@@ -299,7 +299,7 @@
     <key name="active-plugins" type="as">
       <default>[@ACTIVE_PLUGINS@]</default>
       <summary>Active plugins</summary>
-      <description>List of active plugins. It contains the “Location” of the active plugins. See the .gedit-plugin file for obtaining the “Location” of a given plugin.</description>
+      <description>List of active plugins. It contains the “Location” of the active plugins. See the .bedit-plugin file for obtaining the “Location” of a given plugin.</description>
     </key>
   </schema>
 </schemalist>

@@ -1,6 +1,6 @@
 /*
- * gedit-notebook-stack-switcher.h
- * This file is part of gedit
+ * bedit-notebook-stack-switcher.h
+ * This file is part of bedit
  *
  * Copyright (C) 2014 - Paolo Borelli
  *
@@ -20,7 +20,7 @@
 
 #include "config.h"
 
-#include "gedit-notebook-stack-switcher.h"
+#include "bedit-notebook-stack-switcher.h"
 
 #include <glib.h>
 #include <glib/gi18n.h>
@@ -44,14 +44,14 @@ enum {
 	PROP_STACK
 };
 
-G_DEFINE_TYPE_WITH_PRIVATE (BeditNotebookStackSwitcher, gedit_notebook_stack_switcher, GTK_TYPE_BIN)
+G_DEFINE_TYPE_WITH_PRIVATE (BeditNotebookStackSwitcher, bedit_notebook_stack_switcher, GTK_TYPE_BIN)
 
 static void
-gedit_notebook_stack_switcher_init (BeditNotebookStackSwitcher *switcher)
+bedit_notebook_stack_switcher_init (BeditNotebookStackSwitcher *switcher)
 {
 	BeditNotebookStackSwitcherPrivate *priv;
 
-	priv = gedit_notebook_stack_switcher_get_instance_private (switcher);
+	priv = bedit_notebook_stack_switcher_get_instance_private (switcher);
 	switcher->priv = priv;
 
 	priv->notebook = gtk_notebook_new ();
@@ -207,7 +207,7 @@ on_notebook_switch_page (GtkNotebook                *notebook,
 
 	/* NOTE: we make the assumption here that if there is no visible child
 	 * it means that the child does not contain any child already, this is
-	 * to avoid an assertion when closing gedit, since the remove signal
+	 * to avoid an assertion when closing bedit, since the remove signal
 	 * runs first on the stack handler so we try to set a visible child
 	 * when the stack already does not handle that child
 	 */
@@ -247,7 +247,7 @@ connect_signals (BeditNotebookStackSwitcher *switcher)
 }
 
 void
-gedit_notebook_stack_switcher_set_stack (BeditNotebookStackSwitcher *switcher,
+bedit_notebook_stack_switcher_set_stack (BeditNotebookStackSwitcher *switcher,
                                          GtkStack                   *stack)
 {
 	BeditNotebookStackSwitcherPrivate *priv;
@@ -276,7 +276,7 @@ gedit_notebook_stack_switcher_set_stack (BeditNotebookStackSwitcher *switcher,
 }
 
 GtkStack *
-gedit_notebook_stack_switcher_get_stack (BeditNotebookStackSwitcher *switcher)
+bedit_notebook_stack_switcher_get_stack (BeditNotebookStackSwitcher *switcher)
 {
 	g_return_val_if_fail (GEDIT_IS_NOTEBOOK_STACK_SWITCHER (switcher), NULL);
 
@@ -284,7 +284,7 @@ gedit_notebook_stack_switcher_get_stack (BeditNotebookStackSwitcher *switcher)
 }
 
 static void
-gedit_notebook_stack_switcher_get_property (GObject    *object,
+bedit_notebook_stack_switcher_get_property (GObject    *object,
                                             guint       prop_id,
                                             GValue     *value,
                                             GParamSpec *pspec)
@@ -305,7 +305,7 @@ gedit_notebook_stack_switcher_get_property (GObject    *object,
 }
 
 static void
-gedit_notebook_stack_switcher_set_property (GObject      *object,
+bedit_notebook_stack_switcher_set_property (GObject      *object,
                                             guint         prop_id,
                                             const GValue *value,
                                             GParamSpec   *pspec)
@@ -315,7 +315,7 @@ gedit_notebook_stack_switcher_set_property (GObject      *object,
 	switch (prop_id)
 	{
 		case PROP_STACK:
-			gedit_notebook_stack_switcher_set_stack (switcher, g_value_get_object (value));
+			bedit_notebook_stack_switcher_set_stack (switcher, g_value_get_object (value));
 			break;
 
 		default:
@@ -325,23 +325,23 @@ gedit_notebook_stack_switcher_set_property (GObject      *object,
 }
 
 static void
-gedit_notebook_stack_switcher_dispose (GObject *object)
+bedit_notebook_stack_switcher_dispose (GObject *object)
 {
 	BeditNotebookStackSwitcher *switcher = GEDIT_NOTEBOOK_STACK_SWITCHER (object);
 
-	gedit_notebook_stack_switcher_set_stack (switcher, NULL);
+	bedit_notebook_stack_switcher_set_stack (switcher, NULL);
 
-	G_OBJECT_CLASS (gedit_notebook_stack_switcher_parent_class)->dispose (object);
+	G_OBJECT_CLASS (bedit_notebook_stack_switcher_parent_class)->dispose (object);
 }
 
 static void
-gedit_notebook_stack_switcher_class_init (BeditNotebookStackSwitcherClass *klass)
+bedit_notebook_stack_switcher_class_init (BeditNotebookStackSwitcherClass *klass)
 {
 	GObjectClass *object_class = G_OBJECT_CLASS (klass);
 
-	object_class->get_property = gedit_notebook_stack_switcher_get_property;
-	object_class->set_property = gedit_notebook_stack_switcher_set_property;
-	object_class->dispose = gedit_notebook_stack_switcher_dispose;
+	object_class->get_property = bedit_notebook_stack_switcher_get_property;
+	object_class->set_property = bedit_notebook_stack_switcher_set_property;
+	object_class->dispose = bedit_notebook_stack_switcher_dispose;
 
 	g_object_class_install_property (object_class,
 	                                 PROP_STACK,
@@ -354,7 +354,7 @@ gedit_notebook_stack_switcher_class_init (BeditNotebookStackSwitcherClass *klass
 }
 
 GtkWidget *
-gedit_notebook_stack_switcher_new (void)
+bedit_notebook_stack_switcher_new (void)
 {
 	return g_object_new (GEDIT_TYPE_NOTEBOOK_STACK_SWITCHER, NULL);
 }

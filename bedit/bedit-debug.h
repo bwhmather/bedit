@@ -1,6 +1,6 @@
 /*
- * gedit-debug.h
- * This file is part of gedit
+ * bedit-debug.h
+ * This file is part of bedit
  *
  * Copyright (C) 1998, 1999 Alex Roberts, Evan Lawrence
  * Copyright (C) 2000, 2001 Chema Celorio, Paolo Maggi
@@ -63,20 +63,20 @@ typedef enum {
 #define	DEBUG_UTILS	GEDIT_DEBUG_UTILS,   __FILE__, __LINE__, G_STRFUNC
 #define	DEBUG_METADATA	GEDIT_DEBUG_METADATA,__FILE__, __LINE__, G_STRFUNC
 
-void gedit_debug_init (void);
+void bedit_debug_init (void);
 
-void gedit_debug (BeditDebugSection  section,
+void bedit_debug (BeditDebugSection  section,
 		  const gchar       *file,
 		  gint               line,
 		  const gchar       *function);
 
-void gedit_debug_message (BeditDebugSection  section,
+void bedit_debug_message (BeditDebugSection  section,
 			  const gchar       *file,
 			  gint               line,
 			  const gchar       *function,
 			  const gchar       *format, ...) G_GNUC_PRINTF(5, 6);
 
-void gedit_debug_plugin_message (const gchar       *file,
+void bedit_debug_plugin_message (const gchar       *file,
 				 gint               line,
 				 const gchar       *function,
 				 const gchar       *message);

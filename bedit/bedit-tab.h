@@ -1,6 +1,6 @@
 /*
- * gedit-tab.h
- * This file is part of gedit
+ * bedit-tab.h
+ * This file is part of bedit
  *
  * Copyright (C) 2005 - Paolo Maggi
  *
@@ -22,8 +22,8 @@
 #define GEDIT_TAB_H
 
 #include <gtksourceview/gtksource.h>
-#include <gedit/gedit-view.h>
-#include <gedit/gedit-document.h>
+#include <bedit/bedit-view.h>
+#include <bedit/bedit-document.h>
 
 G_BEGIN_DECLS
 
@@ -44,30 +44,30 @@ typedef enum
 	GEDIT_TAB_NUM_OF_STATES /* This is not a valid state */
 } BeditTabState;
 
-#define GEDIT_TYPE_TAB (gedit_tab_get_type())
+#define GEDIT_TYPE_TAB (bedit_tab_get_type())
 
-G_DECLARE_FINAL_TYPE (BeditTab, gedit_tab, GEDIT, TAB, GtkBox)
+G_DECLARE_FINAL_TYPE (BeditTab, bedit_tab, GEDIT, TAB, GtkBox)
 
-BeditView	*gedit_tab_get_view			(BeditTab            *tab);
+BeditView	*bedit_tab_get_view			(BeditTab            *tab);
 
 /* This is only an helper function */
-BeditDocument	*gedit_tab_get_document			(BeditTab            *tab);
+BeditDocument	*bedit_tab_get_document			(BeditTab            *tab);
 
-BeditTab	*gedit_tab_get_from_document		(BeditDocument       *doc);
+BeditTab	*bedit_tab_get_from_document		(BeditDocument       *doc);
 
-BeditTabState	 gedit_tab_get_state			(BeditTab            *tab);
+BeditTabState	 bedit_tab_get_state			(BeditTab            *tab);
 
-gboolean	 gedit_tab_get_auto_save_enabled	(BeditTab            *tab);
+gboolean	 bedit_tab_get_auto_save_enabled	(BeditTab            *tab);
 
-void		 gedit_tab_set_auto_save_enabled	(BeditTab            *tab,
+void		 bedit_tab_set_auto_save_enabled	(BeditTab            *tab,
 							 gboolean            enable);
 
-gint		 gedit_tab_get_auto_save_interval	(BeditTab            *tab);
+gint		 bedit_tab_get_auto_save_interval	(BeditTab            *tab);
 
-void		 gedit_tab_set_auto_save_interval	(BeditTab            *tab,
+void		 bedit_tab_set_auto_save_interval	(BeditTab            *tab,
 							 gint                interval);
 
-void		 gedit_tab_set_info_bar			(BeditTab            *tab,
+void		 bedit_tab_set_info_bar			(BeditTab            *tab,
 							 GtkWidget           *info_bar);
 
 G_END_DECLS

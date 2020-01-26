@@ -1,10 +1,10 @@
 libmodelines_sources = files(
-  'gedit-modeline-plugin.c',
+  'bedit-modeline-plugin.c',
   'modeline-parser.c',
 )
 
 libmodelines_deps = [
-  libgedit_dep,
+  libbedit_dep,
 ]
 
 libmodelines_sha = shared_module(

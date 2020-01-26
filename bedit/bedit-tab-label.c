@@ -1,6 +1,6 @@
 /*
- * gedit-tab-label.c
- * This file is part of gedit
+ * bedit-tab-label.c
+ * This file is part of bedit
  *
  * Copyright (C) 2010 - Paolo Borelli
  *
@@ -18,8 +18,8 @@
  * along with this program; if not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "gedit-tab-label.h"
-#include "gedit-tab-private.h"
+#include "bedit-tab-label.h"
+#include "bedit-tab-private.h"
 
 struct _BeditTabLabel
 {
@@ -50,10 +50,10 @@ enum
 
 static guint signals[LAST_SIGNAL];
 
-G_DEFINE_TYPE (BeditTabLabel, gedit_tab_label, GTK_TYPE_BOX)
+G_DEFINE_TYPE (BeditTabLabel, bedit_tab_label, GTK_TYPE_BOX)
 
 static void
-gedit_tab_label_set_property (GObject      *object,
+bedit_tab_label_set_property (GObject      *object,
 			      guint         prop_id,
 			      const GValue *value,
 			      GParamSpec   *pspec)
@@ -74,7 +74,7 @@ gedit_tab_label_set_property (GObject      *object,
 }
 
 static void
-gedit_tab_label_get_property (GObject    *object,
+bedit_tab_label_get_property (GObject    *object,
 			      guint       prop_id,
 			      GValue     *value,
 			      GParamSpec *pspec)
@@ -106,7 +106,7 @@ sync_tooltip (BeditTab      *tab,
 {
 	gchar *str;
 
-	str = _gedit_tab_get_tooltip (tab);
+	str = _bedit_tab_get_tooltip (tab);
 	g_return_if_fail (str != NULL);
 
 	gtk_widget_set_tooltip_markup (GTK_WIDGET (tab_label), str);
@@ -122,7 +122,7 @@ sync_name (BeditTab      *tab,
 
 	g_return_if_fail (tab == tab_label->tab);
 
-	str = _gedit_tab_get_name (tab);
+	str = _bedit_tab_get_name (tab);
 	g_return_if_fail (str != NULL);
 
 	gtk_label_set_text (GTK_LABEL (tab_label->label), str);
@@ -134,7 +134,7 @@ sync_name (BeditTab      *tab,
 static void
 update_close_button_sensitivity (BeditTabLabel *tab_label)
 {
-	BeditTabState state = gedit_tab_get_state (tab_label->tab);
+	BeditTabState state = bedit_tab_get_state (tab_label->tab);
 
 	gtk_widget_set_sensitive (tab_label->close_button,
 				  (state != GEDIT_TAB_STATE_CLOSING) &&
@@ -155,7 +155,7 @@ sync_state (BeditTab      *tab,
 
 	update_close_button_sensitivity (tab_label);
 
-	state = gedit_tab_get_state (tab);
+	state = bedit_tab_get_state (tab);
 
 	if ((state == GEDIT_TAB_STATE_LOADING) ||
 	    (state == GEDIT_TAB_STATE_SAVING) ||
@@ -170,7 +170,7 @@ sync_state (BeditTab      *tab,
 	{
 		GdkPixbuf *pixbuf;
 
-		pixbuf = _gedit_tab_get_icon (tab);
+		pixbuf = _bedit_tab_get_icon (tab);
 
 		if (pixbuf != NULL)
 		{
@@ -195,7 +195,7 @@ sync_state (BeditTab      *tab,
 }
 
 static void
-gedit_tab_label_constructed (GObject *object)
+bedit_tab_label_constructed (GObject *object)
 {
 	BeditTabLabel *tab_label = GEDIT_TAB_LABEL (object);
 
@@ -220,23 +220,23 @@ gedit_tab_label_constructed (GObject *object)
 				 tab_label,
 				 0);
 
-	G_OBJECT_CLASS (gedit_tab_label_parent_class)->constructed (object);
+	G_OBJECT_CLASS (bedit_tab_label_parent_class)->constructed (object);
 }
 
 static void
-gedit_tab_label_close_clicked (BeditTabLabel *tab_label)
+bedit_tab_label_close_clicked (BeditTabLabel *tab_label)
 {
 }
 
 static void
-gedit_tab_label_class_init (BeditTabLabelClass *klass)
+bedit_tab_label_class_init (BeditTabLabelClass *klass)
 {
 	GObjectClass *object_class = G_OBJECT_CLASS (klass);
 	GtkWidgetClass *widget_class = GTK_WIDGET_CLASS (klass);
 
-	object_class->set_property = gedit_tab_label_set_property;
-	object_class->get_property = gedit_tab_label_get_property;
-	object_class->constructed = gedit_tab_label_constructed;
+	object_class->set_property = bedit_tab_label_set_property;
+	object_class->get_property = bedit_tab_label_get_property;
+	object_class->constructed = bedit_tab_label_constructed;
 
 	properties[PROP_TAB] =
 		g_param_spec_object ("tab",
@@ -251,14 +251,14 @@ gedit_tab_label_class_init (BeditTabLabelClass *klass)
 		g_signal_new_class_handler ("close-clicked",
 		                            G_TYPE_FROM_CLASS (klass),
 		                            G_SIGNAL_RUN_LAST,
-		                            G_CALLBACK (gedit_tab_label_close_clicked),
+		                            G_CALLBACK (bedit_tab_label_close_clicked),
 		                            NULL, NULL, NULL,
 		                            G_TYPE_NONE,
 		                            0);
 
 	/* Bind class to template */
 	gtk_widget_class_set_template_from_resource (widget_class,
-	                                             "/com/bwhmather/bedit/ui/gedit-tab-label.ui");
+	                                             "/com/bwhmather/bedit/ui/bedit-tab-label.ui");
 	gtk_widget_class_bind_template_child (widget_class, BeditTabLabel, spinner);
 	gtk_widget_class_bind_template_child (widget_class, BeditTabLabel, icon);
 	gtk_widget_class_bind_template_child (widget_class, BeditTabLabel, label);
@@ -266,7 +266,7 @@ gedit_tab_label_class_init (BeditTabLabelClass *klass)
 }
 
 static void
-gedit_tab_label_init (BeditTabLabel *tab_label)
+bedit_tab_label_init (BeditTabLabel *tab_label)
 {
 	gtk_widget_init_template (GTK_WIDGET (tab_label));
 
@@ -277,7 +277,7 @@ gedit_tab_label_init (BeditTabLabel *tab_label)
 }
 
 BeditTab *
-gedit_tab_label_get_tab (BeditTabLabel *tab_label)
+bedit_tab_label_get_tab (BeditTabLabel *tab_label)
 {
 	g_return_val_if_fail (GEDIT_IS_TAB_LABEL (tab_label), NULL);
 
@@ -285,7 +285,7 @@ gedit_tab_label_get_tab (BeditTabLabel *tab_label)
 }
 
 GtkWidget *
-gedit_tab_label_new (BeditTab *tab)
+bedit_tab_label_new (BeditTab *tab)
 {
 	return g_object_new (GEDIT_TYPE_TAB_LABEL,
 			     "tab", tab,

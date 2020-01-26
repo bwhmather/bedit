@@ -1,6 +1,6 @@
 /*
- * gedit-view-activatable.h
- * This file is part of gedit
+ * bedit-view-activatable.h
+ * This file is part of bedit
  *
  * Copyright (C) 2010 Steve Frécinaux
  *
@@ -20,34 +20,34 @@
 
 #include "config.h"
 
-#include "gedit-view-activatable.h"
+#include "bedit-view-activatable.h"
 
-#include "gedit-view.h"
+#include "bedit-view.h"
 
 /**
- * SECTION:gedit-view-activatable
+ * SECTION:bedit-view-activatable
  * @short_description: Interface for activatable extensions on views
  * @see_also: #PeasExtensionSet
  *
  * #BeditViewActivatable is an interface which should be implemented by
- * extensions that should be activated on a gedit view.
+ * extensions that should be activated on a bedit view.
  **/
 
-G_DEFINE_INTERFACE(BeditViewActivatable, gedit_view_activatable, G_TYPE_OBJECT)
+G_DEFINE_INTERFACE(BeditViewActivatable, bedit_view_activatable, G_TYPE_OBJECT)
 
 static void
-gedit_view_activatable_default_init (BeditViewActivatableInterface *iface)
+bedit_view_activatable_default_init (BeditViewActivatableInterface *iface)
 {
 	/**
 	 * BeditViewActivatable:view:
 	 *
-	 * The window property contains the gedit window for this
+	 * The window property contains the bedit window for this
 	 * #BeditViewActivatable instance.
 	 */
 	g_object_interface_install_property (iface,
 	                                     g_param_spec_object ("view",
 	                                                          "view",
-	                                                          "A gedit view",
+	                                                          "A bedit view",
 	                                                          GEDIT_TYPE_VIEW,
 	                                                          G_PARAM_READWRITE |
 	                                                          G_PARAM_CONSTRUCT_ONLY |
@@ -55,13 +55,13 @@ gedit_view_activatable_default_init (BeditViewActivatableInterface *iface)
 }
 
 /**
- * gedit_view_activatable_activate:
+ * bedit_view_activatable_activate:
  * @activatable: A #BeditViewActivatable.
  *
  * Activates the extension on the window property.
  */
 void
-gedit_view_activatable_activate (BeditViewActivatable *activatable)
+bedit_view_activatable_activate (BeditViewActivatable *activatable)
 {
 	BeditViewActivatableInterface *iface;
 
@@ -75,13 +75,13 @@ gedit_view_activatable_activate (BeditViewActivatable *activatable)
 }
 
 /**
- * gedit_view_activatable_deactivate:
+ * bedit_view_activatable_deactivate:
  * @activatable: A #BeditViewActivatable.
  *
  * Deactivates the extension on the window property.
  */
 void
-gedit_view_activatable_deactivate (BeditViewActivatable *activatable)
+bedit_view_activatable_deactivate (BeditViewActivatable *activatable)
 {
 	BeditViewActivatableInterface *iface;
 

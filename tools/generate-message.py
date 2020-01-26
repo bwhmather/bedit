@@ -502,7 +502,7 @@ class Message:
         self._write("#define __%s_H__", self.cname_upper)
         self._write()
 
-        self._write("#include <gedit/gedit-message.h>\n")
+        self._write("#include <bedit/bedit-message.h>\n")
         self._write("G_BEGIN_DECLS\n")
 
         alignon = len('%s_IS_%s_CLASS(klass)' % (self.ns_upper, self.name_upper))

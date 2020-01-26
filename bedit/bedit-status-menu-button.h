@@ -1,6 +1,6 @@
 /*
- * gedit-status-menu-button.h
- * This file is part of gedit
+ * bedit-status-menu-button.h
+ * This file is part of bedit
  *
  * Copyright (C) 2008 - Jesse van den Kieboom
  *
@@ -25,16 +25,16 @@
 
 G_BEGIN_DECLS
 
-#define GEDIT_TYPE_STATUS_MENU_BUTTON (gedit_status_menu_button_get_type ())
+#define GEDIT_TYPE_STATUS_MENU_BUTTON (bedit_status_menu_button_get_type ())
 
-G_DECLARE_FINAL_TYPE (BeditStatusMenuButton, gedit_status_menu_button, GEDIT, STATUS_MENU_BUTTON, GtkMenuButton)
+G_DECLARE_FINAL_TYPE (BeditStatusMenuButton, bedit_status_menu_button, GEDIT, STATUS_MENU_BUTTON, GtkMenuButton)
 
-GtkWidget *gedit_status_menu_button_new		(void);
+GtkWidget *bedit_status_menu_button_new		(void);
 
-void gedit_status_menu_button_set_label		(BeditStatusMenuButton *button,
+void bedit_status_menu_button_set_label		(BeditStatusMenuButton *button,
 						 const gchar           *label);
 
-const gchar *gedit_status_menu_button_get_label (BeditStatusMenuButton *button);
+const gchar *bedit_status_menu_button_get_label (BeditStatusMenuButton *button);
 
 G_END_DECLS
 

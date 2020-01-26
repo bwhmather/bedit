@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mr\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
-"product=gedit&keywords=I18N+L10N&component=general\n"
+"product=bedit&keywords=I18N+L10N&component=general\n"
 "POT-Creation-Date: 2014-09-15 05:09+0000\n"
 "PO-Revision-Date: 2014-09-15 12:23+0530\n"
 "Last-Translator: Sandeep Shedmake <sshedmak@redhat.com>\n"
@@ -19,8 +19,8 @@ msgstr ""
 
 #: ../data/com.bwhmather.bedit.appdata.xml.in.h:1
 msgid ""
-"gedit is the official text editor of the GNOME desktop environment. While "
-"aiming at simplicity and ease of use, gedit is a powerful general purpose "
+"bedit is the official text editor of the GNOME desktop environment. While "
+"aiming at simplicity and ease of use, bedit is a powerful general purpose "
 "text editor."
 msgstr ""
 "जिएडिट GNOME डेस्कटॉप वातावरणाचे अधिकृत मजकूर संपादक आहे. सरलता आणि वापरकरिता "
@@ -29,7 +29,7 @@ msgstr ""
 #: ../data/com.bwhmather.bedit.appdata.xml.in.h:2
 msgid ""
 "Whether you are writing the next bestseller, programming an innovative "
-"application, or simply taking some quick notes, gedit will be a reliable "
+"application, or simply taking some quick notes, bedit will be a reliable "
 "tool to accomplish your task."
 msgstr ""
 "अत्यंत लोकप्रिय पुस्तक लिहायचे असल्यास, नवीन ॲप्लिकेशनची प्रोग्रामिंग करत "
@@ -44,7 +44,7 @@ msgstr ""
 "त्याची लवचीक प्लगइन प्रणाली, तुम्हाला ॲप्लिकेशनला आवश्यकतानुरूप बदल करायची "
 "आणि कार्यप्रवाहसह परिस्थिती जुळवण्यास परवानगी देते."
 
-#: ../data/com.bwhmather.bedit.desktop.in.in.h:2 ../gedit/gedit-print-job.c:774
+#: ../data/com.bwhmather.bedit.desktop.in.in.h:2 ../bedit/bedit-print-job.c:774
 msgid "Text Editor"
 msgstr "पाठ्य संपादक"
 
@@ -53,8 +53,8 @@ msgid "Edit text files"
 msgstr "मजकूर फाइल्स् संपादीत करा"
 
 #: ../data/com.bwhmather.bedit.desktop.in.in.h:4
-msgid "gedit Text Editor"
-msgstr "gedit मजकूर संपादक"
+msgid "bedit Text Editor"
+msgstr "bedit मजकूर संपादक"
 
 #: ../data/com.bwhmather.bedit.desktop.in.in.h:5
 msgid "Text;Editor;"
@@ -75,11 +75,11 @@ msgstr "सर्वसाधारण फाँट वापरा"
 #: ../data/com.bwhmather.bedit.gschema.xml.in.h:2
 msgid ""
 "Whether to use the system's default fixed width font for editing text "
-"instead of a font specific to gedit. If this option is turned off, then the "
+"instead of a font specific to bedit. If this option is turned off, then the "
 "font named in the \"Editor Font\" option will be used instead of the system "
 "font."
 msgstr ""
-"geditशी संबंधीत विशेष फाँटऐवजी सिस्टिमचा सर्वसाधरण फाँटसंपादन क्षेत्रासाठी "
+"beditशी संबंधीत विशेष फाँटऐवजी सिस्टिमचा सर्वसाधरण फाँटसंपादन क्षेत्रासाठी "
 "वापरावा की "
 "नाही . जर ह पर्याय निवडलेला नसेल तर सिस्टिम फाँट ऐवजी \"संपादकाचा फाँट\" या "
 "पर्यायात "
@@ -116,9 +116,9 @@ msgstr "बॅकअप प्रत तयार करा"
 
 #: ../data/com.bwhmather.bedit.gschema.xml.in.h:9
 #| msgid ""
-#| "Whether gedit should restore the previous cursor position when a file is "
+#| "Whether bedit should restore the previous cursor position when a file is "
 #| "loaded."
-msgid "Whether gedit should create backup copies for the files it saves."
+msgid "Whether bedit should create backup copies for the files it saves."
 msgstr "जिएडीटने साठण्याजोगी फाइल्सकरिता बॅकअप प्रत निर्माण करायचे किंवा नाही."
 
 #: ../data/com.bwhmather.bedit.gschema.xml.in.h:10
@@ -127,11 +127,11 @@ msgstr "स्वयंसाठवा"
 
 #: ../data/com.bwhmather.bedit.gschema.xml.in.h:11
 msgid ""
-"Whether gedit should automatically save modified files after a time "
+"Whether bedit should automatically save modified files after a time "
 "interval. You can set the time interval with the \"Autosave Interval\" "
 "option."
 msgstr ""
-"काही कालावधी नंतर gedit ने बदलेल्या फाइल स्वयं रक्षित कराव्यात की नाही. "
+"काही कालावधी नंतर bedit ने बदलेल्या फाइल स्वयं रक्षित कराव्यात की नाही. "
 "\"स्वयंसाठवा "
 "अवकाश\" पर्यायाचा वापर करुन तुम्ही हा वेळ अवकाश ठरवू शकता."
 
@@ -141,10 +141,10 @@ msgstr "स्वयंसाठवा अवकाश"
 
 #: ../data/com.bwhmather.bedit.gschema.xml.in.h:13
 msgid ""
-"Number of minutes after which gedit will automatically save modified files. "
+"Number of minutes after which bedit will automatically save modified files. "
 "This will only take effect if the \"Autosave\" option is turned on."
 msgstr ""
-"एवढ्या मिनिटांनंतर gedit बदललेल्या फाइल स्वयं संचयीत केलयाचा परिणाम तेव्हाच "
+"एवढ्या मिनिटांनंतर bedit बदललेल्या फाइल स्वयं संचयीत केलयाचा परिणाम तेव्हाच "
 "जाणवेल जेव्हा"
 "\"स्वयंसाठवा\"हा पर्याय निवडलेला असेल."
 
@@ -154,10 +154,10 @@ msgstr "क्रिया रद्द करण्याची कमाल �
 
 #: ../data/com.bwhmather.bedit.gschema.xml.in.h:15
 msgid ""
-"Maximum number of actions that gedit will be able to undo or redo. Use "
+"Maximum number of actions that bedit will be able to undo or redo. Use "
 "\"-1\" for unlimited number of actions."
 msgstr ""
-"gedit जास्तीत जास्त एवढ्या क्रिया रद्द करु शकतो किंवा पुनः करु शकतो. "
+"bedit जास्तीत जास्त एवढ्या क्रिया रद्द करु शकतो किंवा पुनः करु शकतो. "
 "अमर्यादित "
 "क्रियांसाठी  \"-1\" वापरा."
 
@@ -210,23 +210,23 @@ msgid "Insert spaces"
 msgstr "रिक्त जागा सोडा"
 
 #: ../data/com.bwhmather.bedit.gschema.xml.in.h:23
-msgid "Whether gedit should insert spaces instead of tabs."
-msgstr "gedit टॅब ऐवजी रिकाम्या जागा भराव्यात की नाही."
+msgid "Whether bedit should insert spaces instead of tabs."
+msgstr "bedit टॅब ऐवजी रिकाम्या जागा भराव्यात की नाही."
 
 #: ../data/com.bwhmather.bedit.gschema.xml.in.h:24
 msgid "Automatic indent"
 msgstr "स्वयं अंतर सोडा"
 
 #: ../data/com.bwhmather.bedit.gschema.xml.in.h:25
-msgid "Whether gedit should enable automatic indentation."
-msgstr "gedit ने स्वयं स्वयं अंतर सोडायचे."
+msgid "Whether bedit should enable automatic indentation."
+msgstr "bedit ने स्वयं स्वयं अंतर सोडायचे."
 
 #: ../data/com.bwhmather.bedit.gschema.xml.in.h:26
 msgid "Display Line Numbers"
 msgstr "ओळ क्रमांक दाखवा"
 
 #: ../data/com.bwhmather.bedit.gschema.xml.in.h:27
-msgid "Whether gedit should display line numbers in the editing area."
+msgid "Whether bedit should display line numbers in the editing area."
 msgstr "संपादन क्षेत्रात ओळ क्रमांक दाखवावेत की नाही."
 
 #: ../data/com.bwhmather.bedit.gschema.xml.in.h:28
@@ -234,24 +234,24 @@ msgid "Highlight Current Line"
 msgstr "सध्याची ओळ उठावदार करा"
 
 #: ../data/com.bwhmather.bedit.gschema.xml.in.h:29
-msgid "Whether gedit should highlight the current line."
-msgstr "geditने चालू ओऴ उठावदार करावी कि नाही."
+msgid "Whether bedit should highlight the current line."
+msgstr "beditने चालू ओऴ उठावदार करावी कि नाही."
 
 #: ../data/com.bwhmather.bedit.gschema.xml.in.h:30
 msgid "Highlight Matching Brackets"
 msgstr "जुळणारे कंस उठावदार करा"
 
 #: ../data/com.bwhmather.bedit.gschema.xml.in.h:31
-msgid "Whether gedit should highlight matching brackets."
-msgstr "geditने जुळणारे कंस उठावदार करायचे."
+msgid "Whether bedit should highlight matching brackets."
+msgstr "beditने जुळणारे कंस उठावदार करायचे."
 
 #: ../data/com.bwhmather.bedit.gschema.xml.in.h:32
 msgid "Display Right Margin"
 msgstr "उजवा समास दाखवा"
 
 #: ../data/com.bwhmather.bedit.gschema.xml.in.h:33
-msgid "Whether gedit should display the right margin in the editing area."
-msgstr "gedit ने संपादन क्षेत्रात उजवा समास दाखवावा की नाही."
+msgid "Whether bedit should display the right margin in the editing area."
+msgstr "bedit ने संपादन क्षेत्रात उजवा समास दाखवावा की नाही."
 
 #: ../data/com.bwhmather.bedit.gschema.xml.in.h:34
 msgid "Right Margin Position"
@@ -293,17 +293,17 @@ msgstr "मागील कर्सर स्थिती पुनर्स्
 
 #: ../data/com.bwhmather.bedit.gschema.xml.in.h:39
 msgid ""
-"Whether gedit should restore the previous cursor position when a file is "
+"Whether bedit should restore the previous cursor position when a file is "
 "loaded."
-msgstr "gedit ने संपादन क्षेत्रात उजवा समास दाखवावा की नाही."
+msgstr "bedit ने संपादन क्षेत्रात उजवा समास दाखवावा की नाही."
 
 #: ../data/com.bwhmather.bedit.gschema.xml.in.h:40
 msgid "Enable Syntax Highlighting"
 msgstr "सिटॅक्स उठावदारीकरण कार्यान्वीत करा"
 
 #: ../data/com.bwhmather.bedit.gschema.xml.in.h:41
-msgid "Whether gedit should enable syntax highlighting."
-msgstr "gedit ने सिंटॅक्स उठावदारीकरण कार्यान्वीत करावे कि नाही."
+msgid "Whether bedit should enable syntax highlighting."
+msgstr "bedit ने सिंटॅक्स उठावदारीकरण कार्यान्वीत करावे कि नाही."
 
 #: ../data/com.bwhmather.bedit.gschema.xml.in.h:42
 msgid "Enable Search Highlighting"
@@ -311,8 +311,8 @@ msgstr "उठावदार शोध कार्यान्वीत कर
 
 #: ../data/com.bwhmather.bedit.gschema.xml.in.h:43
 msgid ""
-"Whether gedit should highlight all the occurrences of the searched text."
-msgstr "gedit ने शोधलेल्या मजकूरात सर्व घटना उठावदार करायचे."
+"Whether bedit should highlight all the occurrences of the searched text."
+msgstr "bedit ने शोधलेल्या मजकूरात सर्व घटना उठावदार करायचे."
 
 #: ../data/com.bwhmather.bedit.gschema.xml.in.h:44
 msgid "Ensure Trailing Newline"
@@ -320,9 +320,9 @@ msgstr "ट्रेलिंग न्युलाइनची खात्र�
 
 #: ../data/com.bwhmather.bedit.gschema.xml.in.h:45
 msgid ""
-"Whether gedit will ensure that documents always end with a trailing newline."
+"Whether bedit will ensure that documents always end with a trailing newline."
 msgstr ""
-"दस्तऐवजाने नेहमी ट्रेलिंग न्युलाइनमध्ये समाप्त व्हावे याची gedit खात्री करेल."
+"दस्तऐवजाने नेहमी ट्रेलिंग न्युलाइनमध्ये समाप्त व्हावे याची bedit खात्री करेल."
 
 #: ../data/com.bwhmather.bedit.gschema.xml.in.h:46
 msgid "Toolbar is Visible"
@@ -385,17 +385,17 @@ msgid "Print Syntax Highlighting"
 msgstr "सिंटॅक्स उठाविकरण छापा"
 
 #: ../data/com.bwhmather.bedit.gschema.xml.in.h:57
-msgid "Whether gedit should print syntax highlighting when printing documents."
-msgstr "एखादा दस्तऐवज छापताना geditने सिंटॅक्स उठावदारी छापावी की नाही."
+msgid "Whether bedit should print syntax highlighting when printing documents."
+msgstr "एखादा दस्तऐवज छापताना beditने सिंटॅक्स उठावदारी छापावी की नाही."
 
 #: ../data/com.bwhmather.bedit.gschema.xml.in.h:58
 msgid "Print Header"
 msgstr "छपाई शिर्षक"
 
 #: ../data/com.bwhmather.bedit.gschema.xml.in.h:59
-msgid "Whether gedit should include a document header when printing documents."
+msgid "Whether bedit should include a document header when printing documents."
 msgstr ""
-"छपाई दस्तऐवजाची छपाई करतेवेळी gedit ने दस्तऐवज हेड्डर समाविष्ट केले पाहिजे का."
+"छपाई दस्तऐवजाची छपाई करतेवेळी bedit ने दस्तऐवज हेड्डर समाविष्ट केले पाहिजे का."
 
 #: ../data/com.bwhmather.bedit.gschema.xml.in.h:60
 msgid "Printing Line Wrapping Mode"
@@ -423,10 +423,10 @@ msgstr "ओळ क्रमांक छापा"
 #: ../data/com.bwhmather.bedit.gschema.xml.in.h:63
 msgid ""
 "If this value is 0, then no line numbers will be inserted when printing a "
-"document. Otherwise, gedit will print line numbers every such number of "
+"document. Otherwise, bedit will print line numbers every such number of "
 "lines."
 msgstr ""
-"जर हे मूल्य 0 असेल तर छपाई करताना ओळ क्रमांक छापले जाणार नाहीत. अन्यथा gedit "
+"जर हे मूल्य 0 असेल तर छपाई करताना ओळ क्रमांक छापले जाणार नाहीत. अन्यथा bedit "
 "प्रत्येकवेळी ओळ क्रमांकही छापेल."
 
 #: ../data/com.bwhmather.bedit.gschema.xml.in.h:64
@@ -477,16 +477,16 @@ msgstr ""
 "तेव्हाच "
 "जाणवेल जेव्हा \"ओळ क्रमांक छापा\"हा पर्याय वापरला असेल."
 
-#. Translators: This is the sorted list of encodings used by gedit
+#. Translators: This is the sorted list of encodings used by bedit
 #. for automatic detection of the file encoding. You may want to customize it adding
 #. encodings that are common in your country, for instance the GB18030 encoding
 #. for the Chinese translation. You may also want to remove the ISO-8859-15 encoding
 #. (covering English and most Western European languages) if you think people
 #. in your country will rarely use it.
-#. "CURRENT" is a magic value used by gedit and it represents the encoding
+#. "CURRENT" is a magic value used by bedit and it represents the encoding
 #. for the current locale, so please don't translate the "CURRENT" term.
 #. Only recognized encodings are used.
-#. See http://git.gnome.org/browse/gedit/tree/gedit/gedit-encodings.c#n152 for
+#. See http://git.gnome.org/browse/bedit/tree/bedit/bedit-encodings.c#n152 for
 #. a list of supported encodings
 #: ../data/com.bwhmather.bedit.gschema.xml.in.h:84
 msgid "['UTF-8', 'CURRENT', 'ISO-8859-15', 'UTF-16']"
@@ -498,11 +498,11 @@ msgstr "स्वयं शोधलेल्या एंकोडिंग्�
 
 #: ../data/com.bwhmather.bedit.gschema.xml.in.h:86
 msgid ""
-"Sorted list of encodings used by gedit for automatically detecting the "
+"Sorted list of encodings used by bedit for automatically detecting the "
 "encoding of a file. \"CURRENT\" represents the current locale encoding. Only "
 "recognized encodings are used."
 msgstr ""
-"gedit ने फाइलची एंकोडिंग स्वयं-शोधण्यासाठी वापरलेली एंकोडिंग्स्ची क्रमबद्ध "
+"bedit ने फाइलची एंकोडिंग स्वयं-शोधण्यासाठी वापरलेली एंकोडिंग्स्ची क्रमबद्ध "
 "यादी. \"CURRENT"
 "\" ही सद्य लोकेल एंकोडिंग आहे. फक्त ओळखप्राप्त एंकोडिंग्स् वापरल्या आहेत."
 
@@ -532,21 +532,21 @@ msgstr "प्लगईन्स् कार्यान्वीत करा"
 #: ../data/com.bwhmather.bedit.gschema.xml.in.h:93
 msgid ""
 "List of active plugins. It contains the \"Location\" of the active plugins. "
-"See the .gedit-plugin file for obtaining the \"Location\" of a given plugin."
+"See the .bedit-plugin file for obtaining the \"Location\" of a given plugin."
 msgstr ""
 "कार्यान्वित प्लगईन्स्ची यादी. यात कार्यान्वित प्लगईन्स्चे \"ठिकाण\" आहे. "
 "दिलेल्या प्लगीनचे "
-"\"ठिकाण\" मिळवण्यासाठी gedit-plugin ही फाइल पहा."
+"\"ठिकाण\" मिळवण्यासाठी bedit-plugin ही फाइल पहा."
 
-#: ../gedit/gedit-app.c:104
+#: ../bedit/bedit-app.c:104
 msgid "Show the application's version"
 msgstr "अनुप्रोयगची आवृत्ती दाखवा"
 
-#: ../gedit/gedit-app.c:110
+#: ../bedit/bedit-app.c:110
 msgid "Display list of possible values for the encoding option"
 msgstr "एनकोडींग पर्यायकरीता संभाव्य मूल्यांची सूची दाखवा"
 
-#: ../gedit/gedit-app.c:117
+#: ../bedit/bedit-app.c:117
 msgid ""
 "Set the character encoding to be used to open the files listed on the "
 "command line"
@@ -555,95 +555,95 @@ msgstr ""
 "हे निर्धारित "
 "करा"
 
-#: ../gedit/gedit-app.c:118
+#: ../bedit/bedit-app.c:118
 msgid "ENCODING"
 msgstr "एंकोडींग"
 
-#: ../gedit/gedit-app.c:124
-msgid "Create a new top-level window in an existing instance of gedit"
-msgstr "gedit मधील सध्याच्या घटनेसाठी एक नवीन उच्च स्तरीय पटल तयार करा"
+#: ../bedit/bedit-app.c:124
+msgid "Create a new top-level window in an existing instance of bedit"
+msgstr "bedit मधील सध्याच्या घटनेसाठी एक नवीन उच्च स्तरीय पटल तयार करा"
 
-#: ../gedit/gedit-app.c:131
-msgid "Create a new document in an existing instance of gedit"
-msgstr "gedit मधील सध्याच्या घटनेसाठी एक नवीन दस्तऐवज तयार करा"
+#: ../bedit/bedit-app.c:131
+msgid "Create a new document in an existing instance of bedit"
+msgstr "bedit मधील सध्याच्या घटनेसाठी एक नवीन दस्तऐवज तयार करा"
 
-#: ../gedit/gedit-app.c:138
+#: ../bedit/bedit-app.c:138
 msgid "Set the size and position of the window (WIDTHxHEIGHT+X+Y)"
 msgstr "पटलाचे आकार व ठिकाण ठरवा (WIDTHxHEIGHT+X+Y)"
 
-#: ../gedit/gedit-app.c:139
+#: ../bedit/bedit-app.c:139
 msgid "GEOMETRY"
 msgstr "GEOMETRY"
 
-#: ../gedit/gedit-app.c:145
+#: ../bedit/bedit-app.c:145
 msgid "Open files and block process until files are closed"
 msgstr "फाइल्स् उघडा व फाइल्स् बंद होईपर्यंत प्रोसेस् अडवा"
 
-#: ../gedit/gedit-app.c:152
-msgid "Run gedit in standalone mode"
-msgstr "gedit ला स्टँडअलोन मोडमध्ये चालवा"
+#: ../bedit/bedit-app.c:152
+msgid "Run bedit in standalone mode"
+msgstr "bedit ला स्टँडअलोन मोडमध्ये चालवा"
 
-#: ../gedit/gedit-app.c:159
+#: ../bedit/bedit-app.c:159
 msgid "[FILE...] [+LINE[:COLUMN]]"
 msgstr "[FILE...] [+LINE[:COLUMN]]"
 
-#: ../gedit/gedit-app.c:264
+#: ../bedit/bedit-app.c:264
 msgid "There was an error displaying the help."
 msgstr "मदत दाखवतेवेळी त्रुटी आढळली."
 
-#: ../gedit/gedit-app.c:917
+#: ../bedit/bedit-app.c:917
 #, c-format
 msgid "%s: invalid encoding."
 msgstr "%s: अवैध एनकोडिंग."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:152
+#: ../bedit/bedit-close-confirmation-dialog.c:152
 msgid "Question"
 msgstr "प्रश्न"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:320
+#: ../bedit/bedit-close-confirmation-dialog.c:320
 msgid "Close _without Saving"
 msgstr "सुरक्षित न करता बंद करा(_w)"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:321
-#: ../gedit/gedit-commands-file.c:457 ../gedit/gedit-commands-file.c:586
-#: ../gedit/gedit-commands-file.c:663 ../gedit/gedit-commands-file.c:882
-#: ../gedit/gedit-commands-file.c:1332 ../gedit/gedit-io-error-info-bar.c:134
-#: ../gedit/gedit-io-error-info-bar.c:515
-#: ../gedit/gedit-io-error-info-bar.c:1191
-#: ../gedit/gedit-preferences-dialog.c:868
-#: ../gedit/gedit-progress-info-bar.c:51
-#: ../gedit/resources/ui/gedit-encodings-dialog.ui.h:3
-#: ../gedit/resources/ui/gedit-highlight-mode-dialog.ui.h:2
-#: ../plugins/filebrowser/gedit-file-browser-utils.c:170
+#: ../bedit/bedit-close-confirmation-dialog.c:321
+#: ../bedit/bedit-commands-file.c:457 ../bedit/bedit-commands-file.c:586
+#: ../bedit/bedit-commands-file.c:663 ../bedit/bedit-commands-file.c:882
+#: ../bedit/bedit-commands-file.c:1332 ../bedit/bedit-io-error-info-bar.c:134
+#: ../bedit/bedit-io-error-info-bar.c:515
+#: ../bedit/bedit-io-error-info-bar.c:1191
+#: ../bedit/bedit-preferences-dialog.c:868
+#: ../bedit/bedit-progress-info-bar.c:51
+#: ../bedit/resources/ui/bedit-encodings-dialog.ui.h:3
+#: ../bedit/resources/ui/bedit-highlight-mode-dialog.ui.h:2
+#: ../plugins/filebrowser/bedit-file-browser-utils.c:170
 #: ../plugins/quickopen/quickopen/popup.py:37
 #: ../plugins/snippets/snippets/manager.py:781
 #: ../plugins/snippets/snippets/manager.py:866
 #: ../plugins/snippets/snippets/manager.py:904
-#: ../plugins/sort/resources/ui/gedit-sort-plugin.ui.h:2
-#: ../plugins/spell/gedit-spell-language-dialog.c:124
+#: ../plugins/sort/resources/ui/bedit-sort-plugin.ui.h:2
+#: ../plugins/spell/bedit-spell-language-dialog.c:124
 #: ../plugins/spell/resources/ui/languages-dialog.ui.h:3
-#: ../plugins/time/resources/ui/gedit-time-dialog.ui.h:8
+#: ../plugins/time/resources/ui/bedit-time-dialog.ui.h:8
 #| msgid "_Cancel Logout"
 msgid "_Cancel"
 msgstr "रद्द करा (_C)"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:347
-#: ../gedit/resources/gtk/menus-default.ui.h:9
-#: ../gedit/resources/gtk/menus-traditional.ui.h:4
+#: ../bedit/bedit-close-confirmation-dialog.c:347
+#: ../bedit/resources/gtk/menus-default.ui.h:9
+#: ../bedit/resources/gtk/menus-traditional.ui.h:4
 #| msgid "Save As"
 msgid "_Save As…"
 msgstr "असे साठवा (_S)..."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:347
-#: ../gedit/gedit-commands-file.c:883 ../gedit/resources/gtk/menus-osx.ui.h:7
-#: ../gedit/resources/ui/gedit-window.ui.h:7
+#: ../bedit/bedit-close-confirmation-dialog.c:347
+#: ../bedit/bedit-commands-file.c:883 ../bedit/resources/gtk/menus-osx.ui.h:7
+#: ../bedit/resources/ui/bedit-window.ui.h:7
 #: ../plugins/snippets/snippets/manager.py:867
 #: ../plugins/snippets/snippets/manager.py:905
 #| msgid "_Save:"
 msgid "_Save"
 msgstr "साठवा (_S)"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:365
+#: ../bedit/bedit-close-confirmation-dialog.c:365
 #, c-format
 msgid ""
 "If you don't save, changes from the last %ld second will be permanently lost."
@@ -657,14 +657,14 @@ msgstr[1] ""
 "जर तुम्ही सुरक्षित केले नाही, तर मागील %ld सेकंदांपासूनचे बदल कायमस्वरूपी "
 "नष्ट होतील."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:374
+#: ../bedit/bedit-close-confirmation-dialog.c:374
 msgid ""
 "If you don't save, changes from the last minute will be permanently lost."
 msgstr ""
 "जर तुम्ही सुरक्षित नाही केले, तर अखेरच्या मिनिटापासूनचे बदल कायमस्वरूपी नष्ट "
 "होतील."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:380
+#: ../bedit/bedit-close-confirmation-dialog.c:380
 #, c-format
 msgid ""
 "If you don't save, changes from the last minute and %ld second will be "
@@ -681,7 +681,7 @@ msgstr[1] ""
 "कायमस्वरूपी नष्ट "
 "होतील."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:390
+#: ../bedit/bedit-close-confirmation-dialog.c:390
 #, c-format
 msgid ""
 "If you don't save, changes from the last %ld minute will be permanently lost."
@@ -692,11 +692,11 @@ msgstr[0] "न साठवल्यास, शेवटच्या %ld मि�
 msgstr[1] ""
 "न साठवल्यास, शेवटच्या %ld मिनिटांपासूनचे बदल कायमस्वरूपी नष्ट होतील."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:405
+#: ../bedit/bedit-close-confirmation-dialog.c:405
 msgid "If you don't save, changes from the last hour will be permanently lost."
 msgstr "सुरक्षित न केल्यास, अखेरच्या तासापासूनचे बदल कायमस्वरूपी नष्ट होतील."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:411
+#: ../bedit/bedit-close-confirmation-dialog.c:411
 #, c-format
 msgid ""
 "If you don't save, changes from the last hour and %d minute will be "
@@ -713,7 +713,7 @@ msgstr[1] ""
 "कायमस्वरूपी नष्ट "
 "होतील."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:426
+#: ../bedit/bedit-close-confirmation-dialog.c:426
 #, c-format
 msgid ""
 "If you don't save, changes from the last %d hour will be permanently lost."
@@ -726,31 +726,31 @@ msgstr[1] ""
 "जर तुम्ही सुरक्षित नाही केले, तर अखेरच्या %d तासांपासूनचे बदल कायमस्वरूपी "
 "नष्ट होतील."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:470
+#: ../bedit/bedit-close-confirmation-dialog.c:470
 #, c-format
 #| msgid "Changes to document \"%s\" will be permanently lost."
 msgid "Changes to document “%s” will be permanently lost."
 msgstr "“%s” दस्तऐवजातील बदल कायमस्वरूपी नष्ट होतील."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:475
+#: ../bedit/bedit-close-confirmation-dialog.c:475
 #, c-format
 #| msgid "Save changes to document \"%s\" before closing?"
 msgid "Save changes to document “%s” before closing?"
 msgstr "बंद करण्यापूर्वी “%s” दस्तऐवजात बदल साठवायचे?"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:490
-#: ../gedit/gedit-close-confirmation-dialog.c:651
+#: ../bedit/bedit-close-confirmation-dialog.c:490
+#: ../bedit/bedit-close-confirmation-dialog.c:651
 msgid "Saving has been disabled by the system administrator."
 msgstr "संययन प्रणाली प्रशासका द्वारे अकार्यान्वीत करण्यात आले."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:599
+#: ../bedit/bedit-close-confirmation-dialog.c:599
 #, c-format
 msgid "Changes to %d document will be permanently lost."
 msgid_plural "Changes to %d documents will be permanently lost."
 msgstr[0] "%d दस्तऐवजात केलेले बदल कायमस्वरूपी नष्ट होतील."
 msgstr[1] "%d दस्तऐवजात केलेले बदल कायमस्वरूपी नष्ट होतील."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:607
+#: ../bedit/bedit-close-confirmation-dialog.c:607
 #, c-format
 msgid "There is %d document with unsaved changes. Save changes before closing?"
 msgid_plural ""
@@ -758,25 +758,25 @@ msgid_plural ""
 msgstr[0] "%d दस्तऐवज असुरक्षित बदलवांसह आहे. बंद करण्यापूर्वी बदल साठवावेत?"
 msgstr[1] "%d दस्तऐवज असुरक्षित बदलवांसह आहेत. बंद करण्यापूर्वी बदल साठवावेत?"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:627
+#: ../bedit/bedit-close-confirmation-dialog.c:627
 msgid "Docum_ents with unsaved changes:"
 msgstr "असुरक्षित बदलवांसह दस्तऐवज (_e):"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:631
+#: ../bedit/bedit-close-confirmation-dialog.c:631
 msgid "S_elect the documents you want to save:"
 msgstr "तुम्हास साठवावयाचे दस्तऐवज निवडा (_e):"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:655
+#: ../bedit/bedit-close-confirmation-dialog.c:655
 msgid "If you don't save, all your changes will be permanently lost."
 msgstr ""
 "जर तुम्ही सुरक्षित नाही केले, तर तुमचे सर्व बदल कायमस्वरूपी नष्ट होतील."
 
-#: ../gedit/gedit-commands-file.c:256
+#: ../bedit/bedit-commands-file.c:256
 #, c-format
 msgid "Loading file '%s'…"
 msgstr "'%s' फाइल लोड होत आहे"
 
-#: ../gedit/gedit-commands-file.c:265
+#: ../bedit/bedit-commands-file.c:265
 #, c-format
 msgid "Loading %d file…"
 msgid_plural "Loading %d files…"
@@ -784,43 +784,43 @@ msgstr[0] "%d फाइल लोड होत आहे"
 msgstr[1] "%d फाइली लोड होत आहे"
 
 #. Translators: "Open" is the title of the file chooser window
-#: ../gedit/gedit-commands-file.c:451
-#: ../gedit/resources/ui/gedit-window.ui.h:4
+#: ../bedit/bedit-commands-file.c:451
+#: ../bedit/resources/ui/bedit-window.ui.h:4
 msgid "Open"
 msgstr "उघडा"
 
-#: ../gedit/gedit-commands-file.c:458 ../gedit/resources/gtk/menus-osx.ui.h:4
-#: ../gedit/resources/ui/gedit-window.ui.h:3
-#: ../plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui.h:1
+#: ../bedit/bedit-commands-file.c:458 ../bedit/resources/gtk/menus-osx.ui.h:4
+#: ../bedit/resources/ui/bedit-window.ui.h:3
+#: ../plugins/filebrowser/resources/ui/bedit-file-browser-menus.ui.h:1
 #: ../plugins/quickopen/quickopen/popup.py:38
 #: ../plugins/snippets/snippets/manager.py:782
 msgid "_Open"
 msgstr "उघडा (_O)"
 
-#: ../gedit/gedit-commands-file.c:577
+#: ../bedit/bedit-commands-file.c:577
 #, c-format
 msgid "The file \"%s\" is read-only."
 msgstr "\"%s\" ही फाइल फक्त वाचण्यायोग्य आहे."
 
-#: ../gedit/gedit-commands-file.c:582
+#: ../bedit/bedit-commands-file.c:582
 msgid "Do you want to try to replace it with the one you are saving?"
 msgstr ""
 "तुम्ही सुरक्षित करत असलेल्याशी ही बदली करण्याचा प्रयत्न करू इच्छिता काय?"
 
-#: ../gedit/gedit-commands-file.c:587
-#: ../gedit/resources/ui/gedit-replace-dialog.ui.h:4
+#: ../bedit/bedit-commands-file.c:587
+#: ../bedit/resources/ui/bedit-replace-dialog.ui.h:4
 msgid "_Replace"
 msgstr "बदलवा (_R)"
 
-#: ../gedit/gedit-commands-file.c:627
+#: ../bedit/bedit-commands-file.c:627
 msgid "Save the file using compression?"
 msgstr "कंप्रेशनचा वापर करून फाइल साठवा?"
 
-#: ../gedit/gedit-commands-file.c:631
+#: ../bedit/bedit-commands-file.c:631
 msgid "Save the file as plain text?"
 msgstr "फाइलला सोपे मजकूर म्हणून साठवा?"
 
-#: ../gedit/gedit-commands-file.c:644
+#: ../bedit/bedit-commands-file.c:644
 #, c-format
 msgid ""
 "The file \"%s\" was previously saved as plain text and will now be saved "
@@ -829,11 +829,11 @@ msgstr ""
 "फाइल \"%s\" पूर्वी सोपे मजकूर म्हणून साठवले गेले व आत्ता कंप्रेशनचा वापर करून "
 "साठवले जाईल."
 
-#: ../gedit/gedit-commands-file.c:648
+#: ../bedit/bedit-commands-file.c:648
 msgid "_Save Using Compression"
 msgstr "कंप्रेशनचा वापर करून साठवत आहे (_S)"
 
-#: ../gedit/gedit-commands-file.c:653
+#: ../bedit/bedit-commands-file.c:653
 #, c-format
 msgid ""
 "The file \"%s\" was previously saved using compression and will now be saved "
@@ -842,30 +842,30 @@ msgstr ""
 "कंप्रेशनचा वापर करून फाइल \"%s\" पूर्वी साठवले गेले व आत्ता सोपे मजकूर "
 "प्रमाणे साठवले जाईल."
 
-#: ../gedit/gedit-commands-file.c:656
+#: ../bedit/bedit-commands-file.c:656
 msgid "_Save As Plain Text"
 msgstr "स्पष्ट मजकूर म्हणून साठवा (_S)"
 
-#: ../gedit/gedit-commands-file.c:764 ../gedit/gedit-commands-file.c:991
+#: ../bedit/bedit-commands-file.c:764 ../bedit/bedit-commands-file.c:991
 #, c-format
 msgid "Saving file '%s'…"
 msgstr "'%s' फाइल साठवत आहे…"
 
-#: ../gedit/gedit-commands-file.c:875
+#: ../bedit/bedit-commands-file.c:875
 msgid "Save As"
 msgstr "असे साठवा"
 
-#: ../gedit/gedit-commands-file.c:1195
+#: ../bedit/bedit-commands-file.c:1195
 #, c-format
 msgid "Reverting the document '%s'…"
 msgstr "दस्तऐवज '%s' मूळ स्थितीवर आणत आहे"
 
-#: ../gedit/gedit-commands-file.c:1240
+#: ../bedit/bedit-commands-file.c:1240
 #, c-format
 msgid "Revert unsaved changes to document '%s'?"
 msgstr "दस्तऐवज '%s' मधील असंग्रहित बदल परत करावेत का?"
 
-#: ../gedit/gedit-commands-file.c:1249
+#: ../bedit/bedit-commands-file.c:1249
 #, c-format
 msgid ""
 "Changes made to the document in the last %ld second will be permanently lost."
@@ -875,12 +875,12 @@ msgid_plural ""
 msgstr[0] "दस्तऐवजात मागील %ld सेकंदात केलेले बदल कायमस्वरूपी नष्ट होतील."
 msgstr[1] "दस्तऐवजात मागील %ld सेकंदांत केलेले बदल कायमस्वरूपी नष्ट होतील."
 
-#: ../gedit/gedit-commands-file.c:1258
+#: ../bedit/bedit-commands-file.c:1258
 msgid ""
 "Changes made to the document in the last minute will be permanently lost."
 msgstr "दस्तऐवजात मागील मिनिटात केलेले बदल कायमस्वरूपी नष्ट होतील."
 
-#: ../gedit/gedit-commands-file.c:1264
+#: ../bedit/bedit-commands-file.c:1264
 #, c-format
 msgid ""
 "Changes made to the document in the last minute and %ld second will be "
@@ -893,7 +893,7 @@ msgstr[0] ""
 msgstr[1] ""
 "दस्तऐवजात मागील मिनिट आणि %ld सेकंदांत केलेले बदल कायमस्वरूपी नष्ट होतील."
 
-#: ../gedit/gedit-commands-file.c:1274
+#: ../bedit/bedit-commands-file.c:1274
 #, c-format
 msgid ""
 "Changes made to the document in the last %ld minute will be permanently lost."
@@ -903,11 +903,11 @@ msgid_plural ""
 msgstr[0] "दस्तऐवजात मागील %ld मिनिटात केलेले बदल कायमस्वरूपी नष्ट होतील."
 msgstr[1] "दस्तऐवजात मागील %ld मिनिटांत केलेले बदल कायमस्वरूपी नष्ट होतील."
 
-#: ../gedit/gedit-commands-file.c:1289
+#: ../bedit/bedit-commands-file.c:1289
 msgid "Changes made to the document in the last hour will be permanently lost."
 msgstr "दस्तऐवजात मागील तासात केलेले बदल कायमस्वरूपी नष्ट होतील."
 
-#: ../gedit/gedit-commands-file.c:1295
+#: ../bedit/bedit-commands-file.c:1295
 #, c-format
 msgid ""
 "Changes made to the document in the last hour and %d minute will be "
@@ -920,7 +920,7 @@ msgstr[0] ""
 msgstr[1] ""
 "दस्तऐवजात मागील तासात आणि %d मिनिटांत केलेले बदल कायमस्वरूपी नष्ट होतील."
 
-#: ../gedit/gedit-commands-file.c:1310
+#: ../bedit/bedit-commands-file.c:1310
 #, c-format
 msgid ""
 "Changes made to the document in the last %d hour will be permanently lost."
@@ -929,15 +929,15 @@ msgid_plural ""
 msgstr[0] "दस्तऐवजात मागील %d तासात केलेले बदल कायमस्वरूपी नष्ट होतील."
 msgstr[1] "दस्तऐवजात मागील %d तासांत केलेले बदल कायमस्वरूपी नष्ट होतील."
 
-#: ../gedit/gedit-commands-file.c:1333
+#: ../bedit/bedit-commands-file.c:1333
 msgid "_Revert"
 msgstr "मूळ स्थितीवर या (_R)"
 
-#: ../gedit/gedit-commands-help.c:78
-msgid "gedit is a small and lightweight text editor for the GNOME Desktop"
+#: ../bedit/bedit-commands-help.c:78
+msgid "bedit is a small and lightweight text editor for the GNOME Desktop"
 msgstr "GNOME साठी जीएडीट हा एक लहान व हलक्या वजनाचा पाठ्य संपादक आहे"
 
-#: ../gedit/gedit-commands-help.c:102
+#: ../bedit/bedit-commands-help.c:102
 msgid "translator-credits"
 msgstr ""
 "राहुल भालेराव <b.rahul.pm@gmail.com>; Swapnil Hajare <dreamil1000a@yahoo.com>"
@@ -946,83 +946,83 @@ msgstr ""
 "sandeep.shedmake@gmail."
 "com>, 2008; संदिप शेडमाके <sshedmak@redhat.com>, 2009, 2011."
 
-#: ../gedit/gedit-commands-search.c:103
+#: ../bedit/bedit-commands-search.c:103
 #, c-format
 msgid "Found and replaced %d occurrence"
 msgid_plural "Found and replaced %d occurrences"
 msgstr[0] "%d उद्भव प्राप्त आणि बदलला"
 msgstr[1] "%d उद्भव प्राप्त आणि बदलले"
 
-#: ../gedit/gedit-commands-search.c:112
+#: ../bedit/bedit-commands-search.c:112
 msgid "Found and replaced one occurrence"
 msgstr "एक उद्भव प्राप्त आणि बदलला"
 
 #. Translators: %s is replaced by the text
 #. entered by the user in the search box
-#: ../gedit/gedit-commands-search.c:138
+#: ../bedit/bedit-commands-search.c:138
 #, c-format
 msgid "\"%s\" not found"
 msgstr "\"%s\" आढळले नाही"
 
-#: ../gedit/gedit-document.c:953 ../gedit/gedit-document.c:983
+#: ../bedit/bedit-document.c:953 ../bedit/bedit-document.c:983
 #, c-format
 msgid "Unsaved Document %d"
 msgstr "असुरक्षित दस्तऐवज %d"
 
-#: ../gedit/gedit-documents-panel.c:427
+#: ../bedit/bedit-documents-panel.c:427
 #, c-format
 #| msgid "_New Tab Group"
 msgid "Tab Group %i"
 msgstr "टॅब गट %i"
 
-#: ../gedit/gedit-documents-panel.c:524 ../gedit/gedit-window.c:1133
-#: ../gedit/gedit-window.c:1139 ../gedit/gedit-window.c:1147
+#: ../bedit/bedit-documents-panel.c:524 ../bedit/bedit-window.c:1133
+#: ../bedit/bedit-window.c:1139 ../bedit/bedit-window.c:1147
 msgid "Read-Only"
 msgstr "फक्त वाचणीय"
 
-#: ../gedit/gedit-encodings-combo-box.c:302
-#: ../gedit/gedit-file-chooser-dialog-osx.c:564
+#: ../bedit/bedit-encodings-combo-box.c:302
+#: ../bedit/bedit-file-chooser-dialog-osx.c:564
 msgid "Automatically Detected"
 msgstr "स्वयं शोधलेले"
 
-#: ../gedit/gedit-encodings-combo-box.c:331
-#: ../gedit/gedit-file-chooser-dialog-osx.c:573
+#: ../bedit/bedit-encodings-combo-box.c:331
+#: ../bedit/bedit-file-chooser-dialog-osx.c:573
 msgid "Add or Remove..."
 msgstr "समाविष्ट करा किंवा काढून टाका..."
 
-#: ../gedit/gedit-encoding-items.c:95 ../gedit/gedit-encoding-items.c:104
+#: ../bedit/bedit-encoding-items.c:95 ../bedit/bedit-encoding-items.c:104
 #, c-format
 msgid "Current Locale (%s)"
 msgstr "सद्य लोकेल (%s)"
 
-#: ../gedit/gedit-file-chooser-dialog-gtk.c:40
-#: ../gedit/gedit-preferences-dialog.c:877
+#: ../bedit/bedit-file-chooser-dialog-gtk.c:40
+#: ../bedit/bedit-preferences-dialog.c:877
 msgid "All Files"
 msgstr "सर्व फाइल्स्"
 
-#: ../gedit/gedit-file-chooser-dialog-gtk.c:41
+#: ../bedit/bedit-file-chooser-dialog-gtk.c:41
 msgid "All Text Files"
 msgstr "सर्व पाठ्य्य फाइल्स्"
 
-#: ../gedit/gedit-file-chooser-dialog-gtk.c:305
+#: ../bedit/bedit-file-chooser-dialog-gtk.c:305
 msgid "C_haracter Encoding:"
 msgstr "अक्षर एंकोडिंग (_h):"
 
-#: ../gedit/gedit-file-chooser-dialog-gtk.c:355
+#: ../bedit/bedit-file-chooser-dialog-gtk.c:355
 msgid "L_ine Ending:"
 msgstr "ओळ एंकोडिंग (_i):"
 
-#: ../gedit/gedit-file-chooser-dialog-osx.c:546
+#: ../bedit/bedit-file-chooser-dialog-osx.c:546
 #| msgid "C_haracter Encoding:"
 msgid "Character Encoding:"
 msgstr "अक्षर एंकोडिंग:"
 
-#: ../gedit/gedit-file-chooser-dialog-osx.c:619
+#: ../bedit/bedit-file-chooser-dialog-osx.c:619
 #| msgid "L_ine Ending:"
 msgid "Line Ending:"
 msgstr "ओळ एंकोडिंग:"
 
-#: ../gedit/gedit-highlight-mode-selector.c:256 ../gedit/gedit-window.c:1217
+#: ../bedit/bedit-highlight-mode-selector.c:256 ../bedit/bedit-window.c:1217
 #: ../plugins/externaltools/tools/manager.py:108
 #: ../plugins/externaltools/tools/manager.py:317
 #: ../plugins/externaltools/tools/manager.py:433
@@ -1030,54 +1030,54 @@ msgstr "ओळ एंकोडिंग:"
 msgid "Plain Text"
 msgstr "पाठ्य"
 
-#: ../gedit/gedit-io-error-info-bar.c:147
-#: ../gedit/gedit-io-error-info-bar.c:495
+#: ../bedit/bedit-io-error-info-bar.c:147
+#: ../bedit/bedit-io-error-info-bar.c:495
 msgid "_Retry"
 msgstr "पुनः करा (_R)"
 
-#: ../gedit/gedit-io-error-info-bar.c:167
+#: ../bedit/bedit-io-error-info-bar.c:167
 #, c-format
 #| msgid "Could not find the file %s."
 msgid "Could not find the file “%s”."
 msgstr "“%s” फाइल आढळली नाही."
 
-#: ../gedit/gedit-io-error-info-bar.c:169
-#: ../gedit/gedit-io-error-info-bar.c:209
-#: ../gedit/gedit-io-error-info-bar.c:216
+#: ../bedit/bedit-io-error-info-bar.c:169
+#: ../bedit/bedit-io-error-info-bar.c:209
+#: ../bedit/bedit-io-error-info-bar.c:216
 msgid "Please check that you typed the location correctly and try again."
 msgstr ""
 "कृपया तुम्ही टाइप केलेले स्थळ योग्य असल्याची खात्री करा आणि पुनः प्रयत्न करा."
 
 #. Translators: %s is a URI scheme (like for example http:, ftp:, etc.)
-#: ../gedit/gedit-io-error-info-bar.c:188
+#: ../bedit/bedit-io-error-info-bar.c:188
 #, c-format
-#| msgid "gedit cannot handle %s locations."
+#| msgid "bedit cannot handle %s locations."
 msgid "Unable to handle “%s:” locations."
 msgstr "“%s:” ठिकाणांची हाताळणी अशक्य."
 
-#: ../gedit/gedit-io-error-info-bar.c:194
-#| msgid "gedit cannot handle this location."
+#: ../bedit/bedit-io-error-info-bar.c:194
+#| msgid "bedit cannot handle this location."
 msgid "Unable to handle this location."
 msgstr "या ठिकाणाची हाताळणी अशक्य."
 
-#: ../gedit/gedit-io-error-info-bar.c:203
+#: ../bedit/bedit-io-error-info-bar.c:203
 #| msgid "The location of the file cannot be mounted."
 msgid "The location of the file cannot be accessed."
 msgstr "फाइलचे ठिकाणकरिता प्रवेश अशक्य."
 
-#: ../gedit/gedit-io-error-info-bar.c:207
+#: ../bedit/bedit-io-error-info-bar.c:207
 #, c-format
 #| msgid "%s is a directory."
 msgid "“%s” is a directory."
 msgstr "“%s” डिरेक्ट्री आहे."
 
-#: ../gedit/gedit-io-error-info-bar.c:214
+#: ../bedit/bedit-io-error-info-bar.c:214
 #, c-format
 #| msgid "%s is not a valid location."
 msgid "“%s” is not a valid location."
 msgstr "“%s” वैध ठिकाण नाही."
 
-#: ../gedit/gedit-io-error-info-bar.c:250
+#: ../bedit/bedit-io-error-info-bar.c:250
 #, c-format
 #| msgid ""
 #| "Host %s could not be found. Please check that your proxy settings are "
@@ -1089,7 +1089,7 @@ msgstr ""
 "यजमान “%s” आढळले नाही. कृपया तुम्ही निवडलेले प्रॉक्झी पर्याय योग्य असल्याची "
 "खात्री करा आणि पुनः प्रयत्न करा."
 
-#: ../gedit/gedit-io-error-info-bar.c:265
+#: ../bedit/bedit-io-error-info-bar.c:265
 #, c-format
 msgid ""
 "Hostname was invalid. Please check that you typed the location correctly and "
@@ -1097,53 +1097,53 @@ msgid ""
 msgstr ""
 "यजमाननाम अवैध. कृपया टाइप केलेले स्थळ आहे खात्री करा आणि पुनः प्रयत्न करा."
 
-#: ../gedit/gedit-io-error-info-bar.c:273
+#: ../bedit/bedit-io-error-info-bar.c:273
 #, c-format
 #| msgid "%s is not a regular file."
 msgid "“%s” is not a regular file."
 msgstr "“%s” नियमीत फाइल नाही."
 
-#: ../gedit/gedit-io-error-info-bar.c:278
+#: ../bedit/bedit-io-error-info-bar.c:278
 msgid "Connection timed out. Please try again."
 msgstr "जुळवणी कालबाह्य झाली. कृपया पुनः प्रयत्न करा."
 
-#: ../gedit/gedit-io-error-info-bar.c:311
+#: ../bedit/bedit-io-error-info-bar.c:311
 #, c-format
 msgid "Unexpected error: %s"
 msgstr "अनपेक्षित चूक: %s"
 
-#: ../gedit/gedit-io-error-info-bar.c:347
-#| msgid "gedit cannot find the file. Perhaps it has recently been deleted."
+#: ../bedit/bedit-io-error-info-bar.c:347
+#| msgid "bedit cannot find the file. Perhaps it has recently been deleted."
 msgid "Cannot find the requested file. Perhaps it has recently been deleted."
 msgstr "विनंती केलेली फाइल आढळली नाही. फाइल नुकतेच नष्ट केली असावी."
 
-#: ../gedit/gedit-io-error-info-bar.c:357
+#: ../bedit/bedit-io-error-info-bar.c:357
 #, c-format
 #| msgid "Could not revert the file %s."
 msgid "Could not revert the file “%s”."
 msgstr "फाइल “%s” यास मूळ स्थितीत आणणे अशक्य."
 
-#: ../gedit/gedit-io-error-info-bar.c:384
+#: ../bedit/bedit-io-error-info-bar.c:384
 msgid "Ch_aracter Encoding:"
 msgstr "अक्षर एंकोडिंग (_a):"
 
-#: ../gedit/gedit-io-error-info-bar.c:445
+#: ../bedit/bedit-io-error-info-bar.c:445
 #, c-format
 msgid "The location “%s” is not currently reachable."
 msgstr "ठिकाण “%s” आत्ता पोहचण्याजोगी नाही."
 
-#: ../gedit/gedit-io-error-info-bar.c:460
+#: ../bedit/bedit-io-error-info-bar.c:460
 msgid "Your system is offline. Check your network."
 msgstr "तुमची प्रणाली ऑफलाइन आहे. नेटवर्कची तपासणी आहे."
 
 #. Translators: the access key chosen for this string should be
 #. different from other main menu access keys (Open, Edit, View...)
-#: ../gedit/gedit-io-error-info-bar.c:503
-#: ../gedit/gedit-io-error-info-bar.c:772
+#: ../bedit/bedit-io-error-info-bar.c:503
+#: ../bedit/bedit-io-error-info-bar.c:772
 msgid "Edit Any_way"
 msgstr "कसेही संपादीत करा (_w)"
 
-#: ../gedit/gedit-io-error-info-bar.c:595
+#: ../bedit/bedit-io-error-info-bar.c:595
 msgid ""
 "The number of followed links is limited and the actual file could not be "
 "found within this limit."
@@ -1151,32 +1151,32 @@ msgstr ""
 "लिंक संख्या मर्यादीत आहे व या मार्यादा अंतर्गत वास्तविक फाइल आढळले जाऊ शकत "
 "नाही."
 
-#: ../gedit/gedit-io-error-info-bar.c:599
+#: ../bedit/bedit-io-error-info-bar.c:599
 msgid "You do not have the permissions necessary to open the file."
 msgstr "फाइल उघडण्यासाठी आवश्यक अनुमती तुमच्याकडे नाही."
 
-#: ../gedit/gedit-io-error-info-bar.c:605
-#| msgid "gedit has not been able to detect the character encoding."
+#: ../bedit/bedit-io-error-info-bar.c:605
+#| msgid "bedit has not been able to detect the character encoding."
 msgid "Unable to detect the character encoding."
 msgstr "अक्षर एंकोडिंग ओळखणे अशक्य."
 
-#: ../gedit/gedit-io-error-info-bar.c:606
-#: ../gedit/gedit-io-error-info-bar.c:630
+#: ../bedit/bedit-io-error-info-bar.c:606
+#: ../bedit/bedit-io-error-info-bar.c:630
 msgid "Please check that you are not trying to open a binary file."
 msgstr ""
 "तुम्ही एखादी द्विमान(बायनरी) फाइल उघडण्याचा प्रयत्न करीत नसल्याची खात्री करा."
 
-#: ../gedit/gedit-io-error-info-bar.c:607
+#: ../bedit/bedit-io-error-info-bar.c:607
 msgid "Select a character encoding from the menu and try again."
 msgstr "मेनूमधून अक्षर एंकोडिंग नीवडा व पुनः प्रयत्न करा."
 
-#: ../gedit/gedit-io-error-info-bar.c:613
+#: ../bedit/bedit-io-error-info-bar.c:613
 #, c-format
 #| msgid "There was a problem opening the file %s."
 msgid "There was a problem opening the file “%s”."
 msgstr "फाइल “%s” उघडतेवेळी अडचण."
 
-#: ../gedit/gedit-io-error-info-bar.c:615
+#: ../bedit/bedit-io-error-info-bar.c:615
 msgid ""
 "The file you opened has some invalid characters. If you continue editing "
 "this file you could corrupt this document."
@@ -1185,34 +1185,34 @@ msgstr ""
 "ठेवल्यास "
 "दस्तऐवज सदोषीत होऊ शकते."
 
-#: ../gedit/gedit-io-error-info-bar.c:618
+#: ../bedit/bedit-io-error-info-bar.c:618
 msgid "You can also choose another character encoding and try again."
 msgstr "इतर अक्षर एंकोडिंग नीवडणे देखील शक्य आहे व पुनः प्रयत्न करा."
 
-#: ../gedit/gedit-io-error-info-bar.c:627
+#: ../bedit/bedit-io-error-info-bar.c:627
 #, c-format
 #| msgid "Could not open the file %s using the %s character encoding."
 msgid "Could not open the file “%s” using the “%s” character encoding."
 msgstr "“%2$s” अक्षर एंकोडिंगचा वापर करून फाइल “%1$s” उघडणे अशक्य."
 
-#: ../gedit/gedit-io-error-info-bar.c:631
-#: ../gedit/gedit-io-error-info-bar.c:706
+#: ../bedit/bedit-io-error-info-bar.c:631
+#: ../bedit/bedit-io-error-info-bar.c:706
 msgid "Select a different character encoding from the menu and try again."
 msgstr "मेनूमधून वेगळे अक्षर एंकोडिंग निवडून पुनः प्रयत्न करा."
 
-#: ../gedit/gedit-io-error-info-bar.c:643
+#: ../bedit/bedit-io-error-info-bar.c:643
 #, c-format
 #| msgid "Could not open the file %s."
 msgid "Could not open the file “%s”."
 msgstr "“%s” फाइल उघडणे अशक्य."
 
-#: ../gedit/gedit-io-error-info-bar.c:701
+#: ../bedit/bedit-io-error-info-bar.c:701
 #, c-format
 #| msgid "Could not save the file %s using the %s character encoding."
 msgid "Could not save the file “%s” using the “%s” character encoding."
 msgstr "“%2$s” अक्षर एंकोडिंगचा वापर करून फाइल “%1$s” साठवणे अशक्य."
 
-#: ../gedit/gedit-io-error-info-bar.c:704
+#: ../bedit/bedit-io-error-info-bar.c:704
 msgid ""
 "The document contains one or more characters that cannot be encoded using "
 "the specified character encoding."
@@ -1223,30 +1223,30 @@ msgstr ""
 
 #. Translators: the access key chosen for this string should be
 #. different from other main menu access keys (Open, Edit, View...)
-#: ../gedit/gedit-io-error-info-bar.c:777
+#: ../bedit/bedit-io-error-info-bar.c:777
 msgid "D_on't Edit"
 msgstr "संपादीत करू नका (_o)"
 
-#: ../gedit/gedit-io-error-info-bar.c:787
+#: ../bedit/bedit-io-error-info-bar.c:787
 #, c-format
-#| msgid "This file (%s) is already open in another gedit window."
+#| msgid "This file (%s) is already open in another bedit window."
 msgid "This file “%s” is already open in another window."
 msgstr "फाइल “%s” आधीपासूनच अन्य चौकटींमध्ये खुले आहे."
 
-#: ../gedit/gedit-io-error-info-bar.c:801
+#: ../bedit/bedit-io-error-info-bar.c:801
 #| msgid "Do you want to reload the file?"
 msgid "Do you want to edit it anyway?"
 msgstr "तुम्हाला तरिही संपादित करायचे?"
 
-#: ../gedit/gedit-io-error-info-bar.c:857
-#: ../gedit/gedit-io-error-info-bar.c:947
-#: ../gedit/gedit-io-error-info-bar.c:1239
+#: ../bedit/bedit-io-error-info-bar.c:857
+#: ../bedit/bedit-io-error-info-bar.c:947
+#: ../bedit/bedit-io-error-info-bar.c:1239
 msgid "S_ave Anyway"
 msgstr "कसेही साठवा (_a)"
 
-#: ../gedit/gedit-io-error-info-bar.c:860
-#: ../gedit/gedit-io-error-info-bar.c:950
-#: ../gedit/gedit-io-error-info-bar.c:1242
+#: ../bedit/bedit-io-error-info-bar.c:860
+#: ../bedit/bedit-io-error-info-bar.c:950
+#: ../bedit/bedit-io-error-info-bar.c:1242
 msgid "D_on't Save"
 msgstr "संचयीत करू नका(_D)"
 
@@ -1254,31 +1254,31 @@ msgstr "संचयीत करू नका(_D)"
 #. * could be interpreted as the changes he made in the document. beside "reading" is
 #. * not accurate (since last load/save)
 #.
-#: ../gedit/gedit-io-error-info-bar.c:874
+#: ../bedit/bedit-io-error-info-bar.c:874
 #, c-format
 #| msgid "The file %s has been modified since reading it."
 msgid "The file “%s” has been modified since reading it."
 msgstr "फाइल “%s” चे वाचन झाल्यापासून त्यामध्ये बदल आढळले."
 
-#: ../gedit/gedit-io-error-info-bar.c:889
+#: ../bedit/bedit-io-error-info-bar.c:889
 msgid "If you save it, all the external changes could be lost. Save it anyway?"
 msgstr "संचयन करीत असल्यास, सर्व बाहेरील बदल लुप्त होतील. कसेही करन साठवा?"
 
-#: ../gedit/gedit-io-error-info-bar.c:969
+#: ../bedit/bedit-io-error-info-bar.c:969
 #, c-format
 #| msgid "Could not create a backup file while saving %s"
 msgid "Could not create a backup file while saving “%s”"
 msgstr "“%s” साठवतेवेळी तात्पूर्ते प्रतिकृत फाइल बनवणे अशक्य"
 
-#: ../gedit/gedit-io-error-info-bar.c:974
+#: ../bedit/bedit-io-error-info-bar.c:974
 #, c-format
 #| msgid "Could not create a temporary backup file while saving %s"
 msgid "Could not create a temporary backup file while saving “%s”"
 msgstr "“%s” साठवतेवेळी तात्पूर्ते प्रतिकृत फाइल बनवणे अशक्य"
 
-#: ../gedit/gedit-io-error-info-bar.c:991
+#: ../bedit/bedit-io-error-info-bar.c:991
 #| msgid ""
-#| "gedit could not back up the old copy of the file before saving the new "
+#| "bedit could not back up the old copy of the file before saving the new "
 #| "one. You can ignore this warning and save the file anyway, but if an "
 #| "error occurs while saving, you could lose the old copy of the file. Save "
 #| "anyway?"
@@ -1292,10 +1292,10 @@ msgstr ""
 "तुम्हची जुनी प्रत प्राप्यजोगी शकणार नाही. कसेही साठवायचे?"
 
 #. Translators: %s is a URI scheme (like for example http:, ftp:, etc.)
-#: ../gedit/gedit-io-error-info-bar.c:1051
+#: ../bedit/bedit-io-error-info-bar.c:1051
 #, c-format
 #| msgid ""
-#| "gedit cannot handle %s locations in write mode. Please check that you "
+#| "bedit cannot handle %s locations in write mode. Please check that you "
 #| "typed the location correctly and try again."
 msgid ""
 "Cannot handle “%s:” locations in write mode. Please check that you typed the "
@@ -1304,9 +1304,9 @@ msgstr ""
 "“%s:” ठिकाण राइट मोडमध्ये हाताळणे अशक्य. कृपया तुम्ही टाइप केलेले स्थळ योग्य "
 "असल्याची खात्री करा आणि पुन्हा प्रयत्न करा."
 
-#: ../gedit/gedit-io-error-info-bar.c:1059
+#: ../bedit/bedit-io-error-info-bar.c:1059
 #| msgid ""
-#| "gedit cannot handle this location in write mode. Please check that you "
+#| "bedit cannot handle this location in write mode. Please check that you "
 #| "typed the location correctly and try again."
 msgid ""
 "Cannot handle this location in write mode. Please check that you typed the "
@@ -1316,7 +1316,7 @@ msgstr ""
 "असल्याची "
 "खात्री करा आणि पुन्हा प्रयत्न करा."
 
-#: ../gedit/gedit-io-error-info-bar.c:1068
+#: ../bedit/bedit-io-error-info-bar.c:1068
 #, c-format
 #| msgid ""
 #| "%s is not a valid location. Please check that you typed the location "
@@ -1328,7 +1328,7 @@ msgstr ""
 "“%s” वैध ठिकाण नाही. कृपया तुम्ही योग्यरित्या ठिकाण टाइप केले याची खात्री करा "
 "आणि पुन्हा प्रयत्न करा."
 
-#: ../gedit/gedit-io-error-info-bar.c:1075
+#: ../bedit/bedit-io-error-info-bar.c:1075
 msgid ""
 "You do not have the permissions necessary to save the file. Please check "
 "that you typed the location correctly and try again."
@@ -1337,7 +1337,7 @@ msgstr ""
 "असल्याची "
 "खात्री करा आणि पुनः प्रयत्न करा."
 
-#: ../gedit/gedit-io-error-info-bar.c:1081
+#: ../bedit/bedit-io-error-info-bar.c:1081
 msgid ""
 "There is not enough disk space to save the file. Please free some disk space "
 "and try again."
@@ -1346,7 +1346,7 @@ msgstr ""
 "मोकळ्या "
 "करा आणि पुनः प्रयत्न करा."
 
-#: ../gedit/gedit-io-error-info-bar.c:1086
+#: ../bedit/bedit-io-error-info-bar.c:1086
 msgid ""
 "You are trying to save the file on a read-only disk. Please check that you "
 "typed the location correctly and try again."
@@ -1355,11 +1355,11 @@ msgstr ""
 "तुम्ही टाइप "
 "केलेले स्थळ योग्य असल्याची खात्री करा आणि पुनः प्रयत्न करा."
 
-#: ../gedit/gedit-io-error-info-bar.c:1092
+#: ../bedit/bedit-io-error-info-bar.c:1092
 msgid "A file with the same name already exists. Please use a different name."
 msgstr "समान नावाची फाइल आधिपासूनच अस्तित्वात आहे. कृपया अन्य नाव वापरा."
 
-#: ../gedit/gedit-io-error-info-bar.c:1097
+#: ../bedit/bedit-io-error-info-bar.c:1097
 msgid ""
 "The disk where you are trying to save the file has a limitation on length of "
 "the file names. Please use a shorter name."
@@ -1368,7 +1368,7 @@ msgstr ""
 "मर्यादित जागा आहे "
 "कृपया अशी मर्यादित जागा नसणार्या डिस्कमध्ये फाइल रक्षित करता येईल असे पहा."
 
-#: ../gedit/gedit-io-error-info-bar.c:1108
+#: ../bedit/bedit-io-error-info-bar.c:1108
 msgid ""
 "The disk where you are trying to save the file has a limitation on file "
 "sizes. Please try saving a smaller file or saving it to a disk that does not "
@@ -1378,108 +1378,108 @@ msgstr ""
 "मर्यादित जागा आहे "
 "कृपया अशी मर्यादित जागा नसणार्या डिस्कमध्ये फाइल रक्षित करता येईल असे पहा."
 
-#: ../gedit/gedit-io-error-info-bar.c:1125
+#: ../bedit/bedit-io-error-info-bar.c:1125
 #, c-format
 #| msgid "Could not save the file %s."
 msgid "Could not save the file “%s”."
 msgstr "फाइल “%s” साठवणे अशक्य."
 
-#: ../gedit/gedit-io-error-info-bar.c:1165
+#: ../bedit/bedit-io-error-info-bar.c:1165
 #, c-format
 #| msgid "The file %s changed on disk."
 msgid "The file “%s” changed on disk."
 msgstr "फाइल “%s” डिस्कवर बदलली."
 
-#: ../gedit/gedit-io-error-info-bar.c:1176
+#: ../bedit/bedit-io-error-info-bar.c:1176
 msgid "Drop Changes and _Reload"
 msgstr "बदलाव वगळा आणि पुन्हा लोड करा (_R)"
 
-#: ../gedit/gedit-io-error-info-bar.c:1186
-#: ../gedit/resources/gtk/menus-default.ui.h:6
-#: ../gedit/resources/gtk/menus-traditional.ui.h:1
-#: ../gedit/resources/gtk/menus-osx.ui.h:10
+#: ../bedit/bedit-io-error-info-bar.c:1186
+#: ../bedit/resources/gtk/menus-default.ui.h:6
+#: ../bedit/resources/gtk/menus-traditional.ui.h:1
+#: ../bedit/resources/gtk/menus-osx.ui.h:10
 msgid "_Reload"
 msgstr "पुन्ह दाखलन (_R)"
 
-#: ../gedit/gedit-io-error-info-bar.c:1252
+#: ../bedit/bedit-io-error-info-bar.c:1252
 #, c-format
 #| msgid "Some invalid chars have been detected while saving %s"
 msgid "Some invalid chars have been detected while saving “%s”"
 msgstr "“%s” साठवतेवेळी काही अवैध अक्षरे आढळले"
 
-#: ../gedit/gedit-io-error-info-bar.c:1268
+#: ../bedit/bedit-io-error-info-bar.c:1268
 msgid ""
 "If you continue saving this file you can corrupt the document.  Save anyway?"
 msgstr ""
 "ही फाइल साठवणे चालू ठेवल्यास दस्तऐवज सदोषीत होऊ शकते.  कसेही करून साठवा?"
 
-#: ../gedit/gedit-open-document-selector.c:411
+#: ../bedit/bedit-open-document-selector.c:411
 msgid "No results"
 msgstr "परिणाम नाही"
 
-#: ../gedit/gedit-preferences-dialog.c:386
+#: ../bedit/bedit-preferences-dialog.c:386
 msgid "Click on this button to select the font to be used by the editor"
 msgstr "संपादकद्वारे वापरण्याजोगी फाँट नीवडण्यासाठी या बटनावर क्लिक करा"
 
-#: ../gedit/gedit-preferences-dialog.c:399
+#: ../bedit/bedit-preferences-dialog.c:399
 #, c-format
 msgid "_Use the system fixed width font (%s)"
 msgstr "प्रणाली करीता ठराविक रूंदीचे (%s) फाँट वापरा (_U)"
 
-#: ../gedit/gedit-preferences-dialog.c:643
+#: ../bedit/bedit-preferences-dialog.c:643
 #, c-format
 msgid "Directory '%s' could not be created: g_mkdir_with_parents() failed: %s"
 msgstr "डिरेक्ट्री '%s' बनवू शकले नाही: g_mkdir_with_parents() अपयशी: %s"
 
-#: ../gedit/gedit-preferences-dialog.c:839
+#: ../bedit/bedit-preferences-dialog.c:839
 msgid "The selected color scheme cannot be installed."
 msgstr "निवडलेले रंग युजना प्रतिष्ठापतीत करण्याजोगी नाही."
 
-#: ../gedit/gedit-preferences-dialog.c:864
+#: ../bedit/bedit-preferences-dialog.c:864
 msgid "Add Scheme"
 msgstr "सुत्रयोजना जोडा"
 
-#: ../gedit/gedit-preferences-dialog.c:869
+#: ../bedit/bedit-preferences-dialog.c:869
 msgid "A_dd Scheme"
 msgstr "सुत्रयोजना जोडा (_d)"
 
-#: ../gedit/gedit-preferences-dialog.c:873
+#: ../bedit/bedit-preferences-dialog.c:873
 msgid "Color Scheme Files"
 msgstr "रंग सुत्रयोजना फाइलं"
 
-#: ../gedit/gedit-preferences-dialog.c:910
+#: ../bedit/bedit-preferences-dialog.c:910
 #, c-format
 msgid "Could not remove color scheme \"%s\"."
 msgstr "\"%s\" रंग सुत्रयोजना काढू शकली नाही."
 
-#: ../gedit/gedit-print-job.c:555
+#: ../bedit/bedit-print-job.c:555
 #, c-format
 msgid "File: %s"
 msgstr "फाइल %s"
 
-#: ../gedit/gedit-print-job.c:564
+#: ../bedit/bedit-print-job.c:564
 msgid "Page %N of %Q"
 msgstr "%N पान %Q पैकी"
 
-#: ../gedit/gedit-print-job.c:826
+#: ../bedit/bedit-print-job.c:826
 msgid "Preparing..."
 msgstr "तयार करित आहे..."
 
-#: ../gedit/gedit-print-preview.c:648
+#: ../bedit/bedit-print-preview.c:648
 #, c-format
 msgid "Page %d of %d"
 msgstr "पान %2$d पैकी %1$d"
 
 #. Use spaces to leave padding proportional to the font size
-#: ../gedit/gedit-statusbar.c:54 ../gedit/gedit-statusbar.c:60
+#: ../bedit/bedit-statusbar.c:54 ../bedit/bedit-statusbar.c:60
 msgid "OVR"
 msgstr "OVR"
 
-#: ../gedit/gedit-statusbar.c:54 ../gedit/gedit-statusbar.c:60
+#: ../bedit/bedit-statusbar.c:54 ../bedit/bedit-statusbar.c:60
 msgid "INS"
 msgstr "INS"
 
-#: ../gedit/gedit-statusbar.c:242
+#: ../bedit/bedit-statusbar.c:242
 #, c-format
 msgid "There is a tab with errors"
 msgid_plural "There are %d tabs with errors"
@@ -1488,106 +1488,106 @@ msgstr[1] "त्रुटीसह %d टॅब समाविष्टीत"
 
 #. Translators: the first %s is a file name (e.g. test.txt) the second one
 #. is a directory (e.g. ssh://master.gnome.org/home/users/paolo)
-#: ../gedit/gedit-tab.c:772
+#: ../bedit/bedit-tab.c:772
 #, c-format
 msgid "Reverting %s from %s"
 msgstr "%s पासून %s करीता पूर्ववत करत आहे"
 
-#: ../gedit/gedit-tab.c:779
+#: ../bedit/bedit-tab.c:779
 #, c-format
 msgid "Reverting %s"
 msgstr "%s मूळ स्थितीवर आणत आहे"
 
 #. Translators: the first %s is a file name (e.g. test.txt) the second one
 #. is a directory (e.g. ssh://master.gnome.org/home/users/paolo)
-#: ../gedit/gedit-tab.c:792
+#: ../bedit/bedit-tab.c:792
 #, c-format
 msgid "Loading %s from %s"
 msgstr "%2$s पासून %1$s उघडत आहे"
 
-#: ../gedit/gedit-tab.c:799
+#: ../bedit/bedit-tab.c:799
 #, c-format
 msgid "Loading %s"
 msgstr "%s लोड होत आहे"
 
 #. Translators: the first %s is a file name (e.g. test.txt) the second one
 #. is a directory (e.g. ssh://master.gnome.org/home/users/paolo)
-#: ../gedit/gedit-tab.c:875
+#: ../bedit/bedit-tab.c:875
 #, c-format
 msgid "Saving %s to %s"
 msgstr "%2$s वर %1$s साठवत आहे"
 
-#: ../gedit/gedit-tab.c:880
+#: ../bedit/bedit-tab.c:880
 #, c-format
 msgid "Saving %s"
 msgstr "%s साठवत आहे"
 
 #. Read only
-#: ../gedit/gedit-tab.c:1443
+#: ../bedit/bedit-tab.c:1443
 msgid "RO"
 msgstr "RO"
 
-#: ../gedit/gedit-tab.c:1491
+#: ../bedit/bedit-tab.c:1491
 #, c-format
 msgid "Error opening file %s"
 msgstr "फाइल  %s उघडताना चूक"
 
-#: ../gedit/gedit-tab.c:1496
+#: ../bedit/bedit-tab.c:1496
 #, c-format
 msgid "Error reverting file %s"
 msgstr "फाइल  %s मूळ स्थितीत  आणताना चूक"
 
-#: ../gedit/gedit-tab.c:1501
+#: ../bedit/bedit-tab.c:1501
 #, c-format
 msgid "Error saving file %s"
 msgstr "फाइल  %s सुरक्षित करताना चूक"
 
-#: ../gedit/gedit-tab.c:1532
+#: ../bedit/bedit-tab.c:1532
 msgid "Name:"
 msgstr "नाव:"
 
-#: ../gedit/gedit-tab.c:1533
+#: ../bedit/bedit-tab.c:1533
 msgid "MIME Type:"
 msgstr "MIME प्रकार:"
 
-#: ../gedit/gedit-tab.c:1534
+#: ../bedit/bedit-tab.c:1534
 msgid "Encoding:"
 msgstr "एंकोडिंग:"
 
-#: ../gedit/gedit-utils.c:848
+#: ../bedit/bedit-utils.c:848
 msgid "Please check your installation."
 msgstr "कृपया प्रतिष्ठापन तपासा."
 
-#: ../gedit/gedit-utils.c:909
+#: ../bedit/bedit-utils.c:909
 #, c-format
 msgid "Unable to open UI file %s. Error: %s"
 msgstr "UI फाइल %s उघडणे अशक्य. त्रुटी: %s"
 
-#: ../gedit/gedit-utils.c:928
+#: ../bedit/bedit-utils.c:928
 #, c-format
 msgid "Unable to find the object '%s' inside file %s."
 msgstr "%2$s फाइल अंतर्गत घटक '%1$s' आढळले नाही."
 
 #. Translators: '/ on <remote-share>'
-#: ../gedit/gedit-utils.c:1151
+#: ../bedit/bedit-utils.c:1151
 #, c-format
 msgid "/ on %s"
 msgstr "%s वरील /"
 
-#: ../gedit/gedit-utils.c:1453
+#: ../bedit/bedit-utils.c:1453
 msgid "Unix/Linux"
 msgstr "Unix/Linux"
 
-#: ../gedit/gedit-utils.c:1455
+#: ../bedit/bedit-utils.c:1455
 msgid "Mac OS Classic"
 msgstr "Mac OS Classic"
 
-#: ../gedit/gedit-utils.c:1457
+#: ../bedit/bedit-utils.c:1457
 msgid "Windows"
 msgstr "Windows"
 
-#: ../gedit/gedit-view.c:512
-#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:2
+#: ../bedit/bedit-view.c:512
+#: ../bedit/resources/ui/bedit-preferences-dialog.ui.h:2
 msgid "_Display line numbers"
 msgstr "ओळ क्रमांक दाखवा (_D)"
 
@@ -1595,748 +1595,748 @@ msgstr "ओळ क्रमांक दाखवा (_D)"
 #. * occurrence, and the second %d is the total number of search
 #. * occurrences.
 #.
-#: ../gedit/gedit-view-frame.c:733
+#: ../bedit/bedit-view-frame.c:733
 #, c-format
 #| msgid "Page %d of %d"
 msgid "%d of %d"
 msgstr "%d, %d पैकी"
 
 #. create "Wrap Around" menu item.
-#: ../gedit/gedit-view-frame.c:825
+#: ../bedit/bedit-view-frame.c:825
 msgid "_Wrap Around"
 msgstr "घट्ट बसवा (_W)"
 
 #. create "Match as Regular Expression" menu item.
-#: ../gedit/gedit-view-frame.c:835
+#: ../bedit/bedit-view-frame.c:835
 msgid "Match as _Regular Expression"
 msgstr "रेग्युलर एक्सप्रेशन नुरूप जुळवा (_R)"
 
 #. create "Match Entire Word Only" menu item.
-#: ../gedit/gedit-view-frame.c:849
+#: ../bedit/bedit-view-frame.c:849
 msgid "Match _Entire Word Only"
 msgstr "फक्त संपूर्ण शब्द जोडा (_E)"
 
 #. create "Match Case" menu item.
-#: ../gedit/gedit-view-frame.c:863
+#: ../bedit/bedit-view-frame.c:863
 msgid "_Match Case"
 msgstr "लिपी जुळवा (_M)"
 
-#: ../gedit/gedit-view-frame.c:1037
+#: ../bedit/bedit-view-frame.c:1037
 msgid "String you want to search for"
 msgstr "तुम्ही शोधू इच्छित असलेली ओळ"
 
-#: ../gedit/gedit-view-frame.c:1049
+#: ../bedit/bedit-view-frame.c:1049
 msgid "Line you want to move the cursor to"
 msgstr "तुम्ही कर्सर नेऊ इच्छित असलेली लाइन"
 
-#: ../gedit/gedit-window.c:972
+#: ../bedit/bedit-window.c:972
 msgid "Bracket match is out of range"
 msgstr "ब्रॅकेट मॅच व्याप्तिच्या बाहेर आहे"
 
-#: ../gedit/gedit-window.c:977
+#: ../bedit/bedit-window.c:977
 msgid "Bracket match not found"
 msgstr "ब्रॅकेट मॅच आढळले नाही"
 
-#: ../gedit/gedit-window.c:982
+#: ../bedit/bedit-window.c:982
 #, c-format
 msgid "Bracket match found on line: %d"
 msgstr "ब्रॅकेट मॅच ओळवर आढळले नाही: %d"
 
 #. Translators: "Ln" is an abbreviation for "Line", Col is an abbreviation for "Column". Please,
 #. use abbreviations if possible to avoid space problems.
-#: ../gedit/gedit-window.c:1017
+#: ../bedit/bedit-window.c:1017
 #, c-format
 msgid "  Ln %d, Col %d"
 msgstr "  Ln %d, Col %d"
 
-#: ../gedit/gedit-window.c:1199
+#: ../bedit/bedit-window.c:1199
 #, c-format
 msgid "Tab Width: %u"
 msgstr "टॅब रुंदी: %u"
 
-#: ../gedit/gedit-window.c:1569
+#: ../bedit/bedit-window.c:1569
 msgid "There are unsaved documents"
 msgstr "न साठवलेले दस्तऐवज आढळले"
 
-#: ../gedit/gedit-window.c:2418
+#: ../bedit/bedit-window.c:2418
 msgid "Change side panel page"
 msgstr "साइड पॅनल पृष्ठ बदलवा"
 
-#: ../gedit/gedit-window.c:2438 ../gedit/resources/gtk/menus-osx.ui.h:35
-#: ../gedit/resources/ui/gedit-window.ui.h:1
+#: ../bedit/bedit-window.c:2438 ../bedit/resources/gtk/menus-osx.ui.h:35
+#: ../bedit/resources/ui/bedit-window.ui.h:1
 msgid "Documents"
 msgstr "दस्तऐवज"
 
 #. ex:set ts=8 noet:
-#: ../gedit/resources/gtk/menus-common.ui.h:1
+#: ../bedit/resources/gtk/menus-common.ui.h:1
 msgid "Move _Left"
 msgstr "डावीकडे हलवा (_L)"
 
-#: ../gedit/resources/gtk/menus-common.ui.h:2
+#: ../bedit/resources/gtk/menus-common.ui.h:2
 msgid "Move _Right"
 msgstr "उजवीकडे हलवा (_R)"
 
-#: ../gedit/resources/gtk/menus-common.ui.h:3
+#: ../bedit/resources/gtk/menus-common.ui.h:3
 #| msgid "_Move to New Window"
 msgid "Move to New _Window"
 msgstr "नवीन पटलाकडे स्थानांतरित व्हा (_W)"
 
-#: ../gedit/resources/gtk/menus-common.ui.h:4
+#: ../bedit/resources/gtk/menus-common.ui.h:4
 #| msgid "_New Tab Group"
 msgid "Move to New Tab _Group"
 msgstr "नवीन टॅब गटाकडे स्थानांतरित व्हा (_G)"
 
-#: ../gedit/resources/gtk/menus-common.ui.h:5
-#: ../gedit/resources/gtk/menus-default.ui.h:21
-#: ../gedit/resources/gtk/menus-traditional.ui.h:19
-#: ../gedit/resources/gtk/menus-osx.ui.h:12
-#: ../gedit/resources/ui/gedit-replace-dialog.ui.h:2
+#: ../bedit/resources/gtk/menus-common.ui.h:5
+#: ../bedit/resources/gtk/menus-default.ui.h:21
+#: ../bedit/resources/gtk/menus-traditional.ui.h:19
+#: ../bedit/resources/gtk/menus-osx.ui.h:12
+#: ../bedit/resources/ui/bedit-replace-dialog.ui.h:2
 #: ../plugins/pythonconsole/pythonconsole/config.ui.h:3
-#: ../plugins/time/resources/ui/gedit-time-setup-dialog.ui.h:2
+#: ../plugins/time/resources/ui/bedit-time-setup-dialog.ui.h:2
 #| msgid "_Close All"
 msgid "_Close"
 msgstr "बंद करा (_C)"
 
-#: ../gedit/resources/gtk/menus-common.ui.h:6
+#: ../bedit/resources/gtk/menus-common.ui.h:6
 #| msgid "Automatic indent"
 msgid "Automatic Indentation"
 msgstr "स्व अंतर सोडा"
 
-#: ../gedit/resources/gtk/menus-common.ui.h:7
+#: ../bedit/resources/gtk/menus-common.ui.h:7
 msgid "Use Spaces"
 msgstr "रिकामी जागा वापरा"
 
-#: ../gedit/resources/gtk/menus-common.ui.h:8
+#: ../bedit/resources/gtk/menus-common.ui.h:8
 #| msgid "_Display line numbers"
 msgid "Display line numbers"
 msgstr "ओळ क्रमांक दाखवा"
 
-#: ../gedit/resources/gtk/menus-common.ui.h:9
+#: ../bedit/resources/gtk/menus-common.ui.h:9
 #| msgid "Display Right Margin"
 msgid "Display right margin"
 msgstr "उजवी समास दाखवा"
 
-#: ../gedit/resources/gtk/menus-common.ui.h:10
+#: ../bedit/resources/gtk/menus-common.ui.h:10
 #| msgid "Highlight current _line"
 msgid "Highlight current line"
 msgstr "आत्ताची ओळ ठळक करा"
 
-#: ../gedit/resources/gtk/menus-common.ui.h:11
+#: ../bedit/resources/gtk/menus-common.ui.h:11
 #| msgid "Text Wrapping"
 msgid "Text wrapping"
 msgstr "मजकूर घट्ट बसवणे"
 
-#: ../gedit/resources/gtk/menus-default.ui.h:1
-#: ../gedit/resources/gtk/menus-osx.ui.h:9
+#: ../bedit/resources/gtk/menus-default.ui.h:1
+#: ../bedit/resources/gtk/menus-osx.ui.h:9
 msgid "_New Window"
 msgstr "नवीन पटल (_N)"
 
-#: ../gedit/resources/gtk/menus-default.ui.h:2
-#: ../gedit/resources/gtk/menus-traditional.ui.h:15
+#: ../bedit/resources/gtk/menus-default.ui.h:2
+#: ../bedit/resources/gtk/menus-traditional.ui.h:15
 msgid "_Preferences"
 msgstr "पसंती (_P)"
 
-#: ../gedit/resources/gtk/menus-default.ui.h:3
-#: ../gedit/resources/gtk/menus-traditional.ui.h:16
-#: ../gedit/resources/gtk/menus-osx.ui.h:45
-#: ../gedit/resources/ui/gedit-encodings-dialog.ui.h:2
-#: ../plugins/sort/resources/ui/gedit-sort-plugin.ui.h:4
-#: ../plugins/spell/gedit-spell-language-dialog.c:126
+#: ../bedit/resources/gtk/menus-default.ui.h:3
+#: ../bedit/resources/gtk/menus-traditional.ui.h:16
+#: ../bedit/resources/gtk/menus-osx.ui.h:45
+#: ../bedit/resources/ui/bedit-encodings-dialog.ui.h:2
+#: ../plugins/sort/resources/ui/bedit-sort-plugin.ui.h:4
+#: ../plugins/spell/bedit-spell-language-dialog.c:126
 #: ../plugins/spell/resources/ui/languages-dialog.ui.h:2
-#: ../plugins/time/resources/ui/gedit-time-dialog.ui.h:7
+#: ../plugins/time/resources/ui/bedit-time-dialog.ui.h:7
 msgid "_Help"
 msgstr "मदत (_H)"
 
-#: ../gedit/resources/gtk/menus-default.ui.h:4
-#: ../gedit/resources/gtk/menus-traditional.ui.h:17
+#: ../bedit/resources/gtk/menus-default.ui.h:4
+#: ../bedit/resources/gtk/menus-traditional.ui.h:17
 msgid "_About"
 msgstr "विषयी (_A)"
 
-#: ../gedit/resources/gtk/menus-default.ui.h:5
-#: ../gedit/resources/gtk/menus-traditional.ui.h:20
+#: ../bedit/resources/gtk/menus-default.ui.h:5
+#: ../bedit/resources/gtk/menus-traditional.ui.h:20
 msgid "_Quit"
 msgstr "बाहेर पडा (_Q)"
 
-#: ../gedit/resources/gtk/menus-default.ui.h:7
-#: ../gedit/resources/gtk/menus-traditional.ui.h:2
-#: ../gedit/resources/gtk/menus-osx.ui.h:11
+#: ../bedit/resources/gtk/menus-default.ui.h:7
+#: ../bedit/resources/gtk/menus-traditional.ui.h:2
+#: ../bedit/resources/gtk/menus-osx.ui.h:11
 #| msgid "Print"
 msgid "_Print…"
 msgstr "छपाई करा (_P)..."
 
-#: ../gedit/resources/gtk/menus-default.ui.h:8
-#: ../gedit/resources/gtk/menus-traditional.ui.h:3
-#: ../gedit/resources/gtk/menus-osx.ui.h:25
+#: ../bedit/resources/gtk/menus-default.ui.h:8
+#: ../bedit/resources/gtk/menus-traditional.ui.h:3
+#: ../bedit/resources/gtk/menus-osx.ui.h:25
 msgid "_Fullscreen"
 msgstr "पडदाभर (_F)"
 
-#: ../gedit/resources/gtk/menus-default.ui.h:10
-#: ../gedit/resources/gtk/menus-traditional.ui.h:5
+#: ../bedit/resources/gtk/menus-default.ui.h:10
+#: ../bedit/resources/gtk/menus-traditional.ui.h:5
 #| msgid "_Save All"
 msgid "Save _All"
 msgstr "सर्व साठवा (_A)"
 
-#: ../gedit/resources/gtk/menus-default.ui.h:11
-#: ../gedit/resources/gtk/menus-traditional.ui.h:6
-#: ../gedit/resources/gtk/menus-osx.ui.h:28
+#: ../bedit/resources/gtk/menus-default.ui.h:11
+#: ../bedit/resources/gtk/menus-traditional.ui.h:6
+#: ../bedit/resources/gtk/menus-osx.ui.h:28
 #| msgid "Find"
 msgid "_Find…"
 msgstr "शोधा (_F)…"
 
-#: ../gedit/resources/gtk/menus-default.ui.h:12
-#: ../gedit/resources/gtk/menus-traditional.ui.h:7
+#: ../bedit/resources/gtk/menus-default.ui.h:12
+#: ../bedit/resources/gtk/menus-traditional.ui.h:7
 msgid "_Find and Replace…"
 msgstr "शोधा आणि बदलवा (_F)…"
 
-#: ../gedit/resources/gtk/menus-default.ui.h:13
-#: ../gedit/resources/gtk/menus-traditional.ui.h:8
-#: ../gedit/resources/gtk/menus-osx.ui.h:32
+#: ../bedit/resources/gtk/menus-default.ui.h:13
+#: ../bedit/resources/gtk/menus-traditional.ui.h:8
+#: ../bedit/resources/gtk/menus-osx.ui.h:32
 msgid "_Clear Highlight"
 msgstr "उठावदार पुसून टाका (_C)"
 
-#: ../gedit/resources/gtk/menus-default.ui.h:14
-#: ../gedit/resources/gtk/menus-traditional.ui.h:9
+#: ../bedit/resources/gtk/menus-default.ui.h:14
+#: ../bedit/resources/gtk/menus-traditional.ui.h:9
 #| msgid "Go to _Line..."
 msgid "_Go to Line…"
 msgstr "या ओळीवर जा (_G)..."
 
-#: ../gedit/resources/gtk/menus-default.ui.h:15
-#: ../gedit/resources/gtk/menus-traditional.ui.h:10
-#: ../gedit/resources/gtk/menus-osx.ui.h:22
-#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:11
+#: ../bedit/resources/gtk/menus-default.ui.h:15
+#: ../bedit/resources/gtk/menus-traditional.ui.h:10
+#: ../bedit/resources/gtk/menus-osx.ui.h:22
+#: ../bedit/resources/ui/bedit-preferences-dialog.ui.h:11
 msgid "View"
 msgstr "दृश्य"
 
-#: ../gedit/resources/gtk/menus-default.ui.h:16
-#: ../gedit/resources/gtk/menus-traditional.ui.h:11
-#: ../gedit/resources/gtk/menus-osx.ui.h:23
+#: ../bedit/resources/gtk/menus-default.ui.h:16
+#: ../bedit/resources/gtk/menus-traditional.ui.h:11
+#: ../bedit/resources/gtk/menus-osx.ui.h:23
 msgid "Side _Panel"
 msgstr "बाजूचे पटल (_P)"
 
-#: ../gedit/resources/gtk/menus-default.ui.h:17
-#: ../gedit/resources/gtk/menus-traditional.ui.h:12
-#: ../gedit/resources/gtk/menus-osx.ui.h:24
+#: ../bedit/resources/gtk/menus-default.ui.h:17
+#: ../bedit/resources/gtk/menus-traditional.ui.h:12
+#: ../bedit/resources/gtk/menus-osx.ui.h:24
 msgid "_Bottom Panel"
 msgstr "तळ पटल (_B)"
 
-#: ../gedit/resources/gtk/menus-default.ui.h:18
-#: ../gedit/resources/gtk/menus-traditional.ui.h:13
-#: ../gedit/resources/gtk/menus-osx.ui.h:26
+#: ../bedit/resources/gtk/menus-default.ui.h:18
+#: ../bedit/resources/gtk/menus-traditional.ui.h:13
+#: ../bedit/resources/gtk/menus-osx.ui.h:26
 #| msgid "Highlight Mode"
 msgid "_Highlight Mode…"
 msgstr "ठळक मोड (_H)…"
 
-#: ../gedit/resources/gtk/menus-default.ui.h:19
-#: ../gedit/resources/gtk/menus-traditional.ui.h:14
-#: ../gedit/resources/gtk/menus-osx.ui.h:34
+#: ../bedit/resources/gtk/menus-default.ui.h:19
+#: ../bedit/resources/gtk/menus-traditional.ui.h:14
+#: ../bedit/resources/gtk/menus-osx.ui.h:34
 #| msgid "_Tools"
 msgid "Tools"
 msgstr "साधन"
 
-#: ../gedit/resources/gtk/menus-default.ui.h:20
-#: ../gedit/resources/gtk/menus-traditional.ui.h:18
-#: ../gedit/resources/gtk/menus-osx.ui.h:37
+#: ../bedit/resources/gtk/menus-default.ui.h:20
+#: ../bedit/resources/gtk/menus-traditional.ui.h:18
+#: ../bedit/resources/gtk/menus-osx.ui.h:37
 msgid "_Close All"
 msgstr "सर्व बंद करा (_C)"
 
-#: ../gedit/resources/gtk/menus-osx.ui.h:1
+#: ../bedit/resources/gtk/menus-osx.ui.h:1
 #| msgid "_File"
 msgid "File"
 msgstr "फाइल"
 
 #. _New is the menu item under the File menu on OS X which creates a new empty document.
-#: ../gedit/resources/gtk/menus-osx.ui.h:3
+#: ../bedit/resources/gtk/menus-osx.ui.h:3
 msgid "_New"
 msgstr "नवीन (_N)"
 
-#: ../gedit/resources/gtk/menus-osx.ui.h:5
+#: ../bedit/resources/gtk/menus-osx.ui.h:5
 #| msgid "Open a New Document"
 msgid "Open _Recent"
 msgstr "नुकतेच उघडा (_R)"
 
-#: ../gedit/resources/gtk/menus-osx.ui.h:6
+#: ../bedit/resources/gtk/menus-osx.ui.h:6
 msgid "Reopen Closed _Tab"
 msgstr "बंद टॅब पुन्हा खुले करा (_T)"
 
-#: ../gedit/resources/gtk/menus-osx.ui.h:8
+#: ../bedit/resources/gtk/menus-osx.ui.h:8
 #| msgid "Save As"
 msgid "Save _As…"
 msgstr "असे साठवा (_A)…"
 
-#: ../gedit/resources/gtk/menus-osx.ui.h:13
+#: ../bedit/resources/gtk/menus-osx.ui.h:13
 #| msgid "_Edit"
 msgid "Edit"
 msgstr "संपादित करा"
 
-#: ../gedit/resources/gtk/menus-osx.ui.h:14
+#: ../bedit/resources/gtk/menus-osx.ui.h:14
 msgid "_Undo"
 msgstr "पूर्ववत् करा (_U)"
 
-#: ../gedit/resources/gtk/menus-osx.ui.h:15
+#: ../bedit/resources/gtk/menus-osx.ui.h:15
 msgid "_Redo"
 msgstr "पुन्हा करा (_R)"
 
-#: ../gedit/resources/gtk/menus-osx.ui.h:16
+#: ../bedit/resources/gtk/menus-osx.ui.h:16
 msgid "C_ut"
 msgstr "कापा (_u)"
 
-#: ../gedit/resources/gtk/menus-osx.ui.h:17
+#: ../bedit/resources/gtk/menus-osx.ui.h:17
 msgid "_Copy"
 msgstr "प्रत बनवा (_C)"
 
-#: ../gedit/resources/gtk/menus-osx.ui.h:18
+#: ../bedit/resources/gtk/menus-osx.ui.h:18
 msgid "_Paste"
 msgstr "चिकटवा (_P)"
 
-#: ../gedit/resources/gtk/menus-osx.ui.h:19
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:930
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:968
-#: ../plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui.h:7
+#: ../bedit/resources/gtk/menus-osx.ui.h:19
+#: ../plugins/filebrowser/bedit-file-browser-plugin.c:930
+#: ../plugins/filebrowser/bedit-file-browser-plugin.c:968
+#: ../plugins/filebrowser/resources/ui/bedit-file-browser-menus.ui.h:7
 msgid "_Delete"
 msgstr "काढून टाका (_D)"
 
-#: ../gedit/resources/gtk/menus-osx.ui.h:20
+#: ../bedit/resources/gtk/menus-osx.ui.h:20
 #| msgid "File Browser Filter Mode"
 msgid "Overwrite _Mode"
 msgstr "खोडून पुन्हा लिहा मोड (_M)"
 
-#: ../gedit/resources/gtk/menus-osx.ui.h:21
+#: ../bedit/resources/gtk/menus-osx.ui.h:21
 msgid "Select _All"
 msgstr "सर्व निवडा (_A)"
 
-#: ../gedit/resources/gtk/menus-osx.ui.h:27
+#: ../bedit/resources/gtk/menus-osx.ui.h:27
 #| msgid "_Search"
 msgid "Search"
 msgstr "शोधा"
 
-#: ../gedit/resources/gtk/menus-osx.ui.h:29
+#: ../bedit/resources/gtk/menus-osx.ui.h:29
 msgid "Find Ne_xt"
 msgstr "पुढिल शोधा (_x)"
 
-#: ../gedit/resources/gtk/menus-osx.ui.h:30
+#: ../bedit/resources/gtk/menus-osx.ui.h:30
 msgid "Find Pre_vious"
 msgstr "मागील शोधा (_v)"
 
-#: ../gedit/resources/gtk/menus-osx.ui.h:31
+#: ../bedit/resources/gtk/menus-osx.ui.h:31
 msgid "Find and _Replace…"
 msgstr "शोधा आणि बदलवा (_R)…"
 
-#: ../gedit/resources/gtk/menus-osx.ui.h:33
+#: ../bedit/resources/gtk/menus-osx.ui.h:33
 #| msgid "Go to _Line..."
 msgid "Go to _Line…"
 msgstr "या ओळकडे जा (_L)…"
 
-#: ../gedit/resources/gtk/menus-osx.ui.h:36
+#: ../bedit/resources/gtk/menus-osx.ui.h:36
 msgid "_Save All"
 msgstr "सर्व साठवा (_S)"
 
-#: ../gedit/resources/gtk/menus-osx.ui.h:38
+#: ../bedit/resources/gtk/menus-osx.ui.h:38
 msgid "_New Tab Group"
 msgstr "नवीन टॅब गट (_N)"
 
-#: ../gedit/resources/gtk/menus-osx.ui.h:39
+#: ../bedit/resources/gtk/menus-osx.ui.h:39
 msgid "P_revious Tab Group"
 msgstr "मागील टॅबचे गट (_r)"
 
-#: ../gedit/resources/gtk/menus-osx.ui.h:40
+#: ../bedit/resources/gtk/menus-osx.ui.h:40
 msgid "Nex_t Tab Group"
 msgstr "पुढचे टॅब गट (_t)"
 
-#: ../gedit/resources/gtk/menus-osx.ui.h:41
+#: ../bedit/resources/gtk/menus-osx.ui.h:41
 msgid "_Previous Document"
 msgstr "मागील दस्तऐवज (_P)"
 
-#: ../gedit/resources/gtk/menus-osx.ui.h:42
+#: ../bedit/resources/gtk/menus-osx.ui.h:42
 msgid "N_ext Document"
 msgstr "पुढचे दस्तऐवज (_e)"
 
-#: ../gedit/resources/gtk/menus-osx.ui.h:43
+#: ../bedit/resources/gtk/menus-osx.ui.h:43
 #| msgid "_Move to New Window"
 msgid "_Move To New Window"
 msgstr "नवीन पटलाकडे स्थानांतरित व्हा (_M)"
 
-#: ../gedit/resources/gtk/menus-osx.ui.h:44
+#: ../bedit/resources/gtk/menus-osx.ui.h:44
 #| msgid "_Help"
 msgid "Help"
 msgstr "मदत"
 
-#: ../gedit/resources/ui/gedit-encodings-dialog.ui.h:1
+#: ../bedit/resources/ui/bedit-encodings-dialog.ui.h:1
 msgid "Character encodings"
 msgstr "अक्षर एंकोडिंग"
 
-#: ../gedit/resources/ui/gedit-encodings-dialog.ui.h:4
-#: ../plugins/spell/gedit-spell-language-dialog.c:125
+#: ../bedit/resources/ui/bedit-encodings-dialog.ui.h:4
+#: ../plugins/spell/bedit-spell-language-dialog.c:125
 #: ../plugins/spell/resources/ui/languages-dialog.ui.h:4
 msgid "_OK"
 msgstr "ठीक आहे (_O)"
 
-#: ../gedit/resources/ui/gedit-encodings-dialog.ui.h:5
+#: ../bedit/resources/ui/bedit-encodings-dialog.ui.h:5
 msgid "A_vailable encodings:"
 msgstr "उपलब्ध एंकोडिंग्स् (_v):"
 
-#: ../gedit/resources/ui/gedit-encodings-dialog.ui.h:6
+#: ../bedit/resources/ui/bedit-encodings-dialog.ui.h:6
 msgid "_Description"
 msgstr "वर्णन (_D)"
 
-#: ../gedit/resources/ui/gedit-encodings-dialog.ui.h:7
+#: ../bedit/resources/ui/bedit-encodings-dialog.ui.h:7
 msgid "_Encoding"
 msgstr "एंकोडिंग (_E)"
 
 #. Add to Dictionary
-#: ../gedit/resources/ui/gedit-encodings-dialog.ui.h:8
-#: ../plugins/spell/gedit-automatic-spell-checker.c:506
+#: ../bedit/resources/ui/bedit-encodings-dialog.ui.h:8
+#: ../plugins/spell/bedit-automatic-spell-checker.c:506
 msgid "_Add"
 msgstr "जोडा (_A)"
 
-#: ../gedit/resources/ui/gedit-encodings-dialog.ui.h:9
+#: ../bedit/resources/ui/bedit-encodings-dialog.ui.h:9
 #| msgid "Remove Tool"
 msgid "_Remove"
 msgstr "काढून टाका (_R)"
 
-#: ../gedit/resources/ui/gedit-encodings-dialog.ui.h:10
+#: ../bedit/resources/ui/bedit-encodings-dialog.ui.h:10
 msgid "E_ncodings shown in menu:"
 msgstr "मेनू अंतर्गत दर्शविलेले एंकोडिंग (_n):"
 
-#: ../gedit/resources/ui/gedit-highlight-mode-dialog.ui.h:1
+#: ../bedit/resources/ui/bedit-highlight-mode-dialog.ui.h:1
 msgid "Highlight Mode"
 msgstr "उठावदार पद्धती"
 
-#: ../gedit/resources/ui/gedit-highlight-mode-dialog.ui.h:3
+#: ../bedit/resources/ui/bedit-highlight-mode-dialog.ui.h:3
 #| msgid "Selection"
 msgid "_Select"
 msgstr "नीवडा (_S)"
 
-#: ../gedit/resources/ui/gedit-highlight-mode-selector.ui.h:1
+#: ../bedit/resources/ui/bedit-highlight-mode-selector.ui.h:1
 msgid "Search highlight mode..."
 msgstr "उठावदार पद्धती शोधा..."
 
-#: ../gedit/resources/ui/gedit-open-document-selector.ui.h:1
+#: ../bedit/resources/ui/bedit-open-document-selector.ui.h:1
 #| msgid "_Documents"
 msgid "Other _Documents…"
 msgstr "इतर दस्तऐवज (_D)..."
 
-#: ../gedit/resources/ui/gedit-open-document-selector.ui.h:2
+#: ../bedit/resources/ui/bedit-open-document-selector.ui.h:2
 #| msgid "Open a file"
 msgid "Open another file"
 msgstr "इतर फाइल उघडा"
 
-#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:1
+#: ../bedit/resources/ui/bedit-preferences-dialog.ui.h:1
 msgid "Preferences"
 msgstr "प्राधान्यक्रम"
 
-#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:3
+#: ../bedit/resources/ui/bedit-preferences-dialog.ui.h:3
 msgid "Display right _margin at column:"
 msgstr "स्तंभमध्ये उजवा समास दाखवा (_m):"
 
-#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:4
+#: ../bedit/resources/ui/bedit-preferences-dialog.ui.h:4
 #| msgid "_Statusbar"
 msgid "Display _statusbar"
 msgstr "स्थितीपट्टी दाखवा (_s)"
 
-#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:5
-#: ../gedit/resources/ui/gedit-print-preferences.ui.h:9
+#: ../bedit/resources/ui/bedit-preferences-dialog.ui.h:5
+#: ../bedit/resources/ui/bedit-print-preferences.ui.h:9
 msgid "Text Wrapping"
 msgstr "मजकूर लपेटणे"
 
-#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:6
-#: ../gedit/resources/ui/gedit-print-preferences.ui.h:10
+#: ../bedit/resources/ui/bedit-preferences-dialog.ui.h:6
+#: ../bedit/resources/ui/bedit-print-preferences.ui.h:10
 msgid "Enable text _wrapping"
 msgstr "पाठ्य गुंडाळणी कार्यान्वीत करा (_w)"
 
-#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:7
-#: ../gedit/resources/ui/gedit-print-preferences.ui.h:11
+#: ../bedit/resources/ui/bedit-preferences-dialog.ui.h:7
+#: ../bedit/resources/ui/bedit-print-preferences.ui.h:11
 msgid "Do not _split words over two lines"
 msgstr "शब्द दोन रांगांमध्ये विभाजीत करू नका (_s)"
 
-#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:8
+#: ../bedit/resources/ui/bedit-preferences-dialog.ui.h:8
 msgid "Highlighting"
 msgstr "उठावदार करत आहे"
 
-#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:9
+#: ../bedit/resources/ui/bedit-preferences-dialog.ui.h:9
 msgid "Highlight current _line"
 msgstr "चालू ओळ उठावदार करा (_l)"
 
-#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:10
+#: ../bedit/resources/ui/bedit-preferences-dialog.ui.h:10
 msgid "Highlight matching _brackets"
 msgstr "जुळणारे कंस उठावदार करा (_b)"
 
-#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:12
+#: ../bedit/resources/ui/bedit-preferences-dialog.ui.h:12
 msgid "Tab Stops"
 msgstr "टॅब विश्राम"
 
-#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:13
+#: ../bedit/resources/ui/bedit-preferences-dialog.ui.h:13
 msgid "_Tab width:"
 msgstr "टॅब रुंदी (_T):"
 
-#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:14
+#: ../bedit/resources/ui/bedit-preferences-dialog.ui.h:14
 msgid "Insert _spaces instead of tabs"
 msgstr "टॅब ऐवजी रिकाम्या जागा भराव्यात (_s)"
 
-#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:15
+#: ../bedit/resources/ui/bedit-preferences-dialog.ui.h:15
 msgid "_Enable automatic indentation"
 msgstr "समास पासून स्वयं मोकळे अंतर ठेवणे कार्यन्वीत करा (_E)"
 
-#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:16
+#: ../bedit/resources/ui/bedit-preferences-dialog.ui.h:16
 msgid "File Saving"
 msgstr "फाइल साठवत आहे"
 
-#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:17
+#: ../bedit/resources/ui/bedit-preferences-dialog.ui.h:17
 msgid "Create a _backup copy of files before saving"
 msgstr "साठवण्यापूर्वी फाइल्स्चे पूरक प्रत बनवा (_b)"
 
-#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:18
+#: ../bedit/resources/ui/bedit-preferences-dialog.ui.h:18
 msgid "_Autosave files every"
 msgstr "ठराविक वेळाने फाइल स्वंयसाठवा (_A)"
 
-#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:19
+#: ../bedit/resources/ui/bedit-preferences-dialog.ui.h:19
 msgid "_minutes"
 msgstr "मिनिटे (_m)"
 
-#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:20
+#: ../bedit/resources/ui/bedit-preferences-dialog.ui.h:20
 msgid "Editor"
 msgstr "संपादक"
 
-#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:21
+#: ../bedit/resources/ui/bedit-preferences-dialog.ui.h:21
 #: ../plugins/externaltools/com.bwhmather.bedit.plugins.externaltools.gschema.xml.in.in.h:3
 #: ../plugins/pythonconsole/com.bwhmather.bedit.plugins.pythonconsole.gschema.xml.in.in.h:7
 msgid "Font"
 msgstr "फाँट"
 
-#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:22
+#: ../bedit/resources/ui/bedit-preferences-dialog.ui.h:22
 msgid "Editor _font: "
 msgstr "संपादक फाँट (_f): "
 
-#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:23
+#: ../bedit/resources/ui/bedit-preferences-dialog.ui.h:23
 msgid "Pick the editor font"
 msgstr "संपादक फाँट निवडा"
 
-#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:24
+#: ../bedit/resources/ui/bedit-preferences-dialog.ui.h:24
 msgid "Color Scheme"
 msgstr "रंग योजना"
 
-#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:25
+#: ../bedit/resources/ui/bedit-preferences-dialog.ui.h:25
 msgid "Install scheme"
 msgstr "सुत्रयोजना प्रतिष्ठापीत करा"
 
-#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:26
+#: ../bedit/resources/ui/bedit-preferences-dialog.ui.h:26
 msgid "Install Scheme"
 msgstr "सुत्रयोजना प्रतिष्ठापीत करा"
 
-#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:27
+#: ../bedit/resources/ui/bedit-preferences-dialog.ui.h:27
 msgid "Uninstall scheme"
 msgstr "सुत्रयोजना प्रतिष्ठापन अशक्य करा"
 
-#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:28
+#: ../bedit/resources/ui/bedit-preferences-dialog.ui.h:28
 msgid "Uninstall Scheme"
 msgstr "सुत्रयोजना प्रतिष्ठापन अशक्य करा"
 
-#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:29
+#: ../bedit/resources/ui/bedit-preferences-dialog.ui.h:29
 msgid "Font & Colors"
 msgstr "फाँट आणि रंग"
 
-#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:30
+#: ../bedit/resources/ui/bedit-preferences-dialog.ui.h:30
 msgid "Plugins"
 msgstr "प्लगईन"
 
-#: ../gedit/resources/ui/gedit-print-preferences.ui.h:1
+#: ../bedit/resources/ui/bedit-print-preferences.ui.h:1
 msgid "Syntax Highlighting"
 msgstr "मांडणी उठावदार करा"
 
-#: ../gedit/resources/ui/gedit-print-preferences.ui.h:2
+#: ../bedit/resources/ui/bedit-print-preferences.ui.h:2
 msgid "Print synta_x highlighting"
 msgstr "सिंटॅक्स उठावदारीकरण छापा (_x)"
 
-#: ../gedit/resources/ui/gedit-print-preferences.ui.h:3
+#: ../bedit/resources/ui/bedit-print-preferences.ui.h:3
 msgid "Line Numbers"
 msgstr "ओळ क्रमांक"
 
-#: ../gedit/resources/ui/gedit-print-preferences.ui.h:4
+#: ../bedit/resources/ui/bedit-print-preferences.ui.h:4
 msgid "Print line nu_mbers"
 msgstr "ओळ क्रमांक छापा (_m)"
 
 #. 'Number every' from 'Number every 3 lines' in the 'Text Editor' tab of the print preferences.
-#: ../gedit/resources/ui/gedit-print-preferences.ui.h:6
+#: ../bedit/resources/ui/bedit-print-preferences.ui.h:6
 msgid "_Number every"
 msgstr "क्रमांक दर (_N)"
 
 #. 'lines' from 'Number every 3 lines' in the 'Text Editor' tab of the print preferences.
-#: ../gedit/resources/ui/gedit-print-preferences.ui.h:8
+#: ../bedit/resources/ui/bedit-print-preferences.ui.h:8
 msgid "lines"
 msgstr "रेषा"
 
-#: ../gedit/resources/ui/gedit-print-preferences.ui.h:12
+#: ../bedit/resources/ui/bedit-print-preferences.ui.h:12
 msgid "Page header"
 msgstr "पृष्ठ शिर्षक"
 
-#: ../gedit/resources/ui/gedit-print-preferences.ui.h:13
+#: ../bedit/resources/ui/bedit-print-preferences.ui.h:13
 msgid "Print page _headers"
 msgstr "पान शिर्षकाची छपाई करा(_P)"
 
-#: ../gedit/resources/ui/gedit-print-preferences.ui.h:14
+#: ../bedit/resources/ui/bedit-print-preferences.ui.h:14
 msgid "Fonts"
 msgstr "फाँट्स्"
 
-#: ../gedit/resources/ui/gedit-print-preferences.ui.h:15
+#: ../bedit/resources/ui/bedit-print-preferences.ui.h:15
 msgid "_Body:"
 msgstr "धड (_B):"
 
-#: ../gedit/resources/ui/gedit-print-preferences.ui.h:16
+#: ../bedit/resources/ui/bedit-print-preferences.ui.h:16
 msgid "_Line numbers:"
 msgstr "ओळ क्रमांक (_L):"
 
-#: ../gedit/resources/ui/gedit-print-preferences.ui.h:17
+#: ../bedit/resources/ui/bedit-print-preferences.ui.h:17
 msgid "He_aders and footers:"
 msgstr "मथळे आणि तळटिपा(_a):"
 
-#: ../gedit/resources/ui/gedit-print-preferences.ui.h:18
+#: ../bedit/resources/ui/bedit-print-preferences.ui.h:18
 msgid "_Restore Default Fonts"
 msgstr "पूर्वनिर्धारीत फाँट मूळस्थितीत आणा (_R)"
 
-#: ../gedit/resources/ui/gedit-print-preview.ui.h:1
+#: ../bedit/resources/ui/bedit-print-preview.ui.h:1
 msgid "Show the previous page"
 msgstr "मागील पान दाखवा"
 
-#: ../gedit/resources/ui/gedit-print-preview.ui.h:2
+#: ../bedit/resources/ui/bedit-print-preview.ui.h:2
 msgid "P_revious Page"
 msgstr "मागील पान (_r)"
 
-#: ../gedit/resources/ui/gedit-print-preview.ui.h:3
+#: ../bedit/resources/ui/bedit-print-preview.ui.h:3
 msgid "Show the next page"
 msgstr "पुढील पान दाखवा"
 
-#: ../gedit/resources/ui/gedit-print-preview.ui.h:4
+#: ../bedit/resources/ui/bedit-print-preview.ui.h:4
 msgid "_Next Page"
 msgstr "पुढील पान (_N)"
 
-#: ../gedit/resources/ui/gedit-print-preview.ui.h:5
+#: ../bedit/resources/ui/bedit-print-preview.ui.h:5
 msgid "Current page (Alt+P)"
 msgstr "चालू पान (Alt+P)"
 
 #. the "of" from "1 of 19" in print preview
-#: ../gedit/resources/ui/gedit-print-preview.ui.h:7
+#: ../bedit/resources/ui/bedit-print-preview.ui.h:7
 msgid "of"
 msgstr "याचे"
 
-#: ../gedit/resources/ui/gedit-print-preview.ui.h:8
+#: ../bedit/resources/ui/bedit-print-preview.ui.h:8
 msgid "Page total"
 msgstr "एकूण पृष्ठ "
 
-#: ../gedit/resources/ui/gedit-print-preview.ui.h:9
+#: ../bedit/resources/ui/bedit-print-preview.ui.h:9
 msgid "The total number of pages in the document"
 msgstr "दस्तऐवजातील एकूण पाने"
 
-#: ../gedit/resources/ui/gedit-print-preview.ui.h:10
+#: ../bedit/resources/ui/bedit-print-preview.ui.h:10
 msgid "Show multiple pages"
 msgstr "अनेक पाने दाखवा"
 
-#: ../gedit/resources/ui/gedit-print-preview.ui.h:11
+#: ../bedit/resources/ui/bedit-print-preview.ui.h:11
 msgid "Zoom 1:1"
 msgstr "झूम 1:1"
 
-#: ../gedit/resources/ui/gedit-print-preview.ui.h:12
+#: ../bedit/resources/ui/bedit-print-preview.ui.h:12
 msgid "Zoom to fit the whole page"
 msgstr "संपूर्ण पानात मावण्याइतके झूम करा"
 
-#: ../gedit/resources/ui/gedit-print-preview.ui.h:13
+#: ../bedit/resources/ui/bedit-print-preview.ui.h:13
 msgid "Zoom the page in"
 msgstr "पान आत झूम करा"
 
-#: ../gedit/resources/ui/gedit-print-preview.ui.h:14
+#: ../bedit/resources/ui/bedit-print-preview.ui.h:14
 msgid "Zoom the page out"
 msgstr "पान बाहेर झूम करा"
 
-#: ../gedit/resources/ui/gedit-print-preview.ui.h:15
+#: ../bedit/resources/ui/bedit-print-preview.ui.h:15
 msgid "Close print preview"
 msgstr "मुद्रण पुर्वदृश्य बंद करा"
 
-#: ../gedit/resources/ui/gedit-print-preview.ui.h:16
+#: ../bedit/resources/ui/bedit-print-preview.ui.h:16
 msgid "_Close Preview"
 msgstr "पुर्वदृश्य बंद करा (_C)"
 
-#: ../gedit/resources/ui/gedit-print-preview.ui.h:17
+#: ../bedit/resources/ui/bedit-print-preview.ui.h:17
 msgid "Page Preview"
 msgstr "मुद्रण पूर्वदृश्य"
 
-#: ../gedit/resources/ui/gedit-print-preview.ui.h:18
+#: ../bedit/resources/ui/bedit-print-preview.ui.h:18
 msgid "The preview of a page in the document to be printed"
 msgstr "दस्तऐवज मध्ये छपाई करीताचे पानाचे पूर्वदृश्य"
 
-#: ../gedit/resources/ui/gedit-replace-dialog.ui.h:1
+#: ../bedit/resources/ui/bedit-replace-dialog.ui.h:1
 msgid "Replace"
 msgstr "बदलवा"
 
-#: ../gedit/resources/ui/gedit-replace-dialog.ui.h:3
+#: ../bedit/resources/ui/bedit-replace-dialog.ui.h:3
 msgid "Replace _All"
 msgstr "सर्व बदलवा (_A)"
 
-#: ../gedit/resources/ui/gedit-replace-dialog.ui.h:5
+#: ../bedit/resources/ui/bedit-replace-dialog.ui.h:5
 #| msgid "Find"
 msgid "_Find"
 msgstr "शोधा (_F)"
 
-#: ../gedit/resources/ui/gedit-replace-dialog.ui.h:6
+#: ../bedit/resources/ui/bedit-replace-dialog.ui.h:6
 msgid "_Search for: "
 msgstr "याकरीता शोधा (_S): "
 
-#: ../gedit/resources/ui/gedit-replace-dialog.ui.h:7
+#: ../bedit/resources/ui/bedit-replace-dialog.ui.h:7
 msgid "Replace _with: "
 msgstr "याच्याशी बदलवा (_w): "
 
-#: ../gedit/resources/ui/gedit-replace-dialog.ui.h:8
+#: ../bedit/resources/ui/bedit-replace-dialog.ui.h:8
 msgid "_Match case"
 msgstr "लिपी जुळवा(_M)"
 
-#: ../gedit/resources/ui/gedit-replace-dialog.ui.h:9
+#: ../bedit/resources/ui/bedit-replace-dialog.ui.h:9
 msgid "Match _entire word only"
 msgstr "फक्त संपूर्ण शब्द जोडा (_e)"
 
-#: ../gedit/resources/ui/gedit-replace-dialog.ui.h:10
+#: ../bedit/resources/ui/bedit-replace-dialog.ui.h:10
 msgid "Match as re_gular expression"
 msgstr "रेग्युलर एक्सप्रेशन नुरूप जुळवा (_R)"
 
-#: ../gedit/resources/ui/gedit-replace-dialog.ui.h:11
+#: ../bedit/resources/ui/bedit-replace-dialog.ui.h:11
 msgid "Search _backwards"
 msgstr "मागे शोधा(_b)"
 
-#: ../gedit/resources/ui/gedit-replace-dialog.ui.h:12
+#: ../bedit/resources/ui/bedit-replace-dialog.ui.h:12
 msgid "_Wrap around"
 msgstr "घट्ट बसवा (_W)"
 
-#: ../gedit/resources/ui/gedit-tab-label.ui.h:1
+#: ../bedit/resources/ui/bedit-tab-label.ui.h:1
 #| msgid "Close document"
 msgid "Close Document"
 msgstr "दस्तऐवज बंद करा"
 
-#: ../gedit/resources/ui/gedit-window.ui.h:2
+#: ../bedit/resources/ui/bedit-window.ui.h:2
 msgid "Open a file"
 msgstr "फाइल उघडा"
 
-#: ../gedit/resources/ui/gedit-window.ui.h:5
+#: ../bedit/resources/ui/bedit-window.ui.h:5
 msgid "Create a new document"
 msgstr "नवीन दस्तऐवज बनवा"
 
-#: ../gedit/resources/ui/gedit-window.ui.h:6
+#: ../bedit/resources/ui/bedit-window.ui.h:6
 msgid "New"
 msgstr "नवीन"
 
-#: ../gedit/resources/ui/gedit-window.ui.h:8
+#: ../bedit/resources/ui/bedit-window.ui.h:8
 msgid "Save the current file"
 msgstr "चालू फाइल सुरक्षित ठेवा"
 
-#: ../gedit/resources/ui/gedit-window.ui.h:9
+#: ../bedit/resources/ui/bedit-window.ui.h:9
 msgid "Save"
 msgstr "साठवा"
 
-#: ../gedit/resources/ui/gedit-window.ui.h:10
+#: ../bedit/resources/ui/bedit-window.ui.h:10
 msgid "Hide panel"
 msgstr "पॅनेल लपवा"
 
-#: ../gedit/resources/ui/gedit-window.ui.h:11
+#: ../bedit/resources/ui/bedit-window.ui.h:11
 #| msgid "Open a file"
 msgid "Open a file dialog"
 msgstr "फाइल संवाद उघडा"
 
-#: ../gedit/resources/ui/gedit-window.ui.h:12
+#: ../bedit/resources/ui/bedit-window.ui.h:12
 #| msgid "Leave fullscreen mode"
 msgid "Leave Fullscreen"
 msgstr "पडदाभर सोडा"
@@ -2346,31 +2346,31 @@ msgid "Check update"
 msgstr "सुधारणा तपासा"
 
 #: ../plugins/checkupdate/checkupdate.plugin.desktop.in.h:2
-msgid "Check for latest version of gedit"
-msgstr "gedit च्या अलिकडील आवृत्तीकरीता तपासा"
+msgid "Check for latest version of bedit"
+msgstr "bedit च्या अलिकडील आवृत्तीकरीता तपासा"
 
-#: ../plugins/checkupdate/gedit-check-update-plugin.c:245
+#: ../plugins/checkupdate/bedit-check-update-plugin.c:245
 msgid "There was an error displaying the URI."
 msgstr "URI दाखवतेवेळी त्रुटी आढळली."
 
-#: ../plugins/checkupdate/gedit-check-update-plugin.c:282
+#: ../plugins/checkupdate/bedit-check-update-plugin.c:282
 msgid "_Download"
 msgstr "डाऊनलोड करा (_D)"
 
-#: ../plugins/checkupdate/gedit-check-update-plugin.c:283
+#: ../plugins/checkupdate/bedit-check-update-plugin.c:283
 msgid "_Ignore Version"
 msgstr "आवृत्तीकडे दुर्लक्ष करा (_I)"
 
-#: ../plugins/checkupdate/gedit-check-update-plugin.c:288
-msgid "There is a new version of gedit"
-msgstr "gedit ची नवीन आवृत्ती आढळली"
+#: ../plugins/checkupdate/bedit-check-update-plugin.c:288
+msgid "There is a new version of bedit"
+msgstr "bedit ची नवीन आवृत्ती आढळली"
 
-#: ../plugins/checkupdate/gedit-check-update-plugin.c:291
+#: ../plugins/checkupdate/bedit-check-update-plugin.c:291
 msgid ""
-"You can download the new version of gedit by clicking on the download button "
+"You can download the new version of bedit by clicking on the download button "
 "or ignore that version and wait for a new one"
 msgstr ""
-"डाऊनलोड बटनावर क्लिक करून gedit ची नवीन आवृत्ती डाऊनलोड करणे शक्य आहे किंवा "
+"डाऊनलोड बटनावर क्लिक करून bedit ची नवीन आवृत्ती डाऊनलोड करणे शक्य आहे किंवा "
 "त्या "
 "आवृत्तीकडे दुर्लक्ष करा व नवीनकरीता वाट पहा"
 
@@ -2379,14 +2379,14 @@ msgstr ""
 msgid "Version to Ignore"
 msgstr "वगळण्याजोगी आवृत्ती"
 
-#. This is releated to the next gedit version to be released
+#. This is releated to the next bedit version to be released
 #: ../plugins/checkupdate/com.bwhmather.bedit.plugins.checkupdate.gschema.xml.in.in.h:3
 msgid "Version to ignore until a newer version is released."
 msgstr "नवीन आवृत्ती प्रकाशीत होईपर्यंत वगळण्याजोगी आवृत्ती."
 
 #. ex:set ts=8 noet:
 #: ../plugins/docinfo/docinfo.plugin.desktop.in.h:1
-#: ../plugins/docinfo/resources/ui/gedit-docinfo-plugin.ui.h:1
+#: ../plugins/docinfo/resources/ui/bedit-docinfo-plugin.ui.h:1
 msgid "Document Statistics"
 msgstr "दस्तऐवजांचे आकडेवारी"
 
@@ -2394,35 +2394,35 @@ msgstr "दस्तऐवजांचे आकडेवारी"
 msgid "Report the number of words, lines and characters in a document."
 msgstr "एकूण शब्द, ओळी, व अक्षरांची संख्या कळवा."
 
-#: ../plugins/docinfo/gedit-docinfo-plugin.c:537
+#: ../plugins/docinfo/bedit-docinfo-plugin.c:537
 msgid "_Document Statistics"
 msgstr "दस्तऐवज आकडेवारी (_D)"
 
-#: ../plugins/docinfo/resources/ui/gedit-docinfo-plugin.ui.h:2
+#: ../plugins/docinfo/resources/ui/bedit-docinfo-plugin.ui.h:2
 msgid "Document"
 msgstr "दस्तऐवज"
 
-#: ../plugins/docinfo/resources/ui/gedit-docinfo-plugin.ui.h:3
+#: ../plugins/docinfo/resources/ui/bedit-docinfo-plugin.ui.h:3
 msgid "Selection"
 msgstr "निवड "
 
-#: ../plugins/docinfo/resources/ui/gedit-docinfo-plugin.ui.h:4
+#: ../plugins/docinfo/resources/ui/bedit-docinfo-plugin.ui.h:4
 msgid "Lines"
 msgstr "रेषा"
 
-#: ../plugins/docinfo/resources/ui/gedit-docinfo-plugin.ui.h:5
+#: ../plugins/docinfo/resources/ui/bedit-docinfo-plugin.ui.h:5
 msgid "Words"
 msgstr "शब्द"
 
-#: ../plugins/docinfo/resources/ui/gedit-docinfo-plugin.ui.h:6
+#: ../plugins/docinfo/resources/ui/bedit-docinfo-plugin.ui.h:6
 msgid "Characters (with spaces)"
 msgstr "अक्षरे (मोकळ्या जागांसह)"
 
-#: ../plugins/docinfo/resources/ui/gedit-docinfo-plugin.ui.h:7
+#: ../plugins/docinfo/resources/ui/bedit-docinfo-plugin.ui.h:7
 msgid "Characters (no spaces)"
 msgstr "अक्षरे (रिकाम्या जागेशिवाय)"
 
-#: ../plugins/docinfo/resources/ui/gedit-docinfo-plugin.ui.h:8
+#: ../plugins/docinfo/resources/ui/bedit-docinfo-plugin.ui.h:8
 msgid "Bytes"
 msgstr "अष्टक"
 
@@ -2695,51 +2695,51 @@ msgstr "फाइल ब्राउजर पटल"
 msgid "Easy file access from the side panel"
 msgstr "बाजूच्या पट्टीपासून सोपे फाइल प्रवेश"
 
-#: ../plugins/filebrowser/gedit-file-bookmarks-store.c:205
+#: ../plugins/filebrowser/bedit-file-bookmarks-store.c:205
 msgid "Home"
 msgstr "होम"
 
-#: ../plugins/filebrowser/gedit-file-bookmarks-store.c:231
+#: ../plugins/filebrowser/bedit-file-bookmarks-store.c:231
 msgid "File System"
 msgstr "फाइल प्रणाली"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:532
+#: ../plugins/filebrowser/bedit-file-browser-plugin.c:532
 msgid "File Browser"
 msgstr "फाइल ब्राउजर"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:674
+#: ../plugins/filebrowser/bedit-file-browser-plugin.c:674
 msgid "An error occurred while creating a new directory"
 msgstr "नवीन डिरेक्ट्री निर्माण करताना चूक उद्भवली"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:677
+#: ../plugins/filebrowser/bedit-file-browser-plugin.c:677
 msgid "An error occurred while creating a new file"
 msgstr "नवीन फाइल निर्माण करताना चूक उद्भवली"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:680
+#: ../plugins/filebrowser/bedit-file-browser-plugin.c:680
 msgid "An error occurred while renaming a file or directory"
 msgstr "फाइल किंवा निर्देशिकेचे नाव बदलताना चूक उद्भवली"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:683
+#: ../plugins/filebrowser/bedit-file-browser-plugin.c:683
 msgid "An error occurred while deleting a file or directory"
 msgstr "फाइल किंवा डिरेक्ट्री नष्ट करताना चूक उद्भवली"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:686
+#: ../plugins/filebrowser/bedit-file-browser-plugin.c:686
 msgid "An error occurred while opening a directory in the file manager"
 msgstr "निवडलेला आदेश देताना/कार्यान्वित करताना चूक उद्भवते"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:689
+#: ../plugins/filebrowser/bedit-file-browser-plugin.c:689
 msgid "An error occurred while setting a root directory"
 msgstr "निवडलेला आदेश देताना/कार्यान्वित करताना चूक उद्भवते"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:692
+#: ../plugins/filebrowser/bedit-file-browser-plugin.c:692
 msgid "An error occurred while loading a directory"
 msgstr "निवडलेला आदेश देताना/कार्यान्वित करताना चूक उद्भवते"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:695
+#: ../plugins/filebrowser/bedit-file-browser-plugin.c:695
 msgid "An error occurred"
 msgstr "चूक उद्भवली"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:913
+#: ../plugins/filebrowser/bedit-file-browser-plugin.c:913
 msgid ""
 "Cannot move file to trash, do you\n"
 "want to delete permanently?"
@@ -2747,33 +2747,33 @@ msgstr ""
 "फाइल कचऱ्यात टाकता आली नाही,\n"
 "तुम्ही ती तात्काळ नष्ट करू इच्छिता काय?"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:918
+#: ../plugins/filebrowser/bedit-file-browser-plugin.c:918
 #, c-format
 msgid "The file \"%s\" cannot be moved to the trash."
 msgstr "फाइल \"%s\" कचऱ्यात टाकता येत नाही."
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:923
+#: ../plugins/filebrowser/bedit-file-browser-plugin.c:923
 msgid "The selected files cannot be moved to the trash."
 msgstr "निवडलेल्या फाइल कचरापेटीत हलविता येत नाही."
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:954
+#: ../plugins/filebrowser/bedit-file-browser-plugin.c:954
 #, c-format
 msgid "Are you sure you want to permanently delete \"%s\"?"
 msgstr "तुमह्ला नक्की \"%s\" कायमस्वरूपी काढूण टाकायचे?"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:959
+#: ../plugins/filebrowser/bedit-file-browser-plugin.c:959
 msgid "Are you sure you want to permanently delete the selected files?"
 msgstr "तुमह्ला नक्की निवडलेल्या फाइल कायमस्वरूपी काढूण टाकायचे?"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:962
+#: ../plugins/filebrowser/bedit-file-browser-plugin.c:962
 msgid "If you delete an item, it is permanently lost."
 msgstr "हे घटक काढूण टाकल्यास, हे कायमस्वरूपी काढूण टाकले जातील."
 
-#: ../plugins/filebrowser/gedit-file-browser-store.c:1781
+#: ../plugins/filebrowser/bedit-file-browser-store.c:1781
 msgid "(Empty)"
 msgstr "(रिकामी)"
 
-#: ../plugins/filebrowser/gedit-file-browser-store.c:3503
+#: ../plugins/filebrowser/bedit-file-browser-store.c:3503
 msgid ""
 "The renamed file is currently filtered out. You need to adjust your filter "
 "settings to make the file visible"
@@ -2783,11 +2783,11 @@ msgstr ""
 "सुस्थित करा"
 
 #. Translators: This is the default name of new files created by the file browser pane.
-#: ../plugins/filebrowser/gedit-file-browser-store.c:3760
+#: ../plugins/filebrowser/bedit-file-browser-store.c:3760
 msgid "Untitled File"
 msgstr "विनाशीर्षक फाइल"
 
-#: ../plugins/filebrowser/gedit-file-browser-store.c:3788
+#: ../plugins/filebrowser/bedit-file-browser-store.c:3788
 msgid ""
 "The new file is currently filtered out. You need to adjust your filter "
 "settings to make the file visible"
@@ -2797,11 +2797,11 @@ msgstr ""
 "सुस्थित करावे लागेल"
 
 #. Translators: This is the default name of new directories created by the file browser pane.
-#: ../plugins/filebrowser/gedit-file-browser-store.c:3819
+#: ../plugins/filebrowser/bedit-file-browser-store.c:3819
 msgid "Untitled Folder"
 msgstr "विनाशिर्षक फोल्डर"
 
-#: ../plugins/filebrowser/gedit-file-browser-store.c:3844
+#: ../plugins/filebrowser/bedit-file-browser-store.c:3844
 msgid ""
 "The new directory is currently filtered out. You need to adjust your filter "
 "settings to make the directory visible"
@@ -2810,26 +2810,26 @@ msgstr ""
 "फिल्टर संयोजना "
 "सुस्थित करा"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:789
+#: ../plugins/filebrowser/bedit-file-browser-widget.c:789
 msgid "Bookmarks"
 msgstr "खूणगाठी"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:1988
+#: ../plugins/filebrowser/bedit-file-browser-widget.c:1988
 #, c-format
 msgid "No mount object for mounted volume: %s"
 msgstr "आरोहीत खंड करीता आरोहण घटक आढळले नाही: %s"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:2065
+#: ../plugins/filebrowser/bedit-file-browser-widget.c:2065
 #, c-format
 msgid "Could not open media: %s"
 msgstr "मिडीया उघडू शकत नाही: %s"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:2112
+#: ../plugins/filebrowser/bedit-file-browser-widget.c:2112
 #, c-format
 msgid "Could not mount volume: %s"
 msgstr "खंड आरोहीत करू शकत नाही: %s"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:2774
+#: ../plugins/filebrowser/bedit-file-browser-widget.c:2774
 #, c-format
 #| msgid "An error occurred while loading a directory"
 msgid "Error when loading '%s': No such directory"
@@ -2938,51 +2938,51 @@ msgstr "फाइल ब्राउजर बाइनरि रचना"
 msgid "The supplemental patterns to use when filtering binary files."
 msgstr "बाइनरि फाइल्स फिल्टर करतेवेळी वापरण्याजोगी अगाऊ रचना."
 
-#: ../plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui.h:2
+#: ../plugins/filebrowser/resources/ui/bedit-file-browser-menus.ui.h:2
 msgid "_Set Root to Active Document"
 msgstr "ॲक्टिव्ह डॉक्युमेंटकरिता रूट ठरवा (_S)"
 
-#: ../plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui.h:3
+#: ../plugins/filebrowser/resources/ui/bedit-file-browser-menus.ui.h:3
 msgid "_New Folder"
 msgstr "नवीन डिरेक्ट्री (_N)"
 
-#: ../plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui.h:4
+#: ../plugins/filebrowser/resources/ui/bedit-file-browser-menus.ui.h:4
 msgid "New F_ile"
 msgstr "नवीन फाइल (_i)"
 
-#: ../plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui.h:5
+#: ../plugins/filebrowser/resources/ui/bedit-file-browser-menus.ui.h:5
 msgid "_Rename..."
 msgstr "पुनःनामांकित करा (_R)..."
 
-#: ../plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui.h:6
+#: ../plugins/filebrowser/resources/ui/bedit-file-browser-menus.ui.h:6
 msgid "_Move to Trash"
 msgstr "कचरापेटीत हलवा (_M)"
 
-#: ../plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui.h:8
+#: ../plugins/filebrowser/resources/ui/bedit-file-browser-menus.ui.h:8
 msgid "Re_fresh View"
 msgstr "दृश्य पुन्हदाखल करा (_f)"
 
-#: ../plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui.h:9
+#: ../plugins/filebrowser/resources/ui/bedit-file-browser-menus.ui.h:9
 msgid "_View Folder"
 msgstr "डिरेक्ट्री पहा (_V)"
 
-#: ../plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui.h:10
+#: ../plugins/filebrowser/resources/ui/bedit-file-browser-menus.ui.h:10
 msgid "_Open in Terminal"
 msgstr "टर्मिनलमध्ये उघडा (_O)"
 
-#: ../plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui.h:11
+#: ../plugins/filebrowser/resources/ui/bedit-file-browser-menus.ui.h:11
 msgid "_Filter"
 msgstr "फिल्टर (_F)"
 
-#: ../plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui.h:12
+#: ../plugins/filebrowser/resources/ui/bedit-file-browser-menus.ui.h:12
 msgid "Show _Hidden"
 msgstr "लपविलेले दाखवा (_H)"
 
-#: ../plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui.h:13
+#: ../plugins/filebrowser/resources/ui/bedit-file-browser-menus.ui.h:13
 msgid "Show _Binary"
 msgstr "बायनरी दाखवा(_B)"
 
-#: ../plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui.h:14
+#: ../plugins/filebrowser/resources/ui/bedit-file-browser-menus.ui.h:14
 msgid "Match Filename"
 msgstr "फाइलनाव जुळवा"
 
@@ -2991,8 +2991,8 @@ msgid "Modelines"
 msgstr "मोडलाइन"
 
 #: ../plugins/modelines/modelines.plugin.desktop.in.h:2
-msgid "Emacs, Kate and Vim-style modelines support for gedit."
-msgstr "gedit करीता Emacs, Kate आणि Vim-नुरूप मोडलाइन आधार."
+msgid "Emacs, Kate and Vim-style modelines support for bedit."
+msgstr "bedit करीता Emacs, Kate आणि Vim-नुरूप मोडलाइन आधार."
 
 #: ../plugins/pythonconsole/com.bwhmather.bedit.plugins.pythonconsole.gschema.xml.in.in.h:1
 msgid "Command Color Text"
@@ -3298,37 +3298,37 @@ msgstr "भाग सक्रीय करण्याकरीता शॉर
 msgid "_Drop targets:"
 msgstr "लक्ष्य वगळा (_D):"
 
-#: ../plugins/sort/gedit-sort-plugin.c:431
+#: ../plugins/sort/bedit-sort-plugin.c:431
 msgid "S_ort..."
 msgstr "क्रमवारी (_o)..."
 
 #. ex:set ts=8 noet:
-#: ../plugins/sort/resources/ui/gedit-sort-plugin.ui.h:1
+#: ../plugins/sort/resources/ui/bedit-sort-plugin.ui.h:1
 #: ../plugins/sort/sort.plugin.desktop.in.h:1
 msgid "Sort"
 msgstr "क्रमबद्ध करा"
 
-#: ../plugins/sort/resources/ui/gedit-sort-plugin.ui.h:3
+#: ../plugins/sort/resources/ui/bedit-sort-plugin.ui.h:3
 msgid "_Sort"
 msgstr "क्रमबारी (_S)"
 
-#: ../plugins/sort/resources/ui/gedit-sort-plugin.ui.h:5
+#: ../plugins/sort/resources/ui/bedit-sort-plugin.ui.h:5
 msgid "_Reverse order"
 msgstr "उलटे क्रम (_R)"
 
-#: ../plugins/sort/resources/ui/gedit-sort-plugin.ui.h:6
+#: ../plugins/sort/resources/ui/bedit-sort-plugin.ui.h:6
 msgid "R_emove duplicates"
 msgstr "प्रतिकृत काढून टाका (_e)"
 
-#: ../plugins/sort/resources/ui/gedit-sort-plugin.ui.h:7
+#: ../plugins/sort/resources/ui/bedit-sort-plugin.ui.h:7
 msgid "_Ignore case"
 msgstr "लिपी दुर्लक्षित करा (_I)"
 
-#: ../plugins/sort/resources/ui/gedit-sort-plugin.ui.h:8
+#: ../plugins/sort/resources/ui/bedit-sort-plugin.ui.h:8
 msgid "S_tart at column:"
 msgstr "स्तंभ पासून सुरू करा (_t):"
 
-#: ../plugins/sort/resources/ui/gedit-sort-plugin.ui.h:9
+#: ../plugins/sort/resources/ui/bedit-sort-plugin.ui.h:9
 msgid "You cannot undo a sort operation"
 msgstr "तुम्ही क्रमवारी प्रक्रिया रद्द(अन-डू) करू शकत नाही"
 
@@ -3339,46 +3339,46 @@ msgstr "निवडक भाग किंवा दस्तऐवजांच
 #. Translators: Displayed in the "Check Spelling" dialog if there are no suggestions for the current misspelled word
 #. Translators: Displayed in the "Check Spelling" dialog if there are no suggestions
 #. * for the current misspelled word
-#: ../plugins/spell/gedit-automatic-spell-checker.c:412
-#: ../plugins/spell/gedit-spell-checker-dialog.c:424
+#: ../plugins/spell/bedit-automatic-spell-checker.c:412
+#: ../plugins/spell/bedit-spell-checker-dialog.c:424
 msgid "(no suggested words)"
 msgstr "(शब्द सुचवले नाहीत)"
 
-#: ../plugins/spell/gedit-automatic-spell-checker.c:436
+#: ../plugins/spell/bedit-automatic-spell-checker.c:436
 msgid "_More..."
 msgstr "अधिक (_M)..."
 
 #. Ignore all
-#: ../plugins/spell/gedit-automatic-spell-checker.c:491
+#: ../plugins/spell/bedit-automatic-spell-checker.c:491
 msgid "_Ignore All"
 msgstr "सर्व दुर्लक्ष करा (_I)"
 
-#: ../plugins/spell/gedit-automatic-spell-checker.c:545
+#: ../plugins/spell/bedit-automatic-spell-checker.c:545
 msgid "_Spelling Suggestions..."
 msgstr "शब्दलेखन उपदेश (_S)..."
 
-#: ../plugins/spell/gedit-spell-app-activatable.c:136
+#: ../plugins/spell/bedit-spell-app-activatable.c:136
 msgid "_Check Spelling..."
 msgstr "शुध्दलेखन तपासणी (_C)..."
 
-#: ../plugins/spell/gedit-spell-app-activatable.c:140
+#: ../plugins/spell/bedit-spell-app-activatable.c:140
 msgid "Set _Language..."
 msgstr "भाषा निश्चित करा (_L)..."
 
-#: ../plugins/spell/gedit-spell-app-activatable.c:144
+#: ../plugins/spell/bedit-spell-app-activatable.c:144
 msgid "_Highlight Misspelled Words"
 msgstr "चुकीचे शब्द वर्ण उठावदार करा (_H)"
 
-#: ../plugins/spell/gedit-spell-checker-dialog.c:262
+#: ../plugins/spell/bedit-spell-checker-dialog.c:262
 msgid "Suggestions"
 msgstr "सल्ले"
 
 #. Translators: Displayed in the "Check Spelling" dialog if the current word isn't misspelled
-#: ../plugins/spell/gedit-spell-checker-dialog.c:523
+#: ../plugins/spell/bedit-spell-checker-dialog.c:523
 msgid "(correct spelling)"
 msgstr "(शब्दलेखन सुधारा)"
 
-#: ../plugins/spell/gedit-spell-checker-dialog.c:664
+#: ../plugins/spell/bedit-spell-checker-dialog.c:664
 msgid "Completed spell checking"
 msgstr "शब्दलेखनची तपासणी पूर्ण झाली"
 
@@ -3386,8 +3386,8 @@ msgstr "शब्दलेखनची तपासणी पूर्ण झा
 #. * the second %s is the locale name. Example:
 #. * "French (France)"
 #.
-#: ../plugins/spell/gedit-spell-checker-language.c:367
-#: ../plugins/spell/gedit-spell-checker-language.c:373
+#: ../plugins/spell/bedit-spell-checker-language.c:367
+#: ../plugins/spell/bedit-spell-checker-language.c:373
 #, c-format
 msgctxt "language"
 msgid "%s (%s)"
@@ -3396,7 +3396,7 @@ msgstr "%s (%s)"
 #. Translators: this refers to an unknown language code
 #. * (one which isn't in our built-in list).
 #.
-#: ../plugins/spell/gedit-spell-checker-language.c:382
+#: ../plugins/spell/bedit-spell-checker-language.c:382
 #, c-format
 msgctxt "language"
 msgid "Unknown (%s)"
@@ -3405,24 +3405,24 @@ msgstr "अपरिचीत (%s)"
 #. Translators: this refers the Default language used by the
 #. * spell checker
 #.
-#: ../plugins/spell/gedit-spell-checker-language.c:488
+#: ../plugins/spell/bedit-spell-checker-language.c:488
 msgctxt "language"
 msgid "Default"
 msgstr "पूर्वनिर्धारीत"
 
-#: ../plugins/spell/gedit-spell-language-dialog.c:129
+#: ../plugins/spell/bedit-spell-language-dialog.c:129
 msgid "Set language"
 msgstr "भाषा निर्धारित करा"
 
-#: ../plugins/spell/gedit-spell-language-dialog.c:171
+#: ../plugins/spell/bedit-spell-language-dialog.c:171
 msgid "Languages"
 msgstr "भाषा"
 
-#: ../plugins/spell/gedit-spell-plugin.c:791
+#: ../plugins/spell/bedit-spell-plugin.c:791
 msgid "The document is empty."
 msgstr "दस्तऐवज रिकामे आहे."
 
-#: ../plugins/spell/gedit-spell-plugin.c:816
+#: ../plugins/spell/bedit-spell-plugin.c:816
 msgid "No misspelled words"
 msgstr "शब्दलेखन न चुकलेले शब्द"
 
@@ -3491,11 +3491,11 @@ msgstr "शब्द तपासक"
 msgid "Checks the spelling of the current document."
 msgstr "वर्तमान दस्तऐवजातील शब्दलेखन तपासतो."
 
-#: ../plugins/time/gedit-time-plugin.c:270
+#: ../plugins/time/bedit-time-plugin.c:270
 msgid "In_sert Date and Time..."
 msgstr "दिनांक आणि वेळ जोडा (_s)..."
 
-#: ../plugins/time/gedit-time-plugin.c:496
+#: ../plugins/time/bedit-time-plugin.c:496
 msgid "Available formats"
 msgstr "उपलब्द नमुने/पध्दती"
 
@@ -3529,46 +3529,46 @@ msgstr "पसंतीचे स्वरूप"
 msgid "The custom format used when inserting the date/time."
 msgstr "दिनांक/वेळ समाविष्ट करतेवेळी वापरण्याजोगी पसंतीचे स्वरूप."
 
-#: ../plugins/time/resources/ui/gedit-time-dialog.ui.h:1
+#: ../plugins/time/resources/ui/bedit-time-dialog.ui.h:1
 msgid "Insert Date and Time"
 msgstr "दिनांक आणि वेळ टाका"
 
-#: ../plugins/time/resources/ui/gedit-time-dialog.ui.h:2
-#: ../plugins/time/resources/ui/gedit-time-setup-dialog.ui.h:5
+#: ../plugins/time/resources/ui/bedit-time-dialog.ui.h:2
+#: ../plugins/time/resources/ui/bedit-time-setup-dialog.ui.h:5
 msgid "Use the _selected format"
 msgstr "निवडलेली पद्धती वापरा (_s)"
 
-#: ../plugins/time/resources/ui/gedit-time-dialog.ui.h:3
-#: ../plugins/time/resources/ui/gedit-time-setup-dialog.ui.h:6
+#: ../plugins/time/resources/ui/bedit-time-dialog.ui.h:3
+#: ../plugins/time/resources/ui/bedit-time-setup-dialog.ui.h:6
 msgid "_Use custom format"
 msgstr "इच्छिक स्वरूप वापरा (_U)"
 
 #. Translators: Use the more common date format in your locale
-#: ../plugins/time/resources/ui/gedit-time-dialog.ui.h:5
-#: ../plugins/time/resources/ui/gedit-time-setup-dialog.ui.h:9
+#: ../plugins/time/resources/ui/bedit-time-dialog.ui.h:5
+#: ../plugins/time/resources/ui/bedit-time-setup-dialog.ui.h:9
 #, no-c-format
 msgid "%d/%m/%Y %H:%M:%S"
 msgstr "%d/%m/%Y %H:%M:%S"
 
 #. Translators: This example should follow the date format defined in the entry above
-#: ../plugins/time/resources/ui/gedit-time-dialog.ui.h:6
-#: ../plugins/time/resources/ui/gedit-time-setup-dialog.ui.h:11
+#: ../plugins/time/resources/ui/bedit-time-dialog.ui.h:6
+#: ../plugins/time/resources/ui/bedit-time-setup-dialog.ui.h:11
 msgid "01/11/2009 17:52:00"
 msgstr "01/11/2009 17:52:00"
 
-#: ../plugins/time/resources/ui/gedit-time-dialog.ui.h:9
+#: ../plugins/time/resources/ui/bedit-time-dialog.ui.h:9
 msgid "_Insert"
 msgstr "अंतर्भूत करा (_I)"
 
-#: ../plugins/time/resources/ui/gedit-time-setup-dialog.ui.h:1
+#: ../plugins/time/resources/ui/bedit-time-setup-dialog.ui.h:1
 msgid "Configure date/time plugin"
 msgstr "दिनांक/वेळ प्लगइन ठिक करा"
 
-#: ../plugins/time/resources/ui/gedit-time-setup-dialog.ui.h:3
+#: ../plugins/time/resources/ui/bedit-time-setup-dialog.ui.h:3
 msgid "When inserting date/time..."
 msgstr "दिनांक/वेळ समाविष्ट करतेवेळी..."
 
-#: ../plugins/time/resources/ui/gedit-time-setup-dialog.ui.h:4
+#: ../plugins/time/resources/ui/bedit-time-setup-dialog.ui.h:4
 msgid "_Prompt for a format"
 msgstr "स्वरूप करीता विचारा (_P)"
 
@@ -3581,20 +3581,20 @@ msgid "Inserts current date and time at the cursor position."
 msgstr "कर्सर स्थितीत चालू दिनांक व वेळ दर्शविते."
 
 #~ msgid ""
-#~ "Whether gedit should create backup copies for the files it saves. You can "
+#~ "Whether bedit should create backup copies for the files it saves. You can "
 #~ "set the backup file extension with the \"Backup Copy Extension\" option."
 #~ msgstr ""
-#~ "gedit संचयीत करत असलेल्या फाइलची मूळ प्रत राखून ठेवावी की नाही।या राखीव प्रतीचे "
+#~ "bedit संचयीत करत असलेल्या फाइलची मूळ प्रत राखून ठेवावी की नाही।या राखीव प्रतीचे "
 #~ "नाव तुम्ही\"राखीव प्रतीचे नाव\"या पर्यायाचा वापर करुन ठरवू शकता."
 
 #~ msgid "Undo Actions Limit (DEPRECATED)"
 #~ msgstr "रद्दिकरण प्रक्रियेची मर्यादा (DEPRECATED)"
 
 #~ msgid ""
-#~ "Maximum number of actions that gedit will be able to undo or redo. Use "
+#~ "Maximum number of actions that bedit will be able to undo or redo. Use "
 #~ "\"-1\" for unlimited number of actions. Deprecated since 2.12.0"
 #~ msgstr ""
-#~ "gedit जास्तीत जास्त एवढ्या क्रिया रद्द करु शकतो किंवा पुनः करु शकतो. अमर्यादित "
+#~ "bedit जास्तीत जास्त एवढ्या क्रिया रद्द करु शकतो किंवा पुनः करु शकतो. अमर्यादित "
 #~ "क्रियांसाठी  \"-1\" वापरा. 2.12.0 पासून नापसंत"
 
 #~ msgid "Show the application's help"
@@ -3610,8 +3610,8 @@ msgstr "कर्सर स्थितीत चालू दिनांक �
 #~ "%s\n"
 #~ "उपलब्ध आदेश ओळ पर्याय पाहण्याकरीता '%s --help' चालवा.\n"
 
-#~ msgid "About gedit"
-#~ msgstr "gedit विषयी"
+#~ msgid "About bedit"
+#~ msgstr "bedit विषयी"
 
 #~ msgid "Unicode"
 #~ msgstr "युनिकोड"
@@ -3696,9 +3696,9 @@ msgstr "कर्सर स्थितीत चालू दिनांक �
 #~ msgstr "ही फाइल खूप मोठी आहे."
 
 #~ msgid ""
-#~ "gedit opened this instance of the file in a non-editable way. Do you want "
+#~ "bedit opened this instance of the file in a non-editable way. Do you want "
 #~ "to edit it anyway?"
-#~ msgstr "gedit ने या फाइलची प्रत अ-संपादन तऱ्हेने उघडले आहे. तुम्हाला तरी संपादन करायचे?"
+#~ msgstr "bedit ने या फाइलची प्रत अ-संपादन तऱ्हेने उघडले आहे. तुम्हाला तरी संपादन करायचे?"
 
 #~ msgid "Do you want to drop your changes and reload the file?"
 #~ msgstr "तुम्हाला बदल रद्द करायचे व फाइल पुनः दाखल करायची आहे?"
@@ -3715,8 +3715,8 @@ msgstr "कर्सर स्थितीत चालू दिनांक �
 #~ msgid "Empty"
 #~ msgstr "रिकामी"
 
-#~ msgid "gedit Preferences"
-#~ msgstr "gedit प्राधान्यक्रम"
+#~ msgid "bedit Preferences"
+#~ msgstr "bedit प्राधान्यक्रम"
 
 #~ msgid "column"
 #~ msgstr "स्तंभ"
@@ -3739,8 +3739,8 @@ msgstr "कर्सर स्थितीत चालू दिनांक �
 #~ msgid "_Contents"
 #~ msgstr "अनुक्रम (_C)"
 
-#~ msgid "Open the gedit manual"
-#~ msgstr "gedit पुस्तिका उघडा"
+#~ msgid "Open the bedit manual"
+#~ msgstr "bedit पुस्तिका उघडा"
 
 #~ msgid "About this application"
 #~ msgstr "लागू करण्याबाबत"
@@ -3954,8 +3954,8 @@ msgstr "कर्सर स्थितीत चालू दिनांक �
 #~ msgid "Zeitgeist dataprovider"
 #~ msgstr "Zeitgeist डाटाप्रोव्हडर"
 
-#~ msgid "Logs access and leave event for documents used with gedit"
-#~ msgstr "gedit सह वापरलेल्या दस्तऐवजचे प्रवेश व सोडून देण्याची घटनांचा लॉग ठेवतो"
+#~ msgid "Logs access and leave event for documents used with bedit"
+#~ msgstr "bedit सह वापरलेल्या दस्तऐवजचे प्रवेश व सोडून देण्याची घटनांचा लॉग ठेवतो"
 
 #~ msgid "Open Files"
 #~ msgstr "फाइल्स् उघडा"
@@ -4039,8 +4039,8 @@ msgstr "कर्सर स्थितीत चालू दिनांक �
 #~ msgid "Log Out _without Saving"
 #~ msgstr "न साठवता बाहेर जा (_w)"
 
-#~ msgid "Run gedit in the background"
-#~ msgstr "gedit ला पार्श्वभूमीत चालवा"
+#~ msgid "Run bedit in the background"
+#~ msgstr "bedit ला पार्श्वभूमीत चालवा"
 
 #~ msgid "_Add..."
 #~ msgstr "जोडा (_A)..."

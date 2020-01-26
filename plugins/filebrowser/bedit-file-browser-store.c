@@ -1,5 +1,5 @@
 /*
- * gedit-file-browser-store.c - Bedit plugin providing easy file access
+ * bedit-file-browser-store.c - Bedit plugin providing easy file access
  * from the sidepanel
  *
  * Copyright (C) 2006 - Jesse van den Kieboom <jesse@icecrew.nl>
@@ -23,12 +23,12 @@
 #include <string.h>
 #include <glib/gi18n-lib.h>
 #include <gio/gio.h>
-#include <gedit/gedit-utils.h>
+#include <bedit/bedit-utils.h>
 
-#include "gedit-file-browser-store.h"
-#include "gedit-file-browser-enum-types.h"
-#include "gedit-file-browser-error.h"
-#include "gedit-file-browser-utils.h"
+#include "bedit-file-browser-store.h"
+#include "bedit-file-browser-enum-types.h"
+#include "bedit-file-browser-error.h"
+#include "bedit-file-browser-utils.h"
 
 #define NODE_IS_DIR(node)		(FILE_IS_DIR((node)->flags))
 #define NODE_IS_HIDDEN(node)		(FILE_IS_HIDDEN((node)->flags))
@@ -135,46 +135,46 @@ static void model_remove_node                               (BeditFileBrowserSto
 static void set_virtual_root_from_node                      (BeditFileBrowserStore  *model,
 				                             FileBrowserNode        *node);
 
-static void gedit_file_browser_store_iface_init             (GtkTreeModelIface      *iface);
-static GtkTreeModelFlags gedit_file_browser_store_get_flags (GtkTreeModel           *tree_model);
-static gint gedit_file_browser_store_get_n_columns          (GtkTreeModel           *tree_model);
-static GType gedit_file_browser_store_get_column_type       (GtkTreeModel           *tree_model,
+static void bedit_file_browser_store_iface_init             (GtkTreeModelIface      *iface);
+static GtkTreeModelFlags bedit_file_browser_store_get_flags (GtkTreeModel           *tree_model);
+static gint bedit_file_browser_store_get_n_columns          (GtkTreeModel           *tree_model);
+static GType bedit_file_browser_store_get_column_type       (GtkTreeModel           *tree_model,
 							     gint                    index);
-static gboolean gedit_file_browser_store_get_iter           (GtkTreeModel           *tree_model,
+static gboolean bedit_file_browser_store_get_iter           (GtkTreeModel           *tree_model,
 							     GtkTreeIter            *iter,
 							     GtkTreePath            *path);
-static GtkTreePath *gedit_file_browser_store_get_path       (GtkTreeModel           *tree_model,
+static GtkTreePath *bedit_file_browser_store_get_path       (GtkTreeModel           *tree_model,
 							     GtkTreeIter            *iter);
-static void gedit_file_browser_store_get_value              (GtkTreeModel           *tree_model,
+static void bedit_file_browser_store_get_value              (GtkTreeModel           *tree_model,
 							     GtkTreeIter            *iter,
 							     gint                    column,
 							     GValue                 *value);
-static gboolean gedit_file_browser_store_iter_next          (GtkTreeModel           *tree_model,
+static gboolean bedit_file_browser_store_iter_next          (GtkTreeModel           *tree_model,
 							     GtkTreeIter            *iter);
-static gboolean gedit_file_browser_store_iter_children      (GtkTreeModel           *tree_model,
+static gboolean bedit_file_browser_store_iter_children      (GtkTreeModel           *tree_model,
 							     GtkTreeIter            *iter,
 							     GtkTreeIter            *parent);
-static gboolean gedit_file_browser_store_iter_has_child     (GtkTreeModel           *tree_model,
+static gboolean bedit_file_browser_store_iter_has_child     (GtkTreeModel           *tree_model,
 							     GtkTreeIter            *iter);
-static gint gedit_file_browser_store_iter_n_children        (GtkTreeModel           *tree_model,
+static gint bedit_file_browser_store_iter_n_children        (GtkTreeModel           *tree_model,
 							     GtkTreeIter            *iter);
-static gboolean gedit_file_browser_store_iter_nth_child     (GtkTreeModel           *tree_model,
+static gboolean bedit_file_browser_store_iter_nth_child     (GtkTreeModel           *tree_model,
 							     GtkTreeIter            *iter,
 							     GtkTreeIter            *parent,
 							     gint                    n);
-static gboolean gedit_file_browser_store_iter_parent        (GtkTreeModel           *tree_model,
+static gboolean bedit_file_browser_store_iter_parent        (GtkTreeModel           *tree_model,
 							     GtkTreeIter            *iter,
 							     GtkTreeIter            *child);
-static void gedit_file_browser_store_row_inserted	    (GtkTreeModel           *tree_model,
+static void bedit_file_browser_store_row_inserted	    (GtkTreeModel           *tree_model,
 							     GtkTreePath            *path,
 							     GtkTreeIter            *iter);
 
-static void gedit_file_browser_store_drag_source_init       (GtkTreeDragSourceIface *iface);
-static gboolean gedit_file_browser_store_row_draggable      (GtkTreeDragSource      *drag_source,
+static void bedit_file_browser_store_drag_source_init       (GtkTreeDragSourceIface *iface);
+static gboolean bedit_file_browser_store_row_draggable      (GtkTreeDragSource      *drag_source,
 							     GtkTreePath            *path);
-static gboolean gedit_file_browser_store_drag_data_delete   (GtkTreeDragSource      *drag_source,
+static gboolean bedit_file_browser_store_drag_data_delete   (GtkTreeDragSource      *drag_source,
 							     GtkTreePath            *path);
-static gboolean gedit_file_browser_store_drag_data_get      (GtkTreeDragSource      *drag_source,
+static gboolean bedit_file_browser_store_drag_data_get      (GtkTreeDragSource      *drag_source,
 							     GtkTreePath            *path,
 							     GtkSelectionData       *selection_data);
 
@@ -194,14 +194,14 @@ static void next_files_async 				    (GFileEnumerator        *enumerator,
 
 static void delete_files                                    (AsyncData              *data);
 
-G_DEFINE_DYNAMIC_TYPE_EXTENDED (BeditFileBrowserStore, gedit_file_browser_store,
+G_DEFINE_DYNAMIC_TYPE_EXTENDED (BeditFileBrowserStore, bedit_file_browser_store,
 				G_TYPE_OBJECT,
 				0,
 				G_ADD_PRIVATE_DYNAMIC (BeditFileBrowserStore)
 				G_IMPLEMENT_INTERFACE_DYNAMIC (GTK_TYPE_TREE_MODEL,
-							       gedit_file_browser_store_iface_init)
+							       bedit_file_browser_store_iface_init)
 				G_IMPLEMENT_INTERFACE_DYNAMIC (GTK_TYPE_TREE_DRAG_SOURCE,
-							       gedit_file_browser_store_drag_source_init))
+							       bedit_file_browser_store_drag_source_init))
 
 /* Properties */
 enum {
@@ -242,7 +242,7 @@ cancel_mount_operation (BeditFileBrowserStore *obj)
 }
 
 static void
-gedit_file_browser_store_finalize (GObject *object)
+bedit_file_browser_store_finalize (GObject *object)
 {
 	BeditFileBrowserStore *obj = GEDIT_FILE_BROWSER_STORE (object);
 
@@ -267,7 +267,7 @@ gedit_file_browser_store_finalize (GObject *object)
 	cancel_mount_operation (obj);
 
 	g_slist_free (obj->priv->async_handles);
-	G_OBJECT_CLASS (gedit_file_browser_store_parent_class)->finalize (object);
+	G_OBJECT_CLASS (bedit_file_browser_store_parent_class)->finalize (object);
 }
 
 static void
@@ -281,7 +281,7 @@ set_gvalue_from_node (GValue          *value,
 }
 
 static void
-gedit_file_browser_store_get_property (GObject    *object,
+bedit_file_browser_store_get_property (GObject    *object,
 			               guint       prop_id,
 			               GValue     *value,
 			               GParamSpec *pspec)
@@ -309,7 +309,7 @@ gedit_file_browser_store_get_property (GObject    *object,
 }
 
 static void
-gedit_file_browser_store_set_property (GObject      *object,
+bedit_file_browser_store_set_property (GObject      *object,
 			               guint         prop_id,
 			               const GValue *value,
 			               GParamSpec   *pspec)
@@ -319,13 +319,13 @@ gedit_file_browser_store_set_property (GObject      *object,
 	switch (prop_id)
 	{
 		case PROP_ROOT:
-			gedit_file_browser_store_set_root (obj, G_FILE (g_value_get_object (value)));
+			bedit_file_browser_store_set_root (obj, G_FILE (g_value_get_object (value)));
 			break;
 		case PROP_FILTER_MODE:
-			gedit_file_browser_store_set_filter_mode (obj, g_value_get_flags (value));
+			bedit_file_browser_store_set_filter_mode (obj, g_value_get_flags (value));
 			break;
 		case PROP_BINARY_PATTERNS:
-			gedit_file_browser_store_set_binary_patterns (obj, g_value_get_boxed (value));
+			bedit_file_browser_store_set_binary_patterns (obj, g_value_get_boxed (value));
 			break;
 		default:
 			G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
@@ -334,13 +334,13 @@ gedit_file_browser_store_set_property (GObject      *object,
 }
 
 static void
-gedit_file_browser_store_class_init (BeditFileBrowserStoreClass *klass)
+bedit_file_browser_store_class_init (BeditFileBrowserStoreClass *klass)
 {
 	GObjectClass *object_class = G_OBJECT_CLASS (klass);
 
-	object_class->finalize = gedit_file_browser_store_finalize;
-	object_class->get_property = gedit_file_browser_store_get_property;
-	object_class->set_property = gedit_file_browser_store_set_property;
+	object_class->finalize = bedit_file_browser_store_finalize;
+	object_class->get_property = bedit_file_browser_store_get_property;
+	object_class->set_property = bedit_file_browser_store_set_property;
 
 	g_object_class_install_property (object_class, PROP_ROOT,
 					 g_param_spec_object ("root",
@@ -361,7 +361,7 @@ gedit_file_browser_store_class_init (BeditFileBrowserStoreClass *klass)
 					 		     "Filter Mode",
 					 		     "The filter mode",
 					 		     GEDIT_TYPE_FILE_BROWSER_STORE_FILTER_MODE,
-					 		     gedit_file_browser_store_filter_mode_get_default (),
+					 		     bedit_file_browser_store_filter_mode_get_default (),
 					 		     G_PARAM_READWRITE));
 
 	g_object_class_install_property (object_class, PROP_BINARY_PATTERNS,
@@ -436,40 +436,40 @@ gedit_file_browser_store_class_init (BeditFileBrowserStoreClass *klass)
 }
 
 static void
-gedit_file_browser_store_class_finalize (BeditFileBrowserStoreClass *klass)
+bedit_file_browser_store_class_finalize (BeditFileBrowserStoreClass *klass)
 {
 }
 
 static void
-gedit_file_browser_store_iface_init (GtkTreeModelIface *iface)
+bedit_file_browser_store_iface_init (GtkTreeModelIface *iface)
 {
-	iface->get_flags = gedit_file_browser_store_get_flags;
-	iface->get_n_columns = gedit_file_browser_store_get_n_columns;
-	iface->get_column_type = gedit_file_browser_store_get_column_type;
-	iface->get_iter = gedit_file_browser_store_get_iter;
-	iface->get_path = gedit_file_browser_store_get_path;
-	iface->get_value = gedit_file_browser_store_get_value;
-	iface->iter_next = gedit_file_browser_store_iter_next;
-	iface->iter_children = gedit_file_browser_store_iter_children;
-	iface->iter_has_child = gedit_file_browser_store_iter_has_child;
-	iface->iter_n_children = gedit_file_browser_store_iter_n_children;
-	iface->iter_nth_child = gedit_file_browser_store_iter_nth_child;
-	iface->iter_parent = gedit_file_browser_store_iter_parent;
-	iface->row_inserted = gedit_file_browser_store_row_inserted;
+	iface->get_flags = bedit_file_browser_store_get_flags;
+	iface->get_n_columns = bedit_file_browser_store_get_n_columns;
+	iface->get_column_type = bedit_file_browser_store_get_column_type;
+	iface->get_iter = bedit_file_browser_store_get_iter;
+	iface->get_path = bedit_file_browser_store_get_path;
+	iface->get_value = bedit_file_browser_store_get_value;
+	iface->iter_next = bedit_file_browser_store_iter_next;
+	iface->iter_children = bedit_file_browser_store_iter_children;
+	iface->iter_has_child = bedit_file_browser_store_iter_has_child;
+	iface->iter_n_children = bedit_file_browser_store_iter_n_children;
+	iface->iter_nth_child = bedit_file_browser_store_iter_nth_child;
+	iface->iter_parent = bedit_file_browser_store_iter_parent;
+	iface->row_inserted = bedit_file_browser_store_row_inserted;
 }
 
 static void
-gedit_file_browser_store_drag_source_init (GtkTreeDragSourceIface *iface)
+bedit_file_browser_store_drag_source_init (GtkTreeDragSourceIface *iface)
 {
-	iface->row_draggable = gedit_file_browser_store_row_draggable;
-	iface->drag_data_delete = gedit_file_browser_store_drag_data_delete;
-	iface->drag_data_get = gedit_file_browser_store_drag_data_get;
+	iface->row_draggable = bedit_file_browser_store_row_draggable;
+	iface->drag_data_delete = bedit_file_browser_store_drag_data_delete;
+	iface->drag_data_get = bedit_file_browser_store_drag_data_get;
 }
 
 static void
-gedit_file_browser_store_init (BeditFileBrowserStore *obj)
+bedit_file_browser_store_init (BeditFileBrowserStore *obj)
 {
-	obj->priv = gedit_file_browser_store_get_instance_private (obj);
+	obj->priv = bedit_file_browser_store_get_instance_private (obj);
 
 	obj->priv->column_types[GEDIT_FILE_BROWSER_STORE_COLUMN_LOCATION] = G_TYPE_FILE;
 	obj->priv->column_types[GEDIT_FILE_BROWSER_STORE_COLUMN_MARKUP] = G_TYPE_STRING;
@@ -480,7 +480,7 @@ gedit_file_browser_store_init (BeditFileBrowserStore *obj)
 	obj->priv->column_types[GEDIT_FILE_BROWSER_STORE_COLUMN_EMBLEM] = GDK_TYPE_PIXBUF;
 
 	/* Default filter mode is hiding the hidden files */
-	obj->priv->filter_mode = gedit_file_browser_store_filter_mode_get_default ();
+	obj->priv->filter_mode = bedit_file_browser_store_filter_mode_get_default ();
 	obj->priv->sort_func = model_sort_default;
 }
 
@@ -534,7 +534,7 @@ model_node_inserted (BeditFileBrowserStore *model,
 /* Interface implementation */
 
 static GtkTreeModelFlags
-gedit_file_browser_store_get_flags (GtkTreeModel *tree_model)
+bedit_file_browser_store_get_flags (GtkTreeModel *tree_model)
 {
 	g_return_val_if_fail (GEDIT_IS_FILE_BROWSER_STORE (tree_model), (GtkTreeModelFlags) 0);
 
@@ -542,7 +542,7 @@ gedit_file_browser_store_get_flags (GtkTreeModel *tree_model)
 }
 
 static gint
-gedit_file_browser_store_get_n_columns (GtkTreeModel *tree_model)
+bedit_file_browser_store_get_n_columns (GtkTreeModel *tree_model)
 {
 	g_return_val_if_fail (GEDIT_IS_FILE_BROWSER_STORE (tree_model), 0);
 
@@ -550,7 +550,7 @@ gedit_file_browser_store_get_n_columns (GtkTreeModel *tree_model)
 }
 
 static GType
-gedit_file_browser_store_get_column_type (GtkTreeModel *tree_model,
+bedit_file_browser_store_get_column_type (GtkTreeModel *tree_model,
 					  gint          idx)
 {
 	g_return_val_if_fail (GEDIT_IS_FILE_BROWSER_STORE (tree_model), G_TYPE_INVALID);
@@ -560,7 +560,7 @@ gedit_file_browser_store_get_column_type (GtkTreeModel *tree_model,
 }
 
 static gboolean
-gedit_file_browser_store_get_iter (GtkTreeModel *tree_model,
+bedit_file_browser_store_get_iter (GtkTreeModel *tree_model,
 				   GtkTreeIter  *iter,
 				   GtkTreePath  *path)
 {
@@ -614,7 +614,7 @@ gedit_file_browser_store_get_iter (GtkTreeModel *tree_model,
 }
 
 static GtkTreePath *
-gedit_file_browser_store_get_path_real (BeditFileBrowserStore *model,
+bedit_file_browser_store_get_path_real (BeditFileBrowserStore *model,
 					FileBrowserNode       *node)
 {
 	GtkTreePath *path = gtk_tree_path_new ();
@@ -661,19 +661,19 @@ gedit_file_browser_store_get_path_real (BeditFileBrowserStore *model,
 }
 
 static GtkTreePath *
-gedit_file_browser_store_get_path (GtkTreeModel *tree_model,
+bedit_file_browser_store_get_path (GtkTreeModel *tree_model,
 				   GtkTreeIter  *iter)
 {
 	g_return_val_if_fail (GEDIT_IS_FILE_BROWSER_STORE (tree_model), NULL);
 	g_return_val_if_fail (iter != NULL, NULL);
 	g_return_val_if_fail (iter->user_data != NULL, NULL);
 
-	return gedit_file_browser_store_get_path_real (GEDIT_FILE_BROWSER_STORE (tree_model),
+	return bedit_file_browser_store_get_path_real (GEDIT_FILE_BROWSER_STORE (tree_model),
 						       (FileBrowserNode *)(iter->user_data));
 }
 
 static void
-gedit_file_browser_store_get_value (GtkTreeModel *tree_model,
+bedit_file_browser_store_get_value (GtkTreeModel *tree_model,
 				    GtkTreeIter  *iter,
 				    gint          column,
 				    GValue       *value)
@@ -717,7 +717,7 @@ gedit_file_browser_store_get_value (GtkTreeModel *tree_model,
 }
 
 static gboolean
-gedit_file_browser_store_iter_next (GtkTreeModel *tree_model,
+bedit_file_browser_store_iter_next (GtkTreeModel *tree_model,
 				    GtkTreeIter  *iter)
 {
 	BeditFileBrowserStore *model;
@@ -749,7 +749,7 @@ gedit_file_browser_store_iter_next (GtkTreeModel *tree_model,
 }
 
 static gboolean
-gedit_file_browser_store_iter_children (GtkTreeModel *tree_model,
+bedit_file_browser_store_iter_children (GtkTreeModel *tree_model,
 					GtkTreeIter  *iter,
 					GtkTreeIter  *parent)
 {
@@ -801,7 +801,7 @@ filter_tree_model_iter_has_child_real (BeditFileBrowserStore *model,
 }
 
 static gboolean
-gedit_file_browser_store_iter_has_child (GtkTreeModel *tree_model,
+bedit_file_browser_store_iter_has_child (GtkTreeModel *tree_model,
 					 GtkTreeIter  *iter)
 {
 	FileBrowserNode *node;
@@ -821,7 +821,7 @@ gedit_file_browser_store_iter_has_child (GtkTreeModel *tree_model,
 }
 
 static gint
-gedit_file_browser_store_iter_n_children (GtkTreeModel *tree_model,
+bedit_file_browser_store_iter_n_children (GtkTreeModel *tree_model,
 					  GtkTreeIter  *iter)
 {
 	FileBrowserNode *node;
@@ -851,7 +851,7 @@ gedit_file_browser_store_iter_n_children (GtkTreeModel *tree_model,
 }
 
 static gboolean
-gedit_file_browser_store_iter_nth_child (GtkTreeModel *tree_model,
+bedit_file_browser_store_iter_nth_child (GtkTreeModel *tree_model,
 					 GtkTreeIter  *iter,
 					 GtkTreeIter  *parent,
 					 gint          n)
@@ -891,7 +891,7 @@ gedit_file_browser_store_iter_nth_child (GtkTreeModel *tree_model,
 }
 
 static gboolean
-gedit_file_browser_store_iter_parent (GtkTreeModel *tree_model,
+bedit_file_browser_store_iter_parent (GtkTreeModel *tree_model,
 				      GtkTreeIter  *iter,
 				      GtkTreeIter  *child)
 {
@@ -916,7 +916,7 @@ gedit_file_browser_store_iter_parent (GtkTreeModel *tree_model,
 }
 
 static void
-gedit_file_browser_store_row_inserted (GtkTreeModel *tree_model,
+bedit_file_browser_store_row_inserted (GtkTreeModel *tree_model,
 				       GtkTreePath  *path,
 				       GtkTreeIter  *iter)
 {
@@ -926,7 +926,7 @@ gedit_file_browser_store_row_inserted (GtkTreeModel *tree_model,
 }
 
 static gboolean
-gedit_file_browser_store_row_draggable (GtkTreeDragSource *drag_source,
+bedit_file_browser_store_row_draggable (GtkTreeDragSource *drag_source,
 					GtkTreePath       *path)
 {
 	GtkTreeIter iter;
@@ -943,14 +943,14 @@ gedit_file_browser_store_row_draggable (GtkTreeDragSource *drag_source,
 }
 
 static gboolean
-gedit_file_browser_store_drag_data_delete (GtkTreeDragSource *drag_source,
+bedit_file_browser_store_drag_data_delete (GtkTreeDragSource *drag_source,
 					   GtkTreePath       *path)
 {
 	return FALSE;
 }
 
 static gboolean
-gedit_file_browser_store_drag_data_get (GtkTreeDragSource *drag_source,
+bedit_file_browser_store_drag_data_get (GtkTreeDragSource *drag_source,
 					GtkTreePath       *path,
 					GtkSelectionData  *selection_data)
 {
@@ -1140,7 +1140,7 @@ model_resort_node (BeditFileBrowserStore *model,
 		}
 
 		iter.user_data = node->parent;
-		path = gedit_file_browser_store_get_path_real (model, node->parent);
+		path = bedit_file_browser_store_get_path_real (model, node->parent);
 
 		gtk_tree_model_rows_reordered (GTK_TREE_MODEL (model), path, &iter, neworder);
 
@@ -1250,7 +1250,7 @@ model_refilter_node (BeditFileBrowserStore  *model,
 	if (path == NULL)
 	{
 		if (in_tree)
-			tmppath = gedit_file_browser_store_get_path_real (model, node);
+			tmppath = bedit_file_browser_store_get_path_real (model, node);
 		else
 			tmppath = gtk_tree_path_new_first ();
 
@@ -1313,7 +1313,7 @@ file_browser_node_set_name (FileBrowserNode *node)
 	g_free (node->markup);
 
 	if (node->file)
-		node->name = gedit_file_browser_utils_file_basename (node->file);
+		node->name = bedit_file_browser_utils_file_basename (node->file);
 	else
 		node->name = NULL;
 
@@ -1469,7 +1469,7 @@ model_remove_node_children (BeditFileBrowserStore *model,
 	}
 
 	if (path == NULL)
-		path_child = gedit_file_browser_store_get_path_real (model, node);
+		path_child = bedit_file_browser_store_get_path_real (model, node);
 	else
 		path_child = gtk_tree_path_copy (path);
 
@@ -1507,7 +1507,7 @@ model_remove_node (BeditFileBrowserStore *model,
 
 	if (path == NULL)
 	{
-		path = gedit_file_browser_store_get_path_real (model, node);
+		path = bedit_file_browser_store_get_path_real (model, node);
 		free_path = TRUE;
 	}
 
@@ -1631,18 +1631,18 @@ model_recomposite_icon_real (BeditFileBrowserStore *tree_model,
 		GIcon *gicon = g_file_info_get_icon (info);
 
 		if (gicon != NULL)
-			icon = gedit_file_browser_utils_pixbuf_from_icon (gicon, GTK_ICON_SIZE_MENU);
+			icon = bedit_file_browser_utils_pixbuf_from_icon (gicon, GTK_ICON_SIZE_MENU);
 		else
 			icon = NULL;
 	}
 	else
 	{
-		icon = gedit_file_browser_utils_pixbuf_from_file (node->file, GTK_ICON_SIZE_MENU, FALSE);
+		icon = bedit_file_browser_utils_pixbuf_from_file (node->file, GTK_ICON_SIZE_MENU, FALSE);
 	}
 
 	/* Fallback to the same icon as the file browser */
 	if (!icon)
-		icon = gedit_file_browser_utils_pixbuf_from_theme ("text-x-generic", GTK_ICON_SIZE_MENU);
+		icon = bedit_file_browser_utils_pixbuf_from_theme ("text-x-generic", GTK_ICON_SIZE_MENU);
 
 	if (node->icon)
 		g_object_unref (node->icon);
@@ -1769,7 +1769,7 @@ model_check_dummy (BeditFileBrowserStore *model,
 			{
 				/* Was hidden, needs to be inserted */
 				iter.user_data = dummy;
-				path = gedit_file_browser_store_get_path_real (model, dummy);
+				path = bedit_file_browser_store_get_path_real (model, dummy);
 
 				row_inserted (model, &path, &iter);
 				gtk_tree_path_free (path);
@@ -1781,7 +1781,7 @@ model_check_dummy (BeditFileBrowserStore *model,
 
 			/* To get the path we need to set it to visible temporarily */
 			dummy->flags &= ~GEDIT_FILE_BROWSER_STORE_FLAG_IS_HIDDEN;
-			path = gedit_file_browser_store_get_path_real (model, dummy);
+			path = bedit_file_browser_store_get_path_real (model, dummy);
 			dummy->flags |= GEDIT_FILE_BROWSER_STORE_FLAG_IS_HIDDEN;
 
 			row_deleted (model, dummy, path);
@@ -1814,7 +1814,7 @@ model_add_node (BeditFileBrowserStore *model,
 	if (model_node_visibility (model, parent) &&
 	    model_node_visibility (model, child))
 	{
-		GtkTreePath *path = gedit_file_browser_store_get_path_real (model, child);
+		GtkTreePath *path = bedit_file_browser_store_get_path_real (model, child);
 		GtkTreeIter iter;
 
 		iter.user_data = child;
@@ -1858,7 +1858,7 @@ model_add_nodes_batch (BeditFileBrowserStore *model,
 				    model_node_visibility (model, l->data))
 				{
 					iter.user_data = l->data;
-					path = gedit_file_browser_store_get_path_real (model, l->data);
+					path = bedit_file_browser_store_get_path_real (model, l->data);
 
 					/* Emit row inserted */
 					row_inserted (model, &path, &iter);
@@ -1894,7 +1894,7 @@ model_add_nodes_batch (BeditFileBrowserStore *model,
 			    model_node_visibility (model, node))
 			{
 				iter.user_data = node;
-				path = gedit_file_browser_store_get_path_real (model, node);
+				path = bedit_file_browser_store_get_path_real (model, node);
 
 				/* Emit row inserted */
 				row_inserted (model, &path, &iter);
@@ -2017,7 +2017,7 @@ file_browser_node_set_from_info (BeditFileBrowserStore *model,
 
 	if (isadded)
 	{
-		path = gedit_file_browser_store_get_path_real (model, node);
+		path = bedit_file_browser_store_get_path_real (model, node);
 		model_refilter_node (model, node, &path);
 		gtk_tree_path_free (path);
 
@@ -2416,7 +2416,7 @@ model_fill (BeditFileBrowserStore  *model,
 
 	if (*path == NULL)
 	{
-		*path = gedit_file_browser_store_get_path_real (model, node);
+		*path = bedit_file_browser_store_get_path_real (model, node);
 		free_path = TRUE;
 	}
 
@@ -2613,12 +2613,12 @@ model_find_node (BeditFileBrowserStore *model,
 }
 
 static GQuark
-gedit_file_browser_store_error_quark (void)
+bedit_file_browser_store_error_quark (void)
 {
 	static GQuark quark = 0;
 
 	if (G_UNLIKELY (quark == 0))
-		quark = g_quark_from_string ("gedit_file_browser_store_error");
+		quark = g_quark_from_string ("bedit_file_browser_store_error");
 
 	return quark;
 }
@@ -2659,7 +2659,7 @@ model_root_mounted (BeditFileBrowserStore *model,
 
 	if (virtual_root != NULL)
 	{
-		return gedit_file_browser_store_set_virtual_root_from_location
+		return bedit_file_browser_store_set_virtual_root_from_location
 				(model, virtual_root);
 	}
 	else
@@ -2798,7 +2798,7 @@ model_mount_root (BeditFileBrowserStore *model,
 
 /* Public */
 BeditFileBrowserStore *
-gedit_file_browser_store_new (GFile *root)
+bedit_file_browser_store_new (GFile *root)
 {
 	return GEDIT_FILE_BROWSER_STORE (g_object_new (GEDIT_TYPE_FILE_BROWSER_STORE,
 	                                               "root", root,
@@ -2806,7 +2806,7 @@ gedit_file_browser_store_new (GFile *root)
 }
 
 void
-gedit_file_browser_store_set_value (BeditFileBrowserStore *tree_model,
+bedit_file_browser_store_set_value (BeditFileBrowserStore *tree_model,
 				    GtkTreeIter           *iter,
 				    gint                   column,
 				    GValue                *value)
@@ -2859,14 +2859,14 @@ gedit_file_browser_store_set_value (BeditFileBrowserStore *tree_model,
 
 	if (model_node_visibility (tree_model, node))
 	{
-		path = gedit_file_browser_store_get_path (GTK_TREE_MODEL (tree_model), iter);
+		path = bedit_file_browser_store_get_path (GTK_TREE_MODEL (tree_model), iter);
 		row_changed (tree_model, &path, iter);
 		gtk_tree_path_free (path);
 	}
 }
 
 BeditFileBrowserStoreResult
-gedit_file_browser_store_set_virtual_root (BeditFileBrowserStore *model,
+bedit_file_browser_store_set_virtual_root (BeditFileBrowserStore *model,
 					   GtkTreeIter           *iter)
 {
 	g_return_val_if_fail (GEDIT_IS_FILE_BROWSER_STORE (model), GEDIT_FILE_BROWSER_STORE_RESULT_NO_CHANGE);
@@ -2880,7 +2880,7 @@ gedit_file_browser_store_set_virtual_root (BeditFileBrowserStore *model,
 }
 
 BeditFileBrowserStoreResult
-gedit_file_browser_store_set_virtual_root_from_location (BeditFileBrowserStore *model,
+bedit_file_browser_store_set_virtual_root_from_location (BeditFileBrowserStore *model,
 							 GFile                 *root)
 {
 	g_return_val_if_fail (GEDIT_IS_FILE_BROWSER_STORE (model), GEDIT_FILE_BROWSER_STORE_RESULT_NO_CHANGE);
@@ -2926,7 +2926,7 @@ gedit_file_browser_store_set_virtual_root_from_location (BeditFileBrowserStore *
 }
 
 BeditFileBrowserStoreResult
-gedit_file_browser_store_set_virtual_root_top (BeditFileBrowserStore *model)
+bedit_file_browser_store_set_virtual_root_top (BeditFileBrowserStore *model)
 {
 	g_return_val_if_fail (GEDIT_IS_FILE_BROWSER_STORE (model), GEDIT_FILE_BROWSER_STORE_RESULT_NO_CHANGE);
 
@@ -2940,7 +2940,7 @@ gedit_file_browser_store_set_virtual_root_top (BeditFileBrowserStore *model)
 }
 
 BeditFileBrowserStoreResult
-gedit_file_browser_store_set_virtual_root_up (BeditFileBrowserStore *model)
+bedit_file_browser_store_set_virtual_root_up (BeditFileBrowserStore *model)
 {
 	g_return_val_if_fail (GEDIT_IS_FILE_BROWSER_STORE (model), GEDIT_FILE_BROWSER_STORE_RESULT_NO_CHANGE);
 
@@ -2954,7 +2954,7 @@ gedit_file_browser_store_set_virtual_root_up (BeditFileBrowserStore *model)
 }
 
 gboolean
-gedit_file_browser_store_get_iter_virtual_root (BeditFileBrowserStore *model,
+bedit_file_browser_store_get_iter_virtual_root (BeditFileBrowserStore *model,
 						GtkTreeIter           *iter)
 {
 	g_return_val_if_fail (GEDIT_IS_FILE_BROWSER_STORE (model), FALSE);
@@ -2968,7 +2968,7 @@ gedit_file_browser_store_get_iter_virtual_root (BeditFileBrowserStore *model,
 }
 
 gboolean
-gedit_file_browser_store_get_iter_root (BeditFileBrowserStore *model,
+bedit_file_browser_store_get_iter_root (BeditFileBrowserStore *model,
 					GtkTreeIter           *iter)
 {
 	g_return_val_if_fail (GEDIT_IS_FILE_BROWSER_STORE (model), FALSE);
@@ -2982,7 +2982,7 @@ gedit_file_browser_store_get_iter_root (BeditFileBrowserStore *model,
 }
 
 gboolean
-gedit_file_browser_store_iter_equal (BeditFileBrowserStore *model,
+bedit_file_browser_store_iter_equal (BeditFileBrowserStore *model,
 				     GtkTreeIter           *iter1,
 				     GtkTreeIter           *iter2)
 {
@@ -2996,7 +2996,7 @@ gedit_file_browser_store_iter_equal (BeditFileBrowserStore *model,
 }
 
 void
-gedit_file_browser_store_cancel_mount_operation (BeditFileBrowserStore *store)
+bedit_file_browser_store_cancel_mount_operation (BeditFileBrowserStore *store)
 {
 	g_return_if_fail (GEDIT_IS_FILE_BROWSER_STORE (store));
 
@@ -3004,7 +3004,7 @@ gedit_file_browser_store_cancel_mount_operation (BeditFileBrowserStore *store)
 }
 
 BeditFileBrowserStoreResult
-gedit_file_browser_store_set_root_and_virtual_root (BeditFileBrowserStore *model,
+bedit_file_browser_store_set_root_and_virtual_root (BeditFileBrowserStore *model,
 						    GFile                 *root,
 						    GFile                 *virtual_root)
 {
@@ -3058,16 +3058,16 @@ gedit_file_browser_store_set_root_and_virtual_root (BeditFileBrowserStore *model
 }
 
 BeditFileBrowserStoreResult
-gedit_file_browser_store_set_root (BeditFileBrowserStore *model,
+bedit_file_browser_store_set_root (BeditFileBrowserStore *model,
 				   GFile                *root)
 {
 	g_return_val_if_fail (GEDIT_IS_FILE_BROWSER_STORE (model), GEDIT_FILE_BROWSER_STORE_RESULT_NO_CHANGE);
 
-	return gedit_file_browser_store_set_root_and_virtual_root (model, root, NULL);
+	return bedit_file_browser_store_set_root_and_virtual_root (model, root, NULL);
 }
 
 GFile *
-gedit_file_browser_store_get_root (BeditFileBrowserStore *model)
+bedit_file_browser_store_get_root (BeditFileBrowserStore *model)
 {
 	g_return_val_if_fail (GEDIT_IS_FILE_BROWSER_STORE (model), NULL);
 
@@ -3078,7 +3078,7 @@ gedit_file_browser_store_get_root (BeditFileBrowserStore *model)
 }
 
 GFile *
-gedit_file_browser_store_get_virtual_root (BeditFileBrowserStore *model)
+bedit_file_browser_store_get_virtual_root (BeditFileBrowserStore *model)
 {
 	g_return_val_if_fail (GEDIT_IS_FILE_BROWSER_STORE (model), NULL);
 
@@ -3089,7 +3089,7 @@ gedit_file_browser_store_get_virtual_root (BeditFileBrowserStore *model)
 }
 
 void
-_gedit_file_browser_store_iter_expanded (BeditFileBrowserStore *model,
+_bedit_file_browser_store_iter_expanded (BeditFileBrowserStore *model,
 					 GtkTreeIter           *iter)
 {
 	FileBrowserNode *node;
@@ -3108,7 +3108,7 @@ _gedit_file_browser_store_iter_expanded (BeditFileBrowserStore *model,
 }
 
 void
-_gedit_file_browser_store_iter_collapsed (BeditFileBrowserStore *model,
+_bedit_file_browser_store_iter_collapsed (BeditFileBrowserStore *model,
 					  GtkTreeIter           *iter)
 {
 	FileBrowserNode *node;
@@ -3137,13 +3137,13 @@ _gedit_file_browser_store_iter_collapsed (BeditFileBrowserStore *model,
 }
 
 BeditFileBrowserStoreFilterMode
-gedit_file_browser_store_get_filter_mode (BeditFileBrowserStore *model)
+bedit_file_browser_store_get_filter_mode (BeditFileBrowserStore *model)
 {
 	return model->priv->filter_mode;
 }
 
 void
-gedit_file_browser_store_set_filter_mode (BeditFileBrowserStore           *model,
+bedit_file_browser_store_set_filter_mode (BeditFileBrowserStore           *model,
 					  BeditFileBrowserStoreFilterMode  mode)
 {
 	g_return_if_fail (GEDIT_IS_FILE_BROWSER_STORE (model));
@@ -3158,7 +3158,7 @@ gedit_file_browser_store_set_filter_mode (BeditFileBrowserStore           *model
 }
 
 void
-gedit_file_browser_store_set_filter_func (BeditFileBrowserStore           *model,
+bedit_file_browser_store_set_filter_func (BeditFileBrowserStore           *model,
 					  BeditFileBrowserStoreFilterFunc  func,
 					  gpointer                         user_data)
 {
@@ -3170,13 +3170,13 @@ gedit_file_browser_store_set_filter_func (BeditFileBrowserStore           *model
 }
 
 const gchar * const *
-gedit_file_browser_store_get_binary_patterns (BeditFileBrowserStore *model)
+bedit_file_browser_store_get_binary_patterns (BeditFileBrowserStore *model)
 {
 	return (const gchar * const *)model->priv->binary_patterns;
 }
 
 void
-gedit_file_browser_store_set_binary_patterns (BeditFileBrowserStore  *model,
+bedit_file_browser_store_set_binary_patterns (BeditFileBrowserStore  *model,
 					      const gchar           **binary_patterns)
 {
 	g_return_if_fail (GEDIT_IS_FILE_BROWSER_STORE (model));
@@ -3210,19 +3210,19 @@ gedit_file_browser_store_set_binary_patterns (BeditFileBrowserStore  *model,
 }
 
 void
-gedit_file_browser_store_refilter (BeditFileBrowserStore *model)
+bedit_file_browser_store_refilter (BeditFileBrowserStore *model)
 {
 	model_refilter (model);
 }
 
 BeditFileBrowserStoreFilterMode
-gedit_file_browser_store_filter_mode_get_default (void)
+bedit_file_browser_store_filter_mode_get_default (void)
 {
 	return GEDIT_FILE_BROWSER_STORE_FILTER_MODE_HIDE_HIDDEN;
 }
 
 void
-gedit_file_browser_store_refresh (BeditFileBrowserStore *model)
+bedit_file_browser_store_refresh (BeditFileBrowserStore *model)
 {
 	g_return_if_fail (GEDIT_IS_FILE_BROWSER_STORE (model));
 
@@ -3264,7 +3264,7 @@ reparent_node (FileBrowserNode *node,
 }
 
 gboolean
-gedit_file_browser_store_rename (BeditFileBrowserStore  *model,
+bedit_file_browser_store_rename (BeditFileBrowserStore  *model,
 				 GtkTreeIter            *iter,
 				 const gchar            *new_name,
 				 GError                **error)
@@ -3307,7 +3307,7 @@ gedit_file_browser_store_rename (BeditFileBrowserStore  *model,
 
 		if (model_node_visibility (model, node))
 		{
-			path = gedit_file_browser_store_get_path_real (model, node);
+			path = bedit_file_browser_store_get_path_real (model, node);
 			row_changed (model, &path, iter);
 			gtk_tree_path_free (path);
 
@@ -3320,7 +3320,7 @@ gedit_file_browser_store_rename (BeditFileBrowserStore  *model,
 
 			if (error != NULL)
 			{
-				*error = g_error_new_literal (gedit_file_browser_store_error_quark (),
+				*error = g_error_new_literal (bedit_file_browser_store_error_quark (),
 							      GEDIT_FILE_BROWSER_ERROR_RENAME,
 							      _("The renamed file is currently filtered out. "
 							        "You need to adjust your filter settings to "
@@ -3344,7 +3344,7 @@ gedit_file_browser_store_rename (BeditFileBrowserStore  *model,
 		{
 			if (error != NULL)
 			{
-				*error = g_error_new_literal (gedit_file_browser_store_error_quark (),
+				*error = g_error_new_literal (bedit_file_browser_store_error_quark (),
 							      GEDIT_FILE_BROWSER_ERROR_RENAME,
 							      err->message);
 			}
@@ -3471,7 +3471,7 @@ delete_files (AsyncData *data)
 }
 
 BeditFileBrowserStoreResult
-gedit_file_browser_store_delete_all (BeditFileBrowserStore *model,
+bedit_file_browser_store_delete_all (BeditFileBrowserStore *model,
 				     GList                 *rows,
 				     gboolean               trash)
 {
@@ -3528,7 +3528,7 @@ gedit_file_browser_store_delete_all (BeditFileBrowserStore *model,
 }
 
 BeditFileBrowserStoreResult
-gedit_file_browser_store_delete (BeditFileBrowserStore *model,
+bedit_file_browser_store_delete (BeditFileBrowserStore *model,
 				 GtkTreeIter           *iter,
 				 gboolean               trash)
 {
@@ -3545,8 +3545,8 @@ gedit_file_browser_store_delete (BeditFileBrowserStore *model,
 	if (NODE_IS_DUMMY (node))
 		return GEDIT_FILE_BROWSER_STORE_RESULT_NO_CHANGE;
 
-	rows = g_list_append(NULL, gedit_file_browser_store_get_path_real (model, node));
-	result = gedit_file_browser_store_delete_all (model, rows, trash);
+	rows = g_list_append(NULL, bedit_file_browser_store_get_path_real (model, node));
+	result = bedit_file_browser_store_delete_all (model, rows, trash);
 
 	g_list_free_full (rows, (GDestroyNotify) gtk_tree_path_free);
 
@@ -3554,7 +3554,7 @@ gedit_file_browser_store_delete (BeditFileBrowserStore *model,
 }
 
 gboolean
-gedit_file_browser_store_new_file (BeditFileBrowserStore *model,
+bedit_file_browser_store_new_file (BeditFileBrowserStore *model,
 				   GtkTreeIter           *parent,
 				   GtkTreeIter           *iter)
 {
@@ -3612,7 +3612,7 @@ gedit_file_browser_store_new_file (BeditFileBrowserStore *model,
 }
 
 gboolean
-gedit_file_browser_store_new_directory (BeditFileBrowserStore *model,
+bedit_file_browser_store_new_directory (BeditFileBrowserStore *model,
 					GtkTreeIter           *parent,
 					GtkTreeIter           *iter)
 {
@@ -3664,9 +3664,9 @@ gedit_file_browser_store_new_directory (BeditFileBrowserStore *model,
 }
 
 void
-_gedit_file_browser_store_register_type (GTypeModule *type_module)
+_bedit_file_browser_store_register_type (GTypeModule *type_module)
 {
-	gedit_file_browser_store_register_type (type_module);
+	bedit_file_browser_store_register_type (type_module);
 }
 
 /* ex:set ts=8 noet: */

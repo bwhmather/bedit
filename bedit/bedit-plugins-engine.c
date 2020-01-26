@@ -1,6 +1,6 @@
 /*
- * gedit-plugins-engine.c
- * This file is part of gedit
+ * bedit-plugins-engine.c
+ * This file is part of bedit
  *
  * Copyright (C) 2002-2005 Paolo Maggi
  * Copyright (C) 2010 Steve Frécinaux
@@ -21,14 +21,14 @@
 
 #include "config.h"
 
-#include "gedit-plugins-engine.h"
+#include "bedit-plugins-engine.h"
 
 #include <string.h>
 #include <glib/gi18n.h>
 #include <girepository.h>
-#include "gedit-debug.h"
-#include "gedit-dirs.h"
-#include "gedit-settings.h"
+#include "bedit-debug.h"
+#include "bedit-dirs.h"
+#include "bedit-settings.h"
 
 struct _BeditPluginsEngine
 {
@@ -37,24 +37,24 @@ struct _BeditPluginsEngine
 	GSettings *plugin_settings;
 };
 
-G_DEFINE_TYPE (BeditPluginsEngine, gedit_plugins_engine, PEAS_TYPE_ENGINE)
+G_DEFINE_TYPE (BeditPluginsEngine, bedit_plugins_engine, PEAS_TYPE_ENGINE)
 
 static BeditPluginsEngine *default_engine = NULL;
 
 static void
-gedit_plugins_engine_init (BeditPluginsEngine *engine)
+bedit_plugins_engine_init (BeditPluginsEngine *engine)
 {
 	gchar *typelib_dir;
 	GError *error = NULL;
 
-	gedit_debug (DEBUG_PLUGINS);
+	bedit_debug (DEBUG_PLUGINS);
 
 	peas_engine_enable_loader (PEAS_ENGINE (engine), "python3");
 
 	engine->plugin_settings = g_settings_new ("com.bwhmather.bedit.plugins");
 
-	/* Require gedit's typelib. */
-	typelib_dir = g_build_filename (gedit_dirs_get_gedit_lib_dir (),
+	/* Require bedit's typelib. */
+	typelib_dir = g_build_filename (bedit_dirs_get_bedit_lib_dir (),
 	                                "girepository-1.0",
 	                                NULL);
 
@@ -86,12 +86,12 @@ gedit_plugins_engine_init (BeditPluginsEngine *engine)
 	}
 
 	peas_engine_add_search_path (PEAS_ENGINE (engine),
-	                             gedit_dirs_get_user_plugins_dir (),
-	                             gedit_dirs_get_user_plugins_dir ());
+	                             bedit_dirs_get_user_plugins_dir (),
+	                             bedit_dirs_get_user_plugins_dir ());
 
 	peas_engine_add_search_path (PEAS_ENGINE (engine),
-	                             gedit_dirs_get_gedit_plugins_dir (),
-	                             gedit_dirs_get_gedit_plugins_data_dir ());
+	                             bedit_dirs_get_bedit_plugins_dir (),
+	                             bedit_dirs_get_bedit_plugins_data_dir ());
 
 	g_settings_bind (engine->plugin_settings,
 	                 GEDIT_SETTINGS_ACTIVE_PLUGINS,
@@ -101,25 +101,25 @@ gedit_plugins_engine_init (BeditPluginsEngine *engine)
 }
 
 static void
-gedit_plugins_engine_dispose (GObject *object)
+bedit_plugins_engine_dispose (GObject *object)
 {
 	BeditPluginsEngine *engine = GEDIT_PLUGINS_ENGINE (object);
 
 	g_clear_object (&engine->plugin_settings);
 
-	G_OBJECT_CLASS (gedit_plugins_engine_parent_class)->dispose (object);
+	G_OBJECT_CLASS (bedit_plugins_engine_parent_class)->dispose (object);
 }
 
 static void
-gedit_plugins_engine_class_init (BeditPluginsEngineClass *klass)
+bedit_plugins_engine_class_init (BeditPluginsEngineClass *klass)
 {
 	GObjectClass *object_class = G_OBJECT_CLASS (klass);
 
-	object_class->dispose = gedit_plugins_engine_dispose;
+	object_class->dispose = bedit_plugins_engine_dispose;
 }
 
 BeditPluginsEngine *
-gedit_plugins_engine_get_default (void)
+bedit_plugins_engine_get_default (void)
 {
 	if (default_engine == NULL)
 	{

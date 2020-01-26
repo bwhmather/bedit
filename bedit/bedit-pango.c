@@ -1,4 +1,4 @@
-/* gedit-pango.c
+/* bedit-pango.c
  *
  * This file is a copy of libdazzle dzl-pango.c
  *
@@ -18,7 +18,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#define G_LOG_DOMAIN "gedit-pango"
+#define G_LOG_DOMAIN "bedit-pango"
 
 #include "config.h"
 
@@ -26,7 +26,7 @@
 #include <glib/gstdio.h>
 #include <math.h>
 
-#include "gedit-pango.h"
+#include "bedit-pango.h"
 
 #define FONT_FAMILY  "font-family"
 #define FONT_VARIANT "font-variant"
@@ -35,7 +35,7 @@
 #define FONT_SIZE    "font-size"
 
 /**
- * gedit_pango_font_description_to_css:
+ * bedit_pango_font_description_to_css:
  *
  * This function will generate CSS suitable for Gtk's CSS engine
  * based on the properties of the #PangoFontDescription.
@@ -44,7 +44,7 @@
  *    CSS describing the font description.
  */
 gchar *
-gedit_pango_font_description_to_css (const PangoFontDescription *font_desc)
+bedit_pango_font_description_to_css (const PangoFontDescription *font_desc)
 {
   PangoFontMask mask;
   GString *str;

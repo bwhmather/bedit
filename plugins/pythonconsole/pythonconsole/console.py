@@ -20,7 +20,7 @@
 # Parts from "Interactive Python-GTK Console" (stolen from epiphany's console.py)
 #     Copyright (C), 1998 James Henstridge <james@daa.com.au>
 #     Copyright (C), 2005 Adam Hooper <adamh@densi.com>
-# Bits from gedit Python Console Plugin
+# Bits from bedit Python Console Plugin
 #     Copyrignt (C), 2005 Raphaël Slinckx
 
 import string
@@ -101,7 +101,7 @@ class PythonConsole(Gtk.ScrolledWindow):
         buf.connect("mark-set", self.__mark_set_cb)
 
     def get_profile_settings(self):
-        #FIXME return either the gnome-terminal settings or the gedit one
+        #FIXME return either the gnome-terminal settings or the bedit one
         return Gio.Settings.new(self.CONSOLE_KEY_BASE)
 
     def do_grab_focus(self):

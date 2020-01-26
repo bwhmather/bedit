@@ -1,6 +1,6 @@
 /*
- * gedit-recent.h
- * This file is part of gedit
+ * bedit-recent.h
+ * This file is part of bedit
  *
  * Copyright (C) 2005 - Paolo Maggi
  * Copyright (C) 2014 - Paolo Borelli
@@ -24,7 +24,7 @@
 #define GEDIT_RECENT_H
 
 #include <gtk/gtk.h>
-#include <gedit/gedit-document.h>
+#include <bedit/bedit-document.h>
 
 G_BEGIN_DECLS
 
@@ -41,13 +41,13 @@ typedef struct
 	guint local_only : 1;
 } BeditRecentConfiguration;
 
-void		 gedit_recent_add_document		 (BeditDocument            *document);
+void		 bedit_recent_add_document		 (BeditDocument            *document);
 
-void		 gedit_recent_remove_if_local		 (GFile                    *location);
+void		 bedit_recent_remove_if_local		 (GFile                    *location);
 
-void		 gedit_recent_configuration_init_default (BeditRecentConfiguration *config);
-void		 gedit_recent_configuration_destroy	 (BeditRecentConfiguration *config);
-GList		*gedit_recent_get_items			 (BeditRecentConfiguration *config);
+void		 bedit_recent_configuration_init_default (BeditRecentConfiguration *config);
+void		 bedit_recent_configuration_destroy	 (BeditRecentConfiguration *config);
+GList		*bedit_recent_get_items			 (BeditRecentConfiguration *config);
 
 G_END_DECLS
 

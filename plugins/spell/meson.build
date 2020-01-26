@@ -1,10 +1,10 @@
 libspell_sources = files(
-  'gedit-spell-app-activatable.c',
-  'gedit-spell-plugin.c',
+  'bedit-spell-app-activatable.c',
+  'bedit-spell-plugin.c',
 )
 
 libspell_deps = [
-  libgedit_dep,
+  libbedit_dep,
   gspell_dep,
 ]
 

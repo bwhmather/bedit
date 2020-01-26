@@ -1,6 +1,6 @@
 /*
- * gedit-notebook-stack-switcher.h
- * This file is part of gedit
+ * bedit-notebook-stack-switcher.h
+ * This file is part of bedit
  *
  * Copyright (C) 2014 - Paolo Borelli
  *
@@ -25,7 +25,7 @@
 
 G_BEGIN_DECLS
 
-#define GEDIT_TYPE_NOTEBOOK_STACK_SWITCHER             (gedit_notebook_stack_switcher_get_type())
+#define GEDIT_TYPE_NOTEBOOK_STACK_SWITCHER             (bedit_notebook_stack_switcher_get_type())
 #define GEDIT_NOTEBOOK_STACK_SWITCHER(obj)             (G_TYPE_CHECK_INSTANCE_CAST((obj), GEDIT_TYPE_NOTEBOOK_STACK_SWITCHER, BeditNotebookStackSwitcher))
 #define GEDIT_NOTEBOOK_STACK_SWITCHER_CLASS(klass)     (G_TYPE_CHECK_CLASS_CAST((klass), GEDIT_TYPE_NOTEBOOK_STACK_SWITCHER, BeditNotebookStackSwitcherClass))
 #define GEDIT_IS_NOTEBOOK_STACK_SWITCHER(obj)          (G_TYPE_CHECK_INSTANCE_TYPE((obj), GEDIT_TYPE_NOTEBOOK_STACK_SWITCHER))
@@ -49,20 +49,20 @@ struct _BeditNotebookStackSwitcherClass
 	GtkBinClass parent_class;
 
 	/* Padding for future expansion */
-	void (*_gedit_reserved1) (void);
-	void (*_gedit_reserved2) (void);
-	void (*_gedit_reserved3) (void);
-	void (*_gedit_reserved4) (void);
+	void (*_bedit_reserved1) (void);
+	void (*_bedit_reserved2) (void);
+	void (*_bedit_reserved3) (void);
+	void (*_bedit_reserved4) (void);
 };
 
-GType		 gedit_notebook_stack_switcher_get_type   (void) G_GNUC_CONST;
+GType		 bedit_notebook_stack_switcher_get_type   (void) G_GNUC_CONST;
 
-GtkWidget	*gedit_notebook_stack_switcher_new        (void);
+GtkWidget	*bedit_notebook_stack_switcher_new        (void);
 
-void		 gedit_notebook_stack_switcher_set_stack  (BeditNotebookStackSwitcher *switcher,
+void		 bedit_notebook_stack_switcher_set_stack  (BeditNotebookStackSwitcher *switcher,
 		                                           GtkStack                   *stack);
 
-GtkStack	*gedit_notebook_stack_switcher_get_stack  (BeditNotebookStackSwitcher *switcher);
+GtkStack	*bedit_notebook_stack_switcher_get_stack  (BeditNotebookStackSwitcher *switcher);
 
 G_END_DECLS
 

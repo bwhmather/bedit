@@ -1,6 +1,6 @@
 /*
- * gedit-document.h
- * This file is part of gedit
+ * bedit-document.h
+ * This file is part of bedit
  *
  * Copyright (C) 1998, 1999 Alex Roberts, Evan Lawrence
  * Copyright (C) 2000, 2001 Chema Celorio, Paolo Maggi
@@ -24,24 +24,24 @@
 #ifndef GEDIT_DOCUMENT_PRIVATE_H
 #define GEDIT_DOCUMENT_PRIVATE_H
 
-#include "gedit-document.h"
+#include "bedit-document.h"
 
 G_BEGIN_DECLS
 
-#define GEDIT_METADATA_ATTRIBUTE_POSITION "gedit-position"
-#define GEDIT_METADATA_ATTRIBUTE_ENCODING "gedit-encoding"
-#define GEDIT_METADATA_ATTRIBUTE_LANGUAGE "gedit-language"
+#define GEDIT_METADATA_ATTRIBUTE_POSITION "bedit-position"
+#define GEDIT_METADATA_ATTRIBUTE_ENCODING "bedit-encoding"
+#define GEDIT_METADATA_ATTRIBUTE_LANGUAGE "bedit-language"
 
-glong		 _gedit_document_get_seconds_since_last_save_or_load	(BeditDocument       *doc);
+glong		 _bedit_document_get_seconds_since_last_save_or_load	(BeditDocument       *doc);
 
-gboolean	 _gedit_document_needs_saving				(BeditDocument       *doc);
+gboolean	 _bedit_document_needs_saving				(BeditDocument       *doc);
 
-gboolean	 _gedit_document_get_empty_search			(BeditDocument       *doc);
+gboolean	 _bedit_document_get_empty_search			(BeditDocument       *doc);
 
-void		 _gedit_document_set_create				(BeditDocument       *doc,
+void		 _bedit_document_set_create				(BeditDocument       *doc,
 									 gboolean             create);
 
-gboolean	 _gedit_document_get_create				(BeditDocument       *doc);
+gboolean	 _bedit_document_get_create				(BeditDocument       *doc);
 
 G_END_DECLS
 

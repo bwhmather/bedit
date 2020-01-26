@@ -1,6 +1,6 @@
 /*
- * gedit-window-activatable.h
- * This file is part of gedit
+ * bedit-window-activatable.h
+ * This file is part of bedit
  *
  * Copyright (C) 2010 Steve Frécinaux
  *
@@ -20,36 +20,36 @@
 
 #include "config.h"
 
-#include "gedit-window-activatable.h"
+#include "bedit-window-activatable.h"
 
 #include <string.h>
 
-#include "gedit-window.h"
+#include "bedit-window.h"
 
 /**
- * SECTION:gedit-window-activatable
+ * SECTION:bedit-window-activatable
  * @short_description: Interface for activatable extensions on windows
  * @see_also: #PeasExtensionSet
  *
  * #BeditWindowActivatable is an interface which should be implemented by
- * extensions that should be activated on a gedit main window.
+ * extensions that should be activated on a bedit main window.
  **/
 
-G_DEFINE_INTERFACE(BeditWindowActivatable, gedit_window_activatable, G_TYPE_OBJECT)
+G_DEFINE_INTERFACE(BeditWindowActivatable, bedit_window_activatable, G_TYPE_OBJECT)
 
 static void
-gedit_window_activatable_default_init (BeditWindowActivatableInterface *iface)
+bedit_window_activatable_default_init (BeditWindowActivatableInterface *iface)
 {
 	/**
 	 * BeditWindowActivatable:window:
 	 *
-	 * The window property contains the gedit window for this
+	 * The window property contains the bedit window for this
 	 * #BeditWindowActivatable instance.
 	 */
 	g_object_interface_install_property (iface,
 	                                     g_param_spec_object ("window",
 	                                                          "Window",
-	                                                          "The gedit window",
+	                                                          "The bedit window",
 	                                                          GEDIT_TYPE_WINDOW,
 	                                                          G_PARAM_READWRITE |
 	                                                          G_PARAM_CONSTRUCT_ONLY |
@@ -57,13 +57,13 @@ gedit_window_activatable_default_init (BeditWindowActivatableInterface *iface)
 }
 
 /**
- * gedit_window_activatable_activate:
+ * bedit_window_activatable_activate:
  * @activatable: A #BeditWindowActivatable.
  *
  * Activates the extension on the window property.
  */
 void
-gedit_window_activatable_activate (BeditWindowActivatable *activatable)
+bedit_window_activatable_activate (BeditWindowActivatable *activatable)
 {
 	BeditWindowActivatableInterface *iface;
 
@@ -77,13 +77,13 @@ gedit_window_activatable_activate (BeditWindowActivatable *activatable)
 }
 
 /**
- * gedit_window_activatable_deactivate:
+ * bedit_window_activatable_deactivate:
  * @activatable: A #BeditWindowActivatable.
  *
  * Deactivates the extension on the window property.
  */
 void
-gedit_window_activatable_deactivate (BeditWindowActivatable *activatable)
+bedit_window_activatable_deactivate (BeditWindowActivatable *activatable)
 {
 	BeditWindowActivatableInterface *iface;
 
@@ -97,14 +97,14 @@ gedit_window_activatable_deactivate (BeditWindowActivatable *activatable)
 }
 
 /**
- * gedit_window_activatable_update_state:
+ * bedit_window_activatable_update_state:
  * @activatable: A #BeditWindowActivatable.
  *
  * Triggers an update of the extension internal state to take into account
  * state changes in the window, due to some event or user action.
  */
 void
-gedit_window_activatable_update_state (BeditWindowActivatable *activatable)
+bedit_window_activatable_update_state (BeditWindowActivatable *activatable)
 {
 	BeditWindowActivatableInterface *iface;
 

@@ -1,22 +1,22 @@
 /*
- * gedit-settings.h
- * This file is part of gedit
+ * bedit-settings.h
+ * This file is part of bedit
  *
  * Copyright (C) 2009 - Ignacio Casal Quinteiro
  *               2002 - Paolo Maggi
  *
- * gedit is free software; you can redistribute it and/or modify
+ * bedit is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 2 of the License, or
  * (at your option) any later version.
  *
- * gedit is distributed in the hope that it will be useful,
+ * bedit is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with gedit; if not, write to the Free Software
+ * along with bedit; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin St, Fifth Floor,
  * Boston, MA  02110-1301  USA
  */
@@ -26,27 +26,27 @@
 
 #include <glib-object.h>
 #include <glib.h>
-#include "gedit-app.h"
+#include "bedit-app.h"
 
 G_BEGIN_DECLS
 
-#define GEDIT_TYPE_SETTINGS (gedit_settings_get_type ())
+#define GEDIT_TYPE_SETTINGS (bedit_settings_get_type ())
 
-G_DECLARE_FINAL_TYPE (BeditSettings, gedit_settings, GEDIT, SETTINGS, GObject)
+G_DECLARE_FINAL_TYPE (BeditSettings, bedit_settings, GEDIT, SETTINGS, GObject)
 
-BeditSettings		*gedit_settings_new				(void);
+BeditSettings		*bedit_settings_new				(void);
 
-BeditLockdownMask	 gedit_settings_get_lockdown			(BeditSettings *gs);
+BeditLockdownMask	 bedit_settings_get_lockdown			(BeditSettings *gs);
 
-gchar			*gedit_settings_get_system_font			(BeditSettings *gs);
+gchar			*bedit_settings_get_system_font			(BeditSettings *gs);
 
-GSList			*gedit_settings_get_candidate_encodings		(gboolean      *default_candidates);
+GSList			*bedit_settings_get_candidate_encodings		(gboolean      *default_candidates);
 
 /* Utility functions */
-GSList			*gedit_settings_get_list			(GSettings     *settings,
+GSList			*bedit_settings_get_list			(GSettings     *settings,
 									 const gchar   *key);
 
-void			 gedit_settings_set_list			(GSettings     *settings,
+void			 bedit_settings_set_list			(GSettings     *settings,
 									 const gchar   *key,
 									 const GSList  *list);
 

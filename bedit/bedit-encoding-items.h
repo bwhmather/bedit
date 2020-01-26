@@ -1,6 +1,6 @@
 /*
- * gedit-encoding-items.h
- * This file is part of gedit
+ * bedit-encoding-items.h
+ * This file is part of bedit
  *
  * Copyright (C) 2014 - Jesse van den Kieboom
  *
@@ -27,11 +27,11 @@ G_BEGIN_DECLS
 
 typedef struct _BeditEncodingItem BeditEncodingItem;
 
-GSList				*gedit_encoding_items_get		(void);
+GSList				*bedit_encoding_items_get		(void);
 
-void				 gedit_encoding_item_free		(BeditEncodingItem *item);
-const GtkSourceEncoding		*gedit_encoding_item_get_encoding	(BeditEncodingItem *item);
-const gchar			*gedit_encoding_item_get_name		(BeditEncodingItem *item);
+void				 bedit_encoding_item_free		(BeditEncodingItem *item);
+const GtkSourceEncoding		*bedit_encoding_item_get_encoding	(BeditEncodingItem *item);
+const gchar			*bedit_encoding_item_get_name		(BeditEncodingItem *item);
 
 G_END_DECLS
 

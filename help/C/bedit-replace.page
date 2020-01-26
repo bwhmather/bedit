@@ -1,10 +1,10 @@
 <page xmlns="http://projectmallard.org/1.0/" 
       type="topic" style="task" 
-      id="gedit-replace">
+      id="bedit-replace">
 
   <info>
-    <link type="guide" xref="index#gedit-working-with-files" />
-    <link type="seealso" xref="gedit-search" />
+    <link type="guide" xref="index#bedit-working-with-files" />
+    <link type="seealso" xref="bedit-search" />
     <desc>Replace portions of text in a file.</desc>
     <revision pkgversion="3.8" date="2013-02-24" status="review"/>
     <revision pkgversion="3.10" date="2013-11-05" status="candidate"/>
@@ -39,12 +39,12 @@
 
   <title>Replace text</title>
 
-  <p>Editing text can be time consuming. To save time, <app>gedit</app>
+  <p>Editing text can be time consuming. To save time, <app>bedit</app>
   includes a <app>Replace</app> function that helps you to find and replace
   portions of text.</p>
 
   <steps>
-    <title>Replace text in <app>gedit</app></title>
+    <title>Replace text in <app>bedit</app></title>
     <item>
       <p>Open the <gui>Replace</gui> tool by clicking
       <guiseq><gui style="button">Menu button</gui><gui style="menuitem">Find 
@@ -111,7 +111,7 @@
     </item>
     <item>
       <title>Wrap around</title>
-      <p>With the <app>wrap around</app> option enabled, <app>gedit</app> will
+      <p>With the <app>wrap around</app> option enabled, <app>bedit</app> will
       re-start the search/replace action at the top of the file after it has
       reached the bottom of the file. This ensures that your search/replace
       action is made across your entire file.</p>

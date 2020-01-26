@@ -29,8 +29,8 @@ from gi.repository import GLib, Gio, Gdk, Gtk, Pango, Bedit
 
 try:
     import gettext
-    gettext.bindtextdomain('gedit')
-    gettext.textdomain('gedit')
+    gettext.bindtextdomain('bedit')
+    gettext.textdomain('bedit')
     _ = gettext.gettext
 except:
     _ = lambda s: s
@@ -104,7 +104,7 @@ class OutputPanel(UniqueById):
         self.file_lookup = filelookup.FileLookup(window)
 
     def get_profile_settings(self):
-        #FIXME return either the gnome-terminal settings or the gedit one
+        #FIXME return either the gnome-terminal settings or the bedit one
         return Gio.Settings.new("com.bwhmather.bedit.plugins.externaltools")
 
     def font_changed(self, settings=None, key=None):

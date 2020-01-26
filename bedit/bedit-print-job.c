@@ -1,6 +1,6 @@
 /*
- * gedit-print-job.c
- * This file is part of gedit
+ * bedit-print-job.c
+ * This file is part of bedit
  *
  * Copyright (C) 2000-2001 Chema Celorio, Paolo Maggi
  * Copyright (C) 2002-2008 Paolo Maggi
@@ -20,15 +20,15 @@
  * along with this program; if not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "gedit-print-job.h"
+#include "bedit-print-job.h"
 
 #include <glib/gi18n.h>
 
-#include "gedit-debug.h"
-#include "gedit-print-preview.h"
-#include "gedit-utils.h"
-#include "gedit-dirs.h"
-#include "gedit-settings.h"
+#include "bedit-debug.h"
+#include "bedit-print-preview.h"
+#include "bedit-utils.h"
+#include "bedit-dirs.h"
+#include "bedit-settings.h"
 
 struct _BeditPrintJob
 {
@@ -81,10 +81,10 @@ enum
 
 static guint signals[LAST_SIGNAL];
 
-G_DEFINE_TYPE (BeditPrintJob, gedit_print_job, G_TYPE_OBJECT)
+G_DEFINE_TYPE (BeditPrintJob, bedit_print_job, G_TYPE_OBJECT)
 
 static void
-gedit_print_job_get_property (GObject    *object,
+bedit_print_job_get_property (GObject    *object,
 			      guint       prop_id,
 			      GValue     *value,
 			      GParamSpec *pspec)
@@ -104,7 +104,7 @@ gedit_print_job_get_property (GObject    *object,
 }
 
 static void
-gedit_print_job_set_property (GObject      *object,
+bedit_print_job_set_property (GObject      *object,
 			      guint         prop_id,
 			      const GValue *value,
 			      GParamSpec   *pspec)
@@ -124,7 +124,7 @@ gedit_print_job_set_property (GObject      *object,
 }
 
 static void
-gedit_print_job_dispose (GObject *object)
+bedit_print_job_dispose (GObject *object)
 {
 	BeditPrintJob *job = GEDIT_PRINT_JOB (object);
 
@@ -133,49 +133,49 @@ gedit_print_job_dispose (GObject *object)
 	g_clear_object (&job->compositor);
 	g_clear_object (&job->preview);
 
-	G_OBJECT_CLASS (gedit_print_job_parent_class)->dispose (object);
+	G_OBJECT_CLASS (bedit_print_job_parent_class)->dispose (object);
 }
 
 static void
-gedit_print_job_finalize (GObject *object)
+bedit_print_job_finalize (GObject *object)
 {
 	BeditPrintJob *job = GEDIT_PRINT_JOB (object);
 
 	g_free (job->status_string);
 
-	G_OBJECT_CLASS (gedit_print_job_parent_class)->finalize (object);
+	G_OBJECT_CLASS (bedit_print_job_parent_class)->finalize (object);
 }
 
 static void
-gedit_print_job_printing (BeditPrintJob       *job,
+bedit_print_job_printing (BeditPrintJob       *job,
                           BeditPrintJobStatus  status)
 {
 }
 
 static void
-gedit_print_job_show_preview (BeditPrintJob *job,
+bedit_print_job_show_preview (BeditPrintJob *job,
                               GtkWidget     *preview)
 {
 }
 
 static void
-gedit_print_job_done (BeditPrintJob       *job,
+bedit_print_job_done (BeditPrintJob       *job,
                       BeditPrintJobResult  result,
                       const GError        *error)
 {
 }
 
 static void
-gedit_print_job_class_init (BeditPrintJobClass *klass)
+bedit_print_job_class_init (BeditPrintJobClass *klass)
 {
 	GObjectClass *object_class;
 
 	object_class = G_OBJECT_CLASS (klass);
 
-	object_class->get_property = gedit_print_job_get_property;
-	object_class->set_property = gedit_print_job_set_property;
-	object_class->dispose = gedit_print_job_dispose;
-	object_class->finalize = gedit_print_job_finalize;
+	object_class->get_property = bedit_print_job_get_property;
+	object_class->set_property = bedit_print_job_set_property;
+	object_class->dispose = bedit_print_job_dispose;
+	object_class->finalize = bedit_print_job_finalize;
 
 	properties[PROP_VIEW] =
 		g_param_spec_object ("view",
@@ -190,7 +190,7 @@ gedit_print_job_class_init (BeditPrintJobClass *klass)
 		g_signal_new_class_handler ("printing",
 		                            G_TYPE_FROM_CLASS (klass),
 		                            G_SIGNAL_RUN_LAST,
-		                            G_CALLBACK (gedit_print_job_printing),
+		                            G_CALLBACK (bedit_print_job_printing),
 		                            NULL, NULL, NULL,
 		                            G_TYPE_NONE,
 		                            1,
@@ -200,7 +200,7 @@ gedit_print_job_class_init (BeditPrintJobClass *klass)
 		g_signal_new_class_handler ("show-preview",
 		                            G_TYPE_FROM_CLASS (klass),
 		                            G_SIGNAL_RUN_LAST,
-		                            G_CALLBACK (gedit_print_job_show_preview),
+		                            G_CALLBACK (bedit_print_job_show_preview),
 		                            NULL, NULL, NULL,
 		                            G_TYPE_NONE,
 		                            1,
@@ -210,7 +210,7 @@ gedit_print_job_class_init (BeditPrintJobClass *klass)
 		g_signal_new_class_handler ("done",
 		                            G_TYPE_FROM_CLASS (klass),
 		                            G_SIGNAL_RUN_LAST,
-		                            G_CALLBACK (gedit_print_job_done),
+		                            G_CALLBACK (bedit_print_job_done),
 		                            NULL, NULL, NULL,
 		                            G_TYPE_NONE,
 		                            2,
@@ -219,7 +219,7 @@ gedit_print_job_class_init (BeditPrintJobClass *klass)
 }
 
 static void
-gedit_print_job_init (BeditPrintJob *job)
+bedit_print_job_init (BeditPrintJob *job)
 {
 	job->gsettings = g_settings_new ("com.bwhmather.bedit.preferences.print");
 
@@ -254,7 +254,7 @@ create_custom_widget_cb (GtkPrintOperation *operation,
 	};
 
 	builder = gtk_builder_new ();
-	gtk_builder_add_objects_from_resource (builder, "/com/bwhmather/bedit/ui/gedit-print-preferences.ui",
+	gtk_builder_add_objects_from_resource (builder, "/com/bwhmather/bedit/ui/bedit-print-preferences.ui",
 	                                       root_objects, NULL);
 	contents = GTK_WIDGET (gtk_builder_get_object (builder, "contents"));
 	g_object_ref (contents);
@@ -447,7 +447,7 @@ preview_cb (GtkPrintOperation        *op,
 	    BeditPrintJob            *job)
 {
 	g_clear_object (&job->preview);
-	job->preview = gedit_print_preview_new (op, gtk_preview, context);
+	job->preview = bedit_print_preview_new (op, gtk_preview, context);
 	g_object_ref_sink (job->preview);
 
 	g_signal_connect_after (gtk_preview,
@@ -532,8 +532,8 @@ create_compositor (BeditPrintJob *job)
 		gchar *name_to_display;
 		gchar *left;
 
-		doc_name = gedit_document_get_uri_for_display (GEDIT_DOCUMENT (buf));
-		name_to_display = gedit_utils_str_middle_truncate (doc_name, 60);
+		doc_name = bedit_document_get_uri_for_display (GEDIT_DOCUMENT (buf));
+		name_to_display = bedit_utils_str_middle_truncate (doc_name, 60);
 
 		left = g_strdup_printf (_("File: %s"), name_to_display);
 
@@ -677,7 +677,7 @@ done_cb (GtkPrintOperation       *operation,
 }
 
 BeditPrintJob *
-gedit_print_job_new (BeditView *view)
+bedit_print_job_new (BeditView *view)
 {
 	g_return_val_if_fail (GEDIT_IS_VIEW (view), NULL);
 
@@ -686,11 +686,11 @@ gedit_print_job_new (BeditView *view)
 			     NULL);
 }
 
-/* Note that gedit_print_job_print() can only be called once on a given
+/* Note that bedit_print_job_print() can only be called once on a given
  * BeditPrintJob.
  */
 GtkPrintOperationResult
-gedit_print_job_print (BeditPrintJob            *job,
+bedit_print_job_print (BeditPrintJob            *job,
 		       GtkPrintOperationAction   action,
 		       GtkPageSetup             *page_setup,
 		       GtkPrintSettings         *settings,
@@ -720,7 +720,7 @@ gedit_print_job_print (BeditPrintJob            *job,
 	}
 
 	doc = GEDIT_DOCUMENT (gtk_text_view_get_buffer (GTK_TEXT_VIEW (job->view)));
-	job_name = gedit_document_get_short_name_for_display (doc);
+	job_name = bedit_document_get_short_name_for_display (doc);
 	gtk_print_operation_set_job_name (job->operation, job_name);
 	g_free (job_name);
 
@@ -779,7 +779,7 @@ gedit_print_job_print (BeditPrintJob            *job,
 }
 
 void
-gedit_print_job_cancel (BeditPrintJob *job)
+bedit_print_job_cancel (BeditPrintJob *job)
 {
 	g_return_if_fail (GEDIT_IS_PRINT_JOB (job));
 
@@ -787,7 +787,7 @@ gedit_print_job_cancel (BeditPrintJob *job)
 }
 
 const gchar *
-gedit_print_job_get_status_string (BeditPrintJob *job)
+bedit_print_job_get_status_string (BeditPrintJob *job)
 {
 	g_return_val_if_fail (GEDIT_IS_PRINT_JOB (job), NULL);
 	g_return_val_if_fail (job->status_string != NULL, NULL);
@@ -796,7 +796,7 @@ gedit_print_job_get_status_string (BeditPrintJob *job)
 }
 
 gdouble
-gedit_print_job_get_progress (BeditPrintJob *job)
+bedit_print_job_get_progress (BeditPrintJob *job)
 {
 	g_return_val_if_fail (GEDIT_IS_PRINT_JOB (job), 0.0);
 
@@ -804,7 +804,7 @@ gedit_print_job_get_progress (BeditPrintJob *job)
 }
 
 GtkPrintSettings *
-gedit_print_job_get_print_settings (BeditPrintJob *job)
+bedit_print_job_get_print_settings (BeditPrintJob *job)
 {
 	g_return_val_if_fail (GEDIT_IS_PRINT_JOB (job), NULL);
 
@@ -812,7 +812,7 @@ gedit_print_job_get_print_settings (BeditPrintJob *job)
 }
 
 GtkPageSetup *
-gedit_print_job_get_page_setup (BeditPrintJob *job)
+bedit_print_job_get_page_setup (BeditPrintJob *job)
 {
 	g_return_val_if_fail (GEDIT_IS_PRINT_JOB (job), NULL);
 

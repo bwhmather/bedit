@@ -1,6 +1,6 @@
 /*
- * gedit-replace-dialog.c
- * This file is part of gedit
+ * bedit-replace-dialog.c
+ * This file is part of bedit
  *
  * Copyright (C) 2005 Paolo Maggi
  * Copyright (C) 2013 Sébastien Wilmet
@@ -21,16 +21,16 @@
 
 #include "config.h"
 
-#include "gedit-replace-dialog.h"
+#include "bedit-replace-dialog.h"
 
 #include <string.h>
 #include <glib/gi18n.h>
 #include <gdk/gdkkeysyms.h>
 
-#include "gedit-history-entry.h"
-#include "gedit-document.h"
+#include "bedit-history-entry.h"
+#include "bedit-document.h"
 
-#define GEDIT_SEARCH_CONTEXT_KEY "gedit-search-context-key"
+#define GEDIT_SEARCH_CONTEXT_KEY "bedit-search-context-key"
 
 struct _BeditReplaceDialog
 {
@@ -55,7 +55,7 @@ struct _BeditReplaceDialog
 	guint idle_update_sensitivity_id;
 };
 
-G_DEFINE_TYPE (BeditReplaceDialog, gedit_replace_dialog, GTK_TYPE_DIALOG)
+G_DEFINE_TYPE (BeditReplaceDialog, bedit_replace_dialog, GTK_TYPE_DIALOG)
 
 static GtkSourceSearchContext *
 get_search_context (BeditReplaceDialog *dialog,
@@ -68,7 +68,7 @@ get_search_context (BeditReplaceDialog *dialog,
 		return NULL;
 	}
 
-	search_context = gedit_document_get_search_context (doc);
+	search_context = bedit_document_get_search_context (doc);
 
 	if (search_context != NULL &&
 	    g_object_get_data (G_OBJECT (search_context), GEDIT_SEARCH_CONTEXT_KEY) == dialog)
@@ -149,7 +149,7 @@ set_search_settings (BeditReplaceDialog *dialog)
 }
 
 static BeditWindow *
-get_gedit_window (BeditReplaceDialog *dialog)
+get_bedit_window (BeditReplaceDialog *dialog)
 {
 	GtkWindow *transient_for = gtk_window_get_transient_for (GTK_WINDOW (dialog));
 
@@ -159,13 +159,13 @@ get_gedit_window (BeditReplaceDialog *dialog)
 static BeditDocument *
 get_active_document (BeditReplaceDialog *dialog)
 {
-	BeditWindow *window = get_gedit_window (dialog);
+	BeditWindow *window = get_bedit_window (dialog);
 
-	return window != NULL ? gedit_window_get_active_document (window) : NULL;
+	return window != NULL ? bedit_window_get_active_document (window) : NULL;
 }
 
 void
-gedit_replace_dialog_present_with_time (BeditReplaceDialog *dialog,
+bedit_replace_dialog_present_with_time (BeditReplaceDialog *dialog,
 					guint32             timestamp)
 {
 	g_return_if_fail (GEDIT_REPLACE_DIALOG (dialog));
@@ -176,7 +176,7 @@ gedit_replace_dialog_present_with_time (BeditReplaceDialog *dialog,
 }
 
 static gboolean
-gedit_replace_dialog_delete_event (GtkWidget   *widget,
+bedit_replace_dialog_delete_event (GtkWidget   *widget,
                                    GdkEventAny *event)
 {
 	/* prevent destruction */
@@ -211,7 +211,7 @@ set_search_error (BeditReplaceDialog *dialog,
 }
 
 void
-gedit_replace_dialog_set_replace_error (BeditReplaceDialog *dialog,
+bedit_replace_dialog_set_replace_error (BeditReplaceDialog *dialog,
 					const gchar        *error_msg)
 {
 	set_error (GTK_ENTRY (dialog->replace_text_entry), error_msg);
@@ -447,7 +447,7 @@ connect_active_document (BeditReplaceDialog *dialog)
 				   GEDIT_SEARCH_CONTEXT_KEY,
 				   dialog);
 
-		gedit_document_set_search_context (doc, search_context);
+		bedit_document_set_search_context (doc, search_context);
 
 		g_object_unref (settings);
 		g_object_unref (search_context);
@@ -483,7 +483,7 @@ response_cb (GtkDialog *dialog,
 			str = gtk_entry_get_text (GTK_ENTRY (dlg->replace_text_entry));
 			if (*str != '\0')
 			{
-				gedit_history_entry_prepend_text
+				bedit_history_entry_prepend_text
 						(GEDIT_HISTORY_ENTRY (dlg->replace_entry),
 						 str);
 			}
@@ -492,7 +492,7 @@ response_cb (GtkDialog *dialog,
 			str = gtk_entry_get_text (GTK_ENTRY (dlg->search_text_entry));
 			if (*str != '\0')
 			{
-				gedit_history_entry_prepend_text
+				bedit_history_entry_prepend_text
 						(GEDIT_HISTORY_ENTRY (dlg->search_entry),
 						 str);
 			}
@@ -509,7 +509,7 @@ response_cb (GtkDialog *dialog,
 }
 
 static void
-gedit_replace_dialog_dispose (GObject *object)
+bedit_replace_dialog_dispose (GObject *object)
 {
 	BeditReplaceDialog *dialog = GEDIT_REPLACE_DIALOG (object);
 
@@ -521,21 +521,21 @@ gedit_replace_dialog_dispose (GObject *object)
 		dialog->idle_update_sensitivity_id = 0;
 	}
 
-	G_OBJECT_CLASS (gedit_replace_dialog_parent_class)->dispose (object);
+	G_OBJECT_CLASS (bedit_replace_dialog_parent_class)->dispose (object);
 }
 
 static void
-gedit_replace_dialog_class_init (BeditReplaceDialogClass *klass)
+bedit_replace_dialog_class_init (BeditReplaceDialogClass *klass)
 {
 	GObjectClass *gobject_class = G_OBJECT_CLASS (klass);
 	GtkWidgetClass *widget_class = GTK_WIDGET_CLASS (klass);
 
-	gobject_class->dispose = gedit_replace_dialog_dispose;
-	widget_class->delete_event = gedit_replace_dialog_delete_event;
+	gobject_class->dispose = bedit_replace_dialog_dispose;
+	widget_class->delete_event = bedit_replace_dialog_delete_event;
 
 	/* Bind class to template */
 	gtk_widget_class_set_template_from_resource (widget_class,
-	                                             "/com/bwhmather/bedit/ui/gedit-replace-dialog.ui");
+	                                             "/com/bwhmather/bedit/ui/bedit-replace-dialog.ui");
 	gtk_widget_class_bind_template_child (widget_class, BeditReplaceDialog, grid);
 	gtk_widget_class_bind_template_child (widget_class, BeditReplaceDialog, search_label);
 	gtk_widget_class_bind_template_child (widget_class, BeditReplaceDialog, replace_label);
@@ -560,7 +560,7 @@ static void
 replace_text_entry_changed (GtkEditable        *editable,
 			    BeditReplaceDialog *dialog)
 {
-	gedit_replace_dialog_set_replace_error (dialog, NULL);
+	bedit_replace_dialog_set_replace_error (dialog, NULL);
 
 	update_responses_sensitivity (dialog);
 }
@@ -577,7 +577,7 @@ regex_checkbutton_toggled (GtkToggleButton    *checkbutton,
 	}
 }
 
-/* TODO: move in gedit-document.c and share it with gedit-view-frame */
+/* TODO: move in bedit-document.c and share it with bedit-view-frame */
 static gboolean
 get_selected_text (GtkTextBuffer  *doc,
 		   gchar         **selected_text,
@@ -617,7 +617,7 @@ show_cb (BeditReplaceDialog *dialog)
 	gchar *selection = NULL;
 	gint selection_length;
 
-	window = get_gedit_window (dialog);
+	window = get_bedit_window (dialog);
 
 	if (window == NULL)
 	{
@@ -667,14 +667,14 @@ hide_cb (BeditReplaceDialog *dialog)
 }
 
 static void
-gedit_replace_dialog_init (BeditReplaceDialog *dlg)
+bedit_replace_dialog_init (BeditReplaceDialog *dlg)
 {
 	gtk_widget_init_template (GTK_WIDGET (dlg));
 
-	dlg->search_entry = gedit_history_entry_new ("search-for-entry", TRUE);
+	dlg->search_entry = bedit_history_entry_new ("search-for-entry", TRUE);
 	gtk_widget_set_size_request (dlg->search_entry, 300, -1);
 	gtk_widget_set_hexpand (GTK_WIDGET (dlg->search_entry), TRUE);
-	dlg->search_text_entry = gedit_history_entry_get_entry (GEDIT_HISTORY_ENTRY (dlg->search_entry));
+	dlg->search_text_entry = bedit_history_entry_get_entry (GEDIT_HISTORY_ENTRY (dlg->search_entry));
 	gtk_entry_set_activates_default (GTK_ENTRY (dlg->search_text_entry), TRUE);
 	gtk_grid_attach_next_to (GTK_GRID (dlg->grid),
 				 dlg->search_entry,
@@ -682,9 +682,9 @@ gedit_replace_dialog_init (BeditReplaceDialog *dlg)
 				 GTK_POS_RIGHT, 1, 1);
 	gtk_widget_show_all (dlg->search_entry);
 
-	dlg->replace_entry = gedit_history_entry_new ("replace-with-entry", TRUE);
+	dlg->replace_entry = bedit_history_entry_new ("replace-with-entry", TRUE);
 	gtk_widget_set_hexpand (GTK_WIDGET (dlg->replace_entry), TRUE);
-	dlg->replace_text_entry = gedit_history_entry_get_entry (GEDIT_HISTORY_ENTRY (dlg->replace_entry));
+	dlg->replace_text_entry = bedit_history_entry_get_entry (GEDIT_HISTORY_ENTRY (dlg->replace_entry));
 	gtk_entry_set_placeholder_text (GTK_ENTRY (dlg->replace_text_entry), _("Nothing"));
 	gtk_entry_set_activates_default (GTK_ENTRY (dlg->replace_text_entry), TRUE);
 	gtk_grid_attach_next_to (GTK_GRID (dlg->grid),
@@ -747,7 +747,7 @@ gedit_replace_dialog_init (BeditReplaceDialog *dlg)
 }
 
 GtkWidget *
-gedit_replace_dialog_new (BeditWindow *window)
+bedit_replace_dialog_new (BeditWindow *window)
 {
 	BeditReplaceDialog *dialog;
 	gboolean use_header;
@@ -789,7 +789,7 @@ gedit_replace_dialog_new (BeditWindow *window)
 }
 
 const gchar *
-gedit_replace_dialog_get_replace_text (BeditReplaceDialog *dialog)
+bedit_replace_dialog_get_replace_text (BeditReplaceDialog *dialog)
 {
 	g_return_val_if_fail (GEDIT_IS_REPLACE_DIALOG (dialog), NULL);
 
@@ -797,7 +797,7 @@ gedit_replace_dialog_get_replace_text (BeditReplaceDialog *dialog)
 }
 
 gboolean
-gedit_replace_dialog_get_backwards (BeditReplaceDialog *dialog)
+bedit_replace_dialog_get_backwards (BeditReplaceDialog *dialog)
 {
 	g_return_val_if_fail (GEDIT_IS_REPLACE_DIALOG (dialog), FALSE);
 
@@ -809,7 +809,7 @@ gedit_replace_dialog_get_backwards (BeditReplaceDialog *dialog)
  * reciprocal. So to avoid bugs, we have to deal with the original search text.
  */
 const gchar *
-gedit_replace_dialog_get_search_text (BeditReplaceDialog *dialog)
+bedit_replace_dialog_get_search_text (BeditReplaceDialog *dialog)
 {
 	g_return_val_if_fail (GEDIT_IS_REPLACE_DIALOG (dialog), NULL);
 

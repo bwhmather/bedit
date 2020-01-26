@@ -1,6 +1,6 @@
 libdocinfo_res = gnome.compile_resources(
-  'gedit-docinfo-resources',
-  'gedit-docinfo.gresource.xml',
+  'bedit-docinfo-resources',
+  'bedit-docinfo.gresource.xml',
 )
 
 libdocinfo_sources += [

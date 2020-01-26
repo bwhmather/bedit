@@ -1,26 +1,26 @@
 /*
- * gedit-app-x11.h
- * This file is part of gedit
+ * bedit-app-x11.h
+ * This file is part of bedit
  *
  * Copyright (C) 2010 - Jesse van den Kieboom
  *
- * gedit is free software; you can redistribute it and/or modify
+ * bedit is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 2 of the License, or
  * (at your option) any later version.
  *
- * gedit is distributed in the hope that it will be useful,
+ * bedit is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with gedit; if not, write to the Free Software
+ * along with bedit; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin St, Fifth Floor,
  * Boston, MA  02110-1301  USA
  */
 
-#include "gedit-app-x11.h"
+#include "bedit-app-x11.h"
 
 #ifdef GDK_WINDOWING_X11
 #include <gdk/gdkx.h>
@@ -31,7 +31,7 @@ struct _BeditAppX11
 	BeditApp parent_instance;
 };
 
-G_DEFINE_TYPE (BeditAppX11, gedit_app_x11, GEDIT_TYPE_APP)
+G_DEFINE_TYPE (BeditAppX11, bedit_app_x11, GEDIT_TYPE_APP)
 
 /* This should go in GtkApplication at some point... */
 
@@ -39,10 +39,10 @@ G_DEFINE_TYPE (BeditAppX11, gedit_app_x11, GEDIT_TYPE_APP)
 #include <X11/Xlib.h>
 
 static void
-gedit_app_add_platform_data (GApplication    *app,
+bedit_app_add_platform_data (GApplication    *app,
                              GVariantBuilder *builder)
 {
-  G_APPLICATION_CLASS (gedit_app_x11_parent_class)->add_platform_data (app, builder);
+  G_APPLICATION_CLASS (bedit_app_x11_parent_class)->add_platform_data (app, builder);
 
   /* In the event that we are launched from a terminal we will probably
    * see that we have DISPLAY set, but not DESKTOP_STARTUP_ID.
@@ -95,15 +95,15 @@ gedit_app_add_platform_data (GApplication    *app,
 }
 
 static void
-gedit_app_x11_class_init (BeditAppX11Class *klass)
+bedit_app_x11_class_init (BeditAppX11Class *klass)
 {
 	GApplicationClass *app_class = G_APPLICATION_CLASS (klass);
 
-	app_class->add_platform_data = gedit_app_add_platform_data;
+	app_class->add_platform_data = bedit_app_add_platform_data;
 }
 
 static void
-gedit_app_x11_init (BeditAppX11 *self)
+bedit_app_x11_init (BeditAppX11 *self)
 {
 }
 

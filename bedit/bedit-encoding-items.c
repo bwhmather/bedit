@@ -1,6 +1,6 @@
 /*
- * gedit-encoding-items.c
- * This file is part of gedit
+ * bedit-encoding-items.c
+ * This file is part of bedit
  *
  * Copyright (C) 2014 - Jesse van den Kieboom
  *
@@ -18,11 +18,11 @@
  * along with this program; if not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "gedit-encoding-items.h"
+#include "bedit-encoding-items.h"
 
 #include <glib/gi18n.h>
 
-#include "gedit-settings.h"
+#include "bedit-settings.h"
 
 struct _BeditEncodingItem
 {
@@ -31,7 +31,7 @@ struct _BeditEncodingItem
 };
 
 static BeditEncodingItem *
-gedit_encoding_item_new (const GtkSourceEncoding *encoding,
+bedit_encoding_item_new (const GtkSourceEncoding *encoding,
                          gchar                   *name)
 {
 	BeditEncodingItem *item = g_slice_new (BeditEncodingItem);
@@ -43,7 +43,7 @@ gedit_encoding_item_new (const GtkSourceEncoding *encoding,
 }
 
 void
-gedit_encoding_item_free (BeditEncodingItem *item)
+bedit_encoding_item_free (BeditEncodingItem *item)
 {
 	if (item == NULL)
 	{
@@ -55,7 +55,7 @@ gedit_encoding_item_free (BeditEncodingItem *item)
 }
 
 const GtkSourceEncoding *
-gedit_encoding_item_get_encoding (BeditEncodingItem *item)
+bedit_encoding_item_get_encoding (BeditEncodingItem *item)
 {
 	g_return_val_if_fail (item != NULL, NULL);
 
@@ -63,7 +63,7 @@ gedit_encoding_item_get_encoding (BeditEncodingItem *item)
 }
 
 const gchar *
-gedit_encoding_item_get_name (BeditEncodingItem *item)
+bedit_encoding_item_get_name (BeditEncodingItem *item)
 {
 	g_return_val_if_fail (item != NULL, NULL);
 
@@ -71,14 +71,14 @@ gedit_encoding_item_get_name (BeditEncodingItem *item)
 }
 
 GSList *
-gedit_encoding_items_get (void)
+bedit_encoding_items_get (void)
 {
 	const GtkSourceEncoding *current_encoding;
 	GSList *encodings;
 	GSList *items = NULL;
 	GSList *l;
 
-	encodings = gedit_settings_get_candidate_encodings (NULL);
+	encodings = bedit_settings_get_candidate_encodings (NULL);
 
 	current_encoding = gtk_source_encoding_get_current ();
 
@@ -97,7 +97,7 @@ gedit_encoding_items_get (void)
 			name = gtk_source_encoding_to_string (enc);
 		}
 
-		items = g_slist_prepend (items, gedit_encoding_item_new (enc, name));
+		items = g_slist_prepend (items, bedit_encoding_item_new (enc, name));
 	}
 
 	g_slist_free (encodings);

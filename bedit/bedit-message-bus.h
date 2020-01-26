@@ -1,21 +1,21 @@
 /*
- * gedit-message-bus.h
- * This file is part of gedit
+ * bedit-message-bus.h
+ * This file is part of bedit
  *
  * Copyright (C) 2008-2010 - Jesse van den Kieboom
  *
- * gedit is free software; you can redistribute it and/or modify
+ * bedit is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 2 of the License, or
  * (at your option) any later version.
  *
- * gedit is distributed in the hope that it will be useful,
+ * bedit is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with gedit; if not, write to the Free Software
+ * along with bedit; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin St, Fifth Floor,
  * Boston, MA  02110-1301  USA
  */
@@ -24,11 +24,11 @@
 #define GEDIT_MESSAGE_BUS_H
 
 #include <glib-object.h>
-#include <gedit/gedit-message.h>
+#include <bedit/bedit-message.h>
 
 G_BEGIN_DECLS
 
-#define GEDIT_TYPE_MESSAGE_BUS			(gedit_message_bus_get_type ())
+#define GEDIT_TYPE_MESSAGE_BUS			(bedit_message_bus_get_type ())
 #define GEDIT_MESSAGE_BUS(obj)			(G_TYPE_CHECK_INSTANCE_CAST ((obj), GEDIT_TYPE_MESSAGE_BUS, BeditMessageBus))
 #define GEDIT_MESSAGE_BUS_CONST(obj)		(G_TYPE_CHECK_INSTANCE_CAST ((obj), GEDIT_TYPE_MESSAGE_BUS, BeditMessageBus const))
 #define GEDIT_MESSAGE_BUS_CLASS(klass)		(G_TYPE_CHECK_CLASS_CAST ((klass), GEDIT_TYPE_MESSAGE_BUS, BeditMessageBusClass))
@@ -69,79 +69,79 @@ typedef void (* BeditMessageBusForeach) (gchar const      *object_path,
                                          gchar const      *method,
                                          gpointer          user_data);
 
-GType             gedit_message_bus_get_type           (void) G_GNUC_CONST;
+GType             bedit_message_bus_get_type           (void) G_GNUC_CONST;
 
-BeditMessageBus  *gedit_message_bus_get_default        (void);
-BeditMessageBus  *gedit_message_bus_new                (void);
+BeditMessageBus  *bedit_message_bus_get_default        (void);
+BeditMessageBus  *bedit_message_bus_new                (void);
 
-GType             gedit_message_bus_lookup             (BeditMessageBus        *bus,
+GType             bedit_message_bus_lookup             (BeditMessageBus        *bus,
                                                         const gchar            *object_path,
                                                         const gchar            *method);
 
-void              gedit_message_bus_register           (BeditMessageBus        *bus,
+void              bedit_message_bus_register           (BeditMessageBus        *bus,
                                                         GType                   message_type,
                                                         const gchar            *object_path,
                                                         const gchar            *method);
 
-void              gedit_message_bus_unregister         (BeditMessageBus        *bus,
+void              bedit_message_bus_unregister         (BeditMessageBus        *bus,
                                                         const gchar            *object_path,
                                                         const gchar            *method);
 
-void              gedit_message_bus_unregister_all     (BeditMessageBus        *bus,
+void              bedit_message_bus_unregister_all     (BeditMessageBus        *bus,
                                                         const gchar            *object_path);
 
-gboolean          gedit_message_bus_is_registered      (BeditMessageBus        *bus,
+gboolean          bedit_message_bus_is_registered      (BeditMessageBus        *bus,
                                                         const gchar            *object_path,
                                                         const gchar            *method);
 
-void              gedit_message_bus_foreach            (BeditMessageBus        *bus,
+void              bedit_message_bus_foreach            (BeditMessageBus        *bus,
                                                         BeditMessageBusForeach  func,
                                                         gpointer                user_data);
 
-guint             gedit_message_bus_connect            (BeditMessageBus        *bus,
+guint             bedit_message_bus_connect            (BeditMessageBus        *bus,
                                                         const gchar            *object_path,
                                                         const gchar            *method,
                                                         BeditMessageCallback    callback,
                                                         gpointer                user_data,
                                                         GDestroyNotify          destroy_data);
 
-void              gedit_message_bus_disconnect         (BeditMessageBus        *bus,
+void              bedit_message_bus_disconnect         (BeditMessageBus        *bus,
                                                         guint                   id);
 
-void              gedit_message_bus_disconnect_by_func (BeditMessageBus        *bus,
+void              bedit_message_bus_disconnect_by_func (BeditMessageBus        *bus,
                                                         const gchar            *object_path,
                                                         const gchar            *method,
                                                         BeditMessageCallback    callback,
                                                         gpointer                user_data);
 
-void              gedit_message_bus_block              (BeditMessageBus        *bus,
+void              bedit_message_bus_block              (BeditMessageBus        *bus,
                                                         guint                   id);
-void              gedit_message_bus_block_by_func      (BeditMessageBus        *bus,
+void              bedit_message_bus_block_by_func      (BeditMessageBus        *bus,
                                                         const gchar            *object_path,
                                                         const gchar            *method,
                                                         BeditMessageCallback    callback,
                                                         gpointer                user_data);
 
-void              gedit_message_bus_unblock            (BeditMessageBus        *bus,
+void              bedit_message_bus_unblock            (BeditMessageBus        *bus,
                                                         guint                   id);
-void              gedit_message_bus_unblock_by_func    (BeditMessageBus        *bus,
+void              bedit_message_bus_unblock_by_func    (BeditMessageBus        *bus,
                                                         const gchar            *object_path,
                                                         const gchar            *method,
                                                         BeditMessageCallback    callback,
                                                         gpointer                user_data);
 
-void              gedit_message_bus_send_message       (BeditMessageBus        *bus,
+void              bedit_message_bus_send_message       (BeditMessageBus        *bus,
                                                         BeditMessage           *message);
-void              gedit_message_bus_send_message_sync  (BeditMessageBus        *bus,
+void              bedit_message_bus_send_message_sync  (BeditMessageBus        *bus,
                                                         BeditMessage           *message);
 
-void              gedit_message_bus_send               (BeditMessageBus        *bus,
+void              bedit_message_bus_send               (BeditMessageBus        *bus,
                                                         const gchar            *object_path,
                                                         const gchar            *method,
                                                         const gchar            *first_property,
                                                         ...) G_GNUC_NULL_TERMINATED;
 
-BeditMessage     *gedit_message_bus_send_sync          (BeditMessageBus        *bus,
+BeditMessage     *bedit_message_bus_send_sync          (BeditMessageBus        *bus,
                                                         const gchar            *object_path,
                                                         const gchar            *method,
                                                         const gchar            *first_property,

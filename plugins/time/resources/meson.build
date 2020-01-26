@@ -1,6 +1,6 @@
 libtime_res = gnome.compile_resources(
-  'gedit-time-resources',
-  'gedit-time.gresource.xml',
+  'bedit-time-resources',
+  'bedit-time.gresource.xml',
 )
 
 libtime_sources += [

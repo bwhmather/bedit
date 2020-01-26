@@ -1,6 +1,6 @@
 /*
- * gedit-tab-label.h
- * This file is part of gedit
+ * bedit-tab-label.h
+ * This file is part of bedit
  *
  * Copyright (C) 2010 - Paolo Borelli
  *
@@ -22,17 +22,17 @@
 #define GEDIT_TAB_LABEL_H
 
 #include <gtk/gtk.h>
-#include <gedit/gedit-tab.h>
+#include <bedit/bedit-tab.h>
 
 G_BEGIN_DECLS
 
-#define GEDIT_TYPE_TAB_LABEL (gedit_tab_label_get_type ())
+#define GEDIT_TYPE_TAB_LABEL (bedit_tab_label_get_type ())
 
-G_DECLARE_FINAL_TYPE (BeditTabLabel, gedit_tab_label, GEDIT, TAB_LABEL, GtkBox)
+G_DECLARE_FINAL_TYPE (BeditTabLabel, bedit_tab_label, GEDIT, TAB_LABEL, GtkBox)
 
-GtkWidget 	*gedit_tab_label_new				(BeditTab *tab);
+GtkWidget 	*bedit_tab_label_new				(BeditTab *tab);
 
-BeditTab	*gedit_tab_label_get_tab			(BeditTabLabel *tab_label);
+BeditTab	*bedit_tab_label_get_tab			(BeditTabLabel *tab_label);
 
 G_END_DECLS
 

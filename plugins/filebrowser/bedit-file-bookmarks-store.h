@@ -1,5 +1,5 @@
 /*
- * gedit-file-bookmarks-store.h - Bedit plugin providing easy file access
+ * bedit-file-bookmarks-store.h - Bedit plugin providing easy file access
  * from the sidepanel
  *
  * Copyright (C) 2006 - Jesse van den Kieboom <jesse@icecrew.nl>
@@ -24,7 +24,7 @@
 #include <gtk/gtk.h>
 
 G_BEGIN_DECLS
-#define GEDIT_TYPE_FILE_BOOKMARKS_STORE			(gedit_file_bookmarks_store_get_type ())
+#define GEDIT_TYPE_FILE_BOOKMARKS_STORE			(bedit_file_bookmarks_store_get_type ())
 #define GEDIT_FILE_BOOKMARKS_STORE(obj)			(G_TYPE_CHECK_INSTANCE_CAST ((obj), GEDIT_TYPE_FILE_BOOKMARKS_STORE, BeditFileBookmarksStore))
 #define GEDIT_FILE_BOOKMARKS_STORE_CONST(obj)		(G_TYPE_CHECK_INSTANCE_CAST ((obj), GEDIT_TYPE_FILE_BOOKMARKS_STORE, BeditFileBookmarksStore const))
 #define GEDIT_FILE_BOOKMARKS_STORE_CLASS(klass)		(G_TYPE_CHECK_CLASS_CAST ((klass), GEDIT_TYPE_FILE_BOOKMARKS_STORE, BeditFileBookmarksStoreClass))
@@ -76,14 +76,14 @@ struct _BeditFileBookmarksStoreClass
 	GtkTreeStoreClass parent_class;
 };
 
-GType			 gedit_file_bookmarks_store_get_type		(void) G_GNUC_CONST;
+GType			 bedit_file_bookmarks_store_get_type		(void) G_GNUC_CONST;
 
-BeditFileBookmarksStore	*gedit_file_bookmarks_store_new			(void);
-GFile			*gedit_file_bookmarks_store_get_location	(BeditFileBookmarksStore *model,
+BeditFileBookmarksStore	*bedit_file_bookmarks_store_new			(void);
+GFile			*bedit_file_bookmarks_store_get_location	(BeditFileBookmarksStore *model,
 									 GtkTreeIter             *iter);
-void			 gedit_file_bookmarks_store_refresh		(BeditFileBookmarksStore *model);
+void			 bedit_file_bookmarks_store_refresh		(BeditFileBookmarksStore *model);
 
-void			 _gedit_file_bookmarks_store_register_type	(GTypeModule             *type_module);
+void			 _bedit_file_bookmarks_store_register_type	(GTypeModule             *type_module);
 
 G_END_DECLS
 

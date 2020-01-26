@@ -1,5 +1,5 @@
 /*
- * gedit-print-preview.h
+ * bedit-print-preview.h
  *
  * Copyright (C) 2008 Paolo Borelli
  *
@@ -24,11 +24,11 @@
 
 G_BEGIN_DECLS
 
-#define GEDIT_TYPE_PRINT_PREVIEW (gedit_print_preview_get_type ())
+#define GEDIT_TYPE_PRINT_PREVIEW (bedit_print_preview_get_type ())
 
-G_DECLARE_FINAL_TYPE (BeditPrintPreview, gedit_print_preview, GEDIT, PRINT_PREVIEW, GtkGrid)
+G_DECLARE_FINAL_TYPE (BeditPrintPreview, bedit_print_preview, GEDIT, PRINT_PREVIEW, GtkGrid)
 
-GtkWidget	*gedit_print_preview_new	(GtkPrintOperation        *operation,
+GtkWidget	*bedit_print_preview_new	(GtkPrintOperation        *operation,
 						 GtkPrintOperationPreview *gtk_preview,
 						 GtkPrintContext          *context);
 

@@ -25,7 +25,7 @@
 
 G_BEGIN_DECLS
 
-#define GEDIT_TYPE_CHECK_UPDATE_PLUGIN		(gedit_check_update_plugin_get_type ())
+#define GEDIT_TYPE_CHECK_UPDATE_PLUGIN		(bedit_check_update_plugin_get_type ())
 #define GEDIT_CHECK_UPDATE_PLUGIN(o)		(G_TYPE_CHECK_INSTANCE_CAST ((o), GEDIT_TYPE_CHECK_UPDATE_PLUGIN, BeditCheckUpdatePlugin))
 #define GEDIT_CHECK_UPDATE_PLUGIN_CLASS(k)	(G_TYPE_CHECK_CLASS_CAST((k), GEDIT_TYPE_CHECK_UPDATE_PLUGIN, BeditCheckUpdatePluginClass))
 #define GEDIT_IS_CHECK_UPDATE_PLUGIN(o)	(G_TYPE_CHECK_INSTANCE_TYPE ((o), GEDIT_TYPE_CHECK_UPDATE_PLUGIN))
@@ -49,7 +49,7 @@ struct _BeditCheckUpdatePluginClass
 	PeasExtensionBaseClass parent_class;
 };
 
-GType			gedit_check_update_plugin_get_type	(void) G_GNUC_CONST;
+GType			bedit_check_update_plugin_get_type	(void) G_GNUC_CONST;
 
 G_MODULE_EXPORT void	peas_register_types			(PeasObjectModule *module);
 

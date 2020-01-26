@@ -157,11 +157,11 @@
     </dependencies>
   </autotools>
 
-  <autotools id="gedit-plugins">
-    <branch module="gedit-plugins" repo="git.gnome.org"/>
+  <autotools id="bedit-plugins">
+    <branch module="bedit-plugins" repo="git.gnome.org"/>
     <dependencies>
       <dep package="meta-gtk-osx-bootstrap"/>
-      <dep package="gedit"/>
+      <dep package="bedit"/>
       <dep package="libgit2-glib"/>
       <dep package="vte"/>
     </dependencies>
@@ -177,7 +177,7 @@
     </dependencies>
   </autotools>
 
-  <metamodule id="gedit-deps">
+  <metamodule id="bedit-deps">
     <dependencies>
       <dep package="meta-gtk-osx-bootstrap"/>
       <dep package="meta-gtk-osx-freetype"/>
@@ -192,17 +192,17 @@
     </dependencies>
   </metamodule>
 
-  <autotools id="gedit" autogenargs="PYTHON=python3">
-    <branch repo="git.gnome.org" module="gedit"/>
+  <autotools id="bedit" autogenargs="PYTHON=python3">
+    <branch repo="git.gnome.org" module="bedit"/>
     <dependencies>
-      <dep package="gedit-deps"/>
+      <dep package="bedit-deps"/>
     </dependencies>
   </autotools>
 
-  <metamodule id="gedit-meta">
+  <metamodule id="bedit-meta">
     <dependencies>
-      <dep package="gedit"/>
-      <dep package="gedit-plugins"/>
+      <dep package="bedit"/>
+      <dep package="bedit-plugins"/>
     </dependencies>
   </metamodule>
 

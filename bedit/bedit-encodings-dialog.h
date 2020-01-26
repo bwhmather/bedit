@@ -1,6 +1,6 @@
 /*
- * gedit-encodings-dialog.h
- * This file is part of gedit
+ * bedit-encodings-dialog.h
+ * This file is part of bedit
  *
  * Copyright (C) 2003-2005 Paolo Maggi
  *
@@ -25,11 +25,11 @@
 
 G_BEGIN_DECLS
 
-#define GEDIT_TYPE_ENCODINGS_DIALOG (gedit_encodings_dialog_get_type())
+#define GEDIT_TYPE_ENCODINGS_DIALOG (bedit_encodings_dialog_get_type())
 
-G_DECLARE_FINAL_TYPE (BeditEncodingsDialog, gedit_encodings_dialog, GEDIT, ENCODINGS_DIALOG, GtkDialog)
+G_DECLARE_FINAL_TYPE (BeditEncodingsDialog, bedit_encodings_dialog, GEDIT, ENCODINGS_DIALOG, GtkDialog)
 
-GtkWidget	*gedit_encodings_dialog_new		(void);
+GtkWidget	*bedit_encodings_dialog_new		(void);
 
 G_END_DECLS
 

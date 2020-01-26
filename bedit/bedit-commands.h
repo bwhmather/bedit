@@ -1,7 +1,7 @@
 /* -*- Mode: C; tab-width: 8; indent-tabs-mode: t; c-basic-offset: 8 -*- */
 /*
- * gedit-commands.h
- * This file is part of gedit
+ * bedit-commands.h
+ * This file is part of bedit
  *
  * Copyright (C) 1998, 1999 Alex Roberts, Evan Lawrence
  * Copyright (C) 2000, 2001 Chema Celorio, Paolo Maggi
@@ -25,37 +25,37 @@
 #define GEDIT_COMMANDS_H
 
 #include <gtksourceview/gtksource.h>
-#include <gedit/gedit-window.h>
+#include <bedit/bedit-window.h>
 
 G_BEGIN_DECLS
 
 /* Do nothing if URI does not exist */
-void		 gedit_commands_load_location		(BeditWindow             *window,
+void		 bedit_commands_load_location		(BeditWindow             *window,
 							 GFile                   *location,
 							 const GtkSourceEncoding *encoding,
 							 gint                     line_pos,
 							 gint                     column_pos);
 
 /* Ignore non-existing URIs */
-GSList		*gedit_commands_load_locations		(BeditWindow             *window,
+GSList		*bedit_commands_load_locations		(BeditWindow             *window,
 							 const GSList            *locations,
 							 const GtkSourceEncoding *encoding,
 							 gint                     line_pos,
 							 gint                     column_pos) G_GNUC_WARN_UNUSED_RESULT;
 
-void		 gedit_commands_save_document		(BeditWindow         *window,
+void		 bedit_commands_save_document		(BeditWindow         *window,
                                                          BeditDocument       *document);
 
-void		 gedit_commands_save_document_async	(BeditDocument       *document,
+void		 bedit_commands_save_document_async	(BeditDocument       *document,
 							 BeditWindow         *window,
 							 GCancellable        *cancellable,
 							 GAsyncReadyCallback  callback,
 							 gpointer             user_data);
 
-gboolean	 gedit_commands_save_document_finish	(BeditDocument       *document,
+gboolean	 bedit_commands_save_document_finish	(BeditDocument       *document,
 							 GAsyncResult        *result);
 
-void		 gedit_commands_save_all_documents 	(BeditWindow         *window);
+void		 bedit_commands_save_all_documents 	(BeditWindow         *window);
 
 G_END_DECLS
 

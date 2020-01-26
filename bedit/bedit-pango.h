@@ -1,4 +1,4 @@
-/* gedit-pango.h
+/* bedit-pango.h
  *
  * This file is a copy of libdazzle dzl-pango.h
  *
@@ -25,7 +25,7 @@
 
 G_BEGIN_DECLS
 
-gchar *gedit_pango_font_description_to_css (const PangoFontDescription *font_desc);
+gchar *bedit_pango_font_description_to_css (const PangoFontDescription *font_desc);
 
 G_END_DECLS
 

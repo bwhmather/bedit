@@ -1,10 +1,10 @@
 <page xmlns="http://projectmallard.org/1.0/" 
   type="topic" style="task" 
-  id="gedit-search">
+  id="bedit-search">
 
   <info>
-    <link type="guide" xref="index#gedit-working-with-files" />
-    <link type="seealso" xref="gedit-replace" />
+    <link type="guide" xref="index#bedit-working-with-files" />
+    <link type="seealso" xref="bedit-replace" />
     <desc>Find a portion of text within a file.</desc>
     <revision pkgversion="3.14" date="2014-12-04" status="review"/>
     <revision pkgversion="3.24" date="2017-09-17" status="review"/>
@@ -46,7 +46,7 @@
         <gui>search window</gui>.</p>
       </item>
       <item>
-        <p>As you type, <app>gedit</app> will begin highlighting the portions of
+        <p>As you type, <app>bedit</app> will begin highlighting the portions of
         text that match what you have entered.</p>
       </item>
     </steps>
@@ -100,7 +100,7 @@
       </list>
     </item>
     <item>
-      <p>The text that you've searched for will remain highlighted by gedit,
+      <p>The text that you've searched for will remain highlighted by bedit,
       even after you have completed your search. To remove the highlight,
       click <gui style="menuitem">Clear Highlight</gui>, or
       press <keyseq><key>Ctrl</key><key>Shift</key><key>K</key></keyseq>.</p>

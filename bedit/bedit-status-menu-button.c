@@ -1,6 +1,6 @@
 /*
- * gedit-status-menu-button.c
- * This file is part of gedit
+ * bedit-status-menu-button.c
+ * This file is part of bedit
  *
  * Copyright (C) 2008 - Jesse van den Kieboom
  *
@@ -18,7 +18,7 @@
  * along with this program; if not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "gedit-status-menu-button.h"
+#include "bedit-status-menu-button.h"
 
 struct _BeditStatusMenuButton
 {
@@ -40,12 +40,12 @@ enum
 };
 
 G_DEFINE_TYPE_WITH_CODE (BeditStatusMenuButton,
-			 gedit_status_menu_button,
+			 bedit_status_menu_button,
 			 GTK_TYPE_MENU_BUTTON,
 			 g_type_add_class_private (g_define_type_id, sizeof (BeditStatusMenuButtonClassPrivate)))
 
 static void
-gedit_status_menu_button_get_property (GObject    *object,
+bedit_status_menu_button_get_property (GObject    *object,
 				       guint       prop_id,
 				       GValue     *value,
 				       GParamSpec *pspec)
@@ -55,7 +55,7 @@ gedit_status_menu_button_get_property (GObject    *object,
 	switch (prop_id)
 	{
 		case PROP_LABEL:
-			g_value_set_string (value, gedit_status_menu_button_get_label (obj));
+			g_value_set_string (value, bedit_status_menu_button_get_label (obj));
 			break;
 		default:
 			G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
@@ -64,7 +64,7 @@ gedit_status_menu_button_get_property (GObject    *object,
 }
 
 static void
-gedit_status_menu_button_set_property (GObject      *object,
+bedit_status_menu_button_set_property (GObject      *object,
 				       guint         prop_id,
 				       const GValue *value,
 				       GParamSpec   *pspec)
@@ -74,7 +74,7 @@ gedit_status_menu_button_set_property (GObject      *object,
 	switch (prop_id)
 	{
 		case PROP_LABEL:
-			gedit_status_menu_button_set_label (obj, g_value_get_string (value));
+			bedit_status_menu_button_set_label (obj, g_value_get_string (value));
 			break;
 		default:
 			G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
@@ -83,7 +83,7 @@ gedit_status_menu_button_set_property (GObject      *object,
 }
 
 static void
-gedit_status_menu_button_class_init (BeditStatusMenuButtonClass *klass)
+bedit_status_menu_button_class_init (BeditStatusMenuButtonClass *klass)
 {
 	static const gchar style[] =
 		"* {\n"
@@ -96,14 +96,14 @@ gedit_status_menu_button_class_init (BeditStatusMenuButtonClass *klass)
 	GtkWidgetClass *widget_class = GTK_WIDGET_CLASS (klass);
 	BeditStatusMenuButtonClassPrivate *class_priv;
 
-	object_class->get_property = gedit_status_menu_button_get_property;
-	object_class->set_property = gedit_status_menu_button_set_property;
+	object_class->get_property = bedit_status_menu_button_get_property;
+	object_class->set_property = bedit_status_menu_button_set_property;
 
 	g_object_class_override_property (object_class, PROP_LABEL, "label");
 
 	/* Bind class to template */
 	gtk_widget_class_set_template_from_resource (widget_class,
-	                                             "/com/bwhmather/bedit/ui/gedit-status-menu-button.ui");
+	                                             "/com/bwhmather/bedit/ui/bedit-status-menu-button.ui");
 	gtk_widget_class_bind_template_child_internal (widget_class, BeditStatusMenuButton, label);
 
 	/* Store the CSS provider in the class private data so it is shared among all instances */
@@ -113,7 +113,7 @@ gedit_status_menu_button_class_init (BeditStatusMenuButtonClass *klass)
 }
 
 static void
-gedit_status_menu_button_init (BeditStatusMenuButton *self)
+bedit_status_menu_button_init (BeditStatusMenuButton *self)
 {
 	GtkStyleContext *context;
 	BeditStatusMenuButtonClassPrivate *class_priv;
@@ -131,11 +131,11 @@ gedit_status_menu_button_init (BeditStatusMenuButton *self)
 }
 
 /**
- * gedit_status_menu_button_new:
+ * bedit_status_menu_button_new:
  * @label: (allow-none):
  */
 GtkWidget *
-gedit_status_menu_button_new (void)
+bedit_status_menu_button_new (void)
 {
 	return g_object_new (GEDIT_TYPE_STATUS_MENU_BUTTON, NULL);
 }
@@ -144,7 +144,7 @@ gedit_status_menu_button_new (void)
  * the internal child instead of just setting the property :( */
 
 void
-gedit_status_menu_button_set_label (BeditStatusMenuButton *button,
+bedit_status_menu_button_set_label (BeditStatusMenuButton *button,
                                     const gchar           *label)
 {
 	g_return_if_fail (GEDIT_IS_STATUS_MENU_BUTTON (button));
@@ -153,7 +153,7 @@ gedit_status_menu_button_set_label (BeditStatusMenuButton *button,
 }
 
 const gchar *
-gedit_status_menu_button_get_label (BeditStatusMenuButton *button)
+bedit_status_menu_button_get_label (BeditStatusMenuButton *button)
 {
 	g_return_val_if_fail (GEDIT_IS_STATUS_MENU_BUTTON (button), NULL);
 

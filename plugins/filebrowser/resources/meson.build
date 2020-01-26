@@ -1,6 +1,6 @@
 libfilebrowser_res = gnome.compile_resources(
-  'gedit-file-browser-resources',
-  'gedit-file-browser.gresource.xml',
+  'bedit-file-browser-resources',
+  'bedit-file-browser.gresource.xml',
 )
 
 libfilebrowser_sources += [

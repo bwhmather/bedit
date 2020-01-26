@@ -1,6 +1,6 @@
 /*
- * gedit-utils.h
- * This file is part of gedit
+ * bedit-utils.h
+ * This file is part of bedit
  *
  * Copyright (C) 1998, 1999 Alex Roberts, Evan Lawrence
  * Copyright (C) 2000, 2001 Chema Celorio, Paolo Maggi
@@ -33,27 +33,27 @@ G_BEGIN_DECLS
 
 enum { GEDIT_ALL_WORKSPACES = 0xffffffff };
 
-gboolean                   gedit_utils_menu_position_under_tree_view          (GtkTreeView     *tree_view,
+gboolean                   bedit_utils_menu_position_under_tree_view          (GtkTreeView     *tree_view,
                                                                                GdkRectangle    *rect);
 
-void                       gedit_utils_set_atk_name_description               (GtkWidget       *widget,
+void                       bedit_utils_set_atk_name_description               (GtkWidget       *widget,
                                                                                const gchar     *name,
                                                                                const gchar     *description);
-void                       gedit_warning                                       (GtkWindow      *parent,
+void                       bedit_warning                                       (GtkWindow      *parent,
                                                                                 const gchar    *format,
                                                                                 ...) G_GNUC_PRINTF(2, 3);
 
-gchar                     *gedit_utils_location_get_dirname_for_display        (GFile          *location);
-guint                      gedit_utils_get_current_workspace                   (GdkScreen      *screen);
-guint                      gedit_utils_get_window_workspace                    (GtkWindow      *gtkwindow);
-void                       gedit_utils_get_current_viewport                    (GdkScreen      *screen,
+gchar                     *bedit_utils_location_get_dirname_for_display        (GFile          *location);
+guint                      bedit_utils_get_current_workspace                   (GdkScreen      *screen);
+guint                      bedit_utils_get_window_workspace                    (GtkWindow      *gtkwindow);
+void                       bedit_utils_get_current_viewport                    (GdkScreen      *screen,
                                                                                 gint           *x,
                                                                                 gint           *y);
-gboolean                   gedit_utils_is_valid_location                       (GFile          *location);
+gboolean                   bedit_utils_is_valid_location                       (GFile          *location);
 
 
-gchar                     *gedit_utils_basename_for_display                   (GFile        *location);
-gboolean                   gedit_utils_decode_uri                             (const gchar  *uri,
+gchar                     *bedit_utils_basename_for_display                   (GFile        *location);
+gboolean                   bedit_utils_decode_uri                             (const gchar  *uri,
                                                                                gchar       **scheme,
                                                                                gchar       **user,
                                                                                gchar       **host,
@@ -61,30 +61,30 @@ gboolean                   gedit_utils_decode_uri                             (c
                                                                                gchar       **path);
 
 /* Turns data from a drop into a list of well formatted uris */
-gchar                    **gedit_utils_drop_get_uris                          (GtkSelectionData     *selection_data);
+gchar                    **bedit_utils_drop_get_uris                          (GtkSelectionData     *selection_data);
 
-GtkSourceCompressionType   gedit_utils_get_compression_type_from_content_type (const gchar          *content_type);
-gchar                     *gedit_utils_set_direct_save_filename               (GdkDragContext       *context);
-const gchar               *gedit_utils_newline_type_to_string                 (GtkSourceNewlineType  newline_type);
+GtkSourceCompressionType   bedit_utils_get_compression_type_from_content_type (const gchar          *content_type);
+gchar                     *bedit_utils_set_direct_save_filename               (GdkDragContext       *context);
+const gchar               *bedit_utils_newline_type_to_string                 (GtkSourceNewlineType  newline_type);
 
 G_DEPRECATED_FOR (g_utf8_make_valid)
-gchar                     *gedit_utils_make_valid_utf8                         (const char     *name);
+gchar                     *bedit_utils_make_valid_utf8                         (const char     *name);
 
-gchar                     *gedit_utils_str_middle_truncate                    (const gchar     *string,
+gchar                     *bedit_utils_str_middle_truncate                    (const gchar     *string,
                                                                                guint            truncate_length);
-gchar                     *gedit_utils_str_end_truncate                       (const gchar     *string,
+gchar                     *bedit_utils_str_end_truncate                       (const gchar     *string,
                                                                                guint            truncate_length);
-gchar                     *gedit_utils_replace_home_dir_with_tilde             (const gchar    *uri);
+gchar                     *bedit_utils_replace_home_dir_with_tilde             (const gchar    *uri);
 
 G_DEPRECATED_FOR (gtk_menu_popup_at_widget)
-void                       gedit_utils_menu_position_under_widget             (GtkMenu         *menu,
+void                       bedit_utils_menu_position_under_widget             (GtkMenu         *menu,
                                                                                gint            *x,
                                                                                gint            *y,
                                                                                gboolean        *push_in,
                                                                                gpointer         user_data);
 
 G_DEPRECATED
-void                       gedit_utils_set_atk_relation                       (GtkWidget       *obj1,
+void                       bedit_utils_set_atk_relation                       (GtkWidget       *obj1,
                                                                                GtkWidget       *obj2,
                                                                                AtkRelationType  rel_type);
 

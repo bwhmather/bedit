@@ -1,5 +1,5 @@
 /*
- * gedit-file-browser-utils.h - Bedit plugin providing easy file access
+ * bedit-file-browser-utils.h - Bedit plugin providing easy file access
  * from the sidepanel
  *
  * Copyright (C) 2006 - Jesse van den Kieboom <jesse@icecrew.nl>
@@ -21,22 +21,22 @@
 #ifndef GEDIT_FILE_BROWSER_UTILS_H
 #define GEDIT_FILE_BROWSER_UTILS_H
 
-#include <gedit/gedit-window.h>
+#include <bedit/bedit-window.h>
 #include <gio/gio.h>
 
-gchar           *gedit_file_browser_utils_name_from_themed_icon         (GIcon          *icon);
-GdkPixbuf	*gedit_file_browser_utils_pixbuf_from_theme	        (gchar const    *name,
+gchar           *bedit_file_browser_utils_name_from_themed_icon         (GIcon          *icon);
+GdkPixbuf	*bedit_file_browser_utils_pixbuf_from_theme	        (gchar const    *name,
 									 GtkIconSize     size);
 
-GdkPixbuf	*gedit_file_browser_utils_pixbuf_from_icon	        (GIcon          *icon,
+GdkPixbuf	*bedit_file_browser_utils_pixbuf_from_icon	        (GIcon          *icon,
 									 GtkIconSize     size);
-GdkPixbuf	*gedit_file_browser_utils_pixbuf_from_file        	(GFile          *file,
+GdkPixbuf	*bedit_file_browser_utils_pixbuf_from_file        	(GFile          *file,
 									 GtkIconSize     size,
 									 gboolean        use_symbolic);
-gchar           *gedit_file_browser_utils_symbolic_icon_name_from_file  (GFile *file);
-gchar		*gedit_file_browser_utils_file_basename		        (GFile          *file);
+gchar           *bedit_file_browser_utils_symbolic_icon_name_from_file  (GFile *file);
+gchar		*bedit_file_browser_utils_file_basename		        (GFile          *file);
 
-gboolean	 gedit_file_browser_utils_confirmation_dialog	        (BeditWindow    *window,
+gboolean	 bedit_file_browser_utils_confirmation_dialog	        (BeditWindow    *window,
 									 GtkMessageType  type,
 									 gchar const    *message,
 									 gchar const    *secondary,

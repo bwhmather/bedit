@@ -1,6 +1,6 @@
 /*
- * gedit.c
- * This file is part of gedit
+ * bedit.c
+ * This file is part of bedit
  *
  * Copyright (C) 2005 - Paolo Maggi
  *
@@ -20,32 +20,32 @@
 
 #include "config.h"
 
-#include "gedit-app.h"
+#include "bedit-app.h"
 
 #if defined OS_OSX
-#  include "gedit-app-osx.h"
+#  include "bedit-app-osx.h"
 #elif defined G_OS_WIN32
-#  include "gedit-app-win32.h"
+#  include "bedit-app-win32.h"
 #else
-#  include "gedit-app-x11.h"
+#  include "bedit-app-x11.h"
 #endif
 
 #include <locale.h>
 #include <libintl.h>
 #include <tepl/tepl.h>
 
-#include "gedit-dirs.h"
-#include "gedit-debug.h"
+#include "bedit-dirs.h"
+#include "bedit-debug.h"
 
 #ifdef G_OS_WIN32
 #include <gmodule.h>
-static GModule *libgedit_dll = NULL;
+static GModule *libbedit_dll = NULL;
 
-/* This code must live in gedit.exe, not in libgedit.dll, since the whole
- * point is to find and load libgedit.dll.
+/* This code must live in bedit.exe, not in libbedit.dll, since the whole
+ * point is to find and load libbedit.dll.
  */
 static gboolean
-gedit_w32_load_private_dll (void)
+bedit_w32_load_private_dll (void)
 {
 	gchar *dllpath;
 	gchar *prefix;
@@ -56,17 +56,17 @@ gedit_w32_load_private_dll (void)
 	{
 		/* Instead of g_module_open () it may be possible to do any of the
 		 * following:
-		 * A) Change PATH to "${dllpath}/lib/gedit;$PATH"
-		 * B) Call SetDllDirectory ("${dllpath}/lib/gedit")
-		 * C) Call AddDllDirectory ("${dllpath}/lib/gedit")
+		 * A) Change PATH to "${dllpath}/lib/bedit;$PATH"
+		 * B) Call SetDllDirectory ("${dllpath}/lib/bedit")
+		 * C) Call AddDllDirectory ("${dllpath}/lib/bedit")
 		 * But since we only have one library, and its name is known, may as well
 		 * use gmodule.
 		 */
-		dllpath = g_build_filename (prefix, "lib", "gedit", "lib" PACKAGE_STRING ".dll", NULL);
+		dllpath = g_build_filename (prefix, "lib", "bedit", "lib" PACKAGE_STRING ".dll", NULL);
 		g_free (prefix);
 
-		libgedit_dll = g_module_open (dllpath, 0);
-		if (libgedit_dll == NULL)
+		libbedit_dll = g_module_open (dllpath, 0);
+		if (libbedit_dll == NULL)
 		{
 			g_printerr ("Failed to load '%s': %s\n",
 			            dllpath, g_module_error ());
@@ -75,26 +75,26 @@ gedit_w32_load_private_dll (void)
 		g_free (dllpath);
 	}
 
-	if (libgedit_dll == NULL)
+	if (libbedit_dll == NULL)
 	{
-		libgedit_dll = g_module_open ("lib" PACKAGE_STRING ".dll", 0);
-		if (libgedit_dll == NULL)
+		libbedit_dll = g_module_open ("lib" PACKAGE_STRING ".dll", 0);
+		if (libbedit_dll == NULL)
 		{
 			g_printerr ("Failed to load 'lib" PACKAGE_STRING ".dll': %s\n",
 			            g_module_error ());
 		}
 	}
 
-	return (libgedit_dll != NULL);
+	return (libbedit_dll != NULL);
 }
 
 static void
-gedit_w32_unload_private_dll (void)
+bedit_w32_unload_private_dll (void)
 {
-	if (libgedit_dll)
+	if (libbedit_dll)
 	{
-		g_module_close (libgedit_dll);
-		libgedit_dll = NULL;
+		g_module_close (libbedit_dll);
+		libbedit_dll = NULL;
 	}
 }
 #endif /* G_OS_WIN32 */
@@ -106,7 +106,7 @@ setup_i18n (void)
 
 	setlocale (LC_ALL, "");
 
-	dir = gedit_dirs_get_gedit_locale_dir ();
+	dir = bedit_dirs_get_bedit_locale_dir ();
 	bindtextdomain (GETTEXT_PACKAGE, dir);
 
 	bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
@@ -123,7 +123,7 @@ main (int argc, char *argv[])
 #if defined OS_OSX
 	type = GEDIT_TYPE_APP_OSX;
 #elif defined G_OS_WIN32
-	if (!gedit_w32_load_private_dll ())
+	if (!bedit_w32_load_private_dll ())
 	{
 		return 1;
 	}
@@ -133,9 +133,9 @@ main (int argc, char *argv[])
 	type = GEDIT_TYPE_APP_X11;
 #endif
 
-	/* NOTE: we should not make any calls to the gedit api before the
+	/* NOTE: we should not make any calls to the bedit api before the
 	 * private library is loaded */
-	gedit_dirs_init ();
+	bedit_dirs_init ();
 
 	setup_i18n ();
 	tepl_init ();
@@ -157,14 +157,14 @@ main (int argc, char *argv[])
 
 	if (app != NULL)
 	{
-		gedit_debug_message (DEBUG_APP, "Leaking with %i refs",
+		bedit_debug_message (DEBUG_APP, "Leaking with %i refs",
 		                     G_OBJECT (app)->ref_count);
 	}
 
 	tepl_finalize ();
 
 #ifdef G_OS_WIN32
-	gedit_w32_unload_private_dll ();
+	bedit_w32_unload_private_dll ();
 #endif
 
 	return status;

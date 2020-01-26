@@ -1,6 +1,6 @@
 /*
- * gedit-encodings-combo-box.c
- * This file is part of gedit
+ * bedit-encodings-combo-box.c
+ * This file is part of bedit
  *
  * Copyright (C) 2003-2005 - Paolo Maggi
  *
@@ -20,14 +20,14 @@
 
 #include "config.h"
 
-#include "gedit-encodings-combo-box.h"
+#include "bedit-encodings-combo-box.h"
 
 #include <glib/gi18n.h>
 
-#include "gedit-encodings-dialog.h"
-#include "gedit-settings.h"
-#include "gedit-utils.h"
-#include "gedit-encoding-items.h"
+#include "bedit-encodings-dialog.h"
+#include "bedit-settings.h"
+#include "bedit-utils.h"
+#include "bedit-encoding-items.h"
 
 struct _BeditEncodingsComboBox
 {
@@ -58,12 +58,12 @@ enum
 
 static GParamSpec *properties[LAST_PROP];
 
-G_DEFINE_TYPE (BeditEncodingsComboBox, gedit_encodings_combo_box, GTK_TYPE_COMBO_BOX)
+G_DEFINE_TYPE (BeditEncodingsComboBox, bedit_encodings_combo_box, GTK_TYPE_COMBO_BOX)
 
 static void	update_menu		(BeditEncodingsComboBox       *combo_box);
 
 static void
-gedit_encodings_combo_box_set_property (GObject    *object,
+bedit_encodings_combo_box_set_property (GObject    *object,
 					guint       prop_id,
 					const       GValue *value,
 					GParamSpec *pspec)
@@ -84,7 +84,7 @@ gedit_encodings_combo_box_set_property (GObject    *object,
 }
 
 static void
-gedit_encodings_combo_box_get_property (GObject    *object,
+bedit_encodings_combo_box_get_property (GObject    *object,
 					guint       prop_id,
 					GValue 	   *value,
 					GParamSpec *pspec)
@@ -105,22 +105,22 @@ gedit_encodings_combo_box_get_property (GObject    *object,
 }
 
 static void
-gedit_encodings_combo_box_dispose (GObject *object)
+bedit_encodings_combo_box_dispose (GObject *object)
 {
 	BeditEncodingsComboBox *combo = GEDIT_ENCODINGS_COMBO_BOX (object);
 
 	g_clear_object (&combo->store);
 
-	G_OBJECT_CLASS (gedit_encodings_combo_box_parent_class)->dispose (object);
+	G_OBJECT_CLASS (bedit_encodings_combo_box_parent_class)->dispose (object);
 }
 
 static void
-gedit_encodings_combo_box_constructed (GObject *object)
+bedit_encodings_combo_box_constructed (GObject *object)
 {
 	BeditEncodingsComboBox *combo = GEDIT_ENCODINGS_COMBO_BOX (object);
 	GtkCellRenderer *text_renderer;
 
-	G_OBJECT_CLASS (gedit_encodings_combo_box_parent_class)->constructed (object);
+	G_OBJECT_CLASS (bedit_encodings_combo_box_parent_class)->constructed (object);
 
 	/* Setup up the cells */
 	text_renderer = gtk_cell_renderer_text_new ();
@@ -137,14 +137,14 @@ gedit_encodings_combo_box_constructed (GObject *object)
 }
 
 static void
-gedit_encodings_combo_box_class_init (BeditEncodingsComboBoxClass *klass)
+bedit_encodings_combo_box_class_init (BeditEncodingsComboBoxClass *klass)
 {
 	GObjectClass *object_class = G_OBJECT_CLASS (klass);
 
-	object_class->set_property = gedit_encodings_combo_box_set_property;
-	object_class->get_property = gedit_encodings_combo_box_get_property;
-	object_class->dispose = gedit_encodings_combo_box_dispose;
-	object_class->constructed = gedit_encodings_combo_box_constructed;
+	object_class->set_property = bedit_encodings_combo_box_set_property;
+	object_class->get_property = bedit_encodings_combo_box_get_property;
+	object_class->dispose = bedit_encodings_combo_box_dispose;
+	object_class->constructed = bedit_encodings_combo_box_constructed;
 
 	/**
 	 * BeditEncodingsComboBox:save-mode:
@@ -192,7 +192,7 @@ configure_encodings (BeditEncodingsComboBox *menu)
 				  menu->activated_item);
 	g_signal_handler_unblock (menu, menu->changed_id);
 
-	dialog = gedit_encodings_dialog_new ();
+	dialog = bedit_encodings_dialog_new ();
 
 	if (toplevel != NULL)
 	{
@@ -302,7 +302,7 @@ update_menu (BeditEncodingsComboBox *menu)
 		add_separator (store);
 	}
 
-	encodings = gedit_encoding_items_get ();
+	encodings = bedit_encoding_items_get ();
 
 	while (encodings)
 	{
@@ -310,12 +310,12 @@ update_menu (BeditEncodingsComboBox *menu)
 
 		gtk_list_store_append (store, &iter);
 		gtk_list_store_set (store, &iter,
-				    COLUMN_NAME, gedit_encoding_item_get_name (item),
-				    COLUMN_ENCODING, gedit_encoding_item_get_encoding (item),
+				    COLUMN_NAME, bedit_encoding_item_get_name (item),
+				    COLUMN_ENCODING, bedit_encoding_item_get_encoding (item),
 				    COLUMN_CONFIGURE_ROW, FALSE,
 				    -1);
 
-		gedit_encoding_item_free (item);
+		bedit_encoding_item_free (item);
 		encodings = g_slist_delete_link (encodings, encodings);
 	}
 
@@ -337,7 +337,7 @@ update_menu (BeditEncodingsComboBox *menu)
 }
 
 static void
-gedit_encodings_combo_box_init (BeditEncodingsComboBox *menu)
+bedit_encodings_combo_box_init (BeditEncodingsComboBox *menu)
 {
 	menu->store = gtk_list_store_new (N_COLUMNS,
 	                                  G_TYPE_STRING,
@@ -355,7 +355,7 @@ gedit_encodings_combo_box_init (BeditEncodingsComboBox *menu)
 }
 
 /**
- * gedit_encodings_combo_box_new:
+ * bedit_encodings_combo_box_new:
  * @save_mode: whether the combo box is used for saving a content.
  *
  * Creates a new encodings combo box object. If @save_mode is %FALSE, it means
@@ -366,7 +366,7 @@ gedit_encodings_combo_box_init (BeditEncodingsComboBox *menu)
  * Returns: a new #BeditEncodingsComboBox object.
  */
 GtkWidget *
-gedit_encodings_combo_box_new (gboolean save_mode)
+bedit_encodings_combo_box_new (gboolean save_mode)
 {
 	return g_object_new (GEDIT_TYPE_ENCODINGS_COMBO_BOX,
 			     "save_mode", save_mode,
@@ -374,14 +374,14 @@ gedit_encodings_combo_box_new (gboolean save_mode)
 }
 
 /**
- * gedit_encodings_combo_box_get_selected_encoding:
+ * bedit_encodings_combo_box_get_selected_encoding:
  * @menu: a #BeditEncodingsComboBox.
  *
  * Returns: the selected #GtkSourceEncoding, or %NULL if the encoding should be
  * auto-detected (only for loading mode, not for saving).
  */
 const GtkSourceEncoding *
-gedit_encodings_combo_box_get_selected_encoding (BeditEncodingsComboBox *menu)
+bedit_encodings_combo_box_get_selected_encoding (BeditEncodingsComboBox *menu)
 {
 	GtkTreeIter iter;
 
@@ -405,14 +405,14 @@ gedit_encodings_combo_box_get_selected_encoding (BeditEncodingsComboBox *menu)
 }
 
 /**
- * gedit_encodings_combo_box_set_selected_encoding:
+ * bedit_encodings_combo_box_set_selected_encoding:
  * @menu: a #BeditEncodingsComboBox.
  * @encoding: the #GtkSourceEncoding.
  *
  * Sets the selected encoding.
  */
 void
-gedit_encodings_combo_box_set_selected_encoding (BeditEncodingsComboBox  *menu,
+bedit_encodings_combo_box_set_selected_encoding (BeditEncodingsComboBox  *menu,
 						 const GtkSourceEncoding *encoding)
 {
 	GtkTreeIter iter;

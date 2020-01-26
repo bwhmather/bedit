@@ -1,24 +1,24 @@
 /*
- * gedit-highlight-mode-dialog.c
- * This file is part of gedit
+ * bedit-highlight-mode-dialog.c
+ * This file is part of bedit
  *
  * Copyright (C) 2013 - Ignacio Casal Quinteiro
  *
- * gedit is free software; you can redistribute it and/or modify
+ * bedit is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 2 of the License, or
  * (at your option) any later version.
  *
- * gedit is distributed in the hope that it will be useful,
+ * bedit is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with gedit. If not, see <http://www.gnu.org/licenses/>.
+ * along with bedit. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "gedit-highlight-mode-dialog.h"
+#include "bedit-highlight-mode-dialog.h"
 
 #include <gtk/gtk.h>
 
@@ -30,10 +30,10 @@ struct _BeditHighlightModeDialog
 	gulong on_language_selected_id;
 };
 
-G_DEFINE_TYPE (BeditHighlightModeDialog, gedit_highlight_mode_dialog, GTK_TYPE_DIALOG)
+G_DEFINE_TYPE (BeditHighlightModeDialog, bedit_highlight_mode_dialog, GTK_TYPE_DIALOG)
 
 static void
-gedit_highlight_mode_dialog_response (GtkDialog *dialog,
+bedit_highlight_mode_dialog_response (GtkDialog *dialog,
                                       gint       response_id)
 {
 	BeditHighlightModeDialog *dlg = GEDIT_HIGHLIGHT_MODE_DIALOG (dialog);
@@ -41,7 +41,7 @@ gedit_highlight_mode_dialog_response (GtkDialog *dialog,
 	if (response_id == GTK_RESPONSE_OK)
 	{
 		g_signal_handler_block (dlg->selector, dlg->on_language_selected_id);
-		gedit_highlight_mode_selector_activate_selected_language (dlg->selector);
+		bedit_highlight_mode_selector_activate_selected_language (dlg->selector);
 		g_signal_handler_unblock (dlg->selector, dlg->on_language_selected_id);
 	}
 
@@ -54,28 +54,28 @@ on_language_selected (BeditHighlightModeSelector *sel,
                       BeditHighlightModeDialog   *dlg)
 {
 	g_signal_handler_block (dlg->selector, dlg->on_language_selected_id);
-	gedit_highlight_mode_selector_activate_selected_language (dlg->selector);
+	bedit_highlight_mode_selector_activate_selected_language (dlg->selector);
 	g_signal_handler_unblock (dlg->selector, dlg->on_language_selected_id);
 
 	gtk_widget_destroy (GTK_WIDGET (dlg));
 }
 
 static void
-gedit_highlight_mode_dialog_class_init (BeditHighlightModeDialogClass *klass)
+bedit_highlight_mode_dialog_class_init (BeditHighlightModeDialogClass *klass)
 {
 	GtkWidgetClass *widget_class = GTK_WIDGET_CLASS (klass);
 	GtkDialogClass *dialog_class = GTK_DIALOG_CLASS (klass);
 
-	dialog_class->response = gedit_highlight_mode_dialog_response;
+	dialog_class->response = bedit_highlight_mode_dialog_response;
 
 	/* Bind class to template */
 	gtk_widget_class_set_template_from_resource (widget_class,
-	                                             "/com/bwhmather/bedit/ui/gedit-highlight-mode-dialog.ui");
+	                                             "/com/bwhmather/bedit/ui/bedit-highlight-mode-dialog.ui");
 	gtk_widget_class_bind_template_child (widget_class, BeditHighlightModeDialog, selector);
 }
 
 static void
-gedit_highlight_mode_dialog_init (BeditHighlightModeDialog *dlg)
+bedit_highlight_mode_dialog_init (BeditHighlightModeDialog *dlg)
 {
 	gtk_widget_init_template (GTK_WIDGET (dlg));
 	gtk_dialog_set_default_response (GTK_DIALOG (dlg), GTK_RESPONSE_OK);
@@ -85,7 +85,7 @@ gedit_highlight_mode_dialog_init (BeditHighlightModeDialog *dlg)
 }
 
 GtkWidget *
-gedit_highlight_mode_dialog_new (GtkWindow *parent)
+bedit_highlight_mode_dialog_new (GtkWindow *parent)
 {
 	return GTK_WIDGET (g_object_new (GEDIT_TYPE_HIGHLIGHT_MODE_DIALOG,
 	                                 "transient-for", parent,
@@ -94,7 +94,7 @@ gedit_highlight_mode_dialog_new (GtkWindow *parent)
 }
 
 BeditHighlightModeSelector *
-gedit_highlight_mode_dialog_get_selector (BeditHighlightModeDialog *dlg)
+bedit_highlight_mode_dialog_get_selector (BeditHighlightModeDialog *dlg)
 {
 	g_return_val_if_fail (GEDIT_IS_HIGHLIGHT_MODE_DIALOG (dlg), NULL);
 

@@ -1,4 +1,4 @@
-gedit roadmap
+bedit roadmap
 =============
 
 This page contains the plans for major code changes we hope to get done in the
@@ -9,7 +9,7 @@ See also the
 
 See the [NEWS file](../NEWS) for a detailed history.
 
-If you often contribute to gedit, feel free to add your plans here, and add your
+If you often contribute to bedit, feel free to add your plans here, and add your
 name to the tasks that you are interested to solve.
 
 Task structure
@@ -22,7 +22,7 @@ Description.
 Credits/People interested to work on it: list of names. (Credits is for work
 already started).
 
-Make the gedit source code more re-usable
+Make the bedit source code more re-usable
 -----------------------------------------
 
 **Status**: in progress
@@ -30,13 +30,13 @@ Make the gedit source code more re-usable
 https://wiki.gnome.org/Apps/Bedit/ReusableCode
 
 Recently done:
-- gedit 3.35: start to use the [Tepl](https://wiki.gnome.org/Projects/Tepl)
+- bedit 3.35: start to use the [Tepl](https://wiki.gnome.org/Projects/Tepl)
   library.
 
 Next steps:
 - Use more features from the [Tepl](https://wiki.gnome.org/Projects/Tepl)
-  library, and develop Tepl alongside gedit. The goal is to reduce the amount of
-  code from the gedit core, by having re-usable code in Tepl instead.
+  library, and develop Tepl alongside bedit. The goal is to reduce the amount of
+  code from the bedit core, by having re-usable code in Tepl instead.
 
 Credits: Sébastien Wilmet
 
@@ -75,10 +75,10 @@ Do not allow incompatible plugins to be loaded
 
 **Status**: todo
 
-There are currently no checks to see if a plugin is compatible with the gedit
-version. Currently enabling a plugin can make gedit to crash.
+There are currently no checks to see if a plugin is compatible with the bedit
+version. Currently enabling a plugin can make bedit to crash.
 
-Solution: include the gedit plugin API version in the directory names where
+Solution: include the bedit plugin API version in the directory names where
 plugins need to be installed. Better solution: see
 [this libpeas feature request](https://bugzilla.gnome.org/show_bug.cgi?id=642694#c15).
 
@@ -90,7 +90,7 @@ Be able to quit the application with all documents saved, and restored on next s
 **Status**: todo
 
 Like in Sublime Text. Even for unsaved and untitled files, be able to quit
-gedit, restart it later and come back to the state before with all tabs
+bedit, restart it later and come back to the state before with all tabs
 restored.
 
 People interested to work on it: Sébastien Wilmet
@@ -100,7 +100,7 @@ Better C language support
 
 **Status**: todo
 
-Needed for more dog-fooding of gedit.
+Needed for more dog-fooding of bedit.
 
 - Code completion with Clang.
 - Align function parameters on the parenthesis (function definition /

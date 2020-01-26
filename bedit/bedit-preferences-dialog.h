@@ -1,7 +1,7 @@
 /* -*- Mode: C; tab-width: 8; indent-tabs-mode: t; c-basic-offset: 8 -*- */
 /*
- * gedit-preferences-dialog.c
- * This file is part of gedit
+ * bedit-preferences-dialog.c
+ * This file is part of bedit
  *
  * Copyright (C) 2001-2005 Paolo Maggi
  *
@@ -22,11 +22,11 @@
 #ifndef GEDIT_PREFERENCES_DIALOG_H
 #define GEDIT_PREFERENCES_DIALOG_H
 
-#include "gedit-window.h"
+#include "bedit-window.h"
 
 G_BEGIN_DECLS
 
-void		 gedit_show_preferences_dialog		(BeditWindow *parent);
+void		 bedit_show_preferences_dialog		(BeditWindow *parent);
 
 G_END_DECLS
 

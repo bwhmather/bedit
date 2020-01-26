@@ -1,8 +1,8 @@
 <page xmlns="http://projectmallard.org/1.0/"
       type="topic" style="task"
-      id="gedit-plugins-install">
+      id="bedit-plugins-install">
   <info>
-    <link type="guide" xref="gedit-plugin-guide#gedit-additional-plugins"/>
+    <link type="guide" xref="bedit-plugin-guide#bedit-additional-plugins"/>
     <revision pkgversion="3.8" date="2013-02-24" status="review"/>
     <credit type="author">
       <name>Jim Campbell</name>
@@ -15,11 +15,11 @@
     <desc>How to install third-party plugins.</desc>
   </info>
 
-  <title>Additional gedit plugins</title>
+  <title>Additional bedit plugins</title>
 
   <p>Installing third-party plugins gives you extra functionality that isn't 
-  available in default <app>gedit</app> plugins, or even the extra plugins that 
-  are part of the <app>gedit-plugins</app> package. An online list of 
+  available in default <app>bedit</app> plugins, or even the extra plugins that 
+  are part of the <app>bedit-plugins</app> package. An online list of 
   third-party plugins is 
   <link href="https://wiki.gnome.org/Apps/Bedit">kept here</link>.
   </p>
@@ -34,7 +34,7 @@
     repository from the internet. Refer to the plugin's documentation for 
     information on getting the plugin.</p></item>
     <item><p>Place the plugin files into the 
-    <file>/home/<var>username</var>/.local/share/gedit/plugins</file> directory.
+    <file>/home/<var>username</var>/.local/share/bedit/plugins</file> directory.
     </p>
     <p>Of course, replace the word <var>username</var> with your own username.
     </p></item>
@@ -56,7 +56,7 @@
   </note>
 
   <note style="tip">
-    <p>If the directory <file>.local/share/gedit/plugins/</file> is not 
+    <p>If the directory <file>.local/share/bedit/plugins/</file> is not 
     present on your system, you will need to create it.</p>
   </note>
   

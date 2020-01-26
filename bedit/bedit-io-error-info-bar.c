@@ -1,6 +1,6 @@
 /*
- * gedit-io-error-info-bar.c
- * This file is part of gedit
+ * bedit-io-error-info-bar.c
+ * This file is part of bedit
  *
  * Copyright (C) 2005 - Paolo Maggi
  *
@@ -22,17 +22,17 @@
  * Verbose error reporting for file I/O operations (load, save, revert, create)
  */
 
-#include "gedit-io-error-info-bar.h"
+#include "bedit-io-error-info-bar.h"
 
 #include <errno.h>
 #include <string.h>
 #include <glib/gi18n.h>
 #include <gio/gio.h>
 
-#include "gedit-encodings-combo-box.h"
-#include "gedit-settings.h"
-#include "gedit-utils.h"
-#include "gedit-document.h"
+#include "bedit-encodings-combo-box.h"
+#include "bedit-settings.h"
+#include "bedit-utils.h"
+#include "bedit-document.h"
 
 #define MAX_URI_IN_DIALOG_LENGTH 50
 
@@ -227,7 +227,7 @@ parse_gio_error (gint          code,
 					uri = g_file_get_uri (location);
 				}
 
-				if (uri && gedit_utils_decode_uri (uri, NULL, NULL, &hn, NULL, NULL))
+				if (uri && bedit_utils_decode_uri (uri, NULL, NULL, &hn, NULL, NULL))
 				{
 					if (hn != NULL)
 					{
@@ -309,7 +309,7 @@ parse_error (const GError *error,
 }
 
 GtkWidget *
-gedit_unrecoverable_reverting_error_info_bar_new (GFile        *location,
+bedit_unrecoverable_reverting_error_info_bar_new (GFile        *location,
 						  const GError *error)
 {
 	gchar *error_message = NULL;
@@ -330,7 +330,7 @@ gedit_unrecoverable_reverting_error_info_bar_new (GFile        *location,
 	 * though the dialog uses wrapped text, if the URI doesn't contain
 	 * white space then the text-wrapping code is too stupid to wrap it.
 	 */
-	temp_uri_for_display = gedit_utils_str_middle_truncate (full_formatted_uri,
+	temp_uri_for_display = bedit_utils_str_middle_truncate (full_formatted_uri,
 							        MAX_URI_IN_DIALOG_LENGTH);
 	g_free (full_formatted_uri);
 
@@ -380,9 +380,9 @@ create_combo_box (GtkWidget *info_bar,
 	label = gtk_label_new_with_mnemonic (label_markup);
 	g_free (label_markup);
 	gtk_label_set_use_markup (GTK_LABEL (label), TRUE);
-	menu = gedit_encodings_combo_box_new (TRUE);
+	menu = bedit_encodings_combo_box_new (TRUE);
 	g_object_set_data (G_OBJECT (info_bar),
-			   "gedit-info-bar-encoding-menu",
+			   "bedit-info-bar-encoding-menu",
 			   menu);
 
 	gtk_label_set_mnemonic_widget (GTK_LABEL (label), menu);
@@ -403,7 +403,7 @@ create_combo_box (GtkWidget *info_bar,
 }
 
 GtkWidget *
-gedit_network_unavailable_info_bar_new (GFile *location)
+bedit_network_unavailable_info_bar_new (GFile *location)
 {
 	GtkWidget *info_bar;
 	GtkWidget *hbox_content;
@@ -422,7 +422,7 @@ gedit_network_unavailable_info_bar_new (GFile *location)
 
 	full_formatted_uri = g_file_get_parse_name (location);
 
-	temp_uri_for_display = gedit_utils_str_middle_truncate (full_formatted_uri,
+	temp_uri_for_display = bedit_utils_str_middle_truncate (full_formatted_uri,
 							        MAX_URI_IN_DIALOG_LENGTH);
 	g_free (full_formatted_uri);
 	uri_for_display = g_markup_printf_escaped ("<i>%s</i>", temp_uri_for_display);
@@ -544,7 +544,7 @@ create_conversion_error_info_bar (const gchar *primary_text,
 }
 
 GtkWidget *
-gedit_io_loading_error_info_bar_new (GFile                   *location,
+bedit_io_loading_error_info_bar_new (GFile                   *location,
 				     const GtkSourceEncoding *encoding,
 				     const GError            *error)
 {
@@ -575,7 +575,7 @@ gedit_io_loading_error_info_bar_new (GFile                   *location,
 	 * though the dialog uses wrapped text, if the URI doesn't contain
 	 * white space then the text-wrapping code is too stupid to wrap it.
 	 */
-	temp_uri_for_display = gedit_utils_str_middle_truncate (full_formatted_uri,
+	temp_uri_for_display = bedit_utils_str_middle_truncate (full_formatted_uri,
 							        MAX_URI_IN_DIALOG_LENGTH);
 	g_free (full_formatted_uri);
 
@@ -657,7 +657,7 @@ gedit_io_loading_error_info_bar_new (GFile                   *location,
 }
 
 GtkWidget *
-gedit_conversion_error_while_saving_info_bar_new (GFile                   *location,
+bedit_conversion_error_while_saving_info_bar_new (GFile                   *location,
 						  const GtkSourceEncoding *encoding,
 						  const GError            *error)
 {
@@ -681,7 +681,7 @@ gedit_conversion_error_while_saving_info_bar_new (GFile                   *locat
 	 * though the dialog uses wrapped text, if the URI doesn't contain
 	 * white space then the text-wrapping code is too stupid to wrap it.
 	 */
-	temp_uri_for_display = gedit_utils_str_middle_truncate (full_formatted_uri,
+	temp_uri_for_display = bedit_utils_str_middle_truncate (full_formatted_uri,
 							        MAX_URI_IN_DIALOG_LENGTH);
 	g_free (full_formatted_uri);
 
@@ -710,24 +710,24 @@ gedit_conversion_error_while_saving_info_bar_new (GFile                   *locat
 }
 
 const GtkSourceEncoding *
-gedit_conversion_error_info_bar_get_encoding (GtkWidget *info_bar)
+bedit_conversion_error_info_bar_get_encoding (GtkWidget *info_bar)
 {
 	gpointer menu;
 
 	g_return_val_if_fail (GTK_IS_INFO_BAR (info_bar), NULL);
 
 	menu = g_object_get_data (G_OBJECT (info_bar),
-				  "gedit-info-bar-encoding-menu");
+				  "bedit-info-bar-encoding-menu");
 	if (menu != NULL)
 	{
-		return gedit_encodings_combo_box_get_selected_encoding (GEDIT_ENCODINGS_COMBO_BOX (menu));
+		return bedit_encodings_combo_box_get_selected_encoding (GEDIT_ENCODINGS_COMBO_BOX (menu));
 	}
 
 	return NULL;
 }
 
 GtkWidget *
-gedit_file_already_open_warning_info_bar_new (GFile *location)
+bedit_file_already_open_warning_info_bar_new (GFile *location)
 {
 	GtkWidget *info_bar;
 	GtkWidget *hbox_content;
@@ -750,7 +750,7 @@ gedit_file_already_open_warning_info_bar_new (GFile *location)
 	 * though the dialog uses wrapped text, if the URI doesn't contain
 	 * white space then the text-wrapping code is too stupid to wrap it.
 	 */
-	temp_uri_for_display = gedit_utils_str_middle_truncate (full_formatted_uri,
+	temp_uri_for_display = bedit_utils_str_middle_truncate (full_formatted_uri,
 							        MAX_URI_IN_DIALOG_LENGTH);
 	g_free (full_formatted_uri);
 
@@ -809,7 +809,7 @@ gedit_file_already_open_warning_info_bar_new (GFile *location)
 }
 
 GtkWidget *
-gedit_externally_modified_saving_error_info_bar_new (GFile        *location,
+bedit_externally_modified_saving_error_info_bar_new (GFile        *location,
 						     const GError *error)
 {
 	GtkWidget *info_bar;
@@ -836,7 +836,7 @@ gedit_externally_modified_saving_error_info_bar_new (GFile        *location,
 	 * though the dialog uses wrapped text, if the URI doesn't contain
 	 * white space then the text-wrapping code is too stupid to wrap it.
 	 */
-	temp_uri_for_display = gedit_utils_str_middle_truncate (full_formatted_uri,
+	temp_uri_for_display = bedit_utils_str_middle_truncate (full_formatted_uri,
 							        MAX_URI_IN_DIALOG_LENGTH);
 	g_free (full_formatted_uri);
 
@@ -897,7 +897,7 @@ gedit_externally_modified_saving_error_info_bar_new (GFile        *location,
 }
 
 GtkWidget *
-gedit_no_backup_saving_error_info_bar_new (GFile        *location,
+bedit_no_backup_saving_error_info_bar_new (GFile        *location,
 					   const GError *error)
 {
 	GtkWidget *info_bar;
@@ -926,7 +926,7 @@ gedit_no_backup_saving_error_info_bar_new (GFile        *location,
 	 * though the dialog uses wrapped text, if the URI doesn't contain
 	 * white space then the text-wrapping code is too stupid to wrap it.
 	 */
-	temp_uri_for_display = gedit_utils_str_middle_truncate (full_formatted_uri,
+	temp_uri_for_display = bedit_utils_str_middle_truncate (full_formatted_uri,
 							        MAX_URI_IN_DIALOG_LENGTH);
 	g_free (full_formatted_uri);
 
@@ -1001,7 +1001,7 @@ gedit_no_backup_saving_error_info_bar_new (GFile        *location,
 }
 
 GtkWidget *
-gedit_unrecoverable_saving_error_info_bar_new (GFile        *location,
+bedit_unrecoverable_saving_error_info_bar_new (GFile        *location,
 					       const GError *error)
 {
 	gchar *error_message = NULL;
@@ -1024,7 +1024,7 @@ gedit_unrecoverable_saving_error_info_bar_new (GFile        *location,
 	 * though the dialog uses wrapped text, if the URI doesn't contain
 	 * white space then the text-wrapping code is too stupid to wrap it.
 	 */
-	temp_uri_for_display = gedit_utils_str_middle_truncate (full_formatted_uri,
+	temp_uri_for_display = bedit_utils_str_middle_truncate (full_formatted_uri,
 							        MAX_URI_IN_DIALOG_LENGTH);
 	g_free (full_formatted_uri);
 
@@ -1130,7 +1130,7 @@ gedit_unrecoverable_saving_error_info_bar_new (GFile        *location,
 }
 
 GtkWidget *
-gedit_externally_modified_info_bar_new (GFile    *location,
+bedit_externally_modified_info_bar_new (GFile    *location,
 					gboolean  document_modified)
 {
 	gchar *full_formatted_uri;
@@ -1147,7 +1147,7 @@ gedit_externally_modified_info_bar_new (GFile    *location,
 	 * though the dialog uses wrapped text, if the URI doesn't contain
 	 * white space then the text-wrapping code is too stupid to wrap it.
 	 */
-	temp_uri_for_display = gedit_utils_str_middle_truncate (full_formatted_uri,
+	temp_uri_for_display = bedit_utils_str_middle_truncate (full_formatted_uri,
 							        MAX_URI_IN_DIALOG_LENGTH);
 	g_free (full_formatted_uri);
 
@@ -1193,7 +1193,7 @@ gedit_externally_modified_info_bar_new (GFile    *location,
 }
 
 GtkWidget *
-gedit_invalid_character_info_bar_new (GFile *location)
+bedit_invalid_character_info_bar_new (GFile *location)
 {
 	GtkWidget *info_bar;
 	GtkWidget *hbox_content;
@@ -1216,7 +1216,7 @@ gedit_invalid_character_info_bar_new (GFile *location)
 	 * though the dialog uses wrapped text, if the URI doesn't contain
 	 * white space then the text-wrapping code is too stupid to wrap it.
 	 */
-	temp_uri_for_display = gedit_utils_str_middle_truncate (full_formatted_uri,
+	temp_uri_for_display = bedit_utils_str_middle_truncate (full_formatted_uri,
 							        MAX_URI_IN_DIALOG_LENGTH);
 	g_free (full_formatted_uri);
 

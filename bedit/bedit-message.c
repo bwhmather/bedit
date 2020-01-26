@@ -1,33 +1,33 @@
 /*
- * gedit-message.c
- * This file is part of gedit
+ * bedit-message.c
+ * This file is part of bedit
  *
  * Copyright (C) 2008, 2010 - Jesse van den Kieboom
  *
- * gedit is free software; you can redistribute it and/or modify
+ * bedit is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 2 of the License, or
  * (at your option) any later version.
  *
- * gedit is distributed in the hope that it will be useful,
+ * bedit is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with gedit; if not, write to the Free Software
+ * along with bedit; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin St, Fifth Floor,
  * Boston, MA  02110-1301  USA
  */
 
-#include "gedit-message.h"
+#include "bedit-message.h"
 
 #include <string.h>
 
 /**
- * SECTION:gedit-message
+ * SECTION:bedit-message
  * @short_description: message bus message object
- * @include: gedit/gedit-message.h
+ * @include: bedit/bedit-message.h
  *
  * Communication on a #BeditMessageBus is done through messages. Messages are
  * sent over the bus and received by connecting callbacks on the message bus.
@@ -55,21 +55,21 @@ enum
 
 static GParamSpec *properties[LAST_PROP];
 
-G_DEFINE_TYPE_WITH_PRIVATE (BeditMessage, gedit_message, G_TYPE_OBJECT)
+G_DEFINE_TYPE_WITH_PRIVATE (BeditMessage, bedit_message, G_TYPE_OBJECT)
 
 static void
-gedit_message_finalize (GObject *object)
+bedit_message_finalize (GObject *object)
 {
 	BeditMessage *message = GEDIT_MESSAGE (object);
 
 	g_free (message->priv->object_path);
 	g_free (message->priv->method);
 
-	G_OBJECT_CLASS (gedit_message_parent_class)->finalize (object);
+	G_OBJECT_CLASS (bedit_message_parent_class)->finalize (object);
 }
 
 static void
-gedit_message_get_property (GObject    *object,
+bedit_message_get_property (GObject    *object,
                             guint       prop_id,
                             GValue     *value,
                             GParamSpec *pspec)
@@ -93,7 +93,7 @@ gedit_message_get_property (GObject    *object,
 }
 
 static void
-gedit_message_set_property (GObject      *object,
+bedit_message_set_property (GObject      *object,
                             guint         prop_id,
                             const GValue *value,
                             GParamSpec   *pspec)
@@ -117,19 +117,19 @@ gedit_message_set_property (GObject      *object,
 }
 
 static void
-gedit_message_class_init (BeditMessageClass *klass)
+bedit_message_class_init (BeditMessageClass *klass)
 {
 	GObjectClass *object_class = G_OBJECT_CLASS(klass);
 
-	object_class->finalize = gedit_message_finalize;
+	object_class->finalize = bedit_message_finalize;
 
-	object_class->get_property = gedit_message_get_property;
-	object_class->set_property = gedit_message_set_property;
+	object_class->get_property = bedit_message_get_property;
+	object_class->set_property = bedit_message_set_property;
 
 	/**
 	 * BeditMessage:object_path:
 	 *
-	 * The messages object path (e.g. /gedit/object/path).
+	 * The messages object path (e.g. /bedit/object/path).
 	 *
 	 */
 	properties[PROP_OBJECT_PATH] =
@@ -156,13 +156,13 @@ gedit_message_class_init (BeditMessageClass *klass)
 }
 
 static void
-gedit_message_init (BeditMessage *self)
+bedit_message_init (BeditMessage *self)
 {
-	self->priv = gedit_message_get_instance_private (self);
+	self->priv = bedit_message_get_instance_private (self);
 }
 
 /**
- * gedit_message_get_method:
+ * bedit_message_get_method:
  * @message: the #BeditMessage
  *
  * Get the message method.
@@ -171,7 +171,7 @@ gedit_message_init (BeditMessage *self)
  *
  */
 const gchar *
-gedit_message_get_method (BeditMessage *message)
+bedit_message_get_method (BeditMessage *message)
 {
 	g_return_val_if_fail (GEDIT_IS_MESSAGE (message), NULL);
 
@@ -179,7 +179,7 @@ gedit_message_get_method (BeditMessage *message)
 }
 
 /**
- * gedit_message_get_object_path:
+ * bedit_message_get_object_path:
  * @message: the #BeditMessage
  *
  * Get the message object path.
@@ -188,7 +188,7 @@ gedit_message_get_method (BeditMessage *message)
  *
  */
 const gchar *
-gedit_message_get_object_path (BeditMessage *message)
+bedit_message_get_object_path (BeditMessage *message)
 {
 	g_return_val_if_fail (GEDIT_IS_MESSAGE (message), NULL);
 
@@ -196,7 +196,7 @@ gedit_message_get_object_path (BeditMessage *message)
 }
 
 /**
- * gedit_message_is_valid_object_path:
+ * bedit_message_is_valid_object_path:
  * @object_path: (allow-none): the object path
  *
  * Returns whether @object_path is a valid object path
@@ -205,7 +205,7 @@ gedit_message_get_object_path (BeditMessage *message)
  *
  */
 gboolean
-gedit_message_is_valid_object_path (const gchar *object_path)
+bedit_message_is_valid_object_path (const gchar *object_path)
 {
 	if (!object_path)
 	{
@@ -241,7 +241,7 @@ gedit_message_is_valid_object_path (const gchar *object_path)
 }
 
 /**
- * gedit_message_type_identifier:
+ * bedit_message_type_identifier:
  * @object_path: (allow-none): the object path
  * @method: (allow-none): the method
  *
@@ -251,14 +251,14 @@ gedit_message_is_valid_object_path (const gchar *object_path)
  *
  */
 gchar *
-gedit_message_type_identifier (const gchar *object_path,
+bedit_message_type_identifier (const gchar *object_path,
                                const gchar *method)
 {
 	return g_strconcat (object_path, ".", method, NULL);
 }
 
 /**
- * gedit_message_has:
+ * bedit_message_has:
  * @message: the #BeditMessage
  * @propname: the property name
  *
@@ -268,7 +268,7 @@ gedit_message_type_identifier (const gchar *object_path,
  *
  */
 gboolean
-gedit_message_has (BeditMessage *message,
+bedit_message_has (BeditMessage *message,
                    const gchar  *propname)
 {
 	GObjectClass *klass;
@@ -282,7 +282,7 @@ gedit_message_has (BeditMessage *message,
 }
 
 gboolean
-gedit_message_type_has (GType         gtype,
+bedit_message_type_has (GType         gtype,
                         const gchar  *propname)
 {
 	GObjectClass *klass;
@@ -299,7 +299,7 @@ gedit_message_type_has (GType         gtype,
 }
 
 gboolean
-gedit_message_type_check (GType         gtype,
+bedit_message_type_check (GType         gtype,
                           const gchar  *propname,
                           GType         value_type)
 {

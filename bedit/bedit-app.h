@@ -1,6 +1,6 @@
 /*
- * gedit-app.h
- * This file is part of gedit
+ * bedit-app.h
+ * This file is part of bedit
  *
  * Copyright (C) 2005 - Paolo Maggi
  *
@@ -22,13 +22,13 @@
 #define GEDIT_APP_H
 
 #include <gtk/gtk.h>
-#include <gedit/gedit-window.h>
+#include <bedit/bedit-window.h>
 
 G_BEGIN_DECLS
 
-#define GEDIT_TYPE_APP (gedit_app_get_type())
+#define GEDIT_TYPE_APP (bedit_app_get_type())
 
-G_DECLARE_DERIVABLE_TYPE (BeditApp, gedit_app, GEDIT, APP, GtkApplication)
+G_DECLARE_DERIVABLE_TYPE (BeditApp, bedit_app, GEDIT, APP, GtkApplication)
 
 struct _BeditAppClass
 {
@@ -65,27 +65,27 @@ typedef enum
 /* We need to define this here to avoid problems with bindings and gsettings */
 #define GEDIT_LOCKDOWN_ALL 0xF
 
-BeditWindow	*gedit_app_create_window		(BeditApp    *app,
+BeditWindow	*bedit_app_create_window		(BeditApp    *app,
 							 GdkScreen   *screen);
 
-GList		*gedit_app_get_main_windows		(BeditApp    *app);
+GList		*bedit_app_get_main_windows		(BeditApp    *app);
 
-GList		*gedit_app_get_documents		(BeditApp    *app);
+GList		*bedit_app_get_documents		(BeditApp    *app);
 
-GList		*gedit_app_get_views			(BeditApp    *app);
+GList		*bedit_app_get_views			(BeditApp    *app);
 
 /* Lockdown state */
-BeditLockdownMask gedit_app_get_lockdown		(BeditApp    *app);
+BeditLockdownMask bedit_app_get_lockdown		(BeditApp    *app);
 
-gboolean	 gedit_app_show_help			(BeditApp    *app,
+gboolean	 bedit_app_show_help			(BeditApp    *app,
                                                          GtkWindow   *parent,
                                                          const gchar *name,
                                                          const gchar *link_id);
 
-void		 gedit_app_set_window_title		(BeditApp    *app,
+void		 bedit_app_set_window_title		(BeditApp    *app,
                                                          BeditWindow *window,
                                                          const gchar *title);
-gboolean	gedit_app_process_window_event		(BeditApp    *app,
+gboolean	bedit_app_process_window_event		(BeditApp    *app,
 							 BeditWindow *window,
 							 GdkEvent    *event);
 

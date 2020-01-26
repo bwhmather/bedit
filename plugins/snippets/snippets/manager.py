@@ -30,8 +30,8 @@ from .languagemanager import get_language_manager
 
 try:
     import gettext
-    gettext.bindtextdomain('gedit')
-    gettext.textdomain('gedit')
+    gettext.bindtextdomain('bedit')
+    gettext.textdomain('bedit')
     _ = gettext.gettext
 except:
     _ = lambda s: s

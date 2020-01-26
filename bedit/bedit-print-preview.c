@@ -1,5 +1,5 @@
 /*
- * gedit-print-preview.c
+ * bedit-print-preview.c
  *
  * Copyright (C) 2008 Paolo Borelli
  * Copyright (C) 2015 Sébastien Wilmet
@@ -18,7 +18,7 @@
  * along with this program; if not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "gedit-print-preview.h"
+#include "bedit-print-preview.h"
 
 #include <math.h>
 #include <stdlib.h>
@@ -77,10 +77,10 @@ struct _BeditPrintPreview
 	guint has_tooltip : 1;
 };
 
-G_DEFINE_TYPE (BeditPrintPreview, gedit_print_preview, GTK_TYPE_GRID)
+G_DEFINE_TYPE (BeditPrintPreview, bedit_print_preview, GTK_TYPE_GRID)
 
 static void
-gedit_print_preview_dispose (GObject *object)
+bedit_print_preview_dispose (GObject *object)
 {
 	BeditPrintPreview *preview = GEDIT_PRINT_PREVIEW (object);
 
@@ -103,11 +103,11 @@ gedit_print_preview_dispose (GObject *object)
 	g_clear_object (&preview->operation);
 	g_clear_object (&preview->context);
 
-	G_OBJECT_CLASS (gedit_print_preview_parent_class)->dispose (object);
+	G_OBJECT_CLASS (bedit_print_preview_parent_class)->dispose (object);
 }
 
 static void
-gedit_print_preview_grab_focus (GtkWidget *widget)
+bedit_print_preview_grab_focus (GtkWidget *widget)
 {
 	BeditPrintPreview *preview = GEDIT_PRINT_PREVIEW (widget);
 
@@ -115,18 +115,18 @@ gedit_print_preview_grab_focus (GtkWidget *widget)
 }
 
 static void
-gedit_print_preview_class_init (BeditPrintPreviewClass *klass)
+bedit_print_preview_class_init (BeditPrintPreviewClass *klass)
 {
 	GObjectClass *object_class = G_OBJECT_CLASS (klass);
 	GtkWidgetClass *widget_class = GTK_WIDGET_CLASS (klass);
 
-	object_class->dispose = gedit_print_preview_dispose;
+	object_class->dispose = bedit_print_preview_dispose;
 
-	widget_class->grab_focus = gedit_print_preview_grab_focus;
+	widget_class->grab_focus = bedit_print_preview_grab_focus;
 
 	/* Bind class to template */
 	gtk_widget_class_set_template_from_resource (widget_class,
-	                                             "/com/bwhmather/bedit/ui/gedit-print-preview.ui");
+	                                             "/com/bwhmather/bedit/ui/bedit-print-preview.ui");
 	gtk_widget_class_bind_template_child (widget_class, BeditPrintPreview, prev_button);
 	gtk_widget_class_bind_template_child (widget_class, BeditPrintPreview, next_button);
 	gtk_widget_class_bind_template_child (widget_class, BeditPrintPreview, page_entry);
@@ -830,7 +830,7 @@ preview_layout_key_press (GtkWidget         *widget,
 }
 
 static void
-gedit_print_preview_init (BeditPrintPreview *preview)
+bedit_print_preview_init (BeditPrintPreview *preview)
 {
 	preview->cur_page = 0;
 	preview->scale = 1.0;
@@ -1113,7 +1113,7 @@ create_preview_surface (BeditPrintPreview *preview,
 }
 
 GtkWidget *
-gedit_print_preview_new (GtkPrintOperation        *operation,
+bedit_print_preview_new (GtkPrintOperation        *operation,
 			 GtkPrintOperationPreview *gtk_preview,
 			 GtkPrintContext          *context)
 {

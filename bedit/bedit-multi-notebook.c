@@ -1,31 +1,31 @@
 /*
- * gedit-multi-notebook.c
- * This file is part of gedit
+ * bedit-multi-notebook.c
+ * This file is part of bedit
  *
  * Copyright (C) 2010 - Ignacio Casal Quinteiro
  *
- * gedit is free software; you can redistribute it and/or modify
+ * bedit is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 2 of the License, or
  * (at your option) any later version.
  *
- * gedit is distributed in the hope that it will be useful,
+ * bedit is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with gedit; if not, write to the Free Software
+ * along with bedit; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin St, Fifth Floor,
  * Boston, MA  02110-1301  USA
  */
 
-#include "gedit-multi-notebook.h"
+#include "bedit-multi-notebook.h"
 
-#include "gedit-enum-types.h"
-#include "gedit-settings.h"
-#include "gedit-tab-private.h"
-#include "gedit-tab.h"
+#include "bedit-enum-types.h"
+#include "bedit-settings.h"
+#include "bedit-tab-private.h"
+#include "bedit-tab.h"
 
 struct _BeditMultiNotebookPrivate
 {
@@ -69,7 +69,7 @@ enum
 
 static guint signals[LAST_SIGNAL];
 
-G_DEFINE_TYPE_WITH_PRIVATE (BeditMultiNotebook, gedit_multi_notebook, GTK_TYPE_GRID)
+G_DEFINE_TYPE_WITH_PRIVATE (BeditMultiNotebook, bedit_multi_notebook, GTK_TYPE_GRID)
 
 static void	remove_notebook		(BeditMultiNotebook *mnb,
 					 GtkWidget          *notebook);
@@ -77,7 +77,7 @@ static void	remove_notebook		(BeditMultiNotebook *mnb,
 static void	update_tabs_visibility	(BeditMultiNotebook *mnb);
 
 static void
-gedit_multi_notebook_get_property (GObject    *object,
+bedit_multi_notebook_get_property (GObject    *object,
 				   guint       prop_id,
 				   GValue     *value,
 				   GParamSpec *pspec)
@@ -105,7 +105,7 @@ gedit_multi_notebook_get_property (GObject    *object,
 }
 
 static void
-gedit_multi_notebook_set_property (GObject      *object,
+bedit_multi_notebook_set_property (GObject      *object,
 				   guint         prop_id,
 				   const GValue *value,
 				   GParamSpec   *pspec)
@@ -125,34 +125,34 @@ gedit_multi_notebook_set_property (GObject      *object,
 }
 
 static void
-gedit_multi_notebook_dispose (GObject *object)
+bedit_multi_notebook_dispose (GObject *object)
 {
 	BeditMultiNotebook *mnb = GEDIT_MULTI_NOTEBOOK (object);
 
 	g_clear_object (&mnb->priv->ui_settings);
 
-	G_OBJECT_CLASS (gedit_multi_notebook_parent_class)->dispose (object);
+	G_OBJECT_CLASS (bedit_multi_notebook_parent_class)->dispose (object);
 }
 
 static void
-gedit_multi_notebook_finalize (GObject *object)
+bedit_multi_notebook_finalize (GObject *object)
 {
 	BeditMultiNotebook *mnb = GEDIT_MULTI_NOTEBOOK (object);
 
 	g_list_free (mnb->priv->notebooks);
 
-	G_OBJECT_CLASS (gedit_multi_notebook_parent_class)->finalize (object);
+	G_OBJECT_CLASS (bedit_multi_notebook_parent_class)->finalize (object);
 }
 
 static void
-gedit_multi_notebook_class_init (BeditMultiNotebookClass *klass)
+bedit_multi_notebook_class_init (BeditMultiNotebookClass *klass)
 {
 	GObjectClass *object_class = G_OBJECT_CLASS (klass);
 
-	object_class->dispose = gedit_multi_notebook_dispose;
-	object_class->finalize = gedit_multi_notebook_finalize;
-	object_class->get_property = gedit_multi_notebook_get_property;
-	object_class->set_property = gedit_multi_notebook_set_property;
+	object_class->dispose = bedit_multi_notebook_dispose;
+	object_class->finalize = bedit_multi_notebook_finalize;
+	object_class->get_property = bedit_multi_notebook_get_property;
+	object_class->set_property = bedit_multi_notebook_set_property;
 
 	properties[PROP_ACTIVE_NOTEBOOK] =
 		g_param_spec_object ("active-notebook",
@@ -662,11 +662,11 @@ remove_notebook (BeditMultiNotebook *mnb,
 }
 
 static void
-gedit_multi_notebook_init (BeditMultiNotebook *mnb)
+bedit_multi_notebook_init (BeditMultiNotebook *mnb)
 {
 	BeditMultiNotebookPrivate *priv;
 
-	mnb->priv = gedit_multi_notebook_get_instance_private (mnb);
+	mnb->priv = bedit_multi_notebook_get_instance_private (mnb);
 	priv = mnb->priv;
 
 	priv->removing_notebook = FALSE;
@@ -684,18 +684,18 @@ gedit_multi_notebook_init (BeditMultiNotebook *mnb)
 			 "show-tabs-mode",
 			 G_SETTINGS_BIND_GET | G_SETTINGS_BIND_SET);
 
-	priv->active_notebook = gedit_notebook_new ();
+	priv->active_notebook = bedit_notebook_new ();
 	add_notebook (mnb, priv->active_notebook, TRUE);
 }
 
 BeditMultiNotebook *
-gedit_multi_notebook_new ()
+bedit_multi_notebook_new ()
 {
 	return g_object_new (GEDIT_TYPE_MULTI_NOTEBOOK, NULL);
 }
 
 BeditNotebook *
-gedit_multi_notebook_get_active_notebook (BeditMultiNotebook *mnb)
+bedit_multi_notebook_get_active_notebook (BeditMultiNotebook *mnb)
 {
 	g_return_val_if_fail (GEDIT_IS_MULTI_NOTEBOOK (mnb), NULL);
 
@@ -703,7 +703,7 @@ gedit_multi_notebook_get_active_notebook (BeditMultiNotebook *mnb)
 }
 
 gint
-gedit_multi_notebook_get_n_notebooks (BeditMultiNotebook *mnb)
+bedit_multi_notebook_get_n_notebooks (BeditMultiNotebook *mnb)
 {
 	g_return_val_if_fail (GEDIT_IS_MULTI_NOTEBOOK (mnb), 0);
 
@@ -711,7 +711,7 @@ gedit_multi_notebook_get_n_notebooks (BeditMultiNotebook *mnb)
 }
 
 BeditNotebook *
-gedit_multi_notebook_get_nth_notebook (BeditMultiNotebook *mnb,
+bedit_multi_notebook_get_nth_notebook (BeditMultiNotebook *mnb,
 				       gint                notebook_num)
 {
 	g_return_val_if_fail (GEDIT_IS_MULTI_NOTEBOOK (mnb), NULL);
@@ -720,7 +720,7 @@ gedit_multi_notebook_get_nth_notebook (BeditMultiNotebook *mnb,
 }
 
 BeditNotebook *
-gedit_multi_notebook_get_notebook_for_tab (BeditMultiNotebook *mnb,
+bedit_multi_notebook_get_notebook_for_tab (BeditMultiNotebook *mnb,
                                            BeditTab           *tab)
 {
 	GList *l;
@@ -747,7 +747,7 @@ gedit_multi_notebook_get_notebook_for_tab (BeditMultiNotebook *mnb,
 }
 
 gint
-gedit_multi_notebook_get_notebook_num (BeditMultiNotebook *mnb,
+bedit_multi_notebook_get_notebook_num (BeditMultiNotebook *mnb,
 				       BeditNotebook      *notebook)
 {
 	g_return_val_if_fail (GEDIT_IS_MULTI_NOTEBOOK (mnb), -1);
@@ -757,7 +757,7 @@ gedit_multi_notebook_get_notebook_num (BeditMultiNotebook *mnb,
 }
 
 gint
-gedit_multi_notebook_get_n_tabs (BeditMultiNotebook *mnb)
+bedit_multi_notebook_get_n_tabs (BeditMultiNotebook *mnb)
 {
 	g_return_val_if_fail (GEDIT_IS_MULTI_NOTEBOOK (mnb), 0);
 
@@ -765,7 +765,7 @@ gedit_multi_notebook_get_n_tabs (BeditMultiNotebook *mnb)
 }
 
 gint
-gedit_multi_notebook_get_page_num (BeditMultiNotebook *mnb,
+bedit_multi_notebook_get_page_num (BeditMultiNotebook *mnb,
 				   BeditTab           *tab)
 {
 	GList *l;
@@ -791,7 +791,7 @@ gedit_multi_notebook_get_page_num (BeditMultiNotebook *mnb,
 }
 
 BeditTab *
-gedit_multi_notebook_get_active_tab (BeditMultiNotebook *mnb)
+bedit_multi_notebook_get_active_tab (BeditMultiNotebook *mnb)
 {
 	g_return_val_if_fail (GEDIT_IS_MULTI_NOTEBOOK (mnb), NULL);
 
@@ -800,7 +800,7 @@ gedit_multi_notebook_get_active_tab (BeditMultiNotebook *mnb)
 }
 
 void
-gedit_multi_notebook_set_active_tab (BeditMultiNotebook *mnb,
+bedit_multi_notebook_set_active_tab (BeditMultiNotebook *mnb,
 				     BeditTab           *tab)
 {
 	GList *l;
@@ -844,7 +844,7 @@ gedit_multi_notebook_set_active_tab (BeditMultiNotebook *mnb,
 }
 
 void
-gedit_multi_notebook_set_current_page (BeditMultiNotebook *mnb,
+bedit_multi_notebook_set_current_page (BeditMultiNotebook *mnb,
 				       gint                page_num)
 {
 	GList *l;
@@ -878,7 +878,7 @@ gedit_multi_notebook_set_current_page (BeditMultiNotebook *mnb,
 }
 
 GList *
-gedit_multi_notebook_get_all_tabs (BeditMultiNotebook *mnb)
+bedit_multi_notebook_get_all_tabs (BeditMultiNotebook *mnb)
 {
 	GList *nbs;
 	GList *ret = NULL;
@@ -905,7 +905,7 @@ gedit_multi_notebook_get_all_tabs (BeditMultiNotebook *mnb)
 }
 
 void
-gedit_multi_notebook_close_tabs (BeditMultiNotebook *mnb,
+bedit_multi_notebook_close_tabs (BeditMultiNotebook *mnb,
 				 const GList        *tabs)
 {
 	GList *l;
@@ -934,13 +934,13 @@ gedit_multi_notebook_close_tabs (BeditMultiNotebook *mnb,
 }
 
 /**
- * gedit_multi_notebook_close_all_tabs:
+ * bedit_multi_notebook_close_all_tabs:
  * @mnb: a #BeditMultiNotebook
  *
  * Closes all opened tabs.
  */
 void
-gedit_multi_notebook_close_all_tabs (BeditMultiNotebook *mnb)
+bedit_multi_notebook_close_all_tabs (BeditMultiNotebook *mnb)
 {
 	GList *nbs, *l;
 
@@ -952,24 +952,24 @@ gedit_multi_notebook_close_all_tabs (BeditMultiNotebook *mnb)
 
 	for (l = nbs; l != NULL; l = g_list_next (l))
 	{
-		gedit_notebook_remove_all_tabs (GEDIT_NOTEBOOK (l->data));
+		bedit_notebook_remove_all_tabs (GEDIT_NOTEBOOK (l->data));
 	}
 
 	g_list_free (nbs);
 }
 
 void
-gedit_multi_notebook_add_new_notebook (BeditMultiNotebook *mnb)
+bedit_multi_notebook_add_new_notebook (BeditMultiNotebook *mnb)
 {
 	GtkWidget *notebook;
 	BeditTab *tab;
 
 	g_return_if_fail (GEDIT_IS_MULTI_NOTEBOOK (mnb));
 
-	notebook = gedit_notebook_new ();
+	notebook = bedit_notebook_new ();
 	add_notebook (mnb, notebook, FALSE);
 
-	tab = _gedit_tab_new ();
+	tab = _bedit_tab_new ();
 	gtk_widget_show (GTK_WIDGET (tab));
 
 	/* When gtk_notebook_insert_page is called the focus is set in
@@ -979,7 +979,7 @@ gedit_multi_notebook_add_new_notebook (BeditMultiNotebook *mnb)
 	g_signal_handlers_block_by_func (notebook, notebook_set_focus, mnb);
 	g_signal_handlers_block_by_func (notebook, notebook_switch_page, mnb);
 
-	gedit_notebook_add_tab (GEDIT_NOTEBOOK (notebook),
+	bedit_notebook_add_tab (GEDIT_NOTEBOOK (notebook),
 				tab,
 				-1,
 				TRUE);
@@ -991,7 +991,7 @@ gedit_multi_notebook_add_new_notebook (BeditMultiNotebook *mnb)
 }
 
 void
-gedit_multi_notebook_add_new_notebook_with_tab (BeditMultiNotebook *mnb,
+bedit_multi_notebook_add_new_notebook_with_tab (BeditMultiNotebook *mnb,
                                                 BeditTab           *tab)
 {
 	GtkWidget *notebook;
@@ -1000,10 +1000,10 @@ gedit_multi_notebook_add_new_notebook_with_tab (BeditMultiNotebook *mnb,
 	g_return_if_fail (GEDIT_IS_MULTI_NOTEBOOK (mnb));
 	g_return_if_fail (GEDIT_IS_TAB (tab));
 
-	notebook = gedit_notebook_new ();
+	notebook = bedit_notebook_new ();
 	add_notebook (mnb, notebook, FALSE);
 
-	old_notebook = gedit_multi_notebook_get_notebook_for_tab (mnb, tab);
+	old_notebook = bedit_multi_notebook_get_notebook_for_tab (mnb, tab);
 
 	/* When gtk_notebook_insert_page is called the focus is set in
 	   the notebook, we don't want this to happen until the page is added.
@@ -1012,7 +1012,7 @@ gedit_multi_notebook_add_new_notebook_with_tab (BeditMultiNotebook *mnb,
 	g_signal_handlers_block_by_func (old_notebook, notebook_set_focus, mnb);
 	g_signal_handlers_block_by_func (old_notebook, notebook_switch_page, mnb);
 
-	gedit_notebook_move_tab (old_notebook,
+	bedit_notebook_move_tab (old_notebook,
 	                         GEDIT_NOTEBOOK (notebook),
 	                         tab,
 	                         -1);
@@ -1024,15 +1024,15 @@ gedit_multi_notebook_add_new_notebook_with_tab (BeditMultiNotebook *mnb,
 }
 
 void
-gedit_multi_notebook_remove_active_notebook (BeditMultiNotebook *mnb)
+bedit_multi_notebook_remove_active_notebook (BeditMultiNotebook *mnb)
 {
 	g_return_if_fail (GEDIT_IS_MULTI_NOTEBOOK (mnb));
 
-	gedit_notebook_remove_all_tabs (GEDIT_NOTEBOOK (mnb->priv->active_notebook));
+	bedit_notebook_remove_all_tabs (GEDIT_NOTEBOOK (mnb->priv->active_notebook));
 }
 
 void
-gedit_multi_notebook_previous_notebook (BeditMultiNotebook *mnb)
+bedit_multi_notebook_previous_notebook (BeditMultiNotebook *mnb)
 {
 	GList *current;
 	GtkWidget *notebook;
@@ -1051,7 +1051,7 @@ gedit_multi_notebook_previous_notebook (BeditMultiNotebook *mnb)
 }
 
 void
-gedit_multi_notebook_next_notebook (BeditMultiNotebook *mnb)
+bedit_multi_notebook_next_notebook (BeditMultiNotebook *mnb)
 {
 	GList *current;
 	GtkWidget *notebook;
@@ -1070,7 +1070,7 @@ gedit_multi_notebook_next_notebook (BeditMultiNotebook *mnb)
 }
 
 void
-gedit_multi_notebook_foreach_notebook (BeditMultiNotebook *mnb,
+bedit_multi_notebook_foreach_notebook (BeditMultiNotebook *mnb,
 				       GtkCallback         callback,
 				       gpointer            callback_data)
 {
@@ -1085,7 +1085,7 @@ gedit_multi_notebook_foreach_notebook (BeditMultiNotebook *mnb,
 }
 
 void
-gedit_multi_notebook_foreach_tab (BeditMultiNotebook *mnb,
+bedit_multi_notebook_foreach_tab (BeditMultiNotebook *mnb,
 				  GtkCallback         callback,
 				  gpointer            callback_data)
 {
@@ -1112,7 +1112,7 @@ gedit_multi_notebook_foreach_tab (BeditMultiNotebook *mnb,
  * we do not have a real property etc.
  */
 void
-_gedit_multi_notebook_set_show_tabs (BeditMultiNotebook *mnb,
+_bedit_multi_notebook_set_show_tabs (BeditMultiNotebook *mnb,
 				     gboolean           show)
 {
 	g_return_if_fail (GEDIT_IS_MULTI_NOTEBOOK (mnb));

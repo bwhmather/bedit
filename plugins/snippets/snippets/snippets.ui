@@ -54,7 +54,7 @@
         <property name="can_focus">True</property>
         <property name="position">275</property>
         <style>
-          <class name="gedit-snippet-manager-paned"/>
+          <class name="bedit-snippet-manager-paned"/>
         </style>
         <child>
           <object class="GtkBox" id="box2">
@@ -68,7 +68,7 @@
                 <property name="can_focus">True</property>
                 <property name="shadow_type">in</property>
                 <style>
-                  <class name="gedit-snippet-manager-treeview"/>
+                  <class name="bedit-snippet-manager-treeview"/>
                 </style>
                 <child>
                   <object class="GtkTreeView" id="tree_view_snippets">
@@ -190,7 +190,7 @@
                 <property name="can_focus">True</property>
                 <property name="shadow_type">in</property>
                 <style>
-                  <class name="gedit-snippet-manager-view"/>
+                  <class name="bedit-snippet-manager-view"/>
                 </style>
                 <child>
                   <object class="BeditView" id="source_view_snippet">

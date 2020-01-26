@@ -1,6 +1,6 @@
 /*
- * gedit-debug.c
- * This file is part of gedit
+ * bedit-debug.c
+ * This file is part of bedit
  *
  * Copyright (C) 1998, 1999 Alex Roberts, Evan Lawrence
  * Copyright (C) 2000, 2001 Chema Celorio, Paolo Maggi
@@ -20,7 +20,7 @@
  * along with this program; if not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "gedit-debug.h"
+#include "bedit-debug.h"
 #include <stdio.h>
 
 #define ENABLE_PROFILING
@@ -35,9 +35,9 @@ static BeditDebugSection enabled_sections = GEDIT_NO_DEBUG;
 #define DEBUG_IS_ENABLED(section) (enabled_sections & (section))
 
 /**
- * gedit_debug_init:
+ * bedit_debug_init:
  *
- * Initializes the debugging subsystem of gedit.
+ * Initializes the debugging subsystem of bedit.
  *
  * The function checks for the existence of certain environment variables to
  * determine whether to enable output for a debug section. To enable output
@@ -51,7 +51,7 @@ static BeditDebugSection enabled_sections = GEDIT_NO_DEBUG;
  * called. It must only be called once.
  */
 void
-gedit_debug_init (void)
+bedit_debug_init (void)
 {
 	if (g_getenv ("GEDIT_DEBUG") != NULL)
 	{
@@ -116,30 +116,30 @@ out:
 }
 
 /**
- * gedit_debug:
+ * bedit_debug:
  * @section: debug section.
  * @file: file name.
  * @line: line number.
- * @function: name of the function that is calling gedit_debug().
+ * @function: name of the function that is calling bedit_debug().
  *
  * If @section is enabled, then logs the trace information @file, @line, and
  * @function.
  */
 void
-gedit_debug (BeditDebugSection  section,
+bedit_debug (BeditDebugSection  section,
 	     const gchar       *file,
 	     gint               line,
 	     const gchar       *function)
 {
-	gedit_debug_message (section, file, line, function, "%s", "");
+	bedit_debug_message (section, file, line, function, "%s", "");
 }
 
 /**
- * gedit_debug_message:
+ * bedit_debug_message:
  * @section: debug section.
  * @file: file name.
  * @line: line number.
- * @function: name of the function that is calling gedit_debug_message().
+ * @function: name of the function that is calling bedit_debug_message().
  * @format: A g_vprintf() format string.
  * @...: The format string arguments.
  *
@@ -148,7 +148,7 @@ gedit_debug (BeditDebugSection  section,
  * given format string arguments.
  */
 void
-gedit_debug_message (BeditDebugSection  section,
+bedit_debug_message (BeditDebugSection  section,
 		     const gchar       *file,
 		     gint               line,
 		     const gchar       *function,
@@ -195,10 +195,10 @@ gedit_debug_message (BeditDebugSection  section,
 }
 
 /**
- * gedit_debug_plugin_message:
+ * bedit_debug_plugin_message:
  * @file: file name.
  * @line: line number.
- * @function: name of the function that is calling gedit_debug_plugin_message().
+ * @function: name of the function that is calling bedit_debug_plugin_message().
  * @message: a message.
  *
  * If the section %GEDIT_DEBUG_PLUGINS is enabled, then logs the trace
@@ -225,12 +225,12 @@ gedit_debug_message (BeditDebugSection  section,
  * Since: 3.4
  */
 void
-gedit_debug_plugin_message (const gchar       *file,
+bedit_debug_plugin_message (const gchar       *file,
 			    gint               line,
 			    const gchar       *function,
 			    const gchar       *message)
 {
-	gedit_debug_message (GEDIT_DEBUG_PLUGINS, file, line, function, "%s", message);
+	bedit_debug_message (GEDIT_DEBUG_PLUGINS, file, line, function, "%s", message);
 }
 
 /* ex:set ts=8 noet: */

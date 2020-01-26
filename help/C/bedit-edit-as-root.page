@@ -1,9 +1,9 @@
 <page xmlns="http://projectmallard.org/1.0/"
       type="topic" style="task"
-      id="gedit-edit-as-root">
+      id="bedit-edit-as-root">
 
   <info>
-    <link type="guide" xref="index#gedit-working-with-files"/>
+    <link type="guide" xref="index#bedit-working-with-files"/>
     <desc>Use administrative privileges to edit a file.</desc>
     <revision pkgversion="3.8" date="2013-03-07" status="final"/>
     <credit type="author">
@@ -21,23 +21,23 @@
     user.</p>
   </note>
 
-  <p>To edit files as the root user, launch <app>gedit</app> from the terminal
+  <p>To edit files as the root user, launch <app>bedit</app> from the terminal
   by entering:</p>
-  <code>sudo gedit</code>
+  <code>sudo bedit</code>
 
   <p>Using the <cmd>sudo</cmd> command, you will need to successfully enter
-  your password before <app>gedit</app> will open.</p>
+  your password before <app>bedit</app> will open.</p>
 
   <p>As an alternative to the <cmd>sudo</cmd> command, you may obtain
   administrative privileges by entering:</p>
   <code>su -</code>
 
-  <p>You would then launch <app>gedit</app> using the <cmd>gedit</cmd>
+  <p>You would then launch <app>bedit</app> using the <cmd>bedit</cmd>
   command.</p>
 
   <note style="tip">
-    <p>Once you have opened <app>gedit</app> with administrative privileges,
-    <app>gedit</app> will keep those privileges until you close it.</p>
+    <p>Once you have opened <app>bedit</app> with administrative privileges,
+    <app>bedit</app> will keep those privileges until you close it.</p>
   </note>
 
 </page>

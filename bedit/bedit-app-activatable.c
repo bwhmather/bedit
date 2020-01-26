@@ -1,6 +1,6 @@
 /*
- * gedit-app-activatable.h
- * This file is part of gedit
+ * bedit-app-activatable.h
+ * This file is part of bedit
  *
  * Copyright (C) 2010 Steve Frécinaux
  * Copyright (C) 2010 Jesse van den Kieboom
@@ -21,34 +21,34 @@
 
 #include "config.h"
 
-#include "gedit-app-activatable.h"
-#include "gedit-app.h"
-#include "gedit-app-private.h"
+#include "bedit-app-activatable.h"
+#include "bedit-app.h"
+#include "bedit-app-private.h"
 
 /**
- * SECTION:gedit-app-activatable
+ * SECTION:bedit-app-activatable
  * @short_description: Interface for activatable extensions on apps
  * @see_also: #PeasExtensionSet
  *
  * #BeditAppActivatable is an interface which should be implemented by
- * extensions that should be activated on a gedit application.
+ * extensions that should be activated on a bedit application.
  **/
 
-G_DEFINE_INTERFACE(BeditAppActivatable, gedit_app_activatable, G_TYPE_OBJECT)
+G_DEFINE_INTERFACE(BeditAppActivatable, bedit_app_activatable, G_TYPE_OBJECT)
 
 static void
-gedit_app_activatable_default_init (BeditAppActivatableInterface *iface)
+bedit_app_activatable_default_init (BeditAppActivatableInterface *iface)
 {
 	/**
 	 * BeditAppActivatable:app:
 	 *
-	 * The app property contains the gedit app for this
+	 * The app property contains the bedit app for this
 	 * #BeditAppActivatable instance.
 	 */
 	g_object_interface_install_property (iface,
 	                                     g_param_spec_object ("app",
 	                                                          "App",
-	                                                          "The gedit app",
+	                                                          "The bedit app",
 	                                                          GEDIT_TYPE_APP,
 	                                                          G_PARAM_READWRITE |
 	                                                          G_PARAM_CONSTRUCT_ONLY |
@@ -56,13 +56,13 @@ gedit_app_activatable_default_init (BeditAppActivatableInterface *iface)
 }
 
 /**
- * gedit_app_activatable_activate:
+ * bedit_app_activatable_activate:
  * @activatable: A #BeditAppActivatable.
  *
  * Activates the extension on the application.
  */
 void
-gedit_app_activatable_activate (BeditAppActivatable *activatable)
+bedit_app_activatable_activate (BeditAppActivatable *activatable)
 {
 	BeditAppActivatableInterface *iface;
 
@@ -77,14 +77,14 @@ gedit_app_activatable_activate (BeditAppActivatable *activatable)
 }
 
 /**
- * gedit_app_activatable_deactivate:
+ * bedit_app_activatable_deactivate:
  * @activatable: A #BeditAppActivatable.
  *
  * Deactivates the extension from the application.
  *
  */
 void
-gedit_app_activatable_deactivate (BeditAppActivatable *activatable)
+bedit_app_activatable_deactivate (BeditAppActivatable *activatable)
 {
 	BeditAppActivatableInterface *iface;
 
@@ -99,7 +99,7 @@ gedit_app_activatable_deactivate (BeditAppActivatable *activatable)
 }
 
 BeditMenuExtension *
-gedit_app_activatable_extend_menu (BeditAppActivatable *activatable,
+bedit_app_activatable_extend_menu (BeditAppActivatable *activatable,
 				   const gchar *extension_point)
 {
 	BeditApp *app;
@@ -108,7 +108,7 @@ gedit_app_activatable_extend_menu (BeditAppActivatable *activatable,
 	g_return_val_if_fail (GEDIT_IS_APP_ACTIVATABLE (activatable), NULL);
 
 	g_object_get (G_OBJECT (activatable), "app", &app, NULL);
-	ext = _gedit_app_extend_menu (app, extension_point);
+	ext = _bedit_app_extend_menu (app, extension_point);
 	g_object_unref (app);
 
 	return ext;

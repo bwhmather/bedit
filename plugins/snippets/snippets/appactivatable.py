@@ -23,8 +23,8 @@ from .shareddata import SharedData
 
 try:
     import gettext
-    gettext.bindtextdomain('gedit')
-    gettext.textdomain('gedit')
+    gettext.bindtextdomain('bedit')
+    gettext.textdomain('bedit')
     _ = gettext.gettext
 except:
     _ = lambda s: s
@@ -42,39 +42,39 @@ class AppActivatable(GObject.Object, Bedit.AppActivatable):
         library = Library()
 
         if platform.system() == 'Windows':
-            snippetsdir = os.path.expanduser('~/gedit/snippets')
+            snippetsdir = os.path.expanduser('~/bedit/snippets')
         else:
-            snippetsdir = os.path.join(GLib.get_user_config_dir(), 'gedit/snippets')
+            snippetsdir = os.path.join(GLib.get_user_config_dir(), 'bedit/snippets')
 
         library.set_dirs(snippetsdir, self.system_dirs())
 
         self.css = Gtk.CssProvider()
         self.css.load_from_data("""
-.gedit-snippet-manager-paned {
+.bedit-snippet-manager-paned {
   border-style: solid;
   border-color: @borders;
 }
-.gedit-snippet-manager-paned:dir(ltr) {
+.bedit-snippet-manager-paned:dir(ltr) {
   border-width: 0 1px 0 0;
 }
 
-.gedit-snippet-manager-paned:dir(rtl) {
+.bedit-snippet-manager-paned:dir(rtl) {
   border-width: 0 0 0 1px;
 }
 
-.gedit-snippet-manager-view {
+.bedit-snippet-manager-view {
   border-width: 0 0 1px 0;
 }
 
-.gedit-snippet-manager-treeview {
+.bedit-snippet-manager-treeview {
   border-top-width: 0;
 }
 
-.gedit-snippet-manager-treeview:dir(ltr) {
+.bedit-snippet-manager-treeview:dir(ltr) {
   border-left-width: 0;
 }
 
-.gedit-snippet-manager-treeview:dir(rtl) {
+.bedit-snippet-manager-treeview:dir(rtl) {
   border-right-width: 0;
 }
 """.encode('utf-8'))
@@ -106,7 +106,7 @@ class AppActivatable(GObject.Object, Bedit.AppActivatable):
             datadirs = GLib.win32_get_package_installation_directory_of_module(None)
 
         for d in datadirs.split(os.pathsep):
-            d = os.path.join(d, 'gedit', 'plugins', 'snippets')
+            d = os.path.join(d, 'bedit', 'plugins', 'snippets')
 
             if os.path.isdir(d):
                 dirs.append(d)

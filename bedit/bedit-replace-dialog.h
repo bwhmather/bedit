@@ -1,6 +1,6 @@
 /*
- * gedit-replace-dialog.h
- * This file is part of gedit
+ * bedit-replace-dialog.h
+ * This file is part of bedit
  *
  * Copyright (C) 2005 Paolo Maggi
  *
@@ -23,12 +23,12 @@
 
 #include <gtk/gtk.h>
 #include <gtksourceview/gtksource.h>
-#include "gedit-window.h"
+#include "bedit-window.h"
 
 G_BEGIN_DECLS
 
-#define GEDIT_TYPE_REPLACE_DIALOG (gedit_replace_dialog_get_type ())
-G_DECLARE_FINAL_TYPE (BeditReplaceDialog, gedit_replace_dialog, GEDIT, REPLACE_DIALOG, GtkDialog)
+#define GEDIT_TYPE_REPLACE_DIALOG (bedit_replace_dialog_get_type ())
+G_DECLARE_FINAL_TYPE (BeditReplaceDialog, bedit_replace_dialog, GEDIT, REPLACE_DIALOG, GtkDialog)
 
 enum
 {
@@ -37,18 +37,18 @@ enum
 	GEDIT_REPLACE_DIALOG_REPLACE_ALL_RESPONSE
 };
 
-GtkWidget		*gedit_replace_dialog_new			(BeditWindow        *window);
+GtkWidget		*bedit_replace_dialog_new			(BeditWindow        *window);
 
-void			 gedit_replace_dialog_present_with_time		(BeditReplaceDialog *dialog,
+void			 bedit_replace_dialog_present_with_time		(BeditReplaceDialog *dialog,
 									 guint32             timestamp);
 
-const gchar		*gedit_replace_dialog_get_search_text		(BeditReplaceDialog *dialog);
+const gchar		*bedit_replace_dialog_get_search_text		(BeditReplaceDialog *dialog);
 
-const gchar		*gedit_replace_dialog_get_replace_text		(BeditReplaceDialog *dialog);
+const gchar		*bedit_replace_dialog_get_replace_text		(BeditReplaceDialog *dialog);
 
-gboolean		 gedit_replace_dialog_get_backwards		(BeditReplaceDialog *dialog);
+gboolean		 bedit_replace_dialog_get_backwards		(BeditReplaceDialog *dialog);
 
-void			 gedit_replace_dialog_set_replace_error		(BeditReplaceDialog *dialog,
+void			 bedit_replace_dialog_set_replace_error		(BeditReplaceDialog *dialog,
 									 const gchar        *error_msg);
 
 G_END_DECLS

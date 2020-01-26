@@ -1,5 +1,5 @@
 /*
- * gedit-spell-plugin.h
+ * bedit-spell-plugin.h
  *
  * Copyright (C) 2002-2005 Paolo Maggi
  *
@@ -27,7 +27,7 @@
 
 G_BEGIN_DECLS
 
-#define GEDIT_TYPE_SPELL_PLUGIN		(gedit_spell_plugin_get_type ())
+#define GEDIT_TYPE_SPELL_PLUGIN		(bedit_spell_plugin_get_type ())
 #define GEDIT_SPELL_PLUGIN(o)		(G_TYPE_CHECK_INSTANCE_CAST ((o), GEDIT_TYPE_SPELL_PLUGIN, BeditSpellPlugin))
 #define GEDIT_SPELL_PLUGIN_CLASS(k)	(G_TYPE_CHECK_CLASS_CAST((k), GEDIT_TYPE_SPELL_PLUGIN, BeditSpellPluginClass))
 #define GEDIT_IS_SPELL_PLUGIN(o)	(G_TYPE_CHECK_INSTANCE_TYPE ((o), GEDIT_TYPE_SPELL_PLUGIN))
@@ -51,7 +51,7 @@ struct _BeditSpellPluginClass
 	PeasExtensionBaseClass parent_class;
 };
 
-GType			gedit_spell_plugin_get_type	(void) G_GNUC_CONST;
+GType			bedit_spell_plugin_get_type	(void) G_GNUC_CONST;
 
 G_MODULE_EXPORT void	peas_register_types		(PeasObjectModule *module);
 

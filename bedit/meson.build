@@ -1,115 +1,115 @@
-libgedit_public_h = files(
-  'gedit-app-activatable.h',
-  'gedit-app.h',
-  'gedit-commands.h',
-  'gedit-debug.h',
-  'gedit-document.h',
-  'gedit-encodings-combo-box.h',
-  'gedit-menu-extension.h',
-  'gedit-message-bus.h',
-  'gedit-message.h',
-  'gedit-progress-info-bar.h',
-  'gedit-statusbar.h',
-  'gedit-tab.h',
-  'gedit-utils.h',
-  'gedit-view-activatable.h',
-  'gedit-view.h',
-  'gedit-window-activatable.h',
-  'gedit-window.h',
+libbedit_public_h = files(
+  'bedit-app-activatable.h',
+  'bedit-app.h',
+  'bedit-commands.h',
+  'bedit-debug.h',
+  'bedit-document.h',
+  'bedit-encodings-combo-box.h',
+  'bedit-menu-extension.h',
+  'bedit-message-bus.h',
+  'bedit-message.h',
+  'bedit-progress-info-bar.h',
+  'bedit-statusbar.h',
+  'bedit-tab.h',
+  'bedit-utils.h',
+  'bedit-view-activatable.h',
+  'bedit-view.h',
+  'bedit-window-activatable.h',
+  'bedit-window.h',
 )
 
-libgedit_private_h = files(
-  'gedit-app-private.h',
-  'gedit-close-confirmation-dialog.h',
-  'gedit-commands-private.h',
-  'gedit-dirs.h',
-  'gedit-document-private.h',
-  'gedit-documents-panel.h',
-  'gedit-encoding-items.h',
-  'gedit-encodings-dialog.h',
-  'gedit-file-chooser-dialog-gtk.h',
-  'gedit-file-chooser-dialog.h',
-  'gedit-highlight-mode-dialog.h',
-  'gedit-highlight-mode-selector.h',
-  'gedit-history-entry.h',
-  'gedit-io-error-info-bar.h',
-  'gedit-menu-stack-switcher.h',
-  'gedit-multi-notebook.h',
-  'gedit-notebook.h',
-  'gedit-notebook-popup-menu.h',
-  'gedit-notebook-stack-switcher.h',
-  'gedit-pango.h',
-  'gedit-plugins-engine.h',
-  'gedit-preferences-dialog.h',
-  'gedit-print-job.h',
-  'gedit-print-preview.h',
-  'gedit-recent.h',
-  'gedit-replace-dialog.h',
-  'gedit-settings.h',
-  'gedit-status-menu-button.h',
-  'gedit-tab-label.h',
-  'gedit-tab-private.h',
-  'gedit-view-frame.h',
-  'gedit-window-private.h',
+libbedit_private_h = files(
+  'bedit-app-private.h',
+  'bedit-close-confirmation-dialog.h',
+  'bedit-commands-private.h',
+  'bedit-dirs.h',
+  'bedit-document-private.h',
+  'bedit-documents-panel.h',
+  'bedit-encoding-items.h',
+  'bedit-encodings-dialog.h',
+  'bedit-file-chooser-dialog-gtk.h',
+  'bedit-file-chooser-dialog.h',
+  'bedit-highlight-mode-dialog.h',
+  'bedit-highlight-mode-selector.h',
+  'bedit-history-entry.h',
+  'bedit-io-error-info-bar.h',
+  'bedit-menu-stack-switcher.h',
+  'bedit-multi-notebook.h',
+  'bedit-notebook.h',
+  'bedit-notebook-popup-menu.h',
+  'bedit-notebook-stack-switcher.h',
+  'bedit-pango.h',
+  'bedit-plugins-engine.h',
+  'bedit-preferences-dialog.h',
+  'bedit-print-job.h',
+  'bedit-print-preview.h',
+  'bedit-recent.h',
+  'bedit-replace-dialog.h',
+  'bedit-settings.h',
+  'bedit-status-menu-button.h',
+  'bedit-tab-label.h',
+  'bedit-tab-private.h',
+  'bedit-view-frame.h',
+  'bedit-window-private.h',
 )
 
-libgedit_sources = files(
-  'gedit-app-activatable.c',
-  'gedit-app.c',
-  'gedit-close-confirmation-dialog.c',
-  'gedit-commands-documents.c',
-  'gedit-commands-edit.c',
-  'gedit-commands-file.c',
-  'gedit-commands-file-print.c',
-  'gedit-commands-help.c',
-  'gedit-commands-search.c',
-  'gedit-commands-view.c',
-  'gedit-debug.c',
-  'gedit-dirs.c',
-  'gedit-document.c',
-  'gedit-documents-panel.c',
-  'gedit-encoding-items.c',
-  'gedit-encodings-combo-box.c',
-  'gedit-encodings-dialog.c',
-  'gedit-file-chooser-dialog.c',
-  'gedit-file-chooser-dialog-gtk.c',
-  'gedit-highlight-mode-dialog.c',
-  'gedit-highlight-mode-selector.c',
-  'gedit-history-entry.c',
-  'gedit-io-error-info-bar.c',
-  'gedit-menu-extension.c',
-  'gedit-menu-stack-switcher.c',
-  'gedit-message-bus.c',
-  'gedit-message.c',
-  'gedit-multi-notebook.c',
-  'gedit-notebook.c',
-  'gedit-notebook-popup-menu.c',
-  'gedit-notebook-stack-switcher.c',
-  'gedit-pango.c',
-  'gedit-plugins-engine.c',
-  'gedit-preferences-dialog.c',
-  'gedit-print-job.c',
-  'gedit-print-preview.c',
-  'gedit-progress-info-bar.c',
-  'gedit-recent.c',
-  'gedit-replace-dialog.c',
-  'gedit-settings.c',
-  'gedit-statusbar.c',
-  'gedit-status-menu-button.c',
-  'gedit-tab.c',
-  'gedit-tab-label.c',
-  'gedit-utils.c',
-  'gedit-view-activatable.c',
-  'gedit-view.c',
-  'gedit-view-frame.c',
-  'gedit-window-activatable.c',
-  'gedit-window.c',
+libbedit_sources = files(
+  'bedit-app-activatable.c',
+  'bedit-app.c',
+  'bedit-close-confirmation-dialog.c',
+  'bedit-commands-documents.c',
+  'bedit-commands-edit.c',
+  'bedit-commands-file.c',
+  'bedit-commands-file-print.c',
+  'bedit-commands-help.c',
+  'bedit-commands-search.c',
+  'bedit-commands-view.c',
+  'bedit-debug.c',
+  'bedit-dirs.c',
+  'bedit-document.c',
+  'bedit-documents-panel.c',
+  'bedit-encoding-items.c',
+  'bedit-encodings-combo-box.c',
+  'bedit-encodings-dialog.c',
+  'bedit-file-chooser-dialog.c',
+  'bedit-file-chooser-dialog-gtk.c',
+  'bedit-highlight-mode-dialog.c',
+  'bedit-highlight-mode-selector.c',
+  'bedit-history-entry.c',
+  'bedit-io-error-info-bar.c',
+  'bedit-menu-extension.c',
+  'bedit-menu-stack-switcher.c',
+  'bedit-message-bus.c',
+  'bedit-message.c',
+  'bedit-multi-notebook.c',
+  'bedit-notebook.c',
+  'bedit-notebook-popup-menu.c',
+  'bedit-notebook-stack-switcher.c',
+  'bedit-pango.c',
+  'bedit-plugins-engine.c',
+  'bedit-preferences-dialog.c',
+  'bedit-print-job.c',
+  'bedit-print-preview.c',
+  'bedit-progress-info-bar.c',
+  'bedit-recent.c',
+  'bedit-replace-dialog.c',
+  'bedit-settings.c',
+  'bedit-statusbar.c',
+  'bedit-status-menu-button.c',
+  'bedit-tab.c',
+  'bedit-tab-label.c',
+  'bedit-utils.c',
+  'bedit-view-activatable.c',
+  'bedit-view.c',
+  'bedit-view-frame.c',
+  'bedit-window-activatable.c',
+  'bedit-window.c',
 )
 
-libgedit_c_args = []
-libgedit_link_args = []
+libbedit_c_args = []
+libbedit_link_args = []
 
-libgedit_deps = [
+libbedit_deps = [
   glib_dep,
   gobject_dep,
   gio_dep,
@@ -123,92 +123,92 @@ libgedit_deps = [
 ]
 
 if host_machine.system() == 'darwin'
-  libgedit_sources += files(
-    'gedit-app-osx.m',
-    'gedit-file-chooser-dialog-osx.m',
+  libbedit_sources += files(
+    'bedit-app-osx.m',
+    'bedit-file-chooser-dialog-osx.m',
   )
-  libgedit_c_args += [
+  libbedit_c_args += [
     '-DOS_OSX=1',
   ]
-  libgedit_link_args += [
+  libbedit_link_args += [
     '-Wl,-framework', '-Wl,Foundation',
     '-Wl,-framework', '-Wl,AppKit',
   ]
   gtk_mac_integration_dep = dependency('gtk-mac-integration-gtk3')
-  libgedit_deps += [
+  libbedit_deps += [
     gtk_mac_integration_dep,
   ]
 elif host_machine.system() == 'windows'
-  libgedit_sources += files(
-    'gedit-app-win32.c',
+  libbedit_sources += files(
+    'bedit-app-win32.c',
   )
 else
-  libgedit_sources += files(
-    'gedit-app-x11.c',
+  libbedit_sources += files(
+    'bedit-app-x11.c',
   )
 
-  libgedit_deps += [
+  libbedit_deps += [
     x11_dep,
   ]
 endif
 
-libgedit_enums = gnome.mkenums(
-  'gedit-enum-types',
-  sources: libgedit_public_h + ['gedit-notebook.h'],
-  h_template: 'gedit-enum-types.h.template',
-  c_template: 'gedit-enum-types.c.template',
+libbedit_enums = gnome.mkenums(
+  'bedit-enum-types',
+  sources: libbedit_public_h + ['bedit-notebook.h'],
+  h_template: 'bedit-enum-types.h.template',
+  c_template: 'bedit-enum-types.c.template',
 )
 
 subdir('resources')
 
-libgedit_sources += [
-  libgedit_enums.get(0),
-  libgedit_res.get(0),
+libbedit_sources += [
+  libbedit_enums.get(0),
+  libbedit_res.get(0),
 ]
 
-libgedit_dep_sources = []
+libbedit_dep_sources = []
 
 install_headers(
-  libgedit_public_h,
+  libbedit_public_h,
   install_dir: join_paths(
     get_option('prefix'),
     get_option('includedir'),
     package_string,
-    'gedit'
+    'bedit'
   )
 )
 
-libgedit_sha = shared_library(
+libbedit_sha = shared_library(
   package_string,
-  libgedit_sources + [libgedit_enums.get(1), libgedit_res.get(1)],
+  libbedit_sources + [libbedit_enums.get(1), libbedit_res.get(1)],
   include_directories: root_include_dir,
-  dependencies: libgedit_deps,
-  c_args: libgedit_c_args,
-  link_args: libgedit_link_args,
+  dependencies: libbedit_deps,
+  c_args: libbedit_c_args,
+  link_args: libbedit_link_args,
   install: true,
   install_dir: pkglibdir,
 )
 
 if generate_gir == true
-  libgedit_public_h += [
-    libgedit_enums.get(1),
+  libbedit_public_h += [
+    libbedit_enums.get(1),
   ]
 
-  libgedit_gir_includes = [
+  libbedit_gir_includes = [
     'Gtk-3.0',
     'GtkSource-4',
   ]
 
-  libgedit_gir = gnome.generate_gir(
-    libgedit_sha,
-    sources: libgedit_sources + libgedit_public_h,
+  libbedit_gir = gnome.generate_gir(
+    libbedit_sha,
+    sources: libbedit_sources + libbedit_public_h,
     nsversion: '3.0',
     namespace: 'Bedit',
-    symbol_prefix: 'gedit',
+    symbol_prefix: 'bedit',
     identifier_prefix: 'Bedit',
     export_packages: [package_string],
-    includes: libgedit_gir_includes,
-    link_with: libgedit_sha,
+    includes: libbedit_gir_includes,
+    link_with: libbedit_sha,
     install: true,
     install_dir_gir: join_paths(pkgdatadir, 'gir-1.0'),
     install_dir_typelib: join_paths(pkglibdir, 'girepository-1.0'),
@@ -222,12 +222,12 @@ if generate_gir == true
     )
   )
 
-  libgedit_dep_sources += [
-    libgedit_gir,
+  libbedit_dep_sources += [
+    libbedit_gir,
   ]
 
   if generate_vapi == true
-    libgedit_vapi_packages = [
+    libbedit_vapi_packages = [
       'gio-2.0',
       'atk',
       'gdk-3.0',
@@ -235,37 +235,37 @@ if generate_gir == true
       'gtksourceview-4',
     ]
 
-    libgedit_vapi = gnome.generate_vapi(
+    libbedit_vapi = gnome.generate_vapi(
       meson.project_name(),
-      sources: libgedit_gir.get(0),
-      packages: libgedit_vapi_packages,
+      sources: libbedit_gir.get(0),
+      packages: libbedit_vapi_packages,
       install: true,
       install_dir: vapidir,
     )
   endif
 endif
 
-libgedit_dep = declare_dependency(
-  link_with: libgedit_sha,
+libbedit_dep = declare_dependency(
+  link_with: libbedit_sha,
   include_directories: root_include_dir,
-  dependencies: libgedit_deps,
-  sources: libgedit_dep_sources,
+  dependencies: libbedit_deps,
+  sources: libbedit_dep_sources,
 )
 
-libgedit_pc = pkg.generate(
+libbedit_pc = pkg.generate(
   name: meson.project_name(),
   description: 'GNOME text editor',
   requires: ['gtksourceview-4', 'libpeas-1.0', 'libpeas-gtk-1.0'],
   version: meson.project_version(),
   subdirs: package_string,
-  libraries: libgedit_sha,
+  libraries: libbedit_sha,
   install_dir: pkgconfigdir,
 )
 
 # FIXME: https://github.com/mesonbuild/meson/issues/1687
 custom_target(
   'com.bwhmather.bedit.enums.xml',
-  input : libgedit_sources + libgedit_public_h + ['gedit-notebook.h'],
+  input : libbedit_sources + libbedit_public_h + ['bedit-notebook.h'],
   output: 'com.bwhmather.bedit.enums.xml',
   capture: true,
   command: [
@@ -285,27 +285,27 @@ custom_target(
   )
 )
 
-gedit_sources = [
-  'gedit.c',
+bedit_sources = [
+  'bedit.c',
 ]
 
-gedit_c_args = []
+bedit_c_args = []
 
 if host_machine.system() == 'darwin'
-  gedit_c_args += [
+  bedit_c_args += [
     '-DOS_OSX=1',
   ]
 endif
 
-gedit_deps = [
-  libgedit_dep,
+bedit_deps = [
+  libbedit_dep,
 ]
 
-gedit_exe = executable(
+bedit_exe = executable(
   meson.project_name(),
-  gedit_sources,
-  dependencies: gedit_deps,
-  c_args: gedit_c_args,
+  bedit_sources,
+  dependencies: bedit_deps,
+  c_args: bedit_c_args,
   install: true,
   install_dir: bindir,
   install_rpath: pkglibdir,

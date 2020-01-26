@@ -1,4 +1,4 @@
-# Norwegian bokmål translation of gedit.
+# Norwegian bokmål translation of bedit.
 # Copyright (C) 1998-2004, 2005 Free Software Foundation, Inc.
 #
 # Kjartan Maraas <kmaraas@gnome.org>, 1998-2019.
@@ -7,8 +7,8 @@
 # Torstein Adolf Winterseth <kvikende@fsfe.org>, 2010.
 msgid ""
 msgstr ""
-"Project-Id-Version: gedit 3.34.x\n"
-"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gedit/issues\n"
+"Project-Id-Version: bedit 3.34.x\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/bedit/issues\n"
 "POT-Creation-Date: 2019-06-18 04:59+0000\n"
 "PO-Revision-Date: 2019-07-26 09:41+0200\n"
 "Last-Translator: Kjartan Maraas <kmaraas@gnome.org>\n"
@@ -20,8 +20,8 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: data/com.bwhmather.bedit.appdata.xml.in:7
-msgid "gedit"
-msgstr "gedit"
+msgid "bedit"
+msgstr "bedit"
 
 #: data/com.bwhmather.bedit.appdata.xml.in:8 data/com.bwhmather.bedit.desktop.in.in:4
 msgid "Edit text files"
@@ -29,22 +29,22 @@ msgstr "Rediger tekstfiler"
 
 #: data/com.bwhmather.bedit.appdata.xml.in:10
 msgid ""
-"gedit is the official text editor of the GNOME desktop environment. While "
-"aiming at simplicity and ease of use, gedit is a powerful general purpose "
+"bedit is the official text editor of the GNOME desktop environment. While "
+"aiming at simplicity and ease of use, bedit is a powerful general purpose "
 "text editor."
 msgstr ""
-"gedit er det offisielle tekstredigeringsprogrammet for skrivebordsmiljøet "
-"GNOME. Selv om målet er å være enkelt og lett å bruke, er gedit et kraftig "
+"bedit er det offisielle tekstredigeringsprogrammet for skrivebordsmiljøet "
+"GNOME. Selv om målet er å være enkelt og lett å bruke, er bedit et kraftig "
 "tekstredigeringsverktøy."
 
 #: data/com.bwhmather.bedit.appdata.xml.in:15
 msgid ""
 "Whether you are writing the next bestseller, programming an innovative "
-"application, or simply taking some quick notes, gedit will be a reliable "
+"application, or simply taking some quick notes, bedit will be a reliable "
 "tool to accomplish your task."
 msgstr ""
 "Om du skriver din neste bestselger, programmerer et innovativt program eller "
-"bare skriver noen raske notater, er gedit et pålitelig verktøy til å "
+"bare skriver noen raske notater, er bedit et pålitelig verktøy til å "
 "fullføre oppgaven med."
 
 #: data/com.bwhmather.bedit.appdata.xml.in:20
@@ -55,7 +55,7 @@ msgstr ""
 "Det fleksible systemet for tillegg lar deg skreddersy programmet til dine "
 "behov og tilpasse det til din arbeidsflyt."
 
-#: data/com.bwhmather.bedit.desktop.in.in:3 gedit/gedit-print-job.c:730
+#: data/com.bwhmather.bedit.desktop.in.in:3 bedit/bedit-print-job.c:730
 msgid "Text Editor"
 msgstr "Tekstredigering"
 
@@ -63,8 +63,8 @@ msgstr "Tekstredigering"
 #. The list MUST also end with a semicolon!
 #. Search terms to find this application.
 #: data/com.bwhmather.bedit.desktop.in.in:18
-msgid "Text;Editor;Plaintext;Write;gedit;"
-msgstr "Tekst;Redigering;Vanlig tekst;Skriv;gedit;"
+msgid "Text;Editor;Plaintext;Write;bedit;"
+msgstr "Tekst;Redigering;Vanlig tekst;Skriv;bedit;"
 
 #: data/com.bwhmather.bedit.desktop.in.in:22
 msgid "New Window"
@@ -81,12 +81,12 @@ msgstr "Bruk forvalgt skrift"
 #: data/com.bwhmather.bedit.gschema.xml.in:37
 msgid ""
 "Whether to use the system’s default fixed width font for editing text "
-"instead of a font specific to gedit. If this option is turned off, then the "
+"instead of a font specific to bedit. If this option is turned off, then the "
 "font named in the “Editor Font” option will be used instead of the system "
 "font."
 msgstr ""
 "Om systemets forvalgte skrift med fast bredde skal brukes ved redigering av "
-"tekst i stedet for en spesifikk skrift for gedit. Hvis dette valget er slått "
+"tekst i stedet for en spesifikk skrift for bedit. Hvis dette valget er slått "
 "av, brukes skriften som er valgt i «Skrift for redigering»  i stedet."
 
 #. Translators: This is a GSettings default value. Do NOT change or localize the quotation marks!
@@ -119,8 +119,8 @@ msgid "Create Backup Copies"
 msgstr "Lag sikkerhetskopier"
 
 #: data/com.bwhmather.bedit.gschema.xml.in:53
-msgid "Whether gedit should create backup copies for the files it saves."
-msgstr "Hvorvidt gedit skal lage sikkerhetskopier for filer som lagres."
+msgid "Whether bedit should create backup copies for the files it saves."
+msgstr "Hvorvidt bedit skal lage sikkerhetskopier for filer som lagres."
 
 #: data/com.bwhmather.bedit.gschema.xml.in:57
 msgid "Autosave"
@@ -128,10 +128,10 @@ msgstr "Automatisk lagring"
 
 #: data/com.bwhmather.bedit.gschema.xml.in:58
 msgid ""
-"Whether gedit should automatically save modified files after a time "
+"Whether bedit should automatically save modified files after a time "
 "interval. You can set the time interval with the “Autosave Interval” option."
 msgstr ""
-"Om gedit skal lagre endrede filer automatisk etter et tidsintervall. Du kan "
+"Om bedit skal lagre endrede filer automatisk etter et tidsintervall. Du kan "
 "velge tidsintervall med valget «Intervall for automatisk lagring»."
 
 #: data/com.bwhmather.bedit.gschema.xml.in:62
@@ -140,10 +140,10 @@ msgstr "Intervall for automatisk lagring"
 
 #: data/com.bwhmather.bedit.gschema.xml.in:63
 msgid ""
-"Number of minutes after which gedit will automatically save modified files. "
+"Number of minutes after which bedit will automatically save modified files. "
 "This will only take effect if the “Autosave” option is turned on."
 msgstr ""
-"Antall minutter før gedit lagrer endrede filer automatisk. Dette blir bare "
+"Antall minutter før bedit lagrer endrede filer automatisk. Dette blir bare "
 "brukt hvis «Automatisk lagring» er slått på."
 
 #: data/com.bwhmather.bedit.gschema.xml.in:67
@@ -152,10 +152,10 @@ msgstr "Maksimalt antall angrehandlinger"
 
 #: data/com.bwhmather.bedit.gschema.xml.in:68
 msgid ""
-"Maximum number of actions that gedit will be able to undo or redo. Use “-1” "
+"Maximum number of actions that bedit will be able to undo or redo. Use “-1” "
 "for unlimited number of actions."
 msgstr ""
-"Maksimalt antall handlinger som gedit kan angre eller gjenopprette. Bruk "
+"Maksimalt antall handlinger som bedit kan angre eller gjenopprette. Bruk "
 "«-1» for ubegrenset antall handlinger."
 
 #: data/com.bwhmather.bedit.gschema.xml.in:77
@@ -206,48 +206,48 @@ msgid "Insert spaces"
 msgstr "Sett inn mellomrom"
 
 #: data/com.bwhmather.bedit.gschema.xml.in:97
-msgid "Whether gedit should insert spaces instead of tabs."
-msgstr "Om gedit skal sette inn mellomrom i stedet for tabulator."
+msgid "Whether bedit should insert spaces instead of tabs."
+msgstr "Om bedit skal sette inn mellomrom i stedet for tabulator."
 
 #: data/com.bwhmather.bedit.gschema.xml.in:101
 msgid "Automatic indent"
 msgstr "Automatisk innrykk"
 
 #: data/com.bwhmather.bedit.gschema.xml.in:102
-msgid "Whether gedit should enable automatic indentation."
-msgstr "Om gedit skal bruke automatisk innrykk."
+msgid "Whether bedit should enable automatic indentation."
+msgstr "Om bedit skal bruke automatisk innrykk."
 
 #: data/com.bwhmather.bedit.gschema.xml.in:106
 msgid "Display Line Numbers"
 msgstr "Vis linjenummer"
 
 #: data/com.bwhmather.bedit.gschema.xml.in:107
-msgid "Whether gedit should display line numbers in the editing area."
-msgstr "Om gedit skal vise linjenummer i redigeringsområdet."
+msgid "Whether bedit should display line numbers in the editing area."
+msgstr "Om bedit skal vise linjenummer i redigeringsområdet."
 
 #: data/com.bwhmather.bedit.gschema.xml.in:111
 msgid "Highlight Current Line"
 msgstr "Uthev gjeldende linje"
 
 #: data/com.bwhmather.bedit.gschema.xml.in:112
-msgid "Whether gedit should highlight the current line."
-msgstr "Om gedit skal utheve gjeldende linje."
+msgid "Whether bedit should highlight the current line."
+msgstr "Om bedit skal utheve gjeldende linje."
 
 #: data/com.bwhmather.bedit.gschema.xml.in:116
 msgid "Highlight Matching Brackets"
 msgstr "Uthev tilhørende hakeparantes"
 
 #: data/com.bwhmather.bedit.gschema.xml.in:117
-msgid "Whether gedit should highlight matching brackets."
-msgstr "Om gedit skal utheve hakeparanteser som hører sammen."
+msgid "Whether bedit should highlight matching brackets."
+msgstr "Om bedit skal utheve hakeparanteser som hører sammen."
 
 #: data/com.bwhmather.bedit.gschema.xml.in:121
 msgid "Display Right Margin"
 msgstr "Vis høyre marg"
 
 #: data/com.bwhmather.bedit.gschema.xml.in:122
-msgid "Whether gedit should display the right margin in the editing area."
-msgstr "Om gedit skal vise høyre marg i redigeringsområdet."
+msgid "Whether bedit should display the right margin in the editing area."
+msgstr "Om bedit skal vise høyre marg i redigeringsområdet."
 
 #: data/com.bwhmather.bedit.gschema.xml.in:126
 msgid "Right Margin Position"
@@ -262,8 +262,8 @@ msgid "Display Overview Map"
 msgstr "Vis oversiktskart"
 
 #: data/com.bwhmather.bedit.gschema.xml.in:132
-msgid "Whether gedit should display the overview map for the document."
-msgstr "Hvorvidt gedit skal vise oversiktskart for dokumentet."
+msgid "Whether bedit should display the overview map for the document."
+msgstr "Hvorvidt bedit skal vise oversiktskart for dokumentet."
 
 #: data/com.bwhmather.bedit.gschema.xml.in:136
 msgid "Document background pattern type"
@@ -300,10 +300,10 @@ msgstr "Gjenopprett forrige markørposisjon"
 
 #: data/com.bwhmather.bedit.gschema.xml.in:153
 msgid ""
-"Whether gedit should restore the previous cursor position when a file is "
+"Whether bedit should restore the previous cursor position when a file is "
 "loaded."
 msgstr ""
-"Om gedit skal gjenopprette tidligere markørposisjon når et dokument lastes "
+"Om bedit skal gjenopprette tidligere markørposisjon når et dokument lastes "
 "inn."
 
 #: data/com.bwhmather.bedit.gschema.xml.in:157
@@ -311,8 +311,8 @@ msgid "Enable Syntax Highlighting"
 msgstr "Slå på syntaksutheving"
 
 #: data/com.bwhmather.bedit.gschema.xml.in:158
-msgid "Whether gedit should enable syntax highlighting."
-msgstr "Om gedit skal bruke automatisk syntaksutheving."
+msgid "Whether bedit should enable syntax highlighting."
+msgstr "Om bedit skal bruke automatisk syntaksutheving."
 
 #: data/com.bwhmather.bedit.gschema.xml.in:162
 msgid "Enable Search Highlighting"
@@ -320,8 +320,8 @@ msgstr "Slå på utheving ved søk"
 
 #: data/com.bwhmather.bedit.gschema.xml.in:163
 msgid ""
-"Whether gedit should highlight all the occurrences of the searched text."
-msgstr "Om gedit skal utheve tekst i søket."
+"Whether bedit should highlight all the occurrences of the searched text."
+msgstr "Om bedit skal utheve tekst i søket."
 
 #: data/com.bwhmather.bedit.gschema.xml.in:167
 msgid "Ensure Trailing Newline"
@@ -329,8 +329,8 @@ msgstr "Sikre slutt med linjeskift"
 
 #: data/com.bwhmather.bedit.gschema.xml.in:168
 msgid ""
-"Whether gedit will ensure that documents always end with a trailing newline."
-msgstr "Hvorvidt gedit skal sikre at dokumenter alltid slutter med linjeskift."
+"Whether bedit will ensure that documents always end with a trailing newline."
+msgstr "Hvorvidt bedit skal sikre at dokumenter alltid slutter med linjeskift."
 
 #: data/com.bwhmather.bedit.gschema.xml.in:174
 msgid "Toolbar is Visible"
@@ -391,15 +391,15 @@ msgid "Print Syntax Highlighting"
 msgstr "Skriv ut syntaksutheving"
 
 #: data/com.bwhmather.bedit.gschema.xml.in:205
-msgid "Whether gedit should print syntax highlighting when printing documents."
-msgstr "Om gedit skal ta med en syntaksutheving ved utskrift av dokumenter."
+msgid "Whether bedit should print syntax highlighting when printing documents."
+msgstr "Om bedit skal ta med en syntaksutheving ved utskrift av dokumenter."
 
 #: data/com.bwhmather.bedit.gschema.xml.in:209
 msgid "Print Header"
 msgstr "Skriv ut topptekst"
 
 #: data/com.bwhmather.bedit.gschema.xml.in:210
-msgid "Whether gedit should include a document header when printing documents."
+msgid "Whether bedit should include a document header when printing documents."
 msgstr "Om gedig skal ta med en topptekst ved utskrift av dokumenter."
 
 #: data/com.bwhmather.bedit.gschema.xml.in:219
@@ -425,11 +425,11 @@ msgstr "Skriv ut linjenummer"
 #: data/com.bwhmather.bedit.gschema.xml.in:225
 msgid ""
 "If this value is 0, then no line numbers will be inserted when printing a "
-"document. Otherwise, gedit will print line numbers every such number of "
+"document. Otherwise, bedit will print line numbers every such number of "
 "lines."
 msgstr ""
 "Hvis verdien er 0, settes ikke linjenummer inn ved utskrift av et dokument. "
-"Ellers skriver gedit ut linjenummer ved verdiens antall linjer."
+"Ellers skriver bedit ut linjenummer ved verdiens antall linjer."
 
 #. Translators: This is a GSettings default value. Do NOT change or localize the quotation marks!
 #: data/com.bwhmather.bedit.gschema.xml.in:229
@@ -521,11 +521,11 @@ msgid ""
 "List of candidate encodings shown in the Character Encoding menu in the open/"
 "save file chooser. “CURRENT” represents the current locale encoding. Only "
 "recognized encodings are used. The default value is the empty list, in which "
-"case gedit will choose good defaults depending on the country and language."
+"case bedit will choose good defaults depending on the country and language."
 msgstr ""
 "Liste med kandidater for kodinger som vises i tegnkodingsmenyen i filvelger "
 "for åpne/lagre. «CURRENT» representerer aktiv koding av locale. Bare "
-"gjenkjente kodinger vil bli brukt. Forvalgt verdi er en tom liste, og gedit "
+"gjenkjente kodinger vil bli brukt. Forvalgt verdi er en tom liste, og bedit "
 "vil velge gode forvalg avhengig av land og språk."
 
 #: data/com.bwhmather.bedit.gschema.xml.in:316
@@ -535,95 +535,95 @@ msgstr "Aktive programtillegg"
 #: data/com.bwhmather.bedit.gschema.xml.in:317
 msgid ""
 "List of active plugins. It contains the “Location” of the active plugins. "
-"See the .gedit-plugin file for obtaining the “Location” of a given plugin."
+"See the .bedit-plugin file for obtaining the “Location” of a given plugin."
 msgstr ""
 "Liste over hvilke programtillegg som er i bruk. Denne inneholder «adresse» "
-"til aktuelle tillegg. Se filen .gedit-plugin for å finne «adresse» for et "
+"til aktuelle tillegg. Se filen .bedit-plugin for å finne «adresse» for et "
 "gitt tillegg."
 
-#: gedit/gedit-app.c:114
+#: bedit/bedit-app.c:114
 msgid "Show the application’s version"
 msgstr "Vis programmets versjon"
 
-#: gedit/gedit-app.c:120
+#: bedit/bedit-app.c:120
 msgid "Display list of possible values for the encoding option"
 msgstr "Vis liste med mulige verdier for kodingsalternativet"
 
-#: gedit/gedit-app.c:127
+#: bedit/bedit-app.c:127
 msgid ""
 "Set the character encoding to be used to open the files listed on the "
 "command line"
 msgstr ""
 "Velg tegnkoding som skal brukes for å åpne filer gitt via kommandolinjen"
 
-#: gedit/gedit-app.c:128
+#: bedit/bedit-app.c:128
 msgid "ENCODING"
 msgstr "KODING"
 
-#: gedit/gedit-app.c:134
-msgid "Create a new top-level window in an existing instance of gedit"
-msgstr "Lag et nytt toppvindu i en eksisterende instans av gedit"
+#: bedit/bedit-app.c:134
+msgid "Create a new top-level window in an existing instance of bedit"
+msgstr "Lag et nytt toppvindu i en eksisterende instans av bedit"
 
-#: gedit/gedit-app.c:141
-msgid "Create a new document in an existing instance of gedit"
-msgstr "Lag et nytt dokument i en eksisterende instans av gedit"
+#: bedit/bedit-app.c:141
+msgid "Create a new document in an existing instance of bedit"
+msgstr "Lag et nytt dokument i en eksisterende instans av bedit"
 
-#: gedit/gedit-app.c:148
+#: bedit/bedit-app.c:148
 msgid "Open files and block process until files are closed"
 msgstr "Åpne filer og blokker prosessen til filene er lukket"
 
-#: gedit/gedit-app.c:155
-msgid "Run gedit in standalone mode"
-msgstr "Kjør gedit i frittstående modus"
+#: bedit/bedit-app.c:155
+msgid "Run bedit in standalone mode"
+msgstr "Kjør bedit i frittstående modus"
 
-#: gedit/gedit-app.c:162
+#: bedit/bedit-app.c:162
 msgid "[FILE…] [+LINE[:COLUMN]]"
 msgstr "[FIL …] [+LINJE[:KOLONNE]]"
 
-#: gedit/gedit-app.c:281
+#: bedit/bedit-app.c:281
 msgid "There was an error displaying the help."
 msgstr "Det oppsto en feil under visning av hjelp."
 
-#: gedit/gedit-app.c:973
+#: bedit/bedit-app.c:973
 #, c-format
 msgid "%s: invalid encoding."
 msgstr "%s: ugyldig koding."
 
-#: gedit/gedit-close-confirmation-dialog.c:279
+#: bedit/bedit-close-confirmation-dialog.c:279
 msgid "Close _without Saving"
 msgstr "Lukk _uten å lagre"
 
-#: gedit/gedit-close-confirmation-dialog.c:285 gedit/gedit-commands-file.c:462
-#: gedit/gedit-commands-file.c:567 gedit/gedit-commands-file.c:643
-#: gedit/gedit-commands-file.c:854 gedit/gedit-commands-file.c:1583
-#: gedit/gedit-encodings-dialog.c:194 gedit/gedit-preferences-dialog.c:825
-#: gedit/gedit-progress-info-bar.c:49
-#: gedit/resources/ui/gedit-encodings-dialog.ui:44
-#: gedit/resources/ui/gedit-highlight-mode-dialog.ui:31
-#: plugins/filebrowser/gedit-file-browser-utils.c:213
+#: bedit/bedit-close-confirmation-dialog.c:285 bedit/bedit-commands-file.c:462
+#: bedit/bedit-commands-file.c:567 bedit/bedit-commands-file.c:643
+#: bedit/bedit-commands-file.c:854 bedit/bedit-commands-file.c:1583
+#: bedit/bedit-encodings-dialog.c:194 bedit/bedit-preferences-dialog.c:825
+#: bedit/bedit-progress-info-bar.c:49
+#: bedit/resources/ui/bedit-encodings-dialog.ui:44
+#: bedit/resources/ui/bedit-highlight-mode-dialog.ui:31
+#: plugins/filebrowser/bedit-file-browser-utils.c:213
 #: plugins/quickopen/quickopen/popup.py:45
 #: plugins/snippets/snippets/manager.py:789
 #: plugins/snippets/snippets/manager.py:874
 #: plugins/snippets/snippets/manager.py:912
-#: plugins/sort/resources/ui/gedit-sort-plugin.ui:143
-#: plugins/time/resources/ui/gedit-time-dialog.ui:150
+#: plugins/sort/resources/ui/bedit-sort-plugin.ui:143
+#: plugins/time/resources/ui/bedit-time-dialog.ui:150
 msgid "_Cancel"
 msgstr "A_vbryt"
 
-#: gedit/gedit-close-confirmation-dialog.c:312 gedit/resources/gtk/menus.ui:37
-#: gedit/resources/gtk/menus-traditional.ui:33
+#: bedit/bedit-close-confirmation-dialog.c:312 bedit/resources/gtk/menus.ui:37
+#: bedit/resources/gtk/menus-traditional.ui:33
 msgid "_Save As…"
 msgstr "Lagre _som …"
 
-#: gedit/gedit-close-confirmation-dialog.c:312 gedit/gedit-commands-file.c:855
-#: gedit/resources/gtk/menus-common.ui:127
-#: gedit/resources/ui/gedit-window.ui:105
+#: bedit/bedit-close-confirmation-dialog.c:312 bedit/bedit-commands-file.c:855
+#: bedit/resources/gtk/menus-common.ui:127
+#: bedit/resources/ui/bedit-window.ui:105
 #: plugins/snippets/snippets/manager.py:875
 #: plugins/snippets/snippets/manager.py:913
 msgid "_Save"
 msgstr "_Lagre"
 
-#: gedit/gedit-close-confirmation-dialog.c:330
+#: bedit/bedit-close-confirmation-dialog.c:330
 #, c-format
 msgid ""
 "If you don’t save, changes from the last %ld second will be permanently lost."
@@ -635,13 +635,13 @@ msgstr[0] ""
 msgstr[1] ""
 "Hvis du ikke lagrer, går endringer som er utført de siste %ld sekundene tapt."
 
-#: gedit/gedit-close-confirmation-dialog.c:339
+#: bedit/bedit-close-confirmation-dialog.c:339
 msgid ""
 "If you don’t save, changes from the last minute will be permanently lost."
 msgstr ""
 "Hvis du ikke lagrer, går endringer som er utført det siste minuttet tapt."
 
-#: gedit/gedit-close-confirmation-dialog.c:345
+#: bedit/bedit-close-confirmation-dialog.c:345
 #, c-format
 msgid ""
 "If you don’t save, changes from the last minute and %ld second will be "
@@ -656,7 +656,7 @@ msgstr[1] ""
 "Hvis du ikke lagrer, går endringer som er utført det siste minuttet og %ld "
 "sekundene tapt."
 
-#: gedit/gedit-close-confirmation-dialog.c:355
+#: bedit/bedit-close-confirmation-dialog.c:355
 #, c-format
 msgid ""
 "If you don’t save, changes from the last %ld minute will be permanently lost."
@@ -668,11 +668,11 @@ msgstr[0] ""
 msgstr[1] ""
 "Hvis du ikke lagrer, går endringer som er utført de siste %ld minuttene tapt."
 
-#: gedit/gedit-close-confirmation-dialog.c:370
+#: bedit/bedit-close-confirmation-dialog.c:370
 msgid "If you don’t save, changes from the last hour will be permanently lost."
 msgstr "Hvis du ikke lagrer, går endringer som er utført den siste timen tapt."
 
-#: gedit/gedit-close-confirmation-dialog.c:376
+#: bedit/bedit-close-confirmation-dialog.c:376
 #, c-format
 msgid ""
 "If you don’t save, changes from the last hour and %d minute will be "
@@ -687,7 +687,7 @@ msgstr[1] ""
 "Hvis du ikke lagrer, går endringer som er utført den siste timen og %d "
 "minuttene tapt."
 
-#: gedit/gedit-close-confirmation-dialog.c:391
+#: bedit/bedit-close-confirmation-dialog.c:391
 #, c-format
 msgid ""
 "If you don’t save, changes from the last %d hour will be permanently lost."
@@ -698,29 +698,29 @@ msgstr[0] ""
 msgstr[1] ""
 "Hvis du ikke lagrer, går endringer som er utført de siste %d timene tapt."
 
-#: gedit/gedit-close-confirmation-dialog.c:420
+#: bedit/bedit-close-confirmation-dialog.c:420
 #, c-format
 msgid "Changes to document “%s” will be permanently lost."
 msgstr "Endringer som er utført i «%s» går tapt."
 
-#: gedit/gedit-close-confirmation-dialog.c:425
+#: bedit/bedit-close-confirmation-dialog.c:425
 #, c-format
 msgid "Save changes to document “%s” before closing?"
 msgstr "Vil du lagre endringer i «%s» før programmet lukkes?"
 
-#: gedit/gedit-close-confirmation-dialog.c:440
-#: gedit/gedit-close-confirmation-dialog.c:564
+#: bedit/bedit-close-confirmation-dialog.c:440
+#: bedit/bedit-close-confirmation-dialog.c:564
 msgid "Saving has been disabled by the system administrator."
 msgstr "Systemadministrator har slått av lagring."
 
-#: gedit/gedit-close-confirmation-dialog.c:506
+#: bedit/bedit-close-confirmation-dialog.c:506
 #, c-format
 msgid "Changes to %d document will be permanently lost."
 msgid_plural "Changes to %d documents will be permanently lost."
 msgstr[0] "Endringer som er utført i %d dokument går tapt."
 msgstr[1] "Endringer som er utført i %d dokumenter går tapt."
 
-#: gedit/gedit-close-confirmation-dialog.c:514
+#: bedit/bedit-close-confirmation-dialog.c:514
 #, c-format
 msgid "There is %d document with unsaved changes. Save changes before closing?"
 msgid_plural ""
@@ -732,24 +732,24 @@ msgstr[1] ""
 "Det finnes %d dokumenter med endringer som ikke er lagret. Vil du lagre "
 "endringer før dokumentene lukkes?"
 
-#: gedit/gedit-close-confirmation-dialog.c:540
+#: bedit/bedit-close-confirmation-dialog.c:540
 msgid "Docum_ents with unsaved changes:"
 msgstr "Dokum_enter med endringer som ikke er lagret:"
 
-#: gedit/gedit-close-confirmation-dialog.c:544
+#: bedit/bedit-close-confirmation-dialog.c:544
 msgid "S_elect the documents you want to save:"
 msgstr "V_elg hvilke dokumenter du vil lagre:"
 
-#: gedit/gedit-close-confirmation-dialog.c:568
+#: bedit/bedit-close-confirmation-dialog.c:568
 msgid "If you don’t save, all your changes will be permanently lost."
 msgstr "Hvis du ikke lagrer, går alle endringer tapt."
 
-#: gedit/gedit-commands-file.c:261
+#: bedit/bedit-commands-file.c:261
 #, c-format
 msgid "Loading file “%s”…"
 msgstr "Laster fil «%s» …"
 
-#: gedit/gedit-commands-file.c:270
+#: bedit/bedit-commands-file.c:270
 #, c-format
 msgid "Loading %d file…"
 msgid_plural "Loading %d files…"
@@ -757,43 +757,43 @@ msgstr[0] "Åpner %d fil …"
 msgstr[1] "Åpner %d filer …"
 
 #. Translators: "Open" is the title of the file chooser window.
-#: gedit/gedit-commands-file.c:456
+#: bedit/bedit-commands-file.c:456
 msgctxt "window title"
 msgid "Open"
 msgstr "Åpne"
 
-#: gedit/gedit-commands-file.c:463 gedit/resources/gtk/menus-common.ui:100
-#: gedit/resources/gtk/menus-common.ui:106
-#: gedit/resources/ui/gedit-window.ui:48
-#: plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui:7
+#: bedit/bedit-commands-file.c:463 bedit/resources/gtk/menus-common.ui:100
+#: bedit/resources/gtk/menus-common.ui:106
+#: bedit/resources/ui/bedit-window.ui:48
+#: plugins/filebrowser/resources/ui/bedit-file-browser-menus.ui:7
 #: plugins/quickopen/quickopen/popup.py:46
 #: plugins/snippets/snippets/manager.py:790
 msgid "_Open"
 msgstr "_Åpne"
 
-#: gedit/gedit-commands-file.c:558
+#: bedit/bedit-commands-file.c:558
 #, c-format
 msgid "The file “%s” is read-only."
 msgstr "Filen «%s» er skrivebeskyttet."
 
-#: gedit/gedit-commands-file.c:563
+#: bedit/bedit-commands-file.c:563
 msgid "Do you want to try to replace it with the one you are saving?"
 msgstr "Vil du prøve å erstatte den med filen du lagrer?"
 
-#: gedit/gedit-commands-file.c:568
-#: gedit/resources/ui/gedit-replace-dialog.ui:55
+#: bedit/bedit-commands-file.c:568
+#: bedit/resources/ui/bedit-replace-dialog.ui:55
 msgid "_Replace"
 msgstr "E_rstatt"
 
-#: gedit/gedit-commands-file.c:608
+#: bedit/bedit-commands-file.c:608
 msgid "Save the file using compression?"
 msgstr "Lagre filen med komprimering?"
 
-#: gedit/gedit-commands-file.c:612
+#: bedit/bedit-commands-file.c:612
 msgid "Save the file as plain text?"
 msgstr "Lagre filen som ren tekst?"
 
-#: gedit/gedit-commands-file.c:625
+#: bedit/bedit-commands-file.c:625
 #, c-format
 msgid ""
 "The file “%s” was previously saved as plain text and will now be saved using "
@@ -801,11 +801,11 @@ msgid ""
 msgstr ""
 "Filen «%s» var lagret som ren tekst, og blir nå lagret i komprimert format."
 
-#: gedit/gedit-commands-file.c:629
+#: bedit/bedit-commands-file.c:629
 msgid "_Save Using Compression"
 msgstr "_Lagre med komprimering"
 
-#: gedit/gedit-commands-file.c:634
+#: bedit/bedit-commands-file.c:634
 #, c-format
 msgid ""
 "The file “%s” was previously saved using compression and will now be saved "
@@ -813,36 +813,36 @@ msgid ""
 msgstr ""
 "Filen «%s» var lagret i komprimert format, og blir nå lagret som ren tekst."
 
-#: gedit/gedit-commands-file.c:637
+#: bedit/bedit-commands-file.c:637
 msgid "_Save As Plain Text"
 msgstr "_Lagre som vanlig tekst"
 
-#: gedit/gedit-commands-file.c:752 gedit/gedit-commands-file.c:1019
+#: bedit/bedit-commands-file.c:752 bedit/bedit-commands-file.c:1019
 #, c-format
 msgid "Saving file “%s”…"
 msgstr "Lagrer fil «%s» …"
 
 #. Translators: "Save As" is the title of the file chooser window.
-#: gedit/gedit-commands-file.c:847
+#: bedit/bedit-commands-file.c:847
 msgctxt "window title"
 msgid "Save As"
 msgstr "Lagre som"
 
-#: gedit/gedit-commands-file.c:1101
+#: bedit/bedit-commands-file.c:1101
 msgid "No changes need to be saved"
 msgstr "Ingen endringer trenger å lagres"
 
-#: gedit/gedit-commands-file.c:1444
+#: bedit/bedit-commands-file.c:1444
 #, c-format
 msgid "Reverting the document “%s”…"
 msgstr "Forkaster endringer i «%s» …"
 
-#: gedit/gedit-commands-file.c:1491
+#: bedit/bedit-commands-file.c:1491
 #, c-format
 msgid "Revert unsaved changes to document “%s”?"
 msgstr "Vil du forkaste ikke-lagrede endringer i «%s»?"
 
-#: gedit/gedit-commands-file.c:1500
+#: bedit/bedit-commands-file.c:1500
 #, c-format
 msgid ""
 "Changes made to the document in the last %ld second will be permanently lost."
@@ -854,12 +854,12 @@ msgstr[0] ""
 msgstr[1] ""
 "Endringer som er utført i dokumentet de siste %ld sekundene går tapt."
 
-#: gedit/gedit-commands-file.c:1509
+#: bedit/bedit-commands-file.c:1509
 msgid ""
 "Changes made to the document in the last minute will be permanently lost."
 msgstr "Endringer som er utført i dokumentet det siste minuttet går tapt."
 
-#: gedit/gedit-commands-file.c:1515
+#: bedit/bedit-commands-file.c:1515
 #, c-format
 msgid ""
 "Changes made to the document in the last minute and %ld second will be "
@@ -874,7 +874,7 @@ msgstr[1] ""
 "Endringer som er utført i dokumentet det siste minuttet og %ld sekundene går "
 "tapt."
 
-#: gedit/gedit-commands-file.c:1525
+#: bedit/bedit-commands-file.c:1525
 #, c-format
 msgid ""
 "Changes made to the document in the last %ld minute will be permanently lost."
@@ -886,11 +886,11 @@ msgstr[0] ""
 msgstr[1] ""
 "Endringer som er utført i dokumentet de siste %ld minuttene går tapt."
 
-#: gedit/gedit-commands-file.c:1540
+#: bedit/bedit-commands-file.c:1540
 msgid "Changes made to the document in the last hour will be permanently lost."
 msgstr "Endringer som er utført i dokumentet den siste timen går tapt."
 
-#: gedit/gedit-commands-file.c:1546
+#: bedit/bedit-commands-file.c:1546
 #, c-format
 msgid ""
 "Changes made to the document in the last hour and %d minute will be "
@@ -904,7 +904,7 @@ msgstr[1] ""
 "Endringer som er utført i dokumentet den siste timen og %d minuttene går "
 "tapt."
 
-#: gedit/gedit-commands-file.c:1561
+#: bedit/bedit-commands-file.c:1561
 #, c-format
 msgid ""
 "Changes made to the document in the last %d hour will be permanently lost."
@@ -913,119 +913,119 @@ msgid_plural ""
 msgstr[0] "Endringer som er utført i dokumentet den siste %d timen går tapt."
 msgstr[1] "Endringer som er utført i dokumentet de siste %d timene går tapt."
 
-#: gedit/gedit-commands-file.c:1584
+#: bedit/bedit-commands-file.c:1584
 msgid "_Revert"
 msgstr "Fo_rkast"
 
-#: gedit/gedit-commands-help.c:110
-msgid "gedit is a small and lightweight text editor for the GNOME Desktop"
-msgstr "gedit er en liten og lett tekstbehandler for skrivebordsmiljøet GNOME"
+#: bedit/bedit-commands-help.c:110
+msgid "bedit is a small and lightweight text editor for the GNOME Desktop"
+msgstr "bedit er en liten og lett tekstbehandler for skrivebordsmiljøet GNOME"
 
-#: gedit/gedit-commands-help.c:132
+#: bedit/bedit-commands-help.c:132
 msgid "translator-credits"
 msgstr ""
 "Kjartan Maraas <kmaraas@gnome.org>\n"
 "Torstein Adolf Winterseth <kvikende@fsfe.org>\n"
 "Åka Sikrom <a4NOSPAMPLEASETHANKYOU@hush.com>"
 
-#: gedit/gedit-commands-search.c:107
+#: bedit/bedit-commands-search.c:107
 #, c-format
 msgid "Found and replaced %d occurrence"
 msgid_plural "Found and replaced %d occurrences"
 msgstr[0] "Fant og erstattet %d oppføring"
 msgstr[1] "Fant og erstattet %d oppføringer"
 
-#: gedit/gedit-commands-search.c:116
+#: bedit/bedit-commands-search.c:116
 msgid "Found and replaced one occurrence"
 msgstr "Fant og erstattet én oppføring"
 
 #. Translators: %s is replaced by the text
 #. entered by the user in the search box
-#: gedit/gedit-commands-search.c:142
+#: bedit/bedit-commands-search.c:142
 #, c-format
 msgid "“%s” not found"
 msgstr "Fant ikke «%s»"
 
-#: gedit/gedit-document.c:1079 gedit/gedit-document.c:1112
+#: bedit/bedit-document.c:1079 bedit/bedit-document.c:1112
 #, c-format
 msgid "Untitled Document %d"
 msgstr "Dokument uten tittel %d"
 
-#: gedit/gedit-documents-panel.c:399
+#: bedit/bedit-documents-panel.c:399
 #, c-format
 msgid "Tab Group %i"
 msgstr "Fanegruppe %i"
 
-#: gedit/gedit-documents-panel.c:499 gedit/gedit-window.c:1161
-#: gedit/gedit-window.c:1167 gedit/gedit-window.c:1175
+#: bedit/bedit-documents-panel.c:499 bedit/bedit-window.c:1161
+#: bedit/bedit-window.c:1167 bedit/bedit-window.c:1175
 msgid "Read-Only"
 msgstr "Skrivebeskyttet"
 
-#: gedit/gedit-encodings-combo-box.c:299
-#: gedit/gedit-file-chooser-dialog-osx.m:565
+#: bedit/bedit-encodings-combo-box.c:299
+#: bedit/bedit-file-chooser-dialog-osx.m:565
 msgid "Automatically Detected"
 msgstr "Automatisk gjenkjent"
 
-#: gedit/gedit-encodings-combo-box.c:328
-#: gedit/gedit-file-chooser-dialog-osx.m:574
+#: bedit/bedit-encodings-combo-box.c:328
+#: bedit/bedit-file-chooser-dialog-osx.m:574
 msgid "Add or Remove…"
 msgstr "Legg til eller fjern …"
 
-#: gedit/gedit-encoding-items.c:92
+#: bedit/bedit-encoding-items.c:92
 #, c-format
 msgid "Current Locale (%s)"
 msgstr "Gjeldende region (%s)"
 
-#: gedit/gedit-encodings-dialog.c:95
+#: bedit/bedit-encodings-dialog.c:95
 #, c-format
 msgid "%s (Current Locale)"
 msgstr "%s (gjeldende locale)"
 
-#: gedit/gedit-encodings-dialog.c:190
+#: bedit/bedit-encodings-dialog.c:190
 msgid "Do you really want to reset the character encodings’ preferences?"
 msgstr "Vil du virkelig nullstille brukervalg for tegnkoding?"
 
 #. Reset button
-#: gedit/gedit-encodings-dialog.c:195 gedit/gedit-encodings-dialog.c:820
+#: bedit/bedit-encodings-dialog.c:195 bedit/bedit-encodings-dialog.c:820
 msgid "_Reset"
 msgstr "_Nullstill"
 
-#: gedit/gedit-encodings-dialog.c:731
+#: bedit/bedit-encodings-dialog.c:731
 msgid "Add"
 msgstr "Legg til"
 
-#: gedit/gedit-encodings-dialog.c:774
+#: bedit/bedit-encodings-dialog.c:774
 msgid "Remove"
 msgstr "Fjern"
 
-#: gedit/gedit-encodings-dialog.c:785
+#: bedit/bedit-encodings-dialog.c:785
 msgid "Move to a higher priority"
 msgstr "Flytt til en høyere prioritet"
 
-#: gedit/gedit-encodings-dialog.c:796
+#: bedit/bedit-encodings-dialog.c:796
 msgid "Move to a lower priority"
 msgstr "Flytt til en lavere prioritet"
 
-#: gedit/gedit-file-chooser-dialog-gtk.c:45
-#: gedit/gedit-preferences-dialog.c:834
+#: bedit/bedit-file-chooser-dialog-gtk.c:45
+#: bedit/bedit-preferences-dialog.c:834
 msgid "All Files"
 msgstr "Alle filer"
 
-#: gedit/gedit-file-chooser-dialog-gtk.c:46
+#: bedit/bedit-file-chooser-dialog-gtk.c:46
 msgid "All Text Files"
 msgstr "Alle tekstfiler"
 
-#: gedit/gedit-file-chooser-dialog-gtk.c:317
-#: gedit/gedit-file-chooser-dialog-osx.m:547
+#: bedit/bedit-file-chooser-dialog-gtk.c:317
+#: bedit/bedit-file-chooser-dialog-osx.m:547
 msgid "Character Encoding:"
 msgstr "Tegnkoding:"
 
-#: gedit/gedit-file-chooser-dialog-gtk.c:350
-#: gedit/gedit-file-chooser-dialog-osx.m:620
+#: bedit/bedit-file-chooser-dialog-gtk.c:350
+#: bedit/bedit-file-chooser-dialog-osx.m:620
 msgid "Line Ending:"
 msgstr "Slutt på linje:"
 
-#: gedit/gedit-highlight-mode-selector.c:269 gedit/gedit-window.c:1245
+#: bedit/bedit-highlight-mode-selector.c:269 bedit/bedit-window.c:1245
 #: plugins/externaltools/tools/manager.py:115
 #: plugins/externaltools/tools/manager.py:324
 #: plugins/externaltools/tools/manager.py:440
@@ -1033,46 +1033,46 @@ msgstr "Slutt på linje:"
 msgid "Plain Text"
 msgstr "Vanlig tekst"
 
-#: gedit/gedit-io-error-info-bar.c:142 gedit/gedit-io-error-info-bar.c:491
+#: bedit/bedit-io-error-info-bar.c:142 bedit/bedit-io-error-info-bar.c:491
 msgid "_Retry"
 msgstr "P_røv igjen"
 
-#: gedit/gedit-io-error-info-bar.c:162
+#: bedit/bedit-io-error-info-bar.c:162
 #, c-format
 msgid "Could not find the file “%s”."
 msgstr "Fant ikke filen «%s»."
 
-#: gedit/gedit-io-error-info-bar.c:164 gedit/gedit-io-error-info-bar.c:204
-#: gedit/gedit-io-error-info-bar.c:211
+#: bedit/bedit-io-error-info-bar.c:164 bedit/bedit-io-error-info-bar.c:204
+#: bedit/bedit-io-error-info-bar.c:211
 msgid "Please check that you typed the location correctly and try again."
 msgstr "Kontroller at du skrev inn adressen korrekt, og prøv igjen."
 
 #. Translators: %s is a URI scheme (like for example http:, ftp:, etc.)
-#: gedit/gedit-io-error-info-bar.c:183
+#: bedit/bedit-io-error-info-bar.c:183
 #, c-format
 msgid "Unable to handle “%s:” locations."
 msgstr "«%s»-adresser kan ikke håndteres."
 
-#: gedit/gedit-io-error-info-bar.c:189
+#: bedit/bedit-io-error-info-bar.c:189
 msgid "Unable to handle this location."
 msgstr "Denne adressen kan ikke håndteres."
 
-#: gedit/gedit-io-error-info-bar.c:198
+#: bedit/bedit-io-error-info-bar.c:198
 msgid "The location of the file cannot be accessed."
 msgstr "Du har ikke tilgang til filen."
 
-#: gedit/gedit-io-error-info-bar.c:202
+#: bedit/bedit-io-error-info-bar.c:202
 #, c-format
 msgid "“%s” is a directory."
 msgstr "«%s» er en mappe."
 
-#: gedit/gedit-io-error-info-bar.c:209
+#: bedit/bedit-io-error-info-bar.c:209
 #, c-format
 msgid "“%s” is not a valid location."
 msgstr "«%s» er en ugyldig adresse."
 
 #. Translators: %s is a host name
-#: gedit/gedit-io-error-info-bar.c:245
+#: bedit/bedit-io-error-info-bar.c:245
 #, c-format
 msgid ""
 "Host “%s” could not be found. Please check that your proxy settings are "
@@ -1081,7 +1081,7 @@ msgstr ""
 "Fant ikke vert «%s». Kontroller at du har satt opp mellomtjener korrekt, og "
 "prøv igjen."
 
-#: gedit/gedit-io-error-info-bar.c:260
+#: bedit/bedit-io-error-info-bar.c:260
 #, c-format
 msgid ""
 "Hostname was invalid. Please check that you typed the location correctly and "
@@ -1090,49 +1090,49 @@ msgstr ""
 "Vertsnavnet er ugyldig. Kontroller at du skrev inn adressen korrekt, og prøv "
 "igjen."
 
-#: gedit/gedit-io-error-info-bar.c:268
+#: bedit/bedit-io-error-info-bar.c:268
 #, c-format
 msgid "“%s” is not a regular file."
 msgstr "«%s» er ikke en vanlig fil."
 
-#: gedit/gedit-io-error-info-bar.c:273
+#: bedit/bedit-io-error-info-bar.c:273
 msgid "Connection timed out. Please try again."
 msgstr "Tidsavbrudd for tilkobling. Prøv igjen."
 
-#: gedit/gedit-io-error-info-bar.c:306
+#: bedit/bedit-io-error-info-bar.c:306
 #, c-format
 msgid "Unexpected error: %s"
 msgstr "Uventet feil: %s"
 
-#: gedit/gedit-io-error-info-bar.c:342
+#: bedit/bedit-io-error-info-bar.c:342
 msgid "Cannot find the requested file. Perhaps it has recently been deleted."
 msgstr "Fant ikke forespurt fil. Den kan ha blitt slettet nylig."
 
-#: gedit/gedit-io-error-info-bar.c:352
+#: bedit/bedit-io-error-info-bar.c:352
 #, c-format
 msgid "Could not revert the file “%s”."
 msgstr "Klarte ikke å forkaste endringer i «%s»."
 
-#: gedit/gedit-io-error-info-bar.c:379
+#: bedit/bedit-io-error-info-bar.c:379
 msgid "Ch_aracter Encoding:"
 msgstr "Te_gnkoding:"
 
-#: gedit/gedit-io-error-info-bar.c:440
+#: bedit/bedit-io-error-info-bar.c:440
 #, c-format
 msgid "The location “%s” is not currently reachable."
 msgstr "Plasseringen «%s» kan ikke nås for øyeblikket."
 
-#: gedit/gedit-io-error-info-bar.c:455
+#: bedit/bedit-io-error-info-bar.c:455
 msgid "Your system is offline. Check your network."
 msgstr "Systemet er frakoblet. Kontroller nettverkstilkoblingen."
 
 #. Translators: the access key chosen for this string should be
 #. different from other main menu access keys (Open, Edit, View...)
-#: gedit/gedit-io-error-info-bar.c:499 gedit/gedit-io-error-info-bar.c:764
+#: bedit/bedit-io-error-info-bar.c:499 bedit/bedit-io-error-info-bar.c:764
 msgid "Edit Any_way"
 msgstr "Redi_ger likevel"
 
-#: gedit/gedit-io-error-info-bar.c:587
+#: bedit/bedit-io-error-info-bar.c:587
 msgid ""
 "The number of followed links is limited and the actual file could not be "
 "found within this limit."
@@ -1140,28 +1140,28 @@ msgstr ""
 "Antall lenker som kan følges er begrenset, og filen ble ikke funnet innenfor "
 "denne grensen."
 
-#: gedit/gedit-io-error-info-bar.c:591
+#: bedit/bedit-io-error-info-bar.c:591
 msgid "You do not have the permissions necessary to open the file."
 msgstr "Du har ikke tilstrekkelige rettigheter til å åpne filen."
 
-#: gedit/gedit-io-error-info-bar.c:597
+#: bedit/bedit-io-error-info-bar.c:597
 msgid "Unable to detect the character encoding."
 msgstr "Klarte ikke å gjenkjenne tegnkoding."
 
-#: gedit/gedit-io-error-info-bar.c:598 gedit/gedit-io-error-info-bar.c:622
+#: bedit/bedit-io-error-info-bar.c:598 bedit/bedit-io-error-info-bar.c:622
 msgid "Please check that you are not trying to open a binary file."
 msgstr "Kontroller at du ikke prøver å åpne en binær fil."
 
-#: gedit/gedit-io-error-info-bar.c:599
+#: bedit/bedit-io-error-info-bar.c:599
 msgid "Select a character encoding from the menu and try again."
 msgstr "Velg tegnkoding fra menyen, og prøv igjen."
 
-#: gedit/gedit-io-error-info-bar.c:605
+#: bedit/bedit-io-error-info-bar.c:605
 #, c-format
 msgid "There was a problem opening the file “%s”."
 msgstr "Det oppsto et problem under åpning av filen «%s»."
 
-#: gedit/gedit-io-error-info-bar.c:607
+#: bedit/bedit-io-error-info-bar.c:607
 msgid ""
 "The file you opened has some invalid characters. If you continue editing "
 "this file you could corrupt this document."
@@ -1169,30 +1169,30 @@ msgstr ""
 "Filen du åpnet inneholder ugyldige tegn. Hvis du fortsetter å redigere denne "
 "filen, kan den bli ødelagt."
 
-#: gedit/gedit-io-error-info-bar.c:610
+#: bedit/bedit-io-error-info-bar.c:610
 msgid "You can also choose another character encoding and try again."
 msgstr "Du kan også velge en annen tegnkoding og prøve igjen."
 
-#: gedit/gedit-io-error-info-bar.c:619
+#: bedit/bedit-io-error-info-bar.c:619
 #, c-format
 msgid "Could not open the file “%s” using the “%s” character encoding."
 msgstr "Klarte ikke å åpne «%s», som bruker tegnkoding «%s»."
 
-#: gedit/gedit-io-error-info-bar.c:623 gedit/gedit-io-error-info-bar.c:698
+#: bedit/bedit-io-error-info-bar.c:623 bedit/bedit-io-error-info-bar.c:698
 msgid "Select a different character encoding from the menu and try again."
 msgstr "Velg en annen tegnkoding fra menyen, og prøv igjen."
 
-#: gedit/gedit-io-error-info-bar.c:635
+#: bedit/bedit-io-error-info-bar.c:635
 #, c-format
 msgid "Could not open the file “%s”."
 msgstr "Klarte ikke å åpne «%s»."
 
-#: gedit/gedit-io-error-info-bar.c:693
+#: bedit/bedit-io-error-info-bar.c:693
 #, c-format
 msgid "Could not save the file “%s” using the “%s” character encoding."
 msgstr "Klarte ikke å lagre «%s» med tegnkoding «%s»."
 
-#: gedit/gedit-io-error-info-bar.c:696
+#: bedit/bedit-io-error-info-bar.c:696
 msgid ""
 "The document contains one or more characters that cannot be encoded using "
 "the specified character encoding."
@@ -1202,26 +1202,26 @@ msgstr ""
 
 #. Translators: the access key chosen for this string should be
 #. different from other main menu access keys (Open, Edit, View...)
-#: gedit/gedit-io-error-info-bar.c:769
+#: bedit/bedit-io-error-info-bar.c:769
 msgid "D_on’t Edit"
 msgstr "_Ikke rediger"
 
-#: gedit/gedit-io-error-info-bar.c:779
+#: bedit/bedit-io-error-info-bar.c:779
 #, c-format
 msgid "This file “%s” is already open in another window."
 msgstr "Filen «%s» er allerede åpen i et annet vindu."
 
-#: gedit/gedit-io-error-info-bar.c:793
+#: bedit/bedit-io-error-info-bar.c:793
 msgid "Do you want to edit it anyway?"
 msgstr "Vil du redigere den likevel?"
 
-#: gedit/gedit-io-error-info-bar.c:849 gedit/gedit-io-error-info-bar.c:939
-#: gedit/gedit-io-error-info-bar.c:1229
+#: bedit/bedit-io-error-info-bar.c:849 bedit/bedit-io-error-info-bar.c:939
+#: bedit/bedit-io-error-info-bar.c:1229
 msgid "S_ave Anyway"
 msgstr "L_agre likevel"
 
-#: gedit/gedit-io-error-info-bar.c:852 gedit/gedit-io-error-info-bar.c:942
-#: gedit/gedit-io-error-info-bar.c:1232
+#: bedit/bedit-io-error-info-bar.c:852 bedit/bedit-io-error-info-bar.c:942
+#: bedit/bedit-io-error-info-bar.c:1232
 msgid "D_on’t Save"
 msgstr "_Ikke lagre"
 
@@ -1229,28 +1229,28 @@ msgstr "_Ikke lagre"
 #. * could be interpreted as the changes he made in the document. beside "reading" is
 #. * not accurate (since last load/save)
 #.
-#: gedit/gedit-io-error-info-bar.c:866
+#: bedit/bedit-io-error-info-bar.c:866
 #, c-format
 msgid "The file “%s” has been modified since reading it."
 msgstr "Filen «%s» er endret siden den ble lest."
 
-#: gedit/gedit-io-error-info-bar.c:881
+#: bedit/bedit-io-error-info-bar.c:881
 msgid "If you save it, all the external changes could be lost. Save it anyway?"
 msgstr ""
 "Hvis du lagrer den, kan alle eksterne endringer gå tapt. Vil du lagre den "
 "likevel?"
 
-#: gedit/gedit-io-error-info-bar.c:961
+#: bedit/bedit-io-error-info-bar.c:961
 #, c-format
 msgid "Could not create a backup file while saving “%s”"
 msgstr "Klarte ikke å lage sikkerhetskopi ved lagring av «%s»"
 
-#: gedit/gedit-io-error-info-bar.c:966
+#: bedit/bedit-io-error-info-bar.c:966
 #, c-format
 msgid "Could not create a temporary backup file while saving “%s”"
 msgstr "Klarte ikke å lage en midlertidig sikkerhetskopi ved lagring av «%s»"
 
-#: gedit/gedit-io-error-info-bar.c:983
+#: bedit/bedit-io-error-info-bar.c:983
 msgid ""
 "Could not back up the old copy of the file before saving the new one. You "
 "can ignore this warning and save the file anyway, but if an error occurs "
@@ -1261,7 +1261,7 @@ msgstr ""
 "under lagring kan du miste den gamle kopien av filen. Vil du lagre likevel?"
 
 #. Translators: %s is a URI scheme (like for example http:, ftp:, etc.)
-#: gedit/gedit-io-error-info-bar.c:1043
+#: bedit/bedit-io-error-info-bar.c:1043
 #, c-format
 msgid ""
 "Cannot handle “%s:” locations in write mode. Please check that you typed the "
@@ -1270,7 +1270,7 @@ msgstr ""
 "«%s»:-adresser kan ikke håndteres i skrivemodus. Kontroller at du skrev inn "
 "adressen korrekt, og prøv igjen."
 
-#: gedit/gedit-io-error-info-bar.c:1051
+#: bedit/bedit-io-error-info-bar.c:1051
 msgid ""
 "Cannot handle this location in write mode. Please check that you typed the "
 "location correctly and try again."
@@ -1278,7 +1278,7 @@ msgstr ""
 "Denne adressen kan ikke håndteres i skrivemodus. Kontroller at du skrev inn "
 "adressen korrekt, og prøv igjen."
 
-#: gedit/gedit-io-error-info-bar.c:1060
+#: bedit/bedit-io-error-info-bar.c:1060
 #, c-format
 msgid ""
 "“%s” is not a valid location. Please check that you typed the location "
@@ -1287,7 +1287,7 @@ msgstr ""
 "«%s» er en ugyldig adresse. Kontroller at du skrev inn adressen korrekt, og "
 "prøv igjen."
 
-#: gedit/gedit-io-error-info-bar.c:1067
+#: bedit/bedit-io-error-info-bar.c:1067
 msgid ""
 "You do not have the permissions necessary to save the file. Please check "
 "that you typed the location correctly and try again."
@@ -1295,7 +1295,7 @@ msgstr ""
 "Du har ikke tilgang til å lagre filen. Kontroller at du skrev inn adressen "
 "korrekt, og prøv igjen."
 
-#: gedit/gedit-io-error-info-bar.c:1073
+#: bedit/bedit-io-error-info-bar.c:1073
 msgid ""
 "There is not enough disk space to save the file. Please free some disk space "
 "and try again."
@@ -1303,7 +1303,7 @@ msgstr ""
 "Det er ikke nok lagringsplass til å lagre filen her. Frigjør lagringsplass, "
 "og prøv igjen."
 
-#: gedit/gedit-io-error-info-bar.c:1078
+#: bedit/bedit-io-error-info-bar.c:1078
 msgid ""
 "You are trying to save the file on a read-only disk. Please check that you "
 "typed the location correctly and try again."
@@ -1311,11 +1311,11 @@ msgstr ""
 "Du prøver å lagre filen på en skrivebeskyttet disk. Kontroller at du skrev "
 "inn adressen korrekt, og prøv igjen."
 
-#: gedit/gedit-io-error-info-bar.c:1084
+#: bedit/bedit-io-error-info-bar.c:1084
 msgid "A file with the same name already exists. Please use a different name."
 msgstr "Det finnes allerede en fil med samme navn. Bruk et annet navn."
 
-#: gedit/gedit-io-error-info-bar.c:1089
+#: bedit/bedit-io-error-info-bar.c:1089
 msgid ""
 "The disk where you are trying to save the file has a limitation on length of "
 "the file names. Please use a shorter name."
@@ -1323,7 +1323,7 @@ msgstr ""
 "Enheten du prøver å lagre filen på har en begrensning på lengde på filnavn. "
 "Bruk et kortere navn."
 
-#: gedit/gedit-io-error-info-bar.c:1100
+#: bedit/bedit-io-error-info-bar.c:1100
 msgid ""
 "The disk where you are trying to save the file has a limitation on file "
 "sizes. Please try saving a smaller file or saving it to a disk that does not "
@@ -1333,79 +1333,79 @@ msgstr ""
 "å lagre en mindre fil eller lagre den på en disk som ikke har denne "
 "begrensningen."
 
-#: gedit/gedit-io-error-info-bar.c:1117
+#: bedit/bedit-io-error-info-bar.c:1117
 #, c-format
 msgid "Could not save the file “%s”."
 msgstr "Klarte ikke å lagre «%s»."
 
-#: gedit/gedit-io-error-info-bar.c:1157
+#: bedit/bedit-io-error-info-bar.c:1157
 #, c-format
 msgid "The file “%s” changed on disk."
 msgstr "«%s» er endret på disk."
 
-#: gedit/gedit-io-error-info-bar.c:1168
+#: bedit/bedit-io-error-info-bar.c:1168
 msgid "Drop Changes and _Reload"
 msgstr "Forkast endringer og åpne på _nytt"
 
-#: gedit/gedit-io-error-info-bar.c:1178 gedit/resources/gtk/menus-common.ui:148
-#: gedit/resources/gtk/menus.ui:9 gedit/resources/gtk/menus-traditional.ui:9
+#: bedit/bedit-io-error-info-bar.c:1178 bedit/resources/gtk/menus-common.ui:148
+#: bedit/resources/gtk/menus.ui:9 bedit/resources/gtk/menus-traditional.ui:9
 msgid "_Reload"
 msgstr "_Åpne på nytt"
 
-#: gedit/gedit-io-error-info-bar.c:1242
+#: bedit/bedit-io-error-info-bar.c:1242
 #, c-format
 msgid "Some invalid chars have been detected while saving “%s”"
 msgstr "Fant ugyldige tegn under lagring av «%s»"
 
-#: gedit/gedit-io-error-info-bar.c:1258
+#: bedit/bedit-io-error-info-bar.c:1258
 msgid ""
 "If you continue saving this file you can corrupt the document.  Save anyway?"
 msgstr ""
 "Hvis du fortsetter å lagre denne filen, kan dokumentet bli ødelagt. Vil du "
 "lagre likevel?"
 
-#: gedit/gedit-preferences-dialog.c:455
+#: bedit/bedit-preferences-dialog.c:455
 msgid "Click on this button to select the font to be used by the editor"
 msgstr ""
 "Trykk på denne knappen for å velge skriften som skal brukes av "
 "redigeringsprogrammet"
 
-#: gedit/gedit-preferences-dialog.c:461
+#: bedit/bedit-preferences-dialog.c:461
 #, c-format
 msgid "_Use the system fixed width font (%s)"
 msgstr "Br_uk systemets skrift for fast bredde (%s)"
 
-#: gedit/gedit-preferences-dialog.c:601
+#: bedit/bedit-preferences-dialog.c:601
 #, c-format
 msgid "Directory “%s” could not be created: g_mkdir_with_parents() failed: %s"
 msgstr "Klarte ikke å opprette mappe «%s»: g_mkdir_with_parents() feilet: %s"
 
-#: gedit/gedit-preferences-dialog.c:798
+#: bedit/bedit-preferences-dialog.c:798
 msgid "The selected color scheme cannot be installed."
 msgstr "Valgt fargeskjema kan ikke installeres."
 
-#: gedit/gedit-preferences-dialog.c:821
+#: bedit/bedit-preferences-dialog.c:821
 msgid "Add Scheme"
 msgstr "Legg til skjema"
 
-#: gedit/gedit-preferences-dialog.c:826
+#: bedit/bedit-preferences-dialog.c:826
 msgid "A_dd Scheme"
 msgstr "_Legg til skjema"
 
-#: gedit/gedit-preferences-dialog.c:830
+#: bedit/bedit-preferences-dialog.c:830
 msgid "Color Scheme Files"
 msgstr "Fargeskjema-filer"
 
-#: gedit/gedit-preferences-dialog.c:861
+#: bedit/bedit-preferences-dialog.c:861
 #, c-format
 msgid "Could not remove color scheme “%s”."
 msgstr "Klarte ikke å fjerne fargeskjema «%s»."
 
-#: gedit/gedit-print-job.c:227
+#: bedit/bedit-print-job.c:227
 msgid "Preparing…"
 msgstr "Forbereder …"
 
-#: gedit/gedit-print-job.c:539
+#: bedit/bedit-print-job.c:539
 #, c-format
 msgid "File: %s"
 msgstr "Fil: %s"
@@ -1413,41 +1413,41 @@ msgstr "Fil: %s"
 #. Translators: %N is the current page number, %Q is the total
 #. * number of pages (ex. Page 2 of 10)
 #.
-#: gedit/gedit-print-job.c:548
+#: bedit/bedit-print-job.c:548
 msgid "Page %N of %Q"
 msgstr "Side %N av %Q"
 
-#: gedit/gedit-print-job.c:626
+#: bedit/bedit-print-job.c:626
 #, c-format
 msgid "Rendering page %d of %d…"
 msgstr "Tegner opp side %d av %d …"
 
-#: gedit/gedit-print-preview.c:651
+#: bedit/bedit-print-preview.c:651
 #, c-format
 msgid "Page %d of %d"
 msgstr "Side %d av %d"
 
-#: gedit/gedit-replace-dialog.c:690 plugins/externaltools/tools/tools.ui:49
+#: bedit/bedit-replace-dialog.c:690 plugins/externaltools/tools/tools.ui:49
 #: plugins/externaltools/tools/tools.ui:83
 #: plugins/externaltools/tools/tools.ui:121
 msgid "Nothing"
 msgstr "Ingenting"
 
-#: gedit/gedit-replace-dialog.c:779
-#: gedit/resources/ui/gedit-replace-dialog.ui:7
+#: bedit/bedit-replace-dialog.c:779
+#: bedit/resources/ui/bedit-replace-dialog.ui:7
 msgid "Find and Replace"
 msgstr "Søk og erstatt …"
 
 #. Use spaces to leave padding proportional to the font size
-#: gedit/gedit-statusbar.c:58 gedit/gedit-statusbar.c:64
+#: bedit/bedit-statusbar.c:58 bedit/bedit-statusbar.c:64
 msgid "OVR"
 msgstr "OVR"
 
-#: gedit/gedit-statusbar.c:58 gedit/gedit-statusbar.c:64
+#: bedit/bedit-statusbar.c:58 bedit/bedit-statusbar.c:64
 msgid "INS"
 msgstr "SET"
 
-#: gedit/gedit-statusbar.c:244
+#: bedit/bedit-statusbar.c:244
 #, c-format
 msgid "There is a tab with errors"
 msgid_plural "There are %d tabs with errors"
@@ -1456,86 +1456,86 @@ msgstr[1] "Det finnes %d faner med feil"
 
 #. Translators: the first %s is a file name (e.g. test.txt) the second one
 #. is a directory (e.g. ssh://master.gnome.org/home/users/paolo)
-#: gedit/gedit-tab.c:823
+#: bedit/bedit-tab.c:823
 #, c-format
 msgid "Reverting %s from %s"
 msgstr "Tilbakestiller endringer i %s til %s"
 
-#: gedit/gedit-tab.c:830
+#: bedit/bedit-tab.c:830
 #, c-format
 msgid "Reverting %s"
 msgstr "Tilbakestiller %s"
 
 #. Translators: the first %s is a file name (e.g. test.txt) the second one
 #. is a directory (e.g. ssh://master.gnome.org/home/users/paolo)
-#: gedit/gedit-tab.c:843
+#: bedit/bedit-tab.c:843
 #, c-format
 msgid "Loading %s from %s"
 msgstr "Åpner %s fra %s"
 
-#: gedit/gedit-tab.c:850
+#: bedit/bedit-tab.c:850
 #, c-format
 msgid "Loading %s"
 msgstr "Åpner %s"
 
 #. Translators: the first %s is a file name (e.g. test.txt) the second one
 #. is a directory (e.g. ssh://master.gnome.org/home/users/paolo)
-#: gedit/gedit-tab.c:930
+#: bedit/bedit-tab.c:930
 #, c-format
 msgid "Saving %s to %s"
 msgstr "Lagrer %s til %s"
 
-#: gedit/gedit-tab.c:935
+#: bedit/bedit-tab.c:935
 #, c-format
 msgid "Saving %s"
 msgstr "Lagrer %s"
 
-#: gedit/gedit-tab.c:1538
+#: bedit/bedit-tab.c:1538
 #, c-format
 msgid "Error opening file %s"
 msgstr "Feil ved åpning av fil %s"
 
-#: gedit/gedit-tab.c:1543
+#: bedit/bedit-tab.c:1543
 #, c-format
 msgid "Error reverting file %s"
 msgstr "Feil under forkasting av endringer i %s"
 
-#: gedit/gedit-tab.c:1548
+#: bedit/bedit-tab.c:1548
 #, c-format
 msgid "Error saving file %s"
 msgstr "Feil ved lagring av fil %s"
 
-#: gedit/gedit-tab.c:1579
+#: bedit/bedit-tab.c:1579
 msgid "Name:"
 msgstr "Navn:"
 
-#: gedit/gedit-tab.c:1580
+#: bedit/bedit-tab.c:1580
 msgid "MIME Type:"
 msgstr "MIME-type:"
 
-#: gedit/gedit-tab.c:1581
+#: bedit/bedit-tab.c:1581
 msgid "Encoding:"
 msgstr "Koding:"
 
 #. Translators: '/ on <remote-share>'
-#: gedit/gedit-utils.c:858
+#: bedit/bedit-utils.c:858
 #, c-format
 msgid "/ on %s"
 msgstr "/ på %s"
 
-#: gedit/gedit-utils.c:1162
+#: bedit/bedit-utils.c:1162
 msgid "Unix/Linux"
 msgstr "Unix/Linux"
 
-#: gedit/gedit-utils.c:1164
+#: bedit/bedit-utils.c:1164
 msgid "Mac OS Classic"
 msgstr "Mac OS Classic"
 
-#: gedit/gedit-utils.c:1166
+#: bedit/bedit-utils.c:1166
 msgid "Windows"
 msgstr "Windows"
 
-#: gedit/gedit-view.c:481 gedit/resources/ui/gedit-preferences-dialog.ui:41
+#: bedit/bedit-view.c:481 bedit/resources/ui/bedit-preferences-dialog.ui:41
 msgid "_Display line numbers"
 msgstr "Vis _linjenummer"
 
@@ -1543,1010 +1543,1010 @@ msgstr "Vis _linjenummer"
 #. * occurrence, and the second %d is the total number of search
 #. * occurrences.
 #.
-#: gedit/gedit-view-frame.c:674
+#: bedit/bedit-view-frame.c:674
 #, c-format
 msgid "%d of %d"
 msgstr "%d av %d"
 
 #. create "Wrap Around" menu item.
-#: gedit/gedit-view-frame.c:766
+#: bedit/bedit-view-frame.c:766
 msgid "_Wrap Around"
 msgstr "_Bryting"
 
 #. create "Match as Regular Expression" menu item.
-#: gedit/gedit-view-frame.c:776
+#: bedit/bedit-view-frame.c:776
 msgid "Match as _Regular Expression"
 msgstr "Søk som _regulært uttrykk"
 
 #. create "Match Entire Word Only" menu item.
-#: gedit/gedit-view-frame.c:790
+#: bedit/bedit-view-frame.c:790
 msgid "Match _Entire Word Only"
 msgstr "Kun treff på _hele ord"
 
 #. create "Match Case" menu item.
-#: gedit/gedit-view-frame.c:804
+#: bedit/bedit-view-frame.c:804
 msgid "_Match Case"
 msgstr "_Skill mellom små/store bokstaver"
 
-#: gedit/gedit-view-frame.c:1029
+#: bedit/bedit-view-frame.c:1029
 msgid "String you want to search for"
 msgstr "Streng du vil søke etter"
 
-#: gedit/gedit-view-frame.c:1041
+#: bedit/bedit-view-frame.c:1041
 msgid "Line you want to move the cursor to"
 msgstr "Linje du vil flytte markøren til"
 
-#: gedit/gedit-window.c:998
+#: bedit/bedit-window.c:998
 msgid "Bracket match is out of range"
 msgstr "Søk etter sammenhørende hakeparantes utenfor gyldig område"
 
-#: gedit/gedit-window.c:1003
+#: bedit/bedit-window.c:1003
 msgid "Bracket match not found"
 msgstr "Fant ingen sammenhørende hakeparanteser"
 
-#: gedit/gedit-window.c:1008
+#: bedit/bedit-window.c:1008
 #, c-format
 msgid "Bracket match found on line: %d"
 msgstr "Sammenhørende hakeparantes funnet på linje: %d"
 
 #. Translators: "Ln" is an abbreviation for "Line", Col is an abbreviation for "Column". Please,
 #. use abbreviations if possible to avoid space problems.
-#: gedit/gedit-window.c:1043
+#: bedit/bedit-window.c:1043
 #, c-format
 msgid "  Ln %d, Col %d"
 msgstr "  Ln. %d, Kol. %d"
 
-#: gedit/gedit-window.c:1227
+#: bedit/bedit-window.c:1227
 #, c-format
 msgid "Tab Width: %u"
 msgstr "Tabulatorbredde: %u"
 
-#: gedit/gedit-window.c:1596
+#: bedit/bedit-window.c:1596
 msgid "There are unsaved documents"
 msgstr "Det finnes dokumenter som ikke er lagret"
 
-#: gedit/gedit-window.c:2442
+#: bedit/bedit-window.c:2442
 msgid "Change side panel page"
 msgstr "Bytt side på sidepanel"
 
-#: gedit/gedit-window.c:2462 gedit/resources/ui/gedit-window.ui:19
+#: bedit/bedit-window.c:2462 bedit/resources/ui/bedit-window.ui:19
 msgid "Documents"
 msgstr "Dokumenter"
 
-#: gedit/resources/gtk/menus-common.ui:7
+#: bedit/resources/gtk/menus-common.ui:7
 msgid "Move _Left"
 msgstr "Flytt til _venstre"
 
-#: gedit/resources/gtk/menus-common.ui:11
+#: bedit/resources/gtk/menus-common.ui:11
 msgid "Move _Right"
 msgstr "Flytt til høy_re"
 
-#: gedit/resources/gtk/menus-common.ui:17
+#: bedit/resources/gtk/menus-common.ui:17
 msgid "Move to New _Window"
 msgstr "Flytt til nytt _vindu"
 
-#: gedit/resources/gtk/menus-common.ui:21
+#: bedit/resources/gtk/menus-common.ui:21
 msgid "Move to New Tab _Group"
 msgstr "Flytt til ny fane_gruppe"
 
-#: gedit/resources/gtk/menus-common.ui:27
-#: gedit/resources/gtk/menus-common.ui:163
-#: gedit/resources/gtk/menus-traditional.ui:134
-#: gedit/resources/ui/gedit-replace-dialog.ui:23
-#: plugins/spell/resources/ui/gedit-spell-setup-dialog.ui:25
-#: plugins/time/resources/ui/gedit-time-setup-dialog.ui:21
+#: bedit/resources/gtk/menus-common.ui:27
+#: bedit/resources/gtk/menus-common.ui:163
+#: bedit/resources/gtk/menus-traditional.ui:134
+#: bedit/resources/ui/bedit-replace-dialog.ui:23
+#: plugins/spell/resources/ui/bedit-spell-setup-dialog.ui:25
+#: plugins/time/resources/ui/bedit-time-setup-dialog.ui:21
 msgid "_Close"
 msgstr "_Lukk"
 
-#: gedit/resources/gtk/menus-common.ui:35
+#: bedit/resources/gtk/menus-common.ui:35
 msgid "Automatic Indentation"
 msgstr "Automatisk innrykk"
 
-#: gedit/resources/gtk/menus-common.ui:58
+#: bedit/resources/gtk/menus-common.ui:58
 msgid "Use Spaces"
 msgstr "Bruk mellomrom"
 
-#: gedit/resources/gtk/menus-common.ui:66
+#: bedit/resources/gtk/menus-common.ui:66
 msgid "Display line numbers"
 msgstr "Vis linjenummer"
 
-#: gedit/resources/gtk/menus-common.ui:70
+#: bedit/resources/gtk/menus-common.ui:70
 msgid "Display right margin"
 msgstr "Vis høyre marg"
 
-#: gedit/resources/gtk/menus-common.ui:74
+#: bedit/resources/gtk/menus-common.ui:74
 msgid "Highlight current line"
 msgstr "Uthev gjeldende linje"
 
-#: gedit/resources/gtk/menus-common.ui:78
+#: bedit/resources/gtk/menus-common.ui:78
 msgid "Text wrapping"
 msgstr "Tekstbryting"
 
-#: gedit/resources/gtk/menus-common.ui:88
+#: bedit/resources/gtk/menus-common.ui:88
 msgid "_File"
 msgstr "_Fil"
 
 #. _New is the menu item under the File menu on OS X which creates a new empty document.
-#: gedit/resources/gtk/menus-common.ui:92
+#: bedit/resources/gtk/menus-common.ui:92
 msgid "_New"
 msgstr "_Ny"
 
-#: gedit/resources/gtk/menus-common.ui:111
+#: bedit/resources/gtk/menus-common.ui:111
 msgid "Open _Recent"
 msgstr "Åpne nylig b_rukt"
 
-#: gedit/resources/gtk/menus-common.ui:114
+#: bedit/resources/gtk/menus-common.ui:114
 msgid "Reopen Closed _Tab"
 msgstr "Gjenåpnet lukke_t fane"
 
-#: gedit/resources/gtk/menus-common.ui:132
+#: bedit/resources/gtk/menus-common.ui:132
 msgid "Save _As…"
 msgstr "Lagre _som …"
 
-#: gedit/resources/gtk/menus-common.ui:140 gedit/resources/gtk/menus.ui:27
+#: bedit/resources/gtk/menus-common.ui:140 bedit/resources/gtk/menus.ui:27
 msgid "_New Window"
 msgstr "_Nytt vindu"
 
-#: gedit/resources/gtk/menus-common.ui:155 gedit/resources/gtk/menus.ui:14
-#: gedit/resources/gtk/menus-traditional.ui:14
+#: bedit/resources/gtk/menus-common.ui:155 bedit/resources/gtk/menus.ui:14
+#: bedit/resources/gtk/menus-traditional.ui:14
 msgid "_Print…"
 msgstr "_Skriv ut …"
 
-#: gedit/resources/gtk/menus-common.ui:168
-#: gedit/resources/gtk/menus-traditional.ui:138
+#: bedit/resources/gtk/menus-common.ui:168
+#: bedit/resources/gtk/menus-traditional.ui:138
 msgid "_Quit"
 msgstr "A_vslutt"
 
-#: gedit/resources/gtk/menus-common.ui:176
+#: bedit/resources/gtk/menus-common.ui:176
 msgid "_Edit"
 msgstr "R_ediger"
 
-#: gedit/resources/gtk/menus-common.ui:180
+#: bedit/resources/gtk/menus-common.ui:180
 msgid "_Undo"
 msgstr "_Angre"
 
-#: gedit/resources/gtk/menus-common.ui:185
+#: bedit/resources/gtk/menus-common.ui:185
 msgid "_Redo"
 msgstr "_Gjenta"
 
-#: gedit/resources/gtk/menus-common.ui:192
+#: bedit/resources/gtk/menus-common.ui:192
 msgid "C_ut"
 msgstr "Klipp _ut"
 
-#: gedit/resources/gtk/menus-common.ui:197
+#: bedit/resources/gtk/menus-common.ui:197
 msgid "_Copy"
 msgstr "_Kopier"
 
-#: gedit/resources/gtk/menus-common.ui:202
+#: bedit/resources/gtk/menus-common.ui:202
 msgid "_Paste"
 msgstr "_Lim inn"
 
-#: gedit/resources/gtk/menus-common.ui:207
-#: plugins/filebrowser/gedit-file-browser-plugin.c:919
-#: plugins/filebrowser/gedit-file-browser-plugin.c:957
-#: plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui:37
+#: bedit/resources/gtk/menus-common.ui:207
+#: plugins/filebrowser/bedit-file-browser-plugin.c:919
+#: plugins/filebrowser/bedit-file-browser-plugin.c:957
+#: plugins/filebrowser/resources/ui/bedit-file-browser-menus.ui:37
 msgid "_Delete"
 msgstr "_Slett"
 
-#: gedit/resources/gtk/menus-common.ui:215
+#: bedit/resources/gtk/menus-common.ui:215
 msgid "Overwrite _Mode"
 msgstr "Overskrivingsmodus"
 
-#: gedit/resources/gtk/menus-common.ui:223
+#: bedit/resources/gtk/menus-common.ui:223
 msgid "Select _All"
 msgstr "Velg _alle"
 
-#: gedit/resources/gtk/menus-common.ui:230 gedit/resources/gtk/menus.ui:112
-#: gedit/resources/gtk/menus-traditional.ui:108
+#: bedit/resources/gtk/menus-common.ui:230 bedit/resources/gtk/menus.ui:112
+#: bedit/resources/gtk/menus-traditional.ui:108
 msgid "_Preferences"
 msgstr "_Brukervalg"
 
-#: gedit/resources/gtk/menus-common.ui:237 gedit/resources/gtk/menus.ui:72
-#: gedit/resources/gtk/menus-traditional.ui:68
+#: bedit/resources/gtk/menus-common.ui:237 bedit/resources/gtk/menus.ui:72
+#: bedit/resources/gtk/menus-traditional.ui:68
 msgid "_View"
 msgstr "_Vis"
 
-#: gedit/resources/gtk/menus-common.ui:241 gedit/resources/gtk/menus.ui:76
-#: gedit/resources/gtk/menus-traditional.ui:72
+#: bedit/resources/gtk/menus-common.ui:241 bedit/resources/gtk/menus.ui:76
+#: bedit/resources/gtk/menus-traditional.ui:72
 msgid "Side _Panel"
 msgstr "Side_panel"
 
-#: gedit/resources/gtk/menus-common.ui:246 gedit/resources/gtk/menus.ui:80
-#: gedit/resources/gtk/menus-traditional.ui:76
+#: bedit/resources/gtk/menus-common.ui:246 bedit/resources/gtk/menus.ui:80
+#: bedit/resources/gtk/menus-traditional.ui:76
 msgid "_Bottom Panel"
 msgstr "_Bunnpanel"
 
-#: gedit/resources/gtk/menus-common.ui:255 gedit/resources/gtk/menus.ui:19
-#: gedit/resources/gtk/menus-traditional.ui:19
+#: bedit/resources/gtk/menus-common.ui:255 bedit/resources/gtk/menus.ui:19
+#: bedit/resources/gtk/menus-traditional.ui:19
 msgid "_Fullscreen"
 msgstr "_Fullskjerm"
 
-#: gedit/resources/gtk/menus-common.ui:263 gedit/resources/gtk/menus.ui:91
-#: gedit/resources/gtk/menus-traditional.ui:87
+#: bedit/resources/gtk/menus-common.ui:263 bedit/resources/gtk/menus.ui:91
+#: bedit/resources/gtk/menus-traditional.ui:87
 msgid "_Highlight Mode…"
 msgstr "Ut_hevingsmodus"
 
-#: gedit/resources/gtk/menus-common.ui:269
+#: bedit/resources/gtk/menus-common.ui:269
 msgid "_Search"
 msgstr "_Søk"
 
-#: gedit/resources/gtk/menus-common.ui:273 gedit/resources/gtk/menus.ui:54
-#: gedit/resources/gtk/menus-traditional.ui:50
+#: bedit/resources/gtk/menus-common.ui:273 bedit/resources/gtk/menus.ui:54
+#: bedit/resources/gtk/menus-traditional.ui:50
 msgid "_Find…"
 msgstr "_Søk …"
 
-#: gedit/resources/gtk/menus-common.ui:278
+#: bedit/resources/gtk/menus-common.ui:278
 msgid "Find Ne_xt"
 msgstr "Søk etter _neste"
 
-#: gedit/resources/gtk/menus-common.ui:283
+#: bedit/resources/gtk/menus-common.ui:283
 msgid "Find Pre_vious"
 msgstr "Søk etter _forrige"
 
-#: gedit/resources/gtk/menus-common.ui:291
+#: bedit/resources/gtk/menus-common.ui:291
 msgid "Find and _Replace…"
 msgstr "Søk og e_rstatt …"
 
-#: gedit/resources/gtk/menus-common.ui:299 gedit/resources/gtk/menus.ui:62
-#: gedit/resources/gtk/menus-traditional.ui:58
+#: bedit/resources/gtk/menus-common.ui:299 bedit/resources/gtk/menus.ui:62
+#: bedit/resources/gtk/menus-traditional.ui:58
 msgid "_Clear Highlight"
 msgstr "_Fjern utheving"
 
-#: gedit/resources/gtk/menus-common.ui:307
+#: bedit/resources/gtk/menus-common.ui:307
 msgid "Go to _Line…"
 msgstr "Gå til _linje …"
 
-#: gedit/resources/gtk/menus-common.ui:314 gedit/resources/gtk/menus.ui:97
-#: gedit/resources/gtk/menus-traditional.ui:93
+#: bedit/resources/gtk/menus-common.ui:314 bedit/resources/gtk/menus.ui:97
+#: bedit/resources/gtk/menus-traditional.ui:93
 msgid "_Tools"
 msgstr "Verk_tøy"
 
-#: gedit/resources/gtk/menus-common.ui:329
+#: bedit/resources/gtk/menus-common.ui:329
 msgid "_Documents"
 msgstr "_Dokumenter"
 
-#: gedit/resources/gtk/menus-common.ui:333
+#: bedit/resources/gtk/menus-common.ui:333
 msgid "_Save All"
 msgstr "_Lagre alle"
 
-#: gedit/resources/gtk/menus-common.ui:338
-#: gedit/resources/gtk/menus-traditional.ui:130
+#: bedit/resources/gtk/menus-common.ui:338
+#: bedit/resources/gtk/menus-traditional.ui:130
 msgid "_Close All"
 msgstr "_Lukk alle"
 
-#: gedit/resources/gtk/menus-common.ui:346
+#: bedit/resources/gtk/menus-common.ui:346
 msgid "_New Tab Group"
 msgstr "_Ny fane_gruppe"
 
-#: gedit/resources/gtk/menus-common.ui:351
+#: bedit/resources/gtk/menus-common.ui:351
 msgid "P_revious Tab Group"
 msgstr "Fo_rrige fanegruppe"
 
-#: gedit/resources/gtk/menus-common.ui:356
+#: bedit/resources/gtk/menus-common.ui:356
 msgid "Nex_t Tab Group"
 msgstr "_Neste fanegruppe"
 
-#: gedit/resources/gtk/menus-common.ui:364
+#: bedit/resources/gtk/menus-common.ui:364
 msgid "_Previous Document"
 msgstr "_Forrige dokument"
 
-#: gedit/resources/gtk/menus-common.ui:369
+#: bedit/resources/gtk/menus-common.ui:369
 msgid "N_ext Document"
 msgstr "N_este dokument"
 
-#: gedit/resources/gtk/menus-common.ui:377
+#: bedit/resources/gtk/menus-common.ui:377
 msgid "_Move To New Window"
 msgstr "Flytt til _nytt vindu"
 
-#: gedit/resources/gtk/menus-common.ui:383
-#: gedit/resources/gtk/menus-common.ui:387 gedit/resources/gtk/menus.ui:123
-#: gedit/resources/gtk/menus-traditional.ui:119
-#: plugins/spell/gedit-spell-plugin.c:265
-#: plugins/time/resources/ui/gedit-time-dialog.ui:133
+#: bedit/resources/gtk/menus-common.ui:383
+#: bedit/resources/gtk/menus-common.ui:387 bedit/resources/gtk/menus.ui:123
+#: bedit/resources/gtk/menus-traditional.ui:119
+#: plugins/spell/bedit-spell-plugin.c:265
+#: plugins/time/resources/ui/bedit-time-dialog.ui:133
 msgid "_Help"
 msgstr "_Hjelp"
 
-#: gedit/resources/gtk/menus-common.ui:394 gedit/resources/gtk/menus.ui:127
-#: gedit/resources/gtk/menus-traditional.ui:123
+#: bedit/resources/gtk/menus-common.ui:394 bedit/resources/gtk/menus.ui:127
+#: bedit/resources/gtk/menus-traditional.ui:123
 msgid "_About Text Editor"
 msgstr "_Om Tekstredigering"
 
-#: gedit/resources/gtk/menus.ui:41 gedit/resources/gtk/menus-traditional.ui:37
+#: bedit/resources/gtk/menus.ui:41 bedit/resources/gtk/menus-traditional.ui:37
 msgid "Save _All"
 msgstr "Lagre _alle"
 
-#: gedit/resources/gtk/menus.ui:58 gedit/resources/gtk/menus-traditional.ui:54
+#: bedit/resources/gtk/menus.ui:58 bedit/resources/gtk/menus-traditional.ui:54
 msgid "_Find and Replace…"
 msgstr "_Søk og erstatt …"
 
-#: gedit/resources/gtk/menus.ui:66 gedit/resources/gtk/menus-traditional.ui:62
+#: bedit/resources/gtk/menus.ui:66 bedit/resources/gtk/menus-traditional.ui:62
 msgid "_Go to Line…"
 msgstr "Gå til _linje …"
 
-#: gedit/resources/gtk/menus.ui:119
-#: gedit/resources/gtk/menus-traditional.ui:115
+#: bedit/resources/gtk/menus.ui:119
+#: bedit/resources/gtk/menus-traditional.ui:115
 msgid "_Keyboard Shortcuts"
 msgstr "_Tastatursnarveier"
 
-#: gedit/resources/ui/gedit-encodings-dialog.ui:41
+#: bedit/resources/ui/bedit-encodings-dialog.ui:41
 msgid "Character Encodings"
 msgstr "Tegnkodinger"
 
-#: gedit/resources/ui/gedit-encodings-dialog.ui:51
+#: bedit/resources/ui/bedit-encodings-dialog.ui:51
 msgid "_Apply"
 msgstr "_Bruk"
 
-#: gedit/resources/ui/gedit-encodings-dialog.ui:82
+#: bedit/resources/ui/bedit-encodings-dialog.ui:82
 msgid "A_vailable Encodings"
 msgstr "Til_gjengelige kodinger"
 
-#: gedit/resources/ui/gedit-encodings-dialog.ui:100
+#: bedit/resources/ui/bedit-encodings-dialog.ui:100
 msgid "Cho_sen Encodings"
 msgstr "Valgte te_gnkodinger"
 
-#: gedit/resources/ui/gedit-encodings-dialog.ui:139
-#: gedit/resources/ui/gedit-encodings-dialog.ui:217
+#: bedit/resources/ui/bedit-encodings-dialog.ui:139
+#: bedit/resources/ui/bedit-encodings-dialog.ui:217
 msgid "_Description"
 msgstr "_Beskrivelse"
 
-#: gedit/resources/ui/gedit-encodings-dialog.ui:151
-#: gedit/resources/ui/gedit-encodings-dialog.ui:228
+#: bedit/resources/ui/bedit-encodings-dialog.ui:151
+#: bedit/resources/ui/bedit-encodings-dialog.ui:228
 msgid "_Encoding"
 msgstr "_Koding"
 
-#: gedit/resources/ui/gedit-highlight-mode-dialog.ui:11
+#: bedit/resources/ui/bedit-highlight-mode-dialog.ui:11
 msgid "Highlight Mode"
 msgstr "Uthevingsmodus"
 
-#: gedit/resources/ui/gedit-highlight-mode-dialog.ui:47
+#: bedit/resources/ui/bedit-highlight-mode-dialog.ui:47
 msgid "_Select"
 msgstr "_Velg"
 
-#: gedit/resources/ui/gedit-highlight-mode-selector.ui:31
+#: bedit/resources/ui/bedit-highlight-mode-selector.ui:31
 msgid "Search highlight mode…"
 msgstr "Uthevingsmodus for søk …"
 
-#: gedit/resources/ui/gedit-open-document-selector.ui:53
+#: bedit/resources/ui/bedit-open-document-selector.ui:53
 msgid "No results"
 msgstr "Ingen resultater"
 
-#: gedit/resources/ui/gedit-open-document-selector.ui:97
+#: bedit/resources/ui/bedit-open-document-selector.ui:97
 msgid "Other _Documents…"
 msgstr "Andre _dokumenter …"
 
-#: gedit/resources/ui/gedit-open-document-selector.ui:101
+#: bedit/resources/ui/bedit-open-document-selector.ui:101
 msgid "Open another file"
 msgstr "Åpne en annen fil"
 
-#: gedit/resources/ui/gedit-preferences-dialog.ui:8
-#: gedit/resources/ui/gedit-preferences-dialog.ui:15
+#: bedit/resources/ui/bedit-preferences-dialog.ui:8
+#: bedit/resources/ui/bedit-preferences-dialog.ui:15
 msgid "Preferences"
 msgstr "Brukervalg"
 
-#: gedit/resources/ui/gedit-preferences-dialog.ui:56
+#: bedit/resources/ui/bedit-preferences-dialog.ui:56
 msgid "Display right _margin at column:"
 msgstr "Vis høyre _marg ved kolonne:"
 
-#: gedit/resources/ui/gedit-preferences-dialog.ui:95
+#: bedit/resources/ui/bedit-preferences-dialog.ui:95
 msgid "Display _statusbar"
 msgstr "Vis _statuslinje"
 
-#: gedit/resources/ui/gedit-preferences-dialog.ui:110
+#: bedit/resources/ui/bedit-preferences-dialog.ui:110
 msgid "Display _overview map"
 msgstr "Vis _oversiktskart"
 
-#: gedit/resources/ui/gedit-preferences-dialog.ui:125
+#: bedit/resources/ui/bedit-preferences-dialog.ui:125
 msgid "Display _grid pattern"
 msgstr "Vis _rutenettmønster"
 
-#: gedit/resources/ui/gedit-preferences-dialog.ui:154
-#: gedit/resources/ui/gedit-print-preferences.ui:197
+#: bedit/resources/ui/bedit-preferences-dialog.ui:154
+#: bedit/resources/ui/bedit-print-preferences.ui:197
 msgid "Text Wrapping"
 msgstr "Tekstbryting"
 
-#: gedit/resources/ui/gedit-preferences-dialog.ui:172
-#: gedit/resources/ui/gedit-print-preferences.ui:217
+#: bedit/resources/ui/bedit-preferences-dialog.ui:172
+#: bedit/resources/ui/bedit-print-preferences.ui:217
 msgid "Enable text _wrapping"
 msgstr "Slå på tekst_bryting"
 
-#: gedit/resources/ui/gedit-preferences-dialog.ui:186
-#: gedit/resources/ui/gedit-print-preferences.ui:237
+#: bedit/resources/ui/bedit-preferences-dialog.ui:186
+#: bedit/resources/ui/bedit-print-preferences.ui:237
 msgid "Do not _split words over two lines"
 msgstr "Ikke _del ord over to linjer"
 
-#: gedit/resources/ui/gedit-preferences-dialog.ui:220
+#: bedit/resources/ui/bedit-preferences-dialog.ui:220
 msgid "Highlighting"
 msgstr "Syntaksutheving"
 
-#: gedit/resources/ui/gedit-preferences-dialog.ui:238
+#: bedit/resources/ui/bedit-preferences-dialog.ui:238
 msgid "Highlight current _line"
 msgstr "Uthev gjeldende _linje"
 
-#: gedit/resources/ui/gedit-preferences-dialog.ui:252
+#: bedit/resources/ui/bedit-preferences-dialog.ui:252
 msgid "Highlight matching _brackets"
 msgstr "Uthev tilhørende _hakeparantes"
 
-#: gedit/resources/ui/gedit-preferences-dialog.ui:285
+#: bedit/resources/ui/bedit-preferences-dialog.ui:285
 msgid "View"
 msgstr "Vis"
 
-#: gedit/resources/ui/gedit-preferences-dialog.ui:307
+#: bedit/resources/ui/bedit-preferences-dialog.ui:307
 msgid "Tab Stops"
 msgstr "Tabulatorer"
 
-#: gedit/resources/ui/gedit-preferences-dialog.ui:330
+#: bedit/resources/ui/bedit-preferences-dialog.ui:330
 msgid "_Tab width:"
 msgstr "_Tabulatorbredde:"
 
-#: gedit/resources/ui/gedit-preferences-dialog.ui:359
+#: bedit/resources/ui/bedit-preferences-dialog.ui:359
 msgid "Insert _spaces instead of tabs"
 msgstr "Sett inn _mellomrom i stedet for tabulatorer"
 
-#: gedit/resources/ui/gedit-preferences-dialog.ui:374
+#: bedit/resources/ui/bedit-preferences-dialog.ui:374
 msgid "_Enable automatic indentation"
 msgstr "Slå _på automatisk innrykk"
 
-#: gedit/resources/ui/gedit-preferences-dialog.ui:409
+#: bedit/resources/ui/bedit-preferences-dialog.ui:409
 msgid "File Saving"
 msgstr "Lagring av fil"
 
-#: gedit/resources/ui/gedit-preferences-dialog.ui:428
+#: bedit/resources/ui/bedit-preferences-dialog.ui:428
 msgid "Create a _backup copy of files before saving"
 msgstr "Lag en _sikkerhetskopi av filene før lagring"
 
-#: gedit/resources/ui/gedit-preferences-dialog.ui:443
+#: bedit/resources/ui/bedit-preferences-dialog.ui:443
 msgid "_Autosave files every"
 msgstr "_Autolagre filer hver(t)"
 
-#: gedit/resources/ui/gedit-preferences-dialog.ui:459
+#: bedit/resources/ui/bedit-preferences-dialog.ui:459
 msgid "_minutes"
 msgstr "_minutter"
 
-#: gedit/resources/ui/gedit-preferences-dialog.ui:506
+#: bedit/resources/ui/bedit-preferences-dialog.ui:506
 msgid "Editor"
 msgstr "Behandler"
 
-#: gedit/resources/ui/gedit-preferences-dialog.ui:529
+#: bedit/resources/ui/bedit-preferences-dialog.ui:529
 #: plugins/externaltools/com.bwhmather.bedit.plugins.externaltools.gschema.xml.in:14
 #: plugins/pythonconsole/com.bwhmather.bedit.plugins.pythonconsole.gschema.xml.in:24
 msgid "Font"
 msgstr "Skrift"
 
-#: gedit/resources/ui/gedit-preferences-dialog.ui:573
+#: bedit/resources/ui/bedit-preferences-dialog.ui:573
 msgid "Editor _font: "
 msgstr "Skri_ft for redigering: "
 
-#: gedit/resources/ui/gedit-preferences-dialog.ui:590
+#: bedit/resources/ui/bedit-preferences-dialog.ui:590
 msgid "Pick the editor font"
 msgstr "Velg skrift for redigering"
 
-#: gedit/resources/ui/gedit-preferences-dialog.ui:631
+#: bedit/resources/ui/bedit-preferences-dialog.ui:631
 msgid "Color Scheme"
 msgstr "Fargepalett"
 
-#: gedit/resources/ui/gedit-preferences-dialog.ui:678
-#: gedit/resources/ui/gedit-preferences-dialog.ui:679
+#: bedit/resources/ui/bedit-preferences-dialog.ui:678
+#: bedit/resources/ui/bedit-preferences-dialog.ui:679
 msgid "Install scheme"
 msgstr "Installer skjema"
 
-#: gedit/resources/ui/gedit-preferences-dialog.ui:680
+#: bedit/resources/ui/bedit-preferences-dialog.ui:680
 msgid "Install Scheme"
 msgstr "Installer skjema"
 
-#: gedit/resources/ui/gedit-preferences-dialog.ui:694
-#: gedit/resources/ui/gedit-preferences-dialog.ui:695
+#: bedit/resources/ui/bedit-preferences-dialog.ui:694
+#: bedit/resources/ui/bedit-preferences-dialog.ui:695
 msgid "Uninstall scheme"
 msgstr "Avinstaller skjema"
 
-#: gedit/resources/ui/gedit-preferences-dialog.ui:696
+#: bedit/resources/ui/bedit-preferences-dialog.ui:696
 msgid "Uninstall Scheme"
 msgstr "Avinstaller skjema"
 
-#: gedit/resources/ui/gedit-preferences-dialog.ui:736
+#: bedit/resources/ui/bedit-preferences-dialog.ui:736
 msgid "Font & Colors"
 msgstr "Skrifter og farger"
 
-#: gedit/resources/ui/gedit-preferences-dialog.ui:761
+#: bedit/resources/ui/bedit-preferences-dialog.ui:761
 msgid "Plugins"
 msgstr "Tillegg"
 
-#: gedit/resources/ui/gedit-print-preferences.ui:39
+#: bedit/resources/ui/bedit-print-preferences.ui:39
 msgid "Syntax Highlighting"
 msgstr "Syntaksutheving"
 
-#: gedit/resources/ui/gedit-print-preferences.ui:52
+#: bedit/resources/ui/bedit-print-preferences.ui:52
 msgid "Print synta_x highlighting"
 msgstr "Skriv ut fargemerking av s_yntaks"
 
-#: gedit/resources/ui/gedit-print-preferences.ui:85
+#: bedit/resources/ui/bedit-print-preferences.ui:85
 msgid "Line Numbers"
 msgstr "Linjenummer"
 
-#: gedit/resources/ui/gedit-print-preferences.ui:105
+#: bedit/resources/ui/bedit-print-preferences.ui:105
 msgid "Print line nu_mbers"
 msgstr "Skriv ut linjenu_mmer"
 
 #. 'Number every' from 'Number every 3 lines' in the 'Text Editor' tab of the print preferences.
-#: gedit/resources/ui/gedit-print-preferences.ui:129
+#: bedit/resources/ui/bedit-print-preferences.ui:129
 msgid "_Number every"
 msgstr "_Nummer hver"
 
 #. 'lines' from 'Number every 3 lines' in the 'Text Editor' tab of the print preferences.
-#: gedit/resources/ui/gedit-print-preferences.ui:157
+#: bedit/resources/ui/bedit-print-preferences.ui:157
 msgid "lines"
 msgstr "linjer"
 
-#: gedit/resources/ui/gedit-print-preferences.ui:283
+#: bedit/resources/ui/bedit-print-preferences.ui:283
 msgid "Page header"
 msgstr "Topptekst for side"
 
-#: gedit/resources/ui/gedit-print-preferences.ui:296
+#: bedit/resources/ui/bedit-print-preferences.ui:296
 msgid "Print page _headers"
 msgstr "Skriv ut to_pptekst for siden"
 
-#: gedit/resources/ui/gedit-print-preferences.ui:342
+#: bedit/resources/ui/bedit-print-preferences.ui:342
 msgid "Fonts"
 msgstr "Skrifter"
 
-#: gedit/resources/ui/gedit-print-preferences.ui:371
+#: bedit/resources/ui/bedit-print-preferences.ui:371
 msgid "_Body:"
 msgstr "_Kropp:"
 
-#: gedit/resources/ui/gedit-print-preferences.ui:402
+#: bedit/resources/ui/bedit-print-preferences.ui:402
 msgid "_Line numbers:"
 msgstr "_Linjenummer:"
 
-#: gedit/resources/ui/gedit-print-preferences.ui:433
+#: bedit/resources/ui/bedit-print-preferences.ui:433
 msgid "He_aders and footers:"
 msgstr "Toppt_ekst og bunntekst:"
 
-#: gedit/resources/ui/gedit-print-preferences.ui:474
+#: bedit/resources/ui/bedit-print-preferences.ui:474
 msgid "_Restore Default Fonts"
 msgstr "Gjenopp_rett forvalgte skrifter"
 
-#: gedit/resources/ui/gedit-print-preview.ui:34
+#: bedit/resources/ui/bedit-print-preview.ui:34
 msgid "Show the previous page"
 msgstr "Vis forrige side"
 
-#: gedit/resources/ui/gedit-print-preview.ui:48
+#: bedit/resources/ui/bedit-print-preview.ui:48
 msgid "Show the next page"
 msgstr "Vis neste side"
 
-#: gedit/resources/ui/gedit-print-preview.ui:103
+#: bedit/resources/ui/bedit-print-preview.ui:103
 msgid "Current page (Alt+P)"
 msgstr "Denne siden (Alt+P)"
 
 #. the "of" from "1 of 19" in print preview
-#: gedit/resources/ui/gedit-print-preview.ui:118
+#: bedit/resources/ui/bedit-print-preview.ui:118
 msgid "of"
 msgstr "av"
 
-#: gedit/resources/ui/gedit-print-preview.ui:135
+#: bedit/resources/ui/bedit-print-preview.ui:135
 msgid "Page total"
 msgstr "Sider totalt"
 
-#: gedit/resources/ui/gedit-print-preview.ui:136
+#: bedit/resources/ui/bedit-print-preview.ui:136
 msgid "The total number of pages in the document"
 msgstr "Totalt antall sider i dokumentet"
 
-#: gedit/resources/ui/gedit-print-preview.ui:185
+#: bedit/resources/ui/bedit-print-preview.ui:185
 msgid "Show multiple pages"
 msgstr "Vis flere sider"
 
-#: gedit/resources/ui/gedit-print-preview.ui:233
+#: bedit/resources/ui/bedit-print-preview.ui:233
 msgid "Zoom 1:1"
 msgstr "Zoom 1:1"
 
-#: gedit/resources/ui/gedit-print-preview.ui:247
+#: bedit/resources/ui/bedit-print-preview.ui:247
 msgid "Zoom to fit the whole page"
 msgstr "Zoom tilpasset hele siden"
 
-#: gedit/resources/ui/gedit-print-preview.ui:261
+#: bedit/resources/ui/bedit-print-preview.ui:261
 msgid "Zoom the page in"
 msgstr "Sett inn på siden"
 
-#: gedit/resources/ui/gedit-print-preview.ui:275
+#: bedit/resources/ui/bedit-print-preview.ui:275
 msgid "Zoom the page out"
 msgstr "Zoom ut på siden"
 
-#: gedit/resources/ui/gedit-print-preview.ui:326
+#: bedit/resources/ui/bedit-print-preview.ui:326
 msgid "Close print preview"
 msgstr "Lukk forhåndsvisning av utskrift"
 
-#: gedit/resources/ui/gedit-print-preview.ui:327
+#: bedit/resources/ui/bedit-print-preview.ui:327
 msgid "_Close Preview"
 msgstr "_Lukk forhåndsvisning"
 
-#: gedit/resources/ui/gedit-print-preview.ui:374
+#: bedit/resources/ui/bedit-print-preview.ui:374
 msgid "Page Preview"
 msgstr "Forhåndsvisning av side"
 
-#: gedit/resources/ui/gedit-print-preview.ui:375
+#: bedit/resources/ui/bedit-print-preview.ui:375
 msgid "The preview of a page in the document to be printed"
 msgstr "Forhåndsvisning av en side i dokumentet som skal skrives ut"
 
-#: gedit/resources/ui/gedit-replace-dialog.ui:39
+#: bedit/resources/ui/bedit-replace-dialog.ui:39
 msgid "Replace _All"
 msgstr "Erstatt _alle"
 
-#: gedit/resources/ui/gedit-replace-dialog.ui:71
+#: bedit/resources/ui/bedit-replace-dialog.ui:71
 msgctxt "label of the find button"
 msgid "_Find"
 msgstr "_Søk"
 
-#: gedit/resources/ui/gedit-replace-dialog.ui:105
+#: bedit/resources/ui/bedit-replace-dialog.ui:105
 msgctxt "label on the left of the GtkEntry containing text to search"
 msgid "F_ind "
 msgstr "S_øk"
 
-#: gedit/resources/ui/gedit-replace-dialog.ui:120
+#: bedit/resources/ui/bedit-replace-dialog.ui:120
 msgid "Replace _with "
 msgstr "Erstatt _med"
 
-#: gedit/resources/ui/gedit-replace-dialog.ui:138
+#: bedit/resources/ui/bedit-replace-dialog.ui:138
 msgid "_Match case"
 msgstr "_Skill mellom små/store bokstaver"
 
-#: gedit/resources/ui/gedit-replace-dialog.ui:155
+#: bedit/resources/ui/bedit-replace-dialog.ui:155
 msgid "Match _entire word only"
 msgstr "Kun treff på _hele ord"
 
-#: gedit/resources/ui/gedit-replace-dialog.ui:172
+#: bedit/resources/ui/bedit-replace-dialog.ui:172
 msgid "Re_gular expression"
 msgstr "Re_gulært uttrykk"
 
-#: gedit/resources/ui/gedit-replace-dialog.ui:189
+#: bedit/resources/ui/bedit-replace-dialog.ui:189
 msgid "Search _backwards"
 msgstr "Søk _bakover"
 
-#: gedit/resources/ui/gedit-replace-dialog.ui:206
+#: bedit/resources/ui/bedit-replace-dialog.ui:206
 msgid "Wra_p around"
 msgstr "_Fortsett når slutt på dokumentet nås"
 
-#: gedit/resources/ui/gedit-shortcuts.ui:14
+#: bedit/resources/ui/bedit-shortcuts.ui:14
 msgctxt "shortcut window"
 msgid "Documents"
 msgstr "Dokumenter"
 
-#: gedit/resources/ui/gedit-shortcuts.ui:19
+#: bedit/resources/ui/bedit-shortcuts.ui:19
 msgctxt "shortcut window"
 msgid "Create a new document in a tab"
 msgstr "Lag et nytt dokument i en fane"
 
-#: gedit/resources/ui/gedit-shortcuts.ui:26
+#: bedit/resources/ui/bedit-shortcuts.ui:26
 msgctxt "shortcut window"
 msgid "Open a document"
 msgstr "Åpne et dokument"
 
-#: gedit/resources/ui/gedit-shortcuts.ui:33
+#: bedit/resources/ui/bedit-shortcuts.ui:33
 msgctxt "shortcut window"
 msgid "Save the document"
 msgstr "Lagre dokumentet"
 
-#: gedit/resources/ui/gedit-shortcuts.ui:40
+#: bedit/resources/ui/bedit-shortcuts.ui:40
 msgctxt "shortcut window"
 msgid "Save the document with a new filename"
 msgstr "Lagre dokumentet med et nytt filnavn"
 
-#: gedit/resources/ui/gedit-shortcuts.ui:47
+#: bedit/resources/ui/bedit-shortcuts.ui:47
 msgctxt "shortcut window"
 msgid "Save all the documents"
 msgstr "Lagre alle dokumentene"
 
-#: gedit/resources/ui/gedit-shortcuts.ui:54
+#: bedit/resources/ui/bedit-shortcuts.ui:54
 msgctxt "shortcut window"
 msgid "Close the document"
 msgstr "Lukk dokumentet"
 
-#: gedit/resources/ui/gedit-shortcuts.ui:61
+#: bedit/resources/ui/bedit-shortcuts.ui:61
 msgctxt "shortcut window"
 msgid "Close all the documents"
 msgstr "Lukk alle dokumenter"
 
-#: gedit/resources/ui/gedit-shortcuts.ui:68
+#: bedit/resources/ui/bedit-shortcuts.ui:68
 msgctxt "shortcut window"
 msgid "Reopen the most recently closed document"
 msgstr "Gjenåpne sist lukkede dokument"
 
-#: gedit/resources/ui/gedit-shortcuts.ui:75
+#: bedit/resources/ui/bedit-shortcuts.ui:75
 msgctxt "shortcut window"
 msgid "Switch to the next document"
 msgstr "Bytt til neste dokument"
 
-#: gedit/resources/ui/gedit-shortcuts.ui:82
+#: bedit/resources/ui/bedit-shortcuts.ui:82
 msgctxt "shortcut window"
 msgid "Switch to the previous document"
 msgstr "Bytt til forrige dokument"
 
-#: gedit/resources/ui/gedit-shortcuts.ui:89
+#: bedit/resources/ui/bedit-shortcuts.ui:89
 msgctxt "shortcut window"
 msgid "Switch to the first — ninth document"
 msgstr "Bytt til første – niende dokument"
 
-#: gedit/resources/ui/gedit-shortcuts.ui:97
+#: bedit/resources/ui/bedit-shortcuts.ui:97
 msgctxt "shortcut window"
 msgid "Windows and Panels"
 msgstr "Vinduer og paneler"
 
-#: gedit/resources/ui/gedit-shortcuts.ui:102
+#: bedit/resources/ui/bedit-shortcuts.ui:102
 msgctxt "shortcut window"
 msgid "Create a new document in a window"
 msgstr "Lag et nytt dokument i et vindu"
 
-#: gedit/resources/ui/gedit-shortcuts.ui:109
+#: bedit/resources/ui/bedit-shortcuts.ui:109
 msgctxt "shortcut window"
 msgid "Create a new tab group"
 msgstr "Lag en ny fanegruppe"
 
-#: gedit/resources/ui/gedit-shortcuts.ui:116
+#: bedit/resources/ui/bedit-shortcuts.ui:116
 msgctxt "shortcut window"
 msgid "Show side panel"
 msgstr "Vis sidepanel"
 
-#: gedit/resources/ui/gedit-shortcuts.ui:123
+#: bedit/resources/ui/bedit-shortcuts.ui:123
 msgctxt "shortcut window"
 msgid "Show bottom panel"
 msgstr "Vis bunnpanel"
 
-#: gedit/resources/ui/gedit-shortcuts.ui:130
+#: bedit/resources/ui/bedit-shortcuts.ui:130
 msgctxt "shortcut window"
 msgid "Fullscreen on / off"
 msgstr "Fullskjerm av/på"
 
-#: gedit/resources/ui/gedit-shortcuts.ui:137
+#: bedit/resources/ui/bedit-shortcuts.ui:137
 msgctxt "shortcut window"
 msgid "Quit the application"
 msgstr "Avslutt programmet"
 
-#: gedit/resources/ui/gedit-shortcuts.ui:145
-#: gedit/resources/ui/gedit-shortcuts.ui:171
+#: bedit/resources/ui/bedit-shortcuts.ui:145
+#: bedit/resources/ui/bedit-shortcuts.ui:171
 msgctxt "shortcut window"
 msgid "Find and Replace"
 msgstr "Søk og erstatt"
 
-#: gedit/resources/ui/gedit-shortcuts.ui:150
+#: bedit/resources/ui/bedit-shortcuts.ui:150
 msgctxt "shortcut window"
 msgid "Find"
 msgstr "Søk"
 
-#: gedit/resources/ui/gedit-shortcuts.ui:157
+#: bedit/resources/ui/bedit-shortcuts.ui:157
 msgctxt "shortcut window"
 msgid "Find the next match"
 msgstr "Finn neste treff"
 
-#: gedit/resources/ui/gedit-shortcuts.ui:164
+#: bedit/resources/ui/bedit-shortcuts.ui:164
 msgctxt "shortcut window"
 msgid "Find the previous match"
 msgstr "Finn forrige treff"
 
-#: gedit/resources/ui/gedit-shortcuts.ui:178
+#: bedit/resources/ui/bedit-shortcuts.ui:178
 msgctxt "shortcut window"
 msgid "Clear highlight"
 msgstr "Fjern merking"
 
-#: gedit/resources/ui/gedit-shortcuts.ui:186
+#: bedit/resources/ui/bedit-shortcuts.ui:186
 msgctxt "shortcut window"
 msgid "Undo and Redo"
 msgstr "Angre og gjenopprett"
 
-#: gedit/resources/ui/gedit-shortcuts.ui:191
+#: bedit/resources/ui/bedit-shortcuts.ui:191
 msgctxt "shortcut window"
 msgid "Undo previous command"
 msgstr "Angre forrige kommando"
 
-#: gedit/resources/ui/gedit-shortcuts.ui:198
+#: bedit/resources/ui/bedit-shortcuts.ui:198
 msgctxt "shortcut window"
 msgid "Redo previous command"
 msgstr "Gjenta forrige kommando"
 
-#: gedit/resources/ui/gedit-shortcuts.ui:206
+#: bedit/resources/ui/bedit-shortcuts.ui:206
 msgctxt "shortcut window"
 msgid "Selection"
 msgstr "Utvalg"
 
-#: gedit/resources/ui/gedit-shortcuts.ui:211
+#: bedit/resources/ui/bedit-shortcuts.ui:211
 msgctxt "shortcut window"
 msgid "Select all text"
 msgstr "Marker all tekst"
 
-#: gedit/resources/ui/gedit-shortcuts.ui:218
+#: bedit/resources/ui/bedit-shortcuts.ui:218
 msgctxt "shortcut window"
 msgid "Unselect all text"
 msgstr "Fjern markering av all tekst"
 
-#: gedit/resources/ui/gedit-shortcuts.ui:226
+#: bedit/resources/ui/bedit-shortcuts.ui:226
 msgctxt "shortcut window"
 msgid "Copy and Paste"
 msgstr "Kopier og lim inn"
 
-#: gedit/resources/ui/gedit-shortcuts.ui:231
+#: bedit/resources/ui/bedit-shortcuts.ui:231
 msgctxt "shortcut window"
 msgid "Copy selected text to clipboard"
 msgstr "Kopier valgt tekst til utklippstavlen"
 
-#: gedit/resources/ui/gedit-shortcuts.ui:238
+#: bedit/resources/ui/bedit-shortcuts.ui:238
 msgctxt "shortcut window"
 msgid "Cut selected text to clipboard"
 msgstr "Klipp ut valgt tekst til utklippstavlen"
 
-#: gedit/resources/ui/gedit-shortcuts.ui:245
+#: bedit/resources/ui/bedit-shortcuts.ui:245
 msgctxt "shortcut window"
 msgid "Paste text from clipboard"
 msgstr "Lim inn tekst fra utklippstavlen"
 
-#: gedit/resources/ui/gedit-shortcuts.ui:253
+#: bedit/resources/ui/bedit-shortcuts.ui:253
 msgctxt "shortcut window"
 msgid "Navigation"
 msgstr "Navigering"
 
-#: gedit/resources/ui/gedit-shortcuts.ui:258
+#: bedit/resources/ui/bedit-shortcuts.ui:258
 msgctxt "shortcut window"
 msgid "Go to line"
 msgstr "Gå til linje"
 
-#: gedit/resources/ui/gedit-shortcuts.ui:265
+#: bedit/resources/ui/bedit-shortcuts.ui:265
 msgctxt "shortcut window"
 msgid "Move viewport up within the file"
 msgstr "Flytt visning opp i filen"
 
-#: gedit/resources/ui/gedit-shortcuts.ui:272
+#: bedit/resources/ui/bedit-shortcuts.ui:272
 msgctxt "shortcut window"
 msgid "Move viewport down within the file"
 msgstr "Flytt visning ned i filen"
 
-#: gedit/resources/ui/gedit-shortcuts.ui:279
+#: bedit/resources/ui/bedit-shortcuts.ui:279
 msgctxt "shortcut window"
 msgid "Move viewport to end of file"
 msgstr "Flytt visning til slutten av filen"
 
-#: gedit/resources/ui/gedit-shortcuts.ui:286
+#: bedit/resources/ui/bedit-shortcuts.ui:286
 msgctxt "shortcut window"
 msgid "Move viewport to beginning of file"
 msgstr "Flytt visning til begynnelsen av filen"
 
-#: gedit/resources/ui/gedit-shortcuts.ui:293
+#: bedit/resources/ui/bedit-shortcuts.ui:293
 msgctxt "shortcut window"
 msgid "Move to matching bracket"
 msgstr "Gå til tilhørende hakeparantes"
 
-#: gedit/resources/ui/gedit-shortcuts.ui:301
+#: bedit/resources/ui/bedit-shortcuts.ui:301
 msgctxt "shortcut window"
 msgid "Editing"
 msgstr "Redigering"
 
-#: gedit/resources/ui/gedit-shortcuts.ui:306
+#: bedit/resources/ui/bedit-shortcuts.ui:306
 msgctxt "shortcut window"
 msgid "Toggle insert / overwrite"
 msgstr "Bytt mellom sett inn / overskriv"
 
-#: gedit/resources/ui/gedit-shortcuts.ui:313
+#: bedit/resources/ui/bedit-shortcuts.ui:313
 msgctxt "shortcut window"
 msgid "Delete current line"
 msgstr "Slett denne linjen"
 
-#: gedit/resources/ui/gedit-shortcuts.ui:320
+#: bedit/resources/ui/bedit-shortcuts.ui:320
 msgctxt "shortcut window"
 msgid "Join selected lines"
 msgstr "Slå sammen valgte linjer"
 
-#: gedit/resources/ui/gedit-shortcuts.ui:327
+#: bedit/resources/ui/bedit-shortcuts.ui:327
 msgctxt "shortcut window"
 msgid "Move current line up"
 msgstr "Flytt denne linjen opp"
 
-#: gedit/resources/ui/gedit-shortcuts.ui:334
+#: bedit/resources/ui/bedit-shortcuts.ui:334
 msgctxt "shortcut window"
 msgid "Move current line down"
 msgstr "Flytt denne linjen ned"
 
-#: gedit/resources/ui/gedit-shortcuts.ui:341
+#: bedit/resources/ui/bedit-shortcuts.ui:341
 msgctxt "shortcut window"
 msgid "Move current word left"
 msgstr "Flytt dette ordet til venstre"
 
-#: gedit/resources/ui/gedit-shortcuts.ui:348
+#: bedit/resources/ui/bedit-shortcuts.ui:348
 msgctxt "shortcut window"
 msgid "Move current word right"
 msgstr "Flytt dette ordet til høyre"
 
-#: gedit/resources/ui/gedit-shortcuts.ui:355
+#: bedit/resources/ui/bedit-shortcuts.ui:355
 msgctxt "shortcut window"
 msgid "Convert to uppercase"
 msgstr "Konverter til store bokstaver"
 
-#: gedit/resources/ui/gedit-shortcuts.ui:362
+#: bedit/resources/ui/bedit-shortcuts.ui:362
 msgctxt "shortcut window"
 msgid "Convert to lowercase"
 msgstr "Konverter til små bokstaver"
 
-#: gedit/resources/ui/gedit-shortcuts.ui:369
+#: bedit/resources/ui/bedit-shortcuts.ui:369
 msgctxt "shortcut window"
 msgid "Invert case"
 msgstr "Bytt mellom små/store bokstaver"
 
-#: gedit/resources/ui/gedit-shortcuts.ui:376
+#: bedit/resources/ui/bedit-shortcuts.ui:376
 msgctxt "shortcut window"
 msgid "Increment number at cursor"
 msgstr "Gjør tallet ved markøren høyere"
 
-#: gedit/resources/ui/gedit-shortcuts.ui:383
+#: bedit/resources/ui/bedit-shortcuts.ui:383
 msgctxt "shortcut window"
 msgid "Decrement number at cursor"
 msgstr "Gjør tallet ved markøren lavere"
 
-#: gedit/resources/ui/gedit-shortcuts.ui:391
+#: bedit/resources/ui/bedit-shortcuts.ui:391
 msgctxt "shortcut window"
 msgid "Tools"
 msgstr "Verktøy"
 
-#: gedit/resources/ui/gedit-shortcuts.ui:396
+#: bedit/resources/ui/bedit-shortcuts.ui:396
 msgctxt "shortcut window"
 msgid "Check spelling"
 msgstr "Kontroller staving"
 
-#: gedit/resources/ui/gedit-shortcuts.ui:403
+#: bedit/resources/ui/bedit-shortcuts.ui:403
 msgctxt "shortcut window"
 msgid "Print the document"
 msgstr "Skriv ut dokumentet"
 
-#: gedit/resources/ui/gedit-shortcuts.ui:410
+#: bedit/resources/ui/bedit-shortcuts.ui:410
 msgctxt "shortcut window"
 msgid "Show completion window"
 msgstr "Vis kompletteringsvindu"
 
-#: gedit/resources/ui/gedit-shortcuts.ui:417
+#: bedit/resources/ui/bedit-shortcuts.ui:417
 msgctxt "shortcut window"
 msgid "Insert timestamp"
 msgstr "Sett inn dato/klokkeslett"
 
-#: gedit/resources/ui/gedit-tab-label.ui:34
+#: bedit/resources/ui/bedit-tab-label.ui:34
 msgid "Close Document"
 msgstr "Lukk dokument"
 
-#: gedit/resources/ui/gedit-window.ui:33 gedit/resources/ui/gedit-window.ui:66
-#: gedit/resources/ui/gedit-window.ui:401
+#: bedit/resources/ui/bedit-window.ui:33 bedit/resources/ui/bedit-window.ui:66
+#: bedit/resources/ui/bedit-window.ui:401
 msgid "Open a file"
 msgstr "Åpne en fil"
 
-#: gedit/resources/ui/gedit-window.ui:65 gedit/resources/ui/gedit-window.ui:386
-#: gedit/resources/ui/gedit-window.ui:400
+#: bedit/resources/ui/bedit-window.ui:65 bedit/resources/ui/bedit-window.ui:386
+#: bedit/resources/ui/bedit-window.ui:400
 msgid "Open"
 msgstr "Åpne"
 
-#: gedit/resources/ui/gedit-window.ui:80 gedit/resources/ui/gedit-window.ui:87
-#: gedit/resources/ui/gedit-window.ui:415
-#: gedit/resources/ui/gedit-window.ui:422
+#: bedit/resources/ui/bedit-window.ui:80 bedit/resources/ui/bedit-window.ui:87
+#: bedit/resources/ui/bedit-window.ui:415
+#: bedit/resources/ui/bedit-window.ui:422
 msgid "Create a new document"
 msgstr "Lag et nytt dokument"
 
-#: gedit/resources/ui/gedit-window.ui:86 gedit/resources/ui/gedit-window.ui:421
+#: bedit/resources/ui/bedit-window.ui:86 bedit/resources/ui/bedit-window.ui:421
 msgid "New"
 msgstr "Nytt"
 
-#: gedit/resources/ui/gedit-window.ui:109
-#: gedit/resources/ui/gedit-window.ui:114
-#: gedit/resources/ui/gedit-window.ui:460
-#: gedit/resources/ui/gedit-window.ui:465
+#: bedit/resources/ui/bedit-window.ui:109
+#: bedit/resources/ui/bedit-window.ui:114
+#: bedit/resources/ui/bedit-window.ui:460
+#: bedit/resources/ui/bedit-window.ui:465
 msgid "Save the current file"
 msgstr "Lagre gjeldende fil"
 
-#: gedit/resources/ui/gedit-window.ui:113
-#: gedit/resources/ui/gedit-window.ui:457
-#: gedit/resources/ui/gedit-window.ui:464
+#: bedit/resources/ui/bedit-window.ui:113
+#: bedit/resources/ui/bedit-window.ui:457
+#: bedit/resources/ui/bedit-window.ui:464
 msgid "Save"
 msgstr "Lagre"
 
-#: gedit/resources/ui/gedit-window.ui:256
+#: bedit/resources/ui/bedit-window.ui:256
 msgid "Hide panel"
 msgstr "Skjul panel"
 
-#: gedit/resources/ui/gedit-window.ui:371
+#: bedit/resources/ui/bedit-window.ui:371
 msgid "Open a file dialog"
 msgstr "Åpne en fildialog"
 
-#: gedit/resources/ui/gedit-window.ui:431
-#: gedit/resources/ui/gedit-window.ui:436
-#: gedit/resources/ui/gedit-window.ui:437
+#: bedit/resources/ui/bedit-window.ui:431
+#: bedit/resources/ui/bedit-window.ui:436
+#: bedit/resources/ui/bedit-window.ui:437
 msgid "Leave Fullscreen"
 msgstr "Forlat fullskjerm"
 
@@ -2555,45 +2555,45 @@ msgid "Check update"
 msgstr "Kontroller oppdatering"
 
 #: plugins/checkupdate/checkupdate.plugin.desktop.in:6
-msgid "Check for latest version of gedit"
-msgstr "Se etter siste versjon av gedit"
+msgid "Check for latest version of bedit"
+msgstr "Se etter siste versjon av bedit"
 
-#: plugins/checkupdate/gedit-check-update-plugin.c:245
+#: plugins/checkupdate/bedit-check-update-plugin.c:245
 msgid "There was an error displaying the URI."
 msgstr "Det oppsto en feil under visning av URI."
 
-#: plugins/checkupdate/gedit-check-update-plugin.c:282
+#: plugins/checkupdate/bedit-check-update-plugin.c:282
 msgid "_Download"
 msgstr "Last ne_d"
 
-#: plugins/checkupdate/gedit-check-update-plugin.c:283
+#: plugins/checkupdate/bedit-check-update-plugin.c:283
 msgid "_Ignore Version"
 msgstr "_Ignorer versjon"
 
-#: plugins/checkupdate/gedit-check-update-plugin.c:288
-msgid "There is a new version of gedit"
-msgstr "Ny versjon av gedit er tilgjengelig"
+#: plugins/checkupdate/bedit-check-update-plugin.c:288
+msgid "There is a new version of bedit"
+msgstr "Ny versjon av bedit er tilgjengelig"
 
-#: plugins/checkupdate/gedit-check-update-plugin.c:291
+#: plugins/checkupdate/bedit-check-update-plugin.c:291
 msgid ""
-"You can download the new version of gedit by clicking on the download button "
+"You can download the new version of bedit by clicking on the download button "
 "or ignore that version and wait for a new one"
 msgstr ""
-"Du kan laste ned den nye versjonen av gedit ved å trykke på "
+"Du kan laste ned den nye versjonen av bedit ved å trykke på "
 "nedlastingsknappe. Du kan også overse denne versjonen og vente på en ny"
 
 #: plugins/checkupdate/com.bwhmather.bedit.plugins.checkupdate.gschema.xml.in:5
 msgid "Version to Ignore"
 msgstr "Versjon som skal overses"
 
-#. This is releated to the next gedit version to be released
+#. This is releated to the next bedit version to be released
 #: plugins/checkupdate/com.bwhmather.bedit.plugins.checkupdate.gschema.xml.in:7
 msgid "Version to ignore until a newer version is released."
 msgstr "Versjon som skal overses til neste versjon er gitt ut."
 
 #: plugins/docinfo/docinfo.plugin.desktop.in:5
-#: plugins/docinfo/resources/ui/gedit-docinfo-plugin.ui:7
-#: plugins/docinfo/resources/ui/gedit-docinfo-plugin.ui:13
+#: plugins/docinfo/resources/ui/bedit-docinfo-plugin.ui:7
+#: plugins/docinfo/resources/ui/bedit-docinfo-plugin.ui:13
 msgid "Document Statistics"
 msgstr "Dokumentstatistikk"
 
@@ -2601,35 +2601,35 @@ msgstr "Dokumentstatistikk"
 msgid "Report the number of words, lines and characters in a document."
 msgstr "Rapporter antall ord, linjer og tegn i et dokument."
 
-#: plugins/docinfo/gedit-docinfo-plugin.c:537
+#: plugins/docinfo/bedit-docinfo-plugin.c:537
 msgid "_Document Statistics"
 msgstr "_Dokumentstatistikk"
 
-#: plugins/docinfo/resources/ui/gedit-docinfo-plugin.ui:64
+#: plugins/docinfo/resources/ui/bedit-docinfo-plugin.ui:64
 msgid "Document"
 msgstr "Dokument"
 
-#: plugins/docinfo/resources/ui/gedit-docinfo-plugin.ui:82
+#: plugins/docinfo/resources/ui/bedit-docinfo-plugin.ui:82
 msgid "Selection"
 msgstr "Utvalg"
 
-#: plugins/docinfo/resources/ui/gedit-docinfo-plugin.ui:97
+#: plugins/docinfo/resources/ui/bedit-docinfo-plugin.ui:97
 msgid "Lines"
 msgstr "Linjer"
 
-#: plugins/docinfo/resources/ui/gedit-docinfo-plugin.ui:112
+#: plugins/docinfo/resources/ui/bedit-docinfo-plugin.ui:112
 msgid "Words"
 msgstr "Ord"
 
-#: plugins/docinfo/resources/ui/gedit-docinfo-plugin.ui:127
+#: plugins/docinfo/resources/ui/bedit-docinfo-plugin.ui:127
 msgid "Characters (with spaces)"
 msgstr "Tegn (med mellomrom)"
 
-#: plugins/docinfo/resources/ui/gedit-docinfo-plugin.ui:142
+#: plugins/docinfo/resources/ui/bedit-docinfo-plugin.ui:142
 msgid "Characters (no spaces)"
 msgstr "Tegn (ingen mellomrom)"
 
-#: plugins/docinfo/resources/ui/gedit-docinfo-plugin.ui:157
+#: plugins/docinfo/resources/ui/bedit-docinfo-plugin.ui:157
 msgid "Bytes"
 msgstr "Bytes"
 
@@ -2898,51 +2898,51 @@ msgstr "Filutforsker-panel"
 msgid "Easy file access from the side panel"
 msgstr "Enkel filtilgang fra sidepanelet"
 
-#: plugins/filebrowser/gedit-file-bookmarks-store.c:200
+#: plugins/filebrowser/bedit-file-bookmarks-store.c:200
 msgid "Home"
 msgstr "Hjem"
 
-#: plugins/filebrowser/gedit-file-bookmarks-store.c:233
+#: plugins/filebrowser/bedit-file-bookmarks-store.c:233
 msgid "File System"
 msgstr "Filsystem"
 
-#: plugins/filebrowser/gedit-file-browser-plugin.c:523
+#: plugins/filebrowser/bedit-file-browser-plugin.c:523
 msgid "File Browser"
 msgstr "Filutforsker"
 
-#: plugins/filebrowser/gedit-file-browser-plugin.c:659
+#: plugins/filebrowser/bedit-file-browser-plugin.c:659
 msgid "An error occurred while creating a new directory"
 msgstr "Det oppstod en feil ved oppretting av ny mappe"
 
-#: plugins/filebrowser/gedit-file-browser-plugin.c:662
+#: plugins/filebrowser/bedit-file-browser-plugin.c:662
 msgid "An error occurred while creating a new file"
 msgstr "Det oppstod en feil ved oppretting av en ny fil"
 
-#: plugins/filebrowser/gedit-file-browser-plugin.c:665
+#: plugins/filebrowser/bedit-file-browser-plugin.c:665
 msgid "An error occurred while renaming a file or directory"
 msgstr "Det oppstod en feil ved endring av navn på fil eller mappe"
 
-#: plugins/filebrowser/gedit-file-browser-plugin.c:668
+#: plugins/filebrowser/bedit-file-browser-plugin.c:668
 msgid "An error occurred while deleting a file or directory"
 msgstr "Det oppstod en feil ved sletting av en fil eller mappe"
 
-#: plugins/filebrowser/gedit-file-browser-plugin.c:671
+#: plugins/filebrowser/bedit-file-browser-plugin.c:671
 msgid "An error occurred while opening a directory in the file manager"
 msgstr "Det oppstod en feil ved åpning av en mappe i filutforsker"
 
-#: plugins/filebrowser/gedit-file-browser-plugin.c:674
+#: plugins/filebrowser/bedit-file-browser-plugin.c:674
 msgid "An error occurred while setting a root directory"
 msgstr "Det oppstod en feil ved forsøk på å velge rotmappe"
 
-#: plugins/filebrowser/gedit-file-browser-plugin.c:677
+#: plugins/filebrowser/bedit-file-browser-plugin.c:677
 msgid "An error occurred while loading a directory"
 msgstr "Det oppstod en feil ved innlasting av en mappe"
 
-#: plugins/filebrowser/gedit-file-browser-plugin.c:680
+#: plugins/filebrowser/bedit-file-browser-plugin.c:680
 msgid "An error occurred"
 msgstr "Det oppstod en feil"
 
-#: plugins/filebrowser/gedit-file-browser-plugin.c:902
+#: plugins/filebrowser/bedit-file-browser-plugin.c:902
 msgid ""
 "Cannot move file to trash, do you\n"
 "want to delete permanently?"
@@ -2950,33 +2950,33 @@ msgstr ""
 "Klarte ikke å flytte fil til papirkurv.\n"
 "Vil du slette den permanent?"
 
-#: plugins/filebrowser/gedit-file-browser-plugin.c:907
+#: plugins/filebrowser/bedit-file-browser-plugin.c:907
 #, c-format
 msgid "The file “%s” cannot be moved to the trash."
 msgstr "Filen «%s» kan ikke flyttes til papirkurven."
 
-#: plugins/filebrowser/gedit-file-browser-plugin.c:912
+#: plugins/filebrowser/bedit-file-browser-plugin.c:912
 msgid "The selected files cannot be moved to the trash."
 msgstr "Valgte filer kan ikke flyttes til papirkurven."
 
-#: plugins/filebrowser/gedit-file-browser-plugin.c:943
+#: plugins/filebrowser/bedit-file-browser-plugin.c:943
 #, c-format
 msgid "Are you sure you want to permanently delete “%s”?"
 msgstr "Er du sikker på at du vil slette «%s» permanent?"
 
-#: plugins/filebrowser/gedit-file-browser-plugin.c:948
+#: plugins/filebrowser/bedit-file-browser-plugin.c:948
 msgid "Are you sure you want to permanently delete the selected files?"
 msgstr "Er du sikker på at du vil slette valgte filer permanent?"
 
-#: plugins/filebrowser/gedit-file-browser-plugin.c:951
+#: plugins/filebrowser/bedit-file-browser-plugin.c:951
 msgid "If you delete an item, it is permanently lost."
 msgstr "Hvis du sletter en oppføring, går den tapt."
 
-#: plugins/filebrowser/gedit-file-browser-store.c:1703
+#: plugins/filebrowser/bedit-file-browser-store.c:1703
 msgid "(Empty)"
 msgstr "(Tom)"
 
-#: plugins/filebrowser/gedit-file-browser-store.c:3327
+#: plugins/filebrowser/bedit-file-browser-store.c:3327
 msgid ""
 "The renamed file is currently filtered out. You need to adjust your filter "
 "settings to make the file visible"
@@ -2985,11 +2985,11 @@ msgstr ""
 "synlig"
 
 #. Translators: This is the default name of new files created by the file browser pane.
-#: plugins/filebrowser/gedit-file-browser-store.c:3578
+#: plugins/filebrowser/bedit-file-browser-store.c:3578
 msgid "Untitled File"
 msgstr "Fil uten navn"
 
-#: plugins/filebrowser/gedit-file-browser-store.c:3606
+#: plugins/filebrowser/bedit-file-browser-store.c:3606
 msgid ""
 "The new file is currently filtered out. You need to adjust your filter "
 "settings to make the file visible"
@@ -2997,37 +2997,37 @@ msgstr ""
 "Den nye filen er filtrert ut. Du må justere filtre for å gjøre den synlig"
 
 #. Translators: This is the default name of new directories created by the file browser pane.
-#: plugins/filebrowser/gedit-file-browser-store.c:3635
+#: plugins/filebrowser/bedit-file-browser-store.c:3635
 msgid "Untitled Folder"
 msgstr "Mappe uten navn"
 
-#: plugins/filebrowser/gedit-file-browser-store.c:3658
+#: plugins/filebrowser/bedit-file-browser-store.c:3658
 msgid ""
 "The new directory is currently filtered out. You need to adjust your filter "
 "settings to make the directory visible"
 msgstr ""
 "Den nye mappen er filtrert ut. Du må justere filtre for å gjøre den synlig"
 
-#: plugins/filebrowser/gedit-file-browser-widget.c:757
+#: plugins/filebrowser/bedit-file-browser-widget.c:757
 msgid "Bookmarks"
 msgstr "Bokmerker"
 
-#: plugins/filebrowser/gedit-file-browser-widget.c:1957
+#: plugins/filebrowser/bedit-file-browser-widget.c:1957
 #, c-format
 msgid "No mount object for mounted volume: %s"
 msgstr "Ingen monteringsobjekt for montert volum: %s"
 
-#: plugins/filebrowser/gedit-file-browser-widget.c:2026
+#: plugins/filebrowser/bedit-file-browser-widget.c:2026
 #, c-format
 msgid "Could not open media: %s"
 msgstr "Klarte ikke å åpne medium: %s"
 
-#: plugins/filebrowser/gedit-file-browser-widget.c:2069
+#: plugins/filebrowser/bedit-file-browser-widget.c:2069
 #, c-format
 msgid "Could not mount volume: %s"
 msgstr "Klarte ikke å montere volum: %s"
 
-#: plugins/filebrowser/gedit-file-browser-widget.c:2581
+#: plugins/filebrowser/bedit-file-browser-widget.c:2581
 #, c-format
 msgid "Error when loading “%s”: No such directory"
 msgstr "Feil ved innlasting av «%s»: Mappen finnes ikke"
@@ -3128,60 +3128,60 @@ msgstr "Binærmønster for filutforsker"
 msgid "The supplemental patterns to use when filtering binary files."
 msgstr "Ekstra mønstre som skal brukes ved filtrering av binære filer."
 
-#: plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui:13
-#: plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui:79
+#: plugins/filebrowser/resources/ui/bedit-file-browser-menus.ui:13
+#: plugins/filebrowser/resources/ui/bedit-file-browser-menus.ui:79
 msgid "_Set Root to Active Document"
 msgstr "_Bruk gjeldende dokuments plassering som rot"
 
-#: plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui:19
+#: plugins/filebrowser/resources/ui/bedit-file-browser-menus.ui:19
 msgid "_New Folder"
 msgstr "_Ny mappe"
 
-#: plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui:23
+#: plugins/filebrowser/resources/ui/bedit-file-browser-menus.ui:23
 msgid "New F_ile"
 msgstr "Ny f_il"
 
-#: plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui:29
+#: plugins/filebrowser/resources/ui/bedit-file-browser-menus.ui:29
 msgid "_Rename…"
 msgstr "End_re navn …"
 
-#: plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui:33
+#: plugins/filebrowser/resources/ui/bedit-file-browser-menus.ui:33
 msgid "_Move to Trash"
 msgstr "_Flytt til papirkurven"
 
-#: plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui:43
+#: plugins/filebrowser/resources/ui/bedit-file-browser-menus.ui:43
 msgid "Re_fresh View"
 msgstr "Opp_dater visningen"
 
-#: plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui:47
+#: plugins/filebrowser/resources/ui/bedit-file-browser-menus.ui:47
 msgid "_View Folder"
 msgstr "_Vis mappe"
 
-#: plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui:51
+#: plugins/filebrowser/resources/ui/bedit-file-browser-menus.ui:51
 msgid "_Open in Terminal"
 msgstr "_Åpne terminal"
 
-#: plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui:56
+#: plugins/filebrowser/resources/ui/bedit-file-browser-menus.ui:56
 msgid "_Filter"
 msgstr "_Filter"
 
-#: plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui:59
+#: plugins/filebrowser/resources/ui/bedit-file-browser-menus.ui:59
 msgid "Show _Hidden"
 msgstr "Vis s_kjulte"
 
-#: plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui:63
+#: plugins/filebrowser/resources/ui/bedit-file-browser-menus.ui:63
 msgid "Show _Binary"
 msgstr "Vis _binære filer"
 
-#: plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui:67
+#: plugins/filebrowser/resources/ui/bedit-file-browser-menus.ui:67
 msgid "Match Filename"
 msgstr "Kontroller filnavn"
 
-#: plugins/filebrowser/resources/ui/gedit-file-browser-widget.ui:183
+#: plugins/filebrowser/resources/ui/bedit-file-browser-widget.ui:183
 msgid "History"
 msgstr "Historikk"
 
-#: plugins/filebrowser/resources/ui/gedit-file-browser-widget.ui:184
+#: plugins/filebrowser/resources/ui/bedit-file-browser-widget.ui:184
 msgid "Open history menu"
 msgstr "Åpne historikkmeny"
 
@@ -3190,8 +3190,8 @@ msgid "Modelines"
 msgstr "Moduslinjer"
 
 #: plugins/modelines/modelines.plugin.desktop.in:6
-msgid "Emacs, Kate and Vim-style modelines support for gedit."
-msgstr "Støtte for moduslinjer i gedit på samme måte som i Emacs, Kate og Vim."
+msgid "Emacs, Kate and Vim-style modelines support for bedit."
+msgstr "Støtte for moduslinjer i bedit på samme måte som i Emacs, Kate og Vim."
 
 #: plugins/pythonconsole/com.bwhmather.bedit.plugins.pythonconsole.gschema.xml.in:5
 msgid "Command Color Text"
@@ -3506,32 +3506,32 @@ msgstr "Snarveitast som slår på tekstblokker"
 msgid "_Drop targets:"
 msgstr "Mål for slipp:"
 
-#: plugins/sort/gedit-sort-plugin.c:243
+#: plugins/sort/bedit-sort-plugin.c:243
 msgid "S_ort…"
 msgstr "S_orter …"
 
-#: plugins/sort/resources/ui/gedit-sort-plugin.ui:13
+#: plugins/sort/resources/ui/bedit-sort-plugin.ui:13
 #: plugins/sort/sort.plugin.desktop.in:5
 msgid "Sort"
 msgstr "Sorter"
 
-#: plugins/sort/resources/ui/gedit-sort-plugin.ui:38
+#: plugins/sort/resources/ui/bedit-sort-plugin.ui:38
 msgid "_Reverse order"
 msgstr "_Omvendt rekkefølge"
 
-#: plugins/sort/resources/ui/gedit-sort-plugin.ui:54
+#: plugins/sort/resources/ui/bedit-sort-plugin.ui:54
 msgid "R_emove duplicates"
 msgstr "Fj_ern duplikater"
 
-#: plugins/sort/resources/ui/gedit-sort-plugin.ui:70
+#: plugins/sort/resources/ui/bedit-sort-plugin.ui:70
 msgid "C_ase sensitive"
 msgstr "S_kill mellom små/store bokstaver"
 
-#: plugins/sort/resources/ui/gedit-sort-plugin.ui:93
+#: plugins/sort/resources/ui/bedit-sort-plugin.ui:93
 msgid "S_tart at column:"
 msgstr "S_tart ved kolonne:"
 
-#: plugins/sort/resources/ui/gedit-sort-plugin.ui:150
+#: plugins/sort/resources/ui/bedit-sort-plugin.ui:150
 msgid "_Sort"
 msgstr "_Sorter"
 
@@ -3539,20 +3539,20 @@ msgstr "_Sorter"
 msgid "Sorts a document or selected text."
 msgstr "Sorter et dokument eller valgt tekst."
 
-#: plugins/spell/gedit-spell-app-activatable.c:143
+#: plugins/spell/bedit-spell-app-activatable.c:143
 msgid "_Check Spelling…"
 msgstr "_Kontroller staving …"
 
-#: plugins/spell/gedit-spell-app-activatable.c:147
+#: plugins/spell/bedit-spell-app-activatable.c:147
 msgid "Set _Language…"
 msgstr "_Velg språk …"
 
-#: plugins/spell/gedit-spell-app-activatable.c:151
+#: plugins/spell/bedit-spell-app-activatable.c:151
 msgid "_Highlight Misspelled Words"
 msgstr "_Uthev feilstavede ord"
 
 #: plugins/spell/com.bwhmather.bedit.plugins.spell.gschema.xml.in:5
-#: plugins/spell/resources/ui/gedit-spell-setup-dialog.ui:75
+#: plugins/spell/resources/ui/bedit-spell-setup-dialog.ui:75
 msgid "Highlight misspelled words"
 msgstr "Uthev feilstavede ord"
 
@@ -3560,11 +3560,11 @@ msgstr "Uthev feilstavede ord"
 msgid "Default setting for highlight misspelled words."
 msgstr "Forvalgt innstilling for utheving av feilstavede ord."
 
-#: plugins/spell/resources/ui/gedit-spell-setup-dialog.ui:7
+#: plugins/spell/resources/ui/bedit-spell-setup-dialog.ui:7
 msgid "Configure spell plugin"
 msgstr "Konfigurer tillegg for stavekontroll"
 
-#: plugins/spell/resources/ui/gedit-spell-setup-dialog.ui:61
+#: plugins/spell/resources/ui/bedit-spell-setup-dialog.ui:61
 msgid "Defaults for new documents"
 msgstr "Forvalg for nye dokumenter"
 
@@ -3576,11 +3576,11 @@ msgstr "Stavekontroll"
 msgid "Checks the spelling of the current document."
 msgstr "Kontrollerer staving i gjeldende dokument."
 
-#: plugins/time/gedit-time-plugin.c:265
+#: plugins/time/bedit-time-plugin.c:265
 msgid "In_sert Date and Time…"
 msgstr "_Sett inn dato/klokkeslett …"
 
-#: plugins/time/gedit-time-plugin.c:491
+#: plugins/time/bedit-time-plugin.c:491
 msgid "Available formats"
 msgstr "Tilgjengelige formater"
 
@@ -3612,45 +3612,45 @@ msgstr "Selvvalgt format"
 msgid "The custom format used when inserting the date/time."
 msgstr "Selvvalgt format som brukes ved innsetting av dato/klokkeslett."
 
-#: plugins/time/resources/ui/gedit-time-dialog.ui:7
+#: plugins/time/resources/ui/bedit-time-dialog.ui:7
 msgid "Insert Date and Time"
 msgstr "Sett inn dato/klokkeslett"
 
-#: plugins/time/resources/ui/gedit-time-dialog.ui:23
-#: plugins/time/resources/ui/gedit-time-setup-dialog.ui:94
+#: plugins/time/resources/ui/bedit-time-dialog.ui:23
+#: plugins/time/resources/ui/bedit-time-setup-dialog.ui:94
 msgid "Use the _selected format"
 msgstr "Bruk _valgt format"
 
-#: plugins/time/resources/ui/gedit-time-dialog.ui:65
-#: plugins/time/resources/ui/gedit-time-setup-dialog.ui:141
+#: plugins/time/resources/ui/bedit-time-dialog.ui:65
+#: plugins/time/resources/ui/bedit-time-setup-dialog.ui:141
 msgid "_Use custom format"
 msgstr "_Bruk selvvalgt format"
 
 #. Translators: Use the more common date format in your locale
-#: plugins/time/resources/ui/gedit-time-dialog.ui:89
-#: plugins/time/resources/ui/gedit-time-setup-dialog.ui:165
+#: plugins/time/resources/ui/bedit-time-dialog.ui:89
+#: plugins/time/resources/ui/bedit-time-setup-dialog.ui:165
 msgid "%d/%m/%Y %H:%M:%S"
 msgstr "%d.%m.%Y %H.%M.%S"
 
 #. Translators: This example should follow the date format defined in the entry above
-#: plugins/time/resources/ui/gedit-time-dialog.ui:106
-#: plugins/time/resources/ui/gedit-time-setup-dialog.ui:181
+#: plugins/time/resources/ui/bedit-time-dialog.ui:106
+#: plugins/time/resources/ui/bedit-time-setup-dialog.ui:181
 msgid "01/11/2009 17:52:00"
 msgstr "01.11.2009 17.52.00"
 
-#: plugins/time/resources/ui/gedit-time-dialog.ui:167
+#: plugins/time/resources/ui/bedit-time-dialog.ui:167
 msgid "_Insert"
 msgstr "Sett _inn"
 
-#: plugins/time/resources/ui/gedit-time-setup-dialog.ui:6
+#: plugins/time/resources/ui/bedit-time-setup-dialog.ui:6
 msgid "Configure date/time plugin"
 msgstr "Konfigurer tillegg for dato/klokkeslett"
 
-#: plugins/time/resources/ui/gedit-time-setup-dialog.ui:57
+#: plugins/time/resources/ui/bedit-time-setup-dialog.ui:57
 msgid "When inserting date/time…"
 msgstr "Ved innsetting av dato/klokkeslett …"
 
-#: plugins/time/resources/ui/gedit-time-setup-dialog.ui:75
+#: plugins/time/resources/ui/bedit-time-setup-dialog.ui:75
 msgid "_Prompt for a format"
 msgstr "S_pør etter et format"
 

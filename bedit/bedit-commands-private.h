@@ -1,7 +1,7 @@
 /* -*- Mode: C; tab-width: 8; indent-tabs-mode: t; c-basic-offset: 8 -*- */
 /*
- * gedit-commands.h
- * This file is part of gedit
+ * bedit-commands.h
+ * This file is part of bedit
  *
  * Copyright (C) 1998, 1999 Alex Roberts, Evan Lawrence
  * Copyright (C) 2000, 2001 Chema Celorio, Paolo Maggi
@@ -25,145 +25,145 @@
 #define GEDIT_COMMANDS_PRIVATE_H
 
 #include <gtksourceview/gtksource.h>
-#include <gedit/gedit-window.h>
-#include <gedit/gedit-notebook.h>
+#include <bedit/bedit-window.h>
+#include <bedit/bedit-notebook.h>
 
 G_BEGIN_DECLS
 
 /* Create titled documens for non-existing URIs */
-GSList	       *_gedit_cmd_load_files_from_prompt	(BeditWindow             *window,
+GSList	       *_bedit_cmd_load_files_from_prompt	(BeditWindow             *window,
 							 GSList                  *files,
 							 const GtkSourceEncoding *encoding,
 							 gint                     line_pos,
 							 gint                     column_pos) G_GNUC_WARN_UNUSED_RESULT;
 
-void		_gedit_cmd_file_new			(GSimpleAction *action,
+void		_bedit_cmd_file_new			(GSimpleAction *action,
 							 GVariant      *parameter,
 							 gpointer       user_data);
-void		_gedit_cmd_file_open			(GSimpleAction *action,
+void		_bedit_cmd_file_open			(GSimpleAction *action,
 							 GVariant      *parameter,
 							 gpointer       user_data);
-void		_gedit_cmd_file_reopen_closed_tab	(GSimpleAction *action,
+void		_bedit_cmd_file_reopen_closed_tab	(GSimpleAction *action,
 							 GVariant      *parameter,
 							 gpointer       user_data);
-void		_gedit_cmd_file_save			(GSimpleAction *action,
+void		_bedit_cmd_file_save			(GSimpleAction *action,
 							 GVariant      *parameter,
 							 gpointer       user_data);
-void		_gedit_cmd_file_save_as			(GSimpleAction *action,
+void		_bedit_cmd_file_save_as			(GSimpleAction *action,
 							 GVariant      *parameter,
 							 gpointer       user_data);
-void		_gedit_cmd_file_save_all		(GSimpleAction *action,
+void		_bedit_cmd_file_save_all		(GSimpleAction *action,
 							 GVariant      *parameter,
 							 gpointer       user_data);
-void		_gedit_cmd_file_revert			(GSimpleAction *action,
+void		_bedit_cmd_file_revert			(GSimpleAction *action,
 							 GVariant      *parameter,
 							 gpointer       user_data);
-void		_gedit_cmd_file_print			(GSimpleAction *action,
+void		_bedit_cmd_file_print			(GSimpleAction *action,
 							 GVariant      *parameter,
 							 gpointer       user_data);
-void		_gedit_cmd_file_close			(GSimpleAction *action,
+void		_bedit_cmd_file_close			(GSimpleAction *action,
 							 GVariant      *parameter,
 							 gpointer       user_data);
-void		_gedit_cmd_file_close_all		(GSimpleAction *action,
+void		_bedit_cmd_file_close_all		(GSimpleAction *action,
 							 GVariant      *parameter,
 							 gpointer       user_data);
-void		_gedit_cmd_file_quit			(GSimpleAction *action,
-							 GVariant      *parameter,
-							 gpointer       user_data);
-
-void		_gedit_cmd_edit_undo			(GSimpleAction *action,
-							 GVariant      *parameter,
-							 gpointer       user_data);
-void		_gedit_cmd_edit_redo			(GSimpleAction *action,
-							 GVariant      *parameter,
-							 gpointer       user_data);
-void		_gedit_cmd_edit_cut			(GSimpleAction *action,
-							 GVariant      *parameter,
-							 gpointer       user_data);
-void		_gedit_cmd_edit_copy			(GSimpleAction *action,
-							 GVariant      *parameter,
-							 gpointer       user_data);
-void		_gedit_cmd_edit_paste			(GSimpleAction *action,
-							 GVariant      *parameter,
-							 gpointer       user_data);
-void		_gedit_cmd_edit_delete			(GSimpleAction *action,
-							 GVariant      *parameter,
-							 gpointer       user_data);
-void		_gedit_cmd_edit_select_all		(GSimpleAction *action,
-							 GVariant      *parameter,
-							 gpointer       user_data);
-void		_gedit_cmd_edit_preferences		(GSimpleAction *action,
-							 GVariant      *parameter,
-							 gpointer       user_data);
-void		_gedit_cmd_edit_overwrite_mode		(GSimpleAction *action,
+void		_bedit_cmd_file_quit			(GSimpleAction *action,
 							 GVariant      *parameter,
 							 gpointer       user_data);
 
-void		_gedit_cmd_view_focus_active		(GSimpleAction *action,
+void		_bedit_cmd_edit_undo			(GSimpleAction *action,
+							 GVariant      *parameter,
+							 gpointer       user_data);
+void		_bedit_cmd_edit_redo			(GSimpleAction *action,
+							 GVariant      *parameter,
+							 gpointer       user_data);
+void		_bedit_cmd_edit_cut			(GSimpleAction *action,
+							 GVariant      *parameter,
+							 gpointer       user_data);
+void		_bedit_cmd_edit_copy			(GSimpleAction *action,
+							 GVariant      *parameter,
+							 gpointer       user_data);
+void		_bedit_cmd_edit_paste			(GSimpleAction *action,
+							 GVariant      *parameter,
+							 gpointer       user_data);
+void		_bedit_cmd_edit_delete			(GSimpleAction *action,
+							 GVariant      *parameter,
+							 gpointer       user_data);
+void		_bedit_cmd_edit_select_all		(GSimpleAction *action,
+							 GVariant      *parameter,
+							 gpointer       user_data);
+void		_bedit_cmd_edit_preferences		(GSimpleAction *action,
+							 GVariant      *parameter,
+							 gpointer       user_data);
+void		_bedit_cmd_edit_overwrite_mode		(GSimpleAction *action,
+							 GVariant      *parameter,
+							 gpointer       user_data);
+
+void		_bedit_cmd_view_focus_active		(GSimpleAction *action,
 							 GVariant      *state,
 							 gpointer       user_data);
-void		_gedit_cmd_view_toggle_side_panel	(GSimpleAction *action,
+void		_bedit_cmd_view_toggle_side_panel	(GSimpleAction *action,
 							 GVariant      *state,
 							 gpointer       user_data);
-void		_gedit_cmd_view_toggle_bottom_panel	(GSimpleAction *action,
+void		_bedit_cmd_view_toggle_bottom_panel	(GSimpleAction *action,
 							 GVariant      *state,
 							 gpointer       user_data);
-void		_gedit_cmd_view_toggle_fullscreen_mode	(GSimpleAction *action,
+void		_bedit_cmd_view_toggle_fullscreen_mode	(GSimpleAction *action,
 							 GVariant      *state,
 							 gpointer       user_data);
-void		_gedit_cmd_view_leave_fullscreen_mode	(GSimpleAction *action,
+void		_bedit_cmd_view_leave_fullscreen_mode	(GSimpleAction *action,
 							 GVariant      *parameter,
 							 gpointer       user_data);
-void            _gedit_cmd_view_highlight_mode          (GSimpleAction *action,
-							 GVariant      *parameter,
-							 gpointer       user_data);
-
-void		_gedit_cmd_search_find			(GSimpleAction *action,
-							 GVariant      *parameter,
-							 gpointer       user_data);
-void		_gedit_cmd_search_find_next		(GSimpleAction *action,
-							 GVariant      *parameter,
-							 gpointer       user_data);
-void		_gedit_cmd_search_find_prev		(GSimpleAction *action,
-							 GVariant      *parameter,
-							 gpointer       user_data);
-void		_gedit_cmd_search_replace		(GSimpleAction *action,
-							 GVariant      *parameter,
-							 gpointer       user_data);
-void		_gedit_cmd_search_clear_highlight	(GSimpleAction *action,
-							 GVariant      *parameter,
-							 gpointer       user_data);
-void		_gedit_cmd_search_goto_line		(GSimpleAction *action,
+void            _bedit_cmd_view_highlight_mode          (GSimpleAction *action,
 							 GVariant      *parameter,
 							 gpointer       user_data);
 
-void		_gedit_cmd_documents_previous_document	(GSimpleAction *action,
+void		_bedit_cmd_search_find			(GSimpleAction *action,
 							 GVariant      *parameter,
 							 gpointer       user_data);
-void		_gedit_cmd_documents_next_document	(GSimpleAction *action,
+void		_bedit_cmd_search_find_next		(GSimpleAction *action,
 							 GVariant      *parameter,
 							 gpointer       user_data);
-void		_gedit_cmd_documents_move_to_new_window	(GSimpleAction *action,
+void		_bedit_cmd_search_find_prev		(GSimpleAction *action,
 							 GVariant      *parameter,
 							 gpointer       user_data);
-void		_gedit_cmd_documents_new_tab_group	(GSimpleAction *action,
+void		_bedit_cmd_search_replace		(GSimpleAction *action,
 							 GVariant      *parameter,
 							 gpointer       user_data);
-void		_gedit_cmd_documents_previous_tab_group	(GSimpleAction *action,
+void		_bedit_cmd_search_clear_highlight	(GSimpleAction *action,
 							 GVariant      *parameter,
 							 gpointer       user_data);
-void		_gedit_cmd_documents_next_tab_group	(GSimpleAction *action,
+void		_bedit_cmd_search_goto_line		(GSimpleAction *action,
 							 GVariant      *parameter,
 							 gpointer       user_data);
 
-void		_gedit_cmd_help_keyboard_shortcuts	(BeditWindow *window);
-void		_gedit_cmd_help_contents		(BeditWindow *window);
-void		_gedit_cmd_help_about			(BeditWindow *window);
+void		_bedit_cmd_documents_previous_document	(GSimpleAction *action,
+							 GVariant      *parameter,
+							 gpointer       user_data);
+void		_bedit_cmd_documents_next_document	(GSimpleAction *action,
+							 GVariant      *parameter,
+							 gpointer       user_data);
+void		_bedit_cmd_documents_move_to_new_window	(GSimpleAction *action,
+							 GVariant      *parameter,
+							 gpointer       user_data);
+void		_bedit_cmd_documents_new_tab_group	(GSimpleAction *action,
+							 GVariant      *parameter,
+							 gpointer       user_data);
+void		_bedit_cmd_documents_previous_tab_group	(GSimpleAction *action,
+							 GVariant      *parameter,
+							 gpointer       user_data);
+void		_bedit_cmd_documents_next_tab_group	(GSimpleAction *action,
+							 GVariant      *parameter,
+							 gpointer       user_data);
 
-void		_gedit_cmd_file_close_tab 		(BeditTab    *tab,
+void		_bedit_cmd_help_keyboard_shortcuts	(BeditWindow *window);
+void		_bedit_cmd_help_contents		(BeditWindow *window);
+void		_bedit_cmd_help_about			(BeditWindow *window);
+
+void		_bedit_cmd_file_close_tab 		(BeditTab    *tab,
 							 BeditWindow *window);
 
-void		_gedit_cmd_file_close_notebook		(BeditWindow   *window,
+void		_bedit_cmd_file_close_notebook		(BeditWindow   *window,
 							 BeditNotebook *notebook);
 
 G_END_DECLS

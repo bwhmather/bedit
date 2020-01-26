@@ -1,6 +1,6 @@
 /*
- * gedit-statusbar.c
- * This file is part of gedit
+ * bedit-statusbar.c
+ * This file is part of bedit
  *
  * Copyright (C) 2005 - Paolo Borelli
  *
@@ -20,14 +20,14 @@
 
 #include "config.h"
 
-#include "gedit-statusbar.h"
+#include "bedit-statusbar.h"
 
 #include <string.h>
 #include <glib/gi18n.h>
 #include <gtk/gtk.h>
 
-#include "gedit-app.h"
-#include "gedit-status-menu-button.h"
+#include "bedit-app.h"
+#include "bedit-status-menu-button.h"
 
 struct _BeditStatusbar
 {
@@ -47,7 +47,7 @@ struct _BeditStatusbar
 	guint          flash_message_id;
 };
 
-G_DEFINE_TYPE (BeditStatusbar, gedit_statusbar, GTK_TYPE_STATUSBAR)
+G_DEFINE_TYPE (BeditStatusbar, bedit_statusbar, GTK_TYPE_STATUSBAR)
 
 static gchar *
 get_overwrite_mode_string (gboolean overwrite)
@@ -63,7 +63,7 @@ get_overwrite_mode_length (void)
 }
 
 static void
-gedit_statusbar_dispose (GObject *object)
+bedit_statusbar_dispose (GObject *object)
 {
 	BeditStatusbar *statusbar = GEDIT_STATUSBAR (object);
 
@@ -73,19 +73,19 @@ gedit_statusbar_dispose (GObject *object)
 		statusbar->flash_timeout = 0;
 	}
 
-	G_OBJECT_CLASS (gedit_statusbar_parent_class)->dispose (object);
+	G_OBJECT_CLASS (bedit_statusbar_parent_class)->dispose (object);
 }
 
 static void
-gedit_statusbar_class_init (BeditStatusbarClass *klass)
+bedit_statusbar_class_init (BeditStatusbarClass *klass)
 {
 	GObjectClass *object_class = G_OBJECT_CLASS (klass);
 	GtkWidgetClass *widget_class = GTK_WIDGET_CLASS (klass);
 
-	object_class->dispose = gedit_statusbar_dispose;
+	object_class->dispose = bedit_statusbar_dispose;
 
 	gtk_widget_class_set_template_from_resource (widget_class,
-		                                    "/com/bwhmather/bedit/ui/gedit-statusbar.ui");
+		                                    "/com/bwhmather/bedit/ui/bedit-statusbar.ui");
 
 	gtk_widget_class_bind_template_child (widget_class, BeditStatusbar, error_frame);
 	gtk_widget_class_bind_template_child (widget_class, BeditStatusbar, error_image);
@@ -97,7 +97,7 @@ gedit_statusbar_class_init (BeditStatusbarClass *klass)
 }
 
 static void
-gedit_statusbar_init (BeditStatusbar *statusbar)
+bedit_statusbar_init (BeditStatusbar *statusbar)
 {
 	gtk_widget_init_template (GTK_WIDGET (statusbar));
 
@@ -106,27 +106,27 @@ gedit_statusbar_init (BeditStatusbar *statusbar)
 }
 
 /**
- * gedit_statusbar_new:
+ * bedit_statusbar_new:
  *
  * Creates a new #BeditStatusbar.
  *
  * Return value: the new #BeditStatusbar object
  **/
 GtkWidget *
-gedit_statusbar_new (void)
+bedit_statusbar_new (void)
 {
 	return GTK_WIDGET (g_object_new (GEDIT_TYPE_STATUSBAR, NULL));
 }
 
 /**
- * gedit_statusbar_set_overwrite:
+ * bedit_statusbar_set_overwrite:
  * @statusbar: a #BeditStatusbar
  * @overwrite: if the overwrite mode is set
  *
  * Sets the overwrite mode on the statusbar.
  **/
 void
-gedit_statusbar_set_overwrite (BeditStatusbar *statusbar,
+bedit_statusbar_set_overwrite (BeditStatusbar *statusbar,
                                gboolean        overwrite)
 {
 	gchar *msg;
@@ -139,7 +139,7 @@ gedit_statusbar_set_overwrite (BeditStatusbar *statusbar,
 }
 
 void
-gedit_statusbar_clear_overwrite (BeditStatusbar *statusbar)
+bedit_statusbar_clear_overwrite (BeditStatusbar *statusbar)
 {
 	g_return_if_fail (GEDIT_IS_STATUSBAR (statusbar));
 
@@ -160,7 +160,7 @@ remove_message_timeout (BeditStatusbar *statusbar)
 
 /* FIXME this is an issue for introspection */
 /**
- * gedit_statusbar_flash_message:
+ * bedit_statusbar_flash_message:
  * @statusbar: a #BeditStatusbar
  * @context_id: message context_id
  * @format: message to flash on the statusbar
@@ -169,7 +169,7 @@ remove_message_timeout (BeditStatusbar *statusbar)
  * Flash a temporary message on the statusbar.
  */
 void
-gedit_statusbar_flash_message (BeditStatusbar *statusbar,
+bedit_statusbar_flash_message (BeditStatusbar *statusbar,
 			       guint           context_id,
 			       const gchar    *format,
 			       ...)
@@ -209,7 +209,7 @@ gedit_statusbar_flash_message (BeditStatusbar *statusbar,
 }
 
 void
-gedit_statusbar_set_window_state (BeditStatusbar   *statusbar,
+bedit_statusbar_set_window_state (BeditStatusbar   *statusbar,
 				  BeditWindowState  state,
 				  gint              num_of_errors)
 {

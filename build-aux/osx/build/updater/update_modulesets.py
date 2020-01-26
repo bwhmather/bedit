@@ -309,10 +309,10 @@ bs = [x for x in allf if os.path.basename(x) == 'bootstrap.modules']
 
 m = Merger()
 
-m.merge(nobs, 'gedit-meta', 'gedit-overrides.modules')
-m.write('modulesets/gedit.modules')
+m.merge(nobs, 'bedit-meta', 'bedit-overrides.modules')
+m.write('modulesets/bedit.modules')
 
-m.merge(bs, 'meta-bootstrap', 'gedit-bootstrap-overrides.modules')
+m.merge(bs, 'meta-bootstrap', 'bedit-bootstrap-overrides.modules')
 m.write('modulesets/bootstrap.modules')
 
 print('New modules have been written to "modulesets"')

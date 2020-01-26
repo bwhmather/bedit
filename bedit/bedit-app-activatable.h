@@ -1,6 +1,6 @@
 /*
- * gedit-app-activatable.h
- * This file is part of gedit
+ * bedit-app-activatable.h
+ * This file is part of bedit
  *
  * Copyright (C) 2010 - Steve Frécinaux
  * Copyright (C) 2010 - Jesse van den Kieboom
@@ -23,13 +23,13 @@
 #define GEDIT_APP_ACTIVATABLE_H
 
 #include <glib-object.h>
-#include <gedit/gedit-menu-extension.h>
+#include <bedit/bedit-menu-extension.h>
 
 G_BEGIN_DECLS
 
-#define GEDIT_TYPE_APP_ACTIVATABLE (gedit_app_activatable_get_type ())
+#define GEDIT_TYPE_APP_ACTIVATABLE (bedit_app_activatable_get_type ())
 
-G_DECLARE_INTERFACE (BeditAppActivatable, gedit_app_activatable, GEDIT, APP_ACTIVATABLE, GObject)
+G_DECLARE_INTERFACE (BeditAppActivatable, bedit_app_activatable, GEDIT, APP_ACTIVATABLE, GObject)
 
 struct _BeditAppActivatableInterface
 {
@@ -40,11 +40,11 @@ struct _BeditAppActivatableInterface
 	void	(*deactivate)		(BeditAppActivatable *activatable);
 };
 
-void	 gedit_app_activatable_activate			(BeditAppActivatable *activatable);
-void	 gedit_app_activatable_deactivate		(BeditAppActivatable *activatable);
+void	 bedit_app_activatable_activate			(BeditAppActivatable *activatable);
+void	 bedit_app_activatable_deactivate		(BeditAppActivatable *activatable);
 
 /**
- * gedit_app_activatable_extend_menu:
+ * bedit_app_activatable_extend_menu:
  * @activatable: A #BeditAppActivatable.
  * @extension_point: the extension point section of the menu to get.
  *
@@ -55,7 +55,7 @@ void	 gedit_app_activatable_deactivate		(BeditAppActivatable *activatable);
  * Returns: (transfer full): a #BeditMenuExtension for the specific section
  * or %NULL if not found.
  */
-BeditMenuExtension	*gedit_app_activatable_extend_menu	(BeditAppActivatable *activatable,
+BeditMenuExtension	*bedit_app_activatable_extend_menu	(BeditAppActivatable *activatable,
 								 const gchar *extension_point);
 
 G_END_DECLS
