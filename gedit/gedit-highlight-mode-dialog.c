@@ -22,21 +22,21 @@
 
 #include <gtk/gtk.h>
 
-struct _GeditHighlightModeDialog
+struct _BeditHighlightModeDialog
 {
 	GtkDialog parent_instance;
 
-	GeditHighlightModeSelector *selector;
+	BeditHighlightModeSelector *selector;
 	gulong on_language_selected_id;
 };
 
-G_DEFINE_TYPE (GeditHighlightModeDialog, gedit_highlight_mode_dialog, GTK_TYPE_DIALOG)
+G_DEFINE_TYPE (BeditHighlightModeDialog, gedit_highlight_mode_dialog, GTK_TYPE_DIALOG)
 
 static void
 gedit_highlight_mode_dialog_response (GtkDialog *dialog,
                                       gint       response_id)
 {
-	GeditHighlightModeDialog *dlg = GEDIT_HIGHLIGHT_MODE_DIALOG (dialog);
+	BeditHighlightModeDialog *dlg = GEDIT_HIGHLIGHT_MODE_DIALOG (dialog);
 
 	if (response_id == GTK_RESPONSE_OK)
 	{
@@ -49,9 +49,9 @@ gedit_highlight_mode_dialog_response (GtkDialog *dialog,
 }
 
 static void
-on_language_selected (GeditHighlightModeSelector *sel,
+on_language_selected (BeditHighlightModeSelector *sel,
                       GtkSourceLanguage          *language,
-                      GeditHighlightModeDialog   *dlg)
+                      BeditHighlightModeDialog   *dlg)
 {
 	g_signal_handler_block (dlg->selector, dlg->on_language_selected_id);
 	gedit_highlight_mode_selector_activate_selected_language (dlg->selector);
@@ -61,7 +61,7 @@ on_language_selected (GeditHighlightModeSelector *sel,
 }
 
 static void
-gedit_highlight_mode_dialog_class_init (GeditHighlightModeDialogClass *klass)
+gedit_highlight_mode_dialog_class_init (BeditHighlightModeDialogClass *klass)
 {
 	GtkWidgetClass *widget_class = GTK_WIDGET_CLASS (klass);
 	GtkDialogClass *dialog_class = GTK_DIALOG_CLASS (klass);
@@ -71,11 +71,11 @@ gedit_highlight_mode_dialog_class_init (GeditHighlightModeDialogClass *klass)
 	/* Bind class to template */
 	gtk_widget_class_set_template_from_resource (widget_class,
 	                                             "/com/bwhmather/bedit/ui/gedit-highlight-mode-dialog.ui");
-	gtk_widget_class_bind_template_child (widget_class, GeditHighlightModeDialog, selector);
+	gtk_widget_class_bind_template_child (widget_class, BeditHighlightModeDialog, selector);
 }
 
 static void
-gedit_highlight_mode_dialog_init (GeditHighlightModeDialog *dlg)
+gedit_highlight_mode_dialog_init (BeditHighlightModeDialog *dlg)
 {
 	gtk_widget_init_template (GTK_WIDGET (dlg));
 	gtk_dialog_set_default_response (GTK_DIALOG (dlg), GTK_RESPONSE_OK);
@@ -93,8 +93,8 @@ gedit_highlight_mode_dialog_new (GtkWindow *parent)
 	                                 NULL));
 }
 
-GeditHighlightModeSelector *
-gedit_highlight_mode_dialog_get_selector (GeditHighlightModeDialog *dlg)
+BeditHighlightModeSelector *
+gedit_highlight_mode_dialog_get_selector (BeditHighlightModeDialog *dlg)
 {
 	g_return_val_if_fail (GEDIT_IS_HIGHLIGHT_MODE_DIALOG (dlg), NULL);
 

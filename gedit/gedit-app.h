@@ -28,29 +28,29 @@ G_BEGIN_DECLS
 
 #define GEDIT_TYPE_APP (gedit_app_get_type())
 
-G_DECLARE_DERIVABLE_TYPE (GeditApp, gedit_app, GEDIT, APP, GtkApplication)
+G_DECLARE_DERIVABLE_TYPE (BeditApp, gedit_app, GEDIT, APP, GtkApplication)
 
-struct _GeditAppClass
+struct _BeditAppClass
 {
 	GtkApplicationClass parent_class;
 
-	gboolean (*show_help)                   (GeditApp    *app,
+	gboolean (*show_help)                   (BeditApp    *app,
 	                                         GtkWindow   *parent,
 	                                         const gchar *name,
 	                                         const gchar *link_id);
 
-	gchar *(*help_link_id)                  (GeditApp    *app,
+	gchar *(*help_link_id)                  (BeditApp    *app,
 	                                         const gchar *name,
 	                                         const gchar *link_id);
 
-	void (*set_window_title)                (GeditApp    *app,
-	                                         GeditWindow *window,
+	void (*set_window_title)                (BeditApp    *app,
+	                                         BeditWindow *window,
 	                                         const gchar *title);
 
-	GeditWindow *(*create_window)           (GeditApp    *app);
+	BeditWindow *(*create_window)           (BeditApp    *app);
 
-	gboolean (*process_window_event)        (GeditApp    *app,
-	                                         GeditWindow *window,
+	gboolean (*process_window_event)        (BeditApp    *app,
+	                                         BeditWindow *window,
 	                                         GdkEvent    *event);
 };
 
@@ -60,33 +60,33 @@ typedef enum
 	GEDIT_LOCKDOWN_PRINTING		= 1 << 1,
 	GEDIT_LOCKDOWN_PRINT_SETUP	= 1 << 2,
 	GEDIT_LOCKDOWN_SAVE_TO_DISK	= 1 << 3
-} GeditLockdownMask;
+} BeditLockdownMask;
 
 /* We need to define this here to avoid problems with bindings and gsettings */
 #define GEDIT_LOCKDOWN_ALL 0xF
 
-GeditWindow	*gedit_app_create_window		(GeditApp    *app,
+BeditWindow	*gedit_app_create_window		(BeditApp    *app,
 							 GdkScreen   *screen);
 
-GList		*gedit_app_get_main_windows		(GeditApp    *app);
+GList		*gedit_app_get_main_windows		(BeditApp    *app);
 
-GList		*gedit_app_get_documents		(GeditApp    *app);
+GList		*gedit_app_get_documents		(BeditApp    *app);
 
-GList		*gedit_app_get_views			(GeditApp    *app);
+GList		*gedit_app_get_views			(BeditApp    *app);
 
 /* Lockdown state */
-GeditLockdownMask gedit_app_get_lockdown		(GeditApp    *app);
+BeditLockdownMask gedit_app_get_lockdown		(BeditApp    *app);
 
-gboolean	 gedit_app_show_help			(GeditApp    *app,
+gboolean	 gedit_app_show_help			(BeditApp    *app,
                                                          GtkWindow   *parent,
                                                          const gchar *name,
                                                          const gchar *link_id);
 
-void		 gedit_app_set_window_title		(GeditApp    *app,
-                                                         GeditWindow *window,
+void		 gedit_app_set_window_title		(BeditApp    *app,
+                                                         BeditWindow *window,
                                                          const gchar *title);
-gboolean	gedit_app_process_window_event		(GeditApp    *app,
-							 GeditWindow *window,
+gboolean	gedit_app_process_window_event		(BeditApp    *app,
+							 BeditWindow *window,
 							 GdkEvent    *event);
 
 G_END_DECLS

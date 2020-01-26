@@ -57,7 +57,7 @@ static GtkWidget *preferences_dialog = NULL;
 
 #define GEDIT_TYPE_PREFERENCES_DIALOG (gedit_preferences_dialog_get_type())
 
-G_DECLARE_FINAL_TYPE (GeditPreferencesDialog, gedit_preferences_dialog, GEDIT, PREFERENCES_DIALOG, GtkWindow)
+G_DECLARE_FINAL_TYPE (BeditPreferencesDialog, gedit_preferences_dialog, GEDIT, PREFERENCES_DIALOG, GtkWindow)
 
 enum
 {
@@ -75,7 +75,7 @@ enum
 
 static guint signals[LAST_SIGNAL];
 
-struct _GeditPreferencesDialog
+struct _BeditPreferencesDialog
 {
 	GtkWindow	parent_instance;
 
@@ -96,7 +96,7 @@ struct _GeditPreferencesDialog
 	GtkWidget	*schemes_scrolled_window;
 	GtkWidget	*schemes_toolbar;
 
-	GeditFileChooserDialog *
+	BeditFileChooserDialog *
 			 install_scheme_file_schooser;
 
 	/* Tabs */
@@ -132,12 +132,12 @@ struct _GeditPreferencesDialog
 	GtkWidget	*plugin_manager;
 };
 
-G_DEFINE_TYPE (GeditPreferencesDialog, gedit_preferences_dialog, GTK_TYPE_WINDOW)
+G_DEFINE_TYPE (BeditPreferencesDialog, gedit_preferences_dialog, GTK_TYPE_WINDOW)
 
 static void
 gedit_preferences_dialog_dispose (GObject *object)
 {
-	GeditPreferencesDialog *dlg = GEDIT_PREFERENCES_DIALOG (object);
+	BeditPreferencesDialog *dlg = GEDIT_PREFERENCES_DIALOG (object);
 
 	g_clear_object (&dlg->editor);
 	g_clear_object (&dlg->uisettings);
@@ -146,13 +146,13 @@ gedit_preferences_dialog_dispose (GObject *object)
 }
 
 static void
-gedit_preferences_dialog_close (GeditPreferencesDialog *dialog)
+gedit_preferences_dialog_close (BeditPreferencesDialog *dialog)
 {
 	gtk_window_close (GTK_WINDOW (dialog));
 }
 
 static void
-gedit_preferences_dialog_class_init (GeditPreferencesDialogClass *klass)
+gedit_preferences_dialog_class_init (BeditPreferencesDialogClass *klass)
 {
 	GObjectClass *object_class = G_OBJECT_CLASS (klass);
 	GtkWidgetClass *widget_class = GTK_WIDGET_CLASS (klass);
@@ -178,36 +178,36 @@ gedit_preferences_dialog_class_init (GeditPreferencesDialogClass *klass)
 	/* Bind class to template */
 	gtk_widget_class_set_template_from_resource (widget_class,
 	                                             "/com/bwhmather/bedit/ui/gedit-preferences-dialog.ui");
-	gtk_widget_class_bind_template_child (widget_class, GeditPreferencesDialog, notebook);
-	gtk_widget_class_bind_template_child (widget_class, GeditPreferencesDialog, display_line_numbers_checkbutton);
-	gtk_widget_class_bind_template_child (widget_class, GeditPreferencesDialog, display_statusbar_checkbutton);
-	gtk_widget_class_bind_template_child (widget_class, GeditPreferencesDialog, display_grid_checkbutton);
-	gtk_widget_class_bind_template_child (widget_class, GeditPreferencesDialog, right_margin_checkbutton);
-	gtk_widget_class_bind_template_child (widget_class, GeditPreferencesDialog, right_margin_position_grid);
-	gtk_widget_class_bind_template_child (widget_class, GeditPreferencesDialog, right_margin_position_spinbutton);
-	gtk_widget_class_bind_template_child (widget_class, GeditPreferencesDialog, highlight_current_line_checkbutton);
-	gtk_widget_class_bind_template_child (widget_class, GeditPreferencesDialog, bracket_matching_checkbutton);
-	gtk_widget_class_bind_template_child (widget_class, GeditPreferencesDialog, wrap_text_checkbutton);
-	gtk_widget_class_bind_template_child (widget_class, GeditPreferencesDialog, split_checkbutton);
-	gtk_widget_class_bind_template_child (widget_class, GeditPreferencesDialog, tabs_width_spinbutton);
-	gtk_widget_class_bind_template_child (widget_class, GeditPreferencesDialog, insert_spaces_checkbutton);
-	gtk_widget_class_bind_template_child (widget_class, GeditPreferencesDialog, auto_indent_checkbutton);
-	gtk_widget_class_bind_template_child (widget_class, GeditPreferencesDialog, backup_copy_checkbutton);
-	gtk_widget_class_bind_template_child (widget_class, GeditPreferencesDialog, auto_save_checkbutton);
-	gtk_widget_class_bind_template_child (widget_class, GeditPreferencesDialog, auto_save_spinbutton);
-	gtk_widget_class_bind_template_child (widget_class, GeditPreferencesDialog, default_font_checkbutton);
-	gtk_widget_class_bind_template_child (widget_class, GeditPreferencesDialog, font_button);
-	gtk_widget_class_bind_template_child (widget_class, GeditPreferencesDialog, font_grid);
-	gtk_widget_class_bind_template_child (widget_class, GeditPreferencesDialog, schemes_list);
-	gtk_widget_class_bind_template_child (widget_class, GeditPreferencesDialog, schemes_scrolled_window);
-	gtk_widget_class_bind_template_child (widget_class, GeditPreferencesDialog, install_scheme_button);
-	gtk_widget_class_bind_template_child (widget_class, GeditPreferencesDialog, uninstall_scheme_button);
-	gtk_widget_class_bind_template_child (widget_class, GeditPreferencesDialog, schemes_toolbar);
-	gtk_widget_class_bind_template_child (widget_class, GeditPreferencesDialog, plugin_manager);
+	gtk_widget_class_bind_template_child (widget_class, BeditPreferencesDialog, notebook);
+	gtk_widget_class_bind_template_child (widget_class, BeditPreferencesDialog, display_line_numbers_checkbutton);
+	gtk_widget_class_bind_template_child (widget_class, BeditPreferencesDialog, display_statusbar_checkbutton);
+	gtk_widget_class_bind_template_child (widget_class, BeditPreferencesDialog, display_grid_checkbutton);
+	gtk_widget_class_bind_template_child (widget_class, BeditPreferencesDialog, right_margin_checkbutton);
+	gtk_widget_class_bind_template_child (widget_class, BeditPreferencesDialog, right_margin_position_grid);
+	gtk_widget_class_bind_template_child (widget_class, BeditPreferencesDialog, right_margin_position_spinbutton);
+	gtk_widget_class_bind_template_child (widget_class, BeditPreferencesDialog, highlight_current_line_checkbutton);
+	gtk_widget_class_bind_template_child (widget_class, BeditPreferencesDialog, bracket_matching_checkbutton);
+	gtk_widget_class_bind_template_child (widget_class, BeditPreferencesDialog, wrap_text_checkbutton);
+	gtk_widget_class_bind_template_child (widget_class, BeditPreferencesDialog, split_checkbutton);
+	gtk_widget_class_bind_template_child (widget_class, BeditPreferencesDialog, tabs_width_spinbutton);
+	gtk_widget_class_bind_template_child (widget_class, BeditPreferencesDialog, insert_spaces_checkbutton);
+	gtk_widget_class_bind_template_child (widget_class, BeditPreferencesDialog, auto_indent_checkbutton);
+	gtk_widget_class_bind_template_child (widget_class, BeditPreferencesDialog, backup_copy_checkbutton);
+	gtk_widget_class_bind_template_child (widget_class, BeditPreferencesDialog, auto_save_checkbutton);
+	gtk_widget_class_bind_template_child (widget_class, BeditPreferencesDialog, auto_save_spinbutton);
+	gtk_widget_class_bind_template_child (widget_class, BeditPreferencesDialog, default_font_checkbutton);
+	gtk_widget_class_bind_template_child (widget_class, BeditPreferencesDialog, font_button);
+	gtk_widget_class_bind_template_child (widget_class, BeditPreferencesDialog, font_grid);
+	gtk_widget_class_bind_template_child (widget_class, BeditPreferencesDialog, schemes_list);
+	gtk_widget_class_bind_template_child (widget_class, BeditPreferencesDialog, schemes_scrolled_window);
+	gtk_widget_class_bind_template_child (widget_class, BeditPreferencesDialog, install_scheme_button);
+	gtk_widget_class_bind_template_child (widget_class, BeditPreferencesDialog, uninstall_scheme_button);
+	gtk_widget_class_bind_template_child (widget_class, BeditPreferencesDialog, schemes_toolbar);
+	gtk_widget_class_bind_template_child (widget_class, BeditPreferencesDialog, plugin_manager);
 }
 
 static void
-setup_editor_page (GeditPreferencesDialog *dlg)
+setup_editor_page (BeditPreferencesDialog *dlg)
 {
 	gedit_debug (DEBUG_PREFS);
 
@@ -256,7 +256,7 @@ setup_editor_page (GeditPreferencesDialog *dlg)
 
 static void
 wrap_mode_checkbutton_toggled (GtkToggleButton        *button,
-			       GeditPreferencesDialog *dlg)
+			       BeditPreferencesDialog *dlg)
 {
 	GtkWrapMode mode;
 
@@ -303,7 +303,7 @@ wrap_mode_checkbutton_toggled (GtkToggleButton        *button,
 
 static void
 grid_checkbutton_toggled (GtkToggleButton        *button,
-                          GeditPreferencesDialog *dlg)
+                          BeditPreferencesDialog *dlg)
 {
 	GtkSourceBackgroundPatternType background_type;
 
@@ -316,7 +316,7 @@ grid_checkbutton_toggled (GtkToggleButton        *button,
 }
 
 static void
-setup_view_page (GeditPreferencesDialog *dlg)
+setup_view_page (BeditPreferencesDialog *dlg)
 {
 	GtkWrapMode wrap_mode;
 	GtkWrapMode last_split_mode;
@@ -434,9 +434,9 @@ setup_view_page (GeditPreferencesDialog *dlg)
 }
 
 static void
-setup_font_colors_page_font_section (GeditPreferencesDialog *dlg)
+setup_font_colors_page_font_section (BeditPreferencesDialog *dlg)
 {
-	GeditSettings *settings;
+	BeditSettings *settings;
 	gchar *system_font = NULL;
 	gchar *label;
 
@@ -475,7 +475,7 @@ setup_font_colors_page_font_section (GeditPreferencesDialog *dlg)
 }
 
 static void
-set_buttons_sensisitivity_according_to_scheme (GeditPreferencesDialog *dlg,
+set_buttons_sensisitivity_according_to_scheme (BeditPreferencesDialog *dlg,
                                                GtkSourceStyleScheme   *scheme)
 {
 	gboolean editable = FALSE;
@@ -498,7 +498,7 @@ set_buttons_sensisitivity_according_to_scheme (GeditPreferencesDialog *dlg,
 static void
 style_scheme_changed (GtkSourceStyleSchemeChooser *chooser,
                       GParamSpec                  *pspec,
-                      GeditPreferencesDialog      *dlg)
+                      BeditPreferencesDialog      *dlg)
 {
 	GtkSourceStyleScheme *scheme;
 	const gchar *id;
@@ -511,7 +511,7 @@ style_scheme_changed (GtkSourceStyleSchemeChooser *chooser,
 }
 
 static GtkSourceStyleScheme *
-get_default_color_scheme (GeditPreferencesDialog *dlg)
+get_default_color_scheme (BeditPreferencesDialog *dlg)
 {
 	GtkSourceStyleSchemeManager *manager;
 	GtkSourceStyleScheme *scheme = NULL;
@@ -749,9 +749,9 @@ uninstall_style_scheme (GtkSourceStyleScheme *scheme)
 }
 
 static void
-add_scheme_chooser_response_cb (GeditFileChooserDialog *chooser,
+add_scheme_chooser_response_cb (BeditFileChooserDialog *chooser,
 				gint                    res_id,
-				GeditPreferencesDialog *dlg)
+				BeditPreferencesDialog *dlg)
 {
 	GFile *file;
 	gchar *filename;
@@ -799,9 +799,9 @@ add_scheme_chooser_response_cb (GeditFileChooserDialog *chooser,
 
 static void
 install_scheme_clicked (GtkButton              *button,
-			GeditPreferencesDialog *dlg)
+			BeditPreferencesDialog *dlg)
 {
-	GeditFileChooserDialog *chooser;
+	BeditFileChooserDialog *chooser;
 
 	if (dlg->install_scheme_file_schooser != NULL)
 	{
@@ -840,7 +840,7 @@ install_scheme_clicked (GtkButton              *button,
 
 static void
 uninstall_scheme_clicked (GtkButton              *button,
-			  GeditPreferencesDialog *dlg)
+			  BeditPreferencesDialog *dlg)
 {
 	GtkSourceStyleScheme *scheme;
 
@@ -855,7 +855,7 @@ uninstall_scheme_clicked (GtkButton              *button,
 }
 
 static void
-setup_font_colors_page_style_scheme_section (GeditPreferencesDialog *dlg)
+setup_font_colors_page_style_scheme_section (BeditPreferencesDialog *dlg)
 {
 	GtkStyleContext *context;
 	GtkSourceStyleScheme *scheme;
@@ -892,20 +892,20 @@ setup_font_colors_page_style_scheme_section (GeditPreferencesDialog *dlg)
 }
 
 static void
-setup_font_colors_page (GeditPreferencesDialog *dlg)
+setup_font_colors_page (BeditPreferencesDialog *dlg)
 {
 	setup_font_colors_page_font_section (dlg);
 	setup_font_colors_page_style_scheme_section (dlg);
 }
 
 static void
-setup_plugins_page (GeditPreferencesDialog *dlg)
+setup_plugins_page (BeditPreferencesDialog *dlg)
 {
 	gtk_widget_show_all (dlg->plugin_manager);
 }
 
 static void
-gedit_preferences_dialog_init (GeditPreferencesDialog *dlg)
+gedit_preferences_dialog_init (BeditPreferencesDialog *dlg)
 {
 	gedit_debug (DEBUG_PREFS);
 
@@ -921,7 +921,7 @@ gedit_preferences_dialog_init (GeditPreferencesDialog *dlg)
 }
 
 void
-gedit_show_preferences_dialog (GeditWindow *parent)
+gedit_show_preferences_dialog (BeditWindow *parent)
 {
 	gedit_debug (DEBUG_PREFS);
 

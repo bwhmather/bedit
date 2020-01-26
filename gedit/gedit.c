@@ -117,7 +117,7 @@ int
 main (int argc, char *argv[])
 {
 	GType type;
-	GeditApp *app;
+	BeditApp *app;
 	gint status;
 
 #if defined OS_OSX
@@ -148,7 +148,7 @@ main (int argc, char *argv[])
 	status = g_application_run (G_APPLICATION (app), argc, argv);
 
 	/* Break reference cycles caused by the PeasExtensionSet
-	 * for GeditAppActivatable which holds a ref on the GeditApp
+	 * for BeditAppActivatable which holds a ref on the BeditApp
 	 */
 	g_object_run_dispose (G_OBJECT (app));
 

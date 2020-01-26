@@ -27,30 +27,30 @@ G_BEGIN_DECLS
 
 #define GEDIT_TYPE_HISTORY_ENTRY (gedit_history_entry_get_type ())
 
-G_DECLARE_FINAL_TYPE (GeditHistoryEntry, gedit_history_entry, GEDIT, HISTORY_ENTRY, GtkComboBoxText)
+G_DECLARE_FINAL_TYPE (BeditHistoryEntry, gedit_history_entry, GEDIT, HISTORY_ENTRY, GtkComboBoxText)
 
 GtkWidget	*gedit_history_entry_new			(const gchar       *history_id,
 								 gboolean           enable_completion);
 
-void		 gedit_history_entry_prepend_text		(GeditHistoryEntry *entry,
+void		 gedit_history_entry_prepend_text		(BeditHistoryEntry *entry,
 								 const gchar       *text);
 
-void		 gedit_history_entry_append_text		(GeditHistoryEntry *entry,
+void		 gedit_history_entry_append_text		(BeditHistoryEntry *entry,
 								 const gchar       *text);
 
-void		 gedit_history_entry_clear			(GeditHistoryEntry *entry);
+void		 gedit_history_entry_clear			(BeditHistoryEntry *entry);
 
-void		 gedit_history_entry_set_history_length		(GeditHistoryEntry *entry,
+void		 gedit_history_entry_set_history_length		(BeditHistoryEntry *entry,
 								 guint              max_saved);
 
-guint		 gedit_history_entry_get_history_length		(GeditHistoryEntry *gentry);
+guint		 gedit_history_entry_get_history_length		(BeditHistoryEntry *gentry);
 
-void		gedit_history_entry_set_enable_completion	(GeditHistoryEntry *entry,
+void		gedit_history_entry_set_enable_completion	(BeditHistoryEntry *entry,
 								 gboolean           enable);
 
-gboolean	gedit_history_entry_get_enable_completion	(GeditHistoryEntry *entry);
+gboolean	gedit_history_entry_get_enable_completion	(BeditHistoryEntry *entry);
 
-GtkWidget	*gedit_history_entry_get_entry			(GeditHistoryEntry *entry);
+GtkWidget	*gedit_history_entry_get_entry			(BeditHistoryEntry *entry);
 
 G_END_DECLS
 

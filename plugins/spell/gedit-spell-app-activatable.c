@@ -24,17 +24,17 @@
 #include <gedit/gedit-app-activatable.h>
 #include <gedit/gedit-app.h>
 
-typedef struct _GeditSpellAppActivatablePrivate GeditSpellAppActivatablePrivate;
+typedef struct _BeditSpellAppActivatablePrivate BeditSpellAppActivatablePrivate;
 
-struct _GeditSpellAppActivatable
+struct _BeditSpellAppActivatable
 {
 	GObject parent;
 };
 
-struct _GeditSpellAppActivatablePrivate
+struct _BeditSpellAppActivatablePrivate
 {
-	GeditApp *app;
-	GeditMenuExtension *menu_ext;
+	BeditApp *app;
+	BeditMenuExtension *menu_ext;
 };
 
 enum
@@ -43,21 +43,21 @@ enum
 	PROP_APP
 };
 
-static void gedit_app_activatable_iface_init (GeditAppActivatableInterface *iface);
+static void gedit_app_activatable_iface_init (BeditAppActivatableInterface *iface);
 
-G_DEFINE_DYNAMIC_TYPE_EXTENDED (GeditSpellAppActivatable,
+G_DEFINE_DYNAMIC_TYPE_EXTENDED (BeditSpellAppActivatable,
 				gedit_spell_app_activatable,
 				G_TYPE_OBJECT,
 				0,
-				G_ADD_PRIVATE_DYNAMIC (GeditSpellAppActivatable)
+				G_ADD_PRIVATE_DYNAMIC (BeditSpellAppActivatable)
 				G_IMPLEMENT_INTERFACE_DYNAMIC (GEDIT_TYPE_APP_ACTIVATABLE,
 							       gedit_app_activatable_iface_init))
 
 static void
 gedit_spell_app_activatable_dispose (GObject *object)
 {
-	GeditSpellAppActivatable *activatable = GEDIT_SPELL_APP_ACTIVATABLE (object);
-	GeditSpellAppActivatablePrivate *priv = gedit_spell_app_activatable_get_instance_private (activatable);
+	BeditSpellAppActivatable *activatable = GEDIT_SPELL_APP_ACTIVATABLE (object);
+	BeditSpellAppActivatablePrivate *priv = gedit_spell_app_activatable_get_instance_private (activatable);
 
 	g_clear_object (&priv->app);
 	g_clear_object (&priv->menu_ext);
@@ -71,8 +71,8 @@ gedit_spell_app_activatable_set_property (GObject      *object,
                                           const GValue *value,
                                           GParamSpec   *pspec)
 {
-	GeditSpellAppActivatable *activatable = GEDIT_SPELL_APP_ACTIVATABLE (object);
-	GeditSpellAppActivatablePrivate *priv = gedit_spell_app_activatable_get_instance_private (activatable);
+	BeditSpellAppActivatable *activatable = GEDIT_SPELL_APP_ACTIVATABLE (object);
+	BeditSpellAppActivatablePrivate *priv = gedit_spell_app_activatable_get_instance_private (activatable);
 
 	switch (prop_id)
 	{
@@ -92,8 +92,8 @@ gedit_spell_app_activatable_get_property (GObject    *object,
                                           GValue     *value,
                                           GParamSpec *pspec)
 {
-	GeditSpellAppActivatable *activatable = GEDIT_SPELL_APP_ACTIVATABLE (object);
-	GeditSpellAppActivatablePrivate *priv = gedit_spell_app_activatable_get_instance_private (activatable);
+	BeditSpellAppActivatable *activatable = GEDIT_SPELL_APP_ACTIVATABLE (object);
+	BeditSpellAppActivatablePrivate *priv = gedit_spell_app_activatable_get_instance_private (activatable);
 
 	switch (prop_id)
 	{
@@ -108,7 +108,7 @@ gedit_spell_app_activatable_get_property (GObject    *object,
 }
 
 static void
-gedit_spell_app_activatable_class_init (GeditSpellAppActivatableClass *klass)
+gedit_spell_app_activatable_class_init (BeditSpellAppActivatableClass *klass)
 {
 	GObjectClass *object_class = G_OBJECT_CLASS (klass);
 
@@ -120,20 +120,20 @@ gedit_spell_app_activatable_class_init (GeditSpellAppActivatableClass *klass)
 }
 
 static void
-gedit_spell_app_activatable_class_finalize (GeditSpellAppActivatableClass *klass)
+gedit_spell_app_activatable_class_finalize (BeditSpellAppActivatableClass *klass)
 {
 }
 
 static void
-gedit_spell_app_activatable_init (GeditSpellAppActivatable *self)
+gedit_spell_app_activatable_init (BeditSpellAppActivatable *self)
 {
 }
 
 static void
-gedit_spell_app_activatable_activate (GeditAppActivatable *activatable)
+gedit_spell_app_activatable_activate (BeditAppActivatable *activatable)
 {
-	GeditSpellAppActivatable *app_activatable = GEDIT_SPELL_APP_ACTIVATABLE (activatable);
-	GeditSpellAppActivatablePrivate *priv = gedit_spell_app_activatable_get_instance_private (app_activatable);
+	BeditSpellAppActivatable *app_activatable = GEDIT_SPELL_APP_ACTIVATABLE (activatable);
+	BeditSpellAppActivatablePrivate *priv = gedit_spell_app_activatable_get_instance_private (app_activatable);
 	GMenuItem *item;
 
 	const gchar *accels[] = { "<Shift>F7", NULL };
@@ -154,10 +154,10 @@ gedit_spell_app_activatable_activate (GeditAppActivatable *activatable)
 }
 
 static void
-gedit_spell_app_activatable_deactivate (GeditAppActivatable *activatable)
+gedit_spell_app_activatable_deactivate (BeditAppActivatable *activatable)
 {
-	GeditSpellAppActivatable *app_activatable = GEDIT_SPELL_APP_ACTIVATABLE (activatable);
-	GeditSpellAppActivatablePrivate *priv = gedit_spell_app_activatable_get_instance_private (app_activatable);
+	BeditSpellAppActivatable *app_activatable = GEDIT_SPELL_APP_ACTIVATABLE (activatable);
+	BeditSpellAppActivatablePrivate *priv = gedit_spell_app_activatable_get_instance_private (app_activatable);
 
 	const gchar *accels[] = { NULL };
 	gtk_application_set_accels_for_action (GTK_APPLICATION (priv->app),"win.check-spell", accels);
@@ -165,7 +165,7 @@ gedit_spell_app_activatable_deactivate (GeditAppActivatable *activatable)
 }
 
 static void
-gedit_app_activatable_iface_init (GeditAppActivatableInterface *iface)
+gedit_app_activatable_iface_init (BeditAppActivatableInterface *iface)
 {
 	iface->activate = gedit_spell_app_activatable_activate;
 	iface->deactivate = gedit_spell_app_activatable_deactivate;

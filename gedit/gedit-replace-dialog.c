@@ -32,7 +32,7 @@
 
 #define GEDIT_SEARCH_CONTEXT_KEY "gedit-search-context-key"
 
-struct _GeditReplaceDialog
+struct _BeditReplaceDialog
 {
 	GtkDialog parent_instance;
 
@@ -50,16 +50,16 @@ struct _GeditReplaceDialog
 	GtkWidget *wrap_around_checkbutton;
 	GtkWidget *close_button;
 
-	GeditDocument *active_document;
+	BeditDocument *active_document;
 
 	guint idle_update_sensitivity_id;
 };
 
-G_DEFINE_TYPE (GeditReplaceDialog, gedit_replace_dialog, GTK_TYPE_DIALOG)
+G_DEFINE_TYPE (BeditReplaceDialog, gedit_replace_dialog, GTK_TYPE_DIALOG)
 
 static GtkSourceSearchContext *
-get_search_context (GeditReplaceDialog *dialog,
-		    GeditDocument      *doc)
+get_search_context (BeditReplaceDialog *dialog,
+		    BeditDocument      *doc)
 {
 	GtkSourceSearchContext *search_context;
 
@@ -97,13 +97,13 @@ get_search_context (GeditReplaceDialog *dialog,
  * don't want the incremental search: we have to always press a button to
  * execute the search.
  *
- * Likewise, each created SearchContext (from the GeditReplaceDialog) contains a
+ * Likewise, each created SearchContext (from the BeditReplaceDialog) contains a
  * different SearchSettings. When set_search_settings() is called for one
  * document tab (and thus one SearchSettings), it doesn't have an effect on the
  * other tabs. But the dialog widgets don't change.
  */
 static void
-set_search_settings (GeditReplaceDialog *dialog)
+set_search_settings (BeditReplaceDialog *dialog)
 {
 	GtkSourceSearchContext *search_context;
 	GtkSourceSearchSettings *search_settings;
@@ -148,24 +148,24 @@ set_search_settings (GeditReplaceDialog *dialog)
 	}
 }
 
-static GeditWindow *
-get_gedit_window (GeditReplaceDialog *dialog)
+static BeditWindow *
+get_gedit_window (BeditReplaceDialog *dialog)
 {
 	GtkWindow *transient_for = gtk_window_get_transient_for (GTK_WINDOW (dialog));
 
 	return transient_for != NULL ? GEDIT_WINDOW (transient_for) : NULL;
 }
 
-static GeditDocument *
-get_active_document (GeditReplaceDialog *dialog)
+static BeditDocument *
+get_active_document (BeditReplaceDialog *dialog)
 {
-	GeditWindow *window = get_gedit_window (dialog);
+	BeditWindow *window = get_gedit_window (dialog);
 
 	return window != NULL ? gedit_window_get_active_document (window) : NULL;
 }
 
 void
-gedit_replace_dialog_present_with_time (GeditReplaceDialog *dialog,
+gedit_replace_dialog_present_with_time (BeditReplaceDialog *dialog,
 					guint32             timestamp)
 {
 	g_return_if_fail (GEDIT_REPLACE_DIALOG (dialog));
@@ -204,21 +204,21 @@ set_error (GtkEntry    *entry,
 }
 
 static void
-set_search_error (GeditReplaceDialog *dialog,
+set_search_error (BeditReplaceDialog *dialog,
 		  const gchar        *error_msg)
 {
 	set_error (GTK_ENTRY (dialog->search_text_entry), error_msg);
 }
 
 void
-gedit_replace_dialog_set_replace_error (GeditReplaceDialog *dialog,
+gedit_replace_dialog_set_replace_error (BeditReplaceDialog *dialog,
 					const gchar        *error_msg)
 {
 	set_error (GTK_ENTRY (dialog->replace_text_entry), error_msg);
 }
 
 static gboolean
-has_search_error (GeditReplaceDialog *dialog)
+has_search_error (BeditReplaceDialog *dialog)
 {
 	GIcon *icon;
 
@@ -229,7 +229,7 @@ has_search_error (GeditReplaceDialog *dialog)
 }
 
 static gboolean
-has_replace_error (GeditReplaceDialog *dialog)
+has_replace_error (BeditReplaceDialog *dialog)
 {
 	GIcon *icon;
 
@@ -240,7 +240,7 @@ has_replace_error (GeditReplaceDialog *dialog)
 }
 
 static void
-update_regex_error (GeditReplaceDialog *dialog)
+update_regex_error (BeditReplaceDialog *dialog)
 {
 	GtkSourceSearchContext *search_context;
 	GError *regex_error;
@@ -264,7 +264,7 @@ update_regex_error (GeditReplaceDialog *dialog)
 }
 
 static gboolean
-update_replace_response_sensitivity_cb (GeditReplaceDialog *dialog)
+update_replace_response_sensitivity_cb (BeditReplaceDialog *dialog)
 {
 	GtkSourceSearchContext *search_context;
 	GtkTextIter start;
@@ -311,7 +311,7 @@ update_replace_response_sensitivity_cb (GeditReplaceDialog *dialog)
 }
 
 static void
-install_idle_update_sensitivity (GeditReplaceDialog *dialog)
+install_idle_update_sensitivity (BeditReplaceDialog *dialog)
 {
 	if (dialog->idle_update_sensitivity_id != 0)
 	{
@@ -327,7 +327,7 @@ static void
 mark_set_cb (GtkTextBuffer      *buffer,
 	     GtkTextIter        *location,
 	     GtkTextMark        *mark,
-	     GeditReplaceDialog *dialog)
+	     BeditReplaceDialog *dialog)
 {
 	GtkTextMark *insert;
 	GtkTextMark *selection_bound;
@@ -342,7 +342,7 @@ mark_set_cb (GtkTextBuffer      *buffer,
 }
 
 static void
-update_responses_sensitivity (GeditReplaceDialog *dialog)
+update_responses_sensitivity (BeditReplaceDialog *dialog)
 {
 	const gchar *search_text;
 	gboolean sensitive = TRUE;
@@ -381,14 +381,14 @@ update_responses_sensitivity (GeditReplaceDialog *dialog)
 }
 
 static void
-regex_error_notify_cb (GeditReplaceDialog *dialog)
+regex_error_notify_cb (BeditReplaceDialog *dialog)
 {
 	update_regex_error (dialog);
 	update_responses_sensitivity (dialog);
 }
 
 static void
-disconnect_document (GeditReplaceDialog *dialog)
+disconnect_document (BeditReplaceDialog *dialog)
 {
 	GtkSourceSearchContext *search_context;
 
@@ -414,9 +414,9 @@ disconnect_document (GeditReplaceDialog *dialog)
 }
 
 static void
-connect_active_document (GeditReplaceDialog *dialog)
+connect_active_document (BeditReplaceDialog *dialog)
 {
-	GeditDocument *doc;
+	BeditDocument *doc;
 	GtkSourceSearchContext *search_context;
 
 	disconnect_document (dialog);
@@ -441,7 +441,7 @@ connect_active_document (GeditReplaceDialog *dialog)
 
 		/* Mark the search context that it comes from the search and
 		 * replace dialog. Search contexts can be created also from the
-		 * GeditViewFrame.
+		 * BeditViewFrame.
 		 */
 		g_object_set_data (G_OBJECT (search_context),
 				   GEDIT_SEARCH_CONTEXT_KEY,
@@ -473,7 +473,7 @@ static void
 response_cb (GtkDialog *dialog,
 	     gint       response_id)
 {
-	GeditReplaceDialog *dlg = GEDIT_REPLACE_DIALOG (dialog);
+	BeditReplaceDialog *dlg = GEDIT_REPLACE_DIALOG (dialog);
 	const gchar *str;
 
 	switch (response_id)
@@ -511,7 +511,7 @@ response_cb (GtkDialog *dialog,
 static void
 gedit_replace_dialog_dispose (GObject *object)
 {
-	GeditReplaceDialog *dialog = GEDIT_REPLACE_DIALOG (object);
+	BeditReplaceDialog *dialog = GEDIT_REPLACE_DIALOG (object);
 
 	g_clear_object (&dialog->active_document);
 
@@ -525,7 +525,7 @@ gedit_replace_dialog_dispose (GObject *object)
 }
 
 static void
-gedit_replace_dialog_class_init (GeditReplaceDialogClass *klass)
+gedit_replace_dialog_class_init (BeditReplaceDialogClass *klass)
 {
 	GObjectClass *gobject_class = G_OBJECT_CLASS (klass);
 	GtkWidgetClass *widget_class = GTK_WIDGET_CLASS (klass);
@@ -536,20 +536,20 @@ gedit_replace_dialog_class_init (GeditReplaceDialogClass *klass)
 	/* Bind class to template */
 	gtk_widget_class_set_template_from_resource (widget_class,
 	                                             "/com/bwhmather/bedit/ui/gedit-replace-dialog.ui");
-	gtk_widget_class_bind_template_child (widget_class, GeditReplaceDialog, grid);
-	gtk_widget_class_bind_template_child (widget_class, GeditReplaceDialog, search_label);
-	gtk_widget_class_bind_template_child (widget_class, GeditReplaceDialog, replace_label);
-	gtk_widget_class_bind_template_child (widget_class, GeditReplaceDialog, match_case_checkbutton);
-	gtk_widget_class_bind_template_child (widget_class, GeditReplaceDialog, entire_word_checkbutton);
-	gtk_widget_class_bind_template_child (widget_class, GeditReplaceDialog, regex_checkbutton);
-	gtk_widget_class_bind_template_child (widget_class, GeditReplaceDialog, backwards_checkbutton);
-	gtk_widget_class_bind_template_child (widget_class, GeditReplaceDialog, wrap_around_checkbutton);
-	gtk_widget_class_bind_template_child (widget_class, GeditReplaceDialog, close_button);
+	gtk_widget_class_bind_template_child (widget_class, BeditReplaceDialog, grid);
+	gtk_widget_class_bind_template_child (widget_class, BeditReplaceDialog, search_label);
+	gtk_widget_class_bind_template_child (widget_class, BeditReplaceDialog, replace_label);
+	gtk_widget_class_bind_template_child (widget_class, BeditReplaceDialog, match_case_checkbutton);
+	gtk_widget_class_bind_template_child (widget_class, BeditReplaceDialog, entire_word_checkbutton);
+	gtk_widget_class_bind_template_child (widget_class, BeditReplaceDialog, regex_checkbutton);
+	gtk_widget_class_bind_template_child (widget_class, BeditReplaceDialog, backwards_checkbutton);
+	gtk_widget_class_bind_template_child (widget_class, BeditReplaceDialog, wrap_around_checkbutton);
+	gtk_widget_class_bind_template_child (widget_class, BeditReplaceDialog, close_button);
 }
 
 static void
 search_text_entry_changed (GtkEditable        *editable,
-			   GeditReplaceDialog *dialog)
+			   BeditReplaceDialog *dialog)
 {
 	set_search_error (dialog, NULL);
 
@@ -558,7 +558,7 @@ search_text_entry_changed (GtkEditable        *editable,
 
 static void
 replace_text_entry_changed (GtkEditable        *editable,
-			    GeditReplaceDialog *dialog)
+			    BeditReplaceDialog *dialog)
 {
 	gedit_replace_dialog_set_replace_error (dialog, NULL);
 
@@ -567,7 +567,7 @@ replace_text_entry_changed (GtkEditable        *editable,
 
 static void
 regex_checkbutton_toggled (GtkToggleButton    *checkbutton,
-			   GeditReplaceDialog *dialog)
+			   BeditReplaceDialog *dialog)
 {
 	if (!gtk_toggle_button_get_active (checkbutton))
 	{
@@ -609,10 +609,10 @@ get_selected_text (GtkTextBuffer  *doc,
 }
 
 static void
-show_cb (GeditReplaceDialog *dialog)
+show_cb (BeditReplaceDialog *dialog)
 {
-	GeditWindow *window;
-	GeditDocument *doc;
+	BeditWindow *window;
+	BeditDocument *doc;
 	gboolean selection_exists;
 	gchar *selection = NULL;
 	gint selection_length;
@@ -661,13 +661,13 @@ show_cb (GeditReplaceDialog *dialog)
 }
 
 static void
-hide_cb (GeditReplaceDialog *dialog)
+hide_cb (BeditReplaceDialog *dialog)
 {
 	disconnect_document (dialog);
 }
 
 static void
-gedit_replace_dialog_init (GeditReplaceDialog *dlg)
+gedit_replace_dialog_init (BeditReplaceDialog *dlg)
 {
 	gtk_widget_init_template (GTK_WIDGET (dlg));
 
@@ -747,9 +747,9 @@ gedit_replace_dialog_init (GeditReplaceDialog *dlg)
 }
 
 GtkWidget *
-gedit_replace_dialog_new (GeditWindow *window)
+gedit_replace_dialog_new (BeditWindow *window)
 {
-	GeditReplaceDialog *dialog;
+	BeditReplaceDialog *dialog;
 	gboolean use_header;
 
 	g_return_val_if_fail (GEDIT_IS_WINDOW (window), NULL);
@@ -789,7 +789,7 @@ gedit_replace_dialog_new (GeditWindow *window)
 }
 
 const gchar *
-gedit_replace_dialog_get_replace_text (GeditReplaceDialog *dialog)
+gedit_replace_dialog_get_replace_text (BeditReplaceDialog *dialog)
 {
 	g_return_val_if_fail (GEDIT_IS_REPLACE_DIALOG (dialog), NULL);
 
@@ -797,7 +797,7 @@ gedit_replace_dialog_get_replace_text (GeditReplaceDialog *dialog)
 }
 
 gboolean
-gedit_replace_dialog_get_backwards (GeditReplaceDialog *dialog)
+gedit_replace_dialog_get_backwards (BeditReplaceDialog *dialog)
 {
 	g_return_val_if_fail (GEDIT_IS_REPLACE_DIALOG (dialog), FALSE);
 
@@ -809,7 +809,7 @@ gedit_replace_dialog_get_backwards (GeditReplaceDialog *dialog)
  * reciprocal. So to avoid bugs, we have to deal with the original search text.
  */
 const gchar *
-gedit_replace_dialog_get_search_text (GeditReplaceDialog *dialog)
+gedit_replace_dialog_get_search_text (BeditReplaceDialog *dialog)
 {
 	g_return_val_if_fail (GEDIT_IS_REPLACE_DIALOG (dialog), NULL);
 

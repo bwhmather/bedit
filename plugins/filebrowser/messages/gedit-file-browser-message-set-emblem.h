@@ -31,35 +31,35 @@ G_BEGIN_DECLS
 #define GEDIT_TYPE_FILE_BROWSER_MESSAGE_SET_EMBLEM            (gedit_file_browser_message_set_emblem_get_type ())
 #define GEDIT_FILE_BROWSER_MESSAGE_SET_EMBLEM(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj),\
                                                                GEDIT_TYPE_FILE_BROWSER_MESSAGE_SET_EMBLEM,\
-                                                               GeditFileBrowserMessageSetEmblem))
+                                                               BeditFileBrowserMessageSetEmblem))
 #define GEDIT_FILE_BROWSER_MESSAGE_SET_EMBLEM_CONST(obj)      (G_TYPE_CHECK_INSTANCE_CAST ((obj),\
                                                                GEDIT_TYPE_FILE_BROWSER_MESSAGE_SET_EMBLEM,\
-                                                               GeditFileBrowserMessageSetEmblem const))
+                                                               BeditFileBrowserMessageSetEmblem const))
 #define GEDIT_FILE_BROWSER_MESSAGE_SET_EMBLEM_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass),\
                                                                GEDIT_TYPE_FILE_BROWSER_MESSAGE_SET_EMBLEM,\
-                                                               GeditFileBrowserMessageSetEmblemClass))
+                                                               BeditFileBrowserMessageSetEmblemClass))
 #define GEDIT_IS_FILE_BROWSER_MESSAGE_SET_EMBLEM(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj),\
                                                                GEDIT_TYPE_FILE_BROWSER_MESSAGE_SET_EMBLEM))
 #define GEDIT_IS_FILE_BROWSER_MESSAGE_SET_EMBLEM_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass),\
                                                                GEDIT_TYPE_FILE_BROWSER_MESSAGE_SET_EMBLEM))
 #define GEDIT_FILE_BROWSER_MESSAGE_SET_EMBLEM_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj),\
                                                                GEDIT_TYPE_FILE_BROWSER_MESSAGE_SET_EMBLEM,\
-                                                               GeditFileBrowserMessageSetEmblemClass))
+                                                               BeditFileBrowserMessageSetEmblemClass))
 
-typedef struct _GeditFileBrowserMessageSetEmblem        GeditFileBrowserMessageSetEmblem;
-typedef struct _GeditFileBrowserMessageSetEmblemClass   GeditFileBrowserMessageSetEmblemClass;
-typedef struct _GeditFileBrowserMessageSetEmblemPrivate GeditFileBrowserMessageSetEmblemPrivate;
+typedef struct _BeditFileBrowserMessageSetEmblem        BeditFileBrowserMessageSetEmblem;
+typedef struct _BeditFileBrowserMessageSetEmblemClass   BeditFileBrowserMessageSetEmblemClass;
+typedef struct _BeditFileBrowserMessageSetEmblemPrivate BeditFileBrowserMessageSetEmblemPrivate;
 
-struct _GeditFileBrowserMessageSetEmblem
+struct _BeditFileBrowserMessageSetEmblem
 {
-	GeditMessage parent;
+	BeditMessage parent;
 
-	GeditFileBrowserMessageSetEmblemPrivate *priv;
+	BeditFileBrowserMessageSetEmblemPrivate *priv;
 };
 
-struct _GeditFileBrowserMessageSetEmblemClass
+struct _BeditFileBrowserMessageSetEmblemClass
 {
-	GeditMessageClass parent_class;
+	BeditMessageClass parent_class;
 };
 
 GType gedit_file_browser_message_set_emblem_get_type (void) G_GNUC_CONST;

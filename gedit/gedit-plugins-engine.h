@@ -28,9 +28,9 @@
 G_BEGIN_DECLS
 
 #define GEDIT_TYPE_PLUGINS_ENGINE (gedit_plugins_engine_get_type ())
-G_DECLARE_FINAL_TYPE(GeditPluginsEngine, gedit_plugins_engine, GEDIT, PLUGINS_ENGINE, PeasEngine)
+G_DECLARE_FINAL_TYPE(BeditPluginsEngine, gedit_plugins_engine, GEDIT, PLUGINS_ENGINE, PeasEngine)
 
-GeditPluginsEngine	*gedit_plugins_engine_get_default	(void);
+BeditPluginsEngine	*gedit_plugins_engine_get_default	(void);
 
 G_END_DECLS
 

@@ -27,12 +27,12 @@
 #include "gedit-commands-private.h"
 #include "gedit-multi-notebook.h"
 
-struct _GeditNotebookPopupMenu
+struct _BeditNotebookPopupMenu
 {
 	GtkMenu parent_instance;
 
-	GeditWindow *window;
-	GeditTab *tab;
+	BeditWindow *window;
+	BeditTab *tab;
 
 	GSimpleActionGroup *action_group;
 };
@@ -47,7 +47,7 @@ enum
 
 static GParamSpec *properties[LAST_PROP];
 
-G_DEFINE_TYPE (GeditNotebookPopupMenu, gedit_notebook_popup_menu, GTK_TYPE_MENU)
+G_DEFINE_TYPE (BeditNotebookPopupMenu, gedit_notebook_popup_menu, GTK_TYPE_MENU)
 
 static void
 gedit_notebook_popup_menu_set_property (GObject      *object,
@@ -55,7 +55,7 @@ gedit_notebook_popup_menu_set_property (GObject      *object,
                                         const GValue *value,
                                         GParamSpec   *pspec)
 {
-	GeditNotebookPopupMenu *menu = GEDIT_NOTEBOOK_POPUP_MENU (object);
+	BeditNotebookPopupMenu *menu = GEDIT_NOTEBOOK_POPUP_MENU (object);
 
 	switch (prop_id)
 	{
@@ -79,7 +79,7 @@ gedit_notebook_popup_menu_get_property (GObject    *object,
                                         GValue     *value,
                                         GParamSpec *pspec)
 {
-	GeditNotebookPopupMenu *menu = GEDIT_NOTEBOOK_POPUP_MENU (object);
+	BeditNotebookPopupMenu *menu = GEDIT_NOTEBOOK_POPUP_MENU (object);
 
 	switch (prop_id)
 	{
@@ -98,10 +98,10 @@ gedit_notebook_popup_menu_get_property (GObject    *object,
 }
 
 static void
-update_sensitivity (GeditNotebookPopupMenu *menu)
+update_sensitivity (BeditNotebookPopupMenu *menu)
 {
-	GeditTabState state;
-	GeditMultiNotebook *mnb;
+	BeditTabState state;
+	BeditMultiNotebook *mnb;
 	GtkNotebook *notebook;
 	gint page_num;
 	gint n_pages;
@@ -146,7 +146,7 @@ update_sensitivity (GeditNotebookPopupMenu *menu)
 static void
 gedit_notebook_popup_menu_constructed (GObject *object)
 {
-	GeditNotebookPopupMenu *menu = GEDIT_NOTEBOOK_POPUP_MENU (object);
+	BeditNotebookPopupMenu *menu = GEDIT_NOTEBOOK_POPUP_MENU (object);
 
 	update_sensitivity (menu);
 
@@ -154,7 +154,7 @@ gedit_notebook_popup_menu_constructed (GObject *object)
 }
 
 static void
-gedit_notebook_popup_menu_class_init (GeditNotebookPopupMenuClass *klass)
+gedit_notebook_popup_menu_class_init (BeditNotebookPopupMenuClass *klass)
 {
 	GObjectClass *object_class = G_OBJECT_CLASS (klass);
 
@@ -165,14 +165,14 @@ gedit_notebook_popup_menu_class_init (GeditNotebookPopupMenuClass *klass)
 	properties[PROP_WINDOW] =
 		g_param_spec_object ("window",
 		                     "Window",
-		                     "The GeditWindow",
+		                     "The BeditWindow",
 		                     GEDIT_TYPE_WINDOW,
 		                     G_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY | G_PARAM_STATIC_STRINGS);
 
 	properties[PROP_TAB] =
 		g_param_spec_object ("tab",
 		                     "Tab",
-		                     "The GeditTab",
+		                     "The BeditTab",
 		                     GEDIT_TYPE_TAB,
 		                     G_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY | G_PARAM_STATIC_STRINGS);
 
@@ -184,8 +184,8 @@ on_move_left_activate (GSimpleAction *action,
                        GVariant      *parameter,
                        gpointer       user_data)
 {
-	GeditNotebookPopupMenu *menu = GEDIT_NOTEBOOK_POPUP_MENU (user_data);
-	GeditMultiNotebook *mnb;
+	BeditNotebookPopupMenu *menu = GEDIT_NOTEBOOK_POPUP_MENU (user_data);
+	BeditMultiNotebook *mnb;
 	GtkNotebook *notebook;
 	gint page_num;
 
@@ -207,8 +207,8 @@ on_move_right_activate (GSimpleAction *action,
                         GVariant      *parameter,
                         gpointer       user_data)
 {
-	GeditNotebookPopupMenu *menu = GEDIT_NOTEBOOK_POPUP_MENU (user_data);
-	GeditMultiNotebook *mnb;
+	BeditNotebookPopupMenu *menu = GEDIT_NOTEBOOK_POPUP_MENU (user_data);
+	BeditMultiNotebook *mnb;
 	GtkNotebook *notebook;
 	gint page_num;
 	gint n_pages;
@@ -232,7 +232,7 @@ on_move_to_new_window_activate (GSimpleAction *action,
                                 GVariant      *parameter,
                                 gpointer       user_data)
 {
-	GeditNotebookPopupMenu *menu = GEDIT_NOTEBOOK_POPUP_MENU (user_data);
+	BeditNotebookPopupMenu *menu = GEDIT_NOTEBOOK_POPUP_MENU (user_data);
 
 	_gedit_window_move_tab_to_new_window (menu->window, menu->tab);
 }
@@ -242,7 +242,7 @@ on_move_to_new_tab_group_activate (GSimpleAction *action,
                                    GVariant      *parameter,
                                    gpointer       user_data)
 {
-	GeditNotebookPopupMenu *menu = GEDIT_NOTEBOOK_POPUP_MENU (user_data);
+	BeditNotebookPopupMenu *menu = GEDIT_NOTEBOOK_POPUP_MENU (user_data);
 
 	_gedit_window_move_tab_to_new_tab_group (menu->window, menu->tab);
 }
@@ -252,7 +252,7 @@ on_close_activate (GSimpleAction *action,
                    GVariant      *parameter,
                    gpointer       user_data)
 {
-	GeditNotebookPopupMenu *menu = GEDIT_NOTEBOOK_POPUP_MENU (user_data);
+	BeditNotebookPopupMenu *menu = GEDIT_NOTEBOOK_POPUP_MENU (user_data);
 
 	_gedit_cmd_file_close_tab (menu->tab, menu->window);
 }
@@ -266,7 +266,7 @@ static GActionEntry action_entries[] = {
 };
 
 static void
-gedit_notebook_popup_menu_init (GeditNotebookPopupMenu *menu)
+gedit_notebook_popup_menu_init (BeditNotebookPopupMenu *menu)
 {
 	gtk_menu_shell_bind_model (GTK_MENU_SHELL (menu),
 	                           _gedit_app_get_notebook_menu (GEDIT_APP (g_application_get_default ())),
@@ -285,8 +285,8 @@ gedit_notebook_popup_menu_init (GeditNotebookPopupMenu *menu)
 }
 
 GtkWidget *
-gedit_notebook_popup_menu_new (GeditWindow *window,
-                               GeditTab    *tab)
+gedit_notebook_popup_menu_new (BeditWindow *window,
+                               BeditTab    *tab)
 {
 	return g_object_new (GEDIT_TYPE_NOTEBOOK_POPUP_MENU,
 	                     "window", window,

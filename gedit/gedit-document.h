@@ -30,64 +30,64 @@ G_BEGIN_DECLS
 
 #define GEDIT_TYPE_DOCUMENT (gedit_document_get_type())
 
-G_DECLARE_DERIVABLE_TYPE (GeditDocument, gedit_document, GEDIT, DOCUMENT, GtkSourceBuffer)
+G_DECLARE_DERIVABLE_TYPE (BeditDocument, gedit_document, GEDIT, DOCUMENT, GtkSourceBuffer)
 
-struct _GeditDocumentClass
+struct _BeditDocumentClass
 {
 	GtkSourceBufferClass parent_class;
 
 	/* Signals */
-	void (* cursor_moved)		(GeditDocument *document);
+	void (* cursor_moved)		(BeditDocument *document);
 
-	void (* load)			(GeditDocument *document);
+	void (* load)			(BeditDocument *document);
 
-	void (* loaded)			(GeditDocument *document);
+	void (* loaded)			(BeditDocument *document);
 
-	void (* save)			(GeditDocument *document);
+	void (* save)			(BeditDocument *document);
 
-	void (* saved)  		(GeditDocument *document);
+	void (* saved)  		(BeditDocument *document);
 };
 
-GeditDocument   *gedit_document_new				(void);
+BeditDocument   *gedit_document_new				(void);
 
-GtkSourceFile	*gedit_document_get_file			(GeditDocument       *doc);
+GtkSourceFile	*gedit_document_get_file			(BeditDocument       *doc);
 
-gchar		*gedit_document_get_uri_for_display		(GeditDocument       *doc);
+gchar		*gedit_document_get_uri_for_display		(BeditDocument       *doc);
 
-gchar		*gedit_document_get_short_name_for_display	(GeditDocument       *doc);
+gchar		*gedit_document_get_short_name_for_display	(BeditDocument       *doc);
 
-gchar		*gedit_document_get_content_type		(GeditDocument       *doc);
+gchar		*gedit_document_get_content_type		(BeditDocument       *doc);
 
-gchar		*gedit_document_get_mime_type			(GeditDocument       *doc);
+gchar		*gedit_document_get_mime_type			(BeditDocument       *doc);
 
-gboolean	 gedit_document_is_untouched			(GeditDocument       *doc);
+gboolean	 gedit_document_is_untouched			(BeditDocument       *doc);
 
-gboolean	 gedit_document_is_untitled			(GeditDocument       *doc);
+gboolean	 gedit_document_is_untitled			(BeditDocument       *doc);
 
-gboolean	 gedit_document_goto_line			(GeditDocument       *doc,
+gboolean	 gedit_document_goto_line			(BeditDocument       *doc,
 								gint                 line);
 
-gboolean	 gedit_document_goto_line_offset		(GeditDocument       *doc,
+gboolean	 gedit_document_goto_line_offset		(BeditDocument       *doc,
 								 gint                 line,
 								 gint                 line_offset);
 
-void 		 gedit_document_set_language			(GeditDocument       *doc,
+void 		 gedit_document_set_language			(BeditDocument       *doc,
 								 GtkSourceLanguage   *lang);
 GtkSourceLanguage
-		*gedit_document_get_language			(GeditDocument       *doc);
+		*gedit_document_get_language			(BeditDocument       *doc);
 
-gchar		*gedit_document_get_metadata			(GeditDocument       *doc,
+gchar		*gedit_document_get_metadata			(BeditDocument       *doc,
 								 const gchar         *key);
 
-void		 gedit_document_set_metadata			(GeditDocument       *doc,
+void		 gedit_document_set_metadata			(BeditDocument       *doc,
 								 const gchar         *first_key,
 								 ...);
 
-void		 gedit_document_set_search_context		(GeditDocument          *doc,
+void		 gedit_document_set_search_context		(BeditDocument          *doc,
 								 GtkSourceSearchContext *search_context);
 
 GtkSourceSearchContext *
-		 gedit_document_get_search_context		(GeditDocument       *doc);
+		 gedit_document_get_search_context		(BeditDocument       *doc);
 
 G_END_DECLS
 

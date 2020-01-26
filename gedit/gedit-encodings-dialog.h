@@ -27,7 +27,7 @@ G_BEGIN_DECLS
 
 #define GEDIT_TYPE_ENCODINGS_DIALOG (gedit_encodings_dialog_get_type())
 
-G_DECLARE_FINAL_TYPE (GeditEncodingsDialog, gedit_encodings_dialog, GEDIT, ENCODINGS_DIALOG, GtkDialog)
+G_DECLARE_FINAL_TYPE (BeditEncodingsDialog, gedit_encodings_dialog, GEDIT, ENCODINGS_DIALOG, GtkDialog)
 
 GtkWidget	*gedit_encodings_dialog_new		(void);
 

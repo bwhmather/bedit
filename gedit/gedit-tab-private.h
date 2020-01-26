@@ -26,38 +26,38 @@
 
 G_BEGIN_DECLS
 
-GeditTab	*_gedit_tab_new				(void);
+BeditTab	*_gedit_tab_new				(void);
 
-gchar 		*_gedit_tab_get_name			(GeditTab                *tab);
+gchar 		*_gedit_tab_get_name			(BeditTab                *tab);
 
-gchar 		*_gedit_tab_get_tooltip			(GeditTab                *tab);
+gchar 		*_gedit_tab_get_tooltip			(BeditTab                *tab);
 
-GdkPixbuf 	*_gedit_tab_get_icon			(GeditTab                *tab);
+GdkPixbuf 	*_gedit_tab_get_icon			(BeditTab                *tab);
 
-void		 _gedit_tab_load			(GeditTab                *tab,
+void		 _gedit_tab_load			(BeditTab                *tab,
 							 GFile                   *location,
 							 const GtkSourceEncoding *encoding,
 							 gint                     line_pos,
 							 gint                     column_pos,
 							 gboolean                 create);
 
-void		 _gedit_tab_load_stream			(GeditTab                *tab,
+void		 _gedit_tab_load_stream			(BeditTab                *tab,
 							 GInputStream            *location,
 							 const GtkSourceEncoding *encoding,
 							 gint                     line_pos,
 							 gint                     column_pos);
 
-void		 _gedit_tab_revert			(GeditTab                *tab);
+void		 _gedit_tab_revert			(BeditTab                *tab);
 
-void		 _gedit_tab_save_async			(GeditTab                *tab,
+void		 _gedit_tab_save_async			(BeditTab                *tab,
 							 GCancellable            *cancellable,
 							 GAsyncReadyCallback      callback,
 							 gpointer                 user_data);
 
-gboolean	 _gedit_tab_save_finish			(GeditTab                *tab,
+gboolean	 _gedit_tab_save_finish			(BeditTab                *tab,
 							 GAsyncResult            *result);
 
-void		 _gedit_tab_save_as_async		(GeditTab                 *tab,
+void		 _gedit_tab_save_as_async		(BeditTab                 *tab,
 							 GFile                    *location,
 							 const GtkSourceEncoding  *encoding,
 							 GtkSourceNewlineType      newline_type,
@@ -66,15 +66,15 @@ void		 _gedit_tab_save_as_async		(GeditTab                 *tab,
 							 GAsyncReadyCallback       callback,
 							 gpointer                  user_data);
 
-void		 _gedit_tab_print			(GeditTab                 *tab);
+void		 _gedit_tab_print			(BeditTab                 *tab);
 
-void		 _gedit_tab_mark_for_closing		(GeditTab                 *tab);
+void		 _gedit_tab_mark_for_closing		(BeditTab                 *tab);
 
-gboolean	 _gedit_tab_get_can_close		(GeditTab                 *tab);
+gboolean	 _gedit_tab_get_can_close		(BeditTab                 *tab);
 
-GeditViewFrame	*_gedit_tab_get_view_frame		(GeditTab                 *tab);
+BeditViewFrame	*_gedit_tab_get_view_frame		(BeditTab                 *tab);
 
-void		 _gedit_tab_set_network_available	(GeditTab	     *tab,
+void		 _gedit_tab_set_network_available	(BeditTab	     *tab,
 							 gboolean	     enable);
 
 G_END_DECLS

@@ -34,22 +34,22 @@ enum
 	PROP_MARKUP,
 };
 
-struct _GeditFileBrowserMessageSetMarkupPrivate
+struct _BeditFileBrowserMessageSetMarkupPrivate
 {
 	gchar *id;
 	gchar *markup;
 };
 
-G_DEFINE_TYPE_EXTENDED (GeditFileBrowserMessageSetMarkup,
+G_DEFINE_TYPE_EXTENDED (BeditFileBrowserMessageSetMarkup,
                         gedit_file_browser_message_set_markup,
                         GEDIT_TYPE_MESSAGE,
                         0,
-                        G_ADD_PRIVATE (GeditFileBrowserMessageSetMarkup))
+                        G_ADD_PRIVATE (BeditFileBrowserMessageSetMarkup))
 
 static void
 gedit_file_browser_message_set_markup_finalize (GObject *obj)
 {
-	GeditFileBrowserMessageSetMarkup *msg = GEDIT_FILE_BROWSER_MESSAGE_SET_MARKUP (obj);
+	BeditFileBrowserMessageSetMarkup *msg = GEDIT_FILE_BROWSER_MESSAGE_SET_MARKUP (obj);
 
 	g_free (msg->priv->id);
 	g_free (msg->priv->markup);
@@ -63,7 +63,7 @@ gedit_file_browser_message_set_markup_get_property (GObject    *obj,
                                                     GValue     *value,
                                                     GParamSpec *pspec)
 {
-	GeditFileBrowserMessageSetMarkup *msg;
+	BeditFileBrowserMessageSetMarkup *msg;
 
 	msg = GEDIT_FILE_BROWSER_MESSAGE_SET_MARKUP (obj);
 
@@ -84,7 +84,7 @@ gedit_file_browser_message_set_markup_set_property (GObject      *obj,
                                                     GValue const *value,
                                                     GParamSpec   *pspec)
 {
-	GeditFileBrowserMessageSetMarkup *msg;
+	BeditFileBrowserMessageSetMarkup *msg;
 
 	msg = GEDIT_FILE_BROWSER_MESSAGE_SET_MARKUP (obj);
 
@@ -106,7 +106,7 @@ gedit_file_browser_message_set_markup_set_property (GObject      *obj,
 }
 
 static void
-gedit_file_browser_message_set_markup_class_init (GeditFileBrowserMessageSetMarkupClass *klass)
+gedit_file_browser_message_set_markup_class_init (BeditFileBrowserMessageSetMarkupClass *klass)
 {
 	GObjectClass *object_class = G_OBJECT_CLASS(klass);
 
@@ -137,7 +137,7 @@ gedit_file_browser_message_set_markup_class_init (GeditFileBrowserMessageSetMark
 }
 
 static void
-gedit_file_browser_message_set_markup_init (GeditFileBrowserMessageSetMarkup *message)
+gedit_file_browser_message_set_markup_init (BeditFileBrowserMessageSetMarkup *message)
 {
 	message->priv = gedit_file_browser_message_set_markup_get_instance_private (message);
 }

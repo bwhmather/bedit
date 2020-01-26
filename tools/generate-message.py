@@ -548,14 +548,14 @@ class Message:
 
         self._write('struct _%s', self.cobj)
         self._write('{')
-        self._write('\tGeditMessage parent;')
+        self._write('\tBeditMessage parent;')
         self._write()
         self._write('\t%s *priv;', thepriv)
         self._write('};')
         self._write()
         self._write('struct _%s', self.cclass)
         self._write('{')
-        self._write('\tGeditMessageClass parent_class;')
+        self._write('\tBeditMessageClass parent_class;')
         self._write('};')
         self._write()
 

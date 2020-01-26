@@ -34,21 +34,21 @@ enum
 	PROP_EXTENSION,
 };
 
-struct _GeditFileBrowserMessageExtendContextMenuPrivate
+struct _BeditFileBrowserMessageExtendContextMenuPrivate
 {
-	GeditMenuExtension *extension;
+	BeditMenuExtension *extension;
 };
 
-G_DEFINE_TYPE_EXTENDED (GeditFileBrowserMessageExtendContextMenu,
+G_DEFINE_TYPE_EXTENDED (BeditFileBrowserMessageExtendContextMenu,
                         gedit_file_browser_message_extend_context_menu,
                         GEDIT_TYPE_MESSAGE,
                         0,
-                        G_ADD_PRIVATE (GeditFileBrowserMessageExtendContextMenu))
+                        G_ADD_PRIVATE (BeditFileBrowserMessageExtendContextMenu))
 
 static void
 gedit_file_browser_message_extend_context_menu_finalize (GObject *obj)
 {
-	GeditFileBrowserMessageExtendContextMenu *msg = GEDIT_FILE_BROWSER_MESSAGE_EXTEND_CONTEXT_MENU (obj);
+	BeditFileBrowserMessageExtendContextMenu *msg = GEDIT_FILE_BROWSER_MESSAGE_EXTEND_CONTEXT_MENU (obj);
 
 	if (msg->priv->extension)
 	{
@@ -64,7 +64,7 @@ gedit_file_browser_message_extend_context_menu_get_property (GObject    *obj,
                                                              GValue     *value,
                                                              GParamSpec *pspec)
 {
-	GeditFileBrowserMessageExtendContextMenu *msg;
+	BeditFileBrowserMessageExtendContextMenu *msg;
 
 	msg = GEDIT_FILE_BROWSER_MESSAGE_EXTEND_CONTEXT_MENU (obj);
 
@@ -82,7 +82,7 @@ gedit_file_browser_message_extend_context_menu_set_property (GObject      *obj,
                                                              GValue const *value,
                                                              GParamSpec   *pspec)
 {
-	GeditFileBrowserMessageExtendContextMenu *msg;
+	BeditFileBrowserMessageExtendContextMenu *msg;
 
 	msg = GEDIT_FILE_BROWSER_MESSAGE_EXTEND_CONTEXT_MENU (obj);
 
@@ -101,7 +101,7 @@ gedit_file_browser_message_extend_context_menu_set_property (GObject      *obj,
 }
 
 static void
-gedit_file_browser_message_extend_context_menu_class_init (GeditFileBrowserMessageExtendContextMenuClass *klass)
+gedit_file_browser_message_extend_context_menu_class_init (BeditFileBrowserMessageExtendContextMenuClass *klass)
 {
 	GObjectClass *object_class = G_OBJECT_CLASS(klass);
 
@@ -122,7 +122,7 @@ gedit_file_browser_message_extend_context_menu_class_init (GeditFileBrowserMessa
 }
 
 static void
-gedit_file_browser_message_extend_context_menu_init (GeditFileBrowserMessageExtendContextMenu *message)
+gedit_file_browser_message_extend_context_menu_init (BeditFileBrowserMessageExtendContextMenu *message)
 {
 	message->priv = gedit_file_browser_message_extend_context_menu_get_instance_private (message);
 }

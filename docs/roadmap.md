@@ -27,7 +27,7 @@ Make the gedit source code more re-usable
 
 **Status**: in progress
 
-https://wiki.gnome.org/Apps/Gedit/ReusableCode
+https://wiki.gnome.org/Apps/Bedit/ReusableCode
 
 Recently done:
 - gedit 3.35: start to use the [Tepl](https://wiki.gnome.org/Projects/Tepl)

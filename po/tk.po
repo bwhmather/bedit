@@ -19,28 +19,28 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: ../data/GNOME_Gedit.server.in.in.h:1
-msgid "Gedit View"
-msgstr "Gedit Görnöşi"
+#: ../data/GNOME_Bedit.server.in.in.h:1
+msgid "Bedit View"
+msgstr "Bedit Görnöşi"
 
-#: ../data/GNOME_Gedit.server.in.in.h:2
-msgid "Gedit View."
-msgstr "Gedit Görnöşi."
+#: ../data/GNOME_Bedit.server.in.in.h:2
+msgid "Bedit View."
+msgstr "Bedit Görnöşi."
 
-#: ../data/GNOME_Gedit.server.in.in.h:3
-msgid "Gedit viewer factory"
-msgstr "Gedit namaýyşçysy karhanasy"
+#: ../data/GNOME_Bedit.server.in.in.h:3
+msgid "Bedit viewer factory"
+msgstr "Bedit namaýyşçysy karhanasy"
 
-#: ../data/GNOME_Gedit.server.in.in.h:4
+#: ../data/GNOME_Bedit.server.in.in.h:4
 #: ../plugins/taglist/HTML.tags.xml.in.h:214
 msgid "Source"
 msgstr "Çeşme"
 
-#: ../data/GNOME_Gedit.server.in.in.h:5
+#: ../data/GNOME_Bedit.server.in.in.h:5
 msgid "gedit application"
 msgstr "gedit programi"
 
-#: ../data/GNOME_Gedit.server.in.in.h:6
+#: ../data/GNOME_Bedit.server.in.in.h:6
 msgid "gedit automation factory"
 msgstr "gedit otomasýon karhanasy"
 
@@ -215,14 +215,14 @@ msgstr "Ýakynda Ullanylan iň kop Faýllar"
 msgid ""
 "Maximum number of actions that gedit will be able to undo or redo. Use \"-1"
 "\" for unlimited number of actions."
-msgstr "Geditiň izine alip we ýene edip biljek emellerniň iň kop sany."
+msgstr "Beditiň izine alip we ýene edip biljek emellerniň iň kop sany."
 
 #: ../data/gedit.schemas.in.h:33
 #, fuzzy
 msgid ""
 "Maximum number of actions that gedit will be able to undo or redo. Use \"-1"
 "\" for unlimited number of actions. Deprecated since 2.12.0"
-msgstr "Geditiň izine alip we ýene edip biljek emellerniň iň kop sany."
+msgstr "Beditiň izine alip we ýene edip biljek emellerniň iň kop sany."
 
 #. Translators: This is the Editor Font.
 #. This is a Pango font
@@ -249,7 +249,7 @@ msgid ""
 "Number of minutes after which gedit will automatically save modified files. "
 "This will only take effect if the \"Auto Save\" option is turned on."
 msgstr ""
-"Gedit faýllary üýtgemekinden näçe minut soň otomatik gaýd etsin. Bu eger "
+"Bedit faýllary üýtgemekinden näçe minut soň otomatik gaýd etsin. Bu eger "
 "\"Auto Save\" işeldilen bölsa eser goyar."
 
 #: ../data/gedit.schemas.in.h:45
@@ -314,7 +314,7 @@ msgid ""
 "file. \"CURRENT\" is the current locale encoding. Only recognized encodings "
 "are used."
 msgstr ""
-"Gedit bir faýlyň kodlemesini otomatik aňlamak üçin ullanýan tertiblenen "
+"Bedit bir faýlyň kodlemesini otomatik aňlamak üçin ullanýan tertiblenen "
 "ködleme listi. \"CURRENT\" häzirki ýerleşdirim kodlemedir. Diňe taniş "
 "ködlemeler ullanylar."
 
@@ -467,7 +467,7 @@ msgid ""
 "interval. You can set the time interval with the \"Auto Save Interval\" "
 "option."
 msgstr ""
-"Geditiň üýgetedik faýllary bir zamandan soň otomatik gaýd edişi. Siz zaman "
+"Beditiň üýgetedik faýllary bir zamandan soň otomatik gaýd edişi. Siz zaman "
 "aralygyny \"Otomatik Gaýd etmegiň Aralygy\" seçgisi bilen düzip bilersiňiz."
 
 #: ../data/gedit.schemas.in.h:88
@@ -475,46 +475,46 @@ msgid ""
 "Whether gedit should create backup copies for the files it saves. You can "
 "set the backup file extension with the \"Backup Copy Extension\" option."
 msgstr ""
-"Geditiň gaýd eden faýllary üçin zapas bejerşi. Siz zapas faýllarynyň ??? "
+"Beditiň gaýd eden faýllary üçin zapas bejerşi. Siz zapas faýllarynyň ??? "
 "\"Zapas Nusga ???\" seçgisi bilen düzip bilersiňiz."
 
 #: ../data/gedit.schemas.in.h:89
 msgid "Whether gedit should display line numbers in the editing area."
-msgstr "Geditiň hat sanlaryny edit meýdançasynda görkezşi."
+msgstr "Beditiň hat sanlaryny edit meýdançasynda görkezşi."
 
 #: ../data/gedit.schemas.in.h:90
 msgid "Whether gedit should display the right margin in the editing area."
-msgstr "Geditiň sag gabdaly edit meýdançasynda görkezşi."
+msgstr "Beditiň sag gabdaly edit meýdançasynda görkezşi."
 
 #: ../data/gedit.schemas.in.h:91
 msgid "Whether gedit should enable auto indentation."
-msgstr "Geditiň otomatik gaýşartmaky mümkin edşi."
+msgstr "Beditiň otomatik gaýşartmaky mümkin edşi."
 
 #: ../data/gedit.schemas.in.h:92
 msgid "Whether gedit should enable syntax highlighting."
-msgstr "Geditiň sintaksy ýagtylamaky mümkin edşi."
+msgstr "Beditiň sintaksy ýagtylamaky mümkin edşi."
 
 #: ../data/gedit.schemas.in.h:93
 #, fuzzy
 msgid "Whether gedit should highlight matching bracket."
-msgstr "Geditiň sintaksy ýagtylamaky mümkin edşi."
+msgstr "Beditiň sintaksy ýagtylamaky mümkin edşi."
 
 #: ../data/gedit.schemas.in.h:94
 #, fuzzy
 msgid "Whether gedit should highlight the current line."
-msgstr "Geditiň sened aplananda syntaks ýagtylygny çaplaşi."
+msgstr "Beditiň sened aplananda syntaks ýagtylygny çaplaşi."
 
 #: ../data/gedit.schemas.in.h:95
 msgid "Whether gedit should include a document header when printing documents."
-msgstr "Geditiň çapda sened başlygyny girişdirişi."
+msgstr "Beditiň çapda sened başlygyny girişdirişi."
 
 #: ../data/gedit.schemas.in.h:96
 msgid "Whether gedit should insert spaces instead of tabs."
-msgstr "Geditiň täb karakterlerniň ýerine seleň girdirşi."
+msgstr "Beditiň täb karakterlerniň ýerine seleň girdirşi."
 
 #: ../data/gedit.schemas.in.h:97
 msgid "Whether gedit should print syntax highlighting when printing documents."
-msgstr "Geditiň sened aplananda syntaks ýagtylygny çaplaşi."
+msgstr "Beditiň sened aplananda syntaks ýagtylygny çaplaşi."
 
 #: ../data/gedit.schemas.in.h:98
 msgid ""
@@ -903,7 +903,7 @@ msgstr "Ýagtylamak _modi:"
 #: ../gedit/dialogs/gedit-preferences.glade2.h:23
 #, fuzzy
 msgid "Highlight matching _bracket"
-msgstr "Geditiň sintaksy ýagtylamaky mümkin edşi."
+msgstr "Beditiň sintaksy ýagtylamaky mümkin edşi."
 
 #: ../gedit/dialogs/gedit-preferences.glade2.h:24
 msgid "Insert _spaces instead of tabs"
@@ -2406,7 +2406,7 @@ msgstr ""
 
 #: ../gedit/gedit2.c:86
 msgid "Quit an existing instance of gedit"
-msgstr "Geditiň bir bar durumyndan çik"
+msgstr "Beditiň bir bar durumyndan çik"
 
 #: ../gedit/gedit2.c:89
 msgid "Create a new toplevel window in an existing instance of gedit"

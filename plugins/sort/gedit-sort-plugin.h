@@ -26,25 +26,25 @@
 G_BEGIN_DECLS
 
 #define GEDIT_TYPE_SORT_PLUGIN		(gedit_sort_plugin_get_type ())
-#define GEDIT_SORT_PLUGIN(o)		(G_TYPE_CHECK_INSTANCE_CAST ((o), GEDIT_TYPE_SORT_PLUGIN, GeditSortPlugin))
-#define GEDIT_SORT_PLUGIN_CLASS(k)	(G_TYPE_CHECK_CLASS_CAST((k), GEDIT_TYPE_SORT_PLUGIN, GeditSortPluginClass))
+#define GEDIT_SORT_PLUGIN(o)		(G_TYPE_CHECK_INSTANCE_CAST ((o), GEDIT_TYPE_SORT_PLUGIN, BeditSortPlugin))
+#define GEDIT_SORT_PLUGIN_CLASS(k)	(G_TYPE_CHECK_CLASS_CAST((k), GEDIT_TYPE_SORT_PLUGIN, BeditSortPluginClass))
 #define GEDIT_IS_SORT_PLUGIN(o)		(G_TYPE_CHECK_INSTANCE_TYPE ((o), GEDIT_TYPE_SORT_PLUGIN))
 #define GEDIT_IS_SORT_PLUGIN_CLASS(k)	(G_TYPE_CHECK_CLASS_TYPE ((k), GEDIT_TYPE_SORT_PLUGIN))
-#define GEDIT_SORT_PLUGIN_GET_CLASS(o)	(G_TYPE_INSTANCE_GET_CLASS ((o), GEDIT_TYPE_SORT_PLUGIN, GeditSortPluginClass))
+#define GEDIT_SORT_PLUGIN_GET_CLASS(o)	(G_TYPE_INSTANCE_GET_CLASS ((o), GEDIT_TYPE_SORT_PLUGIN, BeditSortPluginClass))
 
-typedef struct _GeditSortPlugin		GeditSortPlugin;
-typedef struct _GeditSortPluginPrivate	GeditSortPluginPrivate;
-typedef struct _GeditSortPluginClass	GeditSortPluginClass;
+typedef struct _BeditSortPlugin		BeditSortPlugin;
+typedef struct _BeditSortPluginPrivate	BeditSortPluginPrivate;
+typedef struct _BeditSortPluginClass	BeditSortPluginClass;
 
-struct _GeditSortPlugin
+struct _BeditSortPlugin
 {
 	PeasExtensionBase parent;
 
 	/*< private >*/
-	GeditSortPluginPrivate *priv;
+	BeditSortPluginPrivate *priv;
 };
 
-struct _GeditSortPluginClass
+struct _BeditSortPluginClass
 {
 	PeasExtensionBaseClass parent_class;
 };

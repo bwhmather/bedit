@@ -37,8 +37,8 @@ _gedit_cmd_view_focus_active (GSimpleAction *action,
                               GVariant      *state,
                               gpointer       user_data)
 {
-	GeditView *active_view;
-	GeditWindow *window = GEDIT_WINDOW (user_data);
+	BeditView *active_view;
+	BeditWindow *window = GEDIT_WINDOW (user_data);
 
 	gedit_debug (DEBUG_COMMANDS);
 
@@ -55,7 +55,7 @@ _gedit_cmd_view_toggle_side_panel (GSimpleAction *action,
                                    GVariant      *state,
                                    gpointer       user_data)
 {
-	GeditWindow *window = GEDIT_WINDOW (user_data);
+	BeditWindow *window = GEDIT_WINDOW (user_data);
 	GtkWidget *panel;
 	gboolean visible;
 
@@ -79,7 +79,7 @@ _gedit_cmd_view_toggle_bottom_panel (GSimpleAction *action,
                                      GVariant      *state,
                                      gpointer       user_data)
 {
-	GeditWindow *window = GEDIT_WINDOW (user_data);
+	BeditWindow *window = GEDIT_WINDOW (user_data);
 	GtkWidget *panel;
 	gboolean visible;
 
@@ -103,7 +103,7 @@ _gedit_cmd_view_toggle_fullscreen_mode (GSimpleAction *action,
                                         GVariant      *state,
                                         gpointer       user_data)
 {
-	GeditWindow *window = GEDIT_WINDOW (user_data);
+	BeditWindow *window = GEDIT_WINDOW (user_data);
 
 	gedit_debug (DEBUG_COMMANDS);
 
@@ -126,11 +126,11 @@ _gedit_cmd_view_leave_fullscreen_mode (GSimpleAction *action,
 }
 
 static void
-on_language_selected (GeditHighlightModeSelector *sel,
+on_language_selected (BeditHighlightModeSelector *sel,
                       GtkSourceLanguage          *language,
-                      GeditWindow                *window)
+                      BeditWindow                *window)
 {
-	GeditDocument *doc;
+	BeditDocument *doc;
 
 	doc = gedit_window_get_active_document (window);
 	if (doc)
@@ -146,8 +146,8 @@ _gedit_cmd_view_highlight_mode (GSimpleAction *action,
 {
 	GtkWindow *window = GTK_WINDOW (user_data);
 	GtkWidget *dlg;
-	GeditHighlightModeSelector *sel;
-	GeditDocument *doc;
+	BeditHighlightModeSelector *sel;
+	BeditDocument *doc;
 
 	dlg = gedit_highlight_mode_dialog_new (window);
 	sel = gedit_highlight_mode_dialog_get_selector (GEDIT_HIGHLIGHT_MODE_DIALOG (dlg));

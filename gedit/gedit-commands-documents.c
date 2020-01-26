@@ -37,7 +37,7 @@ _gedit_cmd_documents_previous_document (GSimpleAction *action,
                                         GVariant      *parameter,
                                         gpointer       user_data)
 {
-	GeditWindow *window = GEDIT_WINDOW (user_data);
+	BeditWindow *window = GEDIT_WINDOW (user_data);
 	GtkNotebook *notebook;
 
 	gedit_debug (DEBUG_COMMANDS);
@@ -51,7 +51,7 @@ _gedit_cmd_documents_next_document (GSimpleAction *action,
                                     GVariant      *parameter,
                                     gpointer       user_data)
 {
-	GeditWindow *window = GEDIT_WINDOW (user_data);
+	BeditWindow *window = GEDIT_WINDOW (user_data);
 	GtkNotebook *notebook;
 
 	gedit_debug (DEBUG_COMMANDS);
@@ -65,8 +65,8 @@ _gedit_cmd_documents_move_to_new_window (GSimpleAction *action,
                                          GVariant      *parameter,
                                          gpointer       user_data)
 {
-	GeditWindow *window = GEDIT_WINDOW (user_data);
-	GeditTab *tab;
+	BeditWindow *window = GEDIT_WINDOW (user_data);
+	BeditTab *tab;
 
 	gedit_debug (DEBUG_COMMANDS);
 

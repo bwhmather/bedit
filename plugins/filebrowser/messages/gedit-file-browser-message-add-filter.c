@@ -34,23 +34,23 @@ enum
 	PROP_ID,
 };
 
-struct _GeditFileBrowserMessageAddFilterPrivate
+struct _BeditFileBrowserMessageAddFilterPrivate
 {
 	gchar *object_path;
 	gchar *method;
 	guint id;
 };
 
-G_DEFINE_TYPE_EXTENDED (GeditFileBrowserMessageAddFilter,
+G_DEFINE_TYPE_EXTENDED (BeditFileBrowserMessageAddFilter,
                         gedit_file_browser_message_add_filter,
                         GEDIT_TYPE_MESSAGE,
                         0,
-                        G_ADD_PRIVATE (GeditFileBrowserMessageAddFilter))
+                        G_ADD_PRIVATE (BeditFileBrowserMessageAddFilter))
 
 static void
 gedit_file_browser_message_add_filter_finalize (GObject *obj)
 {
-	GeditFileBrowserMessageAddFilter *msg = GEDIT_FILE_BROWSER_MESSAGE_ADD_FILTER (obj);
+	BeditFileBrowserMessageAddFilter *msg = GEDIT_FILE_BROWSER_MESSAGE_ADD_FILTER (obj);
 
 	g_free (msg->priv->object_path);
 	g_free (msg->priv->method);
@@ -64,7 +64,7 @@ gedit_file_browser_message_add_filter_get_property (GObject    *obj,
                                                     GValue     *value,
                                                     GParamSpec *pspec)
 {
-	GeditFileBrowserMessageAddFilter *msg;
+	BeditFileBrowserMessageAddFilter *msg;
 
 	msg = GEDIT_FILE_BROWSER_MESSAGE_ADD_FILTER (obj);
 
@@ -88,7 +88,7 @@ gedit_file_browser_message_add_filter_set_property (GObject      *obj,
                                                     GValue const *value,
                                                     GParamSpec   *pspec)
 {
-	GeditFileBrowserMessageAddFilter *msg;
+	BeditFileBrowserMessageAddFilter *msg;
 
 	msg = GEDIT_FILE_BROWSER_MESSAGE_ADD_FILTER (obj);
 
@@ -113,7 +113,7 @@ gedit_file_browser_message_add_filter_set_property (GObject      *obj,
 }
 
 static void
-gedit_file_browser_message_add_filter_class_init (GeditFileBrowserMessageAddFilterClass *klass)
+gedit_file_browser_message_add_filter_class_init (BeditFileBrowserMessageAddFilterClass *klass)
 {
 	GObjectClass *object_class = G_OBJECT_CLASS(klass);
 
@@ -156,7 +156,7 @@ gedit_file_browser_message_add_filter_class_init (GeditFileBrowserMessageAddFilt
 }
 
 static void
-gedit_file_browser_message_add_filter_init (GeditFileBrowserMessageAddFilter *message)
+gedit_file_browser_message_add_filter_init (BeditFileBrowserMessageAddFilter *message)
 {
 	message->priv = gedit_file_browser_message_add_filter_get_instance_private (message);
 }

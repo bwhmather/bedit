@@ -24,12 +24,12 @@
 #     Copyrignt (C), 2005 Raphaël Slinckx
 
 import gi
-gi.require_version('Gedit', '3.0')
+gi.require_version('Bedit', '3.0')
 gi.require_version('Peas', '1.0')
 gi.require_version('PeasGtk', '1.0')
 gi.require_version('Gtk', '3.0')
 
-from gi.repository import GObject, Gtk, Gedit, Peas, PeasGtk
+from gi.repository import GObject, Gtk, Bedit, Peas, PeasGtk
 from .console import PythonConsole
 from .config import PythonConsoleConfigWidget
 
@@ -41,23 +41,23 @@ try:
 except:
     _ = lambda s: s
 
-class PythonConsolePlugin(GObject.Object, Gedit.WindowActivatable, PeasGtk.Configurable):
+class PythonConsolePlugin(GObject.Object, Bedit.WindowActivatable, PeasGtk.Configurable):
     __gtype_name__ = "PythonConsolePlugin"
 
-    window = GObject.Property(type=Gedit.Window)
+    window = GObject.Property(type=Bedit.Window)
 
     def __init__(self):
         GObject.Object.__init__(self)
 
     def do_activate(self):
         self._console = PythonConsole(namespace = {'__builtins__' : __builtins__,
-                                                   'gedit' : Gedit,
+                                                   'gedit' : Bedit,
                                                    'window' : self.window})
         self._console.eval('print("You can access the main window through ' \
                            '\'window\' :\\n%s" % window)', False)
         bottom = self.window.get_bottom_panel()
         self._console.show_all()
-        bottom.add_titled(self._console, "GeditPythonConsolePanel", _('Python Console'))
+        bottom.add_titled(self._console, "BeditPythonConsolePanel", _('Python Console'))
 
     def do_deactivate(self):
         self._console.stop()

@@ -28,25 +28,25 @@
 G_BEGIN_DECLS
 
 #define GEDIT_TYPE_SPELL_PLUGIN		(gedit_spell_plugin_get_type ())
-#define GEDIT_SPELL_PLUGIN(o)		(G_TYPE_CHECK_INSTANCE_CAST ((o), GEDIT_TYPE_SPELL_PLUGIN, GeditSpellPlugin))
-#define GEDIT_SPELL_PLUGIN_CLASS(k)	(G_TYPE_CHECK_CLASS_CAST((k), GEDIT_TYPE_SPELL_PLUGIN, GeditSpellPluginClass))
+#define GEDIT_SPELL_PLUGIN(o)		(G_TYPE_CHECK_INSTANCE_CAST ((o), GEDIT_TYPE_SPELL_PLUGIN, BeditSpellPlugin))
+#define GEDIT_SPELL_PLUGIN_CLASS(k)	(G_TYPE_CHECK_CLASS_CAST((k), GEDIT_TYPE_SPELL_PLUGIN, BeditSpellPluginClass))
 #define GEDIT_IS_SPELL_PLUGIN(o)	(G_TYPE_CHECK_INSTANCE_TYPE ((o), GEDIT_TYPE_SPELL_PLUGIN))
 #define GEDIT_IS_SPELL_PLUGIN_CLASS(k)	(G_TYPE_CHECK_CLASS_TYPE ((k), GEDIT_TYPE_SPELL_PLUGIN))
-#define GEDIT_SPELL_PLUGIN_GET_CLASS(o)	(G_TYPE_INSTANCE_GET_CLASS ((o), GEDIT_TYPE_SPELL_PLUGIN, GeditSpellPluginClass))
+#define GEDIT_SPELL_PLUGIN_GET_CLASS(o)	(G_TYPE_INSTANCE_GET_CLASS ((o), GEDIT_TYPE_SPELL_PLUGIN, BeditSpellPluginClass))
 
-typedef struct _GeditSpellPlugin	GeditSpellPlugin;
-typedef struct _GeditSpellPluginPrivate	GeditSpellPluginPrivate;
-typedef struct _GeditSpellPluginClass	GeditSpellPluginClass;
+typedef struct _BeditSpellPlugin	BeditSpellPlugin;
+typedef struct _BeditSpellPluginPrivate	BeditSpellPluginPrivate;
+typedef struct _BeditSpellPluginClass	BeditSpellPluginClass;
 
-struct _GeditSpellPlugin
+struct _BeditSpellPlugin
 {
 	PeasExtensionBase parent_instance;
 
 	/*< private >*/
-	GeditSpellPluginPrivate *priv;
+	BeditSpellPluginPrivate *priv;
 };
 
-struct _GeditSpellPluginClass
+struct _BeditSpellPluginClass
 {
 	PeasExtensionBaseClass parent_class;
 };

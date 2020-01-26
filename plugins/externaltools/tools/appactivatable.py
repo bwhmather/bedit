@@ -1,5 +1,5 @@
 # -*- coding: UTF-8 -*-
-#    Gedit External Tools plugin
+#    Bedit External Tools plugin
 #    Copyright (C) 2005-2006  Steve Frécinaux <steve@istique.net>
 #
 #    This program is free software; you can redistribute it and/or modify
@@ -16,7 +16,7 @@
 #    along with this program; if not, write to the Free Software
 #    Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 
-from gi.repository import GLib, Gio, GObject, Gtk, Gdk, Gedit
+from gi.repository import GLib, Gio, GObject, Gtk, Gdk, Bedit
 from .library import ToolLibrary
 from .manager import Manager
 import os
@@ -75,10 +75,10 @@ class ToolMenu(object):
 
 
 # FIXME: restore the launch of the manager on configure using PeasGtk.Configurable
-class AppActivatable(GObject.Object, Gedit.AppActivatable):
+class AppActivatable(GObject.Object, Bedit.AppActivatable):
     __gtype_name__ = "ExternalToolsAppActivatable"
 
-    app = GObject.Property(type=Gedit.App)
+    app = GObject.Property(type=Bedit.App)
 
     def __init__(self):
         GObject.Object.__init__(self)

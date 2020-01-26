@@ -33,12 +33,12 @@
 #define DATADIR SAVE_DATADIR
 #undef SAVE_DATADIR
 
-struct _GeditAppWin32
+struct _BeditAppWin32
 {
-	GeditApp parent_instance;
+	BeditApp parent_instance;
 };
 
-G_DEFINE_TYPE (GeditAppWin32, gedit_app_win32, GEDIT_TYPE_APP)
+G_DEFINE_TYPE (BeditAppWin32, gedit_app_win32, GEDIT_TYPE_APP)
 
 static void
 gedit_app_win32_finalize (GObject *object)
@@ -47,7 +47,7 @@ gedit_app_win32_finalize (GObject *object)
 }
 
 static gchar *
-gedit_app_win32_help_link_id_impl (GeditApp    *app,
+gedit_app_win32_help_link_id_impl (BeditApp    *app,
                                    const gchar *name,
                                    const gchar *link_id)
 {
@@ -123,11 +123,11 @@ gedit_app_win32_startup (GApplication *application)
 }
 
 static void
-gedit_app_win32_class_init (GeditAppWin32Class *klass)
+gedit_app_win32_class_init (BeditAppWin32Class *klass)
 {
 	GObjectClass *object_class = G_OBJECT_CLASS (klass);
 	GApplicationClass *gapp_class = G_APPLICATION_CLASS (klass);
-	GeditAppClass *app_class = GEDIT_APP_CLASS (klass);
+	BeditAppClass *app_class = GEDIT_APP_CLASS (klass);
 
 	object_class->finalize = gedit_app_win32_finalize;
 
@@ -137,7 +137,7 @@ gedit_app_win32_class_init (GeditAppWin32Class *klass)
 }
 
 static void
-gedit_app_win32_init (GeditAppWin32 *self)
+gedit_app_win32_init (BeditAppWin32 *self)
 {
 }
 

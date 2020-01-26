@@ -30,32 +30,32 @@
 G_BEGIN_DECLS
 
 /* Do nothing if URI does not exist */
-void		 gedit_commands_load_location		(GeditWindow             *window,
+void		 gedit_commands_load_location		(BeditWindow             *window,
 							 GFile                   *location,
 							 const GtkSourceEncoding *encoding,
 							 gint                     line_pos,
 							 gint                     column_pos);
 
 /* Ignore non-existing URIs */
-GSList		*gedit_commands_load_locations		(GeditWindow             *window,
+GSList		*gedit_commands_load_locations		(BeditWindow             *window,
 							 const GSList            *locations,
 							 const GtkSourceEncoding *encoding,
 							 gint                     line_pos,
 							 gint                     column_pos) G_GNUC_WARN_UNUSED_RESULT;
 
-void		 gedit_commands_save_document		(GeditWindow         *window,
-                                                         GeditDocument       *document);
+void		 gedit_commands_save_document		(BeditWindow         *window,
+                                                         BeditDocument       *document);
 
-void		 gedit_commands_save_document_async	(GeditDocument       *document,
-							 GeditWindow         *window,
+void		 gedit_commands_save_document_async	(BeditDocument       *document,
+							 BeditWindow         *window,
 							 GCancellable        *cancellable,
 							 GAsyncReadyCallback  callback,
 							 gpointer             user_data);
 
-gboolean	 gedit_commands_save_document_finish	(GeditDocument       *document,
+gboolean	 gedit_commands_save_document_finish	(BeditDocument       *document,
 							 GAsyncResult        *result);
 
-void		 gedit_commands_save_all_documents 	(GeditWindow         *window);
+void		 gedit_commands_save_all_documents 	(BeditWindow         *window);
 
 G_END_DECLS
 

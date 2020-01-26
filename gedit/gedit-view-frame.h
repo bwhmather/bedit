@@ -28,17 +28,17 @@
 G_BEGIN_DECLS
 
 #define GEDIT_TYPE_VIEW_FRAME (gedit_view_frame_get_type ())
-G_DECLARE_FINAL_TYPE (GeditViewFrame, gedit_view_frame, GEDIT, VIEW_FRAME, GtkOverlay)
+G_DECLARE_FINAL_TYPE (BeditViewFrame, gedit_view_frame, GEDIT, VIEW_FRAME, GtkOverlay)
 
-GeditViewFrame	*gedit_view_frame_new			(void);
+BeditViewFrame	*gedit_view_frame_new			(void);
 
-GeditView	*gedit_view_frame_get_view		(GeditViewFrame *frame);
+BeditView	*gedit_view_frame_get_view		(BeditViewFrame *frame);
 
-void		 gedit_view_frame_popup_search		(GeditViewFrame *frame);
+void		 gedit_view_frame_popup_search		(BeditViewFrame *frame);
 
-void		 gedit_view_frame_popup_goto_line	(GeditViewFrame *frame);
+void		 gedit_view_frame_popup_goto_line	(BeditViewFrame *frame);
 
-void		 gedit_view_frame_clear_search		(GeditViewFrame *frame);
+void		 gedit_view_frame_clear_search		(BeditViewFrame *frame);
 
 G_END_DECLS
 

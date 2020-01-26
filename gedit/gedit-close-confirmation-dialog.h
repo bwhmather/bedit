@@ -28,7 +28,7 @@
 
 #define GEDIT_TYPE_CLOSE_CONFIRMATION_DIALOG (gedit_close_confirmation_dialog_get_type ())
 
-G_DECLARE_FINAL_TYPE (GeditCloseConfirmationDialog, gedit_close_confirmation_dialog,
+G_DECLARE_FINAL_TYPE (BeditCloseConfirmationDialog, gedit_close_confirmation_dialog,
 		      GEDIT, CLOSE_CONFIRMATION_DIALOG,
 		      GtkMessageDialog)
 
@@ -36,11 +36,11 @@ GtkWidget	*gedit_close_confirmation_dialog_new			(GtkWindow     *parent,
 									 GList         *unsaved_documents);
 
 GtkWidget 	*gedit_close_confirmation_dialog_new_single 		(GtkWindow     *parent,
-									 GeditDocument *doc);
+									 BeditDocument *doc);
 
-const GList	*gedit_close_confirmation_dialog_get_unsaved_documents  (GeditCloseConfirmationDialog *dlg);
+const GList	*gedit_close_confirmation_dialog_get_unsaved_documents  (BeditCloseConfirmationDialog *dlg);
 
-GList		*gedit_close_confirmation_dialog_get_selected_documents	(GeditCloseConfirmationDialog *dlg);
+GList		*gedit_close_confirmation_dialog_get_selected_documents	(BeditCloseConfirmationDialog *dlg);
 
 #endif /* GEDIT_CLOSE_CONFIRMATION_DIALOG_H */
 /* ex:set ts=8 noet: */

@@ -1,5 +1,5 @@
 /*
- * gedit-file-browser-messages.h - Gedit plugin providing easy file access
+ * gedit-file-browser-messages.h - Bedit plugin providing easy file access
  * from the sidepanel
  *
  * Copyright (C) 2008 - Jesse van den Kieboom <jesse@icecrew.nl>
@@ -25,9 +25,9 @@
 #include <gedit/gedit-message-bus.h>
 #include "gedit-file-browser-widget.h"
 
-void gedit_file_browser_messages_register   (GeditWindow            *window,
-					     GeditFileBrowserWidget *widget);
-void gedit_file_browser_messages_unregister (GeditWindow            *window);
+void gedit_file_browser_messages_register   (BeditWindow            *window,
+					     BeditFileBrowserWidget *widget);
+void gedit_file_browser_messages_unregister (BeditWindow            *window);
 
 #endif /* GEDIT_FILE_BROWSER_MESSAGES_H */
 /* ex:set ts=8 noet: */

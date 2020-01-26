@@ -42,20 +42,20 @@
 
 #define GEDIT_TAB_KEY "GEDIT_TAB_KEY"
 
-struct _GeditTab
+struct _BeditTab
 {
 	GtkBox parent_instance;
 
-	GeditTabState state;
+	BeditTabState state;
 
 	GSettings *editor_settings;
 
-	GeditViewFrame *frame;
+	BeditViewFrame *frame;
 
 	GtkWidget *info_bar;
 	GtkWidget *info_bar_hidden;
 
-	GeditPrintJob *print_job;
+	BeditPrintJob *print_job;
 	GtkWidget *print_preview;
 
 	GtkSourceFileSaverFlags save_flags;
@@ -105,7 +105,7 @@ struct _SaverData
 
 struct _LoaderData
 {
-	GeditTab *tab;
+	BeditTab *tab;
 	GtkSourceFileLoader *loader;
 	GTimer *timer;
 	gint line_pos;
@@ -113,7 +113,7 @@ struct _LoaderData
 	guint user_requested_encoding : 1;
 };
 
-G_DEFINE_TYPE (GeditTab, gedit_tab, GTK_TYPE_BOX)
+G_DEFINE_TYPE (BeditTab, gedit_tab, GTK_TYPE_BOX)
 
 enum
 {
@@ -136,7 +136,7 @@ enum
 
 static guint signals[LAST_SIGNAL];
 
-static gboolean gedit_tab_auto_save (GeditTab *tab);
+static gboolean gedit_tab_auto_save (BeditTab *tab);
 
 static void launch_loader (GTask                   *loading_task,
 			   const GtkSourceEncoding *encoding);
@@ -194,10 +194,10 @@ loader_data_free (LoaderData *data)
 }
 
 static void
-set_editable (GeditTab *tab,
+set_editable (BeditTab *tab,
 	      gboolean  editable)
 {
-	GeditView *view;
+	BeditView *view;
 	gboolean val;
 
 	tab->editable = editable != FALSE;
@@ -211,7 +211,7 @@ set_editable (GeditTab *tab,
 }
 
 static void
-install_auto_save_timeout (GeditTab *tab)
+install_auto_save_timeout (BeditTab *tab)
 {
 	if (tab->auto_save_timeout == 0)
 	{
@@ -224,7 +224,7 @@ install_auto_save_timeout (GeditTab *tab)
 }
 
 static void
-remove_auto_save_timeout (GeditTab *tab)
+remove_auto_save_timeout (BeditTab *tab)
 {
 	gedit_debug (DEBUG_TAB);
 
@@ -236,9 +236,9 @@ remove_auto_save_timeout (GeditTab *tab)
 }
 
 static void
-update_auto_save_timeout (GeditTab *tab)
+update_auto_save_timeout (BeditTab *tab)
 {
-	GeditDocument *doc;
+	BeditDocument *doc;
 	GtkSourceFile *file;
 
 	gedit_debug (DEBUG_TAB);
@@ -265,7 +265,7 @@ gedit_tab_get_property (GObject    *object,
 		        GValue     *value,
 		        GParamSpec *pspec)
 {
-	GeditTab *tab = GEDIT_TAB (object);
+	BeditTab *tab = GEDIT_TAB (object);
 
 	switch (prop_id)
 	{
@@ -301,7 +301,7 @@ gedit_tab_set_property (GObject      *object,
 		        const GValue *value,
 		        GParamSpec   *pspec)
 {
-	GeditTab *tab = GEDIT_TAB (object);
+	BeditTab *tab = GEDIT_TAB (object);
 
 	switch (prop_id)
 	{
@@ -322,7 +322,7 @@ gedit_tab_set_property (GObject      *object,
 static void
 gedit_tab_dispose (GObject *object)
 {
-	GeditTab *tab = GEDIT_TAB (object);
+	BeditTab *tab = GEDIT_TAB (object);
 
 	g_clear_object (&tab->editor_settings);
 	g_clear_object (&tab->print_job);
@@ -348,7 +348,7 @@ gedit_tab_dispose (GObject *object)
 static void
 gedit_tab_grab_focus (GtkWidget *widget)
 {
-	GeditTab *tab = GEDIT_TAB (widget);
+	BeditTab *tab = GEDIT_TAB (widget);
 
 	GTK_WIDGET_CLASS (gedit_tab_parent_class)->grab_focus (widget);
 
@@ -358,20 +358,20 @@ gedit_tab_grab_focus (GtkWidget *widget)
 	}
 	else
 	{
-		GeditView *view = gedit_tab_get_view (tab);
+		BeditView *view = gedit_tab_get_view (tab);
 		gtk_widget_grab_focus (GTK_WIDGET (view));
 	}
 }
 
 static void
-gedit_tab_drop_uris (GeditTab  *tab,
+gedit_tab_drop_uris (BeditTab  *tab,
                      gchar    **uri_list)
 {
 	gedit_debug (DEBUG_TAB);
 }
 
 static void
-gedit_tab_class_init (GeditTabClass *klass)
+gedit_tab_class_init (BeditTabClass *klass)
 {
 	GObjectClass *object_class = G_OBJECT_CLASS (klass);
 	GtkWidgetClass *gtkwidget_class = GTK_WIDGET_CLASS (klass);
@@ -435,14 +435,14 @@ gedit_tab_class_init (GeditTabClass *klass)
 
 /**
  * gedit_tab_get_state:
- * @tab: a #GeditTab
+ * @tab: a #BeditTab
  *
- * Gets the #GeditTabState of @tab.
+ * Gets the #BeditTabState of @tab.
  *
- * Returns: the #GeditTabState of @tab
+ * Returns: the #BeditTabState of @tab
  */
-GeditTabState
-gedit_tab_get_state (GeditTab *tab)
+BeditTabState
+gedit_tab_get_state (BeditTab *tab)
 {
 	g_return_val_if_fail (GEDIT_IS_TAB (tab), GEDIT_TAB_STATE_NORMAL);
 
@@ -451,7 +451,7 @@ gedit_tab_get_state (GeditTab *tab)
 
 static void
 set_cursor_according_to_state (GtkTextView   *view,
-			       GeditTabState  state)
+			       BeditTabState  state)
 {
 	GdkDisplay *display;
 	GdkCursor *cursor;
@@ -493,16 +493,16 @@ set_cursor_according_to_state (GtkTextView   *view,
 
 static void
 view_realized (GtkTextView *view,
-	       GeditTab    *tab)
+	       BeditTab    *tab)
 {
 	set_cursor_according_to_state (view, tab->state);
 }
 
 static void
-set_view_properties_according_to_state (GeditTab      *tab,
-					GeditTabState  state)
+set_view_properties_according_to_state (BeditTab      *tab,
+					BeditTabState  state)
 {
-	GeditView *view;
+	BeditView *view;
 	gboolean val;
 	gboolean hl_current_line;
 
@@ -526,8 +526,8 @@ set_view_properties_according_to_state (GeditTab      *tab,
 }
 
 static void
-gedit_tab_set_state (GeditTab      *tab,
-		     GeditTabState  state)
+gedit_tab_set_state (BeditTab      *tab,
+		     BeditTabState  state)
 {
 	g_return_if_fail ((state >= 0) && (state < GEDIT_TAB_NUM_OF_STATES));
 
@@ -565,7 +565,7 @@ gedit_tab_set_state (GeditTab      *tab,
 static void
 document_location_notify_handler (GtkSourceFile *file,
 				  GParamSpec    *pspec,
-				  GeditTab      *tab)
+				  BeditTab      *tab)
 {
 	gedit_debug (DEBUG_TAB);
 
@@ -574,9 +574,9 @@ document_location_notify_handler (GtkSourceFile *file,
 }
 
 static void
-document_shortname_notify_handler (GeditDocument *document,
+document_shortname_notify_handler (BeditDocument *document,
 				   GParamSpec    *pspec,
-				   GeditTab      *tab)
+				   BeditTab      *tab)
 {
 	gedit_debug (DEBUG_TAB);
 
@@ -586,14 +586,14 @@ document_shortname_notify_handler (GeditDocument *document,
 
 static void
 document_modified_changed (GtkTextBuffer *document,
-			   GeditTab      *tab)
+			   BeditTab      *tab)
 {
 	g_object_notify_by_pspec (G_OBJECT (tab), properties[PROP_NAME]);
 	g_object_notify_by_pspec (G_OBJECT (tab), properties[PROP_CAN_CLOSE]);
 }
 
 static void
-set_info_bar (GeditTab        *tab,
+set_info_bar (BeditTab        *tab,
               GtkWidget       *info_bar,
               GtkResponseType  default_response)
 {
@@ -648,7 +648,7 @@ set_info_bar (GeditTab        *tab,
 }
 
 static void
-remove_tab (GeditTab *tab)
+remove_tab (BeditTab *tab)
 {
 	GtkWidget *notebook;
 
@@ -705,9 +705,9 @@ io_loading_error_info_bar_response (GtkWidget *info_bar,
 static void
 file_already_open_warning_info_bar_response (GtkWidget *info_bar,
 					     gint       response_id,
-					     GeditTab  *tab)
+					     BeditTab  *tab)
 {
-	GeditView *view = gedit_tab_get_view (tab);
+	BeditView *view = gedit_tab_get_view (tab);
 
 	if (response_id == GTK_RESPONSE_YES)
 	{
@@ -738,7 +738,7 @@ unrecoverable_reverting_error_info_bar_response (GtkWidget *info_bar,
 						 GTask     *loading_task)
 {
 	LoaderData *data = g_task_get_task_data (loading_task);
-	GeditView *view;
+	BeditView *view;
 
 	gedit_tab_set_state (data->tab, GEDIT_TAB_STATE_NORMAL);
 
@@ -758,7 +758,7 @@ show_loading_info_bar (GTask *loading_task)
 {
 	LoaderData *data = g_task_get_task_data (loading_task);
 	GtkWidget *bar;
-	GeditDocument *doc;
+	BeditDocument *doc;
 	gchar *name;
 	gchar *dirname = NULL;
 	gchar *msg = NULL;
@@ -870,9 +870,9 @@ show_loading_info_bar (GTask *loading_task)
 static void
 show_saving_info_bar (GTask *saving_task)
 {
-	GeditTab *tab = g_task_get_source_object (saving_task);
+	BeditTab *tab = g_task_get_source_object (saving_task);
 	GtkWidget *bar;
-	GeditDocument *doc;
+	BeditDocument *doc;
 	gchar *short_name;
 	gchar *from;
 	gchar *to = NULL;
@@ -946,11 +946,11 @@ show_saving_info_bar (GTask *saving_task)
 }
 
 static void
-info_bar_set_progress (GeditTab *tab,
+info_bar_set_progress (BeditTab *tab,
 		       goffset   size,
 		       goffset   total_size)
 {
-	GeditProgressInfoBar *progress_info_bar;
+	BeditProgressInfoBar *progress_info_bar;
 
 	if (tab->info_bar == NULL)
 	{
@@ -1029,9 +1029,9 @@ should_show_progress_info (GTimer  **timer,
 }
 
 static gboolean
-scroll_to_cursor (GeditTab *tab)
+scroll_to_cursor (BeditTab *tab)
 {
-	GeditView *view;
+	BeditView *view;
 
 	view = gedit_tab_get_view (tab);
 	gedit_view_scroll_to_cursor (view);
@@ -1045,8 +1045,8 @@ unrecoverable_saving_error_info_bar_response (GtkWidget *info_bar,
 					      gint       response_id,
 					      GTask     *saving_task)
 {
-	GeditTab *tab = g_task_get_source_object (saving_task);
-	GeditView *view;
+	BeditTab *tab = g_task_get_source_object (saving_task);
+	BeditView *view;
 
 	gedit_tab_set_state (tab, GEDIT_TAB_STATE_NORMAL);
 
@@ -1064,7 +1064,7 @@ static void
 response_set_save_flags (GTask                   *saving_task,
 			 GtkSourceFileSaverFlags  save_flags)
 {
-	GeditTab *tab = g_task_get_source_object (saving_task);
+	BeditTab *tab = g_task_get_source_object (saving_task);
 	SaverData *data = g_task_get_task_data (saving_task);
 	gboolean create_backup;
 
@@ -1095,7 +1095,7 @@ invalid_character_info_bar_response (GtkWidget *info_bar,
 {
 	if (response_id == GTK_RESPONSE_YES)
 	{
-		GeditTab *tab = g_task_get_source_object (saving_task);
+		BeditTab *tab = g_task_get_source_object (saving_task);
 		SaverData *data = g_task_get_task_data (saving_task);
 		GtkSourceFileSaverFlags save_flags;
 
@@ -1124,7 +1124,7 @@ no_backup_error_info_bar_response (GtkWidget *info_bar,
 {
 	if (response_id == GTK_RESPONSE_YES)
 	{
-		GeditTab *tab = g_task_get_source_object (saving_task);
+		BeditTab *tab = g_task_get_source_object (saving_task);
 		SaverData *data = g_task_get_task_data (saving_task);
 		GtkSourceFileSaverFlags save_flags;
 
@@ -1150,7 +1150,7 @@ externally_modified_error_info_bar_response (GtkWidget *info_bar,
 {
 	if (response_id == GTK_RESPONSE_YES)
 	{
-		GeditTab *tab = g_task_get_source_object (saving_task);
+		BeditTab *tab = g_task_get_source_object (saving_task);
 		SaverData *data = g_task_get_task_data (saving_task);
 		GtkSourceFileSaverFlags save_flags;
 
@@ -1179,7 +1179,7 @@ recoverable_saving_error_info_bar_response (GtkWidget *info_bar,
 {
 	if (response_id == GTK_RESPONSE_OK)
 	{
-		GeditTab *tab = g_task_get_source_object (saving_task);
+		BeditTab *tab = g_task_get_source_object (saving_task);
 		SaverData *data = g_task_get_task_data (saving_task);
 		const GtkSourceEncoding *encoding;
 
@@ -1200,9 +1200,9 @@ recoverable_saving_error_info_bar_response (GtkWidget *info_bar,
 static void
 externally_modified_notification_info_bar_response (GtkWidget *info_bar,
 						    gint       response_id,
-						    GeditTab  *tab)
+						    BeditTab  *tab)
 {
-	GeditView *view;
+	BeditView *view;
 
 	set_info_bar (tab, NULL, GTK_RESPONSE_NONE);
 
@@ -1224,10 +1224,10 @@ externally_modified_notification_info_bar_response (GtkWidget *info_bar,
 }
 
 static void
-display_externally_modified_notification (GeditTab *tab)
+display_externally_modified_notification (BeditTab *tab)
 {
 	GtkWidget *info_bar;
-	GeditDocument *doc;
+	BeditDocument *doc;
 	GtkSourceFile *file;
 	GFile *location;
 	gboolean document_modified;
@@ -1253,9 +1253,9 @@ display_externally_modified_notification (GeditTab *tab)
 static gboolean
 view_focused_in (GtkWidget     *widget,
                  GdkEventFocus *event,
-                 GeditTab      *tab)
+                 BeditTab      *tab)
 {
-	GeditDocument *doc;
+	BeditDocument *doc;
 	GtkSourceFile *file;
 
 	g_return_val_if_fail (GEDIT_IS_TAB (tab), GDK_EVENT_PROPAGATE);
@@ -1292,9 +1292,9 @@ view_focused_in (GtkWidget     *widget,
 }
 
 static void
-on_drop_uris (GeditView  *view,
+on_drop_uris (BeditView  *view,
 	      gchar     **uri_list,
-	      GeditTab   *tab)
+	      BeditTab   *tab)
 {
 	g_signal_emit (G_OBJECT (tab), signals[DROP_URIS], 0, uri_list);
 }
@@ -1302,7 +1302,7 @@ on_drop_uris (GeditView  *view,
 static void
 network_available_warning_info_bar_response (GtkWidget *info_bar,
 					     gint       response_id,
-					     GeditTab  *tab)
+					     BeditTab  *tab)
 {
 	if (response_id == GTK_RESPONSE_CLOSE)
 	{
@@ -1311,10 +1311,10 @@ network_available_warning_info_bar_response (GtkWidget *info_bar,
 }
 
 void
-_gedit_tab_set_network_available (GeditTab *tab,
+_gedit_tab_set_network_available (BeditTab *tab,
 				  gboolean  enable)
 {
-	GeditDocument *doc;
+	BeditDocument *doc;
 	GtkSourceFile *file;
 	GFile *location;
 
@@ -1347,14 +1347,14 @@ _gedit_tab_set_network_available (GeditTab *tab,
 }
 
 static void
-gedit_tab_init (GeditTab *tab)
+gedit_tab_init (BeditTab *tab)
 {
-	GeditLockdownMask lockdown;
+	BeditLockdownMask lockdown;
 	gboolean auto_save;
 	gint auto_save_interval;
-	GeditDocument *doc;
-	GeditView *view;
-	GeditApp *app;
+	BeditDocument *doc;
+	BeditView *view;
+	BeditApp *app;
 	GtkSourceFile *file;
 
 	tab->state = GEDIT_TAB_STATE_NORMAL;
@@ -1427,7 +1427,7 @@ gedit_tab_init (GeditTab *tab)
 			  tab);
 }
 
-GeditTab *
+BeditTab *
 _gedit_tab_new (void)
 {
 	return g_object_new (GEDIT_TYPE_TAB, NULL);
@@ -1435,14 +1435,14 @@ _gedit_tab_new (void)
 
 /**
  * gedit_tab_get_view:
- * @tab: a #GeditTab
+ * @tab: a #BeditTab
  *
- * Gets the #GeditView inside @tab.
+ * Gets the #BeditView inside @tab.
  *
- * Returns: (transfer none): the #GeditView inside @tab
+ * Returns: (transfer none): the #BeditView inside @tab
  */
-GeditView *
-gedit_tab_get_view (GeditTab *tab)
+BeditView *
+gedit_tab_get_view (BeditTab *tab)
 {
 	g_return_val_if_fail (GEDIT_IS_TAB (tab), NULL);
 
@@ -1451,16 +1451,16 @@ gedit_tab_get_view (GeditTab *tab)
 
 /**
  * gedit_tab_get_document:
- * @tab: a #GeditTab
+ * @tab: a #BeditTab
  *
- * Gets the #GeditDocument associated to @tab.
+ * Gets the #BeditDocument associated to @tab.
  *
- * Returns: (transfer none): the #GeditDocument associated to @tab
+ * Returns: (transfer none): the #BeditDocument associated to @tab
  */
-GeditDocument *
-gedit_tab_get_document (GeditTab *tab)
+BeditDocument *
+gedit_tab_get_document (BeditTab *tab)
 {
-	GeditView *view;
+	BeditView *view;
 
 	g_return_val_if_fail (GEDIT_IS_TAB (tab), NULL);
 
@@ -1472,9 +1472,9 @@ gedit_tab_get_document (GeditTab *tab)
 #define MAX_DOC_NAME_LENGTH 40
 
 gchar *
-_gedit_tab_get_name (GeditTab *tab)
+_gedit_tab_get_name (BeditTab *tab)
 {
-	GeditDocument *doc;
+	BeditDocument *doc;
 	gchar *name;
 	gchar *docname;
 	gchar *tab_name;
@@ -1504,9 +1504,9 @@ _gedit_tab_get_name (GeditTab *tab)
 }
 
 gchar *
-_gedit_tab_get_tooltip (GeditTab *tab)
+_gedit_tab_get_tooltip (BeditTab *tab)
 {
-	GeditDocument *doc;
+	BeditDocument *doc;
 	gchar *tip;
 	gchar *uri;
 	gchar *ruri;
@@ -1592,7 +1592,7 @@ _gedit_tab_get_tooltip (GeditTab *tab)
 }
 
 GdkPixbuf *
-_gedit_tab_get_icon (GeditTab *tab)
+_gedit_tab_get_icon (BeditTab *tab)
 {
 	const gchar *icon_name;
 	GdkPixbuf *pixbuf = NULL;
@@ -1644,14 +1644,14 @@ _gedit_tab_get_icon (GeditTab *tab)
 
 /**
  * gedit_tab_get_from_document:
- * @doc: a #GeditDocument
+ * @doc: a #BeditDocument
  *
- * Gets the #GeditTab associated with @doc.
+ * Gets the #BeditTab associated with @doc.
  *
- * Returns: (transfer none): the #GeditTab associated with @doc
+ * Returns: (transfer none): the #BeditTab associated with @doc
  */
-GeditTab *
-gedit_tab_get_from_document (GeditDocument *doc)
+BeditTab *
+gedit_tab_get_from_document (BeditDocument *doc)
 {
 	g_return_val_if_fail (GEDIT_IS_DOCUMENT (doc), NULL);
 
@@ -1679,7 +1679,7 @@ static void
 goto_line (GTask *loading_task)
 {
 	LoaderData *data = g_task_get_task_data (loading_task);
-	GeditDocument *doc = gedit_tab_get_document (data->tab);
+	BeditDocument *doc = gedit_tab_get_document (data->tab);
 	GtkTextIter iter;
 
 	/* Move the cursor at the requested line if any. */
@@ -1725,7 +1725,7 @@ goto_line (GTask *loading_task)
 }
 
 static gboolean
-file_already_opened (GeditDocument *doc,
+file_already_opened (BeditDocument *doc,
 		     GFile         *location)
 {
 	GList *all_documents;
@@ -1741,7 +1741,7 @@ file_already_opened (GeditDocument *doc,
 
 	for (l = all_documents; l != NULL; l = l->next)
 	{
-		GeditDocument *cur_doc = l->data;
+		BeditDocument *cur_doc = l->data;
 		GtkSourceFile *cur_file;
 		GFile *cur_location;
 
@@ -1770,7 +1770,7 @@ static void
 successful_load (GTask *loading_task)
 {
 	LoaderData *data = g_task_get_task_data (loading_task);
-	GeditDocument *doc = gedit_tab_get_document (data->tab);
+	BeditDocument *doc = gedit_tab_get_document (data->tab);
 	GtkSourceFile *file = gedit_document_get_file (doc);
 	GFile *location;
 
@@ -1836,7 +1836,7 @@ load_cb (GtkSourceFileLoader *loader,
 	 GTask               *loading_task)
 {
 	LoaderData *data = g_task_get_task_data (loading_task);
-	GeditDocument *doc;
+	BeditDocument *doc;
 	GFile *location = gtk_source_file_loader_get_location (loader);
 	gboolean create_named_new_doc;
 	GError *error = NULL;
@@ -1987,10 +1987,10 @@ load_cb (GtkSourceFileLoader *loader,
  * gtk_source_file_loader_set_candidate_encodings().
  */
 static GSList *
-get_candidate_encodings (GeditTab *tab)
+get_candidate_encodings (BeditTab *tab)
 {
 	GSList *candidates = NULL;
-	GeditDocument *doc;
+	BeditDocument *doc;
 	GtkSourceFile *file;
 	gchar *metadata_charset;
 	const GtkSourceEncoding *file_encoding;
@@ -2034,7 +2034,7 @@ launch_loader (GTask                   *loading_task,
 {
 	LoaderData *data = g_task_get_task_data (loading_task);
 	GSList *candidate_encodings = NULL;
-	GeditDocument *doc;
+	BeditDocument *doc;
 
 	if (encoding != NULL)
 	{
@@ -2071,7 +2071,7 @@ launch_loader (GTask                   *loading_task,
 }
 
 static void
-load_async (GeditTab                *tab,
+load_async (BeditTab                *tab,
 	    GFile                   *location,
 	    const GtkSourceEncoding *encoding,
 	    gint                     line_pos,
@@ -2081,7 +2081,7 @@ load_async (GeditTab                *tab,
 	    GAsyncReadyCallback      callback,
 	    gpointer                 user_data)
 {
-	GeditDocument *doc;
+	BeditDocument *doc;
 	GtkSourceFile *file;
 	GTask *loading_task;
 	LoaderData *data;
@@ -2113,7 +2113,7 @@ load_async (GeditTab                *tab,
 }
 
 static gboolean
-load_finish (GeditTab     *tab,
+load_finish (BeditTab     *tab,
 	     GAsyncResult *result)
 {
 	g_return_val_if_fail (g_task_is_valid (result, tab), FALSE);
@@ -2122,7 +2122,7 @@ load_finish (GeditTab     *tab,
 }
 
 void
-_gedit_tab_load (GeditTab                *tab,
+_gedit_tab_load (BeditTab                *tab,
 		 GFile                   *location,
 		 const GtkSourceEncoding *encoding,
 		 gint                     line_pos,
@@ -2149,7 +2149,7 @@ _gedit_tab_load (GeditTab                *tab,
 }
 
 static void
-load_stream_async (GeditTab                *tab,
+load_stream_async (BeditTab                *tab,
 		   GInputStream            *stream,
 		   const GtkSourceEncoding *encoding,
 		   gint                     line_pos,
@@ -2158,7 +2158,7 @@ load_stream_async (GeditTab                *tab,
 		   GAsyncReadyCallback      callback,
 		   gpointer                 user_data)
 {
-	GeditDocument *doc;
+	BeditDocument *doc;
 	GtkSourceFile *file;
 	GTask *loading_task;
 	LoaderData *data;
@@ -2193,7 +2193,7 @@ load_stream_async (GeditTab                *tab,
 }
 
 void
-_gedit_tab_load_stream (GeditTab                *tab,
+_gedit_tab_load_stream (BeditTab                *tab,
 			GInputStream            *stream,
 			const GtkSourceEncoding *encoding,
 			gint                     line_pos,
@@ -2218,12 +2218,12 @@ _gedit_tab_load_stream (GeditTab                *tab,
 }
 
 static void
-revert_async (GeditTab            *tab,
+revert_async (BeditTab            *tab,
 	      GCancellable        *cancellable,
 	      GAsyncReadyCallback  callback,
 	      gpointer             user_data)
 {
-	GeditDocument *doc;
+	BeditDocument *doc;
 	GtkSourceFile *file;
 	GFile *location;
 	GTask *loading_task;
@@ -2260,7 +2260,7 @@ revert_async (GeditTab            *tab,
 }
 
 void
-_gedit_tab_revert (GeditTab *tab)
+_gedit_tab_revert (BeditTab *tab)
 {
 	if (tab->cancellable != NULL)
 	{
@@ -2277,7 +2277,7 @@ _gedit_tab_revert (GeditTab *tab)
 }
 
 static void
-close_printing (GeditTab *tab)
+close_printing (BeditTab *tab)
 {
 	if (tab->print_preview != NULL)
 	{
@@ -2298,7 +2298,7 @@ saver_progress_cb (goffset  size,
 		   goffset  total_size,
 		   GTask   *saving_task)
 {
-	GeditTab *tab = g_task_get_source_object (saving_task);
+	BeditTab *tab = g_task_get_source_object (saving_task);
 	SaverData *data = g_task_get_task_data (saving_task);
 
 	g_return_if_fail (tab->state == GEDIT_TAB_STATE_SAVING);
@@ -2315,9 +2315,9 @@ save_cb (GtkSourceFileSaver *saver,
 	 GAsyncResult       *result,
 	 GTask              *saving_task)
 {
-	GeditTab *tab = g_task_get_source_object (saving_task);
+	BeditTab *tab = g_task_get_source_object (saving_task);
 	SaverData *data = g_task_get_task_data (saving_task);
-	GeditDocument *doc = gedit_tab_get_document (tab);
+	BeditDocument *doc = gedit_tab_get_document (tab);
 	GFile *location = gtk_source_file_saver_get_location (saver);
 	GError *error = NULL;
 
@@ -2441,8 +2441,8 @@ save_cb (GtkSourceFileSaver *saver,
 static void
 launch_saver (GTask *saving_task)
 {
-	GeditTab *tab = g_task_get_source_object (saving_task);
-	GeditDocument *doc = gedit_tab_get_document (tab);
+	BeditTab *tab = g_task_get_source_object (saving_task);
+	BeditDocument *doc = gedit_tab_get_document (tab);
 	SaverData *data = g_task_get_task_data (saving_task);
 
 	gedit_tab_set_state (tab, GEDIT_TAB_STATE_SAVING);
@@ -2468,7 +2468,7 @@ launch_saver (GTask *saving_task)
 
 /* Gets the initial save flags, when launching a new FileSaver. */
 static GtkSourceFileSaverFlags
-get_initial_save_flags (GeditTab *tab,
+get_initial_save_flags (BeditTab *tab,
 			gboolean  auto_save)
 {
 	GtkSourceFileSaverFlags save_flags;
@@ -2492,14 +2492,14 @@ get_initial_save_flags (GeditTab *tab,
 }
 
 void
-_gedit_tab_save_async (GeditTab            *tab,
+_gedit_tab_save_async (BeditTab            *tab,
 		       GCancellable        *cancellable,
 		       GAsyncReadyCallback  callback,
 		       gpointer             user_data)
 {
 	GTask *saving_task;
 	SaverData *data;
-	GeditDocument *doc;
+	BeditDocument *doc;
 	GtkSourceFile *file;
 	GtkSourceFileSaverFlags save_flags;
 
@@ -2551,7 +2551,7 @@ _gedit_tab_save_async (GeditTab            *tab,
 }
 
 gboolean
-_gedit_tab_save_finish (GeditTab     *tab,
+_gedit_tab_save_finish (BeditTab     *tab,
 			GAsyncResult *result)
 {
 	g_return_val_if_fail (g_task_is_valid (result, tab), FALSE);
@@ -2560,7 +2560,7 @@ _gedit_tab_save_finish (GeditTab     *tab,
 }
 
 static void
-auto_save_finished_cb (GeditTab     *tab,
+auto_save_finished_cb (BeditTab     *tab,
 		       GAsyncResult *result,
 		       gpointer      user_data)
 {
@@ -2568,11 +2568,11 @@ auto_save_finished_cb (GeditTab     *tab,
 }
 
 static gboolean
-gedit_tab_auto_save (GeditTab *tab)
+gedit_tab_auto_save (BeditTab *tab)
 {
 	GTask *saving_task;
 	SaverData *data;
-	GeditDocument *doc;
+	BeditDocument *doc;
 	GtkSourceFile *file;
 	GtkSourceFileSaverFlags save_flags;
 
@@ -2628,7 +2628,7 @@ gedit_tab_auto_save (GeditTab *tab)
  * _gedit_tab_save_as_finish().
  */
 void
-_gedit_tab_save_as_async (GeditTab                 *tab,
+_gedit_tab_save_as_async (BeditTab                 *tab,
 			  GFile                    *location,
 			  const GtkSourceEncoding  *encoding,
 			  GtkSourceNewlineType      newline_type,
@@ -2639,7 +2639,7 @@ _gedit_tab_save_as_async (GeditTab                 *tab,
 {
 	GTask *saving_task;
 	SaverData *data;
-	GeditDocument *doc;
+	BeditDocument *doc;
 	GtkSourceFile *file;
 	GtkSourceFileSaverFlags save_flags;
 
@@ -2695,10 +2695,10 @@ _gedit_tab_save_as_async (GeditTab                 *tab,
 #define GEDIT_PRINT_SETTINGS_KEY "gedit-print-settings-key"
 
 static GtkPageSetup *
-get_page_setup (GeditTab *tab)
+get_page_setup (BeditTab *tab)
 {
 	gpointer data;
-	GeditDocument *doc;
+	BeditDocument *doc;
 
 	doc = gedit_tab_get_document (tab);
 
@@ -2716,10 +2716,10 @@ get_page_setup (GeditTab *tab)
 }
 
 static GtkPrintSettings *
-get_print_settings (GeditTab *tab)
+get_print_settings (BeditTab *tab)
 {
 	gpointer data;
-	GeditDocument *doc;
+	BeditDocument *doc;
 	GtkPrintSettings *settings;
 	gchar *name;
 
@@ -2752,9 +2752,9 @@ get_print_settings (GeditTab *tab)
 
 /* FIXME: show the info bar only if the operation will be "long" */
 static void
-printing_cb (GeditPrintJob       *job,
-	     GeditPrintJobStatus  status,
-	     GeditTab            *tab)
+printing_cb (BeditPrintJob       *job,
+	     BeditPrintJobStatus  status,
+	     BeditTab            *tab)
 {
 	g_return_if_fail (GEDIT_IS_PROGRESS_INFO_BAR (tab->info_bar));
 
@@ -2768,10 +2768,10 @@ printing_cb (GeditPrintJob       *job,
 }
 
 static void
-store_print_settings (GeditTab      *tab,
-		      GeditPrintJob *job)
+store_print_settings (BeditTab      *tab,
+		      BeditPrintJob *job)
 {
-	GeditDocument *doc;
+	BeditDocument *doc;
 	GtkPrintSettings *settings;
 	GtkPageSetup *page_setup;
 
@@ -2808,12 +2808,12 @@ store_print_settings (GeditTab      *tab,
 }
 
 static void
-done_printing_cb (GeditPrintJob       *job,
-		  GeditPrintJobResult  result,
+done_printing_cb (BeditPrintJob       *job,
+		  BeditPrintJobResult  result,
 		  GError              *error,
-		  GeditTab            *tab)
+		  BeditTab            *tab)
 {
-	GeditView *view;
+	BeditView *view;
 
 	g_return_if_fail (tab->state == GEDIT_TAB_STATE_SHOWING_PRINT_PREVIEW ||
 	                  tab->state == GEDIT_TAB_STATE_PRINTING);
@@ -2838,9 +2838,9 @@ done_printing_cb (GeditPrintJob       *job,
 }
 
 static void
-show_preview_cb (GeditPrintJob     *job,
-		 GeditPrintPreview *preview,
-		 GeditTab          *tab)
+show_preview_cb (BeditPrintJob     *job,
+		 BeditPrintPreview *preview,
+		 BeditTab          *tab)
 {
 	g_return_if_fail (tab->print_preview == NULL);
 
@@ -2861,7 +2861,7 @@ show_preview_cb (GeditPrintJob     *job,
 static void
 print_cancelled (GtkWidget *bar,
 		 gint       response_id,
-		 GeditTab  *tab)
+		 BeditTab  *tab)
 {
 	gedit_debug (DEBUG_TAB);
 
@@ -2872,7 +2872,7 @@ print_cancelled (GtkWidget *bar,
 }
 
 static void
-add_printing_info_bar (GeditTab *tab)
+add_printing_info_bar (BeditTab *tab)
 {
 	GtkWidget *bar;
 
@@ -2892,9 +2892,9 @@ add_printing_info_bar (GeditTab *tab)
 }
 
 void
-_gedit_tab_print (GeditTab *tab)
+_gedit_tab_print (BeditTab *tab)
 {
-	GeditView *view;
+	BeditView *view;
 	GtkPageSetup *setup;
 	GtkPrintSettings *settings;
 	GtkPrintOperationResult res;
@@ -2965,7 +2965,7 @@ _gedit_tab_print (GeditTab *tab)
 }
 
 void
-_gedit_tab_mark_for_closing (GeditTab *tab)
+_gedit_tab_mark_for_closing (BeditTab *tab)
 {
 	g_return_if_fail (GEDIT_IS_TAB (tab));
 	g_return_if_fail (tab->state == GEDIT_TAB_STATE_NORMAL);
@@ -2974,9 +2974,9 @@ _gedit_tab_mark_for_closing (GeditTab *tab)
 }
 
 gboolean
-_gedit_tab_get_can_close (GeditTab *tab)
+_gedit_tab_get_can_close (BeditTab *tab)
 {
-	GeditDocument *doc;
+	BeditDocument *doc;
 
 	g_return_val_if_fail (GEDIT_IS_TAB (tab), FALSE);
 
@@ -3007,14 +3007,14 @@ _gedit_tab_get_can_close (GeditTab *tab)
 
 /**
  * gedit_tab_get_auto_save_enabled:
- * @tab: a #GeditTab
+ * @tab: a #BeditTab
  *
  * Gets the current state for the autosave feature
  *
  * Return value: %TRUE if the autosave is enabled, else %FALSE
  **/
 gboolean
-gedit_tab_get_auto_save_enabled	(GeditTab *tab)
+gedit_tab_get_auto_save_enabled	(BeditTab *tab)
 {
 	gedit_debug (DEBUG_TAB);
 
@@ -3025,17 +3025,17 @@ gedit_tab_get_auto_save_enabled	(GeditTab *tab)
 
 /**
  * gedit_tab_set_auto_save_enabled:
- * @tab: a #GeditTab
+ * @tab: a #BeditTab
  * @enable: enable (%TRUE) or disable (%FALSE) auto save
  *
  * Enables or disables the autosave feature. It does not install an
  * autosave timeout if the document is new or is read-only
  **/
 void
-gedit_tab_set_auto_save_enabled	(GeditTab *tab,
+gedit_tab_set_auto_save_enabled	(BeditTab *tab,
 				 gboolean  enable)
 {
-	GeditLockdownMask lockdown;
+	BeditLockdownMask lockdown;
 
 	gedit_debug (DEBUG_TAB);
 
@@ -3060,14 +3060,14 @@ gedit_tab_set_auto_save_enabled	(GeditTab *tab,
 
 /**
  * gedit_tab_get_auto_save_interval:
- * @tab: a #GeditTab
+ * @tab: a #BeditTab
  *
  * Gets the current interval for the autosaves
  *
  * Return value: the value of the autosave
  **/
 gint
-gedit_tab_get_auto_save_interval (GeditTab *tab)
+gedit_tab_get_auto_save_interval (BeditTab *tab)
 {
 	gedit_debug (DEBUG_TAB);
 
@@ -3078,13 +3078,13 @@ gedit_tab_get_auto_save_interval (GeditTab *tab)
 
 /**
  * gedit_tab_set_auto_save_interval:
- * @tab: a #GeditTab
+ * @tab: a #BeditTab
  * @interval: the new interval
  *
  * Sets the interval for the autosave feature.
  */
 void
-gedit_tab_set_auto_save_interval (GeditTab *tab,
+gedit_tab_set_auto_save_interval (BeditTab *tab,
 				  gint      interval)
 {
 	g_return_if_fail (GEDIT_IS_TAB (tab));
@@ -3101,7 +3101,7 @@ gedit_tab_set_auto_save_interval (GeditTab *tab,
 }
 
 void
-gedit_tab_set_info_bar (GeditTab  *tab,
+gedit_tab_set_info_bar (BeditTab  *tab,
                         GtkWidget *info_bar)
 {
 	g_return_if_fail (GEDIT_IS_TAB (tab));
@@ -3111,8 +3111,8 @@ gedit_tab_set_info_bar (GeditTab  *tab,
 	set_info_bar (tab, info_bar, GTK_RESPONSE_NONE);
 }
 
-GeditViewFrame *
-_gedit_tab_get_view_frame (GeditTab *tab)
+BeditViewFrame *
+_gedit_tab_get_view_frame (BeditTab *tab)
 {
 	return tab->frame;
 }

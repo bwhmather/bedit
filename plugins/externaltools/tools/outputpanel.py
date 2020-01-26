@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-#    Gedit External Tools plugin
+#    Bedit External Tools plugin
 #    Copyright (C) 2005-2006  Steve Frécinaux <steve@istique.net>
 #    Copyright (C) 2010  Per Arneng <per.arneng@anyplanet.com>
 #
@@ -25,7 +25,7 @@ from .capture import *
 import re
 from . import linkparsing
 from . import filelookup
-from gi.repository import GLib, Gio, Gdk, Gtk, Pango, Gedit
+from gi.repository import GLib, Gio, Gdk, Gtk, Pango, Bedit
 
 try:
     import gettext
@@ -241,7 +241,7 @@ class OutputPanel(UniqueById):
         gfile = self.file_lookup.lookup(link.path)
 
         if gfile:
-            Gedit.commands_load_location(self.window, gfile, None, link.line_nr, link.col_nr)
+            Bedit.commands_load_location(self.window, gfile, None, link.line_nr, link.col_nr)
             GLib.idle_add(self.idle_grab_focus)
 
 # ex:ts=4:et:

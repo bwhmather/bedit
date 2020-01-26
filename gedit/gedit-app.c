@@ -54,16 +54,16 @@
 
 typedef struct
 {
-	GeditPluginsEngine *engine;
+	BeditPluginsEngine *engine;
 
 	GtkCssProvider     *theme_provider;
 
-	GeditLockdownMask  lockdown;
+	BeditLockdownMask  lockdown;
 
 	GtkPageSetup      *page_setup;
 	GtkPrintSettings  *print_settings;
 
-	GeditSettings     *settings;
+	BeditSettings     *settings;
 	GSettings         *ui_settings;
 	GSettings         *window_settings;
 
@@ -84,7 +84,7 @@ typedef struct
 	gint line_position;
 	gint column_position;
 	GApplicationCommandLine *command_line;
-} GeditAppPrivate;
+} BeditAppPrivate;
 
 enum
 {
@@ -154,12 +154,12 @@ static const GOptionEntry options[] =
 	{NULL}
 };
 
-G_DEFINE_ABSTRACT_TYPE_WITH_PRIVATE (GeditApp, gedit_app, GTK_TYPE_APPLICATION)
+G_DEFINE_ABSTRACT_TYPE_WITH_PRIVATE (BeditApp, gedit_app, GTK_TYPE_APPLICATION)
 
 static void
 gedit_app_dispose (GObject *object)
 {
-	GeditAppPrivate *priv;
+	BeditAppPrivate *priv;
 
 	priv = gedit_app_get_instance_private (GEDIT_APP (object));
 
@@ -198,7 +198,7 @@ gedit_app_get_property (GObject    *object,
 			GValue     *value,
 			GParamSpec *pspec)
 {
-	GeditApp *app = GEDIT_APP (object);
+	BeditApp *app = GEDIT_APP (object);
 
 	switch (prop_id)
 	{
@@ -212,7 +212,7 @@ gedit_app_get_property (GObject    *object,
 }
 
 static gchar *
-gedit_app_help_link_id_impl (GeditApp    *app,
+gedit_app_help_link_id_impl (BeditApp    *app,
                              const gchar *name,
                              const gchar *link_id)
 {
@@ -227,7 +227,7 @@ gedit_app_help_link_id_impl (GeditApp    *app,
 }
 
 static gboolean
-gedit_app_show_help_impl (GeditApp    *app,
+gedit_app_show_help_impl (BeditApp    *app,
                           GtkWindow   *parent,
                           const gchar *name,
                           const gchar *link_id)
@@ -279,8 +279,8 @@ gedit_app_show_help_impl (GeditApp    *app,
 }
 
 static void
-gedit_app_set_window_title_impl (GeditApp    *app,
-                                 GeditWindow *window,
+gedit_app_set_window_title_impl (BeditApp    *app,
+                                 BeditWindow *window,
                                  const gchar *title)
 {
 	gtk_window_set_title (GTK_WINDOW (window), title);
@@ -342,7 +342,7 @@ is_in_viewport (GtkWindow    *window,
 	       y + height * .25 <= geometry.y + geometry.height;
 }
 
-static GeditWindow *
+static BeditWindow *
 get_active_window (GtkApplication *app)
 {
 	GdkScreen *screen;
@@ -371,24 +371,24 @@ get_active_window (GtkApplication *app)
 }
 
 static void
-set_command_line_wait (GeditApp *app,
-		       GeditTab *tab)
+set_command_line_wait (BeditApp *app,
+		       BeditTab *tab)
 {
-	GeditAppPrivate *priv;
+	BeditAppPrivate *priv;
 
 	priv = gedit_app_get_instance_private (app);
 
 	g_object_set_data_full (G_OBJECT (tab),
-	                        "GeditTabCommandLineWait",
+	                        "BeditTabCommandLineWait",
 	                        g_object_ref (priv->command_line),
 	                        (GDestroyNotify)g_object_unref);
 }
 
 static void
-set_command_line_wait_doc (GeditDocument *doc,
-			   GeditApp      *app)
+set_command_line_wait_doc (BeditDocument *doc,
+			   BeditApp      *app)
 {
-	GeditTab *tab = gedit_tab_get_from_document (doc);
+	BeditTab *tab = gedit_tab_get_from_document (doc);
 
 	set_command_line_wait (app, tab);
 }
@@ -404,8 +404,8 @@ open_files (GApplication            *application,
 	    GSList                  *file_list,
 	    GApplicationCommandLine *command_line)
 {
-	GeditWindow *window = NULL;
-	GeditTab *tab;
+	BeditWindow *window = NULL;
+	BeditTab *tab;
 	gboolean doc_created = FALSE;
 
 	if (!new_window)
@@ -482,8 +482,8 @@ new_window_activated (GSimpleAction *action,
                       GVariant      *parameter,
                       gpointer       user_data)
 {
-	GeditApp *app;
-	GeditWindow *window;
+	BeditApp *app;
+	BeditWindow *window;
 
 	app = GEDIT_APP (user_data);
 	window = gedit_app_create_window (app, NULL);
@@ -521,7 +521,7 @@ preferences_activated (GSimpleAction  *action,
                        gpointer        user_data)
 {
 	GtkApplication *app;
-	GeditWindow *window;
+	BeditWindow *window;
 
 	app = GTK_APPLICATION (user_data);
 	window = GEDIT_WINDOW (gtk_application_get_active_window (app));
@@ -535,7 +535,7 @@ keyboard_shortcuts_activated (GSimpleAction *action,
                               gpointer       user_data)
 {
 	GtkApplication *app;
-	GeditWindow *window;
+	BeditWindow *window;
 
 	app = GTK_APPLICATION (user_data);
 	window = GEDIT_WINDOW (gtk_application_get_active_window (app));
@@ -549,7 +549,7 @@ help_activated (GSimpleAction *action,
                 gpointer       user_data)
 {
 	GtkApplication *app;
-	GeditWindow *window;
+	BeditWindow *window;
 
 	app = GTK_APPLICATION (user_data);
 	window = GEDIT_WINDOW (gtk_application_get_active_window (app));
@@ -563,7 +563,7 @@ about_activated (GSimpleAction  *action,
                  gpointer        user_data)
 {
 	GtkApplication *app;
-	GeditWindow *window;
+	BeditWindow *window;
 
 	app = GTK_APPLICATION (user_data);
 	window = GEDIT_WINDOW (gtk_application_get_active_window (app));
@@ -593,7 +593,7 @@ static void
 extension_added (PeasExtensionSet *extensions,
 		 PeasPluginInfo   *info,
 		 PeasExtension    *exten,
-		 GeditApp         *app)
+		 BeditApp         *app)
 {
 	gedit_app_activatable_activate (GEDIT_APP_ACTIVATABLE (exten));
 }
@@ -602,7 +602,7 @@ static void
 extension_removed (PeasExtensionSet *extensions,
 		   PeasPluginInfo   *info,
 		   PeasExtension    *exten,
-		   GeditApp         *app)
+		   BeditApp         *app)
 {
 	gedit_app_activatable_deactivate (GEDIT_APP_ACTIVATABLE (exten));
 }
@@ -663,9 +663,9 @@ load_css_from_resource (const gchar *filename,
 static void
 theme_changed (GtkSettings *settings,
 	       GParamSpec  *pspec,
-	       GeditApp    *app)
+	       BeditApp    *app)
 {
-	GeditAppPrivate *priv;
+	BeditAppPrivate *priv;
 
 	priv = gedit_app_get_instance_private (app);
 
@@ -691,7 +691,7 @@ theme_changed (GtkSettings *settings,
 }
 
 static void
-setup_theme_extensions (GeditApp *app)
+setup_theme_extensions (BeditApp *app)
 {
 	GtkSettings *settings;
 
@@ -702,7 +702,7 @@ setup_theme_extensions (GeditApp *app)
 }
 
 static GMenuModel *
-get_menu_model (GeditApp   *app,
+get_menu_model (BeditApp   *app,
                 const char *id)
 {
 	GMenu *menu;
@@ -755,7 +755,7 @@ setup_metadata_manager (void)
 static void
 gedit_app_startup (GApplication *application)
 {
-	GeditAppPrivate *priv;
+	BeditAppPrivate *priv;
 	GtkCssProvider *css_provider;
 	GtkSourceStyleSchemeManager *manager;
 
@@ -867,7 +867,7 @@ gedit_app_startup (GApplication *application)
 static void
 gedit_app_activate (GApplication *application)
 {
-	GeditAppPrivate *priv;
+	BeditAppPrivate *priv;
 
 	priv = gedit_app_get_instance_private (GEDIT_APP (application));
 
@@ -883,9 +883,9 @@ gedit_app_activate (GApplication *application)
 }
 
 static void
-clear_options (GeditApp *app)
+clear_options (BeditApp *app)
 {
-	GeditAppPrivate *priv;
+	BeditAppPrivate *priv;
 
 	priv = gedit_app_get_instance_private (app);
 
@@ -930,7 +930,7 @@ static gint
 gedit_app_command_line (GApplication            *application,
                         GApplicationCommandLine *cl)
 {
-	GeditAppPrivate *priv;
+	BeditAppPrivate *priv;
 	GVariantDict *options;
 	const gchar *encoding_charset;
 	const gchar **remaining_args;
@@ -1150,9 +1150,9 @@ get_page_setup_file (void)
 }
 
 static void
-save_page_setup (GeditApp *app)
+save_page_setup (BeditApp *app)
 {
-	GeditAppPrivate *priv;
+	BeditAppPrivate *priv;
 
 	priv = gedit_app_get_instance_private (app);
 
@@ -1195,9 +1195,9 @@ get_print_settings_file (void)
 }
 
 static void
-save_print_settings (GeditApp *app)
+save_print_settings (BeditApp *app)
 {
-	GeditAppPrivate *priv;
+	BeditAppPrivate *priv;
 
 	priv = gedit_app_get_instance_private (app);
 
@@ -1239,11 +1239,11 @@ gedit_app_shutdown (GApplication *app)
 }
 
 static gboolean
-window_delete_event (GeditWindow *window,
+window_delete_event (BeditWindow *window,
                      GdkEvent    *event,
-                     GeditApp    *app)
+                     BeditApp    *app)
 {
-	GeditWindowState ws;
+	BeditWindowState ws;
 
 	ws = gedit_window_get_state (window);
 
@@ -1259,10 +1259,10 @@ window_delete_event (GeditWindow *window,
 	return TRUE;
 }
 
-static GeditWindow *
-gedit_app_create_window_impl (GeditApp *app)
+static BeditWindow *
+gedit_app_create_window_impl (BeditApp *app)
 {
-	GeditWindow *window;
+	BeditWindow *window;
 
 	window = g_object_new (GEDIT_TYPE_WINDOW, "application", app, NULL);
 
@@ -1277,7 +1277,7 @@ gedit_app_create_window_impl (GeditApp *app)
 }
 
 static void
-gedit_app_class_init (GeditAppClass *klass)
+gedit_app_class_init (BeditAppClass *klass)
 {
 	GObjectClass *object_class = G_OBJECT_CLASS (klass);
 	GApplicationClass *app_class = G_APPLICATION_CLASS (klass);
@@ -1309,9 +1309,9 @@ gedit_app_class_init (GeditAppClass *klass)
 }
 
 static void
-load_page_setup (GeditApp *app)
+load_page_setup (BeditApp *app)
 {
-	GeditAppPrivate *priv;
+	BeditAppPrivate *priv;
 	gchar *filename;
 	GError *error = NULL;
 
@@ -1344,9 +1344,9 @@ load_page_setup (GeditApp *app)
 }
 
 static void
-load_print_settings (GeditApp *app)
+load_print_settings (BeditApp *app)
 {
-	GeditAppPrivate *priv;
+	BeditAppPrivate *priv;
 	gchar *filename;
 	GError *error = NULL;
 
@@ -1385,7 +1385,7 @@ load_print_settings (GeditApp *app)
 static void
 get_network_available (GNetworkMonitor *monitor,
 		       gboolean         available,
-		       GeditApp        *app)
+		       BeditApp        *app)
 {
 	gboolean enable;
 	GList *windows, *w;
@@ -1396,7 +1396,7 @@ get_network_available (GNetworkMonitor *monitor,
 
 	for (w = windows; w != NULL; w = w->next)
 	{
-		GeditWindow *window = GEDIT_WINDOW (w->data);
+		BeditWindow *window = GEDIT_WINDOW (w->data);
 
 		if (GEDIT_IS_WINDOW (window))
 		{
@@ -1416,9 +1416,9 @@ get_network_available (GNetworkMonitor *monitor,
 }
 
 static void
-gedit_app_init (GeditApp *app)
+gedit_app_init (BeditApp *app)
 {
-	GeditAppPrivate *priv;
+	BeditAppPrivate *priv;
 
 	priv = gedit_app_get_instance_private (app);
 
@@ -1440,19 +1440,19 @@ gedit_app_init (GeditApp *app)
 
 /**
  * gedit_app_create_window:
- * @app: the #GeditApp
+ * @app: the #BeditApp
  * @screen: (allow-none):
  *
- * Create a new #GeditWindow part of @app.
+ * Create a new #BeditWindow part of @app.
  *
- * Return value: (transfer none): the new #GeditWindow
+ * Return value: (transfer none): the new #BeditWindow
  */
-GeditWindow *
-gedit_app_create_window (GeditApp  *app,
+BeditWindow *
+gedit_app_create_window (BeditApp  *app,
 			 GdkScreen *screen)
 {
-	GeditAppPrivate *priv;
-	GeditWindow *window;
+	BeditAppPrivate *priv;
+	BeditWindow *window;
 	GdkWindowState state;
 	gint w, h;
 
@@ -1499,17 +1499,17 @@ gedit_app_create_window (GeditApp  *app,
 
 /**
  * gedit_app_get_main_windows:
- * @app: the #GeditApp
+ * @app: the #BeditApp
  *
- * Returns all #GeditWindows currently open in #GeditApp.
+ * Returns all #BeditWindows currently open in #BeditApp.
  * This differs from gtk_application_get_windows() since it does not
  * include the preferences dialog and other auxiliary windows.
  *
- * Return value: (element-type Gedit.Window) (transfer container):
- * a newly allocated list of #GeditWindow objects
+ * Return value: (element-type Bedit.Window) (transfer container):
+ * a newly allocated list of #BeditWindow objects
  */
 GList *
-gedit_app_get_main_windows (GeditApp *app)
+gedit_app_get_main_windows (BeditApp *app)
 {
 	GList *res = NULL;
 	GList *windows, *l;
@@ -1530,15 +1530,15 @@ gedit_app_get_main_windows (GeditApp *app)
 
 /**
  * gedit_app_get_documents:
- * @app: the #GeditApp
+ * @app: the #BeditApp
  *
- * Returns all the documents currently open in #GeditApp.
+ * Returns all the documents currently open in #BeditApp.
  *
- * Return value: (element-type Gedit.Document) (transfer container):
- * a newly allocated list of #GeditDocument objects
+ * Return value: (element-type Bedit.Document) (transfer container):
+ * a newly allocated list of #BeditDocument objects
  */
 GList *
-gedit_app_get_documents	(GeditApp *app)
+gedit_app_get_documents	(BeditApp *app)
 {
 	GList *res = NULL;
 	GList *windows, *l;
@@ -1560,15 +1560,15 @@ gedit_app_get_documents	(GeditApp *app)
 
 /**
  * gedit_app_get_views:
- * @app: the #GeditApp
+ * @app: the #BeditApp
  *
- * Returns all the views currently present in #GeditApp.
+ * Returns all the views currently present in #BeditApp.
  *
- * Return value: (element-type Gedit.View) (transfer container):
- * a newly allocated list of #GeditView objects
+ * Return value: (element-type Bedit.View) (transfer container):
+ * a newly allocated list of #BeditView objects
  */
 GList *
-gedit_app_get_views (GeditApp *app)
+gedit_app_get_views (BeditApp *app)
 {
 	GList *res = NULL;
 	GList *windows, *l;
@@ -1590,16 +1590,16 @@ gedit_app_get_views (GeditApp *app)
 
 /**
  * gedit_app_get_lockdown:
- * @app: a #GeditApp
+ * @app: a #BeditApp
  *
- * Gets the lockdown mask (see #GeditLockdownMask) for the application.
+ * Gets the lockdown mask (see #BeditLockdownMask) for the application.
  * The lockdown mask determines which functions are locked down using
  * the GNOME-wise lockdown GConf keys.
  **/
-GeditLockdownMask
-gedit_app_get_lockdown (GeditApp *app)
+BeditLockdownMask
+gedit_app_get_lockdown (BeditApp *app)
 {
-	GeditAppPrivate *priv;
+	BeditAppPrivate *priv;
 
 	g_return_val_if_fail (GEDIT_IS_APP (app), GEDIT_LOCKDOWN_ALL);
 
@@ -1609,7 +1609,7 @@ gedit_app_get_lockdown (GeditApp *app)
 }
 
 gboolean
-gedit_app_show_help (GeditApp    *app,
+gedit_app_show_help (BeditApp    *app,
                      GtkWindow   *parent,
                      const gchar *name,
                      const gchar *link_id)
@@ -1621,8 +1621,8 @@ gedit_app_show_help (GeditApp    *app,
 }
 
 void
-gedit_app_set_window_title (GeditApp    *app,
-                            GeditWindow *window,
+gedit_app_set_window_title (BeditApp    *app,
+                            BeditWindow *window,
                             const gchar *title)
 {
 	g_return_if_fail (GEDIT_IS_APP (app));
@@ -1632,8 +1632,8 @@ gedit_app_set_window_title (GeditApp    *app,
 }
 
 gboolean
-gedit_app_process_window_event (GeditApp    *app,
-                                GeditWindow *window,
+gedit_app_process_window_event (BeditApp    *app,
+                                BeditWindow *window,
                                 GdkEvent    *event)
 {
 	g_return_val_if_fail (GEDIT_IS_APP (app), FALSE);
@@ -1697,9 +1697,9 @@ find_extension_point_section (GMenuModel  *model,
 }
 
 static void
-app_lockdown_changed (GeditApp *app)
+app_lockdown_changed (BeditApp *app)
 {
-	GeditAppPrivate *priv;
+	BeditAppPrivate *priv;
 	GList *windows, *l;
 
 	priv = gedit_app_get_instance_private (app);
@@ -1718,10 +1718,10 @@ app_lockdown_changed (GeditApp *app)
 }
 
 void
-_gedit_app_set_lockdown (GeditApp          *app,
-			 GeditLockdownMask  lockdown)
+_gedit_app_set_lockdown (BeditApp          *app,
+			 BeditLockdownMask  lockdown)
 {
-	GeditAppPrivate *priv;
+	BeditAppPrivate *priv;
 
 	g_return_if_fail (GEDIT_IS_APP (app));
 
@@ -1732,11 +1732,11 @@ _gedit_app_set_lockdown (GeditApp          *app,
 }
 
 void
-_gedit_app_set_lockdown_bit (GeditApp          *app,
-			     GeditLockdownMask  bit,
+_gedit_app_set_lockdown_bit (BeditApp          *app,
+			     BeditLockdownMask  bit,
 			     gboolean           value)
 {
-	GeditAppPrivate *priv;
+	BeditAppPrivate *priv;
 
 	g_return_if_fail (GEDIT_IS_APP (app));
 
@@ -1756,9 +1756,9 @@ _gedit_app_set_lockdown_bit (GeditApp          *app,
 
 /* Returns a copy */
 GtkPageSetup *
-_gedit_app_get_default_page_setup (GeditApp *app)
+_gedit_app_get_default_page_setup (BeditApp *app)
 {
-	GeditAppPrivate *priv;
+	BeditAppPrivate *priv;
 
 	g_return_val_if_fail (GEDIT_IS_APP (app), NULL);
 
@@ -1773,10 +1773,10 @@ _gedit_app_get_default_page_setup (GeditApp *app)
 }
 
 void
-_gedit_app_set_default_page_setup (GeditApp     *app,
+_gedit_app_set_default_page_setup (BeditApp     *app,
 				   GtkPageSetup *page_setup)
 {
-	GeditAppPrivate *priv;
+	BeditAppPrivate *priv;
 
 	g_return_if_fail (GEDIT_IS_APP (app));
 	g_return_if_fail (GTK_IS_PAGE_SETUP (page_setup));
@@ -1788,9 +1788,9 @@ _gedit_app_set_default_page_setup (GeditApp     *app,
 
 /* Returns a copy */
 GtkPrintSettings *
-_gedit_app_get_default_print_settings (GeditApp *app)
+_gedit_app_get_default_print_settings (BeditApp *app)
 {
-	GeditAppPrivate *priv;
+	BeditAppPrivate *priv;
 
 	g_return_val_if_fail (GEDIT_IS_APP (app), NULL);
 
@@ -1805,10 +1805,10 @@ _gedit_app_get_default_print_settings (GeditApp *app)
 }
 
 void
-_gedit_app_set_default_print_settings (GeditApp         *app,
+_gedit_app_set_default_print_settings (BeditApp         *app,
 				       GtkPrintSettings *settings)
 {
-	GeditAppPrivate *priv;
+	BeditAppPrivate *priv;
 
 	g_return_if_fail (GEDIT_IS_APP (app));
 	g_return_if_fail (GTK_IS_PRINT_SETTINGS (settings));
@@ -1823,10 +1823,10 @@ _gedit_app_set_default_print_settings (GeditApp         *app,
 	priv->print_settings = g_object_ref (settings);
 }
 
-GeditSettings *
-_gedit_app_get_settings (GeditApp *app)
+BeditSettings *
+_gedit_app_get_settings (BeditApp *app)
 {
-	GeditAppPrivate *priv;
+	BeditAppPrivate *priv;
 
 	g_return_val_if_fail (GEDIT_IS_APP (app), NULL);
 
@@ -1836,9 +1836,9 @@ _gedit_app_get_settings (GeditApp *app)
 }
 
 GMenuModel *
-_gedit_app_get_hamburger_menu (GeditApp *app)
+_gedit_app_get_hamburger_menu (BeditApp *app)
 {
-	GeditAppPrivate *priv;
+	BeditAppPrivate *priv;
 
 	g_return_val_if_fail (GEDIT_IS_APP (app), NULL);
 
@@ -1848,9 +1848,9 @@ _gedit_app_get_hamburger_menu (GeditApp *app)
 }
 
 GMenuModel *
-_gedit_app_get_notebook_menu (GeditApp *app)
+_gedit_app_get_notebook_menu (BeditApp *app)
 {
-	GeditAppPrivate *priv;
+	BeditAppPrivate *priv;
 
 	g_return_val_if_fail (GEDIT_IS_APP (app), NULL);
 
@@ -1860,9 +1860,9 @@ _gedit_app_get_notebook_menu (GeditApp *app)
 }
 
 GMenuModel *
-_gedit_app_get_tab_width_menu (GeditApp *app)
+_gedit_app_get_tab_width_menu (BeditApp *app)
 {
-	GeditAppPrivate *priv;
+	BeditAppPrivate *priv;
 
 	g_return_val_if_fail (GEDIT_IS_APP (app), NULL);
 
@@ -1872,9 +1872,9 @@ _gedit_app_get_tab_width_menu (GeditApp *app)
 }
 
 GMenuModel *
-_gedit_app_get_line_col_menu (GeditApp *app)
+_gedit_app_get_line_col_menu (BeditApp *app)
 {
-	GeditAppPrivate *priv;
+	BeditAppPrivate *priv;
 
 	g_return_val_if_fail (GEDIT_IS_APP (app), NULL);
 
@@ -1883,11 +1883,11 @@ _gedit_app_get_line_col_menu (GeditApp *app)
 	return priv->line_col_menu;
 }
 
-GeditMenuExtension *
-_gedit_app_extend_menu (GeditApp    *app,
+BeditMenuExtension *
+_gedit_app_extend_menu (BeditApp    *app,
                         const gchar *extension_point)
 {
-	GeditAppPrivate *priv;
+	BeditAppPrivate *priv;
 	GMenuModel *model;
 	GMenuModel *section;
 

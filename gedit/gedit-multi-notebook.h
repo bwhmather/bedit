@@ -32,113 +32,113 @@
 G_BEGIN_DECLS
 
 #define GEDIT_TYPE_MULTI_NOTEBOOK		(gedit_multi_notebook_get_type ())
-#define GEDIT_MULTI_NOTEBOOK(obj)		(G_TYPE_CHECK_INSTANCE_CAST ((obj), GEDIT_TYPE_MULTI_NOTEBOOK, GeditMultiNotebook))
-#define GEDIT_MULTI_NOTEBOOK_CONST(obj)		(G_TYPE_CHECK_INSTANCE_CAST ((obj), GEDIT_TYPE_MULTI_NOTEBOOK, GeditMultiNotebook const))
-#define GEDIT_MULTI_NOTEBOOK_CLASS(klass)	(G_TYPE_CHECK_CLASS_CAST ((klass), GEDIT_TYPE_MULTI_NOTEBOOK, GeditMultiNotebookClass))
+#define GEDIT_MULTI_NOTEBOOK(obj)		(G_TYPE_CHECK_INSTANCE_CAST ((obj), GEDIT_TYPE_MULTI_NOTEBOOK, BeditMultiNotebook))
+#define GEDIT_MULTI_NOTEBOOK_CONST(obj)		(G_TYPE_CHECK_INSTANCE_CAST ((obj), GEDIT_TYPE_MULTI_NOTEBOOK, BeditMultiNotebook const))
+#define GEDIT_MULTI_NOTEBOOK_CLASS(klass)	(G_TYPE_CHECK_CLASS_CAST ((klass), GEDIT_TYPE_MULTI_NOTEBOOK, BeditMultiNotebookClass))
 #define GEDIT_IS_MULTI_NOTEBOOK(obj)		(G_TYPE_CHECK_INSTANCE_TYPE ((obj), GEDIT_TYPE_MULTI_NOTEBOOK))
 #define GEDIT_IS_MULTI_NOTEBOOK_CLASS(klass)	(G_TYPE_CHECK_CLASS_TYPE ((klass), GEDIT_TYPE_MULTI_NOTEBOOK))
-#define GEDIT_MULTI_NOTEBOOK_GET_CLASS(obj)	(G_TYPE_INSTANCE_GET_CLASS ((obj), GEDIT_TYPE_MULTI_NOTEBOOK, GeditMultiNotebookClass))
+#define GEDIT_MULTI_NOTEBOOK_GET_CLASS(obj)	(G_TYPE_INSTANCE_GET_CLASS ((obj), GEDIT_TYPE_MULTI_NOTEBOOK, BeditMultiNotebookClass))
 
-typedef struct _GeditMultiNotebook		GeditMultiNotebook;
-typedef struct _GeditMultiNotebookClass		GeditMultiNotebookClass;
-typedef struct _GeditMultiNotebookPrivate	GeditMultiNotebookPrivate;
+typedef struct _BeditMultiNotebook		BeditMultiNotebook;
+typedef struct _BeditMultiNotebookClass		BeditMultiNotebookClass;
+typedef struct _BeditMultiNotebookPrivate	BeditMultiNotebookPrivate;
 
-struct _GeditMultiNotebook
+struct _BeditMultiNotebook
 {
 	GtkGrid parent;
 
-	GeditMultiNotebookPrivate *priv;
+	BeditMultiNotebookPrivate *priv;
 };
 
-struct _GeditMultiNotebookClass
+struct _BeditMultiNotebookClass
 {
 	GtkGridClass parent_class;
 
 	/* Signals */
-	void	(* notebook_added)		(GeditMultiNotebook *mnb,
-						 GeditNotebook      *notebook);
-	void	(* notebook_removed)		(GeditMultiNotebook *mnb,
-						 GeditNotebook      *notebook);
-	void	(* tab_added)			(GeditMultiNotebook *mnb,
-						 GeditNotebook      *notebook,
-						 GeditTab           *tab);
-	void	(* tab_removed)			(GeditMultiNotebook *mnb,
-						 GeditNotebook      *notebook,
-						 GeditTab           *tab);
-	void	(* switch_tab)			(GeditMultiNotebook *mnb,
-						 GeditNotebook      *old_notebook,
-						 GeditTab           *old_tab,
-						 GeditNotebook      *new_notebook,
-						 GeditTab           *new_tab);
-	void	(* tab_close_request)		(GeditMultiNotebook *mnb,
-						 GeditNotebook      *notebook,
-						 GeditTab           *tab);
-	GtkNotebook *	(* create_window)	(GeditMultiNotebook *mnb,
-						 GeditNotebook      *notebook,
+	void	(* notebook_added)		(BeditMultiNotebook *mnb,
+						 BeditNotebook      *notebook);
+	void	(* notebook_removed)		(BeditMultiNotebook *mnb,
+						 BeditNotebook      *notebook);
+	void	(* tab_added)			(BeditMultiNotebook *mnb,
+						 BeditNotebook      *notebook,
+						 BeditTab           *tab);
+	void	(* tab_removed)			(BeditMultiNotebook *mnb,
+						 BeditNotebook      *notebook,
+						 BeditTab           *tab);
+	void	(* switch_tab)			(BeditMultiNotebook *mnb,
+						 BeditNotebook      *old_notebook,
+						 BeditTab           *old_tab,
+						 BeditNotebook      *new_notebook,
+						 BeditTab           *new_tab);
+	void	(* tab_close_request)		(BeditMultiNotebook *mnb,
+						 BeditNotebook      *notebook,
+						 BeditTab           *tab);
+	GtkNotebook *	(* create_window)	(BeditMultiNotebook *mnb,
+						 BeditNotebook      *notebook,
 						 GtkWidget          *page,
 						 gint                x,
 						 gint                y);
-	void	(* page_reordered)		(GeditMultiNotebook *mnb);
-	void	(* show_popup_menu)		(GeditMultiNotebook *mnb,
+	void	(* page_reordered)		(BeditMultiNotebook *mnb);
+	void	(* show_popup_menu)		(BeditMultiNotebook *mnb,
 						 GdkEvent           *event,
-						 GeditTab           *tab);
+						 BeditTab           *tab);
 };
 
 GType			 gedit_multi_notebook_get_type			(void) G_GNUC_CONST;
 
-GeditMultiNotebook	*gedit_multi_notebook_new			(void);
+BeditMultiNotebook	*gedit_multi_notebook_new			(void);
 
-GeditNotebook		*gedit_multi_notebook_get_active_notebook	(GeditMultiNotebook *mnb);
+BeditNotebook		*gedit_multi_notebook_get_active_notebook	(BeditMultiNotebook *mnb);
 
-gint			 gedit_multi_notebook_get_n_notebooks		(GeditMultiNotebook *mnb);
+gint			 gedit_multi_notebook_get_n_notebooks		(BeditMultiNotebook *mnb);
 
-GeditNotebook		*gedit_multi_notebook_get_nth_notebook		(GeditMultiNotebook *mnb,
+BeditNotebook		*gedit_multi_notebook_get_nth_notebook		(BeditMultiNotebook *mnb,
 									 gint                notebook_num);
 
-GeditNotebook		*gedit_multi_notebook_get_notebook_for_tab	(GeditMultiNotebook *mnb,
-									 GeditTab           *tab);
+BeditNotebook		*gedit_multi_notebook_get_notebook_for_tab	(BeditMultiNotebook *mnb,
+									 BeditTab           *tab);
 
-gint			 gedit_multi_notebook_get_notebook_num		(GeditMultiNotebook *mnb,
-									 GeditNotebook      *notebook);
+gint			 gedit_multi_notebook_get_notebook_num		(BeditMultiNotebook *mnb,
+									 BeditNotebook      *notebook);
 
-gint			 gedit_multi_notebook_get_n_tabs		(GeditMultiNotebook *mnb);
+gint			 gedit_multi_notebook_get_n_tabs		(BeditMultiNotebook *mnb);
 
-gint			 gedit_multi_notebook_get_page_num		(GeditMultiNotebook *mnb,
-									 GeditTab           *tab);
+gint			 gedit_multi_notebook_get_page_num		(BeditMultiNotebook *mnb,
+									 BeditTab           *tab);
 
-GeditTab		*gedit_multi_notebook_get_active_tab		(GeditMultiNotebook *mnb);
-void			 gedit_multi_notebook_set_active_tab		(GeditMultiNotebook *mnb,
-									 GeditTab           *tab);
+BeditTab		*gedit_multi_notebook_get_active_tab		(BeditMultiNotebook *mnb);
+void			 gedit_multi_notebook_set_active_tab		(BeditMultiNotebook *mnb,
+									 BeditTab           *tab);
 
-void			 gedit_multi_notebook_set_current_page		(GeditMultiNotebook *mnb,
+void			 gedit_multi_notebook_set_current_page		(BeditMultiNotebook *mnb,
 									 gint                page_num);
 
-GList			*gedit_multi_notebook_get_all_tabs		(GeditMultiNotebook *mnb);
+GList			*gedit_multi_notebook_get_all_tabs		(BeditMultiNotebook *mnb);
 
-void			 gedit_multi_notebook_close_tabs		(GeditMultiNotebook *mnb,
+void			 gedit_multi_notebook_close_tabs		(BeditMultiNotebook *mnb,
 									 const GList        *tabs);
 
-void			 gedit_multi_notebook_close_all_tabs		(GeditMultiNotebook *mnb);
+void			 gedit_multi_notebook_close_all_tabs		(BeditMultiNotebook *mnb);
 
-void			 gedit_multi_notebook_add_new_notebook		(GeditMultiNotebook *mnb);
+void			 gedit_multi_notebook_add_new_notebook		(BeditMultiNotebook *mnb);
 
-void			 gedit_multi_notebook_add_new_notebook_with_tab (GeditMultiNotebook *mnb,
-									 GeditTab           *tab);
+void			 gedit_multi_notebook_add_new_notebook_with_tab (BeditMultiNotebook *mnb,
+									 BeditTab           *tab);
 
-void			 gedit_multi_notebook_remove_active_notebook	(GeditMultiNotebook *mnb);
+void			 gedit_multi_notebook_remove_active_notebook	(BeditMultiNotebook *mnb);
 
-void			 gedit_multi_notebook_previous_notebook		(GeditMultiNotebook *mnb);
-void			 gedit_multi_notebook_next_notebook		(GeditMultiNotebook *mnb);
+void			 gedit_multi_notebook_previous_notebook		(BeditMultiNotebook *mnb);
+void			 gedit_multi_notebook_next_notebook		(BeditMultiNotebook *mnb);
 
-void			 gedit_multi_notebook_foreach_notebook		(GeditMultiNotebook *mnb,
+void			 gedit_multi_notebook_foreach_notebook		(BeditMultiNotebook *mnb,
 									 GtkCallback         callback,
 									 gpointer            callback_data);
 
-void			 gedit_multi_notebook_foreach_tab		(GeditMultiNotebook *mnb,
+void			 gedit_multi_notebook_foreach_tab		(BeditMultiNotebook *mnb,
 									 GtkCallback         callback,
 									 gpointer            callback_data);
 
-void			_gedit_multi_notebook_set_show_tabs		(GeditMultiNotebook *mnb,
+void			_gedit_multi_notebook_set_show_tabs		(BeditMultiNotebook *mnb,
 									 gboolean            show);
 
 G_END_DECLS

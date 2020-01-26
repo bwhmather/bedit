@@ -33,7 +33,7 @@
 #include "gedit-dirs.h"
 
 void
-_gedit_cmd_help_keyboard_shortcuts (GeditWindow *window)
+_gedit_cmd_help_keyboard_shortcuts (BeditWindow *window)
 {
 	static GtkWidget *shortcuts_window;
 
@@ -64,7 +64,7 @@ _gedit_cmd_help_keyboard_shortcuts (GeditWindow *window)
 }
 
 void
-_gedit_cmd_help_contents (GeditWindow *window)
+_gedit_cmd_help_contents (BeditWindow *window)
 {
 	gedit_debug (DEBUG_COMMANDS);
 
@@ -75,7 +75,7 @@ _gedit_cmd_help_contents (GeditWindow *window)
 }
 
 void
-_gedit_cmd_help_about (GeditWindow *window)
+_gedit_cmd_help_about (BeditWindow *window)
 {
 	static const gchar * const authors[] = {
 		"Alex Roberts",

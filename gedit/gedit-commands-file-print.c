@@ -33,8 +33,8 @@ _gedit_cmd_file_print (GSimpleAction *action,
                        GVariant      *parameter,
                        gpointer       user_data)
 {
-	GeditWindow *window = GEDIT_WINDOW (user_data);
-	GeditTab *tab;
+	BeditWindow *window = GEDIT_WINDOW (user_data);
+	BeditTab *tab;
 
 	gedit_debug (DEBUG_COMMANDS);
 

@@ -29,10 +29,10 @@
 G_BEGIN_DECLS
 
 #define GEDIT_TYPE_NOTEBOOK_POPUP_MENU			(gedit_notebook_popup_menu_get_type ())
-G_DECLARE_FINAL_TYPE (GeditNotebookPopupMenu, gedit_notebook_popup_menu, GEDIT, NOTEBOOK_POPUP_MENU, GtkMenu)
+G_DECLARE_FINAL_TYPE (BeditNotebookPopupMenu, gedit_notebook_popup_menu, GEDIT, NOTEBOOK_POPUP_MENU, GtkMenu)
 
-GtkWidget           *gedit_notebook_popup_menu_new          (GeditWindow *window,
-                                                             GeditTab    *tab);
+GtkWidget           *gedit_notebook_popup_menu_new          (BeditWindow *window,
+                                                             BeditTab    *tab);
 
 G_END_DECLS
 

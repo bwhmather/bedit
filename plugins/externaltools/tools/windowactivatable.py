@@ -1,5 +1,5 @@
 # -*- coding: UTF-8 -*-
-#    Gedit External Tools plugin
+#    Bedit External Tools plugin
 #    Copyright (C) 2005-2006  Steve Frécinaux <steve@istique.net>
 #
 #    This program is free software; you can redistribute it and/or modify
@@ -18,7 +18,7 @@
 
 __all__ = ('ExternalToolsPlugin', 'OutputPanel', 'Capture', 'UniqueById')
 
-from gi.repository import GLib, Gio, GObject, Gtk, Gedit
+from gi.repository import GLib, Gio, GObject, Gtk, Bedit
 from .library import ToolLibrary
 from .outputpanel import OutputPanel
 from .capture import Capture
@@ -103,10 +103,10 @@ class ToolActions(object):
                                    self.filter_language(language, tool))
 
 
-class WindowActivatable(GObject.Object, Gedit.WindowActivatable):
+class WindowActivatable(GObject.Object, Bedit.WindowActivatable):
     __gtype_name__ = "ExternalToolsWindowActivatable"
 
-    window = GObject.Property(type=Gedit.Window)
+    window = GObject.Property(type=Bedit.Window)
 
     def __init__(self):
         GObject.Object.__init__(self)
@@ -123,7 +123,7 @@ class WindowActivatable(GObject.Object, Gedit.WindowActivatable):
         self.actions = ToolActions(self._library, self.window, self._output_buffer)
 
         bottom = self.window.get_bottom_panel()
-        bottom.add_titled(self._output_buffer.panel, "GeditExternalToolsShellOutput", _("Tool Output"))
+        bottom.add_titled(self._output_buffer.panel, "BeditExternalToolsShellOutput", _("Tool Output"))
 
     def do_update_state(self):
         if self.actions is not None:

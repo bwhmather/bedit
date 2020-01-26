@@ -26,7 +26,7 @@
 #include <glib/gi18n.h>
 #include <gtk/gtk.h>
 
-struct _GeditMenuStackSwitcher
+struct _BeditMenuStackSwitcher
 {
   GtkMenuButton parent_instance;
 
@@ -46,10 +46,10 @@ enum {
 
 static GParamSpec *properties[LAST_PROP];
 
-G_DEFINE_TYPE (GeditMenuStackSwitcher, gedit_menu_stack_switcher, GTK_TYPE_MENU_BUTTON)
+G_DEFINE_TYPE (BeditMenuStackSwitcher, gedit_menu_stack_switcher, GTK_TYPE_MENU_BUTTON)
 
 static void
-gedit_menu_stack_switcher_init (GeditMenuStackSwitcher *switcher)
+gedit_menu_stack_switcher_init (BeditMenuStackSwitcher *switcher)
 {
   GtkWidget *box;
   GtkWidget *arrow;
@@ -91,14 +91,14 @@ gedit_menu_stack_switcher_init (GeditMenuStackSwitcher *switcher)
 }
 
 static void
-clear_popover (GeditMenuStackSwitcher *switcher)
+clear_popover (BeditMenuStackSwitcher *switcher)
 {
   gtk_container_foreach (GTK_CONTAINER (switcher->button_box), (GtkCallback) gtk_widget_destroy, switcher);
 }
 
 static void
 on_button_clicked (GtkWidget              *widget,
-                   GeditMenuStackSwitcher *switcher)
+                   BeditMenuStackSwitcher *switcher)
 {
   GtkWidget *child;
 
@@ -111,7 +111,7 @@ on_button_clicked (GtkWidget              *widget,
 }
 
 static void
-update_button (GeditMenuStackSwitcher *switcher,
+update_button (BeditMenuStackSwitcher *switcher,
                GtkWidget              *widget,
                GtkWidget              *button)
 {
@@ -147,7 +147,7 @@ update_button (GeditMenuStackSwitcher *switcher,
 static void
 on_title_icon_visible_updated (GtkWidget              *widget,
                                GParamSpec             *pspec,
-                               GeditMenuStackSwitcher *switcher)
+                               BeditMenuStackSwitcher *switcher)
 {
   GtkWidget *button;
 
@@ -158,7 +158,7 @@ on_title_icon_visible_updated (GtkWidget              *widget,
 static void
 on_position_updated (GtkWidget        *widget,
                      GParamSpec       *pspec,
-                     GeditMenuStackSwitcher *switcher)
+                     BeditMenuStackSwitcher *switcher)
 {
   GtkWidget *button;
   gint position;
@@ -173,7 +173,7 @@ on_position_updated (GtkWidget        *widget,
 }
 
 static void
-add_child (GeditMenuStackSwitcher *switcher,
+add_child (BeditMenuStackSwitcher *switcher,
            GtkWidget              *widget)
 {
   GtkWidget *button;
@@ -206,13 +206,13 @@ add_child (GeditMenuStackSwitcher *switcher,
 
 static void
 foreach_stack (GtkWidget              *widget,
-               GeditMenuStackSwitcher *switcher)
+               BeditMenuStackSwitcher *switcher)
 {
   add_child (switcher, widget);
 }
 
 static void
-populate_popover (GeditMenuStackSwitcher *switcher)
+populate_popover (BeditMenuStackSwitcher *switcher)
 {
   gtk_container_foreach (GTK_CONTAINER (switcher->stack), (GtkCallback)foreach_stack, switcher);
 }
@@ -220,7 +220,7 @@ populate_popover (GeditMenuStackSwitcher *switcher)
 static void
 on_child_changed (GtkWidget              *widget,
                   GParamSpec             *pspec,
-                  GeditMenuStackSwitcher *switcher)
+                  BeditMenuStackSwitcher *switcher)
 {
   GtkWidget *child;
   GtkWidget *button;
@@ -250,7 +250,7 @@ on_child_changed (GtkWidget              *widget,
 static void
 on_stack_child_added (GtkStack               *stack,
                       GtkWidget              *widget,
-                      GeditMenuStackSwitcher *switcher)
+                      BeditMenuStackSwitcher *switcher)
 {
   add_child (switcher, widget);
 }
@@ -258,7 +258,7 @@ on_stack_child_added (GtkStack               *stack,
 static void
 on_stack_child_removed (GtkStack               *stack,
                         GtkWidget              *widget,
-                        GeditMenuStackSwitcher *switcher)
+                        BeditMenuStackSwitcher *switcher)
 {
   GtkWidget *button;
 
@@ -273,7 +273,7 @@ on_stack_child_removed (GtkStack               *stack,
 }
 
 static void
-disconnect_stack_signals (GeditMenuStackSwitcher *switcher)
+disconnect_stack_signals (BeditMenuStackSwitcher *switcher)
 {
   g_signal_handlers_disconnect_by_func (switcher->stack, on_stack_child_added, switcher);
   g_signal_handlers_disconnect_by_func (switcher->stack, on_stack_child_removed, switcher);
@@ -282,7 +282,7 @@ disconnect_stack_signals (GeditMenuStackSwitcher *switcher)
 }
 
 static void
-connect_stack_signals (GeditMenuStackSwitcher *switcher)
+connect_stack_signals (BeditMenuStackSwitcher *switcher)
 {
   g_signal_connect (switcher->stack, "add",
                     G_CALLBACK (on_stack_child_added), switcher);
@@ -295,7 +295,7 @@ connect_stack_signals (GeditMenuStackSwitcher *switcher)
 }
 
 void
-gedit_menu_stack_switcher_set_stack (GeditMenuStackSwitcher *switcher,
+gedit_menu_stack_switcher_set_stack (BeditMenuStackSwitcher *switcher,
                                      GtkStack               *stack)
 {
   g_return_if_fail (GEDIT_IS_MENU_STACK_SWITCHER (switcher));
@@ -324,7 +324,7 @@ gedit_menu_stack_switcher_set_stack (GeditMenuStackSwitcher *switcher,
 }
 
 GtkStack *
-gedit_menu_stack_switcher_get_stack (GeditMenuStackSwitcher *switcher)
+gedit_menu_stack_switcher_get_stack (BeditMenuStackSwitcher *switcher)
 {
   g_return_val_if_fail (GEDIT_IS_MENU_STACK_SWITCHER (switcher), NULL);
 
@@ -337,7 +337,7 @@ gedit_menu_stack_switcher_get_property (GObject    *object,
                                         GValue     *value,
                                         GParamSpec *pspec)
 {
-  GeditMenuStackSwitcher *switcher = GEDIT_MENU_STACK_SWITCHER (object);
+  BeditMenuStackSwitcher *switcher = GEDIT_MENU_STACK_SWITCHER (object);
 
   switch (prop_id)
     {
@@ -357,7 +357,7 @@ gedit_menu_stack_switcher_set_property (GObject      *object,
                                         const GValue *value,
                                         GParamSpec   *pspec)
 {
-  GeditMenuStackSwitcher *switcher = GEDIT_MENU_STACK_SWITCHER (object);
+  BeditMenuStackSwitcher *switcher = GEDIT_MENU_STACK_SWITCHER (object);
 
   switch (prop_id)
     {
@@ -374,7 +374,7 @@ gedit_menu_stack_switcher_set_property (GObject      *object,
 static void
 gedit_menu_stack_switcher_dispose (GObject *object)
 {
-  GeditMenuStackSwitcher *switcher = GEDIT_MENU_STACK_SWITCHER (object);
+  BeditMenuStackSwitcher *switcher = GEDIT_MENU_STACK_SWITCHER (object);
 
   gedit_menu_stack_switcher_set_stack (switcher, NULL);
 
@@ -384,7 +384,7 @@ gedit_menu_stack_switcher_dispose (GObject *object)
 static void
 gedit_menu_stack_switcher_finalize (GObject *object)
 {
-  GeditMenuStackSwitcher *switcher = GEDIT_MENU_STACK_SWITCHER (object);
+  BeditMenuStackSwitcher *switcher = GEDIT_MENU_STACK_SWITCHER (object);
 
   g_hash_table_destroy (switcher->buttons);
 
@@ -392,7 +392,7 @@ gedit_menu_stack_switcher_finalize (GObject *object)
 }
 
 static void
-gedit_menu_stack_switcher_class_init (GeditMenuStackSwitcherClass *klass)
+gedit_menu_stack_switcher_class_init (BeditMenuStackSwitcherClass *klass)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
 

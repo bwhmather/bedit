@@ -31,35 +31,35 @@ G_BEGIN_DECLS
 #define GEDIT_TYPE_FILE_BROWSER_MESSAGE_ID            (gedit_file_browser_message_id_get_type ())
 #define GEDIT_FILE_BROWSER_MESSAGE_ID(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj),\
                                                        GEDIT_TYPE_FILE_BROWSER_MESSAGE_ID,\
-                                                       GeditFileBrowserMessageId))
+                                                       BeditFileBrowserMessageId))
 #define GEDIT_FILE_BROWSER_MESSAGE_ID_CONST(obj)      (G_TYPE_CHECK_INSTANCE_CAST ((obj),\
                                                        GEDIT_TYPE_FILE_BROWSER_MESSAGE_ID,\
-                                                       GeditFileBrowserMessageId const))
+                                                       BeditFileBrowserMessageId const))
 #define GEDIT_FILE_BROWSER_MESSAGE_ID_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass),\
                                                        GEDIT_TYPE_FILE_BROWSER_MESSAGE_ID,\
-                                                       GeditFileBrowserMessageIdClass))
+                                                       BeditFileBrowserMessageIdClass))
 #define GEDIT_IS_FILE_BROWSER_MESSAGE_ID(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj),\
                                                        GEDIT_TYPE_FILE_BROWSER_MESSAGE_ID))
 #define GEDIT_IS_FILE_BROWSER_MESSAGE_ID_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass),\
                                                        GEDIT_TYPE_FILE_BROWSER_MESSAGE_ID))
 #define GEDIT_FILE_BROWSER_MESSAGE_ID_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj),\
                                                        GEDIT_TYPE_FILE_BROWSER_MESSAGE_ID,\
-                                                       GeditFileBrowserMessageIdClass))
+                                                       BeditFileBrowserMessageIdClass))
 
-typedef struct _GeditFileBrowserMessageId        GeditFileBrowserMessageId;
-typedef struct _GeditFileBrowserMessageIdClass   GeditFileBrowserMessageIdClass;
-typedef struct _GeditFileBrowserMessageIdPrivate GeditFileBrowserMessageIdPrivate;
+typedef struct _BeditFileBrowserMessageId        BeditFileBrowserMessageId;
+typedef struct _BeditFileBrowserMessageIdClass   BeditFileBrowserMessageIdClass;
+typedef struct _BeditFileBrowserMessageIdPrivate BeditFileBrowserMessageIdPrivate;
 
-struct _GeditFileBrowserMessageId
+struct _BeditFileBrowserMessageId
 {
-	GeditMessage parent;
+	BeditMessage parent;
 
-	GeditFileBrowserMessageIdPrivate *priv;
+	BeditFileBrowserMessageIdPrivate *priv;
 };
 
-struct _GeditFileBrowserMessageIdClass
+struct _BeditFileBrowserMessageIdClass
 {
-	GeditMessageClass parent_class;
+	BeditMessageClass parent_class;
 };
 
 GType gedit_file_browser_message_id_get_type (void) G_GNUC_CONST;

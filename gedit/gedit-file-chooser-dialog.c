@@ -28,7 +28,7 @@
 #include "gedit-file-chooser-dialog-gtk.h"
 #endif
 
-G_DEFINE_INTERFACE (GeditFileChooserDialog, gedit_file_chooser_dialog, G_TYPE_OBJECT)
+G_DEFINE_INTERFACE (BeditFileChooserDialog, gedit_file_chooser_dialog, G_TYPE_OBJECT)
 
 static gboolean
 confirm_overwrite_accumulator (GSignalInvocationHint *ihint,
@@ -47,7 +47,7 @@ confirm_overwrite_accumulator (GSignalInvocationHint *ihint,
 }
 
 static void
-gedit_file_chooser_dialog_default_init (GeditFileChooserDialogInterface *iface)
+gedit_file_chooser_dialog_default_init (BeditFileChooserDialogInterface *iface)
 {
 	g_signal_new ("response",
 	              G_TYPE_FROM_INTERFACE (iface),
@@ -67,10 +67,10 @@ gedit_file_chooser_dialog_default_init (GeditFileChooserDialogInterface *iface)
 	              0);
 }
 
-GeditFileChooserDialog *
+BeditFileChooserDialog *
 gedit_file_chooser_dialog_create (const gchar              *title,
                                   GtkWindow                *parent,
-                                  GeditFileChooserFlags    flags,
+                                  BeditFileChooserFlags    flags,
                                   const GtkSourceEncoding *encoding,
                                   const gchar              *cancel_label,
                                   GtkResponseType           cancel_response,
@@ -99,10 +99,10 @@ gedit_file_chooser_dialog_create (const gchar              *title,
 }
 
 void
-gedit_file_chooser_dialog_set_encoding (GeditFileChooserDialog  *dialog,
+gedit_file_chooser_dialog_set_encoding (BeditFileChooserDialog  *dialog,
                                         const GtkSourceEncoding *encoding)
 {
-	GeditFileChooserDialogInterface *iface;
+	BeditFileChooserDialogInterface *iface;
 
 	g_return_if_fail (GEDIT_IS_FILE_CHOOSER_DIALOG (dialog));
 
@@ -113,9 +113,9 @@ gedit_file_chooser_dialog_set_encoding (GeditFileChooserDialog  *dialog,
 }
 
 const GtkSourceEncoding *
-gedit_file_chooser_dialog_get_encoding (GeditFileChooserDialog *dialog)
+gedit_file_chooser_dialog_get_encoding (BeditFileChooserDialog *dialog)
 {
-	GeditFileChooserDialogInterface *iface;
+	BeditFileChooserDialogInterface *iface;
 
 	g_return_val_if_fail (GEDIT_IS_FILE_CHOOSER_DIALOG (dialog), NULL);
 
@@ -126,10 +126,10 @@ gedit_file_chooser_dialog_get_encoding (GeditFileChooserDialog *dialog)
 }
 
 void
-gedit_file_chooser_dialog_set_newline_type (GeditFileChooserDialog *dialog,
+gedit_file_chooser_dialog_set_newline_type (BeditFileChooserDialog *dialog,
                                             GtkSourceNewlineType    newline_type)
 {
-	GeditFileChooserDialogInterface *iface;
+	BeditFileChooserDialogInterface *iface;
 
 	g_return_if_fail (GEDIT_IS_FILE_CHOOSER_DIALOG (dialog));
 
@@ -140,9 +140,9 @@ gedit_file_chooser_dialog_set_newline_type (GeditFileChooserDialog *dialog,
 }
 
 GtkSourceNewlineType
-gedit_file_chooser_dialog_get_newline_type (GeditFileChooserDialog *dialog)
+gedit_file_chooser_dialog_get_newline_type (BeditFileChooserDialog *dialog)
 {
-	GeditFileChooserDialogInterface *iface;
+	BeditFileChooserDialogInterface *iface;
 
 	g_return_val_if_fail (GEDIT_IS_FILE_CHOOSER_DIALOG (dialog), GTK_SOURCE_NEWLINE_TYPE_DEFAULT);
 
@@ -154,10 +154,10 @@ gedit_file_chooser_dialog_get_newline_type (GeditFileChooserDialog *dialog)
 
 
 void
-gedit_file_chooser_dialog_set_current_folder (GeditFileChooserDialog *dialog,
+gedit_file_chooser_dialog_set_current_folder (BeditFileChooserDialog *dialog,
                                               GFile                  *folder)
 {
-	GeditFileChooserDialogInterface *iface;
+	BeditFileChooserDialogInterface *iface;
 
 	g_return_if_fail (GEDIT_IS_FILE_CHOOSER_DIALOG (dialog));
 
@@ -168,10 +168,10 @@ gedit_file_chooser_dialog_set_current_folder (GeditFileChooserDialog *dialog,
 }
 
 void
-gedit_file_chooser_dialog_set_current_name (GeditFileChooserDialog *dialog,
+gedit_file_chooser_dialog_set_current_name (BeditFileChooserDialog *dialog,
                                             const gchar            *name)
 {
-	GeditFileChooserDialogInterface *iface;
+	BeditFileChooserDialogInterface *iface;
 
 	g_return_if_fail (GEDIT_IS_FILE_CHOOSER_DIALOG (dialog));
 
@@ -182,10 +182,10 @@ gedit_file_chooser_dialog_set_current_name (GeditFileChooserDialog *dialog,
 }
 
 void
-gedit_file_chooser_dialog_set_file (GeditFileChooserDialog *dialog,
+gedit_file_chooser_dialog_set_file (BeditFileChooserDialog *dialog,
                                     GFile                  *file)
 {
-	GeditFileChooserDialogInterface *iface;
+	BeditFileChooserDialogInterface *iface;
 
 	g_return_if_fail (GEDIT_IS_FILE_CHOOSER_DIALOG (dialog));
 	g_return_if_fail (file == NULL || G_IS_FILE (file));
@@ -197,9 +197,9 @@ gedit_file_chooser_dialog_set_file (GeditFileChooserDialog *dialog,
 }
 
 GSList *
-gedit_file_chooser_dialog_get_files (GeditFileChooserDialog *dialog)
+gedit_file_chooser_dialog_get_files (BeditFileChooserDialog *dialog)
 {
-	GeditFileChooserDialogInterface *iface;
+	BeditFileChooserDialogInterface *iface;
 
 	g_return_val_if_fail (GEDIT_IS_FILE_CHOOSER_DIALOG (dialog), NULL);
 
@@ -210,9 +210,9 @@ gedit_file_chooser_dialog_get_files (GeditFileChooserDialog *dialog)
 }
 
 GFile *
-gedit_file_chooser_dialog_get_file (GeditFileChooserDialog *dialog)
+gedit_file_chooser_dialog_get_file (BeditFileChooserDialog *dialog)
 {
-	GeditFileChooserDialogInterface *iface;
+	BeditFileChooserDialogInterface *iface;
 
 	g_return_val_if_fail (GEDIT_IS_FILE_CHOOSER_DIALOG (dialog), NULL);
 
@@ -223,10 +223,10 @@ gedit_file_chooser_dialog_get_file (GeditFileChooserDialog *dialog)
 }
 
 void
-gedit_file_chooser_dialog_set_do_overwrite_confirmation (GeditFileChooserDialog *dialog,
+gedit_file_chooser_dialog_set_do_overwrite_confirmation (BeditFileChooserDialog *dialog,
                                                          gboolean                overwrite_confirmation)
 {
-	GeditFileChooserDialogInterface *iface;
+	BeditFileChooserDialogInterface *iface;
 
 	g_return_if_fail (GEDIT_IS_FILE_CHOOSER_DIALOG (dialog));
 
@@ -237,9 +237,9 @@ gedit_file_chooser_dialog_set_do_overwrite_confirmation (GeditFileChooserDialog 
 }
 
 void
-gedit_file_chooser_dialog_show (GeditFileChooserDialog *dialog)
+gedit_file_chooser_dialog_show (BeditFileChooserDialog *dialog)
 {
-	GeditFileChooserDialogInterface *iface;
+	BeditFileChooserDialogInterface *iface;
 
 	g_return_if_fail (GEDIT_IS_FILE_CHOOSER_DIALOG (dialog));
 
@@ -250,9 +250,9 @@ gedit_file_chooser_dialog_show (GeditFileChooserDialog *dialog)
 }
 
 void
-gedit_file_chooser_dialog_hide (GeditFileChooserDialog *dialog)
+gedit_file_chooser_dialog_hide (BeditFileChooserDialog *dialog)
 {
-	GeditFileChooserDialogInterface *iface;
+	BeditFileChooserDialogInterface *iface;
 
 	g_return_if_fail (GEDIT_IS_FILE_CHOOSER_DIALOG (dialog));
 
@@ -263,9 +263,9 @@ gedit_file_chooser_dialog_hide (GeditFileChooserDialog *dialog)
 }
 
 void
-gedit_file_chooser_dialog_destroy (GeditFileChooserDialog *dialog)
+gedit_file_chooser_dialog_destroy (BeditFileChooserDialog *dialog)
 {
-	GeditFileChooserDialogInterface *iface;
+	BeditFileChooserDialogInterface *iface;
 
 	g_return_if_fail (GEDIT_IS_FILE_CHOOSER_DIALOG (dialog));
 
@@ -276,10 +276,10 @@ gedit_file_chooser_dialog_destroy (GeditFileChooserDialog *dialog)
 }
 
 void
-gedit_file_chooser_dialog_set_modal (GeditFileChooserDialog *dialog,
+gedit_file_chooser_dialog_set_modal (BeditFileChooserDialog *dialog,
                                      gboolean                is_modal)
 {
-	GeditFileChooserDialogInterface *iface;
+	BeditFileChooserDialogInterface *iface;
 
 	g_return_if_fail (GEDIT_IS_FILE_CHOOSER_DIALOG (dialog));
 
@@ -290,9 +290,9 @@ gedit_file_chooser_dialog_set_modal (GeditFileChooserDialog *dialog,
 }
 
 GtkWindow *
-gedit_file_chooser_dialog_get_window (GeditFileChooserDialog *dialog)
+gedit_file_chooser_dialog_get_window (BeditFileChooserDialog *dialog)
 {
-	GeditFileChooserDialogInterface *iface;
+	BeditFileChooserDialogInterface *iface;
 
 	g_return_val_if_fail (GEDIT_IS_FILE_CHOOSER_DIALOG (dialog), NULL);
 
@@ -307,11 +307,11 @@ gedit_file_chooser_dialog_get_window (GeditFileChooserDialog *dialog)
 }
 
 void
-gedit_file_chooser_dialog_add_pattern_filter (GeditFileChooserDialog   *dialog,
+gedit_file_chooser_dialog_add_pattern_filter (BeditFileChooserDialog   *dialog,
                                               const gchar              *name,
                                               const gchar              *pattern)
 {
-	GeditFileChooserDialogInterface *iface;
+	BeditFileChooserDialogInterface *iface;
 
 	g_return_if_fail (GEDIT_IS_FILE_CHOOSER_DIALOG (dialog));
 

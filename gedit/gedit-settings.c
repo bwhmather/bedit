@@ -40,7 +40,7 @@
 
 #define GEDIT_SETTINGS_SYSTEM_FONT "monospace-font-name"
 
-struct _GeditSettings
+struct _BeditSettings
 {
 	GObject parent_instance;
 
@@ -52,12 +52,12 @@ struct _GeditSettings
 	gchar *old_scheme;
 };
 
-G_DEFINE_TYPE (GeditSettings, gedit_settings, G_TYPE_OBJECT)
+G_DEFINE_TYPE (BeditSettings, gedit_settings, G_TYPE_OBJECT)
 
 static void
 gedit_settings_finalize (GObject *object)
 {
-	GeditSettings *gs = GEDIT_SETTINGS (object);
+	BeditSettings *gs = GEDIT_SETTINGS (object);
 
 	g_free (gs->old_scheme);
 
@@ -67,7 +67,7 @@ gedit_settings_finalize (GObject *object)
 static void
 gedit_settings_dispose (GObject *object)
 {
-	GeditSettings *gs = GEDIT_SETTINGS (object);
+	BeditSettings *gs = GEDIT_SETTINGS (object);
 
 	g_clear_object (&gs->lockdown);
 	g_clear_object (&gs->interface);
@@ -83,7 +83,7 @@ on_lockdown_changed (GSettings   *settings,
 		     gpointer     useless)
 {
 	gboolean locked;
-	GeditApp *app;
+	BeditApp *app;
 
 	locked = g_settings_get_boolean (settings, key);
 	app = GEDIT_APP (g_application_get_default ());
@@ -115,7 +115,7 @@ on_lockdown_changed (GSettings   *settings,
 }
 
 static void
-set_font (GeditSettings *gs,
+set_font (BeditSettings *gs,
 	  const gchar *font)
 {
 	GList *views, *l;
@@ -127,7 +127,7 @@ set_font (GeditSettings *gs,
 
 	for (l = views; l != NULL; l = g_list_next (l))
 	{
-		/* Note: we use def=FALSE to avoid GeditView to query dconf */
+		/* Note: we use def=FALSE to avoid BeditView to query dconf */
 		gedit_view_set_font (GEDIT_VIEW (l->data), FALSE, font);
 
 		gtk_source_view_set_tab_width (GTK_SOURCE_VIEW (l->data), ts);
@@ -139,7 +139,7 @@ set_font (GeditSettings *gs,
 static void
 on_system_font_changed (GSettings     *settings,
 			const gchar   *key,
-			GeditSettings *gs)
+			BeditSettings *gs)
 {
 
 	gboolean use_default_font;
@@ -160,7 +160,7 @@ on_system_font_changed (GSettings     *settings,
 static void
 on_use_default_font_changed (GSettings     *settings,
 			     const gchar   *key,
-			     GeditSettings *gs)
+			     BeditSettings *gs)
 {
 	gboolean def;
 	gchar *font;
@@ -186,7 +186,7 @@ on_use_default_font_changed (GSettings     *settings,
 static void
 on_editor_font_changed (GSettings     *settings,
 			const gchar   *key,
-			GeditSettings *gs)
+			BeditSettings *gs)
 {
 	gboolean use_default_font;
 
@@ -206,7 +206,7 @@ on_editor_font_changed (GSettings     *settings,
 static void
 on_scheme_changed (GSettings     *settings,
 		   const gchar   *key,
-		   GeditSettings *gs)
+		   BeditSettings *gs)
 {
 	GtkSourceStyleSchemeManager *manager;
 	GtkSourceStyleScheme *style;
@@ -255,7 +255,7 @@ on_scheme_changed (GSettings     *settings,
 static void
 on_auto_save_changed (GSettings     *settings,
 		      const gchar   *key,
-		      GeditSettings *gs)
+		      BeditSettings *gs)
 {
 	GList *docs, *l;
 	gboolean auto_save;
@@ -266,7 +266,7 @@ on_auto_save_changed (GSettings     *settings,
 
 	for (l = docs; l != NULL; l = g_list_next (l))
 	{
-		GeditTab *tab = gedit_tab_get_from_document (GEDIT_DOCUMENT (l->data));
+		BeditTab *tab = gedit_tab_get_from_document (GEDIT_DOCUMENT (l->data));
 
 		gedit_tab_set_auto_save_enabled (tab, auto_save);
 	}
@@ -277,7 +277,7 @@ on_auto_save_changed (GSettings     *settings,
 static void
 on_auto_save_interval_changed (GSettings     *settings,
 			       const gchar   *key,
-			       GeditSettings *gs)
+			       BeditSettings *gs)
 {
 	GList *docs, *l;
 	gint auto_save_interval;
@@ -288,7 +288,7 @@ on_auto_save_interval_changed (GSettings     *settings,
 
 	for (l = docs; l != NULL; l = g_list_next (l))
 	{
-		GeditTab *tab = gedit_tab_get_from_document (GEDIT_DOCUMENT (l->data));
+		BeditTab *tab = gedit_tab_get_from_document (GEDIT_DOCUMENT (l->data));
 
 		gedit_tab_set_auto_save_interval (tab, auto_save_interval);
 	}
@@ -299,7 +299,7 @@ on_auto_save_interval_changed (GSettings     *settings,
 static void
 on_syntax_highlighting_changed (GSettings     *settings,
 				const gchar   *key,
-				GeditSettings *gs)
+				BeditSettings *gs)
 {
 	GList *docs, *windows, *l;
 	gboolean enable;
@@ -330,7 +330,7 @@ on_syntax_highlighting_changed (GSettings     *settings,
 }
 
 static void
-gedit_settings_init (GeditSettings *gs)
+gedit_settings_init (BeditSettings *gs)
 {
 	gs->old_scheme = NULL;
 	gs->editor = g_settings_new ("com.bwhmather.bedit.preferences.editor");
@@ -379,7 +379,7 @@ gedit_settings_init (GeditSettings *gs)
 }
 
 static void
-gedit_settings_class_init (GeditSettingsClass *klass)
+gedit_settings_class_init (BeditSettingsClass *klass)
 {
 	GObjectClass *object_class = G_OBJECT_CLASS (klass);
 
@@ -387,14 +387,14 @@ gedit_settings_class_init (GeditSettingsClass *klass)
 	object_class->dispose = gedit_settings_dispose;
 }
 
-GeditSettings *
+BeditSettings *
 gedit_settings_new ()
 {
 	return g_object_new (GEDIT_TYPE_SETTINGS, NULL);
 }
 
-GeditLockdownMask
-gedit_settings_get_lockdown (GeditSettings *gs)
+BeditLockdownMask
+gedit_settings_get_lockdown (BeditSettings *gs)
 {
 	guint lockdown = 0;
 	gboolean command_line, printing, print_setup, save_to_disk;
@@ -424,7 +424,7 @@ gedit_settings_get_lockdown (GeditSettings *gs)
 }
 
 gchar *
-gedit_settings_get_system_font (GeditSettings *gs)
+gedit_settings_get_system_font (BeditSettings *gs)
 {
 	gchar *system_font;
 

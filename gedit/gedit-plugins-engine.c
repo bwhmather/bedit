@@ -30,19 +30,19 @@
 #include "gedit-dirs.h"
 #include "gedit-settings.h"
 
-struct _GeditPluginsEngine
+struct _BeditPluginsEngine
 {
 	PeasEngine parent_instance;
 
 	GSettings *plugin_settings;
 };
 
-G_DEFINE_TYPE (GeditPluginsEngine, gedit_plugins_engine, PEAS_TYPE_ENGINE)
+G_DEFINE_TYPE (BeditPluginsEngine, gedit_plugins_engine, PEAS_TYPE_ENGINE)
 
-static GeditPluginsEngine *default_engine = NULL;
+static BeditPluginsEngine *default_engine = NULL;
 
 static void
-gedit_plugins_engine_init (GeditPluginsEngine *engine)
+gedit_plugins_engine_init (BeditPluginsEngine *engine)
 {
 	gchar *typelib_dir;
 	GError *error = NULL;
@@ -59,9 +59,9 @@ gedit_plugins_engine_init (GeditPluginsEngine *engine)
 	                                NULL);
 
 	if (!g_irepository_require_private (g_irepository_get_default (),
-	                                    typelib_dir, "Gedit", "3.0", 0, &error))
+	                                    typelib_dir, "Bedit", "3.0", 0, &error))
 	{
-		g_warning ("Could not load Gedit repository: %s", error->message);
+		g_warning ("Could not load Bedit repository: %s", error->message);
 		g_error_free (error);
 		error = NULL;
 	}
@@ -103,7 +103,7 @@ gedit_plugins_engine_init (GeditPluginsEngine *engine)
 static void
 gedit_plugins_engine_dispose (GObject *object)
 {
-	GeditPluginsEngine *engine = GEDIT_PLUGINS_ENGINE (object);
+	BeditPluginsEngine *engine = GEDIT_PLUGINS_ENGINE (object);
 
 	g_clear_object (&engine->plugin_settings);
 
@@ -111,14 +111,14 @@ gedit_plugins_engine_dispose (GObject *object)
 }
 
 static void
-gedit_plugins_engine_class_init (GeditPluginsEngineClass *klass)
+gedit_plugins_engine_class_init (BeditPluginsEngineClass *klass)
 {
 	GObjectClass *object_class = G_OBJECT_CLASS (klass);
 
 	object_class->dispose = gedit_plugins_engine_dispose;
 }
 
-GeditPluginsEngine *
+BeditPluginsEngine *
 gedit_plugins_engine_get_default (void)
 {
 	if (default_engine == NULL)

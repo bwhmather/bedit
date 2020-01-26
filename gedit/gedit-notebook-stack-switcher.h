@@ -26,25 +26,25 @@
 G_BEGIN_DECLS
 
 #define GEDIT_TYPE_NOTEBOOK_STACK_SWITCHER             (gedit_notebook_stack_switcher_get_type())
-#define GEDIT_NOTEBOOK_STACK_SWITCHER(obj)             (G_TYPE_CHECK_INSTANCE_CAST((obj), GEDIT_TYPE_NOTEBOOK_STACK_SWITCHER, GeditNotebookStackSwitcher))
-#define GEDIT_NOTEBOOK_STACK_SWITCHER_CLASS(klass)     (G_TYPE_CHECK_CLASS_CAST((klass), GEDIT_TYPE_NOTEBOOK_STACK_SWITCHER, GeditNotebookStackSwitcherClass))
+#define GEDIT_NOTEBOOK_STACK_SWITCHER(obj)             (G_TYPE_CHECK_INSTANCE_CAST((obj), GEDIT_TYPE_NOTEBOOK_STACK_SWITCHER, BeditNotebookStackSwitcher))
+#define GEDIT_NOTEBOOK_STACK_SWITCHER_CLASS(klass)     (G_TYPE_CHECK_CLASS_CAST((klass), GEDIT_TYPE_NOTEBOOK_STACK_SWITCHER, BeditNotebookStackSwitcherClass))
 #define GEDIT_IS_NOTEBOOK_STACK_SWITCHER(obj)          (G_TYPE_CHECK_INSTANCE_TYPE((obj), GEDIT_TYPE_NOTEBOOK_STACK_SWITCHER))
 #define GEDIT_IS_NOTEBOOK_STACK_SWITCHER_CLASS(klass)  (G_TYPE_CHECK_CLASS_TYPE ((klass), GEDIT_TYPE_NOTEBOOK_STACK_SWITCHER))
-#define GEDIT_NOTEBOOK_STACK_SWITCHER_GET_CLASS(obj)   (G_TYPE_INSTANCE_GET_CLASS((obj), GEDIT_TYPE_NOTEBOOK_STACK_SWITCHER, GeditNotebookStackSwitcherClass))
+#define GEDIT_NOTEBOOK_STACK_SWITCHER_GET_CLASS(obj)   (G_TYPE_INSTANCE_GET_CLASS((obj), GEDIT_TYPE_NOTEBOOK_STACK_SWITCHER, BeditNotebookStackSwitcherClass))
 
-typedef struct _GeditNotebookStackSwitcher        GeditNotebookStackSwitcher;
-typedef struct _GeditNotebookStackSwitcherClass   GeditNotebookStackSwitcherClass;
-typedef struct _GeditNotebookStackSwitcherPrivate GeditNotebookStackSwitcherPrivate;
+typedef struct _BeditNotebookStackSwitcher        BeditNotebookStackSwitcher;
+typedef struct _BeditNotebookStackSwitcherClass   BeditNotebookStackSwitcherClass;
+typedef struct _BeditNotebookStackSwitcherPrivate BeditNotebookStackSwitcherPrivate;
 
-struct _GeditNotebookStackSwitcher
+struct _BeditNotebookStackSwitcher
 {
 	GtkBin parent;
 
 	/*< private >*/
-	GeditNotebookStackSwitcherPrivate *priv;
+	BeditNotebookStackSwitcherPrivate *priv;
 };
 
-struct _GeditNotebookStackSwitcherClass
+struct _BeditNotebookStackSwitcherClass
 {
 	GtkBinClass parent_class;
 
@@ -59,10 +59,10 @@ GType		 gedit_notebook_stack_switcher_get_type   (void) G_GNUC_CONST;
 
 GtkWidget	*gedit_notebook_stack_switcher_new        (void);
 
-void		 gedit_notebook_stack_switcher_set_stack  (GeditNotebookStackSwitcher *switcher,
+void		 gedit_notebook_stack_switcher_set_stack  (BeditNotebookStackSwitcher *switcher,
 		                                           GtkStack                   *stack);
 
-GtkStack	*gedit_notebook_stack_switcher_get_stack  (GeditNotebookStackSwitcher *switcher);
+GtkStack	*gedit_notebook_stack_switcher_get_stack  (BeditNotebookStackSwitcher *switcher);
 
 G_END_DECLS
 

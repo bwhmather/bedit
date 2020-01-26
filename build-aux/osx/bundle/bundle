@@ -5,7 +5,7 @@ D=$(pwd -P)
 popd > /dev/null
 
 ME="$0"
-BUNDLE_NAME="Gedit"
+BUNDLE_NAME="Bedit"
 BUNDLE="$D/$BUNDLE_NAME.app"
 
 function do_strip {
@@ -137,7 +137,7 @@ function make_fake_help_short() {
 }
 
 function cmd_make_fake() {
-	fake="$D/Gedit-fake.app"
+	fake="$D/Bedit-fake.app"
 
 	rm -rf "$fake"
 	mkdir -p "$fake/Contents"
@@ -154,7 +154,7 @@ function cmd_make_fake() {
 
 	mkdir "$fake/Contents/MacOS"
 
-	bin="$fake/Contents/MacOS/Gedit"
+	bin="$fake/Contents/MacOS/Bedit"
 
 	printf "#!/bin/bash\n\nexec $b run \"$source/gedit/gedit/gedit\"\n" > "$bin"
 	chmod u+x "$bin"
@@ -181,8 +181,8 @@ function cmd_make() {
 
 	lbin=$("$b" env local-bin)
 
-	echo "Generating bundle from Gedit.bundle specification..."
-	"$b" run "$lbin/gtk-mac-bundler" "$D/data/Gedit.bundle" || exit 1
+	echo "Generating bundle from Bedit.bundle specification..."
+	"$b" run "$lbin/gtk-mac-bundler" "$D/data/Bedit.bundle" || exit 1
 
 	mv "$D/data/$BUNDLE_NAME.app" "$BUNDLE"
 
@@ -205,8 +205,8 @@ function cmd_make() {
 
 		mkdir -p "$ldir"
 
-		echo "CFBundleName = \"Gedit\";" > "$ldir/InfoPlist.strings"
-		echo "CFBundleDisplayName = \"Gedit $lname\";" >> "$ldir/InfoPlist.strings"
+		echo "CFBundleName = \"Bedit\";" > "$ldir/InfoPlist.strings"
+		echo "CFBundleDisplayName = \"Bedit $lname\";" >> "$ldir/InfoPlist.strings"
 	done
 
 	printf ", done...\n\nDo you want to strip debug symbols? [\033[1myes\033[0m/no] "

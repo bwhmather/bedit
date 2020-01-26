@@ -31,7 +31,7 @@
 G_BEGIN_DECLS
 
 /* Create titled documens for non-existing URIs */
-GSList	       *_gedit_cmd_load_files_from_prompt	(GeditWindow             *window,
+GSList	       *_gedit_cmd_load_files_from_prompt	(BeditWindow             *window,
 							 GSList                  *files,
 							 const GtkSourceEncoding *encoding,
 							 gint                     line_pos,
@@ -156,15 +156,15 @@ void		_gedit_cmd_documents_next_tab_group	(GSimpleAction *action,
 							 GVariant      *parameter,
 							 gpointer       user_data);
 
-void		_gedit_cmd_help_keyboard_shortcuts	(GeditWindow *window);
-void		_gedit_cmd_help_contents		(GeditWindow *window);
-void		_gedit_cmd_help_about			(GeditWindow *window);
+void		_gedit_cmd_help_keyboard_shortcuts	(BeditWindow *window);
+void		_gedit_cmd_help_contents		(BeditWindow *window);
+void		_gedit_cmd_help_about			(BeditWindow *window);
 
-void		_gedit_cmd_file_close_tab 		(GeditTab    *tab,
-							 GeditWindow *window);
+void		_gedit_cmd_file_close_tab 		(BeditTab    *tab,
+							 BeditWindow *window);
 
-void		_gedit_cmd_file_close_notebook		(GeditWindow   *window,
-							 GeditNotebook *notebook);
+void		_gedit_cmd_file_close_notebook		(BeditWindow   *window,
+							 BeditNotebook *notebook);
 
 G_END_DECLS
 

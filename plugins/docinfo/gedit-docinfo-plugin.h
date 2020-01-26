@@ -29,25 +29,25 @@
 G_BEGIN_DECLS
 
 #define GEDIT_TYPE_DOCINFO_PLUGIN		(gedit_docinfo_plugin_get_type ())
-#define GEDIT_DOCINFO_PLUGIN(o)			(G_TYPE_CHECK_INSTANCE_CAST ((o), GEDIT_TYPE_DOCINFO_PLUGIN, GeditDocinfoPlugin))
-#define GEDIT_DOCINFO_PLUGIN_CLASS(k)		(G_TYPE_CHECK_CLASS_CAST((k), GEDIT_TYPE_DOCINFO_PLUGIN, GeditDocinfoPluginClass))
+#define GEDIT_DOCINFO_PLUGIN(o)			(G_TYPE_CHECK_INSTANCE_CAST ((o), GEDIT_TYPE_DOCINFO_PLUGIN, BeditDocinfoPlugin))
+#define GEDIT_DOCINFO_PLUGIN_CLASS(k)		(G_TYPE_CHECK_CLASS_CAST((k), GEDIT_TYPE_DOCINFO_PLUGIN, BeditDocinfoPluginClass))
 #define GEDIT_IS_DOCINFO_PLUGIN(o)		(G_TYPE_CHECK_INSTANCE_TYPE ((o), GEDIT_TYPE_DOCINFO_PLUGIN))
 #define GEDIT_IS_DOCINFO_PLUGIN_CLASS(k)	(G_TYPE_CHECK_CLASS_TYPE ((k), GEDIT_TYPE_DOCINFO_PLUGIN))
-#define GEDIT_DOCINFO_PLUGIN_GET_CLASS(o)	(G_TYPE_INSTANCE_GET_CLASS ((o), GEDIT_TYPE_DOCINFO_PLUGIN, GeditDocinfoPluginClass))
+#define GEDIT_DOCINFO_PLUGIN_GET_CLASS(o)	(G_TYPE_INSTANCE_GET_CLASS ((o), GEDIT_TYPE_DOCINFO_PLUGIN, BeditDocinfoPluginClass))
 
-typedef struct _GeditDocinfoPlugin	GeditDocinfoPlugin;
-typedef struct _GeditDocinfoPluginPrivate	GeditDocinfoPluginPrivate;
-typedef struct _GeditDocinfoPluginClass	GeditDocinfoPluginClass;
+typedef struct _BeditDocinfoPlugin	BeditDocinfoPlugin;
+typedef struct _BeditDocinfoPluginPrivate	BeditDocinfoPluginPrivate;
+typedef struct _BeditDocinfoPluginClass	BeditDocinfoPluginClass;
 
-struct _GeditDocinfoPlugin
+struct _BeditDocinfoPlugin
 {
 	PeasExtensionBase parent;
 
 	/*< private >*/
-	GeditDocinfoPluginPrivate *priv;
+	BeditDocinfoPluginPrivate *priv;
 };
 
-struct _GeditDocinfoPluginClass
+struct _BeditDocinfoPluginClass
 {
 	PeasExtensionBaseClass parent_class;
 };

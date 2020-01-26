@@ -1,4 +1,4 @@
-#    Gedit snippets plugin
+#    Bedit snippets plugin
 #    Copyright (C) 2005-2006  Jesse van den Kieboom <jesse@icecrew.nl>
 #
 #    This program is free software; you can redistribute it and/or modify
@@ -18,7 +18,7 @@
 import os
 import re
 
-from gi.repository import Gtk, Gdk, Gio, GLib, Gedit, GObject
+from gi.repository import Gtk, Gdk, Gio, GLib, Bedit, GObject
 
 from .library import Library
 from .snippet import Snippet
@@ -41,11 +41,11 @@ class DynamicSnippet(dict):
         self['text'] = text
         self.valid = True
 
-class Document(GObject.Object, Gedit.ViewActivatable, Signals):
+class Document(GObject.Object, Bedit.ViewActivatable, Signals):
     TAB_KEY_VAL = (Gdk.KEY_Tab, Gdk.KEY_ISO_Left_Tab)
     SPACE_KEY_VAL = (Gdk.KEY_space,)
 
-    view = GObject.Property(type=Gedit.View)
+    view = GObject.Property(type=Bedit.View)
 
     def __init__(self):
         GObject.Object.__init__(self)
@@ -436,7 +436,7 @@ class Document(GObject.Object, Gedit.ViewActivatable, Signals):
 
         documents_uri = {'utf8': [], 'noenc': []}
 
-        if isinstance(toplevel, Gedit.Window):
+        if isinstance(toplevel, Bedit.Window):
             for doc in toplevel.get_documents():
                 r = self.location_uri_for_env(doc.get_location())
 
@@ -455,7 +455,7 @@ class Document(GObject.Object, Gedit.ViewActivatable, Signals):
 
         documents_path = {'utf8': [], 'noenc': []}
 
-        if isinstance(toplevel, Gedit.Window):
+        if isinstance(toplevel, Bedit.Window):
             for doc in toplevel.get_documents():
                 r = self.location_path_for_env(doc.get_location())
 

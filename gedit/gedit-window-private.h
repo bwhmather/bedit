@@ -32,13 +32,13 @@ G_BEGIN_DECLS
 
 /* WindowPrivate is in a separate .h so that we can access it from gedit-commands */
 
-struct _GeditWindowPrivate
+struct _BeditWindowPrivate
 {
 	GSettings      *editor_settings;
 	GSettings      *ui_settings;
 	GSettings      *window_settings;
 
-	GeditMultiNotebook *multi_notebook;
+	BeditMultiNotebook *multi_notebook;
 
 	GtkWidget      *side_panel_box;
 	GtkWidget      *side_panel;
@@ -50,7 +50,7 @@ struct _GeditWindowPrivate
 	GtkWidget      *hpaned;
 	GtkWidget      *vpaned;
 
-	GeditMessageBus *message_bus;
+	BeditMessageBus *message_bus;
 	PeasExtensionSet *extensions;
 
 	/* Widgets for fullscreen mode */
@@ -93,7 +93,7 @@ struct _GeditWindowPrivate
 	gint            side_panel_size;
 	gint            bottom_panel_size;
 
-	GeditWindowState state;
+	BeditWindowState state;
 
 	guint           inhibition_cookie;
 

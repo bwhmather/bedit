@@ -1,5 +1,5 @@
 /*
- * gedit-file-bookmarks-store.c - Gedit plugin providing easy file access
+ * gedit-file-bookmarks-store.c - Bedit plugin providing easy file access
  * from the sidepanel
  *
  * Copyright (C) 2006 - Jesse van den Kieboom <jesse@icecrew.nl>
@@ -26,7 +26,7 @@
 #include "gedit-file-bookmarks-store.h"
 #include "gedit-file-browser-utils.h"
 
-struct _GeditFileBookmarksStorePrivate
+struct _BeditFileBookmarksStorePrivate
 {
 	GVolumeMonitor *volume_monitor;
 	GFileMonitor   *bookmarks_monitor;
@@ -37,29 +37,29 @@ static void remove_node               (GtkTreeModel            *model,
 
 static void on_fs_changed             (GVolumeMonitor          *monitor,
                                        GObject                 *object,
-                                       GeditFileBookmarksStore *model);
+                                       BeditFileBookmarksStore *model);
 
 static void on_bookmarks_file_changed (GFileMonitor            *monitor,
 				       GFile                   *file,
 				       GFile                   *other_file,
 				       GFileMonitorEvent        event_type,
-				       GeditFileBookmarksStore *model);
+				       BeditFileBookmarksStore *model);
 static gboolean find_with_flags       (GtkTreeModel            *model,
                                        GtkTreeIter             *iter,
                                        gpointer                 obj,
                                        guint                    flags,
                                        guint                    notflags);
 
-G_DEFINE_DYNAMIC_TYPE_EXTENDED (GeditFileBookmarksStore,
+G_DEFINE_DYNAMIC_TYPE_EXTENDED (BeditFileBookmarksStore,
 				gedit_file_bookmarks_store,
 				GTK_TYPE_TREE_STORE,
 				0,
-				G_ADD_PRIVATE_DYNAMIC (GeditFileBookmarksStore))
+				G_ADD_PRIVATE_DYNAMIC (BeditFileBookmarksStore))
 
 static void
 gedit_file_bookmarks_store_dispose (GObject *object)
 {
-	GeditFileBookmarksStore *obj = GEDIT_FILE_BOOKMARKS_STORE (object);
+	BeditFileBookmarksStore *obj = GEDIT_FILE_BOOKMARKS_STORE (object);
 
 	if (obj->priv->volume_monitor != NULL)
 	{
@@ -77,7 +77,7 @@ gedit_file_bookmarks_store_dispose (GObject *object)
 }
 
 static void
-gedit_file_bookmarks_store_class_init (GeditFileBookmarksStoreClass *klass)
+gedit_file_bookmarks_store_class_init (BeditFileBookmarksStoreClass *klass)
 {
 	GObjectClass *object_class = G_OBJECT_CLASS (klass);
 
@@ -85,19 +85,19 @@ gedit_file_bookmarks_store_class_init (GeditFileBookmarksStoreClass *klass)
 }
 
 static void
-gedit_file_bookmarks_store_class_finalize (GeditFileBookmarksStoreClass *klass)
+gedit_file_bookmarks_store_class_finalize (BeditFileBookmarksStoreClass *klass)
 {
 }
 
 static void
-gedit_file_bookmarks_store_init (GeditFileBookmarksStore *obj)
+gedit_file_bookmarks_store_init (BeditFileBookmarksStore *obj)
 {
 	obj->priv = gedit_file_bookmarks_store_get_instance_private (obj);
 }
 
 /* Private */
 static void
-add_node (GeditFileBookmarksStore *model,
+add_node (BeditFileBookmarksStore *model,
 	  GdkPixbuf               *pixbuf,
 	  const gchar             *icon_name,
 	  const gchar             *name,
@@ -122,7 +122,7 @@ add_node (GeditFileBookmarksStore *model,
 }
 
 static gboolean
-add_file (GeditFileBookmarksStore *model,
+add_file (BeditFileBookmarksStore *model,
 	  GFile                   *file,
 	  const gchar             *name,
 	  guint                    flags,
@@ -164,7 +164,7 @@ add_file (GeditFileBookmarksStore *model,
 }
 
 static void
-check_mount_separator (GeditFileBookmarksStore *model,
+check_mount_separator (BeditFileBookmarksStore *model,
 		       guint                    flags,
 		       gboolean                 added)
 {
@@ -187,7 +187,7 @@ check_mount_separator (GeditFileBookmarksStore *model,
 }
 
 static void
-init_special_directories (GeditFileBookmarksStore *model)
+init_special_directories (BeditFileBookmarksStore *model)
 {
 	gchar const *path = g_get_home_dir ();
 	GFile *file;
@@ -278,7 +278,7 @@ get_fs_properties (gpointer   fs,
 }
 
 static void
-add_fs (GeditFileBookmarksStore *model,
+add_fs (BeditFileBookmarksStore *model,
 	gpointer                 fs,
 	guint                    flags,
 	GtkTreeIter             *iter)
@@ -297,7 +297,7 @@ add_fs (GeditFileBookmarksStore *model,
 
 static void
 process_volume_cb (GVolume                 *volume,
-		   GeditFileBookmarksStore *model)
+		   BeditFileBookmarksStore *model)
 {
 	GMount *mount = g_volume_get_mount (volume);
 	guint flags = GEDIT_FILE_BOOKMARKS_STORE_NONE;
@@ -318,7 +318,7 @@ process_volume_cb (GVolume                 *volume,
 }
 
 static void
-process_drive_novolumes (GeditFileBookmarksStore *model,
+process_drive_novolumes (BeditFileBookmarksStore *model,
 			 GDrive                  *drive)
 {
 	if (g_drive_is_media_removable (drive) &&
@@ -335,7 +335,7 @@ process_drive_novolumes (GeditFileBookmarksStore *model,
 
 static void
 process_drive_cb (GDrive                  *drive,
-	          GeditFileBookmarksStore *model)
+	          BeditFileBookmarksStore *model)
 {
 	GList *volumes = g_drive_get_volumes (drive);
 
@@ -352,7 +352,7 @@ process_drive_cb (GDrive                  *drive,
 }
 
 static void
-init_drives (GeditFileBookmarksStore *model)
+init_drives (BeditFileBookmarksStore *model)
 {
 	GList *drives = g_volume_monitor_get_connected_drives (model->priv->volume_monitor);
 
@@ -362,7 +362,7 @@ init_drives (GeditFileBookmarksStore *model)
 
 static void
 process_volume_nodrive_cb (GVolume                 *volume,
-			   GeditFileBookmarksStore *model)
+			   BeditFileBookmarksStore *model)
 {
 	GDrive *drive = g_volume_get_drive (volume);
 
@@ -376,7 +376,7 @@ process_volume_nodrive_cb (GVolume                 *volume,
 }
 
 static void
-init_volumes (GeditFileBookmarksStore *model)
+init_volumes (BeditFileBookmarksStore *model)
 {
 	GList *volumes = g_volume_monitor_get_volumes (model->priv->volume_monitor);
 
@@ -386,7 +386,7 @@ init_volumes (GeditFileBookmarksStore *model)
 
 static void
 process_mount_novolume_cb (GMount                  *mount,
-			   GeditFileBookmarksStore *model)
+			   BeditFileBookmarksStore *model)
 {
 	GVolume *volume = g_mount_get_volume (mount);
 
@@ -402,7 +402,7 @@ process_mount_novolume_cb (GMount                  *mount,
 }
 
 static void
-init_mounts (GeditFileBookmarksStore *model)
+init_mounts (BeditFileBookmarksStore *model)
 {
 	GList *mounts = g_volume_monitor_get_mounts (model->priv->volume_monitor);
 
@@ -411,7 +411,7 @@ init_mounts (GeditFileBookmarksStore *model)
 }
 
 static void
-init_fs (GeditFileBookmarksStore *model)
+init_fs (BeditFileBookmarksStore *model)
 {
 	if (model->priv->volume_monitor == NULL)
 	{
@@ -445,7 +445,7 @@ init_fs (GeditFileBookmarksStore *model)
 }
 
 static gboolean
-add_bookmark (GeditFileBookmarksStore *model,
+add_bookmark (BeditFileBookmarksStore *model,
 	      gchar const             *name,
 	      gchar const             *uri)
 {
@@ -478,7 +478,7 @@ get_legacy_bookmarks_file (void)
 }
 
 static gboolean
-parse_bookmarks_file (GeditFileBookmarksStore *model,
+parse_bookmarks_file (BeditFileBookmarksStore *model,
 		      const gchar             *bookmarks,
 		      gboolean                *added)
 {
@@ -551,7 +551,7 @@ parse_bookmarks_file (GeditFileBookmarksStore *model,
 }
 
 static void
-init_bookmarks (GeditFileBookmarksStore *model)
+init_bookmarks (BeditFileBookmarksStore *model)
 {
 	gchar *bookmarks = get_bookmarks_file ();
 	gboolean added = FALSE;
@@ -769,7 +769,7 @@ remove_node (GtkTreeModel *model,
 }
 
 static void
-remove_bookmarks (GeditFileBookmarksStore *model)
+remove_bookmarks (BeditFileBookmarksStore *model)
 {
 	GtkTreeIter iter;
 
@@ -782,7 +782,7 @@ remove_bookmarks (GeditFileBookmarksStore *model)
 }
 
 static void
-initialize_fill (GeditFileBookmarksStore *model)
+initialize_fill (BeditFileBookmarksStore *model)
 {
 	init_special_directories (model);
 	init_fs (model);
@@ -790,10 +790,10 @@ initialize_fill (GeditFileBookmarksStore *model)
 }
 
 /* Public */
-GeditFileBookmarksStore *
+BeditFileBookmarksStore *
 gedit_file_bookmarks_store_new (void)
 {
-	GeditFileBookmarksStore *model;
+	BeditFileBookmarksStore *model;
 	GType column_types[] = {
 		GDK_TYPE_PIXBUF,
 		G_TYPE_STRING,
@@ -820,7 +820,7 @@ gedit_file_bookmarks_store_new (void)
 }
 
 GFile *
-gedit_file_bookmarks_store_get_location (GeditFileBookmarksStore *model,
+gedit_file_bookmarks_store_get_location (BeditFileBookmarksStore *model,
 					 GtkTreeIter             *iter)
 {
 	GObject *obj;
@@ -860,7 +860,7 @@ gedit_file_bookmarks_store_get_location (GeditFileBookmarksStore *model,
 }
 
 void
-gedit_file_bookmarks_store_refresh (GeditFileBookmarksStore *model)
+gedit_file_bookmarks_store_refresh (BeditFileBookmarksStore *model)
 {
 	gtk_tree_store_clear (GTK_TREE_STORE (model));
 	initialize_fill (model);
@@ -869,7 +869,7 @@ gedit_file_bookmarks_store_refresh (GeditFileBookmarksStore *model)
 static void
 on_fs_changed (GVolumeMonitor          *monitor,
 	       GObject                 *object,
-	       GeditFileBookmarksStore *model)
+	       BeditFileBookmarksStore *model)
 {
 	GtkTreeModel *tree_model = GTK_TREE_MODEL (model);
 	guint flags = GEDIT_FILE_BOOKMARKS_STORE_IS_FS;
@@ -889,7 +889,7 @@ on_bookmarks_file_changed (GFileMonitor            *monitor,
 			   GFile                   *file,
 			   GFile                   *other_file,
 			   GFileMonitorEvent        event_type,
-			   GeditFileBookmarksStore *model)
+			   BeditFileBookmarksStore *model)
 {
 	switch (event_type)
 	{

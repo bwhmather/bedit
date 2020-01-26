@@ -26,12 +26,12 @@
 #include <gdk/gdkx.h>
 #endif
 
-struct _GeditAppX11
+struct _BeditAppX11
 {
-	GeditApp parent_instance;
+	BeditApp parent_instance;
 };
 
-G_DEFINE_TYPE (GeditAppX11, gedit_app_x11, GEDIT_TYPE_APP)
+G_DEFINE_TYPE (BeditAppX11, gedit_app_x11, GEDIT_TYPE_APP)
 
 /* This should go in GtkApplication at some point... */
 
@@ -95,7 +95,7 @@ gedit_app_add_platform_data (GApplication    *app,
 }
 
 static void
-gedit_app_x11_class_init (GeditAppX11Class *klass)
+gedit_app_x11_class_init (BeditAppX11Class *klass)
 {
 	GApplicationClass *app_class = G_APPLICATION_CLASS (klass);
 
@@ -103,7 +103,7 @@ gedit_app_x11_class_init (GeditAppX11Class *klass)
 }
 
 static void
-gedit_app_x11_init (GeditAppX11 *self)
+gedit_app_x11_init (BeditAppX11 *self)
 {
 }
 

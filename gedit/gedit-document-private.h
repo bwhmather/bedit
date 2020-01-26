@@ -32,16 +32,16 @@ G_BEGIN_DECLS
 #define GEDIT_METADATA_ATTRIBUTE_ENCODING "gedit-encoding"
 #define GEDIT_METADATA_ATTRIBUTE_LANGUAGE "gedit-language"
 
-glong		 _gedit_document_get_seconds_since_last_save_or_load	(GeditDocument       *doc);
+glong		 _gedit_document_get_seconds_since_last_save_or_load	(BeditDocument       *doc);
 
-gboolean	 _gedit_document_needs_saving				(GeditDocument       *doc);
+gboolean	 _gedit_document_needs_saving				(BeditDocument       *doc);
 
-gboolean	 _gedit_document_get_empty_search			(GeditDocument       *doc);
+gboolean	 _gedit_document_get_empty_search			(BeditDocument       *doc);
 
-void		 _gedit_document_set_create				(GeditDocument       *doc,
+void		 _gedit_document_set_create				(BeditDocument       *doc,
 									 gboolean             create);
 
-gboolean	 _gedit_document_get_create				(GeditDocument       *doc);
+gboolean	 _gedit_document_get_create				(BeditDocument       *doc);
 
 G_END_DECLS
 

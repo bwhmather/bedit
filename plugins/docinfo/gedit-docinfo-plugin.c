@@ -36,9 +36,9 @@
 #include <gedit/gedit-app-activatable.h>
 #include <gedit/gedit-window-activatable.h>
 
-struct _GeditDocinfoPluginPrivate
+struct _BeditDocinfoPluginPrivate
 {
-	GeditWindow *window;
+	BeditWindow *window;
 
 	GSimpleAction *action;
 
@@ -62,8 +62,8 @@ struct _GeditDocinfoPluginPrivate
 	GtkWidget *selected_chars_ns_label;
 	GtkWidget *selected_bytes_label;
 
-	GeditApp  *app;
-	GeditMenuExtension *menu_ext;
+	BeditApp  *app;
+	BeditMenuExtension *menu_ext;
 };
 
 enum
@@ -73,10 +73,10 @@ enum
 	PROP_APP
 };
 
-static void gedit_app_activatable_iface_init (GeditAppActivatableInterface *iface);
-static void gedit_window_activatable_iface_init (GeditWindowActivatableInterface *iface);
+static void gedit_app_activatable_iface_init (BeditAppActivatableInterface *iface);
+static void gedit_window_activatable_iface_init (BeditWindowActivatableInterface *iface);
 
-G_DEFINE_DYNAMIC_TYPE_EXTENDED (GeditDocinfoPlugin,
+G_DEFINE_DYNAMIC_TYPE_EXTENDED (BeditDocinfoPlugin,
 				gedit_docinfo_plugin,
 				PEAS_TYPE_EXTENSION_BASE,
 				0,
@@ -84,10 +84,10 @@ G_DEFINE_DYNAMIC_TYPE_EXTENDED (GeditDocinfoPlugin,
 							       gedit_app_activatable_iface_init)
 				G_IMPLEMENT_INTERFACE_DYNAMIC (GEDIT_TYPE_WINDOW_ACTIVATABLE,
 							       gedit_window_activatable_iface_init)
-				G_ADD_PRIVATE_DYNAMIC (GeditDocinfoPlugin))
+				G_ADD_PRIVATE_DYNAMIC (BeditDocinfoPlugin))
 
 static void
-calculate_info (GeditDocument *doc,
+calculate_info (BeditDocument *doc,
 		GtkTextIter   *start,
 		GtkTextIter   *end,
 		gint          *chars,
@@ -142,10 +142,10 @@ calculate_info (GeditDocument *doc,
 }
 
 static void
-update_document_info (GeditDocinfoPlugin *plugin,
-		      GeditDocument      *doc)
+update_document_info (BeditDocinfoPlugin *plugin,
+		      BeditDocument      *doc)
 {
-	GeditDocinfoPluginPrivate *priv;
+	BeditDocinfoPluginPrivate *priv;
 	GtkTextIter start, end;
 	gint words = 0;
 	gint chars = 0;
@@ -206,10 +206,10 @@ update_document_info (GeditDocinfoPlugin *plugin,
 }
 
 static void
-update_selection_info (GeditDocinfoPlugin *plugin,
-		       GeditDocument      *doc)
+update_selection_info (BeditDocinfoPlugin *plugin,
+		       BeditDocument      *doc)
 {
-	GeditDocinfoPluginPrivate *priv;
+	BeditDocinfoPluginPrivate *priv;
 	gboolean sel;
 	GtkTextIter start, end;
 	gint words = 0;
@@ -287,9 +287,9 @@ update_selection_info (GeditDocinfoPlugin *plugin,
 static void
 docinfo_dialog_response_cb (GtkDialog          *widget,
 			    gint                res_id,
-			    GeditDocinfoPlugin *plugin)
+			    BeditDocinfoPlugin *plugin)
 {
-	GeditDocinfoPluginPrivate *priv;
+	BeditDocinfoPluginPrivate *priv;
 
 	gedit_debug (DEBUG_PLUGINS);
 
@@ -308,7 +308,7 @@ docinfo_dialog_response_cb (GtkDialog          *widget,
 
 		case GTK_RESPONSE_OK:
 		{
-			GeditDocument *doc;
+			BeditDocument *doc;
 
 			gedit_debug_message (DEBUG_PLUGINS, "GTK_RESPONSE_OK");
 
@@ -323,9 +323,9 @@ docinfo_dialog_response_cb (GtkDialog          *widget,
 }
 
 static void
-create_docinfo_dialog (GeditDocinfoPlugin *plugin)
+create_docinfo_dialog (BeditDocinfoPlugin *plugin)
 {
-	GeditDocinfoPluginPrivate *priv;
+	BeditDocinfoPluginPrivate *priv;
 	GtkBuilder *builder;
 
 	gedit_debug (DEBUG_PLUGINS);
@@ -397,10 +397,10 @@ create_docinfo_dialog (GeditDocinfoPlugin *plugin)
 static void
 docinfo_cb (GAction            *action,
             GVariant           *parameter,
-            GeditDocinfoPlugin *plugin)
+            BeditDocinfoPlugin *plugin)
 {
-	GeditDocinfoPluginPrivate *priv;
-	GeditDocument *doc;
+	BeditDocinfoPluginPrivate *priv;
+	BeditDocument *doc;
 
 	gedit_debug (DEBUG_PLUGINS);
 
@@ -424,9 +424,9 @@ docinfo_cb (GAction            *action,
 }
 
 static void
-gedit_docinfo_plugin_init (GeditDocinfoPlugin *plugin)
+gedit_docinfo_plugin_init (BeditDocinfoPlugin *plugin)
 {
-	gedit_debug_message (DEBUG_PLUGINS, "GeditDocinfoPlugin initializing");
+	gedit_debug_message (DEBUG_PLUGINS, "BeditDocinfoPlugin initializing");
 
 	plugin->priv = gedit_docinfo_plugin_get_instance_private (plugin);
 }
@@ -434,9 +434,9 @@ gedit_docinfo_plugin_init (GeditDocinfoPlugin *plugin)
 static void
 gedit_docinfo_plugin_dispose (GObject *object)
 {
-	GeditDocinfoPlugin *plugin = GEDIT_DOCINFO_PLUGIN (object);
+	BeditDocinfoPlugin *plugin = GEDIT_DOCINFO_PLUGIN (object);
 
-	gedit_debug_message (DEBUG_PLUGINS, "GeditDocinfoPlugin dispose");
+	gedit_debug_message (DEBUG_PLUGINS, "BeditDocinfoPlugin dispose");
 
 	g_clear_object (&plugin->priv->action);
 	g_clear_object (&plugin->priv->window);
@@ -450,7 +450,7 @@ gedit_docinfo_plugin_dispose (GObject *object)
 static void
 gedit_docinfo_plugin_finalize (GObject *object)
 {
-	gedit_debug_message (DEBUG_PLUGINS, "GeditDocinfoPlugin finalizing");
+	gedit_debug_message (DEBUG_PLUGINS, "BeditDocinfoPlugin finalizing");
 
 	G_OBJECT_CLASS (gedit_docinfo_plugin_parent_class)->finalize (object);
 }
@@ -461,7 +461,7 @@ gedit_docinfo_plugin_set_property (GObject      *object,
                                    const GValue *value,
                                    GParamSpec   *pspec)
 {
-	GeditDocinfoPlugin *plugin = GEDIT_DOCINFO_PLUGIN (object);
+	BeditDocinfoPlugin *plugin = GEDIT_DOCINFO_PLUGIN (object);
 
 	switch (prop_id)
 	{
@@ -483,7 +483,7 @@ gedit_docinfo_plugin_get_property (GObject    *object,
                                    GValue     *value,
                                    GParamSpec *pspec)
 {
-	GeditDocinfoPlugin *plugin = GEDIT_DOCINFO_PLUGIN (object);
+	BeditDocinfoPlugin *plugin = GEDIT_DOCINFO_PLUGIN (object);
 
 	switch (prop_id)
 	{
@@ -500,10 +500,10 @@ gedit_docinfo_plugin_get_property (GObject    *object,
 }
 
 static void
-update_ui (GeditDocinfoPlugin *plugin)
+update_ui (BeditDocinfoPlugin *plugin)
 {
-	GeditDocinfoPluginPrivate *priv;
-	GeditView *view;
+	BeditDocinfoPluginPrivate *priv;
+	BeditView *view;
 
 	gedit_debug (DEBUG_PLUGINS);
 
@@ -522,9 +522,9 @@ update_ui (GeditDocinfoPlugin *plugin)
 }
 
 static void
-gedit_docinfo_plugin_app_activate (GeditAppActivatable *activatable)
+gedit_docinfo_plugin_app_activate (BeditAppActivatable *activatable)
 {
-	GeditDocinfoPluginPrivate *priv;
+	BeditDocinfoPluginPrivate *priv;
 	GMenuItem *item;
 
 	gedit_debug (DEBUG_PLUGINS);
@@ -538,9 +538,9 @@ gedit_docinfo_plugin_app_activate (GeditAppActivatable *activatable)
 }
 
 static void
-gedit_docinfo_plugin_app_deactivate (GeditAppActivatable *activatable)
+gedit_docinfo_plugin_app_deactivate (BeditAppActivatable *activatable)
 {
-	GeditDocinfoPluginPrivate *priv;
+	BeditDocinfoPluginPrivate *priv;
 
 	gedit_debug (DEBUG_PLUGINS);
 
@@ -550,9 +550,9 @@ gedit_docinfo_plugin_app_deactivate (GeditAppActivatable *activatable)
 }
 
 static void
-gedit_docinfo_plugin_window_activate (GeditWindowActivatable *activatable)
+gedit_docinfo_plugin_window_activate (BeditWindowActivatable *activatable)
 {
-	GeditDocinfoPluginPrivate *priv;
+	BeditDocinfoPluginPrivate *priv;
 
 	gedit_debug (DEBUG_PLUGINS);
 
@@ -568,9 +568,9 @@ gedit_docinfo_plugin_window_activate (GeditWindowActivatable *activatable)
 }
 
 static void
-gedit_docinfo_plugin_window_deactivate (GeditWindowActivatable *activatable)
+gedit_docinfo_plugin_window_deactivate (BeditWindowActivatable *activatable)
 {
-	GeditDocinfoPluginPrivate *priv;
+	BeditDocinfoPluginPrivate *priv;
 
 	gedit_debug (DEBUG_PLUGINS);
 
@@ -580,7 +580,7 @@ gedit_docinfo_plugin_window_deactivate (GeditWindowActivatable *activatable)
 }
 
 static void
-gedit_docinfo_plugin_window_update_state (GeditWindowActivatable *activatable)
+gedit_docinfo_plugin_window_update_state (BeditWindowActivatable *activatable)
 {
 	gedit_debug (DEBUG_PLUGINS);
 
@@ -588,7 +588,7 @@ gedit_docinfo_plugin_window_update_state (GeditWindowActivatable *activatable)
 }
 
 static void
-gedit_docinfo_plugin_class_init (GeditDocinfoPluginClass *klass)
+gedit_docinfo_plugin_class_init (BeditDocinfoPluginClass *klass)
 {
 	GObjectClass *object_class = G_OBJECT_CLASS (klass);
 
@@ -602,14 +602,14 @@ gedit_docinfo_plugin_class_init (GeditDocinfoPluginClass *klass)
 }
 
 static void
-gedit_app_activatable_iface_init (GeditAppActivatableInterface *iface)
+gedit_app_activatable_iface_init (BeditAppActivatableInterface *iface)
 {
 	iface->activate = gedit_docinfo_plugin_app_activate;
 	iface->deactivate = gedit_docinfo_plugin_app_deactivate;
 }
 
 static void
-gedit_window_activatable_iface_init (GeditWindowActivatableInterface *iface)
+gedit_window_activatable_iface_init (BeditWindowActivatableInterface *iface)
 {
 	iface->activate = gedit_docinfo_plugin_window_activate;
 	iface->deactivate = gedit_docinfo_plugin_window_deactivate;
@@ -617,7 +617,7 @@ gedit_window_activatable_iface_init (GeditWindowActivatableInterface *iface)
 }
 
 static void
-gedit_docinfo_plugin_class_finalize (GeditDocinfoPluginClass *klass)
+gedit_docinfo_plugin_class_finalize (BeditDocinfoPluginClass *klass)
 {
 }
 

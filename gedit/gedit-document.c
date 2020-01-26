@@ -36,11 +36,11 @@
 
 #define NO_LANGUAGE_NAME "_NORMAL_"
 
-static void	gedit_document_loaded_real	(GeditDocument *doc);
+static void	gedit_document_loaded_real	(BeditDocument *doc);
 
-static void	gedit_document_saved_real	(GeditDocument *doc);
+static void	gedit_document_saved_real	(BeditDocument *doc);
 
-static void	set_content_type		(GeditDocument *doc,
+static void	set_content_type		(BeditDocument *doc,
 						 const gchar   *content_type);
 
 typedef struct
@@ -77,7 +77,7 @@ typedef struct
 	 * when opened from the command line).
 	 */
 	guint create : 1;
-} GeditDocumentPrivate;
+} BeditDocumentPrivate;
 
 enum
 {
@@ -105,7 +105,7 @@ static guint document_signals[LAST_SIGNAL];
 
 static GHashTable *allocated_untitled_numbers = NULL;
 
-G_DEFINE_TYPE_WITH_PRIVATE (GeditDocument, gedit_document, GTK_SOURCE_TYPE_BUFFER)
+G_DEFINE_TYPE_WITH_PRIVATE (BeditDocument, gedit_document, GTK_SOURCE_TYPE_BUFFER)
 
 static gint
 get_untitled_number (void)
@@ -141,9 +141,9 @@ release_untitled_number (gint n)
 }
 
 static void
-update_time_of_last_save_or_load (GeditDocument *doc)
+update_time_of_last_save_or_load (BeditDocument *doc)
 {
-	GeditDocumentPrivate *priv = gedit_document_get_instance_private (doc);
+	BeditDocumentPrivate *priv = gedit_document_get_instance_private (doc);
 
 	if (priv->time_of_last_save_or_load != NULL)
 	{
@@ -154,7 +154,7 @@ update_time_of_last_save_or_load (GeditDocument *doc)
 }
 
 static const gchar *
-get_language_string (GeditDocument *doc)
+get_language_string (BeditDocument *doc)
 {
 	GtkSourceLanguage *lang = gedit_document_get_language (doc);
 
@@ -162,9 +162,9 @@ get_language_string (GeditDocument *doc)
 }
 
 static void
-save_metadata (GeditDocument *doc)
+save_metadata (BeditDocument *doc)
 {
-	GeditDocumentPrivate *priv;
+	BeditDocumentPrivate *priv;
 	const gchar *language = NULL;
 	GtkTextIter iter;
 	gchar *position;
@@ -201,8 +201,8 @@ save_metadata (GeditDocument *doc)
 static void
 gedit_document_dispose (GObject *object)
 {
-	GeditDocument *doc = GEDIT_DOCUMENT (object);
-	GeditDocumentPrivate *priv = gedit_document_get_instance_private (doc);
+	BeditDocument *doc = GEDIT_DOCUMENT (object);
+	BeditDocumentPrivate *priv = gedit_document_get_instance_private (doc);
 
 	gedit_debug (DEBUG_DOCUMENT);
 
@@ -227,7 +227,7 @@ gedit_document_dispose (GObject *object)
 static void
 gedit_document_finalize (GObject *object)
 {
-	GeditDocumentPrivate *priv;
+	BeditDocumentPrivate *priv;
 
 	gedit_debug (DEBUG_DOCUMENT);
 
@@ -254,8 +254,8 @@ gedit_document_get_property (GObject    *object,
 			     GValue     *value,
 			     GParamSpec *pspec)
 {
-	GeditDocument *doc = GEDIT_DOCUMENT (object);
-	GeditDocumentPrivate *priv;
+	BeditDocument *doc = GEDIT_DOCUMENT (object);
+	BeditDocumentPrivate *priv;
 
 	priv = gedit_document_get_instance_private (doc);
 
@@ -289,7 +289,7 @@ gedit_document_set_property (GObject      *object,
 			     const GValue *value,
 			     GParamSpec   *pspec)
 {
-	GeditDocument *doc = GEDIT_DOCUMENT (object);
+	BeditDocument *doc = GEDIT_DOCUMENT (object);
 
 	switch (prop_id)
 	{
@@ -306,7 +306,7 @@ gedit_document_set_property (GObject      *object,
 static void
 gedit_document_begin_user_action (GtkTextBuffer *buffer)
 {
-	GeditDocumentPrivate *priv;
+	BeditDocumentPrivate *priv;
 
 	priv = gedit_document_get_instance_private (GEDIT_DOCUMENT (buffer));
 
@@ -321,7 +321,7 @@ gedit_document_begin_user_action (GtkTextBuffer *buffer)
 static void
 gedit_document_end_user_action (GtkTextBuffer *buffer)
 {
-	GeditDocumentPrivate *priv;
+	BeditDocumentPrivate *priv;
 
 	priv = gedit_document_get_instance_private (GEDIT_DOCUMENT (buffer));
 
@@ -338,8 +338,8 @@ gedit_document_mark_set (GtkTextBuffer     *buffer,
                          const GtkTextIter *iter,
                          GtkTextMark       *mark)
 {
-	GeditDocument *doc = GEDIT_DOCUMENT (buffer);
-	GeditDocumentPrivate *priv;
+	BeditDocument *doc = GEDIT_DOCUMENT (buffer);
+	BeditDocumentPrivate *priv;
 
 	priv = gedit_document_get_instance_private (doc);
 
@@ -365,8 +365,8 @@ gedit_document_changed (GtkTextBuffer *buffer)
 static void
 gedit_document_constructed (GObject *object)
 {
-	GeditDocument *doc = GEDIT_DOCUMENT (object);
-	GeditDocumentPrivate *priv;
+	BeditDocument *doc = GEDIT_DOCUMENT (object);
+	BeditDocumentPrivate *priv;
 
 	priv = gedit_document_get_instance_private (doc);
 
@@ -381,7 +381,7 @@ gedit_document_constructed (GObject *object)
 }
 
 static void
-gedit_document_class_init (GeditDocumentClass *klass)
+gedit_document_class_init (BeditDocumentClass *klass)
 {
 	GObjectClass *object_class = G_OBJECT_CLASS (klass);
 	GtkTextBufferClass *buf_class = GTK_TEXT_BUFFER_CLASS (klass);
@@ -401,7 +401,7 @@ gedit_document_class_init (GeditDocumentClass *klass)
 	klass->saved = gedit_document_saved_real;
 
 	/**
-	 * GeditDocument:shortname:
+	 * BeditDocument:shortname:
 	 *
 	 * The document's short name.
 	 */
@@ -413,7 +413,7 @@ gedit_document_class_init (GeditDocumentClass *klass)
 		                     G_PARAM_READABLE | G_PARAM_STATIC_STRINGS);
 
 	/**
-	 * GeditDocument:content-type:
+	 * BeditDocument:content-type:
 	 *
 	 * The document's content type.
 	 */
@@ -425,7 +425,7 @@ gedit_document_class_init (GeditDocumentClass *klass)
 		                     G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
 
 	/**
-	 * GeditDocument:mime-type:
+	 * BeditDocument:mime-type:
 	 *
 	 * The document's MIME type.
 	 */
@@ -437,7 +437,7 @@ gedit_document_class_init (GeditDocumentClass *klass)
 		                     G_PARAM_READABLE | G_PARAM_STATIC_STRINGS);
 
 	/**
-	 * GeditDocument:empty-search:
+	 * BeditDocument:empty-search:
 	 *
 	 * <warning>
 	 * The property is used internally by gedit. It must not be used in a
@@ -465,14 +465,14 @@ gedit_document_class_init (GeditDocumentClass *klass)
 		g_signal_new ("cursor-moved",
 			      G_OBJECT_CLASS_TYPE (object_class),
 			      G_SIGNAL_RUN_LAST,
-			      G_STRUCT_OFFSET (GeditDocumentClass, cursor_moved),
+			      G_STRUCT_OFFSET (BeditDocumentClass, cursor_moved),
 			      NULL, NULL, NULL,
 			      G_TYPE_NONE,
 			      0);
 
 	/**
-	 * GeditDocument::load:
-	 * @document: the #GeditDocument.
+	 * BeditDocument::load:
+	 * @document: the #BeditDocument.
 	 *
 	 * The "load" signal is emitted at the beginning of a file loading.
 	 *
@@ -484,13 +484,13 @@ gedit_document_class_init (GeditDocumentClass *klass)
 		g_signal_new ("load",
 			      G_OBJECT_CLASS_TYPE (object_class),
 			      G_SIGNAL_RUN_LAST,
-			      G_STRUCT_OFFSET (GeditDocumentClass, load),
+			      G_STRUCT_OFFSET (BeditDocumentClass, load),
 			      NULL, NULL, NULL,
 			      G_TYPE_NONE, 0);
 
 	/**
-	 * GeditDocument::loaded:
-	 * @document: the #GeditDocument.
+	 * BeditDocument::loaded:
+	 * @document: the #BeditDocument.
 	 *
 	 * The "loaded" signal is emitted at the end of a successful file
 	 * loading.
@@ -503,13 +503,13 @@ gedit_document_class_init (GeditDocumentClass *klass)
 		g_signal_new ("loaded",
 			      G_OBJECT_CLASS_TYPE (object_class),
 			      G_SIGNAL_RUN_FIRST,
-			      G_STRUCT_OFFSET (GeditDocumentClass, loaded),
+			      G_STRUCT_OFFSET (BeditDocumentClass, loaded),
 			      NULL, NULL, NULL,
 			      G_TYPE_NONE, 0);
 
 	/**
-	 * GeditDocument::save:
-	 * @document: the #GeditDocument.
+	 * BeditDocument::save:
+	 * @document: the #BeditDocument.
 	 *
 	 * The "save" signal is emitted at the beginning of a file saving.
 	 *
@@ -521,13 +521,13 @@ gedit_document_class_init (GeditDocumentClass *klass)
 		g_signal_new ("save",
 			      G_OBJECT_CLASS_TYPE (object_class),
 			      G_SIGNAL_RUN_LAST,
-			      G_STRUCT_OFFSET (GeditDocumentClass, save),
+			      G_STRUCT_OFFSET (BeditDocumentClass, save),
 			      NULL, NULL, NULL,
 			      G_TYPE_NONE, 0);
 
 	/**
-	 * GeditDocument::saved:
-	 * @document: the #GeditDocument.
+	 * BeditDocument::saved:
+	 * @document: the #BeditDocument.
 	 *
 	 * The "saved" signal is emitted at the end of a successful file saving.
 	 *
@@ -541,17 +541,17 @@ gedit_document_class_init (GeditDocumentClass *klass)
 		g_signal_new ("saved",
 			      G_OBJECT_CLASS_TYPE (object_class),
 			      G_SIGNAL_RUN_FIRST,
-			      G_STRUCT_OFFSET (GeditDocumentClass, saved),
+			      G_STRUCT_OFFSET (BeditDocumentClass, saved),
 			      NULL, NULL, NULL,
 			      G_TYPE_NONE, 0);
 }
 
 static void
-set_language (GeditDocument     *doc,
+set_language (BeditDocument     *doc,
               GtkSourceLanguage *lang,
               gboolean           set_by_user)
 {
-	GeditDocumentPrivate *priv;
+	BeditDocumentPrivate *priv;
 	GtkSourceLanguage *old_lang;
 
 	gedit_debug (DEBUG_DOCUMENT);
@@ -580,9 +580,9 @@ set_language (GeditDocument     *doc,
 }
 
 static void
-save_encoding_metadata (GeditDocument *doc)
+save_encoding_metadata (BeditDocument *doc)
 {
-	GeditDocumentPrivate *priv;
+	BeditDocumentPrivate *priv;
 	const GtkSourceEncoding *encoding;
 	const gchar *charset;
 
@@ -633,9 +633,9 @@ get_default_style_scheme (GSettings *editor_settings)
 }
 
 static GtkSourceLanguage *
-guess_language (GeditDocument *doc)
+guess_language (BeditDocument *doc)
 {
-	GeditDocumentPrivate *priv;
+	BeditDocumentPrivate *priv;
 	gchar *data;
 	GtkSourceLanguageManager *manager = gtk_source_language_manager_get_default ();
 	GtkSourceLanguage *language = NULL;
@@ -679,11 +679,11 @@ guess_language (GeditDocument *doc)
 }
 
 static void
-on_content_type_changed (GeditDocument *doc,
+on_content_type_changed (BeditDocument *doc,
 			 GParamSpec    *pspec,
 			 gpointer       useless)
 {
-	GeditDocumentPrivate *priv;
+	BeditDocumentPrivate *priv;
 
 	priv = gedit_document_get_instance_private (doc);
 
@@ -707,9 +707,9 @@ get_default_content_type (void)
 static void
 on_location_changed (GtkSourceFile *file,
 		     GParamSpec    *pspec,
-		     GeditDocument *doc)
+		     BeditDocument *doc)
 {
-	GeditDocumentPrivate *priv;
+	BeditDocumentPrivate *priv;
 	GFile *location;
 
 	gedit_debug (DEBUG_DOCUMENT);
@@ -730,7 +730,7 @@ on_location_changed (GtkSourceFile *file,
 static void
 on_tepl_location_changed (TeplFile      *file,
 			  GParamSpec    *pspec,
-			  GeditDocument *doc)
+			  BeditDocument *doc)
 {
 	TeplFileMetadata *metadata;
 	GError *error = NULL;
@@ -764,9 +764,9 @@ on_tepl_location_changed (TeplFile      *file,
 }
 
 static void
-gedit_document_init (GeditDocument *doc)
+gedit_document_init (BeditDocument *doc)
 {
-	GeditDocumentPrivate *priv;
+	BeditDocumentPrivate *priv;
 	GtkSourceStyleScheme *style_scheme;
 
 	gedit_debug (DEBUG_DOCUMENT);
@@ -832,14 +832,14 @@ gedit_document_init (GeditDocument *doc)
 			  NULL);
 }
 
-GeditDocument *
+BeditDocument *
 gedit_document_new (void)
 {
 	return g_object_new (GEDIT_TYPE_DOCUMENT, NULL);
 }
 
 static gchar *
-get_content_type_from_content (GeditDocument *doc)
+get_content_type_from_content (BeditDocument *doc)
 {
 	gchar *content_type;
 	gchar *data;
@@ -866,10 +866,10 @@ get_content_type_from_content (GeditDocument *doc)
 }
 
 static void
-set_content_type_no_guess (GeditDocument *doc,
+set_content_type_no_guess (BeditDocument *doc,
 			   const gchar   *content_type)
 {
-	GeditDocumentPrivate *priv;
+	BeditDocumentPrivate *priv;
 	gchar *dupped_content_type;
 
 	gedit_debug (DEBUG_DOCUMENT);
@@ -911,10 +911,10 @@ set_content_type_no_guess (GeditDocument *doc,
 }
 
 static void
-set_content_type (GeditDocument *doc,
+set_content_type (BeditDocument *doc,
 		  const gchar   *content_type)
 {
-	GeditDocumentPrivate *priv;
+	BeditDocumentPrivate *priv;
 
 	gedit_debug (DEBUG_DOCUMENT);
 
@@ -948,14 +948,14 @@ set_content_type (GeditDocument *doc,
 
 /**
  * gedit_document_get_uri_for_display:
- * @doc: a #GeditDocument.
+ * @doc: a #BeditDocument.
  *
  * Note: this never returns %NULL.
  **/
 gchar *
-gedit_document_get_uri_for_display (GeditDocument *doc)
+gedit_document_get_uri_for_display (BeditDocument *doc)
 {
-	GeditDocumentPrivate *priv;
+	BeditDocumentPrivate *priv;
 	GFile *location;
 
 	g_return_val_if_fail (GEDIT_IS_DOCUMENT (doc), g_strdup (""));
@@ -977,14 +977,14 @@ gedit_document_get_uri_for_display (GeditDocument *doc)
 
 /**
  * gedit_document_get_short_name_for_display:
- * @doc: a #GeditDocument.
+ * @doc: a #BeditDocument.
  *
  * Note: this never returns %NULL.
  **/
 gchar *
-gedit_document_get_short_name_for_display (GeditDocument *doc)
+gedit_document_get_short_name_for_display (BeditDocument *doc)
 {
-	GeditDocumentPrivate *priv;
+	BeditDocumentPrivate *priv;
 	GFile *location;
 
 	g_return_val_if_fail (GEDIT_IS_DOCUMENT (doc), g_strdup (""));
@@ -1005,9 +1005,9 @@ gedit_document_get_short_name_for_display (GeditDocument *doc)
 }
 
 gchar *
-gedit_document_get_content_type (GeditDocument *doc)
+gedit_document_get_content_type (BeditDocument *doc)
 {
-	GeditDocumentPrivate *priv;
+	BeditDocumentPrivate *priv;
 
 	g_return_val_if_fail (GEDIT_IS_DOCUMENT (doc), NULL);
 
@@ -1018,14 +1018,14 @@ gedit_document_get_content_type (GeditDocument *doc)
 
 /**
  * gedit_document_get_mime_type:
- * @doc: a #GeditDocument.
+ * @doc: a #BeditDocument.
  *
  * Note: this never returns %NULL.
  **/
 gchar *
-gedit_document_get_mime_type (GeditDocument *doc)
+gedit_document_get_mime_type (BeditDocument *doc)
 {
-	GeditDocumentPrivate *priv;
+	BeditDocumentPrivate *priv;
 
 	g_return_val_if_fail (GEDIT_IS_DOCUMENT (doc), g_strdup ("text/plain"));
 
@@ -1043,7 +1043,7 @@ gedit_document_get_mime_type (GeditDocument *doc)
 static void
 loaded_query_info_cb (GFile         *location,
 		      GAsyncResult  *result,
-		      GeditDocument *doc)
+		      BeditDocument *doc)
 {
 	GFileInfo *info;
 	GError *error = NULL;
@@ -1082,9 +1082,9 @@ loaded_query_info_cb (GFile         *location,
 }
 
 static void
-gedit_document_loaded_real (GeditDocument *doc)
+gedit_document_loaded_real (BeditDocument *doc)
 {
-	GeditDocumentPrivate *priv;
+	BeditDocumentPrivate *priv;
 	GFile *location;
 
 	priv = gedit_document_get_instance_private (doc);
@@ -1123,9 +1123,9 @@ gedit_document_loaded_real (GeditDocument *doc)
 static void
 saved_query_info_cb (GFile         *location,
 		     GAsyncResult  *result,
-		     GeditDocument *doc)
+		     BeditDocument *doc)
 {
-	GeditDocumentPrivate *priv;
+	BeditDocumentPrivate *priv;
 	GFileInfo *info;
 	const gchar *content_type = NULL;
 	GError *error = NULL;
@@ -1166,9 +1166,9 @@ saved_query_info_cb (GFile         *location,
 }
 
 static void
-gedit_document_saved_real (GeditDocument *doc)
+gedit_document_saved_real (BeditDocument *doc)
 {
-	GeditDocumentPrivate *priv;
+	BeditDocumentPrivate *priv;
 	GFile *location;
 
 	priv = gedit_document_get_instance_private (doc);
@@ -1188,9 +1188,9 @@ gedit_document_saved_real (GeditDocument *doc)
 }
 
 gboolean
-gedit_document_is_untouched (GeditDocument *doc)
+gedit_document_is_untouched (BeditDocument *doc)
 {
-	GeditDocumentPrivate *priv;
+	BeditDocumentPrivate *priv;
 	GFile *location;
 
 	g_return_val_if_fail (GEDIT_IS_DOCUMENT (doc), TRUE);
@@ -1203,9 +1203,9 @@ gedit_document_is_untouched (GeditDocument *doc)
 }
 
 gboolean
-gedit_document_is_untitled (GeditDocument *doc)
+gedit_document_is_untitled (BeditDocument *doc)
 {
-	GeditDocumentPrivate *priv;
+	BeditDocumentPrivate *priv;
 
 	g_return_val_if_fail (GEDIT_IS_DOCUMENT (doc), TRUE);
 
@@ -1218,9 +1218,9 @@ gedit_document_is_untitled (GeditDocument *doc)
  * Deletion and external modification is only checked for local files.
  */
 gboolean
-_gedit_document_needs_saving (GeditDocument *doc)
+_gedit_document_needs_saving (BeditDocument *doc)
 {
-	GeditDocumentPrivate *priv;
+	BeditDocumentPrivate *priv;
 	gboolean externally_modified = FALSE;
 	gboolean deleted = FALSE;
 
@@ -1247,7 +1247,7 @@ _gedit_document_needs_saving (GeditDocument *doc)
  * to the last line and FALSE is returned.
  */
 gboolean
-gedit_document_goto_line (GeditDocument *doc,
+gedit_document_goto_line (BeditDocument *doc,
 			  gint           line)
 {
 	GtkTextIter iter;
@@ -1267,7 +1267,7 @@ gedit_document_goto_line (GeditDocument *doc,
 }
 
 gboolean
-gedit_document_goto_line_offset (GeditDocument *doc,
+gedit_document_goto_line_offset (BeditDocument *doc,
 				 gint           line,
 				 gint           line_offset)
 {
@@ -1294,7 +1294,7 @@ gedit_document_goto_line_offset (GeditDocument *doc,
  * @lang: (allow-none):
  **/
 void
-gedit_document_set_language (GeditDocument     *doc,
+gedit_document_set_language (BeditDocument     *doc,
 			     GtkSourceLanguage *lang)
 {
 	g_return_if_fail (GEDIT_IS_DOCUMENT (doc));
@@ -1309,7 +1309,7 @@ gedit_document_set_language (GeditDocument     *doc,
  * Return value: (transfer none):
  */
 GtkSourceLanguage *
-gedit_document_get_language (GeditDocument *doc)
+gedit_document_get_language (BeditDocument *doc)
 {
 	g_return_val_if_fail (GEDIT_IS_DOCUMENT (doc), NULL);
 
@@ -1317,9 +1317,9 @@ gedit_document_get_language (GeditDocument *doc)
 }
 
 glong
-_gedit_document_get_seconds_since_last_save_or_load (GeditDocument *doc)
+_gedit_document_get_seconds_since_last_save_or_load (BeditDocument *doc)
 {
-	GeditDocumentPrivate *priv;
+	BeditDocumentPrivate *priv;
 	GDateTime *now;
 	GTimeSpan n_microseconds;
 
@@ -1348,7 +1348,7 @@ _gedit_document_get_seconds_since_last_save_or_load (GeditDocument *doc)
 
 /**
  * gedit_document_get_metadata:
- * @doc: a #GeditDocument
+ * @doc: a #BeditDocument
  * @key: name of the key
  *
  * Gets the metadata assigned to @key.
@@ -1356,10 +1356,10 @@ _gedit_document_get_seconds_since_last_save_or_load (GeditDocument *doc)
  * Returns: the value assigned to @key. Free with g_free().
  */
 gchar *
-gedit_document_get_metadata (GeditDocument *doc,
+gedit_document_get_metadata (BeditDocument *doc,
 			     const gchar   *key)
 {
-	GeditDocumentPrivate *priv;
+	BeditDocumentPrivate *priv;
 	TeplFileMetadata *metadata;
 
 	g_return_val_if_fail (GEDIT_IS_DOCUMENT (doc), NULL);
@@ -1378,7 +1378,7 @@ gedit_document_get_metadata (GeditDocument *doc,
 
 /**
  * gedit_document_set_metadata:
- * @doc: a #GeditDocument
+ * @doc: a #BeditDocument
  * @first_key: name of the first key to set
  * @...: (allow-none): value for the first key, followed optionally by more key/value pairs,
  * followed by %NULL.
@@ -1386,11 +1386,11 @@ gedit_document_get_metadata (GeditDocument *doc,
  * Sets metadata on a document.
  */
 void
-gedit_document_set_metadata (GeditDocument *doc,
+gedit_document_set_metadata (BeditDocument *doc,
 			     const gchar   *first_key,
 			     ...)
 {
-	GeditDocumentPrivate *priv;
+	BeditDocumentPrivate *priv;
 	TeplFileMetadata *metadata;
 	va_list var_args;
 	const gchar *key;
@@ -1445,9 +1445,9 @@ gedit_document_set_metadata (GeditDocument *doc,
 }
 
 static void
-update_empty_search (GeditDocument *doc)
+update_empty_search (BeditDocument *doc)
 {
-	GeditDocumentPrivate *priv;
+	BeditDocumentPrivate *priv;
 	gboolean new_value;
 
 	priv = gedit_document_get_instance_private (doc);
@@ -1473,9 +1473,9 @@ update_empty_search (GeditDocument *doc)
 }
 
 static void
-connect_search_settings (GeditDocument *doc)
+connect_search_settings (BeditDocument *doc)
 {
-	GeditDocumentPrivate *priv;
+	BeditDocumentPrivate *priv;
 	GtkSourceSearchSettings *search_settings;
 
 	priv = gedit_document_get_instance_private (doc);
@@ -1496,7 +1496,7 @@ connect_search_settings (GeditDocument *doc)
 
 /**
  * gedit_document_set_search_context:
- * @doc: a #GeditDocument
+ * @doc: a #BeditDocument
  * @search_context: (allow-none): the new #GtkSourceSearchContext
  *
  * Sets the new search context for the document. Use this function only when the
@@ -1510,10 +1510,10 @@ connect_search_settings (GeditDocument *doc)
  * use gedit_document_get_search_context().
  */
 void
-gedit_document_set_search_context (GeditDocument          *doc,
+gedit_document_set_search_context (BeditDocument          *doc,
 				   GtkSourceSearchContext *search_context)
 {
-	GeditDocumentPrivate *priv;
+	BeditDocumentPrivate *priv;
 
 	g_return_if_fail (GEDIT_IS_DOCUMENT (doc));
 
@@ -1553,7 +1553,7 @@ gedit_document_set_search_context (GeditDocument          *doc,
 
 /**
  * gedit_document_get_search_context:
- * @doc: a #GeditDocument
+ * @doc: a #BeditDocument
  *
  * Gets the search context. Use this function only if you have used
  * gedit_document_set_search_context() before. You should not alter other search
@@ -1565,9 +1565,9 @@ gedit_document_set_search_context (GeditDocument          *doc,
  * if there is no current search context.
  */
 GtkSourceSearchContext *
-gedit_document_get_search_context (GeditDocument *doc)
+gedit_document_get_search_context (BeditDocument *doc)
 {
-	GeditDocumentPrivate *priv;
+	BeditDocumentPrivate *priv;
 
 	g_return_val_if_fail (GEDIT_IS_DOCUMENT (doc), NULL);
 
@@ -1577,9 +1577,9 @@ gedit_document_get_search_context (GeditDocument *doc)
 }
 
 gboolean
-_gedit_document_get_empty_search (GeditDocument *doc)
+_gedit_document_get_empty_search (BeditDocument *doc)
 {
-	GeditDocumentPrivate *priv;
+	BeditDocumentPrivate *priv;
 
 	g_return_val_if_fail (GEDIT_IS_DOCUMENT (doc), TRUE);
 
@@ -1590,7 +1590,7 @@ _gedit_document_get_empty_search (GeditDocument *doc)
 
 /**
  * gedit_document_get_file:
- * @doc: a #GeditDocument.
+ * @doc: a #BeditDocument.
  *
  * Gets the associated #GtkSourceFile. You should use it only for reading
  * purposes, not for creating a #GtkSourceFileLoader or #GtkSourceFileSaver,
@@ -1598,16 +1598,16 @@ _gedit_document_get_empty_search (GeditDocument *doc)
  * maintains an internal state. If you use in a plugin a file loader or saver on
  * the returned #GtkSourceFile, the internal state of gedit won't be updated.
  *
- * If you want to save the #GeditDocument to a secondary file, you can create a
+ * If you want to save the #BeditDocument to a secondary file, you can create a
  * new #GtkSourceFile and use a #GtkSourceFileSaver.
  *
  * Returns: (transfer none): the associated #GtkSourceFile.
  * Since: 3.14
  */
 GtkSourceFile *
-gedit_document_get_file (GeditDocument *doc)
+gedit_document_get_file (BeditDocument *doc)
 {
-	GeditDocumentPrivate *priv;
+	BeditDocumentPrivate *priv;
 
 	g_return_val_if_fail (GEDIT_IS_DOCUMENT (doc), NULL);
 
@@ -1617,10 +1617,10 @@ gedit_document_get_file (GeditDocument *doc)
 }
 
 void
-_gedit_document_set_create (GeditDocument *doc,
+_gedit_document_set_create (BeditDocument *doc,
 			    gboolean       create)
 {
-	GeditDocumentPrivate *priv;
+	BeditDocumentPrivate *priv;
 
 	g_return_if_fail (GEDIT_IS_DOCUMENT (doc));
 
@@ -1630,9 +1630,9 @@ _gedit_document_set_create (GeditDocument *doc,
 }
 
 gboolean
-_gedit_document_get_create (GeditDocument *doc)
+_gedit_document_get_create (BeditDocument *doc)
 {
-	GeditDocumentPrivate *priv;
+	BeditDocumentPrivate *priv;
 
 	g_return_val_if_fail (GEDIT_IS_DOCUMENT (doc), FALSE);
 

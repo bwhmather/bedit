@@ -29,7 +29,7 @@
 #include "gedit-encodings-dialog.h"
 #include "gedit-utils.h"
 
-struct _GeditFileChooserDialogOSX
+struct _BeditFileChooserDialogOSX
 {
 	GObject parent_instance;
 
@@ -49,12 +49,12 @@ struct _GeditFileChooserDialogOSX
 
 	gulong destroy_id;
 
-	GeditFileChooserFlags flags;
+	BeditFileChooserFlags flags;
 };
 
 static void gedit_file_chooser_dialog_osx_chooser_init (gpointer g_iface, gpointer iface_data);
 
-G_DEFINE_TYPE_EXTENDED (GeditFileChooserDialogOSX,
+G_DEFINE_TYPE_EXTENDED (BeditFileChooserDialogOSX,
                         gedit_file_chooser_dialog_osx,
                         G_TYPE_OBJECT,
                         0,
@@ -89,9 +89,9 @@ G_DEFINE_TYPE_EXTENDED (GeditFileChooserDialogOSX,
 
 @interface EncodingItem : NSMenuItem
 
-@property (readonly) GeditEncodingItem *encoding;
+@property (readonly) BeditEncodingItem *encoding;
 
--(id)initWithEncoding:(GeditEncodingItem *)encoding;
+-(id)initWithEncoding:(BeditEncodingItem *)encoding;
 
 -(void)dealloc;
 -(const GtkSourceEncoding *)source_encoding;
@@ -99,7 +99,7 @@ G_DEFINE_TYPE_EXTENDED (GeditFileChooserDialogOSX,
 @end
 
 @implementation EncodingItem
--(id)initWithEncoding:(GeditEncodingItem *)encoding
+-(id)initWithEncoding:(BeditEncodingItem *)encoding
 {
 	NSString *title;
 
@@ -136,10 +136,10 @@ G_DEFINE_TYPE_EXTENDED (GeditFileChooserDialogOSX,
 @end
 
 static void
-chooser_set_encoding (GeditFileChooserDialog  *dialog,
+chooser_set_encoding (BeditFileChooserDialog  *dialog,
                       const GtkSourceEncoding *encoding)
 {
-	GeditFileChooserDialogOSX *dialog_osx = GEDIT_FILE_CHOOSER_DIALOG_OSX (dialog);
+	BeditFileChooserDialogOSX *dialog_osx = GEDIT_FILE_CHOOSER_DIALOG_OSX (dialog);
 	gint i;
 
 	if (dialog_osx->encoding_button == NULL)
@@ -168,9 +168,9 @@ chooser_set_encoding (GeditFileChooserDialog  *dialog,
 }
 
 static const GtkSourceEncoding *
-chooser_get_encoding (GeditFileChooserDialog *dialog)
+chooser_get_encoding (BeditFileChooserDialog *dialog)
 {
-	GeditFileChooserDialogOSX *dialog_osx = GEDIT_FILE_CHOOSER_DIALOG_OSX (dialog);
+	BeditFileChooserDialogOSX *dialog_osx = GEDIT_FILE_CHOOSER_DIALOG_OSX (dialog);
 	NSMenuItem *item;
 
 	if (dialog_osx->encoding_button == NULL)
@@ -189,10 +189,10 @@ chooser_get_encoding (GeditFileChooserDialog *dialog)
 }
 
 static void
-chooser_set_newline_type (GeditFileChooserDialog *dialog,
+chooser_set_newline_type (BeditFileChooserDialog *dialog,
                           GtkSourceNewlineType    newline_type)
 {
-	GeditFileChooserDialogOSX *dialog_osx = GEDIT_FILE_CHOOSER_DIALOG_OSX (dialog);
+	BeditFileChooserDialogOSX *dialog_osx = GEDIT_FILE_CHOOSER_DIALOG_OSX (dialog);
 	gint i;
 
 	if (dialog_osx->newline_button == NULL)
@@ -216,9 +216,9 @@ chooser_set_newline_type (GeditFileChooserDialog *dialog,
 }
 
 static GtkSourceNewlineType
-chooser_get_newline_type (GeditFileChooserDialog *dialog)
+chooser_get_newline_type (BeditFileChooserDialog *dialog)
 {
-	GeditFileChooserDialogOSX *dialog_osx = GEDIT_FILE_CHOOSER_DIALOG_OSX (dialog);
+	BeditFileChooserDialogOSX *dialog_osx = GEDIT_FILE_CHOOSER_DIALOG_OSX (dialog);
 
 	if (dialog_osx->newline_button == NULL)
 	{
@@ -230,10 +230,10 @@ chooser_get_newline_type (GeditFileChooserDialog *dialog)
 }
 
 static void
-chooser_set_current_folder (GeditFileChooserDialog *dialog,
+chooser_set_current_folder (BeditFileChooserDialog *dialog,
                             GFile                  *folder)
 {
-	GeditFileChooserDialogOSX *dialog_osx = GEDIT_FILE_CHOOSER_DIALOG_OSX (dialog);
+	BeditFileChooserDialogOSX *dialog_osx = GEDIT_FILE_CHOOSER_DIALOG_OSX (dialog);
 
 	if (folder != NULL)
 	{
@@ -246,16 +246,16 @@ chooser_set_current_folder (GeditFileChooserDialog *dialog,
 }
 
 static void
-chooser_set_current_name (GeditFileChooserDialog *dialog,
+chooser_set_current_name (BeditFileChooserDialog *dialog,
                           const gchar            *name)
 {
-	GeditFileChooserDialogOSX *dialog_osx = GEDIT_FILE_CHOOSER_DIALOG_OSX (dialog);
+	BeditFileChooserDialogOSX *dialog_osx = GEDIT_FILE_CHOOSER_DIALOG_OSX (dialog);
 
 	[dialog_osx->panel setNameFieldStringValue:[NSString stringWithUTF8String:name]];
 }
 
 static void
-chooser_set_file (GeditFileChooserDialog *dialog,
+chooser_set_file (BeditFileChooserDialog *dialog,
                   GFile                  *file)
 {
 	GFile *folder;
@@ -276,7 +276,7 @@ chooser_set_file (GeditFileChooserDialog *dialog,
 	g_free (name);
 }
 
-static GSList *chooser_get_files (GeditFileChooserDialog *dialog);
+static GSList *chooser_get_files (BeditFileChooserDialog *dialog);
 
 static GFile *
 ns_url_to_g_file (NSURL *url)
@@ -290,9 +290,9 @@ ns_url_to_g_file (NSURL *url)
 }
 
 static GFile *
-chooser_get_file (GeditFileChooserDialog *dialog)
+chooser_get_file (BeditFileChooserDialog *dialog)
 {
-	GeditFileChooserDialogOSX *dialog_osx = GEDIT_FILE_CHOOSER_DIALOG_OSX (dialog);
+	BeditFileChooserDialogOSX *dialog_osx = GEDIT_FILE_CHOOSER_DIALOG_OSX (dialog);
 
 	if (dialog_osx->is_open)
 	{
@@ -318,9 +318,9 @@ chooser_get_file (GeditFileChooserDialog *dialog)
 
 
 static GSList *
-chooser_get_files (GeditFileChooserDialog *dialog)
+chooser_get_files (BeditFileChooserDialog *dialog)
 {
-	GeditFileChooserDialogOSX *dialog_osx = GEDIT_FILE_CHOOSER_DIALOG_OSX (dialog);
+	BeditFileChooserDialogOSX *dialog_osx = GEDIT_FILE_CHOOSER_DIALOG_OSX (dialog);
 
 	GSList *ret = NULL;
 
@@ -355,7 +355,7 @@ chooser_get_files (GeditFileChooserDialog *dialog)
 }
 
 static void
-chooser_set_do_overwrite_confirmation (GeditFileChooserDialog *dialog,
+chooser_set_do_overwrite_confirmation (BeditFileChooserDialog *dialog,
                                        gboolean                overwrite_confirmation)
 {
 	// TODO: this is only implementable on OS X through hacks
@@ -363,7 +363,7 @@ chooser_set_do_overwrite_confirmation (GeditFileChooserDialog *dialog,
 }
 
 static void
-fill_encodings (GeditFileChooserDialogOSX *dialog)
+fill_encodings (BeditFileChooserDialogOSX *dialog)
 {
 	NSPopUpButton *button;
 	GSList *encodings;
@@ -414,7 +414,7 @@ fill_encodings (GeditFileChooserDialogOSX *dialog)
 
 	while (encodings)
 	{
-		GeditEncodingItem *item = encodings->data;
+		BeditEncodingItem *item = encodings->data;
 
 		[menu insertItem:[[EncodingItem alloc] initWithEncoding:item] atIndex:first];
 
@@ -436,7 +436,7 @@ fill_encodings (GeditFileChooserDialogOSX *dialog)
 static void
 dialog_response_cb (GtkDialog                 *dialog,
                     gint                       response_id,
-                    GeditFileChooserDialogOSX *chooser_dialog)
+                    BeditFileChooserDialogOSX *chooser_dialog)
 {
 	if (response_id == GTK_RESPONSE_OK)
 	{
@@ -451,11 +451,11 @@ dialog_response_cb (GtkDialog                 *dialog,
 }
 
 @interface ConfigureEncodings : NSObject {
-	GeditFileChooserDialogOSX *_dialog;
+	BeditFileChooserDialogOSX *_dialog;
 	const GtkSourceEncoding *_current;
 }
 
--(id)initWithDialog:(GeditFileChooserDialogOSX *)dialog;
+-(id)initWithDialog:(BeditFileChooserDialogOSX *)dialog;
 
 -(void)activateConfigure:(id)sender;
 -(void)selectionChanged:(id)sender;
@@ -464,7 +464,7 @@ dialog_response_cb (GtkDialog                 *dialog,
 
 @implementation ConfigureEncodings
 
--(id)initWithDialog:(GeditFileChooserDialogOSX *)dialog
+-(id)initWithDialog:(BeditFileChooserDialogOSX *)dialog
 {
 	self = [super init];
 
@@ -529,7 +529,7 @@ dialog_response_cb (GtkDialog                 *dialog,
 @end
 
 static gint
-create_encoding_combo (GeditFileChooserDialogOSX *dialog,
+create_encoding_combo (BeditFileChooserDialogOSX *dialog,
                        NSView                    *container)
 {
 	NSTextField *label;
@@ -604,7 +604,7 @@ create_encoding_combo (GeditFileChooserDialogOSX *dialog,
 }
 
 static gint
-create_newline_combo (GeditFileChooserDialogOSX *dialog,
+create_newline_combo (BeditFileChooserDialogOSX *dialog,
                       NSView                    *container)
 {
 	NSTextField *label;
@@ -656,11 +656,11 @@ create_newline_combo (GeditFileChooserDialogOSX *dialog,
 }
 
 static void
-create_extra_widget (GeditFileChooserDialogOSX *dialog)
+create_extra_widget (BeditFileChooserDialogOSX *dialog)
 {
 	gboolean needs_encoding;
 	gboolean needs_line_ending;
-	GeditFileChooserFlags flags;
+	BeditFileChooserFlags flags;
 	NSSize size;
 	NSView *parent;
 	NSView *container;
@@ -710,9 +710,9 @@ create_extra_widget (GeditFileChooserDialogOSX *dialog)
 }
 
 static void
-chooser_show (GeditFileChooserDialog *dialog)
+chooser_show (BeditFileChooserDialog *dialog)
 {
-	GeditFileChooserDialogOSX *dialog_osx = GEDIT_FILE_CHOOSER_DIALOG_OSX (dialog);
+	BeditFileChooserDialogOSX *dialog_osx = GEDIT_FILE_CHOOSER_DIALOG_OSX (dialog);
 
 	if (dialog_osx->is_running)
 	{
@@ -758,9 +758,9 @@ chooser_show (GeditFileChooserDialog *dialog)
 }
 
 static void
-chooser_hide (GeditFileChooserDialog *dialog)
+chooser_hide (BeditFileChooserDialog *dialog)
 {
-	GeditFileChooserDialogOSX *dialog_osx = GEDIT_FILE_CHOOSER_DIALOG_OSX (dialog);
+	BeditFileChooserDialogOSX *dialog_osx = GEDIT_FILE_CHOOSER_DIALOG_OSX (dialog);
 
 	if (!dialog_osx->is_running || dialog_osx->panel == NULL)
 	{
@@ -771,9 +771,9 @@ chooser_hide (GeditFileChooserDialog *dialog)
 }
 
 static void
-chooser_destroy (GeditFileChooserDialog *dialog)
+chooser_destroy (BeditFileChooserDialog *dialog)
 {
-	GeditFileChooserDialogOSX *dialog_osx = GEDIT_FILE_CHOOSER_DIALOG_OSX (dialog);
+	BeditFileChooserDialogOSX *dialog_osx = GEDIT_FILE_CHOOSER_DIALOG_OSX (dialog);
 
 	if (dialog_osx->parent != NULL)
 	{
@@ -797,10 +797,10 @@ chooser_destroy (GeditFileChooserDialog *dialog)
 }
 
 static void
-chooser_set_modal (GeditFileChooserDialog *dialog,
+chooser_set_modal (BeditFileChooserDialog *dialog,
                    gboolean is_modal)
 {
-	GeditFileChooserDialogOSX *dialog_osx = GEDIT_FILE_CHOOSER_DIALOG_OSX (dialog);
+	BeditFileChooserDialogOSX *dialog_osx = GEDIT_FILE_CHOOSER_DIALOG_OSX (dialog);
 
 	dialog_osx->is_modal = is_modal;
 }
@@ -809,7 +809,7 @@ static void
 gedit_file_chooser_dialog_osx_chooser_init (gpointer g_iface,
                                             gpointer iface_data)
 {
-	GeditFileChooserDialogInterface *iface = g_iface;
+	BeditFileChooserDialogInterface *iface = g_iface;
 
 	iface->set_encoding = chooser_set_encoding;
 	iface->get_encoding = chooser_get_encoding;
@@ -832,7 +832,7 @@ gedit_file_chooser_dialog_osx_chooser_init (gpointer g_iface,
 static void
 gedit_file_chooser_dialog_osx_dispose (GObject *object)
 {
-	GeditFileChooserDialogOSX *dialog_osx = GEDIT_FILE_CHOOSER_DIALOG_OSX (object);
+	BeditFileChooserDialogOSX *dialog_osx = GEDIT_FILE_CHOOSER_DIALOG_OSX (object);
 
 	if (dialog_osx->panel != NULL)
 	{
@@ -847,7 +847,7 @@ gedit_file_chooser_dialog_osx_dispose (GObject *object)
 }
 
 static void
-gedit_file_chooser_dialog_osx_class_init (GeditFileChooserDialogOSXClass *klass)
+gedit_file_chooser_dialog_osx_class_init (BeditFileChooserDialogOSXClass *klass)
 {
 	GObjectClass *object_class = G_OBJECT_CLASS (klass);
 
@@ -855,7 +855,7 @@ gedit_file_chooser_dialog_osx_class_init (GeditFileChooserDialogOSXClass *klass)
 }
 
 static void
-gedit_file_chooser_dialog_osx_init (GeditFileChooserDialogOSX *dialog)
+gedit_file_chooser_dialog_osx_init (BeditFileChooserDialogOSX *dialog)
 {
 }
 
@@ -884,22 +884,22 @@ strip_mnemonic (const gchar *s)
 
 static void
 on_parent_destroyed (GtkWindow                 *parent,
-                     GeditFileChooserDialogOSX *dialog)
+                     BeditFileChooserDialogOSX *dialog)
 {
 	chooser_destroy (GEDIT_FILE_CHOOSER_DIALOG (dialog));
 }
 
-GeditFileChooserDialog *
+BeditFileChooserDialog *
 gedit_file_chooser_dialog_osx_create (const gchar             *title,
 			              GtkWindow               *parent,
-			              GeditFileChooserFlags    flags,
+			              BeditFileChooserFlags    flags,
 			              const GtkSourceEncoding *encoding,
 			              const gchar             *cancel_label,
 			              GtkResponseType          cancel_response,
 			              const gchar             *accept_label,
 			              GtkResponseType          accept_response)
 {
-	GeditFileChooserDialogOSX *ret;
+	BeditFileChooserDialogOSX *ret;
 	gchar *nomnem;
 
 	ret = g_object_new (GEDIT_TYPE_FILE_CHOOSER_DIALOG_OSX, NULL);

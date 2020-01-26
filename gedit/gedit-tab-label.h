@@ -28,11 +28,11 @@ G_BEGIN_DECLS
 
 #define GEDIT_TYPE_TAB_LABEL (gedit_tab_label_get_type ())
 
-G_DECLARE_FINAL_TYPE (GeditTabLabel, gedit_tab_label, GEDIT, TAB_LABEL, GtkBox)
+G_DECLARE_FINAL_TYPE (BeditTabLabel, gedit_tab_label, GEDIT, TAB_LABEL, GtkBox)
 
-GtkWidget 	*gedit_tab_label_new				(GeditTab *tab);
+GtkWidget 	*gedit_tab_label_new				(BeditTab *tab);
 
-GeditTab	*gedit_tab_label_get_tab			(GeditTabLabel *tab_label);
+BeditTab	*gedit_tab_label_get_tab			(BeditTabLabel *tab_label);
 
 G_END_DECLS
 

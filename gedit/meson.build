@@ -203,9 +203,9 @@ if generate_gir == true
     libgedit_sha,
     sources: libgedit_sources + libgedit_public_h,
     nsversion: '3.0',
-    namespace: 'Gedit',
+    namespace: 'Bedit',
     symbol_prefix: 'gedit',
-    identifier_prefix: 'Gedit',
+    identifier_prefix: 'Bedit',
     export_packages: [package_string],
     includes: libgedit_gir_includes,
     link_with: libgedit_sha,
@@ -215,7 +215,7 @@ if generate_gir == true
   )
 
   python3.install_sources(
-    'Gedit.py',
+    'Bedit.py',
     subdir: join_paths(
       'gi',
       'overrides',

@@ -33,7 +33,7 @@
 #define ZOOM_IN_FACTOR (1.2)
 #define ZOOM_OUT_FACTOR (1.0 / ZOOM_IN_FACTOR)
 
-struct _GeditPrintPreview
+struct _BeditPrintPreview
 {
 	GtkGrid parent_instance;
 
@@ -55,7 +55,7 @@ struct _GeditPrintPreview
 	/* The GtkLayout is where the pages are drawn. The layout should have
 	 * the focus, because key-press-events and scroll-events are handled on
 	 * the layout. It is AFAIK not easily possible to handle those events on
-	 * the GeditPrintPreview itself because when a toolbar item has the
+	 * the BeditPrintPreview itself because when a toolbar item has the
 	 * focus, some key presses (like the arrows) moves the focus to a
 	 * sibling toolbar item instead.
 	 */
@@ -77,12 +77,12 @@ struct _GeditPrintPreview
 	guint has_tooltip : 1;
 };
 
-G_DEFINE_TYPE (GeditPrintPreview, gedit_print_preview, GTK_TYPE_GRID)
+G_DEFINE_TYPE (BeditPrintPreview, gedit_print_preview, GTK_TYPE_GRID)
 
 static void
 gedit_print_preview_dispose (GObject *object)
 {
-	GeditPrintPreview *preview = GEDIT_PRINT_PREVIEW (object);
+	BeditPrintPreview *preview = GEDIT_PRINT_PREVIEW (object);
 
 	if (preview->gtk_preview != NULL)
 	{
@@ -109,13 +109,13 @@ gedit_print_preview_dispose (GObject *object)
 static void
 gedit_print_preview_grab_focus (GtkWidget *widget)
 {
-	GeditPrintPreview *preview = GEDIT_PRINT_PREVIEW (widget);
+	BeditPrintPreview *preview = GEDIT_PRINT_PREVIEW (widget);
 
 	gtk_widget_grab_focus (GTK_WIDGET (preview->layout));
 }
 
 static void
-gedit_print_preview_class_init (GeditPrintPreviewClass *klass)
+gedit_print_preview_class_init (BeditPrintPreviewClass *klass)
 {
 	GObjectClass *object_class = G_OBJECT_CLASS (klass);
 	GtkWidgetClass *widget_class = GTK_WIDGET_CLASS (klass);
@@ -127,21 +127,21 @@ gedit_print_preview_class_init (GeditPrintPreviewClass *klass)
 	/* Bind class to template */
 	gtk_widget_class_set_template_from_resource (widget_class,
 	                                             "/com/bwhmather/bedit/ui/gedit-print-preview.ui");
-	gtk_widget_class_bind_template_child (widget_class, GeditPrintPreview, prev_button);
-	gtk_widget_class_bind_template_child (widget_class, GeditPrintPreview, next_button);
-	gtk_widget_class_bind_template_child (widget_class, GeditPrintPreview, page_entry);
-	gtk_widget_class_bind_template_child (widget_class, GeditPrintPreview, last_page_label);
-	gtk_widget_class_bind_template_child (widget_class, GeditPrintPreview, multi_pages_button);
-	gtk_widget_class_bind_template_child (widget_class, GeditPrintPreview, zoom_one_button);
-	gtk_widget_class_bind_template_child (widget_class, GeditPrintPreview, zoom_fit_button);
-	gtk_widget_class_bind_template_child (widget_class, GeditPrintPreview, zoom_in_button);
-	gtk_widget_class_bind_template_child (widget_class, GeditPrintPreview, zoom_out_button);
-	gtk_widget_class_bind_template_child (widget_class, GeditPrintPreview, close_button);
-	gtk_widget_class_bind_template_child (widget_class, GeditPrintPreview, layout);
+	gtk_widget_class_bind_template_child (widget_class, BeditPrintPreview, prev_button);
+	gtk_widget_class_bind_template_child (widget_class, BeditPrintPreview, next_button);
+	gtk_widget_class_bind_template_child (widget_class, BeditPrintPreview, page_entry);
+	gtk_widget_class_bind_template_child (widget_class, BeditPrintPreview, last_page_label);
+	gtk_widget_class_bind_template_child (widget_class, BeditPrintPreview, multi_pages_button);
+	gtk_widget_class_bind_template_child (widget_class, BeditPrintPreview, zoom_one_button);
+	gtk_widget_class_bind_template_child (widget_class, BeditPrintPreview, zoom_fit_button);
+	gtk_widget_class_bind_template_child (widget_class, BeditPrintPreview, zoom_in_button);
+	gtk_widget_class_bind_template_child (widget_class, BeditPrintPreview, zoom_out_button);
+	gtk_widget_class_bind_template_child (widget_class, BeditPrintPreview, close_button);
+	gtk_widget_class_bind_template_child (widget_class, BeditPrintPreview, layout);
 }
 
 static gint
-get_n_pages (GeditPrintPreview *preview)
+get_n_pages (BeditPrintPreview *preview)
 {
 	gint n_pages;
 
@@ -151,7 +151,7 @@ get_n_pages (GeditPrintPreview *preview)
 }
 
 static gdouble
-get_screen_dpi (GeditPrintPreview *preview)
+get_screen_dpi (BeditPrintPreview *preview)
 {
 	GdkScreen *screen;
 	gdouble dpi;
@@ -183,7 +183,7 @@ get_screen_dpi (GeditPrintPreview *preview)
  * after the widget has been mapped and the dpi is known.
  */
 static gdouble
-get_paper_width (GeditPrintPreview *preview)
+get_paper_width (BeditPrintPreview *preview)
 {
 	GtkPageSetup *page_setup;
 	gdouble paper_width;
@@ -195,7 +195,7 @@ get_paper_width (GeditPrintPreview *preview)
 }
 
 static gdouble
-get_paper_height (GeditPrintPreview *preview)
+get_paper_height (BeditPrintPreview *preview)
 {
 	GtkPageSetup *page_setup;
 	gdouble paper_height;
@@ -211,7 +211,7 @@ get_paper_height (GeditPrintPreview *preview)
  * orientation.
  */
 static void
-get_tile_size (GeditPrintPreview *preview,
+get_tile_size (BeditPrintPreview *preview,
 	       gint              *tile_width,
 	       gint              *tile_height)
 {
@@ -227,7 +227,7 @@ get_tile_size (GeditPrintPreview *preview,
 }
 
 static void
-get_adjustments (GeditPrintPreview  *preview,
+get_adjustments (BeditPrintPreview  *preview,
 		 GtkAdjustment     **hadj,
 		 GtkAdjustment     **vadj)
 {
@@ -236,7 +236,7 @@ get_adjustments (GeditPrintPreview  *preview,
 }
 
 static void
-update_layout_size (GeditPrintPreview *preview)
+update_layout_size (BeditPrintPreview *preview)
 {
 	gint tile_width;
 	gint tile_height;
@@ -256,7 +256,7 @@ update_layout_size (GeditPrintPreview *preview)
  */
 
 static void
-set_zoom_factor (GeditPrintPreview *preview,
+set_zoom_factor (BeditPrintPreview *preview,
 		 gdouble            zoom)
 {
 	preview->scale = zoom;
@@ -264,7 +264,7 @@ set_zoom_factor (GeditPrintPreview *preview,
 }
 
 static void
-set_zoom_fit_to_size (GeditPrintPreview *preview)
+set_zoom_fit_to_size (BeditPrintPreview *preview)
 {
 	GtkAdjustment *hadj, *vadj;
 	gdouble width, height;
@@ -288,19 +288,19 @@ set_zoom_fit_to_size (GeditPrintPreview *preview)
 }
 
 static void
-zoom_in (GeditPrintPreview *preview)
+zoom_in (BeditPrintPreview *preview)
 {
 	set_zoom_factor (preview, preview->scale * ZOOM_IN_FACTOR);
 }
 
 static void
-zoom_out (GeditPrintPreview *preview)
+zoom_out (BeditPrintPreview *preview)
 {
 	set_zoom_factor (preview, preview->scale * ZOOM_OUT_FACTOR);
 }
 
 static void
-goto_page (GeditPrintPreview *preview,
+goto_page (BeditPrintPreview *preview,
            gint               page)
 {
 	gchar *page_str;
@@ -332,7 +332,7 @@ goto_page (GeditPrintPreview *preview,
 
 static void
 prev_button_clicked (GtkWidget         *button,
-		     GeditPrintPreview *preview)
+		     BeditPrintPreview *preview)
 {
 	GdkEvent *event;
 	gint page;
@@ -357,7 +357,7 @@ prev_button_clicked (GtkWidget         *button,
 
 static void
 next_button_clicked (GtkWidget         *button,
-		     GeditPrintPreview *preview)
+		     BeditPrintPreview *preview)
 {
 	GdkEvent *event;
 	gint page;
@@ -383,7 +383,7 @@ next_button_clicked (GtkWidget         *button,
 
 static void
 page_entry_activated (GtkEntry          *entry,
-		      GeditPrintPreview *preview)
+		      BeditPrintPreview *preview)
 {
 	const gchar *text;
 	gint page;
@@ -421,7 +421,7 @@ page_entry_insert_text (GtkEditable *editable,
 static gboolean
 page_entry_focus_out (GtkEntry          *entry,
 		      GdkEventFocus     *event,
-		      GeditPrintPreview *preview)
+		      BeditPrintPreview *preview)
 {
 	const gchar *text;
 	gint page;
@@ -444,7 +444,7 @@ page_entry_focus_out (GtkEntry          *entry,
 
 static void
 on_1x1_clicked (GtkMenuItem       *item,
-		GeditPrintPreview *preview)
+		BeditPrintPreview *preview)
 {
 	preview->n_columns = 1;
 	update_layout_size (preview);
@@ -453,7 +453,7 @@ on_1x1_clicked (GtkMenuItem       *item,
 
 static void
 on_1x2_clicked (GtkMenuItem       *item,
-		GeditPrintPreview *preview)
+		BeditPrintPreview *preview)
 {
 	preview->n_columns = 2;
 	set_zoom_fit_to_size (preview);
@@ -462,7 +462,7 @@ on_1x2_clicked (GtkMenuItem       *item,
 
 static void
 multi_pages_button_clicked (GtkWidget         *button,
-			    GeditPrintPreview *preview)
+			    BeditPrintPreview *preview)
 {
 	GtkWidget *menu;
 	GtkWidget *item;
@@ -489,7 +489,7 @@ multi_pages_button_clicked (GtkWidget         *button,
 
 static void
 zoom_one_button_clicked (GtkWidget         *button,
-			 GeditPrintPreview *preview)
+			 BeditPrintPreview *preview)
 {
 	set_zoom_factor (preview, 1);
 	gtk_widget_grab_focus (GTK_WIDGET (preview->layout));
@@ -497,7 +497,7 @@ zoom_one_button_clicked (GtkWidget         *button,
 
 static void
 zoom_fit_button_clicked (GtkWidget         *button,
-			 GeditPrintPreview *preview)
+			 BeditPrintPreview *preview)
 {
 	set_zoom_fit_to_size (preview);
 	gtk_widget_grab_focus (GTK_WIDGET (preview->layout));
@@ -505,7 +505,7 @@ zoom_fit_button_clicked (GtkWidget         *button,
 
 static void
 zoom_in_button_clicked (GtkWidget         *button,
-			GeditPrintPreview *preview)
+			BeditPrintPreview *preview)
 {
 	zoom_in (preview);
 	gtk_widget_grab_focus (GTK_WIDGET (preview->layout));
@@ -513,7 +513,7 @@ zoom_in_button_clicked (GtkWidget         *button,
 
 static void
 zoom_out_button_clicked (GtkWidget         *button,
-			 GeditPrintPreview *preview)
+			 BeditPrintPreview *preview)
 {
 	zoom_out (preview);
 	gtk_widget_grab_focus (GTK_WIDGET (preview->layout));
@@ -521,7 +521,7 @@ zoom_out_button_clicked (GtkWidget         *button,
 
 static void
 close_button_clicked (GtkWidget         *button,
-		      GeditPrintPreview *preview)
+		      BeditPrintPreview *preview)
 {
 	gtk_widget_destroy (GTK_WIDGET (preview));
 }
@@ -529,7 +529,7 @@ close_button_clicked (GtkWidget         *button,
 static gboolean
 scroll_event_activated (GtkWidget         *widget,
 		        GdkEventScroll    *event,
-		        GeditPrintPreview *preview)
+		        BeditPrintPreview *preview)
 {
 	if (event->state & GDK_CONTROL_MASK)
 	{
@@ -553,14 +553,14 @@ scroll_event_activated (GtkWidget         *widget,
 }
 
 static gint
-get_first_page_displayed (GeditPrintPreview *preview)
+get_first_page_displayed (BeditPrintPreview *preview)
 {
 	return preview->cur_page - (preview->cur_page % preview->n_columns);
 }
 
 /* Returns the page number (starting from 0) or -1 if no page. */
 static gint
-get_page_at_coords (GeditPrintPreview *preview,
+get_page_at_coords (BeditPrintPreview *preview,
                     gint               x,
                     gint               y)
 {
@@ -603,7 +603,7 @@ get_page_at_coords (GeditPrintPreview *preview,
 static gboolean
 on_preview_layout_motion_notify (GtkWidget         *widget,
                                  GdkEvent          *event,
-                                 GeditPrintPreview *preview)
+                                 BeditPrintPreview *preview)
 {
 	gint temp_x;
 	gint temp_y;
@@ -635,7 +635,7 @@ preview_layout_query_tooltip (GtkWidget         *widget,
 			      gint               y,
 			      gboolean           keyboard_tip,
 			      GtkTooltip        *tooltip,
-			      GeditPrintPreview *preview)
+			      BeditPrintPreview *preview)
 {
 	if (preview->has_tooltip)
 	{
@@ -667,7 +667,7 @@ preview_layout_query_tooltip (GtkWidget         *widget,
 static gint
 preview_layout_key_press (GtkWidget         *widget,
 			  GdkEventKey       *event,
-			  GeditPrintPreview *preview)
+			  BeditPrintPreview *preview)
 {
 	GtkAdjustment *hadj, *vadj;
 	gdouble x, y;
@@ -830,7 +830,7 @@ preview_layout_key_press (GtkWidget         *widget,
 }
 
 static void
-gedit_print_preview_init (GeditPrintPreview *preview)
+gedit_print_preview_init (BeditPrintPreview *preview)
 {
 	preview->cur_page = 0;
 	preview->scale = 1.0;
@@ -923,7 +923,7 @@ gedit_print_preview_init (GeditPrintPreview *preview)
 static void
 draw_page_content (cairo_t           *cr,
 		   gint               page_number,
-		   GeditPrintPreview *preview)
+		   BeditPrintPreview *preview)
 {
 	gdouble dpi;
 
@@ -944,7 +944,7 @@ draw_page_content (cairo_t           *cr,
  */
 static void
 draw_page_frame (cairo_t           *cr,
-		 GeditPrintPreview *preview)
+		 BeditPrintPreview *preview)
 {
 	gdouble width;
 	gdouble height;
@@ -975,7 +975,7 @@ draw_page (cairo_t           *cr,
 	   gdouble            x,
 	   gdouble            y,
 	   gint               page_number,
-	   GeditPrintPreview *preview)
+	   BeditPrintPreview *preview)
 {
 	cairo_save (cr);
 
@@ -991,7 +991,7 @@ draw_page (cairo_t           *cr,
 static gboolean
 preview_draw (GtkWidget         *widget,
 	      cairo_t           *cr,
-	      GeditPrintPreview *preview)
+	      BeditPrintPreview *preview)
 {
 	GdkWindow *bin_window;
 	gint tile_width;
@@ -1040,7 +1040,7 @@ preview_draw (GtkWidget         *widget,
 }
 
 static void
-init_last_page_label (GeditPrintPreview *preview)
+init_last_page_label (BeditPrintPreview *preview)
 {
 	gchar *str;
 
@@ -1052,7 +1052,7 @@ init_last_page_label (GeditPrintPreview *preview)
 static void
 preview_ready (GtkPrintOperationPreview *gtk_preview,
 	       GtkPrintContext          *context,
-	       GeditPrintPreview        *preview)
+	       BeditPrintPreview        *preview)
 {
 	init_last_page_label (preview);
 	goto_page (preview, 0);
@@ -1095,7 +1095,7 @@ create_preview_surface_platform (GtkPaperSize *paper_size,
 }
 
 static cairo_surface_t *
-create_preview_surface (GeditPrintPreview *preview,
+create_preview_surface (BeditPrintPreview *preview,
 			gdouble           *dpi_x,
 			gdouble           *dpi_y)
 {
@@ -1117,7 +1117,7 @@ gedit_print_preview_new (GtkPrintOperation        *operation,
 			 GtkPrintOperationPreview *gtk_preview,
 			 GtkPrintContext          *context)
 {
-	GeditPrintPreview *preview;
+	BeditPrintPreview *preview;
 	cairo_surface_t *surface;
 	cairo_t *cr;
 	gdouble dpi_x, dpi_y;

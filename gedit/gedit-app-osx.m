@@ -33,12 +33,12 @@
 #include "gedit-commands-private.h"
 #include "gedit-recent.h"
 
-static GeditWindow *
-ensure_window (GeditAppOSX *app,
+static BeditWindow *
+ensure_window (BeditAppOSX *app,
                gboolean     with_empty_document)
 {
 	GList *windows;
-	GeditWindow *ret = NULL;
+	BeditWindow *ret = NULL;
 
 	windows = gtk_application_get_windows (GTK_APPLICATION (app));
 
@@ -86,13 +86,13 @@ ensure_window (GeditAppOSX *app,
 	return ret;
 }
 
-@interface GeditAppOSXDelegate : NSObject
+@interface BeditAppOSXDelegate : NSObject
 {
-	GeditAppOSX *app;
+	BeditAppOSX *app;
 	id<NSApplicationDelegate> orig;
 }
 
-- (id)initWithApp:(GeditAppOSX *)theApp;
+- (id)initWithApp:(BeditAppOSX *)theApp;
 - (void)release;
 
 - (id)forwardingTargetForSelector:(SEL)aSelector;
@@ -104,8 +104,8 @@ ensure_window (GeditAppOSX *app,
 
 @end
 
-@implementation GeditAppOSXDelegate
-- (id)initWithApp:(GeditAppOSX *)theApp
+@implementation BeditAppOSXDelegate
+- (id)initWithApp:(BeditAppOSX *)theApp
 {
 	[super init];
 	app = theApp;
@@ -151,23 +151,23 @@ ensure_window (GeditAppOSX *app,
 
 @end
 
-struct _GeditAppOSX
+struct _BeditAppOSX
 {
-	GeditApp parent_instance;
+	BeditApp parent_instance;
 
-	GeditMenuExtension *recent_files_menu;
+	BeditMenuExtension *recent_files_menu;
 	gulong recent_manager_changed_id;
 
-	GeditAppOSXDelegate *app_delegate;
+	BeditAppOSXDelegate *app_delegate;
 
 	GList *recent_actions;
-	GeditRecentConfiguration recent_config;
+	BeditRecentConfiguration recent_config;
 };
 
-G_DEFINE_TYPE (GeditAppOSX, gedit_app_osx, GEDIT_TYPE_APP)
+G_DEFINE_TYPE (BeditAppOSX, gedit_app_osx, GEDIT_TYPE_APP)
 
 static void
-remove_recent_actions (GeditAppOSX *app)
+remove_recent_actions (BeditAppOSX *app)
 {
 	while (app->recent_actions)
 	{
@@ -184,7 +184,7 @@ remove_recent_actions (GeditAppOSX *app)
 static void
 gedit_app_osx_finalize (GObject *object)
 {
-	GeditAppOSX *app = GEDIT_APP_OSX (object);
+	BeditAppOSX *app = GEDIT_APP_OSX (object);
 
 	g_object_unref (app->recent_files_menu);
 
@@ -201,14 +201,14 @@ gedit_app_osx_finalize (GObject *object)
 }
 
 gboolean
-gedit_app_osx_show_url (GeditAppOSX *app,
+gedit_app_osx_show_url (BeditAppOSX *app,
                         const gchar *url)
 {
 	return [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:[NSString stringWithUTF8String:url]]];
 }
 
 static gboolean
-gedit_app_osx_show_help_impl (GeditApp    *app,
+gedit_app_osx_show_help_impl (BeditApp    *app,
                               GtkWindow   *parent,
                               const gchar *name,
                               const gchar *link_id)
@@ -237,12 +237,12 @@ gedit_app_osx_show_help_impl (GeditApp    *app,
 }
 
 static void
-gedit_app_osx_set_window_title_impl (GeditApp    *app,
-                                     GeditWindow *window,
+gedit_app_osx_set_window_title_impl (BeditApp    *app,
+                                     BeditWindow *window,
                                      const gchar *title)
 {
 	NSWindow *native;
-	GeditDocument *document;
+	BeditDocument *document;
 	GdkWindow *wnd;
 
 	g_return_if_fail (GEDIT_IS_WINDOW (window));
@@ -296,7 +296,7 @@ gedit_app_osx_set_window_title_impl (GeditApp    *app,
 
 typedef struct
 {
-	GeditAppOSX   *app;
+	BeditAppOSX   *app;
 	GtkRecentInfo *info;
 } RecentFileInfo;
 
@@ -317,7 +317,7 @@ recent_file_activated (GAction        *action,
                        GVariant       *parameter,
                        RecentFileInfo *info)
 {
-	GeditWindow *window;
+	BeditWindow *window;
 	const gchar *uri;
 	GFile *file;
 
@@ -331,7 +331,7 @@ recent_file_activated (GAction        *action,
 }
 
 static void
-recent_files_menu_populate (GeditAppOSX *app)
+recent_files_menu_populate (BeditAppOSX *app)
 {
 	GList *items;
 	gint i = 0;
@@ -388,7 +388,7 @@ recent_files_menu_populate (GeditAppOSX *app)
 
 static void
 recent_manager_changed (GtkRecentManager *manager,
-                        GeditAppOSX      *app)
+                        BeditAppOSX      *app)
 {
 	recent_files_menu_populate (app);
 }
@@ -406,7 +406,7 @@ static GActionEntry app_entries[] = {
 };
 
 static void
-update_open_sensitivity (GeditAppOSX *app)
+update_open_sensitivity (BeditAppOSX *app)
 {
 	GAction *action;
 	gboolean has_windows;
@@ -435,11 +435,11 @@ gedit_app_osx_startup (GApplication *application)
 		NULL
 	};
 
-	GeditAppOSX *app = GEDIT_APP_OSX (application);
+	BeditAppOSX *app = GEDIT_APP_OSX (application);
 
 	G_APPLICATION_CLASS (gedit_app_osx_parent_class)->startup (application);
 
-	app->app_delegate = [[[GeditAppOSXDelegate alloc] initWithApp:app] retain];
+	app->app_delegate = [[[BeditAppOSXDelegate alloc] initWithApp:app] retain];
 
 	g_action_map_add_action_entries (G_ACTION_MAP (application),
 	                                 app_entries,
@@ -475,7 +475,7 @@ gedit_app_osx_startup (GApplication *application)
 }
 
 static void
-set_window_allow_fullscreen (GeditWindow *window)
+set_window_allow_fullscreen (BeditWindow *window)
 {
 	GdkWindow *wnd;
 	NSWindow *native;
@@ -495,10 +495,10 @@ on_window_realized (GtkWidget *widget)
 	set_window_allow_fullscreen (GEDIT_WINDOW (widget));
 }
 
-static GeditWindow *
-gedit_app_osx_create_window_impl (GeditApp *app)
+static BeditWindow *
+gedit_app_osx_create_window_impl (BeditApp *app)
 {
-	GeditWindow *window;
+	BeditWindow *window;
 
 	window = GEDIT_APP_CLASS (gedit_app_osx_parent_class)->create_window (app);
 
@@ -517,8 +517,8 @@ gedit_app_osx_create_window_impl (GeditApp *app)
 }
 
 static gboolean
-gedit_app_osx_process_window_event_impl (GeditApp    *app,
-                                         GeditWindow *window,
+gedit_app_osx_process_window_event_impl (BeditApp    *app,
+                                         BeditWindow *window,
                                          GdkEvent    *event)
 {
 	NSEvent *nsevent;
@@ -563,10 +563,10 @@ gedit_app_osx_window_removed (GtkApplication *application,
 }
 
 static void
-gedit_app_osx_class_init (GeditAppOSXClass *klass)
+gedit_app_osx_class_init (BeditAppOSXClass *klass)
 {
 	GObjectClass *object_class = G_OBJECT_CLASS (klass);
-	GeditAppClass *app_class = GEDIT_APP_CLASS (klass);
+	BeditAppClass *app_class = GEDIT_APP_CLASS (klass);
 	GApplicationClass *application_class = G_APPLICATION_CLASS (klass);
 	GtkApplicationClass *gtkapplication_class = GTK_APPLICATION_CLASS (klass);
 
@@ -585,7 +585,7 @@ gedit_app_osx_class_init (GeditAppOSXClass *klass)
 }
 
 static void
-gedit_app_osx_init (GeditAppOSX *app)
+gedit_app_osx_init (BeditAppOSX *app)
 {
 	/* This is required so that Cocoa is not going to parse the
 	   command line arguments by itself and generate OpenFile events.

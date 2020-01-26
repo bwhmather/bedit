@@ -29,14 +29,14 @@ G_BEGIN_DECLS
 
 #define GEDIT_TYPE_APP_OSX (gedit_app_osx_get_type ())
 
-G_DECLARE_FINAL_TYPE (GeditAppOSX, gedit_app_osx, GEDIT, APP_OSX, GeditApp)
+G_DECLARE_FINAL_TYPE (BeditAppOSX, gedit_app_osx, GEDIT, APP_OSX, BeditApp)
 
-void		 gedit_app_osx_set_window_title		(GeditAppOSX   *app,
-							 GeditWindow   *window,
+void		 gedit_app_osx_set_window_title		(BeditAppOSX   *app,
+							 BeditWindow   *window,
 							 const gchar   *title,
-							 GeditDocument *document);
+							 BeditDocument *document);
 
-gboolean	 gedit_app_osx_show_url			(GeditAppOSX *app,
+gboolean	 gedit_app_osx_show_url			(BeditAppOSX *app,
 							 const gchar *url);
 
 G_END_DECLS

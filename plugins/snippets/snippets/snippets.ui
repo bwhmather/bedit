@@ -34,8 +34,8 @@
       </row>
     </data>
   </object>
-  <object class="GeditDocument" id="source_buffer"/>
-  <object class="GeditSnippetsManager" id="snippets_manager">
+  <object class="BeditDocument" id="source_buffer"/>
+  <object class="BeditSnippetsManager" id="snippets_manager">
     <property name="can_focus">False</property>
     <property name="title" translatable="yes">Manage Snippets</property>
     <property name="default_width">800</property>
@@ -193,7 +193,7 @@
                   <class name="gedit-snippet-manager-view"/>
                 </style>
                 <child>
-                  <object class="GeditView" id="source_view_snippet">
+                  <object class="BeditView" id="source_view_snippet">
                     <property name="buffer">source_buffer</property>
                     <property name="visible">True</property>
                     <signal handler="on_source_view_snippet_focus_out" name="focus_out_event"/>

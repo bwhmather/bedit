@@ -29,33 +29,33 @@ G_BEGIN_DECLS
 
 #define GEDIT_TYPE_APP_ACTIVATABLE (gedit_app_activatable_get_type ())
 
-G_DECLARE_INTERFACE (GeditAppActivatable, gedit_app_activatable, GEDIT, APP_ACTIVATABLE, GObject)
+G_DECLARE_INTERFACE (BeditAppActivatable, gedit_app_activatable, GEDIT, APP_ACTIVATABLE, GObject)
 
-struct _GeditAppActivatableInterface
+struct _BeditAppActivatableInterface
 {
 	GTypeInterface g_iface;
 
 	/* Virtual public methods */
-	void	(*activate)		(GeditAppActivatable *activatable);
-	void	(*deactivate)		(GeditAppActivatable *activatable);
+	void	(*activate)		(BeditAppActivatable *activatable);
+	void	(*deactivate)		(BeditAppActivatable *activatable);
 };
 
-void	 gedit_app_activatable_activate			(GeditAppActivatable *activatable);
-void	 gedit_app_activatable_deactivate		(GeditAppActivatable *activatable);
+void	 gedit_app_activatable_activate			(BeditAppActivatable *activatable);
+void	 gedit_app_activatable_deactivate		(BeditAppActivatable *activatable);
 
 /**
  * gedit_app_activatable_extend_menu:
- * @activatable: A #GeditAppActivatable.
+ * @activatable: A #BeditAppActivatable.
  * @extension_point: the extension point section of the menu to get.
  *
- * Gets the #GeditMenuExtension for the menu @extension_point. Note that
+ * Gets the #BeditMenuExtension for the menu @extension_point. Note that
  * the extension point could be in different menus (gear menu, app menu, etc)
  * depending on the platform.
  *
- * Returns: (transfer full): a #GeditMenuExtension for the specific section
+ * Returns: (transfer full): a #BeditMenuExtension for the specific section
  * or %NULL if not found.
  */
-GeditMenuExtension	*gedit_app_activatable_extend_menu	(GeditAppActivatable *activatable,
+BeditMenuExtension	*gedit_app_activatable_extend_menu	(BeditAppActivatable *activatable,
 								 const gchar *extension_point);
 
 G_END_DECLS

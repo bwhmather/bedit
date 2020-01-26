@@ -29,7 +29,7 @@ enum {
 
 static GParamSpec *properties[LAST_PROP];
 
-struct _GeditProgressInfoBar
+struct _BeditProgressInfoBar
 {
 	GtkInfoBar parent_instance;
 
@@ -38,10 +38,10 @@ struct _GeditProgressInfoBar
 	GtkWidget *progress;
 };
 
-G_DEFINE_TYPE (GeditProgressInfoBar, gedit_progress_info_bar, GTK_TYPE_INFO_BAR)
+G_DEFINE_TYPE (BeditProgressInfoBar, gedit_progress_info_bar, GTK_TYPE_INFO_BAR)
 
 static void
-gedit_progress_info_bar_set_has_cancel_button (GeditProgressInfoBar *bar,
+gedit_progress_info_bar_set_has_cancel_button (BeditProgressInfoBar *bar,
 					       gboolean              has_button)
 {
 	if (has_button)
@@ -56,7 +56,7 @@ gedit_progress_info_bar_set_property (GObject      *object,
 				      const GValue *value,
 				      GParamSpec   *pspec)
 {
-	GeditProgressInfoBar *bar;
+	BeditProgressInfoBar *bar;
 
 	bar = GEDIT_PROGRESS_INFO_BAR (object);
 
@@ -73,7 +73,7 @@ gedit_progress_info_bar_set_property (GObject      *object,
 }
 
 static void
-gedit_progress_info_bar_class_init (GeditProgressInfoBarClass *klass)
+gedit_progress_info_bar_class_init (BeditProgressInfoBarClass *klass)
 {
 	GObjectClass *gobject_class = G_OBJECT_CLASS (klass);
 	GtkWidgetClass *widget_class = GTK_WIDGET_CLASS (klass);
@@ -94,13 +94,13 @@ gedit_progress_info_bar_class_init (GeditProgressInfoBarClass *klass)
 	/* Bind class to template */
 	gtk_widget_class_set_template_from_resource (widget_class,
 	                                             "/com/bwhmather/bedit/ui/gedit-progress-info-bar.ui");
-	gtk_widget_class_bind_template_child (widget_class, GeditProgressInfoBar, image);
-	gtk_widget_class_bind_template_child (widget_class, GeditProgressInfoBar, label);
-	gtk_widget_class_bind_template_child (widget_class, GeditProgressInfoBar, progress);
+	gtk_widget_class_bind_template_child (widget_class, BeditProgressInfoBar, image);
+	gtk_widget_class_bind_template_child (widget_class, BeditProgressInfoBar, label);
+	gtk_widget_class_bind_template_child (widget_class, BeditProgressInfoBar, progress);
 }
 
 static void
-gedit_progress_info_bar_init (GeditProgressInfoBar *bar)
+gedit_progress_info_bar_init (BeditProgressInfoBar *bar)
 {
 	gtk_widget_init_template (GTK_WIDGET (bar));
 }
@@ -110,7 +110,7 @@ gedit_progress_info_bar_new (const gchar *icon_name,
 			     const gchar *markup,
 			     gboolean     has_cancel)
 {
-	GeditProgressInfoBar *bar;
+	BeditProgressInfoBar *bar;
 
 	g_return_val_if_fail (icon_name != NULL, NULL);
 	g_return_val_if_fail (markup != NULL, NULL);
@@ -126,7 +126,7 @@ gedit_progress_info_bar_new (const gchar *icon_name,
 }
 
 void
-gedit_progress_info_bar_set_icon_name (GeditProgressInfoBar *bar,
+gedit_progress_info_bar_set_icon_name (BeditProgressInfoBar *bar,
 				       const gchar          *icon_name)
 {
 	g_return_if_fail (GEDIT_IS_PROGRESS_INFO_BAR (bar));
@@ -138,7 +138,7 @@ gedit_progress_info_bar_set_icon_name (GeditProgressInfoBar *bar,
 }
 
 void
-gedit_progress_info_bar_set_markup (GeditProgressInfoBar *bar,
+gedit_progress_info_bar_set_markup (BeditProgressInfoBar *bar,
 				    const gchar          *markup)
 {
 	g_return_if_fail (GEDIT_IS_PROGRESS_INFO_BAR (bar));
@@ -148,7 +148,7 @@ gedit_progress_info_bar_set_markup (GeditProgressInfoBar *bar,
 }
 
 void
-gedit_progress_info_bar_set_text (GeditProgressInfoBar *bar,
+gedit_progress_info_bar_set_text (BeditProgressInfoBar *bar,
 				  const gchar          *text)
 {
 	g_return_if_fail (GEDIT_IS_PROGRESS_INFO_BAR (bar));
@@ -158,7 +158,7 @@ gedit_progress_info_bar_set_text (GeditProgressInfoBar *bar,
 }
 
 void
-gedit_progress_info_bar_set_fraction (GeditProgressInfoBar *bar,
+gedit_progress_info_bar_set_fraction (BeditProgressInfoBar *bar,
 				      gdouble               fraction)
 {
 	g_return_if_fail (GEDIT_IS_PROGRESS_INFO_BAR (bar));
@@ -167,7 +167,7 @@ gedit_progress_info_bar_set_fraction (GeditProgressInfoBar *bar,
 }
 
 void
-gedit_progress_info_bar_pulse (GeditProgressInfoBar *bar)
+gedit_progress_info_bar_pulse (BeditProgressInfoBar *bar)
 {
 	g_return_if_fail (GEDIT_IS_PROGRESS_INFO_BAR (bar));
 

@@ -49,23 +49,23 @@
 #define GEDIT_IS_QUITTING "gedit-is-quitting"
 #define GEDIT_IS_QUITTING_ALL "gedit-is-quitting-all"
 
-static void tab_state_changed_while_saving (GeditTab    *tab,
+static void tab_state_changed_while_saving (BeditTab    *tab,
 					    GParamSpec  *pspec,
-					    GeditWindow *window);
+					    BeditWindow *window);
 
 void
 _gedit_cmd_file_new (GSimpleAction *action,
                      GVariant      *parameter,
                      gpointer       user_data)
 {
-	GeditWindow *window = GEDIT_WINDOW (user_data);
+	BeditWindow *window = GEDIT_WINDOW (user_data);
 
 	gedit_debug (DEBUG_COMMANDS);
 
 	gedit_window_create_tab (window, TRUE);
 }
 
-static GeditTab *
+static BeditTab *
 get_tab_from_file (GList *docs,
 		   GFile *file)
 {
@@ -73,7 +73,7 @@ get_tab_from_file (GList *docs,
 
 	for (l = docs; l != NULL; l = l->next)
 	{
-		GeditDocument *doc;
+		BeditDocument *doc;
 		GtkSourceFile *source_file;
 		GFile *location;
 
@@ -109,7 +109,7 @@ is_duplicated_file (GSList *files,
 
 /* File loading */
 static GSList *
-load_file_list (GeditWindow             *window,
+load_file_list (BeditWindow             *window,
 		const GSList            *files,
 		const GtkSourceEncoding *encoding,
 		gint                     line_pos,
@@ -119,7 +119,7 @@ load_file_list (GeditWindow             *window,
 	GList *win_docs;
 	GSList *files_to_load = NULL;
 	GSList *loaded_files = NULL;
-	GeditTab *tab;
+	BeditTab *tab;
 	gboolean jump_to = TRUE; /* Whether to jump to the new tab */
 	const GSList *l;
 	gint num_loaded_files = 0;
@@ -150,7 +150,7 @@ load_file_list (GeditWindow             *window,
 		{
 			if (l == files)
 			{
-				GeditDocument *doc;
+				BeditDocument *doc;
 
 				gedit_window_set_active_tab (window, tab);
 				jump_to = FALSE;
@@ -192,7 +192,7 @@ load_file_list (GeditWindow             *window,
 	tab = gedit_window_get_active_tab (window);
 	if (tab != NULL)
 	{
-		GeditDocument *doc;
+		BeditDocument *doc;
 
 		doc = gedit_tab_get_document (tab);
 
@@ -246,7 +246,7 @@ load_file_list (GeditWindow             *window,
 
 	if (num_loaded_files == 1)
 	{
-		GeditDocument *doc;
+		BeditDocument *doc;
 		gchar *uri_for_display;
 
 		g_return_val_if_fail (tab != NULL, loaded_files);
@@ -278,7 +278,7 @@ load_file_list (GeditWindow             *window,
 
 /**
  * gedit_commands_load_location:
- * @window: a #GeditWindow
+ * @window: a #BeditWindow
  * @location: a #GFile to load
  * @encoding: (allow-none): the #GtkSourceEncoding of @location
  * @line_pos: the line position to place the cursor
@@ -287,7 +287,7 @@ load_file_list (GeditWindow             *window,
  * Loads @location. Ignores non-existing locations.
  */
 void
-gedit_commands_load_location (GeditWindow             *window,
+gedit_commands_load_location (BeditWindow             *window,
 			      GFile                   *location,
 			      const GtkSourceEncoding *encoding,
 			      gint                     line_pos,
@@ -315,7 +315,7 @@ gedit_commands_load_location (GeditWindow             *window,
 
 /**
  * gedit_commands_load_locations:
- * @window: a #GeditWindow
+ * @window: a #BeditWindow
  * @locations: (element-type Gio.File): the locations to load
  * @encoding: (allow-none): the #GtkSourceEncoding
  * @line_pos: the line position to place the cursor
@@ -323,11 +323,11 @@ gedit_commands_load_location (GeditWindow             *window,
  *
  * Loads @locations. Ignore non-existing locations.
  *
- * Returns: (element-type Gedit.Document) (transfer container): the locations
+ * Returns: (element-type Bedit.Document) (transfer container): the locations
  * that were loaded.
  */
 GSList *
-gedit_commands_load_locations (GeditWindow             *window,
+gedit_commands_load_locations (BeditWindow             *window,
 			       const GSList            *locations,
 			       const GtkSourceEncoding *encoding,
 			       gint                     line_pos,
@@ -347,7 +347,7 @@ gedit_commands_load_locations (GeditWindow             *window,
  * titled document.
  */
 GSList *
-_gedit_cmd_load_files_from_prompt (GeditWindow             *window,
+_gedit_cmd_load_files_from_prompt (BeditWindow             *window,
 				   GSList                  *files,
 				   const GtkSourceEncoding *encoding,
 				   gint                     line_pos,
@@ -359,8 +359,8 @@ _gedit_cmd_load_files_from_prompt (GeditWindow             *window,
 }
 
 static void
-open_dialog_destroyed (GeditWindow            *window,
-		       GeditFileChooserDialog *dialog)
+open_dialog_destroyed (BeditWindow            *window,
+		       BeditFileChooserDialog *dialog)
 {
 	gedit_debug (DEBUG_COMMANDS);
 
@@ -370,9 +370,9 @@ open_dialog_destroyed (GeditWindow            *window,
 }
 
 static void
-open_dialog_response_cb (GeditFileChooserDialog *dialog,
+open_dialog_response_cb (BeditFileChooserDialog *dialog,
                          gint                    response_id,
-                         GeditWindow            *window)
+                         BeditWindow            *window)
 {
 	GSList *files;
 	const GtkSourceEncoding *encoding;
@@ -420,8 +420,8 @@ _gedit_cmd_file_open (GSimpleAction *action,
                       GVariant      *parameter,
                       gpointer       user_data)
 {
-	GeditWindow *window = NULL;
-	GeditFileChooserDialog *open_dialog;
+	BeditWindow *window = NULL;
+	BeditFileChooserDialog *open_dialog;
 
 	if (GEDIT_IS_WINDOW (user_data))
 	{
@@ -458,7 +458,7 @@ _gedit_cmd_file_open (GSimpleAction *action,
 
 	if (window != NULL)
 	{
-		GeditDocument *doc;
+		BeditDocument *doc;
 		GFile *default_path = NULL;
 
 		/* The file chooser dialog for opening files is not modal, so
@@ -511,7 +511,7 @@ _gedit_cmd_file_reopen_closed_tab (GSimpleAction *action,
 				   GVariant      *parameter,
 				   gpointer       user_data)
 {
-	GeditWindow *window = GEDIT_WINDOW (user_data);
+	BeditWindow *window = GEDIT_WINDOW (user_data);
 	GFile *file;
 
 	file = _gedit_window_pop_last_closed_doc (window);
@@ -669,7 +669,7 @@ get_compression_type_from_file (GFile *file)
 }
 
 static void
-tab_save_as_ready_cb (GeditTab     *tab,
+tab_save_as_ready_cb (BeditTab     *tab,
 		      GAsyncResult *result,
 		      GTask        *task)
 {
@@ -679,13 +679,13 @@ tab_save_as_ready_cb (GeditTab     *tab,
 }
 
 static void
-save_dialog_response_cb (GeditFileChooserDialog *dialog,
+save_dialog_response_cb (BeditFileChooserDialog *dialog,
 			 gint                    response_id,
 			 GTask                  *task)
 {
-	GeditTab *tab;
-	GeditWindow *window;
-	GeditDocument *doc;
+	BeditTab *tab;
+	BeditWindow *window;
+	BeditDocument *doc;
 	GtkSourceFile *file;
 	GFile *location;
 	gchar *parse_name;
@@ -764,7 +764,7 @@ save_dialog_response_cb (GeditFileChooserDialog *dialog,
 }
 
 static GtkFileChooserConfirmation
-confirm_overwrite_callback (GeditFileChooserDialog *dialog,
+confirm_overwrite_callback (BeditFileChooserDialog *dialog,
 			    gpointer                data)
 {
 	GtkFileChooserConfirmation res;
@@ -813,17 +813,17 @@ confirm_overwrite_callback (GeditFileChooserDialog *dialog,
 
 /* Call save_as_tab_finish() in @callback. */
 static void
-save_as_tab_async (GeditTab            *tab,
-		   GeditWindow         *window,
+save_as_tab_async (BeditTab            *tab,
+		   BeditWindow         *window,
 		   GCancellable        *cancellable,
 		   GAsyncReadyCallback  callback,
 		   gpointer             user_data)
 {
 	GTask *task;
-	GeditFileChooserDialog *save_dialog;
+	BeditFileChooserDialog *save_dialog;
 	GtkWindowGroup *window_group;
 	GtkWindow *dialog_window;
-	GeditDocument *doc;
+	BeditDocument *doc;
 	GtkSourceFile *file;
 	GFile *location;
 	const GtkSourceEncoding *encoding;
@@ -923,7 +923,7 @@ save_as_tab_async (GeditTab            *tab,
 }
 
 static gboolean
-save_as_tab_finish (GeditTab     *tab,
+save_as_tab_finish (BeditTab     *tab,
 		    GAsyncResult *result)
 {
 	g_return_val_if_fail (g_task_is_valid (result, tab), FALSE);
@@ -932,7 +932,7 @@ save_as_tab_finish (GeditTab     *tab,
 }
 
 static void
-save_as_tab_ready_cb (GeditTab     *tab,
+save_as_tab_ready_cb (BeditTab     *tab,
 		      GAsyncResult *result,
 		      GTask        *task)
 {
@@ -943,7 +943,7 @@ save_as_tab_ready_cb (GeditTab     *tab,
 }
 
 static void
-tab_save_ready_cb (GeditTab     *tab,
+tab_save_ready_cb (BeditTab     *tab,
 		   GAsyncResult *result,
 		   GTask        *task)
 {
@@ -955,8 +955,8 @@ tab_save_ready_cb (GeditTab     *tab,
 
 /**
  * gedit_commands_save_document_async:
- * @document: the #GeditDocument to save.
- * @window: a #GeditWindow.
+ * @document: the #BeditDocument to save.
+ * @window: a #BeditWindow.
  * @cancellable: (nullable): optional #GCancellable object, %NULL to ignore.
  * @callback: (scope async): a #GAsyncReadyCallback to call when the operation
  *   is finished.
@@ -972,14 +972,14 @@ tab_save_ready_cb (GeditTab     *tab,
  * Since: 3.14
  */
 void
-gedit_commands_save_document_async (GeditDocument       *document,
-				    GeditWindow         *window,
+gedit_commands_save_document_async (BeditDocument       *document,
+				    BeditWindow         *window,
 				    GCancellable        *cancellable,
 				    GAsyncReadyCallback  callback,
 				    gpointer             user_data)
 {
 	GTask *task;
-	GeditTab *tab;
+	BeditTab *tab;
 	GtkSourceFile *file;
 	gchar *uri_for_display;
 
@@ -1023,7 +1023,7 @@ gedit_commands_save_document_async (GeditDocument       *document,
 
 /**
  * gedit_commands_save_document_finish:
- * @document: a #GeditDocument.
+ * @document: a #BeditDocument.
  * @result: a #GAsyncResult.
  *
  * Finishes an asynchronous document saving operation started with
@@ -1036,7 +1036,7 @@ gedit_commands_save_document_async (GeditDocument       *document,
  * Since: 3.14
  */
 gboolean
-gedit_commands_save_document_finish (GeditDocument *document,
+gedit_commands_save_document_finish (BeditDocument *document,
 				     GAsyncResult  *result)
 {
 	g_return_val_if_fail (g_task_is_valid (result, document), FALSE);
@@ -1045,7 +1045,7 @@ gedit_commands_save_document_finish (GeditDocument *document,
 }
 
 static void
-save_tab_ready_cb (GeditDocument *doc,
+save_tab_ready_cb (BeditDocument *doc,
 		   GAsyncResult  *result,
 		   gpointer       user_data)
 {
@@ -1054,10 +1054,10 @@ save_tab_ready_cb (GeditDocument *doc,
 
 /* Save tab asynchronously, but without results. */
 static void
-save_tab (GeditTab    *tab,
-	  GeditWindow *window)
+save_tab (BeditTab    *tab,
+	  BeditWindow *window)
 {
-	GeditDocument *doc = gedit_tab_get_document (tab);
+	BeditDocument *doc = gedit_tab_get_document (tab);
 
 	gedit_commands_save_document_async (doc,
 					    window,
@@ -1071,8 +1071,8 @@ _gedit_cmd_file_save (GSimpleAction *action,
                       GVariant      *parameter,
                       gpointer       user_data)
 {
-	GeditWindow *window = GEDIT_WINDOW (user_data);
-	GeditTab *tab;
+	BeditWindow *window = GEDIT_WINDOW (user_data);
+	BeditTab *tab;
 
 	gedit_debug (DEBUG_COMMANDS);
 
@@ -1084,7 +1084,7 @@ _gedit_cmd_file_save (GSimpleAction *action,
 }
 
 static void
-_gedit_cmd_file_save_as_cb (GeditTab     *tab,
+_gedit_cmd_file_save_as_cb (BeditTab     *tab,
 			    GAsyncResult *result,
 			    gpointer      user_data)
 {
@@ -1096,8 +1096,8 @@ _gedit_cmd_file_save_as (GSimpleAction *action,
                          GVariant      *parameter,
                          gpointer       user_data)
 {
-	GeditWindow *window = GEDIT_WINDOW (user_data);
-	GeditTab *tab;
+	BeditWindow *window = GEDIT_WINDOW (user_data);
+	BeditTab *tab;
 
 	gedit_debug (DEBUG_COMMANDS);
 
@@ -1113,7 +1113,7 @@ _gedit_cmd_file_save_as (GSimpleAction *action,
 }
 
 static void
-quit_if_needed (GeditWindow *window)
+quit_if_needed (BeditWindow *window)
 {
 	gboolean is_quitting;
 	gboolean is_quitting_all;
@@ -1143,10 +1143,10 @@ quit_if_needed (GeditWindow *window)
 }
 
 static gboolean
-really_close_tab (GeditTab *tab)
+really_close_tab (BeditTab *tab)
 {
 	GtkWidget *toplevel;
-	GeditWindow *window;
+	BeditWindow *window;
 
 	gedit_debug (DEBUG_COMMANDS);
 
@@ -1169,9 +1169,9 @@ really_close_tab (GeditTab *tab)
 }
 
 static void
-close_tab (GeditTab *tab)
+close_tab (BeditTab *tab)
 {
-	GeditDocument *doc;
+	BeditDocument *doc;
 
 	doc = gedit_tab_get_document (tab);
 	g_return_if_fail (doc != NULL);
@@ -1199,9 +1199,9 @@ typedef struct _SaveAsData SaveAsData;
 struct _SaveAsData
 {
 	/* Reffed */
-	GeditWindow *window;
+	BeditWindow *window;
 
-	/* List of reffed GeditTab's */
+	/* List of reffed BeditTab's */
 	GSList *tabs_to_save_as;
 
 	guint close_tabs : 1;
@@ -1210,7 +1210,7 @@ struct _SaveAsData
 static void save_as_documents_list (SaveAsData *data);
 
 static void
-save_as_documents_list_cb (GeditTab     *tab,
+save_as_documents_list_cb (BeditTab     *tab,
 			   GAsyncResult *result,
 			   SaveAsData   *data)
 {
@@ -1240,7 +1240,7 @@ save_as_documents_list_cb (GeditTab     *tab,
 static void
 save_as_documents_list (SaveAsData *data)
 {
-	GeditTab *next_tab = GEDIT_TAB (data->tabs_to_save_as->data);
+	BeditTab *next_tab = GEDIT_TAB (data->tabs_to_save_as->data);
 
 	gedit_window_set_active_tab (data->window, next_tab);
 
@@ -1252,10 +1252,10 @@ save_as_documents_list (SaveAsData *data)
 }
 
 /*
- * The docs in the list must belong to the same GeditWindow.
+ * The docs in the list must belong to the same BeditWindow.
  */
 static void
-save_documents_list (GeditWindow *window,
+save_documents_list (BeditWindow *window,
 		     GList       *docs)
 {
 	SaveAsData *data = NULL;
@@ -1267,9 +1267,9 @@ save_documents_list (GeditWindow *window,
 
 	for (l = docs; l != NULL; l = l->next)
 	{
-		GeditDocument *doc;
-		GeditTab *tab;
-		GeditTabState state;
+		BeditDocument *doc;
+		BeditTab *tab;
+		BeditTabState state;
 
 		g_return_if_fail (GEDIT_IS_DOCUMENT (l->data));
 		doc = l->data;
@@ -1352,14 +1352,14 @@ save_documents_list (GeditWindow *window,
 
 /**
  * gedit_commands_save_all_documents:
- * @window: a #GeditWindow.
+ * @window: a #BeditWindow.
  *
  * Asynchronously save all documents belonging to @window. The result of the
  * operation is not available, so it's difficult to know whether all the
  * documents are correctly saved.
  */
 void
-gedit_commands_save_all_documents (GeditWindow *window)
+gedit_commands_save_all_documents (BeditWindow *window)
 {
 	GList *docs;
 
@@ -1384,17 +1384,17 @@ _gedit_cmd_file_save_all (GSimpleAction *action,
 
 /**
  * gedit_commands_save_document:
- * @window: a #GeditWindow.
- * @document: the #GeditDocument to save.
+ * @window: a #BeditWindow.
+ * @document: the #BeditDocument to save.
  *
  * Asynchronously save @document. @document must belong to @window. If you need
  * the result of the operation, use gedit_commands_save_document_async().
  */
 void
-gedit_commands_save_document (GeditWindow   *window,
-                              GeditDocument *document)
+gedit_commands_save_document (BeditWindow   *window,
+                              BeditDocument *document)
 {
-	GeditTab *tab;
+	BeditTab *tab;
 
 	g_return_if_fail (GEDIT_IS_WINDOW (window));
 	g_return_if_fail (GEDIT_IS_DOCUMENT (document));
@@ -1407,10 +1407,10 @@ gedit_commands_save_document (GeditWindow   *window,
 
 /* File revert */
 static void
-do_revert (GeditWindow *window,
-	   GeditTab    *tab)
+do_revert (BeditWindow *window,
+	   BeditTab    *tab)
 {
-	GeditDocument *doc;
+	BeditDocument *doc;
 	gchar *docname;
 
 	gedit_debug (DEBUG_COMMANDS);
@@ -1431,9 +1431,9 @@ do_revert (GeditWindow *window,
 static void
 revert_dialog_response_cb (GtkDialog   *dialog,
 			   gint         response_id,
-			   GeditWindow *window)
+			   BeditWindow *window)
 {
-	GeditTab *tab;
+	BeditTab *tab;
 
 	gedit_debug (DEBUG_COMMANDS);
 
@@ -1455,8 +1455,8 @@ revert_dialog_response_cb (GtkDialog   *dialog,
 }
 
 static GtkWidget *
-revert_dialog (GeditWindow   *window,
-	       GeditDocument *doc)
+revert_dialog (BeditWindow   *window,
+	       BeditDocument *doc)
 {
 	GtkWidget *dialog;
 	gchar *docname;
@@ -1574,9 +1574,9 @@ _gedit_cmd_file_revert (GSimpleAction *action,
                         GVariant      *parameter,
                         gpointer       user_data)
 {
-	GeditWindow *window = GEDIT_WINDOW (user_data);
-	GeditTab *tab;
-	GeditDocument *doc;
+	BeditWindow *window = GEDIT_WINDOW (user_data);
+	BeditTab *tab;
+	BeditDocument *doc;
 	GtkWidget *dialog;
 	GtkWindowGroup *window_group;
 
@@ -1617,11 +1617,11 @@ _gedit_cmd_file_revert (GSimpleAction *action,
 }
 
 static void
-tab_state_changed_while_saving (GeditTab    *tab,
+tab_state_changed_while_saving (BeditTab    *tab,
 				GParamSpec  *pspec,
-				GeditWindow *window)
+				BeditWindow *window)
 {
-	GeditTabState state;
+	BeditTabState state;
 
 	state = gedit_tab_get_state (tab);
 
@@ -1641,8 +1641,8 @@ tab_state_changed_while_saving (GeditTab    *tab,
 }
 
 static void
-save_and_close (GeditTab    *tab,
-		GeditWindow *window)
+save_and_close (BeditTab    *tab,
+		BeditWindow *window)
 {
 	gedit_debug (DEBUG_COMMANDS);
 
@@ -1657,8 +1657,8 @@ save_and_close (GeditTab    *tab,
 
 static void
 save_and_close_documents (GList         *docs,
-                          GeditWindow   *window,
-                          GeditNotebook *notebook)
+                          BeditWindow   *window,
+                          BeditNotebook *notebook)
 {
 	GList *tabs;
 	GList *l;
@@ -1682,9 +1682,9 @@ save_and_close_documents (GList         *docs,
 
 	for (l = tabs; l != NULL; l = l->next)
 	{
-		GeditTab *tab = GEDIT_TAB (l->data);
-		GeditTabState state;
-		GeditDocument *doc;
+		BeditTab *tab = GEDIT_TAB (l->data);
+		BeditTabState state;
+		BeditDocument *doc;
 
 		state = gedit_tab_get_state (tab);
 		doc = gedit_tab_get_document (tab);
@@ -1784,9 +1784,9 @@ save_and_close_documents (GList         *docs,
 
 static void
 save_and_close_document (const GList *docs,
-			 GeditWindow *window)
+			 BeditWindow *window)
 {
-	GeditTab *tab;
+	BeditTab *tab;
 
 	gedit_debug (DEBUG_COMMANDS);
 
@@ -1799,7 +1799,7 @@ save_and_close_document (const GList *docs,
 }
 
 static void
-close_all_tabs (GeditWindow *window)
+close_all_tabs (BeditWindow *window)
 {
 	gedit_debug (DEBUG_COMMANDS);
 
@@ -1810,10 +1810,10 @@ close_all_tabs (GeditWindow *window)
 }
 
 static void
-close_document (GeditWindow   *window,
-		GeditDocument *doc)
+close_document (BeditWindow   *window,
+		BeditDocument *doc)
 {
-	GeditTab *tab;
+	BeditTab *tab;
 
 	gedit_debug (DEBUG_COMMANDS);
 
@@ -1824,13 +1824,13 @@ close_document (GeditWindow   *window,
 }
 
 static void
-close_confirmation_dialog_response_handler (GeditCloseConfirmationDialog *dlg,
+close_confirmation_dialog_response_handler (BeditCloseConfirmationDialog *dlg,
                                             gint                          response_id,
-                                            GeditWindow                  *window)
+                                            BeditWindow                  *window)
 {
 	GList *selected_documents;
 	gboolean is_closing_all;
-	GeditNotebook *notebook_to_close;
+	BeditNotebook *notebook_to_close;
 
 	gedit_debug (DEBUG_COMMANDS);
 
@@ -1872,7 +1872,7 @@ close_confirmation_dialog_response_handler (GeditCloseConfirmationDialog *dlg,
 			{
 				if (is_closing_all || notebook_to_close)
 				{
-					GeditNotebook *notebook = is_closing_all ? NULL : notebook_to_close;
+					BeditNotebook *notebook = is_closing_all ? NULL : notebook_to_close;
 
 					save_and_close_documents (selected_documents, window, notebook);
 				}
@@ -1932,10 +1932,10 @@ close_confirmation_dialog_response_handler (GeditCloseConfirmationDialog *dlg,
 
 /* Returns TRUE if the tab can be immediately closed */
 static gboolean
-tab_can_close (GeditTab  *tab,
+tab_can_close (BeditTab  *tab,
 	       GtkWindow *window)
 {
-	GeditDocument *doc;
+	BeditDocument *doc;
 
 	gedit_debug (DEBUG_COMMANDS);
 
@@ -1966,8 +1966,8 @@ tab_can_close (GeditTab  *tab,
  * GEDIT_IS_CLOSING_ALL flag!
  */
 void
-_gedit_cmd_file_close_tab (GeditTab    *tab,
-			   GeditWindow *window)
+_gedit_cmd_file_close_tab (BeditTab    *tab,
+			   BeditWindow *window)
 {
 	gedit_debug (DEBUG_COMMANDS);
 
@@ -1996,8 +1996,8 @@ _gedit_cmd_file_close (GSimpleAction *action,
                        GVariant      *parameter,
                        gpointer       user_data)
 {
-	GeditWindow *window = GEDIT_WINDOW (user_data);
-	GeditTab *active_tab;
+	BeditWindow *window = GEDIT_WINDOW (user_data);
+	BeditTab *active_tab;
 
 	gedit_debug (DEBUG_COMMANDS);
 
@@ -2013,7 +2013,7 @@ _gedit_cmd_file_close (GSimpleAction *action,
 }
 
 static void
-file_close_dialog (GeditWindow *window,
+file_close_dialog (BeditWindow *window,
                    GList       *unsaved_docs)
 {
 	GtkWidget *dlg;
@@ -2021,8 +2021,8 @@ file_close_dialog (GeditWindow *window,
 	if (unsaved_docs->next == NULL)
 	{
 		/* There is only one unsaved document */
-		GeditTab *tab;
-		GeditDocument *doc;
+		BeditTab *tab;
+		BeditDocument *doc;
 
 		doc = GEDIT_DOCUMENT (unsaved_docs->data);
 
@@ -2047,7 +2047,7 @@ file_close_dialog (GeditWindow *window,
 }
 
 static GList *
-notebook_get_unsaved_documents (GeditNotebook *notebook)
+notebook_get_unsaved_documents (BeditNotebook *notebook)
 {
 	GList *children;
 	GList *unsaved_docs = NULL;
@@ -2057,11 +2057,11 @@ notebook_get_unsaved_documents (GeditNotebook *notebook)
 
 	for (l = children; l != NULL; l = g_list_next (l))
 	{
-		GeditTab *tab = GEDIT_TAB (l->data);
+		BeditTab *tab = GEDIT_TAB (l->data);
 
 		if (!_gedit_tab_get_can_close (tab))
 		{
-			GeditDocument *doc;
+			BeditDocument *doc;
 
 			doc = gedit_tab_get_document (tab);
 			unsaved_docs = g_list_prepend (unsaved_docs, doc);
@@ -2075,8 +2075,8 @@ notebook_get_unsaved_documents (GeditNotebook *notebook)
 
 /* Close a notebook */
 void
-_gedit_cmd_file_close_notebook (GeditWindow   *window,
-                                GeditNotebook *notebook)
+_gedit_cmd_file_close_notebook (BeditWindow   *window,
+                                BeditNotebook *notebook)
 {
 	GList *unsaved_docs;
 
@@ -2103,7 +2103,7 @@ _gedit_cmd_file_close_notebook (GeditWindow   *window,
 
 /* Close all tabs */
 static void
-file_close_all (GeditWindow *window,
+file_close_all (BeditWindow *window,
                 gboolean     is_quitting)
 {
 	GList *unsaved_docs;
@@ -2143,7 +2143,7 @@ _gedit_cmd_file_close_all (GSimpleAction *action,
                            GVariant      *parameter,
                            gpointer       user_data)
 {
-	GeditWindow *window = GEDIT_WINDOW (user_data);
+	BeditWindow *window = GEDIT_WINDOW (user_data);
 
 	gedit_debug (DEBUG_COMMANDS);
 
@@ -2173,7 +2173,7 @@ quit_all (void)
 
 	for (l = windows; l != NULL; l = g_list_next (l))
 	{
-		GeditWindow *window = l->data;
+		BeditWindow *window = l->data;
 
 		g_object_set_data (G_OBJECT (window),
 		                   GEDIT_IS_QUITTING_ALL,
@@ -2194,7 +2194,7 @@ _gedit_cmd_file_quit (GSimpleAction *action,
                       GVariant      *parameter,
                       gpointer       user_data)
 {
-	GeditWindow *window = GEDIT_WINDOW (user_data);
+	BeditWindow *window = GEDIT_WINDOW (user_data);
 
 	gedit_debug (DEBUG_COMMANDS);
 

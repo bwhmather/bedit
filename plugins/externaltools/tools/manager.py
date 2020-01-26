@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-#    Gedit External Tools plugin
+#    Bedit External Tools plugin
 #    Copyright (C) 2005-2006  Steve Frécinaux <steve@istique.net>
 #
 #    This program is free software; you can redistribute it and/or modify
@@ -23,7 +23,7 @@ from .library import *
 from .functions import *
 import hashlib
 from xml.sax import saxutils
-from gi.repository import Gio, GObject, Gtk, GtkSource, Gedit
+from gi.repository import Gio, GObject, Gtk, GtkSource, Bedit
 
 try:
     import gettext

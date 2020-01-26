@@ -2,7 +2,7 @@
  * gedit-sort-plugin.c
  *
  * Original author: Carlo Borreo <borreo@softhome.net>
- * Ported to Gedit2 by Lee Mallabone <gnome@fonicmonkey.net>
+ * Ported to Bedit2 by Lee Mallabone <gnome@fonicmonkey.net>
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -32,12 +32,12 @@
 #include <gedit/gedit-app-activatable.h>
 #include <gedit/gedit-window-activatable.h>
 
-static void gedit_app_activatable_iface_init (GeditAppActivatableInterface *iface);
-static void gedit_window_activatable_iface_init (GeditWindowActivatableInterface *iface);
+static void gedit_app_activatable_iface_init (BeditAppActivatableInterface *iface);
+static void gedit_window_activatable_iface_init (BeditWindowActivatableInterface *iface);
 
-struct _GeditSortPluginPrivate
+struct _BeditSortPluginPrivate
 {
-	GeditWindow *window;
+	BeditWindow *window;
 
 	GSimpleAction *action;
 	GtkWidget *dialog;
@@ -46,8 +46,8 @@ struct _GeditSortPluginPrivate
 	GtkWidget *case_checkbutton;
 	GtkWidget *remove_dups_checkbutton;
 
-	GeditApp *app;
-	GeditMenuExtension *menu_ext;
+	BeditApp *app;
+	BeditMenuExtension *menu_ext;
 
 	GtkTextIter start, end; /* selection */
 };
@@ -59,7 +59,7 @@ enum
 	PROP_APP
 };
 
-G_DEFINE_DYNAMIC_TYPE_EXTENDED (GeditSortPlugin,
+G_DEFINE_DYNAMIC_TYPE_EXTENDED (BeditSortPlugin,
 				gedit_sort_plugin,
 				PEAS_TYPE_EXTENSION_BASE,
 				0,
@@ -67,13 +67,13 @@ G_DEFINE_DYNAMIC_TYPE_EXTENDED (GeditSortPlugin,
 							       gedit_app_activatable_iface_init)
 				G_IMPLEMENT_INTERFACE_DYNAMIC (GEDIT_TYPE_WINDOW_ACTIVATABLE,
 							       gedit_window_activatable_iface_init)
-				G_ADD_PRIVATE_DYNAMIC (GeditSortPlugin))
+				G_ADD_PRIVATE_DYNAMIC (BeditSortPlugin))
 
 static void
-do_sort (GeditSortPlugin *plugin)
+do_sort (BeditSortPlugin *plugin)
 {
-	GeditSortPluginPrivate *priv;
-	GeditDocument *doc;
+	BeditSortPluginPrivate *priv;
+	BeditDocument *doc;
 	GtkSourceSortFlags sort_flags = 0;
 	gint starting_column;
 
@@ -113,7 +113,7 @@ do_sort (GeditSortPlugin *plugin)
 static void
 sort_dialog_response_handler (GtkDialog       *dlg,
 			      gint             response,
-			      GeditSortPlugin *plugin)
+			      BeditSortPlugin *plugin)
 {
 	gedit_debug (DEBUG_PLUGINS);
 
@@ -129,10 +129,10 @@ sort_dialog_response_handler (GtkDialog       *dlg,
  * the text field (like the combo box) looses the documnent selection.
  * Storing the selection ONLY works because the dialog is modal */
 static void
-get_current_selection (GeditSortPlugin *plugin)
+get_current_selection (BeditSortPlugin *plugin)
 {
-	GeditSortPluginPrivate *priv;
-	GeditDocument *doc;
+	BeditSortPluginPrivate *priv;
+	BeditDocument *doc;
 
 	gedit_debug (DEBUG_PLUGINS);
 
@@ -152,9 +152,9 @@ get_current_selection (GeditSortPlugin *plugin)
 }
 
 static void
-create_sort_dialog (GeditSortPlugin *plugin)
+create_sort_dialog (BeditSortPlugin *plugin)
 {
-	GeditSortPluginPrivate *priv;
+	BeditSortPluginPrivate *priv;
 	GtkBuilder *builder;
 
 	gedit_debug (DEBUG_PLUGINS);
@@ -189,9 +189,9 @@ create_sort_dialog (GeditSortPlugin *plugin)
 static void
 sort_cb (GAction         *action,
          GVariant        *parameter,
-	 GeditSortPlugin *plugin)
+	 BeditSortPlugin *plugin)
 {
-	GeditSortPluginPrivate *priv;
+	BeditSortPluginPrivate *priv;
 	GtkWindowGroup *wg;
 
 	gedit_debug (DEBUG_PLUGINS);
@@ -214,9 +214,9 @@ sort_cb (GAction         *action,
 }
 
 static void
-update_ui (GeditSortPlugin *plugin)
+update_ui (BeditSortPlugin *plugin)
 {
-	GeditView *view;
+	BeditView *view;
 
 	gedit_debug (DEBUG_PLUGINS);
 
@@ -228,9 +228,9 @@ update_ui (GeditSortPlugin *plugin)
 }
 
 static void
-gedit_sort_plugin_app_activate (GeditAppActivatable *activatable)
+gedit_sort_plugin_app_activate (BeditAppActivatable *activatable)
 {
-	GeditSortPluginPrivate *priv;
+	BeditSortPluginPrivate *priv;
 	GMenuItem *item;
 
 	gedit_debug (DEBUG_PLUGINS);
@@ -244,9 +244,9 @@ gedit_sort_plugin_app_activate (GeditAppActivatable *activatable)
 }
 
 static void
-gedit_sort_plugin_app_deactivate (GeditAppActivatable *activatable)
+gedit_sort_plugin_app_deactivate (BeditAppActivatable *activatable)
 {
-	GeditSortPluginPrivate *priv;
+	BeditSortPluginPrivate *priv;
 
 	gedit_debug (DEBUG_PLUGINS);
 
@@ -256,9 +256,9 @@ gedit_sort_plugin_app_deactivate (GeditAppActivatable *activatable)
 }
 
 static void
-gedit_sort_plugin_window_activate (GeditWindowActivatable *activatable)
+gedit_sort_plugin_window_activate (BeditWindowActivatable *activatable)
 {
-	GeditSortPluginPrivate *priv;
+	BeditSortPluginPrivate *priv;
 
 	gedit_debug (DEBUG_PLUGINS);
 
@@ -274,9 +274,9 @@ gedit_sort_plugin_window_activate (GeditWindowActivatable *activatable)
 }
 
 static void
-gedit_sort_plugin_window_deactivate (GeditWindowActivatable *activatable)
+gedit_sort_plugin_window_deactivate (BeditWindowActivatable *activatable)
 {
-	GeditSortPluginPrivate *priv;
+	BeditSortPluginPrivate *priv;
 
 	gedit_debug (DEBUG_PLUGINS);
 
@@ -285,7 +285,7 @@ gedit_sort_plugin_window_deactivate (GeditWindowActivatable *activatable)
 }
 
 static void
-gedit_sort_plugin_window_update_state (GeditWindowActivatable *activatable)
+gedit_sort_plugin_window_update_state (BeditWindowActivatable *activatable)
 {
 	gedit_debug (DEBUG_PLUGINS);
 
@@ -293,9 +293,9 @@ gedit_sort_plugin_window_update_state (GeditWindowActivatable *activatable)
 }
 
 static void
-gedit_sort_plugin_init (GeditSortPlugin *plugin)
+gedit_sort_plugin_init (BeditSortPlugin *plugin)
 {
-	gedit_debug_message (DEBUG_PLUGINS, "GeditSortPlugin initializing");
+	gedit_debug_message (DEBUG_PLUGINS, "BeditSortPlugin initializing");
 
 	plugin->priv = gedit_sort_plugin_get_instance_private (plugin);
 }
@@ -303,9 +303,9 @@ gedit_sort_plugin_init (GeditSortPlugin *plugin)
 static void
 gedit_sort_plugin_dispose (GObject *object)
 {
-	GeditSortPlugin *plugin = GEDIT_SORT_PLUGIN (object);
+	BeditSortPlugin *plugin = GEDIT_SORT_PLUGIN (object);
 
-	gedit_debug_message (DEBUG_PLUGINS, "GeditSortPlugin disposing");
+	gedit_debug_message (DEBUG_PLUGINS, "BeditSortPlugin disposing");
 
 	g_clear_object (&plugin->priv->action);
 	g_clear_object (&plugin->priv->window);
@@ -319,7 +319,7 @@ gedit_sort_plugin_dispose (GObject *object)
 static void
 gedit_sort_plugin_finalize (GObject *object)
 {
-	gedit_debug_message (DEBUG_PLUGINS, "GeditSortPlugin finalizing");
+	gedit_debug_message (DEBUG_PLUGINS, "BeditSortPlugin finalizing");
 
 	G_OBJECT_CLASS (gedit_sort_plugin_parent_class)->finalize (object);
 }
@@ -330,7 +330,7 @@ gedit_sort_plugin_set_property (GObject      *object,
                                 const GValue *value,
                                 GParamSpec   *pspec)
 {
-	GeditSortPlugin *plugin = GEDIT_SORT_PLUGIN (object);
+	BeditSortPlugin *plugin = GEDIT_SORT_PLUGIN (object);
 
 	switch (prop_id)
 	{
@@ -352,7 +352,7 @@ gedit_sort_plugin_get_property (GObject    *object,
                                 GValue     *value,
                                 GParamSpec *pspec)
 {
-	GeditSortPlugin *plugin = GEDIT_SORT_PLUGIN (object);
+	BeditSortPlugin *plugin = GEDIT_SORT_PLUGIN (object);
 
 	switch (prop_id)
 	{
@@ -369,7 +369,7 @@ gedit_sort_plugin_get_property (GObject    *object,
 }
 
 static void
-gedit_sort_plugin_class_init (GeditSortPluginClass *klass)
+gedit_sort_plugin_class_init (BeditSortPluginClass *klass)
 {
 	GObjectClass *object_class = G_OBJECT_CLASS (klass);
 
@@ -383,19 +383,19 @@ gedit_sort_plugin_class_init (GeditSortPluginClass *klass)
 }
 
 static void
-gedit_sort_plugin_class_finalize (GeditSortPluginClass *klass)
+gedit_sort_plugin_class_finalize (BeditSortPluginClass *klass)
 {
 }
 
 static void
-gedit_app_activatable_iface_init (GeditAppActivatableInterface *iface)
+gedit_app_activatable_iface_init (BeditAppActivatableInterface *iface)
 {
 	iface->activate = gedit_sort_plugin_app_activate;
 	iface->deactivate = gedit_sort_plugin_app_deactivate;
 }
 
 static void
-gedit_window_activatable_iface_init (GeditWindowActivatableInterface *iface)
+gedit_window_activatable_iface_init (BeditWindowActivatableInterface *iface)
 {
 	iface->activate = gedit_sort_plugin_window_activate;
 	iface->deactivate = gedit_sort_plugin_window_deactivate;

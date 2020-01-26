@@ -28,20 +28,20 @@ G_BEGIN_DECLS
 
 #define GEDIT_TYPE_STATUSBAR (gedit_statusbar_get_type ())
 
-G_DECLARE_FINAL_TYPE (GeditStatusbar, gedit_statusbar, GEDIT, STATUSBAR, GtkStatusbar)
+G_DECLARE_FINAL_TYPE (BeditStatusbar, gedit_statusbar, GEDIT, STATUSBAR, GtkStatusbar)
 
 GtkWidget	*gedit_statusbar_new			(void);
 
-void		 gedit_statusbar_set_window_state	(GeditStatusbar   *statusbar,
-							 GeditWindowState  state,
+void		 gedit_statusbar_set_window_state	(BeditStatusbar   *statusbar,
+							 BeditWindowState  state,
 							 gint              num_of_errors);
 
-void		 gedit_statusbar_set_overwrite		(GeditStatusbar   *statusbar,
+void		 gedit_statusbar_set_overwrite		(BeditStatusbar   *statusbar,
 							 gboolean          overwrite);
 
-void		 gedit_statusbar_clear_overwrite 	(GeditStatusbar   *statusbar);
+void		 gedit_statusbar_clear_overwrite 	(BeditStatusbar   *statusbar);
 
-void		 gedit_statusbar_flash_message		(GeditStatusbar   *statusbar,
+void		 gedit_statusbar_flash_message		(BeditStatusbar   *statusbar,
 							 guint             context_id,
 							 const gchar      *format,
 							 ...) G_GNUC_PRINTF(3, 4);

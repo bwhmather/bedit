@@ -32,16 +32,16 @@ enum
 	PROP_ACTIVE,
 };
 
-struct _GeditFileBrowserMessageActivationPrivate
+struct _BeditFileBrowserMessageActivationPrivate
 {
 	gboolean active;
 };
 
-G_DEFINE_TYPE_EXTENDED (GeditFileBrowserMessageActivation,
+G_DEFINE_TYPE_EXTENDED (BeditFileBrowserMessageActivation,
                         gedit_file_browser_message_activation,
                         GEDIT_TYPE_MESSAGE,
                         0,
-                        G_ADD_PRIVATE (GeditFileBrowserMessageActivation))
+                        G_ADD_PRIVATE (BeditFileBrowserMessageActivation))
 
 static void
 gedit_file_browser_message_activation_get_property (GObject    *obj,
@@ -49,7 +49,7 @@ gedit_file_browser_message_activation_get_property (GObject    *obj,
                                                     GValue     *value,
                                                     GParamSpec *pspec)
 {
-	GeditFileBrowserMessageActivation *msg;
+	BeditFileBrowserMessageActivation *msg;
 
 	msg = GEDIT_FILE_BROWSER_MESSAGE_ACTIVATION (obj);
 
@@ -67,7 +67,7 @@ gedit_file_browser_message_activation_set_property (GObject      *obj,
                                                     GValue const *value,
                                                     GParamSpec   *pspec)
 {
-	GeditFileBrowserMessageActivation *msg;
+	BeditFileBrowserMessageActivation *msg;
 
 	msg = GEDIT_FILE_BROWSER_MESSAGE_ACTIVATION (obj);
 
@@ -80,7 +80,7 @@ gedit_file_browser_message_activation_set_property (GObject      *obj,
 }
 
 static void
-gedit_file_browser_message_activation_class_init (GeditFileBrowserMessageActivationClass *klass)
+gedit_file_browser_message_activation_class_init (BeditFileBrowserMessageActivationClass *klass)
 {
 	GObjectClass *object_class = G_OBJECT_CLASS(klass);
 
@@ -99,7 +99,7 @@ gedit_file_browser_message_activation_class_init (GeditFileBrowserMessageActivat
 }
 
 static void
-gedit_file_browser_message_activation_init (GeditFileBrowserMessageActivation *message)
+gedit_file_browser_message_activation_init (BeditFileBrowserMessageActivation *message)
 {
 	message->priv = gedit_file_browser_message_activation_get_instance_private (message);
 }

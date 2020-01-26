@@ -29,15 +29,15 @@ G_BEGIN_DECLS
 
 #define GEDIT_TYPE_HIGHLIGHT_MODE_SELECTOR (gedit_highlight_mode_selector_get_type ())
 
-G_DECLARE_FINAL_TYPE (GeditHighlightModeSelector, gedit_highlight_mode_selector, GEDIT, HIGHLIGHT_MODE_SELECTOR, GtkGrid)
+G_DECLARE_FINAL_TYPE (BeditHighlightModeSelector, gedit_highlight_mode_selector, GEDIT, HIGHLIGHT_MODE_SELECTOR, GtkGrid)
 
-GeditHighlightModeSelector *gedit_highlight_mode_selector_new             (void);
+BeditHighlightModeSelector *gedit_highlight_mode_selector_new             (void);
 
-void                        gedit_highlight_mode_selector_select_language (GeditHighlightModeSelector *selector,
+void                        gedit_highlight_mode_selector_select_language (BeditHighlightModeSelector *selector,
                                                                            GtkSourceLanguage          *language);
 
 void                        gedit_highlight_mode_selector_activate_selected_language
-                                                                          (GeditHighlightModeSelector *selector);
+                                                                          (BeditHighlightModeSelector *selector);
 
 G_END_DECLS
 

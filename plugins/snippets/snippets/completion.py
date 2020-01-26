@@ -1,4 +1,4 @@
-#    Gedit snippets plugin
+#    Bedit snippets plugin
 #    Copyright (C) 2005-2006  Jesse van den Kieboom <jesse@icecrew.nl>
 #
 #    This program is free software; you can redistribute it and/or modify
@@ -15,14 +15,14 @@
 #    along with this program; if not, write to the Free Software
 #    Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 
-from gi.repository import GObject, Gtk, GtkSource, Gedit
+from gi.repository import GObject, Gtk, GtkSource, Bedit
 
 from .library import Library
 from .languagemanager import get_language_manager
 from .snippet import Snippet
 
 class Proposal(GObject.Object, GtkSource.CompletionProposal):
-    __gtype_name__ = "GeditSnippetsProposal"
+    __gtype_name__ = "BeditSnippetsProposal"
 
     def __init__(self, snippet):
         super(Proposal, self).__init__()
@@ -39,7 +39,7 @@ class Proposal(GObject.Object, GtkSource.CompletionProposal):
         return self._snippet.data['text']
 
 class Provider(GObject.Object, GtkSource.CompletionProvider):
-    __gtype_name__ = "GeditSnippetsProvider"
+    __gtype_name__ = "BeditSnippetsProvider"
 
     def __init__(self, name, language_id, handler):
         super(Provider, self).__init__()
@@ -125,7 +125,7 @@ class Provider(GObject.Object, GtkSource.CompletionProvider):
 
     def do_get_info_widget(self, proposal):
         if not self.info_widget:
-            view = Gedit.View.new_with_buffer(Gedit.Document())
+            view = Bedit.View.new_with_buffer(Bedit.Document())
             manager = get_language_manager()
 
             lang = manager.get_language('snippets')
@@ -158,7 +158,7 @@ class Provider(GObject.Object, GtkSource.CompletionProvider):
         return GtkSource.CompletionActivation.USER_REQUESTED
 
 class Defaults(GObject.Object, GtkSource.CompletionProvider):
-    __gtype_name__ = "GeditSnippetsDefaultsProvider"
+    __gtype_name__ = "BeditSnippetsDefaultsProvider"
 
     def __init__(self, handler):
         GObject.Object.__init__(self)

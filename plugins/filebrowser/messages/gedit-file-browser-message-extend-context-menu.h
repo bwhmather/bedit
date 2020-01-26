@@ -32,35 +32,35 @@ G_BEGIN_DECLS
 #define GEDIT_TYPE_FILE_BROWSER_MESSAGE_EXTEND_CONTEXT_MENU            (gedit_file_browser_message_extend_context_menu_get_type ())
 #define GEDIT_FILE_BROWSER_MESSAGE_EXTEND_CONTEXT_MENU(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj),\
                                                                         GEDIT_TYPE_FILE_BROWSER_MESSAGE_EXTEND_CONTEXT_MENU,\
-                                                                        GeditFileBrowserMessageExtendContextMenu))
+                                                                        BeditFileBrowserMessageExtendContextMenu))
 #define GEDIT_FILE_BROWSER_MESSAGE_EXTEND_CONTEXT_MENU_CONST(obj)      (G_TYPE_CHECK_INSTANCE_CAST ((obj),\
                                                                         GEDIT_TYPE_FILE_BROWSER_MESSAGE_EXTEND_CONTEXT_MENU,\
-                                                                        GeditFileBrowserMessageExtendContextMenu const))
+                                                                        BeditFileBrowserMessageExtendContextMenu const))
 #define GEDIT_FILE_BROWSER_MESSAGE_EXTEND_CONTEXT_MENU_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass),\
                                                                         GEDIT_TYPE_FILE_BROWSER_MESSAGE_EXTEND_CONTEXT_MENU,\
-                                                                        GeditFileBrowserMessageExtendContextMenuClass))
+                                                                        BeditFileBrowserMessageExtendContextMenuClass))
 #define GEDIT_IS_FILE_BROWSER_MESSAGE_EXTEND_CONTEXT_MENU(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj),\
                                                                         GEDIT_TYPE_FILE_BROWSER_MESSAGE_EXTEND_CONTEXT_MENU))
 #define GEDIT_IS_FILE_BROWSER_MESSAGE_EXTEND_CONTEXT_MENU_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass),\
                                                                         GEDIT_TYPE_FILE_BROWSER_MESSAGE_EXTEND_CONTEXT_MENU))
 #define GEDIT_FILE_BROWSER_MESSAGE_EXTEND_CONTEXT_MENU_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj),\
                                                                         GEDIT_TYPE_FILE_BROWSER_MESSAGE_EXTEND_CONTEXT_MENU,\
-                                                                        GeditFileBrowserMessageExtendContextMenuClass))
+                                                                        BeditFileBrowserMessageExtendContextMenuClass))
 
-typedef struct _GeditFileBrowserMessageExtendContextMenu        GeditFileBrowserMessageExtendContextMenu;
-typedef struct _GeditFileBrowserMessageExtendContextMenuClass   GeditFileBrowserMessageExtendContextMenuClass;
-typedef struct _GeditFileBrowserMessageExtendContextMenuPrivate GeditFileBrowserMessageExtendContextMenuPrivate;
+typedef struct _BeditFileBrowserMessageExtendContextMenu        BeditFileBrowserMessageExtendContextMenu;
+typedef struct _BeditFileBrowserMessageExtendContextMenuClass   BeditFileBrowserMessageExtendContextMenuClass;
+typedef struct _BeditFileBrowserMessageExtendContextMenuPrivate BeditFileBrowserMessageExtendContextMenuPrivate;
 
-struct _GeditFileBrowserMessageExtendContextMenu
+struct _BeditFileBrowserMessageExtendContextMenu
 {
-	GeditMessage parent;
+	BeditMessage parent;
 
-	GeditFileBrowserMessageExtendContextMenuPrivate *priv;
+	BeditFileBrowserMessageExtendContextMenuPrivate *priv;
 };
 
-struct _GeditFileBrowserMessageExtendContextMenuClass
+struct _BeditFileBrowserMessageExtendContextMenuClass
 {
-	GeditMessageClass parent_class;
+	BeditMessageClass parent_class;
 };
 
 GType gedit_file_browser_message_extend_context_menu_get_type (void) G_GNUC_CONST;

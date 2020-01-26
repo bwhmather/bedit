@@ -20,7 +20,7 @@ import platform
 import functools
 import fnmatch
 
-from gi.repository import GLib, Gio, GObject, Pango, Gtk, Gdk, Gedit
+from gi.repository import GLib, Gio, GObject, Pango, Gtk, Gdk, Bedit
 import xml.sax.saxutils
 from .virtualdirs import VirtualDirectory
 
@@ -498,7 +498,7 @@ class Popup(Gtk.Dialog):
         uri = self._entry.get_text()
         gfile = Gio.file_new_for_uri(uri)
 
-        if Gedit.utils_is_valid_location(gfile) or \
+        if Bedit.utils_is_valid_location(gfile) or \
            (os.path.isabs(uri) and gfile.query_exists()):
             return gfile
         else:

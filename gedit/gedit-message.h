@@ -28,33 +28,33 @@
 G_BEGIN_DECLS
 
 #define GEDIT_TYPE_MESSAGE			(gedit_message_get_type ())
-#define GEDIT_MESSAGE(obj)			(G_TYPE_CHECK_INSTANCE_CAST ((obj), GEDIT_TYPE_MESSAGE, GeditMessage))
-#define GEDIT_MESSAGE_CONST(obj)		(G_TYPE_CHECK_INSTANCE_CAST ((obj), GEDIT_TYPE_MESSAGE, GeditMessage const))
-#define GEDIT_MESSAGE_CLASS(klass)		(G_TYPE_CHECK_CLASS_CAST ((klass), GEDIT_TYPE_MESSAGE, GeditMessageClass))
+#define GEDIT_MESSAGE(obj)			(G_TYPE_CHECK_INSTANCE_CAST ((obj), GEDIT_TYPE_MESSAGE, BeditMessage))
+#define GEDIT_MESSAGE_CONST(obj)		(G_TYPE_CHECK_INSTANCE_CAST ((obj), GEDIT_TYPE_MESSAGE, BeditMessage const))
+#define GEDIT_MESSAGE_CLASS(klass)		(G_TYPE_CHECK_CLASS_CAST ((klass), GEDIT_TYPE_MESSAGE, BeditMessageClass))
 #define GEDIT_IS_MESSAGE(obj)			(G_TYPE_CHECK_INSTANCE_TYPE ((obj), GEDIT_TYPE_MESSAGE))
 #define GEDIT_IS_MESSAGE_CLASS(klass)		(G_TYPE_CHECK_CLASS_TYPE ((klass), GEDIT_TYPE_MESSAGE))
-#define GEDIT_MESSAGE_GET_CLASS(obj)		(G_TYPE_INSTANCE_GET_CLASS ((obj), GEDIT_TYPE_MESSAGE, GeditMessageClass))
+#define GEDIT_MESSAGE_GET_CLASS(obj)		(G_TYPE_INSTANCE_GET_CLASS ((obj), GEDIT_TYPE_MESSAGE, BeditMessageClass))
 
-typedef struct _GeditMessage        GeditMessage;
-typedef struct _GeditMessageClass   GeditMessageClass;
-typedef struct _GeditMessagePrivate GeditMessagePrivate;
+typedef struct _BeditMessage        BeditMessage;
+typedef struct _BeditMessageClass   BeditMessageClass;
+typedef struct _BeditMessagePrivate BeditMessagePrivate;
 
-struct _GeditMessage
+struct _BeditMessage
 {
 	GObject parent;
 
-	GeditMessagePrivate *priv;
+	BeditMessagePrivate *priv;
 };
 
-struct _GeditMessageClass
+struct _BeditMessageClass
 {
 	GObjectClass parent_class;
 };
 
 GType        gedit_message_get_type             (void) G_GNUC_CONST;
 
-const gchar *gedit_message_get_object_path      (GeditMessage *message);
-const gchar *gedit_message_get_method           (GeditMessage *message);
+const gchar *gedit_message_get_object_path      (BeditMessage *message);
+const gchar *gedit_message_get_method           (BeditMessage *message);
 
 gboolean     gedit_message_type_has             (GType         gtype,
                                                  const gchar  *propname);
@@ -63,7 +63,7 @@ gboolean     gedit_message_type_check           (GType         gtype,
                                                  const gchar  *propname,
                                                  GType         value_type);
 
-gboolean     gedit_message_has                  (GeditMessage *message,
+gboolean     gedit_message_has                  (BeditMessage *message,
                                                  const gchar  *propname);
 
 gboolean     gedit_message_is_valid_object_path (const gchar  *object_path);

@@ -29,20 +29,20 @@
  * @short_description: Interface for activatable extensions on views
  * @see_also: #PeasExtensionSet
  *
- * #GeditViewActivatable is an interface which should be implemented by
+ * #BeditViewActivatable is an interface which should be implemented by
  * extensions that should be activated on a gedit view.
  **/
 
-G_DEFINE_INTERFACE(GeditViewActivatable, gedit_view_activatable, G_TYPE_OBJECT)
+G_DEFINE_INTERFACE(BeditViewActivatable, gedit_view_activatable, G_TYPE_OBJECT)
 
 static void
-gedit_view_activatable_default_init (GeditViewActivatableInterface *iface)
+gedit_view_activatable_default_init (BeditViewActivatableInterface *iface)
 {
 	/**
-	 * GeditViewActivatable:view:
+	 * BeditViewActivatable:view:
 	 *
 	 * The window property contains the gedit window for this
-	 * #GeditViewActivatable instance.
+	 * #BeditViewActivatable instance.
 	 */
 	g_object_interface_install_property (iface,
 	                                     g_param_spec_object ("view",
@@ -56,14 +56,14 @@ gedit_view_activatable_default_init (GeditViewActivatableInterface *iface)
 
 /**
  * gedit_view_activatable_activate:
- * @activatable: A #GeditViewActivatable.
+ * @activatable: A #BeditViewActivatable.
  *
  * Activates the extension on the window property.
  */
 void
-gedit_view_activatable_activate (GeditViewActivatable *activatable)
+gedit_view_activatable_activate (BeditViewActivatable *activatable)
 {
-	GeditViewActivatableInterface *iface;
+	BeditViewActivatableInterface *iface;
 
 	g_return_if_fail (GEDIT_IS_VIEW_ACTIVATABLE (activatable));
 
@@ -76,14 +76,14 @@ gedit_view_activatable_activate (GeditViewActivatable *activatable)
 
 /**
  * gedit_view_activatable_deactivate:
- * @activatable: A #GeditViewActivatable.
+ * @activatable: A #BeditViewActivatable.
  *
  * Deactivates the extension on the window property.
  */
 void
-gedit_view_activatable_deactivate (GeditViewActivatable *activatable)
+gedit_view_activatable_deactivate (BeditViewActivatable *activatable)
 {
-	GeditViewActivatableInterface *iface;
+	BeditViewActivatableInterface *iface;
 
 	g_return_if_fail (GEDIT_IS_VIEW_ACTIVATABLE (activatable));
 

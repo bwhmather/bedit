@@ -18,9 +18,9 @@
 import os
 
 import gi
-gi.require_version('Gedit', '3.0')
+gi.require_version('Bedit', '3.0')
 gi.require_version('Gtk', '3.0')
-from gi.repository import GObject, Gio, GLib, Gtk, Gedit
+from gi.repository import GObject, Gio, GLib, Gtk, Bedit
 
 from .popup import Popup
 from .virtualdirs import RecentDocumentsDirectory
@@ -34,8 +34,8 @@ try:
 except:
     _ = lambda s: s
 
-class QuickOpenAppActivatable(GObject.Object, Gedit.AppActivatable):
-    app = GObject.Property(type=Gedit.App)
+class QuickOpenAppActivatable(GObject.Object, Bedit.AppActivatable):
+    app = GObject.Property(type=Bedit.App)
 
     def __init__(self):
         GObject.Object.__init__(self)
@@ -51,10 +51,10 @@ class QuickOpenAppActivatable(GObject.Object, Gedit.AppActivatable):
         self.app.remove_accelerator("win.quickopen", None)
 
 
-class QuickOpenPlugin(GObject.Object, Gedit.WindowActivatable):
+class QuickOpenPlugin(GObject.Object, Bedit.WindowActivatable):
     __gtype_name__ = "QuickOpenPlugin"
 
-    window = GObject.Property(type=Gedit.Window)
+    window = GObject.Property(type=Bedit.Window)
 
     def __init__(self):
         GObject.Object.__init__(self)
@@ -187,7 +187,7 @@ class QuickOpenPlugin(GObject.Object, Gedit.WindowActivatable):
         self._popup = None
 
     def on_activated(self, gfile, user_data=None):
-        Gedit.commands_load_location(self.window, gfile, None, -1, -1)
+        Bedit.commands_load_location(self.window, gfile, None, -1, -1)
         return True
 
 # ex:ts=4:et:

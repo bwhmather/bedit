@@ -29,7 +29,7 @@
 #include "gedit-app.h"
 #include "gedit-status-menu-button.h"
 
-struct _GeditStatusbar
+struct _BeditStatusbar
 {
 	GtkStatusbar  parent_instance;
 
@@ -47,7 +47,7 @@ struct _GeditStatusbar
 	guint          flash_message_id;
 };
 
-G_DEFINE_TYPE (GeditStatusbar, gedit_statusbar, GTK_TYPE_STATUSBAR)
+G_DEFINE_TYPE (BeditStatusbar, gedit_statusbar, GTK_TYPE_STATUSBAR)
 
 static gchar *
 get_overwrite_mode_string (gboolean overwrite)
@@ -65,7 +65,7 @@ get_overwrite_mode_length (void)
 static void
 gedit_statusbar_dispose (GObject *object)
 {
-	GeditStatusbar *statusbar = GEDIT_STATUSBAR (object);
+	BeditStatusbar *statusbar = GEDIT_STATUSBAR (object);
 
 	if (statusbar->flash_timeout > 0)
 	{
@@ -77,7 +77,7 @@ gedit_statusbar_dispose (GObject *object)
 }
 
 static void
-gedit_statusbar_class_init (GeditStatusbarClass *klass)
+gedit_statusbar_class_init (BeditStatusbarClass *klass)
 {
 	GObjectClass *object_class = G_OBJECT_CLASS (klass);
 	GtkWidgetClass *widget_class = GTK_WIDGET_CLASS (klass);
@@ -87,17 +87,17 @@ gedit_statusbar_class_init (GeditStatusbarClass *klass)
 	gtk_widget_class_set_template_from_resource (widget_class,
 		                                    "/com/bwhmather/bedit/ui/gedit-statusbar.ui");
 
-	gtk_widget_class_bind_template_child (widget_class, GeditStatusbar, error_frame);
-	gtk_widget_class_bind_template_child (widget_class, GeditStatusbar, error_image);
-	gtk_widget_class_bind_template_child (widget_class, GeditStatusbar, state_frame);
-	gtk_widget_class_bind_template_child (widget_class, GeditStatusbar, load_image);
-	gtk_widget_class_bind_template_child (widget_class, GeditStatusbar, save_image);
-	gtk_widget_class_bind_template_child (widget_class, GeditStatusbar, print_image);
-	gtk_widget_class_bind_template_child (widget_class, GeditStatusbar, overwrite_mode_label);
+	gtk_widget_class_bind_template_child (widget_class, BeditStatusbar, error_frame);
+	gtk_widget_class_bind_template_child (widget_class, BeditStatusbar, error_image);
+	gtk_widget_class_bind_template_child (widget_class, BeditStatusbar, state_frame);
+	gtk_widget_class_bind_template_child (widget_class, BeditStatusbar, load_image);
+	gtk_widget_class_bind_template_child (widget_class, BeditStatusbar, save_image);
+	gtk_widget_class_bind_template_child (widget_class, BeditStatusbar, print_image);
+	gtk_widget_class_bind_template_child (widget_class, BeditStatusbar, overwrite_mode_label);
 }
 
 static void
-gedit_statusbar_init (GeditStatusbar *statusbar)
+gedit_statusbar_init (BeditStatusbar *statusbar)
 {
 	gtk_widget_init_template (GTK_WIDGET (statusbar));
 
@@ -108,9 +108,9 @@ gedit_statusbar_init (GeditStatusbar *statusbar)
 /**
  * gedit_statusbar_new:
  *
- * Creates a new #GeditStatusbar.
+ * Creates a new #BeditStatusbar.
  *
- * Return value: the new #GeditStatusbar object
+ * Return value: the new #BeditStatusbar object
  **/
 GtkWidget *
 gedit_statusbar_new (void)
@@ -120,13 +120,13 @@ gedit_statusbar_new (void)
 
 /**
  * gedit_statusbar_set_overwrite:
- * @statusbar: a #GeditStatusbar
+ * @statusbar: a #BeditStatusbar
  * @overwrite: if the overwrite mode is set
  *
  * Sets the overwrite mode on the statusbar.
  **/
 void
-gedit_statusbar_set_overwrite (GeditStatusbar *statusbar,
+gedit_statusbar_set_overwrite (BeditStatusbar *statusbar,
                                gboolean        overwrite)
 {
 	gchar *msg;
@@ -139,7 +139,7 @@ gedit_statusbar_set_overwrite (GeditStatusbar *statusbar,
 }
 
 void
-gedit_statusbar_clear_overwrite (GeditStatusbar *statusbar)
+gedit_statusbar_clear_overwrite (BeditStatusbar *statusbar)
 {
 	g_return_if_fail (GEDIT_IS_STATUSBAR (statusbar));
 
@@ -147,7 +147,7 @@ gedit_statusbar_clear_overwrite (GeditStatusbar *statusbar)
 }
 
 static gboolean
-remove_message_timeout (GeditStatusbar *statusbar)
+remove_message_timeout (BeditStatusbar *statusbar)
 {
 	gtk_statusbar_remove (GTK_STATUSBAR (statusbar),
 	                      statusbar->flash_context_id,
@@ -161,7 +161,7 @@ remove_message_timeout (GeditStatusbar *statusbar)
 /* FIXME this is an issue for introspection */
 /**
  * gedit_statusbar_flash_message:
- * @statusbar: a #GeditStatusbar
+ * @statusbar: a #BeditStatusbar
  * @context_id: message context_id
  * @format: message to flash on the statusbar
  * @...: the arguments to insert in @format
@@ -169,7 +169,7 @@ remove_message_timeout (GeditStatusbar *statusbar)
  * Flash a temporary message on the statusbar.
  */
 void
-gedit_statusbar_flash_message (GeditStatusbar *statusbar,
+gedit_statusbar_flash_message (BeditStatusbar *statusbar,
 			       guint           context_id,
 			       const gchar    *format,
 			       ...)
@@ -209,8 +209,8 @@ gedit_statusbar_flash_message (GeditStatusbar *statusbar,
 }
 
 void
-gedit_statusbar_set_window_state (GeditStatusbar   *statusbar,
-				  GeditWindowState  state,
+gedit_statusbar_set_window_state (BeditStatusbar   *statusbar,
+				  BeditWindowState  state,
 				  gint              num_of_errors)
 {
 	g_return_if_fail (GEDIT_IS_STATUSBAR (statusbar));

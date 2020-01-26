@@ -42,32 +42,32 @@ typedef enum
 	GEDIT_TAB_STATE_CLOSING,
 	GEDIT_TAB_STATE_EXTERNALLY_MODIFIED_NOTIFICATION,
 	GEDIT_TAB_NUM_OF_STATES /* This is not a valid state */
-} GeditTabState;
+} BeditTabState;
 
 #define GEDIT_TYPE_TAB (gedit_tab_get_type())
 
-G_DECLARE_FINAL_TYPE (GeditTab, gedit_tab, GEDIT, TAB, GtkBox)
+G_DECLARE_FINAL_TYPE (BeditTab, gedit_tab, GEDIT, TAB, GtkBox)
 
-GeditView	*gedit_tab_get_view			(GeditTab            *tab);
+BeditView	*gedit_tab_get_view			(BeditTab            *tab);
 
 /* This is only an helper function */
-GeditDocument	*gedit_tab_get_document			(GeditTab            *tab);
+BeditDocument	*gedit_tab_get_document			(BeditTab            *tab);
 
-GeditTab	*gedit_tab_get_from_document		(GeditDocument       *doc);
+BeditTab	*gedit_tab_get_from_document		(BeditDocument       *doc);
 
-GeditTabState	 gedit_tab_get_state			(GeditTab            *tab);
+BeditTabState	 gedit_tab_get_state			(BeditTab            *tab);
 
-gboolean	 gedit_tab_get_auto_save_enabled	(GeditTab            *tab);
+gboolean	 gedit_tab_get_auto_save_enabled	(BeditTab            *tab);
 
-void		 gedit_tab_set_auto_save_enabled	(GeditTab            *tab,
+void		 gedit_tab_set_auto_save_enabled	(BeditTab            *tab,
 							 gboolean            enable);
 
-gint		 gedit_tab_get_auto_save_interval	(GeditTab            *tab);
+gint		 gedit_tab_get_auto_save_interval	(BeditTab            *tab);
 
-void		 gedit_tab_set_auto_save_interval	(GeditTab            *tab,
+void		 gedit_tab_set_auto_save_interval	(BeditTab            *tab,
 							 gint                interval);
 
-void		 gedit_tab_set_info_bar			(GeditTab            *tab,
+void		 gedit_tab_set_info_bar			(BeditTab            *tab,
 							 GtkWidget           *info_bar);
 
 G_END_DECLS

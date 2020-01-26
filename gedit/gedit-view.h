@@ -31,29 +31,29 @@
 G_BEGIN_DECLS
 
 #define GEDIT_TYPE_VIEW            (gedit_view_get_type ())
-#define GEDIT_VIEW(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), GEDIT_TYPE_VIEW, GeditView))
-#define GEDIT_VIEW_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass), GEDIT_TYPE_VIEW, GeditViewClass))
+#define GEDIT_VIEW(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), GEDIT_TYPE_VIEW, BeditView))
+#define GEDIT_VIEW_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass), GEDIT_TYPE_VIEW, BeditViewClass))
 #define GEDIT_IS_VIEW(obj)         (G_TYPE_CHECK_INSTANCE_TYPE((obj), GEDIT_TYPE_VIEW))
 #define GEDIT_IS_VIEW_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), GEDIT_TYPE_VIEW))
-#define GEDIT_VIEW_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj), GEDIT_TYPE_VIEW, GeditViewClass))
+#define GEDIT_VIEW_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj), GEDIT_TYPE_VIEW, BeditViewClass))
 
-typedef struct _GeditView		GeditView;
-typedef struct _GeditViewClass		GeditViewClass;
-typedef struct _GeditViewPrivate	GeditViewPrivate;
+typedef struct _BeditView		BeditView;
+typedef struct _BeditViewClass		BeditViewClass;
+typedef struct _BeditViewPrivate	BeditViewPrivate;
 
-struct _GeditView
+struct _BeditView
 {
 	GtkSourceView     view;
 
 	/*< private >*/
-	GeditViewPrivate *priv;
+	BeditViewPrivate *priv;
 };
 
-struct _GeditViewClass
+struct _BeditViewClass
 {
 	GtkSourceViewClass   parent_class;
 
-	void	           (*drop_uris)     (GeditView  *view,
+	void	           (*drop_uris)     (BeditView  *view,
 					     gchar     **uri_list);
 
 	gpointer             padding;
@@ -61,17 +61,17 @@ struct _GeditViewClass
 
 GType		 gedit_view_get_type     	(void) G_GNUC_CONST;
 
-GtkWidget	*gedit_view_new			(GeditDocument   *doc);
+GtkWidget	*gedit_view_new			(BeditDocument   *doc);
 
-void		 gedit_view_cut_clipboard 	(GeditView       *view);
-void		 gedit_view_copy_clipboard 	(GeditView       *view);
-void		 gedit_view_paste_clipboard	(GeditView       *view);
-void		 gedit_view_delete_selection	(GeditView       *view);
-void		 gedit_view_select_all		(GeditView       *view);
+void		 gedit_view_cut_clipboard 	(BeditView       *view);
+void		 gedit_view_copy_clipboard 	(BeditView       *view);
+void		 gedit_view_paste_clipboard	(BeditView       *view);
+void		 gedit_view_delete_selection	(BeditView       *view);
+void		 gedit_view_select_all		(BeditView       *view);
 
-void		 gedit_view_scroll_to_cursor 	(GeditView       *view);
+void		 gedit_view_scroll_to_cursor 	(BeditView       *view);
 
-void 		 gedit_view_set_font		(GeditView       *view,
+void 		 gedit_view_set_font		(BeditView       *view,
 						 gboolean         default_font,
 						 const gchar     *font_name);
 

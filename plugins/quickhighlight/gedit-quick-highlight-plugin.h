@@ -29,25 +29,25 @@
 G_BEGIN_DECLS
 
 #define GEDIT_TYPE_QUICK_HIGHLIGHT_PLUGIN	 (gedit_quick_highlight_plugin_get_type ())
-#define GEDIT_QUICK_HIGHLIGHT_PLUGIN(o)		 (G_TYPE_CHECK_INSTANCE_CAST ((o), GEDIT_TYPE_QUICK_HIGHLIGHT_PLUGIN, GeditQuickHighlightPlugin))
-#define GEDIT_QUICK_HIGHLIGHT_PLUGIN_CLASS(k)	 (G_TYPE_CHECK_CLASS_CAST((k), GEDIT_TYPE_QUICK_HIGHLIGHT_PLUGIN, GeditQuickHighlightPluginClass))
+#define GEDIT_QUICK_HIGHLIGHT_PLUGIN(o)		 (G_TYPE_CHECK_INSTANCE_CAST ((o), GEDIT_TYPE_QUICK_HIGHLIGHT_PLUGIN, BeditQuickHighlightPlugin))
+#define GEDIT_QUICK_HIGHLIGHT_PLUGIN_CLASS(k)	 (G_TYPE_CHECK_CLASS_CAST((k), GEDIT_TYPE_QUICK_HIGHLIGHT_PLUGIN, BeditQuickHighlightPluginClass))
 #define GEDIT_IS_QUICK_HIGHLIGHT_PLUGIN(o)	 (G_TYPE_CHECK_INSTANCE_TYPE ((o), GEDIT_TYPE_QUICK_HIGHLIGHT_PLUGIN))
 #define GEDIT_IS_QUICK_HIGHLIGHT_PLUGIN_CLASS(k) (G_TYPE_CHECK_CLASS_TYPE ((k), GEDIT_TYPE_QUICK_HIGHLIGHT_PLUGIN))
-#define GEDIT_QUICK_HIGHLIGHT_GET_CLASS(o)	 (G_TYPE_INSTANCE_GET_CLASS ((o), GEDIT_TYPE_QUICK_HIGHLIGHT_PLUGIN, GeditQuickHighlightPluginClass))
+#define GEDIT_QUICK_HIGHLIGHT_GET_CLASS(o)	 (G_TYPE_INSTANCE_GET_CLASS ((o), GEDIT_TYPE_QUICK_HIGHLIGHT_PLUGIN, BeditQuickHighlightPluginClass))
 
-typedef struct _GeditQuickHighlightPlugin		GeditQuickHighlightPlugin;
-typedef struct _GeditQuickHighlightPluginPrivate	GeditQuickHighlightPluginPrivate;
-typedef struct _GeditQuickHighlightPluginClass		GeditQuickHighlightPluginClass;
+typedef struct _BeditQuickHighlightPlugin		BeditQuickHighlightPlugin;
+typedef struct _BeditQuickHighlightPluginPrivate	BeditQuickHighlightPluginPrivate;
+typedef struct _BeditQuickHighlightPluginClass		BeditQuickHighlightPluginClass;
 
-struct _GeditQuickHighlightPlugin
+struct _BeditQuickHighlightPlugin
 {
 	PeasExtensionBase parent_instance;
 
 	/* < private > */
-	GeditQuickHighlightPluginPrivate *priv;
+	BeditQuickHighlightPluginPrivate *priv;
 };
 
-struct _GeditQuickHighlightPluginClass
+struct _BeditQuickHighlightPluginClass
 {
 	PeasExtensionBaseClass parent_class;
 };

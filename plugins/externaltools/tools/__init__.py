@@ -1,5 +1,5 @@
 # -*- coding: UTF-8 -*-
-#    Gedit External Tools plugin
+#    Bedit External Tools plugin
 #    Copyright (C) 2010 Ignacio Casal Quinteiro <icq@gnome.org>
 #
 #    This program is free software; you can redistribute it and/or modify
@@ -17,7 +17,7 @@
 #    Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 
 import gi
-gi.require_version('Gedit', '3.0')
+gi.require_version('Bedit', '3.0')
 gi.require_version('Gtk', '3.0')
 
 from .appactivatable import AppActivatable

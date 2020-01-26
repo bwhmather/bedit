@@ -1,4 +1,4 @@
-#    Gedit snippets plugin
+#    Bedit snippets plugin
 #    Copyright (C) 2011  Jesse van den Kieboom <jessevdk@gnome.org>
 #
 #    This program is free software; you can redistribute it and/or modify

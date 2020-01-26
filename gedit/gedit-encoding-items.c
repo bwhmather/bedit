@@ -24,17 +24,17 @@
 
 #include "gedit-settings.h"
 
-struct _GeditEncodingItem
+struct _BeditEncodingItem
 {
 	const GtkSourceEncoding *encoding;
 	gchar *name;
 };
 
-static GeditEncodingItem *
+static BeditEncodingItem *
 gedit_encoding_item_new (const GtkSourceEncoding *encoding,
                          gchar                   *name)
 {
-	GeditEncodingItem *item = g_slice_new (GeditEncodingItem);
+	BeditEncodingItem *item = g_slice_new (BeditEncodingItem);
 
 	item->encoding = encoding;
 	item->name = name;
@@ -43,7 +43,7 @@ gedit_encoding_item_new (const GtkSourceEncoding *encoding,
 }
 
 void
-gedit_encoding_item_free (GeditEncodingItem *item)
+gedit_encoding_item_free (BeditEncodingItem *item)
 {
 	if (item == NULL)
 	{
@@ -51,11 +51,11 @@ gedit_encoding_item_free (GeditEncodingItem *item)
 	}
 
 	g_free (item->name);
-	g_slice_free (GeditEncodingItem, item);
+	g_slice_free (BeditEncodingItem, item);
 }
 
 const GtkSourceEncoding *
-gedit_encoding_item_get_encoding (GeditEncodingItem *item)
+gedit_encoding_item_get_encoding (BeditEncodingItem *item)
 {
 	g_return_val_if_fail (item != NULL, NULL);
 
@@ -63,7 +63,7 @@ gedit_encoding_item_get_encoding (GeditEncodingItem *item)
 }
 
 const gchar *
-gedit_encoding_item_get_name (GeditEncodingItem *item)
+gedit_encoding_item_get_name (BeditEncodingItem *item)
 {
 	g_return_val_if_fail (item != NULL, NULL);
 

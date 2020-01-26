@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface>
   <!-- interface-requires gtk+ 3.10 -->
-  <template class="GeditWindow" parent="GtkApplicationWindow">
+  <template class="BeditWindow" parent="GtkApplicationWindow">
     <property name="can_focus">False</property>
     <property name="has_focus">False</property>
     <property name="is_focus">False</property>
@@ -106,7 +106,7 @@
                     <property name="visible" bind-source="side_panel" bind-property="visible" bind-flags="sync-create"/>
                     <property name="orientation">vertical</property>
                     <child>
-                      <object class="GeditMenuStackSwitcher" id="side_panel_inline_stack_switcher">
+                      <object class="BeditMenuStackSwitcher" id="side_panel_inline_stack_switcher">
                         <property name="visible">False</property>
                         <property name="stack">side_panel</property>
                         <style>
@@ -150,7 +150,7 @@
                           <class name="gedit-bottom-panel-paned"/>
                         </style>
                         <child>
-                          <object class="GeditMultiNotebook" id="multi_notebook">
+                          <object class="BeditMultiNotebook" id="multi_notebook">
                             <property name="visible">True</property>
                           </object>
                           <packing>
@@ -180,7 +180,7 @@
                                   </packing>
                                 </child>
                                 <child>
-                                  <object class="GeditNotebookStackSwitcher" id="bottom_panel_stack_switcher">
+                                  <object class="BeditNotebookStackSwitcher" id="bottom_panel_stack_switcher">
                                     <property name="visible">True</property>
                                     <property name="stack">bottom_panel</property>
                                     <style>
@@ -244,10 +244,10 @@
                       </packing>
                     </child>
                     <child>
-                      <object class="GeditStatusbar" id="statusbar">
+                      <object class="BeditStatusbar" id="statusbar">
                         <property name="visible">True</property>
                         <child>
-                          <object class="GeditStatusMenuButton" id="line_col_button">
+                          <object class="BeditStatusMenuButton" id="line_col_button">
                             <property name="visible">True</property>
                             <property name="use_popover">True</property>
                             <child internal-child="label">
@@ -264,7 +264,7 @@
                           </packing>
                         </child>
                         <child>
-                          <object class="GeditStatusMenuButton" id="tab_width_button">
+                          <object class="BeditStatusMenuButton" id="tab_width_button">
                             <property name="visible">True</property>
                             <property name="use_popover">True</property>
                           </object>
@@ -275,7 +275,7 @@
                           </packing>
                         </child>
                         <child>
-                          <object class="GeditStatusMenuButton" id="language_button">
+                          <object class="BeditStatusMenuButton" id="language_button">
                             <property name="visible">True</property>
                             <property name="use_popover">True</property>
                           </object>

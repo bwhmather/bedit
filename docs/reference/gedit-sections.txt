@@ -1,8 +1,8 @@
 <SECTION>
 <FILE>gedit-app</FILE>
-<TITLE>GeditApp</TITLE>
-GeditApp
-GeditLockdownMask
+<TITLE>BeditApp</TITLE>
+BeditApp
+BeditLockdownMask
 GEDIT_LOCKDOWN_ALL
 gedit_app_create_window
 gedit_app_set_window_title
@@ -24,8 +24,8 @@ GEDIT_APP_GET_CLASS
 
 <SECTION>
 <FILE>gedit-app-activatable</FILE>
-<TITLE>GeditAppActivatable</TITLE>
-GeditAppActivatable
+<TITLE>BeditAppActivatable</TITLE>
+BeditAppActivatable
 gedit_app_activatable_activate
 gedit_app_activatable_deactivate
 gedit_app_activatable_extend_menu
@@ -40,7 +40,7 @@ gedit_app_activatable_get_type
 
 <SECTION>
 <FILE>gedit-commands</FILE>
-<TITLE>GeditCommands</TITLE>
+<TITLE>BeditCommands</TITLE>
 gedit_commands_load_location
 gedit_commands_load_locations
 gedit_commands_save_document
@@ -51,8 +51,8 @@ gedit_commands_save_all_documents
 
 <SECTION>
 <FILE>gedit-document</FILE>
-<TITLE>GeditDocument</TITLE>
-GeditDocument
+<TITLE>BeditDocument</TITLE>
+BeditDocument
 gedit_document_new
 gedit_document_get_file
 gedit_document_get_uri_for_display
@@ -80,8 +80,8 @@ GEDIT_DOCUMENT_GET_CLASS
 
 <SECTION>
 <FILE>gedit-encodings-combo-box</FILE>
-<TITLE>GeditEncodingsComboBox</TITLE>
-GeditEncodingsComboBox
+<TITLE>BeditEncodingsComboBox</TITLE>
+BeditEncodingsComboBox
 gedit_encodings_combo_box_new
 gedit_encodings_combo_box_get_selected_encoding
 gedit_encodings_combo_box_set_selected_encoding
@@ -97,10 +97,10 @@ GEDIT_ENCODINGS_COMBO_BOX_GET_CLASS
 
 <SECTION>
 <FILE>gedit-message-bus</FILE>
-<TITLE>GeditMessageBus</TITLE>
-GeditMessageBus
-GeditMessageCallback
-GeditMessageBusForeach
+<TITLE>BeditMessageBus</TITLE>
+BeditMessageBus
+BeditMessageCallback
+BeditMessageBusForeach
 gedit_message_bus_get_default
 gedit_message_bus_new
 gedit_message_bus_lookup
@@ -129,13 +129,13 @@ gedit_message_bus_get_type
 GEDIT_MESSAGE_BUS_CLASS
 GEDIT_IS_MESSAGE_BUS_CLASS
 GEDIT_MESSAGE_BUS_GET_CLASS
-GeditMessageBusPrivate
+BeditMessageBusPrivate
 </SECTION>
 
 <SECTION>
 <FILE>gedit-message</FILE>
-<TITLE>GeditMessage</TITLE>
-GeditMessage
+<TITLE>BeditMessage</TITLE>
+BeditMessage
 gedit_message_get_object_path
 gedit_message_get_method
 gedit_message_type_has
@@ -152,13 +152,13 @@ gedit_message_get_type
 GEDIT_MESSAGE_CLASS
 GEDIT_IS_MESSAGE_CLASS
 GEDIT_MESSAGE_GET_CLASS
-GeditMessagePrivate
+BeditMessagePrivate
 </SECTION>
 
 <SECTION>
 <FILE>gedit-progress-info-bar</FILE>
-<TITLE>GeditProgressInfoBar</TITLE>
-GeditProgressInfoBar
+<TITLE>BeditProgressInfoBar</TITLE>
+BeditProgressInfoBar
 gedit_progress_info_bar_new
 gedit_progress_info_bar_set_icon_name
 gedit_progress_info_bar_set_markup
@@ -177,8 +177,8 @@ GEDIT_PROGRESS_INFO_BAR_GET_CLASS
 
 <SECTION>
 <FILE>gedit-statusbar</FILE>
-<TITLE>GeditStatusbar</TITLE>
-GeditStatusbar
+<TITLE>BeditStatusbar</TITLE>
+BeditStatusbar
 gedit_statusbar_new
 gedit_statusbar_set_window_state
 gedit_statusbar_set_overwrite
@@ -196,9 +196,9 @@ GEDIT_STATUSBAR_GET_CLASS
 
 <SECTION>
 <FILE>gedit-tab</FILE>
-GeditTabState
-<TITLE>GeditTab</TITLE>
-GeditTab
+BeditTabState
+<TITLE>BeditTab</TITLE>
+BeditTab
 gedit_tab_get_view
 gedit_tab_get_document
 gedit_tab_get_from_document
@@ -220,9 +220,9 @@ GEDIT_TAB_GET_CLASS
 
 <SECTION>
 <FILE>gedit-view</FILE>
-GeditViewPrivate
-<TITLE>GeditView</TITLE>
-GeditView
+BeditViewPrivate
+<TITLE>BeditView</TITLE>
+BeditView
 gedit_view_new
 gedit_view_cut_clipboard
 gedit_view_copy_clipboard
@@ -243,8 +243,8 @@ GEDIT_VIEW_GET_CLASS
 
 <SECTION>
 <FILE>gedit-view-activatable</FILE>
-<TITLE>GeditViewActivatable</TITLE>
-GeditViewActivatable
+<TITLE>BeditViewActivatable</TITLE>
+BeditViewActivatable
 gedit_view_activatable_activate
 gedit_view_activatable_deactivate
 <SUBSECTION Standard>
@@ -258,10 +258,10 @@ gedit_view_activatable_get_type
 
 <SECTION>
 <FILE>gedit-window</FILE>
-GeditWindowState
-GeditWindowPrivate
-<TITLE>GeditWindow</TITLE>
-GeditWindow
+BeditWindowState
+BeditWindowPrivate
+<TITLE>BeditWindow</TITLE>
+BeditWindow
 gedit_window_create_tab
 gedit_window_create_tab_from_location
 gedit_window_create_tab_from_stream
@@ -294,8 +294,8 @@ GEDIT_WINDOW_GET_CLASS
 
 <SECTION>
 <FILE>gedit-window-activatable</FILE>
-<TITLE>GeditWindowActivatable</TITLE>
-GeditWindowActivatable
+<TITLE>BeditWindowActivatable</TITLE>
+BeditWindowActivatable
 gedit_window_activatable_activate
 gedit_window_activatable_deactivate
 gedit_window_activatable_update_state
@@ -310,7 +310,7 @@ gedit_window_activatable_get_type
 
 <SECTION>
 <FILE>gedit-debug</FILE>
-GeditDebugSection
+BeditDebugSection
 DEBUG_VIEW
 DEBUG_PREFS
 DEBUG_WINDOW
@@ -330,7 +330,7 @@ gedit_debug_plugin_message
 
 <SECTION>
 <FILE>gedit-menu-extension</FILE>
-GeditMenuExtension
+BeditMenuExtension
 gedit_menu_extension_new
 gedit_menu_extension_append_menu_item
 gedit_menu_extension_prepend_menu_item
@@ -343,7 +343,7 @@ GEDIT_MENU_EXTENSION_CLASS
 GEDIT_MENU_EXTENSION_CONST
 GEDIT_MENU_EXTENSION_GET_CLASS
 GEDIT_TYPE_MENU_EXTENSION
-GeditMenuExtensionClass
+BeditMenuExtensionClass
 gedit_menu_extension_get_type
 </SECTION>
 

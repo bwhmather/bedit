@@ -30,13 +30,13 @@
 #include "gedit-dirs.h"
 #include "gedit-settings.h"
 
-struct _GeditPrintJob
+struct _BeditPrintJob
 {
 	GObject parent_instance;
 
 	GSettings *gsettings;
 
-	GeditView *view;
+	BeditView *view;
 
 	GtkPrintOperation *operation;
 	GtkSourcePrintCompositor *compositor;
@@ -81,7 +81,7 @@ enum
 
 static guint signals[LAST_SIGNAL];
 
-G_DEFINE_TYPE (GeditPrintJob, gedit_print_job, G_TYPE_OBJECT)
+G_DEFINE_TYPE (BeditPrintJob, gedit_print_job, G_TYPE_OBJECT)
 
 static void
 gedit_print_job_get_property (GObject    *object,
@@ -89,7 +89,7 @@ gedit_print_job_get_property (GObject    *object,
 			      GValue     *value,
 			      GParamSpec *pspec)
 {
-	GeditPrintJob *job = GEDIT_PRINT_JOB (object);
+	BeditPrintJob *job = GEDIT_PRINT_JOB (object);
 
 	switch (prop_id)
 	{
@@ -109,7 +109,7 @@ gedit_print_job_set_property (GObject      *object,
 			      const GValue *value,
 			      GParamSpec   *pspec)
 {
-	GeditPrintJob *job = GEDIT_PRINT_JOB (object);
+	BeditPrintJob *job = GEDIT_PRINT_JOB (object);
 
 	switch (prop_id)
 	{
@@ -126,7 +126,7 @@ gedit_print_job_set_property (GObject      *object,
 static void
 gedit_print_job_dispose (GObject *object)
 {
-	GeditPrintJob *job = GEDIT_PRINT_JOB (object);
+	BeditPrintJob *job = GEDIT_PRINT_JOB (object);
 
 	g_clear_object (&job->gsettings);
 	g_clear_object (&job->operation);
@@ -139,7 +139,7 @@ gedit_print_job_dispose (GObject *object)
 static void
 gedit_print_job_finalize (GObject *object)
 {
-	GeditPrintJob *job = GEDIT_PRINT_JOB (object);
+	BeditPrintJob *job = GEDIT_PRINT_JOB (object);
 
 	g_free (job->status_string);
 
@@ -147,26 +147,26 @@ gedit_print_job_finalize (GObject *object)
 }
 
 static void
-gedit_print_job_printing (GeditPrintJob       *job,
-                          GeditPrintJobStatus  status)
+gedit_print_job_printing (BeditPrintJob       *job,
+                          BeditPrintJobStatus  status)
 {
 }
 
 static void
-gedit_print_job_show_preview (GeditPrintJob *job,
+gedit_print_job_show_preview (BeditPrintJob *job,
                               GtkWidget     *preview)
 {
 }
 
 static void
-gedit_print_job_done (GeditPrintJob       *job,
-                      GeditPrintJobResult  result,
+gedit_print_job_done (BeditPrintJob       *job,
+                      BeditPrintJobResult  result,
                       const GError        *error)
 {
 }
 
 static void
-gedit_print_job_class_init (GeditPrintJobClass *klass)
+gedit_print_job_class_init (BeditPrintJobClass *klass)
 {
 	GObjectClass *object_class;
 
@@ -179,8 +179,8 @@ gedit_print_job_class_init (GeditPrintJobClass *klass)
 
 	properties[PROP_VIEW] =
 		g_param_spec_object ("view",
-		                     "Gedit View",
-		                     "Gedit View to print",
+		                     "Bedit View",
+		                     "Bedit View to print",
 		                     GEDIT_TYPE_VIEW,
 		                     G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS | G_PARAM_CONSTRUCT_ONLY);
 
@@ -219,7 +219,7 @@ gedit_print_job_class_init (GeditPrintJobClass *klass)
 }
 
 static void
-gedit_print_job_init (GeditPrintJob *job)
+gedit_print_job_init (BeditPrintJob *job)
 {
 	job->gsettings = g_settings_new ("com.bwhmather.bedit.preferences.print");
 
@@ -228,7 +228,7 @@ gedit_print_job_init (GeditPrintJob *job)
 
 static void
 restore_button_clicked (GtkButton     *button,
-			GeditPrintJob *job)
+			BeditPrintJob *job)
 
 {
 	g_settings_reset (job->gsettings, GEDIT_SETTINGS_PRINT_FONT_BODY_PANGO);
@@ -238,7 +238,7 @@ restore_button_clicked (GtkButton     *button,
 
 static GObject *
 create_custom_widget_cb (GtkPrintOperation *operation,
-			 GeditPrintJob     *job)
+			 BeditPrintJob     *job)
 {
 	GtkBuilder *builder;
 	GtkWidget *contents;
@@ -354,7 +354,7 @@ create_custom_widget_cb (GtkPrintOperation *operation,
 static void
 custom_widget_apply_cb (GtkPrintOperation *operation,
 			GtkWidget         *widget,
-			GeditPrintJob     *job)
+			BeditPrintJob     *job)
 {
 	gboolean syntax;
 	gboolean page_header;
@@ -430,7 +430,7 @@ custom_widget_apply_cb (GtkPrintOperation *operation,
 static void
 preview_ready (GtkPrintOperationPreview *gtk_preview,
 	       GtkPrintContext          *context,
-	       GeditPrintJob            *job)
+	       BeditPrintJob            *job)
 {
 	job->is_preview = TRUE;
 
@@ -444,7 +444,7 @@ preview_cb (GtkPrintOperation        *op,
 	    GtkPrintOperationPreview *gtk_preview,
 	    GtkPrintContext          *context,
 	    GtkWindow                *parent,
-	    GeditPrintJob            *job)
+	    BeditPrintJob            *job)
 {
 	g_clear_object (&job->preview);
 	job->preview = gedit_print_preview_new (op, gtk_preview, context);
@@ -459,7 +459,7 @@ preview_cb (GtkPrintOperation        *op,
 }
 
 static void
-create_compositor (GeditPrintJob *job)
+create_compositor (BeditPrintJob *job)
 {
 	GtkSourceBuffer *buf;
 	gchar *print_font_body;
@@ -559,7 +559,7 @@ create_compositor (GeditPrintJob *job)
 static void
 begin_print_cb (GtkPrintOperation *operation,
 	        GtkPrintContext   *context,
-	        GeditPrintJob     *job)
+	        BeditPrintJob     *job)
 {
 	create_compositor (job);
 
@@ -574,7 +574,7 @@ begin_print_cb (GtkPrintOperation *operation,
 static gboolean
 paginate_cb (GtkPrintOperation *operation,
 	     GtkPrintContext   *context,
-	     GeditPrintJob     *job)
+	     BeditPrintJob     *job)
 {
 	gboolean finished;
 
@@ -610,7 +610,7 @@ static void
 draw_page_cb (GtkPrintOperation *operation,
 	      GtkPrintContext   *context,
 	      gint               page_nr,
-	      GeditPrintJob     *job)
+	      BeditPrintJob     *job)
 {
 	/* In preview, pages are drawn on the fly, so rendering is
 	 * not part of the progress.
@@ -638,7 +638,7 @@ draw_page_cb (GtkPrintOperation *operation,
 static void
 end_print_cb (GtkPrintOperation *operation,
 	      GtkPrintContext   *context,
-	      GeditPrintJob     *job)
+	      BeditPrintJob     *job)
 {
 	g_clear_object (&job->compositor);
 }
@@ -646,10 +646,10 @@ end_print_cb (GtkPrintOperation *operation,
 static void
 done_cb (GtkPrintOperation       *operation,
 	 GtkPrintOperationResult  result,
-	 GeditPrintJob           *job)
+	 BeditPrintJob           *job)
 {
 	GError *error = NULL;
-	GeditPrintJobResult print_result;
+	BeditPrintJobResult print_result;
 
 	switch (result)
 	{
@@ -676,8 +676,8 @@ done_cb (GtkPrintOperation       *operation,
 	g_object_unref (job);
 }
 
-GeditPrintJob *
-gedit_print_job_new (GeditView *view)
+BeditPrintJob *
+gedit_print_job_new (BeditView *view)
 {
 	g_return_val_if_fail (GEDIT_IS_VIEW (view), NULL);
 
@@ -687,17 +687,17 @@ gedit_print_job_new (GeditView *view)
 }
 
 /* Note that gedit_print_job_print() can only be called once on a given
- * GeditPrintJob.
+ * BeditPrintJob.
  */
 GtkPrintOperationResult
-gedit_print_job_print (GeditPrintJob            *job,
+gedit_print_job_print (BeditPrintJob            *job,
 		       GtkPrintOperationAction   action,
 		       GtkPageSetup             *page_setup,
 		       GtkPrintSettings         *settings,
 		       GtkWindow                *parent,
 		       GError                  **error)
 {
-	GeditDocument *doc;
+	BeditDocument *doc;
 	gchar *job_name;
 
 	g_return_val_if_fail (job->operation == NULL, GTK_PRINT_OPERATION_RESULT_ERROR);
@@ -779,7 +779,7 @@ gedit_print_job_print (GeditPrintJob            *job,
 }
 
 void
-gedit_print_job_cancel (GeditPrintJob *job)
+gedit_print_job_cancel (BeditPrintJob *job)
 {
 	g_return_if_fail (GEDIT_IS_PRINT_JOB (job));
 
@@ -787,7 +787,7 @@ gedit_print_job_cancel (GeditPrintJob *job)
 }
 
 const gchar *
-gedit_print_job_get_status_string (GeditPrintJob *job)
+gedit_print_job_get_status_string (BeditPrintJob *job)
 {
 	g_return_val_if_fail (GEDIT_IS_PRINT_JOB (job), NULL);
 	g_return_val_if_fail (job->status_string != NULL, NULL);
@@ -796,7 +796,7 @@ gedit_print_job_get_status_string (GeditPrintJob *job)
 }
 
 gdouble
-gedit_print_job_get_progress (GeditPrintJob *job)
+gedit_print_job_get_progress (BeditPrintJob *job)
 {
 	g_return_val_if_fail (GEDIT_IS_PRINT_JOB (job), 0.0);
 
@@ -804,7 +804,7 @@ gedit_print_job_get_progress (GeditPrintJob *job)
 }
 
 GtkPrintSettings *
-gedit_print_job_get_print_settings (GeditPrintJob *job)
+gedit_print_job_get_print_settings (BeditPrintJob *job)
 {
 	g_return_val_if_fail (GEDIT_IS_PRINT_JOB (job), NULL);
 
@@ -812,7 +812,7 @@ gedit_print_job_get_print_settings (GeditPrintJob *job)
 }
 
 GtkPageSetup *
-gedit_print_job_get_page_setup (GeditPrintJob *job)
+gedit_print_job_get_page_setup (BeditPrintJob *job)
 {
 	g_return_val_if_fail (GEDIT_IS_PRINT_JOB (job), NULL);
 

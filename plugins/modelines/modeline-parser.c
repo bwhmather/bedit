@@ -33,7 +33,7 @@
 /* base dir to lookup configuration files */
 static gchar *modelines_data_dir;
 
-/* Mappings: language name -> Gedit language ID */
+/* Mappings: language name -> Bedit language ID */
 static GHashTable *vim_languages = NULL;
 static GHashTable *emacs_languages = NULL;
 static GHashTable *kate_languages = NULL;

@@ -27,7 +27,7 @@
 G_BEGIN_DECLS
 
 #define GEDIT_TYPE_SPELL_APP_ACTIVATABLE (gedit_spell_app_activatable_get_type ())
-G_DECLARE_FINAL_TYPE (GeditSpellAppActivatable, gedit_spell_app_activatable,
+G_DECLARE_FINAL_TYPE (BeditSpellAppActivatable, gedit_spell_app_activatable,
 		      GEDIT, SPELL_APP_ACTIVATABLE,
 		      GObject)
 

@@ -27,9 +27,9 @@
 #include <gobject/gvaluecollector.h>
 
 /**
- * GeditMessageCallback:
- * @bus: the #GeditMessageBus on which the message was sent
- * @message: the #GeditMessage which was sent
+ * BeditMessageCallback:
+ * @bus: the #BeditMessageBus on which the message was sent
+ * @message: the #BeditMessage which was sent
  * @user_data: the supplied user data when connecting the callback
  *
  * Callback signature used for connecting callback functions to be called
@@ -49,7 +49,7 @@
  *
  * There are two different communication busses available. The default bus
  * (see gedit_message_bus_get_default()) is an application wide communication
- * bus. In addition, each #GeditWindow has a separate, private bus
+ * bus. In addition, each #BeditWindow has a separate, private bus
  * (see gedit_window_get_message_bus()). This makes it easier for plugins to
  * communicate to other plugins in the same window.
  *
@@ -64,7 +64,7 @@
  * <example>
  * <title>Registering a message type</title>
  * <programlisting>
- * GeditMessageBus *bus = gedit_message_bus_get_default ();
+ * BeditMessageBus *bus = gedit_message_bus_get_default ();
  *
  * // Register 'method' at '/plugins/example' with one required
  * // string argument 'arg1'
@@ -76,8 +76,8 @@
  * <title>Connecting a callback</title>
  * <programlisting>
  * static void
- * example_method_cb (GeditMessageBus *bus,
- *                    GeditMessage    *message,
+ * example_method_cb (BeditMessageBus *bus,
+ *                    BeditMessage    *message,
  *                    gpointer         user_data)
  * {
  * 	gchar *arg1 = NULL;
@@ -87,7 +87,7 @@
  * 	g_free (arg1);
  * }
  *
- * GeditMessageBus *bus = gedit_message_bus_get_default ();
+ * BeditMessageBus *bus = gedit_message_bus_get_default ();
  *
  * guint id = gedit_message_bus_connect (bus,
  *                                       "/plugins/example", "method",
@@ -100,7 +100,7 @@
  * <example>
  * <title>Sending a message</title>
  * <programlisting>
- * GeditMessageBus *bus = gedit_message_bus_get_default ();
+ * BeditMessageBus *bus = gedit_message_bus_get_default ();
  *
  * gedit_message_bus_send (bus,
  *                         "/plugins/example", "method",
@@ -131,7 +131,7 @@ typedef struct
 	gboolean blocked;
 
 	GDestroyNotify destroy_data;
-	GeditMessageCallback callback;
+	BeditMessageCallback callback;
 	gpointer user_data;
 } Listener;
 
@@ -141,7 +141,7 @@ typedef struct
 	GList *listener;
 } IdMap;
 
-struct _GeditMessageBusPrivate
+struct _BeditMessageBusPrivate
 {
 	GHashTable *messages;
 	GHashTable *idmap;
@@ -151,7 +151,7 @@ struct _GeditMessageBusPrivate
 
 	guint next_id;
 
-	GHashTable *types; /* mapping from identifier to GeditMessageType */
+	GHashTable *types; /* mapping from identifier to BeditMessageType */
 };
 
 /* signals */
@@ -165,10 +165,10 @@ enum
 
 static guint message_bus_signals[LAST_SIGNAL];
 
-static void gedit_message_bus_dispatch_real (GeditMessageBus *bus,
-                                             GeditMessage    *message);
+static void gedit_message_bus_dispatch_real (BeditMessageBus *bus,
+                                             BeditMessage    *message);
 
-G_DEFINE_TYPE_WITH_PRIVATE (GeditMessageBus, gedit_message_bus, G_TYPE_OBJECT)
+G_DEFINE_TYPE_WITH_PRIVATE (BeditMessageBus, gedit_message_bus, G_TYPE_OBJECT)
 
 static MessageIdentifier *
 message_identifier_new (const gchar *object_path,
@@ -239,7 +239,7 @@ message_queue_free (GList *queue)
 static void
 gedit_message_bus_finalize (GObject *object)
 {
-	GeditMessageBus *bus = GEDIT_MESSAGE_BUS (object);
+	BeditMessageBus *bus = GEDIT_MESSAGE_BUS (object);
 
 	if (bus->priv->idle_id != 0)
 	{
@@ -256,7 +256,7 @@ gedit_message_bus_finalize (GObject *object)
 }
 
 static void
-gedit_message_bus_class_init (GeditMessageBusClass *klass)
+gedit_message_bus_class_init (BeditMessageBusClass *klass)
 {
 	GObjectClass *object_class = G_OBJECT_CLASS (klass);
 
@@ -265,9 +265,9 @@ gedit_message_bus_class_init (GeditMessageBusClass *klass)
 	klass->dispatch = gedit_message_bus_dispatch_real;
 
 	/**
-	 * GeditMessageBus::dispatch:
-	 * @bus: a #GeditMessageBus
-	 * @message: the #GeditMessage to dispatch
+	 * BeditMessageBus::dispatch:
+	 * @bus: a #BeditMessageBus
+	 * @message: the #BeditMessage to dispatch
 	 *
 	 * The "dispatch" signal is emitted when a message is to be dispatched.
 	 * The message is dispatched in the default handler of this signal.
@@ -279,15 +279,15 @@ gedit_message_bus_class_init (GeditMessageBusClass *klass)
 		g_signal_new ("dispatch",
 		              G_OBJECT_CLASS_TYPE (object_class),
 		              G_SIGNAL_RUN_LAST,
-		              G_STRUCT_OFFSET (GeditMessageBusClass, dispatch),
+		              G_STRUCT_OFFSET (BeditMessageBusClass, dispatch),
 		              NULL, NULL, NULL,
 		              G_TYPE_NONE,
 		              1,
 		              GEDIT_TYPE_MESSAGE);
 
 	/**
-	 * GeditMessageBus::registered:
-	 * @bus: a #GeditMessageBus
+	 * BeditMessageBus::registered:
+	 * @bus: a #BeditMessageBus
 	 * @object_path: the registered object path.
 	 * @method: the registered method
 	 *
@@ -299,7 +299,7 @@ gedit_message_bus_class_init (GeditMessageBusClass *klass)
 		g_signal_new ("registered",
 		              G_OBJECT_CLASS_TYPE (object_class),
 		              G_SIGNAL_RUN_LAST,
-		              G_STRUCT_OFFSET (GeditMessageBusClass, registered),
+		              G_STRUCT_OFFSET (BeditMessageBusClass, registered),
 		              NULL, NULL, NULL,
 		              G_TYPE_NONE,
 		              2,
@@ -307,8 +307,8 @@ gedit_message_bus_class_init (GeditMessageBusClass *klass)
 		              G_TYPE_STRING);
 
 	/**
-	 * GeditMessageBus::unregistered:
-	 * @bus: a #GeditMessageBus
+	 * BeditMessageBus::unregistered:
+	 * @bus: a #BeditMessageBus
 	 * @object_path: the unregistered object path.
 	 * @method: the unregistered method
 	 *
@@ -320,7 +320,7 @@ gedit_message_bus_class_init (GeditMessageBusClass *klass)
 		g_signal_new ("unregistered",
 		              G_OBJECT_CLASS_TYPE (object_class),
 		              G_SIGNAL_RUN_LAST,
-		              G_STRUCT_OFFSET (GeditMessageBusClass, unregistered),
+		              G_STRUCT_OFFSET (BeditMessageBusClass, unregistered),
 		              NULL, NULL, NULL,
 		              G_TYPE_NONE,
 		              2,
@@ -329,7 +329,7 @@ gedit_message_bus_class_init (GeditMessageBusClass *klass)
 }
 
 static Message *
-message_new (GeditMessageBus *bus,
+message_new (BeditMessageBus *bus,
              const gchar     *object_path,
              const gchar     *method)
 {
@@ -346,7 +346,7 @@ message_new (GeditMessageBus *bus,
 }
 
 static Message *
-lookup_message (GeditMessageBus *bus,
+lookup_message (BeditMessageBus *bus,
                 const gchar      *object_path,
                 const gchar      *method,
                 gboolean          create)
@@ -372,9 +372,9 @@ lookup_message (GeditMessageBus *bus,
 }
 
 static guint
-add_listener (GeditMessageBus      *bus,
+add_listener (BeditMessageBus      *bus,
               Message		   *message,
-              GeditMessageCallback  callback,
+              BeditMessageCallback  callback,
               gpointer		    user_data,
               GDestroyNotify        destroy_data)
 {
@@ -400,7 +400,7 @@ add_listener (GeditMessageBus      *bus,
 }
 
 static void
-remove_listener (GeditMessageBus *bus,
+remove_listener (BeditMessageBus *bus,
                  Message         *message,
                  GList		 *listener)
 {
@@ -423,7 +423,7 @@ remove_listener (GeditMessageBus *bus,
 }
 
 static void
-block_listener (GeditMessageBus *bus,
+block_listener (BeditMessageBus *bus,
                 Message         *message,
                 GList           *listener)
 {
@@ -434,7 +434,7 @@ block_listener (GeditMessageBus *bus,
 }
 
 static void
-unblock_listener (GeditMessageBus *bus,
+unblock_listener (BeditMessageBus *bus,
                   Message         *message,
                   GList           *listener)
 {
@@ -445,9 +445,9 @@ unblock_listener (GeditMessageBus *bus,
 }
 
 static void
-dispatch_message_real (GeditMessageBus *bus,
+dispatch_message_real (BeditMessageBus *bus,
                        Message         *msg,
-                       GeditMessage    *message)
+                       BeditMessage    *message)
 {
 	GList *item;
 
@@ -463,8 +463,8 @@ dispatch_message_real (GeditMessageBus *bus,
 }
 
 static void
-gedit_message_bus_dispatch_real (GeditMessageBus *bus,
-                                 GeditMessage    *message)
+gedit_message_bus_dispatch_real (BeditMessageBus *bus,
+                                 BeditMessage    *message)
 {
 	const gchar *object_path;
 	const gchar *method;
@@ -485,14 +485,14 @@ gedit_message_bus_dispatch_real (GeditMessageBus *bus,
 }
 
 static void
-dispatch_message (GeditMessageBus *bus,
-                  GeditMessage    *message)
+dispatch_message (BeditMessageBus *bus,
+                  BeditMessage    *message)
 {
 	g_signal_emit (bus, message_bus_signals[DISPATCH], 0, message);
 }
 
 static gboolean
-idle_dispatch (GeditMessageBus *bus)
+idle_dispatch (BeditMessageBus *bus)
 {
 	GList *list;
 	GList *item;
@@ -507,7 +507,7 @@ idle_dispatch (GeditMessageBus *bus)
 
 	for (item = list; item; item = item->next)
 	{
-		GeditMessage *msg = GEDIT_MESSAGE (item->data);
+		BeditMessage *msg = GEDIT_MESSAGE (item->data);
 
 		dispatch_message (bus, msg);
 	}
@@ -516,10 +516,10 @@ idle_dispatch (GeditMessageBus *bus)
 	return FALSE;
 }
 
-typedef void (*MatchCallback) (GeditMessageBus *, Message *, GList *);
+typedef void (*MatchCallback) (BeditMessageBus *, Message *, GList *);
 
 static void
-process_by_id (GeditMessageBus *bus,
+process_by_id (BeditMessageBus *bus,
                guint            id,
                MatchCallback    processor)
 {
@@ -537,10 +537,10 @@ process_by_id (GeditMessageBus *bus,
 }
 
 static void
-process_by_match (GeditMessageBus      *bus,
+process_by_match (BeditMessageBus      *bus,
                   const gchar          *object_path,
                   const gchar          *method,
-                  GeditMessageCallback  callback,
+                  BeditMessageCallback  callback,
                   gpointer              user_data,
                   MatchCallback         processor)
 {
@@ -577,7 +577,7 @@ free_type (gpointer data)
 }
 
 static void
-gedit_message_bus_init (GeditMessageBus *self)
+gedit_message_bus_init (BeditMessageBus *self)
 {
 	self->priv = gedit_message_bus_get_instance_private (self);
 
@@ -600,15 +600,15 @@ gedit_message_bus_init (GeditMessageBus *self)
 /**
  * gedit_message_bus_get_default:
  *
- * Get the default application #GeditMessageBus.
+ * Get the default application #BeditMessageBus.
  *
- * Return value: (transfer none): the default #GeditMessageBus
+ * Return value: (transfer none): the default #BeditMessageBus
  *
  */
-GeditMessageBus *
+BeditMessageBus *
 gedit_message_bus_get_default (void)
 {
-	static GeditMessageBus *default_bus = NULL;
+	static BeditMessageBus *default_bus = NULL;
 
 	if (G_UNLIKELY (default_bus == NULL))
 	{
@@ -626,12 +626,12 @@ gedit_message_bus_get_default (void)
  *
  * Create a new message bus. Use gedit_message_bus_get_default() to get the
  * default, application wide, message bus. Creating a new bus is useful for
- * associating a specific bus with for instance a #GeditWindow.
+ * associating a specific bus with for instance a #BeditWindow.
  *
- * Return value: a new #GeditMessageBus
+ * Return value: a new #BeditMessageBus
  *
  */
-GeditMessageBus *
+BeditMessageBus *
 gedit_message_bus_new (void)
 {
 	return GEDIT_MESSAGE_BUS (g_object_new (GEDIT_TYPE_MESSAGE_BUS, NULL));
@@ -639,19 +639,19 @@ gedit_message_bus_new (void)
 
 /**
  * gedit_message_bus_lookup:
- * @bus: a #GeditMessageBus
+ * @bus: a #BeditMessageBus
  * @object_path: the object path
  * @method: the method
  *
- * Get the registered #GeditMessageType for @method at @object_path. The
- * returned #GeditMessageType is owned by the bus and should not be unreffed.
+ * Get the registered #BeditMessageType for @method at @object_path. The
+ * returned #BeditMessageType is owned by the bus and should not be unreffed.
  *
- * Return value: the registered #GeditMessageType or %NULL if no message type
+ * Return value: the registered #BeditMessageType or %NULL if no message type
  *               is registered for @method at @object_path
  *
  */
 GType
-gedit_message_bus_lookup (GeditMessageBus *bus,
+gedit_message_bus_lookup (BeditMessageBus *bus,
                           const gchar	  *object_path,
                           const gchar	  *method)
 {
@@ -678,7 +678,7 @@ gedit_message_bus_lookup (GeditMessageBus *bus,
 
 /**
  * gedit_message_bus_register:
- * @bus: a #GeditMessageBus
+ * @bus: a #BeditMessageBus
  * @message_type: the message type
  * @object_path: the object path
  * @method: the method to register
@@ -687,11 +687,11 @@ gedit_message_bus_lookup (GeditMessageBus *bus,
  * it can be send. This function registers the type for @method at
  * @object_path.
  *
- * This function emits a #GeditMessageBus::registered signal.
+ * This function emits a #BeditMessageBus::registered signal.
  *
  */
 void
-gedit_message_bus_register (GeditMessageBus *bus,
+gedit_message_bus_register (BeditMessageBus *bus,
                             GType            message_type,
                             const gchar     *object_path,
                             const gchar	    *method)
@@ -727,7 +727,7 @@ gedit_message_bus_register (GeditMessageBus *bus,
 }
 
 static void
-gedit_message_bus_unregister_real (GeditMessageBus  *bus,
+gedit_message_bus_unregister_real (BeditMessageBus  *bus,
                                    const gchar      *object_path,
                                    const gchar      *method,
                                    gboolean          remove_from_store)
@@ -751,18 +751,18 @@ gedit_message_bus_unregister_real (GeditMessageBus  *bus,
 
 /**
  * gedit_message_bus_unregister:
- * @bus: a #GeditMessageBus
+ * @bus: a #BeditMessageBus
  * @object_path: the object path
  * @method: the method
  *
  * Unregisters a previously registered message type. This is especially useful
  * for plugins which should unregister message types when they are deactivated.
  *
- * This function emits the #GeditMessageBus::unregistered signal.
+ * This function emits the #BeditMessageBus::unregistered signal.
  *
  */
 void
-gedit_message_bus_unregister (GeditMessageBus  *bus,
+gedit_message_bus_unregister (BeditMessageBus  *bus,
                               const gchar      *object_path,
                               const gchar      *method)
 {
@@ -778,7 +778,7 @@ gedit_message_bus_unregister (GeditMessageBus  *bus,
 
 typedef struct
 {
-	GeditMessageBus *bus;
+	BeditMessageBus *bus;
 	const gchar *object_path;
 } UnregisterInfo;
 
@@ -802,18 +802,18 @@ unregister_each (MessageIdentifier *identifier,
 
 /**
  * gedit_message_bus_unregister_all:
- * @bus: a #GeditMessageBus
+ * @bus: a #BeditMessageBus
  * @object_path: the object path
  *
  * Unregisters all message types for @object_path. This is especially useful for
  * plugins which should unregister message types when they are deactivated.
  *
- * This function emits the #GeditMessageBus::unregistered signal for all
+ * This function emits the #BeditMessageBus::unregistered signal for all
  * unregistered message types.
  *
  */
 void
-gedit_message_bus_unregister_all (GeditMessageBus *bus,
+gedit_message_bus_unregister_all (BeditMessageBus *bus,
                                   const gchar     *object_path)
 {
 	UnregisterInfo info = {bus, object_path};
@@ -828,7 +828,7 @@ gedit_message_bus_unregister_all (GeditMessageBus *bus,
 
 /**
  * gedit_message_bus_is_registered:
- * @bus: a #GeditMessageBus
+ * @bus: a #BeditMessageBus
  * @object_path: the object path
  * @method: the method
  *
@@ -840,7 +840,7 @@ gedit_message_bus_unregister_all (GeditMessageBus *bus,
  *
  */
 gboolean
-gedit_message_bus_is_registered (GeditMessageBus  *bus,
+gedit_message_bus_is_registered (BeditMessageBus  *bus,
                                  const gchar	  *object_path,
                                  const gchar      *method)
 {
@@ -860,7 +860,7 @@ gedit_message_bus_is_registered (GeditMessageBus  *bus,
 
 typedef struct
 {
-	GeditMessageBusForeach func;
+	BeditMessageBusForeach func;
 	gpointer user_data;
 } ForeachInfo;
 
@@ -876,7 +876,7 @@ foreach_type (MessageIdentifier *identifier,
 
 /**
  * gedit_message_bus_foreach:
- * @bus: the #GeditMessageBus
+ * @bus: the #BeditMessageBus
  * @func: (scope call): the callback function
  * @user_data: the user data to supply to the callback function
  *
@@ -884,8 +884,8 @@ foreach_type (MessageIdentifier *identifier,
  *
  */
 void
-gedit_message_bus_foreach (GeditMessageBus        *bus,
-                           GeditMessageBusForeach  func,
+gedit_message_bus_foreach (BeditMessageBus        *bus,
+                           BeditMessageBusForeach  func,
                            gpointer		   user_data)
 {
 	ForeachInfo info = {func, user_data};
@@ -898,7 +898,7 @@ gedit_message_bus_foreach (GeditMessageBus        *bus,
 
 /**
  * gedit_message_bus_connect:
- * @bus: a #GeditMessageBus
+ * @bus: a #BeditMessageBus
  * @object_path: the object path
  * @method: the method
  * @callback: function to be called when message @method at @object_path is sent
@@ -913,10 +913,10 @@ gedit_message_bus_foreach (GeditMessageBus        *bus,
  *
  */
 guint
-gedit_message_bus_connect (GeditMessageBus	*bus,
+gedit_message_bus_connect (BeditMessageBus	*bus,
                            const gchar		*object_path,
                            const gchar		*method,
-                           GeditMessageCallback  callback,
+                           BeditMessageCallback  callback,
                            gpointer		 user_data,
                            GDestroyNotify	 destroy_data)
 {
@@ -935,14 +935,14 @@ gedit_message_bus_connect (GeditMessageBus	*bus,
 
 /**
  * gedit_message_bus_disconnect:
- * @bus: a #GeditMessageBus
+ * @bus: a #BeditMessageBus
  * @id: the callback id as returned by gedit_message_bus_connect()
  *
  * Disconnects a previously connected message callback.
  *
  */
 void
-gedit_message_bus_disconnect (GeditMessageBus *bus,
+gedit_message_bus_disconnect (BeditMessageBus *bus,
                               guint            id)
 {
 	g_return_if_fail (GEDIT_IS_MESSAGE_BUS (bus));
@@ -952,7 +952,7 @@ gedit_message_bus_disconnect (GeditMessageBus *bus,
 
 /**
  * gedit_message_bus_disconnect_by_func:
- * @bus: a #GeditMessageBus
+ * @bus: a #BeditMessageBus
  * @object_path: the object path
  * @method: the method
  * @callback: (scope call): the connected callback
@@ -964,10 +964,10 @@ gedit_message_bus_disconnect (GeditMessageBus *bus,
  *
  */
 void
-gedit_message_bus_disconnect_by_func (GeditMessageBus      *bus,
+gedit_message_bus_disconnect_by_func (BeditMessageBus      *bus,
                                       const gchar	   *object_path,
                                       const gchar	   *method,
-                                      GeditMessageCallback  callback,
+                                      BeditMessageCallback  callback,
                                       gpointer		    user_data)
 {
 	g_return_if_fail (GEDIT_IS_MESSAGE_BUS (bus));
@@ -982,7 +982,7 @@ gedit_message_bus_disconnect_by_func (GeditMessageBus      *bus,
 
 /**
  * gedit_message_bus_block:
- * @bus: a #GeditMessageBus
+ * @bus: a #BeditMessageBus
  * @id: the callback id
  *
  * Blocks evoking the callback specified by @id. Unblock the callback by
@@ -990,7 +990,7 @@ gedit_message_bus_disconnect_by_func (GeditMessageBus      *bus,
  *
  */
 void
-gedit_message_bus_block (GeditMessageBus *bus,
+gedit_message_bus_block (BeditMessageBus *bus,
                          guint		  id)
 {
 	g_return_if_fail (GEDIT_IS_MESSAGE_BUS (bus));
@@ -1000,7 +1000,7 @@ gedit_message_bus_block (GeditMessageBus *bus,
 
 /**
  * gedit_message_bus_block_by_func:
- * @bus: a #GeditMessageBus
+ * @bus: a #BeditMessageBus
  * @object_path: the object path
  * @method: the method
  * @callback: (scope call): the callback to block
@@ -1011,10 +1011,10 @@ gedit_message_bus_block (GeditMessageBus *bus,
  *
  */
 void
-gedit_message_bus_block_by_func (GeditMessageBus      *bus,
+gedit_message_bus_block_by_func (BeditMessageBus      *bus,
                                  const gchar	      *object_path,
                                  const gchar	      *method,
-                                 GeditMessageCallback  callback,
+                                 BeditMessageCallback  callback,
                                  gpointer	       user_data)
 {
 	g_return_if_fail (GEDIT_IS_MESSAGE_BUS (bus));
@@ -1029,14 +1029,14 @@ gedit_message_bus_block_by_func (GeditMessageBus      *bus,
 
 /**
  * gedit_message_bus_unblock:
- * @bus: a #GeditMessageBus
+ * @bus: a #BeditMessageBus
  * @id: the callback id
  *
  * Unblocks the callback specified by @id.
  *
  */
 void
-gedit_message_bus_unblock (GeditMessageBus *bus,
+gedit_message_bus_unblock (BeditMessageBus *bus,
                            guint	    id)
 {
 	g_return_if_fail (GEDIT_IS_MESSAGE_BUS (bus));
@@ -1046,7 +1046,7 @@ gedit_message_bus_unblock (GeditMessageBus *bus,
 
 /**
  * gedit_message_bus_unblock_by_func:
- * @bus: a #GeditMessageBus
+ * @bus: a #BeditMessageBus
  * @object_path: the object path
  * @method: the method
  * @callback: (scope call): the callback to block
@@ -1056,10 +1056,10 @@ gedit_message_bus_unblock (GeditMessageBus *bus,
  *
  */
 void
-gedit_message_bus_unblock_by_func (GeditMessageBus      *bus,
+gedit_message_bus_unblock_by_func (BeditMessageBus      *bus,
                                    const gchar	        *object_path,
                                    const gchar	        *method,
-                                   GeditMessageCallback  callback,
+                                   BeditMessageCallback  callback,
                                    gpointer	         user_data)
 {
 	g_return_if_fail (GEDIT_IS_MESSAGE_BUS (bus));
@@ -1073,8 +1073,8 @@ gedit_message_bus_unblock_by_func (GeditMessageBus      *bus,
 }
 
 static void
-send_message_real (GeditMessageBus *bus,
-                   GeditMessage    *message)
+send_message_real (BeditMessageBus *bus,
+                   BeditMessage    *message)
 {
 	bus->priv->message_queue = g_list_prepend (bus->priv->message_queue,
 	                                           g_object_ref (message));
@@ -1090,7 +1090,7 @@ send_message_real (GeditMessageBus *bus,
 
 /**
  * gedit_message_bus_send_message:
- * @bus: a #GeditMessageBus
+ * @bus: a #BeditMessageBus
  * @message: the message to send
  *
  * This sends the provided @message asynchronously over the bus. To send
@@ -1100,8 +1100,8 @@ send_message_real (GeditMessageBus *bus,
  *
  */
 void
-gedit_message_bus_send_message (GeditMessageBus *bus,
-                                GeditMessage    *message)
+gedit_message_bus_send_message (BeditMessageBus *bus,
+                                BeditMessage    *message)
 {
 	g_return_if_fail (GEDIT_IS_MESSAGE_BUS (bus));
 	g_return_if_fail (GEDIT_IS_MESSAGE (message));
@@ -1111,7 +1111,7 @@ gedit_message_bus_send_message (GeditMessageBus *bus,
 
 /**
  * gedit_message_bus_send_message_sync:
- * @bus: a #GeditMessageBus
+ * @bus: a #BeditMessageBus
  * @message: the message to send
  *
  * This sends the provided @message synchronously over the bus. To send
@@ -1121,8 +1121,8 @@ gedit_message_bus_send_message (GeditMessageBus *bus,
  *
  */
 void
-gedit_message_bus_send_message_sync (GeditMessageBus *bus,
-                                     GeditMessage    *message)
+gedit_message_bus_send_message_sync (BeditMessageBus *bus,
+                                     BeditMessage    *message)
 {
 	g_return_if_fail (GEDIT_IS_MESSAGE_BUS (bus));
 	g_return_if_fail (GEDIT_IS_MESSAGE (message));
@@ -1130,15 +1130,15 @@ gedit_message_bus_send_message_sync (GeditMessageBus *bus,
 	dispatch_message (bus, message);
 }
 
-static GeditMessage *
-create_message (GeditMessageBus *bus,
+static BeditMessage *
+create_message (BeditMessageBus *bus,
                 const gchar     *object_path,
                 const gchar     *method,
                 const gchar     *first_property,
                 va_list          var_args)
 {
 	GType message_type;
-	GeditMessage *msg;
+	BeditMessage *msg;
 
 	message_type = gedit_message_bus_lookup (bus, object_path, method);
 
@@ -1170,7 +1170,7 @@ create_message (GeditMessageBus *bus,
 
 /**
  * gedit_message_bus_send:
- * @bus: a #GeditMessageBus
+ * @bus: a #BeditMessageBus
  * @object_path: the object path
  * @method: the method
  * @first_property: the first property
@@ -1182,14 +1182,14 @@ create_message (GeditMessageBus *bus,
  * To send a message synchronously use gedit_message_bus_send_sync().
  */
 void
-gedit_message_bus_send (GeditMessageBus *bus,
+gedit_message_bus_send (BeditMessageBus *bus,
                         const gchar     *object_path,
                         const gchar     *method,
                         const gchar     *first_property,
                         ...)
 {
 	va_list var_args;
-	GeditMessage *message;
+	BeditMessage *message;
 
 	va_start (var_args, first_property);
 
@@ -1214,7 +1214,7 @@ gedit_message_bus_send (GeditMessageBus *bus,
 
 /**
  * gedit_message_bus_send_sync:
- * @bus: a #GeditMessageBus
+ * @bus: a #BeditMessageBus
  * @object_path: the object path
  * @method: the method
  * @first_property: the first property
@@ -1225,19 +1225,19 @@ gedit_message_bus_send (GeditMessageBus *bus,
  * specifies key (string) value pairs used to construct the message
  * arguments. To send a message asynchronously use gedit_message_bus_send().
  *
- * Return value: (allow-none) (transfer full): the constructed #GeditMessage.
- *               The caller owns a reference to the #GeditMessage and should
+ * Return value: (allow-none) (transfer full): the constructed #BeditMessage.
+ *               The caller owns a reference to the #BeditMessage and should
  *               call g_object_unref() when it is no longer needed.
  */
-GeditMessage *
-gedit_message_bus_send_sync (GeditMessageBus *bus,
+BeditMessage *
+gedit_message_bus_send_sync (BeditMessageBus *bus,
                              const gchar     *object_path,
                              const gchar     *method,
                              const gchar     *first_property,
                              ...)
 {
 	va_list var_args;
-	GeditMessage *message;
+	BeditMessage *message;
 
 	va_start (var_args, first_property);
 	message = create_message (bus,

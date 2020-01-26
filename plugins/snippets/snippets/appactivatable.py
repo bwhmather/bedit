@@ -1,4 +1,4 @@
-#    Gedit snippets plugin
+#    Bedit snippets plugin
 #    Copyright (C) 2005-2006  Jesse van den Kieboom <jesse@icecrew.nl>
 #
 #    This program is free software; you can redistribute it and/or modify
@@ -17,7 +17,7 @@
 
 import os
 import platform
-from gi.repository import Gedit, Gtk, Gdk, GObject, Gio, GLib
+from gi.repository import Bedit, Gtk, Gdk, GObject, Gio, GLib
 from .library import Library
 from .shareddata import SharedData
 
@@ -29,10 +29,10 @@ try:
 except:
     _ = lambda s: s
 
-class AppActivatable(GObject.Object, Gedit.AppActivatable):
-    __gtype_name__ = "GeditSnippetsAppActivatable"
+class AppActivatable(GObject.Object, Bedit.AppActivatable):
+    __gtype_name__ = "BeditSnippetsAppActivatable"
 
-    app = GObject.Property(type=Gedit.App)
+    app = GObject.Property(type=Bedit.App)
 
     def __init__(self):
         GObject.Object.__init__(self)

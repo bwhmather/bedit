@@ -2,7 +2,7 @@
 <!-- Generated with glade 3.16.0 -->
 <interface>
   <requires lib="gtk+" version="3.0"/>
-  <object class="GeditDocument" id="commands_buffer"/>
+  <object class="BeditDocument" id="commands_buffer"/>
   <object class="GtkListStore" id="model_applicability">
     <columns>
       <!-- column-name gchararray -->
@@ -509,7 +509,7 @@
                           <class name="gedit-tool-manager-view"/>
                         </style>
                         <child>
-                          <object class="GeditView" id="commands">
+                          <object class="BeditView" id="commands">
                             <property name="buffer">commands_buffer</property>
                             <property name="visible">True</property>
                           </object>

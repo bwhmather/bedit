@@ -34,73 +34,73 @@
 #include "gedit-utils.h"
 #include "gedit-commands-private.h"
 
-typedef struct _GeditDocumentsGenericRow GeditDocumentsGenericRow;
-typedef struct _GeditDocumentsGenericRow GeditDocumentsGroupRow;
-typedef struct _GeditDocumentsGenericRow GeditDocumentsDocumentRow;
+typedef struct _BeditDocumentsGenericRow BeditDocumentsGenericRow;
+typedef struct _BeditDocumentsGenericRow BeditDocumentsGroupRow;
+typedef struct _BeditDocumentsGenericRow BeditDocumentsDocumentRow;
 
-struct _GeditDocumentsGenericRow
+struct _BeditDocumentsGenericRow
 {
 	GtkListBoxRow        parent_instance;
 
-	GeditDocumentsPanel *panel;
+	BeditDocumentsPanel *panel;
 	GtkWidget           *ref;
 
 	GtkWidget           *box;
 	GtkWidget           *label;
 	GtkWidget           *close_button;
 
-	/* Not used in GeditDocumentsGroupRow */
+	/* Not used in BeditDocumentsGroupRow */
 	GtkWidget           *image;
 	GtkWidget           *status_label;
 };
 
 #define GEDIT_TYPE_DOCUMENTS_GROUP_ROW            (gedit_documents_group_row_get_type ())
-#define GEDIT_DOCUMENTS_GROUP_ROW(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), GEDIT_TYPE_DOCUMENTS_GROUP_ROW, GeditDocumentsGroupRow))
-#define GEDIT_DOCUMENTS_GROUP_ROW_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass),  GEDIT_TYPE_DOCUMENTS_GROUP_ROW, GeditDocumentsGroupRowClass))
+#define GEDIT_DOCUMENTS_GROUP_ROW(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), GEDIT_TYPE_DOCUMENTS_GROUP_ROW, BeditDocumentsGroupRow))
+#define GEDIT_DOCUMENTS_GROUP_ROW_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass),  GEDIT_TYPE_DOCUMENTS_GROUP_ROW, BeditDocumentsGroupRowClass))
 #define GEDIT_IS_DOCUMENTS_GROUP_ROW(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GEDIT_TYPE_DOCUMENTS_GROUP_ROW))
 #define GEDIT_IS_DOCUMENTS_GROUP_ROW_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass),  GEDIT_TYPE_DOCUMENTS_GROUP_ROW))
-#define GEDIT_DOCUMENTS_GROUP_ROW_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj),  GEDIT_TYPE_DOCUMENTS_GROUP_ROW, GeditDocumentsGroupRowClass))
+#define GEDIT_DOCUMENTS_GROUP_ROW_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj),  GEDIT_TYPE_DOCUMENTS_GROUP_ROW, BeditDocumentsGroupRowClass))
 
-typedef struct _GeditDocumentsGroupRowClass GeditDocumentsGroupRowClass;
+typedef struct _BeditDocumentsGroupRowClass BeditDocumentsGroupRowClass;
 
-struct _GeditDocumentsGroupRowClass
+struct _BeditDocumentsGroupRowClass
 {
 	GtkListBoxRowClass parent_class;
 };
 
 GType gedit_documents_group_row_get_type (void) G_GNUC_CONST;
 
-G_DEFINE_TYPE (GeditDocumentsGroupRow, gedit_documents_group_row, GTK_TYPE_LIST_BOX_ROW)
+G_DEFINE_TYPE (BeditDocumentsGroupRow, gedit_documents_group_row, GTK_TYPE_LIST_BOX_ROW)
 
 #define GEDIT_TYPE_DOCUMENTS_DOCUMENT_ROW            (gedit_documents_document_row_get_type ())
-#define GEDIT_DOCUMENTS_DOCUMENT_ROW(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), GEDIT_TYPE_DOCUMENTS_DOCUMENT_ROW, GeditDocumentsDocumentRow))
-#define GEDIT_DOCUMENTS_DOCUMENT_ROW_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass),  GEDIT_TYPE_DOCUMENTS_DOCUMENT_ROW, GeditDocumentsDocumentRowClass))
+#define GEDIT_DOCUMENTS_DOCUMENT_ROW(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), GEDIT_TYPE_DOCUMENTS_DOCUMENT_ROW, BeditDocumentsDocumentRow))
+#define GEDIT_DOCUMENTS_DOCUMENT_ROW_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass),  GEDIT_TYPE_DOCUMENTS_DOCUMENT_ROW, BeditDocumentsDocumentRowClass))
 #define GEDIT_IS_DOCUMENTS_DOCUMENT_ROW(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GEDIT_TYPE_DOCUMENTS_DOCUMENT_ROW))
 #define GEDIT_IS_DOCUMENTS_DOCUMENT_ROW_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass),  GEDIT_TYPE_DOCUMENTS_DOCUMENT_ROW))
-#define GEDIT_DOCUMENTS_DOCUMENT_ROW_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj),  GEDIT_TYPE_DOCUMENTS_DOCUMENT_ROW, GeditDocumentsDocumentRowClass))
+#define GEDIT_DOCUMENTS_DOCUMENT_ROW_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj),  GEDIT_TYPE_DOCUMENTS_DOCUMENT_ROW, BeditDocumentsDocumentRowClass))
 
-typedef struct _GeditDocumentsDocumentRowClass GeditDocumentsDocumentRowClass;
+typedef struct _BeditDocumentsDocumentRowClass BeditDocumentsDocumentRowClass;
 
-struct _GeditDocumentsDocumentRowClass
+struct _BeditDocumentsDocumentRowClass
 {
 	GtkListBoxRowClass parent_class;
 };
 
 GType gedit_documents_document_row_get_type (void) G_GNUC_CONST;
 
-G_DEFINE_TYPE (GeditDocumentsDocumentRow, gedit_documents_document_row, GTK_TYPE_LIST_BOX_ROW)
+G_DEFINE_TYPE (BeditDocumentsDocumentRow, gedit_documents_document_row, GTK_TYPE_LIST_BOX_ROW)
 
-static GtkWidget *gedit_documents_document_row_new (GeditDocumentsPanel *panel,
-                                                    GeditTab            *tab);
-static GtkWidget *gedit_documents_group_row_new    (GeditDocumentsPanel *panel,
-                                                    GeditNotebook       *notebook);
+static GtkWidget *gedit_documents_document_row_new (BeditDocumentsPanel *panel,
+                                                    BeditTab            *tab);
+static GtkWidget *gedit_documents_group_row_new    (BeditDocumentsPanel *panel,
+                                                    BeditNotebook       *notebook);
 
-struct _GeditDocumentsPanel
+struct _BeditDocumentsPanel
 {
 	GtkBox              parent_instance;
 
-	GeditWindow        *window;
-	GeditMultiNotebook *mnb;
+	BeditWindow        *window;
+	BeditMultiNotebook *mnb;
 	GtkWidget          *listbox;
 
 	guint               selection_changed_handler_id;
@@ -140,7 +140,7 @@ enum
 
 static GParamSpec *properties[LAST_PROP];
 
-G_DEFINE_TYPE (GeditDocumentsPanel, gedit_documents_panel, GTK_TYPE_BOX)
+G_DEFINE_TYPE (BeditDocumentsPanel, gedit_documents_panel, GTK_TYPE_BOX)
 
 static const GtkTargetEntry panel_targets [] = {
 	{"GEDIT_DOCUMENTS_DOCUMENT_ROW", GTK_TARGET_SAME_APP, 0},
@@ -151,7 +151,7 @@ static const GtkTargetEntry panel_targets [] = {
 #define ROW_OUTSIDE_LISTBOX -1
 
 static guint
-get_nb_visible_rows (GeditDocumentsPanel *panel)
+get_nb_visible_rows (BeditDocumentsPanel *panel)
 {
 	guint nb = 0;
 
@@ -166,7 +166,7 @@ get_nb_visible_rows (GeditDocumentsPanel *panel)
 }
 
 static guint
-get_row_visible_index (GeditDocumentsPanel *panel,
+get_row_visible_index (BeditDocumentsPanel *panel,
                        GtkWidget           *searched_row)
 {
 	GList *children;
@@ -207,7 +207,7 @@ get_row_visible_index (GeditDocumentsPanel *panel,
 
 /* We do not grab focus on the row, so scroll it into view manually */
 static void
-make_row_visible (GeditDocumentsPanel *panel,
+make_row_visible (BeditDocumentsPanel *panel,
                   GtkWidget           *row)
 {
 	gdouble adjustment_value;
@@ -254,14 +254,14 @@ static gint
 listbox_search_function (gconstpointer row,
                          gconstpointer item)
 {
-	GeditDocumentsGenericRow *generic_row = (GeditDocumentsGenericRow *)row;
+	BeditDocumentsGenericRow *generic_row = (BeditDocumentsGenericRow *)row;
 	gpointer *searched_item = (gpointer *)generic_row->ref;
 
 	return searched_item == item ? 0 : -1;
 }
 
 static GtkListBoxRow *
-get_row_from_widget (GeditDocumentsPanel *panel,
+get_row_from_widget (BeditDocumentsPanel *panel,
                      GtkWidget           *widget)
 {
 	GList *children;
@@ -279,7 +279,7 @@ get_row_from_widget (GeditDocumentsPanel *panel,
 }
 
 static void
-row_select (GeditDocumentsPanel *panel,
+row_select (BeditDocumentsPanel *panel,
             GtkListBox          *listbox,
             GtkListBoxRow       *row)
 {
@@ -297,7 +297,7 @@ row_select (GeditDocumentsPanel *panel,
 }
 
 static void
-insert_row (GeditDocumentsPanel *panel,
+insert_row (BeditDocumentsPanel *panel,
             GtkListBox          *listbox,
             GtkWidget           *row,
             gint                 position)
@@ -308,11 +308,11 @@ insert_row (GeditDocumentsPanel *panel,
 }
 
 static void
-select_active_tab (GeditDocumentsPanel *panel)
+select_active_tab (BeditDocumentsPanel *panel)
 {
-	GeditNotebook *notebook;
+	BeditNotebook *notebook;
 	gboolean have_tabs;
-	GeditTab *tab;
+	BeditTab *tab;
 
 	notebook = gedit_multi_notebook_get_active_notebook (panel->mnb);
 	have_tabs = gtk_notebook_get_n_pages (GTK_NOTEBOOK (notebook)) > 0;
@@ -330,7 +330,7 @@ select_active_tab (GeditDocumentsPanel *panel)
 }
 
 static GtkListBoxRow *
-get_first_notebook_found (GeditDocumentsPanel *panel)
+get_first_notebook_found (BeditDocumentsPanel *panel)
 {
 	GList *children;
 	GList *l;
@@ -353,12 +353,12 @@ get_first_notebook_found (GeditDocumentsPanel *panel)
 }
 
 static void
-multi_notebook_tab_switched (GeditMultiNotebook  *mnb,
-                             GeditNotebook       *old_notebook,
-                             GeditTab            *old_tab,
-                             GeditNotebook       *new_notebook,
-                             GeditTab            *new_tab,
-                             GeditDocumentsPanel *panel)
+multi_notebook_tab_switched (BeditMultiNotebook  *mnb,
+                             BeditNotebook       *old_notebook,
+                             BeditTab            *old_tab,
+                             BeditNotebook       *new_notebook,
+                             BeditTab            *new_tab,
+                             BeditDocumentsPanel *panel)
 {
 	gedit_debug (DEBUG_PANEL);
 
@@ -383,11 +383,11 @@ multi_notebook_tab_switched (GeditMultiNotebook  *mnb,
 static void
 group_row_set_notebook_name (GtkWidget *row)
 {
-	GeditNotebook *notebook;
-	GeditMultiNotebook *mnb;
+	BeditNotebook *notebook;
+	BeditMultiNotebook *mnb;
 	guint num;
 	gchar *name;
-	GeditDocumentsGroupRow *group_row = GEDIT_DOCUMENTS_GROUP_ROW (row);
+	BeditDocumentsGroupRow *group_row = GEDIT_DOCUMENTS_GROUP_ROW (row);
 
 	notebook = GEDIT_NOTEBOOK (group_row->ref);
 
@@ -402,7 +402,7 @@ group_row_set_notebook_name (GtkWidget *row)
 }
 
 static void
-group_row_update_names (GeditDocumentsPanel *panel,
+group_row_update_names (BeditDocumentsPanel *panel,
                         GtkWidget           *listbox)
 {
 	GList *children;
@@ -425,7 +425,7 @@ group_row_update_names (GeditDocumentsPanel *panel,
 }
 
 static void
-group_row_refresh_visibility (GeditDocumentsPanel *panel)
+group_row_refresh_visibility (BeditDocumentsPanel *panel)
 {
 	gboolean notebook_is_unique;
 	GtkWidget *first_group_row;
@@ -438,7 +438,7 @@ group_row_refresh_visibility (GeditDocumentsPanel *panel)
 }
 
 static gchar *
-doc_get_name (GeditDocument *doc)
+doc_get_name (BeditDocument *doc)
 {
 	gchar *name;
 	gchar *docname;
@@ -454,12 +454,12 @@ doc_get_name (GeditDocument *doc)
 }
 
 static void
-document_row_sync_tab_name_and_icon (GeditTab   *tab,
+document_row_sync_tab_name_and_icon (BeditTab   *tab,
                                      GParamSpec *pspec,
                                      GtkWidget  *row)
 {
-	GeditDocumentsDocumentRow *document_row = GEDIT_DOCUMENTS_DOCUMENT_ROW (row);
-	GeditDocument *doc;
+	BeditDocumentsDocumentRow *document_row = GEDIT_DOCUMENTS_DOCUMENT_ROW (row);
+	BeditDocument *doc;
 	GtkSourceFile *file;
 	gchar *name;
 	GdkPixbuf *pixbuf;
@@ -516,8 +516,8 @@ document_row_sync_tab_name_and_icon (GeditTab   *tab,
 }
 
 static void
-refresh_notebook (GeditDocumentsPanel *panel,
-                  GeditNotebook       *notebook)
+refresh_notebook (BeditDocumentsPanel *panel,
+                  BeditNotebook       *notebook)
 {
 	GList *tabs;
 	GList *l;
@@ -537,8 +537,8 @@ refresh_notebook (GeditDocumentsPanel *panel,
 }
 
 static void
-refresh_notebook_foreach (GeditNotebook       *notebook,
-                          GeditDocumentsPanel *panel)
+refresh_notebook_foreach (BeditNotebook       *notebook,
+                          BeditDocumentsPanel *panel)
 {
 	GtkWidget *row;
 
@@ -551,7 +551,7 @@ refresh_notebook_foreach (GeditNotebook       *notebook,
 }
 
 static void
-refresh_list (GeditDocumentsPanel *panel)
+refresh_list (BeditDocumentsPanel *panel)
 {
 	GList *children;
 	GList *l;
@@ -561,11 +561,11 @@ refresh_list (GeditDocumentsPanel *panel)
 
 	for (l = children; l != NULL; l = g_list_next (l))
 	{
-		GeditDocumentsGenericRow *row = l->data;
+		BeditDocumentsGenericRow *row = l->data;
 
 		if (GEDIT_IS_DOCUMENTS_DOCUMENT_ROW (row))
 		{
-			GeditTab *tab = GEDIT_TAB (row->ref);
+			BeditTab *tab = GEDIT_TAB (row->ref);
 			g_signal_handlers_disconnect_matched (tab,
 			                                      G_SIGNAL_MATCH_FUNC,
 			                                      0,
@@ -587,10 +587,10 @@ refresh_list (GeditDocumentsPanel *panel)
 }
 
 static void
-multi_notebook_tab_removed (GeditMultiNotebook  *mnb,
-                            GeditNotebook       *notebook,
-                            GeditTab            *tab,
-                            GeditDocumentsPanel *panel)
+multi_notebook_tab_removed (BeditMultiNotebook  *mnb,
+                            BeditNotebook       *notebook,
+                            BeditTab            *tab,
+                            BeditDocumentsPanel *panel)
 {
 	GtkListBoxRow *row;
 
@@ -609,9 +609,9 @@ multi_notebook_tab_removed (GeditMultiNotebook  *mnb,
 }
 
 static gint
-get_dest_position_for_tab (GeditDocumentsPanel *panel,
-                           GeditNotebook       *notebook,
-                           GeditTab            *tab)
+get_dest_position_for_tab (BeditDocumentsPanel *panel,
+                           BeditNotebook       *notebook,
+                           BeditTab            *tab)
 {
 	gint page_num;
 	GList *children;
@@ -637,10 +637,10 @@ get_dest_position_for_tab (GeditDocumentsPanel *panel,
 }
 
 static void
-multi_notebook_tab_added (GeditMultiNotebook  *mnb,
-                          GeditNotebook       *notebook,
-                          GeditTab            *tab,
-                          GeditDocumentsPanel *panel)
+multi_notebook_tab_added (BeditMultiNotebook  *mnb,
+                          BeditNotebook       *notebook,
+                          BeditTab            *tab,
+                          BeditDocumentsPanel *panel)
 {
 	gint position;
 	GtkWidget *row;
@@ -672,9 +672,9 @@ multi_notebook_tab_added (GeditMultiNotebook  *mnb,
 }
 
 static void
-multi_notebook_notebook_removed (GeditMultiNotebook  *mnb,
-                                 GeditNotebook       *notebook,
-                                 GeditDocumentsPanel *panel)
+multi_notebook_notebook_removed (BeditMultiNotebook  *mnb,
+                                 BeditNotebook       *notebook,
+                                 BeditDocumentsPanel *panel)
 {
 	GtkListBoxRow *row;
 
@@ -690,8 +690,8 @@ multi_notebook_notebook_removed (GeditMultiNotebook  *mnb,
 }
 
 static void
-row_move (GeditDocumentsPanel *panel,
-          GeditNotebook       *notebook,
+row_move (BeditDocumentsPanel *panel,
+          BeditNotebook       *notebook,
           GtkWidget           *tab,
           GtkWidget           *row)
 {
@@ -711,11 +711,11 @@ row_move (GeditDocumentsPanel *panel,
 }
 
 static void
-multi_notebook_tabs_reordered (GeditMultiNotebook  *mnb,
-                               GeditNotebook       *notebook,
+multi_notebook_tabs_reordered (BeditMultiNotebook  *mnb,
+                               BeditNotebook       *notebook,
                                GtkWidget           *page,
                                gint                 page_num,
-                               GeditDocumentsPanel *panel)
+                               BeditDocumentsPanel *panel)
 {
 	GtkListBoxRow *row;
 
@@ -729,8 +729,8 @@ multi_notebook_tabs_reordered (GeditMultiNotebook  *mnb,
 }
 
 static void
-set_window (GeditDocumentsPanel *panel,
-            GeditWindow         *window)
+set_window (BeditDocumentsPanel *panel,
+            BeditWindow         *window)
 {
 	panel->window = g_object_ref (window);
 	panel->mnb = GEDIT_MULTI_NOTEBOOK (_gedit_window_get_multi_notebook (window));
@@ -766,7 +766,7 @@ set_window (GeditDocumentsPanel *panel,
 static void
 listbox_selection_changed (GtkListBox          *listbox,
                            GtkListBoxRow       *row,
-                           GeditDocumentsPanel *panel)
+                           BeditDocumentsPanel *panel)
 {
 	if (row == NULL)
 	{
@@ -813,7 +813,7 @@ gedit_documents_panel_set_property (GObject      *object,
                                     const GValue *value,
                                     GParamSpec   *pspec)
 {
-	GeditDocumentsPanel *panel = GEDIT_DOCUMENTS_PANEL (object);
+	BeditDocumentsPanel *panel = GEDIT_DOCUMENTS_PANEL (object);
 
 	switch (prop_id)
 	{
@@ -833,7 +833,7 @@ gedit_documents_panel_get_property (GObject    *object,
                                     GValue     *value,
                                     GParamSpec *pspec)
 {
-	GeditDocumentsPanel *panel = GEDIT_DOCUMENTS_PANEL (object);
+	BeditDocumentsPanel *panel = GEDIT_DOCUMENTS_PANEL (object);
 
 	switch (prop_id)
 	{
@@ -850,7 +850,7 @@ gedit_documents_panel_get_property (GObject    *object,
 static void
 gedit_documents_panel_finalize (GObject *object)
 {
-	GeditDocumentsPanel *panel = GEDIT_DOCUMENTS_PANEL (object);
+	BeditDocumentsPanel *panel = GEDIT_DOCUMENTS_PANEL (object);
 
 	g_signal_handlers_disconnect_by_func (panel->mnb,
 	                                      G_CALLBACK (multi_notebook_notebook_removed),
@@ -874,7 +874,7 @@ gedit_documents_panel_finalize (GObject *object)
 static void
 gedit_documents_panel_dispose (GObject *object)
 {
-	GeditDocumentsPanel *panel = GEDIT_DOCUMENTS_PANEL (object);
+	BeditDocumentsPanel *panel = GEDIT_DOCUMENTS_PANEL (object);
 
 	g_clear_object (&panel->window);
 
@@ -906,7 +906,7 @@ static void
 panel_on_drag_begin (GtkWidget      *widget,
                      GdkDragContext *context)
 {
-	GeditDocumentsPanel *panel = GEDIT_DOCUMENTS_PANEL (widget);
+	BeditDocumentsPanel *panel = GEDIT_DOCUMENTS_PANEL (widget);
 	GtkWidget *drag_document_row;
 	GtkAllocation allocation;
 	const gchar *name;
@@ -964,8 +964,8 @@ panel_on_drag_motion (GtkWidget      *widget,
                       gint            y,
                       guint           time)
 {
-	GeditDocumentsPanel *panel = GEDIT_DOCUMENTS_PANEL (widget);
-	GeditDocumentsGenericRow *generic_row;
+	BeditDocumentsPanel *panel = GEDIT_DOCUMENTS_PANEL (widget);
+	BeditDocumentsGenericRow *generic_row;
 	GtkWidget *source_panel;
 	gint dest_x, dest_y;
 	gint row_placeholder_index;
@@ -983,7 +983,7 @@ panel_on_drag_motion (GtkWidget      *widget,
 	                                  x, y,
 	                                  &dest_x, &dest_y);
 
-	generic_row = (GeditDocumentsGenericRow *)gtk_list_box_get_row_at_y (GTK_LIST_BOX (panel->listbox), dest_y);
+	generic_row = (BeditDocumentsGenericRow *)gtk_list_box_get_row_at_y (GTK_LIST_BOX (panel->listbox), dest_y);
 	source_panel = gtk_drag_get_source_widget (context);
 
 	if (!panel->row_placeholder)
@@ -1077,7 +1077,7 @@ panel_on_drag_leave (GtkWidget      *widget,
                      GdkDragContext *context,
                      guint           time)
 {
-	GeditDocumentsPanel *panel = GEDIT_DOCUMENTS_PANEL (widget);
+	BeditDocumentsPanel *panel = GEDIT_DOCUMENTS_PANEL (widget);
 
 	if (panel->row_placeholder_index != ROW_OUTSIDE_LISTBOX)
 	{
@@ -1093,7 +1093,7 @@ panel_on_drag_drop (GtkWidget        *widget,
                     gint              y,
                     guint             time)
 {
-	GeditDocumentsPanel *panel = GEDIT_DOCUMENTS_PANEL (widget);
+	BeditDocumentsPanel *panel = GEDIT_DOCUMENTS_PANEL (widget);
 
 	GdkAtom target = gtk_drag_dest_find_target (widget, context, NULL);
 	GtkWidget *source_widget = gtk_drag_get_source_widget (context);
@@ -1120,7 +1120,7 @@ panel_on_drag_data_get (GtkWidget        *widget,
                         guint             info,
                         guint             time)
 {
-	GeditDocumentsPanel *panel = GEDIT_DOCUMENTS_PANEL (widget);
+	BeditDocumentsPanel *panel = GEDIT_DOCUMENTS_PANEL (widget);
 	GdkAtom target = gtk_selection_data_get_target (data);
 	GdkAtom result;
 
@@ -1138,8 +1138,8 @@ panel_on_drag_data_get (GtkWidget        *widget,
 
 	if (result != GDK_NONE)
 	{
-		GeditTab *tab;
-		GeditDocument *doc;
+		BeditTab *tab;
+		BeditDocument *doc;
 		gchar *full_name;
 
 		tab = GEDIT_TAB (GEDIT_DOCUMENTS_DOCUMENT_ROW (panel->drag_document_row)->ref);
@@ -1163,14 +1163,14 @@ panel_on_drag_data_get (GtkWidget        *widget,
 	gtk_widget_show (panel->drag_document_row);
 }
 
-static GeditNotebook *
-get_notebook_and_position_from_document_row (GeditDocumentsPanel *panel,
+static BeditNotebook *
+get_notebook_and_position_from_document_row (BeditDocumentsPanel *panel,
                                              gint                 row_index,
                                              gint                *position)
 {
 	GList *l;
 	gint index = 0;
-	GeditDocumentsGroupRow *row;
+	BeditDocumentsGroupRow *row;
 
 	GList *children = gtk_container_get_children (GTK_CONTAINER (panel->listbox));
 	gint nb_elements = g_list_length (children);
@@ -1212,8 +1212,8 @@ panel_on_drag_data_received (GtkWidget        *widget,
                              guint             info,
                              guint             time)
 {
-	GeditDocumentsPanel *panel = GEDIT_DOCUMENTS_PANEL (widget);
-	GeditDocumentsPanel *source_panel = NULL;
+	BeditDocumentsPanel *panel = GEDIT_DOCUMENTS_PANEL (widget);
+	BeditDocumentsPanel *source_panel = NULL;
 
 	GtkWidget *source_widget = gtk_drag_get_source_widget (context);
 
@@ -1234,10 +1234,10 @@ panel_on_drag_data_received (GtkWidget        *widget,
 		    (panel->row_destination_index != source_index &&
 		     panel->row_destination_index != source_index + 1))
 		{
-			GeditNotebook *old_notebook, *new_notebook;
+			BeditNotebook *old_notebook, *new_notebook;
 			gint position;
 
-			GeditTab *tab = GEDIT_TAB (GEDIT_DOCUMENTS_DOCUMENT_ROW (*source_row)->ref);
+			BeditTab *tab = GEDIT_TAB (GEDIT_DOCUMENTS_DOCUMENT_ROW (*source_row)->ref);
 
 			old_notebook = gedit_multi_notebook_get_notebook_for_tab (source_panel->mnb, tab);
 			new_notebook = get_notebook_and_position_from_document_row (panel,
@@ -1284,7 +1284,7 @@ static void
 panel_on_drag_end (GtkWidget      *widget,
                    GdkDragContext *context)
 {
-	GeditDocumentsPanel *panel = GEDIT_DOCUMENTS_PANEL (widget);
+	BeditDocumentsPanel *panel = GEDIT_DOCUMENTS_PANEL (widget);
 
 	panel->drag_document_row = NULL;
 	panel->is_on_drag = FALSE;
@@ -1312,7 +1312,7 @@ static gboolean
 panel_on_motion_notify (GtkWidget      *widget,
                         GdkEventMotion *event)
 {
-	GeditDocumentsPanel *panel = GEDIT_DOCUMENTS_PANEL (widget);
+	BeditDocumentsPanel *panel = GEDIT_DOCUMENTS_PANEL (widget);
 
 	if (panel->drag_document_row == NULL || panel->is_on_drag)
 	{
@@ -1341,7 +1341,7 @@ panel_on_motion_notify (GtkWidget      *widget,
 }
 
 static void
-gedit_documents_panel_class_init (GeditDocumentsPanelClass *klass)
+gedit_documents_panel_class_init (BeditDocumentsPanelClass *klass)
 {
 	GObjectClass *object_class = G_OBJECT_CLASS (klass);
 	GtkWidgetClass *widget_class = GTK_WIDGET_CLASS (klass);
@@ -1365,7 +1365,7 @@ gedit_documents_panel_class_init (GeditDocumentsPanelClass *klass)
 	properties[PROP_WINDOW] =
 		g_param_spec_object ("window",
 		                     "Window",
-		                     "The GeditWindow this GeditDocumentsPanel is associated with",
+		                     "The BeditWindow this BeditDocumentsPanel is associated with",
 		                     GEDIT_TYPE_WINDOW,
 		                     G_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY | G_PARAM_STATIC_STRINGS);
 
@@ -1373,7 +1373,7 @@ gedit_documents_panel_class_init (GeditDocumentsPanelClass *klass)
 }
 
 static void
-gedit_documents_panel_init (GeditDocumentsPanel *panel)
+gedit_documents_panel_init (BeditDocumentsPanel *panel)
 {
 	GtkWidget *sw;
 	GtkStyleContext *context;
@@ -1434,7 +1434,7 @@ gedit_documents_panel_init (GeditDocumentsPanel *panel)
 }
 
 GtkWidget *
-gedit_documents_panel_new (GeditWindow *window)
+gedit_documents_panel_new (BeditWindow *window)
 {
 	g_return_val_if_fail (GEDIT_IS_WINDOW (window), NULL);
 
@@ -1447,8 +1447,8 @@ static void
 row_on_close_button_clicked (GtkWidget *close_button,
                              GtkWidget *row)
 {
-	GeditDocumentsGenericRow *generic_row = (GeditDocumentsGenericRow *)row;
-	GeditWindow *window = generic_row->panel->window;
+	BeditDocumentsGenericRow *generic_row = (BeditDocumentsGenericRow *)row;
+	BeditWindow *window = generic_row->panel->window;
 	GtkWidget *ref;
 
 	if (GEDIT_IS_DOCUMENTS_GROUP_ROW (row))
@@ -1475,8 +1475,8 @@ row_on_button_pressed (GtkWidget      *row_event_box,
 	if (gdk_event_get_event_type ((GdkEvent *)event) == GDK_BUTTON_PRESS &&
 	    GEDIT_IS_DOCUMENTS_DOCUMENT_ROW (row))
 	{
-		GeditDocumentsDocumentRow *document_row = GEDIT_DOCUMENTS_DOCUMENT_ROW (row);
-		GeditDocumentsPanel *panel = document_row->panel;
+		BeditDocumentsDocumentRow *document_row = GEDIT_DOCUMENTS_DOCUMENT_ROW (row);
+		BeditDocumentsPanel *panel = document_row->panel;
 
 		if (event->button == GDK_BUTTON_PRIMARY)
 		{
@@ -1495,8 +1495,8 @@ row_on_button_pressed (GtkWidget      *row_event_box,
 
 		if (gdk_event_triggers_context_menu ((GdkEvent *)event))
 		{
-			GeditWindow *window = panel->window;
-			GeditTab *tab = GEDIT_TAB (document_row->ref);
+			BeditWindow *window = panel->window;
+			BeditTab *tab = GEDIT_TAB (document_row->ref);
 			GtkWidget *menu = gedit_notebook_popup_menu_new (window, tab);
 
 			g_signal_connect (menu,
@@ -1516,7 +1516,7 @@ row_on_button_pressed (GtkWidget      *row_event_box,
 static void
 document_row_create_header (GtkWidget *row)
 {
-	GeditDocumentsDocumentRow *document_row = GEDIT_DOCUMENTS_DOCUMENT_ROW (row);
+	BeditDocumentsDocumentRow *document_row = GEDIT_DOCUMENTS_DOCUMENT_ROW (row);
 	GtkWidget *image_box;
 	gint width, height;
 
@@ -1542,7 +1542,7 @@ document_row_create_header (GtkWidget *row)
 static GtkWidget *
 row_create (GtkWidget *row)
 {
-	GeditDocumentsGenericRow *generic_row = (GeditDocumentsGenericRow *)row;
+	BeditDocumentsGenericRow *generic_row = (BeditDocumentsGenericRow *)row;
 	GtkWidget *event_box;
 	GtkStyleContext *context;
 	GtkWidget *image;
@@ -1610,7 +1610,7 @@ document_row_query_tooltip (GtkWidget   *row,
                             gboolean     keyboard_tip,
                             GtkTooltip  *tooltip)
 {
-	GeditDocumentsGenericRow *generic_row = (GeditDocumentsGenericRow *)row;
+	BeditDocumentsGenericRow *generic_row = (BeditDocumentsGenericRow *)row;
 	gchar *markup;
 
 	if (!GEDIT_IS_DOCUMENTS_DOCUMENT_ROW (row))
@@ -1626,14 +1626,14 @@ document_row_query_tooltip (GtkWidget   *row,
 	return TRUE;
 }
 
-/* Gedit Document Row */
+/* Bedit Document Row */
 static void
-gedit_documents_document_row_class_init (GeditDocumentsDocumentRowClass *klass)
+gedit_documents_document_row_class_init (BeditDocumentsDocumentRowClass *klass)
 {
 }
 
 static void
-gedit_documents_document_row_init (GeditDocumentsDocumentRow *row)
+gedit_documents_document_row_init (BeditDocumentsDocumentRow *row)
 {
 	GtkWidget *row_widget;
 	GtkStyleContext *context;
@@ -1656,14 +1656,14 @@ gedit_documents_document_row_init (GeditDocumentsDocumentRow *row)
 	gtk_widget_set_can_focus (GTK_WIDGET (row), FALSE);
 }
 
-/* Gedit Group Row */
+/* Bedit Group Row */
 static void
-gedit_documents_group_row_class_init (GeditDocumentsGroupRowClass *klass)
+gedit_documents_group_row_class_init (BeditDocumentsGroupRowClass *klass)
 {
 }
 
 static void
-gedit_documents_group_row_init (GeditDocumentsGroupRow *row)
+gedit_documents_group_row_init (BeditDocumentsGroupRow *row)
 {
 	GtkWidget *row_widget;
 	GtkStyleContext *context;
@@ -1683,10 +1683,10 @@ gedit_documents_group_row_init (GeditDocumentsGroupRow *row)
 }
 
 static GtkWidget *
-gedit_documents_document_row_new (GeditDocumentsPanel *panel,
-                                  GeditTab *tab)
+gedit_documents_document_row_new (BeditDocumentsPanel *panel,
+                                  BeditTab *tab)
 {
-	GeditDocumentsDocumentRow *row;
+	BeditDocumentsDocumentRow *row;
 
 	g_return_val_if_fail (GEDIT_IS_DOCUMENTS_PANEL (panel), NULL);
 	g_return_val_if_fail (GEDIT_IS_TAB (tab), NULL);
@@ -1716,10 +1716,10 @@ gedit_documents_document_row_new (GeditDocumentsPanel *panel,
 }
 
 static GtkWidget *
-gedit_documents_group_row_new (GeditDocumentsPanel *panel,
-                               GeditNotebook       *notebook)
+gedit_documents_group_row_new (BeditDocumentsPanel *panel,
+                               BeditNotebook       *notebook)
 {
-	GeditDocumentsGroupRow *row;
+	BeditDocumentsGroupRow *row;
 
 	g_return_val_if_fail (GEDIT_IS_DOCUMENTS_PANEL (panel), NULL);
 	g_return_val_if_fail (GEDIT_IS_NOTEBOOK (notebook), NULL);

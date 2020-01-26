@@ -44,7 +44,7 @@ enum
 
 #define GEDIT_SAVE_DOCUMENT_KEY "gedit-save-document"
 
-struct _GeditCloseConfirmationDialog
+struct _BeditCloseConfirmationDialog
 {
 	GtkMessageDialog parent_instance;
 
@@ -63,11 +63,11 @@ enum
 
 static GParamSpec *properties[LAST_PROP];
 
-G_DEFINE_TYPE (GeditCloseConfirmationDialog,
+G_DEFINE_TYPE (BeditCloseConfirmationDialog,
 	       gedit_close_confirmation_dialog,
 	       GTK_TYPE_MESSAGE_DIALOG)
 
-static void 	 set_unsaved_document 		(GeditCloseConfirmationDialog *dlg,
+static void 	 set_unsaved_document 		(BeditCloseConfirmationDialog *dlg,
 						 const GList                  *list);
 
 static GList *
@@ -86,7 +86,7 @@ get_selected_docs (GtkWidget *list_box)
 		check_button = gtk_bin_get_child (GTK_BIN (row));
 		if (gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (check_button)))
 		{
-			GeditDocument *doc;
+			BeditDocument *doc;
 
 			doc = g_object_get_data (G_OBJECT (row), GEDIT_SAVE_DOCUMENT_KEY);
 			g_return_val_if_fail (doc != NULL, NULL);
@@ -104,7 +104,7 @@ get_selected_docs (GtkWidget *list_box)
  * before the user ones.
  */
 static void
-response_cb (GeditCloseConfirmationDialog *dlg,
+response_cb (BeditCloseConfirmationDialog *dlg,
              gint                          response_id,
              gpointer                      data)
 {
@@ -130,9 +130,9 @@ response_cb (GeditCloseConfirmationDialog *dlg,
 }
 
 static void
-gedit_close_confirmation_dialog_init (GeditCloseConfirmationDialog *dlg)
+gedit_close_confirmation_dialog_init (BeditCloseConfirmationDialog *dlg)
 {
-	GeditLockdownMask lockdown;
+	BeditLockdownMask lockdown;
 
 	lockdown = gedit_app_get_lockdown (GEDIT_APP (g_application_get_default ()));
 
@@ -151,7 +151,7 @@ gedit_close_confirmation_dialog_init (GeditCloseConfirmationDialog *dlg)
 static void
 gedit_close_confirmation_dialog_finalize (GObject *object)
 {
-	GeditCloseConfirmationDialog *dlg = GEDIT_CLOSE_CONFIRMATION_DIALOG (object);
+	BeditCloseConfirmationDialog *dlg = GEDIT_CLOSE_CONFIRMATION_DIALOG (object);
 
 	g_list_free (dlg->unsaved_documents);
 	g_list_free (dlg->selected_documents);
@@ -166,7 +166,7 @@ gedit_close_confirmation_dialog_set_property (GObject      *object,
 					      const GValue *value,
 					      GParamSpec   *pspec)
 {
-	GeditCloseConfirmationDialog *dlg;
+	BeditCloseConfirmationDialog *dlg;
 
 	dlg = GEDIT_CLOSE_CONFIRMATION_DIALOG (object);
 
@@ -188,7 +188,7 @@ gedit_close_confirmation_dialog_get_property (GObject    *object,
 					      GValue     *value,
 					      GParamSpec *pspec)
 {
-	GeditCloseConfirmationDialog *dlg = GEDIT_CLOSE_CONFIRMATION_DIALOG (object);
+	BeditCloseConfirmationDialog *dlg = GEDIT_CLOSE_CONFIRMATION_DIALOG (object);
 
 	switch (prop_id)
 	{
@@ -203,7 +203,7 @@ gedit_close_confirmation_dialog_get_property (GObject    *object,
 }
 
 static void
-gedit_close_confirmation_dialog_class_init (GeditCloseConfirmationDialogClass *klass)
+gedit_close_confirmation_dialog_class_init (BeditCloseConfirmationDialogClass *klass)
 {
 	GObjectClass *gobject_class = G_OBJECT_CLASS (klass);
 
@@ -221,7 +221,7 @@ gedit_close_confirmation_dialog_class_init (GeditCloseConfirmationDialogClass *k
 }
 
 GList *
-gedit_close_confirmation_dialog_get_selected_documents (GeditCloseConfirmationDialog *dlg)
+gedit_close_confirmation_dialog_get_selected_documents (BeditCloseConfirmationDialog *dlg)
 {
 	g_return_val_if_fail (GEDIT_IS_CLOSE_CONFIRMATION_DIALOG (dlg), NULL);
 
@@ -254,7 +254,7 @@ gedit_close_confirmation_dialog_new (GtkWindow *parent,
 
 GtkWidget *
 gedit_close_confirmation_dialog_new_single (GtkWindow     *parent,
-					    GeditDocument *doc)
+					    BeditDocument *doc)
 {
 	GtkWidget *dlg;
 	GList *unsaved_documents;
@@ -269,7 +269,7 @@ gedit_close_confirmation_dialog_new_single (GtkWindow     *parent,
 }
 
 static void
-add_buttons (GeditCloseConfirmationDialog *dlg)
+add_buttons (BeditCloseConfirmationDialog *dlg)
 {
         GtkWidget *close_button;
 
@@ -293,7 +293,7 @@ add_buttons (GeditCloseConfirmationDialog *dlg)
 
 		if (GET_MODE (dlg) == SINGLE_DOC_MODE)
 		{
-			GeditDocument *doc;
+			BeditDocument *doc;
 			GtkSourceFile *file;
 
 			doc = GEDIT_DOCUMENT (dlg->unsaved_documents->data);
@@ -315,7 +315,7 @@ add_buttons (GeditCloseConfirmationDialog *dlg)
 }
 
 static gchar *
-get_text_secondary_label (GeditDocument *doc)
+get_text_secondary_label (BeditDocument *doc)
 {
 	glong  seconds;
 	gchar *secondary_msg;
@@ -398,9 +398,9 @@ get_text_secondary_label (GeditDocument *doc)
 }
 
 static void
-build_single_doc_dialog (GeditCloseConfirmationDialog *dlg)
+build_single_doc_dialog (BeditCloseConfirmationDialog *dlg)
 {
-	GeditDocument *doc;
+	BeditDocument *doc;
 	gchar *doc_name;
 	gchar *str;
 	gchar *markup_str;
@@ -447,7 +447,7 @@ build_single_doc_dialog (GeditCloseConfirmationDialog *dlg)
 }
 
 static GtkWidget *
-create_list_box (GeditCloseConfirmationDialog *dlg)
+create_list_box (BeditCloseConfirmationDialog *dlg)
 {
 	GtkWidget *list_box;
 	GList *l;
@@ -456,7 +456,7 @@ create_list_box (GeditCloseConfirmationDialog *dlg)
 
 	for (l = dlg->unsaved_documents; l != NULL; l = l->next)
 	{
-		GeditDocument *doc = l->data;
+		BeditDocument *doc = l->data;
 		gchar *name;
 		GtkWidget *check_button;
 		GtkWidget *row;
@@ -483,7 +483,7 @@ create_list_box (GeditCloseConfirmationDialog *dlg)
 }
 
 static void
-build_multiple_docs_dialog (GeditCloseConfirmationDialog *dlg)
+build_multiple_docs_dialog (BeditCloseConfirmationDialog *dlg)
 {
 	GtkWidget *content_area;
 	GtkWidget *vbox;
@@ -580,7 +580,7 @@ build_multiple_docs_dialog (GeditCloseConfirmationDialog *dlg)
 }
 
 static void
-set_unsaved_document (GeditCloseConfirmationDialog *dlg,
+set_unsaved_document (BeditCloseConfirmationDialog *dlg,
 		      const GList                  *list)
 {
 	g_return_if_fail (list != NULL);
@@ -600,7 +600,7 @@ set_unsaved_document (GeditCloseConfirmationDialog *dlg,
 }
 
 const GList *
-gedit_close_confirmation_dialog_get_unsaved_documents (GeditCloseConfirmationDialog *dlg)
+gedit_close_confirmation_dialog_get_unsaved_documents (BeditCloseConfirmationDialog *dlg)
 {
 	g_return_val_if_fail (GEDIT_IS_CLOSE_CONFIRMATION_DIALOG (dlg), NULL);
 

@@ -30,7 +30,7 @@
 
 #define GEDIT_HISTORY_ENTRY_HISTORY_LENGTH_DEFAULT 10
 
-struct _GeditHistoryEntry
+struct _BeditHistoryEntry
 {
 	GtkComboBoxText     parent_instance;
 
@@ -52,7 +52,7 @@ enum {
 
 static GParamSpec *properties[LAST_PROP];
 
-G_DEFINE_TYPE (GeditHistoryEntry, gedit_history_entry, GTK_TYPE_COMBO_BOX_TEXT)
+G_DEFINE_TYPE (BeditHistoryEntry, gedit_history_entry, GTK_TYPE_COMBO_BOX_TEXT)
 
 static void
 gedit_history_entry_set_property (GObject      *object,
@@ -60,7 +60,7 @@ gedit_history_entry_set_property (GObject      *object,
 				  const GValue *value,
 				  GParamSpec   *spec)
 {
-	GeditHistoryEntry *entry;
+	BeditHistoryEntry *entry;
 
 	g_return_if_fail (GEDIT_IS_HISTORY_ENTRY (object));
 
@@ -90,7 +90,7 @@ gedit_history_entry_get_property (GObject    *object,
 				  GValue     *value,
 				  GParamSpec *spec)
 {
-	GeditHistoryEntry *entry;
+	BeditHistoryEntry *entry;
 
 	g_return_if_fail (GEDIT_IS_HISTORY_ENTRY (object));
 
@@ -115,7 +115,7 @@ gedit_history_entry_get_property (GObject    *object,
 static void
 gedit_history_entry_dispose (GObject *object)
 {
-	GeditHistoryEntry *entry = GEDIT_HISTORY_ENTRY (object);
+	BeditHistoryEntry *entry = GEDIT_HISTORY_ENTRY (object);
 
 	gedit_history_entry_set_enable_completion (entry, FALSE);
 
@@ -127,7 +127,7 @@ gedit_history_entry_dispose (GObject *object)
 static void
 gedit_history_entry_finalize (GObject *object)
 {
-	GeditHistoryEntry *entry = GEDIT_HISTORY_ENTRY (object);
+	BeditHistoryEntry *entry = GEDIT_HISTORY_ENTRY (object);
 
 	g_free (entry->history_id);
 
@@ -135,7 +135,7 @@ gedit_history_entry_finalize (GObject *object)
 }
 
 static void
-gedit_history_entry_load_history (GeditHistoryEntry *entry)
+gedit_history_entry_load_history (BeditHistoryEntry *entry)
 {
 	gchar **items;
 	gsize i;
@@ -158,7 +158,7 @@ gedit_history_entry_load_history (GeditHistoryEntry *entry)
 }
 
 static void
-gedit_history_entry_class_init (GeditHistoryEntryClass *klass)
+gedit_history_entry_class_init (BeditHistoryEntryClass *klass)
 {
 	GObjectClass *object_class = G_OBJECT_CLASS (klass);
 
@@ -194,7 +194,7 @@ gedit_history_entry_class_init (GeditHistoryEntryClass *klass)
 }
 
 static GtkListStore *
-get_history_store (GeditHistoryEntry *entry)
+get_history_store (BeditHistoryEntry *entry)
 {
 	GtkTreeModel *store;
 
@@ -205,7 +205,7 @@ get_history_store (GeditHistoryEntry *entry)
 }
 
 static gchar **
-get_history_items (GeditHistoryEntry *entry)
+get_history_items (BeditHistoryEntry *entry)
 {
 	GtkListStore *store;
 	GtkTreeIter iter;
@@ -245,7 +245,7 @@ get_history_items (GeditHistoryEntry *entry)
 }
 
 static void
-gedit_history_entry_save_history (GeditHistoryEntry *entry)
+gedit_history_entry_save_history (BeditHistoryEntry *entry)
 {
 	gchar **items;
 
@@ -261,7 +261,7 @@ gedit_history_entry_save_history (GeditHistoryEntry *entry)
 }
 
 static gboolean
-remove_item (GeditHistoryEntry *entry,
+remove_item (BeditHistoryEntry *entry,
 	     const gchar       *text)
 {
 	GtkListStore *store;
@@ -324,7 +324,7 @@ clamp_list_store (GtkListStore *store,
 }
 
 static void
-insert_history_item (GeditHistoryEntry *entry,
+insert_history_item (BeditHistoryEntry *entry,
 		     const gchar       *text,
 		     gboolean           prepend)
 {
@@ -358,7 +358,7 @@ insert_history_item (GeditHistoryEntry *entry,
 }
 
 void
-gedit_history_entry_prepend_text (GeditHistoryEntry *entry,
+gedit_history_entry_prepend_text (BeditHistoryEntry *entry,
 				  const gchar       *text)
 {
 	g_return_if_fail (GEDIT_IS_HISTORY_ENTRY (entry));
@@ -368,7 +368,7 @@ gedit_history_entry_prepend_text (GeditHistoryEntry *entry,
 }
 
 void
-gedit_history_entry_append_text (GeditHistoryEntry *entry,
+gedit_history_entry_append_text (BeditHistoryEntry *entry,
 				 const gchar       *text)
 {
 	g_return_if_fail (GEDIT_IS_HISTORY_ENTRY (entry));
@@ -378,7 +378,7 @@ gedit_history_entry_append_text (GeditHistoryEntry *entry,
 }
 
 void
-gedit_history_entry_clear (GeditHistoryEntry *entry)
+gedit_history_entry_clear (BeditHistoryEntry *entry)
 {
 	g_return_if_fail (GEDIT_IS_HISTORY_ENTRY (entry));
 
@@ -388,7 +388,7 @@ gedit_history_entry_clear (GeditHistoryEntry *entry)
 }
 
 static void
-gedit_history_entry_init (GeditHistoryEntry *entry)
+gedit_history_entry_init (BeditHistoryEntry *entry)
 {
 	entry->history_id = NULL;
 	entry->history_length = GEDIT_HISTORY_ENTRY_HISTORY_LENGTH_DEFAULT;
@@ -399,7 +399,7 @@ gedit_history_entry_init (GeditHistoryEntry *entry)
 }
 
 void
-gedit_history_entry_set_history_length (GeditHistoryEntry *entry,
+gedit_history_entry_set_history_length (BeditHistoryEntry *entry,
 					guint              history_length)
 {
 	g_return_if_fail (GEDIT_IS_HISTORY_ENTRY (entry));
@@ -411,7 +411,7 @@ gedit_history_entry_set_history_length (GeditHistoryEntry *entry,
 }
 
 guint
-gedit_history_entry_get_history_length (GeditHistoryEntry *entry)
+gedit_history_entry_get_history_length (BeditHistoryEntry *entry)
 {
 	g_return_val_if_fail (GEDIT_IS_HISTORY_ENTRY (entry), 0);
 
@@ -419,7 +419,7 @@ gedit_history_entry_get_history_length (GeditHistoryEntry *entry)
 }
 
 void
-gedit_history_entry_set_enable_completion (GeditHistoryEntry *entry,
+gedit_history_entry_set_enable_completion (BeditHistoryEntry *entry,
 					   gboolean           enable)
 {
 	g_return_if_fail (GEDIT_IS_HISTORY_ENTRY (entry));
@@ -461,7 +461,7 @@ gedit_history_entry_set_enable_completion (GeditHistoryEntry *entry,
 }
 
 gboolean
-gedit_history_entry_get_enable_completion (GeditHistoryEntry *entry)
+gedit_history_entry_get_enable_completion (BeditHistoryEntry *entry)
 {
 	g_return_val_if_fail (GEDIT_IS_HISTORY_ENTRY (entry), FALSE);
 
@@ -472,7 +472,7 @@ GtkWidget *
 gedit_history_entry_new (const gchar *history_id,
 			 gboolean     enable_completion)
 {
-	GeditHistoryEntry *entry;
+	BeditHistoryEntry *entry;
 
 	g_return_val_if_fail (history_id != NULL, NULL);
 
@@ -497,13 +497,13 @@ gedit_history_entry_new (const gchar *history_id,
 /*
  * Utility function to get the editable text entry internal widget.
  * I would prefer to not expose this implementation detail and
- * simply make the GeditHistoryEntry widget implement the
+ * simply make the BeditHistoryEntry widget implement the
  * GtkEditable interface. Unfortunately both GtkEditable and
  * GtkComboBox have a "changed" signal and I am not sure how to
  * handle the conflict.
  */
 GtkWidget *
-gedit_history_entry_get_entry (GeditHistoryEntry *entry)
+gedit_history_entry_get_entry (BeditHistoryEntry *entry)
 {
 	g_return_val_if_fail (GEDIT_IS_HISTORY_ENTRY (entry), NULL);
 

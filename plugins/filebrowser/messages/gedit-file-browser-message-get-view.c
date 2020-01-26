@@ -33,21 +33,21 @@ enum
 	PROP_VIEW,
 };
 
-struct _GeditFileBrowserMessageGetViewPrivate
+struct _BeditFileBrowserMessageGetViewPrivate
 {
-	GeditFileBrowserView *view;
+	BeditFileBrowserView *view;
 };
 
-G_DEFINE_TYPE_EXTENDED (GeditFileBrowserMessageGetView,
+G_DEFINE_TYPE_EXTENDED (BeditFileBrowserMessageGetView,
                         gedit_file_browser_message_get_view,
                         GEDIT_TYPE_MESSAGE,
                         0,
-                        G_ADD_PRIVATE (GeditFileBrowserMessageGetView))
+                        G_ADD_PRIVATE (BeditFileBrowserMessageGetView))
 
 static void
 gedit_file_browser_message_get_view_finalize (GObject *obj)
 {
-	GeditFileBrowserMessageGetView *msg = GEDIT_FILE_BROWSER_MESSAGE_GET_VIEW (obj);
+	BeditFileBrowserMessageGetView *msg = GEDIT_FILE_BROWSER_MESSAGE_GET_VIEW (obj);
 
 	if (msg->priv->view)
 	{
@@ -63,7 +63,7 @@ gedit_file_browser_message_get_view_get_property (GObject    *obj,
                                                   GValue     *value,
                                                   GParamSpec *pspec)
 {
-	GeditFileBrowserMessageGetView *msg;
+	BeditFileBrowserMessageGetView *msg;
 
 	msg = GEDIT_FILE_BROWSER_MESSAGE_GET_VIEW (obj);
 
@@ -81,7 +81,7 @@ gedit_file_browser_message_get_view_set_property (GObject      *obj,
                                                   GValue const *value,
                                                   GParamSpec   *pspec)
 {
-	GeditFileBrowserMessageGetView *msg;
+	BeditFileBrowserMessageGetView *msg;
 
 	msg = GEDIT_FILE_BROWSER_MESSAGE_GET_VIEW (obj);
 
@@ -100,7 +100,7 @@ gedit_file_browser_message_get_view_set_property (GObject      *obj,
 }
 
 static void
-gedit_file_browser_message_get_view_class_init (GeditFileBrowserMessageGetViewClass *klass)
+gedit_file_browser_message_get_view_class_init (BeditFileBrowserMessageGetViewClass *klass)
 {
 	GObjectClass *object_class = G_OBJECT_CLASS(klass);
 
@@ -121,7 +121,7 @@ gedit_file_browser_message_get_view_class_init (GeditFileBrowserMessageGetViewCl
 }
 
 static void
-gedit_file_browser_message_get_view_init (GeditFileBrowserMessageGetView *message)
+gedit_file_browser_message_get_view_init (BeditFileBrowserMessageGetView *message)
 {
 	message->priv = gedit_file_browser_message_get_view_get_instance_private (message);
 }

@@ -39,15 +39,15 @@ typedef struct
 	guint show_private : 1;
 	guint show_not_found : 1;
 	guint local_only : 1;
-} GeditRecentConfiguration;
+} BeditRecentConfiguration;
 
-void		 gedit_recent_add_document		 (GeditDocument            *document);
+void		 gedit_recent_add_document		 (BeditDocument            *document);
 
 void		 gedit_recent_remove_if_local		 (GFile                    *location);
 
-void		 gedit_recent_configuration_init_default (GeditRecentConfiguration *config);
-void		 gedit_recent_configuration_destroy	 (GeditRecentConfiguration *config);
-GList		*gedit_recent_get_items			 (GeditRecentConfiguration *config);
+void		 gedit_recent_configuration_init_default (BeditRecentConfiguration *config);
+void		 gedit_recent_configuration_destroy	 (BeditRecentConfiguration *config);
+GList		*gedit_recent_get_items			 (BeditRecentConfiguration *config);
 
 G_END_DECLS
 

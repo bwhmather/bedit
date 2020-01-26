@@ -26,25 +26,25 @@
 G_BEGIN_DECLS
 
 #define GEDIT_TYPE_CHECK_UPDATE_PLUGIN		(gedit_check_update_plugin_get_type ())
-#define GEDIT_CHECK_UPDATE_PLUGIN(o)		(G_TYPE_CHECK_INSTANCE_CAST ((o), GEDIT_TYPE_CHECK_UPDATE_PLUGIN, GeditCheckUpdatePlugin))
-#define GEDIT_CHECK_UPDATE_PLUGIN_CLASS(k)	(G_TYPE_CHECK_CLASS_CAST((k), GEDIT_TYPE_CHECK_UPDATE_PLUGIN, GeditCheckUpdatePluginClass))
+#define GEDIT_CHECK_UPDATE_PLUGIN(o)		(G_TYPE_CHECK_INSTANCE_CAST ((o), GEDIT_TYPE_CHECK_UPDATE_PLUGIN, BeditCheckUpdatePlugin))
+#define GEDIT_CHECK_UPDATE_PLUGIN_CLASS(k)	(G_TYPE_CHECK_CLASS_CAST((k), GEDIT_TYPE_CHECK_UPDATE_PLUGIN, BeditCheckUpdatePluginClass))
 #define GEDIT_IS_CHECK_UPDATE_PLUGIN(o)	(G_TYPE_CHECK_INSTANCE_TYPE ((o), GEDIT_TYPE_CHECK_UPDATE_PLUGIN))
 #define GEDIT_IS_CHECK_UPDATE_PLUGIN_CLASS(k)	(G_TYPE_CHECK_CLASS_TYPE ((k), GEDIT_TYPE_CHECK_UPDATE_PLUGIN))
-#define GEDIT_CHECK_UPDATE_GET_CLASS(o)	(G_TYPE_INSTANCE_GET_CLASS ((o), GEDIT_TYPE_CHECK_UPDATE_PLUGIN, GeditCheckUpdatePluginClass))
+#define GEDIT_CHECK_UPDATE_GET_CLASS(o)	(G_TYPE_INSTANCE_GET_CLASS ((o), GEDIT_TYPE_CHECK_UPDATE_PLUGIN, BeditCheckUpdatePluginClass))
 
-typedef struct _GeditCheckUpdatePluginPrivate	GeditCheckUpdatePluginPrivate;
-typedef struct _GeditCheckUpdatePlugin		GeditCheckUpdatePlugin;
-typedef struct _GeditCheckUpdatePluginClass	GeditCheckUpdatePluginClass;
+typedef struct _BeditCheckUpdatePluginPrivate	BeditCheckUpdatePluginPrivate;
+typedef struct _BeditCheckUpdatePlugin		BeditCheckUpdatePlugin;
+typedef struct _BeditCheckUpdatePluginClass	BeditCheckUpdatePluginClass;
 
-struct _GeditCheckUpdatePlugin
+struct _BeditCheckUpdatePlugin
 {
 	PeasExtensionBase parent;
 
 	/*< private >*/
-	GeditCheckUpdatePluginPrivate *priv;
+	BeditCheckUpdatePluginPrivate *priv;
 };
 
-struct _GeditCheckUpdatePluginClass
+struct _BeditCheckUpdatePluginClass
 {
 	PeasExtensionBaseClass parent_class;
 };

@@ -37,7 +37,7 @@ enum
 	PROP_IS_DIRECTORY,
 };
 
-struct _GeditFileBrowserMessageIdLocationPrivate
+struct _BeditFileBrowserMessageIdLocationPrivate
 {
 	gchar *id;
 	gchar *name;
@@ -45,16 +45,16 @@ struct _GeditFileBrowserMessageIdLocationPrivate
 	gboolean is_directory;
 };
 
-G_DEFINE_TYPE_EXTENDED (GeditFileBrowserMessageIdLocation,
+G_DEFINE_TYPE_EXTENDED (BeditFileBrowserMessageIdLocation,
                         gedit_file_browser_message_id_location,
                         GEDIT_TYPE_MESSAGE,
                         0,
-                        G_ADD_PRIVATE (GeditFileBrowserMessageIdLocation))
+                        G_ADD_PRIVATE (BeditFileBrowserMessageIdLocation))
 
 static void
 gedit_file_browser_message_id_location_finalize (GObject *obj)
 {
-	GeditFileBrowserMessageIdLocation *msg = GEDIT_FILE_BROWSER_MESSAGE_ID_LOCATION (obj);
+	BeditFileBrowserMessageIdLocation *msg = GEDIT_FILE_BROWSER_MESSAGE_ID_LOCATION (obj);
 
 	g_free (msg->priv->id);
 	g_free (msg->priv->name);
@@ -72,7 +72,7 @@ gedit_file_browser_message_id_location_get_property (GObject    *obj,
                                                      GValue     *value,
                                                      GParamSpec *pspec)
 {
-	GeditFileBrowserMessageIdLocation *msg;
+	BeditFileBrowserMessageIdLocation *msg;
 
 	msg = GEDIT_FILE_BROWSER_MESSAGE_ID_LOCATION (obj);
 
@@ -99,7 +99,7 @@ gedit_file_browser_message_id_location_set_property (GObject      *obj,
                                                      GValue const *value,
                                                      GParamSpec   *pspec)
 {
-	GeditFileBrowserMessageIdLocation *msg;
+	BeditFileBrowserMessageIdLocation *msg;
 
 	msg = GEDIT_FILE_BROWSER_MESSAGE_ID_LOCATION (obj);
 
@@ -133,7 +133,7 @@ gedit_file_browser_message_id_location_set_property (GObject      *obj,
 }
 
 static void
-gedit_file_browser_message_id_location_class_init (GeditFileBrowserMessageIdLocationClass *klass)
+gedit_file_browser_message_id_location_class_init (BeditFileBrowserMessageIdLocationClass *klass)
 {
 	GObjectClass *object_class = G_OBJECT_CLASS(klass);
 
@@ -184,7 +184,7 @@ gedit_file_browser_message_id_location_class_init (GeditFileBrowserMessageIdLoca
 }
 
 static void
-gedit_file_browser_message_id_location_init (GeditFileBrowserMessageIdLocation *message)
+gedit_file_browser_message_id_location_init (BeditFileBrowserMessageIdLocation *message)
 {
 	message->priv = gedit_file_browser_message_id_location_get_instance_private (message);
 }

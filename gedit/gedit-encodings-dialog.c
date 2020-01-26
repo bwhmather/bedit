@@ -36,7 +36,7 @@ typedef enum _State
 	STATE_RESET
 } State;
 
-struct _GeditEncodingsDialog
+struct _BeditEncodingsDialog
 {
 	GtkDialog parent_instance;
 
@@ -67,10 +67,10 @@ enum
 	N_COLUMNS
 };
 
-G_DEFINE_TYPE (GeditEncodingsDialog, gedit_encodings_dialog, GTK_TYPE_DIALOG)
+G_DEFINE_TYPE (BeditEncodingsDialog, gedit_encodings_dialog, GTK_TYPE_DIALOG)
 
 static void
-set_modified (GeditEncodingsDialog *dialog)
+set_modified (BeditEncodingsDialog *dialog)
 {
 	dialog->state = STATE_MODIFIED;
 	gtk_widget_set_sensitive (dialog->reset_button, TRUE);
@@ -108,7 +108,7 @@ append_encoding (GtkListStore            *liststore,
 }
 
 static void
-init_liststores (GeditEncodingsDialog *dialog,
+init_liststores (BeditEncodingsDialog *dialog,
 		 gboolean              reset)
 {
 	gboolean default_candidates;
@@ -159,7 +159,7 @@ init_liststores (GeditEncodingsDialog *dialog,
 static void
 reset_dialog_response_cb (GtkDialog            *msg_dialog,
 			  gint                  response,
-			  GeditEncodingsDialog *dialog)
+			  BeditEncodingsDialog *dialog)
 {
 	if (response == GTK_RESPONSE_ACCEPT)
 	{
@@ -175,7 +175,7 @@ reset_dialog_response_cb (GtkDialog            *msg_dialog,
 
 static void
 reset_button_clicked_cb (GtkWidget            *button,
-			 GeditEncodingsDialog *dialog)
+			 BeditEncodingsDialog *dialog)
 {
 	GtkDialog *msg_dialog;
 
@@ -202,7 +202,7 @@ reset_button_clicked_cb (GtkWidget            *button,
 }
 
 static GSList *
-get_chosen_encodings_list (GeditEncodingsDialog *dialog)
+get_chosen_encodings_list (BeditEncodingsDialog *dialog)
 {
 	GtkTreeModel *model = GTK_TREE_MODEL (dialog->liststore_chosen);
 	GtkTreeIter iter;
@@ -251,7 +251,7 @@ encoding_list_to_strv (const GSList *enc_list)
 }
 
 static void
-apply_settings (GeditEncodingsDialog *dialog)
+apply_settings (BeditEncodingsDialog *dialog)
 {
 	switch (dialog->state)
 	{
@@ -291,7 +291,7 @@ static void
 gedit_encodings_dialog_response (GtkDialog *gtk_dialog,
                                  gint       response_id)
 {
-	GeditEncodingsDialog *dialog = GEDIT_ENCODINGS_DIALOG (gtk_dialog);
+	BeditEncodingsDialog *dialog = GEDIT_ENCODINGS_DIALOG (gtk_dialog);
 
 	switch (response_id)
 	{
@@ -309,7 +309,7 @@ gedit_encodings_dialog_response (GtkDialog *gtk_dialog,
 static void
 gedit_encodings_dialog_dispose (GObject *object)
 {
-	GeditEncodingsDialog *dialog = GEDIT_ENCODINGS_DIALOG (object);
+	BeditEncodingsDialog *dialog = GEDIT_ENCODINGS_DIALOG (object);
 
 	g_clear_object (&dialog->enc_settings);
 	g_clear_object (&dialog->add_button);
@@ -322,7 +322,7 @@ gedit_encodings_dialog_dispose (GObject *object)
 }
 
 static void
-gedit_encodings_dialog_class_init (GeditEncodingsDialogClass *klass)
+gedit_encodings_dialog_class_init (BeditEncodingsDialogClass *klass)
 {
 	GObjectClass *object_class = G_OBJECT_CLASS (klass);
 	GtkWidgetClass *widget_class = GTK_WIDGET_CLASS (klass);
@@ -335,11 +335,11 @@ gedit_encodings_dialog_class_init (GeditEncodingsDialogClass *klass)
 	/* Bind class to template */
 	gtk_widget_class_set_template_from_resource (widget_class,
 	                                             "/com/bwhmather/bedit/ui/gedit-encodings-dialog.ui");
-	gtk_widget_class_bind_template_child (widget_class, GeditEncodingsDialog, liststore_available);
-	gtk_widget_class_bind_template_child (widget_class, GeditEncodingsDialog, liststore_chosen);
-	gtk_widget_class_bind_template_child (widget_class, GeditEncodingsDialog, sort_available);
-	gtk_widget_class_bind_template_child (widget_class, GeditEncodingsDialog, treeview_available);
-	gtk_widget_class_bind_template_child (widget_class, GeditEncodingsDialog, treeview_chosen);
+	gtk_widget_class_bind_template_child (widget_class, BeditEncodingsDialog, liststore_available);
+	gtk_widget_class_bind_template_child (widget_class, BeditEncodingsDialog, liststore_chosen);
+	gtk_widget_class_bind_template_child (widget_class, BeditEncodingsDialog, sort_available);
+	gtk_widget_class_bind_template_child (widget_class, BeditEncodingsDialog, treeview_available);
+	gtk_widget_class_bind_template_child (widget_class, BeditEncodingsDialog, treeview_chosen);
 	gtk_widget_class_bind_template_child_full (widget_class, "scrolledwindow_available", FALSE, 0);
 	gtk_widget_class_bind_template_child_full (widget_class, "scrolledwindow_chosen", FALSE, 0);
 	gtk_widget_class_bind_template_child_full (widget_class, "toolbar_available", FALSE, 0);
@@ -347,7 +347,7 @@ gedit_encodings_dialog_class_init (GeditEncodingsDialogClass *klass)
 }
 
 static void
-update_add_button_sensitivity (GeditEncodingsDialog *dialog)
+update_add_button_sensitivity (BeditEncodingsDialog *dialog)
 {
 	GtkTreeSelection *selection;
 	gint count;
@@ -358,7 +358,7 @@ update_add_button_sensitivity (GeditEncodingsDialog *dialog)
 }
 
 static void
-update_remove_button_sensitivity (GeditEncodingsDialog *dialog)
+update_remove_button_sensitivity (BeditEncodingsDialog *dialog)
 {
 	const GtkSourceEncoding *utf8_encoding;
 	const GtkSourceEncoding *current_encoding;
@@ -412,7 +412,7 @@ update_remove_button_sensitivity (GeditEncodingsDialog *dialog)
 }
 
 static void
-update_up_down_buttons_sensitivity (GeditEncodingsDialog *dialog)
+update_up_down_buttons_sensitivity (BeditEncodingsDialog *dialog)
 {
 	GtkTreeSelection *selection;
 	gint count;
@@ -454,7 +454,7 @@ update_up_down_buttons_sensitivity (GeditEncodingsDialog *dialog)
 }
 
 static void
-update_chosen_buttons_sensitivity (GeditEncodingsDialog *dialog)
+update_chosen_buttons_sensitivity (BeditEncodingsDialog *dialog)
 {
 	update_remove_button_sensitivity (dialog);
 	update_up_down_buttons_sensitivity (dialog);
@@ -513,7 +513,7 @@ transfer_encodings (GList        *paths,
 
 static void
 add_button_clicked_cb (GtkWidget            *button,
-		       GeditEncodingsDialog *dialog)
+		       BeditEncodingsDialog *dialog)
 {
 	GtkTreeSelection *selection;
 	GtkTreeModel *model;
@@ -560,7 +560,7 @@ add_button_clicked_cb (GtkWidget            *button,
 
 static void
 remove_button_clicked_cb (GtkWidget            *button,
-			  GeditEncodingsDialog *dialog)
+			  BeditEncodingsDialog *dialog)
 {
 	const GtkSourceEncoding *utf8_encoding;
 	const GtkSourceEncoding *current_encoding;
@@ -621,7 +621,7 @@ remove_button_clicked_cb (GtkWidget            *button,
 
 static void
 up_button_clicked_cb (GtkWidget            *button,
-		      GeditEncodingsDialog *dialog)
+		      BeditEncodingsDialog *dialog)
 {
 	GtkTreeSelection *selection;
 	GtkTreeModel *model;
@@ -661,7 +661,7 @@ up_button_clicked_cb (GtkWidget            *button,
 
 static void
 down_button_clicked_cb (GtkWidget            *button,
-			GeditEncodingsDialog *dialog)
+			BeditEncodingsDialog *dialog)
 {
 	GtkTreeSelection *selection;
 	GtkTreeModel *model;
@@ -700,7 +700,7 @@ down_button_clicked_cb (GtkWidget            *button,
 }
 
 static void
-init_toolbar_available (GeditEncodingsDialog *dialog)
+init_toolbar_available (BeditEncodingsDialog *dialog)
 {
 	GtkWidget *scrolled_window;
 	GtkToolbar *toolbar;
@@ -740,7 +740,7 @@ init_toolbar_available (GeditEncodingsDialog *dialog)
 }
 
 static void
-init_toolbar_chosen (GeditEncodingsDialog *dialog)
+init_toolbar_chosen (BeditEncodingsDialog *dialog)
 {
 	GtkWidget *scrolled_window;
 	GtkToolbar *toolbar;
@@ -835,7 +835,7 @@ init_toolbar_chosen (GeditEncodingsDialog *dialog)
 }
 
 static void
-gedit_encodings_dialog_init (GeditEncodingsDialog *dialog)
+gedit_encodings_dialog_init (BeditEncodingsDialog *dialog)
 {
 	GtkTreeSelection *selection;
 

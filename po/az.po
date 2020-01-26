@@ -21,28 +21,28 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: KBabel 1.3.1\n"
 
-#: ../data/GNOME_Gedit.server.in.in.h:1
-msgid "Gedit View"
-msgstr "Gedit Görünüşü"
+#: ../data/GNOME_Bedit.server.in.in.h:1
+msgid "Bedit View"
+msgstr "Bedit Görünüşü"
 
-#: ../data/GNOME_Gedit.server.in.in.h:2
-msgid "Gedit View."
-msgstr "Gedit Görünüşü."
+#: ../data/GNOME_Bedit.server.in.in.h:2
+msgid "Bedit View."
+msgstr "Bedit Görünüşü."
 
-#: ../data/GNOME_Gedit.server.in.in.h:3
-msgid "Gedit viewer factory"
-msgstr "Gedit nümayişçisi e'malatxanası"
+#: ../data/GNOME_Bedit.server.in.in.h:3
+msgid "Bedit viewer factory"
+msgstr "Bedit nümayişçisi e'malatxanası"
 
-#: ../data/GNOME_Gedit.server.in.in.h:4
+#: ../data/GNOME_Bedit.server.in.in.h:4
 #: ../plugins/taglist/HTML.tags.xml.in.h:214
 msgid "Source"
 msgstr "Mənbə"
 
-#: ../data/GNOME_Gedit.server.in.in.h:5
+#: ../data/GNOME_Bedit.server.in.in.h:5
 msgid "gedit application"
 msgstr "gedit proqramı"
 
-#: ../data/GNOME_Gedit.server.in.in.h:6
+#: ../data/GNOME_Bedit.server.in.in.h:6
 msgid "gedit automation factory"
 msgstr "gedit avtomatikləşdirmə e'malatxanası"
 
@@ -178,7 +178,7 @@ msgid ""
 "lines."
 msgstr ""
 "Bu qiymət 0 isə, sənəd çap edilərkən sətir nömrələri çap edilməyəcək. Əks "
-"halda Gedit sətirləri verilən hər sətirdən sonra çap edəcək."
+"halda Bedit sətirləri verilən hər sətirdən sonra çap edəcək."
 
 #: ../data/gedit.schemas.in.h:25
 msgid "Insert spaces"
@@ -253,7 +253,7 @@ msgid ""
 "Number of minutes after which gedit will automatically save modified files. "
 "This will only take effect if the \"Auto Save\" option is turned on."
 msgstr ""
-"Dəyişdirilmiş faylların Gedit tərəfindən avtomatik qeyd edilməsi üçün "
+"Dəyişdirilmiş faylların Bedit tərəfindən avtomatik qeyd edilməsi üçün "
 "keçməsi lazım olan dəqiqə. Bu ancaq \"Avtomatik Qeyd\" seçimi fəaldırsa "
 "mümkün olacaq."
 
@@ -469,7 +469,7 @@ msgid ""
 "interval. You can set the time interval with the \"Auto Save Interval\" "
 "option."
 msgstr ""
-"Dəyişdirilmiş faylların Gedit tərəfindən avtomatik qeyd edilməsi. Vaxt "
+"Dəyişdirilmiş faylların Bedit tərəfindən avtomatik qeyd edilməsi. Vaxt "
 "aralığını \"Avtomatik Qeyd Aralığı\" qiymətindən seçə bilərsiniz."
 
 #: ../data/gedit.schemas.in.h:88
@@ -477,7 +477,7 @@ msgid ""
 "Whether gedit should create backup copies for the files it saves. You can "
 "set the backup file extension with the \"Backup Copy Extension\" option."
 msgstr ""
-"Qeyd edilən faylların Gedit tərəfindən avtomatik ehtiyat nüsxəsinin "
+"Qeyd edilən faylların Bedit tərəfindən avtomatik ehtiyat nüsxəsinin "
 "yaradılması. Bu faylların uzantısını \"Ehtiyat Nüsxəsi Uzantısı\" "
 "qiymətindən seçə bilərsiniz."
 
@@ -544,7 +544,7 @@ msgid ""
 "specific to gedit. If this option is turned off, then the font named in the "
 "\"Editor Font\" option will be used instead of the system font."
 msgstr ""
-"Redaktə işləri üçün Geditor'un yazı növü yerinə sistemin ön qurğulu yazı "
+"Redaktə işləri üçün Beditor'un yazı növü yerinə sistemin ön qurğulu yazı "
 "növünün işlədilməsi. Bu seçim bağlıdırsa, \"Editor Font\" seçimindəki yazı "
 "növü sistem yazı növünün yerinə istifadə ediləcək."
 
@@ -1165,7 +1165,7 @@ msgstr "URI-dən aç"
 
 #: ../gedit/gedit-commands.c:551
 msgid "gedit is a small and lightweight text editor for the GNOME Desktop"
-msgstr "Gedit Gnome üçün kiçik və istifadəsi asan olan bir editordur"
+msgstr "Bedit Gnome üçün kiçik və istifadəsi asan olan bir editordur"
 
 #. Translators: This is a special message that shouldn't be translated
 #. literally. It is used in the about box to give credits to
@@ -2125,7 +2125,7 @@ msgstr "Faylı müəyyən mövqedən aç"
 
 #: ../gedit/gedit-ui.xml.h:32
 msgid "Open the gedit manual"
-msgstr "Gedit əl kitabçasını aç"
+msgstr "Bedit əl kitabçasını aç"
 
 #: ../gedit/gedit-ui.xml.h:33
 msgid "Page Set_up"
@@ -2427,15 +2427,15 @@ msgstr "Bu faylı əmr sətirindən açmaq üçün işlədiləcək hərf kodlama
 
 #: ../gedit/gedit2.c:86
 msgid "Quit an existing instance of gedit"
-msgstr "Mövcud Gedit proqramından çıx"
+msgstr "Mövcud Bedit proqramından çıx"
 
 #: ../gedit/gedit2.c:89
 msgid "Create a new toplevel window in an existing instance of gedit"
-msgstr "Mövcud Gedit pəncərəsində yeni bir üst səviyyə pəncərə yarat"
+msgstr "Mövcud Bedit pəncərəsində yeni bir üst səviyyə pəncərə yarat"
 
 #: ../gedit/gedit2.c:92
 msgid "Create a new document in an existing instance of gedit"
-msgstr "Mövcud Gedit pəncərəsində yeni bir sənəd yarat"
+msgstr "Mövcud Bedit pəncərəsində yeni bir sənəd yarat"
 
 #: ../gedit/gedit2.c:168
 #, c-format

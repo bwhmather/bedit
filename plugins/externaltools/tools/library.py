@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-#    Gedit External Tools plugin
+#    Bedit External Tools plugin
 #    Copyright (C) 2006  Steve Frécinaux <code@istique.net>
 #
 #    This program is free software; you can redistribute it and/or modify
@@ -252,7 +252,7 @@ class Tool(object):
 
         for line in fp:
             if not in_block:
-                in_block = line.startswith('# [Gedit Tool]')
+                in_block = line.startswith('# [Bedit Tool]')
                 continue
             if line.startswith('##') or line.startswith('# #'):
                 continue
@@ -416,7 +416,7 @@ class Tool(object):
 
         # before entering the data block
         for line in fp:
-            if line.startswith('# [Gedit Tool]'):
+            if line.startswith('# [Bedit Tool]'):
                 break
             lines.append(line)
         # in the block:
@@ -435,7 +435,7 @@ class Tool(object):
         return lines
 
     def _dump_properties(self):
-        lines = ['# [Gedit Tool]']
+        lines = ['# [Bedit Tool]']
         for item in self._properties.items():
             if item[0] in self._transform:
                 lines.append('# %s=%s' % (item[0], self._transform[item[0]][1](item[1])))

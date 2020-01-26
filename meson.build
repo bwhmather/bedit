@@ -1,5 +1,5 @@
 project(
-  'gedit', 'c',
+  'bedit', 'c',
   version: '3.35.2',
   meson_version: '>= 0.49'
 )
@@ -125,7 +125,7 @@ endif
 
 subdir('data')
 subdir('po')
-subdir('gedit')
+subdir('bedit')
 subdir('plugins')
 
 if get_option('gtk_doc')
@@ -147,7 +147,7 @@ meson.add_install_script(
 summary = [
   'Configuration:',
   '',
-  '        gedit version @0@ (API version @1@)'.format(meson.project_version(), api_version),
+  '        bedit version @0@ (API version @1@)'.format(meson.project_version(), api_version),
   '',
   '        Prefix:                @0@'.format(get_option('prefix')),
   '        API documentation:     @0@'.format(get_option('gtk_doc')),

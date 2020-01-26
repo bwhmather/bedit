@@ -31,20 +31,20 @@
  * @short_description: Interface for activatable extensions on windows
  * @see_also: #PeasExtensionSet
  *
- * #GeditWindowActivatable is an interface which should be implemented by
+ * #BeditWindowActivatable is an interface which should be implemented by
  * extensions that should be activated on a gedit main window.
  **/
 
-G_DEFINE_INTERFACE(GeditWindowActivatable, gedit_window_activatable, G_TYPE_OBJECT)
+G_DEFINE_INTERFACE(BeditWindowActivatable, gedit_window_activatable, G_TYPE_OBJECT)
 
 static void
-gedit_window_activatable_default_init (GeditWindowActivatableInterface *iface)
+gedit_window_activatable_default_init (BeditWindowActivatableInterface *iface)
 {
 	/**
-	 * GeditWindowActivatable:window:
+	 * BeditWindowActivatable:window:
 	 *
 	 * The window property contains the gedit window for this
-	 * #GeditWindowActivatable instance.
+	 * #BeditWindowActivatable instance.
 	 */
 	g_object_interface_install_property (iface,
 	                                     g_param_spec_object ("window",
@@ -58,14 +58,14 @@ gedit_window_activatable_default_init (GeditWindowActivatableInterface *iface)
 
 /**
  * gedit_window_activatable_activate:
- * @activatable: A #GeditWindowActivatable.
+ * @activatable: A #BeditWindowActivatable.
  *
  * Activates the extension on the window property.
  */
 void
-gedit_window_activatable_activate (GeditWindowActivatable *activatable)
+gedit_window_activatable_activate (BeditWindowActivatable *activatable)
 {
-	GeditWindowActivatableInterface *iface;
+	BeditWindowActivatableInterface *iface;
 
 	g_return_if_fail (GEDIT_IS_WINDOW_ACTIVATABLE (activatable));
 
@@ -78,14 +78,14 @@ gedit_window_activatable_activate (GeditWindowActivatable *activatable)
 
 /**
  * gedit_window_activatable_deactivate:
- * @activatable: A #GeditWindowActivatable.
+ * @activatable: A #BeditWindowActivatable.
  *
  * Deactivates the extension on the window property.
  */
 void
-gedit_window_activatable_deactivate (GeditWindowActivatable *activatable)
+gedit_window_activatable_deactivate (BeditWindowActivatable *activatable)
 {
-	GeditWindowActivatableInterface *iface;
+	BeditWindowActivatableInterface *iface;
 
 	g_return_if_fail (GEDIT_IS_WINDOW_ACTIVATABLE (activatable));
 
@@ -98,15 +98,15 @@ gedit_window_activatable_deactivate (GeditWindowActivatable *activatable)
 
 /**
  * gedit_window_activatable_update_state:
- * @activatable: A #GeditWindowActivatable.
+ * @activatable: A #BeditWindowActivatable.
  *
  * Triggers an update of the extension internal state to take into account
  * state changes in the window, due to some event or user action.
  */
 void
-gedit_window_activatable_update_state (GeditWindowActivatable *activatable)
+gedit_window_activatable_update_state (BeditWindowActivatable *activatable)
 {
-	GeditWindowActivatableInterface *iface;
+	BeditWindowActivatableInterface *iface;
 
 	g_return_if_fail (GEDIT_IS_WINDOW_ACTIVATABLE (activatable));
 

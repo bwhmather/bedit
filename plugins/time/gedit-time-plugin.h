@@ -28,25 +28,25 @@
 G_BEGIN_DECLS
 
 #define GEDIT_TYPE_TIME_PLUGIN		(gedit_time_plugin_get_type ())
-#define GEDIT_TIME_PLUGIN(o)		(G_TYPE_CHECK_INSTANCE_CAST ((o), GEDIT_TYPE_TIME_PLUGIN, GeditTimePlugin))
-#define GEDIT_TIME_PLUGIN_CLASS(k)	(G_TYPE_CHECK_CLASS_CAST((k), GEDIT_TYPE_TIME_PLUGIN, GeditTimePluginClass))
+#define GEDIT_TIME_PLUGIN(o)		(G_TYPE_CHECK_INSTANCE_CAST ((o), GEDIT_TYPE_TIME_PLUGIN, BeditTimePlugin))
+#define GEDIT_TIME_PLUGIN_CLASS(k)	(G_TYPE_CHECK_CLASS_CAST((k), GEDIT_TYPE_TIME_PLUGIN, BeditTimePluginClass))
 #define GEDIT_IS_TIME_PLUGIN(o)		(G_TYPE_CHECK_INSTANCE_TYPE ((o), GEDIT_TYPE_TIME_PLUGIN))
 #define GEDIT_IS_TIME_PLUGIN_CLASS(k)	(G_TYPE_CHECK_CLASS_TYPE ((k), GEDIT_TYPE_TIME_PLUGIN))
-#define GEDIT_TIME_PLUGIN_GET_CLASS(o)	(G_TYPE_INSTANCE_GET_CLASS ((o), GEDIT_TYPE_TIME_PLUGIN, GeditTimePluginClass))
+#define GEDIT_TIME_PLUGIN_GET_CLASS(o)	(G_TYPE_INSTANCE_GET_CLASS ((o), GEDIT_TYPE_TIME_PLUGIN, BeditTimePluginClass))
 
-typedef struct _GeditTimePlugin		GeditTimePlugin;
-typedef struct _GeditTimePluginPrivate	GeditTimePluginPrivate;
-typedef struct _GeditTimePluginClass	GeditTimePluginClass;
+typedef struct _BeditTimePlugin		BeditTimePlugin;
+typedef struct _BeditTimePluginPrivate	BeditTimePluginPrivate;
+typedef struct _BeditTimePluginClass	BeditTimePluginClass;
 
-struct _GeditTimePlugin
+struct _BeditTimePlugin
 {
 	PeasExtensionBase parent_instance;
 
 	/*< private >*/
-	GeditTimePluginPrivate *priv;
+	BeditTimePluginPrivate *priv;
 };
 
-struct _GeditTimePluginClass
+struct _BeditTimePluginClass
 {
 	PeasExtensionBaseClass parent_class;
 };

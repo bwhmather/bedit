@@ -1,4 +1,4 @@
-#    Gedit snippets plugin
+#    Bedit snippets plugin
 #    Copyright (C) 2005-2006  Jesse van den Kieboom <jesse@icecrew.nl>
 #
 #    This program is free software; you can redistribute it and/or modify
@@ -15,15 +15,15 @@
 #    along with this program; if not, write to the Free Software
 #    Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 
-from gi.repository import Gtk, Gedit, GObject
+from gi.repository import Gtk, Bedit, GObject
 from .snippet import Snippet
 from .library import Library
 from .shareddata import SharedData
 from .signals import Signals
 
 
-class Message(Gedit.Message):
-    view = GObject.Property(type=Gedit.View)
+class Message(Bedit.Message):
+    view = GObject.Property(type=Bedit.View)
     iter = GObject.Property(type=Gtk.TextIter)
 
 class Activate(Message):
@@ -32,10 +32,10 @@ class Activate(Message):
 class ParseAndActivate(Message):
     snippet = GObject.Property(type=str)
 
-class WindowActivatable(GObject.Object, Gedit.WindowActivatable, Signals):
-    __gtype_name__ = "GeditSnippetsWindowActivatable"
+class WindowActivatable(GObject.Object, Bedit.WindowActivatable, Signals):
+    __gtype_name__ = "BeditSnippetsWindowActivatable"
 
-    window = GObject.Property(type=Gedit.Window)
+    window = GObject.Property(type=Bedit.Window)
 
     def __init__(self):
         GObject.Object.__init__(self)

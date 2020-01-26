@@ -32,13 +32,13 @@ G_BEGIN_DECLS
 
 #define GEDIT_TYPE_SETTINGS (gedit_settings_get_type ())
 
-G_DECLARE_FINAL_TYPE (GeditSettings, gedit_settings, GEDIT, SETTINGS, GObject)
+G_DECLARE_FINAL_TYPE (BeditSettings, gedit_settings, GEDIT, SETTINGS, GObject)
 
-GeditSettings		*gedit_settings_new				(void);
+BeditSettings		*gedit_settings_new				(void);
 
-GeditLockdownMask	 gedit_settings_get_lockdown			(GeditSettings *gs);
+BeditLockdownMask	 gedit_settings_get_lockdown			(BeditSettings *gs);
 
-gchar			*gedit_settings_get_system_font			(GeditSettings *gs);
+gchar			*gedit_settings_get_system_font			(BeditSettings *gs);
 
 GSList			*gedit_settings_get_candidate_encodings		(gboolean      *default_candidates);
 

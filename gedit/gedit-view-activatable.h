@@ -27,19 +27,19 @@ G_BEGIN_DECLS
 
 #define GEDIT_TYPE_VIEW_ACTIVATABLE (gedit_view_activatable_get_type ())
 
-G_DECLARE_INTERFACE (GeditViewActivatable, gedit_view_activatable, GEDIT, VIEW_ACTIVATABLE, GObject)
+G_DECLARE_INTERFACE (BeditViewActivatable, gedit_view_activatable, GEDIT, VIEW_ACTIVATABLE, GObject)
 
-struct _GeditViewActivatableInterface
+struct _BeditViewActivatableInterface
 {
 	GTypeInterface g_iface;
 
 	/* Virtual public methods */
-	void	(*activate)		(GeditViewActivatable *activatable);
-	void	(*deactivate)		(GeditViewActivatable *activatable);
+	void	(*activate)		(BeditViewActivatable *activatable);
+	void	(*deactivate)		(BeditViewActivatable *activatable);
 };
 
-void	 gedit_view_activatable_activate	(GeditViewActivatable *activatable);
-void	 gedit_view_activatable_deactivate	(GeditViewActivatable *activatable);
+void	 gedit_view_activatable_activate	(BeditViewActivatable *activatable);
+void	 gedit_view_activatable_deactivate	(BeditViewActivatable *activatable);
 
 G_END_DECLS
 

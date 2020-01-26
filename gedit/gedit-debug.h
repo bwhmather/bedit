@@ -26,7 +26,7 @@
 #include <glib.h>
 
 /**
- * GeditDebugSection:
+ * BeditDebugSection:
  *
  * Enumeration of debug sections.
  *
@@ -49,7 +49,7 @@ typedef enum {
 	GEDIT_DEBUG_APP      = 1 << 8,
 	GEDIT_DEBUG_UTILS    = 1 << 9,
 	GEDIT_DEBUG_METADATA = 1 << 10,
-} GeditDebugSection;
+} BeditDebugSection;
 
 #define	DEBUG_VIEW	GEDIT_DEBUG_VIEW,    __FILE__, __LINE__, G_STRFUNC
 #define	DEBUG_PREFS	GEDIT_DEBUG_PREFS,   __FILE__, __LINE__, G_STRFUNC
@@ -65,12 +65,12 @@ typedef enum {
 
 void gedit_debug_init (void);
 
-void gedit_debug (GeditDebugSection  section,
+void gedit_debug (BeditDebugSection  section,
 		  const gchar       *file,
 		  gint               line,
 		  const gchar       *function);
 
-void gedit_debug_message (GeditDebugSection  section,
+void gedit_debug_message (BeditDebugSection  section,
 			  const gchar       *file,
 			  gint               line,
 			  const gchar       *function,

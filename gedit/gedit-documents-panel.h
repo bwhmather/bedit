@@ -29,9 +29,9 @@ G_BEGIN_DECLS
 
 #define GEDIT_TYPE_DOCUMENTS_PANEL (gedit_documents_panel_get_type())
 
-G_DECLARE_FINAL_TYPE (GeditDocumentsPanel, gedit_documents_panel, GEDIT, DOCUMENTS_PANEL, GtkBox)
+G_DECLARE_FINAL_TYPE (BeditDocumentsPanel, gedit_documents_panel, GEDIT, DOCUMENTS_PANEL, GtkBox)
 
-GtkWidget	*gedit_documents_panel_new 	(GeditWindow *window);
+GtkWidget	*gedit_documents_panel_new 	(BeditWindow *window);
 
 G_END_DECLS
 

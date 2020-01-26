@@ -29,11 +29,11 @@ G_BEGIN_DECLS
 
 #define GEDIT_TYPE_HIGHLIGHT_MODE_DIALOG (gedit_highlight_mode_dialog_get_type ())
 
-G_DECLARE_FINAL_TYPE (GeditHighlightModeDialog, gedit_highlight_mode_dialog, GEDIT, HIGHLIGHT_MODE_DIALOG, GtkDialog)
+G_DECLARE_FINAL_TYPE (BeditHighlightModeDialog, gedit_highlight_mode_dialog, GEDIT, HIGHLIGHT_MODE_DIALOG, GtkDialog)
 
 GtkWidget                  *gedit_highlight_mode_dialog_new             (GtkWindow *parent);
 
-GeditHighlightModeSelector *gedit_highlight_mode_dialog_get_selector    (GeditHighlightModeDialog *dlg);
+BeditHighlightModeSelector *gedit_highlight_mode_dialog_get_selector    (BeditHighlightModeDialog *dlg);
 
 G_END_DECLS
 

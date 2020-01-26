@@ -33,22 +33,22 @@ enum
 	PROP_EMBLEM,
 };
 
-struct _GeditFileBrowserMessageSetEmblemPrivate
+struct _BeditFileBrowserMessageSetEmblemPrivate
 {
 	gchar *id;
 	gchar *emblem;
 };
 
-G_DEFINE_TYPE_EXTENDED (GeditFileBrowserMessageSetEmblem,
+G_DEFINE_TYPE_EXTENDED (BeditFileBrowserMessageSetEmblem,
                         gedit_file_browser_message_set_emblem,
                         GEDIT_TYPE_MESSAGE,
                         0,
-                        G_ADD_PRIVATE (GeditFileBrowserMessageSetEmblem))
+                        G_ADD_PRIVATE (BeditFileBrowserMessageSetEmblem))
 
 static void
 gedit_file_browser_message_set_emblem_finalize (GObject *obj)
 {
-	GeditFileBrowserMessageSetEmblem *msg = GEDIT_FILE_BROWSER_MESSAGE_SET_EMBLEM (obj);
+	BeditFileBrowserMessageSetEmblem *msg = GEDIT_FILE_BROWSER_MESSAGE_SET_EMBLEM (obj);
 
 	g_free (msg->priv->id);
 	g_free (msg->priv->emblem);
@@ -62,7 +62,7 @@ gedit_file_browser_message_set_emblem_get_property (GObject    *obj,
                                                     GValue     *value,
                                                     GParamSpec *pspec)
 {
-	GeditFileBrowserMessageSetEmblem *msg;
+	BeditFileBrowserMessageSetEmblem *msg;
 
 	msg = GEDIT_FILE_BROWSER_MESSAGE_SET_EMBLEM (obj);
 
@@ -83,7 +83,7 @@ gedit_file_browser_message_set_emblem_set_property (GObject      *obj,
                                                     GValue const *value,
                                                     GParamSpec   *pspec)
 {
-	GeditFileBrowserMessageSetEmblem *msg;
+	BeditFileBrowserMessageSetEmblem *msg;
 
 	msg = GEDIT_FILE_BROWSER_MESSAGE_SET_EMBLEM (obj);
 
@@ -105,7 +105,7 @@ gedit_file_browser_message_set_emblem_set_property (GObject      *obj,
 }
 
 static void
-gedit_file_browser_message_set_emblem_class_init (GeditFileBrowserMessageSetEmblemClass *klass)
+gedit_file_browser_message_set_emblem_class_init (BeditFileBrowserMessageSetEmblemClass *klass)
 {
 	GObjectClass *object_class = G_OBJECT_CLASS(klass);
 
@@ -136,7 +136,7 @@ gedit_file_browser_message_set_emblem_class_init (GeditFileBrowserMessageSetEmbl
 }
 
 static void
-gedit_file_browser_message_set_emblem_init (GeditFileBrowserMessageSetEmblem *message)
+gedit_file_browser_message_set_emblem_init (BeditFileBrowserMessageSetEmblem *message)
 {
 	message->priv = gedit_file_browser_message_set_emblem_get_instance_private (message);
 }

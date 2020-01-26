@@ -45,16 +45,16 @@
 #include "gedit/gedit-app-osx.h"
 #endif
 
-static void gedit_window_activatable_iface_init (GeditWindowActivatableInterface *iface);
+static void gedit_window_activatable_iface_init (BeditWindowActivatableInterface *iface);
 
 
-struct _GeditCheckUpdatePluginPrivate
+struct _BeditCheckUpdatePluginPrivate
 {
 	SoupSession *session;
 
 	GSettings *settings;
 
-	GeditWindow *window;
+	BeditWindow *window;
 
 	gchar *url;
 	gchar *version;
@@ -66,21 +66,21 @@ enum
 	PROP_WINDOW
 };
 
-G_DEFINE_DYNAMIC_TYPE_EXTENDED (GeditCheckUpdatePlugin,
+G_DEFINE_DYNAMIC_TYPE_EXTENDED (BeditCheckUpdatePlugin,
 				gedit_check_update_plugin,
 				PEAS_TYPE_EXTENSION_BASE,
 				0,
 				G_IMPLEMENT_INTERFACE_DYNAMIC (GEDIT_TYPE_WINDOW_ACTIVATABLE,
 							       gedit_window_activatable_iface_init)
-				G_ADD_PRIVATE_DYNAMIC (GeditCheckUpdatePlugin))
+				G_ADD_PRIVATE_DYNAMIC (BeditCheckUpdatePlugin))
 
 static void
-gedit_check_update_plugin_init (GeditCheckUpdatePlugin *plugin)
+gedit_check_update_plugin_init (BeditCheckUpdatePlugin *plugin)
 {
 	plugin->priv = gedit_check_update_plugin_get_instance_private (plugin);
 
 	gedit_debug_message (DEBUG_PLUGINS,
-			     "GeditCheckUpdatePlugin initializing");
+			     "BeditCheckUpdatePlugin initializing");
 
 	plugin->priv->session = soup_session_async_new ();
 
@@ -90,14 +90,14 @@ gedit_check_update_plugin_init (GeditCheckUpdatePlugin *plugin)
 static void
 gedit_check_update_plugin_dispose (GObject *object)
 {
-	GeditCheckUpdatePlugin *plugin = GEDIT_CHECK_UPDATE_PLUGIN (object);
+	BeditCheckUpdatePlugin *plugin = GEDIT_CHECK_UPDATE_PLUGIN (object);
 
 	g_clear_object (&plugin->priv->session);
 	g_clear_object (&plugin->priv->settings);
 	g_clear_object (&plugin->priv->window);
 
 	gedit_debug_message (DEBUG_PLUGINS,
-			     "GeditCheckUpdatePlugin disposing");
+			     "BeditCheckUpdatePlugin disposing");
 
 	G_OBJECT_CLASS (gedit_check_update_plugin_parent_class)->dispose (object);
 }
@@ -105,10 +105,10 @@ gedit_check_update_plugin_dispose (GObject *object)
 static void
 gedit_check_update_plugin_finalize (GObject *object)
 {
-	GeditCheckUpdatePlugin *plugin = GEDIT_CHECK_UPDATE_PLUGIN (object);
+	BeditCheckUpdatePlugin *plugin = GEDIT_CHECK_UPDATE_PLUGIN (object);
 
 	gedit_debug_message (DEBUG_PLUGINS,
-			     "GeditCheckUpdatePlugin finalizing");
+			     "BeditCheckUpdatePlugin finalizing");
 
 	g_free (plugin->priv->url);
 	g_free (plugin->priv->version);
@@ -122,7 +122,7 @@ gedit_check_update_plugin_set_property (GObject      *object,
                                         const GValue *value,
                                         GParamSpec   *pspec)
 {
-	GeditCheckUpdatePlugin *plugin = GEDIT_CHECK_UPDATE_PLUGIN (object);
+	BeditCheckUpdatePlugin *plugin = GEDIT_CHECK_UPDATE_PLUGIN (object);
 
 	switch (prop_id)
 	{
@@ -142,7 +142,7 @@ gedit_check_update_plugin_get_property (GObject    *object,
                                         GValue     *value,
                                         GParamSpec *pspec)
 {
-	GeditCheckUpdatePlugin *plugin = GEDIT_CHECK_UPDATE_PLUGIN (object);
+	BeditCheckUpdatePlugin *plugin = GEDIT_CHECK_UPDATE_PLUGIN (object);
 
 	switch (prop_id)
 	{
@@ -217,7 +217,7 @@ set_message_area_text_and_icon (GtkWidget        *message_area,
 static void
 on_response_cb (GtkWidget              *infobar,
 		gint                    response_id,
-		GeditCheckUpdatePlugin *plugin)
+		BeditCheckUpdatePlugin *plugin)
 {
 	if (response_id == GTK_RESPONSE_YES)
 	{
@@ -268,7 +268,7 @@ on_response_cb (GtkWidget              *infobar,
 }
 
 static GtkWidget *
-create_infobar (GeditWindow *window,
+create_infobar (BeditWindow *window,
                 const gchar *version)
 {
 	GtkWidget *infobar;
@@ -418,7 +418,7 @@ parse_file_version (const gchar *file)
 }
 
 static gchar *
-get_ignore_version (GeditCheckUpdatePlugin *plugin)
+get_ignore_version (BeditCheckUpdatePlugin *plugin)
 {
 	return g_settings_get_string (plugin->priv->settings,
 				      CHECKUPDATE_KEY_IGNORE_VERSION);
@@ -427,7 +427,7 @@ get_ignore_version (GeditCheckUpdatePlugin *plugin)
 static void
 parse_page_file (SoupSession            *session,
 		 SoupMessage            *msg,
-		 GeditCheckUpdatePlugin *plugin)
+		 BeditCheckUpdatePlugin *plugin)
 {
 	if (msg->status_code == SOUP_STATUS_OK)
 	{
@@ -559,7 +559,7 @@ get_file_page_version (const gchar *text,
 static void
 parse_page_version (SoupSession            *session,
 		    SoupMessage            *msg,
-		    GeditCheckUpdatePlugin *plugin)
+		    BeditCheckUpdatePlugin *plugin)
 {
 	if (msg->status_code == SOUP_STATUS_OK)
 	{
@@ -580,9 +580,9 @@ parse_page_version (SoupSession            *session,
 }
 
 static void
-gedit_check_update_plugin_activate (GeditWindowActivatable *activatable)
+gedit_check_update_plugin_activate (BeditWindowActivatable *activatable)
 {
-	GeditCheckUpdatePluginPrivate *priv;
+	BeditCheckUpdatePluginPrivate *priv;
 	SoupMessage *msg;
 
 	gedit_debug (DEBUG_PLUGINS);
@@ -597,7 +597,7 @@ gedit_check_update_plugin_activate (GeditWindowActivatable *activatable)
 }
 
 static void
-gedit_check_update_plugin_deactivate (GeditWindowActivatable *activatable)
+gedit_check_update_plugin_deactivate (BeditWindowActivatable *activatable)
 {
 
 	gedit_debug (DEBUG_PLUGINS);
@@ -606,7 +606,7 @@ gedit_check_update_plugin_deactivate (GeditWindowActivatable *activatable)
 }
 
 static void
-gedit_check_update_plugin_class_init (GeditCheckUpdatePluginClass *klass)
+gedit_check_update_plugin_class_init (BeditCheckUpdatePluginClass *klass)
 {
 	GObjectClass *object_class = G_OBJECT_CLASS (klass);
 
@@ -619,12 +619,12 @@ gedit_check_update_plugin_class_init (GeditCheckUpdatePluginClass *klass)
 }
 
 static void
-gedit_check_update_plugin_class_finalize (GeditCheckUpdatePluginClass *klass)
+gedit_check_update_plugin_class_finalize (BeditCheckUpdatePluginClass *klass)
 {
 }
 
 static void
-gedit_window_activatable_iface_init (GeditWindowActivatableInterface *iface)
+gedit_window_activatable_iface_init (BeditWindowActivatableInterface *iface)
 {
 	iface->activate = gedit_check_update_plugin_activate;
 	iface->deactivate = gedit_check_update_plugin_deactivate;

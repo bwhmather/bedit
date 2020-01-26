@@ -1,5 +1,5 @@
 /*
- * gedit-file-bookmarks-utils.c - Gedit plugin providing easy file access
+ * gedit-file-bookmarks-utils.c - Bedit plugin providing easy file access
  * from the sidepanel
  *
  * Copyright (C) 2006 - Jesse van den Kieboom <jesse@icecrew.nl>
@@ -186,7 +186,7 @@ gedit_file_browser_utils_file_basename (GFile *file)
 }
 
 gboolean
-gedit_file_browser_utils_confirmation_dialog (GeditWindow    *window,
+gedit_file_browser_utils_confirmation_dialog (BeditWindow    *window,
                                               GtkMessageType  type,
                                               gchar const    *message,
 		                              gchar const    *secondary,

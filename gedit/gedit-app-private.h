@@ -27,38 +27,38 @@
 
 G_BEGIN_DECLS
 
-void		 _gedit_app_set_lockdown		(GeditApp          *app,
-							 GeditLockdownMask  lockdown);
+void		 _gedit_app_set_lockdown		(BeditApp          *app,
+							 BeditLockdownMask  lockdown);
 
-void		 _gedit_app_set_lockdown_bit		(GeditApp          *app,
-							 GeditLockdownMask  bit,
+void		 _gedit_app_set_lockdown_bit		(BeditApp          *app,
+							 BeditLockdownMask  bit,
 							 gboolean           value);
 
 /* This one is a gedit-window function, but we declare it here to avoid
- * #include headaches since it needs the GeditLockdownMask declaration.
+ * #include headaches since it needs the BeditLockdownMask declaration.
  */
-void		 _gedit_window_set_lockdown		(GeditWindow       *window,
-							 GeditLockdownMask  lockdown);
+void		 _gedit_window_set_lockdown		(BeditWindow       *window,
+							 BeditLockdownMask  lockdown);
 
 /* global print config */
-GtkPageSetup		*_gedit_app_get_default_page_setup	(GeditApp         *app);
-void			 _gedit_app_set_default_page_setup	(GeditApp         *app,
+GtkPageSetup		*_gedit_app_get_default_page_setup	(BeditApp         *app);
+void			 _gedit_app_set_default_page_setup	(BeditApp         *app,
 								 GtkPageSetup     *page_setup);
-GtkPrintSettings	*_gedit_app_get_default_print_settings	(GeditApp         *app);
-void			 _gedit_app_set_default_print_settings	(GeditApp         *app,
+GtkPrintSettings	*_gedit_app_get_default_print_settings	(BeditApp         *app);
+void			 _gedit_app_set_default_print_settings	(BeditApp         *app,
 								 GtkPrintSettings *settings);
 
-GeditSettings		*_gedit_app_get_settings		(GeditApp  *app);
+BeditSettings		*_gedit_app_get_settings		(BeditApp  *app);
 
-GMenuModel		*_gedit_app_get_hamburger_menu		(GeditApp  *app);
+GMenuModel		*_gedit_app_get_hamburger_menu		(BeditApp  *app);
 
-GMenuModel		*_gedit_app_get_notebook_menu		(GeditApp  *app);
+GMenuModel		*_gedit_app_get_notebook_menu		(BeditApp  *app);
 
-GMenuModel		*_gedit_app_get_tab_width_menu		(GeditApp  *app);
+GMenuModel		*_gedit_app_get_tab_width_menu		(BeditApp  *app);
 
-GMenuModel		*_gedit_app_get_line_col_menu		(GeditApp  *app);
+GMenuModel		*_gedit_app_get_line_col_menu		(BeditApp  *app);
 
-GeditMenuExtension	*_gedit_app_extend_menu			(GeditApp    *app,
+BeditMenuExtension	*_gedit_app_extend_menu			(BeditApp    *app,
 								 const gchar *extension_point);
 
 G_END_DECLS

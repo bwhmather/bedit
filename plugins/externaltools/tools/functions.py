@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-#    Gedit External Tools plugin
+#    Bedit External Tools plugin
 #    Copyright (C) 2005-2006  Steve Frécinaux <steve@istique.net>
 #
 #    This program is free software; you can redistribute it and/or modify
@@ -17,7 +17,7 @@
 #    Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 
 import os
-from gi.repository import Gio, Gtk, Gdk, GtkSource, Gedit
+from gi.repository import Gio, Gtk, Gdk, GtkSource, Bedit
 from .capture import *
 
 try:
@@ -270,14 +270,14 @@ class MultipleDocumentsSaver:
             next_doc = self._docs_to_save[0]
             self._docs_to_save.remove(next_doc)
 
-            Gedit.commands_save_document_async(next_doc,
+            Bedit.commands_save_document_async(next_doc,
                                                self._window,
                                                None,
                                                self.on_document_saved,
                                                None)
 
     def on_document_saved(self, doc, result, user_data):
-        saved = Gedit.commands_save_document_finish(doc, result)
+        saved = Bedit.commands_save_document_finish(doc, result)
         if saved:
             self.save_next_document()
 

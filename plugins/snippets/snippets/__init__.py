@@ -1,4 +1,4 @@
-#    Gedit snippets plugin
+#    Bedit snippets plugin
 #    Copyright (C) 2005-2006  Jesse van den Kieboom <jesse@icecrew.nl>
 #
 #    This program is free software; you can redistribute it and/or modify
@@ -16,7 +16,7 @@
 #    Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 
 import gi
-gi.require_version('Gedit', '3.0')
+gi.require_version('Bedit', '3.0')
 gi.require_version('Gtk', '3.0')
 
 from .appactivatable import AppActivatable

@@ -29,24 +29,24 @@
 G_BEGIN_DECLS
 
 #define GEDIT_TYPE_MODELINE_PLUGIN		(gedit_modeline_plugin_get_type ())
-#define GEDIT_MODELINE_PLUGIN(o)		(G_TYPE_CHECK_INSTANCE_CAST ((o), GEDIT_TYPE_MODELINE_PLUGIN, GeditModelinePlugin))
-#define GEDIT_MODELINE_PLUGIN_CLASS(k)		(G_TYPE_CHECK_CLASS_CAST((k), GEDIT_TYPE_MODELINE_PLUGIN, GeditModelinePluginClass))
+#define GEDIT_MODELINE_PLUGIN(o)		(G_TYPE_CHECK_INSTANCE_CAST ((o), GEDIT_TYPE_MODELINE_PLUGIN, BeditModelinePlugin))
+#define GEDIT_MODELINE_PLUGIN_CLASS(k)		(G_TYPE_CHECK_CLASS_CAST((k), GEDIT_TYPE_MODELINE_PLUGIN, BeditModelinePluginClass))
 #define GEDIT_IS_MODELINE_PLUGIN(o)		(G_TYPE_CHECK_INSTANCE_TYPE ((o), GEDIT_TYPE_MODELINE_PLUGIN))
 #define GEDIT_IS_MODELINE_PLUGIN_CLASS(k)	(G_TYPE_CHECK_CLASS_TYPE ((k), GEDIT_TYPE_MODELINE_PLUGIN))
-#define GEDIT_MODELINE_PLUGIN_GET_CLASS(o)	(G_TYPE_INSTANCE_GET_CLASS ((o), GEDIT_TYPE_MODELINE_PLUGIN, GeditModelinePluginClass))
+#define GEDIT_MODELINE_PLUGIN_GET_CLASS(o)	(G_TYPE_INSTANCE_GET_CLASS ((o), GEDIT_TYPE_MODELINE_PLUGIN, BeditModelinePluginClass))
 
-typedef struct _GeditModelinePlugin		GeditModelinePlugin;
-typedef struct _GeditModelinePluginPrivate	GeditModelinePluginPrivate;
-typedef struct _GeditModelinePluginClass	GeditModelinePluginClass;
+typedef struct _BeditModelinePlugin		BeditModelinePlugin;
+typedef struct _BeditModelinePluginPrivate	BeditModelinePluginPrivate;
+typedef struct _BeditModelinePluginClass	BeditModelinePluginClass;
 
-struct _GeditModelinePlugin {
+struct _BeditModelinePlugin {
 	PeasExtensionBase parent;
 
 	/*< private >*/
-	GeditModelinePluginPrivate *priv;
+	BeditModelinePluginPrivate *priv;
 };
 
-struct _GeditModelinePluginClass {
+struct _BeditModelinePluginClass {
 	PeasExtensionBaseClass parent_class;
 };
 

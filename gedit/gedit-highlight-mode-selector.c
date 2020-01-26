@@ -31,7 +31,7 @@ enum
 	N_COLUMNS
 };
 
-struct _GeditHighlightModeSelector
+struct _BeditHighlightModeSelector
 {
 	GtkGrid parent_instance;
 
@@ -51,16 +51,16 @@ enum
 
 static guint signals[LAST_SIGNAL] = { 0 };
 
-G_DEFINE_TYPE (GeditHighlightModeSelector, gedit_highlight_mode_selector, GTK_TYPE_GRID)
+G_DEFINE_TYPE (BeditHighlightModeSelector, gedit_highlight_mode_selector, GTK_TYPE_GRID)
 
 static void
-gedit_highlight_mode_selector_language_selected (GeditHighlightModeSelector *widget,
+gedit_highlight_mode_selector_language_selected (BeditHighlightModeSelector *widget,
                                                  GtkSourceLanguage          *language)
 {
 }
 
 static void
-gedit_highlight_mode_selector_class_init (GeditHighlightModeSelectorClass *klass)
+gedit_highlight_mode_selector_class_init (BeditHighlightModeSelectorClass *klass)
 {
 	GtkWidgetClass *widget_class = GTK_WIDGET_CLASS (klass);
 
@@ -77,17 +77,17 @@ gedit_highlight_mode_selector_class_init (GeditHighlightModeSelectorClass *klass
 	/* Bind class to template */
 	gtk_widget_class_set_template_from_resource (widget_class,
 	                                             "/com/bwhmather/bedit/ui/gedit-highlight-mode-selector.ui");
-	gtk_widget_class_bind_template_child (widget_class, GeditHighlightModeSelector, treeview);
-	gtk_widget_class_bind_template_child (widget_class, GeditHighlightModeSelector, entry);
-	gtk_widget_class_bind_template_child (widget_class, GeditHighlightModeSelector, liststore);
-	gtk_widget_class_bind_template_child (widget_class, GeditHighlightModeSelector, treemodelfilter);
-	gtk_widget_class_bind_template_child (widget_class, GeditHighlightModeSelector, treeview_selection);
+	gtk_widget_class_bind_template_child (widget_class, BeditHighlightModeSelector, treeview);
+	gtk_widget_class_bind_template_child (widget_class, BeditHighlightModeSelector, entry);
+	gtk_widget_class_bind_template_child (widget_class, BeditHighlightModeSelector, liststore);
+	gtk_widget_class_bind_template_child (widget_class, BeditHighlightModeSelector, treemodelfilter);
+	gtk_widget_class_bind_template_child (widget_class, BeditHighlightModeSelector, treeview_selection);
 }
 
 static gboolean
 visible_func (GtkTreeModel               *model,
               GtkTreeIter                *iter,
-              GeditHighlightModeSelector *selector)
+              BeditHighlightModeSelector *selector)
 {
 	const gchar *entry_text;
 	gchar *name;
@@ -129,14 +129,14 @@ visible_func (GtkTreeModel               *model,
 
 static void
 on_entry_activate (GtkEntry                   *entry,
-                   GeditHighlightModeSelector *selector)
+                   BeditHighlightModeSelector *selector)
 {
 	gedit_highlight_mode_selector_activate_selected_language (selector);
 }
 
 static void
 on_entry_changed (GtkEntry                   *entry,
-                  GeditHighlightModeSelector *selector)
+                  BeditHighlightModeSelector *selector)
 {
 	GtkTreeIter iter;
 
@@ -149,7 +149,7 @@ on_entry_changed (GtkEntry                   *entry,
 }
 
 static gboolean
-move_selection (GeditHighlightModeSelector *selector,
+move_selection (BeditHighlightModeSelector *selector,
                 gint                      howmany)
 {
 	GtkTreeIter iter;
@@ -205,7 +205,7 @@ move_selection (GeditHighlightModeSelector *selector,
 static gboolean
 on_entry_key_press_event (GtkWidget                  *entry,
                           GdkEventKey                *event,
-                          GeditHighlightModeSelector *selector)
+                          BeditHighlightModeSelector *selector)
 {
 	if (event->keyval == GDK_KEY_Down)
 	{
@@ -231,13 +231,13 @@ static void
 on_row_activated (GtkTreeView                *tree_view,
                   GtkTreePath                *path,
                   GtkTreeViewColumn          *column,
-                  GeditHighlightModeSelector *selector)
+                  BeditHighlightModeSelector *selector)
 {
 	gedit_highlight_mode_selector_activate_selected_language (selector);
 }
 
 static void
-gedit_highlight_mode_selector_init (GeditHighlightModeSelector *selector)
+gedit_highlight_mode_selector_init (BeditHighlightModeSelector *selector)
 {
 	GtkSourceLanguageManager *lm;
 	const gchar * const *ids;
@@ -296,14 +296,14 @@ gedit_highlight_mode_selector_init (GeditHighlightModeSelector *selector)
 	}
 }
 
-GeditHighlightModeSelector *
+BeditHighlightModeSelector *
 gedit_highlight_mode_selector_new ()
 {
 	return g_object_new (GEDIT_TYPE_HIGHLIGHT_MODE_SELECTOR, NULL);
 }
 
 void
-gedit_highlight_mode_selector_select_language (GeditHighlightModeSelector *selector,
+gedit_highlight_mode_selector_select_language (BeditHighlightModeSelector *selector,
                                              GtkSourceLanguage        *language)
 {
 	GtkTreeIter iter;
@@ -351,7 +351,7 @@ gedit_highlight_mode_selector_select_language (GeditHighlightModeSelector *selec
 }
 
 void
-gedit_highlight_mode_selector_activate_selected_language (GeditHighlightModeSelector *selector)
+gedit_highlight_mode_selector_activate_selected_language (BeditHighlightModeSelector *selector)
 {
 	GtkSourceLanguage *lang;
 	GtkTreeIter iter;

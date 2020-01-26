@@ -30,14 +30,14 @@
 #include "gedit-notebook.h"
 #include "gedit-tab-label.h"
 
-#define GEDIT_NOTEBOOK_GROUP_NAME "GeditNotebookGroup"
+#define GEDIT_NOTEBOOK_GROUP_NAME "BeditNotebookGroup"
 
-/* The DND targets defined in GeditView start at 100.
+/* The DND targets defined in BeditView start at 100.
  * Those defined in GtkSourceView start at 200.
  */
 #define TARGET_TAB 150
 
-struct _GeditNotebookPrivate
+struct _BeditNotebookPrivate
 {
 	/* History of focused pages. The first element contains the most recent
 	 * one.
@@ -47,7 +47,7 @@ struct _GeditNotebookPrivate
 	guint ignore_focused_page_update : 1;
 };
 
-G_DEFINE_TYPE_WITH_PRIVATE (GeditNotebook, gedit_notebook, GTK_TYPE_NOTEBOOK)
+G_DEFINE_TYPE_WITH_PRIVATE (BeditNotebook, gedit_notebook, GTK_TYPE_NOTEBOOK)
 
 enum
 {
@@ -62,7 +62,7 @@ static guint signals[LAST_SIGNAL] = { 0 };
 static void
 gedit_notebook_finalize (GObject *object)
 {
-	GeditNotebook *notebook = GEDIT_NOTEBOOK (object);
+	BeditNotebook *notebook = GEDIT_NOTEBOOK (object);
 
 	g_list_free (notebook->priv->focused_pages);
 
@@ -225,7 +225,7 @@ gedit_notebook_switch_page (GtkNotebook *notebook,
                             GtkWidget   *page,
                             guint        page_num)
 {
-	GeditNotebookPrivate *priv = GEDIT_NOTEBOOK (notebook)->priv;
+	BeditNotebookPrivate *priv = GEDIT_NOTEBOOK (notebook)->priv;
 
 	GTK_NOTEBOOK_CLASS (gedit_notebook_parent_class)->switch_page (notebook, page, page_num);
 
@@ -256,18 +256,18 @@ gedit_notebook_switch_page (GtkNotebook *notebook,
 }
 
 static void
-close_button_clicked_cb (GeditTabLabel *tab_label,
-			 GeditNotebook *notebook)
+close_button_clicked_cb (BeditTabLabel *tab_label,
+			 BeditNotebook *notebook)
 {
-	GeditTab *tab;
+	BeditTab *tab;
 
 	tab = gedit_tab_label_get_tab (tab_label);
 	g_signal_emit (notebook, signals[TAB_CLOSE_REQUEST], 0, tab);
 }
 
 static void
-switch_to_last_focused_page (GeditNotebook *notebook,
-			     GeditTab      *tab)
+switch_to_last_focused_page (BeditNotebook *notebook,
+			     BeditTab      *tab)
 {
 	if (notebook->priv->focused_pages != NULL)
 	{
@@ -335,7 +335,7 @@ gedit_notebook_page_removed (GtkNotebook *notebook,
                              GtkWidget   *page,
                              guint        page_num)
 {
-	GeditNotebookPrivate *priv = GEDIT_NOTEBOOK (notebook)->priv;
+	BeditNotebookPrivate *priv = GEDIT_NOTEBOOK (notebook)->priv;
 	gboolean current_page;
 
 	/* The page removed was the current page. */
@@ -357,7 +357,7 @@ gedit_notebook_page_added (GtkNotebook *notebook,
                            guint        page_num)
 {
 	GtkWidget *tab_label;
-	GeditView *view;
+	BeditView *view;
 
 	g_return_if_fail (GEDIT_IS_TAB (page));
 
@@ -367,7 +367,7 @@ gedit_notebook_page_added (GtkNotebook *notebook,
 	/* For a DND from one notebook to another, the same tab_label can be
 	 * used, so we need to connect the signal here.
 	 * More precisely, the same tab_label is used when the drop zone is in
-	 * the tab labels (not the GeditView), that is, when the DND is handled
+	 * the tab labels (not the BeditView), that is, when the DND is handled
 	 * by the GtkNotebook implementation.
 	 */
 	g_signal_connect (tab_label,
@@ -387,9 +387,9 @@ gedit_notebook_remove (GtkContainer *container,
                        GtkWidget    *widget)
 {
 	GtkNotebook *notebook = GTK_NOTEBOOK (container);
-	GeditNotebookPrivate *priv = GEDIT_NOTEBOOK (container)->priv;
+	BeditNotebookPrivate *priv = GEDIT_NOTEBOOK (container)->priv;
 	GtkWidget *tab_label;
-	GeditView *view;
+	BeditView *view;
 
 	g_return_if_fail (GEDIT_IS_TAB (widget));
 
@@ -422,7 +422,7 @@ gedit_notebook_remove (GtkContainer *container,
 }
 
 static gboolean
-gedit_notebook_change_to_page (GeditNotebook *notebook,
+gedit_notebook_change_to_page (BeditNotebook *notebook,
                                gint           page_num)
 {
 	gint n_pages;
@@ -441,7 +441,7 @@ gedit_notebook_change_to_page (GeditNotebook *notebook,
 }
 
 static void
-gedit_notebook_class_init (GeditNotebookClass *klass)
+gedit_notebook_class_init (BeditNotebookClass *klass)
 {
 	GObjectClass *object_class = G_OBJECT_CLASS (klass);
 	GtkWidgetClass *widget_class = GTK_WIDGET_CLASS (klass);
@@ -468,7 +468,7 @@ gedit_notebook_class_init (GeditNotebookClass *klass)
 		g_signal_new ("tab-close-request",
 			      G_OBJECT_CLASS_TYPE (object_class),
 			      G_SIGNAL_RUN_LAST,
-			      G_STRUCT_OFFSET (GeditNotebookClass, tab_close_request),
+			      G_STRUCT_OFFSET (BeditNotebookClass, tab_close_request),
 			      NULL, NULL, NULL,
 			      G_TYPE_NONE,
 			      1,
@@ -478,7 +478,7 @@ gedit_notebook_class_init (GeditNotebookClass *klass)
 		g_signal_new ("show-popup-menu",
 			      G_OBJECT_CLASS_TYPE (object_class),
 			      G_SIGNAL_RUN_FIRST,
-			      G_STRUCT_OFFSET (GeditNotebookClass, show_popup_menu),
+			      G_STRUCT_OFFSET (BeditNotebookClass, show_popup_menu),
 			      NULL, NULL, NULL,
 			      G_TYPE_NONE,
 			      2,
@@ -489,7 +489,7 @@ gedit_notebook_class_init (GeditNotebookClass *klass)
 		g_signal_new ("change-to-page",
 		              G_TYPE_FROM_CLASS (object_class),
 		              G_SIGNAL_RUN_LAST | G_SIGNAL_ACTION,
-		              G_STRUCT_OFFSET (GeditNotebookClass, change_to_page),
+		              G_STRUCT_OFFSET (BeditNotebookClass, change_to_page),
 		              NULL, NULL, NULL,
 		              G_TYPE_BOOLEAN, 1,
 		              G_TYPE_INT);
@@ -507,9 +507,9 @@ gedit_notebook_class_init (GeditNotebookClass *klass)
 /**
  * gedit_notebook_new:
  *
- * Creates a new #GeditNotebook object.
+ * Creates a new #BeditNotebook object.
  *
- * Returns: a new #GeditNotebook
+ * Returns: a new #BeditNotebook
  */
 GtkWidget *
 gedit_notebook_new (void)
@@ -518,7 +518,7 @@ gedit_notebook_new (void)
 }
 
 static void
-gedit_notebook_init (GeditNotebook *notebook)
+gedit_notebook_init (BeditNotebook *notebook)
 {
 	notebook->priv = gedit_notebook_get_instance_private (notebook);
 
@@ -532,21 +532,21 @@ gedit_notebook_init (GeditNotebook *notebook)
 
 /**
  * gedit_notebook_add_tab:
- * @notebook: a #GeditNotebook
- * @tab: a #GeditTab
+ * @notebook: a #BeditNotebook
+ * @tab: a #BeditTab
  * @position: the position where the @tab should be added
  * @jump_to: %TRUE to set the @tab as active
  *
  * Adds the specified @tab to the @notebook.
  */
 void
-gedit_notebook_add_tab (GeditNotebook *notebook,
-		        GeditTab      *tab,
+gedit_notebook_add_tab (BeditNotebook *notebook,
+		        BeditTab      *tab,
 		        gint           position,
 		        gboolean       jump_to)
 {
 	GtkWidget *tab_label;
-	GeditView *view;
+	BeditView *view;
 	GtkTargetList *target_list;
 
 	g_return_if_fail (GEDIT_IS_NOTEBOOK (notebook));
@@ -573,7 +573,7 @@ gedit_notebook_add_tab (GeditNotebook *notebook,
 				 NULL);
 
 	/* Drag and drop support: move a tab to another notebook, with the drop
-	 * zone in the GeditView. The drop zone in the tab labels is already
+	 * zone in the BeditView. The drop zone in the tab labels is already
 	 * implemented by GtkNotebook.
 	 */
 	view = gedit_tab_get_view (tab);
@@ -600,9 +600,9 @@ gedit_notebook_add_tab (GeditNotebook *notebook,
 
 /**
  * gedit_notebook_move_tab:
- * @src: a #GeditNotebook
- * @dest: a #GeditNotebook
- * @tab: a #GeditTab
+ * @src: a #BeditNotebook
+ * @dest: a #BeditNotebook
+ * @tab: a #BeditTab
  * @dest_position: the position for @tab
  *
  * Moves @tab from @src to @dest.
@@ -611,9 +611,9 @@ gedit_notebook_add_tab (GeditNotebook *notebook,
  * end of the tabs.
  */
 void
-gedit_notebook_move_tab (GeditNotebook *src,
-                         GeditNotebook *dest,
-                         GeditTab      *tab,
+gedit_notebook_move_tab (BeditNotebook *src,
+                         BeditNotebook *dest,
+                         BeditTab      *tab,
                          gint           dest_position)
 {
 	g_return_if_fail (GEDIT_IS_NOTEBOOK (src));
@@ -627,7 +627,7 @@ gedit_notebook_move_tab (GeditNotebook *src,
 	/* Make sure the @src notebook isn't destroyed during the tab
 	 * detachment, to prevent a crash in gtk_notebook_detach_tab(). In fact,
 	 * if @tab is the last tab of @src, and if @src is not the last notebook
-	 * of the GeditMultiNotebook, then @src will be destroyed when
+	 * of the BeditMultiNotebook, then @src will be destroyed when
 	 * gtk_container_remove() is called by gtk_notebook_detach_tab().
 	 */
 	g_object_ref (src);
@@ -641,12 +641,12 @@ gedit_notebook_move_tab (GeditNotebook *src,
 
 /**
  * gedit_notebook_remove_all_tabs:
- * @notebook: a #GeditNotebook
+ * @notebook: a #BeditNotebook
  *
- * Removes all #GeditTab from @notebook.
+ * Removes all #BeditTab from @notebook.
  */
 void
-gedit_notebook_remove_all_tabs (GeditNotebook *notebook)
+gedit_notebook_remove_all_tabs (BeditNotebook *notebook)
 {
 	GList *tabs;
 	GList *t;

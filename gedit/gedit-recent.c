@@ -29,7 +29,7 @@
 #include "gedit-settings.h"
 
 void
-gedit_recent_add_document (GeditDocument *document)
+gedit_recent_add_document (BeditDocument *document)
 {
 	GtkSourceFile *file;
 	GFile *location;
@@ -156,9 +156,9 @@ populate_filter_info (GtkRecentInfo        *info,
 	}
 }
 
-/* The GeditRecentConfiguration struct is allocated and owned by the caller */
+/* The BeditRecentConfiguration struct is allocated and owned by the caller */
 void
-gedit_recent_configuration_init_default (GeditRecentConfiguration *config)
+gedit_recent_configuration_init_default (BeditRecentConfiguration *config)
 {
 	config->manager = gtk_recent_manager_get_default ();
 
@@ -180,9 +180,9 @@ gedit_recent_configuration_init_default (GeditRecentConfiguration *config)
 	config->substring_filter = NULL;
 }
 
-/* The GeditRecentConfiguration struct is owned and destroyed by the caller */
+/* The BeditRecentConfiguration struct is owned and destroyed by the caller */
 void
-gedit_recent_configuration_destroy (GeditRecentConfiguration *config)
+gedit_recent_configuration_destroy (BeditRecentConfiguration *config)
 {
 	g_clear_object (&config->filter);
 	config->manager = NULL;
@@ -191,7 +191,7 @@ gedit_recent_configuration_destroy (GeditRecentConfiguration *config)
 }
 
 GList *
-gedit_recent_get_items (GeditRecentConfiguration *config)
+gedit_recent_get_items (BeditRecentConfiguration *config)
 {
 	GtkRecentFilterFlags needed;
 	GList *items;

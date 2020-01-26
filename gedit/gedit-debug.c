@@ -30,7 +30,7 @@ static GTimer *timer = NULL;
 static gdouble last_time = 0.0;
 #endif
 
-static GeditDebugSection enabled_sections = GEDIT_NO_DEBUG;
+static BeditDebugSection enabled_sections = GEDIT_NO_DEBUG;
 
 #define DEBUG_IS_ENABLED(section) (enabled_sections & (section))
 
@@ -126,7 +126,7 @@ out:
  * @function.
  */
 void
-gedit_debug (GeditDebugSection  section,
+gedit_debug (BeditDebugSection  section,
 	     const gchar       *file,
 	     gint               line,
 	     const gchar       *function)
@@ -148,7 +148,7 @@ gedit_debug (GeditDebugSection  section,
  * given format string arguments.
  */
 void
-gedit_debug_message (GeditDebugSection  section,
+gedit_debug_message (BeditDebugSection  section,
 		     const gchar       *file,
 		     gint               line,
 		     const gchar       *function,

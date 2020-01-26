@@ -28,7 +28,7 @@
 G_BEGIN_DECLS
 
 #define GEDIT_TYPE_REPLACE_DIALOG (gedit_replace_dialog_get_type ())
-G_DECLARE_FINAL_TYPE (GeditReplaceDialog, gedit_replace_dialog, GEDIT, REPLACE_DIALOG, GtkDialog)
+G_DECLARE_FINAL_TYPE (BeditReplaceDialog, gedit_replace_dialog, GEDIT, REPLACE_DIALOG, GtkDialog)
 
 enum
 {
@@ -37,18 +37,18 @@ enum
 	GEDIT_REPLACE_DIALOG_REPLACE_ALL_RESPONSE
 };
 
-GtkWidget		*gedit_replace_dialog_new			(GeditWindow        *window);
+GtkWidget		*gedit_replace_dialog_new			(BeditWindow        *window);
 
-void			 gedit_replace_dialog_present_with_time		(GeditReplaceDialog *dialog,
+void			 gedit_replace_dialog_present_with_time		(BeditReplaceDialog *dialog,
 									 guint32             timestamp);
 
-const gchar		*gedit_replace_dialog_get_search_text		(GeditReplaceDialog *dialog);
+const gchar		*gedit_replace_dialog_get_search_text		(BeditReplaceDialog *dialog);
 
-const gchar		*gedit_replace_dialog_get_replace_text		(GeditReplaceDialog *dialog);
+const gchar		*gedit_replace_dialog_get_replace_text		(BeditReplaceDialog *dialog);
 
-gboolean		 gedit_replace_dialog_get_backwards		(GeditReplaceDialog *dialog);
+gboolean		 gedit_replace_dialog_get_backwards		(BeditReplaceDialog *dialog);
 
-void			 gedit_replace_dialog_set_replace_error		(GeditReplaceDialog *dialog,
+void			 gedit_replace_dialog_set_replace_error		(BeditReplaceDialog *dialog,
 									 const gchar        *error_msg);
 
 G_END_DECLS

@@ -79,7 +79,7 @@ gedit itself.
 
 A good way to learn a lot of things is to write a new plugin (as a third-party
 plugin first). To have some inspiration, see the wiki page
-[RequestedPlugins](https://wiki.gnome.org/Apps/Gedit/RequestedPlugins).
+[RequestedPlugins](https://wiki.gnome.org/Apps/Bedit/RequestedPlugins).
 
 A potentially easy task (but not always) is to fix compilation warnings, for
 example when a deprecated function is used. If you encounter a runtime warning

@@ -30,20 +30,20 @@
  * @short_description: Interface for activatable extensions on apps
  * @see_also: #PeasExtensionSet
  *
- * #GeditAppActivatable is an interface which should be implemented by
+ * #BeditAppActivatable is an interface which should be implemented by
  * extensions that should be activated on a gedit application.
  **/
 
-G_DEFINE_INTERFACE(GeditAppActivatable, gedit_app_activatable, G_TYPE_OBJECT)
+G_DEFINE_INTERFACE(BeditAppActivatable, gedit_app_activatable, G_TYPE_OBJECT)
 
 static void
-gedit_app_activatable_default_init (GeditAppActivatableInterface *iface)
+gedit_app_activatable_default_init (BeditAppActivatableInterface *iface)
 {
 	/**
-	 * GeditAppActivatable:app:
+	 * BeditAppActivatable:app:
 	 *
 	 * The app property contains the gedit app for this
-	 * #GeditAppActivatable instance.
+	 * #BeditAppActivatable instance.
 	 */
 	g_object_interface_install_property (iface,
 	                                     g_param_spec_object ("app",
@@ -57,14 +57,14 @@ gedit_app_activatable_default_init (GeditAppActivatableInterface *iface)
 
 /**
  * gedit_app_activatable_activate:
- * @activatable: A #GeditAppActivatable.
+ * @activatable: A #BeditAppActivatable.
  *
  * Activates the extension on the application.
  */
 void
-gedit_app_activatable_activate (GeditAppActivatable *activatable)
+gedit_app_activatable_activate (BeditAppActivatable *activatable)
 {
-	GeditAppActivatableInterface *iface;
+	BeditAppActivatableInterface *iface;
 
 	g_return_if_fail (GEDIT_IS_APP_ACTIVATABLE (activatable));
 
@@ -78,15 +78,15 @@ gedit_app_activatable_activate (GeditAppActivatable *activatable)
 
 /**
  * gedit_app_activatable_deactivate:
- * @activatable: A #GeditAppActivatable.
+ * @activatable: A #BeditAppActivatable.
  *
  * Deactivates the extension from the application.
  *
  */
 void
-gedit_app_activatable_deactivate (GeditAppActivatable *activatable)
+gedit_app_activatable_deactivate (BeditAppActivatable *activatable)
 {
-	GeditAppActivatableInterface *iface;
+	BeditAppActivatableInterface *iface;
 
 	g_return_if_fail (GEDIT_IS_APP_ACTIVATABLE (activatable));
 
@@ -98,12 +98,12 @@ gedit_app_activatable_deactivate (GeditAppActivatable *activatable)
 	}
 }
 
-GeditMenuExtension *
-gedit_app_activatable_extend_menu (GeditAppActivatable *activatable,
+BeditMenuExtension *
+gedit_app_activatable_extend_menu (BeditAppActivatable *activatable,
 				   const gchar *extension_point)
 {
-	GeditApp *app;
-	GeditMenuExtension *ext;
+	BeditApp *app;
+	BeditMenuExtension *ext;
 
 	g_return_val_if_fail (GEDIT_IS_APP_ACTIVATABLE (activatable), NULL);
 

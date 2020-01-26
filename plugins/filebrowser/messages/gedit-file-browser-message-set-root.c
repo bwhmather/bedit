@@ -34,22 +34,22 @@ enum
 	PROP_VIRTUAL,
 };
 
-struct _GeditFileBrowserMessageSetRootPrivate
+struct _BeditFileBrowserMessageSetRootPrivate
 {
 	GFile *location;
 	gchar *virtual;
 };
 
-G_DEFINE_TYPE_EXTENDED (GeditFileBrowserMessageSetRoot,
+G_DEFINE_TYPE_EXTENDED (BeditFileBrowserMessageSetRoot,
                         gedit_file_browser_message_set_root,
                         GEDIT_TYPE_MESSAGE,
                         0,
-                        G_ADD_PRIVATE (GeditFileBrowserMessageSetRoot))
+                        G_ADD_PRIVATE (BeditFileBrowserMessageSetRoot))
 
 static void
 gedit_file_browser_message_set_root_finalize (GObject *obj)
 {
-	GeditFileBrowserMessageSetRoot *msg = GEDIT_FILE_BROWSER_MESSAGE_SET_ROOT (obj);
+	BeditFileBrowserMessageSetRoot *msg = GEDIT_FILE_BROWSER_MESSAGE_SET_ROOT (obj);
 
 	if (msg->priv->location)
 	{
@@ -66,7 +66,7 @@ gedit_file_browser_message_set_root_get_property (GObject    *obj,
                                                   GValue     *value,
                                                   GParamSpec *pspec)
 {
-	GeditFileBrowserMessageSetRoot *msg;
+	BeditFileBrowserMessageSetRoot *msg;
 
 	msg = GEDIT_FILE_BROWSER_MESSAGE_SET_ROOT (obj);
 
@@ -87,7 +87,7 @@ gedit_file_browser_message_set_root_set_property (GObject      *obj,
                                                   GValue const *value,
                                                   GParamSpec   *pspec)
 {
-	GeditFileBrowserMessageSetRoot *msg;
+	BeditFileBrowserMessageSetRoot *msg;
 
 	msg = GEDIT_FILE_BROWSER_MESSAGE_SET_ROOT (obj);
 
@@ -112,7 +112,7 @@ gedit_file_browser_message_set_root_set_property (GObject      *obj,
 }
 
 static void
-gedit_file_browser_message_set_root_class_init (GeditFileBrowserMessageSetRootClass *klass)
+gedit_file_browser_message_set_root_class_init (BeditFileBrowserMessageSetRootClass *klass)
 {
 	GObjectClass *object_class = G_OBJECT_CLASS(klass);
 
@@ -143,7 +143,7 @@ gedit_file_browser_message_set_root_class_init (GeditFileBrowserMessageSetRootCl
 }
 
 static void
-gedit_file_browser_message_set_root_init (GeditFileBrowserMessageSetRoot *message)
+gedit_file_browser_message_set_root_init (BeditFileBrowserMessageSetRoot *message)
 {
 	message->priv = gedit_file_browser_message_set_root_get_instance_private (message);
 }

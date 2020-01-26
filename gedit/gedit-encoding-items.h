@@ -25,13 +25,13 @@
 
 G_BEGIN_DECLS
 
-typedef struct _GeditEncodingItem GeditEncodingItem;
+typedef struct _BeditEncodingItem BeditEncodingItem;
 
 GSList				*gedit_encoding_items_get		(void);
 
-void				 gedit_encoding_item_free		(GeditEncodingItem *item);
-const GtkSourceEncoding		*gedit_encoding_item_get_encoding	(GeditEncodingItem *item);
-const gchar			*gedit_encoding_item_get_name		(GeditEncodingItem *item);
+void				 gedit_encoding_item_free		(BeditEncodingItem *item);
+const GtkSourceEncoding		*gedit_encoding_item_get_encoding	(BeditEncodingItem *item);
+const gchar			*gedit_encoding_item_get_name		(BeditEncodingItem *item);
 
 G_END_DECLS
 

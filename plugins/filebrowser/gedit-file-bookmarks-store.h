@@ -1,5 +1,5 @@
 /*
- * gedit-file-bookmarks-store.h - Gedit plugin providing easy file access
+ * gedit-file-bookmarks-store.h - Bedit plugin providing easy file access
  * from the sidepanel
  *
  * Copyright (C) 2006 - Jesse van den Kieboom <jesse@icecrew.nl>
@@ -25,16 +25,16 @@
 
 G_BEGIN_DECLS
 #define GEDIT_TYPE_FILE_BOOKMARKS_STORE			(gedit_file_bookmarks_store_get_type ())
-#define GEDIT_FILE_BOOKMARKS_STORE(obj)			(G_TYPE_CHECK_INSTANCE_CAST ((obj), GEDIT_TYPE_FILE_BOOKMARKS_STORE, GeditFileBookmarksStore))
-#define GEDIT_FILE_BOOKMARKS_STORE_CONST(obj)		(G_TYPE_CHECK_INSTANCE_CAST ((obj), GEDIT_TYPE_FILE_BOOKMARKS_STORE, GeditFileBookmarksStore const))
-#define GEDIT_FILE_BOOKMARKS_STORE_CLASS(klass)		(G_TYPE_CHECK_CLASS_CAST ((klass), GEDIT_TYPE_FILE_BOOKMARKS_STORE, GeditFileBookmarksStoreClass))
+#define GEDIT_FILE_BOOKMARKS_STORE(obj)			(G_TYPE_CHECK_INSTANCE_CAST ((obj), GEDIT_TYPE_FILE_BOOKMARKS_STORE, BeditFileBookmarksStore))
+#define GEDIT_FILE_BOOKMARKS_STORE_CONST(obj)		(G_TYPE_CHECK_INSTANCE_CAST ((obj), GEDIT_TYPE_FILE_BOOKMARKS_STORE, BeditFileBookmarksStore const))
+#define GEDIT_FILE_BOOKMARKS_STORE_CLASS(klass)		(G_TYPE_CHECK_CLASS_CAST ((klass), GEDIT_TYPE_FILE_BOOKMARKS_STORE, BeditFileBookmarksStoreClass))
 #define GEDIT_IS_FILE_BOOKMARKS_STORE(obj)		(G_TYPE_CHECK_INSTANCE_TYPE ((obj), GEDIT_TYPE_FILE_BOOKMARKS_STORE))
 #define GEDIT_IS_FILE_BOOKMARKS_STORE_CLASS(klass)	(G_TYPE_CHECK_CLASS_TYPE ((klass), GEDIT_TYPE_FILE_BOOKMARKS_STORE))
-#define GEDIT_FILE_BOOKMARKS_STORE_GET_CLASS(obj)	(G_TYPE_INSTANCE_GET_CLASS ((obj), GEDIT_TYPE_FILE_BOOKMARKS_STORE, GeditFileBookmarksStoreClass))
+#define GEDIT_FILE_BOOKMARKS_STORE_GET_CLASS(obj)	(G_TYPE_INSTANCE_GET_CLASS ((obj), GEDIT_TYPE_FILE_BOOKMARKS_STORE, BeditFileBookmarksStoreClass))
 
-typedef struct _GeditFileBookmarksStore        GeditFileBookmarksStore;
-typedef struct _GeditFileBookmarksStoreClass   GeditFileBookmarksStoreClass;
-typedef struct _GeditFileBookmarksStorePrivate GeditFileBookmarksStorePrivate;
+typedef struct _BeditFileBookmarksStore        BeditFileBookmarksStore;
+typedef struct _BeditFileBookmarksStoreClass   BeditFileBookmarksStoreClass;
+typedef struct _BeditFileBookmarksStorePrivate BeditFileBookmarksStorePrivate;
 
 enum
 {
@@ -64,24 +64,24 @@ enum
 	GEDIT_FILE_BOOKMARKS_STORE_IS_LOCAL_BOOKMARK	= 1 << 12  /* A local gtk bookmark */
 };
 
-struct _GeditFileBookmarksStore
+struct _BeditFileBookmarksStore
 {
 	GtkTreeStore                    parent;
 
-	GeditFileBookmarksStorePrivate *priv;
+	BeditFileBookmarksStorePrivate *priv;
 };
 
-struct _GeditFileBookmarksStoreClass
+struct _BeditFileBookmarksStoreClass
 {
 	GtkTreeStoreClass parent_class;
 };
 
 GType			 gedit_file_bookmarks_store_get_type		(void) G_GNUC_CONST;
 
-GeditFileBookmarksStore	*gedit_file_bookmarks_store_new			(void);
-GFile			*gedit_file_bookmarks_store_get_location	(GeditFileBookmarksStore *model,
+BeditFileBookmarksStore	*gedit_file_bookmarks_store_new			(void);
+GFile			*gedit_file_bookmarks_store_get_location	(BeditFileBookmarksStore *model,
 									 GtkTreeIter             *iter);
-void			 gedit_file_bookmarks_store_refresh		(GeditFileBookmarksStore *model);
+void			 gedit_file_bookmarks_store_refresh		(BeditFileBookmarksStore *model);
 
 void			 _gedit_file_bookmarks_store_register_type	(GTypeModule             *type_module);
 

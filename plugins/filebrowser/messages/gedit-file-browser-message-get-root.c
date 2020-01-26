@@ -33,21 +33,21 @@ enum
 	PROP_LOCATION,
 };
 
-struct _GeditFileBrowserMessageGetRootPrivate
+struct _BeditFileBrowserMessageGetRootPrivate
 {
 	GFile *location;
 };
 
-G_DEFINE_TYPE_EXTENDED (GeditFileBrowserMessageGetRoot,
+G_DEFINE_TYPE_EXTENDED (BeditFileBrowserMessageGetRoot,
                         gedit_file_browser_message_get_root,
                         GEDIT_TYPE_MESSAGE,
                         0,
-                        G_ADD_PRIVATE (GeditFileBrowserMessageGetRoot))
+                        G_ADD_PRIVATE (BeditFileBrowserMessageGetRoot))
 
 static void
 gedit_file_browser_message_get_root_finalize (GObject *obj)
 {
-	GeditFileBrowserMessageGetRoot *msg = GEDIT_FILE_BROWSER_MESSAGE_GET_ROOT (obj);
+	BeditFileBrowserMessageGetRoot *msg = GEDIT_FILE_BROWSER_MESSAGE_GET_ROOT (obj);
 
 	if (msg->priv->location)
 	{
@@ -63,7 +63,7 @@ gedit_file_browser_message_get_root_get_property (GObject    *obj,
                                                   GValue     *value,
                                                   GParamSpec *pspec)
 {
-	GeditFileBrowserMessageGetRoot *msg;
+	BeditFileBrowserMessageGetRoot *msg;
 
 	msg = GEDIT_FILE_BROWSER_MESSAGE_GET_ROOT (obj);
 
@@ -81,7 +81,7 @@ gedit_file_browser_message_get_root_set_property (GObject      *obj,
                                                   GValue const *value,
                                                   GParamSpec   *pspec)
 {
-	GeditFileBrowserMessageGetRoot *msg;
+	BeditFileBrowserMessageGetRoot *msg;
 
 	msg = GEDIT_FILE_BROWSER_MESSAGE_GET_ROOT (obj);
 
@@ -100,7 +100,7 @@ gedit_file_browser_message_get_root_set_property (GObject      *obj,
 }
 
 static void
-gedit_file_browser_message_get_root_class_init (GeditFileBrowserMessageGetRootClass *klass)
+gedit_file_browser_message_get_root_class_init (BeditFileBrowserMessageGetRootClass *klass)
 {
 	GObjectClass *object_class = G_OBJECT_CLASS(klass);
 
@@ -121,7 +121,7 @@ gedit_file_browser_message_get_root_class_init (GeditFileBrowserMessageGetRootCl
 }
 
 static void
-gedit_file_browser_message_get_root_init (GeditFileBrowserMessageGetRoot *message)
+gedit_file_browser_message_get_root_init (BeditFileBrowserMessageGetRoot *message)
 {
 	message->priv = gedit_file_browser_message_get_root_get_instance_private (message);
 }

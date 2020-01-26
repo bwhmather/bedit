@@ -42,7 +42,7 @@ enum
 	TARGET_XDNDDIRECTSAVE
 };
 
-struct _GeditViewPrivate
+struct _BeditViewPrivate
 {
 	GSettings            *editor_settings;
 	GtkTextBuffer        *current_buffer;
@@ -53,7 +53,7 @@ struct _GeditViewPrivate
 	PangoFontDescription *font_desc;
 };
 
-G_DEFINE_TYPE_WITH_PRIVATE (GeditView, gedit_view, GTK_SOURCE_TYPE_VIEW)
+G_DEFINE_TYPE_WITH_PRIVATE (BeditView, gedit_view, GTK_SOURCE_TYPE_VIEW)
 
 enum
 {
@@ -66,7 +66,7 @@ static guint view_signals[LAST_SIGNAL] = { 0 };
 static void
 file_read_only_notify_handler (GtkSourceFile *file,
 			       GParamSpec    *pspec,
-			       GeditView     *view)
+			       BeditView     *view)
 {
 	gedit_debug (DEBUG_VIEW);
 
@@ -75,7 +75,7 @@ file_read_only_notify_handler (GtkSourceFile *file,
 }
 
 static void
-current_buffer_removed (GeditView *view)
+current_buffer_removed (BeditView *view)
 {
 	if (view->priv->current_buffer != NULL)
 	{
@@ -93,7 +93,7 @@ current_buffer_removed (GeditView *view)
 }
 
 static void
-on_notify_buffer_cb (GeditView  *view,
+on_notify_buffer_cb (BeditView  *view,
 		     GParamSpec *pspec,
 		     gpointer    userdata)
 {
@@ -122,7 +122,7 @@ on_notify_buffer_cb (GeditView  *view,
 }
 
 static void
-gedit_view_init (GeditView *view)
+gedit_view_init (BeditView *view)
 {
 	GtkTargetList *target_list;
 	GtkStyleContext *context;
@@ -171,7 +171,7 @@ gedit_view_init (GeditView *view)
 static void
 gedit_view_dispose (GObject *object)
 {
-	GeditView *view = GEDIT_VIEW (object);
+	BeditView *view = GEDIT_VIEW (object);
 
 	g_clear_object (&view->priv->extensions);
 	g_clear_object (&view->priv->editor_settings);
@@ -195,8 +195,8 @@ gedit_view_dispose (GObject *object)
 static void
 gedit_view_constructed (GObject *object)
 {
-	GeditView *view;
-	GeditViewPrivate *priv;
+	BeditView *view;
+	BeditViewPrivate *priv;
 	gboolean use_default_font;
 
 	view = GEDIT_VIEW (object);
@@ -374,7 +374,7 @@ gedit_view_drag_data_received (GtkWidget        *widget,
 		}
 		case TARGET_XDNDDIRECTSAVE:
 		{
-			GeditView *view;
+			BeditView *view;
 
 			view = GEDIT_VIEW (widget);
 
@@ -448,7 +448,7 @@ gedit_view_drag_drop (GtkWidget      *widget,
 
 			if (uri != NULL)
 			{
-				GeditView *view = GEDIT_VIEW (widget);
+				BeditView *view = GEDIT_VIEW (widget);
 				g_free (view->priv->direct_save_uri);
 				view->priv->direct_save_uri = uri;
 			}
@@ -470,7 +470,7 @@ gedit_view_drag_drop (GtkWidget      *widget,
 }
 
 static void
-show_line_numbers_menu (GeditView      *view,
+show_line_numbers_menu (BeditView      *view,
 			GdkEventButton *event)
 {
 	GtkWidget *menu;
@@ -520,7 +520,7 @@ static void
 extension_added (PeasExtensionSet *extensions,
 		 PeasPluginInfo   *info,
 		 PeasExtension    *exten,
-		 GeditView        *view)
+		 BeditView        *view)
 {
 	gedit_view_activatable_activate (GEDIT_VIEW_ACTIVATABLE (exten));
 }
@@ -529,7 +529,7 @@ static void
 extension_removed (PeasExtensionSet *extensions,
 		   PeasPluginInfo   *info,
 		   PeasExtension    *exten,
-		   GeditView        *view)
+		   BeditView        *view)
 {
 	gedit_view_activatable_deactivate (GEDIT_VIEW_ACTIVATABLE (exten));
 }
@@ -537,7 +537,7 @@ extension_removed (PeasExtensionSet *extensions,
 static void
 gedit_view_realize (GtkWidget *widget)
 {
-	GeditView *view = GEDIT_VIEW (widget);
+	BeditView *view = GEDIT_VIEW (widget);
 
 	GTK_WIDGET_CLASS (gedit_view_parent_class)->realize (widget);
 
@@ -563,7 +563,7 @@ gedit_view_realize (GtkWidget *widget)
 static void
 gedit_view_unrealize (GtkWidget *widget)
 {
-	GeditView *view = GEDIT_VIEW (widget);
+	BeditView *view = GEDIT_VIEW (widget);
 
 	g_signal_handlers_disconnect_by_func (view->priv->extensions, extension_added, view);
 	g_signal_handlers_disconnect_by_func (view->priv->extensions, extension_removed, view);
@@ -707,7 +707,7 @@ gedit_view_create_buffer (GtkTextView *text_view)
 }
 
 static void
-gedit_view_class_init (GeditViewClass *klass)
+gedit_view_class_init (BeditViewClass *klass)
 {
 	GObjectClass *object_class = G_OBJECT_CLASS (klass);
 	GtkWidgetClass *widget_class = GTK_WIDGET_CLASS (klass);
@@ -742,16 +742,16 @@ gedit_view_class_init (GeditViewClass *klass)
 	text_view_class->create_buffer = gedit_view_create_buffer;
 
 	/**
-	 * GeditView::drop-uris:
-	 * @view: a #GeditView.
+	 * BeditView::drop-uris:
+	 * @view: a #BeditView.
 	 * @uri_list: a %NULL-terminated list of URIs.
 	 *
-	 * The #GeditView::drop-uris signal allows plugins to intercept the
-	 * default drag-and-drop behaviour of 'text/uri-list'. #GeditView
+	 * The #BeditView::drop-uris signal allows plugins to intercept the
+	 * default drag-and-drop behaviour of 'text/uri-list'. #BeditView
 	 * handles drag-and-drop in the default handlers of
 	 * #GtkWidget::drag-drop, #GtkWidget::drag-motion and
 	 * #GtkWidget::drag-data-received. The view emits the
-	 * #GeditView::drop-uris signal from #GtkWidget::drag-data-received if
+	 * #BeditView::drop-uris signal from #GtkWidget::drag-data-received if
 	 * valid URIs have been dropped.  Plugins should connect to
 	 * #GtkWidget::drag-motion, #GtkWidget::drag-drop and
 	 * #GtkWidget::drag-data-received to change this default behaviour. They
@@ -762,7 +762,7 @@ gedit_view_class_init (GeditViewClass *klass)
 		g_signal_new ("drop-uris",
 		              G_TYPE_FROM_CLASS (object_class),
 		              G_SIGNAL_RUN_LAST | G_SIGNAL_ACTION,
-		              G_STRUCT_OFFSET (GeditViewClass, drop_uris),
+		              G_STRUCT_OFFSET (BeditViewClass, drop_uris),
 		              NULL, NULL, NULL,
 		              G_TYPE_NONE, 1, G_TYPE_STRV);
 
@@ -796,15 +796,15 @@ gedit_view_class_init (GeditViewClass *klass)
 
 /**
  * gedit_view_new:
- * @doc: a #GeditDocument
+ * @doc: a #BeditDocument
  *
- * Creates a new #GeditView object displaying the @doc document.
+ * Creates a new #BeditView object displaying the @doc document.
  * @doc cannot be %NULL.
  *
- * Returns: a new #GeditView.
+ * Returns: a new #BeditView.
  */
 GtkWidget *
-gedit_view_new (GeditDocument *doc)
+gedit_view_new (BeditDocument *doc)
 {
 	g_return_val_if_fail (GEDIT_IS_DOCUMENT (doc), NULL);
 
@@ -812,7 +812,7 @@ gedit_view_new (GeditDocument *doc)
 }
 
 void
-gedit_view_cut_clipboard (GeditView *view)
+gedit_view_cut_clipboard (BeditView *view)
 {
 	GtkTextBuffer *buffer;
 	GtkClipboard *clipboard;
@@ -839,7 +839,7 @@ gedit_view_cut_clipboard (GeditView *view)
 }
 
 void
-gedit_view_copy_clipboard (GeditView *view)
+gedit_view_copy_clipboard (BeditView *view)
 {
 	GtkTextBuffer *buffer;
 	GtkClipboard *clipboard;
@@ -859,7 +859,7 @@ gedit_view_copy_clipboard (GeditView *view)
 }
 
 void
-gedit_view_paste_clipboard (GeditView *view)
+gedit_view_paste_clipboard (BeditView *view)
 {
 	GtkTextBuffer *buffer;
 	GtkClipboard *clipboard;
@@ -888,13 +888,13 @@ gedit_view_paste_clipboard (GeditView *view)
 
 /**
  * gedit_view_delete_selection:
- * @view: a #GeditView
+ * @view: a #BeditView
  *
  * Deletes the text currently selected in the #GtkTextBuffer associated
  * to the view and scroll to the cursor position.
  */
 void
-gedit_view_delete_selection (GeditView *view)
+gedit_view_delete_selection (BeditView *view)
 {
 	GtkTextBuffer *buffer;
 
@@ -918,12 +918,12 @@ gedit_view_delete_selection (GeditView *view)
 
 /**
  * gedit_view_select_all:
- * @view: a #GeditView
+ * @view: a #BeditView
  *
  * Selects all the text.
  */
 void
-gedit_view_select_all (GeditView *view)
+gedit_view_select_all (BeditView *view)
 {
 	GtkTextBuffer *buffer;
 	GtkTextIter start;
@@ -941,12 +941,12 @@ gedit_view_select_all (GeditView *view)
 
 /**
  * gedit_view_scroll_to_cursor:
- * @view: a #GeditView
+ * @view: a #BeditView
  *
  * Scrolls the @view to the cursor position.
  */
 void
-gedit_view_scroll_to_cursor (GeditView *view)
+gedit_view_scroll_to_cursor (BeditView *view)
 {
 	GtkTextBuffer *buffer;
 
@@ -965,7 +965,7 @@ gedit_view_scroll_to_cursor (GeditView *view)
 }
 
 static void
-update_css_provider (GeditView *view)
+update_css_provider (BeditView *view)
 {
 	gchar *str;
 	gchar *css;
@@ -983,7 +983,7 @@ update_css_provider (GeditView *view)
 
 /**
  * gedit_view_set_font:
- * @view: a #GeditView
+ * @view: a #BeditView
  * @default_font: whether to reset to the default font
  * @font_name: the name of the font to use
  *
@@ -991,7 +991,7 @@ update_css_provider (GeditView *view)
  * Otherwise sets it to @font_name.
  */
 void
-gedit_view_set_font (GeditView   *view,
+gedit_view_set_font (BeditView   *view,
 		     gboolean     default_font,
 		     const gchar *font_name)
 {
@@ -1003,7 +1003,7 @@ gedit_view_set_font (GeditView   *view,
 
 	if (default_font)
 	{
-		GeditSettings *settings;
+		BeditSettings *settings;
 		gchar *font;
 
 		settings = _gedit_app_get_settings (GEDIT_APP (g_application_get_default ()));

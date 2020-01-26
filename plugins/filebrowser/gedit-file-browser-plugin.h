@@ -1,5 +1,5 @@
 /*
- * gedit-file-browser-plugin.h - Gedit plugin providing easy file access
+ * gedit-file-browser-plugin.h - Bedit plugin providing easy file access
  * from the sidepanel
  *
  * Copyright (C) 2006 - Jesse van den Kieboom <jesse@icecrew.nl>
@@ -31,26 +31,26 @@ G_BEGIN_DECLS
  * Type checking and casting macros
  */
 #define GEDIT_TYPE_FILE_BROWSER_PLUGIN		(gedit_file_browser_plugin_get_type ())
-#define GEDIT_FILE_BROWSER_PLUGIN(o)		(G_TYPE_CHECK_INSTANCE_CAST ((o), GEDIT_TYPE_FILE_BROWSER_PLUGIN, GeditFileBrowserPlugin))
-#define GEDIT_FILE_BROWSER_PLUGIN_CLASS(k)	(G_TYPE_CHECK_CLASS_CAST((k), GEDIT_TYPE_FILE_BROWSER_PLUGIN, GeditFileBrowserPluginClass))
+#define GEDIT_FILE_BROWSER_PLUGIN(o)		(G_TYPE_CHECK_INSTANCE_CAST ((o), GEDIT_TYPE_FILE_BROWSER_PLUGIN, BeditFileBrowserPlugin))
+#define GEDIT_FILE_BROWSER_PLUGIN_CLASS(k)	(G_TYPE_CHECK_CLASS_CAST((k), GEDIT_TYPE_FILE_BROWSER_PLUGIN, BeditFileBrowserPluginClass))
 #define GEDIT_IS_FILE_BROWSER_PLUGIN(o)		(G_TYPE_CHECK_INSTANCE_TYPE ((o), GEDIT_TYPE_FILE_BROWSER_PLUGIN))
 #define GEDIT_IS_FILE_BROWSER_PLUGIN_CLASS(k)	(G_TYPE_CHECK_CLASS_TYPE ((k), GEDIT_TYPE_FILE_BROWSER_PLUGIN))
-#define GEDIT_FILE_BROWSER_GET_CLASS(o)		(G_TYPE_INSTANCE_GET_CLASS ((o), GEDIT_TYPE_FILE_BROWSER_PLUGIN, GeditFileBrowserPluginClass))
+#define GEDIT_FILE_BROWSER_GET_CLASS(o)		(G_TYPE_INSTANCE_GET_CLASS ((o), GEDIT_TYPE_FILE_BROWSER_PLUGIN, BeditFileBrowserPluginClass))
 
 /* Private structure type */
-typedef struct _GeditFileBrowserPluginPrivate GeditFileBrowserPluginPrivate;
-typedef struct _GeditFileBrowserPlugin        GeditFileBrowserPlugin;
-typedef struct _GeditFileBrowserPluginClass   GeditFileBrowserPluginClass;
+typedef struct _BeditFileBrowserPluginPrivate BeditFileBrowserPluginPrivate;
+typedef struct _BeditFileBrowserPlugin        BeditFileBrowserPlugin;
+typedef struct _BeditFileBrowserPluginClass   BeditFileBrowserPluginClass;
 
-struct _GeditFileBrowserPlugin
+struct _BeditFileBrowserPlugin
 {
 	GObject parent_instance;
 
 	/* < private > */
-	GeditFileBrowserPluginPrivate *priv;
+	BeditFileBrowserPluginPrivate *priv;
 };
 
-struct _GeditFileBrowserPluginClass
+struct _BeditFileBrowserPluginClass
 {
 	GObjectClass parent_class;
 };

@@ -29,39 +29,39 @@ G_BEGIN_DECLS
 
 #define GEDIT_TYPE_PRINT_JOB (gedit_print_job_get_type())
 
-G_DECLARE_FINAL_TYPE (GeditPrintJob, gedit_print_job, GEDIT, PRINT_JOB, GObject)
+G_DECLARE_FINAL_TYPE (BeditPrintJob, gedit_print_job, GEDIT, PRINT_JOB, GObject)
 
 typedef enum
 {
 	GEDIT_PRINT_JOB_STATUS_PAGINATING,
 	GEDIT_PRINT_JOB_STATUS_DRAWING
-} GeditPrintJobStatus;
+} BeditPrintJobStatus;
 
 typedef enum
 {
 	GEDIT_PRINT_JOB_RESULT_OK,
 	GEDIT_PRINT_JOB_RESULT_CANCEL,
 	GEDIT_PRINT_JOB_RESULT_ERROR
-} GeditPrintJobResult;
+} BeditPrintJobResult;
 
-GeditPrintJob		*gedit_print_job_new			(GeditView                *view);
+BeditPrintJob		*gedit_print_job_new			(BeditView                *view);
 
-GtkPrintOperationResult	 gedit_print_job_print			(GeditPrintJob            *job,
+GtkPrintOperationResult	 gedit_print_job_print			(BeditPrintJob            *job,
 								 GtkPrintOperationAction   action,
 								 GtkPageSetup             *page_setup,
 								 GtkPrintSettings         *settings,
 								 GtkWindow                *parent,
 								 GError                  **error);
 
-void			 gedit_print_job_cancel			(GeditPrintJob            *job);
+void			 gedit_print_job_cancel			(BeditPrintJob            *job);
 
-const gchar		*gedit_print_job_get_status_string	(GeditPrintJob            *job);
+const gchar		*gedit_print_job_get_status_string	(BeditPrintJob            *job);
 
-gdouble			 gedit_print_job_get_progress		(GeditPrintJob            *job);
+gdouble			 gedit_print_job_get_progress		(BeditPrintJob            *job);
 
-GtkPrintSettings	*gedit_print_job_get_print_settings	(GeditPrintJob            *job);
+GtkPrintSettings	*gedit_print_job_get_print_settings	(BeditPrintJob            *job);
 
-GtkPageSetup		*gedit_print_job_get_page_setup		(GeditPrintJob            *job);
+GtkPageSetup		*gedit_print_job_get_page_setup		(BeditPrintJob            *job);
 
 G_END_DECLS
 

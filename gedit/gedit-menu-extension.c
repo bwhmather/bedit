@@ -24,7 +24,7 @@
 
 static guint last_merge_id = 0;
 
-struct _GeditMenuExtension
+struct _BeditMenuExtension
 {
 	GObject parent_instance;
 
@@ -42,12 +42,12 @@ enum
 
 static GParamSpec *properties[LAST_PROP];
 
-G_DEFINE_TYPE (GeditMenuExtension, gedit_menu_extension, G_TYPE_OBJECT)
+G_DEFINE_TYPE (BeditMenuExtension, gedit_menu_extension, G_TYPE_OBJECT)
 
 static void
 gedit_menu_extension_dispose (GObject *object)
 {
-	GeditMenuExtension *menu = GEDIT_MENU_EXTENSION (object);
+	BeditMenuExtension *menu = GEDIT_MENU_EXTENSION (object);
 
 	if (!menu->dispose_has_run)
 	{
@@ -66,7 +66,7 @@ gedit_menu_extension_get_property (GObject    *object,
                                    GValue     *value,
                                    GParamSpec *pspec)
 {
-	GeditMenuExtension *menu = GEDIT_MENU_EXTENSION (object);
+	BeditMenuExtension *menu = GEDIT_MENU_EXTENSION (object);
 
 	switch (prop_id)
 	{
@@ -85,7 +85,7 @@ gedit_menu_extension_set_property (GObject     *object,
                                    const GValue *value,
                                    GParamSpec   *pspec)
 {
-	GeditMenuExtension *menu = GEDIT_MENU_EXTENSION (object);
+	BeditMenuExtension *menu = GEDIT_MENU_EXTENSION (object);
 
 	switch (prop_id)
 	{
@@ -99,7 +99,7 @@ gedit_menu_extension_set_property (GObject     *object,
 }
 
 static void
-gedit_menu_extension_class_init (GeditMenuExtensionClass *klass)
+gedit_menu_extension_class_init (BeditMenuExtensionClass *klass)
 {
 	GObjectClass *object_class = G_OBJECT_CLASS (klass);
 
@@ -118,19 +118,19 @@ gedit_menu_extension_class_init (GeditMenuExtensionClass *klass)
 }
 
 static void
-gedit_menu_extension_init (GeditMenuExtension *menu)
+gedit_menu_extension_init (BeditMenuExtension *menu)
 {
 	menu->merge_id = ++last_merge_id;
 }
 
-GeditMenuExtension *
+BeditMenuExtension *
 gedit_menu_extension_new (GMenu *menu)
 {
 	return g_object_new (GEDIT_TYPE_MENU_EXTENSION, "menu", menu, NULL);
 }
 
 void
-gedit_menu_extension_append_menu_item (GeditMenuExtension *menu,
+gedit_menu_extension_append_menu_item (BeditMenuExtension *menu,
                                        GMenuItem       *item)
 {
 	g_return_if_fail (GEDIT_IS_MENU_EXTENSION (menu));
@@ -144,7 +144,7 @@ gedit_menu_extension_append_menu_item (GeditMenuExtension *menu,
 }
 
 void
-gedit_menu_extension_prepend_menu_item (GeditMenuExtension *menu,
+gedit_menu_extension_prepend_menu_item (BeditMenuExtension *menu,
                                         GMenuItem       *item)
 {
 	g_return_if_fail (GEDIT_IS_MENU_EXTENSION (menu));
@@ -158,7 +158,7 @@ gedit_menu_extension_prepend_menu_item (GeditMenuExtension *menu,
 }
 
 void
-gedit_menu_extension_remove_items (GeditMenuExtension *menu)
+gedit_menu_extension_remove_items (BeditMenuExtension *menu)
 {
 	gint i, n_items;
 

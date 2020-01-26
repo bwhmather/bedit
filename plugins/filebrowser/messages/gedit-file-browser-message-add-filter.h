@@ -31,35 +31,35 @@ G_BEGIN_DECLS
 #define GEDIT_TYPE_FILE_BROWSER_MESSAGE_ADD_FILTER            (gedit_file_browser_message_add_filter_get_type ())
 #define GEDIT_FILE_BROWSER_MESSAGE_ADD_FILTER(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj),\
                                                                GEDIT_TYPE_FILE_BROWSER_MESSAGE_ADD_FILTER,\
-                                                               GeditFileBrowserMessageAddFilter))
+                                                               BeditFileBrowserMessageAddFilter))
 #define GEDIT_FILE_BROWSER_MESSAGE_ADD_FILTER_CONST(obj)      (G_TYPE_CHECK_INSTANCE_CAST ((obj),\
                                                                GEDIT_TYPE_FILE_BROWSER_MESSAGE_ADD_FILTER,\
-                                                               GeditFileBrowserMessageAddFilter const))
+                                                               BeditFileBrowserMessageAddFilter const))
 #define GEDIT_FILE_BROWSER_MESSAGE_ADD_FILTER_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass),\
                                                                GEDIT_TYPE_FILE_BROWSER_MESSAGE_ADD_FILTER,\
-                                                               GeditFileBrowserMessageAddFilterClass))
+                                                               BeditFileBrowserMessageAddFilterClass))
 #define GEDIT_IS_FILE_BROWSER_MESSAGE_ADD_FILTER(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj),\
                                                                GEDIT_TYPE_FILE_BROWSER_MESSAGE_ADD_FILTER))
 #define GEDIT_IS_FILE_BROWSER_MESSAGE_ADD_FILTER_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass),\
                                                                GEDIT_TYPE_FILE_BROWSER_MESSAGE_ADD_FILTER))
 #define GEDIT_FILE_BROWSER_MESSAGE_ADD_FILTER_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj),\
                                                                GEDIT_TYPE_FILE_BROWSER_MESSAGE_ADD_FILTER,\
-                                                               GeditFileBrowserMessageAddFilterClass))
+                                                               BeditFileBrowserMessageAddFilterClass))
 
-typedef struct _GeditFileBrowserMessageAddFilter        GeditFileBrowserMessageAddFilter;
-typedef struct _GeditFileBrowserMessageAddFilterClass   GeditFileBrowserMessageAddFilterClass;
-typedef struct _GeditFileBrowserMessageAddFilterPrivate GeditFileBrowserMessageAddFilterPrivate;
+typedef struct _BeditFileBrowserMessageAddFilter        BeditFileBrowserMessageAddFilter;
+typedef struct _BeditFileBrowserMessageAddFilterClass   BeditFileBrowserMessageAddFilterClass;
+typedef struct _BeditFileBrowserMessageAddFilterPrivate BeditFileBrowserMessageAddFilterPrivate;
 
-struct _GeditFileBrowserMessageAddFilter
+struct _BeditFileBrowserMessageAddFilter
 {
-	GeditMessage parent;
+	BeditMessage parent;
 
-	GeditFileBrowserMessageAddFilterPrivate *priv;
+	BeditFileBrowserMessageAddFilterPrivate *priv;
 };
 
-struct _GeditFileBrowserMessageAddFilterClass
+struct _BeditFileBrowserMessageAddFilterClass
 {
-	GeditMessageClass parent_class;
+	BeditMessageClass parent_class;
 };
 
 GType gedit_file_browser_message_add_filter_get_type (void) G_GNUC_CONST;

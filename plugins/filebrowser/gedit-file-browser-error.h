@@ -1,5 +1,5 @@
 /*
- * gedit-file-browser-error.h - Gedit plugin providing easy file access
+ * gedit-file-browser-error.h - Bedit plugin providing easy file access
  * from the sidepanel
  *
  * Copyright (C) 2006 - Jesse van den Kieboom <jesse@icecrew.nl>
@@ -33,7 +33,7 @@ typedef enum {
 	GEDIT_FILE_BROWSER_ERROR_SET_ROOT,
 	GEDIT_FILE_BROWSER_ERROR_LOAD_DIRECTORY,
 	GEDIT_FILE_BROWSER_ERROR_NUM
-} GeditFileBrowserError;
+} BeditFileBrowserError;
 
 G_END_DECLS
 

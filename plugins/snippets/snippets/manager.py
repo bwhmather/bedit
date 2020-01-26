@@ -1,4 +1,4 @@
-#    Gedit snippets plugin
+#    Bedit snippets plugin
 #    Copyright (C) 2005-2006  Jesse van den Kieboom <jesse@icecrew.nl>
 #
 #    This program is free software; you can redistribute it and/or modify
@@ -43,7 +43,7 @@ class Manager(Gtk.Window, Gtk.Buildable):
     SNIPPET_COLUMN = 3
     TARGET_URI = 105
 
-    __gtype_name__ = "GeditSnippetsManager"
+    __gtype_name__ = "BeditSnippetsManager"
 
     model = None
     drag_icons = ('gnome-mime-application-x-tarz', 'gnome-package', 'package')
