@@ -951,8 +951,6 @@ static void set_title(BeditWindow *window) {
     gchar *name;
     gchar *dirname = NULL;
     gchar *main_title = NULL;
-    gchar *title = NULL;
-    gchar *subtitle = NULL;
     gint len;
 
     tab = bedit_window_get_active_tab(window);
@@ -960,14 +958,6 @@ static void set_title(BeditWindow *window) {
     if (tab == NULL) {
         bedit_app_set_window_title(
             GEDIT_APP(g_application_get_default()), window, "bedit");
-        gtk_header_bar_set_title(
-            GTK_HEADER_BAR(window->priv->headerbar), "bedit");
-        gtk_header_bar_set_subtitle(
-            GTK_HEADER_BAR(window->priv->headerbar), NULL);
-        gtk_header_bar_set_title(
-            GTK_HEADER_BAR(window->priv->fullscreen_headerbar), "bedit");
-        gtk_header_bar_set_subtitle(
-            GTK_HEADER_BAR(window->priv->fullscreen_headerbar), NULL);
         return;
     }
 
@@ -1017,22 +1007,16 @@ static void set_title(BeditWindow *window) {
     }
 
     if (gtk_source_file_is_readonly(file)) {
-        title = g_strdup_printf("%s [%s]", name, _("Read-Only"));
-
         if (dirname != NULL) {
             main_title = g_strdup_printf(
                 "%s [%s] (%s) - bedit", name, _("Read-Only"), dirname);
-            subtitle = dirname;
         } else {
             main_title =
                 g_strdup_printf("%s [%s] - bedit", name, _("Read-Only"));
         }
     } else {
-        title = g_strdup(name);
-
         if (dirname != NULL) {
             main_title = g_strdup_printf("%s (%s) - bedit", name, dirname);
-            subtitle = dirname;
         } else {
             main_title = g_strdup_printf("%s - bedit", name);
         }
@@ -1041,17 +1025,8 @@ static void set_title(BeditWindow *window) {
     bedit_app_set_window_title(
         GEDIT_APP(g_application_get_default()), window, main_title);
 
-    gtk_header_bar_set_title(GTK_HEADER_BAR(window->priv->headerbar), title);
-    gtk_header_bar_set_subtitle(
-        GTK_HEADER_BAR(window->priv->headerbar), subtitle);
-    gtk_header_bar_set_title(
-        GTK_HEADER_BAR(window->priv->fullscreen_headerbar), title);
-    gtk_header_bar_set_subtitle(
-        GTK_HEADER_BAR(window->priv->fullscreen_headerbar), subtitle);
-
     g_free(dirname);
     g_free(name);
-    g_free(title);
     g_free(main_title);
 }
 
