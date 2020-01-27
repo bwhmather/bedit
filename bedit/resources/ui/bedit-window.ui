@@ -38,25 +38,6 @@
                 <property name="pack_type">end</property>
               </packing>
             </child>
-            <child>
-              <object class="GtkButton" id="save_button">
-                <property name="label" translatable="yes">_Save</property>
-                <property name="use-underline">True</property>
-                <property name="visible">True</property>
-                <property name="valign">center</property>
-                <property name="tooltip_text" translatable="yes">Save the current file</property>
-                <property name="action_name">win.save</property>
-                <child internal-child="accessible">
-                  <object class="AtkObject" id="save_button_a11y">
-                    <property name="accessible-name" translatable="yes">Save</property>
-                    <property name="accessible-description" translatable="yes">Save the current file</property>
-                  </object>
-                </child>
-              </object>
-              <packing>
-                <property name="pack_type">end</property>
-              </packing>
-            </child>
           </object>
           <packing>
             <property name="shrink">False</property>
@@ -331,24 +312,6 @@
                         <property name="pack_type">end</property>
                       </packing>
                     </child>
-                    <child>
-                      <object class="GtkButton" id="fullscreen_save_button">
-                        <property name="label" translatable="yes">Save</property>
-                        <property name="visible">True</property>
-                        <property name="valign">center</property>
-                        <property name="tooltip_text" translatable="yes">Save the current file</property>
-                        <property name="action_name">win.save</property>
-                        <child internal-child="accessible">
-                          <object class="AtkObject" id="fullscreen_save_button_a11y">
-                            <property name="accessible-name" translatable="yes">Save</property>
-                            <property name="accessible-description" translatable="yes">Save the current file</property>
-                          </object>
-                        </child>
-                      </object>
-                      <packing>
-                        <property name="pack_type">end</property>
-                      </packing>
-                    </child>
                   </object>
                 </child>
               </object>
@@ -393,14 +356,12 @@
     <property name="mode">vertical</property>
     <widgets>
       <widget name="gear_button"/>
-      <widget name="save_button"/>
     </widgets>
   </object>
   <object class="GtkSizeGroup">
     <property name="mode">vertical</property>
     <widgets>
       <widget name="fullscreen_gear_button"/>
-      <widget name="fullscreen_save_button"/>
       <widget name="leave_fullscreen_button"/>
     </widgets>
   </object>
