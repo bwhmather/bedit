@@ -18,74 +18,74 @@
  * along with this program; if not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef GEDIT_FILE_BROWSER_STORE_H
-#define GEDIT_FILE_BROWSER_STORE_H
+#ifndef BEDIT_FILE_BROWSER_STORE_H
+#define BEDIT_FILE_BROWSER_STORE_H
 
 #include <gtk/gtk.h>
 
 G_BEGIN_DECLS
-#define GEDIT_TYPE_FILE_BROWSER_STORE (bedit_file_browser_store_get_type())
-#define GEDIT_FILE_BROWSER_STORE(obj)                                          \
+#define BEDIT_TYPE_FILE_BROWSER_STORE (bedit_file_browser_store_get_type())
+#define BEDIT_FILE_BROWSER_STORE(obj)                                          \
     (G_TYPE_CHECK_INSTANCE_CAST(                                               \
-        (obj), GEDIT_TYPE_FILE_BROWSER_STORE, BeditFileBrowserStore))
-#define GEDIT_FILE_BROWSER_STORE_CONST(obj)                                    \
+        (obj), BEDIT_TYPE_FILE_BROWSER_STORE, BeditFileBrowserStore))
+#define BEDIT_FILE_BROWSER_STORE_CONST(obj)                                    \
     (G_TYPE_CHECK_INSTANCE_CAST(                                               \
-        (obj), GEDIT_TYPE_FILE_BROWSER_STORE, BeditFileBrowserStore const))
-#define GEDIT_FILE_BROWSER_STORE_CLASS(klass)                                  \
+        (obj), BEDIT_TYPE_FILE_BROWSER_STORE, BeditFileBrowserStore const))
+#define BEDIT_FILE_BROWSER_STORE_CLASS(klass)                                  \
     (G_TYPE_CHECK_CLASS_CAST(                                                  \
-        (klass), GEDIT_TYPE_FILE_BROWSER_STORE, BeditFileBrowserStoreClass))
-#define GEDIT_IS_FILE_BROWSER_STORE(obj)                                       \
-    (G_TYPE_CHECK_INSTANCE_TYPE((obj), GEDIT_TYPE_FILE_BROWSER_STORE))
-#define GEDIT_IS_FILE_BROWSER_STORE_CLASS(klass)                               \
-    (G_TYPE_CHECK_CLASS_TYPE((klass), GEDIT_TYPE_FILE_BROWSER_STORE))
-#define GEDIT_FILE_BROWSER_STORE_GET_CLASS(obj)                                \
+        (klass), BEDIT_TYPE_FILE_BROWSER_STORE, BeditFileBrowserStoreClass))
+#define BEDIT_IS_FILE_BROWSER_STORE(obj)                                       \
+    (G_TYPE_CHECK_INSTANCE_TYPE((obj), BEDIT_TYPE_FILE_BROWSER_STORE))
+#define BEDIT_IS_FILE_BROWSER_STORE_CLASS(klass)                               \
+    (G_TYPE_CHECK_CLASS_TYPE((klass), BEDIT_TYPE_FILE_BROWSER_STORE))
+#define BEDIT_FILE_BROWSER_STORE_GET_CLASS(obj)                                \
     (G_TYPE_INSTANCE_GET_CLASS(                                                \
-        (obj), GEDIT_TYPE_FILE_BROWSER_STORE, BeditFileBrowserStoreClass))
+        (obj), BEDIT_TYPE_FILE_BROWSER_STORE, BeditFileBrowserStoreClass))
 
 typedef enum {
-    GEDIT_FILE_BROWSER_STORE_COLUMN_ICON = 0,
-    GEDIT_FILE_BROWSER_STORE_COLUMN_ICON_NAME,
-    GEDIT_FILE_BROWSER_STORE_COLUMN_MARKUP,
-    GEDIT_FILE_BROWSER_STORE_COLUMN_LOCATION,
-    GEDIT_FILE_BROWSER_STORE_COLUMN_FLAGS,
+    BEDIT_FILE_BROWSER_STORE_COLUMN_ICON = 0,
+    BEDIT_FILE_BROWSER_STORE_COLUMN_ICON_NAME,
+    BEDIT_FILE_BROWSER_STORE_COLUMN_MARKUP,
+    BEDIT_FILE_BROWSER_STORE_COLUMN_LOCATION,
+    BEDIT_FILE_BROWSER_STORE_COLUMN_FLAGS,
 
     /* Columns not in common with BeditFileBookmarksStore */
-    GEDIT_FILE_BROWSER_STORE_COLUMN_NAME,
-    GEDIT_FILE_BROWSER_STORE_COLUMN_EMBLEM,
-    GEDIT_FILE_BROWSER_STORE_COLUMN_NUM
+    BEDIT_FILE_BROWSER_STORE_COLUMN_NAME,
+    BEDIT_FILE_BROWSER_STORE_COLUMN_EMBLEM,
+    BEDIT_FILE_BROWSER_STORE_COLUMN_NUM
 } BeditFileBrowserStoreColumn;
 
 typedef enum {
-    GEDIT_FILE_BROWSER_STORE_FLAG_IS_DIRECTORY = 1 << 0,
-    GEDIT_FILE_BROWSER_STORE_FLAG_IS_HIDDEN = 1 << 1,
-    GEDIT_FILE_BROWSER_STORE_FLAG_IS_TEXT = 1 << 2,
-    GEDIT_FILE_BROWSER_STORE_FLAG_LOADED = 1 << 3,
-    GEDIT_FILE_BROWSER_STORE_FLAG_IS_FILTERED = 1 << 4,
-    GEDIT_FILE_BROWSER_STORE_FLAG_IS_DUMMY = 1 << 5
+    BEDIT_FILE_BROWSER_STORE_FLAG_IS_DIRECTORY = 1 << 0,
+    BEDIT_FILE_BROWSER_STORE_FLAG_IS_HIDDEN = 1 << 1,
+    BEDIT_FILE_BROWSER_STORE_FLAG_IS_TEXT = 1 << 2,
+    BEDIT_FILE_BROWSER_STORE_FLAG_LOADED = 1 << 3,
+    BEDIT_FILE_BROWSER_STORE_FLAG_IS_FILTERED = 1 << 4,
+    BEDIT_FILE_BROWSER_STORE_FLAG_IS_DUMMY = 1 << 5
 } BeditFileBrowserStoreFlag;
 
 typedef enum {
-    GEDIT_FILE_BROWSER_STORE_RESULT_OK,
-    GEDIT_FILE_BROWSER_STORE_RESULT_NO_CHANGE,
-    GEDIT_FILE_BROWSER_STORE_RESULT_ERROR,
-    GEDIT_FILE_BROWSER_STORE_RESULT_NO_TRASH,
-    GEDIT_FILE_BROWSER_STORE_RESULT_MOUNTING,
-    GEDIT_FILE_BROWSER_STORE_RESULT_NUM
+    BEDIT_FILE_BROWSER_STORE_RESULT_OK,
+    BEDIT_FILE_BROWSER_STORE_RESULT_NO_CHANGE,
+    BEDIT_FILE_BROWSER_STORE_RESULT_ERROR,
+    BEDIT_FILE_BROWSER_STORE_RESULT_NO_TRASH,
+    BEDIT_FILE_BROWSER_STORE_RESULT_MOUNTING,
+    BEDIT_FILE_BROWSER_STORE_RESULT_NUM
 } BeditFileBrowserStoreResult;
 
 typedef enum {
-    GEDIT_FILE_BROWSER_STORE_FILTER_MODE_NONE = 0,
-    GEDIT_FILE_BROWSER_STORE_FILTER_MODE_HIDE_HIDDEN = 1 << 0,
-    GEDIT_FILE_BROWSER_STORE_FILTER_MODE_HIDE_BINARY = 1 << 1
+    BEDIT_FILE_BROWSER_STORE_FILTER_MODE_NONE = 0,
+    BEDIT_FILE_BROWSER_STORE_FILTER_MODE_HIDE_HIDDEN = 1 << 0,
+    BEDIT_FILE_BROWSER_STORE_FILTER_MODE_HIDE_BINARY = 1 << 1
 } BeditFileBrowserStoreFilterMode;
 
-#define FILE_IS_DIR(flags) (flags & GEDIT_FILE_BROWSER_STORE_FLAG_IS_DIRECTORY)
-#define FILE_IS_HIDDEN(flags) (flags & GEDIT_FILE_BROWSER_STORE_FLAG_IS_HIDDEN)
-#define FILE_IS_TEXT(flags) (flags & GEDIT_FILE_BROWSER_STORE_FLAG_IS_TEXT)
-#define FILE_LOADED(flags) (flags & GEDIT_FILE_BROWSER_STORE_FLAG_LOADED)
+#define FILE_IS_DIR(flags) (flags & BEDIT_FILE_BROWSER_STORE_FLAG_IS_DIRECTORY)
+#define FILE_IS_HIDDEN(flags) (flags & BEDIT_FILE_BROWSER_STORE_FLAG_IS_HIDDEN)
+#define FILE_IS_TEXT(flags) (flags & BEDIT_FILE_BROWSER_STORE_FLAG_IS_TEXT)
+#define FILE_LOADED(flags) (flags & BEDIT_FILE_BROWSER_STORE_FLAG_LOADED)
 #define FILE_IS_FILTERED(flags)                                                \
-    (flags & GEDIT_FILE_BROWSER_STORE_FLAG_IS_FILTERED)
-#define FILE_IS_DUMMY(flags) (flags & GEDIT_FILE_BROWSER_STORE_FLAG_IS_DUMMY)
+    (flags & BEDIT_FILE_BROWSER_STORE_FLAG_IS_FILTERED)
+#define FILE_IS_DUMMY(flags) (flags & BEDIT_FILE_BROWSER_STORE_FLAG_IS_DUMMY)
 
 typedef struct _BeditFileBrowserStore BeditFileBrowserStore;
 typedef struct _BeditFileBrowserStoreClass BeditFileBrowserStoreClass;
@@ -180,5 +180,5 @@ void _bedit_file_browser_store_register_type(GTypeModule *type_module);
 
 G_END_DECLS
 
-#endif /* GEDIT_FILE_BROWSER_STORE_H */
+#endif /* BEDIT_FILE_BROWSER_STORE_H */
 

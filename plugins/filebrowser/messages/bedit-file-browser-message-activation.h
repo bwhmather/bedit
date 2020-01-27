@@ -21,36 +21,36 @@
  * Boston, MA  02110-1301  USA
  */
 
-#ifndef GEDIT_FILE_BROWSER_MESSAGE_ACTIVATION_H
-#define GEDIT_FILE_BROWSER_MESSAGE_ACTIVATION_H
+#ifndef BEDIT_FILE_BROWSER_MESSAGE_ACTIVATION_H
+#define BEDIT_FILE_BROWSER_MESSAGE_ACTIVATION_H
 
 #include <bedit/bedit-message.h>
 
 G_BEGIN_DECLS
 
-#define GEDIT_TYPE_FILE_BROWSER_MESSAGE_ACTIVATION                             \
+#define BEDIT_TYPE_FILE_BROWSER_MESSAGE_ACTIVATION                             \
     (bedit_file_browser_message_activation_get_type())
-#define GEDIT_FILE_BROWSER_MESSAGE_ACTIVATION(obj)                             \
+#define BEDIT_FILE_BROWSER_MESSAGE_ACTIVATION(obj)                             \
     (G_TYPE_CHECK_INSTANCE_CAST(                                               \
-        (obj), GEDIT_TYPE_FILE_BROWSER_MESSAGE_ACTIVATION,                     \
+        (obj), BEDIT_TYPE_FILE_BROWSER_MESSAGE_ACTIVATION,                     \
         BeditFileBrowserMessageActivation))
-#define GEDIT_FILE_BROWSER_MESSAGE_ACTIVATION_CONST(obj)                       \
+#define BEDIT_FILE_BROWSER_MESSAGE_ACTIVATION_CONST(obj)                       \
     (G_TYPE_CHECK_INSTANCE_CAST(                                               \
-        (obj), GEDIT_TYPE_FILE_BROWSER_MESSAGE_ACTIVATION,                     \
+        (obj), BEDIT_TYPE_FILE_BROWSER_MESSAGE_ACTIVATION,                     \
         BeditFileBrowserMessageActivation const))
-#define GEDIT_FILE_BROWSER_MESSAGE_ACTIVATION_CLASS(klass)                     \
+#define BEDIT_FILE_BROWSER_MESSAGE_ACTIVATION_CLASS(klass)                     \
     (G_TYPE_CHECK_CLASS_CAST(                                                  \
-        (klass), GEDIT_TYPE_FILE_BROWSER_MESSAGE_ACTIVATION,                   \
+        (klass), BEDIT_TYPE_FILE_BROWSER_MESSAGE_ACTIVATION,                   \
         BeditFileBrowserMessageActivationClass))
-#define GEDIT_IS_FILE_BROWSER_MESSAGE_ACTIVATION(obj)                          \
+#define BEDIT_IS_FILE_BROWSER_MESSAGE_ACTIVATION(obj)                          \
     (G_TYPE_CHECK_INSTANCE_TYPE(                                               \
-        (obj), GEDIT_TYPE_FILE_BROWSER_MESSAGE_ACTIVATION))
-#define GEDIT_IS_FILE_BROWSER_MESSAGE_ACTIVATION_CLASS(klass)                  \
+        (obj), BEDIT_TYPE_FILE_BROWSER_MESSAGE_ACTIVATION))
+#define BEDIT_IS_FILE_BROWSER_MESSAGE_ACTIVATION_CLASS(klass)                  \
     (G_TYPE_CHECK_CLASS_TYPE(                                                  \
-        (klass), GEDIT_TYPE_FILE_BROWSER_MESSAGE_ACTIVATION))
-#define GEDIT_FILE_BROWSER_MESSAGE_ACTIVATION_GET_CLASS(obj)                   \
+        (klass), BEDIT_TYPE_FILE_BROWSER_MESSAGE_ACTIVATION))
+#define BEDIT_FILE_BROWSER_MESSAGE_ACTIVATION_GET_CLASS(obj)                   \
     (G_TYPE_INSTANCE_GET_CLASS(                                                \
-        (obj), GEDIT_TYPE_FILE_BROWSER_MESSAGE_ACTIVATION,                     \
+        (obj), BEDIT_TYPE_FILE_BROWSER_MESSAGE_ACTIVATION,                     \
         BeditFileBrowserMessageActivationClass))
 
 typedef struct _BeditFileBrowserMessageActivation
@@ -74,4 +74,4 @@ GType bedit_file_browser_message_activation_get_type(void) G_GNUC_CONST;
 
 G_END_DECLS
 
-#endif /* GEDIT_FILE_BROWSER_MESSAGE_ACTIVATION_H */
+#endif /* BEDIT_FILE_BROWSER_MESSAGE_ACTIVATION_H */

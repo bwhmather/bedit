@@ -6,7 +6,7 @@
 import rpm
 import datetime
 
-spec = rpm.spec($GEDIT_CURRENT_DOCUMENT_PATH)
+spec = rpm.spec($BEDIT_CURRENT_DOCUMENT_PATH)
 date = datetime.date.today().strftime("%a %b %d %Y")
 headers = spec.packages[0].header
 version = headers['Version']

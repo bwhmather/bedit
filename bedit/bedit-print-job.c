@@ -73,7 +73,7 @@ G_DEFINE_TYPE(BeditPrintJob, bedit_print_job, G_TYPE_OBJECT)
 
 static void bedit_print_job_get_property(
     GObject *object, guint prop_id, GValue *value, GParamSpec *pspec) {
-    BeditPrintJob *job = GEDIT_PRINT_JOB(object);
+    BeditPrintJob *job = BEDIT_PRINT_JOB(object);
 
     switch (prop_id) {
     case PROP_VIEW:
@@ -88,7 +88,7 @@ static void bedit_print_job_get_property(
 
 static void bedit_print_job_set_property(
     GObject *object, guint prop_id, const GValue *value, GParamSpec *pspec) {
-    BeditPrintJob *job = GEDIT_PRINT_JOB(object);
+    BeditPrintJob *job = BEDIT_PRINT_JOB(object);
 
     switch (prop_id) {
     case PROP_VIEW:
@@ -102,7 +102,7 @@ static void bedit_print_job_set_property(
 }
 
 static void bedit_print_job_dispose(GObject *object) {
-    BeditPrintJob *job = GEDIT_PRINT_JOB(object);
+    BeditPrintJob *job = BEDIT_PRINT_JOB(object);
 
     g_clear_object(&job->gsettings);
     g_clear_object(&job->operation);
@@ -113,7 +113,7 @@ static void bedit_print_job_dispose(GObject *object) {
 }
 
 static void bedit_print_job_finalize(GObject *object) {
-    BeditPrintJob *job = GEDIT_PRINT_JOB(object);
+    BeditPrintJob *job = BEDIT_PRINT_JOB(object);
 
     g_free(job->status_string);
 
@@ -140,7 +140,7 @@ static void bedit_print_job_class_init(BeditPrintJobClass *klass) {
     object_class->finalize = bedit_print_job_finalize;
 
     properties[PROP_VIEW] = g_param_spec_object(
-        "view", "Bedit View", "Bedit View to print", GEDIT_TYPE_VIEW,
+        "view", "Bedit View", "Bedit View to print", BEDIT_TYPE_VIEW,
         G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS | G_PARAM_CONSTRUCT_ONLY);
 
     g_object_class_install_properties(object_class, LAST_PROP, properties);
@@ -170,9 +170,9 @@ static void bedit_print_job_init(BeditPrintJob *job) {
 static void restore_button_clicked(GtkButton *button, BeditPrintJob *job)
 
 {
-    g_settings_reset(job->gsettings, GEDIT_SETTINGS_PRINT_FONT_BODY_PANGO);
-    g_settings_reset(job->gsettings, GEDIT_SETTINGS_PRINT_FONT_HEADER_PANGO);
-    g_settings_reset(job->gsettings, GEDIT_SETTINGS_PRINT_FONT_NUMBERS_PANGO);
+    g_settings_reset(job->gsettings, BEDIT_SETTINGS_PRINT_FONT_BODY_PANGO);
+    g_settings_reset(job->gsettings, BEDIT_SETTINGS_PRINT_FONT_HEADER_PANGO);
+    g_settings_reset(job->gsettings, BEDIT_SETTINGS_PRINT_FONT_NUMBERS_PANGO);
 }
 
 static GObject *create_custom_widget_cb(
@@ -218,17 +218,17 @@ static GObject *create_custom_widget_cb(
 
     /* Syntax highlighting */
     g_settings_bind(
-        job->gsettings, GEDIT_SETTINGS_PRINT_SYNTAX_HIGHLIGHTING,
+        job->gsettings, BEDIT_SETTINGS_PRINT_SYNTAX_HIGHLIGHTING,
         job->syntax_checkbutton, "active", G_SETTINGS_BIND_GET);
 
     /* Print header */
     g_settings_bind(
-        job->gsettings, GEDIT_SETTINGS_PRINT_HEADER,
+        job->gsettings, BEDIT_SETTINGS_PRINT_HEADER,
         job->page_header_checkbutton, "active", G_SETTINGS_BIND_GET);
 
     /* Line numbers */
     g_settings_get(
-        job->gsettings, GEDIT_SETTINGS_PRINT_LINE_NUMBERS, "u", &line_numbers);
+        job->gsettings, BEDIT_SETTINGS_PRINT_LINE_NUMBERS, "u", &line_numbers);
 
     if (line_numbers > 0) {
         gtk_spin_button_set_value(job->line_numbers_spinbutton, line_numbers);
@@ -245,20 +245,20 @@ static GObject *create_custom_widget_cb(
 
     /* Fonts */
     g_settings_bind(
-        job->gsettings, GEDIT_SETTINGS_PRINT_FONT_BODY_PANGO,
+        job->gsettings, BEDIT_SETTINGS_PRINT_FONT_BODY_PANGO,
         job->body_fontbutton, "font-name", G_SETTINGS_BIND_GET);
 
     g_settings_bind(
-        job->gsettings, GEDIT_SETTINGS_PRINT_FONT_HEADER_PANGO,
+        job->gsettings, BEDIT_SETTINGS_PRINT_FONT_HEADER_PANGO,
         job->headers_fontbutton, "font-name", G_SETTINGS_BIND_GET);
 
     g_settings_bind(
-        job->gsettings, GEDIT_SETTINGS_PRINT_FONT_NUMBERS_PANGO,
+        job->gsettings, BEDIT_SETTINGS_PRINT_FONT_NUMBERS_PANGO,
         job->numbers_fontbutton, "font-name", G_SETTINGS_BIND_GET);
 
     /* Wrap mode */
     wrap_mode =
-        g_settings_get_enum(job->gsettings, GEDIT_SETTINGS_PRINT_WRAP_MODE);
+        g_settings_get_enum(job->gsettings, BEDIT_SETTINGS_PRINT_WRAP_MODE);
 
     switch (wrap_mode) {
     case GTK_WRAP_WORD:
@@ -310,19 +310,19 @@ static void custom_widget_apply_cb(
         gtk_font_chooser_get_font(GTK_FONT_CHOOSER(job->numbers_fontbutton));
 
     g_settings_set_boolean(
-        job->gsettings, GEDIT_SETTINGS_PRINT_SYNTAX_HIGHLIGHTING, syntax);
+        job->gsettings, BEDIT_SETTINGS_PRINT_SYNTAX_HIGHLIGHTING, syntax);
 
     g_settings_set_boolean(
-        job->gsettings, GEDIT_SETTINGS_PRINT_HEADER, page_header);
+        job->gsettings, BEDIT_SETTINGS_PRINT_HEADER, page_header);
 
     g_settings_set_string(
-        job->gsettings, GEDIT_SETTINGS_PRINT_FONT_BODY_PANGO, body_font);
+        job->gsettings, BEDIT_SETTINGS_PRINT_FONT_BODY_PANGO, body_font);
 
     g_settings_set_string(
-        job->gsettings, GEDIT_SETTINGS_PRINT_FONT_HEADER_PANGO, header_font);
+        job->gsettings, BEDIT_SETTINGS_PRINT_FONT_HEADER_PANGO, header_font);
 
     g_settings_set_string(
-        job->gsettings, GEDIT_SETTINGS_PRINT_FONT_NUMBERS_PANGO, numbers_font);
+        job->gsettings, BEDIT_SETTINGS_PRINT_FONT_NUMBERS_PANGO, numbers_font);
 
     if (gtk_toggle_button_get_active(job->line_numbers_checkbutton)) {
         gint num;
@@ -330,11 +330,11 @@ static void custom_widget_apply_cb(
         num = gtk_spin_button_get_value_as_int(job->line_numbers_spinbutton);
 
         g_settings_set(
-            job->gsettings, GEDIT_SETTINGS_PRINT_LINE_NUMBERS, "u",
+            job->gsettings, BEDIT_SETTINGS_PRINT_LINE_NUMBERS, "u",
             MAX(1, num));
     } else {
         g_settings_set(
-            job->gsettings, GEDIT_SETTINGS_PRINT_LINE_NUMBERS, "u", 0);
+            job->gsettings, BEDIT_SETTINGS_PRINT_LINE_NUMBERS, "u", 0);
     }
 
     if (gtk_toggle_button_get_active(job->text_wrapping_checkbutton)) {
@@ -348,7 +348,7 @@ static void custom_widget_apply_cb(
     }
 
     g_settings_set_enum(
-        job->gsettings, GEDIT_SETTINGS_PRINT_WRAP_MODE, wrap_mode);
+        job->gsettings, BEDIT_SETTINGS_PRINT_WRAP_MODE, wrap_mode);
 }
 
 static void preview_ready(
@@ -389,26 +389,26 @@ static void create_compositor(BeditPrintJob *job) {
     buf = GTK_SOURCE_BUFFER(gtk_text_view_get_buffer(GTK_TEXT_VIEW(job->view)));
 
     print_font_body = g_settings_get_string(
-        job->gsettings, GEDIT_SETTINGS_PRINT_FONT_BODY_PANGO);
+        job->gsettings, BEDIT_SETTINGS_PRINT_FONT_BODY_PANGO);
 
     print_font_header = g_settings_get_string(
-        job->gsettings, GEDIT_SETTINGS_PRINT_FONT_HEADER_PANGO);
+        job->gsettings, BEDIT_SETTINGS_PRINT_FONT_HEADER_PANGO);
 
     print_font_numbers = g_settings_get_string(
-        job->gsettings, GEDIT_SETTINGS_PRINT_FONT_NUMBERS_PANGO);
+        job->gsettings, BEDIT_SETTINGS_PRINT_FONT_NUMBERS_PANGO);
 
     g_settings_get(
-        job->gsettings, GEDIT_SETTINGS_PRINT_LINE_NUMBERS, "u",
+        job->gsettings, BEDIT_SETTINGS_PRINT_LINE_NUMBERS, "u",
         &print_line_numbers);
 
     print_header =
-        g_settings_get_boolean(job->gsettings, GEDIT_SETTINGS_PRINT_HEADER);
+        g_settings_get_boolean(job->gsettings, BEDIT_SETTINGS_PRINT_HEADER);
 
     wrap_mode =
-        g_settings_get_enum(job->gsettings, GEDIT_SETTINGS_PRINT_WRAP_MODE);
+        g_settings_get_enum(job->gsettings, BEDIT_SETTINGS_PRINT_WRAP_MODE);
 
     syntax_hl = g_settings_get_boolean(
-        job->gsettings, GEDIT_SETTINGS_PRINT_SYNTAX_HIGHLIGHTING);
+        job->gsettings, BEDIT_SETTINGS_PRINT_SYNTAX_HIGHLIGHTING);
 
     syntax_hl &= gtk_source_buffer_get_highlight_syntax(buf);
 
@@ -423,22 +423,22 @@ static void create_compositor(BeditPrintJob *job) {
         print_font_header, NULL));
 
     margin =
-        g_settings_get_double(job->gsettings, GEDIT_SETTINGS_PRINT_MARGIN_LEFT);
+        g_settings_get_double(job->gsettings, BEDIT_SETTINGS_PRINT_MARGIN_LEFT);
     gtk_source_print_compositor_set_left_margin(
         job->compositor, margin, GTK_UNIT_MM);
 
     margin =
-        g_settings_get_double(job->gsettings, GEDIT_SETTINGS_PRINT_MARGIN_TOP);
+        g_settings_get_double(job->gsettings, BEDIT_SETTINGS_PRINT_MARGIN_TOP);
     gtk_source_print_compositor_set_top_margin(
         job->compositor, margin, GTK_UNIT_MM);
 
     margin = g_settings_get_double(
-        job->gsettings, GEDIT_SETTINGS_PRINT_MARGIN_RIGHT);
+        job->gsettings, BEDIT_SETTINGS_PRINT_MARGIN_RIGHT);
     gtk_source_print_compositor_set_right_margin(
         job->compositor, margin, GTK_UNIT_MM);
 
     margin = g_settings_get_double(
-        job->gsettings, GEDIT_SETTINGS_PRINT_MARGIN_BOTTOM);
+        job->gsettings, BEDIT_SETTINGS_PRINT_MARGIN_BOTTOM);
     gtk_source_print_compositor_set_bottom_margin(
         job->compositor, margin, GTK_UNIT_MM);
 
@@ -447,7 +447,7 @@ static void create_compositor(BeditPrintJob *job) {
         gchar *name_to_display;
         gchar *left;
 
-        doc_name = bedit_document_get_uri_for_display(GEDIT_DOCUMENT(buf));
+        doc_name = bedit_document_get_uri_for_display(BEDIT_DOCUMENT(buf));
         name_to_display = bedit_utils_str_middle_truncate(doc_name, 60);
 
         left = g_strdup_printf(_("File: %s"), name_to_display);
@@ -476,7 +476,7 @@ static void begin_print_cb(
 
     job->progress = 0.0;
 
-    g_signal_emit(job, signals[PRINTING], 0, GEDIT_PRINT_JOB_STATUS_PAGINATING);
+    g_signal_emit(job, signals[PRINTING], 0, BEDIT_PRINT_JOB_STATUS_PAGINATING);
 }
 
 static gboolean paginate_cb(
@@ -503,7 +503,7 @@ static gboolean paginate_cb(
         job->progress /= 2.0;
     }
 
-    g_signal_emit(job, signals[PRINTING], 0, GEDIT_PRINT_JOB_STATUS_PAGINATING);
+    g_signal_emit(job, signals[PRINTING], 0, BEDIT_PRINT_JOB_STATUS_PAGINATING);
 
     return finished;
 }
@@ -526,7 +526,7 @@ static void draw_page_cb(
         job->progress = page_nr / (2.0 * n_pages) + 0.5;
 
         g_signal_emit(
-            job, signals[PRINTING], 0, GEDIT_PRINT_JOB_STATUS_DRAWING);
+            job, signals[PRINTING], 0, BEDIT_PRINT_JOB_STATUS_DRAWING);
     }
 
     gtk_source_print_compositor_draw_page(job->compositor, context, page_nr);
@@ -546,15 +546,15 @@ static void done_cb(
 
     switch (result) {
     case GTK_PRINT_OPERATION_RESULT_CANCEL:
-        print_result = GEDIT_PRINT_JOB_RESULT_CANCEL;
+        print_result = BEDIT_PRINT_JOB_RESULT_CANCEL;
         break;
 
     case GTK_PRINT_OPERATION_RESULT_APPLY:
-        print_result = GEDIT_PRINT_JOB_RESULT_OK;
+        print_result = BEDIT_PRINT_JOB_RESULT_OK;
         break;
 
     case GTK_PRINT_OPERATION_RESULT_ERROR:
-        print_result = GEDIT_PRINT_JOB_RESULT_ERROR;
+        print_result = BEDIT_PRINT_JOB_RESULT_ERROR;
         gtk_print_operation_get_error(operation, &error);
         break;
 
@@ -569,9 +569,9 @@ static void done_cb(
 }
 
 BeditPrintJob *bedit_print_job_new(BeditView *view) {
-    g_return_val_if_fail(GEDIT_IS_VIEW(view), NULL);
+    g_return_val_if_fail(BEDIT_IS_VIEW(view), NULL);
 
-    return g_object_new(GEDIT_TYPE_PRINT_JOB, "view", view, NULL);
+    return g_object_new(BEDIT_TYPE_PRINT_JOB, "view", view, NULL);
 }
 
 /* Note that bedit_print_job_print() can only be called once on a given
@@ -601,7 +601,7 @@ GtkPrintOperationResult bedit_print_job_print(
         gtk_print_operation_set_default_page_setup(job->operation, page_setup);
     }
 
-    doc = GEDIT_DOCUMENT(gtk_text_view_get_buffer(GTK_TEXT_VIEW(job->view)));
+    doc = BEDIT_DOCUMENT(gtk_text_view_get_buffer(GTK_TEXT_VIEW(job->view)));
     job_name = bedit_document_get_short_name_for_display(doc);
     gtk_print_operation_set_job_name(job->operation, job_name);
     g_free(job_name);
@@ -640,32 +640,32 @@ GtkPrintOperationResult bedit_print_job_print(
 }
 
 void bedit_print_job_cancel(BeditPrintJob *job) {
-    g_return_if_fail(GEDIT_IS_PRINT_JOB(job));
+    g_return_if_fail(BEDIT_IS_PRINT_JOB(job));
 
     gtk_print_operation_cancel(job->operation);
 }
 
 const gchar *bedit_print_job_get_status_string(BeditPrintJob *job) {
-    g_return_val_if_fail(GEDIT_IS_PRINT_JOB(job), NULL);
+    g_return_val_if_fail(BEDIT_IS_PRINT_JOB(job), NULL);
     g_return_val_if_fail(job->status_string != NULL, NULL);
 
     return job->status_string;
 }
 
 gdouble bedit_print_job_get_progress(BeditPrintJob *job) {
-    g_return_val_if_fail(GEDIT_IS_PRINT_JOB(job), 0.0);
+    g_return_val_if_fail(BEDIT_IS_PRINT_JOB(job), 0.0);
 
     return job->progress;
 }
 
 GtkPrintSettings *bedit_print_job_get_print_settings(BeditPrintJob *job) {
-    g_return_val_if_fail(GEDIT_IS_PRINT_JOB(job), NULL);
+    g_return_val_if_fail(BEDIT_IS_PRINT_JOB(job), NULL);
 
     return gtk_print_operation_get_print_settings(job->operation);
 }
 
 GtkPageSetup *bedit_print_job_get_page_setup(BeditPrintJob *job) {
-    g_return_val_if_fail(GEDIT_IS_PRINT_JOB(job), NULL);
+    g_return_val_if_fail(BEDIT_IS_PRINT_JOB(job), NULL);
 
     return gtk_print_operation_get_default_page_setup(job->operation);
 }

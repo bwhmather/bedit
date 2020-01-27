@@ -34,7 +34,7 @@
 
 void _bedit_cmd_documents_previous_document(
     GSimpleAction *action, GVariant *parameter, gpointer user_data) {
-    BeditWindow *window = GEDIT_WINDOW(user_data);
+    BeditWindow *window = BEDIT_WINDOW(user_data);
     GtkNotebook *notebook;
 
     bedit_debug(DEBUG_COMMANDS);
@@ -45,7 +45,7 @@ void _bedit_cmd_documents_previous_document(
 
 void _bedit_cmd_documents_next_document(
     GSimpleAction *action, GVariant *parameter, gpointer user_data) {
-    BeditWindow *window = GEDIT_WINDOW(user_data);
+    BeditWindow *window = BEDIT_WINDOW(user_data);
     GtkNotebook *notebook;
 
     bedit_debug(DEBUG_COMMANDS);
@@ -56,7 +56,7 @@ void _bedit_cmd_documents_next_document(
 
 void _bedit_cmd_documents_move_to_new_window(
     GSimpleAction *action, GVariant *parameter, gpointer user_data) {
-    BeditWindow *window = GEDIT_WINDOW(user_data);
+    BeditWindow *window = BEDIT_WINDOW(user_data);
     BeditTab *tab;
 
     bedit_debug(DEBUG_COMMANDS);
@@ -72,19 +72,19 @@ void _bedit_cmd_documents_move_to_new_window(
 /* Methods releated with the tab groups */
 void _bedit_cmd_documents_new_tab_group(
     GSimpleAction *action, GVariant *parameter, gpointer user_data) {
-    bedit_multi_notebook_add_new_notebook(GEDIT_MULTI_NOTEBOOK(
-        _bedit_window_get_multi_notebook(GEDIT_WINDOW(user_data))));
+    bedit_multi_notebook_add_new_notebook(BEDIT_MULTI_NOTEBOOK(
+        _bedit_window_get_multi_notebook(BEDIT_WINDOW(user_data))));
 }
 
 void _bedit_cmd_documents_previous_tab_group(
     GSimpleAction *action, GVariant *parameter, gpointer user_data) {
-    bedit_multi_notebook_previous_notebook(GEDIT_MULTI_NOTEBOOK(
-        _bedit_window_get_multi_notebook(GEDIT_WINDOW(user_data))));
+    bedit_multi_notebook_previous_notebook(BEDIT_MULTI_NOTEBOOK(
+        _bedit_window_get_multi_notebook(BEDIT_WINDOW(user_data))));
 }
 
 void _bedit_cmd_documents_next_tab_group(
     GSimpleAction *action, GVariant *parameter, gpointer user_data) {
-    bedit_multi_notebook_next_notebook(GEDIT_MULTI_NOTEBOOK(
-        _bedit_window_get_multi_notebook(GEDIT_WINDOW(user_data))));
+    bedit_multi_notebook_next_notebook(BEDIT_MULTI_NOTEBOOK(
+        _bedit_window_get_multi_notebook(BEDIT_WINDOW(user_data))));
 }
 

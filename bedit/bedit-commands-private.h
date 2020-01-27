@@ -20,8 +20,8 @@
  * along with this program; if not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef GEDIT_COMMANDS_PRIVATE_H
-#define GEDIT_COMMANDS_PRIVATE_H
+#ifndef BEDIT_COMMANDS_PRIVATE_H
+#define BEDIT_COMMANDS_PRIVATE_H
 
 #include <bedit/bedit-notebook.h>
 #include <bedit/bedit-window.h>
@@ -126,5 +126,5 @@ void _bedit_cmd_file_close_notebook(
 
 G_END_DECLS
 
-#endif /* GEDIT_COMMANDS_PRIVATE_H */
+#endif /* BEDIT_COMMANDS_PRIVATE_H */
 

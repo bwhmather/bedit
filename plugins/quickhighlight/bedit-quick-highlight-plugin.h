@@ -18,8 +18,8 @@
  *
  */
 
-#ifndef GEDIT_QUICK_HIGHLIGHT_PLUGIN_H
-#define GEDIT_QUICK_HIGHLIGHT_PLUGIN_H
+#ifndef BEDIT_QUICK_HIGHLIGHT_PLUGIN_H
+#define BEDIT_QUICK_HIGHLIGHT_PLUGIN_H
 
 #include <glib-object.h>
 #include <glib.h>
@@ -28,22 +28,22 @@
 
 G_BEGIN_DECLS
 
-#define GEDIT_TYPE_QUICK_HIGHLIGHT_PLUGIN                                      \
+#define BEDIT_TYPE_QUICK_HIGHLIGHT_PLUGIN                                      \
     (bedit_quick_highlight_plugin_get_type())
-#define GEDIT_QUICK_HIGHLIGHT_PLUGIN(o)                                        \
+#define BEDIT_QUICK_HIGHLIGHT_PLUGIN(o)                                        \
     (G_TYPE_CHECK_INSTANCE_CAST(                                               \
-        (o), GEDIT_TYPE_QUICK_HIGHLIGHT_PLUGIN, BeditQuickHighlightPlugin))
-#define GEDIT_QUICK_HIGHLIGHT_PLUGIN_CLASS(k)                                  \
+        (o), BEDIT_TYPE_QUICK_HIGHLIGHT_PLUGIN, BeditQuickHighlightPlugin))
+#define BEDIT_QUICK_HIGHLIGHT_PLUGIN_CLASS(k)                                  \
     (G_TYPE_CHECK_CLASS_CAST(                                                  \
-        (k), GEDIT_TYPE_QUICK_HIGHLIGHT_PLUGIN,                                \
+        (k), BEDIT_TYPE_QUICK_HIGHLIGHT_PLUGIN,                                \
         BeditQuickHighlightPluginClass))
-#define GEDIT_IS_QUICK_HIGHLIGHT_PLUGIN(o)                                     \
-    (G_TYPE_CHECK_INSTANCE_TYPE((o), GEDIT_TYPE_QUICK_HIGHLIGHT_PLUGIN))
-#define GEDIT_IS_QUICK_HIGHLIGHT_PLUGIN_CLASS(k)                               \
-    (G_TYPE_CHECK_CLASS_TYPE((k), GEDIT_TYPE_QUICK_HIGHLIGHT_PLUGIN))
-#define GEDIT_QUICK_HIGHLIGHT_GET_CLASS(o)                                     \
+#define BEDIT_IS_QUICK_HIGHLIGHT_PLUGIN(o)                                     \
+    (G_TYPE_CHECK_INSTANCE_TYPE((o), BEDIT_TYPE_QUICK_HIGHLIGHT_PLUGIN))
+#define BEDIT_IS_QUICK_HIGHLIGHT_PLUGIN_CLASS(k)                               \
+    (G_TYPE_CHECK_CLASS_TYPE((k), BEDIT_TYPE_QUICK_HIGHLIGHT_PLUGIN))
+#define BEDIT_QUICK_HIGHLIGHT_GET_CLASS(o)                                     \
     (G_TYPE_INSTANCE_GET_CLASS(                                                \
-        (o), GEDIT_TYPE_QUICK_HIGHLIGHT_PLUGIN,                                \
+        (o), BEDIT_TYPE_QUICK_HIGHLIGHT_PLUGIN,                                \
         BeditQuickHighlightPluginClass))
 
 typedef struct _BeditQuickHighlightPlugin BeditQuickHighlightPlugin;
@@ -68,5 +68,5 @@ G_MODULE_EXPORT void peas_register_types(PeasObjectModule *module);
 
 G_END_DECLS
 
-#endif /* GEDIT_QUICK_HIGHLIGHT_PLUGIN_H */
+#endif /* BEDIT_QUICK_HIGHLIGHT_PLUGIN_H */
 

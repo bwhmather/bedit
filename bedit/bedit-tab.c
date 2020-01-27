@@ -40,7 +40,7 @@
 #include "bedit-utils.h"
 #include "bedit-view-frame.h"
 
-#define GEDIT_TAB_KEY "GEDIT_TAB_KEY"
+#define BEDIT_TAB_KEY "BEDIT_TAB_KEY"
 
 struct _BeditTab {
     GtkBox parent_instance;
@@ -179,7 +179,7 @@ static void set_editable(BeditTab *tab, gboolean editable) {
 
     view = bedit_tab_get_view(tab);
 
-    val = (tab->state == GEDIT_TAB_STATE_NORMAL && tab->editable);
+    val = (tab->state == BEDIT_TAB_STATE_NORMAL && tab->editable);
 
     gtk_text_view_set_editable(GTK_TEXT_VIEW(view), val);
 }
@@ -212,7 +212,7 @@ static void update_auto_save_timeout(BeditTab *tab) {
     doc = bedit_tab_get_document(tab);
     file = bedit_document_get_file(doc);
 
-    if (tab->state == GEDIT_TAB_STATE_NORMAL && tab->auto_save &&
+    if (tab->state == BEDIT_TAB_STATE_NORMAL && tab->auto_save &&
         !bedit_document_is_untitled(doc) &&
         !gtk_source_file_is_readonly(file)) {
         install_auto_save_timeout(tab);
@@ -223,7 +223,7 @@ static void update_auto_save_timeout(BeditTab *tab) {
 
 static void bedit_tab_get_property(
     GObject *object, guint prop_id, GValue *value, GParamSpec *pspec) {
-    BeditTab *tab = GEDIT_TAB(object);
+    BeditTab *tab = BEDIT_TAB(object);
 
     switch (prop_id) {
     case PROP_NAME:
@@ -254,7 +254,7 @@ static void bedit_tab_get_property(
 
 static void bedit_tab_set_property(
     GObject *object, guint prop_id, const GValue *value, GParamSpec *pspec) {
-    BeditTab *tab = GEDIT_TAB(object);
+    BeditTab *tab = BEDIT_TAB(object);
 
     switch (prop_id) {
     case PROP_AUTO_SAVE:
@@ -272,7 +272,7 @@ static void bedit_tab_set_property(
 }
 
 static void bedit_tab_dispose(GObject *object) {
-    BeditTab *tab = GEDIT_TAB(object);
+    BeditTab *tab = BEDIT_TAB(object);
 
     g_clear_object(&tab->editor_settings);
     g_clear_object(&tab->print_job);
@@ -294,7 +294,7 @@ static void bedit_tab_dispose(GObject *object) {
 }
 
 static void bedit_tab_grab_focus(GtkWidget *widget) {
-    BeditTab *tab = GEDIT_TAB(widget);
+    BeditTab *tab = BEDIT_TAB(widget);
 
     GTK_WIDGET_CLASS(bedit_tab_parent_class)->grab_focus(widget);
 
@@ -325,8 +325,8 @@ static void bedit_tab_class_init(BeditTabClass *klass) {
         G_PARAM_READABLE | G_PARAM_STATIC_STRINGS);
 
     properties[PROP_STATE] = g_param_spec_enum(
-        "state", "State", "The tab's state", GEDIT_TYPE_TAB_STATE,
-        GEDIT_TAB_STATE_NORMAL, G_PARAM_READABLE | G_PARAM_STATIC_STRINGS);
+        "state", "State", "The tab's state", BEDIT_TYPE_TAB_STATE,
+        BEDIT_TAB_STATE_NORMAL, G_PARAM_READABLE | G_PARAM_STATIC_STRINGS);
 
     properties[PROP_AUTO_SAVE] = g_param_spec_boolean(
         "autosave", "Autosave", "Autosave feature", TRUE,
@@ -357,7 +357,7 @@ static void bedit_tab_class_init(BeditTabClass *klass) {
  * Returns: the #BeditTabState of @tab
  */
 BeditTabState bedit_tab_get_state(BeditTab *tab) {
-    g_return_val_if_fail(GEDIT_IS_TAB(tab), GEDIT_TAB_STATE_NORMAL);
+    g_return_val_if_fail(BEDIT_IS_TAB(tab), BEDIT_TAB_STATE_NORMAL);
 
     return tab->state;
 }
@@ -374,11 +374,11 @@ static void set_cursor_according_to_state(
     text_window = gtk_text_view_get_window(view, GTK_TEXT_WINDOW_TEXT);
     left_window = gtk_text_view_get_window(view, GTK_TEXT_WINDOW_LEFT);
 
-    if ((state == GEDIT_TAB_STATE_LOADING) ||
-        (state == GEDIT_TAB_STATE_REVERTING) ||
-        (state == GEDIT_TAB_STATE_SAVING) ||
-        (state == GEDIT_TAB_STATE_PRINTING) ||
-        (state == GEDIT_TAB_STATE_CLOSING)) {
+    if ((state == BEDIT_TAB_STATE_LOADING) ||
+        (state == BEDIT_TAB_STATE_REVERTING) ||
+        (state == BEDIT_TAB_STATE_SAVING) ||
+        (state == BEDIT_TAB_STATE_PRINTING) ||
+        (state == BEDIT_TAB_STATE_CLOSING)) {
         cursor = gdk_cursor_new_from_name(display, "progress");
 
         if (text_window != NULL)
@@ -410,26 +410,26 @@ static void set_view_properties_according_to_state(
     gboolean hl_current_line;
 
     hl_current_line = g_settings_get_boolean(
-        tab->editor_settings, GEDIT_SETTINGS_HIGHLIGHT_CURRENT_LINE);
+        tab->editor_settings, BEDIT_SETTINGS_HIGHLIGHT_CURRENT_LINE);
 
     view = bedit_tab_get_view(tab);
 
-    val = ((state == GEDIT_TAB_STATE_NORMAL) && tab->editable);
+    val = ((state == BEDIT_TAB_STATE_NORMAL) && tab->editable);
     gtk_text_view_set_editable(GTK_TEXT_VIEW(view), val);
 
     val =
-        ((state != GEDIT_TAB_STATE_LOADING) &&
-         (state != GEDIT_TAB_STATE_CLOSING));
+        ((state != BEDIT_TAB_STATE_LOADING) &&
+         (state != BEDIT_TAB_STATE_CLOSING));
     gtk_text_view_set_cursor_visible(GTK_TEXT_VIEW(view), val);
 
     val =
-        ((state != GEDIT_TAB_STATE_LOADING) &&
-         (state != GEDIT_TAB_STATE_CLOSING) && (hl_current_line));
+        ((state != BEDIT_TAB_STATE_LOADING) &&
+         (state != BEDIT_TAB_STATE_CLOSING) && (hl_current_line));
     gtk_source_view_set_highlight_current_line(GTK_SOURCE_VIEW(view), val);
 }
 
 static void bedit_tab_set_state(BeditTab *tab, BeditTabState state) {
-    g_return_if_fail((state >= 0) && (state < GEDIT_TAB_NUM_OF_STATES));
+    g_return_if_fail((state >= 0) && (state < BEDIT_TAB_NUM_OF_STATES));
 
     if (tab->state == state) {
         return;
@@ -440,12 +440,12 @@ static void bedit_tab_set_state(BeditTab *tab, BeditTabState state) {
     set_view_properties_according_to_state(tab, state);
 
     /* Hide or show the document.
-     * For GEDIT_TAB_STATE_LOADING_ERROR, tab->frame is either shown or
+     * For BEDIT_TAB_STATE_LOADING_ERROR, tab->frame is either shown or
      * hidden, depending on the error.
      */
-    if (state == GEDIT_TAB_STATE_SHOWING_PRINT_PREVIEW) {
+    if (state == BEDIT_TAB_STATE_SHOWING_PRINT_PREVIEW) {
         gtk_widget_hide(GTK_WIDGET(tab->frame));
-    } else if (state != GEDIT_TAB_STATE_LOADING_ERROR) {
+    } else if (state != BEDIT_TAB_STATE_LOADING_ERROR) {
         gtk_widget_show(GTK_WIDGET(tab->frame));
     }
 
@@ -544,7 +544,7 @@ static void io_loading_error_info_bar_response(
             bedit_conversion_error_info_bar_get_encoding(GTK_WIDGET(info_bar));
 
         set_info_bar(data->tab, NULL, GTK_RESPONSE_NONE);
-        bedit_tab_set_state(data->tab, GEDIT_TAB_STATE_LOADING);
+        bedit_tab_set_state(data->tab, BEDIT_TAB_STATE_LOADING);
 
         launch_loader(loading_task, encoding);
         break;
@@ -553,7 +553,7 @@ static void io_loading_error_info_bar_response(
         /* This means that we want to edit the document anyway */
         set_editable(data->tab, TRUE);
         set_info_bar(data->tab, NULL, GTK_RESPONSE_NONE);
-        bedit_tab_set_state(data->tab, GEDIT_TAB_STATE_NORMAL);
+        bedit_tab_set_state(data->tab, BEDIT_TAB_STATE_NORMAL);
 
         g_task_return_boolean(loading_task, TRUE);
         g_object_unref(loading_task);
@@ -589,7 +589,7 @@ static void load_cancelled(
     GtkWidget *bar, gint response_id, GTask *loading_task) {
     LoaderData *data = g_task_get_task_data(loading_task);
 
-    g_return_if_fail(GEDIT_IS_PROGRESS_INFO_BAR(data->tab->info_bar));
+    g_return_if_fail(BEDIT_IS_PROGRESS_INFO_BAR(data->tab->info_bar));
 
     g_cancellable_cancel(g_task_get_cancellable(loading_task));
     remove_tab(data->tab);
@@ -600,7 +600,7 @@ static void unrecoverable_reverting_error_info_bar_response(
     LoaderData *data = g_task_get_task_data(loading_task);
     BeditView *view;
 
-    bedit_tab_set_state(data->tab, GEDIT_TAB_STATE_NORMAL);
+    bedit_tab_set_state(data->tab, BEDIT_TAB_STATE_NORMAL);
 
     set_info_bar(data->tab, NULL, GTK_RESPONSE_NONE);
 
@@ -665,7 +665,7 @@ static void show_loading_info_bar(GTask *loading_task) {
 
     name_markup = g_markup_printf_escaped("<b>%s</b>", name);
 
-    if (data->tab->state == GEDIT_TAB_STATE_REVERTING) {
+    if (data->tab->state == BEDIT_TAB_STATE_REVERTING) {
         if (dirname != NULL) {
             dirname_markup = g_markup_printf_escaped("<b>%s</b>", dirname);
 
@@ -790,9 +790,9 @@ static void info_bar_set_progress(
         DEBUG_TAB, "%" G_GOFFSET_FORMAT "/%" G_GOFFSET_FORMAT, size,
         total_size);
 
-    g_return_if_fail(GEDIT_IS_PROGRESS_INFO_BAR(tab->info_bar));
+    g_return_if_fail(BEDIT_IS_PROGRESS_INFO_BAR(tab->info_bar));
 
-    progress_info_bar = GEDIT_PROGRESS_INFO_BAR(tab->info_bar);
+    progress_info_bar = BEDIT_PROGRESS_INFO_BAR(tab->info_bar);
 
     if (total_size != 0) {
         gdouble frac = (gdouble)size / (gdouble)total_size;
@@ -863,7 +863,7 @@ static void unrecoverable_saving_error_info_bar_response(
     BeditTab *tab = g_task_get_source_object(saving_task);
     BeditView *view;
 
-    bedit_tab_set_state(tab, GEDIT_TAB_STATE_NORMAL);
+    bedit_tab_set_state(tab, BEDIT_TAB_STATE_NORMAL);
 
     set_info_bar(tab, NULL, GTK_RESPONSE_NONE);
 
@@ -882,7 +882,7 @@ static void response_set_save_flags(
     gboolean create_backup;
 
     create_backup = g_settings_get_boolean(
-        tab->editor_settings, GEDIT_SETTINGS_CREATE_BACKUP_COPY);
+        tab->editor_settings, BEDIT_SETTINGS_CREATE_BACKUP_COPY);
 
     /* If we are here, it means that the user expressed his or her willing
      * to save the file, by pressing a button in the info bar. So even if
@@ -1002,7 +1002,7 @@ static void externally_modified_notification_info_bar_response(
         tab->ask_if_externally_modified = FALSE;
 
         /* go back to normal state */
-        bedit_tab_set_state(tab, GEDIT_TAB_STATE_NORMAL);
+        bedit_tab_set_state(tab, BEDIT_TAB_STATE_NORMAL);
     }
 
     gtk_widget_grab_focus(GTK_WIDGET(view));
@@ -1038,10 +1038,10 @@ static gboolean view_focused_in(
     BeditDocument *doc;
     GtkSourceFile *file;
 
-    g_return_val_if_fail(GEDIT_IS_TAB(tab), GDK_EVENT_PROPAGATE);
+    g_return_val_if_fail(BEDIT_IS_TAB(tab), GDK_EVENT_PROPAGATE);
 
     /* we try to detect file changes only in the normal state */
-    if (tab->state != GEDIT_TAB_STATE_NORMAL) {
+    if (tab->state != BEDIT_TAB_STATE_NORMAL) {
         return GDK_EVENT_PROPAGATE;
     }
 
@@ -1059,7 +1059,7 @@ static gboolean view_focused_in(
 
         if (gtk_source_file_is_externally_modified(file)) {
             bedit_tab_set_state(
-                tab, GEDIT_TAB_STATE_EXTERNALLY_MODIFIED_NOTIFICATION);
+                tab, BEDIT_TAB_STATE_EXTERNALLY_MODIFIED_NOTIFICATION);
 
             display_externally_modified_notification(tab);
         }
@@ -1084,7 +1084,7 @@ void _bedit_tab_set_network_available(BeditTab *tab, gboolean enable) {
     GtkSourceFile *file;
     GFile *location;
 
-    g_return_if_fail(GEDIT_IS_TAB(tab));
+    g_return_if_fail(BEDIT_IS_TAB(tab));
 
     doc = bedit_tab_get_document(tab);
     file = bedit_document_get_file(doc);
@@ -1116,7 +1116,7 @@ static void bedit_tab_init(BeditTab *tab) {
     BeditApp *app;
     GtkSourceFile *file;
 
-    tab->state = GEDIT_TAB_STATE_NORMAL;
+    tab->state = BEDIT_TAB_STATE_NORMAL;
 
     tab->editor_settings =
         g_settings_new("com.bwhmather.bedit.preferences.editor");
@@ -1130,15 +1130,15 @@ static void bedit_tab_init(BeditTab *tab) {
 
     /* Manage auto save data */
     auto_save =
-        g_settings_get_boolean(tab->editor_settings, GEDIT_SETTINGS_AUTO_SAVE);
+        g_settings_get_boolean(tab->editor_settings, BEDIT_SETTINGS_AUTO_SAVE);
     g_settings_get(
-        tab->editor_settings, GEDIT_SETTINGS_AUTO_SAVE_INTERVAL, "u",
+        tab->editor_settings, BEDIT_SETTINGS_AUTO_SAVE_INTERVAL, "u",
         &auto_save_interval);
 
-    app = GEDIT_APP(g_application_get_default());
+    app = BEDIT_APP(g_application_get_default());
 
     lockdown = bedit_app_get_lockdown(app);
-    tab->auto_save = auto_save && !(lockdown & GEDIT_LOCKDOWN_SAVE_TO_DISK);
+    tab->auto_save = auto_save && !(lockdown & BEDIT_LOCKDOWN_SAVE_TO_DISK);
     tab->auto_save = (tab->auto_save != FALSE);
 
     tab->auto_save_interval = auto_save_interval;
@@ -1150,7 +1150,7 @@ static void bedit_tab_init(BeditTab *tab) {
     gtk_box_pack_end(GTK_BOX(tab), GTK_WIDGET(tab->frame), TRUE, TRUE, 0);
 
     doc = bedit_tab_get_document(tab);
-    g_object_set_data(G_OBJECT(doc), GEDIT_TAB_KEY, tab);
+    g_object_set_data(G_OBJECT(doc), BEDIT_TAB_KEY, tab);
 
     file = bedit_document_get_file(doc);
 
@@ -1176,7 +1176,7 @@ static void bedit_tab_init(BeditTab *tab) {
 }
 
 BeditTab *_bedit_tab_new(void) {
-    return g_object_new(GEDIT_TYPE_TAB, NULL);
+    return g_object_new(BEDIT_TYPE_TAB, NULL);
 }
 
 /**
@@ -1188,7 +1188,7 @@ BeditTab *_bedit_tab_new(void) {
  * Returns: (transfer none): the #BeditView inside @tab
  */
 BeditView *bedit_tab_get_view(BeditTab *tab) {
-    g_return_val_if_fail(GEDIT_IS_TAB(tab), NULL);
+    g_return_val_if_fail(BEDIT_IS_TAB(tab), NULL);
 
     return bedit_view_frame_get_view(tab->frame);
 }
@@ -1204,11 +1204,11 @@ BeditView *bedit_tab_get_view(BeditTab *tab) {
 BeditDocument *bedit_tab_get_document(BeditTab *tab) {
     BeditView *view;
 
-    g_return_val_if_fail(GEDIT_IS_TAB(tab), NULL);
+    g_return_val_if_fail(BEDIT_IS_TAB(tab), NULL);
 
     view = bedit_view_frame_get_view(tab->frame);
 
-    return GEDIT_DOCUMENT(gtk_text_view_get_buffer(GTK_TEXT_VIEW(view)));
+    return BEDIT_DOCUMENT(gtk_text_view_get_buffer(GTK_TEXT_VIEW(view)));
 }
 
 #define MAX_DOC_NAME_LENGTH 40
@@ -1219,7 +1219,7 @@ gchar *_bedit_tab_get_name(BeditTab *tab) {
     gchar *docname;
     gchar *tab_name;
 
-    g_return_val_if_fail(GEDIT_IS_TAB(tab), NULL);
+    g_return_val_if_fail(BEDIT_IS_TAB(tab), NULL);
 
     doc = bedit_tab_get_document(tab);
 
@@ -1247,7 +1247,7 @@ gchar *_bedit_tab_get_tooltip(BeditTab *tab) {
     gchar *ruri;
     gchar *ruri_markup;
 
-    g_return_val_if_fail(GEDIT_IS_TAB(tab), NULL);
+    g_return_val_if_fail(BEDIT_IS_TAB(tab), NULL);
 
     doc = bedit_tab_get_document(tab);
 
@@ -1268,15 +1268,15 @@ gchar *_bedit_tab_get_tooltip(BeditTab *tab) {
         GtkSourceFile *file;
         const GtkSourceEncoding *enc;
 
-    case GEDIT_TAB_STATE_LOADING_ERROR:
+    case BEDIT_TAB_STATE_LOADING_ERROR:
         tip = g_strdup_printf(_("Error opening file %s"), ruri_markup);
         break;
 
-    case GEDIT_TAB_STATE_REVERTING_ERROR:
+    case BEDIT_TAB_STATE_REVERTING_ERROR:
         tip = g_strdup_printf(_("Error reverting file %s"), ruri_markup);
         break;
 
-    case GEDIT_TAB_STATE_SAVING_ERROR:
+    case BEDIT_TAB_STATE_SAVING_ERROR:
         tip = g_strdup_printf(_("Error saving file %s"), ruri_markup);
         break;
     default:
@@ -1325,25 +1325,25 @@ GdkPixbuf *_bedit_tab_get_icon(BeditTab *tab) {
     const gchar *icon_name;
     GdkPixbuf *pixbuf = NULL;
 
-    g_return_val_if_fail(GEDIT_IS_TAB(tab), NULL);
+    g_return_val_if_fail(BEDIT_IS_TAB(tab), NULL);
 
     switch (tab->state) {
-    case GEDIT_TAB_STATE_PRINTING:
+    case BEDIT_TAB_STATE_PRINTING:
         icon_name = "printer-printing-symbolic";
         break;
 
-    case GEDIT_TAB_STATE_SHOWING_PRINT_PREVIEW:
+    case BEDIT_TAB_STATE_SHOWING_PRINT_PREVIEW:
         icon_name = "printer-symbolic";
         break;
 
-    case GEDIT_TAB_STATE_LOADING_ERROR:
-    case GEDIT_TAB_STATE_REVERTING_ERROR:
-    case GEDIT_TAB_STATE_SAVING_ERROR:
-    case GEDIT_TAB_STATE_GENERIC_ERROR:
+    case BEDIT_TAB_STATE_LOADING_ERROR:
+    case BEDIT_TAB_STATE_REVERTING_ERROR:
+    case BEDIT_TAB_STATE_SAVING_ERROR:
+    case BEDIT_TAB_STATE_GENERIC_ERROR:
         icon_name = "dialog-error-symbolic";
         break;
 
-    case GEDIT_TAB_STATE_EXTERNALLY_MODIFIED_NOTIFICATION:
+    case BEDIT_TAB_STATE_EXTERNALLY_MODIFIED_NOTIFICATION:
         icon_name = "dialog-warning-symbolic";
         break;
 
@@ -1377,9 +1377,9 @@ GdkPixbuf *_bedit_tab_get_icon(BeditTab *tab) {
  * Returns: (transfer none): the #BeditTab associated with @doc
  */
 BeditTab *bedit_tab_get_from_document(BeditDocument *doc) {
-    g_return_val_if_fail(GEDIT_IS_DOCUMENT(doc), NULL);
+    g_return_val_if_fail(BEDIT_IS_DOCUMENT(doc), NULL);
 
-    return g_object_get_data(G_OBJECT(doc), GEDIT_TAB_KEY);
+    return g_object_get_data(G_OBJECT(doc), BEDIT_TAB_KEY);
 }
 
 static void loader_progress_cb(
@@ -1387,8 +1387,8 @@ static void loader_progress_cb(
     LoaderData *data = g_task_get_task_data(loading_task);
 
     g_return_if_fail(
-        data->tab->state == GEDIT_TAB_STATE_LOADING ||
-        data->tab->state == GEDIT_TAB_STATE_REVERTING);
+        data->tab->state == BEDIT_TAB_STATE_LOADING ||
+        data->tab->state == BEDIT_TAB_STATE_REVERTING);
 
     if (should_show_progress_info(&data->timer, size, total_size)) {
         show_loading_info_bar(loading_task);
@@ -1411,12 +1411,12 @@ static void goto_line(GTask *loading_task) {
     /* If enabled, move to the position stored in the metadata. */
     if (g_settings_get_boolean(
             data->tab->editor_settings,
-            GEDIT_SETTINGS_RESTORE_CURSOR_POSITION)) {
+            BEDIT_SETTINGS_RESTORE_CURSOR_POSITION)) {
         gchar *pos;
         gint offset;
 
         pos =
-            bedit_document_get_metadata(doc, GEDIT_METADATA_ATTRIBUTE_POSITION);
+            bedit_document_get_metadata(doc, BEDIT_METADATA_ATTRIBUTE_POSITION);
 
         offset = pos != NULL ? atoi(pos) : 0;
         g_free(pos);
@@ -1450,7 +1450,7 @@ static gboolean file_already_opened(BeditDocument *doc, GFile *location) {
     }
 
     all_documents =
-        bedit_app_get_documents(GEDIT_APP(g_application_get_default()));
+        bedit_app_get_documents(BEDIT_APP(g_application_get_default()));
 
     for (l = all_documents; l != NULL; l = l->next) {
         BeditDocument *cur_doc = l->data;
@@ -1487,7 +1487,7 @@ static void successful_load(GTask *loading_task) {
         const gchar *charset = gtk_source_encoding_get_charset(encoding);
 
         bedit_document_set_metadata(
-            doc, GEDIT_METADATA_ATTRIBUTE_ENCODING, charset, NULL);
+            doc, BEDIT_METADATA_ATTRIBUTE_ENCODING, charset, NULL);
     }
 
     goto_line(loading_task);
@@ -1561,8 +1561,8 @@ static void load_cb(
     doc = bedit_tab_get_document(data->tab);
 
     g_return_if_fail(
-        data->tab->state == GEDIT_TAB_STATE_LOADING ||
-        data->tab->state == GEDIT_TAB_STATE_REVERTING);
+        data->tab->state == BEDIT_TAB_STATE_LOADING ||
+        data->tab->state == BEDIT_TAB_STATE_REVERTING);
 
     set_info_bar(data->tab, NULL, GTK_RESPONSE_NONE);
 
@@ -1599,11 +1599,11 @@ static void load_cb(
 
         set_info_bar(data->tab, info_bar, GTK_RESPONSE_CANCEL);
 
-        if (data->tab->state == GEDIT_TAB_STATE_LOADING) {
+        if (data->tab->state == BEDIT_TAB_STATE_LOADING) {
             gtk_widget_show(GTK_WIDGET(data->tab->frame));
-            bedit_tab_set_state(data->tab, GEDIT_TAB_STATE_LOADING_ERROR);
+            bedit_tab_set_state(data->tab, BEDIT_TAB_STATE_LOADING_ERROR);
         } else {
-            bedit_tab_set_state(data->tab, GEDIT_TAB_STATE_REVERTING_ERROR);
+            bedit_tab_set_state(data->tab, BEDIT_TAB_STATE_REVERTING_ERROR);
         }
 
         /* The loading was successful, despite some invalid characters. */
@@ -1617,18 +1617,18 @@ static void load_cb(
     if (error != NULL) {
         GtkWidget *info_bar;
 
-        if (data->tab->state == GEDIT_TAB_STATE_LOADING) {
+        if (data->tab->state == BEDIT_TAB_STATE_LOADING) {
             gtk_widget_hide(GTK_WIDGET(data->tab->frame));
-            bedit_tab_set_state(data->tab, GEDIT_TAB_STATE_LOADING_ERROR);
+            bedit_tab_set_state(data->tab, BEDIT_TAB_STATE_LOADING_ERROR);
         } else {
-            bedit_tab_set_state(data->tab, GEDIT_TAB_STATE_REVERTING_ERROR);
+            bedit_tab_set_state(data->tab, BEDIT_TAB_STATE_REVERTING_ERROR);
         }
 
         if (location != NULL) {
             bedit_recent_remove_if_local(location);
         }
 
-        if (data->tab->state == GEDIT_TAB_STATE_LOADING_ERROR) {
+        if (data->tab->state == BEDIT_TAB_STATE_LOADING_ERROR) {
             const GtkSourceEncoding *encoding;
 
             encoding = gtk_source_file_loader_get_encoding(loader);
@@ -1641,7 +1641,7 @@ static void load_cb(
                 G_CALLBACK(io_loading_error_info_bar_response), loading_task);
         } else {
             g_return_if_fail(
-                data->tab->state == GEDIT_TAB_STATE_REVERTING_ERROR);
+                data->tab->state == BEDIT_TAB_STATE_REVERTING_ERROR);
 
             info_bar = bedit_unrecoverable_reverting_error_info_bar_new(
                 location, error);
@@ -1660,7 +1660,7 @@ static void load_cb(
 
     g_assert(error == NULL);
 
-    bedit_tab_set_state(data->tab, GEDIT_TAB_STATE_NORMAL);
+    bedit_tab_set_state(data->tab, BEDIT_TAB_STATE_NORMAL);
     successful_load(loading_task);
 
     if (!create_named_new_doc) {
@@ -1687,7 +1687,7 @@ static GSList *get_candidate_encodings(BeditTab *tab) {
     /* Prepend the encoding stored in the metadata. */
     doc = bedit_tab_get_document(tab);
     metadata_charset =
-        bedit_document_get_metadata(doc, GEDIT_METADATA_ATTRIBUTE_ENCODING);
+        bedit_document_get_metadata(doc, BEDIT_METADATA_ATTRIBUTE_ENCODING);
 
     if (metadata_charset != NULL) {
         const GtkSourceEncoding *metadata_enc;
@@ -1755,12 +1755,12 @@ static void load_async(
     GTask *loading_task;
     LoaderData *data;
 
-    g_return_if_fail(GEDIT_IS_TAB(tab));
+    g_return_if_fail(BEDIT_IS_TAB(tab));
     g_return_if_fail(G_IS_FILE(location));
     g_return_if_fail(cancellable == NULL || G_IS_CANCELLABLE(cancellable));
-    g_return_if_fail(tab->state == GEDIT_TAB_STATE_NORMAL);
+    g_return_if_fail(tab->state == BEDIT_TAB_STATE_NORMAL);
 
-    bedit_tab_set_state(tab, GEDIT_TAB_STATE_LOADING);
+    bedit_tab_set_state(tab, BEDIT_TAB_STATE_LOADING);
 
     doc = bedit_tab_get_document(tab);
     file = bedit_document_get_file(doc);
@@ -1811,12 +1811,12 @@ static void load_stream_async(
     GTask *loading_task;
     LoaderData *data;
 
-    g_return_if_fail(GEDIT_IS_TAB(tab));
+    g_return_if_fail(BEDIT_IS_TAB(tab));
     g_return_if_fail(G_IS_INPUT_STREAM(stream));
     g_return_if_fail(cancellable == NULL || G_IS_CANCELLABLE(cancellable));
-    g_return_if_fail(tab->state == GEDIT_TAB_STATE_NORMAL);
+    g_return_if_fail(tab->state == BEDIT_TAB_STATE_NORMAL);
 
-    bedit_tab_set_state(tab, GEDIT_TAB_STATE_LOADING);
+    bedit_tab_set_state(tab, BEDIT_TAB_STATE_LOADING);
 
     doc = bedit_tab_get_document(tab);
     file = bedit_document_get_file(doc);
@@ -1863,13 +1863,13 @@ static void revert_async(
     GTask *loading_task;
     LoaderData *data;
 
-    g_return_if_fail(GEDIT_IS_TAB(tab));
+    g_return_if_fail(BEDIT_IS_TAB(tab));
     g_return_if_fail(cancellable == NULL || G_IS_CANCELLABLE(cancellable));
     g_return_if_fail(
-        tab->state == GEDIT_TAB_STATE_NORMAL ||
-        tab->state == GEDIT_TAB_STATE_EXTERNALLY_MODIFIED_NOTIFICATION);
+        tab->state == BEDIT_TAB_STATE_NORMAL ||
+        tab->state == BEDIT_TAB_STATE_EXTERNALLY_MODIFIED_NOTIFICATION);
 
-    if (tab->state == GEDIT_TAB_STATE_EXTERNALLY_MODIFIED_NOTIFICATION) {
+    if (tab->state == BEDIT_TAB_STATE_EXTERNALLY_MODIFIED_NOTIFICATION) {
         set_info_bar(tab, NULL, GTK_RESPONSE_NONE);
     }
 
@@ -1878,7 +1878,7 @@ static void revert_async(
     location = gtk_source_file_get_location(file);
     g_return_if_fail(location != NULL);
 
-    bedit_tab_set_state(tab, GEDIT_TAB_STATE_REVERTING);
+    bedit_tab_set_state(tab, BEDIT_TAB_STATE_REVERTING);
 
     loading_task = g_task_new(NULL, cancellable, callback, user_data);
 
@@ -1915,7 +1915,7 @@ static void close_printing(BeditTab *tab) {
     /* destroy the info bar */
     set_info_bar(tab, NULL, GTK_RESPONSE_NONE);
 
-    bedit_tab_set_state(tab, GEDIT_TAB_STATE_NORMAL);
+    bedit_tab_set_state(tab, BEDIT_TAB_STATE_NORMAL);
 }
 
 static void saver_progress_cb(
@@ -1923,7 +1923,7 @@ static void saver_progress_cb(
     BeditTab *tab = g_task_get_source_object(saving_task);
     SaverData *data = g_task_get_task_data(saving_task);
 
-    g_return_if_fail(tab->state == GEDIT_TAB_STATE_SAVING);
+    g_return_if_fail(tab->state == BEDIT_TAB_STATE_SAVING);
 
     if (should_show_progress_info(&data->timer, size, total_size)) {
         show_saving_info_bar(saving_task);
@@ -1939,7 +1939,7 @@ static void save_cb(
     GFile *location = gtk_source_file_saver_get_location(saver);
     GError *error = NULL;
 
-    g_return_if_fail(tab->state == GEDIT_TAB_STATE_SAVING);
+    g_return_if_fail(tab->state == BEDIT_TAB_STATE_SAVING);
 
     gtk_source_file_saver_save_finish(saver, result, &error);
 
@@ -1957,7 +1957,7 @@ static void save_cb(
     if (error != NULL) {
         GtkWidget *info_bar;
 
-        bedit_tab_set_state(tab, GEDIT_TAB_STATE_SAVING_ERROR);
+        bedit_tab_set_state(tab, BEDIT_TAB_STATE_SAVING_ERROR);
 
         if (error->domain == GTK_SOURCE_FILE_SAVER_ERROR &&
             error->code == GTK_SOURCE_FILE_SAVER_ERROR_EXTERNALLY_MODIFIED) {
@@ -2033,7 +2033,7 @@ static void save_cb(
     } else {
         bedit_recent_add_document(doc);
 
-        bedit_tab_set_state(tab, GEDIT_TAB_STATE_NORMAL);
+        bedit_tab_set_state(tab, BEDIT_TAB_STATE_NORMAL);
 
         tab->ask_if_externally_modified = TRUE;
 
@@ -2052,7 +2052,7 @@ static void launch_saver(GTask *saving_task) {
     BeditDocument *doc = bedit_tab_get_document(tab);
     SaverData *data = g_task_get_task_data(saving_task);
 
-    bedit_tab_set_state(tab, GEDIT_TAB_STATE_SAVING);
+    bedit_tab_set_state(tab, BEDIT_TAB_STATE_SAVING);
 
     g_signal_emit_by_name(doc, "save");
 
@@ -2077,7 +2077,7 @@ static GtkSourceFileSaverFlags get_initial_save_flags(
     save_flags = tab->save_flags;
 
     create_backup = g_settings_get_boolean(
-        tab->editor_settings, GEDIT_SETTINGS_CREATE_BACKUP_COPY);
+        tab->editor_settings, BEDIT_SETTINGS_CREATE_BACKUP_COPY);
 
     /* In case of autosaving, we need to preserve the backup that was produced
      * the last time the user "manually" saved the file. So we don't set the
@@ -2099,11 +2099,11 @@ void _bedit_tab_save_async(
     GtkSourceFile *file;
     GtkSourceFileSaverFlags save_flags;
 
-    g_return_if_fail(GEDIT_IS_TAB(tab));
+    g_return_if_fail(BEDIT_IS_TAB(tab));
     g_return_if_fail(
-        tab->state == GEDIT_TAB_STATE_NORMAL ||
-        tab->state == GEDIT_TAB_STATE_EXTERNALLY_MODIFIED_NOTIFICATION ||
-        tab->state == GEDIT_TAB_STATE_SHOWING_PRINT_PREVIEW);
+        tab->state == BEDIT_TAB_STATE_NORMAL ||
+        tab->state == BEDIT_TAB_STATE_EXTERNALLY_MODIFIED_NOTIFICATION ||
+        tab->state == BEDIT_TAB_STATE_SHOWING_PRINT_PREVIEW);
 
     /* The Save and Save As window actions are insensitive when the print
      * preview is shown, but it's still possible to save several documents
@@ -2114,7 +2114,7 @@ void _bedit_tab_save_async(
      * would need to be updated when the filename changes, dealing with file
      * saving errors is also more complicated, etc).
      */
-    if (tab->state == GEDIT_TAB_STATE_SHOWING_PRINT_PREVIEW) {
+    if (tab->state == BEDIT_TAB_STATE_SHOWING_PRINT_PREVIEW) {
         close_printing(tab);
     }
 
@@ -2128,7 +2128,7 @@ void _bedit_tab_save_async(
 
     save_flags = get_initial_save_flags(tab, FALSE);
 
-    if (tab->state == GEDIT_TAB_STATE_EXTERNALLY_MODIFIED_NOTIFICATION) {
+    if (tab->state == BEDIT_TAB_STATE_EXTERNALLY_MODIFIED_NOTIFICATION) {
         /* We already told the user about the external modification:
          * hide the message bar and set the save flag.
          */
@@ -2177,7 +2177,7 @@ static gboolean bedit_tab_auto_save(BeditTab *tab) {
         return G_SOURCE_CONTINUE;
     }
 
-    if (tab->state != GEDIT_TAB_STATE_NORMAL) {
+    if (tab->state != BEDIT_TAB_STATE_NORMAL) {
         bedit_debug_message(DEBUG_TAB, "Retry after 30 seconds");
 
         tab->auto_save_timeout =
@@ -2220,16 +2220,16 @@ void _bedit_tab_save_as_async(
     GtkSourceFile *file;
     GtkSourceFileSaverFlags save_flags;
 
-    g_return_if_fail(GEDIT_IS_TAB(tab));
+    g_return_if_fail(BEDIT_IS_TAB(tab));
     g_return_if_fail(
-        tab->state == GEDIT_TAB_STATE_NORMAL ||
-        tab->state == GEDIT_TAB_STATE_EXTERNALLY_MODIFIED_NOTIFICATION ||
-        tab->state == GEDIT_TAB_STATE_SHOWING_PRINT_PREVIEW);
+        tab->state == BEDIT_TAB_STATE_NORMAL ||
+        tab->state == BEDIT_TAB_STATE_EXTERNALLY_MODIFIED_NOTIFICATION ||
+        tab->state == BEDIT_TAB_STATE_SHOWING_PRINT_PREVIEW);
     g_return_if_fail(G_IS_FILE(location));
     g_return_if_fail(encoding != NULL);
 
     /* See note at _bedit_tab_save_async(). */
-    if (tab->state == GEDIT_TAB_STATE_SHOWING_PRINT_PREVIEW) {
+    if (tab->state == BEDIT_TAB_STATE_SHOWING_PRINT_PREVIEW) {
         close_printing(tab);
     }
 
@@ -2245,7 +2245,7 @@ void _bedit_tab_save_as_async(
 
     save_flags = get_initial_save_flags(tab, FALSE);
 
-    if (tab->state == GEDIT_TAB_STATE_EXTERNALLY_MODIFIED_NOTIFICATION) {
+    if (tab->state == BEDIT_TAB_STATE_EXTERNALLY_MODIFIED_NOTIFICATION) {
         /* We already told the user about the external modification:
          * hide the message bar and set the save flag.
          */
@@ -2266,8 +2266,8 @@ void _bedit_tab_save_as_async(
     launch_saver(saving_task);
 }
 
-#define GEDIT_PAGE_SETUP_KEY "bedit-page-setup-key"
-#define GEDIT_PRINT_SETTINGS_KEY "bedit-print-settings-key"
+#define BEDIT_PAGE_SETUP_KEY "bedit-page-setup-key"
+#define BEDIT_PRINT_SETTINGS_KEY "bedit-print-settings-key"
 
 static GtkPageSetup *get_page_setup(BeditTab *tab) {
     gpointer data;
@@ -2275,11 +2275,11 @@ static GtkPageSetup *get_page_setup(BeditTab *tab) {
 
     doc = bedit_tab_get_document(tab);
 
-    data = g_object_get_data(G_OBJECT(doc), GEDIT_PAGE_SETUP_KEY);
+    data = g_object_get_data(G_OBJECT(doc), BEDIT_PAGE_SETUP_KEY);
 
     if (data == NULL) {
         return _bedit_app_get_default_page_setup(
-            GEDIT_APP(g_application_get_default()));
+            BEDIT_APP(g_application_get_default()));
     } else {
         return gtk_page_setup_copy(GTK_PAGE_SETUP(data));
     }
@@ -2293,11 +2293,11 @@ static GtkPrintSettings *get_print_settings(BeditTab *tab) {
 
     doc = bedit_tab_get_document(tab);
 
-    data = g_object_get_data(G_OBJECT(doc), GEDIT_PRINT_SETTINGS_KEY);
+    data = g_object_get_data(G_OBJECT(doc), BEDIT_PRINT_SETTINGS_KEY);
 
     if (data == NULL) {
         settings = _bedit_app_get_default_print_settings(
-            GEDIT_APP(g_application_get_default()));
+            BEDIT_APP(g_application_get_default()));
     } else {
         settings = gtk_print_settings_copy(GTK_PRINT_SETTINGS(data));
     }
@@ -2318,16 +2318,16 @@ static GtkPrintSettings *get_print_settings(BeditTab *tab) {
 /* FIXME: show the info bar only if the operation will be "long" */
 static void printing_cb(
     BeditPrintJob *job, BeditPrintJobStatus status, BeditTab *tab) {
-    g_return_if_fail(GEDIT_IS_PROGRESS_INFO_BAR(tab->info_bar));
+    g_return_if_fail(BEDIT_IS_PROGRESS_INFO_BAR(tab->info_bar));
 
     gtk_widget_show(tab->info_bar);
 
     bedit_progress_info_bar_set_text(
-        GEDIT_PROGRESS_INFO_BAR(tab->info_bar),
+        BEDIT_PROGRESS_INFO_BAR(tab->info_bar),
         bedit_print_job_get_status_string(job));
 
     bedit_progress_info_bar_set_fraction(
-        GEDIT_PROGRESS_INFO_BAR(tab->info_bar),
+        BEDIT_PROGRESS_INFO_BAR(tab->info_bar),
         bedit_print_job_get_progress(job));
 }
 
@@ -2346,23 +2346,23 @@ static void store_print_settings(BeditTab *tab, BeditPrintJob *job) {
 
     /* remember settings for this document */
     g_object_set_data_full(
-        G_OBJECT(doc), GEDIT_PRINT_SETTINGS_KEY, g_object_ref(settings),
+        G_OBJECT(doc), BEDIT_PRINT_SETTINGS_KEY, g_object_ref(settings),
         (GDestroyNotify)g_object_unref);
 
     /* make them the default */
     _bedit_app_set_default_print_settings(
-        GEDIT_APP(g_application_get_default()), settings);
+        BEDIT_APP(g_application_get_default()), settings);
 
     page_setup = bedit_print_job_get_page_setup(job);
 
     /* remember page setup for this document */
     g_object_set_data_full(
-        G_OBJECT(doc), GEDIT_PAGE_SETUP_KEY, g_object_ref(page_setup),
+        G_OBJECT(doc), BEDIT_PAGE_SETUP_KEY, g_object_ref(page_setup),
         (GDestroyNotify)g_object_unref);
 
     /* make it the default */
     _bedit_app_set_default_page_setup(
-        GEDIT_APP(g_application_get_default()), page_setup);
+        BEDIT_APP(g_application_get_default()), page_setup);
 }
 
 static void done_printing_cb(
@@ -2371,10 +2371,10 @@ static void done_printing_cb(
     BeditView *view;
 
     g_return_if_fail(
-        tab->state == GEDIT_TAB_STATE_SHOWING_PRINT_PREVIEW ||
-        tab->state == GEDIT_TAB_STATE_PRINTING);
+        tab->state == BEDIT_TAB_STATE_SHOWING_PRINT_PREVIEW ||
+        tab->state == BEDIT_TAB_STATE_PRINTING);
 
-    if (result == GEDIT_PRINT_JOB_RESULT_OK) {
+    if (result == BEDIT_PRINT_JOB_RESULT_OK) {
         store_print_settings(tab, job);
     }
 
@@ -2406,7 +2406,7 @@ static void show_preview_cb(
     gtk_widget_show(tab->print_preview);
     gtk_widget_grab_focus(tab->print_preview);
 
-    bedit_tab_set_state(tab, GEDIT_TAB_STATE_SHOWING_PRINT_PREVIEW);
+    bedit_tab_set_state(tab, BEDIT_TAB_STATE_SHOWING_PRINT_PREVIEW);
 }
 
 static void print_cancelled(GtkWidget *bar, gint response_id, BeditTab *tab) {
@@ -2437,18 +2437,18 @@ void _bedit_tab_print(BeditTab *tab) {
     GtkPrintOperationResult res;
     GError *error = NULL;
 
-    g_return_if_fail(GEDIT_IS_TAB(tab));
+    g_return_if_fail(BEDIT_IS_TAB(tab));
 
     /* FIXME: currently we can have just one printoperation going on at a
      * given time, so before starting the print we close the preview.
      * Would be nice to handle it properly though.
      */
-    if (tab->state == GEDIT_TAB_STATE_SHOWING_PRINT_PREVIEW) {
+    if (tab->state == BEDIT_TAB_STATE_SHOWING_PRINT_PREVIEW) {
         close_printing(tab);
     }
 
     g_return_if_fail(tab->print_job == NULL);
-    g_return_if_fail(tab->state == GEDIT_TAB_STATE_NORMAL);
+    g_return_if_fail(tab->state == BEDIT_TAB_STATE_NORMAL);
 
     view = bedit_tab_get_view(tab);
 
@@ -2465,7 +2465,7 @@ void _bedit_tab_print(BeditTab *tab) {
     g_signal_connect_object(
         tab->print_job, "done", G_CALLBACK(done_printing_cb), tab, 0);
 
-    bedit_tab_set_state(tab, GEDIT_TAB_STATE_PRINTING);
+    bedit_tab_set_state(tab, BEDIT_TAB_STATE_PRINTING);
 
     setup = get_page_setup(tab);
     settings = get_print_settings(tab);
@@ -2488,23 +2488,23 @@ void _bedit_tab_print(BeditTab *tab) {
 }
 
 void _bedit_tab_mark_for_closing(BeditTab *tab) {
-    g_return_if_fail(GEDIT_IS_TAB(tab));
-    g_return_if_fail(tab->state == GEDIT_TAB_STATE_NORMAL);
+    g_return_if_fail(BEDIT_IS_TAB(tab));
+    g_return_if_fail(tab->state == BEDIT_TAB_STATE_NORMAL);
 
-    bedit_tab_set_state(tab, GEDIT_TAB_STATE_CLOSING);
+    bedit_tab_set_state(tab, BEDIT_TAB_STATE_CLOSING);
 }
 
 gboolean _bedit_tab_get_can_close(BeditTab *tab) {
     BeditDocument *doc;
 
-    g_return_val_if_fail(GEDIT_IS_TAB(tab), FALSE);
+    g_return_val_if_fail(BEDIT_IS_TAB(tab), FALSE);
 
     /* if we are loading or reverting, the tab can be closed */
-    if (tab->state == GEDIT_TAB_STATE_LOADING ||
-        tab->state == GEDIT_TAB_STATE_LOADING_ERROR ||
-        tab->state == GEDIT_TAB_STATE_REVERTING ||
+    if (tab->state == BEDIT_TAB_STATE_LOADING ||
+        tab->state == BEDIT_TAB_STATE_LOADING_ERROR ||
+        tab->state == BEDIT_TAB_STATE_REVERTING ||
         tab->state ==
-            GEDIT_TAB_STATE_REVERTING_ERROR) /* CHECK: I'm not sure this is the
+            BEDIT_TAB_STATE_REVERTING_ERROR) /* CHECK: I'm not sure this is the
                                                 right behavior for REVERTING
                                                 ERROR */
     {
@@ -2512,7 +2512,7 @@ gboolean _bedit_tab_get_can_close(BeditTab *tab) {
     }
 
     /* Do not close tab with saving errors */
-    if (tab->state == GEDIT_TAB_STATE_SAVING_ERROR) {
+    if (tab->state == BEDIT_TAB_STATE_SAVING_ERROR) {
         return FALSE;
     }
 
@@ -2536,7 +2536,7 @@ gboolean _bedit_tab_get_can_close(BeditTab *tab) {
 gboolean bedit_tab_get_auto_save_enabled(BeditTab *tab) {
     bedit_debug(DEBUG_TAB);
 
-    g_return_val_if_fail(GEDIT_IS_TAB(tab), FALSE);
+    g_return_val_if_fail(BEDIT_IS_TAB(tab), FALSE);
 
     return tab->auto_save;
 }
@@ -2554,13 +2554,13 @@ void bedit_tab_set_auto_save_enabled(BeditTab *tab, gboolean enable) {
 
     bedit_debug(DEBUG_TAB);
 
-    g_return_if_fail(GEDIT_IS_TAB(tab));
+    g_return_if_fail(BEDIT_IS_TAB(tab));
 
     enable = enable != FALSE;
 
     /* Force disabling when lockdown is active */
-    lockdown = bedit_app_get_lockdown(GEDIT_APP(g_application_get_default()));
-    if (lockdown & GEDIT_LOCKDOWN_SAVE_TO_DISK) {
+    lockdown = bedit_app_get_lockdown(BEDIT_APP(g_application_get_default()));
+    if (lockdown & BEDIT_LOCKDOWN_SAVE_TO_DISK) {
         enable = FALSE;
     }
 
@@ -2582,7 +2582,7 @@ void bedit_tab_set_auto_save_enabled(BeditTab *tab, gboolean enable) {
 gint bedit_tab_get_auto_save_interval(BeditTab *tab) {
     bedit_debug(DEBUG_TAB);
 
-    g_return_val_if_fail(GEDIT_IS_TAB(tab), 0);
+    g_return_val_if_fail(BEDIT_IS_TAB(tab), 0);
 
     return tab->auto_save_interval;
 }
@@ -2595,7 +2595,7 @@ gint bedit_tab_get_auto_save_interval(BeditTab *tab) {
  * Sets the interval for the autosave feature.
  */
 void bedit_tab_set_auto_save_interval(BeditTab *tab, gint interval) {
-    g_return_if_fail(GEDIT_IS_TAB(tab));
+    g_return_if_fail(BEDIT_IS_TAB(tab));
     g_return_if_fail(interval > 0);
 
     bedit_debug(DEBUG_TAB);
@@ -2608,7 +2608,7 @@ void bedit_tab_set_auto_save_interval(BeditTab *tab, gint interval) {
 }
 
 void bedit_tab_set_info_bar(BeditTab *tab, GtkWidget *info_bar) {
-    g_return_if_fail(GEDIT_IS_TAB(tab));
+    g_return_if_fail(BEDIT_IS_TAB(tab));
     g_return_if_fail(info_bar == NULL || GTK_IS_WIDGET(info_bar));
 
     /* FIXME: this can cause problems with the tab state machine */

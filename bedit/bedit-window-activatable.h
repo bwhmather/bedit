@@ -18,17 +18,17 @@
  *  along with this program; if not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef GEDIT_WINDOW_ACTIVATABLE_H
-#define GEDIT_WINDOW_ACTIVATABLE_H
+#ifndef BEDIT_WINDOW_ACTIVATABLE_H
+#define BEDIT_WINDOW_ACTIVATABLE_H
 
 #include <glib-object.h>
 
 G_BEGIN_DECLS
 
-#define GEDIT_TYPE_WINDOW_ACTIVATABLE (bedit_window_activatable_get_type())
+#define BEDIT_TYPE_WINDOW_ACTIVATABLE (bedit_window_activatable_get_type())
 
 G_DECLARE_INTERFACE(
-    BeditWindowActivatable, bedit_window_activatable, GEDIT, WINDOW_ACTIVATABLE,
+    BeditWindowActivatable, bedit_window_activatable, BEDIT, WINDOW_ACTIVATABLE,
     GObject)
 
 struct _BeditWindowActivatableInterface {
@@ -46,5 +46,5 @@ void bedit_window_activatable_update_state(BeditWindowActivatable *activatable);
 
 G_END_DECLS
 
-#endif /* GEDIT_WINDOW_ACTIVATABLE_H */
+#endif /* BEDIT_WINDOW_ACTIVATABLE_H */
 

@@ -20,8 +20,8 @@
  * along with this program; if not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef GEDIT_RECENT_H
-#define GEDIT_RECENT_H
+#ifndef BEDIT_RECENT_H
+#define BEDIT_RECENT_H
 
 #include <bedit/bedit-document.h>
 #include <gtk/gtk.h>
@@ -50,5 +50,5 @@ GList *bedit_recent_get_items(BeditRecentConfiguration *config);
 
 G_END_DECLS
 
-#endif /* GEDIT_RECENT_H  */
+#endif /* BEDIT_RECENT_H  */
 

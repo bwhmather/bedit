@@ -85,7 +85,7 @@ static void remove_actions(BeditWindow *window);
 
 static void bedit_window_get_property(
     GObject *object, guint prop_id, GValue *value, GParamSpec *pspec) {
-    BeditWindow *window = GEDIT_WINDOW(object);
+    BeditWindow *window = BEDIT_WINDOW(object);
 
     switch (prop_id) {
     case PROP_STATE:
@@ -104,7 +104,7 @@ static void save_panels_state(BeditWindow *window) {
 
     if (window->priv->side_panel_size > 0) {
         g_settings_set_int(
-            window->priv->window_settings, GEDIT_SETTINGS_SIDE_PANEL_SIZE,
+            window->priv->window_settings, BEDIT_SETTINGS_SIDE_PANEL_SIZE,
             window->priv->side_panel_size);
     }
 
@@ -113,12 +113,12 @@ static void save_panels_state(BeditWindow *window) {
     if (panel_page != NULL) {
         g_settings_set_string(
             window->priv->window_settings,
-            GEDIT_SETTINGS_SIDE_PANEL_ACTIVE_PAGE, panel_page);
+            BEDIT_SETTINGS_SIDE_PANEL_ACTIVE_PAGE, panel_page);
     }
 
     if (window->priv->bottom_panel_size > 0) {
         g_settings_set_int(
-            window->priv->window_settings, GEDIT_SETTINGS_BOTTOM_PANEL_SIZE,
+            window->priv->window_settings, BEDIT_SETTINGS_BOTTOM_PANEL_SIZE,
             window->priv->bottom_panel_size);
     }
 
@@ -127,14 +127,14 @@ static void save_panels_state(BeditWindow *window) {
     if (panel_page != NULL) {
         g_settings_set_string(
             window->priv->window_settings,
-            GEDIT_SETTINGS_BOTTOM_PANEL_ACTIVE_PAGE, panel_page);
+            BEDIT_SETTINGS_BOTTOM_PANEL_ACTIVE_PAGE, panel_page);
     }
 
     g_settings_apply(window->priv->window_settings);
 }
 
 static void save_window_state(GtkWidget *widget) {
-    BeditWindow *window = GEDIT_WINDOW(widget);
+    BeditWindow *window = BEDIT_WINDOW(widget);
 
     if ((window->priv->window_state &
          (GDK_WINDOW_STATE_MAXIMIZED | GDK_WINDOW_STATE_FULLSCREEN)) == 0) {
@@ -142,7 +142,7 @@ static void save_window_state(GtkWidget *widget) {
             GTK_WINDOW(widget), &window->priv->width, &window->priv->height);
 
         g_settings_set(
-            window->priv->window_settings, GEDIT_SETTINGS_WINDOW_SIZE, "(ii)",
+            window->priv->window_settings, BEDIT_SETTINGS_WINDOW_SIZE, "(ii)",
             window->priv->width, window->priv->height);
     }
 }
@@ -152,7 +152,7 @@ static void bedit_window_dispose(GObject *object) {
 
     bedit_debug(DEBUG_WINDOW);
 
-    window = GEDIT_WINDOW(object);
+    window = BEDIT_WINDOW(object);
 
     /* Stop tracking removal of panels otherwise we always
      * end up with thinking we had no panel active, since they
@@ -216,7 +216,7 @@ static void bedit_window_dispose(GObject *object) {
 }
 
 static void bedit_window_finalize(GObject *object) {
-    BeditWindow *window = GEDIT_WINDOW(object);
+    BeditWindow *window = BEDIT_WINDOW(object);
 
     g_slist_free_full(
         window->priv->closed_docs_stack, (GDestroyNotify)g_object_unref);
@@ -257,12 +257,12 @@ static void update_fullscreen(BeditWindow *window, gboolean is_fullscreen) {
 
 static gboolean bedit_window_window_state_event(
     GtkWidget *widget, GdkEventWindowState *event) {
-    BeditWindow *window = GEDIT_WINDOW(widget);
+    BeditWindow *window = BEDIT_WINDOW(widget);
 
     window->priv->window_state = event->new_window_state;
 
     g_settings_set_int(
-        window->priv->window_settings, GEDIT_SETTINGS_WINDOW_STATE,
+        window->priv->window_settings, BEDIT_SETTINGS_WINDOW_STATE,
         window->priv->window_state);
 
     if ((event->changed_mask & GDK_WINDOW_STATE_FULLSCREEN) != 0) {
@@ -277,7 +277,7 @@ static gboolean bedit_window_window_state_event(
 
 static gboolean bedit_window_configure_event(
     GtkWidget *widget, GdkEventConfigure *event) {
-    BeditWindow *window = GEDIT_WINDOW(widget);
+    BeditWindow *window = BEDIT_WINDOW(widget);
 
     if (gtk_widget_get_realized(widget) &&
         (window->priv->window_state &
@@ -327,7 +327,7 @@ static gboolean bedit_window_key_press_event(
 
     if (!handled) {
         return bedit_app_process_window_event(
-            GEDIT_APP(g_application_get_default()), GEDIT_WINDOW(widget),
+            BEDIT_APP(g_application_get_default()), BEDIT_WINDOW(widget),
             (GdkEvent *)event);
     }
 
@@ -354,19 +354,19 @@ static void bedit_window_class_init(BeditWindowClass *klass) {
     widget_class->key_press_event = bedit_window_key_press_event;
 
     properties[PROP_STATE] = g_param_spec_flags(
-        "state", "State", "The window's state", GEDIT_TYPE_WINDOW_STATE,
-        GEDIT_WINDOW_STATE_NORMAL, G_PARAM_READABLE | G_PARAM_STATIC_STRINGS);
+        "state", "State", "The window's state", BEDIT_TYPE_WINDOW_STATE,
+        BEDIT_WINDOW_STATE_NORMAL, G_PARAM_READABLE | G_PARAM_STATIC_STRINGS);
 
     g_object_class_install_properties(object_class, LAST_PROP, properties);
 
     signals[TAB_ADDED] = g_signal_new(
         "tab-added", G_OBJECT_CLASS_TYPE(object_class), G_SIGNAL_RUN_FIRST,
         G_STRUCT_OFFSET(BeditWindowClass, tab_added), NULL, NULL, NULL,
-        G_TYPE_NONE, 1, GEDIT_TYPE_TAB);
+        G_TYPE_NONE, 1, BEDIT_TYPE_TAB);
     signals[TAB_REMOVED] = g_signal_new(
         "tab-removed", G_OBJECT_CLASS_TYPE(object_class), G_SIGNAL_RUN_FIRST,
         G_STRUCT_OFFSET(BeditWindowClass, tab_removed), NULL, NULL, NULL,
-        G_TYPE_NONE, 1, GEDIT_TYPE_TAB);
+        G_TYPE_NONE, 1, BEDIT_TYPE_TAB);
     signals[TABS_REORDERED] = g_signal_new(
         "tabs-reordered", G_OBJECT_CLASS_TYPE(object_class), G_SIGNAL_RUN_FIRST,
         G_STRUCT_OFFSET(BeditWindowClass, tabs_reordered), NULL, NULL, NULL,
@@ -375,7 +375,7 @@ static void bedit_window_class_init(BeditWindowClass *klass) {
         "active-tab-changed", G_OBJECT_CLASS_TYPE(object_class),
         G_SIGNAL_RUN_FIRST,
         G_STRUCT_OFFSET(BeditWindowClass, active_tab_changed), NULL, NULL, NULL,
-        G_TYPE_NONE, 1, GEDIT_TYPE_TAB);
+        G_TYPE_NONE, 1, BEDIT_TYPE_TAB);
     signals[ACTIVE_TAB_STATE_CHANGED] = g_signal_new(
         "active-tab-state-changed", G_OBJECT_CLASS_TYPE(object_class),
         G_SIGNAL_RUN_FIRST,
@@ -444,7 +444,7 @@ static void received_clipboard_contents(
         gboolean state_normal;
 
         state = bedit_tab_get_state(tab);
-        state_normal = (state == GEDIT_TAB_STATE_NORMAL);
+        state_normal = (state == BEDIT_TAB_STATE_NORMAL);
 
         enabled = state_normal &&
             gtk_selection_data_targets_include_text(selection_data);
@@ -489,7 +489,7 @@ static void set_paste_sensitivity_according_to_clipboard(
 static void extension_update_state(
     PeasExtensionSet *extensions, PeasPluginInfo *info, PeasExtension *exten,
     BeditWindow *window) {
-    bedit_window_activatable_update_state(GEDIT_WINDOW_ACTIVATABLE(exten));
+    bedit_window_activatable_update_state(BEDIT_WINDOW_ACTIVATABLE(exten));
 }
 
 static void update_actions_sensitivity(BeditWindow *window) {
@@ -497,7 +497,7 @@ static void update_actions_sensitivity(BeditWindow *window) {
     BeditTab *tab;
     gint num_notebooks;
     gint num_tabs;
-    BeditTabState state = GEDIT_TAB_STATE_NORMAL;
+    BeditTabState state = BEDIT_TAB_STATE_NORMAL;
     BeditDocument *doc = NULL;
     GtkSourceFile *file = NULL;
     BeditView *view = NULL;
@@ -521,7 +521,7 @@ static void update_actions_sensitivity(BeditWindow *window) {
     if (notebook != NULL && tab != NULL) {
         state = bedit_tab_get_state(tab);
         view = bedit_tab_get_view(tab);
-        doc = GEDIT_DOCUMENT(gtk_text_view_get_buffer(GTK_TEXT_VIEW(view)));
+        doc = BEDIT_DOCUMENT(gtk_text_view_get_buffer(GTK_TEXT_VIEW(view)));
         file = bedit_document_get_file(doc);
         tab_number =
             gtk_notebook_page_num(GTK_NOTEBOOK(notebook), GTK_WIDGET(tab));
@@ -529,7 +529,7 @@ static void update_actions_sensitivity(BeditWindow *window) {
         empty_search = _bedit_document_get_empty_search(doc);
     }
 
-    lockdown = bedit_app_get_lockdown(GEDIT_APP(g_application_get_default()));
+    lockdown = bedit_app_get_lockdown(BEDIT_APP(g_application_get_default()));
 
     clipboard =
         gtk_widget_get_clipboard(GTK_WIDGET(window), GDK_SELECTION_CLIPBOARD);
@@ -537,24 +537,24 @@ static void update_actions_sensitivity(BeditWindow *window) {
     action = g_action_map_lookup_action(G_ACTION_MAP(window), "save");
     g_simple_action_set_enabled(
         G_SIMPLE_ACTION(action),
-        ((state == GEDIT_TAB_STATE_NORMAL) ||
-         (state == GEDIT_TAB_STATE_EXTERNALLY_MODIFIED_NOTIFICATION)) &&
+        ((state == BEDIT_TAB_STATE_NORMAL) ||
+         (state == BEDIT_TAB_STATE_EXTERNALLY_MODIFIED_NOTIFICATION)) &&
             (file != NULL) && !gtk_source_file_is_readonly(file) &&
-            !(lockdown & GEDIT_LOCKDOWN_SAVE_TO_DISK));
+            !(lockdown & BEDIT_LOCKDOWN_SAVE_TO_DISK));
 
     action = g_action_map_lookup_action(G_ACTION_MAP(window), "save-as");
     g_simple_action_set_enabled(
         G_SIMPLE_ACTION(action),
-        ((state == GEDIT_TAB_STATE_NORMAL) ||
-         (state == GEDIT_TAB_STATE_SAVING_ERROR) ||
-         (state == GEDIT_TAB_STATE_EXTERNALLY_MODIFIED_NOTIFICATION)) &&
-            (doc != NULL) && !(lockdown & GEDIT_LOCKDOWN_SAVE_TO_DISK));
+        ((state == BEDIT_TAB_STATE_NORMAL) ||
+         (state == BEDIT_TAB_STATE_SAVING_ERROR) ||
+         (state == BEDIT_TAB_STATE_EXTERNALLY_MODIFIED_NOTIFICATION)) &&
+            (doc != NULL) && !(lockdown & BEDIT_LOCKDOWN_SAVE_TO_DISK));
 
     action = g_action_map_lookup_action(G_ACTION_MAP(window), "revert");
     g_simple_action_set_enabled(
         G_SIMPLE_ACTION(action),
-        ((state == GEDIT_TAB_STATE_NORMAL) ||
-         (state == GEDIT_TAB_STATE_EXTERNALLY_MODIFIED_NOTIFICATION)) &&
+        ((state == BEDIT_TAB_STATE_NORMAL) ||
+         (state == BEDIT_TAB_STATE_EXTERNALLY_MODIFIED_NOTIFICATION)) &&
             (doc != NULL) && !bedit_document_is_untitled(doc));
 
     action =
@@ -565,47 +565,47 @@ static void update_actions_sensitivity(BeditWindow *window) {
     action = g_action_map_lookup_action(G_ACTION_MAP(window), "print");
     g_simple_action_set_enabled(
         G_SIMPLE_ACTION(action),
-        ((state == GEDIT_TAB_STATE_NORMAL) ||
-         (state == GEDIT_TAB_STATE_SHOWING_PRINT_PREVIEW)) &&
-            (doc != NULL) && !(lockdown & GEDIT_LOCKDOWN_PRINTING));
+        ((state == BEDIT_TAB_STATE_NORMAL) ||
+         (state == BEDIT_TAB_STATE_SHOWING_PRINT_PREVIEW)) &&
+            (doc != NULL) && !(lockdown & BEDIT_LOCKDOWN_PRINTING));
 
     action = g_action_map_lookup_action(G_ACTION_MAP(window), "close");
     g_simple_action_set_enabled(
         G_SIMPLE_ACTION(action),
-        (state != GEDIT_TAB_STATE_CLOSING) &&
-            (state != GEDIT_TAB_STATE_SAVING) &&
-            (state != GEDIT_TAB_STATE_SHOWING_PRINT_PREVIEW) &&
-            (state != GEDIT_TAB_STATE_PRINTING) &&
-            (state != GEDIT_TAB_STATE_SAVING_ERROR));
+        (state != BEDIT_TAB_STATE_CLOSING) &&
+            (state != BEDIT_TAB_STATE_SAVING) &&
+            (state != BEDIT_TAB_STATE_SHOWING_PRINT_PREVIEW) &&
+            (state != BEDIT_TAB_STATE_PRINTING) &&
+            (state != BEDIT_TAB_STATE_SAVING_ERROR));
 
     action = g_action_map_lookup_action(G_ACTION_MAP(window), "undo");
     g_simple_action_set_enabled(
         G_SIMPLE_ACTION(action),
-        (state == GEDIT_TAB_STATE_NORMAL) && (doc != NULL) &&
+        (state == BEDIT_TAB_STATE_NORMAL) && (doc != NULL) &&
             gtk_source_buffer_can_undo(GTK_SOURCE_BUFFER(doc)));
 
     action = g_action_map_lookup_action(G_ACTION_MAP(window), "redo");
     g_simple_action_set_enabled(
         G_SIMPLE_ACTION(action),
-        (state == GEDIT_TAB_STATE_NORMAL) && (doc != NULL) &&
+        (state == BEDIT_TAB_STATE_NORMAL) && (doc != NULL) &&
             gtk_source_buffer_can_redo(GTK_SOURCE_BUFFER(doc)));
 
     action = g_action_map_lookup_action(G_ACTION_MAP(window), "cut");
     g_simple_action_set_enabled(
         G_SIMPLE_ACTION(action),
-        (state == GEDIT_TAB_STATE_NORMAL) && editable && (doc != NULL) &&
+        (state == BEDIT_TAB_STATE_NORMAL) && editable && (doc != NULL) &&
             gtk_text_buffer_get_has_selection(GTK_TEXT_BUFFER(doc)));
 
     action = g_action_map_lookup_action(G_ACTION_MAP(window), "copy");
     g_simple_action_set_enabled(
         G_SIMPLE_ACTION(action),
-        ((state == GEDIT_TAB_STATE_NORMAL) ||
-         (state == GEDIT_TAB_STATE_EXTERNALLY_MODIFIED_NOTIFICATION)) &&
+        ((state == BEDIT_TAB_STATE_NORMAL) ||
+         (state == BEDIT_TAB_STATE_EXTERNALLY_MODIFIED_NOTIFICATION)) &&
             (doc != NULL) &&
             gtk_text_buffer_get_has_selection(GTK_TEXT_BUFFER(doc)));
 
     action = g_action_map_lookup_action(G_ACTION_MAP(window), "paste");
-    if (num_tabs > 0 && (state == GEDIT_TAB_STATE_NORMAL) && editable) {
+    if (num_tabs > 0 && (state == BEDIT_TAB_STATE_NORMAL) && editable) {
         set_paste_sensitivity_according_to_clipboard(window, clipboard);
     } else {
         g_simple_action_set_enabled(G_SIMPLE_ACTION(action), FALSE);
@@ -614,7 +614,7 @@ static void update_actions_sensitivity(BeditWindow *window) {
     action = g_action_map_lookup_action(G_ACTION_MAP(window), "delete");
     g_simple_action_set_enabled(
         G_SIMPLE_ACTION(action),
-        (state == GEDIT_TAB_STATE_NORMAL) && editable && (doc != NULL) &&
+        (state == BEDIT_TAB_STATE_NORMAL) && editable && (doc != NULL) &&
             gtk_text_buffer_get_has_selection(GTK_TEXT_BUFFER(doc)));
 
     action = g_action_map_lookup_action(G_ACTION_MAP(window), "overwrite-mode");
@@ -623,50 +623,50 @@ static void update_actions_sensitivity(BeditWindow *window) {
     action = g_action_map_lookup_action(G_ACTION_MAP(window), "find");
     g_simple_action_set_enabled(
         G_SIMPLE_ACTION(action),
-        ((state == GEDIT_TAB_STATE_NORMAL) ||
-         (state == GEDIT_TAB_STATE_EXTERNALLY_MODIFIED_NOTIFICATION)) &&
+        ((state == BEDIT_TAB_STATE_NORMAL) ||
+         (state == BEDIT_TAB_STATE_EXTERNALLY_MODIFIED_NOTIFICATION)) &&
             (doc != NULL));
 
     action = g_action_map_lookup_action(G_ACTION_MAP(window), "replace");
     g_simple_action_set_enabled(
         G_SIMPLE_ACTION(action),
-        (state == GEDIT_TAB_STATE_NORMAL) && (doc != NULL) && editable);
+        (state == BEDIT_TAB_STATE_NORMAL) && (doc != NULL) && editable);
 
     action = g_action_map_lookup_action(G_ACTION_MAP(window), "find-next");
     g_simple_action_set_enabled(
         G_SIMPLE_ACTION(action),
-        ((state == GEDIT_TAB_STATE_NORMAL) ||
-         (state == GEDIT_TAB_STATE_EXTERNALLY_MODIFIED_NOTIFICATION)) &&
+        ((state == BEDIT_TAB_STATE_NORMAL) ||
+         (state == BEDIT_TAB_STATE_EXTERNALLY_MODIFIED_NOTIFICATION)) &&
             (doc != NULL) && !empty_search);
 
     action = g_action_map_lookup_action(G_ACTION_MAP(window), "find-prev");
     g_simple_action_set_enabled(
         G_SIMPLE_ACTION(action),
-        ((state == GEDIT_TAB_STATE_NORMAL) ||
-         (state == GEDIT_TAB_STATE_EXTERNALLY_MODIFIED_NOTIFICATION)) &&
+        ((state == BEDIT_TAB_STATE_NORMAL) ||
+         (state == BEDIT_TAB_STATE_EXTERNALLY_MODIFIED_NOTIFICATION)) &&
             (doc != NULL) && !empty_search);
 
     action =
         g_action_map_lookup_action(G_ACTION_MAP(window), "clear-highlight");
     g_simple_action_set_enabled(
         G_SIMPLE_ACTION(action),
-        ((state == GEDIT_TAB_STATE_NORMAL) ||
-         (state == GEDIT_TAB_STATE_EXTERNALLY_MODIFIED_NOTIFICATION)) &&
+        ((state == BEDIT_TAB_STATE_NORMAL) ||
+         (state == BEDIT_TAB_STATE_EXTERNALLY_MODIFIED_NOTIFICATION)) &&
             (doc != NULL) && !empty_search);
 
     action = g_action_map_lookup_action(G_ACTION_MAP(window), "goto-line");
     g_simple_action_set_enabled(
         G_SIMPLE_ACTION(action),
-        ((state == GEDIT_TAB_STATE_NORMAL) ||
-         (state == GEDIT_TAB_STATE_EXTERNALLY_MODIFIED_NOTIFICATION)) &&
+        ((state == BEDIT_TAB_STATE_NORMAL) ||
+         (state == BEDIT_TAB_STATE_EXTERNALLY_MODIFIED_NOTIFICATION)) &&
             (doc != NULL));
 
     action = g_action_map_lookup_action(G_ACTION_MAP(window), "highlight-mode");
     enable_syntax_highlighting = g_settings_get_boolean(
-        window->priv->editor_settings, GEDIT_SETTINGS_SYNTAX_HIGHLIGHTING);
+        window->priv->editor_settings, BEDIT_SETTINGS_SYNTAX_HIGHLIGHTING);
     g_simple_action_set_enabled(
         G_SIMPLE_ACTION(action),
-        (state != GEDIT_TAB_STATE_CLOSING) && (doc != NULL) &&
+        (state != BEDIT_TAB_STATE_CLOSING) && (doc != NULL) &&
             enable_syntax_highlighting);
 
     action =
@@ -708,20 +708,20 @@ static void update_actions_sensitivity(BeditWindow *window) {
         G_ACTION_MAP(g_application_get_default()), "quit");
     g_simple_action_set_enabled(
         G_SIMPLE_ACTION(action),
-        !(window->priv->state & GEDIT_WINDOW_STATE_SAVING) &&
-            !(window->priv->state & GEDIT_WINDOW_STATE_PRINTING));
+        !(window->priv->state & BEDIT_WINDOW_STATE_SAVING) &&
+            !(window->priv->state & BEDIT_WINDOW_STATE_PRINTING));
 
     action = g_action_map_lookup_action(G_ACTION_MAP(window), "save-all");
     g_simple_action_set_enabled(
         G_SIMPLE_ACTION(action),
-        !(window->priv->state & GEDIT_WINDOW_STATE_PRINTING) &&
-            !(lockdown & GEDIT_LOCKDOWN_SAVE_TO_DISK) && num_tabs > 0);
+        !(window->priv->state & BEDIT_WINDOW_STATE_PRINTING) &&
+            !(lockdown & BEDIT_LOCKDOWN_SAVE_TO_DISK) && num_tabs > 0);
 
     action = g_action_map_lookup_action(G_ACTION_MAP(window), "close-all");
     g_simple_action_set_enabled(
         G_SIMPLE_ACTION(action),
-        num_tabs > 0 && !(window->priv->state & GEDIT_WINDOW_STATE_SAVING) &&
-            !(window->priv->state & GEDIT_WINDOW_STATE_PRINTING) &&
+        num_tabs > 0 && !(window->priv->state & BEDIT_WINDOW_STATE_SAVING) &&
+            !(window->priv->state & BEDIT_WINDOW_STATE_PRINTING) &&
             num_tabs > 0);
 
     peas_extension_set_foreach(
@@ -772,12 +772,12 @@ static void setup_statusbar(BeditWindow *window) {
     /* Line Col button */
     gtk_menu_button_set_menu_model(
         GTK_MENU_BUTTON(window->priv->line_col_button),
-        _bedit_app_get_line_col_menu(GEDIT_APP(g_application_get_default())));
+        _bedit_app_get_line_col_menu(BEDIT_APP(g_application_get_default())));
 
     /* Tab Width button */
     gtk_menu_button_set_menu_model(
         GTK_MENU_BUTTON(window->priv->tab_width_button),
-        _bedit_app_get_tab_width_menu(GEDIT_APP(g_application_get_default())));
+        _bedit_app_get_tab_width_menu(BEDIT_APP(g_application_get_default())));
 
     /* Language button */
     window->priv->language_popover =
@@ -805,7 +805,7 @@ static BeditWindow *clone_window(BeditWindow *origin) {
 
     bedit_debug(DEBUG_WINDOW);
 
-    app = GEDIT_APP(g_application_get_default());
+    app = BEDIT_APP(g_application_get_default());
 
     screen = gtk_window_get_screen(GTK_WINDOW(origin));
     window = bedit_app_create_window(app, screen);
@@ -868,19 +868,19 @@ static void bracket_matched_cb(
         break;
     case GTK_SOURCE_BRACKET_MATCH_OUT_OF_RANGE:
         bedit_statusbar_flash_message(
-            GEDIT_STATUSBAR(window->priv->statusbar),
+            BEDIT_STATUSBAR(window->priv->statusbar),
             window->priv->bracket_match_message_cid,
             _("Bracket match is out of range"));
         break;
     case GTK_SOURCE_BRACKET_MATCH_NOT_FOUND:
         bedit_statusbar_flash_message(
-            GEDIT_STATUSBAR(window->priv->statusbar),
+            BEDIT_STATUSBAR(window->priv->statusbar),
             window->priv->bracket_match_message_cid,
             _("Bracket match not found"));
         break;
     case GTK_SOURCE_BRACKET_MATCH_FOUND:
         bedit_statusbar_flash_message(
-            GEDIT_STATUSBAR(window->priv->statusbar),
+            BEDIT_STATUSBAR(window->priv->statusbar),
             window->priv->bracket_match_message_cid,
             _("Bracket match found on line: %d"),
             gtk_text_iter_get_line(iter) + 1);
@@ -918,7 +918,7 @@ static void update_cursor_position_statusbar(
     }
 
     bedit_status_menu_button_set_label(
-        GEDIT_STATUS_MENU_BUTTON(window->priv->line_col_button), msg);
+        BEDIT_STATUS_MENU_BUTTON(window->priv->line_col_button), msg);
 
     g_free(msg);
 }
@@ -927,7 +927,7 @@ static void set_overwrite_mode(BeditWindow *window, gboolean overwrite) {
     GAction *action;
 
     bedit_statusbar_set_overwrite(
-        GEDIT_STATUSBAR(window->priv->statusbar), overwrite);
+        BEDIT_STATUSBAR(window->priv->statusbar), overwrite);
 
     action = g_action_map_lookup_action(G_ACTION_MAP(window), "overwrite-mode");
     g_simple_action_set_state(
@@ -957,7 +957,7 @@ static void set_title(BeditWindow *window) {
 
     if (tab == NULL) {
         bedit_app_set_window_title(
-            GEDIT_APP(g_application_get_default()), window, "bedit");
+            BEDIT_APP(g_application_get_default()), window, "bedit");
         return;
     }
 
@@ -1023,7 +1023,7 @@ static void set_title(BeditWindow *window) {
     }
 
     bedit_app_set_window_title(
-        GEDIT_APP(g_application_get_default()), window, main_title);
+        BEDIT_APP(g_application_get_default()), window, main_title);
 
     g_free(dirname);
     g_free(name);
@@ -1041,7 +1041,7 @@ static void tab_width_changed(
 
     label = g_strdup_printf(_("Tab Width: %u"), new_tab_width);
     bedit_status_menu_button_set_label(
-        GEDIT_STATUS_MENU_BUTTON(window->priv->tab_width_button), label);
+        BEDIT_STATUS_MENU_BUTTON(window->priv->tab_width_button), label);
     g_free(label);
 }
 
@@ -1058,7 +1058,7 @@ static void language_changed(
         label = _("Plain Text");
 
     bedit_status_menu_button_set_label(
-        GEDIT_STATUS_MENU_BUTTON(window->priv->language_button), label);
+        BEDIT_STATUS_MENU_BUTTON(window->priv->language_button), label);
 
     peas_extension_set_foreach(
         window->priv->extensions,
@@ -1094,26 +1094,26 @@ static void _bedit_window_text_wrapping_change_state(
     g_simple_action_set_state(simple, value);
 
     wrap_mode = g_settings_get_enum(
-        GEDIT_WINDOW(window)->priv->editor_settings, GEDIT_SETTINGS_WRAP_MODE);
+        BEDIT_WINDOW(window)->priv->editor_settings, BEDIT_SETTINGS_WRAP_MODE);
 
     current_wrap_mode = wrap_mode;
     result = g_variant_get_boolean(value);
 
     if (result && wrap_mode == GTK_WRAP_NONE) {
         current_wrap_mode = g_settings_get_enum(
-            GEDIT_WINDOW(window)->priv->editor_settings,
-            GEDIT_SETTINGS_WRAP_LAST_SPLIT_MODE);
+            BEDIT_WINDOW(window)->priv->editor_settings,
+            BEDIT_SETTINGS_WRAP_LAST_SPLIT_MODE);
     } else if (!result) {
         current_wrap_mode = GTK_WRAP_NONE;
     }
 
-    view = bedit_window_get_active_view(GEDIT_WINDOW(window));
+    view = bedit_window_get_active_view(BEDIT_WINDOW(window));
 
     g_signal_handler_block(
-        view, GEDIT_WINDOW(window)->priv->wrap_mode_changed_id);
+        view, BEDIT_WINDOW(window)->priv->wrap_mode_changed_id);
     gtk_text_view_set_wrap_mode(GTK_TEXT_VIEW(view), current_wrap_mode);
     g_signal_handler_unblock(
-        view, GEDIT_WINDOW(window)->priv->wrap_mode_changed_id);
+        view, BEDIT_WINDOW(window)->priv->wrap_mode_changed_id);
 }
 
 static GActionEntry text_wrapping_entrie[] = {
@@ -1204,7 +1204,7 @@ static void update_statusbar(
     if (new_view) {
         BeditDocument *doc;
 
-        doc = GEDIT_DOCUMENT(gtk_text_view_get_buffer(GTK_TEXT_VIEW(new_view)));
+        doc = BEDIT_DOCUMENT(gtk_text_view_get_buffer(GTK_TEXT_VIEW(new_view)));
 
         /* sync the statusbar */
         update_cursor_position_statusbar(GTK_TEXT_BUFFER(doc), window);
@@ -1259,7 +1259,7 @@ void _bedit_window_set_lockdown(
 
     /* start/stop autosave in each existing tab */
     autosave = g_settings_get_boolean(
-        window->priv->editor_settings, GEDIT_SETTINGS_AUTO_SAVE);
+        window->priv->editor_settings, BEDIT_SETTINGS_AUTO_SAVE);
 
     bedit_multi_notebook_foreach_tab(
         window->priv->multi_notebook, (GtkCallback)set_auto_save_enabled,
@@ -1274,24 +1274,24 @@ static void analyze_tab_state(BeditTab *tab, BeditWindow *window) {
     ts = bedit_tab_get_state(tab);
 
     switch (ts) {
-    case GEDIT_TAB_STATE_LOADING:
-    case GEDIT_TAB_STATE_REVERTING:
-        window->priv->state |= GEDIT_WINDOW_STATE_LOADING;
+    case BEDIT_TAB_STATE_LOADING:
+    case BEDIT_TAB_STATE_REVERTING:
+        window->priv->state |= BEDIT_WINDOW_STATE_LOADING;
         break;
 
-    case GEDIT_TAB_STATE_SAVING:
-        window->priv->state |= GEDIT_WINDOW_STATE_SAVING;
+    case BEDIT_TAB_STATE_SAVING:
+        window->priv->state |= BEDIT_WINDOW_STATE_SAVING;
         break;
 
-    case GEDIT_TAB_STATE_PRINTING:
-        window->priv->state |= GEDIT_WINDOW_STATE_PRINTING;
+    case BEDIT_TAB_STATE_PRINTING:
+        window->priv->state |= BEDIT_WINDOW_STATE_PRINTING;
         break;
 
-    case GEDIT_TAB_STATE_LOADING_ERROR:
-    case GEDIT_TAB_STATE_REVERTING_ERROR:
-    case GEDIT_TAB_STATE_SAVING_ERROR:
-    case GEDIT_TAB_STATE_GENERIC_ERROR:
-        window->priv->state |= GEDIT_WINDOW_STATE_ERROR;
+    case BEDIT_TAB_STATE_LOADING_ERROR:
+    case BEDIT_TAB_STATE_REVERTING_ERROR:
+    case BEDIT_TAB_STATE_SAVING_ERROR:
+    case BEDIT_TAB_STATE_GENERIC_ERROR:
+        window->priv->state |= BEDIT_WINDOW_STATE_ERROR;
         ++window->priv->num_tabs_with_error;
     default:
         /* NOP */
@@ -1320,13 +1320,13 @@ static void update_window_state(BeditWindow *window) {
         update_actions_sensitivity(window);
 
         bedit_statusbar_set_window_state(
-            GEDIT_STATUSBAR(window->priv->statusbar), window->priv->state,
+            BEDIT_STATUSBAR(window->priv->statusbar), window->priv->state,
             window->priv->num_tabs_with_error);
 
         g_object_notify_by_pspec(G_OBJECT(window), properties[PROP_STATE]);
     } else if (old_num_of_errors != window->priv->num_tabs_with_error) {
         bedit_statusbar_set_window_state(
-            GEDIT_STATUSBAR(window->priv->statusbar), window->priv->state,
+            BEDIT_STATUSBAR(window->priv->statusbar), window->priv->state,
             window->priv->num_tabs_with_error);
     }
 }
@@ -1392,9 +1392,9 @@ static BeditWindow *get_drop_window(GtkWidget *widget) {
     GtkWidget *target_window;
 
     target_window = gtk_widget_get_toplevel(widget);
-    g_return_val_if_fail(GEDIT_IS_WINDOW(target_window), NULL);
+    g_return_val_if_fail(BEDIT_IS_WINDOW(target_window), NULL);
 
-    return GEDIT_WINDOW(target_window);
+    return BEDIT_WINDOW(target_window);
 }
 
 static void load_uris_from_drop(BeditWindow *window, gchar **uri_list) {
@@ -1759,7 +1759,7 @@ static void on_tab_removed(
         set_title(window);
 
         bedit_statusbar_clear_overwrite(
-            GEDIT_STATUSBAR(window->priv->statusbar));
+            BEDIT_STATUSBAR(window->priv->statusbar));
 
         /* hide the combos */
         gtk_widget_hide(window->priv->line_col_button);
@@ -1802,7 +1802,7 @@ static GtkNotebook *on_notebook_create_window(
     gtk_window_move(GTK_WINDOW(new_window), x, y);
     gtk_widget_show(GTK_WIDGET(new_window));
 
-    new_notebook = _bedit_window_get_notebook(GEDIT_WINDOW(new_window));
+    new_notebook = _bedit_window_get_notebook(BEDIT_WINDOW(new_window));
 
     return GTK_NOTEBOOK(new_notebook);
 }
@@ -1812,7 +1812,7 @@ static void on_tab_close_request(
     GtkWindow *window) {
     /* Note: we are destroying the tab before the default handler
      * seems to be ok, but we need to keep an eye on this. */
-    _bedit_cmd_file_close_tab(tab, GEDIT_WINDOW(window));
+    _bedit_cmd_file_close_tab(tab, BEDIT_WINDOW(window));
 }
 
 static void on_show_popup_menu(
@@ -1909,7 +1909,7 @@ static void side_panel_visibility_changed(
     visible = gtk_widget_get_visible(panel);
 
     g_settings_set_boolean(
-        window->priv->ui_settings, GEDIT_SETTINGS_SIDE_PANEL_VISIBLE, visible);
+        window->priv->ui_settings, BEDIT_SETTINGS_SIDE_PANEL_VISIBLE, visible);
 
     /* sync the action state if the panel visibility was changed
      * programmatically */
@@ -2007,7 +2007,7 @@ static void setup_side_panel(BeditWindow *window) {
         priv->side_stack_switcher, _("Change side panel page"), NULL);
 
     bedit_menu_stack_switcher_set_stack(
-        GEDIT_MENU_STACK_SWITCHER(priv->side_stack_switcher),
+        BEDIT_MENU_STACK_SWITCHER(priv->side_stack_switcher),
         GTK_STACK(priv->side_panel));
 
     g_signal_connect(
@@ -2033,7 +2033,7 @@ static void bottom_panel_visibility_changed(
     visible = gtk_widget_get_visible(panel_box);
 
     g_settings_set_boolean(
-        window->priv->ui_settings, GEDIT_SETTINGS_BOTTOM_PANEL_VISIBLE,
+        window->priv->ui_settings, BEDIT_SETTINGS_BOTTOM_PANEL_VISIBLE,
         visible);
 
     /* sync the action state if the panel visibility was changed
@@ -2100,7 +2100,7 @@ static void init_panels_visibility(BeditWindow *window) {
 
     /* side panel */
     panel_page = g_settings_get_string(
-        window->priv->window_settings, GEDIT_SETTINGS_SIDE_PANEL_ACTIVE_PAGE);
+        window->priv->window_settings, BEDIT_SETTINGS_SIDE_PANEL_ACTIVE_PAGE);
     panel_child = gtk_stack_get_child_by_name(
         GTK_STACK(window->priv->side_panel), panel_page);
     if (panel_child != NULL) {
@@ -2111,9 +2111,9 @@ static void init_panels_visibility(BeditWindow *window) {
     g_free(panel_page);
 
     side_panel_visible = g_settings_get_boolean(
-        window->priv->ui_settings, GEDIT_SETTINGS_SIDE_PANEL_VISIBLE);
+        window->priv->ui_settings, BEDIT_SETTINGS_SIDE_PANEL_VISIBLE);
     bottom_panel_visible = g_settings_get_boolean(
-        window->priv->ui_settings, GEDIT_SETTINGS_BOTTOM_PANEL_VISIBLE);
+        window->priv->ui_settings, BEDIT_SETTINGS_BOTTOM_PANEL_VISIBLE);
 
     if (side_panel_visible) {
         gtk_widget_show(window->priv->side_panel);
@@ -2124,7 +2124,7 @@ static void init_panels_visibility(BeditWindow *window) {
         NULL) {
         panel_page = g_settings_get_string(
             window->priv->window_settings,
-            GEDIT_SETTINGS_BOTTOM_PANEL_ACTIVE_PAGE);
+            BEDIT_SETTINGS_BOTTOM_PANEL_ACTIVE_PAGE);
         panel_child = gtk_stack_get_child_by_name(
             GTK_STACK(window->priv->side_panel), panel_page);
         if (panel_child) {
@@ -2181,13 +2181,13 @@ static void window_unrealized(GtkWidget *window, gpointer *data) {
 static void extension_added(
     PeasExtensionSet *extensions, PeasPluginInfo *info, PeasExtension *exten,
     BeditWindow *window) {
-    bedit_window_activatable_activate(GEDIT_WINDOW_ACTIVATABLE(exten));
+    bedit_window_activatable_activate(BEDIT_WINDOW_ACTIVATABLE(exten));
 }
 
 static void extension_removed(
     PeasExtensionSet *extensions, PeasPluginInfo *info, PeasExtension *exten,
     BeditWindow *window) {
-    bedit_window_activatable_deactivate(GEDIT_WINDOW_ACTIVATABLE(exten));
+    bedit_window_activatable_deactivate(BEDIT_WINDOW_ACTIVATABLE(exten));
 }
 
 static GActionEntry win_entries[] = {
@@ -2258,7 +2258,7 @@ static void bedit_window_init(BeditWindow *window) {
     window->priv = bedit_window_get_instance_private(window);
 
     window->priv->removing_tabs = FALSE;
-    window->priv->state = GEDIT_WINDOW_STATE_NORMAL;
+    window->priv->state = BEDIT_WINDOW_STATE_NORMAL;
     window->priv->inhibition_cookie = 0;
     window->priv->dispose_has_run = FALSE;
     window->priv->direct_save_uri = NULL;
@@ -2289,7 +2289,7 @@ static void bedit_window_init(BeditWindow *window) {
     sync_fullscreen_actions(window, FALSE);
 
     hamburger_menu =
-        _bedit_app_get_hamburger_menu(GEDIT_APP(g_application_get_default()));
+        _bedit_app_get_hamburger_menu(BEDIT_APP(g_application_get_default()));
     if (hamburger_menu) {
         gtk_menu_button_set_menu_model(
             window->priv->gear_button, hamburger_menu);
@@ -2353,9 +2353,9 @@ static void bedit_window_init(BeditWindow *window) {
     /* panels' state must be restored after panels have been mapped,
      * since the bottom panel position depends on the size of the vpaned. */
     window->priv->side_panel_size = g_settings_get_int(
-        window->priv->window_settings, GEDIT_SETTINGS_SIDE_PANEL_SIZE);
+        window->priv->window_settings, BEDIT_SETTINGS_SIDE_PANEL_SIZE);
     window->priv->bottom_panel_size = g_settings_get_int(
-        window->priv->window_settings, GEDIT_SETTINGS_BOTTOM_PANEL_SIZE);
+        window->priv->window_settings, BEDIT_SETTINGS_BOTTOM_PANEL_SIZE);
 
     g_signal_connect_after(
         window->priv->hpaned, "map", G_CALLBACK(hpaned_restore_position),
@@ -2397,7 +2397,7 @@ static void bedit_window_init(BeditWindow *window) {
 
     window->priv->extensions = peas_extension_set_new(
         PEAS_ENGINE(bedit_plugins_engine_get_default()),
-        GEDIT_TYPE_WINDOW_ACTIVATABLE, "window", window, NULL);
+        BEDIT_TYPE_WINDOW_ACTIVATABLE, "window", window, NULL);
     g_signal_connect(
         window->priv->extensions, "extension-added",
         G_CALLBACK(extension_added), window);
@@ -2429,7 +2429,7 @@ BeditView *bedit_window_get_active_view(BeditWindow *window) {
     BeditTab *tab;
     BeditView *view;
 
-    g_return_val_if_fail(GEDIT_IS_WINDOW(window), NULL);
+    g_return_val_if_fail(BEDIT_IS_WINDOW(window), NULL);
 
     tab = bedit_window_get_active_tab(window);
 
@@ -2452,23 +2452,23 @@ BeditView *bedit_window_get_active_view(BeditWindow *window) {
 BeditDocument *bedit_window_get_active_document(BeditWindow *window) {
     BeditView *view;
 
-    g_return_val_if_fail(GEDIT_IS_WINDOW(window), NULL);
+    g_return_val_if_fail(BEDIT_IS_WINDOW(window), NULL);
 
     view = bedit_window_get_active_view(window);
     if (view == NULL)
         return NULL;
 
-    return GEDIT_DOCUMENT(gtk_text_view_get_buffer(GTK_TEXT_VIEW(view)));
+    return BEDIT_DOCUMENT(gtk_text_view_get_buffer(GTK_TEXT_VIEW(view)));
 }
 
 GtkWidget *_bedit_window_get_multi_notebook(BeditWindow *window) {
-    g_return_val_if_fail(GEDIT_IS_WINDOW(window), NULL);
+    g_return_val_if_fail(BEDIT_IS_WINDOW(window), NULL);
 
     return GTK_WIDGET(window->priv->multi_notebook);
 }
 
 GtkWidget *_bedit_window_get_notebook(BeditWindow *window) {
-    g_return_val_if_fail(GEDIT_IS_WINDOW(window), NULL);
+    g_return_val_if_fail(BEDIT_IS_WINDOW(window), NULL);
 
     return GTK_WIDGET(
         bedit_multi_notebook_get_active_notebook(window->priv->multi_notebook));
@@ -2483,7 +2483,7 @@ static BeditTab *process_create_tab(
     bedit_debug(DEBUG_WINDOW);
 
     gtk_widget_show(GTK_WIDGET(tab));
-    bedit_notebook_add_tab(GEDIT_NOTEBOOK(notebook), tab, -1, jump_to);
+    bedit_notebook_add_tab(BEDIT_NOTEBOOK(notebook), tab, -1, jump_to);
 
     if (!gtk_widget_get_visible(GTK_WIDGET(window))) {
         gtk_window_present(GTK_WINDOW(window));
@@ -2506,7 +2506,7 @@ BeditTab *bedit_window_create_tab(BeditWindow *window, gboolean jump_to) {
     GtkWidget *notebook;
     BeditTab *tab;
 
-    g_return_val_if_fail(GEDIT_IS_WINDOW(window), NULL);
+    g_return_val_if_fail(BEDIT_IS_WINDOW(window), NULL);
 
     bedit_debug(DEBUG_WINDOW);
 
@@ -2540,7 +2540,7 @@ BeditTab *bedit_window_create_tab_from_location(
     GtkWidget *notebook;
     BeditTab *tab;
 
-    g_return_val_if_fail(GEDIT_IS_WINDOW(window), NULL);
+    g_return_val_if_fail(BEDIT_IS_WINDOW(window), NULL);
     g_return_val_if_fail(G_IS_FILE(location), NULL);
 
     bedit_debug(DEBUG_WINDOW);
@@ -2574,7 +2574,7 @@ BeditTab *bedit_window_create_tab_from_stream(
 
     bedit_debug(DEBUG_WINDOW);
 
-    g_return_val_if_fail(GEDIT_IS_WINDOW(window), NULL);
+    g_return_val_if_fail(BEDIT_IS_WINDOW(window), NULL);
     g_return_val_if_fail(G_IS_INPUT_STREAM(stream), NULL);
 
     tab = _bedit_tab_new();
@@ -2595,7 +2595,7 @@ BeditTab *bedit_window_create_tab_from_stream(
  * Returns: (transfer none): the active #BeditTab in the @window.
  */
 BeditTab *bedit_window_get_active_tab(BeditWindow *window) {
-    g_return_val_if_fail(GEDIT_IS_WINDOW(window), NULL);
+    g_return_val_if_fail(BEDIT_IS_WINDOW(window), NULL);
 
     return (window->priv->multi_notebook == NULL)
         ? NULL
@@ -2623,7 +2623,7 @@ static void add_document(BeditTab *tab, GList **res) {
 GList *bedit_window_get_documents(BeditWindow *window) {
     GList *res = NULL;
 
-    g_return_val_if_fail(GEDIT_IS_WINDOW(window), NULL);
+    g_return_val_if_fail(BEDIT_IS_WINDOW(window), NULL);
 
     bedit_multi_notebook_foreach_tab(
         window->priv->multi_notebook, (GtkCallback)add_document, &res);
@@ -2653,7 +2653,7 @@ static void add_view(BeditTab *tab, GList **res) {
 GList *bedit_window_get_views(BeditWindow *window) {
     GList *res = NULL;
 
-    g_return_val_if_fail(GEDIT_IS_WINDOW(window), NULL);
+    g_return_val_if_fail(BEDIT_IS_WINDOW(window), NULL);
 
     bedit_multi_notebook_foreach_tab(
         window->priv->multi_notebook, (GtkCallback)add_view, &res);
@@ -2673,11 +2673,11 @@ GList *bedit_window_get_views(BeditWindow *window) {
 void bedit_window_close_tab(BeditWindow *window, BeditTab *tab) {
     GList *tabs = NULL;
 
-    g_return_if_fail(GEDIT_IS_WINDOW(window));
-    g_return_if_fail(GEDIT_IS_TAB(tab));
+    g_return_if_fail(BEDIT_IS_WINDOW(window));
+    g_return_if_fail(BEDIT_IS_TAB(tab));
     g_return_if_fail(
-        (bedit_tab_get_state(tab) != GEDIT_TAB_STATE_SAVING) &&
-        (bedit_tab_get_state(tab) != GEDIT_TAB_STATE_SHOWING_PRINT_PREVIEW));
+        (bedit_tab_get_state(tab) != BEDIT_TAB_STATE_SAVING) &&
+        (bedit_tab_get_state(tab) != BEDIT_TAB_STATE_SHOWING_PRINT_PREVIEW));
 
     tabs = g_list_append(tabs, tab);
     bedit_multi_notebook_close_tabs(window->priv->multi_notebook, tabs);
@@ -2691,8 +2691,8 @@ void bedit_window_close_tab(BeditWindow *window, BeditTab *tab) {
  * Closes all opened tabs.
  */
 void bedit_window_close_all_tabs(BeditWindow *window) {
-    g_return_if_fail(GEDIT_IS_WINDOW(window));
-    g_return_if_fail(!(window->priv->state & GEDIT_WINDOW_STATE_SAVING));
+    g_return_if_fail(BEDIT_IS_WINDOW(window));
+    g_return_if_fail(!(window->priv->state & BEDIT_WINDOW_STATE_SAVING));
 
     window->priv->removing_tabs = TRUE;
 
@@ -2709,8 +2709,8 @@ void bedit_window_close_all_tabs(BeditWindow *window) {
  * Closes all tabs specified by @tabs.
  */
 void bedit_window_close_tabs(BeditWindow *window, const GList *tabs) {
-    g_return_if_fail(GEDIT_IS_WINDOW(window));
-    g_return_if_fail(!(window->priv->state & GEDIT_WINDOW_STATE_SAVING));
+    g_return_if_fail(BEDIT_IS_WINDOW(window));
+    g_return_if_fail(!(window->priv->state & BEDIT_WINDOW_STATE_SAVING));
 
     window->priv->removing_tabs = TRUE;
 
@@ -2725,8 +2725,8 @@ BeditWindow *_bedit_window_move_tab_to_new_window(
     BeditNotebook *old_notebook;
     BeditNotebook *new_notebook;
 
-    g_return_val_if_fail(GEDIT_IS_WINDOW(window), NULL);
-    g_return_val_if_fail(GEDIT_IS_TAB(tab), NULL);
+    g_return_val_if_fail(BEDIT_IS_WINDOW(window), NULL);
+    g_return_val_if_fail(BEDIT_IS_TAB(tab), NULL);
     g_return_val_if_fail(
         bedit_multi_notebook_get_n_notebooks(window->priv->multi_notebook) >
                 1 ||
@@ -2735,7 +2735,7 @@ BeditWindow *_bedit_window_move_tab_to_new_window(
 
     new_window = clone_window(window);
 
-    old_notebook = GEDIT_NOTEBOOK(gtk_widget_get_parent(GTK_WIDGET(tab)));
+    old_notebook = BEDIT_NOTEBOOK(gtk_widget_get_parent(GTK_WIDGET(tab)));
     new_notebook = bedit_multi_notebook_get_active_notebook(
         new_window->priv->multi_notebook);
 
@@ -2748,8 +2748,8 @@ BeditWindow *_bedit_window_move_tab_to_new_window(
 
 void _bedit_window_move_tab_to_new_tab_group(
     BeditWindow *window, BeditTab *tab) {
-    g_return_if_fail(GEDIT_IS_WINDOW(window));
-    g_return_if_fail(GEDIT_IS_TAB(tab));
+    g_return_if_fail(BEDIT_IS_WINDOW(window));
+    g_return_if_fail(BEDIT_IS_TAB(tab));
 
     bedit_multi_notebook_add_new_notebook_with_tab(
         window->priv->multi_notebook, tab);
@@ -2763,7 +2763,7 @@ void _bedit_window_move_tab_to_new_tab_group(
  * Switches to the tab that matches with @tab.
  */
 void bedit_window_set_active_tab(BeditWindow *window, BeditTab *tab) {
-    g_return_if_fail(GEDIT_IS_WINDOW(window));
+    g_return_if_fail(BEDIT_IS_WINDOW(window));
 
     bedit_multi_notebook_set_active_tab(window->priv->multi_notebook, tab);
 }
@@ -2777,13 +2777,13 @@ void bedit_window_set_active_tab(BeditWindow *window, BeditTab *tab) {
  * Returns: (transfer none): the #GtkWindowGroup
  */
 GtkWindowGroup *bedit_window_get_group(BeditWindow *window) {
-    g_return_val_if_fail(GEDIT_IS_WINDOW(window), NULL);
+    g_return_val_if_fail(BEDIT_IS_WINDOW(window), NULL);
 
     return window->priv->window_group;
 }
 
 gboolean _bedit_window_is_removing_tabs(BeditWindow *window) {
-    g_return_val_if_fail(GEDIT_IS_WINDOW(window), FALSE);
+    g_return_val_if_fail(BEDIT_IS_WINDOW(window), FALSE);
 
     return window->priv->removing_tabs;
 }
@@ -2797,7 +2797,7 @@ gboolean _bedit_window_is_removing_tabs(BeditWindow *window) {
  * Returns: (transfer none): the side panel's #GtkStack.
  */
 GtkWidget *bedit_window_get_side_panel(BeditWindow *window) {
-    g_return_val_if_fail(GEDIT_IS_WINDOW(window), NULL);
+    g_return_val_if_fail(BEDIT_IS_WINDOW(window), NULL);
 
     return window->priv->side_panel;
 }
@@ -2811,7 +2811,7 @@ GtkWidget *bedit_window_get_side_panel(BeditWindow *window) {
  * Returns: (transfer none): the bottom panel's #GtkStack.
  */
 GtkWidget *bedit_window_get_bottom_panel(BeditWindow *window) {
-    g_return_val_if_fail(GEDIT_IS_WINDOW(window), NULL);
+    g_return_val_if_fail(BEDIT_IS_WINDOW(window), NULL);
 
     return window->priv->bottom_panel;
 }
@@ -2825,7 +2825,7 @@ GtkWidget *bedit_window_get_bottom_panel(BeditWindow *window) {
  * Returns: (transfer none): the #BeditStatusbar of the @window.
  */
 GtkWidget *bedit_window_get_statusbar(BeditWindow *window) {
-    g_return_val_if_fail(GEDIT_IS_WINDOW(window), 0);
+    g_return_val_if_fail(BEDIT_IS_WINDOW(window), 0);
 
     return window->priv->statusbar;
 }
@@ -2839,13 +2839,13 @@ GtkWidget *bedit_window_get_statusbar(BeditWindow *window) {
  * Returns: the current #BeditWindowState of the @window.
  */
 BeditWindowState bedit_window_get_state(BeditWindow *window) {
-    g_return_val_if_fail(GEDIT_IS_WINDOW(window), GEDIT_WINDOW_STATE_NORMAL);
+    g_return_val_if_fail(BEDIT_IS_WINDOW(window), BEDIT_WINDOW_STATE_NORMAL);
 
     return window->priv->state;
 }
 
 GFile *_bedit_window_get_default_location(BeditWindow *window) {
-    g_return_val_if_fail(GEDIT_IS_WINDOW(window), NULL);
+    g_return_val_if_fail(BEDIT_IS_WINDOW(window), NULL);
 
     return window->priv->default_location != NULL
         ? g_object_ref(window->priv->default_location)
@@ -2855,7 +2855,7 @@ GFile *_bedit_window_get_default_location(BeditWindow *window) {
 void _bedit_window_set_default_location(BeditWindow *window, GFile *location) {
     GFile *dir;
 
-    g_return_if_fail(GEDIT_IS_WINDOW(window));
+    g_return_if_fail(BEDIT_IS_WINDOW(window));
     g_return_if_fail(G_IS_FILE(location));
 
     dir = g_file_get_parent(location);
@@ -2888,7 +2888,7 @@ static void add_unsaved_doc(BeditTab *tab, GList **res) {
 GList *bedit_window_get_unsaved_documents(BeditWindow *window) {
     GList *res = NULL;
 
-    g_return_val_if_fail(GEDIT_IS_WINDOW(window), NULL);
+    g_return_val_if_fail(BEDIT_IS_WINDOW(window), NULL);
 
     bedit_multi_notebook_foreach_tab(
         window->priv->multi_notebook, (GtkCallback)add_unsaved_doc, &res);
@@ -2897,13 +2897,13 @@ GList *bedit_window_get_unsaved_documents(BeditWindow *window) {
 }
 
 GList *_bedit_window_get_all_tabs(BeditWindow *window) {
-    g_return_val_if_fail(GEDIT_IS_WINDOW(window), NULL);
+    g_return_val_if_fail(BEDIT_IS_WINDOW(window), NULL);
 
     return bedit_multi_notebook_get_all_tabs(window->priv->multi_notebook);
 }
 
 void _bedit_window_fullscreen(BeditWindow *window) {
-    g_return_if_fail(GEDIT_IS_WINDOW(window));
+    g_return_if_fail(BEDIT_IS_WINDOW(window));
 
     if (_bedit_window_is_fullscreen(window))
         return;
@@ -2915,7 +2915,7 @@ void _bedit_window_fullscreen(BeditWindow *window) {
 }
 
 void _bedit_window_unfullscreen(BeditWindow *window) {
-    g_return_if_fail(GEDIT_IS_WINDOW(window));
+    g_return_if_fail(BEDIT_IS_WINDOW(window));
 
     if (!_bedit_window_is_fullscreen(window))
         return;
@@ -2927,7 +2927,7 @@ void _bedit_window_unfullscreen(BeditWindow *window) {
 }
 
 gboolean _bedit_window_is_fullscreen(BeditWindow *window) {
-    g_return_val_if_fail(GEDIT_IS_WINDOW(window), FALSE);
+    g_return_val_if_fail(BEDIT_IS_WINDOW(window), FALSE);
 
     return window->priv->window_state & GDK_WINDOW_STATE_FULLSCREEN;
 }
@@ -2948,7 +2948,7 @@ BeditTab *bedit_window_get_tab_from_location(
     GList *l;
     BeditTab *ret = NULL;
 
-    g_return_val_if_fail(GEDIT_IS_WINDOW(window), NULL);
+    g_return_val_if_fail(BEDIT_IS_WINDOW(window), NULL);
     g_return_val_if_fail(G_IS_FILE(location), NULL);
 
     tabs = bedit_multi_notebook_get_all_tabs(window->priv->multi_notebook);
@@ -2959,7 +2959,7 @@ BeditTab *bedit_window_get_tab_from_location(
         BeditTab *tab;
         GFile *cur_location;
 
-        tab = GEDIT_TAB(l->data);
+        tab = BEDIT_TAB(l->data);
         doc = bedit_tab_get_document(tab);
         file = bedit_document_get_file(doc);
         cur_location = gtk_source_file_get_location(file);
@@ -2989,7 +2989,7 @@ BeditTab *bedit_window_get_tab_from_location(
  * Return value: (transfer none): the #BeditMessageBus associated with @window
  */
 BeditMessageBus *bedit_window_get_message_bus(BeditWindow *window) {
-    g_return_val_if_fail(GEDIT_IS_WINDOW(window), NULL);
+    g_return_val_if_fail(BEDIT_IS_WINDOW(window), NULL);
 
     return window->priv->message_bus;
 }

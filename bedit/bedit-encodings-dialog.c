@@ -211,7 +211,7 @@ static void apply_settings(BeditEncodingsDialog *dialog) {
         enc_strv = encoding_list_to_strv(enc_list);
 
         g_settings_set_strv(
-            dialog->enc_settings, GEDIT_SETTINGS_CANDIDATE_ENCODINGS,
+            dialog->enc_settings, BEDIT_SETTINGS_CANDIDATE_ENCODINGS,
             (const gchar *const *)enc_strv);
 
         g_slist_free(enc_list);
@@ -221,7 +221,7 @@ static void apply_settings(BeditEncodingsDialog *dialog) {
 
     case STATE_RESET:
         g_settings_reset(
-            dialog->enc_settings, GEDIT_SETTINGS_CANDIDATE_ENCODINGS);
+            dialog->enc_settings, BEDIT_SETTINGS_CANDIDATE_ENCODINGS);
         break;
 
     case STATE_UNMODIFIED:
@@ -235,7 +235,7 @@ static void apply_settings(BeditEncodingsDialog *dialog) {
 
 static void bedit_encodings_dialog_response(
     GtkDialog *gtk_dialog, gint response_id) {
-    BeditEncodingsDialog *dialog = GEDIT_ENCODINGS_DIALOG(gtk_dialog);
+    BeditEncodingsDialog *dialog = BEDIT_ENCODINGS_DIALOG(gtk_dialog);
 
     switch (response_id) {
     case GTK_RESPONSE_APPLY:
@@ -250,7 +250,7 @@ static void bedit_encodings_dialog_response(
 }
 
 static void bedit_encodings_dialog_dispose(GObject *object) {
-    BeditEncodingsDialog *dialog = GEDIT_ENCODINGS_DIALOG(object);
+    BeditEncodingsDialog *dialog = BEDIT_ENCODINGS_DIALOG(object);
 
     g_clear_object(&dialog->enc_settings);
     g_clear_object(&dialog->add_button);
@@ -605,11 +605,11 @@ static void init_toolbar_available(BeditEncodingsDialog *dialog) {
     GtkStyleContext *context;
 
     scrolled_window = GTK_WIDGET(gtk_widget_get_template_child(
-        GTK_WIDGET(dialog), GEDIT_TYPE_ENCODINGS_DIALOG,
+        GTK_WIDGET(dialog), BEDIT_TYPE_ENCODINGS_DIALOG,
         "scrolledwindow_available"));
 
     toolbar = GTK_TOOLBAR(gtk_widget_get_template_child(
-        GTK_WIDGET(dialog), GEDIT_TYPE_ENCODINGS_DIALOG, "toolbar_available"));
+        GTK_WIDGET(dialog), BEDIT_TYPE_ENCODINGS_DIALOG, "toolbar_available"));
 
     context = gtk_widget_get_style_context(scrolled_window);
     gtk_style_context_set_junction_sides(context, GTK_JUNCTION_BOTTOM);
@@ -646,11 +646,11 @@ static void init_toolbar_chosen(BeditEncodingsDialog *dialog) {
     GtkToolItem *separator;
 
     scrolled_window = GTK_WIDGET(gtk_widget_get_template_child(
-        GTK_WIDGET(dialog), GEDIT_TYPE_ENCODINGS_DIALOG,
+        GTK_WIDGET(dialog), BEDIT_TYPE_ENCODINGS_DIALOG,
         "scrolledwindow_chosen"));
 
     toolbar = GTK_TOOLBAR(gtk_widget_get_template_child(
-        GTK_WIDGET(dialog), GEDIT_TYPE_ENCODINGS_DIALOG, "toolbar_chosen"));
+        GTK_WIDGET(dialog), BEDIT_TYPE_ENCODINGS_DIALOG, "toolbar_chosen"));
 
     context = gtk_widget_get_style_context(scrolled_window);
     gtk_style_context_set_junction_sides(context, GTK_JUNCTION_BOTTOM);
@@ -764,6 +764,6 @@ static void bedit_encodings_dialog_init(BeditEncodingsDialog *dialog) {
 
 GtkWidget *bedit_encodings_dialog_new(void) {
     return g_object_new(
-        GEDIT_TYPE_ENCODINGS_DIALOG, "use-header-bar", TRUE, NULL);
+        BEDIT_TYPE_ENCODINGS_DIALOG, "use-header-bar", TRUE, NULL);
 }
 

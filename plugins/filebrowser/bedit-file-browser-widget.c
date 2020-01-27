@@ -306,7 +306,7 @@ static void filter_func_free(FilterFunc *func) {
 
 static void bedit_file_browser_widget_finalize(GObject *object) {
     BeditFileBrowserWidgetPrivate *priv =
-        GEDIT_FILE_BROWSER_WIDGET(object)->priv;
+        BEDIT_FILE_BROWSER_WIDGET(object)->priv;
 
     g_free(priv->filter_pattern_str);
 
@@ -329,7 +329,7 @@ static void clear_signals(BeditFileBrowserWidget *obj) {
 }
 
 static void bedit_file_browser_widget_dispose(GObject *object) {
-    BeditFileBrowserWidget *obj = GEDIT_FILE_BROWSER_WIDGET(object);
+    BeditFileBrowserWidget *obj = BEDIT_FILE_BROWSER_WIDGET(object);
     BeditFileBrowserWidgetPrivate *priv = obj->priv;
 
     clear_signals(obj);
@@ -356,7 +356,7 @@ static void bedit_file_browser_widget_dispose(GObject *object) {
 
 static void bedit_file_browser_widget_get_property(
     GObject *object, guint prop_id, GValue *value, GParamSpec *pspec) {
-    BeditFileBrowserWidget *obj = GEDIT_FILE_BROWSER_WIDGET(object);
+    BeditFileBrowserWidget *obj = BEDIT_FILE_BROWSER_WIDGET(object);
 
     switch (prop_id) {
     case PROP_FILTER_PATTERN:
@@ -370,7 +370,7 @@ static void bedit_file_browser_widget_get_property(
 
 static void bedit_file_browser_widget_set_property(
     GObject *object, guint prop_id, const GValue *value, GParamSpec *pspec) {
-    BeditFileBrowserWidget *obj = GEDIT_FILE_BROWSER_WIDGET(object);
+    BeditFileBrowserWidget *obj = BEDIT_FILE_BROWSER_WIDGET(object);
 
     switch (prop_id) {
     case PROP_FILTER_PATTERN:
@@ -682,9 +682,9 @@ static void add_bookmark_hash(BeditFileBrowserWidget *obj, GtkTreeIter *iter) {
         return;
 
     gtk_tree_model_get(
-        model, iter, GEDIT_FILE_BOOKMARKS_STORE_COLUMN_ICON, &pixbuf,
-        GEDIT_FILE_BOOKMARKS_STORE_COLUMN_ICON_NAME, &icon_name,
-        GEDIT_FILE_BOOKMARKS_STORE_COLUMN_NAME, &name, -1);
+        model, iter, BEDIT_FILE_BOOKMARKS_STORE_COLUMN_ICON, &pixbuf,
+        BEDIT_FILE_BOOKMARKS_STORE_COLUMN_ICON_NAME, &icon_name,
+        BEDIT_FILE_BOOKMARKS_STORE_COLUMN_NAME, &name, -1);
 
     item = g_slice_new(NameIcon);
     item->name = name;
@@ -792,8 +792,8 @@ static void locations_icon_renderer_cb(
     gchar *icon_name;
 
     gtk_tree_model_get(
-        tree_model, iter, GEDIT_FILE_BOOKMARKS_STORE_COLUMN_ICON_NAME,
-        &icon_name, GEDIT_FILE_BOOKMARKS_STORE_COLUMN_ICON, &pixbuf, -1);
+        tree_model, iter, BEDIT_FILE_BOOKMARKS_STORE_COLUMN_ICON_NAME,
+        &icon_name, BEDIT_FILE_BOOKMARKS_STORE_COLUMN_ICON, &pixbuf, -1);
 
     if (icon_name != NULL)
         g_object_set(cell, "icon-name", icon_name, NULL);
@@ -895,8 +895,8 @@ static void bedit_file_browser_widget_init(BeditFileBrowserWidget *obj) {
 
     bedit_file_browser_store_set_filter_mode(
         obj->priv->file_store,
-        GEDIT_FILE_BROWSER_STORE_FILTER_MODE_HIDE_HIDDEN |
-            GEDIT_FILE_BROWSER_STORE_FILTER_MODE_HIDE_BINARY);
+        BEDIT_FILE_BROWSER_STORE_FILTER_MODE_HIDE_HIDDEN |
+            BEDIT_FILE_BROWSER_STORE_FILTER_MODE_HIDE_BINARY);
     bedit_file_browser_store_set_filter_func(
         obj->priv->file_store, (BeditFileBrowserStoreFilterFunc)filter_real,
         obj);
@@ -955,9 +955,9 @@ static void update_sensitivity(BeditFileBrowserWidget *obj) {
     GAction *action;
     gint mode;
 
-    if (GEDIT_IS_FILE_BROWSER_STORE(model)) {
+    if (BEDIT_IS_FILE_BROWSER_STORE(model)) {
         mode = bedit_file_browser_store_get_filter_mode(
-            GEDIT_FILE_BROWSER_STORE(model));
+            BEDIT_FILE_BROWSER_STORE(model));
 
         action = g_action_map_lookup_action(
             G_ACTION_MAP(obj->priv->action_group), "show_hidden");
@@ -965,7 +965,7 @@ static void update_sensitivity(BeditFileBrowserWidget *obj) {
         g_action_change_state(
             action,
             g_variant_new_boolean(
-                !(mode & GEDIT_FILE_BROWSER_STORE_FILTER_MODE_HIDE_HIDDEN)));
+                !(mode & BEDIT_FILE_BROWSER_STORE_FILTER_MODE_HIDE_HIDDEN)));
 
         /* sensitivity */
         action = g_action_map_lookup_action(
@@ -986,7 +986,7 @@ static void update_sensitivity(BeditFileBrowserWidget *obj) {
         action = g_action_map_lookup_action(
             G_ACTION_MAP(obj->priv->action_group), "show_match_filename");
         g_simple_action_set_enabled(G_SIMPLE_ACTION(action), TRUE);
-    } else if (GEDIT_IS_FILE_BOOKMARKS_STORE(model)) {
+    } else if (BEDIT_IS_FILE_BOOKMARKS_STORE(model)) {
         /* Set the filter toggle to normal up state, just for visual pleasure */
         action = g_action_map_lookup_action(
             G_ACTION_MAP(obj->priv->action_group), "show_hidden");
@@ -1042,9 +1042,9 @@ static gboolean popup_menu(
     GtkWidget *menu;
     GMenuModel *menu_model;
 
-    if (GEDIT_IS_FILE_BROWSER_STORE(model))
+    if (BEDIT_IS_FILE_BROWSER_STORE(model))
         menu_model = obj->priv->dir_menu;
-    else if (GEDIT_IS_FILE_BOOKMARKS_STORE(model))
+    else if (BEDIT_IS_FILE_BOOKMARKS_STORE(model))
         menu_model = obj->priv->bookmarks_menu;
     else
         return FALSE;
@@ -1103,8 +1103,8 @@ static gboolean filter_glob(
         return TRUE;
 
     gtk_tree_model_get(
-        GTK_TREE_MODEL(store), iter, GEDIT_FILE_BROWSER_STORE_COLUMN_NAME,
-        &name, GEDIT_FILE_BROWSER_STORE_COLUMN_FLAGS, &flags, -1);
+        GTK_TREE_MODEL(store), iter, BEDIT_FILE_BROWSER_STORE_COLUMN_NAME,
+        &name, BEDIT_FILE_BROWSER_STORE_COLUMN_FLAGS, &flags, -1);
 
     if (FILE_IS_DIR(flags) || FILE_IS_DUMMY(flags))
         result = TRUE;
@@ -1120,7 +1120,7 @@ static void rename_selected_file(BeditFileBrowserWidget *obj) {
         gtk_tree_view_get_model(GTK_TREE_VIEW(obj->priv->treeview));
     GtkTreeIter iter;
 
-    if (!GEDIT_IS_FILE_BROWSER_STORE(model))
+    if (!BEDIT_IS_FILE_BROWSER_STORE(model))
         return;
 
     if (bedit_file_browser_widget_get_first_selected(obj, &iter))
@@ -1145,7 +1145,7 @@ static GList *get_deletable_files(BeditFileBrowserWidget *obj) {
             continue;
 
         gtk_tree_model_get(
-            model, &iter, GEDIT_FILE_BROWSER_STORE_COLUMN_FLAGS, &flags, -1);
+            model, &iter, BEDIT_FILE_BROWSER_STORE_COLUMN_FLAGS, &flags, -1);
 
         if (FILE_IS_DUMMY(flags))
             continue;
@@ -1166,7 +1166,7 @@ static gboolean delete_selected_files(
     BeditFileBrowserStoreResult result;
     GList *rows;
 
-    if (!GEDIT_IS_FILE_BROWSER_STORE(model))
+    if (!BEDIT_IS_FILE_BROWSER_STORE(model))
         return FALSE;
 
     if (!(rows = get_deletable_files(obj)))
@@ -1180,11 +1180,11 @@ static gboolean delete_selected_files(
     }
 
     result = bedit_file_browser_store_delete_all(
-        GEDIT_FILE_BROWSER_STORE(model), rows, trash);
+        BEDIT_FILE_BROWSER_STORE(model), rows, trash);
 
     g_list_free_full(rows, (GDestroyNotify)gtk_tree_path_free);
 
-    return result == GEDIT_FILE_BROWSER_STORE_RESULT_OK;
+    return result == BEDIT_FILE_BROWSER_STORE_RESULT_OK;
 }
 
 static void show_location_entry(
@@ -1369,9 +1369,9 @@ static void update_filter_mode(
     GtkTreeModel *model =
         gtk_tree_view_get_model(GTK_TREE_VIEW(obj->priv->treeview));
 
-    if (GEDIT_IS_FILE_BROWSER_STORE(model)) {
+    if (BEDIT_IS_FILE_BROWSER_STORE(model)) {
         gint now = bedit_file_browser_store_get_filter_mode(
-            GEDIT_FILE_BROWSER_STORE(model));
+            BEDIT_FILE_BROWSER_STORE(model));
 
         if (g_variant_get_boolean(state))
             now &= ~mode;
@@ -1379,7 +1379,7 @@ static void update_filter_mode(
             now |= mode;
 
         bedit_file_browser_store_set_filter_mode(
-            GEDIT_FILE_BROWSER_STORE(model), now);
+            BEDIT_FILE_BROWSER_STORE(model), now);
     }
 
     g_simple_action_set_state(action, state);
@@ -1430,8 +1430,8 @@ static void set_filter_pattern_real(
         gtk_entry_set_text(
             GTK_ENTRY(obj->priv->filter_entry), obj->priv->filter_pattern_str);
 
-    if (GEDIT_IS_FILE_BROWSER_STORE(model))
-        bedit_file_browser_store_refilter(GEDIT_FILE_BROWSER_STORE(model));
+    if (BEDIT_IS_FILE_BROWSER_STORE(model))
+        bedit_file_browser_store_refilter(BEDIT_FILE_BROWSER_STORE(model));
 
     g_object_notify(G_OBJECT(obj), "filter-pattern");
 }
@@ -1440,7 +1440,7 @@ static void set_filter_pattern_real(
 
 GtkWidget *bedit_file_browser_widget_new(void) {
     BeditFileBrowserWidget *obj =
-        g_object_new(GEDIT_TYPE_FILE_BROWSER_WIDGET, NULL);
+        g_object_new(BEDIT_TYPE_FILE_BROWSER_WIDGET, NULL);
 
     bedit_file_browser_widget_show_bookmarks(obj);
 
@@ -1492,7 +1492,7 @@ void bedit_file_browser_widget_set_root_and_virtual_root(
         result = bedit_file_browser_store_set_root_and_virtual_root(
             obj->priv->file_store, root, virtual_root);
 
-    if (result == GEDIT_FILE_BROWSER_STORE_RESULT_NO_CHANGE)
+    if (result == BEDIT_FILE_BROWSER_STORE_RESULT_NO_CHANGE)
         show_files_real(obj, TRUE);
 }
 
@@ -1543,8 +1543,8 @@ gulong bedit_file_browser_widget_add_filter(
 
     obj->priv->filter_funcs = g_slist_append(obj->priv->filter_funcs, f);
 
-    if (GEDIT_IS_FILE_BROWSER_STORE(model))
-        bedit_file_browser_store_refilter(GEDIT_FILE_BROWSER_STORE(model));
+    if (BEDIT_IS_FILE_BROWSER_STORE(model))
+        bedit_file_browser_store_refilter(BEDIT_FILE_BROWSER_STORE(model));
 
     return f->id;
 }
@@ -1590,17 +1590,17 @@ gboolean bedit_file_browser_widget_get_selected_directory(
     GtkTreeIter parent;
     guint flags;
 
-    if (!GEDIT_IS_FILE_BROWSER_STORE(model))
+    if (!BEDIT_IS_FILE_BROWSER_STORE(model))
         return FALSE;
 
     if (!bedit_file_browser_widget_get_first_selected(obj, iter) &&
         !bedit_file_browser_store_get_iter_virtual_root(
-            GEDIT_FILE_BROWSER_STORE(model), iter)) {
+            BEDIT_FILE_BROWSER_STORE(model), iter)) {
         return FALSE;
     }
 
     gtk_tree_model_get(
-        model, iter, GEDIT_FILE_BROWSER_STORE_COLUMN_FLAGS, &flags, -1);
+        model, iter, BEDIT_FILE_BROWSER_STORE_COLUMN_FLAGS, &flags, -1);
 
     if (!FILE_IS_DIR(flags)) {
         /* Get the parent, because the selection is a file */
@@ -1615,7 +1615,7 @@ void bedit_file_browser_widget_set_active_root_enabled(
     BeditFileBrowserWidget *widget, gboolean enabled) {
     GAction *action;
 
-    g_return_if_fail(GEDIT_IS_FILE_BROWSER_WIDGET(widget));
+    g_return_if_fail(BEDIT_IS_FILE_BROWSER_WIDGET(widget));
 
     action = g_action_map_lookup_action(
         G_ACTION_MAP(widget->priv->action_group), "set_active_root");
@@ -1631,7 +1631,7 @@ static guint bedit_file_browser_widget_get_num_selected_files_or_directories(
     GList *rows, *row;
     guint result = 0;
 
-    if (GEDIT_IS_FILE_BOOKMARKS_STORE(model))
+    if (BEDIT_IS_FILE_BOOKMARKS_STORE(model))
         return 0;
 
     rows = gtk_tree_selection_get_selected_rows(selection, &model);
@@ -1646,7 +1646,7 @@ static guint bedit_file_browser_widget_get_num_selected_files_or_directories(
             continue;
 
         gtk_tree_model_get(
-            model, &iter, GEDIT_FILE_BROWSER_STORE_COLUMN_FLAGS, &flags, -1);
+            model, &iter, BEDIT_FILE_BROWSER_STORE_COLUMN_FLAGS, &flags, -1);
 
         if (!FILE_IS_DUMMY(flags)) {
             if (!FILE_IS_DIR(flags))
@@ -1715,7 +1715,7 @@ static void activate_mount(
             g_strdup_printf(_("No mount object for mounted volume: %s"), name);
 
         g_signal_emit(
-            widget, signals[ERROR], 0, GEDIT_FILE_BROWSER_ERROR_SET_ROOT,
+            widget, signals[ERROR], 0, BEDIT_FILE_BROWSER_ERROR_SET_ROOT,
             message);
 
         g_free(name);
@@ -1768,7 +1768,7 @@ static void poll_for_media_cb(
         gchar *message = g_strdup_printf(_("Could not open media: %s"), name);
 
         g_signal_emit(
-            async->widget, signals[ERROR], 0, GEDIT_FILE_BROWSER_ERROR_SET_ROOT,
+            async->widget, signals[ERROR], 0, BEDIT_FILE_BROWSER_ERROR_SET_ROOT,
             message);
 
         g_free(name);
@@ -1802,7 +1802,7 @@ static void mount_volume_cb(
         gchar *message = g_strdup_printf(_("Could not mount volume: %s"), name);
 
         g_signal_emit(
-            async->widget, signals[ERROR], 0, GEDIT_FILE_BROWSER_ERROR_SET_ROOT,
+            async->widget, signals[ERROR], 0, BEDIT_FILE_BROWSER_ERROR_SET_ROOT,
             message);
 
         g_free(name);
@@ -1821,7 +1821,7 @@ static void activate_drive(BeditFileBrowserWidget *obj, GtkTreeIter *iter) {
 
     gtk_tree_model_get(
         GTK_TREE_MODEL(obj->priv->bookmarks_store), iter,
-        GEDIT_FILE_BOOKMARKS_STORE_COLUMN_OBJECT, &drive, -1);
+        BEDIT_FILE_BOOKMARKS_STORE_COLUMN_OBJECT, &drive, -1);
 
     /* most common use case is a floppy drive, we'll poll for media and
        go from there */
@@ -1852,7 +1852,7 @@ static void activate_volume(BeditFileBrowserWidget *obj, GtkTreeIter *iter) {
 
     gtk_tree_model_get(
         GTK_TREE_MODEL(obj->priv->bookmarks_store), iter,
-        GEDIT_FILE_BOOKMARKS_STORE_COLUMN_OBJECT, &volume, -1);
+        BEDIT_FILE_BOOKMARKS_STORE_COLUMN_OBJECT, &volume, -1);
 
     /* see if we can mount the volume */
     try_mount_volume(obj, volume);
@@ -1863,13 +1863,13 @@ void bedit_file_browser_widget_refresh(BeditFileBrowserWidget *obj) {
     GtkTreeModel *model =
         gtk_tree_view_get_model(GTK_TREE_VIEW(obj->priv->treeview));
 
-    if (GEDIT_IS_FILE_BROWSER_STORE(model)) {
-        bedit_file_browser_store_refresh(GEDIT_FILE_BROWSER_STORE(model));
-    } else if (GEDIT_IS_FILE_BOOKMARKS_STORE(model)) {
+    if (BEDIT_IS_FILE_BROWSER_STORE(model)) {
+        bedit_file_browser_store_refresh(BEDIT_FILE_BROWSER_STORE(model));
+    } else if (BEDIT_IS_FILE_BOOKMARKS_STORE(model)) {
         g_hash_table_ref(obj->priv->bookmarks_hash);
         g_hash_table_destroy(obj->priv->bookmarks_hash);
 
-        bedit_file_bookmarks_store_refresh(GEDIT_FILE_BOOKMARKS_STORE(model));
+        bedit_file_bookmarks_store_refresh(BEDIT_FILE_BOOKMARKS_STORE(model));
     }
 }
 
@@ -1878,7 +1878,7 @@ BeditMenuExtension *bedit_file_browser_widget_extend_context_menu(
     guint i, n_items;
     GMenuModel *section = NULL;
 
-    g_return_val_if_fail(GEDIT_IS_FILE_BROWSER_WIDGET(obj), NULL);
+    g_return_val_if_fail(BEDIT_IS_FILE_BROWSER_WIDGET(obj), NULL);
 
     n_items = g_menu_model_get_n_items(obj->priv->dir_menu);
 
@@ -1918,14 +1918,14 @@ static void bookmark_open(
     gint flags;
 
     gtk_tree_model_get(
-        model, iter, GEDIT_FILE_BOOKMARKS_STORE_COLUMN_FLAGS, &flags, -1);
+        model, iter, BEDIT_FILE_BOOKMARKS_STORE_COLUMN_FLAGS, &flags, -1);
 
-    if (flags & GEDIT_FILE_BOOKMARKS_STORE_IS_DRIVE) {
+    if (flags & BEDIT_FILE_BOOKMARKS_STORE_IS_DRIVE) {
         /* handle a drive node */
         bedit_file_browser_store_cancel_mount_operation(obj->priv->file_store);
         activate_drive(obj, iter);
         return;
-    } else if (flags & GEDIT_FILE_BOOKMARKS_STORE_IS_VOLUME) {
+    } else if (flags & BEDIT_FILE_BOOKMARKS_STORE_IS_VOLUME) {
         /* handle a volume node */
         bedit_file_browser_store_cancel_mount_operation(obj->priv->file_store);
         activate_volume(obj, iter);
@@ -1933,14 +1933,14 @@ static void bookmark_open(
     }
 
     if ((location = bedit_file_bookmarks_store_get_location(
-             GEDIT_FILE_BOOKMARKS_STORE(model), iter))) {
+             BEDIT_FILE_BOOKMARKS_STORE(model), iter))) {
         /* here we check if the bookmark is a mount point, or if it
            is a remote bookmark. If that's the case, we will set the
            root to the uri of the bookmark and not try to set the
            topmost parent as root (since that may as well not be the
            mount point anymore) */
-        if ((flags & GEDIT_FILE_BOOKMARKS_STORE_IS_MOUNT) ||
-            (flags & GEDIT_FILE_BOOKMARKS_STORE_IS_REMOTE_BOOKMARK)) {
+        if ((flags & BEDIT_FILE_BOOKMARKS_STORE_IS_MOUNT) ||
+            (flags & BEDIT_FILE_BOOKMARKS_STORE_IS_REMOTE_BOOKMARK)) {
             bedit_file_browser_widget_set_root(obj, location, FALSE);
         } else {
             bedit_file_browser_widget_set_root(obj, location, TRUE);
@@ -1958,8 +1958,8 @@ static void file_open(
     gint flags;
 
     gtk_tree_model_get(
-        model, iter, GEDIT_FILE_BROWSER_STORE_COLUMN_FLAGS, &flags,
-        GEDIT_FILE_BROWSER_STORE_COLUMN_LOCATION, &location, -1);
+        model, iter, BEDIT_FILE_BROWSER_STORE_COLUMN_FLAGS, &flags,
+        BEDIT_FILE_BROWSER_STORE_COLUMN_LOCATION, &location, -1);
 
     if (!FILE_IS_DIR(flags) && !FILE_IS_DUMMY(flags))
         g_signal_emit(obj, signals[LOCATION_ACTIVATED], 0, location);
@@ -1976,8 +1976,8 @@ static gboolean directory_open(
     BeditFileBrowserStoreFlag flags;
 
     gtk_tree_model_get(
-        model, iter, GEDIT_FILE_BROWSER_STORE_COLUMN_FLAGS, &flags,
-        GEDIT_FILE_BROWSER_STORE_COLUMN_LOCATION, &location, -1);
+        model, iter, BEDIT_FILE_BROWSER_STORE_COLUMN_FLAGS, &flags,
+        BEDIT_FILE_BROWSER_STORE_COLUMN_LOCATION, &location, -1);
 
     if (FILE_IS_DIR(flags) && location) {
         gchar *uri = g_file_get_uri(location);
@@ -1986,7 +1986,7 @@ static gboolean directory_open(
         if (!gtk_show_uri_on_window(
                 GTK_WINDOW(obj), uri, GDK_CURRENT_TIME, &error)) {
             g_signal_emit(
-                obj, signals[ERROR], 0, GEDIT_FILE_BROWSER_ERROR_OPEN_DIRECTORY,
+                obj, signals[ERROR], 0, BEDIT_FILE_BROWSER_ERROR_OPEN_DIRECTORY,
                 error->message);
 
             g_error_free(error);
@@ -2046,7 +2046,7 @@ static void on_virtual_root_changed(
 
         gtk_tree_model_get(
             GTK_TREE_MODEL(model), &iter,
-            GEDIT_FILE_BROWSER_STORE_COLUMN_LOCATION, &location, -1);
+            BEDIT_FILE_BROWSER_STORE_COLUMN_LOCATION, &location, -1);
 
         if (bedit_file_browser_store_get_iter_root(model, &root)) {
             GAction *action;
@@ -2117,7 +2117,7 @@ static void on_model_set(
 
     clear_signals(obj);
 
-    if (GEDIT_IS_FILE_BOOKMARKS_STORE(model)) {
+    if (BEDIT_IS_FILE_BOOKMARKS_STORE(model)) {
         clear_next_locations(obj);
 
         /* Add the current location to the back menu */
@@ -2144,7 +2144,7 @@ static void on_model_set(
             g_signal_connect(
                 gobject, "bookmark-activated",
                 G_CALLBACK(on_bookmark_activated), obj));
-    } else if (GEDIT_IS_FILE_BROWSER_STORE(model)) {
+    } else if (BEDIT_IS_FILE_BROWSER_STORE(model)) {
         /* make sure any async operation is cancelled */
         cancel_async_operation(obj);
 
@@ -2241,7 +2241,7 @@ static void on_location_entry_activate(
             _("Error when loading “%s”: No such directory"), display_name);
 
         g_signal_emit(
-            obj, signals[ERROR], 0, GEDIT_FILE_BROWSER_ERROR_LOAD_DIRECTORY,
+            obj, signals[ERROR], 0, BEDIT_FILE_BROWSER_ERROR_LOAD_DIRECTORY,
             msg);
 
         g_free(msg);
@@ -2352,7 +2352,7 @@ static gboolean on_treeview_key_press_event(
         return TRUE;
 
     model = gtk_tree_view_get_model(GTK_TREE_VIEW(treeview));
-    if (!GEDIT_IS_FILE_BROWSER_STORE(model))
+    if (!BEDIT_IS_FILE_BROWSER_STORE(model))
         return FALSE;
 
     modifiers = gtk_accelerator_get_default_mod_mask();
@@ -2403,7 +2403,7 @@ static void on_selection_changed(
     guint files = 0;
     guint dirs = 0;
 
-    if (GEDIT_IS_FILE_BROWSER_STORE(model))
+    if (BEDIT_IS_FILE_BROWSER_STORE(model))
         selected =
             bedit_file_browser_widget_get_num_selected_files_or_directories(
                 obj, &files, &dirs);
@@ -2493,7 +2493,7 @@ static void on_filter_mode_changed(
 
     action = g_action_map_lookup_action(
         G_ACTION_MAP(obj->priv->action_group), "show_hidden");
-    active = !(mode & GEDIT_FILE_BROWSER_STORE_FILTER_MODE_HIDE_HIDDEN);
+    active = !(mode & BEDIT_FILE_BROWSER_STORE_FILTER_MODE_HIDE_HIDDEN);
     variant = g_action_get_state(action);
 
     if (active != g_variant_get_boolean(variant))
@@ -2503,7 +2503,7 @@ static void on_filter_mode_changed(
 
     action = g_action_map_lookup_action(
         G_ACTION_MAP(obj->priv->action_group), "show_binary");
-    active = !(mode & GEDIT_FILE_BROWSER_STORE_FILTER_MODE_HIDE_BINARY);
+    active = !(mode & BEDIT_FILE_BROWSER_STORE_FILTER_MODE_HIDE_BINARY);
     variant = g_action_get_state(action);
 
     if (active != g_variant_get_boolean(variant))
@@ -2515,36 +2515,36 @@ static void on_filter_mode_changed(
 static void next_location_activated(
     GSimpleAction *action, GVariant *parameter, gpointer user_data) {
     bedit_file_browser_widget_history_forward(
-        GEDIT_FILE_BROWSER_WIDGET(user_data));
+        BEDIT_FILE_BROWSER_WIDGET(user_data));
 }
 
 static void previous_location_activated(
     GSimpleAction *action, GVariant *parameter, gpointer user_data) {
     bedit_file_browser_widget_history_back(
-        GEDIT_FILE_BROWSER_WIDGET(user_data));
+        BEDIT_FILE_BROWSER_WIDGET(user_data));
 }
 
 static void up_activated(
     GSimpleAction *action, GVariant *parameter, gpointer user_data) {
-    BeditFileBrowserWidget *widget = GEDIT_FILE_BROWSER_WIDGET(user_data);
+    BeditFileBrowserWidget *widget = BEDIT_FILE_BROWSER_WIDGET(user_data);
     GtkTreeModel *model =
         gtk_tree_view_get_model(GTK_TREE_VIEW(widget->priv->treeview));
 
-    if (!GEDIT_IS_FILE_BROWSER_STORE(model))
+    if (!BEDIT_IS_FILE_BROWSER_STORE(model))
         return;
 
     bedit_file_browser_store_set_virtual_root_up(
-        GEDIT_FILE_BROWSER_STORE(model));
+        BEDIT_FILE_BROWSER_STORE(model));
 }
 
 static void home_activated(
     GSimpleAction *action, GVariant *parameter, gpointer user_data) {
-    BeditFileBrowserWidget *widget = GEDIT_FILE_BROWSER_WIDGET(user_data);
+    BeditFileBrowserWidget *widget = BEDIT_FILE_BROWSER_WIDGET(user_data);
     GtkTreeModel *model =
         gtk_tree_view_get_model(GTK_TREE_VIEW(widget->priv->treeview));
     GFile *home_location;
 
-    if (!GEDIT_IS_FILE_BROWSER_STORE(model))
+    if (!BEDIT_IS_FILE_BROWSER_STORE(model))
         return;
 
     home_location = g_file_new_for_path(g_get_home_dir());
@@ -2555,26 +2555,26 @@ static void home_activated(
 
 static void new_folder_activated(
     GSimpleAction *action, GVariant *parameter, gpointer user_data) {
-    BeditFileBrowserWidget *widget = GEDIT_FILE_BROWSER_WIDGET(user_data);
+    BeditFileBrowserWidget *widget = BEDIT_FILE_BROWSER_WIDGET(user_data);
     GtkTreeModel *model =
         gtk_tree_view_get_model(GTK_TREE_VIEW(widget->priv->treeview));
     GtkTreeIter parent;
     GtkTreeIter iter;
 
-    if (!GEDIT_IS_FILE_BROWSER_STORE(model))
+    if (!BEDIT_IS_FILE_BROWSER_STORE(model))
         return;
 
     if (!bedit_file_browser_widget_get_selected_directory(widget, &parent))
         return;
 
     if (bedit_file_browser_store_new_directory(
-            GEDIT_FILE_BROWSER_STORE(model), &parent, &iter))
+            BEDIT_FILE_BROWSER_STORE(model), &parent, &iter))
         bedit_file_browser_view_start_rename(widget->priv->treeview, &iter);
 }
 
 static void open_activated(
     GSimpleAction *action, GVariant *parameter, gpointer user_data) {
-    BeditFileBrowserWidget *widget = GEDIT_FILE_BROWSER_WIDGET(user_data);
+    BeditFileBrowserWidget *widget = BEDIT_FILE_BROWSER_WIDGET(user_data);
     GtkTreeModel *model =
         gtk_tree_view_get_model(GTK_TREE_VIEW(widget->priv->treeview));
     GtkTreeSelection *selection =
@@ -2582,7 +2582,7 @@ static void open_activated(
     GList *rows;
     GList *row;
 
-    if (!GEDIT_IS_FILE_BROWSER_STORE(model))
+    if (!BEDIT_IS_FILE_BROWSER_STORE(model))
         return;
 
     rows = gtk_tree_selection_get_selected_rows(selection, &model);
@@ -2601,54 +2601,54 @@ static void open_activated(
 
 static void new_file_activated(
     GSimpleAction *action, GVariant *parameter, gpointer user_data) {
-    BeditFileBrowserWidget *widget = GEDIT_FILE_BROWSER_WIDGET(user_data);
+    BeditFileBrowserWidget *widget = BEDIT_FILE_BROWSER_WIDGET(user_data);
     GtkTreeModel *model =
         gtk_tree_view_get_model(GTK_TREE_VIEW(widget->priv->treeview));
     GtkTreeIter parent;
     GtkTreeIter iter;
 
-    if (!GEDIT_IS_FILE_BROWSER_STORE(model))
+    if (!BEDIT_IS_FILE_BROWSER_STORE(model))
         return;
 
     if (!bedit_file_browser_widget_get_selected_directory(widget, &parent))
         return;
 
     if (bedit_file_browser_store_new_file(
-            GEDIT_FILE_BROWSER_STORE(model), &parent, &iter))
+            BEDIT_FILE_BROWSER_STORE(model), &parent, &iter))
         bedit_file_browser_view_start_rename(widget->priv->treeview, &iter);
 }
 
 static void rename_activated(
     GSimpleAction *action, GVariant *parameter, gpointer user_data) {
-    BeditFileBrowserWidget *widget = GEDIT_FILE_BROWSER_WIDGET(user_data);
+    BeditFileBrowserWidget *widget = BEDIT_FILE_BROWSER_WIDGET(user_data);
 
     rename_selected_file(widget);
 }
 
 static void delete_activated(
     GSimpleAction *action, GVariant *parameter, gpointer user_data) {
-    BeditFileBrowserWidget *widget = GEDIT_FILE_BROWSER_WIDGET(user_data);
+    BeditFileBrowserWidget *widget = BEDIT_FILE_BROWSER_WIDGET(user_data);
 
     delete_selected_files(widget, FALSE);
 }
 
 static void move_to_trash_activated(
     GSimpleAction *action, GVariant *parameter, gpointer user_data) {
-    BeditFileBrowserWidget *widget = GEDIT_FILE_BROWSER_WIDGET(user_data);
+    BeditFileBrowserWidget *widget = BEDIT_FILE_BROWSER_WIDGET(user_data);
 
     delete_selected_files(widget, TRUE);
 }
 
 static void refresh_view_activated(
     GSimpleAction *action, GVariant *parameter, gpointer user_data) {
-    BeditFileBrowserWidget *widget = GEDIT_FILE_BROWSER_WIDGET(user_data);
+    BeditFileBrowserWidget *widget = BEDIT_FILE_BROWSER_WIDGET(user_data);
 
     bedit_file_browser_widget_refresh(widget);
 }
 
 static void view_folder_activated(
     GSimpleAction *action, GVariant *parameter, gpointer user_data) {
-    BeditFileBrowserWidget *widget = GEDIT_FILE_BROWSER_WIDGET(user_data);
+    BeditFileBrowserWidget *widget = BEDIT_FILE_BROWSER_WIDGET(user_data);
     GtkTreeModel *model =
         gtk_tree_view_get_model(GTK_TREE_VIEW(widget->priv->treeview));
     GtkTreeSelection *selection =
@@ -2658,7 +2658,7 @@ static void view_folder_activated(
     GList *row;
     gboolean directory_opened = FALSE;
 
-    if (!GEDIT_IS_FILE_BROWSER_STORE(model))
+    if (!BEDIT_IS_FILE_BROWSER_STORE(model))
         return;
 
     rows = gtk_tree_selection_get_selected_rows(selection, &model);
@@ -2680,25 +2680,25 @@ static void view_folder_activated(
 
 static void change_show_hidden_state(
     GSimpleAction *action, GVariant *state, gpointer user_data) {
-    BeditFileBrowserWidget *widget = GEDIT_FILE_BROWSER_WIDGET(user_data);
+    BeditFileBrowserWidget *widget = BEDIT_FILE_BROWSER_WIDGET(user_data);
 
     update_filter_mode(
         widget, action, state,
-        GEDIT_FILE_BROWSER_STORE_FILTER_MODE_HIDE_HIDDEN);
+        BEDIT_FILE_BROWSER_STORE_FILTER_MODE_HIDE_HIDDEN);
 }
 
 static void change_show_binary_state(
     GSimpleAction *action, GVariant *state, gpointer user_data) {
-    BeditFileBrowserWidget *widget = GEDIT_FILE_BROWSER_WIDGET(user_data);
+    BeditFileBrowserWidget *widget = BEDIT_FILE_BROWSER_WIDGET(user_data);
 
     update_filter_mode(
         widget, action, state,
-        GEDIT_FILE_BROWSER_STORE_FILTER_MODE_HIDE_BINARY);
+        BEDIT_FILE_BROWSER_STORE_FILTER_MODE_HIDE_BINARY);
 }
 
 static void change_show_match_filename(
     GSimpleAction *action, GVariant *state, gpointer user_data) {
-    BeditFileBrowserWidget *widget = GEDIT_FILE_BROWSER_WIDGET(user_data);
+    BeditFileBrowserWidget *widget = BEDIT_FILE_BROWSER_WIDGET(user_data);
     gboolean visible = g_variant_get_boolean(state);
 
     gtk_revealer_set_reveal_child(
@@ -2715,7 +2715,7 @@ static void change_show_match_filename(
 
 static void open_in_terminal_activated(
     GSimpleAction *action, GVariant *parameter, gpointer user_data) {
-    BeditFileBrowserWidget *widget = GEDIT_FILE_BROWSER_WIDGET(user_data);
+    BeditFileBrowserWidget *widget = BEDIT_FILE_BROWSER_WIDGET(user_data);
     GtkTreeIter iter;
     GFile *file;
 
@@ -2725,7 +2725,7 @@ static void open_in_terminal_activated(
 
     gtk_tree_model_get(
         GTK_TREE_MODEL(widget->priv->file_store), &iter,
-        GEDIT_FILE_BROWSER_STORE_COLUMN_LOCATION, &file, -1);
+        BEDIT_FILE_BROWSER_STORE_COLUMN_LOCATION, &file, -1);
 
     g_signal_emit(widget, signals[OPEN_IN_TERMINAL], 0, file);
 
@@ -2734,7 +2734,7 @@ static void open_in_terminal_activated(
 
 static void set_active_root_activated(
     GSimpleAction *action, GVariant *parameter, gpointer user_data) {
-    BeditFileBrowserWidget *widget = GEDIT_FILE_BROWSER_WIDGET(user_data);
+    BeditFileBrowserWidget *widget = BEDIT_FILE_BROWSER_WIDGET(user_data);
 
     g_signal_emit(widget, signals[SET_ACTIVE_ROOT], 0);
 }

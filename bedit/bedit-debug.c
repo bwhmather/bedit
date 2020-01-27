@@ -30,7 +30,7 @@ static GTimer *timer = NULL;
 static gdouble last_time = 0.0;
 #endif
 
-static BeditDebugSection enabled_sections = GEDIT_NO_DEBUG;
+static BeditDebugSection enabled_sections = BEDIT_NO_DEBUG;
 
 #define DEBUG_IS_ENABLED(section) (enabled_sections & (section))
 
@@ -42,59 +42,59 @@ static BeditDebugSection enabled_sections = GEDIT_NO_DEBUG;
  * The function checks for the existence of certain environment variables to
  * determine whether to enable output for a debug section. To enable output
  * for a specific debug section, set an environment variable of the same name;
- * e.g. to enable output for the %GEDIT_DEBUG_PLUGINS section, set a
- * <code>GEDIT_DEBUG_PLUGINS</code> environment variable. To enable output
- * for all debug sections, set the <code>GEDIT_DEBUG</code> environment
+ * e.g. to enable output for the %BEDIT_DEBUG_PLUGINS section, set a
+ * <code>BEDIT_DEBUG_PLUGINS</code> environment variable. To enable output
+ * for all debug sections, set the <code>BEDIT_DEBUG</code> environment
  * variable.
  *
  * This function must be called before any of the other debug functions are
  * called. It must only be called once.
  */
 void bedit_debug_init(void) {
-    if (g_getenv("GEDIT_DEBUG") != NULL) {
+    if (g_getenv("BEDIT_DEBUG") != NULL) {
         /* enable all debugging */
-        enabled_sections = ~GEDIT_NO_DEBUG;
+        enabled_sections = ~BEDIT_NO_DEBUG;
         goto out;
     }
 
-    if (g_getenv("GEDIT_DEBUG_VIEW") != NULL) {
-        enabled_sections |= GEDIT_DEBUG_VIEW;
+    if (g_getenv("BEDIT_DEBUG_VIEW") != NULL) {
+        enabled_sections |= BEDIT_DEBUG_VIEW;
     }
-    if (g_getenv("GEDIT_DEBUG_PREFS") != NULL) {
-        enabled_sections |= GEDIT_DEBUG_PREFS;
+    if (g_getenv("BEDIT_DEBUG_PREFS") != NULL) {
+        enabled_sections |= BEDIT_DEBUG_PREFS;
     }
-    if (g_getenv("GEDIT_DEBUG_WINDOW") != NULL) {
-        enabled_sections |= GEDIT_DEBUG_WINDOW;
+    if (g_getenv("BEDIT_DEBUG_WINDOW") != NULL) {
+        enabled_sections |= BEDIT_DEBUG_WINDOW;
     }
-    if (g_getenv("GEDIT_DEBUG_PANEL") != NULL) {
-        enabled_sections |= GEDIT_DEBUG_PANEL;
+    if (g_getenv("BEDIT_DEBUG_PANEL") != NULL) {
+        enabled_sections |= BEDIT_DEBUG_PANEL;
     }
-    if (g_getenv("GEDIT_DEBUG_PLUGINS") != NULL) {
-        enabled_sections |= GEDIT_DEBUG_PLUGINS;
+    if (g_getenv("BEDIT_DEBUG_PLUGINS") != NULL) {
+        enabled_sections |= BEDIT_DEBUG_PLUGINS;
     }
-    if (g_getenv("GEDIT_DEBUG_TAB") != NULL) {
-        enabled_sections |= GEDIT_DEBUG_TAB;
+    if (g_getenv("BEDIT_DEBUG_TAB") != NULL) {
+        enabled_sections |= BEDIT_DEBUG_TAB;
     }
-    if (g_getenv("GEDIT_DEBUG_DOCUMENT") != NULL) {
-        enabled_sections |= GEDIT_DEBUG_DOCUMENT;
+    if (g_getenv("BEDIT_DEBUG_DOCUMENT") != NULL) {
+        enabled_sections |= BEDIT_DEBUG_DOCUMENT;
     }
-    if (g_getenv("GEDIT_DEBUG_COMMANDS") != NULL) {
-        enabled_sections |= GEDIT_DEBUG_COMMANDS;
+    if (g_getenv("BEDIT_DEBUG_COMMANDS") != NULL) {
+        enabled_sections |= BEDIT_DEBUG_COMMANDS;
     }
-    if (g_getenv("GEDIT_DEBUG_APP") != NULL) {
-        enabled_sections |= GEDIT_DEBUG_APP;
+    if (g_getenv("BEDIT_DEBUG_APP") != NULL) {
+        enabled_sections |= BEDIT_DEBUG_APP;
     }
-    if (g_getenv("GEDIT_DEBUG_UTILS") != NULL) {
-        enabled_sections |= GEDIT_DEBUG_UTILS;
+    if (g_getenv("BEDIT_DEBUG_UTILS") != NULL) {
+        enabled_sections |= BEDIT_DEBUG_UTILS;
     }
-    if (g_getenv("GEDIT_DEBUG_METADATA") != NULL) {
-        enabled_sections |= GEDIT_DEBUG_METADATA;
+    if (g_getenv("BEDIT_DEBUG_METADATA") != NULL) {
+        enabled_sections |= BEDIT_DEBUG_METADATA;
     }
 
 out:
 
 #ifdef ENABLE_PROFILING
-    if (enabled_sections != GEDIT_NO_DEBUG) {
+    if (enabled_sections != BEDIT_NO_DEBUG) {
         timer = g_timer_new();
     }
 #endif
@@ -173,7 +173,7 @@ void bedit_debug_message(
  * @function: name of the function that is calling bedit_debug_plugin_message().
  * @message: a message.
  *
- * If the section %GEDIT_DEBUG_PLUGINS is enabled, then logs the trace
+ * If the section %BEDIT_DEBUG_PLUGINS is enabled, then logs the trace
  * information @file, @line, and @function along with @message.
  *
  * This function may be overridden by GObject Introspection language bindings
@@ -201,6 +201,6 @@ void bedit_debug_message(
 void bedit_debug_plugin_message(
     const gchar *file, gint line, const gchar *function, const gchar *message) {
     bedit_debug_message(
-        GEDIT_DEBUG_PLUGINS, file, line, function, "%s", message);
+        BEDIT_DEBUG_PLUGINS, file, line, function, "%s", message);
 }
 

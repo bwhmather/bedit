@@ -21,16 +21,16 @@
  * along with this program; if not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef GEDIT_DOCUMENT_PRIVATE_H
-#define GEDIT_DOCUMENT_PRIVATE_H
+#ifndef BEDIT_DOCUMENT_PRIVATE_H
+#define BEDIT_DOCUMENT_PRIVATE_H
 
 #include "bedit-document.h"
 
 G_BEGIN_DECLS
 
-#define GEDIT_METADATA_ATTRIBUTE_POSITION "bedit-position"
-#define GEDIT_METADATA_ATTRIBUTE_ENCODING "bedit-encoding"
-#define GEDIT_METADATA_ATTRIBUTE_LANGUAGE "bedit-language"
+#define BEDIT_METADATA_ATTRIBUTE_POSITION "bedit-position"
+#define BEDIT_METADATA_ATTRIBUTE_ENCODING "bedit-encoding"
+#define BEDIT_METADATA_ATTRIBUTE_LANGUAGE "bedit-language"
 
 glong _bedit_document_get_seconds_since_last_save_or_load(BeditDocument *doc);
 
@@ -44,5 +44,5 @@ gboolean _bedit_document_get_create(BeditDocument *doc);
 
 G_END_DECLS
 
-#endif /* GEDIT_DOCUMENT_PRIVATE_H */
+#endif /* BEDIT_DOCUMENT_PRIVATE_H */
 

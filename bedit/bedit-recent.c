@@ -36,7 +36,7 @@ void bedit_recent_add_document(BeditDocument *document) {
     gchar *uri;
     static gchar *groups[2];
 
-    g_return_if_fail(GEDIT_IS_DOCUMENT(document));
+    g_return_if_fail(BEDIT_IS_DOCUMENT(document));
 
     file = bedit_document_get_file(document);
     location = gtk_source_file_get_location(file);

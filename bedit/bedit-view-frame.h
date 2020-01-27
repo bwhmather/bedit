@@ -18,8 +18,8 @@
  * along with bedit. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef GEDIT_VIEW_FRAME_H
-#define GEDIT_VIEW_FRAME_H
+#ifndef BEDIT_VIEW_FRAME_H
+#define BEDIT_VIEW_FRAME_H
 
 #include <gtk/gtk.h>
 #include "bedit-document.h"
@@ -27,9 +27,9 @@
 
 G_BEGIN_DECLS
 
-#define GEDIT_TYPE_VIEW_FRAME (bedit_view_frame_get_type())
+#define BEDIT_TYPE_VIEW_FRAME (bedit_view_frame_get_type())
 G_DECLARE_FINAL_TYPE(
-    BeditViewFrame, bedit_view_frame, GEDIT, VIEW_FRAME, GtkOverlay)
+    BeditViewFrame, bedit_view_frame, BEDIT, VIEW_FRAME, GtkOverlay)
 
 BeditViewFrame *bedit_view_frame_new(void);
 
@@ -43,4 +43,4 @@ void bedit_view_frame_clear_search(BeditViewFrame *frame);
 
 G_END_DECLS
 
-#endif /* GEDIT_VIEW_FRAME_H */
+#endif /* BEDIT_VIEW_FRAME_H */

@@ -39,13 +39,13 @@ struct _BeditFileBrowserMessageExtendContextMenuPrivate {
 
 G_DEFINE_TYPE_EXTENDED(
     BeditFileBrowserMessageExtendContextMenu,
-    bedit_file_browser_message_extend_context_menu, GEDIT_TYPE_MESSAGE, 0,
+    bedit_file_browser_message_extend_context_menu, BEDIT_TYPE_MESSAGE, 0,
     G_ADD_PRIVATE(BeditFileBrowserMessageExtendContextMenu))
 
 static void bedit_file_browser_message_extend_context_menu_finalize(
     GObject *obj) {
     BeditFileBrowserMessageExtendContextMenu *msg =
-        GEDIT_FILE_BROWSER_MESSAGE_EXTEND_CONTEXT_MENU(obj);
+        BEDIT_FILE_BROWSER_MESSAGE_EXTEND_CONTEXT_MENU(obj);
 
     if (msg->priv->extension) {
         g_object_unref(msg->priv->extension);
@@ -59,7 +59,7 @@ static void bedit_file_browser_message_extend_context_menu_get_property(
     GObject *obj, guint prop_id, GValue *value, GParamSpec *pspec) {
     BeditFileBrowserMessageExtendContextMenu *msg;
 
-    msg = GEDIT_FILE_BROWSER_MESSAGE_EXTEND_CONTEXT_MENU(obj);
+    msg = BEDIT_FILE_BROWSER_MESSAGE_EXTEND_CONTEXT_MENU(obj);
 
     switch (prop_id) {
     case PROP_EXTENSION:
@@ -72,7 +72,7 @@ static void bedit_file_browser_message_extend_context_menu_set_property(
     GObject *obj, guint prop_id, GValue const *value, GParamSpec *pspec) {
     BeditFileBrowserMessageExtendContextMenu *msg;
 
-    msg = GEDIT_FILE_BROWSER_MESSAGE_EXTEND_CONTEXT_MENU(obj);
+    msg = BEDIT_FILE_BROWSER_MESSAGE_EXTEND_CONTEXT_MENU(obj);
 
     switch (prop_id) {
     case PROP_EXTENSION: {
@@ -100,7 +100,7 @@ static void bedit_file_browser_message_extend_context_menu_class_init(
     g_object_class_install_property(
         object_class, PROP_EXTENSION,
         g_param_spec_object(
-            "extension", "Extension", "Extension", GEDIT_TYPE_MENU_EXTENSION,
+            "extension", "Extension", "Extension", BEDIT_TYPE_MENU_EXTENSION,
             G_PARAM_READWRITE | G_PARAM_CONSTRUCT | G_PARAM_STATIC_STRINGS));
 }
 

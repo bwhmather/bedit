@@ -15,8 +15,8 @@
  * along with this program; if not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef GEDIT_SORT_PLUGIN_H
-#define GEDIT_SORT_PLUGIN_H
+#ifndef BEDIT_SORT_PLUGIN_H
+#define BEDIT_SORT_PLUGIN_H
 
 #include <glib-object.h>
 #include <glib.h>
@@ -25,18 +25,18 @@
 
 G_BEGIN_DECLS
 
-#define GEDIT_TYPE_SORT_PLUGIN (bedit_sort_plugin_get_type())
-#define GEDIT_SORT_PLUGIN(o)                                                   \
-    (G_TYPE_CHECK_INSTANCE_CAST((o), GEDIT_TYPE_SORT_PLUGIN, BeditSortPlugin))
-#define GEDIT_SORT_PLUGIN_CLASS(k)                                             \
-    (G_TYPE_CHECK_CLASS_CAST((k), GEDIT_TYPE_SORT_PLUGIN, BeditSortPluginClass))
-#define GEDIT_IS_SORT_PLUGIN(o)                                                \
-    (G_TYPE_CHECK_INSTANCE_TYPE((o), GEDIT_TYPE_SORT_PLUGIN))
-#define GEDIT_IS_SORT_PLUGIN_CLASS(k)                                          \
-    (G_TYPE_CHECK_CLASS_TYPE((k), GEDIT_TYPE_SORT_PLUGIN))
-#define GEDIT_SORT_PLUGIN_GET_CLASS(o)                                         \
+#define BEDIT_TYPE_SORT_PLUGIN (bedit_sort_plugin_get_type())
+#define BEDIT_SORT_PLUGIN(o)                                                   \
+    (G_TYPE_CHECK_INSTANCE_CAST((o), BEDIT_TYPE_SORT_PLUGIN, BeditSortPlugin))
+#define BEDIT_SORT_PLUGIN_CLASS(k)                                             \
+    (G_TYPE_CHECK_CLASS_CAST((k), BEDIT_TYPE_SORT_PLUGIN, BeditSortPluginClass))
+#define BEDIT_IS_SORT_PLUGIN(o)                                                \
+    (G_TYPE_CHECK_INSTANCE_TYPE((o), BEDIT_TYPE_SORT_PLUGIN))
+#define BEDIT_IS_SORT_PLUGIN_CLASS(k)                                          \
+    (G_TYPE_CHECK_CLASS_TYPE((k), BEDIT_TYPE_SORT_PLUGIN))
+#define BEDIT_SORT_PLUGIN_GET_CLASS(o)                                         \
     (G_TYPE_INSTANCE_GET_CLASS(                                                \
-        (o), GEDIT_TYPE_SORT_PLUGIN, BeditSortPluginClass))
+        (o), BEDIT_TYPE_SORT_PLUGIN, BeditSortPluginClass))
 
 typedef struct _BeditSortPlugin BeditSortPlugin;
 typedef struct _BeditSortPluginPrivate BeditSortPluginPrivate;
@@ -59,4 +59,4 @@ G_MODULE_EXPORT void peas_register_types(PeasObjectModule *module);
 
 G_END_DECLS
 
-#endif /* GEDIT_SORT_PLUGIN_H */
+#endif /* BEDIT_SORT_PLUGIN_H */

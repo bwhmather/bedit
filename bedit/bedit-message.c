@@ -51,7 +51,7 @@ static GParamSpec *properties[LAST_PROP];
 G_DEFINE_TYPE_WITH_PRIVATE(BeditMessage, bedit_message, G_TYPE_OBJECT)
 
 static void bedit_message_finalize(GObject *object) {
-    BeditMessage *message = GEDIT_MESSAGE(object);
+    BeditMessage *message = BEDIT_MESSAGE(object);
 
     g_free(message->priv->object_path);
     g_free(message->priv->method);
@@ -61,7 +61,7 @@ static void bedit_message_finalize(GObject *object) {
 
 static void bedit_message_get_property(
     GObject *object, guint prop_id, GValue *value, GParamSpec *pspec) {
-    BeditMessage *msg = GEDIT_MESSAGE(object);
+    BeditMessage *msg = BEDIT_MESSAGE(object);
 
     switch (prop_id) {
     case PROP_OBJECT_PATH:
@@ -78,7 +78,7 @@ static void bedit_message_get_property(
 
 static void bedit_message_set_property(
     GObject *object, guint prop_id, const GValue *value, GParamSpec *pspec) {
-    BeditMessage *msg = GEDIT_MESSAGE(object);
+    BeditMessage *msg = BEDIT_MESSAGE(object);
 
     switch (prop_id) {
     case PROP_OBJECT_PATH:
@@ -140,7 +140,7 @@ static void bedit_message_init(BeditMessage *self) {
  *
  */
 const gchar *bedit_message_get_method(BeditMessage *message) {
-    g_return_val_if_fail(GEDIT_IS_MESSAGE(message), NULL);
+    g_return_val_if_fail(BEDIT_IS_MESSAGE(message), NULL);
 
     return message->priv->method;
 }
@@ -155,7 +155,7 @@ const gchar *bedit_message_get_method(BeditMessage *message) {
  *
  */
 const gchar *bedit_message_get_object_path(BeditMessage *message) {
-    g_return_val_if_fail(GEDIT_IS_MESSAGE(message), NULL);
+    g_return_val_if_fail(BEDIT_IS_MESSAGE(message), NULL);
 
     return message->priv->object_path;
 }
@@ -225,7 +225,7 @@ gchar *bedit_message_type_identifier(
 gboolean bedit_message_has(BeditMessage *message, const gchar *propname) {
     GObjectClass *klass;
 
-    g_return_val_if_fail(GEDIT_IS_MESSAGE(message), FALSE);
+    g_return_val_if_fail(BEDIT_IS_MESSAGE(message), FALSE);
     g_return_val_if_fail(propname != NULL, FALSE);
 
     klass = G_OBJECT_GET_CLASS(G_OBJECT(message));
@@ -237,7 +237,7 @@ gboolean bedit_message_type_has(GType gtype, const gchar *propname) {
     GObjectClass *klass;
     gboolean ret;
 
-    g_return_val_if_fail(g_type_is_a(gtype, GEDIT_TYPE_MESSAGE), FALSE);
+    g_return_val_if_fail(g_type_is_a(gtype, BEDIT_TYPE_MESSAGE), FALSE);
     g_return_val_if_fail(propname != NULL, FALSE);
 
     klass = g_type_class_ref(gtype);
@@ -253,7 +253,7 @@ gboolean bedit_message_type_check(
     gboolean ret;
     GParamSpec *spec;
 
-    g_return_val_if_fail(g_type_is_a(gtype, GEDIT_TYPE_MESSAGE), FALSE);
+    g_return_val_if_fail(g_type_is_a(gtype, BEDIT_TYPE_MESSAGE), FALSE);
     g_return_val_if_fail(propname != NULL, FALSE);
 
     klass = g_type_class_ref(gtype);

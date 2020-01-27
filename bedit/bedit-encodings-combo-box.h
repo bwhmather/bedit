@@ -18,17 +18,17 @@
  * along with this program; if not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef GEDIT_ENCODINGS_COMBO_BOX_H
-#define GEDIT_ENCODINGS_COMBO_BOX_H
+#ifndef BEDIT_ENCODINGS_COMBO_BOX_H
+#define BEDIT_ENCODINGS_COMBO_BOX_H
 
 #include <gtksourceview/gtksource.h>
 
 G_BEGIN_DECLS
 
-#define GEDIT_TYPE_ENCODINGS_COMBO_BOX (bedit_encodings_combo_box_get_type())
+#define BEDIT_TYPE_ENCODINGS_COMBO_BOX (bedit_encodings_combo_box_get_type())
 
 G_DECLARE_FINAL_TYPE(
-    BeditEncodingsComboBox, bedit_encodings_combo_box, GEDIT,
+    BeditEncodingsComboBox, bedit_encodings_combo_box, BEDIT,
     ENCODINGS_COMBO_BOX, GtkComboBox)
 
 GtkWidget *bedit_encodings_combo_box_new(gboolean save_mode);
@@ -41,5 +41,5 @@ void bedit_encodings_combo_box_set_selected_encoding(
 
 G_END_DECLS
 
-#endif /* GEDIT_ENCODINGS_COMBO_BOX_H */
+#endif /* BEDIT_ENCODINGS_COMBO_BOX_H */
 

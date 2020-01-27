@@ -18,17 +18,17 @@
  * along with this program; if not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef GEDIT_HISTORY_ENTRY_H
-#define GEDIT_HISTORY_ENTRY_H
+#ifndef BEDIT_HISTORY_ENTRY_H
+#define BEDIT_HISTORY_ENTRY_H
 
 #include <gtk/gtk.h>
 
 G_BEGIN_DECLS
 
-#define GEDIT_TYPE_HISTORY_ENTRY (bedit_history_entry_get_type())
+#define BEDIT_TYPE_HISTORY_ENTRY (bedit_history_entry_get_type())
 
 G_DECLARE_FINAL_TYPE(
-    BeditHistoryEntry, bedit_history_entry, GEDIT, HISTORY_ENTRY,
+    BeditHistoryEntry, bedit_history_entry, BEDIT, HISTORY_ENTRY,
     GtkComboBoxText)
 
 GtkWidget *bedit_history_entry_new(
@@ -56,5 +56,5 @@ GtkWidget *bedit_history_entry_get_entry(BeditHistoryEntry *entry);
 
 G_END_DECLS
 
-#endif /* GEDIT_HISTORY_ENTRY_H */
+#endif /* BEDIT_HISTORY_ENTRY_H */
 

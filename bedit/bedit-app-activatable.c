@@ -47,7 +47,7 @@ static void bedit_app_activatable_default_init(
     g_object_interface_install_property(
         iface,
         g_param_spec_object(
-            "app", "App", "The bedit app", GEDIT_TYPE_APP,
+            "app", "App", "The bedit app", BEDIT_TYPE_APP,
             G_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY |
                 G_PARAM_STATIC_STRINGS));
 }
@@ -61,9 +61,9 @@ static void bedit_app_activatable_default_init(
 void bedit_app_activatable_activate(BeditAppActivatable *activatable) {
     BeditAppActivatableInterface *iface;
 
-    g_return_if_fail(GEDIT_IS_APP_ACTIVATABLE(activatable));
+    g_return_if_fail(BEDIT_IS_APP_ACTIVATABLE(activatable));
 
-    iface = GEDIT_APP_ACTIVATABLE_GET_IFACE(activatable);
+    iface = BEDIT_APP_ACTIVATABLE_GET_IFACE(activatable);
 
     if (iface->activate != NULL) {
         iface->activate(activatable);
@@ -80,9 +80,9 @@ void bedit_app_activatable_activate(BeditAppActivatable *activatable) {
 void bedit_app_activatable_deactivate(BeditAppActivatable *activatable) {
     BeditAppActivatableInterface *iface;
 
-    g_return_if_fail(GEDIT_IS_APP_ACTIVATABLE(activatable));
+    g_return_if_fail(BEDIT_IS_APP_ACTIVATABLE(activatable));
 
-    iface = GEDIT_APP_ACTIVATABLE_GET_IFACE(activatable);
+    iface = BEDIT_APP_ACTIVATABLE_GET_IFACE(activatable);
 
     if (iface->deactivate != NULL) {
         iface->deactivate(activatable);
@@ -94,7 +94,7 @@ BeditMenuExtension *bedit_app_activatable_extend_menu(
     BeditApp *app;
     BeditMenuExtension *ext;
 
-    g_return_val_if_fail(GEDIT_IS_APP_ACTIVATABLE(activatable), NULL);
+    g_return_val_if_fail(BEDIT_IS_APP_ACTIVATABLE(activatable), NULL);
 
     g_object_get(G_OBJECT(activatable), "app", &app, NULL);
     ext = _bedit_app_extend_menu(app, extension_point);

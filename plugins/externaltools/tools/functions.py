@@ -72,7 +72,7 @@ def run_external_tool(window, panel, node):
 
     capture = Capture(node.command, cwd)
     capture.env = os.environ.copy()
-    capture.set_env(GEDIT_CWD=cwd)
+    capture.set_env(BEDIT_CWD=cwd)
 
     view = window.get_active_view()
     document = None
@@ -84,7 +84,7 @@ def run_external_tool(window, panel, node):
 
         # Current line number
         piter = document.get_iter_at_mark(document.get_insert())
-        capture.set_env(GEDIT_CURRENT_LINE_NUMBER=str(piter.get_line() + 1))
+        capture.set_env(BEDIT_CURRENT_LINE_NUMBER=str(piter.get_line() + 1))
 
         # Current line text
         piter.set_line_offset(0)
@@ -93,35 +93,35 @@ def run_external_tool(window, panel, node):
         if not end.ends_line():
             end.forward_to_line_end()
 
-        capture.set_env(GEDIT_CURRENT_LINE=piter.get_text(end))
+        capture.set_env(BEDIT_CURRENT_LINE=piter.get_text(end))
 
         if document.get_language() is not None:
-            capture.set_env(GEDIT_CURRRENT_DOCUMENT_LANGUAGE=document.get_language().get_id())
+            capture.set_env(BEDIT_CURRRENT_DOCUMENT_LANGUAGE=document.get_language().get_id())
 
         # Selected text (only if input is not selection)
         if node.input != 'selection' and node.input != 'selection-document':
             bounds = document.get_selection_bounds()
 
             if bounds:
-                capture.set_env(GEDIT_SELECTED_TEXT=bounds[0].get_text(bounds[1]))
+                capture.set_env(BEDIT_SELECTED_TEXT=bounds[0].get_text(bounds[1]))
 
         bounds = current_word(document)
-        capture.set_env(GEDIT_CURRENT_WORD=bounds[0].get_text(bounds[1]))
+        capture.set_env(BEDIT_CURRENT_WORD=bounds[0].get_text(bounds[1]))
 
-        capture.set_env(GEDIT_CURRENT_DOCUMENT_TYPE=document.get_mime_type())
+        capture.set_env(BEDIT_CURRENT_DOCUMENT_TYPE=document.get_mime_type())
 
         if location is not None:
             scheme = location.get_uri_scheme()
             name = location.get_basename()
-            capture.set_env(GEDIT_CURRENT_DOCUMENT_URI=location.get_uri(),
-                            GEDIT_CURRENT_DOCUMENT_NAME=name,
-                            GEDIT_CURRENT_DOCUMENT_SCHEME=scheme)
+            capture.set_env(BEDIT_CURRENT_DOCUMENT_URI=location.get_uri(),
+                            BEDIT_CURRENT_DOCUMENT_NAME=name,
+                            BEDIT_CURRENT_DOCUMENT_SCHEME=scheme)
             if location.has_uri_scheme('file'):
                 path = location.get_path()
                 cwd = os.path.dirname(path)
                 capture.set_cwd(cwd)
-                capture.set_env(GEDIT_CURRENT_DOCUMENT_PATH=path,
-                                GEDIT_CURRENT_DOCUMENT_DIR=cwd)
+                capture.set_env(BEDIT_CURRENT_DOCUMENT_PATH=path,
+                                BEDIT_CURRENT_DOCUMENT_DIR=cwd)
 
         documents_location = [doc.get_location()
                               for doc in window.get_documents()
@@ -132,13 +132,13 @@ def run_external_tool(window, panel, node):
         documents_path = [location.get_path()
                           for location in documents_location
                           if location.has_uri_scheme('file')]
-        capture.set_env(GEDIT_DOCUMENTS_URI=' '.join(documents_uri),
-                        GEDIT_DOCUMENTS_PATH=' '.join(documents_path))
+        capture.set_env(BEDIT_DOCUMENTS_URI=' '.join(documents_uri),
+                        BEDIT_DOCUMENTS_PATH=' '.join(documents_path))
 
     # set file browser root env var if possible
     browser_root = file_browser_root(window)
     if browser_root:
-        capture.set_env(GEDIT_FILE_BROWSER_ROOT=browser_root)
+        capture.set_env(BEDIT_FILE_BROWSER_ROOT=browser_root)
 
     flags = capture.CAPTURE_BOTH
 

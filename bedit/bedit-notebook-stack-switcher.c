@@ -225,7 +225,7 @@ void bedit_notebook_stack_switcher_set_stack(
     BeditNotebookStackSwitcher *switcher, GtkStack *stack) {
     BeditNotebookStackSwitcherPrivate *priv;
 
-    g_return_if_fail(GEDIT_IS_NOTEBOOK_STACK_SWITCHER(switcher));
+    g_return_if_fail(BEDIT_IS_NOTEBOOK_STACK_SWITCHER(switcher));
     g_return_if_fail(stack == NULL || GTK_IS_STACK(stack));
 
     priv = switcher->priv;
@@ -248,7 +248,7 @@ void bedit_notebook_stack_switcher_set_stack(
 
 GtkStack *bedit_notebook_stack_switcher_get_stack(
     BeditNotebookStackSwitcher *switcher) {
-    g_return_val_if_fail(GEDIT_IS_NOTEBOOK_STACK_SWITCHER(switcher), NULL);
+    g_return_val_if_fail(BEDIT_IS_NOTEBOOK_STACK_SWITCHER(switcher), NULL);
 
     return switcher->priv->stack;
 }
@@ -256,7 +256,7 @@ GtkStack *bedit_notebook_stack_switcher_get_stack(
 static void bedit_notebook_stack_switcher_get_property(
     GObject *object, guint prop_id, GValue *value, GParamSpec *pspec) {
     BeditNotebookStackSwitcher *switcher =
-        GEDIT_NOTEBOOK_STACK_SWITCHER(object);
+        BEDIT_NOTEBOOK_STACK_SWITCHER(object);
     BeditNotebookStackSwitcherPrivate *priv = switcher->priv;
 
     switch (prop_id) {
@@ -273,7 +273,7 @@ static void bedit_notebook_stack_switcher_get_property(
 static void bedit_notebook_stack_switcher_set_property(
     GObject *object, guint prop_id, const GValue *value, GParamSpec *pspec) {
     BeditNotebookStackSwitcher *switcher =
-        GEDIT_NOTEBOOK_STACK_SWITCHER(object);
+        BEDIT_NOTEBOOK_STACK_SWITCHER(object);
 
     switch (prop_id) {
     case PROP_STACK:
@@ -289,7 +289,7 @@ static void bedit_notebook_stack_switcher_set_property(
 
 static void bedit_notebook_stack_switcher_dispose(GObject *object) {
     BeditNotebookStackSwitcher *switcher =
-        GEDIT_NOTEBOOK_STACK_SWITCHER(object);
+        BEDIT_NOTEBOOK_STACK_SWITCHER(object);
 
     bedit_notebook_stack_switcher_set_stack(switcher, NULL);
 
@@ -312,6 +312,6 @@ static void bedit_notebook_stack_switcher_class_init(
 }
 
 GtkWidget *bedit_notebook_stack_switcher_new(void) {
-    return g_object_new(GEDIT_TYPE_NOTEBOOK_STACK_SWITCHER, NULL);
+    return g_object_new(BEDIT_TYPE_NOTEBOOK_STACK_SWITCHER, NULL);
 }
 

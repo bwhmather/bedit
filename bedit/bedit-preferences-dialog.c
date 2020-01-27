@@ -51,12 +51,12 @@
 
 static GtkWidget *preferences_dialog = NULL;
 
-#define GEDIT_SCHEME_ROW_ID_KEY "bedit-scheme-row-id"
+#define BEDIT_SCHEME_ROW_ID_KEY "bedit-scheme-row-id"
 
-#define GEDIT_TYPE_PREFERENCES_DIALOG (bedit_preferences_dialog_get_type())
+#define BEDIT_TYPE_PREFERENCES_DIALOG (bedit_preferences_dialog_get_type())
 
 G_DECLARE_FINAL_TYPE(
-    BeditPreferencesDialog, bedit_preferences_dialog, GEDIT, PREFERENCES_DIALOG,
+    BeditPreferencesDialog, bedit_preferences_dialog, BEDIT, PREFERENCES_DIALOG,
     GtkWindow)
 
 enum { ID_COLUMN = 0, NAME_COLUMN, DESC_COLUMN, NUM_COLUMNS };
@@ -124,7 +124,7 @@ struct _BeditPreferencesDialog {
 G_DEFINE_TYPE(BeditPreferencesDialog, bedit_preferences_dialog, GTK_TYPE_WINDOW)
 
 static void bedit_preferences_dialog_dispose(GObject *object) {
-    BeditPreferencesDialog *dlg = GEDIT_PREFERENCES_DIALOG(object);
+    BeditPreferencesDialog *dlg = BEDIT_PREFERENCES_DIALOG(object);
 
     g_clear_object(&dlg->editor);
     g_clear_object(&dlg->uisettings);
@@ -218,32 +218,32 @@ static void setup_editor_page(BeditPreferencesDialog *dlg) {
 
     /* Connect signal */
     g_settings_bind(
-        dlg->editor, GEDIT_SETTINGS_TABS_SIZE, dlg->tabs_width_spinbutton,
+        dlg->editor, BEDIT_SETTINGS_TABS_SIZE, dlg->tabs_width_spinbutton,
         "value", G_SETTINGS_BIND_GET | G_SETTINGS_BIND_SET);
     g_settings_bind(
-        dlg->editor, GEDIT_SETTINGS_INSERT_SPACES,
+        dlg->editor, BEDIT_SETTINGS_INSERT_SPACES,
         dlg->insert_spaces_checkbutton, "active",
         G_SETTINGS_BIND_GET | G_SETTINGS_BIND_SET);
     g_settings_bind(
-        dlg->editor, GEDIT_SETTINGS_AUTO_INDENT, dlg->auto_indent_checkbutton,
+        dlg->editor, BEDIT_SETTINGS_AUTO_INDENT, dlg->auto_indent_checkbutton,
         "active", G_SETTINGS_BIND_GET | G_SETTINGS_BIND_SET);
     g_settings_bind(
-        dlg->editor, GEDIT_SETTINGS_CREATE_BACKUP_COPY,
+        dlg->editor, BEDIT_SETTINGS_CREATE_BACKUP_COPY,
         dlg->backup_copy_checkbutton, "active",
         G_SETTINGS_BIND_GET | G_SETTINGS_BIND_SET);
     g_settings_bind(
-        dlg->editor, GEDIT_SETTINGS_BRACKET_MATCHING,
+        dlg->editor, BEDIT_SETTINGS_BRACKET_MATCHING,
         dlg->bracket_matching_checkbutton, "active",
         G_SETTINGS_BIND_GET | G_SETTINGS_BIND_SET);
     g_settings_bind(
-        dlg->editor, GEDIT_SETTINGS_AUTO_SAVE_INTERVAL,
+        dlg->editor, BEDIT_SETTINGS_AUTO_SAVE_INTERVAL,
         dlg->auto_save_spinbutton, "value",
         G_SETTINGS_BIND_GET | G_SETTINGS_BIND_SET);
     g_settings_bind(
-        dlg->editor, GEDIT_SETTINGS_AUTO_SAVE, dlg->auto_save_spinbutton,
+        dlg->editor, BEDIT_SETTINGS_AUTO_SAVE, dlg->auto_save_spinbutton,
         "sensitive", G_SETTINGS_BIND_GET);
     g_settings_bind(
-        dlg->editor, GEDIT_SETTINGS_AUTO_SAVE, dlg->auto_save_checkbutton,
+        dlg->editor, BEDIT_SETTINGS_AUTO_SAVE, dlg->auto_save_checkbutton,
         "active", G_SETTINGS_BIND_GET | G_SETTINGS_BIND_SET);
 }
 
@@ -267,20 +267,20 @@ static void wrap_mode_checkbutton_toggled(
         if (gtk_toggle_button_get_active(
                 GTK_TOGGLE_BUTTON(dlg->split_checkbutton))) {
             g_settings_set_enum(
-                dlg->editor, GEDIT_SETTINGS_WRAP_LAST_SPLIT_MODE,
+                dlg->editor, BEDIT_SETTINGS_WRAP_LAST_SPLIT_MODE,
                 GTK_WRAP_WORD);
 
             mode = GTK_WRAP_WORD;
         } else {
             g_settings_set_enum(
-                dlg->editor, GEDIT_SETTINGS_WRAP_LAST_SPLIT_MODE,
+                dlg->editor, BEDIT_SETTINGS_WRAP_LAST_SPLIT_MODE,
                 GTK_WRAP_CHAR);
 
             mode = GTK_WRAP_CHAR;
         }
     }
 
-    g_settings_set_enum(dlg->editor, GEDIT_SETTINGS_WRAP_MODE, mode);
+    g_settings_set_enum(dlg->editor, BEDIT_SETTINGS_WRAP_MODE, mode);
 }
 
 static void grid_checkbutton_toggled(
@@ -291,7 +291,7 @@ static void grid_checkbutton_toggled(
         ? GTK_SOURCE_BACKGROUND_PATTERN_TYPE_GRID
         : GTK_SOURCE_BACKGROUND_PATTERN_TYPE_NONE;
     g_settings_set_enum(
-        dlg->editor, GEDIT_SETTINGS_BACKGROUND_PATTERN, background_type);
+        dlg->editor, BEDIT_SETTINGS_BACKGROUND_PATTERN, background_type);
 }
 
 static void setup_view_page(BeditPreferencesDialog *dlg) {
@@ -305,14 +305,14 @@ static void setup_view_page(BeditPreferencesDialog *dlg) {
 
     /* Get values */
     display_right_margin = g_settings_get_boolean(
-        dlg->editor, GEDIT_SETTINGS_DISPLAY_RIGHT_MARGIN);
+        dlg->editor, BEDIT_SETTINGS_DISPLAY_RIGHT_MARGIN);
     g_settings_get(
-        dlg->editor, GEDIT_SETTINGS_RIGHT_MARGIN_POSITION, "u",
+        dlg->editor, BEDIT_SETTINGS_RIGHT_MARGIN_POSITION, "u",
         &right_margin_position);
     background_pattern =
-        g_settings_get_enum(dlg->editor, GEDIT_SETTINGS_BACKGROUND_PATTERN);
+        g_settings_get_enum(dlg->editor, BEDIT_SETTINGS_BACKGROUND_PATTERN);
 
-    wrap_mode = g_settings_get_enum(dlg->editor, GEDIT_SETTINGS_WRAP_MODE);
+    wrap_mode = g_settings_get_enum(dlg->editor, BEDIT_SETTINGS_WRAP_MODE);
 
     /* Set initial state */
     switch (wrap_mode) {
@@ -323,7 +323,7 @@ static void setup_view_page(BeditPreferencesDialog *dlg) {
             GTK_TOGGLE_BUTTON(dlg->split_checkbutton), TRUE);
 
         g_settings_set_enum(
-            dlg->editor, GEDIT_SETTINGS_WRAP_LAST_SPLIT_MODE, GTK_WRAP_WORD);
+            dlg->editor, BEDIT_SETTINGS_WRAP_LAST_SPLIT_MODE, GTK_WRAP_WORD);
         break;
     case GTK_WRAP_CHAR:
         gtk_toggle_button_set_active(
@@ -332,14 +332,14 @@ static void setup_view_page(BeditPreferencesDialog *dlg) {
             GTK_TOGGLE_BUTTON(dlg->split_checkbutton), FALSE);
 
         g_settings_set_enum(
-            dlg->editor, GEDIT_SETTINGS_WRAP_LAST_SPLIT_MODE, GTK_WRAP_CHAR);
+            dlg->editor, BEDIT_SETTINGS_WRAP_LAST_SPLIT_MODE, GTK_WRAP_CHAR);
         break;
     default:
         gtk_toggle_button_set_active(
             GTK_TOGGLE_BUTTON(dlg->wrap_text_checkbutton), FALSE);
 
         last_split_mode = g_settings_get_enum(
-            dlg->editor, GEDIT_SETTINGS_WRAP_LAST_SPLIT_MODE);
+            dlg->editor, BEDIT_SETTINGS_WRAP_LAST_SPLIT_MODE);
         gtk_toggle_button_set_active(
             GTK_TOGGLE_BUTTON(dlg->split_checkbutton),
             last_split_mode == GTK_WRAP_WORD);
@@ -359,31 +359,31 @@ static void setup_view_page(BeditPreferencesDialog *dlg) {
         dlg->split_checkbutton, (wrap_mode != GTK_WRAP_NONE));
 
     g_settings_bind(
-        dlg->editor, GEDIT_SETTINGS_DISPLAY_LINE_NUMBERS,
+        dlg->editor, BEDIT_SETTINGS_DISPLAY_LINE_NUMBERS,
         dlg->display_line_numbers_checkbutton, "active",
         G_SETTINGS_BIND_GET | G_SETTINGS_BIND_SET);
     g_settings_bind(
-        dlg->editor, GEDIT_SETTINGS_HIGHLIGHT_CURRENT_LINE,
+        dlg->editor, BEDIT_SETTINGS_HIGHLIGHT_CURRENT_LINE,
         dlg->highlight_current_line_checkbutton, "active",
         G_SETTINGS_BIND_GET | G_SETTINGS_BIND_SET);
     g_settings_bind(
-        dlg->uisettings, GEDIT_SETTINGS_STATUSBAR_VISIBLE,
+        dlg->uisettings, BEDIT_SETTINGS_STATUSBAR_VISIBLE,
         dlg->display_statusbar_checkbutton, "active",
         G_SETTINGS_BIND_GET | G_SETTINGS_BIND_SET);
     g_settings_bind(
-        dlg->editor, GEDIT_SETTINGS_DISPLAY_RIGHT_MARGIN,
+        dlg->editor, BEDIT_SETTINGS_DISPLAY_RIGHT_MARGIN,
         dlg->right_margin_checkbutton, "active",
         G_SETTINGS_BIND_GET | G_SETTINGS_BIND_SET);
     g_settings_bind(
-        dlg->editor, GEDIT_SETTINGS_DISPLAY_RIGHT_MARGIN,
+        dlg->editor, BEDIT_SETTINGS_DISPLAY_RIGHT_MARGIN,
         dlg->right_margin_position_grid, "sensitive",
         G_SETTINGS_BIND_GET | G_SETTINGS_BIND_SET);
     g_settings_bind(
-        dlg->editor, GEDIT_SETTINGS_RIGHT_MARGIN_POSITION,
+        dlg->editor, BEDIT_SETTINGS_RIGHT_MARGIN_POSITION,
         dlg->right_margin_position_spinbutton, "value",
         G_SETTINGS_BIND_GET | G_SETTINGS_BIND_SET);
     g_settings_bind(
-        dlg->editor, GEDIT_SETTINGS_AUTO_SAVE_INTERVAL,
+        dlg->editor, BEDIT_SETTINGS_AUTO_SAVE_INTERVAL,
         dlg->auto_save_spinbutton, "value",
         G_SETTINGS_BIND_GET | G_SETTINGS_BIND_SET);
     g_signal_connect(
@@ -409,7 +409,7 @@ static void setup_font_colors_page_font_section(BeditPreferencesDialog *dlg) {
         _("Click on this button to select the font to be used by the editor"));
 
     /* Get values */
-    settings = _bedit_app_get_settings(GEDIT_APP(g_application_get_default()));
+    settings = _bedit_app_get_settings(BEDIT_APP(g_application_get_default()));
     system_font = bedit_settings_get_system_font(settings);
 
     label = g_strdup_printf(
@@ -420,16 +420,16 @@ static void setup_font_colors_page_font_section(BeditPreferencesDialog *dlg) {
 
     /* Bind settings */
     g_settings_bind(
-        dlg->editor, GEDIT_SETTINGS_USE_DEFAULT_FONT,
+        dlg->editor, BEDIT_SETTINGS_USE_DEFAULT_FONT,
         dlg->default_font_checkbutton, "active",
         G_SETTINGS_BIND_GET | G_SETTINGS_BIND_SET);
     g_settings_bind(
-        dlg->editor, GEDIT_SETTINGS_USE_DEFAULT_FONT, dlg->font_grid,
+        dlg->editor, BEDIT_SETTINGS_USE_DEFAULT_FONT, dlg->font_grid,
         "sensitive",
         G_SETTINGS_BIND_GET | G_SETTINGS_BIND_SET |
             G_SETTINGS_BIND_INVERT_BOOLEAN);
     g_settings_bind(
-        dlg->editor, GEDIT_SETTINGS_EDITOR_FONT, dlg->font_button, "font-name",
+        dlg->editor, BEDIT_SETTINGS_EDITOR_FONT, dlg->font_button, "font-name",
         G_SETTINGS_BIND_GET | G_SETTINGS_BIND_SET);
 }
 
@@ -459,7 +459,7 @@ static void style_scheme_changed(
     scheme = gtk_source_style_scheme_chooser_get_style_scheme(chooser);
     id = gtk_source_style_scheme_get_id(scheme);
 
-    g_settings_set_string(dlg->editor, GEDIT_SETTINGS_SCHEME, id);
+    g_settings_set_string(dlg->editor, BEDIT_SETTINGS_SCHEME, id);
     set_buttons_sensisitivity_according_to_scheme(dlg, scheme);
 }
 
@@ -471,7 +471,7 @@ static GtkSourceStyleScheme *get_default_color_scheme(
 
     manager = gtk_source_style_scheme_manager_get_default();
 
-    pref_id = g_settings_get_string(dlg->editor, GEDIT_SETTINGS_SCHEME);
+    pref_id = g_settings_get_string(dlg->editor, BEDIT_SETTINGS_SCHEME);
 
     scheme = gtk_source_style_scheme_manager_get_scheme(manager, pref_id);
     g_free(pref_id);
@@ -563,7 +563,7 @@ static gboolean file_copy(
  * @fname: the file name of the style scheme to be installed
  *
  * Install a new user scheme.
- * This function copies @fname in #GEDIT_STYLES_DIR and ask the style manager to
+ * This function copies @fname in #BEDIT_STYLES_DIR and ask the style manager to
  * recompute the list of available style schemes. It then checks if a style
  * scheme with the right file name exists.
  *
@@ -595,7 +595,7 @@ static GtkSourceStyleScheme *install_style_scheme(const gchar *fname) {
         new_file_name = g_build_filename(styles_dir, basename, NULL);
         g_free(basename);
 
-        /* Copy the style scheme file into GEDIT_STYLES_DIR */
+        /* Copy the style scheme file into BEDIT_STYLES_DIR */
         if (!file_copy(fname, new_file_name, &error)) {
             g_free(new_file_name);
             g_free(dirname);
@@ -717,7 +717,7 @@ static void add_scheme_chooser_response_cb(
     }
 
     g_settings_set_string(
-        dlg->editor, GEDIT_SETTINGS_SCHEME,
+        dlg->editor, BEDIT_SETTINGS_SCHEME,
         gtk_source_style_scheme_get_id(scheme));
 
     set_buttons_sensisitivity_according_to_scheme(dlg, scheme);
@@ -733,7 +733,7 @@ static void install_scheme_clicked(
     }
 
     chooser = bedit_file_chooser_dialog_create(
-        _("Add Scheme"), GTK_WINDOW(dlg), GEDIT_FILE_CHOOSER_OPEN, NULL,
+        _("Add Scheme"), GTK_WINDOW(dlg), BEDIT_FILE_CHOOSER_OPEN, NULL,
         _("_Cancel"), GTK_RESPONSE_CANCEL, _("A_dd Scheme"),
         GTK_RESPONSE_ACCEPT);
 
@@ -829,7 +829,7 @@ void bedit_show_preferences_dialog(BeditWindow *parent) {
 
     if (preferences_dialog == NULL) {
         preferences_dialog = GTK_WIDGET(g_object_new(
-            GEDIT_TYPE_PREFERENCES_DIALOG, "application",
+            BEDIT_TYPE_PREFERENCES_DIALOG, "application",
             g_application_get_default(), NULL));
         g_signal_connect(
             preferences_dialog, "destroy", G_CALLBACK(gtk_widget_destroyed),

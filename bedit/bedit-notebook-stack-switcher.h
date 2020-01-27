@@ -18,30 +18,30 @@
  * along with this program; if not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef GEDIT_NOTEBOOK_STACK_SWITCHER_H
-#define GEDIT_NOTEBOOK_STACK_SWITCHER_H
+#ifndef BEDIT_NOTEBOOK_STACK_SWITCHER_H
+#define BEDIT_NOTEBOOK_STACK_SWITCHER_H
 
 #include <gtk/gtk.h>
 
 G_BEGIN_DECLS
 
-#define GEDIT_TYPE_NOTEBOOK_STACK_SWITCHER                                     \
+#define BEDIT_TYPE_NOTEBOOK_STACK_SWITCHER                                     \
     (bedit_notebook_stack_switcher_get_type())
-#define GEDIT_NOTEBOOK_STACK_SWITCHER(obj)                                     \
+#define BEDIT_NOTEBOOK_STACK_SWITCHER(obj)                                     \
     (G_TYPE_CHECK_INSTANCE_CAST(                                               \
-        (obj), GEDIT_TYPE_NOTEBOOK_STACK_SWITCHER,                             \
+        (obj), BEDIT_TYPE_NOTEBOOK_STACK_SWITCHER,                             \
         BeditNotebookStackSwitcher))
-#define GEDIT_NOTEBOOK_STACK_SWITCHER_CLASS(klass)                             \
+#define BEDIT_NOTEBOOK_STACK_SWITCHER_CLASS(klass)                             \
     (G_TYPE_CHECK_CLASS_CAST(                                                  \
-        (klass), GEDIT_TYPE_NOTEBOOK_STACK_SWITCHER,                           \
+        (klass), BEDIT_TYPE_NOTEBOOK_STACK_SWITCHER,                           \
         BeditNotebookStackSwitcherClass))
-#define GEDIT_IS_NOTEBOOK_STACK_SWITCHER(obj)                                  \
-    (G_TYPE_CHECK_INSTANCE_TYPE((obj), GEDIT_TYPE_NOTEBOOK_STACK_SWITCHER))
-#define GEDIT_IS_NOTEBOOK_STACK_SWITCHER_CLASS(klass)                          \
-    (G_TYPE_CHECK_CLASS_TYPE((klass), GEDIT_TYPE_NOTEBOOK_STACK_SWITCHER))
-#define GEDIT_NOTEBOOK_STACK_SWITCHER_GET_CLASS(obj)                           \
+#define BEDIT_IS_NOTEBOOK_STACK_SWITCHER(obj)                                  \
+    (G_TYPE_CHECK_INSTANCE_TYPE((obj), BEDIT_TYPE_NOTEBOOK_STACK_SWITCHER))
+#define BEDIT_IS_NOTEBOOK_STACK_SWITCHER_CLASS(klass)                          \
+    (G_TYPE_CHECK_CLASS_TYPE((klass), BEDIT_TYPE_NOTEBOOK_STACK_SWITCHER))
+#define BEDIT_NOTEBOOK_STACK_SWITCHER_GET_CLASS(obj)                           \
     (G_TYPE_INSTANCE_GET_CLASS(                                                \
-        (obj), GEDIT_TYPE_NOTEBOOK_STACK_SWITCHER,                             \
+        (obj), BEDIT_TYPE_NOTEBOOK_STACK_SWITCHER,                             \
         BeditNotebookStackSwitcherClass))
 
 typedef struct _BeditNotebookStackSwitcher BeditNotebookStackSwitcher;
@@ -78,5 +78,5 @@ GtkStack *bedit_notebook_stack_switcher_get_stack(
 
 G_END_DECLS
 
-#endif /* GEDIT_NOTEBOOK_STACK_SWITCHER_H  */
+#endif /* BEDIT_NOTEBOOK_STACK_SWITCHER_H  */
 

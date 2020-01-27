@@ -40,8 +40,8 @@
 #include "bedit-window-private.h"
 #include "bedit-window.h"
 
-#define GEDIT_REPLACE_DIALOG_KEY "bedit-replace-dialog-key"
-#define GEDIT_LAST_SEARCH_DATA_KEY "bedit-last-search-data-key"
+#define BEDIT_REPLACE_DIALOG_KEY "bedit-replace-dialog-key"
+#define BEDIT_LAST_SEARCH_DATA_KEY "bedit-last-search-data-key"
 
 typedef struct _LastSearchData LastSearchData;
 struct _LastSearchData {
@@ -56,7 +56,7 @@ static void last_search_data_free(LastSearchData *data) {
 static void last_search_data_restore_position(BeditReplaceDialog *dlg) {
     LastSearchData *data;
 
-    data = g_object_get_data(G_OBJECT(dlg), GEDIT_LAST_SEARCH_DATA_KEY);
+    data = g_object_get_data(G_OBJECT(dlg), BEDIT_LAST_SEARCH_DATA_KEY);
 
     if (data != NULL) {
         gtk_window_move(GTK_WINDOW(dlg), data->x, data->y);
@@ -66,13 +66,13 @@ static void last_search_data_restore_position(BeditReplaceDialog *dlg) {
 static void last_search_data_store_position(BeditReplaceDialog *dlg) {
     LastSearchData *data;
 
-    data = g_object_get_data(G_OBJECT(dlg), GEDIT_LAST_SEARCH_DATA_KEY);
+    data = g_object_get_data(G_OBJECT(dlg), BEDIT_LAST_SEARCH_DATA_KEY);
 
     if (data == NULL) {
         data = g_slice_new(LastSearchData);
 
         g_object_set_data_full(
-            G_OBJECT(dlg), GEDIT_LAST_SEARCH_DATA_KEY, data,
+            G_OBJECT(dlg), BEDIT_LAST_SEARCH_DATA_KEY, data,
             (GDestroyNotify)last_search_data_free);
     }
 
@@ -83,7 +83,7 @@ static void last_search_data_store_position(BeditReplaceDialog *dlg) {
 static void text_found(BeditWindow *window, gint occurrences) {
     if (occurrences > 1) {
         bedit_statusbar_flash_message(
-            GEDIT_STATUSBAR(window->priv->statusbar),
+            BEDIT_STATUSBAR(window->priv->statusbar),
             window->priv->generic_message_cid,
             ngettext(
                 "Found and replaced %d occurrence",
@@ -91,12 +91,12 @@ static void text_found(BeditWindow *window, gint occurrences) {
             occurrences);
     } else if (occurrences == 1) {
         bedit_statusbar_flash_message(
-            GEDIT_STATUSBAR(window->priv->statusbar),
+            BEDIT_STATUSBAR(window->priv->statusbar),
             window->priv->generic_message_cid,
             _("Found and replaced one occurrence"));
     } else {
         bedit_statusbar_flash_message(
-            GEDIT_STATUSBAR(window->priv->statusbar),
+            BEDIT_STATUSBAR(window->priv->statusbar),
             window->priv->generic_message_cid, " ");
     }
 }
@@ -112,7 +112,7 @@ static void text_not_found(
     truncated_text = bedit_utils_str_end_truncate(search_text, MAX_MSG_LENGTH);
 
     bedit_statusbar_flash_message(
-        GEDIT_STATUSBAR(window->priv->statusbar),
+        BEDIT_STATUSBAR(window->priv->statusbar),
         window->priv->generic_message_cid,
         /* Translators: %s is replaced by the text
            entered by the user in the search box */
@@ -125,7 +125,7 @@ static void finish_search_from_dialog(BeditWindow *window, gboolean found) {
     BeditReplaceDialog *replace_dialog;
 
     replace_dialog =
-        g_object_get_data(G_OBJECT(window), GEDIT_REPLACE_DIALOG_KEY);
+        g_object_get_data(G_OBJECT(window), BEDIT_REPLACE_DIALOG_KEY);
 
     g_return_if_fail(replace_dialog != NULL);
 
@@ -196,7 +196,7 @@ static void run_forward_search(BeditWindow *window, gboolean from_dialog) {
 
     buffer = gtk_text_view_get_buffer(GTK_TEXT_VIEW(view));
 
-    search_context = bedit_document_get_search_context(GEDIT_DOCUMENT(buffer));
+    search_context = bedit_document_get_search_context(BEDIT_DOCUMENT(buffer));
 
     if (search_context == NULL) {
         return;
@@ -275,7 +275,7 @@ static void run_backward_search(BeditWindow *window, gboolean from_dialog) {
 
     buffer = gtk_text_view_get_buffer(GTK_TEXT_VIEW(view));
 
-    search_context = bedit_document_get_search_context(GEDIT_DOCUMENT(buffer));
+    search_context = bedit_document_get_search_context(BEDIT_DOCUMENT(buffer));
 
     if (search_context == NULL) {
         return;
@@ -363,7 +363,7 @@ static void do_replace_all(BeditReplaceDialog *dialog, BeditWindow *window) {
 
     buffer = gtk_text_view_get_buffer(GTK_TEXT_VIEW(view));
 
-    search_context = bedit_document_get_search_context(GEDIT_DOCUMENT(buffer));
+    search_context = bedit_document_get_search_context(BEDIT_DOCUMENT(buffer));
 
     if (search_context == NULL) {
         return;
@@ -406,15 +406,15 @@ static void replace_dialog_response_cb(
     bedit_debug(DEBUG_COMMANDS);
 
     switch (response_id) {
-    case GEDIT_REPLACE_DIALOG_FIND_RESPONSE:
+    case BEDIT_REPLACE_DIALOG_FIND_RESPONSE:
         do_find(dialog, window);
         break;
 
-    case GEDIT_REPLACE_DIALOG_REPLACE_RESPONSE:
+    case BEDIT_REPLACE_DIALOG_REPLACE_RESPONSE:
         do_replace(dialog, window);
         break;
 
-    case GEDIT_REPLACE_DIALOG_REPLACE_ALL_RESPONSE:
+    case BEDIT_REPLACE_DIALOG_REPLACE_ALL_RESPONSE:
         do_replace_all(dialog, window);
         break;
 
@@ -428,8 +428,8 @@ static void replace_dialog_destroyed(
     BeditWindow *window, BeditReplaceDialog *dialog) {
     bedit_debug(DEBUG_COMMANDS);
 
-    g_object_set_data(G_OBJECT(window), GEDIT_REPLACE_DIALOG_KEY, NULL);
-    g_object_set_data(G_OBJECT(dialog), GEDIT_LAST_SEARCH_DATA_KEY, NULL);
+    g_object_set_data(G_OBJECT(window), BEDIT_REPLACE_DIALOG_KEY, NULL);
+    g_object_set_data(G_OBJECT(dialog), BEDIT_LAST_SEARCH_DATA_KEY, NULL);
 }
 
 static GtkWidget *create_dialog(BeditWindow *window) {
@@ -438,7 +438,7 @@ static GtkWidget *create_dialog(BeditWindow *window) {
     g_signal_connect(
         dialog, "response", G_CALLBACK(replace_dialog_response_cb), window);
 
-    g_object_set_data(G_OBJECT(window), GEDIT_REPLACE_DIALOG_KEY, dialog);
+    g_object_set_data(G_OBJECT(window), BEDIT_REPLACE_DIALOG_KEY, dialog);
 
     g_object_weak_ref(
         G_OBJECT(dialog), (GWeakNotify)replace_dialog_destroyed, window);
@@ -448,7 +448,7 @@ static GtkWidget *create_dialog(BeditWindow *window) {
 
 void _bedit_cmd_search_find(
     GSimpleAction *action, GVariant *parameter, gpointer user_data) {
-    BeditWindow *window = GEDIT_WINDOW(user_data);
+    BeditWindow *window = BEDIT_WINDOW(user_data);
     BeditTab *active_tab;
     BeditViewFrame *frame;
 
@@ -466,31 +466,31 @@ void _bedit_cmd_search_find(
 
 void _bedit_cmd_search_replace(
     GSimpleAction *action, GVariant *parameter, gpointer user_data) {
-    BeditWindow *window = GEDIT_WINDOW(user_data);
+    BeditWindow *window = BEDIT_WINDOW(user_data);
     gpointer data;
     GtkWidget *replace_dialog;
 
     bedit_debug(DEBUG_COMMANDS);
 
-    data = g_object_get_data(G_OBJECT(window), GEDIT_REPLACE_DIALOG_KEY);
+    data = g_object_get_data(G_OBJECT(window), BEDIT_REPLACE_DIALOG_KEY);
 
     if (data == NULL) {
         replace_dialog = create_dialog(window);
     } else {
-        g_return_if_fail(GEDIT_IS_REPLACE_DIALOG(data));
+        g_return_if_fail(BEDIT_IS_REPLACE_DIALOG(data));
 
         replace_dialog = GTK_WIDGET(data);
     }
 
     gtk_widget_show(replace_dialog);
-    last_search_data_restore_position(GEDIT_REPLACE_DIALOG(replace_dialog));
+    last_search_data_restore_position(BEDIT_REPLACE_DIALOG(replace_dialog));
     bedit_replace_dialog_present_with_time(
-        GEDIT_REPLACE_DIALOG(replace_dialog), GDK_CURRENT_TIME);
+        BEDIT_REPLACE_DIALOG(replace_dialog), GDK_CURRENT_TIME);
 }
 
 void _bedit_cmd_search_find_next(
     GSimpleAction *action, GVariant *parameter, gpointer user_data) {
-    BeditWindow *window = GEDIT_WINDOW(user_data);
+    BeditWindow *window = BEDIT_WINDOW(user_data);
 
     bedit_debug(DEBUG_COMMANDS);
 
@@ -499,7 +499,7 @@ void _bedit_cmd_search_find_next(
 
 void _bedit_cmd_search_find_prev(
     GSimpleAction *action, GVariant *parameter, gpointer user_data) {
-    BeditWindow *window = GEDIT_WINDOW(user_data);
+    BeditWindow *window = BEDIT_WINDOW(user_data);
 
     bedit_debug(DEBUG_COMMANDS);
 
@@ -508,7 +508,7 @@ void _bedit_cmd_search_find_prev(
 
 void _bedit_cmd_search_clear_highlight(
     GSimpleAction *action, GVariant *parameter, gpointer user_data) {
-    BeditWindow *window = GEDIT_WINDOW(user_data);
+    BeditWindow *window = BEDIT_WINDOW(user_data);
     BeditTab *active_tab;
     BeditViewFrame *frame;
     BeditDocument *doc;
@@ -530,7 +530,7 @@ void _bedit_cmd_search_clear_highlight(
 
 void _bedit_cmd_search_goto_line(
     GSimpleAction *action, GVariant *parameter, gpointer user_data) {
-    BeditWindow *window = GEDIT_WINDOW(user_data);
+    BeditWindow *window = BEDIT_WINDOW(user_data);
     BeditTab *active_tab;
     BeditViewFrame *frame;
 

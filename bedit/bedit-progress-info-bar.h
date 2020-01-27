@@ -18,16 +18,16 @@
  * along with this program; if not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef GEDIT_PROGRESS_INFO_BAR_H
-#define GEDIT_PROGRESS_INFO_BAR_H
+#ifndef BEDIT_PROGRESS_INFO_BAR_H
+#define BEDIT_PROGRESS_INFO_BAR_H
 
 #include <gtk/gtk.h>
 
 G_BEGIN_DECLS
 
-#define GEDIT_TYPE_PROGRESS_INFO_BAR (bedit_progress_info_bar_get_type())
+#define BEDIT_TYPE_PROGRESS_INFO_BAR (bedit_progress_info_bar_get_type())
 G_DECLARE_FINAL_TYPE(
-    BeditProgressInfoBar, bedit_progress_info_bar, GEDIT, PROGRESS_INFO_BAR,
+    BeditProgressInfoBar, bedit_progress_info_bar, BEDIT, PROGRESS_INFO_BAR,
     GtkInfoBar)
 
 GtkWidget *bedit_progress_info_bar_new(
@@ -49,5 +49,5 @@ void bedit_progress_info_bar_pulse(BeditProgressInfoBar *bar);
 
 G_END_DECLS
 
-#endif /* GEDIT_PROGRESS_INFO_BAR_H  */
+#endif /* BEDIT_PROGRESS_INFO_BAR_H  */
 

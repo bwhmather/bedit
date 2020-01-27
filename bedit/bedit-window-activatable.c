@@ -49,7 +49,7 @@ static void bedit_window_activatable_default_init(
     g_object_interface_install_property(
         iface,
         g_param_spec_object(
-            "window", "Window", "The bedit window", GEDIT_TYPE_WINDOW,
+            "window", "Window", "The bedit window", BEDIT_TYPE_WINDOW,
             G_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY |
                 G_PARAM_STATIC_STRINGS));
 }
@@ -63,9 +63,9 @@ static void bedit_window_activatable_default_init(
 void bedit_window_activatable_activate(BeditWindowActivatable *activatable) {
     BeditWindowActivatableInterface *iface;
 
-    g_return_if_fail(GEDIT_IS_WINDOW_ACTIVATABLE(activatable));
+    g_return_if_fail(BEDIT_IS_WINDOW_ACTIVATABLE(activatable));
 
-    iface = GEDIT_WINDOW_ACTIVATABLE_GET_IFACE(activatable);
+    iface = BEDIT_WINDOW_ACTIVATABLE_GET_IFACE(activatable);
     if (iface->activate != NULL) {
         iface->activate(activatable);
     }
@@ -80,9 +80,9 @@ void bedit_window_activatable_activate(BeditWindowActivatable *activatable) {
 void bedit_window_activatable_deactivate(BeditWindowActivatable *activatable) {
     BeditWindowActivatableInterface *iface;
 
-    g_return_if_fail(GEDIT_IS_WINDOW_ACTIVATABLE(activatable));
+    g_return_if_fail(BEDIT_IS_WINDOW_ACTIVATABLE(activatable));
 
-    iface = GEDIT_WINDOW_ACTIVATABLE_GET_IFACE(activatable);
+    iface = BEDIT_WINDOW_ACTIVATABLE_GET_IFACE(activatable);
     if (iface->deactivate != NULL) {
         iface->deactivate(activatable);
     }
@@ -99,9 +99,9 @@ void bedit_window_activatable_update_state(
     BeditWindowActivatable *activatable) {
     BeditWindowActivatableInterface *iface;
 
-    g_return_if_fail(GEDIT_IS_WINDOW_ACTIVATABLE(activatable));
+    g_return_if_fail(BEDIT_IS_WINDOW_ACTIVATABLE(activatable));
 
-    iface = GEDIT_WINDOW_ACTIVATABLE_GET_IFACE(activatable);
+    iface = BEDIT_WINDOW_ACTIVATABLE_GET_IFACE(activatable);
     if (iface->update_state != NULL) {
         iface->update_state(activatable);
     }

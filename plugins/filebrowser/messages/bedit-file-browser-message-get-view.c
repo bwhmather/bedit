@@ -38,11 +38,11 @@ struct _BeditFileBrowserMessageGetViewPrivate {
 
 G_DEFINE_TYPE_EXTENDED(
     BeditFileBrowserMessageGetView, bedit_file_browser_message_get_view,
-    GEDIT_TYPE_MESSAGE, 0, G_ADD_PRIVATE(BeditFileBrowserMessageGetView))
+    BEDIT_TYPE_MESSAGE, 0, G_ADD_PRIVATE(BeditFileBrowserMessageGetView))
 
 static void bedit_file_browser_message_get_view_finalize(GObject *obj) {
     BeditFileBrowserMessageGetView *msg =
-        GEDIT_FILE_BROWSER_MESSAGE_GET_VIEW(obj);
+        BEDIT_FILE_BROWSER_MESSAGE_GET_VIEW(obj);
 
     if (msg->priv->view) {
         g_object_unref(msg->priv->view);
@@ -56,7 +56,7 @@ static void bedit_file_browser_message_get_view_get_property(
     GObject *obj, guint prop_id, GValue *value, GParamSpec *pspec) {
     BeditFileBrowserMessageGetView *msg;
 
-    msg = GEDIT_FILE_BROWSER_MESSAGE_GET_VIEW(obj);
+    msg = BEDIT_FILE_BROWSER_MESSAGE_GET_VIEW(obj);
 
     switch (prop_id) {
     case PROP_VIEW:
@@ -69,7 +69,7 @@ static void bedit_file_browser_message_get_view_set_property(
     GObject *obj, guint prop_id, GValue const *value, GParamSpec *pspec) {
     BeditFileBrowserMessageGetView *msg;
 
-    msg = GEDIT_FILE_BROWSER_MESSAGE_GET_VIEW(obj);
+    msg = BEDIT_FILE_BROWSER_MESSAGE_GET_VIEW(obj);
 
     switch (prop_id) {
     case PROP_VIEW: {
@@ -96,7 +96,7 @@ static void bedit_file_browser_message_get_view_class_init(
     g_object_class_install_property(
         object_class, PROP_VIEW,
         g_param_spec_object(
-            "view", "View", "View", GEDIT_TYPE_FILE_BROWSER_VIEW,
+            "view", "View", "View", BEDIT_TYPE_FILE_BROWSER_VIEW,
             G_PARAM_READWRITE | G_PARAM_CONSTRUCT | G_PARAM_STATIC_STRINGS));
 }
 

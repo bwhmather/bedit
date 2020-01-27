@@ -41,11 +41,11 @@ struct _BeditFileBrowserMessageAddFilterPrivate {
 
 G_DEFINE_TYPE_EXTENDED(
     BeditFileBrowserMessageAddFilter, bedit_file_browser_message_add_filter,
-    GEDIT_TYPE_MESSAGE, 0, G_ADD_PRIVATE(BeditFileBrowserMessageAddFilter))
+    BEDIT_TYPE_MESSAGE, 0, G_ADD_PRIVATE(BeditFileBrowserMessageAddFilter))
 
 static void bedit_file_browser_message_add_filter_finalize(GObject *obj) {
     BeditFileBrowserMessageAddFilter *msg =
-        GEDIT_FILE_BROWSER_MESSAGE_ADD_FILTER(obj);
+        BEDIT_FILE_BROWSER_MESSAGE_ADD_FILTER(obj);
 
     g_free(msg->priv->object_path);
     g_free(msg->priv->method);
@@ -58,7 +58,7 @@ static void bedit_file_browser_message_add_filter_get_property(
     GObject *obj, guint prop_id, GValue *value, GParamSpec *pspec) {
     BeditFileBrowserMessageAddFilter *msg;
 
-    msg = GEDIT_FILE_BROWSER_MESSAGE_ADD_FILTER(obj);
+    msg = BEDIT_FILE_BROWSER_MESSAGE_ADD_FILTER(obj);
 
     switch (prop_id) {
     case PROP_OBJECT_PATH:
@@ -77,7 +77,7 @@ static void bedit_file_browser_message_add_filter_set_property(
     GObject *obj, guint prop_id, GValue const *value, GParamSpec *pspec) {
     BeditFileBrowserMessageAddFilter *msg;
 
-    msg = GEDIT_FILE_BROWSER_MESSAGE_ADD_FILTER(obj);
+    msg = BEDIT_FILE_BROWSER_MESSAGE_ADD_FILTER(obj);
 
     switch (prop_id) {
     case PROP_OBJECT_PATH: {

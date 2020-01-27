@@ -79,7 +79,7 @@ struct _BeditPrintPreview {
 G_DEFINE_TYPE(BeditPrintPreview, bedit_print_preview, GTK_TYPE_GRID)
 
 static void bedit_print_preview_dispose(GObject *object) {
-    BeditPrintPreview *preview = GEDIT_PRINT_PREVIEW(object);
+    BeditPrintPreview *preview = BEDIT_PRINT_PREVIEW(object);
 
     if (preview->gtk_preview != NULL) {
         GtkPrintOperationPreview *gtk_preview;
@@ -103,7 +103,7 @@ static void bedit_print_preview_dispose(GObject *object) {
 }
 
 static void bedit_print_preview_grab_focus(GtkWidget *widget) {
-    BeditPrintPreview *preview = GEDIT_PRINT_PREVIEW(widget);
+    BeditPrintPreview *preview = BEDIT_PRINT_PREVIEW(widget);
 
     gtk_widget_grab_focus(GTK_WIDGET(preview->layout));
 }
@@ -945,7 +945,7 @@ GtkWidget *bedit_print_preview_new(
     g_return_val_if_fail(GTK_IS_PRINT_OPERATION(operation), NULL);
     g_return_val_if_fail(GTK_IS_PRINT_OPERATION_PREVIEW(gtk_preview), NULL);
 
-    preview = g_object_new(GEDIT_TYPE_PRINT_PREVIEW, NULL);
+    preview = g_object_new(BEDIT_TYPE_PRINT_PREVIEW, NULL);
 
     preview->operation = g_object_ref(operation);
     preview->gtk_preview = g_object_ref(gtk_preview);

@@ -18,18 +18,18 @@
  * along with bedit. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef GEDIT_MENU_EXTENSION_H
-#define GEDIT_MENU_EXTENSION_H
+#ifndef BEDIT_MENU_EXTENSION_H
+#define BEDIT_MENU_EXTENSION_H
 
 #include <gio/gio.h>
 #include <glib-object.h>
 
 G_BEGIN_DECLS
 
-#define GEDIT_TYPE_MENU_EXTENSION (bedit_menu_extension_get_type())
+#define BEDIT_TYPE_MENU_EXTENSION (bedit_menu_extension_get_type())
 
 G_DECLARE_FINAL_TYPE(
-    BeditMenuExtension, bedit_menu_extension, GEDIT, MENU_EXTENSION, GObject)
+    BeditMenuExtension, bedit_menu_extension, BEDIT, MENU_EXTENSION, GObject)
 
 BeditMenuExtension *bedit_menu_extension_new(GMenu *menu);
 
@@ -43,5 +43,5 @@ void bedit_menu_extension_remove_items(BeditMenuExtension *menu);
 
 G_END_DECLS
 
-#endif /* GEDIT_MENU_EXTENSION_H */
+#endif /* BEDIT_MENU_EXTENSION_H */
 

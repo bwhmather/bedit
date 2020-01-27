@@ -37,13 +37,13 @@ struct _BeditFileBrowserMessageActivationPrivate {
 
 G_DEFINE_TYPE_EXTENDED(
     BeditFileBrowserMessageActivation, bedit_file_browser_message_activation,
-    GEDIT_TYPE_MESSAGE, 0, G_ADD_PRIVATE(BeditFileBrowserMessageActivation))
+    BEDIT_TYPE_MESSAGE, 0, G_ADD_PRIVATE(BeditFileBrowserMessageActivation))
 
 static void bedit_file_browser_message_activation_get_property(
     GObject *obj, guint prop_id, GValue *value, GParamSpec *pspec) {
     BeditFileBrowserMessageActivation *msg;
 
-    msg = GEDIT_FILE_BROWSER_MESSAGE_ACTIVATION(obj);
+    msg = BEDIT_FILE_BROWSER_MESSAGE_ACTIVATION(obj);
 
     switch (prop_id) {
     case PROP_ACTIVE:
@@ -56,7 +56,7 @@ static void bedit_file_browser_message_activation_set_property(
     GObject *obj, guint prop_id, GValue const *value, GParamSpec *pspec) {
     BeditFileBrowserMessageActivation *msg;
 
-    msg = GEDIT_FILE_BROWSER_MESSAGE_ACTIVATION(obj);
+    msg = BEDIT_FILE_BROWSER_MESSAGE_ACTIVATION(obj);
 
     switch (prop_id) {
     case PROP_ACTIVE:

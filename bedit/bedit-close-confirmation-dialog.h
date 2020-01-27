@@ -19,18 +19,18 @@
  * along with this program; if not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef GEDIT_CLOSE_CONFIRMATION_DIALOG_H
-#define GEDIT_CLOSE_CONFIRMATION_DIALOG_H
+#ifndef BEDIT_CLOSE_CONFIRMATION_DIALOG_H
+#define BEDIT_CLOSE_CONFIRMATION_DIALOG_H
 
 #include <bedit/bedit-document.h>
 #include <glib.h>
 #include <gtk/gtk.h>
 
-#define GEDIT_TYPE_CLOSE_CONFIRMATION_DIALOG                                   \
+#define BEDIT_TYPE_CLOSE_CONFIRMATION_DIALOG                                   \
     (bedit_close_confirmation_dialog_get_type())
 
 G_DECLARE_FINAL_TYPE(
-    BeditCloseConfirmationDialog, bedit_close_confirmation_dialog, GEDIT,
+    BeditCloseConfirmationDialog, bedit_close_confirmation_dialog, BEDIT,
     CLOSE_CONFIRMATION_DIALOG, GtkMessageDialog)
 
 GtkWidget *bedit_close_confirmation_dialog_new(
@@ -45,5 +45,5 @@ const GList *bedit_close_confirmation_dialog_get_unsaved_documents(
 GList *bedit_close_confirmation_dialog_get_selected_documents(
     BeditCloseConfirmationDialog *dlg);
 
-#endif /* GEDIT_CLOSE_CONFIRMATION_DIALOG_H */
+#endif /* BEDIT_CLOSE_CONFIRMATION_DIALOG_H */
 

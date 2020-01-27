@@ -18,17 +18,17 @@
  * along with this program; if not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef GEDIT_APP_H
-#define GEDIT_APP_H
+#ifndef BEDIT_APP_H
+#define BEDIT_APP_H
 
 #include <bedit/bedit-window.h>
 #include <gtk/gtk.h>
 
 G_BEGIN_DECLS
 
-#define GEDIT_TYPE_APP (bedit_app_get_type())
+#define BEDIT_TYPE_APP (bedit_app_get_type())
 
-G_DECLARE_DERIVABLE_TYPE(BeditApp, bedit_app, GEDIT, APP, GtkApplication)
+G_DECLARE_DERIVABLE_TYPE(BeditApp, bedit_app, BEDIT, APP, GtkApplication)
 
 struct _BeditAppClass {
     GtkApplicationClass parent_class;
@@ -50,14 +50,14 @@ struct _BeditAppClass {
 };
 
 typedef enum {
-    GEDIT_LOCKDOWN_COMMAND_LINE = 1 << 0,
-    GEDIT_LOCKDOWN_PRINTING = 1 << 1,
-    GEDIT_LOCKDOWN_PRINT_SETUP = 1 << 2,
-    GEDIT_LOCKDOWN_SAVE_TO_DISK = 1 << 3
+    BEDIT_LOCKDOWN_COMMAND_LINE = 1 << 0,
+    BEDIT_LOCKDOWN_PRINTING = 1 << 1,
+    BEDIT_LOCKDOWN_PRINT_SETUP = 1 << 2,
+    BEDIT_LOCKDOWN_SAVE_TO_DISK = 1 << 3
 } BeditLockdownMask;
 
 /* We need to define this here to avoid problems with bindings and gsettings */
-#define GEDIT_LOCKDOWN_ALL 0xF
+#define BEDIT_LOCKDOWN_ALL 0xF
 
 BeditWindow *bedit_app_create_window(BeditApp *app, GdkScreen *screen);
 
@@ -80,5 +80,5 @@ gboolean bedit_app_process_window_event(
 
 G_END_DECLS
 
-#endif /* GEDIT_APP_H */
+#endif /* BEDIT_APP_H */
 

@@ -69,7 +69,7 @@ libbedit_reference_ignored_h = [
 
 libbedit_reference_scan_args = [
   '--rebuild-types',
-  '--deprecated-guards=GEDIT_DISABLE_DEPRECATED',
+  '--deprecated-guards=BEDIT_DISABLE_DEPRECATED',
   '--ignore-headers=' + ' '.join(libbedit_reference_ignored_h),
 ]
 

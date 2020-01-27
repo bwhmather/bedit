@@ -272,7 +272,7 @@ static void connect_stack_signals(BeditMenuStackSwitcher *switcher) {
 
 void bedit_menu_stack_switcher_set_stack(
     BeditMenuStackSwitcher *switcher, GtkStack *stack) {
-    g_return_if_fail(GEDIT_IS_MENU_STACK_SWITCHER(switcher));
+    g_return_if_fail(BEDIT_IS_MENU_STACK_SWITCHER(switcher));
     g_return_if_fail(stack == NULL || GTK_IS_STACK(stack));
 
     if (switcher->stack == stack)
@@ -297,14 +297,14 @@ void bedit_menu_stack_switcher_set_stack(
 
 GtkStack *bedit_menu_stack_switcher_get_stack(
     BeditMenuStackSwitcher *switcher) {
-    g_return_val_if_fail(GEDIT_IS_MENU_STACK_SWITCHER(switcher), NULL);
+    g_return_val_if_fail(BEDIT_IS_MENU_STACK_SWITCHER(switcher), NULL);
 
     return switcher->stack;
 }
 
 static void bedit_menu_stack_switcher_get_property(
     GObject *object, guint prop_id, GValue *value, GParamSpec *pspec) {
-    BeditMenuStackSwitcher *switcher = GEDIT_MENU_STACK_SWITCHER(object);
+    BeditMenuStackSwitcher *switcher = BEDIT_MENU_STACK_SWITCHER(object);
 
     switch (prop_id) {
     case PROP_STACK:
@@ -319,7 +319,7 @@ static void bedit_menu_stack_switcher_get_property(
 
 static void bedit_menu_stack_switcher_set_property(
     GObject *object, guint prop_id, const GValue *value, GParamSpec *pspec) {
-    BeditMenuStackSwitcher *switcher = GEDIT_MENU_STACK_SWITCHER(object);
+    BeditMenuStackSwitcher *switcher = BEDIT_MENU_STACK_SWITCHER(object);
 
     switch (prop_id) {
     case PROP_STACK:
@@ -334,7 +334,7 @@ static void bedit_menu_stack_switcher_set_property(
 }
 
 static void bedit_menu_stack_switcher_dispose(GObject *object) {
-    BeditMenuStackSwitcher *switcher = GEDIT_MENU_STACK_SWITCHER(object);
+    BeditMenuStackSwitcher *switcher = BEDIT_MENU_STACK_SWITCHER(object);
 
     bedit_menu_stack_switcher_set_stack(switcher, NULL);
 
@@ -342,7 +342,7 @@ static void bedit_menu_stack_switcher_dispose(GObject *object) {
 }
 
 static void bedit_menu_stack_switcher_finalize(GObject *object) {
-    BeditMenuStackSwitcher *switcher = GEDIT_MENU_STACK_SWITCHER(object);
+    BeditMenuStackSwitcher *switcher = BEDIT_MENU_STACK_SWITCHER(object);
 
     g_hash_table_destroy(switcher->buttons);
 
@@ -366,6 +366,6 @@ static void bedit_menu_stack_switcher_class_init(
 }
 
 GtkWidget *bedit_menu_stack_switcher_new(void) {
-    return g_object_new(GEDIT_TYPE_MENU_STACK_SWITCHER, NULL);
+    return g_object_new(BEDIT_TYPE_MENU_STACK_SWITCHER, NULL);
 }
 

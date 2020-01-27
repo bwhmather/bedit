@@ -44,10 +44,10 @@ G_DEFINE_DYNAMIC_TYPE_EXTENDED(
     BeditSpellAppActivatable, bedit_spell_app_activatable, G_TYPE_OBJECT, 0,
     G_ADD_PRIVATE_DYNAMIC(BeditSpellAppActivatable)
         G_IMPLEMENT_INTERFACE_DYNAMIC(
-            GEDIT_TYPE_APP_ACTIVATABLE, bedit_app_activatable_iface_init))
+            BEDIT_TYPE_APP_ACTIVATABLE, bedit_app_activatable_iface_init))
 
 static void bedit_spell_app_activatable_dispose(GObject *object) {
-    BeditSpellAppActivatable *activatable = GEDIT_SPELL_APP_ACTIVATABLE(object);
+    BeditSpellAppActivatable *activatable = BEDIT_SPELL_APP_ACTIVATABLE(object);
     BeditSpellAppActivatablePrivate *priv =
         bedit_spell_app_activatable_get_instance_private(activatable);
 
@@ -59,13 +59,13 @@ static void bedit_spell_app_activatable_dispose(GObject *object) {
 
 static void bedit_spell_app_activatable_set_property(
     GObject *object, guint prop_id, const GValue *value, GParamSpec *pspec) {
-    BeditSpellAppActivatable *activatable = GEDIT_SPELL_APP_ACTIVATABLE(object);
+    BeditSpellAppActivatable *activatable = BEDIT_SPELL_APP_ACTIVATABLE(object);
     BeditSpellAppActivatablePrivate *priv =
         bedit_spell_app_activatable_get_instance_private(activatable);
 
     switch (prop_id) {
     case PROP_APP:
-        priv->app = GEDIT_APP(g_value_dup_object(value));
+        priv->app = BEDIT_APP(g_value_dup_object(value));
         break;
 
     default:
@@ -76,7 +76,7 @@ static void bedit_spell_app_activatable_set_property(
 
 static void bedit_spell_app_activatable_get_property(
     GObject *object, guint prop_id, GValue *value, GParamSpec *pspec) {
-    BeditSpellAppActivatable *activatable = GEDIT_SPELL_APP_ACTIVATABLE(object);
+    BeditSpellAppActivatable *activatable = BEDIT_SPELL_APP_ACTIVATABLE(object);
     BeditSpellAppActivatablePrivate *priv =
         bedit_spell_app_activatable_get_instance_private(activatable);
 
@@ -110,7 +110,7 @@ static void bedit_spell_app_activatable_init(BeditSpellAppActivatable *self) {}
 static void bedit_spell_app_activatable_activate(
     BeditAppActivatable *activatable) {
     BeditSpellAppActivatable *app_activatable =
-        GEDIT_SPELL_APP_ACTIVATABLE(activatable);
+        BEDIT_SPELL_APP_ACTIVATABLE(activatable);
     BeditSpellAppActivatablePrivate *priv =
         bedit_spell_app_activatable_get_instance_private(app_activatable);
     GMenuItem *item;
@@ -138,7 +138,7 @@ static void bedit_spell_app_activatable_activate(
 static void bedit_spell_app_activatable_deactivate(
     BeditAppActivatable *activatable) {
     BeditSpellAppActivatable *app_activatable =
-        GEDIT_SPELL_APP_ACTIVATABLE(activatable);
+        BEDIT_SPELL_APP_ACTIVATABLE(activatable);
     BeditSpellAppActivatablePrivate *priv =
         bedit_spell_app_activatable_get_instance_private(app_activatable);
 
@@ -158,7 +158,7 @@ void bedit_spell_app_activatable_register(GTypeModule *module) {
     bedit_spell_app_activatable_register_type(module);
 
     peas_object_module_register_extension_type(
-        PEAS_OBJECT_MODULE(module), GEDIT_TYPE_APP_ACTIVATABLE,
-        GEDIT_TYPE_SPELL_APP_ACTIVATABLE);
+        PEAS_OBJECT_MODULE(module), BEDIT_TYPE_APP_ACTIVATABLE,
+        BEDIT_TYPE_SPELL_APP_ACTIVATABLE);
 }
 

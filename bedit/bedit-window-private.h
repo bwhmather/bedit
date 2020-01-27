@@ -18,8 +18,8 @@
  * along with this program; if not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef GEDIT_WINDOW_PRIVATE_H
-#define GEDIT_WINDOW_PRIVATE_H
+#ifndef BEDIT_WINDOW_PRIVATE_H
+#define BEDIT_WINDOW_PRIVATE_H
 
 #include <libpeas/peas-extension-set.h>
 
@@ -111,5 +111,5 @@ struct _BeditWindowPrivate {
 
 G_END_DECLS
 
-#endif /* GEDIT_WINDOW_PRIVATE_H  */
+#endif /* BEDIT_WINDOW_PRIVATE_H  */
 

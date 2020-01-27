@@ -46,9 +46,9 @@ the latest Xcode version to support it is 4.3.3, which can be downloaded
 at [2] (links subject to change).
 
 It is also possible to build bedit against a different SDK by exporting
-the GEDIT_SDK environment variable (defaults to 10.7). For example:
+the BEDIT_SDK environment variable (defaults to 10.7). For example:
 
-    export GEDIT_SDK=10.9
+    export BEDIT_SDK=10.9
     ./build all
 
 Would build bedit against the 10.9 SDK and install in .build/10.9

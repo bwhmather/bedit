@@ -58,7 +58,7 @@ G_DEFINE_TYPE_EXTENDED (BeditFileChooserDialogOSX,
                         bedit_file_chooser_dialog_osx,
                         G_TYPE_OBJECT,
                         0,
-                        G_IMPLEMENT_INTERFACE (GEDIT_TYPE_FILE_CHOOSER_DIALOG,
+                        G_IMPLEMENT_INTERFACE (BEDIT_TYPE_FILE_CHOOSER_DIALOG,
                                                bedit_file_chooser_dialog_osx_chooser_init))
 
 @interface NewlineItem : NSMenuItem
@@ -139,7 +139,7 @@ static void
 chooser_set_encoding (BeditFileChooserDialog  *dialog,
                       const GtkSourceEncoding *encoding)
 {
-	BeditFileChooserDialogOSX *dialog_osx = GEDIT_FILE_CHOOSER_DIALOG_OSX (dialog);
+	BeditFileChooserDialogOSX *dialog_osx = BEDIT_FILE_CHOOSER_DIALOG_OSX (dialog);
 	gint i;
 
 	if (dialog_osx->encoding_button == NULL)
@@ -170,7 +170,7 @@ chooser_set_encoding (BeditFileChooserDialog  *dialog,
 static const GtkSourceEncoding *
 chooser_get_encoding (BeditFileChooserDialog *dialog)
 {
-	BeditFileChooserDialogOSX *dialog_osx = GEDIT_FILE_CHOOSER_DIALOG_OSX (dialog);
+	BeditFileChooserDialogOSX *dialog_osx = BEDIT_FILE_CHOOSER_DIALOG_OSX (dialog);
 	NSMenuItem *item;
 
 	if (dialog_osx->encoding_button == NULL)
@@ -192,7 +192,7 @@ static void
 chooser_set_newline_type (BeditFileChooserDialog *dialog,
                           GtkSourceNewlineType    newline_type)
 {
-	BeditFileChooserDialogOSX *dialog_osx = GEDIT_FILE_CHOOSER_DIALOG_OSX (dialog);
+	BeditFileChooserDialogOSX *dialog_osx = BEDIT_FILE_CHOOSER_DIALOG_OSX (dialog);
 	gint i;
 
 	if (dialog_osx->newline_button == NULL)
@@ -218,7 +218,7 @@ chooser_set_newline_type (BeditFileChooserDialog *dialog,
 static GtkSourceNewlineType
 chooser_get_newline_type (BeditFileChooserDialog *dialog)
 {
-	BeditFileChooserDialogOSX *dialog_osx = GEDIT_FILE_CHOOSER_DIALOG_OSX (dialog);
+	BeditFileChooserDialogOSX *dialog_osx = BEDIT_FILE_CHOOSER_DIALOG_OSX (dialog);
 
 	if (dialog_osx->newline_button == NULL)
 	{
@@ -233,7 +233,7 @@ static void
 chooser_set_current_folder (BeditFileChooserDialog *dialog,
                             GFile                  *folder)
 {
-	BeditFileChooserDialogOSX *dialog_osx = GEDIT_FILE_CHOOSER_DIALOG_OSX (dialog);
+	BeditFileChooserDialogOSX *dialog_osx = BEDIT_FILE_CHOOSER_DIALOG_OSX (dialog);
 
 	if (folder != NULL)
 	{
@@ -249,7 +249,7 @@ static void
 chooser_set_current_name (BeditFileChooserDialog *dialog,
                           const gchar            *name)
 {
-	BeditFileChooserDialogOSX *dialog_osx = GEDIT_FILE_CHOOSER_DIALOG_OSX (dialog);
+	BeditFileChooserDialogOSX *dialog_osx = BEDIT_FILE_CHOOSER_DIALOG_OSX (dialog);
 
 	[dialog_osx->panel setNameFieldStringValue:[NSString stringWithUTF8String:name]];
 }
@@ -292,7 +292,7 @@ ns_url_to_g_file (NSURL *url)
 static GFile *
 chooser_get_file (BeditFileChooserDialog *dialog)
 {
-	BeditFileChooserDialogOSX *dialog_osx = GEDIT_FILE_CHOOSER_DIALOG_OSX (dialog);
+	BeditFileChooserDialogOSX *dialog_osx = BEDIT_FILE_CHOOSER_DIALOG_OSX (dialog);
 
 	if (dialog_osx->is_open)
 	{
@@ -320,7 +320,7 @@ chooser_get_file (BeditFileChooserDialog *dialog)
 static GSList *
 chooser_get_files (BeditFileChooserDialog *dialog)
 {
-	BeditFileChooserDialogOSX *dialog_osx = GEDIT_FILE_CHOOSER_DIALOG_OSX (dialog);
+	BeditFileChooserDialogOSX *dialog_osx = BEDIT_FILE_CHOOSER_DIALOG_OSX (dialog);
 
 	GSList *ret = NULL;
 
@@ -372,7 +372,7 @@ fill_encodings (BeditFileChooserDialogOSX *dialog)
 	gint first = 0;
 	const GtkSourceEncoding *encoding;
 
-	encoding = bedit_file_chooser_dialog_get_encoding (GEDIT_FILE_CHOOSER_DIALOG (dialog));
+	encoding = bedit_file_chooser_dialog_get_encoding (BEDIT_FILE_CHOOSER_DIALOG (dialog));
 
 	button = dialog->encoding_button;
 	menu = [button menu];
@@ -403,7 +403,7 @@ fill_encodings (BeditFileChooserDialogOSX *dialog)
 		{
 			i++;
 
-			if ((dialog->flags & GEDIT_FILE_CHOOSER_OPEN) != 0 && first == 0)
+			if ((dialog->flags & BEDIT_FILE_CHOOSER_OPEN) != 0 && first == 0)
 			{
 				first = i;
 			}
@@ -480,7 +480,7 @@ dialog_response_cb (GtkDialog                 *dialog,
 {
 	GtkWidget *dialog;
 
-	bedit_file_chooser_dialog_set_encoding (GEDIT_FILE_CHOOSER_DIALOG (_dialog),
+	bedit_file_chooser_dialog_set_encoding (BEDIT_FILE_CHOOSER_DIALOG (_dialog),
 	                                        _current);
 
 	dialog = bedit_encodings_dialog_new ();
@@ -523,7 +523,7 @@ dialog_response_cb (GtkDialog                 *dialog,
 
 -(void)selectionChanged:(id)sender
 {
-	_current = bedit_file_chooser_dialog_get_encoding (GEDIT_FILE_CHOOSER_DIALOG (_dialog));
+	_current = bedit_file_chooser_dialog_get_encoding (BEDIT_FILE_CHOOSER_DIALOG (_dialog));
 }
 
 @end
@@ -555,7 +555,7 @@ create_encoding_combo (BeditFileChooserDialogOSX *dialog,
 
 	menu = [button menu];
 
-	if ((dialog->flags & GEDIT_FILE_CHOOSER_OPEN) != 0)
+	if ((dialog->flags & BEDIT_FILE_CHOOSER_OPEN) != 0)
 	{
 		NSString *title;
 
@@ -668,8 +668,8 @@ create_extra_widget (BeditFileChooserDialogOSX *dialog)
 
 	flags = dialog->flags;
 
-	needs_encoding = (flags & GEDIT_FILE_CHOOSER_ENABLE_ENCODING) != 0;
-	needs_line_ending = (flags & GEDIT_FILE_CHOOSER_ENABLE_LINE_ENDING) != 0;
+	needs_encoding = (flags & BEDIT_FILE_CHOOSER_ENABLE_ENCODING) != 0;
+	needs_line_ending = (flags & BEDIT_FILE_CHOOSER_ENABLE_LINE_ENDING) != 0;
 
 	if (!needs_encoding && !needs_line_ending)
 	{
@@ -712,7 +712,7 @@ create_extra_widget (BeditFileChooserDialogOSX *dialog)
 static void
 chooser_show (BeditFileChooserDialog *dialog)
 {
-	BeditFileChooserDialogOSX *dialog_osx = GEDIT_FILE_CHOOSER_DIALOG_OSX (dialog);
+	BeditFileChooserDialogOSX *dialog_osx = BEDIT_FILE_CHOOSER_DIALOG_OSX (dialog);
 
 	if (dialog_osx->is_running)
 	{
@@ -760,7 +760,7 @@ chooser_show (BeditFileChooserDialog *dialog)
 static void
 chooser_hide (BeditFileChooserDialog *dialog)
 {
-	BeditFileChooserDialogOSX *dialog_osx = GEDIT_FILE_CHOOSER_DIALOG_OSX (dialog);
+	BeditFileChooserDialogOSX *dialog_osx = BEDIT_FILE_CHOOSER_DIALOG_OSX (dialog);
 
 	if (!dialog_osx->is_running || dialog_osx->panel == NULL)
 	{
@@ -773,7 +773,7 @@ chooser_hide (BeditFileChooserDialog *dialog)
 static void
 chooser_destroy (BeditFileChooserDialog *dialog)
 {
-	BeditFileChooserDialogOSX *dialog_osx = GEDIT_FILE_CHOOSER_DIALOG_OSX (dialog);
+	BeditFileChooserDialogOSX *dialog_osx = BEDIT_FILE_CHOOSER_DIALOG_OSX (dialog);
 
 	if (dialog_osx->parent != NULL)
 	{
@@ -800,7 +800,7 @@ static void
 chooser_set_modal (BeditFileChooserDialog *dialog,
                    gboolean is_modal)
 {
-	BeditFileChooserDialogOSX *dialog_osx = GEDIT_FILE_CHOOSER_DIALOG_OSX (dialog);
+	BeditFileChooserDialogOSX *dialog_osx = BEDIT_FILE_CHOOSER_DIALOG_OSX (dialog);
 
 	dialog_osx->is_modal = is_modal;
 }
@@ -832,7 +832,7 @@ bedit_file_chooser_dialog_osx_chooser_init (gpointer g_iface,
 static void
 bedit_file_chooser_dialog_osx_dispose (GObject *object)
 {
-	BeditFileChooserDialogOSX *dialog_osx = GEDIT_FILE_CHOOSER_DIALOG_OSX (object);
+	BeditFileChooserDialogOSX *dialog_osx = BEDIT_FILE_CHOOSER_DIALOG_OSX (object);
 
 	if (dialog_osx->panel != NULL)
 	{
@@ -886,7 +886,7 @@ static void
 on_parent_destroyed (GtkWindow                 *parent,
                      BeditFileChooserDialogOSX *dialog)
 {
-	chooser_destroy (GEDIT_FILE_CHOOSER_DIALOG (dialog));
+	chooser_destroy (BEDIT_FILE_CHOOSER_DIALOG (dialog));
 }
 
 BeditFileChooserDialog *
@@ -902,12 +902,12 @@ bedit_file_chooser_dialog_osx_create (const gchar             *title,
 	BeditFileChooserDialogOSX *ret;
 	gchar *nomnem;
 
-	ret = g_object_new (GEDIT_TYPE_FILE_CHOOSER_DIALOG_OSX, NULL);
+	ret = g_object_new (BEDIT_TYPE_FILE_CHOOSER_DIALOG_OSX, NULL);
 
 	ret->cancel_response = cancel_response;
 	ret->accept_response = accept_response;
 
-	if ((flags & GEDIT_FILE_CHOOSER_SAVE) != 0)
+	if ((flags & BEDIT_FILE_CHOOSER_SAVE) != 0)
 	{
 		NSSavePanel *panel = [[NSSavePanel savePanel] retain];
 
@@ -951,6 +951,6 @@ bedit_file_chooser_dialog_osx_create (const gchar             *title,
 	create_extra_widget (ret);
 
 	[ret->panel setTitle:[NSString stringWithUTF8String:title]];
-	return GEDIT_FILE_CHOOSER_DIALOG (ret);
+	return BEDIT_FILE_CHOOSER_DIALOG (ret);
 }
 

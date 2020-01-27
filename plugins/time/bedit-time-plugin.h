@@ -17,8 +17,8 @@
  * along with this program; if not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef GEDIT_TIME_PLUGIN_H
-#define GEDIT_TIME_PLUGIN_H
+#ifndef BEDIT_TIME_PLUGIN_H
+#define BEDIT_TIME_PLUGIN_H
 
 #include <glib-object.h>
 #include <glib.h>
@@ -27,18 +27,18 @@
 
 G_BEGIN_DECLS
 
-#define GEDIT_TYPE_TIME_PLUGIN (bedit_time_plugin_get_type())
-#define GEDIT_TIME_PLUGIN(o)                                                   \
-    (G_TYPE_CHECK_INSTANCE_CAST((o), GEDIT_TYPE_TIME_PLUGIN, BeditTimePlugin))
-#define GEDIT_TIME_PLUGIN_CLASS(k)                                             \
-    (G_TYPE_CHECK_CLASS_CAST((k), GEDIT_TYPE_TIME_PLUGIN, BeditTimePluginClass))
-#define GEDIT_IS_TIME_PLUGIN(o)                                                \
-    (G_TYPE_CHECK_INSTANCE_TYPE((o), GEDIT_TYPE_TIME_PLUGIN))
-#define GEDIT_IS_TIME_PLUGIN_CLASS(k)                                          \
-    (G_TYPE_CHECK_CLASS_TYPE((k), GEDIT_TYPE_TIME_PLUGIN))
-#define GEDIT_TIME_PLUGIN_GET_CLASS(o)                                         \
+#define BEDIT_TYPE_TIME_PLUGIN (bedit_time_plugin_get_type())
+#define BEDIT_TIME_PLUGIN(o)                                                   \
+    (G_TYPE_CHECK_INSTANCE_CAST((o), BEDIT_TYPE_TIME_PLUGIN, BeditTimePlugin))
+#define BEDIT_TIME_PLUGIN_CLASS(k)                                             \
+    (G_TYPE_CHECK_CLASS_CAST((k), BEDIT_TYPE_TIME_PLUGIN, BeditTimePluginClass))
+#define BEDIT_IS_TIME_PLUGIN(o)                                                \
+    (G_TYPE_CHECK_INSTANCE_TYPE((o), BEDIT_TYPE_TIME_PLUGIN))
+#define BEDIT_IS_TIME_PLUGIN_CLASS(k)                                          \
+    (G_TYPE_CHECK_CLASS_TYPE((k), BEDIT_TYPE_TIME_PLUGIN))
+#define BEDIT_TIME_PLUGIN_GET_CLASS(o)                                         \
     (G_TYPE_INSTANCE_GET_CLASS(                                                \
-        (o), GEDIT_TYPE_TIME_PLUGIN, BeditTimePluginClass))
+        (o), BEDIT_TYPE_TIME_PLUGIN, BeditTimePluginClass))
 
 typedef struct _BeditTimePlugin BeditTimePlugin;
 typedef struct _BeditTimePluginPrivate BeditTimePluginPrivate;
@@ -61,5 +61,5 @@ G_MODULE_EXPORT void peas_register_types(PeasObjectModule *module);
 
 G_END_DECLS
 
-#endif /* GEDIT_TIME_PLUGIN_H */
+#endif /* BEDIT_TIME_PLUGIN_H */
 

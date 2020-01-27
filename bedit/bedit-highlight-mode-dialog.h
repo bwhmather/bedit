@@ -18,19 +18,19 @@
  * along with bedit. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef GEDIT_HIGHLIGHT_MODE_DIALOG_H
-#define GEDIT_HIGHLIGHT_MODE_DIALOG_H
+#ifndef BEDIT_HIGHLIGHT_MODE_DIALOG_H
+#define BEDIT_HIGHLIGHT_MODE_DIALOG_H
 
 #include <glib.h>
 #include "bedit-highlight-mode-selector.h"
 
 G_BEGIN_DECLS
 
-#define GEDIT_TYPE_HIGHLIGHT_MODE_DIALOG                                       \
+#define BEDIT_TYPE_HIGHLIGHT_MODE_DIALOG                                       \
     (bedit_highlight_mode_dialog_get_type())
 
 G_DECLARE_FINAL_TYPE(
-    BeditHighlightModeDialog, bedit_highlight_mode_dialog, GEDIT,
+    BeditHighlightModeDialog, bedit_highlight_mode_dialog, BEDIT,
     HIGHLIGHT_MODE_DIALOG, GtkDialog)
 
 GtkWidget *bedit_highlight_mode_dialog_new(GtkWindow *parent);
@@ -40,5 +40,5 @@ BeditHighlightModeSelector *bedit_highlight_mode_dialog_get_selector(
 
 G_END_DECLS
 
-#endif /* GEDIT_HIGHLIGHT_MODE_DIALOG_H */
+#endif /* BEDIT_HIGHLIGHT_MODE_DIALOG_H */
 

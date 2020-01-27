@@ -75,9 +75,9 @@ static void bedit_window_activatable_iface_init(
 G_DEFINE_DYNAMIC_TYPE_EXTENDED(
     BeditDocinfoPlugin, bedit_docinfo_plugin, PEAS_TYPE_EXTENSION_BASE, 0,
     G_IMPLEMENT_INTERFACE_DYNAMIC(
-        GEDIT_TYPE_APP_ACTIVATABLE, bedit_app_activatable_iface_init)
+        BEDIT_TYPE_APP_ACTIVATABLE, bedit_app_activatable_iface_init)
         G_IMPLEMENT_INTERFACE_DYNAMIC(
-            GEDIT_TYPE_WINDOW_ACTIVATABLE, bedit_window_activatable_iface_init)
+            BEDIT_TYPE_WINDOW_ACTIVATABLE, bedit_window_activatable_iface_init)
             G_ADD_PRIVATE_DYNAMIC(BeditDocinfoPlugin))
 
 static void calculate_info(
@@ -399,7 +399,7 @@ static void bedit_docinfo_plugin_init(BeditDocinfoPlugin *plugin) {
 }
 
 static void bedit_docinfo_plugin_dispose(GObject *object) {
-    BeditDocinfoPlugin *plugin = GEDIT_DOCINFO_PLUGIN(object);
+    BeditDocinfoPlugin *plugin = BEDIT_DOCINFO_PLUGIN(object);
 
     bedit_debug_message(DEBUG_PLUGINS, "BeditDocinfoPlugin dispose");
 
@@ -419,14 +419,14 @@ static void bedit_docinfo_plugin_finalize(GObject *object) {
 
 static void bedit_docinfo_plugin_set_property(
     GObject *object, guint prop_id, const GValue *value, GParamSpec *pspec) {
-    BeditDocinfoPlugin *plugin = GEDIT_DOCINFO_PLUGIN(object);
+    BeditDocinfoPlugin *plugin = BEDIT_DOCINFO_PLUGIN(object);
 
     switch (prop_id) {
     case PROP_WINDOW:
-        plugin->priv->window = GEDIT_WINDOW(g_value_dup_object(value));
+        plugin->priv->window = BEDIT_WINDOW(g_value_dup_object(value));
         break;
     case PROP_APP:
-        plugin->priv->app = GEDIT_APP(g_value_dup_object(value));
+        plugin->priv->app = BEDIT_APP(g_value_dup_object(value));
         break;
     default:
         G_OBJECT_WARN_INVALID_PROPERTY_ID(object, prop_id, pspec);
@@ -436,7 +436,7 @@ static void bedit_docinfo_plugin_set_property(
 
 static void bedit_docinfo_plugin_get_property(
     GObject *object, guint prop_id, GValue *value, GParamSpec *pspec) {
-    BeditDocinfoPlugin *plugin = GEDIT_DOCINFO_PLUGIN(object);
+    BeditDocinfoPlugin *plugin = BEDIT_DOCINFO_PLUGIN(object);
 
     switch (prop_id) {
     case PROP_WINDOW:
@@ -476,7 +476,7 @@ static void bedit_docinfo_plugin_app_activate(
 
     bedit_debug(DEBUG_PLUGINS);
 
-    priv = GEDIT_DOCINFO_PLUGIN(activatable)->priv;
+    priv = BEDIT_DOCINFO_PLUGIN(activatable)->priv;
 
     priv->menu_ext =
         bedit_app_activatable_extend_menu(activatable, "tools-section");
@@ -491,7 +491,7 @@ static void bedit_docinfo_plugin_app_deactivate(
 
     bedit_debug(DEBUG_PLUGINS);
 
-    priv = GEDIT_DOCINFO_PLUGIN(activatable)->priv;
+    priv = BEDIT_DOCINFO_PLUGIN(activatable)->priv;
 
     g_clear_object(&priv->menu_ext);
 }
@@ -502,14 +502,14 @@ static void bedit_docinfo_plugin_window_activate(
 
     bedit_debug(DEBUG_PLUGINS);
 
-    priv = GEDIT_DOCINFO_PLUGIN(activatable)->priv;
+    priv = BEDIT_DOCINFO_PLUGIN(activatable)->priv;
 
     priv->action = g_simple_action_new("docinfo", NULL);
     g_signal_connect(
         priv->action, "activate", G_CALLBACK(docinfo_cb), activatable);
     g_action_map_add_action(G_ACTION_MAP(priv->window), G_ACTION(priv->action));
 
-    update_ui(GEDIT_DOCINFO_PLUGIN(activatable));
+    update_ui(BEDIT_DOCINFO_PLUGIN(activatable));
 }
 
 static void bedit_docinfo_plugin_window_deactivate(
@@ -518,7 +518,7 @@ static void bedit_docinfo_plugin_window_deactivate(
 
     bedit_debug(DEBUG_PLUGINS);
 
-    priv = GEDIT_DOCINFO_PLUGIN(activatable)->priv;
+    priv = BEDIT_DOCINFO_PLUGIN(activatable)->priv;
 
     g_action_map_remove_action(G_ACTION_MAP(priv->window), "docinfo");
 }
@@ -527,7 +527,7 @@ static void bedit_docinfo_plugin_window_update_state(
     BeditWindowActivatable *activatable) {
     bedit_debug(DEBUG_PLUGINS);
 
-    update_ui(GEDIT_DOCINFO_PLUGIN(activatable));
+    update_ui(BEDIT_DOCINFO_PLUGIN(activatable));
 }
 
 static void bedit_docinfo_plugin_class_init(BeditDocinfoPluginClass *klass) {
@@ -562,8 +562,8 @@ G_MODULE_EXPORT void peas_register_types(PeasObjectModule *module) {
     bedit_docinfo_plugin_register_type(G_TYPE_MODULE(module));
 
     peas_object_module_register_extension_type(
-        module, GEDIT_TYPE_APP_ACTIVATABLE, GEDIT_TYPE_DOCINFO_PLUGIN);
+        module, BEDIT_TYPE_APP_ACTIVATABLE, BEDIT_TYPE_DOCINFO_PLUGIN);
     peas_object_module_register_extension_type(
-        module, GEDIT_TYPE_WINDOW_ACTIVATABLE, GEDIT_TYPE_DOCINFO_PLUGIN);
+        module, BEDIT_TYPE_WINDOW_ACTIVATABLE, BEDIT_TYPE_DOCINFO_PLUGIN);
 }
 

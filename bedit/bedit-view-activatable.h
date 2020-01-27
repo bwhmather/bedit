@@ -18,17 +18,17 @@
  *  along with this program; if not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef GEDIT_VIEW_ACTIVATABLE_H
-#define GEDIT_VIEW_ACTIVATABLE_H
+#ifndef BEDIT_VIEW_ACTIVATABLE_H
+#define BEDIT_VIEW_ACTIVATABLE_H
 
 #include <glib-object.h>
 
 G_BEGIN_DECLS
 
-#define GEDIT_TYPE_VIEW_ACTIVATABLE (bedit_view_activatable_get_type())
+#define BEDIT_TYPE_VIEW_ACTIVATABLE (bedit_view_activatable_get_type())
 
 G_DECLARE_INTERFACE(
-    BeditViewActivatable, bedit_view_activatable, GEDIT, VIEW_ACTIVATABLE,
+    BeditViewActivatable, bedit_view_activatable, BEDIT, VIEW_ACTIVATABLE,
     GObject)
 
 struct _BeditViewActivatableInterface {
@@ -44,5 +44,5 @@ void bedit_view_activatable_deactivate(BeditViewActivatable *activatable);
 
 G_END_DECLS
 
-#endif /* GEDIT_VIEW_ACTIVATABLE_H */
+#endif /* BEDIT_VIEW_ACTIVATABLE_H */
 

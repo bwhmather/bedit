@@ -18,8 +18,8 @@
  * along with this program; if not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef GEDIT_DOCUMENTS_PANEL_H
-#define GEDIT_DOCUMENTS_PANEL_H
+#ifndef BEDIT_DOCUMENTS_PANEL_H
+#define BEDIT_DOCUMENTS_PANEL_H
 
 #include <gtk/gtk.h>
 
@@ -27,14 +27,14 @@
 
 G_BEGIN_DECLS
 
-#define GEDIT_TYPE_DOCUMENTS_PANEL (bedit_documents_panel_get_type())
+#define BEDIT_TYPE_DOCUMENTS_PANEL (bedit_documents_panel_get_type())
 
 G_DECLARE_FINAL_TYPE(
-    BeditDocumentsPanel, bedit_documents_panel, GEDIT, DOCUMENTS_PANEL, GtkBox)
+    BeditDocumentsPanel, bedit_documents_panel, BEDIT, DOCUMENTS_PANEL, GtkBox)
 
 GtkWidget *bedit_documents_panel_new(BeditWindow *window);
 
 G_END_DECLS
 
-#endif /* GEDIT_DOCUMENTS_PANEL_H  */
+#endif /* BEDIT_DOCUMENTS_PANEL_H  */
 

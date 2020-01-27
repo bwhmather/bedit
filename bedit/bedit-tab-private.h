@@ -18,8 +18,8 @@
  * along with this program; if not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef GEDIT_TAB_PRIVATE_H
-#define GEDIT_TAB_PRIVATE_H
+#ifndef BEDIT_TAB_PRIVATE_H
+#define BEDIT_TAB_PRIVATE_H
 
 #include "bedit-tab.h"
 #include "bedit-view-frame.h"
@@ -68,5 +68,5 @@ void _bedit_tab_set_network_available(BeditTab *tab, gboolean enable);
 
 G_END_DECLS
 
-#endif /* GEDIT_TAB_PRIVATE_H */
+#endif /* BEDIT_TAB_PRIVATE_H */
 

@@ -1,5 +1,5 @@
-#ifndef GEDIT_FILE_BROWER_MESSAGES_MESSAGES_H
-#define GEDIT_FILE_BROWER_MESSAGES_MESSAGES_H
+#ifndef BEDIT_FILE_BROWER_MESSAGES_MESSAGES_H
+#define BEDIT_FILE_BROWER_MESSAGES_MESSAGES_H
 
 #include "bedit-file-browser-message-activation.h"
 #include "bedit-file-browser-message-add-filter.h"
@@ -12,4 +12,4 @@
 #include "bedit-file-browser-message-set-markup.h"
 #include "bedit-file-browser-message-set-root.h"
 
-#endif /* GEDIT_FILE_BROWER_MESSAGES_MESSAGES_H */
+#endif /* BEDIT_FILE_BROWER_MESSAGES_MESSAGES_H */

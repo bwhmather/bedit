@@ -20,8 +20,8 @@
  * along with this program; if not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef GEDIT_DEBUG_H
-#define GEDIT_DEBUG_H
+#ifndef BEDIT_DEBUG_H
+#define BEDIT_DEBUG_H
 
 #include <glib.h>
 
@@ -31,37 +31,37 @@
  * Enumeration of debug sections.
  *
  * Debugging output for a section is enabled by setting an environment variable
- * of the same name. For example, setting the <code>GEDIT_DEBUG_PLUGINS</code>
+ * of the same name. For example, setting the <code>BEDIT_DEBUG_PLUGINS</code>
  * environment variable enables all debugging output for the
- * %GEDIT_DEBUG_PLUGINS section. Setting the special environment variable
- * <code>GEDIT_DEBUG</code> enables output for all sections.
+ * %BEDIT_DEBUG_PLUGINS section. Setting the special environment variable
+ * <code>BEDIT_DEBUG</code> enables output for all sections.
  */
 typedef enum {
-    GEDIT_NO_DEBUG = 0,
-    GEDIT_DEBUG_VIEW = 1 << 0,
-    GEDIT_DEBUG_PREFS = 1 << 1,
-    GEDIT_DEBUG_WINDOW = 1 << 2,
-    GEDIT_DEBUG_PANEL = 1 << 3,
-    GEDIT_DEBUG_PLUGINS = 1 << 4,
-    GEDIT_DEBUG_TAB = 1 << 5,
-    GEDIT_DEBUG_DOCUMENT = 1 << 6,
-    GEDIT_DEBUG_COMMANDS = 1 << 7,
-    GEDIT_DEBUG_APP = 1 << 8,
-    GEDIT_DEBUG_UTILS = 1 << 9,
-    GEDIT_DEBUG_METADATA = 1 << 10,
+    BEDIT_NO_DEBUG = 0,
+    BEDIT_DEBUG_VIEW = 1 << 0,
+    BEDIT_DEBUG_PREFS = 1 << 1,
+    BEDIT_DEBUG_WINDOW = 1 << 2,
+    BEDIT_DEBUG_PANEL = 1 << 3,
+    BEDIT_DEBUG_PLUGINS = 1 << 4,
+    BEDIT_DEBUG_TAB = 1 << 5,
+    BEDIT_DEBUG_DOCUMENT = 1 << 6,
+    BEDIT_DEBUG_COMMANDS = 1 << 7,
+    BEDIT_DEBUG_APP = 1 << 8,
+    BEDIT_DEBUG_UTILS = 1 << 9,
+    BEDIT_DEBUG_METADATA = 1 << 10,
 } BeditDebugSection;
 
-#define DEBUG_VIEW GEDIT_DEBUG_VIEW, __FILE__, __LINE__, G_STRFUNC
-#define DEBUG_PREFS GEDIT_DEBUG_PREFS, __FILE__, __LINE__, G_STRFUNC
-#define DEBUG_WINDOW GEDIT_DEBUG_WINDOW, __FILE__, __LINE__, G_STRFUNC
-#define DEBUG_PANEL GEDIT_DEBUG_PANEL, __FILE__, __LINE__, G_STRFUNC
-#define DEBUG_PLUGINS GEDIT_DEBUG_PLUGINS, __FILE__, __LINE__, G_STRFUNC
-#define DEBUG_TAB GEDIT_DEBUG_TAB, __FILE__, __LINE__, G_STRFUNC
-#define DEBUG_DOCUMENT GEDIT_DEBUG_DOCUMENT, __FILE__, __LINE__, G_STRFUNC
-#define DEBUG_COMMANDS GEDIT_DEBUG_COMMANDS, __FILE__, __LINE__, G_STRFUNC
-#define DEBUG_APP GEDIT_DEBUG_APP, __FILE__, __LINE__, G_STRFUNC
-#define DEBUG_UTILS GEDIT_DEBUG_UTILS, __FILE__, __LINE__, G_STRFUNC
-#define DEBUG_METADATA GEDIT_DEBUG_METADATA, __FILE__, __LINE__, G_STRFUNC
+#define DEBUG_VIEW BEDIT_DEBUG_VIEW, __FILE__, __LINE__, G_STRFUNC
+#define DEBUG_PREFS BEDIT_DEBUG_PREFS, __FILE__, __LINE__, G_STRFUNC
+#define DEBUG_WINDOW BEDIT_DEBUG_WINDOW, __FILE__, __LINE__, G_STRFUNC
+#define DEBUG_PANEL BEDIT_DEBUG_PANEL, __FILE__, __LINE__, G_STRFUNC
+#define DEBUG_PLUGINS BEDIT_DEBUG_PLUGINS, __FILE__, __LINE__, G_STRFUNC
+#define DEBUG_TAB BEDIT_DEBUG_TAB, __FILE__, __LINE__, G_STRFUNC
+#define DEBUG_DOCUMENT BEDIT_DEBUG_DOCUMENT, __FILE__, __LINE__, G_STRFUNC
+#define DEBUG_COMMANDS BEDIT_DEBUG_COMMANDS, __FILE__, __LINE__, G_STRFUNC
+#define DEBUG_APP BEDIT_DEBUG_APP, __FILE__, __LINE__, G_STRFUNC
+#define DEBUG_UTILS BEDIT_DEBUG_UTILS, __FILE__, __LINE__, G_STRFUNC
+#define DEBUG_METADATA BEDIT_DEBUG_METADATA, __FILE__, __LINE__, G_STRFUNC
 
 void bedit_debug_init(void);
 
@@ -76,4 +76,4 @@ void bedit_debug_message(
 void bedit_debug_plugin_message(
     const gchar *file, gint line, const gchar *function, const gchar *message);
 
-#endif /* GEDIT_DEBUG_H */
+#endif /* BEDIT_DEBUG_H */

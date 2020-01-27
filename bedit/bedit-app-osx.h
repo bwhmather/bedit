@@ -20,16 +20,16 @@
  * Boston, MA  02110-1301  USA
  */
 
-#ifndef GEDIT_APP_OSX_H
-#define GEDIT_APP_OSX_H
+#ifndef BEDIT_APP_OSX_H
+#define BEDIT_APP_OSX_H
 
 #include "bedit-app.h"
 
 G_BEGIN_DECLS
 
-#define GEDIT_TYPE_APP_OSX (bedit_app_osx_get_type())
+#define BEDIT_TYPE_APP_OSX (bedit_app_osx_get_type())
 
-G_DECLARE_FINAL_TYPE(BeditAppOSX, bedit_app_osx, GEDIT, APP_OSX, BeditApp)
+G_DECLARE_FINAL_TYPE(BeditAppOSX, bedit_app_osx, BEDIT, APP_OSX, BeditApp)
 
 void bedit_app_osx_set_window_title(
     BeditAppOSX *app, BeditWindow *window, const gchar *title,
@@ -39,5 +39,5 @@ gboolean bedit_app_osx_show_url(BeditAppOSX *app, const gchar *url);
 
 G_END_DECLS
 
-#endif /* GEDIT_APP_OSX_H */
+#endif /* BEDIT_APP_OSX_H */
 

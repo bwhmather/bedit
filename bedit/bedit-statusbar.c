@@ -58,7 +58,7 @@ static gint get_overwrite_mode_length(void) {
 }
 
 static void bedit_statusbar_dispose(GObject *object) {
-    BeditStatusbar *statusbar = GEDIT_STATUSBAR(object);
+    BeditStatusbar *statusbar = BEDIT_STATUSBAR(object);
 
     if (statusbar->flash_timeout > 0) {
         g_source_remove(statusbar->flash_timeout);
@@ -109,7 +109,7 @@ static void bedit_statusbar_init(BeditStatusbar *statusbar) {
  * Return value: the new #BeditStatusbar object
  **/
 GtkWidget *bedit_statusbar_new(void) {
-    return GTK_WIDGET(g_object_new(GEDIT_TYPE_STATUSBAR, NULL));
+    return GTK_WIDGET(g_object_new(BEDIT_TYPE_STATUSBAR, NULL));
 }
 
 /**
@@ -123,7 +123,7 @@ void bedit_statusbar_set_overwrite(
     BeditStatusbar *statusbar, gboolean overwrite) {
     gchar *msg;
 
-    g_return_if_fail(GEDIT_IS_STATUSBAR(statusbar));
+    g_return_if_fail(BEDIT_IS_STATUSBAR(statusbar));
 
     msg = get_overwrite_mode_string(overwrite);
     gtk_label_set_text(GTK_LABEL(statusbar->overwrite_mode_label), msg);
@@ -131,7 +131,7 @@ void bedit_statusbar_set_overwrite(
 }
 
 void bedit_statusbar_clear_overwrite(BeditStatusbar *statusbar) {
-    g_return_if_fail(GEDIT_IS_STATUSBAR(statusbar));
+    g_return_if_fail(BEDIT_IS_STATUSBAR(statusbar));
 
     gtk_label_set_text(GTK_LABEL(statusbar->overwrite_mode_label), NULL);
 }
@@ -162,7 +162,7 @@ void bedit_statusbar_flash_message(
     va_list args;
     gchar *msg;
 
-    g_return_if_fail(GEDIT_IS_STATUSBAR(statusbar));
+    g_return_if_fail(BEDIT_IS_STATUSBAR(statusbar));
     g_return_if_fail(format != NULL);
 
     va_start(args, format);
@@ -191,26 +191,26 @@ void bedit_statusbar_flash_message(
 
 void bedit_statusbar_set_window_state(
     BeditStatusbar *statusbar, BeditWindowState state, gint num_of_errors) {
-    g_return_if_fail(GEDIT_IS_STATUSBAR(statusbar));
+    g_return_if_fail(BEDIT_IS_STATUSBAR(statusbar));
 
     gtk_widget_hide(statusbar->state_frame);
     gtk_widget_hide(statusbar->save_image);
     gtk_widget_hide(statusbar->load_image);
     gtk_widget_hide(statusbar->print_image);
 
-    if (state & GEDIT_WINDOW_STATE_SAVING) {
+    if (state & BEDIT_WINDOW_STATE_SAVING) {
         gtk_widget_show(statusbar->state_frame);
         gtk_widget_show(statusbar->save_image);
     }
-    if (state & GEDIT_WINDOW_STATE_LOADING) {
+    if (state & BEDIT_WINDOW_STATE_LOADING) {
         gtk_widget_show(statusbar->state_frame);
         gtk_widget_show(statusbar->load_image);
     }
-    if (state & GEDIT_WINDOW_STATE_PRINTING) {
+    if (state & BEDIT_WINDOW_STATE_PRINTING) {
         gtk_widget_show(statusbar->state_frame);
         gtk_widget_show(statusbar->print_image);
     }
-    if (state & GEDIT_WINDOW_STATE_ERROR) {
+    if (state & BEDIT_WINDOW_STATE_ERROR) {
         gchar *tip;
 
         tip = g_strdup_printf(

@@ -18,8 +18,8 @@
  * along with this program; if not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef GEDIT_FILE_BROWSER_MESSAGES_H
-#define GEDIT_FILE_BROWSER_MESSAGES_H
+#ifndef BEDIT_FILE_BROWSER_MESSAGES_H
+#define BEDIT_FILE_BROWSER_MESSAGES_H
 
 #include <bedit/bedit-message-bus.h>
 #include <bedit/bedit-window.h>
@@ -29,5 +29,5 @@ void bedit_file_browser_messages_register(
     BeditWindow *window, BeditFileBrowserWidget *widget);
 void bedit_file_browser_messages_unregister(BeditWindow *window);
 
-#endif /* GEDIT_FILE_BROWSER_MESSAGES_H */
+#endif /* BEDIT_FILE_BROWSER_MESSAGES_H */
 

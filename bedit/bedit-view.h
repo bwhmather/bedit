@@ -20,8 +20,8 @@
  * along with this program; if not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef GEDIT_VIEW_H
-#define GEDIT_VIEW_H
+#ifndef BEDIT_VIEW_H
+#define BEDIT_VIEW_H
 
 #include <gtk/gtk.h>
 
@@ -30,16 +30,16 @@
 
 G_BEGIN_DECLS
 
-#define GEDIT_TYPE_VIEW (bedit_view_get_type())
-#define GEDIT_VIEW(obj)                                                        \
-    (G_TYPE_CHECK_INSTANCE_CAST((obj), GEDIT_TYPE_VIEW, BeditView))
-#define GEDIT_VIEW_CLASS(klass)                                                \
-    (G_TYPE_CHECK_CLASS_CAST((klass), GEDIT_TYPE_VIEW, BeditViewClass))
-#define GEDIT_IS_VIEW(obj) (G_TYPE_CHECK_INSTANCE_TYPE((obj), GEDIT_TYPE_VIEW))
-#define GEDIT_IS_VIEW_CLASS(klass)                                             \
-    (G_TYPE_CHECK_CLASS_TYPE((klass), GEDIT_TYPE_VIEW))
-#define GEDIT_VIEW_GET_CLASS(obj)                                              \
-    (G_TYPE_INSTANCE_GET_CLASS((obj), GEDIT_TYPE_VIEW, BeditViewClass))
+#define BEDIT_TYPE_VIEW (bedit_view_get_type())
+#define BEDIT_VIEW(obj)                                                        \
+    (G_TYPE_CHECK_INSTANCE_CAST((obj), BEDIT_TYPE_VIEW, BeditView))
+#define BEDIT_VIEW_CLASS(klass)                                                \
+    (G_TYPE_CHECK_CLASS_CAST((klass), BEDIT_TYPE_VIEW, BeditViewClass))
+#define BEDIT_IS_VIEW(obj) (G_TYPE_CHECK_INSTANCE_TYPE((obj), BEDIT_TYPE_VIEW))
+#define BEDIT_IS_VIEW_CLASS(klass)                                             \
+    (G_TYPE_CHECK_CLASS_TYPE((klass), BEDIT_TYPE_VIEW))
+#define BEDIT_VIEW_GET_CLASS(obj)                                              \
+    (G_TYPE_INSTANCE_GET_CLASS((obj), BEDIT_TYPE_VIEW, BeditViewClass))
 
 typedef struct _BeditView BeditView;
 typedef struct _BeditViewClass BeditViewClass;
@@ -77,5 +77,5 @@ void bedit_view_set_font(
 
 G_END_DECLS
 
-#endif /* GEDIT_VIEW_H */
+#endif /* BEDIT_VIEW_H */
 

@@ -18,8 +18,8 @@
  * along with this program; if not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef GEDIT_APP_PRIVATE_H
-#define GEDIT_APP_PRIVATE_H
+#ifndef BEDIT_APP_PRIVATE_H
+#define BEDIT_APP_PRIVATE_H
 
 #include "bedit-app.h"
 #include "bedit-menu-extension.h"
@@ -60,5 +60,5 @@ BeditMenuExtension *_bedit_app_extend_menu(
 
 G_END_DECLS
 
-#endif /* GEDIT_APP_PRIVATE_H */
+#endif /* BEDIT_APP_PRIVATE_H */
 

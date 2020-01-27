@@ -47,7 +47,7 @@ static void bedit_progress_info_bar_set_property(
     GObject *object, guint prop_id, const GValue *value, GParamSpec *pspec) {
     BeditProgressInfoBar *bar;
 
-    bar = GEDIT_PROGRESS_INFO_BAR(object);
+    bar = BEDIT_PROGRESS_INFO_BAR(object);
 
     switch (prop_id) {
     case PROP_HAS_CANCEL_BUTTON:
@@ -96,8 +96,8 @@ GtkWidget *bedit_progress_info_bar_new(
     g_return_val_if_fail(icon_name != NULL, NULL);
     g_return_val_if_fail(markup != NULL, NULL);
 
-    bar = GEDIT_PROGRESS_INFO_BAR(g_object_new(
-        GEDIT_TYPE_PROGRESS_INFO_BAR, "has-cancel-button", has_cancel, NULL));
+    bar = BEDIT_PROGRESS_INFO_BAR(g_object_new(
+        BEDIT_TYPE_PROGRESS_INFO_BAR, "has-cancel-button", has_cancel, NULL));
 
     bedit_progress_info_bar_set_icon_name(bar, icon_name);
     bedit_progress_info_bar_set_markup(bar, markup);
@@ -107,7 +107,7 @@ GtkWidget *bedit_progress_info_bar_new(
 
 void bedit_progress_info_bar_set_icon_name(
     BeditProgressInfoBar *bar, const gchar *icon_name) {
-    g_return_if_fail(GEDIT_IS_PROGRESS_INFO_BAR(bar));
+    g_return_if_fail(BEDIT_IS_PROGRESS_INFO_BAR(bar));
     g_return_if_fail(icon_name != NULL);
 
     gtk_image_set_from_icon_name(
@@ -116,7 +116,7 @@ void bedit_progress_info_bar_set_icon_name(
 
 void bedit_progress_info_bar_set_markup(
     BeditProgressInfoBar *bar, const gchar *markup) {
-    g_return_if_fail(GEDIT_IS_PROGRESS_INFO_BAR(bar));
+    g_return_if_fail(BEDIT_IS_PROGRESS_INFO_BAR(bar));
     g_return_if_fail(markup != NULL);
 
     gtk_label_set_markup(GTK_LABEL(bar->label), markup);
@@ -124,7 +124,7 @@ void bedit_progress_info_bar_set_markup(
 
 void bedit_progress_info_bar_set_text(
     BeditProgressInfoBar *bar, const gchar *text) {
-    g_return_if_fail(GEDIT_IS_PROGRESS_INFO_BAR(bar));
+    g_return_if_fail(BEDIT_IS_PROGRESS_INFO_BAR(bar));
     g_return_if_fail(text != NULL);
 
     gtk_label_set_text(GTK_LABEL(bar->label), text);
@@ -132,13 +132,13 @@ void bedit_progress_info_bar_set_text(
 
 void bedit_progress_info_bar_set_fraction(
     BeditProgressInfoBar *bar, gdouble fraction) {
-    g_return_if_fail(GEDIT_IS_PROGRESS_INFO_BAR(bar));
+    g_return_if_fail(BEDIT_IS_PROGRESS_INFO_BAR(bar));
 
     gtk_progress_bar_set_fraction(GTK_PROGRESS_BAR(bar->progress), fraction);
 }
 
 void bedit_progress_info_bar_pulse(BeditProgressInfoBar *bar) {
-    g_return_if_fail(GEDIT_IS_PROGRESS_INFO_BAR(bar));
+    g_return_if_fail(BEDIT_IS_PROGRESS_INFO_BAR(bar));
 
     gtk_progress_bar_pulse(GTK_PROGRESS_BAR(bar->progress));
 }

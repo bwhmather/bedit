@@ -34,7 +34,7 @@
 #include "bedit-utils.h"
 #include "bedit-view-activatable.h"
 
-#define GEDIT_VIEW_SCROLL_MARGIN 0.02
+#define BEDIT_VIEW_SCROLL_MARGIN 0.02
 
 enum { TARGET_URI_LIST = 100, TARGET_XDNDDIRECTSAVE };
 
@@ -67,7 +67,7 @@ static void current_buffer_removed(BeditView *view) {
         GtkSourceFile *file;
 
         file =
-            bedit_document_get_file(GEDIT_DOCUMENT(view->priv->current_buffer));
+            bedit_document_get_file(BEDIT_DOCUMENT(view->priv->current_buffer));
 
         g_signal_handlers_disconnect_by_func(
             file, file_read_only_notify_handler, view);
@@ -85,11 +85,11 @@ static void on_notify_buffer_cb(
     current_buffer_removed(view);
     buffer = gtk_text_view_get_buffer(GTK_TEXT_VIEW(view));
 
-    if (!GEDIT_IS_DOCUMENT(buffer)) {
+    if (!BEDIT_IS_DOCUMENT(buffer)) {
         return;
     }
 
-    file = bedit_document_get_file(GEDIT_DOCUMENT(buffer));
+    file = bedit_document_get_file(BEDIT_DOCUMENT(buffer));
 
     view->priv->current_buffer = g_object_ref(buffer);
     g_signal_connect_object(
@@ -124,7 +124,7 @@ static void bedit_view_init(BeditView *view) {
 
     view->priv->extensions = peas_extension_set_new(
         PEAS_ENGINE(bedit_plugins_engine_get_default()),
-        GEDIT_TYPE_VIEW_ACTIVATABLE, "view", view, NULL);
+        BEDIT_TYPE_VIEW_ACTIVATABLE, "view", view, NULL);
 
     /* Act on buffer change */
     g_signal_connect(
@@ -140,7 +140,7 @@ static void bedit_view_init(BeditView *view) {
 }
 
 static void bedit_view_dispose(GObject *object) {
-    BeditView *view = GEDIT_VIEW(object);
+    BeditView *view = BEDIT_VIEW(object);
 
     g_clear_object(&view->priv->extensions);
     g_clear_object(&view->priv->editor_settings);
@@ -166,11 +166,11 @@ static void bedit_view_constructed(GObject *object) {
     BeditViewPrivate *priv;
     gboolean use_default_font;
 
-    view = GEDIT_VIEW(object);
+    view = BEDIT_VIEW(object);
     priv = view->priv;
 
     use_default_font = g_settings_get_boolean(
-        view->priv->editor_settings, GEDIT_SETTINGS_USE_DEFAULT_FONT);
+        view->priv->editor_settings, BEDIT_SETTINGS_USE_DEFAULT_FONT);
 
     if (use_default_font) {
         bedit_view_set_font(view, TRUE, NULL);
@@ -178,7 +178,7 @@ static void bedit_view_constructed(GObject *object) {
         gchar *editor_font;
 
         editor_font = g_settings_get_string(
-            view->priv->editor_settings, GEDIT_SETTINGS_EDITOR_FONT);
+            view->priv->editor_settings, BEDIT_SETTINGS_EDITOR_FONT);
 
         bedit_view_set_font(view, FALSE, editor_font);
 
@@ -186,43 +186,43 @@ static void bedit_view_constructed(GObject *object) {
     }
 
     g_settings_bind(
-        priv->editor_settings, GEDIT_SETTINGS_DISPLAY_LINE_NUMBERS, view,
+        priv->editor_settings, BEDIT_SETTINGS_DISPLAY_LINE_NUMBERS, view,
         "show-line-numbers", G_SETTINGS_BIND_GET);
 
     g_settings_bind(
-        priv->editor_settings, GEDIT_SETTINGS_AUTO_INDENT, view, "auto-indent",
+        priv->editor_settings, BEDIT_SETTINGS_AUTO_INDENT, view, "auto-indent",
         G_SETTINGS_BIND_GET);
 
     g_settings_bind(
-        priv->editor_settings, GEDIT_SETTINGS_TABS_SIZE, view, "tab-width",
+        priv->editor_settings, BEDIT_SETTINGS_TABS_SIZE, view, "tab-width",
         G_SETTINGS_BIND_GET);
 
     g_settings_bind(
-        priv->editor_settings, GEDIT_SETTINGS_INSERT_SPACES, view,
+        priv->editor_settings, BEDIT_SETTINGS_INSERT_SPACES, view,
         "insert-spaces-instead-of-tabs", G_SETTINGS_BIND_GET);
 
     g_settings_bind(
-        priv->editor_settings, GEDIT_SETTINGS_DISPLAY_RIGHT_MARGIN, view,
+        priv->editor_settings, BEDIT_SETTINGS_DISPLAY_RIGHT_MARGIN, view,
         "show-right-margin", G_SETTINGS_BIND_GET);
 
     g_settings_bind(
-        priv->editor_settings, GEDIT_SETTINGS_BACKGROUND_PATTERN, view,
+        priv->editor_settings, BEDIT_SETTINGS_BACKGROUND_PATTERN, view,
         "background-pattern", G_SETTINGS_BIND_GET);
 
     g_settings_bind(
-        priv->editor_settings, GEDIT_SETTINGS_RIGHT_MARGIN_POSITION, view,
+        priv->editor_settings, BEDIT_SETTINGS_RIGHT_MARGIN_POSITION, view,
         "right-margin-position", G_SETTINGS_BIND_GET);
 
     g_settings_bind(
-        priv->editor_settings, GEDIT_SETTINGS_HIGHLIGHT_CURRENT_LINE, view,
+        priv->editor_settings, BEDIT_SETTINGS_HIGHLIGHT_CURRENT_LINE, view,
         "highlight-current-line", G_SETTINGS_BIND_GET);
 
     g_settings_bind(
-        priv->editor_settings, GEDIT_SETTINGS_WRAP_MODE, view, "wrap-mode",
+        priv->editor_settings, BEDIT_SETTINGS_WRAP_MODE, view, "wrap-mode",
         G_SETTINGS_BIND_GET);
 
     g_settings_bind(
-        priv->editor_settings, GEDIT_SETTINGS_SMART_HOME_END, view,
+        priv->editor_settings, BEDIT_SETTINGS_SMART_HOME_END, view,
         "smart-home-end", G_SETTINGS_BIND_GET);
 
     gtk_source_view_set_indent_on_tab(GTK_SOURCE_VIEW(view), TRUE);
@@ -295,7 +295,7 @@ static void bedit_view_drag_data_received(
     case TARGET_XDNDDIRECTSAVE: {
         BeditView *view;
 
-        view = GEDIT_VIEW(widget);
+        view = BEDIT_VIEW(widget);
 
         /* Indicate that we don't provide "F" fallback */
         if (gtk_selection_data_get_format(selection_data) == 8 &&
@@ -355,7 +355,7 @@ static gboolean bedit_view_drag_drop(
             uri = bedit_utils_set_direct_save_filename(context);
 
             if (uri != NULL) {
-                BeditView *view = GEDIT_VIEW(widget);
+                BeditView *view = BEDIT_VIEW(widget);
                 g_free(view->priv->direct_save_uri);
                 view->priv->direct_save_uri = uri;
             }
@@ -384,7 +384,7 @@ static void show_line_numbers_menu(BeditView *view, GdkEventButton *event) {
         gtk_source_view_get_show_line_numbers(GTK_SOURCE_VIEW(view)));
 
     g_settings_bind(
-        view->priv->editor_settings, GEDIT_SETTINGS_DISPLAY_LINE_NUMBERS, item,
+        view->priv->editor_settings, BEDIT_SETTINGS_DISPLAY_LINE_NUMBERS, item,
         "active", G_SETTINGS_BIND_SET);
 
     gtk_menu_shell_append(GTK_MENU_SHELL(menu), item);
@@ -403,7 +403,7 @@ static gboolean bedit_view_button_press_event(
         (event->window ==
          gtk_text_view_get_window(
              GTK_TEXT_VIEW(widget), GTK_TEXT_WINDOW_LEFT))) {
-        show_line_numbers_menu(GEDIT_VIEW(widget), event);
+        show_line_numbers_menu(BEDIT_VIEW(widget), event);
 
         return GDK_EVENT_STOP;
     }
@@ -415,17 +415,17 @@ static gboolean bedit_view_button_press_event(
 static void extension_added(
     PeasExtensionSet *extensions, PeasPluginInfo *info, PeasExtension *exten,
     BeditView *view) {
-    bedit_view_activatable_activate(GEDIT_VIEW_ACTIVATABLE(exten));
+    bedit_view_activatable_activate(BEDIT_VIEW_ACTIVATABLE(exten));
 }
 
 static void extension_removed(
     PeasExtensionSet *extensions, PeasPluginInfo *info, PeasExtension *exten,
     BeditView *view) {
-    bedit_view_activatable_deactivate(GEDIT_VIEW_ACTIVATABLE(exten));
+    bedit_view_activatable_deactivate(BEDIT_VIEW_ACTIVATABLE(exten));
 }
 
 static void bedit_view_realize(GtkWidget *widget) {
-    BeditView *view = GEDIT_VIEW(widget);
+    BeditView *view = BEDIT_VIEW(widget);
 
     GTK_WIDGET_CLASS(bedit_view_parent_class)->realize(widget);
 
@@ -447,7 +447,7 @@ static void bedit_view_realize(GtkWidget *widget) {
 }
 
 static void bedit_view_unrealize(GtkWidget *widget) {
-    BeditView *view = GEDIT_VIEW(widget);
+    BeditView *view = BEDIT_VIEW(widget);
 
     g_signal_handlers_disconnect_by_func(
         view->priv->extensions, extension_added, view);
@@ -648,9 +648,9 @@ static void bedit_view_class_init(BeditViewClass *klass) {
  * Returns: a new #BeditView.
  */
 GtkWidget *bedit_view_new(BeditDocument *doc) {
-    g_return_val_if_fail(GEDIT_IS_DOCUMENT(doc), NULL);
+    g_return_val_if_fail(BEDIT_IS_DOCUMENT(doc), NULL);
 
-    return GTK_WIDGET(g_object_new(GEDIT_TYPE_VIEW, "buffer", doc, NULL));
+    return GTK_WIDGET(g_object_new(BEDIT_TYPE_VIEW, "buffer", doc, NULL));
 }
 
 void bedit_view_cut_clipboard(BeditView *view) {
@@ -659,7 +659,7 @@ void bedit_view_cut_clipboard(BeditView *view) {
 
     bedit_debug(DEBUG_VIEW);
 
-    g_return_if_fail(GEDIT_IS_VIEW(view));
+    g_return_if_fail(BEDIT_IS_VIEW(view));
 
     buffer = gtk_text_view_get_buffer(GTK_TEXT_VIEW(view));
 
@@ -671,7 +671,7 @@ void bedit_view_cut_clipboard(BeditView *view) {
 
     gtk_text_view_scroll_to_mark(
         GTK_TEXT_VIEW(view), gtk_text_buffer_get_insert(buffer),
-        GEDIT_VIEW_SCROLL_MARGIN, FALSE, 0.0, 0.0);
+        BEDIT_VIEW_SCROLL_MARGIN, FALSE, 0.0, 0.0);
 }
 
 void bedit_view_copy_clipboard(BeditView *view) {
@@ -680,7 +680,7 @@ void bedit_view_copy_clipboard(BeditView *view) {
 
     bedit_debug(DEBUG_VIEW);
 
-    g_return_if_fail(GEDIT_IS_VIEW(view));
+    g_return_if_fail(BEDIT_IS_VIEW(view));
 
     buffer = gtk_text_view_get_buffer(GTK_TEXT_VIEW(view));
 
@@ -698,7 +698,7 @@ void bedit_view_paste_clipboard(BeditView *view) {
 
     bedit_debug(DEBUG_VIEW);
 
-    g_return_if_fail(GEDIT_IS_VIEW(view));
+    g_return_if_fail(BEDIT_IS_VIEW(view));
 
     buffer = gtk_text_view_get_buffer(GTK_TEXT_VIEW(view));
 
@@ -711,7 +711,7 @@ void bedit_view_paste_clipboard(BeditView *view) {
 
     gtk_text_view_scroll_to_mark(
         GTK_TEXT_VIEW(view), gtk_text_buffer_get_insert(buffer),
-        GEDIT_VIEW_SCROLL_MARGIN, FALSE, 0.0, 0.0);
+        BEDIT_VIEW_SCROLL_MARGIN, FALSE, 0.0, 0.0);
 }
 
 /**
@@ -726,7 +726,7 @@ void bedit_view_delete_selection(BeditView *view) {
 
     bedit_debug(DEBUG_VIEW);
 
-    g_return_if_fail(GEDIT_IS_VIEW(view));
+    g_return_if_fail(BEDIT_IS_VIEW(view));
 
     buffer = gtk_text_view_get_buffer(GTK_TEXT_VIEW(view));
 
@@ -735,7 +735,7 @@ void bedit_view_delete_selection(BeditView *view) {
 
     gtk_text_view_scroll_to_mark(
         GTK_TEXT_VIEW(view), gtk_text_buffer_get_insert(buffer),
-        GEDIT_VIEW_SCROLL_MARGIN, FALSE, 0.0, 0.0);
+        BEDIT_VIEW_SCROLL_MARGIN, FALSE, 0.0, 0.0);
 }
 
 /**
@@ -751,7 +751,7 @@ void bedit_view_select_all(BeditView *view) {
 
     bedit_debug(DEBUG_VIEW);
 
-    g_return_if_fail(GEDIT_IS_VIEW(view));
+    g_return_if_fail(BEDIT_IS_VIEW(view));
 
     buffer = gtk_text_view_get_buffer(GTK_TEXT_VIEW(view));
 
@@ -770,7 +770,7 @@ void bedit_view_scroll_to_cursor(BeditView *view) {
 
     bedit_debug(DEBUG_VIEW);
 
-    g_return_if_fail(GEDIT_IS_VIEW(view));
+    g_return_if_fail(BEDIT_IS_VIEW(view));
 
     buffer = gtk_text_view_get_buffer(GTK_TEXT_VIEW(view));
 
@@ -783,7 +783,7 @@ static void update_css_provider(BeditView *view) {
     gchar *str;
     gchar *css;
 
-    g_assert(GEDIT_IS_VIEW(view));
+    g_assert(BEDIT_IS_VIEW(view));
     g_assert(view->priv->font_desc != NULL);
 
     str = bedit_pango_font_description_to_css(view->priv->font_desc);
@@ -807,7 +807,7 @@ void bedit_view_set_font(
     BeditView *view, gboolean default_font, const gchar *font_name) {
     bedit_debug(DEBUG_VIEW);
 
-    g_return_if_fail(GEDIT_IS_VIEW(view));
+    g_return_if_fail(BEDIT_IS_VIEW(view));
 
     g_clear_pointer(&view->priv->font_desc, pango_font_description_free);
 
@@ -816,7 +816,7 @@ void bedit_view_set_font(
         gchar *font;
 
         settings =
-            _bedit_app_get_settings(GEDIT_APP(g_application_get_default()));
+            _bedit_app_get_settings(BEDIT_APP(g_application_get_default()));
         font = bedit_settings_get_system_font(settings);
 
         view->priv->font_desc = pango_font_description_from_string(font);

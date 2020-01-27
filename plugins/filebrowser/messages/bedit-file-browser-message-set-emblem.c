@@ -39,11 +39,11 @@ struct _BeditFileBrowserMessageSetEmblemPrivate {
 
 G_DEFINE_TYPE_EXTENDED(
     BeditFileBrowserMessageSetEmblem, bedit_file_browser_message_set_emblem,
-    GEDIT_TYPE_MESSAGE, 0, G_ADD_PRIVATE(BeditFileBrowserMessageSetEmblem))
+    BEDIT_TYPE_MESSAGE, 0, G_ADD_PRIVATE(BeditFileBrowserMessageSetEmblem))
 
 static void bedit_file_browser_message_set_emblem_finalize(GObject *obj) {
     BeditFileBrowserMessageSetEmblem *msg =
-        GEDIT_FILE_BROWSER_MESSAGE_SET_EMBLEM(obj);
+        BEDIT_FILE_BROWSER_MESSAGE_SET_EMBLEM(obj);
 
     g_free(msg->priv->id);
     g_free(msg->priv->emblem);
@@ -56,7 +56,7 @@ static void bedit_file_browser_message_set_emblem_get_property(
     GObject *obj, guint prop_id, GValue *value, GParamSpec *pspec) {
     BeditFileBrowserMessageSetEmblem *msg;
 
-    msg = GEDIT_FILE_BROWSER_MESSAGE_SET_EMBLEM(obj);
+    msg = BEDIT_FILE_BROWSER_MESSAGE_SET_EMBLEM(obj);
 
     switch (prop_id) {
     case PROP_ID:
@@ -72,7 +72,7 @@ static void bedit_file_browser_message_set_emblem_set_property(
     GObject *obj, guint prop_id, GValue const *value, GParamSpec *pspec) {
     BeditFileBrowserMessageSetEmblem *msg;
 
-    msg = GEDIT_FILE_BROWSER_MESSAGE_SET_EMBLEM(obj);
+    msg = BEDIT_FILE_BROWSER_MESSAGE_SET_EMBLEM(obj);
 
     switch (prop_id) {
     case PROP_ID: {

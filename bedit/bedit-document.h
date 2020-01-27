@@ -21,17 +21,17 @@
  * along with this program; if not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef GEDIT_DOCUMENT_H
-#define GEDIT_DOCUMENT_H
+#ifndef BEDIT_DOCUMENT_H
+#define BEDIT_DOCUMENT_H
 
 #include <gtksourceview/gtksource.h>
 
 G_BEGIN_DECLS
 
-#define GEDIT_TYPE_DOCUMENT (bedit_document_get_type())
+#define BEDIT_TYPE_DOCUMENT (bedit_document_get_type())
 
 G_DECLARE_DERIVABLE_TYPE(
-    BeditDocument, bedit_document, GEDIT, DOCUMENT, GtkSourceBuffer)
+    BeditDocument, bedit_document, BEDIT, DOCUMENT, GtkSourceBuffer)
 
 struct _BeditDocumentClass {
     GtkSourceBufferClass parent_class;
@@ -84,5 +84,5 @@ GtkSourceSearchContext *bedit_document_get_search_context(BeditDocument *doc);
 
 G_END_DECLS
 
-#endif /* GEDIT_DOCUMENT_H */
+#endif /* BEDIT_DOCUMENT_H */
 

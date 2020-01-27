@@ -20,8 +20,8 @@
  * along with this program; if not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef GEDIT_UTILS_H
-#define GEDIT_UTILS_H
+#ifndef BEDIT_UTILS_H
+#define BEDIT_UTILS_H
 
 #include <gtksourceview/gtksource.h>
 
@@ -32,7 +32,7 @@ G_BEGIN_DECLS
 #define GPOINTER_TO_BOOLEAN(i)                                                 \
     ((gboolean)((GPOINTER_TO_INT(i) == 2) ? TRUE : FALSE))
 
-enum { GEDIT_ALL_WORKSPACES = 0xffffffff };
+enum { BEDIT_ALL_WORKSPACES = 0xffffffff };
 
 gboolean bedit_utils_menu_position_under_tree_view(
     GtkTreeView *tree_view, GdkRectangle *rect);
@@ -80,5 +80,5 @@ void bedit_utils_set_atk_relation(
 
 G_END_DECLS
 
-#endif /* GEDIT_UTILS_H */
+#endif /* BEDIT_UTILS_H */
 

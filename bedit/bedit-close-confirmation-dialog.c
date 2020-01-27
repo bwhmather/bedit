@@ -40,7 +40,7 @@ enum { SINGLE_DOC_MODE, MULTIPLE_DOCS_MODE };
          ? SINGLE_DOC_MODE                                                     \
          : MULTIPLE_DOCS_MODE)
 
-#define GEDIT_SAVE_DOCUMENT_KEY "bedit-save-document"
+#define BEDIT_SAVE_DOCUMENT_KEY "bedit-save-document"
 
 struct _BeditCloseConfirmationDialog {
     GtkMessageDialog parent_instance;
@@ -76,7 +76,7 @@ static GList *get_selected_docs(GtkWidget *list_box) {
         if (gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(check_button))) {
             BeditDocument *doc;
 
-            doc = g_object_get_data(G_OBJECT(row), GEDIT_SAVE_DOCUMENT_KEY);
+            doc = g_object_get_data(G_OBJECT(row), BEDIT_SAVE_DOCUMENT_KEY);
             g_return_val_if_fail(doc != NULL, NULL);
 
             ret = g_list_prepend(ret, doc);
@@ -93,7 +93,7 @@ static GList *get_selected_docs(GtkWidget *list_box) {
  */
 static void response_cb(
     BeditCloseConfirmationDialog *dlg, gint response_id, gpointer data) {
-    g_return_if_fail(GEDIT_IS_CLOSE_CONFIRMATION_DIALOG(dlg));
+    g_return_if_fail(BEDIT_IS_CLOSE_CONFIRMATION_DIALOG(dlg));
 
     if (dlg->selected_documents != NULL) {
         g_list_free(dlg->selected_documents);
@@ -113,9 +113,9 @@ static void bedit_close_confirmation_dialog_init(
     BeditCloseConfirmationDialog *dlg) {
     BeditLockdownMask lockdown;
 
-    lockdown = bedit_app_get_lockdown(GEDIT_APP(g_application_get_default()));
+    lockdown = bedit_app_get_lockdown(BEDIT_APP(g_application_get_default()));
 
-    dlg->disable_save_to_disk = (lockdown & GEDIT_LOCKDOWN_SAVE_TO_DISK) != 0;
+    dlg->disable_save_to_disk = (lockdown & BEDIT_LOCKDOWN_SAVE_TO_DISK) != 0;
 
     gtk_window_set_title(GTK_WINDOW(dlg), "");
     gtk_window_set_modal(GTK_WINDOW(dlg), TRUE);
@@ -125,7 +125,7 @@ static void bedit_close_confirmation_dialog_init(
 }
 
 static void bedit_close_confirmation_dialog_finalize(GObject *object) {
-    BeditCloseConfirmationDialog *dlg = GEDIT_CLOSE_CONFIRMATION_DIALOG(object);
+    BeditCloseConfirmationDialog *dlg = BEDIT_CLOSE_CONFIRMATION_DIALOG(object);
 
     g_list_free(dlg->unsaved_documents);
     g_list_free(dlg->selected_documents);
@@ -139,7 +139,7 @@ static void bedit_close_confirmation_dialog_set_property(
     GObject *object, guint prop_id, const GValue *value, GParamSpec *pspec) {
     BeditCloseConfirmationDialog *dlg;
 
-    dlg = GEDIT_CLOSE_CONFIRMATION_DIALOG(object);
+    dlg = BEDIT_CLOSE_CONFIRMATION_DIALOG(object);
 
     switch (prop_id) {
     case PROP_UNSAVED_DOCUMENTS:
@@ -154,7 +154,7 @@ static void bedit_close_confirmation_dialog_set_property(
 
 static void bedit_close_confirmation_dialog_get_property(
     GObject *object, guint prop_id, GValue *value, GParamSpec *pspec) {
-    BeditCloseConfirmationDialog *dlg = GEDIT_CLOSE_CONFIRMATION_DIALOG(object);
+    BeditCloseConfirmationDialog *dlg = BEDIT_CLOSE_CONFIRMATION_DIALOG(object);
 
     switch (prop_id) {
     case PROP_UNSAVED_DOCUMENTS:
@@ -184,7 +184,7 @@ static void bedit_close_confirmation_dialog_class_init(
 
 GList *bedit_close_confirmation_dialog_get_selected_documents(
     BeditCloseConfirmationDialog *dlg) {
-    g_return_val_if_fail(GEDIT_IS_CLOSE_CONFIRMATION_DIALOG(dlg), NULL);
+    g_return_val_if_fail(BEDIT_IS_CLOSE_CONFIRMATION_DIALOG(dlg), NULL);
 
     return g_list_copy(dlg->selected_documents);
 }
@@ -196,12 +196,12 @@ GtkWidget *bedit_close_confirmation_dialog_new(
     g_return_val_if_fail(unsaved_documents != NULL, NULL);
 
     dlg = g_object_new(
-        GEDIT_TYPE_CLOSE_CONFIRMATION_DIALOG, "unsaved-documents",
+        BEDIT_TYPE_CLOSE_CONFIRMATION_DIALOG, "unsaved-documents",
         unsaved_documents, "message-type", GTK_MESSAGE_QUESTION, NULL);
 
     if (parent != NULL) {
         gtk_window_group_add_window(
-            bedit_window_get_group(GEDIT_WINDOW(parent)), GTK_WINDOW(dlg));
+            bedit_window_get_group(BEDIT_WINDOW(parent)), GTK_WINDOW(dlg));
 
         gtk_window_set_transient_for(GTK_WINDOW(dlg), parent);
     }
@@ -243,7 +243,7 @@ static void add_buttons(BeditCloseConfirmationDialog *dlg) {
             BeditDocument *doc;
             GtkSourceFile *file;
 
-            doc = GEDIT_DOCUMENT(dlg->unsaved_documents->data);
+            doc = BEDIT_DOCUMENT(dlg->unsaved_documents->data);
             file = bedit_document_get_file(doc);
 
             if (gtk_source_file_is_readonly(file) ||
@@ -342,7 +342,7 @@ static void build_single_doc_dialog(BeditCloseConfirmationDialog *dlg) {
     gchar *markup_str;
 
     g_return_if_fail(dlg->unsaved_documents->data != NULL);
-    doc = GEDIT_DOCUMENT(dlg->unsaved_documents->data);
+    doc = BEDIT_DOCUMENT(dlg->unsaved_documents->data);
 
     add_buttons(dlg);
 
@@ -402,7 +402,7 @@ static GtkWidget *create_list_box(BeditCloseConfirmationDialog *dlg) {
         gtk_widget_show_all(row);
 
         g_object_set_data_full(
-            G_OBJECT(row), GEDIT_SAVE_DOCUMENT_KEY, g_object_ref(doc),
+            G_OBJECT(row), BEDIT_SAVE_DOCUMENT_KEY, g_object_ref(doc),
             (GDestroyNotify)g_object_unref);
 
         gtk_list_box_insert(GTK_LIST_BOX(list_box), row, -1);
@@ -522,7 +522,7 @@ static void set_unsaved_document(
 
 const GList *bedit_close_confirmation_dialog_get_unsaved_documents(
     BeditCloseConfirmationDialog *dlg) {
-    g_return_val_if_fail(GEDIT_IS_CLOSE_CONFIRMATION_DIALOG(dlg), NULL);
+    g_return_val_if_fail(BEDIT_IS_CLOSE_CONFIRMATION_DIALOG(dlg), NULL);
 
     return dlg->unsaved_documents;
 }

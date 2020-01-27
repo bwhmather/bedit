@@ -20,26 +20,26 @@
  * Boston, MA  02110-1301  USA
  */
 
-#ifndef GEDIT_MESSAGE_H
-#define GEDIT_MESSAGE_H
+#ifndef BEDIT_MESSAGE_H
+#define BEDIT_MESSAGE_H
 
 #include <glib-object.h>
 
 G_BEGIN_DECLS
 
-#define GEDIT_TYPE_MESSAGE (bedit_message_get_type())
-#define GEDIT_MESSAGE(obj)                                                     \
-    (G_TYPE_CHECK_INSTANCE_CAST((obj), GEDIT_TYPE_MESSAGE, BeditMessage))
-#define GEDIT_MESSAGE_CONST(obj)                                               \
-    (G_TYPE_CHECK_INSTANCE_CAST((obj), GEDIT_TYPE_MESSAGE, BeditMessage const))
-#define GEDIT_MESSAGE_CLASS(klass)                                             \
-    (G_TYPE_CHECK_CLASS_CAST((klass), GEDIT_TYPE_MESSAGE, BeditMessageClass))
-#define GEDIT_IS_MESSAGE(obj)                                                  \
-    (G_TYPE_CHECK_INSTANCE_TYPE((obj), GEDIT_TYPE_MESSAGE))
-#define GEDIT_IS_MESSAGE_CLASS(klass)                                          \
-    (G_TYPE_CHECK_CLASS_TYPE((klass), GEDIT_TYPE_MESSAGE))
-#define GEDIT_MESSAGE_GET_CLASS(obj)                                           \
-    (G_TYPE_INSTANCE_GET_CLASS((obj), GEDIT_TYPE_MESSAGE, BeditMessageClass))
+#define BEDIT_TYPE_MESSAGE (bedit_message_get_type())
+#define BEDIT_MESSAGE(obj)                                                     \
+    (G_TYPE_CHECK_INSTANCE_CAST((obj), BEDIT_TYPE_MESSAGE, BeditMessage))
+#define BEDIT_MESSAGE_CONST(obj)                                               \
+    (G_TYPE_CHECK_INSTANCE_CAST((obj), BEDIT_TYPE_MESSAGE, BeditMessage const))
+#define BEDIT_MESSAGE_CLASS(klass)                                             \
+    (G_TYPE_CHECK_CLASS_CAST((klass), BEDIT_TYPE_MESSAGE, BeditMessageClass))
+#define BEDIT_IS_MESSAGE(obj)                                                  \
+    (G_TYPE_CHECK_INSTANCE_TYPE((obj), BEDIT_TYPE_MESSAGE))
+#define BEDIT_IS_MESSAGE_CLASS(klass)                                          \
+    (G_TYPE_CHECK_CLASS_TYPE((klass), BEDIT_TYPE_MESSAGE))
+#define BEDIT_MESSAGE_GET_CLASS(obj)                                           \
+    (G_TYPE_INSTANCE_GET_CLASS((obj), BEDIT_TYPE_MESSAGE, BeditMessageClass))
 
 typedef struct _BeditMessage BeditMessage;
 typedef struct _BeditMessageClass BeditMessageClass;
@@ -73,5 +73,5 @@ gchar *bedit_message_type_identifier(
 
 G_END_DECLS
 
-#endif /* GEDIT_MESSAGE_H */
+#endif /* BEDIT_MESSAGE_H */
 

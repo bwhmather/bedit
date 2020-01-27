@@ -18,8 +18,8 @@
  * along with this program; if not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef GEDIT_DIRS_H
-#define GEDIT_DIRS_H
+#ifndef BEDIT_DIRS_H
+#define BEDIT_DIRS_H
 
 #include <glib.h>
 
@@ -48,5 +48,5 @@ const gchar *bedit_dirs_get_bedit_plugins_data_dir(void);
 
 G_END_DECLS
 
-#endif /* GEDIT_DIRS_H */
+#endif /* BEDIT_DIRS_H */
 

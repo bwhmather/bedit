@@ -35,7 +35,7 @@
 void _bedit_cmd_view_focus_active(
     GSimpleAction *action, GVariant *state, gpointer user_data) {
     BeditView *active_view;
-    BeditWindow *window = GEDIT_WINDOW(user_data);
+    BeditWindow *window = BEDIT_WINDOW(user_data);
 
     bedit_debug(DEBUG_COMMANDS);
 
@@ -48,7 +48,7 @@ void _bedit_cmd_view_focus_active(
 
 void _bedit_cmd_view_toggle_side_panel(
     GSimpleAction *action, GVariant *state, gpointer user_data) {
-    BeditWindow *window = GEDIT_WINDOW(user_data);
+    BeditWindow *window = BEDIT_WINDOW(user_data);
     GtkWidget *panel;
     gboolean visible;
 
@@ -68,7 +68,7 @@ void _bedit_cmd_view_toggle_side_panel(
 
 void _bedit_cmd_view_toggle_bottom_panel(
     GSimpleAction *action, GVariant *state, gpointer user_data) {
-    BeditWindow *window = GEDIT_WINDOW(user_data);
+    BeditWindow *window = BEDIT_WINDOW(user_data);
     GtkWidget *panel;
     gboolean visible;
 
@@ -88,7 +88,7 @@ void _bedit_cmd_view_toggle_bottom_panel(
 
 void _bedit_cmd_view_toggle_fullscreen_mode(
     GSimpleAction *action, GVariant *state, gpointer user_data) {
-    BeditWindow *window = GEDIT_WINDOW(user_data);
+    BeditWindow *window = BEDIT_WINDOW(user_data);
 
     bedit_debug(DEBUG_COMMANDS);
 
@@ -101,7 +101,7 @@ void _bedit_cmd_view_toggle_fullscreen_mode(
 
 void _bedit_cmd_view_leave_fullscreen_mode(
     GSimpleAction *action, GVariant *parameter, gpointer user_data) {
-    _bedit_window_unfullscreen(GEDIT_WINDOW(user_data));
+    _bedit_window_unfullscreen(BEDIT_WINDOW(user_data));
 }
 
 static void on_language_selected(
@@ -124,9 +124,9 @@ void _bedit_cmd_view_highlight_mode(
 
     dlg = bedit_highlight_mode_dialog_new(window);
     sel = bedit_highlight_mode_dialog_get_selector(
-        GEDIT_HIGHLIGHT_MODE_DIALOG(dlg));
+        BEDIT_HIGHLIGHT_MODE_DIALOG(dlg));
 
-    doc = bedit_window_get_active_document(GEDIT_WINDOW(window));
+    doc = bedit_window_get_active_document(BEDIT_WINDOW(window));
     if (doc) {
         bedit_highlight_mode_selector_select_language(
             sel, bedit_document_get_language(doc));

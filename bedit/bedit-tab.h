@@ -18,8 +18,8 @@
  * along with this program; if not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef GEDIT_TAB_H
-#define GEDIT_TAB_H
+#ifndef BEDIT_TAB_H
+#define BEDIT_TAB_H
 
 #include <bedit/bedit-document.h>
 #include <bedit/bedit-view.h>
@@ -28,24 +28,24 @@
 G_BEGIN_DECLS
 
 typedef enum {
-    GEDIT_TAB_STATE_NORMAL = 0,
-    GEDIT_TAB_STATE_LOADING,
-    GEDIT_TAB_STATE_REVERTING,
-    GEDIT_TAB_STATE_SAVING,
-    GEDIT_TAB_STATE_PRINTING,
-    GEDIT_TAB_STATE_SHOWING_PRINT_PREVIEW,
-    GEDIT_TAB_STATE_LOADING_ERROR,
-    GEDIT_TAB_STATE_REVERTING_ERROR,
-    GEDIT_TAB_STATE_SAVING_ERROR,
-    GEDIT_TAB_STATE_GENERIC_ERROR,
-    GEDIT_TAB_STATE_CLOSING,
-    GEDIT_TAB_STATE_EXTERNALLY_MODIFIED_NOTIFICATION,
-    GEDIT_TAB_NUM_OF_STATES /* This is not a valid state */
+    BEDIT_TAB_STATE_NORMAL = 0,
+    BEDIT_TAB_STATE_LOADING,
+    BEDIT_TAB_STATE_REVERTING,
+    BEDIT_TAB_STATE_SAVING,
+    BEDIT_TAB_STATE_PRINTING,
+    BEDIT_TAB_STATE_SHOWING_PRINT_PREVIEW,
+    BEDIT_TAB_STATE_LOADING_ERROR,
+    BEDIT_TAB_STATE_REVERTING_ERROR,
+    BEDIT_TAB_STATE_SAVING_ERROR,
+    BEDIT_TAB_STATE_GENERIC_ERROR,
+    BEDIT_TAB_STATE_CLOSING,
+    BEDIT_TAB_STATE_EXTERNALLY_MODIFIED_NOTIFICATION,
+    BEDIT_TAB_NUM_OF_STATES /* This is not a valid state */
 } BeditTabState;
 
-#define GEDIT_TYPE_TAB (bedit_tab_get_type())
+#define BEDIT_TYPE_TAB (bedit_tab_get_type())
 
-G_DECLARE_FINAL_TYPE(BeditTab, bedit_tab, GEDIT, TAB, GtkBox)
+G_DECLARE_FINAL_TYPE(BeditTab, bedit_tab, BEDIT, TAB, GtkBox)
 
 BeditView *bedit_tab_get_view(BeditTab *tab);
 
@@ -68,5 +68,5 @@ void bedit_tab_set_info_bar(BeditTab *tab, GtkWidget *info_bar);
 
 G_END_DECLS
 
-#endif /* GEDIT_TAB_H  */
+#endif /* BEDIT_TAB_H  */
 

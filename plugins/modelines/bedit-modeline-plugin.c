@@ -44,7 +44,7 @@ static void bedit_view_activatable_iface_init(
 G_DEFINE_DYNAMIC_TYPE_EXTENDED(
     BeditModelinePlugin, bedit_modeline_plugin, PEAS_TYPE_EXTENSION_BASE, 0,
     G_IMPLEMENT_INTERFACE_DYNAMIC(
-        GEDIT_TYPE_VIEW_ACTIVATABLE, bedit_view_activatable_iface_init)
+        BEDIT_TYPE_VIEW_ACTIVATABLE, bedit_view_activatable_iface_init)
         G_ADD_PRIVATE_DYNAMIC(BeditModelinePlugin))
 
 static void bedit_modeline_plugin_constructed(GObject *object) {
@@ -66,7 +66,7 @@ static void bedit_modeline_plugin_init(BeditModelinePlugin *plugin) {
 }
 
 static void bedit_modeline_plugin_dispose(GObject *object) {
-    BeditModelinePlugin *plugin = GEDIT_MODELINE_PLUGIN(object);
+    BeditModelinePlugin *plugin = BEDIT_MODELINE_PLUGIN(object);
 
     bedit_debug_message(DEBUG_PLUGINS, "BeditModelinePlugin disposing");
 
@@ -85,11 +85,11 @@ static void bedit_modeline_plugin_finalize(GObject *object) {
 
 static void bedit_modeline_plugin_set_property(
     GObject *object, guint prop_id, const GValue *value, GParamSpec *pspec) {
-    BeditModelinePlugin *plugin = GEDIT_MODELINE_PLUGIN(object);
+    BeditModelinePlugin *plugin = BEDIT_MODELINE_PLUGIN(object);
 
     switch (prop_id) {
     case PROP_VIEW:
-        plugin->priv->view = GEDIT_VIEW(g_value_dup_object(value));
+        plugin->priv->view = BEDIT_VIEW(g_value_dup_object(value));
         break;
 
     default:
@@ -100,7 +100,7 @@ static void bedit_modeline_plugin_set_property(
 
 static void bedit_modeline_plugin_get_property(
     GObject *object, guint prop_id, GValue *value, GParamSpec *pspec) {
-    BeditModelinePlugin *plugin = GEDIT_MODELINE_PLUGIN(object);
+    BeditModelinePlugin *plugin = BEDIT_MODELINE_PLUGIN(object);
 
     switch (prop_id) {
     case PROP_VIEW:
@@ -124,7 +124,7 @@ static void bedit_modeline_plugin_activate(BeditViewActivatable *activatable) {
 
     bedit_debug(DEBUG_PLUGINS);
 
-    plugin = GEDIT_MODELINE_PLUGIN(activatable);
+    plugin = BEDIT_MODELINE_PLUGIN(activatable);
 
     modeline_parser_apply_modeline(GTK_SOURCE_VIEW(plugin->priv->view));
 
@@ -145,7 +145,7 @@ static void bedit_modeline_plugin_deactivate(
 
     bedit_debug(DEBUG_PLUGINS);
 
-    plugin = GEDIT_MODELINE_PLUGIN(activatable);
+    plugin = BEDIT_MODELINE_PLUGIN(activatable);
 
     doc = gtk_text_view_get_buffer(GTK_TEXT_VIEW(plugin->priv->view));
 
@@ -178,6 +178,6 @@ G_MODULE_EXPORT void peas_register_types(PeasObjectModule *module) {
     bedit_modeline_plugin_register_type(G_TYPE_MODULE(module));
 
     peas_object_module_register_extension_type(
-        module, GEDIT_TYPE_VIEW_ACTIVATABLE, GEDIT_TYPE_MODELINE_PLUGIN);
+        module, BEDIT_TYPE_VIEW_ACTIVATABLE, BEDIT_TYPE_MODELINE_PLUGIN);
 }
 

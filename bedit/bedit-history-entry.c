@@ -28,7 +28,7 @@
 
 #define MIN_ITEM_LEN 3
 
-#define GEDIT_HISTORY_ENTRY_HISTORY_LENGTH_DEFAULT 10
+#define BEDIT_HISTORY_ENTRY_HISTORY_LENGTH_DEFAULT 10
 
 struct _BeditHistoryEntry {
     GtkComboBoxText parent_instance;
@@ -57,9 +57,9 @@ static void bedit_history_entry_set_property(
     GObject *object, guint prop_id, const GValue *value, GParamSpec *spec) {
     BeditHistoryEntry *entry;
 
-    g_return_if_fail(GEDIT_IS_HISTORY_ENTRY(object));
+    g_return_if_fail(BEDIT_IS_HISTORY_ENTRY(object));
 
-    entry = GEDIT_HISTORY_ENTRY(object);
+    entry = BEDIT_HISTORY_ENTRY(object);
 
     switch (prop_id) {
     case PROP_HISTORY_ID:
@@ -81,9 +81,9 @@ static void bedit_history_entry_get_property(
     GObject *object, guint prop_id, GValue *value, GParamSpec *spec) {
     BeditHistoryEntry *entry;
 
-    g_return_if_fail(GEDIT_IS_HISTORY_ENTRY(object));
+    g_return_if_fail(BEDIT_IS_HISTORY_ENTRY(object));
 
-    entry = GEDIT_HISTORY_ENTRY(object);
+    entry = BEDIT_HISTORY_ENTRY(object);
 
     switch (prop_id) {
     case PROP_HISTORY_ID:
@@ -96,7 +96,7 @@ static void bedit_history_entry_get_property(
         g_value_set_boolean(
             value,
             bedit_history_entry_get_enable_completion(
-                GEDIT_HISTORY_ENTRY(object)));
+                BEDIT_HISTORY_ENTRY(object)));
         break;
     default:
         G_OBJECT_WARN_INVALID_PROPERTY_ID(object, prop_id, spec);
@@ -104,7 +104,7 @@ static void bedit_history_entry_get_property(
 }
 
 static void bedit_history_entry_dispose(GObject *object) {
-    BeditHistoryEntry *entry = GEDIT_HISTORY_ENTRY(object);
+    BeditHistoryEntry *entry = BEDIT_HISTORY_ENTRY(object);
 
     bedit_history_entry_set_enable_completion(entry, FALSE);
 
@@ -114,7 +114,7 @@ static void bedit_history_entry_dispose(GObject *object) {
 }
 
 static void bedit_history_entry_finalize(GObject *object) {
-    BeditHistoryEntry *entry = GEDIT_HISTORY_ENTRY(object);
+    BeditHistoryEntry *entry = BEDIT_HISTORY_ENTRY(object);
 
     g_free(entry->history_id);
 
@@ -154,7 +154,7 @@ static void bedit_history_entry_class_init(BeditHistoryEntryClass *klass) {
 
     properties[PROP_HISTORY_LENGTH] = g_param_spec_uint(
         "history-length", "Max History Length", "Max History Length", 0,
-        G_MAXUINT, GEDIT_HISTORY_ENTRY_HISTORY_LENGTH_DEFAULT,
+        G_MAXUINT, BEDIT_HISTORY_ENTRY_HISTORY_LENGTH_DEFAULT,
         G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
 
     properties[PROP_ENABLE_COMPLETION] = g_param_spec_boolean(
@@ -208,7 +208,7 @@ static gchar **get_history_items(BeditHistoryEntry *entry) {
 static void bedit_history_entry_save_history(BeditHistoryEntry *entry) {
     gchar **items;
 
-    g_return_if_fail(GEDIT_IS_HISTORY_ENTRY(entry));
+    g_return_if_fail(BEDIT_IS_HISTORY_ENTRY(entry));
 
     items = get_history_items(entry);
 
@@ -296,7 +296,7 @@ static void insert_history_item(
 
 void bedit_history_entry_prepend_text(
     BeditHistoryEntry *entry, const gchar *text) {
-    g_return_if_fail(GEDIT_IS_HISTORY_ENTRY(entry));
+    g_return_if_fail(BEDIT_IS_HISTORY_ENTRY(entry));
     g_return_if_fail(text != NULL);
 
     insert_history_item(entry, text, TRUE);
@@ -304,14 +304,14 @@ void bedit_history_entry_prepend_text(
 
 void bedit_history_entry_append_text(
     BeditHistoryEntry *entry, const gchar *text) {
-    g_return_if_fail(GEDIT_IS_HISTORY_ENTRY(entry));
+    g_return_if_fail(BEDIT_IS_HISTORY_ENTRY(entry));
     g_return_if_fail(text != NULL);
 
     insert_history_item(entry, text, FALSE);
 }
 
 void bedit_history_entry_clear(BeditHistoryEntry *entry) {
-    g_return_if_fail(GEDIT_IS_HISTORY_ENTRY(entry));
+    g_return_if_fail(BEDIT_IS_HISTORY_ENTRY(entry));
 
     gtk_combo_box_text_remove_all(GTK_COMBO_BOX_TEXT(entry));
 
@@ -320,7 +320,7 @@ void bedit_history_entry_clear(BeditHistoryEntry *entry) {
 
 static void bedit_history_entry_init(BeditHistoryEntry *entry) {
     entry->history_id = NULL;
-    entry->history_length = GEDIT_HISTORY_ENTRY_HISTORY_LENGTH_DEFAULT;
+    entry->history_length = BEDIT_HISTORY_ENTRY_HISTORY_LENGTH_DEFAULT;
 
     entry->completion = NULL;
 
@@ -329,7 +329,7 @@ static void bedit_history_entry_init(BeditHistoryEntry *entry) {
 
 void bedit_history_entry_set_history_length(
     BeditHistoryEntry *entry, guint history_length) {
-    g_return_if_fail(GEDIT_IS_HISTORY_ENTRY(entry));
+    g_return_if_fail(BEDIT_IS_HISTORY_ENTRY(entry));
     g_return_if_fail(history_length > 0);
 
     entry->history_length = history_length;
@@ -338,14 +338,14 @@ void bedit_history_entry_set_history_length(
 }
 
 guint bedit_history_entry_get_history_length(BeditHistoryEntry *entry) {
-    g_return_val_if_fail(GEDIT_IS_HISTORY_ENTRY(entry), 0);
+    g_return_val_if_fail(BEDIT_IS_HISTORY_ENTRY(entry), 0);
 
     return entry->history_length;
 }
 
 void bedit_history_entry_set_enable_completion(
     BeditHistoryEntry *entry, gboolean enable) {
-    g_return_if_fail(GEDIT_IS_HISTORY_ENTRY(entry));
+    g_return_if_fail(BEDIT_IS_HISTORY_ENTRY(entry));
 
     if (enable) {
         if (entry->completion != NULL) {
@@ -380,7 +380,7 @@ void bedit_history_entry_set_enable_completion(
 }
 
 gboolean bedit_history_entry_get_enable_completion(BeditHistoryEntry *entry) {
-    g_return_val_if_fail(GEDIT_IS_HISTORY_ENTRY(entry), FALSE);
+    g_return_val_if_fail(BEDIT_IS_HISTORY_ENTRY(entry), FALSE);
 
     return entry->completion != NULL;
 }
@@ -394,7 +394,7 @@ GtkWidget *bedit_history_entry_new(
     enable_completion = (enable_completion != FALSE);
 
     entry = g_object_new(
-        GEDIT_TYPE_HISTORY_ENTRY, "has-entry", TRUE, "entry-text-column", 0,
+        BEDIT_TYPE_HISTORY_ENTRY, "has-entry", TRUE, "entry-text-column", 0,
         "id-column", 1, "history-id", history_id, "enable-completion",
         enable_completion, NULL);
 
@@ -415,7 +415,7 @@ GtkWidget *bedit_history_entry_new(
  * handle the conflict.
  */
 GtkWidget *bedit_history_entry_get_entry(BeditHistoryEntry *entry) {
-    g_return_val_if_fail(GEDIT_IS_HISTORY_ENTRY(entry), NULL);
+    g_return_val_if_fail(BEDIT_IS_HISTORY_ENTRY(entry), NULL);
 
     return gtk_bin_get_child(GTK_BIN(entry));
 }

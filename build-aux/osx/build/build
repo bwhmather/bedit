@@ -15,8 +15,8 @@ JHBUILD_SOURCED="$SOURCED/jhbuild"
 
 ME="$0"
 
-if [ -z "$GEDIT_SDK" ]; then
-	export GEDIT_SDK=10.7
+if [ -z "$BEDIT_SDK" ]; then
+	export BEDIT_SDK=10.7
 fi
 
 export PATH="$INSTALLD/bin:$PATH"
@@ -36,10 +36,10 @@ if [ ! xcodebuild -version &>/dev/null ]; then
 fi
 
 xcodebase=$(xcode-select -p)
-sdkdir="$xcodebase/Platforms/MacOSX.platform/Developer/SDKs/MacOSX$GEDIT_SDK.sdk"
+sdkdir="$xcodebase/Platforms/MacOSX.platform/Developer/SDKs/MacOSX$BEDIT_SDK.sdk"
 
 if [ ! -d "$sdkdir" ]; then
-	do_exit "SDK base directory for $GEDIT_SDK not found. Please make sure to install the SDK at $sdkdir"
+	do_exit "SDK base directory for $BEDIT_SDK not found. Please make sure to install the SDK at $sdkdir"
 fi
 
 function checkout_jhbuild() {
@@ -94,9 +94,9 @@ function cmd_init() {
 	build_jhbuild
 	setup_jhbuildrc
 
-	rm -f "$BASED/$GEDIT_SDK/source/bedit"
-	mkdir -p "$BASED/$GEDIT_SDK/source"
-	ln -s $(cd "$D/../../" && pwd) "$BASED/$GEDIT_SDK/source/bedit"
+	rm -f "$BASED/$BEDIT_SDK/source/bedit"
+	mkdir -p "$BASED/$BEDIT_SDK/source"
+	ln -s $(cd "$D/../../" && pwd) "$BASED/$BEDIT_SDK/source/bedit"
 }
 
 function bootstrap_help_short() {
@@ -126,9 +126,9 @@ function jh_help_short() {
 
 function cmd_jh() {
 	# Setup our jhbuild environment
-	export GEDIT_OSX_SOURCE_BASE="$D"
-	export GEDIT_OSX_BUILD_BASE="$BASED"
-	export __GEDIT_OSX_OLD_HOME="$HOME"
+	export BEDIT_OSX_SOURCE_BASE="$D"
+	export BEDIT_OSX_BUILD_BASE="$BASED"
+	export __BEDIT_OSX_OLD_HOME="$HOME"
 	export HOME="$HOMED"
 	export JHB=bedit
 
@@ -150,7 +150,7 @@ function dbg_help_short() {
 }
 
 function cmd_dbg() {
-	export GEDIT_OSX_DEBUG=1
+	export BEDIT_OSX_DEBUG=1
 	_process "$@"
 }
 
@@ -171,7 +171,7 @@ function make_help_short() {
 }
 
 function cmd_make() {
-	cd "$BASED/$GEDIT_SDK/source/$1" && cmd_jh make
+	cd "$BASED/$BEDIT_SDK/source/$1" && cmd_jh make
 }
 
 function run_help_usage() {
@@ -195,13 +195,13 @@ function cmd_env() {
 
 	case "$1" in
 	source)
-		echo "$BASED/$GEDIT_SDK/source"
+		echo "$BASED/$BEDIT_SDK/source"
 		;;
 	inst)
-		echo "$BASED/$GEDIT_SDK/inst"
+		echo "$BASED/$BEDIT_SDK/inst"
 		;;
 	bin)
-		echo "$BASED/$GEDIT_SDK/inst/bin"
+		echo "$BASED/$BEDIT_SDK/inst/bin"
 		;;
 	home)
 		echo "$HOMED"
@@ -234,7 +234,7 @@ function cmd_all() {
 		cmd_init || exit 1
 	fi
 
-	if [ ! -f "$BASED/$GEDIT_SDK/inst/bin/python" ]; then
+	if [ ! -f "$BASED/$BEDIT_SDK/inst/bin/python" ]; then
 		cmd_bootstrap || exit 1
 	fi
 

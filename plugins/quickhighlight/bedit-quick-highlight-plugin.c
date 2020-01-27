@@ -55,7 +55,7 @@ G_DEFINE_DYNAMIC_TYPE_EXTENDED(
     BeditQuickHighlightPlugin, bedit_quick_highlight_plugin,
     PEAS_TYPE_EXTENSION_BASE, 0,
     G_IMPLEMENT_INTERFACE_DYNAMIC(
-        GEDIT_TYPE_VIEW_ACTIVATABLE, bedit_view_activatable_iface_init)
+        BEDIT_TYPE_VIEW_ACTIVATABLE, bedit_view_activatable_iface_init)
         G_ADD_PRIVATE_DYNAMIC(BeditQuickHighlightPlugin))
 
 static void bedit_quick_highlight_plugin_notify_buffer_cb(
@@ -74,7 +74,7 @@ static void bedit_quick_highlight_plugin_load_style(
     GtkSourceStyleScheme *style_scheme;
     GtkSourceStyle *style = NULL;
 
-    g_return_if_fail(GEDIT_IS_QUICK_HIGHLIGHT_PLUGIN(plugin));
+    g_return_if_fail(BEDIT_IS_QUICK_HIGHLIGHT_PLUGIN(plugin));
 
     if (plugin->priv->buffer == NULL) {
         return;
@@ -99,12 +99,12 @@ static void bedit_quick_highlight_plugin_load_style(
 
 static gboolean bedit_quick_highlight_plugin_highlight_worker(
     gpointer user_data) {
-    BeditQuickHighlightPlugin *plugin = GEDIT_QUICK_HIGHLIGHT_PLUGIN(user_data);
+    BeditQuickHighlightPlugin *plugin = BEDIT_QUICK_HIGHLIGHT_PLUGIN(user_data);
     GtkSourceSearchSettings *search_settings;
     GtkTextIter start, end;
     g_autofree gchar *text = NULL;
 
-    g_assert(GEDIT_IS_QUICK_HIGHLIGHT_PLUGIN(plugin));
+    g_assert(BEDIT_IS_QUICK_HIGHLIGHT_PLUGIN(plugin));
 
     plugin->priv->queued_highlight = 0;
 
@@ -146,7 +146,7 @@ static gboolean bedit_quick_highlight_plugin_highlight_worker(
 
 static void bedit_quick_highlight_plugin_queue_update(
     BeditQuickHighlightPlugin *plugin) {
-    g_return_if_fail(GEDIT_IS_QUICK_HIGHLIGHT_PLUGIN(plugin));
+    g_return_if_fail(BEDIT_IS_QUICK_HIGHLIGHT_PLUGIN(plugin));
 
     if (plugin->priv->queued_highlight != 0) {
         return;
@@ -159,9 +159,9 @@ static void bedit_quick_highlight_plugin_queue_update(
 
 static void bedit_quick_highlight_plugin_notify_weak_buffer_cb(
     gpointer data, GObject *where_the_object_was) {
-    BeditQuickHighlightPlugin *plugin = GEDIT_QUICK_HIGHLIGHT_PLUGIN(data);
+    BeditQuickHighlightPlugin *plugin = BEDIT_QUICK_HIGHLIGHT_PLUGIN(data);
 
-    g_assert(GEDIT_IS_QUICK_HIGHLIGHT_PLUGIN(plugin));
+    g_assert(BEDIT_IS_QUICK_HIGHLIGHT_PLUGIN(plugin));
 
     plugin->priv->style_scheme_handler_id = 0;
     plugin->priv->buffer = NULL;
@@ -169,7 +169,7 @@ static void bedit_quick_highlight_plugin_notify_weak_buffer_cb(
 
 static void bedit_quick_highlight_plugin_unref_weak_buffer(
     BeditQuickHighlightPlugin *plugin) {
-    g_return_if_fail(GEDIT_IS_QUICK_HIGHLIGHT_PLUGIN(plugin));
+    g_return_if_fail(BEDIT_IS_QUICK_HIGHLIGHT_PLUGIN(plugin));
 
     if (plugin->priv->buffer == NULL) {
         return;
@@ -202,8 +202,8 @@ static void bedit_quick_highlight_plugin_unref_weak_buffer(
 
 static void bedit_quick_highlight_plugin_set_buffer(
     BeditQuickHighlightPlugin *plugin, BeditDocument *buffer) {
-    g_return_if_fail(GEDIT_IS_QUICK_HIGHLIGHT_PLUGIN(plugin));
-    g_return_if_fail(GEDIT_IS_DOCUMENT(buffer));
+    g_return_if_fail(BEDIT_IS_QUICK_HIGHLIGHT_PLUGIN(plugin));
+    g_return_if_fail(BEDIT_IS_DOCUMENT(buffer));
 
     if (plugin->priv->buffer == buffer) {
         return;
@@ -245,9 +245,9 @@ static void bedit_quick_highlight_plugin_set_buffer(
 static void bedit_quick_highlight_plugin_mark_set_cb(
     GtkTextBuffer *textbuffer, GtkTextIter *location, GtkTextMark *mark,
     gpointer user_data) {
-    BeditQuickHighlightPlugin *plugin = GEDIT_QUICK_HIGHLIGHT_PLUGIN(user_data);
+    BeditQuickHighlightPlugin *plugin = BEDIT_QUICK_HIGHLIGHT_PLUGIN(user_data);
 
-    g_assert(GEDIT_QUICK_HIGHLIGHT_PLUGIN(plugin));
+    g_assert(BEDIT_QUICK_HIGHLIGHT_PLUGIN(plugin));
 
     if
         G_LIKELY(mark != plugin->priv->insert_mark) {
@@ -260,24 +260,24 @@ static void bedit_quick_highlight_plugin_mark_set_cb(
 static void bedit_quick_highlight_plugin_delete_range_cb(
     GtkTextBuffer *textbuffer, GtkTextIter *start, GtkTextIter *end,
     gpointer user_data) {
-    BeditQuickHighlightPlugin *plugin = GEDIT_QUICK_HIGHLIGHT_PLUGIN(user_data);
+    BeditQuickHighlightPlugin *plugin = BEDIT_QUICK_HIGHLIGHT_PLUGIN(user_data);
 
-    g_assert(GEDIT_QUICK_HIGHLIGHT_PLUGIN(plugin));
+    g_assert(BEDIT_QUICK_HIGHLIGHT_PLUGIN(plugin));
 
     bedit_quick_highlight_plugin_queue_update(plugin);
 }
 
 static void bedit_quick_highlight_plugin_notify_style_scheme_cb(
     GObject *object, GParamSpec *pspec, gpointer user_data) {
-    BeditQuickHighlightPlugin *plugin = GEDIT_QUICK_HIGHLIGHT_PLUGIN(user_data);
+    BeditQuickHighlightPlugin *plugin = BEDIT_QUICK_HIGHLIGHT_PLUGIN(user_data);
 
-    g_assert(GEDIT_QUICK_HIGHLIGHT_PLUGIN(plugin));
+    g_assert(BEDIT_QUICK_HIGHLIGHT_PLUGIN(plugin));
 
     bedit_quick_highlight_plugin_load_style(plugin);
 }
 
 static void bedit_quick_highlight_plugin_dispose(GObject *object) {
-    BeditQuickHighlightPlugin *plugin = GEDIT_QUICK_HIGHLIGHT_PLUGIN(object);
+    BeditQuickHighlightPlugin *plugin = BEDIT_QUICK_HIGHLIGHT_PLUGIN(object);
 
     g_clear_object(&plugin->priv->search_context);
 
@@ -289,7 +289,7 @@ static void bedit_quick_highlight_plugin_dispose(GObject *object) {
 }
 
 static void bedit_quick_highlight_plugin_finalize(GObject *object) {
-    BeditQuickHighlightPlugin *plugin = GEDIT_QUICK_HIGHLIGHT_PLUGIN(object);
+    BeditQuickHighlightPlugin *plugin = BEDIT_QUICK_HIGHLIGHT_PLUGIN(object);
 
     g_clear_object(&plugin->priv->style);
 
@@ -298,7 +298,7 @@ static void bedit_quick_highlight_plugin_finalize(GObject *object) {
 
 static void bedit_quick_highlight_plugin_get_property(
     GObject *object, guint prop_id, GValue *value, GParamSpec *pspec) {
-    BeditQuickHighlightPlugin *plugin = GEDIT_QUICK_HIGHLIGHT_PLUGIN(object);
+    BeditQuickHighlightPlugin *plugin = BEDIT_QUICK_HIGHLIGHT_PLUGIN(object);
 
     switch (prop_id) {
     case PROP_VIEW:
@@ -313,11 +313,11 @@ static void bedit_quick_highlight_plugin_get_property(
 
 static void bedit_quick_highlight_plugin_set_property(
     GObject *object, guint prop_id, const GValue *value, GParamSpec *pspec) {
-    BeditQuickHighlightPlugin *plugin = GEDIT_QUICK_HIGHLIGHT_PLUGIN(object);
+    BeditQuickHighlightPlugin *plugin = BEDIT_QUICK_HIGHLIGHT_PLUGIN(object);
 
     switch (prop_id) {
     case PROP_VIEW:
-        plugin->priv->view = GEDIT_VIEW(g_value_dup_object(value));
+        plugin->priv->view = BEDIT_VIEW(g_value_dup_object(value));
         break;
 
     default:
@@ -353,7 +353,7 @@ static void bedit_quick_highlight_plugin_activate(
 
     bedit_debug(DEBUG_PLUGINS);
 
-    plugin = GEDIT_QUICK_HIGHLIGHT_PLUGIN(activatable);
+    plugin = BEDIT_QUICK_HIGHLIGHT_PLUGIN(activatable);
 
     plugin->priv->buffer_handler_id = g_signal_connect(
         plugin->priv->view, "notify::buffer",
@@ -361,7 +361,7 @@ static void bedit_quick_highlight_plugin_activate(
 
     buffer = gtk_text_view_get_buffer(GTK_TEXT_VIEW(plugin->priv->view));
 
-    bedit_quick_highlight_plugin_set_buffer(plugin, GEDIT_DOCUMENT(buffer));
+    bedit_quick_highlight_plugin_set_buffer(plugin, BEDIT_DOCUMENT(buffer));
 }
 
 static void bedit_quick_highlight_plugin_deactivate(
@@ -370,7 +370,7 @@ static void bedit_quick_highlight_plugin_deactivate(
 
     bedit_debug(DEBUG_PLUGINS);
 
-    plugin = GEDIT_QUICK_HIGHLIGHT_PLUGIN(activatable);
+    plugin = BEDIT_QUICK_HIGHLIGHT_PLUGIN(activatable);
 
     g_clear_object(&plugin->priv->style);
     g_clear_object(&plugin->priv->search_context);
@@ -386,14 +386,14 @@ static void bedit_quick_highlight_plugin_deactivate(
 
 static void bedit_quick_highlight_plugin_notify_buffer_cb(
     GObject *object, GParamSpec *pspec, gpointer user_data) {
-    BeditQuickHighlightPlugin *plugin = GEDIT_QUICK_HIGHLIGHT_PLUGIN(user_data);
+    BeditQuickHighlightPlugin *plugin = BEDIT_QUICK_HIGHLIGHT_PLUGIN(user_data);
     GtkTextBuffer *buffer;
 
-    g_assert(GEDIT_IS_QUICK_HIGHLIGHT_PLUGIN(plugin));
+    g_assert(BEDIT_IS_QUICK_HIGHLIGHT_PLUGIN(plugin));
 
     buffer = gtk_text_view_get_buffer(GTK_TEXT_VIEW(plugin->priv->view));
 
-    bedit_quick_highlight_plugin_set_buffer(plugin, GEDIT_DOCUMENT(buffer));
+    bedit_quick_highlight_plugin_set_buffer(plugin, BEDIT_DOCUMENT(buffer));
 }
 
 static void bedit_view_activatable_iface_init(
@@ -406,6 +406,6 @@ G_MODULE_EXPORT void peas_register_types(PeasObjectModule *module) {
     bedit_quick_highlight_plugin_register_type(G_TYPE_MODULE(module));
 
     peas_object_module_register_extension_type(
-        module, GEDIT_TYPE_VIEW_ACTIVATABLE, GEDIT_TYPE_QUICK_HIGHLIGHT_PLUGIN);
+        module, BEDIT_TYPE_VIEW_ACTIVATABLE, BEDIT_TYPE_QUICK_HIGHLIGHT_PLUGIN);
 }
 

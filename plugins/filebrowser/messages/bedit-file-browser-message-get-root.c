@@ -38,11 +38,11 @@ struct _BeditFileBrowserMessageGetRootPrivate {
 
 G_DEFINE_TYPE_EXTENDED(
     BeditFileBrowserMessageGetRoot, bedit_file_browser_message_get_root,
-    GEDIT_TYPE_MESSAGE, 0, G_ADD_PRIVATE(BeditFileBrowserMessageGetRoot))
+    BEDIT_TYPE_MESSAGE, 0, G_ADD_PRIVATE(BeditFileBrowserMessageGetRoot))
 
 static void bedit_file_browser_message_get_root_finalize(GObject *obj) {
     BeditFileBrowserMessageGetRoot *msg =
-        GEDIT_FILE_BROWSER_MESSAGE_GET_ROOT(obj);
+        BEDIT_FILE_BROWSER_MESSAGE_GET_ROOT(obj);
 
     if (msg->priv->location) {
         g_object_unref(msg->priv->location);
@@ -56,7 +56,7 @@ static void bedit_file_browser_message_get_root_get_property(
     GObject *obj, guint prop_id, GValue *value, GParamSpec *pspec) {
     BeditFileBrowserMessageGetRoot *msg;
 
-    msg = GEDIT_FILE_BROWSER_MESSAGE_GET_ROOT(obj);
+    msg = BEDIT_FILE_BROWSER_MESSAGE_GET_ROOT(obj);
 
     switch (prop_id) {
     case PROP_LOCATION:
@@ -69,7 +69,7 @@ static void bedit_file_browser_message_get_root_set_property(
     GObject *obj, guint prop_id, GValue const *value, GParamSpec *pspec) {
     BeditFileBrowserMessageGetRoot *msg;
 
-    msg = GEDIT_FILE_BROWSER_MESSAGE_GET_ROOT(obj);
+    msg = BEDIT_FILE_BROWSER_MESSAGE_GET_ROOT(obj);
 
     switch (prop_id) {
     case PROP_LOCATION: {

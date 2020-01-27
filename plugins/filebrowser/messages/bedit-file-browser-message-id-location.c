@@ -45,11 +45,11 @@ struct _BeditFileBrowserMessageIdLocationPrivate {
 
 G_DEFINE_TYPE_EXTENDED(
     BeditFileBrowserMessageIdLocation, bedit_file_browser_message_id_location,
-    GEDIT_TYPE_MESSAGE, 0, G_ADD_PRIVATE(BeditFileBrowserMessageIdLocation))
+    BEDIT_TYPE_MESSAGE, 0, G_ADD_PRIVATE(BeditFileBrowserMessageIdLocation))
 
 static void bedit_file_browser_message_id_location_finalize(GObject *obj) {
     BeditFileBrowserMessageIdLocation *msg =
-        GEDIT_FILE_BROWSER_MESSAGE_ID_LOCATION(obj);
+        BEDIT_FILE_BROWSER_MESSAGE_ID_LOCATION(obj);
 
     g_free(msg->priv->id);
     g_free(msg->priv->name);
@@ -65,7 +65,7 @@ static void bedit_file_browser_message_id_location_get_property(
     GObject *obj, guint prop_id, GValue *value, GParamSpec *pspec) {
     BeditFileBrowserMessageIdLocation *msg;
 
-    msg = GEDIT_FILE_BROWSER_MESSAGE_ID_LOCATION(obj);
+    msg = BEDIT_FILE_BROWSER_MESSAGE_ID_LOCATION(obj);
 
     switch (prop_id) {
     case PROP_ID:
@@ -87,7 +87,7 @@ static void bedit_file_browser_message_id_location_set_property(
     GObject *obj, guint prop_id, GValue const *value, GParamSpec *pspec) {
     BeditFileBrowserMessageIdLocation *msg;
 
-    msg = GEDIT_FILE_BROWSER_MESSAGE_ID_LOCATION(obj);
+    msg = BEDIT_FILE_BROWSER_MESSAGE_ID_LOCATION(obj);
 
     switch (prop_id) {
     case PROP_ID: {

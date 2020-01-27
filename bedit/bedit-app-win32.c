@@ -37,7 +37,7 @@ struct _BeditAppWin32 {
     BeditApp parent_instance;
 };
 
-G_DEFINE_TYPE(BeditAppWin32, bedit_app_win32, GEDIT_TYPE_APP)
+G_DEFINE_TYPE(BeditAppWin32, bedit_app_win32, BEDIT_TYPE_APP)
 
 static void bedit_app_win32_finalize(GObject *object) {
     G_OBJECT_CLASS(bedit_app_win32_parent_class)->finalize(object);
@@ -103,7 +103,7 @@ static void bedit_app_win32_startup(GApplication *application) {
 static void bedit_app_win32_class_init(BeditAppWin32Class *klass) {
     GObjectClass *object_class = G_OBJECT_CLASS(klass);
     GApplicationClass *gapp_class = G_APPLICATION_CLASS(klass);
-    BeditAppClass *app_class = GEDIT_APP_CLASS(klass);
+    BeditAppClass *app_class = BEDIT_APP_CLASS(klass);
 
     object_class->finalize = bedit_app_win32_finalize;
 

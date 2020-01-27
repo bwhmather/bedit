@@ -18,17 +18,17 @@
  * along with this program; if not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef GEDIT_MENU_STACK_SWITCHER_H
-#define GEDIT_MENU_STACK_SWITCHER_H
+#ifndef BEDIT_MENU_STACK_SWITCHER_H
+#define BEDIT_MENU_STACK_SWITCHER_H
 
 #include <gtk/gtk.h>
 
 G_BEGIN_DECLS
 
-#define GEDIT_TYPE_MENU_STACK_SWITCHER (bedit_menu_stack_switcher_get_type())
+#define BEDIT_TYPE_MENU_STACK_SWITCHER (bedit_menu_stack_switcher_get_type())
 
 G_DECLARE_FINAL_TYPE(
-    BeditMenuStackSwitcher, bedit_menu_stack_switcher, GEDIT,
+    BeditMenuStackSwitcher, bedit_menu_stack_switcher, BEDIT,
     MENU_STACK_SWITCHER, GtkMenuButton)
 
 GtkWidget *bedit_menu_stack_switcher_new(void);
@@ -40,5 +40,5 @@ GtkStack *bedit_menu_stack_switcher_get_stack(BeditMenuStackSwitcher *switcher);
 
 G_END_DECLS
 
-#endif /* GEDIT_MENU_STACK_SWITCHER_H  */
+#endif /* BEDIT_MENU_STACK_SWITCHER_H  */
 

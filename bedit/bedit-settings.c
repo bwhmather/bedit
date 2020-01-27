@@ -33,12 +33,12 @@
 #include "bedit-view.h"
 #include "bedit-window.h"
 
-#define GEDIT_SETTINGS_LOCKDOWN_COMMAND_LINE "disable-command-line"
-#define GEDIT_SETTINGS_LOCKDOWN_PRINTING "disable-printing"
-#define GEDIT_SETTINGS_LOCKDOWN_PRINT_SETUP "disable-print-setup"
-#define GEDIT_SETTINGS_LOCKDOWN_SAVE_TO_DISK "disable-save-to-disk"
+#define BEDIT_SETTINGS_LOCKDOWN_COMMAND_LINE "disable-command-line"
+#define BEDIT_SETTINGS_LOCKDOWN_PRINTING "disable-printing"
+#define BEDIT_SETTINGS_LOCKDOWN_PRINT_SETUP "disable-print-setup"
+#define BEDIT_SETTINGS_LOCKDOWN_SAVE_TO_DISK "disable-save-to-disk"
 
-#define GEDIT_SETTINGS_SYSTEM_FONT "monospace-font-name"
+#define BEDIT_SETTINGS_SYSTEM_FONT "monospace-font-name"
 
 struct _BeditSettings {
     GObject parent_instance;
@@ -54,7 +54,7 @@ struct _BeditSettings {
 G_DEFINE_TYPE(BeditSettings, bedit_settings, G_TYPE_OBJECT)
 
 static void bedit_settings_finalize(GObject *object) {
-    BeditSettings *gs = GEDIT_SETTINGS(object);
+    BeditSettings *gs = BEDIT_SETTINGS(object);
 
     g_free(gs->old_scheme);
 
@@ -62,7 +62,7 @@ static void bedit_settings_finalize(GObject *object) {
 }
 
 static void bedit_settings_dispose(GObject *object) {
-    BeditSettings *gs = GEDIT_SETTINGS(object);
+    BeditSettings *gs = BEDIT_SETTINGS(object);
 
     g_clear_object(&gs->lockdown);
     g_clear_object(&gs->interface);
@@ -78,16 +78,16 @@ static void on_lockdown_changed(
     BeditApp *app;
 
     locked = g_settings_get_boolean(settings, key);
-    app = GEDIT_APP(g_application_get_default());
+    app = BEDIT_APP(g_application_get_default());
 
-    if (strcmp(key, GEDIT_SETTINGS_LOCKDOWN_COMMAND_LINE) == 0) {
-        _bedit_app_set_lockdown_bit(app, GEDIT_LOCKDOWN_COMMAND_LINE, locked);
-    } else if (strcmp(key, GEDIT_SETTINGS_LOCKDOWN_PRINTING) == 0) {
-        _bedit_app_set_lockdown_bit(app, GEDIT_LOCKDOWN_PRINTING, locked);
-    } else if (strcmp(key, GEDIT_SETTINGS_LOCKDOWN_PRINT_SETUP) == 0) {
-        _bedit_app_set_lockdown_bit(app, GEDIT_LOCKDOWN_PRINT_SETUP, locked);
-    } else if (strcmp(key, GEDIT_SETTINGS_LOCKDOWN_SAVE_TO_DISK) == 0) {
-        _bedit_app_set_lockdown_bit(app, GEDIT_LOCKDOWN_SAVE_TO_DISK, locked);
+    if (strcmp(key, BEDIT_SETTINGS_LOCKDOWN_COMMAND_LINE) == 0) {
+        _bedit_app_set_lockdown_bit(app, BEDIT_LOCKDOWN_COMMAND_LINE, locked);
+    } else if (strcmp(key, BEDIT_SETTINGS_LOCKDOWN_PRINTING) == 0) {
+        _bedit_app_set_lockdown_bit(app, BEDIT_LOCKDOWN_PRINTING, locked);
+    } else if (strcmp(key, BEDIT_SETTINGS_LOCKDOWN_PRINT_SETUP) == 0) {
+        _bedit_app_set_lockdown_bit(app, BEDIT_LOCKDOWN_PRINT_SETUP, locked);
+    } else if (strcmp(key, BEDIT_SETTINGS_LOCKDOWN_SAVE_TO_DISK) == 0) {
+        _bedit_app_set_lockdown_bit(app, BEDIT_LOCKDOWN_SAVE_TO_DISK, locked);
     }
 }
 
@@ -95,13 +95,13 @@ static void set_font(BeditSettings *gs, const gchar *font) {
     GList *views, *l;
     guint ts;
 
-    g_settings_get(gs->editor, GEDIT_SETTINGS_TABS_SIZE, "u", &ts);
+    g_settings_get(gs->editor, BEDIT_SETTINGS_TABS_SIZE, "u", &ts);
 
-    views = bedit_app_get_views(GEDIT_APP(g_application_get_default()));
+    views = bedit_app_get_views(BEDIT_APP(g_application_get_default()));
 
     for (l = views; l != NULL; l = g_list_next(l)) {
         /* Note: we use def=FALSE to avoid BeditView to query dconf */
-        bedit_view_set_font(GEDIT_VIEW(l->data), FALSE, font);
+        bedit_view_set_font(BEDIT_VIEW(l->data), FALSE, font);
 
         gtk_source_view_set_tab_width(GTK_SOURCE_VIEW(l->data), ts);
     }
@@ -114,7 +114,7 @@ static void on_system_font_changed(
     gboolean use_default_font;
 
     use_default_font =
-        g_settings_get_boolean(gs->editor, GEDIT_SETTINGS_USE_DEFAULT_FONT);
+        g_settings_get_boolean(gs->editor, BEDIT_SETTINGS_USE_DEFAULT_FONT);
 
     if (use_default_font) {
         gchar *font;
@@ -133,9 +133,9 @@ static void on_use_default_font_changed(
     def = g_settings_get_boolean(settings, key);
 
     if (def) {
-        font = g_settings_get_string(gs->interface, GEDIT_SETTINGS_SYSTEM_FONT);
+        font = g_settings_get_string(gs->interface, BEDIT_SETTINGS_SYSTEM_FONT);
     } else {
-        font = g_settings_get_string(gs->editor, GEDIT_SETTINGS_EDITOR_FONT);
+        font = g_settings_get_string(gs->editor, BEDIT_SETTINGS_EDITOR_FONT);
     }
 
     set_font(gs, font);
@@ -148,7 +148,7 @@ static void on_editor_font_changed(
     gboolean use_default_font;
 
     use_default_font =
-        g_settings_get_boolean(gs->editor, GEDIT_SETTINGS_USE_DEFAULT_FONT);
+        g_settings_get_boolean(gs->editor, BEDIT_SETTINGS_USE_DEFAULT_FONT);
 
     if (!use_default_font) {
         gchar *font;
@@ -193,7 +193,7 @@ static void on_scheme_changed(
         }
     }
 
-    docs = bedit_app_get_documents(GEDIT_APP(g_application_get_default()));
+    docs = bedit_app_get_documents(BEDIT_APP(g_application_get_default()));
 
     for (l = docs; l != NULL; l = g_list_next(l)) {
         g_return_if_fail(GTK_SOURCE_IS_BUFFER(l->data));
@@ -211,10 +211,10 @@ static void on_auto_save_changed(
 
     auto_save = g_settings_get_boolean(settings, key);
 
-    docs = bedit_app_get_documents(GEDIT_APP(g_application_get_default()));
+    docs = bedit_app_get_documents(BEDIT_APP(g_application_get_default()));
 
     for (l = docs; l != NULL; l = g_list_next(l)) {
-        BeditTab *tab = bedit_tab_get_from_document(GEDIT_DOCUMENT(l->data));
+        BeditTab *tab = bedit_tab_get_from_document(BEDIT_DOCUMENT(l->data));
 
         bedit_tab_set_auto_save_enabled(tab, auto_save);
     }
@@ -229,10 +229,10 @@ static void on_auto_save_interval_changed(
 
     g_settings_get(settings, key, "u", &auto_save_interval);
 
-    docs = bedit_app_get_documents(GEDIT_APP(g_application_get_default()));
+    docs = bedit_app_get_documents(BEDIT_APP(g_application_get_default()));
 
     for (l = docs; l != NULL; l = g_list_next(l)) {
-        BeditTab *tab = bedit_tab_get_from_document(GEDIT_DOCUMENT(l->data));
+        BeditTab *tab = bedit_tab_get_from_document(BEDIT_DOCUMENT(l->data));
 
         bedit_tab_set_auto_save_interval(tab, auto_save_interval);
     }
@@ -247,7 +247,7 @@ static void on_syntax_highlighting_changed(
 
     enable = g_settings_get_boolean(settings, key);
 
-    docs = bedit_app_get_documents(GEDIT_APP(g_application_get_default()));
+    docs = bedit_app_get_documents(BEDIT_APP(g_application_get_default()));
 
     for (l = docs; l != NULL; l = g_list_next(l)) {
         gtk_source_buffer_set_highlight_syntax(
@@ -258,7 +258,7 @@ static void on_syntax_highlighting_changed(
 
     /* update the sensitivity of the Higlight Mode menu item */
     windows =
-        bedit_app_get_main_windows(GEDIT_APP(g_application_get_default()));
+        bedit_app_get_main_windows(BEDIT_APP(g_application_get_default()));
 
     for (l = windows; l != NULL; l = g_list_next(l)) {
         GAction *action;
@@ -315,7 +315,7 @@ static void bedit_settings_class_init(BeditSettingsClass *klass) {
 }
 
 BeditSettings *bedit_settings_new() {
-    return g_object_new(GEDIT_TYPE_SETTINGS, NULL);
+    return g_object_new(BEDIT_TYPE_SETTINGS, NULL);
 }
 
 BeditLockdownMask bedit_settings_get_lockdown(BeditSettings *gs) {
@@ -323,25 +323,25 @@ BeditLockdownMask bedit_settings_get_lockdown(BeditSettings *gs) {
     gboolean command_line, printing, print_setup, save_to_disk;
 
     command_line = g_settings_get_boolean(
-        gs->lockdown, GEDIT_SETTINGS_LOCKDOWN_COMMAND_LINE);
+        gs->lockdown, BEDIT_SETTINGS_LOCKDOWN_COMMAND_LINE);
     printing =
-        g_settings_get_boolean(gs->lockdown, GEDIT_SETTINGS_LOCKDOWN_PRINTING);
+        g_settings_get_boolean(gs->lockdown, BEDIT_SETTINGS_LOCKDOWN_PRINTING);
     print_setup = g_settings_get_boolean(
-        gs->lockdown, GEDIT_SETTINGS_LOCKDOWN_PRINT_SETUP);
+        gs->lockdown, BEDIT_SETTINGS_LOCKDOWN_PRINT_SETUP);
     save_to_disk = g_settings_get_boolean(
-        gs->lockdown, GEDIT_SETTINGS_LOCKDOWN_SAVE_TO_DISK);
+        gs->lockdown, BEDIT_SETTINGS_LOCKDOWN_SAVE_TO_DISK);
 
     if (command_line)
-        lockdown |= GEDIT_LOCKDOWN_COMMAND_LINE;
+        lockdown |= BEDIT_LOCKDOWN_COMMAND_LINE;
 
     if (printing)
-        lockdown |= GEDIT_LOCKDOWN_PRINTING;
+        lockdown |= BEDIT_LOCKDOWN_PRINTING;
 
     if (print_setup)
-        lockdown |= GEDIT_LOCKDOWN_PRINT_SETUP;
+        lockdown |= BEDIT_LOCKDOWN_PRINT_SETUP;
 
     if (save_to_disk)
-        lockdown |= GEDIT_LOCKDOWN_SAVE_TO_DISK;
+        lockdown |= BEDIT_LOCKDOWN_SAVE_TO_DISK;
 
     return lockdown;
 }
@@ -349,7 +349,7 @@ BeditLockdownMask bedit_settings_get_lockdown(BeditSettings *gs) {
 gchar *bedit_settings_get_system_font(BeditSettings *gs) {
     gchar *system_font;
 
-    g_return_val_if_fail(GEDIT_IS_SETTINGS(gs), NULL);
+    g_return_val_if_fail(BEDIT_IS_SETTINGS(gs), NULL);
 
     system_font = g_settings_get_string(gs->interface, "monospace-font-name");
 
@@ -450,7 +450,7 @@ GSList *bedit_settings_get_candidate_encodings(gboolean *default_candidates) {
     settings = g_settings_new("com.bwhmather.bedit.preferences.encodings");
 
     settings_strv =
-        g_settings_get_strv(settings, GEDIT_SETTINGS_CANDIDATE_ENCODINGS);
+        g_settings_get_strv(settings, BEDIT_SETTINGS_CANDIDATE_ENCODINGS);
 
     if (strv_is_empty(settings_strv)) {
         if (default_candidates != NULL) {

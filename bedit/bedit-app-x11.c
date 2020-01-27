@@ -30,7 +30,7 @@ struct _BeditAppX11 {
     BeditApp parent_instance;
 };
 
-G_DEFINE_TYPE(BeditAppX11, bedit_app_x11, GEDIT_TYPE_APP)
+G_DEFINE_TYPE(BeditAppX11, bedit_app_x11, BEDIT_TYPE_APP)
 
 /* This should go in GtkApplication at some point... */
 

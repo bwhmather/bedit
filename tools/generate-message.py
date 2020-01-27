@@ -620,7 +620,7 @@ class Message:
         self._write('''
 G_DEFINE_TYPE_EXTENDED ({0},
                         {1},
-                        GEDIT_TYPE_MESSAGE,
+                        BEDIT_TYPE_MESSAGE,
                         0,
                         G_ADD_PRIVATE ({0}))
 '''.format(self.cobj, self.cname_lower))

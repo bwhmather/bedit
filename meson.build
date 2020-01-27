@@ -91,9 +91,9 @@ config_h.set_quoted('DATADIR', join_paths(get_option('prefix'), get_option('data
 config_h.set_quoted('VERSION', meson.project_version())
 
 version_array = meson.project_version().split('.')
-config_h.set('GEDIT_MAJOR_VERSION', version_array[0])
-config_h.set('GEDIT_MINOR_VERSION', version_array[1])
-config_h.set('GEDIT_MICRO_VERSION', version_array[2])
+config_h.set('BEDIT_MAJOR_VERSION', version_array[0])
+config_h.set('BEDIT_MINOR_VERSION', version_array[1])
+config_h.set('BEDIT_MICRO_VERSION', version_array[2])
 
 configure_file(
   output: 'config.h',

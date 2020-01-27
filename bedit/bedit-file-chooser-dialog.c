@@ -76,9 +76,9 @@ void bedit_file_chooser_dialog_set_encoding(
     BeditFileChooserDialog *dialog, const GtkSourceEncoding *encoding) {
     BeditFileChooserDialogInterface *iface;
 
-    g_return_if_fail(GEDIT_IS_FILE_CHOOSER_DIALOG(dialog));
+    g_return_if_fail(BEDIT_IS_FILE_CHOOSER_DIALOG(dialog));
 
-    iface = GEDIT_FILE_CHOOSER_DIALOG_GET_IFACE(dialog);
+    iface = BEDIT_FILE_CHOOSER_DIALOG_GET_IFACE(dialog);
     g_return_if_fail(iface->set_encoding != NULL);
 
     iface->set_encoding(dialog, encoding);
@@ -88,9 +88,9 @@ const GtkSourceEncoding *bedit_file_chooser_dialog_get_encoding(
     BeditFileChooserDialog *dialog) {
     BeditFileChooserDialogInterface *iface;
 
-    g_return_val_if_fail(GEDIT_IS_FILE_CHOOSER_DIALOG(dialog), NULL);
+    g_return_val_if_fail(BEDIT_IS_FILE_CHOOSER_DIALOG(dialog), NULL);
 
-    iface = GEDIT_FILE_CHOOSER_DIALOG_GET_IFACE(dialog);
+    iface = BEDIT_FILE_CHOOSER_DIALOG_GET_IFACE(dialog);
     g_return_val_if_fail(iface->get_encoding != NULL, NULL);
 
     return iface->get_encoding(dialog);
@@ -100,9 +100,9 @@ void bedit_file_chooser_dialog_set_newline_type(
     BeditFileChooserDialog *dialog, GtkSourceNewlineType newline_type) {
     BeditFileChooserDialogInterface *iface;
 
-    g_return_if_fail(GEDIT_IS_FILE_CHOOSER_DIALOG(dialog));
+    g_return_if_fail(BEDIT_IS_FILE_CHOOSER_DIALOG(dialog));
 
-    iface = GEDIT_FILE_CHOOSER_DIALOG_GET_IFACE(dialog);
+    iface = BEDIT_FILE_CHOOSER_DIALOG_GET_IFACE(dialog);
     g_return_if_fail(iface->set_newline_type != NULL);
 
     iface->set_newline_type(dialog, newline_type);
@@ -113,9 +113,9 @@ GtkSourceNewlineType bedit_file_chooser_dialog_get_newline_type(
     BeditFileChooserDialogInterface *iface;
 
     g_return_val_if_fail(
-        GEDIT_IS_FILE_CHOOSER_DIALOG(dialog), GTK_SOURCE_NEWLINE_TYPE_DEFAULT);
+        BEDIT_IS_FILE_CHOOSER_DIALOG(dialog), GTK_SOURCE_NEWLINE_TYPE_DEFAULT);
 
-    iface = GEDIT_FILE_CHOOSER_DIALOG_GET_IFACE(dialog);
+    iface = BEDIT_FILE_CHOOSER_DIALOG_GET_IFACE(dialog);
     g_return_val_if_fail(
         iface->get_newline_type != NULL, GTK_SOURCE_NEWLINE_TYPE_DEFAULT);
 
@@ -126,9 +126,9 @@ void bedit_file_chooser_dialog_set_current_folder(
     BeditFileChooserDialog *dialog, GFile *folder) {
     BeditFileChooserDialogInterface *iface;
 
-    g_return_if_fail(GEDIT_IS_FILE_CHOOSER_DIALOG(dialog));
+    g_return_if_fail(BEDIT_IS_FILE_CHOOSER_DIALOG(dialog));
 
-    iface = GEDIT_FILE_CHOOSER_DIALOG_GET_IFACE(dialog);
+    iface = BEDIT_FILE_CHOOSER_DIALOG_GET_IFACE(dialog);
     g_return_if_fail(iface->set_current_folder != NULL);
 
     iface->set_current_folder(dialog, folder);
@@ -138,9 +138,9 @@ void bedit_file_chooser_dialog_set_current_name(
     BeditFileChooserDialog *dialog, const gchar *name) {
     BeditFileChooserDialogInterface *iface;
 
-    g_return_if_fail(GEDIT_IS_FILE_CHOOSER_DIALOG(dialog));
+    g_return_if_fail(BEDIT_IS_FILE_CHOOSER_DIALOG(dialog));
 
-    iface = GEDIT_FILE_CHOOSER_DIALOG_GET_IFACE(dialog);
+    iface = BEDIT_FILE_CHOOSER_DIALOG_GET_IFACE(dialog);
     g_return_if_fail(iface->set_current_name != NULL);
 
     iface->set_current_name(dialog, name);
@@ -150,10 +150,10 @@ void bedit_file_chooser_dialog_set_file(
     BeditFileChooserDialog *dialog, GFile *file) {
     BeditFileChooserDialogInterface *iface;
 
-    g_return_if_fail(GEDIT_IS_FILE_CHOOSER_DIALOG(dialog));
+    g_return_if_fail(BEDIT_IS_FILE_CHOOSER_DIALOG(dialog));
     g_return_if_fail(file == NULL || G_IS_FILE(file));
 
-    iface = GEDIT_FILE_CHOOSER_DIALOG_GET_IFACE(dialog);
+    iface = BEDIT_FILE_CHOOSER_DIALOG_GET_IFACE(dialog);
     g_return_if_fail(iface->set_file != NULL);
 
     iface->set_file(dialog, file);
@@ -162,9 +162,9 @@ void bedit_file_chooser_dialog_set_file(
 GSList *bedit_file_chooser_dialog_get_files(BeditFileChooserDialog *dialog) {
     BeditFileChooserDialogInterface *iface;
 
-    g_return_val_if_fail(GEDIT_IS_FILE_CHOOSER_DIALOG(dialog), NULL);
+    g_return_val_if_fail(BEDIT_IS_FILE_CHOOSER_DIALOG(dialog), NULL);
 
-    iface = GEDIT_FILE_CHOOSER_DIALOG_GET_IFACE(dialog);
+    iface = BEDIT_FILE_CHOOSER_DIALOG_GET_IFACE(dialog);
     g_return_val_if_fail(iface->get_files != NULL, NULL);
 
     return iface->get_files(dialog);
@@ -173,9 +173,9 @@ GSList *bedit_file_chooser_dialog_get_files(BeditFileChooserDialog *dialog) {
 GFile *bedit_file_chooser_dialog_get_file(BeditFileChooserDialog *dialog) {
     BeditFileChooserDialogInterface *iface;
 
-    g_return_val_if_fail(GEDIT_IS_FILE_CHOOSER_DIALOG(dialog), NULL);
+    g_return_val_if_fail(BEDIT_IS_FILE_CHOOSER_DIALOG(dialog), NULL);
 
-    iface = GEDIT_FILE_CHOOSER_DIALOG_GET_IFACE(dialog);
+    iface = BEDIT_FILE_CHOOSER_DIALOG_GET_IFACE(dialog);
     g_return_val_if_fail(iface->get_file != NULL, NULL);
 
     return iface->get_file(dialog);
@@ -185,9 +185,9 @@ void bedit_file_chooser_dialog_set_do_overwrite_confirmation(
     BeditFileChooserDialog *dialog, gboolean overwrite_confirmation) {
     BeditFileChooserDialogInterface *iface;
 
-    g_return_if_fail(GEDIT_IS_FILE_CHOOSER_DIALOG(dialog));
+    g_return_if_fail(BEDIT_IS_FILE_CHOOSER_DIALOG(dialog));
 
-    iface = GEDIT_FILE_CHOOSER_DIALOG_GET_IFACE(dialog);
+    iface = BEDIT_FILE_CHOOSER_DIALOG_GET_IFACE(dialog);
     g_return_if_fail(iface->set_do_overwrite_confirmation != NULL);
 
     iface->set_do_overwrite_confirmation(dialog, overwrite_confirmation);
@@ -196,9 +196,9 @@ void bedit_file_chooser_dialog_set_do_overwrite_confirmation(
 void bedit_file_chooser_dialog_show(BeditFileChooserDialog *dialog) {
     BeditFileChooserDialogInterface *iface;
 
-    g_return_if_fail(GEDIT_IS_FILE_CHOOSER_DIALOG(dialog));
+    g_return_if_fail(BEDIT_IS_FILE_CHOOSER_DIALOG(dialog));
 
-    iface = GEDIT_FILE_CHOOSER_DIALOG_GET_IFACE(dialog);
+    iface = BEDIT_FILE_CHOOSER_DIALOG_GET_IFACE(dialog);
     g_return_if_fail(iface->show != NULL);
 
     iface->show(dialog);
@@ -207,9 +207,9 @@ void bedit_file_chooser_dialog_show(BeditFileChooserDialog *dialog) {
 void bedit_file_chooser_dialog_hide(BeditFileChooserDialog *dialog) {
     BeditFileChooserDialogInterface *iface;
 
-    g_return_if_fail(GEDIT_IS_FILE_CHOOSER_DIALOG(dialog));
+    g_return_if_fail(BEDIT_IS_FILE_CHOOSER_DIALOG(dialog));
 
-    iface = GEDIT_FILE_CHOOSER_DIALOG_GET_IFACE(dialog);
+    iface = BEDIT_FILE_CHOOSER_DIALOG_GET_IFACE(dialog);
     g_return_if_fail(iface->hide != NULL);
 
     iface->hide(dialog);
@@ -218,9 +218,9 @@ void bedit_file_chooser_dialog_hide(BeditFileChooserDialog *dialog) {
 void bedit_file_chooser_dialog_destroy(BeditFileChooserDialog *dialog) {
     BeditFileChooserDialogInterface *iface;
 
-    g_return_if_fail(GEDIT_IS_FILE_CHOOSER_DIALOG(dialog));
+    g_return_if_fail(BEDIT_IS_FILE_CHOOSER_DIALOG(dialog));
 
-    iface = GEDIT_FILE_CHOOSER_DIALOG_GET_IFACE(dialog);
+    iface = BEDIT_FILE_CHOOSER_DIALOG_GET_IFACE(dialog);
     g_return_if_fail(iface->destroy != NULL);
 
     iface->destroy(dialog);
@@ -230,9 +230,9 @@ void bedit_file_chooser_dialog_set_modal(
     BeditFileChooserDialog *dialog, gboolean is_modal) {
     BeditFileChooserDialogInterface *iface;
 
-    g_return_if_fail(GEDIT_IS_FILE_CHOOSER_DIALOG(dialog));
+    g_return_if_fail(BEDIT_IS_FILE_CHOOSER_DIALOG(dialog));
 
-    iface = GEDIT_FILE_CHOOSER_DIALOG_GET_IFACE(dialog);
+    iface = BEDIT_FILE_CHOOSER_DIALOG_GET_IFACE(dialog);
     g_return_if_fail(iface->set_modal != NULL);
 
     iface->set_modal(dialog, is_modal);
@@ -242,9 +242,9 @@ GtkWindow *bedit_file_chooser_dialog_get_window(
     BeditFileChooserDialog *dialog) {
     BeditFileChooserDialogInterface *iface;
 
-    g_return_val_if_fail(GEDIT_IS_FILE_CHOOSER_DIALOG(dialog), NULL);
+    g_return_val_if_fail(BEDIT_IS_FILE_CHOOSER_DIALOG(dialog), NULL);
 
-    iface = GEDIT_FILE_CHOOSER_DIALOG_GET_IFACE(dialog);
+    iface = BEDIT_FILE_CHOOSER_DIALOG_GET_IFACE(dialog);
 
     if (iface->get_window) {
         return iface->get_window(dialog);
@@ -257,9 +257,9 @@ void bedit_file_chooser_dialog_add_pattern_filter(
     BeditFileChooserDialog *dialog, const gchar *name, const gchar *pattern) {
     BeditFileChooserDialogInterface *iface;
 
-    g_return_if_fail(GEDIT_IS_FILE_CHOOSER_DIALOG(dialog));
+    g_return_if_fail(BEDIT_IS_FILE_CHOOSER_DIALOG(dialog));
 
-    iface = GEDIT_FILE_CHOOSER_DIALOG_GET_IFACE(dialog);
+    iface = BEDIT_FILE_CHOOSER_DIALOG_GET_IFACE(dialog);
 
     if (iface->add_pattern_filter) {
         iface->add_pattern_filter(dialog, name, pattern);

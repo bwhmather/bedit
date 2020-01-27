@@ -49,8 +49,8 @@
 #include "bedit-tab.h"
 #include "bedit-utils.h"
 
-#define GEDIT_PAGE_SETUP_FILE "bedit-page-setup"
-#define GEDIT_PRINT_SETTINGS_FILE "bedit-print-settings"
+#define BEDIT_PAGE_SETUP_FILE "bedit-page-setup"
+#define BEDIT_PRINT_SETTINGS_FILE "bedit-print-settings"
 
 typedef struct {
     BeditPluginsEngine *engine;
@@ -132,7 +132,7 @@ G_DEFINE_ABSTRACT_TYPE_WITH_PRIVATE(BeditApp, bedit_app, GTK_TYPE_APPLICATION)
 static void bedit_app_dispose(GObject *object) {
     BeditAppPrivate *priv;
 
-    priv = bedit_app_get_instance_private(GEDIT_APP(object));
+    priv = bedit_app_get_instance_private(BEDIT_APP(object));
 
     g_clear_object(&priv->ui_settings);
     g_clear_object(&priv->window_settings);
@@ -164,7 +164,7 @@ static void bedit_app_dispose(GObject *object) {
 
 static void bedit_app_get_property(
     GObject *object, guint prop_id, GValue *value, GParamSpec *pspec) {
-    BeditApp *app = GEDIT_APP(object);
+    BeditApp *app = BEDIT_APP(object);
 
     switch (prop_id) {
     case PROP_LOCKDOWN:
@@ -195,7 +195,7 @@ static gboolean bedit_app_show_help_impl(
         name = "bedit";
     }
 
-    link = GEDIT_APP_GET_CLASS(app)->help_link_id(app, name, link_id);
+    link = BEDIT_APP_GET_CLASS(app)->help_link_id(app, name, link_id);
 
     ret = gtk_show_uri_on_window(
         GTK_WINDOW(parent), link, GDK_CURRENT_TIME, &error);
@@ -258,7 +258,7 @@ static gboolean is_in_viewport(
     /* Check for workspace match */
     ws = bedit_utils_get_window_workspace(window);
 
-    if (ws != workspace && ws != GEDIT_ALL_WORKSPACES) {
+    if (ws != workspace && ws != BEDIT_ALL_WORKSPACES) {
         return FALSE;
     }
 
@@ -296,9 +296,9 @@ static BeditWindow *get_active_window(GtkApplication *app) {
     for (l = windows; l != NULL; l = l->next) {
         GtkWindow *window = l->data;
 
-        if (GEDIT_IS_WINDOW(window) &&
+        if (BEDIT_IS_WINDOW(window) &&
             is_in_viewport(window, screen, workspace, viewport_x, viewport_y)) {
-            return GEDIT_WINDOW(window);
+            return BEDIT_WINDOW(window);
         }
     }
 
@@ -336,7 +336,7 @@ static void open_files(
 
     if (window == NULL) {
         bedit_debug_message(DEBUG_APP, "Create main window");
-        window = bedit_app_create_window(GEDIT_APP(application), NULL);
+        window = bedit_app_create_window(BEDIT_APP(application), NULL);
 
         bedit_debug_message(DEBUG_APP, "Show window");
         gtk_widget_show(GTK_WIDGET(window));
@@ -351,7 +351,7 @@ static void open_files(
         doc_created = tab != NULL;
 
         if (doc_created && command_line) {
-            set_command_line_wait(GEDIT_APP(application), tab);
+            set_command_line_wait(BEDIT_APP(application), tab);
         }
         g_input_stream_close(stdin_stream, NULL, NULL);
     }
@@ -368,7 +368,7 @@ static void open_files(
         if (command_line) {
             g_slist_foreach(
                 loaded, (GFunc)set_command_line_wait_doc,
-                GEDIT_APP(application));
+                BEDIT_APP(application));
         }
         g_slist_free(loaded);
     }
@@ -378,7 +378,7 @@ static void open_files(
         tab = bedit_window_create_tab(window, TRUE);
 
         if (command_line) {
-            set_command_line_wait(GEDIT_APP(application), tab);
+            set_command_line_wait(BEDIT_APP(application), tab);
         }
     }
 
@@ -390,7 +390,7 @@ static void new_window_activated(
     BeditApp *app;
     BeditWindow *window;
 
-    app = GEDIT_APP(user_data);
+    app = BEDIT_APP(user_data);
     window = bedit_app_create_window(app, NULL);
 
     bedit_debug_message(DEBUG_APP, "Show window");
@@ -415,7 +415,7 @@ static void preferences_activated(
     BeditWindow *window;
 
     app = GTK_APPLICATION(user_data);
-    window = GEDIT_WINDOW(gtk_application_get_active_window(app));
+    window = BEDIT_WINDOW(gtk_application_get_active_window(app));
 
     bedit_show_preferences_dialog(window);
 }
@@ -426,7 +426,7 @@ static void keyboard_shortcuts_activated(
     BeditWindow *window;
 
     app = GTK_APPLICATION(user_data);
-    window = GEDIT_WINDOW(gtk_application_get_active_window(app));
+    window = BEDIT_WINDOW(gtk_application_get_active_window(app));
 
     _bedit_cmd_help_keyboard_shortcuts(window);
 }
@@ -437,7 +437,7 @@ static void help_activated(
     BeditWindow *window;
 
     app = GTK_APPLICATION(user_data);
-    window = GEDIT_WINDOW(gtk_application_get_active_window(app));
+    window = BEDIT_WINDOW(gtk_application_get_active_window(app));
 
     _bedit_cmd_help_contents(window);
 }
@@ -448,7 +448,7 @@ static void about_activated(
     BeditWindow *window;
 
     app = GTK_APPLICATION(user_data);
-    window = GEDIT_WINDOW(gtk_application_get_active_window(app));
+    window = BEDIT_WINDOW(gtk_application_get_active_window(app));
 
     _bedit_cmd_help_about(window);
 }
@@ -470,13 +470,13 @@ static GActionEntry app_entries[] = {
 static void extension_added(
     PeasExtensionSet *extensions, PeasPluginInfo *info, PeasExtension *exten,
     BeditApp *app) {
-    bedit_app_activatable_activate(GEDIT_APP_ACTIVATABLE(exten));
+    bedit_app_activatable_activate(BEDIT_APP_ACTIVATABLE(exten));
 }
 
 static void extension_removed(
     PeasExtensionSet *extensions, PeasPluginInfo *info, PeasExtension *exten,
     BeditApp *app) {
-    bedit_app_activatable_deactivate(GEDIT_APP_ACTIVATABLE(exten));
+    bedit_app_activatable_deactivate(BEDIT_APP_ACTIVATABLE(exten));
 }
 
 static void load_accels(void) {
@@ -600,7 +600,7 @@ static void bedit_app_startup(GApplication *application) {
     GtkCssProvider *css_provider;
     GtkSourceStyleSchemeManager *manager;
 
-    priv = bedit_app_get_instance_private(GEDIT_APP(application));
+    priv = bedit_app_get_instance_private(BEDIT_APP(application));
 
     G_APPLICATION_CLASS(bedit_app_parent_class)->startup(application);
 
@@ -610,7 +610,7 @@ static void bedit_app_startup(GApplication *application) {
 
     setup_metadata_manager();
 
-    setup_theme_extensions(GEDIT_APP(application));
+    setup_theme_extensions(BEDIT_APP(application));
 
     /* Load settings */
     priv->settings = bedit_settings_new();
@@ -628,15 +628,15 @@ static void bedit_app_startup(GApplication *application) {
     if (!show_menubar()) {
         gtk_application_set_menubar(GTK_APPLICATION(application), NULL);
         priv->hamburger_menu =
-            get_menu_model(GEDIT_APP(application), "hamburger-menu");
+            get_menu_model(BEDIT_APP(application), "hamburger-menu");
     }
 
     priv->notebook_menu =
-        get_menu_model(GEDIT_APP(application), "notebook-menu");
+        get_menu_model(BEDIT_APP(application), "notebook-menu");
     priv->tab_width_menu =
-        get_menu_model(GEDIT_APP(application), "tab-width-menu");
+        get_menu_model(BEDIT_APP(application), "tab-width-menu");
     priv->line_col_menu =
-        get_menu_model(GEDIT_APP(application), "line-col-menu");
+        get_menu_model(BEDIT_APP(application), "line-col-menu");
 
     /* Accelerators */
     add_accelerator(
@@ -709,8 +709,8 @@ static void bedit_app_startup(GApplication *application) {
 
     priv->engine = bedit_plugins_engine_get_default();
     priv->extensions = peas_extension_set_new(
-        PEAS_ENGINE(priv->engine), GEDIT_TYPE_APP_ACTIVATABLE, "app",
-        GEDIT_APP(application), NULL);
+        PEAS_ENGINE(priv->engine), BEDIT_TYPE_APP_ACTIVATABLE, "app",
+        BEDIT_APP(application), NULL);
 
     g_signal_connect(
         priv->extensions, "extension-added", G_CALLBACK(extension_added),
@@ -728,7 +728,7 @@ static void bedit_app_startup(GApplication *application) {
 static void bedit_app_activate(GApplication *application) {
     BeditAppPrivate *priv;
 
-    priv = bedit_app_get_instance_private(GEDIT_APP(application));
+    priv = bedit_app_get_instance_private(BEDIT_APP(application));
 
     open_files(
         application, priv->new_window, priv->new_document, priv->line_position,
@@ -779,7 +779,7 @@ static gint bedit_app_command_line(
     const gchar *encoding_charset;
     const gchar **remaining_args;
 
-    priv = bedit_app_get_instance_private(GEDIT_APP(application));
+    priv = bedit_app_get_instance_private(BEDIT_APP(application));
 
     options = g_application_command_line_get_options_dict(cl);
 
@@ -832,7 +832,7 @@ static gint bedit_app_command_line(
     }
 
     g_application_activate(application);
-    clear_options(GEDIT_APP(application));
+    clear_options(BEDIT_APP(application));
 
     return 0;
 }
@@ -943,7 +943,7 @@ static gchar *get_page_setup_file(void) {
     config_dir = bedit_dirs_get_user_config_dir();
 
     if (config_dir != NULL) {
-        setup = g_build_filename(config_dir, GEDIT_PAGE_SETUP_FILE, NULL);
+        setup = g_build_filename(config_dir, BEDIT_PAGE_SETUP_FILE, NULL);
     }
 
     return setup;
@@ -978,7 +978,7 @@ static gchar *get_print_settings_file(void) {
 
     if (config_dir != NULL) {
         settings =
-            g_build_filename(config_dir, GEDIT_PRINT_SETTINGS_FILE, NULL);
+            g_build_filename(config_dir, BEDIT_PRINT_SETTINGS_FILE, NULL);
     }
 
     return settings;
@@ -1012,8 +1012,8 @@ static void bedit_app_shutdown(GApplication *app) {
     ensure_user_config_dir();
 
     save_accels();
-    save_page_setup(GEDIT_APP(app));
-    save_print_settings(GEDIT_APP(app));
+    save_page_setup(BEDIT_APP(app));
+    save_print_settings(BEDIT_APP(app));
 
     G_APPLICATION_CLASS(bedit_app_parent_class)->shutdown(app);
 
@@ -1026,7 +1026,7 @@ static gboolean window_delete_event(
 
     ws = bedit_window_get_state(window);
 
-    if (ws & (GEDIT_WINDOW_STATE_SAVING | GEDIT_WINDOW_STATE_PRINTING)) {
+    if (ws & (BEDIT_WINDOW_STATE_SAVING | BEDIT_WINDOW_STATE_PRINTING)) {
         return TRUE;
     }
 
@@ -1039,7 +1039,7 @@ static gboolean window_delete_event(
 static BeditWindow *bedit_app_create_window_impl(BeditApp *app) {
     BeditWindow *window;
 
-    window = g_object_new(GEDIT_TYPE_WINDOW, "application", app, NULL);
+    window = g_object_new(BEDIT_TYPE_WINDOW, "application", app, NULL);
 
     bedit_debug_message(DEBUG_APP, "Window created");
 
@@ -1069,7 +1069,7 @@ static void bedit_app_class_init(BeditAppClass *klass) {
     klass->create_window = bedit_app_create_window_impl;
 
     properties[PROP_LOCKDOWN] = g_param_spec_flags(
-        "lockdown", "Lockdown", "The lockdown mask", GEDIT_TYPE_LOCKDOWN_MASK,
+        "lockdown", "Lockdown", "The lockdown mask", BEDIT_TYPE_LOCKDOWN_MASK,
         0, G_PARAM_READABLE | G_PARAM_STATIC_STRINGS);
 
     g_object_class_install_properties(object_class, LAST_PROP, properties);
@@ -1150,15 +1150,15 @@ static void get_network_available(
     windows = gtk_application_get_windows(GTK_APPLICATION(app));
 
     for (w = windows; w != NULL; w = w->next) {
-        BeditWindow *window = GEDIT_WINDOW(w->data);
+        BeditWindow *window = BEDIT_WINDOW(w->data);
 
-        if (GEDIT_IS_WINDOW(window)) {
+        if (BEDIT_IS_WINDOW(window)) {
             GList *tabs, *t;
 
             tabs = _bedit_window_get_all_tabs(window);
 
             for (t = tabs; t != NULL; t = t->next) {
-                _bedit_tab_set_network_available(GEDIT_TAB(t->data), enable);
+                _bedit_tab_set_network_available(BEDIT_TAB(t->data), enable);
             }
 
             g_list_free(tabs);
@@ -1206,17 +1206,17 @@ BeditWindow *bedit_app_create_window(BeditApp *app, GdkScreen *screen) {
 
     priv = bedit_app_get_instance_private(app);
 
-    window = GEDIT_APP_GET_CLASS(app)->create_window(app);
+    window = BEDIT_APP_GET_CLASS(app)->create_window(app);
 
     if (screen != NULL) {
         gtk_window_set_screen(GTK_WINDOW(window), screen);
     }
 
     state =
-        g_settings_get_int(priv->window_settings, GEDIT_SETTINGS_WINDOW_STATE);
+        g_settings_get_int(priv->window_settings, BEDIT_SETTINGS_WINDOW_STATE);
 
     g_settings_get(
-        priv->window_settings, GEDIT_SETTINGS_WINDOW_SIZE, "(ii)", &w, &h);
+        priv->window_settings, BEDIT_SETTINGS_WINDOW_SIZE, "(ii)", &w, &h);
 
     gtk_window_set_default_size(GTK_WINDOW(window), w, h);
 
@@ -1250,11 +1250,11 @@ GList *bedit_app_get_main_windows(BeditApp *app) {
     GList *res = NULL;
     GList *windows, *l;
 
-    g_return_val_if_fail(GEDIT_IS_APP(app), NULL);
+    g_return_val_if_fail(BEDIT_IS_APP(app), NULL);
 
     windows = gtk_application_get_windows(GTK_APPLICATION(app));
     for (l = windows; l != NULL; l = g_list_next(l)) {
-        if (GEDIT_IS_WINDOW(l->data)) {
+        if (BEDIT_IS_WINDOW(l->data)) {
             res = g_list_prepend(res, l->data);
         }
     }
@@ -1275,13 +1275,13 @@ GList *bedit_app_get_documents(BeditApp *app) {
     GList *res = NULL;
     GList *windows, *l;
 
-    g_return_val_if_fail(GEDIT_IS_APP(app), NULL);
+    g_return_val_if_fail(BEDIT_IS_APP(app), NULL);
 
     windows = gtk_application_get_windows(GTK_APPLICATION(app));
     for (l = windows; l != NULL; l = g_list_next(l)) {
-        if (GEDIT_IS_WINDOW(l->data)) {
+        if (BEDIT_IS_WINDOW(l->data)) {
             res = g_list_concat(
-                res, bedit_window_get_documents(GEDIT_WINDOW(l->data)));
+                res, bedit_window_get_documents(BEDIT_WINDOW(l->data)));
         }
     }
 
@@ -1301,13 +1301,13 @@ GList *bedit_app_get_views(BeditApp *app) {
     GList *res = NULL;
     GList *windows, *l;
 
-    g_return_val_if_fail(GEDIT_IS_APP(app), NULL);
+    g_return_val_if_fail(BEDIT_IS_APP(app), NULL);
 
     windows = gtk_application_get_windows(GTK_APPLICATION(app));
     for (l = windows; l != NULL; l = g_list_next(l)) {
-        if (GEDIT_IS_WINDOW(l->data)) {
+        if (BEDIT_IS_WINDOW(l->data)) {
             res = g_list_concat(
-                res, bedit_window_get_views(GEDIT_WINDOW(l->data)));
+                res, bedit_window_get_views(BEDIT_WINDOW(l->data)));
         }
     }
 
@@ -1325,7 +1325,7 @@ GList *bedit_app_get_views(BeditApp *app) {
 BeditLockdownMask bedit_app_get_lockdown(BeditApp *app) {
     BeditAppPrivate *priv;
 
-    g_return_val_if_fail(GEDIT_IS_APP(app), GEDIT_LOCKDOWN_ALL);
+    g_return_val_if_fail(BEDIT_IS_APP(app), BEDIT_LOCKDOWN_ALL);
 
     priv = bedit_app_get_instance_private(app);
 
@@ -1334,27 +1334,27 @@ BeditLockdownMask bedit_app_get_lockdown(BeditApp *app) {
 
 gboolean bedit_app_show_help(
     BeditApp *app, GtkWindow *parent, const gchar *name, const gchar *link_id) {
-    g_return_val_if_fail(GEDIT_IS_APP(app), FALSE);
+    g_return_val_if_fail(BEDIT_IS_APP(app), FALSE);
     g_return_val_if_fail(parent == NULL || GTK_IS_WINDOW(parent), FALSE);
 
-    return GEDIT_APP_GET_CLASS(app)->show_help(app, parent, name, link_id);
+    return BEDIT_APP_GET_CLASS(app)->show_help(app, parent, name, link_id);
 }
 
 void bedit_app_set_window_title(
     BeditApp *app, BeditWindow *window, const gchar *title) {
-    g_return_if_fail(GEDIT_IS_APP(app));
-    g_return_if_fail(GEDIT_IS_WINDOW(window));
+    g_return_if_fail(BEDIT_IS_APP(app));
+    g_return_if_fail(BEDIT_IS_WINDOW(window));
 
-    GEDIT_APP_GET_CLASS(app)->set_window_title(app, window, title);
+    BEDIT_APP_GET_CLASS(app)->set_window_title(app, window, title);
 }
 
 gboolean bedit_app_process_window_event(
     BeditApp *app, BeditWindow *window, GdkEvent *event) {
-    g_return_val_if_fail(GEDIT_IS_APP(app), FALSE);
-    g_return_val_if_fail(GEDIT_IS_WINDOW(window), FALSE);
+    g_return_val_if_fail(BEDIT_IS_APP(app), FALSE);
+    g_return_val_if_fail(BEDIT_IS_WINDOW(window), FALSE);
 
-    if (GEDIT_APP_GET_CLASS(app)->process_window_event) {
-        return GEDIT_APP_GET_CLASS(app)->process_window_event(
+    if (BEDIT_APP_GET_CLASS(app)->process_window_event) {
+        return BEDIT_APP_GET_CLASS(app)->process_window_event(
             app, window, event);
     }
 
@@ -1412,8 +1412,8 @@ static void app_lockdown_changed(BeditApp *app) {
 
     windows = gtk_application_get_windows(GTK_APPLICATION(app));
     for (l = windows; l != NULL; l = g_list_next(l)) {
-        if (GEDIT_IS_WINDOW(l->data)) {
-            _bedit_window_set_lockdown(GEDIT_WINDOW(l->data), priv->lockdown);
+        if (BEDIT_IS_WINDOW(l->data)) {
+            _bedit_window_set_lockdown(BEDIT_WINDOW(l->data), priv->lockdown);
         }
     }
 
@@ -1423,7 +1423,7 @@ static void app_lockdown_changed(BeditApp *app) {
 void _bedit_app_set_lockdown(BeditApp *app, BeditLockdownMask lockdown) {
     BeditAppPrivate *priv;
 
-    g_return_if_fail(GEDIT_IS_APP(app));
+    g_return_if_fail(BEDIT_IS_APP(app));
 
     priv = bedit_app_get_instance_private(app);
 
@@ -1435,7 +1435,7 @@ void _bedit_app_set_lockdown_bit(
     BeditApp *app, BeditLockdownMask bit, gboolean value) {
     BeditAppPrivate *priv;
 
-    g_return_if_fail(GEDIT_IS_APP(app));
+    g_return_if_fail(BEDIT_IS_APP(app));
 
     priv = bedit_app_get_instance_private(app);
 
@@ -1452,7 +1452,7 @@ void _bedit_app_set_lockdown_bit(
 GtkPageSetup *_bedit_app_get_default_page_setup(BeditApp *app) {
     BeditAppPrivate *priv;
 
-    g_return_val_if_fail(GEDIT_IS_APP(app), NULL);
+    g_return_val_if_fail(BEDIT_IS_APP(app), NULL);
 
     priv = bedit_app_get_instance_private(app);
 
@@ -1467,7 +1467,7 @@ void _bedit_app_set_default_page_setup(
     BeditApp *app, GtkPageSetup *page_setup) {
     BeditAppPrivate *priv;
 
-    g_return_if_fail(GEDIT_IS_APP(app));
+    g_return_if_fail(BEDIT_IS_APP(app));
     g_return_if_fail(GTK_IS_PAGE_SETUP(page_setup));
 
     priv = bedit_app_get_instance_private(app);
@@ -1479,7 +1479,7 @@ void _bedit_app_set_default_page_setup(
 GtkPrintSettings *_bedit_app_get_default_print_settings(BeditApp *app) {
     BeditAppPrivate *priv;
 
-    g_return_val_if_fail(GEDIT_IS_APP(app), NULL);
+    g_return_val_if_fail(BEDIT_IS_APP(app), NULL);
 
     priv = bedit_app_get_instance_private(app);
 
@@ -1494,7 +1494,7 @@ void _bedit_app_set_default_print_settings(
     BeditApp *app, GtkPrintSettings *settings) {
     BeditAppPrivate *priv;
 
-    g_return_if_fail(GEDIT_IS_APP(app));
+    g_return_if_fail(BEDIT_IS_APP(app));
     g_return_if_fail(GTK_IS_PRINT_SETTINGS(settings));
 
     priv = bedit_app_get_instance_private(app);
@@ -1509,7 +1509,7 @@ void _bedit_app_set_default_print_settings(
 BeditSettings *_bedit_app_get_settings(BeditApp *app) {
     BeditAppPrivate *priv;
 
-    g_return_val_if_fail(GEDIT_IS_APP(app), NULL);
+    g_return_val_if_fail(BEDIT_IS_APP(app), NULL);
 
     priv = bedit_app_get_instance_private(app);
 
@@ -1519,7 +1519,7 @@ BeditSettings *_bedit_app_get_settings(BeditApp *app) {
 GMenuModel *_bedit_app_get_hamburger_menu(BeditApp *app) {
     BeditAppPrivate *priv;
 
-    g_return_val_if_fail(GEDIT_IS_APP(app), NULL);
+    g_return_val_if_fail(BEDIT_IS_APP(app), NULL);
 
     priv = bedit_app_get_instance_private(app);
 
@@ -1529,7 +1529,7 @@ GMenuModel *_bedit_app_get_hamburger_menu(BeditApp *app) {
 GMenuModel *_bedit_app_get_notebook_menu(BeditApp *app) {
     BeditAppPrivate *priv;
 
-    g_return_val_if_fail(GEDIT_IS_APP(app), NULL);
+    g_return_val_if_fail(BEDIT_IS_APP(app), NULL);
 
     priv = bedit_app_get_instance_private(app);
 
@@ -1539,7 +1539,7 @@ GMenuModel *_bedit_app_get_notebook_menu(BeditApp *app) {
 GMenuModel *_bedit_app_get_tab_width_menu(BeditApp *app) {
     BeditAppPrivate *priv;
 
-    g_return_val_if_fail(GEDIT_IS_APP(app), NULL);
+    g_return_val_if_fail(BEDIT_IS_APP(app), NULL);
 
     priv = bedit_app_get_instance_private(app);
 
@@ -1549,7 +1549,7 @@ GMenuModel *_bedit_app_get_tab_width_menu(BeditApp *app) {
 GMenuModel *_bedit_app_get_line_col_menu(BeditApp *app) {
     BeditAppPrivate *priv;
 
-    g_return_val_if_fail(GEDIT_IS_APP(app), NULL);
+    g_return_val_if_fail(BEDIT_IS_APP(app), NULL);
 
     priv = bedit_app_get_instance_private(app);
 
@@ -1562,7 +1562,7 @@ BeditMenuExtension *_bedit_app_extend_menu(
     GMenuModel *model;
     GMenuModel *section;
 
-    g_return_val_if_fail(GEDIT_IS_APP(app), NULL);
+    g_return_val_if_fail(BEDIT_IS_APP(app), NULL);
     g_return_val_if_fail(extension_point != NULL, NULL);
 
     priv = bedit_app_get_instance_private(app);

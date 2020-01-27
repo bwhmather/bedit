@@ -18,8 +18,8 @@
  * along with this program; if not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef GEDIT_REPLACE_DIALOG_H
-#define GEDIT_REPLACE_DIALOG_H
+#ifndef BEDIT_REPLACE_DIALOG_H
+#define BEDIT_REPLACE_DIALOG_H
 
 #include <gtk/gtk.h>
 #include <gtksourceview/gtksource.h>
@@ -27,14 +27,14 @@
 
 G_BEGIN_DECLS
 
-#define GEDIT_TYPE_REPLACE_DIALOG (bedit_replace_dialog_get_type())
+#define BEDIT_TYPE_REPLACE_DIALOG (bedit_replace_dialog_get_type())
 G_DECLARE_FINAL_TYPE(
-    BeditReplaceDialog, bedit_replace_dialog, GEDIT, REPLACE_DIALOG, GtkDialog)
+    BeditReplaceDialog, bedit_replace_dialog, BEDIT, REPLACE_DIALOG, GtkDialog)
 
 enum {
-    GEDIT_REPLACE_DIALOG_FIND_RESPONSE = 100,
-    GEDIT_REPLACE_DIALOG_REPLACE_RESPONSE,
-    GEDIT_REPLACE_DIALOG_REPLACE_ALL_RESPONSE
+    BEDIT_REPLACE_DIALOG_FIND_RESPONSE = 100,
+    BEDIT_REPLACE_DIALOG_REPLACE_RESPONSE,
+    BEDIT_REPLACE_DIALOG_REPLACE_ALL_RESPONSE
 };
 
 GtkWidget *bedit_replace_dialog_new(BeditWindow *window);
@@ -53,5 +53,5 @@ void bedit_replace_dialog_set_replace_error(
 
 G_END_DECLS
 
-#endif /* GEDIT_REPLACE_DIALOG_H  */
+#endif /* BEDIT_REPLACE_DIALOG_H  */
 

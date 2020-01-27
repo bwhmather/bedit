@@ -18,37 +18,37 @@
  * along with this program; if not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef GEDIT_FILE_BROWSER_VIEW_H
-#define GEDIT_FILE_BROWSER_VIEW_H
+#ifndef BEDIT_FILE_BROWSER_VIEW_H
+#define BEDIT_FILE_BROWSER_VIEW_H
 
 #include <gtk/gtk.h>
 
 G_BEGIN_DECLS
-#define GEDIT_TYPE_FILE_BROWSER_VIEW (bedit_file_browser_view_get_type())
-#define GEDIT_FILE_BROWSER_VIEW(obj)                                           \
+#define BEDIT_TYPE_FILE_BROWSER_VIEW (bedit_file_browser_view_get_type())
+#define BEDIT_FILE_BROWSER_VIEW(obj)                                           \
     (G_TYPE_CHECK_INSTANCE_CAST(                                               \
-        (obj), GEDIT_TYPE_FILE_BROWSER_VIEW, BeditFileBrowserView))
-#define GEDIT_FILE_BROWSER_VIEW_CONST(obj)                                     \
+        (obj), BEDIT_TYPE_FILE_BROWSER_VIEW, BeditFileBrowserView))
+#define BEDIT_FILE_BROWSER_VIEW_CONST(obj)                                     \
     (G_TYPE_CHECK_INSTANCE_CAST(                                               \
-        (obj), GEDIT_TYPE_FILE_BROWSER_VIEW, BeditFileBrowserView const))
-#define GEDIT_FILE_BROWSER_VIEW_CLASS(klass)                                   \
+        (obj), BEDIT_TYPE_FILE_BROWSER_VIEW, BeditFileBrowserView const))
+#define BEDIT_FILE_BROWSER_VIEW_CLASS(klass)                                   \
     (G_TYPE_CHECK_CLASS_CAST(                                                  \
-        (klass), GEDIT_TYPE_FILE_BROWSER_VIEW, BeditFileBrowserViewClass))
-#define GEDIT_IS_FILE_BROWSER_VIEW(obj)                                        \
-    (G_TYPE_CHECK_INSTANCE_TYPE((obj), GEDIT_TYPE_FILE_BROWSER_VIEW))
-#define GEDIT_IS_FILE_BROWSER_VIEW_CLASS(klass)                                \
-    (G_TYPE_CHECK_CLASS_TYPE((klass), GEDIT_TYPE_FILE_BROWSER_VIEW))
-#define GEDIT_FILE_BROWSER_VIEW_GET_CLASS(obj)                                 \
+        (klass), BEDIT_TYPE_FILE_BROWSER_VIEW, BeditFileBrowserViewClass))
+#define BEDIT_IS_FILE_BROWSER_VIEW(obj)                                        \
+    (G_TYPE_CHECK_INSTANCE_TYPE((obj), BEDIT_TYPE_FILE_BROWSER_VIEW))
+#define BEDIT_IS_FILE_BROWSER_VIEW_CLASS(klass)                                \
+    (G_TYPE_CHECK_CLASS_TYPE((klass), BEDIT_TYPE_FILE_BROWSER_VIEW))
+#define BEDIT_FILE_BROWSER_VIEW_GET_CLASS(obj)                                 \
     (G_TYPE_INSTANCE_GET_CLASS(                                                \
-        (obj), GEDIT_TYPE_FILE_BROWSER_VIEW, BeditFileBrowserViewClass))
+        (obj), BEDIT_TYPE_FILE_BROWSER_VIEW, BeditFileBrowserViewClass))
 
 typedef struct _BeditFileBrowserView BeditFileBrowserView;
 typedef struct _BeditFileBrowserViewClass BeditFileBrowserViewClass;
 typedef struct _BeditFileBrowserViewPrivate BeditFileBrowserViewPrivate;
 
 typedef enum {
-    GEDIT_FILE_BROWSER_VIEW_CLICK_POLICY_SINGLE,
-    GEDIT_FILE_BROWSER_VIEW_CLICK_POLICY_DOUBLE
+    BEDIT_FILE_BROWSER_VIEW_CLICK_POLICY_SINGLE,
+    BEDIT_FILE_BROWSER_VIEW_CLICK_POLICY_DOUBLE
 } BeditFileBrowserViewClickPolicy;
 
 struct _BeditFileBrowserView {
@@ -86,5 +86,5 @@ void _bedit_file_browser_view_register_type(GTypeModule *type_module);
 
 G_END_DECLS
 
-#endif /* GEDIT_FILE_BROWSER_VIEW_H */
+#endif /* BEDIT_FILE_BROWSER_VIEW_H */
 

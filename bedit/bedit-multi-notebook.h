@@ -20,8 +20,8 @@
  * Boston, MA  02110-1301  USA
  */
 
-#ifndef GEDIT_MULTI_NOTEBOOK_H
-#define GEDIT_MULTI_NOTEBOOK_H
+#ifndef BEDIT_MULTI_NOTEBOOK_H
+#define BEDIT_MULTI_NOTEBOOK_H
 
 #include <gtk/gtk.h>
 
@@ -30,23 +30,23 @@
 
 G_BEGIN_DECLS
 
-#define GEDIT_TYPE_MULTI_NOTEBOOK (bedit_multi_notebook_get_type())
-#define GEDIT_MULTI_NOTEBOOK(obj)                                              \
+#define BEDIT_TYPE_MULTI_NOTEBOOK (bedit_multi_notebook_get_type())
+#define BEDIT_MULTI_NOTEBOOK(obj)                                              \
     (G_TYPE_CHECK_INSTANCE_CAST(                                               \
-        (obj), GEDIT_TYPE_MULTI_NOTEBOOK, BeditMultiNotebook))
-#define GEDIT_MULTI_NOTEBOOK_CONST(obj)                                        \
+        (obj), BEDIT_TYPE_MULTI_NOTEBOOK, BeditMultiNotebook))
+#define BEDIT_MULTI_NOTEBOOK_CONST(obj)                                        \
     (G_TYPE_CHECK_INSTANCE_CAST(                                               \
-        (obj), GEDIT_TYPE_MULTI_NOTEBOOK, BeditMultiNotebook const))
-#define GEDIT_MULTI_NOTEBOOK_CLASS(klass)                                      \
+        (obj), BEDIT_TYPE_MULTI_NOTEBOOK, BeditMultiNotebook const))
+#define BEDIT_MULTI_NOTEBOOK_CLASS(klass)                                      \
     (G_TYPE_CHECK_CLASS_CAST(                                                  \
-        (klass), GEDIT_TYPE_MULTI_NOTEBOOK, BeditMultiNotebookClass))
-#define GEDIT_IS_MULTI_NOTEBOOK(obj)                                           \
-    (G_TYPE_CHECK_INSTANCE_TYPE((obj), GEDIT_TYPE_MULTI_NOTEBOOK))
-#define GEDIT_IS_MULTI_NOTEBOOK_CLASS(klass)                                   \
-    (G_TYPE_CHECK_CLASS_TYPE((klass), GEDIT_TYPE_MULTI_NOTEBOOK))
-#define GEDIT_MULTI_NOTEBOOK_GET_CLASS(obj)                                    \
+        (klass), BEDIT_TYPE_MULTI_NOTEBOOK, BeditMultiNotebookClass))
+#define BEDIT_IS_MULTI_NOTEBOOK(obj)                                           \
+    (G_TYPE_CHECK_INSTANCE_TYPE((obj), BEDIT_TYPE_MULTI_NOTEBOOK))
+#define BEDIT_IS_MULTI_NOTEBOOK_CLASS(klass)                                   \
+    (G_TYPE_CHECK_CLASS_TYPE((klass), BEDIT_TYPE_MULTI_NOTEBOOK))
+#define BEDIT_MULTI_NOTEBOOK_GET_CLASS(obj)                                    \
     (G_TYPE_INSTANCE_GET_CLASS(                                                \
-        (obj), GEDIT_TYPE_MULTI_NOTEBOOK, BeditMultiNotebookClass))
+        (obj), BEDIT_TYPE_MULTI_NOTEBOOK, BeditMultiNotebookClass))
 
 typedef struct _BeditMultiNotebook BeditMultiNotebook;
 typedef struct _BeditMultiNotebookClass BeditMultiNotebookClass;
@@ -138,5 +138,5 @@ void _bedit_multi_notebook_set_show_tabs(
 
 G_END_DECLS
 
-#endif /* GEDIT_MULTI_NOTEBOOK_H */
+#endif /* BEDIT_MULTI_NOTEBOOK_H */
 

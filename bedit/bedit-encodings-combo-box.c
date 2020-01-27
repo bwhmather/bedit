@@ -60,7 +60,7 @@ static void bedit_encodings_combo_box_set_property(
     GObject *object, guint prop_id, const GValue *value, GParamSpec *pspec) {
     BeditEncodingsComboBox *combo;
 
-    combo = GEDIT_ENCODINGS_COMBO_BOX(object);
+    combo = BEDIT_ENCODINGS_COMBO_BOX(object);
 
     switch (prop_id) {
     case PROP_SAVE_MODE:
@@ -76,7 +76,7 @@ static void bedit_encodings_combo_box_get_property(
     GObject *object, guint prop_id, GValue *value, GParamSpec *pspec) {
     BeditEncodingsComboBox *combo;
 
-    combo = GEDIT_ENCODINGS_COMBO_BOX(object);
+    combo = BEDIT_ENCODINGS_COMBO_BOX(object);
 
     switch (prop_id) {
     case PROP_SAVE_MODE:
@@ -89,7 +89,7 @@ static void bedit_encodings_combo_box_get_property(
 }
 
 static void bedit_encodings_combo_box_dispose(GObject *object) {
-    BeditEncodingsComboBox *combo = GEDIT_ENCODINGS_COMBO_BOX(object);
+    BeditEncodingsComboBox *combo = BEDIT_ENCODINGS_COMBO_BOX(object);
 
     g_clear_object(&combo->store);
 
@@ -97,7 +97,7 @@ static void bedit_encodings_combo_box_dispose(GObject *object) {
 }
 
 static void bedit_encodings_combo_box_constructed(GObject *object) {
-    BeditEncodingsComboBox *combo = GEDIT_ENCODINGS_COMBO_BOX(object);
+    BeditEncodingsComboBox *combo = BEDIT_ENCODINGS_COMBO_BOX(object);
     GtkCellRenderer *text_renderer;
 
     G_OBJECT_CLASS(bedit_encodings_combo_box_parent_class)->constructed(object);
@@ -292,7 +292,7 @@ static void bedit_encodings_combo_box_init(BeditEncodingsComboBox *menu) {
  */
 GtkWidget *bedit_encodings_combo_box_new(gboolean save_mode) {
     return g_object_new(
-        GEDIT_TYPE_ENCODINGS_COMBO_BOX, "save_mode", save_mode, NULL);
+        BEDIT_TYPE_ENCODINGS_COMBO_BOX, "save_mode", save_mode, NULL);
 }
 
 /**
@@ -306,7 +306,7 @@ const GtkSourceEncoding *bedit_encodings_combo_box_get_selected_encoding(
     BeditEncodingsComboBox *menu) {
     GtkTreeIter iter;
 
-    g_return_val_if_fail(GEDIT_IS_ENCODINGS_COMBO_BOX(menu), NULL);
+    g_return_val_if_fail(BEDIT_IS_ENCODINGS_COMBO_BOX(menu), NULL);
 
     if (gtk_combo_box_get_active_iter(GTK_COMBO_BOX(menu), &iter)) {
         const GtkSourceEncoding *ret;
@@ -335,7 +335,7 @@ void bedit_encodings_combo_box_set_selected_encoding(
     GtkTreeModel *model;
     gboolean b;
 
-    g_return_if_fail(GEDIT_IS_ENCODINGS_COMBO_BOX(menu));
+    g_return_if_fail(BEDIT_IS_ENCODINGS_COMBO_BOX(menu));
 
     model = gtk_combo_box_get_model(GTK_COMBO_BOX(menu));
     b = gtk_tree_model_get_iter_first(model, &iter);

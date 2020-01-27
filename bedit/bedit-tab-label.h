@@ -18,17 +18,17 @@
  * along with this program; if not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef GEDIT_TAB_LABEL_H
-#define GEDIT_TAB_LABEL_H
+#ifndef BEDIT_TAB_LABEL_H
+#define BEDIT_TAB_LABEL_H
 
 #include <bedit/bedit-tab.h>
 #include <gtk/gtk.h>
 
 G_BEGIN_DECLS
 
-#define GEDIT_TYPE_TAB_LABEL (bedit_tab_label_get_type())
+#define BEDIT_TYPE_TAB_LABEL (bedit_tab_label_get_type())
 
-G_DECLARE_FINAL_TYPE(BeditTabLabel, bedit_tab_label, GEDIT, TAB_LABEL, GtkBox)
+G_DECLARE_FINAL_TYPE(BeditTabLabel, bedit_tab_label, BEDIT, TAB_LABEL, GtkBox)
 
 GtkWidget *bedit_tab_label_new(BeditTab *tab);
 
@@ -36,5 +36,5 @@ BeditTab *bedit_tab_label_get_tab(BeditTabLabel *tab_label);
 
 G_END_DECLS
 
-#endif /* GEDIT_TAB_LABEL_H */
+#endif /* BEDIT_TAB_LABEL_H */
 

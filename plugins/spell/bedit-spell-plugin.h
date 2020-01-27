@@ -17,8 +17,8 @@
  * along with this program; if not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef GEDIT_SPELL_PLUGIN_H
-#define GEDIT_SPELL_PLUGIN_H
+#ifndef BEDIT_SPELL_PLUGIN_H
+#define BEDIT_SPELL_PLUGIN_H
 
 #include <glib-object.h>
 #include <glib.h>
@@ -27,19 +27,19 @@
 
 G_BEGIN_DECLS
 
-#define GEDIT_TYPE_SPELL_PLUGIN (bedit_spell_plugin_get_type())
-#define GEDIT_SPELL_PLUGIN(o)                                                  \
-    (G_TYPE_CHECK_INSTANCE_CAST((o), GEDIT_TYPE_SPELL_PLUGIN, BeditSpellPlugin))
-#define GEDIT_SPELL_PLUGIN_CLASS(k)                                            \
+#define BEDIT_TYPE_SPELL_PLUGIN (bedit_spell_plugin_get_type())
+#define BEDIT_SPELL_PLUGIN(o)                                                  \
+    (G_TYPE_CHECK_INSTANCE_CAST((o), BEDIT_TYPE_SPELL_PLUGIN, BeditSpellPlugin))
+#define BEDIT_SPELL_PLUGIN_CLASS(k)                                            \
     (G_TYPE_CHECK_CLASS_CAST(                                                  \
-        (k), GEDIT_TYPE_SPELL_PLUGIN, BeditSpellPluginClass))
-#define GEDIT_IS_SPELL_PLUGIN(o)                                               \
-    (G_TYPE_CHECK_INSTANCE_TYPE((o), GEDIT_TYPE_SPELL_PLUGIN))
-#define GEDIT_IS_SPELL_PLUGIN_CLASS(k)                                         \
-    (G_TYPE_CHECK_CLASS_TYPE((k), GEDIT_TYPE_SPELL_PLUGIN))
-#define GEDIT_SPELL_PLUGIN_GET_CLASS(o)                                        \
+        (k), BEDIT_TYPE_SPELL_PLUGIN, BeditSpellPluginClass))
+#define BEDIT_IS_SPELL_PLUGIN(o)                                               \
+    (G_TYPE_CHECK_INSTANCE_TYPE((o), BEDIT_TYPE_SPELL_PLUGIN))
+#define BEDIT_IS_SPELL_PLUGIN_CLASS(k)                                         \
+    (G_TYPE_CHECK_CLASS_TYPE((k), BEDIT_TYPE_SPELL_PLUGIN))
+#define BEDIT_SPELL_PLUGIN_GET_CLASS(o)                                        \
     (G_TYPE_INSTANCE_GET_CLASS(                                                \
-        (o), GEDIT_TYPE_SPELL_PLUGIN, BeditSpellPluginClass))
+        (o), BEDIT_TYPE_SPELL_PLUGIN, BeditSpellPluginClass))
 
 typedef struct _BeditSpellPlugin BeditSpellPlugin;
 typedef struct _BeditSpellPluginPrivate BeditSpellPluginPrivate;
@@ -62,4 +62,4 @@ G_MODULE_EXPORT void peas_register_types(PeasObjectModule *module);
 
 G_END_DECLS
 
-#endif /* GEDIT_SPELL_PLUGIN_H */
+#endif /* BEDIT_SPELL_PLUGIN_H */

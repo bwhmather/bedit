@@ -18,8 +18,8 @@
  * along with this program; if not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef GEDIT_PREFERENCES_DIALOG_H
-#define GEDIT_PREFERENCES_DIALOG_H
+#ifndef BEDIT_PREFERENCES_DIALOG_H
+#define BEDIT_PREFERENCES_DIALOG_H
 
 #include "bedit-window.h"
 
@@ -29,5 +29,5 @@ void bedit_show_preferences_dialog(BeditWindow *parent);
 
 G_END_DECLS
 
-#endif /* GEDIT_PREFERENCES_DIALOG_H */
+#endif /* BEDIT_PREFERENCES_DIALOG_H */
 

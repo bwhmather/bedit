@@ -18,8 +18,8 @@
  * along with this program; if not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef GEDIT_WINDOW_H
-#define GEDIT_WINDOW_H
+#ifndef BEDIT_WINDOW_H
+#define BEDIT_WINDOW_H
 
 #include <gio/gio.h>
 #include <gtk/gtk.h>
@@ -31,24 +31,24 @@
 G_BEGIN_DECLS
 
 typedef enum {
-    GEDIT_WINDOW_STATE_NORMAL = 0,
-    GEDIT_WINDOW_STATE_SAVING = 1 << 1,
-    GEDIT_WINDOW_STATE_PRINTING = 1 << 2,
-    GEDIT_WINDOW_STATE_LOADING = 1 << 3,
-    GEDIT_WINDOW_STATE_ERROR = 1 << 4
+    BEDIT_WINDOW_STATE_NORMAL = 0,
+    BEDIT_WINDOW_STATE_SAVING = 1 << 1,
+    BEDIT_WINDOW_STATE_PRINTING = 1 << 2,
+    BEDIT_WINDOW_STATE_LOADING = 1 << 3,
+    BEDIT_WINDOW_STATE_ERROR = 1 << 4
 } BeditWindowState;
 
-#define GEDIT_TYPE_WINDOW (bedit_window_get_type())
-#define GEDIT_WINDOW(obj)                                                      \
-    (G_TYPE_CHECK_INSTANCE_CAST((obj), GEDIT_TYPE_WINDOW, BeditWindow))
-#define GEDIT_WINDOW_CLASS(klass)                                              \
-    (G_TYPE_CHECK_CLASS_CAST((klass), GEDIT_TYPE_WINDOW, BeditWindowClass))
-#define GEDIT_IS_WINDOW(obj)                                                   \
-    (G_TYPE_CHECK_INSTANCE_TYPE((obj), GEDIT_TYPE_WINDOW))
-#define GEDIT_IS_WINDOW_CLASS(klass)                                           \
-    (G_TYPE_CHECK_CLASS_TYPE((klass), GEDIT_TYPE_WINDOW))
-#define GEDIT_WINDOW_GET_CLASS(obj)                                            \
-    (G_TYPE_INSTANCE_GET_CLASS((obj), GEDIT_TYPE_WINDOW, BeditWindowClass))
+#define BEDIT_TYPE_WINDOW (bedit_window_get_type())
+#define BEDIT_WINDOW(obj)                                                      \
+    (G_TYPE_CHECK_INSTANCE_CAST((obj), BEDIT_TYPE_WINDOW, BeditWindow))
+#define BEDIT_WINDOW_CLASS(klass)                                              \
+    (G_TYPE_CHECK_CLASS_CAST((klass), BEDIT_TYPE_WINDOW, BeditWindowClass))
+#define BEDIT_IS_WINDOW(obj)                                                   \
+    (G_TYPE_CHECK_INSTANCE_TYPE((obj), BEDIT_TYPE_WINDOW))
+#define BEDIT_IS_WINDOW_CLASS(klass)                                           \
+    (G_TYPE_CHECK_CLASS_TYPE((klass), BEDIT_TYPE_WINDOW))
+#define BEDIT_WINDOW_GET_CLASS(obj)                                            \
+    (G_TYPE_INSTANCE_GET_CLASS((obj), BEDIT_TYPE_WINDOW, BeditWindowClass))
 
 typedef struct _BeditWindow BeditWindow;
 typedef struct _BeditWindowClass BeditWindowClass;
@@ -156,5 +156,5 @@ GFile *_bedit_window_pop_last_closed_doc(BeditWindow *window);
 
 G_END_DECLS
 
-#endif /* GEDIT_WINDOW_H  */
+#endif /* BEDIT_WINDOW_H  */
 

@@ -18,8 +18,8 @@
  * along with this program; if not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef GEDIT_MODELINE_PLUGIN_H
-#define GEDIT_MODELINE_PLUGIN_H
+#ifndef BEDIT_MODELINE_PLUGIN_H
+#define BEDIT_MODELINE_PLUGIN_H
 
 #include <glib-object.h>
 #include <glib.h>
@@ -28,20 +28,20 @@
 
 G_BEGIN_DECLS
 
-#define GEDIT_TYPE_MODELINE_PLUGIN (bedit_modeline_plugin_get_type())
-#define GEDIT_MODELINE_PLUGIN(o)                                               \
+#define BEDIT_TYPE_MODELINE_PLUGIN (bedit_modeline_plugin_get_type())
+#define BEDIT_MODELINE_PLUGIN(o)                                               \
     (G_TYPE_CHECK_INSTANCE_CAST(                                               \
-        (o), GEDIT_TYPE_MODELINE_PLUGIN, BeditModelinePlugin))
-#define GEDIT_MODELINE_PLUGIN_CLASS(k)                                         \
+        (o), BEDIT_TYPE_MODELINE_PLUGIN, BeditModelinePlugin))
+#define BEDIT_MODELINE_PLUGIN_CLASS(k)                                         \
     (G_TYPE_CHECK_CLASS_CAST(                                                  \
-        (k), GEDIT_TYPE_MODELINE_PLUGIN, BeditModelinePluginClass))
-#define GEDIT_IS_MODELINE_PLUGIN(o)                                            \
-    (G_TYPE_CHECK_INSTANCE_TYPE((o), GEDIT_TYPE_MODELINE_PLUGIN))
-#define GEDIT_IS_MODELINE_PLUGIN_CLASS(k)                                      \
-    (G_TYPE_CHECK_CLASS_TYPE((k), GEDIT_TYPE_MODELINE_PLUGIN))
-#define GEDIT_MODELINE_PLUGIN_GET_CLASS(o)                                     \
+        (k), BEDIT_TYPE_MODELINE_PLUGIN, BeditModelinePluginClass))
+#define BEDIT_IS_MODELINE_PLUGIN(o)                                            \
+    (G_TYPE_CHECK_INSTANCE_TYPE((o), BEDIT_TYPE_MODELINE_PLUGIN))
+#define BEDIT_IS_MODELINE_PLUGIN_CLASS(k)                                      \
+    (G_TYPE_CHECK_CLASS_TYPE((k), BEDIT_TYPE_MODELINE_PLUGIN))
+#define BEDIT_MODELINE_PLUGIN_GET_CLASS(o)                                     \
     (G_TYPE_INSTANCE_GET_CLASS(                                                \
-        (o), GEDIT_TYPE_MODELINE_PLUGIN, BeditModelinePluginClass))
+        (o), BEDIT_TYPE_MODELINE_PLUGIN, BeditModelinePluginClass))
 
 typedef struct _BeditModelinePlugin BeditModelinePlugin;
 typedef struct _BeditModelinePluginPrivate BeditModelinePluginPrivate;
@@ -64,5 +64,5 @@ G_MODULE_EXPORT void peas_register_types(PeasObjectModule *module);
 
 G_END_DECLS
 
-#endif /* GEDIT_MODELINE_PLUGIN_H */
+#endif /* BEDIT_MODELINE_PLUGIN_H */
 

@@ -18,8 +18,8 @@
  *
  */
 
-#ifndef GEDIT_DOCINFO_PLUGIN_H
-#define GEDIT_DOCINFO_PLUGIN_H
+#ifndef BEDIT_DOCINFO_PLUGIN_H
+#define BEDIT_DOCINFO_PLUGIN_H
 
 #include <glib-object.h>
 #include <glib.h>
@@ -28,20 +28,20 @@
 
 G_BEGIN_DECLS
 
-#define GEDIT_TYPE_DOCINFO_PLUGIN (bedit_docinfo_plugin_get_type())
-#define GEDIT_DOCINFO_PLUGIN(o)                                                \
+#define BEDIT_TYPE_DOCINFO_PLUGIN (bedit_docinfo_plugin_get_type())
+#define BEDIT_DOCINFO_PLUGIN(o)                                                \
     (G_TYPE_CHECK_INSTANCE_CAST(                                               \
-        (o), GEDIT_TYPE_DOCINFO_PLUGIN, BeditDocinfoPlugin))
-#define GEDIT_DOCINFO_PLUGIN_CLASS(k)                                          \
+        (o), BEDIT_TYPE_DOCINFO_PLUGIN, BeditDocinfoPlugin))
+#define BEDIT_DOCINFO_PLUGIN_CLASS(k)                                          \
     (G_TYPE_CHECK_CLASS_CAST(                                                  \
-        (k), GEDIT_TYPE_DOCINFO_PLUGIN, BeditDocinfoPluginClass))
-#define GEDIT_IS_DOCINFO_PLUGIN(o)                                             \
-    (G_TYPE_CHECK_INSTANCE_TYPE((o), GEDIT_TYPE_DOCINFO_PLUGIN))
-#define GEDIT_IS_DOCINFO_PLUGIN_CLASS(k)                                       \
-    (G_TYPE_CHECK_CLASS_TYPE((k), GEDIT_TYPE_DOCINFO_PLUGIN))
-#define GEDIT_DOCINFO_PLUGIN_GET_CLASS(o)                                      \
+        (k), BEDIT_TYPE_DOCINFO_PLUGIN, BeditDocinfoPluginClass))
+#define BEDIT_IS_DOCINFO_PLUGIN(o)                                             \
+    (G_TYPE_CHECK_INSTANCE_TYPE((o), BEDIT_TYPE_DOCINFO_PLUGIN))
+#define BEDIT_IS_DOCINFO_PLUGIN_CLASS(k)                                       \
+    (G_TYPE_CHECK_CLASS_TYPE((k), BEDIT_TYPE_DOCINFO_PLUGIN))
+#define BEDIT_DOCINFO_PLUGIN_GET_CLASS(o)                                      \
     (G_TYPE_INSTANCE_GET_CLASS(                                                \
-        (o), GEDIT_TYPE_DOCINFO_PLUGIN, BeditDocinfoPluginClass))
+        (o), BEDIT_TYPE_DOCINFO_PLUGIN, BeditDocinfoPluginClass))
 
 typedef struct _BeditDocinfoPlugin BeditDocinfoPlugin;
 typedef struct _BeditDocinfoPluginPrivate BeditDocinfoPluginPrivate;
@@ -64,5 +64,5 @@ G_MODULE_EXPORT void peas_register_types(PeasObjectModule *module);
 
 G_END_DECLS
 
-#endif /* GEDIT_DOCINFO_PLUGIN_H */
+#endif /* BEDIT_DOCINFO_PLUGIN_H */
 

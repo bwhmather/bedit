@@ -20,18 +20,18 @@
  * Boston, MA  02110-1301  USA
  */
 
-#ifndef GEDIT_APP_WIN32_H
-#define GEDIT_APP_WIN32_H
+#ifndef BEDIT_APP_WIN32_H
+#define BEDIT_APP_WIN32_H
 
 #include "bedit-app.h"
 
 G_BEGIN_DECLS
 
-#define GEDIT_TYPE_APP_WIN32 (bedit_app_win32_get_type())
+#define BEDIT_TYPE_APP_WIN32 (bedit_app_win32_get_type())
 
-G_DECLARE_FINAL_TYPE(BeditAppWin32, bedit_app_win32, GEDIT, APP_WIN32, BeditApp)
+G_DECLARE_FINAL_TYPE(BeditAppWin32, bedit_app_win32, BEDIT, APP_WIN32, BeditApp)
 
 G_END_DECLS
 
-#endif /* GEDIT_APP_WIN32_H */
+#endif /* BEDIT_APP_WIN32_H */
 

@@ -18,8 +18,8 @@
  * along with this program; if not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef GEDIT_ENCODING_ITEMS_H
-#define GEDIT_ENCODING_ITEMS_H
+#ifndef BEDIT_ENCODING_ITEMS_H
+#define BEDIT_ENCODING_ITEMS_H
 
 #include <gtksourceview/gtksource.h>
 
@@ -36,5 +36,5 @@ const gchar *bedit_encoding_item_get_name(BeditEncodingItem *item);
 
 G_END_DECLS
 
-#endif /* GEDIT_ENCODING_ITEMS_H */
+#endif /* BEDIT_ENCODING_ITEMS_H */
 

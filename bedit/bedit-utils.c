@@ -478,7 +478,7 @@ guint bedit_utils_get_current_workspace(GdkScreen *screen) {
  * Get the workspace the window is on.
  *
  * This function gets the workspace that the #GtkWindow is visible on,
- * it returns GEDIT_ALL_WORKSPACES if the window is sticky, or if
+ * it returns BEDIT_ALL_WORKSPACES if the window is sticky, or if
  * the window manager doesn't support this function.
  *
  * Returns: the workspace the window is on.
@@ -493,7 +493,7 @@ guint bedit_utils_get_window_workspace(GtkWindow *gtkwindow) {
     gulong bytes_after;
     guint *workspace;
     gint err, result;
-    guint ret = GEDIT_ALL_WORKSPACES;
+    guint ret = BEDIT_ALL_WORKSPACES;
 
     g_return_val_if_fail(GTK_IS_WINDOW(gtkwindow), 0);
     g_return_val_if_fail(gtk_widget_get_realized(GTK_WIDGET(gtkwindow)), 0);

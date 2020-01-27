@@ -34,7 +34,7 @@
 
 void _bedit_cmd_edit_undo(
     GSimpleAction *action, GVariant *parameter, gpointer user_data) {
-    BeditWindow *window = GEDIT_WINDOW(user_data);
+    BeditWindow *window = BEDIT_WINDOW(user_data);
     BeditView *active_view;
     GtkSourceBuffer *active_document;
 
@@ -55,7 +55,7 @@ void _bedit_cmd_edit_undo(
 
 void _bedit_cmd_edit_redo(
     GSimpleAction *action, GVariant *parameter, gpointer user_data) {
-    BeditWindow *window = GEDIT_WINDOW(user_data);
+    BeditWindow *window = BEDIT_WINDOW(user_data);
     BeditView *active_view;
     GtkSourceBuffer *active_document;
 
@@ -76,7 +76,7 @@ void _bedit_cmd_edit_redo(
 
 void _bedit_cmd_edit_cut(
     GSimpleAction *action, GVariant *parameter, gpointer user_data) {
-    BeditWindow *window = GEDIT_WINDOW(user_data);
+    BeditWindow *window = BEDIT_WINDOW(user_data);
     BeditView *active_view;
 
     bedit_debug(DEBUG_COMMANDS);
@@ -91,7 +91,7 @@ void _bedit_cmd_edit_cut(
 
 void _bedit_cmd_edit_copy(
     GSimpleAction *action, GVariant *parameter, gpointer user_data) {
-    BeditWindow *window = GEDIT_WINDOW(user_data);
+    BeditWindow *window = BEDIT_WINDOW(user_data);
     BeditView *active_view;
 
     bedit_debug(DEBUG_COMMANDS);
@@ -106,7 +106,7 @@ void _bedit_cmd_edit_copy(
 
 void _bedit_cmd_edit_paste(
     GSimpleAction *action, GVariant *parameter, gpointer user_data) {
-    BeditWindow *window = GEDIT_WINDOW(user_data);
+    BeditWindow *window = BEDIT_WINDOW(user_data);
     BeditView *active_view;
 
     bedit_debug(DEBUG_COMMANDS);
@@ -121,7 +121,7 @@ void _bedit_cmd_edit_paste(
 
 void _bedit_cmd_edit_delete(
     GSimpleAction *action, GVariant *parameter, gpointer user_data) {
-    BeditWindow *window = GEDIT_WINDOW(user_data);
+    BeditWindow *window = BEDIT_WINDOW(user_data);
     BeditView *active_view;
 
     bedit_debug(DEBUG_COMMANDS);
@@ -136,7 +136,7 @@ void _bedit_cmd_edit_delete(
 
 void _bedit_cmd_edit_select_all(
     GSimpleAction *action, GVariant *parameter, gpointer user_data) {
-    BeditWindow *window = GEDIT_WINDOW(user_data);
+    BeditWindow *window = BEDIT_WINDOW(user_data);
     BeditView *active_view;
 
     bedit_debug(DEBUG_COMMANDS);
@@ -151,7 +151,7 @@ void _bedit_cmd_edit_select_all(
 
 void _bedit_cmd_edit_preferences(
     GSimpleAction *action, GVariant *parameter, gpointer user_data) {
-    BeditWindow *window = GEDIT_WINDOW(user_data);
+    BeditWindow *window = BEDIT_WINDOW(user_data);
 
     bedit_debug(DEBUG_COMMANDS);
 
@@ -160,7 +160,7 @@ void _bedit_cmd_edit_preferences(
 
 void _bedit_cmd_edit_overwrite_mode(
     GSimpleAction *action, GVariant *state, gpointer user_data) {
-    BeditWindow *window = GEDIT_WINDOW(user_data);
+    BeditWindow *window = BEDIT_WINDOW(user_data);
     BeditView *active_view;
     gboolean overwrite;
 

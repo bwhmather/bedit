@@ -56,7 +56,7 @@ ensure_window (BeditAppOSX *app,
 			continue;
 		}
 
-		if (!GEDIT_IS_WINDOW (window))
+		if (!BEDIT_IS_WINDOW (window))
 		{
 			continue;
 		}
@@ -66,14 +66,14 @@ ensure_window (BeditAppOSX *app,
 
 		if ([nswin isOnActiveSpace])
 		{
-			ret = GEDIT_WINDOW (window);
+			ret = BEDIT_WINDOW (window);
 			break;
 		}
 	}
 
 	if (!ret)
 	{
-		ret = bedit_app_create_window (GEDIT_APP (app), NULL);
+		ret = bedit_app_create_window (BEDIT_APP (app), NULL);
 		gtk_widget_show (GTK_WIDGET (ret));
 	}
 
@@ -164,7 +164,7 @@ struct _BeditAppOSX
 	BeditRecentConfiguration recent_config;
 };
 
-G_DEFINE_TYPE (BeditAppOSX, bedit_app_osx, GEDIT_TYPE_APP)
+G_DEFINE_TYPE (BeditAppOSX, bedit_app_osx, BEDIT_TYPE_APP)
 
 static void
 remove_recent_actions (BeditAppOSX *app)
@@ -184,7 +184,7 @@ remove_recent_actions (BeditAppOSX *app)
 static void
 bedit_app_osx_finalize (GObject *object)
 {
-	BeditAppOSX *app = GEDIT_APP_OSX (object);
+	BeditAppOSX *app = BEDIT_APP_OSX (object);
 
 	g_object_unref (app->recent_files_menu);
 
@@ -229,7 +229,7 @@ bedit_app_osx_show_help_impl (BeditApp    *app,
 			link = g_strdup ("http://library.gnome.org/users/bedit/stable/");
 		}
 
-		ret = bedit_app_osx_show_url (GEDIT_APP_OSX (app), link);
+		ret = bedit_app_osx_show_url (BEDIT_APP_OSX (app), link);
 		g_free (link);
 	}
 
@@ -245,7 +245,7 @@ bedit_app_osx_set_window_title_impl (BeditApp    *app,
 	BeditDocument *document;
 	GdkWindow *wnd;
 
-	g_return_if_fail (GEDIT_IS_WINDOW (window));
+	g_return_if_fail (BEDIT_IS_WINDOW (window));
 
 	wnd = gtk_widget_get_window (GTK_WIDGET (window));
 
@@ -291,7 +291,7 @@ bedit_app_osx_set_window_title_impl (BeditApp    *app,
 		[native setDocumentEdited:false];
 	}
 
-	GEDIT_APP_CLASS (bedit_app_osx_parent_class)->set_window_title (app, window, title);
+	BEDIT_APP_CLASS (bedit_app_osx_parent_class)->set_window_title (app, window, title);
 }
 
 typedef struct
@@ -326,7 +326,7 @@ recent_file_activated (GAction        *action,
 
 	window = ensure_window (info->app, FALSE);
 
-	bedit_commands_load_location (GEDIT_WINDOW (window), file, NULL, 0, 0);
+	bedit_commands_load_location (BEDIT_WINDOW (window), file, NULL, 0, 0);
 	g_object_unref (file);
 }
 
@@ -435,7 +435,7 @@ bedit_app_osx_startup (GApplication *application)
 		NULL
 	};
 
-	BeditAppOSX *app = GEDIT_APP_OSX (application);
+	BeditAppOSX *app = BEDIT_APP_OSX (application);
 
 	G_APPLICATION_CLASS (bedit_app_osx_parent_class)->startup (application);
 
@@ -460,7 +460,7 @@ bedit_app_osx_startup (GApplication *application)
 
 	bedit_recent_configuration_init_default (&app->recent_config);
 
-	app->recent_files_menu = _bedit_app_extend_menu (GEDIT_APP (application),
+	app->recent_files_menu = _bedit_app_extend_menu (BEDIT_APP (application),
 	                                                 "recent-files-section");
 
 	app->recent_manager_changed_id = g_signal_connect (app->recent_config.manager,
@@ -492,7 +492,7 @@ set_window_allow_fullscreen (BeditWindow *window)
 static void
 on_window_realized (GtkWidget *widget)
 {
-	set_window_allow_fullscreen (GEDIT_WINDOW (widget));
+	set_window_allow_fullscreen (BEDIT_WINDOW (widget));
 }
 
 static BeditWindow *
@@ -500,7 +500,7 @@ bedit_app_osx_create_window_impl (BeditApp *app)
 {
 	BeditWindow *window;
 
-	window = GEDIT_APP_CLASS (bedit_app_osx_parent_class)->create_window (app);
+	window = BEDIT_APP_CLASS (bedit_app_osx_parent_class)->create_window (app);
 
 	gtk_window_set_titlebar (GTK_WINDOW (window), NULL);
 
@@ -550,7 +550,7 @@ bedit_app_osx_window_added (GtkApplication *application,
 {
 	GTK_APPLICATION_CLASS (bedit_app_osx_parent_class)->window_added (application, window);
 
-	update_open_sensitivity (GEDIT_APP_OSX (application));
+	update_open_sensitivity (BEDIT_APP_OSX (application));
 }
 
 static void
@@ -559,14 +559,14 @@ bedit_app_osx_window_removed (GtkApplication *application,
 {
 	GTK_APPLICATION_CLASS (bedit_app_osx_parent_class)->window_removed (application, window);
 
-	update_open_sensitivity (GEDIT_APP_OSX (application));
+	update_open_sensitivity (BEDIT_APP_OSX (application));
 }
 
 static void
 bedit_app_osx_class_init (BeditAppOSXClass *klass)
 {
 	GObjectClass *object_class = G_OBJECT_CLASS (klass);
-	BeditAppClass *app_class = GEDIT_APP_CLASS (klass);
+	BeditAppClass *app_class = BEDIT_APP_CLASS (klass);
 	GApplicationClass *application_class = G_APPLICATION_CLASS (klass);
 	GtkApplicationClass *gtkapplication_class = GTK_APPLICATION_CLASS (klass);
 

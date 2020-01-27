@@ -20,8 +20,8 @@
  * along with this program; if not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef GEDIT_COMMANDS_H
-#define GEDIT_COMMANDS_H
+#ifndef BEDIT_COMMANDS_H
+#define BEDIT_COMMANDS_H
 
 #include <bedit/bedit-window.h>
 #include <gtksourceview/gtksource.h>
@@ -52,4 +52,4 @@ void bedit_commands_save_all_documents(BeditWindow *window);
 
 G_END_DECLS
 
-#endif /* GEDIT_COMMANDS_H */
+#endif /* BEDIT_COMMANDS_H */

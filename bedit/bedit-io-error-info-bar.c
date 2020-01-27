@@ -651,7 +651,7 @@ const GtkSourceEncoding *bedit_conversion_error_info_bar_get_encoding(
         g_object_get_data(G_OBJECT(info_bar), "bedit-info-bar-encoding-menu");
     if (menu != NULL) {
         return bedit_encodings_combo_box_get_selected_encoding(
-            GEDIT_ENCODINGS_COMBO_BOX(menu));
+            BEDIT_ENCODINGS_COMBO_BOX(menu));
     }
 
     return NULL;
@@ -876,7 +876,7 @@ GtkWidget *bedit_no_backup_saving_error_info_bar_new(
     editor_settings = g_settings_new("com.bwhmather.bedit.preferences.editor");
 
     create_backup_copy = g_settings_get_boolean(
-        editor_settings, GEDIT_SETTINGS_CREATE_BACKUP_COPY);
+        editor_settings, BEDIT_SETTINGS_CREATE_BACKUP_COPY);
     g_object_unref(editor_settings);
 
     /* FIXME: review this messages */
@@ -1012,8 +1012,8 @@ GtkWidget *bedit_unrecoverable_saving_error_info_bar_new(
 	/* FIXME this error can not occur for a file saving. Either remove the
 	 * code here, or improve the GtkSourceFileSaver so this error can occur.
 	 */
-	else if (error->domain == GEDIT_DOCUMENT_ERROR &&
-		 error->code == GEDIT_DOCUMENT_ERROR_TOO_BIG)
+	else if (error->domain == BEDIT_DOCUMENT_ERROR &&
+		 error->code == BEDIT_DOCUMENT_ERROR_TOO_BIG)
 	{
 		message_details = g_strdup (_("The disk where you are trying to save the file has "
 					      "a limitation on file sizes. Please try saving "

@@ -18,18 +18,18 @@
  * along with this program; if not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef GEDIT_FILE_CHOOSER_DIALOG_H
-#define GEDIT_FILE_CHOOSER_DIALOG_H
+#ifndef BEDIT_FILE_CHOOSER_DIALOG_H
+#define BEDIT_FILE_CHOOSER_DIALOG_H
 
 #include <gtk/gtk.h>
 #include <gtksourceview/gtksource.h>
 
 G_BEGIN_DECLS
 
-#define GEDIT_TYPE_FILE_CHOOSER_DIALOG (bedit_file_chooser_dialog_get_type())
+#define BEDIT_TYPE_FILE_CHOOSER_DIALOG (bedit_file_chooser_dialog_get_type())
 
 G_DECLARE_INTERFACE(
-    BeditFileChooserDialog, bedit_file_chooser_dialog, GEDIT,
+    BeditFileChooserDialog, bedit_file_chooser_dialog, BEDIT,
     FILE_CHOOSER_DIALOG, GObject)
 
 struct _BeditFileChooserDialogInterface {
@@ -74,11 +74,11 @@ struct _BeditFileChooserDialogInterface {
 };
 
 typedef enum {
-    GEDIT_FILE_CHOOSER_SAVE = 1 << 0,
-    GEDIT_FILE_CHOOSER_OPEN = 1 << 1,
-    GEDIT_FILE_CHOOSER_ENABLE_ENCODING = 1 << 2,
-    GEDIT_FILE_CHOOSER_ENABLE_LINE_ENDING = 1 << 3,
-    GEDIT_FILE_CHOOSER_ENABLE_DEFAULT_FILTERS = 1 << 4
+    BEDIT_FILE_CHOOSER_SAVE = 1 << 0,
+    BEDIT_FILE_CHOOSER_OPEN = 1 << 1,
+    BEDIT_FILE_CHOOSER_ENABLE_ENCODING = 1 << 2,
+    BEDIT_FILE_CHOOSER_ENABLE_LINE_ENDING = 1 << 3,
+    BEDIT_FILE_CHOOSER_ENABLE_DEFAULT_FILTERS = 1 << 4
 } BeditFileChooserFlags;
 
 BeditFileChooserDialog *bedit_file_chooser_dialog_create(
@@ -130,5 +130,5 @@ void bedit_file_chooser_dialog_add_pattern_filter(
 
 G_END_DECLS
 
-#endif /* GEDIT_FILE_CHOOSER_DIALOG_H */
+#endif /* BEDIT_FILE_CHOOSER_DIALOG_H */
 

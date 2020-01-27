@@ -18,8 +18,8 @@
  * along with this program; if not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef GEDIT_FILE_BROWSER_WIDGET_H
-#define GEDIT_FILE_BROWSER_WIDGET_H
+#ifndef BEDIT_FILE_BROWSER_WIDGET_H
+#define BEDIT_FILE_BROWSER_WIDGET_H
 
 #include <bedit/bedit-menu-extension.h>
 #include <gtk/gtk.h>
@@ -28,23 +28,23 @@
 #include "bedit-file-browser-view.h"
 
 G_BEGIN_DECLS
-#define GEDIT_TYPE_FILE_BROWSER_WIDGET (bedit_file_browser_widget_get_type())
-#define GEDIT_FILE_BROWSER_WIDGET(obj)                                         \
+#define BEDIT_TYPE_FILE_BROWSER_WIDGET (bedit_file_browser_widget_get_type())
+#define BEDIT_FILE_BROWSER_WIDGET(obj)                                         \
     (G_TYPE_CHECK_INSTANCE_CAST(                                               \
-        (obj), GEDIT_TYPE_FILE_BROWSER_WIDGET, BeditFileBrowserWidget))
-#define GEDIT_FILE_BROWSER_WIDGET_CONST(obj)                                   \
+        (obj), BEDIT_TYPE_FILE_BROWSER_WIDGET, BeditFileBrowserWidget))
+#define BEDIT_FILE_BROWSER_WIDGET_CONST(obj)                                   \
     (G_TYPE_CHECK_INSTANCE_CAST(                                               \
-        (obj), GEDIT_TYPE_FILE_BROWSER_WIDGET, BeditFileBrowserWidget const))
-#define GEDIT_FILE_BROWSER_WIDGET_CLASS(klass)                                 \
+        (obj), BEDIT_TYPE_FILE_BROWSER_WIDGET, BeditFileBrowserWidget const))
+#define BEDIT_FILE_BROWSER_WIDGET_CLASS(klass)                                 \
     (G_TYPE_CHECK_CLASS_CAST(                                                  \
-        (klass), GEDIT_TYPE_FILE_BROWSER_WIDGET, BeditFileBrowserWidgetClass))
-#define GEDIT_IS_FILE_BROWSER_WIDGET(obj)                                      \
-    (G_TYPE_CHECK_INSTANCE_TYPE((obj), GEDIT_TYPE_FILE_BROWSER_WIDGET))
-#define GEDIT_IS_FILE_BROWSER_WIDGET_CLASS(klass)                              \
-    (G_TYPE_CHECK_CLASS_TYPE((klass), GEDIT_TYPE_FILE_BROWSER_WIDGET))
-#define GEDIT_FILE_BROWSER_WIDGET_GET_CLASS(obj)                               \
+        (klass), BEDIT_TYPE_FILE_BROWSER_WIDGET, BeditFileBrowserWidgetClass))
+#define BEDIT_IS_FILE_BROWSER_WIDGET(obj)                                      \
+    (G_TYPE_CHECK_INSTANCE_TYPE((obj), BEDIT_TYPE_FILE_BROWSER_WIDGET))
+#define BEDIT_IS_FILE_BROWSER_WIDGET_CLASS(klass)                              \
+    (G_TYPE_CHECK_CLASS_TYPE((klass), BEDIT_TYPE_FILE_BROWSER_WIDGET))
+#define BEDIT_FILE_BROWSER_WIDGET_GET_CLASS(obj)                               \
     (G_TYPE_INSTANCE_GET_CLASS(                                                \
-        (obj), GEDIT_TYPE_FILE_BROWSER_WIDGET, BeditFileBrowserWidgetClass))
+        (obj), BEDIT_TYPE_FILE_BROWSER_WIDGET, BeditFileBrowserWidgetClass))
 
 typedef struct _BeditFileBrowserWidget BeditFileBrowserWidget;
 typedef struct _BeditFileBrowserWidgetClass BeditFileBrowserWidgetClass;
@@ -119,5 +119,5 @@ void _bedit_file_browser_widget_register_type(GTypeModule *type_module);
 
 G_END_DECLS
 
-#endif /* GEDIT_FILE_BROWSER_WIDGET_H */
+#endif /* BEDIT_FILE_BROWSER_WIDGET_H */
 

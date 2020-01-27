@@ -18,8 +18,8 @@
  * along with this program; if not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef GEDIT_IO_ERROR_INFO_BAR_H
-#define GEDIT_IO_ERROR_INFO_BAR_H
+#ifndef BEDIT_IO_ERROR_INFO_BAR_H
+#define BEDIT_IO_ERROR_INFO_BAR_H
 
 #include <gtksourceview/gtksource.h>
 
@@ -57,5 +57,5 @@ GtkWidget *bedit_network_unavailable_info_bar_new(GFile *location);
 
 G_END_DECLS
 
-#endif /* GEDIT_IO_ERROR_INFO_BAR_H  */
+#endif /* BEDIT_IO_ERROR_INFO_BAR_H  */
 

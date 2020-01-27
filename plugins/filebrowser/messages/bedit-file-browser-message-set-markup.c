@@ -40,11 +40,11 @@ struct _BeditFileBrowserMessageSetMarkupPrivate {
 
 G_DEFINE_TYPE_EXTENDED(
     BeditFileBrowserMessageSetMarkup, bedit_file_browser_message_set_markup,
-    GEDIT_TYPE_MESSAGE, 0, G_ADD_PRIVATE(BeditFileBrowserMessageSetMarkup))
+    BEDIT_TYPE_MESSAGE, 0, G_ADD_PRIVATE(BeditFileBrowserMessageSetMarkup))
 
 static void bedit_file_browser_message_set_markup_finalize(GObject *obj) {
     BeditFileBrowserMessageSetMarkup *msg =
-        GEDIT_FILE_BROWSER_MESSAGE_SET_MARKUP(obj);
+        BEDIT_FILE_BROWSER_MESSAGE_SET_MARKUP(obj);
 
     g_free(msg->priv->id);
     g_free(msg->priv->markup);
@@ -57,7 +57,7 @@ static void bedit_file_browser_message_set_markup_get_property(
     GObject *obj, guint prop_id, GValue *value, GParamSpec *pspec) {
     BeditFileBrowserMessageSetMarkup *msg;
 
-    msg = GEDIT_FILE_BROWSER_MESSAGE_SET_MARKUP(obj);
+    msg = BEDIT_FILE_BROWSER_MESSAGE_SET_MARKUP(obj);
 
     switch (prop_id) {
     case PROP_ID:
@@ -73,7 +73,7 @@ static void bedit_file_browser_message_set_markup_set_property(
     GObject *obj, guint prop_id, GValue const *value, GParamSpec *pspec) {
     BeditFileBrowserMessageSetMarkup *msg;
 
-    msg = GEDIT_FILE_BROWSER_MESSAGE_SET_MARKUP(obj);
+    msg = BEDIT_FILE_BROWSER_MESSAGE_SET_MARKUP(obj);
 
     switch (prop_id) {
     case PROP_ID: {

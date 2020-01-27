@@ -18,18 +18,18 @@
  * along with this program; if not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef GEDIT_STATUSBAR_H
-#define GEDIT_STATUSBAR_H
+#ifndef BEDIT_STATUSBAR_H
+#define BEDIT_STATUSBAR_H
 
 #include <bedit/bedit-window.h>
 #include <gtk/gtk.h>
 
 G_BEGIN_DECLS
 
-#define GEDIT_TYPE_STATUSBAR (bedit_statusbar_get_type())
+#define BEDIT_TYPE_STATUSBAR (bedit_statusbar_get_type())
 
 G_DECLARE_FINAL_TYPE(
-    BeditStatusbar, bedit_statusbar, GEDIT, STATUSBAR, GtkStatusbar)
+    BeditStatusbar, bedit_statusbar, BEDIT, STATUSBAR, GtkStatusbar)
 
 GtkWidget *bedit_statusbar_new(void);
 

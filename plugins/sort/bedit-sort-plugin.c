@@ -58,9 +58,9 @@ enum { PROP_0, PROP_WINDOW, PROP_APP };
 G_DEFINE_DYNAMIC_TYPE_EXTENDED(
     BeditSortPlugin, bedit_sort_plugin, PEAS_TYPE_EXTENSION_BASE, 0,
     G_IMPLEMENT_INTERFACE_DYNAMIC(
-        GEDIT_TYPE_APP_ACTIVATABLE, bedit_app_activatable_iface_init)
+        BEDIT_TYPE_APP_ACTIVATABLE, bedit_app_activatable_iface_init)
         G_IMPLEMENT_INTERFACE_DYNAMIC(
-            GEDIT_TYPE_WINDOW_ACTIVATABLE, bedit_window_activatable_iface_init)
+            BEDIT_TYPE_WINDOW_ACTIVATABLE, bedit_window_activatable_iface_init)
             G_ADD_PRIVATE_DYNAMIC(BeditSortPlugin))
 
 static void do_sort(BeditSortPlugin *plugin) {
@@ -210,7 +210,7 @@ static void bedit_sort_plugin_app_activate(BeditAppActivatable *activatable) {
 
     bedit_debug(DEBUG_PLUGINS);
 
-    priv = GEDIT_SORT_PLUGIN(activatable)->priv;
+    priv = BEDIT_SORT_PLUGIN(activatable)->priv;
 
     priv->menu_ext =
         bedit_app_activatable_extend_menu(activatable, "tools-section");
@@ -224,7 +224,7 @@ static void bedit_sort_plugin_app_deactivate(BeditAppActivatable *activatable) {
 
     bedit_debug(DEBUG_PLUGINS);
 
-    priv = GEDIT_SORT_PLUGIN(activatable)->priv;
+    priv = BEDIT_SORT_PLUGIN(activatable)->priv;
 
     g_clear_object(&priv->menu_ext);
 }
@@ -235,14 +235,14 @@ static void bedit_sort_plugin_window_activate(
 
     bedit_debug(DEBUG_PLUGINS);
 
-    priv = GEDIT_SORT_PLUGIN(activatable)->priv;
+    priv = BEDIT_SORT_PLUGIN(activatable)->priv;
 
     priv->action = g_simple_action_new("sort", NULL);
     g_signal_connect(
         priv->action, "activate", G_CALLBACK(sort_cb), activatable);
     g_action_map_add_action(G_ACTION_MAP(priv->window), G_ACTION(priv->action));
 
-    update_ui(GEDIT_SORT_PLUGIN(activatable));
+    update_ui(BEDIT_SORT_PLUGIN(activatable));
 }
 
 static void bedit_sort_plugin_window_deactivate(
@@ -251,7 +251,7 @@ static void bedit_sort_plugin_window_deactivate(
 
     bedit_debug(DEBUG_PLUGINS);
 
-    priv = GEDIT_SORT_PLUGIN(activatable)->priv;
+    priv = BEDIT_SORT_PLUGIN(activatable)->priv;
     g_action_map_remove_action(G_ACTION_MAP(priv->window), "sort");
 }
 
@@ -259,7 +259,7 @@ static void bedit_sort_plugin_window_update_state(
     BeditWindowActivatable *activatable) {
     bedit_debug(DEBUG_PLUGINS);
 
-    update_ui(GEDIT_SORT_PLUGIN(activatable));
+    update_ui(BEDIT_SORT_PLUGIN(activatable));
 }
 
 static void bedit_sort_plugin_init(BeditSortPlugin *plugin) {
@@ -269,7 +269,7 @@ static void bedit_sort_plugin_init(BeditSortPlugin *plugin) {
 }
 
 static void bedit_sort_plugin_dispose(GObject *object) {
-    BeditSortPlugin *plugin = GEDIT_SORT_PLUGIN(object);
+    BeditSortPlugin *plugin = BEDIT_SORT_PLUGIN(object);
 
     bedit_debug_message(DEBUG_PLUGINS, "BeditSortPlugin disposing");
 
@@ -289,14 +289,14 @@ static void bedit_sort_plugin_finalize(GObject *object) {
 
 static void bedit_sort_plugin_set_property(
     GObject *object, guint prop_id, const GValue *value, GParamSpec *pspec) {
-    BeditSortPlugin *plugin = GEDIT_SORT_PLUGIN(object);
+    BeditSortPlugin *plugin = BEDIT_SORT_PLUGIN(object);
 
     switch (prop_id) {
     case PROP_WINDOW:
-        plugin->priv->window = GEDIT_WINDOW(g_value_dup_object(value));
+        plugin->priv->window = BEDIT_WINDOW(g_value_dup_object(value));
         break;
     case PROP_APP:
-        plugin->priv->app = GEDIT_APP(g_value_dup_object(value));
+        plugin->priv->app = BEDIT_APP(g_value_dup_object(value));
         break;
     default:
         G_OBJECT_WARN_INVALID_PROPERTY_ID(object, prop_id, pspec);
@@ -306,7 +306,7 @@ static void bedit_sort_plugin_set_property(
 
 static void bedit_sort_plugin_get_property(
     GObject *object, guint prop_id, GValue *value, GParamSpec *pspec) {
-    BeditSortPlugin *plugin = GEDIT_SORT_PLUGIN(object);
+    BeditSortPlugin *plugin = BEDIT_SORT_PLUGIN(object);
 
     switch (prop_id) {
     case PROP_WINDOW:
@@ -352,7 +352,7 @@ G_MODULE_EXPORT void peas_register_types(PeasObjectModule *module) {
     bedit_sort_plugin_register_type(G_TYPE_MODULE(module));
 
     peas_object_module_register_extension_type(
-        module, GEDIT_TYPE_APP_ACTIVATABLE, GEDIT_TYPE_SORT_PLUGIN);
+        module, BEDIT_TYPE_APP_ACTIVATABLE, BEDIT_TYPE_SORT_PLUGIN);
     peas_object_module_register_extension_type(
-        module, GEDIT_TYPE_WINDOW_ACTIVATABLE, GEDIT_TYPE_SORT_PLUGIN);
+        module, BEDIT_TYPE_WINDOW_ACTIVATABLE, BEDIT_TYPE_SORT_PLUGIN);
 }

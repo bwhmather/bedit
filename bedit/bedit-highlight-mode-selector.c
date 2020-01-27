@@ -257,14 +257,14 @@ static void bedit_highlight_mode_selector_init(
 }
 
 BeditHighlightModeSelector *bedit_highlight_mode_selector_new() {
-    return g_object_new(GEDIT_TYPE_HIGHLIGHT_MODE_SELECTOR, NULL);
+    return g_object_new(BEDIT_TYPE_HIGHLIGHT_MODE_SELECTOR, NULL);
 }
 
 void bedit_highlight_mode_selector_select_language(
     BeditHighlightModeSelector *selector, GtkSourceLanguage *language) {
     GtkTreeIter iter;
 
-    g_return_if_fail(GEDIT_IS_HIGHLIGHT_MODE_SELECTOR(selector));
+    g_return_if_fail(BEDIT_IS_HIGHLIGHT_MODE_SELECTOR(selector));
 
     if (language == NULL) {
         return;
@@ -309,7 +309,7 @@ void bedit_highlight_mode_selector_activate_selected_language(
     GtkSourceLanguage *lang;
     GtkTreeIter iter;
 
-    g_return_if_fail(GEDIT_IS_HIGHLIGHT_MODE_SELECTOR(selector));
+    g_return_if_fail(BEDIT_IS_HIGHLIGHT_MODE_SELECTOR(selector));
 
     if (!gtk_tree_selection_get_selected(
             selector->treeview_selection, NULL, &iter)) {

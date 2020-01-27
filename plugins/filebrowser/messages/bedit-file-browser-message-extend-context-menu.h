@@ -22,36 +22,36 @@
  * Boston, MA  02110-1301  USA
  */
 
-#ifndef GEDIT_FILE_BROWSER_MESSAGE_EXTEND_CONTEXT_MENU_H
-#define GEDIT_FILE_BROWSER_MESSAGE_EXTEND_CONTEXT_MENU_H
+#ifndef BEDIT_FILE_BROWSER_MESSAGE_EXTEND_CONTEXT_MENU_H
+#define BEDIT_FILE_BROWSER_MESSAGE_EXTEND_CONTEXT_MENU_H
 
 #include <bedit/bedit-message.h>
 
 G_BEGIN_DECLS
 
-#define GEDIT_TYPE_FILE_BROWSER_MESSAGE_EXTEND_CONTEXT_MENU                    \
+#define BEDIT_TYPE_FILE_BROWSER_MESSAGE_EXTEND_CONTEXT_MENU                    \
     (bedit_file_browser_message_extend_context_menu_get_type())
-#define GEDIT_FILE_BROWSER_MESSAGE_EXTEND_CONTEXT_MENU(obj)                    \
+#define BEDIT_FILE_BROWSER_MESSAGE_EXTEND_CONTEXT_MENU(obj)                    \
     (G_TYPE_CHECK_INSTANCE_CAST(                                               \
-        (obj), GEDIT_TYPE_FILE_BROWSER_MESSAGE_EXTEND_CONTEXT_MENU,            \
+        (obj), BEDIT_TYPE_FILE_BROWSER_MESSAGE_EXTEND_CONTEXT_MENU,            \
         BeditFileBrowserMessageExtendContextMenu))
-#define GEDIT_FILE_BROWSER_MESSAGE_EXTEND_CONTEXT_MENU_CONST(obj)              \
+#define BEDIT_FILE_BROWSER_MESSAGE_EXTEND_CONTEXT_MENU_CONST(obj)              \
     (G_TYPE_CHECK_INSTANCE_CAST(                                               \
-        (obj), GEDIT_TYPE_FILE_BROWSER_MESSAGE_EXTEND_CONTEXT_MENU,            \
+        (obj), BEDIT_TYPE_FILE_BROWSER_MESSAGE_EXTEND_CONTEXT_MENU,            \
         BeditFileBrowserMessageExtendContextMenu const))
-#define GEDIT_FILE_BROWSER_MESSAGE_EXTEND_CONTEXT_MENU_CLASS(klass)            \
+#define BEDIT_FILE_BROWSER_MESSAGE_EXTEND_CONTEXT_MENU_CLASS(klass)            \
     (G_TYPE_CHECK_CLASS_CAST(                                                  \
-        (klass), GEDIT_TYPE_FILE_BROWSER_MESSAGE_EXTEND_CONTEXT_MENU,          \
+        (klass), BEDIT_TYPE_FILE_BROWSER_MESSAGE_EXTEND_CONTEXT_MENU,          \
         BeditFileBrowserMessageExtendContextMenuClass))
-#define GEDIT_IS_FILE_BROWSER_MESSAGE_EXTEND_CONTEXT_MENU(obj)                 \
+#define BEDIT_IS_FILE_BROWSER_MESSAGE_EXTEND_CONTEXT_MENU(obj)                 \
     (G_TYPE_CHECK_INSTANCE_TYPE(                                               \
-        (obj), GEDIT_TYPE_FILE_BROWSER_MESSAGE_EXTEND_CONTEXT_MENU))
-#define GEDIT_IS_FILE_BROWSER_MESSAGE_EXTEND_CONTEXT_MENU_CLASS(klass)         \
+        (obj), BEDIT_TYPE_FILE_BROWSER_MESSAGE_EXTEND_CONTEXT_MENU))
+#define BEDIT_IS_FILE_BROWSER_MESSAGE_EXTEND_CONTEXT_MENU_CLASS(klass)         \
     (G_TYPE_CHECK_CLASS_TYPE(                                                  \
-        (klass), GEDIT_TYPE_FILE_BROWSER_MESSAGE_EXTEND_CONTEXT_MENU))
-#define GEDIT_FILE_BROWSER_MESSAGE_EXTEND_CONTEXT_MENU_GET_CLASS(obj)          \
+        (klass), BEDIT_TYPE_FILE_BROWSER_MESSAGE_EXTEND_CONTEXT_MENU))
+#define BEDIT_FILE_BROWSER_MESSAGE_EXTEND_CONTEXT_MENU_GET_CLASS(obj)          \
     (G_TYPE_INSTANCE_GET_CLASS(                                                \
-        (obj), GEDIT_TYPE_FILE_BROWSER_MESSAGE_EXTEND_CONTEXT_MENU,            \
+        (obj), BEDIT_TYPE_FILE_BROWSER_MESSAGE_EXTEND_CONTEXT_MENU,            \
         BeditFileBrowserMessageExtendContextMenuClass))
 
 typedef struct _BeditFileBrowserMessageExtendContextMenu
@@ -76,4 +76,4 @@ GType bedit_file_browser_message_extend_context_menu_get_type(void)
 
 G_END_DECLS
 
-#endif /* GEDIT_FILE_BROWSER_MESSAGE_EXTEND_CONTEXT_MENU_H */
+#endif /* BEDIT_FILE_BROWSER_MESSAGE_EXTEND_CONTEXT_MENU_H */

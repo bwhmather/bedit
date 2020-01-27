@@ -44,12 +44,12 @@ G_DEFINE_TYPE(BeditTabLabel, bedit_tab_label, GTK_TYPE_BOX)
 
 static void bedit_tab_label_set_property(
     GObject *object, guint prop_id, const GValue *value, GParamSpec *pspec) {
-    BeditTabLabel *tab_label = GEDIT_TAB_LABEL(object);
+    BeditTabLabel *tab_label = BEDIT_TAB_LABEL(object);
 
     switch (prop_id) {
     case PROP_TAB:
         g_return_if_fail(tab_label->tab == NULL);
-        tab_label->tab = GEDIT_TAB(g_value_get_object(value));
+        tab_label->tab = BEDIT_TAB(g_value_get_object(value));
         break;
 
     default:
@@ -60,7 +60,7 @@ static void bedit_tab_label_set_property(
 
 static void bedit_tab_label_get_property(
     GObject *object, guint prop_id, GValue *value, GParamSpec *pspec) {
-    BeditTabLabel *tab_label = GEDIT_TAB_LABEL(object);
+    BeditTabLabel *tab_label = BEDIT_TAB_LABEL(object);
 
     switch (prop_id) {
     case PROP_TAB:
@@ -108,11 +108,11 @@ static void update_close_button_sensitivity(BeditTabLabel *tab_label) {
 
     gtk_widget_set_sensitive(
         tab_label->close_button,
-        (state != GEDIT_TAB_STATE_CLOSING) &&
-            (state != GEDIT_TAB_STATE_SAVING) &&
-            (state != GEDIT_TAB_STATE_SHOWING_PRINT_PREVIEW) &&
-            (state != GEDIT_TAB_STATE_PRINTING) &&
-            (state != GEDIT_TAB_STATE_SAVING_ERROR));
+        (state != BEDIT_TAB_STATE_CLOSING) &&
+            (state != BEDIT_TAB_STATE_SAVING) &&
+            (state != BEDIT_TAB_STATE_SHOWING_PRINT_PREVIEW) &&
+            (state != BEDIT_TAB_STATE_PRINTING) &&
+            (state != BEDIT_TAB_STATE_SAVING_ERROR));
 }
 
 static void sync_state(
@@ -125,9 +125,9 @@ static void sync_state(
 
     state = bedit_tab_get_state(tab);
 
-    if ((state == GEDIT_TAB_STATE_LOADING) ||
-        (state == GEDIT_TAB_STATE_SAVING) ||
-        (state == GEDIT_TAB_STATE_REVERTING)) {
+    if ((state == BEDIT_TAB_STATE_LOADING) ||
+        (state == BEDIT_TAB_STATE_SAVING) ||
+        (state == BEDIT_TAB_STATE_REVERTING)) {
         gtk_widget_hide(tab_label->icon);
 
         gtk_widget_show(tab_label->spinner);
@@ -156,7 +156,7 @@ static void sync_state(
 }
 
 static void bedit_tab_label_constructed(GObject *object) {
-    BeditTabLabel *tab_label = GEDIT_TAB_LABEL(object);
+    BeditTabLabel *tab_label = BEDIT_TAB_LABEL(object);
 
     if (tab_label->tab == NULL) {
         g_critical("The tab label was not properly constructed");
@@ -186,7 +186,7 @@ static void bedit_tab_label_class_init(BeditTabLabelClass *klass) {
     object_class->constructed = bedit_tab_label_constructed;
 
     properties[PROP_TAB] = g_param_spec_object(
-        "tab", "Tab", "The BeditTab", GEDIT_TYPE_TAB,
+        "tab", "Tab", "The BeditTab", BEDIT_TYPE_TAB,
         G_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY);
 
     g_object_class_install_properties(object_class, LAST_PROP, properties);
@@ -215,12 +215,12 @@ static void bedit_tab_label_init(BeditTabLabel *tab_label) {
 }
 
 BeditTab *bedit_tab_label_get_tab(BeditTabLabel *tab_label) {
-    g_return_val_if_fail(GEDIT_IS_TAB_LABEL(tab_label), NULL);
+    g_return_val_if_fail(BEDIT_IS_TAB_LABEL(tab_label), NULL);
 
     return tab_label->tab;
 }
 
 GtkWidget *bedit_tab_label_new(BeditTab *tab) {
-    return g_object_new(GEDIT_TYPE_TAB_LABEL, "tab", tab, NULL);
+    return g_object_new(BEDIT_TYPE_TAB_LABEL, "tab", tab, NULL);
 }
 

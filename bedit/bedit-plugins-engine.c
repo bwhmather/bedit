@@ -88,12 +88,12 @@ static void bedit_plugins_engine_init(BeditPluginsEngine *engine) {
         bedit_dirs_get_bedit_plugins_data_dir());
 
     g_settings_bind(
-        engine->plugin_settings, GEDIT_SETTINGS_ACTIVE_PLUGINS, engine,
+        engine->plugin_settings, BEDIT_SETTINGS_ACTIVE_PLUGINS, engine,
         "loaded-plugins", G_SETTINGS_BIND_DEFAULT);
 }
 
 static void bedit_plugins_engine_dispose(GObject *object) {
-    BeditPluginsEngine *engine = GEDIT_PLUGINS_ENGINE(object);
+    BeditPluginsEngine *engine = BEDIT_PLUGINS_ENGINE(object);
 
     g_clear_object(&engine->plugin_settings);
 
@@ -109,7 +109,7 @@ static void bedit_plugins_engine_class_init(BeditPluginsEngineClass *klass) {
 BeditPluginsEngine *bedit_plugins_engine_get_default(void) {
     if (default_engine == NULL) {
         default_engine =
-            GEDIT_PLUGINS_ENGINE(g_object_new(GEDIT_TYPE_PLUGINS_ENGINE, NULL));
+            BEDIT_PLUGINS_ENGINE(g_object_new(BEDIT_TYPE_PLUGINS_ENGINE, NULL));
 
         g_object_add_weak_pointer(
             G_OBJECT(default_engine), (gpointer)&default_engine);

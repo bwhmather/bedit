@@ -226,7 +226,7 @@ static void message_set_emblem_cb(
             g_value_set_object(&value, pixbuf);
 
             bedit_file_browser_store_set_value(
-                store, &iter, GEDIT_FILE_BROWSER_STORE_COLUMN_EMBLEM, &value);
+                store, &iter, BEDIT_FILE_BROWSER_STORE_COLUMN_EMBLEM, &value);
 
             g_value_unset(&value);
         }
@@ -270,7 +270,7 @@ static void message_set_markup_cb(
 
                 gtk_tree_model_get(
                     GTK_TREE_MODEL(store), &iter,
-                    GEDIT_FILE_BROWSER_STORE_COLUMN_NAME, &name, -1);
+                    BEDIT_FILE_BROWSER_STORE_COLUMN_NAME, &name, -1);
                 markup = g_markup_escape_text(name, -1);
 
                 g_free(name);
@@ -280,7 +280,7 @@ static void message_set_markup_cb(
             g_value_set_string(&value, markup);
 
             bedit_file_browser_store_set_value(
-                store, &iter, GEDIT_FILE_BROWSER_STORE_COLUMN_MARKUP, &value);
+                store, &iter, BEDIT_FILE_BROWSER_STORE_COLUMN_MARKUP, &value);
 
             g_value_unset(&value);
         }
@@ -331,9 +331,9 @@ static void set_item_message(
 
     store = bedit_file_browser_widget_get_browser_store(data->widget);
     gtk_tree_model_get(
-        GTK_TREE_MODEL(store), iter, GEDIT_FILE_BROWSER_STORE_COLUMN_NAME,
-        &name, GEDIT_FILE_BROWSER_STORE_COLUMN_LOCATION, &location,
-        GEDIT_FILE_BROWSER_STORE_COLUMN_FLAGS, &flags, -1);
+        GTK_TREE_MODEL(store), iter, BEDIT_FILE_BROWSER_STORE_COLUMN_NAME,
+        &name, BEDIT_FILE_BROWSER_STORE_COLUMN_LOCATION, &location,
+        BEDIT_FILE_BROWSER_STORE_COLUMN_FLAGS, &flags, -1);
 
     if (location) {
         gchar *track_id;
@@ -371,8 +371,8 @@ static gboolean custom_message_filter_func(
     GtkTreePath *path;
 
     gtk_tree_model_get(
-        GTK_TREE_MODEL(store), iter, GEDIT_FILE_BROWSER_STORE_COLUMN_LOCATION,
-        &location, GEDIT_FILE_BROWSER_STORE_COLUMN_FLAGS, &flags, -1);
+        GTK_TREE_MODEL(store), iter, BEDIT_FILE_BROWSER_STORE_COLUMN_LOCATION,
+        &location, BEDIT_FILE_BROWSER_STORE_COLUMN_FLAGS, &flags, -1);
 
     if (!location || FILE_IS_DUMMY(flags))
         return FALSE;
@@ -496,9 +496,9 @@ static void message_set_show_hidden_cb(
     mode = bedit_file_browser_store_get_filter_mode(store);
 
     if (active)
-        mode &= ~GEDIT_FILE_BROWSER_STORE_FILTER_MODE_HIDE_HIDDEN;
+        mode &= ~BEDIT_FILE_BROWSER_STORE_FILTER_MODE_HIDE_HIDDEN;
     else
-        mode |= GEDIT_FILE_BROWSER_STORE_FILTER_MODE_HIDE_HIDDEN;
+        mode |= BEDIT_FILE_BROWSER_STORE_FILTER_MODE_HIDE_HIDDEN;
 
     bedit_file_browser_store_set_filter_mode(store, mode);
 }
@@ -515,9 +515,9 @@ static void message_set_show_binary_cb(
     mode = bedit_file_browser_store_get_filter_mode(store);
 
     if (active)
-        mode &= ~GEDIT_FILE_BROWSER_STORE_FILTER_MODE_HIDE_BINARY;
+        mode &= ~BEDIT_FILE_BROWSER_STORE_FILTER_MODE_HIDE_BINARY;
     else
-        mode |= GEDIT_FILE_BROWSER_STORE_FILTER_MODE_HIDE_BINARY;
+        mode |= BEDIT_FILE_BROWSER_STORE_FILTER_MODE_HIDE_BINARY;
 
     bedit_file_browser_store_set_filter_mode(store, mode);
 }
@@ -547,61 +547,61 @@ static void register_methods(
 
     /* Register method calls */
     bedit_message_bus_register(
-        bus, GEDIT_TYPE_FILE_BROWSER_MESSAGE_GET_ROOT, MESSAGE_OBJECT_PATH,
+        bus, BEDIT_TYPE_FILE_BROWSER_MESSAGE_GET_ROOT, MESSAGE_OBJECT_PATH,
         "get_root");
 
     bedit_message_bus_register(
-        bus, GEDIT_TYPE_FILE_BROWSER_MESSAGE_SET_ROOT, MESSAGE_OBJECT_PATH,
+        bus, BEDIT_TYPE_FILE_BROWSER_MESSAGE_SET_ROOT, MESSAGE_OBJECT_PATH,
         "set_root");
 
     bedit_message_bus_register(
-        bus, GEDIT_TYPE_FILE_BROWSER_MESSAGE_SET_EMBLEM, MESSAGE_OBJECT_PATH,
+        bus, BEDIT_TYPE_FILE_BROWSER_MESSAGE_SET_EMBLEM, MESSAGE_OBJECT_PATH,
         "set_emblem");
 
     bedit_message_bus_register(
-        bus, GEDIT_TYPE_FILE_BROWSER_MESSAGE_SET_MARKUP, MESSAGE_OBJECT_PATH,
+        bus, BEDIT_TYPE_FILE_BROWSER_MESSAGE_SET_MARKUP, MESSAGE_OBJECT_PATH,
         "set_markup");
 
     bedit_message_bus_register(
-        bus, GEDIT_TYPE_FILE_BROWSER_MESSAGE_ADD_FILTER, MESSAGE_OBJECT_PATH,
+        bus, BEDIT_TYPE_FILE_BROWSER_MESSAGE_ADD_FILTER, MESSAGE_OBJECT_PATH,
         "add_filter");
 
     bedit_message_bus_register(
-        bus, GEDIT_TYPE_FILE_BROWSER_MESSAGE_ID, MESSAGE_OBJECT_PATH,
+        bus, BEDIT_TYPE_FILE_BROWSER_MESSAGE_ID, MESSAGE_OBJECT_PATH,
         "remove_filter");
 
     bedit_message_bus_register(
-        bus, GEDIT_TYPE_FILE_BROWSER_MESSAGE_EXTEND_CONTEXT_MENU,
+        bus, BEDIT_TYPE_FILE_BROWSER_MESSAGE_EXTEND_CONTEXT_MENU,
         MESSAGE_OBJECT_PATH, "extend_context_menu");
 
     bedit_message_bus_register(
-        bus, GEDIT_TYPE_MESSAGE, MESSAGE_OBJECT_PATH, "up");
+        bus, BEDIT_TYPE_MESSAGE, MESSAGE_OBJECT_PATH, "up");
 
     bedit_message_bus_register(
-        bus, GEDIT_TYPE_MESSAGE, MESSAGE_OBJECT_PATH, "history_back");
+        bus, BEDIT_TYPE_MESSAGE, MESSAGE_OBJECT_PATH, "history_back");
 
     bedit_message_bus_register(
-        bus, GEDIT_TYPE_MESSAGE, MESSAGE_OBJECT_PATH, "history_forward");
+        bus, BEDIT_TYPE_MESSAGE, MESSAGE_OBJECT_PATH, "history_forward");
 
     bedit_message_bus_register(
-        bus, GEDIT_TYPE_MESSAGE, MESSAGE_OBJECT_PATH, "refresh");
+        bus, BEDIT_TYPE_MESSAGE, MESSAGE_OBJECT_PATH, "refresh");
 
     bedit_message_bus_register(
-        bus, GEDIT_TYPE_FILE_BROWSER_MESSAGE_ACTIVATION, MESSAGE_OBJECT_PATH,
+        bus, BEDIT_TYPE_FILE_BROWSER_MESSAGE_ACTIVATION, MESSAGE_OBJECT_PATH,
         "set_show_hidden");
 
     bedit_message_bus_register(
-        bus, GEDIT_TYPE_FILE_BROWSER_MESSAGE_ACTIVATION, MESSAGE_OBJECT_PATH,
+        bus, BEDIT_TYPE_FILE_BROWSER_MESSAGE_ACTIVATION, MESSAGE_OBJECT_PATH,
         "set_show_binary");
 
     bedit_message_bus_register(
-        bus, GEDIT_TYPE_MESSAGE, MESSAGE_OBJECT_PATH, "show_bookmarks");
+        bus, BEDIT_TYPE_MESSAGE, MESSAGE_OBJECT_PATH, "show_bookmarks");
 
     bedit_message_bus_register(
-        bus, GEDIT_TYPE_MESSAGE, MESSAGE_OBJECT_PATH, "show_files");
+        bus, BEDIT_TYPE_MESSAGE, MESSAGE_OBJECT_PATH, "show_files");
 
     bedit_message_bus_register(
-        bus, GEDIT_TYPE_FILE_BROWSER_MESSAGE_GET_VIEW, MESSAGE_OBJECT_PATH,
+        bus, BEDIT_TYPE_FILE_BROWSER_MESSAGE_GET_VIEW, MESSAGE_OBJECT_PATH,
         "get_view");
 
     BUS_CONNECT(bus, get_root, data);
@@ -633,7 +633,7 @@ static void store_row_inserted(
     guint flags = 0;
 
     gtk_tree_model_get(
-        GTK_TREE_MODEL(store), iter, GEDIT_FILE_BROWSER_STORE_COLUMN_FLAGS,
+        GTK_TREE_MODEL(store), iter, BEDIT_FILE_BROWSER_STORE_COLUMN_FLAGS,
         &flags, -1);
 
     if (!FILE_IS_DUMMY(flags) && !FILE_IS_FILTERED(flags)) {
@@ -653,7 +653,7 @@ static void store_before_row_deleted(
         return;
 
     gtk_tree_model_get(
-        GTK_TREE_MODEL(store), &iter, GEDIT_FILE_BROWSER_STORE_COLUMN_FLAGS,
+        GTK_TREE_MODEL(store), &iter, BEDIT_FILE_BROWSER_STORE_COLUMN_FLAGS,
         &flags, -1);
 
     if (!FILE_IS_DUMMY(flags) && !FILE_IS_FILTERED(flags)) {
@@ -726,29 +726,29 @@ static void register_signals(
 
     /* Register signals */
     bedit_message_bus_register(
-        bus, GEDIT_TYPE_FILE_BROWSER_MESSAGE_ID_LOCATION, MESSAGE_OBJECT_PATH,
+        bus, BEDIT_TYPE_FILE_BROWSER_MESSAGE_ID_LOCATION, MESSAGE_OBJECT_PATH,
         "root_changed");
 
     bedit_message_bus_register(
-        bus, GEDIT_TYPE_FILE_BROWSER_MESSAGE_ID_LOCATION, MESSAGE_OBJECT_PATH,
+        bus, BEDIT_TYPE_FILE_BROWSER_MESSAGE_ID_LOCATION, MESSAGE_OBJECT_PATH,
         "begin_loading");
 
     bedit_message_bus_register(
-        bus, GEDIT_TYPE_FILE_BROWSER_MESSAGE_ID_LOCATION, MESSAGE_OBJECT_PATH,
+        bus, BEDIT_TYPE_FILE_BROWSER_MESSAGE_ID_LOCATION, MESSAGE_OBJECT_PATH,
         "end_loading");
 
     bedit_message_bus_register(
-        bus, GEDIT_TYPE_FILE_BROWSER_MESSAGE_ID_LOCATION, MESSAGE_OBJECT_PATH,
+        bus, BEDIT_TYPE_FILE_BROWSER_MESSAGE_ID_LOCATION, MESSAGE_OBJECT_PATH,
         "inserted");
 
     bedit_message_bus_register(
-        bus, GEDIT_TYPE_FILE_BROWSER_MESSAGE_ID_LOCATION, MESSAGE_OBJECT_PATH,
+        bus, BEDIT_TYPE_FILE_BROWSER_MESSAGE_ID_LOCATION, MESSAGE_OBJECT_PATH,
         "deleted");
 
     store = bedit_file_browser_widget_get_browser_store(widget);
 
     message = g_object_new(
-        GEDIT_TYPE_FILE_BROWSER_MESSAGE_ID_LOCATION, "object-path",
+        BEDIT_TYPE_FILE_BROWSER_MESSAGE_ID_LOCATION, "object-path",
         MESSAGE_OBJECT_PATH, "method", "inserted", NULL);
 
     data = get_window_data(window);
@@ -759,7 +759,7 @@ static void register_signals(
         (GClosureNotify)message_cache_data_free, 0);
 
     message = g_object_new(
-        GEDIT_TYPE_FILE_BROWSER_MESSAGE_ID_LOCATION, "object-path",
+        BEDIT_TYPE_FILE_BROWSER_MESSAGE_ID_LOCATION, "object-path",
         MESSAGE_OBJECT_PATH, "method", "deleted", NULL);
 
     data->before_row_deleted_id = g_signal_connect_data(
@@ -768,7 +768,7 @@ static void register_signals(
         (GClosureNotify)message_cache_data_free, 0);
 
     message = g_object_new(
-        GEDIT_TYPE_FILE_BROWSER_MESSAGE_ID_LOCATION, "object-path",
+        BEDIT_TYPE_FILE_BROWSER_MESSAGE_ID_LOCATION, "object-path",
         MESSAGE_OBJECT_PATH, "method", "root_changed", NULL);
 
     data->root_changed_id = g_signal_connect_data(
@@ -777,7 +777,7 @@ static void register_signals(
         (GClosureNotify)message_cache_data_free, 0);
 
     message = g_object_new(
-        GEDIT_TYPE_FILE_BROWSER_MESSAGE_ID_LOCATION, "object-path",
+        BEDIT_TYPE_FILE_BROWSER_MESSAGE_ID_LOCATION, "object-path",
         MESSAGE_OBJECT_PATH, "method", "begin_loading", NULL);
 
     data->begin_loading_id = g_signal_connect_data(
@@ -786,7 +786,7 @@ static void register_signals(
         (GClosureNotify)message_cache_data_free, 0);
 
     message = g_object_new(
-        GEDIT_TYPE_FILE_BROWSER_MESSAGE_ID_LOCATION, "object-path",
+        BEDIT_TYPE_FILE_BROWSER_MESSAGE_ID_LOCATION, "object-path",
         MESSAGE_OBJECT_PATH, "method", "end_loading", NULL);
 
     data->end_loading_id = g_signal_connect_data(

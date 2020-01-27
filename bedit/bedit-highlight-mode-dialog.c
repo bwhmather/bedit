@@ -34,7 +34,7 @@ G_DEFINE_TYPE(
 
 static void bedit_highlight_mode_dialog_response(
     GtkDialog *dialog, gint response_id) {
-    BeditHighlightModeDialog *dlg = GEDIT_HIGHLIGHT_MODE_DIALOG(dialog);
+    BeditHighlightModeDialog *dlg = BEDIT_HIGHLIGHT_MODE_DIALOG(dialog);
 
     if (response_id == GTK_RESPONSE_OK) {
         g_signal_handler_block(dlg->selector, dlg->on_language_selected_id);
@@ -80,13 +80,13 @@ static void bedit_highlight_mode_dialog_init(BeditHighlightModeDialog *dlg) {
 
 GtkWidget *bedit_highlight_mode_dialog_new(GtkWindow *parent) {
     return GTK_WIDGET(g_object_new(
-        GEDIT_TYPE_HIGHLIGHT_MODE_DIALOG, "transient-for", parent,
+        BEDIT_TYPE_HIGHLIGHT_MODE_DIALOG, "transient-for", parent,
         "use-header-bar", TRUE, NULL));
 }
 
 BeditHighlightModeSelector *bedit_highlight_mode_dialog_get_selector(
     BeditHighlightModeDialog *dlg) {
-    g_return_val_if_fail(GEDIT_IS_HIGHLIGHT_MODE_DIALOG(dlg), NULL);
+    g_return_val_if_fail(BEDIT_IS_HIGHLIGHT_MODE_DIALOG(dlg), NULL);
 
     return dlg->selector;
 }

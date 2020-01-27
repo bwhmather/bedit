@@ -85,7 +85,7 @@ struct _BeditViewFrame {
 G_DEFINE_TYPE(BeditViewFrame, bedit_view_frame, GTK_TYPE_OVERLAY)
 
 static BeditDocument *get_document(BeditViewFrame *frame) {
-    return GEDIT_DOCUMENT(gtk_text_view_get_buffer(GTK_TEXT_VIEW(frame->view)));
+    return BEDIT_DOCUMENT(gtk_text_view_get_buffer(GTK_TEXT_VIEW(frame->view)));
 }
 
 static void get_iter_at_start_mark(BeditViewFrame *frame, GtkTextIter *iter) {
@@ -102,7 +102,7 @@ static void get_iter_at_start_mark(BeditViewFrame *frame, GtkTextIter *iter) {
 }
 
 static void bedit_view_frame_dispose(GObject *object) {
-    BeditViewFrame *frame = GEDIT_VIEW_FRAME(object);
+    BeditViewFrame *frame = BEDIT_VIEW_FRAME(object);
     GtkTextBuffer *buffer = NULL;
 
     if (frame->view != NULL) {
@@ -130,7 +130,7 @@ static void bedit_view_frame_dispose(GObject *object) {
     }
 
     if (buffer != NULL) {
-        GtkSourceFile *file = bedit_document_get_file(GEDIT_DOCUMENT(buffer));
+        GtkSourceFile *file = bedit_document_get_file(BEDIT_DOCUMENT(buffer));
         gtk_source_file_set_mount_operation_factory(file, NULL, NULL, NULL);
     }
 
@@ -142,7 +142,7 @@ static void bedit_view_frame_dispose(GObject *object) {
 }
 
 static void bedit_view_frame_finalize(GObject *object) {
-    BeditViewFrame *frame = GEDIT_VIEW_FRAME(object);
+    BeditViewFrame *frame = BEDIT_VIEW_FRAME(object);
 
     g_free(frame->search_text);
     g_free(frame->old_search_text);
@@ -687,7 +687,7 @@ static void search_entry_escaped(GtkSearchEntry *entry, BeditViewFrame *frame) {
         search_context = gtk_source_search_context_new(
             GTK_SOURCE_BUFFER(buffer), frame->search_settings);
         bedit_document_set_search_context(
-            GEDIT_DOCUMENT(buffer), search_context);
+            BEDIT_DOCUMENT(buffer), search_context);
         g_object_unref(search_context);
 
         g_free(frame->search_text);
@@ -1022,7 +1022,7 @@ static void init_search_entry(BeditViewFrame *frame) {
                 GTK_SOURCE_BUFFER(buffer), frame->search_settings);
 
             bedit_document_set_search_context(
-                GEDIT_DOCUMENT(buffer), search_context);
+                BEDIT_DOCUMENT(buffer), search_context);
 
             g_signal_connect_swapped(
                 search_context, "notify::occurrences-count",
@@ -1262,29 +1262,29 @@ static void bedit_view_frame_init(BeditViewFrame *frame) {
 }
 
 BeditViewFrame *bedit_view_frame_new(void) {
-    return g_object_new(GEDIT_TYPE_VIEW_FRAME, NULL);
+    return g_object_new(BEDIT_TYPE_VIEW_FRAME, NULL);
 }
 
 BeditView *bedit_view_frame_get_view(BeditViewFrame *frame) {
-    g_return_val_if_fail(GEDIT_IS_VIEW_FRAME(frame), NULL);
+    g_return_val_if_fail(BEDIT_IS_VIEW_FRAME(frame), NULL);
 
     return frame->view;
 }
 
 void bedit_view_frame_popup_search(BeditViewFrame *frame) {
-    g_return_if_fail(GEDIT_IS_VIEW_FRAME(frame));
+    g_return_if_fail(BEDIT_IS_VIEW_FRAME(frame));
 
     start_interactive_search_real(frame, SEARCH);
 }
 
 void bedit_view_frame_popup_goto_line(BeditViewFrame *frame) {
-    g_return_if_fail(GEDIT_IS_VIEW_FRAME(frame));
+    g_return_if_fail(BEDIT_IS_VIEW_FRAME(frame));
 
     start_interactive_search_real(frame, GOTO_LINE);
 }
 
 void bedit_view_frame_clear_search(BeditViewFrame *frame) {
-    g_return_if_fail(GEDIT_IS_VIEW_FRAME(frame));
+    g_return_if_fail(BEDIT_IS_VIEW_FRAME(frame));
 
     g_signal_handler_block(frame->search_entry, frame->search_entry_changed_id);
 

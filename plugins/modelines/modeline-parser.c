@@ -638,7 +638,7 @@ void modeline_parser_apply_modeline(GtkSourceView *view) {
     /* Try to set language */
     if (has_option(&options, MODELINE_SET_LANGUAGE) && options.language_id) {
         if (g_ascii_strcasecmp(options.language_id, "text") == 0) {
-            bedit_document_set_language(GEDIT_DOCUMENT(buffer), NULL);
+            bedit_document_set_language(BEDIT_DOCUMENT(buffer), NULL);
         } else {
             GtkSourceLanguageManager *manager;
             GtkSourceLanguage *language;
@@ -648,7 +648,7 @@ void modeline_parser_apply_modeline(GtkSourceView *view) {
             language = gtk_source_language_manager_get_language(
                 manager, options.language_id);
             if (language != NULL) {
-                bedit_document_set_language(GEDIT_DOCUMENT(buffer), language);
+                bedit_document_set_language(BEDIT_DOCUMENT(buffer), language);
             } else {
                 bedit_debug_message(
                     DEBUG_PLUGINS, "Unknown language `%s'",
@@ -671,7 +671,7 @@ void modeline_parser_apply_modeline(GtkSourceView *view) {
         gboolean insert_spaces;
 
         insert_spaces =
-            g_settings_get_boolean(settings, GEDIT_SETTINGS_INSERT_SPACES);
+            g_settings_get_boolean(settings, BEDIT_SETTINGS_INSERT_SPACES);
 
         gtk_source_view_set_insert_spaces_instead_of_tabs(view, insert_spaces);
     }
@@ -681,7 +681,7 @@ void modeline_parser_apply_modeline(GtkSourceView *view) {
     } else if (check_previous(view, previous, MODELINE_SET_TAB_WIDTH)) {
         guint tab_width;
 
-        g_settings_get(settings, GEDIT_SETTINGS_TABS_SIZE, "u", &tab_width);
+        g_settings_get(settings, BEDIT_SETTINGS_TABS_SIZE, "u", &tab_width);
 
         gtk_source_view_set_tab_width(view, tab_width);
     }
@@ -697,7 +697,7 @@ void modeline_parser_apply_modeline(GtkSourceView *view) {
     } else if (check_previous(view, previous, MODELINE_SET_WRAP_MODE)) {
         GtkWrapMode mode;
 
-        mode = g_settings_get_enum(settings, GEDIT_SETTINGS_WRAP_MODE);
+        mode = g_settings_get_enum(settings, BEDIT_SETTINGS_WRAP_MODE);
         gtk_text_view_set_wrap_mode(GTK_TEXT_VIEW(view), mode);
     }
 
@@ -709,7 +709,7 @@ void modeline_parser_apply_modeline(GtkSourceView *view) {
         guint right_margin_pos;
 
         g_settings_get(
-            settings, GEDIT_SETTINGS_RIGHT_MARGIN_POSITION, "u",
+            settings, BEDIT_SETTINGS_RIGHT_MARGIN_POSITION, "u",
             &right_margin_pos);
         gtk_source_view_set_right_margin_position(view, right_margin_pos);
     }
@@ -721,7 +721,7 @@ void modeline_parser_apply_modeline(GtkSourceView *view) {
         gboolean display_right_margin;
 
         display_right_margin = g_settings_get_boolean(
-            settings, GEDIT_SETTINGS_DISPLAY_RIGHT_MARGIN);
+            settings, BEDIT_SETTINGS_DISPLAY_RIGHT_MARGIN);
         gtk_source_view_set_show_right_margin(view, display_right_margin);
     }
 

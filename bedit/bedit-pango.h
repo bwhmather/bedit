@@ -18,8 +18,8 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef GEDIT_PANGO_H
-#define GEDIT_PANGO_H
+#ifndef BEDIT_PANGO_H
+#define BEDIT_PANGO_H
 
 #include <pango/pango.h>
 
@@ -30,5 +30,5 @@ gchar *bedit_pango_font_description_to_css(
 
 G_END_DECLS
 
-#endif /* GEDIT_PANGO_H */
+#endif /* BEDIT_PANGO_H */
 

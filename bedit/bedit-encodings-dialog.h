@@ -18,22 +18,22 @@
  * along with this program; if not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef GEDIT_ENCODINGS_DIALOG_H
-#define GEDIT_ENCODINGS_DIALOG_H
+#ifndef BEDIT_ENCODINGS_DIALOG_H
+#define BEDIT_ENCODINGS_DIALOG_H
 
 #include <gtk/gtk.h>
 
 G_BEGIN_DECLS
 
-#define GEDIT_TYPE_ENCODINGS_DIALOG (bedit_encodings_dialog_get_type())
+#define BEDIT_TYPE_ENCODINGS_DIALOG (bedit_encodings_dialog_get_type())
 
 G_DECLARE_FINAL_TYPE(
-    BeditEncodingsDialog, bedit_encodings_dialog, GEDIT, ENCODINGS_DIALOG,
+    BeditEncodingsDialog, bedit_encodings_dialog, BEDIT, ENCODINGS_DIALOG,
     GtkDialog)
 
 GtkWidget *bedit_encodings_dialog_new(void);
 
 G_END_DECLS
 
-#endif /* GEDIT_ENCODINGS_DIALOG_H */
+#endif /* BEDIT_ENCODINGS_DIALOG_H */
 

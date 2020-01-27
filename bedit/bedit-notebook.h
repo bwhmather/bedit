@@ -27,25 +27,25 @@
  *
  */
 
-#ifndef GEDIT_NOTEBOOK_H
-#define GEDIT_NOTEBOOK_H
+#ifndef BEDIT_NOTEBOOK_H
+#define BEDIT_NOTEBOOK_H
 
 #include <bedit/bedit-tab.h>
 #include <gtk/gtk.h>
 
 G_BEGIN_DECLS
 
-#define GEDIT_TYPE_NOTEBOOK (bedit_notebook_get_type())
-#define GEDIT_NOTEBOOK(o)                                                      \
-    (G_TYPE_CHECK_INSTANCE_CAST((o), GEDIT_TYPE_NOTEBOOK, BeditNotebook))
-#define GEDIT_NOTEBOOK_CLASS(k)                                                \
-    (G_TYPE_CHECK_CLASS_CAST((k), GEDIT_TYPE_NOTEBOOK, BeditNotebookClass))
-#define GEDIT_IS_NOTEBOOK(o)                                                   \
-    (G_TYPE_CHECK_INSTANCE_TYPE((o), GEDIT_TYPE_NOTEBOOK))
-#define GEDIT_IS_NOTEBOOK_CLASS(k)                                             \
-    (G_TYPE_CHECK_CLASS_TYPE((k), GEDIT_TYPE_NOTEBOOK))
-#define GEDIT_NOTEBOOK_GET_CLASS(o)                                            \
-    (G_TYPE_INSTANCE_GET_CLASS((o), GEDIT_TYPE_NOTEBOOK, BeditNotebookClass))
+#define BEDIT_TYPE_NOTEBOOK (bedit_notebook_get_type())
+#define BEDIT_NOTEBOOK(o)                                                      \
+    (G_TYPE_CHECK_INSTANCE_CAST((o), BEDIT_TYPE_NOTEBOOK, BeditNotebook))
+#define BEDIT_NOTEBOOK_CLASS(k)                                                \
+    (G_TYPE_CHECK_CLASS_CAST((k), BEDIT_TYPE_NOTEBOOK, BeditNotebookClass))
+#define BEDIT_IS_NOTEBOOK(o)                                                   \
+    (G_TYPE_CHECK_INSTANCE_TYPE((o), BEDIT_TYPE_NOTEBOOK))
+#define BEDIT_IS_NOTEBOOK_CLASS(k)                                             \
+    (G_TYPE_CHECK_CLASS_TYPE((k), BEDIT_TYPE_NOTEBOOK))
+#define BEDIT_NOTEBOOK_GET_CLASS(o)                                            \
+    (G_TYPE_INSTANCE_GET_CLASS((o), BEDIT_TYPE_NOTEBOOK, BeditNotebookClass))
 
 typedef struct _BeditNotebook BeditNotebook;
 typedef struct _BeditNotebookClass BeditNotebookClass;
@@ -54,9 +54,9 @@ typedef struct _BeditNotebookPrivate BeditNotebookPrivate;
 /* This is now used in multi-notebook but we keep the same enum for
  * backward compatibility since it is used in the gsettings schema */
 typedef enum {
-    GEDIT_NOTEBOOK_SHOW_TABS_NEVER,
-    GEDIT_NOTEBOOK_SHOW_TABS_AUTO,
-    GEDIT_NOTEBOOK_SHOW_TABS_ALWAYS
+    BEDIT_NOTEBOOK_SHOW_TABS_NEVER,
+    BEDIT_NOTEBOOK_SHOW_TABS_AUTO,
+    BEDIT_NOTEBOOK_SHOW_TABS_ALWAYS
 } BeditNotebookShowTabsModeType;
 
 struct _BeditNotebook {
@@ -90,5 +90,5 @@ void bedit_notebook_remove_all_tabs(BeditNotebook *nb);
 
 G_END_DECLS
 
-#endif /* GEDIT_NOTEBOOK_H */
+#endif /* BEDIT_NOTEBOOK_H */
 

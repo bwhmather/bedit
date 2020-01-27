@@ -43,18 +43,18 @@
 #include "bedit-window-private.h"
 #include "bedit-window.h"
 
-#define GEDIT_OPEN_DIALOG_KEY "bedit-open-dialog-key"
-#define GEDIT_IS_CLOSING_ALL "bedit-is-closing-all"
-#define GEDIT_NOTEBOOK_TO_CLOSE "bedit-notebook-to-close"
-#define GEDIT_IS_QUITTING "bedit-is-quitting"
-#define GEDIT_IS_QUITTING_ALL "bedit-is-quitting-all"
+#define BEDIT_OPEN_DIALOG_KEY "bedit-open-dialog-key"
+#define BEDIT_IS_CLOSING_ALL "bedit-is-closing-all"
+#define BEDIT_NOTEBOOK_TO_CLOSE "bedit-notebook-to-close"
+#define BEDIT_IS_QUITTING "bedit-is-quitting"
+#define BEDIT_IS_QUITTING_ALL "bedit-is-quitting-all"
 
 static void tab_state_changed_while_saving(
     BeditTab *tab, GParamSpec *pspec, BeditWindow *window);
 
 void _bedit_cmd_file_new(
     GSimpleAction *action, GVariant *parameter, gpointer user_data) {
-    BeditWindow *window = GEDIT_WINDOW(user_data);
+    BeditWindow *window = BEDIT_WINDOW(user_data);
 
     bedit_debug(DEBUG_COMMANDS);
 
@@ -165,7 +165,7 @@ static GSList *load_file_list(
         doc = bedit_tab_get_document(tab);
 
         if (bedit_document_is_untouched(doc) &&
-            bedit_tab_get_state(tab) == GEDIT_TAB_STATE_NORMAL) {
+            bedit_tab_get_state(tab) == BEDIT_TAB_STATE_NORMAL) {
             _bedit_tab_load(
                 tab, l->data, encoding, line_pos, column_pos, create);
 
@@ -210,14 +210,14 @@ static GSList *load_file_list(
         uri_for_display = bedit_document_get_uri_for_display(doc);
 
         bedit_statusbar_flash_message(
-            GEDIT_STATUSBAR(window->priv->statusbar),
+            BEDIT_STATUSBAR(window->priv->statusbar),
             window->priv->generic_message_cid,
             _("Loading file “%s”\342\200\246"), uri_for_display);
 
         g_free(uri_for_display);
     } else {
         bedit_statusbar_flash_message(
-            GEDIT_STATUSBAR(window->priv->statusbar),
+            BEDIT_STATUSBAR(window->priv->statusbar),
             window->priv->generic_message_cid,
             ngettext(
                 "Loading %d file\342\200\246", "Loading %d files\342\200\246",
@@ -247,7 +247,7 @@ void bedit_commands_load_location(
     gchar *uri;
     GSList *ret;
 
-    g_return_if_fail(GEDIT_IS_WINDOW(window));
+    g_return_if_fail(BEDIT_IS_WINDOW(window));
     g_return_if_fail(G_IS_FILE(location));
     g_return_if_fail(bedit_utils_is_valid_location(location));
 
@@ -280,7 +280,7 @@ void bedit_commands_load_location(
 GSList *bedit_commands_load_locations(
     BeditWindow *window, const GSList *locations,
     const GtkSourceEncoding *encoding, gint line_pos, gint column_pos) {
-    g_return_val_if_fail(GEDIT_IS_WINDOW(window), NULL);
+    g_return_val_if_fail(BEDIT_IS_WINDOW(window), NULL);
     g_return_val_if_fail(locations != NULL && locations->data != NULL, NULL);
 
     bedit_debug(DEBUG_COMMANDS);
@@ -306,7 +306,7 @@ static void open_dialog_destroyed(
     BeditWindow *window, BeditFileChooserDialog *dialog) {
     bedit_debug(DEBUG_COMMANDS);
 
-    g_object_set_data(G_OBJECT(window), GEDIT_OPEN_DIALOG_KEY, NULL);
+    g_object_set_data(G_OBJECT(window), BEDIT_OPEN_DIALOG_KEY, NULL);
 }
 
 static void open_dialog_response_cb(
@@ -331,7 +331,7 @@ static void open_dialog_response_cb(
 
     if (window == NULL) {
         window = bedit_app_create_window(
-            GEDIT_APP(g_application_get_default()), NULL);
+            BEDIT_APP(g_application_get_default()), NULL);
 
         gtk_widget_show(GTK_WIDGET(window));
         gtk_window_present(GTK_WINDOW(window));
@@ -351,7 +351,7 @@ void _bedit_cmd_file_open(
     BeditWindow *window = NULL;
     BeditFileChooserDialog *open_dialog;
 
-    if (GEDIT_IS_WINDOW(user_data)) {
+    if (BEDIT_IS_WINDOW(user_data)) {
         window = user_data;
     }
 
@@ -360,10 +360,10 @@ void _bedit_cmd_file_open(
     if (window != NULL) {
         gpointer data;
 
-        data = g_object_get_data(G_OBJECT(window), GEDIT_OPEN_DIALOG_KEY);
+        data = g_object_get_data(G_OBJECT(window), BEDIT_OPEN_DIALOG_KEY);
 
         if (data != NULL) {
-            g_return_if_fail(GEDIT_IS_FILE_CHOOSER_DIALOG(data));
+            g_return_if_fail(BEDIT_IS_FILE_CHOOSER_DIALOG(data));
 
             gtk_window_present(GTK_WINDOW(data));
 
@@ -374,8 +374,8 @@ void _bedit_cmd_file_open(
     /* Translators: "Open" is the title of the file chooser window. */
     open_dialog = bedit_file_chooser_dialog_create(
         C_("window title", "Open"), window != NULL ? GTK_WINDOW(window) : NULL,
-        GEDIT_FILE_CHOOSER_OPEN | GEDIT_FILE_CHOOSER_ENABLE_ENCODING |
-            GEDIT_FILE_CHOOSER_ENABLE_DEFAULT_FILTERS,
+        BEDIT_FILE_CHOOSER_OPEN | BEDIT_FILE_CHOOSER_ENABLE_ENCODING |
+            BEDIT_FILE_CHOOSER_ENABLE_DEFAULT_FILTERS,
         NULL, _("_Cancel"), GTK_RESPONSE_CANCEL, _("_Open"), GTK_RESPONSE_OK);
 
     if (window != NULL) {
@@ -385,7 +385,7 @@ void _bedit_cmd_file_open(
         /* The file chooser dialog for opening files is not modal, so
          * ensure that at most one file chooser is opened.
          */
-        g_object_set_data(G_OBJECT(window), GEDIT_OPEN_DIALOG_KEY, open_dialog);
+        g_object_set_data(G_OBJECT(window), BEDIT_OPEN_DIALOG_KEY, open_dialog);
 
         g_object_weak_ref(
             G_OBJECT(open_dialog), (GWeakNotify)open_dialog_destroyed, window);
@@ -421,7 +421,7 @@ void _bedit_cmd_file_open(
 
 void _bedit_cmd_file_reopen_closed_tab(
     GSimpleAction *action, GVariant *parameter, gpointer user_data) {
-    BeditWindow *window = GEDIT_WINDOW(user_data);
+    BeditWindow *window = BEDIT_WINDOW(user_data);
     GFile *file;
 
     file = _bedit_window_pop_last_closed_doc(window);
@@ -621,7 +621,7 @@ static void save_dialog_response_cb(
     parse_name = g_file_get_parse_name(location);
 
     bedit_statusbar_flash_message(
-        GEDIT_STATUSBAR(window->priv->statusbar),
+        BEDIT_STATUSBAR(window->priv->statusbar),
         window->priv->generic_message_cid, _("Saving file “%s”\342\200\246"),
         parse_name);
 
@@ -693,8 +693,8 @@ static void save_as_tab_async(
     const GtkSourceEncoding *encoding;
     GtkSourceNewlineType newline_type;
 
-    g_return_if_fail(GEDIT_IS_TAB(tab));
-    g_return_if_fail(GEDIT_IS_WINDOW(window));
+    g_return_if_fail(BEDIT_IS_TAB(tab));
+    g_return_if_fail(BEDIT_IS_WINDOW(window));
 
     bedit_debug(DEBUG_COMMANDS);
 
@@ -704,9 +704,9 @@ static void save_as_tab_async(
     /* Translators: "Save As" is the title of the file chooser window. */
     save_dialog = bedit_file_chooser_dialog_create(
         C_("window title", "Save As"), GTK_WINDOW(window),
-        GEDIT_FILE_CHOOSER_SAVE | GEDIT_FILE_CHOOSER_ENABLE_ENCODING |
-            GEDIT_FILE_CHOOSER_ENABLE_LINE_ENDING |
-            GEDIT_FILE_CHOOSER_ENABLE_DEFAULT_FILTERS,
+        BEDIT_FILE_CHOOSER_SAVE | BEDIT_FILE_CHOOSER_ENABLE_ENCODING |
+            BEDIT_FILE_CHOOSER_ENABLE_LINE_ENDING |
+            BEDIT_FILE_CHOOSER_ENABLE_DEFAULT_FILTERS,
         NULL, _("_Cancel"), GTK_RESPONSE_CANCEL, _("_Save"), GTK_RESPONSE_OK);
 
     bedit_file_chooser_dialog_set_do_overwrite_confirmation(save_dialog, TRUE);
@@ -762,10 +762,10 @@ static void save_as_tab_async(
     newline_type = gtk_source_file_get_newline_type(file);
 
     bedit_file_chooser_dialog_set_encoding(
-        GEDIT_FILE_CHOOSER_DIALOG(save_dialog), encoding);
+        BEDIT_FILE_CHOOSER_DIALOG(save_dialog), encoding);
 
     bedit_file_chooser_dialog_set_newline_type(
-        GEDIT_FILE_CHOOSER_DIALOG(save_dialog), newline_type);
+        BEDIT_FILE_CHOOSER_DIALOG(save_dialog), newline_type);
 
     g_signal_connect(
         save_dialog, "response", G_CALLBACK(save_dialog_response_cb), task);
@@ -823,8 +823,8 @@ void bedit_commands_save_document_async(
 
     bedit_debug(DEBUG_COMMANDS);
 
-    g_return_if_fail(GEDIT_IS_DOCUMENT(document));
-    g_return_if_fail(GEDIT_IS_WINDOW(window));
+    g_return_if_fail(BEDIT_IS_DOCUMENT(document));
+    g_return_if_fail(BEDIT_IS_WINDOW(window));
     g_return_if_fail(cancellable == NULL || G_IS_CANCELLABLE(cancellable));
 
     task = g_task_new(document, cancellable, callback, user_data);
@@ -844,7 +844,7 @@ void bedit_commands_save_document_async(
 
     uri_for_display = bedit_document_get_uri_for_display(document);
     bedit_statusbar_flash_message(
-        GEDIT_STATUSBAR(window->priv->statusbar),
+        BEDIT_STATUSBAR(window->priv->statusbar),
         window->priv->generic_message_cid, _("Saving file “%s”\342\200\246"),
         uri_for_display);
 
@@ -890,7 +890,7 @@ static void save_tab(BeditTab *tab, BeditWindow *window) {
 
 void _bedit_cmd_file_save(
     GSimpleAction *action, GVariant *parameter, gpointer user_data) {
-    BeditWindow *window = GEDIT_WINDOW(user_data);
+    BeditWindow *window = BEDIT_WINDOW(user_data);
     BeditTab *tab;
 
     bedit_debug(DEBUG_COMMANDS);
@@ -908,7 +908,7 @@ static void _bedit_cmd_file_save_as_cb(
 
 void _bedit_cmd_file_save_as(
     GSimpleAction *action, GVariant *parameter, gpointer user_data) {
-    BeditWindow *window = GEDIT_WINDOW(user_data);
+    BeditWindow *window = BEDIT_WINDOW(user_data);
     BeditTab *tab;
 
     bedit_debug(DEBUG_COMMANDS);
@@ -926,10 +926,10 @@ static void quit_if_needed(BeditWindow *window) {
     gboolean is_quitting_all;
 
     is_quitting = GPOINTER_TO_BOOLEAN(
-        g_object_get_data(G_OBJECT(window), GEDIT_IS_QUITTING));
+        g_object_get_data(G_OBJECT(window), BEDIT_IS_QUITTING));
 
     is_quitting_all = GPOINTER_TO_BOOLEAN(
-        g_object_get_data(G_OBJECT(window), GEDIT_IS_QUITTING_ALL));
+        g_object_get_data(G_OBJECT(window), BEDIT_IS_QUITTING_ALL));
 
     if (is_quitting) {
         gtk_widget_destroy(GTK_WIDGET(window));
@@ -953,12 +953,12 @@ static gboolean really_close_tab(BeditTab *tab) {
     bedit_debug(DEBUG_COMMANDS);
 
     g_return_val_if_fail(
-        bedit_tab_get_state(tab) == GEDIT_TAB_STATE_CLOSING, FALSE);
+        bedit_tab_get_state(tab) == BEDIT_TAB_STATE_CLOSING, FALSE);
 
     toplevel = gtk_widget_get_toplevel(GTK_WIDGET(tab));
-    g_return_val_if_fail(GEDIT_IS_WINDOW(toplevel), FALSE);
+    g_return_val_if_fail(BEDIT_IS_WINDOW(toplevel), FALSE);
 
-    window = GEDIT_WINDOW(toplevel);
+    window = BEDIT_WINDOW(toplevel);
 
     bedit_window_close_tab(window, tab);
 
@@ -1012,7 +1012,7 @@ static void save_as_documents_list_cb(
         close_tab(tab);
     }
 
-    g_return_if_fail(tab == GEDIT_TAB(data->tabs_to_save_as->data));
+    g_return_if_fail(tab == BEDIT_TAB(data->tabs_to_save_as->data));
     g_object_unref(data->tabs_to_save_as->data);
     data->tabs_to_save_as =
         g_slist_delete_link(data->tabs_to_save_as, data->tabs_to_save_as);
@@ -1026,7 +1026,7 @@ static void save_as_documents_list_cb(
 }
 
 static void save_as_documents_list(SaveAsData *data) {
-    BeditTab *next_tab = GEDIT_TAB(data->tabs_to_save_as->data);
+    BeditTab *next_tab = BEDIT_TAB(data->tabs_to_save_as->data);
 
     bedit_window_set_active_tab(data->window, next_tab);
 
@@ -1045,24 +1045,24 @@ static void save_documents_list(BeditWindow *window, GList *docs) {
     bedit_debug(DEBUG_COMMANDS);
 
     g_return_if_fail(
-        (bedit_window_get_state(window) & GEDIT_WINDOW_STATE_PRINTING) == 0);
+        (bedit_window_get_state(window) & BEDIT_WINDOW_STATE_PRINTING) == 0);
 
     for (l = docs; l != NULL; l = l->next) {
         BeditDocument *doc;
         BeditTab *tab;
         BeditTabState state;
 
-        g_return_if_fail(GEDIT_IS_DOCUMENT(l->data));
+        g_return_if_fail(BEDIT_IS_DOCUMENT(l->data));
         doc = l->data;
 
         tab = bedit_tab_get_from_document(doc);
         state = bedit_tab_get_state(tab);
 
-        g_return_if_fail(state != GEDIT_TAB_STATE_PRINTING);
-        g_return_if_fail(state != GEDIT_TAB_STATE_CLOSING);
+        g_return_if_fail(state != BEDIT_TAB_STATE_PRINTING);
+        g_return_if_fail(state != BEDIT_TAB_STATE_CLOSING);
 
-        if (state == GEDIT_TAB_STATE_NORMAL ||
-            state == GEDIT_TAB_STATE_SHOWING_PRINT_PREVIEW) {
+        if (state == BEDIT_TAB_STATE_NORMAL ||
+            state == BEDIT_TAB_STATE_SHOWING_PRINT_PREVIEW) {
             if (_bedit_document_needs_saving(doc)) {
                 GtkSourceFile *file = bedit_document_get_file(doc);
 
@@ -1085,29 +1085,29 @@ static void save_documents_list(BeditWindow *window, GList *docs) {
             }
         } else {
             /* If the state is:
-               - GEDIT_TAB_STATE_LOADING: we do not save since we are sure the
+               - BEDIT_TAB_STATE_LOADING: we do not save since we are sure the
                file is unmodified
-               - GEDIT_TAB_STATE_REVERTING: we do not save since the user wants
+               - BEDIT_TAB_STATE_REVERTING: we do not save since the user wants
                  to return back to the version of the file she previously saved
-               - GEDIT_TAB_STATE_SAVING: well, we are already saving (no need to
+               - BEDIT_TAB_STATE_SAVING: well, we are already saving (no need to
                save again)
-               - GEDIT_TAB_STATE_PRINTING: there is not a
+               - BEDIT_TAB_STATE_PRINTING: there is not a
                  real reason for not saving in this case, we do not save to
                avoid to run two operations using the message area at the same
                time (may be we can remove this limitation in the future). Note
                that SaveAll, ClosAll and Quit are unsensitive if the window
                state is PRINTING.
-               - GEDIT_TAB_STATE_GENERIC_ERROR: we do not save since the
+               - BEDIT_TAB_STATE_GENERIC_ERROR: we do not save since the
                document contains errors (I don't think this is a very frequent
                case, we should probably remove this state)
-               - GEDIT_TAB_STATE_LOADING_ERROR: there is nothing to save
-               - GEDIT_TAB_STATE_REVERTING_ERROR: there is nothing to save and
+               - BEDIT_TAB_STATE_LOADING_ERROR: there is nothing to save
+               - BEDIT_TAB_STATE_REVERTING_ERROR: there is nothing to save and
                saving the current document will overwrite the copy of the file
                the user wants to go back to
-               - GEDIT_TAB_STATE_SAVING_ERROR: we do not save since we just
+               - BEDIT_TAB_STATE_SAVING_ERROR: we do not save since we just
                failed to save, so there is no reason to automatically retry...
                we wait for user intervention
-               - GEDIT_TAB_STATE_CLOSING: this state is invalid in this case
+               - BEDIT_TAB_STATE_CLOSING: this state is invalid in this case
             */
 
             gchar *uri_for_display;
@@ -1137,7 +1137,7 @@ static void save_documents_list(BeditWindow *window, GList *docs) {
 void bedit_commands_save_all_documents(BeditWindow *window) {
     GList *docs;
 
-    g_return_if_fail(GEDIT_IS_WINDOW(window));
+    g_return_if_fail(BEDIT_IS_WINDOW(window));
 
     bedit_debug(DEBUG_COMMANDS);
 
@@ -1150,7 +1150,7 @@ void bedit_commands_save_all_documents(BeditWindow *window) {
 
 void _bedit_cmd_file_save_all(
     GSimpleAction *action, GVariant *parameter, gpointer user_data) {
-    bedit_commands_save_all_documents(GEDIT_WINDOW(user_data));
+    bedit_commands_save_all_documents(BEDIT_WINDOW(user_data));
 }
 
 /**
@@ -1165,8 +1165,8 @@ void bedit_commands_save_document(
     BeditWindow *window, BeditDocument *document) {
     BeditTab *tab;
 
-    g_return_if_fail(GEDIT_IS_WINDOW(window));
-    g_return_if_fail(GEDIT_IS_DOCUMENT(document));
+    g_return_if_fail(BEDIT_IS_WINDOW(window));
+    g_return_if_fail(BEDIT_IS_DOCUMENT(document));
 
     bedit_debug(DEBUG_COMMANDS);
 
@@ -1185,7 +1185,7 @@ static void do_revert(BeditWindow *window, BeditTab *tab) {
     docname = bedit_document_get_short_name_for_display(doc);
 
     bedit_statusbar_flash_message(
-        GEDIT_STATUSBAR(window->priv->statusbar),
+        BEDIT_STATUSBAR(window->priv->statusbar),
         window->priv->generic_message_cid,
         _("Reverting the document “%s”\342\200\246"), docname);
 
@@ -1320,7 +1320,7 @@ static GtkWidget *revert_dialog(BeditWindow *window, BeditDocument *doc) {
 
 void _bedit_cmd_file_revert(
     GSimpleAction *action, GVariant *parameter, gpointer user_data) {
-    BeditWindow *window = GEDIT_WINDOW(user_data);
+    BeditWindow *window = BEDIT_WINDOW(user_data);
     BeditTab *tab;
     BeditDocument *doc;
     GtkWidget *dialog;
@@ -1336,7 +1336,7 @@ void _bedit_cmd_file_revert(
      * the user further.
      */
     if (bedit_tab_get_state(tab) ==
-            GEDIT_TAB_STATE_EXTERNALLY_MODIFIED_NOTIFICATION ||
+            BEDIT_TAB_STATE_EXTERNALLY_MODIFIED_NOTIFICATION ||
         _bedit_tab_get_can_close(tab)) {
         do_revert(window, tab);
         return;
@@ -1371,7 +1371,7 @@ static void tab_state_changed_while_saving(
     /* When the state becomes NORMAL, it means the saving operation is
      * finished.
      */
-    if (state == GEDIT_TAB_STATE_NORMAL) {
+    if (state == BEDIT_TAB_STATE_NORMAL) {
         g_signal_handlers_disconnect_by_func(
             tab, G_CALLBACK(tab_state_changed_while_saving), window);
 
@@ -1402,7 +1402,7 @@ static void save_and_close_documents(
     bedit_debug(DEBUG_COMMANDS);
 
     g_return_if_fail(
-        (bedit_window_get_state(window) & GEDIT_WINDOW_STATE_PRINTING) == 0);
+        (bedit_window_get_state(window) & BEDIT_WINDOW_STATE_PRINTING) == 0);
 
     if (notebook != NULL) {
         tabs = gtk_container_get_children(GTK_CONTAINER(notebook));
@@ -1411,7 +1411,7 @@ static void save_and_close_documents(
     }
 
     for (l = tabs; l != NULL; l = l->next) {
-        BeditTab *tab = GEDIT_TAB(l->data);
+        BeditTab *tab = BEDIT_TAB(l->data);
         BeditTabState state;
         BeditDocument *doc;
 
@@ -1419,43 +1419,43 @@ static void save_and_close_documents(
         doc = bedit_tab_get_document(tab);
 
         /* If the state is: ([*] invalid states)
-           - GEDIT_TAB_STATE_NORMAL: close (and if needed save)
-           - GEDIT_TAB_STATE_LOADING: close, we are sure the file is unmodified
-           - GEDIT_TAB_STATE_REVERTING: since the user wants
+           - BEDIT_TAB_STATE_NORMAL: close (and if needed save)
+           - BEDIT_TAB_STATE_LOADING: close, we are sure the file is unmodified
+           - BEDIT_TAB_STATE_REVERTING: since the user wants
              to return back to the version of the file she previously saved, we
            can close without saving (CHECK: are we sure this is the right
            behavior, suppose the case the original file has been deleted)
-           - [*] GEDIT_TAB_STATE_SAVING: invalid, ClosAll
+           - [*] BEDIT_TAB_STATE_SAVING: invalid, ClosAll
              and Quit are unsensitive if the window state is SAVING.
-           - [*] GEDIT_TAB_STATE_PRINTING: there is not a
+           - [*] BEDIT_TAB_STATE_PRINTING: there is not a
              real reason for not closing in this case, we do not save to avoid
            to run two operations using the message area at the same time (may be
            we can remove this limitation in the future). Note that ClosAll and
            Quit are unsensitive if the window state is PRINTING.
-           - GEDIT_TAB_STATE_SHOWING_PRINT_PREVIEW: close (and if needed save)
-           - GEDIT_TAB_STATE_LOADING_ERROR: close without saving (if the state
+           - BEDIT_TAB_STATE_SHOWING_PRINT_PREVIEW: close (and if needed save)
+           - BEDIT_TAB_STATE_LOADING_ERROR: close without saving (if the state
            is LOADING_ERROR then the document is not modified)
-           - GEDIT_TAB_STATE_REVERTING_ERROR: we do not close since the document
+           - BEDIT_TAB_STATE_REVERTING_ERROR: we do not close since the document
            contains errors
-           - GEDIT_TAB_STATE_SAVING_ERROR: we do not close since the document
+           - BEDIT_TAB_STATE_SAVING_ERROR: we do not close since the document
            contains errors
-           - GEDIT_TAB_STATE_GENERIC_ERROR: we do not close since the document
+           - BEDIT_TAB_STATE_GENERIC_ERROR: we do not close since the document
            contains errors (CHECK: we should problably remove this state)
-           - [*] GEDIT_TAB_STATE_CLOSING: this state is invalid in this case
+           - [*] BEDIT_TAB_STATE_CLOSING: this state is invalid in this case
         */
 
-        g_return_if_fail(state != GEDIT_TAB_STATE_PRINTING);
-        g_return_if_fail(state != GEDIT_TAB_STATE_CLOSING);
-        g_return_if_fail(state != GEDIT_TAB_STATE_SAVING);
+        g_return_if_fail(state != BEDIT_TAB_STATE_PRINTING);
+        g_return_if_fail(state != BEDIT_TAB_STATE_CLOSING);
+        g_return_if_fail(state != BEDIT_TAB_STATE_SAVING);
 
-        if (state != GEDIT_TAB_STATE_SAVING_ERROR &&
-            state != GEDIT_TAB_STATE_GENERIC_ERROR &&
-            state != GEDIT_TAB_STATE_REVERTING_ERROR) {
+        if (state != BEDIT_TAB_STATE_SAVING_ERROR &&
+            state != BEDIT_TAB_STATE_GENERIC_ERROR &&
+            state != BEDIT_TAB_STATE_REVERTING_ERROR) {
             if (g_list_index(docs, doc) >= 0 &&
-                state != GEDIT_TAB_STATE_LOADING &&
-                state != GEDIT_TAB_STATE_LOADING_ERROR &&
+                state != BEDIT_TAB_STATE_LOADING &&
+                state != BEDIT_TAB_STATE_LOADING_ERROR &&
                 state !=
-                    GEDIT_TAB_STATE_REVERTING) /* FIXME: is this the right
+                    BEDIT_TAB_STATE_REVERTING) /* FIXME: is this the right
                                                   behavior with REVERTING ?*/
             {
                 GtkSourceFile *file = bedit_document_get_file(doc);
@@ -1495,7 +1495,7 @@ static void save_and_close_documents(
 
     /* Save and close all the files in tabs_to_save_and_close */
     for (sl = tabs_to_save_and_close; sl != NULL; sl = sl->next) {
-        save_and_close(GEDIT_TAB(sl->data), window);
+        save_and_close(BEDIT_TAB(sl->data), window);
     }
 
     g_slist_free(tabs_to_save_and_close);
@@ -1514,7 +1514,7 @@ static void save_and_close_document(const GList *docs, BeditWindow *window) {
 
     g_return_if_fail(docs->next == NULL);
 
-    tab = bedit_tab_get_from_document(GEDIT_DOCUMENT(docs->data));
+    tab = bedit_tab_get_from_document(BEDIT_DOCUMENT(docs->data));
     g_return_if_fail(tab != NULL);
 
     save_and_close(tab, window);
@@ -1549,10 +1549,10 @@ static void close_confirmation_dialog_response_handler(
     bedit_debug(DEBUG_COMMANDS);
 
     is_closing_all = GPOINTER_TO_BOOLEAN(
-        g_object_get_data(G_OBJECT(window), GEDIT_IS_CLOSING_ALL));
+        g_object_get_data(G_OBJECT(window), BEDIT_IS_CLOSING_ALL));
 
     notebook_to_close =
-        g_object_get_data(G_OBJECT(window), GEDIT_NOTEBOOK_TO_CLOSE);
+        g_object_get_data(G_OBJECT(window), BEDIT_NOTEBOOK_TO_CLOSE);
 
     gtk_widget_hide(GTK_WIDGET(dlg));
 
@@ -1608,7 +1608,7 @@ static void close_confirmation_dialog_response_handler(
                 bedit_close_confirmation_dialog_get_unsaved_documents(dlg);
             g_return_if_fail(unsaved_documents->next == NULL);
 
-            close_document(window, GEDIT_DOCUMENT(unsaved_documents->data));
+            close_document(window, BEDIT_DOCUMENT(unsaved_documents->data));
         }
 
         break;
@@ -1617,15 +1617,15 @@ static void close_confirmation_dialog_response_handler(
     default:
         /* Reset is_quitting flag */
         g_object_set_data(
-            G_OBJECT(window), GEDIT_IS_QUITTING, GBOOLEAN_TO_POINTER(FALSE));
+            G_OBJECT(window), BEDIT_IS_QUITTING, GBOOLEAN_TO_POINTER(FALSE));
 
         g_object_set_data(
-            G_OBJECT(window), GEDIT_IS_QUITTING_ALL,
+            G_OBJECT(window), BEDIT_IS_QUITTING_ALL,
             GBOOLEAN_TO_POINTER(FALSE));
         break;
     }
 
-    g_object_set_data(G_OBJECT(window), GEDIT_NOTEBOOK_TO_CLOSE, NULL);
+    g_object_set_data(G_OBJECT(window), BEDIT_NOTEBOOK_TO_CLOSE, NULL);
 
     gtk_widget_destroy(GTK_WIDGET(dlg));
 }
@@ -1658,7 +1658,7 @@ static gboolean tab_can_close(BeditTab *tab, GtkWindow *window) {
  * maybe even a _list variant. Or maybe it's better make
  * bedit_window_close_tab always run the confirm dialog?
  * we should not allow closing a tab without resetting the
- * GEDIT_IS_CLOSING_ALL flag!
+ * BEDIT_IS_CLOSING_ALL flag!
  */
 void _bedit_cmd_file_close_tab(BeditTab *tab, BeditWindow *window) {
     bedit_debug(DEBUG_COMMANDS);
@@ -1667,13 +1667,13 @@ void _bedit_cmd_file_close_tab(BeditTab *tab, BeditWindow *window) {
         GTK_WIDGET(window) == gtk_widget_get_toplevel(GTK_WIDGET(tab)));
 
     g_object_set_data(
-        G_OBJECT(window), GEDIT_IS_CLOSING_ALL, GBOOLEAN_TO_POINTER(FALSE));
+        G_OBJECT(window), BEDIT_IS_CLOSING_ALL, GBOOLEAN_TO_POINTER(FALSE));
 
     g_object_set_data(
-        G_OBJECT(window), GEDIT_IS_QUITTING, GBOOLEAN_TO_POINTER(FALSE));
+        G_OBJECT(window), BEDIT_IS_QUITTING, GBOOLEAN_TO_POINTER(FALSE));
 
     g_object_set_data(
-        G_OBJECT(window), GEDIT_IS_QUITTING_ALL, GBOOLEAN_TO_POINTER(FALSE));
+        G_OBJECT(window), BEDIT_IS_QUITTING_ALL, GBOOLEAN_TO_POINTER(FALSE));
 
     if (tab_can_close(tab, GTK_WINDOW(window))) {
         bedit_window_close_tab(window, tab);
@@ -1682,7 +1682,7 @@ void _bedit_cmd_file_close_tab(BeditTab *tab, BeditWindow *window) {
 
 void _bedit_cmd_file_close(
     GSimpleAction *action, GVariant *parameter, gpointer user_data) {
-    BeditWindow *window = GEDIT_WINDOW(user_data);
+    BeditWindow *window = BEDIT_WINDOW(user_data);
     BeditTab *active_tab;
 
     bedit_debug(DEBUG_COMMANDS);
@@ -1705,7 +1705,7 @@ static void file_close_dialog(BeditWindow *window, GList *unsaved_docs) {
         BeditTab *tab;
         BeditDocument *doc;
 
-        doc = GEDIT_DOCUMENT(unsaved_docs->data);
+        doc = BEDIT_DOCUMENT(unsaved_docs->data);
 
         tab = bedit_tab_get_from_document(doc);
         g_return_if_fail(tab != NULL);
@@ -1734,7 +1734,7 @@ static GList *notebook_get_unsaved_documents(BeditNotebook *notebook) {
     children = gtk_container_get_children(GTK_CONTAINER(notebook));
 
     for (l = children; l != NULL; l = g_list_next(l)) {
-        BeditTab *tab = GEDIT_TAB(l->data);
+        BeditTab *tab = BEDIT_TAB(l->data);
 
         if (!_bedit_tab_get_can_close(tab)) {
             BeditDocument *doc;
@@ -1755,19 +1755,19 @@ void _bedit_cmd_file_close_notebook(
     GList *unsaved_docs;
 
     g_object_set_data(
-        G_OBJECT(window), GEDIT_IS_CLOSING_ALL, GBOOLEAN_TO_POINTER(FALSE));
+        G_OBJECT(window), BEDIT_IS_CLOSING_ALL, GBOOLEAN_TO_POINTER(FALSE));
     g_object_set_data(
-        G_OBJECT(window), GEDIT_IS_QUITTING, GBOOLEAN_TO_POINTER(FALSE));
+        G_OBJECT(window), BEDIT_IS_QUITTING, GBOOLEAN_TO_POINTER(FALSE));
     g_object_set_data(
-        G_OBJECT(window), GEDIT_IS_QUITTING_ALL, GBOOLEAN_TO_POINTER(FALSE));
+        G_OBJECT(window), BEDIT_IS_QUITTING_ALL, GBOOLEAN_TO_POINTER(FALSE));
 
-    g_object_set_data(G_OBJECT(window), GEDIT_NOTEBOOK_TO_CLOSE, notebook);
+    g_object_set_data(G_OBJECT(window), BEDIT_NOTEBOOK_TO_CLOSE, notebook);
 
     unsaved_docs = notebook_get_unsaved_documents(notebook);
 
     if (unsaved_docs == NULL) {
         /* There is no document to save -> close the notebook */
-        bedit_notebook_remove_all_tabs(GEDIT_NOTEBOOK(notebook));
+        bedit_notebook_remove_all_tabs(BEDIT_NOTEBOOK(notebook));
     } else {
         file_close_dialog(window, unsaved_docs);
 
@@ -1783,13 +1783,13 @@ static void file_close_all(BeditWindow *window, gboolean is_quitting) {
 
     g_return_if_fail(
         !(bedit_window_get_state(window) &
-          (GEDIT_WINDOW_STATE_SAVING | GEDIT_WINDOW_STATE_PRINTING)));
+          (BEDIT_WINDOW_STATE_SAVING | BEDIT_WINDOW_STATE_PRINTING)));
 
     g_object_set_data(
-        G_OBJECT(window), GEDIT_IS_CLOSING_ALL, GBOOLEAN_TO_POINTER(TRUE));
+        G_OBJECT(window), BEDIT_IS_CLOSING_ALL, GBOOLEAN_TO_POINTER(TRUE));
 
     g_object_set_data(
-        G_OBJECT(window), GEDIT_IS_QUITTING, GBOOLEAN_TO_POINTER(is_quitting));
+        G_OBJECT(window), BEDIT_IS_QUITTING, GBOOLEAN_TO_POINTER(is_quitting));
 
     unsaved_docs = bedit_window_get_unsaved_documents(window);
 
@@ -1806,13 +1806,13 @@ static void file_close_all(BeditWindow *window, gboolean is_quitting) {
 
 void _bedit_cmd_file_close_all(
     GSimpleAction *action, GVariant *parameter, gpointer user_data) {
-    BeditWindow *window = GEDIT_WINDOW(user_data);
+    BeditWindow *window = BEDIT_WINDOW(user_data);
 
     bedit_debug(DEBUG_COMMANDS);
 
     g_return_if_fail(
         !(bedit_window_get_state(window) &
-          (GEDIT_WINDOW_STATE_SAVING | GEDIT_WINDOW_STATE_PRINTING)));
+          (BEDIT_WINDOW_STATE_SAVING | BEDIT_WINDOW_STATE_PRINTING)));
 
     file_close_all(window, FALSE);
 }
@@ -1824,7 +1824,7 @@ static void quit_all(void) {
     GApplication *app;
 
     app = g_application_get_default();
-    windows = bedit_app_get_main_windows(GEDIT_APP(app));
+    windows = bedit_app_get_main_windows(BEDIT_APP(app));
 
     if (windows == NULL) {
         g_application_quit(app);
@@ -1835,10 +1835,10 @@ static void quit_all(void) {
         BeditWindow *window = l->data;
 
         g_object_set_data(
-            G_OBJECT(window), GEDIT_IS_QUITTING_ALL, GBOOLEAN_TO_POINTER(TRUE));
+            G_OBJECT(window), BEDIT_IS_QUITTING_ALL, GBOOLEAN_TO_POINTER(TRUE));
 
         if (!(bedit_window_get_state(window) &
-              (GEDIT_WINDOW_STATE_SAVING | GEDIT_WINDOW_STATE_PRINTING))) {
+              (BEDIT_WINDOW_STATE_SAVING | BEDIT_WINDOW_STATE_PRINTING))) {
             file_close_all(window, TRUE);
         }
     }
@@ -1848,7 +1848,7 @@ static void quit_all(void) {
 
 void _bedit_cmd_file_quit(
     GSimpleAction *action, GVariant *parameter, gpointer user_data) {
-    BeditWindow *window = GEDIT_WINDOW(user_data);
+    BeditWindow *window = BEDIT_WINDOW(user_data);
 
     bedit_debug(DEBUG_COMMANDS);
 
@@ -1859,7 +1859,7 @@ void _bedit_cmd_file_quit(
 
     g_return_if_fail(
         !(bedit_window_get_state(window) &
-          (GEDIT_WINDOW_STATE_SAVING | GEDIT_WINDOW_STATE_PRINTING)));
+          (BEDIT_WINDOW_STATE_SAVING | BEDIT_WINDOW_STATE_PRINTING)));
 
     file_close_all(window, TRUE);
 }

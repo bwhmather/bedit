@@ -20,18 +20,18 @@
  * Boston, MA  02110-1301  USA
  */
 
-#ifndef GEDIT_APP_X11_H
-#define GEDIT_APP_X11_H
+#ifndef BEDIT_APP_X11_H
+#define BEDIT_APP_X11_H
 
 #include "bedit-app.h"
 
 G_BEGIN_DECLS
 
-#define GEDIT_TYPE_APP_X11 (bedit_app_x11_get_type())
+#define BEDIT_TYPE_APP_X11 (bedit_app_x11_get_type())
 
-G_DECLARE_FINAL_TYPE(BeditAppX11, bedit_app_x11, GEDIT, APP_X11, BeditApp)
+G_DECLARE_FINAL_TYPE(BeditAppX11, bedit_app_x11, BEDIT, APP_X11, BeditApp)
 
 G_END_DECLS
 
-#endif /* GEDIT_APP_X11_H */
+#endif /* BEDIT_APP_X11_H */
 

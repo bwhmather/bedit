@@ -109,15 +109,15 @@ int main(int argc, char *argv[]) {
     gint status;
 
 #if defined OS_OSX
-    type = GEDIT_TYPE_APP_OSX;
+    type = BEDIT_TYPE_APP_OSX;
 #elif defined G_OS_WIN32
     if (!bedit_w32_load_private_dll()) {
         return 1;
     }
 
-    type = GEDIT_TYPE_APP_WIN32;
+    type = BEDIT_TYPE_APP_WIN32;
 #else
-    type = GEDIT_TYPE_APP_X11;
+    type = BEDIT_TYPE_APP_X11;
 #endif
 
     /* NOTE: we should not make any calls to the bedit api before the

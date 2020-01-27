@@ -19,27 +19,27 @@
  * along with this program; if not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef GEDIT_PRINT_JOB_H
-#define GEDIT_PRINT_JOB_H
+#ifndef BEDIT_PRINT_JOB_H
+#define BEDIT_PRINT_JOB_H
 
 #include <bedit/bedit-view.h>
 #include <gtk/gtk.h>
 
 G_BEGIN_DECLS
 
-#define GEDIT_TYPE_PRINT_JOB (bedit_print_job_get_type())
+#define BEDIT_TYPE_PRINT_JOB (bedit_print_job_get_type())
 
-G_DECLARE_FINAL_TYPE(BeditPrintJob, bedit_print_job, GEDIT, PRINT_JOB, GObject)
+G_DECLARE_FINAL_TYPE(BeditPrintJob, bedit_print_job, BEDIT, PRINT_JOB, GObject)
 
 typedef enum {
-    GEDIT_PRINT_JOB_STATUS_PAGINATING,
-    GEDIT_PRINT_JOB_STATUS_DRAWING
+    BEDIT_PRINT_JOB_STATUS_PAGINATING,
+    BEDIT_PRINT_JOB_STATUS_DRAWING
 } BeditPrintJobStatus;
 
 typedef enum {
-    GEDIT_PRINT_JOB_RESULT_OK,
-    GEDIT_PRINT_JOB_RESULT_CANCEL,
-    GEDIT_PRINT_JOB_RESULT_ERROR
+    BEDIT_PRINT_JOB_RESULT_OK,
+    BEDIT_PRINT_JOB_RESULT_CANCEL,
+    BEDIT_PRINT_JOB_RESULT_ERROR
 } BeditPrintJobResult;
 
 BeditPrintJob *bedit_print_job_new(BeditView *view);
@@ -61,5 +61,5 @@ GtkPageSetup *bedit_print_job_get_page_setup(BeditPrintJob *job);
 
 G_END_DECLS
 
-#endif /* GEDIT_PRINT_JOB_H */
+#endif /* BEDIT_PRINT_JOB_H */
 

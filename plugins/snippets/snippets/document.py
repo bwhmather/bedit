@@ -479,13 +479,13 @@ class Document(GObject.Object, Bedit.ViewActivatable, Signals):
             environ['noenc'][k] = v
             environ['utf8'][k] = os.environ[k].encode('utf-8')
 
-        variables = {'GEDIT_SELECTED_TEXT': self.env_get_selected_text,
-                 'GEDIT_CURRENT_WORD': self.env_get_current_word,
-                 'GEDIT_CURRENT_LINE': self.env_get_current_line,
-                 'GEDIT_CURRENT_LINE_NUMBER': self.env_get_current_line_number,
-                 'GEDIT_CURRENT_DOCUMENT_TYPE': self.env_get_document_type,
-                 'GEDIT_DOCUMENTS_URI': self.env_get_documents_uri,
-                 'GEDIT_DOCUMENTS_PATH': self.env_get_documents_path}
+        variables = {'BEDIT_SELECTED_TEXT': self.env_get_selected_text,
+                 'BEDIT_CURRENT_WORD': self.env_get_current_word,
+                 'BEDIT_CURRENT_LINE': self.env_get_current_line,
+                 'BEDIT_CURRENT_LINE_NUMBER': self.env_get_current_line_number,
+                 'BEDIT_CURRENT_DOCUMENT_TYPE': self.env_get_document_type,
+                 'BEDIT_DOCUMENTS_URI': self.env_get_documents_uri,
+                 'BEDIT_DOCUMENTS_PATH': self.env_get_documents_path}
 
         for var in variables:
             v = variables[var](buf)
@@ -497,12 +497,12 @@ class Document(GObject.Object, Bedit.ViewActivatable, Signals):
                 environ['utf8'][var] = v
                 environ['noenc'][var] = str(v)
 
-        self.env_add_for_location(environ, buf.get_location(), 'GEDIT_CURRENT_DOCUMENT')
+        self.env_add_for_location(environ, buf.get_location(), 'BEDIT_CURRENT_DOCUMENT')
 
         return environ
 
     def uses_current_word(self, snippet):
-        matches = re.findall('(\\\\*)\\$GEDIT_CURRENT_WORD', snippet['text'])
+        matches = re.findall('(\\\\*)\\$BEDIT_CURRENT_WORD', snippet['text'])
 
         for match in matches:
             if len(match) % 2 == 0:
@@ -511,7 +511,7 @@ class Document(GObject.Object, Bedit.ViewActivatable, Signals):
         return False
 
     def uses_current_line(self, snippet):
-        matches = re.findall('(\\\\*)\\$GEDIT_CURRENT_LINE', snippet['text'])
+        matches = re.findall('(\\\\*)\\$BEDIT_CURRENT_LINE', snippet['text'])
 
         for match in matches:
             if len(match) % 2 == 0:
@@ -875,10 +875,10 @@ class Document(GObject.Object, Bedit.ViewActivatable, Signals):
         # Remove file scheme
         gfile = Gio.file_new_for_uri(uri)
 
-        environ = {'utf8': {'GEDIT_DROP_DOCUMENT_TYPE': mime.encode('utf-8')},
-               'noenc': {'GEDIT_DROP_DOCUMENT_TYPE': mime}}
+        environ = {'utf8': {'BEDIT_DROP_DOCUMENT_TYPE': mime.encode('utf-8')},
+               'noenc': {'BEDIT_DROP_DOCUMENT_TYPE': mime}}
 
-        self.env_add_for_location(environ, gfile, 'GEDIT_DROP_DOCUMENT')
+        self.env_add_for_location(environ, gfile, 'BEDIT_DROP_DOCUMENT')
 
         buf = self.view.get_buffer()
         location = buf.get_location()
@@ -886,8 +886,8 @@ class Document(GObject.Object, Bedit.ViewActivatable, Signals):
         relpath = location.get_relative_path(gfile)
 
         # CHECK: what is the encoding of relpath?
-        environ['utf8']['GEDIT_DROP_DOCUMENT_RELATIVE_PATH'] = relpath.encode('utf-8')
-        environ['noenc']['GEDIT_DROP_DOCUMENT_RELATIVE_PATH'] = relpath
+        environ['utf8']['BEDIT_DROP_DOCUMENT_RELATIVE_PATH'] = relpath.encode('utf-8')
+        environ['noenc']['BEDIT_DROP_DOCUMENT_RELATIVE_PATH'] = relpath
 
         mark = buf.get_mark('gtk_drag_target')
 

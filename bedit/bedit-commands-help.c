@@ -66,7 +66,7 @@ void _bedit_cmd_help_contents(BeditWindow *window) {
     bedit_debug(DEBUG_COMMANDS);
 
     bedit_app_show_help(
-        GEDIT_APP(g_application_get_default()), GTK_WINDOW(window), NULL, NULL);
+        BEDIT_APP(g_application_get_default()), GTK_WINDOW(window), NULL, NULL);
 }
 
 void _bedit_cmd_help_about(BeditWindow *window) {

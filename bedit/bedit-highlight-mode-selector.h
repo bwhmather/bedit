@@ -18,8 +18,8 @@
  * along with bedit. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef GEDIT_HIGHLIGHT_MODE_SELECTOR_H
-#define GEDIT_HIGHLIGHT_MODE_SELECTOR_H
+#ifndef BEDIT_HIGHLIGHT_MODE_SELECTOR_H
+#define BEDIT_HIGHLIGHT_MODE_SELECTOR_H
 
 #include <glib-object.h>
 #include <gtksourceview/gtksource.h>
@@ -27,11 +27,11 @@
 
 G_BEGIN_DECLS
 
-#define GEDIT_TYPE_HIGHLIGHT_MODE_SELECTOR                                     \
+#define BEDIT_TYPE_HIGHLIGHT_MODE_SELECTOR                                     \
     (bedit_highlight_mode_selector_get_type())
 
 G_DECLARE_FINAL_TYPE(
-    BeditHighlightModeSelector, bedit_highlight_mode_selector, GEDIT,
+    BeditHighlightModeSelector, bedit_highlight_mode_selector, BEDIT,
     HIGHLIGHT_MODE_SELECTOR, GtkGrid)
 
 BeditHighlightModeSelector *bedit_highlight_mode_selector_new(void);
@@ -44,5 +44,5 @@ void bedit_highlight_mode_selector_activate_selected_language(
 
 G_END_DECLS
 
-#endif /* GEDIT_HIGHLIGHT_MODE_SELECTOR_H */
+#endif /* BEDIT_HIGHLIGHT_MODE_SELECTOR_H */
 

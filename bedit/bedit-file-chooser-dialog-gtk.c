@@ -59,27 +59,27 @@ G_DEFINE_TYPE_EXTENDED(
     BeditFileChooserDialogGtk, bedit_file_chooser_dialog_gtk,
     GTK_TYPE_FILE_CHOOSER_DIALOG, 0,
     G_IMPLEMENT_INTERFACE(
-        GEDIT_TYPE_FILE_CHOOSER_DIALOG,
+        BEDIT_TYPE_FILE_CHOOSER_DIALOG,
         bedit_file_chooser_dialog_gtk_chooser_init))
 
 static void chooser_set_encoding(
     BeditFileChooserDialog *dialog, const GtkSourceEncoding *encoding) {
     BeditFileChooserDialogGtk *dialog_gtk =
-        GEDIT_FILE_CHOOSER_DIALOG_GTK(dialog);
+        BEDIT_FILE_CHOOSER_DIALOG_GTK(dialog);
 
-    g_return_if_fail(GEDIT_IS_ENCODINGS_COMBO_BOX(dialog_gtk->option_menu));
+    g_return_if_fail(BEDIT_IS_ENCODINGS_COMBO_BOX(dialog_gtk->option_menu));
 
     bedit_encodings_combo_box_set_selected_encoding(
-        GEDIT_ENCODINGS_COMBO_BOX(dialog_gtk->option_menu), encoding);
+        BEDIT_ENCODINGS_COMBO_BOX(dialog_gtk->option_menu), encoding);
 }
 
 static const GtkSourceEncoding *chooser_get_encoding(
     BeditFileChooserDialog *dialog) {
     BeditFileChooserDialogGtk *dialog_gtk =
-        GEDIT_FILE_CHOOSER_DIALOG_GTK(dialog);
+        BEDIT_FILE_CHOOSER_DIALOG_GTK(dialog);
 
     g_return_val_if_fail(
-        GEDIT_IS_ENCODINGS_COMBO_BOX(dialog_gtk->option_menu), NULL);
+        BEDIT_IS_ENCODINGS_COMBO_BOX(dialog_gtk->option_menu), NULL);
     g_return_val_if_fail(
         (gtk_file_chooser_get_action(GTK_FILE_CHOOSER(dialog)) ==
              GTK_FILE_CHOOSER_ACTION_OPEN ||
@@ -88,7 +88,7 @@ static const GtkSourceEncoding *chooser_get_encoding(
         NULL);
 
     return bedit_encodings_combo_box_get_selected_encoding(
-        GEDIT_ENCODINGS_COMBO_BOX(dialog_gtk->option_menu));
+        BEDIT_ENCODINGS_COMBO_BOX(dialog_gtk->option_menu));
 }
 
 static void set_enum_combo(GtkComboBox *combo, gint value) {
@@ -116,7 +116,7 @@ static void set_enum_combo(GtkComboBox *combo, gint value) {
 static void chooser_set_newline_type(
     BeditFileChooserDialog *dialog, GtkSourceNewlineType newline_type) {
     BeditFileChooserDialogGtk *dialog_gtk =
-        GEDIT_FILE_CHOOSER_DIALOG_GTK(dialog);
+        BEDIT_FILE_CHOOSER_DIALOG_GTK(dialog);
 
     g_return_if_fail(
         gtk_file_chooser_get_action(GTK_FILE_CHOOSER(dialog)) ==
@@ -128,7 +128,7 @@ static void chooser_set_newline_type(
 static GtkSourceNewlineType chooser_get_newline_type(
     BeditFileChooserDialog *dialog) {
     BeditFileChooserDialogGtk *dialog_gtk =
-        GEDIT_FILE_CHOOSER_DIALOG_GTK(dialog);
+        BEDIT_FILE_CHOOSER_DIALOG_GTK(dialog);
     GtkTreeIter iter;
     GtkSourceNewlineType newline_type;
 
@@ -246,7 +246,7 @@ static void bedit_file_chooser_dialog_gtk_chooser_init(
 
 static void bedit_file_chooser_dialog_gtk_dispose(GObject *object) {
     BeditFileChooserDialogGtk *dialog_gtk =
-        GEDIT_FILE_CHOOSER_DIALOG_GTK(object);
+        BEDIT_FILE_CHOOSER_DIALOG_GTK(object);
 
     g_clear_object(&dialog_gtk->filter_settings);
 
@@ -269,7 +269,7 @@ static void create_option_menu(
     label = gtk_label_new_with_mnemonic(_("C_haracter Encoding:"));
     gtk_widget_set_halign(label, GTK_ALIGN_START);
 
-    save_mode = (flags & GEDIT_FILE_CHOOSER_SAVE) != 0;
+    save_mode = (flags & BEDIT_FILE_CHOOSER_SAVE) != 0;
     menu = bedit_encodings_combo_box_new(save_mode);
 
     gtk_label_set_mnemonic_widget(GTK_LABEL(label), menu);
@@ -353,8 +353,8 @@ static void create_extra_widget(
     gboolean needs_encoding;
     gboolean needs_line_ending;
 
-    needs_encoding = (flags & GEDIT_FILE_CHOOSER_ENABLE_ENCODING) != 0;
-    needs_line_ending = (flags & GEDIT_FILE_CHOOSER_ENABLE_LINE_ENDING) != 0;
+    needs_encoding = (flags & BEDIT_FILE_CHOOSER_ENABLE_ENCODING) != 0;
+    needs_line_ending = (flags & BEDIT_FILE_CHOOSER_ENABLE_LINE_ENDING) != 0;
 
     if (!needs_encoding && !needs_line_ending) {
         return;
@@ -416,7 +416,7 @@ static void filter_changed(
         bedit_debug_message(DEBUG_COMMANDS, "Active filter: %s (%d)", name, id);
 
         g_settings_set_int(
-            dialog->filter_settings, GEDIT_SETTINGS_ACTIVE_FILE_FILTER, id);
+            dialog->filter_settings, BEDIT_SETTINGS_ACTIVE_FILE_FILTER, id);
     }
 }
 
@@ -511,7 +511,7 @@ BeditFileChooserDialog *bedit_file_chooser_dialog_gtk_create(
     GtkFileChooserAction action;
     gboolean select_multiple;
 
-    if ((flags & GEDIT_FILE_CHOOSER_SAVE) != 0) {
+    if ((flags & BEDIT_FILE_CHOOSER_SAVE) != 0) {
         action = GTK_FILE_CHOOSER_ACTION_SAVE;
         select_multiple = FALSE;
     } else {
@@ -520,7 +520,7 @@ BeditFileChooserDialog *bedit_file_chooser_dialog_gtk_create(
     }
 
     result = g_object_new(
-        GEDIT_TYPE_FILE_CHOOSER_DIALOG_GTK, "title", title, "local-only", FALSE,
+        BEDIT_TYPE_FILE_CHOOSER_DIALOG_GTK, "title", title, "local-only", FALSE,
         "action", action, "select-multiple", select_multiple, NULL);
 
     create_extra_widget(result, flags);
@@ -530,14 +530,14 @@ BeditFileChooserDialog *bedit_file_chooser_dialog_gtk_create(
 
     if (encoding != NULL) {
         bedit_encodings_combo_box_set_selected_encoding(
-            GEDIT_ENCODINGS_COMBO_BOX(result->option_menu), encoding);
+            BEDIT_ENCODINGS_COMBO_BOX(result->option_menu), encoding);
     }
 
     active_filter = g_settings_get_int(
-        result->filter_settings, GEDIT_SETTINGS_ACTIVE_FILE_FILTER);
+        result->filter_settings, BEDIT_SETTINGS_ACTIVE_FILE_FILTER);
     bedit_debug_message(DEBUG_COMMANDS, "Active filter: %d", active_filter);
 
-    if ((flags & GEDIT_FILE_CHOOSER_ENABLE_DEFAULT_FILTERS) != 0) {
+    if ((flags & BEDIT_FILE_CHOOSER_ENABLE_DEFAULT_FILTERS) != 0) {
         /* Filters */
         filter = gtk_file_filter_new();
 
@@ -575,6 +575,6 @@ BeditFileChooserDialog *bedit_file_chooser_dialog_gtk_create(
     gtk_dialog_add_button(GTK_DIALOG(result), accept_label, accept_response);
     gtk_dialog_set_default_response(GTK_DIALOG(result), accept_response);
 
-    return GEDIT_FILE_CHOOSER_DIALOG(result);
+    return BEDIT_FILE_CHOOSER_DIALOG(result);
 }
 

@@ -18,8 +18,8 @@
  * along with this program; if not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef GEDIT_FILE_BROWSER_UTILS_H
-#define GEDIT_FILE_BROWSER_UTILS_H
+#ifndef BEDIT_FILE_BROWSER_UTILS_H
+#define BEDIT_FILE_BROWSER_UTILS_H
 
 #include <bedit/bedit-window.h>
 #include <gio/gio.h>
@@ -39,5 +39,5 @@ gboolean bedit_file_browser_utils_confirmation_dialog(
     BeditWindow *window, GtkMessageType type, gchar const *message,
     gchar const *secondary, gchar const *button_label);
 
-#endif /* GEDIT_FILE_BROWSER_UTILS_H */
+#endif /* BEDIT_FILE_BROWSER_UTILS_H */
 

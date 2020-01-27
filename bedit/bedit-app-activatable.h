@@ -19,18 +19,18 @@
  *  along with this program; if not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef GEDIT_APP_ACTIVATABLE_H
-#define GEDIT_APP_ACTIVATABLE_H
+#ifndef BEDIT_APP_ACTIVATABLE_H
+#define BEDIT_APP_ACTIVATABLE_H
 
 #include <bedit/bedit-menu-extension.h>
 #include <glib-object.h>
 
 G_BEGIN_DECLS
 
-#define GEDIT_TYPE_APP_ACTIVATABLE (bedit_app_activatable_get_type())
+#define BEDIT_TYPE_APP_ACTIVATABLE (bedit_app_activatable_get_type())
 
 G_DECLARE_INTERFACE(
-    BeditAppActivatable, bedit_app_activatable, GEDIT, APP_ACTIVATABLE, GObject)
+    BeditAppActivatable, bedit_app_activatable, BEDIT, APP_ACTIVATABLE, GObject)
 
 struct _BeditAppActivatableInterface {
     GTypeInterface g_iface;
@@ -60,5 +60,5 @@ BeditMenuExtension *bedit_app_activatable_extend_menu(
 
 G_END_DECLS
 
-#endif /* GEDIT_APP_ACTIVATABLE_H */
+#endif /* BEDIT_APP_ACTIVATABLE_H */
 

@@ -18,17 +18,17 @@
  * along with this program; if not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef GEDIT_STATUS_MENU_BUTTON_H
-#define GEDIT_STATUS_MENU_BUTTON_H
+#ifndef BEDIT_STATUS_MENU_BUTTON_H
+#define BEDIT_STATUS_MENU_BUTTON_H
 
 #include <gtk/gtk.h>
 
 G_BEGIN_DECLS
 
-#define GEDIT_TYPE_STATUS_MENU_BUTTON (bedit_status_menu_button_get_type())
+#define BEDIT_TYPE_STATUS_MENU_BUTTON (bedit_status_menu_button_get_type())
 
 G_DECLARE_FINAL_TYPE(
-    BeditStatusMenuButton, bedit_status_menu_button, GEDIT, STATUS_MENU_BUTTON,
+    BeditStatusMenuButton, bedit_status_menu_button, BEDIT, STATUS_MENU_BUTTON,
     GtkMenuButton)
 
 GtkWidget *bedit_status_menu_button_new(void);
@@ -40,5 +40,5 @@ const gchar *bedit_status_menu_button_get_label(BeditStatusMenuButton *button);
 
 G_END_DECLS
 
-#endif /* GEDIT_STATUS_MENU_BUTTON_H */
+#endif /* BEDIT_STATUS_MENU_BUTTON_H */
 

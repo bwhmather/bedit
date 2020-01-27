@@ -18,8 +18,8 @@
  * along with this program; if not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef GEDIT_FILE_BROWSER_PLUGIN_H
-#define GEDIT_FILE_BROWSER_PLUGIN_H
+#ifndef BEDIT_FILE_BROWSER_PLUGIN_H
+#define BEDIT_FILE_BROWSER_PLUGIN_H
 
 #include <glib-object.h>
 #include <glib.h>
@@ -30,20 +30,20 @@ G_BEGIN_DECLS
 /*
  * Type checking and casting macros
  */
-#define GEDIT_TYPE_FILE_BROWSER_PLUGIN (bedit_file_browser_plugin_get_type())
-#define GEDIT_FILE_BROWSER_PLUGIN(o)                                           \
+#define BEDIT_TYPE_FILE_BROWSER_PLUGIN (bedit_file_browser_plugin_get_type())
+#define BEDIT_FILE_BROWSER_PLUGIN(o)                                           \
     (G_TYPE_CHECK_INSTANCE_CAST(                                               \
-        (o), GEDIT_TYPE_FILE_BROWSER_PLUGIN, BeditFileBrowserPlugin))
-#define GEDIT_FILE_BROWSER_PLUGIN_CLASS(k)                                     \
+        (o), BEDIT_TYPE_FILE_BROWSER_PLUGIN, BeditFileBrowserPlugin))
+#define BEDIT_FILE_BROWSER_PLUGIN_CLASS(k)                                     \
     (G_TYPE_CHECK_CLASS_CAST(                                                  \
-        (k), GEDIT_TYPE_FILE_BROWSER_PLUGIN, BeditFileBrowserPluginClass))
-#define GEDIT_IS_FILE_BROWSER_PLUGIN(o)                                        \
-    (G_TYPE_CHECK_INSTANCE_TYPE((o), GEDIT_TYPE_FILE_BROWSER_PLUGIN))
-#define GEDIT_IS_FILE_BROWSER_PLUGIN_CLASS(k)                                  \
-    (G_TYPE_CHECK_CLASS_TYPE((k), GEDIT_TYPE_FILE_BROWSER_PLUGIN))
-#define GEDIT_FILE_BROWSER_GET_CLASS(o)                                        \
+        (k), BEDIT_TYPE_FILE_BROWSER_PLUGIN, BeditFileBrowserPluginClass))
+#define BEDIT_IS_FILE_BROWSER_PLUGIN(o)                                        \
+    (G_TYPE_CHECK_INSTANCE_TYPE((o), BEDIT_TYPE_FILE_BROWSER_PLUGIN))
+#define BEDIT_IS_FILE_BROWSER_PLUGIN_CLASS(k)                                  \
+    (G_TYPE_CHECK_CLASS_TYPE((k), BEDIT_TYPE_FILE_BROWSER_PLUGIN))
+#define BEDIT_FILE_BROWSER_GET_CLASS(o)                                        \
     (G_TYPE_INSTANCE_GET_CLASS(                                                \
-        (o), GEDIT_TYPE_FILE_BROWSER_PLUGIN, BeditFileBrowserPluginClass))
+        (o), BEDIT_TYPE_FILE_BROWSER_PLUGIN, BeditFileBrowserPluginClass))
 
 /* Private structure type */
 typedef struct _BeditFileBrowserPluginPrivate BeditFileBrowserPluginPrivate;
@@ -71,5 +71,5 @@ G_MODULE_EXPORT void peas_register_types(PeasObjectModule *module);
 
 G_END_DECLS
 
-#endif /* GEDIT_FILE_BROWSER_PLUGIN_H */
+#endif /* BEDIT_FILE_BROWSER_PLUGIN_H */
 

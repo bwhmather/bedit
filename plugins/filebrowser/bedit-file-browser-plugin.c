@@ -102,7 +102,7 @@ static gboolean on_confirm_no_trash_cb(
 G_DEFINE_DYNAMIC_TYPE_EXTENDED(
     BeditFileBrowserPlugin, bedit_file_browser_plugin, G_TYPE_OBJECT, 0,
     G_ADD_PRIVATE_DYNAMIC(BeditFileBrowserPlugin) G_IMPLEMENT_INTERFACE_DYNAMIC(
-        GEDIT_TYPE_WINDOW_ACTIVATABLE, bedit_window_activatable_iface_init)
+        BEDIT_TYPE_WINDOW_ACTIVATABLE, bedit_window_activatable_iface_init)
 
         bedit_file_browser_enum_and_flag_register_type(type_module);
     _bedit_file_bookmarks_store_register_type(type_module);
@@ -141,7 +141,7 @@ static void bedit_file_browser_plugin_init(BeditFileBrowserPlugin *plugin) {
 }
 
 static void bedit_file_browser_plugin_dispose(GObject *object) {
-    BeditFileBrowserPlugin *plugin = GEDIT_FILE_BROWSER_PLUGIN(object);
+    BeditFileBrowserPlugin *plugin = BEDIT_FILE_BROWSER_PLUGIN(object);
 
     g_clear_object(&plugin->priv->settings);
     g_clear_object(&plugin->priv->nautilus_settings);
@@ -153,11 +153,11 @@ static void bedit_file_browser_plugin_dispose(GObject *object) {
 
 static void bedit_file_browser_plugin_set_property(
     GObject *object, guint prop_id, const GValue *value, GParamSpec *pspec) {
-    BeditFileBrowserPlugin *plugin = GEDIT_FILE_BROWSER_PLUGIN(object);
+    BeditFileBrowserPlugin *plugin = BEDIT_FILE_BROWSER_PLUGIN(object);
 
     switch (prop_id) {
     case PROP_WINDOW:
-        plugin->priv->window = GEDIT_WINDOW(g_value_dup_object(value));
+        plugin->priv->window = BEDIT_WINDOW(g_value_dup_object(value));
         break;
 
     default:
@@ -168,7 +168,7 @@ static void bedit_file_browser_plugin_set_property(
 
 static void bedit_file_browser_plugin_get_property(
     GObject *object, guint prop_id, GValue *value, GParamSpec *pspec) {
-    BeditFileBrowserPlugin *plugin = GEDIT_FILE_BROWSER_PLUGIN(object);
+    BeditFileBrowserPlugin *plugin = BEDIT_FILE_BROWSER_PLUGIN(object);
 
     switch (prop_id) {
     case PROP_WINDOW:
@@ -377,7 +377,7 @@ static void open_in_terminal(
 static void bedit_file_browser_plugin_update_state(
     BeditWindowActivatable *activatable) {
     BeditFileBrowserPluginPrivate *priv =
-        GEDIT_FILE_BROWSER_PLUGIN(activatable)->priv;
+        BEDIT_FILE_BROWSER_PLUGIN(activatable)->priv;
     BeditDocument *doc;
 
     doc = bedit_window_get_active_document(priv->window);
@@ -387,7 +387,7 @@ static void bedit_file_browser_plugin_update_state(
 
 static void bedit_file_browser_plugin_activate(
     BeditWindowActivatable *activatable) {
-    BeditFileBrowserPlugin *plugin = GEDIT_FILE_BROWSER_PLUGIN(activatable);
+    BeditFileBrowserPlugin *plugin = BEDIT_FILE_BROWSER_PLUGIN(activatable);
     BeditFileBrowserPluginPrivate *priv;
     GtkWidget *panel;
     BeditFileBrowserStore *store;
@@ -395,7 +395,7 @@ static void bedit_file_browser_plugin_activate(
     priv = plugin->priv;
 
     priv->tree_widget =
-        GEDIT_FILE_BROWSER_WIDGET(bedit_file_browser_widget_new());
+        BEDIT_FILE_BROWSER_WIDGET(bedit_file_browser_widget_new());
 
     g_signal_connect(
         priv->tree_widget, "location-activated",
@@ -467,7 +467,7 @@ static void bedit_file_browser_plugin_activate(
 
 static void bedit_file_browser_plugin_deactivate(
     BeditWindowActivatable *activatable) {
-    BeditFileBrowserPlugin *plugin = GEDIT_FILE_BROWSER_PLUGIN(activatable);
+    BeditFileBrowserPlugin *plugin = BEDIT_FILE_BROWSER_PLUGIN(activatable);
     BeditFileBrowserPluginPrivate *priv = plugin->priv;
     GtkWidget *panel;
 
@@ -528,34 +528,34 @@ static void on_error_cb(
 
     /* Do not show the error when the root has been set automatically */
     if (priv->auto_root &&
-        (code == GEDIT_FILE_BROWSER_ERROR_SET_ROOT ||
-         code == GEDIT_FILE_BROWSER_ERROR_LOAD_DIRECTORY)) {
+        (code == BEDIT_FILE_BROWSER_ERROR_SET_ROOT ||
+         code == BEDIT_FILE_BROWSER_ERROR_LOAD_DIRECTORY)) {
         /* Show bookmarks */
         bedit_file_browser_widget_show_bookmarks(priv->tree_widget);
         return;
     }
 
     switch (code) {
-    case GEDIT_FILE_BROWSER_ERROR_NEW_DIRECTORY:
+    case BEDIT_FILE_BROWSER_ERROR_NEW_DIRECTORY:
         title = _("An error occurred while creating a new directory");
         break;
-    case GEDIT_FILE_BROWSER_ERROR_NEW_FILE:
+    case BEDIT_FILE_BROWSER_ERROR_NEW_FILE:
         title = _("An error occurred while creating a new file");
         break;
-    case GEDIT_FILE_BROWSER_ERROR_RENAME:
+    case BEDIT_FILE_BROWSER_ERROR_RENAME:
         title = _("An error occurred while renaming a file or directory");
         break;
-    case GEDIT_FILE_BROWSER_ERROR_DELETE:
+    case BEDIT_FILE_BROWSER_ERROR_DELETE:
         title = _("An error occurred while deleting a file or directory");
         break;
-    case GEDIT_FILE_BROWSER_ERROR_OPEN_DIRECTORY:
+    case BEDIT_FILE_BROWSER_ERROR_OPEN_DIRECTORY:
         title = _(
             "An error occurred while opening a directory in the file manager");
         break;
-    case GEDIT_FILE_BROWSER_ERROR_SET_ROOT:
+    case BEDIT_FILE_BROWSER_ERROR_SET_ROOT:
         title = _("An error occurred while setting a root directory");
         break;
-    case GEDIT_FILE_BROWSER_ERROR_LOAD_DIRECTORY:
+    case BEDIT_FILE_BROWSER_ERROR_LOAD_DIRECTORY:
         title = _("An error occurred while loading a directory");
         break;
     default:
@@ -588,7 +588,7 @@ static void on_model_set_cb(
 
     g_settings_set_boolean(
         priv->settings, FILEBROWSER_TREE_VIEW,
-        GEDIT_IS_FILE_BROWSER_STORE(model));
+        BEDIT_IS_FILE_BROWSER_STORE(model));
 }
 
 static void on_rename_cb(
@@ -598,14 +598,14 @@ static void on_rename_cb(
     GList *item;
 
     /* Find all documents and set its uri to newuri where it matches olduri */
-    documents = bedit_app_get_documents(GEDIT_APP(g_application_get_default()));
+    documents = bedit_app_get_documents(BEDIT_APP(g_application_get_default()));
 
     for (item = documents; item; item = item->next) {
         BeditDocument *doc;
         GtkSourceFile *source_file;
         GFile *docfile;
 
-        doc = GEDIT_DOCUMENT(item->data);
+        doc = BEDIT_DOCUMENT(item->data);
         source_file = bedit_document_get_file(doc);
         docfile = gtk_source_file_get_location(source_file);
 
@@ -724,7 +724,7 @@ static gchar *get_filename_from_path(GtkTreeModel *model, GtkTreePath *path) {
     }
 
     gtk_tree_model_get(
-        model, &iter, GEDIT_FILE_BROWSER_STORE_COLUMN_LOCATION, &location, -1);
+        model, &iter, BEDIT_FILE_BROWSER_STORE_COLUMN_LOCATION, &location, -1);
 
     if (location) {
         ret = bedit_file_browser_utils_file_basename(location);
@@ -798,6 +798,6 @@ G_MODULE_EXPORT void peas_register_types(PeasObjectModule *module) {
     bedit_file_browser_plugin_register_type(G_TYPE_MODULE(module));
 
     peas_object_module_register_extension_type(
-        module, GEDIT_TYPE_WINDOW_ACTIVATABLE, GEDIT_TYPE_FILE_BROWSER_PLUGIN);
+        module, BEDIT_TYPE_WINDOW_ACTIVATABLE, BEDIT_TYPE_FILE_BROWSER_PLUGIN);
 }
 

@@ -19,19 +19,19 @@
  * along with this program; if not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef GEDIT_FILE_CHOOSER_DIALOG_GTK_H
-#define GEDIT_FILE_CHOOSER_DIALOG_GTK_H
+#ifndef BEDIT_FILE_CHOOSER_DIALOG_GTK_H
+#define BEDIT_FILE_CHOOSER_DIALOG_GTK_H
 
 #include <gtk/gtk.h>
 #include "bedit-file-chooser-dialog.h"
 
 G_BEGIN_DECLS
 
-#define GEDIT_TYPE_FILE_CHOOSER_DIALOG_GTK                                     \
+#define BEDIT_TYPE_FILE_CHOOSER_DIALOG_GTK                                     \
     (bedit_file_chooser_dialog_gtk_get_type())
 
 G_DECLARE_FINAL_TYPE(
-    BeditFileChooserDialogGtk, bedit_file_chooser_dialog_gtk, GEDIT,
+    BeditFileChooserDialogGtk, bedit_file_chooser_dialog_gtk, BEDIT,
     FILE_CHOOSER_DIALOG_GTK, GtkFileChooserDialog)
 
 BeditFileChooserDialog *bedit_file_chooser_dialog_gtk_create(
@@ -42,5 +42,5 @@ BeditFileChooserDialog *bedit_file_chooser_dialog_gtk_create(
 
 G_END_DECLS
 
-#endif /* GEDIT_FILE_CHOOSER_DIALOG_GTK_H */
+#endif /* BEDIT_FILE_CHOOSER_DIALOG_GTK_H */
 
