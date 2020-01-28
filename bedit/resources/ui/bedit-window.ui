@@ -103,29 +103,12 @@
                     <property name="visible">True</property>
                     <property name="orientation">vertical</property>
                     <child>
-                      <object class="GtkPaned" id="vpaned">
+                      <object class="BeditMultiNotebook" id="multi_notebook">
                         <property name="visible">True</property>
-                        <property name="can_focus">True</property>
-                        <property name="has_focus">False</property>
-                        <property name="is_focus">False</property>
-                        <property name="orientation">vertical</property>
-                        <style>
-                          <class name="bedit-bottom-panel-paned"/>
-                        </style>
-                        <child>
-                          <object class="BeditMultiNotebook" id="multi_notebook">
-                            <property name="visible">True</property>
-                          </object>
-                          <packing>
-                            <property name="resize">True</property>
-                            <property name="shrink">False</property>
-                          </packing>
-                        </child>
                       </object>
                       <packing>
-                        <property name="expand">True</property>
-                        <property name="fill">True</property>
-                        <property name="position">2</property>
+                        <property name="resize">True</property>
+                        <property name="shrink">False</property>
                       </packing>
                     </child>
                     <child>

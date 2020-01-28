@@ -378,8 +378,6 @@ static void bedit_window_class_init(BeditWindowClass *klass) {
     gtk_widget_class_bind_template_child_private(
         widget_class, BeditWindow, side_panel_inline_stack_switcher);
     gtk_widget_class_bind_template_child_private(
-        widget_class, BeditWindow, vpaned);
-    gtk_widget_class_bind_template_child_private(
         widget_class, BeditWindow, multi_notebook);
     gtk_widget_class_bind_template_child_private(
         widget_class, BeditWindow, statusbar);
@@ -1827,10 +1825,6 @@ static void hpaned_restore_position(GtkWidget *widget, BeditWindow *window) {
         widget, hpaned_restore_position, window);
 }
 
-static void vpaned_restore_position(GtkWidget *widget, BeditWindow *window) {
-    // TODO remove me.
-}
-
 static void side_panel_visibility_changed(
     GtkWidget *panel, GParamSpec *pspec, BeditWindow *window) {
     gboolean visible;
@@ -2181,9 +2175,6 @@ static void bedit_window_init(BeditWindow *window) {
 
     g_signal_connect_after(
         window->priv->hpaned, "map", G_CALLBACK(hpaned_restore_position),
-        window);
-    g_signal_connect_after(
-        window->priv->vpaned, "map", G_CALLBACK(vpaned_restore_position),
         window);
 
     /* Drag and drop support */

@@ -46,7 +46,6 @@ struct _BeditWindowPrivate {
     GtkWidget *side_panel_inline_stack_switcher;
 
     GtkWidget *hpaned;
-    GtkWidget *vpaned;
 
     BeditMessageBus *message_bus;
     PeasExtensionSet *extensions;
