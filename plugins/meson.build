@@ -22,7 +22,6 @@ endif
 subdir('docinfo')
 subdir('filebrowser')
 subdir('modelines')
-subdir('pythonconsole')
 subdir('quickhighlight')
 subdir('quickopen')
 subdir('snippets')
