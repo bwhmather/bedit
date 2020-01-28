@@ -20,7 +20,6 @@ if build_checkupdate_plugin
 endif
 
 subdir('docinfo')
-subdir('externaltools')
 subdir('filebrowser')
 subdir('modelines')
 subdir('pythonconsole')

@@ -1,4 +1,0 @@
-#!/bin/sh
-
-#TODO: use "gconftool-2 -g /desktop/gnome/applications/terminal/exec"
-eval $(zenity --entry --title="Run Command - bedit" --text="Command to run:")
