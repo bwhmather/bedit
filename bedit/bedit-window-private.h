@@ -44,8 +44,6 @@ struct _BeditWindowPrivate {
     GtkWidget *side_panel;
     GtkWidget *side_stack_switcher;
     GtkWidget *side_panel_inline_stack_switcher;
-    GtkWidget *bottom_panel_box;
-    GtkWidget *bottom_panel;
 
     GtkWidget *hpaned;
     GtkWidget *vpaned;
@@ -87,13 +85,10 @@ struct _BeditWindowPrivate {
     GdkWindowState window_state;
 
     gint side_panel_size;
-    gint bottom_panel_size;
 
     BeditWindowState state;
 
     guint inhibition_cookie;
-
-    gint bottom_panel_item_removed_handler_id;
 
     GtkWindowGroup *window_group;
 

@@ -121,40 +121,6 @@
                             <property name="shrink">False</property>
                           </packing>
                         </child>
-                        <child>
-                          <object class="GtkBox" id="bottom_panel_box">
-                            <property name="visible" bind-source="bottom_panel" bind-property="visible" bind-flags="sync-create"/>
-                            <property name="orientation">horizontal</property>
-                            <style>
-                              <class name="bedit-bottom-panel"/>
-                            </style>
-                            <child>
-                              <object class="GtkBox" id="bottom_panel_stack_box">
-                                <property name="visible">True</property>
-                                <property name="orientation">vertical</property>
-                                <child>
-                                  <object class="GtkStack" id="bottom_panel">
-                                    <property name="visible">False</property>
-                                  </object>
-                                  <packing>
-                                    <property name="expand">True</property>
-                                    <property name="fill">True</property>
-                                    <property name="position">1</property>
-                                  </packing>
-                                </child>
-                              </object>
-                              <packing>
-                                <property name="expand">True</property>
-                                <property name="fill">True</property>
-                                <property name="position">1</property>
-                              </packing>
-                            </child>
-                          </object>
-                          <packing>
-                            <property name="resize">False</property>
-                            <property name="shrink">False</property>
-                          </packing>
-                        </child>
                       </object>
                       <packing>
                         <property name="expand">True</property>

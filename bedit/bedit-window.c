@@ -116,20 +116,6 @@ static void save_panels_state(BeditWindow *window) {
             BEDIT_SETTINGS_SIDE_PANEL_ACTIVE_PAGE, panel_page);
     }
 
-    if (window->priv->bottom_panel_size > 0) {
-        g_settings_set_int(
-            window->priv->window_settings, BEDIT_SETTINGS_BOTTOM_PANEL_SIZE,
-            window->priv->bottom_panel_size);
-    }
-
-    panel_page =
-        gtk_stack_get_visible_child_name(GTK_STACK(window->priv->bottom_panel));
-    if (panel_page != NULL) {
-        g_settings_set_string(
-            window->priv->window_settings,
-            BEDIT_SETTINGS_BOTTOM_PANEL_ACTIVE_PAGE, panel_page);
-    }
-
     g_settings_apply(window->priv->window_settings);
 }
 
@@ -153,16 +139,6 @@ static void bedit_window_dispose(GObject *object) {
     bedit_debug(DEBUG_WINDOW);
 
     window = BEDIT_WINDOW(object);
-
-    /* Stop tracking removal of panels otherwise we always
-     * end up with thinking we had no panel active, since they
-     * should all be removed below */
-    if (window->priv->bottom_panel_item_removed_handler_id != 0) {
-        g_signal_handler_disconnect(
-            window->priv->bottom_panel,
-            window->priv->bottom_panel_item_removed_handler_id);
-        window->priv->bottom_panel_item_removed_handler_id = 0;
-    }
 
     /* First of all, force collection so that plugins
      * really drop some of the references.
@@ -405,10 +381,6 @@ static void bedit_window_class_init(BeditWindowClass *klass) {
         widget_class, BeditWindow, vpaned);
     gtk_widget_class_bind_template_child_private(
         widget_class, BeditWindow, multi_notebook);
-    gtk_widget_class_bind_template_child_private(
-        widget_class, BeditWindow, bottom_panel_box);
-    gtk_widget_class_bind_template_child_private(
-        widget_class, BeditWindow, bottom_panel);
     gtk_widget_class_bind_template_child_private(
         widget_class, BeditWindow, statusbar);
     gtk_widget_class_bind_template_child_private(
@@ -693,12 +665,6 @@ static void update_actions_sensitivity(BeditWindow *window) {
     action = g_action_map_lookup_action(G_ACTION_MAP(window), "next-tab-group");
     g_simple_action_set_enabled(G_SIMPLE_ACTION(action), num_notebooks > 1);
 
-    action = g_action_map_lookup_action(G_ACTION_MAP(window), "bottom-panel");
-    g_simple_action_set_enabled(
-        G_SIMPLE_ACTION(action),
-        gtk_stack_get_visible_child(GTK_STACK(window->priv->bottom_panel)) !=
-            NULL);
-
     /* We disable File->Quit/SaveAll/CloseAll while printing to avoid to have
        two operations (save and print/print preview) that uses the message area
        at the same time (may be we can remove this limitation in the future) */
@@ -826,7 +792,6 @@ static BeditWindow *clone_window(BeditWindow *origin) {
     /* set the panels size, the paned position will be set when
      * they are mapped */
     window->priv->side_panel_size = origin->priv->side_panel_size;
-    window->priv->bottom_panel_size = origin->priv->bottom_panel_size;
 
     panel_page =
         gtk_stack_get_visible_child_name(GTK_STACK(origin->priv->side_panel));
@@ -836,20 +801,9 @@ static BeditWindow *clone_window(BeditWindow *origin) {
             GTK_STACK(window->priv->side_panel), panel_page);
     }
 
-    panel_page =
-        gtk_stack_get_visible_child_name(GTK_STACK(origin->priv->bottom_panel));
-
-    if (panel_page) {
-        gtk_stack_set_visible_child_name(
-            GTK_STACK(window->priv->bottom_panel), panel_page);
-    }
-
     gtk_widget_set_visible(
         window->priv->side_panel,
         gtk_widget_get_visible(origin->priv->side_panel));
-    gtk_widget_set_visible(
-        window->priv->bottom_panel,
-        gtk_widget_get_visible(origin->priv->bottom_panel));
 
     return window;
 }
@@ -1853,11 +1807,6 @@ static void side_panel_size_allocate(
     window->priv->side_panel_size = allocation->width;
 }
 
-static void bottom_panel_size_allocate(
-    GtkWidget *widget, GtkAllocation *allocation, BeditWindow *window) {
-    window->priv->bottom_panel_size = allocation->height;
-}
-
 static void hpaned_restore_position(GtkWidget *widget, BeditWindow *window) {
     gint pos;
 
@@ -1879,25 +1828,7 @@ static void hpaned_restore_position(GtkWidget *widget, BeditWindow *window) {
 }
 
 static void vpaned_restore_position(GtkWidget *widget, BeditWindow *window) {
-    gint pos;
-    GtkAllocation allocation;
-
-    bedit_debug_message(
-        DEBUG_WINDOW, "Restoring vpaned position: bottom panel size %d",
-        window->priv->bottom_panel_size);
-
-    gtk_widget_get_allocation(widget, &allocation);
-    pos = allocation.height - MAX(50, window->priv->bottom_panel_size);
-    gtk_paned_set_position(GTK_PANED(window->priv->vpaned), pos);
-
-    /* start monitoring the size */
-    g_signal_connect(
-        window->priv->bottom_panel, "size-allocate",
-        G_CALLBACK(bottom_panel_size_allocate), window);
-
-    /* run this only once */
-    g_signal_handlers_disconnect_by_func(
-        widget, vpaned_restore_position, window);
+    // TODO remove me.
 }
 
 static void side_panel_visibility_changed(
@@ -2025,76 +1956,10 @@ static void setup_side_panel(BeditWindow *window) {
         "BeditWindowDocumentsPanel", _("Documents"));
 }
 
-static void bottom_panel_visibility_changed(
-    GtkWidget *panel_box, GParamSpec *pspec, BeditWindow *window) {
-    gboolean visible;
-    GAction *action;
-
-    visible = gtk_widget_get_visible(panel_box);
-
-    g_settings_set_boolean(
-        window->priv->ui_settings, BEDIT_SETTINGS_BOTTOM_PANEL_VISIBLE,
-        visible);
-
-    /* sync the action state if the panel visibility was changed
-     * programmatically */
-    action = g_action_map_lookup_action(G_ACTION_MAP(window), "bottom-panel");
-    g_simple_action_set_state(
-        G_SIMPLE_ACTION(action), g_variant_new_boolean(visible));
-
-    /* focus the right widget */
-    if (visible) {
-        gtk_widget_grab_focus(window->priv->side_panel);
-    } else {
-        gtk_widget_grab_focus(GTK_WIDGET(window->priv->multi_notebook));
-    }
-}
-
-static void bottom_panel_item_removed(
-    GtkStack *panel, GtkWidget *item, BeditWindow *window) {
-    gtk_widget_set_visible(
-        window->priv->bottom_panel, gtk_stack_get_visible_child(panel) != NULL);
-
-    update_actions_sensitivity(window);
-}
-
-static void bottom_panel_item_added(
-    GtkStack *panel, GtkWidget *item, BeditWindow *window) {
-    GList *children;
-    int n_children;
-
-    children = gtk_container_get_children(GTK_CONTAINER(panel));
-    n_children = g_list_length(children);
-    g_list_free(children);
-
-    /* if it's the first item added, set the menu item
-     * sensitive and if needed show the panel */
-    if (n_children == 1) {
-        gboolean show;
-
-        show = g_settings_get_boolean(
-            window->priv->ui_settings, "bottom-panel-visible");
-        if (show) {
-            gtk_widget_show(window->priv->bottom_panel);
-        }
-
-        update_actions_sensitivity(window);
-    }
-}
-
-static void setup_bottom_panel(BeditWindow *window) {
-    bedit_debug(DEBUG_WINDOW);
-
-    g_signal_connect_after(
-        window->priv->bottom_panel, "notify::visible",
-        G_CALLBACK(bottom_panel_visibility_changed), window);
-}
-
 static void init_panels_visibility(BeditWindow *window) {
     gchar *panel_page;
     GtkWidget *panel_child;
     gboolean side_panel_visible;
-    gboolean bottom_panel_visible;
 
     bedit_debug(DEBUG_WINDOW);
 
@@ -2112,47 +1977,10 @@ static void init_panels_visibility(BeditWindow *window) {
 
     side_panel_visible = g_settings_get_boolean(
         window->priv->ui_settings, BEDIT_SETTINGS_SIDE_PANEL_VISIBLE);
-    bottom_panel_visible = g_settings_get_boolean(
-        window->priv->ui_settings, BEDIT_SETTINGS_BOTTOM_PANEL_VISIBLE);
 
     if (side_panel_visible) {
         gtk_widget_show(window->priv->side_panel);
     }
-
-    /* bottom pane, it can be empty */
-    if (gtk_stack_get_visible_child(GTK_STACK(window->priv->bottom_panel)) !=
-        NULL) {
-        panel_page = g_settings_get_string(
-            window->priv->window_settings,
-            BEDIT_SETTINGS_BOTTOM_PANEL_ACTIVE_PAGE);
-        panel_child = gtk_stack_get_child_by_name(
-            GTK_STACK(window->priv->side_panel), panel_page);
-        if (panel_child) {
-            gtk_stack_set_visible_child(
-                GTK_STACK(window->priv->bottom_panel), panel_child);
-        }
-
-        if (bottom_panel_visible) {
-            gtk_widget_show(window->priv->bottom_panel);
-        }
-
-        g_free(panel_page);
-    } else {
-        GAction *action;
-
-        action =
-            g_action_map_lookup_action(G_ACTION_MAP(window), "bottom-panel");
-        g_simple_action_set_enabled(G_SIMPLE_ACTION(action), FALSE);
-    }
-
-    /* start track sensitivity after the initial state is set */
-    window->priv->bottom_panel_item_removed_handler_id = g_signal_connect(
-        window->priv->bottom_panel, "remove",
-        G_CALLBACK(bottom_panel_item_removed), window);
-
-    g_signal_connect_after(
-        window->priv->bottom_panel, "add", G_CALLBACK(bottom_panel_item_added),
-        window);
 }
 
 static void clipboard_owner_change(
@@ -2203,7 +2031,6 @@ static GActionEntry win_entries[] = {
     {"print", _bedit_cmd_file_print},
     {"focus-active-view", NULL, NULL, "false", _bedit_cmd_view_focus_active},
     {"side-panel", NULL, NULL, "false", _bedit_cmd_view_toggle_side_panel},
-    {"bottom-panel", NULL, NULL, "false", _bedit_cmd_view_toggle_bottom_panel},
     {"fullscreen", NULL, NULL, "false", _bedit_cmd_view_toggle_fullscreen_mode},
     {"leave-fullscreen", _bedit_cmd_view_leave_fullscreen_mode},
     {"find", _bedit_cmd_search_find},
@@ -2346,16 +2173,11 @@ static void bedit_window_init(BeditWindow *window) {
         window->priv->multi_notebook, "show-popup-menu",
         G_CALLBACK(on_show_popup_menu), window);
 
-    /* side and bottom panels */
     setup_side_panel(window);
-    setup_bottom_panel(window);
 
-    /* panels' state must be restored after panels have been mapped,
-     * since the bottom panel position depends on the size of the vpaned. */
+    /* panels' state must be restored after panels have been mapped. */
     window->priv->side_panel_size = g_settings_get_int(
         window->priv->window_settings, BEDIT_SETTINGS_SIDE_PANEL_SIZE);
-    window->priv->bottom_panel_size = g_settings_get_int(
-        window->priv->window_settings, BEDIT_SETTINGS_BOTTOM_PANEL_SIZE);
 
     g_signal_connect_after(
         window->priv->hpaned, "map", G_CALLBACK(hpaned_restore_position),
@@ -2800,20 +2622,6 @@ GtkWidget *bedit_window_get_side_panel(BeditWindow *window) {
     g_return_val_if_fail(BEDIT_IS_WINDOW(window), NULL);
 
     return window->priv->side_panel;
-}
-
-/**
- * bedit_window_get_bottom_panel:
- * @window: a #BeditWindow
- *
- * Gets the bottom panel of the @window.
- *
- * Returns: (transfer none): the bottom panel's #GtkStack.
- */
-GtkWidget *bedit_window_get_bottom_panel(BeditWindow *window) {
-    g_return_val_if_fail(BEDIT_IS_WINDOW(window), NULL);
-
-    return window->priv->bottom_panel;
 }
 
 /**

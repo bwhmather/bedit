@@ -179,9 +179,6 @@
       <summary>Side panel is Visible</summary>
       <description>Whether the side panel at the left of editing windows should be visible.</description>
     </key>
-    <key name="bottom-panel-visible" type="b">
-      <default>false</default>
-    </key>
   </schema>
   <schema id="com.bwhmather.bedit.preferences.print" path="/com/bwhmather/bedit/preferences/print/">
     <key name="print-syntax-highlighting" type="b">
@@ -273,12 +270,6 @@
       <default>200</default>
     </key>
     <key name="side-panel-active-page" type="s">
-      <default>''</default>
-    </key>
-    <key name="bottom-panel-size" type="i">
-      <default>140</default>
-    </key>
-    <key name="bottom-panel-active-page" type="s">
       <default>''</default>
     </key>
   </schema>

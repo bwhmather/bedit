@@ -73,7 +73,6 @@ void bedit_settings_set_list(
 #define BEDIT_SETTINGS_BACKGROUND_PATTERN "background-pattern"
 #define BEDIT_SETTINGS_STATUSBAR_VISIBLE "statusbar-visible"
 #define BEDIT_SETTINGS_SIDE_PANEL_VISIBLE "side-panel-visible"
-#define BEDIT_SETTINGS_BOTTOM_PANEL_VISIBLE "bottom-panel-visible"
 #define BEDIT_SETTINGS_PRINT_SYNTAX_HIGHLIGHTING "print-syntax-highlighting"
 #define BEDIT_SETTINGS_PRINT_HEADER "print-header"
 #define BEDIT_SETTINGS_PRINT_WRAP_MODE "print-wrap-mode"
@@ -95,8 +94,6 @@ void bedit_settings_set_list(
 #define BEDIT_SETTINGS_SHOW_TABS_MODE "show-tabs-mode"
 #define BEDIT_SETTINGS_SIDE_PANEL_SIZE "side-panel-size"
 #define BEDIT_SETTINGS_SIDE_PANEL_ACTIVE_PAGE "side-panel-active-page"
-#define BEDIT_SETTINGS_BOTTOM_PANEL_SIZE "bottom-panel-size"
-#define BEDIT_SETTINGS_BOTTOM_PANEL_ACTIVE_PAGE "bottom-panel-active-page"
 #define BEDIT_SETTINGS_ACTIVE_FILE_FILTER "filter-id"
 
 G_END_DECLS

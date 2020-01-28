@@ -66,26 +66,6 @@ void _bedit_cmd_view_toggle_side_panel(
     g_simple_action_set_state(action, state);
 }
 
-void _bedit_cmd_view_toggle_bottom_panel(
-    GSimpleAction *action, GVariant *state, gpointer user_data) {
-    BeditWindow *window = BEDIT_WINDOW(user_data);
-    GtkWidget *panel;
-    gboolean visible;
-
-    bedit_debug(DEBUG_COMMANDS);
-
-    panel = bedit_window_get_bottom_panel(window);
-
-    visible = g_variant_get_boolean(state);
-    gtk_widget_set_visible(panel, visible);
-
-    if (visible) {
-        gtk_widget_grab_focus(panel);
-    }
-
-    g_simple_action_set_state(action, state);
-}
-
 void _bedit_cmd_view_toggle_fullscreen_mode(
     GSimpleAction *action, GVariant *state, gpointer user_data) {
     BeditWindow *window = BEDIT_WINDOW(user_data);
