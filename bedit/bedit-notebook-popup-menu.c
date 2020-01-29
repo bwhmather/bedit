@@ -25,7 +25,7 @@
 #include "bedit-app-private.h"
 #include "bedit-app.h"
 #include "bedit-commands-private.h"
-#include "bedit-multi-notebook.h"
+#include "bedit-notebook.h"
 
 struct _BeditNotebookPopupMenu {
     GtkMenu parent_instance;
@@ -82,7 +82,6 @@ static void bedit_notebook_popup_menu_get_property(
 
 static void update_sensitivity(BeditNotebookPopupMenu *menu) {
     BeditTabState state;
-    BeditMultiNotebook *mnb;
     GtkNotebook *notebook;
     gint page_num;
     gint n_pages;
@@ -91,12 +90,8 @@ static void update_sensitivity(BeditNotebookPopupMenu *menu) {
 
     state = bedit_tab_get_state(menu->tab);
 
-    mnb = BEDIT_MULTI_NOTEBOOK(_bedit_window_get_multi_notebook(menu->window));
-
-    notebook =
-        GTK_NOTEBOOK(bedit_multi_notebook_get_notebook_for_tab(mnb, menu->tab));
+    notebook = BEDIT_NOTEBOOK(_bedit_window_get_notebook(menu->window));
     n_pages = gtk_notebook_get_n_pages(notebook);
-    n_tabs = bedit_multi_notebook_get_n_tabs(mnb);
     page_num = gtk_notebook_page_num(notebook, GTK_WIDGET(menu->tab));
 
     action =
@@ -111,10 +106,6 @@ static void update_sensitivity(BeditNotebookPopupMenu *menu) {
 
     action = g_action_map_lookup_action(
         G_ACTION_MAP(menu->action_group), "move-to-new-window");
-    g_simple_action_set_enabled(G_SIMPLE_ACTION(action), n_tabs > 1);
-
-    action = g_action_map_lookup_action(
-        G_ACTION_MAP(menu->action_group), "move-to-new-tab-group");
     g_simple_action_set_enabled(G_SIMPLE_ACTION(action), n_pages > 1);
 
     action = g_action_map_lookup_action(
@@ -157,14 +148,10 @@ static void bedit_notebook_popup_menu_class_init(
 static void on_move_left_activate(
     GSimpleAction *action, GVariant *parameter, gpointer user_data) {
     BeditNotebookPopupMenu *menu = BEDIT_NOTEBOOK_POPUP_MENU(user_data);
-    BeditMultiNotebook *mnb;
     GtkNotebook *notebook;
     gint page_num;
 
-    mnb = BEDIT_MULTI_NOTEBOOK(_bedit_window_get_multi_notebook(menu->window));
-
-    notebook =
-        GTK_NOTEBOOK(bedit_multi_notebook_get_notebook_for_tab(mnb, menu->tab));
+    notebook = GTK_NOTEBOOK(_bedit_window_get_notebook(menu->window));
     page_num = gtk_notebook_page_num(notebook, GTK_WIDGET(menu->tab));
 
     if (page_num > 0) {
@@ -176,15 +163,11 @@ static void on_move_left_activate(
 static void on_move_right_activate(
     GSimpleAction *action, GVariant *parameter, gpointer user_data) {
     BeditNotebookPopupMenu *menu = BEDIT_NOTEBOOK_POPUP_MENU(user_data);
-    BeditMultiNotebook *mnb;
     GtkNotebook *notebook;
     gint page_num;
     gint n_pages;
 
-    mnb = BEDIT_MULTI_NOTEBOOK(_bedit_window_get_multi_notebook(menu->window));
-
-    notebook =
-        GTK_NOTEBOOK(bedit_multi_notebook_get_notebook_for_tab(mnb, menu->tab));
+    notebook = GTK_NOTEBOOK(_bedit_window_get_notebook(menu->window));
     n_pages = gtk_notebook_get_n_pages(notebook);
     page_num = gtk_notebook_page_num(notebook, GTK_WIDGET(menu->tab));
 
@@ -201,13 +184,6 @@ static void on_move_to_new_window_activate(
     _bedit_window_move_tab_to_new_window(menu->window, menu->tab);
 }
 
-static void on_move_to_new_tab_group_activate(
-    GSimpleAction *action, GVariant *parameter, gpointer user_data) {
-    BeditNotebookPopupMenu *menu = BEDIT_NOTEBOOK_POPUP_MENU(user_data);
-
-    _bedit_window_move_tab_to_new_tab_group(menu->window, menu->tab);
-}
-
 static void on_close_activate(
     GSimpleAction *action, GVariant *parameter, gpointer user_data) {
     BeditNotebookPopupMenu *menu = BEDIT_NOTEBOOK_POPUP_MENU(user_data);
@@ -219,7 +195,6 @@ static GActionEntry action_entries[] = {
     {"move-left", on_move_left_activate},
     {"move-right", on_move_right_activate},
     {"move-to-new-window", on_move_to_new_window_activate},
-    {"move-to-new-tab-group", on_move_to_new_tab_group_activate},
     {"close", on_close_activate}};
 
 static void bedit_notebook_popup_menu_init(BeditNotebookPopupMenu *menu) {

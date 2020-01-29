@@ -1572,7 +1572,7 @@ static void close_confirmation_dialog_response_handler(
                 close_all_tabs(window);
                 return;
             } else if (notebook_to_close) {
-                bedit_notebook_remove_all_tabs(notebook_to_close);
+                bedit_notebook_close_all_tabs(notebook_to_close);
             } else {
                 g_return_if_reached();
             }
@@ -1600,7 +1600,7 @@ static void close_confirmation_dialog_response_handler(
             close_all_tabs(window);
             return;
         } else if (notebook_to_close) {
-            bedit_notebook_remove_all_tabs(notebook_to_close);
+            bedit_notebook_close_all_tabs(notebook_to_close);
         } else {
             const GList *unsaved_documents;
 
@@ -1767,7 +1767,7 @@ void _bedit_cmd_file_close_notebook(
 
     if (unsaved_docs == NULL) {
         /* There is no document to save -> close the notebook */
-        bedit_notebook_remove_all_tabs(BEDIT_NOTEBOOK(notebook));
+        bedit_notebook_close_all_tabs(BEDIT_NOTEBOOK(notebook));
     } else {
         file_close_dialog(window, unsaved_docs);
 

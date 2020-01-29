@@ -28,7 +28,6 @@
 #include <gtk/gtk.h>
 
 #include "bedit-debug.h"
-#include "bedit-multi-notebook.h"
 #include "bedit-notebook.h"
 #include "bedit-window.h"
 
@@ -68,23 +67,3 @@ void _bedit_cmd_documents_move_to_new_window(
 
     _bedit_window_move_tab_to_new_window(window, tab);
 }
-
-/* Methods releated with the tab groups */
-void _bedit_cmd_documents_new_tab_group(
-    GSimpleAction *action, GVariant *parameter, gpointer user_data) {
-    bedit_multi_notebook_add_new_notebook(BEDIT_MULTI_NOTEBOOK(
-        _bedit_window_get_multi_notebook(BEDIT_WINDOW(user_data))));
-}
-
-void _bedit_cmd_documents_previous_tab_group(
-    GSimpleAction *action, GVariant *parameter, gpointer user_data) {
-    bedit_multi_notebook_previous_notebook(BEDIT_MULTI_NOTEBOOK(
-        _bedit_window_get_multi_notebook(BEDIT_WINDOW(user_data))));
-}
-
-void _bedit_cmd_documents_next_tab_group(
-    GSimpleAction *action, GVariant *parameter, gpointer user_data) {
-    bedit_multi_notebook_next_notebook(BEDIT_MULTI_NOTEBOOK(
-        _bedit_window_get_multi_notebook(BEDIT_WINDOW(user_data))));
-}
-

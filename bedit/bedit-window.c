@@ -41,7 +41,6 @@
 #include "bedit-enum-types.h"
 #include "bedit-highlight-mode-selector.h"
 #include "bedit-menu-stack-switcher.h"
-#include "bedit-multi-notebook.h"
 #include "bedit-notebook-popup-menu.h"
 #include "bedit-notebook.h"
 #include "bedit-plugins-engine.h"
@@ -201,9 +200,6 @@ static void bedit_window_finalize(GObject *object) {
 
 static void update_fullscreen(BeditWindow *window, gboolean is_fullscreen) {
     GAction *fullscreen_action;
-
-    _bedit_multi_notebook_set_show_tabs(
-        window->priv->multi_notebook, !is_fullscreen);
 
     if (is_fullscreen) {
         gtk_widget_hide(window->priv->statusbar);
@@ -377,7 +373,7 @@ static void bedit_window_class_init(BeditWindowClass *klass) {
     gtk_widget_class_bind_template_child_private(
         widget_class, BeditWindow, side_panel_inline_stack_switcher);
     gtk_widget_class_bind_template_child_private(
-        widget_class, BeditWindow, multi_notebook);
+        widget_class, BeditWindow, notebook);
     gtk_widget_class_bind_template_child_private(
         widget_class, BeditWindow, statusbar);
     gtk_widget_class_bind_template_child_private(
@@ -480,12 +476,8 @@ static void update_actions_sensitivity(BeditWindow *window) {
 
     bedit_debug(DEBUG_WINDOW);
 
-    notebook =
-        bedit_multi_notebook_get_active_notebook(window->priv->multi_notebook);
-    tab = bedit_multi_notebook_get_active_tab(window->priv->multi_notebook);
-    num_notebooks =
-        bedit_multi_notebook_get_n_notebooks(window->priv->multi_notebook);
-    num_tabs = bedit_multi_notebook_get_n_tabs(window->priv->multi_notebook);
+    notebook = window->priv->notebook;
+    tab = bedit_notebook_get_active_tab(notebook);
 
     if (notebook != NULL && tab != NULL) {
         state = bedit_tab_get_state(tab);
@@ -651,16 +643,6 @@ static void update_actions_sensitivity(BeditWindow *window) {
         G_SIMPLE_ACTION(action),
         tab_number >= 0 &&
             tab_number < gtk_notebook_get_n_pages(GTK_NOTEBOOK(notebook)) - 1);
-
-    action = g_action_map_lookup_action(G_ACTION_MAP(window), "new-tab-group");
-    g_simple_action_set_enabled(G_SIMPLE_ACTION(action), num_tabs > 0);
-
-    action =
-        g_action_map_lookup_action(G_ACTION_MAP(window), "previous-tab-group");
-    g_simple_action_set_enabled(G_SIMPLE_ACTION(action), num_notebooks > 1);
-
-    action = g_action_map_lookup_action(G_ACTION_MAP(window), "next-tab-group");
-    g_simple_action_set_enabled(G_SIMPLE_ACTION(action), num_notebooks > 1);
 
     /* We disable File->Quit/SaveAll/CloseAll while printing to avoid to have
        two operations (save and print/print preview) that uses the message area
@@ -1181,9 +1163,13 @@ static void update_statusbar(
 }
 
 static void tab_switched(
-    BeditMultiNotebook *mnb, BeditNotebook *old_notebook, BeditTab *old_tab,
-    BeditNotebook *new_notebook, BeditTab *new_tab, BeditWindow *window) {
+    BeditNotebook *notebook, BeditTab *new_tab, guint page_num,
+    BeditWindow *window) {
+    BeditTab *old_tab;
     BeditView *old_view, *new_view;
+
+    old_tab = window->priv->active_tab;
+    window->priv->active_tab = new_tab;
 
     old_view = old_tab ? bedit_tab_get_view(old_tab) : NULL;
     new_view = new_tab ? bedit_tab_get_view(new_tab) : NULL;
@@ -1212,8 +1198,8 @@ void _bedit_window_set_lockdown(
     autosave = g_settings_get_boolean(
         window->priv->editor_settings, BEDIT_SETTINGS_AUTO_SAVE);
 
-    bedit_multi_notebook_foreach_tab(
-        window->priv->multi_notebook, (GtkCallback)set_auto_save_enabled,
+    bedit_notebook_foreach_tab(
+        window->priv->notebook, (GtkCallback)set_auto_save_enabled,
         &autosave);
 
     update_actions_sensitivity(window);
@@ -1262,8 +1248,8 @@ static void update_window_state(BeditWindow *window) {
     window->priv->state = 0;
     window->priv->num_tabs_with_error = 0;
 
-    bedit_multi_notebook_foreach_tab(
-        window->priv->multi_notebook, (GtkCallback)analyze_tab_state, window);
+    bedit_notebook_foreach_tab(
+        window->priv->notebook, (GtkCallback)analyze_tab_state, window);
 
     bedit_debug_message(DEBUG_WINDOW, "New state: %x", window->priv->state);
 
@@ -1290,7 +1276,7 @@ static void update_can_close(BeditWindow *window) {
 
     bedit_debug(DEBUG_WINDOW);
 
-    tabs = bedit_multi_notebook_get_all_tabs(priv->multi_notebook);
+    tabs = bedit_notebook_get_all_tabs(priv->notebook);
 
     for (l = tabs; l != NULL; l = g_list_next(l)) {
         BeditTab *tab = l->data;
@@ -1584,7 +1570,7 @@ static void editable_changed(
 }
 
 static void on_tab_added(
-    BeditMultiNotebook *multi, BeditNotebook *notebook, BeditTab *tab,
+    BeditNotebook *notebook, BeditTab *tab, guint page_num,
     BeditWindow *window) {
     BeditView *view;
     BeditDocument *doc;
@@ -1656,7 +1642,7 @@ GFile *_bedit_window_pop_last_closed_doc(BeditWindow *window) {
 }
 
 static void on_tab_removed(
-    BeditMultiNotebook *multi, BeditNotebook *notebook, BeditTab *tab,
+    BeditNotebook *notebook, BeditTab *tab, guint page_num,
     BeditWindow *window) {
     BeditView *view;
     BeditDocument *doc;
@@ -1664,7 +1650,7 @@ static void on_tab_removed(
 
     bedit_debug(DEBUG_WINDOW);
 
-    num_tabs = bedit_multi_notebook_get_n_tabs(multi);
+    num_tabs = bedit_notebook_get_n_tabs(notebook);
 
     view = bedit_tab_get_view(tab);
     doc = bedit_tab_get_document(tab);
@@ -1691,7 +1677,7 @@ static void on_tab_removed(
     g_signal_handlers_disconnect_by_func(
         view, G_CALLBACK(editable_changed), window);
 
-    if (tab == bedit_multi_notebook_get_active_tab(multi)) {
+    if (tab == bedit_notebook_get_active_tab(notebook)) {
         if (window->priv->tab_width_id) {
             g_signal_handler_disconnect(view, window->priv->tab_width_id);
             window->priv->tab_width_id = 0;
@@ -1702,7 +1688,7 @@ static void on_tab_removed(
             window->priv->language_changed_id = 0;
         }
 
-        bedit_multi_notebook_set_active_tab(multi, NULL);
+        bedit_notebook_set_active_tab(notebook, NULL);
     }
 
     g_return_if_fail(num_tabs >= 0);
@@ -1735,7 +1721,7 @@ static void on_tab_removed(
 }
 
 static void on_page_reordered(
-    BeditMultiNotebook *multi, BeditNotebook *notebook, GtkWidget *page,
+    BeditNotebook *notebook, GtkWidget *page,
     gint page_num, BeditWindow *window) {
     update_actions_sensitivity(window);
 
@@ -1743,7 +1729,7 @@ static void on_page_reordered(
 }
 
 static GtkNotebook *on_notebook_create_window(
-    BeditMultiNotebook *mnb, GtkNotebook *notebook, GtkWidget *page, gint x,
+    GtkNotebook *notebook, GtkWidget *page, gint x,
     gint y, BeditWindow *window) {
     BeditWindow *new_window;
     GtkWidget *new_notebook;
@@ -1759,16 +1745,15 @@ static GtkNotebook *on_notebook_create_window(
 }
 
 static void on_tab_close_request(
-    BeditMultiNotebook *multi, BeditNotebook *notebook, BeditTab *tab,
-    GtkWindow *window) {
+    BeditNotebook *notebook, BeditTab *tab, GtkWindow *window) {
+    // TODO figure out if this is still needed without multi-notebook.
     /* Note: we are destroying the tab before the default handler
      * seems to be ok, but we need to keep an eye on this. */
     _bedit_cmd_file_close_tab(tab, BEDIT_WINDOW(window));
 }
 
 static void on_show_popup_menu(
-    BeditMultiNotebook *multi, GdkEventButton *event, BeditTab *tab,
-    BeditWindow *window) {
+    GdkEventButton *event, BeditTab *tab, BeditWindow *window) {
     GtkWidget *menu;
 
     if (event == NULL) {
@@ -1782,16 +1767,6 @@ static void on_show_popup_menu(
 
     gtk_widget_show(menu);
     gtk_menu_popup_at_pointer(GTK_MENU(menu), (GdkEvent *)event);
-}
-
-static void on_notebook_changed(
-    BeditMultiNotebook *mnb, GParamSpec *pspec, BeditWindow *window) {
-    update_actions_sensitivity(window);
-}
-
-static void on_notebook_removed(
-    BeditMultiNotebook *mnb, BeditNotebook *notebook, BeditWindow *window) {
-    update_actions_sensitivity(window);
 }
 
 static void on_fullscreen_toggle_button_toggled(
@@ -1845,7 +1820,7 @@ static void side_panel_visibility_changed(
     if (visible) {
         gtk_widget_grab_focus(window->priv->side_panel);
     } else {
-        gtk_widget_grab_focus(GTK_WIDGET(window->priv->multi_notebook));
+        gtk_widget_grab_focus(GTK_WIDGET(window->priv->notebook));
     }
 
     g_object_get(
@@ -2025,9 +2000,6 @@ static GActionEntry win_entries[] = {
     {"replace", _bedit_cmd_search_replace},
     {"clear-highlight", _bedit_cmd_search_clear_highlight},
     {"goto-line", _bedit_cmd_search_goto_line},
-    {"new-tab-group", _bedit_cmd_documents_new_tab_group},
-    {"previous-tab-group", _bedit_cmd_documents_previous_tab_group},
-    {"next-tab-group", _bedit_cmd_documents_next_tab_group},
     {"previous-document", _bedit_cmd_documents_previous_document},
     {"next-document", _bedit_cmd_documents_next_document},
     {"move-to-new-window", _bedit_cmd_documents_move_to_new_window},
@@ -2125,38 +2097,31 @@ static void bedit_window_init(BeditWindow *window) {
 
     /* Setup main area */
     g_signal_connect(
-        window->priv->multi_notebook, "notebook-removed",
-        G_CALLBACK(on_notebook_removed), window);
-    g_signal_connect(
-        window->priv->multi_notebook, "notify::active-notebook",
-        G_CALLBACK(on_notebook_changed), window);
+        window->priv->notebook, "page-added", G_CALLBACK(on_tab_added),
+        window);  // TODO unsafe cast from GtkWidget to BeditTab.
 
     g_signal_connect(
-        window->priv->multi_notebook, "tab-added", G_CALLBACK(on_tab_added),
+        window->priv->notebook, "page-removed", G_CALLBACK(on_tab_removed),
+        window);  // TODO unsafe cast from GtkWidget to BeditTab.
+
+    g_signal_connect(
+        window->priv->notebook, "switch-page", G_CALLBACK(tab_switched),
         window);
 
     g_signal_connect(
-        window->priv->multi_notebook, "tab-removed", G_CALLBACK(on_tab_removed),
-        window);
-
-    g_signal_connect(
-        window->priv->multi_notebook, "switch-tab", G_CALLBACK(tab_switched),
-        window);
-
-    g_signal_connect(
-        window->priv->multi_notebook, "tab-close-request",
+        window->priv->notebook, "tab-close-request",
         G_CALLBACK(on_tab_close_request), window);
 
     g_signal_connect(
-        window->priv->multi_notebook, "page-reordered",
+        window->priv->notebook, "page-reordered",
         G_CALLBACK(on_page_reordered), window);
 
     g_signal_connect(
-        window->priv->multi_notebook, "create-window",
+        window->priv->notebook, "create-window",
         G_CALLBACK(on_notebook_create_window), window);
 
     g_signal_connect(
-        window->priv->multi_notebook, "show-popup-menu",
+        window->priv->notebook, "show-popup-menu",
         G_CALLBACK(on_show_popup_menu), window);
 
     setup_side_panel(window);
@@ -2266,17 +2231,10 @@ BeditDocument *bedit_window_get_active_document(BeditWindow *window) {
     return BEDIT_DOCUMENT(gtk_text_view_get_buffer(GTK_TEXT_VIEW(view)));
 }
 
-GtkWidget *_bedit_window_get_multi_notebook(BeditWindow *window) {
-    g_return_val_if_fail(BEDIT_IS_WINDOW(window), NULL);
-
-    return GTK_WIDGET(window->priv->multi_notebook);
-}
-
 GtkWidget *_bedit_window_get_notebook(BeditWindow *window) {
     g_return_val_if_fail(BEDIT_IS_WINDOW(window), NULL);
 
-    return GTK_WIDGET(
-        bedit_multi_notebook_get_active_notebook(window->priv->multi_notebook));
+    return GTK_WIDGET(window->priv->notebook);
 }
 
 static BeditTab *process_create_tab(
@@ -2402,9 +2360,9 @@ BeditTab *bedit_window_create_tab_from_stream(
 BeditTab *bedit_window_get_active_tab(BeditWindow *window) {
     g_return_val_if_fail(BEDIT_IS_WINDOW(window), NULL);
 
-    return (window->priv->multi_notebook == NULL)
+    return (window->priv->notebook == NULL)
         ? NULL
-        : bedit_multi_notebook_get_active_tab(window->priv->multi_notebook);
+        : bedit_notebook_get_active_tab(window->priv->notebook);
 }
 
 static void add_document(BeditTab *tab, GList **res) {
@@ -2430,8 +2388,8 @@ GList *bedit_window_get_documents(BeditWindow *window) {
 
     g_return_val_if_fail(BEDIT_IS_WINDOW(window), NULL);
 
-    bedit_multi_notebook_foreach_tab(
-        window->priv->multi_notebook, (GtkCallback)add_document, &res);
+    bedit_notebook_foreach_tab(
+        window->priv->notebook, (GtkCallback)add_document, &res);
 
     res = g_list_reverse(res);
 
@@ -2460,8 +2418,8 @@ GList *bedit_window_get_views(BeditWindow *window) {
 
     g_return_val_if_fail(BEDIT_IS_WINDOW(window), NULL);
 
-    bedit_multi_notebook_foreach_tab(
-        window->priv->multi_notebook, (GtkCallback)add_view, &res);
+    bedit_notebook_foreach_tab(
+        window->priv->notebook, (GtkCallback)add_view, &res);
 
     res = g_list_reverse(res);
 
@@ -2485,7 +2443,7 @@ void bedit_window_close_tab(BeditWindow *window, BeditTab *tab) {
         (bedit_tab_get_state(tab) != BEDIT_TAB_STATE_SHOWING_PRINT_PREVIEW));
 
     tabs = g_list_append(tabs, tab);
-    bedit_multi_notebook_close_tabs(window->priv->multi_notebook, tabs);
+    bedit_notebook_close_tabs(window->priv->notebook, tabs);
     g_list_free(tabs);
 }
 
@@ -2501,7 +2459,7 @@ void bedit_window_close_all_tabs(BeditWindow *window) {
 
     window->priv->removing_tabs = TRUE;
 
-    bedit_multi_notebook_close_all_tabs(window->priv->multi_notebook);
+    bedit_notebook_close_all_tabs(window->priv->notebook);
 
     window->priv->removing_tabs = FALSE;
 }
@@ -2519,7 +2477,7 @@ void bedit_window_close_tabs(BeditWindow *window, const GList *tabs) {
 
     window->priv->removing_tabs = TRUE;
 
-    bedit_multi_notebook_close_tabs(window->priv->multi_notebook, tabs);
+    bedit_notebook_close_tabs(window->priv->notebook, tabs);
 
     window->priv->removing_tabs = FALSE;
 }
@@ -2532,32 +2490,17 @@ BeditWindow *_bedit_window_move_tab_to_new_window(
 
     g_return_val_if_fail(BEDIT_IS_WINDOW(window), NULL);
     g_return_val_if_fail(BEDIT_IS_TAB(tab), NULL);
-    g_return_val_if_fail(
-        bedit_multi_notebook_get_n_notebooks(window->priv->multi_notebook) >
-                1 ||
-            bedit_multi_notebook_get_n_tabs(window->priv->multi_notebook) > 1,
-        NULL);
 
     new_window = clone_window(window);
 
     old_notebook = BEDIT_NOTEBOOK(gtk_widget_get_parent(GTK_WIDGET(tab)));
-    new_notebook = bedit_multi_notebook_get_active_notebook(
-        new_window->priv->multi_notebook);
+    new_notebook = new_window->priv->notebook;
 
     bedit_notebook_move_tab(old_notebook, new_notebook, tab, -1);
 
     gtk_widget_show(GTK_WIDGET(new_window));
 
     return new_window;
-}
-
-void _bedit_window_move_tab_to_new_tab_group(
-    BeditWindow *window, BeditTab *tab) {
-    g_return_if_fail(BEDIT_IS_WINDOW(window));
-    g_return_if_fail(BEDIT_IS_TAB(tab));
-
-    bedit_multi_notebook_add_new_notebook_with_tab(
-        window->priv->multi_notebook, tab);
 }
 
 /**
@@ -2570,7 +2513,7 @@ void _bedit_window_move_tab_to_new_tab_group(
 void bedit_window_set_active_tab(BeditWindow *window, BeditTab *tab) {
     g_return_if_fail(BEDIT_IS_WINDOW(window));
 
-    bedit_multi_notebook_set_active_tab(window->priv->multi_notebook, tab);
+    bedit_notebook_set_active_tab(window->priv->notebook, tab);
 }
 
 /**
@@ -2681,8 +2624,8 @@ GList *bedit_window_get_unsaved_documents(BeditWindow *window) {
 
     g_return_val_if_fail(BEDIT_IS_WINDOW(window), NULL);
 
-    bedit_multi_notebook_foreach_tab(
-        window->priv->multi_notebook, (GtkCallback)add_unsaved_doc, &res);
+    bedit_notebook_foreach_tab(
+        window->priv->notebook, (GtkCallback)add_unsaved_doc, &res);
 
     return g_list_reverse(res);
 }
@@ -2690,7 +2633,7 @@ GList *bedit_window_get_unsaved_documents(BeditWindow *window) {
 GList *_bedit_window_get_all_tabs(BeditWindow *window) {
     g_return_val_if_fail(BEDIT_IS_WINDOW(window), NULL);
 
-    return bedit_multi_notebook_get_all_tabs(window->priv->multi_notebook);
+    return bedit_notebook_get_all_tabs(window->priv->notebook);
 }
 
 void _bedit_window_fullscreen(BeditWindow *window) {
@@ -2742,7 +2685,7 @@ BeditTab *bedit_window_get_tab_from_location(
     g_return_val_if_fail(BEDIT_IS_WINDOW(window), NULL);
     g_return_val_if_fail(G_IS_FILE(location), NULL);
 
-    tabs = bedit_multi_notebook_get_all_tabs(window->priv->multi_notebook);
+    tabs = bedit_notebook_get_all_tabs(window->priv->notebook);
 
     for (l = tabs; l != NULL; l = g_list_next(l)) {
         BeditDocument *doc;

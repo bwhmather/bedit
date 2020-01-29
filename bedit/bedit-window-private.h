@@ -24,7 +24,6 @@
 #include <libpeas/peas-extension-set.h>
 
 #include "bedit-message-bus.h"
-#include "bedit-multi-notebook.h"
 #include "bedit-settings.h"
 #include "bedit/bedit-window.h"
 
@@ -38,7 +37,8 @@ struct _BeditWindowPrivate {
     GSettings *ui_settings;
     GSettings *window_settings;
 
-    BeditMultiNotebook *multi_notebook;
+    BeditNotebook *notebook;
+    BeditTab *active_tab;
 
     GtkWidget *side_panel_box;
     GtkWidget *side_panel;

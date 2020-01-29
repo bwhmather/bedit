@@ -393,7 +393,23 @@ static void bedit_notebook_class_init(BeditNotebookClass *klass) {
     notebook_class->page_added = bedit_notebook_page_added;
 
     klass->change_to_page = bedit_notebook_change_to_page;
+/*
+    signals[TAB_ADDED] = g_signal_new(
+        "tab-added", G_OBJECT_CLASS_TYPE(object_class), G_SIGNAL_RUN_FIRST,
+        G_STRUCT_OFFSET(BeditNotebookClass, tab_added), NULL, NULL, NULL,
+        G_TYPE_NONE, 2, BEDIT_TYPE_NOTEBOOK, BEDIT_TYPE_TAB);
 
+    signals[TAB_REMOVED] = g_signal_new(
+        "tab-removed", G_OBJECT_CLASS_TYPE(object_class), G_SIGNAL_RUN_FIRST,
+        G_STRUCT_OFFSET(BeditNotebookClass, tab_removed), NULL, NULL, NULL,
+        G_TYPE_NONE, 2, BEDIT_TYPE_NOTEBOOK, BEDIT_TYPE_TAB);
+
+    signals[SWITCH_TAB] = g_signal_new(
+        "switch-tab", G_OBJECT_CLASS_TYPE(object_class), G_SIGNAL_RUN_FIRST,
+        G_STRUCT_OFFSET(BeditNotebookClass, switch_tab), NULL, NULL, NULL,
+        G_TYPE_NONE, 4, BEDIT_TYPE_NOTEBOOK, BEDIT_TYPE_TAB,
+        BEDIT_TYPE_NOTEBOOK, BEDIT_TYPE_TAB);
+*/
     signals[TAB_CLOSE_REQUEST] = g_signal_new(
         "tab-close-request", G_OBJECT_CLASS_TYPE(object_class),
         G_SIGNAL_RUN_LAST,
@@ -535,13 +551,75 @@ void bedit_notebook_move_tab(
     g_object_unref(tab);
 }
 
+void bedit_notebook_set_active_tab(BeditNotebook *nb, BeditTab *tab) {
+    gint page_num;
+
+    g_return_if_fail(BEDIT_IS_NOTEBOOK(nb));
+    g_return_if_fail(BEDIT_IS_TAB(tab) || tab == NULL);
+
+    if (tab != NULL) {
+        page_num = gtk_notebook_page_num(GTK_NOTEBOOK(nb), GTK_WIDGET(tab));
+        g_return_if_fail(page_num != -1);
+        gtk_notebook_set_current_page(GTK_NOTEBOOK(nb), page_num);
+    }
+}
+
+BeditTab *bedit_notebook_get_active_tab(BeditNotebook *nb) {
+    gint page_num;
+
+    g_return_if_fail(BEDIT_IS_NOTEBOOK(nb));
+
+    page_num = gtk_notebook_get_current_page(GTK_NOTEBOOK(nb));
+
+    return BEDIT_TAB(gtk_notebook_get_nth_page(GTK_NOTEBOOK(nb), page_num));
+}
+
+gint bedit_notebook_get_n_tabs(BeditNotebook *nb) {
+    g_return_if_fail(BEDIT_IS_NOTEBOOK(nb));
+
+    return gtk_notebook_get_n_pages(GTK_NOTEBOOK(nb));
+}
+
+void bedit_notebook_foreach_tab(
+    BeditNotebook *nb, GtkCallback callback, gpointer callback_data) {
+    GList *children;
+
+    g_return_if_fail(BEDIT_IS_NOTEBOOK(nb));
+
+    gtk_container_foreach(GTK_CONTAINER(nb), callback, callback_data);
+}
+
+GList *bedit_notebook_get_all_tabs(BeditNotebook *nb) {
+    GList *ret = NULL;
+
+    g_return_val_if_fail(BEDIT_IS_NOTEBOOK(nb), NULL);
+
+    return gtk_container_get_children(GTK_CONTAINER(nb));
+}
+
+void bedit_notebook_close_tabs(BeditNotebook *nb, const GList *tabs) {
+    GList *l;
+
+    g_return_if_fail(BEDIT_IS_NOTEBOOK(nb));
+
+    for (l = (GList *)tabs; l != NULL; l = g_list_next(l)) {
+        gint page_num;
+
+        page_num = gtk_notebook_page_num(GTK_NOTEBOOK(nb), GTK_WIDGET(l->data));
+
+        if (page_num != -1) {
+            gtk_container_remove(GTK_CONTAINER(nb), GTK_WIDGET(l->data));
+        }
+    }
+}
+
 /**
- * bedit_notebook_remove_all_tabs:
+ * bedit_notebook_close_all_tabs:
  * @notebook: a #BeditNotebook
  *
  * Removes all #BeditTab from @notebook.
  */
-void bedit_notebook_remove_all_tabs(BeditNotebook *notebook) {
+void bedit_notebook_close_all_tabs(BeditNotebook *notebook) {
     GList *tabs;
     GList *t;
 

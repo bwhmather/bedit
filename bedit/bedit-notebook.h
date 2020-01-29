@@ -86,7 +86,21 @@ void bedit_notebook_add_tab(
 void bedit_notebook_move_tab(
     BeditNotebook *src, BeditNotebook *dest, BeditTab *tab, gint dest_position);
 
-void bedit_notebook_remove_all_tabs(BeditNotebook *nb);
+void bedit_notebook_set_active_tab(BeditNotebook *nb, BeditTab *tab);
+
+BeditTab *bedit_notebook_get_active_tab(BeditNotebook *nb);
+
+gint bedit_notebook_get_n_tabs(BeditNotebook *nb);
+
+void bedit_notebook_foreach_tab(
+    BeditNotebook *nb, GtkCallback callback, gpointer callback_data);
+
+GList *bedit_notebook_get_all_tabs(BeditNotebook *nb);
+
+void bedit_notebook_close_tabs(BeditNotebook *nb, const GList *tabs);
+
+void bedit_notebook_close_all_tabs(BeditNotebook *nb);
+
 
 G_END_DECLS
 

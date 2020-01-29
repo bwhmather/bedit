@@ -127,7 +127,6 @@ BeditMessageBus *bedit_window_get_message_bus(BeditWindow *window);
 /*
  * Non exported functions
  */
-GtkWidget *_bedit_window_get_multi_notebook(BeditWindow *window);
 GtkWidget *_bedit_window_get_notebook(BeditWindow *window);
 
 GMenuModel *_bedit_window_get_hamburger_menu(BeditWindow *window);
