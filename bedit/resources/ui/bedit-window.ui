@@ -69,11 +69,32 @@
                       <object class="BeditNotebook" id="notebook">
                         <property name="visible">True</property>
                         <child type="action-end">
-                          <object class="GtkMenuButton" id="gear_button">
+                          <object class="GtkBox">
                             <property name="visible">True</property>
-                            <property name="valign">center</property>
-                            <property name="use_popover">True</property>
-                            <property name="image">menu_image</property>
+                            <property name="orientation">horizontal</property>
+                            <child>
+                              <object class="GtkMenuButton" id="gear_button">
+                                <property name="visible">True</property>
+                                <property name="valign">center</property>
+                                <property name="use_popover">True</property>
+                                <property name="image">menu_image</property>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="GtkButton" id="leave_fullscreen_button">
+                                <property name="visible">True</property>
+                                <property name="valign">center</property>
+                                <property name="tooltip_text" translatable="yes">Leave Fullscreen</property>
+                                <property name="action_name">win.leave-fullscreen</property>
+                                <property name="image">leave_fullscreen_image</property>
+                                <child internal-child="accessible">
+                                  <object class="AtkObject" id="leave_fullscreen_button_a11y">
+                                    <property name="accessible-name" translatable="yes">Leave Fullscreen</property>
+                                    <property name="accessible-description" translatable="yes">Leave Fullscreen</property>
+                                  </object>
+                                </child>
+                              </object>
+                            </child>
                           </object>
                         </child>
                       </object>
@@ -161,24 +182,6 @@
                   <object class="GtkHeaderBar" id="fullscreen_headerbar">
                     <property name="visible">True</property>
                     <child>
-                      <object class="GtkButton" id="leave_fullscreen_button">
-                        <property name="visible">True</property>
-                        <property name="valign">center</property>
-                        <property name="tooltip_text" translatable="yes">Leave Fullscreen</property>
-                        <property name="action_name">win.leave-fullscreen</property>
-                        <property name="image">leave_fullscreen_image</property>
-                        <child internal-child="accessible">
-                          <object class="AtkObject" id="leave_fullscreen_button_a11y">
-                            <property name="accessible-name" translatable="yes">Leave Fullscreen</property>
-                            <property name="accessible-description" translatable="yes">Leave Fullscreen</property>
-                          </object>
-                        </child>
-                      </object>
-                      <packing>
-                        <property name="pack_type">end</property>
-                      </packing>
-                    </child>
-                    <child>
                       <object class="GtkMenuButton" id="fullscreen_gear_button">
                         <property name="visible">True</property>
                         <property name="valign">center</property>
@@ -213,6 +216,7 @@
     <property name="mode">vertical</property>
     <widgets>
       <widget name="gear_button"/>
+      <widget name="leave_fullscreen_button"/>
     </widgets>
   </object>
   <object class="GtkSizeGroup">
