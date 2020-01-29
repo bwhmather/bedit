@@ -357,12 +357,6 @@ static void bedit_window_class_init(BeditWindowClass *klass) {
     gtk_widget_class_set_template_from_resource(
         widget_class, "/com/bwhmather/bedit/ui/bedit-window.ui");
     gtk_widget_class_bind_template_child_private(
-        widget_class, BeditWindow, titlebar_paned);
-    gtk_widget_class_bind_template_child_private(
-        widget_class, BeditWindow, side_headerbar);
-    gtk_widget_class_bind_template_child_private(
-        widget_class, BeditWindow, headerbar);
-    gtk_widget_class_bind_template_child_private(
         widget_class, BeditWindow, gear_button);
     gtk_widget_class_bind_template_child_private(
         widget_class, BeditWindow, hpaned);
@@ -1803,7 +1797,6 @@ static void side_panel_visibility_changed(
     GtkWidget *panel, GParamSpec *pspec, BeditWindow *window) {
     gboolean visible;
     GAction *action;
-    gchar *layout_desc;
 
     visible = gtk_widget_get_visible(panel);
 
@@ -1822,34 +1815,6 @@ static void side_panel_visibility_changed(
     } else {
         gtk_widget_grab_focus(GTK_WIDGET(window->priv->notebook));
     }
-
-    g_object_get(
-        gtk_settings_get_default(), "gtk-decoration-layout", &layout_desc,
-        NULL);
-    if (visible) {
-        gchar **tokens;
-
-        tokens = g_strsplit(layout_desc, ":", 2);
-        if (tokens) {
-            gchar *layout_headerbar;
-
-            layout_headerbar = g_strdup_printf("%c%s", ':', tokens[1]);
-            gtk_header_bar_set_decoration_layout(
-                GTK_HEADER_BAR(window->priv->headerbar), layout_headerbar);
-            gtk_header_bar_set_decoration_layout(
-                GTK_HEADER_BAR(window->priv->side_headerbar), tokens[0]);
-
-            g_free(layout_headerbar);
-            g_strfreev(tokens);
-        }
-    } else {
-        gtk_header_bar_set_decoration_layout(
-            GTK_HEADER_BAR(window->priv->headerbar), layout_desc);
-        gtk_header_bar_set_decoration_layout(
-            GTK_HEADER_BAR(window->priv->side_headerbar), NULL);
-    }
-
-    g_free(layout_desc);
 }
 
 static void on_side_panel_stack_children_number_changed(
@@ -1861,22 +1826,12 @@ static void on_side_panel_stack_children_number_changed(
 
     if (children != NULL && children->next != NULL) {
         gtk_widget_show(priv->side_stack_switcher);
-
-#ifndef OS_OSX
-        gtk_header_bar_set_custom_title(
-            GTK_HEADER_BAR(priv->side_headerbar), priv->side_stack_switcher);
-#endif
     } else {
         /* side_stack_switcher can get NULL in dispose, before stack children
            are being removed */
         if (priv->side_stack_switcher != NULL) {
             gtk_widget_hide(priv->side_stack_switcher);
         }
-
-#ifndef OS_OSX
-        gtk_header_bar_set_custom_title(
-            GTK_HEADER_BAR(priv->side_headerbar), NULL);
-#endif
     }
 
     g_list_free(children);
@@ -1891,11 +1846,7 @@ static void setup_side_panel(BeditWindow *window) {
         priv->side_panel, "notify::visible",
         G_CALLBACK(side_panel_visibility_changed), window);
 
-#ifdef OS_OSX
     priv->side_stack_switcher = priv->side_panel_inline_stack_switcher;
-#else
-    priv->side_stack_switcher = bedit_menu_stack_switcher_new();
-#endif
 
     gtk_button_set_relief(
         GTK_BUTTON(priv->side_stack_switcher), GTK_RELIEF_NONE);
