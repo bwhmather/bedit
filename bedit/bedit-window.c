@@ -38,7 +38,6 @@
 #include "bedit-dirs.h"
 #include "bedit-document-private.h"
 #include "bedit-document.h"
-#include "bedit-documents-panel.h"
 #include "bedit-enum-types.h"
 #include "bedit-highlight-mode-selector.h"
 #include "bedit-menu-stack-switcher.h"
@@ -1910,7 +1909,6 @@ static void on_side_panel_stack_children_number_changed(
 
 static void setup_side_panel(BeditWindow *window) {
     BeditWindowPrivate *priv = window->priv;
-    GtkWidget *documents_panel;
 
     bedit_debug(DEBUG_WINDOW);
 
@@ -1942,12 +1940,6 @@ static void setup_side_panel(BeditWindow *window) {
     g_signal_connect(
         priv->side_panel, "remove",
         G_CALLBACK(on_side_panel_stack_children_number_changed), window);
-
-    documents_panel = bedit_documents_panel_new(window);
-    gtk_widget_show_all(documents_panel);
-    gtk_stack_add_titled(
-        GTK_STACK(priv->side_panel), documents_panel,
-        "BeditWindowDocumentsPanel", _("Documents"));
 }
 
 static void init_panels_visibility(BeditWindow *window) {
