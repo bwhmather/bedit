@@ -554,6 +554,10 @@ static void setup_theme_extensions(BeditApp *app) {
     GtkSettings *settings;
 
     settings = gtk_settings_get_default();
+
+	settings = gtk_settings_get_default ();
+	g_object_set(
+	    G_OBJECT(settings), "gtk-application-prefer-dark-theme", TRUE, NULL);
     g_signal_connect(
         settings, "notify::gtk-theme-name", G_CALLBACK(theme_changed), app);
     theme_changed(settings, NULL, app);
