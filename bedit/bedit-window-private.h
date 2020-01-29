@@ -64,11 +64,7 @@ struct _BeditWindowPrivate {
     guint language_changed_id;
     guint wrap_mode_changed_id;
 
-    /* Headerbars */
-    GtkWidget *titlebar_paned;
-    GtkWidget *side_headerbar;
-    GtkWidget *headerbar;
-
+    /* Tab bar widgets */
     GtkMenuButton *gear_button;
     GtkMenuButton *leave_fullscreen_button;
 
