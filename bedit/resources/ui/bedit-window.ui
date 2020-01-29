@@ -27,17 +27,6 @@
           <object class="GtkHeaderBar" id="headerbar">
             <property name="visible">True</property>
             <property name="show_close_button">True</property>
-            <child>
-              <object class="GtkMenuButton" id="gear_button">
-                <property name="visible">True</property>
-                <property name="valign">center</property>
-                <property name="use_popover">True</property>
-                <property name="image">menu_image</property>
-              </object>
-              <packing>
-                <property name="pack_type">end</property>
-              </packing>
-            </child>
           </object>
           <packing>
             <property name="shrink">False</property>
@@ -105,6 +94,14 @@
                     <child>
                       <object class="BeditNotebook" id="notebook">
                         <property name="visible">True</property>
+                        <child type="action-end">
+                          <object class="GtkMenuButton" id="gear_button">
+                            <property name="visible">True</property>
+                            <property name="valign">center</property>
+                            <property name="use_popover">True</property>
+                            <property name="image">menu_image</property>
+                          </object>
+                        </child>
                       </object>
                       <packing>
                         <property name="resize">True</property>
