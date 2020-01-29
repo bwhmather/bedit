@@ -355,6 +355,8 @@ static void bedit_window_class_init(BeditWindowClass *klass) {
     gtk_widget_class_set_template_from_resource(
         widget_class, "/com/bwhmather/bedit/ui/bedit-window.ui");
     gtk_widget_class_bind_template_child_private(
+        widget_class, BeditWindow, action_area);
+    gtk_widget_class_bind_template_child_private(
         widget_class, BeditWindow, gear_button);
     gtk_widget_class_bind_template_child_private(
         widget_class, BeditWindow, hpaned);
@@ -2405,6 +2407,20 @@ GtkWidget *bedit_window_get_side_panel(BeditWindow *window) {
     g_return_val_if_fail(BEDIT_IS_WINDOW(window), NULL);
 
     return window->priv->side_panel;
+}
+
+/**
+ * bedit_window_get_action_area:
+ * @window: a #BeditWindow
+ *
+ * The actions area is the list of buttons to the right of the tab bar.
+ *
+ * Returns: (transfer none): #GtkContainer
+ */
+GtkWidget *bedit_window_get_action_area(BeditWindow *window) {
+    g_return_val_if_fail(BEDIT_IS_WINDOW(window), NULL);
+
+    return window->priv->action_area;
 }
 
 /**

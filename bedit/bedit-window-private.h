@@ -65,8 +65,9 @@ struct _BeditWindowPrivate {
     guint wrap_mode_changed_id;
 
     /* Tab bar widgets */
-    GtkMenuButton *gear_button;
-    GtkMenuButton *leave_fullscreen_button;
+    GtkWidget *action_area;
+    GtkWidget *gear_button;
+    GtkWidget *leave_fullscreen_button;
 
     gint num_tabs_with_error;
 
