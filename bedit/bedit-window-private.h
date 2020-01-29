@@ -50,12 +50,6 @@ struct _BeditWindowPrivate {
     BeditMessageBus *message_bus;
     PeasExtensionSet *extensions;
 
-    /* Widgets for fullscreen mode */
-    GtkWidget *fullscreen_eventbox;
-    GtkRevealer *fullscreen_revealer;
-    GtkWidget *fullscreen_headerbar;
-    GtkMenuButton *fullscreen_gear_button;
-
     /* statusbar and context ids for statusbar messages */
     GtkWidget *statusbar;
     GtkWidget *line_col_button;
@@ -76,6 +70,7 @@ struct _BeditWindowPrivate {
     GtkWidget *headerbar;
 
     GtkMenuButton *gear_button;
+    GtkMenuButton *leave_fullscreen_button;
 
     gint num_tabs_with_error;
 

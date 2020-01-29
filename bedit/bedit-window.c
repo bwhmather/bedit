@@ -210,13 +210,11 @@ static void update_fullscreen(BeditWindow *window, gboolean is_fullscreen) {
         }
     }
 
-#ifndef OS_OSX
     if (is_fullscreen) {
-        gtk_widget_show_all(window->priv->fullscreen_eventbox);
+        gtk_widget_show_all(window->priv->leave_fullscreen_button);
     } else {
-        gtk_widget_hide(window->priv->fullscreen_eventbox);
+        gtk_widget_hide(window->priv->leave_fullscreen_button);
     }
-#endif
 
     fullscreen_action =
         g_action_map_lookup_action(G_ACTION_MAP(window), "fullscreen");
@@ -377,13 +375,7 @@ static void bedit_window_class_init(BeditWindowClass *klass) {
     gtk_widget_class_bind_template_child_private(
         widget_class, BeditWindow, line_col_button);
     gtk_widget_class_bind_template_child_private(
-        widget_class, BeditWindow, fullscreen_eventbox);
-    gtk_widget_class_bind_template_child_private(
-        widget_class, BeditWindow, fullscreen_revealer);
-    gtk_widget_class_bind_template_child_private(
-        widget_class, BeditWindow, fullscreen_headerbar);
-    gtk_widget_class_bind_template_child_private(
-        widget_class, BeditWindow, fullscreen_gear_button);
+        widget_class, BeditWindow, leave_fullscreen_button);
 }
 
 static void received_clipboard_contents(
@@ -1443,80 +1435,6 @@ static void drop_uris_cb(
     load_uris_from_drop(window, uri_list);
 }
 
-static void update_fullscreen_revealer_state(BeditWindow *window) {
-    gboolean open_recent_menu_is_active;
-    gboolean hamburger_menu_is_active;
-
-    hamburger_menu_is_active = gtk_toggle_button_get_active(
-        GTK_TOGGLE_BUTTON(window->priv->fullscreen_gear_button));
-
-    gtk_revealer_set_reveal_child(
-        window->priv->fullscreen_revealer,
-        (window->priv->in_fullscreen_eventbox || open_recent_menu_is_active ||
-         hamburger_menu_is_active));
-}
-
-static gboolean on_fullscreen_eventbox_enter_notify_event(
-    GtkWidget *fullscreen_eventbox, GdkEventCrossing *event,
-    BeditWindow *window) {
-    window->priv->in_fullscreen_eventbox = TRUE;
-    update_fullscreen_revealer_state(window);
-
-    return GDK_EVENT_PROPAGATE;
-}
-
-static gboolean on_fullscreen_eventbox_leave_notify_event(
-    GtkWidget *fullscreen_eventbox, GdkEventCrossing *event,
-    BeditWindow *window) {
-    if (-1.0 <= event->y && event->y <= 0.0) {
-        /* Ignore the event.
-         *
-         * Leave notify events are received with -1 <= y <= 0
-         * coordinates, although the BeditWindow is in fullscreen mode
-         * and when there are no screens above (it's maybe a bug in an
-         * underlying library).
-         * If we hide the headerbar when those events happen, then it
-         * makes the headerbar to be shown/hidden a lot of time in a
-         * short period of time, i.e. a "stuttering". In other words
-         * lots of leave/enter events are received when moving the mouse
-         * upwards on the screen when the mouse is already at the top.
-         * The expected leave event has a positive event->y value being
-         * >= to the height of the headerbar (approximately
-         * 40 <= y <= 50). So clearly when we receive a leave event with
-         * event->y <= 0, it means that the mouse has left the eventbox
-         * on the wrong side.
-         * The -1.0 <= event->y is there (instead of just <= 0.0) in the
-         * case that there is another screen *above*, even if this
-         * heuristic/workaround is not perfect in that case. But that
-         * case is quite rare, so it's probably a good enough solution.
-         *
-         * Note that apparently the "stuttering" occurs only on an Xorg
-         * session, not on Wayland (tested with GNOME).
-         *
-         * If you see a better solution...
-         */
-        return GDK_EVENT_PROPAGATE;
-    }
-
-    window->priv->in_fullscreen_eventbox = FALSE;
-    update_fullscreen_revealer_state(window);
-
-    return GDK_EVENT_PROPAGATE;
-}
-
-static void setup_fullscreen_eventbox(BeditWindow *window) {
-    gtk_widget_set_size_request(window->priv->fullscreen_eventbox, -1, 1);
-    gtk_widget_hide(window->priv->fullscreen_eventbox);
-
-    g_signal_connect(
-        window->priv->fullscreen_eventbox, "enter-notify-event",
-        G_CALLBACK(on_fullscreen_eventbox_enter_notify_event), window);
-
-    g_signal_connect(
-        window->priv->fullscreen_eventbox, "leave-notify-event",
-        G_CALLBACK(on_fullscreen_eventbox_leave_notify_event), window);
-}
-
 static void empty_search_notify_cb(
     BeditDocument *doc, GParamSpec *pspec, BeditWindow *window) {
     if (doc == bedit_window_get_active_document(window)) {
@@ -1763,11 +1681,6 @@ static void on_show_popup_menu(
     gtk_menu_popup_at_pointer(GTK_MENU(menu), (GdkEvent *)event);
 }
 
-static void on_fullscreen_toggle_button_toggled(
-    GtkToggleButton *fullscreen_toggle_button, BeditWindow *window) {
-    update_fullscreen_revealer_state(window);
-}
-
 static void side_panel_size_allocate(
     GtkWidget *widget, GtkAllocation *allocation, BeditWindow *window) {
     window->priv->side_panel_size = allocation->width;
@@ -1965,11 +1878,13 @@ static GActionEntry win_entries[] = {
     {"overwrite-mode", NULL, NULL, "false", _bedit_cmd_edit_overwrite_mode}};
 
 static void sync_fullscreen_actions(BeditWindow *window, gboolean fullscreen) {
+    /* TODO this no longer changes anything and should be moved to init */
     GtkMenuButton *button;
     GPropertyAction *action;
 
-    button = fullscreen ? window->priv->fullscreen_gear_button
-                        : window->priv->gear_button;
+    /* button = fullscreen ? window->priv->fullscreen_gear_button
+                        : window->priv->gear_button; */
+    button = window->priv->gear_button;
     g_action_map_remove_action(G_ACTION_MAP(window), "hamburger-menu");
     action = g_property_action_new("hamburger-menu", button, "active");
     g_action_map_add_action(G_ACTION_MAP(window), G_ACTION(action));
@@ -2021,7 +1936,7 @@ static void bedit_window_init(BeditWindow *window) {
     window->priv->window_group = gtk_window_group_new();
     gtk_window_group_add_window(window->priv->window_group, GTK_WINDOW(window));
 
-    setup_fullscreen_eventbox(window);
+    /* TODO inline */
     sync_fullscreen_actions(window, FALSE);
 
     hamburger_menu =
@@ -2029,19 +1944,10 @@ static void bedit_window_init(BeditWindow *window) {
     if (hamburger_menu) {
         gtk_menu_button_set_menu_model(
             window->priv->gear_button, hamburger_menu);
-        gtk_menu_button_set_menu_model(
-            window->priv->fullscreen_gear_button, hamburger_menu);
     } else {
         gtk_widget_hide(GTK_WIDGET(window->priv->gear_button));
-        gtk_widget_hide(GTK_WIDGET(window->priv->fullscreen_gear_button));
         gtk_widget_set_no_show_all(GTK_WIDGET(window->priv->gear_button), TRUE);
-        gtk_widget_set_no_show_all(
-            GTK_WIDGET(window->priv->fullscreen_gear_button), TRUE);
     }
-
-    g_signal_connect(
-        GTK_TOGGLE_BUTTON(window->priv->fullscreen_gear_button), "toggled",
-        G_CALLBACK(on_fullscreen_toggle_button_toggled), window);
 
     /* Setup status bar */
     setup_statusbar(window);

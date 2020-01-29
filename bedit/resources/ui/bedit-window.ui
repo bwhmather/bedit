@@ -167,44 +167,10 @@
             </child>
           </object>
         </child>
-        <child type="overlay">
-          <object class="GtkEventBox" id="fullscreen_eventbox">
-            <property name="visible">True</property>
-            <property name="can_focus">False</property>
-            <property name="valign">start</property>
-            <child>
-              <object class="GtkRevealer" id="fullscreen_revealer">
-                <property name="visible">True</property>
-                <property name="can_focus">False</property>
-                <property name="reveal_child">False</property>
-                <property name="valign">start</property>
-                <child>
-                  <object class="GtkHeaderBar" id="fullscreen_headerbar">
-                    <property name="visible">True</property>
-                    <child>
-                      <object class="GtkMenuButton" id="fullscreen_gear_button">
-                        <property name="visible">True</property>
-                        <property name="valign">center</property>
-                        <property name="image">fullscreen_menu_image</property>
-                      </object>
-                      <packing>
-                        <property name="pack_type">end</property>
-                      </packing>
-                    </child>
-                  </object>
-                </child>
-              </object>
-            </child>
-          </object>
-        </child>
       </object>
     </child>
   </template>
   <object class="GtkImage" id="menu_image">
-    <property name="visible">True</property>
-    <property name="icon_name">open-menu-symbolic</property>
-  </object>
-  <object class="GtkImage" id="fullscreen_menu_image">
     <property name="visible">True</property>
     <property name="icon_name">open-menu-symbolic</property>
   </object>
@@ -216,13 +182,6 @@
     <property name="mode">vertical</property>
     <widgets>
       <widget name="gear_button"/>
-      <widget name="leave_fullscreen_button"/>
-    </widgets>
-  </object>
-  <object class="GtkSizeGroup">
-    <property name="mode">vertical</property>
-    <widgets>
-      <widget name="fullscreen_gear_button"/>
       <widget name="leave_fullscreen_button"/>
     </widgets>
   </object>
