@@ -82,7 +82,7 @@
                             </child>
                             <child>
                               <object class="GtkButton" id="leave_fullscreen_button">
-                                <property name="visible">True</property>
+                                <property name="visible">False</property>
                                 <property name="valign">center</property>
                                 <property name="tooltip_text" translatable="yes">Leave Fullscreen</property>
                                 <property name="action_name">win.leave-fullscreen</property>
@@ -98,10 +98,6 @@
                           </object>
                         </child>
                       </object>
-                      <packing>
-                        <property name="resize">True</property>
-                        <property name="shrink">False</property>
-                      </packing>
                     </child>
                     <child>
                       <object class="BeditStatusbar" id="statusbar">
