@@ -1,43 +1,3 @@
-.bedit-document-panel {
-    background-color: @sidebar_bg;
-}
-
-.bedit-document-panel:backdrop {
-    color: #b0b2b2;
-}
-
-.bedit-document-panel row:selected:backdrop {
-    background-color: #8b8e8f;
-}
-
-.bedit-document-panel-group-row,
-.bedit-document-panel-group-row:hover {
-    border-top: 1px solid alpha(currentColor, 0.3);
-}
-
-.bedit-document-panel-group-row:first-child,
-.bedit-document-panel-group-row:first-child:hover {
-    border-top: 0px;
-}
-
-/* Try to look as the notebook tab close button */
-.bedit-document-panel row button.flat {
-    padding: 0;
-    margin-top: 8px;
-    margin-bottom: 8px;
-    min-width: 18px;
-    min-height: 18px;
-    color: alpha(currentColor,0.3);
-}
-
-.bedit-document-panel row:hover button.flat {
-    color: alpha(currentColor,0.5);
-}
-
-.bedit-document-panel row button.flat:hover {
-    color: @theme_fg_color;
-}
-
 statusbar {
     border-top: 1px solid @borders;
 }
@@ -59,3 +19,4 @@ statusbar {
     margin: 2px;
     padding: 2px;
 }
+
