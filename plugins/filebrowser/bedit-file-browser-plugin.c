@@ -63,6 +63,7 @@ struct _BeditFileBrowserPluginPrivate {
 
     BeditWindow *window;
 
+    GtkMenuButton *action_area_button;
     BeditFileBrowserWidget *tree_widget;
     gboolean auto_root;
     gulong end_loading_handle;
@@ -389,11 +390,12 @@ static void bedit_file_browser_plugin_activate(
     BeditWindowActivatable *activatable) {
     BeditFileBrowserPlugin *plugin = BEDIT_FILE_BROWSER_PLUGIN(activatable);
     BeditFileBrowserPluginPrivate *priv;
-    GtkWidget *panel;
+    GtkWidget *action_area;
     BeditFileBrowserStore *store;
 
     priv = plugin->priv;
 
+    /* Setup tree widget. */
     priv->tree_widget =
         BEDIT_FILE_BROWSER_WIDGET(bedit_file_browser_widget_new());
 
@@ -424,12 +426,37 @@ static void bedit_file_browser_plugin_activate(
         priv->settings, FILEBROWSER_FILTER_PATTERN, priv->tree_widget,
         FILEBROWSER_FILTER_PATTERN, G_SETTINGS_BIND_GET | G_SETTINGS_BIND_SET);
 
-    panel = bedit_window_get_side_panel(priv->window);
+    /* Setup menu button widget. */
+    GtkWidget *action_area_button_image = gtk_image_new_from_icon_name(
+        "folder-symbolic", GTK_ICON_SIZE_BUTTON);
 
-    gtk_stack_add_titled(
-        GTK_STACK(panel), GTK_WIDGET(priv->tree_widget),
-        "BeditFileBrowserPanel", _("File Browser"));
+    priv->action_area_button = gtk_menu_button_new();
+    gtk_container_add(
+        GTK_CONTAINER(priv->action_area_button), action_area_button_image);
 
+    /* Connect using popover. */
+    GtkWidget *popover = gtk_popover_new(priv->action_area_button);
+    gtk_menu_button_set_popover(
+        GTK_MENU_BUTTON(priv->action_area_button), GTK_POPOVER(popover));
+
+    g_object_set(
+        G_OBJECT(popover),
+        "constrain-to", GTK_POPOVER_CONSTRAINT_WINDOW, NULL);
+
+    g_object_set(
+        G_OBJECT(popover),
+        "height-request", 700, NULL);  // TODO scale to fit window.
+
+    gtk_container_add(
+        GTK_CONTAINER(popover), priv->tree_widget);
+
+    /* Add everything to the area to the left of the tab bar. */
+    action_area = bedit_window_get_action_area(priv->window);
+    gtk_container_add(
+        GTK_CONTAINER(action_area), GTK_WIDGET(priv->action_area_button));
+
+    gtk_widget_show(action_area_button_image);
+    gtk_widget_show(priv->action_area_button);
     gtk_widget_show(GTK_WIDGET(priv->tree_widget));
 
     /* Install nautilus preferences */
@@ -469,7 +496,7 @@ static void bedit_file_browser_plugin_deactivate(
     BeditWindowActivatable *activatable) {
     BeditFileBrowserPlugin *plugin = BEDIT_FILE_BROWSER_PLUGIN(activatable);
     BeditFileBrowserPluginPrivate *priv = plugin->priv;
-    GtkWidget *panel;
+    GtkWidget *action_area;
 
     /* Unregister messages from the bus */
     bedit_file_browser_messages_unregister(priv->window);
@@ -488,8 +515,9 @@ static void bedit_file_browser_plugin_deactivate(
             priv->nautilus_settings, priv->confirm_trash_handle);
     }
 
-    panel = bedit_window_get_side_panel(priv->window);
-    gtk_container_remove(GTK_CONTAINER(panel), GTK_WIDGET(priv->tree_widget));
+    action_area = bedit_window_get_action_area(priv->window);
+    gtk_container_remove(
+        GTK_CONTAINER(action_area), GTK_WIDGET(priv->action_area_button));
 }
 
 static void bedit_file_browser_plugin_class_init(
