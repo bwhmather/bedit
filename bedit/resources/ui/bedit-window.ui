@@ -67,14 +67,6 @@
                         <property name="visible">True</property>
                         <property name="orientation">horizontal</property>
                         <child>
-                          <object class="GtkMenuButton" id="gear_button">
-                            <property name="visible">True</property>
-                            <property name="valign">center</property>
-                            <property name="use_popover">True</property>
-                            <property name="image">menu_image</property>
-                          </object>
-                        </child>
-                        <child>
                           <object class="GtkButton" id="leave_fullscreen_button">
                             <property name="visible">False</property>
                             <property name="valign">center</property>
@@ -88,6 +80,24 @@
                               </object>
                             </child>
                           </object>
+                          <packing>
+                            <property name="expand">False</property>
+                            <property name="fill">False</property>
+                            <property name="pack_type">end</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkMenuButton" id="gear_button">
+                            <property name="visible">True</property>
+                            <property name="valign">center</property>
+                            <property name="use_popover">True</property>
+                            <property name="image">menu_image</property>
+                          </object>
+                          <packing>
+                            <property name="expand">False</property>
+                            <property name="fill">False</property>
+                            <property name="pack_type">end</property>
+                          </packing>
                         </child>
                       </object>
                     </child>
