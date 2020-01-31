@@ -434,7 +434,7 @@ static gboolean all_text_files_filter(
         languages = gtk_source_language_manager_get_language_ids(lm);
 
         while ((languages != NULL) && (*languages != NULL)) {
-            gchar **mime_types;
+            gchar **lang_mime_types;
             gint i;
             GtkSourceLanguage *lang;
 
@@ -442,23 +442,23 @@ static gboolean all_text_files_filter(
             g_return_val_if_fail(GTK_SOURCE_IS_LANGUAGE(lang), FALSE);
             ++languages;
 
-            mime_types = gtk_source_language_get_mime_types(lang);
-            if (mime_types == NULL)
+            lang_mime_types = gtk_source_language_get_mime_types(lang);
+            if (lang_mime_types == NULL)
                 continue;
 
-            for (i = 0; mime_types[i] != NULL; i++) {
-                if (!g_content_type_is_a(mime_types[i], "text/plain")) {
+            for (i = 0; lang_mime_types[i] != NULL; i++) {
+                if (!g_content_type_is_a(lang_mime_types[i], "text/plain")) {
                     bedit_debug_message(
                         DEBUG_COMMANDS,
                         "Mime-type %s is not related to text/plain",
-                        mime_types[i]);
+                        lang_mime_types[i]);
 
                     known_mime_types = g_slist_prepend(
-                        known_mime_types, g_strdup(mime_types[i]));
+                        known_mime_types, g_strdup(lang_mime_types[i]));
                 }
             }
 
-            g_strfreev(mime_types);
+            g_strfreev(lang_mime_types);
         }
 
         /* known_mime_types always has "text/plain" as first item" */

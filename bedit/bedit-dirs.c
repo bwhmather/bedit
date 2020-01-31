@@ -35,7 +35,7 @@ static gchar *bedit_lib_dir = NULL;
 static gchar *bedit_plugins_dir = NULL;
 static gchar *bedit_plugins_data_dir = NULL;
 
-void bedit_dirs_init() {
+void bedit_dirs_init(void) {
 #ifdef G_OS_WIN32
     gchar *win32_dir;
 
@@ -77,7 +77,7 @@ void bedit_dirs_init() {
     bedit_plugins_dir = g_build_filename(bedit_lib_dir, "plugins", NULL);
 }
 
-void bedit_dirs_shutdown() {
+void bedit_dirs_shutdown(void) {
     g_free(user_config_dir);
     g_free(user_data_dir);
     g_free(user_styles_dir);

@@ -673,11 +673,12 @@ static void setup_popup_menu(BeditViewFrame *frame, GtkWidget *menu) {
 }
 
 static void search_entry_escaped(GtkSearchEntry *entry, BeditViewFrame *frame) {
-    GtkSourceSearchContext *search_context = get_search_context(frame);
+    GtkTextBuffer *buffer;
+    GtkSourceSearchContext *search_context;
+
+    search_context = get_search_context(frame);
 
     if (frame->search_mode == SEARCH && search_context != NULL) {
-        GtkSourceSearchContext *search_context;
-        GtkTextBuffer *buffer;
 
         g_clear_object(&frame->search_settings);
         frame->search_settings =

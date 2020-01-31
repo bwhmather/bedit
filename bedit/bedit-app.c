@@ -258,7 +258,7 @@ static gboolean is_in_viewport(
     /* Check for workspace match */
     ws = bedit_utils_get_window_workspace(window);
 
-    if (ws != workspace && ws != BEDIT_ALL_WORKSPACES) {
+    if (ws != workspace && ws != (gint) BEDIT_ALL_WORKSPACES) {
         return FALSE;
     }
 
@@ -404,7 +404,9 @@ static void new_window_activated(
 
 static void new_document_activated(
     GSimpleAction *action, GVariant *parameter, gpointer user_data) {
-    GApplication *application = G_APPLICATION(user_data);
+    GApplication *application;
+
+    application = G_APPLICATION(user_data);
 
     open_files(application, FALSE, TRUE, 0, 0, NULL, NULL, NULL, NULL);
 }
@@ -459,13 +461,13 @@ static void quit_activated(
 }
 
 static GActionEntry app_entries[] = {
-    {"new-window", new_window_activated, NULL, NULL, NULL},
-    {"new-document", new_document_activated, NULL, NULL, NULL},
-    {"preferences", preferences_activated, NULL, NULL, NULL},
-    {"shortcuts", keyboard_shortcuts_activated, NULL, NULL, NULL},
-    {"help", help_activated, NULL, NULL, NULL},
-    {"about", about_activated, NULL, NULL, NULL},
-    {"quit", quit_activated, NULL, NULL, NULL}};
+    {"new-window", new_window_activated, NULL, NULL, NULL, {0, 0, 0}},
+    {"new-document", new_document_activated, NULL, NULL, NULL, {0, 0, 0}},
+    {"preferences", preferences_activated, NULL, NULL, NULL, {0, 0, 0}},
+    {"shortcuts", keyboard_shortcuts_activated, NULL, NULL, NULL, {0, 0, 0}},
+    {"help", help_activated, NULL, NULL, NULL, {0, 0, 0}},
+    {"about", about_activated, NULL, NULL, NULL, {0, 0, 0}},
+    {"quit", quit_activated, NULL, NULL, NULL, {0, 0, 0}}};
 
 static void extension_added(
     PeasExtensionSet *extensions, PeasPluginInfo *info, PeasExtension *exten,
@@ -527,10 +529,9 @@ static GtkCssProvider *load_css_from_resource(
 static void theme_changed(
     GtkSettings *settings, GParamSpec *pspec, BeditApp *app) {
     BeditAppPrivate *priv;
+    gchar *theme, *lc_theme, *theme_css;
 
     priv = bedit_app_get_instance_private(app);
-
-    gchar *theme, *lc_theme, *theme_css;
 
     g_object_get(settings, "gtk-theme-name", &theme, NULL);
     lc_theme = g_ascii_strdown(theme, -1);
@@ -777,22 +778,25 @@ static void get_line_column_position(
 static gint bedit_app_command_line(
     GApplication *application, GApplicationCommandLine *cl) {
     BeditAppPrivate *priv;
-    GVariantDict *options;
+    GVariantDict *command_line_options;
     const gchar *encoding_charset;
     const gchar **remaining_args;
 
     priv = bedit_app_get_instance_private(BEDIT_APP(application));
 
-    options = g_application_command_line_get_options_dict(cl);
+    command_line_options = g_application_command_line_get_options_dict(cl);
 
-    g_variant_dict_lookup(options, "new-window", "b", &priv->new_window);
-    g_variant_dict_lookup(options, "new-document", "b", &priv->new_document);
+    g_variant_dict_lookup(
+        command_line_options, "new-window", "b", &priv->new_window);
+    g_variant_dict_lookup(
+        command_line_options, "new-document", "b", &priv->new_document);
 
-    if (g_variant_dict_contains(options, "wait")) {
+    if (g_variant_dict_contains(command_line_options, "wait")) {
         priv->command_line = cl;
     }
 
-    if (g_variant_dict_lookup(options, "encoding", "&s", &encoding_charset)) {
+    if (g_variant_dict_lookup(
+        command_line_options, "encoding", "&s", &encoding_charset)) {
         priv->encoding = gtk_source_encoding_get_from_charset(encoding_charset);
 
         if (priv->encoding == NULL) {
@@ -803,7 +807,7 @@ static gint bedit_app_command_line(
 
     /* Parse filenames */
     if (g_variant_dict_lookup(
-            options, G_OPTION_REMAINING, "^a&ay", &remaining_args)) {
+        command_line_options, G_OPTION_REMAINING, "^a&ay", &remaining_args)) {
         gint i;
 
         for (i = 0; remaining_args[i]; i++) {
@@ -854,18 +858,18 @@ static void print_all_encodings(void) {
 }
 
 static gint bedit_app_handle_local_options(
-    GApplication *application, GVariantDict *options) {
-    if (g_variant_dict_contains(options, "version")) {
+    GApplication *application, GVariantDict *local_options) {
+    if (g_variant_dict_contains(local_options, "version")) {
         g_print("%s - Version %s\n", g_get_application_name(), VERSION);
         return 0;
     }
 
-    if (g_variant_dict_contains(options, "list-encodings")) {
+    if (g_variant_dict_contains(local_options, "list-encodings")) {
         print_all_encodings();
         return 0;
     }
 
-    if (g_variant_dict_contains(options, "standalone")) {
+    if (g_variant_dict_contains(local_options, "standalone")) {
         GApplicationFlags old_flags;
 
         old_flags = g_application_get_flags(application);
@@ -873,7 +877,7 @@ static gint bedit_app_handle_local_options(
             application, old_flags | G_APPLICATION_NON_UNIQUE);
     }
 
-    if (g_variant_dict_contains(options, "wait")) {
+    if (g_variant_dict_contains(local_options, "wait")) {
         GApplicationFlags old_flags;
 
         old_flags = g_application_get_flags(application);

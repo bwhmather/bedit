@@ -659,7 +659,7 @@ static gint preview_layout_key_press(
     case ' ':
     page_down:
         if (y >= (vupper - visible_height)) {
-            if (preview->cur_page < n_pages - 1) {
+            if (n_pages < 1 || preview->cur_page < (guint) n_pages - 1) {
                 goto_page(preview, preview->cur_page + 1);
                 y = vlower;
             }

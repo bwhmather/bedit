@@ -314,7 +314,7 @@ static void bedit_settings_class_init(BeditSettingsClass *klass) {
     object_class->dispose = bedit_settings_dispose;
 }
 
-BeditSettings *bedit_settings_new() {
+BeditSettings *bedit_settings_new(void) {
     return g_object_new(BEDIT_TYPE_SETTINGS, NULL);
 }
 

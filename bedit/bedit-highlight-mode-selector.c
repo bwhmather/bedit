@@ -256,7 +256,7 @@ static void bedit_highlight_mode_selector_init(
     }
 }
 
-BeditHighlightModeSelector *bedit_highlight_mode_selector_new() {
+BeditHighlightModeSelector *bedit_highlight_mode_selector_new(void) {
     return g_object_new(BEDIT_TYPE_HIGHLIGHT_MODE_SELECTOR, NULL);
 }
 

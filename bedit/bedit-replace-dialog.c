@@ -417,7 +417,7 @@ static void response_cb(GtkDialog *dialog, gint response_id) {
             bedit_history_entry_prepend_text(
                 BEDIT_HISTORY_ENTRY(dlg->replace_entry), str);
         }
-        /* fall through, so that we also save the find entry */
+        /* fall through */
     case BEDIT_REPLACE_DIALOG_FIND_RESPONSE:
         str = gtk_entry_get_text(GTK_ENTRY(dlg->search_text_entry));
         if (*str != '\0') {

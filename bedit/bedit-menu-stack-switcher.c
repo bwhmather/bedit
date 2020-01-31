@@ -85,9 +85,16 @@ static void bedit_menu_stack_switcher_init(BeditMenuStackSwitcher *switcher) {
     switcher->buttons = g_hash_table_new(g_direct_hash, g_direct_equal);
 }
 
+static void destroy_popover_child(GtkWidget *widget, gpointer user_data) {
+    (void) user_data;
+
+    gtk_widget_destroy(widget);
+}
+
 static void clear_popover(BeditMenuStackSwitcher *switcher) {
     gtk_container_foreach(
-        GTK_CONTAINER(switcher->button_box), (GtkCallback)gtk_widget_destroy,
+        GTK_CONTAINER(switcher->button_box),
+        (GtkCallback)destroy_popover_child,
         switcher);
 }
 

@@ -187,14 +187,17 @@ static void on_close_activate(
     GSimpleAction *action, GVariant *parameter, gpointer user_data) {
     BeditNotebookPopupMenu *menu = BEDIT_NOTEBOOK_POPUP_MENU(user_data);
 
+    (void) action;
+    (void) parameter;
+
     _bedit_cmd_file_close_tab(menu->tab, menu->window);
 }
 
 static GActionEntry action_entries[] = {
-    {"move-left", on_move_left_activate},
-    {"move-right", on_move_right_activate},
-    {"move-to-new-window", on_move_to_new_window_activate},
-    {"close", on_close_activate}};
+    {"move-left", on_move_left_activate, NULL, NULL, NULL, {0, 0, 0}},
+    {"move-right", on_move_right_activate, NULL, NULL, NULL, {0, 0, 0}},
+    {"move-to-new-window", on_move_to_new_window_activate, NULL, NULL, NULL, {0, 0, 0}},
+    {"close", on_close_activate, NULL, NULL, NULL, {0, 0, 0}}};
 
 static void bedit_notebook_popup_menu_init(BeditNotebookPopupMenu *menu) {
     gtk_menu_shell_bind_model(

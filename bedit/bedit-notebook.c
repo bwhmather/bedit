@@ -199,14 +199,12 @@ static void bedit_notebook_switch_page(
         ->switch_page(notebook, page, page_num);
 
     if (!priv->ignore_focused_page_update) {
-        gint page_num;
-
         /* Get again page_num and page, the signal handler may have
          * changed them.
          */
         page_num = gtk_notebook_get_current_page(notebook);
         if (page_num != -1) {
-            GtkWidget *page = gtk_notebook_get_nth_page(notebook, page_num);
+            page = gtk_notebook_get_nth_page(notebook, page_num);
             g_assert(page != NULL);
 
             /* Remove the old page, we dont want to grow unnecessarily

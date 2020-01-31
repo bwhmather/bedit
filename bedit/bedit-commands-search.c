@@ -167,6 +167,12 @@ static gboolean forward_search_finished(
     return found;
 }
 
+static void forward_search_not_from_dialog_finished(
+    GtkSourceSearchContext *search_context, GAsyncResult *result,
+    BeditView *view) {
+    forward_search_finished(search_context, result, view);
+}
+
 static void forward_search_from_dialog_finished(
     GtkSourceSearchContext *search_context, GAsyncResult *result,
     BeditWindow *window) {
@@ -207,11 +213,13 @@ static void run_forward_search(BeditWindow *window, gboolean from_dialog) {
     if (from_dialog) {
         gtk_source_search_context_forward_async(
             search_context, &start_at, NULL,
-            (GAsyncReadyCallback)forward_search_from_dialog_finished, window);
+            (GAsyncReadyCallback)forward_search_from_dialog_finished,
+            window);
     } else {
         gtk_source_search_context_forward_async(
             search_context, &start_at, NULL,
-            (GAsyncReadyCallback)forward_search_finished, view);
+            (GAsyncReadyCallback)forward_search_not_from_dialog_finished,
+            view);
     }
 }
 
@@ -244,6 +252,12 @@ static gboolean backward_search_finished(
     }
 
     return found;
+}
+
+static void backward_search_not_from_dialog_finished(
+    GtkSourceSearchContext *search_context, GAsyncResult *result,
+    BeditView *view) {
+    backward_search_finished(search_context, result, view);
 }
 
 static void backward_search_from_dialog_finished(
@@ -286,11 +300,13 @@ static void run_backward_search(BeditWindow *window, gboolean from_dialog) {
     if (from_dialog) {
         gtk_source_search_context_backward_async(
             search_context, &start_at, NULL,
-            (GAsyncReadyCallback)backward_search_from_dialog_finished, window);
+            (GAsyncReadyCallback)backward_search_from_dialog_finished,
+            window);
     } else {
         gtk_source_search_context_backward_async(
             search_context, &start_at, NULL,
-            (GAsyncReadyCallback)backward_search_finished, view);
+            (GAsyncReadyCallback)backward_search_not_from_dialog_finished,
+            view);
     }
 }
 
