@@ -63,7 +63,7 @@ struct _BeditFileBrowserPluginPrivate {
 
     BeditWindow *window;
 
-    GtkMenuButton *action_area_button;
+    GtkWidget *action_area_button;
     BeditFileBrowserWidget *tree_widget;
     gboolean auto_root;
     gulong end_loading_handle;
@@ -437,7 +437,7 @@ static void bedit_file_browser_plugin_activate(
     /* Connect using popover. */
     GtkWidget *popover = gtk_popover_new(priv->action_area_button);
     gtk_menu_button_set_popover(
-        GTK_MENU_BUTTON(priv->action_area_button), GTK_POPOVER(popover));
+        GTK_MENU_BUTTON(priv->action_area_button), popover);
 
     g_object_set(
         G_OBJECT(popover),
@@ -452,7 +452,7 @@ static void bedit_file_browser_plugin_activate(
         "height-request", 800, NULL);
 
     gtk_container_add(
-        GTK_CONTAINER(popover), priv->tree_widget);
+        GTK_CONTAINER(popover), GTK_WIDGET(priv->tree_widget));
 
     /* Add everything to the area to the left of the tab bar. */
     action_area = bedit_window_get_action_area(priv->window);
