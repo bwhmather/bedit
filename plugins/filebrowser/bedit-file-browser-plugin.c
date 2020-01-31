@@ -443,9 +443,13 @@ static void bedit_file_browser_plugin_activate(
         G_OBJECT(popover),
         "constrain-to", GTK_POPOVER_CONSTRAINT_WINDOW, NULL);
 
+    // TODO scale to fit window.
     g_object_set(
         G_OBJECT(popover),
-        "height-request", 700, NULL);  // TODO scale to fit window.
+        "width-request", 350, NULL);
+    g_object_set(
+        G_OBJECT(popover),
+        "height-request", 800, NULL);
 
     gtk_container_add(
         GTK_CONTAINER(popover), priv->tree_widget);
