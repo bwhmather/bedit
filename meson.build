@@ -8,6 +8,83 @@ if host_machine.system() == 'darwin'
   add_languages('objc')
 endif
 
+# Compiler flags and warnings
+cc = meson.get_compiler('c')
+
+global_c_args = []
+if cc.get_id() == 'msvc'
+  test_c_args = [
+    '/FImsvc_recommended_pragmas.h',
+  ]
+else
+  test_c_args = [
+    '-Wcast-align',
+    '-Werror=declaration-after-statement',
+    '-Werror=address',
+    '-Werror=array-bounds',
+    '-Werror=empty-body',
+    '-Werror=implicit',
+    '-Werror=implicit-function-declaration',
+    '-Werror=incompatible-pointer-types',
+    '-Werror=init-self',
+    '-Werror=int-conversion',
+    '-Werror=int-to-pointer-cast',
+    '-Werror=main',
+    '-Werror=misleading-indentation',
+    '-Werror=missing-braces',
+    '-Werror=missing-include-dirs',
+    '-Werror=nonnull',
+    '-Werror=overflow',
+    '-Werror=parenthesis',
+    '-Werror=pointer-arith',
+    '-Werror=pointer-to-int-cast',
+    '-Werror=return-type',
+    '-Werror=sequence-point',
+    '-Werror=shadow',
+    '-Werror=strict-prototypes',
+    '-Werror=trigraphs',
+    '-Werror=undef',
+    '-Werror=write-strings',
+    '-Wformat-nonliteral',
+    '-Werror=format-security',
+    '-Werror=format=2',
+    '-Wignored-qualifiers',
+    '-Wimplicit-function-declaration',
+    '-Wlogical-op',
+    '-Wmissing-format-attribute',
+    '-Wmissing-include-dirs',
+    '-Wmissing-noreturn',
+    '-Wnested-externs',
+    '-Wcast-function-type',
+    '-Wno-missing-field-initializers',
+    '-Wno-sign-compare',
+    '-Wno-unused-parameter',
+    '-Werror=old-style-definition',
+    '-Wpointer-arith',
+    '-Wstrict-prototypes',
+    '-Wno-switch-default',
+    '-Wno-switch-enum',
+    '-Wundef',
+    '-Werror=uninitialized',
+    '-Wunused',
+    '-Wmissing-declarations',
+    '-Wdiscarded-qualifiers',
+    '-Wall', '-Wextra',
+    '-fno-strict-aliasing',
+  ]
+  if get_option('buildtype') != 'plain'
+    test_c_args += '-fstack-protector-strong'
+  endif
+endif
+
+foreach arg: test_c_args
+  if cc.has_multi_arguments(arg)
+    global_c_args += arg
+  endif
+endforeach
+
+add_project_arguments(global_c_args, language: 'c')
+
 gnome = import('gnome')
 i18n = import('i18n')
 pkg = import('pkgconfig')
