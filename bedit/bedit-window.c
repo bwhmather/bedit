@@ -448,7 +448,6 @@ static void extension_update_state(
 static void update_actions_sensitivity(BeditWindow *window) {
     BeditNotebook *notebook;
     BeditTab *tab;
-    gint num_notebooks;
     gint num_tabs;
     BeditTabState state = BEDIT_TAB_STATE_NORMAL;
     BeditDocument *doc = NULL;
@@ -466,6 +465,8 @@ static void update_actions_sensitivity(BeditWindow *window) {
 
     notebook = window->priv->notebook;
     tab = bedit_notebook_get_active_tab(notebook);
+    num_tabs = bedit_notebook_get_n_tabs(notebook);
+
 
     if (notebook != NULL && tab != NULL) {
         state = bedit_tab_get_state(tab);
@@ -1881,7 +1882,7 @@ static GActionEntry win_entries[] = {
 
 static void sync_fullscreen_actions(BeditWindow *window, gboolean fullscreen) {
     /* TODO this no longer changes anything and should be moved to init */
-    GtkMenuButton *button;
+    GtkWidget *button;
     GPropertyAction *action;
 
     /* button = fullscreen ? window->priv->fullscreen_gear_button
@@ -1942,10 +1943,10 @@ static void bedit_window_init(BeditWindow *window) {
     sync_fullscreen_actions(window, FALSE);
 
     hamburger_menu =
-        _bedit_app_get_hamburger_menu(BEDIT_APP(g_application_get_default()));
+       _bedit_app_get_hamburger_menu(BEDIT_APP(g_application_get_default()));
     if (hamburger_menu) {
         gtk_menu_button_set_menu_model(
-            window->priv->gear_button, hamburger_menu);
+            GTK_MENU_BUTTON(window->priv->gear_button), hamburger_menu);
     } else {
         gtk_widget_hide(GTK_WIDGET(window->priv->gear_button));
         gtk_widget_set_no_show_all(GTK_WIDGET(window->priv->gear_button), TRUE);

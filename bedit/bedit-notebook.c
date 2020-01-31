@@ -567,7 +567,7 @@ void bedit_notebook_set_active_tab(BeditNotebook *nb, BeditTab *tab) {
 BeditTab *bedit_notebook_get_active_tab(BeditNotebook *nb) {
     gint page_num;
 
-    g_return_if_fail(BEDIT_IS_NOTEBOOK(nb));
+    g_return_val_if_fail(BEDIT_IS_NOTEBOOK(nb), NULL);
 
     page_num = gtk_notebook_get_current_page(GTK_NOTEBOOK(nb));
 
@@ -575,14 +575,13 @@ BeditTab *bedit_notebook_get_active_tab(BeditNotebook *nb) {
 }
 
 gint bedit_notebook_get_n_tabs(BeditNotebook *nb) {
-    g_return_if_fail(BEDIT_IS_NOTEBOOK(nb));
+    g_return_val_if_fail(BEDIT_IS_NOTEBOOK(nb), -1);
 
     return gtk_notebook_get_n_pages(GTK_NOTEBOOK(nb));
 }
 
 void bedit_notebook_foreach_tab(
     BeditNotebook *nb, GtkCallback callback, gpointer callback_data) {
-    GList *children;
 
     g_return_if_fail(BEDIT_IS_NOTEBOOK(nb));
 
@@ -590,8 +589,6 @@ void bedit_notebook_foreach_tab(
 }
 
 GList *bedit_notebook_get_all_tabs(BeditNotebook *nb) {
-    GList *ret = NULL;
-
     g_return_val_if_fail(BEDIT_IS_NOTEBOOK(nb), NULL);
 
     return gtk_container_get_children(GTK_CONTAINER(nb));

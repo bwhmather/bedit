@@ -85,12 +85,11 @@ static void update_sensitivity(BeditNotebookPopupMenu *menu) {
     GtkNotebook *notebook;
     gint page_num;
     gint n_pages;
-    guint n_tabs;
     GAction *action;
 
     state = bedit_tab_get_state(menu->tab);
 
-    notebook = BEDIT_NOTEBOOK(_bedit_window_get_notebook(menu->window));
+    notebook = GTK_NOTEBOOK(_bedit_window_get_notebook(menu->window));
     n_pages = gtk_notebook_get_n_pages(notebook);
     page_num = gtk_notebook_page_num(notebook, GTK_WIDGET(menu->tab));
 
