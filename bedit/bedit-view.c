@@ -226,6 +226,7 @@ static void bedit_view_constructed(GObject *object) {
         "smart-home-end", G_SETTINGS_BIND_GET);
 
     gtk_source_view_set_indent_on_tab(GTK_SOURCE_VIEW(view), TRUE);
+    gtk_source_view_set_smart_backspace(GTK_SOURCE_VIEW(view), TRUE);
 
     G_OBJECT_CLASS(bedit_view_parent_class)->constructed(object);
 }
