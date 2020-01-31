@@ -77,7 +77,7 @@ void modeline_parser_init(const gchar *data_dir) {
     }
 }
 
-void modeline_parser_shutdown() {
+void modeline_parser_shutdown(void) {
     if (vim_languages != NULL)
         g_hash_table_unref(vim_languages);
 
@@ -577,6 +577,7 @@ void modeline_parser_apply_modeline(GtkSourceView *view) {
     GtkTextIter iter, liter;
     gint line_count;
     GSettings *settings;
+    ModelineOptions *previous;
 
     options.language_id = NULL;
     options.set = MODELINE_SET_NONE;
@@ -657,7 +658,7 @@ void modeline_parser_apply_modeline(GtkSourceView *view) {
         }
     }
 
-    ModelineOptions *previous =
+    previous =
         g_object_get_data(G_OBJECT(buffer), MODELINE_OPTIONS_DATA_KEY);
 
     settings = g_settings_new("com.bwhmather.bedit.preferences.editor");

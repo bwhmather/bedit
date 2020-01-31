@@ -640,6 +640,7 @@ static void configure_widget_destroyed(GtkWidget *widget, gpointer data) {
 static SpellConfigureWidget *get_configure_widget(BeditSpellPlugin *plugin) {
     SpellConfigureWidget *widget;
     GtkBuilder *builder;
+    gboolean status;
     gchar *root_objects[] = {"spell_dialog_content", NULL};
 
     bedit_debug(DEBUG_PLUGINS);
@@ -660,7 +661,7 @@ static SpellConfigureWidget *get_configure_widget(BeditSpellPlugin *plugin) {
         GTK_WIDGET(gtk_builder_get_object(builder, "highlight_button"));
     g_object_unref(builder);
 
-    gboolean status = g_settings_get_boolean(
+    status = g_settings_get_boolean(
         widget->settings, SETTINGS_KEY_HIGHLIGHT_MISSPELLED);
     gtk_toggle_button_set_active(
         GTK_TOGGLE_BUTTON(widget->highlight_button), status);

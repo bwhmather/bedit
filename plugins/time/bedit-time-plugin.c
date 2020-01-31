@@ -211,7 +211,7 @@ static void update_ui(BeditTimePlugin *plugin) {
 
     view = bedit_window_get_active_view(plugin->priv->window);
 
-    bedit_debug_message(DEBUG_PLUGINS, "View: %p", view);
+    bedit_debug_message(DEBUG_PLUGINS, "View: %p", (void *) view);
 
     g_simple_action_set_enabled(
         plugin->priv->action,

@@ -391,6 +391,8 @@ static void bedit_file_browser_plugin_activate(
     BeditFileBrowserPlugin *plugin = BEDIT_FILE_BROWSER_PLUGIN(activatable);
     BeditFileBrowserPluginPrivate *priv;
     GtkWidget *action_area;
+    GtkWidget *action_area_button_image;
+    GtkWidget *popover;
     BeditFileBrowserStore *store;
 
     priv = plugin->priv;
@@ -427,7 +429,7 @@ static void bedit_file_browser_plugin_activate(
         FILEBROWSER_FILTER_PATTERN, G_SETTINGS_BIND_GET | G_SETTINGS_BIND_SET);
 
     /* Setup menu button widget. */
-    GtkWidget *action_area_button_image = gtk_image_new_from_icon_name(
+    action_area_button_image = gtk_image_new_from_icon_name(
         "folder-symbolic", GTK_ICON_SIZE_BUTTON);
 
     priv->action_area_button = gtk_menu_button_new();
@@ -435,7 +437,7 @@ static void bedit_file_browser_plugin_activate(
         GTK_CONTAINER(priv->action_area_button), action_area_button_image);
 
     /* Connect using popover. */
-    GtkWidget *popover = gtk_popover_new(priv->action_area_button);
+    popover = gtk_popover_new(priv->action_area_button);
     gtk_menu_button_set_popover(
         GTK_MENU_BUTTON(priv->action_area_button), popover);
 
