@@ -1,12 +1,29 @@
 /*
  * bedit-document.h
- * This file is part of bedit
+ * This file is part of Bedit.
+ *
+ * Copyright (C) 2020 - Ben Mather
+ *
+ * Based on gedit-document.h from Gedit.
  *
  * Copyright (C) 1998-1999 - Alex Roberts
  * Copyright (C) 1998-1999 - Evan Lawrence
  * Copyright (C) 2000-2001 - Chema Celorio
- * Copyright (C) 2000-2005 - Paolo Maggi
- * Copyright (C) 2014 - Sébastien Wilmet
+ * Copyright (C) 2000 - Jacob Leach
+ * Copyright (C) 2001 - Carlos Perelló Marín
+ * Copyright (C) 2001-2006 - Paolo Maggi
+ * Copyright (C) 2002 - Fernando Herrera
+ * Copyright (C) 2003 - Eric Ritezel
+ * Copyright (C) 2004-2015 - Paolo Borelli
+ * Copyright (C) 2007-2010 - Steve Frécinaux
+ * Copyright (C) 2008 - Johan Dahlin
+ * Copyright (C) 2008-2010 - Jesse van den Kieboom
+ * Copyright (C) 2009-2011 - Ignacio Casal Quinteiro
+ * Copyright (C) 2010 - Garrett Regier
+ * Copyright (C) 2013 - Volker Sobek
+ * Copyright (C) 2013-2019 - Sébastien Wilmet
+ * Copyright (C) 2014 - Oliver Gerlich
+ * Copyright (C) 2019 - Jordi Mas
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by

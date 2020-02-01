@@ -1,11 +1,21 @@
 /*
  * bedit-debug.h
- * This file is part of bedit
+ * This file is part of Bedit.
+ *
+ * Copyright (C) 2020 - Ben Mather
+ *
+ * Based on gedit-debug.h from Gedit.
  *
  * Copyright (C) 1998-1999 - Alex Roberts
  * Copyright (C) 1998-1999 - Evan Lawrence
  * Copyright (C) 2000-2001 - Chema Celorio
- * Copyright (C) 2000-2005 - Paolo Maggi
+ * Copyright (C) 2000-2006 - Paolo Maggi
+ * Copyright (C) 2001 - Carlos Perelló Marín
+ * Copyright (C) 2004 - Albert Chin-A-Young
+ * Copyright (C) 2004-2014 - Paolo Borelli
+ * Copyright (C) 2010 - Garrett Regier, Jesse van den Kieboom, Steve Frécinaux
+ * Copyright (C) 2012 - Daniel Trebbien
+ * Copyright (C) 2015-2016 - Sébastien Wilmet
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -20,7 +30,6 @@
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, see <http://www.gnu.org/licenses/>.
  */
-
 #ifndef BEDIT_DEBUG_H
 #define BEDIT_DEBUG_H
 

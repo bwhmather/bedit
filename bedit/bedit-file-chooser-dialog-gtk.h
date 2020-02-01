@@ -1,9 +1,16 @@
 /*
  * bedit-file-chooser-dialog-gtk.h
- * This file is part of bedit
+ * This file is part of Bedit.
+ *
+ * Copyright (C) 2020 - Ben Mather
+ *
+ * Based on gedit-file-chooser-dialog-gtk.h from Gedit.
  *
  * Copyright (C) 2005 - Paolo Maggi
  * Copyright (C) 2014 - Jesse van den Kieboom
+ * Copyright (C) 2015 - Paolo Borelli
+ * Copyright (C) 2016-2019 - Sébastien Wilmet
+ * Copyright (C) 2018 - James Henstridge
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by

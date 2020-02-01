@@ -1,8 +1,15 @@
 /*
  * bedit-status-menu-button.c
- * This file is part of bedit
+ * This file is part of Bedit.
+ *
+ * Copyright (C) 2020 - Ben Mather
+ *
+ * Based on gedit-status-menu-button.c from Gedit.
  *
  * Copyright (C) 2008 - Jesse van den Kieboom
+ * Copyright (C) 2013 - Ignacio Casal Quinteiro, Matthias Clasen
+ * Copyright (C) 2013-2015 - Paolo Borelli, Sébastien Wilmet
+ * Copyright (C) 2014 - Sebastien Lafargue
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by

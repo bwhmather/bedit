@@ -1,9 +1,20 @@
 /*
  * bedit-close-confirmation-dialog.c
- * This file is part of bedit
+ * This file is part of Bedit.
+ *
+ * Copyright (C) 2020 - Ben Mather
+ *
+ * Based on gedit-close-confirmation-dialog.c from Gedit.
  *
  * Copyright (C) 2004-2005 - GNOME Foundation
- * Copyright (C) 2015 - Sébastien Wilmet
+ * Copyright (C) 2012-2013 - Ignacio Casal Quinteiro
+ * Copyright (C) 2012-2015 - Paolo Borelli
+ * Copyright (C) 2013 - Garrett Regier
+ * Copyright (C) 2013-2019 - Sébastien Wilmet
+ * Copyright (C) 2014 - Robert Roth, William Jon McCann
+ * Copyright (C) 2015 - Sebastien Lafargue
+ * Copyright (C) 2016 - Piotr Drąg
+ * Copyright (C) 2019 - Jordi Mas
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by

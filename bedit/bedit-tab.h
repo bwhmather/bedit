@@ -1,8 +1,18 @@
 /*
  * bedit-tab.h
- * This file is part of bedit
+ * This file is part of Bedit.
  *
- * Copyright (C) 2005 - Paolo Maggi
+ * Copyright (C) 2020 - Ben Mather
+ *
+ * Based on gedit-tab.h from Gedit.
+ *
+ * Copyright (C) 2005-2015 - Paolo Borelli
+ * Copyright (C) 2006 - Paolo Maggi
+ * Copyright (C) 2007-2010 - Steve Frécinaux
+ * Copyright (C) 2010 - Ignacio Casal Quinteiro, Jesse van den Kieboom
+ * Copyright (C) 2010-2011 - Garrett Regier
+ * Copyright (C) 2013-2019 - Sébastien Wilmet
+ * Copyright (C) 2014 - Sagar Ghuge
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by

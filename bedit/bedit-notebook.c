@@ -1,16 +1,31 @@
 /*
  * bedit-notebook.c
- * This file is part of bedit
+ * This file is part of Bedit.
  *
- * Copyright (C) 2005 - Paolo Maggi
- * Copyright (C) 2015 - Sébastien Wilmet
+ * Copyright (C) 2020 - Ben Mather
  *
- * This file is a modified version of the epiphany file ephy-notebook.c
- * Here the relevant copyright:
+ * Based on gedit-notebook.c from Gedit.
  *
- *  Copyright (C) 2002 - Christophe Fergeau
- *  Copyright (C) 2003 - Marco Pesenti Gritti
- *  Copyright (C) 2003-2004 - Christian Persch
+ * Copyright (C) 2005-2015 - Paolo Borelli
+ * Copyright (C) 2006 - Paolo Maggi
+ * Copyright (C) 2006-2010 - Steve Frécinaux
+ * Copyright (C) 2008 - Joe M Smith
+ * Copyright (C) 2008-2014 - Ignacio Casal Quinteiro
+ * Copyright (C) 2009-2010 - Javier Jardón
+ * Copyright (C) 2010 - Garrett Regier
+ * Copyright (C) 2010-2011 - Jesse van den Kieboom
+ * Copyright (C) 2012 - bharaththiruveedula
+ * Copyright (C) 2013 - William Jon McCann
+ * Copyright (C) 2013-2016 - Sébastien Wilmet
+ * Copyright (C) 2014 - Robert Roth, Sebastien Lafargue
+ * Copyright (C) 2015 - Matthias Clasen
+ * Copyright (C) 2018 - Corey Daley
+ *
+ * gedit-notebook.c is a modified version of ephy-notebook.c from Epiphany.
+ *
+ * Copyright (C) 2002 - Christophe Fergeau
+ * Copyright (C) 2003 - Marco Pesenti Gritti
+ * Copyright (C) 2003-2004 - Christian Persch
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by

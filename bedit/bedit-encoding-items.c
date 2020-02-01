@@ -1,8 +1,13 @@
 /*
  * bedit-encoding-items.c
- * This file is part of bedit
+ * This file is part of Bedit.
  *
- * Copyright (C) 2014 - Jesse van den Kieboom
+ * Copyright (C) 2020 - Ben Mather
+ *
+ * Based on gedit-encoding-items.c from Gedit.
+ *
+ * Copyright (C) 2014 - Jesse van den Kieboom, Robert Roth
+ * Copyright (C) 2015 - Sébastien Wilmet
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by

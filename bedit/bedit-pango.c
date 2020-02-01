@@ -1,8 +1,13 @@
-/* bedit-pango.c
+/*
+ * bedit-pango.h
+ * This file is part of Bedit.
  *
- * This file is a copy of libdazzle dzl-pango.c
+ * Copyright (C) 2020 - Ben Mather
  *
- * Copyright (C) 2014-2017 - Christian Hergert <christian@hergert.me>
+ * Based on gedit-pango.c from Gedit which is, in turn, a copy of dzl-pango.c
+ * from libdazzle.
+ *
+ * Copyright (C) 2014 - Christian Hergert <christian@hergert.me>
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -17,7 +22,6 @@
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, see <http://www.gnu.org/licenses/>.
  */
-
 #define G_LOG_DOMAIN "bedit-pango"
 
 #include "config.h"

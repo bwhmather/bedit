@@ -1,8 +1,15 @@
 /*
  * bedit-encodings-dialog.h
- * This file is part of bedit
+ * This file is part of Bedit.
+ *
+ * Copyright (C) 2020 - Ben Mather
+ *
+ * Based on gedit-encodings-dialog.h from Gedit.
  *
  * Copyright (C) 2003-2005 - Paolo Maggi
+ * Copyright (C) 2012 - Ignacio Casal Quinteiro
+ * Copyright (C) 2013-2016 - Sébastien Wilmet
+ * Copyright (C) 2014-2015 - Paolo Borelli
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by

@@ -1,8 +1,20 @@
 /*
  * bedit-encodings-combo-box.c
- * This file is part of bedit
+ * This file is part of Bedit.
+ *
+ * Copyright (C) 2020 - Ben Mather
+ *
+ * Based on gedit-encodings-combo-box.c from Gedit.
  *
  * Copyright (C) 2003-2005 - Paolo Maggi
+ * Copyright (C) 2009-2013 - Ignacio Casal Quinteiro
+ * Copyright (C) 2010 - Florian Müllner, Javier Jardón, Philip Withnall, Steve
+ *   Frécinaux
+ * Copyright (C) 2010-2011 - Garrett Regier
+ * Copyright (C) 2010-2014 - Jesse van den Kieboom
+ * Copyright (C) 2010-2015 - Paolo Borelli
+ * Copyright (C) 2013-2019 - Sébastien Wilmet
+ * Copyright (C) 2016 - Piotr Drąg
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by

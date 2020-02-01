@@ -1,9 +1,21 @@
 /*
  * bedit-plugins-engine.c
- * This file is part of bedit
+ * This file is part of Bedit.
  *
- * Copyright (C) 2002-2005 - Paolo Maggi
- * Copyright (C) 2010 - Steve Frécinaux
+ * Copyright (C) 2020 - Ben Mather
+ *
+ * Based on gedit-plugins-engine.c from Gedit.
+ *
+ * Copyright (C) 2002 - Fernando Herrera, Kjartan Maraas
+ * Copyright (C) 2002-2007 - Paolo Maggi
+ * Copyright (C) 2004-2015 - Paolo Borelli
+ * Copyright (C) 2006-2010 - Steve Frécinaux
+ * Copyright (C) 2008-2010 - Jesse van den Kieboom
+ * Copyright (C) 2008-2013 - Ignacio Casal Quinteiro
+ * Copyright (C) 2009 - Javier Jardón
+ * Copyright (C) 2010-2011 - Garrett Regier
+ * Copyright (C) 2013-2019 - Sébastien Wilmet
+ * Copyright (C) 2014 - Robert Roth
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by

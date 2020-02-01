@@ -1,8 +1,14 @@
 /*
  * bedit-menu-extension.c
- * This file is part of bedit
+ * This file is part of Bedit.
  *
- * Copyright (C) 2014 - Ignacio Casal Quinteiro
+ * Copyright (C) 2020 - Ben Mather
+ *
+ * Based on gedit-menu-extension.c from Gedit.
+ *
+ * Copyright (C) 2013 - Ignacio Casal Quinteiro
+ * Copyright (C) 2014 - Robert Roth
+ * Copyright (C) 2014-2015 - Paolo Borelli
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by

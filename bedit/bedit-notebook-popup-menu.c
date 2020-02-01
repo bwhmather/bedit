@@ -1,8 +1,16 @@
 /*
  * bedit-notebook-popup-menu.c
- * This file is part of bedit
+ * This file is part of Bedit.
  *
- * Copyright (C) 2011 - Ignacio Casal Quinteiro
+ * Copyright (C) 2020 - Ben Mather
+ *
+ * Based on gedit-notebook-popup-menu.c from Gedit.
+ *
+ * Copyright (C) 2011-2014 - Ignacio Casal Quinteiro
+ * Copyright (C) 2013 - Garrett Regier
+ * Copyright (C) 2013-2015 - Sébastien Wilmet
+ * Copyright (C) 2014 - Robert Roth, Sebastien Lafargue
+ * Copyright (C) 2014-2015 - Paolo Borelli
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by

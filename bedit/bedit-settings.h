@@ -1,9 +1,17 @@
 /*
  * bedit-settings.h
- * This file is part of bedit
+ * This file is part of Bedit.
  *
- * Copyright (C) 2009 - Ignacio Casal Quinteiro
+ * Copyright (C) 2020 - Ben Mather
+ *
+ * Based on gedit-settings.h from Gedit.
+ *
  * Copyright (C) 2002 - Paolo Maggi
+ * Copyright (C) 2009-2015 - Ignacio Casal Quinteiro
+ * Copyright (C) 2010 - Garrett Regier, Steve Frécinaux
+ * Copyright (C) 2013-2019 - Sébastien Wilmet
+ * Copyright (C) 2014 - Sebastien Lafargue
+ * Copyright (C) 2014-2015 - Paolo Borelli
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by

@@ -1,10 +1,17 @@
 /*
  * bedit-recent.h
- * This file is part of bedit
+ * This file is part of Bedit.
  *
- * Copyright (C) 2005 - Paolo Maggi
- * Copyright (C) 2014 - Paolo Borelli
+ * Copyright (C) 2020 - Ben Mather
+ *
+ * Based on gedit-recent.h from Gedit.
+ *
+ * Copyright (C) 2001 - Carlos Perelló Marín
+ * Copyright (C) 2002 - James Willcox, Jason Leach
+ * Copyright (C) 2003 - Paolo Maggi
+ * Copyright (C) 2004-2014 - Paolo Borelli
  * Copyright (C) 2014 - Jesse van den Kieboom
+ * Copyright (C) 2016 - Sébastien Wilmet
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by

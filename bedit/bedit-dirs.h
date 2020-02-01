@@ -1,8 +1,14 @@
 /*
  * bedit-dirs.h
- * This file is part of bedit
+ * This file is part of Bedit.
  *
- * Copyright (C) 2008 - Ignacio Casal Quinteiro
+ * Copyright (C) 2020 - Ben Mather
+ *
+ * Based on gedit-dirs.h from Gedit.
+ *
+ * Copyright (C) 2008-2012 - Paolo Borelli, Ignacio Casal Quinteiro
+ * Copyright (C) 2010 - Garrett Regier, Jesse van den Kieboom, Steve Frécinaux
+ * Copyright (C) 2013-2019 - Sébastien Wilmet
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by

@@ -1,8 +1,19 @@
 /*
- * bedit-message-bus.h
- * This file is part of bedit
+ * bedit-message-bus.c
+ * This file is part of Bedit.
  *
- * Copyright (C) 2008-2010 - Jesse van den Kieboom
+ * Copyright (C) 2020 - Ben Mather
+ *
+ * Based on gedit-message-bus.c from Gedit.
+ *
+ * Copyright (C) 2008-2011 - Jesse van den Kieboom
+ * Copyright (C) 2010 - Steve Frécinaux
+ * Copyright (C) 2010-2011 - Ignacio Casal Quinteiro
+ * Copyright (C) 2010-2013 - Garrett Regier
+ * Copyright (C) 2010-2015 - Paolo Borelli
+ * Copyright (C) 2011 - Cosimo Cecchi
+ * Copyright (C) 2013-2019 - Sébastien Wilmet
+ * Copyright (C) 2014 - Robert Roth
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by

@@ -1,8 +1,14 @@
 /*
  * bedit-menu-stack-switcher.c
- * This file is part of bedit
+ * This file is part of Bedit.
  *
- * Copyright (C) 2014 - Steve Frécinaux
+ * Copyright (C) 2020 - Ben Mather
+ *
+ * Based on gedit-menu-stack-switcher.c from Gedit.
+ *
+ * Copyright (C) 2014 - Robert Roth, Steve Frécinaux
+ * Copyright (C) 2014-2016 - Paolo Borelli
+ * Copyright (C) 2019 - Sébastien Wilmet
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by

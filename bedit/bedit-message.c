@@ -1,8 +1,16 @@
 /*
  * bedit-message.c
- * This file is part of bedit
+ * This file is part of Bedit.
  *
- * Copyright (C) 2008-2010 - Jesse van den Kieboom
+ * Copyright (C) 2020 - Ben Mather
+ *
+ * Based on gedit-message.c from Gedit.
+ *
+ * Copyright (C) 2008-2011 - Jesse van den Kieboom
+ * Copyright (C) 2010 - Steve Frécinaux
+ * Copyright (C) 2010-2012 - Garrett Regier
+ * Copyright (C) 2010-2015 - Paolo Borelli
+ * Copyright (C) 2013-2019 - Sébastien Wilmet
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by

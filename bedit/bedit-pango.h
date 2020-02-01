@@ -1,6 +1,11 @@
-/* bedit-pango.h
+/*
+ * bedit-pango.h
+ * This file is part of Bedit.
  *
- * This file is a copy of libdazzle dzl-pango.h
+ * Copyright (C) 2020 - Ben Mather
+ *
+ * Based on gedit-pango.h from Gedit which is, in turn, a copy of dzl-pango.h
+ * from libdazzle.
  *
  * Copyright (C) 2014 - Christian Hergert <christian@hergert.me>
  *

@@ -1,8 +1,14 @@
 /*
  * bedit-highlight-mode-selector.c
- * This file is part of bedit
+ * This file is part of Bedit.
+ *
+ * Copyright (C) 2020 - Ben Mather
+ *
+ * Based on gedit-highlight-mode-selector.c from Gedit.
  *
  * Copyright (C) 2013 - Ignacio Casal Quinteiro
+ * Copyright (C) 2014 - Garrett Regier, Robert Roth, Steve Frécinaux
+ * Copyright (C) 2015 - Paolo Borelli, Ray Strode
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by

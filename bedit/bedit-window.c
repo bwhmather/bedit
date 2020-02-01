@@ -1,8 +1,31 @@
 /*
  * bedit-window.c
- * This file is part of bedit
+ * This file is part of Bedit.
  *
- * Copyright (C) 2005 - Paolo Maggi
+ * Copyright (C) 2020 - Ben Mather
+ *
+ * Based on gedit-window.c from Gedit.
+ *
+ * Copyright (C) 2000 - Chema Celorio, Jacob Leach
+ * Copyright (C) 2005-2016 - Paolo Borelli
+ * Copyright (C) 2006-2007 - Paolo Maggi
+ * Copyright (C) 2006-2014 - Jesse van den Kieboom, Steve Frécinaux
+ * Copyright (C) 2008 - Djihed Afifi
+ * Copyright (C) 2008-2015 - Ignacio Casal Quinteiro
+ * Copyright (C) 2009-2010 - Javier Jardón
+ * Copyright (C) 2010 - Philip Withnall
+ * Copyright (C) 2010-2011 - Garrett Regier
+ * Copyright (C) 2011 - Cosimo Cecchi
+ * Copyright (C) 2012 - Seif Lotfy
+ * Copyright (C) 2013 - José Aliste, Nelson Benítez León, Pavel Vasin, Plamena
+ *   Manolova
+ * Copyright (C) 2013-2019 - Sébastien Wilmet
+ * Copyright (C) 2014 - Daniel Mustieles, Paolo Bonzini, Robert Roth, Sagar
+ *   Ghuge, Yosef Or Boczko
+ * Copyright (C) 2014-2018 - Sebastien Lafargue
+ * Copyright (C) 2015 - Lars Uebernickel
+ * Copyright (C) 2016 - Matthias Clasen
+ * Copyright (C) 2019 - Michael Catanzaro
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by

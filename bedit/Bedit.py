@@ -1,7 +1,13 @@
 # Bedit.py
-# This file is part of bedit
+# This file is part of Bedit.
 #
-# Copyright (C) 2011 - Jesse van den Kieboom <jesse@icecrew.nl>
+# Copyright (C) 2020 - Ben Mather
+#
+# Based on Gedit.py from Gedit.
+#
+# Copyright (C) 2011 - Jesse van den Kieboom
+# Copyright (C) 2012-2014 - Daniel Trebbien
+# Copyright (C) 2016 - Paolo Borelli
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by

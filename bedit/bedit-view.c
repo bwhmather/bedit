@@ -1,10 +1,29 @@
 /*
  * bedit-view.c
- * This file is part of bedit
+ * This file is part of Bedit.
+ *
+ * Copyright (C) 2020 - Ben Mather
+ *
+ * Based on gedit-view.c from Gedit.
  *
  * Copyright (C) 1998-1999 - Alex Roberts, Evan Lawrence
- * Copyright (C) 2000-2002 - Chema Celorio, Paolo Maggi
- * Copyright (C) 2003-2005 - Paolo Maggi
+ * Copyright (C) 2000-2002 - Chema Celorio
+ * Copyright (C) 2001 - Carlos Perelló Marín, Jose Maria Celorio
+ * Copyright (C) 2001-2008 - Paolo Maggi
+ * Copyright (C) 2002 - James Willcox, Kjartan Maraas, Yogeesh MB, asobala
+ * Copyright (C) 2004-2016 - Paolo Borelli
+ * Copyright (C) 2006-2010 - Steve Frécinaux
+ * Copyright (C) 2007-2011 - Jesse van den Kieboom
+ * Copyright (C) 2008 - William Walker
+ * Copyright (C) 2008-2015 - Ignacio Casal Quinteiro
+ * Copyright (C) 2009 - Gian Mario Tagliaretti
+ * Copyright (C) 2010 - Javier Jardón
+ * Copyright (C) 2010-2011 - Garrett Regier
+ * Copyright (C) 2012 - bharaththiruveedula
+ * Copyright (C) 2013 - Colin Walters, Nelson Benítez León
+ * Copyright (C) 2013-2016 - Sébastien Wilmet
+ * Copyright (C) 2014 - Robert Roth
+ * Copyright (C) 2018 - Sebastien Lafargue
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by

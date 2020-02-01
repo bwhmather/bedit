@@ -1,8 +1,14 @@
 /*
  * bedit-view-frame.h
- * This file is part of bedit
+ * This file is part of Bedit.
  *
- * Copyright (C) 2010 - Ignacio Casal Quinteiro
+ * Copyright (C) 2020 - Ben Mather
+ *
+ * Based on gedit-view-frame.h from Gedit.
+ *
+ * Copyright (C) 2010-2015 - Ignacio Casal Quinteiro
+ * Copyright (C) 2011 - Garrett Regier
+ * Copyright (C) 2013-2019 - Sébastien Wilmet
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by

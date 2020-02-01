@@ -1,8 +1,15 @@
 /*
- * bedit-view-activatable.h
- * This file is part of bedit
+ * bedit-view-activatable.c
+ * This file is part of Bedit.
  *
- * Copyright (C) 2010 - Steve Frécinaux
+ * Copyright (C) 2020 - Ben Mather
+ *
+ * Based on gedit-view-activatable.c from Gedit.
+ *
+ * Copyright (C) 2010 - Ignacio Casal Quinteiro, Steve Frécinaux
+ * Copyright (C) 2014 - Robert Roth
+ * Copyright (C) 2015 - Garrett Regier
+ * Copyright (C) 2019 - Sébastien Wilmet
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by

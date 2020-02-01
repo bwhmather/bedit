@@ -1,12 +1,36 @@
 /*
  * bedit-document.c
- * This file is part of bedit
+ * This file is part of Bedit.
+ *
+ * Copyright (C) 2020 - Ben Mather
+ *
+ * Based on gedit-document.c from Gedit.
  *
  * Copyright (C) 1998-1999 - Alex Roberts
  * Copyright (C) 1998-1999 - Evan Lawrence
  * Copyright (C) 2000-2001 - Chema Celorio
- * Copyright (C) 2000-2005 - Paolo Maggi
- * Copyright (C) 2014-2015 - Sébastien Wilmet
+ * Copyright (C) 2000 - Jacob Leach
+ * Copyright (C) 2000-2007 - Paolo Maggi
+ * Copyright (C) 2001 - Carlos Perelló Marín
+ * Copyright (C) 2002 - Federico Mena Quintero, Fernando Herrera, Hema
+ *   Seetharamaiah, James Willcox, Kjartan Maraas
+ * Copyright (C) 2003 - Eric Ritezel
+ * Copyright (C) 2004-2015 - Paolo Borelli
+ * Copyright (C) 2005 - Benoît Dejean
+ * Copyright (C) 2006 - James Livingston
+ * Copyright (C) 2006-2010 - Steve Frécinaux
+ * Copyright (C) 2008-2012 - Jesse van den Kieboom
+ * Copyright (C) 2009-2013 - Ignacio Casal Quinteiro
+ * Copyright (C) 2010 - Jesús Barbero Rodríguez, Tomas Bzatek
+ * Copyright (C) 2010-2013 - Garrett Regier
+ * Copyright (C) 2011 - José Aliste, Luca Bruno
+ * Copyright (C) 2011-2019 - Sébastien Wilmet
+ * Copyright (C) 2012 - Daniel Trebbien, Seif Lotfy
+ * Copyright (C) 2013 - Volker Sobek
+ * Copyright (C) 2014 - Oliver Gerlich, Robert Roth, Sagar Ghuge, Sebastien
+ *   Lafargue
+ * Copyright (C) 2015 - Lars Uebernickel
+ * Copyright (C) 2019 - Andrea Azzarone, Jordi Mas
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by

@@ -1,11 +1,20 @@
 /*
  * bedit-commands-edit.c
- * This file is part of bedit
+ * This file is part of Bedit.
  *
- * Copyright (C) 1998-1999 - Alex Roberts
- * Copyright (C) 1998-1999 - Evan Lawrence
+ * Copyright (C) 2020 - Ben Mather
+ *
+ * Based on gedit-commands-edit.c from Gedit.
+ *
+ * Copyright (C) 1998-1999 - Alex Roberts, Evan Lawrence
  * Copyright (C) 2000-2001 - Chema Celorio
- * Copyright (C) 2000-2005 - Paolo Maggi
+ * Copyright (C) 2000-2006 - Paolo Maggi
+ * Copyright (C) 2005-2015 - Paolo Borelli
+ * Copyright (C) 2010 - Garrett Regier, Steve Frécinaux
+ * Copyright (C) 2010-2014 - Jesse van den Kieboom
+ * Copyright (C) 2012-2013 - Ignacio Casal Quinteiro
+ * Copyright (C) 2014 - Robert Roth
+ * Copyright (C) 2019 - Sébastien Wilmet
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -20,7 +29,6 @@
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, see <http://www.gnu.org/licenses/>.
  */
-
 #include "config.h"
 
 #include "bedit-commands-private.h"

@@ -1,7 +1,16 @@
 /*
  * bedit-print-preview.h
+ * This file is part of Bedit.
  *
- * Copyright (C) 2008 - Paolo Borelli
+ * Copyright (C) 2020 - Ben Mather
+ *
+ * Based on gedit-print-preview.h from Gedit.
+ *
+ * Copyright (C) 2008 - Joe M Smith
+ * Copyright (C) 2008-2015 - Paolo Borelli
+ * Copyright (C) 2010 - Jesse van den Kieboom, Steve Frécinaux
+ * Copyright (C) 2010-2011 - Garrett Regier
+ * Copyright (C) 2015-2016 - Sébastien Wilmet
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by

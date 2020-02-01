@@ -1,6 +1,15 @@
 /*
  * bedit-app-private.h
- * This file is part of bedit
+ * This file is part of Bedit.
+ *
+ * Copyright (C) 2020 - Ben Mather
+ *
+ * Based on gedit-app-private.h from Gedit.
+ *
+ * Copyright (C) 2015 - Lars Uebernickel
+ * Copyright (C) 2015-2019 - Sébastien Wilmet
+ * Copyright (C) 2016 - Paolo Borelli
+ * Copyright (C) 2019 - Andrea Azzarone
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by

@@ -1,8 +1,30 @@
 /*
  * bedit-app.c
- * This file is part of bedit
+ * This file is part of Bedit.
  *
+ * Copyright (C) 2020 - Ben Mather
+ *
+ * Based on gedit-app.c from Gedit.
+ *
+ * Copyright (C) 2005-2016 - Paolo Borelli
  * Copyright (C) 2005-2006 - Paolo Maggi
+ * Copyright (C) 2006-2014 - Steve Frécinaux
+ * Copyright (C) 2008 - Johan Dahlin
+ * Copyright (C) 2009-2014 - Jesse van den Kieboom
+ * Copyright (C) 2009-2016 - Ignacio Casal Quinteiro
+ * Copyright (C) 2010-2012 - Javier Jardón
+ * Copyright (C) 2010-2016 - Garrett Regier
+ * Copyright (C) 2012 - Sebastien Bacher
+ * Copyright (C) 2012-2014 - Ryan Lortie
+ * Copyright (C) 2013 - Jiro Matsuzawa, Pavel Vasin
+ * Copyright (C) 2013-2019 - Sébastien Wilmet
+ * Copyright (C) 2014 - Felipe Borges, Matthias Clasen, Robert Roth, Sagar Ghuge
+ * Copyright (C) 2014-2015 - Kalev Lember
+ * Copyright (C) 2014-2018 - Sebastien Lafargue
+ * Copyright (C) 2015 - Ilya Novoselov, Lars Uebernickel
+ * Copyright (C) 2016 - Alberts Muktupāvels, Pietro Battiston, Piotr Drąg
+ * Copyright (C) 2017 - humbdi
+ * Copyright (C) 2019 - Andrea Azzarone, Jeremy Bicha, Matthias Schneider
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by

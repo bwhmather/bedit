@@ -1,8 +1,16 @@
 /*
  * bedit-app-win32.c
- * This file is part of bedit
+ * This file is part of Bedit.
  *
- * Copyright (C) 2010 - Jesse van den Kieboom
+ * Copyright (C) 2020 - Ben Mather
+ *
+ * Based on gedit-app-win32.c from Gedit.
+ *
+ * Copyright (C) 2010 - Garrett Regier, Jesse van den Kieboom, Steve Frécinaux
+ * Copyright (C) 2012 - Ignacio Casal Quinteiro
+ * Copyright (C) 2013 - Sébastien Wilmet
+ * Copyright (C) 2014 - Руслан Ижбулатов
+ * Copyright (C) 2015 - Paolo Borelli
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by

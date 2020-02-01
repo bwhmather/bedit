@@ -1,11 +1,28 @@
 /*
  * bedit-utils.h
- * This file is part of bedit
+ * This file is part of Bedit.
  *
- * Copyright (C) 1998-1999 - Alex Roberts
- * Copyright (C) 1998-1999 - Evan Lawrence
+ * Copyright (C) 2020 - Ben Mather
+ *
+ * Based on gedit-utils.h from Gedit.
+ *
+ * Copyright (C) 1998-1999 - Alex Roberts, Evan Lawrence
+ * Copyright (C) 2000 - Jacob Leach
  * Copyright (C) 2000-2001 - Chema Celorio
- * Copyright (C) 2000-2005 - Paolo Maggi
+ * Copyright (C) 2001 - Carlos Perelló Marín
+ * Copyright (C) 2002 - Hema Seetharamaiah, James Willcox
+ * Copyright (C) 2000-2007 - Paolo Maggi
+ * Copyright (C) 2004 - Vinay
+ * Copyright (C) 2004-2014 - Paolo Borelli
+ * Copyright (C) 2006-2010 - Steve Frécinaux
+ * Copyright (C) 2007-2014 - Jesse van den Kieboom
+ * Copyright (C) 2008 - Joe M Smith
+ * Copyright (C) 2009-2011 - Ignacio Casal Quinteiro
+ * Copyright (C) 2010 - Garrett Regier
+ * Copyright (C) 2013 - Nelson Benítez León
+ * Copyright (C) 2013-2019 - Sébastien Wilmet
+ * Copyright (C) 2018 - Sebastien Lafargue
+ * Copyright (C) 2019 - Jordi Mas, Michael Catanzaro
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by

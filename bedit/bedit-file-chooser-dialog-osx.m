@@ -1,8 +1,13 @@
 /*
- * bedit-file-chooser-dialog-osx.c
- * This file is part of bedit
+ * bedit-file-chooser-dialog-osx.m
+ * This file is part of Bedit.
+ *
+ * Copyright (C) 2020 - Ben Mather
+ *
+ * Based on gedit-file-chooser-dialog-osx.m from Gedit.
  *
  * Copyright (C) 2014 - Jesse van den Kieboom
+ * Copyright (C) 2019 - Sébastien Wilmet, Tom Schoonjans
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by

@@ -1,8 +1,13 @@
 /*
- * bedit-app-osx.c
- * This file is part of bedit
+ * bedit-app-osx.m
+ * This file is part of Bedit.
+ *
+ * Copyright (C) 2020 - Ben Mather
+ *
+ * Based on gedit-app-osx.m from Gedit.
  *
  * Copyright (C) 2010 - Jesse van den Kieboom
+ * Copyright (C) 2019 - Sébastien Wilmet, Tom Schoonjans
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by

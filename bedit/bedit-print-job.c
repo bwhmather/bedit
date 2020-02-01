@@ -1,10 +1,26 @@
 /*
  * bedit-print-job.c
- * This file is part of bedit
+ * This file is part of Bedit.
+ *
+ * Copyright (C) 2020 - Ben Mather
+ *
+ * Based on gedit-print-job.c from Gedit.
  *
  * Copyright (C) 2000-2001 - Chema Celorio
  * Copyright (C) 2000-2008 - Paolo Maggi
- * Copyright (C) 2015 - Sébastien Wilmet
+ * Copyright (C) 2008-2010 - Jesse van den Kieboom
+ * Copyright (C) 2008-2015 - Paolo Borelli
+ * Copyright (C) 2009 - Marek Kašík
+ * Copyright (C) 2009-2012 - Ignacio Casal Quinteiro
+ * Copyright (C) 2010 - Steve Frécinaux
+ * Copyright (C) 2010-2011 - Garrett Regier
+ * Copyright (C) 2011 - Laura Lazzati
+ * Copyright (C) 2013-2019 - Sébastien Wilmet
+ * Copyright (C) 2014 - Robert Roth
+ * Copyright (C) 2015 - Maks Naumov
+ * Copyright (C) 2016-2017 - Piotr Drąg
+ * Copyright (C) 2018 - Sebastien Lafargue
+ * Copyright (C) 2019 - Michael Catanzaro
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by

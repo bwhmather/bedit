@@ -1,12 +1,17 @@
 /*
- * bedit-document.h
- * This file is part of bedit
+ * bedit-document-private.h
+ * This file is part of Bedit.
+ *
+ * Copyright (C) 2020 - Ben Mather
+ *
+ * Based on gedit-document-private.h from Gedit.
  *
  * Copyright (C) 1998-1999 - Alex Roberts
  * Copyright (C) 1998-1999 - Evan Lawrence
  * Copyright (C) 2000-2001 - Chema Celorio
  * Copyright (C) 2000-2005 - Paolo Maggi
- * Copyright (C) 2014 - Sébastien Wilmet
+ * Copyright (C) 2015 - Paolo Borelli
+ * Copyright (C) 2015-2019 - Sébastien Wilmet
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -21,7 +26,6 @@
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, see <http://www.gnu.org/licenses/>.
  */
-
 #ifndef BEDIT_DOCUMENT_PRIVATE_H
 #define BEDIT_DOCUMENT_PRIVATE_H
 

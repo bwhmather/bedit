@@ -1,8 +1,18 @@
 /*
  * bedit-preferences-dialog.c
- * This file is part of bedit
+ * This file is part of Bedit.
+ *
+ * Copyright (C) 2020 - Ben Mather
+ *
+ * Based on gedit-preferences-dialog.c from Gedit.
  *
  * Copyright (C) 2001-2005 - Paolo Maggi
+ * Copyright (C) 2012-2015 - Ignacio Casal Quinteiro, Paolo Borelli
+ * Copyright (C) 2013 - Matthias Clasen
+ * Copyright (C) 2013-2019 - Sébastien Wilmet
+ * Copyright (C) 2014 - Boris Egorov, Garrett Regier, Jesse van den Kieboom
+ *   Robert Roth, Ryan Lortie, Sebastien Lafargue
+ * Copyright (C) 2016 - Piotr Drąg
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by

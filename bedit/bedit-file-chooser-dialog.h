@@ -1,8 +1,16 @@
 /*
  * bedit-file-chooser-dialog.h
- * This file is part of bedit
+ * This file is part of Bedit.
  *
- * Copyright (C) 2014 - Jesse van den Kieboom
+ * Copyright (C) 2020 - Ben Mather
+ *
+ * Based on gedit-file-chooser-dialog.h from Gedit.
+ *
+ * Copyright (C) 2005-2015 - Paolo Borelli
+ * Copyright (C) 2008 - Joe M Smith
+ * Copyright (C) 2010 - Garrett Regier, Steve Frécinaux
+ * Copyright (C) 2010-2014 - Jesse van den Kieboom
+ * Copyright (C) 2013-2016 - Sébastien Wilmet
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by

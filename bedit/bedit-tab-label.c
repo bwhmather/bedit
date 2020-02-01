@@ -1,8 +1,18 @@
 /*
  * bedit-tab-label.c
- * This file is part of bedit
+ * This file is part of Bedit.
  *
- * Copyright (C) 2010 - Paolo Borelli
+ * Copyright (C) 2020 - Ben Mather
+ *
+ * Based on gedit-tab-label.c from Gedit.
+ *
+ * Copyright (C) 2010 - Jesse van den Kieboom, Steve Frécinaux
+ * Copyright (C) 2010-2011 - Garrett Regier
+ * Copyright (C) 2010-2014 - Ignacio Casal Quinteiro
+ * Copyright (C) 2010-2015 - Paolo Borelli
+ * Copyright (C) 2013 - William Jon McCann
+ * Copyright (C) 2013-2015 - Sébastien Wilmet
+ * Copyright (C) 2014 - Robert Roth
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by

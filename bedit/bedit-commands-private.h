@@ -1,11 +1,16 @@
 /*
- * bedit-commands.h
- * This file is part of bedit
+ * bedit-commands-private.h
+ * This file is part of Bedit.
  *
- * Copyright (C) 1998-1999 - Alex Roberts
- * Copyright (C) 1998-1999 - Evan Lawrence
+ * Copyright (C) 2020 - Ben Mather
+ *
+ * Based on gedit-commands-private.h from Gedit.
+ *
+ * Copyright (C) 1998-1999 - Alex Roberts, Evan Lawrence
  * Copyright (C) 2000-2001 - Chema Celorio
  * Copyright (C) 2000-2005 - Paolo Maggi
+ * Copyright (C) 2015 - Paolo Borelli
+ * Copyright (C) 2015-2016 - Sébastien Wilmet
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by

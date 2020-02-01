@@ -1,8 +1,20 @@
 /*
  * bedit-progress-info-bar.c
- * This file is part of bedit
+ * This file is part of Bedit.
+ *
+ * Copyright (C) 2020 - Ben Mather
+ *
+ * Based on gedit-progress-info-bar.c from Gedit.
  *
  * Copyright (C) 2005 - Paolo Maggi
+ * Copyright (C) 2010 - Steve Frécinaux
+ * Copyright (C) 2010-2013 - Garrett Regier
+ * Copyright (C) 2011 - Benjamin Otte, Cosimo Cecchi
+ * Copyright (C) 2011-2013 - Ignacio Casal Quinteiro
+ * Copyright (C) 2013 - Matthias Clasen
+ * Copyright (C) 2013-2015 - Sébastien Wilmet
+ * Copyright (C) 2014 - Robert Roth
+ * Copyright (C) 2014-2015 - Paolo Borelli
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by

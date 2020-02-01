@@ -1,8 +1,32 @@
 /*
  * bedit.c
- * This file is part of bedit
+ * This file is part of Bedit.
  *
- * Copyright (C) 2005 - Paolo Maggi
+ * Copyright (C) 2020 - Ben Mather
+ *
+ * Based on gedit.c from Gedit.
+ *
+ * Copyright (C) 1998 - Arturo Espinosa, Chris Lahey, Martin Baulig, Miguel de Icaza
+ * Copyright (C) 1998-1999 - Evan Lawrence, gedit
+ * Copyright (C) 1998-2000 - Alex Roberts
+ * Copyright (C) 2000 - Jose Maria Celorio, Roberto Majadas
+ * Copyright (C) 2000-2001 - Chema Celorio, Jacob Leach, Jason Leach
+ * Copyright (C) 2001 - Carlos Perelló Marín
+ * Copyright (C) 2001-2006 - Paolo Maggi
+ * Copyright (C) 2005-2014 - Paolo Borelli
+ * Copyright (C) 2006 - Christian Persch, Michael Terry, Vincent Untz
+ * Copyright (C) 2006-2010 - Steve Frécinaux
+ * Copyright (C) 2006-2012 - Jesse van den Kieboom
+ * Copyright (C) 2008 - Joe M Smith, Johan Dahlin
+ * Copyright (C) 2009-2010 - Javier Jardón
+ * Copyright (C) 2009-2015 - Ignacio Casal Quinteiro
+ * Copyright (C) 2010 - Philip Withnall
+ * Copyright (C) 2010-2014 - Garrett Regier
+ * Copyright (C) 2011 - Nguyễn Thái Ngọc Duy
+ * Copyright (C) 2011-2019 - Sébastien Wilmet
+ * Copyright (C) 2014 - Kalev Lember, Robert Roth, Ryan Lortie, Руслан Ижбулатов
+ * Copyright (C) 2018 - Jeremy Bicha
+ * Copyright (C) 2019 - Christoph Reiter
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by

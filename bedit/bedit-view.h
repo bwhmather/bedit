@@ -1,10 +1,21 @@
 /*
  * bedit-view.h
- * This file is part of bedit
+ * This file is part of Bedit.
+ *
+ * Copyright (C) 2020 - Ben Mather
+ *
+ * Based on gedit-view.h from Gedit.
  *
  * Copyright (C) 1998-1999 - Alex Roberts, Evan Lawrence
- * Copyright (C) 2000-2001 - Chema Celorio, Paolo Maggi
- * Copyright (C) 2002-2005 - Paolo Maggi
+ * Copyright (C) 2000-2001 - Chema Celorio
+ * Copyright (C) 2001 - Carlos Perelló Marín
+ * Copyright (C) 2001-2008 - Paolo Maggi
+ * Copyright (C) 2005-2015 - Paolo Borelli
+ * Copyright (C) 2007-2010 - Jesse van den Kieboom
+ * Copyright (C) 2010 - Garrett Regier, Steve Frécinaux
+ * Copyright (C) 2011 - Ignacio Casal Quinteiro
+ * Copyright (C) 2013-2016 - Sébastien Wilmet
+ * Copyright (C) 2018 - Sebastien Lafargue
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
