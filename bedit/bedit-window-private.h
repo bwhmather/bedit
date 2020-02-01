@@ -40,13 +40,6 @@ struct _BeditWindowPrivate {
     BeditNotebook *notebook;
     BeditTab *active_tab;
 
-    GtkWidget *side_panel_box;
-    GtkWidget *side_panel;
-    GtkWidget *side_stack_switcher;
-    GtkWidget *side_panel_inline_stack_switcher;
-
-    GtkWidget *hpaned;
-
     BeditMessageBus *message_bus;
     PeasExtensionSet *extensions;
 
@@ -74,8 +67,6 @@ struct _BeditWindowPrivate {
     gint width;
     gint height;
     GdkWindowState window_state;
-
-    gint side_panel_size;
 
     BeditWindowState state;
 

@@ -66,9 +66,6 @@ void bedit_debug_init(void) {
     if (g_getenv("BEDIT_DEBUG_WINDOW") != NULL) {
         enabled_sections |= BEDIT_DEBUG_WINDOW;
     }
-    if (g_getenv("BEDIT_DEBUG_PANEL") != NULL) {
-        enabled_sections |= BEDIT_DEBUG_PANEL;
-    }
     if (g_getenv("BEDIT_DEBUG_PLUGINS") != NULL) {
         enabled_sections |= BEDIT_DEBUG_PLUGINS;
     }

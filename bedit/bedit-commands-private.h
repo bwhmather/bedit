@@ -78,8 +78,6 @@ void _bedit_cmd_edit_overwrite_mode(
 
 void _bedit_cmd_view_focus_active(
     GSimpleAction *action, GVariant *state, gpointer user_data);
-void _bedit_cmd_view_toggle_side_panel(
-    GSimpleAction *action, GVariant *state, gpointer user_data);
 void _bedit_cmd_view_toggle_fullscreen_mode(
     GSimpleAction *action, GVariant *state, gpointer user_data);
 void _bedit_cmd_view_leave_fullscreen_mode(

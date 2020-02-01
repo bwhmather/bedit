@@ -95,28 +95,6 @@ static void bedit_window_get_property(
     }
 }
 
-static void save_panels_state(BeditWindow *window) {
-    const gchar *panel_page;
-
-    bedit_debug(DEBUG_WINDOW);
-
-    if (window->priv->side_panel_size > 0) {
-        g_settings_set_int(
-            window->priv->window_settings, BEDIT_SETTINGS_SIDE_PANEL_SIZE,
-            window->priv->side_panel_size);
-    }
-
-    panel_page =
-        gtk_stack_get_visible_child_name(GTK_STACK(window->priv->side_panel));
-    if (panel_page != NULL) {
-        g_settings_set_string(
-            window->priv->window_settings,
-            BEDIT_SETTINGS_SIDE_PANEL_ACTIVE_PAGE, panel_page);
-    }
-
-    g_settings_apply(window->priv->window_settings);
-}
-
 static void save_window_state(GtkWidget *widget) {
     BeditWindow *window = BEDIT_WINDOW(widget);
 
@@ -144,11 +122,9 @@ static void bedit_window_dispose(GObject *object) {
     peas_engine_garbage_collect(
         PEAS_ENGINE(bedit_plugins_engine_get_default()));
 
-    /* save the panels position and make sure to deactivate plugins
-     * for this window, but only once */
+    /* Save window size and deactivate plugins for this window, but only once */
     if (!window->priv->dispose_has_run) {
         save_window_state(GTK_WIDGET(window));
-        save_panels_state(window);
 
         /* Note that unreffing the extensions will automatically remove
            all extensions which in turn will deactivate the extension */
@@ -174,8 +150,6 @@ static void bedit_window_dispose(GObject *object) {
      */
     peas_engine_garbage_collect(
         PEAS_ENGINE(bedit_plugins_engine_get_default()));
-
-    g_clear_object(&window->priv->side_stack_switcher);
 
     /* GTK+/GIO unref the action map in an idle. For the last BeditWindow,
      * the application quits before the idle, so the action map is not
@@ -414,14 +388,6 @@ static void bedit_window_class_init(BeditWindowClass *klass) {
         widget_class, BeditWindow, action_area);
     gtk_widget_class_bind_template_child_private(
         widget_class, BeditWindow, gear_button);
-    gtk_widget_class_bind_template_child_private(
-        widget_class, BeditWindow, hpaned);
-    gtk_widget_class_bind_template_child_private(
-        widget_class, BeditWindow, side_panel_box);
-    gtk_widget_class_bind_template_child_private(
-        widget_class, BeditWindow, side_panel);
-    gtk_widget_class_bind_template_child_private(
-        widget_class, BeditWindow, side_panel_inline_stack_switcher);
     gtk_widget_class_bind_template_child_private(
         widget_class, BeditWindow, notebook);
     gtk_widget_class_bind_template_child_private(
@@ -791,7 +757,6 @@ static BeditWindow *clone_window(BeditWindow *origin) {
     BeditWindow *window;
     GdkScreen *screen;
     BeditApp *app;
-    const gchar *panel_page;
 
     bedit_debug(DEBUG_WINDOW);
 
@@ -812,22 +777,6 @@ static BeditWindow *clone_window(BeditWindow *origin) {
         gtk_window_stick(GTK_WINDOW(window));
     else
         gtk_window_unstick(GTK_WINDOW(window));
-
-    /* set the panels size, the paned position will be set when
-     * they are mapped */
-    window->priv->side_panel_size = origin->priv->side_panel_size;
-
-    panel_page =
-        gtk_stack_get_visible_child_name(GTK_STACK(origin->priv->side_panel));
-
-    if (panel_page) {
-        gtk_stack_set_visible_child_name(
-            GTK_STACK(window->priv->side_panel), panel_page);
-    }
-
-    gtk_widget_set_visible(
-        window->priv->side_panel,
-        gtk_widget_get_visible(origin->priv->side_panel));
 
     return window;
 }
@@ -1740,133 +1689,6 @@ static void on_show_popup_menu(
     gtk_menu_popup_at_pointer(GTK_MENU(menu), (GdkEvent *)event);
 }
 
-static void side_panel_size_allocate(
-    GtkWidget *widget, GtkAllocation *allocation, BeditWindow *window) {
-    window->priv->side_panel_size = allocation->width;
-}
-
-static void hpaned_restore_position(GtkWidget *widget, BeditWindow *window) {
-    gint pos;
-
-    bedit_debug_message(
-        DEBUG_WINDOW, "Restoring hpaned position: side panel size %d",
-        window->priv->side_panel_size);
-
-    pos = MAX(100, window->priv->side_panel_size);
-    gtk_paned_set_position(GTK_PANED(window->priv->hpaned), pos);
-
-    /* start monitoring the size */
-    g_signal_connect(
-        window->priv->side_panel, "size-allocate",
-        G_CALLBACK(side_panel_size_allocate), window);
-
-    /* run this only once */
-    g_signal_handlers_disconnect_by_func(
-        widget, hpaned_restore_position, window);
-}
-
-static void side_panel_visibility_changed(
-    GtkWidget *panel, GParamSpec *pspec, BeditWindow *window) {
-    gboolean visible;
-    GAction *action;
-
-    visible = gtk_widget_get_visible(panel);
-
-    g_settings_set_boolean(
-        window->priv->ui_settings, BEDIT_SETTINGS_SIDE_PANEL_VISIBLE, visible);
-
-    /* sync the action state if the panel visibility was changed
-     * programmatically */
-    action = g_action_map_lookup_action(G_ACTION_MAP(window), "side-panel");
-    g_simple_action_set_state(
-        G_SIMPLE_ACTION(action), g_variant_new_boolean(visible));
-
-    /* focus the right widget and set the right styles */
-    if (visible) {
-        gtk_widget_grab_focus(window->priv->side_panel);
-    } else {
-        gtk_widget_grab_focus(GTK_WIDGET(window->priv->notebook));
-    }
-}
-
-static void on_side_panel_stack_children_number_changed(
-    GtkStack *stack, GtkWidget *widget, BeditWindow *window) {
-    BeditWindowPrivate *priv = window->priv;
-    GList *children;
-
-    children = gtk_container_get_children(GTK_CONTAINER(priv->side_panel));
-
-    if (children != NULL && children->next != NULL) {
-        gtk_widget_show(priv->side_stack_switcher);
-    } else {
-        /* side_stack_switcher can get NULL in dispose, before stack children
-           are being removed */
-        if (priv->side_stack_switcher != NULL) {
-            gtk_widget_hide(priv->side_stack_switcher);
-        }
-    }
-
-    g_list_free(children);
-}
-
-static void setup_side_panel(BeditWindow *window) {
-    BeditWindowPrivate *priv = window->priv;
-
-    bedit_debug(DEBUG_WINDOW);
-
-    g_signal_connect_after(
-        priv->side_panel, "notify::visible",
-        G_CALLBACK(side_panel_visibility_changed), window);
-
-    priv->side_stack_switcher = priv->side_panel_inline_stack_switcher;
-
-    gtk_button_set_relief(
-        GTK_BUTTON(priv->side_stack_switcher), GTK_RELIEF_NONE);
-    g_object_ref_sink(priv->side_stack_switcher);
-
-    bedit_utils_set_atk_name_description(
-        priv->side_stack_switcher, _("Change side panel page"), NULL);
-
-    bedit_menu_stack_switcher_set_stack(
-        BEDIT_MENU_STACK_SWITCHER(priv->side_stack_switcher),
-        GTK_STACK(priv->side_panel));
-
-    g_signal_connect(
-        priv->side_panel, "add",
-        G_CALLBACK(on_side_panel_stack_children_number_changed), window);
-
-    g_signal_connect(
-        priv->side_panel, "remove",
-        G_CALLBACK(on_side_panel_stack_children_number_changed), window);
-}
-
-static void init_panels_visibility(BeditWindow *window) {
-    gchar *panel_page;
-    GtkWidget *panel_child;
-    gboolean side_panel_visible;
-
-    bedit_debug(DEBUG_WINDOW);
-
-    /* side panel */
-    panel_page = g_settings_get_string(
-        window->priv->window_settings, BEDIT_SETTINGS_SIDE_PANEL_ACTIVE_PAGE);
-    panel_child = gtk_stack_get_child_by_name(
-        GTK_STACK(window->priv->side_panel), panel_page);
-    if (panel_child != NULL) {
-        gtk_stack_set_visible_child(
-            GTK_STACK(window->priv->side_panel), panel_child);
-    }
-
-    g_free(panel_page);
-
-    side_panel_visible = g_settings_get_boolean(
-        window->priv->ui_settings, BEDIT_SETTINGS_SIDE_PANEL_VISIBLE);
-
-    if (side_panel_visible) {
-        gtk_widget_show(window->priv->side_panel);
-    }
-}
-
 static void clipboard_owner_change(
     GtkClipboard *clipboard, GdkEventOwnerChange *event, BeditWindow *window) {
     set_paste_sensitivity_according_to_clipboard(window, clipboard);
@@ -1914,7 +1736,6 @@ static GActionEntry win_entries[] = {
     {"close-all", _bedit_cmd_file_close_all},
     {"print", _bedit_cmd_file_print},
     {"focus-active-view", NULL, NULL, "false", _bedit_cmd_view_focus_active},
-    {"side-panel", NULL, NULL, "false", _bedit_cmd_view_toggle_side_panel},
     {"fullscreen", NULL, NULL, "false", _bedit_cmd_view_toggle_fullscreen_mode},
     {"leave-fullscreen", _bedit_cmd_view_leave_fullscreen_mode},
     {"find", _bedit_cmd_search_find},
@@ -1984,6 +1805,7 @@ static void bedit_window_init(BeditWindow *window) {
         g_settings_new("com.bwhmather.bedit.state.window");
     g_settings_delay(window->priv->window_settings);
 
+
     window->priv->message_bus = bedit_message_bus_new();
 
     gtk_widget_init_template(GTK_WIDGET(window));
@@ -2040,16 +1862,6 @@ static void bedit_window_init(BeditWindow *window) {
         window->priv->notebook, "show-popup-menu",
         G_CALLBACK(on_show_popup_menu), window);
 
-    setup_side_panel(window);
-
-    /* panels' state must be restored after panels have been mapped. */
-    window->priv->side_panel_size = g_settings_get_int(
-        window->priv->window_settings, BEDIT_SETTINGS_SIDE_PANEL_SIZE);
-
-    g_signal_connect_after(
-        window->priv->hpaned, "map", G_CALLBACK(hpaned_restore_position),
-        window);
-
     /* Drag and drop support */
     gtk_drag_dest_set(
         GTK_WIDGET(window),
@@ -2093,10 +1905,6 @@ static void bedit_window_init(BeditWindow *window) {
     peas_extension_set_foreach(
         window->priv->extensions, (PeasExtensionSetForeachFunc)extension_added,
         window);
-
-    /* set visibility of panels.
-     * This needs to be done after plugins activatation */
-    init_panels_visibility(window);
 
     update_actions_sensitivity(window);
 
@@ -2450,20 +2258,6 @@ gboolean _bedit_window_is_removing_tabs(BeditWindow *window) {
     g_return_val_if_fail(BEDIT_IS_WINDOW(window), FALSE);
 
     return window->priv->removing_tabs;
-}
-
-/**
- * bedit_window_get_side_panel:
- * @window: a #BeditWindow
- *
- * Gets the side panel of the @window.
- *
- * Returns: (transfer none): the side panel's #GtkStack.
- */
-GtkWidget *bedit_window_get_side_panel(BeditWindow *window) {
-    g_return_val_if_fail(BEDIT_IS_WINDOW(window), NULL);
-
-    return window->priv->side_panel;
 }
 
 /**

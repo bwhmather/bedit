@@ -112,8 +112,6 @@ GList *bedit_window_get_views(BeditWindow *window);
 
 GtkWindowGroup *bedit_window_get_group(BeditWindow *window);
 
-GtkWidget *bedit_window_get_side_panel(BeditWindow *window);
-
 GtkWidget *bedit_window_get_action_area(BeditWindow *window);
 
 GtkWidget *bedit_window_get_statusbar(BeditWindow *window);

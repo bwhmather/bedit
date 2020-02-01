@@ -677,7 +677,6 @@ static void bedit_app_startup(GApplication *application) {
         GTK_APPLICATION(application), "win.goto-line", "<Primary>I");
     add_accelerator(
         GTK_APPLICATION(application), "win.focus-active-view", "Escape");
-    add_accelerator(GTK_APPLICATION(application), "win.side-panel", "F9");
     add_accelerator(GTK_APPLICATION(application), "win.fullscreen", "F11");
     /* XXX These two accelerators are never reached XXX
      * By default, GTK will intercept these bindings to switch between
