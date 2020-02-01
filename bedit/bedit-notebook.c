@@ -567,13 +567,12 @@ void bedit_notebook_set_active_tab(BeditNotebook *nb, BeditTab *tab) {
     gint page_num;
 
     g_return_if_fail(BEDIT_IS_NOTEBOOK(nb));
-    g_return_if_fail(BEDIT_IS_TAB(tab) || tab == NULL);
+    g_return_if_fail(BEDIT_IS_TAB(tab));
 
-    if (tab != NULL) {
-        page_num = gtk_notebook_page_num(GTK_NOTEBOOK(nb), GTK_WIDGET(tab));
-        g_return_if_fail(page_num != -1);
-        gtk_notebook_set_current_page(GTK_NOTEBOOK(nb), page_num);
-    }
+    page_num = gtk_notebook_page_num(GTK_NOTEBOOK(nb), GTK_WIDGET(tab));
+    g_return_if_fail(page_num != -1);
+
+    gtk_notebook_set_current_page(GTK_NOTEBOOK(nb), page_num);
 }
 
 BeditTab *bedit_notebook_get_active_tab(BeditNotebook *nb) {
@@ -582,6 +581,9 @@ BeditTab *bedit_notebook_get_active_tab(BeditNotebook *nb) {
     g_return_val_if_fail(BEDIT_IS_NOTEBOOK(nb), NULL);
 
     page_num = gtk_notebook_get_current_page(GTK_NOTEBOOK(nb));
+    if (page_num != -1) {
+        return NULL;
+    }
 
     return BEDIT_TAB(gtk_notebook_get_nth_page(GTK_NOTEBOOK(nb), page_num));
 }
