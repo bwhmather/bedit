@@ -258,6 +258,57 @@ static gboolean bedit_window_configure_event(
         ->configure_event(widget, event);
 }
 
+static gboolean bedit_window_process_change_tab_event(
+    GtkWindow *window, GdkEventKey *event) {
+
+    GdkDisplay *display;
+    GdkKeymap *keymap;
+    guint consumed_modifiers;
+
+    guint keyval;
+    guint modifiers;
+
+    g_return_val_if_fail(BEDIT_IS_WINDOW(window), FALSE);
+
+    display = gtk_widget_get_display(GTK_WIDGET(window));
+    keymap = gdk_keymap_get_for_display(display);
+
+    gdk_keymap_translate_keyboard_state(
+        keymap,
+        event->hardware_keycode, event->state, event->group,
+        &keyval, NULL, NULL, &consumed_modifiers);
+
+    /* Start with all applied modifier keys */
+    modifiers = event->state;
+
+    /* Filter out the modifiers that were applied when translating keyboard
+     * state */
+    modifiers &= ~consumed_modifiers;
+
+    /* Filter out any modifiers we don't care about */
+    modifiers &= GDK_CONTROL_MASK | GDK_SHIFT_MASK | GDK_MOD1_MASK;
+
+    if (modifiers == GDK_CONTROL_MASK && keyval == GDK_KEY_Tab) {
+        GtkWidget *notebook;
+
+        notebook = _bedit_window_get_notebook(BEDIT_WINDOW(window));
+        gtk_notebook_next_page(GTK_NOTEBOOK(notebook));
+
+        return TRUE;
+    }
+
+    if (modifiers == GDK_CONTROL_MASK && keyval == GDK_KEY_ISO_Left_Tab) {
+        GtkWidget *notebook;
+
+        notebook = _bedit_window_get_notebook(BEDIT_WINDOW(window));
+        gtk_notebook_prev_page(GTK_NOTEBOOK(notebook));
+
+        return TRUE;
+    }
+
+    return FALSE;
+}
+
 /*
  * GtkWindow catches keybindings for the menu items _before_ passing them to
  * the focused widget. This is unfortunate and means that pressing ctrl+V
@@ -278,10 +329,15 @@ static gboolean bedit_window_key_press_event(
             g_type_class_peek_parent(bedit_window_parent_class);
     }
 
+    if (!handled) {
+        handled = bedit_window_process_change_tab_event(window, event);
+    }
+
     /* handle focus widget key events */
     if (!handled) {
         handled = gtk_window_propagate_key_event(window, event);
     }
+
 
     /* handle mnemonics and accelerators */
     if (!handled) {

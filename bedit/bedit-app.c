@@ -679,12 +679,18 @@ static void bedit_app_startup(GApplication *application) {
         GTK_APPLICATION(application), "win.focus-active-view", "Escape");
     add_accelerator(GTK_APPLICATION(application), "win.side-panel", "F9");
     add_accelerator(GTK_APPLICATION(application), "win.fullscreen", "F11");
+    /* XXX These two accelerators are never reached XXX
+     * By default, GTK will intercept these bindings to switch between
+     * widgets.  We preempt this in `bedit_window_process_change_tab_event`
+     * and handle the key presses manually.
+     * TODO figure out a better way to stop Ctrl+Tab being intercepted.
+     */
     add_accelerator(
         GTK_APPLICATION(application), "win.previous-document",
-        "<Primary><Alt>Page_Up");
+        "<Primary><Shift>Tab");
     add_accelerator(
         GTK_APPLICATION(application), "win.next-document",
-        "<Primary><Alt>Page_Down");
+        "<Primary>Tab");
 
     load_accels();
 
