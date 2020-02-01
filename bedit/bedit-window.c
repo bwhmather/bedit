@@ -1179,11 +1179,13 @@ static void update_statusbar(
     }
 }
 
-static void tab_switched(
+static void on_switched_page(
     BeditNotebook *notebook, BeditTab *new_tab, guint page_num,
     BeditWindow *window) {
     BeditTab *old_tab;
     BeditView *old_view, *new_view;
+
+    bedit_debug(DEBUG_WINDOW);
 
     old_tab = window->priv->active_tab;
     window->priv->active_tab = new_tab;
@@ -1512,8 +1514,8 @@ static void editable_changed(
         (PeasExtensionSetForeachFunc)extension_update_state, window);
 }
 
-static void on_tab_added(
-    BeditNotebook *notebook, BeditTab *tab, guint page_num,
+static void on_page_added(
+    GtkNotebook *notebook, GtkWidget *tab, guint page_num,
     BeditWindow *window) {
     BeditView *view;
     BeditDocument *doc;
@@ -1521,10 +1523,14 @@ static void on_tab_added(
 
     bedit_debug(DEBUG_WINDOW);
 
+    g_return_if_fail(BEDIT_IS_NOTEBOOK(notebook));
+    g_return_if_fail(BEDIT_IS_TAB(tab));
+    g_return_if_fail(BEDIT_IS_WINDOW(window));
+
     update_actions_sensitivity(window);
 
-    view = bedit_tab_get_view(tab);
-    doc = bedit_tab_get_document(tab);
+    view = bedit_tab_get_view(BEDIT_TAB(tab));
+    doc = bedit_tab_get_document(BEDIT_TAB(tab));
     file = bedit_document_get_file(doc);
 
     /* IMPORTANT: remember to disconnect the signal in notebook_tab_removed
@@ -1584,8 +1590,8 @@ GFile *_bedit_window_pop_last_closed_doc(BeditWindow *window) {
     return f;
 }
 
-static void on_tab_removed(
-    BeditNotebook *notebook, BeditTab *tab, guint page_num,
+static void on_page_removed(
+    GtkNotebook *notebook, GtkWidget *tab, guint page_num,
     BeditWindow *window) {
     BeditView *view;
     BeditDocument *doc;
@@ -1593,10 +1599,14 @@ static void on_tab_removed(
 
     bedit_debug(DEBUG_WINDOW);
 
-    num_tabs = bedit_notebook_get_n_tabs(notebook);
+    g_return_if_fail(BEDIT_IS_NOTEBOOK(notebook));
+    g_return_if_fail(BEDIT_IS_TAB(tab));
+    g_return_if_fail(BEDIT_IS_WINDOW(window));
 
-    view = bedit_tab_get_view(tab);
-    doc = bedit_tab_get_document(tab);
+    num_tabs = bedit_notebook_get_n_tabs(BEDIT_NOTEBOOK(notebook));
+
+    view = bedit_tab_get_view(BEDIT_TAB(tab));
+    doc = bedit_tab_get_document(BEDIT_TAB(tab));
 
     g_signal_handlers_disconnect_by_func(tab, G_CALLBACK(sync_name), window);
     g_signal_handlers_disconnect_by_func(tab, G_CALLBACK(sync_state), window);
@@ -1620,7 +1630,7 @@ static void on_tab_removed(
     g_signal_handlers_disconnect_by_func(
         view, G_CALLBACK(editable_changed), window);
 
-    if (tab == bedit_notebook_get_active_tab(notebook)) {
+    if (tab == window->priv->active_tab) {
         if (window->priv->tab_width_id) {
             g_signal_handler_disconnect(view, window->priv->tab_width_id);
             window->priv->tab_width_id = 0;
@@ -1631,7 +1641,7 @@ static void on_tab_removed(
             window->priv->language_changed_id = 0;
         }
 
-        bedit_notebook_set_active_tab(notebook, NULL);
+        window->priv->active_tab = NULL;
     }
 
     g_return_if_fail(num_tabs >= 0);
@@ -1858,15 +1868,15 @@ static void bedit_window_init(BeditWindow *window) {
 
     /* Setup main area */
     g_signal_connect(
-        window->priv->notebook, "page-added", G_CALLBACK(on_tab_added),
-        window);  // TODO unsafe cast from GtkWidget to BeditTab.
+        window->priv->notebook, "page-added", G_CALLBACK(on_page_added),
+        window);
 
     g_signal_connect(
-        window->priv->notebook, "page-removed", G_CALLBACK(on_tab_removed),
-        window);  // TODO unsafe cast from GtkWidget to BeditTab.
+        window->priv->notebook, "page-removed", G_CALLBACK(on_page_removed),
+        window);
 
     g_signal_connect(
-        window->priv->notebook, "switch-page", G_CALLBACK(tab_switched),
+        window->priv->notebook, "switch-page", G_CALLBACK(on_switched_page),
         window);
 
     g_signal_connect(
