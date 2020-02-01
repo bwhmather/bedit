@@ -3,7 +3,7 @@
  * This file is part of bedit
  *
  * Copyright (C) 2005 - Paolo Maggi
- * Copyright (C) 2014, 2015 - Sébastien Wilmet
+ * Copyright (C) 2014-2015 - Sébastien Wilmet
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by

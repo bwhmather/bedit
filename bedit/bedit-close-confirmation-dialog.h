@@ -2,8 +2,8 @@
  * bedit-close-confirmation-dialog.h
  * This file is part of bedit
  *
- * Copyright (C) 2004-2005 GNOME Foundation
- * Copyright (C) 2015 Sébastien Wilmet
+ * Copyright (C) 2004-2005 - GNOME Foundation
+ * Copyright (C) 2015 - Sébastien Wilmet
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by

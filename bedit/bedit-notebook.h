@@ -4,6 +4,13 @@
  *
  * Copyright (C) 2005 - Paolo Maggi
  *
+ * This file is a modified version of the epiphany file ephy-notebook.h
+ * Here the relevant copyright:
+ *
+ * Copyright (C) 2002 - Christophe Fergeau
+ * Copyright (C) 2003 - Marco Pesenti Gritti
+ * Copyright (C) 2003-2004 - Christian Persch
+ *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 2 of the License, or
@@ -16,15 +23,6 @@
  *
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, see <http://www.gnu.org/licenses/>.
- */
-
-/* This file is a modified version of the epiphany file ephy-notebook.h
- * Here the relevant copyright:
- *
- *  Copyright (C) 2002 Christophe Fergeau
- *  Copyright (C) 2003 Marco Pesenti Gritti
- *  Copyright (C) 2003, 2004 Christian Persch
- *
  */
 
 #ifndef BEDIT_NOTEBOOK_H

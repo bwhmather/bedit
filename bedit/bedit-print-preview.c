@@ -1,8 +1,8 @@
 /*
  * bedit-print-preview.c
  *
- * Copyright (C) 2008 Paolo Borelli
- * Copyright (C) 2015 Sébastien Wilmet
+ * Copyright (C) 2008 - Paolo Borelli
+ * Copyright (C) 2015 - Sébastien Wilmet
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by

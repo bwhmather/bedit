@@ -2,7 +2,10 @@
  * bedit-window-private.h
  * This file is part of bedit
  *
- * Copyright (C) 2005 - Paolo Maggi
+ * Copyright (C) 2005-2014 - Paolo Maggi
+ * Copyright (C) 2008-2014 - Jesse van den Keiboom
+ * Copyright (C) 2009-2014 - Ignacio Casal Quinteiro
+ * Copyright (C) 2010 - Garrett Regier
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -11,7 +14,7 @@
  *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANWINDOWILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
