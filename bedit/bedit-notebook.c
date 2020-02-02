@@ -581,7 +581,7 @@ BeditTab *bedit_notebook_get_active_tab(BeditNotebook *nb) {
     g_return_val_if_fail(BEDIT_IS_NOTEBOOK(nb), NULL);
 
     page_num = gtk_notebook_get_current_page(GTK_NOTEBOOK(nb));
-    if (page_num != -1) {
+    if (page_num == -1) {
         return NULL;
     }
 
