@@ -2116,10 +2116,9 @@ BeditTab *bedit_window_create_tab_from_stream(
  */
 BeditTab *bedit_window_get_active_tab(BeditWindow *window) {
     g_return_val_if_fail(BEDIT_IS_WINDOW(window), NULL);
+    g_return_val_if_fail(BEDIT_IS_NOTEBOOK(window->priv->notebook), NULL);
 
-    return (window->priv->notebook == NULL)
-        ? NULL
-        : bedit_notebook_get_active_tab(window->priv->notebook);
+    return bedit_notebook_get_active_tab(window->priv->notebook);
 }
 
 static void add_document(BeditTab *tab, GList **res) {
