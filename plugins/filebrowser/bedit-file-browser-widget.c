@@ -337,7 +337,10 @@ static void bedit_file_browser_widget_dispose(GObject *object) {
     g_clear_object(&priv->bookmarks_store);
 
     g_slist_free_full(priv->filter_funcs, (GDestroyNotify)filter_func_free);
+    priv->filter_funcs = NULL;
+
     g_list_free_full(priv->locations, (GDestroyNotify)location_free);
+    priv->locations = NULL;
 
     if (priv->bookmarks_hash != NULL) {
         g_hash_table_unref(priv->bookmarks_hash);
