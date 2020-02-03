@@ -84,7 +84,7 @@ struct _FileBrowserNode {
     gchar *markup;
 
     GdkPixbuf *icon;
-    GdkPixbuf *emblem;
+    GEmblem *emblem;
 
     FileBrowserNode *parent;
     gint pos;
@@ -413,7 +413,7 @@ static void bedit_file_browser_store_init(BeditFileBrowserStore *obj) {
     obj->priv->column_types[BEDIT_FILE_BROWSER_STORE_COLUMN_NAME] =
         G_TYPE_STRING;
     obj->priv->column_types[BEDIT_FILE_BROWSER_STORE_COLUMN_EMBLEM] =
-        GDK_TYPE_PIXBUF;
+        G_TYPE_EMBLEM;
 
     /* Default filter mode is hiding the hidden files */
     obj->priv->filter_mode = bedit_file_browser_store_filter_mode_get_default();
@@ -1420,57 +1420,44 @@ static void file_browser_node_unload(
 
 static void model_recomposite_icon_real(
     BeditFileBrowserStore *tree_model, FileBrowserNode *node, GFileInfo *info) {
-    GdkPixbuf *icon;
+    GIcon *icon;
+    GdkPixbuf *pixbuf;
 
     g_return_if_fail(BEDIT_IS_FILE_BROWSER_STORE(tree_model));
     g_return_if_fail(node != NULL);
 
-    if (node->file == NULL)
+    if (node->file == NULL) {
         return;
-
-    if (info) {
-        GIcon *gicon = g_file_info_get_icon(info);
-
-        if (gicon != NULL)
-            icon = bedit_file_browser_utils_pixbuf_from_icon(
-                gicon, GTK_ICON_SIZE_MENU);
-        else
-            icon = NULL;
-    } else {
-        icon = bedit_file_browser_utils_pixbuf_from_file(
-            node->file, GTK_ICON_SIZE_MENU, FALSE);
     }
 
-    /* Fallback to the same icon as the file browser */
-    if (!icon)
-        icon = bedit_file_browser_utils_pixbuf_from_theme(
-            "text-x-generic", GTK_ICON_SIZE_MENU);
+    if (!info) {
+        g_file_query_info(
+            node->file, G_FILE_ATTRIBUTE_STANDARD_ICON,
+            G_FILE_QUERY_INFO_NONE, NULL, NULL);
+    }
 
-    if (node->icon)
-        g_object_unref(node->icon);
+    if (!info) {
+        return;
+    }
+
+    icon = g_file_info_get_icon(info);
+
+    if (!icon) {
+        icon = g_content_type_get_icon("text/x-generic");
+    }
 
     if (node->emblem) {
-        gint icon_size;
-
-        gtk_icon_size_lookup(GTK_ICON_SIZE_MENU, NULL, &icon_size);
-
-        if (icon == NULL) {
-            node->icon = gdk_pixbuf_new(
-                gdk_pixbuf_get_colorspace(node->emblem),
-                gdk_pixbuf_get_has_alpha(node->emblem),
-                gdk_pixbuf_get_bits_per_sample(node->emblem), icon_size,
-                icon_size);
-        } else {
-            node->icon = gdk_pixbuf_copy(icon);
-            g_object_unref(icon);
-        }
-
-        gdk_pixbuf_composite(
-            node->emblem, node->icon, icon_size - 10, icon_size - 10, 10, 10,
-            icon_size - 10, icon_size - 10, 1, 1, GDK_INTERP_NEAREST, 255);
-    } else {
-        node->icon = icon;
+        icon = g_emblemed_icon_new(icon, node->emblem);
     }
+
+    pixbuf = bedit_file_browser_utils_pixbuf_from_icon(
+        icon, GTK_ICON_SIZE_MENU);
+
+    if (node->icon) {
+        g_object_unref(node->icon);
+    }
+
+    node->icon = pixbuf;  // TODO
 }
 
 static void model_recomposite_icon(
@@ -2452,7 +2439,7 @@ void bedit_file_browser_store_set_value(
             g_object_unref(node->emblem);
 
         if (data)
-            node->emblem = g_object_ref(GDK_PIXBUF(data));
+            node->emblem = g_object_ref(G_EMBLEM(data));
         else
             node->emblem = NULL;
 

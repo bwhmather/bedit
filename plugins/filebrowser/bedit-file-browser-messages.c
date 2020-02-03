@@ -193,15 +193,15 @@ static void message_set_root_cb(
 static void message_set_emblem_cb(
     BeditMessageBus *bus, BeditMessage *message, WindowData *data) {
     gchar *id = NULL;
-    gchar *emblem = NULL;
+    gchar *emblem_name = NULL;
     GtkTreePath *path;
     BeditFileBrowserStore *store;
 
-    g_object_get(message, "id", &id, "emblem", &emblem, NULL);
+    g_object_get(message, "id", &id, "emblem", &emblem_name, NULL);
 
     if (!id) {
         g_free(id);
-        g_free(emblem);
+        g_free(emblem_name);
 
         return;
     }
@@ -211,19 +211,19 @@ static void message_set_emblem_cb(
     if (path != NULL) {
         GtkTreeIter iter;
         GValue value = G_VALUE_INIT;
-        GdkPixbuf *pixbuf = NULL;
+        GIcon *icon = NULL;
+        GEmblem *emblem = NULL;
 
-        if (emblem != NULL) {
-            pixbuf = gtk_icon_theme_load_icon(
-                gtk_icon_theme_get_default(), emblem, 10,
-                GTK_ICON_LOOKUP_FORCE_SIZE, NULL);
+        if (emblem_name != NULL) {
+            icon = g_icon_new_for_string(emblem_name, NULL);
+            emblem = g_emblem_new(icon);
         }
 
         store = bedit_file_browser_widget_get_browser_store(data->widget);
 
         if (gtk_tree_model_get_iter(GTK_TREE_MODEL(store), &iter, path)) {
-            g_value_init(&value, GDK_TYPE_PIXBUF);
-            g_value_set_object(&value, pixbuf);
+            g_value_init(&value, G_TYPE_EMBLEM);
+            g_value_set_object(&value, emblem);
 
             bedit_file_browser_store_set_value(
                 store, &iter, BEDIT_FILE_BROWSER_STORE_COLUMN_EMBLEM, &value);
@@ -231,13 +231,17 @@ static void message_set_emblem_cb(
             g_value_unset(&value);
         }
 
-        if (pixbuf) {
-            g_object_unref(pixbuf);
+        if (emblem) {
+            g_object_unref(emblem);
+        }
+
+        if (icon) {
+            g_object_unref(icon);
         }
     }
 
     g_free(id);
-    g_free(emblem);
+    g_free(emblem_name);
 }
 
 static void message_set_markup_cb(
