@@ -79,7 +79,6 @@ typedef struct {
 struct _FileBrowserNode {
     GFile *file;
     guint flags;
-    gchar *icon_name;
     gchar *name;
     gchar *markup;
 
@@ -408,8 +407,6 @@ static void bedit_file_browser_store_init(BeditFileBrowserStore *obj) {
         G_TYPE_UINT;
     obj->priv->column_types[BEDIT_FILE_BROWSER_STORE_COLUMN_ICON] =
         G_TYPE_ICON;
-    obj->priv->column_types[BEDIT_FILE_BROWSER_STORE_COLUMN_ICON_NAME] =
-        G_TYPE_STRING;
     obj->priv->column_types[BEDIT_FILE_BROWSER_STORE_COLUMN_NAME] =
         G_TYPE_STRING;
     obj->priv->column_types[BEDIT_FILE_BROWSER_STORE_COLUMN_EMBLEM] =
@@ -611,9 +608,6 @@ static void bedit_file_browser_store_get_value(
         break;
     case BEDIT_FILE_BROWSER_STORE_COLUMN_ICON:
         g_value_set_object(value, node->icon);
-        break;
-    case BEDIT_FILE_BROWSER_STORE_COLUMN_ICON_NAME:
-        g_value_set_string(value, node->icon_name);
         break;
     case BEDIT_FILE_BROWSER_STORE_COLUMN_NAME:
         g_value_set_string(value, node->name);
@@ -1237,7 +1231,6 @@ static void file_browser_node_free(
     if (node->emblem)
         g_object_unref(node->emblem);
 
-    g_free(node->icon_name);
     g_free(node->name);
     g_free(node->markup);
 
