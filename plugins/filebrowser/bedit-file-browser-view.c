@@ -822,24 +822,18 @@ static void icon_renderer_cb(
     GtkTreeModel *tree_model, GtkTreeIter *iter, BeditFileBrowserView *obj) {
     GIcon *icon;
     gchar *icon_name;
-    GdkPixbuf *pixbuf;
+
+    g_return_if_fail(BEDIT_IS_FILE_BROWSER_STORE(tree_model));
 
     gtk_tree_model_get(
         tree_model, iter,
         BEDIT_FILE_BROWSER_STORE_COLUMN_ICON_NAME, &icon_name,
         BEDIT_FILE_BROWSER_STORE_COLUMN_ICON, &icon, -1);
 
-    if (icon != NULL &&
-        (BEDIT_IS_FILE_BROWSER_STORE(tree_model) || icon_name == NULL)) {
-
-        pixbuf = bedit_file_browser_utils_pixbuf_from_icon(
-            icon, GTK_ICON_SIZE_MENU);
-
-        g_object_set(cell, "pixbuf", pixbuf, NULL);
-
-        g_clear_object(&pixbuf);
-    } else {
+    if (icon_name != NULL) {
         g_object_set(cell, "icon-name", icon_name, NULL);
+    } else {
+        g_object_set(cell, "gicon", icon, NULL);
     }
 
     g_free(icon_name);
