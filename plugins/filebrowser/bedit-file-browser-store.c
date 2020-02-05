@@ -83,7 +83,7 @@ struct _FileBrowserNode {
     gchar *name;
     gchar *markup;
 
-    GdkPixbuf *icon;
+    GIcon *icon;
     GEmblem *emblem;
 
     FileBrowserNode *parent;
@@ -407,7 +407,7 @@ static void bedit_file_browser_store_init(BeditFileBrowserStore *obj) {
     obj->priv->column_types[BEDIT_FILE_BROWSER_STORE_COLUMN_FLAGS] =
         G_TYPE_UINT;
     obj->priv->column_types[BEDIT_FILE_BROWSER_STORE_COLUMN_ICON] =
-        GDK_TYPE_PIXBUF;
+        G_TYPE_ICON;
     obj->priv->column_types[BEDIT_FILE_BROWSER_STORE_COLUMN_ICON_NAME] =
         G_TYPE_STRING;
     obj->priv->column_types[BEDIT_FILE_BROWSER_STORE_COLUMN_NAME] =
@@ -1421,7 +1421,6 @@ static void file_browser_node_unload(
 static void model_recomposite_icon_real(
     BeditFileBrowserStore *tree_model, FileBrowserNode *node, GFileInfo *info) {
     GIcon *icon;
-    GdkPixbuf *pixbuf;
 
     g_return_if_fail(BEDIT_IS_FILE_BROWSER_STORE(tree_model));
     g_return_if_fail(node != NULL);
@@ -1450,14 +1449,11 @@ static void model_recomposite_icon_real(
         icon = g_emblemed_icon_new(icon, node->emblem);
     }
 
-    pixbuf = bedit_file_browser_utils_pixbuf_from_icon(
-        icon, GTK_ICON_SIZE_MENU);
-
     if (node->icon) {
-        g_object_unref(node->icon);
+        g_clear_object(&node->icon);
     }
 
-    node->icon = pixbuf;  // TODO
+    node->icon = g_object_ref(icon);
 }
 
 static void model_recomposite_icon(
@@ -2433,7 +2429,7 @@ void bedit_file_browser_store_set_value(
 
         data = g_value_get_object(value);
 
-        g_return_if_fail(GDK_IS_PIXBUF(data) || data == NULL);
+        g_return_if_fail(G_IS_EMBLEM(data) || data == NULL);
 
         if (node->emblem)
             g_object_unref(node->emblem);

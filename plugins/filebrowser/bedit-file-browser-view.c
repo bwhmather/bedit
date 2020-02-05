@@ -28,6 +28,7 @@
 #include "bedit-file-browser-enum-types.h"
 #include "bedit-file-browser-store.h"
 #include "bedit-file-browser-view.h"
+#include "bedit-file-browser-utils.h"
 
 struct _BeditFileBrowserViewPrivate {
     GtkTreeViewColumn *column;
@@ -819,25 +820,30 @@ static void cell_data_cb(
 static void icon_renderer_cb(
     GtkTreeViewColumn *tree_column, GtkCellRenderer *cell,
     GtkTreeModel *tree_model, GtkTreeIter *iter, BeditFileBrowserView *obj) {
-    GdkPixbuf *pixbuf;
+    GIcon *icon;
     gchar *icon_name;
-    gboolean set_pixbuf = FALSE;
+    GdkPixbuf *pixbuf;
 
     gtk_tree_model_get(
-        tree_model, iter, BEDIT_FILE_BROWSER_STORE_COLUMN_ICON_NAME, &icon_name,
-        BEDIT_FILE_BROWSER_STORE_COLUMN_ICON, &pixbuf, -1);
+        tree_model, iter,
+        BEDIT_FILE_BROWSER_STORE_COLUMN_ICON_NAME, &icon_name,
+        BEDIT_FILE_BROWSER_STORE_COLUMN_ICON, &icon, -1);
 
-    if (pixbuf != NULL &&
-        (BEDIT_IS_FILE_BROWSER_STORE(tree_model) || icon_name == NULL))
-        set_pixbuf = TRUE;
+    if (icon != NULL &&
+        (BEDIT_IS_FILE_BROWSER_STORE(tree_model) || icon_name == NULL)) {
 
-    if (set_pixbuf)
+        pixbuf = bedit_file_browser_utils_pixbuf_from_icon(
+            icon, GTK_ICON_SIZE_MENU);
+
         g_object_set(cell, "pixbuf", pixbuf, NULL);
-    else
-        g_object_set(cell, "icon-name", icon_name, NULL);
 
-    g_clear_object(&pixbuf);
+        g_clear_object(&pixbuf);
+    } else {
+        g_object_set(cell, "icon-name", icon_name, NULL);
+    }
+
     g_free(icon_name);
+    g_clear_object(&icon);
 }
 
 static void bedit_file_browser_view_init(BeditFileBrowserView *obj) {
