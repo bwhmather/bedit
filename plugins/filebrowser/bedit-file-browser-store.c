@@ -1871,7 +1871,7 @@ static FileBrowserNode *model_add_node_from_dir(
         if (node->name == NULL)
             file_browser_node_set_name(node);
 
-        node->icon_name = g_strdup("folder-symbolic");
+        node->icon = g_content_type_get_icon("inode/directory");
 
         model_add_node(model, node, parent);
     }
