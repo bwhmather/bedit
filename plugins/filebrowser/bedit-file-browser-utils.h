@@ -25,13 +25,6 @@
 #include <gio/gio.h>
 
 gchar *bedit_file_browser_utils_name_from_themed_icon(GIcon *icon);
-GdkPixbuf *bedit_file_browser_utils_pixbuf_from_theme(
-    gchar const *name, GtkIconSize size);
-
-GdkPixbuf *bedit_file_browser_utils_pixbuf_from_icon(
-    GIcon *icon, GtkIconSize size);
-GdkPixbuf *bedit_file_browser_utils_pixbuf_from_file(
-    GFile *file, GtkIconSize size, gboolean use_symbolic);
 gchar *bedit_file_browser_utils_symbolic_icon_name_from_file(GFile *file);
 gchar *bedit_file_browser_utils_file_basename(GFile *file);
 
