@@ -820,17 +820,36 @@ static void cell_data_cb(
 static void icon_renderer_cb(
     GtkTreeViewColumn *tree_column, GtkCellRenderer *cell,
     GtkTreeModel *tree_model, GtkTreeIter *iter, BeditFileBrowserView *obj) {
-    GIcon *icon;
 
-    g_return_if_fail(BEDIT_IS_FILE_BROWSER_STORE(tree_model));
+    if (BEDIT_IS_FILE_BROWSER_STORE(tree_model)) {
+        GIcon *icon;
 
-    gtk_tree_model_get(
-        tree_model, iter,
-        BEDIT_FILE_BROWSER_STORE_COLUMN_ICON, &icon, -1);
+        gtk_tree_model_get(
+            tree_model, iter,
+            BEDIT_FILE_BROWSER_STORE_COLUMN_ICON, &icon, -1);
 
-    g_object_set(cell, "gicon", icon, NULL);
+        g_object_set(cell, "gicon", icon, NULL);
 
-    g_clear_object(&icon);
+        g_clear_object(&icon);
+    } else {
+        GdkPixbuf *pixbuf;
+        gchar *icon_name;
+
+        gtk_tree_model_get(
+            tree_model, iter,
+            BEDIT_FILE_BOOKMARKS_STORE_COLUMN_ICON_NAME, &icon_name,
+            BEDIT_FILE_BOOKMARKS_STORE_COLUMN_ICON, &pixbuf,
+            -1);
+
+        if (icon_name != NULL) {
+            g_object_set(cell, "icon-name", icon_name, NULL);
+        } else {
+            g_object_set(cell, "pixbuf", pixbuf, NULL);
+        }
+
+        g_free(icon_name);
+        g_clear_object(&pixbuf);
+    }
 }
 
 static void bedit_file_browser_view_init(BeditFileBrowserView *obj) {
