@@ -352,8 +352,6 @@ static void open_dialog_response_cb(
         gtk_window_present(GTK_WINDOW(window));
     }
 
-    /* Remember the folder we navigated to */
-    _bedit_window_set_default_location(window, files->data);
 
     loaded = bedit_commands_load_locations(window, files, encoding, 0, 0);
 
@@ -641,9 +639,6 @@ static void save_dialog_response_cb(
         parse_name);
 
     g_free(parse_name);
-
-    /* Let's remember the dir we navigated to, even if the saving fails... */
-    _bedit_window_set_default_location(window, location);
 
     _bedit_tab_save_as_async(
         tab, location, encoding, newline_type, compression_type,
