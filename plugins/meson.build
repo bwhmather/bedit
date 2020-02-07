@@ -21,6 +21,7 @@ endif
 
 subdir('docinfo')
 subdir('filebrowser')
+subdir('git')
 subdir('modelines')
 subdir('quickhighlight')
 subdir('quickopen')
