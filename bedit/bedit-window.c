@@ -1823,6 +1823,7 @@ static void bedit_window_init(BeditWindow *window) {
 
     window->priv->removing_tabs = FALSE;
     window->priv->state = BEDIT_WINDOW_STATE_NORMAL;
+    window->priv->default_location = g_file_new_for_path(g_get_home_dir());
     window->priv->inhibition_cookie = 0;
     window->priv->dispose_has_run = FALSE;
     window->priv->direct_save_uri = NULL;
