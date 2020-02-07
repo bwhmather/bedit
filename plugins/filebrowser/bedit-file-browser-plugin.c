@@ -79,9 +79,6 @@ static void on_location_activated_cb(
 static void on_error_cb(
     BeditFileBrowserWidget *widget, guint code, gchar const *message,
     BeditFileBrowserPlugin *plugin);
-static void on_model_set_cb(
-    BeditFileBrowserView *widget, GParamSpec *param,
-    BeditFileBrowserPlugin *plugin);
 static void on_virtual_root_changed_cb(
     BeditFileBrowserStore *model, GParamSpec *param,
     BeditFileBrowserPlugin *plugin);
@@ -416,10 +413,6 @@ static void bedit_file_browser_plugin_activate(
     install_nautilus_prefs(plugin);
 
     /* Connect signals to store the last visited location */
-    g_signal_connect(
-        bedit_file_browser_widget_get_browser_view(priv->tree_widget),
-        "notify::model", G_CALLBACK(on_model_set_cb), plugin);
-
     store = bedit_file_browser_widget_get_browser_store(priv->tree_widget);
 
     g_settings_bind(
@@ -547,23 +540,6 @@ static void on_error_cb(
 
     gtk_dialog_run(GTK_DIALOG(dlg));
     gtk_widget_destroy(dlg);
-}
-
-static void on_model_set_cb(
-    BeditFileBrowserView *widget, GParamSpec *param,
-    BeditFileBrowserPlugin *plugin) {
-    BeditFileBrowserPluginPrivate *priv = plugin->priv;
-    GtkTreeModel *model;
-
-    model = gtk_tree_view_get_model(GTK_TREE_VIEW(
-        bedit_file_browser_widget_get_browser_view(priv->tree_widget)));
-
-    if (model == NULL)
-        return;
-
-    g_settings_set_boolean(
-        priv->settings, FILEBROWSER_TREE_VIEW,
-        BEDIT_IS_FILE_BROWSER_STORE(model));
 }
 
 static void on_rename_cb(
