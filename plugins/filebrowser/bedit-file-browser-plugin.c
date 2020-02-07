@@ -705,7 +705,8 @@ static void on_virtual_root_changed_cb(
         g_settings_set_string(
             priv->settings, FILEBROWSER_VIRTUAL_ROOT, uri_vroot);
         g_free(uri_vroot);
-        g_object_unref(virtual_root);
+
+        _bedit_window_set_default_location(priv->window, virtual_root);
     }
 
     g_signal_handlers_disconnect_by_func(
