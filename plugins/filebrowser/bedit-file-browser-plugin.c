@@ -39,10 +39,6 @@
 
 #define FILEBROWSER_BASE_SETTINGS "com.bwhmather.bedit.plugins.filebrowser"
 #define FILEBROWSER_TREE_VIEW "tree-view"
-#define FILEBROWSER_ROOT "root"
-#define FILEBROWSER_VIRTUAL_ROOT "virtual-root"
-#define FILEBROWSER_ENABLE_REMOTE "enable-remote"
-#define FILEBROWSER_OPEN_AT_FIRST_DOC "open-at-first-doc"
 #define FILEBROWSER_FILTER_MODE "filter-mode"
 #define FILEBROWSER_FILTER_PATTERN "filter-pattern"
 #define FILEBROWSER_BINARY_PATTERNS "binary-patterns"
@@ -92,8 +88,6 @@ static void on_virtual_root_changed_cb(
 static void on_rename_cb(
     BeditFileBrowserStore *model, GFile *oldfile, GFile *newfile,
     BeditWindow *window);
-static void on_tab_added_cb(
-    BeditWindow *window, BeditTab *tab, BeditFileBrowserPlugin *plugin);
 static gboolean on_confirm_delete_cb(
     BeditFileBrowserWidget *widget, BeditFileBrowserStore *store, GList *rows,
     BeditFileBrowserPlugin *plugin);
@@ -208,53 +202,6 @@ static void prepare_auto_root(BeditFileBrowserPlugin *plugin) {
 
     priv->end_loading_handle = g_signal_connect(
         store, "end-loading", G_CALLBACK(on_end_loading_cb), plugin);
-}
-
-static void restore_default_location(BeditFileBrowserPlugin *plugin) {
-    BeditFileBrowserPluginPrivate *priv = plugin->priv;
-    gchar *root;
-    gchar *virtual_root;
-    gboolean bookmarks;
-    gboolean remote;
-
-    bookmarks = !g_settings_get_boolean(priv->settings, FILEBROWSER_TREE_VIEW);
-
-    if (bookmarks) {
-        bedit_file_browser_widget_show_bookmarks(priv->tree_widget);
-        return;
-    }
-
-    root = g_settings_get_string(priv->settings, FILEBROWSER_ROOT);
-    virtual_root =
-        g_settings_get_string(priv->settings, FILEBROWSER_VIRTUAL_ROOT);
-
-    remote = g_settings_get_boolean(priv->settings, FILEBROWSER_ENABLE_REMOTE);
-
-    if (root != NULL && *root != '\0') {
-        GFile *rootfile;
-        GFile *vrootfile;
-
-        rootfile = g_file_new_for_uri(root);
-        vrootfile = g_file_new_for_uri(virtual_root);
-
-        if (remote || g_file_is_native(rootfile)) {
-            if (virtual_root != NULL && *virtual_root != '\0') {
-                prepare_auto_root(plugin);
-                bedit_file_browser_widget_set_root_and_virtual_root(
-                    priv->tree_widget, rootfile, vrootfile);
-            } else {
-                prepare_auto_root(plugin);
-                bedit_file_browser_widget_set_root(
-                    priv->tree_widget, rootfile, TRUE);
-            }
-        }
-
-        g_object_unref(rootfile);
-        g_object_unref(vrootfile);
-    }
-
-    g_free(root);
-    g_free(virtual_root);
 }
 
 static void on_click_policy_changed(
@@ -489,9 +436,6 @@ static void bedit_file_browser_plugin_activate(
 
     g_signal_connect(store, "rename", G_CALLBACK(on_rename_cb), priv->window);
 
-    g_signal_connect(
-        priv->window, "tab-added", G_CALLBACK(on_tab_added_cb), plugin);
-
     /* Register messages on the bus */
     bedit_file_browser_messages_register(priv->window, priv->tree_widget);
 
@@ -508,9 +452,6 @@ static void bedit_file_browser_plugin_deactivate(
     bedit_file_browser_messages_unregister(priv->window);
 
     /* Disconnect signals */
-    g_signal_handlers_disconnect_by_func(
-        priv->window, G_CALLBACK(on_tab_added_cb), plugin);
-
     if (priv->click_policy_handle) {
         g_signal_handler_disconnect(
             priv->nautilus_settings, priv->click_policy_handle);
@@ -675,78 +616,16 @@ static void on_rename_cb(
 static void on_virtual_root_changed_cb(
     BeditFileBrowserStore *store, GParamSpec *param,
     BeditFileBrowserPlugin *plugin) {
-    BeditFileBrowserPluginPrivate *priv = plugin->priv;
-    GFile *root;
     GFile *virtual_root;
-    gchar *uri_root = NULL;
 
-    root = bedit_file_browser_store_get_root(store);
-
-    if (!root) {
-        return;
-    } else {
-        uri_root = g_file_get_uri(root);
-        g_object_unref(root);
-    }
-
-    g_settings_set_string(priv->settings, FILEBROWSER_ROOT, uri_root);
+    g_return_if_fail(BEDIT_IS_FILE_BROWSER_STORE(store));
+    g_return_if_fail(BEDIT_IS_FILE_BROWSER_PLUGIN(plugin));
 
     virtual_root = bedit_file_browser_store_get_virtual_root(store);
 
-    if (!virtual_root) {
-        /* Set virtual to same as root then */
-        g_settings_set_string(
-            priv->settings, FILEBROWSER_VIRTUAL_ROOT, uri_root);
-    } else {
-        gchar *uri_vroot;
-
-        uri_vroot = g_file_get_uri(virtual_root);
-
-        g_settings_set_string(
-            priv->settings, FILEBROWSER_VIRTUAL_ROOT, uri_vroot);
-        g_free(uri_vroot);
-
-        _bedit_window_set_default_location(priv->window, virtual_root);
+    if (virtual_root) {
+        _bedit_window_set_default_location(plugin->priv->window, virtual_root);
     }
-
-    g_signal_handlers_disconnect_by_func(
-        priv->window, G_CALLBACK(on_tab_added_cb), plugin);
-    g_free(uri_root);
-}
-
-static void on_tab_added_cb(
-    BeditWindow *window, BeditTab *tab, BeditFileBrowserPlugin *plugin) {
-    BeditFileBrowserPluginPrivate *priv = plugin->priv;
-    gboolean open;
-    gboolean load_default = TRUE;
-
-    open =
-        g_settings_get_boolean(priv->settings, FILEBROWSER_OPEN_AT_FIRST_DOC);
-
-    if (open) {
-        BeditDocument *doc;
-        GtkSourceFile *file;
-        GFile *location;
-
-        doc = bedit_tab_get_document(tab);
-        file = bedit_document_get_file(doc);
-        location = gtk_source_file_get_location(file);
-
-        if (location != NULL) {
-            if (g_file_has_uri_scheme(location, "file")) {
-                prepare_auto_root(plugin);
-                set_root_from_doc(plugin, doc);
-                load_default = FALSE;
-            }
-        }
-    }
-
-    if (load_default)
-        restore_default_location(plugin);
-
-    /* Disconnect this signal, it's only called once */
-    g_signal_handlers_disconnect_by_func(
-        window, G_CALLBACK(on_tab_added_cb), plugin);
 }
 
 static gchar *get_filename_from_path(GtkTreeModel *model, GtkTreePath *path) {
