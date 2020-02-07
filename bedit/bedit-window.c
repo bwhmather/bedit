@@ -2347,14 +2347,10 @@ void _bedit_window_set_default_location(BeditWindow *window, GFile *location) {
 
     g_return_if_fail(BEDIT_IS_WINDOW(window));
     g_return_if_fail(G_IS_FILE(location));
-
-    dir = g_file_get_parent(location);
-    g_return_if_fail(dir != NULL);
-
     if (window->priv->default_location != NULL)
         g_object_unref(window->priv->default_location);
 
-    window->priv->default_location = dir;
+    window->priv->default_location = location;
 }
 
 static void add_unsaved_doc(BeditTab *tab, GList **res) {
