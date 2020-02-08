@@ -94,7 +94,7 @@ def _list_dir(gfile):
                 entry[0],
                 entry[1].get_name(),
                 file_type,
-                entry[1].get_icon(),
+                entry[1].get_symbolic_icon(),
             )
         )
 
