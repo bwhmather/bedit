@@ -38,6 +38,175 @@ except:
     _ = lambda s: s
 
 
+def _is_text(entry):
+    content_type = entry.get_content_type()
+
+    if content_type is None or Gio.content_type_is_unknown(content_type):
+        return True
+
+    if platform.system() != "Windows":
+        if Gio.content_type_is_a(content_type, "text/plain"):
+            return True
+    else:
+        if Gio.content_type_is_a(content_type, "text"):
+            return True
+
+        # This covers a rare case in which on Windows the PerceivedType
+        # is not set to "text" but the Content Type is set to text/plain
+        if Gio.content_type_get_mime_type(content_type) == "text/plain":
+            return True
+
+    return False
+
+def _list_dir(gfile):
+    entries = []
+
+    try:
+        ret = gfile.enumerate_children(
+            "standard::*", Gio.FileQueryInfoFlags.NONE, None
+        )
+    except GLib.Error as e:
+        pass
+
+    if isinstance(ret, Gio.FileEnumerator):
+        while True:
+            entry = ret.next_file(None)
+
+            if not entry:
+                break
+
+            if not entry.get_is_backup():
+                entries.append((gfile.get_child(entry.get_name()), entry))
+    else:
+        entries = ret
+
+    children = []
+
+    for entry in entries:
+        file_type = entry[1].get_file_type()
+
+        if file_type == Gio.FileType.REGULAR:
+            if not _is_text(entry[1]):
+                continue
+
+        children.append(
+            (
+                entry[0],
+                entry[1].get_name(),
+                file_type,
+                entry[1].get_icon(),
+            )
+        )
+
+    return children
+
+
+def _compare_entries(a, b, lpart):
+    if lpart in a:
+        if lpart in b:
+            if a.index(lpart) < b.index(lpart):
+                return -1
+            elif a.index(lpart) > b.index(lpart):
+                return 1
+            else:
+                return 0
+        else:
+            return -1
+    elif lpart in b:
+        return 1
+    else:
+        return 0
+
+
+def _match_glob(s, glob):
+    if glob:
+        glob += "*"
+
+    return fnmatch.fnmatch(s, glob)
+
+
+def _replace_insensitive(s, find, rep):
+    out = ""
+    l = s.lower()
+    find = find.lower()
+    last = 0
+
+    if len(find) == 0:
+        return xml.sax.saxutils.escape(s)
+
+    while True:
+        m = l.find(find, last)
+
+        if m == -1:
+            break
+        else:
+            out += xml.sax.saxutils.escape(s[last:m]) + rep % (
+                xml.sax.saxutils.escape(s[m : m + len(find)]),
+            )
+            last = m + len(find)
+
+    return out + xml.sax.saxutils.escape(s[last:])
+
+
+def _normalize_relative(parts):
+    if not parts:
+        return []
+
+    out = _normalize_relative(parts[:-1])
+
+    if parts[-1] == "..":
+        if not out or (out[-1] == "..") or len(out) == 1:
+            out.append("..")
+        else:
+            del out[-1]
+    else:
+        out.append(parts[-1])
+
+    return out
+
+
+def _make_markup(parts, path):
+    out = []
+
+    for i in range(0, len(parts)):
+        out.append(
+            _replace_insensitive(path[i], parts[i], "<b>%s</b>")
+        )
+
+    return os.sep.join(out)
+
+
+def _get_icon(f):
+    query = f.query_info(
+        Gio.FILE_ATTRIBUTE_STANDARD_ICON,
+        Gio.FileQueryInfoFlags.NONE,
+        None,
+    )
+
+    if not query:
+        return None
+    else:
+        return query.get_icon()
+
+
+def _make_parts(parent, child, pp):
+    parts = []
+
+    # We went from parent, to child, using pp
+    idx = len(pp) - 1
+
+    while idx >= 0:
+        if pp[idx] == "..":
+            parts.insert(0, "..")
+        else:
+            parts.insert(0, child.get_basename())
+            child = child.get_parent()
+
+        idx -= 1
+
+    return parts
+
+
 class Popup(Gtk.Dialog):
     __gtype_name__ = "QuickOpenPopup"
 
@@ -161,90 +330,6 @@ class Popup(Gtk.Dialog):
             cell.set_property("cell-background-set", False)
             cell.set_property("style-set", False)
 
-    def _is_text(self, entry):
-        content_type = entry.get_content_type()
-
-        if content_type is None or Gio.content_type_is_unknown(content_type):
-            return True
-
-        if platform.system() != "Windows":
-            if Gio.content_type_is_a(content_type, "text/plain"):
-                return True
-        else:
-            if Gio.content_type_is_a(content_type, "text"):
-                return True
-
-            # This covers a rare case in which on Windows the PerceivedType
-            # is not set to "text" but the Content Type is set to text/plain
-            if Gio.content_type_get_mime_type(content_type) == "text/plain":
-                return True
-
-        return False
-
-    def _list_dir(self, gfile):
-        entries = []
-
-        try:
-            ret = gfile.enumerate_children(
-                "standard::*", Gio.FileQueryInfoFlags.NONE, None
-            )
-        except GLib.Error as e:
-            pass
-
-        if isinstance(ret, Gio.FileEnumerator):
-            while True:
-                entry = ret.next_file(None)
-
-                if not entry:
-                    break
-
-                if not entry.get_is_backup():
-                    entries.append((gfile.get_child(entry.get_name()), entry))
-        else:
-            entries = ret
-
-        children = []
-
-        for entry in entries:
-            file_type = entry[1].get_file_type()
-
-            if file_type == Gio.FileType.REGULAR:
-                if not self._is_text(entry[1]):
-                    continue
-
-            children.append(
-                (
-                    entry[0],
-                    entry[1].get_name(),
-                    file_type,
-                    entry[1].get_icon(),
-                )
-            )
-
-        return children
-
-    def _compare_entries(self, a, b, lpart):
-        if lpart in a:
-            if lpart in b:
-                if a.index(lpart) < b.index(lpart):
-                    return -1
-                elif a.index(lpart) > b.index(lpart):
-                    return 1
-                else:
-                    return 0
-            else:
-                return -1
-        elif lpart in b:
-            return 1
-        else:
-            return 0
-
-    def _match_glob(self, s, glob):
-        if glob:
-            glob += "*"
-
-        return fnmatch.fnmatch(s, glob)
-
     def do_search_dir(self, parts, d):
         if not parts or not d:
             return []
@@ -252,7 +337,7 @@ class Popup(Gtk.Dialog):
         if d in self._cache:
             entries = self._cache[d]
         else:
-            entries = self._list_dir(d)
+            entries = _list_dir(d)
             entries.sort(key=lambda x: x[1].lower())
             self._cache[d] = entries
 
@@ -270,7 +355,7 @@ class Popup(Gtk.Dialog):
             if (
                 not lpart
                 or lpart in lentry
-                or self._match_glob(lentry, lpart)
+                or _match_glob(lentry, lpart)
             ):
                 if entry[2] == Gio.FileType.DIRECTORY:
                     if len(parts) > 1:
@@ -284,7 +369,7 @@ class Popup(Gtk.Dialog):
 
         found.sort(
             key=functools.cmp_to_key(
-                lambda a, b: self._compare_entries(
+                lambda a, b: _compare_entries(
                     a[1].lower(), b[1].lower(), lpart
                 )
             )
@@ -297,83 +382,6 @@ class Popup(Gtk.Dialog):
             found.extend(self.do_search_dir(parts[1:], dd))
 
         return found
-
-    def _replace_insensitive(self, s, find, rep):
-        out = ""
-        l = s.lower()
-        find = find.lower()
-        last = 0
-
-        if len(find) == 0:
-            return xml.sax.saxutils.escape(s)
-
-        while True:
-            m = l.find(find, last)
-
-            if m == -1:
-                break
-            else:
-                out += xml.sax.saxutils.escape(s[last:m]) + rep % (
-                    xml.sax.saxutils.escape(s[m : m + len(find)]),
-                )
-                last = m + len(find)
-
-        return out + xml.sax.saxutils.escape(s[last:])
-
-    def make_markup(self, parts, path):
-        out = []
-
-        for i in range(0, len(parts)):
-            out.append(
-                self._replace_insensitive(path[i], parts[i], "<b>%s</b>")
-            )
-
-        return os.sep.join(out)
-
-    def _get_icon(self, f):
-        query = f.query_info(
-            Gio.FILE_ATTRIBUTE_STANDARD_ICON,
-            Gio.FileQueryInfoFlags.NONE,
-            None,
-        )
-
-        if not query:
-            return None
-        else:
-            return query.get_icon()
-
-    def _make_parts(self, parent, child, pp):
-        parts = []
-
-        # We went from parent, to child, using pp
-        idx = len(pp) - 1
-
-        while idx >= 0:
-            if pp[idx] == "..":
-                parts.insert(0, "..")
-            else:
-                parts.insert(0, child.get_basename())
-                child = child.get_parent()
-
-            idx -= 1
-
-        return parts
-
-    def normalize_relative(self, parts):
-        if not parts:
-            return []
-
-        out = self.normalize_relative(parts[:-1])
-
-        if parts[-1] == "..":
-            if not out or (out[-1] == "..") or len(out) == 1:
-                out.append("..")
-            else:
-                del out[-1]
-        else:
-            out.append(parts[-1])
-
-        return out
 
     def _append_to_store(self, item):
         uri = item[2].get_uri()
@@ -407,16 +415,16 @@ class Popup(Gtk.Dialog):
         text = self._entry.get_text().strip()
         self._clear_store()
 
-        parts = self.normalize_relative(text.split(os.sep))
+        parts = _normalize_relative(text.split(os.sep))
         files = []
 
         for d in self._dirs:
             for entry in self.do_search_dir(parts, d):
-                pathparts = self._make_parts(d, entry[0], parts)
+                pathparts = _make_parts(d, entry[0], parts)
                 self._append_to_store(
                     (
                         entry[3],
-                        self.make_markup(parts, pathparts),
+                        _make_markup(parts, pathparts),
                         entry[0],
                         entry[2],
                     )
