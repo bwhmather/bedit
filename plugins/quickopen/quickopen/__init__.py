@@ -26,11 +26,9 @@ import gi
 
 gi.require_version("Bedit", "3.0")
 gi.require_version("Gtk", "3.0")
-from gi.repository import GObject, Gio, GLib, Gtk, Bedit
+from gi.repository import GObject, Gio, Gtk, Bedit
 
 from .popup import Popup
-from .virtualdirs import RecentDocumentsDirectory
-from .virtualdirs import CurrentDocumentsDirectory
 
 try:
     import gettext
@@ -87,43 +85,11 @@ class QuickOpenPlugin(GObject.Object, Bedit.WindowActivatable):
     def _create_popup(self):
         paths = []
 
-        # Open documents
-        paths.append(CurrentDocumentsDirectory(self.window))
-
-        doc = self.window.get_active_document()
-
-        # Current document directory
-        if doc and doc.get_file().is_local():
-            gfile = doc.get_file().get_location()
-            paths.append(gfile.get_parent())
-
-        # File browser root directory
-        bus = self.window.get_message_bus()
-
-        if bus.is_registered("/plugins/filebrowser", "get_root"):
-            msg = bus.send_sync("/plugins/filebrowser", "get_root")
-
-            if msg:
-                gfile = msg.props.location
-
-                if gfile and gfile.is_native():
-                    paths.append(gfile)
+        paths.append(self.window.get_property('default-location'))
 
         # Recent documents
-        # paths.append(RecentDocumentsDirectory())
-
-        # Local bookmarks
         for path in self._local_bookmarks():
             paths.append(path)
-
-        # Desktop directory
-        desktopdir = self._desktop_dir()
-
-        if desktopdir:
-            paths.append(Gio.file_new_for_path(desktopdir))
-
-        # Home directory
-        paths.append(Gio.file_new_for_path(os.path.expanduser("~")))
 
         self._popup = Popup(self.window, paths, self.on_activated)
         self.window.get_group().add_window(self._popup)

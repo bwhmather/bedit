@@ -27,7 +27,6 @@ import fnmatch
 
 from gi.repository import GLib, Gio, GObject, Pango, Gtk, Gdk, Bedit
 import xml.sax.saxutils
-from .virtualdirs import VirtualDirectory
 
 try:
     import gettext
@@ -387,19 +386,6 @@ class Popup(Gtk.Dialog):
         self._store.clear()
         self._stored_items = set()
 
-    def _show_virtuals(self):
-        for d in self._dirs:
-            if isinstance(d, VirtualDirectory):
-                for entry in d.enumerate_children("standard::*", 0, None):
-                    self._append_to_store(
-                        (
-                            entry[1].get_icon(),
-                            xml.sax.saxutils.escape(entry[1].get_name()),
-                            entry[0],
-                            entry[1].get_file_type(),
-                        )
-                    )
-
     def _set_busy(self, busy):
         if busy:
             self.get_window().set_cursor(self._busy_cursor)
@@ -421,23 +407,20 @@ class Popup(Gtk.Dialog):
         text = self._entry.get_text().strip()
         self._clear_store()
 
-        if text == "":
-            self._show_virtuals()
-        else:
-            parts = self.normalize_relative(text.split(os.sep))
-            files = []
+        parts = self.normalize_relative(text.split(os.sep))
+        files = []
 
-            for d in self._dirs:
-                for entry in self.do_search_dir(parts, d):
-                    pathparts = self._make_parts(d, entry[0], parts)
-                    self._append_to_store(
-                        (
-                            entry[3],
-                            self.make_markup(parts, pathparts),
-                            entry[0],
-                            entry[2],
-                        )
+        for d in self._dirs:
+            for entry in self.do_search_dir(parts, d):
+                pathparts = self._make_parts(d, entry[0], parts)
+                self._append_to_store(
+                    (
+                        entry[3],
+                        self.make_markup(parts, pathparts),
+                        entry[0],
+                        entry[2],
                     )
+                )
 
         piter = self._store.get_iter_first()
         if piter:
