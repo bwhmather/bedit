@@ -25,31 +25,38 @@ from gi.repository import Gdk, Gtk
 import xml.etree.ElementTree as et
 from . import helper
 
+
 class NamespacedId:
     def __init__(self, namespace, id):
         if not id:
             self.id = None
         else:
             if namespace:
-                self.id = namespace + '-'
+                self.id = namespace + "-"
             else:
-                self.id = 'global-'
+                self.id = "global-"
 
             self.id += id
 
+
 class SnippetData:
-    PROPS = {'tag': '', 'text': '', 'description': 'New snippet',
-            'accelerator': '', 'drop-targets': ''}
+    PROPS = {
+        "tag": "",
+        "text": "",
+        "description": "New snippet",
+        "accelerator": "",
+        "drop-targets": "",
+    }
 
     def __init__(self, node, library):
-        self.priv_id = node.attrib.get('id')
+        self.priv_id = node.attrib.get("id")
 
         self.set_library(library)
         self.valid = False
         self.set_node(node)
 
     def can_modify(self):
-        return (self.library and (isinstance(self.library(), SnippetsUserFile)))
+        return self.library and (isinstance(self.library(), SnippetsUserFile))
 
     def set_library(self, library):
         if library:
@@ -71,7 +78,7 @@ class SnippetData:
         if node == None:
             return
 
-        self.override = node.attrib.get('override')
+        self.override = node.attrib.get("override")
 
         self.properties = {}
         props = SnippetData.PROPS.copy()
@@ -82,18 +89,18 @@ class SnippetData:
                 del props[child.tag]
 
                 # Normalize accelerator
-                if child.tag == 'accelerator' and child.text != None:
+                if child.tag == "accelerator" and child.text != None:
                     keyval, mod = Gtk.accelerator_parse(child.text)
 
                     if Gtk.accelerator_valid(keyval, mod):
                         child.text = Gtk.accelerator_name(keyval, mod)
                     else:
-                        child.text = ''
+                        child.text = ""
 
                 if self.can_modify():
                     self.properties[child.tag] = child
                 else:
-                    self.properties[child.tag] = child.text or ''
+                    self.properties[child.tag] = child.text or ""
 
         # Create all the props that were not found so we stay consistent
         for prop in props:
@@ -108,36 +115,43 @@ class SnippetData:
         self.check_validation()
 
     def check_validation(self):
-        if not self['tag'] and not self['accelerator'] and not self['drop-targets']:
+        if (
+            not self["tag"]
+            and not self["accelerator"]
+            and not self["drop-targets"]
+        ):
             return False
 
         library = Library()
-        keyval, mod = Gtk.accelerator_parse(self['accelerator'])
+        keyval, mod = Gtk.accelerator_parse(self["accelerator"])
 
-        self.valid = library.valid_tab_trigger(self['tag']) and \
-                (not self['accelerator'] or library.valid_accelerator(keyval, mod))
+        self.valid = library.valid_tab_trigger(self["tag"]) and (
+            not self["accelerator"] or library.valid_accelerator(keyval, mod)
+        )
 
     def _format_prop(self, prop, value):
-        if prop == 'drop-targets' and value != '':
-            return re.split('\\s*[,;]\\s*', value)
+        if prop == "drop-targets" and value != "":
+            return re.split("\\s*[,;]\\s*", value)
         else:
             return value
 
     def __getitem__(self, prop):
         if prop in self.properties:
             if self.can_modify():
-                return self._format_prop(prop, self.properties[prop].text or '')
+                return self._format_prop(
+                    prop, self.properties[prop].text or ""
+                )
             else:
-                return self._format_prop(prop, self.properties[prop] or '')
+                return self._format_prop(prop, self.properties[prop] or "")
 
-        return self._format_prop(prop, '')
+        return self._format_prop(prop, "")
 
     def __setitem__(self, prop, value):
         if not prop in self.properties:
             return
 
         if isinstance(value, list):
-            value = ','.join(value)
+            value = ",".join(value)
 
         if not self.can_modify() and self.properties[prop] != value:
             # ohoh, this is not can_modify, but it needs to be changed...
@@ -155,7 +169,11 @@ class SnippetData:
             oldvalue = self.properties[prop].text
             self.properties[prop].text = value
 
-            if prop == 'tag' or prop == 'accelerator' or prop == 'drop-targets':
+            if (
+                prop == "tag"
+                or prop == "accelerator"
+                or prop == "drop-targets"
+            ):
                 container = Library().container(self.language())
                 container.prop_changed(self, prop, oldvalue)
 
@@ -176,9 +194,9 @@ class SnippetData:
     def _create_xml(self, parent=None, update=False, attrib={}):
         # Create a new node
         if parent != None:
-            element = et.SubElement(parent, 'snippet', attrib)
+            element = et.SubElement(parent, "snippet", attrib)
         else:
-            element = et.Element('snippet')
+            element = et.Element("snippet")
 
         # Create all the properties
         for p in self.properties:
@@ -195,7 +213,7 @@ class SnippetData:
         target = Library().get_user_library(self.language())
 
         # Create a new node there with override
-        element = self._create_xml(target.root, True, {'override': self.id})
+        element = self._create_xml(target.root, True, {"override": self.id})
 
         # Create an override snippet data, feed it element so that it stores
         # all the values and then set the node to None so that it only contains
@@ -237,6 +255,7 @@ class SnippetData:
         # Reset the override flag
         self.override = None
 
+
 class SnippetsTreeBuilder(et.TreeBuilder):
     def __init__(self, start=None, end=None):
         et.TreeBuilder.__init__(self)
@@ -265,11 +284,16 @@ class SnippetsTreeBuilder(et.TreeBuilder):
 
         return result
 
+
 class LanguageContainer:
     def __init__(self, language):
         self.language = language
         self.snippets = []
-        self.snippets_by_prop = {'tag': {}, 'accelerator': {}, 'drop-targets': {}}
+        self.snippets_by_prop = {
+            "tag": {},
+            "accelerator": {},
+            "drop-targets": {},
+        }
         self.accel_group = Gtk.AccelGroup()
         self._refs = 0
 
@@ -277,15 +301,18 @@ class LanguageContainer:
         if value == 0:
             value = snippet[prop]
 
-        if not value or value == '':
+        if not value or value == "":
             return
 
-        helper.snippets_debug('Added ', prop ,' ', value, ' to ', str(self.language))
+        helper.snippets_debug(
+            "Added ", prop, " ", value, " to ", str(self.language)
+        )
 
-        if prop == 'accelerator':
+        if prop == "accelerator":
             keyval, mod = Gtk.accelerator_parse(value)
-            self.accel_group.connect(keyval, mod, 0, \
-                    Library().accelerator_activated)
+            self.accel_group.connect(
+                keyval, mod, 0, Library().accelerator_activated
+            )
 
         snippets = self.snippets_by_prop[prop]
 
@@ -302,12 +329,14 @@ class LanguageContainer:
         if value == 0:
             value = snippet[prop]
 
-        if not value or value == '':
+        if not value or value == "":
             return
 
-        helper.snippets_debug('Removed ', prop, ' ', value, ' from ', str(self.language))
+        helper.snippets_debug(
+            "Removed ", prop, " ", value, " from ", str(self.language)
+        )
 
-        if prop == 'accelerator':
+        if prop == "accelerator":
             keyval, mod = Gtk.accelerator_parse(value)
             self.accel_group.disconnect_key(keyval, mod)
 
@@ -325,9 +354,9 @@ class LanguageContainer:
     def append(self, snippet):
         self.snippets.append(snippet)
 
-        self._add_prop(snippet, 'tag')
-        self._add_prop(snippet, 'accelerator')
-        self._add_prop(snippet, 'drop-targets')
+        self._add_prop(snippet, "tag")
+        self._add_prop(snippet, "accelerator")
+        self._add_prop(snippet, "drop-targets")
 
         return snippet
 
@@ -337,12 +366,12 @@ class LanguageContainer:
         except:
             True
 
-        self._remove_prop(snippet, 'tag')
-        self._remove_prop(snippet, 'accelerator')
-        self._remove_prop(snippet, 'drop-targets')
+        self._remove_prop(snippet, "tag")
+        self._remove_prop(snippet, "accelerator")
+        self._remove_prop(snippet, "drop-targets")
 
     def prop_changed(self, snippet, prop, oldvalue):
-        helper.snippets_debug('PROP CHANGED (', prop, ')', oldvalue)
+        helper.snippets_debug("PROP CHANGED (", prop, ")", oldvalue)
 
         self._remove_prop(snippet, prop, oldvalue)
         self._add_prop(snippet, prop)
@@ -350,7 +379,7 @@ class LanguageContainer:
     def from_prop(self, prop, value):
         snippets = self.snippets_by_prop[prop]
 
-        if prop == 'drop-targets':
+        if prop == "drop-targets":
             s = []
 
             # FIXME: change this to use
@@ -382,6 +411,7 @@ class LanguageContainer:
 
         return self._refs != 0
 
+
 class SnippetsSystemFile:
     def __init__(self, path=None):
         self.path = path
@@ -392,15 +422,17 @@ class SnippetsSystemFile:
 
     def load_error(self, message):
         sys.stderr.write("An error occurred loading " + self.path + ":\n")
-        sys.stderr.write(message + "\nSnippets in this file will not be " \
-                "available, please correct or remove the file.\n")
+        sys.stderr.write(
+            message + "\nSnippets in this file will not be "
+            "available, please correct or remove the file.\n"
+        )
 
     def _add_snippet(self, element):
-        if not self.need_id or element.attrib.get('id'):
+        if not self.need_id or element.attrib.get("id"):
             self.loading_elements.append(element)
 
     def set_language(self, element):
-        self.language = element.attrib.get('language')
+        self.language = element.attrib.get("language")
 
         if self.language:
             self.language = self.language.lower()
@@ -411,15 +443,18 @@ class SnippetsSystemFile:
     def _preprocess_element(self, element):
         if not self.loaded:
             if not element.tag == "snippets":
-                self.load_error("Root element should be `snippets' instead " \
-                        "of `%s'" % element.tag)
+                self.load_error(
+                    "Root element should be `snippets' instead "
+                    "of `%s'" % element.tag
+                )
                 return False
             else:
                 self._set_root(element)
                 self.loaded = True
-        elif element.tag != 'snippet' and not self.insnippet:
-            self.load_error("Element should be `snippet' instead of `%s'" \
-                    % element.tag)
+        elif element.tag != "snippet" and not self.insnippet:
+            self.load_error(
+                "Element should be `snippet' instead of `%s'" % element.tag
+            )
             return False
         else:
             self.insnippet = True
@@ -427,7 +462,7 @@ class SnippetsSystemFile:
         return True
 
     def _process_element(self, element):
-        if element.tag == 'snippet':
+        if element.tag == "snippet":
             self._add_snippet(element)
             self.insnippet = False
 
@@ -445,15 +480,16 @@ class SnippetsSystemFile:
 
         elements = []
 
-        builder = SnippetsTreeBuilder( \
-                lambda node: elements.append((node, True)), \
-                lambda node: elements.append((node, False)))
+        builder = SnippetsTreeBuilder(
+            lambda node: elements.append((node, True)),
+            lambda node: elements.append((node, False)),
+        )
 
         parser = et.XMLParser(target=builder)
         self.insnippet = False
 
         try:
-            f = open(self.path, "r", encoding='utf-8')
+            f = open(self.path, "r", encoding="utf-8")
         except IOError:
             self.ok = False
             return
@@ -485,8 +521,9 @@ class SnippetsSystemFile:
         if not self.ok:
             return
 
-        helper.snippets_debug("Loading library (" + str(self.language) + "): " + \
-                self.path)
+        helper.snippets_debug(
+            "Loading library (" + str(self.language) + "): " + self.path
+        )
 
         self.loaded = False
         self.ok = False
@@ -518,18 +555,20 @@ class SnippetsSystemFile:
 
             for element in self.parse_xml(256):
                 if element[1]:
-                    if element[0].tag == 'snippets':
+                    if element[0].tag == "snippets":
                         self.set_language(element[0])
                         self.ok = True
 
                     break
 
     def unload(self):
-        helper.snippets_debug("Unloading library (" + str(self.language) + "): " + \
-                self.path)
+        helper.snippets_debug(
+            "Unloading library (" + str(self.language) + "): " + self.path
+        )
         self.language = None
         self.loaded = False
         self.ok = True
+
 
 class SnippetsUserFile(SnippetsSystemFile):
     def __init__(self, path=None):
@@ -554,7 +593,7 @@ class SnippetsUserFile(SnippetsSystemFile):
         if (not self.ok) or self.root == None:
             return None
 
-        element = et.SubElement(self.root, 'snippet')
+        element = et.SubElement(self.root, "snippet")
 
         if properties:
             for prop in properties:
@@ -579,15 +618,17 @@ class SnippetsUserFile(SnippetsSystemFile):
 
     def create_root(self, language):
         if self.loaded:
-            helper.snippets_debug('Not creating root, already loaded')
+            helper.snippets_debug("Not creating root, already loaded")
             return
 
         if language:
-            root = et.Element('snippets', {'language': language})
-            self.path = os.path.join(Library().userdir, language.lower() + '.xml')
+            root = et.Element("snippets", {"language": language})
+            self.path = os.path.join(
+                Library().userdir, language.lower() + ".xml"
+            )
         else:
-            root = et.Element('snippets')
-            self.path = os.path.join(Library().userdir, 'global.xml')
+            root = et.Element("snippets")
+            self.path = os.path.join(Library().userdir, "global.xml")
 
         self._set_root(root)
         self.loaded = True
@@ -622,16 +663,18 @@ class SnippetsUserFile(SnippetsSystemFile):
             sys.stderr.write("Error in making dirs\n")
 
         try:
-            helper.write_xml(self.root, self.path, ('text', 'accelerator'))
+            helper.write_xml(self.root, self.path, ("text", "accelerator"))
             self.tainted = False
         except IOError:
             # Couldn't save, what to do
-            sys.stderr.write("Could not save user snippets file to " + \
-                    self.path + "\n")
+            sys.stderr.write(
+                "Could not save user snippets file to " + self.path + "\n"
+            )
 
     def unload(self):
         SnippetsSystemFile.unload(self)
         self.root = None
+
 
 class Singleton(object):
     _instance = None
@@ -639,10 +682,12 @@ class Singleton(object):
     def __new__(cls, *args, **kwargs):
         if not cls._instance:
             cls._instance = super(Singleton, cls).__new__(
-                     cls, *args, **kwargs)
+                cls, *args, **kwargs
+            )
             cls._instance.__init_once__()
 
         return cls._instance
+
 
 class Library(Singleton):
     def __init_once__(self):
@@ -684,19 +729,30 @@ class Library(Singleton):
 
         if overrided:
             overrided.set_library(library)
-            helper.snippets_debug('Snippet is overriden: ' + overrided['description'])
+            helper.snippets_debug(
+                "Snippet is overriden: " + overrided["description"]
+            )
             return None
 
         snippet = SnippetData(element, library)
 
         if snippet.id in self.loaded_ids:
-            helper.snippets_debug('Not added snippet ' + str(library.language) + \
-                    '::' + snippet['description'] + ' (duplicate)')
+            helper.snippets_debug(
+                "Not added snippet "
+                + str(library.language)
+                + "::"
+                + snippet["description"]
+                + " (duplicate)"
+            )
             return None
 
         snippet = container.append(snippet)
-        helper.snippets_debug('Added snippet ' + str(library.language) + '::' + \
-                snippet['description'])
+        helper.snippets_debug(
+            "Added snippet "
+            + str(library.language)
+            + "::"
+            + snippet["description"]
+        )
 
         if snippet and snippet.override:
             self.add_override(snippet)
@@ -726,8 +782,9 @@ class Library(Singleton):
 
         if not target:
             # Create a new user file then
-            helper.snippets_debug('Creating a new user file for language ' + \
-                    str(language))
+            helper.snippets_debug(
+                "Creating a new user file for language " + str(language)
+            )
             target = SnippetsUserFile()
             target.create_root(language)
             self.add_library(target)
@@ -742,7 +799,10 @@ class Library(Singleton):
 
     def revert_snippet(self, snippet):
         # This will revert the snippet to the one it overrides
-        if not snippet.can_modify() or not snippet.override in self.overridden:
+        if (
+            not snippet.can_modify()
+            or not snippet.override in self.overridden
+        ):
             # It can't be reverted, shouldn't happen, but oh..
             return
 
@@ -770,7 +830,7 @@ class Library(Singleton):
         container.remove(snippet)
 
     def overrided(self, library, element):
-        id = NamespacedId(library.language, element.attrib.get('id')).id
+        id = NamespacedId(library.language, element.attrib.get("id")).id
 
         if id in self.overridden:
             snippet = SnippetData(element, None)
@@ -782,7 +842,7 @@ class Library(Singleton):
             return None
 
     def add_override(self, snippet):
-        helper.snippets_debug('Add override:', snippet.override)
+        helper.snippets_debug("Add override:", snippet.override)
         if not snippet.override in self.overridden:
             self.overridden[snippet.override] = None
 
@@ -790,11 +850,12 @@ class Library(Singleton):
         library.ensure_language()
 
         if not library.ok:
-            helper.snippets_debug('Library in wrong format, ignoring')
+            helper.snippets_debug("Library in wrong format, ignoring")
             return False
 
-        helper.snippets_debug('Adding library (' + str(library.language) + '): ' + \
-                library.path)
+        helper.snippets_debug(
+            "Adding library (" + str(library.language) + "): " + library.path
+        )
 
         if library.language in self.libraries:
             # Make sure all the user files are before the system files
@@ -887,17 +948,19 @@ class Library(Singleton):
     def ref(self, language):
         language = self.normalize_language(language)
 
-        helper.snippets_debug('Ref:', language)
+        helper.snippets_debug("Ref:", language)
         self.container(language).ref()
 
     def unref(self, language):
         language = self.normalize_language(language)
 
-        helper.snippets_debug('Unref:', language)
+        helper.snippets_debug("Unref:", language)
 
         if language in self.containers:
-            if not self.containers[language].unref() and \
-                    language in self.libraries:
+            if (
+                not self.containers[language].unref()
+                and language in self.libraries
+            ):
 
                 for library in self.libraries[language]:
                     library.unload()
@@ -922,20 +985,24 @@ class Library(Singleton):
             return
 
         searched = []
-        searched = self.find_libraries(self.userdir, searched, \
-                self.add_user_library)
+        searched = self.find_libraries(
+            self.userdir, searched, self.add_user_library
+        )
 
         for d in self.systemdirs:
-            searched = self.find_libraries(d, searched, \
-                    self.add_system_library)
+            searched = self.find_libraries(
+                d, searched, self.add_system_library
+            )
 
         self.loaded = True
 
     def valid_accelerator(self, keyval, mod):
         mod &= Gtk.accelerator_get_default_mod_mask()
 
-        return (mod and (Gdk.keyval_to_unicode(keyval) or \
-                keyval in range(Gdk.KEY_F1, Gdk.KEY_F12 + 1)))
+        return mod and (
+            Gdk.keyval_to_unicode(keyval)
+            or keyval in range(Gdk.KEY_F1, Gdk.KEY_F12 + 1)
+        )
 
     def valid_tab_trigger(self, trigger):
         if not trigger:
@@ -976,12 +1043,12 @@ class Library(Singleton):
 
     # Get snippets for a given accelerator
     def from_accelerator(self, accelerator, language=None):
-        return self._from_prop('accelerator', accelerator, language)
+        return self._from_prop("accelerator", accelerator, language)
 
     # Get snippets for a given tag
     def from_tag(self, tag, language=None):
-        return self._from_prop('tag', tag, language)
+        return self._from_prop("tag", tag, language)
 
     # Get snippets for a given drop target
     def from_drop_target(self, drop_target, language=None):
-        return self._from_prop('drop-targets', drop_target, language)
+        return self._from_prop("drop-targets", drop_target, language)

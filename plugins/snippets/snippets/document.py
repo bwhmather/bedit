@@ -30,16 +30,19 @@ from . import helper
 
 try:
     import gettext
-    gettext.bindtextdomain('bedit')
-    gettext.textdomain('bedit')
+
+    gettext.bindtextdomain("bedit")
+    gettext.textdomain("bedit")
     _ = gettext.gettext
 except:
     _ = lambda s: s
 
+
 class DynamicSnippet(dict):
     def __init__(self, text):
-        self['text'] = text
+        self["text"] = text
         self.valid = True
+
 
 class Document(GObject.Object, Bedit.ViewActivatable, Signals):
     TAB_KEY_VAL = (Gdk.KEY_Tab, Gdk.KEY_ISO_Left_Tab)
@@ -61,7 +64,9 @@ class Document(GObject.Object, Bedit.ViewActivatable, Signals):
         self.language_id = 0
         self.timeout_update_id = 0
 
-        self.provider = completion.Provider(_('Snippets'), self.language_id, self.on_proposal_activated)
+        self.provider = completion.Provider(
+            _("Snippets"), self.language_id, self.on_proposal_activated
+        )
 
     def do_activate(self):
         # Always have a reference to the global snippets
@@ -69,11 +74,15 @@ class Document(GObject.Object, Bedit.ViewActivatable, Signals):
 
         buf = self.view.get_buffer()
 
-        self.connect_signal(self.view, 'key-press-event', self.on_view_key_press)
-        self.connect_signal(buf, 'notify::language', self.on_notify_language)
-        self.connect_signal(self.view, 'drag-data-received', self.on_drag_data_received)
+        self.connect_signal(
+            self.view, "key-press-event", self.on_view_key_press
+        )
+        self.connect_signal(buf, "notify::language", self.on_notify_language)
+        self.connect_signal(
+            self.view, "drag-data-received", self.on_drag_data_received
+        )
 
-        self.connect_signal_after(self.view, 'draw', self.on_draw)
+        self.connect_signal_after(self.view, "draw", self.on_draw)
 
         self.update_language()
 
@@ -141,8 +150,7 @@ class Document(GObject.Object, Bedit.ViewActivatable, Signals):
             return False
 
         accelerator = Gtk.accelerator_name(keyval, mod)
-        snippets = Library().from_accelerator(accelerator, \
-                self.language_id)
+        snippets = Library().from_accelerator(accelerator, self.language_id)
 
         if len(snippets) == 0:
             return False
@@ -150,7 +158,9 @@ class Document(GObject.Object, Bedit.ViewActivatable, Signals):
             self.apply_snippet(snippets[0])
         else:
             # Do the fancy completion dialog
-            provider = completion.Provider(_('Snippets'), self.language_id, self.on_proposal_activated)
+            provider = completion.Provider(
+                _("Snippets"), self.language_id, self.on_proposal_activated
+            )
             provider.set_proposals(snippets)
 
             cm = self.view.get_completion()
@@ -161,15 +171,17 @@ class Document(GObject.Object, Bedit.ViewActivatable, Signals):
     def first_snippet_inserted(self):
         buf = self.view.get_buffer()
 
-        self.connect_signal(buf, 'changed', self.on_buffer_changed)
-        self.connect_signal(buf, 'cursor-moved', self.on_buffer_cursor_moved)
-        self.connect_signal_after(buf, 'insert-text', self.on_buffer_insert_text)
+        self.connect_signal(buf, "changed", self.on_buffer_changed)
+        self.connect_signal(buf, "cursor-moved", self.on_buffer_cursor_moved)
+        self.connect_signal_after(
+            buf, "insert-text", self.on_buffer_insert_text
+        )
 
     def last_snippet_removed(self):
         buf = self.view.get_buffer()
-        self.disconnect_signal(buf, 'changed')
-        self.disconnect_signal(buf, 'cursor-moved')
-        self.disconnect_signal(buf, 'insert-text')
+        self.disconnect_signal(buf, "changed")
+        self.disconnect_signal(buf, "cursor-moved")
+        self.disconnect_signal(buf, "insert-text")
 
     def current_placeholder(self):
         buf = self.view.get_buffer()
@@ -211,13 +223,16 @@ class Document(GObject.Object, Bedit.ViewActivatable, Signals):
 
         if direction == 1:
             # w = piter, x = begin, y = end, z = found
-            nearest = lambda w, x, y, z: (w.compare(x) <= 0 and (not z or \
-                    x.compare(z.begin_iter()) < 0))
+            nearest = lambda w, x, y, z: (
+                w.compare(x) <= 0 and (not z or x.compare(z.begin_iter()) < 0)
+            )
             indexer = lambda x: x < length - 1
         else:
             # w = piter, x = begin, y = end, z = prev
-            nearest = lambda w, x, y, z: (w.compare(x) >= 0 and (not z or \
-                    x.compare(z.begin_iter()) >= 0))
+            nearest = lambda w, x, y, z: (
+                w.compare(x) >= 0
+                and (not z or x.compare(z.begin_iter()) >= 0)
+            )
             indexer = lambda x: x > 0
 
         for index in range(0, length):
@@ -230,17 +245,27 @@ class Document(GObject.Object, Bedit.ViewActivatable, Signals):
                 found = placeholder
 
             # Find the current placeholder
-            if piter.compare(begin) >= 0 and \
-                    piter.compare(end) <= 0 and \
-                    current == None:
+            if (
+                piter.compare(begin) >= 0
+                and piter.compare(end) <= 0
+                and current == None
+            ):
                 currentIndex = index
                 current = placeholder
 
-        if current and current != found and \
-           (current.begin_iter().compare(found.begin_iter()) == 0 or \
-            current.end_iter().compare(found.begin_iter()) == 0) and \
-           self.active_placeholder and \
-           current.begin_iter().compare(self.active_placeholder.begin_iter()) == 0:
+        if (
+            current
+            and current != found
+            and (
+                current.begin_iter().compare(found.begin_iter()) == 0
+                or current.end_iter().compare(found.begin_iter()) == 0
+            )
+            and self.active_placeholder
+            and current.begin_iter().compare(
+                self.active_placeholder.begin_iter()
+            )
+            == 0
+        ):
             # if current and found are at the same place, then
             # resolve the 'hugging' problem
             current = self.active_placeholder
@@ -316,11 +341,11 @@ class Document(GObject.Object, Bedit.ViewActivatable, Signals):
     def string_in_native_doc_encoding(self, buf, s):
         enc = buf.get_file().get_encoding()
 
-        if not enc or enc.get_charset() == 'UTF-8':
+        if not enc or enc.get_charset() == "UTF-8":
             return s
 
         try:
-            cv = GLib.convert(s, -1, enc.get_charset(), 'UTF-8')
+            cv = GLib.convert(s, -1, enc.get_charset(), "UTF-8")
             return cv[0]
         except GLib.GError:
             pass
@@ -333,23 +358,32 @@ class Document(GObject.Object, Bedit.ViewActivatable, Signals):
         if bounds:
             u8 = buf.get_text(bounds[0], bounds[1], False)
 
-            return {'utf8': u8, 'noenc': self.string_in_native_doc_encoding(buf, u8)}
+            return {
+                "utf8": u8,
+                "noenc": self.string_in_native_doc_encoding(buf, u8),
+            }
         else:
-            return ''
+            return ""
 
     def env_get_current_word(self, buf):
         start, end = helper.buffer_word_boundary(buf)
 
         u8 = buf.get_text(start, end, False)
 
-        return {'utf8': u8, 'noenc': self.string_in_native_doc_encoding(buf, u8)}
+        return {
+            "utf8": u8,
+            "noenc": self.string_in_native_doc_encoding(buf, u8),
+        }
 
     def env_get_current_line(self, buf):
         start, end = helper.buffer_line_boundary(buf)
 
         u8 = buf.get_text(start, end, False)
 
-        return {'utf8': u8, 'noenc': self.string_in_native_doc_encoding(buf, u8)}
+        return {
+            "utf8": u8,
+            "noenc": self.string_in_native_doc_encoding(buf, u8),
+        }
 
     def env_get_current_line_number(self, buf):
         start, end = helper.buffer_line_boundary(buf)
@@ -358,14 +392,14 @@ class Document(GObject.Object, Bedit.ViewActivatable, Signals):
 
     def location_uri_for_env(self, location):
         if not location:
-            return {'utf8': '', 'noenc': ''}
+            return {"utf8": "", "noenc": ""}
 
         u8 = location.get_parse_name()
 
-        if location.has_uri_scheme('file'):
+        if location.has_uri_scheme("file"):
             u8 = "file://" + u8
 
-        return {'utf8': u8, 'noenc': location.get_uri()}
+        return {"utf8": u8, "noenc": location.get_uri()}
 
     def location_name_for_env(self, location):
         if location:
@@ -373,53 +407,58 @@ class Document(GObject.Object, Bedit.ViewActivatable, Signals):
                 info = location.query_info("standard::display-name", 0, None)
                 display_name = info.get_display_name()
             except:
-                display_name = ''
+                display_name = ""
 
-            return {'utf8': display_name,
-                'noenc': location.get_basename()}
+            return {"utf8": display_name, "noenc": location.get_basename()}
         else:
-            return ''
+            return ""
 
     def location_scheme_for_env(self, location):
         if location:
             return location.get_uri_scheme()
         else:
-            return ''
+            return ""
 
     def location_path_for_env(self, location):
-        if location and location.has_uri_scheme('file'):
-            return {'utf8': location.get_parse_name(),
-                'noenc': location.get_path()}
+        if location and location.has_uri_scheme("file"):
+            return {
+                "utf8": location.get_parse_name(),
+                "noenc": location.get_path(),
+            }
         else:
-            return ''
+            return ""
 
     def location_dir_for_env(self, location):
         if location:
             parent = location.get_parent()
 
-            if parent and parent.has_uri_scheme('file'):
-                return {'utf8': parent.get_parse_name(),
-                    'noenc': parent.get_path()}
+            if parent and parent.has_uri_scheme("file"):
+                return {
+                    "utf8": parent.get_parse_name(),
+                    "noenc": parent.get_path(),
+                }
 
-        return ''
+        return ""
 
     def env_add_for_location(self, environ, location, prefix):
-        parts = {'URI': self.location_uri_for_env,
-             'NAME': self.location_name_for_env,
-             'SCHEME': self.location_scheme_for_env,
-             'PATH': self.location_path_for_env,
-             'DIR': self.location_dir_for_env}
+        parts = {
+            "URI": self.location_uri_for_env,
+            "NAME": self.location_name_for_env,
+            "SCHEME": self.location_scheme_for_env,
+            "PATH": self.location_path_for_env,
+            "DIR": self.location_dir_for_env,
+        }
 
         for k in parts:
             v = parts[k](location)
-            key = prefix + '_' + k
+            key = prefix + "_" + k
 
             if isinstance(v, dict):
-                environ['utf8'][key] = v['utf8']
-                environ['noenc'][key] = v['noenc']
+                environ["utf8"][key] = v["utf8"]
+                environ["noenc"][key] = v["noenc"]
             else:
-                environ['utf8'][key] = v
-                environ['noenc'][key] = str(v)
+                environ["utf8"][key] = v
+                environ["noenc"][key] = str(v)
 
         return environ
 
@@ -429,80 +468,88 @@ class Document(GObject.Object, Bedit.ViewActivatable, Signals):
         if typ:
             return typ
         else:
-            return ''
+            return ""
 
     def env_get_documents_uri(self, buf):
         toplevel = self.view.get_toplevel()
 
-        documents_uri = {'utf8': [], 'noenc': []}
+        documents_uri = {"utf8": [], "noenc": []}
 
         if isinstance(toplevel, Bedit.Window):
             for doc in toplevel.get_documents():
                 r = self.location_uri_for_env(doc.get_location())
 
                 if isinstance(r, dict):
-                    documents_uri['utf8'].append(r['utf8'])
-                    documents_uri['noenc'].append(r['noenc'])
+                    documents_uri["utf8"].append(r["utf8"])
+                    documents_uri["noenc"].append(r["noenc"])
                 else:
-                    documents_uri['utf8'].append(r)
-                    documents_uri['noenc'].append(str(r))
+                    documents_uri["utf8"].append(r)
+                    documents_uri["noenc"].append(str(r))
 
-        return {'utf8': ' '.join(documents_uri['utf8']),
-            'noenc': ' '.join(documents_uri['noenc'])}
+        return {
+            "utf8": " ".join(documents_uri["utf8"]),
+            "noenc": " ".join(documents_uri["noenc"]),
+        }
 
     def env_get_documents_path(self, buf):
         toplevel = self.view.get_toplevel()
 
-        documents_path = {'utf8': [], 'noenc': []}
+        documents_path = {"utf8": [], "noenc": []}
 
         if isinstance(toplevel, Bedit.Window):
             for doc in toplevel.get_documents():
                 r = self.location_path_for_env(doc.get_location())
 
                 if isinstance(r, dict):
-                    documents_path['utf8'].append(r['utf8'])
-                    documents_path['noenc'].append(r['noenc'])
+                    documents_path["utf8"].append(r["utf8"])
+                    documents_path["noenc"].append(r["noenc"])
                 else:
-                    documents_path['utf8'].append(r)
-                    documents_path['noenc'].append(str(r))
+                    documents_path["utf8"].append(r)
+                    documents_path["noenc"].append(str(r))
 
-        return {'utf8': ' '.join(documents_path['utf8']),
-            'noenc': ' '.join(documents_path['noenc'])}
+        return {
+            "utf8": " ".join(documents_path["utf8"]),
+            "noenc": " ".join(documents_path["noenc"]),
+        }
 
     def get_environment(self):
         buf = self.view.get_buffer()
-        environ = {'utf8': {}, 'noenc': {}}
+        environ = {"utf8": {}, "noenc": {}}
 
         for k in os.environ:
             # Get the original environment, as utf-8
             v = os.environ[k]
-            environ['noenc'][k] = v
-            environ['utf8'][k] = os.environ[k].encode('utf-8')
+            environ["noenc"][k] = v
+            environ["utf8"][k] = os.environ[k].encode("utf-8")
 
-        variables = {'BEDIT_SELECTED_TEXT': self.env_get_selected_text,
-                 'BEDIT_CURRENT_WORD': self.env_get_current_word,
-                 'BEDIT_CURRENT_LINE': self.env_get_current_line,
-                 'BEDIT_CURRENT_LINE_NUMBER': self.env_get_current_line_number,
-                 'BEDIT_CURRENT_DOCUMENT_TYPE': self.env_get_document_type,
-                 'BEDIT_DOCUMENTS_URI': self.env_get_documents_uri,
-                 'BEDIT_DOCUMENTS_PATH': self.env_get_documents_path}
+        variables = {
+            "BEDIT_SELECTED_TEXT": self.env_get_selected_text,
+            "BEDIT_CURRENT_WORD": self.env_get_current_word,
+            "BEDIT_CURRENT_LINE": self.env_get_current_line,
+            "BEDIT_CURRENT_LINE_NUMBER": self.env_get_current_line_number,
+            "BEDIT_CURRENT_DOCUMENT_TYPE": self.env_get_document_type,
+            "BEDIT_DOCUMENTS_URI": self.env_get_documents_uri,
+            "BEDIT_DOCUMENTS_PATH": self.env_get_documents_path,
+        }
 
         for var in variables:
             v = variables[var](buf)
 
             if isinstance(v, dict):
-                environ['utf8'][var] = v['utf8']
-                environ['noenc'][var] = v['noenc']
+                environ["utf8"][var] = v["utf8"]
+                environ["noenc"][var] = v["noenc"]
             else:
-                environ['utf8'][var] = v
-                environ['noenc'][var] = str(v)
+                environ["utf8"][var] = v
+                environ["noenc"][var] = str(v)
 
-        self.env_add_for_location(environ, buf.get_location(), 'BEDIT_CURRENT_DOCUMENT')
+        self.env_add_for_location(
+            environ, buf.get_location(), "BEDIT_CURRENT_DOCUMENT"
+        )
 
         return environ
 
     def uses_current_word(self, snippet):
-        matches = re.findall('(\\\\*)\\$BEDIT_CURRENT_WORD', snippet['text'])
+        matches = re.findall("(\\\\*)\\$BEDIT_CURRENT_WORD", snippet["text"])
 
         for match in matches:
             if len(match) % 2 == 0:
@@ -511,7 +558,7 @@ class Document(GObject.Object, Bedit.ViewActivatable, Signals):
         return False
 
     def uses_current_line(self, snippet):
-        matches = re.findall('(\\\\*)\\$BEDIT_CURRENT_LINE', snippet['text'])
+        matches = re.findall("(\\\\*)\\$BEDIT_CURRENT_LINE", snippet["text"])
 
         for match in matches:
             if len(match) % 2 == 0:
@@ -519,7 +566,7 @@ class Document(GObject.Object, Bedit.ViewActivatable, Signals):
 
         return False
 
-    def apply_snippet(self, snippet, start = None, end = None, environ = {}):
+    def apply_snippet(self, snippet, start=None, end=None, environ={}):
         if not snippet.valid:
             return False
 
@@ -527,11 +574,11 @@ class Document(GObject.Object, Bedit.ViewActivatable, Signals):
         env = self.get_environment()
 
         if environ:
-            for k in environ['utf8']:
-                env['utf8'][k] = environ['utf8'][k]
+            for k in environ["utf8"]:
+                env["utf8"][k] = environ["utf8"][k]
 
-            for k in environ['noenc']:
-                env['noenc'][k] = environ['noenc'][k]
+            for k in environ["noenc"]:
+                env["noenc"][k] = environ["noenc"][k]
 
         buf = self.view.get_buffer()
         s = Snippet(snippet, env)
@@ -559,7 +606,7 @@ class Document(GObject.Object, Bedit.ViewActivatable, Signals):
             self.goto_placeholder(current, None)
 
         if len(self.active_snippets) > 0:
-            self.block_signal(buf, 'cursor-moved')
+            self.block_signal(buf, "cursor-moved")
 
         buf.begin_user_action()
 
@@ -569,7 +616,7 @@ class Document(GObject.Object, Bedit.ViewActivatable, Signals):
         # Insert the snippet
         if len(self.active_snippets) == 0:
             self.first_snippet_inserted()
-            self.block_signal(buf, 'cursor-moved')
+            self.block_signal(buf, "cursor-moved")
 
         sn = s.insert_into(self, start)
         self.active_snippets.append(sn)
@@ -579,13 +626,17 @@ class Document(GObject.Object, Bedit.ViewActivatable, Signals):
 
         if len(keys) == 0:
             if 0 in sn.placeholders:
-                self.goto_placeholder(self.active_placeholder, sn.placeholders[0])
+                self.goto_placeholder(
+                    self.active_placeholder, sn.placeholders[0]
+                )
             else:
                 buf.place_cursor(sn.begin_iter())
         else:
-            self.goto_placeholder(self.active_placeholder, sn.placeholders[keys[0]])
+            self.goto_placeholder(
+                self.active_placeholder, sn.placeholders[keys[0]]
+            )
 
-        self.unblock_signal(buf, 'cursor-moved')
+        self.unblock_signal(buf, "cursor-moved")
 
         if sn in self.active_snippets:
             # Check if we can get end_iter in view without moving the
@@ -596,8 +647,9 @@ class Document(GObject.Object, Bedit.ViewActivatable, Signals):
             curloc = self.view.get_iter_location(cur)
             lastloc = self.view.get_iter_location(last)
 
-            if (lastloc.y + lastloc.height) - curloc.y <= \
-               self.view.get_visible_rect().height:
+            if (
+                lastloc.y + lastloc.height
+            ) - curloc.y <= self.view.get_visible_rect().height:
                 self.view.scroll_mark_onscreen(sn.end_mark)
 
         buf.end_user_action()
@@ -605,7 +657,7 @@ class Document(GObject.Object, Bedit.ViewActivatable, Signals):
 
         return True
 
-    def get_tab_tag(self, buf, end = None):
+    def get_tab_tag(self, buf, end=None):
         if not end:
             end = buf.get_iter_at_mark(buf.get_insert())
 
@@ -623,8 +675,11 @@ class Document(GObject.Object, Bedit.ViewActivatable, Signals):
                     break
 
                 # Make sure first char is valid
-                while not start.equal(end) and \
-                      not helper.is_first_tab_trigger_character(start.get_char()):
+                while not start.equal(
+                    end
+                ) and not helper.is_first_tab_trigger_character(
+                    start.get_char()
+                ):
                     start.forward_char()
 
                 break
@@ -634,7 +689,7 @@ class Document(GObject.Object, Bedit.ViewActivatable, Signals):
         if not start.equal(end):
             word = buf.get_text(start, end, False)
 
-            if word and word != '':
+            if word and word != "":
                 return (word, start, end)
 
         return (None, None, None)
@@ -664,7 +719,11 @@ class Document(GObject.Object, Bedit.ViewActivatable, Signals):
                 return self.apply_snippet(snippets[0], bounds[0], bounds[1])
             else:
                 # Do the fancy completion dialog
-                provider = completion.Provider(_('Snippets'), self.language_id, self.on_proposal_activated)
+                provider = completion.Provider(
+                    _("Snippets"),
+                    self.language_id,
+                    self.on_proposal_activated,
+                )
                 provider.set_proposals(snippets)
 
                 cm = self.view.get_completion()
@@ -694,7 +753,7 @@ class Document(GObject.Object, Bedit.ViewActivatable, Signals):
         else:
             return True
 
-    def deactivate_snippet(self, snippet, force = False):
+    def deactivate_snippet(self, snippet, force=False):
         remove = []
         ordered_remove = []
 
@@ -757,7 +816,10 @@ class Document(GObject.Object, Bedit.ViewActivatable, Signals):
 
         # Check for all snippets if the cursor is outside its scope
         for snippet in list(self.active_snippets):
-            if snippet.begin_mark.get_deleted() or snippet.end_mark.get_deleted():
+            if (
+                snippet.begin_mark.get_deleted()
+                or snippet.end_mark.get_deleted()
+            ):
                 self.deactivate(snippet)
             else:
                 begin = snippet.begin_iter()
@@ -773,8 +835,9 @@ class Document(GObject.Object, Bedit.ViewActivatable, Signals):
             self.jump_placeholders.append((self.active_placeholder, current))
 
             if self.timeout_update_id == 0:
-                self.timeout_update_id = GLib.timeout_add(0,
-                        self.update_snippet_contents)
+                self.timeout_update_id = GLib.timeout_add(
+                    0, self.update_snippet_contents
+                )
 
     def on_buffer_changed(self, buf):
         for snippet in list(self.active_snippets):
@@ -792,8 +855,9 @@ class Document(GObject.Object, Bedit.ViewActivatable, Signals):
                 self.update_placeholders.append(current)
 
             if self.timeout_update_id == 0:
-                self.timeout_update_id = GLib.timeout_add(0, \
-                        self.update_snippet_contents)
+                self.timeout_update_id = GLib.timeout_add(
+                    0, self.update_snippet_contents
+                )
 
     def on_buffer_insert_text(self, buf, piter, text, length):
         ctx = helper.get_buffer_context(buf)
@@ -829,7 +893,11 @@ class Document(GObject.Object, Bedit.ViewActivatable, Signals):
                     buf.move_mark(placeholder.begin, end)
                 elif oidx < idx and oe:
                     buf.move_mark(placeholder.end, begin)
-            elif ob.compare(begin) >= 0 and ob.compare(end) < 0 and (oe and oe.compare(end) >= 0):
+            elif (
+                ob.compare(begin) >= 0
+                and ob.compare(end) < 0
+                and (oe and oe.compare(end) >= 0)
+            ):
                 buf.move_mark(placeholder.begin, end)
             elif (oe and oe.compare(begin) > 0) and ob.compare(begin) <= 0:
                 buf.move_mark(placeholder.end, begin)
@@ -845,19 +913,23 @@ class Document(GObject.Object, Bedit.ViewActivatable, Signals):
         if not self.view.get_editable():
             return False
 
-        if not (state & Gdk.ModifierType.CONTROL_MASK) and \
-                not (state & Gdk.ModifierType.MOD1_MASK) and \
-                event.keyval in self.TAB_KEY_VAL:
+        if (
+            not (state & Gdk.ModifierType.CONTROL_MASK)
+            and not (state & Gdk.ModifierType.MOD1_MASK)
+            and event.keyval in self.TAB_KEY_VAL
+        ):
             if not state & Gdk.ModifierType.SHIFT_MASK:
                 return self.run_snippet()
             else:
                 return self.skip_to_previous_placeholder()
-        elif not library.loaded and \
-                library.valid_accelerator(event.keyval, state):
+        elif not library.loaded and library.valid_accelerator(
+            event.keyval, state
+        ):
             library.ensure_files()
             library.ensure(self.language_id)
-            self.accelerator_activate(event.keyval, \
-                    state & Gtk.accelerator_get_default_mod_mask())
+            self.accelerator_activate(
+                event.keyval, state & Gtk.accelerator_get_default_mod_mask()
+            )
 
         return False
 
@@ -875,10 +947,12 @@ class Document(GObject.Object, Bedit.ViewActivatable, Signals):
         # Remove file scheme
         gfile = Gio.file_new_for_uri(uri)
 
-        environ = {'utf8': {'BEDIT_DROP_DOCUMENT_TYPE': mime.encode('utf-8')},
-               'noenc': {'BEDIT_DROP_DOCUMENT_TYPE': mime}}
+        environ = {
+            "utf8": {"BEDIT_DROP_DOCUMENT_TYPE": mime.encode("utf-8")},
+            "noenc": {"BEDIT_DROP_DOCUMENT_TYPE": mime},
+        }
 
-        self.env_add_for_location(environ, gfile, 'BEDIT_DROP_DOCUMENT')
+        self.env_add_for_location(environ, gfile, "BEDIT_DROP_DOCUMENT")
 
         buf = self.view.get_buffer()
         location = buf.get_location()
@@ -886,10 +960,12 @@ class Document(GObject.Object, Bedit.ViewActivatable, Signals):
         relpath = location.get_relative_path(gfile)
 
         # CHECK: what is the encoding of relpath?
-        environ['utf8']['BEDIT_DROP_DOCUMENT_RELATIVE_PATH'] = relpath.encode('utf-8')
-        environ['noenc']['BEDIT_DROP_DOCUMENT_RELATIVE_PATH'] = relpath
+        environ["utf8"]["BEDIT_DROP_DOCUMENT_RELATIVE_PATH"] = relpath.encode(
+            "utf-8"
+        )
+        environ["noenc"]["BEDIT_DROP_DOCUMENT_RELATIVE_PATH"] = relpath
 
-        mark = buf.get_mark('gtk_drag_target')
+        mark = buf.get_mark("gtk_drag_target")
 
         if not mark:
             mark = buf.get_insert()
@@ -899,11 +975,20 @@ class Document(GObject.Object, Bedit.ViewActivatable, Signals):
 
     def in_bounds(self, x, y):
         rect = self.view.get_visible_rect()
-        rect.x, rect.y = self.view.buffer_to_window_coords(Gtk.TextWindowType.WIDGET, rect.x, rect.y)
+        rect.x, rect.y = self.view.buffer_to_window_coords(
+            Gtk.TextWindowType.WIDGET, rect.x, rect.y
+        )
 
-        return not (x < rect.x or x > rect.x + rect.width or y < rect.y or y > rect.y + rect.height)
+        return not (
+            x < rect.x
+            or x > rect.x + rect.width
+            or y < rect.y
+            or y > rect.y + rect.height
+        )
 
-    def on_drag_data_received(self, view, context, x, y, data, info, timestamp):
+    def on_drag_data_received(
+        self, view, context, x, y, data, info, timestamp
+    ):
         if not self.view.get_editable():
             return
 
@@ -934,7 +1019,7 @@ class Document(GObject.Object, Bedit.ViewActivatable, Signals):
 
         if stop:
             context.finish(True, False, timestamp)
-            view.stop_emission('drag-data-received')
+            view.stop_emission("drag-data-received")
             view.get_toplevel().present()
             view.grab_focus()
 
@@ -974,7 +1059,9 @@ class Document(GObject.Object, Bedit.ViewActivatable, Signals):
 
     def iter_coords(self, piter):
         rect = self.view.get_iter_location(piter)
-        rect.x, rect.y = self.view.buffer_to_window_coords(Gtk.TextWindowType.TEXT, rect.x, rect.y)
+        rect.x, rect.y = self.view.buffer_to_window_coords(
+            Gtk.TextWindowType.TEXT, rect.x, rect.y
+        )
 
         return rect
 
@@ -989,8 +1076,10 @@ class Document(GObject.Object, Bedit.ViewActivatable, Signals):
         start_rect = self.iter_coords(start)
         end_rect = self.iter_coords(end)
 
-        return start_rect.y <= area.y + area.height and \
-               end_rect.y + end_rect.height >= area.y
+        return (
+            start_rect.y <= area.y + area.height
+            and end_rect.y + end_rect.height >= area.y
+        )
 
     def draw_placeholder_rect(self, ctx, placeholder):
         start = placeholder.begin_iter()
@@ -1009,11 +1098,18 @@ class Document(GObject.Object, Bedit.ViewActivatable, Signals):
 
         while line.get_line() <= end_line:
             ypos, height = self.view.get_line_yrange(line)
-            x_, ypos = self.view.window_to_buffer_coords(Gtk.TextWindowType.TEXT, 0, ypos)
+            x_, ypos = self.view.window_to_buffer_coords(
+                Gtk.TextWindowType.TEXT, 0, ypos
+            )
 
             if line.get_line() == start_line and line.get_line() == end_line:
                 # Simply draw a box, both are on the same line
-                ctx.rectangle(start_rect.x, start_rect.y, end_rect.x - start_rect.x, start_rect.height - 1)
+                ctx.rectangle(
+                    start_rect.x,
+                    start_rect.y,
+                    end_rect.x - start_rect.x,
+                    start_rect.height - 1,
+                )
                 ctx.stroke()
             elif line.get_line() == start_line or line.get_line() == end_line:
                 if line.get_line() == start_line:
@@ -1051,7 +1147,9 @@ class Document(GObject.Object, Bedit.ViewActivatable, Signals):
         if isinstance(placeholder, PlaceholderEnd):
             return
 
-        col = self.view.get_style_context().get_color(Gtk.StateFlags.INSENSITIVE)
+        col = self.view.get_style_context().get_color(
+            Gtk.StateFlags.INSENSITIVE
+        )
         col.alpha = 0.5
         Gdk.cairo_set_source_rgba(ctx, col)
 

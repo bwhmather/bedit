@@ -24,10 +24,7 @@ from gi.repository import Gdk, Gtk, GtkSource
 
 
 class DiffType:
-    (NONE,
-     ADDED,
-     MODIFIED,
-     REMOVED) = range(4)
+    (NONE, ADDED, MODIFIED, REMOVED) = range(4)
 
 
 class DiffRenderer(GtkSource.GutterRenderer):
@@ -51,8 +48,9 @@ class DiffRenderer(GtkSource.GutterRenderer):
         self.tooltip_line = 0
 
     def do_draw(self, cr, bg_area, cell_area, start, end, state):
-        GtkSource.GutterRenderer.do_draw(self, cr, bg_area, cell_area,
-                                         start, end, state)
+        GtkSource.GutterRenderer.do_draw(
+            self, cr, bg_area, cell_area, start, end, state
+        )
 
         line_context = self.file_context.get(start.get_line() + 1, None)
         if line_context is None or line_context.line_type == DiffType.NONE:
@@ -61,8 +59,9 @@ class DiffRenderer(GtkSource.GutterRenderer):
         background = self.backgrounds[line_context.line_type]
 
         Gdk.cairo_set_source_rgba(cr, background)
-        cr.rectangle(cell_area.x, cell_area.y,
-                     cell_area.width, cell_area.height)
+        cr.rectangle(
+            cell_area.x, cell_area.y, cell_area.width, cell_area.height
+        )
         cr.fill()
 
     def do_query_tooltip(self, it, area, x, y, tooltip):
@@ -79,7 +78,10 @@ class DiffRenderer(GtkSource.GutterRenderer):
             tooltip.set_custom(self.tooltip)
             return True
 
-        if line_context.line_type not in (DiffType.REMOVED, DiffType.MODIFIED):
+        if line_context.line_type not in (
+            DiffType.REMOVED,
+            DiffType.MODIFIED,
+        ):
             return False
 
         tooltip_buffer = GtkSource.Buffer()
@@ -92,7 +94,9 @@ class DiffRenderer(GtkSource.GutterRenderer):
 
         # Propagate the buffer's settings
         content_buffer = content_view.get_buffer()
-        tooltip_buffer.set_highlight_syntax(content_buffer.get_highlight_syntax())
+        tooltip_buffer.set_highlight_syntax(
+            content_buffer.get_highlight_syntax()
+        )
         tooltip_buffer.set_language(content_buffer.get_language())
         tooltip_buffer.set_style_scheme(content_buffer.get_style_scheme())
 
@@ -110,7 +114,7 @@ class DiffRenderer(GtkSource.GutterRenderer):
         # don't want to add hundreds of lines
         allocation = content_view.get_allocation()
         lines = allocation.height // area.height
-        removed = '\n'.join(map(str, line_context.removed_lines[:lines]))
+        removed = "\n".join(map(str, line_context.removed_lines[:lines]))
         tooltip_buffer.set_text(removed)
 
         # Avoid having to create the tooltip multiple times
@@ -126,5 +130,6 @@ class DiffRenderer(GtkSource.GutterRenderer):
         self.tooltip_line = 0
 
         self.queue_draw()
+
 
 # ex:ts=4:et:

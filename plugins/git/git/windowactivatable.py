@@ -31,7 +31,7 @@ from .workerthread import WorkerThread
 
 
 class FileNode(object):
-    __slots__ = ('id', 'name')
+    __slots__ = ("id", "name")
 
     def __init__(self, msg):
         self.id = msg.id
@@ -39,22 +39,26 @@ class FileNode(object):
 
 
 class FileNodes(collections.abc.MutableMapping):
-    __slots__ = ('__data')
+    __slots__ = "__data"
 
     def __init__(self):
         self.__data = {}
 
     def __type_name(self, type):
-        if type.__module__ == 'builtins':
+        if type.__module__ == "builtins":
             return type.__name__
 
-        return '.'.join((type.__module__, type.__name__))
+        return ".".join((type.__module__, type.__name__))
 
     def __typecheck(self, value, desired_type):
         if not isinstance(value, desired_type):
-            raise TypeError('%s argument expected, got %s.' %
-                            (self.__type_name(desired_type),
-                             self.__type_name(type(value))))
+            raise TypeError(
+                "%s argument expected, got %s."
+                % (
+                    self.__type_name(desired_type),
+                    self.__type_name(type(value)),
+                )
+            )
 
     def __delitem__(self, location):
         self.__typecheck(location, Gio.File)
@@ -71,7 +75,7 @@ class FileNodes(collections.abc.MutableMapping):
         self.__typecheck(node, FileNode)
 
         if location in self:
-            debug('Location is already inserted: %s' % (location.get_uri()))
+            debug("Location is already inserted: %s" % (location.get_uri()))
 
         self.__data[location.get_uri()] = node
 
@@ -85,19 +89,25 @@ class FileNodes(collections.abc.MutableMapping):
 class GitStatusThread(WorkerThread):
     def push(self, repo, location):
         if repo is None:
-            debug('Invalid repository', print_stack=True)
+            debug("Invalid repository", print_stack=True)
             return
- 
+
         git_dir = repo.get_location().get_uri()
         if location.get_uri().startswith(git_dir):
-            debug('Invalid location: "%s" is in git dir "%s"' %
-                  (location.get_uri(), git_dir), print_stack=True)
+            debug(
+                'Invalid location: "%s" is in git dir "%s"'
+                % (location.get_uri(), git_dir),
+                print_stack=True,
+            )
             return
 
         workdir = repo.get_workdir()
         if workdir.get_relative_path(location) is None:
-            debug('Invalid location "%s" for workdir "%s"' %
-                  (location.get_uri(), workdir.get_uri()), print_stack=True)
+            debug(
+                'Invalid location "%s" for workdir "%s"'
+                % (location.get_uri(), workdir.get_uri()),
+                print_stack=True,
+            )
             return
 
         super().push(repo, location)
@@ -126,8 +136,9 @@ class GitWindowActivatable(GObject.Object, Bedit.WindowActivatable):
         window_activatable = cls.windows[window]
 
         window_activatable.view_activatables.add(view_activatable)
-        view_activatable.connect('notify::status',
-                                 window_activatable.notify_status)
+        view_activatable.connect(
+            "notify::status", window_activatable.notify_status
+        )
 
         return window_activatable
 
@@ -148,27 +159,33 @@ class GitWindowActivatable(GObject.Object, Bedit.WindowActivatable):
 
         self.gobject_signals = {
             self.window: [
-                self.window.connect('tab-removed', self.tab_removed),
-                self.window.connect('focus-in-event', self.focus_in_event),
-                self.window.connect('focus-out-event', self.focus_out_event)
+                self.window.connect("tab-removed", self.tab_removed),
+                self.window.connect("focus-in-event", self.focus_in_event),
+                self.window.connect("focus-out-event", self.focus_out_event),
             ],
-
             # BeditMessageBus.connect() shadows GObject.connect()
             self.bus: [
-                GObject.Object.connect(self.bus, 'unregistered',
-                                       self.unregistered)
-            ]
+                GObject.Object.connect(
+                    self.bus, "unregistered", self.unregistered
+                )
+            ],
         }
 
         # It is safe to connect to these even
         # if the file browser is not enabled yet
         self.bus_signals = [
-            self.bus.connect('/plugins/filebrowser', 'root_changed',
-                             self.root_changed, None),
-            self.bus.connect('/plugins/filebrowser', 'inserted',
-                             self.inserted, None),
-            self.bus.connect('/plugins/filebrowser', 'deleted',
-                             self.deleted, None)
+            self.bus.connect(
+                "/plugins/filebrowser",
+                "root_changed",
+                self.root_changed,
+                None,
+            ),
+            self.bus.connect(
+                "/plugins/filebrowser", "inserted", self.inserted, None
+            ),
+            self.bus.connect(
+                "/plugins/filebrowser", "deleted", self.deleted, None
+            ),
         ]
 
         self.refresh()
@@ -192,8 +209,8 @@ class GitWindowActivatable(GObject.Object, Bedit.WindowActivatable):
         self.refresh()
 
     def refresh(self):
-        if self.bus.is_registered('/plugins/filebrowser', 'refresh'):
-            self.bus.send('/plugins/filebrowser', 'refresh')
+        if self.bus.is_registered("/plugins/filebrowser", "refresh"):
+            self.bus.send("/plugins/filebrowser", "refresh")
 
     def get_view_activatable_by_view(self, view):
         for view_activatable in self.view_activatables:
@@ -218,7 +235,9 @@ class GitWindowActivatable(GObject.Object, Bedit.WindowActivatable):
         return None
 
     def notify_status(self, view_activatable, psepc):
-        location = view_activatable.view.get_buffer().get_file().get_location()
+        location = (
+            view_activatable.view.get_buffer().get_file().get_location()
+        )
         if location is None:
             return
 
@@ -276,7 +295,7 @@ class GitWindowActivatable(GObject.Object, Bedit.WindowActivatable):
 
     def unregistered(self, bus, object_path, method):
         # Avoid warnings like crazy if the file browser becomes disabled
-        if object_path == '/plugins/filebrowser' and method == 'root_changed':
+        if object_path == "/plugins/filebrowser" and method == "root_changed":
             self.clear_monitors()
             self.git_status_thread.clear()
             self.file_nodes = FileNodes()
@@ -343,18 +362,26 @@ class GitWindowActivatable(GObject.Object, Bedit.WindowActivatable):
         markup = GLib.markup_escape_text(file_node.name)
 
         if status is not None:
-            if status & Ggit.StatusFlags.INDEX_NEW or \
-                    status & Ggit.StatusFlags.WORKING_TREE_NEW or \
-                    status & Ggit.StatusFlags.INDEX_MODIFIED or \
-                    status & Ggit.StatusFlags.WORKING_TREE_MODIFIED:
+            if (
+                status & Ggit.StatusFlags.INDEX_NEW
+                or status & Ggit.StatusFlags.WORKING_TREE_NEW
+                or status & Ggit.StatusFlags.INDEX_MODIFIED
+                or status & Ggit.StatusFlags.WORKING_TREE_MODIFIED
+            ):
                 markup = '<span weight="bold">%s</span>' % (markup)
 
-            elif status & Ggit.StatusFlags.INDEX_DELETED or \
-                    status & Ggit.StatusFlags.WORKING_TREE_DELETED:
+            elif (
+                status & Ggit.StatusFlags.INDEX_DELETED
+                or status & Ggit.StatusFlags.WORKING_TREE_DELETED
+            ):
                 markup = '<span strikethrough="true">%s</span>' % (markup)
 
-        self.bus.send_sync('/plugins/filebrowser', 'set_markup',
-                           id=file_node.id, markup=markup)
+        self.bus.send_sync(
+            "/plugins/filebrowser",
+            "set_markup",
+            id=file_node.id,
+            markup=markup,
+        )
 
     def clear_monitors(self):
         for uri in self.monitors:
@@ -367,12 +394,14 @@ class GitWindowActivatable(GObject.Object, Bedit.WindowActivatable):
             monitor = location.monitor(Gio.FileMonitorFlags.NONE, None)
 
         except GLib.Error as e:
-            debug('Failed to monitor directory "%s": %s' %
-                  (location.get_uri(), e))
+            debug(
+                'Failed to monitor directory "%s": %s'
+                % (location.get_uri(), e)
+            )
             return
 
         self.monitors[location.get_uri()] = monitor
-        monitor.connect('changed', self.monitor_changed)
+        monitor.connect("changed", self.monitor_changed)
 
     def monitor_changed(self, monitor, file_a, file_b, event_type):
         # Don't update anything as we will do
@@ -403,5 +432,6 @@ class GitWindowActivatable(GObject.Object, Bedit.WindowActivatable):
                 repo = self.get_repository(f)
                 if repo is not None:
                     self.git_status_thread.push(repo, f)
+
 
 # ex:ts=4:et:

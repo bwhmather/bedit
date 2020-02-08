@@ -85,7 +85,7 @@ class QuickOpenPlugin(GObject.Object, Bedit.WindowActivatable):
     def _create_popup(self):
         paths = []
 
-        paths.append(self.window.get_property('default-location'))
+        paths.append(self.window.get_property("default-location"))
 
         self._popup = Popup(self.window, paths, self.on_activated)
         self.window.get_group().add_window(self._popup)

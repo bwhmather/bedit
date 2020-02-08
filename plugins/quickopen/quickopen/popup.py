@@ -58,6 +58,7 @@ def _is_text(entry):
 
     return False
 
+
 def _list_dir(gfile):
     entries = []
 
@@ -169,9 +170,7 @@ def _make_markup(parts, path):
     out = []
 
     for i in range(0, len(parts)):
-        out.append(
-            _replace_insensitive(path[i], parts[i], "<b>%s</b>")
-        )
+        out.append(_replace_insensitive(path[i], parts[i], "<b>%s</b>"))
 
     return os.sep.join(out)
 
@@ -339,11 +338,7 @@ class Popup(Gtk.Dialog):
 
             lentry = entry[1].lower()
 
-            if (
-                not lpart
-                or lpart in lentry
-                or _match_glob(lentry, lpart)
-            ):
+            if not lpart or lpart in lentry or _match_glob(lentry, lpart):
                 if entry[2] == Gio.FileType.DIRECTORY:
                     if len(parts) > 1:
                         newdirs.append(entry[0])

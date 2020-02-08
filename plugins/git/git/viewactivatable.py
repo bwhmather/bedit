@@ -32,7 +32,7 @@ import difflib
 
 
 class LineContext:
-    __slots__ = ('removed_lines', 'line_type')
+    __slots__ = ("removed_lines", "line_type")
 
     def __init__(self):
         self.removed_lines = []
@@ -42,8 +42,9 @@ class LineContext:
 class GitViewActivatable(GObject.Object, Bedit.ViewActivatable):
     view = GObject.Property(type=Bedit.View)
 
-    status = GObject.Property(type=Ggit.StatusFlags,
-                              default=Ggit.StatusFlags.CURRENT)
+    status = GObject.Property(
+        type=Ggit.StatusFlags, default=Ggit.StatusFlags.CURRENT
+    )
 
     def __init__(self):
         super().__init__()
@@ -63,7 +64,7 @@ class GitViewActivatable(GObject.Object, Bedit.ViewActivatable):
         # Note: GitWindowActivatable will call
         #       update_location() for us when needed
         self.view_signals = [
-            self.view.connect('notify::buffer', self.on_notify_buffer)
+            self.view.connect("notify::buffer", self.on_notify_buffer)
         ]
 
         self.buffer = None
@@ -104,7 +105,7 @@ class GitViewActivatable(GObject.Object, Bedit.ViewActivatable):
         # The saved signal is pointless as the window activatable
         # will see the change and call update_location().
         self.buffer_signals = [
-            self.buffer.connect('loaded', self.update_location)
+            self.buffer.connect("loaded", self.update_location)
         ]
 
         # We wait and let the loaded signal call
@@ -129,8 +130,9 @@ class GitViewActivatable(GObject.Object, Bedit.ViewActivatable):
 
         if self.file_contents_list is None:
             self.gutter.insert(self.diff_renderer, 40)
-            self.buffer_signals.append(self.buffer.connect('changed',
-                                                           self.update))
+            self.buffer_signals.append(
+                self.buffer.connect("changed", self.update)
+            )
 
         try:
             head = repo.get_head()
@@ -138,23 +140,23 @@ class GitViewActivatable(GObject.Object, Bedit.ViewActivatable):
             tree = commit.get_tree()
             relative_path = os.path.relpath(
                 os.path.realpath(self.location.get_path()),
-                repo.get_workdir().get_path()
+                repo.get_workdir().get_path(),
             )
 
             entry = tree.get_by_path(relative_path)
             file_blob = repo.lookup(entry.get_id(), Ggit.Blob)
             try:
                 gitconfig = repo.get_config()
-                encoding = gitconfig.get_string('gui.encoding')
+                encoding = gitconfig.get_string("gui.encoding")
             except GLib.Error:
-                encoding = 'utf8'
+                encoding = "utf8"
             file_contents = file_blob.get_raw_content().decode(encoding)
             self.file_contents_list = file_contents.splitlines()
 
             # Remove the last empty line added by bedit automatically
             if self.file_contents_list:
                 last_item = self.file_contents_list[-1]
-                if last_item[-1:] == '\n':
+                if last_item[-1:] == "\n":
                     self.file_contents_list[-1] = last_item[:-1]
 
         except GLib.Error:
@@ -176,8 +178,7 @@ class GitViewActivatable(GObject.Object, Bedit.ViewActivatable):
             n_lines = self.buffer.get_line_count()
             delay = min(10000, 200 * (n_lines // 2000 + 1))
 
-            self.diff_timeout = GLib.timeout_add(delay,
-                                                 self.on_diff_timeout)
+            self.diff_timeout = GLib.timeout_add(delay, self.on_diff_timeout)
 
     def on_diff_timeout(self):
         self.diff_timeout = 0
@@ -192,8 +193,9 @@ class GitViewActivatable(GObject.Object, Bedit.ViewActivatable):
 
             line_context = LineContext()
             line_context.line_type = DiffType.ADDED
-            file_context = dict(zip(range(1, n_lines + 1),
-                                    [line_context] * n_lines))
+            file_context = dict(
+                zip(range(1, n_lines + 1), [line_context] * n_lines)
+            )
 
             self.diff_renderer.set_file_context(file_context)
             return False
@@ -204,10 +206,11 @@ class GitViewActivatable(GObject.Object, Bedit.ViewActivatable):
 
         # GtkTextBuffer does not consider a trailing "\n" to be text
         if len(src_contents_list) != self.buffer.get_line_count():
-            src_contents_list.append('')
+            src_contents_list.append("")
 
-        diff = difflib.unified_diff(self.file_contents_list,
-                                    src_contents_list, n=0)
+        diff = difflib.unified_diff(
+            self.file_contents_list, src_contents_list, n=0
+        )
 
         # Skip the first 2 lines: ---, +++
         try:
@@ -223,14 +226,14 @@ class GitViewActivatable(GObject.Object, Bedit.ViewActivatable):
 
         file_context = {}
         for line_data in diff:
-            if line_data[0] == '@':
+            if line_data[0] == "@":
                 for token in line_data.split():
-                    if token[0] == '+':
-                        hunk_point = int(token.split(',', 1)[0])
+                    if token[0] == "+":
+                        hunk_point = int(token.split(",", 1)[0])
                         line_context = LineContext()
                         break
 
-            elif line_data[0] == '-':
+            elif line_data[0] == "-":
                 if line_context.line_type == DiffType.NONE:
                     line_context.line_type = DiffType.REMOVED
 
@@ -239,7 +242,7 @@ class GitViewActivatable(GObject.Object, Bedit.ViewActivatable):
                 # No hunk point increase
                 file_context[hunk_point] = line_context
 
-            elif line_data[0] == '+':
+            elif line_data[0] == "+":
                 if line_context.line_type == DiffType.NONE:
                     line_context.line_type = DiffType.ADDED
                     file_context[hunk_point] = line_context
@@ -264,5 +267,6 @@ class GitViewActivatable(GObject.Object, Bedit.ViewActivatable):
         self.file_context = file_context
         self.diff_renderer.set_file_context(file_context)
         return False
+
 
 # ex:ts=4:et:

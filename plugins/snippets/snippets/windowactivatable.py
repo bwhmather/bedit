@@ -26,11 +26,14 @@ class Message(Bedit.Message):
     view = GObject.Property(type=Bedit.View)
     iter = GObject.Property(type=Gtk.TextIter)
 
+
 class Activate(Message):
     trigger = GObject.Property(type=str)
 
+
 class ParseAndActivate(Message):
     snippet = GObject.Property(type=str)
+
 
 class WindowActivatable(GObject.Object, Bedit.WindowActivatable, Signals):
     __gtype_name__ = "BeditSnippetsWindowActivatable"
@@ -54,9 +57,9 @@ class WindowActivatable(GObject.Object, Bedit.WindowActivatable, Signals):
         if self.accel_group:
             self.window.add_accel_group(self.accel_group)
 
-        self.connect_signal(self.window,
-                    'active-tab-changed',
-                    self.on_active_tab_changed)
+        self.connect_signal(
+            self.window, "active-tab-changed", self.on_active_tab_changed
+        )
 
         self.do_update_state()
 
@@ -85,15 +88,24 @@ class WindowActivatable(GObject.Object, Bedit.WindowActivatable, Signals):
     def register_messages(self):
         bus = self.window.get_message_bus()
 
-        bus.register(Activate, '/plugins/snippets', 'activate')
-        bus.register(ParseAndActivate, '/plugins/snippets', 'parse-and-activate')
+        bus.register(Activate, "/plugins/snippets", "activate")
+        bus.register(
+            ParseAndActivate, "/plugins/snippets", "parse-and-activate"
+        )
 
         self.signal_ids = set()
 
-        sid = bus.connect('/plugins/snippets', 'activate', self.on_message_activate, None)
+        sid = bus.connect(
+            "/plugins/snippets", "activate", self.on_message_activate, None
+        )
         self.signal_ids.add(sid)
 
-        sid = bus.connect('/plugins/snippets', 'parse-and-activate', self.on_message_parse_and_activate, None)
+        sid = bus.connect(
+            "/plugins/snippets",
+            "parse-and-activate",
+            self.on_message_parse_and_activate,
+            None,
+        )
         self.signal_ids.add(sid)
 
     def unregister_messages(self):
@@ -101,7 +113,7 @@ class WindowActivatable(GObject.Object, Bedit.WindowActivatable, Signals):
         for sid in self.signal_ids:
             bus.disconnect(sid)
         self.signal_ids = set()
-        bus.unregister_all('/plugins/snippets')
+        bus.unregister_all("/plugins/snippets")
 
     def on_message_activate(self, bus, message, userdata):
         view = message.props.view
@@ -117,7 +129,9 @@ class WindowActivatable(GObject.Object, Bedit.WindowActivatable, Signals):
         iter = message.props.iter
 
         if not iter:
-            iter = view.get_buffer().get_iter_at_mark(view.get_buffer().get_insert())
+            iter = view.get_buffer().get_iter_at_mark(
+                view.get_buffer().get_insert()
+            )
 
         controller.run_snippet_trigger(message.props.trigger, (iter, iter))
 
@@ -133,9 +147,11 @@ class WindowActivatable(GObject.Object, Bedit.WindowActivatable, Signals):
             return
 
         iter = message.props.iter
-        
+
         if not iter:
-            iter = view.get_buffer().get_iter_at_mark(view.get_buffer().get_insert())
+            iter = view.get_buffer().get_iter_at_mark(
+                view.get_buffer().get_insert()
+            )
 
         controller.parse_and_run_snippet(message.props.snippet, iter)
 
@@ -143,7 +159,7 @@ class WindowActivatable(GObject.Object, Bedit.WindowActivatable, Signals):
         result = []
 
         for snippet in snippets:
-            if Snippet(snippet)['tag'] == tag:
+            if Snippet(snippet)["tag"] == tag:
                 result.append(snippet)
 
         return result
@@ -164,7 +180,9 @@ class WindowActivatable(GObject.Object, Bedit.WindowActivatable, Signals):
 
         if accelgroup != self.current_language_accel_group:
             if self.current_language_accel_group:
-                self.window.remove_accel_group(self.current_language_accel_group)
+                self.window.remove_accel_group(
+                    self.current_language_accel_group
+                )
 
             if accelgroup:
                 self.window.add_accel_group(accelgroup)
@@ -182,4 +200,3 @@ class WindowActivatable(GObject.Object, Bedit.WindowActivatable, Signals):
                 return controller.accelerator_activate(keyval, mod)
         else:
             return False
-

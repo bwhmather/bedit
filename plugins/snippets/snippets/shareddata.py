@@ -23,6 +23,7 @@ from gi.repository import Gtk
 # To register the BeditSnippetsManager type
 from .manager import Manager
 
+
 class SharedData(object, metaclass=Singleton):
     def __init__(self):
         self.dlg = None
@@ -32,7 +33,7 @@ class SharedData(object, metaclass=Singleton):
 
     def register_controller(self, view, controller):
         self.controller_registry[view] = controller
-    
+
     def unregister_controller(self, view, controller):
         if self.controller_registry[view] == controller:
             del self.controller_registry[view]
@@ -69,13 +70,15 @@ class SharedData(object, metaclass=Singleton):
     def show_manager(self, window, datadir):
         if not self.dlg:
             builder = Gtk.Builder()
-            builder.add_from_file(os.path.join(datadir, 'ui', 'snippets.ui'))
+            builder.add_from_file(os.path.join(datadir, "ui", "snippets.ui"))
 
-            self.dlg = builder.get_object('snippets_manager')
-            self.dlg.connect('destroy', self.manager_destroyed)
+            self.dlg = builder.get_object("snippets_manager")
+            self.dlg.connect("destroy", self.manager_destroyed)
 
             if self.dlg_default_size:
-                self.dlg.set_default_size(self.dlg_default_size[0], self.dlg_default_size[1])
+                self.dlg.set_default_size(
+                    self.dlg_default_size[0], self.dlg_default_size[1]
+                )
 
         self.dlg.set_transient_for(window)
         self.dlg.present()

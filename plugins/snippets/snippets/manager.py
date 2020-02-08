@@ -30,11 +30,13 @@ from .languagemanager import get_language_manager
 
 try:
     import gettext
-    gettext.bindtextdomain('bedit')
-    gettext.textdomain('bedit')
+
+    gettext.bindtextdomain("bedit")
+    gettext.textdomain("bedit")
     _ = gettext.gettext
 except:
     _ = lambda s: s
+
 
 class Manager(Gtk.Window, Gtk.Buildable):
     NAME_COLUMN = 0
@@ -46,8 +48,8 @@ class Manager(Gtk.Window, Gtk.Buildable):
     __gtype_name__ = "BeditSnippetsManager"
 
     model = None
-    drag_icons = ('gnome-mime-application-x-tarz', 'gnome-package', 'package')
-    default_export_name = _('Snippets archive') + '.tar.gz'
+    drag_icons = ("gnome-mime-application-x-tarz", "gnome-package", "package")
+    default_export_name = _("Snippets archive") + ".tar.gz"
     dragging = False
 
     def __init__(self):
@@ -57,12 +59,14 @@ class Manager(Gtk.Window, Gtk.Buildable):
 
         self.key_press_id = 0
         self.dnd_target_list = Gtk.TargetList.new([])
-        self.dnd_target_list.add(Gdk.atom_intern("text/uri-list", True), 0, self.TARGET_URI)
+        self.dnd_target_list.add(
+            Gdk.atom_intern("text/uri-list", True), 0, self.TARGET_URI
+        )
 
     def get_final_size(self):
         return self._size
 
-    def get_language_snippets(self, path, name = None):
+    def get_language_snippets(self, path, name=None):
         library = Library()
 
         name = self.get_language(path)
@@ -71,8 +75,9 @@ class Manager(Gtk.Window, Gtk.Buildable):
         return nodes
 
     def add_new_snippet_node(self, parent):
-        return self.model.append(parent, ('<i>' + _('Add a new snippet…') + \
-                '</i>', '', None, None))
+        return self.model.append(
+            parent, ("<i>" + _("Add a new snippet…") + "</i>", "", None, None)
+        )
 
     def fill_language(self, piter, expand=True):
         # Remove all children
@@ -97,7 +102,7 @@ class Manager(Gtk.Window, Gtk.Buildable):
         if expand:
             self.tree_view.expand_row(path, False)
 
-    def build_model(self, force_reload = False):
+    def build_model(self, force_reload=False):
         window = Gio.Application.get_default().get_active_window()
         if window:
             view = window.get_active_view()
@@ -109,22 +114,26 @@ class Manager(Gtk.Window, Gtk.Buildable):
         else:
             current_lang = None
 
-        tree_view = self['tree_view_snippets']
+        tree_view = self["tree_view_snippets"]
         expand = None
 
         if not self.model or force_reload:
             self.model = Gtk.TreeStore(str, str, GObject.Object, object)
-            self.model.set_sort_column_id(self.SORT_COLUMN, Gtk.SortType.ASCENDING)
+            self.model.set_sort_column_id(
+                self.SORT_COLUMN, Gtk.SortType.ASCENDING
+            )
 
             manager = get_language_manager()
 
-            langs = [manager.get_language(x) for x in manager.get_language_ids()]
+            langs = [
+                manager.get_language(x) for x in manager.get_language_ids()
+            ]
             langs.sort(key=lambda x: x.get_name())
 
-            piter = self.model.append(None, (_('Global'), '', None, None))
+            piter = self.model.append(None, (_("Global"), "", None, None))
 
             # Add dummy node
-            self.model.append(piter, ('', '', None, None))
+            self.model.append(piter, ("", "", None, None))
 
             nm = None
 
@@ -136,9 +145,9 @@ class Manager(Gtk.Window, Gtk.Buildable):
                 parent = self.model.append(None, (name, name, lang, None))
 
                 # Add dummy node
-                self.model.append(parent, ('', '', None, None))
+                self.model.append(parent, ("", "", None, None))
 
-                if (nm == name):
+                if nm == name:
                     expand = parent
         else:
             if current_lang:
@@ -146,12 +155,11 @@ class Manager(Gtk.Window, Gtk.Buildable):
                 nm = current_lang.get_name()
 
                 while piter:
-                    lang = self.model.get_value(piter, \
-                            self.SORT_COLUMN)
+                    lang = self.model.get_value(piter, self.SORT_COLUMN)
 
                     if lang == nm:
                         expand = piter
-                        break;
+                        break
 
                     piter = self.model.iter_next(piter)
 
@@ -167,19 +175,21 @@ class Manager(Gtk.Window, Gtk.Buildable):
         snippet = model.get_value(iter, self.SNIPPET_COLUMN)
 
         if snippet and not snippet.valid:
-            cell.set_property('icon-name', 'dialog-error')
+            cell.set_property("icon-name", "dialog-error")
         else:
-            cell.set_property('icon-name', None)
+            cell.set_property("icon-name", None)
 
-        cell.set_property('xalign', 1.0)
+        cell.set_property("xalign", 1.0)
 
     def get_cell_data_cb(self, column, cell, model, iter, data):
         snippet = model.get_value(iter, self.SNIPPET_COLUMN)
 
-        cell.set_property('editable', snippet != None)
-        cell.set_property('markup', model.get_value(iter, self.NAME_COLUMN))
+        cell.set_property("editable", snippet != None)
+        cell.set_property("markup", model.get_value(iter, self.NAME_COLUMN))
 
-    def on_tree_view_drag_data_get(self, widget, context, selection_data, info, time):
+    def on_tree_view_drag_data_get(
+        self, widget, context, selection_data, info, time
+    ):
         gfile = Gio.file_new_for_path(self._temp_export)
         selection_data.set_uris([gfile.get_uri()])
 
@@ -187,8 +197,8 @@ class Manager(Gtk.Window, Gtk.Buildable):
         self.dragging = True
 
         if self._temp_export:
-              shutil.rmtree(os.path.dirname(self._temp_export))
-              self._temp_export = None
+            shutil.rmtree(os.path.dirname(self._temp_export))
+            self._temp_export = None
 
         if self.dnd_name:
             Gtk.drag_set_icon_name(context, self.dnd_name, 0, 0)
@@ -203,7 +213,9 @@ class Manager(Gtk.Window, Gtk.Buildable):
     def on_tree_view_drag_end(self, widget, context):
         self.dragging = False
 
-    def on_tree_view_drag_data_received(self, widget, context, x, y, selection, info, timestamp):
+    def on_tree_view_drag_data_received(
+        self, widget, context, x, y, selection, info, timestamp
+    ):
         uris = selection.get_uris()
 
         files = [Gio.file_new_for_uri(u) for u in uris]
@@ -226,8 +238,8 @@ class Manager(Gtk.Window, Gtk.Buildable):
         else:
             for act in context.actions:
                 if act == Gdk.DragAction.COPY:
-                      action = Gdk.DragAction.COPY
-                      break
+                    action = Gdk.DragAction.COPY
+                    break
 
         if action == Gdk.DragAction.COPY:
             context.drag_status(Gdk.DragAction.COPY, timestamp)
@@ -239,20 +251,27 @@ class Manager(Gtk.Window, Gtk.Buildable):
         tv = self.tree_view
 
         # Set it as a drag source for exporting snippets
-        tv.drag_source_set(Gdk.ModifierType.BUTTON1_MASK, [], Gdk.DragAction.DEFAULT | Gdk.DragAction.COPY)
+        tv.drag_source_set(
+            Gdk.ModifierType.BUTTON1_MASK,
+            [],
+            Gdk.DragAction.DEFAULT | Gdk.DragAction.COPY,
+        )
         tv.drag_source_set_target_list(self.dnd_target_list)
 
         # Set it as a drag destination for importing snippets
-        tv.drag_dest_set(Gtk.DestDefaults.HIGHLIGHT | Gtk.DestDefaults.DROP,
-                 [], Gdk.DragAction.DEFAULT | Gdk.DragAction.COPY)
+        tv.drag_dest_set(
+            Gtk.DestDefaults.HIGHLIGHT | Gtk.DestDefaults.DROP,
+            [],
+            Gdk.DragAction.DEFAULT | Gdk.DragAction.COPY,
+        )
 
         tv.drag_dest_set_target_list(self.dnd_target_list)
 
-        tv.connect('drag_data_get', self.on_tree_view_drag_data_get)
-        tv.connect('drag_begin', self.on_tree_view_drag_begin)
-        tv.connect('drag_end', self.on_tree_view_drag_end)
-        tv.connect('drag_data_received', self.on_tree_view_drag_data_received)
-        tv.connect('drag_motion', self.on_tree_view_drag_motion)
+        tv.connect("drag_data_get", self.on_tree_view_drag_data_get)
+        tv.connect("drag_begin", self.on_tree_view_drag_begin)
+        tv.connect("drag_end", self.on_tree_view_drag_end)
+        tv.connect("drag_data_received", self.on_tree_view_drag_data_received)
+        tv.connect("drag_motion", self.on_tree_view_drag_motion)
 
         theme = Gtk.IconTheme.get_for_screen(tv.get_screen())
 
@@ -265,26 +284,30 @@ class Manager(Gtk.Window, Gtk.Buildable):
                 break
 
     def build_tree_view(self):
-        self.tree_view = self['tree_view_snippets']
+        self.tree_view = self["tree_view_snippets"]
 
         self.column = Gtk.TreeViewColumn(None)
 
         self.renderer = Gtk.CellRendererText()
         self.column.pack_start(self.renderer, False)
-        self.column.set_cell_data_func(self.renderer, self.get_cell_data_cb, None)
+        self.column.set_cell_data_func(
+            self.renderer, self.get_cell_data_cb, None
+        )
 
         renderer = Gtk.CellRendererPixbuf()
         self.column.pack_start(renderer, True)
-        self.column.set_cell_data_func(renderer, self.get_cell_data_pixbuf_cb, None)
+        self.column.set_cell_data_func(
+            renderer, self.get_cell_data_pixbuf_cb, None
+        )
 
         self.tree_view.append_column(self.column)
 
-        self.renderer.connect('edited', self.on_cell_edited)
-        self.renderer.connect('editing-started', self.on_cell_editing_started)
+        self.renderer.connect("edited", self.on_cell_edited)
+        self.renderer.connect("editing-started", self.on_cell_editing_started)
 
         selection = self.tree_view.get_selection()
         selection.set_mode(Gtk.SelectionMode.MULTIPLE)
-        selection.connect('changed', self.on_tree_view_selection_changed)
+        selection.connect("changed", self.on_tree_view_selection_changed)
 
         self.build_dnd()
 
@@ -292,18 +315,19 @@ class Manager(Gtk.Window, Gtk.Buildable):
         self.builder = builder
 
         handlers_dic = {
-            'on_add_snippet_button_clicked': self.on_add_snippet_button_clicked,
-            'on_remove_snippet_button_clicked': self.on_remove_snippet_button_clicked,
-            'on_import_snippets_button_clicked': self.on_import_snippets_button_clicked,
-            'on_export_snippets_button_clicked': self.on_export_snippets_button_clicked,
-            'on_entry_tab_trigger_focus_out': self.on_entry_tab_trigger_focus_out,
-            'on_entry_tab_trigger_changed': self.on_entry_tab_trigger_changed,
-            'on_entry_accelerator_focus_out': self.on_entry_accelerator_focus_out,
-            'on_entry_accelerator_focus_in': self.on_entry_accelerator_focus_in,
-            'on_entry_accelerator_key_press': self.on_entry_accelerator_key_press,
-            'on_source_view_snippet_focus_out': self.on_source_view_snippet_focus_out,
-            'on_tree_view_snippets_row_expanded': self.on_tree_view_snippets_row_expanded,
-            'on_tree_view_snippets_key_press': self.on_tree_view_snippets_key_press}
+            "on_add_snippet_button_clicked": self.on_add_snippet_button_clicked,
+            "on_remove_snippet_button_clicked": self.on_remove_snippet_button_clicked,
+            "on_import_snippets_button_clicked": self.on_import_snippets_button_clicked,
+            "on_export_snippets_button_clicked": self.on_export_snippets_button_clicked,
+            "on_entry_tab_trigger_focus_out": self.on_entry_tab_trigger_focus_out,
+            "on_entry_tab_trigger_changed": self.on_entry_tab_trigger_changed,
+            "on_entry_accelerator_focus_out": self.on_entry_accelerator_focus_out,
+            "on_entry_accelerator_focus_in": self.on_entry_accelerator_focus_in,
+            "on_entry_accelerator_key_press": self.on_entry_accelerator_key_press,
+            "on_source_view_snippet_focus_out": self.on_source_view_snippet_focus_out,
+            "on_tree_view_snippets_row_expanded": self.on_tree_view_snippets_row_expanded,
+            "on_tree_view_snippets_key_press": self.on_tree_view_snippets_key_press,
+        }
 
         self.builder.connect_signals(handlers_dic)
 
@@ -311,25 +335,28 @@ class Manager(Gtk.Window, Gtk.Buildable):
         self.build_model()
 
         # join treeview and toolbar
-        context = self['scrolled_window_snippets'].get_style_context()
+        context = self["scrolled_window_snippets"].get_style_context()
         context.set_junction_sides(Gtk.JunctionSides.BOTTOM)
-        context = self['toolbar'].get_style_context()
+        context = self["toolbar"].get_style_context()
         context.set_junction_sides(Gtk.JunctionSides.TOP)
         context.set_junction_sides(Gtk.JunctionSides.BOTTOM)
 
-        source_view = self['source_view_snippet']
+        source_view = self["source_view_snippet"]
         manager = get_language_manager()
-        lang = manager.get_language('snippets')
+        lang = manager.get_language("snippets")
 
         if lang:
             source_view.get_buffer().set_highlight_syntax(True)
             source_view.get_buffer().set_language(lang)
 
-        combo = self['combo_drop_targets']
+        combo = self["combo_drop_targets"]
 
         entry = combo.get_child()
-        entry.connect('focus-out-event', self.on_entry_drop_targets_focus_out)
-        entry.connect('drag-data-received', self.on_entry_drop_targets_drag_data_received)
+        entry.connect("focus-out-event", self.on_entry_drop_targets_focus_out)
+        entry.connect(
+            "drag-data-received",
+            self.on_entry_drop_targets_drag_data_received,
+        )
 
         lst = entry.drag_dest_get_target_list()
         lst.add_uri_targets(self.TARGET_URI)
@@ -353,7 +380,7 @@ class Manager(Gtk.Window, Gtk.Buildable):
         lang = self.model.get_value(child, self.LANG_COLUMN)
         snippet = self.model.get_value(child, self.SNIPPET_COLUMN)
 
-        return (lang or snippet or nm)
+        return lang or snippet or nm
 
     def fill_if_needed(self, piter, expand=True):
         if not self.is_filled(piter):
@@ -363,7 +390,7 @@ class Manager(Gtk.Window, Gtk.Buildable):
         self.fill_if_needed(parent)
         piter = self.model.iter_children(parent)
 
-        while (piter):
+        while piter:
             sn = self.model.get_value(piter, self.SNIPPET_COLUMN)
 
             if sn == snippet.data:
@@ -397,28 +424,28 @@ class Manager(Gtk.Window, Gtk.Buildable):
         return (override, remove, system)
 
     def update_toolbar_buttons(self):
-        button_add = self['add_snippet_button']
-        button_remove = self['remove_snippet_button']
+        button_add = self["add_snippet_button"]
+        button_remove = self["remove_snippet_button"]
 
         button_add.set_sensitive(self.language_path != None)
         override, remove, system = self.selected_snippets_state()
 
         if not (override ^ remove) or system:
             button_remove.set_sensitive(False)
-            button_remove.set_icon_name('list-remove-symbolic')
+            button_remove.set_icon_name("list-remove-symbolic")
         else:
             button_remove.set_sensitive(True)
 
             if override:
-                button_remove.set_icon_name('edit-undo-symbolic')
-                tooltip = _('Revert selected snippet')
+                button_remove.set_icon_name("edit-undo-symbolic")
+                tooltip = _("Revert selected snippet")
             else:
-                button_remove.set_icon_name('list-remove-symbolic')
-                tooltip = _('Delete selected snippet')
+                button_remove.set_icon_name("list-remove-symbolic")
+                tooltip = _("Delete selected snippet")
 
             button_remove.set_tooltip_text(tooltip)
 
-    def snippet_changed(self, piter = None):
+    def snippet_changed(self, piter=None):
         if piter:
             node = self.model.get_value(piter, self.SNIPPET_COLUMN)
             s = Snippet(node)
@@ -437,7 +464,7 @@ class Manager(Gtk.Window, Gtk.Buildable):
         return piter
 
     def add_snippet(self, parent, snippet):
-        piter = self.model.append(parent, ('', '', None, snippet))
+        piter = self.model.append(parent, ("", "", None, snippet))
 
         return self.snippet_changed(piter)
 
@@ -515,32 +542,39 @@ class Manager(Gtk.Window, Gtk.Buildable):
         if not self.snippet:
             sens = False
 
-            self['entry_tab_trigger'].set_text('')
-            self['entry_accelerator'].set_text('')
-            buf = self['source_view_snippet'].get_buffer()
+            self["entry_tab_trigger"].set_text("")
+            self["entry_accelerator"].set_text("")
+            buf = self["source_view_snippet"].get_buffer()
             buf.begin_not_undoable_action()
-            buf.set_text('')
+            buf.set_text("")
             buf.end_not_undoable_action()
-            self['combo_drop_targets'].get_child().set_text('')
+            self["combo_drop_targets"].get_child().set_text("")
 
         else:
             sens = True
 
-            self['entry_tab_trigger'].set_text(self.snippet['tag'])
-            self['entry_accelerator'].set_text( \
-                    self.snippet.accelerator_display())
-            self['combo_drop_targets'].get_child().set_text(', '.join(self.snippet['drop-targets']))
+            self["entry_tab_trigger"].set_text(self.snippet["tag"])
+            self["entry_accelerator"].set_text(
+                self.snippet.accelerator_display()
+            )
+            self["combo_drop_targets"].get_child().set_text(
+                ", ".join(self.snippet["drop-targets"])
+            )
 
-            buf = self['source_view_snippet'].get_buffer()
+            buf = self["source_view_snippet"].get_buffer()
             buf.begin_not_undoable_action()
-            buf.set_text(self.snippet['text'])
+            buf.set_text(self.snippet["text"])
             buf.end_not_undoable_action()
 
-
-        for name in ['source_view_snippet', 'label_tab_trigger',
-                'entry_tab_trigger', 'label_accelerator',
-                'entry_accelerator', 'label_drop_targets',
-                'combo_drop_targets']:
+        for name in [
+            "source_view_snippet",
+            "label_tab_trigger",
+            "entry_tab_trigger",
+            "label_accelerator",
+            "entry_accelerator",
+            "label_drop_targets",
+            "combo_drop_targets",
+        ]:
             self[name].set_sensitive(sens)
 
         self.update_toolbar_buttons()
@@ -553,21 +587,25 @@ class Manager(Gtk.Window, Gtk.Buildable):
 
         selection.select_iter(piter)
 
-        self.tree_view.scroll_to_cell(self.model.get_path(piter), None, \
-            True, 0.5, 0.5)
+        self.tree_view.scroll_to_cell(
+            self.model.get_path(piter), None, True, 0.5, 0.5
+        )
 
     def get_language(self, path):
         if path.get_indices()[0] == 0:
             return None
         else:
-            return self.model.get_value(self.model.get_iter(path),
-                            self.LANG_COLUMN).get_id()
+            return self.model.get_value(
+                self.model.get_iter(path), self.LANG_COLUMN
+            ).get_id()
 
     def new_snippet(self, properties=None):
         if not self.language_path:
             return None
 
-        snippet = Library().new_snippet(self.get_language(self.language_path), properties)
+        snippet = Library().new_snippet(
+            self.get_language(self.language_path), properties
+        )
 
         return Snippet(snippet)
 
@@ -604,8 +642,8 @@ class Manager(Gtk.Window, Gtk.Buildable):
 
         # Remove temporary drag export
         if self._temp_export:
-              shutil.rmtree(os.path.dirname(self._temp_export))
-              self._temp_export = None
+            shutil.rmtree(os.path.dirname(self._temp_export))
+            self._temp_export = None
 
         self.unref_languages()
         self.snippet = None
@@ -619,15 +657,15 @@ class Manager(Gtk.Window, Gtk.Buildable):
             editable.remove_widget()
         elif isinstance(editable, Gtk.Entry):
             if self.snippet:
-                editable.set_text(self.snippet['description'])
+                editable.set_text(self.snippet["description"])
             else:
                 # This is the `Add a new snippet...` item
-                editable.set_text('')
+                editable.set_text("")
 
             editable.grab_focus()
 
     def on_cell_edited(self, cell, path, new_text):
-        if new_text != '':
+        if new_text != "":
             piter = self.model.get_iter(path)
             node = self.model.get_value(piter, self.SNIPPET_COLUMN)
 
@@ -637,16 +675,18 @@ class Manager(Gtk.Window, Gtk.Buildable):
                 else:
                     s = Snippet(node)
 
-                s['description'] = new_text
+                s["description"] = new_text
                 self.snippet_changed(piter)
                 self.select_iter(piter)
             else:
                 # This is the `Add a new snippet...` item
                 # We create a new snippet
-                snippet = self.new_snippet({'description': new_text})
+                snippet = self.new_snippet({"description": new_text})
 
                 if snippet:
-                    self.model.set_value(piter, self.SNIPPET_COLUMN, snippet.data)
+                    self.model.set_value(
+                        piter, self.SNIPPET_COLUMN, snippet.data
+                    )
                     self.snippet_changed(piter)
                     self.snippet = snippet
                     self.selection_changed()
@@ -658,23 +698,29 @@ class Manager(Gtk.Window, Gtk.Buildable):
         entry.set_text(self.snippet.accelerator_display())
 
     def entry_tab_trigger_update_valid(self):
-        entry = self['entry_tab_trigger']
+        entry = self["entry_tab_trigger"]
         text = entry.get_text()
 
         if text and not Library().valid_tab_trigger(text):
-            img = self['image_tab_trigger']
-            img.set_from_icon_name('dialog-error', Gtk.IconSize.BUTTON)
+            img = self["image_tab_trigger"]
+            img.set_from_icon_name("dialog-error", Gtk.IconSize.BUTTON)
             img.show()
 
-            #self['hbox_tab_trigger'].set_spacing(3)
-            tip = _('This is not a valid Tab trigger. Triggers can either contain alphanumeric characters (or _, : and .) or a single (non-alphanumeric) character like: {, [, etc.')
+            # self['hbox_tab_trigger'].set_spacing(3)
+            tip = _(
+                "This is not a valid Tab trigger. Triggers can either contain alphanumeric characters (or _, : and .) or a single (non-alphanumeric) character like: {, [, etc."
+            )
 
             entry.set_tooltip_text(tip)
             img.set_tooltip_text(tip)
         else:
-            self['image_tab_trigger'].hide()
-            #self['hbox_tab_trigger'].set_spacing(0)
-            entry.set_tooltip_text(_('Single word the snippet is activated with after pressing Tab'))
+            self["image_tab_trigger"].hide()
+            # self['hbox_tab_trigger'].set_spacing(0)
+            entry.set_tooltip_text(
+                _(
+                    "Single word the snippet is activated with after pressing Tab"
+                )
+            )
 
         return False
 
@@ -685,7 +731,7 @@ class Manager(Gtk.Window, Gtk.Buildable):
         text = entry.get_text()
 
         # save tag
-        self.snippet['tag'] = text
+        self.snippet["tag"] = text
         self.snippet_changed()
 
     def on_entry_drop_targets_focus_out(self, entry, event):
@@ -695,7 +741,7 @@ class Manager(Gtk.Window, Gtk.Buildable):
         text = entry.get_text()
 
         # save drop targets
-        self.snippet['drop-targets'] = text
+        self.snippet["drop-targets"] = text
         self.snippet_changed()
 
     def on_entry_tab_trigger_changed(self, entry):
@@ -706,10 +752,9 @@ class Manager(Gtk.Window, Gtk.Buildable):
             return
 
         buf = source_view.get_buffer()
-        text = buf.get_text(buf.get_start_iter(), \
-               buf.get_end_iter(), False)
+        text = buf.get_text(buf.get_start_iter(), buf.get_end_iter(), False)
 
-        self.snippet['text'] = text
+        self.snippet["text"] = text
         self.snippet_changed()
 
     def on_add_snippet_button_clicked(self, button):
@@ -753,7 +798,7 @@ class Manager(Gtk.Window, Gtk.Buildable):
         success = True
 
         for gfile in files:
-            if not gfile.has_uri_scheme('file'):
+            if not gfile.has_uri_scheme("file"):
                 continue
 
             # Remove file://
@@ -763,18 +808,28 @@ class Manager(Gtk.Window, Gtk.Buildable):
             error = importer.run()
 
             if error:
-                message = _('The following error occurred while importing: %s') % error
+                message = (
+                    _("The following error occurred while importing: %s")
+                    % error
+                )
                 success = False
-                helper.message_dialog(self.get_toplevel(), Gtk.MessageType.ERROR, message)
+                helper.message_dialog(
+                    self.get_toplevel(), Gtk.MessageType.ERROR, message
+                )
 
         self.build_model(True)
 
         if success:
-            message = _('Import successfully completed')
-            helper.message_dialog(self.get_toplevel(), Gtk.MessageType.INFO, message)
+            message = _("Import successfully completed")
+            helper.message_dialog(
+                self.get_toplevel(), Gtk.MessageType.INFO, message
+            )
 
     def on_import_response(self, dialog, response):
-        if response == Gtk.ResponseType.CANCEL or response == Gtk.ResponseType.CLOSE:
+        if (
+            response == Gtk.ResponseType.CANCEL
+            or response == Gtk.ResponseType.CLOSE
+        ):
             dialog.destroy()
             return
 
@@ -784,18 +839,36 @@ class Manager(Gtk.Window, Gtk.Buildable):
         self.import_snippets(f)
 
     def on_import_snippets_button_clicked(self, button):
-        dlg = Gtk.FileChooserDialog(parent=self.get_toplevel(), title=_("Import snippets"),
-                action=Gtk.FileChooserAction.OPEN,
-                buttons=(_("_Cancel"), Gtk.ResponseType.CANCEL,
-                     _("_Open"), Gtk.ResponseType.OK))
+        dlg = Gtk.FileChooserDialog(
+            parent=self.get_toplevel(),
+            title=_("Import snippets"),
+            action=Gtk.FileChooserAction.OPEN,
+            buttons=(
+                _("_Cancel"),
+                Gtk.ResponseType.CANCEL,
+                _("_Open"),
+                Gtk.ResponseType.OK,
+            ),
+        )
 
-        dlg.add_filter(self.file_filter(_('All supported archives'), ('*.gz','*.bz2','*.tar', '*.xml')))
-        dlg.add_filter(self.file_filter(_('Gzip compressed archive'), ('*.tar.gz',)))
-        dlg.add_filter(self.file_filter(_('Bzip2 compressed archive'), ('*.tar.bz2',)))
-        dlg.add_filter(self.file_filter(_('Single snippets file'), ('*.xml',)))
-        dlg.add_filter(self.file_filter(_('All files'), '*'))
+        dlg.add_filter(
+            self.file_filter(
+                _("All supported archives"),
+                ("*.gz", "*.bz2", "*.tar", "*.xml"),
+            )
+        )
+        dlg.add_filter(
+            self.file_filter(_("Gzip compressed archive"), ("*.tar.gz",))
+        )
+        dlg.add_filter(
+            self.file_filter(_("Bzip2 compressed archive"), ("*.tar.bz2",))
+        )
+        dlg.add_filter(
+            self.file_filter(_("Single snippets file"), ("*.xml",))
+        )
+        dlg.add_filter(self.file_filter(_("All files"), "*"))
 
-        dlg.connect('response', self.on_import_response)
+        dlg.connect("response", self.on_import_response)
         dlg.set_local_only(True)
 
         dlg.show()
@@ -805,11 +878,13 @@ class Manager(Gtk.Window, Gtk.Buildable):
         error = export.run()
 
         if error:
-            message = _('The following error occurred while exporting: %s') % error
+            message = (
+                _("The following error occurred while exporting: %s") % error
+            )
             msgtype = Gtk.MessageType.ERROR
             retval = False
         else:
-            message = _('Export successfully completed')
+            message = _("Export successfully completed")
             msgtype = Gtk.MessageType.INFO
             retval = True
 
@@ -827,7 +902,7 @@ class Manager(Gtk.Window, Gtk.Buildable):
         if response != Gtk.ResponseType.OK:
             return
 
-        self.export_snippets_real(filename, snippets);
+        self.export_snippets_real(filename, snippets)
 
     def export_snippets(self, filename=None, show_dialogs=True):
         snippets = self.selected_snippets()
@@ -849,12 +924,16 @@ class Manager(Gtk.Window, Gtk.Buildable):
 
         if len(systemsnippets) != 0 and show_dialogs:
             # Ask if system snippets should also be exported
-            message = _('Do you want to include selected <b>system</b> snippets in your export?')
-            mes = Gtk.MessageDialog(flags=Gtk.DialogFlags.MODAL,
-                    type=Gtk.MessageType.QUESTION,
-                    buttons=Gtk.ButtonsType.YES_NO,
-                    message_format=message)
-            mes.set_property('use-markup', True)
+            message = _(
+                "Do you want to include selected <b>system</b> snippets in your export?"
+            )
+            mes = Gtk.MessageDialog(
+                flags=Gtk.DialogFlags.MODAL,
+                type=Gtk.MessageType.QUESTION,
+                buttons=Gtk.ButtonsType.YES_NO,
+                message_format=message,
+            )
+            mes.set_property("use-markup", True)
             resp = mes.run()
             mes.destroy()
 
@@ -864,32 +943,53 @@ class Manager(Gtk.Window, Gtk.Buildable):
                 return False
 
         if len(export_snippets) == 0 and show_dialogs:
-            message = _('There are no snippets selected to be exported')
-            helper.message_dialog(self.get_toplevel(), Gtk.MessageType.QUESTION, message)
+            message = _("There are no snippets selected to be exported")
+            helper.message_dialog(
+                self.get_toplevel(), Gtk.MessageType.QUESTION, message
+            )
             return False
 
         if not filename:
-            dlg = Gtk.FileChooserDialog(parent=self.get_toplevel(), title=_('Export snippets'),
-                    action=Gtk.FileChooserAction.SAVE,
-                    buttons=(_("_Cancel"), Gtk.ResponseType.CANCEL,
-                         _("_Save"), Gtk.ResponseType.OK))
+            dlg = Gtk.FileChooserDialog(
+                parent=self.get_toplevel(),
+                title=_("Export snippets"),
+                action=Gtk.FileChooserAction.SAVE,
+                buttons=(
+                    _("_Cancel"),
+                    Gtk.ResponseType.CANCEL,
+                    _("_Save"),
+                    Gtk.ResponseType.OK,
+                ),
+            )
 
             dlg._export_snippets = export_snippets
-            dlg.add_filter(self.file_filter(_('All supported archives'), ('*.gz','*.bz2','*.tar')))
-            dlg.add_filter(self.file_filter(_('Gzip compressed archive'), ('*.tar.gz',)))
-            dlg.add_filter(self.file_filter(_('Bzip2 compressed archive'), ('*.tar.bz2',)))
+            dlg.add_filter(
+                self.file_filter(
+                    _("All supported archives"), ("*.gz", "*.bz2", "*.tar")
+                )
+            )
+            dlg.add_filter(
+                self.file_filter(_("Gzip compressed archive"), ("*.tar.gz",))
+            )
+            dlg.add_filter(
+                self.file_filter(
+                    _("Bzip2 compressed archive"), ("*.tar.bz2",)
+                )
+            )
 
-            dlg.add_filter(self.file_filter(_('All files'), '*'))
+            dlg.add_filter(self.file_filter(_("All files"), "*"))
             dlg.set_do_overwrite_confirmation(True)
             dlg.set_current_name(self.default_export_name)
 
-            dlg.connect('response', self.on_export_response)
+            dlg.connect("response", self.on_export_response)
             dlg.set_local_only(True)
 
             dlg.show()
             return True
         else:
-            return self.export_snippets_real(filename, export_snippets, show_dialogs)
+            return self.export_snippets_real(
+                filename, export_snippets, show_dialogs
+            )
 
     def on_export_snippets_button_clicked(self, button):
         snippets = self.selected_snippets()
@@ -907,21 +1007,32 @@ class Manager(Gtk.Window, Gtk.Buildable):
             else:
                 systemsnippets.append(snippet)
 
-        dlg = Gtk.FileChooserDialog(parent=self.get_toplevel(), title=_('Export snippets'),
-                action=Gtk.FileChooserAction.SAVE,
-                buttons=(_('_Cancel'), Gtk.ResponseType.CANCEL,
-                     _('_Save'), Gtk.ResponseType.OK))
+        dlg = Gtk.FileChooserDialog(
+            parent=self.get_toplevel(),
+            title=_("Export snippets"),
+            action=Gtk.FileChooserAction.SAVE,
+            buttons=(
+                _("_Cancel"),
+                Gtk.ResponseType.CANCEL,
+                _("_Save"),
+                Gtk.ResponseType.OK,
+            ),
+        )
 
         dlg._export_snippets = snippets
 
         if len(systemsnippets) != 0:
             # Ask if system snippets should also be exported
-            message = _('Do you want to include selected <b>system</b> snippets in your export?')
-            mes = Gtk.MessageDialog(flags=Gtk.DialogFlags.MODAL,
-                    type=Gtk.MessageType.QUESTION,
-                    buttons=Gtk.ButtonsType.YES_NO,
-                    message_format=message)
-            mes.set_property('use-markup', True)
+            message = _(
+                "Do you want to include selected <b>system</b> snippets in your export?"
+            )
+            mes = Gtk.MessageDialog(
+                flags=Gtk.DialogFlags.MODAL,
+                type=Gtk.MessageType.QUESTION,
+                buttons=Gtk.ButtonsType.YES_NO,
+                message_format=message,
+            )
+            mes.set_property("use-markup", True)
             resp = mes.run()
             mes.destroy()
 
@@ -934,19 +1045,29 @@ class Manager(Gtk.Window, Gtk.Buildable):
         if len(dlg._export_snippets) == 0:
             dlg.destroy()
 
-            message = _('There are no snippets selected to be exported')
-            helper.message_dialog(self.get_toplevel(), Gtk.MessageType.QUESTION, message)
+            message = _("There are no snippets selected to be exported")
+            helper.message_dialog(
+                self.get_toplevel(), Gtk.MessageType.QUESTION, message
+            )
             return
 
-        dlg.add_filter(self.file_filter(_('All supported archives'), ('*.gz','*.bz2','*.tar')))
-        dlg.add_filter(self.file_filter(_('Gzip compressed archive'), ('*.tar.gz',)))
-        dlg.add_filter(self.file_filter(_('Bzip2 compressed archive'), ('*.tar.bz2',)))
+        dlg.add_filter(
+            self.file_filter(
+                _("All supported archives"), ("*.gz", "*.bz2", "*.tar")
+            )
+        )
+        dlg.add_filter(
+            self.file_filter(_("Gzip compressed archive"), ("*.tar.gz",))
+        )
+        dlg.add_filter(
+            self.file_filter(_("Bzip2 compressed archive"), ("*.tar.bz2",))
+        )
 
-        dlg.add_filter(self.file_filter(_('All files'), '*'))
+        dlg.add_filter(self.file_filter(_("All files"), "*"))
         dlg.set_do_overwrite_confirmation(True)
         dlg.set_current_name(self.default_export_name)
 
-        dlg.connect('response', self.on_export_response)
+        dlg.connect("response", self.on_export_response)
         dlg.set_local_only(True)
 
         dlg.show()
@@ -1013,30 +1134,33 @@ class Manager(Gtk.Window, Gtk.Buildable):
 
     def set_accelerator(self, keyval, mod):
         accelerator = Gtk.accelerator_name(keyval, mod)
-        self.snippet['accelerator'] = accelerator
+        self.snippet["accelerator"] = accelerator
 
         return True
 
     def on_entry_accelerator_key_press(self, entry, event):
-        if event.keyval == Gdk.keyval_from_name('Escape'):
+        if event.keyval == Gdk.keyval_from_name("Escape"):
             # Reset
             entry.set_text(self.snippet.accelerator_display())
             self.tree_view.grab_focus()
 
             return True
-        elif event.keyval == Gdk.keyval_from_name('Delete') or \
-                event.keyval == Gdk.keyval_from_name('BackSpace'):
+        elif event.keyval == Gdk.keyval_from_name(
+            "Delete"
+        ) or event.keyval == Gdk.keyval_from_name("BackSpace"):
             # Remove the accelerator
-            entry.set_text('')
-            self.snippet['accelerator'] = ''
+            entry.set_text("")
+            self.snippet["accelerator"] = ""
             self.tree_view.grab_focus()
 
             self.snippet_changed()
             return True
         elif Library().valid_accelerator(event.keyval, event.get_state()):
             # New accelerator
-            self.set_accelerator(event.keyval, \
-                    event.get_state() & Gtk.accelerator_get_default_mod_mask())
+            self.set_accelerator(
+                event.keyval,
+                event.get_state() & Gtk.accelerator_get_default_mod_mask(),
+            )
             entry.set_text(self.snippet.accelerator_display())
             self.snippet_changed()
             self.tree_view.grab_focus()
@@ -1045,10 +1169,12 @@ class Manager(Gtk.Window, Gtk.Buildable):
             return True
 
     def on_entry_accelerator_focus_in(self, entry, event):
-        if self.snippet['accelerator']:
-            entry.set_text(_('Type a new shortcut, or press Backspace to clear'))
+        if self.snippet["accelerator"]:
+            entry.set_text(
+                _("Type a new shortcut, or press Backspace to clear")
+            )
         else:
-            entry.set_text(_('Type a new shortcut'))
+            entry.set_text(_("Type a new shortcut"))
 
     def update_language_path(self):
         model, paths = self.tree_view.get_selection().get_selected_rows()
@@ -1075,12 +1201,15 @@ class Manager(Gtk.Window, Gtk.Buildable):
         parent, piter, node = self.selected_snippet()
 
         if self.snippet:
-            self.on_entry_tab_trigger_focus_out(self['entry_tab_trigger'],
-                    None)
-            self.on_source_view_snippet_focus_out(self['source_view_snippet'],
-                    None)
-            self.on_entry_drop_targets_focus_out(self['combo_drop_targets'].get_child(),
-                    None)
+            self.on_entry_tab_trigger_focus_out(
+                self["entry_tab_trigger"], None
+            )
+            self.on_source_view_snippet_focus_out(
+                self["source_view_snippet"], None
+            )
+            self.on_entry_drop_targets_focus_out(
+                self["combo_drop_targets"].get_child(), None
+            )
 
         self.update_language_path()
 
@@ -1098,13 +1227,15 @@ class Manager(Gtk.Window, Gtk.Buildable):
         tp = self.model.get_path(target)
         ap = self.model.get_path(after)
 
-        if tp[0] > ap[0] or (tp[0] == ap[0] and (len(ap) == 1 or tp[1] > ap[1])):
+        if tp[0] > ap[0] or (
+            tp[0] == ap[0] and (len(ap) == 1 or tp[1] > ap[1])
+        ):
             return True
 
         return False
 
     def on_tree_view_snippets_key_press(self, treeview, event):
-        if event.keyval == Gdk.keyval_from_name('Delete'):
+        if event.keyval == Gdk.keyval_from_name("Delete"):
             self.on_remove_snippet_button_clicked(None)
             return True
 
@@ -1113,7 +1244,9 @@ class Manager(Gtk.Window, Gtk.Buildable):
         self.fill_if_needed(piter)
         self.select_iter(piter)
 
-    def on_entry_drop_targets_drag_data_received(self, entry, context, x, y, selection_data, info, timestamp):
+    def on_entry_drop_targets_drag_data_received(
+        self, entry, context, x, y, selection_data, info, timestamp
+    ):
         uris = helper.drop_get_uris(selection_data)
         if not uris:
             return
@@ -1134,8 +1267,8 @@ class Manager(Gtk.Window, Gtk.Buildable):
             if mime:
                 mimes.append(mime)
 
-        entry.set_text(', '.join(mimes))
+        entry.set_text(", ".join(mimes))
         self.on_entry_drop_targets_focus_out(entry, None)
         context.finish(True, False, timestamp)
 
-        entry.stop_emission('drag_data_received')
+        entry.stop_emission("drag_data_received")

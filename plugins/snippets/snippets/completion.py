@@ -21,6 +21,7 @@ from .library import Library
 from .languagemanager import get_language_manager
 from .snippet import Snippet
 
+
 class Proposal(GObject.Object, GtkSource.CompletionProposal):
     __gtype_name__ = "BeditSnippetsProposal"
 
@@ -36,7 +37,8 @@ class Proposal(GObject.Object, GtkSource.CompletionProposal):
         return self._snippet.display()
 
     def do_get_info(self):
-        return self._snippet.data['text']
+        return self._snippet.data["text"]
+
 
 class Provider(GObject.Object, GtkSource.CompletionProvider):
     __gtype_name__ = "BeditSnippetsProvider"
@@ -109,7 +111,7 @@ class Provider(GObject.Object, GtkSource.CompletionProvider):
 
         # Filter based on the current word
         if word:
-            proposals = (x for x in proposals if x['tag'].startswith(word))
+            proposals = (x for x in proposals if x["tag"].startswith(word))
 
         return [Proposal(x) for x in proposals]
 
@@ -128,7 +130,7 @@ class Provider(GObject.Object, GtkSource.CompletionProvider):
             view = Bedit.View.new_with_buffer(Bedit.Document())
             manager = get_language_manager()
 
-            lang = manager.get_language('snippets')
+            lang = manager.get_language("snippets")
             view.get_buffer().set_language(lang)
 
             sw = Gtk.ScrolledWindow()
@@ -149,13 +151,16 @@ class Provider(GObject.Object, GtkSource.CompletionProvider):
         buf.set_text(proposal.get_info())
         buf.move_mark(buf.get_insert(), buf.get_start_iter())
         buf.move_mark(buf.get_selection_bound(), buf.get_start_iter())
-        self.info_view.scroll_to_iter(buf.get_start_iter(), 0.0, False, 0.5, 0.5)
+        self.info_view.scroll_to_iter(
+            buf.get_start_iter(), 0.0, False, 0.5, 0.5
+        )
 
     def do_get_icon(self):
         return self.icon
 
     def do_get_activation(self):
         return GtkSource.CompletionActivation.USER_REQUESTED
+
 
 class Defaults(GObject.Object, GtkSource.CompletionProvider):
     __gtype_name__ = "BeditSnippetsDefaultsProvider"
@@ -170,7 +175,9 @@ class Defaults(GObject.Object, GtkSource.CompletionProvider):
         self.proposals = []
 
         for d in defaults:
-            self.proposals.append(GtkSource.CompletionItem.new(d, d, None, None))
+            self.proposals.append(
+                GtkSource.CompletionItem.new(d, d, None, None)
+            )
 
     def do_get_name(self):
         return ""

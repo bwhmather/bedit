@@ -72,7 +72,7 @@ class GitAppActivatable(GObject.Object, Bedit.AppActivatable):
             return repo if allow_git_dir else None
 
         # Doing remote operations is too slow
-        if not location.has_uri_scheme('file'):
+        if not location.has_uri_scheme("file"):
             return None
 
         # Must check every dir, otherwise submodules will have issues
@@ -127,5 +127,6 @@ class GitAppActivatable(GObject.Object, Bedit.AppActivatable):
             return repo if allow_git_dir else None
 
         return repo
+
 
 # ex:ts=4:et:

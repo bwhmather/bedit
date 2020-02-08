@@ -24,11 +24,13 @@ from . import helper
 
 try:
     import gettext
-    gettext.bindtextdomain('bedit')
-    gettext.textdomain('bedit')
+
+    gettext.bindtextdomain("bedit")
+    gettext.textdomain("bedit")
     _ = gettext.gettext
 except:
     _ = lambda s: s
+
 
 class Exporter:
     def __init__(self, filename, snippets):
@@ -48,23 +50,23 @@ class Exporter:
 
     def export_xml(self, dirname, language, snippets):
         # Create the root snippets node
-        root = et.Element('snippets')
+        root = et.Element("snippets")
 
         # Create filename based on language
         if language:
-            filename = os.path.join(dirname, language + '.xml')
+            filename = os.path.join(dirname, language + ".xml")
 
             # Set the language attribute
-            root.attrib['language'] = language
+            root.attrib["language"] = language
         else:
-            filename = os.path.join(dirname, 'global.xml')
+            filename = os.path.join(dirname, "global.xml")
 
         # Add all snippets to the root node
         for snippet in snippets:
             root.append(snippet.to_xml())
 
         # Write xml
-        helper.write_xml(root, filename, ('text', 'accelerator'))
+        helper.write_xml(root, filename, ("text", "accelerator"))
 
     def export_archive(self, cmd):
         dirname = tempfile.mkdtemp()
@@ -77,7 +79,7 @@ class Exporter:
 
             # Write snippet xml files
             for language, snippets in self.snippets.items():
-                self.export_xml(dirname, language , snippets)
+                self.export_xml(dirname, language, snippets)
 
             # Archive files
             status = os.system('%s "%s" *.xml' % (cmd, self.filename))
@@ -85,33 +87,37 @@ class Exporter:
             os.chdir(curdir)
 
         if status != 0:
-            return _('The archive “%s” could not be created' % self.filename)
+            return _("The archive “%s” could not be created" % self.filename)
 
         # Remove the temporary directory
         shutil.rmtree(dirname)
 
     def export_targz(self):
-        self.export_archive('tar -c --gzip -f')
+        self.export_archive("tar -c --gzip -f")
 
     def export_tarbz2(self):
-        self.export_archive('tar -c --bzip2 -f')
+        self.export_archive("tar -c --bzip2 -f")
 
     def export_tar(self):
-        self.export_archive('tar -cf')
+        self.export_archive("tar -cf")
 
     def run(self):
         dirname = os.path.dirname(self.filename)
         if not os.path.exists(dirname):
-            return _('Target directory “%s” does not exist') % dirname
+            return _("Target directory “%s” does not exist") % dirname
 
         if not os.path.isdir(dirname):
-            return _('Target directory “%s” is not a valid directory') % dirname
+            return (
+                _("Target directory “%s” is not a valid directory") % dirname
+            )
 
         (root, ext) = os.path.splitext(self.filename)
 
-        actions = {'.tar.gz': self.export_targz,
-               '.tar.bz2': self.export_tarbz2,
-               '.tar': self.export_tar}
+        actions = {
+            ".tar.gz": self.export_targz,
+            ".tar.bz2": self.export_tarbz2,
+            ".tar": self.export_tar,
+        }
 
         for k, v in actions.items():
             if self.filename.endswith(k):

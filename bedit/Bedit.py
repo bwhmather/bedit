@@ -28,8 +28,9 @@ import inspect
 from ..overrides import override
 from ..importer import modules
 
-Bedit = modules['Bedit']._introspection_module
+Bedit = modules["Bedit"]._introspection_module
 __all__ = []
+
 
 class MessageBus(Bedit.MessageBus):
     def create(self, object_path, method, **kwargs):
@@ -38,8 +39,8 @@ class MessageBus(Bedit.MessageBus):
         if not tp.is_a(Bedit.Message.__gtype__):
             return None
 
-        kwargs['object-path'] = object_path
-        kwargs['method'] = method
+        kwargs["object-path"] = object_path
+        kwargs["method"] = method
 
         return GObject.new(tp, **kwargs)
 
@@ -55,8 +56,10 @@ class MessageBus(Bedit.MessageBus):
 
         return msg
 
+
 MessageBus = override(MessageBus)
-__all__.append('MessageBus')
+__all__.append("MessageBus")
+
 
 class Message(Bedit.Message):
     def __getattribute__(self, name):
@@ -65,8 +68,9 @@ class Message(Bedit.Message):
         except:
             return getattr(self.props, name)
 
+
 Message = override(Message)
-__all__.append('Message')
+__all__.append("Message")
 
 
 def get_trace_info(num_back_frames=0):
@@ -96,11 +100,14 @@ def get_trace_info(num_back_frames=0):
     finally:
         frame = None
 
+
 orig_debug_plugin_message_func = Bedit.debug_plugin_message
+
 
 @override(Bedit.debug_plugin_message)
 def debug_plugin_message(format, *format_args):
     filename, lineno, func_name = get_trace_info(1)
     orig_debug_plugin_message_func(filename, lineno, func_name, format % format_args)
-__all__.append(debug_plugin_message)
 
+
+__all__.append(debug_plugin_message)

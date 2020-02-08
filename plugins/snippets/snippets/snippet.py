@@ -19,9 +19,18 @@ from gi.repository import Gio, Gtk
 
 import sys
 
-from .placeholder import PlaceholderEnd, PlaceholderMirror, Placeholder, PlaceholderShell, PlaceholderEval, PlaceholderRegex, PlaceholderExpand
+from .placeholder import (
+    PlaceholderEnd,
+    PlaceholderMirror,
+    Placeholder,
+    PlaceholderShell,
+    PlaceholderEval,
+    PlaceholderRegex,
+    PlaceholderExpand,
+)
 from .parser import Parser
 from . import helper
+
 
 class EvalUtilities:
     def __init__(self, view=None):
@@ -30,13 +39,13 @@ class EvalUtilities:
 
     def _init_namespace(self):
         self.namespace = {
-            '__builtins__': __builtins__,
-            'align': self.util_align,
-            'readfile': self.util_readfile,
-            'filesize': self.util_filesize
+            "__builtins__": __builtins__,
+            "align": self.util_align,
+            "readfile": self.util_readfile,
+            "filesize": self.util_filesize,
         }
 
-    def _real_len(self, s, tablen = 0):
+    def _real_len(self, s, tablen=0):
         if tablen == 0:
             tablen = self.view.get_tab_width()
 
@@ -51,7 +60,7 @@ class EvalUtilities:
         stream = Gio.file_new_for_path(filename).read()
 
         if not stream:
-            return ''
+            return ""
 
         res = stream.read()
         stream.close()
@@ -79,17 +88,24 @@ class EvalUtilities:
                 items[row][col] += "\t"
                 rl = self._real_len(items[row][col], tablen)
 
-                if (rl > maxlen[col]):
+                if rl > maxlen[col]:
                     maxlen[col] = rl
 
-        result = ''
+        result = ""
 
         for row in range(0, len(items)):
             for col in range(0, len(items[row]) - 1):
                 item = items[row][col]
 
-                result += item + ("\t" * int(((maxlen[col] - \
-                        self._real_len(item, tablen)) / tablen)))
+                result += item + (
+                    "\t"
+                    * int(
+                        (
+                            (maxlen[col] - self._real_len(item, tablen))
+                            / tablen
+                        )
+                    )
+                )
 
             result += items[row][len(items[row]) - 1]
 
@@ -98,8 +114,9 @@ class EvalUtilities:
 
         return result
 
+
 class Snippet:
-    def __init__(self, data, environ = {}):
+    def __init__(self, data, environ={}):
         self.data = data
         self.environ = environ
 
@@ -110,32 +127,36 @@ class Snippet:
         self.data[prop] = value
 
     def accelerator_display(self):
-        accel = self['accelerator']
+        accel = self["accelerator"]
 
         if accel:
             keyval, mod = Gtk.accelerator_parse(accel)
             accel = Gtk.accelerator_get_label(keyval, mod)
 
-        return accel or ''
+        return accel or ""
 
     def display(self):
-        nm = helper.markup_escape(self['description'])
+        nm = helper.markup_escape(self["description"])
 
-        tag = self['tag']
+        tag = self["tag"]
         accel = self.accelerator_display()
         detail = []
 
-        if tag and tag != '':
+        if tag and tag != "":
             detail.append(tag)
 
-        if accel and accel != '':
+        if accel and accel != "":
             detail.append(accel)
 
         if not detail:
             return nm
         else:
-            return nm + ' (<b>' + helper.markup_escape(', '.join(detail)) + \
-                    '</b>)'
+            return (
+                nm
+                + " (<b>"
+                + helper.markup_escape(", ".join(detail))
+                + "</b>)"
+            )
 
     def _add_placeholder(self, placeholder):
         if placeholder.tabstop in self.placeholders:
@@ -151,52 +172,80 @@ class Snippet:
 
     def _insert_text(self, text):
         # Insert text keeping indentation in mind
-        indented = str.join('\n' + self._indent, helper.spaces_instead_of_tabs(self._view, text).split('\n'))
+        indented = str.join(
+            "\n" + self._indent,
+            helper.spaces_instead_of_tabs(self._view, text).split("\n"),
+        )
         self._view.get_buffer().insert(self._insert_iter(), indented)
 
     def _insert_iter(self):
         return self._view.get_buffer().get_iter_at_mark(self._insert_mark)
 
     def _create_environment(self, data):
-        if data in self.environ['utf8']:
-            val = self.environ['utf8'][data]
+        if data in self.environ["utf8"]:
+            val = self.environ["utf8"][data]
         else:
-            val = ''
+            val = ""
 
         # Get all the current indentation
-        all_indent = helper.compute_indentation(self._view, self._insert_iter())
+        all_indent = helper.compute_indentation(
+            self._view, self._insert_iter()
+        )
 
         # Substract initial indentation to get the snippet indentation
-        indent = all_indent[len(self._indent):]
+        indent = all_indent[len(self._indent) :]
 
         # Keep indentation
-        return str.join('\n' + indent, val.split('\n'))
+        return str.join("\n" + indent, val.split("\n"))
 
     def _create_placeholder(self, data):
-        tabstop = data['tabstop']
+        tabstop = data["tabstop"]
         begin = self._insert_iter()
 
         if tabstop == 0:
             # End placeholder
-            return PlaceholderEnd(self._view, self.environ, begin, data['default'])
+            return PlaceholderEnd(
+                self._view, self.environ, begin, data["default"]
+            )
         elif tabstop in self.placeholders:
             # Mirror placeholder
             return PlaceholderMirror(self._view, tabstop, self.environ, begin)
         else:
             # Default placeholder
-            return Placeholder(self._view, tabstop, self.environ, data['default'], begin)
+            return Placeholder(
+                self._view, tabstop, self.environ, data["default"], begin
+            )
 
     def _create_shell(self, data):
         begin = self._insert_iter()
-        return PlaceholderShell(self._view, data['tabstop'], self.environ, begin, data['contents'])
+        return PlaceholderShell(
+            self._view, data["tabstop"], self.environ, begin, data["contents"]
+        )
 
     def _create_eval(self, data):
         begin = self._insert_iter()
-        return PlaceholderEval(self._view, data['tabstop'], self.environ, data['dependencies'], begin, data['contents'], self._utils.namespace)
+        return PlaceholderEval(
+            self._view,
+            data["tabstop"],
+            self.environ,
+            data["dependencies"],
+            begin,
+            data["contents"],
+            self._utils.namespace,
+        )
 
     def _create_regex(self, data):
         begin = self._insert_iter()
-        return PlaceholderRegex(self._view, data['tabstop'], self.environ, begin, data['input'], data['pattern'], data['substitution'], data['modifiers'])
+        return PlaceholderRegex(
+            self._view,
+            data["tabstop"],
+            self.environ,
+            begin,
+            data["input"],
+            data["pattern"],
+            data["substitution"],
+            data["modifiers"],
+        )
 
     def _create_text(self, data):
         return data
@@ -221,31 +270,38 @@ class Snippet:
     def _parse(self, plugin_data):
         # Initialize current variables
         self._view = plugin_data.view
-        self._indent = helper.compute_indentation(self._view, self._view.get_buffer().get_iter_at_mark(self.begin_mark))
+        self._indent = helper.compute_indentation(
+            self._view,
+            self._view.get_buffer().get_iter_at_mark(self.begin_mark),
+        )
         self._utils = EvalUtilities(self._view)
         self.placeholders = {}
         self._insert_mark = self.end_mark
         self.plugin_data = plugin_data
 
         # Create parser
-        parser = Parser(data=self['text'])
+        parser = Parser(data=self["text"])
 
         # Parse tokens
-        while (True):
+        while True:
             token = parser.token()
 
             if not token:
                 break
 
             try:
-                val = {'environment': self._create_environment,
-                       'placeholder': self._create_placeholder,
-                       'shell': self._create_shell,
-                       'eval': self._create_eval,
-                       'regex': self._create_regex,
-                       'text': self._create_text}[token.klass](token.data)
+                val = {
+                    "environment": self._create_environment,
+                    "placeholder": self._create_placeholder,
+                    "shell": self._create_shell,
+                    "eval": self._create_eval,
+                    "regex": self._create_regex,
+                    "text": self._create_text,
+                }[token.klass](token.data)
             except KeyError:
-                sys.stderr.write('Token class not supported: %s (%s)\n' % token.klass)
+                sys.stderr.write(
+                    "Token class not supported: %s (%s)\n" % token.klass
+                )
                 continue
 
             if isinstance(val, str):
@@ -257,13 +313,17 @@ class Snippet:
 
         # Create end placeholder if there isn't one yet
         if 0 not in self.placeholders:
-            self.placeholders[0] = PlaceholderEnd(self._view, self.environ, self.end_iter(), None)
+            self.placeholders[0] = PlaceholderEnd(
+                self._view, self.environ, self.end_iter(), None
+            )
             self.plugin_data.ordered_placeholders.append(self.placeholders[0])
 
         # Make sure run_last is ran for all placeholders and remove any
         # non `ok` placeholders
         for tabstop in self.placeholders.copy():
-            ph = (tabstop == -1 and list(self.placeholders[-1])) or [self.placeholders[tabstop]]
+            ph = (tabstop == -1 and list(self.placeholders[-1])) or [
+                self.placeholders[tabstop]
+            ]
 
             for placeholder in ph:
                 placeholder.run_last(self.placeholders)
@@ -282,8 +342,10 @@ class Snippet:
             placeholder = self.placeholders[tabstop]
 
             if tabstop != -1:
-                if isinstance(placeholder, PlaceholderExpand) and \
-                   placeholder.has_references:
+                if (
+                    isinstance(placeholder, PlaceholderExpand)
+                    and placeholder.has_references
+                ):
                     # Add to anonymous placeholders
                     self.placeholders[-1].append(placeholder)
 

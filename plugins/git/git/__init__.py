@@ -21,9 +21,10 @@
 # along with this program; if not, see <http://www.gnu.org/licenses/>.
 
 import gi
-gi.require_version('Bedit', '3.0')
-gi.require_version('Gtk', '3.0')
-gi.require_version('Ggit', '1.0')
+
+gi.require_version("Bedit", "3.0")
+gi.require_version("Gtk", "3.0")
+gi.require_version("Ggit", "1.0")
 
 from .appactivatable import GitAppActivatable
 from .viewactivatable import GitViewActivatable

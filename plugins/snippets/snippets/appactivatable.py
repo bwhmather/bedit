@@ -23,11 +23,13 @@ from .shareddata import SharedData
 
 try:
     import gettext
-    gettext.bindtextdomain('bedit')
-    gettext.textdomain('bedit')
+
+    gettext.bindtextdomain("bedit")
+    gettext.textdomain("bedit")
     _ = gettext.gettext
 except:
     _ = lambda s: s
+
 
 class AppActivatable(GObject.Object, Bedit.AppActivatable):
     __gtype_name__ = "BeditSnippetsAppActivatable"
@@ -41,15 +43,18 @@ class AppActivatable(GObject.Object, Bedit.AppActivatable):
         # Initialize snippets library
         library = Library()
 
-        if platform.system() == 'Windows':
-            snippetsdir = os.path.expanduser('~/bedit/snippets')
+        if platform.system() == "Windows":
+            snippetsdir = os.path.expanduser("~/bedit/snippets")
         else:
-            snippetsdir = os.path.join(GLib.get_user_config_dir(), 'bedit/snippets')
+            snippetsdir = os.path.join(
+                GLib.get_user_config_dir(), "bedit/snippets"
+            )
 
         library.set_dirs(snippetsdir, self.system_dirs())
 
         self.css = Gtk.CssProvider()
-        self.css.load_from_data("""
+        self.css.load_from_data(
+            """
 .bedit-snippet-manager-paned {
   border-style: solid;
   border-color: @borders;
@@ -77,12 +82,16 @@ class AppActivatable(GObject.Object, Bedit.AppActivatable):
 .bedit-snippet-manager-treeview:dir(rtl) {
   border-right-width: 0;
 }
-""".encode('utf-8'))
-        Gtk.StyleContext.add_provider_for_screen(Gdk.Screen.get_default(),
-                             self.css, 600)
+""".encode(
+                "utf-8"
+            )
+        )
+        Gtk.StyleContext.add_provider_for_screen(
+            Gdk.Screen.get_default(), self.css, 600
+        )
 
         action = Gio.SimpleAction(name="snippets")
-        action.connect('activate', self.on_action_snippets_activate)
+        action.connect("activate", self.on_action_snippets_activate)
         self.app.add_action(action)
 
         item = Gio.MenuItem.new(_("Manage _Snippets…"), "app.snippets")
@@ -92,21 +101,24 @@ class AppActivatable(GObject.Object, Bedit.AppActivatable):
     def do_deactivate(self):
         self.app.remove_action("snippets")
         self.menu = None
-        Gtk.StyleContext.remove_provider_for_screen(Gdk.Screen.get_default(),
-                                self.css)
+        Gtk.StyleContext.remove_provider_for_screen(
+            Gdk.Screen.get_default(), self.css
+        )
 
     def system_dirs(self):
         dirs = []
 
-        if 'XDG_DATA_DIRS' in os.environ:
-            datadirs = os.environ['XDG_DATA_DIRS']
-        elif platform.system() != 'Windows':
-            datadirs = '/usr/local/share' + os.pathsep + '/usr/share'
+        if "XDG_DATA_DIRS" in os.environ:
+            datadirs = os.environ["XDG_DATA_DIRS"]
+        elif platform.system() != "Windows":
+            datadirs = "/usr/local/share" + os.pathsep + "/usr/share"
         else:
-            datadirs = GLib.win32_get_package_installation_directory_of_module(None)
+            datadirs = GLib.win32_get_package_installation_directory_of_module(
+                None
+            )
 
         for d in datadirs.split(os.pathsep):
-            d = os.path.join(d, 'bedit', 'plugins', 'snippets')
+            d = os.path.join(d, "bedit", "plugins", "snippets")
 
             if os.path.isdir(d):
                 dirs.append(d)
@@ -125,7 +137,9 @@ class AppActivatable(GObject.Object, Bedit.AppActivatable):
         return ret
 
     def create_configure_dialog(self):
-        SharedData().show_manager(self.app.get_active_window(), self.plugin_info.get_data_dir())
+        SharedData().show_manager(
+            self.app.get_active_window(), self.plugin_info.get_data_dir()
+        )
 
     def on_action_snippets_activate(self, action, parameter):
         self.create_configure_dialog()
