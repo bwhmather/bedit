@@ -22,7 +22,7 @@ class VirtualDirectory(object):
         self._children = []
 
     def get_uri(self):
-        return 'virtual://' + self._name
+        return "virtual://" + self._name
 
     def get_parent(self):
         return None
@@ -35,9 +35,9 @@ class VirtualDirectory(object):
             return
 
         try:
-            info = child.query_info("standard::*",
-                                    Gio.FileQueryInfoFlags.NONE,
-                                    None)
+            info = child.query_info(
+                "standard::*", Gio.FileQueryInfoFlags.NONE, None
+            )
 
             if info:
                 self._children.append((child, info))
@@ -47,7 +47,7 @@ class VirtualDirectory(object):
 
 class RecentDocumentsDirectory(VirtualDirectory):
     def __init__(self, maxitems=200):
-        VirtualDirectory.__init__(self, 'recent')
+        VirtualDirectory.__init__(self, "recent")
 
         self._maxitems = maxitems
         self.fill()
@@ -61,7 +61,7 @@ class RecentDocumentsDirectory(VirtualDirectory):
         added = 0
 
         for item in items:
-            if item.has_group('bedit'):
+            if item.has_group("bedit"):
                 self.append(Gio.file_new_for_uri(item.get_uri()))
                 added += 1
 
@@ -71,7 +71,7 @@ class RecentDocumentsDirectory(VirtualDirectory):
 
 class CurrentDocumentsDirectory(VirtualDirectory):
     def __init__(self, window):
-        VirtualDirectory.__init__(self, 'documents')
+        VirtualDirectory.__init__(self, "documents")
 
         self.fill(window)
 

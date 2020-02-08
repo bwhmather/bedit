@@ -16,8 +16,9 @@
 import os
 
 import gi
-gi.require_version('Bedit', '3.0')
-gi.require_version('Gtk', '3.0')
+
+gi.require_version("Bedit", "3.0")
+gi.require_version("Gtk", "3.0")
 from gi.repository import GObject, Gio, GLib, Gtk, Bedit
 
 from .popup import Popup
@@ -26,11 +27,13 @@ from .virtualdirs import CurrentDocumentsDirectory
 
 try:
     import gettext
-    gettext.bindtextdomain('bedit')
-    gettext.textdomain('bedit')
+
+    gettext.bindtextdomain("bedit")
+    gettext.textdomain("bedit")
     _ = gettext.gettext
 except:
     _ = lambda s: s
+
 
 class QuickOpenAppActivatable(GObject.Object, Bedit.AppActivatable):
     app = GObject.Property(type=Bedit.App)
@@ -62,7 +65,7 @@ class QuickOpenPlugin(GObject.Object, Bedit.WindowActivatable):
         self._popup = None
 
         action = Gio.SimpleAction(name="quickopen")
-        action.connect('activate', self.on_quick_open_activate)
+        action.connect("activate", self.on_quick_open_activate)
         self.window.add_action(action)
 
     def do_deactivate(self):
@@ -90,8 +93,8 @@ class QuickOpenPlugin(GObject.Object, Bedit.WindowActivatable):
         # File browser root directory
         bus = self.window.get_message_bus()
 
-        if bus.is_registered('/plugins/filebrowser', 'get_root'):
-            msg = bus.send_sync('/plugins/filebrowser', 'get_root')
+        if bus.is_registered("/plugins/filebrowser", "get_root"):
+            msg = bus.send_sync("/plugins/filebrowser", "get_root")
 
             if msg:
                 gfile = msg.props.location
@@ -100,7 +103,7 @@ class QuickOpenPlugin(GObject.Object, Bedit.WindowActivatable):
                     paths.append(gfile)
 
         # Recent documents
-        paths.append(RecentDocumentsDirectory())
+        # paths.append(RecentDocumentsDirectory())
 
         # Local bookmarks
         for path in self._local_bookmarks():
@@ -113,7 +116,7 @@ class QuickOpenPlugin(GObject.Object, Bedit.WindowActivatable):
             paths.append(Gio.file_new_for_path(desktopdir))
 
         # Home directory
-        paths.append(Gio.file_new_for_path(os.path.expanduser('~')))
+        paths.append(Gio.file_new_for_path(os.path.expanduser("~")))
 
         self._popup = Popup(self.window, paths, self.on_activated)
         self.window.get_group().add_window(self._popup)
@@ -121,27 +124,32 @@ class QuickOpenPlugin(GObject.Object, Bedit.WindowActivatable):
         self._popup.set_default_size(*self.get_popup_size())
         self._popup.set_transient_for(self.window)
         self._popup.set_position(Gtk.WindowPosition.CENTER_ON_PARENT)
-        self._popup.connect('destroy', self.on_popup_destroy)
+        self._popup.connect("destroy", self.on_popup_destroy)
 
     def _local_bookmarks(self):
-        filename = os.path.expanduser('~/.config/gtk-3.0/bookmarks')
+        filename = os.path.expanduser("~/.config/gtk-3.0/bookmarks")
 
         if not os.path.isfile(filename):
             return []
 
         paths = []
 
-        for line in open(filename, 'r', encoding='utf-8'):
+        for line in open(filename, "r", encoding="utf-8"):
             uri = line.strip().split(" ")[0]
             f = Gio.file_new_for_uri(uri)
 
             if f.is_native():
                 try:
-                    info = f.query_info(Gio.FILE_ATTRIBUTE_STANDARD_TYPE,
-                                        Gio.FileQueryInfoFlags.NONE,
-                                        None)
+                    info = f.query_info(
+                        Gio.FILE_ATTRIBUTE_STANDARD_TYPE,
+                        Gio.FileQueryInfoFlags.NONE,
+                        None,
+                    )
 
-                    if info and info.get_file_type() == Gio.FileType.DIRECTORY:
+                    if (
+                        info
+                        and info.get_file_type() == Gio.FileType.DIRECTORY
+                    ):
                         paths.append(f)
                 except:
                     pass
@@ -149,26 +157,26 @@ class QuickOpenPlugin(GObject.Object, Bedit.WindowActivatable):
         return paths
 
     def _desktop_dir(self):
-        config = os.getenv('XDG_CONFIG_HOME')
+        config = os.getenv("XDG_CONFIG_HOME")
 
         if not config:
-            config = os.path.expanduser('~/.config')
+            config = os.path.expanduser("~/.config")
 
-        config = os.path.join(config, 'user-dirs.dirs')
+        config = os.path.join(config, "user-dirs.dirs")
         desktopdir = None
 
         if os.path.isfile(config):
-            for line in open(config, 'r', encoding='utf-8'):
+            for line in open(config, "r", encoding="utf-8"):
                 line = line.strip()
 
-                if line.startswith('XDG_DESKTOP_DIR'):
-                    parts = line.split('=', 1)
+                if line.startswith("XDG_DESKTOP_DIR"):
+                    parts = line.split("=", 1)
                     desktopdir = parts[1].strip('"').strip("'")
                     desktopdir = os.path.expandvars(desktopdir)
                     break
 
         if not desktopdir:
-            desktopdir = os.path.expanduser('~/Desktop')
+            desktopdir = os.path.expanduser("~/Desktop")
 
         return desktopdir
 
@@ -187,4 +195,3 @@ class QuickOpenPlugin(GObject.Object, Bedit.WindowActivatable):
     def on_activated(self, gfile, user_data=None):
         Bedit.commands_load_location(self.window, gfile, None, -1, -1)
         return True
-

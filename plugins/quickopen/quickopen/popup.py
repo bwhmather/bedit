@@ -24,25 +24,30 @@ from .virtualdirs import VirtualDirectory
 
 try:
     import gettext
-    gettext.bindtextdomain('bedit')
-    gettext.textdomain('bedit')
+
+    gettext.bindtextdomain("bedit")
+    gettext.textdomain("bedit")
     _ = gettext.gettext
 except:
     _ = lambda s: s
+
 
 class Popup(Gtk.Dialog):
     __gtype_name__ = "QuickOpenPopup"
 
     def __init__(self, window, paths, handler):
-        Gtk.Dialog.__init__(self,
-                            title=_('Quick Open'),
-                            transient_for=window,
-                            modal=True,
-                            destroy_with_parent=True)
+        Gtk.Dialog.__init__(
+            self,
+            title=_("Quick Open"),
+            transient_for=window,
+            modal=True,
+            destroy_with_parent=True,
+        )
 
         self.add_button(_("_Cancel"), Gtk.ResponseType.CANCEL)
-        self._open_button = self.add_button(_("_Open"),
-                                            Gtk.ResponseType.ACCEPT)
+        self._open_button = self.add_button(
+            _("_Open"), Gtk.ResponseType.ACCEPT
+        )
 
         self._handler = handler
         self._build_ui()
@@ -57,10 +62,9 @@ class Popup(Gtk.Dialog):
         self._busy_cursor = Gdk.Cursor(Gdk.CursorType.WATCH)
 
         accel_group = Gtk.AccelGroup()
-        accel_group.connect(Gdk.KEY_l,
-                            Gdk.ModifierType.CONTROL_MASK,
-                            0,
-                            self.on_focus_entry)
+        accel_group.connect(
+            Gdk.KEY_l, Gdk.ModifierType.CONTROL_MASK, 0, self.on_focus_entry
+        )
 
         self.add_accel_group(accel_group)
 
@@ -71,7 +75,7 @@ class Popup(Gtk.Dialog):
                 self._dirs.append(path)
                 unique.append(path.get_uri())
 
-        self.connect('show', self.on_show)
+        self.connect("show", self.on_show)
 
     def get_final_size(self):
         return self._size
@@ -85,10 +89,10 @@ class Popup(Gtk.Dialog):
         action_area.set_spacing(6)
 
         self._entry = Gtk.SearchEntry()
-        self._entry.set_placeholder_text(_('Type to search…'))
+        self._entry.set_placeholder_text(_("Type to search…"))
 
-        self._entry.connect('changed', self.on_changed)
-        self._entry.connect('key-press-event', self.on_key_press_event)
+        self._entry.connect("changed", self.on_changed)
+        self._entry.connect("key-press-event", self.on_key_press_event)
 
         sw = Gtk.ScrolledWindow()
         sw.set_policy(Gtk.PolicyType.AUTOMATIC, Gtk.PolicyType.AUTOMATIC)
@@ -97,14 +101,13 @@ class Popup(Gtk.Dialog):
         tv = Gtk.TreeView()
         tv.set_headers_visible(False)
 
-        self._store = Gtk.ListStore(Gio.Icon,
-                                    str,
-                                    GObject.Object,
-                                    Gio.FileType)
+        self._store = Gtk.ListStore(
+            Gio.Icon, str, GObject.Object, Gio.FileType
+        )
         tv.set_model(self._store)
 
         self._treeview = tv
-        tv.connect('row-activated', self.on_row_activated)
+        tv.connect("row-activated", self.on_row_activated)
 
         column = Gtk.TreeViewColumn()
 
@@ -122,7 +125,7 @@ class Popup(Gtk.Dialog):
         sw.add(tv)
 
         selection = tv.get_selection()
-        selection.connect('changed', self.on_selection_changed)
+        selection.connect("changed", self.on_selection_changed)
         selection.set_mode(Gtk.SelectionMode.MULTIPLE)
 
         vbox.pack_start(self._entry, False, False, 0)
@@ -146,11 +149,11 @@ class Popup(Gtk.Dialog):
             style = self._treeview.get_style()
             bg = style.bg[Gtk.StateType.PRELIGHT]
 
-            cell.set_property('cell-background-gdk', bg)
-            cell.set_property('style', Pango.Style.ITALIC)
+            cell.set_property("cell-background-gdk", bg)
+            cell.set_property("style", Pango.Style.ITALIC)
         else:
-            cell.set_property('cell-background-set', False)
-            cell.set_property('style-set', False)
+            cell.set_property("cell-background-set", False)
+            cell.set_property("style-set", False)
 
     def _is_text(self, entry):
         content_type = entry.get_content_type()
@@ -158,16 +161,16 @@ class Popup(Gtk.Dialog):
         if content_type is None or Gio.content_type_is_unknown(content_type):
             return True
 
-        if platform.system() != 'Windows':
-            if Gio.content_type_is_a(content_type, 'text/plain'):
+        if platform.system() != "Windows":
+            if Gio.content_type_is_a(content_type, "text/plain"):
                 return True
         else:
-            if Gio.content_type_is_a(content_type, 'text'):
+            if Gio.content_type_is_a(content_type, "text"):
                 return True
 
             # This covers a rare case in which on Windows the PerceivedType
             # is not set to "text" but the Content Type is set to text/plain
-            if Gio.content_type_get_mime_type(content_type) == 'text/plain':
+            if Gio.content_type_get_mime_type(content_type) == "text/plain":
                 return True
 
         return False
@@ -176,9 +179,9 @@ class Popup(Gtk.Dialog):
         entries = []
 
         try:
-            ret = gfile.enumerate_children("standard::*",
-                                           Gio.FileQueryInfoFlags.NONE,
-                                           None)
+            ret = gfile.enumerate_children(
+                "standard::*", Gio.FileQueryInfoFlags.NONE, None
+            )
         except GLib.Error as e:
             pass
 
@@ -203,10 +206,14 @@ class Popup(Gtk.Dialog):
                 if not self._is_text(entry[1]):
                     continue
 
-            children.append((entry[0],
-                             entry[1].get_name(),
-                             file_type,
-                             entry[1].get_icon()))
+            children.append(
+                (
+                    entry[0],
+                    entry[1].get_name(),
+                    file_type,
+                    entry[1].get_icon(),
+                )
+            )
 
         return children
 
@@ -228,7 +235,7 @@ class Popup(Gtk.Dialog):
 
     def _match_glob(self, s, glob):
         if glob:
-            glob += '*'
+            glob += "*"
 
         return fnmatch.fnmatch(s, glob)
 
@@ -254,19 +261,30 @@ class Popup(Gtk.Dialog):
 
             lentry = entry[1].lower()
 
-            if not lpart or lpart in lentry or self._match_glob(lentry, lpart):
+            if (
+                not lpart
+                or lpart in lentry
+                or self._match_glob(lentry, lpart)
+            ):
                 if entry[2] == Gio.FileType.DIRECTORY:
                     if len(parts) > 1:
                         newdirs.append(entry[0])
                     else:
                         found.append(entry)
-                elif entry[2] == Gio.FileType.REGULAR and \
-                        (not lpart or len(parts) == 1):
+                elif entry[2] == Gio.FileType.REGULAR and (
+                    not lpart or len(parts) == 1
+                ):
                     found.append(entry)
 
-        found.sort(key=functools.cmp_to_key(lambda a, b: self._compare_entries(a[1].lower(), b[1].lower(), lpart)))
+        found.sort(
+            key=functools.cmp_to_key(
+                lambda a, b: self._compare_entries(
+                    a[1].lower(), b[1].lower(), lpart
+                )
+            )
+        )
 
-        if lpart == '..':
+        if lpart == "..":
             newdirs.append(d.get_parent())
 
         for dd in newdirs:
@@ -275,7 +293,7 @@ class Popup(Gtk.Dialog):
         return found
 
     def _replace_insensitive(self, s, find, rep):
-        out = ''
+        out = ""
         l = s.lower()
         find = find.lower()
         last = 0
@@ -289,7 +307,9 @@ class Popup(Gtk.Dialog):
             if m == -1:
                 break
             else:
-                out += xml.sax.saxutils.escape(s[last:m]) + rep % (xml.sax.saxutils.escape(s[m:m + len(find)]),)
+                out += xml.sax.saxutils.escape(s[last:m]) + rep % (
+                    xml.sax.saxutils.escape(s[m : m + len(find)]),
+                )
                 last = m + len(find)
 
         return out + xml.sax.saxutils.escape(s[last:])
@@ -298,14 +318,18 @@ class Popup(Gtk.Dialog):
         out = []
 
         for i in range(0, len(parts)):
-            out.append(self._replace_insensitive(path[i], parts[i], "<b>%s</b>"))
+            out.append(
+                self._replace_insensitive(path[i], parts[i], "<b>%s</b>")
+            )
 
         return os.sep.join(out)
 
     def _get_icon(self, f):
-        query = f.query_info(Gio.FILE_ATTRIBUTE_STANDARD_ICON,
-                             Gio.FileQueryInfoFlags.NONE,
-                             None)
+        query = f.query_info(
+            Gio.FILE_ATTRIBUTE_STANDARD_ICON,
+            Gio.FileQueryInfoFlags.NONE,
+            None,
+        )
 
         if not query:
             return None
@@ -319,8 +343,8 @@ class Popup(Gtk.Dialog):
         idx = len(pp) - 1
 
         while idx >= 0:
-            if pp[idx] == '..':
-                parts.insert(0, '..')
+            if pp[idx] == "..":
+                parts.insert(0, "..")
             else:
                 parts.insert(0, child.get_basename())
                 child = child.get_parent()
@@ -335,9 +359,9 @@ class Popup(Gtk.Dialog):
 
         out = self.normalize_relative(parts[:-1])
 
-        if parts[-1] == '..':
-            if not out or (out[-1] == '..') or len(out) == 1:
-                out.append('..')
+        if parts[-1] == "..":
+            if not out or (out[-1] == "..") or len(out) == 1:
+                out.append("..")
             else:
                 del out[-1]
         else:
@@ -360,10 +384,14 @@ class Popup(Gtk.Dialog):
         for d in self._dirs:
             if isinstance(d, VirtualDirectory):
                 for entry in d.enumerate_children("standard::*", 0, None):
-                    self._append_to_store((entry[1].get_icon(),
-                                          xml.sax.saxutils.escape(entry[1].get_name()),
-                                          entry[0],
-                                          entry[1].get_file_type()))
+                    self._append_to_store(
+                        (
+                            entry[1].get_icon(),
+                            xml.sax.saxutils.escape(entry[1].get_name()),
+                            entry[0],
+                            entry[1].get_file_type(),
+                        )
+                    )
 
     def _set_busy(self, busy):
         if busy:
@@ -386,7 +414,7 @@ class Popup(Gtk.Dialog):
         text = self._entry.get_text().strip()
         self._clear_store()
 
-        if text == '':
+        if text == "":
             self._show_virtuals()
         else:
             parts = self.normalize_relative(text.split(os.sep))
@@ -395,10 +423,14 @@ class Popup(Gtk.Dialog):
             for d in self._dirs:
                 for entry in self.do_search_dir(parts, d):
                     pathparts = self._make_parts(d, entry[0], parts)
-                    self._append_to_store((entry[3],
-                                          self.make_markup(parts, pathparts),
-                                          entry[0],
-                                          entry[2]))
+                    self._append_to_store(
+                        (
+                            entry[3],
+                            self.make_markup(parts, pathparts),
+                            entry[0],
+                            entry[2],
+                        )
+                    )
 
         piter = self._store.get_iter_first()
         if piter:
@@ -496,8 +528,9 @@ class Popup(Gtk.Dialog):
         uri = self._entry.get_text()
         gfile = Gio.file_new_for_uri(uri)
 
-        if Bedit.utils_is_valid_location(gfile) or \
-           (os.path.isabs(uri) and gfile.query_exists()):
+        if Bedit.utils_is_valid_location(gfile) or (
+            os.path.isabs(uri) and gfile.query_exists()
+        ):
             return gfile
         else:
             return None
@@ -519,7 +552,12 @@ class Popup(Gtk.Dialog):
                     if text[i] == os.sep:
                         break
 
-                self._entry.set_text(os.path.join(text[:i], os.path.basename(info[0].get_uri())) + os.sep)
+                self._entry.set_text(
+                    os.path.join(
+                        text[:i], os.path.basename(info[0].get_uri())
+                    )
+                    + os.sep
+                )
                 self._entry.set_position(-1)
                 self._entry.grab_focus()
                 return True
@@ -558,17 +596,29 @@ class Popup(Gtk.Dialog):
             Gdk.KEY_Down: 1,
             Gdk.KEY_Up: -1,
             Gdk.KEY_Page_Down: 5,
-            Gdk.KEY_Page_Up: -5
+            Gdk.KEY_Page_Up: -5,
         }
 
         if event.keyval == Gdk.KEY_Escape:
             self.destroy()
             return True
         elif event.keyval in move_mapping:
-            return self._move_selection(move_mapping[event.keyval], event.state & Gdk.ModifierType.CONTROL_MASK, event.state & Gdk.ModifierType.SHIFT_MASK)
-        elif event.keyval in [Gdk.KEY_Return, Gdk.KEY_KP_Enter, Gdk.KEY_Tab, Gdk.KEY_ISO_Left_Tab]:
+            return self._move_selection(
+                move_mapping[event.keyval],
+                event.state & Gdk.ModifierType.CONTROL_MASK,
+                event.state & Gdk.ModifierType.SHIFT_MASK,
+            )
+        elif event.keyval in [
+            Gdk.KEY_Return,
+            Gdk.KEY_KP_Enter,
+            Gdk.KEY_Tab,
+            Gdk.KEY_ISO_Left_Tab,
+        ]:
             return self._activate()
-        elif event.keyval == Gdk.KEY_space and event.state & Gdk.ModifierType.CONTROL_MASK:
+        elif (
+            event.keyval == Gdk.KEY_space
+            and event.state & Gdk.ModifierType.CONTROL_MASK
+        ):
             self.toggle_cursor()
 
         return False
@@ -598,7 +648,7 @@ class Popup(Gtk.Dialog):
         elif len(rows) == 1:
             gfile = model.get(model.get_iter(rows[0]), 2)[0]
         else:
-            fname = ''
+            fname = ""
 
         if gfile:
             if gfile.is_native():
@@ -607,7 +657,7 @@ class Popup(Gtk.Dialog):
                 fname = xml.sax.saxutils.escape(gfile.get_uri())
 
         self._open_button.set_sensitive(fname is not None)
-        self._info_label.set_markup(fname or '')
+        self._info_label.set_markup(fname or "")
 
     def on_focus_entry(self, group, accel, keyval, modifier):
         self._entry.grab_focus()
