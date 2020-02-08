@@ -176,19 +176,6 @@ def _make_markup(parts, path):
     return os.sep.join(out)
 
 
-def _get_icon(f):
-    query = f.query_info(
-        Gio.FILE_ATTRIBUTE_STANDARD_ICON,
-        Gio.FileQueryInfoFlags.NONE,
-        None,
-    )
-
-    if not query:
-        return None
-    else:
-        return query.get_icon()
-
-
 def _make_parts(parent, child, pp):
     parts = []
 
