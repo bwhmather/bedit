@@ -549,7 +549,6 @@ class Popup(Gtk.Dialog):
                     + os.sep
                 )
                 self._entry.set_position(-1)
-                self._entry.grab_focus()
                 return True
 
         if rows and ret:
