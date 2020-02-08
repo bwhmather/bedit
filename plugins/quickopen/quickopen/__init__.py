@@ -95,60 +95,6 @@ class QuickOpenPlugin(GObject.Object, Bedit.WindowActivatable):
         self._popup.set_position(Gtk.WindowPosition.CENTER_ON_PARENT)
         self._popup.connect("destroy", self.on_popup_destroy)
 
-    def _local_bookmarks(self):
-        filename = os.path.expanduser("~/.config/gtk-3.0/bookmarks")
-
-        if not os.path.isfile(filename):
-            return []
-
-        paths = []
-
-        for line in open(filename, "r", encoding="utf-8"):
-            uri = line.strip().split(" ")[0]
-            f = Gio.file_new_for_uri(uri)
-
-            if f.is_native():
-                try:
-                    info = f.query_info(
-                        Gio.FILE_ATTRIBUTE_STANDARD_TYPE,
-                        Gio.FileQueryInfoFlags.NONE,
-                        None,
-                    )
-
-                    if (
-                        info
-                        and info.get_file_type() == Gio.FileType.DIRECTORY
-                    ):
-                        paths.append(f)
-                except:
-                    pass
-
-        return paths
-
-    def _desktop_dir(self):
-        config = os.getenv("XDG_CONFIG_HOME")
-
-        if not config:
-            config = os.path.expanduser("~/.config")
-
-        config = os.path.join(config, "user-dirs.dirs")
-        desktopdir = None
-
-        if os.path.isfile(config):
-            for line in open(config, "r", encoding="utf-8"):
-                line = line.strip()
-
-                if line.startswith("XDG_DESKTOP_DIR"):
-                    parts = line.split("=", 1)
-                    desktopdir = parts[1].strip('"').strip("'")
-                    desktopdir = os.path.expandvars(desktopdir)
-                    break
-
-        if not desktopdir:
-            desktopdir = os.path.expanduser("~/Desktop")
-
-        return desktopdir
-
     # Callbacks
     def on_quick_open_activate(self, action, parameter, user_data=None):
         if not self._popup:
