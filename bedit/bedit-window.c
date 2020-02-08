@@ -77,7 +77,7 @@
 #include "bedit-window-activatable.h"
 #include "bedit-window-private.h"
 
-enum { PROP_0, PROP_STATE, LAST_PROP };
+enum { PROP_0, PROP_STATE, PROP_DEFAULT_LOCATION, LAST_PROP };
 
 static GParamSpec *properties[LAST_PROP];
 
@@ -112,6 +112,27 @@ static void bedit_window_get_property(
     case PROP_STATE:
         g_value_set_flags(value, bedit_window_get_state(window));
         break;
+
+    case PROP_DEFAULT_LOCATION:
+        g_value_take_object(value, _bedit_window_get_default_location(window));
+        break;
+
+    default:
+        G_OBJECT_WARN_INVALID_PROPERTY_ID(object, prop_id, pspec);
+        break;
+    }
+}
+
+static void bedit_window_set_property(
+    GObject *object, guint prop_id, const GValue *value, GParamSpec *pspec) {
+    BeditWindow *window = BEDIT_WINDOW(object);
+
+    switch (prop_id) {
+    case PROP_DEFAULT_LOCATION:
+        _bedit_window_set_default_location(
+            window, G_FILE(g_value_dup_object(value)));
+        break;
+
     default:
         G_OBJECT_WARN_INVALID_PROPERTY_ID(object, prop_id, pspec);
         break;
@@ -370,6 +391,7 @@ static void bedit_window_class_init(BeditWindowClass *klass) {
     object_class->dispose = bedit_window_dispose;
     object_class->finalize = bedit_window_finalize;
     object_class->get_property = bedit_window_get_property;
+    object_class->set_property = bedit_window_set_property;
 
     widget_class->window_state_event = bedit_window_window_state_event;
     widget_class->configure_event = bedit_window_configure_event;
@@ -378,7 +400,9 @@ static void bedit_window_class_init(BeditWindowClass *klass) {
     properties[PROP_STATE] = g_param_spec_flags(
         "state", "State", "The window's state", BEDIT_TYPE_WINDOW_STATE,
         BEDIT_WINDOW_STATE_NORMAL, G_PARAM_READABLE | G_PARAM_STATIC_STRINGS);
-
+    properties[PROP_DEFAULT_LOCATION] = g_param_spec_object(
+        "default-location", "Default Location", "The window's working directory",
+        G_TYPE_FILE, G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
     g_object_class_install_properties(object_class, LAST_PROP, properties);
 
     signals[TAB_ADDED] = g_signal_new(
@@ -2344,14 +2368,24 @@ GFile *_bedit_window_get_default_location(BeditWindow *window) {
 }
 
 void _bedit_window_set_default_location(BeditWindow *window, GFile *location) {
-    GFile *dir;
+    gboolean updated = FALSE;
 
     g_return_if_fail(BEDIT_IS_WINDOW(window));
     g_return_if_fail(G_IS_FILE(location));
-    if (window->priv->default_location != NULL)
+
+    if (window->priv->default_location != NULL) {
+        updated = !g_file_equal(location, window->priv->default_location);
         g_object_unref(window->priv->default_location);
+    } else {
+        updated = location != NULL;
+    }
 
     window->priv->default_location = location;
+
+    if (updated) {
+        g_object_notify(G_OBJECT(window), "default-location");
+    }
+
 }
 
 static void add_unsaved_doc(BeditTab *tab, GList **res) {
