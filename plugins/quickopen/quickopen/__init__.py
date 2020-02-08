@@ -87,10 +87,6 @@ class QuickOpenPlugin(GObject.Object, Bedit.WindowActivatable):
 
         paths.append(self.window.get_property('default-location'))
 
-        # Recent documents
-        for path in self._local_bookmarks():
-            paths.append(path)
-
         self._popup = Popup(self.window, paths, self.on_activated)
         self.window.get_group().add_window(self._popup)
 
