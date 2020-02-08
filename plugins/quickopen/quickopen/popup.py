@@ -316,6 +316,9 @@ class Popup(Gtk.Dialog):
             cell.set_property("cell-background-set", False)
             cell.set_property("style-set", False)
 
+    def _is_hidden(self, path):
+        return path.startswith(".")
+
     def do_search_dir(self, parts, d):
         if not parts or not d:
             return []
@@ -324,7 +327,7 @@ class Popup(Gtk.Dialog):
             entries = self._cache[d]
         else:
             entries = _list_dir(d)
-            entries.sort(key=lambda x: x[1].lower())
+            entries.sort(key=lambda x: (self._is_hidden(x[1]), x[1].lower()))
             self._cache[d] = entries
 
         found = []
