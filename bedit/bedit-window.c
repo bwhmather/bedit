@@ -63,7 +63,6 @@
 #include "bedit-document.h"
 #include "bedit-enum-types.h"
 #include "bedit-highlight-mode-selector.h"
-#include "bedit-menu-stack-switcher.h"
 #include "bedit-notebook-popup-menu.h"
 #include "bedit-notebook.h"
 #include "bedit-plugins-engine.h"
