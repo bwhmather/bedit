@@ -1730,8 +1730,13 @@ static void on_tab_close_request(
 }
 
 static void on_show_popup_menu(
-    GdkEventButton *event, BeditTab *tab, BeditWindow *window) {
+    BeditNotebook *notebook, GdkEventButton *event, BeditTab *tab,
+    BeditWindow *window) {
     GtkWidget *menu;
+
+    g_return_if_fail(BEDIT_IS_NOTEBOOK(notebook));
+    g_return_if_fail(BEDIT_IS_TAB(tab));
+    g_return_if_fail(BEDIT_IS_WINDOW(window));
 
     if (event == NULL) {
         return;
