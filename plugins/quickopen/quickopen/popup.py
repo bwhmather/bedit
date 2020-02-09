@@ -121,7 +121,7 @@ def _compare_entries(a, b, lpart):
 
 def _match_glob(s, glob):
     if glob:
-        glob += "*"
+        glob = "*" + glob + "*"
 
     return fnmatch.fnmatch(s, glob)
 
