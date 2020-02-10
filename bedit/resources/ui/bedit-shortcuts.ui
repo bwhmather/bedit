@@ -71,14 +71,14 @@
             <child>
               <object class="GtkShortcutsShortcut">
                 <property name="visible">1</property>
-                <property name="accelerator">&lt;ctrl&gt;&lt;Alt&gt;Page_Down</property>
+                <property name="accelerator">&lt;ctrl&gt;Tab</property>
                 <property name="title" translatable="yes" context="shortcut window">Switch to the next document</property>
               </object>
             </child>
             <child>
               <object class="GtkShortcutsShortcut">
                 <property name="visible">1</property>
-                <property name="accelerator">&lt;ctrl&gt;&lt;Alt&gt;Page_Up</property>
+                <property name="accelerator">&lt;ctrl&gt;&lt;Shift&gt;Tab</property>
                 <property name="title" translatable="yes" context="shortcut window">Switch to the previous document</property>
               </object>
             </child>
@@ -100,13 +100,6 @@
                 <property name="visible">1</property>
                 <property name="accelerator">&lt;ctrl&gt;N</property>
                 <property name="title" translatable="yes" context="shortcut window">Create a new document in a window</property>
-              </object>
-            </child>
-            <child>
-              <object class="GtkShortcutsShortcut">
-                <property name="visible">1</property>
-                <property name="accelerator">&lt;ctrl&gt;&lt;alt&gt;N</property>
-                <property name="title" translatable="yes" context="shortcut window">Create a new tab group</property>
               </object>
             </child>
             <child>
