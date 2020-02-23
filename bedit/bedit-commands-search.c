@@ -489,7 +489,7 @@ void _bedit_cmd_search_find(
     }
 
     frame = _bedit_tab_get_view_frame(active_tab);
-    bedit_view_frame_popup_search(frame);
+    // TODO bedit_view_frame_popup_search(frame);
 }
 
 void _bedit_cmd_search_replace(

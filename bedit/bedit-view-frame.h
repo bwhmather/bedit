@@ -41,8 +41,6 @@ BeditViewFrame *bedit_view_frame_new(void);
 
 BeditView *bedit_view_frame_get_view(BeditViewFrame *frame);
 
-void bedit_view_frame_popup_search(BeditViewFrame *frame);
-
 void bedit_view_frame_popup_goto_line(BeditViewFrame *frame);
 
 void bedit_view_frame_clear_search(BeditViewFrame *frame);
