@@ -384,10 +384,6 @@ static void start_interactive_goto_line_real(BeditViewFrame *frame) {
     /* BEGIN TODO: move to ui file */
     width_request = 160;
 
-    gtk_widget_set_tooltip_text(
-        GTK_WIDGET(frame->goto_line_entry),
-        _("Line you want to move the cursor to"));
-
     gtk_widget_set_size_request(
         GTK_WIDGET(frame->goto_line_entry), width_request, -1);
     /* END TODO: move to ui file */
