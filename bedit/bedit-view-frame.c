@@ -346,7 +346,6 @@ static void start_interactive_goto_line_real(BeditViewFrame *frame) {
     GtkTextBuffer *buffer;
     GtkTextIter iter;
     GtkTextMark *mark;
-    gint width_request;
 
     if (gtk_revealer_get_reveal_child(frame->revealer)) {
         gtk_editable_select_region(
@@ -380,13 +379,6 @@ static void start_interactive_goto_line_real(BeditViewFrame *frame) {
         frame->goto_line_entry, frame->goto_line_entry_changed_id);
 
     gtk_widget_grab_focus(GTK_WIDGET(frame->goto_line_entry));
-
-    /* BEGIN TODO: move to ui file */
-    width_request = 160;
-
-    gtk_widget_set_size_request(
-        GTK_WIDGET(frame->goto_line_entry), width_request, -1);
-    /* END TODO: move to ui file */
 
     init_goto_line_entry(frame);
 
