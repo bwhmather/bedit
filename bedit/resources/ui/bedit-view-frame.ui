@@ -38,8 +38,9 @@
               <object class="GtkSearchEntry" id="goto_line_entry">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
-                <property name="primary-icon-activatable">True</property>
-                <property name="primary-icon-sensitive">True</property>
+                <property name="primary_icon_activatable">False</property>
+                <property name="primary_icon_sensitive">False</property>
+                <property name="primary_icon_name">go-jump-symbolic</property>
               </object>
             </child>
           </object>

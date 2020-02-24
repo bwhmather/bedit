@@ -346,7 +346,6 @@ static void start_interactive_goto_line_real(BeditViewFrame *frame) {
     GtkTextBuffer *buffer;
     GtkTextIter iter;
     GtkTextMark *mark;
-    GIcon *icon;
     gint width_request;
 
     if (gtk_revealer_get_reveal_child(frame->revealer)) {
@@ -383,21 +382,14 @@ static void start_interactive_goto_line_real(BeditViewFrame *frame) {
     gtk_widget_grab_focus(GTK_WIDGET(frame->goto_line_entry));
 
     /* BEGIN TODO: move to ui file */
-    icon = g_themed_icon_new_with_default_fallbacks("go-jump-symbolic");
-
     width_request = 160;
 
     gtk_widget_set_tooltip_text(
         GTK_WIDGET(frame->goto_line_entry),
         _("Line you want to move the cursor to"));
 
-    gtk_entry_set_icon_from_gicon(
-        GTK_ENTRY(frame->goto_line_entry), GTK_ENTRY_ICON_PRIMARY, icon);
-
     gtk_widget_set_size_request(
         GTK_WIDGET(frame->goto_line_entry), width_request, -1);
-
-    g_object_unref(icon);
     /* END TODO: move to ui file */
 
     init_goto_line_entry(frame);
