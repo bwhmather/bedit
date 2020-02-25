@@ -44,8 +44,6 @@
 
 #define FLUSH_TIMEOUT_DURATION 30 /* in seconds */
 
-#define SEARCH_POPUP_MARGIN 12
-
 typedef enum { SEARCH_STATE_NORMAL, SEARCH_STATE_NOT_FOUND } SearchState;
 
 struct _BeditViewFrame {
@@ -345,7 +343,6 @@ static void start_interactive_goto_line_real(BeditViewFrame *frame) {
     if (frame->start_mark != NULL) {
         gtk_text_buffer_delete_mark(buffer, frame->start_mark);
     }
-
     frame->start_mark = gtk_text_buffer_create_mark(buffer, NULL, &iter, FALSE);
 
     line = gtk_text_iter_get_line(&iter);
@@ -399,9 +396,6 @@ static void bedit_view_frame_init(BeditViewFrame *frame) {
 
     gtk_source_file_set_mount_operation_factory(
         file, view_frame_mount_operation_factory, frame, NULL);
-
-
-    gtk_widget_set_margin_end(GTK_WIDGET(frame->revealer), SEARCH_POPUP_MARGIN);
 
     g_signal_connect(
         frame->revealer, "key-press-event",
