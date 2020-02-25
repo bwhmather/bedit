@@ -324,28 +324,12 @@ static gboolean goto_line_entry_focus_out_event(
     return GDK_EVENT_PROPAGATE;
 }
 
-static void init_goto_line_entry(BeditViewFrame *frame) {
-    gint line;
-    gchar *line_str;
-    GtkTextIter iter;
-
-    get_iter_at_start_mark(frame, &iter);
-
-    line = gtk_text_iter_get_line(&iter);
-
-    line_str = g_strdup_printf("%d", line + 1);
-
-    gtk_entry_set_text(GTK_ENTRY(frame->goto_line_entry), line_str);
-
-    gtk_editable_select_region(GTK_EDITABLE(frame->goto_line_entry), 0, -1);
-
-    g_free(line_str);
-}
-
 static void start_interactive_goto_line_real(BeditViewFrame *frame) {
     GtkTextBuffer *buffer;
     GtkTextIter iter;
     GtkTextMark *mark;
+    gint line;
+    gchar *line_str;
 
     if (gtk_revealer_get_reveal_child(frame->revealer)) {
         gtk_editable_select_region(
@@ -357,32 +341,25 @@ static void start_interactive_goto_line_real(BeditViewFrame *frame) {
 
     mark = gtk_text_buffer_get_insert(buffer);
     gtk_text_buffer_get_iter_at_mark(buffer, &iter, mark);
-
+    
     if (frame->start_mark != NULL) {
         gtk_text_buffer_delete_mark(buffer, frame->start_mark);
     }
 
     frame->start_mark = gtk_text_buffer_create_mark(buffer, NULL, &iter, FALSE);
 
+    line = gtk_text_iter_get_line(&iter);
+    line_str = g_strdup_printf("%d", line + 1);
+    gtk_entry_set_text(GTK_ENTRY(frame->goto_line_entry), line_str);
+
+    gtk_editable_select_region(GTK_EDITABLE(frame->goto_line_entry), 0, -1);
+
     gtk_revealer_set_reveal_child(frame->revealer, TRUE);
-
-    /* NOTE: we must be very careful here to not have any text before
-       focusing the entry because when the entry is focused the text is
-       selected, and gtk+ doesn't allow us to have more than one selection
-       active */
-    g_signal_handler_block(
-        frame->goto_line_entry, frame->goto_line_entry_changed_id);
-
-    gtk_entry_set_text(GTK_ENTRY(frame->goto_line_entry), "");
-
-    g_signal_handler_unblock(
-        frame->goto_line_entry, frame->goto_line_entry_changed_id);
-
     gtk_widget_grab_focus(GTK_WIDGET(frame->goto_line_entry));
 
-    init_goto_line_entry(frame);
-
     renew_flush_timeout(frame);
+    
+    g_free(line_str);
 }
 
 static void bedit_view_frame_class_init(BeditViewFrameClass *klass) {
