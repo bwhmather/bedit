@@ -43,7 +43,6 @@
 #include <string.h>
 
 #include "bedit-debug.h"
-#include "bedit-replace-dialog.h"
 #include "bedit-searchbar.h"
 #include "bedit-statusbar.h"
 #include "bedit-tab-private.h"
@@ -53,7 +52,6 @@
 #include "bedit-window-private.h"
 #include "bedit-window.h"
 
-#define BEDIT_REPLACE_DIALOG_KEY "bedit-replace-dialog-key"
 #define BEDIT_LAST_SEARCH_DATA_KEY "bedit-last-search-data-key"
 
 #define MAX_MSG_LENGTH 40
