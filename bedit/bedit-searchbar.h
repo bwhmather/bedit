@@ -39,6 +39,9 @@ void bedit_searchbar_show_find(BeditSearchbar *searchbar);
 void bedit_searchbar_show_replace(BeditSearchbar *searchbar);
 void bedit_searchbar_hide(BeditSearchbar *searchbar);
 
+void bedit_searchbar_next(BeditSearchbar *searchbar);
+void bedit_searchbar_prev(BeditSearchbar *searchbar);
+
 G_END_DECLS
 
 #endif

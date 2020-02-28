@@ -202,38 +202,7 @@ static void forward_search_from_dialog_finished(
 }
 
 static void run_forward_search(BeditWindow *window, gboolean from_dialog) {
-    BeditView *view;
-    GtkTextBuffer *buffer;
-    GtkTextIter start_at;
-    GtkSourceSearchContext *search_context;
-
-    view = bedit_window_get_active_view(window);
-
-    if (view == NULL) {
-        return;
-    }
-
-    buffer = gtk_text_view_get_buffer(GTK_TEXT_VIEW(view));
-
-    search_context = bedit_document_get_search_context(BEDIT_DOCUMENT(buffer));
-
-    if (search_context == NULL) {
-        return;
-    }
-
-    gtk_text_buffer_get_selection_bounds(buffer, NULL, &start_at);
-
-    if (from_dialog) {
-        gtk_source_search_context_forward_async(
-            search_context, &start_at, NULL,
-            (GAsyncReadyCallback)forward_search_from_dialog_finished,
-            window);
-    } else {
-        gtk_source_search_context_forward_async(
-            search_context, &start_at, NULL,
-            (GAsyncReadyCallback)forward_search_not_from_dialog_finished,
-            view);
-    }
+    bedit_searchbar_next(BEDIT_SEARCHBAR(window->priv->searchbar));
 }
 
 static gboolean backward_search_finished(
@@ -324,11 +293,8 @@ static void run_backward_search(BeditWindow *window, gboolean from_dialog) {
 }
 
 static void do_find(BeditReplaceDialog *dialog, BeditWindow *window) {
-    if (bedit_replace_dialog_get_backwards(dialog)) {
-        run_backward_search(window, TRUE);
-    } else {
-        run_forward_search(window, TRUE);
-    }
+    // TODO
+    bedit_searchbar_next(BEDIT_SEARCHBAR(window->priv->searchbar));
 }
 
 static void do_replace(BeditReplaceDialog *dialog, BeditWindow *window) {
@@ -499,7 +465,7 @@ void _bedit_cmd_search_find_next(
 
     bedit_debug(DEBUG_COMMANDS);
 
-    run_forward_search(window, FALSE);
+    bedit_searchbar_next(BEDIT_SEARCHBAR(window->priv->searchbar));
 }
 
 void _bedit_cmd_search_find_prev(
@@ -508,7 +474,7 @@ void _bedit_cmd_search_find_prev(
 
     bedit_debug(DEBUG_COMMANDS);
 
-    run_backward_search(window, FALSE);
+    bedit_searchbar_prev(BEDIT_SEARCHBAR(window->priv->searchbar));
 }
 
 void _bedit_cmd_search_clear_highlight(
