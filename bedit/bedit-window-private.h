@@ -69,6 +69,9 @@ struct _BeditWindowPrivate {
     guint language_changed_id;
     guint wrap_mode_changed_id;
 
+    /* searchbar */
+    GtkWidget *searchbar;
+
     /* Tab bar widgets */
     GtkWidget *action_area;
     GtkWidget *gear_button;

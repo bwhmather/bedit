@@ -66,6 +66,7 @@
 #include "bedit-notebook-popup-menu.h"
 #include "bedit-notebook.h"
 #include "bedit-plugins-engine.h"
+#include "bedit-searchbar.h"
 #include "bedit-settings.h"
 #include "bedit-status-menu-button.h"
 #include "bedit-statusbar.h"
@@ -438,6 +439,8 @@ static void bedit_window_class_init(BeditWindowClass *klass) {
         widget_class, BeditWindow, notebook);
     gtk_widget_class_bind_template_child_private(
         widget_class, BeditWindow, statusbar);
+    gtk_widget_class_bind_template_child_private(
+        widget_class, BeditWindow, searchbar);
     gtk_widget_class_bind_template_child_private(
         widget_class, BeditWindow, language_button);
     gtk_widget_class_bind_template_child_private(
@@ -1202,6 +1205,7 @@ static void update_statusbar(
     }
 }
 
+
 static void on_switched_page(
     BeditNotebook *notebook, BeditTab *new_tab, guint page_num,
     BeditWindow *window) {
@@ -1218,6 +1222,9 @@ static void on_switched_page(
 
     sync_current_tab_actions(window, old_view, new_view);
     update_statusbar(window, old_view, new_view);
+
+    bedit_searchbar_set_view(
+        BEDIT_SEARCHBAR(window->priv->searchbar), new_view);
 
     if (new_tab == NULL || window->priv->dispose_has_run)
         return;

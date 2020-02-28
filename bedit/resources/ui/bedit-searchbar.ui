@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <!-- interface-requires gtk+ 3.0 -->
+  <template class="BeditSearchbar" parent="GtkBin">
+    <property name="can_focus">False</property>
+    <property name="visible">True</property>
+    <child>
+      <object class="GtkRevealer" id="revealer">
+        <property name="can_focus">False</property>
+        <property name="visible">True</property>
+        <property name="transition_type">slide-up</property>
+        <child>
+          <object class="GtkGrid">
+            <property name="can_focus">False</property>
+            <property name="visible">True</property>
+            <property name="margin_top">3</property>
+            <property name="margin_end">3</property>
+            <property name="margin_bottom">3</property>
+            <property name="margin_start">3</property>
+            <property name="row_spacing">8</property>
+            <property name="column_spacing">8</property>
+            <child>
+              <!-- <object class="GdTaggedEntry" id="search_entry"> -->
+              <object class="GtkSearchEntry" id="search_entry">
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="primary-icon-activatable">True</property>
+                <property name="primary-icon-sensitive">True</property>
+                <property name="hexpand">True</property>
+              </object>
+              <packing>
+                <property name="left_attach">0</property>
+                <property name="top_attach">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkSearchEntry" id="replace_entry">
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="primary_icon_name">edit-find-replace-symbolic</property>
+                <property name="primary_icon_activatable">False</property>
+                <property name="primary_icon_sensitive">False</property>
+              </object>
+              <packing>
+                <property name="left_attach">0</property>
+                <property name="top_attach">1</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkBox">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="orientation">horizontal</property>
+                <style>
+                  <class name="linked"/>
+                </style>
+                <child>
+                  <object class="GtkButton" id="prev_button">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="tooltip_text" translatable="yes">Previous match (Ctrl+Shift+G)</property>
+                    <child>
+                      <object class="GtkImage" id="up_image">
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="icon_size">1</property>
+                        <property name="icon_name">go-up-symbolic</property>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkButton" id="next_button">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="tooltip_text" translatable="yes">Previous match (Ctrl+G)</property>
+                    <child>
+                      <object class="GtkImage" id="down_image">
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="icon_size">1</property>
+                        <property name="icon_name">go-down-symbolic</property>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+              </object>
+              <packing>
+                <property name="left_attach">1</property>
+                <property name="top_attach">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkBox">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="orientation">horizontal</property>
+                <style>
+                  <class name="linked"/>
+                </style>
+                <child>
+                  <object class="GtkToggleButton" id="match_case_toggle">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="label" translatable="no">Aa</property>
+                    <property name="tooltip_text" translatable="yes">Match case</property>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkToggleButton" id="regex_toggle">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="label" translatable="no">.*</property>
+                    <property name="tooltip_text" translatable="yes">Regular expression</property>
+                  </object>
+                </child>
+              </object>
+              <packing>
+                <property name="left_attach">2</property>
+                <property name="top_attach">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkButton" id="replace_button">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="label" translatable="yes">_Replace</property>
+                <property name="use_underline">True</property>
+              </object>
+              <packing>
+                <property name="left_attach">1</property>
+                <property name="top_attach">1</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkButton" id="replace_all_button">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="label" translatable="yes">Replace _All</property>
+                <property name="use_underline">True</property>
+              </object>
+              <packing>
+                <property name="left_attach">2</property>
+                <property name="top_attach">1</property>
+              </packing>
+            </child>
+          </object>
+        </child>
+      </object>
+    </child>
+  </template>
+</interface>

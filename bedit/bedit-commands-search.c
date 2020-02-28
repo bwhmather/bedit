@@ -44,6 +44,7 @@
 
 #include "bedit-debug.h"
 #include "bedit-replace-dialog.h"
+#include "bedit-searchbar.h"
 #include "bedit-statusbar.h"
 #include "bedit-tab-private.h"
 #include "bedit-tab.h"
@@ -477,43 +478,19 @@ static GtkWidget *create_dialog(BeditWindow *window) {
 void _bedit_cmd_search_find(
     GSimpleAction *action, GVariant *parameter, gpointer user_data) {
     BeditWindow *window = BEDIT_WINDOW(user_data);
-    BeditTab *active_tab;
-    BeditViewFrame *frame;
 
     bedit_debug(DEBUG_COMMANDS);
 
-    active_tab = bedit_window_get_active_tab(window);
-
-    if (active_tab == NULL) {
-        return;
-    }
-
-    frame = _bedit_tab_get_view_frame(active_tab);
-    // TODO bedit_view_frame_popup_search(frame);
+    bedit_searchbar_show_find(BEDIT_SEARCHBAR(window->priv->searchbar));
 }
 
 void _bedit_cmd_search_replace(
     GSimpleAction *action, GVariant *parameter, gpointer user_data) {
     BeditWindow *window = BEDIT_WINDOW(user_data);
-    gpointer data;
-    GtkWidget *replace_dialog;
 
     bedit_debug(DEBUG_COMMANDS);
 
-    data = g_object_get_data(G_OBJECT(window), BEDIT_REPLACE_DIALOG_KEY);
-
-    if (data == NULL) {
-        replace_dialog = create_dialog(window);
-    } else {
-        g_return_if_fail(BEDIT_IS_REPLACE_DIALOG(data));
-
-        replace_dialog = GTK_WIDGET(data);
-    }
-
-    gtk_widget_show(replace_dialog);
-    last_search_data_restore_position(BEDIT_REPLACE_DIALOG(replace_dialog));
-    bedit_replace_dialog_present_with_time(
-        BEDIT_REPLACE_DIALOG(replace_dialog), GDK_CURRENT_TIME);
+    bedit_searchbar_show_replace(BEDIT_SEARCHBAR(window->priv->searchbar));
 }
 
 void _bedit_cmd_search_find_next(
