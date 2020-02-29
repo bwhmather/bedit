@@ -56,6 +56,8 @@ struct _BeditSearchbar {
     BeditView *view;
     GtkSourceSearchContext *context;
     GtkTextMark *start_mark;
+
+    gulong cursor_moved_cb_id;
 };
 
 G_DEFINE_TYPE(BeditSearchbar, bedit_searchbar, GTK_TYPE_BIN)
@@ -102,23 +104,34 @@ static void bedit_searchbar_class_init(BeditSearchbarClass *klass) {
         widget_class, BeditSearchbar, replace_all_button);
 }
 
-static void bedit_searchbar_reset_start_mark(BeditSearchbar *searchbar) {
+static void bedit_searchbar_clear_start_mark(BeditSearchbar *searchbar) {
+    GtkTextBuffer *buffer;
+
+    bedit_debug(DEBUG_WINDOW);
+
+    g_return_if_fail(BEDIT_IS_SEARCHBAR(searchbar));
+
+    if (searchbar->start_mark == NULL) {
+        return;
+    }
+
+    buffer = gtk_text_mark_get_buffer(searchbar->start_mark);
+    gtk_text_buffer_delete_mark(buffer, searchbar->start_mark);
+
+    searchbar->start_mark = NULL;
+}
+
+static void bedit_searchbar_set_start_mark(BeditSearchbar *searchbar) {
     GtkTextBuffer *buffer;
     GtkTextIter start_iter;
 
     bedit_debug(DEBUG_WINDOW);
 
     g_return_if_fail(BEDIT_IS_SEARCHBAR(searchbar));
-
-    if (searchbar->view == NULL) {
-        return;
-    }
+    g_return_if_fail(GTK_IS_TEXT_VIEW(searchbar->view));
+    g_return_if_fail(searchbar->start_mark == NULL);
 
     buffer = gtk_text_view_get_buffer(GTK_TEXT_VIEW(searchbar->view));
-
-    if (searchbar->start_mark != NULL) {
-        gtk_text_buffer_delete_mark(buffer, searchbar->start_mark);
-    }
 
     gtk_text_buffer_get_selection_bounds(buffer, &start_iter, NULL);
 
@@ -126,6 +139,17 @@ static void bedit_searchbar_reset_start_mark(BeditSearchbar *searchbar) {
         buffer, NULL, &start_iter, FALSE);
 }
 
+static void bedit_searchbar_reset_start_mark(BeditSearchbar *searchbar) {
+    bedit_debug(DEBUG_WINDOW);
+
+    g_return_if_fail(BEDIT_IS_SEARCHBAR(searchbar));
+
+    if (searchbar->view == NULL) {
+        return;
+    }
+    bedit_searchbar_clear_start_mark(searchbar);
+    bedit_searchbar_set_start_mark(searchbar);
+}
 
 static void bedit_searchbar_update_search_finished_cb(
     GtkSourceSearchContext *search_context,
@@ -158,8 +182,14 @@ static void bedit_searchbar_update_search_finished_cb(
         NULL, NULL);
 
     if (found) {
+        g_signal_handler_block(
+            buffer, searchbar->cursor_moved_cb_id);
+
         gtk_text_buffer_select_range(
             GTK_TEXT_BUFFER (buffer), &match_start, &match_end);
+
+        g_signal_handler_unblock(
+            buffer, searchbar->cursor_moved_cb_id);
 
         bedit_view_scroll_to_cursor(searchbar->view);
     } else {
@@ -302,6 +332,15 @@ static void bedit_searchbar_init(BeditSearchbar *searchbar) {
         G_CALLBACK(prev_button_clicked_cb), searchbar);
 }
 
+static void bedit_searchbar_cursor_moved_cb(
+    GtkTextBuffer *buffer, BeditSearchbar *searchbar) {
+    bedit_debug(DEBUG_WINDOW);
+
+    g_return_if_fail(BEDIT_IS_SEARCHBAR(searchbar));
+
+    bedit_searchbar_reset_start_mark(searchbar);
+}
+
 /**
  * bedit_searchbar_new:
  *
@@ -331,17 +370,26 @@ void bedit_searchbar_set_view(
     g_clear_object(&searchbar->context);
 
     if (searchbar->view != NULL) {
-        if (searchbar->start_mark != NULL) {
-            GtkTextBuffer *buffer = gtk_text_view_get_buffer(
-                GTK_TEXT_VIEW(searchbar->view));
-            gtk_text_buffer_delete_mark(buffer, searchbar->start_mark);
-            searchbar->start_mark = NULL;
-        }
+        BeditDocument *document = BEDIT_DOCUMENT(gtk_text_view_get_buffer(
+            GTK_TEXT_VIEW(searchbar->view)));
+
+        g_signal_handler_disconnect(
+            document, searchbar->cursor_moved_cb_id);
+
+        bedit_searchbar_clear_start_mark(searchbar);
     }
 
     searchbar->view = view;
     if (searchbar->view != NULL) {
-        bedit_searchbar_reset_start_mark(searchbar);
+        BeditDocument *document = BEDIT_DOCUMENT(gtk_text_view_get_buffer(
+            GTK_TEXT_VIEW(searchbar->view)));
+
+        bedit_searchbar_set_start_mark(searchbar);
+
+        searchbar->cursor_moved_cb_id = g_signal_connect(
+            document, "cursor-moved",
+            G_CALLBACK(bedit_searchbar_cursor_moved_cb),
+            searchbar);
     }
 
     bedit_searchbar_update_search(searchbar);
