@@ -1678,6 +1678,9 @@ static void on_page_removed(
     if (num_tabs == 0) {
         set_title(window);
 
+        bedit_searchbar_set_view(
+            BEDIT_SEARCHBAR(window->priv->searchbar), NULL);
+
         bedit_statusbar_clear_overwrite(
             BEDIT_STATUSBAR(window->priv->statusbar));
 
