@@ -210,6 +210,8 @@ static void bedit_searchbar_update_search(BeditSearchbar *searchbar) {
     GtkSourceSearchSettings *settings;
     GtkTextIter start_at;
     gchar const *search_text;
+    gboolean case_sensitive;
+    gboolean regex_enabled;
 
     bedit_debug(DEBUG_WINDOW);
 
@@ -236,6 +238,16 @@ static void bedit_searchbar_update_search(BeditSearchbar *searchbar) {
 
     search_text = gtk_entry_get_text(GTK_ENTRY(searchbar->search_entry));
     gtk_source_search_settings_set_search_text(settings, search_text);
+
+    case_sensitive = gtk_toggle_button_get_active(
+        GTK_TOGGLE_BUTTON(searchbar->match_case_toggle));
+    gtk_source_search_settings_set_case_sensitive(settings, case_sensitive);
+
+    regex_enabled = gtk_toggle_button_get_active(
+        GTK_TOGGLE_BUTTON(searchbar->regex_toggle));
+    gtk_source_search_settings_set_regex_enabled(settings, regex_enabled);
+
+    gtk_source_search_settings_set_wrap_around(settings, TRUE);
 
     /* Move cursor to first occurrence after start mark. */
     gtk_text_buffer_get_iter_at_mark(
