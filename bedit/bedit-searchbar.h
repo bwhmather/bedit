@@ -42,6 +42,9 @@ void bedit_searchbar_hide(BeditSearchbar *searchbar);
 void bedit_searchbar_next(BeditSearchbar *searchbar);
 void bedit_searchbar_prev(BeditSearchbar *searchbar);
 
+gboolean bedit_searchbar_get_search_active(BeditSearchbar *searchbar);
+gboolean bedit_searchbar_get_replace_active(BeditSearchbar *searchbar);
+
 G_END_DECLS
 
 #endif

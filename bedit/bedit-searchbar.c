@@ -617,3 +617,51 @@ void bedit_searchbar_prev(BeditSearchbar *searchbar) {
         (GAsyncReadyCallback)bedit_searchbar_prev_finished_cb, searchbar);
 }
 
+/**
+ * bedit_searchbar_get_search_active:
+ *
+ * Returns true if the searchbar is visible and has an active search in
+ * progress, i.e. has a valid search query.  Returns false otherwise.
+ */
+gboolean bedit_searchbar_get_search_active(BeditSearchbar *searchbar) {
+    gchar const *search_text;
+
+    bedit_debug(DEBUG_WINDOW);
+
+    g_return_val_if_fail(BEDIT_IS_SEARCHBAR(searchbar), FALSE);
+
+    if (searchbar->mode == BEDIT_SEARCHBAR_MODE_HIDDEN) {
+        return FALSE;
+    }
+
+    search_text = gtk_entry_get_text(GTK_ENTRY(searchbar->search_entry));
+    if (search_text == NULL || search_text[0] == '\0') {
+        return FALSE;
+    }
+
+    return TRUE;
+}
+
+/**
+ * bedit_searchbar_get_replace_active:
+ *
+ * Returns true if the replace part of the searchbar is visible and there is a
+ * valid search in progress.
+ * Calls to #bedit_searchbar_replace and #bedit_searchbar_replace_all will be
+ * ignored if this is not true.
+ */
+gboolean bedit_searchbar_get_replace_active(BeditSearchbar *searchbar) {
+    bedit_debug(DEBUG_WINDOW);
+
+    g_return_val_if_fail(BEDIT_IS_SEARCHBAR(searchbar), FALSE);
+
+    if (searchbar->mode != BEDIT_SEARCHBAR_MODE_REPLACE) {
+        return FALSE;
+    }
+
+    if (!bedit_searchbar_get_search_active(searchbar)) {
+        return FALSE;
+    }
+
+    return TRUE;
+}
