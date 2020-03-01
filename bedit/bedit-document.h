@@ -95,11 +95,6 @@ gchar *bedit_document_get_metadata(BeditDocument *doc, const gchar *key);
 void bedit_document_set_metadata(
     BeditDocument *doc, const gchar *first_key, ...);
 
-void bedit_document_set_search_context(
-    BeditDocument *doc, GtkSourceSearchContext *search_context);
-
-GtkSourceSearchContext *bedit_document_get_search_context(BeditDocument *doc);
-
 G_END_DECLS
 
 #endif /* BEDIT_DOCUMENT_H */

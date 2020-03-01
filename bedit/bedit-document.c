@@ -81,20 +81,9 @@ typedef struct {
 
     GDateTime *time_of_last_save_or_load;
 
-    /* The search context for the incremental search, or the search and
-     * replace. They are mutually exclusive.
-     */
-    GtkSourceSearchContext *search_context;
-
     guint user_action;
 
     guint language_set_by_user : 1;
-
-    /* The search is empty if there is no search context, or if the
-     * search text is empty. It is used for the sensitivity of some menu
-     * actions.
-     */
-    guint empty_search : 1;
 
     /* Create file if location points to a non existing file (for example
      * when opened from the command line).
@@ -107,7 +96,6 @@ enum {
     PROP_SHORTNAME,
     PROP_CONTENT_TYPE,
     PROP_MIME_TYPE,
-    PROP_EMPTY_SEARCH,
     LAST_PROP
 };
 
@@ -213,7 +201,6 @@ static void bedit_document_dispose(GObject *object) {
 
     g_clear_object(&priv->file);
     g_clear_object(&priv->editor_settings);
-    g_clear_object(&priv->search_context);
 
     G_OBJECT_CLASS(bedit_document_parent_class)->dispose(object);
 }
@@ -241,9 +228,6 @@ static void bedit_document_finalize(GObject *object) {
 static void bedit_document_get_property(
     GObject *object, guint prop_id, GValue *value, GParamSpec *pspec) {
     BeditDocument *doc = BEDIT_DOCUMENT(object);
-    BeditDocumentPrivate *priv;
-
-    priv = bedit_document_get_instance_private(doc);
 
     switch (prop_id) {
     case PROP_SHORTNAME:
@@ -257,10 +241,6 @@ static void bedit_document_get_property(
 
     case PROP_MIME_TYPE:
         g_value_take_string(value, bedit_document_get_mime_type(doc));
-        break;
-
-    case PROP_EMPTY_SEARCH:
-        g_value_set_boolean(value, priv->empty_search);
         break;
 
     default:
@@ -394,18 +374,6 @@ static void bedit_document_class_init(BeditDocumentClass *klass) {
      */
     properties[PROP_MIME_TYPE] = g_param_spec_string(
         "mime-type", "MIME Type", "The document's MIME Type", "text/plain",
-        G_PARAM_READABLE | G_PARAM_STATIC_STRINGS);
-
-    /**
-     * BeditDocument:empty-search:
-     *
-     * <warning>
-     * The property is used internally by bedit. It must not be used in a
-     * bedit plugin. The property can be modified or removed at any time.
-     * </warning>
-     */
-    properties[PROP_EMPTY_SEARCH] = g_param_spec_boolean(
-        "empty-search", "Empty search", "Whether the search is empty", TRUE,
         G_PARAM_READABLE | G_PARAM_STATIC_STRINGS);
 
     g_object_class_install_properties(object_class, LAST_PROP, properties);
@@ -689,7 +657,6 @@ static void bedit_document_init(BeditDocument *doc) {
     priv->untitled_number = get_untitled_number();
     priv->content_type = get_default_content_type();
     priv->language_set_by_user = FALSE;
-    priv->empty_search = TRUE;
 
     update_time_of_last_save_or_load(doc);
 
@@ -1255,132 +1222,6 @@ void bedit_document_set_metadata(
 
         g_clear_error(&error);
     }
-}
-
-static void update_empty_search(BeditDocument *doc) {
-    BeditDocumentPrivate *priv;
-    gboolean new_value;
-
-    priv = bedit_document_get_instance_private(doc);
-
-    if (priv->search_context == NULL) {
-        new_value = TRUE;
-    } else {
-        GtkSourceSearchSettings *search_settings;
-
-        search_settings =
-            gtk_source_search_context_get_settings(priv->search_context);
-
-        new_value =
-            gtk_source_search_settings_get_search_text(search_settings) == NULL;
-    }
-
-    if (priv->empty_search != new_value) {
-        priv->empty_search = new_value;
-        g_object_notify_by_pspec(G_OBJECT(doc), properties[PROP_EMPTY_SEARCH]);
-    }
-}
-
-static void connect_search_settings(BeditDocument *doc) {
-    BeditDocumentPrivate *priv;
-    GtkSourceSearchSettings *search_settings;
-
-    priv = bedit_document_get_instance_private(doc);
-
-    search_settings =
-        gtk_source_search_context_get_settings(priv->search_context);
-
-    /* Note: the signal handler is never disconnected. If the search context
-     * changes its search settings, the old search settings will most
-     * probably be destroyed, anyway. So it shouldn't cause performance
-     * problems.
-     */
-    g_signal_connect_object(
-        search_settings, "notify::search-text", G_CALLBACK(update_empty_search),
-        doc, G_CONNECT_SWAPPED);
-}
-
-/**
- * bedit_document_set_search_context:
- * @doc: a #BeditDocument
- * @search_context: (allow-none): the new #GtkSourceSearchContext
- *
- * Sets the new search context for the document. Use this function only when the
- * search occurrences are highlighted. So this function should not be used for
- * background searches. The purpose is to have only one highlighted search
- * context at a time in the document.
- *
- * After using this function, you should unref the @search_context. The @doc
- * should be the only owner of the @search_context, so that the Clear Highlight
- * action works. If you need the @search_context after calling this function,
- * use bedit_document_get_search_context().
- */
-void bedit_document_set_search_context(
-    BeditDocument *doc, GtkSourceSearchContext *search_context) {
-    BeditDocumentPrivate *priv;
-
-    g_return_if_fail(BEDIT_IS_DOCUMENT(doc));
-
-    priv = bedit_document_get_instance_private(doc);
-
-    if (priv->search_context != NULL) {
-        g_signal_handlers_disconnect_by_func(
-            priv->search_context, connect_search_settings, doc);
-
-        g_object_unref(priv->search_context);
-    }
-
-    priv->search_context = search_context;
-
-    if (search_context != NULL) {
-        g_object_ref(search_context);
-
-        g_settings_bind(
-            priv->editor_settings, BEDIT_SETTINGS_SEARCH_HIGHLIGHTING,
-            search_context, "highlight",
-            G_SETTINGS_BIND_GET | G_SETTINGS_BIND_NO_SENSITIVITY);
-
-        g_signal_connect_object(
-            search_context, "notify::settings",
-            G_CALLBACK(connect_search_settings), doc, G_CONNECT_SWAPPED);
-
-        connect_search_settings(doc);
-    }
-
-    update_empty_search(doc);
-}
-
-/**
- * bedit_document_get_search_context:
- * @doc: a #BeditDocument
- *
- * Gets the search context. Use this function only if you have used
- * bedit_document_set_search_context() before. You should not alter other search
- * contexts, so you have to verify that the returned search context is yours.
- * One way to verify that is to compare the search settings object, or to mark
- * the search context with g_object_set_data().
- *
- * Returns: (transfer none): the current search context of the document, or NULL
- * if there is no current search context.
- */
-GtkSourceSearchContext *bedit_document_get_search_context(BeditDocument *doc) {
-    BeditDocumentPrivate *priv;
-
-    g_return_val_if_fail(BEDIT_IS_DOCUMENT(doc), NULL);
-
-    priv = bedit_document_get_instance_private(doc);
-
-    return priv->search_context;
-}
-
-gboolean _bedit_document_get_empty_search(BeditDocument *doc) {
-    BeditDocumentPrivate *priv;
-
-    g_return_val_if_fail(BEDIT_IS_DOCUMENT(doc), TRUE);
-
-    priv = bedit_document_get_instance_private(doc);
-
-    return priv->empty_search;
 }
 
 /**
