@@ -99,8 +99,6 @@ void _bedit_cmd_search_find_prev(
     GSimpleAction *action, GVariant *parameter, gpointer user_data);
 void _bedit_cmd_search_replace(
     GSimpleAction *action, GVariant *parameter, gpointer user_data);
-void _bedit_cmd_search_clear_highlight(
-    GSimpleAction *action, GVariant *parameter, gpointer user_data);
 void _bedit_cmd_search_goto_line(
     GSimpleAction *action, GVariant *parameter, gpointer user_data);
 

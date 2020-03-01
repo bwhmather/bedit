@@ -693,9 +693,6 @@ static void bedit_app_startup(GApplication *application) {
         GTK_APPLICATION(application), "win.find-prev", "<Primary><Shift>G");
     add_accelerator(GTK_APPLICATION(application), "win.replace", "<Primary>H");
     add_accelerator(
-        GTK_APPLICATION(application), "win.clear-highlight",
-        "<Primary><Shift>K");
-    add_accelerator(
         GTK_APPLICATION(application), "win.goto-line", "<Primary>I");
     add_accelerator(
         GTK_APPLICATION(application), "win.focus-active-view", "Escape");

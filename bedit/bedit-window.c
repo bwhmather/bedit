@@ -668,14 +668,6 @@ static void update_actions_sensitivity(BeditWindow *window) {
          (state == BEDIT_TAB_STATE_EXTERNALLY_MODIFIED_NOTIFICATION)) &&
             (doc != NULL) && search_active);
 
-    action =
-        g_action_map_lookup_action(G_ACTION_MAP(window), "clear-highlight");
-    g_simple_action_set_enabled(
-        G_SIMPLE_ACTION(action),
-        ((state == BEDIT_TAB_STATE_NORMAL) ||
-         (state == BEDIT_TAB_STATE_EXTERNALLY_MODIFIED_NOTIFICATION)) &&
-            (doc != NULL) && search_active);
-
     action = g_action_map_lookup_action(G_ACTION_MAP(window), "goto-line");
     g_simple_action_set_enabled(
         G_SIMPLE_ACTION(action),
@@ -1807,7 +1799,6 @@ static GActionEntry win_entries[] = {
     {"find-next", _bedit_cmd_search_find_next},
     {"find-prev", _bedit_cmd_search_find_prev},
     {"replace", _bedit_cmd_search_replace},
-    {"clear-highlight", _bedit_cmd_search_clear_highlight},
     {"goto-line", _bedit_cmd_search_goto_line},
     {"previous-document", _bedit_cmd_documents_previous_document},
     {"next-document", _bedit_cmd_documents_next_document},

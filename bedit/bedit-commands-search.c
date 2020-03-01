@@ -92,28 +92,6 @@ void _bedit_cmd_search_find_prev(
     bedit_searchbar_prev(BEDIT_SEARCHBAR(window->priv->searchbar));
 }
 
-void _bedit_cmd_search_clear_highlight(
-    GSimpleAction *action, GVariant *parameter, gpointer user_data) {
-    BeditWindow *window = BEDIT_WINDOW(user_data);
-    BeditTab *active_tab;
-    BeditViewFrame *frame;
-    BeditDocument *doc;
-
-    bedit_debug(DEBUG_COMMANDS);
-
-    active_tab = bedit_window_get_active_tab(window);
-
-    if (active_tab == NULL) {
-        return;
-    }
-
-    frame = _bedit_tab_get_view_frame(active_tab);
-    bedit_view_frame_clear_search(frame);
-
-    doc = bedit_tab_get_document(active_tab);
-    bedit_document_set_search_context(doc, NULL);
-}
-
 void _bedit_cmd_search_goto_line(
     GSimpleAction *action, GVariant *parameter, gpointer user_data) {
     BeditWindow *window = BEDIT_WINDOW(user_data);
