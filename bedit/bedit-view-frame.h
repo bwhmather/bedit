@@ -43,8 +43,6 @@ BeditView *bedit_view_frame_get_view(BeditViewFrame *frame);
 
 void bedit_view_frame_popup_goto_line(BeditViewFrame *frame);
 
-void bedit_view_frame_clear_search(BeditViewFrame *frame);
-
 G_END_DECLS
 
 #endif /* BEDIT_VIEW_FRAME_H */

@@ -444,17 +444,3 @@ void bedit_view_frame_popup_goto_line(BeditViewFrame *frame) {
     start_interactive_goto_line_real(frame);
 }
 
-void bedit_view_frame_clear_search(BeditViewFrame *frame) {
-    g_return_if_fail(BEDIT_IS_VIEW_FRAME(frame));
-
-    g_signal_handler_block(
-        frame->goto_line_entry, frame->goto_line_entry_changed_id);
-
-    gtk_entry_set_text(GTK_ENTRY(frame->goto_line_entry), "");
-
-    g_signal_handler_unblock(
-        frame->goto_line_entry, frame->goto_line_entry_changed_id);
-
-    gtk_widget_grab_focus(GTK_WIDGET(frame->view));
-}
-
