@@ -60,7 +60,37 @@ struct _BeditSearchbar {
     gulong cursor_moved_cb_id;
 };
 
+enum {
+    PROP_0,
+    PROP_SEARCH_ACTIVE,
+    PROP_REPLACE_ACTIVE,
+    LAST_PROP
+};
+
+static GParamSpec *properties[LAST_PROP];
+
 G_DEFINE_TYPE(BeditSearchbar, bedit_searchbar, GTK_TYPE_BIN)
+
+static void bedit_searchbar_get_property(
+    GObject *object, guint prop_id, GValue *value, GParamSpec *pspec) {
+    BeditSearchbar *searchbar = BEDIT_SEARCHBAR(object);
+
+    switch (prop_id) {
+    case PROP_SEARCH_ACTIVE:
+        g_value_set_boolean(
+            value, bedit_searchbar_get_search_active(searchbar));
+        break;
+
+    case PROP_REPLACE_ACTIVE:
+        g_value_set_boolean(
+            value, bedit_searchbar_get_search_active(searchbar));
+        break;
+
+    default:
+        G_OBJECT_WARN_INVALID_PROPERTY_ID(object, prop_id, pspec);
+        break;
+    }
+}
 
 static void bedit_searchbar_dispose(GObject *object) {
     BeditSearchbar *searchbar = BEDIT_SEARCHBAR(object);
@@ -75,6 +105,19 @@ static void bedit_searchbar_class_init(BeditSearchbarClass *klass) {
     GtkWidgetClass *widget_class = GTK_WIDGET_CLASS(klass);
 
     object_class->dispose = bedit_searchbar_dispose;
+    object_class->get_property = bedit_searchbar_get_property;
+
+    properties[PROP_SEARCH_ACTIVE] = g_param_spec_boolean(
+        "search-active", "Search active",
+        "Whether a search is in progress", FALSE,
+        G_PARAM_READABLE | G_PARAM_STATIC_STRINGS);
+
+    properties[PROP_REPLACE_ACTIVE] = g_param_spec_boolean(
+        "replace-active", "Replace active",
+        "Whether a search is in progress and in replace mode", FALSE,
+        G_PARAM_READABLE | G_PARAM_STATIC_STRINGS);
+
+    g_object_class_install_properties(object_class, LAST_PROP, properties);
 
     gtk_widget_class_set_template_from_resource(
         widget_class, "/com/bwhmather/bedit/ui/bedit-searchbar.ui");
