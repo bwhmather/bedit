@@ -527,7 +527,7 @@ static void update_actions_sensitivity(BeditWindow *window) {
     gint tab_number = -1;
     GAction *action;
     gboolean editable = FALSE;
-    gboolean empty_search = FALSE;
+    gboolean search_active;
     GtkClipboard *clipboard;
     BeditLockdownMask lockdown;
     gboolean enable_syntax_highlighting;
@@ -538,7 +538,6 @@ static void update_actions_sensitivity(BeditWindow *window) {
     tab = bedit_notebook_get_active_tab(notebook);
     num_tabs = bedit_notebook_get_n_tabs(notebook);
 
-
     if (notebook != NULL && tab != NULL) {
         state = bedit_tab_get_state(tab);
         view = bedit_tab_get_view(tab);
@@ -547,8 +546,10 @@ static void update_actions_sensitivity(BeditWindow *window) {
         tab_number =
             gtk_notebook_page_num(GTK_NOTEBOOK(notebook), GTK_WIDGET(tab));
         editable = gtk_text_view_get_editable(GTK_TEXT_VIEW(view));
-        empty_search = _bedit_document_get_empty_search(doc);
     }
+
+    search_active = bedit_searchbar_get_search_active(
+        BEDIT_SEARCHBAR(window->priv->searchbar));
 
     lockdown = bedit_app_get_lockdown(BEDIT_APP(g_application_get_default()));
 
@@ -658,14 +659,14 @@ static void update_actions_sensitivity(BeditWindow *window) {
         G_SIMPLE_ACTION(action),
         ((state == BEDIT_TAB_STATE_NORMAL) ||
          (state == BEDIT_TAB_STATE_EXTERNALLY_MODIFIED_NOTIFICATION)) &&
-            (doc != NULL) && !empty_search);
+            (doc != NULL) && search_active);
 
     action = g_action_map_lookup_action(G_ACTION_MAP(window), "find-prev");
     g_simple_action_set_enabled(
         G_SIMPLE_ACTION(action),
         ((state == BEDIT_TAB_STATE_NORMAL) ||
          (state == BEDIT_TAB_STATE_EXTERNALLY_MODIFIED_NOTIFICATION)) &&
-            (doc != NULL) && !empty_search);
+            (doc != NULL) && search_active);
 
     action =
         g_action_map_lookup_action(G_ACTION_MAP(window), "clear-highlight");
@@ -673,7 +674,7 @@ static void update_actions_sensitivity(BeditWindow *window) {
         G_SIMPLE_ACTION(action),
         ((state == BEDIT_TAB_STATE_NORMAL) ||
          (state == BEDIT_TAB_STATE_EXTERNALLY_MODIFIED_NOTIFICATION)) &&
-            (doc != NULL) && !empty_search);
+            (doc != NULL) && search_active);
 
     action = g_action_map_lookup_action(G_ACTION_MAP(window), "goto-line");
     g_simple_action_set_enabled(
@@ -1498,11 +1499,9 @@ static void drop_uris_cb(
     load_uris_from_drop(window, uri_list);
 }
 
-static void empty_search_notify_cb(
-    BeditDocument *doc, GParamSpec *pspec, BeditWindow *window) {
-    if (doc == bedit_window_get_active_document(window)) {
-        update_actions_sensitivity(window);
-    }
+static void search_active_notify_cb(
+    BeditSearchbar *doc, GParamSpec *pspec, BeditWindow *window) {
+    update_actions_sensitivity(window);
 }
 
 static void can_undo(
@@ -1576,9 +1575,6 @@ static void on_page_added(
     g_signal_connect(
         doc, "cursor-moved", G_CALLBACK(update_cursor_position_statusbar),
         window);
-    g_signal_connect(
-        doc, "notify::empty-search", G_CALLBACK(empty_search_notify_cb),
-        window);
     g_signal_connect(doc, "notify::can-undo", G_CALLBACK(can_undo), window);
     g_signal_connect(doc, "notify::can-redo", G_CALLBACK(can_redo), window);
     g_signal_connect(
@@ -1647,8 +1643,6 @@ static void on_page_removed(
         doc, G_CALLBACK(bracket_matched_cb), window);
     g_signal_handlers_disconnect_by_func(
         doc, G_CALLBACK(update_cursor_position_statusbar), window);
-    g_signal_handlers_disconnect_by_func(
-        doc, G_CALLBACK(empty_search_notify_cb), window);
     g_signal_handlers_disconnect_by_func(doc, G_CALLBACK(can_undo), window);
     g_signal_handlers_disconnect_by_func(doc, G_CALLBACK(can_redo), window);
     g_signal_handlers_disconnect_by_func(
@@ -1904,6 +1898,11 @@ static void bedit_window_init(BeditWindow *window) {
 
     /* Setup status bar */
     setup_statusbar(window);
+
+    /* Setup search bar */
+    g_signal_connect(
+        window->priv->searchbar, "notify::search-active",
+        G_CALLBACK(search_active_notify_cb), window);
 
     /* Setup main area */
     g_signal_connect(
