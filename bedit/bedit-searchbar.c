@@ -65,7 +65,7 @@ G_DEFINE_TYPE(BeditSearchbar, bedit_searchbar, GTK_TYPE_BIN)
 static void bedit_searchbar_dispose(GObject *object) {
     BeditSearchbar *searchbar = BEDIT_SEARCHBAR(object);
 
-    // TODO remove document search.
+    bedit_searchbar_set_view(searchbar, NULL);
 
     G_OBJECT_CLASS(bedit_searchbar_parent_class)->dispose(object);
 }
