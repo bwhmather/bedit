@@ -58,6 +58,9 @@ struct _BeditSearchbar {
     GtkTextMark *start_mark;
 
     gulong cursor_moved_cb_id;
+
+    gboolean search_active : 1;
+    gboolean replace_active : 1;
 };
 
 enum {
@@ -248,6 +251,64 @@ static void bedit_searchbar_update_search_finished_cb(
     }
 }
 
+static void bedit_searchbar_update_search_active(BeditSearchbar *searchbar) {
+    gboolean search_active;
+    gchar const *search_text;
+
+    bedit_debug(DEBUG_WINDOW);
+
+    g_return_if_fail(BEDIT_IS_SEARCHBAR(searchbar));
+
+    search_active = TRUE;
+
+    if (searchbar->view == NULL) {
+        search_active = FALSE;
+    }
+
+    if (searchbar->mode == BEDIT_SEARCHBAR_MODE_HIDDEN) {
+        search_active = FALSE;
+    }
+
+    search_text = gtk_entry_get_text(GTK_ENTRY(searchbar->search_entry));
+    if (search_text == NULL || search_text[0] == '\0') {
+        search_active = FALSE;
+    }
+
+    if (searchbar->search_active != search_active) {
+        searchbar->search_active = search_active;
+        g_object_notify_by_pspec(
+            G_OBJECT(searchbar), properties[PROP_SEARCH_ACTIVE]);
+    }
+}
+
+static void bedit_searchbar_update_replace_active(BeditSearchbar *searchbar) {
+    gboolean replace_active;
+    gchar const *search_text;
+
+    bedit_debug(DEBUG_WINDOW);
+
+    g_return_if_fail(BEDIT_IS_SEARCHBAR(searchbar));
+
+    if (searchbar->view == NULL) {
+        replace_active = FALSE;
+    }
+
+    if (searchbar->mode != BEDIT_SEARCHBAR_MODE_REPLACE) {
+        replace_active = FALSE;
+    }
+
+    search_text = gtk_entry_get_text(GTK_ENTRY(searchbar->search_entry));
+    if (search_text == NULL || search_text[0] == '\0') {
+        replace_active = FALSE;
+    }
+
+    if (searchbar->replace_active != replace_active) {
+        searchbar->replace_active = replace_active;
+        g_object_notify_by_pspec(
+            G_OBJECT(searchbar), properties[PROP_REPLACE_ACTIVE]);
+    }
+}
+
 static void bedit_searchbar_update_search(BeditSearchbar *searchbar) {
     GtkSourceBuffer *buffer;
     GtkSourceSearchSettings *settings;
@@ -259,6 +320,9 @@ static void bedit_searchbar_update_search(BeditSearchbar *searchbar) {
     bedit_debug(DEBUG_WINDOW);
 
     g_return_if_fail(BEDIT_IS_SEARCHBAR(searchbar));
+
+    bedit_searchbar_update_search_active(searchbar);
+    bedit_searchbar_update_replace_active(searchbar);
 
     if (searchbar->mode == BEDIT_SEARCHBAR_MODE_HIDDEN) {
         g_clear_object(&searchbar->context);
@@ -667,22 +731,11 @@ void bedit_searchbar_prev(BeditSearchbar *searchbar) {
  * progress, i.e. has a valid search query.  Returns false otherwise.
  */
 gboolean bedit_searchbar_get_search_active(BeditSearchbar *searchbar) {
-    gchar const *search_text;
-
     bedit_debug(DEBUG_WINDOW);
 
     g_return_val_if_fail(BEDIT_IS_SEARCHBAR(searchbar), FALSE);
 
-    if (searchbar->mode == BEDIT_SEARCHBAR_MODE_HIDDEN) {
-        return FALSE;
-    }
-
-    search_text = gtk_entry_get_text(GTK_ENTRY(searchbar->search_entry));
-    if (search_text == NULL || search_text[0] == '\0') {
-        return FALSE;
-    }
-
-    return TRUE;
+    return searchbar->search_active;
 }
 
 /**
@@ -698,13 +751,5 @@ gboolean bedit_searchbar_get_replace_active(BeditSearchbar *searchbar) {
 
     g_return_val_if_fail(BEDIT_IS_SEARCHBAR(searchbar), FALSE);
 
-    if (searchbar->mode != BEDIT_SEARCHBAR_MODE_REPLACE) {
-        return FALSE;
-    }
-
-    if (!bedit_searchbar_get_search_active(searchbar)) {
-        return FALSE;
-    }
-
-    return TRUE;
+    return searchbar->replace_active;
 }
