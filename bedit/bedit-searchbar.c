@@ -186,7 +186,7 @@ static void bedit_searchbar_update_search_finished_cb(
             buffer, searchbar->cursor_moved_cb_id);
 
         gtk_text_buffer_select_range(
-            GTK_TEXT_BUFFER (buffer), &match_start, &match_end);
+            GTK_TEXT_BUFFER(buffer), &match_start, &match_end);
 
         g_signal_handler_unblock(
             buffer, searchbar->cursor_moved_cb_id);
@@ -497,12 +497,21 @@ static void bedit_searchbar_next_finished_cb(
     GtkTextIter match_start;
     GtkTextIter match_end;
     gboolean found;
+    GtkSourceBuffer *buffer;
 
     bedit_debug(DEBUG_WINDOW);
 
     g_return_if_fail(BEDIT_IS_SEARCHBAR(searchbar));
 
     if (searchbar->view == NULL) {
+        // Tab has been closed.  Search result is no longer relevant.
+        return;
+    }
+
+    buffer = GTK_SOURCE_BUFFER(gtk_text_view_get_buffer(
+        GTK_TEXT_VIEW(searchbar->view)));
+    if (buffer != gtk_source_search_context_get_buffer(search_context)) {
+        // Tab has changed.  Search result is no longer relevant.
         return;
     }
 
@@ -512,10 +521,8 @@ static void bedit_searchbar_next_finished_cb(
         NULL, NULL);
 
     if (found) {
-        GtkTextBuffer *buffer = gtk_text_view_get_buffer(
-            GTK_TEXT_VIEW(searchbar->view));
-
-        gtk_text_buffer_select_range(buffer, &match_start, &match_end);
+        gtk_text_buffer_select_range(
+            GTK_TEXT_BUFFER(buffer), &match_start, &match_end);
 
         bedit_view_scroll_to_cursor(searchbar->view);
     }
@@ -553,12 +560,21 @@ static void bedit_searchbar_prev_finished_cb(
     GtkTextIter match_start;
     GtkTextIter match_end;
     gboolean found;
+    GtkSourceBuffer *buffer;
 
     bedit_debug(DEBUG_WINDOW);
 
     g_return_if_fail(BEDIT_IS_SEARCHBAR(searchbar));
 
     if (searchbar->view == NULL) {
+        // Tab has been closed.  Search result is no longer relevant.
+        return;
+    }
+
+    buffer = GTK_SOURCE_BUFFER(gtk_text_view_get_buffer(
+        GTK_TEXT_VIEW(searchbar->view)));
+    if (buffer != gtk_source_search_context_get_buffer(search_context)) {
+        // Tab has changed.  Search result is no longer relevant.
         return;
     }
 
@@ -568,10 +584,8 @@ static void bedit_searchbar_prev_finished_cb(
         NULL, NULL);
 
     if (found) {
-        GtkTextBuffer *buffer = gtk_text_view_get_buffer(
-            GTK_TEXT_VIEW(searchbar->view));
-
-        gtk_text_buffer_select_range(buffer, &match_start, &match_end);
+        gtk_text_buffer_select_range(
+            GTK_TEXT_BUFFER(buffer), &match_start, &match_end);
 
         bedit_view_scroll_to_cursor(searchbar->view);
     }
