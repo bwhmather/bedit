@@ -31,7 +31,8 @@
 G_BEGIN_DECLS
 
 gchar *bedit_pango_font_description_to_css(
-    const PangoFontDescription *font_desc);
+    const PangoFontDescription *font_desc
+);
 
 G_END_DECLS
 

@@ -67,13 +67,15 @@ const gchar *bedit_message_get_method(BeditMessage *message);
 gboolean bedit_message_type_has(GType gtype, const gchar *propname);
 
 gboolean bedit_message_type_check(
-    GType gtype, const gchar *propname, GType value_type);
+    GType gtype, const gchar *propname, GType value_type
+);
 
 gboolean bedit_message_has(BeditMessage *message, const gchar *propname);
 
 gboolean bedit_message_is_valid_object_path(const gchar *object_path);
 gchar *bedit_message_type_identifier(
-    const gchar *object_path, const gchar *method);
+    const gchar *object_path, const gchar *method
+);
 
 G_END_DECLS
 

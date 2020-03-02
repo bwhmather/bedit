@@ -65,10 +65,12 @@
 #define BEDIT_IS_QUITTING_ALL "bedit-is-quitting-all"
 
 static void tab_state_changed_while_saving(
-    BeditTab *tab, GParamSpec *pspec, BeditWindow *window);
+    BeditTab *tab, GParamSpec *pspec, BeditWindow *window
+);
 
 void _bedit_cmd_file_new(
-    GSimpleAction *action, GVariant *parameter, gpointer user_data) {
+    GSimpleAction *action, GVariant *parameter, gpointer user_data
+) {
     BeditWindow *window = BEDIT_WINDOW(user_data);
 
     bedit_debug(DEBUG_COMMANDS);
@@ -110,8 +112,10 @@ static gboolean is_duplicated_file(GSList *files, GFile *file) {
 
 /* File loading */
 static GSList *load_file_list(
-    BeditWindow *window, const GSList *files, const GtkSourceEncoding *encoding,
-    gint line_pos, gint column_pos, gboolean create) {
+    BeditWindow *window,
+     const GSList *files, const GtkSourceEncoding *encoding,
+    gint line_pos, gint column_pos, gboolean create
+) {
     GList *win_docs;
     GSList *files_to_load = NULL;
     GSList *loaded_files = NULL;
@@ -159,8 +163,9 @@ static GSList *load_file_list(
             }
 
             ++num_loaded_files;
-            loaded_files =
-                g_slist_prepend(loaded_files, bedit_tab_get_document(tab));
+            loaded_files = g_slist_prepend(
+                loaded_files, bedit_tab_get_document(tab)
+            );
         }
     }
 
@@ -182,7 +187,8 @@ static GSList *load_file_list(
         if (bedit_document_is_untouched(doc) &&
             bedit_tab_get_state(tab) == BEDIT_TAB_STATE_NORMAL) {
             _bedit_tab_load(
-                tab, l->data, encoding, line_pos, column_pos, create);
+                tab, l->data, encoding, line_pos, column_pos, create
+            );
 
             /* make sure the view has focus */
             gtk_widget_grab_focus(GTK_WIDGET(bedit_tab_get_view(tab)));
@@ -191,8 +197,9 @@ static GSList *load_file_list(
             jump_to = FALSE;
 
             ++num_loaded_files;
-            loaded_files =
-                g_slist_prepend(loaded_files, bedit_tab_get_document(tab));
+            loaded_files = g_slist_prepend(
+                loaded_files, bedit_tab_get_document(tab)
+            );
         }
     }
 
@@ -200,14 +207,16 @@ static GSList *load_file_list(
         g_return_val_if_fail(l->data != NULL, NULL);
 
         tab = bedit_window_create_tab_from_location(
-            window, l->data, encoding, line_pos, column_pos, create, jump_to);
+            window, l->data, encoding, line_pos, column_pos, create, jump_to
+        );
 
         if (tab != NULL) {
             jump_to = FALSE;
 
             ++num_loaded_files;
-            loaded_files =
-                g_slist_prepend(loaded_files, bedit_tab_get_document(tab));
+            loaded_files = g_slist_prepend(
+                loaded_files, bedit_tab_get_document(tab)
+            );
         }
 
         l = g_slist_next(l);
@@ -227,7 +236,8 @@ static GSList *load_file_list(
         bedit_statusbar_flash_message(
             BEDIT_STATUSBAR(window->priv->statusbar),
             window->priv->generic_message_cid,
-            _("Loading file “%s”\342\200\246"), uri_for_display);
+            _("Loading file “%s”\342\200\246"), uri_for_display
+        );
 
         g_free(uri_for_display);
     } else {
@@ -235,8 +245,10 @@ static GSList *load_file_list(
             BEDIT_STATUSBAR(window->priv->statusbar),
             window->priv->generic_message_cid,
             ngettext(
-                "Loading %d file\342\200\246", "Loading %d files\342\200\246",
-                num_loaded_files),
+                "Loading %d file\342\200\246",
+                "Loading %d files\342\200\246",
+                num_loaded_files
+            ),
             num_loaded_files);
     }
 
@@ -256,8 +268,11 @@ static GSList *load_file_list(
  * Loads @location. Ignores non-existing locations.
  */
 void bedit_commands_load_location(
-    BeditWindow *window, GFile *location, const GtkSourceEncoding *encoding,
-    gint line_pos, gint column_pos) {
+    BeditWindow *window,
+    GFile *location,
+    const GtkSourceEncoding *encoding,
+    gint line_pos, gint column_pos
+) {
     GSList *locations = NULL;
     gchar *uri;
     GSList *ret;
@@ -273,7 +288,8 @@ void bedit_commands_load_location(
     locations = g_slist_prepend(locations, location);
 
     ret = load_file_list(
-        window, locations, encoding, line_pos, column_pos, FALSE);
+        window, locations, encoding, line_pos, column_pos, FALSE
+    );
     g_slist_free(ret);
 
     g_slist_free(locations);
@@ -293,15 +309,19 @@ void bedit_commands_load_location(
  * that were loaded.
  */
 GSList *bedit_commands_load_locations(
-    BeditWindow *window, const GSList *locations,
-    const GtkSourceEncoding *encoding, gint line_pos, gint column_pos) {
+    BeditWindow *window,
+    const GSList *locations,
+    const GtkSourceEncoding *encoding,
+    gint line_pos, gint column_pos
+) {
     g_return_val_if_fail(BEDIT_IS_WINDOW(window), NULL);
     g_return_val_if_fail(locations != NULL && locations->data != NULL, NULL);
 
     bedit_debug(DEBUG_COMMANDS);
 
     return load_file_list(
-        window, locations, encoding, line_pos, column_pos, FALSE);
+        window, locations, encoding, line_pos, column_pos, FALSE
+    );
 }
 
 /*
@@ -310,22 +330,27 @@ GSList *bedit_commands_load_locations(
  * titled document.
  */
 GSList *_bedit_cmd_load_files_from_prompt(
-    BeditWindow *window, GSList *files, const GtkSourceEncoding *encoding,
-    gint line_pos, gint column_pos) {
+    BeditWindow *window,
+    GSList *files,
+    const GtkSourceEncoding *encoding,
+    gint line_pos, gint column_pos
+) {
     bedit_debug(DEBUG_COMMANDS);
 
     return load_file_list(window, files, encoding, line_pos, column_pos, TRUE);
 }
 
 static void open_dialog_destroyed(
-    BeditWindow *window, BeditFileChooserDialog *dialog) {
+    BeditWindow *window, BeditFileChooserDialog *dialog
+) {
     bedit_debug(DEBUG_COMMANDS);
 
     g_object_set_data(G_OBJECT(window), BEDIT_OPEN_DIALOG_KEY, NULL);
 }
 
 static void open_dialog_response_cb(
-    BeditFileChooserDialog *dialog, gint response_id, BeditWindow *window) {
+    BeditFileChooserDialog *dialog, gint response_id, BeditWindow *window
+) {
     GSList *files;
     const GtkSourceEncoding *encoding;
     GSList *loaded;
@@ -386,10 +411,14 @@ void _bedit_cmd_file_open(
 
     /* Translators: "Open" is the title of the file chooser window. */
     open_dialog = bedit_file_chooser_dialog_create(
-        C_("window title", "Open"), window != NULL ? GTK_WINDOW(window) : NULL,
+        C_("window title", "Open"),
+        window != NULL ? GTK_WINDOW(window) : NULL,
         BEDIT_FILE_CHOOSER_OPEN | BEDIT_FILE_CHOOSER_ENABLE_ENCODING |
             BEDIT_FILE_CHOOSER_ENABLE_DEFAULT_FILTERS,
-        NULL, _("_Cancel"), GTK_RESPONSE_CANCEL, _("_Open"), GTK_RESPONSE_OK);
+        NULL,
+        _("_Cancel"), GTK_RESPONSE_CANCEL,
+        _("_Open"), GTK_RESPONSE_OK
+    );
 
     if (window != NULL) {
         BeditDocument *doc;
@@ -398,10 +427,13 @@ void _bedit_cmd_file_open(
         /* The file chooser dialog for opening files is not modal, so
          * ensure that at most one file chooser is opened.
          */
-        g_object_set_data(G_OBJECT(window), BEDIT_OPEN_DIALOG_KEY, open_dialog);
+        g_object_set_data(
+            G_OBJECT(window), BEDIT_OPEN_DIALOG_KEY, open_dialog
+        );
 
         g_object_weak_ref(
-            G_OBJECT(open_dialog), (GWeakNotify)open_dialog_destroyed, window);
+            G_OBJECT(open_dialog), (GWeakNotify)open_dialog_destroyed, window)
+        ;
 
         /* Set the current folder */
         doc = bedit_window_get_active_document(window);
@@ -421,19 +453,22 @@ void _bedit_cmd_file_open(
 
         if (default_path != NULL) {
             bedit_file_chooser_dialog_set_current_folder(
-                open_dialog, default_path);
+                open_dialog, default_path
+            );
             g_object_unref(default_path);
         }
     }
 
     g_signal_connect(
-        open_dialog, "response", G_CALLBACK(open_dialog_response_cb), window);
+        open_dialog, "response", G_CALLBACK(open_dialog_response_cb), window
+    );
 
     bedit_file_chooser_dialog_show(open_dialog);
 }
 
 void _bedit_cmd_file_reopen_closed_tab(
-    GSimpleAction *action, GVariant *parameter, gpointer user_data) {
+    GSimpleAction *action, GVariant *parameter, gpointer user_data
+) {
     BeditWindow *window = BEDIT_WINDOW(user_data);
     GFile *file;
 
@@ -465,18 +500,25 @@ static gboolean replace_read_only_file(GtkWindow *parent, GFile *file) {
     g_free(parse_name);
 
     dialog = gtk_message_dialog_new(
-        parent, GTK_DIALOG_DESTROY_WITH_PARENT, GTK_MESSAGE_QUESTION,
-        GTK_BUTTONS_NONE, _("The file “%s” is read-only."), name_for_display);
+        parent, GTK_DIALOG_DESTROY_WITH_PARENT,
+        GTK_MESSAGE_QUESTION, GTK_BUTTONS_NONE,
+        _("The file “%s” is read-only."), name_for_display
+    );
     g_free(name_for_display);
 
     gtk_message_dialog_format_secondary_text(
-        GTK_MESSAGE_DIALOG(dialog),
-        _("Do you want to try to replace it "
-          "with the one you are saving?"));
+        GTK_MESSAGE_DIALOG(dialog), _(
+            "Do you want to try to replace it "
+            "with the one you are saving?"
+        )
+    );
 
     gtk_dialog_add_buttons(
-        GTK_DIALOG(dialog), _("_Cancel"), GTK_RESPONSE_CANCEL, _("_Replace"),
-        GTK_RESPONSE_YES, NULL);
+        GTK_DIALOG(dialog),
+        _("_Cancel"), GTK_RESPONSE_CANCEL,
+        _("_Replace"), GTK_RESPONSE_YES,
+        NULL
+    );
 
     gtk_dialog_set_default_response(GTK_DIALOG(dialog), GTK_RESPONSE_CANCEL);
 
@@ -490,7 +532,8 @@ static gboolean replace_read_only_file(GtkWindow *parent, GFile *file) {
 }
 
 static gboolean change_compression(
-    GtkWindow *parent, GFile *file, gboolean compressed) {
+    GtkWindow *parent, GFile *file, gboolean compressed
+) {
     GtkWidget *dialog;
     gint ret;
     gchar *parse_name;
@@ -516,31 +559,42 @@ static gboolean change_compression(
     }
 
     dialog = gtk_message_dialog_new(
-        parent, GTK_DIALOG_DESTROY_WITH_PARENT, GTK_MESSAGE_QUESTION,
-        GTK_BUTTONS_NONE, "%s", primary_message);
+        parent, GTK_DIALOG_DESTROY_WITH_PARENT,
+        GTK_MESSAGE_QUESTION, GTK_BUTTONS_NONE,
+        "%s", primary_message
+    );
 
     if (compressed) {
         gtk_message_dialog_format_secondary_text(
             GTK_MESSAGE_DIALOG(dialog),
-            _("The file “%s” was previously saved as plain "
-              "text and will now be saved using compression."),
-            name_for_display);
+            _(
+                "The file “%s” was previously saved as plain "
+                "text and will now be saved using compression."
+            ),
+            name_for_display
+        );
 
         button_label = _("_Save Using Compression");
     } else {
         gtk_message_dialog_format_secondary_text(
             GTK_MESSAGE_DIALOG(dialog),
-            _("The file “%s” was previously saved "
-              "using compression and will now be saved as plain text."),
-            name_for_display);
+            _(
+                "The file “%s” was previously saved "
+                "using compression and will now be saved as plain text."
+            ),
+            name_for_display
+        );
         button_label = _("_Save As Plain Text");
     }
 
     g_free(name_for_display);
 
     gtk_dialog_add_buttons(
-        GTK_DIALOG(dialog), _("_Cancel"), GTK_RESPONSE_CANCEL, button_label,
-        GTK_RESPONSE_YES, NULL);
+        GTK_DIALOG(dialog),
+        _("_Cancel"), GTK_RESPONSE_CANCEL,
+        button_label, GTK_RESPONSE_YES,
+        NULL
+    );
 
     gtk_dialog_set_default_response(GTK_DIALOG(dialog), GTK_RESPONSE_CANCEL);
 
@@ -570,14 +624,16 @@ static GtkSourceCompressionType get_compression_type_from_file(GFile *file) {
 }
 
 static void tab_save_as_ready_cb(
-    BeditTab *tab, GAsyncResult *result, GTask *task) {
+    BeditTab *tab, GAsyncResult *result, GTask *task
+) {
     gboolean success = _bedit_tab_save_finish(tab, result);
     g_task_return_boolean(task, success);
     g_object_unref(task);
 }
 
 static void save_dialog_response_cb(
-    BeditFileChooserDialog *dialog, gint response_id, GTask *task) {
+    BeditFileChooserDialog *dialog, gint response_id, GTask *task
+) {
     BeditTab *tab;
     BeditWindow *window;
     BeditDocument *doc;
@@ -610,13 +666,17 @@ static void save_dialog_response_cb(
     compression_type = get_compression_type_from_file(location);
     current_compression_type = gtk_source_file_get_compression_type(file);
 
-    if ((compression_type == GTK_SOURCE_COMPRESSION_TYPE_NONE) !=
-        (current_compression_type == GTK_SOURCE_COMPRESSION_TYPE_NONE)) {
-        GtkWindow *dialog_window = bedit_file_chooser_dialog_get_window(dialog);
+    if (
+        (compression_type == GTK_SOURCE_COMPRESSION_TYPE_NONE) !=
+        (current_compression_type == GTK_SOURCE_COMPRESSION_TYPE_NONE)
+    ) {
+        GtkWindow *dialog_window =
+            bedit_file_chooser_dialog_get_window(dialog);
 
         if (!change_compression(
-                dialog_window, location,
-                compression_type != GTK_SOURCE_COMPRESSION_TYPE_NONE)) {
+            dialog_window, location,
+            compression_type != GTK_SOURCE_COMPRESSION_TYPE_NONE
+        )) {
             bedit_file_chooser_dialog_destroy(dialog);
             g_object_unref(location);
 
@@ -635,21 +695,25 @@ static void save_dialog_response_cb(
 
     bedit_statusbar_flash_message(
         BEDIT_STATUSBAR(window->priv->statusbar),
-        window->priv->generic_message_cid, _("Saving file “%s”\342\200\246"),
-        parse_name);
+        window->priv->generic_message_cid,
+        _("Saving file “%s”\342\200\246"),
+        parse_name
+    );
 
     g_free(parse_name);
 
     _bedit_tab_save_as_async(
         tab, location, encoding, newline_type, compression_type,
-        g_task_get_cancellable(task), (GAsyncReadyCallback)tab_save_as_ready_cb,
-        task);
+        g_task_get_cancellable(task),
+        (GAsyncReadyCallback)tab_save_as_ready_cb, task
+    );
 
     g_object_unref(location);
 }
 
 static GtkFileChooserConfirmation confirm_overwrite_callback(
-    BeditFileChooserDialog *dialog, gpointer data) {
+    BeditFileChooserDialog *dialog, gpointer data
+) {
     GtkFileChooserConfirmation res;
     GFile *file;
     GFileInfo *info;
@@ -662,14 +726,20 @@ static GtkFileChooserConfirmation confirm_overwrite_callback(
     file = bedit_file_chooser_dialog_get_file(dialog);
 
     info = g_file_query_info(
-        file, G_FILE_ATTRIBUTE_ACCESS_CAN_WRITE, G_FILE_QUERY_INFO_NONE, NULL,
-        NULL);
+        file, G_FILE_ATTRIBUTE_ACCESS_CAN_WRITE,
+        G_FILE_QUERY_INFO_NONE,
+        NULL, NULL
+    );
 
     if (info != NULL) {
-        if (g_file_info_has_attribute(
-                info, G_FILE_ATTRIBUTE_ACCESS_CAN_WRITE) &&
+        if (
+            g_file_info_has_attribute(
+                info, G_FILE_ATTRIBUTE_ACCESS_CAN_WRITE
+            ) &&
             !g_file_info_get_attribute_boolean(
-                info, G_FILE_ATTRIBUTE_ACCESS_CAN_WRITE)) {
+                info, G_FILE_ATTRIBUTE_ACCESS_CAN_WRITE
+            )
+        ) {
             GtkWindow *win;
 
             win = bedit_file_chooser_dialog_get_window(dialog);
@@ -717,13 +787,17 @@ static void save_as_tab_async(
         BEDIT_FILE_CHOOSER_SAVE | BEDIT_FILE_CHOOSER_ENABLE_ENCODING |
             BEDIT_FILE_CHOOSER_ENABLE_LINE_ENDING |
             BEDIT_FILE_CHOOSER_ENABLE_DEFAULT_FILTERS,
-        NULL, _("_Cancel"), GTK_RESPONSE_CANCEL, _("_Save"), GTK_RESPONSE_OK);
+        NULL,
+        _("_Cancel"), GTK_RESPONSE_CANCEL,
+        _("_Save"), GTK_RESPONSE_OK
+    );
 
     bedit_file_chooser_dialog_set_do_overwrite_confirmation(save_dialog, TRUE);
 
     g_signal_connect(
         save_dialog, "confirm-overwrite",
-        G_CALLBACK(confirm_overwrite_callback), NULL);
+        G_CALLBACK(confirm_overwrite_callback), NULL
+    );
 
     window_group = bedit_window_get_group(window);
 
@@ -752,7 +826,8 @@ static void save_as_tab_async(
 
         if (default_path != NULL) {
             bedit_file_chooser_dialog_set_current_folder(
-                save_dialog, default_path);
+                save_dialog, default_path
+            );
 
             g_object_unref(default_path);
         }
@@ -772,13 +847,16 @@ static void save_as_tab_async(
     newline_type = gtk_source_file_get_newline_type(file);
 
     bedit_file_chooser_dialog_set_encoding(
-        BEDIT_FILE_CHOOSER_DIALOG(save_dialog), encoding);
+        BEDIT_FILE_CHOOSER_DIALOG(save_dialog), encoding
+    );
 
     bedit_file_chooser_dialog_set_newline_type(
-        BEDIT_FILE_CHOOSER_DIALOG(save_dialog), newline_type);
+        BEDIT_FILE_CHOOSER_DIALOG(save_dialog), newline_type
+    );
 
     g_signal_connect(
-        save_dialog, "response", G_CALLBACK(save_dialog_response_cb), task);
+        save_dialog, "response", G_CALLBACK(save_dialog_response_cb), task
+    );
 
     bedit_file_chooser_dialog_show(save_dialog);
 }
@@ -847,21 +925,24 @@ void bedit_commands_save_document_async(
         bedit_debug_message(DEBUG_COMMANDS, "Untitled or Readonly");
 
         save_as_tab_async(
-            tab, window, cancellable, (GAsyncReadyCallback)save_as_tab_ready_cb,
-            task);
+            tab, window, cancellable,
+            (GAsyncReadyCallback)save_as_tab_ready_cb, task
+        );
         return;
     }
 
     uri_for_display = bedit_document_get_uri_for_display(document);
     bedit_statusbar_flash_message(
         BEDIT_STATUSBAR(window->priv->statusbar),
-        window->priv->generic_message_cid, _("Saving file “%s”\342\200\246"),
-        uri_for_display);
+        window->priv->generic_message_cid,
+        _("Saving file “%s”\342\200\246"), uri_for_display
+    );
 
     g_free(uri_for_display);
 
     _bedit_tab_save_async(
-        tab, cancellable, (GAsyncReadyCallback)tab_save_ready_cb, task);
+        tab, cancellable, (GAsyncReadyCallback)tab_save_ready_cb, task
+    );
 }
 
 /**
@@ -879,14 +960,16 @@ void bedit_commands_save_document_async(
  * Since: 3.14
  */
 gboolean bedit_commands_save_document_finish(
-    BeditDocument *document, GAsyncResult *result) {
+    BeditDocument *document, GAsyncResult *result
+) {
     g_return_val_if_fail(g_task_is_valid(result, document), FALSE);
 
     return g_task_propagate_boolean(G_TASK(result), NULL);
 }
 
 static void save_tab_ready_cb(
-    BeditDocument *doc, GAsyncResult *result, gpointer user_data) {
+    BeditDocument *doc, GAsyncResult *result, gpointer user_data
+) {
     bedit_commands_save_document_finish(doc, result);
 }
 
@@ -895,11 +978,13 @@ static void save_tab(BeditTab *tab, BeditWindow *window) {
     BeditDocument *doc = bedit_tab_get_document(tab);
 
     bedit_commands_save_document_async(
-        doc, window, NULL, (GAsyncReadyCallback)save_tab_ready_cb, NULL);
+        doc, window, NULL, (GAsyncReadyCallback)save_tab_ready_cb, NULL
+    );
 }
 
 void _bedit_cmd_file_save(
-    GSimpleAction *action, GVariant *parameter, gpointer user_data) {
+    GSimpleAction *action, GVariant *parameter, gpointer user_data
+) {
     BeditWindow *window = BEDIT_WINDOW(user_data);
     BeditTab *tab;
 
@@ -912,12 +997,14 @@ void _bedit_cmd_file_save(
 }
 
 static void _bedit_cmd_file_save_as_cb(
-    BeditTab *tab, GAsyncResult *result, gpointer user_data) {
+    BeditTab *tab, GAsyncResult *result, gpointer user_data
+) {
     save_as_tab_finish(tab, result);
 }
 
 void _bedit_cmd_file_save_as(
-    GSimpleAction *action, GVariant *parameter, gpointer user_data) {
+    GSimpleAction *action, GVariant *parameter, gpointer user_data
+) {
     BeditWindow *window = BEDIT_WINDOW(user_data);
     BeditTab *tab;
 
@@ -926,8 +1013,9 @@ void _bedit_cmd_file_save_as(
     tab = bedit_window_get_active_tab(window);
     if (tab != NULL) {
         save_as_tab_async(
-            tab, window, NULL, (GAsyncReadyCallback)_bedit_cmd_file_save_as_cb,
-            NULL);
+            tab, window, NULL,
+            (GAsyncReadyCallback)_bedit_cmd_file_save_as_cb, NULL
+        );
     }
 }
 
@@ -935,11 +1023,13 @@ static void quit_if_needed(BeditWindow *window) {
     gboolean is_quitting;
     gboolean is_quitting_all;
 
-    is_quitting = GPOINTER_TO_BOOLEAN(
-        g_object_get_data(G_OBJECT(window), BEDIT_IS_QUITTING));
+    is_quitting = GPOINTER_TO_BOOLEAN(g_object_get_data(
+        G_OBJECT(window), BEDIT_IS_QUITTING
+    ));
 
-    is_quitting_all = GPOINTER_TO_BOOLEAN(
-        g_object_get_data(G_OBJECT(window), BEDIT_IS_QUITTING_ALL));
+    is_quitting_all = GPOINTER_TO_BOOLEAN(g_object_get_data(
+        G_OBJECT(window), BEDIT_IS_QUITTING_ALL
+    ));
 
     if (is_quitting) {
         gtk_widget_destroy(GTK_WIDGET(window));
@@ -963,7 +1053,8 @@ static gboolean really_close_tab(BeditTab *tab) {
     bedit_debug(DEBUG_COMMANDS);
 
     g_return_val_if_fail(
-        bedit_tab_get_state(tab) == BEDIT_TAB_STATE_CLOSING, FALSE);
+        bedit_tab_get_state(tab) == BEDIT_TAB_STATE_CLOSING, FALSE
+    );
 
     toplevel = gtk_widget_get_toplevel(GTK_WIDGET(tab));
     g_return_val_if_fail(BEDIT_IS_WINDOW(toplevel), FALSE);
@@ -997,7 +1088,8 @@ static void close_tab(BeditTab *tab) {
     _bedit_tab_mark_for_closing(tab);
 
     g_idle_add_full(
-        G_PRIORITY_HIGH_IDLE, (GSourceFunc)really_close_tab, tab, NULL);
+        G_PRIORITY_HIGH_IDLE, (GSourceFunc)really_close_tab, tab, NULL
+    );
 }
 
 typedef struct _SaveAsData SaveAsData;
@@ -1015,7 +1107,8 @@ struct _SaveAsData {
 static void save_as_documents_list(SaveAsData *data);
 
 static void save_as_documents_list_cb(
-    BeditTab *tab, GAsyncResult *result, SaveAsData *data) {
+    BeditTab *tab, GAsyncResult *result, SaveAsData *data
+) {
     gboolean saved = save_as_tab_finish(tab, result);
 
     if (saved && data->close_tabs) {
@@ -1024,8 +1117,9 @@ static void save_as_documents_list_cb(
 
     g_return_if_fail(tab == BEDIT_TAB(data->tabs_to_save_as->data));
     g_object_unref(data->tabs_to_save_as->data);
-    data->tabs_to_save_as =
-        g_slist_delete_link(data->tabs_to_save_as, data->tabs_to_save_as);
+    data->tabs_to_save_as = g_slist_delete_link(
+        data->tabs_to_save_as, data->tabs_to_save_as
+    );
 
     if (data->tabs_to_save_as != NULL) {
         save_as_documents_list(data);
@@ -1042,7 +1136,8 @@ static void save_as_documents_list(SaveAsData *data) {
 
     save_as_tab_async(
         next_tab, data->window, NULL,
-        (GAsyncReadyCallback)save_as_documents_list_cb, data);
+        (GAsyncReadyCallback)save_as_documents_list_cb, data
+    );
 }
 
 /*
@@ -1055,7 +1150,8 @@ static void save_documents_list(BeditWindow *window, GList *docs) {
     bedit_debug(DEBUG_COMMANDS);
 
     g_return_if_fail(
-        (bedit_window_get_state(window) & BEDIT_WINDOW_STATE_PRINTING) == 0);
+        (bedit_window_get_state(window) & BEDIT_WINDOW_STATE_PRINTING) == 0
+    );
 
     for (l = docs; l != NULL; l = l->next) {
         BeditDocument *doc;
@@ -1071,8 +1167,10 @@ static void save_documents_list(BeditWindow *window, GList *docs) {
         g_return_if_fail(state != BEDIT_TAB_STATE_PRINTING);
         g_return_if_fail(state != BEDIT_TAB_STATE_CLOSING);
 
-        if (state == BEDIT_TAB_STATE_NORMAL ||
-            state == BEDIT_TAB_STATE_SHOWING_PRINT_PREVIEW) {
+        if (
+            state == BEDIT_TAB_STATE_NORMAL ||
+            state == BEDIT_TAB_STATE_SHOWING_PRINT_PREVIEW
+        ) {
             if (_bedit_document_needs_saving(doc)) {
                 GtkSourceFile *file = bedit_document_get_file(doc);
 
@@ -1088,7 +1186,8 @@ static void save_documents_list(BeditWindow *window, GList *docs) {
                     }
 
                     data->tabs_to_save_as = g_slist_prepend(
-                        data->tabs_to_save_as, g_object_ref(tab));
+                        data->tabs_to_save_as, g_object_ref(tab)
+                    );
                 } else {
                     save_tab(tab, window);
                 }
@@ -1125,7 +1224,8 @@ static void save_documents_list(BeditWindow *window, GList *docs) {
             uri_for_display = bedit_document_get_uri_for_display(doc);
             bedit_debug_message(
                 DEBUG_COMMANDS, "File '%s' not saved. State: %d",
-                uri_for_display, state);
+                uri_for_display, state
+            );
             g_free(uri_for_display);
         }
     }
@@ -1159,7 +1259,8 @@ void bedit_commands_save_all_documents(BeditWindow *window) {
 }
 
 void _bedit_cmd_file_save_all(
-    GSimpleAction *action, GVariant *parameter, gpointer user_data) {
+    GSimpleAction *action, GVariant *parameter, gpointer user_data
+) {
     bedit_commands_save_all_documents(BEDIT_WINDOW(user_data));
 }
 
@@ -1172,7 +1273,8 @@ void _bedit_cmd_file_save_all(
  * the result of the operation, use bedit_commands_save_document_async().
  */
 void bedit_commands_save_document(
-    BeditWindow *window, BeditDocument *document) {
+    BeditWindow *window, BeditDocument *document
+) {
     BeditTab *tab;
 
     g_return_if_fail(BEDIT_IS_WINDOW(window));
@@ -1197,7 +1299,8 @@ static void do_revert(BeditWindow *window, BeditTab *tab) {
     bedit_statusbar_flash_message(
         BEDIT_STATUSBAR(window->priv->statusbar),
         window->priv->generic_message_cid,
-        _("Reverting the document “%s”\342\200\246"), docname);
+        _("Reverting the document “%s”\342\200\246"), docname
+    );
 
     g_free(docname);
 
@@ -1236,7 +1339,9 @@ static GtkWidget *revert_dialog(BeditWindow *window, BeditDocument *doc) {
 
     docname = bedit_document_get_short_name_for_display(doc);
     primary_msg =
-        g_strdup_printf(_("Revert unsaved changes to document “%s”?"), docname);
+        g_strdup_printf(
+            _("Revert unsaved changes to document “%s”?"), docname
+        );
     g_free(docname);
 
     seconds = MAX(1, _bedit_document_get_seconds_since_last_save_or_load(doc));
@@ -1248,13 +1353,16 @@ static GtkWidget *revert_dialog(BeditWindow *window, BeditDocument *doc) {
                 "will be permanently lost.",
                 "Changes made to the document in the last %ld seconds "
                 "will be permanently lost.",
-                seconds),
-            seconds);
+                seconds
+            ),
+            seconds
+        );
     } else if (seconds < 75) /* 55 <= seconds < 75 */
     {
-        secondary_msg =
-            g_strdup(_("Changes made to the document in the last minute "
-                       "will be permanently lost."));
+        secondary_msg = g_strdup(_(
+            "Changes made to the document in the last minute "
+            "will be permanently lost."
+        ));
     } else if (seconds < 110) /* 75 <= seconds < 110 */
     {
         secondary_msg = g_strdup_printf(
@@ -1263,8 +1371,10 @@ static GtkWidget *revert_dialog(BeditWindow *window, BeditDocument *doc) {
                 "%ld second will be permanently lost.",
                 "Changes made to the document in the last minute and "
                 "%ld seconds will be permanently lost.",
-                seconds - 60),
-            seconds - 60);
+                seconds - 60
+            ),
+            seconds - 60
+        );
     } else if (seconds < 3600) {
         secondary_msg = g_strdup_printf(
             ngettext(
@@ -1272,17 +1382,20 @@ static GtkWidget *revert_dialog(BeditWindow *window, BeditDocument *doc) {
                 "will be permanently lost.",
                 "Changes made to the document in the last %ld minutes "
                 "will be permanently lost.",
-                seconds / 60),
-            seconds / 60);
+                seconds / 60
+            ),
+            seconds / 60
+        );
     } else if (seconds < 7200) {
         gint minutes;
         seconds -= 3600;
 
         minutes = seconds / 60;
         if (minutes < 5) {
-            secondary_msg =
-                g_strdup(_("Changes made to the document in the last hour "
-                           "will be permanently lost."));
+            secondary_msg = g_strdup(_(
+                "Changes made to the document in the last hour "
+                "will be permanently lost."
+            ));
         } else {
             secondary_msg = g_strdup_printf(
                 ngettext(
@@ -1290,8 +1403,10 @@ static GtkWidget *revert_dialog(BeditWindow *window, BeditDocument *doc) {
                     "%d minute will be permanently lost.",
                     "Changes made to the document in the last hour and "
                     "%d minutes will be permanently lost.",
-                    minutes),
-                minutes);
+                    minutes
+                ),
+                minutes
+            );
         }
     } else {
         gint hours;
@@ -1304,24 +1419,32 @@ static GtkWidget *revert_dialog(BeditWindow *window, BeditDocument *doc) {
                 "will be permanently lost.",
                 "Changes made to the document in the last %d hours "
                 "will be permanently lost.",
-                hours),
-            hours);
+                hours
+            ),
+            hours
+        );
     }
 
     dialog = gtk_message_dialog_new(
         GTK_WINDOW(window), GTK_DIALOG_DESTROY_WITH_PARENT,
-        GTK_MESSAGE_QUESTION, GTK_BUTTONS_NONE, "%s", primary_msg);
+        GTK_MESSAGE_QUESTION, GTK_BUTTONS_NONE,
+        "%s", primary_msg
+    );
 
     gtk_message_dialog_format_secondary_text(
-        GTK_MESSAGE_DIALOG(dialog), "%s", secondary_msg);
+        GTK_MESSAGE_DIALOG(dialog), "%s", secondary_msg
+    );
     g_free(primary_msg);
     g_free(secondary_msg);
 
     gtk_window_set_resizable(GTK_WINDOW(dialog), FALSE);
 
     gtk_dialog_add_buttons(
-        GTK_DIALOG(dialog), _("_Cancel"), GTK_RESPONSE_CANCEL, _("_Revert"),
-        GTK_RESPONSE_OK, NULL);
+        GTK_DIALOG(dialog),
+        _("_Cancel"), GTK_RESPONSE_CANCEL,
+        _("_Revert"), GTK_RESPONSE_OK,
+        NULL
+    );
 
     gtk_dialog_set_default_response(GTK_DIALOG(dialog), GTK_RESPONSE_CANCEL);
 
@@ -1345,9 +1468,11 @@ void _bedit_cmd_file_revert(
      * modifications or if the document has not been modified, do not bug
      * the user further.
      */
-    if (bedit_tab_get_state(tab) ==
-            BEDIT_TAB_STATE_EXTERNALLY_MODIFIED_NOTIFICATION ||
-        _bedit_tab_get_can_close(tab)) {
+    if (
+        bedit_tab_get_state(tab) ==
+        BEDIT_TAB_STATE_EXTERNALLY_MODIFIED_NOTIFICATION ||
+        _bedit_tab_get_can_close(tab)
+    ) {
         do_revert(window, tab);
         return;
     }
@@ -1365,13 +1490,16 @@ void _bedit_cmd_file_revert(
     gtk_window_set_modal(GTK_WINDOW(dialog), TRUE);
 
     g_signal_connect(
-        dialog, "response", G_CALLBACK(revert_dialog_response_cb), window);
+        dialog, "response",
+        G_CALLBACK(revert_dialog_response_cb), window
+    );
 
     gtk_widget_show(dialog);
 }
 
 static void tab_state_changed_while_saving(
-    BeditTab *tab, GParamSpec *pspec, BeditWindow *window) {
+    BeditTab *tab, GParamSpec *pspec, BeditWindow *window
+) {
     BeditTabState state;
 
     state = bedit_tab_get_state(tab);
@@ -1383,7 +1511,8 @@ static void tab_state_changed_while_saving(
      */
     if (state == BEDIT_TAB_STATE_NORMAL) {
         g_signal_handlers_disconnect_by_func(
-            tab, G_CALLBACK(tab_state_changed_while_saving), window);
+            tab, G_CALLBACK(tab_state_changed_while_saving), window
+        );
 
         close_tab(tab);
     }
@@ -1394,14 +1523,16 @@ static void save_and_close(BeditTab *tab, BeditWindow *window) {
 
     /* Trace tab state changes */
     g_signal_connect(
-        tab, "notify::state", G_CALLBACK(tab_state_changed_while_saving),
-        window);
+        tab, "notify::state",
+        G_CALLBACK(tab_state_changed_while_saving), window
+    );
 
     save_tab(tab, window);
 }
 
 static void save_and_close_documents(
-    GList *docs, BeditWindow *window, BeditNotebook *notebook) {
+    GList *docs, BeditWindow *window, BeditNotebook *notebook
+) {
     GList *tabs;
     GList *l;
     GSList *sl;
@@ -1412,7 +1543,8 @@ static void save_and_close_documents(
     bedit_debug(DEBUG_COMMANDS);
 
     g_return_if_fail(
-        (bedit_window_get_state(window) & BEDIT_WINDOW_STATE_PRINTING) == 0);
+        (bedit_window_get_state(window) & BEDIT_WINDOW_STATE_PRINTING) == 0
+    );
 
     if (notebook != NULL) {
         tabs = gtk_container_get_children(GTK_CONTAINER(notebook));
@@ -1458,16 +1590,18 @@ static void save_and_close_documents(
         g_return_if_fail(state != BEDIT_TAB_STATE_CLOSING);
         g_return_if_fail(state != BEDIT_TAB_STATE_SAVING);
 
-        if (state != BEDIT_TAB_STATE_SAVING_ERROR &&
+        if (
+            state != BEDIT_TAB_STATE_SAVING_ERROR &&
             state != BEDIT_TAB_STATE_GENERIC_ERROR &&
-            state != BEDIT_TAB_STATE_REVERTING_ERROR) {
-            if (g_list_index(docs, doc) >= 0 &&
+            state != BEDIT_TAB_STATE_REVERTING_ERROR
+        ) {
+            if (
+                g_list_index(docs, doc) >= 0 &&
                 state != BEDIT_TAB_STATE_LOADING &&
                 state != BEDIT_TAB_STATE_LOADING_ERROR &&
-                state !=
-                    BEDIT_TAB_STATE_REVERTING) /* FIXME: is this the right
-                                                  behavior with REVERTING ?*/
-            {
+                /* FIXME: is this the right behavior with REVERTING ?*/
+                state != BEDIT_TAB_STATE_REVERTING
+            ) {
                 GtkSourceFile *file = bedit_document_get_file(doc);
 
                 /* The document must be saved before closing */
@@ -1485,10 +1619,12 @@ static void save_and_close_documents(
                     }
 
                     data->tabs_to_save_as = g_slist_prepend(
-                        data->tabs_to_save_as, g_object_ref(tab));
+                        data->tabs_to_save_as, g_object_ref(tab)
+                    );
                 } else {
-                    tabs_to_save_and_close =
-                        g_slist_prepend(tabs_to_save_and_close, tab);
+                    tabs_to_save_and_close = g_slist_prepend(
+                        tabs_to_save_and_close, tab
+                    );
                 }
             } else {
                 /* The document can be closed without saving */
@@ -1551,18 +1687,21 @@ static void close_document(BeditWindow *window, BeditDocument *doc) {
 }
 
 static void close_confirmation_dialog_response_handler(
-    BeditCloseConfirmationDialog *dlg, gint response_id, BeditWindow *window) {
+    BeditCloseConfirmationDialog *dlg, gint response_id, BeditWindow *window
+) {
     GList *selected_documents;
     gboolean is_closing_all;
     BeditNotebook *notebook_to_close;
 
     bedit_debug(DEBUG_COMMANDS);
 
-    is_closing_all = GPOINTER_TO_BOOLEAN(
-        g_object_get_data(G_OBJECT(window), BEDIT_IS_CLOSING_ALL));
+    is_closing_all = GPOINTER_TO_BOOLEAN(g_object_get_data(
+        G_OBJECT(window), BEDIT_IS_CLOSING_ALL
+    ));
 
-    notebook_to_close =
-        g_object_get_data(G_OBJECT(window), BEDIT_NOTEBOOK_TO_CLOSE);
+    notebook_to_close = g_object_get_data(
+        G_OBJECT(window), BEDIT_NOTEBOOK_TO_CLOSE
+    );
 
     gtk_widget_hide(GTK_WIDGET(dlg));
 
@@ -1627,11 +1766,13 @@ static void close_confirmation_dialog_response_handler(
     default:
         /* Reset is_quitting flag */
         g_object_set_data(
-            G_OBJECT(window), BEDIT_IS_QUITTING, GBOOLEAN_TO_POINTER(FALSE));
+            G_OBJECT(window), BEDIT_IS_QUITTING, GBOOLEAN_TO_POINTER(FALSE)
+        );
 
         g_object_set_data(
             G_OBJECT(window), BEDIT_IS_QUITTING_ALL,
-            GBOOLEAN_TO_POINTER(FALSE));
+            GBOOLEAN_TO_POINTER(FALSE)
+        );
         break;
     }
 
@@ -1654,7 +1795,8 @@ static gboolean tab_can_close(BeditTab *tab, GtkWindow *window) {
         dlg = bedit_close_confirmation_dialog_new_single(window, doc);
         g_signal_connect(
             dlg, "response",
-            G_CALLBACK(close_confirmation_dialog_response_handler), window);
+            G_CALLBACK(close_confirmation_dialog_response_handler), window
+        );
 
         gtk_widget_show(dlg);
 
@@ -1674,16 +1816,20 @@ void _bedit_cmd_file_close_tab(BeditTab *tab, BeditWindow *window) {
     bedit_debug(DEBUG_COMMANDS);
 
     g_return_if_fail(
-        GTK_WIDGET(window) == gtk_widget_get_toplevel(GTK_WIDGET(tab)));
+        GTK_WIDGET(window) == gtk_widget_get_toplevel(GTK_WIDGET(tab))
+    );
 
     g_object_set_data(
-        G_OBJECT(window), BEDIT_IS_CLOSING_ALL, GBOOLEAN_TO_POINTER(FALSE));
+        G_OBJECT(window), BEDIT_IS_CLOSING_ALL, GBOOLEAN_TO_POINTER(FALSE)
+    );
 
     g_object_set_data(
-        G_OBJECT(window), BEDIT_IS_QUITTING, GBOOLEAN_TO_POINTER(FALSE));
+        G_OBJECT(window), BEDIT_IS_QUITTING, GBOOLEAN_TO_POINTER(FALSE)
+    );
 
     g_object_set_data(
-        G_OBJECT(window), BEDIT_IS_QUITTING_ALL, GBOOLEAN_TO_POINTER(FALSE));
+        G_OBJECT(window), BEDIT_IS_QUITTING_ALL, GBOOLEAN_TO_POINTER(FALSE)
+    );
 
     if (tab_can_close(tab, GTK_WINDOW(window))) {
         bedit_window_close_tab(window, tab);
@@ -1691,7 +1837,8 @@ void _bedit_cmd_file_close_tab(BeditTab *tab, BeditWindow *window) {
 }
 
 void _bedit_cmd_file_close(
-    GSimpleAction *action, GVariant *parameter, gpointer user_data) {
+    GSimpleAction *action, GVariant *parameter, gpointer user_data
+) {
     BeditWindow *window = BEDIT_WINDOW(user_data);
     BeditTab *active_tab;
 
@@ -1722,16 +1869,19 @@ static void file_close_dialog(BeditWindow *window, GList *unsaved_docs) {
 
         bedit_window_set_active_tab(window, tab);
 
-        dlg =
-            bedit_close_confirmation_dialog_new_single(GTK_WINDOW(window), doc);
+        dlg = bedit_close_confirmation_dialog_new_single(
+            GTK_WINDOW(window), doc
+        );
     } else {
         dlg = bedit_close_confirmation_dialog_new(
-            GTK_WINDOW(window), unsaved_docs);
+            GTK_WINDOW(window), unsaved_docs
+        );
     }
 
     g_signal_connect(
-        dlg, "response", G_CALLBACK(close_confirmation_dialog_response_handler),
-        window);
+        dlg, "response",
+        G_CALLBACK(close_confirmation_dialog_response_handler), window
+    );
 
     gtk_widget_show(dlg);
 }
@@ -1761,15 +1911,19 @@ static GList *notebook_get_unsaved_documents(BeditNotebook *notebook) {
 
 /* Close a notebook */
 void _bedit_cmd_file_close_notebook(
-    BeditWindow *window, BeditNotebook *notebook) {
+    BeditWindow *window, BeditNotebook *notebook
+) {
     GList *unsaved_docs;
 
     g_object_set_data(
-        G_OBJECT(window), BEDIT_IS_CLOSING_ALL, GBOOLEAN_TO_POINTER(FALSE));
+        G_OBJECT(window), BEDIT_IS_CLOSING_ALL, GBOOLEAN_TO_POINTER(FALSE)
+    );
     g_object_set_data(
-        G_OBJECT(window), BEDIT_IS_QUITTING, GBOOLEAN_TO_POINTER(FALSE));
+        G_OBJECT(window), BEDIT_IS_QUITTING, GBOOLEAN_TO_POINTER(FALSE)
+    );
     g_object_set_data(
-        G_OBJECT(window), BEDIT_IS_QUITTING_ALL, GBOOLEAN_TO_POINTER(FALSE));
+        G_OBJECT(window), BEDIT_IS_QUITTING_ALL, GBOOLEAN_TO_POINTER(FALSE)
+    );
 
     g_object_set_data(G_OBJECT(window), BEDIT_NOTEBOOK_TO_CLOSE, notebook);
 
@@ -1791,15 +1945,18 @@ static void file_close_all(BeditWindow *window, gboolean is_quitting) {
 
     bedit_debug(DEBUG_COMMANDS);
 
-    g_return_if_fail(
-        !(bedit_window_get_state(window) &
-          (BEDIT_WINDOW_STATE_SAVING | BEDIT_WINDOW_STATE_PRINTING)));
+    g_return_if_fail(!(
+        bedit_window_get_state(window) &
+        (BEDIT_WINDOW_STATE_SAVING | BEDIT_WINDOW_STATE_PRINTING)
+    ));
 
     g_object_set_data(
-        G_OBJECT(window), BEDIT_IS_CLOSING_ALL, GBOOLEAN_TO_POINTER(TRUE));
+        G_OBJECT(window), BEDIT_IS_CLOSING_ALL, GBOOLEAN_TO_POINTER(TRUE)
+    );
 
     g_object_set_data(
-        G_OBJECT(window), BEDIT_IS_QUITTING, GBOOLEAN_TO_POINTER(is_quitting));
+        G_OBJECT(window), BEDIT_IS_QUITTING, GBOOLEAN_TO_POINTER(is_quitting)
+    );
 
     unsaved_docs = bedit_window_get_unsaved_documents(window);
 
@@ -1815,14 +1972,16 @@ static void file_close_all(BeditWindow *window, gboolean is_quitting) {
 }
 
 void _bedit_cmd_file_close_all(
-    GSimpleAction *action, GVariant *parameter, gpointer user_data) {
+    GSimpleAction *action, GVariant *parameter, gpointer user_data
+) {
     BeditWindow *window = BEDIT_WINDOW(user_data);
 
     bedit_debug(DEBUG_COMMANDS);
 
-    g_return_if_fail(
-        !(bedit_window_get_state(window) &
-          (BEDIT_WINDOW_STATE_SAVING | BEDIT_WINDOW_STATE_PRINTING)));
+    g_return_if_fail(!(
+        bedit_window_get_state(window) &
+        (BEDIT_WINDOW_STATE_SAVING | BEDIT_WINDOW_STATE_PRINTING)
+    ));
 
     file_close_all(window, FALSE);
 }
@@ -1845,10 +2004,14 @@ static void quit_all(void) {
         BeditWindow *window = l->data;
 
         g_object_set_data(
-            G_OBJECT(window), BEDIT_IS_QUITTING_ALL, GBOOLEAN_TO_POINTER(TRUE));
+            G_OBJECT(window), BEDIT_IS_QUITTING_ALL,
+            GBOOLEAN_TO_POINTER(TRUE)
+        );
 
-        if (!(bedit_window_get_state(window) &
-              (BEDIT_WINDOW_STATE_SAVING | BEDIT_WINDOW_STATE_PRINTING))) {
+        if (!(
+            bedit_window_get_state(window) &
+            (BEDIT_WINDOW_STATE_SAVING | BEDIT_WINDOW_STATE_PRINTING)
+        )) {
             file_close_all(window, TRUE);
         }
     }
@@ -1857,7 +2020,8 @@ static void quit_all(void) {
 }
 
 void _bedit_cmd_file_quit(
-    GSimpleAction *action, GVariant *parameter, gpointer user_data) {
+    GSimpleAction *action, GVariant *parameter, gpointer user_data
+) {
     BeditWindow *window = BEDIT_WINDOW(user_data);
 
     bedit_debug(DEBUG_COMMANDS);
@@ -1867,9 +2031,10 @@ void _bedit_cmd_file_quit(
         return;
     }
 
-    g_return_if_fail(
-        !(bedit_window_get_state(window) &
-          (BEDIT_WINDOW_STATE_SAVING | BEDIT_WINDOW_STATE_PRINTING)));
+    g_return_if_fail(!(
+        bedit_window_get_state(window) &
+        (BEDIT_WINDOW_STATE_SAVING | BEDIT_WINDOW_STATE_PRINTING)
+    ));
 
     file_close_all(window, TRUE);
 }

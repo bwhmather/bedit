@@ -5,7 +5,7 @@
  * Copyright (C) 2020 - Ben Mather
  *
  * Based on gedit-settings.c from Gedit.
- * 
+ *
  * Copyright (C) 2002-2005 - Paolo Maggi
  * Copyright (C) 2009-2013 - Ignacio Casal Quinteiro
  * Copyright (C) 2010 - Florian Müllner, Jesse van den Kieboom, Steve Frécinaux,
@@ -118,11 +118,13 @@ static void set_font(BeditSettings *gs, const gchar *font) {
 }
 
 static void on_system_font_changed(
-    GSettings *settings, const gchar *key, BeditSettings *gs) {
+    GSettings *settings, const gchar *key, BeditSettings *gs
+) {
     gboolean use_default_font;
 
-    use_default_font =
-        g_settings_get_boolean(gs->editor, BEDIT_SETTINGS_USE_DEFAULT_FONT);
+    use_default_font = g_settings_get_boolean(
+        gs->editor, BEDIT_SETTINGS_USE_DEFAULT_FONT
+    );
 
     if (use_default_font) {
         gchar *font;
@@ -134,14 +136,17 @@ static void on_system_font_changed(
 }
 
 static void on_use_default_font_changed(
-    GSettings *settings, const gchar *key, BeditSettings *gs) {
+    GSettings *settings, const gchar *key, BeditSettings *gs
+) {
     gboolean def;
     gchar *font;
 
     def = g_settings_get_boolean(settings, key);
 
     if (def) {
-        font = g_settings_get_string(gs->interface, BEDIT_SETTINGS_SYSTEM_FONT);
+        font = g_settings_get_string(
+            gs->interface, BEDIT_SETTINGS_SYSTEM_FONT
+        );
     } else {
         font = g_settings_get_string(gs->editor, BEDIT_SETTINGS_EDITOR_FONT);
     }
@@ -152,11 +157,13 @@ static void on_use_default_font_changed(
 }
 
 static void on_editor_font_changed(
-    GSettings *settings, const gchar *key, BeditSettings *gs) {
+    GSettings *settings, const gchar *key, BeditSettings *gs
+) {
     gboolean use_default_font;
 
-    use_default_font =
-        g_settings_get_boolean(gs->editor, BEDIT_SETTINGS_USE_DEFAULT_FONT);
+    use_default_font = g_settings_get_boolean(
+        gs->editor, BEDIT_SETTINGS_USE_DEFAULT_FONT
+    );
 
     if (!use_default_font) {
         gchar *font;
@@ -168,7 +175,8 @@ static void on_editor_font_changed(
 }
 
 static void on_scheme_changed(
-    GSettings *settings, const gchar *key, BeditSettings *gs) {
+    GSettings *settings, const gchar *key, BeditSettings *gs
+) {
     GtkSourceStyleSchemeManager *manager;
     GtkSourceStyleScheme *style;
     gchar *scheme;
@@ -190,13 +198,15 @@ static void on_scheme_changed(
     if (style == NULL) {
         g_warning(
             "Default style scheme '%s' not found, falling back to 'classic'",
-            scheme);
+            scheme
+        );
 
         style = gtk_source_style_scheme_manager_get_scheme(manager, "classic");
         if (style == NULL) {
             g_warning(
                 "Style scheme 'classic' cannot be found, check your "
-                "GtkSourceView installation.");
+                "GtkSourceView installation."
+            );
             return;
         }
     }
@@ -213,7 +223,8 @@ static void on_scheme_changed(
 }
 
 static void on_auto_save_changed(
-    GSettings *settings, const gchar *key, BeditSettings *gs) {
+    GSettings *settings, const gchar *key, BeditSettings *gs
+) {
     GList *docs, *l;
     gboolean auto_save;
 
@@ -231,7 +242,8 @@ static void on_auto_save_changed(
 }
 
 static void on_auto_save_interval_changed(
-    GSettings *settings, const gchar *key, BeditSettings *gs) {
+    GSettings *settings, const gchar *key, BeditSettings *gs
+) {
     GList *docs, *l;
     gint auto_save_interval;
 
@@ -249,7 +261,8 @@ static void on_auto_save_interval_changed(
 }
 
 static void on_syntax_highlighting_changed(
-    GSettings *settings, const gchar *key, BeditSettings *gs) {
+    GSettings *settings, const gchar *key, BeditSettings *gs
+) {
     GList *docs, *windows, *l;
     gboolean enable;
 
@@ -294,25 +307,33 @@ static void bedit_settings_init(BeditSettings *gs) {
 
     g_signal_connect(
         gs->interface, "changed::monospace-font-name",
-        G_CALLBACK(on_system_font_changed), gs);
+        G_CALLBACK(on_system_font_changed), gs
+    );
 
     /* editor changes */
     g_signal_connect(
         gs->editor, "changed::use-default-font",
-        G_CALLBACK(on_use_default_font_changed), gs);
+        G_CALLBACK(on_use_default_font_changed), gs
+    );
     g_signal_connect(
-        gs->editor, "changed::editor-font", G_CALLBACK(on_editor_font_changed),
-        gs);
+        gs->editor, "changed::editor-font",
+        G_CALLBACK(on_editor_font_changed), gs);
     g_signal_connect(
-        gs->editor, "changed::scheme", G_CALLBACK(on_scheme_changed), gs);
+        gs->editor, "changed::scheme",
+        G_CALLBACK(on_scheme_changed), gs
+    );
     g_signal_connect(
-        gs->editor, "changed::auto-save", G_CALLBACK(on_auto_save_changed), gs);
+        gs->editor, "changed::auto-save",
+        G_CALLBACK(on_auto_save_changed), gs
+    );
     g_signal_connect(
         gs->editor, "changed::auto-save-interval",
-        G_CALLBACK(on_auto_save_interval_changed), gs);
+        G_CALLBACK(on_auto_save_interval_changed), gs
+    );
     g_signal_connect(
         gs->editor, "changed::syntax-highlighting",
-        G_CALLBACK(on_syntax_highlighting_changed), gs);
+        G_CALLBACK(on_syntax_highlighting_changed), gs
+    );
 }
 
 static void bedit_settings_class_init(BeditSettingsClass *klass) {
@@ -331,25 +352,33 @@ BeditLockdownMask bedit_settings_get_lockdown(BeditSettings *gs) {
     gboolean command_line, printing, print_setup, save_to_disk;
 
     command_line = g_settings_get_boolean(
-        gs->lockdown, BEDIT_SETTINGS_LOCKDOWN_COMMAND_LINE);
-    printing =
-        g_settings_get_boolean(gs->lockdown, BEDIT_SETTINGS_LOCKDOWN_PRINTING);
+        gs->lockdown, BEDIT_SETTINGS_LOCKDOWN_COMMAND_LINE
+    );
+    printing = g_settings_get_boolean(
+        gs->lockdown, BEDIT_SETTINGS_LOCKDOWN_PRINTING
+    );
     print_setup = g_settings_get_boolean(
-        gs->lockdown, BEDIT_SETTINGS_LOCKDOWN_PRINT_SETUP);
+        gs->lockdown, BEDIT_SETTINGS_LOCKDOWN_PRINT_SETUP
+    );
     save_to_disk = g_settings_get_boolean(
-        gs->lockdown, BEDIT_SETTINGS_LOCKDOWN_SAVE_TO_DISK);
+        gs->lockdown, BEDIT_SETTINGS_LOCKDOWN_SAVE_TO_DISK
+    );
 
-    if (command_line)
+    if (command_line) {
         lockdown |= BEDIT_LOCKDOWN_COMMAND_LINE;
+    }
 
-    if (printing)
+    if (printing) {
         lockdown |= BEDIT_LOCKDOWN_PRINTING;
+    }
 
-    if (print_setup)
+    if (print_setup) {
         lockdown |= BEDIT_LOCKDOWN_PRINT_SETUP;
+    }
 
-    if (save_to_disk)
+    if (save_to_disk) {
         lockdown |= BEDIT_LOCKDOWN_SAVE_TO_DISK;
+    }
 
     return lockdown;
 }
@@ -386,7 +415,8 @@ GSList *bedit_settings_get_list(GSettings *settings, const gchar *key) {
 }
 
 void bedit_settings_set_list(
-    GSettings *settings, const gchar *key, const GSList *list) {
+    GSettings *settings, const gchar *key, const GSList *list
+) {
     gchar **values = NULL;
     const GSList *l;
 
@@ -457,8 +487,9 @@ GSList *bedit_settings_get_candidate_encodings(gboolean *default_candidates) {
 
     settings = g_settings_new("com.bwhmather.bedit.preferences.encodings");
 
-    settings_strv =
-        g_settings_get_strv(settings, BEDIT_SETTINGS_CANDIDATE_ENCODINGS);
+    settings_strv = g_settings_get_strv(
+        settings, BEDIT_SETTINGS_CANDIDATE_ENCODINGS
+    );
 
     if (strv_is_empty(settings_strv)) {
         if (default_candidates != NULL) {
@@ -471,7 +502,9 @@ GSList *bedit_settings_get_candidate_encodings(gboolean *default_candidates) {
             *default_candidates = FALSE;
         }
 
-        candidates = encoding_strv_to_list((const gchar *const *)settings_strv);
+        candidates = encoding_strv_to_list(
+            (const gchar *const *)settings_strv
+        );
 
         /* Ensure that UTF-8 is present. */
         if (utf8_encoding != current_encoding &&
@@ -483,8 +516,9 @@ GSList *bedit_settings_get_candidate_encodings(gboolean *default_candidates) {
          * present, it must be the first encoding).
          */
         if (g_slist_find(candidates, current_encoding) == NULL) {
-            candidates =
-                g_slist_prepend(candidates, (gpointer)current_encoding);
+            candidates = g_slist_prepend(
+                candidates, (gpointer)current_encoding
+            );
         }
     }
 

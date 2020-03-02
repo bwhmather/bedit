@@ -37,14 +37,16 @@ G_BEGIN_DECLS
     (bedit_file_chooser_dialog_osx_get_type())
 
 G_DECLARE_FINAL_TYPE(
-    BeditFileChooserDialogOSX, bedit_file_chooser_dialog_osx, BEDIT,
-    FILE_CHOOSER_DIALOG_OSX, GObject)
+    BeditFileChooserDialogOSX, bedit_file_chooser_dialog_osx,
+    BEDIT, FILE_CHOOSER_DIALOG_OSX, GObject
+)
 
 BeditFileChooserDialog *bedit_file_chooser_dialog_osx_create(
-    const gchar *title, GtkWindow *parent, BeditFileChooserFlags flags,
-    const GtkSourceEncoding *encoding, const gchar *cancel_label,
-    GtkResponseType cancel_response, const gchar *accept_label,
-    GtkResponseType accept_response);
+    const gchar *title, GtkWindow *parent,
+    BeditFileChooserFlags flags, const GtkSourceEncoding *encoding,
+    const gchar *cancel_label, GtkResponseType cancel_response,
+    const gchar *accept_label, GtkResponseType accept_response
+);
 
 G_END_DECLS
 

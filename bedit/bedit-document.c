@@ -113,17 +113,22 @@ G_DEFINE_TYPE_WITH_PRIVATE(
 static gint get_untitled_number(void) {
     gint i = 1;
 
-    if (allocated_untitled_numbers == NULL)
+    if (allocated_untitled_numbers == NULL) {
         allocated_untitled_numbers = g_hash_table_new(NULL, NULL);
+    }
 
     g_return_val_if_fail(allocated_untitled_numbers != NULL, -1);
 
     while (TRUE) {
         if (g_hash_table_lookup(
-                allocated_untitled_numbers, GINT_TO_POINTER(i)) == NULL) {
+            allocated_untitled_numbers,
+            GINT_TO_POINTER(i)
+        ) == NULL) {
             g_hash_table_insert(
-                allocated_untitled_numbers, GINT_TO_POINTER(i),
-                GINT_TO_POINTER(i));
+                allocated_untitled_numbers,
+                GINT_TO_POINTER(i),
+                GINT_TO_POINTER(i)
+            );
 
             return i;
         }
@@ -167,17 +172,24 @@ static void save_metadata(BeditDocument *doc) {
 
     gtk_text_buffer_get_iter_at_mark(
         GTK_TEXT_BUFFER(doc), &iter,
-        gtk_text_buffer_get_insert(GTK_TEXT_BUFFER(doc)));
+        gtk_text_buffer_get_insert(GTK_TEXT_BUFFER(doc))
+    );
 
     position = g_strdup_printf("%d", gtk_text_iter_get_offset(&iter));
 
     if (language == NULL) {
         bedit_document_set_metadata(
-            doc, BEDIT_METADATA_ATTRIBUTE_POSITION, position, NULL);
+            doc,
+            BEDIT_METADATA_ATTRIBUTE_POSITION, position,
+            NULL
+        );
     } else {
         bedit_document_set_metadata(
-            doc, BEDIT_METADATA_ATTRIBUTE_POSITION, position,
-            BEDIT_METADATA_ATTRIBUTE_LANGUAGE, language, NULL);
+            doc,
+            BEDIT_METADATA_ATTRIBUTE_POSITION, position,
+            BEDIT_METADATA_ATTRIBUTE_LANGUAGE, language,
+            NULL
+        );
     }
 
     g_free(position);
@@ -226,13 +238,15 @@ static void bedit_document_finalize(GObject *object) {
 }
 
 static void bedit_document_get_property(
-    GObject *object, guint prop_id, GValue *value, GParamSpec *pspec) {
+    GObject *object, guint prop_id, GValue *value, GParamSpec *pspec
+) {
     BeditDocument *doc = BEDIT_DOCUMENT(object);
 
     switch (prop_id) {
     case PROP_SHORTNAME:
         g_value_take_string(
-            value, bedit_document_get_short_name_for_display(doc));
+            value, bedit_document_get_short_name_for_display(doc)
+        );
         break;
 
     case PROP_CONTENT_TYPE:
@@ -250,7 +264,9 @@ static void bedit_document_get_property(
 }
 
 static void bedit_document_set_property(
-    GObject *object, guint prop_id, const GValue *value, GParamSpec *pspec) {
+    GObject *object, guint prop_id, const GValue *value, GParamSpec *pspec
+
+) {
     BeditDocument *doc = BEDIT_DOCUMENT(object);
 
     switch (prop_id) {
@@ -271,8 +287,9 @@ static void bedit_document_begin_user_action(GtkTextBuffer *buffer) {
 
     ++priv->user_action;
 
-    if (GTK_TEXT_BUFFER_CLASS(bedit_document_parent_class)->begin_user_action !=
-        NULL) {
+    if (GTK_TEXT_BUFFER_CLASS(
+        bedit_document_parent_class
+    )->begin_user_action != NULL) {
         GTK_TEXT_BUFFER_CLASS(bedit_document_parent_class)
             ->begin_user_action(buffer);
     }
@@ -285,15 +302,17 @@ static void bedit_document_end_user_action(GtkTextBuffer *buffer) {
 
     --priv->user_action;
 
-    if (GTK_TEXT_BUFFER_CLASS(bedit_document_parent_class)->end_user_action !=
-        NULL) {
+    if (GTK_TEXT_BUFFER_CLASS(
+        bedit_document_parent_class
+    )->end_user_action != NULL) {
         GTK_TEXT_BUFFER_CLASS(bedit_document_parent_class)
             ->end_user_action(buffer);
     }
 }
 
 static void bedit_document_mark_set(
-    GtkTextBuffer *buffer, const GtkTextIter *iter, GtkTextMark *mark) {
+    GtkTextBuffer *buffer, const GtkTextIter *iter, GtkTextMark *mark
+) {
     BeditDocument *doc = BEDIT_DOCUMENT(buffer);
     BeditDocumentPrivate *priv;
 
@@ -326,7 +345,8 @@ static void bedit_document_constructed(GObject *object) {
     g_settings_bind(
         priv->editor_settings, BEDIT_SETTINGS_ENSURE_TRAILING_NEWLINE, doc,
         "implicit-trailing-newline",
-        G_SETTINGS_BIND_GET | G_SETTINGS_BIND_NO_SENSITIVITY);
+        G_SETTINGS_BIND_GET | G_SETTINGS_BIND_NO_SENSITIVITY
+    );
 
     G_OBJECT_CLASS(bedit_document_parent_class)->constructed(object);
 }
@@ -356,7 +376,8 @@ static void bedit_document_class_init(BeditDocumentClass *klass) {
      */
     properties[PROP_SHORTNAME] = g_param_spec_string(
         "shortname", "Short Name", "The document's short name", NULL,
-        G_PARAM_READABLE | G_PARAM_STATIC_STRINGS);
+        G_PARAM_READABLE | G_PARAM_STATIC_STRINGS
+    );
 
     /**
      * BeditDocument:content-type:
@@ -365,7 +386,8 @@ static void bedit_document_class_init(BeditDocumentClass *klass) {
      */
     properties[PROP_CONTENT_TYPE] = g_param_spec_string(
         "content-type", "Content Type", "The document's Content Type", NULL,
-        G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
+        G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS
+    );
 
     /**
      * BeditDocument:mime-type:
@@ -374,7 +396,8 @@ static void bedit_document_class_init(BeditDocumentClass *klass) {
      */
     properties[PROP_MIME_TYPE] = g_param_spec_string(
         "mime-type", "MIME Type", "The document's MIME Type", "text/plain",
-        G_PARAM_READABLE | G_PARAM_STATIC_STRINGS);
+        G_PARAM_READABLE | G_PARAM_STATIC_STRINGS
+    );
 
     g_object_class_install_properties(object_class, LAST_PROP, properties);
 
@@ -389,7 +412,8 @@ static void bedit_document_class_init(BeditDocumentClass *klass) {
     document_signals[CURSOR_MOVED] = g_signal_new(
         "cursor-moved", G_OBJECT_CLASS_TYPE(object_class), G_SIGNAL_RUN_LAST,
         G_STRUCT_OFFSET(BeditDocumentClass, cursor_moved), NULL, NULL, NULL,
-        G_TYPE_NONE, 0);
+        G_TYPE_NONE, 0
+    );
 
     /**
      * BeditDocument::load:
@@ -404,7 +428,8 @@ static void bedit_document_class_init(BeditDocumentClass *klass) {
     document_signals[LOAD] = g_signal_new(
         "load", G_OBJECT_CLASS_TYPE(object_class), G_SIGNAL_RUN_LAST,
         G_STRUCT_OFFSET(BeditDocumentClass, load), NULL, NULL, NULL,
-        G_TYPE_NONE, 0);
+        G_TYPE_NONE, 0
+    );
 
     /**
      * BeditDocument::loaded:
@@ -420,7 +445,8 @@ static void bedit_document_class_init(BeditDocumentClass *klass) {
     document_signals[LOADED] = g_signal_new(
         "loaded", G_OBJECT_CLASS_TYPE(object_class), G_SIGNAL_RUN_FIRST,
         G_STRUCT_OFFSET(BeditDocumentClass, loaded), NULL, NULL, NULL,
-        G_TYPE_NONE, 0);
+        G_TYPE_NONE, 0
+    );
 
     /**
      * BeditDocument::save:
@@ -435,7 +461,8 @@ static void bedit_document_class_init(BeditDocumentClass *klass) {
     document_signals[SAVE] = g_signal_new(
         "save", G_OBJECT_CLASS_TYPE(object_class), G_SIGNAL_RUN_LAST,
         G_STRUCT_OFFSET(BeditDocumentClass, save), NULL, NULL, NULL,
-        G_TYPE_NONE, 0);
+        G_TYPE_NONE, 0
+    );
 
     /**
      * BeditDocument::saved:
@@ -452,11 +479,13 @@ static void bedit_document_class_init(BeditDocumentClass *klass) {
     document_signals[SAVED] = g_signal_new(
         "saved", G_OBJECT_CLASS_TYPE(object_class), G_SIGNAL_RUN_FIRST,
         G_STRUCT_OFFSET(BeditDocumentClass, saved), NULL, NULL, NULL,
-        G_TYPE_NONE, 0);
+        G_TYPE_NONE, 0
+    );
 }
 
 static void set_language(
-    BeditDocument *doc, GtkSourceLanguage *lang, gboolean set_by_user) {
+    BeditDocument *doc, GtkSourceLanguage *lang, gboolean set_by_user
+) {
     BeditDocumentPrivate *priv;
     GtkSourceLanguage *old_lang;
 
@@ -476,7 +505,8 @@ static void set_language(
         const gchar *language = get_language_string(doc);
 
         bedit_document_set_metadata(
-            doc, BEDIT_METADATA_ATTRIBUTE_LANGUAGE, language, NULL);
+            doc, BEDIT_METADATA_ATTRIBUTE_LANGUAGE, language, NULL
+        );
     }
 
     priv->language_set_by_user = set_by_user;
@@ -500,7 +530,8 @@ static void save_encoding_metadata(BeditDocument *doc) {
     charset = gtk_source_encoding_get_charset(encoding);
 
     bedit_document_set_metadata(
-        doc, BEDIT_METADATA_ATTRIBUTE_ENCODING, charset, NULL);
+        doc, BEDIT_METADATA_ATTRIBUTE_ENCODING, charset, NULL
+    );
 }
 
 static GtkSourceStyleScheme *get_default_style_scheme(
@@ -517,15 +548,18 @@ static GtkSourceStyleScheme *get_default_style_scheme(
         g_warning(
             "Default style scheme '%s' cannot be found, falling back to "
             "'classic' style scheme ",
-            scheme_id);
+            scheme_id
+        );
 
-        def_style =
-            gtk_source_style_scheme_manager_get_scheme(manager, "classic");
+        def_style = gtk_source_style_scheme_manager_get_scheme(
+            manager, "classic"
+        );
 
         if (def_style == NULL) {
             g_warning(
                 "Style scheme 'classic' cannot be found, check your "
-                "GtkSourceView installation.");
+                "GtkSourceView installation."
+            );
         }
     }
 
@@ -546,7 +580,9 @@ static GtkSourceLanguage *guess_language(BeditDocument *doc) {
     data = bedit_document_get_metadata(doc, BEDIT_METADATA_ATTRIBUTE_LANGUAGE);
 
     if (data != NULL) {
-        bedit_debug_message(DEBUG_DOCUMENT, "Language from metadata: %s", data);
+        bedit_debug_message(
+            DEBUG_DOCUMENT, "Language from metadata: %s", data
+        );
 
         if (!g_str_equal(data, NO_LANGUAGE_NAME)) {
             language = gtk_source_language_manager_get_language(manager, data);
@@ -565,7 +601,8 @@ static GtkSourceLanguage *guess_language(BeditDocument *doc) {
         }
 
         language = gtk_source_language_manager_guess_language(
-            manager, basename, priv->content_type);
+            manager, basename, priv->content_type
+        );
 
         g_free(basename);
     }
@@ -574,7 +611,8 @@ static GtkSourceLanguage *guess_language(BeditDocument *doc) {
 }
 
 static void on_content_type_changed(
-    BeditDocument *doc, GParamSpec *pspec, gpointer useless) {
+    BeditDocument *doc, GParamSpec *pspec, gpointer useless
+) {
     BeditDocumentPrivate *priv;
 
     priv = bedit_document_get_instance_private(doc);
@@ -584,7 +622,8 @@ static void on_content_type_changed(
 
         bedit_debug_message(
             DEBUG_DOCUMENT, "Language: %s",
-            language != NULL ? gtk_source_language_get_name(language) : "None");
+            language != NULL ? gtk_source_language_get_name(language) : "None"
+        );
 
         set_language(doc, language, FALSE);
     }
@@ -595,7 +634,8 @@ static gchar *get_default_content_type(void) {
 }
 
 static void on_location_changed(
-    GtkSourceFile *file, GParamSpec *pspec, BeditDocument *doc) {
+    GtkSourceFile *file, GParamSpec *pspec, BeditDocument *doc
+) {
     BeditDocumentPrivate *priv;
     GFile *location;
 
@@ -614,7 +654,8 @@ static void on_location_changed(
 }
 
 static void on_tepl_location_changed(
-    TeplFile *file, GParamSpec *pspec, BeditDocument *doc) {
+    TeplFile *file, GParamSpec *pspec, BeditDocument *doc
+) {
     TeplFileMetadata *metadata;
     GError *error = NULL;
 
@@ -633,10 +674,12 @@ static void on_tepl_location_changed(
          * not, and load the metadata only when needed (after loading
          * the file content, for example).
          */
-        if (!g_error_matches(error, G_FILE_ERROR, G_FILE_ERROR_ISDIR) &&
+        if (
+            !g_error_matches(error, G_FILE_ERROR, G_FILE_ERROR_ISDIR) &&
             !g_error_matches(error, G_FILE_ERROR, G_FILE_ERROR_NOTDIR) &&
             !g_error_matches(error, G_FILE_ERROR, G_FILE_ERROR_NOENT) &&
-            !g_error_matches(error, G_IO_ERROR, G_IO_ERROR_NOT_FOUND)) {
+            !g_error_matches(error, G_IO_ERROR, G_IO_ERROR_NOT_FOUND)
+        ) {
             g_warning("Loading metadata failed: %s", error->message);
         }
 
@@ -652,8 +695,9 @@ static void bedit_document_init(BeditDocument *doc) {
 
     priv = bedit_document_get_instance_private(doc);
 
-    priv->editor_settings =
-        g_settings_new("com.bwhmather.bedit.preferences.editor");
+    priv->editor_settings = g_settings_new(
+        "com.bwhmather.bedit.preferences.editor"
+    );
     priv->untitled_number = get_untitled_number();
     priv->content_type = get_default_content_type();
     priv->language_set_by_user = FALSE;
@@ -663,43 +707,52 @@ static void bedit_document_init(BeditDocument *doc) {
     priv->file = gtk_source_file_new();
 
     g_signal_connect_object(
-        priv->file, "notify::location", G_CALLBACK(on_location_changed), doc,
-        0);
+        priv->file, "notify::location",
+        G_CALLBACK(on_location_changed), doc, 0
+    );
 
     priv->tepl_file = tepl_file_new();
 
     g_signal_connect_object(
         priv->tepl_file, "notify::location",
-        G_CALLBACK(on_tepl_location_changed), doc, 0);
+        G_CALLBACK(on_tepl_location_changed), doc, 0
+    );
 
     /* For using TeplFileMetadata we only need the TeplFile:location. */
     g_object_bind_property(
         priv->file, "location", priv->tepl_file, "location",
-        G_BINDING_DEFAULT | G_BINDING_SYNC_CREATE);
+        G_BINDING_DEFAULT | G_BINDING_SYNC_CREATE
+    );
 
     g_settings_bind(
         priv->editor_settings, BEDIT_SETTINGS_MAX_UNDO_ACTIONS, doc,
         "max-undo-levels",
-        G_SETTINGS_BIND_GET | G_SETTINGS_BIND_NO_SENSITIVITY);
+        G_SETTINGS_BIND_GET | G_SETTINGS_BIND_NO_SENSITIVITY
+    );
 
     g_settings_bind(
         priv->editor_settings, BEDIT_SETTINGS_SYNTAX_HIGHLIGHTING, doc,
         "highlight-syntax",
-        G_SETTINGS_BIND_GET | G_SETTINGS_BIND_NO_SENSITIVITY);
+        G_SETTINGS_BIND_GET | G_SETTINGS_BIND_NO_SENSITIVITY
+    );
 
     g_settings_bind(
         priv->editor_settings, BEDIT_SETTINGS_BRACKET_MATCHING, doc,
         "highlight-matching-brackets",
-        G_SETTINGS_BIND_GET | G_SETTINGS_BIND_NO_SENSITIVITY);
+        G_SETTINGS_BIND_GET | G_SETTINGS_BIND_NO_SENSITIVITY
+    );
 
     style_scheme = get_default_style_scheme(priv->editor_settings);
     if (style_scheme != NULL) {
         gtk_source_buffer_set_style_scheme(
-            GTK_SOURCE_BUFFER(doc), style_scheme);
+            GTK_SOURCE_BUFFER(doc), style_scheme
+        );
     }
 
     g_signal_connect(
-        doc, "notify::content-type", G_CALLBACK(on_content_type_changed), NULL);
+        doc, "notify::content-type",
+        G_CALLBACK(on_content_type_changed), NULL
+    );
 }
 
 BeditDocument *bedit_document_new(void) {
@@ -721,8 +774,9 @@ static gchar *get_content_type_from_content(BeditDocument *doc) {
 
     data = gtk_text_buffer_get_text(buffer, &start, &end, TRUE);
 
-    content_type =
-        g_content_type_guess(NULL, (const guchar *)data, strlen(data), NULL);
+    content_type = g_content_type_guess(
+        NULL, (const guchar *)data, strlen(data), NULL
+    );
 
     g_free(data);
 
@@ -730,7 +784,8 @@ static gchar *get_content_type_from_content(BeditDocument *doc) {
 }
 
 static void set_content_type_no_guess(
-    BeditDocument *doc, const gchar *content_type) {
+    BeditDocument *doc, const gchar *content_type
+) {
     BeditDocumentPrivate *priv;
     gchar *dupped_content_type;
 
@@ -738,23 +793,29 @@ static void set_content_type_no_guess(
 
     priv = bedit_document_get_instance_private(doc);
 
-    if (priv->content_type != NULL && content_type != NULL &&
-        g_str_equal(priv->content_type, content_type)) {
+    if (
+        priv->content_type != NULL && content_type != NULL &&
+        g_str_equal(priv->content_type, content_type)
+    ) {
         return;
     }
 
     g_free(priv->content_type);
 
     /* For compression types, we try to just guess from the content */
-    if (bedit_utils_get_compression_type_from_content_type(content_type) !=
-        GTK_SOURCE_COMPRESSION_TYPE_NONE) {
+    if (
+        bedit_utils_get_compression_type_from_content_type(content_type) !=
+        GTK_SOURCE_COMPRESSION_TYPE_NONE
+    ) {
         dupped_content_type = get_content_type_from_content(doc);
     } else {
         dupped_content_type = g_strdup(content_type);
     }
 
-    if (dupped_content_type == NULL ||
-        g_content_type_is_unknown(dupped_content_type)) {
+    if (
+        dupped_content_type == NULL ||
+        g_content_type_is_unknown(dupped_content_type)
+    ) {
         priv->content_type = get_default_content_type();
         g_free(dupped_content_type);
     } else {
@@ -811,7 +872,8 @@ gchar *bedit_document_get_uri_for_display(BeditDocument *doc) {
 
     if (location == NULL) {
         return g_strdup_printf(
-            _("Untitled Document %d"), priv->untitled_number);
+            _("Untitled Document %d"), priv->untitled_number
+        );
     } else {
         return g_file_get_parse_name(location);
     }
@@ -835,7 +897,8 @@ gchar *bedit_document_get_short_name_for_display(BeditDocument *doc) {
 
     if (location == NULL) {
         return g_strdup_printf(
-            _("Untitled Document %d"), priv->untitled_number);
+            _("Untitled Document %d"), priv->untitled_number
+        );
     } else {
         return bedit_utils_basename_for_display(location);
     }
@@ -864,8 +927,10 @@ gchar *bedit_document_get_mime_type(BeditDocument *doc) {
 
     priv = bedit_document_get_instance_private(doc);
 
-    if (priv->content_type != NULL &&
-        !g_content_type_is_unknown(priv->content_type)) {
+    if (
+        priv->content_type != NULL &&
+        !g_content_type_is_unknown(priv->content_type)
+    ) {
         return g_content_type_get_mime_type(priv->content_type);
     }
 
@@ -873,7 +938,8 @@ gchar *bedit_document_get_mime_type(BeditDocument *doc) {
 }
 
 static void loaded_query_info_cb(
-    GFile *location, GAsyncResult *result, BeditDocument *doc) {
+    GFile *location, GAsyncResult *result, BeditDocument *doc
+) {
     GFileInfo *info;
     GError *error = NULL;
 
@@ -883,22 +949,30 @@ static void loaded_query_info_cb(
         /* Ignore not found error as it can happen when opening a
          * non-existent file from the command line.
          */
-        if (error->domain != G_IO_ERROR ||
-            error->code != G_IO_ERROR_NOT_FOUND) {
-            g_warning("Document loading: query info error: %s", error->message);
+        if (
+            error->domain != G_IO_ERROR ||
+            error->code != G_IO_ERROR_NOT_FOUND
+        ) {
+            g_warning(
+                "Document loading: query info error: %s", error->message
+            );
         }
 
         g_error_free(error);
         error = NULL;
     }
 
-    if (info != NULL &&
+    if (
+        info != NULL &&
         g_file_info_has_attribute(
-            info, G_FILE_ATTRIBUTE_STANDARD_CONTENT_TYPE)) {
+            info, G_FILE_ATTRIBUTE_STANDARD_CONTENT_TYPE
+        )
+    ) {
         const gchar *content_type;
 
         content_type = g_file_info_get_attribute_string(
-            info, G_FILE_ATTRIBUTE_STANDARD_CONTENT_TYPE);
+            info, G_FILE_ATTRIBUTE_STANDARD_CONTENT_TYPE
+        );
 
         set_content_type(doc, content_type);
     }
@@ -919,8 +993,12 @@ static void bedit_document_loaded_real(BeditDocument *doc) {
         GtkSourceLanguage *language = guess_language(doc);
 
         bedit_debug_message(
-            DEBUG_DOCUMENT, "Language: %s",
-            language != NULL ? gtk_source_language_get_name(language) : "None");
+            DEBUG_DOCUMENT,
+            "Language: %s",
+            language != NULL
+                ? gtk_source_language_get_name(language)
+                : "None"
+        );
 
         set_language(doc, language, FALSE);
     }
@@ -939,12 +1017,14 @@ static void bedit_document_loaded_real(BeditDocument *doc) {
             G_FILE_ATTRIBUTE_STANDARD_CONTENT_TYPE
             "," G_FILE_ATTRIBUTE_ACCESS_CAN_WRITE,
             G_FILE_QUERY_INFO_NONE, G_PRIORITY_DEFAULT, NULL,
-            (GAsyncReadyCallback)loaded_query_info_cb, doc);
+            (GAsyncReadyCallback)loaded_query_info_cb, doc
+        );
     }
 }
 
 static void saved_query_info_cb(
-    GFile *location, GAsyncResult *result, BeditDocument *doc) {
+    GFile *location, GAsyncResult *result, BeditDocument *doc
+) {
     BeditDocumentPrivate *priv;
     GFileInfo *info;
     const gchar *content_type = NULL;
@@ -960,11 +1040,15 @@ static void saved_query_info_cb(
         error = NULL;
     }
 
-    if (info != NULL &&
+    if (
+        info != NULL &&
         g_file_info_has_attribute(
-            info, G_FILE_ATTRIBUTE_STANDARD_CONTENT_TYPE)) {
+            info, G_FILE_ATTRIBUTE_STANDARD_CONTENT_TYPE
+        )
+    ) {
         content_type = g_file_info_get_attribute_string(
-            info, G_FILE_ATTRIBUTE_STANDARD_CONTENT_TYPE);
+            info, G_FILE_ATTRIBUTE_STANDARD_CONTENT_TYPE
+        );
     }
 
     set_content_type(doc, content_type);
@@ -998,7 +1082,8 @@ static void bedit_document_saved_real(BeditDocument *doc) {
     g_file_query_info_async(
         location, G_FILE_ATTRIBUTE_STANDARD_CONTENT_TYPE,
         G_FILE_QUERY_INFO_NONE, G_PRIORITY_DEFAULT, NULL,
-        (GAsyncReadyCallback)saved_query_info_cb, doc);
+        (GAsyncReadyCallback)saved_query_info_cb, doc
+    );
 }
 
 gboolean bedit_document_is_untouched(BeditDocument *doc) {
@@ -1011,8 +1096,10 @@ gboolean bedit_document_is_untouched(BeditDocument *doc) {
 
     location = gtk_source_file_get_location(priv->file);
 
-    return location == NULL &&
-        !gtk_text_buffer_get_modified(GTK_TEXT_BUFFER(doc));
+    return (
+        location == NULL &&
+        !gtk_text_buffer_get_modified(GTK_TEXT_BUFFER(doc))
+    );
 }
 
 gboolean bedit_document_is_untitled(BeditDocument *doc) {
@@ -1078,13 +1165,15 @@ gboolean bedit_document_goto_line_offset(
     g_return_val_if_fail(line_offset >= -1, FALSE);
 
     gtk_text_buffer_get_iter_at_line_offset(
-        GTK_TEXT_BUFFER(doc), &iter, line, line_offset);
+        GTK_TEXT_BUFFER(doc), &iter, line, line_offset
+    );
 
     gtk_text_buffer_place_cursor(GTK_TEXT_BUFFER(doc), &iter);
 
     return (
         gtk_text_iter_get_line(&iter) == line &&
-        gtk_text_iter_get_line_offset(&iter) == line_offset);
+        gtk_text_iter_get_line_offset(&iter) == line_offset
+    );
 }
 
 /**
@@ -1130,8 +1219,9 @@ glong _bedit_document_get_seconds_since_last_save_or_load(BeditDocument *doc) {
         return -1;
     }
 
-    n_microseconds =
-        g_date_time_difference(now, priv->time_of_last_save_or_load);
+    n_microseconds = g_date_time_difference(
+        now, priv->time_of_last_save_or_load
+    );
     g_date_time_unref(now);
 
     return n_microseconds / (1000 * 1000);
@@ -1173,7 +1263,8 @@ gchar *bedit_document_get_metadata(BeditDocument *doc, const gchar *key) {
  * Sets metadata on a document.
  */
 void bedit_document_set_metadata(
-    BeditDocument *doc, const gchar *first_key, ...) {
+    BeditDocument *doc, const gchar *first_key, ...
+) {
     BeditDocumentPrivate *priv;
     TeplFileMetadata *metadata;
     va_list var_args;
@@ -1215,8 +1306,10 @@ void bedit_document_set_metadata(
          * not, and save the metadata only when needed (after saving the
          * file content, for example).
          */
-        if (!g_error_matches(error, G_FILE_ERROR, G_FILE_ERROR_NOENT) &&
-            !g_error_matches(error, G_IO_ERROR, G_IO_ERROR_NOT_FOUND)) {
+        if (
+            !g_error_matches(error, G_FILE_ERROR, G_FILE_ERROR_NOENT) &&
+            !g_error_matches(error, G_IO_ERROR, G_IO_ERROR_NOT_FOUND)
+        ) {
             g_warning("Saving metadata failed: %s", error->message);
         }
 

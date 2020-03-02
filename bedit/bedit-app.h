@@ -46,18 +46,22 @@ struct _BeditAppClass {
 
     gboolean (*show_help)(
         BeditApp *app, GtkWindow *parent, const gchar *name,
-        const gchar *link_id);
+        const gchar *link_id
+    );
 
     gchar *(*help_link_id)(
-        BeditApp *app, const gchar *name, const gchar *link_id);
+        BeditApp *app, const gchar *name, const gchar *link_id
+    );
 
     void (*set_window_title)(
-        BeditApp *app, BeditWindow *window, const gchar *title);
+        BeditApp *app, BeditWindow *window, const gchar *title
+    );
 
     BeditWindow *(*create_window)(BeditApp *app);
 
     gboolean (*process_window_event)(
-        BeditApp *app, BeditWindow *window, GdkEvent *event);
+        BeditApp *app, BeditWindow *window, GdkEvent *event
+    );
 };
 
 typedef enum {
@@ -82,12 +86,15 @@ GList *bedit_app_get_views(BeditApp *app);
 BeditLockdownMask bedit_app_get_lockdown(BeditApp *app);
 
 gboolean bedit_app_show_help(
-    BeditApp *app, GtkWindow *parent, const gchar *name, const gchar *link_id);
+    BeditApp *app, GtkWindow *parent, const gchar *name, const gchar *link_id
+);
 
 void bedit_app_set_window_title(
-    BeditApp *app, BeditWindow *window, const gchar *title);
+    BeditApp *app, BeditWindow *window, const gchar *title
+);
 gboolean bedit_app_process_window_event(
-    BeditApp *app, BeditWindow *window, GdkEvent *event);
+    BeditApp *app, BeditWindow *window, GdkEvent *event
+);
 
 G_END_DECLS
 

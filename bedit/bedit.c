@@ -84,7 +84,8 @@ static gboolean bedit_w32_load_private_dll(void) {
          * well use gmodule.
          */
         dllpath = g_build_filename(
-            prefix, "lib", "bedit", "lib" PACKAGE_STRING ".dll", NULL);
+            prefix, "lib", "bedit", "lib" PACKAGE_STRING ".dll", NULL
+        );
         g_free(prefix);
 
         libbedit_dll = g_module_open(dllpath, 0);
@@ -100,7 +101,8 @@ static gboolean bedit_w32_load_private_dll(void) {
         if (libbedit_dll == NULL) {
             g_printerr(
                 "Failed to load 'lib" PACKAGE_STRING ".dll': %s\n",
-                g_module_error());
+                g_module_error()
+            );
         }
     }
 
@@ -153,7 +155,8 @@ int main(int argc, char *argv[]) {
 
     app = g_object_new(
         type, "application-id", "com.bwhmather.bedit", "flags",
-        G_APPLICATION_HANDLES_COMMAND_LINE | G_APPLICATION_HANDLES_OPEN, NULL);
+        G_APPLICATION_HANDLES_COMMAND_LINE | G_APPLICATION_HANDLES_OPEN, NULL
+    );
 
     status = g_application_run(G_APPLICATION(app), argc, argv);
 
@@ -167,7 +170,8 @@ int main(int argc, char *argv[]) {
 
     if (app != NULL) {
         bedit_debug_message(
-            DEBUG_APP, "Leaking with %i refs", G_OBJECT(app)->ref_count);
+            DEBUG_APP, "Leaking with %i refs", G_OBJECT(app)->ref_count
+        );
     }
 
     tepl_finalize();

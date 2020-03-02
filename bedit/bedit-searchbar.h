@@ -29,7 +29,10 @@ G_BEGIN_DECLS
 #define BEDIT_TYPE_SEARCHBAR (bedit_searchbar_get_type())
 
 G_DECLARE_FINAL_TYPE(
-    BeditSearchbar, bedit_searchbar, BEDIT, SEARCHBAR, GtkBin)
+    BeditSearchbar, bedit_searchbar,
+    BEDIT, SEARCHBAR,
+    GtkBin
+)
 
 GtkWidget *bedit_searchbar_new(void);
 

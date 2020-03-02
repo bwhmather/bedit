@@ -43,7 +43,8 @@
 G_DEFINE_INTERFACE(BeditViewActivatable, bedit_view_activatable, G_TYPE_OBJECT)
 
 static void bedit_view_activatable_default_init(
-    BeditViewActivatableInterface *iface) {
+    BeditViewActivatableInterface *iface
+) {
     /**
      * BeditViewActivatable:view:
      *
@@ -54,8 +55,11 @@ static void bedit_view_activatable_default_init(
         iface,
         g_param_spec_object(
             "view", "view", "A bedit view", BEDIT_TYPE_VIEW,
-            G_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY |
-                G_PARAM_STATIC_STRINGS));
+            G_PARAM_READWRITE |
+            G_PARAM_CONSTRUCT_ONLY |
+            G_PARAM_STATIC_STRINGS
+        )
+    );
 }
 
 /**

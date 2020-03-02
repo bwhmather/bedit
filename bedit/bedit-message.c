@@ -66,7 +66,8 @@ static void bedit_message_finalize(GObject *object) {
 }
 
 static void bedit_message_get_property(
-    GObject *object, guint prop_id, GValue *value, GParamSpec *pspec) {
+    GObject *object, guint prop_id, GValue *value, GParamSpec *pspec
+) {
     BeditMessage *msg = BEDIT_MESSAGE(object);
 
     switch (prop_id) {
@@ -83,7 +84,8 @@ static void bedit_message_get_property(
 }
 
 static void bedit_message_set_property(
-    GObject *object, guint prop_id, const GValue *value, GParamSpec *pspec) {
+    GObject *object, guint prop_id, const GValue *value, GParamSpec *pspec
+) {
     BeditMessage *msg = BEDIT_MESSAGE(object);
 
     switch (prop_id) {
@@ -117,7 +119,8 @@ static void bedit_message_class_init(BeditMessageClass *klass) {
      */
     properties[PROP_OBJECT_PATH] = g_param_spec_string(
         "object-path", "OBJECT_PATH", "The message object path", NULL,
-        G_PARAM_READWRITE | G_PARAM_CONSTRUCT | G_PARAM_STATIC_STRINGS);
+        G_PARAM_READWRITE | G_PARAM_CONSTRUCT | G_PARAM_STATIC_STRINGS
+    );
 
     /**
      * BeditMessage:method:
@@ -127,7 +130,8 @@ static void bedit_message_class_init(BeditMessageClass *klass) {
      */
     properties[PROP_METHOD] = g_param_spec_string(
         "method", "METHOD", "The message method", NULL,
-        G_PARAM_READWRITE | G_PARAM_CONSTRUCT | G_PARAM_STATIC_STRINGS);
+        G_PARAM_READWRITE | G_PARAM_CONSTRUCT | G_PARAM_STATIC_STRINGS
+    );
 
     g_object_class_install_properties(object_class, LAST_PROP, properties);
 }
@@ -189,8 +193,10 @@ gboolean bedit_message_is_valid_object_path(const gchar *object_path) {
         if (*object_path == '/') {
             ++object_path;
 
-            if (!*object_path ||
-                !(g_ascii_isalpha(*object_path) || *object_path == '_')) {
+            if (
+                !*object_path ||
+                !(g_ascii_isalpha(*object_path) || *object_path == '_')
+            ) {
                 return FALSE;
             }
         } else if (!(g_ascii_isalnum(*object_path) || *object_path == '_')) {
@@ -214,7 +220,8 @@ gboolean bedit_message_is_valid_object_path(const gchar *object_path) {
  *
  */
 gchar *bedit_message_type_identifier(
-    const gchar *object_path, const gchar *method) {
+    const gchar *object_path, const gchar *method
+) {
     return g_strconcat(object_path, ".", method, NULL);
 }
 
@@ -254,7 +261,8 @@ gboolean bedit_message_type_has(GType gtype, const gchar *propname) {
 }
 
 gboolean bedit_message_type_check(
-    GType gtype, const gchar *propname, GType value_type) {
+    GType gtype, const gchar *propname, GType value_type
+) {
     GObjectClass *klass;
     gboolean ret;
     GParamSpec *spec;

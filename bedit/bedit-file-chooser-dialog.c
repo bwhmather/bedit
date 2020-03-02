@@ -44,7 +44,8 @@ G_DEFINE_INTERFACE(
 
 static gboolean confirm_overwrite_accumulator(
     GSignalInvocationHint *ihint, GValue *return_accu,
-    const GValue *handler_return, gpointer dummy) {
+    const GValue *handler_return, gpointer dummy
+) {
     gboolean continue_emission;
     GtkFileChooserConfirmation conf;
 
@@ -56,35 +57,45 @@ static gboolean confirm_overwrite_accumulator(
 }
 
 static void bedit_file_chooser_dialog_default_init(
-    BeditFileChooserDialogInterface *iface) {
+    BeditFileChooserDialogInterface *iface
+) {
     g_signal_new(
-        "response", G_TYPE_FROM_INTERFACE(iface), G_SIGNAL_RUN_LAST, 0, NULL,
-        NULL, NULL, G_TYPE_NONE, 1, G_TYPE_INT);
+        "response", G_TYPE_FROM_INTERFACE(iface),
+        G_SIGNAL_RUN_LAST, 0, NULL,
+        NULL, NULL, G_TYPE_NONE, 1, G_TYPE_INT
+    );
 
     g_signal_new(
-        "confirm-overwrite", G_TYPE_FROM_INTERFACE(iface), G_SIGNAL_RUN_LAST, 0,
-        confirm_overwrite_accumulator, NULL, NULL,
-        GTK_TYPE_FILE_CHOOSER_CONFIRMATION, 0);
+        "confirm-overwrite", G_TYPE_FROM_INTERFACE(iface),
+        G_SIGNAL_RUN_LAST, 0, confirm_overwrite_accumulator,
+        NULL, NULL, GTK_TYPE_FILE_CHOOSER_CONFIRMATION, 0
+    );
 }
 
 BeditFileChooserDialog *bedit_file_chooser_dialog_create(
     const gchar *title, GtkWindow *parent, BeditFileChooserFlags flags,
     const GtkSourceEncoding *encoding, const gchar *cancel_label,
     GtkResponseType cancel_response, const gchar *accept_label,
-    GtkResponseType accept_response) {
+    GtkResponseType accept_response
+) {
 #ifdef OS_OSX
     return bedit_file_chooser_dialog_osx_create(
-        title, parent, flags, encoding, cancel_label, cancel_response,
-        accept_label, accept_response);
+        title, parent, flags, encoding,
+        cancel_label, cancel_response,
+        accept_label, accept_response
+    );
 #else
     return bedit_file_chooser_dialog_gtk_create(
-        title, parent, flags, encoding, cancel_label, cancel_response,
-        accept_label, accept_response);
+        title, parent, flags, encoding,
+        cancel_label, cancel_response,
+        accept_label, accept_response
+    );
 #endif
 }
 
 void bedit_file_chooser_dialog_set_encoding(
-    BeditFileChooserDialog *dialog, const GtkSourceEncoding *encoding) {
+    BeditFileChooserDialog *dialog, const GtkSourceEncoding *encoding
+) {
     BeditFileChooserDialogInterface *iface;
 
     g_return_if_fail(BEDIT_IS_FILE_CHOOSER_DIALOG(dialog));
@@ -96,7 +107,8 @@ void bedit_file_chooser_dialog_set_encoding(
 }
 
 const GtkSourceEncoding *bedit_file_chooser_dialog_get_encoding(
-    BeditFileChooserDialog *dialog) {
+    BeditFileChooserDialog *dialog
+) {
     BeditFileChooserDialogInterface *iface;
 
     g_return_val_if_fail(BEDIT_IS_FILE_CHOOSER_DIALOG(dialog), NULL);
@@ -108,7 +120,8 @@ const GtkSourceEncoding *bedit_file_chooser_dialog_get_encoding(
 }
 
 void bedit_file_chooser_dialog_set_newline_type(
-    BeditFileChooserDialog *dialog, GtkSourceNewlineType newline_type) {
+    BeditFileChooserDialog *dialog, GtkSourceNewlineType newline_type
+) {
     BeditFileChooserDialogInterface *iface;
 
     g_return_if_fail(BEDIT_IS_FILE_CHOOSER_DIALOG(dialog));
@@ -120,21 +133,25 @@ void bedit_file_chooser_dialog_set_newline_type(
 }
 
 GtkSourceNewlineType bedit_file_chooser_dialog_get_newline_type(
-    BeditFileChooserDialog *dialog) {
+    BeditFileChooserDialog *dialog
+) {
     BeditFileChooserDialogInterface *iface;
 
     g_return_val_if_fail(
-        BEDIT_IS_FILE_CHOOSER_DIALOG(dialog), GTK_SOURCE_NEWLINE_TYPE_DEFAULT);
+        BEDIT_IS_FILE_CHOOSER_DIALOG(dialog), GTK_SOURCE_NEWLINE_TYPE_DEFAULT
+    );
 
     iface = BEDIT_FILE_CHOOSER_DIALOG_GET_IFACE(dialog);
     g_return_val_if_fail(
-        iface->get_newline_type != NULL, GTK_SOURCE_NEWLINE_TYPE_DEFAULT);
+        iface->get_newline_type != NULL, GTK_SOURCE_NEWLINE_TYPE_DEFAULT
+    );
 
     return iface->get_newline_type(dialog);
 }
 
 void bedit_file_chooser_dialog_set_current_folder(
-    BeditFileChooserDialog *dialog, GFile *folder) {
+    BeditFileChooserDialog *dialog, GFile *folder
+) {
     BeditFileChooserDialogInterface *iface;
 
     g_return_if_fail(BEDIT_IS_FILE_CHOOSER_DIALOG(dialog));
@@ -146,7 +163,8 @@ void bedit_file_chooser_dialog_set_current_folder(
 }
 
 void bedit_file_chooser_dialog_set_current_name(
-    BeditFileChooserDialog *dialog, const gchar *name) {
+    BeditFileChooserDialog *dialog, const gchar *name
+) {
     BeditFileChooserDialogInterface *iface;
 
     g_return_if_fail(BEDIT_IS_FILE_CHOOSER_DIALOG(dialog));
@@ -158,7 +176,8 @@ void bedit_file_chooser_dialog_set_current_name(
 }
 
 void bedit_file_chooser_dialog_set_file(
-    BeditFileChooserDialog *dialog, GFile *file) {
+    BeditFileChooserDialog *dialog, GFile *file
+) {
     BeditFileChooserDialogInterface *iface;
 
     g_return_if_fail(BEDIT_IS_FILE_CHOOSER_DIALOG(dialog));
@@ -193,7 +212,8 @@ GFile *bedit_file_chooser_dialog_get_file(BeditFileChooserDialog *dialog) {
 }
 
 void bedit_file_chooser_dialog_set_do_overwrite_confirmation(
-    BeditFileChooserDialog *dialog, gboolean overwrite_confirmation) {
+    BeditFileChooserDialog *dialog, gboolean overwrite_confirmation
+) {
     BeditFileChooserDialogInterface *iface;
 
     g_return_if_fail(BEDIT_IS_FILE_CHOOSER_DIALOG(dialog));
@@ -265,7 +285,8 @@ GtkWindow *bedit_file_chooser_dialog_get_window(
 }
 
 void bedit_file_chooser_dialog_add_pattern_filter(
-    BeditFileChooserDialog *dialog, const gchar *name, const gchar *pattern) {
+    BeditFileChooserDialog *dialog, const gchar *name, const gchar *pattern
+) {
     BeditFileChooserDialogInterface *iface;
 
     g_return_if_fail(BEDIT_IS_FILE_CHOOSER_DIALOG(dialog));

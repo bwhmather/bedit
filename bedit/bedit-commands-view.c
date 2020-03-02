@@ -44,7 +44,8 @@
 #include "bedit-window.h"
 
 void _bedit_cmd_view_focus_active(
-    GSimpleAction *action, GVariant *state, gpointer user_data) {
+    GSimpleAction *action, GVariant *state, gpointer user_data
+) {
     BeditView *active_view;
     BeditWindow *window = BEDIT_WINDOW(user_data);
 
@@ -58,7 +59,8 @@ void _bedit_cmd_view_focus_active(
 }
 
 void _bedit_cmd_view_toggle_fullscreen_mode(
-    GSimpleAction *action, GVariant *state, gpointer user_data) {
+    GSimpleAction *action, GVariant *state, gpointer user_data
+) {
     BeditWindow *window = BEDIT_WINDOW(user_data);
 
     bedit_debug(DEBUG_COMMANDS);
@@ -71,7 +73,8 @@ void _bedit_cmd_view_toggle_fullscreen_mode(
 }
 
 void _bedit_cmd_view_leave_fullscreen_mode(
-    GSimpleAction *action, GVariant *parameter, gpointer user_data) {
+    GSimpleAction *action, GVariant *parameter, gpointer user_data
+) {
     _bedit_window_unfullscreen(BEDIT_WINDOW(user_data));
 }
 
@@ -87,7 +90,8 @@ static void on_language_selected(
 }
 
 void _bedit_cmd_view_highlight_mode(
-    GSimpleAction *action, GVariant *parameter, gpointer user_data) {
+    GSimpleAction *action, GVariant *parameter, gpointer user_data
+) {
     GtkWindow *window = GTK_WINDOW(user_data);
     GtkWidget *dlg;
     BeditHighlightModeSelector *sel;
@@ -95,16 +99,20 @@ void _bedit_cmd_view_highlight_mode(
 
     dlg = bedit_highlight_mode_dialog_new(window);
     sel = bedit_highlight_mode_dialog_get_selector(
-        BEDIT_HIGHLIGHT_MODE_DIALOG(dlg));
+        BEDIT_HIGHLIGHT_MODE_DIALOG(dlg)
+    );
 
     doc = bedit_window_get_active_document(BEDIT_WINDOW(window));
     if (doc) {
         bedit_highlight_mode_selector_select_language(
-            sel, bedit_document_get_language(doc));
+            sel, bedit_document_get_language(doc)
+        );
     }
 
     g_signal_connect(
-        sel, "language-selected", G_CALLBACK(on_language_selected), window);
+        sel, "language-selected",
+        G_CALLBACK(on_language_selected), window
+    );
 
     gtk_widget_show(GTK_WIDGET(dlg));
 }

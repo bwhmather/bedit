@@ -67,7 +67,9 @@ struct _BeditViewFrame {
 G_DEFINE_TYPE(BeditViewFrame, bedit_view_frame, GTK_TYPE_OVERLAY)
 
 static BeditDocument *get_document(BeditViewFrame *frame) {
-    return BEDIT_DOCUMENT(gtk_text_view_get_buffer(GTK_TEXT_VIEW(frame->view)));
+    return BEDIT_DOCUMENT(gtk_text_view_get_buffer(
+        GTK_TEXT_VIEW(frame->view)
+    ));
 }
 
 static void get_iter_at_start_mark(BeditViewFrame *frame, GtkTextIter *iter) {
@@ -155,7 +157,8 @@ static void renew_flush_timeout(BeditViewFrame *frame) {
     frame->flush_timeout_id = g_timeout_add_seconds(
         FLUSH_TIMEOUT_DURATION,
         (GSourceFunc)goto_line_entry_flush_timeout,
-        frame);
+        frame
+    );
 }
 
 static void set_goto_line_state(BeditViewFrame *frame, SearchState state) {
@@ -171,7 +174,8 @@ static void set_goto_line_state(BeditViewFrame *frame, SearchState state) {
 }
 
 static gboolean goto_line_widget_key_press_event(
-    GtkWidget *widget, GdkEventKey *event, BeditViewFrame *frame) {
+    GtkWidget *widget, GdkEventKey *event, BeditViewFrame *frame
+) {
     /* Close window */
     if (event->keyval == GDK_KEY_Tab) {
         hide_goto_line_widget(frame, FALSE);
@@ -184,7 +188,8 @@ static gboolean goto_line_widget_key_press_event(
 }
 
 static void goto_line_entry_escaped(
-    GtkSearchEntry *entry, BeditViewFrame *frame) {
+    GtkSearchEntry *entry, BeditViewFrame *frame
+) {
     hide_goto_line_widget(frame, TRUE);
     gtk_widget_grab_focus(GTK_WIDGET(frame->view));
 }
@@ -196,7 +201,8 @@ static void goto_line_entry_activate(GtkEntry *entry, BeditViewFrame *frame) {
 
 static void goto_line_entry_insert_text(
     GtkEditable *editable, const gchar *text, gint length, gint *position,
-    BeditViewFrame *frame) {
+    BeditViewFrame *frame
+) {
     gunichar c;
     const gchar *p;
     const gchar *end;
@@ -317,7 +323,8 @@ static void goto_line_entry_changed_cb(GtkEntry *entry, BeditViewFrame *frame) {
 }
 
 static gboolean goto_line_entry_focus_out_event(
-    GtkWidget *widget, GdkEventFocus *event, BeditViewFrame *frame) {
+    GtkWidget *widget, GdkEventFocus *event, BeditViewFrame *frame
+) {
     hide_goto_line_widget(frame, FALSE);
     return GDK_EVENT_PROPAGATE;
 }
@@ -331,7 +338,8 @@ static void start_interactive_goto_line_real(BeditViewFrame *frame) {
 
     if (gtk_revealer_get_reveal_child(frame->revealer)) {
         gtk_editable_select_region(
-            GTK_EDITABLE(frame->goto_line_entry), 0, -1);
+            GTK_EDITABLE(frame->goto_line_entry), 0, -1
+        );
         return;
     }
 
@@ -339,7 +347,7 @@ static void start_interactive_goto_line_real(BeditViewFrame *frame) {
 
     mark = gtk_text_buffer_get_insert(buffer);
     gtk_text_buffer_get_iter_at_mark(buffer, &iter, mark);
-    
+
     if (frame->start_mark != NULL) {
         gtk_text_buffer_delete_mark(buffer, frame->start_mark);
     }
@@ -355,7 +363,7 @@ static void start_interactive_goto_line_real(BeditViewFrame *frame) {
     gtk_widget_grab_focus(GTK_WIDGET(frame->goto_line_entry));
 
     renew_flush_timeout(frame);
-    
+
     g_free(line_str);
 }
 
@@ -367,16 +375,22 @@ static void bedit_view_frame_class_init(BeditViewFrameClass *klass) {
 
     /* Bind class to template */
     gtk_widget_class_set_template_from_resource(
-        widget_class, "/com/bwhmather/bedit/ui/bedit-view-frame.ui");
-    gtk_widget_class_bind_template_child(widget_class, BeditViewFrame, view);
+        widget_class, "/com/bwhmather/bedit/ui/bedit-view-frame.ui"
+    );
     gtk_widget_class_bind_template_child(
-        widget_class, BeditViewFrame, revealer);
+        widget_class, BeditViewFrame, view
+    );
     gtk_widget_class_bind_template_child(
-        widget_class, BeditViewFrame, goto_line_entry);
+        widget_class, BeditViewFrame, revealer
+    );
+    gtk_widget_class_bind_template_child(
+        widget_class, BeditViewFrame, goto_line_entry
+    );
 }
 
 static GMountOperation *view_frame_mount_operation_factory(
-    GtkSourceFile *file, gpointer user_data) {
+    GtkSourceFile *file, gpointer user_data
+) {
     GtkWidget *view_frame = user_data;
     GtkWidget *window = gtk_widget_get_toplevel(view_frame);
 
@@ -395,37 +409,38 @@ static void bedit_view_frame_init(BeditViewFrame *frame) {
     file = bedit_document_get_file(doc);
 
     gtk_source_file_set_mount_operation_factory(
-        file, view_frame_mount_operation_factory, frame, NULL);
+        file, view_frame_mount_operation_factory, frame, NULL
+    );
 
     g_signal_connect(
         frame->revealer, "key-press-event",
-        G_CALLBACK(goto_line_widget_key_press_event),
-        frame);
+        G_CALLBACK(goto_line_widget_key_press_event), frame
+    );
 
     g_signal_connect(
         frame->goto_line_entry, "activate",
-        G_CALLBACK(goto_line_entry_activate),
-        frame);
+        G_CALLBACK(goto_line_entry_activate), frame
+    );
 
     g_signal_connect(
         frame->goto_line_entry, "insert-text",
-        G_CALLBACK(goto_line_entry_insert_text),
-        frame);
+        G_CALLBACK(goto_line_entry_insert_text), frame
+    );
 
     g_signal_connect(
         frame->goto_line_entry, "stop-search",
-        G_CALLBACK(goto_line_entry_escaped),
-        frame);
+        G_CALLBACK(goto_line_entry_escaped), frame
+    );
 
     frame->goto_line_entry_changed_id = g_signal_connect(
         frame->goto_line_entry, "changed",
-        G_CALLBACK(goto_line_entry_changed_cb),
-        frame);
+        G_CALLBACK(goto_line_entry_changed_cb), frame
+    );
 
     frame->goto_line_entry_focus_out_id = g_signal_connect(
         frame->goto_line_entry, "focus-out-event",
-        G_CALLBACK(goto_line_entry_focus_out_event),
-        frame);
+        G_CALLBACK(goto_line_entry_focus_out_event), frame
+    );
 }
 
 BeditViewFrame *bedit_view_frame_new(void) {

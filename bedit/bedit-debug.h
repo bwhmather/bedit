@@ -74,14 +74,19 @@ typedef enum {
 void bedit_debug_init(void);
 
 void bedit_debug(
-    BeditDebugSection section, const gchar *file, gint line,
-    const gchar *function);
+    BeditDebugSection section,
+    const gchar *file, gint line, const gchar *function
+);
 
 void bedit_debug_message(
-    BeditDebugSection section, const gchar *file, gint line,
-    const gchar *function, const gchar *format, ...) G_GNUC_PRINTF(5, 6);
+    BeditDebugSection section,
+    const gchar *file, gint line, const gchar *function,
+    const gchar *format, ...
+) G_GNUC_PRINTF(5, 6);
 
 void bedit_debug_plugin_message(
-    const gchar *file, gint line, const gchar *function, const gchar *message);
+    const gchar *file, gint line, const gchar *function,
+    const gchar *message
+);
 
 #endif /* BEDIT_DEBUG_H */

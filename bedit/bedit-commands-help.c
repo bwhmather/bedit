@@ -54,13 +54,16 @@ void _bedit_cmd_help_keyboard_shortcuts(BeditWindow *window) {
         GtkBuilder *builder;
 
         builder = gtk_builder_new_from_resource(
-            "/com/bwhmather/bedit/ui/bedit-shortcuts.ui");
-        shortcuts_window =
-            GTK_WIDGET(gtk_builder_get_object(builder, "shortcuts-bedit"));
+            "/com/bwhmather/bedit/ui/bedit-shortcuts.ui"
+        );
+        shortcuts_window = GTK_WIDGET(gtk_builder_get_object(
+            builder, "shortcuts-bedit"
+        ));
 
         g_signal_connect(
-            shortcuts_window, "destroy", G_CALLBACK(gtk_widget_destroyed),
-            &shortcuts_window);
+            shortcuts_window, "destroy",
+            G_CALLBACK(gtk_widget_destroyed), &shortcuts_window
+        );
 
         g_object_unref(builder);
     }
@@ -68,7 +71,8 @@ void _bedit_cmd_help_keyboard_shortcuts(BeditWindow *window) {
     if (GTK_WINDOW(window) !=
         gtk_window_get_transient_for(GTK_WINDOW(shortcuts_window))) {
         gtk_window_set_transient_for(
-            GTK_WINDOW(shortcuts_window), GTK_WINDOW(window));
+            GTK_WINDOW(shortcuts_window), GTK_WINDOW(window)
+        );
     }
 
     gtk_widget_show_all(shortcuts_window);
@@ -79,7 +83,9 @@ void _bedit_cmd_help_contents(BeditWindow *window) {
     bedit_debug(DEBUG_COMMANDS);
 
     bedit_app_show_help(
-        BEDIT_APP(g_application_get_default()), GTK_WINDOW(window), NULL, NULL);
+        BEDIT_APP(g_application_get_default()),
+        GTK_WINDOW(window), NULL, NULL
+    );
 }
 
 void _bedit_cmd_help_about(BeditWindow *window) {
@@ -117,7 +123,8 @@ void _bedit_cmd_help_about(BeditWindow *window) {
     bedit_debug(DEBUG_COMMANDS);
 
     logo = gdk_pixbuf_new_from_resource(
-        "/com/bwhmather/bedit/pixmaps/bedit-logo.png", &error);
+        "/com/bwhmather/bedit/pixmaps/bedit-logo.png", &error
+    );
     if (error != NULL) {
         g_warning("Error when loading the bedit logo: %s", error->message);
         g_clear_error(&error);
@@ -129,7 +136,8 @@ void _bedit_cmd_help_about(BeditWindow *window) {
         GTK_LICENSE_GPL_2_0, "documenters", documenters, "logo", logo,
         "translator-credits", _("translator-credits"), "version", VERSION,
         "website", "http://www.bedit.org", "website-label", "www.bedit.org",
-        NULL);
+        NULL
+    );
 
     g_clear_object(&logo);
 }

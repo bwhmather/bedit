@@ -85,22 +85,30 @@ static void bedit_statusbar_class_init(BeditStatusbarClass *klass) {
     object_class->dispose = bedit_statusbar_dispose;
 
     gtk_widget_class_set_template_from_resource(
-        widget_class, "/com/bwhmather/bedit/ui/bedit-statusbar.ui");
+        widget_class, "/com/bwhmather/bedit/ui/bedit-statusbar.ui"
+    );
 
     gtk_widget_class_bind_template_child(
-        widget_class, BeditStatusbar, error_frame);
+        widget_class, BeditStatusbar, error_frame
+    );
     gtk_widget_class_bind_template_child(
-        widget_class, BeditStatusbar, error_image);
+        widget_class, BeditStatusbar, error_image
+    );
     gtk_widget_class_bind_template_child(
-        widget_class, BeditStatusbar, state_frame);
+        widget_class, BeditStatusbar, state_frame
+    );
     gtk_widget_class_bind_template_child(
-        widget_class, BeditStatusbar, load_image);
+        widget_class, BeditStatusbar, load_image
+    );
     gtk_widget_class_bind_template_child(
-        widget_class, BeditStatusbar, save_image);
+        widget_class, BeditStatusbar, save_image
+    );
     gtk_widget_class_bind_template_child(
-        widget_class, BeditStatusbar, print_image);
+        widget_class, BeditStatusbar, print_image
+    );
     gtk_widget_class_bind_template_child(
-        widget_class, BeditStatusbar, overwrite_mode_label);
+        widget_class, BeditStatusbar, overwrite_mode_label
+    );
 }
 
 static void bedit_statusbar_init(BeditStatusbar *statusbar) {
@@ -108,7 +116,8 @@ static void bedit_statusbar_init(BeditStatusbar *statusbar) {
 
     gtk_label_set_width_chars(
         GTK_LABEL(statusbar->overwrite_mode_label),
-        get_overwrite_mode_length());
+        get_overwrite_mode_length()
+    );
 }
 
 /**
@@ -130,7 +139,8 @@ GtkWidget *bedit_statusbar_new(void) {
  * Sets the overwrite mode on the statusbar.
  **/
 void bedit_statusbar_set_overwrite(
-    BeditStatusbar *statusbar, gboolean overwrite) {
+    BeditStatusbar *statusbar, gboolean overwrite
+) {
     gchar *msg;
 
     g_return_if_fail(BEDIT_IS_STATUSBAR(statusbar));
@@ -167,7 +177,8 @@ static gboolean remove_message_timeout(BeditStatusbar *statusbar) {
  * Flash a temporary message on the statusbar.
  */
 void bedit_statusbar_flash_message(
-    BeditStatusbar *statusbar, guint context_id, const gchar *format, ...) {
+    BeditStatusbar *statusbar, guint context_id, const gchar *format, ...
+) {
     const guint32 flash_length = 3000; /* three seconds */
     va_list args;
     gchar *msg;
@@ -185,22 +196,27 @@ void bedit_statusbar_flash_message(
         statusbar->flash_timeout = 0;
 
         gtk_statusbar_remove(
-            GTK_STATUSBAR(statusbar), statusbar->flash_context_id,
-            statusbar->flash_message_id);
+            GTK_STATUSBAR(statusbar),
+            statusbar->flash_context_id,
+            statusbar->flash_message_id
+        );
     }
 
     statusbar->flash_context_id = context_id;
-    statusbar->flash_message_id =
-        gtk_statusbar_push(GTK_STATUSBAR(statusbar), context_id, msg);
+    statusbar->flash_message_id = gtk_statusbar_push(
+        GTK_STATUSBAR(statusbar), context_id, msg
+    );
 
     statusbar->flash_timeout = g_timeout_add(
-        flash_length, (GSourceFunc)remove_message_timeout, statusbar);
+        flash_length, (GSourceFunc)remove_message_timeout, statusbar
+    );
 
     g_free(msg);
 }
 
 void bedit_statusbar_set_window_state(
-    BeditStatusbar *statusbar, BeditWindowState state, gint num_of_errors) {
+    BeditStatusbar *statusbar, BeditWindowState state, gint num_of_errors
+) {
     g_return_if_fail(BEDIT_IS_STATUSBAR(statusbar));
 
     gtk_widget_hide(statusbar->state_frame);
@@ -226,7 +242,8 @@ void bedit_statusbar_set_window_state(
         tip = g_strdup_printf(
             ngettext(
                 "There is a tab with errors", "There are %d tabs with errors",
-                num_of_errors),
+                num_of_errors
+            ),
             num_of_errors);
 
         gtk_widget_set_tooltip_text(statusbar->error_image, tip);

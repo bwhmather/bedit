@@ -99,18 +99,21 @@ void bedit_recent_remove_if_local(GFile *location) {
 }
 
 static gint sort_recent_items_mru(
-    GtkRecentInfo *a, GtkRecentInfo *b, gpointer unused) {
+    GtkRecentInfo *a, GtkRecentInfo *b, gpointer unused
+) {
     g_assert(a != NULL && b != NULL);
     return gtk_recent_info_get_modified(b) - gtk_recent_info_get_modified(a);
 }
 
 static void populate_filter_info(
     GtkRecentInfo *info, GtkRecentFilterInfo *filter_info,
-    GtkRecentFilterFlags needed) {
+    GtkRecentFilterFlags needed
+) {
     filter_info->uri = gtk_recent_info_get_uri(info);
     filter_info->mime_type = gtk_recent_info_get_mime_type(info);
 
-    filter_info->contains = GTK_RECENT_FILTER_URI | GTK_RECENT_FILTER_MIME_TYPE;
+    filter_info->contains =
+        GTK_RECENT_FILTER_URI | GTK_RECENT_FILTER_MIME_TYPE;
 
     if (needed & GTK_RECENT_FILTER_DISPLAY_NAME) {
         filter_info->display_name = gtk_recent_info_get_display_name(info);
@@ -144,7 +147,9 @@ static void populate_filter_info(
 }
 
 /* The BeditRecentConfiguration struct is allocated and owned by the caller */
-void bedit_recent_configuration_init_default(BeditRecentConfiguration *config) {
+void bedit_recent_configuration_init_default(
+    BeditRecentConfiguration *config
+) {
     config->manager = gtk_recent_manager_get_default();
 
     if (config->filter != NULL) {
@@ -152,7 +157,9 @@ void bedit_recent_configuration_init_default(BeditRecentConfiguration *config) {
     }
 
     config->filter = gtk_recent_filter_new();
-    gtk_recent_filter_add_application(config->filter, g_get_application_name());
+    gtk_recent_filter_add_application(
+        config->filter, g_get_application_name()
+    );
     gtk_recent_filter_add_mime_type(config->filter, "text/plain");
     g_object_ref_sink(config->filter);
 
@@ -220,7 +227,9 @@ GList *bedit_recent_get_items(BeditRecentConfiguration *config) {
                 gchar *uri_casefolded;
 
                 uri_normalized = g_utf8_normalize(
-                    gtk_recent_info_get_uri_display(info), -1, G_NORMALIZE_ALL);
+                    gtk_recent_info_get_uri_display(info), -1,
+                    G_NORMALIZE_ALL
+                );
                 uri_casefolded = g_utf8_casefold(uri_normalized, -1);
                 g_free(uri_normalized);
 
@@ -233,8 +242,9 @@ GList *bedit_recent_get_items(BeditRecentConfiguration *config) {
 
             if (!is_filtered) {
                 populate_filter_info(info, &filter_info, needed);
-                is_filtered =
-                    !gtk_recent_filter_filter(config->filter, &filter_info);
+                is_filtered = !gtk_recent_filter_filter(
+                    config->filter, &filter_info
+                );
 
                 /* these we own */
                 if (filter_info.applications) {
@@ -263,7 +273,8 @@ GList *bedit_recent_get_items(BeditRecentConfiguration *config) {
     }
 
     retitems = g_list_sort_with_data(
-        retitems, (GCompareDataFunc)sort_recent_items_mru, NULL);
+        retitems, (GCompareDataFunc)sort_recent_items_mru, NULL
+    );
     length = g_list_length(retitems);
 
     if ((config->limit != -1) && (length > config->limit)) {

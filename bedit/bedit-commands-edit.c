@@ -42,7 +42,8 @@
 #include "bedit-window.h"
 
 void _bedit_cmd_edit_undo(
-    GSimpleAction *action, GVariant *parameter, gpointer user_data) {
+    GSimpleAction *action, GVariant *parameter, gpointer user_data
+) {
     BeditWindow *window = BEDIT_WINDOW(user_data);
     BeditView *active_view;
     GtkSourceBuffer *active_document;
@@ -52,8 +53,9 @@ void _bedit_cmd_edit_undo(
     active_view = bedit_window_get_active_view(window);
     g_return_if_fail(active_view);
 
-    active_document =
-        GTK_SOURCE_BUFFER(gtk_text_view_get_buffer(GTK_TEXT_VIEW(active_view)));
+    active_document = GTK_SOURCE_BUFFER(gtk_text_view_get_buffer(
+        GTK_TEXT_VIEW(active_view)
+    ));
 
     gtk_source_buffer_undo(active_document);
 
@@ -63,7 +65,8 @@ void _bedit_cmd_edit_undo(
 }
 
 void _bedit_cmd_edit_redo(
-    GSimpleAction *action, GVariant *parameter, gpointer user_data) {
+    GSimpleAction *action, GVariant *parameter, gpointer user_data
+) {
     BeditWindow *window = BEDIT_WINDOW(user_data);
     BeditView *active_view;
     GtkSourceBuffer *active_document;
@@ -73,8 +76,9 @@ void _bedit_cmd_edit_redo(
     active_view = bedit_window_get_active_view(window);
     g_return_if_fail(active_view);
 
-    active_document =
-        GTK_SOURCE_BUFFER(gtk_text_view_get_buffer(GTK_TEXT_VIEW(active_view)));
+    active_document = GTK_SOURCE_BUFFER(gtk_text_view_get_buffer(
+        GTK_TEXT_VIEW(active_view)
+    ));
 
     gtk_source_buffer_redo(active_document);
 
@@ -84,7 +88,8 @@ void _bedit_cmd_edit_redo(
 }
 
 void _bedit_cmd_edit_cut(
-    GSimpleAction *action, GVariant *parameter, gpointer user_data) {
+    GSimpleAction *action, GVariant *parameter, gpointer user_data
+) {
     BeditWindow *window = BEDIT_WINDOW(user_data);
     BeditView *active_view;
 
@@ -99,7 +104,8 @@ void _bedit_cmd_edit_cut(
 }
 
 void _bedit_cmd_edit_copy(
-    GSimpleAction *action, GVariant *parameter, gpointer user_data) {
+    GSimpleAction *action, GVariant *parameter, gpointer user_data
+) {
     BeditWindow *window = BEDIT_WINDOW(user_data);
     BeditView *active_view;
 
@@ -114,7 +120,8 @@ void _bedit_cmd_edit_copy(
 }
 
 void _bedit_cmd_edit_paste(
-    GSimpleAction *action, GVariant *parameter, gpointer user_data) {
+    GSimpleAction *action, GVariant *parameter, gpointer user_data
+) {
     BeditWindow *window = BEDIT_WINDOW(user_data);
     BeditView *active_view;
 
@@ -129,7 +136,8 @@ void _bedit_cmd_edit_paste(
 }
 
 void _bedit_cmd_edit_delete(
-    GSimpleAction *action, GVariant *parameter, gpointer user_data) {
+    GSimpleAction *action, GVariant *parameter, gpointer user_data
+) {
     BeditWindow *window = BEDIT_WINDOW(user_data);
     BeditView *active_view;
 
@@ -144,7 +152,8 @@ void _bedit_cmd_edit_delete(
 }
 
 void _bedit_cmd_edit_select_all(
-    GSimpleAction *action, GVariant *parameter, gpointer user_data) {
+    GSimpleAction *action, GVariant *parameter, gpointer user_data
+) {
     BeditWindow *window = BEDIT_WINDOW(user_data);
     BeditView *active_view;
 
@@ -159,7 +168,8 @@ void _bedit_cmd_edit_select_all(
 }
 
 void _bedit_cmd_edit_preferences(
-    GSimpleAction *action, GVariant *parameter, gpointer user_data) {
+    GSimpleAction *action, GVariant *parameter, gpointer user_data
+) {
     BeditWindow *window = BEDIT_WINDOW(user_data);
 
     bedit_debug(DEBUG_COMMANDS);
@@ -168,7 +178,8 @@ void _bedit_cmd_edit_preferences(
 }
 
 void _bedit_cmd_edit_overwrite_mode(
-    GSimpleAction *action, GVariant *state, gpointer user_data) {
+    GSimpleAction *action, GVariant *state, gpointer user_data
+) {
     BeditWindow *window = BEDIT_WINDOW(user_data);
     BeditView *active_view;
     gboolean overwrite;

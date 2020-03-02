@@ -41,7 +41,8 @@
 #include "bedit-window.h"
 
 void _bedit_cmd_documents_previous_document(
-    GSimpleAction *action, GVariant *parameter, gpointer user_data) {
+    GSimpleAction *action, GVariant *parameter, gpointer user_data
+) {
     BeditWindow *window = BEDIT_WINDOW(user_data);
     GtkNotebook *notebook;
 
@@ -52,7 +53,8 @@ void _bedit_cmd_documents_previous_document(
 }
 
 void _bedit_cmd_documents_next_document(
-    GSimpleAction *action, GVariant *parameter, gpointer user_data) {
+    GSimpleAction *action, GVariant *parameter, gpointer user_data
+) {
     BeditWindow *window = BEDIT_WINDOW(user_data);
     GtkNotebook *notebook;
 
@@ -63,7 +65,8 @@ void _bedit_cmd_documents_next_document(
 }
 
 void _bedit_cmd_documents_move_to_new_window(
-    GSimpleAction *action, GVariant *parameter, gpointer user_data) {
+    GSimpleAction *action, GVariant *parameter, gpointer user_data
+) {
     BeditWindow *window = BEDIT_WINDOW(user_data);
     BeditTab *tab;
 
@@ -71,8 +74,9 @@ void _bedit_cmd_documents_move_to_new_window(
 
     tab = bedit_window_get_active_tab(window);
 
-    if (tab == NULL)
+    if (tab == NULL) {
         return;
+    }
 
     _bedit_window_move_tab_to_new_window(window, tab);
 }

@@ -50,10 +50,15 @@ void bedit_dirs_init(void) {
 
     win32_dir = g_win32_get_package_installation_directory_of_module(NULL);
 
-    bedit_locale_dir = g_build_filename(win32_dir, "share", "locale", NULL);
-    bedit_lib_dir = g_build_filename(win32_dir, "lib", "bedit", NULL);
-    bedit_plugins_data_dir =
-        g_build_filename(win32_dir, "share", "bedit", "plugins", NULL);
+    bedit_locale_dir = g_build_filename(
+        win32_dir, "share", "locale", NULL
+    );
+    bedit_lib_dir = g_build_filename(
+        win32_dir, "lib", "bedit", NULL
+    );
+    bedit_plugins_data_dir = g_build_filename(
+        win32_dir, "share", "bedit", "plugins", NULL
+    );
 
     g_free(win32_dir);
 #endif /* G_OS_WIN32 */
@@ -63,20 +68,28 @@ void bedit_dirs_init(void) {
         const gchar *bundle_resource_dir =
             gtkosx_application_get_resource_path();
 
-        bedit_locale_dir =
-            g_build_filename(bundle_resource_dir, "share", "locale", NULL);
-        bedit_lib_dir =
-            g_build_filename(bundle_resource_dir, "lib", "bedit", NULL);
+        bedit_locale_dir = g_build_filename(
+            bundle_resource_dir, "share", "locale", NULL
+        );
+        bedit_lib_dir = g_build_filename(
+            bundle_resource_dir, "lib", "bedit", NULL
+        );
         bedit_plugins_data_dir = g_build_filename(
-            bundle_resource_dir, "share", "bedit", "plugins", NULL);
+            bundle_resource_dir, "share", "bedit", "plugins", NULL
+        );
     }
 #endif /* OS_OSX */
 
     if (bedit_locale_dir == NULL) {
-        bedit_locale_dir = g_build_filename(DATADIR, "locale", NULL);
-        bedit_lib_dir = g_build_filename(LIBDIR, "bedit", NULL);
-        bedit_plugins_data_dir =
-            g_build_filename(DATADIR, "bedit", "plugins", NULL);
+        bedit_locale_dir = g_build_filename(
+            DATADIR, "locale", NULL
+        );
+        bedit_lib_dir = g_build_filename(
+            LIBDIR, "bedit", NULL
+        );
+        bedit_plugins_data_dir = g_build_filename(
+            DATADIR, "bedit", "plugins", NULL
+        );
     }
 
     user_config_dir = g_build_filename(g_get_user_config_dir(), "bedit", NULL);

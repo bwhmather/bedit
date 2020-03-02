@@ -52,7 +52,8 @@ GSList *bedit_settings_get_candidate_encodings(gboolean *default_candidates);
 GSList *bedit_settings_get_list(GSettings *settings, const gchar *key);
 
 void bedit_settings_set_list(
-    GSettings *settings, const gchar *key, const GSList *list);
+    GSettings *settings, const gchar *key, const GSList *list
+);
 
 /* key constants */
 #define BEDIT_SETTINGS_USE_DEFAULT_FONT "use-default-font"

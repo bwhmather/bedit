@@ -36,7 +36,9 @@ G_BEGIN_DECLS
 #define BEDIT_TYPE_APP_ACTIVATABLE (bedit_app_activatable_get_type())
 
 G_DECLARE_INTERFACE(
-    BeditAppActivatable, bedit_app_activatable, BEDIT, APP_ACTIVATABLE, GObject)
+    BeditAppActivatable, bedit_app_activatable,
+    BEDIT, APP_ACTIVATABLE, GObject
+)
 
 struct _BeditAppActivatableInterface {
     GTypeInterface g_iface;
@@ -62,7 +64,8 @@ void bedit_app_activatable_deactivate(BeditAppActivatable *activatable);
  * or %NULL if not found.
  */
 BeditMenuExtension *bedit_app_activatable_extend_menu(
-    BeditAppActivatable *activatable, const gchar *extension_point);
+    BeditAppActivatable *activatable, const gchar *extension_point
+);
 
 G_END_DECLS
 

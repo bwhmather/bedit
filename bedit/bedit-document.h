@@ -49,7 +49,8 @@ G_BEGIN_DECLS
 #define BEDIT_TYPE_DOCUMENT (bedit_document_get_type())
 
 G_DECLARE_DERIVABLE_TYPE(
-    BeditDocument, bedit_document, BEDIT, DOCUMENT, GtkSourceBuffer)
+    BeditDocument, bedit_document, BEDIT, DOCUMENT, GtkSourceBuffer
+)
 
 struct _BeditDocumentClass {
     GtkSourceBufferClass parent_class;
@@ -85,7 +86,8 @@ gboolean bedit_document_is_untitled(BeditDocument *doc);
 gboolean bedit_document_goto_line(BeditDocument *doc, gint line);
 
 gboolean bedit_document_goto_line_offset(
-    BeditDocument *doc, gint line, gint line_offset);
+    BeditDocument *doc, gint line, gint line_offset
+);
 
 void bedit_document_set_language(BeditDocument *doc, GtkSourceLanguage *lang);
 GtkSourceLanguage *bedit_document_get_language(BeditDocument *doc);
@@ -93,7 +95,8 @@ GtkSourceLanguage *bedit_document_get_language(BeditDocument *doc);
 gchar *bedit_document_get_metadata(BeditDocument *doc, const gchar *key);
 
 void bedit_document_set_metadata(
-    BeditDocument *doc, const gchar *first_key, ...);
+    BeditDocument *doc, const gchar *first_key, ...
+);
 
 G_END_DECLS
 

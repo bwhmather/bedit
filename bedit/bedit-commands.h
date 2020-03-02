@@ -44,22 +44,26 @@ G_BEGIN_DECLS
 /* Do nothing if URI does not exist */
 void bedit_commands_load_location(
     BeditWindow *window, GFile *location, const GtkSourceEncoding *encoding,
-    gint line_pos, gint column_pos);
+    gint line_pos, gint column_pos
+);
 
 /* Ignore non-existing URIs */
 GSList *bedit_commands_load_locations(
     BeditWindow *window, const GSList *locations,
     const GtkSourceEncoding *encoding, gint line_pos,
-    gint column_pos) G_GNUC_WARN_UNUSED_RESULT;
+    gint column_pos
+) G_GNUC_WARN_UNUSED_RESULT;
 
 void bedit_commands_save_document(BeditWindow *window, BeditDocument *document);
 
 void bedit_commands_save_document_async(
     BeditDocument *document, BeditWindow *window, GCancellable *cancellable,
-    GAsyncReadyCallback callback, gpointer user_data);
+    GAsyncReadyCallback callback, gpointer user_data
+);
 
 gboolean bedit_commands_save_document_finish(
-    BeditDocument *document, GAsyncResult *result);
+    BeditDocument *document, GAsyncResult *result
+);
 
 void bedit_commands_save_all_documents(BeditWindow *window);
 

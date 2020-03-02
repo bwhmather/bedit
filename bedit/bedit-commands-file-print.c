@@ -39,7 +39,8 @@
 #include "bedit-window.h"
 
 void _bedit_cmd_file_print(
-    GSimpleAction *action, GVariant *parameter, gpointer user_data) {
+    GSimpleAction *action, GVariant *parameter, gpointer user_data
+) {
     BeditWindow *window = BEDIT_WINDOW(user_data);
     BeditTab *tab;
 

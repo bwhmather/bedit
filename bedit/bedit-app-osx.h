@@ -38,7 +38,8 @@ G_DECLARE_FINAL_TYPE(BeditAppOSX, bedit_app_osx, BEDIT, APP_OSX, BeditApp)
 
 void bedit_app_osx_set_window_title(
     BeditAppOSX *app, BeditWindow *window, const gchar *title,
-    BeditDocument *document);
+    BeditDocument *document
+);
 
 gboolean bedit_app_osx_show_url(BeditAppOSX *app, const gchar *url);
 

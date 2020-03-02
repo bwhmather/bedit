@@ -91,12 +91,14 @@ BeditTab *bedit_window_create_tab(BeditWindow *window, gboolean jump_to);
 
 BeditTab *bedit_window_create_tab_from_location(
     BeditWindow *window, GFile *location, const GtkSourceEncoding *encoding,
-    gint line_pos, gint column_pos, gboolean create, gboolean jump_to);
+    gint line_pos, gint column_pos, gboolean create, gboolean jump_to
+);
 
 BeditTab *bedit_window_create_tab_from_stream(
     BeditWindow *window, GInputStream *stream,
     const GtkSourceEncoding *encoding, gint line_pos, gint column_pos,
-    gboolean jump_to);
+    gboolean jump_to
+);
 
 void bedit_window_close_tab(BeditWindow *window, BeditTab *tab);
 
@@ -131,7 +133,8 @@ GtkWidget *bedit_window_get_statusbar(BeditWindow *window);
 BeditWindowState bedit_window_get_state(BeditWindow *window);
 
 BeditTab *bedit_window_get_tab_from_location(
-    BeditWindow *window, GFile *location);
+    BeditWindow *window, GFile *location
+);
 
 /* Message bus */
 BeditMessageBus *bedit_window_get_message_bus(BeditWindow *window);
@@ -144,9 +147,11 @@ GtkWidget *_bedit_window_get_notebook(BeditWindow *window);
 GMenuModel *_bedit_window_get_hamburger_menu(BeditWindow *window);
 
 BeditWindow *_bedit_window_move_tab_to_new_window(
-    BeditWindow *window, BeditTab *tab);
+    BeditWindow *window, BeditTab *tab
+);
 void _bedit_window_move_tab_to_new_tab_group(
-    BeditWindow *window, BeditTab *tab);
+    BeditWindow *window, BeditTab *tab
+);
 gboolean _bedit_window_is_removing_tabs(BeditWindow *window);
 
 GFile *_bedit_window_get_default_location(BeditWindow *window);

@@ -34,8 +34,10 @@ G_BEGIN_DECLS
 #define BEDIT_TYPE_VIEW_ACTIVATABLE (bedit_view_activatable_get_type())
 
 G_DECLARE_INTERFACE(
-    BeditViewActivatable, bedit_view_activatable, BEDIT, VIEW_ACTIVATABLE,
-    GObject)
+    BeditViewActivatable, bedit_view_activatable,
+    BEDIT, VIEW_ACTIVATABLE,
+    GObject
+)
 
 struct _BeditViewActivatableInterface {
     GTypeInterface g_iface;

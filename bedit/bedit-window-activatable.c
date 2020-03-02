@@ -44,7 +44,8 @@
  **/
 
 G_DEFINE_INTERFACE(
-    BeditWindowActivatable, bedit_window_activatable, G_TYPE_OBJECT)
+    BeditWindowActivatable, bedit_window_activatable, G_TYPE_OBJECT
+)
 
 static void bedit_window_activatable_default_init(
     BeditWindowActivatableInterface *iface) {
@@ -59,7 +60,9 @@ static void bedit_window_activatable_default_init(
         g_param_spec_object(
             "window", "Window", "The bedit window", BEDIT_TYPE_WINDOW,
             G_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY |
-                G_PARAM_STATIC_STRINGS));
+            G_PARAM_STATIC_STRINGS
+        )
+    );
 }
 
 /**
@@ -104,7 +107,8 @@ void bedit_window_activatable_deactivate(BeditWindowActivatable *activatable) {
  * state changes in the window, due to some event or user action.
  */
 void bedit_window_activatable_update_state(
-    BeditWindowActivatable *activatable) {
+    BeditWindowActivatable *activatable
+) {
     BeditWindowActivatableInterface *iface;
 
     g_return_if_fail(BEDIT_IS_WINDOW_ACTIVATABLE(activatable));

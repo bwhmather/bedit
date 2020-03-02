@@ -53,7 +53,8 @@ static gchar *bedit_app_win32_help_link_id_impl(
     BeditApp *app, const gchar *name, const gchar *link_id) {
     if (link_id) {
         return g_strdup_printf(
-            "http://library.gnome.org/users/bedit/stable/%s", link_id);
+            "http://library.gnome.org/users/bedit/stable/%s", link_id
+        );
     } else {
         return g_strdup("http://library.gnome.org/users/bedit/stable/");
     }
@@ -90,7 +91,10 @@ static void prep_console(void) {
         AttachConsole_t p_AttachConsole = (AttachConsole_t)GetProcAddress(
             GetModuleHandle("kernel32.dll"), "AttachConsole");
 
-        if (p_AttachConsole != NULL && p_AttachConsole(ATTACH_PARENT_PROCESS)) {
+        if (
+            p_AttachConsole != NULL &&
+            p_AttachConsole(ATTACH_PARENT_PROCESS)
+        ) {
             freopen("CONOUT$", "w", stdout);
             dup2(fileno(stdout), 1);
             freopen("CONOUT$", "w", stderr);

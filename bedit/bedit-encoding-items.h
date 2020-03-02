@@ -36,7 +36,8 @@ GSList *bedit_encoding_items_get(void);
 
 void bedit_encoding_item_free(BeditEncodingItem *item);
 const GtkSourceEncoding *bedit_encoding_item_get_encoding(
-    BeditEncodingItem *item);
+    BeditEncodingItem *item
+);
 const gchar *bedit_encoding_item_get_name(BeditEncodingItem *item);
 
 G_END_DECLS

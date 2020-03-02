@@ -32,24 +32,29 @@
 #include <glib.h>
 #include <gtk/gtk.h>
 
-#define BEDIT_TYPE_CLOSE_CONFIRMATION_DIALOG                                   \
+#define BEDIT_TYPE_CLOSE_CONFIRMATION_DIALOG                                 \
     (bedit_close_confirmation_dialog_get_type())
 
 G_DECLARE_FINAL_TYPE(
     BeditCloseConfirmationDialog, bedit_close_confirmation_dialog, BEDIT,
-    CLOSE_CONFIRMATION_DIALOG, GtkMessageDialog)
+    CLOSE_CONFIRMATION_DIALOG, GtkMessageDialog
+)
 
 GtkWidget *bedit_close_confirmation_dialog_new(
-    GtkWindow *parent, GList *unsaved_documents);
+    GtkWindow *parent, GList *unsaved_documents
+);
 
 GtkWidget *bedit_close_confirmation_dialog_new_single(
-    GtkWindow *parent, BeditDocument *doc);
+    GtkWindow *parent, BeditDocument *doc
+);
 
 const GList *bedit_close_confirmation_dialog_get_unsaved_documents(
-    BeditCloseConfirmationDialog *dlg);
+    BeditCloseConfirmationDialog *dlg
+);
 
 GList *bedit_close_confirmation_dialog_get_selected_documents(
-    BeditCloseConfirmationDialog *dlg);
+    BeditCloseConfirmationDialog *dlg
+);
 
 #endif /* BEDIT_CLOSE_CONFIRMATION_DIALOG_H */
 

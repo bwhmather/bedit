@@ -36,7 +36,8 @@ G_BEGIN_DECLS
 #define BEDIT_TYPE_NOTEBOOK_POPUP_MENU (bedit_notebook_popup_menu_get_type())
 G_DECLARE_FINAL_TYPE(
     BeditNotebookPopupMenu, bedit_notebook_popup_menu, BEDIT,
-    NOTEBOOK_POPUP_MENU, GtkMenu)
+    NOTEBOOK_POPUP_MENU, GtkMenu
+)
 
 GtkWidget *bedit_notebook_popup_menu_new(BeditWindow *window, BeditTab *tab);
 

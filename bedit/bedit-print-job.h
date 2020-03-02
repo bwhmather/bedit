@@ -54,7 +54,8 @@ BeditPrintJob *bedit_print_job_new(BeditView *view);
 GtkPrintOperationResult bedit_print_job_print(
     BeditPrintJob *job, GtkPrintOperationAction action,
     GtkPageSetup *page_setup, GtkPrintSettings *settings, GtkWindow *parent,
-    GError **error);
+    GError **error
+);
 
 void bedit_print_job_cancel(BeditPrintJob *job);
 

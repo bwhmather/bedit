@@ -64,7 +64,8 @@ static GParamSpec *properties[LAST_PROP];
 G_DEFINE_TYPE(BeditHistoryEntry, bedit_history_entry, GTK_TYPE_COMBO_BOX_TEXT)
 
 static void bedit_history_entry_set_property(
-    GObject *object, guint prop_id, const GValue *value, GParamSpec *spec) {
+    GObject *object, guint prop_id, const GValue *value, GParamSpec *spec
+) {
     BeditHistoryEntry *entry;
 
     g_return_if_fail(BEDIT_IS_HISTORY_ENTRY(object));
@@ -80,7 +81,8 @@ static void bedit_history_entry_set_property(
         break;
     case PROP_ENABLE_COMPLETION:
         bedit_history_entry_set_enable_completion(
-            entry, g_value_get_boolean(value));
+            entry, g_value_get_boolean(value)
+        );
         break;
     default:
         G_OBJECT_WARN_INVALID_PROPERTY_ID(object, prop_id, spec);
@@ -88,7 +90,8 @@ static void bedit_history_entry_set_property(
 }
 
 static void bedit_history_entry_get_property(
-    GObject *object, guint prop_id, GValue *value, GParamSpec *spec) {
+    GObject *object, guint prop_id, GValue *value, GParamSpec *spec
+) {
     BeditHistoryEntry *entry;
 
     g_return_if_fail(BEDIT_IS_HISTORY_ENTRY(object));
@@ -106,7 +109,9 @@ static void bedit_history_entry_get_property(
         g_value_set_boolean(
             value,
             bedit_history_entry_get_enable_completion(
-                BEDIT_HISTORY_ENTRY(object)));
+                BEDIT_HISTORY_ENTRY(object)
+            )
+        );
         break;
     default:
         G_OBJECT_WARN_INVALID_PROPERTY_ID(object, prop_id, spec);
@@ -142,7 +147,9 @@ static void bedit_history_entry_load_history(BeditHistoryEntry *entry) {
 
     /* Now the default value is an empty string so we have to take care
        of it to not add the empty string in the search list */
-    while (items[i] != NULL && *items[i] != '\0' && i < entry->history_length) {
+    while (
+        items[i] != NULL && *items[i] != '\0' && i < entry->history_length
+    ) {
         gtk_combo_box_text_append_text(GTK_COMBO_BOX_TEXT(entry), items[i]);
         i++;
     }
@@ -160,17 +167,20 @@ static void bedit_history_entry_class_init(BeditHistoryEntryClass *klass) {
 
     properties[PROP_HISTORY_ID] = g_param_spec_string(
         "history-id", "History ID", "History ID", NULL,
-        G_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY | G_PARAM_STATIC_STRINGS);
+        G_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY | G_PARAM_STATIC_STRINGS
+    );
 
     properties[PROP_HISTORY_LENGTH] = g_param_spec_uint(
         "history-length", "Max History Length", "Max History Length", 0,
         G_MAXUINT, BEDIT_HISTORY_ENTRY_HISTORY_LENGTH_DEFAULT,
-        G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
+        G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS
+    );
 
     properties[PROP_ENABLE_COMPLETION] = g_param_spec_boolean(
         "enable-completion", "Enable Completion",
         "Wether the completion is enabled", TRUE,
-        G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
+        G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS
+    );
 
     g_object_class_install_properties(object_class, LAST_PROP, properties);
 }
@@ -203,7 +213,9 @@ static gchar **get_history_items(BeditHistoryEntry *entry) {
     while (valid) {
         gchar *str;
 
-        gtk_tree_model_get(GTK_TREE_MODEL(store), &iter, text_column, &str, -1);
+        gtk_tree_model_get(
+            GTK_TREE_MODEL(store), &iter, text_column, &str, -1
+        );
 
         g_ptr_array_add(array, str);
 
@@ -223,7 +235,8 @@ static void bedit_history_entry_save_history(BeditHistoryEntry *entry) {
     items = get_history_items(entry);
 
     g_settings_set_strv(
-        entry->settings, entry->history_id, (const gchar *const *)items);
+        entry->settings, entry->history_id, (const gchar *const *)items
+    );
 
     g_strfreev(items);
 }
@@ -245,7 +258,10 @@ static gboolean remove_item(BeditHistoryEntry *entry, const gchar *text) {
         gchar *item_text;
 
         gtk_tree_model_get(
-            GTK_TREE_MODEL(store), &iter, text_column, &item_text, -1);
+            GTK_TREE_MODEL(store), &iter,
+            text_column, &item_text,
+            -1
+        );
 
         if (item_text != NULL && strcmp(item_text, text) == 0) {
             gtk_list_store_remove(store, &iter);
@@ -269,8 +285,9 @@ static void clamp_list_store(GtkListStore *store, guint max) {
 
     if (gtk_tree_model_get_iter(GTK_TREE_MODEL(store), &iter, path)) {
         while (TRUE) {
-            if (!gtk_list_store_remove(store, &iter))
+            if (!gtk_list_store_remove(store, &iter)) {
                 break;
+            }
         }
     }
 
@@ -281,8 +298,9 @@ static void insert_history_item(
     BeditHistoryEntry *entry, const gchar *text, gboolean prepend) {
     GtkListStore *store;
 
-    if (g_utf8_strlen(text, -1) <= MIN_ITEM_LEN)
+    if (g_utf8_strlen(text, -1) <= MIN_ITEM_LEN) {
         return;
+    }
 
     store = get_history_store(entry);
 
@@ -334,7 +352,9 @@ static void bedit_history_entry_init(BeditHistoryEntry *entry) {
 
     entry->completion = NULL;
 
-    entry->settings = g_settings_new("com.bwhmather.bedit.state.history-entry");
+    entry->settings = g_settings_new(
+        "com.bwhmather.bedit.state.history-entry"
+    );
 }
 
 void bedit_history_entry_set_history_length(
@@ -364,27 +384,32 @@ void bedit_history_entry_set_enable_completion(
 
         entry->completion = gtk_entry_completion_new();
         gtk_entry_completion_set_model(
-            entry->completion, GTK_TREE_MODEL(get_history_store(entry)));
+            entry->completion, GTK_TREE_MODEL(get_history_store(entry))
+        );
 
         /* Use model column 0 as the text column */
         gtk_entry_completion_set_text_column(entry->completion, 0);
 
         gtk_entry_completion_set_minimum_key_length(
-            entry->completion, MIN_ITEM_LEN);
+            entry->completion, MIN_ITEM_LEN
+        );
 
         gtk_entry_completion_set_popup_completion(entry->completion, FALSE);
         gtk_entry_completion_set_inline_completion(entry->completion, TRUE);
 
         /* Assign the completion to the entry */
         gtk_entry_set_completion(
-            GTK_ENTRY(bedit_history_entry_get_entry(entry)), entry->completion);
+            GTK_ENTRY(bedit_history_entry_get_entry(entry)),
+            entry->completion
+        );
     } else {
         if (entry->completion == NULL) {
             return;
         }
 
         gtk_entry_set_completion(
-            GTK_ENTRY(bedit_history_entry_get_entry(entry)), NULL);
+            GTK_ENTRY(bedit_history_entry_get_entry(entry)), NULL
+        );
         g_clear_object(&entry->completion);
     }
 }
@@ -404,9 +429,13 @@ GtkWidget *bedit_history_entry_new(
     enable_completion = (enable_completion != FALSE);
 
     entry = g_object_new(
-        BEDIT_TYPE_HISTORY_ENTRY, "has-entry", TRUE, "entry-text-column", 0,
-        "id-column", 1, "history-id", history_id, "enable-completion",
-        enable_completion, NULL);
+        BEDIT_TYPE_HISTORY_ENTRY,
+        "has-entry", TRUE,
+        "entry-text-column", 0,
+        "id-column", 1,
+        "history-id", history_id,
+        "enable-completion", enable_completion, NULL
+    );
 
     /* We must load the history after the object has been constructed,
      * to ensure that the model is set properly.

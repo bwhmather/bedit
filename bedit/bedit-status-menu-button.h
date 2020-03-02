@@ -34,13 +34,16 @@ G_BEGIN_DECLS
 #define BEDIT_TYPE_STATUS_MENU_BUTTON (bedit_status_menu_button_get_type())
 
 G_DECLARE_FINAL_TYPE(
-    BeditStatusMenuButton, bedit_status_menu_button, BEDIT, STATUS_MENU_BUTTON,
-    GtkMenuButton)
+    BeditStatusMenuButton, bedit_status_menu_button,
+    BEDIT, STATUS_MENU_BUTTON,
+    GtkMenuButton
+)
 
 GtkWidget *bedit_status_menu_button_new(void);
 
 void bedit_status_menu_button_set_label(
-    BeditStatusMenuButton *button, const gchar *label);
+    BeditStatusMenuButton *button, const gchar *label
+);
 
 const gchar *bedit_status_menu_button_get_label(BeditStatusMenuButton *button);
 

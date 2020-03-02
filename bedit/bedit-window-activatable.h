@@ -36,8 +36,10 @@ G_BEGIN_DECLS
 #define BEDIT_TYPE_WINDOW_ACTIVATABLE (bedit_window_activatable_get_type())
 
 G_DECLARE_INTERFACE(
-    BeditWindowActivatable, bedit_window_activatable, BEDIT, WINDOW_ACTIVATABLE,
-    GObject)
+    BeditWindowActivatable, bedit_window_activatable,
+    BEDIT, WINDOW_ACTIVATABLE,
+    GObject
+)
 
 struct _BeditWindowActivatableInterface {
     GTypeInterface g_iface;

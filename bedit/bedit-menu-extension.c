@@ -58,7 +58,8 @@ static void bedit_menu_extension_dispose(GObject *object) {
 }
 
 static void bedit_menu_extension_get_property(
-    GObject *object, guint prop_id, GValue *value, GParamSpec *pspec) {
+    GObject *object, guint prop_id, GValue *value, GParamSpec *pspec
+) {
     BeditMenuExtension *menu = BEDIT_MENU_EXTENSION(object);
 
     switch (prop_id) {
@@ -72,7 +73,8 @@ static void bedit_menu_extension_get_property(
 }
 
 static void bedit_menu_extension_set_property(
-    GObject *object, guint prop_id, const GValue *value, GParamSpec *pspec) {
+    GObject *object, guint prop_id, const GValue *value, GParamSpec *pspec
+) {
     BeditMenuExtension *menu = BEDIT_MENU_EXTENSION(object);
 
     switch (prop_id) {
@@ -94,7 +96,8 @@ static void bedit_menu_extension_class_init(BeditMenuExtensionClass *klass) {
 
     properties[PROP_MENU] = g_param_spec_object(
         "menu", "Menu", "The main menu", G_TYPE_MENU,
-        G_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY | G_PARAM_STATIC_STRINGS);
+        G_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY | G_PARAM_STATIC_STRINGS
+    );
 
     g_object_class_install_properties(object_class, LAST_PROP, properties);
 }
@@ -108,7 +111,8 @@ BeditMenuExtension *bedit_menu_extension_new(GMenu *menu) {
 }
 
 void bedit_menu_extension_append_menu_item(
-    BeditMenuExtension *menu, GMenuItem *item) {
+    BeditMenuExtension *menu, GMenuItem *item
+) {
     g_return_if_fail(BEDIT_IS_MENU_EXTENSION(menu));
     g_return_if_fail(G_IS_MENU_ITEM(item));
 
@@ -119,7 +123,8 @@ void bedit_menu_extension_append_menu_item(
 }
 
 void bedit_menu_extension_prepend_menu_item(
-    BeditMenuExtension *menu, GMenuItem *item) {
+    BeditMenuExtension *menu, GMenuItem *item
+) {
     g_return_if_fail(BEDIT_IS_MENU_EXTENSION(menu));
     g_return_if_fail(G_IS_MENU_ITEM(item));
 
@@ -140,8 +145,8 @@ void bedit_menu_extension_remove_items(BeditMenuExtension *menu) {
         guint id = 0;
 
         if (g_menu_model_get_item_attribute(
-                G_MENU_MODEL(menu->menu), i, "bedit-merge-id", "u", &id) &&
-            id == menu->merge_id) {
+            G_MENU_MODEL(menu->menu), i, "bedit-merge-id", "u", &id
+        ) && id == menu->merge_id) {
             g_menu_remove(menu->menu, i);
             n_items--;
         } else {

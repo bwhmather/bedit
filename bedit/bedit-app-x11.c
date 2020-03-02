@@ -43,7 +43,8 @@ G_DEFINE_TYPE(BeditAppX11, bedit_app_x11, BEDIT_TYPE_APP)
 #include <X11/Xlib.h>
 
 static void bedit_app_add_platform_data(
-    GApplication *app, GVariantBuilder *builder) {
+    GApplication *app, GVariantBuilder *builder
+) {
     G_APPLICATION_CLASS(bedit_app_x11_parent_class)
         ->add_platform_data(app, builder);
 
@@ -73,8 +74,10 @@ static void bedit_app_add_platform_data(
      * "_NET_WM_USER_TIME_WINDOW" one since that's what we're doing
      * here...
      */
-    if (!g_getenv("DESKTOP_STARTUP_ID") && g_getenv("DISPLAY") &&
-        GDK_IS_X11_DISPLAY(gdk_display_get_default())) {
+    if (
+        !g_getenv("DESKTOP_STARTUP_ID") && g_getenv("DISPLAY") &&
+        GDK_IS_X11_DISPLAY(gdk_display_get_default())
+    ) {
         gchar *startup_id;
         Display *display;
         Window window;
@@ -83,22 +86,27 @@ static void bedit_app_add_platform_data(
 
         display = XOpenDisplay(0);
         window = XCreateWindow(
-            display, DefaultRootWindow(display), 0, 0, 1, 1, 0, 0, InputOnly, 0,
-            0, NULL);
+            display, DefaultRootWindow(display), 0, 0, 1, 1, 0, 0,
+            InputOnly, 0, 0, NULL
+        );
         XSelectInput(display, window, PropertyChangeMask);
         atom = XInternAtom(display, "_NET_WM_USER_TIME_WINDOW", False);
         XChangeProperty(
             display, window, atom, XA_WINDOW, 32, PropModeReplace,
-            (void *)&window, 1);
+            (void *)&window, 1
+        );
         XNextEvent(display, &event);
         g_assert(event.type == PropertyNotify);
         XCloseDisplay(display);
 
         startup_id =
-            g_strdup_printf("_TIME%u", (guint)((XPropertyEvent *)&event)->time);
+            g_strdup_printf("_TIME%u",
+            (guint)((XPropertyEvent *)&event)->time
+        );
         g_variant_builder_add(
             builder, "{sv}", "desktop-startup-id",
-            g_variant_new_string(startup_id));
+            g_variant_new_string(startup_id)
+        );
         g_free(startup_id);
     }
 }

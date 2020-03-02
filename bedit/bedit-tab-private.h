@@ -42,17 +42,20 @@ GdkPixbuf *_bedit_tab_get_icon(BeditTab *tab);
 
 void _bedit_tab_load(
     BeditTab *tab, GFile *location, const GtkSourceEncoding *encoding,
-    gint line_pos, gint column_pos, gboolean create);
+    gint line_pos, gint column_pos, gboolean create
+);
 
 void _bedit_tab_load_stream(
     BeditTab *tab, GInputStream *location, const GtkSourceEncoding *encoding,
-    gint line_pos, gint column_pos);
+    gint line_pos, gint column_pos
+);
 
 void _bedit_tab_revert(BeditTab *tab);
 
 void _bedit_tab_save_async(
-    BeditTab *tab, GCancellable *cancellable, GAsyncReadyCallback callback,
-    gpointer user_data);
+    BeditTab *tab, GCancellable *cancellable,
+    GAsyncReadyCallback callback, gpointer user_data
+);
 
 gboolean _bedit_tab_save_finish(BeditTab *tab, GAsyncResult *result);
 
@@ -60,7 +63,8 @@ void _bedit_tab_save_as_async(
     BeditTab *tab, GFile *location, const GtkSourceEncoding *encoding,
     GtkSourceNewlineType newline_type,
     GtkSourceCompressionType compression_type, GCancellable *cancellable,
-    GAsyncReadyCallback callback, gpointer user_data);
+    GAsyncReadyCallback callback, gpointer user_data
+);
 
 void _bedit_tab_print(BeditTab *tab);
 

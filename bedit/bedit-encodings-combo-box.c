@@ -64,12 +64,14 @@ enum { PROP_0, PROP_SAVE_MODE, LAST_PROP };
 static GParamSpec *properties[LAST_PROP];
 
 G_DEFINE_TYPE(
-    BeditEncodingsComboBox, bedit_encodings_combo_box, GTK_TYPE_COMBO_BOX)
+    BeditEncodingsComboBox, bedit_encodings_combo_box, GTK_TYPE_COMBO_BOX
+)
 
 static void update_menu(BeditEncodingsComboBox *combo_box);
 
 static void bedit_encodings_combo_box_set_property(
-    GObject *object, guint prop_id, const GValue *value, GParamSpec *pspec) {
+    GObject *object, guint prop_id, const GValue *value, GParamSpec *pspec
+) {
     BeditEncodingsComboBox *combo;
 
     combo = BEDIT_ENCODINGS_COMBO_BOX(object);
@@ -85,7 +87,8 @@ static void bedit_encodings_combo_box_set_property(
 }
 
 static void bedit_encodings_combo_box_get_property(
-    GObject *object, guint prop_id, GValue *value, GParamSpec *pspec) {
+    GObject *object, guint prop_id, GValue *value, GParamSpec *pspec
+) {
     BeditEncodingsComboBox *combo;
 
     combo = BEDIT_ENCODINGS_COMBO_BOX(object);
@@ -112,14 +115,16 @@ static void bedit_encodings_combo_box_constructed(GObject *object) {
     BeditEncodingsComboBox *combo = BEDIT_ENCODINGS_COMBO_BOX(object);
     GtkCellRenderer *text_renderer;
 
-    G_OBJECT_CLASS(bedit_encodings_combo_box_parent_class)->constructed(object);
+    G_OBJECT_CLASS(bedit_encodings_combo_box_parent_class)
+        ->constructed(object);
 
     /* Setup up the cells */
     text_renderer = gtk_cell_renderer_text_new();
     gtk_cell_layout_pack_end(GTK_CELL_LAYOUT(combo), text_renderer, TRUE);
 
     gtk_cell_layout_set_attributes(
-        GTK_CELL_LAYOUT(combo), text_renderer, "text", COLUMN_NAME, NULL);
+        GTK_CELL_LAYOUT(combo), text_renderer, "text", COLUMN_NAME, NULL
+    );
 
     update_menu(combo);
 }
@@ -145,13 +150,15 @@ static void bedit_encodings_combo_box_class_init(
      */
     properties[PROP_SAVE_MODE] = g_param_spec_boolean(
         "save-mode", "Save Mode", "Save Mode", FALSE,
-        G_PARAM_READWRITE | G_PARAM_CONSTRUCT | G_PARAM_STATIC_STRINGS);
+        G_PARAM_READWRITE | G_PARAM_CONSTRUCT | G_PARAM_STATIC_STRINGS
+    );
 
     g_object_class_install_properties(object_class, LAST_PROP, properties);
 }
 
 static void dialog_response_cb(
-    GtkDialog *dialog, gint response_id, BeditEncodingsComboBox *menu) {
+    GtkDialog *dialog, gint response_id, BeditEncodingsComboBox *menu
+) {
     update_menu(menu);
     gtk_widget_destroy(GTK_WIDGET(dialog));
 }
@@ -189,7 +196,8 @@ static void configure_encodings(BeditEncodingsComboBox *menu) {
     gtk_window_set_modal(GTK_WINDOW(dialog), TRUE);
 
     g_signal_connect_after(
-        dialog, "response", G_CALLBACK(dialog_response_cb), menu);
+        dialog, "response", G_CALLBACK(dialog_response_cb), menu
+    );
 
     gtk_widget_show(dialog);
 }
@@ -210,7 +218,8 @@ static void changed_cb(BeditEncodingsComboBox *menu, GtkTreeModel *model) {
 }
 
 static gboolean separator_func(
-    GtkTreeModel *model, GtkTreeIter *iter, gpointer data) {
+    GtkTreeModel *model, GtkTreeIter *iter, gpointer data
+) {
     gchar *str;
     gboolean ret;
 
@@ -226,8 +235,12 @@ static void add_separator(GtkListStore *store) {
 
     gtk_list_store_append(store, &iter);
     gtk_list_store_set(
-        store, &iter, COLUMN_NAME, "", COLUMN_ENCODING, NULL,
-        COLUMN_CONFIGURE_ROW, FALSE, -1);
+        store, &iter,
+        COLUMN_NAME, "",
+        COLUMN_ENCODING, NULL,
+        COLUMN_CONFIGURE_ROW, FALSE,
+        -1
+    );
 }
 
 static void update_menu(BeditEncodingsComboBox *menu) {
@@ -245,8 +258,12 @@ static void update_menu(BeditEncodingsComboBox *menu) {
     if (!menu->save_mode) {
         gtk_list_store_append(store, &iter);
         gtk_list_store_set(
-            store, &iter, COLUMN_NAME, _("Automatically Detected"),
-            COLUMN_ENCODING, NULL, COLUMN_CONFIGURE_ROW, FALSE, -1);
+            store, &iter,
+            COLUMN_NAME, _("Automatically Detected"),
+            COLUMN_ENCODING, NULL,
+            COLUMN_CONFIGURE_ROW, FALSE,
+            -1
+        );
 
         add_separator(store);
     }
@@ -258,9 +275,12 @@ static void update_menu(BeditEncodingsComboBox *menu) {
 
         gtk_list_store_append(store, &iter);
         gtk_list_store_set(
-            store, &iter, COLUMN_NAME, bedit_encoding_item_get_name(item),
+            store, &iter,
+            COLUMN_NAME, bedit_encoding_item_get_name(item),
             COLUMN_ENCODING, bedit_encoding_item_get_encoding(item),
-            COLUMN_CONFIGURE_ROW, FALSE, -1);
+            COLUMN_CONFIGURE_ROW, FALSE,
+            -1
+        );
 
         bedit_encoding_item_free(item);
         encodings = g_slist_delete_link(encodings, encodings);
@@ -270,8 +290,12 @@ static void update_menu(BeditEncodingsComboBox *menu) {
 
     gtk_list_store_append(store, &iter);
     gtk_list_store_set(
-        store, &iter, COLUMN_NAME, _("Add or Remove…"), COLUMN_ENCODING, NULL,
-        COLUMN_CONFIGURE_ROW, TRUE, -1);
+        store, &iter,
+        COLUMN_NAME, _("Add or Remove…"),
+        COLUMN_ENCODING, NULL,
+        COLUMN_CONFIGURE_ROW, TRUE,
+        -1
+    );
 
     /* set the model back */
     gtk_combo_box_set_model(GTK_COMBO_BOX(menu), GTK_TREE_MODEL(menu->store));
@@ -282,13 +306,16 @@ static void update_menu(BeditEncodingsComboBox *menu) {
 
 static void bedit_encodings_combo_box_init(BeditEncodingsComboBox *menu) {
     menu->store = gtk_list_store_new(
-        N_COLUMNS, G_TYPE_STRING, G_TYPE_POINTER, G_TYPE_BOOLEAN);
+        N_COLUMNS, G_TYPE_STRING, G_TYPE_POINTER, G_TYPE_BOOLEAN
+    );
 
     gtk_combo_box_set_row_separator_func(
-        GTK_COMBO_BOX(menu), separator_func, NULL, NULL);
+        GTK_COMBO_BOX(menu), separator_func, NULL, NULL
+    );
 
-    menu->changed_id =
-        g_signal_connect(menu, "changed", G_CALLBACK(changed_cb), menu->store);
+    menu->changed_id = g_signal_connect(
+        menu, "changed", G_CALLBACK(changed_cb), menu->store
+    );
 }
 
 /**
@@ -304,7 +331,8 @@ static void bedit_encodings_combo_box_init(BeditEncodingsComboBox *menu) {
  */
 GtkWidget *bedit_encodings_combo_box_new(gboolean save_mode) {
     return g_object_new(
-        BEDIT_TYPE_ENCODINGS_COMBO_BOX, "save_mode", save_mode, NULL);
+        BEDIT_TYPE_ENCODINGS_COMBO_BOX, "save_mode", save_mode, NULL
+    );
 }
 
 /**
@@ -342,7 +370,8 @@ const GtkSourceEncoding *bedit_encodings_combo_box_get_selected_encoding(
  * Sets the selected encoding.
  */
 void bedit_encodings_combo_box_set_selected_encoding(
-    BeditEncodingsComboBox *menu, const GtkSourceEncoding *encoding) {
+    BeditEncodingsComboBox *menu, const GtkSourceEncoding *encoding
+) {
     GtkTreeIter iter;
     GtkTreeModel *model;
     gboolean b;

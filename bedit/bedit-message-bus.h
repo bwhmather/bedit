@@ -64,16 +64,20 @@ struct _BeditMessageBusClass {
 
     void (*dispatch)(BeditMessageBus *bus, BeditMessage *message);
     void (*registered)(
-        BeditMessageBus *bus, const gchar *object_path, const gchar *method);
+        BeditMessageBus *bus, const gchar *object_path, const gchar *method
+    );
     void (*unregistered)(
-        BeditMessageBus *bus, const gchar *object_path, const gchar *method);
+        BeditMessageBus *bus, const gchar *object_path, const gchar *method
+    );
 };
 
 typedef void (*BeditMessageCallback)(
-    BeditMessageBus *bus, BeditMessage *message, gpointer user_data);
+    BeditMessageBus *bus, BeditMessage *message, gpointer user_data
+);
 
 typedef void (*BeditMessageBusForeach)(
-    gchar const *object_path, gchar const *method, gpointer user_data);
+    gchar const *object_path, gchar const *method, gpointer user_data
+);
 
 GType bedit_message_bus_get_type(void) G_GNUC_CONST;
 
@@ -81,57 +85,71 @@ BeditMessageBus *bedit_message_bus_get_default(void);
 BeditMessageBus *bedit_message_bus_new(void);
 
 GType bedit_message_bus_lookup(
-    BeditMessageBus *bus, const gchar *object_path, const gchar *method);
+    BeditMessageBus *bus, const gchar *object_path, const gchar *method
+);
 
 void bedit_message_bus_register(
-    BeditMessageBus *bus, GType message_type, const gchar *object_path,
-    const gchar *method);
+    BeditMessageBus *bus, GType message_type,
+    const gchar *object_path, const gchar *method
+);
 
 void bedit_message_bus_unregister(
-    BeditMessageBus *bus, const gchar *object_path, const gchar *method);
+    BeditMessageBus *bus, const gchar *object_path, const gchar *method
+);
 
 void bedit_message_bus_unregister_all(
-    BeditMessageBus *bus, const gchar *object_path);
+    BeditMessageBus *bus, const gchar *object_path
+);
 
 gboolean bedit_message_bus_is_registered(
-    BeditMessageBus *bus, const gchar *object_path, const gchar *method);
+    BeditMessageBus *bus, const gchar *object_path, const gchar *method
+);
 
 void bedit_message_bus_foreach(
-    BeditMessageBus *bus, BeditMessageBusForeach func, gpointer user_data);
+    BeditMessageBus *bus, BeditMessageBusForeach func, gpointer user_data
+);
 
 guint bedit_message_bus_connect(
     BeditMessageBus *bus, const gchar *object_path, const gchar *method,
     BeditMessageCallback callback, gpointer user_data,
-    GDestroyNotify destroy_data);
+    GDestroyNotify destroy_data
+);
 
 void bedit_message_bus_disconnect(BeditMessageBus *bus, guint id);
 
 void bedit_message_bus_disconnect_by_func(
     BeditMessageBus *bus, const gchar *object_path, const gchar *method,
-    BeditMessageCallback callback, gpointer user_data);
+    BeditMessageCallback callback, gpointer user_data
+);
 
 void bedit_message_bus_block(BeditMessageBus *bus, guint id);
 void bedit_message_bus_block_by_func(
     BeditMessageBus *bus, const gchar *object_path, const gchar *method,
-    BeditMessageCallback callback, gpointer user_data);
+    BeditMessageCallback callback, gpointer user_data
+);
 
 void bedit_message_bus_unblock(BeditMessageBus *bus, guint id);
 void bedit_message_bus_unblock_by_func(
     BeditMessageBus *bus, const gchar *object_path, const gchar *method,
-    BeditMessageCallback callback, gpointer user_data);
+    BeditMessageCallback callback, gpointer user_data
+);
 
 void bedit_message_bus_send_message(
-    BeditMessageBus *bus, BeditMessage *message);
+    BeditMessageBus *bus, BeditMessage *message
+);
 void bedit_message_bus_send_message_sync(
-    BeditMessageBus *bus, BeditMessage *message);
+    BeditMessageBus *bus, BeditMessage *message
+);
 
 void bedit_message_bus_send(
     BeditMessageBus *bus, const gchar *object_path, const gchar *method,
-    const gchar *first_property, ...) G_GNUC_NULL_TERMINATED;
+    const gchar *first_property, ...
+) G_GNUC_NULL_TERMINATED;
 
 BeditMessage *bedit_message_bus_send_sync(
     BeditMessageBus *bus, const gchar *object_path, const gchar *method,
-    const gchar *first_property, ...) G_GNUC_NULL_TERMINATED;
+    const gchar *first_property, ...
+) G_GNUC_NULL_TERMINATED;
 
 G_END_DECLS
 

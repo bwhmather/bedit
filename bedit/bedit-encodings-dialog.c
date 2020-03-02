@@ -71,26 +71,36 @@ static void set_modified(BeditEncodingsDialog *dialog) {
 }
 
 static void append_encoding(
-    GtkListStore *liststore, const GtkSourceEncoding *encoding) {
+    GtkListStore *liststore, const GtkSourceEncoding *encoding
+) {
     GtkTreeIter iter;
 
     gtk_list_store_append(liststore, &iter);
     gtk_list_store_set(
-        liststore, &iter, COLUMN_NAME, gtk_source_encoding_get_name(encoding),
-        COLUMN_ENCODING, encoding, -1);
+        liststore, &iter,
+        COLUMN_NAME, gtk_source_encoding_get_name(encoding),
+        COLUMN_ENCODING, encoding,
+        -1
+    );
 
     if (encoding == gtk_source_encoding_get_current()) {
         gchar *charset = g_strdup_printf(
             _("%s (Current Locale)"),
             gtk_source_encoding_get_charset(encoding));
 
-        gtk_list_store_set(liststore, &iter, COLUMN_CHARSET, charset, -1);
+        gtk_list_store_set(
+            liststore, &iter,
+            COLUMN_CHARSET, charset,
+            -1
+        );
 
         g_free(charset);
     } else {
         gtk_list_store_set(
-            liststore, &iter, COLUMN_CHARSET,
-            gtk_source_encoding_get_charset(encoding), -1);
+            liststore, &iter,
+            COLUMN_CHARSET, gtk_source_encoding_get_charset(encoding),
+            -1
+        );
     }
 }
 
@@ -106,8 +116,9 @@ static void init_liststores(BeditEncodingsDialog *dialog, gboolean reset) {
         chosen_encodings = gtk_source_encoding_get_default_candidates();
         default_candidates = TRUE;
     } else {
-        chosen_encodings =
-            bedit_settings_get_candidate_encodings(&default_candidates);
+        chosen_encodings = bedit_settings_get_candidate_encodings(
+            &default_candidates
+        );
     }
 
     gtk_widget_set_sensitive(dialog->reset_button, !default_candidates);
@@ -154,16 +165,24 @@ static void reset_button_clicked_cb(
 
     msg_dialog = GTK_DIALOG(gtk_message_dialog_new(
         GTK_WINDOW(dialog), GTK_DIALOG_DESTROY_WITH_PARENT | GTK_DIALOG_MODAL,
-        GTK_MESSAGE_QUESTION, GTK_BUTTONS_NONE, "%s",
-        _("Do you really want to reset the "
-          "character encodings’ preferences?")));
+        GTK_MESSAGE_QUESTION, GTK_BUTTONS_NONE,
+        "%s", _(
+            "Do you really want to reset the "
+            "character encodings’ preferences?"
+        )
+    ));
 
     gtk_dialog_add_buttons(
-        msg_dialog, _("_Cancel"), GTK_RESPONSE_CANCEL, _("_Reset"),
-        GTK_RESPONSE_ACCEPT, NULL);
+        msg_dialog,
+        _("_Cancel"), GTK_RESPONSE_CANCEL,
+        _("_Reset"), GTK_RESPONSE_ACCEPT,
+        NULL
+    );
 
     g_signal_connect(
-        msg_dialog, "response", G_CALLBACK(reset_dialog_response_cb), dialog);
+        msg_dialog, "response",
+        G_CALLBACK(reset_dialog_response_cb), dialog
+    );
 
     gtk_widget_show_all(GTK_WIDGET(msg_dialog));
 }
@@ -220,7 +239,8 @@ static void apply_settings(BeditEncodingsDialog *dialog) {
 
         g_settings_set_strv(
             dialog->enc_settings, BEDIT_SETTINGS_CANDIDATE_ENCODINGS,
-            (const gchar *const *)enc_strv);
+            (const gchar *const *)enc_strv
+        );
 
         g_slist_free(enc_list);
         g_strfreev(enc_strv);
@@ -229,7 +249,8 @@ static void apply_settings(BeditEncodingsDialog *dialog) {
 
     case STATE_RESET:
         g_settings_reset(
-            dialog->enc_settings, BEDIT_SETTINGS_CANDIDATE_ENCODINGS);
+            dialog->enc_settings, BEDIT_SETTINGS_CANDIDATE_ENCODINGS
+        );
         break;
 
     case STATE_UNMODIFIED:
@@ -282,25 +303,35 @@ static void bedit_encodings_dialog_class_init(
 
     /* Bind class to template */
     gtk_widget_class_set_template_from_resource(
-        widget_class, "/com/bwhmather/bedit/ui/bedit-encodings-dialog.ui");
+        widget_class, "/com/bwhmather/bedit/ui/bedit-encodings-dialog.ui"
+    );
     gtk_widget_class_bind_template_child(
-        widget_class, BeditEncodingsDialog, liststore_available);
+        widget_class, BeditEncodingsDialog, liststore_available
+    );
     gtk_widget_class_bind_template_child(
-        widget_class, BeditEncodingsDialog, liststore_chosen);
+        widget_class, BeditEncodingsDialog, liststore_chosen
+    );
     gtk_widget_class_bind_template_child(
-        widget_class, BeditEncodingsDialog, sort_available);
+        widget_class, BeditEncodingsDialog, sort_available
+    );
     gtk_widget_class_bind_template_child(
-        widget_class, BeditEncodingsDialog, treeview_available);
+        widget_class, BeditEncodingsDialog, treeview_available
+    );
     gtk_widget_class_bind_template_child(
-        widget_class, BeditEncodingsDialog, treeview_chosen);
+        widget_class, BeditEncodingsDialog, treeview_chosen
+    );
     gtk_widget_class_bind_template_child_full(
-        widget_class, "scrolledwindow_available", FALSE, 0);
+        widget_class, "scrolledwindow_available", FALSE, 0
+    );
     gtk_widget_class_bind_template_child_full(
-        widget_class, "scrolledwindow_chosen", FALSE, 0);
+        widget_class, "scrolledwindow_chosen", FALSE, 0
+    );
     gtk_widget_class_bind_template_child_full(
-        widget_class, "toolbar_available", FALSE, 0);
+        widget_class, "toolbar_available", FALSE, 0
+    );
     gtk_widget_class_bind_template_child_full(
-        widget_class, "toolbar_chosen", FALSE, 0);
+        widget_class, "toolbar_chosen", FALSE, 0
+    );
 }
 
 static void update_add_button_sensitivity(BeditEncodingsDialog *dialog) {
@@ -406,15 +437,17 @@ static void update_chosen_buttons_sensitivity(BeditEncodingsDialog *dialog) {
  * same order.
  */
 static void transfer_encodings(
-    GList *paths, GtkListStore *orig, GtkListStore *dest) {
+    GList *paths, GtkListStore *orig, GtkListStore *dest
+) {
     GtkTreeModel *model_orig = GTK_TREE_MODEL(orig);
     GList *refs = NULL;
     GList *l;
 
     for (l = paths; l != NULL; l = l->next) {
         GtkTreePath *path = l->data;
-        refs =
-            g_list_prepend(refs, gtk_tree_row_reference_new(model_orig, path));
+        refs = g_list_prepend(
+            refs, gtk_tree_row_reference_new(model_orig, path)
+        );
     }
 
     refs = g_list_reverse(refs);
@@ -447,7 +480,8 @@ static void transfer_encodings(
 }
 
 static void add_button_clicked_cb(
-    GtkWidget *button, BeditEncodingsDialog *dialog) {
+    GtkWidget *button, BeditEncodingsDialog *dialog
+) {
     GtkTreeSelection *selection;
     GtkTreeModel *model;
     GList *filter_paths;
@@ -464,7 +498,8 @@ static void add_button_clicked_cb(
         GtkTreePath *child_path;
 
         child_path = gtk_tree_model_sort_convert_path_to_child_path(
-            dialog->sort_available, filter_path);
+            dialog->sort_available, filter_path
+        );
 
         children_paths = g_list_prepend(children_paths, child_path);
     }
@@ -472,7 +507,8 @@ static void add_button_clicked_cb(
     children_paths = g_list_reverse(children_paths);
 
     transfer_encodings(
-        children_paths, dialog->liststore_available, dialog->liststore_chosen);
+        children_paths, dialog->liststore_available, dialog->liststore_chosen
+    );
 
     set_modified(dialog);
 
@@ -490,7 +526,8 @@ static void add_button_clicked_cb(
 }
 
 static void remove_button_clicked_cb(
-    GtkWidget *button, BeditEncodingsDialog *dialog) {
+    GtkWidget *button, BeditEncodingsDialog *dialog
+) {
     const GtkSourceEncoding *utf8_encoding;
     const GtkSourceEncoding *current_encoding;
     GtkTreeSelection *selection;
@@ -531,7 +568,8 @@ static void remove_button_clicked_cb(
     to_remove = g_list_reverse(to_remove);
 
     transfer_encodings(
-        to_remove, dialog->liststore_chosen, dialog->liststore_available);
+        to_remove, dialog->liststore_chosen, dialog->liststore_available
+    );
 
     set_modified(dialog);
 
@@ -540,7 +578,8 @@ static void remove_button_clicked_cb(
 }
 
 static void up_button_clicked_cb(
-    GtkWidget *button, BeditEncodingsDialog *dialog) {
+    GtkWidget *button, BeditEncodingsDialog *dialog
+) {
     GtkTreeSelection *selection;
     GtkTreeModel *model;
     GList *selected_rows;
@@ -574,7 +613,8 @@ static void up_button_clicked_cb(
 }
 
 static void down_button_clicked_cb(
-    GtkWidget *button, BeditEncodingsDialog *dialog) {
+    GtkWidget *button, BeditEncodingsDialog *dialog
+) {
     GtkTreeSelection *selection;
     GtkTreeModel *model;
     GList *selected_rows;
@@ -613,11 +653,16 @@ static void init_toolbar_available(BeditEncodingsDialog *dialog) {
     GtkStyleContext *context;
 
     scrolled_window = GTK_WIDGET(gtk_widget_get_template_child(
-        GTK_WIDGET(dialog), BEDIT_TYPE_ENCODINGS_DIALOG,
-        "scrolledwindow_available"));
+        GTK_WIDGET(dialog),
+        BEDIT_TYPE_ENCODINGS_DIALOG,
+        "scrolledwindow_available"
+    ));
 
     toolbar = GTK_TOOLBAR(gtk_widget_get_template_child(
-        GTK_WIDGET(dialog), BEDIT_TYPE_ENCODINGS_DIALOG, "toolbar_available"));
+        GTK_WIDGET(dialog),
+        BEDIT_TYPE_ENCODINGS_DIALOG,
+        "toolbar_available"
+    ));
 
     context = gtk_widget_get_style_context(scrolled_window);
     gtk_style_context_set_junction_sides(context, GTK_JUNCTION_BOTTOM);
@@ -631,14 +676,18 @@ static void init_toolbar_available(BeditEncodingsDialog *dialog) {
     g_object_ref_sink(dialog->add_button);
 
     gtk_tool_button_set_icon_name(
-        GTK_TOOL_BUTTON(dialog->add_button), "list-add-symbolic");
-    gtk_tool_item_set_tooltip_text(GTK_TOOL_ITEM(dialog->add_button), _("Add"));
+        GTK_TOOL_BUTTON(dialog->add_button), "list-add-symbolic"
+    );
+    gtk_tool_item_set_tooltip_text(
+        GTK_TOOL_ITEM(dialog->add_button), _("Add")
+    );
 
     gtk_toolbar_insert(toolbar, GTK_TOOL_ITEM(dialog->add_button), -1);
 
     g_signal_connect_object(
-        dialog->add_button, "clicked", G_CALLBACK(add_button_clicked_cb),
-        dialog, 0);
+        dialog->add_button, "clicked",
+        G_CALLBACK(add_button_clicked_cb), dialog, 0
+    );
 
     gtk_widget_show_all(GTK_WIDGET(toolbar));
 }
@@ -654,11 +703,16 @@ static void init_toolbar_chosen(BeditEncodingsDialog *dialog) {
     GtkToolItem *separator;
 
     scrolled_window = GTK_WIDGET(gtk_widget_get_template_child(
-        GTK_WIDGET(dialog), BEDIT_TYPE_ENCODINGS_DIALOG,
-        "scrolledwindow_chosen"));
+        GTK_WIDGET(dialog),
+        BEDIT_TYPE_ENCODINGS_DIALOG,
+        "scrolledwindow_chosen"
+    ));
 
     toolbar = GTK_TOOLBAR(gtk_widget_get_template_child(
-        GTK_WIDGET(dialog), BEDIT_TYPE_ENCODINGS_DIALOG, "toolbar_chosen"));
+        GTK_WIDGET(dialog),
+        BEDIT_TYPE_ENCODINGS_DIALOG,
+        "toolbar_chosen"
+    ));
 
     context = gtk_widget_get_style_context(scrolled_window);
     gtk_style_context_set_junction_sides(context, GTK_JUNCTION_BOTTOM);
@@ -669,49 +723,64 @@ static void init_toolbar_chosen(BeditEncodingsDialog *dialog) {
 
     /* Remove button */
     dialog->remove_button = gtk_button_new_from_icon_name(
-        "list-remove-symbolic", GTK_ICON_SIZE_SMALL_TOOLBAR);
+        "list-remove-symbolic", GTK_ICON_SIZE_SMALL_TOOLBAR
+    );
     g_object_ref_sink(dialog->remove_button);
     gtk_widget_set_tooltip_text(dialog->remove_button, _("Remove"));
 
     g_signal_connect_object(
-        dialog->remove_button, "clicked", G_CALLBACK(remove_button_clicked_cb),
-        dialog, 0);
+        dialog->remove_button, "clicked",
+        G_CALLBACK(remove_button_clicked_cb), dialog, 0
+    );
 
     /* Up button */
     dialog->up_button = gtk_button_new_from_icon_name(
-        "go-up-symbolic", GTK_ICON_SIZE_SMALL_TOOLBAR);
+        "go-up-symbolic", GTK_ICON_SIZE_SMALL_TOOLBAR
+    );
     g_object_ref_sink(dialog->up_button);
     gtk_widget_set_tooltip_text(
-        dialog->up_button, _("Move to a higher priority"));
+        dialog->up_button, _("Move to a higher priority")
+    );
 
     g_signal_connect_object(
-        dialog->up_button, "clicked", G_CALLBACK(up_button_clicked_cb), dialog,
-        0);
+        dialog->up_button, "clicked",
+        G_CALLBACK(up_button_clicked_cb), dialog, 0
+    );
 
     /* Down button */
     dialog->down_button = gtk_button_new_from_icon_name(
-        "go-down-symbolic", GTK_ICON_SIZE_SMALL_TOOLBAR);
+        "go-down-symbolic", GTK_ICON_SIZE_SMALL_TOOLBAR
+    );
     g_object_ref_sink(dialog->down_button);
     gtk_widget_set_tooltip_text(
-        dialog->down_button, _("Move to a lower priority"));
+        dialog->down_button, _("Move to a lower priority")
+    );
 
     g_signal_connect_object(
-        dialog->down_button, "clicked", G_CALLBACK(down_button_clicked_cb),
-        dialog, 0);
+        dialog->down_button, "clicked",
+        G_CALLBACK(down_button_clicked_cb), dialog, 0
+    );
 
     /* Left group (with a trick for rounded borders) */
     left_box = gtk_box_new(GTK_ORIENTATION_HORIZONTAL, 0);
     left_group = gtk_tool_item_new();
     gtk_box_pack_start(
-        GTK_BOX(left_box), dialog->remove_button, FALSE, FALSE, 0);
-    gtk_box_pack_start(GTK_BOX(left_box), dialog->up_button, FALSE, FALSE, 0);
-    gtk_box_pack_start(GTK_BOX(left_box), dialog->down_button, FALSE, FALSE, 0);
+        GTK_BOX(left_box), dialog->remove_button, FALSE, FALSE, 0
+    );
+    gtk_box_pack_start(
+        GTK_BOX(left_box), dialog->up_button, FALSE, FALSE, 0
+    );
+    gtk_box_pack_start(
+        GTK_BOX(left_box), dialog->down_button, FALSE, FALSE, 0
+    );
     gtk_container_add(GTK_CONTAINER(left_group), left_box);
     gtk_toolbar_insert(toolbar, left_group, -1);
 
     /* Separator */
     separator = gtk_separator_tool_item_new();
-    gtk_separator_tool_item_set_draw(GTK_SEPARATOR_TOOL_ITEM(separator), FALSE);
+    gtk_separator_tool_item_set_draw(
+        GTK_SEPARATOR_TOOL_ITEM(separator), FALSE
+    );
     gtk_tool_item_set_expand(separator, TRUE);
     gtk_toolbar_insert(toolbar, separator, -1);
 
@@ -720,14 +789,16 @@ static void init_toolbar_chosen(BeditEncodingsDialog *dialog) {
     g_object_ref_sink(dialog->reset_button);
 
     g_signal_connect_object(
-        dialog->reset_button, "clicked", G_CALLBACK(reset_button_clicked_cb),
-        dialog, 0);
+        dialog->reset_button, "clicked",
+        G_CALLBACK(reset_button_clicked_cb), dialog, 0
+    );
 
     /* Right group */
     right_box = gtk_box_new(GTK_ORIENTATION_HORIZONTAL, 0);
     right_group = gtk_tool_item_new();
     gtk_box_pack_start(
-        GTK_BOX(right_box), dialog->reset_button, FALSE, FALSE, 0);
+        GTK_BOX(right_box), dialog->reset_button, FALSE, FALSE, 0
+    );
     gtk_container_add(GTK_CONTAINER(right_group), right_box);
     gtk_toolbar_insert(toolbar, right_group, -1);
 
@@ -737,8 +808,9 @@ static void init_toolbar_chosen(BeditEncodingsDialog *dialog) {
 static void bedit_encodings_dialog_init(BeditEncodingsDialog *dialog) {
     GtkTreeSelection *selection;
 
-    dialog->enc_settings =
-        g_settings_new("com.bwhmather.bedit.preferences.encodings");
+    dialog->enc_settings = g_settings_new(
+        "com.bwhmather.bedit.preferences.encodings"
+    );
 
     gtk_widget_init_template(GTK_WIDGET(dialog));
 
@@ -750,13 +822,15 @@ static void bedit_encodings_dialog_init(BeditEncodingsDialog *dialog) {
     /* Available encodings */
     gtk_tree_sortable_set_sort_column_id(
         GTK_TREE_SORTABLE(dialog->sort_available), COLUMN_NAME,
-        GTK_SORT_ASCENDING);
+        GTK_SORT_ASCENDING
+    );
 
     selection = gtk_tree_view_get_selection(dialog->treeview_available);
 
     g_signal_connect_swapped(
-        selection, "changed", G_CALLBACK(update_add_button_sensitivity),
-        dialog);
+        selection, "changed",
+        G_CALLBACK(update_add_button_sensitivity), dialog
+    );
 
     update_add_button_sensitivity(dialog);
 
@@ -764,14 +838,16 @@ static void bedit_encodings_dialog_init(BeditEncodingsDialog *dialog) {
     selection = gtk_tree_view_get_selection(dialog->treeview_chosen);
 
     g_signal_connect_swapped(
-        selection, "changed", G_CALLBACK(update_chosen_buttons_sensitivity),
-        dialog);
+        selection, "changed",
+        G_CALLBACK(update_chosen_buttons_sensitivity), dialog
+    );
 
     update_chosen_buttons_sensitivity(dialog);
 }
 
 GtkWidget *bedit_encodings_dialog_new(void) {
     return g_object_new(
-        BEDIT_TYPE_ENCODINGS_DIALOG, "use-header-bar", TRUE, NULL);
+        BEDIT_TYPE_ENCODINGS_DIALOG, "use-header-bar", TRUE, NULL
+    );
 }
 

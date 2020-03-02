@@ -38,26 +38,32 @@ G_BEGIN_DECLS
 
 G_DECLARE_FINAL_TYPE(
     BeditHistoryEntry, bedit_history_entry, BEDIT, HISTORY_ENTRY,
-    GtkComboBoxText)
+    GtkComboBoxText
+)
 
 GtkWidget *bedit_history_entry_new(
-    const gchar *history_id, gboolean enable_completion);
+    const gchar *history_id, gboolean enable_completion
+);
 
 void bedit_history_entry_prepend_text(
-    BeditHistoryEntry *entry, const gchar *text);
+    BeditHistoryEntry *entry, const gchar *text
+);
 
 void bedit_history_entry_append_text(
-    BeditHistoryEntry *entry, const gchar *text);
+    BeditHistoryEntry *entry, const gchar *text
+);
 
 void bedit_history_entry_clear(BeditHistoryEntry *entry);
 
 void bedit_history_entry_set_history_length(
-    BeditHistoryEntry *entry, guint max_saved);
+    BeditHistoryEntry *entry, guint max_saved
+    );
 
 guint bedit_history_entry_get_history_length(BeditHistoryEntry *gentry);
 
 void bedit_history_entry_set_enable_completion(
-    BeditHistoryEntry *entry, gboolean enable);
+    BeditHistoryEntry *entry, gboolean enable
+);
 
 gboolean bedit_history_entry_get_enable_completion(BeditHistoryEntry *entry);
 

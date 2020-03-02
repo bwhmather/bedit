@@ -36,11 +36,14 @@ G_BEGIN_DECLS
 #define BEDIT_TYPE_PRINT_PREVIEW (bedit_print_preview_get_type())
 
 G_DECLARE_FINAL_TYPE(
-    BeditPrintPreview, bedit_print_preview, BEDIT, PRINT_PREVIEW, GtkGrid)
+    BeditPrintPreview, bedit_print_preview, BEDIT, PRINT_PREVIEW, GtkGrid
+)
 
 GtkWidget *bedit_print_preview_new(
-    GtkPrintOperation *operation, GtkPrintOperationPreview *gtk_preview,
-    GtkPrintContext *context);
+    GtkPrintOperation *operation,
+    GtkPrintOperationPreview *gtk_preview,
+    GtkPrintContext *context
+);
 
 G_END_DECLS
 

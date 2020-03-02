@@ -37,13 +37,15 @@ G_BEGIN_DECLS
     (bedit_highlight_mode_dialog_get_type())
 
 G_DECLARE_FINAL_TYPE(
-    BeditHighlightModeDialog, bedit_highlight_mode_dialog, BEDIT,
-    HIGHLIGHT_MODE_DIALOG, GtkDialog)
+    BeditHighlightModeDialog, bedit_highlight_mode_dialog,
+    BEDIT, HIGHLIGHT_MODE_DIALOG, GtkDialog
+)
 
 GtkWidget *bedit_highlight_mode_dialog_new(GtkWindow *parent);
 
 BeditHighlightModeSelector *bedit_highlight_mode_dialog_get_selector(
-    BeditHighlightModeDialog *dlg);
+    BeditHighlightModeDialog *dlg
+);
 
 G_END_DECLS
 

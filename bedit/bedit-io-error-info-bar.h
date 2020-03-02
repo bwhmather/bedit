@@ -33,30 +33,38 @@
 G_BEGIN_DECLS
 
 GtkWidget *bedit_io_loading_error_info_bar_new(
-    GFile *location, const GtkSourceEncoding *encoding, const GError *error);
+    GFile *location, const GtkSourceEncoding *encoding, const GError *error
+);
 
 GtkWidget *bedit_unrecoverable_reverting_error_info_bar_new(
-    GFile *location, const GError *error);
+    GFile *location, const GError *error
+);
 
 GtkWidget *bedit_conversion_error_while_saving_info_bar_new(
-    GFile *location, const GtkSourceEncoding *encoding, const GError *error);
+    GFile *location, const GtkSourceEncoding *encoding, const GError *error
+);
 
 const GtkSourceEncoding *bedit_conversion_error_info_bar_get_encoding(
-    GtkWidget *info_bar);
+    GtkWidget *info_bar
+);
 
 GtkWidget *bedit_file_already_open_warning_info_bar_new(GFile *location);
 
 GtkWidget *bedit_externally_modified_saving_error_info_bar_new(
-    GFile *location, const GError *error);
+    GFile *location, const GError *error
+);
 
 GtkWidget *bedit_no_backup_saving_error_info_bar_new(
-    GFile *location, const GError *error);
+    GFile *location, const GError *error
+);
 
 GtkWidget *bedit_unrecoverable_saving_error_info_bar_new(
-    GFile *location, const GError *error);
+    GFile *location, const GError *error
+);
 
 GtkWidget *bedit_externally_modified_info_bar_new(
-    GFile *location, gboolean document_modified);
+    GFile *location, gboolean document_modified
+);
 
 GtkWidget *bedit_invalid_character_info_bar_new(GFile *location);
 

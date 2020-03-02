@@ -38,7 +38,8 @@ G_BEGIN_DECLS
 
 #define BEDIT_TYPE_PLUGINS_ENGINE (bedit_plugins_engine_get_type())
 G_DECLARE_FINAL_TYPE(
-    BeditPluginsEngine, bedit_plugins_engine, BEDIT, PLUGINS_ENGINE, PeasEngine)
+    BeditPluginsEngine, bedit_plugins_engine, BEDIT, PLUGINS_ENGINE, PeasEngine
+)
 
 BeditPluginsEngine *bedit_plugins_engine_get_default(void);
 

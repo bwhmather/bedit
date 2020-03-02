@@ -48,7 +48,8 @@
  *    CSS describing the font description.
  */
 gchar *bedit_pango_font_description_to_css(
-    const PangoFontDescription *font_desc) {
+    const PangoFontDescription *font_desc
+) {
     PangoFontMask mask;
     GString *str;
 

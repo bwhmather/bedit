@@ -84,7 +84,8 @@ void bedit_view_select_all(BeditView *view);
 void bedit_view_scroll_to_cursor(BeditView *view);
 
 void bedit_view_set_font(
-    BeditView *view, gboolean default_font, const gchar *font_name);
+    BeditView *view, gboolean default_font, const gchar *font_name
+);
 
 G_END_DECLS
 

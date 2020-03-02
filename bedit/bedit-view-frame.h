@@ -35,7 +35,10 @@ G_BEGIN_DECLS
 
 #define BEDIT_TYPE_VIEW_FRAME (bedit_view_frame_get_type())
 G_DECLARE_FINAL_TYPE(
-    BeditViewFrame, bedit_view_frame, BEDIT, VIEW_FRAME, GtkOverlay)
+    BeditViewFrame, bedit_view_frame,
+    BEDIT, VIEW_FRAME,
+    GtkOverlay
+)
 
 BeditViewFrame *bedit_view_frame_new(void);
 

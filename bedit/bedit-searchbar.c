@@ -113,41 +113,53 @@ static void bedit_searchbar_class_init(BeditSearchbarClass *klass) {
     properties[PROP_SEARCH_ACTIVE] = g_param_spec_boolean(
         "search-active", "Search active",
         "Whether a search is in progress", FALSE,
-        G_PARAM_READABLE | G_PARAM_STATIC_STRINGS);
+        G_PARAM_READABLE | G_PARAM_STATIC_STRINGS
+    );
 
     properties[PROP_REPLACE_ACTIVE] = g_param_spec_boolean(
         "replace-active", "Replace active",
         "Whether a search is in progress and in replace mode", FALSE,
-        G_PARAM_READABLE | G_PARAM_STATIC_STRINGS);
+        G_PARAM_READABLE | G_PARAM_STATIC_STRINGS
+    );
 
     g_object_class_install_properties(object_class, LAST_PROP, properties);
 
     gtk_widget_class_set_template_from_resource(
-        widget_class, "/com/bwhmather/bedit/ui/bedit-searchbar.ui");
+        widget_class, "/com/bwhmather/bedit/ui/bedit-searchbar.ui"
+    );
 
     gtk_widget_class_bind_template_child(
-        widget_class, BeditSearchbar, revealer);
+        widget_class, BeditSearchbar, revealer
+    );
 
     gtk_widget_class_bind_template_child(
-        widget_class, BeditSearchbar, search_entry);
+        widget_class, BeditSearchbar, search_entry
+    );
 
     gtk_widget_class_bind_template_child(
-        widget_class, BeditSearchbar, replace_entry);
+        widget_class, BeditSearchbar, replace_entry
+    );
 
     gtk_widget_class_bind_template_child(
-        widget_class, BeditSearchbar, prev_button);
+        widget_class, BeditSearchbar, prev_button
+    );
     gtk_widget_class_bind_template_child(
-        widget_class, BeditSearchbar, next_button);
+        widget_class, BeditSearchbar, next_button
+    );
 
     gtk_widget_class_bind_template_child(
-        widget_class, BeditSearchbar, match_case_toggle);
+        widget_class, BeditSearchbar, match_case_toggle
+    );
     gtk_widget_class_bind_template_child(
-        widget_class, BeditSearchbar, regex_toggle);
+        widget_class, BeditSearchbar, regex_toggle
+    );
 
     gtk_widget_class_bind_template_child(
-        widget_class, BeditSearchbar, replace_button);
+        widget_class, BeditSearchbar, replace_button
+    );
     gtk_widget_class_bind_template_child(
-        widget_class, BeditSearchbar, replace_all_button);
+        widget_class, BeditSearchbar, replace_all_button
+    );
 }
 
 static void bedit_searchbar_clear_start_mark(BeditSearchbar *searchbar) {
@@ -182,7 +194,8 @@ static void bedit_searchbar_set_start_mark(BeditSearchbar *searchbar) {
     gtk_text_buffer_get_selection_bounds(buffer, &start_iter, NULL);
 
     searchbar->start_mark = gtk_text_buffer_create_mark(
-        buffer, NULL, &start_iter, FALSE);
+        buffer, NULL, &start_iter, FALSE
+    );
 }
 
 static void bedit_searchbar_reset_start_mark(BeditSearchbar *searchbar) {
@@ -200,7 +213,8 @@ static void bedit_searchbar_reset_start_mark(BeditSearchbar *searchbar) {
 static void bedit_searchbar_update_search_finished_cb(
     GtkSourceSearchContext *search_context,
     GAsyncResult *result,
-    BeditSearchbar *searchbar) {
+    BeditSearchbar *searchbar
+) {
     GtkTextIter match_start;
     GtkTextIter match_end;
     gboolean found;
@@ -216,7 +230,8 @@ static void bedit_searchbar_update_search_finished_cb(
     }
 
     buffer = GTK_SOURCE_BUFFER(gtk_text_view_get_buffer(
-        GTK_TEXT_VIEW(searchbar->view)));
+        GTK_TEXT_VIEW(searchbar->view)
+    ));
     if (buffer != gtk_source_search_context_get_buffer(search_context)) {
         // Tab has changed.  Search result is no longer relevant.
         return;
@@ -225,27 +240,33 @@ static void bedit_searchbar_update_search_finished_cb(
     found = gtk_source_search_context_forward_finish(
         search_context, result,
         &match_start, &match_end,
-        NULL, NULL);
+        NULL, NULL
+    );
 
     if (found) {
         g_signal_handler_block(
-            buffer, searchbar->cursor_moved_cb_id);
+            buffer, searchbar->cursor_moved_cb_id
+        );
 
         gtk_text_buffer_select_range(
-            GTK_TEXT_BUFFER(buffer), &match_start, &match_end);
+            GTK_TEXT_BUFFER(buffer), &match_start, &match_end
+        );
 
         g_signal_handler_unblock(
-            buffer, searchbar->cursor_moved_cb_id);
+            buffer, searchbar->cursor_moved_cb_id
+        );
 
         bedit_view_scroll_to_cursor(searchbar->view);
     } else {
         GtkTextIter start_at;
 
         gtk_text_buffer_get_iter_at_mark(
-            GTK_TEXT_BUFFER(buffer), &start_at, searchbar->start_mark);
+            GTK_TEXT_BUFFER(buffer), &start_at, searchbar->start_mark
+        );
 
         gtk_text_buffer_select_range(
-            GTK_TEXT_BUFFER(buffer), &start_at, &start_at);
+            GTK_TEXT_BUFFER(buffer), &start_at, &start_at
+        );
 
         bedit_view_scroll_to_cursor(searchbar->view);
     }
@@ -277,7 +298,8 @@ static void bedit_searchbar_update_search_active(BeditSearchbar *searchbar) {
     if (searchbar->search_active != search_active) {
         searchbar->search_active = search_active;
         g_object_notify_by_pspec(
-            G_OBJECT(searchbar), properties[PROP_SEARCH_ACTIVE]);
+            G_OBJECT(searchbar), properties[PROP_SEARCH_ACTIVE]
+        );
     }
 }
 
@@ -305,7 +327,8 @@ static void bedit_searchbar_update_replace_active(BeditSearchbar *searchbar) {
     if (searchbar->replace_active != replace_active) {
         searchbar->replace_active = replace_active;
         g_object_notify_by_pspec(
-            G_OBJECT(searchbar), properties[PROP_REPLACE_ACTIVE]);
+            G_OBJECT(searchbar), properties[PROP_REPLACE_ACTIVE]
+        );
     }
 }
 
@@ -347,27 +370,32 @@ static void bedit_searchbar_update_search(BeditSearchbar *searchbar) {
     gtk_source_search_settings_set_search_text(settings, search_text);
 
     case_sensitive = gtk_toggle_button_get_active(
-        GTK_TOGGLE_BUTTON(searchbar->match_case_toggle));
+        GTK_TOGGLE_BUTTON(searchbar->match_case_toggle)
+    );
     gtk_source_search_settings_set_case_sensitive(settings, case_sensitive);
 
     regex_enabled = gtk_toggle_button_get_active(
-        GTK_TOGGLE_BUTTON(searchbar->regex_toggle));
+        GTK_TOGGLE_BUTTON(searchbar->regex_toggle)
+    );
     gtk_source_search_settings_set_regex_enabled(settings, regex_enabled);
 
     gtk_source_search_settings_set_wrap_around(settings, TRUE);
 
     /* Move cursor to first occurrence after start mark. */
     gtk_text_buffer_get_iter_at_mark(
-        GTK_TEXT_BUFFER(buffer), &start_at, searchbar->start_mark);
+        GTK_TEXT_BUFFER(buffer), &start_at, searchbar->start_mark
+    );
 
     gtk_source_search_context_forward_async(
         searchbar->context, &start_at, NULL,
         (GAsyncReadyCallback)bedit_searchbar_update_search_finished_cb,
-        searchbar);
+        searchbar
+    );
 }
 
 static gboolean search_widget_key_press_cb(
-    GtkWidget *widget, GdkEventKey *event, BeditSearchbar *searchbar) {
+    GtkWidget *widget, GdkEventKey *event, BeditSearchbar *searchbar
+) {
     bedit_debug(DEBUG_WINDOW);
 
     g_return_val_if_fail(BEDIT_IS_SEARCHBAR(searchbar), GDK_EVENT_PROPAGATE);
@@ -376,7 +404,8 @@ static gboolean search_widget_key_press_cb(
 }
 
 static void search_entry_changed_cb(
-    GtkEntry *entry, BeditSearchbar *searchbar) {
+    GtkEntry *entry, BeditSearchbar *searchbar
+) {
     bedit_debug(DEBUG_WINDOW);
 
     g_return_if_fail(BEDIT_IS_SEARCHBAR(searchbar));
@@ -385,7 +414,8 @@ static void search_entry_changed_cb(
 }
 
 static void search_entry_escaped_cb(
-    GtkSearchEntry *entry, BeditSearchbar *searchbar) {
+    GtkSearchEntry *entry, BeditSearchbar *searchbar
+) {
     bedit_debug(DEBUG_WINDOW);
 
     g_return_if_fail(BEDIT_IS_SEARCHBAR(searchbar));
@@ -397,7 +427,8 @@ static void search_entry_escaped_cb(
 }
 
 static void replace_entry_escaped_cb(
-    GtkSearchEntry *entry, BeditSearchbar *searchbar) {
+    GtkSearchEntry *entry, BeditSearchbar *searchbar
+) {
     bedit_debug(DEBUG_WINDOW);
 
     g_return_if_fail(BEDIT_IS_SEARCHBAR(searchbar));
@@ -406,7 +437,8 @@ static void replace_entry_escaped_cb(
 }
 
 static void next_button_clicked_cb(
-    GtkButton *button, BeditSearchbar *searchbar) {
+    GtkButton *button, BeditSearchbar *searchbar
+) {
     bedit_debug(DEBUG_WINDOW);
 
     g_return_if_fail(BEDIT_IS_SEARCHBAR(searchbar));
@@ -415,7 +447,8 @@ static void next_button_clicked_cb(
 }
 
 static void prev_button_clicked_cb(
-    GtkButton *button, BeditSearchbar *searchbar) {
+    GtkButton *button, BeditSearchbar *searchbar
+) {
     bedit_debug(DEBUG_WINDOW);
 
     g_return_if_fail(BEDIT_IS_SEARCHBAR(searchbar));
@@ -428,31 +461,38 @@ static void bedit_searchbar_init(BeditSearchbar *searchbar) {
 
     g_signal_connect(
         searchbar, "key-press-event",
-        G_CALLBACK(search_widget_key_press_cb), searchbar);
+        G_CALLBACK(search_widget_key_press_cb), searchbar
+    );
 
     g_signal_connect(
         searchbar->search_entry, "changed",
-        G_CALLBACK(search_entry_changed_cb), searchbar);
+        G_CALLBACK(search_entry_changed_cb), searchbar
+    );
 
     g_signal_connect(
         searchbar->search_entry, "stop-search",
-        G_CALLBACK(search_entry_escaped_cb), searchbar);
+        G_CALLBACK(search_entry_escaped_cb), searchbar
+    );
 
     g_signal_connect(
         searchbar->replace_entry, "stop-search",
-        G_CALLBACK(replace_entry_escaped_cb), searchbar);
+        G_CALLBACK(replace_entry_escaped_cb), searchbar
+    );
 
     g_signal_connect(
         searchbar->next_button, "clicked",
-        G_CALLBACK(next_button_clicked_cb), searchbar);
+        G_CALLBACK(next_button_clicked_cb), searchbar
+    );
 
     g_signal_connect(
         searchbar->prev_button, "clicked",
-        G_CALLBACK(prev_button_clicked_cb), searchbar);
+        G_CALLBACK(prev_button_clicked_cb), searchbar
+    );
 }
 
 static void bedit_searchbar_cursor_moved_cb(
-    GtkTextBuffer *buffer, BeditSearchbar *searchbar) {
+    GtkTextBuffer *buffer, BeditSearchbar *searchbar
+) {
     bedit_debug(DEBUG_WINDOW);
 
     g_return_if_fail(BEDIT_IS_SEARCHBAR(searchbar));
@@ -480,7 +520,8 @@ GtkWidget *bedit_searchbar_new(void) {
  * view.
  **/
 void bedit_searchbar_set_view(
-    BeditSearchbar *searchbar, BeditView *view) {
+    BeditSearchbar *searchbar, BeditView *view
+) {
     bedit_debug(DEBUG_WINDOW);
 
     g_return_if_fail(BEDIT_IS_SEARCHBAR(searchbar));
@@ -490,10 +531,12 @@ void bedit_searchbar_set_view(
 
     if (searchbar->view != NULL) {
         BeditDocument *document = BEDIT_DOCUMENT(gtk_text_view_get_buffer(
-            GTK_TEXT_VIEW(searchbar->view)));
+            GTK_TEXT_VIEW(searchbar->view)
+        ));
 
         g_signal_handler_disconnect(
-            document, searchbar->cursor_moved_cb_id);
+            document, searchbar->cursor_moved_cb_id
+        );
 
         bedit_searchbar_clear_start_mark(searchbar);
     }
@@ -501,21 +544,24 @@ void bedit_searchbar_set_view(
     searchbar->view = view;
     if (searchbar->view != NULL) {
         BeditDocument *document = BEDIT_DOCUMENT(gtk_text_view_get_buffer(
-            GTK_TEXT_VIEW(searchbar->view)));
+            GTK_TEXT_VIEW(searchbar->view)
+        ));
 
         bedit_searchbar_set_start_mark(searchbar);
 
         searchbar->cursor_moved_cb_id = g_signal_connect(
             document, "cursor-moved",
             G_CALLBACK(bedit_searchbar_cursor_moved_cb),
-            searchbar);
+            searchbar
+        );
     }
 
     bedit_searchbar_update_search(searchbar);
 }
 
 static void bedit_searchbar_set_replace_visible(
-    BeditSearchbar *searchbar, gboolean visible) {
+    BeditSearchbar *searchbar, gboolean visible
+) {
     bedit_debug(DEBUG_WINDOW);
 
     g_return_if_fail(BEDIT_IS_SEARCHBAR(searchbar));
@@ -616,7 +662,8 @@ static void bedit_searchbar_next_finished_cb(
     }
 
     buffer = GTK_SOURCE_BUFFER(gtk_text_view_get_buffer(
-        GTK_TEXT_VIEW(searchbar->view)));
+        GTK_TEXT_VIEW(searchbar->view)
+    ));
     if (buffer != gtk_source_search_context_get_buffer(search_context)) {
         // Tab has changed.  Search result is no longer relevant.
         return;
@@ -625,11 +672,13 @@ static void bedit_searchbar_next_finished_cb(
     found = gtk_source_search_context_forward_finish(
         search_context, result,
         &match_start, &match_end,
-        NULL, NULL);
+        NULL, NULL
+    );
 
     if (found) {
         gtk_text_buffer_select_range(
-            GTK_TEXT_BUFFER(buffer), &match_start, &match_end);
+            GTK_TEXT_BUFFER(buffer), &match_start, &match_end
+        );
 
         bedit_view_scroll_to_cursor(searchbar->view);
     }
@@ -658,12 +707,14 @@ void bedit_searchbar_next(BeditSearchbar *searchbar) {
 
     gtk_source_search_context_forward_async(
         search_context, &start_at, NULL,
-        (GAsyncReadyCallback)bedit_searchbar_next_finished_cb, searchbar);
+        (GAsyncReadyCallback)bedit_searchbar_next_finished_cb, searchbar
+    );
 }
 
 static void bedit_searchbar_prev_finished_cb(
     GtkSourceSearchContext *search_context,
-    GAsyncResult *result, BeditSearchbar *searchbar) {
+    GAsyncResult *result, BeditSearchbar *searchbar
+) {
     GtkTextIter match_start;
     GtkTextIter match_end;
     gboolean found;
@@ -679,7 +730,8 @@ static void bedit_searchbar_prev_finished_cb(
     }
 
     buffer = GTK_SOURCE_BUFFER(gtk_text_view_get_buffer(
-        GTK_TEXT_VIEW(searchbar->view)));
+        GTK_TEXT_VIEW(searchbar->view)
+    ));
     if (buffer != gtk_source_search_context_get_buffer(search_context)) {
         // Tab has changed.  Search result is no longer relevant.
         return;
@@ -692,7 +744,8 @@ static void bedit_searchbar_prev_finished_cb(
 
     if (found) {
         gtk_text_buffer_select_range(
-            GTK_TEXT_BUFFER(buffer), &match_start, &match_end);
+            GTK_TEXT_BUFFER(buffer), &match_start, &match_end
+        );
 
         bedit_view_scroll_to_cursor(searchbar->view);
     }
@@ -721,7 +774,8 @@ void bedit_searchbar_prev(BeditSearchbar *searchbar) {
 
     gtk_source_search_context_backward_async(
         search_context, &start_at, NULL,
-        (GAsyncReadyCallback)bedit_searchbar_prev_finished_cb, searchbar);
+        (GAsyncReadyCallback)bedit_searchbar_prev_finished_cb, searchbar
+    );
 }
 
 /**

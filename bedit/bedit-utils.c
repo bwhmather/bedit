@@ -57,9 +57,7 @@
 
 #include "bedit-debug.h"
 
-static void widget_get_origin(GtkWidget *widget, gint *x, gint *y)
-
-{
+static void widget_get_origin(GtkWidget *widget, gint *x, gint *y) {
     GdkWindow *window;
 
     window = gtk_widget_get_window(widget);
@@ -77,7 +75,8 @@ static void widget_get_origin(GtkWidget *widget, gint *x, gint *y)
  * Deprecated: 3.36: Use gtk_menu_popup_at_widget() instead.
  */
 void bedit_utils_menu_position_under_widget(
-    GtkMenu *menu, gint *x, gint *y, gboolean *push_in, gpointer user_data) {
+    GtkMenu *menu, gint *x, gint *y, gboolean *push_in, gpointer user_data
+) {
     GtkWidget *widget;
     GtkRequisition requisition;
     GtkAllocation allocation;
@@ -101,7 +100,8 @@ void bedit_utils_menu_position_under_widget(
 }
 
 gboolean bedit_utils_menu_position_under_tree_view(
-    GtkTreeView *tree_view, GdkRectangle *rect) {
+    GtkTreeView *tree_view, GdkRectangle *rect
+) {
     GtkTreeSelection *selection;
     GtkTreeModel *model;
     gint count_rows;
@@ -115,16 +115,19 @@ gboolean bedit_utils_menu_position_under_tree_view(
     g_return_val_if_fail(selection != NULL, FALSE);
 
     count_rows = gtk_tree_selection_count_selected_rows(selection);
-    if (count_rows != 1)
+    if (count_rows != 1) {
         return FALSE;
+    }
 
     rows = gtk_tree_selection_get_selected_rows(selection, &model);
     gtk_tree_view_get_cell_area(
         tree_view, (GtkTreePath *)(rows->data),
-        gtk_tree_view_get_column(tree_view, 0), rect);
+        gtk_tree_view_get_column(tree_view, 0), rect
+    );
 
     gtk_tree_view_convert_bin_window_to_widget_coords(
-        tree_view, rect->x, rect->y, &widget_x, &widget_y);
+        tree_view, rect->x, rect->y, &widget_x, &widget_y
+    );
     rect->x = widget_x;
     rect->y = widget_y;
 
@@ -142,19 +145,23 @@ gboolean bedit_utils_menu_position_under_tree_view(
  * for a specified gtk widget.
  */
 void bedit_utils_set_atk_name_description(
-    GtkWidget *widget, const gchar *name, const gchar *description) {
+    GtkWidget *widget, const gchar *name, const gchar *description
+) {
     AtkObject *aobj;
 
     aobj = gtk_widget_get_accessible(widget);
 
-    if (!(GTK_IS_ACCESSIBLE(aobj)))
+    if (!(GTK_IS_ACCESSIBLE(aobj))) {
         return;
+    }
 
-    if (name)
+    if (name) {
         atk_object_set_name(aobj, name);
+    }
 
-    if (description)
+    if (description) {
         atk_object_set_description(aobj, description);
+    }
 }
 
 /**
@@ -170,7 +177,8 @@ void bedit_utils_set_atk_name_description(
  * copy it.
  */
 void bedit_utils_set_atk_relation(
-    GtkWidget *obj1, GtkWidget *obj2, AtkRelationType rel_type) {
+    GtkWidget *obj1, GtkWidget *obj2, AtkRelationType rel_type
+) {
     AtkObject *atk_obj1, *atk_obj2;
     AtkRelationSet *relation_set;
     AtkObject *targets[1];
@@ -179,8 +187,9 @@ void bedit_utils_set_atk_relation(
     atk_obj1 = gtk_widget_get_accessible(obj1);
     atk_obj2 = gtk_widget_get_accessible(obj2);
 
-    if (!(GTK_IS_ACCESSIBLE(atk_obj1)) || !(GTK_IS_ACCESSIBLE(atk_obj2)))
+    if (!(GTK_IS_ACCESSIBLE(atk_obj1)) || !(GTK_IS_ACCESSIBLE(atk_obj2))) {
         return;
+    }
 
     relation_set = atk_object_ref_relation_set(atk_obj1);
     targets[0] = atk_obj2;
@@ -199,8 +208,9 @@ void bedit_warning(GtkWindow *parent, const gchar *format, ...) {
 
     g_return_if_fail(format != NULL);
 
-    if (parent != NULL)
+    if (parent != NULL) {
         wg = gtk_window_get_group(parent);
+    }
 
     va_start(args, format);
     str = g_strdup_vprintf(format, args);
@@ -208,25 +218,29 @@ void bedit_warning(GtkWindow *parent, const gchar *format, ...) {
 
     dialog = gtk_message_dialog_new_with_markup(
         parent, GTK_DIALOG_MODAL | GTK_DIALOG_DESTROY_WITH_PARENT,
-        GTK_MESSAGE_ERROR, GTK_BUTTONS_OK, "%s", str);
+        GTK_MESSAGE_ERROR, GTK_BUTTONS_OK, "%s", str
+    );
 
     g_free(str);
 
-    if (wg != NULL)
+    if (wg != NULL) {
         gtk_window_group_add_window(wg, GTK_WINDOW(dialog));
+    }
 
     gtk_dialog_set_default_response(GTK_DIALOG(dialog), GTK_RESPONSE_OK);
 
     gtk_window_set_resizable(GTK_WINDOW(dialog), FALSE);
 
     g_signal_connect(
-        G_OBJECT(dialog), "response", G_CALLBACK(gtk_widget_destroy), NULL);
+        G_OBJECT(dialog), "response", G_CALLBACK(gtk_widget_destroy), NULL
+    );
 
     gtk_widget_show(dialog);
 }
 
 static gchar *str_truncate(
-    const gchar *string, guint truncate_length, gboolean middle) {
+    const gchar *string, guint truncate_length, gboolean middle
+) {
     GString *truncated;
     guint length;
     guint n_chars;
@@ -264,14 +278,17 @@ static gchar *str_truncate(
             n_chars - truncate_length + num_left_chars + delimiter_length;
 
         truncated = g_string_new_len(
-            string, g_utf8_offset_to_pointer(string, num_left_chars) - string);
+            string, g_utf8_offset_to_pointer(string, num_left_chars) - string
+        );
         g_string_append(truncated, delimiter);
         g_string_append(
-            truncated, g_utf8_offset_to_pointer(string, right_offset));
+            truncated, g_utf8_offset_to_pointer(string, right_offset)
+        );
     } else {
         num_left_chars = truncate_length - delimiter_length;
         truncated = g_string_new_len(
-            string, g_utf8_offset_to_pointer(string, num_left_chars) - string);
+            string, g_utf8_offset_to_pointer(string, num_left_chars) - string
+        );
         g_string_append(truncated, delimiter);
     }
 
@@ -286,7 +303,8 @@ static gchar *str_truncate(
  * Returns:
  */
 gchar *bedit_utils_str_middle_truncate(
-    const gchar *string, guint truncate_length) {
+    const gchar *string, guint truncate_length
+) {
     return str_truncate(string, truncate_length, TRUE);
 }
 
@@ -298,7 +316,8 @@ gchar *bedit_utils_str_middle_truncate(
  * Returns:
  */
 gchar *bedit_utils_str_end_truncate(
-    const gchar *string, guint truncate_length) {
+    const gchar *string, guint truncate_length
+) {
     return str_truncate(string, truncate_length, FALSE);
 }
 
@@ -475,14 +494,17 @@ guint bedit_utils_get_current_workspace(GdkScreen *screen) {
             gdk_x11_get_xatom_by_name_for_display(
                 display, "_NET_CURRENT_DESKTOP"),
             0, G_MAXLONG, False, XA_CARDINAL, &type, &format, &nitems,
-            &bytes_after, (gpointer)&current_desktop);
+            &bytes_after, (gpointer)&current_desktop
+        );
         err = gdk_x11_display_error_trap_pop(display);
 
-        if (err != Success || result != Success)
+        if (err != Success || result != Success) {
             return ret;
+        }
 
-        if (type == XA_CARDINAL && format == 32 && nitems > 0)
+        if (type == XA_CARDINAL && format == 32 && nitems > 0) {
             ret = current_desktop[0];
+        }
 
         XFree(current_desktop);
     }
@@ -531,14 +553,17 @@ guint bedit_utils_get_window_workspace(GtkWindow *gtkwindow) {
             GDK_DISPLAY_XDISPLAY(display), GDK_WINDOW_XID(window),
             gdk_x11_get_xatom_by_name_for_display(display, "_NET_WM_DESKTOP"),
             0, G_MAXLONG, False, XA_CARDINAL, &type, &format, &nitems,
-            &bytes_after, (gpointer)&workspace);
+            &bytes_after, (gpointer)&workspace
+        );
         err = gdk_x11_display_error_trap_pop(display);
 
-        if (err != Success || result != Success)
+        if (err != Success || result != Success) {
             return ret;
+        }
 
-        if (type == XA_CARDINAL && format == 32 && nitems > 0)
+        if (type == XA_CARDINAL && format == 32 && nitems > 0) {
             ret = workspace[0];
+        }
 
         XFree(workspace);
     }
@@ -589,11 +614,13 @@ void bedit_utils_get_current_viewport(GdkScreen *screen, gint *x, gint *y) {
             gdk_x11_get_xatom_by_name_for_display(
                 display, "_NET_DESKTOP_VIEWPORT"),
             0, G_MAXLONG, False, XA_CARDINAL, &type, &format, &nitems,
-            &bytes_after, (void *)&coordinates);
+            &bytes_after, (void *)&coordinates
+        );
         err = gdk_x11_display_error_trap_pop(display);
 
-        if (err != Success || result != Success)
+        if (err != Success || result != Success) {
             return;
+        }
 
         if (type != XA_CARDINAL || format != 32 || nitems < 2) {
             XFree(coordinates);
@@ -637,8 +664,9 @@ gboolean bedit_utils_is_valid_location(GFile *location) {
     gchar *uri;
     gboolean is_valid;
 
-    if (location == NULL)
+    if (location == NULL) {
         return FALSE;
+    }
 
     uri = g_file_get_uri(location);
 
@@ -734,7 +762,8 @@ gchar *bedit_utils_basename_for_display(GFile *location) {
 
         info = g_file_query_info(
             location, G_FILE_ATTRIBUTE_STANDARD_DISPLAY_NAME,
-            G_FILE_QUERY_INFO_NONE, NULL, NULL);
+            G_FILE_QUERY_INFO_NONE, NULL, NULL
+        );
 
         if (info) {
             /* Simply get the display name to use as the basename */
@@ -751,7 +780,8 @@ gchar *bedit_utils_basename_for_display(GFile *location) {
         }
     } else if (
         g_file_has_parent(location, NULL) ||
-        !bedit_utils_decode_uri(uri, NULL, NULL, &hn, NULL, NULL)) {
+        !bedit_utils_decode_uri(uri, NULL, NULL, &hn, NULL, NULL)
+    ) {
         /* For remote files with a parent (so not just http://foo.com)
            or remote file for which the decoding of the host name fails,
            use the _parse_name and take basename of that */
@@ -804,7 +834,8 @@ gchar **bedit_utils_drop_get_uris(GtkSelectionData *selection_data) {
     gchar **uri_list;
 
     uris = g_uri_list_extract_uris(
-        (gchar *)gtk_selection_data_get_data(selection_data));
+        (gchar *)gtk_selection_data_get_data(selection_data)
+    );
     uri_list = g_new0(gchar *, g_strv_length(uris) + 1);
 
     for (i = 0; uris[i] != NULL; i++) {
@@ -813,8 +844,9 @@ gchar **bedit_utils_drop_get_uris(GtkSelectionData *selection_data) {
         uri = make_canonical_uri_from_shell_arg(uris[i]);
 
         /* Silently ignore malformed URI/filename */
-        if (uri != NULL)
+        if (uri != NULL) {
             uri_list[p++] = uri;
+        }
     }
 
     if (*uri_list == NULL) {
@@ -828,8 +860,9 @@ gchar **bedit_utils_drop_get_uris(GtkSelectionData *selection_data) {
 }
 
 static void null_ptr(gchar **ptr) {
-    if (ptr)
+    if (ptr) {
         *ptr = NULL;
+    }
 }
 
 /**
@@ -851,12 +884,13 @@ static void null_ptr(gchar **ptr) {
  * Return value: %TRUE if the uri could be properly decoded, %FALSE otherwise.
  */
 gboolean bedit_utils_decode_uri(
-    const gchar *uri, gchar **scheme, gchar **user, gchar **host, gchar **port,
-    gchar **path) {
+    const gchar *uri, gchar **scheme, gchar **user,
+    gchar **host, gchar **port,
+    gchar **path
+) {
     /* Largely copied from glib/gio/gdummyfile.c:_g_decode_uri. This
      * functionality should be in glib/gio, but for now we implement it
      * ourselves (see bug #546182) */
-
     const char *p, *in, *hier_part_start, *hier_part_end;
     char *out;
     char c;
@@ -864,7 +898,6 @@ gboolean bedit_utils_decode_uri(
     /* From RFC 3986 Decodes:
      * URI = scheme ":" hier-part [ "?" query ] [ "#" fragment ]
      */
-
     p = uri;
 
     null_ptr(scheme);
@@ -876,15 +909,16 @@ gboolean bedit_utils_decode_uri(
     /* Decode scheme:
      * scheme = ALPHA *( ALPHA / DIGIT / "+" / "-" / "." )
      */
-
-    if (!g_ascii_isalpha(*p))
+    if (!g_ascii_isalpha(*p)) {
         return FALSE;
+    }
 
     while (1) {
         c = *p++;
 
-        if (c == ':')
+        if (c == ':') {
             break;
+        }
 
         if (!(g_ascii_isalnum(c) || c == '+' || c == '-' || c == '.')) {
             return FALSE;
@@ -913,29 +947,35 @@ gboolean bedit_utils_decode_uri(
 
         authority_start = hier_part_start + 2;
         /* authority is always followed by / or nothing */
-        authority_end =
-            memchr(authority_start, '/', hier_part_end - authority_start);
+        authority_end = memchr(
+            authority_start, '/', hier_part_end - authority_start
+        );
 
-        if (authority_end == NULL)
+        if (authority_end == NULL) {
             authority_end = hier_part_end;
+        }
 
         /* 3.2:
          * authority = [ userinfo "@" ] host [ ":" port ]
          */
 
-        userinfo_end =
-            memchr(authority_start, '@', authority_end - authority_start);
+        userinfo_end = memchr(
+            authority_start, '@', authority_end - authority_start
+        );
 
         if (userinfo_end) {
             userinfo_start = authority_start;
 
-            if (user)
-                *user =
-                    g_uri_unescape_segment(userinfo_start, userinfo_end, NULL);
+            if (user) {
+                *user = g_uri_unescape_segment(
+                    userinfo_start, userinfo_end, NULL
+                );
+            }
 
             if (user && *user == NULL) {
-                if (scheme)
+                if (scheme) {
                     g_free(*scheme);
+                }
 
                 return FALSE;
             }
@@ -950,26 +990,30 @@ gboolean bedit_utils_decode_uri(
         if (port_start) {
             host_end = port_start++;
 
-            if (port)
+            if (port) {
                 *port = g_strndup(port_start, authority_end - port_start);
+            }
         } else {
             host_end = authority_end;
         }
 
-        if (host)
+        if (host) {
             *host = g_strndup(host_start, host_end - host_start);
+        }
 
         hier_part_start = authority_end;
     }
 
-    if (path)
+    if (path) {
         *path = g_uri_unescape_segment(hier_part_start, hier_part_end, "/");
+    }
 
     return TRUE;
 }
 
 GtkSourceCompressionType bedit_utils_get_compression_type_from_content_type(
-    const gchar *content_type) {
+    const gchar *content_type
+) {
     if (content_type == NULL) {
         return GTK_SOURCE_COMPRESSION_TYPE_NONE;
     }
@@ -987,11 +1031,11 @@ static gchar *get_direct_save_filename(GdkDragContext *context) {
     gint prop_len;
 
     if (!gdk_property_get(
-            gdk_drag_context_get_source_window(context),
-            gdk_atom_intern("XdndDirectSave0", FALSE),
-            gdk_atom_intern("text/plain", FALSE), 0, 1024, FALSE, NULL, NULL,
-            &prop_len, &prop_text) &&
-        prop_text != NULL) {
+        gdk_drag_context_get_source_window(context),
+        gdk_atom_intern("XdndDirectSave0", FALSE),
+        gdk_atom_intern("text/plain", FALSE), 0, 1024, FALSE, NULL, NULL,
+        &prop_len, &prop_text
+    ) && prop_text != NULL) {
         return NULL;
     }
 
@@ -1003,7 +1047,8 @@ static gchar *get_direct_save_filename(GdkDragContext *context) {
     if (*prop_text == '\0' ||
         strchr((const gchar *)prop_text, G_DIR_SEPARATOR) != NULL) {
         bedit_debug_message(
-            DEBUG_UTILS, "Invalid filename provided by XDS drag site");
+            DEBUG_UTILS, "Invalid filename provided by XDS drag site"
+        );
         g_free(prop_text);
         return NULL;
     }
@@ -1036,7 +1081,8 @@ gchar *bedit_utils_set_direct_save_filename(GdkDragContext *context) {
             gdk_drag_context_get_source_window(context),
             gdk_atom_intern("XdndDirectSave0", FALSE),
             gdk_atom_intern("text/plain", FALSE), 8, GDK_PROP_MODE_REPLACE,
-            (const guchar *)uri, strlen(uri));
+            (const guchar *)uri, strlen(uri)
+        );
 
         g_free(tempdir);
         g_free(path);
@@ -1047,7 +1093,8 @@ gchar *bedit_utils_set_direct_save_filename(GdkDragContext *context) {
 }
 
 const gchar *bedit_utils_newline_type_to_string(
-    GtkSourceNewlineType newline_type) {
+    GtkSourceNewlineType newline_type
+) {
     switch (newline_type) {
     case GTK_SOURCE_NEWLINE_TYPE_LF:
         return _("Unix/Linux");

@@ -64,11 +64,13 @@ static void bedit_plugins_engine_init(BeditPluginsEngine *engine) {
 
     /* Require bedit's typelib. */
     typelib_dir = g_build_filename(
-        bedit_dirs_get_bedit_lib_dir(), "girepository-1.0", NULL);
+        bedit_dirs_get_bedit_lib_dir(), "girepository-1.0", NULL
+    );
 
     if (!g_irepository_require_private(
-            g_irepository_get_default(), typelib_dir, "Bedit", "3.0", 0,
-            &error)) {
+        g_irepository_get_default(), typelib_dir,
+        "Bedit", "3.0", 0, &error
+    )) {
         g_warning("Could not load Bedit repository: %s", error->message);
         g_error_free(error);
         error = NULL;
@@ -78,14 +80,16 @@ static void bedit_plugins_engine_init(BeditPluginsEngine *engine) {
 
     /* This should be moved to libpeas */
     if (!g_irepository_require(
-            g_irepository_get_default(), "Peas", "1.0", 0, &error)) {
+        g_irepository_get_default(), "Peas", "1.0", 0, &error
+    )) {
         g_warning("Could not load Peas repository: %s", error->message);
         g_error_free(error);
         error = NULL;
     }
 
     if (!g_irepository_require(
-            g_irepository_get_default(), "PeasGtk", "1.0", 0, &error)) {
+        g_irepository_get_default(), "PeasGtk", "1.0", 0, &error
+    )) {
         g_warning("Could not load PeasGtk repository: %s", error->message);
         g_error_free(error);
         error = NULL;
@@ -93,15 +97,18 @@ static void bedit_plugins_engine_init(BeditPluginsEngine *engine) {
 
     peas_engine_add_search_path(
         PEAS_ENGINE(engine), bedit_dirs_get_user_plugins_dir(),
-        bedit_dirs_get_user_plugins_dir());
+        bedit_dirs_get_user_plugins_dir()
+    );
 
     peas_engine_add_search_path(
         PEAS_ENGINE(engine), bedit_dirs_get_bedit_plugins_dir(),
-        bedit_dirs_get_bedit_plugins_data_dir());
+        bedit_dirs_get_bedit_plugins_data_dir()
+    );
 
     g_settings_bind(
         engine->plugin_settings, BEDIT_SETTINGS_ACTIVE_PLUGINS, engine,
-        "loaded-plugins", G_SETTINGS_BIND_DEFAULT);
+        "loaded-plugins", G_SETTINGS_BIND_DEFAULT
+    );
 }
 
 static void bedit_plugins_engine_dispose(GObject *object) {
@@ -120,11 +127,13 @@ static void bedit_plugins_engine_class_init(BeditPluginsEngineClass *klass) {
 
 BeditPluginsEngine *bedit_plugins_engine_get_default(void) {
     if (default_engine == NULL) {
-        default_engine =
-            BEDIT_PLUGINS_ENGINE(g_object_new(BEDIT_TYPE_PLUGINS_ENGINE, NULL));
+        default_engine = BEDIT_PLUGINS_ENGINE(g_object_new(
+            BEDIT_TYPE_PLUGINS_ENGINE, NULL
+        ));
 
         g_object_add_weak_pointer(
-            G_OBJECT(default_engine), (gpointer)&default_engine);
+            G_OBJECT(default_engine), (gpointer)&default_engine
+        );
     }
 
     return default_engine;

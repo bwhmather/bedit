@@ -132,29 +132,41 @@ static void bedit_print_preview_class_init(BeditPrintPreviewClass *klass) {
 
     /* Bind class to template */
     gtk_widget_class_set_template_from_resource(
-        widget_class, "/com/bwhmather/bedit/ui/bedit-print-preview.ui");
+        widget_class, "/com/bwhmather/bedit/ui/bedit-print-preview.ui"
+    );
     gtk_widget_class_bind_template_child(
-        widget_class, BeditPrintPreview, prev_button);
+        widget_class, BeditPrintPreview, prev_button
+    );
     gtk_widget_class_bind_template_child(
-        widget_class, BeditPrintPreview, next_button);
+        widget_class, BeditPrintPreview, next_button
+    );
     gtk_widget_class_bind_template_child(
-        widget_class, BeditPrintPreview, page_entry);
+        widget_class, BeditPrintPreview, page_entry
+    );
     gtk_widget_class_bind_template_child(
-        widget_class, BeditPrintPreview, last_page_label);
+        widget_class, BeditPrintPreview, last_page_label
+    );
     gtk_widget_class_bind_template_child(
-        widget_class, BeditPrintPreview, multi_pages_button);
+        widget_class, BeditPrintPreview, multi_pages_button
+    );
     gtk_widget_class_bind_template_child(
-        widget_class, BeditPrintPreview, zoom_one_button);
+        widget_class, BeditPrintPreview, zoom_one_button
+    );
     gtk_widget_class_bind_template_child(
-        widget_class, BeditPrintPreview, zoom_fit_button);
+        widget_class, BeditPrintPreview, zoom_fit_button
+    );
     gtk_widget_class_bind_template_child(
-        widget_class, BeditPrintPreview, zoom_in_button);
+        widget_class, BeditPrintPreview, zoom_in_button
+    );
     gtk_widget_class_bind_template_child(
-        widget_class, BeditPrintPreview, zoom_out_button);
+        widget_class, BeditPrintPreview, zoom_out_button
+    );
     gtk_widget_class_bind_template_child(
-        widget_class, BeditPrintPreview, close_button);
+        widget_class, BeditPrintPreview, close_button
+    );
     gtk_widget_class_bind_template_child(
-        widget_class, BeditPrintPreview, layout);
+        widget_class, BeditPrintPreview, layout
+    );
 }
 
 static gint get_n_pages(BeditPrintPreview *preview) {
@@ -180,7 +192,8 @@ static gdouble get_screen_dpi(BeditPrintPreview *preview) {
     if (dpi < 30.0 || 600.0 < dpi) {
         if (!warning_shown) {
             g_warning(
-                "Invalid the x-resolution for the screen, assuming 96dpi");
+                "Invalid the x-resolution for the screen, assuming 96dpi"
+            );
             warning_shown = TRUE;
         }
 
@@ -218,7 +231,8 @@ static gdouble get_paper_height(BeditPrintPreview *preview) {
  * orientation.
  */
 static void get_tile_size(
-    BeditPrintPreview *preview, gint *tile_width, gint *tile_height) {
+    BeditPrintPreview *preview, gint *tile_width, gint *tile_height
+) {
     if (tile_width != NULL) {
         *tile_width =
             2 * PAGE_PAD + round(preview->scale * get_paper_width(preview));
@@ -231,7 +245,8 @@ static void get_tile_size(
 }
 
 static void get_adjustments(
-    BeditPrintPreview *preview, GtkAdjustment **hadj, GtkAdjustment **vadj) {
+    BeditPrintPreview *preview, GtkAdjustment **hadj, GtkAdjustment **vadj
+) {
     *hadj = gtk_scrollable_get_hadjustment(GTK_SCROLLABLE(preview->layout));
     *vadj = gtk_scrollable_get_vadjustment(GTK_SCROLLABLE(preview->layout));
 }
@@ -244,7 +259,8 @@ static void update_layout_size(BeditPrintPreview *preview) {
 
     /* force size of the drawing area to make the scrolled window work */
     gtk_layout_set_size(
-        preview->layout, tile_width * preview->n_columns, tile_height);
+        preview->layout, tile_width * preview->n_columns, tile_height
+    );
 
     gtk_widget_queue_draw(GTK_WIDGET(preview->layout));
 }
@@ -252,7 +268,6 @@ static void update_layout_size(BeditPrintPreview *preview) {
 /* Zoom should always be set with one of these two function
  * so that the tile size is properly updated.
  */
-
 static void set_zoom_factor(BeditPrintPreview *preview, gdouble zoom) {
     preview->scale = zoom;
     update_layout_size(preview);
@@ -299,10 +314,12 @@ static void goto_page(BeditPrintPreview *preview, gint page) {
     n_pages = get_n_pages(preview);
 
     gtk_widget_set_sensitive(
-        GTK_WIDGET(preview->prev_button), page > 0 && n_pages > 1);
+        GTK_WIDGET(preview->prev_button), page > 0 && n_pages > 1
+    );
 
     gtk_widget_set_sensitive(
-        GTK_WIDGET(preview->next_button), page < (n_pages - 1) && n_pages > 1);
+        GTK_WIDGET(preview->next_button), page < (n_pages - 1) && n_pages > 1
+    );
 
     if (page != preview->cur_page) {
         preview->cur_page = page;
@@ -312,7 +329,9 @@ static void goto_page(BeditPrintPreview *preview, gint page) {
     }
 }
 
-static void prev_button_clicked(GtkWidget *button, BeditPrintPreview *preview) {
+static void prev_button_clicked(
+    GtkWidget *button, BeditPrintPreview *preview
+) {
     GdkEvent *event;
     gint page;
 
@@ -331,7 +350,9 @@ static void prev_button_clicked(GtkWidget *button, BeditPrintPreview *preview) {
     gdk_event_free(event);
 }
 
-static void next_button_clicked(GtkWidget *button, BeditPrintPreview *preview) {
+static void next_button_clicked(
+    GtkWidget *button, BeditPrintPreview *preview
+) {
     GdkEvent *event;
     gint page;
     gint n_pages = get_n_pages(preview);
@@ -365,7 +386,8 @@ static void page_entry_activated(GtkEntry *entry, BeditPrintPreview *preview) {
 }
 
 static void page_entry_insert_text(
-    GtkEditable *editable, const gchar *text, gint length, gint *position) {
+    GtkEditable *editable, const gchar *text, gint length, gint *position
+) {
     const gchar *end;
     const gchar *p;
 
@@ -380,7 +402,8 @@ static void page_entry_insert_text(
 }
 
 static gboolean page_entry_focus_out(
-    GtkEntry *entry, GdkEventFocus *event, BeditPrintPreview *preview) {
+    GtkEntry *entry, GdkEventFocus *event, BeditPrintPreview *preview
+) {
     const gchar *text;
     gint page;
 
@@ -412,66 +435,84 @@ static void on_1x2_clicked(GtkMenuItem *item, BeditPrintPreview *preview) {
 }
 
 static void multi_pages_button_clicked(
-    GtkWidget *button, BeditPrintPreview *preview) {
+    GtkWidget *button, BeditPrintPreview *preview
+) {
     GtkWidget *menu;
     GtkWidget *item;
 
     menu = gtk_menu_new();
     gtk_widget_show(menu);
     g_signal_connect(
-        menu, "selection-done", G_CALLBACK(gtk_widget_destroy), NULL);
+        menu, "selection-done",
+        G_CALLBACK(gtk_widget_destroy), NULL
+    );
 
     item = gtk_menu_item_new_with_label("1x1");
     gtk_widget_show(item);
     gtk_menu_attach(GTK_MENU(menu), item, 0, 1, 0, 1);
-    g_signal_connect(item, "activate", G_CALLBACK(on_1x1_clicked), preview);
+    g_signal_connect(
+        item, "activate",
+        G_CALLBACK(on_1x1_clicked), preview
+    );
 
     item = gtk_menu_item_new_with_label("1x2");
     gtk_widget_show(item);
     gtk_menu_attach(GTK_MENU(menu), item, 1, 2, 0, 1);
-    g_signal_connect(item, "activate", G_CALLBACK(on_1x2_clicked), preview);
+    g_signal_connect(
+        item, "activate",
+        G_CALLBACK(on_1x2_clicked), preview
+    );
 
     gtk_menu_popup_at_pointer(GTK_MENU(menu), NULL);
 }
 
 static void zoom_one_button_clicked(
-    GtkWidget *button, BeditPrintPreview *preview) {
+    GtkWidget *button, BeditPrintPreview *preview
+) {
     set_zoom_factor(preview, 1);
     gtk_widget_grab_focus(GTK_WIDGET(preview->layout));
 }
 
 static void zoom_fit_button_clicked(
-    GtkWidget *button, BeditPrintPreview *preview) {
+    GtkWidget *button, BeditPrintPreview *preview
+) {
     set_zoom_fit_to_size(preview);
     gtk_widget_grab_focus(GTK_WIDGET(preview->layout));
 }
 
 static void zoom_in_button_clicked(
-    GtkWidget *button, BeditPrintPreview *preview) {
+    GtkWidget *button, BeditPrintPreview *preview
+) {
     zoom_in(preview);
     gtk_widget_grab_focus(GTK_WIDGET(preview->layout));
 }
 
 static void zoom_out_button_clicked(
-    GtkWidget *button, BeditPrintPreview *preview) {
+    GtkWidget *button, BeditPrintPreview *preview
+) {
     zoom_out(preview);
     gtk_widget_grab_focus(GTK_WIDGET(preview->layout));
 }
 
 static void close_button_clicked(
-    GtkWidget *button, BeditPrintPreview *preview) {
+    GtkWidget *button, BeditPrintPreview *preview
+) {
     gtk_widget_destroy(GTK_WIDGET(preview));
 }
 
 static gboolean scroll_event_activated(
-    GtkWidget *widget, GdkEventScroll *event, BeditPrintPreview *preview) {
+    GtkWidget *widget, GdkEventScroll *event, BeditPrintPreview *preview
+) {
     if (event->state & GDK_CONTROL_MASK) {
-        if ((event->direction == GDK_SCROLL_UP) ||
-            (event->direction == GDK_SCROLL_SMOOTH && event->delta_y < 0)) {
+        if (
+            (event->direction == GDK_SCROLL_UP) ||
+            (event->direction == GDK_SCROLL_SMOOTH && event->delta_y < 0)
+        ) {
             zoom_in(preview);
         } else if (
             (event->direction == GDK_SCROLL_DOWN) ||
-            (event->direction == GDK_SCROLL_SMOOTH && event->delta_y > 0)) {
+            (event->direction == GDK_SCROLL_SMOOTH && event->delta_y > 0)
+        ) {
             zoom_out(preview);
         }
 
@@ -521,7 +562,8 @@ static gint get_page_at_coords(BeditPrintPreview *preview, gint x, gint y) {
 }
 
 static gboolean on_preview_layout_motion_notify(
-    GtkWidget *widget, GdkEvent *event, BeditPrintPreview *preview) {
+    GtkWidget *widget, GdkEvent *event, BeditPrintPreview *preview
+) {
     gint temp_x;
     gint temp_y;
     gint diff_x;
@@ -545,7 +587,8 @@ static gboolean on_preview_layout_motion_notify(
 
 static gboolean preview_layout_query_tooltip(
     GtkWidget *widget, gint x, gint y, gboolean keyboard_tip,
-    GtkTooltip *tooltip, BeditPrintPreview *preview) {
+    GtkTooltip *tooltip, BeditPrintPreview *preview
+) {
     if (preview->has_tooltip) {
         gint page;
         gchar *tip;
@@ -555,8 +598,9 @@ static gboolean preview_layout_query_tooltip(
             return FALSE;
         }
 
-        tip =
-            g_strdup_printf(_("Page %d of %d"), page + 1, get_n_pages(preview));
+        tip = g_strdup_printf(
+            _("Page %d of %d"), page + 1, get_n_pages(preview)
+        );
 
         gtk_tooltip_set_text(tooltip, tip);
         g_free(tip);
@@ -569,7 +613,8 @@ static gboolean preview_layout_query_tooltip(
 }
 
 static gint preview_layout_key_press(
-    GtkWidget *widget, GdkEventKey *event, BeditPrintPreview *preview) {
+    GtkWidget *widget, GdkEventKey *event, BeditPrintPreview *preview
+) {
     GtkAdjustment *hadj, *vadj;
     gdouble x, y;
     gdouble hlower, vlower;
@@ -617,26 +662,29 @@ static gint preview_layout_key_press(
 
     case GDK_KEY_KP_Right:
     case GDK_KEY_Right:
-        if (event->state & GDK_SHIFT_MASK)
+        if (event->state & GDK_SHIFT_MASK) {
             x = hupper - visible_width;
-        else
+        } else {
             x = MIN(hupper - visible_width, x + hstep);
+        }
         do_move = TRUE;
         break;
 
     case GDK_KEY_KP_Left:
     case GDK_KEY_Left:
-        if (event->state & GDK_SHIFT_MASK)
+        if (event->state & GDK_SHIFT_MASK) {
             x = hlower;
-        else
+        } else {
             x = MAX(hlower, x - hstep);
+        }
         do_move = TRUE;
         break;
 
     case GDK_KEY_KP_Up:
     case GDK_KEY_Up:
-        if (event->state & GDK_SHIFT_MASK)
+        if (event->state & GDK_SHIFT_MASK) {
             goto page_up;
+        }
 
         y = MAX(vlower, y - vstep);
         do_move = TRUE;
@@ -644,8 +692,9 @@ static gint preview_layout_key_press(
 
     case GDK_KEY_KP_Down:
     case GDK_KEY_Down:
-        if (event->state & GDK_SHIFT_MASK)
+        if (event->state & GDK_SHIFT_MASK) {
             goto page_down;
+        }
 
         y = MIN(vupper - visible_height, y + vstep);
         do_move = TRUE;
@@ -730,72 +779,88 @@ static void bedit_print_preview_init(BeditPrintPreview *preview) {
     gtk_widget_init_template(GTK_WIDGET(preview));
 
     g_signal_connect(
-        preview->prev_button, "clicked", G_CALLBACK(prev_button_clicked),
-        preview);
+        preview->prev_button, "clicked",
+        G_CALLBACK(prev_button_clicked), preview
+    );
 
     g_signal_connect(
-        preview->next_button, "clicked", G_CALLBACK(next_button_clicked),
-        preview);
+        preview->next_button, "clicked",
+        G_CALLBACK(next_button_clicked), preview
+    );
 
     g_signal_connect(
-        preview->page_entry, "activate", G_CALLBACK(page_entry_activated),
-        preview);
+        preview->page_entry, "activate",
+        G_CALLBACK(page_entry_activated), preview
+    );
 
     g_signal_connect(
-        preview->page_entry, "insert-text", G_CALLBACK(page_entry_insert_text),
-        NULL);
+        preview->page_entry, "insert-text",
+        G_CALLBACK(page_entry_insert_text), NULL
+    );
 
     g_signal_connect(
         preview->page_entry, "focus-out-event",
-        G_CALLBACK(page_entry_focus_out), preview);
+        G_CALLBACK(page_entry_focus_out), preview
+    );
 
     g_signal_connect(
         preview->multi_pages_button, "clicked",
-        G_CALLBACK(multi_pages_button_clicked), preview);
+        G_CALLBACK(multi_pages_button_clicked), preview
+    );
 
     g_signal_connect(
         preview->zoom_one_button, "clicked",
-        G_CALLBACK(zoom_one_button_clicked), preview);
+        G_CALLBACK(zoom_one_button_clicked), preview
+    );
 
     g_signal_connect(
         preview->zoom_fit_button, "clicked",
-        G_CALLBACK(zoom_fit_button_clicked), preview);
+        G_CALLBACK(zoom_fit_button_clicked), preview
+    );
 
     g_signal_connect(
-        preview->zoom_in_button, "clicked", G_CALLBACK(zoom_in_button_clicked),
-        preview);
+        preview->zoom_in_button, "clicked",
+        G_CALLBACK(zoom_in_button_clicked), preview
+    );
 
     g_signal_connect(
         preview->zoom_out_button, "clicked",
-        G_CALLBACK(zoom_out_button_clicked), preview);
+        G_CALLBACK(zoom_out_button_clicked), preview
+    );
 
     g_signal_connect(
-        preview->close_button, "clicked", G_CALLBACK(close_button_clicked),
-        preview);
+        preview->close_button, "clicked",
+        G_CALLBACK(close_button_clicked), preview
+    );
 
     g_signal_connect(
         preview->layout, "query-tooltip",
-        G_CALLBACK(preview_layout_query_tooltip), preview);
+        G_CALLBACK(preview_layout_query_tooltip), preview
+    );
 
     g_signal_connect(
         preview->layout, "key-press-event",
-        G_CALLBACK(preview_layout_key_press), preview);
+        G_CALLBACK(preview_layout_key_press), preview
+    );
 
     g_signal_connect(
-        preview->layout, "scroll-event", G_CALLBACK(scroll_event_activated),
-        preview);
+        preview->layout, "scroll-event",
+        G_CALLBACK(scroll_event_activated), preview
+    );
 
     /* hide the tooltip once we move the cursor, since gtk does not do it for us
      */
     g_signal_connect(
         preview->layout, "motion-notify-event",
-        G_CALLBACK(on_preview_layout_motion_notify), preview);
+        G_CALLBACK(on_preview_layout_motion_notify), preview
+    );
 
     gtk_widget_grab_focus(GTK_WIDGET(preview->layout));
 }
 
 static void draw_page_content(
-    cairo_t *cr, gint page_number, BeditPrintPreview *preview) {
+    cairo_t *cr, gint page_number, BeditPrintPreview *preview
+) {
     gdouble dpi;
 
     /* scale to the desired size */
@@ -835,7 +900,8 @@ static void draw_page_frame(cairo_t *cr, BeditPrintPreview *preview) {
 
 static void draw_page(
     cairo_t *cr, gdouble x, gdouble y, gint page_number,
-    BeditPrintPreview *preview) {
+    BeditPrintPreview *preview
+) {
     cairo_save(cr);
 
     /* move to the page top left corner */
@@ -848,7 +914,8 @@ static void draw_page(
 }
 
 static gboolean preview_draw(
-    GtkWidget *widget, cairo_t *cr, BeditPrintPreview *preview) {
+    GtkWidget *widget, cairo_t *cr, BeditPrintPreview *preview
+) {
     GdkWindow *bin_window;
     gint tile_width;
     gint page_num;
@@ -873,7 +940,8 @@ static gboolean preview_draw(
 
     while (col < preview->n_columns && page_num < n_pages) {
         if (!gtk_print_operation_preview_is_selected(
-                preview->gtk_preview, page_num)) {
+            preview->gtk_preview, page_num
+        )) {
             page_num++;
             continue;
         }
@@ -899,7 +967,8 @@ static void init_last_page_label(BeditPrintPreview *preview) {
 
 static void preview_ready(
     GtkPrintOperationPreview *gtk_preview, GtkPrintContext *context,
-    BeditPrintPreview *preview) {
+    BeditPrintPreview *preview
+) {
     init_last_page_label(preview);
     goto_page(preview, 0);
 
@@ -916,12 +985,14 @@ static void preview_ready(
 
 static cairo_status_t dummy_write_func(
     G_GNUC_UNUSED gpointer closure, G_GNUC_UNUSED const guchar *data,
-    G_GNUC_UNUSED guint length) {
+    G_GNUC_UNUSED guint length
+) {
     return CAIRO_STATUS_SUCCESS;
 }
 
 static cairo_surface_t *create_preview_surface_platform(
-    GtkPaperSize *paper_size, gdouble *dpi_x, gdouble *dpi_y) {
+    GtkPaperSize *paper_size, gdouble *dpi_x, gdouble *dpi_y
+) {
     gdouble width, height;
 
     width = gtk_paper_size_get_width(paper_size, GTK_UNIT_POINTS);
@@ -930,11 +1001,13 @@ static cairo_surface_t *create_preview_surface_platform(
     *dpi_x = *dpi_y = PRINTER_DPI;
 
     return cairo_pdf_surface_create_for_stream(
-        dummy_write_func, NULL, width, height);
+        dummy_write_func, NULL, width, height
+    );
 }
 
 static cairo_surface_t *create_preview_surface(
-    BeditPrintPreview *preview, gdouble *dpi_x, gdouble *dpi_y) {
+    BeditPrintPreview *preview, gdouble *dpi_x, gdouble *dpi_y
+) {
     GtkPageSetup *page_setup;
     GtkPaperSize *paper_size;
 
@@ -950,7 +1023,8 @@ static cairo_surface_t *create_preview_surface(
 
 GtkWidget *bedit_print_preview_new(
     GtkPrintOperation *operation, GtkPrintOperationPreview *gtk_preview,
-    GtkPrintContext *context) {
+    GtkPrintContext *context
+) {
     BeditPrintPreview *preview;
     cairo_surface_t *surface;
     cairo_t *cr;
@@ -969,7 +1043,8 @@ GtkWidget *bedit_print_preview_new(
     gtk_print_operation_set_unit(operation, GTK_UNIT_POINTS);
 
     g_signal_connect_object(
-        gtk_preview, "ready", G_CALLBACK(preview_ready), preview, 0);
+        gtk_preview, "ready", G_CALLBACK(preview_ready), preview, 0
+    );
 
     /* FIXME: we need a cr to paginate... but we can't get the drawing
      * area surface because it's not there yet... for now I create

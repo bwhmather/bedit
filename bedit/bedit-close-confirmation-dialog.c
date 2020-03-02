@@ -45,10 +45,10 @@
 /* Mode */
 enum { SINGLE_DOC_MODE, MULTIPLE_DOCS_MODE };
 
-#define GET_MODE(dlg)                                                          \
-    (((dlg->unsaved_documents != NULL) &&                                      \
-      (dlg->unsaved_documents->next == NULL))                                  \
-         ? SINGLE_DOC_MODE                                                     \
+#define GET_MODE(dlg)                                                        \
+    (((dlg->unsaved_documents != NULL) &&                                    \
+      (dlg->unsaved_documents->next == NULL))                                \
+         ? SINGLE_DOC_MODE                                                   \
          : MULTIPLE_DOCS_MODE)
 
 #define BEDIT_SAVE_DOCUMENT_KEY "bedit-save-document"
@@ -68,10 +68,12 @@ static GParamSpec *properties[LAST_PROP];
 
 G_DEFINE_TYPE(
     BeditCloseConfirmationDialog, bedit_close_confirmation_dialog,
-    GTK_TYPE_MESSAGE_DIALOG)
+    GTK_TYPE_MESSAGE_DIALOG
+)
 
 static void set_unsaved_document(
-    BeditCloseConfirmationDialog *dlg, const GList *list);
+    BeditCloseConfirmationDialog *dlg, const GList *list
+);
 
 static GList *get_selected_docs(GtkWidget *list_box) {
     GList *rows;
@@ -103,7 +105,8 @@ static GList *get_selected_docs(GtkWidget *list_box) {
  * before the user ones.
  */
 static void response_cb(
-    BeditCloseConfirmationDialog *dlg, gint response_id, gpointer data) {
+    BeditCloseConfirmationDialog *dlg, gint response_id, gpointer data
+) {
     g_return_if_fail(BEDIT_IS_CLOSE_CONFIRMATION_DIALOG(dlg));
 
     if (dlg->selected_documents != NULL) {
@@ -121,7 +124,8 @@ static void response_cb(
 }
 
 static void bedit_close_confirmation_dialog_init(
-    BeditCloseConfirmationDialog *dlg) {
+    BeditCloseConfirmationDialog *dlg
+) {
     BeditLockdownMask lockdown;
 
     lockdown = bedit_app_get_lockdown(BEDIT_APP(g_application_get_default()));
@@ -147,7 +151,8 @@ static void bedit_close_confirmation_dialog_finalize(GObject *object) {
 }
 
 static void bedit_close_confirmation_dialog_set_property(
-    GObject *object, guint prop_id, const GValue *value, GParamSpec *pspec) {
+    GObject *object, guint prop_id, const GValue *value, GParamSpec *pspec
+) {
     BeditCloseConfirmationDialog *dlg;
 
     dlg = BEDIT_CLOSE_CONFIRMATION_DIALOG(object);
@@ -164,7 +169,8 @@ static void bedit_close_confirmation_dialog_set_property(
 }
 
 static void bedit_close_confirmation_dialog_get_property(
-    GObject *object, guint prop_id, GValue *value, GParamSpec *pspec) {
+    GObject *object, guint prop_id, GValue *value, GParamSpec *pspec
+) {
     BeditCloseConfirmationDialog *dlg = BEDIT_CLOSE_CONFIRMATION_DIALOG(object);
 
     switch (prop_id) {
@@ -179,7 +185,8 @@ static void bedit_close_confirmation_dialog_get_property(
 }
 
 static void bedit_close_confirmation_dialog_class_init(
-    BeditCloseConfirmationDialogClass *klass) {
+    BeditCloseConfirmationDialogClass *klass
+) {
     GObjectClass *gobject_class = G_OBJECT_CLASS(klass);
 
     gobject_class->set_property = bedit_close_confirmation_dialog_set_property;
@@ -188,31 +195,36 @@ static void bedit_close_confirmation_dialog_class_init(
 
     properties[PROP_UNSAVED_DOCUMENTS] = g_param_spec_pointer(
         "unsaved-documents", "Unsaved Documents", "List of Unsaved Documents",
-        G_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY | G_PARAM_STATIC_STRINGS);
+        G_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY | G_PARAM_STATIC_STRINGS
+    );
 
     g_object_class_install_properties(gobject_class, LAST_PROP, properties);
 }
 
 GList *bedit_close_confirmation_dialog_get_selected_documents(
-    BeditCloseConfirmationDialog *dlg) {
+    BeditCloseConfirmationDialog *dlg
+) {
     g_return_val_if_fail(BEDIT_IS_CLOSE_CONFIRMATION_DIALOG(dlg), NULL);
 
     return g_list_copy(dlg->selected_documents);
 }
 
 GtkWidget *bedit_close_confirmation_dialog_new(
-    GtkWindow *parent, GList *unsaved_documents) {
+    GtkWindow *parent, GList *unsaved_documents
+) {
     GtkWidget *dlg;
 
     g_return_val_if_fail(unsaved_documents != NULL, NULL);
 
     dlg = g_object_new(
         BEDIT_TYPE_CLOSE_CONFIRMATION_DIALOG, "unsaved-documents",
-        unsaved_documents, "message-type", GTK_MESSAGE_QUESTION, NULL);
+        unsaved_documents, "message-type", GTK_MESSAGE_QUESTION, NULL
+    );
 
     if (parent != NULL) {
         gtk_window_group_add_window(
-            bedit_window_get_group(BEDIT_WINDOW(parent)), GTK_WINDOW(dlg));
+            bedit_window_get_group(BEDIT_WINDOW(parent)), GTK_WINDOW(dlg)
+        );
 
         gtk_window_set_transient_for(GTK_WINDOW(dlg), parent);
     }
@@ -238,10 +250,12 @@ static void add_buttons(BeditCloseConfirmationDialog *dlg) {
     GtkWidget *close_button;
 
     close_button = gtk_dialog_add_button(
-        GTK_DIALOG(dlg), _("Close _without Saving"), GTK_RESPONSE_NO);
+        GTK_DIALOG(dlg), _("Close _without Saving"), GTK_RESPONSE_NO
+    );
 
     gtk_style_context_add_class(
-        gtk_widget_get_style_context(close_button), "destructive-action");
+        gtk_widget_get_style_context(close_button), "destructive-action"
+    );
 
     gtk_dialog_add_button(GTK_DIALOG(dlg), _("_Cancel"), GTK_RESPONSE_CANCEL);
 
@@ -265,7 +279,8 @@ static void add_buttons(BeditCloseConfirmationDialog *dlg) {
 
         gtk_dialog_add_button(
             GTK_DIALOG(dlg), save_as ? _("_Save As…") : _("_Save"),
-            GTK_RESPONSE_YES);
+            GTK_RESPONSE_YES
+        );
         gtk_dialog_set_default_response(GTK_DIALOG(dlg), GTK_RESPONSE_YES);
     }
 }
@@ -283,13 +298,16 @@ static gchar *get_text_secondary_label(BeditDocument *doc) {
                 "will be permanently lost.",
                 "If you don’t save, changes from the last %ld seconds "
                 "will be permanently lost.",
-                seconds),
+                seconds
+            ),
             seconds);
     } else if (seconds < 75) /* 55 <= seconds < 75 */
     {
         secondary_msg =
-            g_strdup(_("If you don’t save, changes from the last minute "
-                       "will be permanently lost."));
+            g_strdup(_(
+                "If you don’t save, changes from the last minute "
+                "will be permanently lost."
+            ));
     } else if (seconds < 110) /* 75 <= seconds < 110 */
     {
         secondary_msg = g_strdup_printf(
@@ -298,8 +316,10 @@ static gchar *get_text_secondary_label(BeditDocument *doc) {
                 "second will be permanently lost.",
                 "If you don’t save, changes from the last minute and %ld "
                 "seconds will be permanently lost.",
-                seconds - 60),
-            seconds - 60);
+                seconds - 60
+            ),
+            seconds - 60
+        );
     } else if (seconds < 3600) {
         secondary_msg = g_strdup_printf(
             ngettext(
@@ -307,17 +327,20 @@ static gchar *get_text_secondary_label(BeditDocument *doc) {
                 "will be permanently lost.",
                 "If you don’t save, changes from the last %ld minutes "
                 "will be permanently lost.",
-                seconds / 60),
-            seconds / 60);
+                seconds / 60
+            ),
+            seconds / 60
+        );
     } else if (seconds < 7200) {
         gint minutes;
         seconds -= 3600;
 
         minutes = seconds / 60;
         if (minutes < 5) {
-            secondary_msg =
-                g_strdup(_("If you don’t save, changes from the last hour "
-                           "will be permanently lost."));
+            secondary_msg = g_strdup(_(
+                "If you don’t save, changes from the last hour "
+                "will be permanently lost."
+            ));
         } else {
             secondary_msg = g_strdup_printf(
                 ngettext(
@@ -325,8 +348,10 @@ static gchar *get_text_secondary_label(BeditDocument *doc) {
                     "minute will be permanently lost.",
                     "If you don’t save, changes from the last hour and %d "
                     "minutes will be permanently lost.",
-                    minutes),
-                minutes);
+                    minutes
+                ),
+                minutes
+            );
         }
     } else {
         gint hours;
@@ -339,8 +364,10 @@ static gchar *get_text_secondary_label(BeditDocument *doc) {
                 "will be permanently lost.",
                 "If you don’t save, changes from the last %d hours "
                 "will be permanently lost.",
-                hours),
-            hours);
+                hours
+            ),
+            hours
+        );
     }
 
     return secondary_msg;
@@ -362,16 +389,19 @@ static void build_single_doc_dialog(BeditCloseConfirmationDialog *dlg) {
 
     if (dlg->disable_save_to_disk) {
         str = g_markup_printf_escaped(
-            _("Changes to document “%s” will be permanently lost."), doc_name);
+            _("Changes to document “%s” will be permanently lost."), doc_name
+        );
     } else {
         str = g_markup_printf_escaped(
-            _("Save changes to document “%s” before closing?"), doc_name);
+            _("Save changes to document “%s” before closing?"), doc_name
+        );
     }
 
     g_free(doc_name);
 
     markup_str = g_strconcat(
-        "<span weight=\"bold\" size=\"larger\">", str, "</span>", NULL);
+        "<span weight=\"bold\" size=\"larger\">", str, "</span>", NULL
+    );
     g_free(str);
 
     gtk_message_dialog_set_markup(GTK_MESSAGE_DIALOG(dlg), markup_str);
@@ -380,13 +410,15 @@ static void build_single_doc_dialog(BeditCloseConfirmationDialog *dlg) {
     /* Secondary message */
     if (dlg->disable_save_to_disk) {
         str = g_strdup(
-            _("Saving has been disabled by the system administrator."));
+            _("Saving has been disabled by the system administrator.")
+        );
     } else {
         str = get_text_secondary_label(doc);
     }
 
     gtk_message_dialog_format_secondary_text(
-        GTK_MESSAGE_DIALOG(dlg), "%s", str);
+        GTK_MESSAGE_DIALOG(dlg), "%s", str
+    );
     g_free(str);
 }
 
@@ -414,7 +446,8 @@ static GtkWidget *create_list_box(BeditCloseConfirmationDialog *dlg) {
 
         g_object_set_data_full(
             G_OBJECT(row), BEDIT_SAVE_DOCUMENT_KEY, g_object_ref(doc),
-            (GDestroyNotify)g_object_unref);
+            (GDestroyNotify)g_object_unref
+        );
 
         gtk_list_box_insert(GTK_LIST_BOX(list_box), row, -1);
     }
@@ -441,8 +474,10 @@ static void build_multiple_docs_dialog(BeditCloseConfirmationDialog *dlg) {
             ngettext(
                 "Changes to %d document will be permanently lost.",
                 "Changes to %d documents will be permanently lost.",
-                g_list_length(dlg->unsaved_documents)),
-            g_list_length(dlg->unsaved_documents));
+                g_list_length(dlg->unsaved_documents)
+            ),
+            g_list_length(dlg->unsaved_documents)
+        );
     } else {
         str = g_strdup_printf(
             ngettext(
@@ -450,12 +485,15 @@ static void build_multiple_docs_dialog(BeditCloseConfirmationDialog *dlg) {
                 "Save changes before closing?",
                 "There are %d documents with unsaved changes. "
                 "Save changes before closing?",
-                g_list_length(dlg->unsaved_documents)),
-            g_list_length(dlg->unsaved_documents));
+                g_list_length(dlg->unsaved_documents)
+            ),
+            g_list_length(dlg->unsaved_documents)
+        );
     }
 
     markup_str = g_strconcat(
-        "<span weight=\"bold\" size=\"larger\">", str, "</span>", NULL);
+        "<span weight=\"bold\" size=\"larger\">", str, "</span>", NULL
+    );
     g_free(str);
 
     gtk_message_dialog_set_markup(GTK_MESSAGE_DIALOG(dlg), markup_str);
@@ -472,11 +510,13 @@ static void build_multiple_docs_dialog(BeditCloseConfirmationDialog *dlg) {
     gtk_box_pack_start(GTK_BOX(content_area), vbox, TRUE, TRUE, 0);
 
     if (dlg->disable_save_to_disk) {
-        select_label =
-            gtk_label_new_with_mnemonic(_("Docum_ents with unsaved changes:"));
+        select_label = gtk_label_new_with_mnemonic(
+            _("Docum_ents with unsaved changes:")
+        );
     } else {
         select_label = gtk_label_new_with_mnemonic(
-            _("S_elect the documents you want to save:"));
+            _("S_elect the documents you want to save:")
+        );
     }
 
     gtk_box_pack_start(GTK_BOX(vbox), select_label, FALSE, FALSE, 0);
@@ -487,9 +527,11 @@ static void build_multiple_docs_dialog(BeditCloseConfirmationDialog *dlg) {
     scrolledwindow = gtk_scrolled_window_new(NULL, NULL);
     gtk_box_pack_start(GTK_BOX(vbox), scrolledwindow, TRUE, TRUE, 0);
     gtk_scrolled_window_set_shadow_type(
-        GTK_SCROLLED_WINDOW(scrolledwindow), GTK_SHADOW_IN);
+        GTK_SCROLLED_WINDOW(scrolledwindow), GTK_SHADOW_IN
+    );
     gtk_scrolled_window_set_min_content_height(
-        GTK_SCROLLED_WINDOW(scrolledwindow), 90);
+        GTK_SCROLLED_WINDOW(scrolledwindow), 90
+    );
 
     dlg->list_box = create_list_box(dlg);
     gtk_container_add(GTK_CONTAINER(scrolledwindow), dlg->list_box);
@@ -497,11 +539,12 @@ static void build_multiple_docs_dialog(BeditCloseConfirmationDialog *dlg) {
     /* Secondary label */
     if (dlg->disable_save_to_disk) {
         secondary_label = gtk_label_new(
-            _("Saving has been disabled by the system administrator."));
+            _("Saving has been disabled by the system administrator.")
+        );
     } else {
-        secondary_label =
-            gtk_label_new(_("If you don’t save, "
-                            "all your changes will be permanently lost."));
+        secondary_label = gtk_label_new(
+            _("If you don’t save, all your changes will be permanently lost.")
+        );
     }
 
     gtk_box_pack_start(GTK_BOX(vbox), secondary_label, FALSE, FALSE, 0);
@@ -517,7 +560,8 @@ static void build_multiple_docs_dialog(BeditCloseConfirmationDialog *dlg) {
 }
 
 static void set_unsaved_document(
-    BeditCloseConfirmationDialog *dlg, const GList *list) {
+    BeditCloseConfirmationDialog *dlg, const GList *list
+) {
     g_return_if_fail(list != NULL);
 
     g_return_if_fail(dlg->unsaved_documents == NULL);
@@ -532,7 +576,8 @@ static void set_unsaved_document(
 }
 
 const GList *bedit_close_confirmation_dialog_get_unsaved_documents(
-    BeditCloseConfirmationDialog *dlg) {
+    BeditCloseConfirmationDialog *dlg
+) {
     g_return_val_if_fail(BEDIT_IS_CLOSE_CONFIRMATION_DIALOG(dlg), NULL);
 
     return dlg->unsaved_documents;

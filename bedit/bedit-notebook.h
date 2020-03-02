@@ -79,7 +79,8 @@ struct _BeditNotebookClass {
     /* Signals */
     void (*tab_close_request)(BeditNotebook *notebook, BeditTab *tab);
     void (*show_popup_menu)(
-        BeditNotebook *notebook, GdkEvent *event, BeditTab *tab);
+        BeditNotebook *notebook, GdkEvent *event, BeditTab *tab
+    );
     gboolean (*change_to_page)(BeditNotebook *notebook, gint page_num);
 };
 
@@ -88,10 +89,12 @@ GType bedit_notebook_get_type(void) G_GNUC_CONST;
 GtkWidget *bedit_notebook_new(void);
 
 void bedit_notebook_add_tab(
-    BeditNotebook *nb, BeditTab *tab, gint position, gboolean jump_to);
+    BeditNotebook *nb, BeditTab *tab, gint position, gboolean jump_to
+);
 
 void bedit_notebook_move_tab(
-    BeditNotebook *src, BeditNotebook *dest, BeditTab *tab, gint dest_position);
+    BeditNotebook *src, BeditNotebook *dest, BeditTab *tab, gint dest_position
+);
 
 void bedit_notebook_set_active_tab(BeditNotebook *nb, BeditTab *tab);
 
@@ -100,7 +103,8 @@ BeditTab *bedit_notebook_get_active_tab(BeditNotebook *nb);
 gint bedit_notebook_get_n_tabs(BeditNotebook *nb);
 
 void bedit_notebook_foreach_tab(
-    BeditNotebook *nb, GtkCallback callback, gpointer callback_data);
+    BeditNotebook *nb, GtkCallback callback, gpointer callback_data
+);
 
 GList *bedit_notebook_get_all_tabs(BeditNotebook *nb);
 

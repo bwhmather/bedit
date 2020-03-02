@@ -35,7 +35,8 @@ struct _BeditEncodingItem {
 };
 
 static BeditEncodingItem *bedit_encoding_item_new(
-    const GtkSourceEncoding *encoding, gchar *name) {
+    const GtkSourceEncoding *encoding, gchar *name
+) {
     BeditEncodingItem *item = g_slice_new(BeditEncodingItem);
 
     item->encoding = encoding;
@@ -54,7 +55,8 @@ void bedit_encoding_item_free(BeditEncodingItem *item) {
 }
 
 const GtkSourceEncoding *bedit_encoding_item_get_encoding(
-    BeditEncodingItem *item) {
+    BeditEncodingItem *item
+) {
     g_return_val_if_fail(item != NULL, NULL);
 
     return item->encoding;

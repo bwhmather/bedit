@@ -37,15 +37,18 @@ G_BEGIN_DECLS
 
 G_DECLARE_FINAL_TYPE(
     BeditEncodingsComboBox, bedit_encodings_combo_box, BEDIT,
-    ENCODINGS_COMBO_BOX, GtkComboBox)
+    ENCODINGS_COMBO_BOX, GtkComboBox
+)
 
 GtkWidget *bedit_encodings_combo_box_new(gboolean save_mode);
 
 const GtkSourceEncoding *bedit_encodings_combo_box_get_selected_encoding(
-    BeditEncodingsComboBox *menu);
+    BeditEncodingsComboBox *menu
+);
 
 void bedit_encodings_combo_box_set_selected_encoding(
-    BeditEncodingsComboBox *menu, const GtkSourceEncoding *encoding);
+    BeditEncodingsComboBox *menu, const GtkSourceEncoding *encoding
+);
 
 G_END_DECLS
 

@@ -66,8 +66,10 @@ static GtkWidget *preferences_dialog = NULL;
 #define BEDIT_TYPE_PREFERENCES_DIALOG (bedit_preferences_dialog_get_type())
 
 G_DECLARE_FINAL_TYPE(
-    BeditPreferencesDialog, bedit_preferences_dialog, BEDIT, PREFERENCES_DIALOG,
-    GtkWindow)
+    BeditPreferencesDialog, bedit_preferences_dialog,
+    BEDIT, PREFERENCES_DIALOG,
+    GtkWindow
+)
 
 enum { ID_COLUMN = 0, NAME_COLUMN, DESC_COLUMN, NUM_COLUMNS };
 
@@ -147,7 +149,8 @@ static void bedit_preferences_dialog_close(BeditPreferencesDialog *dialog) {
 }
 
 static void bedit_preferences_dialog_class_init(
-    BeditPreferencesDialogClass *klass) {
+    BeditPreferencesDialogClass *klass
+) {
     GObjectClass *object_class = G_OBJECT_CLASS(klass);
     GtkWidgetClass *widget_class = GTK_WIDGET_CLASS(klass);
     GtkBindingSet *binding_set;
@@ -160,67 +163,95 @@ static void bedit_preferences_dialog_class_init(
     signals[CLOSE] = g_signal_new_class_handler(
         "close", G_TYPE_FROM_CLASS(klass), G_SIGNAL_RUN_LAST | G_SIGNAL_ACTION,
         G_CALLBACK(bedit_preferences_dialog_close), NULL, NULL, NULL,
-        G_TYPE_NONE, 0);
+        G_TYPE_NONE, 0
+    );
 
     binding_set = gtk_binding_set_by_class(klass);
     gtk_binding_entry_add_signal(binding_set, GDK_KEY_Escape, 0, "close", 0);
 
     /* Bind class to template */
     gtk_widget_class_set_template_from_resource(
-        widget_class, "/com/bwhmather/bedit/ui/bedit-preferences-dialog.ui");
+        widget_class, "/com/bwhmather/bedit/ui/bedit-preferences-dialog.ui"
+    );
     gtk_widget_class_bind_template_child(
-        widget_class, BeditPreferencesDialog, notebook);
+        widget_class, BeditPreferencesDialog, notebook
+    );
     gtk_widget_class_bind_template_child(
-        widget_class, BeditPreferencesDialog, display_line_numbers_checkbutton);
+        widget_class, BeditPreferencesDialog, display_line_numbers_checkbutton
+    );
     gtk_widget_class_bind_template_child(
-        widget_class, BeditPreferencesDialog, display_statusbar_checkbutton);
+        widget_class, BeditPreferencesDialog, display_statusbar_checkbutton
+    );
     gtk_widget_class_bind_template_child(
-        widget_class, BeditPreferencesDialog, display_grid_checkbutton);
+        widget_class, BeditPreferencesDialog, display_grid_checkbutton
+    );
     gtk_widget_class_bind_template_child(
-        widget_class, BeditPreferencesDialog, right_margin_checkbutton);
+        widget_class, BeditPreferencesDialog, right_margin_checkbutton
+    );
     gtk_widget_class_bind_template_child(
-        widget_class, BeditPreferencesDialog, right_margin_position_grid);
+        widget_class, BeditPreferencesDialog, right_margin_position_grid
+    );
     gtk_widget_class_bind_template_child(
-        widget_class, BeditPreferencesDialog, right_margin_position_spinbutton);
+        widget_class, BeditPreferencesDialog, right_margin_position_spinbutton
+    );
     gtk_widget_class_bind_template_child(
         widget_class, BeditPreferencesDialog,
-        highlight_current_line_checkbutton);
+        highlight_current_line_checkbutton
+    );
     gtk_widget_class_bind_template_child(
-        widget_class, BeditPreferencesDialog, bracket_matching_checkbutton);
+        widget_class, BeditPreferencesDialog, bracket_matching_checkbutton
+    );
     gtk_widget_class_bind_template_child(
-        widget_class, BeditPreferencesDialog, wrap_text_checkbutton);
+        widget_class, BeditPreferencesDialog, wrap_text_checkbutton
+    );
     gtk_widget_class_bind_template_child(
-        widget_class, BeditPreferencesDialog, split_checkbutton);
+        widget_class, BeditPreferencesDialog, split_checkbutton
+    );
     gtk_widget_class_bind_template_child(
-        widget_class, BeditPreferencesDialog, tabs_width_spinbutton);
+        widget_class, BeditPreferencesDialog, tabs_width_spinbutton
+    );
     gtk_widget_class_bind_template_child(
-        widget_class, BeditPreferencesDialog, insert_spaces_checkbutton);
+        widget_class, BeditPreferencesDialog, insert_spaces_checkbutton
+    );
     gtk_widget_class_bind_template_child(
-        widget_class, BeditPreferencesDialog, auto_indent_checkbutton);
+        widget_class, BeditPreferencesDialog, auto_indent_checkbutton
+    );
     gtk_widget_class_bind_template_child(
-        widget_class, BeditPreferencesDialog, backup_copy_checkbutton);
+        widget_class, BeditPreferencesDialog, backup_copy_checkbutton
+    );
     gtk_widget_class_bind_template_child(
-        widget_class, BeditPreferencesDialog, auto_save_checkbutton);
+        widget_class, BeditPreferencesDialog, auto_save_checkbutton
+    );
     gtk_widget_class_bind_template_child(
-        widget_class, BeditPreferencesDialog, auto_save_spinbutton);
+        widget_class, BeditPreferencesDialog, auto_save_spinbutton
+    );
     gtk_widget_class_bind_template_child(
-        widget_class, BeditPreferencesDialog, default_font_checkbutton);
+        widget_class, BeditPreferencesDialog, default_font_checkbutton
+    );
     gtk_widget_class_bind_template_child(
-        widget_class, BeditPreferencesDialog, font_button);
+        widget_class, BeditPreferencesDialog, font_button
+    );
     gtk_widget_class_bind_template_child(
-        widget_class, BeditPreferencesDialog, font_grid);
+        widget_class, BeditPreferencesDialog, font_grid
+    );
     gtk_widget_class_bind_template_child(
-        widget_class, BeditPreferencesDialog, schemes_list);
+        widget_class, BeditPreferencesDialog, schemes_list
+    );
     gtk_widget_class_bind_template_child(
-        widget_class, BeditPreferencesDialog, schemes_scrolled_window);
+        widget_class, BeditPreferencesDialog, schemes_scrolled_window
+    );
     gtk_widget_class_bind_template_child(
-        widget_class, BeditPreferencesDialog, install_scheme_button);
+        widget_class, BeditPreferencesDialog, install_scheme_button
+    );
     gtk_widget_class_bind_template_child(
-        widget_class, BeditPreferencesDialog, uninstall_scheme_button);
+        widget_class, BeditPreferencesDialog, uninstall_scheme_button
+    );
     gtk_widget_class_bind_template_child(
-        widget_class, BeditPreferencesDialog, schemes_toolbar);
+        widget_class, BeditPreferencesDialog, schemes_toolbar
+    );
     gtk_widget_class_bind_template_child(
-        widget_class, BeditPreferencesDialog, plugin_manager);
+        widget_class, BeditPreferencesDialog, plugin_manager
+    );
 }
 
 static void setup_editor_page(BeditPreferencesDialog *dlg) {
@@ -228,63 +259,82 @@ static void setup_editor_page(BeditPreferencesDialog *dlg) {
 
     /* Connect signal */
     g_settings_bind(
-        dlg->editor, BEDIT_SETTINGS_TABS_SIZE, dlg->tabs_width_spinbutton,
-        "value", G_SETTINGS_BIND_GET | G_SETTINGS_BIND_SET);
+        dlg->editor, BEDIT_SETTINGS_TABS_SIZE,
+        dlg->tabs_width_spinbutton,
+        "value", G_SETTINGS_BIND_GET | G_SETTINGS_BIND_SET
+    );
     g_settings_bind(
         dlg->editor, BEDIT_SETTINGS_INSERT_SPACES,
-        dlg->insert_spaces_checkbutton, "active",
-        G_SETTINGS_BIND_GET | G_SETTINGS_BIND_SET);
+        dlg->insert_spaces_checkbutton,
+        "active", G_SETTINGS_BIND_GET | G_SETTINGS_BIND_SET
+    );
     g_settings_bind(
-        dlg->editor, BEDIT_SETTINGS_AUTO_INDENT, dlg->auto_indent_checkbutton,
-        "active", G_SETTINGS_BIND_GET | G_SETTINGS_BIND_SET);
+        dlg->editor, BEDIT_SETTINGS_AUTO_INDENT,
+        dlg->auto_indent_checkbutton,
+        "active", G_SETTINGS_BIND_GET | G_SETTINGS_BIND_SET
+    );
     g_settings_bind(
         dlg->editor, BEDIT_SETTINGS_CREATE_BACKUP_COPY,
-        dlg->backup_copy_checkbutton, "active",
-        G_SETTINGS_BIND_GET | G_SETTINGS_BIND_SET);
+        dlg->backup_copy_checkbutton,
+        "active", G_SETTINGS_BIND_GET | G_SETTINGS_BIND_SET
+    );
     g_settings_bind(
         dlg->editor, BEDIT_SETTINGS_BRACKET_MATCHING,
-        dlg->bracket_matching_checkbutton, "active",
-        G_SETTINGS_BIND_GET | G_SETTINGS_BIND_SET);
+        dlg->bracket_matching_checkbutton,
+        "active", G_SETTINGS_BIND_GET | G_SETTINGS_BIND_SET
+    );
     g_settings_bind(
         dlg->editor, BEDIT_SETTINGS_AUTO_SAVE_INTERVAL,
-        dlg->auto_save_spinbutton, "value",
-        G_SETTINGS_BIND_GET | G_SETTINGS_BIND_SET);
+        dlg->auto_save_spinbutton,
+        "value", G_SETTINGS_BIND_GET | G_SETTINGS_BIND_SET
+    );
     g_settings_bind(
-        dlg->editor, BEDIT_SETTINGS_AUTO_SAVE, dlg->auto_save_spinbutton,
-        "sensitive", G_SETTINGS_BIND_GET);
+        dlg->editor, BEDIT_SETTINGS_AUTO_SAVE,
+        dlg->auto_save_spinbutton,
+        "sensitive", G_SETTINGS_BIND_GET
+    );
     g_settings_bind(
-        dlg->editor, BEDIT_SETTINGS_AUTO_SAVE, dlg->auto_save_checkbutton,
-        "active", G_SETTINGS_BIND_GET | G_SETTINGS_BIND_SET);
+        dlg->editor, BEDIT_SETTINGS_AUTO_SAVE,
+        dlg->auto_save_checkbutton,
+        "active", G_SETTINGS_BIND_GET | G_SETTINGS_BIND_SET
+    );
 }
 
 static void wrap_mode_checkbutton_toggled(
-    GtkToggleButton *button, BeditPreferencesDialog *dlg) {
+    GtkToggleButton *button, BeditPreferencesDialog *dlg
+) {
     GtkWrapMode mode;
 
     if (!gtk_toggle_button_get_active(
-            GTK_TOGGLE_BUTTON(dlg->wrap_text_checkbutton))) {
+        GTK_TOGGLE_BUTTON(dlg->wrap_text_checkbutton)
+    )) {
         mode = GTK_WRAP_NONE;
 
         gtk_widget_set_sensitive(dlg->split_checkbutton, FALSE);
         gtk_toggle_button_set_inconsistent(
-            GTK_TOGGLE_BUTTON(dlg->split_checkbutton), TRUE);
+            GTK_TOGGLE_BUTTON(dlg->split_checkbutton), TRUE
+        );
     } else {
         gtk_widget_set_sensitive(dlg->split_checkbutton, TRUE);
 
         gtk_toggle_button_set_inconsistent(
-            GTK_TOGGLE_BUTTON(dlg->split_checkbutton), FALSE);
+            GTK_TOGGLE_BUTTON(dlg->split_checkbutton), FALSE
+        );
 
         if (gtk_toggle_button_get_active(
-                GTK_TOGGLE_BUTTON(dlg->split_checkbutton))) {
+            GTK_TOGGLE_BUTTON(dlg->split_checkbutton)
+        )) {
             g_settings_set_enum(
-                dlg->editor, BEDIT_SETTINGS_WRAP_LAST_SPLIT_MODE,
-                GTK_WRAP_WORD);
+                dlg->editor,
+                BEDIT_SETTINGS_WRAP_LAST_SPLIT_MODE, GTK_WRAP_WORD
+            );
 
             mode = GTK_WRAP_WORD;
         } else {
             g_settings_set_enum(
-                dlg->editor, BEDIT_SETTINGS_WRAP_LAST_SPLIT_MODE,
-                GTK_WRAP_CHAR);
+                dlg->editor,
+                BEDIT_SETTINGS_WRAP_LAST_SPLIT_MODE, GTK_WRAP_CHAR
+            );
 
             mode = GTK_WRAP_CHAR;
         }
@@ -301,7 +351,9 @@ static void grid_checkbutton_toggled(
         ? GTK_SOURCE_BACKGROUND_PATTERN_TYPE_GRID
         : GTK_SOURCE_BACKGROUND_PATTERN_TYPE_NONE;
     g_settings_set_enum(
-        dlg->editor, BEDIT_SETTINGS_BACKGROUND_PATTERN, background_type);
+        dlg->editor,
+        BEDIT_SETTINGS_BACKGROUND_PATTERN, background_type
+    );
 }
 
 static void setup_view_page(BeditPreferencesDialog *dlg) {
@@ -315,12 +367,16 @@ static void setup_view_page(BeditPreferencesDialog *dlg) {
 
     /* Get values */
     display_right_margin = g_settings_get_boolean(
-        dlg->editor, BEDIT_SETTINGS_DISPLAY_RIGHT_MARGIN);
+        dlg->editor, BEDIT_SETTINGS_DISPLAY_RIGHT_MARGIN
+    );
     g_settings_get(
-        dlg->editor, BEDIT_SETTINGS_RIGHT_MARGIN_POSITION, "u",
-        &right_margin_position);
-    background_pattern =
-        g_settings_get_enum(dlg->editor, BEDIT_SETTINGS_BACKGROUND_PATTERN);
+        dlg->editor,
+        BEDIT_SETTINGS_RIGHT_MARGIN_POSITION, "u",
+        &right_margin_position
+    );
+    background_pattern = g_settings_get_enum(
+        dlg->editor, BEDIT_SETTINGS_BACKGROUND_PATTERN
+    );
 
     wrap_mode = g_settings_get_enum(dlg->editor, BEDIT_SETTINGS_WRAP_MODE);
 
@@ -328,83 +384,107 @@ static void setup_view_page(BeditPreferencesDialog *dlg) {
     switch (wrap_mode) {
     case GTK_WRAP_WORD:
         gtk_toggle_button_set_active(
-            GTK_TOGGLE_BUTTON(dlg->wrap_text_checkbutton), TRUE);
+            GTK_TOGGLE_BUTTON(dlg->wrap_text_checkbutton), TRUE
+        );
         gtk_toggle_button_set_active(
-            GTK_TOGGLE_BUTTON(dlg->split_checkbutton), TRUE);
+            GTK_TOGGLE_BUTTON(dlg->split_checkbutton), TRUE
+        );
 
         g_settings_set_enum(
-            dlg->editor, BEDIT_SETTINGS_WRAP_LAST_SPLIT_MODE, GTK_WRAP_WORD);
+            dlg->editor, BEDIT_SETTINGS_WRAP_LAST_SPLIT_MODE, GTK_WRAP_WORD
+        );
         break;
     case GTK_WRAP_CHAR:
         gtk_toggle_button_set_active(
-            GTK_TOGGLE_BUTTON(dlg->wrap_text_checkbutton), TRUE);
+            GTK_TOGGLE_BUTTON(dlg->wrap_text_checkbutton), TRUE
+        );
         gtk_toggle_button_set_active(
-            GTK_TOGGLE_BUTTON(dlg->split_checkbutton), FALSE);
+            GTK_TOGGLE_BUTTON(dlg->split_checkbutton), FALSE
+        );
 
         g_settings_set_enum(
-            dlg->editor, BEDIT_SETTINGS_WRAP_LAST_SPLIT_MODE, GTK_WRAP_CHAR);
+            dlg->editor, BEDIT_SETTINGS_WRAP_LAST_SPLIT_MODE, GTK_WRAP_CHAR
+        );
         break;
     default:
         gtk_toggle_button_set_active(
-            GTK_TOGGLE_BUTTON(dlg->wrap_text_checkbutton), FALSE);
+            GTK_TOGGLE_BUTTON(dlg->wrap_text_checkbutton), FALSE
+        );
 
         last_split_mode = g_settings_get_enum(
-            dlg->editor, BEDIT_SETTINGS_WRAP_LAST_SPLIT_MODE);
+            dlg->editor, BEDIT_SETTINGS_WRAP_LAST_SPLIT_MODE
+        );
         gtk_toggle_button_set_active(
             GTK_TOGGLE_BUTTON(dlg->split_checkbutton),
-            last_split_mode == GTK_WRAP_WORD);
+            last_split_mode == GTK_WRAP_WORD
+        );
 
         gtk_toggle_button_set_inconsistent(
-            GTK_TOGGLE_BUTTON(dlg->split_checkbutton), TRUE);
+            GTK_TOGGLE_BUTTON(dlg->split_checkbutton), TRUE
+        );
     }
 
     gtk_toggle_button_set_active(
-        GTK_TOGGLE_BUTTON(dlg->right_margin_checkbutton), display_right_margin);
+        GTK_TOGGLE_BUTTON(dlg->right_margin_checkbutton),
+        display_right_margin
+    );
     gtk_toggle_button_set_active(
         GTK_TOGGLE_BUTTON(dlg->display_grid_checkbutton),
-        background_pattern == GTK_SOURCE_BACKGROUND_PATTERN_TYPE_GRID);
+        background_pattern == GTK_SOURCE_BACKGROUND_PATTERN_TYPE_GRID
+    );
 
     /* Set widgets sensitivity */
     gtk_widget_set_sensitive(
-        dlg->split_checkbutton, (wrap_mode != GTK_WRAP_NONE));
+        dlg->split_checkbutton, (wrap_mode != GTK_WRAP_NONE)
+    );
 
     g_settings_bind(
         dlg->editor, BEDIT_SETTINGS_DISPLAY_LINE_NUMBERS,
-        dlg->display_line_numbers_checkbutton, "active",
-        G_SETTINGS_BIND_GET | G_SETTINGS_BIND_SET);
+        dlg->display_line_numbers_checkbutton,
+        "active", G_SETTINGS_BIND_GET | G_SETTINGS_BIND_SET
+    );
     g_settings_bind(
         dlg->editor, BEDIT_SETTINGS_HIGHLIGHT_CURRENT_LINE,
-        dlg->highlight_current_line_checkbutton, "active",
-        G_SETTINGS_BIND_GET | G_SETTINGS_BIND_SET);
+        dlg->highlight_current_line_checkbutton,
+        "active", G_SETTINGS_BIND_GET | G_SETTINGS_BIND_SET
+    );
     g_settings_bind(
         dlg->uisettings, BEDIT_SETTINGS_STATUSBAR_VISIBLE,
-        dlg->display_statusbar_checkbutton, "active",
-        G_SETTINGS_BIND_GET | G_SETTINGS_BIND_SET);
+        dlg->display_statusbar_checkbutton,
+        "active", G_SETTINGS_BIND_GET | G_SETTINGS_BIND_SET
+    );
     g_settings_bind(
         dlg->editor, BEDIT_SETTINGS_DISPLAY_RIGHT_MARGIN,
-        dlg->right_margin_checkbutton, "active",
-        G_SETTINGS_BIND_GET | G_SETTINGS_BIND_SET);
+        dlg->right_margin_checkbutton,
+        "active", G_SETTINGS_BIND_GET | G_SETTINGS_BIND_SET
+    );
     g_settings_bind(
         dlg->editor, BEDIT_SETTINGS_DISPLAY_RIGHT_MARGIN,
-        dlg->right_margin_position_grid, "sensitive",
-        G_SETTINGS_BIND_GET | G_SETTINGS_BIND_SET);
+        dlg->right_margin_position_grid,
+        "sensitive", G_SETTINGS_BIND_GET | G_SETTINGS_BIND_SET
+    );
     g_settings_bind(
         dlg->editor, BEDIT_SETTINGS_RIGHT_MARGIN_POSITION,
-        dlg->right_margin_position_spinbutton, "value",
-        G_SETTINGS_BIND_GET | G_SETTINGS_BIND_SET);
+        dlg->right_margin_position_spinbutton,
+        "value", G_SETTINGS_BIND_GET | G_SETTINGS_BIND_SET
+    );
     g_settings_bind(
         dlg->editor, BEDIT_SETTINGS_AUTO_SAVE_INTERVAL,
-        dlg->auto_save_spinbutton, "value",
-        G_SETTINGS_BIND_GET | G_SETTINGS_BIND_SET);
+        dlg->auto_save_spinbutton,
+        "value", G_SETTINGS_BIND_GET | G_SETTINGS_BIND_SET
+    );
     g_signal_connect(
         dlg->wrap_text_checkbutton, "toggled",
-        G_CALLBACK(wrap_mode_checkbutton_toggled), dlg);
+        G_CALLBACK(wrap_mode_checkbutton_toggled), dlg
+    );
     g_signal_connect(
         dlg->split_checkbutton, "toggled",
-        G_CALLBACK(wrap_mode_checkbutton_toggled), dlg);
+        G_CALLBACK(wrap_mode_checkbutton_toggled), dlg
+    );
     g_signal_connect(
         dlg->display_grid_checkbutton, "toggled",
-        G_CALLBACK(grid_checkbutton_toggled), dlg);
+        G_CALLBACK(grid_checkbutton_toggled), dlg
+    );
 }
 
 static void setup_font_colors_page_font_section(BeditPreferencesDialog *dlg) {
@@ -416,14 +496,16 @@ static void setup_font_colors_page_font_section(BeditPreferencesDialog *dlg) {
 
     gtk_widget_set_tooltip_text(
         dlg->font_button,
-        _("Click on this button to select the font to be used by the editor"));
+        _("Click on this button to select the font to be used by the editor")
+    );
 
     /* Get values */
     settings = _bedit_app_get_settings(BEDIT_APP(g_application_get_default()));
     system_font = bedit_settings_get_system_font(settings);
 
     label = g_strdup_printf(
-        _("_Use the system fixed width font (%s)"), system_font);
+        _("_Use the system fixed width font (%s)"), system_font
+    );
     gtk_button_set_label(GTK_BUTTON(dlg->default_font_checkbutton), label);
     g_free(system_font);
     g_free(label);
@@ -431,20 +513,27 @@ static void setup_font_colors_page_font_section(BeditPreferencesDialog *dlg) {
     /* Bind settings */
     g_settings_bind(
         dlg->editor, BEDIT_SETTINGS_USE_DEFAULT_FONT,
-        dlg->default_font_checkbutton, "active",
-        G_SETTINGS_BIND_GET | G_SETTINGS_BIND_SET);
+        dlg->default_font_checkbutton,
+        "active", G_SETTINGS_BIND_GET | G_SETTINGS_BIND_SET
+    );
     g_settings_bind(
-        dlg->editor, BEDIT_SETTINGS_USE_DEFAULT_FONT, dlg->font_grid,
-        "sensitive",
-        G_SETTINGS_BIND_GET | G_SETTINGS_BIND_SET |
-            G_SETTINGS_BIND_INVERT_BOOLEAN);
+        dlg->editor, BEDIT_SETTINGS_USE_DEFAULT_FONT,
+        dlg->font_grid,
+        "sensitive", (
+            G_SETTINGS_BIND_GET | G_SETTINGS_BIND_SET |
+            G_SETTINGS_BIND_INVERT_BOOLEAN
+        )
+    );
     g_settings_bind(
-        dlg->editor, BEDIT_SETTINGS_EDITOR_FONT, dlg->font_button, "font-name",
-        G_SETTINGS_BIND_GET | G_SETTINGS_BIND_SET);
+        dlg->editor, BEDIT_SETTINGS_EDITOR_FONT,
+        dlg->font_button,
+        "font-name", G_SETTINGS_BIND_GET | G_SETTINGS_BIND_SET
+    );
 }
 
 static void set_buttons_sensisitivity_according_to_scheme(
-    BeditPreferencesDialog *dlg, GtkSourceStyleScheme *scheme) {
+    BeditPreferencesDialog *dlg, GtkSourceStyleScheme *scheme
+) {
     gboolean editable = FALSE;
 
     if (scheme != NULL) {
@@ -452,8 +541,9 @@ static void set_buttons_sensisitivity_according_to_scheme(
 
         filename = gtk_source_style_scheme_get_filename(scheme);
         if (filename != NULL) {
-            editable =
-                g_str_has_prefix(filename, bedit_dirs_get_user_styles_dir());
+            editable = g_str_has_prefix(
+                filename, bedit_dirs_get_user_styles_dir()
+            );
         }
     }
 
@@ -462,7 +552,8 @@ static void set_buttons_sensisitivity_according_to_scheme(
 
 static void style_scheme_changed(
     GtkSourceStyleSchemeChooser *chooser, GParamSpec *pspec,
-    BeditPreferencesDialog *dlg) {
+    BeditPreferencesDialog *dlg
+) {
     GtkSourceStyleScheme *scheme;
     const gchar *id;
 
@@ -474,7 +565,8 @@ static void style_scheme_changed(
 }
 
 static GtkSourceStyleScheme *get_default_color_scheme(
-    BeditPreferencesDialog *dlg) {
+    BeditPreferencesDialog *dlg
+) {
     GtkSourceStyleSchemeManager *manager;
     GtkSourceStyleScheme *scheme = NULL;
     gchar *pref_id;
@@ -488,7 +580,9 @@ static GtkSourceStyleScheme *get_default_color_scheme(
 
     if (scheme == NULL) {
         /* Fall-back to classic style scheme */
-        scheme = gtk_source_style_scheme_manager_get_scheme(manager, "classic");
+        scheme = gtk_source_style_scheme_manager_get_scheme(
+            manager, "classic"
+        );
     }
 
     return scheme;
@@ -512,7 +606,8 @@ static GtkSourceStyleScheme *get_default_color_scheme(
  * Return value: %TRUE on success, %FALSE otherwise.
  */
 static gboolean file_copy(
-    const gchar *name, const gchar *dest_name, GError **error) {
+    const gchar *name, const gchar *dest_name, GError **error
+) {
     gchar *contents;
     gsize length;
     gchar *dest_dir;
@@ -542,9 +637,12 @@ static gboolean file_copy(
 
         g_set_error(
             error, G_FILE_ERROR, g_file_error_from_errno(save_errno),
-            _("Directory “%s” could not be created: g_mkdir_with_parents() "
-              "failed: %s"),
-            display_filename, g_strerror(save_errno));
+            _(
+                "Directory “%s” could not be created: g_mkdir_with_parents() "
+                "failed: %s"
+            ),
+            display_filename, g_strerror(save_errno)
+        );
 
         g_free(dest_dir);
         g_free(display_filename);
@@ -648,8 +746,9 @@ static GtkSourceStyleScheme *install_style_scheme(const gchar *fname) {
     }
 
     /* The style scheme has not been correctly installed */
-    if (copied)
+    if (copied) {
         g_unlink(new_file_name);
+    }
 
     g_free(new_file_name);
 
@@ -677,11 +776,13 @@ static gboolean uninstall_style_scheme(GtkSourceStyleScheme *scheme) {
     manager = gtk_source_style_scheme_manager_get_default();
 
     filename = gtk_source_style_scheme_get_filename(scheme);
-    if (filename == NULL)
+    if (filename == NULL) {
         return FALSE;
+    }
 
-    if (g_unlink(filename) == -1)
+    if (g_unlink(filename) == -1) {
         return FALSE;
+    }
 
     /* Reload the available style schemes */
     gtk_source_style_scheme_manager_force_rescan(manager);
@@ -690,7 +791,8 @@ static gboolean uninstall_style_scheme(GtkSourceStyleScheme *scheme) {
 }
 
 static void add_scheme_chooser_response_cb(
-    BeditFileChooserDialog *chooser, gint res_id, BeditPreferencesDialog *dlg) {
+    BeditFileChooserDialog *chooser, gint res_id, BeditPreferencesDialog *dlg
+) {
     GFile *file;
     gchar *filename;
     GtkSourceStyleScheme *scheme;
@@ -721,14 +823,16 @@ static void add_scheme_chooser_response_cb(
     if (scheme == NULL) {
         bedit_warning(
             GTK_WINDOW(dlg),
-            _("The selected color scheme cannot be installed."));
+            _("The selected color scheme cannot be installed.")
+        );
 
         return;
     }
 
     g_settings_set_string(
         dlg->editor, BEDIT_SETTINGS_SCHEME,
-        gtk_source_style_scheme_get_id(scheme));
+        gtk_source_style_scheme_get_id(scheme)
+    );
 
     set_buttons_sensisitivity_according_to_scheme(dlg, scheme);
 }
@@ -743,23 +847,27 @@ static void install_scheme_clicked(
     }
 
     chooser = bedit_file_chooser_dialog_create(
-        _("Add Scheme"), GTK_WINDOW(dlg), BEDIT_FILE_CHOOSER_OPEN, NULL,
-        _("_Cancel"), GTK_RESPONSE_CANCEL, _("A_dd Scheme"),
-        GTK_RESPONSE_ACCEPT);
+        _("Add Scheme"), GTK_WINDOW(dlg),BEDIT_FILE_CHOOSER_OPEN, NULL,
+        _("_Cancel"), GTK_RESPONSE_CANCEL,
+        _("A_dd Scheme"), GTK_RESPONSE_ACCEPT
+    );
 
     /* Filters */
     bedit_file_chooser_dialog_add_pattern_filter(
-        chooser, _("Color Scheme Files"), "*.xml");
+        chooser, _("Color Scheme Files"), "*.xml"
+    );
 
     bedit_file_chooser_dialog_add_pattern_filter(chooser, _("All Files"), "*");
 
     g_signal_connect(
-        chooser, "response", G_CALLBACK(add_scheme_chooser_response_cb), dlg);
+        chooser, "response", G_CALLBACK(add_scheme_chooser_response_cb), dlg
+    );
 
     dlg->install_scheme_file_schooser = chooser;
 
     g_object_add_weak_pointer(
-        G_OBJECT(chooser), (gpointer)&dlg->install_scheme_file_schooser);
+        G_OBJECT(chooser), (gpointer)&dlg->install_scheme_file_schooser
+    );
 
     bedit_file_chooser_dialog_show(chooser);
 }
@@ -769,12 +877,14 @@ static void uninstall_scheme_clicked(
     GtkSourceStyleScheme *scheme;
 
     scheme = gtk_source_style_scheme_chooser_get_style_scheme(
-        GTK_SOURCE_STYLE_SCHEME_CHOOSER(dlg->schemes_list));
+        GTK_SOURCE_STYLE_SCHEME_CHOOSER(dlg->schemes_list)
+    );
 
     if (!uninstall_style_scheme(scheme)) {
         bedit_warning(
             GTK_WINDOW(dlg), _("Could not remove color scheme “%s”."),
-            gtk_source_style_scheme_get_name(scheme));
+            gtk_source_style_scheme_get_name(scheme)
+        );
     }
 }
 
@@ -796,16 +906,20 @@ static void setup_font_colors_page_style_scheme_section(
     /* Connect signals */
     g_signal_connect(
         dlg->schemes_list, "notify::style-scheme",
-        G_CALLBACK(style_scheme_changed), dlg);
+        G_CALLBACK(style_scheme_changed), dlg
+    );
     g_signal_connect(
         dlg->install_scheme_button, "clicked",
-        G_CALLBACK(install_scheme_clicked), dlg);
+        G_CALLBACK(install_scheme_clicked), dlg
+    );
     g_signal_connect(
         dlg->uninstall_scheme_button, "clicked",
-        G_CALLBACK(uninstall_scheme_clicked), dlg);
+        G_CALLBACK(uninstall_scheme_clicked), dlg
+    );
 
     gtk_source_style_scheme_chooser_set_style_scheme(
-        GTK_SOURCE_STYLE_SCHEME_CHOOSER(dlg->schemes_list), scheme);
+        GTK_SOURCE_STYLE_SCHEME_CHOOSER(dlg->schemes_list), scheme
+    );
 
     /* Set initial widget sensitivity */
     set_buttons_sensisitivity_according_to_scheme(dlg, scheme);
@@ -839,17 +953,22 @@ void bedit_show_preferences_dialog(BeditWindow *parent) {
 
     if (preferences_dialog == NULL) {
         preferences_dialog = GTK_WIDGET(g_object_new(
-            BEDIT_TYPE_PREFERENCES_DIALOG, "application",
-            g_application_get_default(), NULL));
+            BEDIT_TYPE_PREFERENCES_DIALOG,
+            "application", g_application_get_default(),
+            NULL
+        ));
         g_signal_connect(
-            preferences_dialog, "destroy", G_CALLBACK(gtk_widget_destroyed),
-            &preferences_dialog);
+            preferences_dialog, "destroy",
+            G_CALLBACK(gtk_widget_destroyed), &preferences_dialog
+        );
     }
 
-    if (GTK_WINDOW(parent) !=
-        gtk_window_get_transient_for(GTK_WINDOW(preferences_dialog))) {
+    if (GTK_WINDOW(parent) != gtk_window_get_transient_for(
+        GTK_WINDOW(preferences_dialog)
+    )) {
         gtk_window_set_transient_for(
-            GTK_WINDOW(preferences_dialog), GTK_WINDOW(parent));
+            GTK_WINDOW(preferences_dialog), GTK_WINDOW(parent)
+        );
     }
 
     gtk_window_present(GTK_WINDOW(preferences_dialog));

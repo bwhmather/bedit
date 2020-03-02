@@ -57,7 +57,8 @@
 #define MAX_MSG_LENGTH 40
 
 void _bedit_cmd_search_find(
-    GSimpleAction *action, GVariant *parameter, gpointer user_data) {
+    GSimpleAction *action, GVariant *parameter, gpointer user_data
+) {
     BeditWindow *window = BEDIT_WINDOW(user_data);
 
     bedit_debug(DEBUG_COMMANDS);
@@ -66,7 +67,8 @@ void _bedit_cmd_search_find(
 }
 
 void _bedit_cmd_search_replace(
-    GSimpleAction *action, GVariant *parameter, gpointer user_data) {
+    GSimpleAction *action, GVariant *parameter, gpointer user_data
+) {
     BeditWindow *window = BEDIT_WINDOW(user_data);
 
     bedit_debug(DEBUG_COMMANDS);
@@ -75,7 +77,8 @@ void _bedit_cmd_search_replace(
 }
 
 void _bedit_cmd_search_find_next(
-    GSimpleAction *action, GVariant *parameter, gpointer user_data) {
+    GSimpleAction *action, GVariant *parameter, gpointer user_data
+) {
     BeditWindow *window = BEDIT_WINDOW(user_data);
 
     bedit_debug(DEBUG_COMMANDS);
@@ -84,7 +87,8 @@ void _bedit_cmd_search_find_next(
 }
 
 void _bedit_cmd_search_find_prev(
-    GSimpleAction *action, GVariant *parameter, gpointer user_data) {
+    GSimpleAction *action, GVariant *parameter, gpointer user_data
+) {
     BeditWindow *window = BEDIT_WINDOW(user_data);
 
     bedit_debug(DEBUG_COMMANDS);
@@ -93,7 +97,8 @@ void _bedit_cmd_search_find_prev(
 }
 
 void _bedit_cmd_search_goto_line(
-    GSimpleAction *action, GVariant *parameter, gpointer user_data) {
+    GSimpleAction *action, GVariant *parameter, gpointer user_data
+) {
     BeditWindow *window = BEDIT_WINDOW(user_data);
     BeditTab *active_tab;
     BeditViewFrame *frame;

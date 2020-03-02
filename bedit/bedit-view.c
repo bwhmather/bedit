@@ -683,15 +683,18 @@ void bedit_view_cut_clipboard(BeditView *view) {
 
     buffer = gtk_text_view_get_buffer(GTK_TEXT_VIEW(view));
 
-    clipboard =
-        gtk_widget_get_clipboard(GTK_WIDGET(view), GDK_SELECTION_CLIPBOARD);
+    clipboard = gtk_widget_get_clipboard(
+        GTK_WIDGET(view), GDK_SELECTION_CLIPBOARD
+    );
 
     gtk_text_buffer_cut_clipboard(
-        buffer, clipboard, gtk_text_view_get_editable(GTK_TEXT_VIEW(view)));
+        buffer, clipboard, gtk_text_view_get_editable(GTK_TEXT_VIEW(view))
+    );
 
     gtk_text_view_scroll_to_mark(
         GTK_TEXT_VIEW(view), gtk_text_buffer_get_insert(buffer),
-        BEDIT_VIEW_SCROLL_MARGIN, FALSE, 0.0, 0.0);
+        BEDIT_VIEW_SCROLL_MARGIN, FALSE, 0.0, 0.0
+    );
 }
 
 void bedit_view_copy_clipboard(BeditView *view) {
@@ -704,8 +707,9 @@ void bedit_view_copy_clipboard(BeditView *view) {
 
     buffer = gtk_text_view_get_buffer(GTK_TEXT_VIEW(view));
 
-    clipboard =
-        gtk_widget_get_clipboard(GTK_WIDGET(view), GDK_SELECTION_CLIPBOARD);
+    clipboard = gtk_widget_get_clipboard(
+        GTK_WIDGET(view), GDK_SELECTION_CLIPBOARD
+    );
 
     gtk_text_buffer_copy_clipboard(buffer, clipboard);
 
@@ -722,16 +726,19 @@ void bedit_view_paste_clipboard(BeditView *view) {
 
     buffer = gtk_text_view_get_buffer(GTK_TEXT_VIEW(view));
 
-    clipboard =
-        gtk_widget_get_clipboard(GTK_WIDGET(view), GDK_SELECTION_CLIPBOARD);
+    clipboard = gtk_widget_get_clipboard(
+        GTK_WIDGET(view), GDK_SELECTION_CLIPBOARD
+    );
 
     gtk_text_buffer_paste_clipboard(
         buffer, clipboard, NULL,
-        gtk_text_view_get_editable(GTK_TEXT_VIEW(view)));
+        gtk_text_view_get_editable(GTK_TEXT_VIEW(view))
+    );
 
     gtk_text_view_scroll_to_mark(
         GTK_TEXT_VIEW(view), gtk_text_buffer_get_insert(buffer),
-        BEDIT_VIEW_SCROLL_MARGIN, FALSE, 0.0, 0.0);
+        BEDIT_VIEW_SCROLL_MARGIN, FALSE, 0.0, 0.0
+    );
 }
 
 /**
@@ -755,7 +762,8 @@ void bedit_view_delete_selection(BeditView *view) {
 
     gtk_text_view_scroll_to_mark(
         GTK_TEXT_VIEW(view), gtk_text_buffer_get_insert(buffer),
-        BEDIT_VIEW_SCROLL_MARGIN, FALSE, 0.0, 0.0);
+        BEDIT_VIEW_SCROLL_MARGIN, FALSE, 0.0, 0.0
+    );
 }
 
 /**
@@ -795,8 +803,9 @@ void bedit_view_scroll_to_cursor(BeditView *view) {
     buffer = gtk_text_view_get_buffer(GTK_TEXT_VIEW(view));
 
     gtk_text_view_scroll_to_mark(
-        GTK_TEXT_VIEW(view), gtk_text_buffer_get_insert(buffer), 0.25, FALSE,
-        0.0, 0.0);
+        GTK_TEXT_VIEW(view), gtk_text_buffer_get_insert(buffer),
+        0.25, FALSE, 0.0, 0.0
+    );
 }
 
 static void update_css_provider(BeditView *view) {
@@ -824,7 +833,8 @@ static void update_css_provider(BeditView *view) {
  * Otherwise sets it to @font_name.
  */
 void bedit_view_set_font(
-    BeditView *view, gboolean default_font, const gchar *font_name) {
+    BeditView *view, gboolean default_font, const gchar *font_name
+) {
     bedit_debug(DEBUG_VIEW);
 
     g_return_if_fail(BEDIT_IS_VIEW(view));
@@ -835,8 +845,9 @@ void bedit_view_set_font(
         BeditSettings *settings;
         gchar *font;
 
-        settings =
-            _bedit_app_get_settings(BEDIT_APP(g_application_get_default()));
+        settings = _bedit_app_get_settings(
+            BEDIT_APP(g_application_get_default())
+        );
         font = bedit_settings_get_system_font(settings);
 
         view->priv->font_desc = pango_font_description_from_string(font);

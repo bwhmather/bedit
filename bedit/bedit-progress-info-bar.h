@@ -34,23 +34,30 @@ G_BEGIN_DECLS
 
 #define BEDIT_TYPE_PROGRESS_INFO_BAR (bedit_progress_info_bar_get_type())
 G_DECLARE_FINAL_TYPE(
-    BeditProgressInfoBar, bedit_progress_info_bar, BEDIT, PROGRESS_INFO_BAR,
-    GtkInfoBar)
+    BeditProgressInfoBar, bedit_progress_info_bar,
+    BEDIT, PROGRESS_INFO_BAR,
+    GtkInfoBar
+)
 
 GtkWidget *bedit_progress_info_bar_new(
-    const gchar *icon_name, const gchar *markup, gboolean has_cancel);
+    const gchar *icon_name, const gchar *markup, gboolean has_cancel
+);
 
 void bedit_progress_info_bar_set_icon_name(
-    BeditProgressInfoBar *bar, const gchar *icon_name);
+    BeditProgressInfoBar *bar, const gchar *icon_name
+);
 
 void bedit_progress_info_bar_set_markup(
-    BeditProgressInfoBar *bar, const gchar *markup);
+    BeditProgressInfoBar *bar, const gchar *markup
+);
 
 void bedit_progress_info_bar_set_text(
-    BeditProgressInfoBar *bar, const gchar *text);
+    BeditProgressInfoBar *bar, const gchar *text
+);
 
 void bedit_progress_info_bar_set_fraction(
-    BeditProgressInfoBar *bar, gdouble fraction);
+    BeditProgressInfoBar *bar, gdouble fraction
+);
 
 void bedit_progress_info_bar_pulse(BeditProgressInfoBar *bar);
 

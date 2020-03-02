@@ -60,42 +60,49 @@ struct _BeditFileChooserDialogGtk {
 };
 
 static void bedit_file_chooser_dialog_gtk_chooser_init(
-    gpointer g_iface, gpointer iface_data);
+    gpointer g_iface, gpointer iface_data
+);
 
 G_DEFINE_TYPE_EXTENDED(
     BeditFileChooserDialogGtk, bedit_file_chooser_dialog_gtk,
     GTK_TYPE_FILE_CHOOSER_DIALOG, 0,
     G_IMPLEMENT_INTERFACE(
         BEDIT_TYPE_FILE_CHOOSER_DIALOG,
-        bedit_file_chooser_dialog_gtk_chooser_init))
+        bedit_file_chooser_dialog_gtk_chooser_init
+    )
+)
 
 static void chooser_set_encoding(
-    BeditFileChooserDialog *dialog, const GtkSourceEncoding *encoding) {
+    BeditFileChooserDialog *dialog, const GtkSourceEncoding *encoding
+) {
     BeditFileChooserDialogGtk *dialog_gtk =
         BEDIT_FILE_CHOOSER_DIALOG_GTK(dialog);
 
     g_return_if_fail(BEDIT_IS_ENCODINGS_COMBO_BOX(dialog_gtk->option_menu));
 
     bedit_encodings_combo_box_set_selected_encoding(
-        BEDIT_ENCODINGS_COMBO_BOX(dialog_gtk->option_menu), encoding);
+        BEDIT_ENCODINGS_COMBO_BOX(dialog_gtk->option_menu), encoding
+    );
 }
 
 static const GtkSourceEncoding *chooser_get_encoding(
-    BeditFileChooserDialog *dialog) {
+    BeditFileChooserDialog *dialog
+) {
     BeditFileChooserDialogGtk *dialog_gtk =
         BEDIT_FILE_CHOOSER_DIALOG_GTK(dialog);
 
     g_return_val_if_fail(
         BEDIT_IS_ENCODINGS_COMBO_BOX(dialog_gtk->option_menu), NULL);
-    g_return_val_if_fail(
-        (gtk_file_chooser_get_action(GTK_FILE_CHOOSER(dialog)) ==
-             GTK_FILE_CHOOSER_ACTION_OPEN ||
-         gtk_file_chooser_get_action(GTK_FILE_CHOOSER(dialog)) ==
-             GTK_FILE_CHOOSER_ACTION_SAVE),
-        NULL);
+    g_return_val_if_fail((
+        gtk_file_chooser_get_action(GTK_FILE_CHOOSER(dialog)) ==
+            GTK_FILE_CHOOSER_ACTION_OPEN ||
+        gtk_file_chooser_get_action(GTK_FILE_CHOOSER(dialog)) ==
+            GTK_FILE_CHOOSER_ACTION_SAVE
+    ), NULL);
 
     return bedit_encodings_combo_box_get_selected_encoding(
-        BEDIT_ENCODINGS_COMBO_BOX(dialog_gtk->option_menu));
+        BEDIT_ENCODINGS_COMBO_BOX(dialog_gtk->option_menu)
+    );
 }
 
 static void set_enum_combo(GtkComboBox *combo, gint value) {
@@ -121,19 +128,22 @@ static void set_enum_combo(GtkComboBox *combo, gint value) {
 }
 
 static void chooser_set_newline_type(
-    BeditFileChooserDialog *dialog, GtkSourceNewlineType newline_type) {
+    BeditFileChooserDialog *dialog, GtkSourceNewlineType newline_type
+) {
     BeditFileChooserDialogGtk *dialog_gtk =
         BEDIT_FILE_CHOOSER_DIALOG_GTK(dialog);
 
     g_return_if_fail(
         gtk_file_chooser_get_action(GTK_FILE_CHOOSER(dialog)) ==
-        GTK_FILE_CHOOSER_ACTION_SAVE);
+        GTK_FILE_CHOOSER_ACTION_SAVE
+    );
 
     set_enum_combo(GTK_COMBO_BOX(dialog_gtk->newline_combo), newline_type);
 }
 
 static GtkSourceNewlineType chooser_get_newline_type(
-    BeditFileChooserDialog *dialog) {
+    BeditFileChooserDialog *dialog
+) {
     BeditFileChooserDialogGtk *dialog_gtk =
         BEDIT_FILE_CHOOSER_DIALOG_GTK(dialog);
     GtkTreeIter iter;
@@ -141,20 +151,26 @@ static GtkSourceNewlineType chooser_get_newline_type(
 
     g_return_val_if_fail(
         gtk_file_chooser_get_action(GTK_FILE_CHOOSER(dialog)) ==
-            GTK_FILE_CHOOSER_ACTION_SAVE,
-        GTK_SOURCE_NEWLINE_TYPE_DEFAULT);
+        GTK_FILE_CHOOSER_ACTION_SAVE,
+        GTK_SOURCE_NEWLINE_TYPE_DEFAULT
+    );
 
     gtk_combo_box_get_active_iter(
-        GTK_COMBO_BOX(dialog_gtk->newline_combo), &iter);
+        GTK_COMBO_BOX(dialog_gtk->newline_combo), &iter
+    );
 
     gtk_tree_model_get(
-        GTK_TREE_MODEL(dialog_gtk->newline_store), &iter, 1, &newline_type, -1);
+        GTK_TREE_MODEL(dialog_gtk->newline_store), &iter,
+        1, &newline_type,
+        -1
+    );
 
     return newline_type;
 }
 
 static void chooser_set_current_folder(
-    BeditFileChooserDialog *dialog, GFile *folder) {
+    BeditFileChooserDialog *dialog, GFile *folder
+) {
     gchar *uri = NULL;
 
     if (folder != NULL) {
@@ -166,7 +182,8 @@ static void chooser_set_current_folder(
 }
 
 static void chooser_set_current_name(
-    BeditFileChooserDialog *dialog, const gchar *name) {
+    BeditFileChooserDialog *dialog, const gchar *name
+) {
     gtk_file_chooser_set_current_name(GTK_FILE_CHOOSER(dialog), name);
 }
 
@@ -183,9 +200,11 @@ static GSList *chooser_get_files(BeditFileChooserDialog *dialog) {
 }
 
 static void chooser_set_do_overwrite_confirmation(
-    BeditFileChooserDialog *dialog, gboolean overwrite_confirmation) {
+    BeditFileChooserDialog *dialog, gboolean overwrite_confirmation
+) {
     gtk_file_chooser_set_do_overwrite_confirmation(
-        GTK_FILE_CHOOSER(dialog), overwrite_confirmation);
+        GTK_FILE_CHOOSER(dialog), overwrite_confirmation
+    );
 }
 
 static void chooser_show(BeditFileChooserDialog *dialog) {
@@ -211,7 +230,8 @@ static GtkWindow *chooser_get_window(BeditFileChooserDialog *dialog) {
 }
 
 static void chooser_add_pattern_filter(
-    BeditFileChooserDialog *dialog, const gchar *name, const gchar *pattern) {
+    BeditFileChooserDialog *dialog, const gchar *name, const gchar *pattern
+) {
     GtkFileFilter *filter;
 
     filter = gtk_file_filter_new();
@@ -227,7 +247,8 @@ static void chooser_add_pattern_filter(
 }
 
 static void bedit_file_chooser_dialog_gtk_chooser_init(
-    gpointer g_iface, gpointer iface_data) {
+    gpointer g_iface, gpointer iface_data
+) {
     BeditFileChooserDialogInterface *iface = g_iface;
 
     iface->set_encoding = chooser_set_encoding;
@@ -257,18 +278,21 @@ static void bedit_file_chooser_dialog_gtk_dispose(GObject *object) {
 
     g_clear_object(&dialog_gtk->filter_settings);
 
-    G_OBJECT_CLASS(bedit_file_chooser_dialog_gtk_parent_class)->dispose(object);
+    G_OBJECT_CLASS(bedit_file_chooser_dialog_gtk_parent_class)
+        ->dispose(object);
 }
 
 static void bedit_file_chooser_dialog_gtk_class_init(
-    BeditFileChooserDialogGtkClass *klass) {
+    BeditFileChooserDialogGtkClass *klass
+) {
     GObjectClass *object_class = G_OBJECT_CLASS(klass);
 
     object_class->dispose = bedit_file_chooser_dialog_gtk_dispose;
 }
 
 static void create_option_menu(
-    BeditFileChooserDialogGtk *dialog, BeditFileChooserFlags flags) {
+    BeditFileChooserDialogGtk *dialog, BeditFileChooserFlags flags
+) {
     GtkWidget *label;
     GtkWidget *menu;
     gboolean save_mode;
@@ -292,8 +316,10 @@ static void create_option_menu(
 }
 
 static void update_newline_visibility(BeditFileChooserDialogGtk *dialog) {
-    gboolean visible = gtk_file_chooser_get_action(GTK_FILE_CHOOSER(dialog)) ==
-        GTK_FILE_CHOOSER_ACTION_SAVE;
+    gboolean visible = (
+        gtk_file_chooser_get_action(GTK_FILE_CHOOSER(dialog)) ==
+        GTK_FILE_CHOOSER_ACTION_SAVE
+    );
 
     gtk_widget_set_visible(dialog->newline_label, visible);
     gtk_widget_set_visible(dialog->newline_combo, visible);
@@ -301,7 +327,8 @@ static void update_newline_visibility(BeditFileChooserDialogGtk *dialog) {
 
 static void newline_combo_append(
     GtkComboBox *combo, GtkListStore *store, GtkTreeIter *iter,
-    const gchar *label, GtkSourceNewlineType newline_type) {
+    const gchar *label, GtkSourceNewlineType newline_type
+) {
     gtk_list_store_append(store, iter);
     gtk_list_store_set(store, iter, 0, label, 1, newline_type, -1);
 
@@ -330,17 +357,20 @@ static void create_newline_combo(BeditFileChooserDialogGtk *dialog) {
     newline_combo_append(
         GTK_COMBO_BOX(combo), store, &iter,
         bedit_utils_newline_type_to_string(GTK_SOURCE_NEWLINE_TYPE_LF),
-        GTK_SOURCE_NEWLINE_TYPE_LF);
+        GTK_SOURCE_NEWLINE_TYPE_LF
+    );
 
     newline_combo_append(
         GTK_COMBO_BOX(combo), store, &iter,
         bedit_utils_newline_type_to_string(GTK_SOURCE_NEWLINE_TYPE_CR),
-        GTK_SOURCE_NEWLINE_TYPE_CR);
+        GTK_SOURCE_NEWLINE_TYPE_CR
+    );
 
     newline_combo_append(
         GTK_COMBO_BOX(combo), store, &iter,
         bedit_utils_newline_type_to_string(GTK_SOURCE_NEWLINE_TYPE_CR_LF),
-        GTK_SOURCE_NEWLINE_TYPE_CR_LF);
+        GTK_SOURCE_NEWLINE_TYPE_CR_LF
+    );
 
     gtk_label_set_mnemonic_widget(GTK_LABEL(label), combo);
 
@@ -356,7 +386,8 @@ static void create_newline_combo(BeditFileChooserDialogGtk *dialog) {
 }
 
 static void create_extra_widget(
-    BeditFileChooserDialogGtk *dialog, BeditFileChooserFlags flags) {
+    BeditFileChooserDialogGtk *dialog, BeditFileChooserFlags flags
+) {
     gboolean needs_encoding;
     gboolean needs_line_ending;
 
@@ -380,11 +411,13 @@ static void create_extra_widget(
     }
 
     gtk_file_chooser_set_extra_widget(
-        GTK_FILE_CHOOSER(dialog), dialog->extra_widget);
+        GTK_FILE_CHOOSER(dialog), dialog->extra_widget
+    );
 }
 
 static void action_changed(
-    BeditFileChooserDialogGtk *dialog, GParamSpec *pspec, gpointer data) {
+    BeditFileChooserDialogGtk *dialog, GParamSpec *pspec, gpointer data
+) {
     GtkFileChooserAction action;
 
     action = gtk_file_chooser_get_action(GTK_FILE_CHOOSER(dialog));
@@ -406,7 +439,8 @@ static void action_changed(
 }
 
 static void filter_changed(
-    BeditFileChooserDialogGtk *dialog, GParamSpec *pspec, gpointer data) {
+    BeditFileChooserDialogGtk *dialog, GParamSpec *pspec, gpointer data
+) {
     GtkFileFilter *filter;
 
     filter = gtk_file_chooser_get_filter(GTK_FILE_CHOOSER(dialog));
@@ -420,16 +454,21 @@ static void filter_changed(
         if (strcmp(name, ALL_TEXT_FILES) == 0)
             id = 1;
 
-        bedit_debug_message(DEBUG_COMMANDS, "Active filter: %s (%d)", name, id);
+        bedit_debug_message(
+            DEBUG_COMMANDS,
+            "Active filter: %s (%d)", name, id
+        );
 
         g_settings_set_int(
-            dialog->filter_settings, BEDIT_SETTINGS_ACTIVE_FILE_FILTER, id);
+            dialog->filter_settings, BEDIT_SETTINGS_ACTIVE_FILE_FILTER, id
+        );
     }
 }
 
 /* FIXME: use globs too - Paolo (Aug. 27, 2007) */
 static gboolean all_text_files_filter(
-    const GtkFileFilterInfo *filter_info, gpointer data) {
+    const GtkFileFilterInfo *filter_info, gpointer data
+) {
     static GSList *known_mime_types = NULL;
     GSList *mime_types;
 
@@ -450,18 +489,21 @@ static gboolean all_text_files_filter(
             ++languages;
 
             lang_mime_types = gtk_source_language_get_mime_types(lang);
-            if (lang_mime_types == NULL)
+            if (lang_mime_types == NULL) {
                 continue;
+            }
 
             for (i = 0; lang_mime_types[i] != NULL; i++) {
                 if (!g_content_type_is_a(lang_mime_types[i], "text/plain")) {
                     bedit_debug_message(
                         DEBUG_COMMANDS,
                         "Mime-type %s is not related to text/plain",
-                        lang_mime_types[i]);
+                        lang_mime_types[i]
+                    );
 
                     known_mime_types = g_slist_prepend(
-                        known_mime_types, g_strdup(lang_mime_types[i]));
+                        known_mime_types, g_strdup(lang_mime_types[i])
+                    );
                 }
             }
 
@@ -469,15 +511,16 @@ static gboolean all_text_files_filter(
         }
 
         /* known_mime_types always has "text/plain" as first item" */
-        known_mime_types =
-            g_slist_prepend(known_mime_types, g_strdup("text/plain"));
+        known_mime_types = g_slist_prepend(
+            known_mime_types, g_strdup("text/plain")
+        );
     }
 
     /* known mime_types contains "text/plain" and then the list of mime-types
      * unrelated to "text/plain" that bedit recognizes */
-
-    if (filter_info->mime_type == NULL)
+    if (filter_info->mime_type == NULL) {
         return FALSE;
+    }
 
     /*
      * The filter is matching:
@@ -485,15 +528,17 @@ static gboolean all_text_files_filter(
      * - the mime-types inheriting from a known mime-type (note the text/plain
      * is the first known mime-type)
      */
-
-    if (strncmp(filter_info->mime_type, "text/", 5) == 0)
+    if (strncmp(filter_info->mime_type, "text/", 5) == 0) {
         return TRUE;
+    }
 
     mime_types = known_mime_types;
     while (mime_types != NULL) {
         if (g_content_type_is_a(
-                filter_info->mime_type, (const gchar *)mime_types->data))
+            filter_info->mime_type, (const gchar *)mime_types->data
+        )) {
             return TRUE;
+        }
 
         mime_types = g_slist_next(mime_types);
     }
@@ -502,16 +547,19 @@ static gboolean all_text_files_filter(
 }
 
 static void bedit_file_chooser_dialog_gtk_init(
-    BeditFileChooserDialogGtk *dialog) {
-    dialog->filter_settings =
-        g_settings_new("com.bwhmather.bedit.state.file-filter");
+    BeditFileChooserDialogGtk *dialog
+) {
+    dialog->filter_settings = g_settings_new(
+        "com.bwhmather.bedit.state.file-filter"
+    );
 }
 
 BeditFileChooserDialog *bedit_file_chooser_dialog_gtk_create(
-    const gchar *title, GtkWindow *parent, BeditFileChooserFlags flags,
-    const GtkSourceEncoding *encoding, const gchar *cancel_label,
-    GtkResponseType cancel_response, const gchar *accept_label,
-    GtkResponseType accept_response) {
+    const gchar *title, GtkWindow *parent,
+    BeditFileChooserFlags flags, const GtkSourceEncoding *encoding,
+    const gchar *cancel_label, GtkResponseType cancel_response,
+    const gchar *accept_label, GtkResponseType accept_response
+) {
     BeditFileChooserDialogGtk *result;
     GtkFileFilter *filter;
     gint active_filter;
@@ -527,21 +575,30 @@ BeditFileChooserDialog *bedit_file_chooser_dialog_gtk_create(
     }
 
     result = g_object_new(
-        BEDIT_TYPE_FILE_CHOOSER_DIALOG_GTK, "title", title, "local-only", FALSE,
-        "action", action, "select-multiple", select_multiple, NULL);
+        BEDIT_TYPE_FILE_CHOOSER_DIALOG_GTK,
+        "title", title,
+        "local-only", FALSE,
+        "action", action,
+        "select-multiple", select_multiple,
+        NULL
+    );
 
     create_extra_widget(result, flags);
 
     g_signal_connect(
-        result, "notify::action", G_CALLBACK(action_changed), NULL);
+        result, "notify::action",
+        G_CALLBACK(action_changed), NULL
+    );
 
     if (encoding != NULL) {
         bedit_encodings_combo_box_set_selected_encoding(
-            BEDIT_ENCODINGS_COMBO_BOX(result->option_menu), encoding);
+            BEDIT_ENCODINGS_COMBO_BOX(result->option_menu), encoding
+        );
     }
 
     active_filter = g_settings_get_int(
-        result->filter_settings, BEDIT_SETTINGS_ACTIVE_FILE_FILTER);
+        result->filter_settings, BEDIT_SETTINGS_ACTIVE_FILE_FILTER
+    );
     bedit_debug_message(DEBUG_COMMANDS, "Active filter: %d", active_filter);
 
     if ((flags & BEDIT_FILE_CHOOSER_ENABLE_DEFAULT_FILTERS) != 0) {
@@ -560,8 +617,9 @@ BeditFileChooserDialog *bedit_file_chooser_dialog_gtk_create(
         filter = gtk_file_filter_new();
         gtk_file_filter_set_name(filter, ALL_TEXT_FILES);
         gtk_file_filter_add_custom(
-            filter, GTK_FILE_FILTER_MIME_TYPE, all_text_files_filter, NULL,
-            NULL);
+            filter, GTK_FILE_FILTER_MIME_TYPE, all_text_files_filter,
+            NULL, NULL
+        );
         gtk_file_chooser_add_filter(GTK_FILE_CHOOSER(result), filter);
 
         if (active_filter == 1) {
@@ -570,7 +628,9 @@ BeditFileChooserDialog *bedit_file_chooser_dialog_gtk_create(
         }
 
         g_signal_connect(
-            result, "notify::filter", G_CALLBACK(filter_changed), NULL);
+            result, "notify::filter",
+            G_CALLBACK(filter_changed), NULL
+        );
     }
 
     if (parent != NULL) {

@@ -44,10 +44,12 @@ G_DECLARE_FINAL_TYPE(
 BeditHighlightModeSelector *bedit_highlight_mode_selector_new(void);
 
 void bedit_highlight_mode_selector_select_language(
-    BeditHighlightModeSelector *selector, GtkSourceLanguage *language);
+    BeditHighlightModeSelector *selector, GtkSourceLanguage *language
+);
 
 void bedit_highlight_mode_selector_activate_selected_language(
-    BeditHighlightModeSelector *selector);
+    BeditHighlightModeSelector *selector
+);
 
 G_END_DECLS
 

@@ -137,8 +137,10 @@ void bedit_debug(
  * given format string arguments.
  */
 void bedit_debug_message(
-    BeditDebugSection section, const gchar *file, gint line,
-    const gchar *function, const gchar *format, ...) {
+    BeditDebugSection section,
+    const gchar *file, gint line, const gchar *function,
+    const gchar *format, ...
+) {
     if (G_UNLIKELY(DEBUG_IS_ENABLED(section))) {
         va_list args;
         gchar *msg;
@@ -159,8 +161,11 @@ void bedit_debug_message(
 
 #ifdef ENABLE_PROFILING
         g_print(
-            "[%f (%f)] %s:%d (%s) %s\n", seconds, seconds - last_time, file,
-            line, function, msg);
+            "[%f (%f)] %s:%d (%s) %s\n",
+            seconds, seconds - last_time,
+            file, line, function,
+            msg
+        );
 
         last_time = seconds;
 #else
@@ -206,8 +211,10 @@ void bedit_debug_message(
  * Since: 3.4
  */
 void bedit_debug_plugin_message(
-    const gchar *file, gint line, const gchar *function, const gchar *message) {
+    const gchar *file, gint line, const gchar *function, const gchar *message
+) {
     bedit_debug_message(
-        BEDIT_DEBUG_PLUGINS, file, line, function, "%s", message);
+        BEDIT_DEBUG_PLUGINS, file, line, function, "%s", message
+    );
 }
 

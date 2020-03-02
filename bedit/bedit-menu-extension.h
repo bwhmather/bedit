@@ -40,10 +40,12 @@ G_DECLARE_FINAL_TYPE(
 BeditMenuExtension *bedit_menu_extension_new(GMenu *menu);
 
 void bedit_menu_extension_append_menu_item(
-    BeditMenuExtension *menu, GMenuItem *item);
+    BeditMenuExtension *menu, GMenuItem *item
+);
 
 void bedit_menu_extension_prepend_menu_item(
-    BeditMenuExtension *menu, GMenuItem *item);
+    BeditMenuExtension *menu, GMenuItem *item
+);
 
 void bedit_menu_extension_remove_items(BeditMenuExtension *menu);
 

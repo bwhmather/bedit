@@ -37,15 +37,19 @@ struct _BeditHighlightModeDialog {
 };
 
 G_DEFINE_TYPE(
-    BeditHighlightModeDialog, bedit_highlight_mode_dialog, GTK_TYPE_DIALOG)
+    BeditHighlightModeDialog, bedit_highlight_mode_dialog, GTK_TYPE_DIALOG
+)
 
 static void bedit_highlight_mode_dialog_response(
-    GtkDialog *dialog, gint response_id) {
+    GtkDialog *dialog, gint response_id
+) {
     BeditHighlightModeDialog *dlg = BEDIT_HIGHLIGHT_MODE_DIALOG(dialog);
 
     if (response_id == GTK_RESPONSE_OK) {
         g_signal_handler_block(dlg->selector, dlg->on_language_selected_id);
-        bedit_highlight_mode_selector_activate_selected_language(dlg->selector);
+        bedit_highlight_mode_selector_activate_selected_language(
+            dlg->selector
+        );
         g_signal_handler_unblock(dlg->selector, dlg->on_language_selected_id);
     }
 
@@ -54,7 +58,8 @@ static void bedit_highlight_mode_dialog_response(
 
 static void on_language_selected(
     BeditHighlightModeSelector *sel, GtkSourceLanguage *language,
-    BeditHighlightModeDialog *dlg) {
+    BeditHighlightModeDialog *dlg
+) {
     g_signal_handler_block(dlg->selector, dlg->on_language_selected_id);
     bedit_highlight_mode_selector_activate_selected_language(dlg->selector);
     g_signal_handler_unblock(dlg->selector, dlg->on_language_selected_id);
@@ -63,7 +68,8 @@ static void on_language_selected(
 }
 
 static void bedit_highlight_mode_dialog_class_init(
-    BeditHighlightModeDialogClass *klass) {
+    BeditHighlightModeDialogClass *klass
+) {
     GtkWidgetClass *widget_class = GTK_WIDGET_CLASS(klass);
     GtkDialogClass *dialog_class = GTK_DIALOG_CLASS(klass);
 
@@ -71,9 +77,12 @@ static void bedit_highlight_mode_dialog_class_init(
 
     /* Bind class to template */
     gtk_widget_class_set_template_from_resource(
-        widget_class, "/com/bwhmather/bedit/ui/bedit-highlight-mode-dialog.ui");
+        widget_class,
+        "/com/bwhmather/bedit/ui/bedit-highlight-mode-dialog.ui"
+    );
     gtk_widget_class_bind_template_child(
-        widget_class, BeditHighlightModeDialog, selector);
+        widget_class, BeditHighlightModeDialog, selector
+    );
 }
 
 static void bedit_highlight_mode_dialog_init(BeditHighlightModeDialog *dlg) {
@@ -81,18 +90,23 @@ static void bedit_highlight_mode_dialog_init(BeditHighlightModeDialog *dlg) {
     gtk_dialog_set_default_response(GTK_DIALOG(dlg), GTK_RESPONSE_OK);
 
     dlg->on_language_selected_id = g_signal_connect(
-        dlg->selector, "language-selected", G_CALLBACK(on_language_selected),
-        dlg);
+        dlg->selector, "language-selected",
+        G_CALLBACK(on_language_selected), dlg
+    );
 }
 
 GtkWidget *bedit_highlight_mode_dialog_new(GtkWindow *parent) {
     return GTK_WIDGET(g_object_new(
-        BEDIT_TYPE_HIGHLIGHT_MODE_DIALOG, "transient-for", parent,
-        "use-header-bar", TRUE, NULL));
+        BEDIT_TYPE_HIGHLIGHT_MODE_DIALOG,
+        "transient-for", parent,
+        "use-header-bar", TRUE,
+        NULL
+    ));
 }
 
 BeditHighlightModeSelector *bedit_highlight_mode_dialog_get_selector(
-    BeditHighlightModeDialog *dlg) {
+    BeditHighlightModeDialog *dlg
+) {
     g_return_val_if_fail(BEDIT_IS_HIGHLIGHT_MODE_DIALOG(dlg), NULL);
 
     return dlg->selector;

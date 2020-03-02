@@ -48,10 +48,12 @@ enum { LANGUAGE_SELECTED, LAST_SIGNAL };
 static guint signals[LAST_SIGNAL] = {0};
 
 G_DEFINE_TYPE(
-    BeditHighlightModeSelector, bedit_highlight_mode_selector, GTK_TYPE_GRID)
+    BeditHighlightModeSelector, bedit_highlight_mode_selector, GTK_TYPE_GRID
+)
 
 static void bedit_highlight_mode_selector_language_selected(
-    BeditHighlightModeSelector *widget, GtkSourceLanguage *language) {}
+    BeditHighlightModeSelector *widget, GtkSourceLanguage *language
+) {}
 
 static void bedit_highlight_mode_selector_class_init(
     BeditHighlightModeSelectorClass *klass) {
@@ -60,28 +62,36 @@ static void bedit_highlight_mode_selector_class_init(
     signals[LANGUAGE_SELECTED] = g_signal_new_class_handler(
         "language-selected", G_TYPE_FROM_CLASS(klass),
         G_SIGNAL_RUN_LAST | G_SIGNAL_ACTION,
-        G_CALLBACK(bedit_highlight_mode_selector_language_selected), NULL, NULL,
-        NULL, G_TYPE_NONE, 1, GTK_SOURCE_TYPE_LANGUAGE);
+        G_CALLBACK(bedit_highlight_mode_selector_language_selected),
+        NULL, NULL, NULL, G_TYPE_NONE, 1, GTK_SOURCE_TYPE_LANGUAGE
+    );
 
     /* Bind class to template */
     gtk_widget_class_set_template_from_resource(
         widget_class,
-        "/com/bwhmather/bedit/ui/bedit-highlight-mode-selector.ui");
+        "/com/bwhmather/bedit/ui/bedit-highlight-mode-selector.ui"
+    );
     gtk_widget_class_bind_template_child(
-        widget_class, BeditHighlightModeSelector, treeview);
+        widget_class, BeditHighlightModeSelector, treeview
+    );
     gtk_widget_class_bind_template_child(
-        widget_class, BeditHighlightModeSelector, entry);
+        widget_class, BeditHighlightModeSelector, entry
+    );
     gtk_widget_class_bind_template_child(
-        widget_class, BeditHighlightModeSelector, liststore);
+        widget_class, BeditHighlightModeSelector, liststore
+    );
     gtk_widget_class_bind_template_child(
-        widget_class, BeditHighlightModeSelector, treemodelfilter);
+        widget_class, BeditHighlightModeSelector, treemodelfilter
+    );
     gtk_widget_class_bind_template_child(
-        widget_class, BeditHighlightModeSelector, treeview_selection);
+        widget_class, BeditHighlightModeSelector, treeview_selection
+    );
 }
 
 static gboolean visible_func(
     GtkTreeModel *model, GtkTreeIter *iter,
-    BeditHighlightModeSelector *selector) {
+    BeditHighlightModeSelector *selector
+) {
     const gchar *entry_text;
     gchar *name;
     gchar *name_normalized;
@@ -119,38 +129,44 @@ static gboolean visible_func(
 }
 
 static void on_entry_activate(
-    GtkEntry *entry, BeditHighlightModeSelector *selector) {
+    GtkEntry *entry, BeditHighlightModeSelector *selector
+) {
     bedit_highlight_mode_selector_activate_selected_language(selector);
 }
 
 static void on_entry_changed(
-    GtkEntry *entry, BeditHighlightModeSelector *selector) {
+    GtkEntry *entry, BeditHighlightModeSelector *selector
+) {
     GtkTreeIter iter;
 
     gtk_tree_model_filter_refilter(selector->treemodelfilter);
 
     if (gtk_tree_model_get_iter_first(
-            GTK_TREE_MODEL(selector->treemodelfilter), &iter)) {
+        GTK_TREE_MODEL(selector->treemodelfilter), &iter
+    )) {
         gtk_tree_selection_select_iter(selector->treeview_selection, &iter);
     }
 }
 
 static gboolean move_selection(
-    BeditHighlightModeSelector *selector, gint howmany) {
+    BeditHighlightModeSelector *selector, gint howmany
+) {
     GtkTreeIter iter;
     GtkTreePath *path;
     gint *indices;
     gint ret = FALSE;
 
     if (!gtk_tree_selection_get_selected(
-            selector->treeview_selection, NULL, &iter) &&
-        !gtk_tree_model_get_iter_first(
-            GTK_TREE_MODEL(selector->treemodelfilter), &iter)) {
+        selector->treeview_selection, NULL, &iter
+    ) && !gtk_tree_model_get_iter_first(
+        GTK_TREE_MODEL(selector->treemodelfilter), &iter)
+    ) {
         return FALSE;
     }
 
     path = gtk_tree_model_get_path(
-        GTK_TREE_MODEL(selector->treemodelfilter), &iter);
+        GTK_TREE_MODEL(selector->treemodelfilter), &iter
+    );
     indices = gtk_tree_path_get_indices(path);
 
     if (indices) {
@@ -160,7 +176,8 @@ static gboolean move_selection(
 
         idx = indices[0];
         num = gtk_tree_model_iter_n_children(
-            GTK_TREE_MODEL(selector->treemodelfilter), NULL);
+            GTK_TREE_MODEL(selector->treemodelfilter), NULL
+        );
 
         if ((idx + howmany) < 0) {
             idx = 0;
@@ -173,7 +190,8 @@ static gboolean move_selection(
         new_path = gtk_tree_path_new_from_indices(idx, -1);
         gtk_tree_selection_select_path(selector->treeview_selection, new_path);
         gtk_tree_view_scroll_to_cell(
-            GTK_TREE_VIEW(selector->treeview), new_path, NULL, TRUE, 0.5, 0);
+            GTK_TREE_VIEW(selector->treeview), new_path, NULL, TRUE, 0.5, 0
+        );
         gtk_tree_path_free(new_path);
 
         ret = TRUE;
@@ -186,7 +204,8 @@ static gboolean move_selection(
 
 static gboolean on_entry_key_press_event(
     GtkWidget *entry, GdkEventKey *event,
-    BeditHighlightModeSelector *selector) {
+    BeditHighlightModeSelector *selector
+) {
     if (event->keyval == GDK_KEY_Down) {
         return move_selection(selector, 1);
     } else if (event->keyval == GDK_KEY_Up) {
@@ -202,12 +221,14 @@ static gboolean on_entry_key_press_event(
 
 static void on_row_activated(
     GtkTreeView *tree_view, GtkTreePath *path, GtkTreeViewColumn *column,
-    BeditHighlightModeSelector *selector) {
+    BeditHighlightModeSelector *selector
+) {
     bedit_highlight_mode_selector_activate_selected_language(selector);
 }
 
 static void bedit_highlight_mode_selector_init(
-    BeditHighlightModeSelector *selector) {
+    BeditHighlightModeSelector *selector
+) {
     GtkSourceLanguageManager *lm;
     const gchar *const *ids;
     gint i;
@@ -218,26 +239,37 @@ static void bedit_highlight_mode_selector_init(
     gtk_widget_init_template(GTK_WIDGET(selector));
 
     gtk_tree_model_filter_set_visible_func(
-        selector->treemodelfilter, (GtkTreeModelFilterVisibleFunc)visible_func,
-        selector, NULL);
+        selector->treemodelfilter,
+        (GtkTreeModelFilterVisibleFunc)visible_func,
+        selector, NULL
+    );
 
     g_signal_connect(
-        selector->entry, "activate", G_CALLBACK(on_entry_activate), selector);
+        selector->entry, "activate",
+        G_CALLBACK(on_entry_activate), selector
+    );
     g_signal_connect(
-        selector->entry, "changed", G_CALLBACK(on_entry_changed), selector);
+        selector->entry, "changed",
+        G_CALLBACK(on_entry_changed), selector
+    );
     g_signal_connect(
         selector->entry, "key-press-event",
-        G_CALLBACK(on_entry_key_press_event), selector);
+        G_CALLBACK(on_entry_key_press_event), selector
+    );
 
     g_signal_connect(
-        selector->treeview, "row-activated", G_CALLBACK(on_row_activated),
-        selector);
+        selector->treeview, "row-activated",
+        G_CALLBACK(on_row_activated), selector
+    );
 
     /* Populate tree model */
     gtk_list_store_append(selector->liststore, &iter);
     gtk_list_store_set(
-        selector->liststore, &iter, COLUMN_NAME, _("Plain Text"), COLUMN_LANG,
-        NULL, -1);
+        selector->liststore, &iter,
+        COLUMN_NAME, _("Plain Text"),
+        COLUMN_LANG, NULL,
+        -1
+    );
 
     lm = gtk_source_language_manager_get_default();
     ids = gtk_source_language_manager_get_language_ids(lm);
@@ -250,14 +282,18 @@ static void bedit_highlight_mode_selector_init(
         if (!gtk_source_language_get_hidden(lang)) {
             gtk_list_store_append(selector->liststore, &iter);
             gtk_list_store_set(
-                selector->liststore, &iter, COLUMN_NAME,
-                gtk_source_language_get_name(lang), COLUMN_LANG, lang, -1);
+                selector->liststore, &iter,
+                COLUMN_NAME, gtk_source_language_get_name(lang),
+                COLUMN_LANG, lang,
+                -1
+            );
         }
     }
 
     /* select first item */
     if (gtk_tree_model_get_iter_first(
-            GTK_TREE_MODEL(selector->treemodelfilter), &iter)) {
+        GTK_TREE_MODEL(selector->treemodelfilter), &iter)
+    ) {
         gtk_tree_selection_select_iter(selector->treeview_selection, &iter);
     }
 }
@@ -267,7 +303,8 @@ BeditHighlightModeSelector *bedit_highlight_mode_selector_new(void) {
 }
 
 void bedit_highlight_mode_selector_select_language(
-    BeditHighlightModeSelector *selector, GtkSourceLanguage *language) {
+    BeditHighlightModeSelector *selector, GtkSourceLanguage *language
+) {
     GtkTreeIter iter;
 
     g_return_if_fail(BEDIT_IS_HIGHLIGHT_MODE_SELECTOR(selector));
@@ -277,13 +314,16 @@ void bedit_highlight_mode_selector_select_language(
     }
 
     if (gtk_tree_model_get_iter_first(
-            GTK_TREE_MODEL(selector->treemodelfilter), &iter)) {
+        GTK_TREE_MODEL(selector->treemodelfilter), &iter)
+    ) {
         do {
             GtkSourceLanguage *lang;
 
             gtk_tree_model_get(
-                GTK_TREE_MODEL(selector->treemodelfilter), &iter, COLUMN_LANG,
-                &lang, -1);
+                GTK_TREE_MODEL(selector->treemodelfilter), &iter,
+                COLUMN_LANG, &lang,
+                -1
+            );
 
             if (lang != NULL) {
                 gboolean equal = (lang == language);
@@ -294,37 +334,45 @@ void bedit_highlight_mode_selector_select_language(
                     GtkTreePath *path;
 
                     path = gtk_tree_model_get_path(
-                        GTK_TREE_MODEL(selector->treemodelfilter), &iter);
+                        GTK_TREE_MODEL(selector->treemodelfilter), &iter
+                    );
 
                     gtk_tree_selection_select_iter(
-                        selector->treeview_selection, &iter);
+                        selector->treeview_selection, &iter
+                    );
                     gtk_tree_view_scroll_to_cell(
                         GTK_TREE_VIEW(selector->treeview), path, NULL, TRUE,
-                        0.5, 0);
+                        0.5, 0
+                    );
                     gtk_tree_path_free(path);
                     break;
                 }
             }
         } while (gtk_tree_model_iter_next(
-            GTK_TREE_MODEL(selector->treemodelfilter), &iter));
+            GTK_TREE_MODEL(selector->treemodelfilter), &iter
+        ));
     }
 }
 
 void bedit_highlight_mode_selector_activate_selected_language(
-    BeditHighlightModeSelector *selector) {
+    BeditHighlightModeSelector *selector
+) {
     GtkSourceLanguage *lang;
     GtkTreeIter iter;
 
     g_return_if_fail(BEDIT_IS_HIGHLIGHT_MODE_SELECTOR(selector));
 
     if (!gtk_tree_selection_get_selected(
-            selector->treeview_selection, NULL, &iter)) {
+        selector->treeview_selection, NULL, &iter
+    )) {
         return;
     }
 
     gtk_tree_model_get(
-        GTK_TREE_MODEL(selector->treemodelfilter), &iter, COLUMN_LANG, &lang,
-        -1);
+        GTK_TREE_MODEL(selector->treemodelfilter), &iter,
+        COLUMN_LANG, &lang,
+        -1
+    );
 
     g_signal_emit(G_OBJECT(selector), signals[LANGUAGE_SELECTED], 0, lang);
 

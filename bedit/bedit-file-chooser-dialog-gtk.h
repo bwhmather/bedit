@@ -39,13 +39,15 @@ G_BEGIN_DECLS
 
 G_DECLARE_FINAL_TYPE(
     BeditFileChooserDialogGtk, bedit_file_chooser_dialog_gtk, BEDIT,
-    FILE_CHOOSER_DIALOG_GTK, GtkFileChooserDialog)
+    FILE_CHOOSER_DIALOG_GTK, GtkFileChooserDialog
+)
 
 BeditFileChooserDialog *bedit_file_chooser_dialog_gtk_create(
-    const gchar *title, GtkWindow *parent, BeditFileChooserFlags flags,
-    const GtkSourceEncoding *encoding, const gchar *cancel_label,
-    GtkResponseType cancel_response, const gchar *accept_label,
-    GtkResponseType accept_response);
+    const gchar *title, GtkWindow *parent,
+    BeditFileChooserFlags flags, const GtkSourceEncoding *encoding,
+    const gchar *cancel_label, GtkResponseType cancel_response,
+    const gchar *accept_label, GtkResponseType accept_response
+);
 
 G_END_DECLS
 
