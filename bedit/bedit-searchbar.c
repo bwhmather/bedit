@@ -311,6 +311,8 @@ static void bedit_searchbar_update_replace_active(BeditSearchbar *searchbar) {
 
     g_return_if_fail(BEDIT_IS_SEARCHBAR(searchbar));
 
+    replace_active = TRUE;
+
     if (searchbar->view == NULL) {
         replace_active = FALSE;
     }
