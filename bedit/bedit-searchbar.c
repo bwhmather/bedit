@@ -456,6 +456,29 @@ static void prev_button_clicked_cb(
     bedit_searchbar_prev(searchbar);
 }
 
+// TODO sould be handled by the window.
+static void next_match_cb(
+    GtkSearchEntry *entry, BeditSearchbar *searchbar
+) {
+    bedit_debug(DEBUG_WINDOW);
+
+    g_return_if_fail(BEDIT_IS_SEARCHBAR(searchbar));
+
+    bedit_searchbar_next(searchbar);
+}
+
+// TODO sould be handled by the window.
+static void prev_match_cb(
+    GtkSearchEntry *entry, BeditSearchbar *searchbar
+) {
+    bedit_debug(DEBUG_WINDOW);
+
+    g_return_if_fail(BEDIT_IS_SEARCHBAR(searchbar));
+
+    bedit_searchbar_prev(searchbar);
+}
+
+
 static void bedit_searchbar_init(BeditSearchbar *searchbar) {
     gtk_widget_init_template(GTK_WIDGET(searchbar));
 
@@ -474,9 +497,33 @@ static void bedit_searchbar_init(BeditSearchbar *searchbar) {
         G_CALLBACK(search_entry_escaped_cb), searchbar
     );
 
+    // TODO this should handled by the window.
+    g_signal_connect(
+        searchbar->search_entry, "next-match",
+        G_CALLBACK(next_match_cb), searchbar
+    );
+
+    // TODO this should handled by the window.
+    g_signal_connect(
+        searchbar->search_entry, "previous-match",
+        G_CALLBACK(prev_match_cb), searchbar
+    );
+
     g_signal_connect(
         searchbar->replace_entry, "stop-search",
         G_CALLBACK(replace_entry_escaped_cb), searchbar
+    );
+
+    // TODO this should handled by the window.
+    g_signal_connect(
+        searchbar->replace_entry, "next-match",
+        G_CALLBACK(next_match_cb), searchbar
+    );
+
+    // TODO this should handled by the window.
+    g_signal_connect(
+        searchbar->replace_entry, "previous-match",
+        G_CALLBACK(prev_match_cb), searchbar
     );
 
     g_signal_connect(
