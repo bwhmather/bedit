@@ -127,9 +127,16 @@ void _bedit_cmd_search_find_prev(
 void _bedit_cmd_search_replace(
     GSimpleAction *action, GVariant *parameter, gpointer user_data
 );
+void _bedit_cmd_search_do_replace(
+    GSimpleAction *action, GVariant *parameter, gpointer user_data
+);
+void _bedit_cmd_search_do_replace_all(
+    GSimpleAction *action, GVariant *parameter, gpointer user_data
+);
 void _bedit_cmd_search_goto_line(
     GSimpleAction *action, GVariant *parameter, gpointer user_data
 );
+
 
 void _bedit_cmd_documents_previous_document(
     GSimpleAction *action, GVariant *parameter, gpointer user_data
