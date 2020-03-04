@@ -115,7 +115,7 @@ void _bedit_cmd_view_highlight_mode(
     GSimpleAction *action, GVariant *parameter, gpointer user_data
 );
 
-void _bedit_cmd_search_find(
+void _bedit_cmd_search_show_find(
     GSimpleAction *action, GVariant *parameter, gpointer user_data
 );
 void _bedit_cmd_search_find_next(
@@ -124,7 +124,7 @@ void _bedit_cmd_search_find_next(
 void _bedit_cmd_search_find_prev(
     GSimpleAction *action, GVariant *parameter, gpointer user_data
 );
-void _bedit_cmd_search_replace(
+void _bedit_cmd_search_show_replace(
     GSimpleAction *action, GVariant *parameter, gpointer user_data
 );
 void _bedit_cmd_search_do_replace(

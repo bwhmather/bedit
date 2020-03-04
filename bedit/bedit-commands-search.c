@@ -56,7 +56,7 @@
 
 #define MAX_MSG_LENGTH 40
 
-void _bedit_cmd_search_find(
+void _bedit_cmd_search_show_find(
     GSimpleAction *action, GVariant *parameter, gpointer user_data
 ) {
     BeditWindow *window = BEDIT_WINDOW(user_data);
@@ -66,7 +66,7 @@ void _bedit_cmd_search_find(
     bedit_searchbar_show_find(BEDIT_SEARCHBAR(window->priv->searchbar));
 }
 
-void _bedit_cmd_search_replace(
+void _bedit_cmd_search_show_replace(
     GSimpleAction *action, GVariant *parameter, gpointer user_data
 ) {
     BeditWindow *window = BEDIT_WINDOW(user_data);
