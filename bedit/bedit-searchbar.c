@@ -76,18 +76,21 @@ static GParamSpec *properties[LAST_PROP];
 G_DEFINE_TYPE(BeditSearchbar, bedit_searchbar, GTK_TYPE_BIN)
 
 static void bedit_searchbar_get_property(
-    GObject *object, guint prop_id, GValue *value, GParamSpec *pspec) {
+    GObject *object, guint prop_id, GValue *value, GParamSpec *pspec
+) {
     BeditSearchbar *searchbar = BEDIT_SEARCHBAR(object);
 
     switch (prop_id) {
     case PROP_SEARCH_ACTIVE:
         g_value_set_boolean(
-            value, bedit_searchbar_get_search_active(searchbar));
+            value, bedit_searchbar_get_search_active(searchbar)
+        );
         break;
 
     case PROP_REPLACE_ACTIVE:
         g_value_set_boolean(
-            value, bedit_searchbar_get_search_active(searchbar));
+            value, bedit_searchbar_get_search_active(searchbar)
+        );
         break;
 
     default:
@@ -731,7 +734,8 @@ void bedit_searchbar_hide(BeditSearchbar *searchbar) {
 
 static void bedit_searchbar_next_finished_cb(
     GtkSourceSearchContext *search_context,
-    GAsyncResult *result, BeditSearchbar *searchbar) {
+    GAsyncResult *result, BeditSearchbar *searchbar
+) {
     GtkTextIter match_start;
     GtkTextIter match_end;
     gboolean found;
@@ -829,7 +833,8 @@ static void bedit_searchbar_prev_finished_cb(
     found = gtk_source_search_context_backward_finish(
         search_context, result,
         &match_start, &match_end,
-        NULL, NULL);
+        NULL, NULL
+    );
 
     if (found) {
         gtk_text_buffer_select_range(

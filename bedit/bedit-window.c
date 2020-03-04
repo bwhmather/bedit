@@ -606,8 +606,9 @@ static void update_actions_sensitivity(BeditWindow *window) {
         view = bedit_tab_get_view(tab);
         doc = BEDIT_DOCUMENT(gtk_text_view_get_buffer(GTK_TEXT_VIEW(view)));
         file = bedit_document_get_file(doc);
-        tab_number =
-            gtk_notebook_page_num(GTK_NOTEBOOK(notebook), GTK_WIDGET(tab));
+        tab_number = gtk_notebook_page_num(
+            GTK_NOTEBOOK(notebook), GTK_WIDGET(tab)
+        );
         editable = gtk_text_view_get_editable(GTK_TEXT_VIEW(view));
     }
 
@@ -620,153 +621,255 @@ static void update_actions_sensitivity(BeditWindow *window) {
 
     lockdown = bedit_app_get_lockdown(BEDIT_APP(g_application_get_default()));
 
-    clipboard =
-        gtk_widget_get_clipboard(GTK_WIDGET(window), GDK_SELECTION_CLIPBOARD);
+    clipboard = gtk_widget_get_clipboard(
+        GTK_WIDGET(window), GDK_SELECTION_CLIPBOARD
+    );
 
-    action = g_action_map_lookup_action(G_ACTION_MAP(window), "save");
+    action = g_action_map_lookup_action(
+        G_ACTION_MAP(window), "save"
+    );
     g_simple_action_set_enabled(
         G_SIMPLE_ACTION(action),
-        ((state == BEDIT_TAB_STATE_NORMAL) ||
-         (state == BEDIT_TAB_STATE_EXTERNALLY_MODIFIED_NOTIFICATION)) &&
-            (file != NULL) && !gtk_source_file_is_readonly(file) &&
-            !(lockdown & BEDIT_LOCKDOWN_SAVE_TO_DISK));
+        (
+            (state == BEDIT_TAB_STATE_NORMAL) ||
+            (state == BEDIT_TAB_STATE_EXTERNALLY_MODIFIED_NOTIFICATION)
+        ) &&
+        (file != NULL) &&
+        !gtk_source_file_is_readonly(file) &&
+        !(lockdown & BEDIT_LOCKDOWN_SAVE_TO_DISK)
+    );
 
-    action = g_action_map_lookup_action(G_ACTION_MAP(window), "save-as");
+    action = g_action_map_lookup_action(
+        G_ACTION_MAP(window), "save-as"
+    );
     g_simple_action_set_enabled(
         G_SIMPLE_ACTION(action),
-        ((state == BEDIT_TAB_STATE_NORMAL) ||
-         (state == BEDIT_TAB_STATE_SAVING_ERROR) ||
-         (state == BEDIT_TAB_STATE_EXTERNALLY_MODIFIED_NOTIFICATION)) &&
-            (doc != NULL) && !(lockdown & BEDIT_LOCKDOWN_SAVE_TO_DISK));
+        (
+            (state == BEDIT_TAB_STATE_NORMAL) ||
+            (state == BEDIT_TAB_STATE_SAVING_ERROR) ||
+            (state == BEDIT_TAB_STATE_EXTERNALLY_MODIFIED_NOTIFICATION)
+        ) &&
+        (doc != NULL) &&
+        !(lockdown & BEDIT_LOCKDOWN_SAVE_TO_DISK)
+    );
 
-    action = g_action_map_lookup_action(G_ACTION_MAP(window), "revert");
+    action = g_action_map_lookup_action(
+        G_ACTION_MAP(window), "revert"
+    );
     g_simple_action_set_enabled(
         G_SIMPLE_ACTION(action),
-        ((state == BEDIT_TAB_STATE_NORMAL) ||
-         (state == BEDIT_TAB_STATE_EXTERNALLY_MODIFIED_NOTIFICATION)) &&
-            (doc != NULL) && !bedit_document_is_untitled(doc));
+        (
+            (state == BEDIT_TAB_STATE_NORMAL) ||
+            (state == BEDIT_TAB_STATE_EXTERNALLY_MODIFIED_NOTIFICATION)
+        ) &&
+        (doc != NULL) &&
+        !bedit_document_is_untitled(doc)
+    );
 
-    action =
-        g_action_map_lookup_action(G_ACTION_MAP(window), "reopen-closed-tab");
-    g_simple_action_set_enabled(
-        G_SIMPLE_ACTION(action), (window->priv->closed_docs_stack != NULL));
-
-    action = g_action_map_lookup_action(G_ACTION_MAP(window), "print");
+    action = g_action_map_lookup_action(
+        G_ACTION_MAP(window), "reopen-closed-tab"
+    );
     g_simple_action_set_enabled(
         G_SIMPLE_ACTION(action),
-        ((state == BEDIT_TAB_STATE_NORMAL) ||
-         (state == BEDIT_TAB_STATE_SHOWING_PRINT_PREVIEW)) &&
-            (doc != NULL) && !(lockdown & BEDIT_LOCKDOWN_PRINTING));
+        (window->priv->closed_docs_stack != NULL)
+    );
 
-    action = g_action_map_lookup_action(G_ACTION_MAP(window), "close");
+    action = g_action_map_lookup_action(
+        G_ACTION_MAP(window), "print"
+    );
+    g_simple_action_set_enabled(
+        G_SIMPLE_ACTION(action),
+        (
+            (state == BEDIT_TAB_STATE_NORMAL) ||
+            (state == BEDIT_TAB_STATE_SHOWING_PRINT_PREVIEW)
+        ) &&
+        (doc != NULL) &&
+        !(lockdown & BEDIT_LOCKDOWN_PRINTING)
+    );
+
+    action = g_action_map_lookup_action(
+        G_ACTION_MAP(window), "close"
+    );
     g_simple_action_set_enabled(
         G_SIMPLE_ACTION(action),
         (state != BEDIT_TAB_STATE_CLOSING) &&
-            (state != BEDIT_TAB_STATE_SAVING) &&
-            (state != BEDIT_TAB_STATE_SHOWING_PRINT_PREVIEW) &&
-            (state != BEDIT_TAB_STATE_PRINTING) &&
-            (state != BEDIT_TAB_STATE_SAVING_ERROR));
+        (state != BEDIT_TAB_STATE_SAVING) &&
+        (state != BEDIT_TAB_STATE_SHOWING_PRINT_PREVIEW) &&
+        (state != BEDIT_TAB_STATE_PRINTING) &&
+        (state != BEDIT_TAB_STATE_SAVING_ERROR)
+    );
 
-    action = g_action_map_lookup_action(G_ACTION_MAP(window), "undo");
+    action = g_action_map_lookup_action(
+        G_ACTION_MAP(window), "undo"
+    );
     g_simple_action_set_enabled(
         G_SIMPLE_ACTION(action),
-        (state == BEDIT_TAB_STATE_NORMAL) && (doc != NULL) &&
-            gtk_source_buffer_can_undo(GTK_SOURCE_BUFFER(doc)));
+        (state == BEDIT_TAB_STATE_NORMAL) &&
+        (doc != NULL) &&
+        gtk_source_buffer_can_undo(GTK_SOURCE_BUFFER(doc))
+    );
 
-    action = g_action_map_lookup_action(G_ACTION_MAP(window), "redo");
+    action = g_action_map_lookup_action(
+        G_ACTION_MAP(window), "redo"
+    );
     g_simple_action_set_enabled(
         G_SIMPLE_ACTION(action),
-        (state == BEDIT_TAB_STATE_NORMAL) && (doc != NULL) &&
-            gtk_source_buffer_can_redo(GTK_SOURCE_BUFFER(doc)));
+        (state == BEDIT_TAB_STATE_NORMAL) &&
+        (doc != NULL) &&
+        gtk_source_buffer_can_redo(GTK_SOURCE_BUFFER(doc))
+    );
 
-    action = g_action_map_lookup_action(G_ACTION_MAP(window), "cut");
+    action = g_action_map_lookup_action(
+        G_ACTION_MAP(window), "cut"
+    );
     g_simple_action_set_enabled(
         G_SIMPLE_ACTION(action),
-        (state == BEDIT_TAB_STATE_NORMAL) && editable && (doc != NULL) &&
-            gtk_text_buffer_get_has_selection(GTK_TEXT_BUFFER(doc)));
+        (state == BEDIT_TAB_STATE_NORMAL) &&
+        editable &&
+        (doc != NULL) &&
+        gtk_text_buffer_get_has_selection(GTK_TEXT_BUFFER(doc))
+    );
 
-    action = g_action_map_lookup_action(G_ACTION_MAP(window), "copy");
+    action = g_action_map_lookup_action(
+        G_ACTION_MAP(window), "copy"
+    );
     g_simple_action_set_enabled(
         G_SIMPLE_ACTION(action),
-        ((state == BEDIT_TAB_STATE_NORMAL) ||
-         (state == BEDIT_TAB_STATE_EXTERNALLY_MODIFIED_NOTIFICATION)) &&
-            (doc != NULL) &&
-            gtk_text_buffer_get_has_selection(GTK_TEXT_BUFFER(doc)));
+        (
+            (state == BEDIT_TAB_STATE_NORMAL) ||
+            (state == BEDIT_TAB_STATE_EXTERNALLY_MODIFIED_NOTIFICATION)
+        ) &&
+        (doc != NULL) &&
+        gtk_text_buffer_get_has_selection(GTK_TEXT_BUFFER(doc))
+    );
 
-    action = g_action_map_lookup_action(G_ACTION_MAP(window), "paste");
+    action = g_action_map_lookup_action(
+        G_ACTION_MAP(window), "paste"
+    );
     if (num_tabs > 0 && (state == BEDIT_TAB_STATE_NORMAL) && editable) {
         set_paste_sensitivity_according_to_clipboard(window, clipboard);
     } else {
         g_simple_action_set_enabled(G_SIMPLE_ACTION(action), FALSE);
     }
 
-    action = g_action_map_lookup_action(G_ACTION_MAP(window), "delete");
+    action = g_action_map_lookup_action(
+        G_ACTION_MAP(window), "delete"
+    );
     g_simple_action_set_enabled(
         G_SIMPLE_ACTION(action),
-        (state == BEDIT_TAB_STATE_NORMAL) && editable && (doc != NULL) &&
-            gtk_text_buffer_get_has_selection(GTK_TEXT_BUFFER(doc)));
+        (state == BEDIT_TAB_STATE_NORMAL) &&
+        editable && (doc != NULL) &&
+        gtk_text_buffer_get_has_selection(GTK_TEXT_BUFFER(doc))
+    );
 
-    action = g_action_map_lookup_action(G_ACTION_MAP(window), "overwrite-mode");
-    g_simple_action_set_enabled(G_SIMPLE_ACTION(action), doc != NULL);
-
-    action = g_action_map_lookup_action(G_ACTION_MAP(window), "find-next");
+    action = g_action_map_lookup_action(
+        G_ACTION_MAP(window), "overwrite-mode"
+    );
     g_simple_action_set_enabled(
         G_SIMPLE_ACTION(action),
-        ((state == BEDIT_TAB_STATE_NORMAL) ||
-         (state == BEDIT_TAB_STATE_EXTERNALLY_MODIFIED_NOTIFICATION)) &&
-            (doc != NULL) && search_active);
+        doc != NULL
+    );
 
-    action = g_action_map_lookup_action(G_ACTION_MAP(window), "find-prev");
+    action = g_action_map_lookup_action(
+        G_ACTION_MAP(window), "find-next"
+    );
     g_simple_action_set_enabled(
         G_SIMPLE_ACTION(action),
-        ((state == BEDIT_TAB_STATE_NORMAL) ||
-         (state == BEDIT_TAB_STATE_EXTERNALLY_MODIFIED_NOTIFICATION)) &&
-            (doc != NULL) && search_active);
+        (
+            (state == BEDIT_TAB_STATE_NORMAL) ||
+            (state == BEDIT_TAB_STATE_EXTERNALLY_MODIFIED_NOTIFICATION)
+        ) &&
+        (doc != NULL) &&
+        search_active
+    );
 
-    action = g_action_map_lookup_action(G_ACTION_MAP(window), "do-replace");
+    action = g_action_map_lookup_action(
+        G_ACTION_MAP(window), "find-prev"
+    );
     g_simple_action_set_enabled(
         G_SIMPLE_ACTION(action),
-        ((state == BEDIT_TAB_STATE_NORMAL) ||
-         (state == BEDIT_TAB_STATE_EXTERNALLY_MODIFIED_NOTIFICATION)) &&
-            (doc != NULL) && replace_active);
+        (
+            (state == BEDIT_TAB_STATE_NORMAL) ||
+            (state == BEDIT_TAB_STATE_EXTERNALLY_MODIFIED_NOTIFICATION)
+        ) &&
+        (doc != NULL) && search_active
+    );
+
+    action = g_action_map_lookup_action(
+        G_ACTION_MAP(window), "do-replace"
+    );
+    g_simple_action_set_enabled(
+        G_SIMPLE_ACTION(action),
+        (
+            (state == BEDIT_TAB_STATE_NORMAL) ||
+            (state == BEDIT_TAB_STATE_EXTERNALLY_MODIFIED_NOTIFICATION)
+        ) &&
+        (doc != NULL) &&
+        replace_active
+    );
 
     action = g_action_map_lookup_action(
         G_ACTION_MAP(window), "do-replace-all"
     );
     g_simple_action_set_enabled(
         G_SIMPLE_ACTION(action),
-        ((state == BEDIT_TAB_STATE_NORMAL) ||
-         (state == BEDIT_TAB_STATE_EXTERNALLY_MODIFIED_NOTIFICATION)) &&
-            (doc != NULL) && replace_active);
+        (
+            (state == BEDIT_TAB_STATE_NORMAL) ||
+            (state == BEDIT_TAB_STATE_EXTERNALLY_MODIFIED_NOTIFICATION)
+        ) &&
+        (doc != NULL) &&
+        replace_active
+    );
 
-    action = g_action_map_lookup_action(G_ACTION_MAP(window), "goto-line");
+    action = g_action_map_lookup_action(
+        G_ACTION_MAP(window), "goto-line"
+    );
     g_simple_action_set_enabled(
         G_SIMPLE_ACTION(action),
-        ((state == BEDIT_TAB_STATE_NORMAL) ||
-         (state == BEDIT_TAB_STATE_EXTERNALLY_MODIFIED_NOTIFICATION)) &&
-            (doc != NULL));
+        (
+            (state == BEDIT_TAB_STATE_NORMAL) ||
+            (state == BEDIT_TAB_STATE_EXTERNALLY_MODIFIED_NOTIFICATION)
+        ) &&
+        (doc != NULL)
+    );
 
-    action = g_action_map_lookup_action(G_ACTION_MAP(window), "highlight-mode");
+    action = g_action_map_lookup_action(
+        G_ACTION_MAP(window), "highlight-mode"
+    );
     enable_syntax_highlighting = g_settings_get_boolean(
-        window->priv->editor_settings, BEDIT_SETTINGS_SYNTAX_HIGHLIGHTING);
+        window->priv->editor_settings, BEDIT_SETTINGS_SYNTAX_HIGHLIGHTING
+    );
     g_simple_action_set_enabled(
         G_SIMPLE_ACTION(action),
-        (state != BEDIT_TAB_STATE_CLOSING) && (doc != NULL) &&
-            enable_syntax_highlighting);
+        (state != BEDIT_TAB_STATE_CLOSING) &&
+        (doc != NULL) &&
+        enable_syntax_highlighting
+    );
 
-    action =
-        g_action_map_lookup_action(G_ACTION_MAP(window), "move-to-new-window");
-    g_simple_action_set_enabled(G_SIMPLE_ACTION(action), num_tabs > 1);
+    action = g_action_map_lookup_action(
+        G_ACTION_MAP(window), "move-to-new-window"
+    );
+    g_simple_action_set_enabled(
+        G_SIMPLE_ACTION(action),
+        num_tabs > 1
+    );
 
-    action =
-        g_action_map_lookup_action(G_ACTION_MAP(window), "previous-document");
-    g_simple_action_set_enabled(G_SIMPLE_ACTION(action), tab_number > 0);
+    action = g_action_map_lookup_action(
+        G_ACTION_MAP(window), "previous-document"
+    );
+    g_simple_action_set_enabled(
+        G_SIMPLE_ACTION(action),
+        tab_number > 0
+    );
 
-    action = g_action_map_lookup_action(G_ACTION_MAP(window), "next-document");
+    action = g_action_map_lookup_action(
+        G_ACTION_MAP(window), "next-document"
+    );
     g_simple_action_set_enabled(
         G_SIMPLE_ACTION(action),
         tab_number >= 0 &&
-            tab_number < gtk_notebook_get_n_pages(GTK_NOTEBOOK(notebook)) - 1);
+        tab_number < gtk_notebook_get_n_pages(GTK_NOTEBOOK(notebook)) - 1
+    );
 
     /* We disable File->Quit/SaveAll/CloseAll while printing to avoid to have
        two operations (save and print/print preview) that uses the message area
@@ -774,28 +877,39 @@ static void update_actions_sensitivity(BeditWindow *window) {
     /* We disable File->Quit/CloseAll if state is saving since saving cannot be
        cancelled (may be we can remove this limitation in the future) */
     action = g_action_map_lookup_action(
-        G_ACTION_MAP(g_application_get_default()), "quit");
+        G_ACTION_MAP(g_application_get_default()), "quit"
+    );
     g_simple_action_set_enabled(
         G_SIMPLE_ACTION(action),
         !(window->priv->state & BEDIT_WINDOW_STATE_SAVING) &&
-            !(window->priv->state & BEDIT_WINDOW_STATE_PRINTING));
+        !(window->priv->state & BEDIT_WINDOW_STATE_PRINTING)
+    );
 
-    action = g_action_map_lookup_action(G_ACTION_MAP(window), "save-all");
+    action = g_action_map_lookup_action(
+        G_ACTION_MAP(window), "save-all"
+    );
     g_simple_action_set_enabled(
         G_SIMPLE_ACTION(action),
         !(window->priv->state & BEDIT_WINDOW_STATE_PRINTING) &&
-            !(lockdown & BEDIT_LOCKDOWN_SAVE_TO_DISK) && num_tabs > 0);
+        !(lockdown & BEDIT_LOCKDOWN_SAVE_TO_DISK) &&
+        num_tabs > 0
+    );
 
-    action = g_action_map_lookup_action(G_ACTION_MAP(window), "close-all");
+    action = g_action_map_lookup_action(
+        G_ACTION_MAP(window), "close-all"
+    );
     g_simple_action_set_enabled(
         G_SIMPLE_ACTION(action),
-        num_tabs > 0 && !(window->priv->state & BEDIT_WINDOW_STATE_SAVING) &&
-            !(window->priv->state & BEDIT_WINDOW_STATE_PRINTING) &&
-            num_tabs > 0);
+        num_tabs > 0 &&
+        !(window->priv->state & BEDIT_WINDOW_STATE_SAVING) &&
+        !(window->priv->state & BEDIT_WINDOW_STATE_PRINTING) &&
+        num_tabs > 0
+    );
 
     peas_extension_set_foreach(
         window->priv->extensions,
-        (PeasExtensionSetForeachFunc)extension_update_state, window);
+        (PeasExtensionSetForeachFunc)extension_update_state, window
+    );
 }
 
 static void on_language_selector_shown(
@@ -917,8 +1031,12 @@ static void bracket_matched_cb(
     GtkSourceBuffer *buffer, GtkTextIter *iter,
     GtkSourceBracketMatchType result, BeditWindow *window
 ) {
-    if (buffer != GTK_SOURCE_BUFFER(bedit_window_get_active_document(window)))
+    if (
+        buffer !=
+        GTK_SOURCE_BUFFER(bedit_window_get_active_document(window))
+    ) {
         return;
+    }
 
     switch (result) {
     case GTK_SOURCE_BRACKET_MATCH_NONE:
@@ -995,7 +1113,8 @@ static void set_overwrite_mode(BeditWindow *window, gboolean overwrite) {
     GAction *action;
 
     bedit_statusbar_set_overwrite(
-        BEDIT_STATUSBAR(window->priv->statusbar), overwrite);
+        BEDIT_STATUSBAR(window->priv->statusbar), overwrite
+    );
 
     action = g_action_map_lookup_action(
         G_ACTION_MAP(window), "overwrite-mode"
@@ -1089,8 +1208,8 @@ static void set_title(BeditWindow *window) {
                 "%s [%s] (%s) - bedit", name, _("Read-Only"), dirname
             );
         } else {
-            main_title =
-                g_strdup_printf("%s [%s] - bedit", name, _("Read-Only")
+            main_title = g_strdup_printf(
+                "%s [%s] - bedit", name, _("Read-Only")
             );
         }
     } else {
