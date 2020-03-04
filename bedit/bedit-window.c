@@ -696,14 +696,14 @@ static void update_actions_sensitivity(BeditWindow *window) {
     action = g_action_map_lookup_action(G_ACTION_MAP(window), "overwrite-mode");
     g_simple_action_set_enabled(G_SIMPLE_ACTION(action), doc != NULL);
 
-    action = g_action_map_lookup_action(G_ACTION_MAP(window), "find");
+    action = g_action_map_lookup_action(G_ACTION_MAP(window), "show-find");
     g_simple_action_set_enabled(
         G_SIMPLE_ACTION(action),
         ((state == BEDIT_TAB_STATE_NORMAL) ||
          (state == BEDIT_TAB_STATE_EXTERNALLY_MODIFIED_NOTIFICATION)) &&
             (doc != NULL));
 
-    action = g_action_map_lookup_action(G_ACTION_MAP(window), "replace");
+    action = g_action_map_lookup_action(G_ACTION_MAP(window), "show-replace");
     g_simple_action_set_enabled(
         G_SIMPLE_ACTION(action),
         (state == BEDIT_TAB_STATE_NORMAL) && (doc != NULL) && editable);
@@ -2014,10 +2014,10 @@ static GActionEntry win_entries[] = {
     {"focus-active-view", NULL, NULL, "false", _bedit_cmd_view_focus_active},
     {"fullscreen", NULL, NULL, "false", _bedit_cmd_view_toggle_fullscreen_mode},
     {"leave-fullscreen", _bedit_cmd_view_leave_fullscreen_mode},
-    {"find", _bedit_cmd_search_find},
+    {"show-find", _bedit_cmd_search_find},
     {"find-next", _bedit_cmd_search_find_next},
     {"find-prev", _bedit_cmd_search_find_prev},
-    {"replace", _bedit_cmd_search_replace},
+    {"show-replace", _bedit_cmd_search_replace},
     {"goto-line", _bedit_cmd_search_goto_line},
     {"previous-document", _bedit_cmd_documents_previous_document},
     {"next-document", _bedit_cmd_documents_next_document},

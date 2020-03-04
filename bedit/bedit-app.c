@@ -780,7 +780,7 @@ static void bedit_app_startup(GApplication *application) {
         GTK_APPLICATION(application), "win.print", "<Primary>P"
     );
     add_accelerator(
-        GTK_APPLICATION(application), "win.find", "<Primary>F"
+        GTK_APPLICATION(application), "win.show-find", "<Primary>F"
     );
     add_accelerator(
         GTK_APPLICATION(application), "win.find-next", "<Primary>G"
@@ -789,7 +789,7 @@ static void bedit_app_startup(GApplication *application) {
         GTK_APPLICATION(application), "win.find-prev", "<Primary><Shift>G"
     );
     add_accelerator(
-        GTK_APPLICATION(application), "win.replace", "<Primary>H"
+        GTK_APPLICATION(application), "win.show-replace", "<Primary>H"
     );
     add_accelerator(
         GTK_APPLICATION(application), "win.goto-line", "<Primary>I"
