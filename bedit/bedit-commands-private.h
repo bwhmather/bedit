@@ -127,10 +127,10 @@ void _bedit_cmd_search_find_prev(
 void _bedit_cmd_search_show_replace(
     GSimpleAction *action, GVariant *parameter, gpointer user_data
 );
-void _bedit_cmd_search_do_replace(
+void _bedit_cmd_search_replace(
     GSimpleAction *action, GVariant *parameter, gpointer user_data
 );
-void _bedit_cmd_search_do_replace_all(
+void _bedit_cmd_search_replace_all(
     GSimpleAction *action, GVariant *parameter, gpointer user_data
 );
 void _bedit_cmd_search_goto_line(

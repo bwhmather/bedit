@@ -96,7 +96,7 @@ void _bedit_cmd_search_find_prev(
     bedit_searchbar_prev(BEDIT_SEARCHBAR(window->priv->searchbar));
 }
 
-void _bedit_cmd_search_do_replace(
+void _bedit_cmd_search_replace(
     GSimpleAction *action, GVariant *parameter, gpointer user_data
 ) {
     BeditWindow *window = BEDIT_WINDOW(user_data);
@@ -106,7 +106,7 @@ void _bedit_cmd_search_do_replace(
     bedit_searchbar_replace(BEDIT_SEARCHBAR(window->priv->searchbar));
 }
 
-void _bedit_cmd_search_do_replace_all(
+void _bedit_cmd_search_replace_all(
     GSimpleAction *action, GVariant *parameter, gpointer user_data
 ) {
     BeditWindow *window = BEDIT_WINDOW(user_data);
