@@ -359,7 +359,8 @@ static void bedit_searchbar_update_search(BeditSearchbar *searchbar) {
     }
 
     buffer = GTK_SOURCE_BUFFER(gtk_text_view_get_buffer(
-        GTK_TEXT_VIEW(searchbar->view)));
+        GTK_TEXT_VIEW(searchbar->view)
+    ));
 
     if (searchbar->context == NULL) {
         searchbar->context = gtk_source_search_context_new(buffer, NULL);
