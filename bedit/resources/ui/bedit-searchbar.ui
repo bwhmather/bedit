@@ -124,8 +124,8 @@
               <object class="GtkButton" id="replace_button">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="label" translatable="yes">_Replace</property>
-                <property name="use_underline">True</property>
+                <property name="label" translatable="yes">Replace</property>
+                <property name="tooltip_text" translatable="yes">Replace currently highlighted instance (Ctrl+R)</property>
               </object>
               <packing>
                 <property name="left_attach">1</property>
@@ -136,8 +136,8 @@
               <object class="GtkButton" id="replace_all_button">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="label" translatable="yes">Replace _All</property>
-                <property name="use_underline">True</property>
+                <property name="label" translatable="yes">Replace All</property>
+                <property name="tooltip_text" translatable="yes">Replace all instances (Ctrl+Alt+R)</property>
               </object>
               <packing>
                 <property name="left_attach">2</property>
