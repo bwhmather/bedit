@@ -582,6 +582,7 @@ static void update_actions_sensitivity(BeditWindow *window) {
     GAction *action;
     gboolean editable = FALSE;
     gboolean search_active;
+    gboolean replace_active;
     GtkClipboard *clipboard;
     BeditLockdownMask lockdown;
     gboolean enable_syntax_highlighting;
@@ -603,7 +604,11 @@ static void update_actions_sensitivity(BeditWindow *window) {
     }
 
     search_active = bedit_searchbar_get_search_active(
-        BEDIT_SEARCHBAR(window->priv->searchbar));
+        BEDIT_SEARCHBAR(window->priv->searchbar)
+    );
+    replace_active = bedit_searchbar_get_replace_active(
+        BEDIT_SEARCHBAR(window->priv->searchbar)
+    );
 
     lockdown = bedit_app_get_lockdown(BEDIT_APP(g_application_get_default()));
 
@@ -709,6 +714,22 @@ static void update_actions_sensitivity(BeditWindow *window) {
         ((state == BEDIT_TAB_STATE_NORMAL) ||
          (state == BEDIT_TAB_STATE_EXTERNALLY_MODIFIED_NOTIFICATION)) &&
             (doc != NULL) && search_active);
+
+    action = g_action_map_lookup_action(G_ACTION_MAP(window), "do-replace");
+    g_simple_action_set_enabled(
+        G_SIMPLE_ACTION(action),
+        ((state == BEDIT_TAB_STATE_NORMAL) ||
+         (state == BEDIT_TAB_STATE_EXTERNALLY_MODIFIED_NOTIFICATION)) &&
+            (doc != NULL) && replace_active);
+
+    action = g_action_map_lookup_action(
+        G_ACTION_MAP(window), "do-replace-all"
+    );
+    g_simple_action_set_enabled(
+        G_SIMPLE_ACTION(action),
+        ((state == BEDIT_TAB_STATE_NORMAL) ||
+         (state == BEDIT_TAB_STATE_EXTERNALLY_MODIFIED_NOTIFICATION)) &&
+            (doc != NULL) && replace_active);
 
     action = g_action_map_lookup_action(G_ACTION_MAP(window), "goto-line");
     g_simple_action_set_enabled(
@@ -2007,6 +2028,11 @@ static GActionEntry win_entries[] = {
     {"find-prev", _bedit_cmd_search_find_prev},
     {"show-replace", _bedit_cmd_search_show_replace},
     {"goto-line", _bedit_cmd_search_goto_line},
+    /* We use "do-replace" instead of "replace" because GTK has a default
+     * keybinding hidden somewhere that will override our binding to trigger
+     * "show-replace". */
+    {"do-replace", _bedit_cmd_search_replace},
+    {"do-replace-all", _bedit_cmd_search_replace_all},
     {"previous-document", _bedit_cmd_documents_previous_document},
     {"next-document", _bedit_cmd_documents_next_document},
     {"move-to-new-window", _bedit_cmd_documents_move_to_new_window},
