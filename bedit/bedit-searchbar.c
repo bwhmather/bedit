@@ -478,6 +478,25 @@ static void prev_match_cb(
     bedit_searchbar_prev(searchbar);
 }
 
+static void replace_button_clicked_cb(
+    GtkButton *button, BeditSearchbar *searchbar
+) {
+    bedit_debug(DEBUG_WINDOW);
+
+    g_return_if_fail(BEDIT_IS_SEARCHBAR(searchbar));
+
+    bedit_searchbar_replace(searchbar);
+}
+
+static void replace_all_button_clicked_cb(
+    GtkButton *button, BeditSearchbar *searchbar
+) {
+    bedit_debug(DEBUG_WINDOW);
+
+    g_return_if_fail(BEDIT_IS_SEARCHBAR(searchbar));
+
+    bedit_searchbar_replace_all(searchbar);
+}
 
 static void bedit_searchbar_init(BeditSearchbar *searchbar) {
     gtk_widget_init_template(GTK_WIDGET(searchbar));
@@ -534,6 +553,16 @@ static void bedit_searchbar_init(BeditSearchbar *searchbar) {
     g_signal_connect(
         searchbar->prev_button, "clicked",
         G_CALLBACK(prev_button_clicked_cb), searchbar
+    );
+
+    g_signal_connect(
+        searchbar->replace_button, "clicked",
+        G_CALLBACK(replace_button_clicked_cb), searchbar
+    );
+
+    g_signal_connect(
+        searchbar->replace_all_button, "clicked",
+        G_CALLBACK(replace_all_button_clicked_cb), searchbar
     );
 }
 
