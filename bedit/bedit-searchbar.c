@@ -825,6 +825,96 @@ void bedit_searchbar_prev(BeditSearchbar *searchbar) {
     );
 }
 
+void bedit_searchbar_replace(BeditSearchbar *searchbar) {
+    GtkSourceSearchContext *search_context;
+    GtkTextBuffer *buffer;
+    gchar const* replace_text;
+    gchar* replace_text_unescaped;
+    GtkTextIter selection_start;
+    GtkTextIter selection_end;
+    GError *error = NULL;
+
+    bedit_debug(DEBUG_WINDOW);
+
+    g_return_if_fail(BEDIT_IS_SEARCHBAR(searchbar));
+
+    if (!bedit_searchbar_get_replace_active(searchbar)) {
+        return;
+    }
+
+    search_context = searchbar->context;
+    g_return_if_fail(GTK_SOURCE_IS_SEARCH_CONTEXT(search_context));
+
+
+    replace_text = gtk_entry_get_text(GTK_ENTRY(searchbar->replace_entry));
+    g_return_if_fail(replace_text != NULL);
+
+	replace_text_unescaped =
+	    gtk_source_utils_unescape_search_text(replace_text);
+
+    buffer = gtk_text_view_get_buffer(GTK_TEXT_VIEW(searchbar->view));
+	gtk_text_buffer_get_selection_bounds(
+	    buffer, &selection_start, &selection_end
+	);
+
+	gtk_source_search_context_replace(
+	    search_context,
+	    &selection_start, &selection_end,
+	    replace_text_unescaped, -1, &error
+    );
+
+	g_free(replace_text_unescaped);
+
+	if (error != NULL) {
+		// gedit_replace_dialog_set_replace_error (dialog, error->message);
+		g_error_free(error);
+	}
+
+	// do_find (dialog, window);
+}
+
+void bedit_searchbar_replace_all(BeditSearchbar *searchbar) {
+    BeditView *view;
+    GtkSourceSearchContext *search_context;
+    GtkSourceCompletion *completion;
+    gchar const* replace_text;
+    gchar* replace_text_unescaped;
+    gint count;
+    GError *error = NULL;
+
+    bedit_debug(DEBUG_WINDOW);
+
+    g_return_if_fail(BEDIT_IS_SEARCHBAR(searchbar));
+
+    if (!bedit_searchbar_get_replace_active(searchbar)) {
+        return;
+    }
+
+    view = searchbar->view;
+    g_return_if_fail(BEDIT_IS_VIEW(view));
+
+    search_context = searchbar->context;
+    g_return_if_fail(GTK_SOURCE_IS_SEARCH_CONTEXT(search_context));
+
+	completion = gtk_source_view_get_completion(GTK_SOURCE_VIEW(view));
+	gtk_source_completion_block_interactive(completion);
+
+    replace_text = gtk_entry_get_text(GTK_ENTRY(searchbar->replace_entry));
+    g_return_if_fail(replace_text != NULL);
+
+	replace_text_unescaped =
+	    gtk_source_utils_unescape_search_text(replace_text);
+
+	count = gtk_source_search_context_replace_all(
+	    search_context, replace_text_unescaped, -1, &error
+	);
+
+	g_free(replace_text_unescaped);
+
+	gtk_source_completion_unblock_interactive (completion);
+}
+
+
 /**
  * bedit_searchbar_get_search_active:
  *
