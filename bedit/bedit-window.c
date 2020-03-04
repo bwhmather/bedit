@@ -696,18 +696,6 @@ static void update_actions_sensitivity(BeditWindow *window) {
     action = g_action_map_lookup_action(G_ACTION_MAP(window), "overwrite-mode");
     g_simple_action_set_enabled(G_SIMPLE_ACTION(action), doc != NULL);
 
-    action = g_action_map_lookup_action(G_ACTION_MAP(window), "show-find");
-    g_simple_action_set_enabled(
-        G_SIMPLE_ACTION(action),
-        ((state == BEDIT_TAB_STATE_NORMAL) ||
-         (state == BEDIT_TAB_STATE_EXTERNALLY_MODIFIED_NOTIFICATION)) &&
-            (doc != NULL));
-
-    action = g_action_map_lookup_action(G_ACTION_MAP(window), "show-replace");
-    g_simple_action_set_enabled(
-        G_SIMPLE_ACTION(action),
-        (state == BEDIT_TAB_STATE_NORMAL) && (doc != NULL) && editable);
-
     action = g_action_map_lookup_action(G_ACTION_MAP(window), "find-next");
     g_simple_action_set_enabled(
         G_SIMPLE_ACTION(action),
