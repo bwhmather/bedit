@@ -188,6 +188,14 @@ static void bedit_window_dispose(GObject *object) {
         );
 
         window->priv->dispose_has_run = TRUE;
+        
+        /* The searchbar doesn't own its reference to the currently active view
+         * so this needs to be cleared first, before both are automatically
+         * dereferenced.
+         */
+        bedit_searchbar_set_view(
+            BEDIT_SEARCHBAR(window->priv->searchbar), NULL
+        );
     }
 
     g_clear_object(&window->priv->message_bus);

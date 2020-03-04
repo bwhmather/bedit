@@ -96,19 +96,10 @@ static void bedit_searchbar_get_property(
     }
 }
 
-static void bedit_searchbar_dispose(GObject *object) {
-    BeditSearchbar *searchbar = BEDIT_SEARCHBAR(object);
-
-    bedit_searchbar_set_view(searchbar, NULL);
-
-    G_OBJECT_CLASS(bedit_searchbar_parent_class)->dispose(object);
-}
-
 static void bedit_searchbar_class_init(BeditSearchbarClass *klass) {
     GObjectClass *object_class = G_OBJECT_CLASS(klass);
     GtkWidgetClass *widget_class = GTK_WIDGET_CLASS(klass);
 
-    object_class->dispose = bedit_searchbar_dispose;
     object_class->get_property = bedit_searchbar_get_property;
 
     properties[PROP_SEARCH_ACTIVE] = g_param_spec_boolean(
