@@ -902,7 +902,7 @@ void bedit_searchbar_replace(BeditSearchbar *searchbar) {
 		g_error_free(error);
 	}
 
-	// do_find (dialog, window);
+	bedit_searchbar_next(searchbar);
 }
 
 void bedit_searchbar_replace_all(BeditSearchbar *searchbar) {
