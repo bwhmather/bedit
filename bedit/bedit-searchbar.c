@@ -47,7 +47,7 @@ struct _BeditSearchbar {
     GtkWidget *prev_button;
     GtkWidget *next_button;
 
-    GtkWidget *match_case_toggle;
+    GtkWidget *case_sensitive_toggle;
     GtkWidget *regex_toggle;
 
     GtkWidget *replace_button;
@@ -143,7 +143,7 @@ static void bedit_searchbar_class_init(BeditSearchbarClass *klass) {
     );
 
     gtk_widget_class_bind_template_child(
-        widget_class, BeditSearchbar, match_case_toggle
+        widget_class, BeditSearchbar, case_sensitive_toggle
     );
     gtk_widget_class_bind_template_child(
         widget_class, BeditSearchbar, regex_toggle
@@ -369,7 +369,7 @@ static void bedit_searchbar_update_search(BeditSearchbar *searchbar) {
     gtk_source_search_settings_set_search_text(settings, search_text);
 
     case_sensitive = gtk_toggle_button_get_active(
-        GTK_TOGGLE_BUTTON(searchbar->match_case_toggle)
+        GTK_TOGGLE_BUTTON(searchbar->case_sensitive_toggle)
     );
     gtk_source_search_settings_set_case_sensitive(settings, case_sensitive);
 
