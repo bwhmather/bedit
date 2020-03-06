@@ -413,7 +413,6 @@ static void bedit_searchbar_update_search(BeditSearchbar *searchbar) {
 
     if (searchbar->context == NULL) {
         searchbar->context = gtk_source_search_context_new(buffer, NULL);
-        searchbar->cancellable = g_cancellable_new();
     }
 
     /* Copy searchbar state to settings object. */
@@ -434,6 +433,11 @@ static void bedit_searchbar_update_search(BeditSearchbar *searchbar) {
     gtk_text_buffer_get_iter_at_mark(
         GTK_TEXT_BUFFER(buffer), &start_at, searchbar->start_mark
     );
+
+    if (searchbar->cancellable != NULL) {
+        g_cancellable_cancel(searchbar->cancellable);
+        g_clear_object(&searchbar->cancellable);
+    }
 
     gtk_source_search_context_forward_async(
         searchbar->context, &start_at, searchbar->cancellable,
@@ -863,7 +867,6 @@ void bedit_searchbar_next(BeditSearchbar *searchbar) {
     GtkTextBuffer *buffer;
     GtkSourceSearchContext *search_context;
     GtkTextIter start_at;
-    GCancellable *cancellable;
 
     bedit_debug(DEBUG_WINDOW);
 
@@ -879,13 +882,16 @@ void bedit_searchbar_next(BeditSearchbar *searchbar) {
         return;
     }
 
-    cancellable = searchbar->cancellable;
-    g_return_if_fail(G_IS_CANCELLABLE(cancellable));
-
     gtk_text_buffer_get_selection_bounds(buffer, NULL, &start_at);
 
+    if (searchbar->cancellable != NULL) {
+        g_cancellable_cancel(searchbar->cancellable);
+        g_clear_object(&searchbar->cancellable);
+    }
+    searchbar->cancellable = g_cancellable_new();
+
     gtk_source_search_context_forward_async(
-        search_context, &start_at, cancellable,
+        search_context, &start_at, searchbar->cancellable,
         (GAsyncReadyCallback)bedit_searchbar_next_finished_cb, searchbar
     );
 }
@@ -935,7 +941,6 @@ void bedit_searchbar_prev(BeditSearchbar *searchbar) {
     GtkTextBuffer *buffer;
     GtkSourceSearchContext *search_context;
     GtkTextIter start_at;
-    GCancellable *cancellable;
 
     bedit_debug(DEBUG_WINDOW);
 
@@ -951,13 +956,16 @@ void bedit_searchbar_prev(BeditSearchbar *searchbar) {
         return;
     }
 
-    cancellable = searchbar->cancellable;
-    g_return_if_fail(G_IS_CANCELLABLE(cancellable));
-
     gtk_text_buffer_get_selection_bounds(buffer, &start_at, NULL);
 
+    if (searchbar->cancellable != NULL) {
+        g_cancellable_cancel(searchbar->cancellable);
+        g_clear_object(&searchbar->cancellable);
+    }
+    searchbar->cancellable = g_cancellable_new();
+
     gtk_source_search_context_backward_async(
-        search_context, &start_at, cancellable,
+        search_context, &start_at, searchbar->cancellable,
         (GAsyncReadyCallback)bedit_searchbar_prev_finished_cb, searchbar
     );
 }
