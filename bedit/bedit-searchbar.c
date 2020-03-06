@@ -437,6 +437,16 @@ static void search_entry_escaped_cb(
     }
 }
 
+static void replace_entry_activate_cb(
+    GtkSearchEntry *entry, BeditSearchbar *searchbar
+) {
+    bedit_debug(DEBUG_WINDOW);
+
+    g_return_if_fail(BEDIT_IS_SEARCHBAR(searchbar));
+
+    bedit_searchbar_replace(searchbar);
+}
+
 static void replace_entry_escaped_cb(
     GtkSearchEntry *entry, BeditSearchbar *searchbar
 ) {
@@ -542,6 +552,11 @@ static void bedit_searchbar_init(BeditSearchbar *searchbar) {
     g_signal_connect(
         searchbar->search_entry, "previous-match",
         G_CALLBACK(prev_match_cb), searchbar
+    );
+
+    g_signal_connect(
+        searchbar->replace_entry, "activate",
+        G_CALLBACK(replace_entry_activate_cb), searchbar
     );
 
     g_signal_connect(
