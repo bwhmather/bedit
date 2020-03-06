@@ -402,6 +402,18 @@ static gboolean search_widget_key_press_cb(
     return GDK_EVENT_PROPAGATE;
 }
 
+static void search_entry_activate_cb(
+    GtkEntry *entry, BeditSearchbar *searchbar
+) {
+    bedit_debug(DEBUG_WINDOW);
+
+    g_return_if_fail(BEDIT_IS_SEARCHBAR(searchbar));
+
+    if (searchbar->view) {
+        gtk_widget_grab_focus(GTK_WIDGET(searchbar->view));
+    }
+}
+
 static void search_entry_changed_cb(
     GtkEntry *entry, BeditSearchbar *searchbar
 ) {
@@ -503,6 +515,11 @@ static void bedit_searchbar_init(BeditSearchbar *searchbar) {
     g_signal_connect(
         searchbar, "key-press-event",
         G_CALLBACK(search_widget_key_press_cb), searchbar
+    );
+
+    g_signal_connect(
+        searchbar->search_entry, "activate",
+        G_CALLBACK(search_entry_activate_cb), searchbar
     );
 
     g_signal_connect(
