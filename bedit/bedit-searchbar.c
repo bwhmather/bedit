@@ -665,8 +665,8 @@ static void bedit_searchbar_set_replace_visible(
  * bedit_searchbar_show_find:
  * @searchbar: a #BeditSearchbar
  *
- * Unhides the find part of the searchbar.  If the searchbar is hidden it will
- * pop up.  If the replace part of the searchbar is visible it will be hidden.
+ * Unhides and selects the Find part of the searchbar.  If the Replace part is
+ * open it will remain so.
  */
 void bedit_searchbar_show_find(BeditSearchbar *searchbar) {
     bedit_debug(DEBUG_WINDOW);
@@ -675,14 +675,13 @@ void bedit_searchbar_show_find(BeditSearchbar *searchbar) {
 
     if (searchbar->mode == BEDIT_SEARCHBAR_MODE_HIDDEN) {
         bedit_searchbar_reset_start_mark(searchbar);
+        bedit_searchbar_set_replace_visible(searchbar, FALSE);
+        searchbar->mode = BEDIT_SEARCHBAR_MODE_FIND;
+        gtk_revealer_set_reveal_child(GTK_REVEALER(searchbar->revealer), TRUE);
     }
 
-    searchbar->mode = BEDIT_SEARCHBAR_MODE_FIND;
-
-    bedit_searchbar_set_replace_visible(searchbar, FALSE);
-    gtk_revealer_set_reveal_child(GTK_REVEALER(searchbar->revealer), TRUE);
-
     gtk_widget_grab_focus(GTK_WIDGET(searchbar->search_entry));
+	gtk_editable_select_region(GTK_EDITABLE(searchbar->search_entry), 0, -1);
 
     bedit_searchbar_update_search(searchbar);
 }
@@ -691,7 +690,8 @@ void bedit_searchbar_show_find(BeditSearchbar *searchbar) {
  * bedit_searchbar_show_replace:
  * @searchbar: a #BeditSearchbar
  *
- * Unhides both the find and replace parts of the searchbar.
+ * Unhides both the find and replace parts of the searchbar and selects the text
+ * in the replace input.
  */
 void bedit_searchbar_show_replace(BeditSearchbar *searchbar) {
     bedit_debug(DEBUG_WINDOW);
@@ -707,7 +707,8 @@ void bedit_searchbar_show_replace(BeditSearchbar *searchbar) {
     bedit_searchbar_set_replace_visible(searchbar, TRUE);
     gtk_revealer_set_reveal_child(GTK_REVEALER(searchbar->revealer), TRUE);
 
-    gtk_widget_grab_focus(GTK_WIDGET(searchbar->search_entry));
+    gtk_widget_grab_focus(GTK_WIDGET(searchbar->replace_entry));
+	gtk_editable_select_region(GTK_EDITABLE(searchbar->replace_entry), 0, -1);
 
     bedit_searchbar_update_search(searchbar);
 }
