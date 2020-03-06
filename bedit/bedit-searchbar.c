@@ -527,6 +527,7 @@ static void bedit_searchbar_init(BeditSearchbar *searchbar) {
         G_CALLBACK(search_widget_key_press_cb), searchbar
     );
 
+    /* Bind to search entry signals. */
     g_signal_connect(
         searchbar->search_entry, "activate",
         G_CALLBACK(search_entry_activate_cb), searchbar
@@ -554,6 +555,7 @@ static void bedit_searchbar_init(BeditSearchbar *searchbar) {
         G_CALLBACK(prev_match_cb), searchbar
     );
 
+    /* Bind to replace entry signals. */
     g_signal_connect(
         searchbar->replace_entry, "activate",
         G_CALLBACK(replace_entry_activate_cb), searchbar
@@ -576,6 +578,7 @@ static void bedit_searchbar_init(BeditSearchbar *searchbar) {
         G_CALLBACK(prev_match_cb), searchbar
     );
 
+    /* Bind to button signals */
     g_signal_connect(
         searchbar->next_button, "clicked",
         G_CALLBACK(next_button_clicked_cb), searchbar
