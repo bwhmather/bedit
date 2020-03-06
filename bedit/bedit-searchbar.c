@@ -48,7 +48,7 @@ struct _BeditSearchbar {
     GtkWidget *next_button;
 
     GtkWidget *case_sensitive_toggle;
-    GtkWidget *regex_toggle;
+    GtkWidget *regex_enabled_toggle;
 
     GtkWidget *replace_button;
     GtkWidget *replace_all_button;
@@ -62,13 +62,18 @@ struct _BeditSearchbar {
 
     gboolean search_active : 1;
     gboolean replace_active : 1;
+
+    gboolean case_sensitive : 1;
+    gboolean regex_enabled : 1;
 };
 
 enum {
     PROP_0,
     PROP_SEARCH_ACTIVE,
     PROP_REPLACE_ACTIVE,
-    LAST_PROP
+    PROP_REGEX_ENABLED,
+    PROP_CASE_SENSITIVE,
+    LAST_PROP,
 };
 
 static GParamSpec *properties[LAST_PROP];
@@ -93,6 +98,42 @@ static void bedit_searchbar_get_property(
         );
         break;
 
+    case PROP_REGEX_ENABLED:
+        g_value_set_boolean(
+            value, bedit_searchbar_get_regex_enabled(searchbar)
+        );
+        break;
+
+    case PROP_CASE_SENSITIVE:
+        g_value_set_boolean(
+            value, bedit_searchbar_get_case_sensitive(searchbar)
+        );
+        break;
+
+    default:
+        G_OBJECT_WARN_INVALID_PROPERTY_ID(object, prop_id, pspec);
+        break;
+    }
+}
+
+static void bedit_searchbar_set_property(
+    GObject *object, guint prop_id, const GValue *value, GParamSpec *pspec
+) {
+    BeditSearchbar *searchbar;
+
+    searchbar = BEDIT_SEARCHBAR(object);
+
+    switch (prop_id) {
+    case PROP_CASE_SENSITIVE:
+        bedit_searchbar_set_case_sensitive(
+            searchbar, g_value_get_boolean(value)
+        );
+        break;
+    case PROP_REGEX_ENABLED:
+        bedit_searchbar_set_regex_enabled(
+            searchbar, g_value_get_boolean(value)
+        );
+        break;
     default:
         G_OBJECT_WARN_INVALID_PROPERTY_ID(object, prop_id, pspec);
         break;
@@ -104,6 +145,7 @@ static void bedit_searchbar_class_init(BeditSearchbarClass *klass) {
     GtkWidgetClass *widget_class = GTK_WIDGET_CLASS(klass);
 
     object_class->get_property = bedit_searchbar_get_property;
+    object_class->set_property = bedit_searchbar_set_property;
 
     properties[PROP_SEARCH_ACTIVE] = g_param_spec_boolean(
         "search-active", "Search active",
@@ -114,6 +156,18 @@ static void bedit_searchbar_class_init(BeditSearchbarClass *klass) {
     properties[PROP_REPLACE_ACTIVE] = g_param_spec_boolean(
         "replace-active", "Replace active",
         "Whether a search is in progress and in replace mode", FALSE,
+        G_PARAM_READABLE | G_PARAM_STATIC_STRINGS
+    );
+
+    properties[PROP_CASE_SENSITIVE] = g_param_spec_boolean(
+        "case-sensitive", "Case sensitive",
+        "Whether to distinguish between upper and lower case characters", FALSE,
+        G_PARAM_READABLE | G_PARAM_STATIC_STRINGS
+    );
+
+    properties[PROP_REGEX_ENABLED] = g_param_spec_boolean(
+        "regex-enabled", "Regex enabled",
+        "Whether to treat the search input as a regular expression", FALSE,
         G_PARAM_READABLE | G_PARAM_STATIC_STRINGS
     );
 
@@ -146,7 +200,7 @@ static void bedit_searchbar_class_init(BeditSearchbarClass *klass) {
         widget_class, BeditSearchbar, case_sensitive_toggle
     );
     gtk_widget_class_bind_template_child(
-        widget_class, BeditSearchbar, regex_toggle
+        widget_class, BeditSearchbar, regex_enabled_toggle
     );
 
     gtk_widget_class_bind_template_child(
@@ -368,14 +422,10 @@ static void bedit_searchbar_update_search(BeditSearchbar *searchbar) {
     search_text = gtk_entry_get_text(GTK_ENTRY(searchbar->search_entry));
     gtk_source_search_settings_set_search_text(settings, search_text);
 
-    case_sensitive = gtk_toggle_button_get_active(
-        GTK_TOGGLE_BUTTON(searchbar->case_sensitive_toggle)
-    );
+    case_sensitive = bedit_searchbar_get_case_sensitive(searchbar);
     gtk_source_search_settings_set_case_sensitive(settings, case_sensitive);
 
-    regex_enabled = gtk_toggle_button_get_active(
-        GTK_TOGGLE_BUTTON(searchbar->regex_toggle)
-    );
+    regex_enabled = bedit_searchbar_get_regex_enabled(searchbar);
     gtk_source_search_settings_set_regex_enabled(settings, regex_enabled);
 
     gtk_source_search_settings_set_wrap_around(settings, TRUE);
@@ -1029,5 +1079,65 @@ gboolean bedit_searchbar_get_replace_active(BeditSearchbar *searchbar) {
 
     g_return_val_if_fail(BEDIT_IS_SEARCHBAR(searchbar), FALSE);
 
-    return searchbar->replace_active;
+    return searchbar->replace_active ? TRUE : FALSE;
 }
+
+
+
+void bedit_searchbar_set_case_sensitive(
+    BeditSearchbar *searchbar, gboolean case_sensitive
+) {
+    bedit_debug(DEBUG_WINDOW);
+
+    g_return_if_fail(BEDIT_IS_SEARCHBAR(searchbar));
+
+    if (case_sensitive == searchbar->case_sensitive) {
+        return;
+    }
+
+    searchbar->case_sensitive = case_sensitive;
+
+    g_object_notify_by_pspec(
+        G_OBJECT(searchbar), properties[PROP_CASE_SENSITIVE]
+    );
+
+    bedit_searchbar_update_search(searchbar);
+}
+
+
+gboolean bedit_searchbar_get_case_sensitive(BeditSearchbar *searchbar) {
+    bedit_debug(DEBUG_WINDOW);
+
+    g_return_val_if_fail(BEDIT_IS_SEARCHBAR(searchbar), FALSE);
+
+    return searchbar->case_sensitive;
+}
+
+void bedit_searchbar_set_regex_enabled(
+    BeditSearchbar *searchbar, gboolean regex_enabled
+) {
+    bedit_debug(DEBUG_WINDOW);
+
+    g_return_if_fail(BEDIT_IS_SEARCHBAR(searchbar));
+
+    if (regex_enabled == searchbar->regex_enabled) {
+        return;
+    }
+
+    searchbar->regex_enabled = regex_enabled;
+
+    g_object_notify_by_pspec(
+        G_OBJECT(searchbar), properties[PROP_REGEX_ENABLED]
+    );
+
+    bedit_searchbar_update_search(searchbar);
+}
+
+gboolean bedit_searchbar_get_regex_enabled(BeditSearchbar *searchbar) {
+    bedit_debug(DEBUG_WINDOW);
+
+    g_return_val_if_fail(BEDIT_IS_SEARCHBAR(searchbar), FALSE);
+
+    return searchbar->regex_enabled;
+}
+

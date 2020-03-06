@@ -51,6 +51,16 @@ void bedit_searchbar_replace_all(BeditSearchbar *searchbar);
 gboolean bedit_searchbar_get_search_active(BeditSearchbar *searchbar);
 gboolean bedit_searchbar_get_replace_active(BeditSearchbar *searchbar);
 
+void bedit_searchbar_set_case_sensitive(
+    BeditSearchbar *searchbar, gboolean case_sensitive
+);
+gboolean bedit_searchbar_get_case_sensitive(BeditSearchbar *searchbar);
+
+void bedit_searchbar_set_regex_enabled(
+    BeditSearchbar *searchbar, gboolean regex_enabled
+);
+gboolean bedit_searchbar_get_regex_enabled(BeditSearchbar *searchbar);
+
 G_END_DECLS
 
 #endif
