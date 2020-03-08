@@ -25,6 +25,7 @@
 #include "bedit-view.h"
 
 #include <glib/gi18n.h>
+#include <gdk/gdk.h>
 #include <gtk/gtk.h>
 #include <gtksourceview/gtksource.h>
 #include <string.h>
@@ -446,12 +447,66 @@ static void bedit_searchbar_update_search(BeditSearchbar *searchbar) {
     );
 }
 
-static gboolean search_widget_key_press_cb(
+static gboolean search_entry_key_press_cb(
     GtkWidget *widget, GdkEventKey *event, BeditSearchbar *searchbar
 ) {
+    GdkDisplay *display;
+    GdkKeymap *keymap;
+    guint consumed_modifiers;
+
+    guint keyval;
+    guint modifiers;
+
     bedit_debug(DEBUG_WINDOW);
 
+    g_return_val_if_fail(GTK_IS_SEARCH_ENTRY(widget), GDK_EVENT_PROPAGATE);
+    g_return_val_if_fail(event != NULL, GDK_EVENT_PROPAGATE);
     g_return_val_if_fail(BEDIT_IS_SEARCHBAR(searchbar), GDK_EVENT_PROPAGATE);
+
+    display = gtk_widget_get_display(widget);
+    keymap = gdk_keymap_get_for_display(display);
+
+    gdk_keymap_translate_keyboard_state(
+        keymap,
+        event->hardware_keycode, event->state, event->group,
+        &keyval, NULL, NULL, &consumed_modifiers
+    );
+
+    /* Start with all applied modifier keys.
+     */
+    modifiers = event->state;
+
+    /* Filter out the modifiers that were applied when translating keyboard
+     * state.
+     */
+    modifiers &= ~consumed_modifiers;
+
+    /* Filter out any modifiers we don't care about.
+     */
+    modifiers &= GDK_CONTROL_MASK | GDK_SHIFT_MASK | GDK_MOD1_MASK;
+
+    if ((
+        event->keyval == GDK_KEY_ISO_Enter ||
+        event->keyval == GDK_KEY_KP_Enter ||
+        event->keyval == GDK_KEY_Return
+    ) && modifiers == 0) {
+        /* WARNING: This is shadowed by the search entry activate binding and so
+         * will never actually be triggered.
+         */
+        bedit_searchbar_next(searchbar);
+
+        return GDK_EVENT_STOP;
+    }
+
+    if ((
+        event->keyval == GDK_KEY_ISO_Enter ||
+        event->keyval == GDK_KEY_KP_Enter ||
+        event->keyval == GDK_KEY_Return
+    ) && modifiers == GDK_SHIFT_MASK) {
+        bedit_searchbar_prev(searchbar);
+
+        return GDK_EVENT_STOP;
+    }
 
     return GDK_EVENT_PROPAGATE;
 }
@@ -463,9 +518,7 @@ static void search_entry_activate_cb(
 
     g_return_if_fail(BEDIT_IS_SEARCHBAR(searchbar));
 
-    if (searchbar->view) {
-        gtk_widget_grab_focus(GTK_WIDGET(searchbar->view));
-    }
+    bedit_searchbar_next(searchbar);
 }
 
 static void search_entry_changed_cb(
@@ -577,8 +630,8 @@ static void bedit_searchbar_init(BeditSearchbar *searchbar) {
     gtk_widget_init_template(GTK_WIDGET(searchbar));
 
     g_signal_connect(
-        searchbar, "key-press-event",
-        G_CALLBACK(search_widget_key_press_cb), searchbar
+        searchbar->search_entry, "key-press-event",
+        G_CALLBACK(search_entry_key_press_cb), searchbar
     );
 
     /* Bind to search entry signals. */
