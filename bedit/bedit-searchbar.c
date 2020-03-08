@@ -538,6 +538,8 @@ static void search_entry_activate_cb(
     bedit_debug(DEBUG_WINDOW);
 
     g_return_if_fail(BEDIT_IS_SEARCHBAR(searchbar));
+    g_return_if_fail(GTK_IS_SEARCH_ENTRY(entry));
+    g_return_if_fail(GTK_WIDGET(entry) == searchbar->search_entry);
 
     bedit_searchbar_next(searchbar);
 }
@@ -548,6 +550,8 @@ static void search_entry_changed_cb(
     bedit_debug(DEBUG_WINDOW);
 
     g_return_if_fail(BEDIT_IS_SEARCHBAR(searchbar));
+    g_return_if_fail(GTK_IS_SEARCH_ENTRY(entry));
+    g_return_if_fail(GTK_WIDGET(entry) == searchbar->search_entry);
 
     bedit_searchbar_update_search(searchbar);
     bedit_searchbar_focus_first(searchbar);
@@ -559,6 +563,8 @@ static void search_entry_escaped_cb(
     bedit_debug(DEBUG_WINDOW);
 
     g_return_if_fail(BEDIT_IS_SEARCHBAR(searchbar));
+    g_return_if_fail(GTK_IS_SEARCH_ENTRY(entry));
+    g_return_if_fail(GTK_WIDGET(entry) == searchbar->search_entry);
 
     bedit_searchbar_hide(searchbar);
     if (searchbar->view != NULL) {
@@ -572,6 +578,8 @@ static void replace_entry_activate_cb(
     bedit_debug(DEBUG_WINDOW);
 
     g_return_if_fail(BEDIT_IS_SEARCHBAR(searchbar));
+    g_return_if_fail(GTK_IS_SEARCH_ENTRY(entry));
+    g_return_if_fail(GTK_WIDGET(entry) == searchbar->replace_entry);
 
     bedit_searchbar_replace(searchbar);
 }
@@ -582,6 +590,8 @@ static void replace_entry_escaped_cb(
     bedit_debug(DEBUG_WINDOW);
 
     g_return_if_fail(BEDIT_IS_SEARCHBAR(searchbar));
+    g_return_if_fail(GTK_IS_SEARCH_ENTRY(entry));
+    g_return_if_fail(GTK_WIDGET(entry) == searchbar->replace_entry);
 
     bedit_searchbar_hide(searchbar);
 }
@@ -592,6 +602,8 @@ static void next_button_clicked_cb(
     bedit_debug(DEBUG_WINDOW);
 
     g_return_if_fail(BEDIT_IS_SEARCHBAR(searchbar));
+    g_return_if_fail(GTK_IS_BUTTON(button));
+    g_return_if_fail(GTK_WIDGET(button) == searchbar->next_button);
 
     bedit_searchbar_next(searchbar);
 }
@@ -602,6 +614,8 @@ static void prev_button_clicked_cb(
     bedit_debug(DEBUG_WINDOW);
 
     g_return_if_fail(BEDIT_IS_SEARCHBAR(searchbar));
+    g_return_if_fail(GTK_IS_BUTTON(button));
+    g_return_if_fail(GTK_WIDGET(button) == searchbar->prev_button);
 
     bedit_searchbar_prev(searchbar);
 }
@@ -634,6 +648,8 @@ static void replace_button_clicked_cb(
     bedit_debug(DEBUG_WINDOW);
 
     g_return_if_fail(BEDIT_IS_SEARCHBAR(searchbar));
+    g_return_if_fail(GTK_IS_BUTTON(button));
+    g_return_if_fail(GTK_WIDGET(button) == searchbar->replace_button);
 
     bedit_searchbar_replace(searchbar);
 }
@@ -646,6 +662,8 @@ static void replace_all_button_clicked_cb(
     g_return_if_fail(BEDIT_IS_SEARCHBAR(searchbar));
 
     bedit_searchbar_replace_all(searchbar);
+    g_return_if_fail(GTK_IS_BUTTON(button));
+    g_return_if_fail(GTK_WIDGET(button) == searchbar->replace_all_button);
 }
 
 static void bedit_searchbar_init(BeditSearchbar *searchbar) {
@@ -737,6 +755,7 @@ static void bedit_searchbar_cursor_moved_cb(
     bedit_debug(DEBUG_WINDOW);
 
     g_return_if_fail(BEDIT_IS_SEARCHBAR(searchbar));
+    g_return_if_fail(BEDIT_IS_DOCUMENT(buffer));
 
     bedit_searchbar_reset_start_mark(searchbar);
 }
@@ -910,6 +929,8 @@ static void bedit_searchbar_next_finished_cb(
 
     bedit_debug(DEBUG_WINDOW);
 
+    g_return_if_fail(GTK_SOURCE_IS_SEARCH_CONTEXT(search_context));
+    g_return_if_fail(result != NULL);
     g_return_if_fail(BEDIT_IS_SEARCHBAR(searchbar));
 
     if (searchbar->view == NULL) {
@@ -984,6 +1005,8 @@ static void bedit_searchbar_prev_finished_cb(
 
     bedit_debug(DEBUG_WINDOW);
 
+    g_return_if_fail(GTK_SOURCE_IS_SEARCH_CONTEXT(search_context));
+    g_return_if_fail(result != NULL);
     g_return_if_fail(BEDIT_IS_SEARCHBAR(searchbar));
 
     if (searchbar->view == NULL) {
