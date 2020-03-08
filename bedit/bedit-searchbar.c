@@ -968,8 +968,10 @@ static void bedit_searchbar_next_finished_cb(
         gtk_text_buffer_select_range(
             GTK_TEXT_BUFFER(buffer), &match_start, &match_end
         );
+        bedit_searchbar_reset_start_mark(searchbar);
 
         bedit_view_scroll_to_cursor(searchbar->view);
+
     }
 }
 
@@ -1044,6 +1046,7 @@ static void bedit_searchbar_prev_finished_cb(
         gtk_text_buffer_select_range(
             GTK_TEXT_BUFFER(buffer), &match_start, &match_end
         );
+        bedit_searchbar_reset_start_mark(searchbar);
 
         bedit_view_scroll_to_cursor(searchbar->view);
     }
