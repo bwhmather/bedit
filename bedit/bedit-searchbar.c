@@ -163,13 +163,13 @@ static void bedit_searchbar_class_init(BeditSearchbarClass *klass) {
     properties[PROP_CASE_SENSITIVE] = g_param_spec_boolean(
         "case-sensitive", "Case sensitive",
         "Whether to distinguish between upper and lower case characters", FALSE,
-        G_PARAM_READABLE | G_PARAM_STATIC_STRINGS
+        G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS
     );
 
     properties[PROP_REGEX_ENABLED] = g_param_spec_boolean(
         "regex-enabled", "Regex enabled",
         "Whether to treat the search input as a regular expression", FALSE,
-        G_PARAM_READABLE | G_PARAM_STATIC_STRINGS
+        G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS
     );
 
     g_object_class_install_properties(object_class, LAST_PROP, properties);
