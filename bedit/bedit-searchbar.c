@@ -747,6 +747,18 @@ static void bedit_searchbar_init(BeditSearchbar *searchbar) {
         searchbar->replace_all_button, "clicked",
         G_CALLBACK(replace_all_button_clicked_cb), searchbar
     );
+
+    g_object_bind_property(
+        G_OBJECT(searchbar), "regex-enabled",
+        G_OBJECT(searchbar->regex_enabled_toggle), "active",
+        G_BINDING_BIDIRECTIONAL
+    );
+
+    g_object_bind_property(
+        G_OBJECT(searchbar), "case-sensitive",
+        G_OBJECT(searchbar->case_sensitive_toggle), "active",
+        G_BINDING_BIDIRECTIONAL
+    );
 }
 
 static void bedit_searchbar_cursor_moved_cb(
