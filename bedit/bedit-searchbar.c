@@ -858,6 +858,58 @@ static void bedit_searchbar_set_replace_visible(
     gtk_widget_set_visible(searchbar->replace_all_button, visible);
 }
 
+static void bedit_searchbar_set_search_text_from_selection(
+    BeditSearchbar *searchbar
+) {
+    GtkTextBuffer *buffer;
+    GtkTextIter selection_start;
+    GtkTextIter selection_end;
+    gchar const *search_text;
+    gchar *selected_text;
+    gchar *selected_text_escaped;
+
+    g_return_if_fail(BEDIT_IS_SEARCHBAR(searchbar));
+    g_return_if_fail(BEDIT_IS_VIEW(searchbar->view));
+
+    buffer = gtk_text_view_get_buffer(GTK_TEXT_VIEW(searchbar->view));
+
+    if (!gtk_text_buffer_get_selection_bounds(
+        buffer, &selection_start, &selection_end
+    )) {
+        return;
+    }
+
+    selected_text = gtk_text_buffer_get_slice(
+        buffer, &selection_start, &selection_end, TRUE
+    );
+
+    if (bedit_searchbar_get_regex_enabled(searchbar)) {
+        selected_text_escaped = g_regex_escape_string(selected_text, -1);
+    } else {
+        selected_text_escaped = gtk_source_utils_escape_search_text(
+            selected_text
+        );
+    }
+
+    if (g_utf8_strlen(selected_text, -1) > 160) {
+        return;
+    }
+
+    search_text = gtk_entry_get_text(GTK_ENTRY(searchbar->search_entry));
+
+    if (g_strcmp0(selected_text_escaped, search_text) == 0) {
+        return;
+    }
+
+    gtk_entry_set_text(
+        GTK_ENTRY(searchbar->search_entry), selected_text_escaped
+    );
+
+    gtk_editable_set_position(GTK_EDITABLE(searchbar->search_entry), -1);
+
+    g_free(selected_text_escaped);
+}
+
 /**
  * bedit_searchbar_show_find:
  * @searchbar: a #BeditSearchbar
@@ -875,6 +927,10 @@ void bedit_searchbar_show_find(BeditSearchbar *searchbar) {
         bedit_searchbar_set_replace_visible(searchbar, FALSE);
         searchbar->mode = BEDIT_SEARCHBAR_MODE_FIND;
         gtk_revealer_set_reveal_child(GTK_REVEALER(searchbar->revealer), TRUE);
+    }
+
+    if (searchbar->view != NULL) {
+        bedit_searchbar_set_search_text_from_selection(searchbar);
     }
 
     gtk_widget_grab_focus(GTK_WIDGET(searchbar->search_entry));
