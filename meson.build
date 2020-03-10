@@ -131,8 +131,6 @@ tepl_dep = dependency('tepl-4', version: '>= 4.2')
 libpeas_dep = dependency('libpeas-1.0', version: libpeas_req)
 libpeas_gtk_dep = dependency('libpeas-gtk-1.0', version: libpeas_req)
 
-libgd_dep = libgd_subproject.get_variable('libgd_dep')
-
 gspell_dep = dependency('gspell-1', version: '>= 1.0', required: true)
 x11_dep = dependency('x11', required: false)
 

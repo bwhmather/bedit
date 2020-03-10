@@ -112,7 +112,6 @@ libbedit_deps = [
   introspection_dep,
   libpeas_dep,
   libpeas_gtk_dep,
-  libgd_dep,
 ]
 
 if host_machine.system() == 'darwin'
