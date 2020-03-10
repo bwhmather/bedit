@@ -40,7 +40,6 @@
 #include "bedit-debug.h"
 #include "bedit-settings.h"
 #include "bedit-utils.h"
-#include "libgd/gd.h"
 
 #define FLUSH_TIMEOUT_DURATION 30 /* in seconds */
 
