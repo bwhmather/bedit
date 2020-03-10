@@ -981,8 +981,6 @@ void bedit_searchbar_hide(BeditSearchbar *searchbar) {
 
     gtk_revealer_set_reveal_child(GTK_REVEALER(searchbar->revealer), FALSE);
 
-    gtk_widget_grab_focus(GTK_WIDGET(searchbar->search_entry));
-
     bedit_searchbar_update_search(searchbar);
 }
 
