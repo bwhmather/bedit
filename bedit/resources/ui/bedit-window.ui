@@ -61,11 +61,6 @@
               </object>
             </child>
             <child>
-              <object class="BeditSearchbar" id="searchbar">
-                <property name="visible">True</property>
-              </object>
-            </child>
-            <child>
               <object class="BeditStatusbar" id="statusbar">
                 <property name="visible">True</property>
                 <child>
@@ -111,6 +106,17 @@
               <packing>
                 <property name="expand">False</property>
                 <property name="fill">True</property>
+                <property name="pack_type">end</property>
+              </packing>
+            </child>
+            <child>
+              <object class="BeditSearchbar" id="searchbar">
+                <property name="visible">True</property>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">False</property>
+                <property name="pack_type">end</property>
               </packing>
             </child>
           </object>
