@@ -13,105 +13,84 @@
         <property name="visible">True</property>
         <property name="orientation">vertical</property>
         <child>
-          <object class="GtkBox" id="content_box">
+          <object class="BeditNotebook" id="notebook">
             <property name="visible">True</property>
-            <property name="orientation">vertical</property>
-            <child>
-              <object class="BeditNotebook" id="notebook">
+            <child type="action-end">
+              <object class="GtkBox" id="action_area">
                 <property name="visible">True</property>
-                <child type="action-end">
-                  <object class="GtkBox" id="action_area">
-                    <property name="visible">True</property>
-                    <property name="orientation">horizontal</property>
-                    <child>
-                      <object class="GtkButton" id="leave_fullscreen_button">
-                        <property name="visible">False</property>
-                        <property name="valign">center</property>
-                        <property name="tooltip_text" translatable="yes">Leave Fullscreen</property>
-                        <property name="action_name">win.leave-fullscreen</property>
-                        <property name="image">leave_fullscreen_image</property>
-                        <child internal-child="accessible">
-                          <object class="AtkObject" id="leave_fullscreen_button_a11y">
-                            <property name="accessible-name" translatable="yes">Leave Fullscreen</property>
-                            <property name="accessible-description" translatable="yes">Leave Fullscreen</property>
-                          </object>
-                        </child>
+                <property name="orientation">horizontal</property>
+                <child>
+                  <object class="GtkButton" id="leave_fullscreen_button">
+                    <property name="visible">False</property>
+                    <property name="valign">center</property>
+                    <property name="tooltip_text" translatable="yes">Leave Fullscreen</property>
+                    <property name="action_name">win.leave-fullscreen</property>
+                    <property name="image">leave_fullscreen_image</property>
+                    <child internal-child="accessible">
+                      <object class="AtkObject" id="leave_fullscreen_button_a11y">
+                        <property name="accessible-name" translatable="yes">Leave Fullscreen</property>
+                        <property name="accessible-description" translatable="yes">Leave Fullscreen</property>
                       </object>
-                      <packing>
-                        <property name="expand">False</property>
-                        <property name="fill">False</property>
-                        <property name="pack_type">end</property>
-                      </packing>
-                    </child>
-                    <child>
-                      <object class="GtkMenuButton" id="gear_button">
-                        <property name="visible">True</property>
-                        <property name="valign">center</property>
-                        <property name="use_popover">True</property>
-                        <property name="image">menu_image</property>
-                      </object>
-                      <packing>
-                        <property name="expand">False</property>
-                        <property name="fill">False</property>
-                        <property name="pack_type">end</property>
-                      </packing>
                     </child>
                   </object>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="fill">False</property>
+                    <property name="pack_type">end</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkMenuButton" id="gear_button">
+                    <property name="visible">True</property>
+                    <property name="valign">center</property>
+                    <property name="use_popover">True</property>
+                    <property name="image">menu_image</property>
+                  </object>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="fill">False</property>
+                    <property name="pack_type">end</property>
+                  </packing>
                 </child>
               </object>
             </child>
+          </object>
+        </child>
+        <child>
+          <object class="BeditStatusbar" id="statusbar">
+            <property name="visible">True</property>
             <child>
-              <object class="BeditStatusbar" id="statusbar">
+              <object class="BeditStatusMenuButton" id="line_col_button">
                 <property name="visible">True</property>
-                <child>
-                  <object class="BeditStatusMenuButton" id="line_col_button">
-                    <property name="visible">True</property>
-                    <property name="use_popover">True</property>
-                    <child internal-child="label">
-                      <object class="GtkLabel">
-                        <property name="width_chars">18</property>
-                        <property name="can_focus">False</property>
-                      </object>
-                    </child>
+                <property name="use_popover">True</property>
+                <child internal-child="label">
+                  <object class="GtkLabel">
+                    <property name="width_chars">18</property>
+                    <property name="can_focus">False</property>
                   </object>
-                  <packing>
-                    <property name="expand">False</property>
-                    <property name="fill">False</property>
-                    <property name="pack_type">end</property>
-                  </packing>
-                </child>
-                <child>
-                  <object class="BeditStatusMenuButton" id="tab_width_button">
-                    <property name="visible">True</property>
-                    <property name="use_popover">True</property>
-                  </object>
-                  <packing>
-                    <property name="expand">False</property>
-                    <property name="fill">False</property>
-                    <property name="pack_type">end</property>
-                  </packing>
-                </child>
-                <child>
-                  <object class="BeditStatusMenuButton" id="language_button">
-                    <property name="visible">True</property>
-                    <property name="use_popover">True</property>
-                  </object>
-                  <packing>
-                    <property name="expand">False</property>
-                    <property name="fill">False</property>
-                    <property name="pack_type">end</property>
-                  </packing>
                 </child>
               </object>
               <packing>
                 <property name="expand">False</property>
-                <property name="fill">True</property>
+                <property name="fill">False</property>
                 <property name="pack_type">end</property>
               </packing>
             </child>
             <child>
-              <object class="BeditSearchbar" id="searchbar">
+              <object class="BeditStatusMenuButton" id="tab_width_button">
                 <property name="visible">True</property>
+                <property name="use_popover">True</property>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">False</property>
+                <property name="pack_type">end</property>
+              </packing>
+            </child>
+            <child>
+              <object class="BeditStatusMenuButton" id="language_button">
+                <property name="visible">True</property>
+                <property name="use_popover">True</property>
               </object>
               <packing>
                 <property name="expand">False</property>
@@ -120,6 +99,21 @@
               </packing>
             </child>
           </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="pack_type">end</property>
+          </packing>
+        </child>
+        <child>
+          <object class="BeditSearchbar" id="searchbar">
+            <property name="visible">True</property>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">False</property>
+            <property name="pack_type">end</property>
+          </packing>
         </child>
       </object>
     </child>
