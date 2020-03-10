@@ -102,6 +102,7 @@ libbedit_c_args = []
 libbedit_link_args = []
 
 libbedit_deps = [
+  m_dep,
   glib_dep,
   gobject_dep,
   gio_dep,

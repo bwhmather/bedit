@@ -116,18 +116,11 @@ if not get_option('buildtype').contains('plain')
   run_command('git', '-C', meson.source_root(), 'submodule', 'update', '--init', '--recursive')
 endif
 
-libgd_subproject = subproject(
-  'libgd',
-  default_options: [
-    'with-tagged-entry=true',
-    'static=true',
-  ]
-)
-
 # Dependencies
 glib_req = '>= 2.52'
 libpeas_req = '>= 1.14.1'
 
+m_dep = cc.find_library('m', required: false)
 glib_dep = dependency('glib-2.0', version: glib_req)
 gobject_dep = dependency('gobject-2.0', version: glib_req)
 gmodule_dep = dependency('gmodule-2.0', version: glib_req)
