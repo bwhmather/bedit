@@ -132,7 +132,6 @@ libpeas_dep = dependency('libpeas-1.0', version: libpeas_req)
 libpeas_gtk_dep = dependency('libpeas-gtk-1.0', version: libpeas_req)
 
 gspell_dep = dependency('gspell-1', version: '>= 1.0', required: true)
-x11_dep = dependency('x11', required: false)
 
 introspection_dep = dependency('gobject-introspection-1.0', required: false)
 vapigen_dep = dependency('vapigen', version: '>= 0.25.1', required: false)
@@ -145,12 +144,6 @@ if build_checkupdate_plugin
 endif
 
 # Configurations
-if ((host_machine.system() != 'darwin') and
-    (host_machine.system() != 'windows') and
-    (not x11_dep.found()))
-  error('Native dependency \'x11\' not found.')
-endif
-
 config_h = configuration_data()
 config_h.set_quoted('PACKAGE_STRING', package_string)
 config_h.set_quoted('GETTEXT_PACKAGE', meson.project_name())

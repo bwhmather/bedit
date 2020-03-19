@@ -134,10 +134,6 @@ elif host_machine.system() == 'windows'
   libbedit_sources += files(
     'bedit-app-win32.c',
   )
-else
-  libbedit_deps += [
-    x11_dep,
-  ]
 endif
 
 libbedit_enums = gnome.mkenums(
