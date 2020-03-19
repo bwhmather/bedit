@@ -173,61 +173,57 @@ libbedit_sha = shared_library(
   install_dir: pkglibdir,
 )
 
-if generate_gir == true
-  libbedit_public_h += [
-    libbedit_enums.get(1),
-  ]
+libbedit_public_h += [
+  libbedit_enums.get(1),
+]
 
-  libbedit_gir_includes = [
-    'Gtk-3.0',
-    'GtkSource-4',
-  ]
+libbedit_gir_includes = [
+  'Gtk-3.0',
+  'GtkSource-4',
+]
 
-  libbedit_gir = gnome.generate_gir(
-    libbedit_sha,
-    sources: libbedit_sources + libbedit_public_h,
-    nsversion: '3.0',
-    namespace: 'Bedit',
-    symbol_prefix: 'bedit',
-    identifier_prefix: 'Bedit',
-    export_packages: [package_string],
-    includes: libbedit_gir_includes,
-    link_with: libbedit_sha,
-    install: true,
-    install_dir_gir: join_paths(pkgdatadir, 'gir-1.0'),
-    install_dir_typelib: join_paths(pkglibdir, 'girepository-1.0'),
+libbedit_gir = gnome.generate_gir(
+  libbedit_sha,
+  sources: libbedit_sources + libbedit_public_h,
+  nsversion: '3.0',
+  namespace: 'Bedit',
+  symbol_prefix: 'bedit',
+  identifier_prefix: 'Bedit',
+  export_packages: [package_string],
+  includes: libbedit_gir_includes,
+  link_with: libbedit_sha,
+  install: true,
+  install_dir_gir: join_paths(pkgdatadir, 'gir-1.0'),
+  install_dir_typelib: join_paths(pkglibdir, 'girepository-1.0'),
+)
+
+python3.install_sources(
+  'Bedit.py',
+  subdir: join_paths(
+    'gi',
+    'overrides',
   )
+)
 
-  python3.install_sources(
-    'Bedit.py',
-    subdir: join_paths(
-      'gi',
-      'overrides',
-    )
-  )
+libbedit_dep_sources += [
+  libbedit_gir,
+]
 
-  libbedit_dep_sources += [
-    libbedit_gir,
-  ]
+libbedit_vapi_packages = [
+  'gio-2.0',
+  'atk',
+  'gdk-3.0',
+  'gtk+-3.0',
+  'gtksourceview-4',
+]
 
-  if generate_vapi == true
-    libbedit_vapi_packages = [
-      'gio-2.0',
-      'atk',
-      'gdk-3.0',
-      'gtk+-3.0',
-      'gtksourceview-4',
-    ]
-
-    libbedit_vapi = gnome.generate_vapi(
-      meson.project_name(),
-      sources: libbedit_gir.get(0),
-      packages: libbedit_vapi_packages,
-      install: true,
-      install_dir: vapidir,
-    )
-  endif
-endif
+libbedit_vapi = gnome.generate_vapi(
+  meson.project_name(),
+  sources: libbedit_gir.get(0),
+  packages: libbedit_vapi_packages,
+  install: true,
+  install_dir: vapidir,
+)
 
 libbedit_dep = declare_dependency(
   link_with: libbedit_sha,

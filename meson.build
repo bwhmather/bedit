@@ -133,8 +133,8 @@ libpeas_gtk_dep = dependency('libpeas-gtk-1.0', version: libpeas_req)
 
 gspell_dep = dependency('gspell-1', version: '>= 1.0', required: true)
 
-introspection_dep = dependency('gobject-introspection-1.0', required: false)
-vapigen_dep = dependency('vapigen', version: '>= 0.25.1', required: false)
+introspection_dep = dependency('gobject-introspection-1.0')
+vapigen_dep = dependency('vapigen', version: '>= 0.25.1')
 
 python3 = python.find_installation('python3')
 
@@ -162,16 +162,6 @@ configure_file(
 )
 
 # Options
-generate_gir = get_option('introspection')
-if generate_gir and not introspection_dep.found()
-  generate_gir = false
-endif
-
-generate_vapi = generate_gir and get_option('vapi')
-if generate_vapi and not vapigen_dep.found()
-  generate_vapi = false
-endif
-
 active_plugins = [
   'docinfo',
   'modelines',
@@ -213,8 +203,6 @@ summary = [
   '        Prefix:                @0@'.format(get_option('prefix')),
   '        API documentation:     @0@'.format(get_option('gtk_doc')),
   '        User documentation:    @0@'.format(get_option('user_documentation')),
-  '        GObject Introspection: @0@'.format(generate_gir),
-  '        Vala API:              @0@'.format(generate_vapi),
   '',
 ]
 message('\n'.join(summary))
