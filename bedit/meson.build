@@ -135,10 +135,6 @@ elif host_machine.system() == 'windows'
     'bedit-app-win32.c',
   )
 else
-  libbedit_sources += files(
-    'bedit-app-x11.c',
-  )
-
   libbedit_deps += [
     x11_dep,
   ]

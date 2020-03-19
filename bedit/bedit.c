@@ -50,8 +50,6 @@
 #include "bedit-app-osx.h"
 #elif defined G_OS_WIN32
 #include "bedit-app-win32.h"
-#else
-#include "bedit-app-x11.h"
 #endif
 
 #include <libintl.h>
@@ -143,7 +141,7 @@ int main(int argc, char *argv[]) {
 
     type = BEDIT_TYPE_APP_WIN32;
 #else
-    type = BEDIT_TYPE_APP_X11;
+    type = BEDIT_TYPE_APP;
 #endif
 
     /* NOTE: we should not make any calls to the bedit api before the
