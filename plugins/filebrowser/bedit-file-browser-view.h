@@ -25,22 +25,26 @@
 
 G_BEGIN_DECLS
 #define BEDIT_TYPE_FILE_BROWSER_VIEW (bedit_file_browser_view_get_type())
-#define BEDIT_FILE_BROWSER_VIEW(obj)                                           \
-    (G_TYPE_CHECK_INSTANCE_CAST(                                               \
-        (obj), BEDIT_TYPE_FILE_BROWSER_VIEW, BeditFileBrowserView))
-#define BEDIT_FILE_BROWSER_VIEW_CONST(obj)                                     \
-    (G_TYPE_CHECK_INSTANCE_CAST(                                               \
-        (obj), BEDIT_TYPE_FILE_BROWSER_VIEW, BeditFileBrowserView const))
-#define BEDIT_FILE_BROWSER_VIEW_CLASS(klass)                                   \
-    (G_TYPE_CHECK_CLASS_CAST(                                                  \
-        (klass), BEDIT_TYPE_FILE_BROWSER_VIEW, BeditFileBrowserViewClass))
-#define BEDIT_IS_FILE_BROWSER_VIEW(obj)                                        \
+#define BEDIT_FILE_BROWSER_VIEW(obj)                                        \
+    (G_TYPE_CHECK_INSTANCE_CAST(                                            \
+        (obj), BEDIT_TYPE_FILE_BROWSER_VIEW, BeditFileBrowserView           \
+    ))
+#define BEDIT_FILE_BROWSER_VIEW_CONST(obj)                                  \
+    (G_TYPE_CHECK_INSTANCE_CAST(                                            \
+        (obj), BEDIT_TYPE_FILE_BROWSER_VIEW, BeditFileBrowserView const     \
+    ))
+#define BEDIT_FILE_BROWSER_VIEW_CLASS(klass)                                \
+    (G_TYPE_CHECK_CLASS_CAST(                                               \
+        (klass), BEDIT_TYPE_FILE_BROWSER_VIEW, BeditFileBrowserViewClass    \
+    ))
+#define BEDIT_IS_FILE_BROWSER_VIEW(obj)                                     \
     (G_TYPE_CHECK_INSTANCE_TYPE((obj), BEDIT_TYPE_FILE_BROWSER_VIEW))
-#define BEDIT_IS_FILE_BROWSER_VIEW_CLASS(klass)                                \
+#define BEDIT_IS_FILE_BROWSER_VIEW_CLASS(klass)                             \
     (G_TYPE_CHECK_CLASS_TYPE((klass), BEDIT_TYPE_FILE_BROWSER_VIEW))
-#define BEDIT_FILE_BROWSER_VIEW_GET_CLASS(obj)                                 \
-    (G_TYPE_INSTANCE_GET_CLASS(                                                \
-        (obj), BEDIT_TYPE_FILE_BROWSER_VIEW, BeditFileBrowserViewClass))
+#define BEDIT_FILE_BROWSER_VIEW_GET_CLASS(obj)                              \
+    (G_TYPE_INSTANCE_GET_CLASS(                                             \
+        (obj), BEDIT_TYPE_FILE_BROWSER_VIEW, BeditFileBrowserViewClass      \
+    ))
 
 typedef struct _BeditFileBrowserView BeditFileBrowserView;
 typedef struct _BeditFileBrowserViewClass BeditFileBrowserViewClass;
@@ -62,25 +66,34 @@ struct _BeditFileBrowserViewClass {
 
     /* Signals */
     void (*error)(
-        BeditFileBrowserView *filetree, guint code, gchar const *message);
-    void (*file_activated)(BeditFileBrowserView *filetree, GtkTreeIter *iter);
+        BeditFileBrowserView *filetree, guint code, gchar const *message
+    );
+    void (*file_activated)(
+        BeditFileBrowserView *filetree, GtkTreeIter *iter
+    );
     void (*directory_activated)(
-        BeditFileBrowserView *filetree, GtkTreeIter *iter);
+        BeditFileBrowserView *filetree, GtkTreeIter *iter
+    );
     void (*bookmark_activated)(
-        BeditFileBrowserView *filetree, GtkTreeIter *iter);
+        BeditFileBrowserView *filetree, GtkTreeIter *iter
+    );
 };
 
 GType bedit_file_browser_view_get_type(void) G_GNUC_CONST;
 
 GtkWidget *bedit_file_browser_view_new(void);
 void bedit_file_browser_view_set_model(
-    BeditFileBrowserView *tree_view, GtkTreeModel *model);
+    BeditFileBrowserView *tree_view, GtkTreeModel *model
+);
 void bedit_file_browser_view_start_rename(
-    BeditFileBrowserView *tree_view, GtkTreeIter *iter);
+    BeditFileBrowserView *tree_view, GtkTreeIter *iter
+);
 void bedit_file_browser_view_set_click_policy(
-    BeditFileBrowserView *tree_view, BeditFileBrowserViewClickPolicy policy);
+    BeditFileBrowserView *tree_view, BeditFileBrowserViewClickPolicy policy
+);
 void bedit_file_browser_view_set_restore_expand_state(
-    BeditFileBrowserView *tree_view, gboolean restore_expand_state);
+    BeditFileBrowserView *tree_view, gboolean restore_expand_state
+);
 
 void _bedit_file_browser_view_register_type(GTypeModule *type_module);
 

@@ -40,12 +40,13 @@
 #define FILE_BROWSER_NODE_DIR(node) ((FileBrowserNodeDir *)(node))
 
 #define DIRECTORY_LOAD_ITEMS_PER_CALLBACK 100
-#define STANDARD_ATTRIBUTE_TYPES                                               \
-    G_FILE_ATTRIBUTE_STANDARD_TYPE "," G_FILE_ATTRIBUTE_STANDARD_IS_HIDDEN     \
-                                   "," G_FILE_ATTRIBUTE_STANDARD_IS_BACKUP     \
-                                   "," G_FILE_ATTRIBUTE_STANDARD_NAME          \
-                                   "," G_FILE_ATTRIBUTE_STANDARD_CONTENT_TYPE  \
-                                   "," G_FILE_ATTRIBUTE_STANDARD_SYMBOLIC_ICON
+#define STANDARD_ATTRIBUTE_TYPES                                            \
+    G_FILE_ATTRIBUTE_STANDARD_TYPE ","                                      \
+    G_FILE_ATTRIBUTE_STANDARD_IS_HIDDEN ","                                 \
+    G_FILE_ATTRIBUTE_STANDARD_IS_BACKUP ","                                 \
+    G_FILE_ATTRIBUTE_STANDARD_NAME ","                                      \
+    G_FILE_ATTRIBUTE_STANDARD_CONTENT_TYPE ","                              \
+    G_FILE_ATTRIBUTE_STANDARD_SYMBOLIC_ICON
 
 typedef struct _FileBrowserNode FileBrowserNode;
 typedef struct _FileBrowserNodeDir FileBrowserNodeDir;
@@ -118,71 +119,97 @@ struct _BeditFileBrowserStorePrivate {
 };
 
 static FileBrowserNode *model_find_node(
-    BeditFileBrowserStore *model, FileBrowserNode *node, GFile *uri);
+    BeditFileBrowserStore *model, FileBrowserNode *node, GFile *uri
+);
 static void model_remove_node(
     BeditFileBrowserStore *model, FileBrowserNode *node, GtkTreePath *path,
-    gboolean free_nodes);
+    gboolean free_nodes
+);
 
 static void set_virtual_root_from_node(
-    BeditFileBrowserStore *model, FileBrowserNode *node);
+    BeditFileBrowserStore *model, FileBrowserNode *node
+);
 
 static void bedit_file_browser_store_iface_init(GtkTreeModelIface *iface);
 static GtkTreeModelFlags bedit_file_browser_store_get_flags(
-    GtkTreeModel *tree_model);
+    GtkTreeModel *tree_model
+);
 static gint bedit_file_browser_store_get_n_columns(GtkTreeModel *tree_model);
 static GType bedit_file_browser_store_get_column_type(
-    GtkTreeModel *tree_model, gint index);
+    GtkTreeModel *tree_model, gint index
+);
 static gboolean bedit_file_browser_store_get_iter(
-    GtkTreeModel *tree_model, GtkTreeIter *iter, GtkTreePath *path);
+    GtkTreeModel *tree_model, GtkTreeIter *iter, GtkTreePath *path
+);
 static GtkTreePath *bedit_file_browser_store_get_path(
-    GtkTreeModel *tree_model, GtkTreeIter *iter);
+    GtkTreeModel *tree_model, GtkTreeIter *iter
+);
 static void bedit_file_browser_store_get_value(
-    GtkTreeModel *tree_model, GtkTreeIter *iter, gint column, GValue *value);
+    GtkTreeModel *tree_model, GtkTreeIter *iter, gint column, GValue *value
+);
 static gboolean bedit_file_browser_store_iter_next(
-    GtkTreeModel *tree_model, GtkTreeIter *iter);
+    GtkTreeModel *tree_model, GtkTreeIter *iter
+);
 static gboolean bedit_file_browser_store_iter_children(
-    GtkTreeModel *tree_model, GtkTreeIter *iter, GtkTreeIter *parent);
+    GtkTreeModel *tree_model, GtkTreeIter *iter, GtkTreeIter *parent
+);
 static gboolean bedit_file_browser_store_iter_has_child(
-    GtkTreeModel *tree_model, GtkTreeIter *iter);
+    GtkTreeModel *tree_model, GtkTreeIter *iter
+);
 static gint bedit_file_browser_store_iter_n_children(
-    GtkTreeModel *tree_model, GtkTreeIter *iter);
+    GtkTreeModel *tree_model, GtkTreeIter *iter
+);
 static gboolean bedit_file_browser_store_iter_nth_child(
-    GtkTreeModel *tree_model, GtkTreeIter *iter, GtkTreeIter *parent, gint n);
+    GtkTreeModel *tree_model, GtkTreeIter *iter, GtkTreeIter *parent, gint n
+);
 static gboolean bedit_file_browser_store_iter_parent(
-    GtkTreeModel *tree_model, GtkTreeIter *iter, GtkTreeIter *child);
+    GtkTreeModel *tree_model, GtkTreeIter *iter, GtkTreeIter *child
+);
 static void bedit_file_browser_store_row_inserted(
-    GtkTreeModel *tree_model, GtkTreePath *path, GtkTreeIter *iter);
+    GtkTreeModel *tree_model, GtkTreePath *path, GtkTreeIter *iter
+);
 
 static void bedit_file_browser_store_drag_source_init(
-    GtkTreeDragSourceIface *iface);
+    GtkTreeDragSourceIface *iface
+);
 static gboolean bedit_file_browser_store_row_draggable(
-    GtkTreeDragSource *drag_source, GtkTreePath *path);
+    GtkTreeDragSource *drag_source, GtkTreePath *path
+);
 static gboolean bedit_file_browser_store_drag_data_delete(
-    GtkTreeDragSource *drag_source, GtkTreePath *path);
+    GtkTreeDragSource *drag_source, GtkTreePath *path
+);
 static gboolean bedit_file_browser_store_drag_data_get(
     GtkTreeDragSource *drag_source, GtkTreePath *path,
-    GtkSelectionData *selection_data);
+    GtkSelectionData *selection_data
+);
 
 static void file_browser_node_free(
-    BeditFileBrowserStore *model, FileBrowserNode *node);
+    BeditFileBrowserStore *model, FileBrowserNode *node
+);
 static void model_add_node(
     BeditFileBrowserStore *model, FileBrowserNode *child,
-    FileBrowserNode *parent);
+    FileBrowserNode *parent
+);
 static void model_clear(BeditFileBrowserStore *model, gboolean free_nodes);
 static gint model_sort_default(FileBrowserNode *node1, FileBrowserNode *node2);
 static void model_check_dummy(
-    BeditFileBrowserStore *model, FileBrowserNode *node);
+    BeditFileBrowserStore *model, FileBrowserNode *node
+);
 static void next_files_async(GFileEnumerator *enumerator, AsyncNode *async);
 
 static void delete_files(AsyncData *data);
 
 G_DEFINE_DYNAMIC_TYPE_EXTENDED(
     BeditFileBrowserStore, bedit_file_browser_store, G_TYPE_OBJECT, 0,
-    G_ADD_PRIVATE_DYNAMIC(BeditFileBrowserStore) G_IMPLEMENT_INTERFACE_DYNAMIC(
-        GTK_TYPE_TREE_MODEL, bedit_file_browser_store_iface_init)
-        G_IMPLEMENT_INTERFACE_DYNAMIC(
-            GTK_TYPE_TREE_DRAG_SOURCE,
-            bedit_file_browser_store_drag_source_init))
+    G_ADD_PRIVATE_DYNAMIC(BeditFileBrowserStore)
+    G_IMPLEMENT_INTERFACE_DYNAMIC(
+        GTK_TYPE_TREE_MODEL, bedit_file_browser_store_iface_init
+    )
+    G_IMPLEMENT_INTERFACE_DYNAMIC(
+        GTK_TYPE_TREE_DRAG_SOURCE,
+        bedit_file_browser_store_drag_source_init
+    )
+)
 
 /* Properties */
 enum {
@@ -244,14 +271,16 @@ static void bedit_file_browser_store_finalize(GObject *object) {
 }
 
 static void set_gvalue_from_node(GValue *value, FileBrowserNode *node) {
-    if (node == NULL)
+    if (node == NULL) {
         g_value_set_object(value, NULL);
-    else
+    } else {
         g_value_set_object(value, node->file);
+    }
 }
 
 static void bedit_file_browser_store_get_property(
-    GObject *object, guint prop_id, GValue *value, GParamSpec *pspec) {
+    GObject *object, guint prop_id, GValue *value, GParamSpec *pspec
+) {
     BeditFileBrowserStore *obj = BEDIT_FILE_BROWSER_STORE(object);
 
     switch (prop_id) {
@@ -274,20 +303,23 @@ static void bedit_file_browser_store_get_property(
 }
 
 static void bedit_file_browser_store_set_property(
-    GObject *object, guint prop_id, const GValue *value, GParamSpec *pspec) {
+    GObject *object, guint prop_id, const GValue *value, GParamSpec *pspec
+) {
     BeditFileBrowserStore *obj = BEDIT_FILE_BROWSER_STORE(object);
 
     switch (prop_id) {
     case PROP_ROOT:
         bedit_file_browser_store_set_root(
-            obj, G_FILE(g_value_get_object(value)));
+            obj, G_FILE(g_value_get_object(value))
+        );
         break;
     case PROP_FILTER_MODE:
         bedit_file_browser_store_set_filter_mode(obj, g_value_get_flags(value));
         break;
     case PROP_BINARY_PATTERNS:
         bedit_file_browser_store_set_binary_patterns(
-            obj, g_value_get_boxed(value));
+            obj, g_value_get_boxed(value)
+        );
         break;
     default:
         G_OBJECT_WARN_INVALID_PROPERTY_ID(object, prop_id, pspec);
@@ -296,7 +328,8 @@ static void bedit_file_browser_store_set_property(
 }
 
 static void bedit_file_browser_store_class_init(
-    BeditFileBrowserStoreClass *klass) {
+    BeditFileBrowserStoreClass *klass
+) {
     GObjectClass *object_class = G_OBJECT_CLASS(klass);
 
     object_class->finalize = bedit_file_browser_store_finalize;
@@ -307,13 +340,17 @@ static void bedit_file_browser_store_class_init(
         object_class, PROP_ROOT,
         g_param_spec_object(
             "root", "Root", "The root location", G_TYPE_FILE,
-            G_PARAM_CONSTRUCT | G_PARAM_READWRITE));
+            G_PARAM_CONSTRUCT | G_PARAM_READWRITE
+        )
+    );
 
     g_object_class_install_property(
         object_class, PROP_VIRTUAL_ROOT,
         g_param_spec_object(
             "virtual-root", "Virtual Root", "The virtual root location",
-            G_TYPE_FILE, G_PARAM_READABLE));
+            G_TYPE_FILE, G_PARAM_READABLE
+        )
+    );
 
     g_object_class_install_property(
         object_class, PROP_FILTER_MODE,
@@ -321,7 +358,9 @@ static void bedit_file_browser_store_class_init(
             "filter-mode", "Filter Mode", "The filter mode",
             BEDIT_TYPE_FILE_BROWSER_STORE_FILTER_MODE,
             bedit_file_browser_store_filter_mode_get_default(),
-            G_PARAM_READWRITE));
+            G_PARAM_READWRITE
+        )
+    );
 
     g_object_class_install_property(
         object_class, PROP_BINARY_PATTERNS,
@@ -331,47 +370,71 @@ static void bedit_file_browser_store_class_init(
 
     model_signals[BEGIN_LOADING] = g_signal_new(
         "begin-loading", G_OBJECT_CLASS_TYPE(object_class), G_SIGNAL_RUN_LAST,
-        G_STRUCT_OFFSET(BeditFileBrowserStoreClass, begin_loading), NULL, NULL,
-        NULL, G_TYPE_NONE, 1, GTK_TYPE_TREE_ITER);
+        G_STRUCT_OFFSET(BeditFileBrowserStoreClass, begin_loading),
+        NULL, NULL, NULL,
+        G_TYPE_NONE, 1,
+        GTK_TYPE_TREE_ITER
+    );
     model_signals[END_LOADING] = g_signal_new(
         "end-loading", G_OBJECT_CLASS_TYPE(object_class), G_SIGNAL_RUN_LAST,
-        G_STRUCT_OFFSET(BeditFileBrowserStoreClass, end_loading), NULL, NULL,
-        NULL, G_TYPE_NONE, 1, GTK_TYPE_TREE_ITER);
+        G_STRUCT_OFFSET(BeditFileBrowserStoreClass, end_loading),
+        NULL, NULL, NULL,
+        G_TYPE_NONE, 1,
+        GTK_TYPE_TREE_ITER
+    );
     model_signals[ERROR] = g_signal_new(
         "error", G_OBJECT_CLASS_TYPE(object_class), G_SIGNAL_RUN_LAST,
-        G_STRUCT_OFFSET(BeditFileBrowserStoreClass, error), NULL, NULL, NULL,
-        G_TYPE_NONE, 2, G_TYPE_UINT, G_TYPE_STRING);
+        G_STRUCT_OFFSET(BeditFileBrowserStoreClass, error),
+        NULL, NULL, NULL,
+        G_TYPE_NONE, 2,
+        G_TYPE_UINT, G_TYPE_STRING
+    );
     model_signals[NO_TRASH] = g_signal_new(
         "no-trash", G_OBJECT_CLASS_TYPE(object_class), G_SIGNAL_RUN_LAST,
         G_STRUCT_OFFSET(BeditFileBrowserStoreClass, no_trash),
-        g_signal_accumulator_true_handled, NULL, NULL, G_TYPE_BOOLEAN, 1,
-        G_TYPE_POINTER);
+        g_signal_accumulator_true_handled, NULL, NULL,
+        G_TYPE_BOOLEAN, 1,
+        G_TYPE_POINTER
+    );
     model_signals[RENAME] = g_signal_new(
         "rename", G_OBJECT_CLASS_TYPE(object_class), G_SIGNAL_RUN_LAST,
-        G_STRUCT_OFFSET(BeditFileBrowserStoreClass, rename), NULL, NULL, NULL,
-        G_TYPE_NONE, 2, G_TYPE_FILE, G_TYPE_FILE);
+        G_STRUCT_OFFSET(BeditFileBrowserStoreClass, rename),
+        NULL, NULL, NULL,
+        G_TYPE_NONE, 2,
+        G_TYPE_FILE, G_TYPE_FILE
+    );
     model_signals[BEGIN_REFRESH] = g_signal_new(
         "begin-refresh", G_OBJECT_CLASS_TYPE(object_class), G_SIGNAL_RUN_LAST,
-        G_STRUCT_OFFSET(BeditFileBrowserStoreClass, begin_refresh), NULL, NULL,
-        NULL, G_TYPE_NONE, 0);
+        G_STRUCT_OFFSET(BeditFileBrowserStoreClass, begin_refresh),
+        NULL, NULL, NULL,
+        G_TYPE_NONE, 0
+    );
     model_signals[END_REFRESH] = g_signal_new(
         "end-refresh", G_OBJECT_CLASS_TYPE(object_class), G_SIGNAL_RUN_LAST,
-        G_STRUCT_OFFSET(BeditFileBrowserStoreClass, end_refresh), NULL, NULL,
-        NULL, G_TYPE_NONE, 0);
+        G_STRUCT_OFFSET(BeditFileBrowserStoreClass, end_refresh),
+        NULL, NULL, NULL,
+        G_TYPE_NONE, 0
+    );
     model_signals[UNLOAD] = g_signal_new(
         "unload", G_OBJECT_CLASS_TYPE(object_class), G_SIGNAL_RUN_LAST,
-        G_STRUCT_OFFSET(BeditFileBrowserStoreClass, unload), NULL, NULL, NULL,
-        G_TYPE_NONE, 1, G_TYPE_FILE);
+        G_STRUCT_OFFSET(BeditFileBrowserStoreClass, unload),
+        NULL, NULL, NULL,
+        G_TYPE_NONE, 1,
+        G_TYPE_FILE
+    );
     model_signals[BEFORE_ROW_DELETED] = g_signal_new(
         "before-row-deleted", G_OBJECT_CLASS_TYPE(object_class),
         G_SIGNAL_RUN_LAST,
-        G_STRUCT_OFFSET(BeditFileBrowserStoreClass, before_row_deleted), NULL,
-        NULL, NULL, G_TYPE_NONE, 1,
-        GTK_TYPE_TREE_PATH | G_SIGNAL_TYPE_STATIC_SCOPE);
+        G_STRUCT_OFFSET(BeditFileBrowserStoreClass, before_row_deleted),
+        NULL, NULL, NULL,
+        G_TYPE_NONE, 1,
+        GTK_TYPE_TREE_PATH | G_SIGNAL_TYPE_STATIC_SCOPE
+    );
 }
 
 static void bedit_file_browser_store_class_finalize(
-    BeditFileBrowserStoreClass *klass) {}
+    BeditFileBrowserStoreClass *klass
+) {}
 
 static void bedit_file_browser_store_iface_init(GtkTreeModelIface *iface) {
     iface->get_flags = bedit_file_browser_store_get_flags;
@@ -390,7 +453,8 @@ static void bedit_file_browser_store_iface_init(GtkTreeModelIface *iface) {
 }
 
 static void bedit_file_browser_store_drag_source_init(
-    GtkTreeDragSourceIface *iface) {
+    GtkTreeDragSourceIface *iface
+) {
     iface->row_draggable = bedit_file_browser_store_row_draggable;
     iface->drag_data_delete = bedit_file_browser_store_drag_data_delete;
     iface->drag_data_get = bedit_file_browser_store_drag_data_get;
@@ -418,40 +482,50 @@ static void bedit_file_browser_store_init(BeditFileBrowserStore *obj) {
 }
 
 static gboolean node_has_parent(
-    FileBrowserNode *node, FileBrowserNode *parent) {
-    if (node->parent == NULL)
+    FileBrowserNode *node, FileBrowserNode *parent
+) {
+    if (node->parent == NULL) {
         return FALSE;
+    }
 
-    if (node->parent == parent)
+    if (node->parent == parent) {
         return TRUE;
+    }
 
     return node_has_parent(node->parent, parent);
 }
 
 static gboolean node_in_tree(
-    BeditFileBrowserStore *model, FileBrowserNode *node) {
+    BeditFileBrowserStore *model, FileBrowserNode *node
+) {
     return node_has_parent(node, model->priv->virtual_root);
 }
 
 static gboolean model_node_visibility(
-    BeditFileBrowserStore *model, FileBrowserNode *node) {
-    if (node == NULL)
+    BeditFileBrowserStore *model, FileBrowserNode *node
+) {
+    if (node == NULL) {
         return FALSE;
+    }
 
-    if (NODE_IS_DUMMY(node))
+    if (NODE_IS_DUMMY(node)) {
         return !NODE_IS_HIDDEN(node);
+    }
 
-    if (node == model->priv->virtual_root)
+    if (node == model->priv->virtual_root) {
         return TRUE;
+    }
 
-    if (!node_has_parent(node, model->priv->virtual_root))
+    if (!node_has_parent(node, model->priv->virtual_root)) {
         return FALSE;
+    }
 
     return !NODE_IS_FILTERED(node);
 }
 
 static gboolean model_node_inserted(
-    BeditFileBrowserStore *model, FileBrowserNode *node) {
+    BeditFileBrowserStore *model, FileBrowserNode *node
+) {
     return node == model->priv->virtual_root ||
         (model_node_visibility(model, node) && node->inserted);
 }
@@ -459,9 +533,11 @@ static gboolean model_node_inserted(
 /* Interface implementation */
 
 static GtkTreeModelFlags bedit_file_browser_store_get_flags(
-    GtkTreeModel *tree_model) {
+    GtkTreeModel *tree_model
+) {
     g_return_val_if_fail(
-        BEDIT_IS_FILE_BROWSER_STORE(tree_model), (GtkTreeModelFlags)0);
+        BEDIT_IS_FILE_BROWSER_STORE(tree_model), (GtkTreeModelFlags) 0
+    );
 
     return GTK_TREE_MODEL_ITERS_PERSIST;
 }
@@ -473,17 +549,21 @@ static gint bedit_file_browser_store_get_n_columns(GtkTreeModel *tree_model) {
 }
 
 static GType bedit_file_browser_store_get_column_type(
-    GtkTreeModel *tree_model, gint idx) {
+    GtkTreeModel *tree_model, gint idx
+) {
     g_return_val_if_fail(
-        BEDIT_IS_FILE_BROWSER_STORE(tree_model), G_TYPE_INVALID);
+        BEDIT_IS_FILE_BROWSER_STORE(tree_model), G_TYPE_INVALID
+    );
     g_return_val_if_fail(
-        idx < BEDIT_FILE_BROWSER_STORE_COLUMN_NUM && idx >= 0, G_TYPE_INVALID);
+        idx < BEDIT_FILE_BROWSER_STORE_COLUMN_NUM && idx >= 0, G_TYPE_INVALID
+    );
 
     return BEDIT_FILE_BROWSER_STORE(tree_model)->priv->column_types[idx];
 }
 
 static gboolean bedit_file_browser_store_get_iter(
-    GtkTreeModel *tree_model, GtkTreeIter *iter, GtkTreePath *path) {
+    GtkTreeModel *tree_model, GtkTreeIter *iter, GtkTreePath *path
+) {
     BeditFileBrowserStore *model;
     FileBrowserNode *node;
     gint *indices, depth;
@@ -500,26 +580,33 @@ static gboolean bedit_file_browser_store_get_iter(
         GSList *item;
         gint num = 0;
 
-        if (node == NULL)
+        if (node == NULL) {
             return FALSE;
+        }
 
-        if (!NODE_IS_DIR(node))
+        if (!NODE_IS_DIR(node)) {
             return FALSE;
+        }
 
-        for (item = FILE_BROWSER_NODE_DIR(node)->children; item;
-             item = item->next) {
+        for (
+            item = FILE_BROWSER_NODE_DIR(node)->children;
+            item;
+            item = item->next
+        ) {
             FileBrowserNode *child = (FileBrowserNode *)(item->data);
 
             if (model_node_inserted(model, child)) {
-                if (num == indices[i])
+                if (num == indices[i]) {
                     break;
+                }
 
                 num++;
             }
         }
 
-        if (item == NULL)
+        if (item == NULL) {
             return FALSE;
+        }
 
         node = (FileBrowserNode *)(item->data);
     }
@@ -532,7 +619,8 @@ static gboolean bedit_file_browser_store_get_iter(
 }
 
 static GtkTreePath *bedit_file_browser_store_get_path_real(
-    BeditFileBrowserStore *model, FileBrowserNode *node) {
+    BeditFileBrowserStore *model, FileBrowserNode *node
+) {
     GtkTreePath *path = gtk_tree_path_new();
     gint num = 0;
 
@@ -544,12 +632,17 @@ static GtkTreePath *bedit_file_browser_store_get_path_real(
 
         num = 0;
 
-        for (GSList *item = FILE_BROWSER_NODE_DIR(node->parent)->children; item;
-             item = item->next) {
+        for (
+            GSList *item = FILE_BROWSER_NODE_DIR(node->parent)->children;
+            item;
+            item = item->next
+        ) {
             FileBrowserNode *check = (FileBrowserNode *)(item->data);
 
-            if (model_node_visibility(model, check) &&
-                (check == node || check->inserted)) {
+            if (
+                model_node_visibility(model, check) &&
+                (check == node || check->inserted)
+            ) {
                 if (check == node) {
                     gtk_tree_path_prepend_index(path, num);
                     break;
@@ -557,8 +650,9 @@ static GtkTreePath *bedit_file_browser_store_get_path_real(
 
                 ++num;
             } else if (check == node) {
-                if (NODE_IS_DUMMY(node))
+                if (NODE_IS_DUMMY(node)) {
                     g_warning("Dummy not visible???");
+                }
 
                 gtk_tree_path_free(path);
                 return NULL;
@@ -572,18 +666,21 @@ static GtkTreePath *bedit_file_browser_store_get_path_real(
 }
 
 static GtkTreePath *bedit_file_browser_store_get_path(
-    GtkTreeModel *tree_model, GtkTreeIter *iter) {
+    GtkTreeModel *tree_model, GtkTreeIter *iter
+) {
     g_return_val_if_fail(BEDIT_IS_FILE_BROWSER_STORE(tree_model), NULL);
     g_return_val_if_fail(iter != NULL, NULL);
     g_return_val_if_fail(iter->user_data != NULL, NULL);
 
     return bedit_file_browser_store_get_path_real(
         BEDIT_FILE_BROWSER_STORE(tree_model),
-        (FileBrowserNode *)(iter->user_data));
+        (FileBrowserNode *)(iter->user_data)
+    );
 }
 
 static void bedit_file_browser_store_get_value(
-    GtkTreeModel *tree_model, GtkTreeIter *iter, gint column, GValue *value) {
+    GtkTreeModel *tree_model, GtkTreeIter *iter, gint column, GValue *value
+) {
     FileBrowserNode *node;
 
     g_return_if_fail(BEDIT_IS_FILE_BROWSER_STORE(tree_model));
@@ -594,7 +691,8 @@ static void bedit_file_browser_store_get_value(
 
     g_value_init(
         value,
-        BEDIT_FILE_BROWSER_STORE(tree_model)->priv->column_types[column]);
+        BEDIT_FILE_BROWSER_STORE(tree_model)->priv->column_types[column]
+    );
 
     switch (column) {
     case BEDIT_FILE_BROWSER_STORE_COLUMN_LOCATION:
@@ -621,7 +719,8 @@ static void bedit_file_browser_store_get_value(
 }
 
 static gboolean bedit_file_browser_store_iter_next(
-    GtkTreeModel *tree_model, GtkTreeIter *iter) {
+    GtkTreeModel *tree_model, GtkTreeIter *iter
+) {
     BeditFileBrowserStore *model;
     FileBrowserNode *node;
     GSList *first;
@@ -633,11 +732,13 @@ static gboolean bedit_file_browser_store_iter_next(
     model = BEDIT_FILE_BROWSER_STORE(tree_model);
     node = (FileBrowserNode *)(iter->user_data);
 
-    if (node->parent == NULL)
+    if (node->parent == NULL) {
         return FALSE;
+    }
 
     first = g_slist_next(
-        g_slist_find(FILE_BROWSER_NODE_DIR(node->parent)->children, node));
+        g_slist_find(FILE_BROWSER_NODE_DIR(node->parent)->children, node)
+    );
 
     for (GSList *item = first; item; item = item->next) {
         if (model_node_inserted(model, (FileBrowserNode *)(item->data))) {
@@ -650,7 +751,8 @@ static gboolean bedit_file_browser_store_iter_next(
 }
 
 static gboolean bedit_file_browser_store_iter_children(
-    GtkTreeModel *tree_model, GtkTreeIter *iter, GtkTreeIter *parent) {
+    GtkTreeModel *tree_model, GtkTreeIter *iter, GtkTreeIter *parent
+) {
     FileBrowserNode *node;
     BeditFileBrowserStore *model;
 
@@ -659,19 +761,25 @@ static gboolean bedit_file_browser_store_iter_children(
 
     model = BEDIT_FILE_BROWSER_STORE(tree_model);
 
-    if (parent == NULL)
+    if (parent == NULL) {
         node = model->priv->virtual_root;
-    else
+    } else {
         node = (FileBrowserNode *)(parent->user_data);
+    }
 
-    if (node == NULL)
+    if (node == NULL) {
         return FALSE;
+    }
 
-    if (!NODE_IS_DIR(node))
+    if (!NODE_IS_DIR(node)) {
         return FALSE;
+    }
 
-    for (GSList *item = FILE_BROWSER_NODE_DIR(node)->children; item;
-         item = item->next) {
+    for (
+        GSList *item = FILE_BROWSER_NODE_DIR(node)->children;
+        item;
+        item = item->next
+    ) {
         if (model_node_inserted(model, (FileBrowserNode *)(item->data))) {
             iter->user_data = item->data;
             return TRUE;
@@ -683,20 +791,26 @@ static gboolean bedit_file_browser_store_iter_children(
 
 static gboolean filter_tree_model_iter_has_child_real(
     BeditFileBrowserStore *model, FileBrowserNode *node) {
-    if (!NODE_IS_DIR(node))
+    if (!NODE_IS_DIR(node)) {
         return FALSE;
+    }
 
-    for (GSList *item = FILE_BROWSER_NODE_DIR(node)->children; item;
-         item = item->next) {
-        if (model_node_inserted(model, (FileBrowserNode *)(item->data)))
+    for (
+        GSList *item = FILE_BROWSER_NODE_DIR(node)->children;
+        item;
+        item = item->next
+    ) {
+        if (model_node_inserted(model, (FileBrowserNode *)(item->data))) {
             return TRUE;
+        }
     }
 
     return FALSE;
 }
 
 static gboolean bedit_file_browser_store_iter_has_child(
-    GtkTreeModel *tree_model, GtkTreeIter *iter) {
+    GtkTreeModel *tree_model, GtkTreeIter *iter
+) {
     FileBrowserNode *node;
     BeditFileBrowserStore *model;
 
@@ -705,16 +819,18 @@ static gboolean bedit_file_browser_store_iter_has_child(
 
     model = BEDIT_FILE_BROWSER_STORE(tree_model);
 
-    if (iter == NULL)
+    if (iter == NULL) {
         node = model->priv->virtual_root;
-    else
+    } else {
         node = (FileBrowserNode *)(iter->user_data);
+    }
 
     return filter_tree_model_iter_has_child_real(model, node);
 }
 
 static gint bedit_file_browser_store_iter_n_children(
-    GtkTreeModel *tree_model, GtkTreeIter *iter) {
+    GtkTreeModel *tree_model, GtkTreeIter *iter
+) {
     FileBrowserNode *node;
     BeditFileBrowserStore *model;
     gint num = 0;
@@ -724,25 +840,32 @@ static gint bedit_file_browser_store_iter_n_children(
 
     model = BEDIT_FILE_BROWSER_STORE(tree_model);
 
-    if (iter == NULL)
+    if (iter == NULL) {
         node = model->priv->virtual_root;
-    else
+    } else {
         node = (FileBrowserNode *)(iter->user_data);
+    }
 
-    if (!NODE_IS_DIR(node))
+    if (!NODE_IS_DIR(node)) {
         return 0;
+    }
 
-    for (GSList *item = FILE_BROWSER_NODE_DIR(node)->children; item;
-         item = item->next) {
-        if (model_node_inserted(model, (FileBrowserNode *)(item->data)))
+    for (
+        GSList *item = FILE_BROWSER_NODE_DIR(node)->children;
+        item;
+        item = item->next
+    ) {
+        if (model_node_inserted(model, (FileBrowserNode *)(item->data))) {
             ++num;
+        }
     }
 
     return num;
 }
 
 static gboolean bedit_file_browser_store_iter_nth_child(
-    GtkTreeModel *tree_model, GtkTreeIter *iter, GtkTreeIter *parent, gint n) {
+    GtkTreeModel *tree_model, GtkTreeIter *iter, GtkTreeIter *parent, gint n
+) {
     FileBrowserNode *node;
     BeditFileBrowserStore *model;
     gint num = 0;
@@ -752,16 +875,21 @@ static gboolean bedit_file_browser_store_iter_nth_child(
 
     model = BEDIT_FILE_BROWSER_STORE(tree_model);
 
-    if (parent == NULL)
+    if (parent == NULL) {
         node = model->priv->virtual_root;
-    else
+    } else {
         node = (FileBrowserNode *)(parent->user_data);
+    }
 
-    if (!NODE_IS_DIR(node))
+    if (!NODE_IS_DIR(node)) {
         return FALSE;
+    }
 
-    for (GSList *item = FILE_BROWSER_NODE_DIR(node)->children; item;
-         item = item->next) {
+    for (
+        GSList *item = FILE_BROWSER_NODE_DIR(node)->children;
+        item;
+        item = item->next
+    ) {
         if (model_node_inserted(model, (FileBrowserNode *)(item->data))) {
             if (num == n) {
                 iter->user_data = item->data;
@@ -776,7 +904,8 @@ static gboolean bedit_file_browser_store_iter_nth_child(
 }
 
 static gboolean bedit_file_browser_store_iter_parent(
-    GtkTreeModel *tree_model, GtkTreeIter *iter, GtkTreeIter *child) {
+    GtkTreeModel *tree_model, GtkTreeIter *iter, GtkTreeIter *child
+) {
     FileBrowserNode *node;
     BeditFileBrowserStore *model;
 
@@ -787,46 +916,55 @@ static gboolean bedit_file_browser_store_iter_parent(
     node = (FileBrowserNode *)(child->user_data);
     model = BEDIT_FILE_BROWSER_STORE(tree_model);
 
-    if (!node_in_tree(model, node))
+    if (!node_in_tree(model, node)) [
         return FALSE;
+    }
 
-    if (node->parent == NULL)
+    if (node->parent == NULL) {
         return FALSE;
+    }
 
     iter->user_data = node->parent;
     return TRUE;
 }
 
 static void bedit_file_browser_store_row_inserted(
-    GtkTreeModel *tree_model, GtkTreePath *path, GtkTreeIter *iter) {
+    GtkTreeModel *tree_model, GtkTreePath *path, GtkTreeIter *iter
+) {
     FileBrowserNode *node = (FileBrowserNode *)(iter->user_data);
 
     node->inserted = TRUE;
 }
 
 static gboolean bedit_file_browser_store_row_draggable(
-    GtkTreeDragSource *drag_source, GtkTreePath *path) {
+    GtkTreeDragSource *drag_source, GtkTreePath *path
+) {
     GtkTreeIter iter;
     BeditFileBrowserStoreFlag flags;
 
-    if (!gtk_tree_model_get_iter(GTK_TREE_MODEL(drag_source), &iter, path))
+    if (!gtk_tree_model_get_iter(GTK_TREE_MODEL(drag_source), &iter, path)) {
         return FALSE;
+    }
 
     gtk_tree_model_get(
         GTK_TREE_MODEL(drag_source), &iter,
-        BEDIT_FILE_BROWSER_STORE_COLUMN_FLAGS, &flags, -1);
+        BEDIT_FILE_BROWSER_STORE_COLUMN_FLAGS, &flags,
+        -1
+    );
 
     return !FILE_IS_DUMMY(flags);
 }
 
 static gboolean bedit_file_browser_store_drag_data_delete(
-    GtkTreeDragSource *drag_source, GtkTreePath *path) {
+    GtkTreeDragSource *drag_source, GtkTreePath *path
+) {
     return FALSE;
 }
 
 static gboolean bedit_file_browser_store_drag_data_get(
     GtkTreeDragSource *drag_source, GtkTreePath *path,
-    GtkSelectionData *selection_data) {
+    GtkSelectionData *selection_data
+) {
     GtkTreeIter iter;
     GFile *location;
     gchar *uris[2] = {
@@ -834,12 +972,15 @@ static gboolean bedit_file_browser_store_drag_data_get(
     };
     gboolean ret;
 
-    if (!gtk_tree_model_get_iter(GTK_TREE_MODEL(drag_source), &iter, path))
+    if (!gtk_tree_model_get_iter(GTK_TREE_MODEL(drag_source), &iter, path)) {
         return FALSE;
+    }
 
     gtk_tree_model_get(
         GTK_TREE_MODEL(drag_source), &iter,
-        BEDIT_FILE_BROWSER_STORE_COLUMN_LOCATION, &location, -1);
+        BEDIT_FILE_BROWSER_STORE_COLUMN_LOCATION, &location,
+        -1
+    );
 
     g_assert(location);
 
@@ -852,14 +993,15 @@ static gboolean bedit_file_browser_store_drag_data_get(
     return ret;
 }
 
-#define FILTER_HIDDEN(mode)                                                    \
+#define FILTER_HIDDEN(mode)                                                 \
     (mode & BEDIT_FILE_BROWSER_STORE_FILTER_MODE_HIDE_HIDDEN)
-#define FILTER_BINARY(mode)                                                    \
+#define FILTER_BINARY(mode)                                                 \
     (mode & BEDIT_FILE_BROWSER_STORE_FILTER_MODE_HIDE_BINARY)
 
 /* Private */
 static void model_begin_loading(
-    BeditFileBrowserStore *model, FileBrowserNode *node) {
+    BeditFileBrowserStore *model, FileBrowserNode *node
+) {
     GtkTreeIter iter;
 
     iter.user_data = node;
@@ -867,7 +1009,8 @@ static void model_begin_loading(
 }
 
 static void model_end_loading(
-    BeditFileBrowserStore *model, FileBrowserNode *node) {
+    BeditFileBrowserStore *model, FileBrowserNode *node
+) {
     GtkTreeIter iter;
 
     iter.user_data = node;
@@ -875,7 +1018,8 @@ static void model_end_loading(
 }
 
 static void model_node_update_visibility(
-    BeditFileBrowserStore *model, FileBrowserNode *node) {
+    BeditFileBrowserStore *model, FileBrowserNode *node
+) {
     GtkTreeIter iter;
 
     node->flags &= ~BEDIT_FILE_BROWSER_STORE_FLAG_IS_FILTERED;
@@ -894,11 +1038,13 @@ static void model_node_update_visibility(
             gchar *name_reversed = g_utf8_strreverse(node->name, name_length);
 
             for (guint i = 0; i < model->priv->binary_pattern_specs->len; ++i) {
-                GPatternSpec *spec =
-                    g_ptr_array_index(model->priv->binary_pattern_specs, i);
+                GPatternSpec *spec = g_ptr_array_index(
+                    model->priv->binary_pattern_specs, i
+                );
 
                 if (g_pattern_match(
-                        spec, name_length, node->name, name_reversed)) {
+                    spec, name_length, node->name, name_reversed
+                )) {
                     node->flags |= BEDIT_FILE_BROWSER_STORE_FLAG_IS_FILTERED;
                     g_free(name_reversed);
                     return;
@@ -913,8 +1059,10 @@ static void model_node_update_visibility(
         iter.user_data = node;
 
         if (!model->priv->filter_func(
-                model, &iter, model->priv->filter_user_data))
+            model, &iter, model->priv->filter_user_data
+        )) {
             node->flags |= BEDIT_FILE_BROWSER_STORE_FLAG_IS_FILTERED;
+        }
     }
 }
 
@@ -939,28 +1087,32 @@ static gint model_sort_default(FileBrowserNode *node1, FileBrowserNode *node2) {
     gint f1 = NODE_IS_DUMMY(node1);
     gint f2 = NODE_IS_DUMMY(node2);
 
-    if (f1 && f2)
+    if (f1 && f2) {
         return 0;
-    else if (f1 || f2)
+    } else if (f1 || f2) {
         return f1 ? -1 : 1;
+    }
 
     f1 = NODE_IS_DIR(node1);
     f2 = NODE_IS_DIR(node2);
 
-    if (f1 != f2)
+    if (f1 != f2) {
         return f1 ? -1 : 1;
+    }
 
     return collate_nodes(node1, node2);
 }
 
 static void model_resort_node(
-    BeditFileBrowserStore *model, FileBrowserNode *node) {
+    BeditFileBrowserStore *model, FileBrowserNode *node
+) {
     FileBrowserNodeDir *dir = FILE_BROWSER_NODE_DIR(node->parent);
 
     if (!model_node_visibility(model, node->parent)) {
         /* Just sort the children of the parent */
-        dir->children =
-            g_slist_sort(dir->children, (GCompareFunc)(model->priv->sort_func));
+        dir->children = g_slist_sort(
+            dir->children, (GCompareFunc)(model->priv->sort_func)
+        );
     } else {
         GtkTreeIter iter;
         GtkTreePath *path;
@@ -971,12 +1123,14 @@ static void model_resort_node(
         for (GSList *item = dir->children; item; item = item->next) {
             FileBrowserNode *child = (FileBrowserNode *)(item->data);
 
-            if (model_node_visibility(model, child))
+            if (model_node_visibility(model, child)) {
                 child->pos = pos++;
+            }
         }
 
-        dir->children =
-            g_slist_sort(dir->children, (GCompareFunc)(model->priv->sort_func));
+        dir->children = g_slist_sort(
+            dir->children, (GCompareFunc)(model->priv->sort_func)
+        );
         neworder = g_new(gint, pos);
         pos = 0;
 
@@ -984,15 +1138,17 @@ static void model_resort_node(
         for (GSList *item = dir->children; item; item = item->next) {
             FileBrowserNode *child = (FileBrowserNode *)(item->data);
 
-            if (model_node_visibility(model, child))
+            if (model_node_visibility(model, child)) {
                 neworder[pos++] = child->pos;
+            }
         }
 
         iter.user_data = node->parent;
         path = bedit_file_browser_store_get_path_real(model, node->parent);
 
         gtk_tree_model_rows_reordered(
-            GTK_TREE_MODEL(model), path, &iter, neworder);
+            GTK_TREE_MODEL(model), path, &iter, neworder
+        );
 
         g_free(neworder);
         gtk_tree_path_free(path);
@@ -1000,9 +1156,11 @@ static void model_resort_node(
 }
 
 static void row_changed(
-    BeditFileBrowserStore *model, GtkTreePath **path, GtkTreeIter *iter) {
-    GtkTreeRowReference *ref =
-        gtk_tree_row_reference_new(GTK_TREE_MODEL(model), *path);
+    BeditFileBrowserStore *model, GtkTreePath **path, GtkTreeIter *iter
+) {
+    GtkTreeRowReference *ref = gtk_tree_row_reference_new(
+        GTK_TREE_MODEL(model), *path
+    );
 
     /* Insert a copy of the actual path here because the row-inserted
        signal may alter the path */
@@ -1014,15 +1172,17 @@ static void row_changed(
 }
 
 static void row_inserted(
-    BeditFileBrowserStore *model, GtkTreePath **path, GtkTreeIter *iter) {
+    BeditFileBrowserStore *model, GtkTreePath **path, GtkTreeIter *iter
+) {
     /* This function creates a row reference for the path because it's
        uncertain what might change the actual model/view when we insert
        a node, maybe another directory load is triggered for example.
        Because functions that use this function rely on the notion that
        the path remains pointed towards the inserted node, we use the
        reference to keep track. */
-    GtkTreeRowReference *ref =
-        gtk_tree_row_reference_new(GTK_TREE_MODEL(model), *path);
+    GtkTreeRowReference *ref = gtk_tree_row_reference_new(
+        GTK_TREE_MODEL(model), *path
+    );
     GtkTreePath *copy = gtk_tree_path_copy(*path);
 
     gtk_tree_model_row_inserted(GTK_TREE_MODEL(model), copy, iter);
@@ -1043,7 +1203,8 @@ static void row_inserted(
 
 static void row_deleted(
     BeditFileBrowserStore *model, FileBrowserNode *node,
-    const GtkTreePath *path) {
+    const GtkTreePath *path
+) {
     gboolean hidden;
     GtkTreePath *copy;
 
@@ -1061,8 +1222,9 @@ static void row_deleted(
 
     node->inserted = FALSE;
 
-    if (hidden)
+    if (hidden) {
         node->flags |= BEDIT_FILE_BROWSER_STORE_FLAG_IS_HIDDEN;
+    }
 
     copy = gtk_tree_path_copy(path);
     gtk_tree_model_row_deleted(GTK_TREE_MODEL(model), copy);
@@ -1070,7 +1232,8 @@ static void row_deleted(
 }
 
 static void model_refilter_node(
-    BeditFileBrowserStore *model, FileBrowserNode *node, GtkTreePath **path) {
+    BeditFileBrowserStore *model, FileBrowserNode *node, GtkTreePath **path
+) {
     gboolean old_visible;
     gboolean new_visible;
     FileBrowserNodeDir *dir;
@@ -1079,8 +1242,9 @@ static void model_refilter_node(
     GtkTreePath *tmppath = NULL;
     gboolean in_tree;
 
-    if (node == NULL)
+    if (node == NULL) {
         return;
+    ]
 
     old_visible = model_node_visibility(model, node);
     model_node_update_visibility(model, node);
@@ -1088,25 +1252,29 @@ static void model_refilter_node(
     in_tree = node_in_tree(model, node);
 
     if (path == NULL) {
-        if (in_tree)
+        if (in_tree) {
             tmppath = bedit_file_browser_store_get_path_real(model, node);
-        else
+        } else {
             tmppath = gtk_tree_path_new_first();
+        }
 
         path = &tmppath;
     }
 
     if (NODE_IS_DIR(node)) {
-        if (in_tree)
+        if (in_tree) {
             gtk_tree_path_down(*path);
+        }
 
         dir = FILE_BROWSER_NODE_DIR(node);
 
-        for (item = dir->children; item; item = item->next)
+        for (item = dir->children; item; item = item->next) {
             model_refilter_node(model, (FileBrowserNode *)(item->data), path);
+        }
 
-        if (in_tree)
+        if (in_tree) {
             gtk_tree_path_up(*path);
+        }
     }
 
     if (in_tree) {
@@ -1127,8 +1295,9 @@ static void model_refilter_node(
 
     model_check_dummy(model, node);
 
-    if (tmppath)
+    if (tmppath) {
         gtk_tree_path_free(tmppath);
+    }
 }
 
 static void model_refilter(BeditFileBrowserStore *model) {
@@ -1139,19 +1308,22 @@ static void file_browser_node_set_name(FileBrowserNode *node) {
     g_free(node->name);
     g_free(node->markup);
 
-    if (node->file)
+    if (node->file) {
         node->name = bedit_file_browser_utils_file_basename(node->file);
-    else
+    } else {
         node->name = NULL;
+    }
 
-    if (node->name)
+    if (node->name) {
         node->markup = g_markup_escape_text(node->name, -1);
-    else
+    } else {
         node->markup = NULL;
+    }
 }
 
 static void file_browser_node_init(
-    FileBrowserNode *node, GFile *file, FileBrowserNode *parent) {
+    FileBrowserNode *node, GFile *file, FileBrowserNode *parent
+) {
     if (file != NULL) {
         node->file = g_object_ref(file);
         file_browser_node_set_name(node);
@@ -1161,7 +1333,8 @@ static void file_browser_node_init(
 }
 
 static FileBrowserNode *file_browser_node_new(
-    GFile *file, FileBrowserNode *parent) {
+    GFile *file, FileBrowserNode *parent
+) {
     FileBrowserNode *node = g_slice_new0(FileBrowserNode);
 
     file_browser_node_init(node, file, parent);
@@ -1169,7 +1342,8 @@ static FileBrowserNode *file_browser_node_new(
 }
 
 static FileBrowserNode *file_browser_node_dir_new(
-    BeditFileBrowserStore *model, GFile *file, FileBrowserNode *parent) {
+    BeditFileBrowserStore *model, GFile *file, FileBrowserNode *parent
+) {
     FileBrowserNode *node = (FileBrowserNode *)g_slice_new0(FileBrowserNodeDir);
 
     file_browser_node_init(node, file, parent);
@@ -1182,13 +1356,19 @@ static FileBrowserNode *file_browser_node_dir_new(
 }
 
 static void file_browser_node_free_children(
-    BeditFileBrowserStore *model, FileBrowserNode *node) {
-    if (node == NULL || !NODE_IS_DIR(node))
+    BeditFileBrowserStore *model, FileBrowserNode *node
+) {
+    if (node == NULL || !NODE_IS_DIR(node)) {
         return;
+    }
 
-    for (GSList *item = FILE_BROWSER_NODE_DIR(node)->children; item;
-         item = item->next)
+    for (
+        GSList *item = FILE_BROWSER_NODE_DIR(node)->children;
+        item;
+        item = item->next
+    ) {
         file_browser_node_free(model, (FileBrowserNode *)(item->data));
+    }
 
     g_slist_free(FILE_BROWSER_NODE_DIR(node)->children);
     FILE_BROWSER_NODE_DIR(node)->children = NULL;
@@ -1198,9 +1378,11 @@ static void file_browser_node_free_children(
 }
 
 static void file_browser_node_free(
-    BeditFileBrowserStore *model, FileBrowserNode *node) {
-    if (node == NULL)
+    BeditFileBrowserStore *model, FileBrowserNode *node
+) {
+    if (node == NULL) {
         return;
+    }
 
     if (NODE_IS_DIR(node)) {
         FileBrowserNodeDir *dir = FILE_BROWSER_NODE_DIR(node);
@@ -1225,19 +1407,22 @@ static void file_browser_node_free(
         g_object_unref(node->file);
     }
 
-    if (node->icon)
+    if (node->icon) {
         g_object_unref(node->icon);
+    }
 
-    if (node->emblem)
+    if (node->emblem) [
         g_object_unref(node->emblem);
+    }
 
     g_free(node->name);
     g_free(node->markup);
 
-    if (NODE_IS_DIR(node))
+    if (NODE_IS_DIR(node)) {
         g_slice_free(FileBrowserNodeDir, (FileBrowserNodeDir *)node);
-    else
+    } else {
         g_slice_free(FileBrowserNode, (FileBrowserNode *)node);
+    }
 }
 
 /**
@@ -1253,39 +1438,46 @@ static void file_browser_node_free(
  */
 static void model_remove_node_children(
     BeditFileBrowserStore *model, FileBrowserNode *node, GtkTreePath *path,
-    gboolean free_nodes) {
+    gboolean free_nodes
+) {
     FileBrowserNodeDir *dir;
     GtkTreePath *path_child;
     GSList *list;
 
-    if (node == NULL || !NODE_IS_DIR(node))
+    if (node == NULL || !NODE_IS_DIR(node)) {
         return;
+    }
 
     dir = FILE_BROWSER_NODE_DIR(node);
 
-    if (dir->children == NULL)
+    if (dir->children == NULL) {
         return;
+    }
 
     if (!model_node_visibility(model, node)) {
         /* Node is invisible and therefore the children can just be freed */
-        if (free_nodes)
+        if (free_nodes) {
             file_browser_node_free_children(model, node);
+        }
 
         return;
     }
 
-    if (path == NULL)
+    if (path == NULL) {
         path_child = bedit_file_browser_store_get_path_real(model, node);
-    else
+    } else {
         path_child = gtk_tree_path_copy(path);
+    }
 
     gtk_tree_path_down(path_child);
 
     list = g_slist_copy(dir->children);
 
-    for (GSList *item = list; item; item = item->next)
+    for (GSList *item = list; item; item = item->next) {
         model_remove_node(
-            model, (FileBrowserNode *)(item->data), path_child, free_nodes);
+            model, (FileBrowserNode *)(item->data), path_child, free_nodes
+        );
+    }
 
     g_slist_free(list);
     gtk_tree_path_free(path_child);
@@ -1305,7 +1497,8 @@ static void model_remove_node_children(
  */
 static void model_remove_node(
     BeditFileBrowserStore *model, FileBrowserNode *node, GtkTreePath *path,
-    gboolean free_nodes) {
+    gboolean free_nodes
+) {
     gboolean free_path = FALSE;
     FileBrowserNode *parent;
 
@@ -1318,30 +1511,40 @@ static void model_remove_node(
 
     /* Only delete if the node is visible in the tree (but only when it's not
      * the virtual root) */
-    if (model_node_visibility(model, node) && node != model->priv->virtual_root)
+    if (
+        model_node_visibility(model, node) &&
+        node != model->priv->virtual_root
+    ) {
         row_deleted(model, node, path);
+    }
 
-    if (free_path)
+    if (free_path) {
         gtk_tree_path_free(path);
+    }
 
     parent = node->parent;
 
     /* Remove the node from the parents children list */
-    if (free_nodes && parent)
-        FILE_BROWSER_NODE_DIR(node->parent)->children =
-            g_slist_remove(FILE_BROWSER_NODE_DIR(node->parent)->children, node);
+    if (free_nodes && parent) {
+        FILE_BROWSER_NODE_DIR(node->parent)->children = g_slist_remove(
+            FILE_BROWSER_NODE_DIR(node->parent)->children, node
+        );
+    }
 
     /* If this is the virtual root, than set the parent as the virtual root */
-    if (node == model->priv->virtual_root)
+    if (node == model->priv->virtual_root) {
         set_virtual_root_from_node(model, parent);
-    else if (
+    } else if (
         parent && model_node_visibility(model, parent) &&
-        !(free_nodes && NODE_IS_DUMMY(node)))
+        !(free_nodes && NODE_IS_DUMMY(node))
+    ) {
         model_check_dummy(model, parent);
+    }
 
     /* Now free the node if necessary */
-    if (free_nodes)
+    if (free_nodes) {
         file_browser_node_free(model, node);
+    }
 }
 
 /**
@@ -1357,13 +1560,15 @@ static void model_clear(BeditFileBrowserStore *model, gboolean free_nodes) {
     GtkTreePath *path = gtk_tree_path_new();
 
     model_remove_node_children(
-        model, model->priv->virtual_root, path, free_nodes);
+        model, model->priv->virtual_root, path, free_nodes
+    );
     gtk_tree_path_free(path);
 
     /* Remove the dummy if there is one */
     if (model->priv->virtual_root) {
-        FileBrowserNodeDir *dir =
-            FILE_BROWSER_NODE_DIR(model->priv->virtual_root);
+        FileBrowserNodeDir *dir = FILE_BROWSER_NODE_DIR(
+            model->priv->virtual_root
+        );
 
         if (dir->children != NULL) {
             FileBrowserNode *dummy = (FileBrowserNode *)(dir->children->data);
@@ -1379,19 +1584,23 @@ static void model_clear(BeditFileBrowserStore *model, gboolean free_nodes) {
 
 static void file_browser_node_unload(
     BeditFileBrowserStore *model, FileBrowserNode *node,
-    gboolean remove_children) {
+    gboolean remove_children
+) {
     FileBrowserNodeDir *dir;
 
-    if (node == NULL)
+    if (node == NULL) {
         return;
+    }
 
-    if (!NODE_IS_DIR(node) || !NODE_LOADED(node))
+    if (!NODE_IS_DIR(node) || !NODE_LOADED(node)) {
         return;
+    }
 
     dir = FILE_BROWSER_NODE_DIR(node);
 
-    if (remove_children)
+    if (remove_children) {
         model_remove_node_children(model, node, NULL, TRUE);
+    }
 
     if (dir->cancellable) {
         g_cancellable_cancel(dir->cancellable);
@@ -1412,7 +1621,8 @@ static void file_browser_node_unload(
 }
 
 static void model_recomposite_icon_real(
-    BeditFileBrowserStore *tree_model, FileBrowserNode *node, GFileInfo *info) {
+    BeditFileBrowserStore *tree_model, FileBrowserNode *node, GFileInfo *info
+) {
     GIcon *icon;
 
     g_return_if_fail(BEDIT_IS_FILE_BROWSER_STORE(tree_model));
@@ -1456,11 +1666,13 @@ static void model_recomposite_icon(
     g_return_if_fail(iter->user_data != NULL);
 
     model_recomposite_icon_real(
-        tree_model, (FileBrowserNode *)(iter->user_data), NULL);
+        tree_model, (FileBrowserNode *)(iter->user_data), NULL
+    );
 }
 
 static FileBrowserNode *model_create_dummy_node(
-    BeditFileBrowserStore *model, FileBrowserNode *parent) {
+    BeditFileBrowserStore *model, FileBrowserNode *parent
+) {
     FileBrowserNode *dummy;
 
     dummy = file_browser_node_new(NULL, parent);
@@ -1474,13 +1686,15 @@ static FileBrowserNode *model_create_dummy_node(
 }
 
 static FileBrowserNode *model_add_dummy_node(
-    BeditFileBrowserStore *model, FileBrowserNode *parent) {
+    BeditFileBrowserStore *model, FileBrowserNode *parent
+) {
     FileBrowserNode *dummy;
 
     dummy = model_create_dummy_node(model, parent);
 
-    if (model_node_visibility(model, parent))
+    if (model_node_visibility(model, parent)) {
         dummy->flags &= ~BEDIT_FILE_BROWSER_STORE_FLAG_IS_HIDDEN;
+    }
 
     model_add_node(model, dummy, parent);
 
@@ -1488,7 +1702,8 @@ static FileBrowserNode *model_add_dummy_node(
 }
 
 static void model_check_dummy(
-    BeditFileBrowserStore *model, FileBrowserNode *node) {
+    BeditFileBrowserStore *model, FileBrowserNode *node
+) {
     /* Hide the dummy child if needed */
     if (NODE_IS_DIR(node)) {
         FileBrowserNodeDir *dir = FILE_BROWSER_NODE_DIR(node);
@@ -1546,7 +1761,8 @@ static void model_check_dummy(
 
 static void insert_node_sorted(
     BeditFileBrowserStore *model, FileBrowserNode *child,
-    FileBrowserNode *parent) {
+    FileBrowserNode *parent
+) {
     FileBrowserNodeDir *dir = FILE_BROWSER_NODE_DIR(parent);
 
     if (model->priv->sort_func == NULL)
@@ -1558,14 +1774,18 @@ static void insert_node_sorted(
 
 static void model_add_node(
     BeditFileBrowserStore *model, FileBrowserNode *child,
-    FileBrowserNode *parent) {
+    FileBrowserNode *parent
+) {
     /* Add child to parents children */
     insert_node_sorted(model, child, parent);
 
-    if (model_node_visibility(model, parent) &&
-        model_node_visibility(model, child)) {
-        GtkTreePath *path =
-            bedit_file_browser_store_get_path_real(model, child);
+    if (
+        model_node_visibility(model, parent) &&
+        model_node_visibility(model, child)
+    ) {
+        GtkTreePath *path = bedit_file_browser_store_get_path_real(
+            model, child
+        );
         GtkTreeIter iter;
 
         iter.user_data = child;
@@ -1580,10 +1800,12 @@ static void model_add_node(
 }
 
 static void model_add_nodes_batch(
-    BeditFileBrowserStore *model, GSList *children, FileBrowserNode *parent) {
+    BeditFileBrowserStore *model, GSList *children, FileBrowserNode *parent
+) {
     FileBrowserNodeDir *dir = FILE_BROWSER_NODE_DIR(parent);
-    GSList *sorted_children =
-        g_slist_sort(children, (GCompareFunc)model->priv->sort_func);
+    GSList *sorted_children = g_slist_sort(
+        children, (GCompareFunc)model->priv->sort_func
+    );
     GSList *child = sorted_children;
     GSList *prev = NULL;
     GSList *l = dir->children;
@@ -1600,11 +1822,14 @@ static void model_add_nodes_batch(
             dir->children = g_slist_concat(dir->children, child);
 
             for (l = child; l; l = l->next) {
-                if (model_node_visibility(model, parent) &&
-                    model_node_visibility(model, l->data)) {
+                if (
+                    model_node_visibility(model, parent) &&
+                    model_node_visibility(model, l->data)
+                ) {
                     iter.user_data = l->data;
-                    path =
-                        bedit_file_browser_store_get_path_real(model, l->data);
+                    path = bedit_file_browser_store_get_path_real(
+                        model, l->data
+                    );
 
                     /* Emit row inserted */
                     row_inserted(model, &path, &iter);
@@ -1632,8 +1857,10 @@ static void model_add_nodes_batch(
             child->next = l;
             child = next_child;
 
-            if (model_node_visibility(model, parent) &&
-                model_node_visibility(model, node)) {
+            if (
+                model_node_visibility(model, parent) &&
+                model_node_visibility(model, node)
+            ) {
                 iter.user_data = node;
                 path = bedit_file_browser_store_get_path_real(model, node);
 
@@ -1656,13 +1883,15 @@ static void model_add_nodes_batch(
 static gchar const *backup_content_type(GFileInfo *info) {
     gchar const *content;
 
-    if (!g_file_info_get_is_backup(info))
+    if (!g_file_info_get_is_backup(info)) {
         return NULL;
+    }
 
     content = g_file_info_get_content_type(info);
 
-    if (!content || g_content_type_equals(content, "application/x-trash"))
+    if (!content || g_content_type_equals(content, "application/x-trash")) {
         return "text/plain";
+    }
 
     return content;
 }
@@ -1673,14 +1902,16 @@ static gboolean content_type_is_text(gchar const *content_type) {
     gboolean ret;
 #endif
 
-    if (!content_type || g_content_type_is_unknown(content_type))
+    if (!content_type || g_content_type_is_unknown(content_type)) {
         return TRUE;
+    }
 
 #ifndef G_OS_WIN32
     return g_content_type_is_a(content_type, "text/plain");
 #else
-    if (g_content_type_is_a(content_type, "text"))
+    if (g_content_type_is_a(content_type, "text")) {
         return TRUE;
+    }
 
     /* This covers a rare case in which on Windows the PerceivedType is
        not set to "text" but the Content Type is set to text/plain */
@@ -1695,7 +1926,8 @@ static gboolean content_type_is_text(gchar const *content_type) {
 
 static void file_browser_node_set_from_info(
     BeditFileBrowserStore *model, FileBrowserNode *node, GFileInfo *info,
-    gboolean isadded) {
+    gboolean isadded
+) {
     gchar const *content;
     gboolean free_info = FALSE;
     GtkTreePath *path;
@@ -1705,11 +1937,14 @@ static void file_browser_node_set_from_info(
     if (info == NULL) {
         info = g_file_query_info(
             node->file, STANDARD_ATTRIBUTE_TYPES, G_FILE_QUERY_INFO_NONE, NULL,
-            &error);
+            &error
+        );
 
         if (!info) {
-            if (!(error->domain == G_IO_ERROR &&
-                  error->code == G_IO_ERROR_NOT_FOUND)) {
+            if (!(
+                error->domain == G_IO_ERROR &&
+                error->code == G_IO_ERROR_NOT_FOUND
+            )) {
                 uri = g_file_get_uri(node->file);
                 g_warning("Could not get info for %s: %s", uri, error->message);
                 g_free(uri);
@@ -1722,23 +1957,27 @@ static void file_browser_node_set_from_info(
         free_info = TRUE;
     }
 
-    if (g_file_info_get_is_hidden(info) || g_file_info_get_is_backup(info))
+    if (g_file_info_get_is_hidden(info) || g_file_info_get_is_backup(info)) {
         node->flags |= BEDIT_FILE_BROWSER_STORE_FLAG_IS_HIDDEN;
+    }
 
     if (g_file_info_get_file_type(info) == G_FILE_TYPE_DIRECTORY) {
         node->flags |= BEDIT_FILE_BROWSER_STORE_FLAG_IS_DIRECTORY;
     } else {
-        if (!(content = backup_content_type(info)))
+        if (!(content = backup_content_type(info))) {
             content = g_file_info_get_content_type(info);
+        }
 
-        if (content_type_is_text(content))
+        if (content_type_is_text(content)) {
             node->flags |= BEDIT_FILE_BROWSER_STORE_FLAG_IS_TEXT;
+        }
     }
 
     model_recomposite_icon_real(model, node, info);
 
-    if (free_info)
+    if (free_info) {
         g_object_unref(info);
+    }
 
     if (isadded) {
         path = bedit_file_browser_store_get_path_real(model, node);
@@ -1755,8 +1994,9 @@ static FileBrowserNode *node_list_contains_file(GSList *children, GFile *file) {
     for (GSList *item = children; item; item = item->next) {
         FileBrowserNode *node = (FileBrowserNode *)(item->data);
 
-        if (node->file != NULL && g_file_equal(node->file, file))
+        if (node->file != NULL && g_file_equal(node->file, file)) {
             return node;
+        }
     }
 
     return NULL;
@@ -1764,17 +2004,20 @@ static FileBrowserNode *node_list_contains_file(GSList *children, GFile *file) {
 
 static FileBrowserNode *model_add_node_from_file(
     BeditFileBrowserStore *model, FileBrowserNode *parent, GFile *file,
-    GFileInfo *info) {
+    GFileInfo *info
+) {
     FileBrowserNode *node;
     gboolean free_info = FALSE;
     GError *error = NULL;
 
     if ((node = node_list_contains_file(
-             FILE_BROWSER_NODE_DIR(parent)->children, file)) == NULL) {
+        FILE_BROWSER_NODE_DIR(parent)->children, file)) == NULL
+    ) {
         if (info == NULL) {
             info = g_file_query_info(
                 file, STANDARD_ATTRIBUTE_TYPES, G_FILE_QUERY_INFO_NONE, NULL,
-                &error);
+                &error
+            );
             free_info = TRUE;
         }
 
@@ -1793,8 +2036,9 @@ static FileBrowserNode *model_add_node_from_file(
         file_browser_node_set_from_info(model, node, info, FALSE);
         model_add_node(model, node, parent);
 
-        if (info && free_info)
+        if (info && free_info) {
             g_object_unref(info);
+        }
     }
 
     return node;
@@ -1805,7 +2049,8 @@ static FileBrowserNode *model_add_node_from_file(
  * added */
 static void model_add_nodes_from_files(
     BeditFileBrowserStore *model, FileBrowserNode *parent,
-    GSList *original_children, GList *files) {
+    GSList *original_children, GList *files
+) {
     GSList *nodes = NULL;
 
     for (GList *item = files; item; item = item->next) {
@@ -1833,10 +2078,11 @@ static void model_add_nodes_from_files(
 
         file = g_file_get_child(parent->file, name);
         if (!(node = node_list_contains_file(original_children, file))) {
-            if (type == G_FILE_TYPE_DIRECTORY)
+            if (type == G_FILE_TYPE_DIRECTORY) {
                 node = file_browser_node_dir_new(model, file, parent);
-            else
+            } else {
                 node = file_browser_node_new(file, parent);
+            }
 
             file_browser_node_set_from_info(model, node, info, FALSE);
 
@@ -1847,22 +2093,26 @@ static void model_add_nodes_from_files(
         g_object_unref(info);
     }
 
-    if (nodes)
+    if (nodes) {
         model_add_nodes_batch(model, nodes, parent);
+    }
 }
 
 static FileBrowserNode *model_add_node_from_dir(
-    BeditFileBrowserStore *model, FileBrowserNode *parent, GFile *file) {
+    BeditFileBrowserStore *model, FileBrowserNode *parent, GFile *file
+) {
     FileBrowserNode *node;
 
     /* Check if it already exists */
     if ((node = node_list_contains_file(
-             FILE_BROWSER_NODE_DIR(parent)->children, file)) == NULL) {
+        FILE_BROWSER_NODE_DIR(parent)->children, file)) == NULL
+    ) {
         node = file_browser_node_dir_new(model, file, parent);
         file_browser_node_set_from_info(model, node, NULL, FALSE);
 
-        if (node->name == NULL)
+        if (node->name == NULL) {
             file_browser_node_set_name(node);
+        }
 
         node->icon = g_content_type_get_symbolic_icon("inode/directory");
 
@@ -1874,7 +2124,8 @@ static FileBrowserNode *model_add_node_from_dir(
 
 static void on_directory_monitor_event(
     GFileMonitor *monitor, GFile *file, GFile *other_file,
-    GFileMonitorEvent event_type, FileBrowserNode *parent) {
+    GFileMonitorEvent event_type, FileBrowserNode *parent
+) {
     FileBrowserNodeDir *dir = FILE_BROWSER_NODE_DIR(parent);
     FileBrowserNode *node;
 
@@ -1882,13 +2133,14 @@ static void on_directory_monitor_event(
     case G_FILE_MONITOR_EVENT_DELETED:
         node = node_list_contains_file(dir->children, file);
 
-        if (node != NULL)
+        if (node != NULL) {
             model_remove_node(dir->model, node, NULL, TRUE);
+        }
         break;
     case G_FILE_MONITOR_EVENT_CREATED:
-        if (g_file_query_exists(file, NULL))
+        if (g_file_query_exists(file, NULL)) {
             model_add_node_from_file(dir->model, parent, file, NULL);
-
+        }
         break;
     default:
         break;
@@ -1902,10 +2154,12 @@ static void async_node_free(AsyncNode *async) {
 }
 
 static void model_iterate_next_files_cb(
-    GFileEnumerator *enumerator, GAsyncResult *result, AsyncNode *async) {
+    GFileEnumerator *enumerator, GAsyncResult *result, AsyncNode *async
+) {
     GError *error = NULL;
-    GList *files =
-        g_file_enumerator_next_files_finish(enumerator, result, &error);
+    GList *files = g_file_enumerator_next_files_finish(
+        enumerator, result, &error
+    );
     FileBrowserNodeDir *dir = async->dir;
     FileBrowserNode *parent = (FileBrowserNode *)dir;
 
@@ -1926,11 +2180,13 @@ static void model_iterate_next_files_cb(
 #ifndef G_OS_WIN32
             if (g_file_is_native(parent->file) && dir->monitor == NULL) {
                 dir->monitor = g_file_monitor_directory(
-                    parent->file, G_FILE_MONITOR_NONE, NULL, NULL);
+                    parent->file, G_FILE_MONITOR_NONE, NULL, NULL
+                );
                 if (dir->monitor != NULL) {
                     g_signal_connect(
                         dir->monitor, "changed",
-                        G_CALLBACK(on_directory_monitor_event), parent);
+                        G_CALLBACK(on_directory_monitor_event), parent
+                    );
                 }
             }
 #endif
@@ -1939,17 +2195,22 @@ static void model_iterate_next_files_cb(
             model_end_loading(dir->model, parent);
         } else {
             /* Simply return if we were cancelled */
-            if (error->domain == G_IO_ERROR &&
-                error->code == G_IO_ERROR_CANCELLED)
+            if (
+                error->domain == G_IO_ERROR &&
+                error->code == G_IO_ERROR_CANCELLED
+            ) {
                 return;
+            }
 
             /* Otherwise handle the error appropriately */
             g_signal_emit(
                 dir->model, model_signals[ERROR], 0,
-                BEDIT_FILE_BROWSER_ERROR_LOAD_DIRECTORY, error->message);
+                BEDIT_FILE_BROWSER_ERROR_LOAD_DIRECTORY, error->message
+            );
 
             file_browser_node_unload(
-                dir->model, (FileBrowserNode *)parent, TRUE);
+                dir->model, (FileBrowserNode *)parent, TRUE
+            );
             g_error_free(error);
         }
     } else if (g_cancellable_is_cancelled(async->cancellable)) {
@@ -1959,7 +2220,8 @@ static void model_iterate_next_files_cb(
         async_node_free(async);
     } else {
         model_add_nodes_from_files(
-            dir->model, parent, async->original_children, files);
+            dir->model, parent, async->original_children, files
+        );
 
         g_list_free(files);
         next_files_async(enumerator, async);
@@ -1970,7 +2232,8 @@ static void next_files_async(GFileEnumerator *enumerator, AsyncNode *async) {
     g_file_enumerator_next_files_async(
         enumerator, DIRECTORY_LOAD_ITEMS_PER_CALLBACK, G_PRIORITY_DEFAULT,
         async->cancellable, (GAsyncReadyCallback)model_iterate_next_files_cb,
-        async);
+        async
+    );
 }
 
 static void model_iterate_children_cb(
@@ -1983,15 +2246,17 @@ static void model_iterate_children_cb(
         return;
     }
 
-    if (!(enumerator =
-              g_file_enumerate_children_finish(file, result, &error))) {
+    if (!(enumerator = g_file_enumerate_children_finish(
+        file, result, &error
+    ))) {
         /* Simply return if we were cancelled or if the dir is not there */
         FileBrowserNodeDir *dir = async->dir;
 
         /* Otherwise handle the error appropriately */
         g_signal_emit(
             dir->model, model_signals[ERROR], 0,
-            BEDIT_FILE_BROWSER_ERROR_LOAD_DIRECTORY, error->message);
+            BEDIT_FILE_BROWSER_ERROR_LOAD_DIRECTORY, error->message
+        );
 
         file_browser_node_unload(dir->model, (FileBrowserNode *)dir, TRUE);
         g_error_free(error);
@@ -2002,7 +2267,8 @@ static void model_iterate_children_cb(
 }
 
 static void model_load_directory(
-    BeditFileBrowserStore *model, FileBrowserNode *node) {
+    BeditFileBrowserStore *model, FileBrowserNode *node
+) {
     FileBrowserNodeDir *dir;
     AsyncNode *async;
 
@@ -2011,8 +2277,9 @@ static void model_load_directory(
     dir = FILE_BROWSER_NODE_DIR(node);
 
     /* Cancel a previous load */
-    if (dir->cancellable != NULL)
+    if (dir->cancellable != NULL) {
         file_browser_node_unload(dir->model, node, TRUE);
+    }
 
     node->flags |= BEDIT_FILE_BROWSER_STORE_FLAG_LOADED;
     model_begin_loading(model, node);
@@ -2028,7 +2295,8 @@ static void model_load_directory(
     g_file_enumerate_children_async(
         node->file, STANDARD_ATTRIBUTE_TYPES, G_FILE_QUERY_INFO_NONE,
         G_PRIORITY_DEFAULT, async->cancellable,
-        (GAsyncReadyCallback)model_iterate_children_cb, async);
+        (GAsyncReadyCallback)model_iterate_children_cb, async
+    );
 }
 
 static GList *get_parent_files(BeditFileBrowserStore *model, GFile *file) {
@@ -2049,7 +2317,8 @@ static GList *get_parent_files(BeditFileBrowserStore *model, GFile *file) {
 }
 
 static void model_fill(
-    BeditFileBrowserStore *model, FileBrowserNode *node, GtkTreePath **path) {
+    BeditFileBrowserStore *model, FileBrowserNode *node, GtkTreePath **path
+) {
     gboolean free_path = FALSE;
     GtkTreeIter iter = {
         0,
@@ -2069,9 +2338,9 @@ static void model_fill(
     }
 
     if (!model_node_visibility(model, node)) {
-        if (free_path)
+        if (free_path) {
             gtk_tree_path_free(*path);
-
+        }
         return;
     }
 
@@ -2085,8 +2354,11 @@ static void model_fill(
         /* Go to the first child */
         gtk_tree_path_down(*path);
 
-        for (item = FILE_BROWSER_NODE_DIR(node)->children; item;
-             item = item->next) {
+        for (
+            item = FILE_BROWSER_NODE_DIR(node)->children;
+            item;
+            item = item->next
+        ) {
             child = (FileBrowserNode *)(item->data);
 
             if (model_node_visibility(model, child)) {
@@ -2103,8 +2375,9 @@ static void model_fill(
 
     model_check_dummy(model, node);
 
-    if (free_path)
+    if (free_path) {
         gtk_tree_path_free(*path);
+    }
 }
 
 static void set_virtual_root_from_node(
@@ -2137,8 +2410,9 @@ static void set_virtual_root_from_node(
             }
         }
 
-        if (prev != node)
+        if (prev != node) {
             file_browser_node_unload(model, next, FALSE);
+        }
 
         g_slist_free(copy);
         prev = next;
@@ -2146,17 +2420,25 @@ static void set_virtual_root_from_node(
     }
 
     /* Free all the nodes up that we don't need in cache */
-    for (GSList *item = FILE_BROWSER_NODE_DIR(node)->children; item;
-         item = item->next) {
+    for (
+        GSList *item = FILE_BROWSER_NODE_DIR(node)->children;
+        item;
+        item = item->next
+    ) {
         check = (FileBrowserNode *)(item->data);
 
         if (NODE_IS_DIR(check)) {
-            for (copy = FILE_BROWSER_NODE_DIR(check)->children; copy;
-                 copy = copy->next) {
+            for (
+                copy = FILE_BROWSER_NODE_DIR(check)->children;
+                copy;
+                copy = copy->next
+            ) {
                 file_browser_node_free_children(
-                    model, (FileBrowserNode *)(copy->data));
+                    model, (FileBrowserNode *)(copy->data)
+                );
                 file_browser_node_unload(
-                    model, (FileBrowserNode *)(copy->data), FALSE);
+                    model, (FileBrowserNode *)(copy->data), FALSE
+                );
             }
         } else if (NODE_IS_DUMMY(check)) {
             check->flags |= BEDIT_FILE_BROWSER_STORE_FLAG_IS_HIDDEN;
@@ -2173,12 +2455,14 @@ static void set_virtual_root_from_node(
 
     model_fill(model, NULL, &empty);
 
-    if (!NODE_LOADED(node))
+    if (!NODE_LOADED(node)) {
         model_load_directory(model, node);
+    }
 }
 
 static void set_virtual_root_from_file(
-    BeditFileBrowserStore *model, GFile *file) {
+    BeditFileBrowserStore *model, GFile *file
+) {
     GList *files;
     FileBrowserNode *parent;
     GFile *check;
@@ -2207,34 +2491,43 @@ static FileBrowserNode *model_find_node_children(
     FileBrowserNode *child;
     FileBrowserNode *result;
 
-    if (!NODE_IS_DIR(parent))
+    if (!NODE_IS_DIR(parent)) {
         return NULL;
+    }
 
     dir = FILE_BROWSER_NODE_DIR(parent);
 
-    for (GSList *children = dir->children; children;
-         children = children->next) {
+    for (
+        GSList *children = dir->children;
+        children;
+        children = children->next
+    ) {
         child = (FileBrowserNode *)(children->data);
 
         result = model_find_node(model, child, file);
 
-        if (result)
+        if (result) {
             return result;
+        }
     }
 
     return NULL;
 }
 
 static FileBrowserNode *model_find_node(
-    BeditFileBrowserStore *model, FileBrowserNode *node, GFile *file) {
-    if (node == NULL)
+    BeditFileBrowserStore *model, FileBrowserNode *node, GFile *file
+) {
+    if (node == NULL) {
         node = model->priv->root;
+    }
 
-    if (node->file && g_file_equal(node->file, file))
+    if (node->file && g_file_equal(node->file, file)) {
         return node;
+    }
 
-    if (NODE_IS_DIR(node) && g_file_has_prefix(file, node->file))
+    if (NODE_IS_DIR(node) && g_file_has_prefix(file, node->file)) {
         return model_find_node_children(model, node, file);
+    }
 
     return NULL;
 }
@@ -2242,8 +2535,9 @@ static FileBrowserNode *model_find_node(
 static GQuark bedit_file_browser_store_error_quark(void) {
     static GQuark quark = 0;
 
-    if (G_UNLIKELY(quark == 0))
+    if (G_UNLIKELY(quark == 0)) {
         quark = g_quark_from_string("bedit_file_browser_store_error");
+    }
 
     return quark;
 }
@@ -2254,13 +2548,15 @@ static GFile *unique_new_name(GFile *directory, gchar const *name) {
     gchar *newname;
 
     while (newuri == NULL || g_file_query_exists(newuri, NULL)) {
-        if (newuri != NULL)
+        if (newuri != NULL) {
             g_object_unref(newuri);
+        }
 
-        if (num == 0)
+        if (num == 0) {
             newname = g_strdup(name);
-        else
+        } else {
             newname = g_strdup_printf("%s(%d)", name, num);
+        }
 
         newuri = g_file_get_child(directory, newname);
         g_free(newname);
@@ -2278,7 +2574,8 @@ static BeditFileBrowserStoreResult model_root_mounted(
 
     if (virtual_root != NULL) {
         return bedit_file_browser_store_set_virtual_root_from_location(
-            model, virtual_root);
+            model, virtual_root
+        );
     } else {
         set_virtual_root_from_node(model, model->priv->root);
     }
@@ -2290,8 +2587,10 @@ static void handle_root_error(BeditFileBrowserStore *model, GError *error) {
     FileBrowserNode *root;
 
     g_signal_emit(
-        model, model_signals[ERROR], 0, BEDIT_FILE_BROWSER_ERROR_SET_ROOT,
-        error->message);
+        model, model_signals[ERROR], 0,
+        BEDIT_FILE_BROWSER_ERROR_SET_ROOT,
+        error->message
+    );
 
     /* Set the virtual root to the root */
     root = model->priv->root;
@@ -2329,27 +2628,31 @@ static void mount_cb(GFile *file, GAsyncResult *res, MountInfo *mount_info) {
         handle_root_error(model, error);
     }
 
-    if (error)
+    if (error) {
         g_error_free(error);
+    }
 
     g_object_unref(mount_info->operation);
     g_object_unref(mount_info->cancellable);
 
-    if (mount_info->virtual_root)
+    if (mount_info->virtual_root) {
         g_object_unref(mount_info->virtual_root);
+    }
 
     g_slice_free(MountInfo, mount_info);
 }
 
 static BeditFileBrowserStoreResult model_mount_root(
-    BeditFileBrowserStore *model, GFile *virtual_root) {
+    BeditFileBrowserStore *model, GFile *virtual_root
+) {
     GFileInfo *info;
     GError *error = NULL;
     MountInfo *mount_info;
 
     info = g_file_query_info(
         model->priv->root->file, G_FILE_ATTRIBUTE_STANDARD_TYPE,
-        G_FILE_QUERY_INFO_NONE, NULL, &error);
+        G_FILE_QUERY_INFO_NONE, NULL, &error
+    );
 
     if (!info) {
         if (error->code == G_IO_ERROR_NOT_MOUNTED) {
@@ -2364,13 +2667,15 @@ static BeditFileBrowserStoreResult model_mount_root(
             /* FIXME: we should be setting the correct window */
             mount_info->operation = gtk_mount_operation_new(NULL);
             mount_info->cancellable = g_object_ref(
-                FILE_BROWSER_NODE_DIR(model->priv->root)->cancellable);
+                FILE_BROWSER_NODE_DIR(model->priv->root)->cancellable
+            );
 
             model_begin_loading(model, model->priv->root);
             g_file_mount_enclosing_volume(
                 model->priv->root->file, G_MOUNT_MOUNT_NONE,
                 mount_info->operation, mount_info->cancellable,
-                (GAsyncReadyCallback)mount_cb, mount_info);
+                (GAsyncReadyCallback)mount_cb, mount_info
+            );
 
             model->priv->mount_info = mount_info;
             return BEDIT_FILE_BROWSER_STORE_RESULT_MOUNTING;
@@ -2391,12 +2696,14 @@ static BeditFileBrowserStoreResult model_mount_root(
 /* Public */
 BeditFileBrowserStore *bedit_file_browser_store_new(GFile *root) {
     return BEDIT_FILE_BROWSER_STORE(
-        g_object_new(BEDIT_TYPE_FILE_BROWSER_STORE, "root", root, NULL));
+        g_object_new(BEDIT_TYPE_FILE_BROWSER_STORE, "root", root, NULL)
+    );
 }
 
 void bedit_file_browser_store_set_value(
     BeditFileBrowserStore *tree_model, GtkTreeIter *iter, gint column,
-    GValue *value) {
+    GValue *value
+) {
     gpointer data;
     FileBrowserNode *node;
     GtkTreePath *path;
@@ -2412,8 +2719,9 @@ void bedit_file_browser_store_set_value(
 
         data = g_value_dup_string(value);
 
-        if (!data)
+        if (!data) {
             data = g_strdup(node->name);
+        }
 
         g_free(node->markup);
         node->markup = data;
@@ -2424,38 +2732,46 @@ void bedit_file_browser_store_set_value(
 
         g_return_if_fail(G_IS_EMBLEM(data) || data == NULL);
 
-        if (node->emblem)
+        if (node->emblem) {
             g_object_unref(node->emblem);
+        }
 
-        if (data)
+        if (data) {
             node->emblem = g_object_ref(G_EMBLEM(data));
-        else
+        } else {
             node->emblem = NULL;
+        }
 
         model_recomposite_icon(tree_model, iter);
     } else {
         g_return_if_fail(
             column == BEDIT_FILE_BROWSER_STORE_COLUMN_MARKUP ||
-            column == BEDIT_FILE_BROWSER_STORE_COLUMN_EMBLEM);
+            column == BEDIT_FILE_BROWSER_STORE_COLUMN_EMBLEM
+        );
     }
 
     if (model_node_visibility(tree_model, node)) {
-        path =
-            bedit_file_browser_store_get_path(GTK_TREE_MODEL(tree_model), iter);
+        path = bedit_file_browser_store_get_path(
+            GTK_TREE_MODEL(tree_model), iter
+        );
         row_changed(tree_model, &path, iter);
         gtk_tree_path_free(path);
     }
 }
 
 BeditFileBrowserStoreResult bedit_file_browser_store_set_virtual_root(
-    BeditFileBrowserStore *model, GtkTreeIter *iter) {
+    BeditFileBrowserStore *model, GtkTreeIter *iter
+) {
     g_return_val_if_fail(
         BEDIT_IS_FILE_BROWSER_STORE(model),
-        BEDIT_FILE_BROWSER_STORE_RESULT_NO_CHANGE);
+        BEDIT_FILE_BROWSER_STORE_RESULT_NO_CHANGE
+    );
     g_return_val_if_fail(
-        iter != NULL, BEDIT_FILE_BROWSER_STORE_RESULT_NO_CHANGE);
+        iter != NULL, BEDIT_FILE_BROWSER_STORE_RESULT_NO_CHANGE
+    );
     g_return_val_if_fail(
-        iter->user_data != NULL, BEDIT_FILE_BROWSER_STORE_RESULT_NO_CHANGE);
+        iter->user_data != NULL, BEDIT_FILE_BROWSER_STORE_RESULT_NO_CHANGE
+    );
 
     model_clear(model, FALSE);
     set_virtual_root_from_node(model, (FileBrowserNode *)(iter->user_data));
@@ -2465,10 +2781,12 @@ BeditFileBrowserStoreResult bedit_file_browser_store_set_virtual_root(
 
 BeditFileBrowserStoreResult
 bedit_file_browser_store_set_virtual_root_from_location(
-    BeditFileBrowserStore *model, GFile *root) {
+    BeditFileBrowserStore *model, GFile *root
+) {
     g_return_val_if_fail(
         BEDIT_IS_FILE_BROWSER_STORE(model),
-        BEDIT_FILE_BROWSER_STORE_RESULT_NO_CHANGE);
+        BEDIT_FILE_BROWSER_STORE_RESULT_NO_CHANGE
+    );
 
     if (root == NULL) {
         gchar *uri = g_file_get_uri(root);
@@ -2479,9 +2797,12 @@ bedit_file_browser_store_set_virtual_root_from_location(
     }
 
     /* Check if uri is already the virtual root */
-    if (model->priv->virtual_root &&
-        g_file_equal(model->priv->virtual_root->file, root))
+    if (
+        model->priv->virtual_root &&
+        g_file_equal(model->priv->virtual_root->file, root)
+    ) {
         return BEDIT_FILE_BROWSER_STORE_RESULT_NO_CHANGE;
+    }
 
     /* Check if uri is the root itself */
     if (g_file_equal(model->priv->root->file, root)) {
@@ -2509,13 +2830,16 @@ bedit_file_browser_store_set_virtual_root_from_location(
 }
 
 BeditFileBrowserStoreResult bedit_file_browser_store_set_virtual_root_top(
-    BeditFileBrowserStore *model) {
+    BeditFileBrowserStore *model
+) {
     g_return_val_if_fail(
         BEDIT_IS_FILE_BROWSER_STORE(model),
-        BEDIT_FILE_BROWSER_STORE_RESULT_NO_CHANGE);
+        BEDIT_FILE_BROWSER_STORE_RESULT_NO_CHANGE
+    );
 
-    if (model->priv->virtual_root == model->priv->root)
+    if (model->priv->virtual_root == model->priv->root) {
         return BEDIT_FILE_BROWSER_STORE_RESULT_NO_CHANGE;
+    }
 
     model_clear(model, FALSE);
     set_virtual_root_from_node(model, model->priv->root);
@@ -2524,13 +2848,16 @@ BeditFileBrowserStoreResult bedit_file_browser_store_set_virtual_root_top(
 }
 
 BeditFileBrowserStoreResult bedit_file_browser_store_set_virtual_root_up(
-    BeditFileBrowserStore *model) {
+    BeditFileBrowserStore *model
+) {
     g_return_val_if_fail(
         BEDIT_IS_FILE_BROWSER_STORE(model),
-        BEDIT_FILE_BROWSER_STORE_RESULT_NO_CHANGE);
+        BEDIT_FILE_BROWSER_STORE_RESULT_NO_CHANGE
+    );
 
-    if (model->priv->virtual_root == model->priv->root)
+    if (model->priv->virtual_root == model->priv->root) {
         return BEDIT_FILE_BROWSER_STORE_RESULT_NO_CHANGE;
+    }
 
     model_clear(model, FALSE);
     set_virtual_root_from_node(model, model->priv->virtual_root->parent);
@@ -2539,31 +2866,36 @@ BeditFileBrowserStoreResult bedit_file_browser_store_set_virtual_root_up(
 }
 
 gboolean bedit_file_browser_store_get_iter_virtual_root(
-    BeditFileBrowserStore *model, GtkTreeIter *iter) {
+    BeditFileBrowserStore *model, GtkTreeIter *iter
+) {
     g_return_val_if_fail(BEDIT_IS_FILE_BROWSER_STORE(model), FALSE);
     g_return_val_if_fail(iter != NULL, FALSE);
 
-    if (model->priv->virtual_root == NULL)
+    if (model->priv->virtual_root == NULL) {
         return FALSE;
+    }
 
     iter->user_data = model->priv->virtual_root;
     return TRUE;
 }
 
 gboolean bedit_file_browser_store_get_iter_root(
-    BeditFileBrowserStore *model, GtkTreeIter *iter) {
+    BeditFileBrowserStore *model, GtkTreeIter *iter
+) {
     g_return_val_if_fail(BEDIT_IS_FILE_BROWSER_STORE(model), FALSE);
     g_return_val_if_fail(iter != NULL, FALSE);
 
-    if (model->priv->root == NULL)
+    if (model->priv->root == NULL) {
         return FALSE;
+    }
 
     iter->user_data = model->priv->root;
     return TRUE;
 }
 
 gboolean bedit_file_browser_store_iter_equal(
-    BeditFileBrowserStore *model, GtkTreeIter *iter1, GtkTreeIter *iter2) {
+    BeditFileBrowserStore *model, GtkTreeIter *iter1, GtkTreeIter *iter2
+) {
     g_return_val_if_fail(BEDIT_IS_FILE_BROWSER_STORE(model), FALSE);
     g_return_val_if_fail(iter1 != NULL, FALSE);
     g_return_val_if_fail(iter2 != NULL, FALSE);
@@ -2574,35 +2906,43 @@ gboolean bedit_file_browser_store_iter_equal(
 }
 
 void bedit_file_browser_store_cancel_mount_operation(
-    BeditFileBrowserStore *store) {
+    BeditFileBrowserStore *store
+) {
     g_return_if_fail(BEDIT_IS_FILE_BROWSER_STORE(store));
 
     cancel_mount_operation(store);
 }
 
 BeditFileBrowserStoreResult bedit_file_browser_store_set_root_and_virtual_root(
-    BeditFileBrowserStore *model, GFile *root, GFile *virtual_root) {
+    BeditFileBrowserStore *model, GFile *root, GFile *virtual_root
+) {
     FileBrowserNode *node;
     gboolean equal = FALSE;
 
     g_return_val_if_fail(
         BEDIT_IS_FILE_BROWSER_STORE(model),
-        BEDIT_FILE_BROWSER_STORE_RESULT_NO_CHANGE);
+        BEDIT_FILE_BROWSER_STORE_RESULT_NO_CHANGE
+    );
 
-    if (root == NULL && model->priv->root == NULL)
+    if (root == NULL && model->priv->root == NULL) {
         return BEDIT_FILE_BROWSER_STORE_RESULT_NO_CHANGE;
+    }
 
     if (root != NULL && model->priv->root != NULL) {
         equal = g_file_equal(root, model->priv->root->file);
 
-        if (equal && virtual_root == NULL)
+        if (equal && virtual_root == NULL) {
             return BEDIT_FILE_BROWSER_STORE_RESULT_NO_CHANGE;
+        }
     }
 
     if (virtual_root) {
-        if (equal &&
-            g_file_equal(virtual_root, model->priv->virtual_root->file))
+        if (
+            equal &&
+            g_file_equal(virtual_root, model->priv->virtual_root->file)
+        ) {
             return BEDIT_FILE_BROWSER_STORE_RESULT_NO_CHANGE;
+        }
     }
 
     /* Make sure to cancel any previous mount operations */
@@ -2630,36 +2970,44 @@ BeditFileBrowserStoreResult bedit_file_browser_store_set_root_and_virtual_root(
 }
 
 BeditFileBrowserStoreResult bedit_file_browser_store_set_root(
-    BeditFileBrowserStore *model, GFile *root) {
+    BeditFileBrowserStore *model, GFile *root
+) {
     g_return_val_if_fail(
         BEDIT_IS_FILE_BROWSER_STORE(model),
-        BEDIT_FILE_BROWSER_STORE_RESULT_NO_CHANGE);
+        BEDIT_FILE_BROWSER_STORE_RESULT_NO_CHANGE
+    );
 
     return bedit_file_browser_store_set_root_and_virtual_root(
-        model, root, NULL);
+        model, root, NULL
+    );
 }
 
 GFile *bedit_file_browser_store_get_root(BeditFileBrowserStore *model) {
     g_return_val_if_fail(BEDIT_IS_FILE_BROWSER_STORE(model), NULL);
 
-    if (model->priv->root == NULL || model->priv->root->file == NULL)
+    if (model->priv->root == NULL || model->priv->root->file == NULL) {
         return NULL;
-    else
+    } else {
         return g_file_dup(model->priv->root->file);
+    }
 }
 
 GFile *bedit_file_browser_store_get_virtual_root(BeditFileBrowserStore *model) {
     g_return_val_if_fail(BEDIT_IS_FILE_BROWSER_STORE(model), NULL);
 
-    if (model->priv->virtual_root == NULL ||
-        model->priv->virtual_root->file == NULL)
+    if (
+        model->priv->virtual_root == NULL ||
+        model->priv->virtual_root->file == NULL
+    ) {
         return NULL;
-    else
+    } else {
         return g_file_dup(model->priv->virtual_root->file);
+    }
 }
 
 void _bedit_file_browser_store_iter_expanded(
-    BeditFileBrowserStore *model, GtkTreeIter *iter) {
+    BeditFileBrowserStore *model, GtkTreeIter *iter
+) {
     FileBrowserNode *node;
 
     g_return_if_fail(BEDIT_IS_FILE_BROWSER_STORE(model));
@@ -2687,8 +3035,11 @@ void _bedit_file_browser_store_iter_collapsed(
     if (NODE_IS_DIR(node) && NODE_LOADED(node)) {
         /* Unload children of the children, keeping 1 depth in cache */
 
-        for (GSList *item = FILE_BROWSER_NODE_DIR(node)->children; item;
-             item = item->next) {
+        for (
+            GSList *item = FILE_BROWSER_NODE_DIR(node)->children;
+            item;
+            item = item->next
+        ) {
             node = (FileBrowserNode *)(item->data);
 
             if (NODE_IS_DIR(node) && NODE_LOADED(node)) {
@@ -2700,16 +3051,19 @@ void _bedit_file_browser_store_iter_collapsed(
 }
 
 BeditFileBrowserStoreFilterMode bedit_file_browser_store_get_filter_mode(
-    BeditFileBrowserStore *model) {
+    BeditFileBrowserStore *model
+) {
     return model->priv->filter_mode;
 }
 
 void bedit_file_browser_store_set_filter_mode(
-    BeditFileBrowserStore *model, BeditFileBrowserStoreFilterMode mode) {
+    BeditFileBrowserStore *model, BeditFileBrowserStoreFilterMode mode
+) {
     g_return_if_fail(BEDIT_IS_FILE_BROWSER_STORE(model));
 
-    if (model->priv->filter_mode == mode)
+    if (model->priv->filter_mode == mode) {
         return;
+    }
 
     model->priv->filter_mode = mode;
     model_refilter(model);
@@ -2719,7 +3073,8 @@ void bedit_file_browser_store_set_filter_mode(
 
 void bedit_file_browser_store_set_filter_func(
     BeditFileBrowserStore *model, BeditFileBrowserStoreFilterFunc func,
-    gpointer user_data) {
+    gpointer user_data
+) {
     g_return_if_fail(BEDIT_IS_FILE_BROWSER_STORE(model));
 
     model->priv->filter_func = func;
@@ -2728,12 +3083,14 @@ void bedit_file_browser_store_set_filter_func(
 }
 
 const gchar *const *bedit_file_browser_store_get_binary_patterns(
-    BeditFileBrowserStore *model) {
+    BeditFileBrowserStore *model
+) {
     return (const gchar *const *)model->priv->binary_patterns;
 }
 
 void bedit_file_browser_store_set_binary_patterns(
-    BeditFileBrowserStore *model, const gchar **binary_patterns) {
+    BeditFileBrowserStore *model, const gchar **binary_patterns
+) {
     g_return_if_fail(BEDIT_IS_FILE_BROWSER_STORE(model));
 
     if (model->priv->binary_patterns != NULL) {
@@ -2751,12 +3108,15 @@ void bedit_file_browser_store_set_binary_patterns(
         model->priv->binary_pattern_specs = g_ptr_array_sized_new(n_patterns);
         g_ptr_array_set_free_func(
             model->priv->binary_pattern_specs,
-            (GDestroyNotify)g_pattern_spec_free);
+            (GDestroyNotify)g_pattern_spec_free
+        );
 
-        for (guint i = 0; binary_patterns[i] != NULL; ++i)
+        for (guint i = 0; binary_patterns[i] != NULL; ++i) {
             g_ptr_array_add(
                 model->priv->binary_pattern_specs,
-                g_pattern_spec_new(binary_patterns[i]));
+                g_pattern_spec_new(binary_patterns[i])
+            );
+        }
     }
 
     model_refilter(model);
@@ -2776,8 +3136,9 @@ bedit_file_browser_store_filter_mode_get_default(void) {
 void bedit_file_browser_store_refresh(BeditFileBrowserStore *model) {
     g_return_if_fail(BEDIT_IS_FILE_BROWSER_STORE(model));
 
-    if (model->priv->root == NULL || model->priv->virtual_root == NULL)
+    if (model->priv->root == NULL || model->priv->virtual_root == NULL) {
         return;
+    }
 
     /* Clear the model */
     g_signal_emit(model, model_signals[BEGIN_REFRESH], 0);
@@ -2787,8 +3148,9 @@ void bedit_file_browser_store_refresh(BeditFileBrowserStore *model) {
 }
 
 static void reparent_node(FileBrowserNode *node, gboolean reparent) {
-    if (!node->file)
+    if (!node->file) {
         return;
+    }
 
     if (reparent) {
         GFile *parent = node->parent->file;
@@ -2803,14 +3165,16 @@ static void reparent_node(FileBrowserNode *node, gboolean reparent) {
     if (NODE_IS_DIR(node)) {
         FileBrowserNodeDir *dir = FILE_BROWSER_NODE_DIR(node);
 
-        for (GSList *child = dir->children; child; child = child->next)
+        for (GSList *child = dir->children; child; child = child->next) {
             reparent_node((FileBrowserNode *)child->data, TRUE);
+        }
     }
 }
 
 gboolean bedit_file_browser_store_rename(
     BeditFileBrowserStore *model, GtkTreeIter *iter, const gchar *new_name,
-    GError **error) {
+    GError **error
+) {
     FileBrowserNode *node;
     GFile *file;
     GFile *parent;
@@ -2836,7 +3200,8 @@ gboolean bedit_file_browser_store_rename(
     }
 
     if (g_file_move(
-            node->file, file, G_FILE_COPY_NONE, NULL, NULL, NULL, &err)) {
+        node->file, file, G_FILE_COPY_NONE, NULL, NULL, NULL, &err
+    )) {
         previous = node->file;
         node->file = file;
 
@@ -2860,9 +3225,12 @@ gboolean bedit_file_browser_store_rename(
                 *error = g_error_new_literal(
                     bedit_file_browser_store_error_quark(),
                     BEDIT_FILE_BROWSER_ERROR_RENAME,
-                    _("The renamed file is currently filtered out. "
-                      "You need to adjust your filter settings to "
-                      "make the file visible"));
+                    _(
+                        "The renamed file is currently filtered out. "
+                        "You need to adjust your filter settings to "
+                        "make the file visible"
+                    )
+                );
             }
 
             return FALSE;
@@ -2880,7 +3248,8 @@ gboolean bedit_file_browser_store_rename(
             if (error != NULL) {
                 *error = g_error_new_literal(
                     bedit_file_browser_store_error_quark(),
-                    BEDIT_FILE_BROWSER_ERROR_RENAME, err->message);
+                    BEDIT_FILE_BROWSER_ERROR_RENAME, err->message
+                );
             }
 
             g_error_free(err);
@@ -2895,8 +3264,9 @@ static void async_data_free(AsyncData *data) {
     g_list_free_full(data->files, g_object_unref);
 
     if (!data->removed)
-        data->model->priv->async_handles =
-            g_slist_remove(data->model->priv->async_handles, data);
+        data->model->priv->async_handles = g_slist_remove(
+            data->model->priv->async_handles, data
+        );
 
     g_slice_free(AsyncData, data);
 }
@@ -2911,21 +3281,24 @@ static gboolean emit_no_trash(AsyncData *data) {
 }
 
 static void delete_file_finished(
-    GFile *file, GAsyncResult *res, AsyncData *data) {
+    GFile *file, GAsyncResult *res, AsyncData *data
+) {
     GError *error = NULL;
     gboolean ok;
 
-    if (data->trash)
+    if (data->trash) {
         ok = g_file_trash_finish(file, res, &error);
-    else
+    } else {
         ok = g_file_delete_finish(file, res, &error);
+    }
 
     if (ok) {
         /* Remove the file from the model */
         FileBrowserNode *node = model_find_node(data->model, NULL, file);
 
-        if (node != NULL)
+        if (node != NULL) {
             model_remove_node(data->model, node, NULL, TRUE);
+        }
 
         /* Process the next file */
         data->iter = data->iter->next;
@@ -2971,16 +3344,19 @@ static void delete_files(AsyncData *data) {
     if (data->trash) {
         g_file_trash_async(
             file, G_PRIORITY_DEFAULT, data->cancellable,
-            (GAsyncReadyCallback)delete_file_finished, data);
+            (GAsyncReadyCallback)delete_file_finished, data
+        );
     } else {
         g_file_delete_async(
             file, G_PRIORITY_DEFAULT, data->cancellable,
-            (GAsyncReadyCallback)delete_file_finished, data);
+            (GAsyncReadyCallback)delete_file_finished, data
+        );
     }
 }
 
 BeditFileBrowserStoreResult bedit_file_browser_store_delete_all(
-    BeditFileBrowserStore *model, GList *rows, gboolean trash) {
+    BeditFileBrowserStore *model, GList *rows, gboolean trash
+) {
     FileBrowserNode *node;
     AsyncData *data;
     GList *files = NULL;
@@ -2991,10 +3367,12 @@ BeditFileBrowserStoreResult bedit_file_browser_store_delete_all(
 
     g_return_val_if_fail(
         BEDIT_IS_FILE_BROWSER_STORE(model),
-        BEDIT_FILE_BROWSER_STORE_RESULT_NO_CHANGE);
+        BEDIT_FILE_BROWSER_STORE_RESULT_NO_CHANGE
+    );
 
-    if (rows == NULL)
+    if (rows == NULL) {
         return BEDIT_FILE_BROWSER_STORE_RESULT_NO_CHANGE;
+    }
 
     /* First we sort the paths so that we can later on remove any
        files/directories that are actually subfiles/directories of
@@ -3004,13 +3382,15 @@ BeditFileBrowserStoreResult bedit_file_browser_store_delete_all(
     for (row = rows; row; row = row->next) {
         path = (GtkTreePath *)(row->data);
 
-        if (!gtk_tree_model_get_iter(GTK_TREE_MODEL(model), &iter, path))
+        if (!gtk_tree_model_get_iter(GTK_TREE_MODEL(model), &iter, path)) {
             continue;
+        }
 
         /* Skip if the current path is actually a descendant of the
            previous path */
-        if (prev != NULL && gtk_tree_path_is_descendant(path, prev))
+        if (prev != NULL && gtk_tree_path_is_descendant(path, prev)) {
             continue;
+        }
 
         prev = path;
         node = (FileBrowserNode *)(iter.user_data);
@@ -3026,8 +3406,9 @@ BeditFileBrowserStoreResult bedit_file_browser_store_delete_all(
     data->iter = files;
     data->removed = FALSE;
 
-    model->priv->async_handles =
-        g_slist_prepend(model->priv->async_handles, data);
+    model->priv->async_handles = g_slist_prepend(
+        model->priv->async_handles, data
+    );
 
     delete_files(data);
     g_list_free(rows);
@@ -3036,26 +3417,32 @@ BeditFileBrowserStoreResult bedit_file_browser_store_delete_all(
 }
 
 BeditFileBrowserStoreResult bedit_file_browser_store_delete(
-    BeditFileBrowserStore *model, GtkTreeIter *iter, gboolean trash) {
+    BeditFileBrowserStore *model, GtkTreeIter *iter, gboolean trash
+) {
     FileBrowserNode *node;
     GList *rows = NULL;
     BeditFileBrowserStoreResult result;
 
     g_return_val_if_fail(
         BEDIT_IS_FILE_BROWSER_STORE(model),
-        BEDIT_FILE_BROWSER_STORE_RESULT_NO_CHANGE);
+        BEDIT_FILE_BROWSER_STORE_RESULT_NO_CHANGE
+    );
     g_return_val_if_fail(
-        iter != NULL, BEDIT_FILE_BROWSER_STORE_RESULT_NO_CHANGE);
+        iter != NULL, BEDIT_FILE_BROWSER_STORE_RESULT_NO_CHANGE
+    );
     g_return_val_if_fail(
-        iter->user_data != NULL, BEDIT_FILE_BROWSER_STORE_RESULT_NO_CHANGE);
+        iter->user_data != NULL, BEDIT_FILE_BROWSER_STORE_RESULT_NO_CHANGE
+    );
 
     node = (FileBrowserNode *)(iter->user_data);
 
-    if (NODE_IS_DUMMY(node))
+    if (NODE_IS_DUMMY(node)) {
         return BEDIT_FILE_BROWSER_STORE_RESULT_NO_CHANGE;
+    }
 
     rows = g_list_append(
-        NULL, bedit_file_browser_store_get_path_real(model, node));
+        NULL, bedit_file_browser_store_get_path_real(model, node)
+    );
     result = bedit_file_browser_store_delete_all(model, rows, trash);
 
     g_list_free_full(rows, (GDestroyNotify)gtk_tree_path_free);
@@ -3064,7 +3451,8 @@ BeditFileBrowserStoreResult bedit_file_browser_store_delete(
 }
 
 gboolean bedit_file_browser_store_new_file(
-    BeditFileBrowserStore *model, GtkTreeIter *parent, GtkTreeIter *iter) {
+    BeditFileBrowserStore *model, GtkTreeIter *parent, GtkTreeIter *iter
+) {
     GFile *file;
     GFileOutputStream *stream;
     FileBrowserNodeDir *parent_node;
@@ -3076,26 +3464,30 @@ gboolean bedit_file_browser_store_new_file(
     g_return_val_if_fail(parent != NULL, FALSE);
     g_return_val_if_fail(parent->user_data != NULL, FALSE);
     g_return_val_if_fail(
-        NODE_IS_DIR((FileBrowserNode *)(parent->user_data)), FALSE);
+        NODE_IS_DIR((FileBrowserNode *)(parent->user_data)), FALSE
+    );
     g_return_val_if_fail(iter != NULL, FALSE);
 
     parent_node = FILE_BROWSER_NODE_DIR(parent->user_data);
     /* Translators: This is the default name of new files created by the file
      * browser pane. */
     file = unique_new_name(
-        ((FileBrowserNode *)parent_node)->file, _("Untitled File"));
+        ((FileBrowserNode *)parent_node)->file, _("Untitled File")
+    );
 
     stream = g_file_create(file, G_FILE_CREATE_NONE, NULL, &error);
 
     if (!stream) {
         g_signal_emit(
             model, model_signals[ERROR], 0, BEDIT_FILE_BROWSER_ERROR_NEW_FILE,
-            error->message);
+            error->message
+        );
         g_error_free(error);
     } else {
         g_object_unref(stream);
         node = model_add_node_from_file(
-            model, (FileBrowserNode *)parent_node, file, NULL);
+            model, (FileBrowserNode *)parent_node, file, NULL
+        );
 
         if (model_node_visibility(model, node)) {
             iter->user_data = node;
@@ -3104,9 +3496,12 @@ gboolean bedit_file_browser_store_new_file(
             g_signal_emit(
                 model, model_signals[ERROR], 0,
                 BEDIT_FILE_BROWSER_ERROR_NEW_FILE,
-                _("The new file is currently filtered out. "
-                  "You need to adjust your filter "
-                  "settings to make the file visible"));
+                _(
+                    "The new file is currently filtered out. "
+                    "You need to adjust your filter "
+                    "settings to make the file visible"
+                )
+            );
         }
     }
 
@@ -3115,7 +3510,8 @@ gboolean bedit_file_browser_store_new_file(
 }
 
 gboolean bedit_file_browser_store_new_directory(
-    BeditFileBrowserStore *model, GtkTreeIter *parent, GtkTreeIter *iter) {
+    BeditFileBrowserStore *model, GtkTreeIter *parent, GtkTreeIter *iter
+) {
     GFile *file;
     FileBrowserNodeDir *parent_node;
     GError *error = NULL;
@@ -3126,23 +3522,27 @@ gboolean bedit_file_browser_store_new_directory(
     g_return_val_if_fail(parent != NULL, FALSE);
     g_return_val_if_fail(parent->user_data != NULL, FALSE);
     g_return_val_if_fail(
-        NODE_IS_DIR((FileBrowserNode *)(parent->user_data)), FALSE);
+        NODE_IS_DIR((FileBrowserNode *)(parent->user_data)), FALSE
+    );
     g_return_val_if_fail(iter != NULL, FALSE);
 
     parent_node = FILE_BROWSER_NODE_DIR(parent->user_data);
     /* Translators: This is the default name of new directories created by the
      * file browser pane. */
     file = unique_new_name(
-        ((FileBrowserNode *)parent_node)->file, _("Untitled Folder"));
+        ((FileBrowserNode *) parent_node)->file, _("Untitled Folder")
+    );
 
     if (!g_file_make_directory(file, NULL, &error)) {
         g_signal_emit(
             model, model_signals[ERROR], 0,
-            BEDIT_FILE_BROWSER_ERROR_NEW_DIRECTORY, error->message);
+            BEDIT_FILE_BROWSER_ERROR_NEW_DIRECTORY, error->message
+        );
         g_error_free(error);
     } else {
         node = model_add_node_from_file(
-            model, (FileBrowserNode *)parent_node, file, NULL);
+            model, (FileBrowserNode *) parent_node, file, NULL
+        );
 
         if (model_node_visibility(model, node)) {
             iter->user_data = node;
@@ -3151,9 +3551,12 @@ gboolean bedit_file_browser_store_new_directory(
             g_signal_emit(
                 model, model_signals[ERROR], 0,
                 BEDIT_FILE_BROWSER_ERROR_NEW_FILE,
-                _("The new directory is currently filtered "
-                  "out. You need to adjust your filter "
-                  "settings to make the directory visible"));
+                _(
+                    "The new directory is currently filtered "
+                    "out. You need to adjust your filter "
+                    "settings to make the directory visible"
+                )
+            );
         }
     }
 
