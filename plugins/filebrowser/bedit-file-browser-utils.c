@@ -31,15 +31,18 @@ gchar *bedit_file_browser_utils_symbolic_icon_name_from_file(GFile *file) {
 
     info = g_file_query_info(
         file, G_FILE_ATTRIBUTE_STANDARD_SYMBOLIC_ICON, G_FILE_QUERY_INFO_NONE,
-        NULL, NULL);
+        NULL, NULL
+    );
 
-    if (!info)
+    if (!info) {
         return NULL;
+    }
 
     if ((icon = g_file_info_get_symbolic_icon(info)) &&
         G_IS_THEMED_ICON(icon)) {
-        const gchar *const *names =
-            g_themed_icon_get_names(G_THEMED_ICON(icon));
+        const gchar *const *names = g_themed_icon_get_names(
+            G_THEMED_ICON(icon)
+        );
         return g_strdup(names[0]);
     }
 
@@ -51,14 +54,16 @@ gchar *bedit_file_browser_utils_name_from_themed_icon(GIcon *icon) {
     GtkIconTheme *theme;
     const gchar *const *names;
 
-    if (!G_IS_THEMED_ICON(icon))
+    if (!G_IS_THEMED_ICON(icon)) {
         return NULL;
+    }
 
     theme = gtk_icon_theme_get_default();
     names = g_themed_icon_get_names(G_THEMED_ICON(icon));
 
-    if (gtk_icon_theme_has_icon(theme, names[0]))
+    if (gtk_icon_theme_has_icon(theme, names[0])) {
         return g_strdup(names[0]);
+    }
 
     return NULL;
 }
@@ -75,16 +80,21 @@ gboolean bedit_file_browser_utils_confirmation_dialog(
 
     dlg = gtk_message_dialog_new(
         GTK_WINDOW(window), GTK_DIALOG_MODAL | GTK_DIALOG_DESTROY_WITH_PARENT,
-        type, GTK_BUTTONS_NONE, "%s", message);
+        type, GTK_BUTTONS_NONE, "%s", message
+    );
 
     if (secondary) {
         gtk_message_dialog_format_secondary_text(
-            GTK_MESSAGE_DIALOG(dlg), "%s", secondary);
+            GTK_MESSAGE_DIALOG(dlg), "%s", secondary
+        );
     }
 
     gtk_dialog_add_buttons(
-        GTK_DIALOG(dlg), _("_Cancel"), GTK_RESPONSE_CANCEL, button_label,
-        GTK_RESPONSE_OK, NULL);
+        GTK_DIALOG(dlg),
+        _("_Cancel"), GTK_RESPONSE_CANCEL,
+        button_label, GTK_RESPONSE_OK,
+        NULL
+    );
 
     gtk_dialog_set_default_response(GTK_DIALOG(dlg), GTK_RESPONSE_CANCEL);
 

@@ -31,19 +31,22 @@ G_BEGIN_DECLS
  * Type checking and casting macros
  */
 #define BEDIT_TYPE_FILE_BROWSER_PLUGIN (bedit_file_browser_plugin_get_type())
-#define BEDIT_FILE_BROWSER_PLUGIN(o)                                           \
-    (G_TYPE_CHECK_INSTANCE_CAST(                                               \
-        (o), BEDIT_TYPE_FILE_BROWSER_PLUGIN, BeditFileBrowserPlugin))
-#define BEDIT_FILE_BROWSER_PLUGIN_CLASS(k)                                     \
-    (G_TYPE_CHECK_CLASS_CAST(                                                  \
-        (k), BEDIT_TYPE_FILE_BROWSER_PLUGIN, BeditFileBrowserPluginClass))
-#define BEDIT_IS_FILE_BROWSER_PLUGIN(o)                                        \
+#define BEDIT_FILE_BROWSER_PLUGIN(o)                                        \
+    (G_TYPE_CHECK_INSTANCE_CAST(                                            \
+        (o), BEDIT_TYPE_FILE_BROWSER_PLUGIN, BeditFileBrowserPlugin         \
+    ))
+#define BEDIT_FILE_BROWSER_PLUGIN_CLASS(k)                                  \
+    (G_TYPE_CHECK_CLASS_CAST(                                               \
+        (k), BEDIT_TYPE_FILE_BROWSER_PLUGIN, BeditFileBrowserPluginClass    \
+    ))
+#define BEDIT_IS_FILE_BROWSER_PLUGIN(o)                                     \
     (G_TYPE_CHECK_INSTANCE_TYPE((o), BEDIT_TYPE_FILE_BROWSER_PLUGIN))
-#define BEDIT_IS_FILE_BROWSER_PLUGIN_CLASS(k)                                  \
+#define BEDIT_IS_FILE_BROWSER_PLUGIN_CLASS(k)                               \
     (G_TYPE_CHECK_CLASS_TYPE((k), BEDIT_TYPE_FILE_BROWSER_PLUGIN))
-#define BEDIT_FILE_BROWSER_GET_CLASS(o)                                        \
-    (G_TYPE_INSTANCE_GET_CLASS(                                                \
-        (o), BEDIT_TYPE_FILE_BROWSER_PLUGIN, BeditFileBrowserPluginClass))
+#define BEDIT_FILE_BROWSER_GET_CLASS(o)                                     \
+    (G_TYPE_INSTANCE_GET_CLASS(                                             \
+        (o), BEDIT_TYPE_FILE_BROWSER_PLUGIN, BeditFileBrowserPluginClass    \
+    ))
 
 /* Private structure type */
 typedef struct _BeditFileBrowserPluginPrivate BeditFileBrowserPluginPrivate;

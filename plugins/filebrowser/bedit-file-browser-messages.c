@@ -26,14 +26,16 @@
 #define MESSAGE_OBJECT_PATH "/plugins/filebrowser"
 #define WINDOW_DATA_KEY "BeditFileBrowserMessagesWindowData"
 
-#define BUS_CONNECT(bus, name, data)                                           \
-    bedit_message_bus_connect(                                                 \
-        bus, MESSAGE_OBJECT_PATH, #name,                                       \
-        (BeditMessageCallback)message_##name##_cb, data, NULL)
-#define BUS_DISCONNECT(bus, name, data)                                        \
-    bedit_message_bus_disconnect_by_func(                                      \
-        bus, MESSAGE_OBJECT_PATH, #name,                                       \
-        (BeditMessageCallback)message_##name##_cb, data)
+#define BUS_CONNECT(bus, name, data)                                        \
+    bedit_message_bus_connect(                                              \
+        bus, MESSAGE_OBJECT_PATH, #name,                                    \
+        (BeditMessageCallback)message_##name##_cb, data, NULL               \
+    )
+#define BUS_DISCONNECT(bus, name, data)                                     \
+    bedit_message_bus_disconnect_by_func(                                   \
+        bus, MESSAGE_OBJECT_PATH, #name,                                    \
+        (BeditMessageCallback)message_##name##_cb, data                     \
+    )
 
 typedef struct {
     BeditWindow *window;
@@ -62,17 +64,21 @@ typedef struct {
 } FilterData;
 
 static WindowData *window_data_new(
-    BeditWindow *window, BeditFileBrowserWidget *widget) {
+    BeditWindow *window, BeditFileBrowserWidget *widget
+) {
     WindowData *data = g_slice_new(WindowData);
 
     data->bus = bedit_window_get_message_bus(window);
     data->widget = widget;
     data->row_tracking = g_hash_table_new_full(
-        g_str_hash, g_str_equal, (GDestroyNotify)g_free,
-        (GDestroyNotify)gtk_tree_row_reference_free);
+        g_str_hash, g_str_equal,
+        (GDestroyNotify)g_free,
+        (GDestroyNotify)gtk_tree_row_reference_free
+    );
 
     data->filters = g_hash_table_new_full(
-        g_str_hash, g_str_equal, (GDestroyNotify)g_free, NULL);
+        g_str_hash, g_str_equal, (GDestroyNotify)g_free, NULL
+    );
 
     g_object_set_data(G_OBJECT(window), WINDOW_DATA_KEY, data);
 
@@ -108,8 +114,10 @@ static FilterData *filter_data_new(BeditWindow *window, BeditMessage *message) {
         wdata->filters,
         bedit_message_type_identifier(
             bedit_message_get_object_path(message),
-            bedit_message_get_method(message)),
-        data);
+            bedit_message_get_method(message)
+        ),
+        data
+    );
 
     return data;
 }
@@ -120,7 +128,8 @@ static void filter_data_free(FilterData *data) {
 
     identifier = bedit_message_type_identifier(
         bedit_message_get_object_path(data->message),
-        bedit_message_get_method(data->message));
+        bedit_message_get_method(data->message)
+    );
 
     g_hash_table_remove(wdata->filters, identifier);
     g_free(identifier);
@@ -134,8 +143,9 @@ static GtkTreePath *track_row_lookup(WindowData *data, const gchar *id) {
 
     ref = (GtkTreeRowReference *)g_hash_table_lookup(data->row_tracking, id);
 
-    if (!ref)
+    if (!ref) {
         return NULL;
+    }
 
     return gtk_tree_row_reference_get_path(ref);
 }
@@ -156,7 +166,8 @@ static MessageCacheData *message_cache_data_new(
 }
 
 static void message_get_root_cb(
-    BeditMessageBus *bus, BeditMessage *message, WindowData *data) {
+    BeditMessageBus *bus, BeditMessage *message, WindowData *data
+) {
     BeditFileBrowserStore *store;
     GFile *location;
 
@@ -170,7 +181,8 @@ static void message_get_root_cb(
 }
 
 static void message_set_root_cb(
-    BeditMessageBus *bus, BeditMessage *message, WindowData *data) {
+    BeditMessageBus *bus, BeditMessage *message, WindowData *data
+) {
     GFile *root;
     GFile *virtual = NULL;
 
@@ -184,14 +196,16 @@ static void message_set_root_cb(
 
     if (virtual) {
         bedit_file_browser_widget_set_root_and_virtual_root(
-            data->widget, root, virtual);
+            data->widget, root, virtual
+        );
     } else {
         bedit_file_browser_widget_set_root(data->widget, root, TRUE);
     }
 }
 
 static void message_set_emblem_cb(
-    BeditMessageBus *bus, BeditMessage *message, WindowData *data) {
+    BeditMessageBus *bus, BeditMessage *message, WindowData *data
+) {
     gchar *id = NULL;
     gchar *emblem_name = NULL;
     GtkTreePath *path;
@@ -226,7 +240,8 @@ static void message_set_emblem_cb(
             g_value_set_object(&value, emblem);
 
             bedit_file_browser_store_set_value(
-                store, &iter, BEDIT_FILE_BROWSER_STORE_COLUMN_EMBLEM, &value);
+                store, &iter, BEDIT_FILE_BROWSER_STORE_COLUMN_EMBLEM, &value
+            );
 
             g_value_unset(&value);
         }
@@ -245,7 +260,8 @@ static void message_set_emblem_cb(
 }
 
 static void message_set_markup_cb(
-    BeditMessageBus *bus, BeditMessage *message, WindowData *data) {
+    BeditMessageBus *bus, BeditMessage *message, WindowData *data
+) {
     gchar *id = NULL;
     gchar *markup = NULL;
     GtkTreePath *path;
@@ -274,7 +290,9 @@ static void message_set_markup_cb(
 
                 gtk_tree_model_get(
                     GTK_TREE_MODEL(store), &iter,
-                    BEDIT_FILE_BROWSER_STORE_COLUMN_NAME, &name, -1);
+                    BEDIT_FILE_BROWSER_STORE_COLUMN_NAME, &name,
+                    -1
+                );
                 markup = g_markup_escape_text(name, -1);
 
                 g_free(name);
@@ -284,7 +302,8 @@ static void message_set_markup_cb(
             g_value_set_string(&value, markup);
 
             bedit_file_browser_store_set_value(
-                store, &iter, BEDIT_FILE_BROWSER_STORE_COLUMN_MARKUP, &value);
+                store, &iter, BEDIT_FILE_BROWSER_STORE_COLUMN_MARKUP, &value
+            );
 
             g_value_unset(&value);
         }
@@ -308,8 +327,9 @@ static gchar *item_id(const gchar *path, GFile *location) {
 }
 
 static gchar *track_row(
-    WindowData *data, BeditFileBrowserStore *store, GtkTreePath *path,
-    GFile *location) {
+    WindowData *data, BeditFileBrowserStore *store,
+    GtkTreePath *path, GFile *location
+) {
     GtkTreeRowReference *ref;
     gchar *id;
     gchar *pathstr;
@@ -327,7 +347,8 @@ static gchar *track_row(
 
 static void set_item_message(
     WindowData *data, GtkTreeIter *iter, GtkTreePath *path,
-    BeditMessage *message) {
+    BeditMessage *message
+) {
     BeditFileBrowserStore *store;
     gchar *name;
     GFile *location;
@@ -335,9 +356,12 @@ static void set_item_message(
 
     store = bedit_file_browser_widget_get_browser_store(data->widget);
     gtk_tree_model_get(
-        GTK_TREE_MODEL(store), iter, BEDIT_FILE_BROWSER_STORE_COLUMN_NAME,
-        &name, BEDIT_FILE_BROWSER_STORE_COLUMN_LOCATION, &location,
-        BEDIT_FILE_BROWSER_STORE_COLUMN_FLAGS, &flags, -1);
+        GTK_TREE_MODEL(store), iter,
+        BEDIT_FILE_BROWSER_STORE_COLUMN_NAME, &name,
+        BEDIT_FILE_BROWSER_STORE_COLUMN_LOCATION, &location,
+        BEDIT_FILE_BROWSER_STORE_COLUMN_FLAGS, &flags,
+        -1
+    );
 
     if (location) {
         gchar *track_id;
@@ -367,7 +391,8 @@ static void set_item_message(
 
 static gboolean custom_message_filter_func(
     BeditFileBrowserWidget *widget, BeditFileBrowserStore *store,
-    GtkTreeIter *iter, FilterData *data) {
+    GtkTreeIter *iter, FilterData *data
+) {
     WindowData *wdata = get_window_data(data->window);
     GFile *location;
     guint flags = 0;
@@ -375,11 +400,15 @@ static gboolean custom_message_filter_func(
     GtkTreePath *path;
 
     gtk_tree_model_get(
-        GTK_TREE_MODEL(store), iter, BEDIT_FILE_BROWSER_STORE_COLUMN_LOCATION,
-        &location, BEDIT_FILE_BROWSER_STORE_COLUMN_FLAGS, &flags, -1);
+        GTK_TREE_MODEL(store), iter,
+        BEDIT_FILE_BROWSER_STORE_COLUMN_LOCATION, &location,
+        BEDIT_FILE_BROWSER_STORE_COLUMN_FLAGS, &flags,
+        -1
+    );
 
-    if (!location || FILE_IS_DUMMY(flags))
+    if (!location || FILE_IS_DUMMY(flags)) {
         return FALSE;
+    }
 
     path = gtk_tree_model_get_path(GTK_TREE_MODEL(store), iter);
     set_item_message(wdata, iter, path, data->message);
@@ -417,17 +446,27 @@ static void message_add_filter_cb(
     }
 
     /* Check if the message type has the correct arguments */
-    if (!bedit_message_type_check(message_type, "id", G_TYPE_STRING) ||
+    if (
+        !bedit_message_type_check(message_type, "id", G_TYPE_STRING) ||
         !bedit_message_type_check(message_type, "location", G_TYPE_FILE) ||
         !bedit_message_type_check(
-            message_type, "is-directory", G_TYPE_BOOLEAN) ||
-        !bedit_message_type_check(message_type, "filter", G_TYPE_BOOLEAN)) {
+            message_type, "is-directory", G_TYPE_BOOLEAN
+        ) ||
+        !bedit_message_type_check(message_type, "filter", G_TYPE_BOOLEAN)
+    ) {
         return;
     }
 
     cbmessage = g_object_new(
-        message_type, "object-path", object_path, "method", method, "id", NULL,
-        "location", NULL, "is-directory", FALSE, "filter", FALSE, NULL);
+        message_type,
+        "object-path", object_path,
+        "method", method,
+        "id", NULL,
+        "location", NULL,
+        "is-directory", FALSE,
+        "filter", FALSE,
+        NULL
+    );
 
     /* Register the custom filter on the widget */
     filter_data = filter_data_new(window, cbmessage);
@@ -435,25 +474,30 @@ static void message_add_filter_cb(
     id = bedit_file_browser_widget_add_filter(
         data->widget,
         (BeditFileBrowserWidgetFilterFunc)custom_message_filter_func,
-        filter_data, (GDestroyNotify)filter_data_free);
+        filter_data,
+        (GDestroyNotify)filter_data_free
+    );
 
     filter_data->id = id;
 }
 
 static void message_remove_filter_cb(
-    BeditMessageBus *bus, BeditMessage *message, WindowData *data) {
+    BeditMessageBus *bus, BeditMessage *message, WindowData *data
+) {
     gulong id = 0;
 
     g_object_get(message, "id", &id, NULL);
 
-    if (!id)
+    if (!id) {
         return;
+    }
 
     bedit_file_browser_widget_remove_filter(data->widget, id);
 }
 
 static void message_extend_context_menu_cb(
-    BeditMessageBus *bus, BeditMessage *message, BeditWindow *window) {
+    BeditMessageBus *bus, BeditMessage *message, BeditWindow *window
+) {
     WindowData *data;
     BeditMenuExtension *ext;
 
@@ -466,30 +510,36 @@ static void message_extend_context_menu_cb(
 }
 
 static void message_up_cb(
-    BeditMessageBus *bus, BeditMessage *message, WindowData *data) {
-    BeditFileBrowserStore *store =
-        bedit_file_browser_widget_get_browser_store(data->widget);
+    BeditMessageBus *bus, BeditMessage *message, WindowData *data
+) {
+    BeditFileBrowserStore *store = bedit_file_browser_widget_get_browser_store(
+        data->widget
+    );
 
     bedit_file_browser_store_set_virtual_root_up(store);
 }
 
 static void message_history_back_cb(
-    BeditMessageBus *bus, BeditMessage *message, WindowData *data) {
+    BeditMessageBus *bus, BeditMessage *message, WindowData *data
+) {
     bedit_file_browser_widget_history_back(data->widget);
 }
 
 static void message_history_forward_cb(
-    BeditMessageBus *bus, BeditMessage *message, WindowData *data) {
+    BeditMessageBus *bus, BeditMessage *message, WindowData *data
+) {
     bedit_file_browser_widget_history_forward(data->widget);
 }
 
 static void message_refresh_cb(
-    BeditMessageBus *bus, BeditMessage *message, WindowData *data) {
+    BeditMessageBus *bus, BeditMessage *message, WindowData *data
+) {
     bedit_file_browser_widget_refresh(data->widget);
 }
 
 static void message_set_show_hidden_cb(
-    BeditMessageBus *bus, BeditMessage *message, WindowData *data) {
+    BeditMessageBus *bus, BeditMessage *message, WindowData *data
+) {
     gboolean active = FALSE;
     BeditFileBrowserStore *store;
     BeditFileBrowserStoreFilterMode mode;
@@ -499,16 +549,18 @@ static void message_set_show_hidden_cb(
     store = bedit_file_browser_widget_get_browser_store(data->widget);
     mode = bedit_file_browser_store_get_filter_mode(store);
 
-    if (active)
+    if (active) {
         mode &= ~BEDIT_FILE_BROWSER_STORE_FILTER_MODE_HIDE_HIDDEN;
-    else
+    } else {
         mode |= BEDIT_FILE_BROWSER_STORE_FILTER_MODE_HIDE_HIDDEN;
+    }
 
     bedit_file_browser_store_set_filter_mode(store, mode);
 }
 
 static void message_set_show_binary_cb(
-    BeditMessageBus *bus, BeditMessage *message, WindowData *data) {
+    BeditMessageBus *bus, BeditMessage *message, WindowData *data
+) {
     gboolean active = FALSE;
     BeditFileBrowserStore *store;
     BeditFileBrowserStoreFilterMode mode;
@@ -518,26 +570,30 @@ static void message_set_show_binary_cb(
     store = bedit_file_browser_widget_get_browser_store(data->widget);
     mode = bedit_file_browser_store_get_filter_mode(store);
 
-    if (active)
+    if (active) {
         mode &= ~BEDIT_FILE_BROWSER_STORE_FILTER_MODE_HIDE_BINARY;
-    else
+    } else {
         mode |= BEDIT_FILE_BROWSER_STORE_FILTER_MODE_HIDE_BINARY;
+    }
 
     bedit_file_browser_store_set_filter_mode(store, mode);
 }
 
 static void message_show_bookmarks_cb(
-    BeditMessageBus *bus, BeditMessage *message, WindowData *data) {
+    BeditMessageBus *bus, BeditMessage *message, WindowData *data
+) {
     bedit_file_browser_widget_show_bookmarks(data->widget);
 }
 
 static void message_show_files_cb(
-    BeditMessageBus *bus, BeditMessage *message, WindowData *data) {
+    BeditMessageBus *bus, BeditMessage *message, WindowData *data
+) {
     bedit_file_browser_widget_show_files(data->widget);
 }
 
 static void message_get_view_cb(
-    BeditMessageBus *bus, BeditMessage *message, WindowData *data) {
+    BeditMessageBus *bus, BeditMessage *message, WindowData *data
+) {
     BeditFileBrowserView *view;
     view = bedit_file_browser_widget_get_browser_view(data->widget);
 
@@ -551,62 +607,84 @@ static void register_methods(
 
     /* Register method calls */
     bedit_message_bus_register(
-        bus, BEDIT_TYPE_FILE_BROWSER_MESSAGE_GET_ROOT, MESSAGE_OBJECT_PATH,
-        "get_root");
+        bus, BEDIT_TYPE_FILE_BROWSER_MESSAGE_GET_ROOT,
+        MESSAGE_OBJECT_PATH, "get_root"
+    );
 
     bedit_message_bus_register(
-        bus, BEDIT_TYPE_FILE_BROWSER_MESSAGE_SET_ROOT, MESSAGE_OBJECT_PATH,
-        "set_root");
+        bus, BEDIT_TYPE_FILE_BROWSER_MESSAGE_SET_ROOT,
+        MESSAGE_OBJECT_PATH, "set_root"
+    );
 
     bedit_message_bus_register(
-        bus, BEDIT_TYPE_FILE_BROWSER_MESSAGE_SET_EMBLEM, MESSAGE_OBJECT_PATH,
-        "set_emblem");
+        bus, BEDIT_TYPE_FILE_BROWSER_MESSAGE_SET_EMBLEM,
+        MESSAGE_OBJECT_PATH, "set_emblem"
+    );
 
     bedit_message_bus_register(
-        bus, BEDIT_TYPE_FILE_BROWSER_MESSAGE_SET_MARKUP, MESSAGE_OBJECT_PATH,
-        "set_markup");
+        bus, BEDIT_TYPE_FILE_BROWSER_MESSAGE_SET_MARKUP,
+        MESSAGE_OBJECT_PATH, "set_markup"
+    );
 
     bedit_message_bus_register(
-        bus, BEDIT_TYPE_FILE_BROWSER_MESSAGE_ADD_FILTER, MESSAGE_OBJECT_PATH,
-        "add_filter");
+        bus, BEDIT_TYPE_FILE_BROWSER_MESSAGE_ADD_FILTER,
+        MESSAGE_OBJECT_PATH, "add_filter"
+    );
 
     bedit_message_bus_register(
-        bus, BEDIT_TYPE_FILE_BROWSER_MESSAGE_ID, MESSAGE_OBJECT_PATH,
-        "remove_filter");
+        bus, BEDIT_TYPE_FILE_BROWSER_MESSAGE_ID,
+        MESSAGE_OBJECT_PATH, "remove_filter"
+    );
 
     bedit_message_bus_register(
         bus, BEDIT_TYPE_FILE_BROWSER_MESSAGE_EXTEND_CONTEXT_MENU,
-        MESSAGE_OBJECT_PATH, "extend_context_menu");
+        MESSAGE_OBJECT_PATH, "extend_context_menu"
+    );
 
     bedit_message_bus_register(
-        bus, BEDIT_TYPE_MESSAGE, MESSAGE_OBJECT_PATH, "up");
+        bus, BEDIT_TYPE_MESSAGE,
+        MESSAGE_OBJECT_PATH, "up"
+    );
 
     bedit_message_bus_register(
-        bus, BEDIT_TYPE_MESSAGE, MESSAGE_OBJECT_PATH, "history_back");
+        bus, BEDIT_TYPE_MESSAGE,
+        MESSAGE_OBJECT_PATH, "history_back"
+    );
 
     bedit_message_bus_register(
-        bus, BEDIT_TYPE_MESSAGE, MESSAGE_OBJECT_PATH, "history_forward");
+        bus, BEDIT_TYPE_MESSAGE,
+        MESSAGE_OBJECT_PATH, "history_forward"
+    );
 
     bedit_message_bus_register(
-        bus, BEDIT_TYPE_MESSAGE, MESSAGE_OBJECT_PATH, "refresh");
+        bus, BEDIT_TYPE_MESSAGE,
+        MESSAGE_OBJECT_PATH, "refresh"
+    );
 
     bedit_message_bus_register(
-        bus, BEDIT_TYPE_FILE_BROWSER_MESSAGE_ACTIVATION, MESSAGE_OBJECT_PATH,
-        "set_show_hidden");
+        bus, BEDIT_TYPE_FILE_BROWSER_MESSAGE_ACTIVATION,
+        MESSAGE_OBJECT_PATH, "set_show_hidden"
+    );
 
     bedit_message_bus_register(
-        bus, BEDIT_TYPE_FILE_BROWSER_MESSAGE_ACTIVATION, MESSAGE_OBJECT_PATH,
-        "set_show_binary");
+        bus, BEDIT_TYPE_FILE_BROWSER_MESSAGE_ACTIVATION,
+        MESSAGE_OBJECT_PATH, "set_show_binary"
+    );
 
     bedit_message_bus_register(
-        bus, BEDIT_TYPE_MESSAGE, MESSAGE_OBJECT_PATH, "show_bookmarks");
+        bus, BEDIT_TYPE_MESSAGE,
+        MESSAGE_OBJECT_PATH, "show_bookmarks"
+    );
 
     bedit_message_bus_register(
-        bus, BEDIT_TYPE_MESSAGE, MESSAGE_OBJECT_PATH, "show_files");
+        bus, BEDIT_TYPE_MESSAGE,
+        MESSAGE_OBJECT_PATH, "show_files"
+    );
 
     bedit_message_bus_register(
-        bus, BEDIT_TYPE_FILE_BROWSER_MESSAGE_GET_VIEW, MESSAGE_OBJECT_PATH,
-        "get_view");
+        bus, BEDIT_TYPE_FILE_BROWSER_MESSAGE_GET_VIEW,
+        MESSAGE_OBJECT_PATH, "get_view"
+    );
 
     BUS_CONNECT(bus, get_root, data);
     BUS_CONNECT(bus, set_root, data);
@@ -633,12 +711,15 @@ static void register_methods(
 
 static void store_row_inserted(
     BeditFileBrowserStore *store, GtkTreePath *path, GtkTreeIter *iter,
-    MessageCacheData *data) {
+    MessageCacheData *data
+) {
     guint flags = 0;
 
     gtk_tree_model_get(
-        GTK_TREE_MODEL(store), iter, BEDIT_FILE_BROWSER_STORE_COLUMN_FLAGS,
-        &flags, -1);
+        GTK_TREE_MODEL(store), iter,
+        BEDIT_FILE_BROWSER_STORE_COLUMN_FLAGS, &flags,
+        -1
+    );
 
     if (!FILE_IS_DUMMY(flags) && !FILE_IS_FILTERED(flags)) {
         WindowData *wdata = get_window_data(data->window);
@@ -649,16 +730,20 @@ static void store_row_inserted(
 }
 
 static void store_before_row_deleted(
-    BeditFileBrowserStore *store, GtkTreePath *path, MessageCacheData *data) {
+    BeditFileBrowserStore *store, GtkTreePath *path, MessageCacheData *data
+) {
     GtkTreeIter iter;
     guint flags = 0;
 
-    if (!gtk_tree_model_get_iter(GTK_TREE_MODEL(store), &iter, path))
+    if (!gtk_tree_model_get_iter(GTK_TREE_MODEL(store), &iter, path)) {
         return;
+    }
 
     gtk_tree_model_get(
-        GTK_TREE_MODEL(store), &iter, BEDIT_FILE_BROWSER_STORE_COLUMN_FLAGS,
-        &flags, -1);
+        GTK_TREE_MODEL(store), &iter,
+        BEDIT_FILE_BROWSER_STORE_COLUMN_FLAGS, &flags,
+        -1
+    );
 
     if (!FILE_IS_DUMMY(flags) && !FILE_IS_FILTERED(flags)) {
         WindowData *wdata = get_window_data(data->window);
@@ -677,7 +762,8 @@ static void store_before_row_deleted(
 }
 
 static void store_virtual_root_changed(
-    BeditFileBrowserStore *store, GParamSpec *spec, MessageCacheData *data) {
+    BeditFileBrowserStore *store, GParamSpec *spec, MessageCacheData *data
+) {
     WindowData *wdata = get_window_data(data->window);
     GFile *vroot;
 
@@ -695,7 +781,8 @@ static void store_virtual_root_changed(
 }
 
 static void store_begin_loading(
-    BeditFileBrowserStore *store, GtkTreeIter *iter, MessageCacheData *data) {
+    BeditFileBrowserStore *store, GtkTreeIter *iter, MessageCacheData *data
+) {
     GtkTreePath *path;
     WindowData *wdata = get_window_data(data->window);
 
@@ -708,7 +795,8 @@ static void store_begin_loading(
 }
 
 static void store_end_loading(
-    BeditFileBrowserStore *store, GtkTreeIter *iter, MessageCacheData *data) {
+    BeditFileBrowserStore *store, GtkTreeIter *iter, MessageCacheData *data
+) {
     GtkTreePath *path;
     WindowData *wdata = get_window_data(data->window);
 
@@ -721,7 +809,8 @@ static void store_end_loading(
 }
 
 static void register_signals(
-    BeditWindow *window, BeditFileBrowserWidget *widget) {
+    BeditWindow *window, BeditFileBrowserWidget *widget
+) {
     BeditMessageBus *bus = bedit_window_get_message_bus(window);
     BeditFileBrowserStore *store;
 
@@ -730,78 +819,97 @@ static void register_signals(
 
     /* Register signals */
     bedit_message_bus_register(
-        bus, BEDIT_TYPE_FILE_BROWSER_MESSAGE_ID_LOCATION, MESSAGE_OBJECT_PATH,
-        "root_changed");
+        bus, BEDIT_TYPE_FILE_BROWSER_MESSAGE_ID_LOCATION,
+        MESSAGE_OBJECT_PATH, "root_changed"
+    );
 
     bedit_message_bus_register(
-        bus, BEDIT_TYPE_FILE_BROWSER_MESSAGE_ID_LOCATION, MESSAGE_OBJECT_PATH,
-        "begin_loading");
+        bus, BEDIT_TYPE_FILE_BROWSER_MESSAGE_ID_LOCATION,
+        MESSAGE_OBJECT_PATH, "begin_loading"
+    );
 
     bedit_message_bus_register(
-        bus, BEDIT_TYPE_FILE_BROWSER_MESSAGE_ID_LOCATION, MESSAGE_OBJECT_PATH,
-        "end_loading");
+        bus, BEDIT_TYPE_FILE_BROWSER_MESSAGE_ID_LOCATION,
+        MESSAGE_OBJECT_PATH, "end_loading"
+    );
 
     bedit_message_bus_register(
-        bus, BEDIT_TYPE_FILE_BROWSER_MESSAGE_ID_LOCATION, MESSAGE_OBJECT_PATH,
-        "inserted");
+        bus, BEDIT_TYPE_FILE_BROWSER_MESSAGE_ID_LOCATION,
+        MESSAGE_OBJECT_PATH, "inserted"
+    );
 
     bedit_message_bus_register(
-        bus, BEDIT_TYPE_FILE_BROWSER_MESSAGE_ID_LOCATION, MESSAGE_OBJECT_PATH,
-        "deleted");
+        bus, BEDIT_TYPE_FILE_BROWSER_MESSAGE_ID_LOCATION,
+        MESSAGE_OBJECT_PATH, "deleted"
+    );
 
     store = bedit_file_browser_widget_get_browser_store(widget);
 
     message = g_object_new(
-        BEDIT_TYPE_FILE_BROWSER_MESSAGE_ID_LOCATION, "object-path",
-        MESSAGE_OBJECT_PATH, "method", "inserted", NULL);
+        BEDIT_TYPE_FILE_BROWSER_MESSAGE_ID_LOCATION,
+        "object-path", MESSAGE_OBJECT_PATH, "method", "inserted", NULL
+    );
 
     data = get_window_data(window);
 
     data->row_inserted_id = g_signal_connect_data(
-        store, "row-inserted", G_CALLBACK(store_row_inserted),
-        message_cache_data_new(window, message),
-        (GClosureNotify)message_cache_data_free, 0);
+        store, "row-inserted",
+        G_CALLBACK(store_row_inserted), message_cache_data_new(window, message),
+        (GClosureNotify)message_cache_data_free, 0
+    );
 
     message = g_object_new(
-        BEDIT_TYPE_FILE_BROWSER_MESSAGE_ID_LOCATION, "object-path",
-        MESSAGE_OBJECT_PATH, "method", "deleted", NULL);
+        BEDIT_TYPE_FILE_BROWSER_MESSAGE_ID_LOCATION,
+        "object-path", MESSAGE_OBJECT_PATH, "method", "deleted", NULL
+    );
 
     data->before_row_deleted_id = g_signal_connect_data(
-        store, "before-row-deleted", G_CALLBACK(store_before_row_deleted),
+        store, "before-row-deleted",
+        G_CALLBACK(store_before_row_deleted),
         message_cache_data_new(window, message),
-        (GClosureNotify)message_cache_data_free, 0);
+        (GClosureNotify)message_cache_data_free, 0
+    );
 
     message = g_object_new(
         BEDIT_TYPE_FILE_BROWSER_MESSAGE_ID_LOCATION, "object-path",
         MESSAGE_OBJECT_PATH, "method", "root_changed", NULL);
 
     data->root_changed_id = g_signal_connect_data(
-        store, "notify::virtual-root", G_CALLBACK(store_virtual_root_changed),
+        store, "notify::virtual-root",
+        G_CALLBACK(store_virtual_root_changed),
         message_cache_data_new(window, message),
-        (GClosureNotify)message_cache_data_free, 0);
+        (GClosureNotify)message_cache_data_free, 0
+    );
 
     message = g_object_new(
-        BEDIT_TYPE_FILE_BROWSER_MESSAGE_ID_LOCATION, "object-path",
-        MESSAGE_OBJECT_PATH, "method", "begin_loading", NULL);
+        BEDIT_TYPE_FILE_BROWSER_MESSAGE_ID_LOCATION,
+        "object-path", MESSAGE_OBJECT_PATH, "method", "begin_loading", NULL
+    );
 
     data->begin_loading_id = g_signal_connect_data(
-        store, "begin_loading", G_CALLBACK(store_begin_loading),
+        store, "begin_loading",
+        G_CALLBACK(store_begin_loading),
         message_cache_data_new(window, message),
-        (GClosureNotify)message_cache_data_free, 0);
+        (GClosureNotify)message_cache_data_free, 0
+    );
 
     message = g_object_new(
-        BEDIT_TYPE_FILE_BROWSER_MESSAGE_ID_LOCATION, "object-path",
-        MESSAGE_OBJECT_PATH, "method", "end_loading", NULL);
+        BEDIT_TYPE_FILE_BROWSER_MESSAGE_ID_LOCATION,
+        "object-path", MESSAGE_OBJECT_PATH, "method", "end_loading", NULL
+    );
 
     data->end_loading_id = g_signal_connect_data(
-        store, "end_loading", G_CALLBACK(store_end_loading),
+        store, "end_loading",
+        G_CALLBACK(store_end_loading),
         message_cache_data_new(window, message),
-        (GClosureNotify)message_cache_data_free, 0);
+        (GClosureNotify)message_cache_data_free, 0
+    );
 }
 
 static void message_unregistered(
     BeditMessageBus *bus, const gchar *object_path, const gchar *method,
-    BeditWindow *window) {
+    BeditWindow *window
+) {
     gchar *identifier;
     FilterData *data;
     WindowData *wdata;
@@ -820,7 +928,8 @@ static void message_unregistered(
 }
 
 void bedit_file_browser_messages_register(
-    BeditWindow *window, BeditFileBrowserWidget *widget) {
+    BeditWindow *window, BeditFileBrowserWidget *widget
+) {
     window_data_new(window, widget);
 
     register_methods(window, widget);
@@ -828,7 +937,8 @@ void bedit_file_browser_messages_register(
 
     g_signal_connect(
         bedit_window_get_message_bus(window), "unregistered",
-        G_CALLBACK(message_unregistered), window);
+        G_CALLBACK(message_unregistered), window
+    );
 }
 
 static void cleanup_signals(BeditWindow *window) {
@@ -844,7 +954,8 @@ static void cleanup_signals(BeditWindow *window) {
     g_signal_handler_disconnect(store, data->end_loading_id);
 
     g_signal_handlers_disconnect_by_func(
-        data->bus, message_unregistered, window);
+        data->bus, message_unregistered, window
+    );
 }
 
 void bedit_file_browser_messages_unregister(BeditWindow *window) {

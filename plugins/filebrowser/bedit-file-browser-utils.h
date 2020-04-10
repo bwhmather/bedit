@@ -30,7 +30,8 @@ gchar *bedit_file_browser_utils_file_basename(GFile *file);
 
 gboolean bedit_file_browser_utils_confirmation_dialog(
     BeditWindow *window, GtkMessageType type, gchar const *message,
-    gchar const *secondary, gchar const *button_label);
+    gchar const *secondary, gchar const *button_label
+);
 
 #endif /* BEDIT_FILE_BROWSER_UTILS_H */
 

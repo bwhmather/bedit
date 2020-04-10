@@ -34,25 +34,30 @@ struct _BeditFileBookmarksStorePrivate {
 static void remove_node(GtkTreeModel *model, GtkTreeIter *iter);
 
 static void on_fs_changed(
-    GVolumeMonitor *monitor, GObject *object, BeditFileBookmarksStore *model);
+    GVolumeMonitor *monitor, GObject *object, BeditFileBookmarksStore *model
+);
 
 static void on_bookmarks_file_changed(
     GFileMonitor *monitor, GFile *file, GFile *other_file,
-    GFileMonitorEvent event_type, BeditFileBookmarksStore *model);
+    GFileMonitorEvent event_type, BeditFileBookmarksStore *model
+);
 static gboolean find_with_flags(
-    GtkTreeModel *model, GtkTreeIter *iter, gpointer obj, guint flags,
-    guint notflags);
+    GtkTreeModel *model, GtkTreeIter *iter, gpointer obj,
+    guint flags, guint notflags
+);
 
 G_DEFINE_DYNAMIC_TYPE_EXTENDED(
-    BeditFileBookmarksStore, bedit_file_bookmarks_store, GTK_TYPE_TREE_STORE, 0,
-    G_ADD_PRIVATE_DYNAMIC(BeditFileBookmarksStore))
+    BeditFileBookmarksStore, bedit_file_bookmarks_store,
+    GTK_TYPE_TREE_STORE, 0, G_ADD_PRIVATE_DYNAMIC(BeditFileBookmarksStore)
+)
 
 static void bedit_file_bookmarks_store_dispose(GObject *object) {
     BeditFileBookmarksStore *obj = BEDIT_FILE_BOOKMARKS_STORE(object);
 
     if (obj->priv->volume_monitor != NULL) {
         g_signal_handlers_disconnect_by_func(
-            obj->priv->volume_monitor, on_fs_changed, obj);
+            obj->priv->volume_monitor, on_fs_changed, obj
+        );
 
         g_object_unref(obj->priv->volume_monitor);
         obj->priv->volume_monitor = NULL;
@@ -71,7 +76,8 @@ static void bedit_file_bookmarks_store_class_init(
 }
 
 static void bedit_file_bookmarks_store_class_finalize(
-    BeditFileBookmarksStoreClass *klass) {}
+    BeditFileBookmarksStoreClass *klass
+) {}
 
 static void bedit_file_bookmarks_store_init(BeditFileBookmarksStore *obj) {
     obj->priv = bedit_file_bookmarks_store_get_instance_private(obj);
@@ -80,52 +86,63 @@ static void bedit_file_bookmarks_store_init(BeditFileBookmarksStore *obj) {
 /* Private */
 static void add_node(
     BeditFileBookmarksStore *model, GdkPixbuf *pixbuf, const gchar *icon_name,
-    const gchar *name, GObject *obj, guint flags, GtkTreeIter *iter) {
+    const gchar *name, GObject *obj, guint flags, GtkTreeIter *iter
+) {
     GtkTreeIter newiter;
 
     gtk_tree_store_append(GTK_TREE_STORE(model), &newiter, NULL);
 
     gtk_tree_store_set(
-        GTK_TREE_STORE(model), &newiter, BEDIT_FILE_BOOKMARKS_STORE_COLUMN_ICON,
-        pixbuf, BEDIT_FILE_BOOKMARKS_STORE_COLUMN_ICON_NAME, icon_name,
+        GTK_TREE_STORE(model), &newiter,
+        BEDIT_FILE_BOOKMARKS_STORE_COLUMN_ICON, pixbuf,
+        BEDIT_FILE_BOOKMARKS_STORE_COLUMN_ICON_NAME, icon_name,
         BEDIT_FILE_BOOKMARKS_STORE_COLUMN_NAME, name,
         BEDIT_FILE_BOOKMARKS_STORE_COLUMN_OBJECT, obj,
-        BEDIT_FILE_BOOKMARKS_STORE_COLUMN_FLAGS, flags, -1);
+        BEDIT_FILE_BOOKMARKS_STORE_COLUMN_FLAGS, flags,
+        -1
+    );
 
-    if (iter != NULL)
+    if (iter != NULL) {
         *iter = newiter;
+    }
 }
 
 static gboolean add_file(
-    BeditFileBookmarksStore *model, GFile *file, const gchar *name, guint flags,
-    GtkTreeIter *iter) {
+    BeditFileBookmarksStore *model,
+    GFile *file, const gchar *name,
+    guint flags,
+    GtkTreeIter *iter
+) {
     gboolean native = g_file_is_native(file);
     gchar *icon_name = NULL;
     gchar *newname;
 
-    if (native && !g_file_query_exists(file, NULL))
+    if (native && !g_file_query_exists(file, NULL)) {
         return FALSE;
-
-    if (flags & BEDIT_FILE_BOOKMARKS_STORE_IS_HOME)
-        icon_name = g_strdup("user-home-symbolic");
-    else if (flags & BEDIT_FILE_BOOKMARKS_STORE_IS_DESKTOP)
-        icon_name = g_strdup("user-desktop-symbolic");
-    else if (flags & BEDIT_FILE_BOOKMARKS_STORE_IS_ROOT)
-        icon_name = g_strdup("drive-harddisk-symbolic");
-    else {
-        /* getting the icon is a sync get_info call, so we just do it for local
-         * files */
-        if (native)
-            icon_name =
-                bedit_file_browser_utils_symbolic_icon_name_from_file(file);
-        else
-            icon_name = g_strdup("folder-symbolic");
     }
 
-    if (name == NULL)
+    if (flags & BEDIT_FILE_BOOKMARKS_STORE_IS_HOME) {
+        icon_name = g_strdup("user-home-symbolic");
+    } else if (flags & BEDIT_FILE_BOOKMARKS_STORE_IS_DESKTOP) {
+        icon_name = g_strdup("user-desktop-symbolic");
+    } else if (flags & BEDIT_FILE_BOOKMARKS_STORE_IS_ROOT) {
+        icon_name = g_strdup("drive-harddisk-symbolic");
+    } else {
+        /* getting the icon is a sync get_info call, so we just do it for local
+         * files */
+        if (native) {
+            icon_name =
+                bedit_file_browser_utils_symbolic_icon_name_from_file(file);
+        } else {
+            icon_name = g_strdup("folder-symbolic");
+        }
+    }
+
+    if (name == NULL) {
         newname = bedit_file_browser_utils_file_basename(file);
-    else
+    } else {
         newname = g_strdup(name);
+    }
 
     add_node(model, NULL, icon_name, newname, G_OBJECT(file), flags, iter);
 
@@ -136,17 +153,20 @@ static gboolean add_file(
 }
 
 static void check_mount_separator(
-    BeditFileBookmarksStore *model, guint flags, gboolean added) {
+    BeditFileBookmarksStore *model, guint flags, gboolean added
+) {
     GtkTreeIter iter;
     gboolean found = find_with_flags(
         GTK_TREE_MODEL(model), &iter, NULL,
-        flags | BEDIT_FILE_BOOKMARKS_STORE_IS_SEPARATOR, 0);
+        flags | BEDIT_FILE_BOOKMARKS_STORE_IS_SEPARATOR, 0
+    );
 
     if (added && !found) {
         /* Add the separator */
         add_node(
             model, NULL, NULL, NULL, NULL,
-            flags | BEDIT_FILE_BOOKMARKS_STORE_IS_SEPARATOR, NULL);
+            flags | BEDIT_FILE_BOOKMARKS_STORE_IS_SEPARATOR, NULL
+        );
     } else if (!added && found) {
         remove_node(GTK_TREE_MODEL(model), &iter);
     }
@@ -162,7 +182,8 @@ static void init_special_directories(BeditFileBookmarksStore *model) {
             model, file, _("Home"),
             BEDIT_FILE_BOOKMARKS_STORE_IS_HOME |
                 BEDIT_FILE_BOOKMARKS_STORE_IS_SPECIAL_DIR,
-            NULL);
+            NULL
+        );
         g_object_unref(file);
     }
 
@@ -174,7 +195,8 @@ static void init_special_directories(BeditFileBookmarksStore *model) {
             model, file, NULL,
             BEDIT_FILE_BOOKMARKS_STORE_IS_DESKTOP |
                 BEDIT_FILE_BOOKMARKS_STORE_IS_SPECIAL_DIR,
-            NULL);
+            NULL
+        );
         g_object_unref(file);
     }
 
@@ -185,22 +207,27 @@ static void init_special_directories(BeditFileBookmarksStore *model) {
             model, file, NULL,
             BEDIT_FILE_BOOKMARKS_STORE_IS_DOCUMENTS |
                 BEDIT_FILE_BOOKMARKS_STORE_IS_SPECIAL_DIR,
-            NULL);
+            NULL
+        );
         g_object_unref(file);
     }
 #endif
 
     file = g_file_new_for_uri("file:///");
     add_file(
-        model, file, _("File System"), BEDIT_FILE_BOOKMARKS_STORE_IS_ROOT,
-        NULL);
+        model,
+        file, _("File System"),
+        BEDIT_FILE_BOOKMARKS_STORE_IS_ROOT,
+        NULL
+    );
     g_object_unref(file);
 
     check_mount_separator(model, BEDIT_FILE_BOOKMARKS_STORE_IS_ROOT, TRUE);
 }
 
 static void get_fs_properties(
-    gpointer fs, gchar **name, gchar **icon_name, guint *flags) {
+    gpointer fs, gchar **name, gchar **icon_name, guint *flags
+) {
     GIcon *icon = NULL;
 
     *flags = BEDIT_FILE_BOOKMARKS_STORE_IS_FS;
@@ -227,13 +254,15 @@ static void get_fs_properties(
         *flags |= BEDIT_FILE_BOOKMARKS_STORE_IS_MOUNT;
     }
 
-    if (icon)
+    if (icon) {
         g_object_unref(icon);
+    }
 }
 
 static void add_fs(
     BeditFileBookmarksStore *model, gpointer fs, guint flags,
-    GtkTreeIter *iter) {
+    GtkTreeIter *iter
+) {
     gchar *icon_name = NULL;
     gchar *name = NULL;
     guint fsflags;
@@ -263,10 +292,13 @@ static void process_volume_cb(GVolume *volume, BeditFileBookmarksStore *model) {
 }
 
 static void process_drive_novolumes(
-    BeditFileBookmarksStore *model, GDrive *drive) {
-    if (g_drive_is_media_removable(drive) &&
+    BeditFileBookmarksStore *model, GDrive *drive
+) {
+    if (
+        g_drive_is_media_removable(drive) &&
         !g_drive_is_media_check_automatic(drive) &&
-        g_drive_can_poll_for_media(drive)) {
+        g_drive_can_poll_for_media(drive)
+    ) {
         /* This can be the case for floppy drives or other
            drives where media detection fails. We show the
            drive and poll for media when the user activates
@@ -288,15 +320,17 @@ static void process_drive_cb(GDrive *drive, BeditFileBookmarksStore *model) {
 }
 
 static void init_drives(BeditFileBookmarksStore *model) {
-    GList *drives =
-        g_volume_monitor_get_connected_drives(model->priv->volume_monitor);
+    GList *drives = g_volume_monitor_get_connected_drives(
+        model->priv->volume_monitor
+    );
 
     g_list_foreach(drives, (GFunc)process_drive_cb, model);
     g_list_free_full(drives, g_object_unref);
 }
 
 static void process_volume_nodrive_cb(
-    GVolume *volume, BeditFileBookmarksStore *model) {
+    GVolume *volume, BeditFileBookmarksStore *model
+) {
     GDrive *drive = g_volume_get_drive(volume);
 
     if (drive) {
@@ -315,7 +349,8 @@ static void init_volumes(BeditFileBookmarksStore *model) {
 }
 
 static void process_mount_novolume_cb(
-    GMount *mount, BeditFileBookmarksStore *model) {
+    GMount *mount, BeditFileBookmarksStore *model
+) {
     GVolume *volume = g_mount_get_volume(mount);
 
     if (volume) {
@@ -336,19 +371,22 @@ static void init_mounts(BeditFileBookmarksStore *model) {
 static void init_fs(BeditFileBookmarksStore *model) {
     if (model->priv->volume_monitor == NULL) {
         const gchar **ptr;
-        const gchar *signals[] = {"drive-connected",    "drive-changed",
-                                  "drive-disconnected", "volume-added",
-                                  "volume-removed",     "volume-changed",
-                                  "mount-added",        "mount-removed",
-                                  "mount-changed",      NULL};
+        const gchar *signals[] = {
+            "drive-connected", "drive-changed",
+            "drive-disconnected", "volume-added",
+            "volume-removed", "volume-changed",
+            "mount-added", "mount-removed",
+            "mount-changed", NULL
+        };
 
         model->priv->volume_monitor = g_volume_monitor_get();
 
         /* Connect signals */
         for (ptr = signals; *ptr != NULL; ++ptr) {
             g_signal_connect(
-                model->priv->volume_monitor, *ptr, G_CALLBACK(on_fs_changed),
-                model);
+                model->priv->volume_monitor, *ptr,
+                G_CALLBACK(on_fs_changed), model
+            );
         }
     }
 
@@ -363,16 +401,18 @@ static void init_fs(BeditFileBookmarksStore *model) {
 }
 
 static gboolean add_bookmark(
-    BeditFileBookmarksStore *model, gchar const *name, gchar const *uri) {
+    BeditFileBookmarksStore *model, gchar const *name, gchar const *uri
+) {
     GFile *file = g_file_new_for_uri(uri);
     guint flags = BEDIT_FILE_BOOKMARKS_STORE_IS_BOOKMARK;
     GtkTreeIter iter;
     gboolean ret;
 
-    if (g_file_is_native(file))
+    if (g_file_is_native(file)) {
         flags |= BEDIT_FILE_BOOKMARKS_STORE_IS_LOCAL_BOOKMARK;
-    else
+    } else {
         flags |= BEDIT_FILE_BOOKMARKS_STORE_IS_REMOTE_BOOKMARK;
+    }
 
     ret = add_file(model, file, name, flags, &iter);
 
@@ -382,7 +422,8 @@ static gboolean add_bookmark(
 
 static gchar *get_bookmarks_file(void) {
     return g_build_filename(
-        g_get_user_config_dir(), "gtk-3.0", "bookmarks", NULL);
+        g_get_user_config_dir(), "gtk-3.0", "bookmarks", NULL
+    );
 }
 
 static gchar *get_legacy_bookmarks_file(void) {
@@ -390,7 +431,8 @@ static gchar *get_legacy_bookmarks_file(void) {
 }
 
 static gboolean parse_bookmarks_file(
-    BeditFileBookmarksStore *model, const gchar *bookmarks, gboolean *added) {
+    BeditFileBookmarksStore *model, const gchar *bookmarks, gboolean *added
+) {
     GError *error = NULL;
     gchar *contents;
     gchar **lines;
@@ -439,13 +481,15 @@ static gboolean parse_bookmarks_file(
     if (model->priv->bookmarks_monitor == NULL) {
         GFile *file = g_file_new_for_path(bookmarks);
 
-        model->priv->bookmarks_monitor =
-            g_file_monitor_file(file, G_FILE_MONITOR_NONE, NULL, NULL);
+        model->priv->bookmarks_monitor = g_file_monitor_file(
+            file, G_FILE_MONITOR_NONE, NULL, NULL
+        );
         g_object_unref(file);
 
         g_signal_connect(
             model->priv->bookmarks_monitor, "changed",
-            G_CALLBACK(on_bookmarks_file_changed), model);
+            G_CALLBACK(on_bookmarks_file_changed), model
+        );
     }
 
     return TRUE;
@@ -469,19 +513,22 @@ static void init_bookmarks(BeditFileBookmarksStore *model) {
             model, NULL, NULL, NULL, NULL,
             BEDIT_FILE_BOOKMARKS_STORE_IS_BOOKMARK |
                 BEDIT_FILE_BOOKMARKS_STORE_IS_SEPARATOR,
-            NULL);
+            NULL
+        );
     }
 
     g_free(bookmarks);
 }
 
-static gint flags_order[] = {BEDIT_FILE_BOOKMARKS_STORE_IS_HOME,
-                             BEDIT_FILE_BOOKMARKS_STORE_IS_DESKTOP,
-                             BEDIT_FILE_BOOKMARKS_STORE_IS_SPECIAL_DIR,
-                             BEDIT_FILE_BOOKMARKS_STORE_IS_ROOT,
-                             BEDIT_FILE_BOOKMARKS_STORE_IS_FS,
-                             BEDIT_FILE_BOOKMARKS_STORE_IS_BOOKMARK,
-                             -1};
+static gint flags_order[] = {
+    BEDIT_FILE_BOOKMARKS_STORE_IS_HOME,
+    BEDIT_FILE_BOOKMARKS_STORE_IS_DESKTOP,
+    BEDIT_FILE_BOOKMARKS_STORE_IS_SPECIAL_DIR,
+    BEDIT_FILE_BOOKMARKS_STORE_IS_ROOT,
+    BEDIT_FILE_BOOKMARKS_STORE_IS_FS,
+    BEDIT_FILE_BOOKMARKS_STORE_IS_BOOKMARK,
+    -1
+};
 
 static gint utf8_casecmp(gchar const *s1, const gchar *s2) {
     gchar *n1;
@@ -500,7 +547,8 @@ static gint utf8_casecmp(gchar const *s1, const gchar *s2) {
 }
 
 static gint bookmarks_compare_names(
-    GtkTreeModel *model, GtkTreeIter *a, GtkTreeIter *b) {
+    GtkTreeModel *model, GtkTreeIter *a, GtkTreeIter *b
+) {
     gchar *n1;
     gchar *n2;
     gint result;
@@ -508,15 +556,23 @@ static gint bookmarks_compare_names(
     guint f2;
 
     gtk_tree_model_get(
-        model, a, BEDIT_FILE_BOOKMARKS_STORE_COLUMN_NAME, &n1,
-        BEDIT_FILE_BOOKMARKS_STORE_COLUMN_FLAGS, &f1, -1);
+        model, a,
+        BEDIT_FILE_BOOKMARKS_STORE_COLUMN_NAME, &n1,
+        BEDIT_FILE_BOOKMARKS_STORE_COLUMN_FLAGS, &f1,
+        -1
+    );
     gtk_tree_model_get(
-        model, b, BEDIT_FILE_BOOKMARKS_STORE_COLUMN_NAME, &n2,
-        BEDIT_FILE_BOOKMARKS_STORE_COLUMN_FLAGS, &f2, -1);
+        model, b,
+        BEDIT_FILE_BOOKMARKS_STORE_COLUMN_NAME, &n2,
+        BEDIT_FILE_BOOKMARKS_STORE_COLUMN_FLAGS, &f2,
+        -1
+    );
 
     /* do not sort actual bookmarks to keep same order as in nautilus */
-    if ((f1 & BEDIT_FILE_BOOKMARKS_STORE_IS_BOOKMARK) &&
-        (f2 & BEDIT_FILE_BOOKMARKS_STORE_IS_BOOKMARK)) {
+    if (
+        (f1 & BEDIT_FILE_BOOKMARKS_STORE_IS_BOOKMARK) &&
+        (f2 & BEDIT_FILE_BOOKMARKS_STORE_IS_BOOKMARK)
+    ) {
         result = 0;
     } else if (n1 == NULL && n2 == NULL) {
         result = 0;
@@ -535,28 +591,37 @@ static gint bookmarks_compare_names(
 }
 
 static gint bookmarks_compare_flags(
-    GtkTreeModel *model, GtkTreeIter *a, GtkTreeIter *b) {
+    GtkTreeModel *model, GtkTreeIter *a, GtkTreeIter *b
+) {
     guint sep = BEDIT_FILE_BOOKMARKS_STORE_IS_SEPARATOR;
     guint f1;
     guint f2;
     gint *flags;
 
     gtk_tree_model_get(
-        model, a, BEDIT_FILE_BOOKMARKS_STORE_COLUMN_FLAGS, &f1, -1);
+        model, a,
+        BEDIT_FILE_BOOKMARKS_STORE_COLUMN_FLAGS, &f1,
+        -1
+    );
     gtk_tree_model_get(
-        model, b, BEDIT_FILE_BOOKMARKS_STORE_COLUMN_FLAGS, &f2, -1);
+        model, b,
+        BEDIT_FILE_BOOKMARKS_STORE_COLUMN_FLAGS, &f2,
+        -1
+    );
 
     for (flags = flags_order; *flags != -1; ++flags) {
         if ((f1 & *flags) != (f2 & *flags)) {
-            if (f1 & *flags)
+            if (f1 & *flags) {
                 return -1;
-            else
+            } else {
                 return 1;
+            }
         } else if ((f1 & *flags) && (f1 & sep) != (f2 & sep)) {
-            if (f1 & sep)
+            if (f1 & sep) {
                 return -1;
-            else
+            } else {
                 return 1;
+            }
         }
     }
 
@@ -564,38 +629,49 @@ static gint bookmarks_compare_flags(
 }
 
 static gint bookmarks_compare_func(
-    GtkTreeModel *model, GtkTreeIter *a, GtkTreeIter *b, gpointer user_data) {
+    GtkTreeModel *model, GtkTreeIter *a, GtkTreeIter *b, gpointer user_data
+) {
     gint result = bookmarks_compare_flags(model, a, b);
 
-    if (result == 0)
+    if (result == 0) {
         result = bookmarks_compare_names(model, a, b);
+    }
 
     return result;
 }
 
 static gboolean find_with_flags(
-    GtkTreeModel *model, GtkTreeIter *iter, gpointer obj, guint flags,
-    guint notflags) {
+    GtkTreeModel *model, GtkTreeIter *iter, gpointer obj,
+    guint flags, guint notflags
+) {
     GtkTreeIter child;
     guint childflags = 0;
     GObject *childobj;
     gboolean fequal;
 
-    if (!gtk_tree_model_get_iter_first(model, &child))
+    if (!gtk_tree_model_get_iter_first(model, &child)) {
         return FALSE;
+    }
 
     do {
         gtk_tree_model_get(
-            model, &child, BEDIT_FILE_BOOKMARKS_STORE_COLUMN_OBJECT, &childobj,
-            BEDIT_FILE_BOOKMARKS_STORE_COLUMN_FLAGS, &childflags, -1);
+            model, &child,
+            BEDIT_FILE_BOOKMARKS_STORE_COLUMN_OBJECT, &childobj,
+            BEDIT_FILE_BOOKMARKS_STORE_COLUMN_FLAGS, &childflags,
+            -1
+        );
 
         fequal = (obj == childobj);
 
-        if (childobj)
+        if (childobj) {
             g_object_unref(childobj);
+        }
 
-        if ((obj == NULL || fequal) && (childflags & flags) == flags &&
-            !(childflags & notflags)) {
+        if (
+            (obj == NULL || fequal) &&
+            (childflags & flags) == flags &&
+            !(childflags & notflags)
+        ) {
             *iter = child;
             return TRUE;
         }
@@ -608,13 +684,19 @@ static void remove_node(GtkTreeModel *model, GtkTreeIter *iter) {
     guint flags;
 
     gtk_tree_model_get(
-        model, iter, BEDIT_FILE_BOOKMARKS_STORE_COLUMN_FLAGS, &flags, -1);
+        model, iter,
+        BEDIT_FILE_BOOKMARKS_STORE_COLUMN_FLAGS, &flags,
+        -1
+    );
 
-    if (!(flags & BEDIT_FILE_BOOKMARKS_STORE_IS_SEPARATOR) &&
-        flags & BEDIT_FILE_BOOKMARKS_STORE_IS_FS) {
+    if (
+        !(flags & BEDIT_FILE_BOOKMARKS_STORE_IS_SEPARATOR) &&
+        flags & BEDIT_FILE_BOOKMARKS_STORE_IS_FS
+    ) {
         check_mount_separator(
             BEDIT_FILE_BOOKMARKS_STORE(model),
-            flags & BEDIT_FILE_BOOKMARKS_STORE_IS_FS, FALSE);
+            flags & BEDIT_FILE_BOOKMARKS_STORE_IS_FS, FALSE
+        );
     }
 
     gtk_tree_store_remove(GTK_TREE_STORE(model), iter);
@@ -625,7 +707,8 @@ static void remove_bookmarks(BeditFileBookmarksStore *model) {
 
     while (find_with_flags(
         GTK_TREE_MODEL(model), &iter, NULL,
-        BEDIT_FILE_BOOKMARKS_STORE_IS_BOOKMARK, 0)) {
+        BEDIT_FILE_BOOKMARKS_STORE_IS_BOOKMARK, 0)
+    ) {
         remove_node(GTK_TREE_MODEL(model), &iter);
     }
 }
@@ -639,19 +722,29 @@ static void initialize_fill(BeditFileBookmarksStore *model) {
 /* Public */
 BeditFileBookmarksStore *bedit_file_bookmarks_store_new(void) {
     BeditFileBookmarksStore *model;
-    GType column_types[] = {GDK_TYPE_PIXBUF, G_TYPE_STRING, G_TYPE_STRING,
-                            G_TYPE_OBJECT, G_TYPE_UINT};
+    GType column_types[] = {
+        GDK_TYPE_PIXBUF,
+        G_TYPE_STRING,
+        G_TYPE_STRING,
+        G_TYPE_OBJECT,
+        G_TYPE_UINT
+    };
 
     model = g_object_new(BEDIT_TYPE_FILE_BOOKMARKS_STORE, NULL);
     gtk_tree_store_set_column_types(
-        GTK_TREE_STORE(model), BEDIT_FILE_BOOKMARKS_STORE_N_COLUMNS,
-        column_types);
+        GTK_TREE_STORE(model),
+        BEDIT_FILE_BOOKMARKS_STORE_N_COLUMNS,
+        column_types
+    );
 
     gtk_tree_sortable_set_default_sort_func(
-        GTK_TREE_SORTABLE(model), bookmarks_compare_func, NULL, NULL);
+        GTK_TREE_SORTABLE(model), bookmarks_compare_func, NULL, NULL
+    );
     gtk_tree_sortable_set_sort_column_id(
-        GTK_TREE_SORTABLE(model), GTK_TREE_SORTABLE_DEFAULT_SORT_COLUMN_ID,
-        GTK_SORT_ASCENDING);
+        GTK_TREE_SORTABLE(model),
+        GTK_TREE_SORTABLE_DEFAULT_SORT_COLUMN_ID,
+        GTK_SORT_ASCENDING
+    );
 
     initialize_fill(model);
 
@@ -659,7 +752,8 @@ BeditFileBookmarksStore *bedit_file_bookmarks_store_new(void) {
 }
 
 GFile *bedit_file_bookmarks_store_get_location(
-    BeditFileBookmarksStore *model, GtkTreeIter *iter) {
+    BeditFileBookmarksStore *model, GtkTreeIter *iter
+) {
     GObject *obj;
     GFile *file = NULL;
     guint flags;
@@ -670,18 +764,23 @@ GFile *bedit_file_bookmarks_store_get_location(
     g_return_val_if_fail(iter != NULL, NULL);
 
     gtk_tree_model_get(
-        GTK_TREE_MODEL(model), iter, BEDIT_FILE_BOOKMARKS_STORE_COLUMN_FLAGS,
-        &flags, BEDIT_FILE_BOOKMARKS_STORE_COLUMN_OBJECT, &obj, -1);
+        GTK_TREE_MODEL(model), iter,
+        BEDIT_FILE_BOOKMARKS_STORE_COLUMN_FLAGS, &flags,
+        BEDIT_FILE_BOOKMARKS_STORE_COLUMN_OBJECT, &obj,
+        -1
+    );
 
-    if (obj == NULL)
+    if (obj == NULL) {
         return NULL;
+    }
 
     isfs = (flags & BEDIT_FILE_BOOKMARKS_STORE_IS_FS);
 
-    if (isfs && (flags & BEDIT_FILE_BOOKMARKS_STORE_IS_MOUNT))
+    if (isfs && (flags & BEDIT_FILE_BOOKMARKS_STORE_IS_MOUNT)) {
         file = g_mount_get_root(G_MOUNT(obj));
-    else if (!isfs)
+    } else if (!isfs) {
         file = (GFile *)g_object_ref(obj);
+    }
 
     g_object_unref(obj);
 
@@ -699,15 +798,17 @@ void bedit_file_bookmarks_store_refresh(BeditFileBookmarksStore *model) {
 }
 
 static void on_fs_changed(
-    GVolumeMonitor *monitor, GObject *object, BeditFileBookmarksStore *model) {
+    GVolumeMonitor *monitor, GObject *object, BeditFileBookmarksStore *model
+) {
     GtkTreeModel *tree_model = GTK_TREE_MODEL(model);
     guint flags = BEDIT_FILE_BOOKMARKS_STORE_IS_FS;
     guint noflags = BEDIT_FILE_BOOKMARKS_STORE_IS_SEPARATOR;
     GtkTreeIter iter;
 
     /* clear all fs items */
-    while (find_with_flags(tree_model, &iter, NULL, flags, noflags))
+    while (find_with_flags(tree_model, &iter, NULL, flags, noflags)) {
         remove_node(tree_model, &iter);
+    }
 
     /* then reinitialize */
     init_fs(model);
@@ -715,7 +816,8 @@ static void on_fs_changed(
 
 static void on_bookmarks_file_changed(
     GFileMonitor *monitor, GFile *file, GFile *other_file,
-    GFileMonitorEvent event_type, BeditFileBookmarksStore *model) {
+    GFileMonitorEvent event_type, BeditFileBookmarksStore *model
+) {
     switch (event_type) {
     case G_FILE_MONITOR_EVENT_CHANGED:
     case G_FILE_MONITOR_EVENT_CREATED:

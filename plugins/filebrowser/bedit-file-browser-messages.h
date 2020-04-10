@@ -26,7 +26,8 @@
 #include "bedit-file-browser-widget.h"
 
 void bedit_file_browser_messages_register(
-    BeditWindow *window, BeditFileBrowserWidget *widget);
+    BeditWindow *window, BeditFileBrowserWidget *widget
+);
 void bedit_file_browser_messages_unregister(BeditWindow *window);
 
 #endif /* BEDIT_FILE_BROWSER_MESSAGES_H */
