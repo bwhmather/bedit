@@ -138,11 +138,6 @@ vapigen_dep = dependency('vapigen', version: '>= 0.25.1')
 
 python3 = python.find_installation('python3')
 
-build_checkupdate_plugin = host_machine.system() == 'windows'
-if build_checkupdate_plugin
-  libsoup_dep = dependency('libsoup-2.4', version: '>= 2.60', required: true)
-endif
-
 # Configurations
 config_h = configuration_data()
 config_h.set_quoted('PACKAGE_STRING', package_string)
@@ -169,10 +164,6 @@ active_plugins = [
   'spell',
   'time',
 ]
-
-if build_checkupdate_plugin
-  active_plugins += 'checkupdate'
-endif
 
 subdir('data')
 subdir('po')
