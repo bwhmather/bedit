@@ -28,7 +28,7 @@
 #include <gio/gio.h>
 #include <glib-object.h>
 
-#include "bedit-file-bookmarks-store.h"
+#include "bedit-file-browser-bookmarks-store.h"
 #include "bedit-file-browser-enum-types.h"
 #include "bedit-file-browser-store.h"
 #include "bedit-file-browser-view.h"

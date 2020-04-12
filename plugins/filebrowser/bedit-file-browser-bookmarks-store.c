@@ -1,5 +1,5 @@
 /*
- * bedit-file-bookmarks-store.c
+ * bedit-file-browser-bookmarks-store.c
  * This file is part of Bedit.
  *
  * Copyright (C) 2020 - Ben Mather
@@ -27,7 +27,7 @@
 #include <glib/gi18n.h>
 #include <string.h>
 
-#include "bedit-file-bookmarks-store.h"
+#include "bedit-file-browser-bookmarks-store.h"
 #include "bedit-file-browser-utils.h"
 
 struct _BeditFileBrowserBookmarksStorePrivate {

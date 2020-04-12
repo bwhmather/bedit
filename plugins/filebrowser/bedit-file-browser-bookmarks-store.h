@@ -1,5 +1,5 @@
 /*
- * bedit-file-bookmarks-store.h
+ * bedit-file-browser-bookmarks-store.h
  * This file is part of Bedit.
  *
  * Copyright (C) 2020 - Ben Mather

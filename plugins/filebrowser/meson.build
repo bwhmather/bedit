@@ -1,5 +1,5 @@
 libfilebrowser_public_h = files(
-  'bedit-file-bookmarks-store.h',
+  'bedit-file-browser-bookmarks-store.h',
   'bedit-file-browser-error.h',
   'bedit-file-browser-store.h',
   'bedit-file-browser-view.h',
@@ -10,7 +10,7 @@ libfilebrowser_public_h = files(
 )
 
 libfilebrowser_sources = files(
-  'bedit-file-bookmarks-store.c',
+  'bedit-file-browser-bookmarks-store.c',
   'bedit-file-browser-messages.c',
   'bedit-file-browser-plugin.c',
   'bedit-file-browser-store.c',

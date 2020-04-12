@@ -27,7 +27,7 @@
 
 #include <bedit/bedit-menu-extension.h>
 #include <gtk/gtk.h>
-#include "bedit-file-bookmarks-store.h"
+#include "bedit-file-browser-bookmarks-store.h"
 #include "bedit-file-browser-store.h"
 #include "bedit-file-browser-view.h"
 

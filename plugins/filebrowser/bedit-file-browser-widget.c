@@ -32,7 +32,7 @@
 #include <sys/stat.h>
 #include <sys/types.h>
 
-#include "bedit-file-bookmarks-store.h"
+#include "bedit-file-browser-bookmarks-store.h"
 #include "bedit-file-browser-enum-types.h"
 #include "bedit-file-browser-error.h"
 #include "bedit-file-browser-store.h"
