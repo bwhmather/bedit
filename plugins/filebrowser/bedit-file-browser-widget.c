@@ -105,7 +105,7 @@ typedef struct {
 struct _BeditFileBrowserWidgetPrivate {
     BeditFileBrowserView *treeview;
     BeditFileBrowserStore *file_store;
-    BeditFileBookmarksStore *bookmarks_store;
+    BeditFileBrowserBookmarksStore *bookmarks_store;
 
     GHashTable *bookmarks_hash;
 
@@ -793,7 +793,7 @@ static void add_bookmark_hash(BeditFileBrowserWidget *obj, GtkTreeIter *iter) {
     GFile *location;
     NameIcon *item;
 
-    if (!(location = bedit_file_bookmarks_store_get_location(
+    if (!(location = bedit_file_browser_bookmarks_store_get_location(
         obj->priv->bookmarks_store, iter
     ))) {
         return;
@@ -801,9 +801,9 @@ static void add_bookmark_hash(BeditFileBrowserWidget *obj, GtkTreeIter *iter) {
 
     gtk_tree_model_get(
         model, iter,
-        BEDIT_FILE_BOOKMARKS_STORE_COLUMN_ICON, &pixbuf,
-        BEDIT_FILE_BOOKMARKS_STORE_COLUMN_ICON_NAME, &icon_name,
-        BEDIT_FILE_BOOKMARKS_STORE_COLUMN_NAME, &name,
+        BEDIT_FILE_BROWSER_BOOKMARKS_STORE_COLUMN_ICON, &pixbuf,
+        BEDIT_FILE_BROWSER_BOOKMARKS_STORE_COLUMN_ICON_NAME, &icon_name,
+        BEDIT_FILE_BROWSER_BOOKMARKS_STORE_COLUMN_NAME, &name,
         -1
     );
 
@@ -938,8 +938,8 @@ static void locations_icon_renderer_cb(
 
     gtk_tree_model_get(
         tree_model, iter,
-        BEDIT_FILE_BOOKMARKS_STORE_COLUMN_ICON_NAME, &icon_name,
-        BEDIT_FILE_BOOKMARKS_STORE_COLUMN_ICON, &pixbuf,
+        BEDIT_FILE_BROWSER_BOOKMARKS_STORE_COLUMN_ICON_NAME, &icon_name,
+        BEDIT_FILE_BROWSER_BOOKMARKS_STORE_COLUMN_ICON, &pixbuf,
         -1
     );
 
@@ -1055,7 +1055,7 @@ static void bedit_file_browser_widget_init(BeditFileBrowserWidget *obj) {
 
     /* tree view */
     obj->priv->file_store = bedit_file_browser_store_new(NULL);
-    obj->priv->bookmarks_store = bedit_file_bookmarks_store_new();
+    obj->priv->bookmarks_store = bedit_file_browser_bookmarks_store_new();
 
     bedit_file_browser_view_set_restore_expand_state(obj->priv->treeview, TRUE);
 
@@ -1183,7 +1183,7 @@ static void update_sensitivity(BeditFileBrowserWidget *obj) {
             G_ACTION_MAP(obj->priv->action_group), "show_match_filename"
         );
         g_simple_action_set_enabled(G_SIMPLE_ACTION(action), TRUE);
-    } else if (BEDIT_IS_FILE_BOOKMARKS_STORE(model)) {
+    } else if (BEDIT_IS_FILE_BROWSER_BOOKMARKS_STORE(model)) {
         /* Set the filter toggle to normal up state, just for visual pleasure */
         action = g_action_map_lookup_action(
             G_ACTION_MAP(obj->priv->action_group), "show_hidden"
@@ -1252,7 +1252,7 @@ static gboolean popup_menu(
 
     if (BEDIT_IS_FILE_BROWSER_STORE(model)) {
         menu_model = obj->priv->dir_menu;
-    } else if (BEDIT_IS_FILE_BOOKMARKS_STORE(model)) {
+    } else if (BEDIT_IS_FILE_BROWSER_BOOKMARKS_STORE(model)) {
         menu_model = obj->priv->bookmarks_menu;
     } else {
         return FALSE;
@@ -1659,7 +1659,10 @@ static void set_filter_pattern_real(
         return;
     }
 
-    if (pattern != NULL && strcmp(pattern, obj->priv->filter_pattern_str) == 0) {
+    if (
+        pattern != NULL &&
+        strcmp(pattern, obj->priv->filter_pattern_str) == 0
+    ) {
         return;
     }
 
@@ -1802,7 +1805,7 @@ BeditFileBrowserStore *bedit_file_browser_widget_get_browser_store(
     return obj->priv->file_store;
 }
 
-BeditFileBookmarksStore *bedit_file_browser_widget_get_bookmarks_store(
+BeditFileBrowserBookmarksStore *bedit_file_browser_widget_get_bookmarks_store(
     BeditFileBrowserWidget *obj
 ) {
     return obj->priv->bookmarks_store;
@@ -1941,7 +1944,7 @@ static guint bedit_file_browser_widget_get_num_selected_files_or_directories(
     GList *rows, *row;
     guint result = 0;
 
-    if (BEDIT_IS_FILE_BOOKMARKS_STORE(model)) {
+    if (BEDIT_IS_FILE_BROWSER_BOOKMARKS_STORE(model)) {
         return 0;
     }
 
@@ -2146,7 +2149,7 @@ static void activate_drive(BeditFileBrowserWidget *obj, GtkTreeIter *iter) {
 
     gtk_tree_model_get(
         GTK_TREE_MODEL(obj->priv->bookmarks_store), iter,
-        BEDIT_FILE_BOOKMARKS_STORE_COLUMN_OBJECT, &drive,
+        BEDIT_FILE_BROWSER_BOOKMARKS_STORE_COLUMN_OBJECT, &drive,
         -1
     );
 
@@ -2183,7 +2186,7 @@ static void activate_volume(BeditFileBrowserWidget *obj, GtkTreeIter *iter) {
 
     gtk_tree_model_get(
         GTK_TREE_MODEL(obj->priv->bookmarks_store), iter,
-        BEDIT_FILE_BOOKMARKS_STORE_COLUMN_OBJECT, &volume,
+        BEDIT_FILE_BROWSER_BOOKMARKS_STORE_COLUMN_OBJECT, &volume,
         -1
     );
 
@@ -2199,11 +2202,13 @@ void bedit_file_browser_widget_refresh(BeditFileBrowserWidget *obj) {
 
     if (BEDIT_IS_FILE_BROWSER_STORE(model)) {
         bedit_file_browser_store_refresh(BEDIT_FILE_BROWSER_STORE(model));
-    } else if (BEDIT_IS_FILE_BOOKMARKS_STORE(model)) {
+    } else if (BEDIT_IS_FILE_BROWSER_BOOKMARKS_STORE(model)) {
         g_hash_table_ref(obj->priv->bookmarks_hash);
         g_hash_table_destroy(obj->priv->bookmarks_hash);
 
-        bedit_file_bookmarks_store_refresh(BEDIT_FILE_BOOKMARKS_STORE(model));
+        bedit_file_browser_bookmarks_store_refresh(
+            BEDIT_FILE_BROWSER_BOOKMARKS_STORE(model)
+        );
     }
 }
 
@@ -2258,24 +2263,24 @@ static void bookmark_open(
 
     gtk_tree_model_get(
         model, iter,
-        BEDIT_FILE_BOOKMARKS_STORE_COLUMN_FLAGS, &flags,
+        BEDIT_FILE_BROWSER_BOOKMARKS_STORE_COLUMN_FLAGS, &flags,
         -1
     );
 
-    if (flags & BEDIT_FILE_BOOKMARKS_STORE_IS_DRIVE) {
+    if (flags & BEDIT_FILE_BROWSER_BOOKMARKS_STORE_IS_DRIVE) {
         /* handle a drive node */
         bedit_file_browser_store_cancel_mount_operation(obj->priv->file_store);
         activate_drive(obj, iter);
         return;
-    } else if (flags & BEDIT_FILE_BOOKMARKS_STORE_IS_VOLUME) {
+    } else if (flags & BEDIT_FILE_BROWSER_BOOKMARKS_STORE_IS_VOLUME) {
         /* handle a volume node */
         bedit_file_browser_store_cancel_mount_operation(obj->priv->file_store);
         activate_volume(obj, iter);
         return;
     }
 
-    if ((location = bedit_file_bookmarks_store_get_location(
-        BEDIT_FILE_BOOKMARKS_STORE(model), iter)
+    if ((location = bedit_file_browser_bookmarks_store_get_location(
+        BEDIT_FILE_BROWSER_BOOKMARKS_STORE(model), iter)
     )) {
         /* here we check if the bookmark is a mount point, or if it
            is a remote bookmark. If that's the case, we will set the
@@ -2283,8 +2288,8 @@ static void bookmark_open(
            topmost parent as root (since that may as well not be the
            mount point anymore) */
         if (
-            (flags & BEDIT_FILE_BOOKMARKS_STORE_IS_MOUNT) ||
-            (flags & BEDIT_FILE_BOOKMARKS_STORE_IS_REMOTE_BOOKMARK)
+            (flags & BEDIT_FILE_BROWSER_BOOKMARKS_STORE_IS_MOUNT) ||
+            (flags & BEDIT_FILE_BROWSER_BOOKMARKS_STORE_IS_REMOTE_BOOKMARK)
         ) {
             bedit_file_browser_widget_set_root(obj, location, FALSE);
         } else {
@@ -2496,7 +2501,7 @@ static void on_model_set(
 
     clear_signals(obj);
 
-    if (BEDIT_IS_FILE_BOOKMARKS_STORE(model)) {
+    if (BEDIT_IS_FILE_BROWSER_BOOKMARKS_STORE(model)) {
         clear_next_locations(obj);
 
         /* Add the current location to the back menu */
@@ -2918,7 +2923,7 @@ static void on_bookmarks_row_deleted(
         return;
     }
 
-    if (!(location = bedit_file_bookmarks_store_get_location(
+    if (!(location = bedit_file_browser_bookmarks_store_get_location(
               obj->priv->bookmarks_store, &iter)
     )) {
         return;

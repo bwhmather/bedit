@@ -108,7 +108,7 @@ G_DEFINE_DYNAMIC_TYPE_EXTENDED(
         BEDIT_TYPE_WINDOW_ACTIVATABLE, bedit_window_activatable_iface_init)
 
         bedit_file_browser_enum_and_flag_register_type(type_module);
-    _bedit_file_bookmarks_store_register_type(type_module);
+    _bedit_file_browser_bookmarks_store_register_type(type_module);
     _bedit_file_browser_store_register_type(type_module);
     _bedit_file_browser_view_register_type(type_module);
     _bedit_file_browser_widget_register_type(type_module);

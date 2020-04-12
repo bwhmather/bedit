@@ -111,7 +111,7 @@ void bedit_file_browser_widget_set_active_root_enabled(
 BeditFileBrowserStore *bedit_file_browser_widget_get_browser_store(
     BeditFileBrowserWidget *obj
 );
-BeditFileBookmarksStore *bedit_file_browser_widget_get_bookmarks_store(
+BeditFileBrowserBookmarksStore *bedit_file_browser_widget_get_bookmarks_store(
     BeditFileBrowserWidget *obj
 );
 BeditFileBrowserView *bedit_file_browser_widget_get_browser_view(

@@ -412,7 +412,7 @@ static void activate_selected_bookmark(BeditFileBrowserView *view) {
 static void activate_selected_items(BeditFileBrowserView *view) {
     if (BEDIT_IS_FILE_BROWSER_STORE(view->priv->model)) {
         activate_selected_files(view);
-    } else if (BEDIT_IS_FILE_BOOKMARKS_STORE(view->priv->model)) {
+    } else if (BEDIT_IS_FILE_BROWSER_BOOKMARKS_STORE(view->priv->model)) {
         activate_selected_bookmark(view);
     }
 }
@@ -974,8 +974,8 @@ static void icon_renderer_cb(
 
         gtk_tree_model_get(
             tree_model, iter,
-            BEDIT_FILE_BOOKMARKS_STORE_COLUMN_ICON_NAME, &icon_name,
-            BEDIT_FILE_BOOKMARKS_STORE_COLUMN_ICON, &pixbuf,
+            BEDIT_FILE_BROWSER_BOOKMARKS_STORE_COLUMN_ICON_NAME, &icon_name,
+            BEDIT_FILE_BROWSER_BOOKMARKS_STORE_COLUMN_ICON, &pixbuf,
             -1
         );
 
@@ -1035,11 +1035,11 @@ static gboolean bookmarks_separator_func(
 
     gtk_tree_model_get(
         model, iter,
-        BEDIT_FILE_BOOKMARKS_STORE_COLUMN_FLAGS, &flags,
+        BEDIT_FILE_BROWSER_BOOKMARKS_STORE_COLUMN_FLAGS, &flags,
         -1
     );
 
-    return (flags & BEDIT_FILE_BOOKMARKS_STORE_IS_SEPARATOR);
+    return (flags & BEDIT_FILE_BROWSER_BOOKMARKS_STORE_IS_SEPARATOR);
 }
 
 /* Public */
@@ -1063,7 +1063,7 @@ void bedit_file_browser_view_set_model(
 
     selection = gtk_tree_view_get_selection(GTK_TREE_VIEW(tree_view));
 
-    if (BEDIT_IS_FILE_BOOKMARKS_STORE(model)) {
+    if (BEDIT_IS_FILE_BROWSER_BOOKMARKS_STORE(model)) {
         gtk_tree_selection_set_mode(selection, GTK_SELECTION_BROWSE);
         gtk_tree_view_set_row_separator_func(
             GTK_TREE_VIEW(tree_view), bookmarks_separator_func, NULL, NULL
@@ -1072,7 +1072,7 @@ void bedit_file_browser_view_set_model(
             tree_view->priv->column, tree_view->priv->text_renderer,
             (GtkTreeCellDataFunc)cell_data_cb, tree_view, NULL
         );
-        search_column = BEDIT_FILE_BOOKMARKS_STORE_COLUMN_NAME;
+        search_column = BEDIT_FILE_BROWSER_BOOKMARKS_STORE_COLUMN_NAME;
     } else {
         gtk_tree_selection_set_mode(selection, GTK_SELECTION_MULTIPLE);
         gtk_tree_view_set_row_separator_func(
