@@ -28,30 +28,36 @@
 
 G_BEGIN_DECLS
 
-#define BEDIT_TYPE_FILE_BROWSER_MESSAGE_ADD_FILTER                             \
+#define BEDIT_TYPE_FILE_BROWSER_MESSAGE_ADD_FILTER                          \
     (bedit_file_browser_message_add_filter_get_type())
-#define BEDIT_FILE_BROWSER_MESSAGE_ADD_FILTER(obj)                             \
-    (G_TYPE_CHECK_INSTANCE_CAST(                                               \
-        (obj), BEDIT_TYPE_FILE_BROWSER_MESSAGE_ADD_FILTER,                     \
-        BeditFileBrowserMessageAddFilter))
-#define BEDIT_FILE_BROWSER_MESSAGE_ADD_FILTER_CONST(obj)                       \
-    (G_TYPE_CHECK_INSTANCE_CAST(                                               \
-        (obj), BEDIT_TYPE_FILE_BROWSER_MESSAGE_ADD_FILTER,                     \
-        BeditFileBrowserMessageAddFilter const))
-#define BEDIT_FILE_BROWSER_MESSAGE_ADD_FILTER_CLASS(klass)                     \
-    (G_TYPE_CHECK_CLASS_CAST(                                                  \
-        (klass), BEDIT_TYPE_FILE_BROWSER_MESSAGE_ADD_FILTER,                   \
-        BeditFileBrowserMessageAddFilterClass))
-#define BEDIT_IS_FILE_BROWSER_MESSAGE_ADD_FILTER(obj)                          \
-    (G_TYPE_CHECK_INSTANCE_TYPE(                                               \
-        (obj), BEDIT_TYPE_FILE_BROWSER_MESSAGE_ADD_FILTER))
-#define BEDIT_IS_FILE_BROWSER_MESSAGE_ADD_FILTER_CLASS(klass)                  \
-    (G_TYPE_CHECK_CLASS_TYPE(                                                  \
-        (klass), BEDIT_TYPE_FILE_BROWSER_MESSAGE_ADD_FILTER))
-#define BEDIT_FILE_BROWSER_MESSAGE_ADD_FILTER_GET_CLASS(obj)                   \
-    (G_TYPE_INSTANCE_GET_CLASS(                                                \
-        (obj), BEDIT_TYPE_FILE_BROWSER_MESSAGE_ADD_FILTER,                     \
-        BeditFileBrowserMessageAddFilterClass))
+#define BEDIT_FILE_BROWSER_MESSAGE_ADD_FILTER(obj)                          \
+    (G_TYPE_CHECK_INSTANCE_CAST(                                            \
+        (obj), BEDIT_TYPE_FILE_BROWSER_MESSAGE_ADD_FILTER,                  \
+        BeditFileBrowserMessageAddFilter                                    \
+    ))
+#define BEDIT_FILE_BROWSER_MESSAGE_ADD_FILTER_CONST(obj)                    \
+    (G_TYPE_CHECK_INSTANCE_CAST(                                            \
+        (obj), BEDIT_TYPE_FILE_BROWSER_MESSAGE_ADD_FILTER,                  \
+        BeditFileBrowserMessageAddFilter const                              \
+    ))
+#define BEDIT_FILE_BROWSER_MESSAGE_ADD_FILTER_CLASS(klass)                  \
+    (G_TYPE_CHECK_CLASS_CAST(                                               \
+        (klass), BEDIT_TYPE_FILE_BROWSER_MESSAGE_ADD_FILTER,                \
+        BeditFileBrowserMessageAddFilterClass                               \
+    ))
+#define BEDIT_IS_FILE_BROWSER_MESSAGE_ADD_FILTER(obj)                       \
+    (G_TYPE_CHECK_INSTANCE_TYPE(                                            \
+        (obj), BEDIT_TYPE_FILE_BROWSER_MESSAGE_ADD_FILTER                   \
+    ))
+#define BEDIT_IS_FILE_BROWSER_MESSAGE_ADD_FILTER_CLASS(klass)               \
+    (G_TYPE_CHECK_CLASS_TYPE(                                               \
+        (klass), BEDIT_TYPE_FILE_BROWSER_MESSAGE_ADD_FILTER                 \
+    ))
+#define BEDIT_FILE_BROWSER_MESSAGE_ADD_FILTER_GET_CLASS(obj)                \
+    (G_TYPE_INSTANCE_GET_CLASS(                                             \
+        (obj), BEDIT_TYPE_FILE_BROWSER_MESSAGE_ADD_FILTER,                  \
+        BeditFileBrowserMessageAddFilterClass                               \
+    ))
 
 typedef struct _BeditFileBrowserMessageAddFilter
     BeditFileBrowserMessageAddFilter;
@@ -75,3 +81,4 @@ GType bedit_file_browser_message_add_filter_get_type(void) G_GNUC_CONST;
 G_END_DECLS
 
 #endif /* BEDIT_FILE_BROWSER_MESSAGE_ADD_FILTER_H */
+

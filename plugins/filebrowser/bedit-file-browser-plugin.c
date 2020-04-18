@@ -104,10 +104,11 @@ static gboolean on_confirm_no_trash_cb(
 
 G_DEFINE_DYNAMIC_TYPE_EXTENDED(
     BeditFileBrowserPlugin, bedit_file_browser_plugin, G_TYPE_OBJECT, 0,
-    G_ADD_PRIVATE_DYNAMIC(BeditFileBrowserPlugin) G_IMPLEMENT_INTERFACE_DYNAMIC(
-        BEDIT_TYPE_WINDOW_ACTIVATABLE, bedit_window_activatable_iface_init)
-
-        bedit_file_browser_enum_and_flag_register_type(type_module);
+    G_ADD_PRIVATE_DYNAMIC(BeditFileBrowserPlugin)
+    G_IMPLEMENT_INTERFACE_DYNAMIC(
+        BEDIT_TYPE_WINDOW_ACTIVATABLE, bedit_window_activatable_iface_init
+    )
+    bedit_file_browser_enum_and_flag_register_type(type_module);
     _bedit_file_browser_bookmarks_store_register_type(type_module);
     _bedit_file_browser_store_register_type(type_module);
     _bedit_file_browser_view_register_type(type_module);
@@ -270,7 +271,8 @@ static void install_nautilus_prefs(BeditFileBrowserPlugin *plugin) {
 }
 
 static void set_root_from_doc(
-    BeditFileBrowserPlugin *plugin, BeditDocument *doc) {
+    BeditFileBrowserPlugin *plugin, BeditDocument *doc
+) {
     BeditFileBrowserPluginPrivate *priv = plugin->priv;
     GtkSourceFile *file;
     GFile *location;
@@ -296,7 +298,8 @@ static void set_root_from_doc(
 }
 
 static void set_active_root(
-    BeditFileBrowserWidget *widget, BeditFileBrowserPlugin *plugin) {
+    BeditFileBrowserWidget *widget, BeditFileBrowserPlugin *plugin
+) {
     set_root_from_doc(
         plugin, bedit_window_get_active_document(plugin->priv->window)
     );
@@ -348,7 +351,8 @@ static void open_in_terminal(
 }
 
 static void bedit_file_browser_plugin_update_state(
-    BeditWindowActivatable *activatable) {
+    BeditWindowActivatable *activatable
+) {
     BeditFileBrowserPluginPrivate *priv =
         BEDIT_FILE_BROWSER_PLUGIN(activatable)->priv;
     BeditDocument *doc;
@@ -699,7 +703,8 @@ static gchar *get_filename_from_path(GtkTreeModel *model, GtkTreePath *path) {
 }
 
 static gboolean on_confirm_no_trash_cb(
-    BeditFileBrowserWidget *widget, GList *files, BeditWindow *window) {
+    BeditFileBrowserWidget *widget, GList *files, BeditWindow *window
+) {
     gchar *normal;
     gchar *message;
     gchar *secondary;
@@ -751,8 +756,8 @@ static gboolean on_confirm_delete_cb(
         );
         g_free(normal);
     } else {
-        message = g_strdup(_(
-            "Are you sure you want to permanently delete the selected files?")
+        message = g_strdup(
+            _("Are you sure you want to permanently delete the selected files?")
         );
     }
 

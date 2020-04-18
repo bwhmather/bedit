@@ -1,4 +1,3 @@
-
 /*
  * bedit-file-browser-message-get-view.c
  * This file is part of bedit
@@ -38,7 +37,9 @@ struct _BeditFileBrowserMessageGetViewPrivate {
 
 G_DEFINE_TYPE_EXTENDED(
     BeditFileBrowserMessageGetView, bedit_file_browser_message_get_view,
-    BEDIT_TYPE_MESSAGE, 0, G_ADD_PRIVATE(BeditFileBrowserMessageGetView))
+    BEDIT_TYPE_MESSAGE, 0,
+    G_ADD_PRIVATE(BeditFileBrowserMessageGetView)
+)
 
 static void bedit_file_browser_message_get_view_finalize(GObject *obj) {
     BeditFileBrowserMessageGetView *msg =
@@ -53,7 +54,8 @@ static void bedit_file_browser_message_get_view_finalize(GObject *obj) {
 }
 
 static void bedit_file_browser_message_get_view_get_property(
-    GObject *obj, guint prop_id, GValue *value, GParamSpec *pspec) {
+    GObject *obj, guint prop_id, GValue *value, GParamSpec *pspec
+) {
     BeditFileBrowserMessageGetView *msg;
 
     msg = BEDIT_FILE_BROWSER_MESSAGE_GET_VIEW(obj);
@@ -66,24 +68,25 @@ static void bedit_file_browser_message_get_view_get_property(
 }
 
 static void bedit_file_browser_message_get_view_set_property(
-    GObject *obj, guint prop_id, GValue const *value, GParamSpec *pspec) {
+    GObject *obj, guint prop_id, GValue const *value, GParamSpec *pspec
+) {
     BeditFileBrowserMessageGetView *msg;
 
     msg = BEDIT_FILE_BROWSER_MESSAGE_GET_VIEW(obj);
 
     switch (prop_id) {
-    case PROP_VIEW: {
+    case PROP_VIEW:
         if (msg->priv->view) {
             g_object_unref(msg->priv->view);
         }
         msg->priv->view = g_value_dup_object(value);
         break;
     }
-    }
 }
 
 static void bedit_file_browser_message_get_view_class_init(
-    BeditFileBrowserMessageGetViewClass *klass) {
+    BeditFileBrowserMessageGetViewClass *klass
+) {
     GObjectClass *object_class = G_OBJECT_CLASS(klass);
 
     object_class->finalize = bedit_file_browser_message_get_view_finalize;
@@ -97,11 +100,15 @@ static void bedit_file_browser_message_get_view_class_init(
         object_class, PROP_VIEW,
         g_param_spec_object(
             "view", "View", "View", BEDIT_TYPE_FILE_BROWSER_VIEW,
-            G_PARAM_READWRITE | G_PARAM_CONSTRUCT | G_PARAM_STATIC_STRINGS));
+            G_PARAM_READWRITE | G_PARAM_CONSTRUCT | G_PARAM_STATIC_STRINGS
+        )
+    );
 }
 
 static void bedit_file_browser_message_get_view_init(
-    BeditFileBrowserMessageGetView *message) {
+    BeditFileBrowserMessageGetView *message
+) {
     message->priv =
         bedit_file_browser_message_get_view_get_instance_private(message);
 }
+

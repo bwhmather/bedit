@@ -13,3 +13,4 @@
 #include "bedit-file-browser-message-set-root.h"
 
 #endif /* BEDIT_FILE_BROWER_MESSAGES_MESSAGES_H */
+

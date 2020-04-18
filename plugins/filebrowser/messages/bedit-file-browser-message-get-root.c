@@ -1,4 +1,3 @@
-
 /*
  * bedit-file-browser-message-get-root.c
  * This file is part of bedit
@@ -38,7 +37,9 @@ struct _BeditFileBrowserMessageGetRootPrivate {
 
 G_DEFINE_TYPE_EXTENDED(
     BeditFileBrowserMessageGetRoot, bedit_file_browser_message_get_root,
-    BEDIT_TYPE_MESSAGE, 0, G_ADD_PRIVATE(BeditFileBrowserMessageGetRoot))
+    BEDIT_TYPE_MESSAGE, 0,
+    G_ADD_PRIVATE(BeditFileBrowserMessageGetRoot)
+)
 
 static void bedit_file_browser_message_get_root_finalize(GObject *obj) {
     BeditFileBrowserMessageGetRoot *msg =
@@ -53,7 +54,8 @@ static void bedit_file_browser_message_get_root_finalize(GObject *obj) {
 }
 
 static void bedit_file_browser_message_get_root_get_property(
-    GObject *obj, guint prop_id, GValue *value, GParamSpec *pspec) {
+    GObject *obj, guint prop_id, GValue *value, GParamSpec *pspec
+) {
     BeditFileBrowserMessageGetRoot *msg;
 
     msg = BEDIT_FILE_BROWSER_MESSAGE_GET_ROOT(obj);
@@ -66,24 +68,25 @@ static void bedit_file_browser_message_get_root_get_property(
 }
 
 static void bedit_file_browser_message_get_root_set_property(
-    GObject *obj, guint prop_id, GValue const *value, GParamSpec *pspec) {
+    GObject *obj, guint prop_id, GValue const *value, GParamSpec *pspec
+) {
     BeditFileBrowserMessageGetRoot *msg;
 
     msg = BEDIT_FILE_BROWSER_MESSAGE_GET_ROOT(obj);
 
     switch (prop_id) {
-    case PROP_LOCATION: {
+    case PROP_LOCATION:
         if (msg->priv->location) {
             g_object_unref(msg->priv->location);
         }
         msg->priv->location = g_value_dup_object(value);
         break;
     }
-    }
 }
 
 static void bedit_file_browser_message_get_root_class_init(
-    BeditFileBrowserMessageGetRootClass *klass) {
+    BeditFileBrowserMessageGetRootClass *klass
+) {
     GObjectClass *object_class = G_OBJECT_CLASS(klass);
 
     object_class->finalize = bedit_file_browser_message_get_root_finalize;
@@ -97,11 +100,15 @@ static void bedit_file_browser_message_get_root_class_init(
         object_class, PROP_LOCATION,
         g_param_spec_object(
             "location", "Location", "Location", G_TYPE_FILE,
-            G_PARAM_READWRITE | G_PARAM_CONSTRUCT | G_PARAM_STATIC_STRINGS));
+            G_PARAM_READWRITE | G_PARAM_CONSTRUCT | G_PARAM_STATIC_STRINGS
+        )
+    );
 }
 
 static void bedit_file_browser_message_get_root_init(
-    BeditFileBrowserMessageGetRoot *message) {
+    BeditFileBrowserMessageGetRoot *message
+) {
     message->priv =
         bedit_file_browser_message_get_root_get_instance_private(message);
 }
+

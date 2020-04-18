@@ -42,8 +42,10 @@ gchar *bedit_file_browser_utils_symbolic_icon_name_from_file(GFile *file) {
         return NULL;
     }
 
-    if ((icon = g_file_info_get_symbolic_icon(info)) &&
-        G_IS_THEMED_ICON(icon)) {
+    if (
+        (icon = g_file_info_get_symbolic_icon(info)) &&
+        G_IS_THEMED_ICON(icon)
+    ) {
         const gchar *const *names = g_themed_icon_get_names(
             G_THEMED_ICON(icon)
         );
@@ -78,7 +80,8 @@ gchar *bedit_file_browser_utils_file_basename(GFile *file) {
 
 gboolean bedit_file_browser_utils_confirmation_dialog(
     BeditWindow *window, GtkMessageType type, gchar const *message,
-    gchar const *secondary, gchar const *button_label) {
+    gchar const *secondary, gchar const *button_label
+) {
     GtkWidget *dlg;
     gint ret;
 

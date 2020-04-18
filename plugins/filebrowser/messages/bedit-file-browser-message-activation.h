@@ -1,4 +1,3 @@
-
 /*
  * bedit-file-browser-message-activation.h
  * This file is part of bedit
@@ -28,30 +27,36 @@
 
 G_BEGIN_DECLS
 
-#define BEDIT_TYPE_FILE_BROWSER_MESSAGE_ACTIVATION                             \
+#define BEDIT_TYPE_FILE_BROWSER_MESSAGE_ACTIVATION                          \
     (bedit_file_browser_message_activation_get_type())
-#define BEDIT_FILE_BROWSER_MESSAGE_ACTIVATION(obj)                             \
-    (G_TYPE_CHECK_INSTANCE_CAST(                                               \
-        (obj), BEDIT_TYPE_FILE_BROWSER_MESSAGE_ACTIVATION,                     \
-        BeditFileBrowserMessageActivation))
-#define BEDIT_FILE_BROWSER_MESSAGE_ACTIVATION_CONST(obj)                       \
-    (G_TYPE_CHECK_INSTANCE_CAST(                                               \
-        (obj), BEDIT_TYPE_FILE_BROWSER_MESSAGE_ACTIVATION,                     \
-        BeditFileBrowserMessageActivation const))
-#define BEDIT_FILE_BROWSER_MESSAGE_ACTIVATION_CLASS(klass)                     \
-    (G_TYPE_CHECK_CLASS_CAST(                                                  \
-        (klass), BEDIT_TYPE_FILE_BROWSER_MESSAGE_ACTIVATION,                   \
-        BeditFileBrowserMessageActivationClass))
-#define BEDIT_IS_FILE_BROWSER_MESSAGE_ACTIVATION(obj)                          \
-    (G_TYPE_CHECK_INSTANCE_TYPE(                                               \
-        (obj), BEDIT_TYPE_FILE_BROWSER_MESSAGE_ACTIVATION))
-#define BEDIT_IS_FILE_BROWSER_MESSAGE_ACTIVATION_CLASS(klass)                  \
-    (G_TYPE_CHECK_CLASS_TYPE(                                                  \
-        (klass), BEDIT_TYPE_FILE_BROWSER_MESSAGE_ACTIVATION))
-#define BEDIT_FILE_BROWSER_MESSAGE_ACTIVATION_GET_CLASS(obj)                   \
-    (G_TYPE_INSTANCE_GET_CLASS(                                                \
-        (obj), BEDIT_TYPE_FILE_BROWSER_MESSAGE_ACTIVATION,                     \
-        BeditFileBrowserMessageActivationClass))
+#define BEDIT_FILE_BROWSER_MESSAGE_ACTIVATION(obj)                          \
+    (G_TYPE_CHECK_INSTANCE_CAST(                                            \
+        (obj), BEDIT_TYPE_FILE_BROWSER_MESSAGE_ACTIVATION,                  \
+        BeditFileBrowserMessageActivation                                   \
+    ))
+#define BEDIT_FILE_BROWSER_MESSAGE_ACTIVATION_CONST(obj)                    \
+    (G_TYPE_CHECK_INSTANCE_CAST(                                            \
+        (obj), BEDIT_TYPE_FILE_BROWSER_MESSAGE_ACTIVATION,                  \
+        BeditFileBrowserMessageActivation const                             \
+    ))
+#define BEDIT_FILE_BROWSER_MESSAGE_ACTIVATION_CLASS(klass)                  \
+    (G_TYPE_CHECK_CLASS_CAST(                                               \
+        (klass), BEDIT_TYPE_FILE_BROWSER_MESSAGE_ACTIVATION,                \
+        BeditFileBrowserMessageActivationClass                              \
+    ))
+#define BEDIT_IS_FILE_BROWSER_MESSAGE_ACTIVATION(obj)                       \
+    (G_TYPE_CHECK_INSTANCE_TYPE(                                            \
+        (obj), BEDIT_TYPE_FILE_BROWSER_MESSAGE_ACTIVATION                   \
+    ))
+#define BEDIT_IS_FILE_BROWSER_MESSAGE_ACTIVATION_CLASS(klass)               \
+    (G_TYPE_CHECK_CLASS_TYPE(                                               \
+        (klass), BEDIT_TYPE_FILE_BROWSER_MESSAGE_ACTIVATION                 \
+    ))
+#define BEDIT_FILE_BROWSER_MESSAGE_ACTIVATION_GET_CLASS(obj)                \
+    (G_TYPE_INSTANCE_GET_CLASS(                                             \
+        (obj), BEDIT_TYPE_FILE_BROWSER_MESSAGE_ACTIVATION,                  \
+        BeditFileBrowserMessageActivationClass                              \
+    ))
 
 typedef struct _BeditFileBrowserMessageActivation
     BeditFileBrowserMessageActivation;
@@ -75,3 +80,4 @@ GType bedit_file_browser_message_activation_get_type(void) G_GNUC_CONST;
 G_END_DECLS
 
 #endif /* BEDIT_FILE_BROWSER_MESSAGE_ACTIVATION_H */
+

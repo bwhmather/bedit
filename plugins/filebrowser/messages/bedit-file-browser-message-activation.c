@@ -1,4 +1,3 @@
-
 /*
  * bedit-file-browser-message-activation.c
  * This file is part of bedit
@@ -37,10 +36,13 @@ struct _BeditFileBrowserMessageActivationPrivate {
 
 G_DEFINE_TYPE_EXTENDED(
     BeditFileBrowserMessageActivation, bedit_file_browser_message_activation,
-    BEDIT_TYPE_MESSAGE, 0, G_ADD_PRIVATE(BeditFileBrowserMessageActivation))
+    BEDIT_TYPE_MESSAGE, 0,
+    G_ADD_PRIVATE(BeditFileBrowserMessageActivation)
+)
 
 static void bedit_file_browser_message_activation_get_property(
-    GObject *obj, guint prop_id, GValue *value, GParamSpec *pspec) {
+    GObject *obj, guint prop_id, GValue *value, GParamSpec *pspec
+) {
     BeditFileBrowserMessageActivation *msg;
 
     msg = BEDIT_FILE_BROWSER_MESSAGE_ACTIVATION(obj);
@@ -53,7 +55,8 @@ static void bedit_file_browser_message_activation_get_property(
 }
 
 static void bedit_file_browser_message_activation_set_property(
-    GObject *obj, guint prop_id, GValue const *value, GParamSpec *pspec) {
+    GObject *obj, guint prop_id, GValue const *value, GParamSpec *pspec
+) {
     BeditFileBrowserMessageActivation *msg;
 
     msg = BEDIT_FILE_BROWSER_MESSAGE_ACTIVATION(obj);
@@ -66,7 +69,8 @@ static void bedit_file_browser_message_activation_set_property(
 }
 
 static void bedit_file_browser_message_activation_class_init(
-    BeditFileBrowserMessageActivationClass *klass) {
+    BeditFileBrowserMessageActivationClass *klass
+) {
     GObjectClass *object_class = G_OBJECT_CLASS(klass);
 
     object_class->get_property =
@@ -78,11 +82,15 @@ static void bedit_file_browser_message_activation_class_init(
         object_class, PROP_ACTIVE,
         g_param_spec_boolean(
             "active", "Active", "Active", FALSE,
-            G_PARAM_READWRITE | G_PARAM_CONSTRUCT | G_PARAM_STATIC_STRINGS));
+            G_PARAM_READWRITE | G_PARAM_CONSTRUCT | G_PARAM_STATIC_STRINGS
+        )
+    );
 }
 
 static void bedit_file_browser_message_activation_init(
-    BeditFileBrowserMessageActivation *message) {
+    BeditFileBrowserMessageActivation *message
+) {
     message->priv =
         bedit_file_browser_message_activation_get_instance_private(message);
 }
+

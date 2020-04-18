@@ -1,4 +1,3 @@
-
 /*
  * bedit-file-browser-message-set-root.c
  * This file is part of bedit
@@ -40,7 +39,9 @@ struct _BeditFileBrowserMessageSetRootPrivate {
 
 G_DEFINE_TYPE_EXTENDED(
     BeditFileBrowserMessageSetRoot, bedit_file_browser_message_set_root,
-    BEDIT_TYPE_MESSAGE, 0, G_ADD_PRIVATE(BeditFileBrowserMessageSetRoot))
+    BEDIT_TYPE_MESSAGE, 0,
+    G_ADD_PRIVATE(BeditFileBrowserMessageSetRoot)
+)
 
 static void bedit_file_browser_message_set_root_finalize(GObject *obj) {
     BeditFileBrowserMessageSetRoot *msg =
@@ -56,7 +57,8 @@ static void bedit_file_browser_message_set_root_finalize(GObject *obj) {
 }
 
 static void bedit_file_browser_message_set_root_get_property(
-    GObject *obj, guint prop_id, GValue *value, GParamSpec *pspec) {
+    GObject *obj, guint prop_id, GValue *value, GParamSpec *pspec
+) {
     BeditFileBrowserMessageSetRoot *msg;
 
     msg = BEDIT_FILE_BROWSER_MESSAGE_SET_ROOT(obj);
@@ -72,29 +74,30 @@ static void bedit_file_browser_message_set_root_get_property(
 }
 
 static void bedit_file_browser_message_set_root_set_property(
-    GObject *obj, guint prop_id, GValue const *value, GParamSpec *pspec) {
+    GObject *obj, guint prop_id, GValue const *value, GParamSpec *pspec
+) {
     BeditFileBrowserMessageSetRoot *msg;
 
     msg = BEDIT_FILE_BROWSER_MESSAGE_SET_ROOT(obj);
 
     switch (prop_id) {
-    case PROP_LOCATION: {
+    case PROP_LOCATION:
         if (msg->priv->location) {
             g_object_unref(msg->priv->location);
         }
         msg->priv->location = g_value_dup_object(value);
         break;
-    }
-    case PROP_VIRTUAL: {
+
+    case PROP_VIRTUAL:
         g_free(msg->priv->virtual);
         msg->priv->virtual = g_value_dup_string(value);
         break;
     }
-    }
 }
 
 static void bedit_file_browser_message_set_root_class_init(
-    BeditFileBrowserMessageSetRootClass *klass) {
+    BeditFileBrowserMessageSetRootClass *klass
+) {
     GObjectClass *object_class = G_OBJECT_CLASS(klass);
 
     object_class->finalize = bedit_file_browser_message_set_root_finalize;
@@ -108,17 +111,23 @@ static void bedit_file_browser_message_set_root_class_init(
         object_class, PROP_LOCATION,
         g_param_spec_object(
             "location", "Location", "Location", G_TYPE_FILE,
-            G_PARAM_READWRITE | G_PARAM_CONSTRUCT | G_PARAM_STATIC_STRINGS));
+            G_PARAM_READWRITE | G_PARAM_CONSTRUCT | G_PARAM_STATIC_STRINGS
+        )
+    );
 
     g_object_class_install_property(
         object_class, PROP_VIRTUAL,
         g_param_spec_string(
             "virtual", "Virtual", "Virtual", NULL,
-            G_PARAM_READWRITE | G_PARAM_CONSTRUCT | G_PARAM_STATIC_STRINGS));
+            G_PARAM_READWRITE | G_PARAM_CONSTRUCT | G_PARAM_STATIC_STRINGS
+        )
+    );
 }
 
 static void bedit_file_browser_message_set_root_init(
-    BeditFileBrowserMessageSetRoot *message) {
+    BeditFileBrowserMessageSetRoot *message
+) {
     message->priv =
         bedit_file_browser_message_set_root_get_instance_private(message);
 }
+

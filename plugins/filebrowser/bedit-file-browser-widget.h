@@ -43,7 +43,8 @@ G_BEGIN_DECLS
     ))
 #define BEDIT_FILE_BROWSER_WIDGET_CLASS(klass)                              \
     (G_TYPE_CHECK_CLASS_CAST(                                               \
-        (klass), BEDIT_TYPE_FILE_BROWSER_WIDGET, BeditFileBrowserWidgetClass\
+        (klass), BEDIT_TYPE_FILE_BROWSER_WIDGET,                            \
+        BeditFileBrowserWidgetClass                                         \
     ))
 #define BEDIT_IS_FILE_BROWSER_WIDGET(obj)                                   \
     (G_TYPE_CHECK_INSTANCE_TYPE((obj), BEDIT_TYPE_FILE_BROWSER_WIDGET))

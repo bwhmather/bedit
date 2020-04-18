@@ -407,7 +407,8 @@ static void bedit_file_browser_widget_dispose(GObject *object) {
 }
 
 static void bedit_file_browser_widget_get_property(
-    GObject *object, guint prop_id, GValue *value, GParamSpec *pspec) {
+    GObject *object, guint prop_id, GValue *value, GParamSpec *pspec
+) {
     BeditFileBrowserWidget *obj = BEDIT_FILE_BROWSER_WIDGET(object);
 
     switch (prop_id) {
@@ -421,13 +422,15 @@ static void bedit_file_browser_widget_get_property(
 }
 
 static void bedit_file_browser_widget_set_property(
-    GObject *object, guint prop_id, const GValue *value, GParamSpec *pspec) {
+    GObject *object, guint prop_id, const GValue *value, GParamSpec *pspec
+) {
     BeditFileBrowserWidget *obj = BEDIT_FILE_BROWSER_WIDGET(object);
 
     switch (prop_id) {
     case PROP_FILTER_PATTERN:
         bedit_file_browser_widget_set_filter_pattern(
-            obj, g_value_get_string(value));
+            obj, g_value_get_string(value)
+        );
         break;
     default:
         G_OBJECT_WARN_INVALID_PROPERTY_ID(object, prop_id, pspec);
@@ -436,7 +439,8 @@ static void bedit_file_browser_widget_set_property(
 }
 
 static void bedit_file_browser_widget_class_init(
-    BeditFileBrowserWidgetClass *klass) {
+    BeditFileBrowserWidgetClass *klass
+) {
     GObjectClass *object_class = G_OBJECT_CLASS(klass);
     GtkWidgetClass *widget_class = GTK_WIDGET_CLASS(klass);
 
@@ -450,7 +454,9 @@ static void bedit_file_browser_widget_class_init(
         object_class, PROP_FILTER_PATTERN,
         g_param_spec_string(
             "filter-pattern", "Filter Pattern", "The filter pattern", "",
-            G_PARAM_READWRITE));
+            G_PARAM_READWRITE
+        )
+    );
 
     signals[LOCATION_ACTIVATED] = g_signal_new(
         "location-activated", G_OBJECT_CLASS_TYPE(object_class),
@@ -506,7 +512,8 @@ static void bedit_file_browser_widget_class_init(
     gtk_widget_class_set_template_from_resource(
         widget_class,
         "/com/bwhmather/bedit/plugins/file-browser/ui/"
-        "bedit-file-browser-widget.ui");
+        "bedit-file-browser-widget.ui"
+    );
     gtk_widget_class_bind_template_child_private(
         widget_class, BeditFileBrowserWidget, previous_button
     );
@@ -567,7 +574,8 @@ static void bedit_file_browser_widget_class_finalize(
 ) {}
 
 static void add_signal(
-    BeditFileBrowserWidget *obj, gpointer object, gulong id) {
+    BeditFileBrowserWidget *obj, gpointer object, gulong id
+) {
     SignalNode *node = g_slice_new(SignalNode);
 
     node->object = G_OBJECT(object);
@@ -696,8 +704,10 @@ static void insert_location_path(BeditFileBrowserWidget *obj) {
             );
         }
 
-        if (g_file_equal(current, loc->root) ||
-            !g_file_has_parent(current, NULL)) {
+        if (
+            g_file_equal(current, loc->root) ||
+            !g_file_has_parent(current, NULL)
+        ) {
             if (current != loc->virtual_root) {
                 g_object_unref(current);
             }
@@ -1062,7 +1072,7 @@ static void bedit_file_browser_widget_init(BeditFileBrowserWidget *obj) {
     bedit_file_browser_store_set_filter_mode(
         obj->priv->file_store,
         BEDIT_FILE_BROWSER_STORE_FILTER_MODE_HIDE_HIDDEN |
-            BEDIT_FILE_BROWSER_STORE_FILTER_MODE_HIDE_BINARY
+        BEDIT_FILE_BROWSER_STORE_FILTER_MODE_HIDE_BINARY
     );
     bedit_file_browser_store_set_filter_func(
         obj->priv->file_store,
@@ -1763,12 +1773,14 @@ void bedit_file_browser_widget_show_files(BeditFileBrowserWidget *obj) {
 }
 
 void bedit_file_browser_widget_set_root_and_virtual_root(
-    BeditFileBrowserWidget *obj, GFile *root, GFile *virtual_root) {
+    BeditFileBrowserWidget *obj, GFile *root, GFile *virtual_root
+) {
     BeditFileBrowserStoreResult result;
 
     if (!virtual_root) {
         result = bedit_file_browser_store_set_root_and_virtual_root(
-            obj->priv->file_store, root, root);
+            obj->priv->file_store, root, root
+        );
     } else {
         result = bedit_file_browser_store_set_root_and_virtual_root(
             obj->priv->file_store, root, virtual_root
@@ -2026,7 +2038,8 @@ static void set_busy(BeditFileBrowserWidget *obj, gboolean busy) {
 static void try_mount_volume(BeditFileBrowserWidget *widget, GVolume *volume);
 
 static void activate_mount(
-    BeditFileBrowserWidget *widget, GVolume *volume, GMount *mount) {
+    BeditFileBrowserWidget *widget, GVolume *volume, GMount *mount
+) {
     GFile *root;
 
     if (!mount) {
@@ -2093,8 +2106,10 @@ static void poll_for_media_cb(
         gchar *message = g_strdup_printf(_("Could not open media: %s"), name);
 
         g_signal_emit(
-            async->widget, signals[ERROR], 0, BEDIT_FILE_BROWSER_ERROR_SET_ROOT,
-            message);
+            async->widget, signals[ERROR], 0,
+            BEDIT_FILE_BROWSER_ERROR_SET_ROOT,
+            message
+        );
 
         g_free(name);
         g_free(message);
@@ -2280,8 +2295,8 @@ static void bookmark_open(
     }
 
     if ((location = bedit_file_browser_bookmarks_store_get_location(
-        BEDIT_FILE_BROWSER_BOOKMARKS_STORE(model), iter)
-    )) {
+        BEDIT_FILE_BROWSER_BOOKMARKS_STORE(model), iter
+    ))) {
         /* here we check if the bookmark is a mount point, or if it
            is a remote bookmark. If that's the case, we will set the
            root to the uri of the bookmark and not try to set the
@@ -2469,7 +2484,7 @@ static void on_virtual_root_changed(
             g_simple_action_set_enabled(
                 G_SIMPLE_ACTION(action),
                 obj->priv->current_location != NULL &&
-                    obj->priv->current_location->next != NULL
+                obj->priv->current_location->next != NULL
             );
 
             action = g_action_map_lookup_action(
@@ -2478,7 +2493,7 @@ static void on_virtual_root_changed(
             g_simple_action_set_enabled(
                 G_SIMPLE_ACTION(action),
                 obj->priv->current_location != NULL &&
-                    obj->priv->current_location->prev != NULL
+                obj->priv->current_location->prev != NULL
             );
         }
 
@@ -2702,12 +2717,15 @@ static gboolean on_treeview_button_press_event(
     BeditFileBrowserView *treeview, GdkEventButton *event,
     BeditFileBrowserWidget *obj
 ) {
-    if (event->type == GDK_BUTTON_PRESS &&
-        event->button == GDK_BUTTON_SECONDARY)
+    if (
+        event->type == GDK_BUTTON_PRESS &&
+        event->button == GDK_BUTTON_SECONDARY
+    ) {
         return popup_menu(
             obj, GTK_TREE_VIEW(treeview), event,
             gtk_tree_view_get_model(GTK_TREE_VIEW(treeview))
         );
+    }
 
     return FALSE;
 }
@@ -2717,19 +2735,19 @@ static gboolean do_change_directory(
 ) {
     GAction *action = NULL;
 
-    if ((event->state &
-         (~GDK_CONTROL_MASK & ~GDK_SHIFT_MASK & ~GDK_MOD1_MASK)) ==
-            event->state &&
+    if (
+        (event->state & (
+            ~GDK_CONTROL_MASK & ~GDK_SHIFT_MASK & ~GDK_MOD1_MASK
+        )) == event->state &&
         event->keyval == GDK_KEY_BackSpace
     ) {
         action = g_action_map_lookup_action(
             G_ACTION_MAP(obj->priv->action_group), "previous_location"
         );
-    } else if (
-        !((event->state & GDK_MOD1_MASK) &&
-            (event->state & (~GDK_CONTROL_MASK & ~GDK_SHIFT_MASK)) ==
-                event->state)
-    ) {
+    } else if (!(
+        (event->state & GDK_MOD1_MASK) &&
+        (event->state & (~GDK_CONTROL_MASK & ~GDK_SHIFT_MASK)) == event->state
+    )) {
         return FALSE;
     }
 
@@ -2837,11 +2855,12 @@ static void on_selection_changed(
     guint files = 0;
     guint dirs = 0;
 
-    if (BEDIT_IS_FILE_BROWSER_STORE(model))
+    if (BEDIT_IS_FILE_BROWSER_STORE(model)) {
         selected =
             bedit_file_browser_widget_get_num_selected_files_or_directories(
                 obj, &files, &dirs
             );
+    }
 
     action = g_action_map_lookup_action(
         G_ACTION_MAP(obj->priv->action_group), "move_to_trash"
@@ -2897,9 +2916,9 @@ static void on_location_jump_activate(
         jump_to_location(
             obj, location,
             g_list_position(obj->priv->locations, location) >
-                g_list_position(
-                    obj->priv->locations, obj->priv->current_location
-                )
+            g_list_position(
+                obj->priv->locations, obj->priv->current_location
+            )
         );
     } else {
         jump_to_location(obj, location, TRUE);
@@ -2924,8 +2943,8 @@ static void on_bookmarks_row_deleted(
     }
 
     if (!(location = bedit_file_browser_bookmarks_store_get_location(
-              obj->priv->bookmarks_store, &iter)
-    )) {
+        obj->priv->bookmarks_store, &iter
+    ))) {
         return;
     }
 

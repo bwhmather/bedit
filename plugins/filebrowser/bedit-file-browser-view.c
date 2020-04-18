@@ -150,7 +150,8 @@ static void remove_expand_state(BeditFileBrowserView *view, GFile *location) {
 }
 
 static void row_expanded(
-    GtkTreeView *tree_view, GtkTreeIter *iter, GtkTreePath *path) {
+    GtkTreeView *tree_view, GtkTreeIter *iter, GtkTreePath *path
+) {
     BeditFileBrowserView *view = BEDIT_FILE_BROWSER_VIEW(tree_view);
 
     if (GTK_TREE_VIEW_CLASS(
@@ -228,7 +229,7 @@ static gboolean leave_notify_event(GtkWidget *widget, GdkEventCrossing *event) {
 
     if (
         view->priv->click_policy ==
-            BEDIT_FILE_BROWSER_VIEW_CLICK_POLICY_SINGLE &&
+        BEDIT_FILE_BROWSER_VIEW_CLICK_POLICY_SINGLE &&
         view->priv->hover_path != NULL
     ) {
         gtk_tree_path_free(view->priv->hover_path);
@@ -321,8 +322,8 @@ static void set_click_policy_property(
 
             if (gtk_tree_model_get_iter(
                 GTK_TREE_MODEL(obj->priv->model), &iter,
-                obj->priv->hover_path)
-            ) {
+                obj->priv->hover_path
+            )) {
                 gtk_tree_model_row_changed(
                     GTK_TREE_MODEL(obj->priv->model), obj->priv->hover_path,
                     &iter
@@ -455,8 +456,7 @@ static void drag_begin(GtkWidget *widget, GdkDragContext *context) {
 
     /* Chain up */
     GTK_WIDGET_CLASS(bedit_file_browser_view_parent_class)
-        ->drag_begin(widget, context
-    );
+        ->drag_begin(widget, context);
 }
 
 static void did_not_drag(BeditFileBrowserView *view, GdkEventButton *event) {
@@ -465,8 +465,8 @@ static void did_not_drag(BeditFileBrowserView *view, GdkEventButton *event) {
     GtkTreePath *path;
 
     if (gtk_tree_view_get_path_at_pos(
-        tree_view, event->x, event->y, &path, NULL, NULL, NULL)
-    ) {
+        tree_view, event->x, event->y, &path, NULL, NULL, NULL
+    )) {
         if ((
             view->priv->click_policy ==
             BEDIT_FILE_BROWSER_VIEW_CLICK_POLICY_SINGLE
@@ -587,8 +587,8 @@ static gboolean button_press_event(GtkWidget *widget, GdkEventButton *event) {
 
             if ((event->button == 1 || event->button == 2) && (
                 (event->state & GDK_CONTROL_MASK) != 0 ||
-                (event->state & GDK_SHIFT_MASK) == 0)
-            ) {
+                (event->state & GDK_SHIFT_MASK) == 0
+            )) {
                 gtk_widget_style_get(
                     widget,
                     "expander-size", &expander_size,
@@ -610,7 +610,7 @@ static gboolean button_press_event(GtkWidget *widget, GdkEventButton *event) {
                     view->priv->ignore_release = (
                         call_parent &&
                         view->priv->click_policy !=
-                            BEDIT_FILE_BROWSER_VIEW_CLICK_POLICY_SINGLE
+                        BEDIT_FILE_BROWSER_VIEW_CLICK_POLICY_SINGLE
                     );
                 } else if ((event->state & GDK_CONTROL_MASK) != 0) {
                     call_parent = FALSE;
@@ -752,7 +752,8 @@ static void uninstall_restore_signals(
 }
 
 static void install_restore_signals(
-    BeditFileBrowserView *tree_view, GtkTreeModel *model) {
+    BeditFileBrowserView *tree_view, GtkTreeModel *model
+) {
     g_signal_connect(
         model, "begin-refresh", G_CALLBACK(on_begin_refresh), tree_view
     );
@@ -791,7 +792,8 @@ static void set_restore_expand_state(
             install_restore_signals(view, view->priv->model);
         }
     } else if (
-        view->priv->model && BEDIT_IS_FILE_BROWSER_STORE(view->priv->model)) {
+        view->priv->model && BEDIT_IS_FILE_BROWSER_STORE(view->priv->model)
+    ) {
         uninstall_restore_signals(view, view->priv->model);
     }
 
@@ -919,14 +921,15 @@ static void bedit_file_browser_view_class_finalize(
 
 static void cell_data_cb(
     GtkTreeViewColumn *tree_column, GtkCellRenderer *cell,
-    GtkTreeModel *tree_model, GtkTreeIter *iter, BeditFileBrowserView *obj) {
+    GtkTreeModel *tree_model, GtkTreeIter *iter, BeditFileBrowserView *obj
+) {
     GtkTreePath *path = gtk_tree_model_get_path(tree_model, iter);
     PangoUnderline underline = PANGO_UNDERLINE_NONE;
     gboolean editable = FALSE;
 
     if (
         obj->priv->click_policy ==
-            BEDIT_FILE_BROWSER_VIEW_CLICK_POLICY_SINGLE &&
+        BEDIT_FILE_BROWSER_VIEW_CLICK_POLICY_SINGLE &&
         obj->priv->hover_path != NULL &&
         gtk_tree_path_compare(path, obj->priv->hover_path) == 0
     ) {
@@ -1094,8 +1097,10 @@ void bedit_file_browser_view_set_model(
         tree_view->priv->hover_path = NULL;
     }
 
-    if (BEDIT_IS_FILE_BROWSER_STORE(tree_view->priv->model) &&
-        tree_view->priv->restore_expand_state) {
+    if (
+        BEDIT_IS_FILE_BROWSER_STORE(tree_view->priv->model) &&
+        tree_view->priv->restore_expand_state
+    ) {
         uninstall_restore_signals(tree_view, tree_view->priv->model);
     }
 

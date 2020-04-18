@@ -1,4 +1,3 @@
-
 /*
  * bedit-file-browser-message-extend-context-menu.c
  * This file is part of bedit
@@ -40,10 +39,12 @@ struct _BeditFileBrowserMessageExtendContextMenuPrivate {
 G_DEFINE_TYPE_EXTENDED(
     BeditFileBrowserMessageExtendContextMenu,
     bedit_file_browser_message_extend_context_menu, BEDIT_TYPE_MESSAGE, 0,
-    G_ADD_PRIVATE(BeditFileBrowserMessageExtendContextMenu))
+    G_ADD_PRIVATE(BeditFileBrowserMessageExtendContextMenu)
+)
 
 static void bedit_file_browser_message_extend_context_menu_finalize(
-    GObject *obj) {
+    GObject *obj
+) {
     BeditFileBrowserMessageExtendContextMenu *msg =
         BEDIT_FILE_BROWSER_MESSAGE_EXTEND_CONTEXT_MENU(obj);
 
@@ -56,7 +57,8 @@ static void bedit_file_browser_message_extend_context_menu_finalize(
 }
 
 static void bedit_file_browser_message_extend_context_menu_get_property(
-    GObject *obj, guint prop_id, GValue *value, GParamSpec *pspec) {
+    GObject *obj, guint prop_id, GValue *value, GParamSpec *pspec
+) {
     BeditFileBrowserMessageExtendContextMenu *msg;
 
     msg = BEDIT_FILE_BROWSER_MESSAGE_EXTEND_CONTEXT_MENU(obj);
@@ -69,24 +71,25 @@ static void bedit_file_browser_message_extend_context_menu_get_property(
 }
 
 static void bedit_file_browser_message_extend_context_menu_set_property(
-    GObject *obj, guint prop_id, GValue const *value, GParamSpec *pspec) {
+    GObject *obj, guint prop_id, GValue const *value, GParamSpec *pspec
+) {
     BeditFileBrowserMessageExtendContextMenu *msg;
 
     msg = BEDIT_FILE_BROWSER_MESSAGE_EXTEND_CONTEXT_MENU(obj);
 
     switch (prop_id) {
-    case PROP_EXTENSION: {
+    case PROP_EXTENSION:
         if (msg->priv->extension) {
             g_object_unref(msg->priv->extension);
         }
         msg->priv->extension = g_value_dup_object(value);
         break;
     }
-    }
 }
 
 static void bedit_file_browser_message_extend_context_menu_class_init(
-    BeditFileBrowserMessageExtendContextMenuClass *klass) {
+    BeditFileBrowserMessageExtendContextMenuClass *klass
+) {
     GObjectClass *object_class = G_OBJECT_CLASS(klass);
 
     object_class->finalize =
@@ -101,12 +104,17 @@ static void bedit_file_browser_message_extend_context_menu_class_init(
         object_class, PROP_EXTENSION,
         g_param_spec_object(
             "extension", "Extension", "Extension", BEDIT_TYPE_MENU_EXTENSION,
-            G_PARAM_READWRITE | G_PARAM_CONSTRUCT | G_PARAM_STATIC_STRINGS));
+            G_PARAM_READWRITE | G_PARAM_CONSTRUCT | G_PARAM_STATIC_STRINGS
+        )
+    );
 }
 
 static void bedit_file_browser_message_extend_context_menu_init(
-    BeditFileBrowserMessageExtendContextMenu *message) {
+    BeditFileBrowserMessageExtendContextMenu *message
+) {
     message->priv =
         bedit_file_browser_message_extend_context_menu_get_instance_private(
-            message);
+            message
+        );
 }
+

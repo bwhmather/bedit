@@ -161,7 +161,8 @@ static void message_cache_data_free(MessageCacheData *data) {
 }
 
 static MessageCacheData *message_cache_data_new(
-    BeditWindow *window, BeditMessage *message) {
+    BeditWindow *window, BeditMessage *message
+) {
     MessageCacheData *data = g_slice_new(MessageCacheData);
 
     data->window = window;
@@ -430,7 +431,8 @@ static gboolean custom_message_filter_func(
 }
 
 static void message_add_filter_cb(
-    BeditMessageBus *bus, BeditMessage *message, BeditWindow *window) {
+    BeditMessageBus *bus, BeditMessage *message, BeditWindow *window
+) {
     const gchar *object_path = NULL;
     const gchar *method = NULL;
     gulong id;
@@ -606,7 +608,8 @@ static void message_get_view_cb(
 }
 
 static void register_methods(
-    BeditWindow *window, BeditFileBrowserWidget *widget) {
+    BeditWindow *window, BeditFileBrowserWidget *widget
+) {
     BeditMessageBus *bus = bedit_window_get_message_bus(window);
     WindowData *data = get_window_data(window);
 
@@ -877,7 +880,8 @@ static void register_signals(
 
     message = g_object_new(
         BEDIT_TYPE_FILE_BROWSER_MESSAGE_ID_LOCATION, "object-path",
-        MESSAGE_OBJECT_PATH, "method", "root_changed", NULL);
+        MESSAGE_OBJECT_PATH, "method", "root_changed", NULL
+    );
 
     data->root_changed_id = g_signal_connect_data(
         store, "notify::virtual-root",

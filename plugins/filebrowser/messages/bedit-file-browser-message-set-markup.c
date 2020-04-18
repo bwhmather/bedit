@@ -1,4 +1,3 @@
-
 /*
  * bedit-file-browser-message-set-markup.c
  * This file is part of bedit
@@ -40,7 +39,9 @@ struct _BeditFileBrowserMessageSetMarkupPrivate {
 
 G_DEFINE_TYPE_EXTENDED(
     BeditFileBrowserMessageSetMarkup, bedit_file_browser_message_set_markup,
-    BEDIT_TYPE_MESSAGE, 0, G_ADD_PRIVATE(BeditFileBrowserMessageSetMarkup))
+    BEDIT_TYPE_MESSAGE, 0,
+    G_ADD_PRIVATE(BeditFileBrowserMessageSetMarkup)
+)
 
 static void bedit_file_browser_message_set_markup_finalize(GObject *obj) {
     BeditFileBrowserMessageSetMarkup *msg =
@@ -54,7 +55,8 @@ static void bedit_file_browser_message_set_markup_finalize(GObject *obj) {
 }
 
 static void bedit_file_browser_message_set_markup_get_property(
-    GObject *obj, guint prop_id, GValue *value, GParamSpec *pspec) {
+    GObject *obj, guint prop_id, GValue *value, GParamSpec *pspec
+) {
     BeditFileBrowserMessageSetMarkup *msg;
 
     msg = BEDIT_FILE_BROWSER_MESSAGE_SET_MARKUP(obj);
@@ -70,27 +72,28 @@ static void bedit_file_browser_message_set_markup_get_property(
 }
 
 static void bedit_file_browser_message_set_markup_set_property(
-    GObject *obj, guint prop_id, GValue const *value, GParamSpec *pspec) {
+    GObject *obj, guint prop_id, GValue const *value, GParamSpec *pspec
+) {
     BeditFileBrowserMessageSetMarkup *msg;
 
     msg = BEDIT_FILE_BROWSER_MESSAGE_SET_MARKUP(obj);
 
     switch (prop_id) {
-    case PROP_ID: {
+    case PROP_ID:
         g_free(msg->priv->id);
         msg->priv->id = g_value_dup_string(value);
         break;
-    }
-    case PROP_MARKUP: {
+
+    case PROP_MARKUP:
         g_free(msg->priv->markup);
         msg->priv->markup = g_value_dup_string(value);
         break;
     }
-    }
 }
 
 static void bedit_file_browser_message_set_markup_class_init(
-    BeditFileBrowserMessageSetMarkupClass *klass) {
+    BeditFileBrowserMessageSetMarkupClass *klass
+) {
     GObjectClass *object_class = G_OBJECT_CLASS(klass);
 
     object_class->finalize = bedit_file_browser_message_set_markup_finalize;
@@ -104,17 +107,23 @@ static void bedit_file_browser_message_set_markup_class_init(
         object_class, PROP_ID,
         g_param_spec_string(
             "id", "Id", "Id", NULL,
-            G_PARAM_READWRITE | G_PARAM_CONSTRUCT | G_PARAM_STATIC_STRINGS));
+            G_PARAM_READWRITE | G_PARAM_CONSTRUCT | G_PARAM_STATIC_STRINGS
+        )
+    );
 
     g_object_class_install_property(
         object_class, PROP_MARKUP,
         g_param_spec_string(
             "markup", "Markup", "Markup", NULL,
-            G_PARAM_READWRITE | G_PARAM_CONSTRUCT | G_PARAM_STATIC_STRINGS));
+            G_PARAM_READWRITE | G_PARAM_CONSTRUCT | G_PARAM_STATIC_STRINGS
+        )
+    );
 }
 
 static void bedit_file_browser_message_set_markup_init(
-    BeditFileBrowserMessageSetMarkup *message) {
+    BeditFileBrowserMessageSetMarkup *message
+) {
     message->priv =
         bedit_file_browser_message_set_markup_get_instance_private(message);
 }
+

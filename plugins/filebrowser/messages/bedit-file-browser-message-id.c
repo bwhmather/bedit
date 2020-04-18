@@ -1,4 +1,3 @@
-
 /*
  * bedit-file-browser-message-id.c
  * This file is part of bedit
@@ -37,10 +36,13 @@ struct _BeditFileBrowserMessageIdPrivate {
 
 G_DEFINE_TYPE_EXTENDED(
     BeditFileBrowserMessageId, bedit_file_browser_message_id,
-    BEDIT_TYPE_MESSAGE, 0, G_ADD_PRIVATE(BeditFileBrowserMessageId))
+    BEDIT_TYPE_MESSAGE, 0,
+    G_ADD_PRIVATE(BeditFileBrowserMessageId)
+)
 
 static void bedit_file_browser_message_id_get_property(
-    GObject *obj, guint prop_id, GValue *value, GParamSpec *pspec) {
+    GObject *obj, guint prop_id, GValue *value, GParamSpec *pspec
+) {
     BeditFileBrowserMessageId *msg;
 
     msg = BEDIT_FILE_BROWSER_MESSAGE_ID(obj);
@@ -53,7 +55,8 @@ static void bedit_file_browser_message_id_get_property(
 }
 
 static void bedit_file_browser_message_id_set_property(
-    GObject *obj, guint prop_id, GValue const *value, GParamSpec *pspec) {
+    GObject *obj, guint prop_id, GValue const *value, GParamSpec *pspec
+) {
     BeditFileBrowserMessageId *msg;
 
     msg = BEDIT_FILE_BROWSER_MESSAGE_ID(obj);
@@ -66,7 +69,8 @@ static void bedit_file_browser_message_id_set_property(
 }
 
 static void bedit_file_browser_message_id_class_init(
-    BeditFileBrowserMessageIdClass *klass) {
+    BeditFileBrowserMessageIdClass *klass
+) {
     GObjectClass *object_class = G_OBJECT_CLASS(klass);
 
     object_class->get_property = bedit_file_browser_message_id_get_property;
@@ -76,10 +80,14 @@ static void bedit_file_browser_message_id_class_init(
         object_class, PROP_ID,
         g_param_spec_uint(
             "id", "Id", "Id", 0, G_MAXUINT, 0,
-            G_PARAM_READWRITE | G_PARAM_CONSTRUCT | G_PARAM_STATIC_STRINGS));
+            G_PARAM_READWRITE | G_PARAM_CONSTRUCT | G_PARAM_STATIC_STRINGS
+        )
+    );
 }
 
 static void bedit_file_browser_message_id_init(
-    BeditFileBrowserMessageId *message) {
+    BeditFileBrowserMessageId *message
+) {
     message->priv = bedit_file_browser_message_id_get_instance_private(message);
 }
+

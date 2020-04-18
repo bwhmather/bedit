@@ -74,7 +74,8 @@ static void bedit_file_browser_bookmarks_store_dispose(GObject *object) {
 
     g_clear_object(&obj->priv->bookmarks_monitor);
 
-    G_OBJECT_CLASS(bedit_file_browser_bookmarks_store_parent_class)->dispose(object);
+    G_OBJECT_CLASS(bedit_file_browser_bookmarks_store_parent_class)
+        ->dispose(object);
 }
 
 static void bedit_file_browser_bookmarks_store_class_init(
@@ -89,7 +90,9 @@ static void bedit_file_browser_bookmarks_store_class_finalize(
     BeditFileBrowserBookmarksStoreClass *klass
 ) {}
 
-static void bedit_file_browser_bookmarks_store_init(BeditFileBrowserBookmarksStore *obj) {
+static void bedit_file_browser_bookmarks_store_init(
+    BeditFileBrowserBookmarksStore *obj
+) {
     obj->priv = bedit_file_browser_bookmarks_store_get_instance_private(obj);
 }
 
@@ -193,7 +196,7 @@ static void init_special_directories(BeditFileBrowserBookmarksStore *model) {
         add_file(
             model, file, _("Home"),
             BEDIT_FILE_BROWSER_BOOKMARKS_STORE_IS_HOME |
-                BEDIT_FILE_BROWSER_BOOKMARKS_STORE_IS_SPECIAL_DIR,
+            BEDIT_FILE_BROWSER_BOOKMARKS_STORE_IS_SPECIAL_DIR,
             NULL
         );
         g_object_unref(file);
@@ -206,7 +209,7 @@ static void init_special_directories(BeditFileBrowserBookmarksStore *model) {
         add_file(
             model, file, NULL,
             BEDIT_FILE_BROWSER_BOOKMARKS_STORE_IS_DESKTOP |
-                BEDIT_FILE_BROWSER_BOOKMARKS_STORE_IS_SPECIAL_DIR,
+            BEDIT_FILE_BROWSER_BOOKMARKS_STORE_IS_SPECIAL_DIR,
             NULL
         );
         g_object_unref(file);
@@ -218,7 +221,7 @@ static void init_special_directories(BeditFileBrowserBookmarksStore *model) {
         add_file(
             model, file, NULL,
             BEDIT_FILE_BROWSER_BOOKMARKS_STORE_IS_DOCUMENTS |
-                BEDIT_FILE_BROWSER_BOOKMARKS_STORE_IS_SPECIAL_DIR,
+            BEDIT_FILE_BROWSER_BOOKMARKS_STORE_IS_SPECIAL_DIR,
             NULL
         );
         g_object_unref(file);
@@ -533,7 +536,7 @@ static void init_bookmarks(BeditFileBrowserBookmarksStore *model) {
         add_node(
             model, NULL, NULL, NULL, NULL,
             BEDIT_FILE_BROWSER_BOOKMARKS_STORE_IS_BOOKMARK |
-                BEDIT_FILE_BROWSER_BOOKMARKS_STORE_IS_SEPARATOR,
+            BEDIT_FILE_BROWSER_BOOKMARKS_STORE_IS_SEPARATOR,
             NULL
         );
     }
@@ -728,8 +731,8 @@ static void remove_bookmarks(BeditFileBrowserBookmarksStore *model) {
 
     while (find_with_flags(
         GTK_TREE_MODEL(model), &iter, NULL,
-        BEDIT_FILE_BROWSER_BOOKMARKS_STORE_IS_BOOKMARK, 0)
-    ) {
+        BEDIT_FILE_BROWSER_BOOKMARKS_STORE_IS_BOOKMARK, 0
+    )) {
         remove_node(GTK_TREE_MODEL(model), &iter);
     }
 }
@@ -813,7 +816,9 @@ GFile *bedit_file_browser_bookmarks_store_get_location(
     return ret;
 }
 
-void bedit_file_browser_bookmarks_store_refresh(BeditFileBrowserBookmarksStore *model) {
+void bedit_file_browser_bookmarks_store_refresh(
+    BeditFileBrowserBookmarksStore *model
+) {
     gtk_tree_store_clear(GTK_TREE_STORE(model));
     initialize_fill(model);
 }
@@ -847,7 +852,7 @@ static void on_bookmarks_file_changed(
         remove_bookmarks(model);
         init_bookmarks(model);
         break;
-    /*  FIXME: shouldn't we also monitor the directory? */
+        /* FIXME: shouldn't we also monitor the directory? */
     case G_FILE_MONITOR_EVENT_DELETED:
         /* Remove bookmarks */
         remove_bookmarks(model);

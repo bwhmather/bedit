@@ -33,22 +33,22 @@ G_BEGIN_DECLS
 #define BEDIT_FILE_BROWSER_BOOKMARKS_STORE(obj)                             \
     (G_TYPE_CHECK_INSTANCE_CAST(                                            \
         (obj), BEDIT_TYPE_FILE_BROWSER_BOOKMARKS_STORE,                     \
-        BeditFileBrowserBookmarksStore                                             \
+        BeditFileBrowserBookmarksStore                                      \
     ))
 #define BEDIT_FILE_BROWSER_BOOKMARKS_STORE_CONST(obj)                       \
     (G_TYPE_CHECK_INSTANCE_CAST(                                            \
         (obj), BEDIT_TYPE_FILE_BROWSER_BOOKMARKS_STORE,                     \
-        BeditFileBrowserBookmarksStore const                                       \
+        BeditFileBrowserBookmarksStore const                                \
     ))
 #define BEDIT_FILE_BROWSER_BOOKMARKS_STORE_CLASS(klass)                     \
     (G_TYPE_CHECK_CLASS_CAST(                                               \
         (klass), BEDIT_TYPE_FILE_BROWSER_BOOKMARKS_STORE,                   \
-        BeditFileBrowserBookmarksStoreClass                                        \
+        BeditFileBrowserBookmarksStoreClass                                 \
     ))
 #define BEDIT_IS_FILE_BROWSER_BOOKMARKS_STORE(obj)                          \
     (G_TYPE_CHECK_INSTANCE_TYPE(                                            \
         (obj), BEDIT_TYPE_FILE_BROWSER_BOOKMARKS_STORE                      \
-    ))                    
+    ))
 #define BEDIT_IS_FILE_BROWSER_BOOKMARKS_STORE_CLASS(klass)                  \
     (G_TYPE_CHECK_CLASS_TYPE(                                               \
         (klass), BEDIT_TYPE_FILE_BROWSER_BOOKMARKS_STORE                    \
@@ -56,14 +56,14 @@ G_BEGIN_DECLS
 #define BEDIT_FILE_BROWSER_BOOKMARKS_STORE_GET_CLASS(obj)                   \
     (G_TYPE_INSTANCE_GET_CLASS(                                             \
         (obj), BEDIT_TYPE_FILE_BROWSER_BOOKMARKS_STORE,                     \
-        BeditFileBrowserBookmarksStoreClass                                        \
+        BeditFileBrowserBookmarksStoreClass                                 \
     ))
 
 typedef struct _BeditFileBrowserBookmarksStore
     BeditFileBrowserBookmarksStore;
-typedef struct _BeditFileBrowserBookmarksStoreClass 
+typedef struct _BeditFileBrowserBookmarksStoreClass
     BeditFileBrowserBookmarksStoreClass;
-typedef struct _BeditFileBrowserBookmarksStorePrivate 
+typedef struct _BeditFileBrowserBookmarksStorePrivate
     BeditFileBrowserBookmarksStorePrivate;
 
 enum {

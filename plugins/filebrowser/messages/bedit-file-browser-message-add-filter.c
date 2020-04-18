@@ -41,7 +41,9 @@ struct _BeditFileBrowserMessageAddFilterPrivate {
 
 G_DEFINE_TYPE_EXTENDED(
     BeditFileBrowserMessageAddFilter, bedit_file_browser_message_add_filter,
-    BEDIT_TYPE_MESSAGE, 0, G_ADD_PRIVATE(BeditFileBrowserMessageAddFilter))
+    BEDIT_TYPE_MESSAGE, 0,
+    G_ADD_PRIVATE(BeditFileBrowserMessageAddFilter)
+)
 
 static void bedit_file_browser_message_add_filter_finalize(GObject *obj) {
     BeditFileBrowserMessageAddFilter *msg =
@@ -55,7 +57,8 @@ static void bedit_file_browser_message_add_filter_finalize(GObject *obj) {
 }
 
 static void bedit_file_browser_message_add_filter_get_property(
-    GObject *obj, guint prop_id, GValue *value, GParamSpec *pspec) {
+    GObject *obj, guint prop_id, GValue *value, GParamSpec *pspec
+) {
     BeditFileBrowserMessageAddFilter *msg;
 
     msg = BEDIT_FILE_BROWSER_MESSAGE_ADD_FILTER(obj);
@@ -64,9 +67,11 @@ static void bedit_file_browser_message_add_filter_get_property(
     case PROP_OBJECT_PATH:
         g_value_set_string(value, msg->priv->object_path);
         break;
+
     case PROP_METHOD:
         g_value_set_string(value, msg->priv->method);
         break;
+
     case PROP_ID:
         g_value_set_uint(value, msg->priv->id);
         break;
@@ -74,22 +79,23 @@ static void bedit_file_browser_message_add_filter_get_property(
 }
 
 static void bedit_file_browser_message_add_filter_set_property(
-    GObject *obj, guint prop_id, GValue const *value, GParamSpec *pspec) {
+    GObject *obj, guint prop_id, GValue const *value, GParamSpec *pspec
+) {
     BeditFileBrowserMessageAddFilter *msg;
 
     msg = BEDIT_FILE_BROWSER_MESSAGE_ADD_FILTER(obj);
 
     switch (prop_id) {
-    case PROP_OBJECT_PATH: {
+    case PROP_OBJECT_PATH:
         g_free(msg->priv->object_path);
         msg->priv->object_path = g_value_dup_string(value);
         break;
-    }
-    case PROP_METHOD: {
+
+    case PROP_METHOD:
         g_free(msg->priv->method);
         msg->priv->method = g_value_dup_string(value);
         break;
-    }
+
     case PROP_ID:
         msg->priv->id = g_value_get_uint(value);
         break;
@@ -97,7 +103,8 @@ static void bedit_file_browser_message_add_filter_set_property(
 }
 
 static void bedit_file_browser_message_add_filter_class_init(
-    BeditFileBrowserMessageAddFilterClass *klass) {
+    BeditFileBrowserMessageAddFilterClass *klass
+) {
     GObjectClass *object_class = G_OBJECT_CLASS(klass);
 
     object_class->finalize = bedit_file_browser_message_add_filter_finalize;
@@ -111,23 +118,31 @@ static void bedit_file_browser_message_add_filter_class_init(
         object_class, PROP_OBJECT_PATH,
         g_param_spec_string(
             "object-path", "Object Path", "Object Path", NULL,
-            G_PARAM_READWRITE | G_PARAM_CONSTRUCT | G_PARAM_STATIC_STRINGS));
+            G_PARAM_READWRITE | G_PARAM_CONSTRUCT | G_PARAM_STATIC_STRINGS
+        )
+    );
 
     g_object_class_install_property(
         object_class, PROP_METHOD,
         g_param_spec_string(
             "method", "Method", "Method", NULL,
-            G_PARAM_READWRITE | G_PARAM_CONSTRUCT | G_PARAM_STATIC_STRINGS));
+            G_PARAM_READWRITE | G_PARAM_CONSTRUCT | G_PARAM_STATIC_STRINGS
+        )
+    );
 
     g_object_class_install_property(
         object_class, PROP_ID,
         g_param_spec_uint(
             "id", "Id", "Id", 0, G_MAXUINT, 0,
-            G_PARAM_READWRITE | G_PARAM_CONSTRUCT | G_PARAM_STATIC_STRINGS));
+            G_PARAM_READWRITE | G_PARAM_CONSTRUCT | G_PARAM_STATIC_STRINGS
+        )
+    );
 }
 
 static void bedit_file_browser_message_add_filter_init(
-    BeditFileBrowserMessageAddFilter *message) {
+    BeditFileBrowserMessageAddFilter *message
+) {
     message->priv =
         bedit_file_browser_message_add_filter_get_instance_private(message);
 }
+

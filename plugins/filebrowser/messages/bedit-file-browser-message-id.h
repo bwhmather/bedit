@@ -28,27 +28,32 @@
 
 G_BEGIN_DECLS
 
-#define BEDIT_TYPE_FILE_BROWSER_MESSAGE_ID                                     \
+#define BEDIT_TYPE_FILE_BROWSER_MESSAGE_ID                                  \
     (bedit_file_browser_message_id_get_type())
-#define BEDIT_FILE_BROWSER_MESSAGE_ID(obj)                                     \
-    (G_TYPE_CHECK_INSTANCE_CAST(                                               \
-        (obj), BEDIT_TYPE_FILE_BROWSER_MESSAGE_ID, BeditFileBrowserMessageId))
-#define BEDIT_FILE_BROWSER_MESSAGE_ID_CONST(obj)                               \
-    (G_TYPE_CHECK_INSTANCE_CAST(                                               \
-        (obj), BEDIT_TYPE_FILE_BROWSER_MESSAGE_ID,                             \
-        BeditFileBrowserMessageId const))
-#define BEDIT_FILE_BROWSER_MESSAGE_ID_CLASS(klass)                             \
-    (G_TYPE_CHECK_CLASS_CAST(                                                  \
-        (klass), BEDIT_TYPE_FILE_BROWSER_MESSAGE_ID,                           \
-        BeditFileBrowserMessageIdClass))
-#define BEDIT_IS_FILE_BROWSER_MESSAGE_ID(obj)                                  \
+#define BEDIT_FILE_BROWSER_MESSAGE_ID(obj)                                  \
+    (G_TYPE_CHECK_INSTANCE_CAST(                                            \
+        (obj), BEDIT_TYPE_FILE_BROWSER_MESSAGE_ID,                          \
+        BeditFileBrowserMessageId                                           \
+    ))
+#define BEDIT_FILE_BROWSER_MESSAGE_ID_CONST(obj)                            \
+    (G_TYPE_CHECK_INSTANCE_CAST(                                            \
+        (obj), BEDIT_TYPE_FILE_BROWSER_MESSAGE_ID,                          \
+        BeditFileBrowserMessageId const                                     \
+    ))
+#define BEDIT_FILE_BROWSER_MESSAGE_ID_CLASS(klass)                          \
+    (G_TYPE_CHECK_CLASS_CAST(                                               \
+        (klass), BEDIT_TYPE_FILE_BROWSER_MESSAGE_ID,                        \
+        BeditFileBrowserMessageIdClass                                      \
+    ))
+#define BEDIT_IS_FILE_BROWSER_MESSAGE_ID(obj)                               \
     (G_TYPE_CHECK_INSTANCE_TYPE((obj), BEDIT_TYPE_FILE_BROWSER_MESSAGE_ID))
-#define BEDIT_IS_FILE_BROWSER_MESSAGE_ID_CLASS(klass)                          \
+#define BEDIT_IS_FILE_BROWSER_MESSAGE_ID_CLASS(klass)                       \
     (G_TYPE_CHECK_CLASS_TYPE((klass), BEDIT_TYPE_FILE_BROWSER_MESSAGE_ID))
-#define BEDIT_FILE_BROWSER_MESSAGE_ID_GET_CLASS(obj)                           \
-    (G_TYPE_INSTANCE_GET_CLASS(                                                \
-        (obj), BEDIT_TYPE_FILE_BROWSER_MESSAGE_ID,                             \
-        BeditFileBrowserMessageIdClass))
+#define BEDIT_FILE_BROWSER_MESSAGE_ID_GET_CLASS(obj)                        \
+    (G_TYPE_INSTANCE_GET_CLASS(                                             \
+        (obj), BEDIT_TYPE_FILE_BROWSER_MESSAGE_ID,                          \
+        BeditFileBrowserMessageIdClass                                      \
+    ))
 
 typedef struct _BeditFileBrowserMessageId BeditFileBrowserMessageId;
 typedef struct _BeditFileBrowserMessageIdClass BeditFileBrowserMessageIdClass;
@@ -70,3 +75,4 @@ GType bedit_file_browser_message_id_get_type(void) G_GNUC_CONST;
 G_END_DECLS
 
 #endif /* BEDIT_FILE_BROWSER_MESSAGE_ID_H */
+
