@@ -857,8 +857,10 @@ static gchar *get_direct_save_filename(GdkDragContext *context) {
     prop_text[prop_len] = '\0';
 
     /* Verify that the file name provided by the source is valid */
-    if (*prop_text == '\0' ||
-        strchr((const gchar *)prop_text, G_DIR_SEPARATOR) != NULL) {
+    if (
+        *prop_text == '\0' ||
+        strchr((const gchar *)prop_text, G_DIR_SEPARATOR) != NULL
+    ) {
         bedit_debug_message(
             DEBUG_UTILS, "Invalid filename provided by XDS drag site"
         );

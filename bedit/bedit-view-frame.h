@@ -49,3 +49,4 @@ void bedit_view_frame_popup_goto_line(BeditViewFrame *frame);
 G_END_DECLS
 
 #endif /* BEDIT_VIEW_FRAME_H */
+

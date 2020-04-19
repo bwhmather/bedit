@@ -38,7 +38,8 @@ G_BEGIN_DECLS
 /* Create titled documens for non-existing URIs */
 GSList *_bedit_cmd_load_files_from_prompt(
     BeditWindow *window, GSList *files, const GtkSourceEncoding *encoding,
-    gint line_pos, gint column_pos) G_GNUC_WARN_UNUSED_RESULT;
+    gint line_pos, gint column_pos
+) G_GNUC_WARN_UNUSED_RESULT;
 
 void _bedit_cmd_file_new(
     GSimpleAction *action, GVariant *parameter, gpointer user_data

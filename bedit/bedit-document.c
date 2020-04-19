@@ -108,7 +108,8 @@ static guint document_signals[LAST_SIGNAL];
 static GHashTable *allocated_untitled_numbers = NULL;
 
 G_DEFINE_TYPE_WITH_PRIVATE(
-    BeditDocument, bedit_document, GTK_SOURCE_TYPE_BUFFER)
+    BeditDocument, bedit_document, GTK_SOURCE_TYPE_BUFFER
+)
 
 static gint get_untitled_number(void) {
     gint i = 1;
@@ -323,8 +324,10 @@ static void bedit_document_mark_set(
             ->mark_set(buffer, iter, mark);
     }
 
-    if (mark == gtk_text_buffer_get_insert(buffer) &&
-        (priv->user_action == 0)) {
+    if (
+        mark == gtk_text_buffer_get_insert(buffer) &&
+        (priv->user_action == 0)
+    ) {
         g_signal_emit(doc, document_signals[CURSOR_MOVED], 0);
     }
 }
@@ -535,7 +538,8 @@ static void save_encoding_metadata(BeditDocument *doc) {
 }
 
 static GtkSourceStyleScheme *get_default_style_scheme(
-    GSettings *editor_settings) {
+    GSettings *editor_settings
+) {
     GtkSourceStyleSchemeManager *manager;
     gchar *scheme_id;
     GtkSourceStyleScheme *def_style;
@@ -1157,7 +1161,8 @@ gboolean bedit_document_goto_line(BeditDocument *doc, gint line) {
 }
 
 gboolean bedit_document_goto_line_offset(
-    BeditDocument *doc, gint line, gint line_offset) {
+    BeditDocument *doc, gint line, gint line_offset
+) {
     GtkTextIter iter;
 
     g_return_val_if_fail(BEDIT_IS_DOCUMENT(doc), FALSE);

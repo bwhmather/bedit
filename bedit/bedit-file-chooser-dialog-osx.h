@@ -33,7 +33,7 @@
 
 G_BEGIN_DECLS
 
-#define BEDIT_TYPE_FILE_CHOOSER_DIALOG_OSX                                     \
+#define BEDIT_TYPE_FILE_CHOOSER_DIALOG_OSX                                  \
     (bedit_file_chooser_dialog_osx_get_type())
 
 G_DECLARE_FINAL_TYPE(

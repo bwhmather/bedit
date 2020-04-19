@@ -96,7 +96,8 @@ enum { TARGET_URI_LIST = 100, TARGET_XDNDDIRECTSAVE };
 
 static const GtkTargetEntry drop_types[] = {
     {"XdndDirectSave0", 0, TARGET_XDNDDIRECTSAVE}, /* XDS Protocol Type */
-    {"text/uri-list", 0, TARGET_URI_LIST}};
+    {"text/uri-list", 0, TARGET_URI_LIST}
+};
 
 G_DEFINE_TYPE_WITH_PRIVATE(
     BeditWindow, bedit_window, GTK_TYPE_APPLICATION_WINDOW
@@ -188,7 +189,7 @@ static void bedit_window_dispose(GObject *object) {
         );
 
         window->priv->dispose_has_run = TRUE;
-        
+
         /* The searchbar doesn't own its reference to the currently active view
          * so this needs to be cleared first, before both are automatically
          * dereferenced.
@@ -267,7 +268,8 @@ static void update_fullscreen(BeditWindow *window, gboolean is_fullscreen) {
 }
 
 static gboolean bedit_window_window_state_event(
-    GtkWidget *widget, GdkEventWindowState *event) {
+    GtkWidget *widget, GdkEventWindowState *event
+) {
     BeditWindow *window = BEDIT_WINDOW(widget);
 
     window->priv->window_state = event->new_window_state;
@@ -289,7 +291,8 @@ static gboolean bedit_window_window_state_event(
 }
 
 static gboolean bedit_window_configure_event(
-    GtkWidget *widget, GdkEventConfigure *event) {
+    GtkWidget *widget, GdkEventConfigure *event
+) {
     BeditWindow *window = BEDIT_WINDOW(widget);
 
     if (gtk_widget_get_realized(widget) && (
@@ -304,7 +307,8 @@ static gboolean bedit_window_configure_event(
 }
 
 static gboolean bedit_window_process_change_tab_event(
-    GtkWindow *window, GdkEventKey *event) {
+    GtkWindow *window, GdkEventKey *event
+) {
 
     GdkDisplay *display;
     GdkKeymap *keymap;
@@ -432,8 +436,10 @@ static void bedit_window_class_init(BeditWindowClass *klass) {
         "state", "State", "The window's state", BEDIT_TYPE_WINDOW_STATE,
         BEDIT_WINDOW_STATE_NORMAL, G_PARAM_READABLE | G_PARAM_STATIC_STRINGS
     );
+
     properties[PROP_DEFAULT_LOCATION] = g_param_spec_object(
-        "default-location", "Default Location", "The window's working directory",
+        "default-location", "Default Location",
+        "The window's working directory",
         G_TYPE_FILE, G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS
     );
     g_object_class_install_properties(object_class, LAST_PROP, properties);
@@ -1349,7 +1355,8 @@ static void remove_actions(BeditWindow *window) {
 }
 
 static void sync_current_tab_actions(
-    BeditWindow *window, BeditView *old_view, BeditView *new_view) {
+    BeditWindow *window, BeditView *old_view, BeditView *new_view
+) {
     if (old_view != NULL) {
         remove_actions(window);
 
@@ -1485,7 +1492,8 @@ static void on_switched_page(
     update_statusbar(window, old_view, new_view);
 
     bedit_searchbar_set_view(
-        BEDIT_SEARCHBAR(window->priv->searchbar), new_view);
+        BEDIT_SEARCHBAR(window->priv->searchbar), new_view
+    );
 
     if (new_tab == NULL || window->priv->dispose_has_run) {
         return;
@@ -1563,7 +1571,8 @@ static void update_window_state(BeditWindow *window) {
     window->priv->num_tabs_with_error = 0;
 
     bedit_notebook_foreach_tab(
-        window->priv->notebook, (GtkCallback)analyze_tab_state, window);
+        window->priv->notebook, (GtkCallback)analyze_tab_state, window
+    );
 
     bedit_debug_message(DEBUG_WINDOW, "New state: %x", window->priv->state);
 
@@ -1781,7 +1790,8 @@ static void drop_uris_cb(
 }
 
 static void search_active_notify_cb(
-    BeditSearchbar *doc, GParamSpec *pspec, BeditWindow *window) {
+    BeditSearchbar *doc, GParamSpec *pspec, BeditWindow *window
+) {
     update_actions_sensitivity(window);
 }
 
@@ -1936,7 +1946,8 @@ GFile *_bedit_window_pop_last_closed_doc(BeditWindow *window) {
 
 static void on_page_removed(
     GtkNotebook *notebook, GtkWidget *tab, guint page_num,
-    BeditWindow *window) {
+    BeditWindow *window
+) {
     BeditView *view;
     BeditDocument *doc;
     gint num_tabs;
@@ -2008,7 +2019,8 @@ static void on_page_removed(
         set_title(window);
 
         bedit_searchbar_set_view(
-            BEDIT_SEARCHBAR(window->priv->searchbar), NULL);
+            BEDIT_SEARCHBAR(window->priv->searchbar), NULL
+        );
 
         bedit_statusbar_clear_overwrite(
             BEDIT_STATUSBAR(window->priv->statusbar)
@@ -2171,7 +2183,8 @@ static GActionEntry win_entries[] = {
     {"delete", _bedit_cmd_edit_delete},
     {"select-all", _bedit_cmd_edit_select_all},
     {"highlight-mode", _bedit_cmd_view_highlight_mode},
-    {"overwrite-mode", NULL, NULL, "false", _bedit_cmd_edit_overwrite_mode}};
+    {"overwrite-mode", NULL, NULL, "false", _bedit_cmd_edit_overwrite_mode}
+};
 
 static void sync_fullscreen_actions(BeditWindow *window, gboolean fullscreen) {
     /* TODO this no longer changes anything and should be moved to init */
@@ -2263,7 +2276,8 @@ static void bedit_window_init(BeditWindow *window) {
     /* Setup search bar */
     g_signal_connect(
         window->priv->searchbar, "notify::search-active",
-        G_CALLBACK(search_active_notify_cb), window);
+        G_CALLBACK(search_active_notify_cb), window
+    );
 
     /* Setup main area */
     g_signal_connect(
@@ -2421,7 +2435,8 @@ GtkWidget *_bedit_window_get_notebook(BeditWindow *window) {
 }
 
 static BeditTab *process_create_tab(
-    BeditWindow *window, GtkWidget *notebook, BeditTab *tab, gboolean jump_to) {
+    BeditWindow *window, GtkWidget *notebook, BeditTab *tab, gboolean jump_to
+) {
     if (tab == NULL) {
         return NULL;
     }

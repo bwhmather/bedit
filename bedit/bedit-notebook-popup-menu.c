@@ -182,7 +182,8 @@ static void on_move_left_activate(
 }
 
 static void on_move_right_activate(
-    GSimpleAction *action, GVariant *parameter, gpointer user_data) {
+    GSimpleAction *action, GVariant *parameter, gpointer user_data
+) {
     BeditNotebookPopupMenu *menu = BEDIT_NOTEBOOK_POPUP_MENU(user_data);
     GtkNotebook *notebook;
     gint page_num;
@@ -200,14 +201,16 @@ static void on_move_right_activate(
 }
 
 static void on_move_to_new_window_activate(
-    GSimpleAction *action, GVariant *parameter, gpointer user_data) {
+    GSimpleAction *action, GVariant *parameter, gpointer user_data
+) {
     BeditNotebookPopupMenu *menu = BEDIT_NOTEBOOK_POPUP_MENU(user_data);
 
     _bedit_window_move_tab_to_new_window(menu->window, menu->tab);
 }
 
 static void on_close_activate(
-    GSimpleAction *action, GVariant *parameter, gpointer user_data) {
+    GSimpleAction *action, GVariant *parameter, gpointer user_data
+) {
     BeditNotebookPopupMenu *menu = BEDIT_NOTEBOOK_POPUP_MENU(user_data);
 
     (void) action;
@@ -219,7 +222,10 @@ static void on_close_activate(
 static GActionEntry action_entries[] = {
     {"move-left", on_move_left_activate, NULL, NULL, NULL, {0, 0, 0}},
     {"move-right", on_move_right_activate, NULL, NULL, NULL, {0, 0, 0}},
-    {"move-to-new-window", on_move_to_new_window_activate, NULL, NULL, NULL, {0, 0, 0}},
+    {
+        "move-to-new-window", on_move_to_new_window_activate,
+        NULL, NULL, NULL, {0, 0, 0}
+    },
     {"close", on_close_activate, NULL, NULL, NULL, {0, 0, 0}}
 };
 

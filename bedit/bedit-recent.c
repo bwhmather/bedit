@@ -217,7 +217,8 @@ GList *bedit_recent_get_items(BeditRecentConfiguration *config) {
         if (config->local_only && !gtk_recent_info_is_local(info)) {
             is_filtered = TRUE;
         } else if (
-            !config->show_private && gtk_recent_info_get_private_hint(info)) {
+            !config->show_private && gtk_recent_info_get_private_hint(info)
+        ) {
             is_filtered = TRUE;
         } else if (!config->show_not_found && !gtk_recent_info_exists(info)) {
             is_filtered = TRUE;

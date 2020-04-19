@@ -33,21 +33,24 @@
 G_BEGIN_DECLS
 
 #define BEDIT_TYPE_MESSAGE_BUS (bedit_message_bus_get_type())
-#define BEDIT_MESSAGE_BUS(obj)                                                 \
+#define BEDIT_MESSAGE_BUS(obj)                                              \
     (G_TYPE_CHECK_INSTANCE_CAST((obj), BEDIT_TYPE_MESSAGE_BUS, BeditMessageBus))
-#define BEDIT_MESSAGE_BUS_CONST(obj)                                           \
-    (G_TYPE_CHECK_INSTANCE_CAST(                                               \
-        (obj), BEDIT_TYPE_MESSAGE_BUS, BeditMessageBus const))
-#define BEDIT_MESSAGE_BUS_CLASS(klass)                                         \
-    (G_TYPE_CHECK_CLASS_CAST(                                                  \
-        (klass), BEDIT_TYPE_MESSAGE_BUS, BeditMessageBusClass))
-#define BEDIT_IS_MESSAGE_BUS(obj)                                              \
+#define BEDIT_MESSAGE_BUS_CONST(obj)                                        \
+    (G_TYPE_CHECK_INSTANCE_CAST(                                            \
+        (obj), BEDIT_TYPE_MESSAGE_BUS, BeditMessageBus const                \
+    ))
+#define BEDIT_MESSAGE_BUS_CLASS(klass)                                      \
+    (G_TYPE_CHECK_CLASS_CAST(                                               \
+        (klass), BEDIT_TYPE_MESSAGE_BUS, BeditMessageBusClass               \
+    ))
+#define BEDIT_IS_MESSAGE_BUS(obj)                                           \
     (G_TYPE_CHECK_INSTANCE_TYPE((obj), BEDIT_TYPE_MESSAGE_BUS))
-#define BEDIT_IS_MESSAGE_BUS_CLASS(klass)                                      \
+#define BEDIT_IS_MESSAGE_BUS_CLASS(klass)                                   \
     (G_TYPE_CHECK_CLASS_TYPE((klass), BEDIT_TYPE_MESSAGE_BUS))
-#define BEDIT_MESSAGE_BUS_GET_CLASS(obj)                                       \
-    (G_TYPE_INSTANCE_GET_CLASS(                                                \
-        (obj), BEDIT_TYPE_MESSAGE_BUS, BeditMessageBusClass))
+#define BEDIT_MESSAGE_BUS_GET_CLASS(obj)                                    \
+    (G_TYPE_INSTANCE_GET_CLASS(                                             \
+        (obj), BEDIT_TYPE_MESSAGE_BUS, BeditMessageBusClass                 \
+    ))
 
 typedef struct _BeditMessageBus BeditMessageBus;
 typedef struct _BeditMessageBusClass BeditMessageBusClass;

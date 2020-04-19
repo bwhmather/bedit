@@ -38,6 +38,10 @@
 #define FONT_WEIGHT "font-weight"
 #define FONT_SIZE "font-size"
 
+#define ADD_KEYVAL(key, fmt) g_string_append(str, key ":" fmt ";")
+#define ADD_KEYVAL_PRINTF(key, fmt, ...)                                    \
+    g_string_append_printf(str, key ":" fmt ";", __VA_ARGS__)
+
 /**
  * bedit_pango_font_description_to_css:
  *
@@ -52,10 +56,6 @@ gchar *bedit_pango_font_description_to_css(
 ) {
     PangoFontMask mask;
     GString *str;
-
-#define ADD_KEYVAL(key, fmt) g_string_append(str, key ":" fmt ";")
-#define ADD_KEYVAL_PRINTF(key, fmt, ...)                                       \
-    g_string_append_printf(str, key ":" fmt ";", __VA_ARGS__)
 
     g_return_val_if_fail(font_desc, NULL);
 
@@ -105,10 +105,10 @@ gchar *bedit_pango_font_description_to_css(
 
         switch (weight) {
         case PANGO_WEIGHT_SEMILIGHT:
-            /*
-             * 350 is not actually a valid css font-weight, so we will just
-             * round up to 400.
-             */
+        /*
+         * 350 is not actually a valid css font-weight, so we will just
+         * round up to 400.
+         */
         case PANGO_WEIGHT_NORMAL:
             ADD_KEYVAL(FONT_WEIGHT, "normal");
             break;
@@ -197,3 +197,4 @@ gchar *bedit_pango_font_description_to_css(
 #undef ADD_KEYVAL
 #undef ADD_KEYVAL_PRINTF
 }
+

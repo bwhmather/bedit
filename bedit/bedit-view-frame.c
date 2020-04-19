@@ -216,8 +216,10 @@ static void goto_line_entry_insert_text(
 
     c = g_utf8_get_char(p);
 
-    if (((c == '-' || c == '+') && *position == 0) ||
-        (c == ':' && *position != 0)) {
+    if (
+        ((c == '-' || c == '+') && *position == 0) ||
+        (c == ':' && *position != 0)
+    ) {
         gchar *s = NULL;
 
         if (c == ':') {

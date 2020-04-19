@@ -976,7 +976,8 @@ static void preview_ready(
 
     /* let the default gtklayout handler clear the background */
     g_signal_connect_after(
-        preview->layout, "draw", G_CALLBACK(preview_draw), preview);
+        preview->layout, "draw", G_CALLBACK(preview_draw), preview
+    );
 
     gtk_widget_queue_draw(GTK_WIDGET(preview->layout));
 }

@@ -8,7 +8,8 @@
  *
  * Copyright (C) 2013 - Ignacio Casal Quinteiro, Matthias Clasen, Sébastien
  *   Wilmet
- * Copyright (C) 2014 - Garrett Regier, Robert Roth, Sebastien Lafargue, Steve Frécinaux
+ * Copyright (C) 2014 - Garrett Regier, Robert Roth, Sebastien Lafargue, Steve
+ *   Frécinaux
  * Copyright (C) 2014-2015 - Paolo Borelli
  *
  * This program is free software; you can redistribute it and/or modify

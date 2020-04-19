@@ -7,7 +7,8 @@
  * Based on gedit-file-chooser-dialog-gtk.c from Gedit.
  *
  * Copyright (C) 2005-2007 - Paolo Maggi
- * Copyright (C) 2014 - Ignacio Casal Quinteiro, Jesse van den Kieboom, Robert Roth
+ * Copyright (C) 2014 - Ignacio Casal Quinteiro, Jesse van den Kieboom, Robert
+ *   Roth
  * Copyright (C) 2015 - Paolo Borelli
  * Copyright (C) 2018 - James Henstridge, Sebastien Lafargue
  * Copyright (C) 2019 - Sébastien Wilmet
@@ -92,12 +93,13 @@ static const GtkSourceEncoding *chooser_get_encoding(
         BEDIT_FILE_CHOOSER_DIALOG_GTK(dialog);
 
     g_return_val_if_fail(
-        BEDIT_IS_ENCODINGS_COMBO_BOX(dialog_gtk->option_menu), NULL);
+        BEDIT_IS_ENCODINGS_COMBO_BOX(dialog_gtk->option_menu), NULL
+    );
     g_return_val_if_fail((
         gtk_file_chooser_get_action(GTK_FILE_CHOOSER(dialog)) ==
-            GTK_FILE_CHOOSER_ACTION_OPEN ||
+        GTK_FILE_CHOOSER_ACTION_OPEN ||
         gtk_file_chooser_get_action(GTK_FILE_CHOOSER(dialog)) ==
-            GTK_FILE_CHOOSER_ACTION_SAVE
+        GTK_FILE_CHOOSER_ACTION_SAVE
     ), NULL);
 
     return bedit_encodings_combo_box_get_selected_encoding(
@@ -221,7 +223,8 @@ static void chooser_destroy(BeditFileChooserDialog *dialog) {
 }
 
 static void chooser_set_modal(
-    BeditFileChooserDialog *dialog, gboolean is_modal) {
+    BeditFileChooserDialog *dialog, gboolean is_modal
+) {
     gtk_window_set_modal(GTK_WINDOW(dialog), is_modal);
 }
 
@@ -451,8 +454,9 @@ static void filter_changed(
         name = gtk_file_filter_get_name(filter);
         g_return_if_fail(name != NULL);
 
-        if (strcmp(name, ALL_TEXT_FILES) == 0)
+        if (strcmp(name, ALL_TEXT_FILES) == 0) {
             id = 1;
+        }
 
         bedit_debug_message(
             DEBUG_COMMANDS,

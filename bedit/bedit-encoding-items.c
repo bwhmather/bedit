@@ -84,7 +84,8 @@ GSList *bedit_encoding_items_get(void) {
 
         if (enc == current_encoding) {
             name = g_strdup_printf(
-                _("Current Locale (%s)"), gtk_source_encoding_get_charset(enc));
+                _("Current Locale (%s)"), gtk_source_encoding_get_charset(enc)
+            );
         } else {
             name = gtk_source_encoding_to_string(enc);
         }

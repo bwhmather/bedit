@@ -40,7 +40,8 @@
 #endif
 
 G_DEFINE_INTERFACE(
-    BeditFileChooserDialog, bedit_file_chooser_dialog, G_TYPE_OBJECT)
+    BeditFileChooserDialog, bedit_file_chooser_dialog, G_TYPE_OBJECT
+)
 
 static gboolean confirm_overwrite_accumulator(
     GSignalInvocationHint *ihint, GValue *return_accu,
@@ -258,7 +259,8 @@ void bedit_file_chooser_dialog_destroy(BeditFileChooserDialog *dialog) {
 }
 
 void bedit_file_chooser_dialog_set_modal(
-    BeditFileChooserDialog *dialog, gboolean is_modal) {
+    BeditFileChooserDialog *dialog, gboolean is_modal
+) {
     BeditFileChooserDialogInterface *iface;
 
     g_return_if_fail(BEDIT_IS_FILE_CHOOSER_DIALOG(dialog));
@@ -270,7 +272,8 @@ void bedit_file_chooser_dialog_set_modal(
 }
 
 GtkWindow *bedit_file_chooser_dialog_get_window(
-    BeditFileChooserDialog *dialog) {
+    BeditFileChooserDialog *dialog
+) {
     BeditFileChooserDialogInterface *iface;
 
     g_return_val_if_fail(BEDIT_IS_FILE_CHOOSER_DIALOG(dialog), NULL);

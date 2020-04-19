@@ -44,3 +44,4 @@ GtkWidget *bedit_notebook_popup_menu_new(BeditWindow *window, BeditTab *tab);
 G_END_DECLS
 
 #endif /* BEDIT_NOTEBOOK_POPUP_MENU_H */
+

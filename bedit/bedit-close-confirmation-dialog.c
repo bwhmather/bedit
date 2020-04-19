@@ -45,11 +45,11 @@
 /* Mode */
 enum { SINGLE_DOC_MODE, MULTIPLE_DOCS_MODE };
 
-#define GET_MODE(dlg)                                                        \
-    (((dlg->unsaved_documents != NULL) &&                                    \
-      (dlg->unsaved_documents->next == NULL))                                \
-         ? SINGLE_DOC_MODE                                                   \
-         : MULTIPLE_DOCS_MODE)
+#define GET_MODE(dlg)                                                       \
+    ((                                                                      \
+        (dlg->unsaved_documents != NULL) &&                                 \
+        (dlg->unsaved_documents->next == NULL)                              \
+    ) ? SINGLE_DOC_MODE : MULTIPLE_DOCS_MODE)
 
 #define BEDIT_SAVE_DOCUMENT_KEY "bedit-save-document"
 
@@ -233,7 +233,8 @@ GtkWidget *bedit_close_confirmation_dialog_new(
 }
 
 GtkWidget *bedit_close_confirmation_dialog_new_single(
-    GtkWindow *parent, BeditDocument *doc) {
+    GtkWindow *parent, BeditDocument *doc
+) {
     GtkWidget *dlg;
     GList *unsaved_documents;
 
@@ -271,8 +272,10 @@ static void add_buttons(BeditCloseConfirmationDialog *dlg) {
             doc = BEDIT_DOCUMENT(dlg->unsaved_documents->data);
             file = bedit_document_get_file(doc);
 
-            if (gtk_source_file_is_readonly(file) ||
-                bedit_document_is_untitled(doc)) {
+            if (
+                gtk_source_file_is_readonly(file) ||
+                bedit_document_is_untitled(doc)
+            ) {
                 save_as = TRUE;
             }
         }
@@ -300,7 +303,8 @@ static gchar *get_text_secondary_label(BeditDocument *doc) {
                 "will be permanently lost.",
                 seconds
             ),
-            seconds);
+            seconds
+        );
     } else if (seconds < 75) /* 55 <= seconds < 75 */
     {
         secondary_msg =

@@ -90,3 +90,4 @@ void bedit_debug_plugin_message(
 );
 
 #endif /* BEDIT_DEBUG_H */
+

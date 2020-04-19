@@ -86,7 +86,8 @@ static void append_encoding(
     if (encoding == gtk_source_encoding_get_current()) {
         gchar *charset = g_strdup_printf(
             _("%s (Current Locale)"),
-            gtk_source_encoding_get_charset(encoding));
+            gtk_source_encoding_get_charset(encoding)
+        );
 
         gtk_list_store_set(
             liststore, &iter,
@@ -147,7 +148,8 @@ static void init_liststores(BeditEncodingsDialog *dialog, gboolean reset) {
 }
 
 static void reset_dialog_response_cb(
-    GtkDialog *msg_dialog, gint response, BeditEncodingsDialog *dialog) {
+    GtkDialog *msg_dialog, gint response, BeditEncodingsDialog *dialog
+) {
     if (response == GTK_RESPONSE_ACCEPT) {
         gtk_list_store_clear(dialog->liststore_available);
         gtk_list_store_clear(dialog->liststore_chosen);
@@ -160,7 +162,8 @@ static void reset_dialog_response_cb(
 }
 
 static void reset_button_clicked_cb(
-    GtkWidget *button, BeditEncodingsDialog *dialog) {
+    GtkWidget *button, BeditEncodingsDialog *dialog
+) {
     GtkDialog *msg_dialog;
 
     msg_dialog = GTK_DIALOG(gtk_message_dialog_new(
@@ -229,11 +232,11 @@ static gchar **encoding_list_to_strv(const GSList *enc_list) {
 }
 
 static void apply_settings(BeditEncodingsDialog *dialog) {
-    switch (dialog->state) {
-    case STATE_MODIFIED: {
-        GSList *enc_list;
-        gchar **enc_strv;
+    GSList *enc_list;
+    gchar **enc_strv;
 
+    switch (dialog->state) {
+    case STATE_MODIFIED:
         enc_list = get_chosen_encodings_list(dialog);
         enc_strv = encoding_list_to_strv(enc_list);
 
@@ -245,7 +248,6 @@ static void apply_settings(BeditEncodingsDialog *dialog) {
         g_slist_free(enc_list);
         g_strfreev(enc_strv);
         break;
-    }
 
     case STATE_RESET:
         g_settings_reset(
@@ -263,7 +265,8 @@ static void apply_settings(BeditEncodingsDialog *dialog) {
 }
 
 static void bedit_encodings_dialog_response(
-    GtkDialog *gtk_dialog, gint response_id) {
+    GtkDialog *gtk_dialog, gint response_id
+) {
     BeditEncodingsDialog *dialog = BEDIT_ENCODINGS_DIALOG(gtk_dialog);
 
     switch (response_id) {
@@ -292,7 +295,8 @@ static void bedit_encodings_dialog_dispose(GObject *object) {
 }
 
 static void bedit_encodings_dialog_class_init(
-    BeditEncodingsDialogClass *klass) {
+    BeditEncodingsDialogClass *klass
+) {
     GObjectClass *object_class = G_OBJECT_CLASS(klass);
     GtkWidgetClass *widget_class = GTK_WIDGET_CLASS(klass);
     GtkDialogClass *dialog_class = GTK_DIALOG_CLASS(klass);

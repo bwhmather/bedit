@@ -17,7 +17,8 @@
  * Copyright (C) 2012 - Daniel Trebbien
  * Copyright (C) 2013 - Volker Sobek
  * Copyright (C) 2013-2019 - Sébastien Wilmet
- * Copyright (C) 2014 - Paolo Bonzini, Robert Roth, Sagar Ghuge, Sebastien Lafargue
+ * Copyright (C) 2014 - Paolo Bonzini, Robert Roth, Sagar Ghuge, Sebastien
+ *   Lafargue
  * Copyright (C) 2015-2016 - Piotr Drąg
  * Copyright (C) 2018 - James Henstridge
  * Copyright (C) 2019 - Matthias Schneider, Michael Catanzaro
@@ -113,7 +114,7 @@ static gboolean is_duplicated_file(GSList *files, GFile *file) {
 /* File loading */
 static GSList *load_file_list(
     BeditWindow *window,
-     const GSList *files, const GtkSourceEncoding *encoding,
+    const GSList *files, const GtkSourceEncoding *encoding,
     gint line_pos, gint column_pos, gboolean create
 ) {
     GList *win_docs;
@@ -153,7 +154,8 @@ static GSList *load_file_list(
                 if (line_pos > 0) {
                     if (column_pos > 0) {
                         bedit_document_goto_line_offset(
-                            doc, line_pos - 1, column_pos - 1);
+                            doc, line_pos - 1, column_pos - 1
+                        );
                     } else {
                         bedit_document_goto_line(doc, line_pos - 1);
                     }
@@ -184,8 +186,10 @@ static GSList *load_file_list(
 
         doc = bedit_tab_get_document(tab);
 
-        if (bedit_document_is_untouched(doc) &&
-            bedit_tab_get_state(tab) == BEDIT_TAB_STATE_NORMAL) {
+        if (
+            bedit_document_is_untouched(doc) &&
+            bedit_tab_get_state(tab) == BEDIT_TAB_STATE_NORMAL
+        ) {
             _bedit_tab_load(
                 tab, l->data, encoding, line_pos, column_pos, create
             );
@@ -249,7 +253,8 @@ static GSList *load_file_list(
                 "Loading %d files\342\200\246",
                 num_loaded_files
             ),
-            num_loaded_files);
+            num_loaded_files
+        );
     }
 
     g_slist_free(files_to_load);
@@ -371,7 +376,8 @@ static void open_dialog_response_cb(
 
     if (window == NULL) {
         window = bedit_app_create_window(
-            BEDIT_APP(g_application_get_default()), NULL);
+            BEDIT_APP(g_application_get_default()), NULL
+        );
 
         gtk_widget_show(GTK_WIDGET(window));
         gtk_window_present(GTK_WINDOW(window));
@@ -385,7 +391,8 @@ static void open_dialog_response_cb(
 }
 
 void _bedit_cmd_file_open(
-    GSimpleAction *action, GVariant *parameter, gpointer user_data) {
+    GSimpleAction *action, GVariant *parameter, gpointer user_data
+) {
     BeditWindow *window = NULL;
     BeditFileChooserDialog *open_dialog;
 
@@ -413,8 +420,9 @@ void _bedit_cmd_file_open(
     open_dialog = bedit_file_chooser_dialog_create(
         C_("window title", "Open"),
         window != NULL ? GTK_WINDOW(window) : NULL,
-        BEDIT_FILE_CHOOSER_OPEN | BEDIT_FILE_CHOOSER_ENABLE_ENCODING |
-            BEDIT_FILE_CHOOSER_ENABLE_DEFAULT_FILTERS,
+        BEDIT_FILE_CHOOSER_OPEN |
+        BEDIT_FILE_CHOOSER_ENABLE_ENCODING |
+        BEDIT_FILE_CHOOSER_ENABLE_DEFAULT_FILTERS,
         NULL,
         _("_Cancel"), GTK_RESPONSE_CANCEL,
         _("_Open"), GTK_RESPONSE_OK
@@ -432,8 +440,8 @@ void _bedit_cmd_file_open(
         );
 
         g_object_weak_ref(
-            G_OBJECT(open_dialog), (GWeakNotify)open_dialog_destroyed, window)
-        ;
+            G_OBJECT(open_dialog), (GWeakNotify)open_dialog_destroyed, window
+        );
 
         /* Set the current folder */
         doc = bedit_window_get_active_document(window);
@@ -762,7 +770,8 @@ static GtkFileChooserConfirmation confirm_overwrite_callback(
 /* Call save_as_tab_finish() in @callback. */
 static void save_as_tab_async(
     BeditTab *tab, BeditWindow *window, GCancellable *cancellable,
-    GAsyncReadyCallback callback, gpointer user_data) {
+    GAsyncReadyCallback callback, gpointer user_data
+) {
     GTask *task;
     BeditFileChooserDialog *save_dialog;
     GtkWindowGroup *window_group;
@@ -784,9 +793,10 @@ static void save_as_tab_async(
     /* Translators: "Save As" is the title of the file chooser window. */
     save_dialog = bedit_file_chooser_dialog_create(
         C_("window title", "Save As"), GTK_WINDOW(window),
-        BEDIT_FILE_CHOOSER_SAVE | BEDIT_FILE_CHOOSER_ENABLE_ENCODING |
-            BEDIT_FILE_CHOOSER_ENABLE_LINE_ENDING |
-            BEDIT_FILE_CHOOSER_ENABLE_DEFAULT_FILTERS,
+        BEDIT_FILE_CHOOSER_SAVE |
+        BEDIT_FILE_CHOOSER_ENABLE_ENCODING |
+        BEDIT_FILE_CHOOSER_ENABLE_LINE_ENDING |
+        BEDIT_FILE_CHOOSER_ENABLE_DEFAULT_FILTERS,
         NULL,
         _("_Cancel"), GTK_RESPONSE_CANCEL,
         _("_Save"), GTK_RESPONSE_OK
@@ -868,7 +878,8 @@ static gboolean save_as_tab_finish(BeditTab *tab, GAsyncResult *result) {
 }
 
 static void save_as_tab_ready_cb(
-    BeditTab *tab, GAsyncResult *result, GTask *task) {
+    BeditTab *tab, GAsyncResult *result, GTask *task
+) {
     gboolean success = save_as_tab_finish(tab, result);
 
     g_task_return_boolean(task, success);
@@ -876,7 +887,8 @@ static void save_as_tab_ready_cb(
 }
 
 static void tab_save_ready_cb(
-    BeditTab *tab, GAsyncResult *result, GTask *task) {
+    BeditTab *tab, GAsyncResult *result, GTask *task
+) {
     gboolean success = _bedit_tab_save_finish(tab, result);
 
     g_task_return_boolean(task, success);
@@ -903,7 +915,8 @@ static void tab_save_ready_cb(
  */
 void bedit_commands_save_document_async(
     BeditDocument *document, BeditWindow *window, GCancellable *cancellable,
-    GAsyncReadyCallback callback, gpointer user_data) {
+    GAsyncReadyCallback callback, gpointer user_data
+) {
     GTask *task;
     BeditTab *tab;
     GtkSourceFile *file;
@@ -920,8 +933,10 @@ void bedit_commands_save_document_async(
     tab = bedit_tab_get_from_document(document);
     file = bedit_document_get_file(document);
 
-    if (bedit_document_is_untitled(document) ||
-        gtk_source_file_is_readonly(file)) {
+    if (
+        bedit_document_is_untitled(document) ||
+        gtk_source_file_is_readonly(file)
+    ) {
         bedit_debug_message(DEBUG_COMMANDS, "Untitled or Readonly");
 
         save_as_tab_async(
@@ -1176,8 +1191,10 @@ static void save_documents_list(BeditWindow *window, GList *docs) {
 
                 /* FIXME: manage the case of local readonly files owned by the
                    user is running bedit - Paolo (Dec. 8, 2005) */
-                if (bedit_document_is_untitled(doc) ||
-                    gtk_source_file_is_readonly(file)) {
+                if (
+                    bedit_document_is_untitled(doc) ||
+                    gtk_source_file_is_readonly(file)
+                ) {
                     if (data == NULL) {
                         data = g_slice_new(SaveAsData);
                         data->window = g_object_ref(window);
@@ -1308,7 +1325,8 @@ static void do_revert(BeditWindow *window, BeditTab *tab) {
 }
 
 static void revert_dialog_response_cb(
-    GtkDialog *dialog, gint response_id, BeditWindow *window) {
+    GtkDialog *dialog, gint response_id, BeditWindow *window
+) {
     BeditTab *tab;
 
     bedit_debug(DEBUG_COMMANDS);
@@ -1452,7 +1470,8 @@ static GtkWidget *revert_dialog(BeditWindow *window, BeditDocument *doc) {
 }
 
 void _bedit_cmd_file_revert(
-    GSimpleAction *action, GVariant *parameter, gpointer user_data) {
+    GSimpleAction *action, GVariant *parameter, gpointer user_data
+) {
     BeditWindow *window = BEDIT_WINDOW(user_data);
     BeditTab *tab;
     BeditDocument *doc;
@@ -1609,8 +1628,10 @@ static void save_and_close_documents(
 
                 /* FIXME: manage the case of local readonly files owned by the
                  * user is running bedit - Paolo (Dec. 8, 2005) */
-                if (bedit_document_is_untitled(doc) ||
-                    gtk_source_file_is_readonly(file)) {
+                if (
+                    bedit_document_is_untitled(doc) ||
+                    gtk_source_file_is_readonly(file)
+                ) {
                     if (data == NULL) {
                         data = g_slice_new(SaveAsData);
                         data->window = g_object_ref(window);

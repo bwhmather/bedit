@@ -10,7 +10,8 @@
  * Copyright (C) 2006-2015 - Paolo Borelli
  * Copyright (C) 2008-2010 - Steve Frécinaux
  * Copyright (C) 2009-2011 - Ignacio Casal Quinteiro
- * Copyright (C) 2010 - Florian Müllner, Garrett Regier, Javier Jardón, Jesse van den Kieboom
+ * Copyright (C) 2010 - Florian Müllner, Garrett Regier, Javier Jardón, Jesse
+ *   van den Kieboom
  * Copyright (C) 2013-2019 - Sébastien Wilmet
  * Copyright (C) 2014 - Robert Roth
  *
@@ -251,8 +252,9 @@ static gboolean remove_item(BeditHistoryEntry *entry, const gchar *text) {
     store = get_history_store(entry);
     text_column = gtk_combo_box_get_entry_text_column(GTK_COMBO_BOX(entry));
 
-    if (!gtk_tree_model_get_iter_first(GTK_TREE_MODEL(store), &iter))
+    if (!gtk_tree_model_get_iter_first(GTK_TREE_MODEL(store), &iter)) {
         return FALSE;
+    }
 
     do {
         gchar *item_text;
@@ -295,7 +297,8 @@ static void clamp_list_store(GtkListStore *store, guint max) {
 }
 
 static void insert_history_item(
-    BeditHistoryEntry *entry, const gchar *text, gboolean prepend) {
+    BeditHistoryEntry *entry, const gchar *text, gboolean prepend
+) {
     GtkListStore *store;
 
     if (g_utf8_strlen(text, -1) <= MIN_ITEM_LEN) {
@@ -323,7 +326,8 @@ static void insert_history_item(
 }
 
 void bedit_history_entry_prepend_text(
-    BeditHistoryEntry *entry, const gchar *text) {
+    BeditHistoryEntry *entry, const gchar *text
+) {
     g_return_if_fail(BEDIT_IS_HISTORY_ENTRY(entry));
     g_return_if_fail(text != NULL);
 
@@ -331,7 +335,8 @@ void bedit_history_entry_prepend_text(
 }
 
 void bedit_history_entry_append_text(
-    BeditHistoryEntry *entry, const gchar *text) {
+    BeditHistoryEntry *entry, const gchar *text
+) {
     g_return_if_fail(BEDIT_IS_HISTORY_ENTRY(entry));
     g_return_if_fail(text != NULL);
 
@@ -358,7 +363,8 @@ static void bedit_history_entry_init(BeditHistoryEntry *entry) {
 }
 
 void bedit_history_entry_set_history_length(
-    BeditHistoryEntry *entry, guint history_length) {
+    BeditHistoryEntry *entry, guint history_length
+) {
     g_return_if_fail(BEDIT_IS_HISTORY_ENTRY(entry));
     g_return_if_fail(history_length > 0);
 
@@ -374,7 +380,8 @@ guint bedit_history_entry_get_history_length(BeditHistoryEntry *entry) {
 }
 
 void bedit_history_entry_set_enable_completion(
-    BeditHistoryEntry *entry, gboolean enable) {
+    BeditHistoryEntry *entry, gboolean enable
+) {
     g_return_if_fail(BEDIT_IS_HISTORY_ENTRY(entry));
 
     if (enable) {
@@ -421,7 +428,8 @@ gboolean bedit_history_entry_get_enable_completion(BeditHistoryEntry *entry) {
 }
 
 GtkWidget *bedit_history_entry_new(
-    const gchar *history_id, gboolean enable_completion) {
+    const gchar *history_id, gboolean enable_completion
+) {
     BeditHistoryEntry *entry;
 
     g_return_val_if_fail(history_id != NULL, NULL);

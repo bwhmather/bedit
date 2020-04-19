@@ -34,12 +34,13 @@
 
 G_BEGIN_DECLS
 
-#define BEDIT_TYPE_HIGHLIGHT_MODE_SELECTOR                                     \
+#define BEDIT_TYPE_HIGHLIGHT_MODE_SELECTOR                                  \
     (bedit_highlight_mode_selector_get_type())
 
 G_DECLARE_FINAL_TYPE(
     BeditHighlightModeSelector, bedit_highlight_mode_selector, BEDIT,
-    HIGHLIGHT_MODE_SELECTOR, GtkGrid)
+    HIGHLIGHT_MODE_SELECTOR, GtkGrid
+)
 
 BeditHighlightModeSelector *bedit_highlight_mode_selector_new(void);
 

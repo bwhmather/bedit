@@ -38,7 +38,8 @@ G_BEGIN_DECLS
 
 G_DECLARE_INTERFACE(
     BeditFileChooserDialog, bedit_file_chooser_dialog, BEDIT,
-    FILE_CHOOSER_DIALOG, GObject)
+    FILE_CHOOSER_DIALOG, GObject
+)
 
 struct _BeditFileChooserDialogInterface {
     GTypeInterface g_iface;

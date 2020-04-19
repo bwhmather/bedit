@@ -43,15 +43,15 @@
 G_BEGIN_DECLS
 
 #define BEDIT_TYPE_NOTEBOOK (bedit_notebook_get_type())
-#define BEDIT_NOTEBOOK(o)                                                      \
+#define BEDIT_NOTEBOOK(o)                                                   \
     (G_TYPE_CHECK_INSTANCE_CAST((o), BEDIT_TYPE_NOTEBOOK, BeditNotebook))
-#define BEDIT_NOTEBOOK_CLASS(k)                                                \
+#define BEDIT_NOTEBOOK_CLASS(k)                                             \
     (G_TYPE_CHECK_CLASS_CAST((k), BEDIT_TYPE_NOTEBOOK, BeditNotebookClass))
-#define BEDIT_IS_NOTEBOOK(o)                                                   \
+#define BEDIT_IS_NOTEBOOK(o)                                                \
     (G_TYPE_CHECK_INSTANCE_TYPE((o), BEDIT_TYPE_NOTEBOOK))
-#define BEDIT_IS_NOTEBOOK_CLASS(k)                                             \
+#define BEDIT_IS_NOTEBOOK_CLASS(k)                                          \
     (G_TYPE_CHECK_CLASS_TYPE((k), BEDIT_TYPE_NOTEBOOK))
-#define BEDIT_NOTEBOOK_GET_CLASS(o)                                            \
+#define BEDIT_NOTEBOOK_GET_CLASS(o)                                         \
     (G_TYPE_INSTANCE_GET_CLASS((o), BEDIT_TYPE_NOTEBOOK, BeditNotebookClass))
 
 typedef struct _BeditNotebook BeditNotebook;

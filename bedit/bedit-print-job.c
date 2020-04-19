@@ -458,8 +458,8 @@ static void create_compositor(BeditPrintJob *job) {
     gdouble margin;
 
     buf = GTK_SOURCE_BUFFER(gtk_text_view_get_buffer(
-        GTK_TEXT_VIEW(job->view))
-    );
+        GTK_TEXT_VIEW(job->view)
+    ));
 
     print_font_body = g_settings_get_string(
         job->gsettings, BEDIT_SETTINGS_PRINT_FONT_BODY_PANGO
@@ -505,7 +505,9 @@ static void create_compositor(BeditPrintJob *job) {
         "print-footer", FALSE,
         "body-font-name", print_font_body,
         "line-numbers-font-name", print_font_numbers,
-        "header-font-name", print_font_header, NULL));
+        "header-font-name", print_font_header,
+        NULL
+    ));
 
     margin = g_settings_get_double(
         job->gsettings, BEDIT_SETTINGS_PRINT_MARGIN_LEFT

@@ -80,7 +80,8 @@ void _bedit_cmd_view_leave_fullscreen_mode(
 
 static void on_language_selected(
     BeditHighlightModeSelector *sel, GtkSourceLanguage *language,
-    BeditWindow *window) {
+    BeditWindow *window
+) {
     BeditDocument *doc;
 
     doc = bedit_window_get_active_document(window);

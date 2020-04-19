@@ -48,7 +48,8 @@ G_DEFINE_INTERFACE(
 )
 
 static void bedit_window_activatable_default_init(
-    BeditWindowActivatableInterface *iface) {
+    BeditWindowActivatableInterface *iface
+) {
     /**
      * BeditWindowActivatable:window:
      *

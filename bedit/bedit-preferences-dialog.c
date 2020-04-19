@@ -344,7 +344,8 @@ static void wrap_mode_checkbutton_toggled(
 }
 
 static void grid_checkbutton_toggled(
-    GtkToggleButton *button, BeditPreferencesDialog *dlg) {
+    GtkToggleButton *button, BeditPreferencesDialog *dlg
+) {
     GtkSourceBackgroundPatternType background_type;
 
     background_type = gtk_toggle_button_get_active(button)
@@ -652,8 +653,9 @@ static gboolean file_copy(
 
     g_free(dest_dir);
 
-    if (!g_file_get_contents(name, &contents, &length, error))
+    if (!g_file_get_contents(name, &contents, &length, error)) {
         return FALSE;
+    }
 
     if (!g_file_set_contents(dest_name, contents, length, error)) {
         g_free(contents);
@@ -838,7 +840,8 @@ static void add_scheme_chooser_response_cb(
 }
 
 static void install_scheme_clicked(
-    GtkButton *button, BeditPreferencesDialog *dlg) {
+    GtkButton *button, BeditPreferencesDialog *dlg
+) {
     BeditFileChooserDialog *chooser;
 
     if (dlg->install_scheme_file_schooser != NULL) {
@@ -873,7 +876,8 @@ static void install_scheme_clicked(
 }
 
 static void uninstall_scheme_clicked(
-    GtkButton *button, BeditPreferencesDialog *dlg) {
+    GtkButton *button, BeditPreferencesDialog *dlg
+) {
     GtkSourceStyleScheme *scheme;
 
     scheme = gtk_source_style_scheme_chooser_get_style_scheme(
@@ -889,7 +893,8 @@ static void uninstall_scheme_clicked(
 }
 
 static void setup_font_colors_page_style_scheme_section(
-    BeditPreferencesDialog *dlg) {
+    BeditPreferencesDialog *dlg
+) {
     GtkStyleContext *context;
     GtkSourceStyleScheme *scheme;
 

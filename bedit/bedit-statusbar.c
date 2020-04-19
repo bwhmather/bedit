@@ -159,7 +159,8 @@ void bedit_statusbar_clear_overwrite(BeditStatusbar *statusbar) {
 static gboolean remove_message_timeout(BeditStatusbar *statusbar) {
     gtk_statusbar_remove(
         GTK_STATUSBAR(statusbar), statusbar->flash_context_id,
-        statusbar->flash_message_id);
+        statusbar->flash_message_id
+    );
 
     /* remove the timeout */
     statusbar->flash_timeout = 0;
@@ -244,7 +245,8 @@ void bedit_statusbar_set_window_state(
                 "There is a tab with errors", "There are %d tabs with errors",
                 num_of_errors
             ),
-            num_of_errors);
+            num_of_errors
+        );
 
         gtk_widget_set_tooltip_text(statusbar->error_image, tip);
         g_free(tip);

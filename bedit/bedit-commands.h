@@ -70,3 +70,4 @@ void bedit_commands_save_all_documents(BeditWindow *window);
 G_END_DECLS
 
 #endif /* BEDIT_COMMANDS_H */
+

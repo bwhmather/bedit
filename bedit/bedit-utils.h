@@ -47,11 +47,12 @@ G_BEGIN_DECLS
 
 /* useful macro */
 #define GBOOLEAN_TO_POINTER(i) (GINT_TO_POINTER((i) ? 2 : 1))
-#define GPOINTER_TO_BOOLEAN(i)                                                 \
+#define GPOINTER_TO_BOOLEAN(i)                                              \
     ((gboolean)((GPOINTER_TO_INT(i) == 2) ? TRUE : FALSE))
 
 gboolean bedit_utils_menu_position_under_tree_view(
-    GtkTreeView *tree_view, GdkRectangle *rect);
+    GtkTreeView *tree_view, GdkRectangle *rect
+);
 
 void bedit_utils_set_atk_name_description(
     GtkWidget *widget, const gchar *name, const gchar *description

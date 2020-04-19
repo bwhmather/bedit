@@ -112,7 +112,8 @@ static void bedit_progress_info_bar_init(BeditProgressInfoBar *bar) {
 }
 
 GtkWidget *bedit_progress_info_bar_new(
-    const gchar *icon_name, const gchar *markup, gboolean has_cancel) {
+    const gchar *icon_name, const gchar *markup, gboolean has_cancel
+) {
     BeditProgressInfoBar *bar;
 
     g_return_val_if_fail(icon_name != NULL, NULL);
@@ -131,7 +132,8 @@ GtkWidget *bedit_progress_info_bar_new(
 }
 
 void bedit_progress_info_bar_set_icon_name(
-    BeditProgressInfoBar *bar, const gchar *icon_name) {
+    BeditProgressInfoBar *bar, const gchar *icon_name
+) {
     g_return_if_fail(BEDIT_IS_PROGRESS_INFO_BAR(bar));
     g_return_if_fail(icon_name != NULL);
 

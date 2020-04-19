@@ -32,7 +32,7 @@
 #include <glib.h>
 #include <gtk/gtk.h>
 
-#define BEDIT_TYPE_CLOSE_CONFIRMATION_DIALOG                                 \
+#define BEDIT_TYPE_CLOSE_CONFIRMATION_DIALOG                                \
     (bedit_close_confirmation_dialog_get_type())
 
 G_DECLARE_FINAL_TYPE(

@@ -115,7 +115,8 @@ static gint find_tab_num_at_pos(
         }
 
         gdk_window_get_origin(
-            gtk_widget_get_window(tab_label), &x_root, &y_root);
+            gtk_widget_get_window(tab_label), &x_root, &y_root
+        );
 
         gtk_widget_get_allocation(tab_label, &tab_allocation);
         max_x = x_root + tab_allocation.x + tab_allocation.width;
@@ -431,7 +432,7 @@ static void bedit_notebook_class_init(BeditNotebookClass *klass) {
     notebook_class->page_added = bedit_notebook_page_added;
 
     klass->change_to_page = bedit_notebook_change_to_page;
-/*
+    /*
     signals[TAB_ADDED] = g_signal_new(
         "tab-added", G_OBJECT_CLASS_TYPE(object_class), G_SIGNAL_RUN_FIRST,
         G_STRUCT_OFFSET(BeditNotebookClass, tab_added), NULL, NULL, NULL,
@@ -450,7 +451,7 @@ static void bedit_notebook_class_init(BeditNotebookClass *klass) {
         G_TYPE_NONE, 4, BEDIT_TYPE_NOTEBOOK, BEDIT_TYPE_TAB,
         BEDIT_TYPE_NOTEBOOK, BEDIT_TYPE_TAB
     );
-*/
+    */
     signals[TAB_CLOSE_REQUEST] = g_signal_new(
         "tab-close-request", G_OBJECT_CLASS_TYPE(object_class),
         G_SIGNAL_RUN_LAST,
@@ -552,7 +553,8 @@ void bedit_notebook_add_tab(
     if (target_list != NULL) {
         gtk_target_list_add(
             target_list, gdk_atom_intern_static_string("GTK_NOTEBOOK_TAB"),
-            GTK_TARGET_SAME_APP, TARGET_TAB);
+            GTK_TARGET_SAME_APP, TARGET_TAB
+        );
     }
 
     /* The signal handler may have reordered the tabs */

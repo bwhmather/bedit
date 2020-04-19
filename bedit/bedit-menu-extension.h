@@ -35,7 +35,8 @@ G_BEGIN_DECLS
 #define BEDIT_TYPE_MENU_EXTENSION (bedit_menu_extension_get_type())
 
 G_DECLARE_FINAL_TYPE(
-    BeditMenuExtension, bedit_menu_extension, BEDIT, MENU_EXTENSION, GObject)
+    BeditMenuExtension, bedit_menu_extension, BEDIT, MENU_EXTENSION, GObject
+)
 
 BeditMenuExtension *bedit_menu_extension_new(GMenu *menu);
 

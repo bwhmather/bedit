@@ -81,7 +81,8 @@ static void bedit_settings_dispose(GObject *object) {
 }
 
 static void on_lockdown_changed(
-    GSettings *settings, const gchar *key, gpointer useless) {
+    GSettings *settings, const gchar *key, gpointer useless
+) {
     gboolean locked;
     BeditApp *app;
 
@@ -272,7 +273,8 @@ static void on_syntax_highlighting_changed(
 
     for (l = docs; l != NULL; l = g_list_next(l)) {
         gtk_source_buffer_set_highlight_syntax(
-            GTK_SOURCE_BUFFER(l->data), enable);
+            GTK_SOURCE_BUFFER(l->data), enable
+        );
     }
 
     g_list_free(docs);
@@ -301,7 +303,8 @@ static void bedit_settings_init(BeditSettings *gs) {
     gs->lockdown = g_settings_new("org.gnome.desktop.lockdown");
 
     g_signal_connect(
-        gs->lockdown, "changed", G_CALLBACK(on_lockdown_changed), NULL);
+        gs->lockdown, "changed", G_CALLBACK(on_lockdown_changed), NULL
+    );
 
     gs->interface = g_settings_new("org.gnome.desktop.interface");
 
@@ -317,7 +320,8 @@ static void bedit_settings_init(BeditSettings *gs) {
     );
     g_signal_connect(
         gs->editor, "changed::editor-font",
-        G_CALLBACK(on_editor_font_changed), gs);
+        G_CALLBACK(on_editor_font_changed), gs
+    );
     g_signal_connect(
         gs->editor, "changed::scheme",
         G_CALLBACK(on_scheme_changed), gs
@@ -507,8 +511,10 @@ GSList *bedit_settings_get_candidate_encodings(gboolean *default_candidates) {
         );
 
         /* Ensure that UTF-8 is present. */
-        if (utf8_encoding != current_encoding &&
-            g_slist_find(candidates, utf8_encoding) == NULL) {
+        if (
+            utf8_encoding != current_encoding &&
+            g_slist_find(candidates, utf8_encoding) == NULL
+        ) {
             candidates = g_slist_prepend(candidates, (gpointer)utf8_encoding);
         }
 

@@ -6,7 +6,8 @@
  *
  * Based on gedit.c from Gedit.
  *
- * Copyright (C) 1998 - Arturo Espinosa, Chris Lahey, Martin Baulig, Miguel de Icaza
+ * Copyright (C) 1998 - Arturo Espinosa, Chris Lahey, Martin Baulig, Miguel de
+ *   Icaza
  * Copyright (C) 1998-1999 - Evan Lawrence, gedit
  * Copyright (C) 1998-2000 - Alex Roberts
  * Copyright (C) 2000 - Jose Maria Celorio, Roberto Majadas

@@ -80,3 +80,4 @@ void _bedit_cmd_documents_move_to_new_window(
 
     _bedit_window_move_tab_to_new_window(window, tab);
 }
+

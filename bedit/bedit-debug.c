@@ -119,7 +119,8 @@ out:
  */
 void bedit_debug(
     BeditDebugSection section, const gchar *file, gint line,
-    const gchar *function) {
+    const gchar *function
+) {
     bedit_debug_message(section, file, line, function, "%s", "");
 }
 

@@ -130,7 +130,8 @@ static void bedit_encodings_combo_box_constructed(GObject *object) {
 }
 
 static void bedit_encodings_combo_box_class_init(
-    BeditEncodingsComboBoxClass *klass) {
+    BeditEncodingsComboBoxClass *klass
+) {
     GObjectClass *object_class = G_OBJECT_CLASS(klass);
 
     object_class->set_property = bedit_encodings_combo_box_set_property;
@@ -343,7 +344,8 @@ GtkWidget *bedit_encodings_combo_box_new(gboolean save_mode) {
  * auto-detected (only for loading mode, not for saving).
  */
 const GtkSourceEncoding *bedit_encodings_combo_box_get_selected_encoding(
-    BeditEncodingsComboBox *menu) {
+    BeditEncodingsComboBox *menu
+) {
     GtkTreeIter iter;
 
     g_return_val_if_fail(BEDIT_IS_ENCODINGS_COMBO_BOX(menu), NULL);

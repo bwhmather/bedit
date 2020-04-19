@@ -32,17 +32,17 @@
 G_BEGIN_DECLS
 
 #define BEDIT_TYPE_MESSAGE (bedit_message_get_type())
-#define BEDIT_MESSAGE(obj)                                                     \
+#define BEDIT_MESSAGE(obj)                                                  \
     (G_TYPE_CHECK_INSTANCE_CAST((obj), BEDIT_TYPE_MESSAGE, BeditMessage))
-#define BEDIT_MESSAGE_CONST(obj)                                               \
+#define BEDIT_MESSAGE_CONST(obj)                                            \
     (G_TYPE_CHECK_INSTANCE_CAST((obj), BEDIT_TYPE_MESSAGE, BeditMessage const))
-#define BEDIT_MESSAGE_CLASS(klass)                                             \
+#define BEDIT_MESSAGE_CLASS(klass)                                          \
     (G_TYPE_CHECK_CLASS_CAST((klass), BEDIT_TYPE_MESSAGE, BeditMessageClass))
-#define BEDIT_IS_MESSAGE(obj)                                                  \
+#define BEDIT_IS_MESSAGE(obj)                                               \
     (G_TYPE_CHECK_INSTANCE_TYPE((obj), BEDIT_TYPE_MESSAGE))
-#define BEDIT_IS_MESSAGE_CLASS(klass)                                          \
+#define BEDIT_IS_MESSAGE_CLASS(klass)                                       \
     (G_TYPE_CHECK_CLASS_TYPE((klass), BEDIT_TYPE_MESSAGE))
-#define BEDIT_MESSAGE_GET_CLASS(obj)                                           \
+#define BEDIT_MESSAGE_GET_CLASS(obj)                                        \
     (G_TYPE_INSTANCE_GET_CLASS((obj), BEDIT_TYPE_MESSAGE, BeditMessageClass))
 
 typedef struct _BeditMessage BeditMessage;

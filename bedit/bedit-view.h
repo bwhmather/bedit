@@ -42,14 +42,14 @@
 G_BEGIN_DECLS
 
 #define BEDIT_TYPE_VIEW (bedit_view_get_type())
-#define BEDIT_VIEW(obj)                                                        \
+#define BEDIT_VIEW(obj)                                                     \
     (G_TYPE_CHECK_INSTANCE_CAST((obj), BEDIT_TYPE_VIEW, BeditView))
-#define BEDIT_VIEW_CLASS(klass)                                                \
+#define BEDIT_VIEW_CLASS(klass)                                             \
     (G_TYPE_CHECK_CLASS_CAST((klass), BEDIT_TYPE_VIEW, BeditViewClass))
 #define BEDIT_IS_VIEW(obj) (G_TYPE_CHECK_INSTANCE_TYPE((obj), BEDIT_TYPE_VIEW))
-#define BEDIT_IS_VIEW_CLASS(klass)                                             \
+#define BEDIT_IS_VIEW_CLASS(klass)                                          \
     (G_TYPE_CHECK_CLASS_TYPE((klass), BEDIT_TYPE_VIEW))
-#define BEDIT_VIEW_GET_CLASS(obj)                                              \
+#define BEDIT_VIEW_GET_CLASS(obj)                                           \
     (G_TYPE_INSTANCE_GET_CLASS((obj), BEDIT_TYPE_VIEW, BeditViewClass))
 
 typedef struct _BeditView BeditView;

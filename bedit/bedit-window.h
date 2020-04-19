@@ -51,15 +51,15 @@ typedef enum {
 } BeditWindowState;
 
 #define BEDIT_TYPE_WINDOW (bedit_window_get_type())
-#define BEDIT_WINDOW(obj)                                                      \
+#define BEDIT_WINDOW(obj)                                                   \
     (G_TYPE_CHECK_INSTANCE_CAST((obj), BEDIT_TYPE_WINDOW, BeditWindow))
-#define BEDIT_WINDOW_CLASS(klass)                                              \
+#define BEDIT_WINDOW_CLASS(klass)                                           \
     (G_TYPE_CHECK_CLASS_CAST((klass), BEDIT_TYPE_WINDOW, BeditWindowClass))
-#define BEDIT_IS_WINDOW(obj)                                                   \
+#define BEDIT_IS_WINDOW(obj)                                                \
     (G_TYPE_CHECK_INSTANCE_TYPE((obj), BEDIT_TYPE_WINDOW))
-#define BEDIT_IS_WINDOW_CLASS(klass)                                           \
+#define BEDIT_IS_WINDOW_CLASS(klass)                                        \
     (G_TYPE_CHECK_CLASS_TYPE((klass), BEDIT_TYPE_WINDOW))
-#define BEDIT_WINDOW_GET_CLASS(obj)                                            \
+#define BEDIT_WINDOW_GET_CLASS(obj)                                         \
     (G_TYPE_INSTANCE_GET_CLASS((obj), BEDIT_TYPE_WINDOW, BeditWindowClass))
 
 typedef struct _BeditWindow BeditWindow;

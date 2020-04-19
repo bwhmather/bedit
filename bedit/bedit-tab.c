@@ -439,7 +439,8 @@ static void view_realized(GtkTextView *view, BeditTab *tab) {
 }
 
 static void set_view_properties_according_to_state(
-    BeditTab *tab, BeditTabState state) {
+    BeditTab *tab, BeditTabState state
+) {
     BeditView *view;
     gboolean val;
     gboolean hl_current_line;
@@ -618,7 +619,8 @@ static void io_loading_error_info_bar_response(
 }
 
 static void file_already_open_warning_info_bar_response(
-    GtkWidget *info_bar, gint response_id, BeditTab *tab) {
+    GtkWidget *info_bar, gint response_id, BeditTab *tab
+) {
     BeditView *view = bedit_tab_get_view(tab);
 
     if (response_id == GTK_RESPONSE_YES) {
@@ -833,7 +835,8 @@ static void show_saving_info_bar(GTask *saving_task) {
 }
 
 static void info_bar_set_progress(
-    BeditTab *tab, goffset size, goffset total_size) {
+    BeditTab *tab, goffset size, goffset total_size
+) {
     BeditProgressInfoBar *progress_info_bar;
 
     if (tab->info_bar == NULL) {
@@ -1028,7 +1031,8 @@ static void externally_modified_error_info_bar_response(
         launch_saver(saving_task);
     } else {
         unrecoverable_saving_error_info_bar_response(
-            info_bar, response_id, saving_task);
+            info_bar, response_id, saving_task
+        );
     }
 }
 
@@ -1375,11 +1379,13 @@ gchar *_bedit_tab_get_tooltip(BeditTab *tab) {
         mime_type = bedit_document_get_mime_type(doc);
         content_description = g_content_type_get_description(content_type);
 
-        if (content_description == NULL)
+        if (content_description == NULL) {
             content_full_description = g_strdup(mime_type);
-        else
+        } else {
             content_full_description =
-                g_strdup_printf("%s (%s)", content_description, mime_type);
+                g_strdup_printf("%s (%s)", content_description, mime_type
+            );
+        }
 
         g_free(content_type);
         g_free(mime_type);
@@ -1399,7 +1405,8 @@ gchar *_bedit_tab_get_tooltip(BeditTab *tab) {
             "<b>%s</b> %s\n"
             "<b>%s</b> %s",
             _("Name:"), ruri, _("MIME Type:"), content_full_description,
-            _("Encoding:"), encoding);
+            _("Encoding:"), encoding
+        );
 
         g_free(encoding);
         g_free(content_full_description);
@@ -1688,8 +1695,8 @@ static void load_cb(
 
     if (g_error_matches(
         error, GTK_SOURCE_FILE_LOADER_ERROR,
-        GTK_SOURCE_FILE_LOADER_ERROR_CONVERSION_FALLBACK)
-    ) {
+        GTK_SOURCE_FILE_LOADER_ERROR_CONVERSION_FALLBACK
+    )) {
         GtkWidget *info_bar;
         const GtkSourceEncoding *encoding;
 
@@ -2113,7 +2120,8 @@ static void save_cb(
             );
         } else if (
             error->domain == G_IO_ERROR &&
-            error->code == G_IO_ERROR_CANT_CREATE_BACKUP) {
+            error->code == G_IO_ERROR_CANT_CREATE_BACKUP
+        ) {
             /* This error is recoverable */
             info_bar = bedit_no_backup_saving_error_info_bar_new(
                 location, error
@@ -2126,7 +2134,8 @@ static void save_cb(
             );
         } else if (
             error->domain == GTK_SOURCE_FILE_SAVER_ERROR &&
-            error->code == GTK_SOURCE_FILE_SAVER_ERROR_INVALID_CHARS) {
+            error->code == GTK_SOURCE_FILE_SAVER_ERROR_INVALID_CHARS
+        ) {
             /* If we have any invalid char in the document we must warn the
              * user as it can make the document useless if it is saved.
              */

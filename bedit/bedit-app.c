@@ -227,7 +227,8 @@ static void bedit_app_get_property(
 }
 
 static gchar *bedit_app_help_link_id_impl(
-    BeditApp *app, const gchar *name, const gchar *link_id) {
+    BeditApp *app, const gchar *name, const gchar *link_id
+) {
     if (link_id) {
         return g_strdup_printf("help:%s/%s", name, link_id);
     } else {
@@ -468,7 +469,8 @@ static void about_activated(
 }
 
 static void quit_activated(
-    GSimpleAction *action, GVariant *parameter, gpointer user_data) {
+    GSimpleAction *action, GVariant *parameter, gpointer user_data
+) {
     _bedit_cmd_file_quit(NULL, NULL, NULL);
 }
 
@@ -479,7 +481,8 @@ static GActionEntry app_entries[] = {
     {"shortcuts", keyboard_shortcuts_activated, NULL, NULL, NULL, {0, 0, 0}},
     {"help", help_activated, NULL, NULL, NULL, {0, 0, 0}},
     {"about", about_activated, NULL, NULL, NULL, {0, 0, 0}},
-    {"quit", quit_activated, NULL, NULL, NULL, {0, 0, 0}}};
+    {"quit", quit_activated, NULL, NULL, NULL, {0, 0, 0}}
+};
 
 static void extension_added(
     PeasExtensionSet *extensions, PeasPluginInfo *info, PeasExtension *exten,
@@ -511,7 +514,8 @@ static void load_accels(void) {
 }
 
 static GtkCssProvider *load_css_from_resource(
-    const gchar *filename, gboolean required) {
+    const gchar *filename, gboolean required
+) {
     GError *error = NULL;
     GFile *css_file;
     GtkCssProvider *provider;
@@ -577,10 +581,10 @@ static void setup_theme_extensions(BeditApp *app) {
 
     settings = gtk_settings_get_default();
 
-	settings = gtk_settings_get_default ();
-	g_object_set(
-	    G_OBJECT(settings), "gtk-application-prefer-dark-theme", TRUE, NULL
-	);
+    settings = gtk_settings_get_default();
+    g_object_set(
+        G_OBJECT(settings), "gtk-application-prefer-dark-theme", TRUE, NULL
+    );
     g_signal_connect(
         settings, "notify::gtk-theme-name",
         G_CALLBACK(theme_changed), app
@@ -597,7 +601,8 @@ static GMenuModel *get_menu_model(BeditApp *app, const char *id) {
 }
 
 static void add_accelerator(
-    GtkApplication *app, const gchar *action_name, const gchar *accel) {
+    GtkApplication *app, const gchar *action_name, const gchar *accel
+) {
     const gchar *vaccels[] = {accel, NULL};
 
     gtk_application_set_accels_for_action(app, action_name, vaccels);
@@ -870,7 +875,8 @@ static gint bedit_app_command_line(
     }
 
     if (g_variant_dict_lookup(
-        command_line_options, "encoding", "&s", &encoding_charset)) {
+        command_line_options, "encoding", "&s", &encoding_charset
+    )) {
         priv->encoding = gtk_source_encoding_get_from_charset(
             encoding_charset
         );
@@ -939,7 +945,8 @@ static void print_all_encodings(void) {
 }
 
 static gint bedit_app_handle_local_options(
-    GApplication *application, GVariantDict *local_options) {
+    GApplication *application, GVariantDict *local_options
+) {
     if (g_variant_dict_contains(local_options, "version")) {
         g_print("%s - Version %s\n", g_get_application_name(), VERSION);
         return 0;
@@ -1184,8 +1191,10 @@ static void load_page_setup(BeditApp *app) {
     priv->page_setup = gtk_page_setup_new_from_file(filename, &error);
     if (error) {
         /* Ignore file not found error */
-        if (error->domain != G_FILE_ERROR ||
-            error->code != G_FILE_ERROR_NOENT) {
+        if (
+            error->domain != G_FILE_ERROR ||
+            error->code != G_FILE_ERROR_NOENT
+        ) {
             g_warning("%s", error->message);
         }
 
@@ -1481,8 +1490,10 @@ static GMenuModel *find_extension_point_section(
     for (i = 0; i < n_items && !section; i++) {
         gchar *id = NULL;
 
-        if (g_menu_model_get_item_attribute(model, i, "id", "s", &id) &&
-            strcmp(id, extension_point) == 0) {
+        if (
+            g_menu_model_get_item_attribute(model, i, "id", "s", &id) &&
+            strcmp(id, extension_point) == 0
+        ) {
             section = g_menu_model_get_item_link(
                 model, i, G_MENU_LINK_SECTION
             );
@@ -1580,7 +1591,8 @@ GtkPageSetup *_bedit_app_get_default_page_setup(BeditApp *app) {
 }
 
 void _bedit_app_set_default_page_setup(
-    BeditApp *app, GtkPageSetup *page_setup) {
+    BeditApp *app, GtkPageSetup *page_setup
+) {
     BeditAppPrivate *priv;
 
     g_return_if_fail(BEDIT_IS_APP(app));
@@ -1607,7 +1619,8 @@ GtkPrintSettings *_bedit_app_get_default_print_settings(BeditApp *app) {
 }
 
 void _bedit_app_set_default_print_settings(
-    BeditApp *app, GtkPrintSettings *settings) {
+    BeditApp *app, GtkPrintSettings *settings
+) {
     BeditAppPrivate *priv;
 
     g_return_if_fail(BEDIT_IS_APP(app));

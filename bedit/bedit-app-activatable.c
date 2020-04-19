@@ -44,7 +44,8 @@
 G_DEFINE_INTERFACE(BeditAppActivatable, bedit_app_activatable, G_TYPE_OBJECT)
 
 static void bedit_app_activatable_default_init(
-    BeditAppActivatableInterface *iface) {
+    BeditAppActivatableInterface *iface
+) {
     /**
      * BeditAppActivatable:app:
      *
@@ -55,8 +56,9 @@ static void bedit_app_activatable_default_init(
         iface,
         g_param_spec_object(
             "app", "App", "The bedit app", BEDIT_TYPE_APP,
-            G_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY |
-                G_PARAM_STATIC_STRINGS
+            G_PARAM_READWRITE |
+            G_PARAM_CONSTRUCT_ONLY |
+            G_PARAM_STATIC_STRINGS
         )
     );
 }

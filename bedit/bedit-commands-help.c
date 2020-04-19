@@ -68,8 +68,10 @@ void _bedit_cmd_help_keyboard_shortcuts(BeditWindow *window) {
         g_object_unref(builder);
     }
 
-    if (GTK_WINDOW(window) !=
-        gtk_window_get_transient_for(GTK_WINDOW(shortcuts_window))) {
+    if (
+        GTK_WINDOW(window) !=
+        gtk_window_get_transient_for(GTK_WINDOW(shortcuts_window))
+    ) {
         gtk_window_set_transient_for(
             GTK_WINDOW(shortcuts_window), GTK_WINDOW(window)
         );
@@ -103,19 +105,22 @@ void _bedit_cmd_help_about(BeditWindow *window) {
         "S\303\251bastien Lafargue <slafargue@gnome.org>",
         "S\303\251bastien Wilmet <swilmet@gnome.org>",
         "Steve Fr\303\251cinaux <steve@istique.net>",
-        NULL};
+        NULL
+    };
 
     static const gchar *const documenters[] = {
         "Jim Campbell <jwcampbell@gmail.com>",
         "Daniel Neel <dneelyep@gmail.com>",
         "Sun GNOME Documentation Team <gdocteam@sun.com>",
-        "Eric Baudais <baudais@okstate.edu>", NULL};
+        "Eric Baudais <baudais@okstate.edu>", NULL
+    };
 
     static const gchar copyright[] =
         "Copyright \xc2\xa9 1998-2019 - the bedit team";
 
     static const gchar comments[] = N_(
-        "bedit is a small and lightweight text editor for the GNOME Desktop");
+        "bedit is a small and lightweight text editor for the GNOME Desktop"
+    );
 
     GdkPixbuf *logo;
     GError *error = NULL;

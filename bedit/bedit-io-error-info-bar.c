@@ -149,6 +149,8 @@ static gboolean parse_gio_error(
     const gchar *uri_for_display
 ) {
     gboolean ret = TRUE;
+    gchar *scheme_string = NULL;
+    gchar *scheme_markup;
 
     switch (code) {
     case G_IO_ERROR_NOT_FOUND:
@@ -163,16 +165,15 @@ static gboolean parse_gio_error(
             ));
         break;
 
-    case G_IO_ERROR_NOT_SUPPORTED: {
-        gchar *scheme_string = NULL;
-        gchar *scheme_markup;
-
+    case G_IO_ERROR_NOT_SUPPORTED:
         if (location) {
             scheme_string = g_file_get_uri_scheme(location);
         }
 
-        if ((scheme_string != NULL) &&
-            g_utf8_validate(scheme_string, -1, NULL)) {
+        if (
+            (scheme_string != NULL) &&
+            g_utf8_validate(scheme_string, -1, NULL)
+        ) {
             scheme_markup = g_markup_escape_text(scheme_string, -1);
 
             /* Translators: %s is a URI scheme (like for example http:, ftp:,
@@ -186,13 +187,13 @@ static gboolean parse_gio_error(
         }
 
         g_free(scheme_string);
-    } break;
+        break;
 
     case G_IO_ERROR_NOT_MOUNTABLE_FILE:
     case G_IO_ERROR_NOT_MOUNTED:
         *message_details = g_strdup(
-            _("The location of the file cannot be accessed."
-        ));
+            _("The location of the file cannot be accessed.")
+        );
         break;
 
     case G_IO_ERROR_IS_DIRECTORY:
@@ -250,7 +251,8 @@ static gboolean parse_gio_error(
                             "Please check that your proxy settings "
                             "are correct and try again."
                         ),
-                        host_markup);
+                        host_markup
+                    );
 
                     g_free(host_markup);
                 }
@@ -489,7 +491,8 @@ static GtkWidget *create_conversion_error_info_bar(
     gtk_info_bar_set_show_close_button(GTK_INFO_BAR(info_bar), TRUE);
 
     gtk_info_bar_add_button(
-        GTK_INFO_BAR(info_bar), _("_Retry"), GTK_RESPONSE_OK);
+        GTK_INFO_BAR(info_bar), _("_Retry"), GTK_RESPONSE_OK
+    );
 
     if (edit_anyway) {
         gtk_info_bar_add_button(
@@ -592,9 +595,11 @@ GtkWidget *bedit_io_loading_error_info_bar_new(
         );
     } else if (
         (is_gio_error(error, G_IO_ERROR_INVALID_DATA) && encoding == NULL) ||
-        (error->domain == GTK_SOURCE_FILE_LOADER_ERROR &&
-         error->code ==
-         GTK_SOURCE_FILE_LOADER_ERROR_ENCODING_AUTO_DETECTION_FAILED)
+        (
+            error->domain == GTK_SOURCE_FILE_LOADER_ERROR &&
+            error->code ==
+            GTK_SOURCE_FILE_LOADER_ERROR_ENCODING_AUTO_DETECTION_FAILED
+        )
     ) {
         message_details = g_strconcat(
             _("Unable to detect the character encoding."),
@@ -607,7 +612,8 @@ GtkWidget *bedit_io_loading_error_info_bar_new(
         convert_error = TRUE;
     } else if (
         error->domain == GTK_SOURCE_FILE_LOADER_ERROR &&
-        error->code == GTK_SOURCE_FILE_LOADER_ERROR_CONVERSION_FALLBACK) {
+        error->code == GTK_SOURCE_FILE_LOADER_ERROR_CONVERSION_FALLBACK
+    ) {
         error_message = g_strdup_printf(
             _("There was a problem opening the file “%s”."), uri_for_display
         );
@@ -624,7 +630,8 @@ GtkWidget *bedit_io_loading_error_info_bar_new(
         edit_anyway = TRUE;
         convert_error = TRUE;
     } else if (
-        is_gio_error(error, G_IO_ERROR_INVALID_DATA) && encoding != NULL) {
+        is_gio_error(error, G_IO_ERROR_INVALID_DATA) && encoding != NULL
+    ) {
         gchar *encoding_name = gtk_source_encoding_to_string(encoding);
 
         error_message = g_strdup_printf(
@@ -701,7 +708,8 @@ GtkWidget *bedit_conversion_error_while_saving_info_bar_new(
      * white space then the text-wrapping code is too stupid to wrap it.
      */
     temp_uri_for_display = bedit_utils_str_middle_truncate(
-        full_formatted_uri, MAX_URI_IN_DIALOG_LENGTH);
+        full_formatted_uri, MAX_URI_IN_DIALOG_LENGTH
+    );
     g_free(full_formatted_uri);
 
     uri_for_display = g_markup_escape_text(temp_uri_for_display, -1);
@@ -1026,7 +1034,8 @@ GtkWidget *bedit_no_backup_saving_error_info_bar_new(
         "Could not back up the old copy of the file before saving the new one. "
         "You can ignore this warning and save the file anyway, but if an error "
         "occurs while saving, you could lose the old copy of the file. Save "
-        "anyway?");
+        "anyway?"
+    );
     secondary_markup = g_strdup_printf("<small>%s</small>", secondary_text);
     secondary_label = gtk_label_new(secondary_markup);
     g_free(secondary_markup);
@@ -1080,8 +1089,10 @@ GtkWidget *bedit_unrecoverable_saving_error_info_bar_new(
     if (is_gio_error(error, G_IO_ERROR_NOT_SUPPORTED)) {
         scheme_string = g_file_get_uri_scheme(location);
 
-        if ((scheme_string != NULL) &&
-            g_utf8_validate(scheme_string, -1, NULL)) {
+        if (
+            (scheme_string != NULL) &&
+            g_utf8_validate(scheme_string, -1, NULL)
+        ) {
             scheme_markup = g_markup_escape_text(scheme_string, -1);
 
             /* Translators: %s is a URI scheme (like for example http:, ftp:,
@@ -1109,9 +1120,9 @@ GtkWidget *bedit_unrecoverable_saving_error_info_bar_new(
         ), uri_for_display);
     } else if (is_gio_error(error, G_IO_ERROR_PERMISSION_DENIED)) {
         message_details = g_strdup(_(
-                "You do not have the permissions necessary to save the file. "
-                "Please check that you typed the "
-                "location correctly and try again."
+            "You do not have the permissions necessary to save the file. "
+            "Please check that you typed the "
+            "location correctly and try again."
         ));
     } else if (is_gio_error(error, G_IO_ERROR_NO_SPACE)) {
         message_details = g_strdup(_(
@@ -1136,19 +1147,6 @@ GtkWidget *bedit_unrecoverable_saving_error_info_bar_new(
             "Please use a shorter name."
         ));
     }
-#if 0
-	/* FIXME this error can not occur for a file saving. Either remove the
-	 * code here, or improve the GtkSourceFileSaver so this error can occur.
-	 */
-	else if (error->domain == BEDIT_DOCUMENT_ERROR &&
-		 error->code == BEDIT_DOCUMENT_ERROR_TOO_BIG)
-	{
-		message_details = g_strdup (_("The disk where you are trying to save the file has "
-					      "a limitation on file sizes. Please try saving "
-					      "a smaller file or saving it to a disk that does not "
-					      "have this limitation."));
-	}
-#endif
     else {
         parse_error(
             error, &error_message, &message_details,
@@ -1268,9 +1266,11 @@ GtkWidget *bedit_invalid_character_info_bar_new(GFile *location) {
     info_bar = gtk_info_bar_new();
 
     gtk_info_bar_add_button(
-        GTK_INFO_BAR(info_bar), _("S_ave Anyway"), GTK_RESPONSE_YES);
+        GTK_INFO_BAR(info_bar), _("S_ave Anyway"), GTK_RESPONSE_YES
+    );
     gtk_info_bar_add_button(
-        GTK_INFO_BAR(info_bar), _("D_on’t Save"), GTK_RESPONSE_CANCEL);
+        GTK_INFO_BAR(info_bar), _("D_on’t Save"), GTK_RESPONSE_CANCEL
+    );
     gtk_info_bar_set_message_type(GTK_INFO_BAR(info_bar), GTK_MESSAGE_WARNING);
 
     hbox_content = gtk_box_new(GTK_ORIENTATION_HORIZONTAL, 8);

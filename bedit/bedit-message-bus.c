@@ -500,8 +500,10 @@ static void process_by_match(
     for (item = message->listeners; item; item = item->next) {
         Listener *listener = (Listener *)item->data;
 
-        if (listener->callback == callback &&
-            listener->user_data == user_data) {
+        if (
+            listener->callback == callback &&
+            listener->user_data == user_data
+        ) {
             processor(bus, message, item);
             return;
         }
@@ -654,8 +656,10 @@ static void bedit_message_bus_unregister_real(
 
     identifier = message_identifier_new(object_path, method);
 
-    if (!remove_from_store ||
-        g_hash_table_remove(bus->priv->types, identifier)) {
+    if (
+        !remove_from_store ||
+        g_hash_table_remove(bus->priv->types, identifier)
+    ) {
         g_signal_emit(
             bus, message_bus_signals[UNREGISTERED], 0, object_path, method
         );
@@ -766,7 +770,8 @@ typedef struct {
 } ForeachInfo;
 
 static void foreach_type(
-    MessageIdentifier *identifier, GType *message_type, ForeachInfo *info) {
+    MessageIdentifier *identifier, GType *message_type, ForeachInfo *info
+) {
     info->func(identifier->object_path, identifier->method, info->user_data);
 }
 

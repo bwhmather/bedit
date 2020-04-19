@@ -33,7 +33,7 @@
 
 G_BEGIN_DECLS
 
-#define BEDIT_TYPE_HIGHLIGHT_MODE_DIALOG                                       \
+#define BEDIT_TYPE_HIGHLIGHT_MODE_DIALOG                                    \
     (bedit_highlight_mode_dialog_get_type())
 
 G_DECLARE_FINAL_TYPE(

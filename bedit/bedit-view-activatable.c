@@ -95,3 +95,4 @@ void bedit_view_activatable_deactivate(BeditViewActivatable *activatable) {
         iface->deactivate(activatable);
     }
 }
+

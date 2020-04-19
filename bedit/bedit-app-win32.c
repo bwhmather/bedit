@@ -50,7 +50,8 @@ static void bedit_app_win32_finalize(GObject *object) {
 }
 
 static gchar *bedit_app_win32_help_link_id_impl(
-    BeditApp *app, const gchar *name, const gchar *link_id) {
+    BeditApp *app, const gchar *name, const gchar *link_id
+) {
     if (link_id) {
         return g_strdup_printf(
             "http://library.gnome.org/users/bedit/stable/%s", link_id
@@ -89,7 +90,8 @@ static void prep_console(void) {
         typedef BOOL (*WINAPI AttachConsole_t)(DWORD);
 
         AttachConsole_t p_AttachConsole = (AttachConsole_t)GetProcAddress(
-            GetModuleHandle("kernel32.dll"), "AttachConsole");
+            GetModuleHandle("kernel32.dll"), "AttachConsole"
+        );
 
         if (
             p_AttachConsole != NULL &&

@@ -12,7 +12,8 @@
  * Copyright (C) 2005-2015 - Paolo Borelli
  * Copyright (C) 2006-2007 - Paolo Maggi
  * Copyright (C) 2009-2013 - Ignacio Casal Quinteiro
- * Copyright (C) 2010 - Garrett Regier, Javier Jardón, Jesse van den Kieboom, Steve Frécinaux
+ * Copyright (C) 2010 - Garrett Regier, Javier Jardón, Jesse van den Kieboom,
+ *   Steve Frécinaux
  * Copyright (C) 2013-2019 - Sébastien Wilmet
  * Copyright (C) 2014 - Oliver Gerlich, Robert Roth
  * Copyright (C) 2016 - Piotr Drąg
