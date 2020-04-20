@@ -38,9 +38,11 @@
 #define SETTINGS_KEY_HIGHLIGHT_MISSPELLED "highlight-misspelled"
 
 static void bedit_window_activatable_iface_init(
-    BeditWindowActivatableInterface *iface);
+    BeditWindowActivatableInterface *iface
+);
 static void peas_gtk_configurable_iface_init(
-    PeasGtkConfigurableInterface *iface);
+    PeasGtkConfigurableInterface *iface
+);
 
 struct _BeditSpellPluginPrivate {
     BeditWindow *window;
@@ -61,13 +63,17 @@ struct _SpellConfigureWidget {
 G_DEFINE_DYNAMIC_TYPE_EXTENDED(
     BeditSpellPlugin, bedit_spell_plugin, PEAS_TYPE_EXTENSION_BASE, 0,
     G_IMPLEMENT_INTERFACE_DYNAMIC(
-        BEDIT_TYPE_WINDOW_ACTIVATABLE, bedit_window_activatable_iface_init)
-        G_IMPLEMENT_INTERFACE_DYNAMIC(
-            PEAS_GTK_TYPE_CONFIGURABLE, peas_gtk_configurable_iface_init)
-            G_ADD_PRIVATE_DYNAMIC(BeditSpellPlugin))
+        BEDIT_TYPE_WINDOW_ACTIVATABLE, bedit_window_activatable_iface_init
+    )
+    G_IMPLEMENT_INTERFACE_DYNAMIC(
+        PEAS_GTK_TYPE_CONFIGURABLE, peas_gtk_configurable_iface_init
+    )
+    G_ADD_PRIVATE_DYNAMIC(BeditSpellPlugin)
+)
 
 static void bedit_spell_plugin_set_property(
-    GObject *object, guint prop_id, const GValue *value, GParamSpec *pspec) {
+    GObject *object, guint prop_id, const GValue *value, GParamSpec *pspec
+) {
     BeditSpellPlugin *plugin = BEDIT_SPELL_PLUGIN(object);
 
     switch (prop_id) {
@@ -82,7 +88,8 @@ static void bedit_spell_plugin_set_property(
 }
 
 static void bedit_spell_plugin_get_property(
-    GObject *object, guint prop_id, GValue *value, GParamSpec *pspec) {
+    GObject *object, guint prop_id, GValue *value, GParamSpec *pspec
+) {
     BeditSpellPlugin *plugin = BEDIT_SPELL_PLUGIN(object);
 
     switch (prop_id) {
@@ -129,8 +136,9 @@ static void bedit_spell_plugin_init(BeditSpellPlugin *plugin) {
 static GspellChecker *get_spell_checker(BeditDocument *doc) {
     GspellTextBuffer *gspell_buffer;
 
-    gspell_buffer =
-        gspell_text_buffer_get_from_gtk_text_buffer(GTK_TEXT_BUFFER(doc));
+    gspell_buffer = gspell_text_buffer_get_from_gtk_text_buffer(
+        GTK_TEXT_BUFFER(doc)
+    );
     return gspell_text_buffer_get_spell_checker(gspell_buffer);
 }
 
@@ -139,7 +147,8 @@ static const GspellLanguage *get_language_from_metadata(BeditDocument *doc) {
     gchar *language_code = NULL;
 
     language_code = bedit_document_get_metadata(
-        doc, BEDIT_METADATA_ATTRIBUTE_SPELL_LANGUAGE);
+        doc, BEDIT_METADATA_ATTRIBUTE_SPELL_LANGUAGE
+    );
 
     if (language_code != NULL) {
         lang = gspell_language_lookup(language_code);
@@ -150,7 +159,8 @@ static const GspellLanguage *get_language_from_metadata(BeditDocument *doc) {
 }
 
 static void check_spell_cb(
-    GSimpleAction *action, GVariant *parameter, gpointer data) {
+    GSimpleAction *action, GVariant *parameter, gpointer data
+) {
     BeditSpellPlugin *plugin = BEDIT_SPELL_PLUGIN(data);
     BeditSpellPluginPrivate *priv;
     BeditView *view;
@@ -171,11 +181,13 @@ static void check_spell_cb(
 }
 
 static void language_dialog_response_cb(
-    GtkDialog *dialog, gint response_id, gpointer user_data) {
+    GtkDialog *dialog, gint response_id, gpointer user_data
+) {
     if (response_id == GTK_RESPONSE_HELP) {
         bedit_app_show_help(
             BEDIT_APP(g_application_get_default()), GTK_WINDOW(dialog), NULL,
-            "bedit-spellcheck");
+            "bedit-spellcheck"
+        );
         return;
     }
 
@@ -183,7 +195,8 @@ static void language_dialog_response_cb(
 }
 
 static void set_language_cb(
-    GSimpleAction *action, GVariant *parameter, gpointer data) {
+    GSimpleAction *action, GVariant *parameter, gpointer data
+) {
     BeditSpellPlugin *plugin = BEDIT_SPELL_PLUGIN(data);
     BeditSpellPluginPrivate *priv;
     BeditDocument *doc;
@@ -206,10 +219,14 @@ static void set_language_cb(
 
     dialog = gspell_language_chooser_dialog_new(
         GTK_WINDOW(priv->window), lang,
-        GTK_DIALOG_MODAL | GTK_DIALOG_DESTROY_WITH_PARENT);
+        GTK_DIALOG_MODAL | GTK_DIALOG_DESTROY_WITH_PARENT
+    );
 
     g_object_bind_property(
-        dialog, "language", checker, "language", G_BINDING_DEFAULT);
+        dialog, "language",
+        checker, "language",
+        G_BINDING_DEFAULT
+    );
 
     window_group = bedit_window_get_group(priv->window);
 
@@ -218,13 +235,16 @@ static void set_language_cb(
     gtk_dialog_add_button(GTK_DIALOG(dialog), _("_Help"), GTK_RESPONSE_HELP);
 
     g_signal_connect(
-        dialog, "response", G_CALLBACK(language_dialog_response_cb), NULL);
+        dialog, "response",
+        G_CALLBACK(language_dialog_response_cb), NULL
+    );
 
     gtk_widget_show(dialog);
 }
 
 static void inline_checker_activate_cb(
-    GSimpleAction *action, GVariant *parameter, gpointer data) {
+    GSimpleAction *action, GVariant *parameter, gpointer data
+) {
     BeditSpellPlugin *plugin = BEDIT_SPELL_PLUGIN(data);
     BeditSpellPluginPrivate *priv = plugin->priv;
     GVariant *state;
@@ -257,12 +277,14 @@ static void inline_checker_activate_cb(
          */
         bedit_document_set_metadata(
             doc, BEDIT_METADATA_ATTRIBUTE_SPELL_ENABLED,
-            active ? SPELL_ENABLED_STR : NULL, NULL);
+            active ? SPELL_ENABLED_STR : NULL, NULL
+        );
     }
 }
 
 static void inline_checker_change_state_cb(
-    GSimpleAction *action, GVariant *state, gpointer data) {
+    GSimpleAction *action, GVariant *state, gpointer data
+) {
     BeditSpellPlugin *plugin = BEDIT_SPELL_PLUGIN(data);
     BeditSpellPluginPrivate *priv = plugin->priv;
     BeditView *view;
@@ -274,14 +296,16 @@ static void inline_checker_change_state_cb(
 
     bedit_debug_message(
         DEBUG_PLUGINS,
-        active ? "Inline Checker activated" : "Inline Checker deactivated");
+        active ? "Inline Checker activated" : "Inline Checker deactivated"
+    );
 
     view = bedit_window_get_active_view(priv->window);
     if (view != NULL) {
         GspellTextView *gspell_view;
 
-        gspell_view =
-            gspell_text_view_get_from_gtk_text_view(GTK_TEXT_VIEW(view));
+        gspell_view = gspell_text_view_get_from_gtk_text_view(
+            GTK_TEXT_VIEW(view)
+        );
         gspell_text_view_set_inline_spell_checking(gspell_view, active);
 
         g_simple_action_set_state(action, g_variant_new_boolean(active));
@@ -306,23 +330,31 @@ static void update_ui(BeditSpellPlugin *plugin) {
         view = bedit_tab_get_view(tab);
     }
 
-    editable_view =
-        (view != NULL) && gtk_text_view_get_editable(GTK_TEXT_VIEW(view));
+    editable_view = (
+        (view != NULL) &&
+        gtk_text_view_get_editable(GTK_TEXT_VIEW(view))
+    );
 
-    check_spell_action =
-        g_action_map_lookup_action(G_ACTION_MAP(priv->window), "check-spell");
+    check_spell_action = g_action_map_lookup_action(
+        G_ACTION_MAP(priv->window), "check-spell"
+    );
     g_simple_action_set_enabled(
-        G_SIMPLE_ACTION(check_spell_action), editable_view);
+        G_SIMPLE_ACTION(check_spell_action), editable_view
+    );
 
-    config_spell_action =
-        g_action_map_lookup_action(G_ACTION_MAP(priv->window), "config-spell");
+    config_spell_action = g_action_map_lookup_action(
+        G_ACTION_MAP(priv->window), "config-spell"
+    );
     g_simple_action_set_enabled(
-        G_SIMPLE_ACTION(config_spell_action), editable_view);
+        G_SIMPLE_ACTION(config_spell_action), editable_view
+    );
 
     inline_checker_action = g_action_map_lookup_action(
-        G_ACTION_MAP(priv->window), "inline-spell-checker");
+        G_ACTION_MAP(priv->window), "inline-spell-checker"
+    );
     g_simple_action_set_enabled(
-        G_SIMPLE_ACTION(inline_checker_action), editable_view);
+        G_SIMPLE_ACTION(inline_checker_action), editable_view
+    );
 
     /* Update only on normal state to avoid garbage changes during e.g. file
      * loading.
@@ -338,12 +370,14 @@ static void update_ui(BeditSpellPlugin *plugin) {
 
         g_action_change_state(
             inline_checker_action,
-            g_variant_new_boolean(inline_checking_enabled));
+            g_variant_new_boolean(inline_checking_enabled)
+        );
     }
 }
 
 static void setup_inline_checker_from_metadata(
-    BeditSpellPlugin *plugin, BeditView *view) {
+    BeditSpellPlugin *plugin, BeditView *view
+) {
     BeditDocument *doc;
     gboolean enabled;
     gchar *enabled_str;
@@ -353,9 +387,11 @@ static void setup_inline_checker_from_metadata(
     doc = BEDIT_DOCUMENT(gtk_text_view_get_buffer(GTK_TEXT_VIEW(view)));
 
     enabled = g_settings_get_boolean(
-        plugin->priv->settings, SETTINGS_KEY_HIGHLIGHT_MISSPELLED);
+        plugin->priv->settings, SETTINGS_KEY_HIGHLIGHT_MISSPELLED
+    );
     enabled_str = bedit_document_get_metadata(
-        doc, BEDIT_METADATA_ATTRIBUTE_SPELL_ENABLED);
+        doc, BEDIT_METADATA_ATTRIBUTE_SPELL_ENABLED
+    );
     if (enabled_str != NULL) {
         enabled = g_str_equal(enabled_str, SPELL_ENABLED_STR);
         g_free(enabled_str);
@@ -371,13 +407,15 @@ static void setup_inline_checker_from_metadata(
         GAction *action;
 
         action = g_action_map_lookup_action(
-            G_ACTION_MAP(plugin->priv->window), "inline-spell-checker");
+            G_ACTION_MAP(plugin->priv->window), "inline-spell-checker"
+        );
         g_action_change_state(action, g_variant_new_boolean(enabled));
     }
 }
 
 static void language_notify_cb(
-    GspellChecker *checker, GParamSpec *pspec, BeditDocument *doc) {
+    GspellChecker *checker, GParamSpec *pspec, BeditDocument *doc
+) {
     const GspellLanguage *lang;
     const gchar *language_code;
 
@@ -390,7 +428,8 @@ static void language_notify_cb(
     g_return_if_fail(language_code != NULL);
 
     bedit_document_set_metadata(
-        doc, BEDIT_METADATA_ATTRIBUTE_SPELL_LANGUAGE, language_code, NULL);
+        doc, BEDIT_METADATA_ATTRIBUTE_SPELL_LANGUAGE, language_code, NULL
+    );
 }
 
 static void on_document_loaded(BeditDocument *doc, BeditSpellPlugin *plugin) {
@@ -448,11 +487,13 @@ static void on_document_saved(BeditDocument *doc, gpointer user_data) {
     bedit_document_set_metadata(
         doc, BEDIT_METADATA_ATTRIBUTE_SPELL_ENABLED,
         inline_checking_enabled ? SPELL_ENABLED_STR : NULL,
-        BEDIT_METADATA_ATTRIBUTE_SPELL_LANGUAGE, language_code, NULL);
+        BEDIT_METADATA_ATTRIBUTE_SPELL_LANGUAGE, language_code, NULL
+    );
 }
 
 static void activate_spell_checking_in_view(
-    BeditSpellPlugin *plugin, BeditView *view) {
+    BeditSpellPlugin *plugin, BeditView *view
+) {
     BeditDocument *doc;
 
     doc = BEDIT_DOCUMENT(gtk_text_view_get_buffer(GTK_TEXT_VIEW(view)));
@@ -469,11 +510,14 @@ static void activate_spell_checking_in_view(
         checker = gspell_checker_new(lang);
 
         g_signal_connect_object(
-            checker, "notify::language", G_CALLBACK(language_notify_cb), doc,
-            0);
+            checker, "notify::language",
+            G_CALLBACK(language_notify_cb), doc,
+            0
+        );
 
-        gspell_buffer =
-            gspell_text_buffer_get_from_gtk_text_buffer(GTK_TEXT_BUFFER(doc));
+        gspell_buffer = gspell_text_buffer_get_from_gtk_text_buffer(
+            GTK_TEXT_BUFFER(doc)
+        );
         gspell_text_buffer_set_spell_checker(gspell_buffer, checker);
         g_object_unref(checker);
 
@@ -481,10 +525,12 @@ static void activate_spell_checking_in_view(
     }
 
     g_signal_connect_object(
-        doc, "loaded", G_CALLBACK(on_document_loaded), plugin, 0);
+        doc, "loaded", G_CALLBACK(on_document_loaded), plugin, 0
+    );
 
     g_signal_connect_object(
-        doc, "saved", G_CALLBACK(on_document_saved), plugin, 0);
+        doc, "saved", G_CALLBACK(on_document_saved), plugin, 0
+    );
 }
 
 static void disconnect_view(BeditSpellPlugin *plugin, BeditView *view) {
@@ -503,7 +549,8 @@ static void disconnect_view(BeditSpellPlugin *plugin, BeditView *view) {
 }
 
 static void deactivate_spell_checking_in_view(
-    BeditSpellPlugin *plugin, BeditView *view) {
+    BeditSpellPlugin *plugin, BeditView *view
+) {
     GtkTextBuffer *gtk_buffer;
     GspellTextBuffer *gspell_buffer;
     GspellTextView *gspell_view;
@@ -519,12 +566,14 @@ static void deactivate_spell_checking_in_view(
 }
 
 static void tab_added_cb(
-    BeditWindow *window, BeditTab *tab, BeditSpellPlugin *plugin) {
+    BeditWindow *window, BeditTab *tab, BeditSpellPlugin *plugin
+) {
     activate_spell_checking_in_view(plugin, bedit_tab_get_view(tab));
 }
 
 static void tab_removed_cb(
-    BeditWindow *window, BeditTab *tab, BeditSpellPlugin *plugin) {
+    BeditWindow *window, BeditTab *tab, BeditSpellPlugin *plugin
+) {
     /* Don't deactivate completely the spell checking in @tab, since the tab
      * can be moved to another window and we don't want to loose the spell
      * checking settings (they are not saved in metadata for unsaved
@@ -542,8 +591,11 @@ static void bedit_spell_plugin_activate(BeditWindowActivatable *activatable) {
     const GActionEntry action_entries[] = {
         {"check-spell", check_spell_cb},
         {"config-spell", set_language_cb},
-        {"inline-spell-checker", inline_checker_activate_cb, NULL, "false",
-         inline_checker_change_state_cb}};
+        {
+            "inline-spell-checker", inline_checker_activate_cb, NULL, "false",
+            inline_checker_change_state_cb
+        }
+    };
 
     bedit_debug(DEBUG_PLUGINS);
 
@@ -552,7 +604,8 @@ static void bedit_spell_plugin_activate(BeditWindowActivatable *activatable) {
 
     g_action_map_add_action_entries(
         G_ACTION_MAP(priv->window), action_entries,
-        G_N_ELEMENTS(action_entries), activatable);
+        G_N_ELEMENTS(action_entries), activatable
+    );
 
     update_ui(plugin);
 
@@ -562,10 +615,14 @@ static void bedit_spell_plugin_activate(BeditWindowActivatable *activatable) {
     }
 
     g_signal_connect(
-        priv->window, "tab-added", G_CALLBACK(tab_added_cb), activatable);
+        priv->window, "tab-added",
+        G_CALLBACK(tab_added_cb), activatable
+    );
 
     g_signal_connect(
-        priv->window, "tab-removed", G_CALLBACK(tab_removed_cb), activatable);
+        priv->window, "tab-removed",
+        G_CALLBACK(tab_removed_cb), activatable
+    );
 }
 
 static void bedit_spell_plugin_deactivate(BeditWindowActivatable *activatable) {
@@ -582,12 +639,15 @@ static void bedit_spell_plugin_deactivate(BeditWindowActivatable *activatable) {
     g_action_map_remove_action(G_ACTION_MAP(priv->window), "check-spell");
     g_action_map_remove_action(G_ACTION_MAP(priv->window), "config-spell");
     g_action_map_remove_action(
-        G_ACTION_MAP(priv->window), "inline-spell-checker");
+        G_ACTION_MAP(priv->window), "inline-spell-checker"
+    );
 
     g_signal_handlers_disconnect_by_func(
-        priv->window, tab_added_cb, activatable);
+        priv->window, tab_added_cb, activatable
+    );
     g_signal_handlers_disconnect_by_func(
-        priv->window, tab_removed_cb, activatable);
+        priv->window, tab_removed_cb, activatable
+    );
 
     views = bedit_window_get_views(priv->window);
     for (l = views; l != NULL; l = l->next) {
@@ -596,14 +656,16 @@ static void bedit_spell_plugin_deactivate(BeditWindowActivatable *activatable) {
 }
 
 static void bedit_spell_plugin_update_state(
-    BeditWindowActivatable *activatable) {
+    BeditWindowActivatable *activatable
+) {
     bedit_debug(DEBUG_PLUGINS);
 
     update_ui(BEDIT_SPELL_PLUGIN(activatable));
 }
 
 static void bedit_window_activatable_iface_init(
-    BeditWindowActivatableInterface *iface) {
+    BeditWindowActivatableInterface *iface
+) {
     iface->activate = bedit_spell_plugin_activate;
     iface->deactivate = bedit_spell_plugin_deactivate;
     iface->update_state = bedit_spell_plugin_update_state;
@@ -614,16 +676,20 @@ G_MODULE_EXPORT void peas_register_types(PeasObjectModule *module) {
     bedit_spell_app_activatable_register(G_TYPE_MODULE(module));
 
     peas_object_module_register_extension_type(
-        module, BEDIT_TYPE_WINDOW_ACTIVATABLE, BEDIT_TYPE_SPELL_PLUGIN);
+        module, BEDIT_TYPE_WINDOW_ACTIVATABLE, BEDIT_TYPE_SPELL_PLUGIN
+    );
     peas_object_module_register_extension_type(
-        module, PEAS_GTK_TYPE_CONFIGURABLE, BEDIT_TYPE_SPELL_PLUGIN);
+        module, PEAS_GTK_TYPE_CONFIGURABLE, BEDIT_TYPE_SPELL_PLUGIN
+    );
 }
 
 static void highlight_button_toggled(
-    GtkToggleButton *button, SpellConfigureWidget *widget) {
+    GtkToggleButton *button, SpellConfigureWidget *widget
+) {
     gboolean status = gtk_toggle_button_get_active(button);
     g_settings_set_boolean(
-        widget->settings, SETTINGS_KEY_HIGHLIGHT_MISSPELLED, status);
+        widget->settings, SETTINGS_KEY_HIGHLIGHT_MISSPELLED, status
+    );
 }
 
 static void configure_widget_destroyed(GtkWidget *widget, gpointer data) {
@@ -652,33 +718,41 @@ static SpellConfigureWidget *get_configure_widget(BeditSpellPlugin *plugin) {
     gtk_builder_add_objects_from_resource(
         builder,
         "/com/bwhmather/bedit/plugins/spell/ui/bedit-spell-setup-dialog.ui",
-        root_objects, NULL);
-    widget->content =
-        GTK_WIDGET(gtk_builder_get_object(builder, "spell_dialog_content"));
+        root_objects, NULL
+    );
+    widget->content = GTK_WIDGET(gtk_builder_get_object(
+        builder, "spell_dialog_content"
+    ));
     g_object_ref(widget->content);
 
-    widget->highlight_button =
-        GTK_WIDGET(gtk_builder_get_object(builder, "highlight_button"));
+    widget->highlight_button = GTK_WIDGET(gtk_builder_get_object(
+        builder, "highlight_button"
+    ));
     g_object_unref(builder);
 
     status = g_settings_get_boolean(
-        widget->settings, SETTINGS_KEY_HIGHLIGHT_MISSPELLED);
+        widget->settings, SETTINGS_KEY_HIGHLIGHT_MISSPELLED
+    );
     gtk_toggle_button_set_active(
-        GTK_TOGGLE_BUTTON(widget->highlight_button), status);
+        GTK_TOGGLE_BUTTON(widget->highlight_button), status
+    );
 
     g_signal_connect(
         widget->highlight_button, "toggled",
-        G_CALLBACK(highlight_button_toggled), widget);
+        G_CALLBACK(highlight_button_toggled), widget
+    );
 
     g_signal_connect(
-        widget->content, "destroy", G_CALLBACK(configure_widget_destroyed),
-        widget);
+        widget->content, "destroy",
+        G_CALLBACK(configure_widget_destroyed), widget
+    );
 
     return widget;
 }
 
 static GtkWidget *bedit_spell_plugin_create_configure_widget(
-    PeasGtkConfigurable *configurable) {
+    PeasGtkConfigurable *configurable
+) {
     SpellConfigureWidget *widget;
 
     widget = get_configure_widget(BEDIT_SPELL_PLUGIN(configurable));
@@ -687,7 +761,8 @@ static GtkWidget *bedit_spell_plugin_create_configure_widget(
 }
 
 static void peas_gtk_configurable_iface_init(
-    PeasGtkConfigurableInterface *iface) {
+    PeasGtkConfigurableInterface *iface
+) {
     iface->create_configure_widget = bedit_spell_plugin_create_configure_widget;
 }
 

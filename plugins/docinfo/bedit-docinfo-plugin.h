@@ -29,19 +29,22 @@
 G_BEGIN_DECLS
 
 #define BEDIT_TYPE_DOCINFO_PLUGIN (bedit_docinfo_plugin_get_type())
-#define BEDIT_DOCINFO_PLUGIN(o)                                                \
-    (G_TYPE_CHECK_INSTANCE_CAST(                                               \
-        (o), BEDIT_TYPE_DOCINFO_PLUGIN, BeditDocinfoPlugin))
-#define BEDIT_DOCINFO_PLUGIN_CLASS(k)                                          \
-    (G_TYPE_CHECK_CLASS_CAST(                                                  \
-        (k), BEDIT_TYPE_DOCINFO_PLUGIN, BeditDocinfoPluginClass))
-#define BEDIT_IS_DOCINFO_PLUGIN(o)                                             \
+#define BEDIT_DOCINFO_PLUGIN(o)                                             \
+    (G_TYPE_CHECK_INSTANCE_CAST(                                            \
+        (o), BEDIT_TYPE_DOCINFO_PLUGIN, BeditDocinfoPlugin                  \
+    ))
+#define BEDIT_DOCINFO_PLUGIN_CLASS(k)                                       \
+    (G_TYPE_CHECK_CLASS_CAST(                                               \
+        (k), BEDIT_TYPE_DOCINFO_PLUGIN, BeditDocinfoPluginClass             \
+    ))
+#define BEDIT_IS_DOCINFO_PLUGIN(o)                                          \
     (G_TYPE_CHECK_INSTANCE_TYPE((o), BEDIT_TYPE_DOCINFO_PLUGIN))
-#define BEDIT_IS_DOCINFO_PLUGIN_CLASS(k)                                       \
+#define BEDIT_IS_DOCINFO_PLUGIN_CLASS(k)                                    \
     (G_TYPE_CHECK_CLASS_TYPE((k), BEDIT_TYPE_DOCINFO_PLUGIN))
-#define BEDIT_DOCINFO_PLUGIN_GET_CLASS(o)                                      \
-    (G_TYPE_INSTANCE_GET_CLASS(                                                \
-        (o), BEDIT_TYPE_DOCINFO_PLUGIN, BeditDocinfoPluginClass))
+#define BEDIT_DOCINFO_PLUGIN_GET_CLASS(o)                                   \
+    (G_TYPE_INSTANCE_GET_CLASS(                                             \
+        (o), BEDIT_TYPE_DOCINFO_PLUGIN, BeditDocinfoPluginClass             \
+    ))
 
 typedef struct _BeditDocinfoPlugin BeditDocinfoPlugin;
 typedef struct _BeditDocinfoPluginPrivate BeditDocinfoPluginPrivate;

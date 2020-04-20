@@ -68,21 +68,27 @@ struct _BeditDocinfoPluginPrivate {
 enum { PROP_0, PROP_WINDOW, PROP_APP };
 
 static void bedit_app_activatable_iface_init(
-    BeditAppActivatableInterface *iface);
+    BeditAppActivatableInterface *iface
+);
 static void bedit_window_activatable_iface_init(
-    BeditWindowActivatableInterface *iface);
+    BeditWindowActivatableInterface *iface
+);
 
 G_DEFINE_DYNAMIC_TYPE_EXTENDED(
     BeditDocinfoPlugin, bedit_docinfo_plugin, PEAS_TYPE_EXTENSION_BASE, 0,
     G_IMPLEMENT_INTERFACE_DYNAMIC(
-        BEDIT_TYPE_APP_ACTIVATABLE, bedit_app_activatable_iface_init)
-        G_IMPLEMENT_INTERFACE_DYNAMIC(
-            BEDIT_TYPE_WINDOW_ACTIVATABLE, bedit_window_activatable_iface_init)
-            G_ADD_PRIVATE_DYNAMIC(BeditDocinfoPlugin))
+        BEDIT_TYPE_APP_ACTIVATABLE, bedit_app_activatable_iface_init
+    )
+    G_IMPLEMENT_INTERFACE_DYNAMIC(
+        BEDIT_TYPE_WINDOW_ACTIVATABLE, bedit_window_activatable_iface_init
+    )
+    G_ADD_PRIVATE_DYNAMIC(BeditDocinfoPlugin)
+)
 
 static void calculate_info(
     BeditDocument *doc, GtkTextIter *start, GtkTextIter *end, gint *chars,
-    gint *words, gint *white_chars, gint *bytes) {
+    gint *words, gint *white_chars, gint *bytes
+) {
     gchar *text;
 
     bedit_debug(DEBUG_PLUGINS);
@@ -99,14 +105,17 @@ static void calculate_info(
         attrs = g_new0(PangoLogAttr, *chars + 1);
 
         pango_get_log_attrs(
-            text, -1, 0, pango_language_from_string("C"), attrs, *chars + 1);
+            text, -1, 0, pango_language_from_string("C"), attrs, *chars + 1
+        );
 
         for (i = 0; i < (*chars); i++) {
-            if (attrs[i].is_white)
+            if (attrs[i].is_white) {
                 ++(*white_chars);
+            }
 
-            if (attrs[i].is_word_start)
+            if (attrs[i].is_word_start) {
                 ++(*words);
+            }
         }
 
         g_free(attrs);
@@ -119,7 +128,8 @@ static void calculate_info(
 }
 
 static void update_document_info(
-    BeditDocinfoPlugin *plugin, BeditDocument *doc) {
+    BeditDocinfoPlugin *plugin, BeditDocument *doc
+) {
     BeditDocinfoPluginPrivate *priv;
     GtkTextIter start, end;
     gint words = 0;
@@ -148,7 +158,8 @@ static void update_document_info(
     bedit_debug_message(DEBUG_PLUGINS, "Lines: %d", lines);
     bedit_debug_message(DEBUG_PLUGINS, "Words: %d", words);
     bedit_debug_message(
-        DEBUG_PLUGINS, "Chars non-space: %d", chars - white_chars);
+        DEBUG_PLUGINS, "Chars non-space: %d", chars - white_chars
+    );
     bedit_debug_message(DEBUG_PLUGINS, "Bytes: %d", bytes);
 
     doc_name = bedit_document_get_short_name_for_display(doc);
@@ -177,7 +188,8 @@ static void update_document_info(
 }
 
 static void update_selection_info(
-    BeditDocinfoPlugin *plugin, BeditDocument *doc) {
+    BeditDocinfoPlugin *plugin, BeditDocument *doc
+) {
     BeditDocinfoPluginPrivate *priv;
     gboolean sel;
     GtkTextIter start, end;
@@ -193,7 +205,8 @@ static void update_selection_info(
     priv = plugin->priv;
 
     sel = gtk_text_buffer_get_selection_bounds(
-        GTK_TEXT_BUFFER(doc), &start, &end);
+        GTK_TEXT_BUFFER(doc), &start, &end
+    );
 
     if (sel) {
         lines =
@@ -205,7 +218,8 @@ static void update_selection_info(
         bedit_debug_message(DEBUG_PLUGINS, "Selected lines: %d", lines);
         bedit_debug_message(DEBUG_PLUGINS, "Selected words: %d", words);
         bedit_debug_message(
-            DEBUG_PLUGINS, "Selected chars non-space: %d", chars - white_chars);
+            DEBUG_PLUGINS, "Selected chars non-space: %d", chars - white_chars
+        );
         bedit_debug_message(DEBUG_PLUGINS, "Selected bytes: %d", bytes);
 
         gtk_widget_set_sensitive(priv->selection_label, TRUE);
@@ -225,8 +239,9 @@ static void update_selection_info(
         gtk_widget_set_sensitive(priv->selected_chars_ns_label, FALSE);
     }
 
-    if (chars == 0)
+    if (chars == 0) {
         lines = 0;
+    }
 
     tmp_str = g_strdup_printf("%d", lines);
     gtk_label_set_text(GTK_LABEL(priv->selected_lines_label), tmp_str);
@@ -250,25 +265,24 @@ static void update_selection_info(
 }
 
 static void docinfo_dialog_response_cb(
-    GtkDialog *widget, gint res_id, BeditDocinfoPlugin *plugin) {
+    GtkDialog *widget, gint res_id, BeditDocinfoPlugin *plugin
+) {
     BeditDocinfoPluginPrivate *priv;
+    BeditDocument *doc;
 
     bedit_debug(DEBUG_PLUGINS);
 
     priv = plugin->priv;
 
     switch (res_id) {
-    case GTK_RESPONSE_CLOSE: {
+    case GTK_RESPONSE_CLOSE:
         bedit_debug_message(DEBUG_PLUGINS, "GTK_RESPONSE_CLOSE");
 
         gtk_widget_destroy(priv->dialog);
 
         break;
-    }
 
-    case GTK_RESPONSE_OK: {
-        BeditDocument *doc;
-
+    case GTK_RESPONSE_OK:
         bedit_debug_message(DEBUG_PLUGINS, "GTK_RESPONSE_OK");
 
         doc = bedit_window_get_active_document(priv->window);
@@ -277,7 +291,6 @@ static void docinfo_dialog_response_cb(
         update_selection_info(plugin, doc);
 
         break;
-    }
     }
 }
 
@@ -293,56 +306,80 @@ static void create_docinfo_dialog(BeditDocinfoPlugin *plugin) {
     gtk_builder_add_from_resource(
         builder,
         "/com/bwhmather/bedit/plugins/docinfo/ui/bedit-docinfo-plugin.ui",
-        NULL);
-    priv->dialog = GTK_WIDGET(gtk_builder_get_object(builder, "dialog"));
-    priv->header_bar =
-        GTK_WIDGET(gtk_builder_get_object(builder, "header_bar"));
-    priv->words_label =
-        GTK_WIDGET(gtk_builder_get_object(builder, "words_label"));
-    priv->bytes_label =
-        GTK_WIDGET(gtk_builder_get_object(builder, "bytes_label"));
-    priv->lines_label =
-        GTK_WIDGET(gtk_builder_get_object(builder, "lines_label"));
-    priv->chars_label =
-        GTK_WIDGET(gtk_builder_get_object(builder, "chars_label"));
-    priv->chars_ns_label =
-        GTK_WIDGET(gtk_builder_get_object(builder, "chars_ns_label"));
-    priv->document_label =
-        GTK_WIDGET(gtk_builder_get_object(builder, "document_label"));
-    priv->document_words_label =
-        GTK_WIDGET(gtk_builder_get_object(builder, "document_words_label"));
-    priv->document_bytes_label =
-        GTK_WIDGET(gtk_builder_get_object(builder, "document_bytes_label"));
-    priv->document_lines_label =
-        GTK_WIDGET(gtk_builder_get_object(builder, "document_lines_label"));
-    priv->document_chars_label =
-        GTK_WIDGET(gtk_builder_get_object(builder, "document_chars_label"));
-    priv->document_chars_ns_label =
-        GTK_WIDGET(gtk_builder_get_object(builder, "document_chars_ns_label"));
-    priv->selection_label =
-        GTK_WIDGET(gtk_builder_get_object(builder, "selection_label"));
-    priv->selected_words_label =
-        GTK_WIDGET(gtk_builder_get_object(builder, "selected_words_label"));
-    priv->selected_bytes_label =
-        GTK_WIDGET(gtk_builder_get_object(builder, "selected_bytes_label"));
-    priv->selected_lines_label =
-        GTK_WIDGET(gtk_builder_get_object(builder, "selected_lines_label"));
-    priv->selected_chars_label =
-        GTK_WIDGET(gtk_builder_get_object(builder, "selected_chars_label"));
-    priv->selected_chars_ns_label =
-        GTK_WIDGET(gtk_builder_get_object(builder, "selected_chars_ns_label"));
+        NULL
+    );
+    priv->dialog = GTK_WIDGET(gtk_builder_get_object(
+        builder, "dialog"
+    ));
+    priv->header_bar = GTK_WIDGET(gtk_builder_get_object(
+        builder, "header_bar"
+    ));
+    priv->words_label = GTK_WIDGET(gtk_builder_get_object(
+        builder, "words_label"
+    ));
+    priv->bytes_label = GTK_WIDGET(gtk_builder_get_object(
+        builder, "bytes_label"
+    ));
+    priv->lines_label = GTK_WIDGET(gtk_builder_get_object(
+        builder, "lines_label"
+    ));
+    priv->chars_label = GTK_WIDGET(gtk_builder_get_object(
+        builder, "chars_label"
+    ));
+    priv->chars_ns_label = GTK_WIDGET(gtk_builder_get_object(
+        builder, "chars_ns_label"
+    ));
+    priv->document_label = GTK_WIDGET(gtk_builder_get_object(
+        builder, "document_label"
+    ));
+    priv->document_words_label = GTK_WIDGET(gtk_builder_get_object(
+        builder, "document_words_label"
+    ));
+    priv->document_bytes_label = GTK_WIDGET(gtk_builder_get_object(
+        builder, "document_bytes_label"
+    ));
+    priv->document_lines_label = GTK_WIDGET(gtk_builder_get_object(
+        builder, "document_lines_label"
+    ));
+    priv->document_chars_label = GTK_WIDGET(gtk_builder_get_object(
+        builder, "document_chars_label"
+    ));
+    priv->document_chars_ns_label = GTK_WIDGET(gtk_builder_get_object(
+        builder, "document_chars_ns_label"
+    ));
+    priv->selection_label = GTK_WIDGET(gtk_builder_get_object(
+        builder, "selection_label"
+    ));
+    priv->selected_words_label = GTK_WIDGET(gtk_builder_get_object(
+        builder, "selected_words_label"
+    ));
+    priv->selected_bytes_label = GTK_WIDGET(gtk_builder_get_object(
+        builder, "selected_bytes_label"
+    ));
+    priv->selected_lines_label = GTK_WIDGET(gtk_builder_get_object(
+        builder, "selected_lines_label"
+    ));
+    priv->selected_chars_label = GTK_WIDGET(gtk_builder_get_object(
+        builder, "selected_chars_label"
+    ));
+    priv->selected_chars_ns_label = GTK_WIDGET(gtk_builder_get_object(
+        builder, "selected_chars_ns_label"
+    ));
     g_object_unref(builder);
 
     gtk_dialog_set_default_response(GTK_DIALOG(priv->dialog), GTK_RESPONSE_OK);
     gtk_window_set_transient_for(
-        GTK_WINDOW(priv->dialog), GTK_WINDOW(priv->window));
+        GTK_WINDOW(priv->dialog), GTK_WINDOW(priv->window)
+    );
 
     g_signal_connect(
-        priv->dialog, "destroy", G_CALLBACK(gtk_widget_destroyed),
-        &priv->dialog);
+        priv->dialog, "destroy",
+        G_CALLBACK(gtk_widget_destroyed), &priv->dialog
+    );
     g_signal_connect(
-        priv->dialog, "response", G_CALLBACK(docinfo_dialog_response_cb),
-        plugin);
+        priv->dialog, "response",
+        G_CALLBACK(docinfo_dialog_response_cb), plugin
+    );
 
     /* We set this explictely with code since glade does not
      * save the can_focus property when set to false :(
@@ -370,7 +407,8 @@ static void create_docinfo_dialog(BeditDocinfoPlugin *plugin) {
 }
 
 static void docinfo_cb(
-    GAction *action, GVariant *parameter, BeditDocinfoPlugin *plugin) {
+    GAction *action, GVariant *parameter, BeditDocinfoPlugin *plugin
+) {
     BeditDocinfoPluginPrivate *priv;
     BeditDocument *doc;
 
@@ -418,7 +456,8 @@ static void bedit_docinfo_plugin_finalize(GObject *object) {
 }
 
 static void bedit_docinfo_plugin_set_property(
-    GObject *object, guint prop_id, const GValue *value, GParamSpec *pspec) {
+    GObject *object, guint prop_id, const GValue *value, GParamSpec *pspec
+) {
     BeditDocinfoPlugin *plugin = BEDIT_DOCINFO_PLUGIN(object);
 
     switch (prop_id) {
@@ -435,7 +474,8 @@ static void bedit_docinfo_plugin_set_property(
 }
 
 static void bedit_docinfo_plugin_get_property(
-    GObject *object, guint prop_id, GValue *value, GParamSpec *pspec) {
+    GObject *object, guint prop_id, GValue *value, GParamSpec *pspec
+) {
     BeditDocinfoPlugin *plugin = BEDIT_DOCINFO_PLUGIN(object);
 
     switch (prop_id) {
@@ -465,12 +505,14 @@ static void update_ui(BeditDocinfoPlugin *plugin) {
 
     if (priv->dialog != NULL) {
         gtk_dialog_set_response_sensitive(
-            GTK_DIALOG(priv->dialog), GTK_RESPONSE_OK, (view != NULL));
+            GTK_DIALOG(priv->dialog), GTK_RESPONSE_OK, (view != NULL)
+        );
     }
 }
 
 static void bedit_docinfo_plugin_app_activate(
-    BeditAppActivatable *activatable) {
+    BeditAppActivatable *activatable
+) {
     BeditDocinfoPluginPrivate *priv;
     GMenuItem *item;
 
@@ -478,15 +520,17 @@ static void bedit_docinfo_plugin_app_activate(
 
     priv = BEDIT_DOCINFO_PLUGIN(activatable)->priv;
 
-    priv->menu_ext =
-        bedit_app_activatable_extend_menu(activatable, "tools-section");
+    priv->menu_ext = bedit_app_activatable_extend_menu(
+        activatable, "tools-section"
+    );
     item = g_menu_item_new(_("_Document Statistics"), "win.docinfo");
     bedit_menu_extension_append_menu_item(priv->menu_ext, item);
     g_object_unref(item);
 }
 
 static void bedit_docinfo_plugin_app_deactivate(
-    BeditAppActivatable *activatable) {
+    BeditAppActivatable *activatable
+) {
     BeditDocinfoPluginPrivate *priv;
 
     bedit_debug(DEBUG_PLUGINS);
@@ -497,7 +541,8 @@ static void bedit_docinfo_plugin_app_deactivate(
 }
 
 static void bedit_docinfo_plugin_window_activate(
-    BeditWindowActivatable *activatable) {
+    BeditWindowActivatable *activatable
+) {
     BeditDocinfoPluginPrivate *priv;
 
     bedit_debug(DEBUG_PLUGINS);
@@ -506,14 +551,17 @@ static void bedit_docinfo_plugin_window_activate(
 
     priv->action = g_simple_action_new("docinfo", NULL);
     g_signal_connect(
-        priv->action, "activate", G_CALLBACK(docinfo_cb), activatable);
+        priv->action, "activate",
+        G_CALLBACK(docinfo_cb), activatable
+    );
     g_action_map_add_action(G_ACTION_MAP(priv->window), G_ACTION(priv->action));
 
     update_ui(BEDIT_DOCINFO_PLUGIN(activatable));
 }
 
 static void bedit_docinfo_plugin_window_deactivate(
-    BeditWindowActivatable *activatable) {
+    BeditWindowActivatable *activatable
+) {
     BeditDocinfoPluginPrivate *priv;
 
     bedit_debug(DEBUG_PLUGINS);
@@ -524,7 +572,8 @@ static void bedit_docinfo_plugin_window_deactivate(
 }
 
 static void bedit_docinfo_plugin_window_update_state(
-    BeditWindowActivatable *activatable) {
+    BeditWindowActivatable *activatable
+) {
     bedit_debug(DEBUG_PLUGINS);
 
     update_ui(BEDIT_DOCINFO_PLUGIN(activatable));
@@ -543,27 +592,32 @@ static void bedit_docinfo_plugin_class_init(BeditDocinfoPluginClass *klass) {
 }
 
 static void bedit_app_activatable_iface_init(
-    BeditAppActivatableInterface *iface) {
+    BeditAppActivatableInterface *iface
+) {
     iface->activate = bedit_docinfo_plugin_app_activate;
     iface->deactivate = bedit_docinfo_plugin_app_deactivate;
 }
 
 static void bedit_window_activatable_iface_init(
-    BeditWindowActivatableInterface *iface) {
+    BeditWindowActivatableInterface *iface
+) {
     iface->activate = bedit_docinfo_plugin_window_activate;
     iface->deactivate = bedit_docinfo_plugin_window_deactivate;
     iface->update_state = bedit_docinfo_plugin_window_update_state;
 }
 
 static void bedit_docinfo_plugin_class_finalize(
-    BeditDocinfoPluginClass *klass) {}
+    BeditDocinfoPluginClass *klass
+) {}
 
 G_MODULE_EXPORT void peas_register_types(PeasObjectModule *module) {
     bedit_docinfo_plugin_register_type(G_TYPE_MODULE(module));
 
     peas_object_module_register_extension_type(
-        module, BEDIT_TYPE_APP_ACTIVATABLE, BEDIT_TYPE_DOCINFO_PLUGIN);
+        module, BEDIT_TYPE_APP_ACTIVATABLE, BEDIT_TYPE_DOCINFO_PLUGIN
+    );
     peas_object_module_register_extension_type(
-        module, BEDIT_TYPE_WINDOW_ACTIVATABLE, BEDIT_TYPE_DOCINFO_PLUGIN);
+        module, BEDIT_TYPE_WINDOW_ACTIVATABLE, BEDIT_TYPE_DOCINFO_PLUGIN
+    );
 }
 

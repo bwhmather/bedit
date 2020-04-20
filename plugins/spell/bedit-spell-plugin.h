@@ -28,18 +28,20 @@
 G_BEGIN_DECLS
 
 #define BEDIT_TYPE_SPELL_PLUGIN (bedit_spell_plugin_get_type())
-#define BEDIT_SPELL_PLUGIN(o)                                                  \
+#define BEDIT_SPELL_PLUGIN(o)                                               \
     (G_TYPE_CHECK_INSTANCE_CAST((o), BEDIT_TYPE_SPELL_PLUGIN, BeditSpellPlugin))
-#define BEDIT_SPELL_PLUGIN_CLASS(k)                                            \
-    (G_TYPE_CHECK_CLASS_CAST(                                                  \
-        (k), BEDIT_TYPE_SPELL_PLUGIN, BeditSpellPluginClass))
-#define BEDIT_IS_SPELL_PLUGIN(o)                                               \
+#define BEDIT_SPELL_PLUGIN_CLASS(k)                                         \
+    (G_TYPE_CHECK_CLASS_CAST(                                               \
+        (k), BEDIT_TYPE_SPELL_PLUGIN, BeditSpellPluginClass                 \
+    ))
+#define BEDIT_IS_SPELL_PLUGIN(o)                                            \
     (G_TYPE_CHECK_INSTANCE_TYPE((o), BEDIT_TYPE_SPELL_PLUGIN))
-#define BEDIT_IS_SPELL_PLUGIN_CLASS(k)                                         \
+#define BEDIT_IS_SPELL_PLUGIN_CLASS(k)                                      \
     (G_TYPE_CHECK_CLASS_TYPE((k), BEDIT_TYPE_SPELL_PLUGIN))
-#define BEDIT_SPELL_PLUGIN_GET_CLASS(o)                                        \
-    (G_TYPE_INSTANCE_GET_CLASS(                                                \
-        (o), BEDIT_TYPE_SPELL_PLUGIN, BeditSpellPluginClass))
+#define BEDIT_SPELL_PLUGIN_GET_CLASS(o)                                     \
+    (G_TYPE_INSTANCE_GET_CLASS(                                             \
+        (o), BEDIT_TYPE_SPELL_PLUGIN, BeditSpellPluginClass                 \
+    ))
 
 typedef struct _BeditSpellPlugin BeditSpellPlugin;
 typedef struct _BeditSpellPluginPrivate BeditSpellPluginPrivate;
@@ -63,3 +65,4 @@ G_MODULE_EXPORT void peas_register_types(PeasObjectModule *module);
 G_END_DECLS
 
 #endif /* BEDIT_SPELL_PLUGIN_H */
+

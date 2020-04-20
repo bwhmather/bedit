@@ -28,17 +28,18 @@
 G_BEGIN_DECLS
 
 #define BEDIT_TYPE_TIME_PLUGIN (bedit_time_plugin_get_type())
-#define BEDIT_TIME_PLUGIN(o)                                                   \
+#define BEDIT_TIME_PLUGIN(o)                                                \
     (G_TYPE_CHECK_INSTANCE_CAST((o), BEDIT_TYPE_TIME_PLUGIN, BeditTimePlugin))
-#define BEDIT_TIME_PLUGIN_CLASS(k)                                             \
+#define BEDIT_TIME_PLUGIN_CLASS(k)                                          \
     (G_TYPE_CHECK_CLASS_CAST((k), BEDIT_TYPE_TIME_PLUGIN, BeditTimePluginClass))
-#define BEDIT_IS_TIME_PLUGIN(o)                                                \
+#define BEDIT_IS_TIME_PLUGIN(o)                                             \
     (G_TYPE_CHECK_INSTANCE_TYPE((o), BEDIT_TYPE_TIME_PLUGIN))
-#define BEDIT_IS_TIME_PLUGIN_CLASS(k)                                          \
+#define BEDIT_IS_TIME_PLUGIN_CLASS(k)                                       \
     (G_TYPE_CHECK_CLASS_TYPE((k), BEDIT_TYPE_TIME_PLUGIN))
-#define BEDIT_TIME_PLUGIN_GET_CLASS(o)                                         \
-    (G_TYPE_INSTANCE_GET_CLASS(                                                \
-        (o), BEDIT_TYPE_TIME_PLUGIN, BeditTimePluginClass))
+#define BEDIT_TIME_PLUGIN_GET_CLASS(o)                                      \
+    (G_TYPE_INSTANCE_GET_CLASS(                                             \
+        (o), BEDIT_TYPE_TIME_PLUGIN, BeditTimePluginClass                   \
+    ))
 
 typedef struct _BeditTimePlugin BeditTimePlugin;
 typedef struct _BeditTimePluginPrivate BeditTimePluginPrivate;

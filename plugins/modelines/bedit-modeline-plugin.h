@@ -29,19 +29,22 @@
 G_BEGIN_DECLS
 
 #define BEDIT_TYPE_MODELINE_PLUGIN (bedit_modeline_plugin_get_type())
-#define BEDIT_MODELINE_PLUGIN(o)                                               \
-    (G_TYPE_CHECK_INSTANCE_CAST(                                               \
-        (o), BEDIT_TYPE_MODELINE_PLUGIN, BeditModelinePlugin))
-#define BEDIT_MODELINE_PLUGIN_CLASS(k)                                         \
-    (G_TYPE_CHECK_CLASS_CAST(                                                  \
-        (k), BEDIT_TYPE_MODELINE_PLUGIN, BeditModelinePluginClass))
-#define BEDIT_IS_MODELINE_PLUGIN(o)                                            \
+#define BEDIT_MODELINE_PLUGIN(o)                                            \
+    (G_TYPE_CHECK_INSTANCE_CAST(                                            \
+        (o), BEDIT_TYPE_MODELINE_PLUGIN, BeditModelinePlugin                \
+    ))
+#define BEDIT_MODELINE_PLUGIN_CLASS(k)                                      \
+    (G_TYPE_CHECK_CLASS_CAST(                                               \
+        (k), BEDIT_TYPE_MODELINE_PLUGIN, BeditModelinePluginClass           \
+    ))
+#define BEDIT_IS_MODELINE_PLUGIN(o)                                         \
     (G_TYPE_CHECK_INSTANCE_TYPE((o), BEDIT_TYPE_MODELINE_PLUGIN))
-#define BEDIT_IS_MODELINE_PLUGIN_CLASS(k)                                      \
+#define BEDIT_IS_MODELINE_PLUGIN_CLASS(k)                                   \
     (G_TYPE_CHECK_CLASS_TYPE((k), BEDIT_TYPE_MODELINE_PLUGIN))
-#define BEDIT_MODELINE_PLUGIN_GET_CLASS(o)                                     \
-    (G_TYPE_INSTANCE_GET_CLASS(                                                \
-        (o), BEDIT_TYPE_MODELINE_PLUGIN, BeditModelinePluginClass))
+#define BEDIT_MODELINE_PLUGIN_GET_CLASS(o)                                  \
+    (G_TYPE_INSTANCE_GET_CLASS(                                             \
+        (o), BEDIT_TYPE_MODELINE_PLUGIN, BeditModelinePluginClass           \
+    ))
 
 typedef struct _BeditModelinePlugin BeditModelinePlugin;
 typedef struct _BeditModelinePluginPrivate BeditModelinePluginPrivate;

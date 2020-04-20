@@ -25,11 +25,12 @@
 
 G_BEGIN_DECLS
 
-#define BEDIT_TYPE_SPELL_APP_ACTIVATABLE                                       \
+#define BEDIT_TYPE_SPELL_APP_ACTIVATABLE                                    \
     (bedit_spell_app_activatable_get_type())
 G_DECLARE_FINAL_TYPE(
     BeditSpellAppActivatable, bedit_spell_app_activatable, BEDIT,
-    SPELL_APP_ACTIVATABLE, GObject)
+    SPELL_APP_ACTIVATABLE, GObject
+)
 
 void bedit_spell_app_activatable_register(GTypeModule *module);
 

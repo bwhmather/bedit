@@ -78,14 +78,17 @@ void modeline_parser_init(const gchar *data_dir) {
 }
 
 void modeline_parser_shutdown(void) {
-    if (vim_languages != NULL)
+    if (vim_languages != NULL) {
         g_hash_table_unref(vim_languages);
+    }
 
-    if (emacs_languages != NULL)
+    if (emacs_languages != NULL) {
         g_hash_table_unref(emacs_languages);
+    }
 
-    if (kate_languages != NULL)
+    if (kate_languages != NULL) {
         g_hash_table_unref(kate_languages);
+    }
 
     vim_languages = NULL;
     emacs_languages = NULL;
@@ -96,7 +99,8 @@ void modeline_parser_shutdown(void) {
 }
 
 static GHashTable *load_language_mappings_group(
-    GKeyFile *key_file, const gchar *group) {
+    GKeyFile *key_file, const gchar *group
+) {
     GHashTable *table;
     gchar **keys;
     gsize length = 0;
@@ -107,8 +111,9 @@ static GHashTable *load_language_mappings_group(
     keys = g_key_file_get_keys(key_file, group, &length, NULL);
 
     bedit_debug_message(
-        DEBUG_PLUGINS, "%" G_GSIZE_FORMAT " mappings in group %s", length,
-        group);
+        DEBUG_PLUGINS, "%" G_GSIZE_FORMAT " mappings in group %s",
+        length, group
+    );
 
     for (i = 0; i < length; i++) {
         /* steal the name string */
@@ -128,13 +133,15 @@ static void load_language_mappings(void) {
     GError *error = NULL;
 
     fname = g_build_filename(
-        modelines_data_dir, MODELINES_LANGUAGE_MAPPINGS_FILE, NULL);
+        modelines_data_dir, MODELINES_LANGUAGE_MAPPINGS_FILE, NULL
+    );
 
     mappings = g_key_file_new();
 
     if (g_key_file_load_from_file(mappings, fname, 0, &error)) {
         bedit_debug_message(
-            DEBUG_PLUGINS, "Loaded language mappings from %s", fname);
+            DEBUG_PLUGINS, "Loaded language mappings from %s", fname
+        );
 
         vim_languages = load_language_mappings_group(mappings, "vim");
         emacs_languages = load_language_mappings_group(mappings, "emacs");
@@ -142,7 +149,8 @@ static void load_language_mappings(void) {
     } else {
         bedit_debug_message(
             DEBUG_PLUGINS, "Failed to loaded language mappings from %s: %s",
-            fname, error->message);
+            fname, error->message
+        );
 
         g_error_free(error);
     }
@@ -171,29 +179,33 @@ static gchar *get_language_id(const gchar *language_name, GHashTable *mapping) {
 }
 
 static gchar *get_language_id_vim(const gchar *language_name) {
-    if (vim_languages == NULL)
+    if (vim_languages == NULL) {
         load_language_mappings();
+    }
 
     return get_language_id(language_name, vim_languages);
 }
 
 static gchar *get_language_id_emacs(const gchar *language_name) {
-    if (emacs_languages == NULL)
+    if (emacs_languages == NULL) {
         load_language_mappings();
+    }
 
     return get_language_id(language_name, emacs_languages);
 }
 
 static gchar *get_language_id_kate(const gchar *language_name) {
-    if (kate_languages == NULL)
+    if (kate_languages == NULL) {
         load_language_mappings();
+    }
 
     return get_language_id(language_name, kate_languages);
 }
 
 static gboolean skip_whitespaces(gchar **s) {
-    while (**s != '\0' && g_ascii_isspace(**s))
+    while (**s != '\0' && g_ascii_isspace(**s)) {
         (*s)++;
+    }
     return **s != '\0';
 }
 
@@ -213,11 +225,13 @@ static gchar *parse_vim_modeline(gchar *s, ModelineOptions *options) {
     value = g_string_sized_new(8);
 
     while (*s != '\0' && !(in_set && *s == ':')) {
-        while (*s != '\0' && (*s == ':' || g_ascii_isspace(*s)))
+        while (*s != '\0' && (*s == ':' || g_ascii_isspace(*s))) {
             s++;
+        }
 
-        if (*s == '\0')
+        if (*s == '\0') {
             break;
+        }
 
         if (strncmp(s, "set ", 4) == 0 || strncmp(s, "se ", 3) == 0) {
             s = strchr(s, ' ') + 1;
@@ -246,17 +260,24 @@ static gchar *parse_vim_modeline(gchar *s, ModelineOptions *options) {
             }
         }
 
-        if (strcmp(key->str, "ft") == 0 || strcmp(key->str, "filetype") == 0) {
+        if (
+            strcmp(key->str, "ft") == 0 ||
+            strcmp(key->str, "filetype") == 0
+        ) {
             g_free(options->language_id);
             options->language_id = get_language_id_vim(value->str);
 
             options->set |= MODELINE_SET_LANGUAGE;
         } else if (
-            strcmp(key->str, "et") == 0 || strcmp(key->str, "expandtab") == 0) {
+            strcmp(key->str, "et") == 0 ||
+            strcmp(key->str, "expandtab") == 0
+        ) {
             options->insert_spaces = !neg;
             options->set |= MODELINE_SET_INSERT_SPACES;
         } else if (
-            strcmp(key->str, "ts") == 0 || strcmp(key->str, "tabstop") == 0) {
+            strcmp(key->str, "ts") == 0 ||
+            strcmp(key->str, "tabstop") == 0
+        ) {
             intval = atoi(value->str);
 
             if (intval) {
@@ -265,7 +286,8 @@ static gchar *parse_vim_modeline(gchar *s, ModelineOptions *options) {
             }
         } else if (
             strcmp(key->str, "sw") == 0 ||
-            strcmp(key->str, "shiftwidth") == 0) {
+            strcmp(key->str, "shiftwidth") == 0
+        ) {
             intval = atoi(value->str);
 
             if (intval) {
@@ -277,14 +299,17 @@ static gchar *parse_vim_modeline(gchar *s, ModelineOptions *options) {
 
             options->set |= MODELINE_SET_WRAP_MODE;
         } else if (
-            strcmp(key->str, "textwidth") == 0 || strcmp(key->str, "tw") == 0) {
+            strcmp(key->str, "textwidth") == 0 ||
+            strcmp(key->str, "tw") == 0
+        ) {
             intval = atoi(value->str);
 
             if (intval) {
                 options->right_margin_position = intval;
                 options->display_right_margin = TRUE;
 
-                options->set |= MODELINE_SET_SHOW_RIGHT_MARGIN |
+                options->set |=
+                    MODELINE_SET_SHOW_RIGHT_MARGIN |
                     MODELINE_SET_RIGHT_MARGIN_POSITION;
             }
         }
@@ -310,10 +335,12 @@ static gchar *parse_emacs_modeline(gchar *s, ModelineOptions *options) {
     value = g_string_sized_new(8);
 
     while (*s != '\0') {
-        while (*s != '\0' && (*s == ';' || g_ascii_isspace(*s)))
+        while (*s != '\0' && (*s == ';' || g_ascii_isspace(*s))) {
             s++;
-        if (*s == '\0' || strncmp(s, "-*-", 3) == 0)
+        }
+        if (*s == '\0' || strncmp(s, "-*-", 3) == 0) {
             break;
+        }
 
         g_string_assign(key, "");
         g_string_assign(value, "");
@@ -323,15 +350,18 @@ static gchar *parse_emacs_modeline(gchar *s, ModelineOptions *options) {
             s++;
         }
 
-        if (!skip_whitespaces(&s))
+        if (!skip_whitespaces(&s)) {
             break;
+        }
 
-        if (*s != ':')
+        if (*s != ':') {
             continue;
+        }
         s++;
 
-        if (!skip_whitespaces(&s))
+        if (!skip_whitespaces(&s)) {
             break;
+        }
 
         while (*s != '\0' && *s != ';' && !g_ascii_isspace(*s)) {
             g_string_append_c(value, *s);
@@ -339,7 +369,8 @@ static gchar *parse_emacs_modeline(gchar *s, ModelineOptions *options) {
         }
 
         bedit_debug_message(
-            DEBUG_PLUGINS, "Emacs modeline bit: %s = %s", key->str, value->str);
+            DEBUG_PLUGINS, "Emacs modeline bit: %s = %s", key->str, value->str
+        );
 
         /* "Mode" key is case insenstive */
         if (g_ascii_strcasecmp(key->str, "Mode") == 0) {
@@ -357,7 +388,8 @@ static gchar *parse_emacs_modeline(gchar *s, ModelineOptions *options) {
         } else if (
             strcmp(key->str, "indent-offset") == 0 ||
             strcmp(key->str, "c-basic-offset") == 0 ||
-            strcmp(key->str, "js-indent-level") == 0) {
+            strcmp(key->str, "js-indent-level") == 0
+        ) {
             intval = atoi(value->str);
 
             if (intval) {
@@ -397,10 +429,13 @@ static gchar *parse_kate_modeline(gchar *s, ModelineOptions *options) {
     value = g_string_sized_new(8);
 
     while (*s != '\0') {
-        while (*s != '\0' && (*s == ';' || g_ascii_isspace(*s)))
+        while (*s != '\0' && (*s == ';' || g_ascii_isspace(*s))) {
             s++;
-        if (*s == '\0')
+        }
+
+        if (*s == '\0') {
             break;
+        }
 
         g_string_assign(key, "");
         g_string_assign(value, "");
@@ -410,10 +445,13 @@ static gchar *parse_kate_modeline(gchar *s, ModelineOptions *options) {
             s++;
         }
 
-        if (!skip_whitespaces(&s))
+        if (!skip_whitespaces(&s)) {
             break;
-        if (*s == ';')
+        }
+
+        if (*s == ';') {
             continue;
+        }
 
         while (*s != '\0' && *s != ';' && !g_ascii_isspace(*s)) {
             g_string_append_c(value, *s);
@@ -421,7 +459,8 @@ static gchar *parse_kate_modeline(gchar *s, ModelineOptions *options) {
         }
 
         bedit_debug_message(
-            DEBUG_PLUGINS, "Kate modeline bit: %s = %s", key->str, value->str);
+            DEBUG_PLUGINS, "Kate modeline bit: %s = %s", key->str, value->str
+        );
 
         if (strcmp(key->str, "hl") == 0 || strcmp(key->str, "syntax") == 0) {
             g_free(options->language_id);
@@ -437,17 +476,22 @@ static gchar *parse_kate_modeline(gchar *s, ModelineOptions *options) {
             }
         } else if (strcmp(key->str, "indent-width") == 0) {
             intval = atoi(value->str);
-            if (intval)
+            if (intval) {
                 options->indent_width = intval;
+            }
         } else if (strcmp(key->str, "space-indent") == 0) {
-            intval = strcmp(value->str, "on") == 0 ||
-                strcmp(value->str, "true") == 0 || strcmp(value->str, "1") == 0;
+            intval =
+                strcmp(value->str, "on") == 0 ||
+                strcmp(value->str, "true") == 0 ||
+                strcmp(value->str, "1") == 0;
 
             options->insert_spaces = intval;
             options->set |= MODELINE_SET_INSERT_SPACES;
         } else if (strcmp(key->str, "word-wrap") == 0) {
-            intval = strcmp(value->str, "on") == 0 ||
-                strcmp(value->str, "true") == 0 || strcmp(value->str, "1") == 0;
+            intval =
+                strcmp(value->str, "on") == 0 ||
+                strcmp(value->str, "true") == 0 ||
+                strcmp(value->str, "1") == 0;
 
             options->wrap_mode = intval ? GTK_WRAP_WORD : GTK_WRAP_NONE;
 
@@ -459,7 +503,8 @@ static gchar *parse_kate_modeline(gchar *s, ModelineOptions *options) {
                 options->right_margin_position = intval;
                 options->display_right_margin = TRUE;
 
-                options->set |= MODELINE_SET_RIGHT_MARGIN_POSITION |
+                options->set |=
+                    MODELINE_SET_RIGHT_MARGIN_POSITION |
                     MODELINE_SET_SHOW_RIGHT_MARGIN;
             }
         }
@@ -475,7 +520,8 @@ static gchar *parse_kate_modeline(gchar *s, ModelineOptions *options) {
  * Line numbers are counted starting at one.
  */
 static void parse_modeline(
-    gchar *line, gint line_number, gint line_count, ModelineOptions *options) {
+    gchar *line, gint line_number, gint line_count, ModelineOptions *options
+) {
     gchar *s = line;
 
     /* look for the beginning of a modeline */
@@ -485,11 +531,14 @@ static void parse_modeline(
             continue;
         }
 
-        if ((line_number <= 3 || line_number > line_count - 3) &&
-            (strncmp(s, "ex:", 3) == 0 || strncmp(s, "vi:", 3) == 0 ||
-             strncmp(s, "vim:", 4) == 0)) {
+        if ((line_number <= 3 || line_number > line_count - 3) && (
+            strncmp(s, "ex:", 3) == 0 ||
+            strncmp(s, "vi:", 3) == 0 ||
+            strncmp(s, "vim:", 4) == 0
+        )) {
             bedit_debug_message(
-                DEBUG_PLUGINS, "Vim modeline on line %d", line_number);
+                DEBUG_PLUGINS, "Vim modeline on line %d", line_number
+            );
 
             while (*s != ':') {
                 s++;
@@ -498,14 +547,17 @@ static void parse_modeline(
             s = parse_vim_modeline(s + 1, options);
         } else if (line_number <= 2 && strncmp(s, "-*-", 3) == 0) {
             bedit_debug_message(
-                DEBUG_PLUGINS, "Emacs modeline on line %d", line_number);
+                DEBUG_PLUGINS, "Emacs modeline on line %d", line_number
+            );
 
             s = parse_emacs_modeline(s + 3, options);
         } else if (
             (line_number <= 10 || line_number > line_count - 10) &&
-            strncmp(s, "kate:", 5) == 0) {
+            strncmp(s, "kate:", 5) == 0
+        ) {
             bedit_debug_message(
-                DEBUG_PLUGINS, "Kate modeline on line %d", line_number);
+                DEBUG_PLUGINS, "Kate modeline on line %d", line_number
+            );
 
             s = parse_kate_modeline(s + 5, options);
         } else {
@@ -515,23 +567,30 @@ static void parse_modeline(
 }
 
 static gboolean check_previous(
-    GtkSourceView *view, ModelineOptions *previous, ModelineSet set) {
-    GtkSourceBuffer *buffer =
-        GTK_SOURCE_BUFFER(gtk_text_view_get_buffer(GTK_TEXT_VIEW(view)));
+    GtkSourceView *view, ModelineOptions *previous, ModelineSet set
+) {
+    GtkSourceBuffer *buffer = GTK_SOURCE_BUFFER(gtk_text_view_get_buffer(
+        GTK_TEXT_VIEW(view)
+    ));
+    GtkSourceLanguage *language;
 
     /* Do not restore default when this is the first time */
-    if (!previous)
+    if (!previous) {
         return FALSE;
+    }
 
     /* Do not restore default when previous was not set */
-    if (!(previous->set & set))
+    if (!(previous->set & set)) {
         return FALSE;
+    }
 
     /* Only restore default when setting has not changed */
     switch (set) {
     case MODELINE_SET_INSERT_SPACES:
-        return gtk_source_view_get_insert_spaces_instead_of_tabs(view) ==
-            previous->insert_spaces;
+        return (
+            gtk_source_view_get_insert_spaces_instead_of_tabs(view) ==
+            previous->insert_spaces
+        );
         break;
     case MODELINE_SET_TAB_WIDTH:
         return gtk_source_view_get_tab_width(view) == previous->tab_width;
@@ -540,26 +599,34 @@ static gboolean check_previous(
         return gtk_source_view_get_indent_width(view) == previous->indent_width;
         break;
     case MODELINE_SET_WRAP_MODE:
-        return gtk_text_view_get_wrap_mode(GTK_TEXT_VIEW(view)) ==
-            previous->wrap_mode;
+        return (
+            gtk_text_view_get_wrap_mode(GTK_TEXT_VIEW(view)) ==
+            previous->wrap_mode
+        );
         break;
     case MODELINE_SET_RIGHT_MARGIN_POSITION:
-        return gtk_source_view_get_right_margin_position(view) ==
-            previous->right_margin_position;
+        return (
+            gtk_source_view_get_right_margin_position(view) ==
+            previous->right_margin_position
+        );
         break;
     case MODELINE_SET_SHOW_RIGHT_MARGIN:
-        return gtk_source_view_get_show_right_margin(view) ==
-            previous->display_right_margin;
+        return (
+            gtk_source_view_get_show_right_margin(view) ==
+            previous->display_right_margin
+        );
         break;
-    case MODELINE_SET_LANGUAGE: {
-        GtkSourceLanguage *language = gtk_source_buffer_get_language(buffer);
+    case MODELINE_SET_LANGUAGE:
+        language = gtk_source_buffer_get_language(buffer);
 
-        return (language == NULL && previous->language_id == NULL) ||
-            (language != NULL &&
-             g_strcmp0(
-                 gtk_source_language_get_id(language), previous->language_id) ==
-                 0);
-    } break;
+        return (
+            (language == NULL && previous->language_id == NULL) ||
+            (language != NULL && g_strcmp0(
+                gtk_source_language_get_id(language), previous->language_id
+            ) == 0)
+        );
+
+        break;
     default:
         return FALSE;
         break;
@@ -588,8 +655,10 @@ void modeline_parser_apply_modeline(GtkSourceView *view) {
     line_count = gtk_text_buffer_get_line_count(buffer);
 
     /* Parse the modelines on the 10 first lines... */
-    while ((gtk_text_iter_get_line(&iter) < 10) &&
-           !gtk_text_iter_is_end(&iter)) {
+    while (
+        (gtk_text_iter_get_line(&iter) < 10) &&
+        !gtk_text_iter_is_end(&iter)
+    ) {
         gchar *line;
 
         liter = iter;
@@ -597,7 +666,8 @@ void modeline_parser_apply_modeline(GtkSourceView *view) {
         line = gtk_text_buffer_get_text(buffer, &liter, &iter, TRUE);
 
         parse_modeline(
-            line, 1 + gtk_text_iter_get_line(&iter), line_count, &options);
+            line, 1 + gtk_text_iter_get_line(&iter), line_count, &options
+        );
 
         gtk_text_iter_forward_line(&iter);
 
@@ -629,7 +699,8 @@ void modeline_parser_apply_modeline(GtkSourceView *view) {
         line = gtk_text_buffer_get_text(buffer, &liter, &iter, TRUE);
 
         parse_modeline(
-            line, 1 + gtk_text_iter_get_line(&iter), line_count, &options);
+            line, 1 + gtk_text_iter_get_line(&iter), line_count, &options
+        );
 
         gtk_text_iter_forward_line(&iter);
 
@@ -647,19 +718,20 @@ void modeline_parser_apply_modeline(GtkSourceView *view) {
             manager = gtk_source_language_manager_get_default();
 
             language = gtk_source_language_manager_get_language(
-                manager, options.language_id);
+                manager, options.language_id
+            );
             if (language != NULL) {
                 bedit_document_set_language(BEDIT_DOCUMENT(buffer), language);
             } else {
                 bedit_debug_message(
                     DEBUG_PLUGINS, "Unknown language `%s'",
-                    options.language_id);
+                    options.language_id
+                );
             }
         }
     }
 
-    previous =
-        g_object_get_data(G_OBJECT(buffer), MODELINE_OPTIONS_DATA_KEY);
+    previous = g_object_get_data(G_OBJECT(buffer), MODELINE_OPTIONS_DATA_KEY);
 
     settings = g_settings_new("com.bwhmather.bedit.preferences.editor");
 
@@ -667,12 +739,14 @@ void modeline_parser_apply_modeline(GtkSourceView *view) {
        we set them before */
     if (has_option(&options, MODELINE_SET_INSERT_SPACES)) {
         gtk_source_view_set_insert_spaces_instead_of_tabs(
-            view, options.insert_spaces);
+            view, options.insert_spaces
+        );
     } else if (check_previous(view, previous, MODELINE_SET_INSERT_SPACES)) {
         gboolean insert_spaces;
 
-        insert_spaces =
-            g_settings_get_boolean(settings, BEDIT_SETTINGS_INSERT_SPACES);
+        insert_spaces = g_settings_get_boolean(
+            settings, BEDIT_SETTINGS_INSERT_SPACES
+        );
 
         gtk_source_view_set_insert_spaces_instead_of_tabs(view, insert_spaces);
     }
@@ -704,25 +778,30 @@ void modeline_parser_apply_modeline(GtkSourceView *view) {
 
     if (has_option(&options, MODELINE_SET_RIGHT_MARGIN_POSITION)) {
         gtk_source_view_set_right_margin_position(
-            view, options.right_margin_position);
+            view, options.right_margin_position
+        );
     } else if (check_previous(
-                   view, previous, MODELINE_SET_RIGHT_MARGIN_POSITION)) {
+        view, previous, MODELINE_SET_RIGHT_MARGIN_POSITION
+    )) {
         guint right_margin_pos;
 
         g_settings_get(
-            settings, BEDIT_SETTINGS_RIGHT_MARGIN_POSITION, "u",
-            &right_margin_pos);
+            settings, BEDIT_SETTINGS_RIGHT_MARGIN_POSITION,
+            "u", &right_margin_pos
+        );
         gtk_source_view_set_right_margin_position(view, right_margin_pos);
     }
 
     if (has_option(&options, MODELINE_SET_SHOW_RIGHT_MARGIN)) {
         gtk_source_view_set_show_right_margin(
-            view, options.display_right_margin);
+            view, options.display_right_margin
+        );
     } else if (check_previous(view, previous, MODELINE_SET_SHOW_RIGHT_MARGIN)) {
         gboolean display_right_margin;
 
         display_right_margin = g_settings_get_boolean(
-            settings, BEDIT_SETTINGS_DISPLAY_RIGHT_MARGIN);
+            settings, BEDIT_SETTINGS_DISPLAY_RIGHT_MARGIN
+        );
         gtk_source_view_set_show_right_margin(view, display_right_margin);
     }
 
@@ -737,7 +816,8 @@ void modeline_parser_apply_modeline(GtkSourceView *view) {
 
         g_object_set_data_full(
             G_OBJECT(buffer), MODELINE_OPTIONS_DATA_KEY, previous,
-            (GDestroyNotify)free_modeline_options);
+            (GDestroyNotify)free_modeline_options
+        );
     }
 
     g_object_unref(settings);

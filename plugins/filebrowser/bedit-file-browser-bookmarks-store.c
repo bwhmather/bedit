@@ -852,7 +852,7 @@ static void on_bookmarks_file_changed(
         remove_bookmarks(model);
         init_bookmarks(model);
         break;
-        /* FIXME: shouldn't we also monitor the directory? */
+    /* FIXME: shouldn't we also monitor the directory? */
     case G_FILE_MONITOR_EVENT_DELETED:
         /* Remove bookmarks */
         remove_bookmarks(model);

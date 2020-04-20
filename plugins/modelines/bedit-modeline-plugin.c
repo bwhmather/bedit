@@ -39,13 +39,16 @@ struct _BeditModelinePluginPrivate {
 enum { PROP_0, PROP_VIEW };
 
 static void bedit_view_activatable_iface_init(
-    BeditViewActivatableInterface *iface);
+    BeditViewActivatableInterface *iface
+);
 
 G_DEFINE_DYNAMIC_TYPE_EXTENDED(
     BeditModelinePlugin, bedit_modeline_plugin, PEAS_TYPE_EXTENSION_BASE, 0,
     G_IMPLEMENT_INTERFACE_DYNAMIC(
-        BEDIT_TYPE_VIEW_ACTIVATABLE, bedit_view_activatable_iface_init)
-        G_ADD_PRIVATE_DYNAMIC(BeditModelinePlugin))
+        BEDIT_TYPE_VIEW_ACTIVATABLE, bedit_view_activatable_iface_init
+    )
+    G_ADD_PRIVATE_DYNAMIC(BeditModelinePlugin)
+)
 
 static void bedit_modeline_plugin_constructed(GObject *object) {
     gchar *data_dir;
@@ -84,7 +87,8 @@ static void bedit_modeline_plugin_finalize(GObject *object) {
 }
 
 static void bedit_modeline_plugin_set_property(
-    GObject *object, guint prop_id, const GValue *value, GParamSpec *pspec) {
+    GObject *object, guint prop_id, const GValue *value, GParamSpec *pspec
+) {
     BeditModelinePlugin *plugin = BEDIT_MODELINE_PLUGIN(object);
 
     switch (prop_id) {
@@ -99,7 +103,8 @@ static void bedit_modeline_plugin_set_property(
 }
 
 static void bedit_modeline_plugin_get_property(
-    GObject *object, guint prop_id, GValue *value, GParamSpec *pspec) {
+    GObject *object, guint prop_id, GValue *value, GParamSpec *pspec
+) {
     BeditModelinePlugin *plugin = BEDIT_MODELINE_PLUGIN(object);
 
     switch (prop_id) {
@@ -114,7 +119,8 @@ static void bedit_modeline_plugin_get_property(
 }
 
 static void on_document_loaded_or_saved(
-    BeditDocument *document, GtkSourceView *view) {
+    BeditDocument *document, GtkSourceView *view
+) {
     modeline_parser_apply_modeline(view);
 }
 
@@ -131,15 +137,18 @@ static void bedit_modeline_plugin_activate(BeditViewActivatable *activatable) {
     doc = gtk_text_view_get_buffer(GTK_TEXT_VIEW(plugin->priv->view));
 
     plugin->priv->document_loaded_handler_id = g_signal_connect(
-        doc, "loaded", G_CALLBACK(on_document_loaded_or_saved),
-        plugin->priv->view);
+        doc, "loaded",
+        G_CALLBACK(on_document_loaded_or_saved), plugin->priv->view
+    );
     plugin->priv->document_saved_handler_id = g_signal_connect(
-        doc, "saved", G_CALLBACK(on_document_loaded_or_saved),
-        plugin->priv->view);
+        doc, "saved",
+        G_CALLBACK(on_document_loaded_or_saved), plugin->priv->view
+    );
 }
 
 static void bedit_modeline_plugin_deactivate(
-    BeditViewActivatable *activatable) {
+    BeditViewActivatable *activatable
+) {
     BeditModelinePlugin *plugin;
     GtkTextBuffer *doc;
 
@@ -166,18 +175,21 @@ static void bedit_modeline_plugin_class_init(BeditModelinePluginClass *klass) {
 }
 
 static void bedit_view_activatable_iface_init(
-    BeditViewActivatableInterface *iface) {
+    BeditViewActivatableInterface *iface
+) {
     iface->activate = bedit_modeline_plugin_activate;
     iface->deactivate = bedit_modeline_plugin_deactivate;
 }
 
 static void bedit_modeline_plugin_class_finalize(
-    BeditModelinePluginClass *klass) {}
+    BeditModelinePluginClass *klass
+) {}
 
 G_MODULE_EXPORT void peas_register_types(PeasObjectModule *module) {
     bedit_modeline_plugin_register_type(G_TYPE_MODULE(module));
 
     peas_object_module_register_extension_type(
-        module, BEDIT_TYPE_VIEW_ACTIVATABLE, BEDIT_TYPE_MODELINE_PLUGIN);
+        module, BEDIT_TYPE_VIEW_ACTIVATABLE, BEDIT_TYPE_MODELINE_PLUGIN
+    );
 }
 
