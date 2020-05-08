@@ -65,7 +65,6 @@ typedef struct _BeditFileBrowserWindowActivatablePrivate {
 
     GtkWidget *action_area_button;
     BeditFileBrowserWidget *tree_widget;
-    gboolean auto_root;
     gulong end_loading_handle;
     gboolean confirm_trash;
 
@@ -215,29 +214,6 @@ static void on_end_loading_cb(
     /* Disconnect the signal */
     g_signal_handler_disconnect(store, priv->end_loading_handle);
     priv->end_loading_handle = 0;
-    priv->auto_root = FALSE;
-}
-
-static void prepare_auto_root(BeditFileBrowserWindowActivatable *plugin) {
-    BeditFileBrowserWindowActivatablePrivate *priv;
-    BeditFileBrowserStore *store;
-    
-    g_return_if_fail(BEDIT_IS_FILE_BROWSER_WINDOW_ACTIVATABLE(plugin));
-
-    priv = bedit_file_browser_window_activatable_get_instance_private(plugin);
-
-    priv->auto_root = TRUE;
-
-    store = bedit_file_browser_widget_get_browser_store(priv->tree_widget);
-
-    if (priv->end_loading_handle != 0) {
-        g_signal_handler_disconnect(store, priv->end_loading_handle);
-        priv->end_loading_handle = 0;
-    }
-
-    priv->end_loading_handle = g_signal_connect(
-        store, "end-loading", G_CALLBACK(on_end_loading_cb), plugin
-    );
 }
 
 static void on_click_policy_changed(
@@ -647,16 +623,6 @@ static void on_error_cb(
     g_return_if_fail(BEDIT_IS_FILE_BROWSER_WINDOW_ACTIVATABLE(plugin));
 
     priv = bedit_file_browser_window_activatable_get_instance_private(plugin);
-
-    /* Do not show the error when the root has been set automatically */
-    if (priv->auto_root && (
-        code == BEDIT_FILE_BROWSER_ERROR_SET_ROOT ||
-        code == BEDIT_FILE_BROWSER_ERROR_LOAD_DIRECTORY
-    )) {
-        /* Show bookmarks */
-        bedit_file_browser_widget_show_bookmarks(priv->tree_widget);
-        return;
-    }
 
     switch (code) {
     case BEDIT_FILE_BROWSER_ERROR_NEW_DIRECTORY:
