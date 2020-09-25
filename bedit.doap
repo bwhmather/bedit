@@ -6,63 +6,18 @@
          xmlns="http://usefulinc.com/ns/doap#">
   <name xml:lang="en">bedit</name>
   <shortdesc xml:lang="en">GNOME Text Editor</shortdesc>
-  <description>bedit is the official text editor of the GNOME desktop environment.
+  <description>Bedit is a stripped down fork of Gedit, the official GNOME text editor,
+designed to fit comfortably into a tiling window manager.
 
-While aiming at simplicity and ease of use, bedit is a powerful general purpose text editor
-which features full support for UTF-8, configurable highlighting for various languages and
-many other features making it a great editor for advanced tasks.</description>
-
-  <homepage rdf:resource="http://www.bedit.org" />
-  <mailing-list rdf:resource="http://mail.gnome.org/mailman/listinfo/bedit-list" />
-  <download-page rdf:resource="http://download.gnome.org/sources/bedit/" />
-  <bug-database rdf:resource="https://gitlab.gnome.org/GNOME/bedit/issues/" />
-  <category rdf:resource="http://api.gnome.org/doap-extensions#apps" />
+  <homepage rdf:resource="https://git.sr.ht/~bwhmather/bedit" />
+  <bug-database rdf:resource="https://todo.sr.ht/~bwhmather/bedit" />
   <programming-language>C</programming-language>
   <programming-language>Python</programming-language>
 
   <maintainer>
     <foaf:Person>
-      <foaf:name>Jeremy Bicha</foaf:name>
-      <foaf:mbox rdf:resource="mailto:jbicha@ubuntu.com" />
-      <gnome:userid>jbicha</gnome:userid>
+      <foaf:name>Ben Mather</foaf:name>
+      <foaf:mbox rdf:resource="mailto:bwhmather@bwhmather.com" />
     </foaf:Person>
   </maintainer>
-  <maintainer>
-    <foaf:Person>
-      <foaf:name>Sébastien Wilmet</foaf:name>
-      <foaf:mbox rdf:resource="mailto:swilmet@gnome.org" />
-      <gnome:userid>swilmet</gnome:userid>
-    </foaf:Person>
-  </maintainer>
-
-  <!-- Old maintainers
-  <maintainer>
-    <foaf:Person>
-      <foaf:name>Paolo Maggi</foaf:name>
-      <foaf:mbox rdf:resource="mailto:paolo@gnome.org" />
-      <gnome:userid>paolo</gnome:userid>
-    </foaf:Person>
-  </maintainer>
-  <maintainer>
-    <foaf:Person>
-      <foaf:name>Paolo Borelli</foaf:name>
-      <foaf:mbox rdf:resource="mailto:pborelli@gnome.org" />
-      <gnome:userid>pborelli</gnome:userid>
-    </foaf:Person>
-  </maintainer>
-  <maintainer>
-    <foaf:Person>
-      <foaf:name>Jesse van den Kieboom</foaf:name>
-      <foaf:mbox rdf:resource="mailto:jessevdk@gnome.org" />
-      <gnome:userid>jessevdk</gnome:userid>
-    </foaf:Person>
-  </maintainer>
-  <maintainer>
-    <foaf:Person>
-      <foaf:name>Ignacio Casal Quinteiro</foaf:name>
-      <foaf:mbox rdf:resource="mailto:icq@gnome.org" />
-      <gnome:userid>icq</gnome:userid>
-    </foaf:Person>
-  </maintainer>
-  -->
 </Project>
