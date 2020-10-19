@@ -37,7 +37,7 @@
 #include <gtk/gtk.h>
 
 #include <bedit/bedit-document.h>
-#include <gtksourceview/gtksource.h>
+#include <tepl/tepl.h>
 
 G_BEGIN_DECLS
 
@@ -57,14 +57,14 @@ typedef struct _BeditViewClass BeditViewClass;
 typedef struct _BeditViewPrivate BeditViewPrivate;
 
 struct _BeditView {
-    GtkSourceView view;
+    TeplView view;
 
     /*< private >*/
     BeditViewPrivate *priv;
 };
 
 struct _BeditViewClass {
-    GtkSourceViewClass parent_class;
+    TeplViewClass parent_class;
 
     void (*drop_uris)(BeditView *view, gchar **uri_list);
 

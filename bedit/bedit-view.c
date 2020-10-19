@@ -67,7 +67,7 @@ struct _BeditViewPrivate {
     PangoFontDescription *font_desc;
 };
 
-G_DEFINE_TYPE_WITH_PRIVATE(BeditView, bedit_view, GTK_SOURCE_TYPE_VIEW)
+G_DEFINE_TYPE_WITH_PRIVATE(BeditView, bedit_view, TEPL_TYPE_VIEW)
 
 enum { DROP_URIS, LAST_SIGNAL };
 
