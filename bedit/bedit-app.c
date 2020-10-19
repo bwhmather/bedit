@@ -53,10 +53,6 @@
 #include <libpeas/peas-extension-set.h>
 #include <tepl/tepl.h>
 
-#ifdef ENABLE_INTROSPECTION
-#include <girepository.h>
-#endif
-
 #include "bedit-app-activatable.h"
 #include "bedit-commands-private.h"
 #include "bedit-commands.h"
@@ -1289,12 +1285,6 @@ static void bedit_app_init(BeditApp *app) {
     );
 
     g_application_add_main_option_entries(G_APPLICATION(app), options);
-
-#ifdef ENABLE_INTROSPECTION
-    g_application_add_option_group(
-        G_APPLICATION(app), g_irepository_get_option_group()
-    );
-#endif
 }
 
 /**
