@@ -231,7 +231,7 @@ static gboolean parse_gio_error(
                 uri = g_file_get_uri(location);
             }
 
-            if (uri && bedit_utils_decode_uri(
+            if (uri && tepl_utils_decode_uri(
                 uri, NULL, NULL, &hn, NULL, NULL
             )) {
                 if (hn != NULL) {
