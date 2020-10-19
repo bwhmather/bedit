@@ -132,7 +132,7 @@ static void hide_goto_line_widget(BeditViewFrame *frame, gboolean cancel) {
         gtk_text_buffer_get_iter_at_mark(buffer, &iter, frame->start_mark);
         gtk_text_buffer_place_cursor(buffer, &iter);
 
-        bedit_view_scroll_to_cursor(frame->view);
+        tepl_view_scroll_to_cursor(TEPL_VIEW(frame->view));
     }
 
     if (frame->start_mark != NULL) {
@@ -308,7 +308,7 @@ static void update_goto_line(BeditViewFrame *frame) {
     moved = bedit_document_goto_line(doc, line);
     moved_offset = bedit_document_goto_line_offset(doc, line, line_offset);
 
-    bedit_view_scroll_to_cursor(frame->view);
+    tepl_view_scroll_to_cursor(TEPL_VIEW(frame->view));
 
     if (!moved || !moved_offset) {
         set_goto_line_state(frame, SEARCH_STATE_NOT_FOUND);

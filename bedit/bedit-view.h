@@ -75,14 +75,6 @@ GType bedit_view_get_type(void) G_GNUC_CONST;
 
 GtkWidget *bedit_view_new(BeditDocument *doc);
 
-void bedit_view_cut_clipboard(BeditView *view);
-void bedit_view_copy_clipboard(BeditView *view);
-void bedit_view_paste_clipboard(BeditView *view);
-void bedit_view_delete_selection(BeditView *view);
-void bedit_view_select_all(BeditView *view);
-
-void bedit_view_scroll_to_cursor(BeditView *view);
-
 void bedit_view_set_font(
     BeditView *view, gboolean default_font, const gchar *font_name
 );
