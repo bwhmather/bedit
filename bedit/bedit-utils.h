@@ -57,9 +57,6 @@ gboolean bedit_utils_menu_position_under_tree_view(
 void bedit_utils_set_atk_name_description(
     GtkWidget *widget, const gchar *name, const gchar *description
 );
-void bedit_warning(
-    GtkWindow *parent, const gchar *format, ...
-) G_GNUC_PRINTF(2, 3);
 
 gchar *bedit_utils_location_get_dirname_for_display(GFile *location);
 gboolean bedit_utils_is_valid_location(GFile *location);

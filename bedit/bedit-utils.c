@@ -194,44 +194,6 @@ void bedit_utils_set_atk_relation(
     g_object_unref(G_OBJECT(relation));
 }
 
-void bedit_warning(GtkWindow *parent, const gchar *format, ...) {
-    va_list args;
-    gchar *str;
-    GtkWidget *dialog;
-    GtkWindowGroup *wg = NULL;
-
-    g_return_if_fail(format != NULL);
-
-    if (parent != NULL) {
-        wg = gtk_window_get_group(parent);
-    }
-
-    va_start(args, format);
-    str = g_strdup_vprintf(format, args);
-    va_end(args);
-
-    dialog = gtk_message_dialog_new_with_markup(
-        parent, GTK_DIALOG_MODAL | GTK_DIALOG_DESTROY_WITH_PARENT,
-        GTK_MESSAGE_ERROR, GTK_BUTTONS_OK, "%s", str
-    );
-
-    g_free(str);
-
-    if (wg != NULL) {
-        gtk_window_group_add_window(wg, GTK_WINDOW(dialog));
-    }
-
-    gtk_dialog_set_default_response(GTK_DIALOG(dialog), GTK_RESPONSE_OK);
-
-    gtk_window_set_resizable(GTK_WINDOW(dialog), FALSE);
-
-    g_signal_connect(
-        G_OBJECT(dialog), "response", G_CALLBACK(gtk_widget_destroy), NULL
-    );
-
-    gtk_widget_show(dialog);
-}
-
 static gchar *str_truncate(
     const gchar *string, guint truncate_length, gboolean middle
 ) {
