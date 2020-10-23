@@ -635,12 +635,6 @@ gchar **bedit_utils_drop_get_uris(GtkSelectionData *selection_data) {
     return uri_list;
 }
 
-static void null_ptr(gchar **ptr) {
-    if (ptr) {
-        *ptr = NULL;
-    }
-}
-
 GtkSourceCompressionType bedit_utils_get_compression_type_from_content_type(
     const gchar *content_type
 ) {
