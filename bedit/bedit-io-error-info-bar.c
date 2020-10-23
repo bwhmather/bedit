@@ -339,7 +339,7 @@ GtkWidget *bedit_unrecoverable_reverting_error_info_bar_new(
      * though the dialog uses wrapped text, if the URI doesn't contain
      * white space then the text-wrapping code is too stupid to wrap it.
      */
-    temp_uri_for_display = bedit_utils_str_middle_truncate(
+    temp_uri_for_display = tepl_utils_str_middle_truncate(
         full_formatted_uri, MAX_URI_IN_DIALOG_LENGTH
     );
     g_free(full_formatted_uri);
@@ -423,7 +423,7 @@ GtkWidget *bedit_network_unavailable_info_bar_new(GFile *location) {
 
     full_formatted_uri = g_file_get_parse_name(location);
 
-    temp_uri_for_display = bedit_utils_str_middle_truncate(
+    temp_uri_for_display = tepl_utils_str_middle_truncate(
         full_formatted_uri, MAX_URI_IN_DIALOG_LENGTH
     );
     g_free(full_formatted_uri);
@@ -575,7 +575,7 @@ GtkWidget *bedit_io_loading_error_info_bar_new(
      * though the dialog uses wrapped text, if the URI doesn't contain
      * white space then the text-wrapping code is too stupid to wrap it.
      */
-    temp_uri_for_display = bedit_utils_str_middle_truncate(
+    temp_uri_for_display = tepl_utils_str_middle_truncate(
         full_formatted_uri, MAX_URI_IN_DIALOG_LENGTH
     );
     g_free(full_formatted_uri);
@@ -707,7 +707,7 @@ GtkWidget *bedit_conversion_error_while_saving_info_bar_new(
      * though the dialog uses wrapped text, if the URI doesn't contain
      * white space then the text-wrapping code is too stupid to wrap it.
      */
-    temp_uri_for_display = bedit_utils_str_middle_truncate(
+    temp_uri_for_display = tepl_utils_str_middle_truncate(
         full_formatted_uri, MAX_URI_IN_DIALOG_LENGTH
     );
     g_free(full_formatted_uri);
@@ -840,7 +840,7 @@ GtkWidget *bedit_externally_modified_saving_error_info_bar_new(
      * though the dialog uses wrapped text, if the URI doesn't contain
      * white space then the text-wrapping code is too stupid to wrap it.
      */
-    truncated_uri = bedit_utils_str_middle_truncate(
+    truncated_uri = tepl_utils_str_middle_truncate(
         full_uri, MAX_URI_IN_DIALOG_LENGTH
     );
     escaped_uri = g_markup_escape_text(truncated_uri, -1);
@@ -900,7 +900,7 @@ GtkWidget *bedit_no_backup_saving_error_info_bar_new(
      * though the dialog uses wrapped text, if the URI doesn't contain
      * white space then the text-wrapping code is too stupid to wrap it.
      */
-    truncated_uri = bedit_utils_str_middle_truncate(
+    truncated_uri = tepl_utils_str_middle_truncate(
         full_uri, MAX_URI_IN_DIALOG_LENGTH
     );
     escaped_uri = g_markup_escape_text(truncated_uri, -1);
@@ -953,7 +953,7 @@ GtkWidget *bedit_unrecoverable_saving_error_info_bar_new(
      * though the dialog uses wrapped text, if the URI doesn't contain
      * white space then the text-wrapping code is too stupid to wrap it.
      */
-    temp_uri_for_display = bedit_utils_str_middle_truncate(
+    temp_uri_for_display = tepl_utils_str_middle_truncate(
         full_formatted_uri, MAX_URI_IN_DIALOG_LENGTH
     );
     g_free(full_formatted_uri);
@@ -1063,7 +1063,7 @@ GtkWidget *bedit_externally_modified_info_bar_new(
      * though the dialog uses wrapped text, if the URI doesn't contain
      * white space then the text-wrapping code is too stupid to wrap it.
      */
-    temp_uri_for_display = bedit_utils_str_middle_truncate(
+    temp_uri_for_display = tepl_utils_str_middle_truncate(
         full_formatted_uri, MAX_URI_IN_DIALOG_LENGTH
     );
     g_free(full_formatted_uri);
@@ -1130,7 +1130,7 @@ GtkWidget *bedit_invalid_character_info_bar_new(GFile *location) {
      * though the dialog uses wrapped text, if the URI doesn't contain
      * white space then the text-wrapping code is too stupid to wrap it.
      */
-    temp_uri_for_display = bedit_utils_str_middle_truncate(
+    temp_uri_for_display = tepl_utils_str_middle_truncate(
         full_formatted_uri, MAX_URI_IN_DIALOG_LENGTH
     );
     g_free(full_formatted_uri);

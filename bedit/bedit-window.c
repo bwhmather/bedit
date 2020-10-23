@@ -1168,7 +1168,7 @@ static void set_title(BeditWindow *window) {
     if (len > MAX_TITLE_LENGTH) {
         gchar *tmp;
 
-        tmp = bedit_utils_str_middle_truncate(name, MAX_TITLE_LENGTH);
+        tmp = tepl_utils_str_middle_truncate(name, MAX_TITLE_LENGTH);
         g_free(name);
         name = tmp;
     } else {
@@ -1185,7 +1185,7 @@ static void set_title(BeditWindow *window) {
              * we have a title long 99 + 20, but I think it's a rare enough
              * case to be acceptable. It's justa darn title afterall :)
              */
-            dirname = bedit_utils_str_middle_truncate(
+            dirname = tepl_utils_str_middle_truncate(
                 str, MAX(20, MAX_TITLE_LENGTH - len)
             );
             g_free(str);
