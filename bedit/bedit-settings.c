@@ -41,17 +41,11 @@
 #include "bedit-view.h"
 #include "bedit-window.h"
 
-#define BEDIT_SETTINGS_LOCKDOWN_COMMAND_LINE "disable-command-line"
-#define BEDIT_SETTINGS_LOCKDOWN_PRINTING "disable-printing"
-#define BEDIT_SETTINGS_LOCKDOWN_PRINT_SETUP "disable-print-setup"
-#define BEDIT_SETTINGS_LOCKDOWN_SAVE_TO_DISK "disable-save-to-disk"
-
 #define BEDIT_SETTINGS_SYSTEM_FONT "monospace-font-name"
 
 struct _BeditSettings {
     GObject parent_instance;
 
-    GSettings *lockdown;
     GSettings *interface;
     GSettings *editor;
     GSettings *ui;
@@ -72,32 +66,11 @@ static void bedit_settings_finalize(GObject *object) {
 static void bedit_settings_dispose(GObject *object) {
     BeditSettings *gs = BEDIT_SETTINGS(object);
 
-    g_clear_object(&gs->lockdown);
     g_clear_object(&gs->interface);
     g_clear_object(&gs->editor);
     g_clear_object(&gs->ui);
 
     G_OBJECT_CLASS(bedit_settings_parent_class)->dispose(object);
-}
-
-static void on_lockdown_changed(
-    GSettings *settings, const gchar *key, gpointer useless
-) {
-    gboolean locked;
-    BeditApp *app;
-
-    locked = g_settings_get_boolean(settings, key);
-    app = BEDIT_APP(g_application_get_default());
-
-    if (strcmp(key, BEDIT_SETTINGS_LOCKDOWN_COMMAND_LINE) == 0) {
-        _bedit_app_set_lockdown_bit(app, BEDIT_LOCKDOWN_COMMAND_LINE, locked);
-    } else if (strcmp(key, BEDIT_SETTINGS_LOCKDOWN_PRINTING) == 0) {
-        _bedit_app_set_lockdown_bit(app, BEDIT_LOCKDOWN_PRINTING, locked);
-    } else if (strcmp(key, BEDIT_SETTINGS_LOCKDOWN_PRINT_SETUP) == 0) {
-        _bedit_app_set_lockdown_bit(app, BEDIT_LOCKDOWN_PRINT_SETUP, locked);
-    } else if (strcmp(key, BEDIT_SETTINGS_LOCKDOWN_SAVE_TO_DISK) == 0) {
-        _bedit_app_set_lockdown_bit(app, BEDIT_LOCKDOWN_SAVE_TO_DISK, locked);
-    }
 }
 
 static void set_font(BeditSettings *gs, const gchar *font) {
@@ -300,12 +273,6 @@ static void bedit_settings_init(BeditSettings *gs) {
     gs->ui = g_settings_new("com.bwhmather.bedit.preferences.ui");
 
     /* Load settings */
-    gs->lockdown = g_settings_new("org.gnome.desktop.lockdown");
-
-    g_signal_connect(
-        gs->lockdown, "changed", G_CALLBACK(on_lockdown_changed), NULL
-    );
-
     gs->interface = g_settings_new("org.gnome.desktop.interface");
 
     g_signal_connect(
@@ -349,42 +316,6 @@ static void bedit_settings_class_init(BeditSettingsClass *klass) {
 
 BeditSettings *bedit_settings_new(void) {
     return g_object_new(BEDIT_TYPE_SETTINGS, NULL);
-}
-
-BeditLockdownMask bedit_settings_get_lockdown(BeditSettings *gs) {
-    guint lockdown = 0;
-    gboolean command_line, printing, print_setup, save_to_disk;
-
-    command_line = g_settings_get_boolean(
-        gs->lockdown, BEDIT_SETTINGS_LOCKDOWN_COMMAND_LINE
-    );
-    printing = g_settings_get_boolean(
-        gs->lockdown, BEDIT_SETTINGS_LOCKDOWN_PRINTING
-    );
-    print_setup = g_settings_get_boolean(
-        gs->lockdown, BEDIT_SETTINGS_LOCKDOWN_PRINT_SETUP
-    );
-    save_to_disk = g_settings_get_boolean(
-        gs->lockdown, BEDIT_SETTINGS_LOCKDOWN_SAVE_TO_DISK
-    );
-
-    if (command_line) {
-        lockdown |= BEDIT_LOCKDOWN_COMMAND_LINE;
-    }
-
-    if (printing) {
-        lockdown |= BEDIT_LOCKDOWN_PRINTING;
-    }
-
-    if (print_setup) {
-        lockdown |= BEDIT_LOCKDOWN_PRINT_SETUP;
-    }
-
-    if (save_to_disk) {
-        lockdown |= BEDIT_LOCKDOWN_SAVE_TO_DISK;
-    }
-
-    return lockdown;
 }
 
 gchar *bedit_settings_get_system_font(BeditSettings *gs) {

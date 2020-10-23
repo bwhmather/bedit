@@ -64,16 +64,6 @@ struct _BeditAppClass {
     );
 };
 
-typedef enum {
-    BEDIT_LOCKDOWN_COMMAND_LINE = 1 << 0,
-    BEDIT_LOCKDOWN_PRINTING = 1 << 1,
-    BEDIT_LOCKDOWN_PRINT_SETUP = 1 << 2,
-    BEDIT_LOCKDOWN_SAVE_TO_DISK = 1 << 3
-} BeditLockdownMask;
-
-/* We need to define this here to avoid problems with bindings and gsettings */
-#define BEDIT_LOCKDOWN_ALL 0xF
-
 BeditWindow *bedit_app_create_window(BeditApp *app, GdkScreen *screen);
 
 GList *bedit_app_get_main_windows(BeditApp *app);
@@ -81,9 +71,6 @@ GList *bedit_app_get_main_windows(BeditApp *app);
 GList *bedit_app_get_documents(BeditApp *app);
 
 GList *bedit_app_get_views(BeditApp *app);
-
-/* Lockdown state */
-BeditLockdownMask bedit_app_get_lockdown(BeditApp *app);
 
 gboolean bedit_app_show_help(
     BeditApp *app, GtkWindow *parent, const gchar *name, const gchar *link_id

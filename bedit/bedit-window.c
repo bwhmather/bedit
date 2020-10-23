@@ -598,7 +598,6 @@ static void update_actions_sensitivity(BeditWindow *window) {
     gboolean search_active;
     gboolean replace_active;
     GtkClipboard *clipboard;
-    BeditLockdownMask lockdown;
     gboolean enable_syntax_highlighting;
 
     bedit_debug(DEBUG_WINDOW);
@@ -625,8 +624,6 @@ static void update_actions_sensitivity(BeditWindow *window) {
         BEDIT_SEARCHBAR(window->priv->searchbar)
     );
 
-    lockdown = bedit_app_get_lockdown(BEDIT_APP(g_application_get_default()));
-
     clipboard = gtk_widget_get_clipboard(
         GTK_WIDGET(window), GDK_SELECTION_CLIPBOARD
     );
@@ -641,8 +638,7 @@ static void update_actions_sensitivity(BeditWindow *window) {
             (state == BEDIT_TAB_STATE_EXTERNALLY_MODIFIED_NOTIFICATION)
         ) &&
         (file != NULL) &&
-        !gtk_source_file_is_readonly(file) &&
-        !(lockdown & BEDIT_LOCKDOWN_SAVE_TO_DISK)
+        !gtk_source_file_is_readonly(file)
     );
 
     action = g_action_map_lookup_action(
@@ -655,8 +651,7 @@ static void update_actions_sensitivity(BeditWindow *window) {
             (state == BEDIT_TAB_STATE_SAVING_ERROR) ||
             (state == BEDIT_TAB_STATE_EXTERNALLY_MODIFIED_NOTIFICATION)
         ) &&
-        (doc != NULL) &&
-        !(lockdown & BEDIT_LOCKDOWN_SAVE_TO_DISK)
+        (doc != NULL)
     );
 
     action = g_action_map_lookup_action(
@@ -689,8 +684,7 @@ static void update_actions_sensitivity(BeditWindow *window) {
             (state == BEDIT_TAB_STATE_NORMAL) ||
             (state == BEDIT_TAB_STATE_SHOWING_PRINT_PREVIEW)
         ) &&
-        (doc != NULL) &&
-        !(lockdown & BEDIT_LOCKDOWN_PRINTING)
+        (doc != NULL)
     );
 
     action = g_action_map_lookup_action(
@@ -897,7 +891,6 @@ static void update_actions_sensitivity(BeditWindow *window) {
     g_simple_action_set_enabled(
         G_SIMPLE_ACTION(action),
         !(window->priv->state & BEDIT_WINDOW_STATE_PRINTING) &&
-        !(lockdown & BEDIT_LOCKDOWN_SAVE_TO_DISK) &&
         num_tabs > 0
     );
 
@@ -1503,28 +1496,6 @@ static void on_switched_page(
     update_actions_sensitivity(window);
 
     g_signal_emit(G_OBJECT(window), signals[ACTIVE_TAB_CHANGED], 0, new_tab);
-}
-
-static void set_auto_save_enabled(BeditTab *tab, gpointer autosave) {
-    bedit_tab_set_auto_save_enabled(tab, GPOINTER_TO_BOOLEAN(autosave));
-}
-
-void _bedit_window_set_lockdown(
-    BeditWindow *window, BeditLockdownMask lockdown
-) {
-    gboolean autosave;
-
-    /* start/stop autosave in each existing tab */
-    autosave = g_settings_get_boolean(
-        window->priv->editor_settings, BEDIT_SETTINGS_AUTO_SAVE
-    );
-
-    bedit_notebook_foreach_tab(
-        window->priv->notebook, (GtkCallback)set_auto_save_enabled,
-        &autosave
-    );
-
-    update_actions_sensitivity(window);
 }
 
 static void analyze_tab_state(BeditTab *tab, BeditWindow *window) {

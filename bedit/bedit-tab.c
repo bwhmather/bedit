@@ -1187,7 +1187,6 @@ void _bedit_tab_set_network_available(BeditTab *tab, gboolean enable) {
 }
 
 static void bedit_tab_init(BeditTab *tab) {
-    BeditLockdownMask lockdown;
     gboolean auto_save;
     gint auto_save_interval;
     BeditDocument *doc;
@@ -1220,9 +1219,7 @@ static void bedit_tab_init(BeditTab *tab) {
 
     app = BEDIT_APP(g_application_get_default());
 
-    lockdown = bedit_app_get_lockdown(app);
-    tab->auto_save = auto_save && !(lockdown & BEDIT_LOCKDOWN_SAVE_TO_DISK);
-    tab->auto_save = (tab->auto_save != FALSE);
+    tab->auto_save = auto_save != FALSE;
 
     tab->auto_save_interval = auto_save_interval;
 
@@ -2740,19 +2737,11 @@ gboolean bedit_tab_get_auto_save_enabled(BeditTab *tab) {
  * autosave timeout if the document is new or is read-only
  **/
 void bedit_tab_set_auto_save_enabled(BeditTab *tab, gboolean enable) {
-    BeditLockdownMask lockdown;
-
     bedit_debug(DEBUG_TAB);
 
     g_return_if_fail(BEDIT_IS_TAB(tab));
 
     enable = enable != FALSE;
-
-    /* Force disabling when lockdown is active */
-    lockdown = bedit_app_get_lockdown(BEDIT_APP(g_application_get_default()));
-    if (lockdown & BEDIT_LOCKDOWN_SAVE_TO_DISK) {
-        enable = FALSE;
-    }
 
     if (tab->auto_save != enable) {
         tab->auto_save = enable;

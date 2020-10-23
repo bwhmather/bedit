@@ -42,8 +42,6 @@ G_DECLARE_FINAL_TYPE(BeditSettings, bedit_settings, BEDIT, SETTINGS, GObject)
 
 BeditSettings *bedit_settings_new(void);
 
-BeditLockdownMask bedit_settings_get_lockdown(BeditSettings *gs);
-
 gchar *bedit_settings_get_system_font(BeditSettings *gs);
 
 GSList *bedit_settings_get_candidate_encodings(gboolean *default_candidates);

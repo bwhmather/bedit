@@ -34,19 +34,6 @@
 
 G_BEGIN_DECLS
 
-void _bedit_app_set_lockdown(BeditApp *app, BeditLockdownMask lockdown);
-
-void _bedit_app_set_lockdown_bit(
-    BeditApp *app, BeditLockdownMask bit, gboolean value
-);
-
-/* This one is a bedit-window function, but we declare it here to avoid
- * #include headaches since it needs the BeditLockdownMask declaration.
- */
-void _bedit_window_set_lockdown(
-    BeditWindow *window, BeditLockdownMask lockdown
-);
-
 /* global print config */
 GtkPageSetup *_bedit_app_get_default_page_setup(BeditApp *app);
 void _bedit_app_set_default_page_setup(

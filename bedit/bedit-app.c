@@ -75,8 +75,6 @@ typedef struct {
 
     GtkCssProvider *theme_provider;
 
-    BeditLockdownMask lockdown;
-
     GtkPageSetup *page_setup;
     GtkPrintSettings *print_settings;
 
@@ -102,10 +100,6 @@ typedef struct {
     gint column_position;
     GApplicationCommandLine *command_line;
 } BeditAppPrivate;
-
-enum { PROP_0, PROP_LOCKDOWN, LAST_PROP };
-
-static GParamSpec *properties[LAST_PROP];
 
 static const GOptionEntry options[] = {
     /* Version */
@@ -205,21 +199,6 @@ static void bedit_app_dispose(GObject *object) {
     g_clear_object(&priv->line_col_menu);
 
     G_OBJECT_CLASS(bedit_app_parent_class)->dispose(object);
-}
-
-static void bedit_app_get_property(
-    GObject *object, guint prop_id, GValue *value, GParamSpec *pspec
-) {
-    BeditApp *app = BEDIT_APP(object);
-
-    switch (prop_id) {
-    case PROP_LOCKDOWN:
-        g_value_set_flags(value, bedit_app_get_lockdown(app));
-        break;
-    default:
-        G_OBJECT_WARN_INVALID_PROPERTY_ID(object, prop_id, pspec);
-        break;
-    }
 }
 
 static gchar *bedit_app_help_link_id_impl(
@@ -674,9 +653,6 @@ static void bedit_app_startup(GApplication *application) {
     priv->settings = bedit_settings_new();
     priv->ui_settings = g_settings_new("com.bwhmather.bedit.preferences.ui");
     priv->window_settings = g_settings_new("com.bwhmather.bedit.state.window");
-
-    /* initial lockdown state */
-    priv->lockdown = bedit_settings_get_lockdown(priv->settings);
 
     g_action_map_add_action_entries(
         G_ACTION_MAP(application), app_entries, G_N_ELEMENTS(app_entries),
@@ -1178,7 +1154,6 @@ static void bedit_app_class_init(BeditAppClass *klass) {
     GApplicationClass *app_class = G_APPLICATION_CLASS(klass);
 
     object_class->dispose = bedit_app_dispose;
-    object_class->get_property = bedit_app_get_property;
 
     app_class->startup = bedit_app_startup;
     app_class->activate = bedit_app_activate;
@@ -1191,13 +1166,6 @@ static void bedit_app_class_init(BeditAppClass *klass) {
     klass->help_link_id = bedit_app_help_link_id_impl;
     klass->set_window_title = bedit_app_set_window_title_impl;
     klass->create_window = bedit_app_create_window_impl;
-
-    properties[PROP_LOCKDOWN] = g_param_spec_flags(
-        "lockdown", "Lockdown", "The lockdown mask", BEDIT_TYPE_LOCKDOWN_MASK,
-        0, G_PARAM_READABLE | G_PARAM_STATIC_STRINGS
-    );
-
-    g_object_class_install_properties(object_class, LAST_PROP, properties);
 }
 
 static void load_page_setup(BeditApp *app) {
@@ -1445,24 +1413,6 @@ GList *bedit_app_get_views(BeditApp *app) {
     return res;
 }
 
-/**
- * bedit_app_get_lockdown:
- * @app: a #BeditApp
- *
- * Gets the lockdown mask (see #BeditLockdownMask) for the application.
- * The lockdown mask determines which functions are locked down using
- * the GNOME-wise lockdown GConf keys.
- **/
-BeditLockdownMask bedit_app_get_lockdown(BeditApp *app) {
-    BeditAppPrivate *priv;
-
-    g_return_val_if_fail(BEDIT_IS_APP(app), BEDIT_LOCKDOWN_ALL);
-
-    priv = bedit_app_get_instance_private(app);
-
-    return priv->lockdown;
-}
-
 gboolean bedit_app_show_help(
     BeditApp *app, GtkWindow *parent, const gchar *name, const gchar *link_id
 ) {
@@ -1545,51 +1495,6 @@ static GMenuModel *find_extension_point_section(
     }
 
     return section;
-}
-
-static void app_lockdown_changed(BeditApp *app) {
-    BeditAppPrivate *priv;
-    GList *windows, *l;
-
-    priv = bedit_app_get_instance_private(app);
-
-    windows = gtk_application_get_windows(GTK_APPLICATION(app));
-    for (l = windows; l != NULL; l = g_list_next(l)) {
-        if (BEDIT_IS_WINDOW(l->data)) {
-            _bedit_window_set_lockdown(BEDIT_WINDOW(l->data), priv->lockdown);
-        }
-    }
-
-    g_object_notify(G_OBJECT(app), "lockdown");
-}
-
-void _bedit_app_set_lockdown(BeditApp *app, BeditLockdownMask lockdown) {
-    BeditAppPrivate *priv;
-
-    g_return_if_fail(BEDIT_IS_APP(app));
-
-    priv = bedit_app_get_instance_private(app);
-
-    priv->lockdown = lockdown;
-    app_lockdown_changed(app);
-}
-
-void _bedit_app_set_lockdown_bit(
-    BeditApp *app, BeditLockdownMask bit, gboolean value
-) {
-    BeditAppPrivate *priv;
-
-    g_return_if_fail(BEDIT_IS_APP(app));
-
-    priv = bedit_app_get_instance_private(app);
-
-    if (value) {
-        priv->lockdown |= bit;
-    } else {
-        priv->lockdown &= ~bit;
-    }
-
-    app_lockdown_changed(app);
 }
 
 /* Returns a copy */
