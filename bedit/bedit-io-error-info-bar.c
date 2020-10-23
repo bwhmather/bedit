@@ -896,44 +896,25 @@ GtkWidget *bedit_externally_modified_saving_error_info_bar_new(
 GtkWidget *bedit_no_backup_saving_error_info_bar_new(
     GFile *location, const GError *error
 ) {
-    GtkWidget *info_bar;
-    GtkWidget *hbox_content;
-    GtkWidget *vbox;
-    gchar *primary_markup;
-    gchar *secondary_markup;
-    GtkWidget *primary_label;
-    GtkWidget *secondary_label;
-    gchar *primary_text;
-    const gchar *secondary_text;
-    gchar *full_formatted_uri;
-    gchar *uri_for_display;
-    gchar *temp_uri_for_display;
-    gboolean create_backup_copy;
-    GSettings *editor_settings;
+    TeplInfoBar *info_bar;
+    gchar *full_uri;
+    gchar *truncated_uri;
+    gchar *escaped_uri;
+    gchar *primary_msg;
+    const gchar *secondary_msg;
 
     g_return_val_if_fail(G_IS_FILE(location), NULL);
-    g_return_val_if_fail(error != NULL, NULL);
     g_return_val_if_fail(
-        error->domain == G_IO_ERROR &&
-        error->code == G_IO_ERROR_CANT_CREATE_BACKUP,
-        NULL
+        g_error_matches(error, G_IO_ERROR, G_IO_ERROR_CANT_CREATE_BACKUP), NULL
     );
 
-    full_formatted_uri = g_file_get_parse_name(location);
+    info_bar = tepl_info_bar_new();
 
-    /* Truncate the URI so it doesn't get insanely wide. Note that even
-     * though the dialog uses wrapped text, if the URI doesn't contain
-     * white space then the text-wrapping code is too stupid to wrap it.
-     */
-    temp_uri_for_display = bedit_utils_str_middle_truncate(
-        full_formatted_uri, MAX_URI_IN_DIALOG_LENGTH
+    tepl_info_bar_set_buttons_orientation(
+        info_bar, GTK_ORIENTATION_HORIZONTAL
     );
-    g_free(full_formatted_uri);
 
-    uri_for_display = g_markup_escape_text(temp_uri_for_display, -1);
-    g_free(temp_uri_for_display);
-
-    info_bar = gtk_info_bar_new();
+    gtk_info_bar_set_message_type(GTK_INFO_BAR(info_bar), GTK_MESSAGE_WARNING);
 
     gtk_info_bar_add_button(
         GTK_INFO_BAR(info_bar), _("S_ave Anyway"), GTK_RESPONSE_YES
@@ -941,66 +922,37 @@ GtkWidget *bedit_no_backup_saving_error_info_bar_new(
     gtk_info_bar_add_button(
         GTK_INFO_BAR(info_bar), _("D_on’t Save"), GTK_RESPONSE_CANCEL
     );
-    gtk_info_bar_set_message_type(GTK_INFO_BAR(info_bar), GTK_MESSAGE_WARNING);
 
-    hbox_content = gtk_box_new(GTK_ORIENTATION_HORIZONTAL, 8);
-
-    vbox = gtk_box_new(GTK_ORIENTATION_VERTICAL, 6);
-    gtk_box_pack_start(GTK_BOX(hbox_content), vbox, TRUE, TRUE, 0);
-
-    editor_settings = g_settings_new("com.bwhmather.bedit.preferences.editor");
-
-    create_backup_copy = g_settings_get_boolean(
-        editor_settings, BEDIT_SETTINGS_CREATE_BACKUP_COPY
+    full_uri = g_file_get_parse_name(location);
+    /* Truncate the URI so it doesn't get insanely wide. Note that even
+     * though the dialog uses wrapped text, if the URI doesn't contain
+     * white space then the text-wrapping code is too stupid to wrap it.
+     */
+    truncated_uri = bedit_utils_str_middle_truncate(
+        full_uri, MAX_URI_IN_DIALOG_LENGTH
     );
-    g_object_unref(editor_settings);
+    escaped_uri = g_markup_escape_text(truncated_uri, -1);
 
-    /* FIXME: review this messages */
-    if (create_backup_copy) {
-        primary_text = g_strdup_printf(
-            _("Could not create a backup file while saving “%s”"),
-            uri_for_display
-        );
-    } else {
-        primary_text = g_strdup_printf(
-            _("Could not create a temporary backup file while saving “%s”"),
-            uri_for_display
-        );
-    }
+    primary_msg = g_strdup_printf(
+        _("Could not create a backup file while saving “%s”"),
+        escaped_uri
+    );
+    tepl_info_bar_add_primary_message(info_bar, primary_msg);
 
-    g_free(uri_for_display);
-
-    primary_markup = g_strdup_printf("<b>%s</b>", primary_text);
-    g_free(primary_text);
-    primary_label = gtk_label_new(primary_markup);
-    g_free(primary_markup);
-    gtk_box_pack_start(GTK_BOX(vbox), primary_label, TRUE, TRUE, 0);
-    gtk_label_set_use_markup(GTK_LABEL(primary_label), TRUE);
-    gtk_label_set_line_wrap(GTK_LABEL(primary_label), TRUE);
-    gtk_widget_set_halign(primary_label, GTK_ALIGN_START);
-    gtk_widget_set_can_focus(primary_label, TRUE);
-    gtk_label_set_selectable(GTK_LABEL(primary_label), TRUE);
-
-    secondary_text = _(
+    secondary_msg = _(
         "Could not back up the old copy of the file before saving the new one. "
         "You can ignore this warning and save the file anyway, but if an error "
         "occurs while saving, you could lose the old copy of the file. Save "
         "anyway?"
     );
-    secondary_markup = g_strdup_printf("<small>%s</small>", secondary_text);
-    secondary_label = gtk_label_new(secondary_markup);
-    g_free(secondary_markup);
-    gtk_box_pack_start(GTK_BOX(vbox), secondary_label, TRUE, TRUE, 0);
-    gtk_widget_set_can_focus(secondary_label, TRUE);
-    gtk_label_set_use_markup(GTK_LABEL(secondary_label), TRUE);
-    gtk_label_set_line_wrap(GTK_LABEL(secondary_label), TRUE);
-    gtk_label_set_selectable(GTK_LABEL(secondary_label), TRUE);
-    gtk_widget_set_halign(secondary_label, GTK_ALIGN_START);
+    tepl_info_bar_add_secondary_message(info_bar, secondary_msg);
 
-    gtk_widget_show_all(hbox_content);
-    set_contents(info_bar, hbox_content);
+    g_free(full_uri);
+    g_free(truncated_uri);
+    g_free(escaped_uri);
+    g_free(primary_msg);
 
-    return info_bar;
+    return GTK_WIDGET(info_bar);
 }
 
 GtkWidget *bedit_unrecoverable_saving_error_info_bar_new(
