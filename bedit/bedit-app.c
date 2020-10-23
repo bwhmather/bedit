@@ -91,7 +91,6 @@ typedef struct {
     GNetworkMonitor *monitor;
 
     /* command line parsing */
-    gboolean new_window;
     gboolean new_document;
     const GtkSourceEncoding *encoding;
     GInputStream *stdin_stream;
@@ -124,13 +123,6 @@ static const GOptionEntry options[] = {
             "on the command line"
         ),
         N_("ENCODING")
-    },
-
-    /* Open a new window */
-    {
-        "new-window", '\0', 0, G_OPTION_ARG_NONE, NULL,
-        N_("Create a new top-level window in an existing instance of bedit"),
-        NULL
     },
 
     /* Create a new empty document */
@@ -263,23 +255,6 @@ static void bedit_app_set_window_title_impl(
     gtk_window_set_title(GTK_WINDOW(window), title);
 }
 
-static BeditWindow *get_active_window(GtkApplication *app) {
-    GList *windows;
-    GList *l;
-
-    /* Gtk documentation says the window list is always in MRU order */
-    windows = gtk_application_get_windows(app);
-    for (l = windows; l != NULL; l = l->next) {
-        GtkWindow *window = l->data;
-
-        if (BEDIT_IS_WINDOW(window)) {
-            return BEDIT_WINDOW(window);
-        }
-    }
-
-    return NULL;
-}
-
 static void set_command_line_wait(BeditApp *app, BeditTab *tab) {
     BeditAppPrivate *priv;
 
@@ -298,7 +273,7 @@ static void set_command_line_wait_doc(BeditDocument *doc, BeditApp *app) {
 }
 
 static void open_files(
-    GApplication *application, gboolean new_window, gboolean new_document,
+    GApplication *application, gboolean new_document,
     gint line_position, gint column_position,
     const GtkSourceEncoding *encoding,
     GInputStream *stdin_stream, GSList *file_list,
@@ -308,17 +283,11 @@ static void open_files(
     BeditTab *tab;
     gboolean doc_created = FALSE;
 
-    if (!new_window) {
-        window = get_active_window(GTK_APPLICATION(application));
-    }
+    bedit_debug_message(DEBUG_APP, "Create main window");
+    window = bedit_app_create_window(BEDIT_APP(application), NULL);
 
-    if (window == NULL) {
-        bedit_debug_message(DEBUG_APP, "Create main window");
-        window = bedit_app_create_window(BEDIT_APP(application), NULL);
-
-        bedit_debug_message(DEBUG_APP, "Show window");
-        gtk_widget_show(GTK_WIDGET(window));
-    }
+    bedit_debug_message(DEBUG_APP, "Show window");
+    gtk_widget_show(GTK_WIDGET(window));
 
     if (stdin_stream) {
         bedit_debug_message(DEBUG_APP, "Load stdin");
@@ -392,7 +361,7 @@ static void new_document_activated(
 
     application = G_APPLICATION(user_data);
 
-    open_files(application, FALSE, TRUE, 0, 0, NULL, NULL, NULL, NULL);
+    open_files(application, TRUE, 0, 0, NULL, NULL, NULL, NULL);
 }
 
 static void preferences_activated(
@@ -806,7 +775,7 @@ static void bedit_app_activate(GApplication *application) {
     priv = bedit_app_get_instance_private(BEDIT_APP(application));
 
     open_files(
-        application, priv->new_window, priv->new_document, priv->line_position,
+        application, priv->new_document, priv->line_position,
         priv->column_position, priv->encoding, priv->stdin_stream,
         priv->file_list, priv->command_line
     );
@@ -820,7 +789,6 @@ static void clear_options(BeditApp *app) {
     g_clear_object(&priv->stdin_stream);
     g_slist_free_full(priv->file_list, g_object_unref);
 
-    priv->new_window = FALSE;
     priv->new_document = FALSE;
     priv->encoding = NULL;
     priv->file_list = NULL;
@@ -861,9 +829,6 @@ static gint bedit_app_command_line(
 
     command_line_options = g_application_command_line_get_options_dict(cl);
 
-    g_variant_dict_lookup(
-        command_line_options, "new-window", "b", &priv->new_window
-    );
     g_variant_dict_lookup(
         command_line_options, "new-document", "b", &priv->new_document
     );
@@ -994,7 +959,7 @@ static void bedit_app_open(
 
     file_list = g_slist_reverse(file_list);
 
-    open_files(application, FALSE, FALSE, 0, 0, NULL, NULL, file_list, NULL);
+    open_files(application, FALSE, 0, 0, NULL, NULL, file_list, NULL);
 
     g_slist_free(file_list);
 }
