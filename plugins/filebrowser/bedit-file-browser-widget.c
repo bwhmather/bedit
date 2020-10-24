@@ -107,8 +107,6 @@ struct _BeditFileBrowserWidgetPrivate {
     BeditFileBrowserStore *file_store;
     BeditFileBrowserBookmarksStore *bookmarks_store;
 
-    GHashTable *bookmarks_hash;
-
     GMenuModel *dir_menu;
     GMenuModel *bookmarks_menu;
 
@@ -202,13 +200,6 @@ static gboolean on_entry_filter_activate(BeditFileBrowserWidget *obj);
 static void on_location_jump_activate(
     GtkMenuItem *item, BeditFileBrowserWidget *obj
 );
-static void on_bookmarks_row_changed(
-    GtkTreeModel *model, GtkTreePath *path, GtkTreeIter *iter,
-    BeditFileBrowserWidget *obj
-);
-static void on_bookmarks_row_deleted(
-    GtkTreeModel *model, GtkTreePath *path, BeditFileBrowserWidget *obj
-);
 static void on_filter_mode_changed(
     BeditFileBrowserStore *model, GParamSpec *param,
     BeditFileBrowserWidget *obj
@@ -272,23 +263,6 @@ G_DEFINE_DYNAMIC_TYPE_EXTENDED(
     BeditFileBrowserWidget, bedit_file_browser_widget, GTK_TYPE_GRID, 0,
     G_ADD_PRIVATE_DYNAMIC(BeditFileBrowserWidget)
 )
-
-static void free_name_icon(gpointer data) {
-    NameIcon *item = (NameIcon *)(data);
-
-    if (item == NULL) {
-        return;
-    }
-
-    g_free(item->icon_name);
-    g_free(item->name);
-
-    if (item->icon) {
-        g_object_unref(item->icon);
-    }
-
-    g_slice_free(NameIcon, item);
-}
 
 static FilterFunc *filter_func_new(
     BeditFileBrowserWidget *obj, BeditFileBrowserWidgetFilterFunc func,
@@ -390,11 +364,6 @@ static void bedit_file_browser_widget_dispose(GObject *object) {
 
     g_list_free_full(priv->locations, (GDestroyNotify)location_free);
     priv->locations = NULL;
-
-    if (priv->bookmarks_hash != NULL) {
-        g_hash_table_unref(priv->bookmarks_hash);
-        priv->bookmarks_hash = NULL;
-    }
 
     cancel_async_operation(obj);
 
@@ -594,28 +563,6 @@ static gboolean separator_func(
     return (id == SEPARATOR_ID);
 }
 
-static gboolean get_from_bookmark_file(
-    BeditFileBrowserWidget *obj, GFile *file, gchar **name, gchar **icon_name,
-    GdkPixbuf **icon
-) {
-    NameIcon *item = (NameIcon *) g_hash_table_lookup(
-        obj->priv->bookmarks_hash, file
-    );
-
-    if (item == NULL) {
-        return FALSE;
-    }
-
-    *name = g_strdup(item->name);
-    *icon_name = g_strdup(item->icon_name);
-
-    if (icon != NULL && item->icon != NULL) {
-        *icon = g_object_ref(item->icon);
-    }
-
-    return TRUE;
-}
-
 static void insert_path_item(
     BeditFileBrowserWidget *obj, GFile *file, GtkTreeIter *after,
     GtkTreeIter *iter
@@ -624,14 +571,8 @@ static void insert_path_item(
     gchar *icon_name = NULL;
     GdkPixbuf *icon = NULL;
 
-    /* Try to get the icon and name from the bookmarks hash */
-    if (!get_from_bookmark_file(obj, file, &unescape, &icon_name, &icon)) {
-        /* It's not a bookmark, fetch the name and the icon ourselves */
-        unescape = bedit_file_browser_utils_file_basename(file);
-
-        /* Get the icon */
-        icon_name = bedit_file_browser_utils_symbolic_icon_name_from_file(file);
-    }
+    unescape = bedit_file_browser_utils_file_basename(file);
+    icon_name = bedit_file_browser_utils_symbolic_icon_name_from_file(file);
 
     gtk_list_store_insert_after(obj->priv->locations_model, iter, after);
 
@@ -795,59 +736,6 @@ static gboolean filter_real(
     return TRUE;
 }
 
-static void add_bookmark_hash(BeditFileBrowserWidget *obj, GtkTreeIter *iter) {
-    GtkTreeModel *model = GTK_TREE_MODEL(obj->priv->bookmarks_store);
-    GdkPixbuf *pixbuf;
-    gchar *name;
-    gchar *icon_name;
-    GFile *location;
-    NameIcon *item;
-
-    if (!(location = bedit_file_browser_bookmarks_store_get_location(
-        obj->priv->bookmarks_store, iter
-    ))) {
-        return;
-    }
-
-    gtk_tree_model_get(
-        model, iter,
-        BEDIT_FILE_BROWSER_BOOKMARKS_STORE_COLUMN_ICON, &pixbuf,
-        BEDIT_FILE_BROWSER_BOOKMARKS_STORE_COLUMN_ICON_NAME, &icon_name,
-        BEDIT_FILE_BROWSER_BOOKMARKS_STORE_COLUMN_NAME, &name,
-        -1
-    );
-
-    item = g_slice_new(NameIcon);
-    item->name = name;
-    item->icon_name = icon_name;
-    item->icon = pixbuf;
-
-    g_hash_table_insert(obj->priv->bookmarks_hash, location, item);
-}
-
-static void init_bookmarks_hash(BeditFileBrowserWidget *obj) {
-    GtkTreeModel *model = GTK_TREE_MODEL(obj->priv->bookmarks_store);
-    GtkTreeIter iter;
-
-    if (!gtk_tree_model_get_iter_first(model, &iter)) {
-        return;
-    }
-
-    do {
-        add_bookmark_hash(obj, &iter);
-    } while (gtk_tree_model_iter_next(model, &iter));
-
-    g_signal_connect(
-        obj->priv->bookmarks_store, "row-changed",
-        G_CALLBACK(on_bookmarks_row_changed), obj
-    );
-
-    g_signal_connect(
-        obj->priv->bookmarks_store, "row-deleted",
-        G_CALLBACK(on_bookmarks_row_deleted), obj
-    );
-}
-
 static void on_begin_loading(
     BeditFileBrowserStore *model, GtkTreeIter *iter,
     BeditFileBrowserWidget *obj
@@ -972,9 +860,6 @@ static void bedit_file_browser_widget_init(BeditFileBrowserWidget *obj) {
     obj->priv = bedit_file_browser_widget_get_instance_private(obj);
 
     obj->priv->filter_pattern_str = g_strdup("");
-    obj->priv->bookmarks_hash = g_hash_table_new_full(
-        g_file_hash, (GEqualFunc)g_file_equal, g_object_unref, free_name_icon
-    );
 
     display = gtk_widget_get_display(GTK_WIDGET(obj));
     obj->priv->busy_cursor = gdk_cursor_new_from_name(display, "progress");
@@ -1130,8 +1015,6 @@ static void bedit_file_browser_widget_init(BeditFileBrowserWidget *obj) {
         obj->priv->file_store, "error",
         G_CALLBACK(on_file_store_error), obj
     );
-
-    init_bookmarks_hash(obj);
 
     /* filter */
     g_signal_connect_swapped(
@@ -1478,11 +1361,7 @@ static GtkWidget *create_goto_menu_item(
     gchar *icon_name = NULL;
     gchar *unescape = NULL;
 
-    if (!get_from_bookmark_file(
-        obj, loc->virtual_root, &unescape, &icon_name, NULL
-    )) {
-        unescape = bedit_file_browser_utils_file_basename(loc->virtual_root);
-    }
+    unescape = bedit_file_browser_utils_file_basename(loc->virtual_root);
 
     result = gtk_menu_item_new_with_label(unescape);
 
@@ -2218,9 +2097,6 @@ void bedit_file_browser_widget_refresh(BeditFileBrowserWidget *obj) {
     if (BEDIT_IS_FILE_BROWSER_STORE(model)) {
         bedit_file_browser_store_refresh(BEDIT_FILE_BROWSER_STORE(model));
     } else if (BEDIT_IS_FILE_BROWSER_BOOKMARKS_STORE(model)) {
-        g_hash_table_ref(obj->priv->bookmarks_hash);
-        g_hash_table_destroy(obj->priv->bookmarks_hash);
-
         bedit_file_browser_bookmarks_store_refresh(
             BEDIT_FILE_BROWSER_BOOKMARKS_STORE(model)
         );
@@ -2923,34 +2799,6 @@ static void on_location_jump_activate(
     } else {
         jump_to_location(obj, location, TRUE);
     }
-}
-
-static void on_bookmarks_row_changed(
-    GtkTreeModel *model, GtkTreePath *path, GtkTreeIter *iter,
-    BeditFileBrowserWidget *obj
-) {
-    add_bookmark_hash(obj, iter);
-}
-
-static void on_bookmarks_row_deleted(
-    GtkTreeModel *model, GtkTreePath *path, BeditFileBrowserWidget *obj
-) {
-    GtkTreeIter iter;
-    GFile *location;
-
-    if (!gtk_tree_model_get_iter(model, &iter, path)) {
-        return;
-    }
-
-    if (!(location = bedit_file_browser_bookmarks_store_get_location(
-        obj->priv->bookmarks_store, &iter
-    ))) {
-        return;
-    }
-
-    g_hash_table_remove(obj->priv->bookmarks_hash, location);
-
-    g_object_unref(location);
 }
 
 static void on_filter_mode_changed(
