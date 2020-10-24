@@ -197,21 +197,6 @@ static void bedit_file_browser_window_activatable_get_property(
     }
 }
 
-static void on_end_loading_cb(
-    BeditFileBrowserStore *store, GtkTreeIter *iter,
-    BeditFileBrowserWindowActivatable *plugin
-) {
-    BeditFileBrowserWindowActivatablePrivate *priv;
-
-    g_return_if_fail(BEDIT_IS_FILE_BROWSER_STORE(store));
-
-    priv = bedit_file_browser_window_activatable_get_instance_private(plugin);
-
-    /* Disconnect the signal */
-    g_signal_handler_disconnect(store, priv->end_loading_handle);
-    priv->end_loading_handle = 0;
-}
-
 static void on_click_policy_changed(
     GSettings *settings, const gchar *key,
     BeditFileBrowserWindowActivatable *plugin
