@@ -1672,22 +1672,27 @@ void bedit_file_browser_widget_set_root_and_virtual_root(
 }
 
 void bedit_file_browser_widget_set_root(
-    BeditFileBrowserWidget *obj, GFile *root, gboolean virtual_root
+    BeditFileBrowserWidget *obj, GFile *root
 ) {
-    GFile *parent;
+    g_return_if_fail(BEDIT_IS_FILE_BROWSER_WIDGET(obj));
 
-    if (!virtual_root) {
-        bedit_file_browser_widget_set_root_and_virtual_root(obj, root, NULL);
-        return;
-    }
+    bedit_file_browser_store_set_root_and_virtual_root(
+        obj->priv->file_store, root, root
+    );
+}
 
-    if (!root) {
-        return;
-    }
+void bedit_file_browser_widget_set_virtual_root(
+    BeditFileBrowserWidget *obj, GFile *virtual_root
+) {
+    GFile *root;
 
-    parent = get_topmost_file(root);
-    bedit_file_browser_widget_set_root_and_virtual_root(obj, parent, root);
-    g_object_unref(parent);
+    g_return_if_fail(BEDIT_IS_FILE_BROWSER_WIDGET(obj));
+    g_return_if_fail(G_IS_FILE(virtual_root));
+
+    root = get_topmost_file(virtual_root);
+    bedit_file_browser_store_set_root_and_virtual_root(
+        obj->priv->file_store, root, virtual_root
+    );
 }
 
 BeditFileBrowserStore *bedit_file_browser_widget_get_browser_store(
@@ -1939,7 +1944,7 @@ static void activate_mount(
 
     root = g_mount_get_root(mount);
 
-    bedit_file_browser_widget_set_root(widget, root, FALSE);
+    bedit_file_browser_widget_set_root(widget, root);
 
     g_object_unref(root);
 }
@@ -2182,9 +2187,9 @@ static void bookmark_open(
             (flags & BEDIT_FILE_BROWSER_BOOKMARKS_STORE_IS_MOUNT) ||
             (flags & BEDIT_FILE_BROWSER_BOOKMARKS_STORE_IS_REMOTE_BOOKMARK)
         ) {
-            bedit_file_browser_widget_set_root(obj, location, FALSE);
+            bedit_file_browser_widget_set_root(obj, location);
         } else {
-            bedit_file_browser_widget_set_root(obj, location, TRUE);
+            bedit_file_browser_widget_set_virtual_root(obj, location);
         }
 
         g_object_unref(location);
@@ -2550,7 +2555,7 @@ static void on_location_entry_activate(
         gtk_widget_grab_focus(GTK_WIDGET(obj->priv->treeview));
         gtk_widget_hide(obj->priv->location_entry);
 
-        bedit_file_browser_widget_set_root(obj, new_root, TRUE);
+        bedit_file_browser_widget_set_virtual_root(obj, new_root);
     }
 
     g_object_unref(new_root);
@@ -2881,7 +2886,7 @@ static void home_activated(
     }
 
     home_location = g_file_new_for_path(g_get_home_dir());
-    bedit_file_browser_widget_set_root(widget, home_location, TRUE);
+    bedit_file_browser_widget_set_virtual_root(widget, home_location);
 
     g_object_unref(home_location);
 }

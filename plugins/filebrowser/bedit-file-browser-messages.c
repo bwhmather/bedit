@@ -205,7 +205,7 @@ static void message_set_root_cb(
             data->widget, root, virtual
         );
     } else {
-        bedit_file_browser_widget_set_root(data->widget, root, TRUE);
+        bedit_file_browser_widget_set_virtual_root(data->widget, root);
     }
 }
 

@@ -132,9 +132,9 @@ static void bedit_file_browser_window_activatable_init(
     BeditFileBrowserWindowActivatable *plugin
 ) {
     BeditFileBrowserWindowActivatablePrivate *priv;
-    
+
     priv = bedit_file_browser_window_activatable_get_instance_private(plugin);
-    
+
     priv->settings = g_settings_new(FILEBROWSER_BASE_SETTINGS);
     priv->terminal_settings = g_settings_new(TERMINAL_BASE_SETTINGS);
     priv->nautilus_settings = settings_try_new(NAUTILUS_BASE_SETTINGS);
@@ -149,7 +149,7 @@ static void bedit_file_browser_window_activatable_init(
 static void bedit_file_browser_window_activatable_dispose(GObject *object) {
     BeditFileBrowserWindowActivatable *plugin;
     BeditFileBrowserWindowActivatablePrivate *priv;
-    
+
     plugin = BEDIT_FILE_BROWSER_WINDOW_ACTIVATABLE(object);
     priv = bedit_file_browser_window_activatable_get_instance_private(plugin);
 
@@ -166,10 +166,10 @@ static void bedit_file_browser_window_activatable_set_property(
 ) {
     BeditFileBrowserWindowActivatable *plugin;
     BeditFileBrowserWindowActivatablePrivate *priv;
-    
+
     plugin = BEDIT_FILE_BROWSER_WINDOW_ACTIVATABLE(object);
     priv = bedit_file_browser_window_activatable_get_instance_private(plugin);
-    
+
     switch (prop_id) {
     case PROP_WINDOW:
         priv->window = BEDIT_WINDOW(g_value_dup_object(value));
@@ -186,10 +186,10 @@ static void bedit_file_browser_window_activatable_get_property(
 ) {
     BeditFileBrowserWindowActivatable *plugin;
     BeditFileBrowserWindowActivatablePrivate *priv;
-    
+
     plugin = BEDIT_FILE_BROWSER_WINDOW_ACTIVATABLE(object);
     priv = bedit_file_browser_window_activatable_get_instance_private(plugin);
-    
+
     switch (prop_id) {
     case PROP_WINDOW:
         g_value_set_object(value, priv->window);
@@ -206,7 +206,7 @@ static void on_end_loading_cb(
     BeditFileBrowserWindowActivatable *plugin
 ) {
     BeditFileBrowserWindowActivatablePrivate *priv;
-    
+
     g_return_if_fail(BEDIT_IS_FILE_BROWSER_STORE(store));
 
     priv = bedit_file_browser_window_activatable_get_instance_private(plugin);
@@ -227,7 +227,7 @@ static void on_click_policy_changed(
     g_return_if_fail(BEDIT_IS_FILE_BROWSER_WINDOW_ACTIVATABLE(plugin));
 
     priv = bedit_file_browser_window_activatable_get_instance_private(plugin);
-    
+
     policy = g_settings_get_enum(settings, key);
 
     view = bedit_file_browser_widget_get_browser_view(priv->tree_widget);
@@ -239,7 +239,7 @@ static void on_confirm_trash_changed(
     BeditFileBrowserWindowActivatable *plugin
 ) {
     BeditFileBrowserWindowActivatablePrivate *priv;
-    
+
     g_return_if_fail(BEDIT_IS_FILE_BROWSER_WINDOW_ACTIVATABLE(plugin));
 
     priv = bedit_file_browser_window_activatable_get_instance_private(plugin);
@@ -308,7 +308,7 @@ static void set_root_from_doc(
     parent = g_file_get_parent(location);
 
     if (parent != NULL) {
-        bedit_file_browser_widget_set_root(priv->tree_widget, parent, TRUE);
+        bedit_file_browser_widget_set_virtual_root(priv->tree_widget, parent);
 
         g_object_unref(parent);
     }
@@ -318,7 +318,7 @@ static void set_active_root(
     BeditFileBrowserWidget *widget, BeditFileBrowserWindowActivatable *plugin
 ) {
     BeditFileBrowserWindowActivatablePrivate *priv;
-    
+
     g_return_if_fail(BEDIT_IS_FILE_BROWSER_WIDGET(widget));
     g_return_if_fail(BEDIT_IS_FILE_BROWSER_WINDOW_ACTIVATABLE(plugin));
 
@@ -387,11 +387,11 @@ static void bedit_file_browser_window_activatable_update_state(
     BeditFileBrowserWindowActivatablePrivate *priv;
     BeditFileBrowserWindowActivatable *plugin;
     BeditDocument *doc;
-    
+
     plugin = BEDIT_FILE_BROWSER_WINDOW_ACTIVATABLE(activatable);
     priv = bedit_file_browser_window_activatable_get_instance_private(plugin);
     doc = bedit_window_get_active_document(priv->window);
-    
+
     bedit_file_browser_widget_set_active_root_enabled(
         priv->tree_widget, doc != NULL && !bedit_document_is_untitled(doc)
     );
@@ -674,7 +674,7 @@ static void on_rename_cb(
 ) {
     GList *documents;
     GList *item;
-    
+
     g_return_if_fail(BEDIT_IS_FILE_BROWSER_STORE(store));
     g_return_if_fail(BEDIT_IS_WINDOW(window));
 
@@ -730,7 +730,7 @@ static void on_virtual_root_changed_cb(
     g_return_if_fail(BEDIT_IS_FILE_BROWSER_WINDOW_ACTIVATABLE(plugin));
 
     priv = bedit_file_browser_window_activatable_get_instance_private(plugin);
-    
+
     virtual_root = bedit_file_browser_store_get_virtual_root(store);
 
     if (virtual_root) {
@@ -801,7 +801,7 @@ static gboolean on_confirm_delete_cb(
     gchar *message;
     gchar *secondary;
     gboolean result;
-    
+
     g_return_val_if_fail(BEDIT_IS_FILE_BROWSER_WIDGET(widget), FALSE);
     g_return_val_if_fail(BEDIT_IS_FILE_BROWSER_STORE(store), FALSE);
     g_return_val_if_fail(BEDIT_IS_FILE_BROWSER_WINDOW_ACTIVATABLE(plugin), FALSE);

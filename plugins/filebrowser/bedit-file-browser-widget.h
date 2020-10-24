@@ -95,7 +95,10 @@ void bedit_file_browser_widget_show_bookmarks(BeditFileBrowserWidget *obj);
 void bedit_file_browser_widget_show_files(BeditFileBrowserWidget *obj);
 
 void bedit_file_browser_widget_set_root(
-    BeditFileBrowserWidget *obj, GFile *root, gboolean virtual_root
+    BeditFileBrowserWidget *obj, GFile *root
+);
+void bedit_file_browser_widget_set_virtual_root(
+    BeditFileBrowserWidget *obj, GFile *virtual_root
 );
 void bedit_file_browser_widget_set_root_and_virtual_root(
     BeditFileBrowserWidget *obj, GFile *root, GFile *virtual_root
