@@ -1720,7 +1720,7 @@ void bedit_file_browser_widget_set_virtual_root(
 }
 
 GFile *bedit_file_browser_widget_get_virtual_root(BeditFileBrowserWidget *obj) {
-    g_return_if_fail(BEDIT_IS_FILE_BROWSER_WIDGET(obj));
+    g_return_val_if_fail(BEDIT_IS_FILE_BROWSER_WIDGET(obj), NULL);
 
     return bedit_file_browser_store_get_virtual_root(obj->priv->file_store);
 }
