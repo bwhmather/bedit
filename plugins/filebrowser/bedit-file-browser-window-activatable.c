@@ -85,10 +85,6 @@ static void on_error_cb(
     BeditFileBrowserWidget *widget, guint code, gchar const *message,
     BeditFileBrowserWindowActivatable *plugin
 );
-static void on_virtual_root_changed_cb(
-    BeditFileBrowserStore *model, GParamSpec *param,
-    BeditFileBrowserWindowActivatable *plugin
-);
 static void on_rename_cb(
     BeditFileBrowserStore *model, GFile *oldfile, GFile *newfile,
     BeditWindow *window
@@ -516,9 +512,10 @@ static void bedit_file_browser_window_activatable_activate(
         G_SETTINGS_BIND_GET | G_SETTINGS_BIND_SET
     );
 
-    g_signal_connect(
-        store, "notify::virtual-root",
-        G_CALLBACK(on_virtual_root_changed_cb), plugin
+    g_object_bind_property(
+        priv->window, "default-location",
+        priv->tree_widget, "virtual-root",
+        G_BINDING_BIDIRECTIONAL | G_BINDING_SYNC_CREATE
     );
 
     g_signal_connect(
@@ -593,15 +590,6 @@ void _bedit_file_browser_window_activatable_register_type(
 ) {
     bedit_file_browser_window_activatable_register_type(type_module);
 }
-
-
-
-
-
-
-
-
-
 
 /* Callbacks */
 static void on_location_activated_cb(
@@ -717,25 +705,6 @@ static void on_rename_cb(
     }
 
     g_list_free(documents);
-}
-
-static void on_virtual_root_changed_cb(
-    BeditFileBrowserStore *store, GParamSpec *param,
-    BeditFileBrowserWindowActivatable *plugin
-) {
-    BeditFileBrowserWindowActivatablePrivate *priv;
-    GFile *virtual_root;
-
-    g_return_if_fail(BEDIT_IS_FILE_BROWSER_STORE(store));
-    g_return_if_fail(BEDIT_IS_FILE_BROWSER_WINDOW_ACTIVATABLE(plugin));
-
-    priv = bedit_file_browser_window_activatable_get_instance_private(plugin);
-
-    virtual_root = bedit_file_browser_store_get_virtual_root(store);
-
-    if (virtual_root) {
-        _bedit_window_set_default_location(priv->window, virtual_root);
-    }
 }
 
 static gchar *get_filename_from_path(GtkTreeModel *model, GtkTreePath *path) {
