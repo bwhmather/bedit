@@ -65,7 +65,6 @@ typedef struct _BeditFileBrowserWindowActivatablePrivate {
 
     GtkWidget *action_area_button;
     BeditFileBrowserWidget *tree_widget;
-    gulong end_loading_handle;
     gboolean confirm_trash;
 
     guint click_policy_handle;
