@@ -63,6 +63,7 @@ enum {
 enum {
     PROP_0,
 
+    PROP_VIRTUAL_ROOT,
     PROP_FILTER_PATTERN,
 };
 
@@ -384,6 +385,13 @@ static void bedit_file_browser_widget_get_property(
     case PROP_FILTER_PATTERN:
         g_value_set_string(value, obj->priv->filter_pattern_str);
         break;
+
+    case PROP_VIRTUAL_ROOT:
+        g_value_take_object(
+            value, bedit_file_browser_widget_get_virtual_root(obj)
+        );
+        break;
+
     default:
         G_OBJECT_WARN_INVALID_PROPERTY_ID(object, prop_id, pspec);
         break;
@@ -401,6 +409,13 @@ static void bedit_file_browser_widget_set_property(
             obj, g_value_get_string(value)
         );
         break;
+
+    case PROP_VIRTUAL_ROOT:
+        bedit_file_browser_widget_set_virtual_root(
+            obj, G_FILE(g_value_dup_object(value))
+        );
+        break;
+
     default:
         G_OBJECT_WARN_INVALID_PROPERTY_ID(object, prop_id, pspec);
         break;
@@ -423,7 +438,16 @@ static void bedit_file_browser_widget_class_init(
         object_class, PROP_FILTER_PATTERN,
         g_param_spec_string(
             "filter-pattern", "Filter Pattern", "The filter pattern", "",
-            G_PARAM_READWRITE
+            G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS
+        )
+    );
+
+    g_object_class_install_property(
+        object_class, PROP_VIRTUAL_ROOT,
+        g_param_spec_object(
+            "virtual-root", "Virtual Root",
+            "The location in the filesystem that widget is currently showing",
+            G_TYPE_FILE, G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS
         )
     );
 
@@ -1695,6 +1719,12 @@ void bedit_file_browser_widget_set_virtual_root(
     );
 }
 
+GFile *bedit_file_browser_widget_get_virtual_root(BeditFileBrowserWidget *obj) {
+    g_return_if_fail(BEDIT_IS_FILE_BROWSER_WIDGET(obj));
+
+    return bedit_file_browser_store_get_virtual_root(obj->priv->file_store);
+}
+
 BeditFileBrowserStore *bedit_file_browser_widget_get_browser_store(
     BeditFileBrowserWidget *obj
 ) {
@@ -2386,6 +2416,9 @@ static void on_virtual_root_changed(
     } else {
         g_message("NO!");
     }
+
+    g_object_notify(G_OBJECT(obj), "virtual-root");
+
 }
 
 static void on_model_set(

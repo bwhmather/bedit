@@ -103,6 +103,7 @@ void bedit_file_browser_widget_set_virtual_root(
 void bedit_file_browser_widget_set_root_and_virtual_root(
     BeditFileBrowserWidget *obj, GFile *root, GFile *virtual_root
 );
+GFile *bedit_file_browser_widget_get_virtual_root(BeditFileBrowserWidget *obj);
 
 gboolean bedit_file_browser_widget_get_selected_directory(
     BeditFileBrowserWidget *obj, GtkTreeIter *iter
