@@ -124,8 +124,6 @@ struct _BeditFileBrowserWidgetPrivate {
     GtkWidget *locations_cellview;
     GtkListStore *locations_model;
 
-    GtkWidget *location_entry;
-
     GtkWidget *filter_entry_revealer;
     GtkWidget *filter_entry;
 
@@ -167,15 +165,6 @@ static gboolean on_file_store_no_trash(
 );
 static gboolean on_location_button_press_event(
     GtkWidget *button, GdkEventButton *event, BeditFileBrowserWidget *obj
-);
-static void on_location_entry_activate(
-    GtkEntry *entry, BeditFileBrowserWidget *obj
-);
-static gboolean on_location_entry_focus_out_event(
-    GtkWidget *entry, GdkEvent *event, BeditFileBrowserWidget *obj
-);
-static gboolean on_location_entry_key_press_event(
-    GtkWidget *entry, GdkEventKey *event, BeditFileBrowserWidget *obj
 );
 static gboolean on_treeview_popup_menu(
     BeditFileBrowserView *treeview, BeditFileBrowserWidget *obj
@@ -542,9 +531,6 @@ static void bedit_file_browser_widget_class_init(
         widget_class, BeditFileBrowserWidget, locations_model
     );
 
-    gtk_widget_class_bind_template_child_private(
-        widget_class, BeditFileBrowserWidget, location_entry
-    );
     gtk_widget_class_bind_template_child_private(
         widget_class, BeditFileBrowserWidget, treeview
     );
@@ -959,19 +945,6 @@ static void bedit_file_browser_widget_init(BeditFileBrowserWidget *obj) {
         G_CALLBACK(on_locations_treeview_row_activated), obj
     );
 
-    g_signal_connect(
-        obj->priv->location_entry, "activate",
-        G_CALLBACK(on_location_entry_activate), obj
-    );
-    g_signal_connect(
-        obj->priv->location_entry, "focus-out-event",
-        G_CALLBACK(on_location_entry_focus_out_event), obj
-    );
-    g_signal_connect(
-        obj->priv->location_entry, "key-press-event",
-        G_CALLBACK(on_location_entry_key_press_event), obj
-    );
-
     /* tree view */
     obj->priv->file_store = bedit_file_browser_store_new(NULL);
     obj->priv->bookmarks_store = bedit_file_browser_bookmarks_store_new();
@@ -1337,22 +1310,6 @@ static gboolean delete_selected_files(
     g_list_free_full(rows, (GDestroyNotify)gtk_tree_path_free);
 
     return result == BEDIT_FILE_BROWSER_STORE_RESULT_OK;
-}
-
-static void show_location_entry(
-    BeditFileBrowserWidget *obj, const gchar *location
-) {
-    g_warn_if_fail(location != NULL);
-
-    gtk_entry_set_text(GTK_ENTRY(obj->priv->location_entry), location);
-
-    gtk_widget_show(obj->priv->location_entry);
-    gtk_widget_grab_focus(obj->priv->location_entry);
-
-    /* grab_focus() causes the entry's text to become
-     * selected so, unselect it and move the cursor to the end.
-     */
-    gtk_editable_set_position(GTK_EDITABLE(obj->priv->location_entry), -1);
 }
 
 static gboolean on_file_store_no_trash(
@@ -2540,84 +2497,6 @@ static void on_locations_treeview_selection_changed(
     gtk_tree_path_free(path);
 }
 
-static void on_location_entry_activate(
-    GtkEntry *entry, BeditFileBrowserWidget *obj
-) {
-    gchar *location = g_strdup(gtk_entry_get_text(entry));
-    GFile *root;
-    gchar *cwd;
-    GFile *new_root;
-
-    if (g_str_has_prefix(location, "~/")) {
-        gchar *tmp = location;
-
-        location = g_strdup_printf(
-            "%s/%s", g_get_home_dir(), tmp + strlen("~/")
-        );
-
-        g_free(tmp);
-    }
-
-    root = bedit_file_browser_store_get_virtual_root(obj->priv->file_store);
-    cwd = g_file_get_path(root);
-
-    if (cwd == NULL) {
-        cwd = g_file_get_uri(root);
-    }
-
-    new_root = g_file_new_for_commandline_arg_and_cwd(location, cwd);
-
-    if (
-        g_file_query_file_type(new_root, G_FILE_QUERY_INFO_NONE, NULL) !=
-        G_FILE_TYPE_DIRECTORY
-    ) {
-        gchar *display_name = g_file_get_parse_name(new_root);
-        gchar *msg = g_strdup_printf(
-            _("Error when loading “%s”: No such directory"), display_name
-        );
-
-        g_signal_emit(
-            obj, signals[ERROR], 0,
-            BEDIT_FILE_BROWSER_ERROR_LOAD_DIRECTORY,
-            msg
-        );
-
-        g_free(msg);
-        g_free(display_name);
-    } else {
-        gtk_widget_grab_focus(GTK_WIDGET(obj->priv->treeview));
-        gtk_widget_hide(obj->priv->location_entry);
-
-        bedit_file_browser_widget_set_virtual_root(obj, new_root);
-    }
-
-    g_object_unref(new_root);
-    g_free(cwd);
-    g_object_unref(root);
-    g_free(location);
-}
-
-static gboolean on_location_entry_focus_out_event(
-    GtkWidget *entry, GdkEvent *event, BeditFileBrowserWidget *obj
-) {
-    gtk_widget_hide(entry);
-    return FALSE;
-}
-
-static gboolean on_location_entry_key_press_event(
-    GtkWidget *entry, GdkEventKey *event, BeditFileBrowserWidget *obj
-) {
-    guint modifiers = gtk_accelerator_get_default_mod_mask();
-
-    if (event->keyval == GDK_KEY_Escape && (event->state & modifiers) == 0) {
-        gtk_widget_grab_focus(GTK_WIDGET(obj->priv->treeview));
-        gtk_widget_hide(entry);
-        return TRUE;
-    }
-
-    return FALSE;
-}
-
 static gboolean on_treeview_popup_menu(
     BeditFileBrowserView *treeview, BeditFileBrowserWidget *obj
 ) {
@@ -2728,30 +2607,6 @@ static gboolean on_treeview_key_press_event(
 
     if ((event->keyval == GDK_KEY_F2) && (event->state & modifiers) == 0) {
         rename_selected_file(obj);
-        return TRUE;
-    }
-
-    if (
-        event->keyval == GDK_KEY_l &&
-        (event->state & modifiers) == GDK_CONTROL_MASK
-    ) {
-        show_location_entry(obj, "");
-        return TRUE;
-    }
-
-    if (
-        event->keyval == GDK_KEY_slash ||
-        event->keyval == GDK_KEY_KP_Divide ||
-#ifdef G_OS_WIN32
-        event->keyval == GDK_KEY_backslash ||
-#endif
-        event->keyval == GDK_KEY_asciitilde
-    ) {
-        gchar location[2] = {'\0', '\0'};
-
-        location[0] = gdk_keyval_to_unicode(event->keyval);
-
-        show_location_entry(obj, location);
         return TRUE;
     }
 
