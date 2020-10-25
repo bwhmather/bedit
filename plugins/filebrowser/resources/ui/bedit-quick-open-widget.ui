@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <template class="BeditFileBrowserWidget" parent="GtkGrid">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <child>
+      <object class="GtkBox" id="toolbar">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="margin">3</property>
+        <property name="spacing">3</property>
+        <child>
+          <object class="GtkBox" id="box1">
+          <property name="visible">True</property>
+          <property name="can_focus">False</property>
+            <child>
+              <object class="GtkButton" id="previous_button">
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="receives_default">True</property>
+                <property name="action_name">browser.previous_location</property>
+                <property name="image">previous_image</property>
+                <style>
+                  <class name="small-button"/>
+                </style>
+              </object>
+            </child>
+            <child>
+              <object class="GtkButton" id="next_button">
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="receives_default">True</property>
+                <property name="action_name">browser.next_location</property>
+                <property name="image">next_image</property>
+                <style>
+                  <class name="small-button"/>
+                </style>
+              </object>
+            </child>
+            <style>
+              <class name="linked"/>
+            </style>
+          </object>
+        </child>
+      </object>
+      <packing>
+        <property name="left_attach">0</property>
+        <property name="top_attach">0</property>
+        <property name="width">1</property>
+        <property name="height">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkScrolledWindow" id="scrolledwindow1">
+        <property name="visible">True</property>
+        <property name="can_focus">True</property>
+        <property name="hexpand">True</property>
+        <property name="vexpand">True</property>
+        <child>
+          <object class="BeditFileBrowserView" id="treeview">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <child internal-child="selection">
+              <object class="GtkTreeSelection" id="treeview-selection1"/>
+            </child>
+          </object>
+        </child>
+      </object>
+      <packing>
+        <property name="left_attach">0</property>
+        <property name="top_attach">3</property>
+        <property name="width">1</property>
+        <property name="height">1</property>
+      </packing>
+    </child>
+  </template>
+  <object class="GtkImage" id="previous_image">
+    <property name="visible">True</property>
+    <property name="icon_name">go-previous-symbolic</property>
+    <property name="icon-size">2</property>
+  </object>
+  <object class="GtkImage" id="next_image">
+    <property name="visible">True</property>
+    <property name="icon_name">go-next-symbolic</property>
+    <property name="icon-size">2</property>
+  </object>
+  <object class="GtkImage" id="up_image">
+    <property name="visible">True</property>
+    <property name="icon_name">go-up-symbolic</property>
+    <property name="icon-size">2</property>
+  </object>
+  <object class="GtkImage" id="search_image">
+    <property name="visible">True</property>
+    <property name="icon_name">edit-find-symbolic</property>
+    <property name="icon-size">2</property>
+  </object>
+</interface>
