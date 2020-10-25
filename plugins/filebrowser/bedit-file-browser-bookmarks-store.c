@@ -30,10 +30,17 @@
 #include "bedit-file-browser-bookmarks-store.h"
 #include "bedit-file-browser-utils.h"
 
-struct _BeditFileBrowserBookmarksStorePrivate {
+struct _BeditFileBrowserBookmarksStore {
+    GtkTreeStore parent_instance;
+
     GVolumeMonitor *volume_monitor;
     GFileMonitor *bookmarks_monitor;
 };
+
+G_DEFINE_DYNAMIC_TYPE(
+    BeditFileBrowserBookmarksStore, bedit_file_browser_bookmarks_store,
+    GTK_TYPE_TREE_STORE
+)
 
 static void remove_node(GtkTreeModel *model, GtkTreeIter *iter);
 
@@ -52,27 +59,21 @@ static gboolean find_with_flags(
     guint flags, guint notflags
 );
 
-G_DEFINE_DYNAMIC_TYPE_EXTENDED(
-    BeditFileBrowserBookmarksStore, bedit_file_browser_bookmarks_store,
-    GTK_TYPE_TREE_STORE, 0,
-    G_ADD_PRIVATE_DYNAMIC(BeditFileBrowserBookmarksStore)
-)
-
 static void bedit_file_browser_bookmarks_store_dispose(GObject *object) {
-    BeditFileBrowserBookmarksStore *obj;
+    BeditFileBrowserBookmarksStore *store;
 
-    obj = BEDIT_FILE_BROWSER_BOOKMARKS_STORE(object);
+    store = BEDIT_FILE_BROWSER_BOOKMARKS_STORE(object);
 
-    if (obj->priv->volume_monitor != NULL) {
+    if (store->volume_monitor != NULL) {
         g_signal_handlers_disconnect_by_func(
-            obj->priv->volume_monitor, on_fs_changed, obj
+            store->volume_monitor, on_fs_changed, store
         );
 
-        g_object_unref(obj->priv->volume_monitor);
-        obj->priv->volume_monitor = NULL;
+        g_object_unref(store->volume_monitor);
+        store->volume_monitor = NULL;
     }
 
-    g_clear_object(&obj->priv->bookmarks_monitor);
+    g_clear_object(&store->bookmarks_monitor);
 
     G_OBJECT_CLASS(bedit_file_browser_bookmarks_store_parent_class)
         ->dispose(object);
@@ -91,16 +92,14 @@ static void bedit_file_browser_bookmarks_store_class_finalize(
 ) {}
 
 static void bedit_file_browser_bookmarks_store_init(
-    BeditFileBrowserBookmarksStore *obj
-) {
-    obj->priv = bedit_file_browser_bookmarks_store_get_instance_private(obj);
-}
+    BeditFileBrowserBookmarksStore *store
+) {}
 
 /* Private */
 static void add_node(
     BeditFileBrowserBookmarksStore *model,
     GdkPixbuf *pixbuf, const gchar *icon_name,
-    const gchar *name, GObject *obj,
+    const gchar *name, GObject *store,
     guint flags, GtkTreeIter *iter
 ) {
     GtkTreeIter newiter;
@@ -112,7 +111,7 @@ static void add_node(
         BEDIT_FILE_BROWSER_BOOKMARKS_STORE_COLUMN_ICON, pixbuf,
         BEDIT_FILE_BROWSER_BOOKMARKS_STORE_COLUMN_ICON_NAME, icon_name,
         BEDIT_FILE_BROWSER_BOOKMARKS_STORE_COLUMN_NAME, name,
-        BEDIT_FILE_BROWSER_BOOKMARKS_STORE_COLUMN_OBJECT, obj,
+        BEDIT_FILE_BROWSER_BOOKMARKS_STORE_COLUMN_OBJECT, store,
         BEDIT_FILE_BROWSER_BOOKMARKS_STORE_COLUMN_FLAGS, flags,
         -1
     );
@@ -344,7 +343,7 @@ static void process_drive_cb(
 
 static void init_drives(BeditFileBrowserBookmarksStore *model) {
     GList *drives = g_volume_monitor_get_connected_drives(
-        model->priv->volume_monitor
+        model->volume_monitor
     );
 
     g_list_foreach(drives, (GFunc)process_drive_cb, model);
@@ -365,7 +364,7 @@ static void process_volume_nodrive_cb(
 }
 
 static void init_volumes(BeditFileBrowserBookmarksStore *model) {
-    GList *volumes = g_volume_monitor_get_volumes(model->priv->volume_monitor);
+    GList *volumes = g_volume_monitor_get_volumes(model->volume_monitor);
 
     g_list_foreach(volumes, (GFunc)process_volume_nodrive_cb, model);
     g_list_free_full(volumes, g_object_unref);
@@ -385,14 +384,14 @@ static void process_mount_novolume_cb(
 }
 
 static void init_mounts(BeditFileBrowserBookmarksStore *model) {
-    GList *mounts = g_volume_monitor_get_mounts(model->priv->volume_monitor);
+    GList *mounts = g_volume_monitor_get_mounts(model->volume_monitor);
 
     g_list_foreach(mounts, (GFunc)process_mount_novolume_cb, model);
     g_list_free_full(mounts, g_object_unref);
 }
 
 static void init_fs(BeditFileBrowserBookmarksStore *model) {
-    if (model->priv->volume_monitor == NULL) {
+    if (model->volume_monitor == NULL) {
         const gchar **ptr;
         const gchar *signals[] = {
             "drive-connected", "drive-changed",
@@ -402,12 +401,12 @@ static void init_fs(BeditFileBrowserBookmarksStore *model) {
             "mount-changed", NULL
         };
 
-        model->priv->volume_monitor = g_volume_monitor_get();
+        model->volume_monitor = g_volume_monitor_get();
 
         /* Connect signals */
         for (ptr = signals; *ptr != NULL; ++ptr) {
             g_signal_connect(
-                model->priv->volume_monitor, *ptr,
+                model->volume_monitor, *ptr,
                 G_CALLBACK(on_fs_changed), model
             );
         }
@@ -502,16 +501,16 @@ static gboolean parse_bookmarks_file(
     g_free(contents);
 
     /* Add a watch */
-    if (model->priv->bookmarks_monitor == NULL) {
+    if (model->bookmarks_monitor == NULL) {
         GFile *file = g_file_new_for_path(bookmarks);
 
-        model->priv->bookmarks_monitor = g_file_monitor_file(
+        model->bookmarks_monitor = g_file_monitor_file(
             file, G_FILE_MONITOR_NONE, NULL, NULL
         );
         g_object_unref(file);
 
         g_signal_connect(
-            model->priv->bookmarks_monitor, "changed",
+            model->bookmarks_monitor, "changed",
             G_CALLBACK(on_bookmarks_file_changed), model
         );
     }
@@ -857,7 +856,7 @@ static void on_bookmarks_file_changed(
         /* Remove bookmarks */
         remove_bookmarks(model);
         g_object_unref(monitor);
-        model->priv->bookmarks_monitor = NULL;
+        model->bookmarks_monitor = NULL;
         break;
     default:
         break;

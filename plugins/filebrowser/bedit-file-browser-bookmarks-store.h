@@ -28,43 +28,15 @@
 #include <gtk/gtk.h>
 
 G_BEGIN_DECLS
+
 #define BEDIT_TYPE_FILE_BROWSER_BOOKMARKS_STORE                             \
     (bedit_file_browser_bookmarks_store_get_type())
-#define BEDIT_FILE_BROWSER_BOOKMARKS_STORE(obj)                             \
-    (G_TYPE_CHECK_INSTANCE_CAST(                                            \
-        (obj), BEDIT_TYPE_FILE_BROWSER_BOOKMARKS_STORE,                     \
-        BeditFileBrowserBookmarksStore                                      \
-    ))
-#define BEDIT_FILE_BROWSER_BOOKMARKS_STORE_CONST(obj)                       \
-    (G_TYPE_CHECK_INSTANCE_CAST(                                            \
-        (obj), BEDIT_TYPE_FILE_BROWSER_BOOKMARKS_STORE,                     \
-        BeditFileBrowserBookmarksStore const                                \
-    ))
-#define BEDIT_FILE_BROWSER_BOOKMARKS_STORE_CLASS(klass)                     \
-    (G_TYPE_CHECK_CLASS_CAST(                                               \
-        (klass), BEDIT_TYPE_FILE_BROWSER_BOOKMARKS_STORE,                   \
-        BeditFileBrowserBookmarksStoreClass                                 \
-    ))
-#define BEDIT_IS_FILE_BROWSER_BOOKMARKS_STORE(obj)                          \
-    (G_TYPE_CHECK_INSTANCE_TYPE(                                            \
-        (obj), BEDIT_TYPE_FILE_BROWSER_BOOKMARKS_STORE                      \
-    ))
-#define BEDIT_IS_FILE_BROWSER_BOOKMARKS_STORE_CLASS(klass)                  \
-    (G_TYPE_CHECK_CLASS_TYPE(                                               \
-        (klass), BEDIT_TYPE_FILE_BROWSER_BOOKMARKS_STORE                    \
-    ))
-#define BEDIT_FILE_BROWSER_BOOKMARKS_STORE_GET_CLASS(obj)                   \
-    (G_TYPE_INSTANCE_GET_CLASS(                                             \
-        (obj), BEDIT_TYPE_FILE_BROWSER_BOOKMARKS_STORE,                     \
-        BeditFileBrowserBookmarksStoreClass                                 \
-    ))
 
-typedef struct _BeditFileBrowserBookmarksStore
-    BeditFileBrowserBookmarksStore;
-typedef struct _BeditFileBrowserBookmarksStoreClass
-    BeditFileBrowserBookmarksStoreClass;
-typedef struct _BeditFileBrowserBookmarksStorePrivate
-    BeditFileBrowserBookmarksStorePrivate;
+G_DECLARE_FINAL_TYPE(
+    BeditFileBrowserBookmarksStore, bedit_file_browser_bookmarks_store,
+    BEDIT, FILE_BROWSER_BOOKMARKS_STORE,
+    GtkTreeStore
+)
 
 enum {
     BEDIT_FILE_BROWSER_BOOKMARKS_STORE_COLUMN_ICON = 0,
@@ -103,16 +75,6 @@ enum {
     BEDIT_FILE_BROWSER_BOOKMARKS_STORE_IS_REMOTE_BOOKMARK = 1 << 11,
     /* A local gtk bookmark */
     BEDIT_FILE_BROWSER_BOOKMARKS_STORE_IS_LOCAL_BOOKMARK = 1 << 12
-};
-
-struct _BeditFileBrowserBookmarksStore {
-    GtkTreeStore parent;
-
-    BeditFileBrowserBookmarksStorePrivate *priv;
-};
-
-struct _BeditFileBrowserBookmarksStoreClass {
-    GtkTreeStoreClass parent_class;
 };
 
 GType bedit_file_browser_bookmarks_store_get_type(void) G_GNUC_CONST;
