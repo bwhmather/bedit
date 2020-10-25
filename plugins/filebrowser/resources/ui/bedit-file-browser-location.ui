@@ -64,8 +64,6 @@
     </child>
   </object>
   <template class="BeditFileBrowserLocation" parent="GtkMenuButton">
-    <property name="visible">True</property>
-    <property name="valign">center</property>
     <property name="use_popover">True</property>
     <property name="popover">locations_popover</property>
     <style>
