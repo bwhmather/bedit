@@ -19,6 +19,7 @@ libfilebrowser_sources = files(
   'bedit-file-browser-utils.c',
   'bedit-file-browser-view.c',
   'bedit-file-browser-widget.c',
+  'bedit-quick-open-widget.c',
 )
 
 libfilebrowser_deps = [

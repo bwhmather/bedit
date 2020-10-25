@@ -41,6 +41,7 @@
 #include "bedit-file-browser-plugin.h"
 #include "bedit-file-browser-utils.h"
 #include "bedit-file-browser-widget.h"
+#include "bedit-quick-open-widget.h"
 
 G_MODULE_EXPORT void peas_register_types(PeasObjectModule *module) {
     bedit_file_browser_enum_and_flag_register_type(G_TYPE_MODULE(module));
@@ -49,6 +50,7 @@ G_MODULE_EXPORT void peas_register_types(PeasObjectModule *module) {
     _bedit_file_browser_store_register_type(G_TYPE_MODULE(module));
     _bedit_file_browser_view_register_type(G_TYPE_MODULE(module));
     _bedit_file_browser_widget_register_type(G_TYPE_MODULE(module));
+    _bedit_quick_open_widget_register_type(G_TYPE_MODULE(module));
 
     peas_object_module_register_extension_type(
         module, BEDIT_TYPE_WINDOW_ACTIVATABLE, BEDIT_TYPE_FILE_BROWSER_WINDOW_ACTIVATABLE
