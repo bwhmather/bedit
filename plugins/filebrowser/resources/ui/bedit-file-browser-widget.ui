@@ -189,6 +189,18 @@
             <property name="expand">True</property>
           </packing>
         </child>
+        <child>
+          <object class="GtkButton" id="search_button">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">True</property>
+            <property name="action_name">window.quick_open</property>
+            <property name="image">search_image</property>
+            <style>
+              <class name="small-button"/>
+            </style>
+          </object>
+        </child>
       </object>
       <packing>
         <property name="left_attach">0</property>
@@ -256,6 +268,11 @@
   <object class="GtkImage" id="up_image">
     <property name="visible">True</property>
     <property name="icon_name">go-up-symbolic</property>
+    <property name="icon-size">2</property>
+  </object>
+  <object class="GtkImage" id="search_image">
+    <property name="visible">True</property>
+    <property name="icon_name">edit-find-symbolic</property>
     <property name="icon-size">2</property>
   </object>
 </interface>
