@@ -64,6 +64,7 @@ typedef struct _BeditFileBrowserWindowActivatablePrivate {
     GSettings *terminal_settings;
 
     GtkWidget *action_area_button;
+    GtkStack *stack;
     BeditFileBrowserWidget *tree_widget;
     gboolean confirm_trash;
 
@@ -431,6 +432,16 @@ static void bedit_file_browser_window_activatable_activate(
         G_SETTINGS_BIND_GET | G_SETTINGS_BIND_SET
     );
 
+    /* Setup stack */
+    priv->stack =GTK_STACK(gtk_stack_new());
+    gtk_stack_add_named(
+        priv->stack, GTK_WIDGET(priv->tree_widget), "file-browser"
+    );
+
+    gtk_stack_set_visible_child_full(
+        priv->stack, "file-browser", GTK_STACK_TRANSITION_TYPE_NONE
+    );
+
     /* Setup menu button widget. */
     action_area_button_image = gtk_image_new_from_icon_name(
         "folder-symbolic", GTK_ICON_SIZE_BUTTON
@@ -465,7 +476,7 @@ static void bedit_file_browser_window_activatable_activate(
     );
 
     gtk_container_add(
-        GTK_CONTAINER(popover), GTK_WIDGET(priv->tree_widget)
+        GTK_CONTAINER(popover), GTK_WIDGET(priv->stack)
     );
 
     /* Add everything to the area to the left of the tab bar. */
@@ -477,6 +488,7 @@ static void bedit_file_browser_window_activatable_activate(
     gtk_widget_show(action_area_button_image);
     gtk_widget_show(priv->action_area_button);
     gtk_widget_show(GTK_WIDGET(priv->tree_widget));
+    gtk_widget_show(GTK_WIDGET(priv->stack));
 
     /* Install nautilus preferences */
     install_nautilus_prefs(plugin);
