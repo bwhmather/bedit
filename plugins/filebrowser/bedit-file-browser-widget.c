@@ -143,7 +143,7 @@ struct _BeditFileBrowserWidgetPrivate {
 };
 
 static void on_model_set(
-    GObject *gobject, GParamSpec *arg1, BeditFileBrowserWidget *obj
+    GtkTreeView *treeview, GParamSpec *arg1, BeditFileBrowserWidget *widget
 );
 static void on_treeview_error(
     BeditFileBrowserView *tree_view, guint code, gchar *message,
@@ -2043,34 +2043,38 @@ static void on_virtual_root_changed(
 }
 
 static void on_model_set(
-    GObject *gobject, GParamSpec *arg1, BeditFileBrowserWidget *obj
+    GtkTreeView *treeview, GParamSpec *arg1, BeditFileBrowserWidget *widget
 ) {
     GtkTreeModel *model;
 
-    model = gtk_tree_view_get_model(GTK_TREE_VIEW(gobject));
+    g_return_if_fail(GTK_IS_TREE_VIEW(treeview));
+    g_return_if_fail(BEDIT_IS_FILE_BROWSER_WIDGET(widget));
 
-    clear_signals(obj);
+    model = gtk_tree_view_get_model(treeview);
 
-    /* make sure any async operation is cancelled */
-    cancel_async_operation(obj);
+    clear_signals(widget);
 
-    add_signal(
-        obj, gobject,
-        g_signal_connect(
-            gobject, "file-activated", G_CALLBACK(on_file_activated), obj
-        )
-    );
+    if (model != NULL) {
+        cancel_async_operation(widget);
 
-    add_signal(
-        obj, model,
-        g_signal_connect(
-            model, "no-trash", G_CALLBACK(on_file_store_no_trash), obj
-        )
-    );
+        add_signal(
+            widget, treeview,
+            g_signal_connect(
+                treeview, "file-activated", G_CALLBACK(on_file_activated), widget
+            )
+        );
 
-    gtk_widget_show(obj->priv->filter_entry_revealer);
+        add_signal(
+            widget, model,
+            g_signal_connect(
+                model, "no-trash", G_CALLBACK(on_file_store_no_trash), widget
+            )
+        );
+    }
 
-    update_sensitivity(obj);
+    gtk_widget_show(widget->priv->filter_entry_revealer);
+
+    update_sensitivity(widget);
 }
 
 static void on_file_store_error(
