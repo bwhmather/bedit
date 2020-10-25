@@ -6,7 +6,7 @@
 
 
 struct _BeditQuickOpenWidget {
-    GtkBin parent_instance;
+    GtkGrid parent_instance;
 
     GtkSearchEntry *search_entry;
     GtkButton *cancel_button;
@@ -23,7 +23,7 @@ enum {
 static GParamSpec *properties[LAST_PROP];
 
 G_DEFINE_DYNAMIC_TYPE(
-    BeditQuickOpenWidget, bedit_quick_open_widget, GTK_TYPE_BIN
+    BeditQuickOpenWidget, bedit_quick_open_widget, GTK_TYPE_GRID
 )
 
 static void bedit_quick_open_widget_get_property(
@@ -77,10 +77,11 @@ static void bedit_quick_open_widget_class_init(BeditQuickOpenWidgetClass *klass)
             G_TYPE_FILE, G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS
         )
     );
-    g_object_class_install_properties(object_class, LAST_PROP, properties);
 
     gtk_widget_class_set_template_from_resource(
-        widget_class, "/com/bwhmather/bedit/ui/bedit-quick-open-widget.ui"
+        widget_class,
+        "/com/bwhmather/bedit/plugins/file-browser/ui/"
+        "bedit-quick-open-widget.ui"
     );
 
     gtk_widget_class_bind_template_child(

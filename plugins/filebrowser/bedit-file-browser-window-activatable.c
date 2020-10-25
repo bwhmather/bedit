@@ -36,6 +36,7 @@
 #include "bedit-file-browser-window-activatable.h"
 #include "bedit-file-browser-utils.h"
 #include "bedit-file-browser-widget.h"
+#include "bedit-quick-open-widget.h"
 
 #define FILEBROWSER_BASE_SETTINGS "com.bwhmather.bedit.plugins.filebrowser"
 #define FILEBROWSER_TREE_VIEW "tree-view"
@@ -65,6 +66,7 @@ typedef struct _BeditFileBrowserWindowActivatablePrivate {
 
     GtkWidget *action_area_button;
     GtkStack *stack;
+    BeditQuickOpenWidget *quick_open;
     BeditFileBrowserWidget *tree_widget;
     gboolean confirm_trash;
 
@@ -432,10 +434,22 @@ static void bedit_file_browser_window_activatable_activate(
         G_SETTINGS_BIND_GET | G_SETTINGS_BIND_SET
     );
 
+    /* Setup quick-open widget. */
+    priv->quick_open = BEDIT_QUICK_OPEN_WIDGET(bedit_quick_open_widget_new());
+
+    g_object_bind_property(
+        priv->window, "default-location",
+        priv->quick_open, "virtual-root",
+        G_BINDING_BIDIRECTIONAL | G_BINDING_SYNC_CREATE
+    );
+
     /* Setup stack */
     priv->stack =GTK_STACK(gtk_stack_new());
     gtk_stack_add_named(
         priv->stack, GTK_WIDGET(priv->tree_widget), "file-browser"
+    );
+    gtk_stack_add_named(
+        priv->stack, GTK_WIDGET(priv->quick_open), "quick-open"
     );
 
     gtk_stack_set_visible_child_full(

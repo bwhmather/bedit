@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface>
-  <template class="BeditFileBrowserWidget" parent="GtkGrid">
+  <template class="BeditQuickOpenWidget" parent="GtkGrid">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <child>
@@ -14,24 +14,20 @@
           <property name="visible">True</property>
           <property name="can_focus">False</property>
             <child>
-              <object class="GtkButton" id="previous_button">
+              <object class="GtkSearchEntry" id="search_entry">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
-                <property name="receives_default">True</property>
-                <property name="action_name">browser.previous_location</property>
-                <property name="image">previous_image</property>
-                <style>
-                  <class name="small-button"/>
-                </style>
+                <property name="primary-icon-activatable">True</property>
+                <property name="primary-icon-sensitive">True</property>
+                <property name="hexpand">True</property>
               </object>
             </child>
             <child>
-              <object class="GtkButton" id="next_button">
+              <object class="GtkButton" id="cancel_button">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
-                <property name="action_name">browser.next_location</property>
-                <property name="image">next_image</property>
+                <property name="image">cancel_image</property>
                 <style>
                   <class name="small-button"/>
                 </style>
@@ -56,15 +52,6 @@
         <property name="can_focus">True</property>
         <property name="hexpand">True</property>
         <property name="vexpand">True</property>
-        <child>
-          <object class="BeditFileBrowserView" id="treeview">
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <child internal-child="selection">
-              <object class="GtkTreeSelection" id="treeview-selection1"/>
-            </child>
-          </object>
-        </child>
       </object>
       <packing>
         <property name="left_attach">0</property>
@@ -74,24 +61,9 @@
       </packing>
     </child>
   </template>
-  <object class="GtkImage" id="previous_image">
+  <object class="GtkImage" id="cancel_image">
     <property name="visible">True</property>
     <property name="icon_name">go-previous-symbolic</property>
-    <property name="icon-size">2</property>
-  </object>
-  <object class="GtkImage" id="next_image">
-    <property name="visible">True</property>
-    <property name="icon_name">go-next-symbolic</property>
-    <property name="icon-size">2</property>
-  </object>
-  <object class="GtkImage" id="up_image">
-    <property name="visible">True</property>
-    <property name="icon_name">go-up-symbolic</property>
-    <property name="icon-size">2</property>
-  </object>
-  <object class="GtkImage" id="search_image">
-    <property name="visible">True</property>
-    <property name="icon_name">edit-find-symbolic</property>
     <property name="icon-size">2</property>
   </object>
 </interface>

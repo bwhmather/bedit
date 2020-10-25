@@ -30,7 +30,7 @@ G_BEGIN_DECLS
 G_DECLARE_FINAL_TYPE(
     BeditQuickOpenWidget, bedit_quick_open_widget,
     BEDIT, QUICK_OPEN_WIDGET,
-    GtkBin
+    GtkGrid
 )
 
 GType bedit_quick_open_widget_get_type(void) G_GNUC_CONST;
