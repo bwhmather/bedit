@@ -38,6 +38,7 @@
 #include "bedit-file-browser-store.h"
 #include "bedit-file-browser-utils.h"
 #include "bedit-file-browser-view.h"
+#include "bedit-file-browser-location.h"
 #include "bedit-file-browser-widget.h"
 
 #define LOCATION_DATA_KEY "bedit-file-browser-widget-location"
@@ -113,6 +114,8 @@ struct _BeditFileBrowserWidgetPrivate {
 
     GtkWidget *previous_button;
     GtkWidget *next_button;
+
+    BeditFileBrowserLocation *location;
 
     GtkWidget *locations_button;
     GtkWidget *locations_popover;
@@ -501,6 +504,10 @@ static void bedit_file_browser_widget_class_init(
     );
     gtk_widget_class_bind_template_child_private(
         widget_class, BeditFileBrowserWidget, next_button
+    );
+
+    gtk_widget_class_bind_template_child_private(
+        widget_class, BeditFileBrowserWidget, location
     );
 
     gtk_widget_class_bind_template_child_private(
@@ -929,6 +936,15 @@ static void bedit_file_browser_widget_init(BeditFileBrowserWidget *obj) {
     /* tree view */
     obj->priv->file_store = bedit_file_browser_store_new(NULL);
     obj->priv->bookmarks_store = bedit_file_browser_bookmarks_store_new();
+
+
+    /* New Locations popover */
+    bedit_file_browser_location_set_bookmarks_store(
+        obj->priv->location, obj->priv->bookmarks_store
+    );
+    bedit_file_browser_location_set_file_store(
+        obj->priv->location, obj->priv->file_store
+    );
 
     bedit_file_browser_view_set_restore_expand_state(obj->priv->treeview, TRUE);
 
