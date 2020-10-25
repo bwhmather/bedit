@@ -40,6 +40,7 @@
 #include "bedit-file-browser-messages.h"
 #include "bedit-file-browser-plugin.h"
 #include "bedit-file-browser-utils.h"
+#include "bedit-file-browser-location.h"
 #include "bedit-file-browser-widget.h"
 #include "bedit-quick-open-widget.h"
 
@@ -49,6 +50,7 @@ G_MODULE_EXPORT void peas_register_types(PeasObjectModule *module) {
     _bedit_file_browser_bookmarks_store_register_type(G_TYPE_MODULE(module));
     _bedit_file_browser_store_register_type(G_TYPE_MODULE(module));
     _bedit_file_browser_view_register_type(G_TYPE_MODULE(module));
+    _bedit_file_browser_location_register_type(G_TYPE_MODULE(module));
     _bedit_file_browser_widget_register_type(G_TYPE_MODULE(module));
     _bedit_quick_open_widget_register_type(G_TYPE_MODULE(module));
 
