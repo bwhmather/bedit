@@ -376,6 +376,8 @@ static void bedit_searchbar_focus_first_finished_cb(
     GtkTextIter match_start;
     GtkTextIter match_end;
     gboolean found;
+    gboolean cancelled;
+    GError *error = NULL;
     GtkSourceBuffer *buffer;
 
     bedit_debug(DEBUG_WINDOW);
@@ -399,8 +401,10 @@ static void bedit_searchbar_focus_first_finished_cb(
     found = gtk_source_search_context_forward_finish(
         search_context, result,
         &match_start, &match_end,
-        NULL, NULL
+        NULL, &error
     );
+
+    cancelled = g_error_matches(error, G_IO_ERROR, G_IO_ERROR_CANCELLED);
 
     if (found) {
         g_signal_handler_block(
@@ -416,7 +420,7 @@ static void bedit_searchbar_focus_first_finished_cb(
         );
 
         tepl_view_scroll_to_cursor(TEPL_VIEW(searchbar->view));
-    } else {
+    } else if (!cancelled) {
         GtkTextIter start_at;
 
         gtk_text_buffer_get_iter_at_mark(
@@ -1025,7 +1029,6 @@ static void bedit_searchbar_next_finished_cb(
         bedit_searchbar_reset_start_mark(searchbar);
 
         tepl_view_scroll_to_cursor(TEPL_VIEW(searchbar->view));
-
     }
 }
 
