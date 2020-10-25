@@ -117,16 +117,6 @@ struct _BeditFileBrowserWidgetPrivate {
 
     BeditFileBrowserLocation *location;
 
-    GtkWidget *locations_button;
-    GtkWidget *locations_popover;
-    GtkWidget *locations_treeview;
-    GtkTreeViewColumn *treeview_icon_column;
-    GtkCellRenderer *treeview_icon_renderer;
-    GtkTreeSelection *locations_treeview_selection;
-    GtkWidget *locations_button_arrow;
-    GtkWidget *locations_cellview;
-    GtkListStore *locations_model;
-
     GtkWidget *filter_entry_revealer;
     GtkWidget *filter_entry;
 
@@ -248,9 +238,6 @@ static void open_in_terminal_activated(
 static void set_active_root_activated(
     GSimpleAction *action, GVariant *parameter, gpointer user_data
 );
-static void on_locations_treeview_selection_changed(
-    GtkTreeSelection *treeselection, BeditFileBrowserWidget *obj
-);
 
 G_DEFINE_DYNAMIC_TYPE_EXTENDED(
     BeditFileBrowserWidget, bedit_file_browser_widget, GTK_TYPE_GRID, 0,
@@ -280,29 +267,6 @@ static void location_free(Location *loc) {
     }
 
     g_slice_free(Location, loc);
-}
-
-static gboolean locations_find_by_id(
-    BeditFileBrowserWidget *obj, guint id, GtkTreeIter *iter
-) {
-    GtkTreeModel *model = GTK_TREE_MODEL(obj->priv->locations_model);
-    guint checkid;
-
-    if (iter == NULL) {
-        return FALSE;
-    }
-
-    if (gtk_tree_model_get_iter_first(model, iter)) {
-        do {
-            gtk_tree_model_get(model, iter, COLUMN_ID, &checkid, -1);
-
-            if (checkid == id) {
-                return TRUE;
-            }
-        } while (gtk_tree_model_iter_next(model, iter));
-    }
-
-    return FALSE;
 }
 
 static void cancel_async_operation(BeditFileBrowserWidget *widget) {
@@ -511,34 +475,6 @@ static void bedit_file_browser_widget_class_init(
     );
 
     gtk_widget_class_bind_template_child_private(
-        widget_class, BeditFileBrowserWidget, locations_button
-    );
-    gtk_widget_class_bind_template_child_private(
-        widget_class, BeditFileBrowserWidget, locations_popover
-    );
-    gtk_widget_class_bind_template_child_private(
-        widget_class, BeditFileBrowserWidget, locations_treeview
-    );
-    gtk_widget_class_bind_template_child_private(
-        widget_class, BeditFileBrowserWidget, locations_treeview_selection
-    );
-    gtk_widget_class_bind_template_child_private(
-        widget_class, BeditFileBrowserWidget, treeview_icon_column
-    );
-    gtk_widget_class_bind_template_child_private(
-        widget_class, BeditFileBrowserWidget, treeview_icon_renderer
-    );
-    gtk_widget_class_bind_template_child_private(
-        widget_class, BeditFileBrowserWidget, locations_cellview
-    );
-    gtk_widget_class_bind_template_child_private(
-        widget_class, BeditFileBrowserWidget, locations_button_arrow
-    );
-    gtk_widget_class_bind_template_child_private(
-        widget_class, BeditFileBrowserWidget, locations_model
-    );
-
-    gtk_widget_class_bind_template_child_private(
         widget_class, BeditFileBrowserWidget, treeview
     );
     gtk_widget_class_bind_template_child_private(
@@ -568,155 +504,6 @@ static void add_signal(
     node->id = id;
 
     obj->priv->signal_pool = g_slist_prepend(obj->priv->signal_pool, node);
-}
-
-static gboolean separator_func(
-    GtkTreeModel *model, GtkTreeIter *iter, gpointer data
-) {
-    guint id;
-
-    gtk_tree_model_get(model, iter, COLUMN_ID, &id, -1);
-
-    return (id == SEPARATOR_ID);
-}
-
-static void insert_path_item(
-    BeditFileBrowserWidget *obj, GFile *file, GtkTreeIter *after,
-    GtkTreeIter *iter
-) {
-    gchar *unescape = NULL;
-    gchar *icon_name = NULL;
-    GdkPixbuf *icon = NULL;
-
-    unescape = bedit_file_browser_utils_file_basename(file);
-    icon_name = bedit_file_browser_utils_symbolic_icon_name_from_file(file);
-
-    gtk_list_store_insert_after(obj->priv->locations_model, iter, after);
-
-    gtk_list_store_set(
-        obj->priv->locations_model, iter,
-        COLUMN_ICON, icon,
-        COLUMN_ICON_NAME, icon_name,
-        COLUMN_NAME, unescape,
-        COLUMN_FILE, file,
-        COLUMN_ID, PATH_ID,
-        -1
-    );
-
-    if (icon) {
-        g_object_unref(icon);
-    }
-
-    g_free(icon_name);
-    g_free(unescape);
-}
-
-static void insert_separator_item(BeditFileBrowserWidget *obj) {
-    GtkTreeIter iter;
-
-    gtk_list_store_insert(obj->priv->locations_model, &iter, 1);
-    gtk_list_store_set(
-        obj->priv->locations_model, &iter,
-        COLUMN_ICON, NULL,
-        COLUMN_ICON_NAME, NULL,
-        COLUMN_NAME, NULL,
-        COLUMN_ID, SEPARATOR_ID,
-        -1
-    );
-}
-
-static void insert_location_path(BeditFileBrowserWidget *obj) {
-    BeditFileBrowserWidgetPrivate *priv = obj->priv;
-    Location *loc;
-    GFile *current = NULL;
-    GFile *tmp;
-    GtkTreeIter separator;
-    GtkTreeIter iter;
-
-    if (!priv->current_location) {
-        g_message("insert_location_path: no current location");
-        return;
-    }
-
-    loc = (Location *)(priv->current_location->data);
-
-    current = loc->virtual_root;
-    locations_find_by_id(obj, SEPARATOR_ID, &separator);
-
-    while (current != NULL) {
-        insert_path_item(obj, current, &separator, &iter);
-
-        if (current == loc->virtual_root) {
-            g_signal_handlers_block_by_func(
-                priv->locations_treeview,
-                on_locations_treeview_selection_changed, obj
-            );
-
-            gtk_tree_selection_select_iter(
-                priv->locations_treeview_selection, &iter
-            );
-
-            g_signal_handlers_unblock_by_func(
-                priv->locations_treeview,
-                on_locations_treeview_selection_changed, obj
-            );
-        }
-
-        if (
-            g_file_equal(current, loc->root) ||
-            !g_file_has_parent(current, NULL)
-        ) {
-            if (current != loc->virtual_root) {
-                g_object_unref(current);
-            }
-            break;
-        }
-
-        tmp = g_file_get_parent(current);
-
-        if (current != loc->virtual_root) {
-            g_object_unref(current);
-        }
-
-        current = tmp;
-    }
-}
-
-static void remove_path_items(BeditFileBrowserWidget *obj) {
-    GtkTreeIter iter;
-
-    while (locations_find_by_id(obj, PATH_ID, &iter)) {
-        gtk_list_store_remove(obj->priv->locations_model, &iter);
-    }
-}
-
-static void check_current_item(
-    BeditFileBrowserWidget *obj, gboolean show_path
-) {
-    GtkTreeIter separator;
-    gboolean has_sep;
-
-    remove_path_items(obj);
-    has_sep = locations_find_by_id(obj, SEPARATOR_ID, &separator);
-
-    if (show_path) {
-        if (!has_sep) {
-            insert_separator_item(obj);
-        }
-
-        insert_location_path(obj);
-    } else if (has_sep) {
-        gtk_list_store_remove(obj->priv->locations_model, &separator);
-    }
-}
-
-static void fill_locations_model(BeditFileBrowserWidget *obj) {
-    BeditFileBrowserWidgetPrivate *priv = obj->priv;
-    GtkTreeIter iter;
-
-    gtk_tree_view_set_row_separator_func(
-        GTK_TREE_VIEW(priv->locations_treeview), separator_func, obj, NULL
-    );
 }
 
 static gboolean filter_real(
@@ -764,47 +551,6 @@ static void on_end_loading(
     gdk_window_set_cursor(gtk_widget_get_window(GTK_WIDGET(obj)), NULL);
 }
 
-static void on_locations_treeview_row_activated(
-    GtkTreeView *locations_treeview, GtkTreePath *path,
-    GtkTreeViewColumn *column, BeditFileBrowserWidget *obj
-) {
-    BeditFileBrowserWidgetPrivate *priv = obj->priv;
-    GtkTreeIter iter;
-    guint id = G_MAXUINT;
-    GFile *file;
-
-    if (gtk_tree_model_get_iter(
-        GTK_TREE_MODEL(priv->locations_model), &iter, path
-    )) {
-        gtk_tree_model_get(
-            GTK_TREE_MODEL(priv->locations_model), &iter,
-            COLUMN_ID, &id,
-            -1
-        );
-    }
-
-    if (id == PATH_ID) {
-        gtk_tree_model_get(
-            GTK_TREE_MODEL(priv->locations_model), &iter,
-            COLUMN_FILE, &file,
-            -1
-        );
-
-        bedit_file_browser_store_set_virtual_root_from_location(
-            priv->file_store, file
-        );
-
-        g_object_unref(file);
-        gtk_cell_view_set_displayed_row(
-            GTK_CELL_VIEW(priv->locations_cellview), path
-        );
-    }
-
-    gtk_toggle_button_set_active(
-        GTK_TOGGLE_BUTTON(priv->locations_button), FALSE
-    );
-}
-
 static GActionEntry browser_entries[] = {
     {"open", open_activated},
     {"set_active_root", set_active_root_activated},
@@ -824,30 +570,6 @@ static GActionEntry browser_entries[] = {
     {"up", up_activated},
     {"home", home_activated}
 };
-
-static void locations_icon_renderer_cb(
-    GtkTreeViewColumn *tree_column, GtkCellRenderer *cell,
-    GtkTreeModel *tree_model, GtkTreeIter *iter, BeditFileBrowserWidget *obj
-) {
-    GdkPixbuf *pixbuf;
-    gchar *icon_name;
-
-    gtk_tree_model_get(
-        tree_model, iter,
-        BEDIT_FILE_BROWSER_BOOKMARKS_STORE_COLUMN_ICON_NAME, &icon_name,
-        BEDIT_FILE_BROWSER_BOOKMARKS_STORE_COLUMN_ICON, &pixbuf,
-        -1
-    );
-
-    if (icon_name != NULL) {
-        g_object_set(cell, "icon-name", icon_name, NULL);
-    } else {
-        g_object_set(cell, "pixbuf", pixbuf, NULL);
-    }
-
-    g_clear_object(&pixbuf);
-    g_free(icon_name);
-}
 
 static void bedit_file_browser_widget_init(BeditFileBrowserWidget *obj) {
     GtkBuilder *builder;
@@ -914,26 +636,6 @@ static void bedit_file_browser_widget_init(BeditFileBrowserWidget *obj) {
         G_CALLBACK(on_location_button_press_event), obj
     );
 
-    /* locations popover */
-    gtk_tree_selection_set_mode(
-        obj->priv->locations_treeview_selection, GTK_SELECTION_SINGLE
-    );
-    gtk_tree_view_column_set_cell_data_func(
-        obj->priv->treeview_icon_column, obj->priv->treeview_icon_renderer,
-        (GtkTreeCellDataFunc)locations_icon_renderer_cb, obj, NULL
-    );
-    fill_locations_model(obj);
-
-    g_signal_connect(
-        obj->priv->locations_treeview_selection, "changed",
-        G_CALLBACK(on_locations_treeview_selection_changed), obj
-    );
-    g_signal_connect(
-        obj->priv->locations_treeview, "row-activated",
-        G_CALLBACK(on_locations_treeview_row_activated), obj
-    );
-
-    /* tree view */
     obj->priv->file_store = bedit_file_browser_store_new(NULL);
     obj->priv->bookmarks_store = bedit_file_browser_bookmarks_store_new();
 
@@ -946,6 +648,7 @@ static void bedit_file_browser_widget_init(BeditFileBrowserWidget *obj) {
         obj->priv->location, obj->priv->file_store
     );
 
+    /* tree view */
     bedit_file_browser_view_set_restore_expand_state(obj->priv->treeview, TRUE);
 
     bedit_file_browser_store_set_filter_mode(
@@ -1587,33 +1290,11 @@ GtkWidget *bedit_file_browser_widget_new(void) {
     return GTK_WIDGET(obj);
 }
 
-void bedit_file_browser_widget_show_bookmarks(BeditFileBrowserWidget *obj) {
-    GtkTreePath *path;
-    GtkTreeIter iter;
-
-    gtk_widget_set_sensitive(obj->priv->locations_button, FALSE);
-    gtk_widget_hide(obj->priv->locations_button_arrow);
-    locations_find_by_id(obj, BOOKMARKS_ID, &iter);
-
-    path = gtk_tree_model_get_path(
-        GTK_TREE_MODEL(obj->priv->locations_model), &iter
-    );
-    gtk_cell_view_set_displayed_row(
-        GTK_CELL_VIEW(obj->priv->locations_cellview), path
-    );
-    gtk_tree_path_free(path);
-
-    bedit_file_browser_view_set_model(
-        obj->priv->treeview, GTK_TREE_MODEL(obj->priv->bookmarks_store)
-    );
-}
+void bedit_file_browser_widget_show_bookmarks(BeditFileBrowserWidget *obj) {}
 
 static void show_files_real(
     BeditFileBrowserWidget *obj, gboolean do_root_changed
 ) {
-    gtk_widget_set_sensitive(obj->priv->locations_button, TRUE);
-    gtk_widget_show(obj->priv->locations_button_arrow);
-
     bedit_file_browser_view_set_model(
         obj->priv->treeview, GTK_TREE_MODEL(obj->priv->file_store)
     );
@@ -2350,8 +2031,6 @@ static void on_virtual_root_changed(
             );
         }
 
-        check_current_item(obj, TRUE);
-
         if (location) {
             g_object_unref(location);
         }
@@ -2426,27 +2105,6 @@ static gboolean on_location_button_press_event(
     gtk_menu_popup_at_pointer(GTK_MENU(menu), (GdkEvent *)event);
 
     return TRUE;
-}
-
-static void on_locations_treeview_selection_changed(
-    GtkTreeSelection *treeview_selection, BeditFileBrowserWidget *obj
-) {
-    BeditFileBrowserWidgetPrivate *priv = obj->priv;
-    GtkTreeModel *model = GTK_TREE_MODEL(priv->locations_model);
-    GtkTreePath *path;
-    GtkTreeIter iter;
-
-    if (!gtk_tree_selection_get_selected(treeview_selection, &model, &iter)) {
-        return;
-    }
-
-    path = gtk_tree_model_get_path(
-        GTK_TREE_MODEL(obj->priv->locations_model), &iter
-    );
-    gtk_cell_view_set_displayed_row(
-        GTK_CELL_VIEW(obj->priv->locations_cellview), path
-    );
-    gtk_tree_path_free(path);
 }
 
 static gboolean on_treeview_popup_menu(
