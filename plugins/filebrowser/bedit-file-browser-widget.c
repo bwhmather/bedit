@@ -707,26 +707,9 @@ static void fill_locations_model(BeditFileBrowserWidget *obj) {
     BeditFileBrowserWidgetPrivate *priv = obj->priv;
     GtkTreeIter iter;
 
-    gtk_list_store_append(priv->locations_model, &iter);
-    gtk_list_store_set(
-        priv->locations_model, &iter,
-        COLUMN_ICON, NULL,
-        COLUMN_ICON_NAME, "user-bookmarks-symbolic",
-        COLUMN_NAME, _("Bookmarks"),
-        COLUMN_ID, BOOKMARKS_ID,
-        -1
-    );
-
     gtk_tree_view_set_row_separator_func(
         GTK_TREE_VIEW(priv->locations_treeview), separator_func, obj, NULL
     );
-
-    gtk_tree_selection_select_iter(priv->locations_treeview_selection, &iter);
-
-    on_locations_treeview_selection_changed(
-        priv->locations_treeview_selection, obj
-    );
-    bedit_file_browser_widget_show_bookmarks(obj);
 }
 
 static gboolean filter_real(
@@ -793,9 +776,7 @@ static void on_locations_treeview_row_activated(
         );
     }
 
-    if (id == BOOKMARKS_ID) {
-        bedit_file_browser_widget_show_bookmarks(obj);
-    } else if (id == PATH_ID) {
+    if (id == PATH_ID) {
         gtk_tree_model_get(
             GTK_TREE_MODEL(priv->locations_model), &iter,
             COLUMN_FILE, &file,
@@ -1587,8 +1568,6 @@ GtkWidget *bedit_file_browser_widget_new(void) {
         BEDIT_TYPE_FILE_BROWSER_WIDGET, NULL
     );
 
-    bedit_file_browser_widget_show_bookmarks(obj);
-
     return GTK_WIDGET(obj);
 }
 
@@ -1826,10 +1805,6 @@ static guint bedit_file_browser_widget_get_num_selected_files_or_directories(
     );
     GList *rows, *row;
     guint result = 0;
-
-    if (BEDIT_IS_FILE_BROWSER_BOOKMARKS_STORE(model)) {
-        return 0;
-    }
 
     rows = gtk_tree_selection_get_selected_rows(selection, &model);
 
@@ -2086,13 +2061,7 @@ void bedit_file_browser_widget_refresh(BeditFileBrowserWidget *obj) {
         GTK_TREE_VIEW(obj->priv->treeview)
     );
 
-    if (BEDIT_IS_FILE_BROWSER_STORE(model)) {
-        bedit_file_browser_store_refresh(BEDIT_FILE_BROWSER_STORE(model));
-    } else if (BEDIT_IS_FILE_BROWSER_BOOKMARKS_STORE(model)) {
-        bedit_file_browser_bookmarks_store_refresh(
-            BEDIT_FILE_BROWSER_BOOKMARKS_STORE(model)
-        );
-    }
+    bedit_file_browser_store_refresh(BEDIT_FILE_BROWSER_STORE(model));
 }
 
 BeditMenuExtension *bedit_file_browser_widget_extend_context_menu(
@@ -2387,57 +2356,24 @@ static void on_model_set(
 
     clear_signals(obj);
 
-    if (BEDIT_IS_FILE_BROWSER_BOOKMARKS_STORE(model)) {
-        clear_next_locations(obj);
+    /* make sure any async operation is cancelled */
+    cancel_async_operation(obj);
 
-        /* Add the current location to the back menu */
-        if (obj->priv->current_location) {
-            GAction *action;
+    add_signal(
+        obj, gobject,
+        g_signal_connect(
+            gobject, "file-activated", G_CALLBACK(on_file_activated), obj
+        )
+    );
 
-            gtk_menu_shell_prepend(
-                GTK_MENU_SHELL(obj->priv->location_previous_menu),
-                obj->priv->current_location_menu_item
-            );
+    add_signal(
+        obj, model,
+        g_signal_connect(
+            model, "no-trash", G_CALLBACK(on_file_store_no_trash), obj
+        )
+    );
 
-            g_object_unref(obj->priv->current_location_menu_item);
-            obj->priv->current_location = NULL;
-            obj->priv->current_location_menu_item = NULL;
-
-            action = g_action_map_lookup_action(
-                G_ACTION_MAP(obj->priv->action_group), "previous_location"
-            );
-            g_simple_action_set_enabled(G_SIMPLE_ACTION(action), TRUE);
-        }
-
-        gtk_widget_hide(obj->priv->filter_entry_revealer);
-
-        add_signal(
-            obj, gobject,
-            g_signal_connect(
-                gobject, "bookmark-activated",
-                G_CALLBACK(on_bookmark_activated), obj
-            )
-        );
-    } else if (BEDIT_IS_FILE_BROWSER_STORE(model)) {
-        /* make sure any async operation is cancelled */
-        cancel_async_operation(obj);
-
-        add_signal(
-            obj, gobject,
-            g_signal_connect(
-                gobject, "file-activated", G_CALLBACK(on_file_activated), obj
-            )
-        );
-
-        add_signal(
-            obj, model,
-            g_signal_connect(
-                model, "no-trash", G_CALLBACK(on_file_store_no_trash), obj
-            )
-        );
-
-        gtk_widget_show(obj->priv->filter_entry_revealer);
-    }
+    gtk_widget_show(obj->priv->filter_entry_revealer);
 
     update_sensitivity(obj);
 }
