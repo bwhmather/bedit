@@ -2202,44 +2202,6 @@ static void save_cb(
     }
 }
 
-static void trim_trailing_whitespace(GtkTextBuffer *buffer) {
-    GtkTextIter iter;
-
-    g_return_if_fail(GTK_IS_TEXT_BUFFER(buffer));
-
-    gtk_text_buffer_begin_user_action(buffer);
-
-    gtk_text_buffer_get_start_iter(buffer, &iter);
-    while (!gtk_text_iter_is_end(&iter)) {
-        GtkTextIter cursor;
-
-        gtk_text_iter_forward_to_line_end(&iter);
-
-        cursor = iter;
-
-        while (!gtk_text_iter_starts_line(&cursor)) {
-            GtkTextIter lookahead;
-            gunichar ch;
-
-            lookahead = cursor;
-            gtk_text_iter_backward_char(&lookahead);
-            ch = gtk_text_iter_get_char(&lookahead);
-
-            if (ch != ' ' && ch != '\t') {
-                break;
-            }
-
-            cursor = lookahead;
-        }
-
-        if (!gtk_text_iter_equal(&cursor, &iter)) {
-            gtk_text_buffer_delete(buffer, &cursor, &iter);
-        }
-    }
-
-    gtk_text_buffer_end_user_action(buffer);
-}
-
 static void launch_saver(GTask *saving_task) {
     BeditTab *tab = g_task_get_source_object(saving_task);
     BeditDocument *doc = bedit_tab_get_document(tab);
@@ -2247,7 +2209,6 @@ static void launch_saver(GTask *saving_task) {
 
     bedit_tab_set_state(tab, BEDIT_TAB_STATE_SAVING);
 
-    trim_trailing_whitespace(GTK_TEXT_BUFFER(doc));
     g_signal_emit_by_name(doc, "save");
 
     if (data->timer != NULL) {
