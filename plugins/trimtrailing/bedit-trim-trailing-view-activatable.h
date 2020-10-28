@@ -1,5 +1,5 @@
 /*
- * bedit-trim-trailing-plugin.h
+ * bedit-trim-trailing-view-activatable.h
  *
  * Copyright (C) 2020 Ben Mather
  *
@@ -18,19 +18,25 @@
  *
  */
 
-#ifndef BEDIT_TRIM_TRAILING_PLUGIN_H
-#define BEDIT_TRIM_TRAILING_PLUGIN_H
+#ifndef BEDIT_TRIM_TRAILING_VIEW_ACTIVATABLE_H
+#define BEDIT_TRIM_TRAILING_VIEW_ACTIVATABLE_H
 
 #include <glib-object.h>
-#include <glib.h>
-#include <libpeas/peas-extension-base.h>
-#include <libpeas/peas-object-module.h>
 
 G_BEGIN_DECLS
 
-G_MODULE_EXPORT void peas_register_types(PeasObjectModule *module);
+#define BEDIT_TYPE_TRIM_TRAILING_VIEW_ACTIVATABLE                           \
+    (bedit_trim_trailing_view_activatable_get_type())
+
+G_DECLARE_FINAL_TYPE(
+    BeditTrimTrailingViewActivatable, bedit_trim_trailing_view_activatable,
+    BEDIT, TRIM_TRAILING_VIEW_ACTIVATABLE,
+    PeasExtensionBase
+)
+
+void bedit_trim_trailing_view_activatable_register(PeasObjectModule *module);
 
 G_END_DECLS
 
-#endif /* BEDIT_TRIM_TRAILING_PLUGIN_H */
+#endif /* BEDIT_TRIM_TRAILING_VIEW_ACTIVATABLE_H */
 

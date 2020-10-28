@@ -1,5 +1,6 @@
 libtrimtrailing_sources = files(
   'bedit-trim-trailing-plugin.c',
+  'bedit-trim-trailing-view-activatable.c',
 )
 
 libtrimtrailing_deps = [
