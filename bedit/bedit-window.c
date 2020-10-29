@@ -1766,6 +1766,12 @@ static void search_active_notify_cb(
     update_actions_sensitivity(window);
 }
 
+static void replace_active_notify_cb(
+    BeditSearchbar *doc, GParamSpec *pspec, BeditWindow *window
+) {
+    update_actions_sensitivity(window);
+}
+
 static void can_undo(
     BeditDocument *doc, GParamSpec *pspec, BeditWindow *window
 ) {
@@ -2248,6 +2254,11 @@ static void bedit_window_init(BeditWindow *window) {
     g_signal_connect(
         window->priv->searchbar, "notify::search-active",
         G_CALLBACK(search_active_notify_cb), window
+    );
+
+    g_signal_connect(
+        window->priv->searchbar, "notify::replace-active",
+        G_CALLBACK(replace_active_notify_cb), window
     );
 
     /* Setup main area */
