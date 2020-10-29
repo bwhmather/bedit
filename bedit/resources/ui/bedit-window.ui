@@ -64,6 +64,7 @@
               <object class="BeditStatusMenuButton" id="line_col_button">
                 <property name="visible">True</property>
                 <property name="use_popover">True</property>
+                <property name="can_focus">False</property>
                 <child internal-child="label">
                   <object class="GtkLabel">
                     <property name="width_chars">18</property>
@@ -81,6 +82,7 @@
               <object class="BeditStatusMenuButton" id="tab_width_button">
                 <property name="visible">True</property>
                 <property name="use_popover">True</property>
+                <property name="can_focus">False</property>
               </object>
               <packing>
                 <property name="expand">False</property>
@@ -92,6 +94,7 @@
               <object class="BeditStatusMenuButton" id="language_button">
                 <property name="visible">True</property>
                 <property name="use_popover">True</property>
+                <property name="can_focus">False</property>
               </object>
               <packing>
                 <property name="expand">False</property>
