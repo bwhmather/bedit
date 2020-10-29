@@ -533,6 +533,19 @@ static gboolean search_entry_key_press_cb(
         return GDK_EVENT_STOP;
     }
 
+    if (
+        event->keyval == GDK_KEY_Tab && modifiers == 0 &&
+        !bedit_searchbar_get_replace_active(searchbar)
+    ) {
+        /* We always want tab to jump focus to the replace entry, even if the
+         * replace entry is currently hidden and therefore excluded from the
+         * default GTK tab order.
+         */
+        bedit_searchbar_show_replace(searchbar);
+
+        return GDK_EVENT_STOP;
+    }
+
     return GDK_EVENT_PROPAGATE;
 }
 
