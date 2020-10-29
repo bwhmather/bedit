@@ -463,6 +463,7 @@ static void bedit_file_browser_window_activatable_activate(
 
     priv->action_area_button = gtk_menu_button_new();
     gtk_widget_set_valign(GTK_WIDGET(priv->action_area_button), GTK_ALIGN_CENTER);
+    gtk_widget_set_can_focus(GTK_WIDGET(priv->action_area_button), FALSE);
 
     gtk_container_add(
         GTK_CONTAINER(priv->action_area_button), action_area_button_image
