@@ -676,11 +676,11 @@ static void replace_all_button_clicked_cb(
 ) {
     bedit_debug(DEBUG_WINDOW);
 
+    g_return_if_fail(GTK_IS_BUTTON(button));
     g_return_if_fail(BEDIT_IS_SEARCHBAR(searchbar));
+    g_return_if_fail(GTK_WIDGET(button) == searchbar->replace_all_button);
 
     bedit_searchbar_replace_all(searchbar);
-    g_return_if_fail(GTK_IS_BUTTON(button));
-    g_return_if_fail(GTK_WIDGET(button) == searchbar->replace_all_button);
 }
 
 static void bedit_searchbar_init(BeditSearchbar *searchbar) {
