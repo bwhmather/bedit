@@ -1,6 +1,6 @@
 project(
   'bedit', 'c',
-  version: '3.35.2',
+  version: '0.1.0',
   meson_version: '>= 0.49'
 )
 
@@ -90,7 +90,7 @@ i18n = import('i18n')
 pkg = import('pkgconfig')
 python = import('python')
 
-api_version = '3.36'
+api_version = '0.1'
 
 package_string = '@0@-@1@'.format(meson.project_name(), api_version)
 
