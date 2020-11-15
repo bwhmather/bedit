@@ -60,6 +60,8 @@ struct _BeditFileBrowserWindowActivatable {
 typedef struct _BeditFileBrowserWindowActivatablePrivate {
     BeditWindow *window;
 
+    GSimpleAction *toggle_action;
+
     GSettings *settings;
     GSettings *nautilus_settings;
     GSettings *terminal_settings;
@@ -80,6 +82,10 @@ static void bedit_window_activatable_iface_init(
     BeditWindowActivatableInterface *iface
 );
 
+static void on_toggle_action_cb(
+    GAction *action, GVariant *parameter,
+    BeditFileBrowserWindowActivatable *plugin
+);
 static void on_location_activated_cb(
     BeditFileBrowserWidget *widget, GFile *location, BeditWindow *window
 );
@@ -537,6 +543,16 @@ static void bedit_file_browser_window_activatable_activate(
     /* Register messages on the bus */
     bedit_file_browser_messages_register(priv->window, priv->tree_widget);
 
+    /* Bind action to toggle browser when keyboard shortcut pressed. */
+    priv->toggle_action = g_simple_action_new("file-browser", NULL);
+    g_signal_connect(
+        priv->toggle_action, "activate",
+        G_CALLBACK(on_toggle_action_cb), activatable
+    );
+    g_action_map_add_action(
+        G_ACTION_MAP(priv->window), G_ACTION(priv->toggle_action))
+    ;
+
     bedit_file_browser_window_activatable_update_state(activatable);
 }
 
@@ -603,6 +619,25 @@ void _bedit_file_browser_window_activatable_register_type(
 }
 
 /* Callbacks */
+static void on_toggle_action_cb(
+    GAction *action, GVariant *parameter,
+    BeditFileBrowserWindowActivatable *plugin
+) {
+    GtkToggleButton *toggle_button;
+    BeditFileBrowserWindowActivatablePrivate *priv;
+
+    g_return_if_fail(BEDIT_IS_FILE_BROWSER_WINDOW_ACTIVATABLE(plugin));
+
+    priv = bedit_file_browser_window_activatable_get_instance_private(plugin);
+
+    toggle_button = GTK_TOGGLE_BUTTON(priv->action_area_button);
+    if (gtk_toggle_button_get_active(toggle_button)) {
+        gtk_toggle_button_set_active(toggle_button, FALSE);
+    } else {
+        gtk_toggle_button_set_active(toggle_button, TRUE);
+    }
+}
+
 static void on_location_activated_cb(
     BeditFileBrowserWidget *tree_widget, GFile *location, BeditWindow *window
 ) {
