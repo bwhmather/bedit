@@ -28,12 +28,14 @@
 #include <bedit/bedit-commands.h>
 #include <bedit/bedit-debug.h>
 #include <bedit/bedit-utils.h>
+#include <bedit/bedit-app-activatable.h>
 #include <bedit/bedit-window-activatable.h>
 #include <bedit/bedit-window.h>
 #include <glib/gi18n-lib.h>
 #include <gmodule.h>
 #include <string.h>
 
+#include "bedit-file-browser-app-activatable.h"
 #include "bedit-file-browser-window-activatable.h"
 #include "bedit-file-browser-enum-types.h"
 #include "bedit-file-browser-error.h"
@@ -46,6 +48,7 @@
 
 G_MODULE_EXPORT void peas_register_types(PeasObjectModule *module) {
     bedit_file_browser_enum_and_flag_register_type(G_TYPE_MODULE(module));
+    _bedit_file_browser_app_activatable_register_type(G_TYPE_MODULE(module));
     _bedit_file_browser_window_activatable_register_type(G_TYPE_MODULE(module));
     _bedit_file_browser_bookmarks_store_register_type(G_TYPE_MODULE(module));
     _bedit_file_browser_store_register_type(G_TYPE_MODULE(module));
@@ -54,6 +57,9 @@ G_MODULE_EXPORT void peas_register_types(PeasObjectModule *module) {
     _bedit_file_browser_widget_register_type(G_TYPE_MODULE(module));
     _bedit_quick_open_widget_register_type(G_TYPE_MODULE(module));
 
+    peas_object_module_register_extension_type(
+        module, BEDIT_TYPE_APP_ACTIVATABLE, BEDIT_TYPE_FILE_BROWSER_APP_ACTIVATABLE
+    );
     peas_object_module_register_extension_type(
         module, BEDIT_TYPE_WINDOW_ACTIVATABLE, BEDIT_TYPE_FILE_BROWSER_WINDOW_ACTIVATABLE
     );
