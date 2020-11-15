@@ -586,6 +586,8 @@ static void bedit_file_browser_window_activatable_deactivate(
     gtk_container_remove(
         GTK_CONTAINER(action_area), GTK_WIDGET(priv->action_area_button)
     );
+
+    g_action_map_remove_action(G_ACTION_MAP(priv->window), "file-browser");
 }
 
 static void bedit_file_browser_window_activatable_class_init(
