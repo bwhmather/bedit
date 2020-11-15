@@ -1,147 +1,169 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface>
-  <!-- interface-requires gtk+ 3.0 -->
+  <requires lib="gtk+" version="3.24"/>
   <template class="BeditSearchbar" parent="GtkBin">
-    <property name="can_focus">False</property>
     <property name="visible">True</property>
+    <property name="can-focus">False</property>
     <child>
       <object class="GtkRevealer" id="revealer">
-        <property name="can_focus">False</property>
         <property name="visible">True</property>
-        <property name="transition_type">slide-up</property>
+        <property name="can-focus">False</property>
+        <property name="transition-type">slide-up</property>
         <child>
+          <!-- n-columns=3 n-rows=2 -->
           <object class="GtkGrid">
-            <property name="can_focus">False</property>
             <property name="visible">True</property>
-            <property name="margin_top">3</property>
-            <property name="margin_end">3</property>
-            <property name="margin_bottom">3</property>
-            <property name="margin_start">3</property>
-            <property name="row_spacing">8</property>
-            <property name="column_spacing">8</property>
+            <property name="can-focus">False</property>
+            <property name="margin-start">3</property>
+            <property name="margin-end">3</property>
+            <property name="margin-top">3</property>
+            <property name="margin-bottom">3</property>
+            <property name="row-spacing">8</property>
+            <property name="column-spacing">8</property>
             <child>
-              <!-- <object class="GdTaggedEntry" id="search_entry"> -->
               <object class="GtkSearchEntry" id="search_entry">
                 <property name="visible">True</property>
-                <property name="can_focus">True</property>
-                <property name="primary-icon-activatable">True</property>
-                <property name="primary-icon-sensitive">True</property>
+                <property name="can-focus">True</property>
                 <property name="hexpand">True</property>
               </object>
               <packing>
-                <property name="left_attach">0</property>
-                <property name="top_attach">0</property>
+                <property name="left-attach">0</property>
+                <property name="top-attach">0</property>
               </packing>
             </child>
             <child>
               <object class="GtkSearchEntry" id="replace_entry">
                 <property name="visible">True</property>
-                <property name="can_focus">True</property>
-                <property name="primary_icon_name">edit-find-replace-symbolic</property>
-                <property name="primary_icon_activatable">False</property>
-                <property name="primary_icon_sensitive">False</property>
+                <property name="can-focus">True</property>
+                <property name="primary-icon-name">edit-find-replace-symbolic</property>
+                <property name="primary-icon-activatable">False</property>
+                <property name="primary-icon-sensitive">False</property>
               </object>
               <packing>
-                <property name="left_attach">0</property>
-                <property name="top_attach">1</property>
+                <property name="left-attach">0</property>
+                <property name="top-attach">1</property>
               </packing>
             </child>
             <child>
               <object class="GtkBox">
                 <property name="visible">True</property>
-                <property name="can_focus">False</property>
-                <property name="orientation">horizontal</property>
-                <style>
-                  <class name="linked"/>
-                </style>
+                <property name="can-focus">False</property>
                 <child>
                   <object class="GtkButton" id="prev_button">
                     <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="tooltip_text" translatable="yes">Previous match (Ctrl+Shift+G)</property>
+                    <property name="can-focus">False</property>
+                    <property name="receives-default">False</property>
+                    <property name="tooltip-text" translatable="yes">Previous match (Ctrl+Shift+G)</property>
                     <child>
                       <object class="GtkImage" id="up_image">
                         <property name="visible">True</property>
-                        <property name="can_focus">False</property>
+                        <property name="can-focus">False</property>
+                        <property name="icon-name">go-up-symbolic</property>
                         <property name="icon_size">1</property>
-                        <property name="icon_name">go-up-symbolic</property>
                       </object>
                     </child>
                   </object>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="fill">True</property>
+                    <property name="position">0</property>
+                  </packing>
                 </child>
                 <child>
                   <object class="GtkButton" id="next_button">
                     <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="tooltip_text" translatable="yes">Previous match (Ctrl+G)</property>
+                    <property name="can-focus">False</property>
+                    <property name="receives-default">False</property>
+                    <property name="tooltip-text" translatable="yes">Previous match (Ctrl+G)</property>
                     <child>
                       <object class="GtkImage" id="down_image">
                         <property name="visible">True</property>
-                        <property name="can_focus">False</property>
+                        <property name="can-focus">False</property>
+                        <property name="icon-name">go-down-symbolic</property>
                         <property name="icon_size">1</property>
-                        <property name="icon_name">go-down-symbolic</property>
                       </object>
                     </child>
                   </object>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="fill">True</property>
+                    <property name="position">1</property>
+                  </packing>
                 </child>
+                <style>
+                  <class name="linked"/>
+                </style>
               </object>
               <packing>
-                <property name="left_attach">1</property>
-                <property name="top_attach">0</property>
+                <property name="left-attach">1</property>
+                <property name="top-attach">0</property>
               </packing>
             </child>
             <child>
               <object class="GtkBox">
                 <property name="visible">True</property>
-                <property name="can_focus">False</property>
-                <property name="orientation">horizontal</property>
-                <style>
-                  <class name="linked"/>
-                </style>
+                <property name="can-focus">False</property>
                 <child>
                   <object class="GtkToggleButton" id="case_sensitive_toggle">
+                    <property name="label">Aa</property>
                     <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="label" translatable="no">Aa</property>
-                    <property name="tooltip_text" translatable="yes">Match case</property>
+                    <property name="can-focus">False</property>
+                    <property name="receives-default">False</property>
+                    <property name="tooltip-text" translatable="yes">Match case</property>
                   </object>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="fill">True</property>
+                    <property name="position">0</property>
+                  </packing>
                 </child>
                 <child>
                   <object class="GtkToggleButton" id="regex_enabled_toggle">
+                    <property name="label">.*</property>
                     <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="label" translatable="no">.*</property>
-                    <property name="tooltip_text" translatable="yes">Regular expression</property>
+                    <property name="can-focus">False</property>
+                    <property name="receives-default">False</property>
+                    <property name="tooltip-text" translatable="yes">Regular expression</property>
                   </object>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="fill">True</property>
+                    <property name="position">1</property>
+                  </packing>
                 </child>
+                <style>
+                  <class name="linked"/>
+                </style>
               </object>
               <packing>
-                <property name="left_attach">2</property>
-                <property name="top_attach">0</property>
+                <property name="left-attach">2</property>
+                <property name="top-attach">0</property>
               </packing>
             </child>
             <child>
               <object class="GtkButton" id="replace_button">
-                <property name="visible">True</property>
-                <property name="can_focus">False</property>
                 <property name="label" translatable="yes">Replace</property>
-                <property name="tooltip_text" translatable="yes">Replace currently highlighted instance (Ctrl+R)</property>
+                <property name="visible">True</property>
+                <property name="can-focus">False</property>
+                <property name="receives-default">False</property>
+                <property name="tooltip-text" translatable="yes">Replace currently highlighted instance (Ctrl+R)</property>
               </object>
               <packing>
-                <property name="left_attach">1</property>
-                <property name="top_attach">1</property>
+                <property name="left-attach">1</property>
+                <property name="top-attach">1</property>
               </packing>
             </child>
             <child>
               <object class="GtkButton" id="replace_all_button">
-                <property name="visible">True</property>
-                <property name="can_focus">False</property>
                 <property name="label" translatable="yes">Replace All</property>
-                <property name="tooltip_text" translatable="yes">Replace all instances (Ctrl+Alt+R)</property>
+                <property name="visible">True</property>
+                <property name="can-focus">False</property>
+                <property name="receives-default">False</property>
+                <property name="tooltip-text" translatable="yes">Replace all instances (Ctrl+Alt+R)</property>
               </object>
               <packing>
-                <property name="left_attach">2</property>
-                <property name="top_attach">1</property>
+                <property name="left-attach">2</property>
+                <property name="top-attach">1</property>
               </packing>
             </child>
           </object>
