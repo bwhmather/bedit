@@ -61,11 +61,11 @@ struct _BeditSearchbar {
 
     gulong cursor_moved_cb_id;
 
-    gboolean search_active : 1;
-    gboolean replace_active : 1;
+    guint search_active : 1;
+    guint replace_active : 1;
 
-    gboolean case_sensitive : 1;
-    gboolean regex_enabled : 1;
+    guint case_sensitive : 1;
+    guint regex_enabled : 1;
 };
 
 enum {
@@ -283,7 +283,7 @@ static void bedit_searchbar_update_search_active(BeditSearchbar *searchbar) {
         search_active = FALSE;
     }
 
-    if (searchbar->search_active != search_active) {
+    if (!searchbar->search_active != !search_active) {
         searchbar->search_active = search_active;
         g_object_notify_by_pspec(
             G_OBJECT(searchbar), properties[PROP_SEARCH_ACTIVE]
@@ -314,7 +314,7 @@ static void bedit_searchbar_update_replace_active(BeditSearchbar *searchbar) {
         replace_active = FALSE;
     }
 
-    if (searchbar->replace_active != replace_active) {
+    if (!searchbar->replace_active != !replace_active) {
         searchbar->replace_active = replace_active;
         g_object_notify_by_pspec(
             G_OBJECT(searchbar), properties[PROP_REPLACE_ACTIVE]
@@ -687,6 +687,12 @@ static void bedit_searchbar_init(BeditSearchbar *searchbar) {
     gtk_widget_init_template(GTK_WIDGET(searchbar));
 
     searchbar->mode = BEDIT_SEARCHBAR_MODE_HIDDEN;
+
+    searchbar->search_active = FALSE;
+    searchbar->replace_active = FALSE;
+
+    searchbar->case_sensitive = TRUE;
+    searchbar->regex_enabled = FALSE;
 
     g_signal_connect(
         searchbar->search_entry, "key-press-event",
