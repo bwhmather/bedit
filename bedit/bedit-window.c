@@ -1465,16 +1465,15 @@ static void update_statusbar(
     }
 }
 
-
 static void on_switched_page(
-    BeditNotebook *notebook, BeditTab *new_tab, guint page_num,
-    BeditWindow *window
+    BeditNotebook *notebook, GParamSpec *pspec, BeditWindow *window
 ) {
-    BeditTab *old_tab;
+    BeditTab *old_tab, *new_tab;
     BeditView *old_view, *new_view;
 
     bedit_debug(DEBUG_WINDOW);
 
+    new_tab = bedit_window_get_active_tab(window);
     old_tab = window->priv->active_tab;
     window->priv->active_tab = new_tab;
 
@@ -2273,7 +2272,7 @@ static void bedit_window_init(BeditWindow *window) {
     );
 
     g_signal_connect(
-        window->priv->notebook, "switch-page",
+        window->priv->notebook, "notify::page",
         G_CALLBACK(on_switched_page), window
     );
 
