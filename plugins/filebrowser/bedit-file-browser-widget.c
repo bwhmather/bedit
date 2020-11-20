@@ -1059,35 +1059,17 @@ GtkWidget *bedit_file_browser_widget_new(void) {
     return GTK_WIDGET(obj);
 }
 
-static void show_files_real(
-    BeditFileBrowserWidget *obj, gboolean do_root_changed
-) {
-    bedit_file_browser_view_set_model(
-        obj->priv->treeview, GTK_TREE_MODEL(obj->priv->file_store)
-    );
-
-    if (do_root_changed) {
-        on_virtual_root_changed(obj->priv->file_store, NULL, obj);
-    }
-}
-
 void bedit_file_browser_widget_set_root_and_virtual_root(
     BeditFileBrowserWidget *obj, GFile *root, GFile *virtual_root
 ) {
-    BeditFileBrowserStoreResult result;
-
     if (!virtual_root) {
-        result = bedit_file_browser_store_set_root_and_virtual_root(
+        bedit_file_browser_store_set_root_and_virtual_root(
             obj->priv->file_store, root, root
         );
     } else {
-        result = bedit_file_browser_store_set_root_and_virtual_root(
+        bedit_file_browser_store_set_root_and_virtual_root(
             obj->priv->file_store, root, virtual_root
         );
-    }
-
-    if (result == BEDIT_FILE_BROWSER_STORE_RESULT_NO_CHANGE) {
-        show_files_real(obj, TRUE);
     }
 }
 
@@ -1437,7 +1419,9 @@ static void on_virtual_root_changed(
         gtk_tree_view_get_model(GTK_TREE_VIEW(obj->priv->treeview)) !=
         GTK_TREE_MODEL(obj->priv->file_store)
     ) {
-        show_files_real(obj, FALSE);
+        bedit_file_browser_view_set_model(
+            obj->priv->treeview, GTK_TREE_MODEL(obj->priv->file_store)
+        );
     }
 
     if (bedit_file_browser_store_get_iter_virtual_root(model, &iter)) {
