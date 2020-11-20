@@ -72,15 +72,6 @@ typedef enum {
 } BeditFileBrowserStoreFlag;
 
 typedef enum {
-    BEDIT_FILE_BROWSER_STORE_RESULT_OK,
-    BEDIT_FILE_BROWSER_STORE_RESULT_NO_CHANGE,
-    BEDIT_FILE_BROWSER_STORE_RESULT_ERROR,
-    BEDIT_FILE_BROWSER_STORE_RESULT_NO_TRASH,
-    BEDIT_FILE_BROWSER_STORE_RESULT_MOUNTING,
-    BEDIT_FILE_BROWSER_STORE_RESULT_NUM
-} BeditFileBrowserStoreResult;
-
-typedef enum {
     BEDIT_FILE_BROWSER_STORE_FILTER_MODE_NONE = 0,
     BEDIT_FILE_BROWSER_STORE_FILTER_MODE_HIDE_HIDDEN = 1 << 0,
     BEDIT_FILE_BROWSER_STORE_FILTER_MODE_HIDE_BINARY = 1 << 1
@@ -128,23 +119,23 @@ struct _BeditFileBrowserStoreClass {
 GType bedit_file_browser_store_get_type(void) G_GNUC_CONST;
 
 BeditFileBrowserStore *bedit_file_browser_store_new(GFile *root);
-BeditFileBrowserStoreResult bedit_file_browser_store_set_root_and_virtual_root(
+void bedit_file_browser_store_set_root_and_virtual_root(
     BeditFileBrowserStore *model, GFile *root, GFile *virtual_root
 );
-BeditFileBrowserStoreResult bedit_file_browser_store_set_root(
+void bedit_file_browser_store_set_root(
     BeditFileBrowserStore *model, GFile *root
 );
-BeditFileBrowserStoreResult bedit_file_browser_store_set_virtual_root(
+void bedit_file_browser_store_set_virtual_root(
     BeditFileBrowserStore *model, GtkTreeIter *iter
 );
-BeditFileBrowserStoreResult
+void
 bedit_file_browser_store_set_virtual_root_from_location(
     BeditFileBrowserStore *model, GFile *root
 );
-BeditFileBrowserStoreResult bedit_file_browser_store_set_virtual_root_up(
+void bedit_file_browser_store_set_virtual_root_up(
     BeditFileBrowserStore *model
 );
-BeditFileBrowserStoreResult bedit_file_browser_store_set_virtual_root_top(
+void bedit_file_browser_store_set_virtual_root_top(
     BeditFileBrowserStore *model
 );
 gboolean bedit_file_browser_store_get_iter_virtual_root(
@@ -192,10 +183,10 @@ gboolean bedit_file_browser_store_rename(
     BeditFileBrowserStore *model, GtkTreeIter *iter, gchar const *new_name,
     GError **error
 );
-BeditFileBrowserStoreResult bedit_file_browser_store_delete(
+void bedit_file_browser_store_delete(
     BeditFileBrowserStore *model, GtkTreeIter *iter, gboolean trash
 );
-BeditFileBrowserStoreResult bedit_file_browser_store_delete_all(
+void bedit_file_browser_store_delete_all(
     BeditFileBrowserStore *model, GList *rows, gboolean trash
 );
 gboolean bedit_file_browser_store_new_file(

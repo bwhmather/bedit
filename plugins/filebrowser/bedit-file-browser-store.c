@@ -2593,21 +2593,19 @@ static GFile *unique_new_name(GFile *directory, gchar const *name) {
     return newuri;
 }
 
-static BeditFileBrowserStoreResult model_root_mounted(
+static void model_root_mounted(
     BeditFileBrowserStore *model, GFile *virtual_root
 ) {
     model_check_dummy(model, model->priv->root);
     g_object_notify(G_OBJECT(model), "root");
 
     if (virtual_root != NULL) {
-        return bedit_file_browser_store_set_virtual_root_from_location(
+        bedit_file_browser_store_set_virtual_root_from_location(
             model, virtual_root
         );
     } else {
         set_virtual_root_from_node(model, model->priv->root);
     }
-
-    return BEDIT_FILE_BROWSER_STORE_RESULT_OK;
 }
 
 static void handle_root_error(BeditFileBrowserStore *model, GError *error) {
@@ -2671,7 +2669,7 @@ static void mount_cb(GFile *file, GAsyncResult *res, MountInfo *mount_info) {
     g_slice_free(MountInfo, mount_info);
 }
 
-static BeditFileBrowserStoreResult model_mount_root(
+static void model_mount_root(
     BeditFileBrowserStore *model, GFile *virtual_root
 ) {
     GFileInfo *info;
@@ -2707,7 +2705,6 @@ static BeditFileBrowserStoreResult model_mount_root(
             );
 
             model->priv->mount_info = mount_info;
-            return BEDIT_FILE_BROWSER_STORE_RESULT_MOUNTING;
         } else {
             handle_root_error(model, error);
         }
@@ -2716,10 +2713,8 @@ static BeditFileBrowserStoreResult model_mount_root(
     } else {
         g_object_unref(info);
 
-        return model_root_mounted(model, virtual_root);
+        model_root_mounted(model, virtual_root);
     }
-
-    return BEDIT_FILE_BROWSER_STORE_RESULT_OK;
 }
 
 /* Public */
@@ -2788,41 +2783,28 @@ void bedit_file_browser_store_set_value(
     }
 }
 
-BeditFileBrowserStoreResult bedit_file_browser_store_set_virtual_root(
+void bedit_file_browser_store_set_virtual_root(
     BeditFileBrowserStore *model, GtkTreeIter *iter
 ) {
-    g_return_val_if_fail(
-        BEDIT_IS_FILE_BROWSER_STORE(model),
-        BEDIT_FILE_BROWSER_STORE_RESULT_NO_CHANGE
-    );
-    g_return_val_if_fail(
-        iter != NULL, BEDIT_FILE_BROWSER_STORE_RESULT_NO_CHANGE
-    );
-    g_return_val_if_fail(
-        iter->user_data != NULL, BEDIT_FILE_BROWSER_STORE_RESULT_NO_CHANGE
-    );
+    g_return_if_fail(BEDIT_IS_FILE_BROWSER_STORE(model));
+    g_return_if_fail(iter != NULL);
+    g_return_if_fail(iter->user_data != NULL);
 
     model_clear(model, FALSE);
     set_virtual_root_from_node(model, (FileBrowserNode *)(iter->user_data));
-
-    return TRUE;
 }
 
-BeditFileBrowserStoreResult
-bedit_file_browser_store_set_virtual_root_from_location(
+void bedit_file_browser_store_set_virtual_root_from_location(
     BeditFileBrowserStore *model, GFile *root
 ) {
-    g_return_val_if_fail(
-        BEDIT_IS_FILE_BROWSER_STORE(model),
-        BEDIT_FILE_BROWSER_STORE_RESULT_NO_CHANGE
-    );
+    g_return_if_fail(BEDIT_IS_FILE_BROWSER_STORE(model));
 
     if (root == NULL) {
         gchar *uri = g_file_get_uri(root);
 
         g_warning("Invalid uri (%s)", uri);
         g_free(uri);
-        return BEDIT_FILE_BROWSER_STORE_RESULT_NO_CHANGE;
+        return;
     }
 
     /* Check if uri is already the virtual root */
@@ -2830,7 +2812,7 @@ bedit_file_browser_store_set_virtual_root_from_location(
         model->priv->virtual_root &&
         g_file_equal(model->priv->virtual_root->file, root)
     ) {
-        return BEDIT_FILE_BROWSER_STORE_RESULT_NO_CHANGE;
+        return;
     }
 
     /* Check if uri is the root itself */
@@ -2838,7 +2820,7 @@ bedit_file_browser_store_set_virtual_root_from_location(
         /* Always clear the model before altering the nodes */
         model_clear(model, FALSE);
         set_virtual_root_from_node(model, model->priv->root);
-        return BEDIT_FILE_BROWSER_STORE_RESULT_OK;
+        return;
     }
 
     if (!g_file_has_prefix(root, model->priv->root->file)) {
@@ -2850,48 +2832,36 @@ bedit_file_browser_store_set_virtual_root_from_location(
         g_free(str);
         g_free(str1);
 
-        return BEDIT_FILE_BROWSER_STORE_RESULT_ERROR;
+        return;
     }
 
     set_virtual_root_from_file(model, root);
-
-    return BEDIT_FILE_BROWSER_STORE_RESULT_OK;
 }
 
-BeditFileBrowserStoreResult bedit_file_browser_store_set_virtual_root_top(
+void bedit_file_browser_store_set_virtual_root_top(
     BeditFileBrowserStore *model
 ) {
-    g_return_val_if_fail(
-        BEDIT_IS_FILE_BROWSER_STORE(model),
-        BEDIT_FILE_BROWSER_STORE_RESULT_NO_CHANGE
-    );
+    g_return_if_fail(BEDIT_IS_FILE_BROWSER_STORE(model));
 
     if (model->priv->virtual_root == model->priv->root) {
-        return BEDIT_FILE_BROWSER_STORE_RESULT_NO_CHANGE;
+        return;
     }
 
     model_clear(model, FALSE);
     set_virtual_root_from_node(model, model->priv->root);
-
-    return BEDIT_FILE_BROWSER_STORE_RESULT_OK;
 }
 
-BeditFileBrowserStoreResult bedit_file_browser_store_set_virtual_root_up(
+void bedit_file_browser_store_set_virtual_root_up(
     BeditFileBrowserStore *model
 ) {
-    g_return_val_if_fail(
-        BEDIT_IS_FILE_BROWSER_STORE(model),
-        BEDIT_FILE_BROWSER_STORE_RESULT_NO_CHANGE
-    );
+    g_return_if_fail(BEDIT_IS_FILE_BROWSER_STORE(model));
 
     if (model->priv->virtual_root == model->priv->root) {
-        return BEDIT_FILE_BROWSER_STORE_RESULT_NO_CHANGE;
+        return;
     }
 
     model_clear(model, FALSE);
     set_virtual_root_from_node(model, model->priv->virtual_root->parent);
-
-    return BEDIT_FILE_BROWSER_STORE_RESULT_OK;
 }
 
 gboolean bedit_file_browser_store_get_iter_virtual_root(
@@ -2942,26 +2912,23 @@ void bedit_file_browser_store_cancel_mount_operation(
     cancel_mount_operation(store);
 }
 
-BeditFileBrowserStoreResult bedit_file_browser_store_set_root_and_virtual_root(
+void bedit_file_browser_store_set_root_and_virtual_root(
     BeditFileBrowserStore *model, GFile *root, GFile *virtual_root
 ) {
     FileBrowserNode *node;
     gboolean equal = FALSE;
 
-    g_return_val_if_fail(
-        BEDIT_IS_FILE_BROWSER_STORE(model),
-        BEDIT_FILE_BROWSER_STORE_RESULT_NO_CHANGE
-    );
+    g_return_if_fail(BEDIT_IS_FILE_BROWSER_STORE(model));
 
     if (root == NULL && model->priv->root == NULL) {
-        return BEDIT_FILE_BROWSER_STORE_RESULT_NO_CHANGE;
+        return;
     }
 
     if (root != NULL && model->priv->root != NULL) {
         equal = g_file_equal(root, model->priv->root->file);
 
         if (equal && virtual_root == NULL) {
-            return BEDIT_FILE_BROWSER_STORE_RESULT_NO_CHANGE;
+            return;
         }
     }
 
@@ -2970,7 +2937,7 @@ BeditFileBrowserStoreResult bedit_file_browser_store_set_root_and_virtual_root(
             equal &&
             g_file_equal(virtual_root, model->priv->virtual_root->file)
         ) {
-            return BEDIT_FILE_BROWSER_STORE_RESULT_NO_CHANGE;
+            return;
         }
     }
 
@@ -2989,26 +2956,19 @@ BeditFileBrowserStoreResult bedit_file_browser_store_set_root_and_virtual_root(
         node = file_browser_node_dir_new(model, root, NULL);
 
         model->priv->root = node;
-        return model_mount_root(model, virtual_root);
+        model_mount_root(model, virtual_root);
     } else {
         g_object_notify(G_OBJECT(model), "root");
         g_object_notify(G_OBJECT(model), "virtual-root");
     }
-
-    return BEDIT_FILE_BROWSER_STORE_RESULT_OK;
 }
 
-BeditFileBrowserStoreResult bedit_file_browser_store_set_root(
+void bedit_file_browser_store_set_root(
     BeditFileBrowserStore *model, GFile *root
 ) {
-    g_return_val_if_fail(
-        BEDIT_IS_FILE_BROWSER_STORE(model),
-        BEDIT_FILE_BROWSER_STORE_RESULT_NO_CHANGE
-    );
+    g_return_if_fail(BEDIT_IS_FILE_BROWSER_STORE(model));
 
-    return bedit_file_browser_store_set_root_and_virtual_root(
-        model, root, NULL
-    );
+    bedit_file_browser_store_set_root_and_virtual_root(model, root, NULL);
 }
 
 GFile *bedit_file_browser_store_get_root(BeditFileBrowserStore *model) {
@@ -3385,7 +3345,7 @@ static void delete_files(AsyncData *data) {
     }
 }
 
-BeditFileBrowserStoreResult bedit_file_browser_store_delete_all(
+void bedit_file_browser_store_delete_all(
     BeditFileBrowserStore *model, GList *rows, gboolean trash
 ) {
     FileBrowserNode *node;
@@ -3396,13 +3356,10 @@ BeditFileBrowserStoreResult bedit_file_browser_store_delete_all(
     GtkTreePath *prev = NULL;
     GtkTreePath *path;
 
-    g_return_val_if_fail(
-        BEDIT_IS_FILE_BROWSER_STORE(model),
-        BEDIT_FILE_BROWSER_STORE_RESULT_NO_CHANGE
-    );
+    g_return_if_fail(BEDIT_IS_FILE_BROWSER_STORE(model));
 
     if (rows == NULL) {
-        return BEDIT_FILE_BROWSER_STORE_RESULT_NO_CHANGE;
+        return;
     }
 
     /* First we sort the paths so that we can later on remove any
@@ -3443,42 +3400,30 @@ BeditFileBrowserStoreResult bedit_file_browser_store_delete_all(
 
     delete_files(data);
     g_list_free(rows);
-
-    return BEDIT_FILE_BROWSER_STORE_RESULT_OK;
 }
 
-BeditFileBrowserStoreResult bedit_file_browser_store_delete(
+void bedit_file_browser_store_delete(
     BeditFileBrowserStore *model, GtkTreeIter *iter, gboolean trash
 ) {
     FileBrowserNode *node;
     GList *rows = NULL;
-    BeditFileBrowserStoreResult result;
 
-    g_return_val_if_fail(
-        BEDIT_IS_FILE_BROWSER_STORE(model),
-        BEDIT_FILE_BROWSER_STORE_RESULT_NO_CHANGE
-    );
-    g_return_val_if_fail(
-        iter != NULL, BEDIT_FILE_BROWSER_STORE_RESULT_NO_CHANGE
-    );
-    g_return_val_if_fail(
-        iter->user_data != NULL, BEDIT_FILE_BROWSER_STORE_RESULT_NO_CHANGE
-    );
+    g_return_if_fail(BEDIT_IS_FILE_BROWSER_STORE(model));
+    g_return_if_fail(iter != NULL);
+    g_return_if_fail(iter->user_data != NULL);
 
     node = (FileBrowserNode *)(iter->user_data);
 
     if (NODE_IS_DUMMY(node)) {
-        return BEDIT_FILE_BROWSER_STORE_RESULT_NO_CHANGE;
+        return;
     }
 
     rows = g_list_append(
         NULL, bedit_file_browser_store_get_path_real(model, node)
     );
-    result = bedit_file_browser_store_delete_all(model, rows, trash);
+    bedit_file_browser_store_delete_all(model, rows, trash);
 
     g_list_free_full(rows, (GDestroyNotify)gtk_tree_path_free);
-
-    return result;
 }
 
 gboolean bedit_file_browser_store_new_file(
