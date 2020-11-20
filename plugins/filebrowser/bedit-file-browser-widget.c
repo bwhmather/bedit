@@ -2137,60 +2137,6 @@ static gboolean on_treeview_button_press_event(
     return FALSE;
 }
 
-static gboolean do_change_directory(
-    BeditFileBrowserWidget *obj, GdkEventKey *event
-) {
-    GAction *action = NULL;
-
-    if (
-        (event->state & (
-            ~GDK_CONTROL_MASK & ~GDK_SHIFT_MASK & ~GDK_MOD1_MASK
-        )) == event->state &&
-        event->keyval == GDK_KEY_BackSpace
-    ) {
-        action = g_action_map_lookup_action(
-            G_ACTION_MAP(obj->priv->action_group), "previous_location"
-        );
-    } else if (!(
-        (event->state & GDK_MOD1_MASK) &&
-        (event->state & (~GDK_CONTROL_MASK & ~GDK_SHIFT_MASK)) == event->state
-    )) {
-        return FALSE;
-    }
-
-    switch (event->keyval) {
-    case GDK_KEY_Home:
-        action = g_action_map_lookup_action(
-            G_ACTION_MAP(obj->priv->action_group), "home"
-        );
-        break;
-    case GDK_KEY_Left:
-        action = g_action_map_lookup_action(
-            G_ACTION_MAP(obj->priv->action_group), "previous_location"
-        );
-        break;
-    case GDK_KEY_Right:
-        action = g_action_map_lookup_action(
-            G_ACTION_MAP(obj->priv->action_group), "next_location"
-        );
-        break;
-    case GDK_KEY_Up:
-        action = g_action_map_lookup_action(
-            G_ACTION_MAP(obj->priv->action_group), "up"
-        );
-        break;
-    default:
-        break;
-    }
-
-    if (action != NULL) {
-        g_action_activate(action, NULL);
-        return TRUE;
-    }
-
-    return FALSE;
-}
-
 static gboolean on_treeview_key_press_event(
     BeditFileBrowserView *treeview, GdkEventKey *event,
     BeditFileBrowserWidget *obj
@@ -2198,8 +2144,20 @@ static gboolean on_treeview_key_press_event(
     GtkTreeModel *model;
     guint modifiers;
 
-    if (do_change_directory(obj, event)) {
-        return TRUE;
+    if (
+        (event->state & (
+            ~GDK_CONTROL_MASK & ~GDK_MOD1_MASK
+        )) == (event->state | GDK_SHIFT_MASK)  &&
+        event->keyval == GDK_KEY_BackSpace
+    ) {
+        GAction *action = g_action_map_lookup_action(
+            G_ACTION_MAP(obj->priv->action_group), "up"
+        );
+
+        if (action != NULL) {
+            g_action_activate(action, NULL);
+            return TRUE;
+        }
     }
 
     model = gtk_tree_view_get_model(GTK_TREE_VIEW(treeview));
