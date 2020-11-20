@@ -1700,18 +1700,53 @@ static void on_filter_mode_changed(
 static void up_activated(
     GSimpleAction *action, GVariant *parameter, gpointer user_data
 ) {
-    BeditFileBrowserWidget *widget = BEDIT_FILE_BROWSER_WIDGET(user_data);
-    GtkTreeModel *model = gtk_tree_view_get_model(
-        GTK_TREE_VIEW(widget->priv->treeview)
-    );
+    GFile *old_vroot, *new_vroot;
+    BeditFileBrowserWidget *widget;
+    GtkTreeView *view;
+    BeditFileBrowserStore *store;
 
-    if (!BEDIT_IS_FILE_BROWSER_STORE(model)) {
-        return;
+    widget = BEDIT_FILE_BROWSER_WIDGET(user_data);
+    view = GTK_TREE_VIEW(widget->priv->treeview);
+    store = BEDIT_FILE_BROWSER_STORE(gtk_tree_view_get_model(view));
+
+    old_vroot = bedit_file_browser_store_get_virtual_root(store);
+
+    bedit_file_browser_store_set_virtual_root_up(store);
+
+    new_vroot = bedit_file_browser_store_get_virtual_root(store);
+
+    if (new_vroot != old_vroot && old_vroot != NULL) {
+        GtkTreeIter iter;
+        gboolean has_next;
+
+        has_next = gtk_tree_model_get_iter_first(GTK_TREE_MODEL(store), &iter);
+
+        while (has_next) {
+            GFile *location;
+
+            gtk_tree_model_get(
+                GTK_TREE_MODEL(store), &iter,
+                BEDIT_FILE_BROWSER_STORE_COLUMN_LOCATION, &location,
+                -1
+            );
+
+            if (g_file_equal(location, old_vroot)) {
+                GtkTreeSelection *selection;
+
+                selection = gtk_tree_view_get_selection(view);
+                gtk_tree_selection_select_iter(selection, &iter);
+
+                break;
+            }
+
+            g_object_unref(location);
+
+            has_next = gtk_tree_model_iter_next(GTK_TREE_MODEL(store), &iter);
+        }
     }
 
-    bedit_file_browser_store_set_virtual_root_up(
-        BEDIT_FILE_BROWSER_STORE(model)
-    );
+    g_object_unref(old_vroot);
+    g_object_unref(new_vroot);
 }
 
 static void home_activated(
