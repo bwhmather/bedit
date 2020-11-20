@@ -574,18 +574,6 @@ static void message_set_show_binary_cb(
     bedit_file_browser_store_set_filter_mode(store, mode);
 }
 
-static void message_show_bookmarks_cb(
-    BeditMessageBus *bus, BeditMessage *message, WindowData *data
-) {
-    bedit_file_browser_widget_show_bookmarks(data->widget);
-}
-
-static void message_show_files_cb(
-    BeditMessageBus *bus, BeditMessage *message, WindowData *data
-) {
-    bedit_file_browser_widget_show_files(data->widget);
-}
-
 static void message_get_view_cb(
     BeditMessageBus *bus, BeditMessage *message, WindowData *data
 ) {
@@ -658,16 +646,6 @@ static void register_methods(
     );
 
     bedit_message_bus_register(
-        bus, BEDIT_TYPE_MESSAGE,
-        MESSAGE_OBJECT_PATH, "show_bookmarks"
-    );
-
-    bedit_message_bus_register(
-        bus, BEDIT_TYPE_MESSAGE,
-        MESSAGE_OBJECT_PATH, "show_files"
-    );
-
-    bedit_message_bus_register(
         bus, BEDIT_TYPE_FILE_BROWSER_MESSAGE_GET_VIEW,
         MESSAGE_OBJECT_PATH, "get_view"
     );
@@ -686,9 +664,6 @@ static void register_methods(
 
     BUS_CONNECT(bus, set_show_hidden, data);
     BUS_CONNECT(bus, set_show_binary, data);
-
-    BUS_CONNECT(bus, show_bookmarks, data);
-    BUS_CONNECT(bus, show_files, data);
 
     BUS_CONNECT(bus, get_view, data);
 }
@@ -962,9 +937,6 @@ void bedit_file_browser_messages_unregister(BeditWindow *window) {
 
     BUS_DISCONNECT(bus, set_show_hidden, data);
     BUS_DISCONNECT(bus, set_show_binary, data);
-
-    BUS_DISCONNECT(bus, show_bookmarks, data);
-    BUS_DISCONNECT(bus, show_files, data);
 
     BUS_DISCONNECT(bus, get_view, data);
 

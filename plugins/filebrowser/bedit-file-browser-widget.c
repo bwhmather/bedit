@@ -1059,8 +1059,6 @@ GtkWidget *bedit_file_browser_widget_new(void) {
     return GTK_WIDGET(obj);
 }
 
-void bedit_file_browser_widget_show_bookmarks(BeditFileBrowserWidget *obj) {}
-
 static void show_files_real(
     BeditFileBrowserWidget *obj, gboolean do_root_changed
 ) {
@@ -1071,10 +1069,6 @@ static void show_files_real(
     if (do_root_changed) {
         on_virtual_root_changed(obj->priv->file_store, NULL, obj);
     }
-}
-
-void bedit_file_browser_widget_show_files(BeditFileBrowserWidget *obj) {
-    show_files_real(obj, TRUE);
 }
 
 void bedit_file_browser_widget_set_root_and_virtual_root(
