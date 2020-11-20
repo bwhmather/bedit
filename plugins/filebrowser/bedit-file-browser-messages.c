@@ -526,18 +526,6 @@ static void message_up_cb(
     bedit_file_browser_store_set_virtual_root_up(store);
 }
 
-static void message_history_back_cb(
-    BeditMessageBus *bus, BeditMessage *message, WindowData *data
-) {
-    bedit_file_browser_widget_history_back(data->widget);
-}
-
-static void message_history_forward_cb(
-    BeditMessageBus *bus, BeditMessage *message, WindowData *data
-) {
-    bedit_file_browser_widget_history_forward(data->widget);
-}
-
 static void message_refresh_cb(
     BeditMessageBus *bus, BeditMessage *message, WindowData *data
 ) {
@@ -656,16 +644,6 @@ static void register_methods(
 
     bedit_message_bus_register(
         bus, BEDIT_TYPE_MESSAGE,
-        MESSAGE_OBJECT_PATH, "history_back"
-    );
-
-    bedit_message_bus_register(
-        bus, BEDIT_TYPE_MESSAGE,
-        MESSAGE_OBJECT_PATH, "history_forward"
-    );
-
-    bedit_message_bus_register(
-        bus, BEDIT_TYPE_MESSAGE,
         MESSAGE_OBJECT_PATH, "refresh"
     );
 
@@ -703,8 +681,6 @@ static void register_methods(
     BUS_CONNECT(bus, extend_context_menu, window);
 
     BUS_CONNECT(bus, up, data);
-    BUS_CONNECT(bus, history_back, data);
-    BUS_CONNECT(bus, history_forward, data);
 
     BUS_CONNECT(bus, refresh, data);
 
@@ -981,8 +957,6 @@ void bedit_file_browser_messages_unregister(BeditWindow *window) {
     BUS_DISCONNECT(bus, remove_filter, data);
 
     BUS_DISCONNECT(bus, up, data);
-    BUS_DISCONNECT(bus, history_back, data);
-    BUS_DISCONNECT(bus, history_forward, data);
 
     BUS_DISCONNECT(bus, refresh, data);
 

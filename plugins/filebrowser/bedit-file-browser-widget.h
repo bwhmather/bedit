@@ -140,8 +140,6 @@ BeditMenuExtension *bedit_file_browser_widget_extend_context_menu(
     BeditFileBrowserWidget *obj
 );
 void bedit_file_browser_widget_refresh(BeditFileBrowserWidget *obj);
-void bedit_file_browser_widget_history_back(BeditFileBrowserWidget *obj);
-void bedit_file_browser_widget_history_forward(BeditFileBrowserWidget *obj);
 
 void _bedit_file_browser_widget_register_type(GTypeModule *type_module);
 

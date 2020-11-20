@@ -94,11 +94,6 @@ typedef struct {
 } FilterFunc;
 
 typedef struct {
-    GFile *root;
-    GFile *virtual_root;
-} Location;
-
-typedef struct {
     gchar *name;
     gchar *icon_name;
     GdkPixbuf *icon;
@@ -111,9 +106,6 @@ struct _BeditFileBrowserWidgetPrivate {
 
     GMenuModel *dir_menu;
     GMenuModel *bookmarks_menu;
-
-    GtkWidget *previous_button;
-    GtkWidget *next_button;
 
     BeditFileBrowserLocation *location;
 
@@ -129,13 +121,6 @@ struct _BeditFileBrowserWidgetPrivate {
     gulong glob_filter_id;
     GPatternSpec *filter_pattern;
     gchar *filter_pattern_str;
-
-    GList *locations;
-    GList *current_location;
-    gboolean changing_location;
-    GtkWidget *location_previous_menu;
-    GtkWidget *location_next_menu;
-    GtkWidget *current_location_menu_item;
 
     GCancellable *cancellable;
 
@@ -155,9 +140,6 @@ static void on_file_store_error(
 );
 static gboolean on_file_store_no_trash(
     BeditFileBrowserStore *store, GList *files, BeditFileBrowserWidget *obj
-);
-static gboolean on_location_button_press_event(
-    GtkWidget *button, GdkEventButton *event, BeditFileBrowserWidget *obj
 );
 static gboolean on_treeview_popup_menu(
     BeditFileBrowserView *treeview, BeditFileBrowserWidget *obj
@@ -180,18 +162,9 @@ static void on_virtual_root_changed(
 );
 
 static gboolean on_entry_filter_activate(BeditFileBrowserWidget *obj);
-static void on_location_jump_activate(
-    GtkMenuItem *item, BeditFileBrowserWidget *obj
-);
 static void on_filter_mode_changed(
     BeditFileBrowserStore *model, GParamSpec *param,
     BeditFileBrowserWidget *obj
-);
-static void previous_location_activated(
-    GSimpleAction *action, GVariant *parameter, gpointer user_data
-);
-static void next_location_activated(
-    GSimpleAction *action, GVariant *parameter, gpointer user_data
 );
 static void up_activated(
     GSimpleAction *action, GVariant *parameter, gpointer user_data
@@ -257,18 +230,6 @@ static FilterFunc *filter_func_new(
     return result;
 }
 
-static void location_free(Location *loc) {
-    if (loc->root) {
-        g_object_unref(loc->root);
-    }
-
-    if (loc->virtual_root) {
-        g_object_unref(loc->virtual_root);
-    }
-
-    g_slice_free(Location, loc);
-}
-
 static void cancel_async_operation(BeditFileBrowserWidget *widget) {
     if (!widget->priv->cancellable) {
         return;
@@ -319,12 +280,8 @@ static void bedit_file_browser_widget_dispose(GObject *object) {
     g_slist_free_full(priv->filter_funcs, (GDestroyNotify)filter_func_free);
     priv->filter_funcs = NULL;
 
-    g_list_free_full(priv->locations, (GDestroyNotify)location_free);
-    priv->locations = NULL;
-
     cancel_async_operation(obj);
 
-    g_clear_object(&obj->priv->current_location_menu_item);
     g_clear_object(&priv->busy_cursor);
     g_clear_object(&priv->dir_menu);
     g_clear_object(&priv->bookmarks_menu);
@@ -463,12 +420,6 @@ static void bedit_file_browser_widget_class_init(
         "/com/bwhmather/bedit/plugins/file-browser/ui/"
         "bedit-file-browser-widget.ui"
     );
-    gtk_widget_class_bind_template_child_private(
-        widget_class, BeditFileBrowserWidget, previous_button
-    );
-    gtk_widget_class_bind_template_child_private(
-        widget_class, BeditFileBrowserWidget, next_button
-    );
 
     gtk_widget_class_bind_template_child_private(
         widget_class, BeditFileBrowserWidget, location
@@ -482,12 +433,6 @@ static void bedit_file_browser_widget_class_init(
     );
     gtk_widget_class_bind_template_child_private(
         widget_class, BeditFileBrowserWidget, filter_entry
-    );
-    gtk_widget_class_bind_template_child_private(
-        widget_class, BeditFileBrowserWidget, location_previous_menu
-    );
-    gtk_widget_class_bind_template_child_private(
-        widget_class, BeditFileBrowserWidget, location_next_menu
     );
 }
 
@@ -565,8 +510,6 @@ static GActionEntry browser_entries[] = {
     {"show_hidden", NULL, NULL, "false", change_show_hidden_state},
     {"show_binary", NULL, NULL, "false", change_show_binary_state},
     {"show_match_filename", NULL, NULL, "false", change_show_match_filename},
-    {"previous_location", previous_location_activated},
-    {"next_location", next_location_activated},
     {"up", up_activated},
     {"home", home_activated}
 };
@@ -574,7 +517,6 @@ static GActionEntry browser_entries[] = {
 static void bedit_file_browser_widget_init(BeditFileBrowserWidget *obj) {
     GtkBuilder *builder;
     GdkDisplay *display;
-    GAction *action;
     GError *error = NULL;
 
     obj->priv = bedit_file_browser_widget_get_instance_private(obj);
@@ -610,31 +552,11 @@ static void bedit_file_browser_widget_init(BeditFileBrowserWidget *obj) {
         G_N_ELEMENTS(browser_entries), obj
     );
 
-    /* set initial sensitivity */
-    action = g_action_map_lookup_action(
-        G_ACTION_MAP(obj->priv->action_group), "previous_location"
-    );
-    g_simple_action_set_enabled(G_SIMPLE_ACTION(action), FALSE);
-
-    action = g_action_map_lookup_action(
-        G_ACTION_MAP(obj->priv->action_group), "next_location"
-    );
-    g_simple_action_set_enabled(G_SIMPLE_ACTION(action), FALSE);
-
     gtk_widget_insert_action_group(
         GTK_WIDGET(obj), "browser", G_ACTION_GROUP(obj->priv->action_group)
     );
 
     gtk_widget_init_template(GTK_WIDGET(obj));
-
-    g_signal_connect(
-        obj->priv->previous_button, "button-press-event",
-        G_CALLBACK(on_location_button_press_event), obj
-    );
-    g_signal_connect(
-        obj->priv->next_button, "button-press-event",
-        G_CALLBACK(on_location_button_press_event), obj
-    );
 
     obj->priv->file_store = bedit_file_browser_store_new(NULL);
     obj->priv->bookmarks_store = bedit_file_browser_bookmarks_store_new();
@@ -1034,159 +956,6 @@ static GFile *get_topmost_file(GFile *file) {
     return current;
 }
 
-static GtkWidget *create_goto_menu_item(
-    BeditFileBrowserWidget *obj, GList *item
-) {
-    Location *loc = (Location *)(item->data);
-    GtkWidget *result;
-    gchar *icon_name = NULL;
-    gchar *unescape = NULL;
-
-    unescape = bedit_file_browser_utils_file_basename(loc->virtual_root);
-
-    result = gtk_menu_item_new_with_label(unescape);
-
-    g_object_set_data(G_OBJECT(result), LOCATION_DATA_KEY, item);
-    g_signal_connect(
-        result, "activate",
-        G_CALLBACK(on_location_jump_activate), obj
-    );
-
-    gtk_widget_show(result);
-
-    g_free(icon_name);
-    g_free(unescape);
-
-    return result;
-}
-
-static GList *list_next_iterator(GList *list) {
-    if (!list) {
-        return NULL;
-    }
-
-    return list->next;
-}
-
-static GList *list_prev_iterator(GList *list) {
-    if (!list) {
-        return NULL;
-    }
-
-    return list->prev;
-}
-
-static void jump_to_location(
-    BeditFileBrowserWidget *obj, GList *item, gboolean previous
-) {
-    Location *loc;
-    GtkWidget *widget;
-    GList *children;
-    GList *child;
-    GList *(*iter_func)(GList *);
-    GtkWidget *menu_from;
-    GtkWidget *menu_to;
-
-    if (!obj->priv->locations) {
-        return;
-    }
-
-    if (previous) {
-        iter_func = list_next_iterator;
-        menu_from = obj->priv->location_previous_menu;
-        menu_to = obj->priv->location_next_menu;
-    } else {
-        iter_func = list_prev_iterator;
-        menu_from = obj->priv->location_next_menu;
-        menu_to = obj->priv->location_previous_menu;
-    }
-
-    children = gtk_container_get_children(GTK_CONTAINER(menu_from));
-    child = children;
-
-    /* This is the menuitem for the current location, which is the first
-       to be added to the menu */
-    widget = obj->priv->current_location_menu_item;
-
-    while (obj->priv->current_location != item) {
-        if (widget) {
-            /* Prepend the menu item to the menu */
-            gtk_menu_shell_prepend(GTK_MENU_SHELL(menu_to), widget);
-            g_object_unref(widget);
-        }
-
-        widget = GTK_WIDGET(child->data);
-
-        /* Make sure the widget isn't destroyed when removed */
-        g_object_ref(widget);
-        gtk_container_remove(GTK_CONTAINER(menu_from), widget);
-
-        obj->priv->current_location_menu_item = widget;
-
-        if (obj->priv->current_location == NULL) {
-            obj->priv->current_location = obj->priv->locations;
-
-            if (obj->priv->current_location == item) {
-                break;
-            }
-        } else {
-            obj->priv->current_location = iter_func(
-                obj->priv->current_location
-            );
-        }
-
-        child = child->next;
-    }
-
-    g_list_free(children);
-
-    obj->priv->changing_location = TRUE;
-
-    loc = (Location *)(obj->priv->current_location->data);
-
-    /* Set the new root + virtual root */
-    bedit_file_browser_widget_set_root_and_virtual_root(
-        obj, loc->root, loc->virtual_root
-    );
-
-    obj->priv->changing_location = FALSE;
-}
-
-static void clear_next_locations(BeditFileBrowserWidget *obj) {
-    GAction *action;
-    GList *children;
-    GList *item;
-
-    if (obj->priv->current_location == NULL) {
-        return;
-    }
-
-    while (obj->priv->current_location->prev) {
-        location_free((Location *)(obj->priv->current_location->prev->data));
-        obj->priv->locations = g_list_remove_link(
-            obj->priv->locations, obj->priv->current_location->prev
-        );
-    }
-
-    children = gtk_container_get_children(
-        GTK_CONTAINER(obj->priv->location_next_menu)
-    );
-
-    for (item = children; item; item = item->next) {
-        gtk_container_remove(
-            GTK_CONTAINER(obj->priv->location_next_menu),
-            GTK_WIDGET(item->data)
-        );
-    }
-
-    g_list_free(children);
-
-    action = g_action_map_lookup_action(
-        G_ACTION_MAP(obj->priv->action_group), "next_location"
-    );
-    g_simple_action_set_enabled(G_SIMPLE_ACTION(action), FALSE);
-}
-
 static void update_filter_mode(
     BeditFileBrowserWidget *obj, GSimpleAction *action, GVariant *state,
     BeditFileBrowserStoreFilterMode mode
@@ -1542,217 +1311,6 @@ typedef struct {
     GCancellable *cancellable;
 } AsyncData;
 
-static AsyncData *async_data_new(BeditFileBrowserWidget *widget) {
-    AsyncData *ret = g_slice_new(AsyncData);
-
-    ret->widget = widget;
-
-    cancel_async_operation(widget);
-    widget->priv->cancellable = g_cancellable_new();
-
-    ret->cancellable = g_object_ref(widget->priv->cancellable);
-
-    return ret;
-}
-
-static void async_free(AsyncData *async) {
-    g_object_unref(async->cancellable);
-    g_slice_free(AsyncData, async);
-}
-
-static void set_busy(BeditFileBrowserWidget *obj, gboolean busy) {
-    GdkWindow *window = gtk_widget_get_window(GTK_WIDGET(obj->priv->treeview));
-
-    if (!GDK_IS_WINDOW(window)) {
-        return;
-    }
-
-    if (busy) {
-        GdkDisplay *display = gtk_widget_get_display(GTK_WIDGET(obj));
-        GdkCursor *cursor = gdk_cursor_new_from_name(display, "progress");
-
-        gdk_window_set_cursor(window, cursor);
-        g_clear_object(&cursor);
-    } else {
-        gdk_window_set_cursor(window, NULL);
-    }
-}
-
-static void try_mount_volume(BeditFileBrowserWidget *widget, GVolume *volume);
-
-static void activate_mount(
-    BeditFileBrowserWidget *widget, GVolume *volume, GMount *mount
-) {
-    GFile *root;
-
-    if (!mount) {
-        gchar *name = g_volume_get_name(volume);
-        gchar *message = g_strdup_printf(
-            _("No mount object for mounted volume: %s"), name
-        );
-
-        g_signal_emit(
-            widget, signals[ERROR], 0, BEDIT_FILE_BROWSER_ERROR_SET_ROOT,
-            message
-        );
-
-        g_free(name);
-        g_free(message);
-        return;
-    }
-
-    root = g_mount_get_root(mount);
-
-    bedit_file_browser_widget_set_root(widget, root);
-
-    g_object_unref(root);
-}
-
-static void try_activate_drive(BeditFileBrowserWidget *widget, GDrive *drive) {
-    GList *volumes = g_drive_get_volumes(drive);
-    GVolume *volume = G_VOLUME(volumes->data);
-    GMount *mount = g_volume_get_mount(volume);
-
-    if (mount) {
-        /* try set the root of the mount */
-        activate_mount(widget, volume, mount);
-        g_object_unref(mount);
-    } else {
-        /* try to mount it then? */
-        try_mount_volume(widget, volume);
-    }
-
-    g_list_free_full(volumes, g_object_unref);
-}
-
-static void poll_for_media_cb(
-    GDrive *drive, GAsyncResult *res, AsyncData *async
-) {
-    GError *error = NULL;
-
-    /* check for cancelled state */
-    if (g_cancellable_is_cancelled(async->cancellable)) {
-        async_free(async);
-        return;
-    }
-
-    /* finish poll operation */
-    set_busy(async->widget, FALSE);
-
-    if (
-        g_drive_poll_for_media_finish(drive, res, &error) &&
-        g_drive_has_media(drive) && g_drive_has_volumes(drive)
-    ) {
-        try_activate_drive(async->widget, drive);
-    } else {
-        gchar *name = g_drive_get_name(drive);
-        gchar *message = g_strdup_printf(_("Could not open media: %s"), name);
-
-        g_signal_emit(
-            async->widget, signals[ERROR], 0,
-            BEDIT_FILE_BROWSER_ERROR_SET_ROOT,
-            message
-        );
-
-        g_free(name);
-        g_free(message);
-
-        g_error_free(error);
-    }
-
-    async_free(async);
-}
-
-static void mount_volume_cb(
-    GVolume *volume, GAsyncResult *res, AsyncData *async
-) {
-    GError *error = NULL;
-
-    /* check for cancelled state */
-    if (g_cancellable_is_cancelled(async->cancellable)) {
-        async_free(async);
-        return;
-    }
-
-    if (g_volume_mount_finish(volume, res, &error)) {
-        GMount *mount = g_volume_get_mount(volume);
-
-        activate_mount(async->widget, volume, mount);
-
-        if (mount) {
-            g_object_unref(mount);
-        }
-    } else {
-        gchar *name = g_volume_get_name(volume);
-        gchar *message = g_strdup_printf(_("Could not mount volume: %s"), name);
-
-        g_signal_emit(
-            async->widget, signals[ERROR], 0, BEDIT_FILE_BROWSER_ERROR_SET_ROOT,
-            message
-        );
-
-        g_free(name);
-        g_free(message);
-
-        g_error_free(error);
-    }
-
-    set_busy(async->widget, FALSE);
-    async_free(async);
-}
-
-static void activate_drive(BeditFileBrowserWidget *obj, GtkTreeIter *iter) {
-    GDrive *drive;
-    AsyncData *async;
-
-    gtk_tree_model_get(
-        GTK_TREE_MODEL(obj->priv->bookmarks_store), iter,
-        BEDIT_FILE_BROWSER_BOOKMARKS_STORE_COLUMN_OBJECT, &drive,
-        -1
-    );
-
-    /* most common use case is a floppy drive, we'll poll for media and
-       go from there */
-    async = async_data_new(obj);
-    g_drive_poll_for_media(
-        drive, async->cancellable,
-        (GAsyncReadyCallback)poll_for_media_cb,
-        async
-    );
-
-    g_object_unref(drive);
-    set_busy(obj, TRUE);
-}
-
-static void try_mount_volume(BeditFileBrowserWidget *widget, GVolume *volume) {
-    GMountOperation *operation = gtk_mount_operation_new(
-        GTK_WINDOW(gtk_widget_get_toplevel(GTK_WIDGET(widget)))
-    );
-    AsyncData *async = async_data_new(widget);
-
-    g_volume_mount(
-        volume, G_MOUNT_MOUNT_NONE, operation, async->cancellable,
-        (GAsyncReadyCallback)mount_volume_cb, async
-    );
-
-    g_object_unref(operation);
-    set_busy(widget, TRUE);
-}
-
-static void activate_volume(BeditFileBrowserWidget *obj, GtkTreeIter *iter) {
-    GVolume *volume;
-
-    gtk_tree_model_get(
-        GTK_TREE_MODEL(obj->priv->bookmarks_store), iter,
-        BEDIT_FILE_BROWSER_BOOKMARKS_STORE_COLUMN_OBJECT, &volume,
-        -1
-    );
-
-    /* see if we can mount the volume */
-    try_mount_volume(obj, volume);
-    g_object_unref(volume);
-}
-
 void bedit_file_browser_widget_refresh(BeditFileBrowserWidget *obj) {
     GtkTreeModel *model = gtk_tree_view_get_model(
         GTK_TREE_VIEW(obj->priv->treeview)
@@ -1786,69 +1344,6 @@ BeditMenuExtension *bedit_file_browser_widget_extend_context_menu(
     }
 
     return section != NULL ? bedit_menu_extension_new(G_MENU(section)) : NULL;
-}
-
-void bedit_file_browser_widget_history_back(BeditFileBrowserWidget *obj) {
-    if (obj->priv->locations) {
-        if (obj->priv->current_location) {
-            jump_to_location(obj, obj->priv->current_location->next, TRUE);
-        } else {
-            jump_to_location(obj, obj->priv->locations, TRUE);
-        }
-    }
-}
-
-void bedit_file_browser_widget_history_forward(BeditFileBrowserWidget *obj) {
-    if (obj->priv->locations) {
-        jump_to_location(obj, obj->priv->current_location->prev, FALSE);
-    }
-}
-
-static void bookmark_open(
-    BeditFileBrowserWidget *obj, GtkTreeModel *model, GtkTreeIter *iter
-) {
-    GFile *location;
-    gint flags;
-
-    gtk_tree_model_get(
-        model, iter,
-        BEDIT_FILE_BROWSER_BOOKMARKS_STORE_COLUMN_FLAGS, &flags,
-        -1
-    );
-
-    if (flags & BEDIT_FILE_BROWSER_BOOKMARKS_STORE_IS_DRIVE) {
-        /* handle a drive node */
-        bedit_file_browser_store_cancel_mount_operation(obj->priv->file_store);
-        activate_drive(obj, iter);
-        return;
-    } else if (flags & BEDIT_FILE_BROWSER_BOOKMARKS_STORE_IS_VOLUME) {
-        /* handle a volume node */
-        bedit_file_browser_store_cancel_mount_operation(obj->priv->file_store);
-        activate_volume(obj, iter);
-        return;
-    }
-
-    if ((location = bedit_file_browser_bookmarks_store_get_location(
-        BEDIT_FILE_BROWSER_BOOKMARKS_STORE(model), iter
-    ))) {
-        /* here we check if the bookmark is a mount point, or if it
-           is a remote bookmark. If that's the case, we will set the
-           root to the uri of the bookmark and not try to set the
-           topmost parent as root (since that may as well not be the
-           mount point anymore) */
-        if (
-            (flags & BEDIT_FILE_BROWSER_BOOKMARKS_STORE_IS_MOUNT) ||
-            (flags & BEDIT_FILE_BROWSER_BOOKMARKS_STORE_IS_REMOTE_BOOKMARK)
-        ) {
-            bedit_file_browser_widget_set_root(obj, location);
-        } else {
-            bedit_file_browser_widget_set_virtual_root(obj, location);
-        }
-
-        g_object_unref(location);
-    } else {
-        g_warning("No uri!");
-    }
 }
 
 static void file_open(
@@ -1912,15 +1407,6 @@ static gboolean directory_open(
     return result;
 }
 
-static void on_bookmark_activated(
-    BeditFileBrowserView *tree_view, GtkTreeIter *iter,
-    BeditFileBrowserWidget *obj
-) {
-    GtkTreeModel *model = gtk_tree_view_get_model(GTK_TREE_VIEW(tree_view));
-
-    bookmark_open(obj, model, iter);
-}
-
 static void on_file_activated(
     BeditFileBrowserView *tree_view, GtkTreeIter *iter,
     BeditFileBrowserWidget *obj
@@ -1973,61 +1459,11 @@ static void on_virtual_root_changed(
         if (bedit_file_browser_store_get_iter_root(model, &root)) {
             GAction *action;
 
-            if (!obj->priv->changing_location) {
-                Location *loc;
-
-                /* Remove all items from obj->priv->current_location on */
-                if (obj->priv->current_location) {
-                    clear_next_locations(obj);
-                }
-
-                loc = g_slice_new(Location);
-                loc->root = bedit_file_browser_store_get_root(model);
-                loc->virtual_root = g_object_ref(location);
-
-                if (obj->priv->current_location) {
-                    /* Add current location to the menu so we can go back
-                       to it later */
-                    gtk_menu_shell_prepend(
-                        GTK_MENU_SHELL(obj->priv->location_previous_menu),
-                        obj->priv->current_location_menu_item
-                    );
-                }
-
-                obj->priv->locations = g_list_prepend(
-                    obj->priv->locations, loc
-                );
-
-                obj->priv->current_location = obj->priv->locations;
-                obj->priv->current_location_menu_item =
-                    create_goto_menu_item(obj, obj->priv->current_location);
-
-                g_object_ref_sink(obj->priv->current_location_menu_item);
-            }
-
             action = g_action_map_lookup_action(
                 G_ACTION_MAP(obj->priv->action_group), "up"
             );
             g_simple_action_set_enabled(
                 G_SIMPLE_ACTION(action), !virtual_root_is_root(obj, model)
-            );
-
-            action = g_action_map_lookup_action(
-                G_ACTION_MAP(obj->priv->action_group), "previous_location"
-            );
-            g_simple_action_set_enabled(
-                G_SIMPLE_ACTION(action),
-                obj->priv->current_location != NULL &&
-                obj->priv->current_location->next != NULL
-            );
-
-            action = g_action_map_lookup_action(
-                G_ACTION_MAP(obj->priv->action_group), "next_location"
-            );
-            g_simple_action_set_enabled(
-                G_SIMPLE_ACTION(action),
-                obj->priv->current_location != NULL &&
-                obj->priv->current_location->prev != NULL
             );
         }
 
@@ -2089,26 +1525,6 @@ static void on_treeview_error(
     BeditFileBrowserWidget *obj
 ) {
     g_signal_emit(obj, signals[ERROR], 0, code, message);
-}
-
-static gboolean on_location_button_press_event(
-    GtkWidget *button, GdkEventButton *event, BeditFileBrowserWidget *obj
-) {
-    GtkWidget *menu;
-
-    if (event->button != GDK_BUTTON_SECONDARY) {
-        return FALSE;
-    }
-
-    if (button == obj->priv->previous_button) {
-        menu = obj->priv->location_previous_menu;
-    } else {
-        menu = obj->priv->location_next_menu;
-    }
-
-    gtk_menu_popup_at_pointer(GTK_MENU(menu), (GdkEvent *)event);
-
-    return TRUE;
 }
 
 static gboolean on_treeview_popup_menu(
@@ -2248,24 +1664,6 @@ static gboolean on_entry_filter_activate(BeditFileBrowserWidget *obj) {
     return FALSE;
 }
 
-static void on_location_jump_activate(
-    GtkMenuItem *item, BeditFileBrowserWidget *obj
-) {
-    GList *location = g_object_get_data(G_OBJECT(item), LOCATION_DATA_KEY);
-
-    if (obj->priv->current_location) {
-        jump_to_location(
-            obj, location,
-            g_list_position(obj->priv->locations, location) >
-            g_list_position(
-                obj->priv->locations, obj->priv->current_location
-            )
-        );
-    } else {
-        jump_to_location(obj, location, TRUE);
-    }
-}
-
 static void on_filter_mode_changed(
     BeditFileBrowserStore *model, GParamSpec *param,
     BeditFileBrowserWidget *obj
@@ -2297,22 +1695,6 @@ static void on_filter_mode_changed(
         g_action_change_state(action, g_variant_new_boolean(active));
     }
     g_variant_unref(variant);
-}
-
-static void next_location_activated(
-    GSimpleAction *action, GVariant *parameter, gpointer user_data
-) {
-    bedit_file_browser_widget_history_forward(
-        BEDIT_FILE_BROWSER_WIDGET(user_data)
-    );
-}
-
-static void previous_location_activated(
-    GSimpleAction *action, GVariant *parameter, gpointer user_data
-) {
-    bedit_file_browser_widget_history_back(
-        BEDIT_FILE_BROWSER_WIDGET(user_data)
-    );
 }
 
 static void up_activated(
