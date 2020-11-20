@@ -899,39 +899,38 @@ static GList *get_deletable_files(BeditFileBrowserWidget *obj) {
     return paths;
 }
 
-static gboolean delete_selected_files(
+static void delete_selected_files(
     BeditFileBrowserWidget *obj, gboolean trash
 ) {
-    GtkTreeModel *model = gtk_tree_view_get_model(
-        GTK_TREE_VIEW(obj->priv->treeview)
-    );
+    GtkTreeModel *model;
     gboolean confirm;
-    BeditFileBrowserStoreResult result;
     GList *rows;
 
+    model = gtk_tree_view_get_model(GTK_TREE_VIEW(obj->priv->treeview));
+
     if (!BEDIT_IS_FILE_BROWSER_STORE(model)) {
-        return FALSE;
+        return;
     }
 
     if (!(rows = get_deletable_files(obj))) {
-        return FALSE;
+        return;
     }
 
     if (!trash) {
         g_signal_emit(obj, signals[CONFIRM_DELETE], 0, model, rows, &confirm);
 
         if (!confirm) {
-            return FALSE;
+            return;
         }
     }
 
-    result = bedit_file_browser_store_delete_all(
+    bedit_file_browser_store_delete_all(
         BEDIT_FILE_BROWSER_STORE(model), rows, trash
     );
 
     g_list_free_full(rows, (GDestroyNotify)gtk_tree_path_free);
 
-    return result == BEDIT_FILE_BROWSER_STORE_RESULT_OK;
+    return;
 }
 
 static gboolean on_file_store_no_trash(
