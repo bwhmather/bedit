@@ -18,39 +18,6 @@
         <property name="margin">3</property>
         <property name="spacing">3</property>
         <child>
-          <object class="GtkBox" id="box1">
-          <property name="visible">True</property>
-          <property name="can_focus">False</property>
-            <child>
-              <object class="GtkButton" id="previous_button">
-                <property name="visible">True</property>
-                <property name="can_focus">True</property>
-                <property name="receives_default">True</property>
-                <property name="action_name">browser.previous_location</property>
-                <property name="image">previous_image</property>
-                <style>
-                  <class name="small-button"/>
-                </style>
-              </object>
-            </child>
-            <child>
-              <object class="GtkButton" id="next_button">
-                <property name="visible">True</property>
-                <property name="can_focus">True</property>
-                <property name="receives_default">True</property>
-                <property name="action_name">browser.next_location</property>
-                <property name="image">next_image</property>
-                <style>
-                  <class name="small-button"/>
-                </style>
-              </object>
-            </child>
-          <style>
-            <class name="linked"/>
-          </style>
-          </object>
-        </child>
-        <child>
           <object class="GtkButton" id="button3">
             <property name="visible">True</property>
             <property name="can_focus">True</property>
