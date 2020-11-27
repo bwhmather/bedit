@@ -774,13 +774,13 @@ static void bedit_searchbar_init(BeditSearchbar *searchbar) {
     g_object_bind_property(
         G_OBJECT(searchbar), "regex-enabled",
         G_OBJECT(searchbar->regex_enabled_toggle), "active",
-        G_BINDING_BIDIRECTIONAL
+        G_BINDING_BIDIRECTIONAL | G_BINDING_SYNC_CREATE
     );
 
     g_object_bind_property(
         G_OBJECT(searchbar), "case-sensitive",
         G_OBJECT(searchbar->case_sensitive_toggle), "active",
-        G_BINDING_BIDIRECTIONAL
+        G_BINDING_BIDIRECTIONAL | G_BINDING_SYNC_CREATE
     );
 }
 
