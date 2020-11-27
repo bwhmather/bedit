@@ -69,6 +69,7 @@ else
     '-Wunused',
     '-Wmissing-declarations',
     '-Wdiscarded-qualifiers',
+    '-Wno-overlength-strings',
     '-Wall', '-Wextra',
     '-fno-strict-aliasing',
   ]
