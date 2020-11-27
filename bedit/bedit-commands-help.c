@@ -92,6 +92,7 @@ void _bedit_cmd_help_contents(BeditWindow *window) {
 
 void _bedit_cmd_help_about(BeditWindow *window) {
     static const gchar *const authors[] = {
+        "Ben Mather <bwhmather@bwhmather.com>",
         "Alex Roberts",
         "Chema Celorio",
         "Evan Lawrence",
@@ -116,11 +117,11 @@ void _bedit_cmd_help_about(BeditWindow *window) {
     };
 
     static const gchar copyright[] =
-        "Copyright \xc2\xa9 1998-2019 - the bedit team";
+        "Copyright \xc2\xa9 2020 - Ben Mather <bwhmather@bwhmather.com>\n"
+        "Based on Gedit, Copyright \xc2\xa9 1998-2019 - the gedit team";
 
-    static const gchar comments[] = N_(
-        "bedit is a small and lightweight text editor for the GNOME Desktop"
-    );
+    static const gchar comments[] =
+        "Bedit is a simple editor desigined for tiling window managers";
 
     GdkPixbuf *logo;
     GError *error = NULL;
@@ -140,7 +141,7 @@ void _bedit_cmd_help_about(BeditWindow *window) {
         "comments", _(comments), "copyright", copyright, "license-type",
         GTK_LICENSE_GPL_2_0, "documenters", documenters, "logo", logo,
         "translator-credits", _("translator-credits"), "version", VERSION,
-        "website", "http://www.bedit.org", "website-label", "www.bedit.org",
+        "website", "https://bwhmather.com", "website-label", "bwhmather.com",
         NULL
     );
 
