@@ -122,20 +122,7 @@ BeditFileBrowserBookmarksStore *bedit_file_browser_widget_get_bookmarks_store(
 BeditFileBrowserView *bedit_file_browser_widget_get_browser_view(
     BeditFileBrowserWidget *obj
 );
-GtkWidget *bedit_file_browser_widget_get_filter_entry(
-    BeditFileBrowserWidget *obj
-);
 
-gulong bedit_file_browser_widget_add_filter(
-    BeditFileBrowserWidget *obj, BeditFileBrowserWidgetFilterFunc func,
-    gpointer user_data, GDestroyNotify notify
-);
-void bedit_file_browser_widget_remove_filter(
-    BeditFileBrowserWidget *obj, gulong id
-);
-void bedit_file_browser_widget_set_filter_pattern(
-    BeditFileBrowserWidget *obj, gchar const *pattern
-);
 BeditMenuExtension *bedit_file_browser_widget_extend_context_menu(
     BeditFileBrowserWidget *obj
 );

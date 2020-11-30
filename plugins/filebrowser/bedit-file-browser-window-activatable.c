@@ -41,7 +41,6 @@
 #define FILEBROWSER_BASE_SETTINGS "com.bwhmather.bedit.plugins.filebrowser"
 #define FILEBROWSER_TREE_VIEW "tree-view"
 #define FILEBROWSER_FILTER_MODE "filter-mode"
-#define FILEBROWSER_FILTER_PATTERN "filter-pattern"
 #define FILEBROWSER_BINARY_PATTERNS "binary-patterns"
 
 #define NAUTILUS_BASE_SETTINGS "org.gnome.nautilus.preferences"
@@ -432,12 +431,6 @@ static void bedit_file_browser_window_activatable_activate(
     g_signal_connect(
         priv->tree_widget, "set-active-root",
         G_CALLBACK(set_active_root), plugin
-    );
-
-    g_settings_bind(
-        priv->settings, FILEBROWSER_FILTER_PATTERN,
-        priv->tree_widget, FILEBROWSER_FILTER_PATTERN,
-        G_SETTINGS_BIND_GET | G_SETTINGS_BIND_SET
     );
 
     /* Setup quick-open widget. */

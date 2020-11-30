@@ -57,8 +57,6 @@ typedef struct {
     BeditMessageBus *bus;
     BeditFileBrowserWidget *widget;
     GHashTable *row_tracking;
-
-    GHashTable *filters;
 } WindowData;
 
 typedef struct {
@@ -81,10 +79,6 @@ static WindowData *window_data_new(
         (GDestroyNotify)gtk_tree_row_reference_free
     );
 
-    data->filters = g_hash_table_new_full(
-        g_str_hash, g_str_equal, (GDestroyNotify)g_free, NULL
-    );
-
     g_object_set_data(G_OBJECT(window), WINDOW_DATA_KEY, data);
 
     return data;
@@ -98,49 +92,10 @@ static void window_data_free(BeditWindow *window) {
     WindowData *data = get_window_data(window);
 
     g_hash_table_destroy(data->row_tracking);
-    g_hash_table_destroy(data->filters);
 
     g_slice_free(WindowData, data);
 
     g_object_set_data(G_OBJECT(window), WINDOW_DATA_KEY, NULL);
-}
-
-static FilterData *filter_data_new(BeditWindow *window, BeditMessage *message) {
-    FilterData *data = g_slice_new(FilterData);
-    WindowData *wdata;
-
-    data->window = window;
-    data->id = 0;
-    data->message = message;
-
-    wdata = get_window_data(window);
-
-    g_hash_table_insert(
-        wdata->filters,
-        bedit_message_type_identifier(
-            bedit_message_get_object_path(message),
-            bedit_message_get_method(message)
-        ),
-        data
-    );
-
-    return data;
-}
-
-static void filter_data_free(FilterData *data) {
-    WindowData *wdata = get_window_data(data->window);
-    gchar *identifier;
-
-    identifier = bedit_message_type_identifier(
-        bedit_message_get_object_path(data->message),
-        bedit_message_get_method(data->message)
-    );
-
-    g_hash_table_remove(wdata->filters, identifier);
-    g_free(identifier);
-
-    g_object_unref(data->message);
-    g_slice_free(FilterData, data);
 }
 
 static GtkTreePath *track_row_lookup(WindowData *data, const gchar *id) {
@@ -430,78 +385,6 @@ static gboolean custom_message_filter_func(
     return !filter;
 }
 
-static void message_add_filter_cb(
-    BeditMessageBus *bus, BeditMessage *message, BeditWindow *window
-) {
-    const gchar *object_path = NULL;
-    const gchar *method = NULL;
-    gulong id;
-    BeditMessage *cbmessage;
-    FilterData *filter_data;
-    WindowData *data;
-    GType message_type;
-
-    data = get_window_data(window);
-
-    object_path = bedit_message_get_object_path(message);
-    method = bedit_message_get_method(message);
-
-    message_type = bedit_message_bus_lookup(bus, object_path, method);
-
-    if (message_type == G_TYPE_INVALID) {
-        return;
-    }
-
-    /* Check if the message type has the correct arguments */
-    if (
-        !bedit_message_type_check(message_type, "id", G_TYPE_STRING) ||
-        !bedit_message_type_check(message_type, "location", G_TYPE_FILE) ||
-        !bedit_message_type_check(
-            message_type, "is-directory", G_TYPE_BOOLEAN
-        ) ||
-        !bedit_message_type_check(message_type, "filter", G_TYPE_BOOLEAN)
-    ) {
-        return;
-    }
-
-    cbmessage = g_object_new(
-        message_type,
-        "object-path", object_path,
-        "method", method,
-        "id", NULL,
-        "location", NULL,
-        "is-directory", FALSE,
-        "filter", FALSE,
-        NULL
-    );
-
-    /* Register the custom filter on the widget */
-    filter_data = filter_data_new(window, cbmessage);
-
-    id = bedit_file_browser_widget_add_filter(
-        data->widget,
-        (BeditFileBrowserWidgetFilterFunc)custom_message_filter_func,
-        filter_data,
-        (GDestroyNotify)filter_data_free
-    );
-
-    filter_data->id = id;
-}
-
-static void message_remove_filter_cb(
-    BeditMessageBus *bus, BeditMessage *message, WindowData *data
-) {
-    gulong id = 0;
-
-    g_object_get(message, "id", &id, NULL);
-
-    if (!id) {
-        return;
-    }
-
-    bedit_file_browser_widget_remove_filter(data->widget, id);
-}
-
 static void message_extend_context_menu_cb(
     BeditMessageBus *bus, BeditMessage *message, BeditWindow *window
 ) {
@@ -611,16 +494,6 @@ static void register_methods(
     );
 
     bedit_message_bus_register(
-        bus, BEDIT_TYPE_FILE_BROWSER_MESSAGE_ADD_FILTER,
-        MESSAGE_OBJECT_PATH, "add_filter"
-    );
-
-    bedit_message_bus_register(
-        bus, BEDIT_TYPE_FILE_BROWSER_MESSAGE_ID,
-        MESSAGE_OBJECT_PATH, "remove_filter"
-    );
-
-    bedit_message_bus_register(
         bus, BEDIT_TYPE_FILE_BROWSER_MESSAGE_EXTEND_CONTEXT_MENU,
         MESSAGE_OBJECT_PATH, "extend_context_menu"
     );
@@ -654,8 +527,6 @@ static void register_methods(
     BUS_CONNECT(bus, set_root, data);
     BUS_CONNECT(bus, set_emblem, data);
     BUS_CONNECT(bus, set_markup, data);
-    BUS_CONNECT(bus, add_filter, window);
-    BUS_CONNECT(bus, remove_filter, data);
     BUS_CONNECT(bus, extend_context_menu, window);
 
     BUS_CONNECT(bus, up, data);
@@ -878,12 +749,6 @@ static void message_unregistered(
 
     identifier = bedit_message_type_identifier(object_path, method);
 
-    data = g_hash_table_lookup(wdata->filters, identifier);
-
-    if (data) {
-        bedit_file_browser_widget_remove_filter(wdata->widget, data->id);
-    }
-
     g_free(identifier);
 }
 
@@ -928,8 +793,6 @@ void bedit_file_browser_messages_unregister(BeditWindow *window) {
     BUS_DISCONNECT(bus, set_root, data);
     BUS_DISCONNECT(bus, set_emblem, data);
     BUS_DISCONNECT(bus, set_markup, data);
-    BUS_DISCONNECT(bus, add_filter, window);
-    BUS_DISCONNECT(bus, remove_filter, data);
 
     BUS_DISCONNECT(bus, up, data);
 

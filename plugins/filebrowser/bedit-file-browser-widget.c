@@ -109,18 +109,12 @@ struct _BeditFileBrowserWidgetPrivate {
 
     BeditFileBrowserLocation *location;
 
-    GtkWidget *filter_entry_revealer;
-    GtkWidget *filter_entry;
+    GtkToggleButton *show_binary_toggle;
+    GtkToggleButton *show_hidden_toggle;
 
     GSimpleActionGroup *action_group;
 
     GSList *signal_pool;
-
-    GSList *filter_funcs;
-    gulong filter_id;
-    gulong glob_filter_id;
-    GPatternSpec *filter_pattern;
-    gchar *filter_pattern_str;
 
     GCancellable *cancellable;
 
@@ -160,8 +154,6 @@ static void on_virtual_root_changed(
     BeditFileBrowserStore *model, GParamSpec *param,
     BeditFileBrowserWidget *obj
 );
-
-static gboolean on_entry_filter_activate(BeditFileBrowserWidget *obj);
 static void on_filter_mode_changed(
     BeditFileBrowserStore *model, GParamSpec *param,
     BeditFileBrowserWidget *obj
@@ -202,9 +194,6 @@ static void change_show_hidden_state(
 static void change_show_binary_state(
     GSimpleAction *action, GVariant *state, gpointer user_data
 );
-static void change_show_match_filename(
-    GSimpleAction *action, GVariant *state, gpointer user_data
-);
 static void open_in_terminal_activated(
     GSimpleAction *action, GVariant *parameter, gpointer user_data
 );
@@ -217,19 +206,6 @@ G_DEFINE_DYNAMIC_TYPE_EXTENDED(
     G_ADD_PRIVATE_DYNAMIC(BeditFileBrowserWidget)
 )
 
-static FilterFunc *filter_func_new(
-    BeditFileBrowserWidget *obj, BeditFileBrowserWidgetFilterFunc func,
-    gpointer user_data, GDestroyNotify notify
-) {
-    FilterFunc *result = g_slice_new(FilterFunc);
-
-    result->id = ++obj->priv->filter_id;
-    result->func = func;
-    result->user_data = user_data;
-    result->destroy_notify = notify;
-    return result;
-}
-
 static void cancel_async_operation(BeditFileBrowserWidget *widget) {
     if (!widget->priv->cancellable) {
         return;
@@ -239,19 +215,6 @@ static void cancel_async_operation(BeditFileBrowserWidget *widget) {
     g_object_unref(widget->priv->cancellable);
 
     widget->priv->cancellable = NULL;
-}
-
-static void filter_func_free(FilterFunc *func) {
-    g_slice_free(FilterFunc, func);
-}
-
-static void bedit_file_browser_widget_finalize(GObject *object) {
-    BeditFileBrowserWidgetPrivate *priv =
-        BEDIT_FILE_BROWSER_WIDGET(object)->priv;
-
-    g_free(priv->filter_pattern_str);
-
-    G_OBJECT_CLASS(bedit_file_browser_widget_parent_class)->finalize(object);
 }
 
 static void clear_signals(BeditFileBrowserWidget *obj) {
@@ -277,9 +240,6 @@ static void bedit_file_browser_widget_dispose(GObject *object) {
     g_clear_object(&priv->file_store);
     g_clear_object(&priv->bookmarks_store);
 
-    g_slist_free_full(priv->filter_funcs, (GDestroyNotify)filter_func_free);
-    priv->filter_funcs = NULL;
-
     cancel_async_operation(obj);
 
     g_clear_object(&priv->busy_cursor);
@@ -295,10 +255,6 @@ static void bedit_file_browser_widget_get_property(
     BeditFileBrowserWidget *obj = BEDIT_FILE_BROWSER_WIDGET(object);
 
     switch (prop_id) {
-    case PROP_FILTER_PATTERN:
-        g_value_set_string(value, obj->priv->filter_pattern_str);
-        break;
-
     case PROP_VIRTUAL_ROOT:
         g_value_take_object(
             value, bedit_file_browser_widget_get_virtual_root(obj)
@@ -317,12 +273,6 @@ static void bedit_file_browser_widget_set_property(
     BeditFileBrowserWidget *obj = BEDIT_FILE_BROWSER_WIDGET(object);
 
     switch (prop_id) {
-    case PROP_FILTER_PATTERN:
-        bedit_file_browser_widget_set_filter_pattern(
-            obj, g_value_get_string(value)
-        );
-        break;
-
     case PROP_VIRTUAL_ROOT:
         bedit_file_browser_widget_set_virtual_root(
             obj, G_FILE(g_value_dup_object(value))
@@ -341,19 +291,10 @@ static void bedit_file_browser_widget_class_init(
     GObjectClass *object_class = G_OBJECT_CLASS(klass);
     GtkWidgetClass *widget_class = GTK_WIDGET_CLASS(klass);
 
-    object_class->finalize = bedit_file_browser_widget_finalize;
     object_class->dispose = bedit_file_browser_widget_dispose;
 
     object_class->get_property = bedit_file_browser_widget_get_property;
     object_class->set_property = bedit_file_browser_widget_set_property;
-
-    g_object_class_install_property(
-        object_class, PROP_FILTER_PATTERN,
-        g_param_spec_string(
-            "filter-pattern", "Filter Pattern", "The filter pattern", "",
-            G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS
-        )
-    );
 
     g_object_class_install_property(
         object_class, PROP_VIRTUAL_ROOT,
@@ -428,12 +369,6 @@ static void bedit_file_browser_widget_class_init(
     gtk_widget_class_bind_template_child_private(
         widget_class, BeditFileBrowserWidget, treeview
     );
-    gtk_widget_class_bind_template_child_private(
-        widget_class, BeditFileBrowserWidget, filter_entry_revealer
-    );
-    gtk_widget_class_bind_template_child_private(
-        widget_class, BeditFileBrowserWidget, filter_entry
-    );
 }
 
 static void bedit_file_browser_widget_class_finalize(
@@ -449,23 +384,6 @@ static void add_signal(
     node->id = id;
 
     obj->priv->signal_pool = g_slist_prepend(obj->priv->signal_pool, node);
-}
-
-static gboolean filter_real(
-    BeditFileBrowserStore *model, GtkTreeIter *iter,
-    BeditFileBrowserWidget *obj
-) {
-    GSList *item;
-
-    for (item = obj->priv->filter_funcs; item; item = item->next) {
-        FilterFunc *func = (FilterFunc *)(item->data);
-
-        if (!func->func(obj, model, iter, func->user_data)) {
-            return FALSE;
-        }
-    }
-
-    return TRUE;
 }
 
 static void on_begin_loading(
@@ -509,7 +427,6 @@ static GActionEntry browser_entries[] = {
     {"open_in_terminal", open_in_terminal_activated},
     {"show_hidden", NULL, NULL, "false", change_show_hidden_state},
     {"show_binary", NULL, NULL, "false", change_show_binary_state},
-    {"show_match_filename", NULL, NULL, "false", change_show_match_filename},
     {"up", up_activated},
     {"home", home_activated}
 };
@@ -520,8 +437,6 @@ static void bedit_file_browser_widget_init(BeditFileBrowserWidget *obj) {
     GError *error = NULL;
 
     obj->priv = bedit_file_browser_widget_get_instance_private(obj);
-
-    obj->priv->filter_pattern_str = g_strdup("");
 
     display = gtk_widget_get_display(GTK_WIDGET(obj));
     obj->priv->busy_cursor = gdk_cursor_new_from_name(display, "progress");
@@ -578,11 +493,6 @@ static void bedit_file_browser_widget_init(BeditFileBrowserWidget *obj) {
         BEDIT_FILE_BROWSER_STORE_FILTER_MODE_HIDE_HIDDEN |
         BEDIT_FILE_BROWSER_STORE_FILTER_MODE_HIDE_BINARY
     );
-    bedit_file_browser_store_set_filter_func(
-        obj->priv->file_store,
-        (BeditFileBrowserStoreFilterFunc) filter_real,
-        obj
-    );
 
     g_signal_connect(
         obj->priv->treeview, "notify::model",
@@ -634,16 +544,6 @@ static void bedit_file_browser_widget_init(BeditFileBrowserWidget *obj) {
         obj->priv->file_store, "error",
         G_CALLBACK(on_file_store_error), obj
     );
-
-    /* filter */
-    g_signal_connect_swapped(
-        obj->priv->filter_entry, "activate",
-        G_CALLBACK(on_entry_filter_activate), obj
-    );
-    g_signal_connect_swapped(
-        obj->priv->filter_entry, "focus_out_event",
-        G_CALLBACK(on_entry_filter_activate), obj
-    );
 }
 
 /* Private */
@@ -691,9 +591,6 @@ static void update_sensitivity(BeditFileBrowserWidget *obj) {
         );
         g_simple_action_set_enabled(G_SIMPLE_ACTION(action), TRUE);
 
-        action = g_action_map_lookup_action(
-            G_ACTION_MAP(obj->priv->action_group), "show_match_filename"
-        );
         g_simple_action_set_enabled(G_SIMPLE_ACTION(action), TRUE);
     } else if (BEDIT_IS_FILE_BROWSER_BOOKMARKS_STORE(model)) {
         /* Set the filter toggle to normal up state, just for visual pleasure */
@@ -723,9 +620,6 @@ static void update_sensitivity(BeditFileBrowserWidget *obj) {
         );
         g_simple_action_set_enabled(G_SIMPLE_ACTION(action), FALSE);
 
-        action = g_action_map_lookup_action(
-            G_ACTION_MAP(obj->priv->action_group), "show_match_filename"
-        );
         g_simple_action_set_enabled(G_SIMPLE_ACTION(action), FALSE);
     }
 
@@ -815,35 +709,6 @@ static gboolean popup_menu(
     }
 
     return TRUE;
-}
-
-static gboolean filter_glob(
-    BeditFileBrowserWidget *obj, BeditFileBrowserStore *store,
-    GtkTreeIter *iter, gpointer user_data
-) {
-    gchar *name;
-    gboolean result;
-    guint flags;
-
-    if (obj->priv->filter_pattern == NULL) {
-        return TRUE;
-    }
-
-    gtk_tree_model_get(
-        GTK_TREE_MODEL(store), iter,
-        BEDIT_FILE_BROWSER_STORE_COLUMN_NAME, &name,
-        BEDIT_FILE_BROWSER_STORE_COLUMN_FLAGS, &flags,
-        -1
-    );
-
-    if (FILE_IS_DIR(flags) || FILE_IS_DUMMY(flags)) {
-        result = TRUE;
-    } else {
-        result = g_pattern_match_string(obj->priv->filter_pattern, name);
-    }
-
-    g_free(name);
-    return result;
 }
 
 static void rename_selected_file(BeditFileBrowserWidget *obj) {
@@ -982,72 +847,6 @@ static void update_filter_mode(
     g_simple_action_set_state(action, state);
 }
 
-static void set_filter_pattern_real(
-    BeditFileBrowserWidget *obj, gchar const *pattern, gboolean update_entry
-) {
-    GtkTreeModel *model = gtk_tree_view_get_model(
-        GTK_TREE_VIEW(obj->priv->treeview)
-    );
-
-    if (pattern != NULL && *pattern == '\0') {
-        pattern = NULL;
-    }
-
-    if (pattern == NULL && *obj->priv->filter_pattern_str == '\0') {
-        return;
-    }
-
-    if (
-        pattern != NULL &&
-        strcmp(pattern, obj->priv->filter_pattern_str) == 0
-    ) {
-        return;
-    }
-
-    /* Free the old pattern */
-    g_free(obj->priv->filter_pattern_str);
-
-    if (pattern == NULL) {
-        obj->priv->filter_pattern_str = g_strdup("");
-    } else {
-        obj->priv->filter_pattern_str = g_strdup(pattern);
-    }
-
-    if (obj->priv->filter_pattern) {
-        g_pattern_spec_free(obj->priv->filter_pattern);
-        obj->priv->filter_pattern = NULL;
-    }
-
-    if (pattern == NULL) {
-        if (obj->priv->glob_filter_id != 0) {
-            bedit_file_browser_widget_remove_filter(
-                obj, obj->priv->glob_filter_id
-            );
-            obj->priv->glob_filter_id = 0;
-        }
-    } else {
-        obj->priv->filter_pattern = g_pattern_spec_new(pattern);
-
-        if (obj->priv->glob_filter_id == 0) {
-            obj->priv->glob_filter_id = bedit_file_browser_widget_add_filter(
-                obj, filter_glob, NULL, NULL
-            );
-        }
-    }
-
-    if (update_entry) {
-        gtk_entry_set_text(
-            GTK_ENTRY(obj->priv->filter_entry), obj->priv->filter_pattern_str
-        );
-    }
-
-    if (BEDIT_IS_FILE_BROWSER_STORE(model)) {
-        bedit_file_browser_store_refilter(BEDIT_FILE_BROWSER_STORE(model));
-    }
-
-    g_object_notify(G_OBJECT(obj), "filter-pattern");
-}
-
 /* Public */
 
 GtkWidget *bedit_file_browser_widget_new(void) {
@@ -1118,71 +917,6 @@ BeditFileBrowserView *bedit_file_browser_widget_get_browser_view(
     BeditFileBrowserWidget *obj
 ) {
     return obj->priv->treeview;
-}
-
-GtkWidget *bedit_file_browser_widget_get_filter_entry(
-    BeditFileBrowserWidget *obj
-) {
-    return obj->priv->filter_entry;
-}
-
-gulong bedit_file_browser_widget_add_filter(
-    BeditFileBrowserWidget *obj, BeditFileBrowserWidgetFilterFunc func,
-    gpointer user_data, GDestroyNotify notify
-) {
-    FilterFunc *f;
-    GtkTreeModel *model;
-
-    f = filter_func_new(obj, func, user_data, notify);
-
-    model = gtk_tree_view_get_model(GTK_TREE_VIEW(obj->priv->treeview));
-
-    obj->priv->filter_funcs = g_slist_append(obj->priv->filter_funcs, f);
-
-    if (BEDIT_IS_FILE_BROWSER_STORE(model)) {
-        bedit_file_browser_store_refilter(BEDIT_FILE_BROWSER_STORE(model));
-    }
-
-    return f->id;
-}
-
-void bedit_file_browser_widget_remove_filter(
-    BeditFileBrowserWidget *obj, gulong id
-) {
-    GSList *item;
-
-    for (item = obj->priv->filter_funcs; item; item = item->next) {
-        FilterFunc *func = (FilterFunc *)(item->data);
-
-        if (func->id == id) {
-            if (func->destroy_notify) {
-                func->destroy_notify(func->user_data);
-            }
-
-            obj->priv->filter_funcs = g_slist_remove_link(
-                obj->priv->filter_funcs, item
-            );
-
-            filter_func_free(func);
-            break;
-        }
-    }
-}
-
-void bedit_file_browser_widget_set_filter_pattern(
-    BeditFileBrowserWidget *obj, gchar const *pattern
-) {
-    gboolean show;
-    GAction *action;
-
-    /* if pattern is not null, reveal the entry */
-    show = pattern != NULL && *pattern != '\0';
-    action = g_action_map_lookup_action(
-        G_ACTION_MAP(obj->priv->action_group), "show_match_filename"
-    );
-    g_action_change_state(action, g_variant_new_boolean(show));
-
-    set_filter_pattern_real(obj, pattern, TRUE);
 }
 
 gboolean bedit_file_browser_widget_get_selected_directory(
@@ -1485,8 +1219,6 @@ static void on_model_set(
         );
     }
 
-    gtk_widget_show(widget->priv->filter_entry_revealer);
-
     update_sensitivity(widget);
 }
 
@@ -1632,13 +1364,6 @@ static void on_selection_changed(
         G_ACTION_MAP(obj->priv->action_group), "new_file"
     );
     g_simple_action_set_enabled(G_SIMPLE_ACTION(action), selected <= 1);
-}
-
-static gboolean on_entry_filter_activate(BeditFileBrowserWidget *obj) {
-    gchar const *text = gtk_entry_get_text(GTK_ENTRY(obj->priv->filter_entry));
-    set_filter_pattern_real(obj, text, FALSE);
-
-    return FALSE;
 }
 
 static void on_filter_mode_changed(
@@ -1919,26 +1644,6 @@ static void change_show_binary_state(
         widget, action, state,
         BEDIT_FILE_BROWSER_STORE_FILTER_MODE_HIDE_BINARY
     );
-}
-
-static void change_show_match_filename(
-    GSimpleAction *action, GVariant *state, gpointer user_data
-) {
-    BeditFileBrowserWidget *widget = BEDIT_FILE_BROWSER_WIDGET(user_data);
-    gboolean visible = g_variant_get_boolean(state);
-
-    gtk_revealer_set_reveal_child(
-        GTK_REVEALER(widget->priv->filter_entry_revealer), visible
-    );
-
-    if (visible) {
-        gtk_widget_grab_focus(widget->priv->filter_entry);
-    } else {
-        /* clear the filter */
-        set_filter_pattern_real(widget, NULL, TRUE);
-    }
-
-    g_simple_action_set_state(action, state);
 }
 
 static void open_in_terminal_activated(
