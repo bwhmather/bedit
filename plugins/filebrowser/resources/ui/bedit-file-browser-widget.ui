@@ -51,18 +51,6 @@
             <property name="expand">True</property>
           </packing>
         </child>
-        <child>
-          <object class="GtkButton" id="search_button">
-            <property name="visible">True</property>
-            <property name="can_focus">False</property>
-            <property name="receives_default">True</property>
-            <property name="action_name">window.quick_open</property>
-            <property name="image">search_image</property>
-            <style>
-              <class name="small-button"/>
-            </style>
-          </object>
-        </child>
       </object>
       <packing>
         <property name="left_attach">0</property>
