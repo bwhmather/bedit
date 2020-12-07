@@ -35,14 +35,26 @@ G_DECLARE_FINAL_TYPE(
 
 GType bedit_file_browser_dir_get_type(void) G_GNUC_CONST;
 
-BeditFileBrowserDir *bedit_file_browser_dir_new(GFile *file);
-GFile *bedit_file_browser_dir_get_file(BeditFileBrowserDir *dir);
+typedef struct _BeditFileBrowserDirIter BeditFileBrowserDirIter;
+struct _BeditFileBrowserDirIter {
+    GHashTableIter iter;
+    GFile *file;
+    GFileInfo *info;
+};
 
-bedit_file_browser_dir_iter_init(
+BeditFileBrowserDir *bedit_file_browser_dir_new(GFile *file);
+
+GFile *bedit_file_browser_dir_get_file(BeditFileBrowserDir *dir);
+void bedit_file_browser_dir_set_file(BeditFileBrowserDir *dir, GFile *file);
+
+gboolean bedit_file_browser_dir_is_loading(BeditFileBrowserDir *dir);
+
+void bedit_file_browser_dir_iter_init(
     BeditFileBrowserDirIter *iter, BeditFileBrowserDir *dir
 );
 gboolean bedit_file_browser_dir_iter_next(BeditFileBrowserDirIter *iter);
 GFile *bedit_file_browser_dir_iter_get_file(BeditFileBrowserDirIter *iter);
+GFileInfo *bedit_file_browser_dir_iter_get_info(BeditFileBrowserDirIter *iter);
 
 void _bedit_file_browser_dir_register_type(GTypeModule *type_module);
 
