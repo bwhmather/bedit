@@ -40,6 +40,7 @@
 #include "bedit-file-browser-enum-types.h"
 #include "bedit-file-browser-error.h"
 #include "bedit-file-browser-messages.h"
+#include "bedit-file-browser-dir.h"
 #include "bedit-file-browser-plugin.h"
 #include "bedit-file-browser-utils.h"
 #include "bedit-file-browser-location.h"
@@ -50,6 +51,7 @@ G_MODULE_EXPORT void peas_register_types(PeasObjectModule *module) {
     bedit_file_browser_enum_and_flag_register_type(G_TYPE_MODULE(module));
     _bedit_file_browser_app_activatable_register_type(G_TYPE_MODULE(module));
     _bedit_file_browser_window_activatable_register_type(G_TYPE_MODULE(module));
+    _bedit_file_browser_dir_register_type(G_TYPE_MODULE(module));
     _bedit_file_browser_bookmarks_store_register_type(G_TYPE_MODULE(module));
     _bedit_file_browser_store_register_type(G_TYPE_MODULE(module));
     _bedit_file_browser_view_register_type(G_TYPE_MODULE(module));
