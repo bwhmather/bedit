@@ -126,6 +126,10 @@ static void bedit_file_browser_dir_class_init(BeditFileBrowserDirClass *klass) {
     );
 }
 
+static void bedit_file_browser_dir_class_finalize(
+    BeditFileBrowserDirClass *klass
+) {}
+
 void bedit_file_browser_dir_init(BeditFileBrowserDir *dir) {
     dir->children = g_hash_table_new_full(
         g_file_hash, (GEqualFunc) g_file_equal, g_object_unref, g_object_unref
