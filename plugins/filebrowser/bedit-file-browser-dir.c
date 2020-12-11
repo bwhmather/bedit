@@ -37,6 +37,8 @@
     G_FILE_ATTRIBUTE_STANDARD_SYMBOLIC_ICON
 
 struct _BeditFileBrowserDir {
+    GObject parent_instance;
+
     GFile *file;
     GHashTable *children;
 
