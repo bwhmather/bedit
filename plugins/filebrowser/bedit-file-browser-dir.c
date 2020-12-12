@@ -58,6 +58,13 @@ enum {
     LAST_PROP,
 };
 
+enum {
+    SIGNAL_REFRESH,
+    LAST_SIGNAL
+};
+
+static guint signals[LAST_SIGNAL];
+
 static void bedit_file_browser_dir_add_child(
     BeditFileBrowserDir *dir, GFile *file
 );
@@ -126,6 +133,16 @@ static void bedit_file_browser_dir_class_init(BeditFileBrowserDirClass *klass) {
             G_TYPE_FILE, G_PARAM_READABLE | G_PARAM_STATIC_STRINGS
         )
     );
+
+    signals[SIGNAL_REFRESH] = g_signal_new_class_handler(
+        "refresh", G_TYPE_FROM_CLASS(klass),
+        G_SIGNAL_RUN_LAST | G_SIGNAL_ACTION,
+        G_CALLBACK(bedit_file_browser_dir_refresh),
+        NULL, NULL,
+        NULL,
+        G_TYPE_NONE, 0
+    );
+
 }
 
 static void bedit_file_browser_dir_class_finalize(
@@ -144,9 +161,6 @@ BeditFileBrowserDir *bedit_file_browser_dir_new(GFile *file) {
         g_object_new(BEDIT_TYPE_FILE_BROWSER_DIR, "file", file, NULL)
     );
 }
-
-
-
 
 void bedit_file_browser_dir_refresh(BeditFileBrowserDir *dir) {
     g_return_if_fail(BEDIT_IS_FILE_BROWSER_DIR(dir));
@@ -294,7 +308,6 @@ GFileInfo *bedit_file_browser_dir_iter_get_info(BeditFileBrowserDirIter *iter) {
 
     return iter->info;
 }
-
 
 static void bedit_file_browser_dir_add_child(
     BeditFileBrowserDir *dir, GFile *file

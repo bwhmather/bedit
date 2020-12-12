@@ -56,6 +56,8 @@ gboolean bedit_file_browser_dir_iter_next(BeditFileBrowserDirIter *iter);
 GFile *bedit_file_browser_dir_iter_get_file(BeditFileBrowserDirIter *iter);
 GFileInfo *bedit_file_browser_dir_iter_get_info(BeditFileBrowserDirIter *iter);
 
+void bedit_file_browser_dir_refresh(BeditFileBrowserDir *dir);
+
 void _bedit_file_browser_dir_register_type(GTypeModule *type_module);
 
 G_END_DECLS
