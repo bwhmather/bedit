@@ -60,6 +60,8 @@ enum {
 
 enum {
     SIGNAL_REFRESH,
+    SIGNAL_CHILD_ADDED,
+    SIGNAL_CHILD_REMOVED,
     LAST_SIGNAL
 };
 
@@ -143,6 +145,23 @@ static void bedit_file_browser_dir_class_init(BeditFileBrowserDirClass *klass) {
         G_TYPE_NONE, 0
     );
 
+    signals[SIGNAL_CHILD_ADDED] = g_signal_new(
+        "child-added", G_TYPE_FROM_CLASS(klass),
+        G_SIGNAL_RUN_FIRST,
+        0,
+        NULL, NULL,
+        NULL,
+        G_TYPE_NONE, 1, G_TYPE_FILE
+    );
+
+    signals[SIGNAL_CHILD_REMOVED] = g_signal_new(
+        "child-removed", G_TYPE_FROM_CLASS(klass),
+        G_SIGNAL_RUN_FIRST,
+        0,
+        NULL, NULL,
+        NULL,
+        G_TYPE_NONE, 1, G_TYPE_FILE
+    );
 }
 
 static void bedit_file_browser_dir_class_finalize(
@@ -332,7 +351,7 @@ static void bedit_file_browser_dir_add_child(
             dir->children, g_object_ref(file), g_object_ref(info)
         );
 
-        // TODO Signal insertion.
+        g_signal_emit(dir, signals[SIGNAL_CHILD_ADDED], 0, file);
     }
 }
 
@@ -344,7 +363,7 @@ static void bedit_file_browser_dir_remove_child(
 
     g_hash_table_remove(dir->children, file);
 
-    // TODO Signal deletion.
+    g_signal_emit(dir, signals[SIGNAL_CHILD_REMOVED], 0, file);
 }
 
 void _bedit_file_browser_dir_register_type(GTypeModule *type_module) {
