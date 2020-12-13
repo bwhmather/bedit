@@ -23,6 +23,7 @@
 #include <bedit/bedit-utils.h>
 #include <gio/gio.h>
 #include <glib/gi18n.h>
+#include <gmodule.h>
 #include <string.h>
 
 #include "bedit-file-browser-dir.h"
@@ -66,6 +67,15 @@ enum {
 };
 
 static guint signals[LAST_SIGNAL];
+
+static void bedit_file_browser_dir_set_file(
+    BeditFileBrowserDir *dir, GFile *file
+);
+
+static void bedit_file_browser_dir_monitor_event_cb(
+    GFileMonitor *monitor, GFile *file, GFile *other_file,
+    GFileMonitorEvent event_type, BeditFileBrowserDir *dir
+);
 
 static void bedit_file_browser_dir_add_child(
     BeditFileBrowserDir *dir, GFile *file
@@ -112,8 +122,38 @@ static void bedit_file_browser_dir_set_property(
     }
 }
 
+static void bedit_file_browser_dir_constructed(GObject *object) {
+    BeditFileBrowserDir *dir;
+
+    dir = BEDIT_FILE_BROWSER_DIR(object);
+
+    if (!G_IS_FILE(dir->file)) {
+        g_critical("The directory was not properly constructed");
+        return;
+    }
+
+    if (g_file_is_native(dir->file)) {
+        dir->monitor = g_file_monitor_directory(
+            dir->file, G_FILE_MONITOR_NONE, NULL, NULL
+        );
+        if (dir->monitor != NULL) {
+            g_signal_connect(
+                dir->monitor, "changed",
+                G_CALLBACK(bedit_file_browser_dir_monitor_event_cb), dir
+            );
+        }
+    }
+
+    bedit_file_browser_dir_refresh(dir);
+
+
+    G_OBJECT_CLASS(bedit_file_browser_dir_parent_class)->constructed(object);
+}
+
 static void bedit_file_browser_dir_class_init(BeditFileBrowserDirClass *klass) {
     GObjectClass *object_class = G_OBJECT_CLASS(klass);
+
+    object_class->constructed = bedit_file_browser_dir_constructed;
 
     object_class->get_property = bedit_file_browser_dir_get_property;
     object_class->set_property = bedit_file_browser_dir_set_property;
@@ -123,12 +163,13 @@ static void bedit_file_browser_dir_class_init(BeditFileBrowserDirClass *klass) {
         g_param_spec_object(
             "file", "File",
             "The GFile object that this directory wraps",
-            G_TYPE_FILE, G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS
+            G_TYPE_FILE,
+            G_PARAM_CONSTRUCT_ONLY | G_PARAM_READABLE | G_PARAM_STATIC_STRINGS
         )
     );
 
     g_object_class_install_property(
-        object_class, PROP_FILE,
+        object_class, PROP_IS_LOADING,
         g_param_spec_object(
             "loading", "Loading",
             "Indicates whether loading has completed",
@@ -169,15 +210,129 @@ static void bedit_file_browser_dir_class_finalize(
 ) {}
 
 void bedit_file_browser_dir_init(BeditFileBrowserDir *dir) {
+    dir->file = NULL;
     dir->children = g_hash_table_new_full(
         g_file_hash, (GEqualFunc) g_file_equal, g_object_unref, g_object_unref
     );
+    dir->cancellable = NULL;
+    dir->monitor = NULL;
 }
-
 
 BeditFileBrowserDir *bedit_file_browser_dir_new(GFile *file) {
     return BEDIT_FILE_BROWSER_DIR(
         g_object_new(BEDIT_TYPE_FILE_BROWSER_DIR, "file", file, NULL)
+    );
+}
+
+static void bedit_file_browser_dir_next_load_cb(
+    GFileEnumerator *enumerator, GAsyncResult *result, BeditFileBrowserDir *dir
+) {
+
+    GError *error = NULL;
+    GList *files;
+
+    g_return_if_fail(G_IS_FILE_ENUMERATOR(enumerator));
+    g_return_if_fail(BEDIT_IS_FILE_BROWSER_DIR(dir));
+
+    files = g_file_enumerator_next_files_finish(
+        enumerator, result, &error
+    );
+
+    if (error != NULL) {
+        if (
+            !g_cancellable_is_cancelled(dir->cancellable) &&
+            !g_error_matches(error, G_IO_ERROR, G_IO_ERROR_CANCELLED)
+        ) {
+            // TODO
+            // bedit_file_browser_dir_set_error(dir, error);
+            // bedit_file_browser_dir_unload(dir);
+        }
+
+        g_error_free(error);
+        g_object_unref(enumerator);
+        g_object_unref(dir);
+
+        return;
+    }
+
+    if (g_cancellable_is_cancelled(dir->cancellable)) {
+        g_object_unref(enumerator);
+        g_list_free(files);
+        g_object_unref(dir);
+
+        return;
+    }
+
+    if (files == NULL) {
+        g_object_unref(enumerator);
+        g_object_unref(dir);
+
+        return;
+    }
+
+    for (GList *cursor = files; cursor != NULL; cursor = cursor->next) {
+        GFile *file;
+        GFileInfo *info;
+        gchar const *name;
+
+        info = cursor->data;
+        name = g_file_info_get_name(info);
+        file = g_file_get_child(dir->file, name);
+
+        bedit_file_browser_dir_add_child(dir, file);
+    }
+
+    g_list_free(files);
+
+    g_file_enumerator_next_files_async(
+        enumerator, DIRECTORY_LOAD_ITEMS_PER_CALLBACK, G_PRIORITY_DEFAULT,
+        dir->cancellable,
+        (GAsyncReadyCallback)bedit_file_browser_dir_next_load_cb,
+        dir
+    );
+}
+
+static void bedit_file_browser_dir_begin_load_cb(
+    GFile *file, GAsyncResult *result, BeditFileBrowserDir *dir
+) {
+    GError *error = NULL;
+    GFileEnumerator *enumerator;
+
+    g_return_if_fail(G_IS_FILE(file));
+    g_return_if_fail(BEDIT_IS_FILE_BROWSER_DIR(dir));
+
+    enumerator = g_file_enumerate_children_finish(file, result, &error);
+
+    if (error != NULL) {
+        if (
+            !g_cancellable_is_cancelled(dir->cancellable) &&
+            !g_error_matches(error, G_IO_ERROR, G_IO_ERROR_CANCELLED)
+        ) {
+            // TODO
+            // bedit_file_browser_dir_set_error(dir, error);
+            // bedit_file_browser_dir_unload(dir);
+        }
+
+        g_error_free(error);
+        g_object_unref(dir);
+
+        return;
+    }
+
+    g_return_if_fail(G_IS_FILE_ENUMERATOR(enumerator));
+
+    if (g_cancellable_is_cancelled(dir->cancellable)) {
+        g_object_unref(enumerator);
+        g_object_unref(dir);
+
+        return;
+    }
+
+    g_file_enumerator_next_files_async(
+        enumerator, DIRECTORY_LOAD_ITEMS_PER_CALLBACK, G_PRIORITY_DEFAULT,
+        dir->cancellable,
+        (GAsyncReadyCallback)bedit_file_browser_dir_next_load_cb,
+        dir
     );
 }
 
@@ -188,19 +343,31 @@ void bedit_file_browser_dir_refresh(BeditFileBrowserDir *dir) {
         // TODO cancel.
     }
 
-    if (dir->children) {
-        // TODO free the children.
+    // Set loading to true.
+
+    // Free the children.
+    while (TRUE) {
+        GHashTableIter child_iter;
+        GFile *child;
+
+        g_hash_table_iter_init(&child_iter, dir->children);
+        if (!g_hash_table_iter_next(&child_iter, (gpointer) &child, NULL)) {
+            break;
+        }
+
+        bedit_file_browser_dir_remove_child(dir, child);
     }
 
-    // Create enumerator.
-
-    // Trigger async op.
-
-    // Set loading to true.
+    g_file_enumerate_children_async(
+        dir->file, STANDARD_ATTRIBUTE_TYPES, G_FILE_QUERY_INFO_NONE,
+        G_PRIORITY_DEFAULT, dir->cancellable,
+        (GAsyncReadyCallback)bedit_file_browser_dir_begin_load_cb,
+        g_object_ref(dir)
+    );
 }
 
 
-static void on_directory_monitor_event(
+static void bedit_file_browser_dir_monitor_event_cb(
     GFileMonitor *monitor, GFile *file, GFile *other_file,
     GFileMonitorEvent event_type, BeditFileBrowserDir *dir
 ) {
@@ -232,21 +399,17 @@ GFile *bedit_file_browser_dir_get_file(BeditFileBrowserDir *dir) {
     return dir->file;
 }
 
-/**
- * bedit_file_browser_dir_set_file
- * @GFile: (transfer none):
- *
- * Should only be called once to set the file to its permanent value.
- */
-void bedit_file_browser_dir_set_file(BeditFileBrowserDir *dir, GFile *file) {
+static void bedit_file_browser_dir_set_file(BeditFileBrowserDir *dir, GFile *file) {
     g_return_if_fail(BEDIT_IS_FILE_BROWSER_DIR(dir));
-    g_return_if_fail(G_IS_FILE(file));
-
-    g_return_if_fail(dir->file == NULL || g_file_equal(dir->file, file));
+    g_return_if_fail(dir->file == NULL);
 
     dir->file = g_object_ref(file);
-    bedit_file_browser_dir_refresh(dir);
 }
+
+gboolean bedit_file_browser_dir_is_loading(BeditFileBrowserDir *dir) {
+    return dir->cancellable != NULL ? TRUE : FALSE;
+}
+
 
 /**
  * bedit_file_browser_dir_iter_init

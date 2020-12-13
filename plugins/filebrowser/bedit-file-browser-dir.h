@@ -45,7 +45,6 @@ struct _BeditFileBrowserDirIter {
 BeditFileBrowserDir *bedit_file_browser_dir_new(GFile *file);
 
 GFile *bedit_file_browser_dir_get_file(BeditFileBrowserDir *dir);
-void bedit_file_browser_dir_set_file(BeditFileBrowserDir *dir, GFile *file);
 
 gboolean bedit_file_browser_dir_is_loading(BeditFileBrowserDir *dir);
 
