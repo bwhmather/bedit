@@ -37,13 +37,15 @@
     G_FILE_ATTRIBUTE_STANDARD_CONTENT_TYPE ","                              \
     G_FILE_ATTRIBUTE_STANDARD_SYMBOLIC_ICON
 
+typedef struct _AsyncContext AsyncContext;
+
 struct _BeditFileBrowserDir {
     GObject parent_instance;
 
     GFile *file;
     GHashTable *children;
 
-    GCancellable *cancellable;
+    AsyncContext *context;
     GFileMonitor *monitor;
 };
 
@@ -67,6 +69,60 @@ enum {
 };
 
 static guint signals[LAST_SIGNAL];
+
+struct _AsyncContext {
+    guint ref_count;
+    BeditFileBrowserDir *dir;
+    GCancellable *cancellable;
+};
+
+static AsyncContext *async_context_new(BeditFileBrowserDir *dir) {
+    AsyncContext *context;
+    GCancellable *cancellable;
+
+    g_return_val_if_fail(BEDIT_IS_FILE_BROWSER_DIR(dir), NULL);
+
+    cancellable = g_cancellable_new();
+    g_return_val_if_fail(G_IS_CANCELLABLE(cancellable), NULL);
+
+    context = g_new(AsyncContext, 1);
+    g_return_val_if_fail(context != NULL, NULL);
+
+    context->ref_count = 1;
+    context->dir = dir;
+    context->cancellable = cancellable;
+
+    return context;
+}
+
+static AsyncContext *async_context_ref(AsyncContext *context) {
+    g_return_val_if_fail(context->ref_count == 0, context);
+    if (g_cancellable_is_cancelled(context->cancellable)) {
+        g_warning("adding reference to cancelled context");
+    }
+
+    context->ref_count++;
+
+    return context;
+}
+
+static void async_context_unref(AsyncContext *context) {
+    g_return_if_fail(context != NULL);
+    g_return_if_fail(context->ref_count > 0);
+
+    context->ref_count--;
+
+    if (context->ref_count == 0) {
+        // Note that the entire reason to have the async context as a separate
+        // object is that it allows us to avoid holding a strong reference to
+        // the directory.  We do not need to unref.
+        context->dir = NULL;
+
+        g_clear_object(&context->cancellable);
+
+        g_free(context);
+    }
+}
 
 static void bedit_file_browser_dir_set_file(
     BeditFileBrowserDir *dir, GFile *file
@@ -146,14 +202,34 @@ static void bedit_file_browser_dir_constructed(GObject *object) {
 
     bedit_file_browser_dir_refresh(dir);
 
-
     G_OBJECT_CLASS(bedit_file_browser_dir_parent_class)->constructed(object);
+}
+
+static void bedit_file_browser_dir_dispose(GObject *object) {
+    BeditFileBrowserDir *dir;
+
+    dir = BEDIT_FILE_BROWSER_DIR(object);
+
+    g_clear_object(&dir->file);
+    g_clear_object(&dir->children);
+
+    if (dir->context != NULL) {
+        g_cancellable_cancel(dir->context->cancellable);
+        async_context_unref(dir->context);
+        dir->context = NULL;
+    }
+
+    g_clear_object(&dir->monitor);
+
+    G_OBJECT_CLASS(bedit_file_browser_dir_parent_class)->dispose(object);
+
 }
 
 static void bedit_file_browser_dir_class_init(BeditFileBrowserDirClass *klass) {
     GObjectClass *object_class = G_OBJECT_CLASS(klass);
 
     object_class->constructed = bedit_file_browser_dir_constructed;
+    object_class->dispose = bedit_file_browser_dir_dispose;
 
     object_class->get_property = bedit_file_browser_dir_get_property;
     object_class->set_property = bedit_file_browser_dir_set_property;
@@ -214,7 +290,7 @@ void bedit_file_browser_dir_init(BeditFileBrowserDir *dir) {
     dir->children = g_hash_table_new_full(
         g_file_hash, (GEqualFunc) g_file_equal, g_object_unref, g_object_unref
     );
-    dir->cancellable = NULL;
+    dir->context = NULL;
     dir->monitor = NULL;
 }
 
@@ -225,47 +301,50 @@ BeditFileBrowserDir *bedit_file_browser_dir_new(GFile *file) {
 }
 
 static void bedit_file_browser_dir_next_load_cb(
-    GFileEnumerator *enumerator, GAsyncResult *result, BeditFileBrowserDir *dir
+    GFileEnumerator *enumerator, GAsyncResult *result,
+    AsyncContext *context
 ) {
-
+    BeditFileBrowserDir *dir;
     GError *error = NULL;
     GList *files;
 
     g_return_if_fail(G_IS_FILE_ENUMERATOR(enumerator));
-    g_return_if_fail(BEDIT_IS_FILE_BROWSER_DIR(dir));
 
     files = g_file_enumerator_next_files_finish(
         enumerator, result, &error
     );
 
-    if (error != NULL) {
-        if (
-            !g_cancellable_is_cancelled(dir->cancellable) &&
-            !g_error_matches(error, G_IO_ERROR, G_IO_ERROR_CANCELLED)
-        ) {
-            // TODO
-            // bedit_file_browser_dir_set_error(dir, error);
-            // bedit_file_browser_dir_unload(dir);
-        }
-
-        g_error_free(error);
+    if (g_cancellable_is_cancelled(context->cancellable)) {
         g_object_unref(enumerator);
-        g_object_unref(dir);
+        g_list_free(files);
+        if (error != NULL) g_error_free(error);
+        async_context_unref(context);
 
         return;
     }
+    // Note that context does not hold a strong reference to the directory, so
+    // it is not safe to dereference this pointer until after the cancellable
+    // has been checked.
+    dir = context->dir;
+    g_return_if_fail(BEDIT_IS_FILE_BROWSER_DIR(dir));
 
-    if (g_cancellable_is_cancelled(dir->cancellable)) {
+    if (error != NULL) {
+        // TODO
+        // bedit_file_browser_dir_set_error(dir, error);
+        // bedit_file_browser_dir_unload(dir);
+
+        g_error_free(error);
         g_object_unref(enumerator);
-        g_list_free(files);
-        g_object_unref(dir);
+        async_context_unref(context);
 
         return;
     }
 
     if (files == NULL) {
+        // We've reached the end of the enumerator and can close everything up.
+        // TODO mark as finished.
         g_object_unref(enumerator);
-        g_object_unref(dir);
+        async_context_unref(context);
 
         return;
     }
@@ -286,62 +365,64 @@ static void bedit_file_browser_dir_next_load_cb(
 
     g_file_enumerator_next_files_async(
         enumerator, DIRECTORY_LOAD_ITEMS_PER_CALLBACK, G_PRIORITY_DEFAULT,
-        dir->cancellable,
+        context->cancellable,
         (GAsyncReadyCallback)bedit_file_browser_dir_next_load_cb,
-        dir
+        context
     );
 }
 
 static void bedit_file_browser_dir_begin_load_cb(
-    GFile *file, GAsyncResult *result, BeditFileBrowserDir *dir
+    GFile *file, GAsyncResult *result, AsyncContext *context
 ) {
+    BeditFileBrowserDir *dir;
     GError *error = NULL;
     GFileEnumerator *enumerator;
 
     g_return_if_fail(G_IS_FILE(file));
-    g_return_if_fail(BEDIT_IS_FILE_BROWSER_DIR(dir));
 
     enumerator = g_file_enumerate_children_finish(file, result, &error);
 
+    if (g_cancellable_is_cancelled(context->cancellable)) {
+        if (enumerator != NULL) g_object_unref(enumerator);
+        if (error) g_error_free(error);
+
+        return;
+    }
+    // Note that context does not hold a strong reference to the directory, so
+    // it is not safe to dereference this pointer until after the cancellable
+    // has been checked.
+    dir = context->dir;
+    g_return_if_fail(BEDIT_IS_FILE_BROWSER_DIR(dir));
+
     if (error != NULL) {
-        if (
-            !g_cancellable_is_cancelled(dir->cancellable) &&
-            !g_error_matches(error, G_IO_ERROR, G_IO_ERROR_CANCELLED)
-        ) {
-            // TODO
-            // bedit_file_browser_dir_set_error(dir, error);
-            // bedit_file_browser_dir_unload(dir);
-        }
+        // TODO
+        // bedit_file_browser_dir_set_error(dir, error);
+        // bedit_file_browser_dir_unload(dir);
 
         g_error_free(error);
-        g_object_unref(dir);
+        async_context_unref(context);
 
         return;
     }
 
     g_return_if_fail(G_IS_FILE_ENUMERATOR(enumerator));
 
-    if (g_cancellable_is_cancelled(dir->cancellable)) {
-        g_object_unref(enumerator);
-        g_object_unref(dir);
-
-        return;
-    }
-
     g_file_enumerator_next_files_async(
         enumerator, DIRECTORY_LOAD_ITEMS_PER_CALLBACK, G_PRIORITY_DEFAULT,
-        dir->cancellable,
+        context->cancellable,
         (GAsyncReadyCallback)bedit_file_browser_dir_next_load_cb,
-        dir
+        context
     );
 }
 
 void bedit_file_browser_dir_refresh(BeditFileBrowserDir *dir) {
     g_return_if_fail(BEDIT_IS_FILE_BROWSER_DIR(dir));
 
-    if (dir->cancellable != NULL) {
-        // TODO cancel.
+    if (dir->context != NULL) {
+        g_cancellable_cancel(dir->context->cancellable);
+        async_context_unref(dir->context);
     }
+    dir->context = async_context_new(dir);
 
     // Set loading to true.
 
@@ -360,9 +441,9 @@ void bedit_file_browser_dir_refresh(BeditFileBrowserDir *dir) {
 
     g_file_enumerate_children_async(
         dir->file, STANDARD_ATTRIBUTE_TYPES, G_FILE_QUERY_INFO_NONE,
-        G_PRIORITY_DEFAULT, dir->cancellable,
+        G_PRIORITY_DEFAULT, dir->context->cancellable,
         (GAsyncReadyCallback)bedit_file_browser_dir_begin_load_cb,
-        g_object_ref(dir)
+        async_context_ref(dir->context)
     );
 }
 
@@ -407,7 +488,15 @@ static void bedit_file_browser_dir_set_file(BeditFileBrowserDir *dir, GFile *fil
 }
 
 gboolean bedit_file_browser_dir_is_loading(BeditFileBrowserDir *dir) {
-    return dir->cancellable != NULL ? TRUE : FALSE;
+    g_return_val_if_fail(BEDIT_IS_FILE_BROWSER_DIR(dir), FALSE);
+    if (dir->context == NULL) {
+        return FALSE;
+    }
+    if (dir->context->cancellable == NULL) {
+        return FALSE;
+    }
+    // TODO
+    return TRUE;
 }
 
 
