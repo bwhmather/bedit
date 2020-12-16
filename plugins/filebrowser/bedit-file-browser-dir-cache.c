@@ -31,8 +31,7 @@
 
 struct _BeditFileBrowserDirCache {
     GObject parent_instance;
-    GFile *file;
-    GHashTable *children;
+    GHashTable *entries;
 };
 
 G_DEFINE_DYNAMIC_TYPE(
@@ -42,10 +41,10 @@ G_DEFINE_DYNAMIC_TYPE(
 
 enum {
     PROP_0,
-    PROP_FILE,
-    PROP_IS_LOADING,
     LAST_PROP,
 };
+
+static void bedit_file_browser_dir_cache_dispose(GObject *object);
 
 static void bedit_file_browser_dir_cache_add_child(
     BeditFileBrowserDirCache *dir_cache, GFile *file
@@ -54,79 +53,17 @@ static void bedit_file_browser_dir_cache_remove_child(
     BeditFileBrowserDirCache *dir_cache, GFile *file
 );
 
-static void bedit_file_browser_dir_cache_get_property(
-    GObject *object, guint prop_id, GValue *value, GParamSpec *pspec
-) {
-    BeditFileBrowserDirCache *dir_cache = BEDIT_FILE_BROWSER_DIR_CACHE(object);
-
-    switch (prop_id) {
-    case PROP_FILE:
-        g_value_take_object(value, bedit_file_browser_dir_cache_get_file(dir_cache));
-        break;
-
-    case PROP_IS_LOADING:
-        g_value_set_boolean(value, bedit_file_browser_dir_cache_is_loading(dir_cache));
-        break;
-
-    default:
-        G_OBJECT_WARN_INVALID_PROPERTY_ID(object, prop_id, pspec);
-        break;
-    }
-}
-
-static void bedit_file_browser_dir_cache_set_property(
-    GObject *object, guint prop_id, const GValue *value, GParamSpec *pspec
-) {
-    BeditFileBrowserDirCache *dir_cache = BEDIT_FILE_BROWSER_DIR_CACHE(object);
-
-    switch (prop_id) {
-    case PROP_FILE:
-        bedit_file_browser_dir_cache_set_file(
-            dir_cache, G_FILE(g_value_get_object(value))
-        );
-        break;
-
-    default:
-        G_OBJECT_WARN_INVALID_PROPERTY_ID(object, prop_id, pspec);
-        break;
-    }
-}
 
 static void bedit_file_browser_dir_cache_class_init(BeditFileBrowserDirCacheClass *klass) {
     GObjectClass *object_class = G_OBJECT_CLASS(klass);
 
     object_class->get_property = bedit_file_browser_dir_cache_get_property;
     object_class->set_property = bedit_file_browser_dir_cache_set_property;
-
-    g_object_class_install_property(
-        object_class, PROP_FILE,
-        g_param_spec_object(
-            "file", "File",
-            "The GFile object that this dir_cacheectory wraps",
-            G_TYPE_FILE, G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS
-        )
-    );
-
-    g_object_class_install_property(
-        object_class, PROP_FILE,
-        g_param_spec_object(
-            "loading", "Loading",
-            "Indicates whether loading has completed",
-            G_TYPE_FILE, G_PARAM_READABLE | G_PARAM_STATIC_STRINGS
-        )
-    );
 }
 
 static void bedit_file_browser_dir_cache_class_finalize(
     BeditFileBrowserDirCacheClass *klass
 ) {}
-
-void bedit_file_browser_dir_cache_init(BeditFileBrowserDirCache *dir_cache) {
-    dir_cache->children = g_hash_table_new_full(
-        g_file_hash, (GEqualFunc) g_file_equal, g_object_unref, g_object_unref
-    );
-}
-
 
 BeditFileBrowserDirCache *bedit_file_browser_dir_cache_new(GFile *file) {
     return BEDIT_FILE_BROWSER_DIR_CACHE(
@@ -134,6 +71,20 @@ BeditFileBrowserDirCache *bedit_file_browser_dir_cache_new(GFile *file) {
     );
 }
 
+void bedit_file_browser_dir_cache_init(BeditFileBrowserDirCache *cache) {
+    cache->entries = g_hash_table_new_full(
+        g_file_hash, (GEqualFunc) g_file_equal, g_object_unref, NULL
+    );
+}
+
+static void bedit_file_browser_dir_cache_dispose(GObject *object) {
+    BeditFileBrowserDirCache *cache;
+
+    cache = BEDIT_FILE_BROWSER_DIR_CACHE(object);
+    g_clear_object(&cache->entries);
+
+    G_OBJECT_CLASS(bedit_file_browser_dir_parent_class)->dispose(object);
+}
 
 
 
