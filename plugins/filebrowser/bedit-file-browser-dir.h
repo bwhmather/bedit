@@ -22,6 +22,8 @@
 #define BEDIT_FILE_BROWSER_DIR_H
 
 #include <glib.h>
+#include <glib-object.h>
+#include <gio/gio.h>
 
 G_BEGIN_DECLS
 
