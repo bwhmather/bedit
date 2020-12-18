@@ -36,7 +36,6 @@
 #include "bedit-file-browser-window-activatable.h"
 #include "bedit-file-browser-utils.h"
 #include "bedit-file-browser-widget.h"
-#include "bedit-quick-open-widget.h"
 
 #define FILEBROWSER_BASE_SETTINGS "com.bwhmather.bedit.plugins.filebrowser"
 #define FILEBROWSER_TREE_VIEW "tree-view"
@@ -67,7 +66,6 @@ typedef struct _BeditFileBrowserWindowActivatablePrivate {
 
     GtkWidget *action_area_button;
     GtkStack *stack;
-    BeditQuickOpenWidget *quick_open;
     BeditFileBrowserWidget *tree_widget;
     gboolean confirm_trash;
 
@@ -433,28 +431,6 @@ static void bedit_file_browser_window_activatable_activate(
         G_CALLBACK(set_active_root), plugin
     );
 
-    /* Setup quick-open widget. */
-    priv->quick_open = BEDIT_QUICK_OPEN_WIDGET(bedit_quick_open_widget_new());
-
-    g_object_bind_property(
-        priv->window, "default-location",
-        priv->quick_open, "virtual-root",
-        G_BINDING_BIDIRECTIONAL | G_BINDING_SYNC_CREATE
-    );
-
-    /* Setup stack */
-    priv->stack =GTK_STACK(gtk_stack_new());
-    gtk_stack_add_named(
-        priv->stack, GTK_WIDGET(priv->tree_widget), "file-browser"
-    );
-    gtk_stack_add_named(
-        priv->stack, GTK_WIDGET(priv->quick_open), "quick-open"
-    );
-
-    gtk_stack_set_visible_child_full(
-        priv->stack, "file-browser", GTK_STACK_TRANSITION_TYPE_NONE
-    );
-
     /* Setup menu button widget. */
     action_area_button_image = gtk_image_new_from_icon_name(
         "folder-symbolic", GTK_ICON_SIZE_BUTTON
@@ -490,7 +466,7 @@ static void bedit_file_browser_window_activatable_activate(
     );
 
     gtk_container_add(
-        GTK_CONTAINER(popover), GTK_WIDGET(priv->stack)
+        GTK_CONTAINER(popover), GTK_WIDGET(priv->tree_widget)
     );
 
     /* Add everything to the area to the left of the tab bar. */
@@ -502,7 +478,6 @@ static void bedit_file_browser_window_activatable_activate(
     gtk_widget_show(action_area_button_image);
     gtk_widget_show(priv->action_area_button);
     gtk_widget_show(GTK_WIDGET(priv->tree_widget));
-    gtk_widget_show(GTK_WIDGET(priv->stack));
 
     /* Install nautilus preferences */
     install_nautilus_prefs(plugin);
