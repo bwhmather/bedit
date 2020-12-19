@@ -125,7 +125,9 @@ static void bedit_file_browser_search_view_class_init(
         g_param_spec_object(
             "virtual-root", "Virtual Root",
             "The location in the filesystem that widget is currently showing",
-            G_TYPE_FILE, G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS
+            G_TYPE_FILE,
+            G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS |
+            G_PARAM_EXPLICIT_NOTIFY
         )
     );
 
