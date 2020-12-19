@@ -1058,8 +1058,6 @@ void bedit_file_browser_widget_set_search_enabled(
         );
 
     } else {
-        gtk_entry_reset_im_context(obj->priv->search_entry);
-
         gtk_stack_set_visible_child_full(
             obj->priv->toolbar_stack, "tree",
             GTK_STACK_TRANSITION_TYPE_OVER_RIGHT
@@ -1072,6 +1070,9 @@ void bedit_file_browser_widget_set_search_enabled(
         bedit_file_browser_search_view_set_enabled(
             obj->priv->search_view, FALSE
         );
+
+        gtk_entry_reset_im_context(obj->priv->search_entry);
+        gtk_entry_set_text(obj->priv->search_entry, "");
     }
 
     obj->priv->search_enabled = enabled;
