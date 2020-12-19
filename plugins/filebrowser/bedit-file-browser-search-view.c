@@ -119,7 +119,9 @@ static void bedit_file_browser_search_view_class_init(
         g_param_spec_string(
             "query", "Query",
             "Query string to use to match files under the current virtual root",
-            "", G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS
+            "",
+            G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS |
+            G_PARAM_EXPLICIT_NOTIFY
         )
     );
 
@@ -221,7 +223,10 @@ void bedit_file_browser_search_view_set_query(
 ) {
     g_return_if_fail(BEDIT_IS_FILE_BROWSER_SEARCH_VIEW(view));
 
-    view->query = g_strdup(query);
+    if (!g_strcmp0(query, view->query)) {
+        view->query = g_strdup(query);
+        g_object_notify(G_OBJECT(view), "query");
+    }
 }
 
 gchar *bedit_file_browser_search_view_get_query(
