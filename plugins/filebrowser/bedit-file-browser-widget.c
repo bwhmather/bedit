@@ -142,6 +142,11 @@ static gboolean on_file_store_no_trash(
 static gboolean on_tree_view_popup_menu(
     BeditFileBrowserView *tree_view, BeditFileBrowserWidget *obj
 );
+
+static gboolean on_view_stack_key_press_event(
+    GtkStack *view_stack, GdkEventKey *event,
+    BeditFileBrowserWidget *obj
+);
 static gboolean on_tree_view_button_press_event(
     BeditFileBrowserView *tree_view, GdkEventButton *event,
     BeditFileBrowserWidget *obj
@@ -359,7 +364,6 @@ static void bedit_file_browser_widget_class_init(
         G_TYPE_NONE, 0
     );
 
-    /* Bind class to template */
     gtk_widget_class_set_template_from_resource(
         widget_class,
         "/com/bwhmather/bedit/plugins/file-browser/ui/"
@@ -496,13 +500,17 @@ static void bedit_file_browser_widget_init(BeditFileBrowserWidget *obj) {
     obj->priv->file_store = bedit_file_browser_store_new(NULL);
     obj->priv->bookmarks_store = bedit_file_browser_bookmarks_store_new();
 
-
     /* New Locations popover */
     bedit_file_browser_location_set_bookmarks_store(
         obj->priv->location, obj->priv->bookmarks_store
     );
     bedit_file_browser_location_set_file_store(
         obj->priv->location, obj->priv->file_store
+    );
+
+    g_signal_connect(
+        obj->priv->view_stack, "key-press-event",
+        G_CALLBACK(on_view_stack_key_press_event), obj
     );
 
     /* tree view */
@@ -1328,6 +1336,37 @@ static gboolean on_tree_view_key_press_event(
     }
 
     return FALSE;
+}
+
+static gboolean on_view_stack_key_press_event(
+    GtkStack *view_stack, GdkEventKey *event,
+    BeditFileBrowserWidget *obj
+) {
+    const gchar *name;
+
+    g_return_val_if_fail(GTK_IS_STACK(view_stack), FALSE);
+    g_return_val_if_fail(BEDIT_IS_FILE_BROWSER_WIDGET(obj), FALSE);
+
+    g_return_val_if_fail(view_stack == obj->priv->view_stack, FALSE);
+
+    if (!gtk_entry_im_context_filter_keypress(obj->priv->search_entry, event)) {
+        return FALSE;
+    }
+
+    name = gtk_stack_get_visible_child_name(obj->priv->view_stack);
+    if (g_strcmp0(name, "search")) {
+        gtk_stack_set_visible_child_full(
+            obj->priv->toolbar_stack, "search",
+            GTK_STACK_TRANSITION_TYPE_OVER_RIGHT
+        );
+
+        gtk_stack_set_visible_child_full(
+            obj->priv->view_stack, "search",
+            GTK_STACK_TRANSITION_TYPE_NONE
+        );
+    }
+
+    return TRUE;
 }
 
 static void on_selection_changed(
