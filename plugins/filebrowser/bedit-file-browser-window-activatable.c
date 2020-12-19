@@ -100,6 +100,9 @@ static gboolean on_confirm_delete_cb(
 static gboolean on_confirm_no_trash_cb(
     BeditFileBrowserWidget *widget, GList *files, BeditWindow *window
 );
+static void on_popover_closed_cb(
+    GtkPopover *popover, BeditFileBrowserWindowActivatable *plugin
+);
 
 G_DEFINE_DYNAMIC_TYPE_EXTENDED(
     BeditFileBrowserWindowActivatable,
@@ -464,6 +467,11 @@ static void bedit_file_browser_window_activatable_activate(
         "height-request", 800, NULL
     );
 
+    g_signal_connect(
+        popover, "closed",
+        G_CALLBACK(on_popover_closed_cb), plugin
+    );
+
     gtk_container_add(
         GTK_CONTAINER(popover), GTK_WIDGET(priv->tree_widget)
     );
@@ -819,4 +827,17 @@ static gboolean on_confirm_delete_cb(
     g_free(message);
 
     return result;
+}
+
+static void on_popover_closed_cb(
+    GtkPopover *popover, BeditFileBrowserWindowActivatable *plugin
+) {
+    BeditFileBrowserWindowActivatablePrivate *priv;
+
+    g_return_if_fail(GTK_IS_POPOVER(popover));
+    g_return_if_fail(BEDIT_IS_FILE_BROWSER_WINDOW_ACTIVATABLE(plugin));
+
+    priv = bedit_file_browser_window_activatable_get_instance_private(plugin);
+
+    bedit_file_browser_widget_set_search_enabled(priv->tree_widget, FALSE);
 }
