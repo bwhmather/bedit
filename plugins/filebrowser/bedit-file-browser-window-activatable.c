@@ -65,7 +65,6 @@ typedef struct _BeditFileBrowserWindowActivatablePrivate {
     GSettings *terminal_settings;
 
     GtkWidget *action_area_button;
-    GtkStack *stack;
     BeditFileBrowserWidget *tree_widget;
     gboolean confirm_trash;
 
