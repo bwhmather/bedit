@@ -149,6 +149,12 @@ static gboolean on_view_stack_key_press_event(
     GtkStack *view_stack, GdkEventKey *event,
     BeditFileBrowserWidget *obj
 );
+
+static gboolean on_search_entry_key_press_event(
+    GtkEntry *search_entry, GdkEventKey *event,
+    BeditFileBrowserWidget *obj
+);
+
 static gboolean on_tree_view_button_press_event(
     BeditFileBrowserView *tree_view, GdkEventButton *event,
     BeditFileBrowserWidget *obj
@@ -532,6 +538,11 @@ static void bedit_file_browser_widget_init(BeditFileBrowserWidget *obj) {
     );
     bedit_file_browser_location_set_file_store(
         obj->priv->location, obj->priv->file_store
+    );
+
+    g_signal_connect(
+        obj->priv->search_entry, "key-press-event",
+        G_CALLBACK(on_search_entry_key_press_event), obj
     );
 
     g_signal_connect(
@@ -1457,6 +1468,23 @@ static gboolean on_view_stack_key_press_event(
         );
         return TRUE;
     }
+}
+
+static gboolean on_search_entry_key_press_event(
+    GtkEntry *search_entry, GdkEventKey *event,
+    BeditFileBrowserWidget *obj
+) {
+    g_return_val_if_fail(GTK_IS_ENTRY(search_entry), FALSE);
+    g_return_val_if_fail(BEDIT_IS_FILE_BROWSER_WIDGET(obj), FALSE);
+
+    // TODO This is ignored in GTK3 because the popover holds a grab and
+    // intercepts.  Should just work in GTK4.
+    if (event->keyval == GDK_KEY_Escape) {
+        bedit_file_browser_widget_set_search_enabled(obj, FALSE);
+        return TRUE;
+    }
+
+    return FALSE;
 }
 
 static void on_selection_changed(
