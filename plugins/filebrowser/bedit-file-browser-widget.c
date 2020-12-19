@@ -572,6 +572,12 @@ static void bedit_file_browser_widget_init(BeditFileBrowserWidget *obj) {
         obj->priv->file_store, "error",
         G_CALLBACK(on_file_store_error), obj
     );
+
+    g_object_bind_property(
+        obj->priv->search_entry, "text",
+        obj->priv->search_view, "query",
+        G_BINDING_BIDIRECTIONAL | G_BINDING_SYNC_CREATE
+    );
 }
 
 /* Private */
