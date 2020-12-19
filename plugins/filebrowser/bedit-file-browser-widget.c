@@ -927,6 +927,10 @@ void bedit_file_browser_widget_set_virtual_root(
     bedit_file_browser_store_set_root_and_virtual_root(
         obj->priv->file_store, root, virtual_root
     );
+
+    bedit_file_browser_search_view_set_virtual_root(
+        obj->priv->search_view, virtual_root
+    );
 }
 
 GFile *bedit_file_browser_widget_get_virtual_root(BeditFileBrowserWidget *obj) {
