@@ -111,6 +111,7 @@ struct _BeditFileBrowserWidgetPrivate {
     GMenuModel *bookmarks_menu;
 
     BeditFileBrowserLocation *location;
+    GtkEntry *search_entry;
 
     GtkStack *toolbar_stack;
     GtkStack *view_stack;
@@ -367,6 +368,10 @@ static void bedit_file_browser_widget_class_init(
 
     gtk_widget_class_bind_template_child_private(
         widget_class, BeditFileBrowserWidget, location
+    );
+
+    gtk_widget_class_bind_template_child_private(
+        widget_class, BeditFileBrowserWidget, search_entry
     );
 
     gtk_widget_class_bind_template_child_private(
