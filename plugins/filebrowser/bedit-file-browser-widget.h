@@ -123,6 +123,13 @@ BeditFileBrowserView *bedit_file_browser_widget_get_browser_view(
     BeditFileBrowserWidget *obj
 );
 
+void bedit_file_browser_widget_set_search_enabled(
+    BeditFileBrowserWidget *obj, gboolean enabled
+);
+gboolean bedit_file_browser_widget_get_search_enabled(
+    BeditFileBrowserWidget *obj
+);
+
 BeditMenuExtension *bedit_file_browser_widget_extend_context_menu(
     BeditFileBrowserWidget *obj
 );

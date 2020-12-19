@@ -66,7 +66,7 @@ enum {
     PROP_0,
 
     PROP_VIRTUAL_ROOT,
-    PROP_FILTER_PATTERN,
+    PROP_SEARCH_ENABLED,
 };
 
 /* Signals */
@@ -123,6 +123,8 @@ struct _BeditFileBrowserWidgetPrivate {
     GCancellable *cancellable;
 
     GdkCursor *busy_cursor;
+
+    guint search_enabled : 1;
 };
 
 static void on_model_set(
@@ -270,6 +272,12 @@ static void bedit_file_browser_widget_get_property(
         );
         break;
 
+    case PROP_SEARCH_ENABLED:
+        g_value_set_boolean(
+            value, bedit_file_browser_widget_get_search_enabled(obj)
+        );
+        break;
+
     default:
         G_OBJECT_WARN_INVALID_PROPERTY_ID(object, prop_id, pspec);
         break;
@@ -285,6 +293,12 @@ static void bedit_file_browser_widget_set_property(
     case PROP_VIRTUAL_ROOT:
         bedit_file_browser_widget_set_virtual_root(
             obj, G_FILE(g_value_dup_object(value))
+        );
+        break;
+
+    case PROP_SEARCH_ENABLED:
+        bedit_file_browser_widget_set_search_enabled(
+            obj, g_value_get_boolean(value)
         );
         break;
 
@@ -311,6 +325,17 @@ static void bedit_file_browser_widget_class_init(
             "virtual-root", "Virtual Root",
             "The location in the filesystem that widget is currently showing",
             G_TYPE_FILE, G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS
+        )
+    );
+
+    g_object_class_install_property(
+        object_class, PROP_SEARCH_ENABLED,
+        g_param_spec_boolean(
+            "search-enabled", "Search Enabled",
+            "True if the widget is in search mode.  False otherwise",
+            FALSE,
+            G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS |
+            G_PARAM_EXPLICIT_NOTIFY
         )
     );
 
@@ -464,6 +489,7 @@ static void bedit_file_browser_widget_init(BeditFileBrowserWidget *obj) {
 
     display = gtk_widget_get_display(GTK_WIDGET(obj));
     obj->priv->busy_cursor = gdk_cursor_new_from_name(display, "progress");
+    obj->priv->search_enabled = FALSE;
 
     builder = gtk_builder_new();
     if (!gtk_builder_add_from_resource(
@@ -1007,6 +1033,60 @@ void bedit_file_browser_widget_set_active_root_enabled(
     g_simple_action_set_enabled(G_SIMPLE_ACTION(action), enabled);
 }
 
+
+void bedit_file_browser_widget_set_search_enabled(
+    BeditFileBrowserWidget *obj, gboolean enabled
+) {
+    g_return_if_fail(BEDIT_IS_FILE_BROWSER_WIDGET(obj));
+
+    if (obj->priv->search_enabled == enabled) {
+        return;
+    }
+
+    if (enabled) {
+        gtk_stack_set_visible_child_full(
+            obj->priv->toolbar_stack, "search",
+            GTK_STACK_TRANSITION_TYPE_OVER_RIGHT
+        );
+        gtk_stack_set_visible_child_full(
+            obj->priv->view_stack, "search",
+            GTK_STACK_TRANSITION_TYPE_NONE
+        );
+
+        bedit_file_browser_search_view_set_enabled(
+            obj->priv->search_view, TRUE
+        );
+
+    } else {
+        gtk_entry_reset_im_context(obj->priv->search_entry);
+
+        gtk_stack_set_visible_child_full(
+            obj->priv->toolbar_stack, "tree",
+            GTK_STACK_TRANSITION_TYPE_OVER_RIGHT
+        );
+        gtk_stack_set_visible_child_full(
+            obj->priv->view_stack, "tree",
+            GTK_STACK_TRANSITION_TYPE_NONE
+        );
+
+        bedit_file_browser_search_view_set_enabled(
+            obj->priv->search_view, FALSE
+        );
+    }
+
+    obj->priv->search_enabled = enabled;
+
+    g_object_notify(G_OBJECT(obj), "search-enabled");
+}
+
+gboolean bedit_file_browser_widget_get_search_enabled(
+    BeditFileBrowserWidget *obj
+) {
+    g_return_val_if_fail(BEDIT_IS_FILE_BROWSER_WIDGET(obj), FALSE);
+
+    return obj->priv->search_enabled ? TRUE : FALSE;
+}
+
 static guint bedit_file_browser_widget_get_num_selected_files_or_directories(
     BeditFileBrowserWidget *obj, guint *files, guint *dirs
 ) {
@@ -1366,16 +1446,7 @@ static gboolean on_view_stack_key_press_event(
         ) {
             return FALSE;
         }
-
-        gtk_stack_set_visible_child_full(
-            obj->priv->toolbar_stack, "search",
-            GTK_STACK_TRANSITION_TYPE_OVER_RIGHT
-        );
-
-        gtk_stack_set_visible_child_full(
-            obj->priv->view_stack, "search",
-            GTK_STACK_TRANSITION_TYPE_NONE
-        );
+        bedit_file_browser_widget_set_search_enabled(obj, TRUE);
 
         return TRUE;
     } else {
