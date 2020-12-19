@@ -28,6 +28,8 @@ struct _BeditFileBrowserSearchView {
 
     GFile *virtual_root;
     gchar *query;
+
+    guint enabled : 1;
 };
 
 G_DEFINE_DYNAMIC_TYPE(
@@ -38,6 +40,7 @@ enum {
     PROP_0,
     PROP_VIRTUAL_ROOT,
     PROP_QUERY,
+    PROP_ENABLED,
     LAST_PROP,
 };
 
@@ -66,6 +69,12 @@ static void bedit_file_browser_search_view_get_property(
         );
         break;
 
+    case PROP_ENABLED:
+        g_value_set_boolean(
+            value, bedit_file_browser_search_view_get_enabled(view)
+        );
+        break;
+
     default:
         G_OBJECT_WARN_INVALID_PROPERTY_ID(object, prop_id, pspec);
         break;
@@ -87,6 +96,12 @@ static void bedit_file_browser_search_view_set_property(
     case PROP_QUERY:
         bedit_file_browser_search_view_set_query(
             view, g_value_get_string(value)
+        );
+        break;
+
+    case PROP_ENABLED:
+        bedit_file_browser_search_view_set_enabled(
+            view, g_value_get_boolean(value)
         );
         break;
 
@@ -120,6 +135,17 @@ static void bedit_file_browser_search_view_class_init(
             "query", "Query",
             "Query string to use to match files under the current virtual root",
             "",
+            G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS |
+            G_PARAM_EXPLICIT_NOTIFY
+        )
+    );
+
+    g_object_class_install_property(
+        object_class, PROP_ENABLED,
+        g_param_spec_boolean(
+            "enabled", "Enabled",
+            "Set to false to clear the cache and tell view to ignore all input",
+            FALSE,
             G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS |
             G_PARAM_EXPLICIT_NOTIFY
         )
@@ -237,7 +263,21 @@ gchar *bedit_file_browser_search_view_get_query(
     return view->query;
 }
 
+void bedit_file_browser_search_view_set_enabled(
+    BeditFileBrowserSearchView *view, gboolean enabled
+) {
+    g_return_if_fail(BEDIT_IS_FILE_BROWSER_SEARCH_VIEW(view));
 
+    if (view->enabled != enabled) {
+        view->enabled = enabled;
+        g_object_notify(G_OBJECT(view), "enabled");
+    }
+}
+gboolean bedit_file_browser_search_view_get_enabled(
+    BeditFileBrowserSearchView *view
+) {
+    return view->enabled ? TRUE : FALSE;
+}
 
 void _bedit_file_browser_search_view_register_type(GTypeModule *type_module) {
     bedit_file_browser_search_view_register_type(type_module);

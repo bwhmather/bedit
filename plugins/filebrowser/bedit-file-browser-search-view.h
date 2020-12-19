@@ -52,6 +52,13 @@ gchar *bedit_file_browser_search_view_get_query(
     BeditFileBrowserSearchView *view
 );
 
+void bedit_file_browser_search_view_set_enabled(
+    BeditFileBrowserSearchView *view, gboolean enabled
+);
+gboolean bedit_file_browser_search_view_get_enabled(
+    BeditFileBrowserSearchView *view
+);
+
 void _bedit_file_browser_search_view_register_type(
     GTypeModule *type_module
 );
