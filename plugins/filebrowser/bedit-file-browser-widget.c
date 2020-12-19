@@ -112,6 +112,9 @@ struct _BeditFileBrowserWidgetPrivate {
     GtkToggleButton *show_binary_toggle;
     GtkToggleButton *show_hidden_toggle;
 
+    GtkStack *toolbar_stack;
+    GtkStack *view_stack;
+
     GSimpleActionGroup *action_group;
 
     GSList *signal_pool;
@@ -368,6 +371,14 @@ static void bedit_file_browser_widget_class_init(
 
     gtk_widget_class_bind_template_child_private(
         widget_class, BeditFileBrowserWidget, treeview
+    );
+
+    gtk_widget_class_bind_template_child_private(
+        widget_class, BeditFileBrowserWidget, toolbar_stack
+    );
+
+    gtk_widget_class_bind_template_child_private(
+        widget_class, BeditFileBrowserWidget, view_stack
     );
 }
 
