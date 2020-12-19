@@ -109,9 +109,6 @@ struct _BeditFileBrowserWidgetPrivate {
 
     BeditFileBrowserLocation *location;
 
-    GtkToggleButton *show_binary_toggle;
-    GtkToggleButton *show_hidden_toggle;
-
     GtkStack *toolbar_stack;
     GtkStack *view_stack;
 
