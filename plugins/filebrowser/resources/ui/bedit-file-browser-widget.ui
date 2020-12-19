@@ -14,79 +14,118 @@
     <child>
       <object class="GtkBox" id="toolbar">
         <property name="visible">True</property>
-        <property name="can_focus">False</property>
-        <property name="margin">3</property>
         <property name="spacing">3</property>
         <child>
-          <object class="GtkButton" id="button3">
+          <object class="GtkButton" id="search_button">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="receives_default">True</property>
-            <property name="action_name">browser.up</property>
-            <property name="image">up_image</property>
-            <property name="tooltip-text" translatable="yes">Navigate to parent directory (Shift+Backspace)</property>
+            <property name="action_name">window.quick_open</property>
+            <property name="image">search_image</property>
             <style>
               <class name="small-button"/>
             </style>
           </object>
-          <packing>
-            <property name="expand">False</property>
-            <property name="fill">False</property>
-            <property name="position">1</property>
-          </packing>
         </child>
         <child>
-          <object class="BeditFileBrowserLocation" id="location">
+          <object class="GtkStack" id="toolbar_stack">
             <property name="visible">True</property>
-            <property name="can_focus">False</property>
-            <property name="valign">center</property>
-            <child internal-child="accessible">
-              <object class="AtkObject" id="locations_button_a11y">
-                <property name="accessible-name" translatable="yes">History</property>
-                <property name="accessible-description" translatable="yes">Open history menu</property>
+            <property name="can-focus">False</property>
+            <child>
+              <object class="GtkBox">
+                <property name="visible">True</property>
+                <property name="spacing">3</property>
+                <child>
+                  <object class="GtkButton" id="button3">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="receives_default">True</property>
+                    <property name="action_name">browser.up</property>
+                    <property name="image">up_image</property>
+                    <property name="tooltip-text" translatable="yes">Navigate to parent directory (Shift+Backspace)</property>
+                    <style>
+                      <class name="small-button"/>
+                    </style>
+                  </object>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="fill">False</property>
+                    <property name="position">1</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="BeditFileBrowserLocation" id="location">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="valign">center</property>
+                    <child internal-child="accessible">
+                      <object class="AtkObject" id="locations_button_a11y">
+                        <property name="accessible-name" translatable="yes">History</property>
+                        <property name="accessible-description" translatable="yes">Open history menu</property>
+                      </object>
+                    </child>
+                  </object>
+                  <packing>
+                    <property name="expand">True</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkBox">
+                    <property name="visible">True</property>
+                    <property name="can-focus">False</property>
+                    <child>
+                      <object class="GtkToggleButton" id="show_binary_toggle">
+                        <property name="label">Aa</property>
+                        <property name="visible">True</property>
+                        <property name="can-focus">False</property>
+                        <property name="receives-default">False</property>
+                        <property name="tooltip-text" translatable="yes">Match case</property>
+                      </object>
+                      <packing>
+                        <property name="expand">True</property>
+                        <property name="fill">True</property>
+                        <property name="position">0</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkToggleButton" id="show_hidden_toggle">
+                        <property name="label">.h</property>
+                        <property name="visible">True</property>
+                        <property name="can-focus">False</property>
+                        <property name="receives-default">False</property>
+                        <property name="tooltip-text" translatable="yes">Regular expression</property>
+                      </object>
+                      <packing>
+                        <property name="expand">True</property>
+                        <property name="fill">True</property>
+                        <property name="position">1</property>
+                      </packing>
+                    </child>
+                    <style>
+                      <class name="linked"/>
+                    </style>
+                  </object>
+                </child>
               </object>
+              <packing>
+                <property name="name">tree</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkEntry">
+                <property name="visible">True</property>
+                <property name="can-focus">True</property>
+              </object>
+              <packing>
+                <property name="name">search</property>
+              </packing>
             </child>
           </object>
           <packing>
             <property name="expand">True</property>
+            <property name="fill">True</property>
+            <property name="position">1</property>
           </packing>
-        </child>
-        <child>
-          <object class="GtkBox">
-            <property name="visible">True</property>
-            <property name="can-focus">False</property>
-            <child>
-              <object class="GtkToggleButton" id="show_binary_toggle">
-                <property name="label">Aa</property>
-                <property name="visible">True</property>
-                <property name="can-focus">False</property>
-                <property name="receives-default">False</property>
-                <property name="tooltip-text" translatable="yes">Match case</property>
-              </object>
-              <packing>
-                <property name="expand">True</property>
-                <property name="fill">True</property>
-                <property name="position">0</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkToggleButton" id="show_hidden_toggle">
-                <property name="label">.h</property>
-                <property name="visible">True</property>
-                <property name="can-focus">False</property>
-                <property name="receives-default">False</property>
-                <property name="tooltip-text" translatable="yes">Regular expression</property>
-              </object>
-              <packing>
-                <property name="expand">True</property>
-                <property name="fill">True</property>
-                <property name="position">1</property>
-              </packing>
-            </child>
-            <style>
-              <class name="linked"/>
-            </style>
-          </object>
         </child>
       </object>
       <packing>
@@ -97,7 +136,7 @@
       </packing>
     </child>
     <child>
-      <object class="GtkStack" id="viewstack">
+      <object class="GtkStack" id="view_stack">
         <property name="visible">True</property>
         <child>
           <object class="GtkScrolledWindow">
