@@ -40,6 +40,7 @@
 #include "bedit-file-browser-view.h"
 #include "bedit-file-browser-location.h"
 #include "bedit-file-browser-widget.h"
+#include "bedit-file-browser-search-view.h"
 
 #define LOCATION_DATA_KEY "bedit-file-browser-widget-location"
 
@@ -101,6 +102,8 @@ typedef struct {
 
 struct _BeditFileBrowserWidgetPrivate {
     BeditFileBrowserView *tree_view;
+    BeditFileBrowserSearchView *search_view;
+
     BeditFileBrowserStore *file_store;
     BeditFileBrowserBookmarksStore *bookmarks_store;
 
@@ -368,6 +371,10 @@ static void bedit_file_browser_widget_class_init(
 
     gtk_widget_class_bind_template_child_private(
         widget_class, BeditFileBrowserWidget, tree_view
+    );
+
+    gtk_widget_class_bind_template_child_private(
+        widget_class, BeditFileBrowserWidget, search_view
     );
 
     gtk_widget_class_bind_template_child_private(
