@@ -41,6 +41,13 @@ enum {
     LAST_PROP,
 };
 
+typedef enum {
+    COLUMN_ICON_NAME = 0,
+    COLUMN_MARKUP,
+    COLUMN_LOCATION,
+    N_COLUMNS,
+} BeditFileBrowserSearchStoreColumn;
+
 static void bedit_file_browser_search_view_get_property(
     GObject *object, guint prop_id, GValue *value, GParamSpec *pspec
 ) {
@@ -132,12 +139,37 @@ static void bedit_file_browser_search_view_class_finalize(
 ) {}
 
 
-static void bedit_file_browser_search_view_init(
-    BeditFileBrowserSearchView *widget
-) {
-    gtk_widget_init_template(GTK_WIDGET(widget));
-}
 
+static void bedit_file_browser_search_view_init(
+    BeditFileBrowserSearchView *view
+) {
+    gtk_widget_init_template(GTK_WIDGET(view));
+
+    view->list_store = gtk_list_store_new(
+        N_COLUMNS,
+        G_TYPE_STRING,  // Icon name.
+        G_TYPE_STRING,  // Markup.
+        G_TYPE_FILE  // Location.
+    );
+
+    gtk_list_store_insert_with_values(
+        view->list_store, NULL, -1,
+        COLUMN_ICON_NAME, g_strdup("folder-symbolic"),
+        COLUMN_MARKUP, g_strdup("Hello, World!"),
+        COLUMN_LOCATION, NULL,
+        -1
+    );
+    gtk_list_store_insert_with_values(
+        view->list_store, NULL, -1,
+        COLUMN_ICON_NAME, g_strdup("folder-symbolic"),
+        COLUMN_MARKUP, g_strdup("Hello, World!"),
+        COLUMN_LOCATION, NULL,
+        -1
+    );
+
+    gtk_tree_view_set_model(view->tree_view, GTK_TREE_MODEL(view->list_store));
+
+}
 
 /**
  * bedit_file_browser_search_view_new:
