@@ -145,7 +145,7 @@
             <property name="hexpand">True</property>
             <property name="vexpand">True</property>
             <child>
-              <object class="BeditFileBrowserView" id="treeview">
+              <object class="BeditFileBrowserView" id="tree_view">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <child internal-child="selection">
@@ -165,7 +165,7 @@
             <property name="hexpand">True</property>
             <property name="vexpand">True</property>
             <child>
-              <object class="BeditFileBrowserSearchView" id="searchview">
+              <object class="BeditFileBrowserSearchView" id="search_view">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
               </object>

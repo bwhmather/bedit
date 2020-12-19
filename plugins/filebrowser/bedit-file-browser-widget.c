@@ -100,7 +100,7 @@ typedef struct {
 } NameIcon;
 
 struct _BeditFileBrowserWidgetPrivate {
-    BeditFileBrowserView *treeview;
+    BeditFileBrowserView *tree_view;
     BeditFileBrowserStore *file_store;
     BeditFileBrowserBookmarksStore *bookmarks_store;
 
@@ -125,9 +125,9 @@ struct _BeditFileBrowserWidgetPrivate {
 };
 
 static void on_model_set(
-    GtkTreeView *treeview, GParamSpec *arg1, BeditFileBrowserWidget *widget
+    GtkTreeView *tree_view, GParamSpec *arg1, BeditFileBrowserWidget *widget
 );
-static void on_treeview_error(
+static void on_tree_view_error(
     BeditFileBrowserView *tree_view, guint code, gchar *message,
     BeditFileBrowserWidget *obj
 );
@@ -138,15 +138,15 @@ static void on_file_store_error(
 static gboolean on_file_store_no_trash(
     BeditFileBrowserStore *store, GList *files, BeditFileBrowserWidget *obj
 );
-static gboolean on_treeview_popup_menu(
-    BeditFileBrowserView *treeview, BeditFileBrowserWidget *obj
+static gboolean on_tree_view_popup_menu(
+    BeditFileBrowserView *tree_view, BeditFileBrowserWidget *obj
 );
-static gboolean on_treeview_button_press_event(
-    BeditFileBrowserView *treeview, GdkEventButton *event,
+static gboolean on_tree_view_button_press_event(
+    BeditFileBrowserView *tree_view, GdkEventButton *event,
     BeditFileBrowserWidget *obj
 );
-static gboolean on_treeview_key_press_event(
-    BeditFileBrowserView *treeview, GdkEventKey *event,
+static gboolean on_tree_view_key_press_event(
+    BeditFileBrowserView *tree_view, GdkEventKey *event,
     BeditFileBrowserWidget *obj
 );
 static void on_selection_changed(
@@ -370,7 +370,7 @@ static void bedit_file_browser_widget_class_init(
     );
 
     gtk_widget_class_bind_template_child_private(
-        widget_class, BeditFileBrowserWidget, treeview
+        widget_class, BeditFileBrowserWidget, tree_view
     );
 
     gtk_widget_class_bind_template_child_private(
@@ -402,7 +402,7 @@ static void on_begin_loading(
     BeditFileBrowserWidget *obj
 ) {
     if (!GDK_IS_WINDOW(gtk_widget_get_window(
-        GTK_WIDGET(obj->priv->treeview)
+        GTK_WIDGET(obj->priv->tree_view)
     ))) {
         return;
     }
@@ -417,7 +417,7 @@ static void on_end_loading(
     BeditFileBrowserWidget *obj
 ) {
     if (!GDK_IS_WINDOW(gtk_widget_get_window(
-        GTK_WIDGET(obj->priv->treeview)
+        GTK_WIDGET(obj->priv->tree_view)
     ))) {
         return;
     }
@@ -497,7 +497,7 @@ static void bedit_file_browser_widget_init(BeditFileBrowserWidget *obj) {
     );
 
     /* tree view */
-    bedit_file_browser_view_set_restore_expand_state(obj->priv->treeview, TRUE);
+    bedit_file_browser_view_set_restore_expand_state(obj->priv->tree_view, TRUE);
 
     bedit_file_browser_store_set_filter_mode(
         obj->priv->file_store,
@@ -506,28 +506,28 @@ static void bedit_file_browser_widget_init(BeditFileBrowserWidget *obj) {
     );
 
     g_signal_connect(
-        obj->priv->treeview, "notify::model",
+        obj->priv->tree_view, "notify::model",
         G_CALLBACK(on_model_set), obj
     );
     g_signal_connect(
-        obj->priv->treeview, "error",
-        G_CALLBACK(on_treeview_error), obj
+        obj->priv->tree_view, "error",
+        G_CALLBACK(on_tree_view_error), obj
     );
     g_signal_connect(
-        obj->priv->treeview, "popup-menu",
-        G_CALLBACK(on_treeview_popup_menu), obj
+        obj->priv->tree_view, "popup-menu",
+        G_CALLBACK(on_tree_view_popup_menu), obj
     );
     g_signal_connect(
-        obj->priv->treeview, "button-press-event",
-        G_CALLBACK(on_treeview_button_press_event), obj
+        obj->priv->tree_view, "button-press-event",
+        G_CALLBACK(on_tree_view_button_press_event), obj
     );
     g_signal_connect(
-        obj->priv->treeview, "key-press-event",
-        G_CALLBACK(on_treeview_key_press_event), obj
+        obj->priv->tree_view, "key-press-event",
+        G_CALLBACK(on_tree_view_key_press_event), obj
     );
 
     g_signal_connect(
-        gtk_tree_view_get_selection(GTK_TREE_VIEW(obj->priv->treeview)),
+        gtk_tree_view_get_selection(GTK_TREE_VIEW(obj->priv->tree_view)),
         "changed",
         G_CALLBACK(on_selection_changed), obj
     );
@@ -561,7 +561,7 @@ static void bedit_file_browser_widget_init(BeditFileBrowserWidget *obj) {
 
 static void update_sensitivity(BeditFileBrowserWidget *obj) {
     GtkTreeModel *model = gtk_tree_view_get_model(
-        GTK_TREE_VIEW(obj->priv->treeview)
+        GTK_TREE_VIEW(obj->priv->tree_view)
     );
     GAction *action;
     gint mode;
@@ -635,7 +635,7 @@ static void update_sensitivity(BeditFileBrowserWidget *obj) {
     }
 
     on_selection_changed(
-        gtk_tree_view_get_selection GTK_TREE_VIEW(obj->priv->treeview), obj
+        gtk_tree_view_get_selection GTK_TREE_VIEW(obj->priv->tree_view), obj
     );
 }
 
@@ -643,7 +643,7 @@ static gboolean bedit_file_browser_widget_get_first_selected(
     BeditFileBrowserWidget *obj, GtkTreeIter *iter
 ) {
     GtkTreeSelection *selection = gtk_tree_view_get_selection(
-        GTK_TREE_VIEW(obj->priv->treeview)
+        GTK_TREE_VIEW(obj->priv->tree_view)
     );
     GtkTreeModel *model;
     GList *rows = gtk_tree_selection_get_selected_rows(selection, &model);
@@ -661,7 +661,7 @@ static gboolean bedit_file_browser_widget_get_first_selected(
 }
 
 static gboolean popup_menu(
-    BeditFileBrowserWidget *obj, GtkTreeView *treeview, GdkEventButton *event,
+    BeditFileBrowserWidget *obj, GtkTreeView *tree_view, GdkEventButton *event,
     GtkTreeModel *model
 ) {
     GtkWidget *menu;
@@ -680,13 +680,13 @@ static gboolean popup_menu(
 
     if (event != NULL) {
         GtkTreeSelection *selection;
-        selection = gtk_tree_view_get_selection(treeview);
+        selection = gtk_tree_view_get_selection(tree_view);
 
         if (gtk_tree_selection_count_selected_rows(selection) <= 1) {
             GtkTreePath *path;
 
             if (gtk_tree_view_get_path_at_pos(
-                treeview, (gint)event->x, (gint)event->y, &path,
+                tree_view, (gint)event->x, (gint)event->y, &path,
                 NULL, NULL, NULL
             )) {
                 gtk_tree_selection_unselect_all(selection);
@@ -697,14 +697,14 @@ static gboolean popup_menu(
 
         gtk_menu_popup_at_pointer(GTK_MENU(menu), (GdkEvent *)event);
     } else {
-        GdkWindow *window = gtk_widget_get_window(GTK_WIDGET(treeview));
+        GdkWindow *window = gtk_widget_get_window(GTK_WIDGET(tree_view));
         GdkGravity rect_gravity = GDK_GRAVITY_EAST;
         GdkGravity menu_gravity = GDK_GRAVITY_NORTH_WEST;
         GdkRectangle rect;
 
-        if (bedit_utils_menu_position_under_tree_view(treeview, &rect)) {
+        if (bedit_utils_menu_position_under_tree_view(tree_view, &rect)) {
             if (
-                gtk_widget_get_direction(GTK_WIDGET(treeview)) ==
+                gtk_widget_get_direction(GTK_WIDGET(tree_view)) ==
                 GTK_TEXT_DIR_RTL
             ) {
                 rect_gravity = GDK_GRAVITY_WEST;
@@ -724,7 +724,7 @@ static gboolean popup_menu(
 
 static void rename_selected_file(BeditFileBrowserWidget *obj) {
     GtkTreeModel *model = gtk_tree_view_get_model(
-        GTK_TREE_VIEW(obj->priv->treeview)
+        GTK_TREE_VIEW(obj->priv->tree_view)
     );
     GtkTreeIter iter;
 
@@ -733,16 +733,16 @@ static void rename_selected_file(BeditFileBrowserWidget *obj) {
     }
 
     if (bedit_file_browser_widget_get_first_selected(obj, &iter)) {
-        bedit_file_browser_view_start_rename(obj->priv->treeview, &iter);
+        bedit_file_browser_view_start_rename(obj->priv->tree_view, &iter);
     }
 }
 
 static GList *get_deletable_files(BeditFileBrowserWidget *obj) {
     GtkTreeModel *model = gtk_tree_view_get_model(
-        GTK_TREE_VIEW(obj->priv->treeview)
+        GTK_TREE_VIEW(obj->priv->tree_view)
     );
     GtkTreeSelection *selection = gtk_tree_view_get_selection(
-        GTK_TREE_VIEW(obj->priv->treeview)
+        GTK_TREE_VIEW(obj->priv->tree_view)
     );
     GList *rows = gtk_tree_selection_get_selected_rows(selection, &model);
     GList *row;
@@ -782,7 +782,7 @@ static void delete_selected_files(
     gboolean confirm;
     GList *rows;
 
-    model = gtk_tree_view_get_model(GTK_TREE_VIEW(obj->priv->treeview));
+    model = gtk_tree_view_get_model(GTK_TREE_VIEW(obj->priv->tree_view));
 
     if (!BEDIT_IS_FILE_BROWSER_STORE(model)) {
         return;
@@ -836,7 +836,7 @@ static void update_filter_mode(
     BeditFileBrowserStoreFilterMode mode
 ) {
     GtkTreeModel *model = gtk_tree_view_get_model(
-        GTK_TREE_VIEW(obj->priv->treeview)
+        GTK_TREE_VIEW(obj->priv->tree_view)
     );
 
     if (BEDIT_IS_FILE_BROWSER_STORE(model)) {
@@ -927,14 +927,14 @@ BeditFileBrowserBookmarksStore *bedit_file_browser_widget_get_bookmarks_store(
 BeditFileBrowserView *bedit_file_browser_widget_get_browser_view(
     BeditFileBrowserWidget *obj
 ) {
-    return obj->priv->treeview;
+    return obj->priv->tree_view;
 }
 
 gboolean bedit_file_browser_widget_get_selected_directory(
     BeditFileBrowserWidget *obj, GtkTreeIter *iter
 ) {
     GtkTreeModel *model = gtk_tree_view_get_model(
-        GTK_TREE_VIEW(obj->priv->treeview)
+        GTK_TREE_VIEW(obj->priv->tree_view)
     );
     GtkTreeIter parent;
     guint flags;
@@ -984,10 +984,10 @@ static guint bedit_file_browser_widget_get_num_selected_files_or_directories(
     BeditFileBrowserWidget *obj, guint *files, guint *dirs
 ) {
     GtkTreeSelection *selection = gtk_tree_view_get_selection(
-        GTK_TREE_VIEW(obj->priv->treeview)
+        GTK_TREE_VIEW(obj->priv->tree_view)
     );
     GtkTreeModel *model = gtk_tree_view_get_model(
-        GTK_TREE_VIEW(obj->priv->treeview)
+        GTK_TREE_VIEW(obj->priv->tree_view)
     );
     GList *rows, *row;
     guint result = 0;
@@ -1033,7 +1033,7 @@ typedef struct {
 
 void bedit_file_browser_widget_refresh(BeditFileBrowserWidget *obj) {
     GtkTreeModel *model = gtk_tree_view_get_model(
-        GTK_TREE_VIEW(obj->priv->treeview)
+        GTK_TREE_VIEW(obj->priv->tree_view)
     );
 
     bedit_file_browser_store_refresh(BEDIT_FILE_BROWSER_STORE(model));
@@ -1160,11 +1160,11 @@ static void on_virtual_root_changed(
     GtkTreeIter iter;
 
     if (
-        gtk_tree_view_get_model(GTK_TREE_VIEW(obj->priv->treeview)) !=
+        gtk_tree_view_get_model(GTK_TREE_VIEW(obj->priv->tree_view)) !=
         GTK_TREE_MODEL(obj->priv->file_store)
     ) {
         bedit_file_browser_view_set_model(
-            obj->priv->treeview, GTK_TREE_MODEL(obj->priv->file_store)
+            obj->priv->tree_view, GTK_TREE_MODEL(obj->priv->file_store)
         );
     }
 
@@ -1201,14 +1201,14 @@ static void on_virtual_root_changed(
 }
 
 static void on_model_set(
-    GtkTreeView *treeview, GParamSpec *arg1, BeditFileBrowserWidget *widget
+    GtkTreeView *tree_view, GParamSpec *arg1, BeditFileBrowserWidget *widget
 ) {
     GtkTreeModel *model;
 
-    g_return_if_fail(GTK_IS_TREE_VIEW(treeview));
+    g_return_if_fail(GTK_IS_TREE_VIEW(tree_view));
     g_return_if_fail(BEDIT_IS_FILE_BROWSER_WIDGET(widget));
 
-    model = gtk_tree_view_get_model(treeview);
+    model = gtk_tree_view_get_model(tree_view);
 
     clear_signals(widget);
 
@@ -1216,9 +1216,9 @@ static void on_model_set(
         cancel_async_operation(widget);
 
         add_signal(
-            widget, treeview,
+            widget, tree_view,
             g_signal_connect(
-                treeview, "file-activated", G_CALLBACK(on_file_activated), widget
+                tree_view, "file-activated", G_CALLBACK(on_file_activated), widget
             )
         );
 
@@ -1240,24 +1240,24 @@ static void on_file_store_error(
     g_signal_emit(obj, signals[ERROR], 0, code, message);
 }
 
-static void on_treeview_error(
+static void on_tree_view_error(
     BeditFileBrowserView *tree_view, guint code, gchar *message,
     BeditFileBrowserWidget *obj
 ) {
     g_signal_emit(obj, signals[ERROR], 0, code, message);
 }
 
-static gboolean on_treeview_popup_menu(
-    BeditFileBrowserView *treeview, BeditFileBrowserWidget *obj
+static gboolean on_tree_view_popup_menu(
+    BeditFileBrowserView *tree_view, BeditFileBrowserWidget *obj
 ) {
     return popup_menu(
-        obj, GTK_TREE_VIEW(treeview), NULL,
-        gtk_tree_view_get_model(GTK_TREE_VIEW(treeview))
+        obj, GTK_TREE_VIEW(tree_view), NULL,
+        gtk_tree_view_get_model(GTK_TREE_VIEW(tree_view))
     );
 }
 
-static gboolean on_treeview_button_press_event(
-    BeditFileBrowserView *treeview, GdkEventButton *event,
+static gboolean on_tree_view_button_press_event(
+    BeditFileBrowserView *tree_view, GdkEventButton *event,
     BeditFileBrowserWidget *obj
 ) {
     if (
@@ -1265,16 +1265,16 @@ static gboolean on_treeview_button_press_event(
         event->button == GDK_BUTTON_SECONDARY
     ) {
         return popup_menu(
-            obj, GTK_TREE_VIEW(treeview), event,
-            gtk_tree_view_get_model(GTK_TREE_VIEW(treeview))
+            obj, GTK_TREE_VIEW(tree_view), event,
+            gtk_tree_view_get_model(GTK_TREE_VIEW(tree_view))
         );
     }
 
     return FALSE;
 }
 
-static gboolean on_treeview_key_press_event(
-    BeditFileBrowserView *treeview, GdkEventKey *event,
+static gboolean on_tree_view_key_press_event(
+    BeditFileBrowserView *tree_view, GdkEventKey *event,
     BeditFileBrowserWidget *obj
 ) {
     GtkTreeModel *model;
@@ -1296,7 +1296,7 @@ static gboolean on_treeview_key_press_event(
         }
     }
 
-    model = gtk_tree_view_get_model(GTK_TREE_VIEW(treeview));
+    model = gtk_tree_view_get_model(GTK_TREE_VIEW(tree_view));
     if (!BEDIT_IS_FILE_BROWSER_STORE(model)) {
         return FALSE;
     }
@@ -1325,7 +1325,7 @@ static void on_selection_changed(
     GtkTreeSelection *selection, BeditFileBrowserWidget *obj
 ) {
     GtkTreeModel *model = gtk_tree_view_get_model(
-        GTK_TREE_VIEW(obj->priv->treeview)
+        GTK_TREE_VIEW(obj->priv->tree_view)
     );
     GAction *action;
     guint selected = 0;
@@ -1419,7 +1419,7 @@ static void up_activated(
     BeditFileBrowserStore *store;
 
     widget = BEDIT_FILE_BROWSER_WIDGET(user_data);
-    view = GTK_TREE_VIEW(widget->priv->treeview);
+    view = GTK_TREE_VIEW(widget->priv->tree_view);
     store = BEDIT_FILE_BROWSER_STORE(gtk_tree_view_get_model(view));
 
     old_vroot = bedit_file_browser_store_get_virtual_root(store);
@@ -1467,7 +1467,7 @@ static void home_activated(
 ) {
     BeditFileBrowserWidget *widget = BEDIT_FILE_BROWSER_WIDGET(user_data);
     GtkTreeModel *model = gtk_tree_view_get_model(
-        GTK_TREE_VIEW(widget->priv->treeview)
+        GTK_TREE_VIEW(widget->priv->tree_view)
     );
     GFile *home_location;
 
@@ -1486,7 +1486,7 @@ static void new_folder_activated(
 ) {
     BeditFileBrowserWidget *widget = BEDIT_FILE_BROWSER_WIDGET(user_data);
     GtkTreeModel *model = gtk_tree_view_get_model(
-        GTK_TREE_VIEW(widget->priv->treeview)
+        GTK_TREE_VIEW(widget->priv->tree_view)
     );
     GtkTreeIter parent;
     GtkTreeIter iter;
@@ -1502,7 +1502,7 @@ static void new_folder_activated(
     if (bedit_file_browser_store_new_directory(
         BEDIT_FILE_BROWSER_STORE(model), &parent, &iter
     )) {
-        bedit_file_browser_view_start_rename(widget->priv->treeview, &iter);
+        bedit_file_browser_view_start_rename(widget->priv->tree_view, &iter);
     }
 }
 
@@ -1511,10 +1511,10 @@ static void open_activated(
 ) {
     BeditFileBrowserWidget *widget = BEDIT_FILE_BROWSER_WIDGET(user_data);
     GtkTreeModel *model = gtk_tree_view_get_model(
-        GTK_TREE_VIEW(widget->priv->treeview)
+        GTK_TREE_VIEW(widget->priv->tree_view)
     );
     GtkTreeSelection *selection = gtk_tree_view_get_selection(
-        GTK_TREE_VIEW(widget->priv->treeview)
+        GTK_TREE_VIEW(widget->priv->tree_view)
     );
     GList *rows;
     GList *row;
@@ -1543,7 +1543,7 @@ static void new_file_activated(
 ) {
     BeditFileBrowserWidget *widget = BEDIT_FILE_BROWSER_WIDGET(user_data);
     GtkTreeModel *model = gtk_tree_view_get_model(
-        GTK_TREE_VIEW(widget->priv->treeview)
+        GTK_TREE_VIEW(widget->priv->tree_view)
     );
     GtkTreeIter parent;
     GtkTreeIter iter;
@@ -1559,7 +1559,7 @@ static void new_file_activated(
     if (bedit_file_browser_store_new_file(
         BEDIT_FILE_BROWSER_STORE(model), &parent, &iter
     )) {
-        bedit_file_browser_view_start_rename(widget->priv->treeview, &iter);
+        bedit_file_browser_view_start_rename(widget->priv->tree_view, &iter);
     }
 }
 
@@ -1600,10 +1600,10 @@ static void view_folder_activated(
 ) {
     BeditFileBrowserWidget *widget = BEDIT_FILE_BROWSER_WIDGET(user_data);
     GtkTreeModel *model = gtk_tree_view_get_model(
-        GTK_TREE_VIEW(widget->priv->treeview)
+        GTK_TREE_VIEW(widget->priv->tree_view)
     );
     GtkTreeSelection *selection = gtk_tree_view_get_selection(
-        GTK_TREE_VIEW(widget->priv->treeview)
+        GTK_TREE_VIEW(widget->priv->tree_view)
     );
     GtkTreeIter iter;
     GList *rows;
