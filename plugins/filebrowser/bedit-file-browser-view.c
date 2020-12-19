@@ -1024,6 +1024,7 @@ static void bedit_file_browser_view_init(BeditFileBrowserView *obj) {
 
     gtk_tree_view_append_column(GTK_TREE_VIEW(obj), obj->priv->column);
     gtk_tree_view_set_headers_visible(GTK_TREE_VIEW(obj), FALSE);
+    gtk_tree_view_set_enable_search(GTK_TREE_VIEW(obj), FALSE);
 
     gtk_tree_view_enable_model_drag_source(
         GTK_TREE_VIEW(obj), GDK_BUTTON1_MASK, drag_source_targets,
@@ -1058,7 +1059,6 @@ void bedit_file_browser_view_set_model(
     BeditFileBrowserView *tree_view, GtkTreeModel *model
 ) {
     GtkTreeSelection *selection;
-    gint search_column;
 
     if (tree_view->priv->model == model) {
         return;
@@ -1066,30 +1066,17 @@ void bedit_file_browser_view_set_model(
 
     selection = gtk_tree_view_get_selection(GTK_TREE_VIEW(tree_view));
 
-    if (BEDIT_IS_FILE_BROWSER_BOOKMARKS_STORE(model)) {
-        gtk_tree_selection_set_mode(selection, GTK_SELECTION_BROWSE);
-        gtk_tree_view_set_row_separator_func(
-            GTK_TREE_VIEW(tree_view), bookmarks_separator_func, NULL, NULL
-        );
-        gtk_tree_view_column_set_cell_data_func(
-            tree_view->priv->column, tree_view->priv->text_renderer,
-            (GtkTreeCellDataFunc)cell_data_cb, tree_view, NULL
-        );
-        search_column = BEDIT_FILE_BROWSER_BOOKMARKS_STORE_COLUMN_NAME;
-    } else {
-        gtk_tree_selection_set_mode(selection, GTK_SELECTION_MULTIPLE);
-        gtk_tree_view_set_row_separator_func(
-            GTK_TREE_VIEW(tree_view), NULL, NULL, NULL
-        );
-        gtk_tree_view_column_set_cell_data_func(
-            tree_view->priv->column, tree_view->priv->text_renderer,
-            (GtkTreeCellDataFunc)cell_data_cb, tree_view, NULL
-        );
-        search_column = BEDIT_FILE_BROWSER_STORE_COLUMN_NAME;
+    gtk_tree_selection_set_mode(selection, GTK_SELECTION_MULTIPLE);
+    gtk_tree_view_set_row_separator_func(
+        GTK_TREE_VIEW(tree_view), NULL, NULL, NULL
+    );
+    gtk_tree_view_column_set_cell_data_func(
+        tree_view->priv->column, tree_view->priv->text_renderer,
+        (GtkTreeCellDataFunc)cell_data_cb, tree_view, NULL
+    );
 
-        if (tree_view->priv->restore_expand_state) {
-            install_restore_signals(tree_view, model);
-        }
+    if (tree_view->priv->restore_expand_state) {
+        install_restore_signals(tree_view, model);
     }
 
     if (tree_view->priv->hover_path != NULL) {
@@ -1106,7 +1093,6 @@ void bedit_file_browser_view_set_model(
 
     tree_view->priv->model = model;
     gtk_tree_view_set_model(GTK_TREE_VIEW(tree_view), model);
-    gtk_tree_view_set_search_column(GTK_TREE_VIEW(tree_view), search_column);
 }
 
 void bedit_file_browser_view_start_rename(
