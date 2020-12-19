@@ -1355,12 +1355,14 @@ static gboolean on_view_stack_key_press_event(
 
     g_return_val_if_fail(view_stack == obj->priv->view_stack, FALSE);
 
-    if (!gtk_entry_im_context_filter_keypress(obj->priv->search_entry, event)) {
-        return FALSE;
-    }
-
     name = gtk_stack_get_visible_child_name(obj->priv->view_stack);
     if (g_strcmp0(name, "search")) {
+        if (!gtk_entry_im_context_filter_keypress(
+            obj->priv->search_entry, event)
+        ) {
+            return FALSE;
+        }
+
         gtk_stack_set_visible_child_full(
             obj->priv->toolbar_stack, "search",
             GTK_STACK_TRANSITION_TYPE_OVER_RIGHT
@@ -1370,9 +1372,15 @@ static gboolean on_view_stack_key_press_event(
             obj->priv->view_stack, "search",
             GTK_STACK_TRANSITION_TYPE_NONE
         );
-    }
 
-    return TRUE;
+        return TRUE;
+    } else {
+        gtk_widget_realize(GTK_WIDGET(obj->priv->search_entry));
+        gtk_widget_event(
+            GTK_WIDGET(obj->priv->search_entry), (GdkEvent *) event
+        );
+        return TRUE;
+    }
 }
 
 static void on_selection_changed(
