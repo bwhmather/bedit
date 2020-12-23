@@ -6,18 +6,6 @@
 #include <gtk/gtk.h>
 
 
-typedef struct _Search Search;
-
-struct _Search {
-    gchar *pattern;
-    GSequence *matches;
-
-    GHashTable *dir_cache;
-
-    guint pending_dirs;
-    GCancellable *cancellable;
-};
-
 struct _BeditFileBrowserSearchView {
     GtkBin parent_instance;
 
@@ -292,6 +280,66 @@ gboolean bedit_file_browser_search_view_get_enabled(
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+typedef struct _Search Search;
+
+struct _Search {
+    GFile *root;
+    gchar *pattern;
+
+    GSequence *matches;
+
+    GCancellable *cancellable;
+
+    // A map from directories to their maximum path depth relative to the root.
+    // The root starts at depth zero.  If, as a result of following `..` path
+    // segments, a directory is reached more than once, lower depths will be
+    // replaced.
+    GHashTable *dir_depth;
+
+    // A map from directories to lists of `GFileInfo` objects representing their
+    // children.  `dir_scratch` is used as a temporary store for directories
+    // that are currently being reloaded.  Once loading has finished they will
+    // be moved to `dir_cache`.  Keys and values are both owned, but values will
+    // not be unref'ed when removed.
+    GHashTable *dir_scratch;
+
+    // A map from directories to lists of `GFileInfo` objects representing their
+    // children.  `dir_cache` is reused between searches.  Keys and values are
+    // both owned.
+    GHashTable *dir_cache;
+
+    // A map from `GFile`s to `GFileInfo` objects.  Both the files and the file
+    // info objects are owned.  Will be populated for every traversed directory
+    // and every file in `matches`.   Not shared between searches.
+    GHashTable *fileinfo_cache;
+
+    BeditFileBrowserSearchView *view;
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
 void bedit_file_browser_search(
     GFile *root, gchar const *query,
     GHashMap *dir_cache,
@@ -300,8 +348,20 @@ void bedit_file_browser_search(
     gpointer argument,
 ) {
 
+}
+
+
+BeditFileBrowserSearchResult *bedit_file_browser_result_finish(
+
+
+) {
+
+
 
 }
+
+
+
 
 
 bedit_file_browser_search_unref(BeditFileBrowserSearch)
@@ -309,83 +369,131 @@ bedit_file_browser_search_unref(BeditFileBrowserSearch)
 
 
 
+static void process_dir_real(Search *search, GFile *root) {
+    guint depth;
+    GList *children;
+
+    g_return_if_fail(g_hash_table_contains(search->dir_depth, root));
+    g_return_if_fail(g_hash_table_contains(search->dir_cache, root));
+
+    depth = GPOINTER_TO_INT(g_hash_table_get(search->dir_depth, root));
+    children = g_hash_table_get(search->dir_cache, root);
+
+
+    for (GList *cursor = children; cursor != NULL; cursor = cursor->next) {
+        GFileInfo *child_info = cursor->value;
+
+        if depth == len(pattern):
+            if match(pattern, depth, child_info->name):
+                matches.add(file(child_info));
+
+        else:
+            if is_dir(child_info) and match(pattern, depth, child_info->name):
+                bedit_file_browser_search_process_dir();
+    }
+}
+
+
+static void bedit_file_browser_search_try_finish(Search *search) {
+    if (g_hash_table_size(search->dir_scratch)) {
+        // There are still directories that need to be processed.
+        return;
+    }
+
+    if (!g_cancellable_is_cancelled(search->cancellable)) {
+        BeditFileBrowserSearchView *view = search->view;
+        GtkListStore *list_store = view->list_store;
+
+
+        // Sort matches.
+
+        // Copy matches to list model.
+        gtk_list_store_clear(list_store);
+        for file in matches:
+            parent = file->parent
+            name = file->name
+
+            fileinfo = search->dir_cache[parent][name]
+
+
+        // Set list view to active.
+    }
+
+    // Free search object
+}
 
 
 
-static void bedit_file_browser_dir_next_load_cb(
+
+static void bedit_file_browser_search_reload_dir_next_cb(
     GFileEnumerator *enumerator, GAsyncResult *result,
     Search *search
 ) {
-    BeditFileBrowserDir *dir;
     GError *error = NULL;
-    GList *files;
+    GFile *root;
+    GList *new_files;
+    GList *existing_files;
 
     g_return_if_fail(G_IS_FILE_ENUMERATOR(enumerator));
 
-    files = g_file_enumerator_next_files_finish(
+    root = g_file_enumerator_get_container(enumerator);
+    new_files = g_file_enumerator_next_files_finish(
         enumerator, result, &error
     );
-
-    if (g_cancellable_is_cancelled(search->cancellable)) {
-        g_object_unref(enumerator);
-        g_list_free(files);
-        if (error != NULL) g_error_free(error);
-        search_unref(search);
-
-        return;
-    }
-    // Note that search does not hold a strong reference to the directory, so
-    // it is not safe to dereference this pointer until after the cancellable
-    // has been checked.
-    dir = context->dir;
-    g_return_if_fail(BEDIT_IS_FILE_BROWSER_DIR(dir));
+    existing_files = g_hash_table_get(root);
 
     if (error != NULL) {
         // TODO
         // bedit_file_browser_dir_set_error(dir, error);
         // bedit_file_browser_dir_unload(dir);
 
+        g_list_free(new_files);
+        g_list_free(existing_files);
+
+        g_hash_map_remove(search->dir_scratch, root);
+
         g_error_free(error);
         g_object_unref(enumerator);
 
-        check_finished(search);
+        bedit_file_browser_search_try_finish(search);
 
         return;
     }
 
-    if (files == NULL) {
-        // We've reached the end of the enumerator and can close everything up.
-        // TODO mark as finished.
-        g_object_unref(enumerator);
-        check_finished(search);
+    if (files != NULL) {
+        // We haven't finished iterating.  Store the new children at the
+        // beginning of the scratch list (only O(n), not O(n^2) to build the
+        // full list) and fetch the next batch.
+        g_hash_table_insert(
+            search->dir_scratch,
+            root,
+            g_list_concat(new_files, existing_files)
+        );
+
+        g_file_enumerator_next_files_async(
+            enumerator, DIRECTORY_LOAD_ITEMS_PER_CALLBACK, G_PRIORITY_DEFAULT,
+            search->cancellable,
+            (GAsyncReadyCallback)bedit_file_browser_search_reload_dir_next_cb,
+            search
+        );
 
         return;
     }
 
-    for (GList *cursor = files; cursor != NULL; cursor = cursor->next) {
-        GFile *file;
-        GFileInfo *info;
-        gchar const *name;
-
-        info = cursor->data;
-        name = g_file_info_get_name(info);
-        file = g_file_get_child(dir->file, name);
-
-        bedit_file_browser_dir_add_child(dir, file);
-    }
-
-    g_list_free(files);
-
-    g_file_enumerator_next_files_async(
-        enumerator, DIRECTORY_LOAD_ITEMS_PER_CALLBACK, G_PRIORITY_DEFAULT,
-        context->cancellable,
-        (GAsyncReadyCallback)bedit_file_browser_dir_next_load_cb,
-        context
+    g_hash_map_replace(
+        search->dir_cache, g_object_ref(root), existing_files
     );
+    g_hash_map_remove(search->dir_scratch, root);
+
+    process_dir_real(root);
+
+    g_object_unref(enumerator);
+
+    bedit_file_browser_search_try_finish(search);
 }
 
-static void bedit_file_browser_dir_begin_load_cb(
-    GFile *file, GAsyncResult *result, Search *context
+static void bedit_file_browser_search_reload_dir_begin_cb(
+    GFile *file, GAsyncResult *result, Search *search
 ) {
     BeditFileBrowserDir *dir;
     GError *error = NULL;
@@ -398,14 +506,11 @@ static void bedit_file_browser_dir_begin_load_cb(
     if (g_cancellable_is_cancelled(context->cancellable)) {
         if (enumerator != NULL) g_object_unref(enumerator);
         if (error) g_error_free(error);
+        g_hash_map_remove(search->dir_scratch, file);
+        bedit_file_browser_search_try_finish(search);
 
         return;
     }
-    // Note that context does not hold a strong reference to the directory, so
-    // it is not safe to dereference this pointer until after the cancellable
-    // has been checked.
-    dir = context->dir;
-    g_return_if_fail(BEDIT_IS_FILE_BROWSER_DIR(dir));
 
     if (error != NULL) {
         // TODO
@@ -414,6 +519,8 @@ static void bedit_file_browser_dir_begin_load_cb(
 
         g_error_free(error);
         async_context_unref(context);
+        g_hash_map_remove(search->dir_scratch, file);
+        bedit_file_browser_search_try_finish(search);
 
         return;
     }
@@ -422,42 +529,37 @@ static void bedit_file_browser_dir_begin_load_cb(
 
     g_file_enumerator_next_files_async(
         enumerator, DIRECTORY_LOAD_ITEMS_PER_CALLBACK, G_PRIORITY_DEFAULT,
-        context->cancellable,
-        (GAsyncReadyCallback)bedit_file_browser_dir_next_load_cb,
-        context
+        search->cancellable,
+        (GAsyncReadyCallback)bedit_file_browser_search_reload_dir_next_cb,
+        search
     );
 }
 
-void bedit_file_browser_dir_refresh(BeditFileBrowserDir *dir) {
-    g_return_if_fail(BEDIT_IS_FILE_BROWSER_DIR(dir));
 
-    if (dir->context != NULL) {
-        g_cancellable_cancel(dir->context->cancellable);
-        async_context_unref(dir->context);
+void bedit_file_browser_search_reload_dir(Search *search, GFile *file) {
+    if (g_hash_table_contains(search->dir_scratch, file)) {
+        // This can happen if there is a `..` segment in the path and the
+        // directory is matched more than once.
+        return;
     }
-    dir->context = async_context_new(dir);
 
-    // Set loading to true.
-
-    // Free the children.
-    while (TRUE) {
-        GHashTableIter child_iter;
-        GFile *child;
-
-        g_hash_table_iter_init(&child_iter, dir->children);
-        if (!g_hash_table_iter_next(&child_iter, (gpointer) &child, NULL)) {
-            break;
-        }
-
-        bedit_file_browser_dir_remove_child(dir, child);
-    }
+    g_hash_table_set(search->dir_scratch, g_object_ref(file), NULL);
 
     g_file_enumerate_children_async(
-        dir->file, STANDARD_ATTRIBUTE_TYPES, G_FILE_QUERY_INFO_NONE,
-        G_PRIORITY_DEFAULT, dir->context->cancellable,
-        (GAsyncReadyCallback)bedit_file_browser_dir_begin_load_cb,
-        async_context_ref(dir->context)
+        file, STANDARD_ATTRIBUTE_TYPES, G_FILE_QUERY_INFO_NONE,
+        G_PRIORITY_DEFAULT, search->cancellable,
+        (GAsyncReadyCallback)dir_begin_reload_cb,
+        search
     );
+}
+
+
+void bedit_file_browser_search_process_dir(Search *search, GFile *file) {
+    if (g_hash_table_contains(search->dir_cache, file) {
+        queue(process_dir_real)
+    } else {
+        bedit_file_browser_search_reload_dir(search, file);
+    }
 }
 
 
@@ -465,15 +567,11 @@ void bedit_file_browser_dir_refresh(BeditFileBrowserDir *dir) {
 
 
 
+static void on_search_completed_cb() {
 
 
 
-
-
-
-
-
-
+}
 
 
 
@@ -502,12 +600,14 @@ static void bedit_file_browser_search_view_refresh(
         return;
     }
 
+    // Cancel previous search.
     if (view->cancellable != NULL) {
         g_cancellable_cancel(view->cancellable);
         g_clear_object(&view->cancellable);
     }
     view->cancellable = g_cancellable_new();
 
+    // Create the cache, if it doesn't already exist.
     if (view->dir_cache == NULL) {
         view->dir_cache = g_hash_table_new_full(
             g_file_hash, (GEqualFunc) g_file_equal,
@@ -520,7 +620,7 @@ static void bedit_file_browser_search_view_refresh(
         dir_cache,
         cancellable,
         on_search_completed_cb,
-        g_weak_ref(view)
+        view
     );
 
     queue_process_dir(search, virtual_root);
