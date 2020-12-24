@@ -5,6 +5,18 @@
 #include <gmodule.h>
 #include <gtk/gtk.h>
 
+#include "bedit/bedit-debug.h"
+
+
+#define DIRECTORY_LOAD_ITEMS_PER_CALLBACK 128
+#define STANDARD_ATTRIBUTE_TYPES                                            \
+    G_FILE_ATTRIBUTE_STANDARD_TYPE ","                                      \
+    G_FILE_ATTRIBUTE_STANDARD_IS_HIDDEN ","                                 \
+    G_FILE_ATTRIBUTE_STANDARD_IS_BACKUP ","                                 \
+    G_FILE_ATTRIBUTE_STANDARD_NAME ","                                      \
+    G_FILE_ATTRIBUTE_STANDARD_DISPLAY_NAME ","                              \
+    G_FILE_ATTRIBUTE_STANDARD_CONTENT_TYPE ","                              \
+    G_FILE_ATTRIBUTE_STANDARD_SYMBOLIC_ICON
 
 struct _BeditFileBrowserSearchView {
     GtkBin parent_instance;
@@ -40,6 +52,10 @@ typedef enum {
     COLUMN_LOCATION,
     N_COLUMNS,
 } BeditFileBrowserSearchStoreColumn;
+
+static void bedit_file_browser_search_view_refresh(
+    BeditFileBrowserSearchView *view
+);
 
 static void bedit_file_browser_search_view_get_property(
     GObject *object, guint prop_id, GValue *value, GParamSpec *pspec
@@ -205,37 +221,38 @@ BeditFileBrowserSearchView *bedit_file_browser_search_view_new(void) {
 }
 
 void bedit_file_browser_search_view_set_virtual_root(
-    BeditFileBrowserSearchView *widget, GFile *virtual_root
+    BeditFileBrowserSearchView *view, GFile *virtual_root
 ) {
     gboolean updated = FALSE;
 
-    g_return_if_fail(BEDIT_IS_FILE_BROWSER_SEARCH_VIEW(widget));
+    g_return_if_fail(BEDIT_IS_FILE_BROWSER_SEARCH_VIEW(view));
     g_return_if_fail(G_IS_FILE(virtual_root));
 
-    if (widget->virtual_root != NULL) {
-        updated = !g_file_equal(virtual_root, widget->virtual_root);
-        g_object_unref(widget->virtual_root);
+    if (view->virtual_root != NULL) {
+        updated = !g_file_equal(virtual_root, view->virtual_root);
+        g_object_unref(view->virtual_root);
     } else {
         updated = virtual_root != NULL;
     }
 
-    widget->virtual_root = virtual_root;
+    view->virtual_root = virtual_root;
 
     if (updated) {
-        g_object_notify(G_OBJECT(widget), "virtual-root");
+        g_object_notify(G_OBJECT(view), "virtual-root");
+        bedit_file_browser_search_view_refresh(view);
     }
 }
 
 GFile *bedit_file_browser_search_view_get_virtual_root(
-    BeditFileBrowserSearchView *widget
+    BeditFileBrowserSearchView *view
 ) {
-    g_return_val_if_fail(BEDIT_IS_FILE_BROWSER_SEARCH_VIEW(widget), NULL);
+    g_return_val_if_fail(BEDIT_IS_FILE_BROWSER_SEARCH_VIEW(view), NULL);
 
-    if (widget->virtual_root != NULL) {
-        g_object_ref(widget->virtual_root);
+    if (view->virtual_root != NULL) {
+        g_object_ref(view->virtual_root);
     }
 
-    return widget->virtual_root;
+    return view->virtual_root;
 }
 
 void bedit_file_browser_search_view_set_query(
@@ -243,9 +260,13 @@ void bedit_file_browser_search_view_set_query(
 ) {
     g_return_if_fail(BEDIT_IS_FILE_BROWSER_SEARCH_VIEW(view));
 
-    if (!g_strcmp0(query, view->query)) {
+    bedit_debug_message(DEBUG_PLUGINS, "query: %s", query);
+
+    if (g_strcmp0(query, view->query)) {
+        bedit_debug(DEBUG_PLUGINS);
         view->query = g_strdup(query);
         g_object_notify(G_OBJECT(view), "query");
+        bedit_file_browser_search_view_refresh(view);
     }
 }
 
@@ -265,6 +286,12 @@ void bedit_file_browser_search_view_set_enabled(
     if (view->enabled != enabled) {
         view->enabled = enabled;
         g_object_notify(G_OBJECT(view), "enabled");
+        if (enabled) {
+            bedit_file_browser_search_view_refresh(view);
+        } else if (view->cancellable != NULL) {
+            g_cancellable_cancel(view->cancellable);
+            g_clear_object(&view->cancellable);
+        }
     }
 }
 
@@ -290,9 +317,11 @@ gboolean bedit_file_browser_search_view_get_enabled(
 typedef struct _Search Search;
 
 struct _Search {
-    gchar *pattern;
+    gchar *query;
 
     GtkListStore *matches;
+
+    gchar *query_segment;
 
     // A stack of GFile objects describing the directories.
     GSList *file_stack;
@@ -316,6 +345,7 @@ static void bedit_file_browser_search_free(Search *search);
 static gboolean bedit_file_browser_search_match_segment(
     gchar const *segment, gchar const *name
 );
+static gboolean bedit_file_browser_search_is_last_segment(gchar const *segment);
 static void bedit_file_browser_search_push(
     Search *search, GFile *file, GList *children
 );
@@ -338,14 +368,26 @@ static gboolean bedit_file_browser_search_match_segment(
     return TRUE;
 }
 
+static gboolean bedit_file_browser_search_is_last_segment(
+    gchar const *segment
+) {
+    while (*segment != '/' && *segment != '\0') {
+        segment++;
+    }
+    return *segment == '\0';
+}
+
 static void bedit_file_browser_search_free(Search *search) {
-    g_free(search->pattern);
+    bedit_debug(DEBUG_PLUGINS);
+
+    g_free(search->query);
     g_clear_object(&search->matches);
 
     g_slist_free_full(search->file_stack, g_object_unref);
     g_slist_free(search->cursor_stack);
 
-    g_clear_object(&search->dir_cache);
+    g_hash_table_unref(search->dir_cache);
+    search->dir_cache = NULL;
 
     g_clear_object(&search->cancellable);
 
@@ -357,33 +399,58 @@ static void bedit_file_browser_search_free(Search *search) {
 static void bedit_file_browser_search_push(
     Search *search, GFile *file, GList *children
 ) {
+    bedit_debug(DEBUG_PLUGINS);
+
+    g_return_if_fail(
+        !bedit_file_browser_search_is_last_segment(search->query_segment)
+    );
+
     search->file_stack = g_slist_prepend(search->file_stack, g_object_ref(file));
-    search->cursor_stack = g_slist_prepend(search->file_stack, children);
+    search->cursor_stack = g_slist_prepend(search->cursor_stack, children);
+
+    while (*search->query_segment != '/') {
+        search->query_segment++;
+    }
 }
 
 static void bedit_file_browser_search_pop(Search *search) {
     GSList *file_stack_head;
     GSList *cursor_stack_head;
 
+    bedit_debug(DEBUG_PLUGINS);
+
     file_stack_head = search->file_stack;
     g_return_if_fail(file_stack_head != NULL);
     search->file_stack = file_stack_head->next;
     g_clear_object(&file_stack_head->data);
+    file_stack_head->next = NULL;
     g_slist_free_1(file_stack_head);
 
     cursor_stack_head = search->cursor_stack;
     g_return_if_fail(cursor_stack_head != NULL);
-    search->cursor_stack =cursor_stack_head->next;
+    search->cursor_stack = cursor_stack_head->next;
+    cursor_stack_head->data = NULL;
+    cursor_stack_head->next = NULL;
     g_slist_free_1(cursor_stack_head);
+
+    while (search->query_segment > search->query && *search->query_segment != '/') {
+        search->query_segment--;
+    }
 }
 
 static void bedit_file_browser_search_iterate(Search *search) {
+    bedit_debug(DEBUG_PLUGINS);
+
     if (g_cancellable_is_cancelled(search->cancellable)) {
         bedit_file_browser_search_free(search);
+        return;
     }
 
     while (search->cursor_stack != NULL) {
         GFileInfo *fileinfo;
+        GList *cursor;
+
+        bedit_debug_message(DEBUG_PLUGINS, "iter");
 
         if (search->cursor_stack->data == NULL) {
             bedit_file_browser_search_pop(search);
@@ -392,16 +459,20 @@ static void bedit_file_browser_search_iterate(Search *search) {
 
         // Advance the cursor.  The list is owned by the directory cache, so no
         // need to free anything.
-        fileinfo = G_FILE_INFO(((GList *) search->cursor_stack->data)->data);
-        search->cursor_stack->data = ((GList *) search->cursor_stack->data)->next;
+        cursor = (GList *) search->cursor_stack->data;
+        search->cursor_stack->data = cursor->next;
 
-        if (search->depth == search->nsegments) {
+        fileinfo = G_FILE_INFO(cursor->data);
+        g_return_if_fail(G_IS_FILE_INFO(fileinfo));
+
+        if (bedit_file_browser_search_is_last_segment(search->query_segment)) {
             gchar const *name;
 
             name = g_file_info_get_name(fileinfo);
+            bedit_debug_message(DEBUG_PLUGINS, "last: %s", name);
 
             if (bedit_file_browser_search_match_segment(
-                search->pattern_segment, name
+                search->query_segment, name
             )) {
                 GFile *file;
 
@@ -426,8 +497,10 @@ static void bedit_file_browser_search_iterate(Search *search) {
 
             name = g_file_info_get_name(fileinfo);
 
+            bedit_debug_message(DEBUG_PLUGINS, "rest: %s", name);
+
             if (bedit_file_browser_search_match_segment(
-                search->pattern_segment, name
+                search->query_segment, name
             )) {
                 GFile *file = g_file_get_child(search->file_stack->data, name);
 
@@ -448,7 +521,12 @@ static void bedit_file_browser_search_iterate(Search *search) {
         }
     }
 
-    gtk_tree_view_set_model(view->tree_view, GTK_TREE_MODEL(search->matches));
+    gtk_tree_view_set_model(
+        search->view->tree_view, GTK_TREE_MODEL(search->matches)
+    );
+
+    bedit_debug_message(DEBUG_PLUGINS, "DONE!");
+
     bedit_file_browser_search_free(search);
 }
 
@@ -462,33 +540,38 @@ static void bedit_file_browser_search_reload_top_next_cb(
     GList *new_files;
     GList *existing_files;
 
+    bedit_debug(DEBUG_PLUGINS);
+
     g_return_if_fail(G_IS_FILE_ENUMERATOR(enumerator));
 
     root = g_file_enumerator_get_container(enumerator);
+    g_return_if_fail(g_file_equal(root, search->file_stack->data));
+
     new_files = g_file_enumerator_next_files_finish(
         enumerator, result, &error
     );
-    existing_files = g_hash_table_get(root);
+    existing_files = search->cursor_stack->data;
 
     if (error != NULL) {
+        bedit_debug_message(DEBUG_PLUGINS, "ERROR");
         // TODO log error
         g_error_free(error);
         g_object_unref(enumerator);
 
-        g_list_free(new_files);
-        g_list_free(existing_files);
+        g_list_free_full(new_files, g_object_unref);
+        g_list_free_full(existing_files, g_object_unref);
 
-        bedit_file_browser_search_pop();
+        bedit_file_browser_search_pop(search);
         bedit_file_browser_search_iterate(search);
 
         return;
     }
 
-    if (files != NULL) {
+    if (new_files != NULL) {
         // We haven't finished iterating.  Store the new children at the
         // beginning of the scratch list (only O(n), not O(n^2) to build the
         // full list) and fetch the next batch.
-        search->cursor_stack = g_list_concat(new_files, existing_files);
+        search->cursor_stack->data = g_list_concat(new_files, existing_files);
 
         g_file_enumerator_next_files_async(
             enumerator, DIRECTORY_LOAD_ITEMS_PER_CALLBACK, G_PRIORITY_DEFAULT,
@@ -502,7 +585,7 @@ static void bedit_file_browser_search_reload_top_next_cb(
 
     // TODO sort.
 
-    g_hash_map_replace(
+    g_hash_table_replace(
         search->dir_cache, g_object_ref(root), existing_files
     );
 
@@ -514,9 +597,10 @@ static void bedit_file_browser_search_reload_top_next_cb(
 static void bedit_file_browser_search_reload_top_begin_cb(
     GFile *file, GAsyncResult *result, Search *search
 ) {
-    BeditFileBrowserDir *dir;
     GError *error = NULL;
     GFileEnumerator *enumerator;
+
+    bedit_debug(DEBUG_PLUGINS);
 
     g_return_if_fail(G_IS_FILE(file));
 
@@ -543,6 +627,8 @@ static void bedit_file_browser_search_reload_top_begin_cb(
 }
 
 void bedit_file_browser_search_reload_top(Search *search) {
+    bedit_debug(DEBUG_PLUGINS);
+
     g_return_if_fail(search->file_stack != NULL);
     g_return_if_fail(search->cursor_stack != NULL);
 
@@ -557,14 +643,34 @@ void bedit_file_browser_search_reload_top(Search *search) {
     );
 }
 
+
+static void bedit_file_browser_search_view_free_fileinfo_list(GList *files) {
+    g_list_free_full(files, g_object_unref);
+}
+
 static void bedit_file_browser_search_view_refresh(
     BeditFileBrowserSearchView *view
 ) {
+    Search *search;
+
     g_return_if_fail(BEDIT_IS_FILE_BROWSER_SEARCH_VIEW(view));
 
     if (!bedit_file_browser_search_view_get_enabled(view)) {
+        bedit_debug_message(DEBUG_PLUGINS, "refresh skipped");
         return;
     }
+
+    if (bedit_file_browser_search_view_get_query(view) == NULL) {
+        bedit_debug_message(DEBUG_PLUGINS, "refresh skipped");
+        return;
+    }
+
+    if (bedit_file_browser_search_view_get_virtual_root(view) == NULL) {
+        bedit_debug_message(DEBUG_PLUGINS, "refresh skipped");
+        return;
+    }
+
+    bedit_debug_message(DEBUG_PLUGINS, "refresh");
 
     // Cancel previous search.
     if (view->cancellable != NULL) {
@@ -577,14 +683,15 @@ static void bedit_file_browser_search_view_refresh(
     if (view->dir_cache == NULL) {
         view->dir_cache = g_hash_table_new_full(
             g_file_hash, (GEqualFunc) g_file_equal,
-            g_object_unref, g_object_unref
+            g_object_unref, (GDestroyNotify) bedit_file_browser_search_view_free_fileinfo_list
         );
     }
 
     search = g_new(Search, 1);
     g_return_if_fail(search != NULL);
 
-    search->pattern = g_strdup(query);
+    search->query = g_strdup(view->query);
+    search->query_segment = search->query;
 
     // TODO this is also created on startup.
     search->matches = gtk_list_store_new(
@@ -598,13 +705,28 @@ static void bedit_file_browser_search_view_refresh(
     search->file_stack = NULL;
     search->cursor_stack = NULL;
 
-    search->dir_cache = view->dir_cache;
+    search->dir_cache = g_hash_table_ref(view->dir_cache);
 
-    search->cancellable = view->cancellable;
+    search->cancellable = g_object_ref(view->cancellable);
     search->view = view;
 
-    bedit_file_browser_search_push(search, root);
-    bedit_file_browser_search_iterate(search);
+    // We should use push, but we don't want to advance the query segment,
+    search->file_stack = g_slist_prepend(
+        search->file_stack,
+        g_object_ref(view->virtual_root)
+    );
+    search->cursor_stack = g_slist_prepend(
+        search->cursor_stack,
+        g_hash_table_lookup(search->dir_cache, view->virtual_root)
+    );
+
+    if (!g_hash_table_contains(search->dir_cache, view->virtual_root))  {
+        bedit_file_browser_search_reload_top(search);
+    } else {
+        g_return_if_fail(g_hash_table_lookup(search->dir_cache, view->virtual_root) != NULL);
+        g_return_if_fail(search->cursor_stack->data != NULL);
+        bedit_file_browser_search_iterate(search);
+    }
 }
 
 void _bedit_file_browser_search_view_register_type(GTypeModule *type_module) {
