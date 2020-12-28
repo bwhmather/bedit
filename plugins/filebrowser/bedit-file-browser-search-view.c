@@ -530,6 +530,20 @@ static void bedit_file_browser_search_iterate(Search *search) {
     bedit_file_browser_search_free(search);
 }
 
+gint bedit_file_browser_search_compare_fileinfo(
+    gconstpointer a, gconstpointer b
+) {
+    GFileInfo *fileinfo_a;
+    GFileInfo *fileinfo_b;
+
+    fileinfo_a = G_FILE_INFO(a);
+    fileinfo_b = G_FILE_INFO(b);
+
+    return g_utf8_collate(
+        g_file_info_get_name(fileinfo_a),
+        g_file_info_get_name(fileinfo_b)
+    );
+}
 
 static void bedit_file_browser_search_reload_top_next_cb(
     GFileEnumerator *enumerator, GAsyncResult *result,
@@ -583,10 +597,11 @@ static void bedit_file_browser_search_reload_top_next_cb(
         return;
     }
 
-    // TODO sort.
-
+    search->cursor_stack->data = g_list_sort(
+        existing_files, bedit_file_browser_search_compare_fileinfo
+    );
     g_hash_table_replace(
-        search->dir_cache, g_object_ref(root), existing_files
+        search->dir_cache, g_object_ref(root), search->cursor_stack->data
     );
 
     g_object_unref(enumerator);
