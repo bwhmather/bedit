@@ -1315,6 +1315,10 @@ static void on_virtual_root_changed(
         g_message("NO!");
     }
 
+    bedit_file_browser_search_view_set_virtual_root(
+        obj->priv->search_view, bedit_file_browser_store_get_virtual_root(model)
+    );
+
     g_object_notify(G_OBJECT(obj), "virtual-root");
 
 }
