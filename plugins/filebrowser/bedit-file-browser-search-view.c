@@ -360,12 +360,29 @@ static void bedit_file_browser_search_reload_top_begin_cb(
 );
 void bedit_file_browser_search_reload_top(Search *search);
 
-
 static gboolean bedit_file_browser_search_match_segment(
     gchar const *segment, gchar const *name
 ) {
-    // TODO
-    return TRUE;
+    gchar *query_cursor = segment;
+    gchar *name_cursor = name;
+
+    bedit_debug_message(DEBUG_PLUGINS, "segment: %s, name: %s", segment, name);
+
+    while (TRUE) {
+        if (*query_cursor == '\0' || *query_cursor == '/') {
+            return TRUE;
+        }
+
+        if (*name_cursor == '\0') {
+            return FALSE;
+        }
+
+        if (g_utf8_get_char(query_cursor) == g_utf8_get_char(name_cursor)) {
+            query_cursor = g_utf8_find_next_char(query_cursor, NULL);
+        }
+
+        name_cursor = g_utf8_find_next_char(name_cursor, NULL);
+    }
 }
 
 static gboolean bedit_file_browser_search_is_last_segment(
