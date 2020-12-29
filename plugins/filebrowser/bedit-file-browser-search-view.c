@@ -235,7 +235,7 @@ void bedit_file_browser_search_view_set_virtual_root(
         updated = virtual_root != NULL;
     }
 
-    view->virtual_root = virtual_root;
+    view->virtual_root = g_object_ref(virtual_root);
 
     if (updated) {
         g_object_notify(G_OBJECT(view), "virtual-root");
