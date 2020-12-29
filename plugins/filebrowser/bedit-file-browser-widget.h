@@ -75,6 +75,7 @@ struct _BeditFileBrowserWidgetClass {
 
     /* Signals */
     void (*file_activated)(BeditFileBrowserWidget *widget, GFile *file);
+    void (*directory_activated)(BeditFileBrowserWidget *widget, GFile *file);
     void (*error)(
         BeditFileBrowserWidget *widget, guint code, gchar const *message
     );

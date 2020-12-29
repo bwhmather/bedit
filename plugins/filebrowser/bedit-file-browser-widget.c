@@ -72,6 +72,7 @@ enum {
 /* Signals */
 enum {
     FILE_ACTIVATED,
+    DIRECTORY_ACTIVATED,
     ERROR,
     CONFIRM_DELETE,
     CONFIRM_NO_TRASH,
@@ -349,6 +350,14 @@ static void bedit_file_browser_widget_class_init(
         "file-activated", G_OBJECT_CLASS_TYPE(object_class),
         G_SIGNAL_RUN_LAST,
         G_STRUCT_OFFSET(BeditFileBrowserWidgetClass, file_activated),
+        NULL, NULL, NULL,
+        G_TYPE_NONE, 1,
+        G_TYPE_FILE
+    );
+    signals[DIRECTORY_ACTIVATED] = g_signal_new(
+        "directory-activated", G_OBJECT_CLASS_TYPE(object_class),
+        G_SIGNAL_RUN_LAST,
+        G_STRUCT_OFFSET(BeditFileBrowserWidgetClass, directory_activated),
         NULL, NULL, NULL,
         G_TYPE_NONE, 1,
         G_TYPE_FILE
@@ -1255,6 +1264,31 @@ static void on_file_activated(
     file_open(obj, model, iter);
 }
 
+static void on_directory_activated(
+    BeditFileBrowserView *tree_view, GtkTreeIter *iter,
+    BeditFileBrowserWidget *obj
+) {
+    GtkTreeModel *model;
+    BeditFileBrowserStoreFlag flags;
+    GFile *location;
+
+    model = gtk_tree_view_get_model(GTK_TREE_VIEW(tree_view));
+
+    gtk_tree_model_get(
+        model, iter,
+        BEDIT_FILE_BROWSER_STORE_COLUMN_FLAGS, &flags,
+        BEDIT_FILE_BROWSER_STORE_COLUMN_LOCATION, &location,
+        -1
+    );
+
+    g_return_if_fail(FILE_IS_DIR(flags));
+    g_return_if_fail(G_IS_FILE(location));
+
+    g_signal_emit(obj, signals[DIRECTORY_ACTIVATED], 0, location);
+
+    g_object_unref(location);
+}
+
 static gboolean virtual_root_is_root(
     BeditFileBrowserWidget *obj, BeditFileBrowserStore *model
 ) {
@@ -1343,6 +1377,13 @@ static void on_model_set(
             g_signal_connect(
                 tree_view, "file-activated",
                 G_CALLBACK(on_file_activated), widget
+            )
+        );
+        add_signal(
+            widget, tree_view,
+            g_signal_connect(
+                tree_view, "directory-activated",
+                G_CALLBACK(on_directory_activated), widget
             )
         );
 
