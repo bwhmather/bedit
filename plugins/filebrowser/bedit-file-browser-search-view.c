@@ -46,6 +46,14 @@ enum {
     LAST_PROP,
 };
 
+enum {
+    SIGNAL_FILE_ACTIVATED,
+    SIGNAL_DIRECTORY_ACTIVATED,
+    LAST_SIGNAL,
+};
+
+static guint signals[LAST_SIGNAL];
+
 typedef enum {
     COLUMN_ICON_NAME = 0,
     COLUMN_MARKUP,
@@ -53,6 +61,15 @@ typedef enum {
     COLUMN_FILE_INFO,
     N_COLUMNS,
 } BeditFileBrowserSearchStoreColumn;
+
+static void bedit_file_browser_search_view_activate_selected(
+    BeditFileBrowserSearchView *view
+);
+
+static void bedit_file_browser_search_view_on_row_activated(
+    GtkTreeView *tree_view, GtkTreePath *path, GtkTreeViewColumn *column,
+    BeditFileBrowserSearchView *view
+);
 
 static void bedit_file_browser_search_view_refresh(
     BeditFileBrowserSearchView *view
@@ -160,6 +177,23 @@ static void bedit_file_browser_search_view_class_init(
         )
     );
 
+    signals[SIGNAL_FILE_ACTIVATED] = g_signal_new(
+        "file-activated", G_TYPE_FROM_CLASS(klass),
+        G_SIGNAL_RUN_FIRST,
+        0,
+        NULL, NULL,
+        NULL,
+        G_TYPE_NONE, 1, G_TYPE_FILE
+    );
+    signals[SIGNAL_DIRECTORY_ACTIVATED] = g_signal_new(
+        "directory-activated", G_TYPE_FROM_CLASS(klass),
+        G_SIGNAL_RUN_FIRST,
+        0,
+        NULL, NULL,
+        NULL,
+        G_TYPE_NONE, 1, G_TYPE_FILE
+    );
+
     gtk_widget_class_set_template_from_resource(
         widget_class,
         "/com/bwhmather/bedit/plugins/file-browser/ui/"
@@ -194,6 +228,10 @@ static void bedit_file_browser_search_view_init(
 
     gtk_tree_view_set_model(view->tree_view, GTK_TREE_MODEL(view->list_store));
 
+    g_signal_connect(
+        view->tree_view, "row-activated",
+        G_CALLBACK(bedit_file_browser_search_view_on_row_activated), view
+    );
 }
 
 /**
@@ -288,18 +326,80 @@ gboolean bedit_file_browser_search_view_get_enabled(
     return view->enabled ? TRUE : FALSE;
 }
 
+static void bedit_file_browser_search_view_activate_selected(
+    BeditFileBrowserSearchView *view
+) {
+    GtkTreeModel *model;
+    GtkTreeSelection *selection;
+    GList *rows;
+    GFile *directory = NULL;
 
+    g_return_if_fail(BEDIT_IS_FILE_BROWSER_SEARCH_VIEW(view));
 
+    model = gtk_tree_view_get_model(view->tree_view);
 
+    selection = gtk_tree_view_get_selection(view->tree_view);
+    rows = gtk_tree_selection_get_selected_rows(selection, &model);
 
+    for (GList *row = rows; row != NULL; row = row->next) {
+        GtkTreePath *path;
+        GtkTreeIter iter;
+        GFile *file;
+        GFileInfo *fileinfo;
+        GFileType filetype;
 
+        path = (GtkTreePath *) row->data;
 
+        if (!gtk_tree_model_get_iter(model, &iter, path)) {
+            continue;
+        }
 
+        gtk_tree_model_get(
+            model, &iter,
+            COLUMN_LOCATION, &file,
+            COLUMN_FILE_INFO, &fileinfo,
+            -1
+        );
 
+        g_return_if_fail(G_IS_FILE(file));
+        g_return_if_fail(G_IS_FILE_INFO(fileinfo));
 
+        filetype = g_file_info_get_file_type(fileinfo);
 
+        if (filetype == G_FILE_TYPE_DIRECTORY && directory == NULL) {
+            directory = g_object_ref(file);
+        } else {
+            g_signal_emit(view, signals[SIGNAL_FILE_ACTIVATED], 0, file);
+        }
 
+        g_object_unref(file);
+        g_object_unref(fileinfo);
+    }
 
+    if (directory != NULL) {
+        g_signal_emit(view, signals[SIGNAL_DIRECTORY_ACTIVATED], 0, directory);
+        g_object_unref(directory);
+    }
+
+    g_list_free_full(rows, (GDestroyNotify) gtk_tree_path_free);
+}
+
+static void bedit_file_browser_search_view_on_row_activated(
+    GtkTreeView *tree_view, GtkTreePath *path, GtkTreeViewColumn *column,
+    BeditFileBrowserSearchView *view
+) {
+    GtkTreeSelection *selection;
+
+    g_return_if_fail(GTK_IS_TREE_VIEW(tree_view));
+    g_return_if_fail(BEDIT_IS_FILE_BROWSER_SEARCH_VIEW(view));
+
+    /* Make sure the activated row is the only one selected */
+    selection = gtk_tree_view_get_selection(tree_view);
+    gtk_tree_selection_unselect_all(selection);
+    gtk_tree_selection_select_path(selection, path);
+
+    bedit_file_browser_search_view_activate_selected(view);
+}
 
 typedef struct _Search Search;
 
