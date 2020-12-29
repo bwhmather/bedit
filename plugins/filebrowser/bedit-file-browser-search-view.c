@@ -190,21 +190,6 @@ static void bedit_file_browser_search_view_init(
         G_TYPE_FILE  // Location.
     );
 
-    gtk_list_store_insert_with_values(
-        view->list_store, NULL, -1,
-        COLUMN_ICON_NAME, g_strdup("folder-symbolic"),
-        COLUMN_MARKUP, g_strdup("Hello, World!"),
-        COLUMN_LOCATION, NULL,
-        -1
-    );
-    gtk_list_store_insert_with_values(
-        view->list_store, NULL, -1,
-        COLUMN_ICON_NAME, g_strdup("folder-symbolic"),
-        COLUMN_MARKUP, g_strdup("Hello, World!"),
-        COLUMN_LOCATION, NULL,
-        -1
-    );
-
     gtk_tree_view_set_model(view->tree_view, GTK_TREE_MODEL(view->list_store));
 
 }
