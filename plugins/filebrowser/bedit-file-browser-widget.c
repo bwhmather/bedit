@@ -1259,9 +1259,29 @@ static void on_tree_view_file_activated(
     BeditFileBrowserView *tree_view, GtkTreeIter *iter,
     BeditFileBrowserWidget *obj
 ) {
-    GtkTreeModel *model = gtk_tree_view_get_model(GTK_TREE_VIEW(tree_view));
+    GtkTreeModel *model;
+    BeditFileBrowserStoreFlag flags;
+    GFile *location;
 
-    file_open(obj, model, iter);
+    g_return_if_fail(BEDIT_IS_FILE_BROWSER_VIEW(tree_view));
+    g_return_if_fail(BEDIT_IS_FILE_BROWSER_WIDGET(obj));
+
+    model = gtk_tree_view_get_model(GTK_TREE_VIEW(tree_view));
+
+    gtk_tree_model_get(
+        model, iter,
+        BEDIT_FILE_BROWSER_STORE_COLUMN_FLAGS, &flags,
+        BEDIT_FILE_BROWSER_STORE_COLUMN_LOCATION, &location,
+        -1
+    );
+
+    g_return_if_fail(!FILE_IS_DIR(flags));
+    g_return_if_fail(!FILE_IS_DUMMY(flags));
+    g_return_if_fail(G_IS_FILE(location));
+
+    g_signal_emit(obj, signals[FILE_ACTIVATED], 0, location);
+
+    g_object_unref(location);
 }
 
 static void on_tree_view_directory_activated(
