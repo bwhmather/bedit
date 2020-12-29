@@ -50,6 +50,7 @@ typedef enum {
     COLUMN_ICON_NAME = 0,
     COLUMN_MARKUP,
     COLUMN_LOCATION,
+    COLUMN_FILE_INFO,
     N_COLUMNS,
 } BeditFileBrowserSearchStoreColumn;
 
@@ -187,7 +188,8 @@ static void bedit_file_browser_search_view_init(
         N_COLUMNS,
         G_TYPE_STRING,  // Icon name.
         G_TYPE_STRING,  // Markup.
-        G_TYPE_FILE  // Location.
+        G_TYPE_FILE,  // Location.
+        G_TYPE_FILE_INFO  // Metadata.
     );
 
     gtk_tree_view_set_model(view->tree_view, GTK_TREE_MODEL(view->list_store));
@@ -487,6 +489,7 @@ static void bedit_file_browser_search_iterate(Search *search) {
                     COLUMN_ICON_NAME, g_strdup("folder-symbolic"),  // TODO g_file_info_get_icon
                     COLUMN_MARKUP, g_file_info_get_display_name(fileinfo),
                     COLUMN_LOCATION, file,
+                    COLUMN_FILE_INFO, fileinfo,
                     -1
                 );
 
@@ -717,7 +720,8 @@ static void bedit_file_browser_search_view_refresh(
         N_COLUMNS,
         G_TYPE_STRING,  // Icon name.
         G_TYPE_STRING,  // Markup.
-        G_TYPE_FILE  // Location.
+        G_TYPE_FILE,  // Location.
+        G_TYPE_FILE_INFO  // Metadata.
     );
     g_return_if_fail(GTK_IS_LIST_STORE(search->matches));
 
