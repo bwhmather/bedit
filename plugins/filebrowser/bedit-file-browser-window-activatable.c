@@ -85,6 +85,9 @@ static void on_toggle_action_cb(
 static void on_file_activated_cb(
     BeditFileBrowserWidget *widget, GFile *location, BeditWindow *window
 );
+static void on_directory_activated_cb(
+    BeditFileBrowserWidget *widget, GFile *location, BeditWindow *window
+);
 static void on_error_cb(
     BeditFileBrowserWidget *widget, guint code, gchar const *message,
     BeditFileBrowserWindowActivatable *plugin
@@ -407,6 +410,10 @@ static void bedit_file_browser_window_activatable_activate(
         priv->tree_widget, "file-activated",
         G_CALLBACK(on_file_activated_cb), priv->window
     );
+    g_signal_connect(
+        priv->tree_widget, "directory-activated",
+        G_CALLBACK(on_directory_activated_cb), priv->window
+    );
 
     g_signal_connect(
         priv->tree_widget, "error",
@@ -623,6 +630,17 @@ static void on_file_activated_cb(
 
     bedit_commands_load_location(window, location, NULL, 0, 0);
 }
+
+static void on_directory_activated_cb(
+    BeditFileBrowserWidget *tree_widget, GFile *location, BeditWindow *window
+) {
+    g_return_if_fail(BEDIT_IS_FILE_BROWSER_WIDGET(tree_widget));
+    g_return_if_fail(G_IS_FILE(location));
+    g_return_if_fail(BEDIT_IS_WINDOW(window));
+
+    _bedit_window_set_default_location(window, location);
+}
+
 
 static void on_error_cb(
     BeditFileBrowserWidget *tree_widget, guint code, gchar const *message,

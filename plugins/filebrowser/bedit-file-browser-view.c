@@ -351,12 +351,6 @@ static void set_click_policy_property(
     }
 }
 
-static void directory_activated(BeditFileBrowserView *view, GtkTreeIter *iter) {
-    bedit_file_browser_store_set_virtual_root(
-        BEDIT_FILE_BROWSER_STORE(view->priv->model), iter
-    );
-}
-
 static void activate_selected_files(BeditFileBrowserView *view) {
     GtkTreeView *tree_view = GTK_TREE_VIEW(view);
     GtkTreeSelection *selection = gtk_tree_view_get_selection(tree_view);
@@ -860,9 +854,6 @@ static void bedit_file_browser_view_class_init(
     tree_view_class->row_activated = row_activated;
     tree_view_class->row_expanded = row_expanded;
     tree_view_class->row_collapsed = row_collapsed;
-
-    /* Default handlers */
-    klass->directory_activated = directory_activated;
 
     g_object_class_install_property(
         object_class, PROP_CLICK_POLICY,
