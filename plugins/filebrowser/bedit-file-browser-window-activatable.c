@@ -82,7 +82,7 @@ static void on_toggle_action_cb(
     GAction *action, GVariant *parameter,
     BeditFileBrowserWindowActivatable *plugin
 );
-static void on_location_activated_cb(
+static void on_file_activated_cb(
     BeditFileBrowserWidget *widget, GFile *location, BeditWindow *window
 );
 static void on_error_cb(
@@ -404,8 +404,8 @@ static void bedit_file_browser_window_activatable_activate(
     );
 
     g_signal_connect(
-        priv->tree_widget, "location-activated",
-        G_CALLBACK(on_location_activated_cb), priv->window
+        priv->tree_widget, "file-activated",
+        G_CALLBACK(on_file_activated_cb), priv->window
     );
 
     g_signal_connect(
@@ -615,7 +615,7 @@ static void on_toggle_action_cb(
     }
 }
 
-static void on_location_activated_cb(
+static void on_file_activated_cb(
     BeditFileBrowserWidget *tree_widget, GFile *location, BeditWindow *window
 ) {
     g_return_if_fail(BEDIT_IS_FILE_BROWSER_WIDGET(tree_widget));

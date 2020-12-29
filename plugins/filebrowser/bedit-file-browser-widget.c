@@ -71,7 +71,7 @@ enum {
 
 /* Signals */
 enum {
-    LOCATION_ACTIVATED,
+    FILE_ACTIVATED,
     ERROR,
     CONFIRM_DELETE,
     CONFIRM_NO_TRASH,
@@ -345,10 +345,10 @@ static void bedit_file_browser_widget_class_init(
         )
     );
 
-    signals[LOCATION_ACTIVATED] = g_signal_new(
-        "location-activated", G_OBJECT_CLASS_TYPE(object_class),
+    signals[FILE_ACTIVATED] = g_signal_new(
+        "file-activated", G_OBJECT_CLASS_TYPE(object_class),
         G_SIGNAL_RUN_LAST,
-        G_STRUCT_OFFSET(BeditFileBrowserWidgetClass, location_activated),
+        G_STRUCT_OFFSET(BeditFileBrowserWidgetClass, file_activated),
         NULL, NULL, NULL,
         G_TYPE_NONE, 1,
         G_TYPE_FILE
@@ -1199,7 +1199,7 @@ static void file_open(
     );
 
     if (!FILE_IS_DIR(flags) && !FILE_IS_DUMMY(flags)) {
-        g_signal_emit(obj, signals[LOCATION_ACTIVATED], 0, location);
+        g_signal_emit(obj, signals[FILE_ACTIVATED], 0, location);
     }
 
     if (location) {
@@ -1341,7 +1341,8 @@ static void on_model_set(
         add_signal(
             widget, tree_view,
             g_signal_connect(
-                tree_view, "file-activated", G_CALLBACK(on_file_activated), widget
+                tree_view, "file-activated",
+                G_CALLBACK(on_file_activated), widget
             )
         );
 

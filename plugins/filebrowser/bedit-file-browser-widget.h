@@ -74,7 +74,7 @@ struct _BeditFileBrowserWidgetClass {
     GtkBoxClass parent_class;
 
     /* Signals */
-    void (*location_activated)(BeditFileBrowserWidget *widget, GFile *location);
+    void (*file_activated)(BeditFileBrowserWidget *widget, GFile *file);
     void (*error)(
         BeditFileBrowserWidget *widget, guint code, gchar const *message
     );
