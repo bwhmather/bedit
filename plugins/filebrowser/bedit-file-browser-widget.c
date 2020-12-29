@@ -1255,7 +1255,7 @@ static gboolean directory_open(
     return result;
 }
 
-static void on_file_activated(
+static void on_tree_view_file_activated(
     BeditFileBrowserView *tree_view, GtkTreeIter *iter,
     BeditFileBrowserWidget *obj
 ) {
@@ -1264,7 +1264,7 @@ static void on_file_activated(
     file_open(obj, model, iter);
 }
 
-static void on_directory_activated(
+static void on_tree_view_directory_activated(
     BeditFileBrowserView *tree_view, GtkTreeIter *iter,
     BeditFileBrowserWidget *obj
 ) {
@@ -1376,14 +1376,14 @@ static void on_model_set(
             widget, tree_view,
             g_signal_connect(
                 tree_view, "file-activated",
-                G_CALLBACK(on_file_activated), widget
+                G_CALLBACK(on_tree_view_file_activated), widget
             )
         );
         add_signal(
             widget, tree_view,
             g_signal_connect(
                 tree_view, "directory-activated",
-                G_CALLBACK(on_directory_activated), widget
+                G_CALLBACK(on_tree_view_directory_activated), widget
             )
         );
 
