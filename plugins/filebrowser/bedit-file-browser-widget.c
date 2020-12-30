@@ -1335,6 +1335,7 @@ static void on_search_view_file_activated(
     g_return_if_fail(G_IS_FILE(location));
     g_return_if_fail(BEDIT_IS_FILE_BROWSER_WIDGET(obj));
 
+    bedit_file_browser_widget_set_search_enabled(obj, FALSE);
     g_signal_emit(obj, signals[FILE_ACTIVATED], 0, location);
 }
 
@@ -1346,6 +1347,7 @@ static void on_search_view_directory_activated(
     g_return_if_fail(G_IS_FILE(location));
     g_return_if_fail(BEDIT_IS_FILE_BROWSER_WIDGET(obj));
 
+    bedit_file_browser_widget_set_search_enabled(obj, FALSE);
     g_signal_emit(obj, signals[DIRECTORY_ACTIVATED], 0, location);
 }
 
