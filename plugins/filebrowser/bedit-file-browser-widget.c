@@ -164,6 +164,15 @@ static gboolean on_tree_view_key_press_event(
     BeditFileBrowserView *tree_view, GdkEventKey *event,
     BeditFileBrowserWidget *obj
 );
+static void on_search_view_file_activated(
+    BeditFileBrowserSearchView *search_view, GFile *location,
+    BeditFileBrowserWidget *obj
+);
+static void on_search_view_directory_activated(
+    BeditFileBrowserSearchView *search_view, GFile *location,
+    BeditFileBrowserWidget *obj
+);
+
 static void on_selection_changed(
     GtkTreeSelection *selection, BeditFileBrowserWidget *obj
 );
@@ -623,6 +632,15 @@ static void bedit_file_browser_widget_init(BeditFileBrowserWidget *obj) {
         obj->priv->search_entry, "text",
         obj->priv->search_view, "query",
         G_BINDING_BIDIRECTIONAL | G_BINDING_SYNC_CREATE
+    );
+
+    g_signal_connect(
+        obj->priv->search_view, "file-activated",
+        G_CALLBACK(on_search_view_file_activated), obj
+    );
+    g_signal_connect(
+        obj->priv->search_view, "directory-activated",
+        G_CALLBACK(on_search_view_directory_activated), obj
     );
 }
 
@@ -1307,6 +1325,28 @@ static void on_tree_view_directory_activated(
     g_signal_emit(obj, signals[DIRECTORY_ACTIVATED], 0, location);
 
     g_object_unref(location);
+}
+
+static void on_search_view_file_activated(
+    BeditFileBrowserSearchView *search_view, GFile *location,
+    BeditFileBrowserWidget *obj
+) {
+    g_return_if_fail(BEDIT_IS_FILE_BROWSER_SEARCH_VIEW(search_view));
+    g_return_if_fail(G_IS_FILE(location));
+    g_return_if_fail(BEDIT_IS_FILE_BROWSER_WIDGET(obj));
+
+    g_signal_emit(obj, signals[FILE_ACTIVATED], 0, location);
+}
+
+static void on_search_view_directory_activated(
+    BeditFileBrowserSearchView *search_view, GFile *location,
+    BeditFileBrowserWidget *obj
+) {
+    g_return_if_fail(BEDIT_IS_FILE_BROWSER_SEARCH_VIEW(search_view));
+    g_return_if_fail(G_IS_FILE(location));
+    g_return_if_fail(BEDIT_IS_FILE_BROWSER_WIDGET(obj));
+
+    g_signal_emit(obj, signals[DIRECTORY_ACTIVATED], 0, location);
 }
 
 static gboolean virtual_root_is_root(
