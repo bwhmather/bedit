@@ -75,7 +75,7 @@ enum {
 static guint signals[LAST_SIGNAL];
 
 typedef enum {
-    COLUMN_ICON_NAME = 0,
+    COLUMN_ICON = 0,
     COLUMN_MARKUP,
     COLUMN_LOCATION,
     COLUMN_FILE_INFO,
@@ -240,7 +240,7 @@ static void bedit_file_browser_search_view_init(
 
     view->list_store = gtk_list_store_new(
         N_COLUMNS,
-        G_TYPE_STRING,  // Icon name.
+        G_TYPE_ICON,  // Icon.
         G_TYPE_STRING,  // Markup.
         G_TYPE_FILE,  // Location.
         G_TYPE_FILE_INFO  // Metadata.
@@ -606,7 +606,7 @@ static void bedit_file_browser_search_iterate(Search *search) {
 
                 gtk_list_store_insert_with_values(
                     search->matches, NULL, -1,
-                    COLUMN_ICON_NAME, g_strdup("folder-symbolic"),  // TODO g_file_info_get_icon
+                    COLUMN_ICON, g_file_info_get_symbolic_icon(fileinfo),
                     COLUMN_MARKUP, g_file_info_get_display_name(fileinfo),
                     COLUMN_LOCATION, file,
                     COLUMN_FILE_INFO, fileinfo,
@@ -838,7 +838,7 @@ static void bedit_file_browser_search_view_refresh(
     // TODO this is also created on startup.
     search->matches = gtk_list_store_new(
         N_COLUMNS,
-        G_TYPE_STRING,  // Icon name.
+        G_TYPE_ICON,  // Icon name.
         G_TYPE_STRING,  // Markup.
         G_TYPE_FILE,  // Location.
         G_TYPE_FILE_INFO  // Metadata.
