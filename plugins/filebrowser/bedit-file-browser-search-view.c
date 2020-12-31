@@ -238,16 +238,6 @@ static void bedit_file_browser_search_view_init(
 
     gtk_widget_init_template(GTK_WIDGET(view));
 
-    view->list_store = gtk_list_store_new(
-        N_COLUMNS,
-        G_TYPE_ICON,  // Icon.
-        G_TYPE_STRING,  // Markup.
-        G_TYPE_FILE,  // Location.
-        G_TYPE_FILE_INFO  // Metadata.
-    );
-
-    gtk_tree_view_set_model(view->tree_view, GTK_TREE_MODEL(view->list_store));
-
     g_signal_connect(
         view->tree_view, "row-activated",
         G_CALLBACK(bedit_file_browser_search_view_on_row_activated), view
@@ -1031,7 +1021,6 @@ static void bedit_file_browser_search_view_refresh(
     search->query = g_strdup(view->query);
     search->query_segment = search->query;
 
-    // TODO this is also created on startup.
     search->matches = gtk_list_store_new(
         N_COLUMNS,
         G_TYPE_ICON,  // Icon name.
