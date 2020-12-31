@@ -437,6 +437,8 @@ struct _Search {
     // `dir_cache`.
     GSList *cursor_stack;
 
+    // Temporary buffer used to build markup strings representing filenames.
+    GString *markup_buffer;
 
     // A map from directories to lists of `GFileInfo` objects representing their
     // children.  `dir_cache` is reused between searches.  Keys and values are
@@ -450,7 +452,7 @@ struct _Search {
 
 static void bedit_file_browser_search_free(Search *search);
 static gboolean bedit_file_browser_search_match_segment(
-    gchar const *segment, gchar const *name
+    gchar const *segment, gchar const *name, GString *markup
 );
 static gboolean bedit_file_browser_search_is_last_segment(gchar const *segment);
 static void bedit_file_browser_search_push(
@@ -467,13 +469,59 @@ static void bedit_file_browser_search_reload_top_begin_cb(
 );
 void bedit_file_browser_search_reload_top(Search *search);
 
-static gboolean bedit_file_browser_search_match_segment(
-    gchar const *segment, gchar const *name
+static void bedit_file_browser_search_append_escaped(
+    GString *str, gunichar chr
 ) {
-    gchar const *chunk_start;
+    // Stolen from `g_markup_escape_text`, with some minor reformatting.
+    switch (chr) {
+    case '&':
+        g_string_append(str, "&amp;");
+        break;
+
+    case '<':
+        g_string_append(str, "&lt;");
+        break;
+
+    case '>':
+        g_string_append(str, "&gt;");
+        break;
+
+    case '\'':
+        g_string_append(str, "&apos;");
+        break;
+
+    case '"':
+        g_string_append(str, "&quot;");
+        break;
+
+    default:
+        if (
+            (0x1 <= chr && chr <= 0x8) ||
+            (0xb <= chr && chr  <= 0xc) ||
+            (0xe <= chr && chr <= 0x1f) ||
+            (0x7f <= chr && chr <= 0x84) ||
+            (0x86 <= chr && chr <= 0x9f)
+        ) {
+            g_string_append_printf(str, "&#x%x;", chr);
+        } else {
+            g_string_append_unichar(str, chr);
+        }
+        break;
+    }
+}
+
+static gboolean bedit_file_browser_search_match_segment(
+    gchar const *segment, gchar const *name, GString *markup
+) {
+    gboolean bold = FALSE;
     gchar const *query_cursor;
+    gchar const *name_cursor;
+    gchar const *chunk_start;
+
+    g_string_truncate(markup, 0);
 
     query_cursor = segment;
+    name_cursor = name;
     chunk_start = name;
 
     while (*chunk_start != '\0') {
@@ -559,18 +607,35 @@ static gboolean bedit_file_browser_search_match_segment(
             candidate_start = g_utf8_find_next_char(candidate_start, NULL);
         }
 
+        while (name_cursor < chunk_end) {
+            if (
+                name_cursor >= best_start &&
+                name_cursor < (best_start + best_length)
+            ) {
+                if (!bold) {
+                    g_string_append(markup, "<b>");
+                    bold = TRUE;
+                }
+            } else {
+                if (bold) {
+                    g_string_append(markup, "</b>");
+                    bold = FALSE;
+                }
+            }
+
+            bedit_file_browser_search_append_escaped(
+                markup, g_utf8_get_char(name_cursor)
+            );
+
+            name_cursor = g_utf8_find_next_char(name_cursor, NULL);
+        }
+
         query_cursor += best_length;
         chunk_start = chunk_end;
-        // TODO Write chunk to buffer.
-        /*
-        for (cursor in range(chunk_start, chunk_end) {
-            if cursor >= best_start && cursor < best_end) {
-                push_bold()
-            } else {
-                push_regular()
-            }
-        }*/
+    }
 
+    if (bold) {
+        g_string_append(markup, "</b>");
     }
 
     if (
@@ -600,6 +665,8 @@ static void bedit_file_browser_search_free(Search *search) {
 
     g_slist_free_full(search->file_stack, g_object_unref);
     g_slist_free(search->cursor_stack);
+
+    g_string_free(search->markup_buffer, TRUE);
 
     g_hash_table_unref(search->dir_cache);
     search->dir_cache = NULL;
@@ -689,7 +756,7 @@ static void bedit_file_browser_search_iterate(Search *search) {
             bedit_debug_message(DEBUG_PLUGINS, "last: %s", name);
 
             if (bedit_file_browser_search_match_segment(
-                search->query_segment, name
+                search->query_segment, name, search->markup_buffer
             )) {
                 GFile *file;
 
@@ -698,7 +765,7 @@ static void bedit_file_browser_search_iterate(Search *search) {
                 gtk_list_store_insert_with_values(
                     search->matches, NULL, -1,
                     COLUMN_ICON, g_file_info_get_symbolic_icon(fileinfo),
-                    COLUMN_MARKUP, g_file_info_get_display_name(fileinfo),
+                    COLUMN_MARKUP, search->markup_buffer->str,
                     COLUMN_LOCATION, file,
                     COLUMN_FILE_INFO, fileinfo,
                     -1
@@ -718,7 +785,7 @@ static void bedit_file_browser_search_iterate(Search *search) {
             bedit_debug_message(DEBUG_PLUGINS, "rest: %s", name);
 
             if (bedit_file_browser_search_match_segment(
-                search->query_segment, name
+                search->query_segment, name, search->markup_buffer
             )) {
                 GFile *file = g_file_get_child(search->file_stack->data, name);
 
@@ -938,6 +1005,8 @@ static void bedit_file_browser_search_view_refresh(
 
     search->file_stack = NULL;
     search->cursor_stack = NULL;
+
+    search->markup_buffer = g_string_new(NULL);
 
     search->dir_cache = g_hash_table_ref(view->dir_cache);
 
