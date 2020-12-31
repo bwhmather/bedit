@@ -470,25 +470,116 @@ void bedit_file_browser_search_reload_top(Search *search);
 static gboolean bedit_file_browser_search_match_segment(
     gchar const *segment, gchar const *name
 ) {
-    gchar *query_cursor = segment;
-    gchar *name_cursor = name;
+    gchar const *chunk_start;
+    gchar const *query_cursor;
 
-    bedit_debug_message(DEBUG_PLUGINS, "segment: %s, name: %s", segment, name);
+    query_cursor = segment;
+    chunk_start = name;
 
-    while (TRUE) {
-        if (*query_cursor == '\0' || *query_cursor == '/') {
-            return TRUE;
+    while (*chunk_start != '\0') {
+        gchar const *chunk_end;
+        gchar const *candidate_start;
+        gchar const *best_start;
+        size_t best_length;
+
+        // Find end of chunk.
+        chunk_end = g_utf8_find_next_char(chunk_start, NULL);
+        while (TRUE) {
+            gunichar start_char = g_utf8_get_char(chunk_start);
+            gunichar end_char = g_utf8_get_char(chunk_end);
+
+            if (end_char == '\0') {
+                break;
+            }
+
+            if (g_unichar_isalpha(start_char)) {
+                // Chunk is made up of an upper or lower case letter followed by
+                // any number of lower case letters.
+                if (!g_unichar_islower(end_char)) {
+                    break;
+                }
+            } else if (g_unichar_isdigit(start_char)) {
+                // Chunk is a sequence of digits
+                if (!g_unichar_isdigit(end_char)) {
+                    break;
+                }
+            } else {
+                // Chunk is a single, non-alphanumeric character.
+                break;
+            }
+
+            chunk_end = g_utf8_find_next_char(chunk_end, NULL);
         }
 
-        if (*name_cursor == '\0') {
-            return FALSE;
+        g_return_val_if_fail(chunk_end > chunk_start, FALSE);  // TODO debugging only.
+
+        // Find longest match.
+        best_start = chunk_start;
+        best_length = 0;
+
+        candidate_start = chunk_start;
+        while (candidate_start < chunk_end) {
+            gchar const *candidate_name_cursor;
+            gchar const *candidate_query_cursor;
+            gint candidate_length;
+
+            candidate_name_cursor = candidate_start;
+            candidate_query_cursor = query_cursor;
+            candidate_length = 0;
+
+            while (candidate_start < chunk_end) {
+                gunichar name_char = g_utf8_get_char(candidate_name_cursor);
+                gunichar query_char = g_utf8_get_char(candidate_query_cursor);
+
+                if (query_char == '\0' || query_char == '/') {
+                    break;
+                }
+
+                if (
+                    g_unichar_tolower(name_char) !=
+                    g_unichar_tolower(query_char)
+                ) {
+                    break;
+                }
+
+                candidate_name_cursor = g_utf8_find_next_char(
+                    candidate_name_cursor, NULL
+                );
+                candidate_query_cursor = g_utf8_find_next_char(
+                    candidate_query_cursor, NULL
+                );
+                candidate_length++;
+            }
+
+            if (candidate_length > best_length) {
+                best_start = candidate_start;
+                best_length = candidate_length;
+            }
+
+            candidate_start = g_utf8_find_next_char(candidate_start, NULL);
         }
 
-        if (g_utf8_get_char(query_cursor) == g_utf8_get_char(name_cursor)) {
-            query_cursor = g_utf8_find_next_char(query_cursor, NULL);
-        }
+        query_cursor += best_length;
+        chunk_start = chunk_end;
+        // TODO Write chunk to buffer.
+        /*
+        for (cursor in range(chunk_start, chunk_end) {
+            if cursor >= best_start && cursor < best_end) {
+                push_bold()
+            } else {
+                push_regular()
+            }
+        }*/
 
-        name_cursor = g_utf8_find_next_char(name_cursor, NULL);
+    }
+
+    if (
+        g_utf8_get_char(query_cursor) == '\0' ||
+        g_utf8_get_char(query_cursor) == '/'
+    ) {
+        return TRUE;
+    } else {
+        return FALSE;
     }
 }
 
