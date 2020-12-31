@@ -437,6 +437,8 @@ struct _Search {
     // `dir_cache`.
     GSList *cursor_stack;
 
+    GSList *markup_stack;
+
     // Temporary buffer used to build markup strings representing filenames.
     GString *markup_buffer;
 
@@ -456,7 +458,7 @@ static gboolean bedit_file_browser_search_match_segment(
 );
 static gboolean bedit_file_browser_search_is_last_segment(gchar const *segment);
 static void bedit_file_browser_search_push(
-    Search *search, GFile *file, GList *children
+    Search *search, GFile *file, GList *children, gchar *markup
 );
 static void bedit_file_browser_search_pop(Search *search);
 static void bedit_file_browser_search_iterate(Search *search);
@@ -679,7 +681,7 @@ static void bedit_file_browser_search_free(Search *search) {
 };
 
 static void bedit_file_browser_search_push(
-    Search *search, GFile *file, GList *children
+    Search *search, GFile *file, GList *children, gchar *markup
 ) {
     bedit_debug(DEBUG_PLUGINS);
 
@@ -690,6 +692,17 @@ static void bedit_file_browser_search_push(
     search->file_stack = g_slist_prepend(search->file_stack, g_object_ref(file));
     search->cursor_stack = g_slist_prepend(search->cursor_stack, children);
 
+    if (search->markup_stack) {
+        markup = g_strdup_printf(
+            "%s/%s",
+            (gchar *) search->markup_stack->data,
+            markup
+        );
+    } else {
+        markup = g_strdup(markup);
+    }
+    search->markup_stack = g_slist_prepend(search->markup_stack, markup);
+
     while (*search->query_segment != '/') {
         search->query_segment++;
     }
@@ -699,6 +712,7 @@ static void bedit_file_browser_search_push(
 static void bedit_file_browser_search_pop(Search *search) {
     GSList *file_stack_head;
     GSList *cursor_stack_head;
+    GSList *markup_stack_head;
 
     bedit_debug(DEBUG_PLUGINS);
 
@@ -715,6 +729,15 @@ static void bedit_file_browser_search_pop(Search *search) {
     cursor_stack_head->data = NULL;
     cursor_stack_head->next = NULL;
     g_slist_free_1(cursor_stack_head);
+
+    markup_stack_head = search->markup_stack;
+    if (markup_stack_head != NULL) {
+        search->markup_stack = markup_stack_head->next;
+        g_free(markup_stack_head->data);
+        markup_stack_head->data = NULL;
+        markup_stack_head->next = NULL;
+        g_slist_free_1(markup_stack_head);
+    }
 
     search->query_segment--;
     while (search->query_segment > search->query && *search->query_segment != '/') {
@@ -759,18 +782,31 @@ static void bedit_file_browser_search_iterate(Search *search) {
                 search->query_segment, name, search->markup_buffer
             )) {
                 GFile *file;
+                gchar *markup;
 
                 file = g_file_get_child(search->file_stack->data, name);
+                if (search->markup_stack != NULL) {
+                    markup = g_strdup_printf(
+                        "%s/%s",
+                        (gchar *) search->markup_stack->data,
+                        search->markup_buffer->str
+                    );
+                } else {
+                    markup = search->markup_buffer->str;
+                }
 
                 gtk_list_store_insert_with_values(
                     search->matches, NULL, -1,
                     COLUMN_ICON, g_file_info_get_symbolic_icon(fileinfo),
-                    COLUMN_MARKUP, search->markup_buffer->str,
+                    COLUMN_MARKUP, markup,
                     COLUMN_LOCATION, file,
                     COLUMN_FILE_INFO, fileinfo,
                     -1
                 );
 
+                if (search->markup_stack != NULL) {
+                    g_free(markup);
+                }
                 g_object_unref(file);
             }
         } else {
@@ -790,7 +826,9 @@ static void bedit_file_browser_search_iterate(Search *search) {
                 GFile *file = g_file_get_child(search->file_stack->data, name);
 
                 bedit_file_browser_search_push(
-                    search, file, g_hash_table_lookup(search->dir_cache, file)
+                    search, file,
+                    g_hash_table_lookup(search->dir_cache, file),
+                    search->markup_buffer->str
                 );
 
                 if (!g_hash_table_contains(search->dir_cache, file))  {
@@ -1005,6 +1043,7 @@ static void bedit_file_browser_search_view_refresh(
 
     search->file_stack = NULL;
     search->cursor_stack = NULL;
+    search->markup_stack = NULL;
 
     search->markup_buffer = g_string_new(NULL);
 
