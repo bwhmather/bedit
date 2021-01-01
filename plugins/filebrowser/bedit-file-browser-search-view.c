@@ -334,6 +334,9 @@ void bedit_file_browser_search_view_set_enabled(
         } else if (view->cancellable != NULL) {
             g_cancellable_cancel(view->cancellable);
             g_clear_object(&view->cancellable);
+
+            g_hash_table_unref(view->dir_cache);
+            view->dir_cache = NULL;
         }
     }
 }
