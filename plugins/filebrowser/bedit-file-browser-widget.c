@@ -157,6 +157,10 @@ static gboolean on_search_entry_key_press_event(
     BeditFileBrowserWidget *obj
 );
 
+static void on_search_entry_text_changed(
+    GtkEntry *search_entry, GParamSpec *param, BeditFileBrowserWidget *obj
+);
+
 static gboolean on_tree_view_button_press_event(
     BeditFileBrowserView *tree_view, GdkEventButton *event,
     BeditFileBrowserWidget *obj
@@ -561,6 +565,11 @@ static void bedit_file_browser_widget_init(BeditFileBrowserWidget *obj) {
     );
     bedit_file_browser_location_set_file_store(
         obj->priv->location, obj->priv->file_store
+    );
+
+    g_signal_connect(
+        obj->priv->search_entry, "notify::text",
+        G_CALLBACK(on_search_entry_text_changed), obj
     );
 
     g_signal_connect(
@@ -1605,6 +1614,18 @@ static gboolean on_search_entry_key_press_event(
     }
 
     return FALSE;
+}
+
+static void on_search_entry_text_changed(
+    GtkEntry *search_entry, GParamSpec *param, BeditFileBrowserWidget *obj
+) {
+    g_return_if_fail(GTK_IS_ENTRY(search_entry));
+    g_return_if_fail(BEDIT_IS_FILE_BROWSER_WIDGET(obj));
+    g_return_if_fail(search_entry == obj->priv->search_entry);
+
+    if (!g_strcmp0(gtk_entry_get_text(search_entry), "")) {
+        bedit_file_browser_widget_set_search_enabled(obj, FALSE);
+    }
 }
 
 static void on_selection_changed(
