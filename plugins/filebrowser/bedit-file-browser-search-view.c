@@ -854,7 +854,7 @@ static void bedit_file_browser_search_iterate(Search *search) {
     bedit_file_browser_search_free(search);
 }
 
-gint bedit_file_browser_search_compare_fileinfo(
+static gint bedit_file_browser_search_compare_fileinfo(
     gconstpointer a, gconstpointer b
 ) {
     GFileInfo *fileinfo_a;
