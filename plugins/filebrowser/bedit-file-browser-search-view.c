@@ -94,6 +94,10 @@ static void bedit_file_browser_search_view_refresh(
     BeditFileBrowserSearchView *view
 );
 
+static gboolean bedit_file_browser_search_view_on_key_press(
+    GtkWidget *widget, GdkEventKey *event
+);
+
 static void bedit_file_browser_search_view_get_property(
     GObject *object, guint prop_id, GValue *value, GParamSpec *pspec
 ) {
@@ -221,6 +225,7 @@ static void bedit_file_browser_search_view_class_init(
     );
 
     widget_class->grab_focus = bedit_file_browser_search_view_grab_focus;
+    widget_class->key_press_event = bedit_file_browser_search_view_on_key_press;
 
     gtk_widget_class_set_template_from_resource(
         widget_class,
@@ -420,6 +425,24 @@ static void bedit_file_browser_search_view_on_row_activated(
     gtk_tree_selection_select_path(selection, path);
 
     bedit_file_browser_search_view_activate_selected(view);
+}
+
+static gboolean bedit_file_browser_search_view_on_key_press(
+    GtkWidget *widget, GdkEventKey *event
+) {
+    BeditFileBrowserSearchView *view = BEDIT_FILE_BROWSER_SEARCH_VIEW(widget);
+
+    switch (event->keyval) {
+    case GDK_KEY_Return:
+    case GDK_KEY_KP_Enter:
+        bedit_file_browser_search_view_activate_selected(view);
+        return TRUE;
+
+    default:
+        return GTK_WIDGET_CLASS(
+            bedit_file_browser_search_view_parent_class
+        )->key_press_event(widget, event);
+    }
 }
 
 typedef struct _Search Search;
