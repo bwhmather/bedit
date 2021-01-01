@@ -42,7 +42,6 @@ struct _BeditFileBrowserSearchView {
     GtkBin parent_instance;
 
     GtkTreeView *tree_view;
-    GtkListStore *list_store;
 
     GHashTable *dir_cache;
 
@@ -416,7 +415,10 @@ typedef struct _Search Search;
 struct _Search {
     gchar *query;
 
-    GtkListStore *matches;
+    // TODO this is a tree store in order to make the tree view to show the
+    // expander column.  Would be good to find a better way to make formatting
+    // match the folder view.
+    GtkTreeStore *matches;
 
     gchar *query_segment;
 
@@ -788,8 +790,8 @@ static void bedit_file_browser_search_iterate(Search *search) {
                     markup = search->markup_buffer->str;
                 }
 
-                gtk_list_store_insert_with_values(
-                    search->matches, NULL, -1,
+                gtk_tree_store_insert_with_values(
+                    search->matches, NULL, NULL, -1,
                     COLUMN_ICON, g_file_info_get_symbolic_icon(fileinfo),
                     COLUMN_MARKUP, markup,
                     COLUMN_LOCATION, file,
@@ -1030,14 +1032,14 @@ static void bedit_file_browser_search_view_refresh(
     search->query = g_strdup(view->query);
     search->query_segment = search->query;
 
-    search->matches = gtk_list_store_new(
+    search->matches = gtk_tree_store_new(
         N_COLUMNS,
         G_TYPE_ICON,  // Icon name.
         G_TYPE_STRING,  // Markup.
         G_TYPE_FILE,  // Location.
         G_TYPE_FILE_INFO  // Metadata.
     );
-    g_return_if_fail(GTK_IS_LIST_STORE(search->matches));
+    g_return_if_fail(GTK_IS_TREE_STORE(search->matches));
 
     search->file_stack = NULL;
     search->cursor_stack = NULL;
