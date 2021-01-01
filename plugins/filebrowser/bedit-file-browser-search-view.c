@@ -736,6 +736,9 @@ static void bedit_file_browser_search_pop(Search *search) {
 }
 
 static void bedit_file_browser_search_iterate(Search *search) {
+    GtkTreePath *path;
+    GtkTreeSelection *selection;
+
     bedit_debug(DEBUG_PLUGINS);
 
     if (g_cancellable_is_cancelled(search->cancellable)) {
@@ -837,6 +840,12 @@ static void bedit_file_browser_search_iterate(Search *search) {
     gtk_tree_view_set_model(
         search->view->tree_view, GTK_TREE_MODEL(search->matches)
     );
+
+    path = gtk_tree_path_new_first();
+
+    selection = gtk_tree_view_get_selection(search->view->tree_view);
+    gtk_tree_selection_unselect_all(selection);
+    gtk_tree_selection_select_path(selection, path);
 
     bedit_debug_message(DEBUG_PLUGINS, "DONE!");
 
