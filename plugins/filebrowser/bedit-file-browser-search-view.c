@@ -154,6 +154,13 @@ static void bedit_file_browser_search_view_set_property(
     }
 }
 
+static void bedit_file_browser_search_view_grab_focus(GtkWidget *widget) {
+    BeditFileBrowserSearchView *view;
+
+    view = BEDIT_FILE_BROWSER_SEARCH_VIEW(widget);
+    gtk_widget_grab_focus(GTK_WIDGET(view->tree_view));
+}
+
 static void bedit_file_browser_search_view_class_init(
     BeditFileBrowserSearchViewClass *klass
 ) {
@@ -212,6 +219,8 @@ static void bedit_file_browser_search_view_class_init(
         NULL,
         G_TYPE_NONE, 1, G_TYPE_FILE
     );
+
+    widget_class->grab_focus = bedit_file_browser_search_view_grab_focus;
 
     gtk_widget_class_set_template_from_resource(
         widget_class,
