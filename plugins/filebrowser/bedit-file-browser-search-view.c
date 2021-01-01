@@ -727,9 +727,17 @@ static void bedit_file_browser_search_pop(Search *search) {
         g_slist_free_1(markup_stack_head);
     }
 
-    search->query_segment--;
-    while (search->query_segment > search->query && *search->query_segment != '/') {
+    if (search->query_segment == search->query) {
+        search->query_segment = NULL;
+    } else {
         search->query_segment--;
+
+        while (
+            search->query_segment > search->query &&
+            *(search->query_segment - 1) != '/'
+        ) {
+            search->query_segment--;
+        }
     }
 }
 
