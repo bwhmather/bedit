@@ -675,8 +675,6 @@ static void bedit_file_browser_search_free(Search *search) {
 static void bedit_file_browser_search_push(
     Search *search, GFile *file, GList *children, gchar *markup
 ) {
-    bedit_debug(DEBUG_PLUGINS);
-
     g_return_if_fail(
         !bedit_file_browser_search_is_last_segment(search->query_segment)
     );
@@ -705,8 +703,6 @@ static void bedit_file_browser_search_pop(Search *search) {
     GSList *file_stack_head;
     GSList *cursor_stack_head;
     GSList *markup_stack_head;
-
-    bedit_debug(DEBUG_PLUGINS);
 
     file_stack_head = search->file_stack;
     g_return_if_fail(file_stack_head != NULL);
@@ -752,8 +748,6 @@ static void bedit_file_browser_search_iterate(Search *search) {
         GFileInfo *fileinfo;
         GList *cursor;
 
-        bedit_debug_message(DEBUG_PLUGINS, "iter");
-
         if (search->cursor_stack->data == NULL) {
             bedit_file_browser_search_pop(search);
             continue;
@@ -771,7 +765,6 @@ static void bedit_file_browser_search_iterate(Search *search) {
             gchar const *name;
 
             name = g_file_info_get_name(fileinfo);
-            bedit_debug_message(DEBUG_PLUGINS, "last: %s", name);
 
             if (bedit_file_browser_search_match_segment(
                 search->query_segment, name, search->markup_buffer
@@ -813,8 +806,6 @@ static void bedit_file_browser_search_iterate(Search *search) {
 
             name = g_file_info_get_name(fileinfo);
 
-            bedit_debug_message(DEBUG_PLUGINS, "rest: %s", name);
-
             if (bedit_file_browser_search_match_segment(
                 search->query_segment, name, search->markup_buffer
             )) {
@@ -848,8 +839,6 @@ static void bedit_file_browser_search_iterate(Search *search) {
     selection = gtk_tree_view_get_selection(search->view->tree_view);
     gtk_tree_selection_unselect_all(selection);
     gtk_tree_selection_select_path(selection, path);
-
-    bedit_debug_message(DEBUG_PLUGINS, "DONE!");
 
     bedit_file_browser_search_free(search);
 }
@@ -896,8 +885,6 @@ static void bedit_file_browser_search_reload_top_next_cb(
     GFile *root;
     GList *new_files;
     GList *existing_files;
-
-    bedit_debug(DEBUG_PLUGINS);
 
     g_return_if_fail(G_IS_FILE_ENUMERATOR(enumerator));
 
@@ -958,8 +945,6 @@ static void bedit_file_browser_search_reload_top_begin_cb(
     GError *error = NULL;
     GFileEnumerator *enumerator;
 
-    bedit_debug(DEBUG_PLUGINS);
-
     g_return_if_fail(G_IS_FILE(file));
 
     enumerator = g_file_enumerate_children_finish(file, result, &error);
@@ -985,8 +970,6 @@ static void bedit_file_browser_search_reload_top_begin_cb(
 }
 
 void bedit_file_browser_search_reload_top(Search *search) {
-    bedit_debug(DEBUG_PLUGINS);
-
     g_return_if_fail(search->file_stack != NULL);
     g_return_if_fail(search->cursor_stack != NULL);
 
