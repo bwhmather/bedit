@@ -112,6 +112,7 @@ struct _BeditFileBrowserWidgetPrivate {
     GMenuModel *bookmarks_menu;
 
     BeditFileBrowserLocation *location;
+    GtkToggleButton *search_toggle;
     GtkEntry *search_entry;
 
     GtkStack *toolbar_stack;
@@ -424,6 +425,10 @@ static void bedit_file_browser_widget_class_init(
     );
 
     gtk_widget_class_bind_template_child_private(
+        widget_class, BeditFileBrowserWidget, search_toggle
+    );
+
+    gtk_widget_class_bind_template_child_private(
         widget_class, BeditFileBrowserWidget, search_entry
     );
 
@@ -626,6 +631,13 @@ static void bedit_file_browser_widget_init(BeditFileBrowserWidget *obj) {
     g_signal_connect(
         obj->priv->file_store, "error",
         G_CALLBACK(on_file_store_error), obj
+    );
+
+
+    g_object_bind_property(
+        G_OBJECT(obj), "search-enabled",
+        G_OBJECT(obj->priv->search_toggle), "active",
+        G_BINDING_BIDIRECTIONAL | G_BINDING_SYNC_CREATE
     );
 
     g_object_bind_property(
