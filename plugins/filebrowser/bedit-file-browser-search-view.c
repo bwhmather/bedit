@@ -857,15 +857,34 @@ static void bedit_file_browser_search_iterate(Search *search) {
 static gint bedit_file_browser_search_compare_fileinfo(
     gconstpointer a, gconstpointer b
 ) {
-    GFileInfo *fileinfo_a;
-    GFileInfo *fileinfo_b;
+    GFileInfo *a_file_info, *b_file_info;
+    gboolean a_is_backup, b_is_backup;
+    gboolean a_is_hidden, b_is_hidden;
 
-    fileinfo_a = G_FILE_INFO(a);
-    fileinfo_b = G_FILE_INFO(b);
+    a_file_info = G_FILE_INFO(a);
+    b_file_info = G_FILE_INFO(b);
+
+    a_is_backup = g_file_info_get_is_backup(a_file_info);
+    b_is_backup = g_file_info_get_is_backup(b_file_info);
+    if (a_is_backup && !b_is_backup) {
+        return 1;
+    }
+    if (b_is_backup && !a_is_backup) {
+        return -1;
+    }
+
+    a_is_hidden = g_file_info_get_is_hidden(a_file_info);
+    b_is_hidden = g_file_info_get_is_hidden(b_file_info);
+    if (a_is_hidden && !b_is_hidden) {
+        return 1;
+    }
+    if (b_is_hidden && !a_is_hidden) {
+        return -1;
+    }
 
     return g_utf8_collate(
-        g_file_info_get_name(fileinfo_a),
-        g_file_info_get_name(fileinfo_b)
+        g_file_info_get_name(a_file_info),
+        g_file_info_get_name(b_file_info)
     );
 }
 
