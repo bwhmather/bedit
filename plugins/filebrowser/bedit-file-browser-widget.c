@@ -109,7 +109,6 @@ struct _BeditFileBrowserWidgetPrivate {
     BeditFileBrowserBookmarksStore *bookmarks_store;
 
     GMenuModel *dir_menu;
-    GMenuModel *bookmarks_menu;
 
     BeditFileBrowserLocation *location;
     GtkToggleButton *search_toggle;
@@ -276,7 +275,6 @@ static void bedit_file_browser_widget_dispose(GObject *object) {
 
     g_clear_object(&priv->busy_cursor);
     g_clear_object(&priv->dir_menu);
-    g_clear_object(&priv->bookmarks_menu);
 
     G_OBJECT_CLASS(bedit_file_browser_widget_parent_class)->dispose(object);
 }
@@ -537,9 +535,6 @@ static void bedit_file_browser_widget_init(BeditFileBrowserWidget *obj) {
         obj->priv->dir_menu = G_MENU_MODEL(
             g_object_ref(gtk_builder_get_object(builder, "dir-menu"))
         );
-        obj->priv->bookmarks_menu = G_MENU_MODEL(
-            g_object_ref(gtk_builder_get_object(builder, "bookmarks-menu"))
-        );
     }
 
     g_object_unref(builder);
@@ -668,79 +663,54 @@ static void bedit_file_browser_widget_init(BeditFileBrowserWidget *obj) {
 /* Private */
 
 static void update_sensitivity(BeditFileBrowserWidget *obj) {
-    GtkTreeModel *model = gtk_tree_view_get_model(
-        GTK_TREE_VIEW(obj->priv->tree_view)
-    );
+    GtkTreeModel *model;
     GAction *action;
     gint mode;
 
-    if (BEDIT_IS_FILE_BROWSER_STORE(model)) {
-        mode = bedit_file_browser_store_get_filter_mode(
-            BEDIT_FILE_BROWSER_STORE(model)
-        );
+    model = gtk_tree_view_get_model(
+        GTK_TREE_VIEW(obj->priv->tree_view)
+    );
 
-        action = g_action_map_lookup_action(
-            G_ACTION_MAP(obj->priv->action_group), "show_hidden"
-        );
-
-        g_action_change_state(
-            action,
-            g_variant_new_boolean(
-                !(mode & BEDIT_FILE_BROWSER_STORE_FILTER_MODE_HIDE_HIDDEN)
-            )
-        );
-
-        /* sensitivity */
-        action = g_action_map_lookup_action(
-            G_ACTION_MAP(obj->priv->action_group), "up"
-        );
-        g_simple_action_set_enabled(G_SIMPLE_ACTION(action), TRUE);
-        action = g_action_map_lookup_action(
-            G_ACTION_MAP(obj->priv->action_group), "home"
-        );
-        g_simple_action_set_enabled(G_SIMPLE_ACTION(action), TRUE);
-
-        action = g_action_map_lookup_action(
-            G_ACTION_MAP(obj->priv->action_group), "show_hidden"
-        );
-        g_simple_action_set_enabled(G_SIMPLE_ACTION(action), TRUE);
-
-        action = g_action_map_lookup_action(
-            G_ACTION_MAP(obj->priv->action_group), "show_binary"
-        );
-        g_simple_action_set_enabled(G_SIMPLE_ACTION(action), TRUE);
-
-        g_simple_action_set_enabled(G_SIMPLE_ACTION(action), TRUE);
-    } else if (BEDIT_IS_FILE_BROWSER_BOOKMARKS_STORE(model)) {
-        /* Set the filter toggle to normal up state, just for visual pleasure */
-        action = g_action_map_lookup_action(
-            G_ACTION_MAP(obj->priv->action_group), "show_hidden"
-        );
-
-        g_action_change_state(action, g_variant_new_boolean(FALSE));
-
-        /* sensitivity */
-        action = g_action_map_lookup_action(
-            G_ACTION_MAP(obj->priv->action_group), "up"
-        );
-        g_simple_action_set_enabled(G_SIMPLE_ACTION(action), FALSE);
-        action = g_action_map_lookup_action(
-            G_ACTION_MAP(obj->priv->action_group), "home"
-        );
-        g_simple_action_set_enabled(G_SIMPLE_ACTION(action), FALSE);
-
-        action = g_action_map_lookup_action(
-            G_ACTION_MAP(obj->priv->action_group), "show_hidden"
-        );
-        g_simple_action_set_enabled(G_SIMPLE_ACTION(action), FALSE);
-
-        action = g_action_map_lookup_action(
-            G_ACTION_MAP(obj->priv->action_group), "show_binary"
-        );
-        g_simple_action_set_enabled(G_SIMPLE_ACTION(action), FALSE);
-
-        g_simple_action_set_enabled(G_SIMPLE_ACTION(action), FALSE);
+    if (model == NULL) {
+        return;
     }
+
+    mode = bedit_file_browser_store_get_filter_mode(
+        BEDIT_FILE_BROWSER_STORE(model)
+    );
+
+    action = g_action_map_lookup_action(
+        G_ACTION_MAP(obj->priv->action_group), "show_hidden"
+    );
+
+    g_action_change_state(
+        action,
+        g_variant_new_boolean(
+            !(mode & BEDIT_FILE_BROWSER_STORE_FILTER_MODE_HIDE_HIDDEN)
+        )
+    );
+
+    /* sensitivity */
+    action = g_action_map_lookup_action(
+        G_ACTION_MAP(obj->priv->action_group), "up"
+    );
+    g_simple_action_set_enabled(G_SIMPLE_ACTION(action), TRUE);
+    action = g_action_map_lookup_action(
+        G_ACTION_MAP(obj->priv->action_group), "home"
+    );
+    g_simple_action_set_enabled(G_SIMPLE_ACTION(action), TRUE);
+
+    action = g_action_map_lookup_action(
+        G_ACTION_MAP(obj->priv->action_group), "show_hidden"
+    );
+    g_simple_action_set_enabled(G_SIMPLE_ACTION(action), TRUE);
+
+    action = g_action_map_lookup_action(
+        G_ACTION_MAP(obj->priv->action_group), "show_binary"
+    );
+    g_simple_action_set_enabled(G_SIMPLE_ACTION(action), TRUE);
+
+    g_simple_action_set_enabled(G_SIMPLE_ACTION(action), TRUE);
 
     on_selection_changed(
         gtk_tree_view_get_selection GTK_TREE_VIEW(obj->priv->tree_view), obj
@@ -773,17 +743,8 @@ static gboolean popup_menu(
     GtkTreeModel *model
 ) {
     GtkWidget *menu;
-    GMenuModel *menu_model;
 
-    if (BEDIT_IS_FILE_BROWSER_STORE(model)) {
-        menu_model = obj->priv->dir_menu;
-    } else if (BEDIT_IS_FILE_BROWSER_BOOKMARKS_STORE(model)) {
-        menu_model = obj->priv->bookmarks_menu;
-    } else {
-        return FALSE;
-    }
-
-    menu = gtk_menu_new_from_model(menu_model);
+    menu = gtk_menu_new_from_model(G_MENU_MODEL(obj->priv->dir_menu));
     gtk_menu_attach_to_widget(GTK_MENU(menu), GTK_WIDGET(obj), NULL);
 
     if (event != NULL) {
