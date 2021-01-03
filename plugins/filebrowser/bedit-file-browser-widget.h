@@ -32,61 +32,23 @@
 #include "bedit-file-browser-view.h"
 
 G_BEGIN_DECLS
-#define BEDIT_TYPE_FILE_BROWSER_WIDGET (bedit_file_browser_widget_get_type())
-#define BEDIT_FILE_BROWSER_WIDGET(obj)                                      \
-    (G_TYPE_CHECK_INSTANCE_CAST(                                            \
-        (obj), BEDIT_TYPE_FILE_BROWSER_WIDGET, BeditFileBrowserWidget       \
-    ))
-#define BEDIT_FILE_BROWSER_WIDGET_CONST(obj)                                \
-    (G_TYPE_CHECK_INSTANCE_CAST(                                            \
-        (obj), BEDIT_TYPE_FILE_BROWSER_WIDGET, BeditFileBrowserWidget const \
-    ))
-#define BEDIT_FILE_BROWSER_WIDGET_CLASS(klass)                              \
-    (G_TYPE_CHECK_CLASS_CAST(                                               \
-        (klass), BEDIT_TYPE_FILE_BROWSER_WIDGET,                            \
-        BeditFileBrowserWidgetClass                                         \
-    ))
-#define BEDIT_IS_FILE_BROWSER_WIDGET(obj)                                   \
-    (G_TYPE_CHECK_INSTANCE_TYPE((obj), BEDIT_TYPE_FILE_BROWSER_WIDGET))
-#define BEDIT_IS_FILE_BROWSER_WIDGET_CLASS(klass)                           \
-    (G_TYPE_CHECK_CLASS_TYPE((klass), BEDIT_TYPE_FILE_BROWSER_WIDGET))
-#define BEDIT_FILE_BROWSER_WIDGET_GET_CLASS(obj)                            \
-    (G_TYPE_INSTANCE_GET_CLASS(                                             \
-        (obj), BEDIT_TYPE_FILE_BROWSER_WIDGET, BeditFileBrowserWidgetClass  \
-    ))
 
-typedef struct _BeditFileBrowserWidget BeditFileBrowserWidget;
-typedef struct _BeditFileBrowserWidgetClass BeditFileBrowserWidgetClass;
-typedef struct _BeditFileBrowserWidgetPrivate BeditFileBrowserWidgetPrivate;
+
+#define BEDIT_TYPE_FILE_BROWSER_WIDGET                                      \
+    (bedit_file_browser_widget_get_type())
+
+G_DECLARE_FINAL_TYPE(
+    BeditFileBrowserWidget, bedit_file_browser_widget,
+    BEDIT, FILE_BROWSER_WIDGET,
+    GtkBox
+)
+
+GType bedit_file_browser_widget_get_type(void) G_GNUC_CONST;
 
 typedef gboolean (*BeditFileBrowserWidgetFilterFunc)(
     BeditFileBrowserWidget *obj, BeditFileBrowserStore *model,
     GtkTreeIter *iter, gpointer user_data
 );
-
-struct _BeditFileBrowserWidget {
-    GtkBox parent;
-
-    BeditFileBrowserWidgetPrivate *priv;
-};
-
-struct _BeditFileBrowserWidgetClass {
-    GtkBoxClass parent_class;
-
-    /* Signals */
-    void (*file_activated)(BeditFileBrowserWidget *widget, GFile *file);
-    void (*directory_activated)(BeditFileBrowserWidget *widget, GFile *file);
-    void (*error)(
-        BeditFileBrowserWidget *widget, guint code, gchar const *message
-    );
-    gboolean (*confirm_delete)(
-        BeditFileBrowserWidget *widget, BeditFileBrowserStore *model,
-        GList *list
-    );
-    gboolean (*confirm_no_trash)(BeditFileBrowserWidget *widget, GList *list);
-    void (*open_in_terminal)(BeditFileBrowserWidget *widget, GFile *location);
-    void (*set_active_root)(BeditFileBrowserWidget *widget);
-};
 
 GType bedit_file_browser_widget_get_type(void) G_GNUC_CONST;
 
