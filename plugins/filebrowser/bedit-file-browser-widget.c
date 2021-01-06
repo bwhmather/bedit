@@ -1065,7 +1065,7 @@ void bedit_file_browser_widget_set_search_enabled(
     if (enabled) {
         gtk_stack_set_visible_child_full(
             obj->toolbar_stack, "search",
-            GTK_STACK_TRANSITION_TYPE_OVER_RIGHT_LEFT
+            GTK_STACK_TRANSITION_TYPE_NONE
         );
         gtk_stack_set_visible_child_full(
             obj->view_stack, "search",
@@ -1079,7 +1079,7 @@ void bedit_file_browser_widget_set_search_enabled(
     } else {
         gtk_stack_set_visible_child_full(
             obj->toolbar_stack, "tree",
-            GTK_STACK_TRANSITION_TYPE_OVER_RIGHT_LEFT
+            GTK_STACK_TRANSITION_TYPE_NONE
         );
         gtk_stack_set_visible_child_full(
             obj->view_stack, "tree",
