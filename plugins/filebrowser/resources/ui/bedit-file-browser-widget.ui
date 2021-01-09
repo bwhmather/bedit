@@ -2,17 +2,17 @@
 <interface>
   <object class="GtkMenu" id="location_previous_menu">
     <property name="visible">True</property>
-    <property name="can_focus">False</property>
+    <property name="can-focus">False</property>
   </object>
   <object class="GtkMenu" id="location_next_menu">
     <property name="visible">True</property>
-    <property name="can_focus">False</property>
+    <property name="can-focus">False</property>
   </object>
   <template class="BeditFileBrowserWidget" parent="GtkGrid">
     <property name="visible">True</property>
-    <property name="can_focus">False</property>
+    <property name="can-focus">False</property>
     <property name="margin">3</property>
-    <property name="row_spacing">3</property>
+    <property name="row-spacing">3</property>
     <child>
       <object class="GtkBox" id="toolbar">
         <property name="visible">True</property>
@@ -20,8 +20,8 @@
         <child>
           <object class="GtkToggleButton" id="search_toggle">
             <property name="visible">True</property>
-            <property name="can_focus">False</property>
-            <property name="receives_default">False</property>
+            <property name="can-focus">False</property>
+            <property name="receives-default">False</property>
             <property name="image">search_image</property>
             <style>
               <class name="small-button"/>
@@ -39,9 +39,9 @@
                 <child>
                   <object class="GtkButton" id="button3">
                     <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="receives_default">True</property>
-                    <property name="action_name">browser.up</property>
+                    <property name="can-focus">False</property>
+                    <property name="receives-default">True</property>
+                    <property name="action-name">browser.up</property>
                     <property name="image">up_image</property>
                     <property name="tooltip-text" translatable="yes">Navigate to parent directory (Shift+Backspace)</property>
                     <style>
@@ -57,7 +57,7 @@
                 <child>
                   <object class="BeditFileBrowserLocation" id="location">
                     <property name="visible">True</property>
-                    <property name="can_focus">False</property>
+                    <property name="can-focus">False</property>
                     <property name="valign">center</property>
                     <child internal-child="accessible">
                       <object class="AtkObject" id="locations_button_a11y">
@@ -130,8 +130,8 @@
         </child>
       </object>
       <packing>
-        <property name="left_attach">0</property>
-        <property name="top_attach">0</property>
+        <property name="left-attach">0</property>
+        <property name="top-attach">0</property>
         <property name="width">1</property>
         <property name="height">1</property>
       </packing>
@@ -142,14 +142,14 @@
         <child>
           <object class="GtkScrolledWindow">
             <property name="visible">True</property>
-            <property name="can_focus">True</property>
+            <property name="can-focus">True</property>
             <property name="hexpand">True</property>
             <property name="vexpand">True</property>
-            <property name="shadow_type">in</property>
+            <property name="shadow-type">in</property>
             <child>
               <object class="BeditFileBrowserView" id="tree_view">
                 <property name="visible">True</property>
-                <property name="can_focus">True</property>
+                <property name="can-focus">True</property>
                 <child internal-child="selection">
                   <object class="GtkTreeSelection"/>
                 </child>
@@ -163,14 +163,14 @@
         <child>
           <object class="GtkScrolledWindow">
             <property name="visible">True</property>
-            <property name="can_focus">True</property>
+            <property name="can-focus">True</property>
             <property name="hexpand">True</property>
             <property name="vexpand">True</property>
-            <property name="shadow_type">in</property>
+            <property name="shadow-type">in</property>
             <child>
               <object class="BeditFileBrowserSearchView" id="search_view">
                 <property name="visible">True</property>
-                <property name="can_focus">True</property>
+                <property name="can-focus">True</property>
               </object>
             </child>
           </object>
@@ -180,8 +180,8 @@
         </child>
       </object>
       <packing>
-        <property name="left_attach">0</property>
-        <property name="top_attach">3</property>
+        <property name="left-attach">0</property>
+        <property name="top-attach">3</property>
         <property name="width">1</property>
         <property name="height">1</property>
       </packing>
@@ -189,12 +189,12 @@
   </template>
   <object class="GtkImage" id="up_image">
     <property name="visible">True</property>
-    <property name="icon_name">go-up-symbolic</property>
+    <property name="icon-name">go-up-symbolic</property>
     <property name="icon-size">2</property>
   </object>
   <object class="GtkImage" id="search_image">
     <property name="visible">True</property>
-    <property name="icon_name">edit-find-symbolic</property>
+    <property name="icon-name">edit-find-symbolic</property>
     <property name="icon-size">2</property>
   </object>
 </interface>
