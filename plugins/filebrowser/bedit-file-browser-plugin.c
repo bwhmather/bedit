@@ -44,6 +44,7 @@
 #include "bedit-file-browser-utils.h"
 #include "bedit-file-browser-location.h"
 #include "bedit-file-browser-widget.h"
+#include "bedit-file-browser-search-root-dir-enumerator.h"
 #include "bedit-file-browser-search-view.h"
 
 G_MODULE_EXPORT void peas_register_types(PeasObjectModule *module) {
@@ -55,13 +56,18 @@ G_MODULE_EXPORT void peas_register_types(PeasObjectModule *module) {
     _bedit_file_browser_view_register_type(G_TYPE_MODULE(module));
     _bedit_file_browser_location_register_type(G_TYPE_MODULE(module));
     _bedit_file_browser_widget_register_type(G_TYPE_MODULE(module));
+    _bedit_file_browser_search_root_dir_enumerator_register_type(
+        G_TYPE_MODULE(module)
+    );
     _bedit_file_browser_search_view_register_type(G_TYPE_MODULE(module));
 
     peas_object_module_register_extension_type(
-        module, BEDIT_TYPE_APP_ACTIVATABLE, BEDIT_TYPE_FILE_BROWSER_APP_ACTIVATABLE
+        module, BEDIT_TYPE_APP_ACTIVATABLE,
+        BEDIT_TYPE_FILE_BROWSER_APP_ACTIVATABLE
     );
     peas_object_module_register_extension_type(
-        module, BEDIT_TYPE_WINDOW_ACTIVATABLE, BEDIT_TYPE_FILE_BROWSER_WINDOW_ACTIVATABLE
+        module, BEDIT_TYPE_WINDOW_ACTIVATABLE,
+        BEDIT_TYPE_FILE_BROWSER_WINDOW_ACTIVATABLE
     );
 }
 

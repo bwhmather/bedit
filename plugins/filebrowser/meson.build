@@ -22,6 +22,7 @@ libfilebrowser_sources = files(
   'bedit-file-browser-location.c',
   'bedit-file-browser-widget.c',
   'bedit-file-browser-search-dir-enumerator.c',
+  'bedit-file-browser-search-root-dir-enumerator.c',
   'bedit-file-browser-search-view.c',
 )
 
