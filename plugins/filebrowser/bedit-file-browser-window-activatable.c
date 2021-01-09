@@ -65,6 +65,7 @@ typedef struct _BeditFileBrowserWindowActivatablePrivate {
     GSettings *terminal_settings;
 
     GtkWidget *action_area_button;
+    GtkPopover *popover;
     BeditFileBrowserWidget *tree_widget;
     gboolean confirm_trash;
 
@@ -105,6 +106,10 @@ static gboolean on_confirm_no_trash_cb(
 );
 static void on_popover_closed_cb(
     GtkPopover *popover, BeditFileBrowserWindowActivatable *plugin
+);
+static void on_window_size_allocate_cb(
+    BeditWindow *window, GdkRectangle *allocation,
+    BeditFileBrowserWindowActivatable *plugin
 );
 
 G_DEFINE_DYNAMIC_TYPE_EXTENDED(
@@ -395,7 +400,6 @@ static void bedit_file_browser_window_activatable_activate(
     BeditFileBrowserWindowActivatablePrivate *priv;
     GtkWidget *action_area;
     GtkWidget *action_area_button_image;
-    GtkWidget *popover;
     BeditFileBrowserStore *store;
 
     plugin = BEDIT_FILE_BROWSER_WINDOW_ACTIVATABLE(activatable);
@@ -458,34 +462,40 @@ static void bedit_file_browser_window_activatable_activate(
     );
 
     /* Connect using popover. */
-    popover = gtk_popover_new(priv->action_area_button);
+    priv->popover = GTK_POPOVER(gtk_popover_new(priv->action_area_button));
     gtk_menu_button_set_popover(
-        GTK_MENU_BUTTON(priv->action_area_button), popover
+        GTK_MENU_BUTTON(priv->action_area_button), GTK_WIDGET(priv->popover)
     );
 
     g_object_set(
-        G_OBJECT(popover),
+        G_OBJECT(priv->popover),
         "constrain-to", GTK_POPOVER_CONSTRAINT_WINDOW, NULL
     );
 
-    // TODO scale to fit window.
     g_object_set(
-        G_OBJECT(popover),
+        G_OBJECT(priv->popover),
         "width-request", 350, NULL
     );
     g_object_set(
-        G_OBJECT(popover),
+        G_OBJECT(priv->popover),
         "height-request", 800, NULL
     );
 
+    /* Listen for resize events to fit popover inside window. */
     g_signal_connect(
-        popover, "closed",
+        priv->window, "size-allocate",
+        G_CALLBACK(on_window_size_allocate_cb), plugin
+    );
+
+    g_signal_connect(
+        priv->popover, "closed",
         G_CALLBACK(on_popover_closed_cb), plugin
     );
 
     gtk_container_add(
-        GTK_CONTAINER(popover), GTK_WIDGET(priv->tree_widget)
+        GTK_CONTAINER(priv->popover), GTK_WIDGET(priv->tree_widget)
     );
+
 
     /* Add everything to the area to the left of the tab bar. */
     action_area = bedit_window_get_action_area(priv->window);
@@ -536,8 +546,8 @@ static void bedit_file_browser_window_activatable_activate(
         G_CALLBACK(on_toggle_action_cb), activatable
     );
     g_action_map_add_action(
-        G_ACTION_MAP(priv->window), G_ACTION(priv->toggle_action))
-    ;
+        G_ACTION_MAP(priv->window), G_ACTION(priv->toggle_action)
+    );
 
     bedit_file_browser_window_activatable_update_state(activatable);
 }
@@ -862,4 +872,26 @@ static void on_popover_closed_cb(
     priv = bedit_file_browser_window_activatable_get_instance_private(plugin);
 
     bedit_file_browser_widget_set_search_enabled(priv->tree_widget, FALSE);
+}
+
+static void on_window_size_allocate_cb(
+    BeditWindow *window, GdkRectangle *allocation,
+    BeditFileBrowserWindowActivatable *plugin
+) {
+    BeditFileBrowserWindowActivatablePrivate *priv;
+
+    g_return_if_fail(BEDIT_IS_WINDOW(window));
+    g_return_if_fail(BEDIT_IS_FILE_BROWSER_WINDOW_ACTIVATABLE(plugin));
+
+    priv = bedit_file_browser_window_activatable_get_instance_private(plugin);
+
+    g_object_set(
+        G_OBJECT(priv->popover),
+        "width-request", CLAMP(allocation->width - 40, 200, 450), NULL
+    );
+
+    g_object_set(
+        G_OBJECT(priv->popover),
+        "height-request", CLAMP(allocation->height - 40, 100, 1200), NULL
+    );
 }
