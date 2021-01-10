@@ -27,6 +27,7 @@
 
 #include "bedit/bedit-debug.h"
 
+#include "bedit-file-browser-search-match.h"
 
 #define DIRECTORY_LOAD_ITEMS_PER_CALLBACK 128
 #define STANDARD_ATTRIBUTE_TYPES                                            \
@@ -480,9 +481,6 @@ struct _Search {
 
 
 static void bedit_file_browser_search_free(Search *search);
-static gboolean bedit_file_browser_search_match_segment(
-    gchar const *segment, gchar const *name, GString *markup
-);
 static gboolean bedit_file_browser_search_is_last_segment(gchar const *segment);
 static void bedit_file_browser_search_push(
     Search *search, GFile *file, GList *children, gchar *markup
@@ -497,185 +495,6 @@ static void bedit_file_browser_search_reload_top_begin_cb(
     GFile *file, GAsyncResult *result, Search *search
 );
 void bedit_file_browser_search_reload_top(Search *search);
-
-static void bedit_file_browser_search_append_escaped(
-    GString *str, gunichar chr
-) {
-    // Stolen from `g_markup_escape_text`, with some minor reformatting.
-    switch (chr) {
-    case '&':
-        g_string_append(str, "&amp;");
-        break;
-
-    case '<':
-        g_string_append(str, "&lt;");
-        break;
-
-    case '>':
-        g_string_append(str, "&gt;");
-        break;
-
-    case '\'':
-        g_string_append(str, "&apos;");
-        break;
-
-    case '"':
-        g_string_append(str, "&quot;");
-        break;
-
-    default:
-        if (
-            (0x1 <= chr && chr <= 0x8) ||
-            (0xb <= chr && chr  <= 0xc) ||
-            (0xe <= chr && chr <= 0x1f) ||
-            (0x7f <= chr && chr <= 0x84) ||
-            (0x86 <= chr && chr <= 0x9f)
-        ) {
-            g_string_append_printf(str, "&#x%x;", chr);
-        } else {
-            g_string_append_unichar(str, chr);
-        }
-        break;
-    }
-}
-
-static gboolean bedit_file_browser_search_match_segment(
-    gchar const *segment, gchar const *name, GString *markup
-) {
-    gboolean bold = FALSE;
-    gchar const *query_cursor;
-    gchar const *name_cursor;
-    gchar const *chunk_start;
-
-    g_string_truncate(markup, 0);
-
-    query_cursor = segment;
-    name_cursor = name;
-    chunk_start = name;
-
-    while (*chunk_start != '\0') {
-        gchar const *chunk_end;
-        gchar const *candidate_start;
-        gchar const *best_start;
-        size_t best_length;
-
-        // Find end of chunk.
-        chunk_end = g_utf8_find_next_char(chunk_start, NULL);
-        while (TRUE) {
-            gunichar start_char = g_utf8_get_char(chunk_start);
-            gunichar end_char = g_utf8_get_char(chunk_end);
-
-            if (end_char == '\0') {
-                break;
-            }
-
-            if (g_unichar_isalpha(start_char)) {
-                // Chunk is made up of an upper or lower case letter followed by
-                // any number of lower case letters.
-                if (!g_unichar_islower(end_char)) {
-                    break;
-                }
-            } else if (g_unichar_isdigit(start_char)) {
-                // Chunk is a sequence of digits
-                if (!g_unichar_isdigit(end_char)) {
-                    break;
-                }
-            } else {
-                // Chunk is a single, non-alphanumeric character.
-                break;
-            }
-
-            chunk_end = g_utf8_find_next_char(chunk_end, NULL);
-        }
-
-        g_return_val_if_fail(chunk_end > chunk_start, FALSE);  // TODO debugging only.
-
-        // Find longest match.
-        best_start = chunk_start;
-        best_length = 0;
-
-        candidate_start = chunk_start;
-        while (candidate_start < chunk_end) {
-            gchar const *candidate_name_cursor;
-            gchar const *candidate_query_cursor;
-            gint candidate_length;
-
-            candidate_name_cursor = candidate_start;
-            candidate_query_cursor = query_cursor;
-            candidate_length = 0;
-
-            while (candidate_start < chunk_end) {
-                gunichar name_char = g_utf8_get_char(candidate_name_cursor);
-                gunichar query_char = g_utf8_get_char(candidate_query_cursor);
-
-                if (query_char == '\0' || query_char == '/') {
-                    break;
-                }
-
-                if (
-                    g_unichar_tolower(name_char) !=
-                    g_unichar_tolower(query_char)
-                ) {
-                    break;
-                }
-
-                candidate_name_cursor = g_utf8_find_next_char(
-                    candidate_name_cursor, NULL
-                );
-                candidate_query_cursor = g_utf8_find_next_char(
-                    candidate_query_cursor, NULL
-                );
-                candidate_length++;
-            }
-
-            if (candidate_length > best_length) {
-                best_start = candidate_start;
-                best_length = candidate_length;
-            }
-
-            candidate_start = g_utf8_find_next_char(candidate_start, NULL);
-        }
-
-        while (name_cursor < chunk_end) {
-            if (
-                name_cursor >= best_start &&
-                name_cursor < (best_start + best_length)
-            ) {
-                if (!bold) {
-                    g_string_append(markup, "<b>");
-                    bold = TRUE;
-                }
-            } else {
-                if (bold) {
-                    g_string_append(markup, "</b>");
-                    bold = FALSE;
-                }
-            }
-
-            bedit_file_browser_search_append_escaped(
-                markup, g_utf8_get_char(name_cursor)
-            );
-
-            name_cursor = g_utf8_find_next_char(name_cursor, NULL);
-        }
-
-        query_cursor += best_length;
-        chunk_start = chunk_end;
-    }
-
-    if (bold) {
-        g_string_append(markup, "</b>");
-    }
-
-    if (
-        g_utf8_get_char(query_cursor) == '\0' ||
-        g_utf8_get_char(query_cursor) == '/'
-    ) {
-        return TRUE;
-    } else {
-        return FALSE;
-    }
-}
 
 static gboolean bedit_file_browser_search_is_last_segment(
     gchar const *segment
