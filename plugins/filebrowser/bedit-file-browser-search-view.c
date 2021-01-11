@@ -31,6 +31,7 @@
 #include "bedit-file-browser-search-dir-enumerator.h"
 #include "bedit-file-browser-search-root-dir-enumerator.h"
 #include "bedit-file-browser-search-child-dir-enumerator.h"
+#include "bedit-file-browser-search-parent-dir-enumerator.h"
 #include "bedit-file-browser-search-file-enumerator.h"
 
 struct _BeditFileBrowserSearchView {
@@ -489,25 +490,31 @@ static void bedit_file_browser_search_view_refresh(
     while (*query_cursor != '\0') {
         gchar *end;
         gchar *query_segment;
-        BeditFileBrowserSearchChildDirEnumerator *new_enumerator;
+        BeditFileBrowserSearchDirEnumerator *new_enumerator;
 
         end = strstr(query_cursor, "/");
         if (end == NULL) {
             break;
         }
+
         query_segment = g_strndup(query_cursor, end - query_cursor);
 
-        new_enumerator = bedit_file_browser_search_child_dir_enumerator_new(
-            dir_enumerator, query_segment
-        );
-        g_return_if_fail(
-            BEDIT_IS_FILE_BROWSER_SEARCH_CHILD_DIR_ENUMERATOR(
-                new_enumerator
-            )
-        );
+        if (g_strcmp0(query_segment, "..")) {
+            new_enumerator = BEDIT_FILE_BROWSER_SEARCH_DIR_ENUMERATOR(
+                bedit_file_browser_search_child_dir_enumerator_new(
+                    dir_enumerator, query_segment
+                )
+            );
+        } else {
+            new_enumerator = BEDIT_FILE_BROWSER_SEARCH_DIR_ENUMERATOR(
+                bedit_file_browser_search_parent_dir_enumerator_new(
+                    dir_enumerator
+                )
+            );
+        }
 
         g_clear_object(&dir_enumerator);
-        dir_enumerator = BEDIT_FILE_BROWSER_SEARCH_DIR_ENUMERATOR(
+        dir_enumerator = (
             new_enumerator
         );
         g_free(query_segment);
