@@ -46,6 +46,7 @@
 #include "bedit-file-browser-widget.h"
 #include "bedit-file-browser-search-root-dir-enumerator.h"
 #include "bedit-file-browser-search-child-dir-enumerator.h"
+#include "bedit-file-browser-search-parent-dir-enumerator.h"
 #include "bedit-file-browser-search-file-enumerator.h"
 #include "bedit-file-browser-search-view.h"
 
@@ -62,6 +63,9 @@ G_MODULE_EXPORT void peas_register_types(PeasObjectModule *module) {
         G_TYPE_MODULE(module)
     );
     _bedit_file_browser_search_child_dir_enumerator_register_type(
+        G_TYPE_MODULE(module)
+    );
+    _bedit_file_browser_search_parent_dir_enumerator_register_type(
         G_TYPE_MODULE(module)
     );
     _bedit_file_browser_search_file_enumerator_register_type(
