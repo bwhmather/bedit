@@ -30,6 +30,7 @@
 #include "bedit-file-browser-search-match.h"
 #include "bedit-file-browser-search-dir-enumerator.h"
 #include "bedit-file-browser-search-root-dir-enumerator.h"
+#include "bedit-file-browser-search-child-dir-enumerator.h"
 #include "bedit-file-browser-search-file-enumerator.h"
 
 struct _BeditFileBrowserSearchView {
@@ -439,10 +440,13 @@ static void bedit_file_browser_search_view_refresh(
 ) {
     GError *error = NULL;
     gchar *query;
+    gchar *query_cursor;
     GFile *virtual_root;
-    BeditFileBrowserSearchDirEnumerator *root_enumerator;
+    BeditFileBrowserSearchDirEnumerator *dir_enumerator;
     BeditFileBrowserSearchFileEnumerator *file_enumerator;
     GtkTreeStore *tree_store;
+    GtkTreePath *path;
+    GtkTreeSelection *selection;
 
     g_return_if_fail(BEDIT_IS_FILE_BROWSER_SEARCH_VIEW(view));
 
@@ -474,16 +478,50 @@ static void bedit_file_browser_search_view_refresh(
     view->cancellable = g_cancellable_new();
 
     // TODO `~/` for home, `/` for root.
-    root_enumerator = BEDIT_FILE_BROWSER_SEARCH_DIR_ENUMERATOR(
+    dir_enumerator = BEDIT_FILE_BROWSER_SEARCH_DIR_ENUMERATOR(
         bedit_file_browser_search_root_dir_enumerator_new(virtual_root, "")
     );
-    g_return_if_fail(BEDIT_IS_FILE_BROWSER_SEARCH_DIR_ENUMERATOR(root_enumerator));
+    g_return_if_fail(
+        BEDIT_IS_FILE_BROWSER_SEARCH_DIR_ENUMERATOR(dir_enumerator)
+    );
 
-    // TODO split on `/` and add parent or child enumerators for each segment.
+    query_cursor = query;
+    while (*query_cursor != '\0') {
+        gchar *end;
+        gchar *query_segment;
+        BeditFileBrowserSearchChildDirEnumerator *new_enumerator;
+
+        end = strstr(query_cursor, "/");
+        if (end == NULL) {
+            break;
+        }
+        query_segment = g_strndup(query_cursor, end - query_cursor);
+
+        new_enumerator = bedit_file_browser_search_child_dir_enumerator_new(
+            dir_enumerator, query_segment
+        );
+        g_return_if_fail(
+            BEDIT_IS_FILE_BROWSER_SEARCH_CHILD_DIR_ENUMERATOR(
+                new_enumerator
+            )
+        );
+
+        g_clear_object(&dir_enumerator);
+        dir_enumerator = BEDIT_FILE_BROWSER_SEARCH_DIR_ENUMERATOR(
+            new_enumerator
+        );
+        g_free(query_segment);
+
+        query_cursor = end + 1;
+    }
 
     file_enumerator = bedit_file_browser_search_file_enumerator_new(
-        root_enumerator, query
+        dir_enumerator, query_cursor
     );
+    g_return_if_fail(
+        BEDIT_IS_FILE_BROWSER_SEARCH_FILE_ENUMERATOR(file_enumerator)
+    );
+    g_clear_object(&dir_enumerator);
 
     tree_store = gtk_tree_store_new(
         N_COLUMNS,
@@ -522,10 +560,16 @@ static void bedit_file_browser_search_view_refresh(
         g_free(match_markup);
     }
 
-    g_object_unref(file_enumerator);
-    g_object_unref(root_enumerator);
+    g_clear_object(&file_enumerator);
 
     gtk_tree_view_set_model(view->tree_view, GTK_TREE_MODEL(tree_store));
+    g_clear_object(&tree_store);
+
+    path = gtk_tree_path_new_first();
+    selection = gtk_tree_view_get_selection(view->tree_view);
+    gtk_tree_selection_unselect_all(selection);
+    gtk_tree_selection_select_path(selection, path);
+    gtk_tree_path_free(path);
 }
 
 void _bedit_file_browser_search_view_register_type(GTypeModule *type_module) {
