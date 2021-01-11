@@ -134,7 +134,7 @@ gboolean bedit_file_browser_search_match_segment(
                 gunichar name_char = g_utf8_get_char(candidate_name_cursor);
                 gunichar query_char = g_utf8_get_char(candidate_query_cursor);
 
-                if (query_char == '\0' || query_char == '/') {
+                if (query_char == '\0') {
                     break;
                 }
 
@@ -193,12 +193,5 @@ gboolean bedit_file_browser_search_match_segment(
         g_string_append(markup, "</b>");
     }
 
-    if (
-        g_utf8_get_char(query_cursor) == '\0' ||
-        g_utf8_get_char(query_cursor) == '/'
-    ) {
-        return TRUE;
-    } else {
-        return FALSE;
-    }
+    return g_utf8_get_char(query_cursor) == '\0' ? TRUE : FALSE;
 }
