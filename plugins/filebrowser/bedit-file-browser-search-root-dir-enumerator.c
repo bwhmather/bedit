@@ -167,7 +167,9 @@ static void bedit_file_browser_search_root_dir_enumerator_init(
  * Return value: the new #BeditFileBrowserSearchRootDirEnumerator object
  **/
 BeditFileBrowserSearchRootDirEnumerator
-*bedit_file_browser_search_root_dir_enumerator_new(GFile *root, gchar *prefix) {
+*bedit_file_browser_search_root_dir_enumerator_new(
+    GFile *root, gchar const *prefix
+) {
     return g_object_new(
         BEDIT_TYPE_FILE_BROWSER_SEARCH_ROOT_DIR_ENUMERATOR,
         "root", root, "prefix", prefix,

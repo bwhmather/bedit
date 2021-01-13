@@ -40,7 +40,9 @@ G_DECLARE_FINAL_TYPE(
 GType bedit_file_browser_search_root_dir_enumerator_get_type(void) G_GNUC_CONST;
 
 BeditFileBrowserSearchRootDirEnumerator
-*bedit_file_browser_search_root_dir_enumerator_new(GFile *file, gchar *prefix);
+*bedit_file_browser_search_root_dir_enumerator_new(
+    GFile *file, gchar const *prefix
+);
 
 void _bedit_file_browser_search_root_dir_enumerator_register_type(
     GTypeModule *type_module
