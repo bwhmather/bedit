@@ -442,6 +442,7 @@ static void bedit_file_browser_search_view_refresh(
     GError *error = NULL;
     gchar *query;
     gchar *query_cursor;
+    gchar const *prefix;
     GFile *virtual_root;
     BeditFileBrowserSearchDirEnumerator *dir_enumerator;
     BeditFileBrowserSearchFileEnumerator *file_enumerator;
@@ -478,15 +479,27 @@ static void bedit_file_browser_search_view_refresh(
     }
     view->cancellable = g_cancellable_new();
 
-    // TODO `~/` for home, `/` for root.
+    if (g_str_has_prefix(query, "~/")) {
+        virtual_root = g_file_new_for_path(g_get_home_dir());
+        query_cursor = query + 2;
+        prefix = "~/";
+    } else if (g_str_has_prefix(query, "/")) {
+        virtual_root = g_file_new_for_path("/");
+        query_cursor = query + 1;
+        prefix = "/";
+    } else {
+        virtual_root = g_object_ref(virtual_root);
+        query_cursor = query;
+        prefix = "";
+    }
+
     dir_enumerator = BEDIT_FILE_BROWSER_SEARCH_DIR_ENUMERATOR(
-        bedit_file_browser_search_root_dir_enumerator_new(virtual_root, "")
+        bedit_file_browser_search_root_dir_enumerator_new(virtual_root, prefix)
     );
     g_return_if_fail(
         BEDIT_IS_FILE_BROWSER_SEARCH_DIR_ENUMERATOR(dir_enumerator)
     );
 
-    query_cursor = query;
     while (*query_cursor != '\0') {
         gchar *end;
         gchar *query_segment;
@@ -577,6 +590,7 @@ static void bedit_file_browser_search_view_refresh(
     gtk_tree_selection_unselect_all(selection);
     gtk_tree_selection_select_path(selection, path);
     gtk_tree_path_free(path);
+    g_object_unref(virtual_root);
 }
 
 void _bedit_file_browser_search_view_register_type(GTypeModule *type_module) {
