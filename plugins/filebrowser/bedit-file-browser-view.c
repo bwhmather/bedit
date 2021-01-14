@@ -1023,20 +1023,6 @@ static void bedit_file_browser_view_init(BeditFileBrowserView *obj) {
     );
 }
 
-static gboolean bookmarks_separator_func(
-    GtkTreeModel *model, GtkTreeIter *iter, gpointer user_data
-) {
-    guint flags;
-
-    gtk_tree_model_get(
-        model, iter,
-        BEDIT_FILE_BROWSER_BOOKMARKS_STORE_COLUMN_FLAGS, &flags,
-        -1
-    );
-
-    return (flags & BEDIT_FILE_BROWSER_BOOKMARKS_STORE_IS_SEPARATOR);
-}
-
 /* Public */
 GtkWidget *bedit_file_browser_view_new(void) {
     BeditFileBrowserView *obj = BEDIT_FILE_BROWSER_VIEW(
