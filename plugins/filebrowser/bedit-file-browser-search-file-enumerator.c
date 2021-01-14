@@ -244,6 +244,7 @@ gboolean bedit_file_browser_search_file_enumerator_iterate(
         while (TRUE) {
             GFileInfo *child_info;
             gchar const *child_name;
+            guint64 quality;
 
             child_info = g_file_enumerator_next_file(
                 child_enumerator, cancellable, error
@@ -263,7 +264,7 @@ gboolean bedit_file_browser_search_file_enumerator_iterate(
 
             if (bedit_file_browser_search_match_segment(
                 enumerator->pattern, child_name,
-                markup_buffer
+                markup_buffer, &quality
             )) {
                 match = g_slice_alloc0(sizeof(Match));
                 g_return_val_if_fail(match != NULL, FALSE);
@@ -275,7 +276,7 @@ gboolean bedit_file_browser_search_file_enumerator_iterate(
                     (gchar *) dir_markup,
                     markup_buffer->str
                 );
-                match->quality = 1;  // TODO
+                match->quality = quality;
 
                 enumerator->matches = g_list_prepend(
                     enumerator->matches, match

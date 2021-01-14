@@ -256,6 +256,7 @@ static gboolean bedit_file_browser_search_child_dir_enumerator_iterate(
         while (TRUE) {
             GFileInfo *child_info = NULL;
             gchar const *child_name;
+            guint64 quality;
 
             child_info = g_file_enumerator_next_file(
                 child_enumerator, cancellable, error
@@ -282,7 +283,7 @@ static gboolean bedit_file_browser_search_child_dir_enumerator_iterate(
 
             if (bedit_file_browser_search_match_segment(
                 enumerator->pattern, child_name,
-                markup_buffer
+                markup_buffer, &quality
             )) {
                 match = g_slice_alloc0(sizeof(Match));
                 g_return_val_if_fail(match != NULL, FALSE);
@@ -294,7 +295,7 @@ static gboolean bedit_file_browser_search_child_dir_enumerator_iterate(
                     (gchar *) dir_markup,
                     markup_buffer->str
                 );
-                match->quality = 1;  // TODO
+                match->quality = quality;
 
                 enumerator->matches = g_list_prepend(
                     enumerator->matches, match
@@ -304,7 +305,7 @@ static gboolean bedit_file_browser_search_child_dir_enumerator_iterate(
             g_object_unref(child_info);
         }
 
-        // TODO Sort by match quality, then visibility, then format, then alphabetically.
+        // TODO Sort by match quality, then length, then alphabetically
 
         g_string_free(markup_buffer, TRUE);
 

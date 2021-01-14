@@ -66,14 +66,16 @@ static void bedit_file_browser_search_append_escaped(
 }
 
 gboolean bedit_file_browser_search_match_segment(
-    gchar const *segment, gchar const *name, GString *markup
+    gchar const *segment, gchar const *name, GString *markup, guint64 *quality
 ) {
     gboolean bold = FALSE;
     gchar const *query_cursor;
     gchar const *name_cursor;
+    int quality_cursor = 0;
     gchar const *chunk_start;
 
     g_string_truncate(markup, 0);
+    *quality = 0;
 
     query_cursor = segment;
     name_cursor = name;
@@ -171,6 +173,8 @@ gboolean bedit_file_browser_search_match_segment(
                     g_string_append(markup, "<b>");
                     bold = TRUE;
                 }
+
+                *quality |= 1 << MAX(63 - quality_cursor, 0);
             } else {
                 if (bold) {
                     g_string_append(markup, "</b>");
@@ -183,6 +187,7 @@ gboolean bedit_file_browser_search_match_segment(
             );
 
             name_cursor = g_utf8_find_next_char(name_cursor, NULL);
+            quality_cursor ++;
         }
 
         query_cursor += best_length;
@@ -193,5 +198,10 @@ gboolean bedit_file_browser_search_match_segment(
         g_string_append(markup, "</b>");
     }
 
-    return g_utf8_get_char(query_cursor) == '\0' ? TRUE : FALSE;
+    if (g_utf8_get_char(query_cursor) == '\0') {
+        return TRUE;
+    } else {
+        *quality = 0;
+        return FALSE;
+    }
 }

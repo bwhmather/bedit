@@ -26,7 +26,7 @@
 G_BEGIN_DECLS
 
 gboolean bedit_file_browser_search_match_segment(
-    gchar const *segment, gchar const *name, GString *markup
+    gchar const *segment, gchar const *name, GString *markup, guint64 *quality
 );
 
 G_END_DECLS
