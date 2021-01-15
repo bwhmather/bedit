@@ -75,7 +75,7 @@ gboolean bedit_file_browser_search_match_segment(
     gchar const *chunk_start;
 
     g_string_truncate(markup, 0);
-    *quality = 0;
+    *quality = 0l;
 
     query_cursor = segment;
     name_cursor = name;
@@ -173,8 +173,7 @@ gboolean bedit_file_browser_search_match_segment(
                     g_string_append(markup, "<b>");
                     bold = TRUE;
                 }
-
-                *quality |= 1 << MAX(63 - quality_cursor, 0);
+                *quality = (*quality) | (1l << MAX(63 - quality_cursor, 0));
             } else {
                 if (bold) {
                     g_string_append(markup, "</b>");
