@@ -180,6 +180,51 @@ struct _Match {
     guint64 quality;
 };
 
+static gint bedit_file_browser_search_file_enumerator_compare_match(
+    gconstpointer a, gconstpointer b
+) {
+    Match const *a_match, *b_match;
+    GFileInfo *a_file_info, *b_file_info;
+    gboolean a_is_backup, b_is_backup;
+    gboolean a_is_hidden, b_is_hidden;
+
+    a_match = a;
+    b_match = b;
+
+    a_file_info = G_FILE_INFO(a_match->info);
+    b_file_info = G_FILE_INFO(b_match->info);
+
+    if (a_match->quality < b_match->quality) {
+        return 1;
+    }
+    if (b_match->quality < a_match->quality) {
+        return -1;
+    }
+
+    a_is_backup = g_file_info_get_is_backup(a_file_info);
+    b_is_backup = g_file_info_get_is_backup(b_file_info);
+    if (a_is_backup && !b_is_backup) {
+        return 1;
+    }
+    if (b_is_backup && !a_is_backup) {
+        return -1;
+    }
+
+    a_is_hidden = g_file_info_get_is_hidden(a_file_info);
+    b_is_hidden = g_file_info_get_is_hidden(b_file_info);
+    if (a_is_hidden && !b_is_hidden) {
+        return 1;
+    }
+    if (b_is_hidden && !a_is_hidden) {
+        return -1;
+    }
+
+    return g_utf8_collate(
+        g_file_info_get_name(a_file_info),
+        g_file_info_get_name(b_file_info)
+    );
+}
+
 gboolean bedit_file_browser_search_file_enumerator_iterate(
     BeditFileBrowserSearchFileEnumerator *enumerator,
     GFile **out_file,
@@ -286,7 +331,10 @@ gboolean bedit_file_browser_search_file_enumerator_iterate(
             g_object_unref(child_info);
         }
 
-        // TODO Sort by match quality, then visibility, then format, then alphabetically.
+        enumerator->matches = g_list_sort(
+            enumerator->matches,
+            bedit_file_browser_search_file_enumerator_compare_match
+        );
 
         g_string_free(markup_buffer, TRUE);
 
