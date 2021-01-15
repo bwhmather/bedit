@@ -132,7 +132,7 @@ gboolean bedit_file_browser_search_match_segment(
             candidate_query_cursor = query_cursor;
             candidate_length = 0;
 
-            while (candidate_start < chunk_end) {
+            while (candidate_start  + candidate_length <= chunk_end) {
                 gunichar name_char = g_utf8_get_char(candidate_name_cursor);
                 gunichar query_char = g_utf8_get_char(candidate_query_cursor);
 
