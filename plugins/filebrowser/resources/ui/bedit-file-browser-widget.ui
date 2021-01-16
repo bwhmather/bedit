@@ -23,6 +23,7 @@
             <property name="can-focus">False</property>
             <property name="receives-default">False</property>
             <property name="image">search_image</property>
+            <property name="tooltip-text" translatable="yes">Toggle search (automatic on text input)</property>
             <style>
               <class name="small-button"/>
             </style>
@@ -80,7 +81,7 @@
                         <property name="visible">True</property>
                         <property name="can-focus">False</property>
                         <property name="receives-default">False</property>
-                        <property name="tooltip-text" translatable="yes">Match case</property>
+                        <property name="tooltip-text" translatable="yes">Show binary files</property>
                       </object>
                       <packing>
                         <property name="expand">True</property>
@@ -94,7 +95,7 @@
                         <property name="visible">True</property>
                         <property name="can-focus">False</property>
                         <property name="receives-default">False</property>
-                        <property name="tooltip-text" translatable="yes">Regular expression</property>
+                        <property name="tooltip-text" translatable="yes">Show hidden files (Ctrl+H)</property>
                       </object>
                       <packing>
                         <property name="expand">True</property>
