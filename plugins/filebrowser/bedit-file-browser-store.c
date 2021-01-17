@@ -196,7 +196,9 @@ static void model_add_node(
     FileBrowserNode *parent
 );
 static void model_clear(BeditFileBrowserStore *model, gboolean free_nodes);
-static gint model_sort_default(FileBrowserNode *node1, FileBrowserNode *node2);
+static gint model_sort_default(
+    FileBrowserNode *node_a, FileBrowserNode *node_b
+);
 static void model_check_dummy(
     BeditFileBrowserStore *model, FileBrowserNode *node
 );
@@ -1099,41 +1101,55 @@ static void model_node_update_visibility(
     }
 }
 
-static gint collate_nodes(FileBrowserNode *node1, FileBrowserNode *node2) {
-    if (node1->name == NULL) {
-        return -1;
-    } else if (node2->name == NULL) {
-        return 1;
-    } else {
-        gchar *k1 = g_utf8_collate_key_for_filename(node1->name, -1);
-        gchar *k2 = g_utf8_collate_key_for_filename(node2->name, -1);
-        gint result = strcmp(k1, k2);
+static gint model_sort_default(
+    FileBrowserNode *node_a, FileBrowserNode *node_b
+) {
+    gchar *a_collate_key, *b_collate_key;
+    gboolean result;
 
-        g_free(k1);
-        g_free(k2);
-
-        return result;
-    }
-}
-
-static gint model_sort_default(FileBrowserNode *node1, FileBrowserNode *node2) {
-    gint f1 = NODE_IS_DUMMY(node1);
-    gint f2 = NODE_IS_DUMMY(node2);
-
-    if (f1 && f2) {
+    if (NODE_IS_DUMMY(node_a) && NODE_IS_DUMMY(node_b)) {
         return 0;
-    } else if (f1 || f2) {
-        return f1 ? -1 : 1;
+    }
+    if (NODE_IS_DUMMY(node_a)) {
+        return -1;
+    }
+    if (NODE_IS_DUMMY(node_b)) {
+        return 1;
     }
 
-    f1 = NODE_IS_DIR(node1);
-    f2 = NODE_IS_DIR(node2);
-
-    if (f1 != f2) {
-        return f1 ? -1 : 1;
+    if (NODE_IS_DIR(node_a) && !NODE_IS_DIR(node_b)) {
+        return -1;
+    }
+    if (NODE_IS_DIR(node_b) && !NODE_IS_DIR(node_a)) {
+        return 1;
     }
 
-    return collate_nodes(node1, node2);
+    if (NODE_IS_HIDDEN(node_a) && !NODE_IS_HIDDEN(node_b)) {
+        return 1;
+    }
+    if (NODE_IS_HIDDEN(node_b) && !NODE_IS_HIDDEN(node_a)) {
+        return -1;
+    }
+
+    if (node_a->name == NULL && node_b->name == NULL) {
+        return 0;
+    }
+    if (node_a->name == NULL) {
+        return 1;
+    }
+    if (node_b->name == NULL) {
+        return -1;
+    }
+
+    a_collate_key = g_utf8_collate_key_for_filename(node_a->name, -1);
+    b_collate_key = g_utf8_collate_key_for_filename(node_b->name, -1);
+
+    result = g_utf8_collate(a_collate_key, b_collate_key);
+
+    g_free(a_collate_key);
+    g_free(b_collate_key);
+
+    return result;
 }
 
 static void model_resort_node(
