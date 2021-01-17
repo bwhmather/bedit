@@ -67,6 +67,8 @@ enum {
 
     PROP_VIRTUAL_ROOT,
     PROP_SEARCH_ENABLED,
+    PROP_SHOW_HIDDEN,
+    PROP_SHOW_BINARY,
 };
 
 /* Signals */
@@ -128,6 +130,8 @@ struct _BeditFileBrowserWidget {
     GdkCursor *busy_cursor;
 
     guint search_enabled : 1;
+    guint show_hidden : 1;
+    guint show_binary : 1;
 };
 
 static void on_model_set(
@@ -302,6 +306,18 @@ static void bedit_file_browser_widget_get_property(
         );
         break;
 
+    case PROP_SHOW_HIDDEN:
+        g_value_set_boolean(
+            value, bedit_file_browser_widget_get_show_hidden(obj)
+        );
+        break;
+
+    case PROP_SHOW_BINARY:
+        g_value_set_boolean(
+            value, bedit_file_browser_widget_get_show_binary(obj)
+        );
+        break;
+
     default:
         G_OBJECT_WARN_INVALID_PROPERTY_ID(object, prop_id, pspec);
         break;
@@ -322,6 +338,18 @@ static void bedit_file_browser_widget_set_property(
 
     case PROP_SEARCH_ENABLED:
         bedit_file_browser_widget_set_search_enabled(
+            obj, g_value_get_boolean(value)
+        );
+        break;
+
+    case PROP_SHOW_HIDDEN:
+        bedit_file_browser_widget_set_show_hidden(
+            obj, g_value_get_boolean(value)
+        );
+        break;
+
+    case PROP_SHOW_BINARY:
+        bedit_file_browser_widget_set_show_binary(
             obj, g_value_get_boolean(value)
         );
         break;
@@ -358,6 +386,28 @@ static void bedit_file_browser_widget_class_init(
             "search-enabled", "Search Enabled",
             "True if the widget is in search mode.  False otherwise",
             FALSE,
+            G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS |
+            G_PARAM_EXPLICIT_NOTIFY
+        )
+    );
+
+    g_object_class_install_property(
+        object_class, PROP_SHOW_HIDDEN,
+        g_param_spec_boolean(
+            "show-hidden", "Show hidden",
+            "Set to false to exclude hidden files from the output",
+            TRUE,
+            G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS |
+            G_PARAM_EXPLICIT_NOTIFY
+        )
+    );
+
+    g_object_class_install_property(
+        object_class, PROP_SHOW_BINARY,
+        g_param_spec_boolean(
+            "show-binary", "Show binary",
+            "Set to false to exclude files matching binary patterns from the output",
+            TRUE,
             G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS |
             G_PARAM_EXPLICIT_NOTIFY
         )
@@ -524,6 +574,8 @@ static void bedit_file_browser_widget_init(BeditFileBrowserWidget *obj) {
     display = gtk_widget_get_display(GTK_WIDGET(obj));
     obj->busy_cursor = gdk_cursor_new_from_name(display, "progress");
     obj->search_enabled = FALSE;
+    obj->show_hidden = TRUE;
+    obj->show_binary = TRUE;
 
     builder = gtk_builder_new();
     if (!gtk_builder_add_from_resource(
@@ -1088,6 +1140,54 @@ gboolean bedit_file_browser_widget_get_search_enabled(
     g_return_val_if_fail(BEDIT_IS_FILE_BROWSER_WIDGET(obj), FALSE);
 
     return obj->search_enabled ? TRUE : FALSE;
+}
+
+void bedit_file_browser_widget_set_show_hidden(
+    BeditFileBrowserWidget *obj, gboolean show_hidden
+) {
+    g_return_if_fail(BEDIT_IS_FILE_BROWSER_WIDGET(obj));
+
+    show_hidden = !!show_hidden;
+
+    if (obj->show_hidden == show_hidden) {
+        return;
+    }
+
+    obj->show_hidden = show_hidden;
+
+    g_object_notify(G_OBJECT(obj), "show-hidden");
+}
+
+gboolean bedit_file_browser_widget_get_show_hidden(
+    BeditFileBrowserWidget *obj
+) {
+    g_return_val_if_fail(BEDIT_IS_FILE_BROWSER_WIDGET(obj), FALSE);
+
+    return obj->show_hidden;
+}
+
+void bedit_file_browser_widget_set_show_binary(
+    BeditFileBrowserWidget *obj, gboolean show_binary
+) {
+    g_return_if_fail(BEDIT_IS_FILE_BROWSER_WIDGET(obj));
+
+    show_binary = !!show_binary;
+
+    if (obj->show_binary == show_binary) {
+        return;
+    }
+
+    obj->show_binary = show_binary;
+
+    g_object_notify(G_OBJECT(obj), "show-binary");
+}
+
+gboolean bedit_file_browser_widget_get_show_binary(
+    BeditFileBrowserWidget *obj
+) {
+    g_return_val_if_fail(BEDIT_IS_FILE_BROWSER_WIDGET(obj), FALSE);
+
+    return obj->show_binary;
 }
 
 static guint bedit_file_browser_widget_get_num_selected_files_or_directories(

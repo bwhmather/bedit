@@ -92,6 +92,18 @@ void bedit_file_browser_widget_set_search_enabled(
 gboolean bedit_file_browser_widget_get_search_enabled(
     BeditFileBrowserWidget *obj
 );
+void bedit_file_browser_widget_set_show_hidden(
+    BeditFileBrowserWidget *obj, gboolean show_hidden
+);
+gboolean bedit_file_browser_widget_get_show_hidden(
+    BeditFileBrowserWidget *obj
+);
+void bedit_file_browser_widget_set_show_binary(
+    BeditFileBrowserWidget *obj, gboolean show_binary
+);
+gboolean bedit_file_browser_widget_get_show_binary(
+    BeditFileBrowserWidget *obj
+);
 
 BeditMenuExtension *bedit_file_browser_widget_extend_context_menu(
     BeditFileBrowserWidget *obj
