@@ -5,10 +5,15 @@
       <summary>File Browser Filter Mode</summary>
       <description>This value determines what files get filtered from the file browser. Valid values are: none (filter nothing), hide-hidden (filter hidden files) and hide-binary (filter binary files).</description>
     </key>
-    <key name="filter-pattern" type="s">
-      <default>''</default>
-      <summary>File Browser Filter Pattern</summary>
-      <description>The filter pattern to filter the file browser with. This filter works on top of the filter_mode.</description>
+    <key name="show-hidden" type="b">
+      <default>TRUE</default>
+      <summary>Show Hidden Files in File Browser</summary>
+      <description>Set to false to exclude hidden files from the output.</description>
+    </key>
+    <key name="show-binary" type="b">
+      <default>FALSE</default>
+      <summary>Show Binary Files in File Browser</summary>
+      <description>Set to false to exclude files matching binary patterns from the output.</description>
     </key>
     <key name="binary-patterns" type="as">
       <default>['*.la', '*.lo']</default>

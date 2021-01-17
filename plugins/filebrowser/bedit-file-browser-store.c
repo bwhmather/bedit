@@ -109,7 +109,8 @@ struct _BeditFileBrowserStorePrivate {
     FileBrowserNode *virtual_root;
     GType column_types[BEDIT_FILE_BROWSER_STORE_COLUMN_NUM];
 
-    BeditFileBrowserStoreFilterMode filter_mode;
+    gboolean show_hidden;
+    gboolean show_binary;
     BeditFileBrowserStoreFilterFunc filter_func;
     gpointer filter_user_data;
 
@@ -221,7 +222,8 @@ enum {
 
     PROP_ROOT,
     PROP_VIRTUAL_ROOT,
-    PROP_FILTER_MODE,
+    PROP_SHOW_HIDDEN,
+    PROP_SHOW_BINARY,
     PROP_BINARY_PATTERNS
 };
 
@@ -294,8 +296,11 @@ static void bedit_file_browser_store_get_property(
     case PROP_VIRTUAL_ROOT:
         set_gvalue_from_node(value, obj->priv->virtual_root);
         break;
-    case PROP_FILTER_MODE:
-        g_value_set_flags(value, obj->priv->filter_mode);
+    case PROP_SHOW_HIDDEN:
+        g_value_set_boolean(value, obj->priv->show_hidden);
+        break;
+    case PROP_SHOW_BINARY:
+        g_value_set_boolean(value, obj->priv->show_binary);
         break;
     case PROP_BINARY_PATTERNS:
         g_value_set_boxed(value, obj->priv->binary_patterns);
@@ -317,8 +322,15 @@ static void bedit_file_browser_store_set_property(
             obj, G_FILE(g_value_get_object(value))
         );
         break;
-    case PROP_FILTER_MODE:
-        bedit_file_browser_store_set_filter_mode(obj, g_value_get_flags(value));
+    case PROP_SHOW_HIDDEN:
+        bedit_file_browser_store_set_show_hidden(
+            obj, g_value_get_boolean(value)
+        );
+        break;
+    case PROP_SHOW_BINARY:
+        bedit_file_browser_store_set_show_binary(
+            obj, g_value_get_boolean(value)
+        );
         break;
     case PROP_BINARY_PATTERNS:
         bedit_file_browser_store_set_binary_patterns(
@@ -357,12 +369,24 @@ static void bedit_file_browser_store_class_init(
     );
 
     g_object_class_install_property(
-        object_class, PROP_FILTER_MODE,
-        g_param_spec_flags(
-            "filter-mode", "Filter Mode", "The filter mode",
-            BEDIT_TYPE_FILE_BROWSER_STORE_FILTER_MODE,
-            bedit_file_browser_store_filter_mode_get_default(),
-            G_PARAM_READWRITE
+        object_class, PROP_SHOW_HIDDEN,
+        g_param_spec_boolean(
+            "show-hidden", "Show hidden",
+            "Set to false to exclude hidden files from the output",
+            TRUE,
+            G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS |
+            G_PARAM_EXPLICIT_NOTIFY
+        )
+    );
+
+    g_object_class_install_property(
+        object_class, PROP_SHOW_HIDDEN,
+        g_param_spec_boolean(
+            "show-binary", "Show binary",
+            "Set to false to exclude files matching binary patterns from the output",
+            TRUE,
+            G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS |
+            G_PARAM_EXPLICIT_NOTIFY
         )
     );
 
@@ -482,8 +506,8 @@ static void bedit_file_browser_store_init(BeditFileBrowserStore *obj) {
     obj->priv->column_types[BEDIT_FILE_BROWSER_STORE_COLUMN_EMBLEM] =
         G_TYPE_EMBLEM;
 
-    /* Default filter mode is hiding the hidden files */
-    obj->priv->filter_mode = bedit_file_browser_store_filter_mode_get_default();
+    obj->priv->show_hidden = TRUE;
+    obj->priv->show_binary = TRUE;
     obj->priv->sort_func = model_sort_default;
 }
 
@@ -1007,11 +1031,6 @@ static gboolean bedit_file_browser_store_drag_data_get(
     return ret;
 }
 
-#define FILTER_HIDDEN(mode)                                                 \
-    (mode & BEDIT_FILE_BROWSER_STORE_FILTER_MODE_HIDE_HIDDEN)
-#define FILTER_BINARY(mode)                                                 \
-    (mode & BEDIT_FILE_BROWSER_STORE_FILTER_MODE_HIDE_BINARY)
-
 /* Private */
 static void model_begin_loading(
     BeditFileBrowserStore *model, FileBrowserNode *node
@@ -1038,12 +1057,12 @@ static void model_node_update_visibility(
 
     node->flags &= ~BEDIT_FILE_BROWSER_STORE_FLAG_IS_FILTERED;
 
-    if (FILTER_HIDDEN(model->priv->filter_mode) && NODE_IS_HIDDEN(node)) {
+    if ((!model->priv->show_hidden) && NODE_IS_HIDDEN(node)) {
         node->flags |= BEDIT_FILE_BROWSER_STORE_FLAG_IS_FILTERED;
         return;
     }
 
-    if (FILTER_BINARY(model->priv->filter_mode) && !NODE_IS_DIR(node)) {
+    if ((!model->priv->show_binary) && !NODE_IS_DIR(node)) {
         if (!NODE_IS_TEXT(node)) {
             node->flags |= BEDIT_FILE_BROWSER_STORE_FLAG_IS_FILTERED;
             return;
@@ -3040,25 +3059,50 @@ void _bedit_file_browser_store_iter_collapsed(
     }
 }
 
-BeditFileBrowserStoreFilterMode bedit_file_browser_store_get_filter_mode(
+gboolean bedit_file_browser_store_get_show_hidden(
     BeditFileBrowserStore *model
 ) {
-    return model->priv->filter_mode;
+    g_return_val_if_fail(BEDIT_IS_FILE_BROWSER_STORE(model), FALSE);
+
+    return model->priv->show_hidden;
 }
 
-void bedit_file_browser_store_set_filter_mode(
-    BeditFileBrowserStore *model, BeditFileBrowserStoreFilterMode mode
+void bedit_file_browser_store_set_show_hidden(
+    BeditFileBrowserStore *model, gboolean show_hidden
 ) {
     g_return_if_fail(BEDIT_IS_FILE_BROWSER_STORE(model));
 
-    if (model->priv->filter_mode == mode) {
+    if (model->priv->show_hidden == show_hidden) {
         return;
     }
 
-    model->priv->filter_mode = mode;
+    model->priv->show_hidden = show_hidden;
     model_refilter(model);
 
-    g_object_notify(G_OBJECT(model), "filter-mode");
+    g_object_notify(G_OBJECT(model), "show-hidden");
+}
+
+gboolean bedit_file_browser_store_get_show_binary(
+    BeditFileBrowserStore *model
+) {
+    g_return_val_if_fail(BEDIT_IS_FILE_BROWSER_STORE(model), FALSE);
+
+    return model->priv->show_binary;
+}
+
+void bedit_file_browser_store_set_show_binary(
+    BeditFileBrowserStore *model, gboolean show_binary
+) {
+    g_return_if_fail(BEDIT_IS_FILE_BROWSER_STORE(model));
+
+    if (model->priv->show_binary == show_binary) {
+        return;
+    }
+
+    model->priv->show_binary = show_binary;
+    model_refilter(model);
+
+    g_object_notify(G_OBJECT(model), "show-binary");
 }
 
 void bedit_file_browser_store_set_filter_func(
@@ -3116,11 +3160,6 @@ void bedit_file_browser_store_set_binary_patterns(
 
 void bedit_file_browser_store_refilter(BeditFileBrowserStore *model) {
     model_refilter(model);
-}
-
-BeditFileBrowserStoreFilterMode
-bedit_file_browser_store_filter_mode_get_default(void) {
-    return BEDIT_FILE_BROWSER_STORE_FILTER_MODE_HIDE_HIDDEN;
 }
 
 void bedit_file_browser_store_refresh(BeditFileBrowserStore *model) {

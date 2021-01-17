@@ -420,20 +420,11 @@ static void message_set_show_hidden_cb(
 ) {
     gboolean active = FALSE;
     BeditFileBrowserStore *store;
-    BeditFileBrowserStoreFilterMode mode;
 
     g_object_get(message, "active", &active, NULL);
 
     store = bedit_file_browser_widget_get_browser_store(data->widget);
-    mode = bedit_file_browser_store_get_filter_mode(store);
-
-    if (active) {
-        mode &= ~BEDIT_FILE_BROWSER_STORE_FILTER_MODE_HIDE_HIDDEN;
-    } else {
-        mode |= BEDIT_FILE_BROWSER_STORE_FILTER_MODE_HIDE_HIDDEN;
-    }
-
-    bedit_file_browser_store_set_filter_mode(store, mode);
+    bedit_file_browser_store_set_show_hidden(store, active);
 }
 
 static void message_set_show_binary_cb(
@@ -441,20 +432,11 @@ static void message_set_show_binary_cb(
 ) {
     gboolean active = FALSE;
     BeditFileBrowserStore *store;
-    BeditFileBrowserStoreFilterMode mode;
 
     g_object_get(message, "active", &active, NULL);
 
     store = bedit_file_browser_widget_get_browser_store(data->widget);
-    mode = bedit_file_browser_store_get_filter_mode(store);
-
-    if (active) {
-        mode &= ~BEDIT_FILE_BROWSER_STORE_FILTER_MODE_HIDE_BINARY;
-    } else {
-        mode |= BEDIT_FILE_BROWSER_STORE_FILTER_MODE_HIDE_BINARY;
-    }
-
-    bedit_file_browser_store_set_filter_mode(store, mode);
+    bedit_file_browser_store_set_show_binary(store, active);
 }
 
 static void message_get_view_cb(

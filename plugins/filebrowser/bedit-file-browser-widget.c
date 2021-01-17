@@ -187,7 +187,11 @@ static void on_virtual_root_changed(
     BeditFileBrowserStore *model, GParamSpec *param,
     BeditFileBrowserWidget *obj
 );
-static void on_filter_mode_changed(
+static void on_show_hidden_changed(
+    BeditFileBrowserStore *model, GParamSpec *param,
+    BeditFileBrowserWidget *obj
+);
+static void on_show_binary_changed(
     BeditFileBrowserStore *model, GParamSpec *param,
     BeditFileBrowserWidget *obj
 );
@@ -579,12 +583,6 @@ static void bedit_file_browser_widget_init(BeditFileBrowserWidget *obj) {
     /* tree view */
     bedit_file_browser_view_set_restore_expand_state(obj->tree_view, TRUE);
 
-    bedit_file_browser_store_set_filter_mode(
-        obj->file_store,
-        BEDIT_FILE_BROWSER_STORE_FILTER_MODE_HIDE_HIDDEN |
-        BEDIT_FILE_BROWSER_STORE_FILTER_MODE_HIDE_BINARY
-    );
-
     g_signal_connect(
         obj->tree_view, "notify::model",
         G_CALLBACK(on_model_set), obj
@@ -612,8 +610,12 @@ static void bedit_file_browser_widget_init(BeditFileBrowserWidget *obj) {
         G_CALLBACK(on_selection_changed), obj
     );
     g_signal_connect(
-        obj->file_store, "notify::filter-mode",
-        G_CALLBACK(on_filter_mode_changed), obj
+        obj->file_store, "notify::show-hidden",
+        G_CALLBACK(on_show_hidden_changed), obj
+    );
+    g_signal_connect(
+        obj->file_store, "notify::show-binary",
+        G_CALLBACK(on_show_binary_changed), obj
     );
 
     g_signal_connect(
@@ -664,7 +666,6 @@ static void bedit_file_browser_widget_init(BeditFileBrowserWidget *obj) {
 static void update_sensitivity(BeditFileBrowserWidget *obj) {
     GtkTreeModel *model;
     GAction *action;
-    gint mode;
 
     model = gtk_tree_view_get_model(
         GTK_TREE_VIEW(obj->tree_view)
@@ -674,18 +675,27 @@ static void update_sensitivity(BeditFileBrowserWidget *obj) {
         return;
     }
 
-    mode = bedit_file_browser_store_get_filter_mode(
-        BEDIT_FILE_BROWSER_STORE(model)
-    );
-
     action = g_action_map_lookup_action(
         G_ACTION_MAP(obj->action_group), "show_hidden"
     );
-
     g_action_change_state(
         action,
         g_variant_new_boolean(
-            !(mode & BEDIT_FILE_BROWSER_STORE_FILTER_MODE_HIDE_HIDDEN)
+            bedit_file_browser_store_get_show_hidden(
+                BEDIT_FILE_BROWSER_STORE(model)
+            )
+        )
+    );
+
+    action = g_action_map_lookup_action(
+        G_ACTION_MAP(obj->action_group), "show_binary"
+    );
+    g_action_change_state(
+        action,
+        g_variant_new_boolean(
+            bedit_file_browser_store_get_show_binary(
+                BEDIT_FILE_BROWSER_STORE(model)
+            )
         )
     );
 
@@ -897,33 +907,6 @@ static GFile *get_topmost_file(GFile *file) {
     }
 
     return current;
-}
-
-static void update_filter_mode(
-    BeditFileBrowserWidget *obj, GSimpleAction *action, GVariant *state,
-    BeditFileBrowserStoreFilterMode mode
-) {
-    GtkTreeModel *model = gtk_tree_view_get_model(
-        GTK_TREE_VIEW(obj->tree_view)
-    );
-
-    if (BEDIT_IS_FILE_BROWSER_STORE(model)) {
-        gint now = bedit_file_browser_store_get_filter_mode(
-            BEDIT_FILE_BROWSER_STORE(model)
-        );
-
-        if (g_variant_get_boolean(state)) {
-            now &= ~mode;
-        } else {
-            now |= mode;
-        }
-
-        bedit_file_browser_store_set_filter_mode(
-            BEDIT_FILE_BROWSER_STORE(model), now
-        );
-    }
-
-    g_simple_action_set_state(action, state);
 }
 
 /* Public */
@@ -1644,36 +1627,53 @@ static void on_selection_changed(
     g_simple_action_set_enabled(G_SIMPLE_ACTION(action), selected <= 1);
 }
 
-static void on_filter_mode_changed(
+static void on_show_hidden_changed(
     BeditFileBrowserStore *model, GParamSpec *param,
     BeditFileBrowserWidget *obj
 ) {
-    gint mode = bedit_file_browser_store_get_filter_mode(model);
+    gboolean show_hidden;
     GAction *action;
     GVariant *variant;
-    gboolean active;
+
+    g_return_if_fail(BEDIT_IS_FILE_BROWSER_STORE(model));
+    g_return_if_fail(BEDIT_IS_FILE_BROWSER_WIDGET(obj));
+
+    show_hidden = bedit_file_browser_store_get_show_hidden(model);
 
     action = g_action_map_lookup_action(
         G_ACTION_MAP(obj->action_group), "show_hidden"
     );
-    active = !(mode & BEDIT_FILE_BROWSER_STORE_FILTER_MODE_HIDE_HIDDEN);
     variant = g_action_get_state(action);
 
-    if (active != g_variant_get_boolean(variant)) {
-        g_action_change_state(action, g_variant_new_boolean(active));
+    if (g_variant_get_boolean(variant) != show_hidden) {
+        g_action_change_state(action, g_variant_new_boolean(show_hidden));
     }
 
     g_variant_unref(variant);
+}
+
+static void on_show_binary_changed(
+    BeditFileBrowserStore *model, GParamSpec *param,
+    BeditFileBrowserWidget *obj
+) {
+    gboolean show_binary;
+    GAction *action;
+    GVariant *variant;
+
+    g_return_if_fail(BEDIT_IS_FILE_BROWSER_STORE(model));
+    g_return_if_fail(BEDIT_IS_FILE_BROWSER_WIDGET(obj));
+
+    show_binary = bedit_file_browser_store_get_show_binary(model);
 
     action = g_action_map_lookup_action(
         G_ACTION_MAP(obj->action_group), "show_binary"
     );
-    active = !(mode & BEDIT_FILE_BROWSER_STORE_FILTER_MODE_HIDE_BINARY);
     variant = g_action_get_state(action);
 
-    if (active != g_variant_get_boolean(variant)) {
-        g_action_change_state(action, g_variant_new_boolean(active));
+    if (g_variant_get_boolean(variant) != show_binary) {
+        g_action_change_state(action, g_variant_new_boolean(show_binary));
     }
+
     g_variant_unref(variant);
 }
 
@@ -1907,9 +1907,8 @@ static void change_show_hidden_state(
 ) {
     BeditFileBrowserWidget *widget = BEDIT_FILE_BROWSER_WIDGET(user_data);
 
-    update_filter_mode(
-        widget, action, state,
-        BEDIT_FILE_BROWSER_STORE_FILTER_MODE_HIDE_HIDDEN
+    bedit_file_browser_store_set_show_hidden(
+        widget->file_store, g_variant_get_boolean(state)
     );
 }
 
@@ -1918,9 +1917,8 @@ static void change_show_binary_state(
 ) {
     BeditFileBrowserWidget *widget = BEDIT_FILE_BROWSER_WIDGET(user_data);
 
-    update_filter_mode(
-        widget, action, state,
-        BEDIT_FILE_BROWSER_STORE_FILTER_MODE_HIDE_BINARY
+    bedit_file_browser_store_set_show_binary(
+        widget->file_store, g_variant_get_boolean(state)
     );
 }
 

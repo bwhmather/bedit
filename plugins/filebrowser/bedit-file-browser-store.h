@@ -71,12 +71,6 @@ typedef enum {
     BEDIT_FILE_BROWSER_STORE_FLAG_IS_DUMMY = 1 << 5
 } BeditFileBrowserStoreFlag;
 
-typedef enum {
-    BEDIT_FILE_BROWSER_STORE_FILTER_MODE_NONE = 0,
-    BEDIT_FILE_BROWSER_STORE_FILTER_MODE_HIDE_HIDDEN = 1 << 0,
-    BEDIT_FILE_BROWSER_STORE_FILTER_MODE_HIDE_BINARY = 1 << 1
-} BeditFileBrowserStoreFilterMode;
-
 #define FILE_IS_DIR(flags) (flags & BEDIT_FILE_BROWSER_STORE_FLAG_IS_DIRECTORY)
 #define FILE_IS_HIDDEN(flags) (flags & BEDIT_FILE_BROWSER_STORE_FLAG_IS_HIDDEN)
 #define FILE_IS_TEXT(flags) (flags & BEDIT_FILE_BROWSER_STORE_FLAG_IS_TEXT)
@@ -159,11 +153,17 @@ void _bedit_file_browser_store_iter_expanded(
 void _bedit_file_browser_store_iter_collapsed(
     BeditFileBrowserStore *model, GtkTreeIter *iter
 );
-BeditFileBrowserStoreFilterMode bedit_file_browser_store_get_filter_mode(
+gboolean bedit_file_browser_store_get_show_hidden(
     BeditFileBrowserStore *model
 );
-void bedit_file_browser_store_set_filter_mode(
-    BeditFileBrowserStore *model, BeditFileBrowserStoreFilterMode mode
+void bedit_file_browser_store_set_show_hidden(
+    BeditFileBrowserStore *model, gboolean show_hidden
+);
+gboolean bedit_file_browser_store_get_show_binary(
+    BeditFileBrowserStore *model
+);
+void bedit_file_browser_store_set_show_binary(
+    BeditFileBrowserStore *model, gboolean show_binary
 );
 void bedit_file_browser_store_set_filter_func(
     BeditFileBrowserStore *model,
@@ -176,8 +176,6 @@ void bedit_file_browser_store_set_binary_patterns(
     BeditFileBrowserStore *model, const gchar **binary_patterns
 );
 void bedit_file_browser_store_refilter(BeditFileBrowserStore *model);
-BeditFileBrowserStoreFilterMode
-bedit_file_browser_store_filter_mode_get_default(void);
 void bedit_file_browser_store_refresh(BeditFileBrowserStore *model);
 gboolean bedit_file_browser_store_rename(
     BeditFileBrowserStore *model, GtkTreeIter *iter, gchar const *new_name,

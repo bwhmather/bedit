@@ -425,15 +425,12 @@ static void row_activated(
 }
 
 static void toggle_hidden_filter(BeditFileBrowserView *view) {
-    BeditFileBrowserStoreFilterMode mode;
-
     if (BEDIT_IS_FILE_BROWSER_STORE(view->priv->model)) {
-        mode = bedit_file_browser_store_get_filter_mode(
-            BEDIT_FILE_BROWSER_STORE(view->priv->model)
-        );
-        mode ^= BEDIT_FILE_BROWSER_STORE_FILTER_MODE_HIDE_HIDDEN;
-        bedit_file_browser_store_set_filter_mode(
-            BEDIT_FILE_BROWSER_STORE(view->priv->model), mode
+        BeditFileBrowserStore *model;
+        model = BEDIT_FILE_BROWSER_STORE(view->priv->model);
+
+        bedit_file_browser_store_set_show_hidden(
+            model, !bedit_file_browser_store_get_show_hidden(model)
         );
     }
 }
