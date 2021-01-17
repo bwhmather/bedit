@@ -122,6 +122,20 @@ struct _BeditFileBrowserWidget {
     GtkStack *view_stack;
 
     GSimpleActionGroup *action_group;
+    GSimpleAction *open_action;
+    GSimpleAction *set_active_root_action;
+    GSimpleAction *new_folder_action;
+    GSimpleAction *new_file_action;
+    GSimpleAction *rename_action;
+    GSimpleAction *move_to_trash_action;
+    GSimpleAction *delete_action;
+    GSimpleAction *refresh_view_action;
+    GSimpleAction *view_folder_action;
+    GSimpleAction *open_in_terminal_action;
+    GPropertyAction *show_hidden_action;
+    GPropertyAction *show_binary_action;
+    GSimpleAction *up_action;
+    GSimpleAction *home_action;
 
     GSList *signal_pool;
 
@@ -191,14 +205,6 @@ static void on_virtual_root_changed(
     BeditFileBrowserStore *model, GParamSpec *param,
     BeditFileBrowserWidget *obj
 );
-static void on_show_hidden_changed(
-    BeditFileBrowserStore *model, GParamSpec *param,
-    BeditFileBrowserWidget *obj
-);
-static void on_show_binary_changed(
-    BeditFileBrowserStore *model, GParamSpec *param,
-    BeditFileBrowserWidget *obj
-);
 static void up_activated(
     GSimpleAction *action, GVariant *parameter, gpointer user_data
 );
@@ -228,12 +234,6 @@ static void refresh_view_activated(
 );
 static void view_folder_activated(
     GSimpleAction *action, GVariant *parameter, gpointer user_data
-);
-static void change_show_hidden_state(
-    GSimpleAction *action, GVariant *state, gpointer user_data
-);
-static void change_show_binary_state(
-    GSimpleAction *action, GVariant *state, gpointer user_data
 );
 static void open_in_terminal_activated(
     GSimpleAction *action, GVariant *parameter, gpointer user_data
@@ -284,6 +284,22 @@ static void bedit_file_browser_widget_dispose(GObject *object) {
 
     g_clear_object(&obj->busy_cursor);
     g_clear_object(&obj->dir_menu);
+
+    g_clear_object(&obj->action_group);
+    g_clear_object(&obj->open_action);
+    g_clear_object(&obj->set_active_root_action);
+    g_clear_object(&obj->new_folder_action);
+    g_clear_object(&obj->new_file_action);
+    g_clear_object(&obj->rename_action);
+    g_clear_object(&obj->move_to_trash_action);
+    g_clear_object(&obj->delete_action);
+    g_clear_object(&obj->refresh_view_action);
+    g_clear_object(&obj->view_folder_action);
+    g_clear_object(&obj->open_in_terminal_action);
+    g_clear_object(&obj->show_hidden_action);
+    g_clear_object(&obj->show_binary_action);
+    g_clear_object(&obj->up_action);
+    g_clear_object(&obj->home_action);
 
     G_OBJECT_CLASS(bedit_file_browser_widget_parent_class)->dispose(object);
 }
@@ -549,23 +565,6 @@ static void on_end_loading(
     gdk_window_set_cursor(gtk_widget_get_window(GTK_WIDGET(obj)), NULL);
 }
 
-static GActionEntry browser_entries[] = {
-    {"open", open_activated},
-    {"set_active_root", set_active_root_activated},
-    {"new_folder", new_folder_activated},
-    {"new_file", new_file_activated},
-    {"rename", rename_activated},
-    {"move_to_trash", move_to_trash_activated},
-    {"delete", delete_activated},
-    {"refresh_view", refresh_view_activated},
-    {"view_folder", view_folder_activated},
-    {"open_in_terminal", open_in_terminal_activated},
-    {"show_hidden", NULL, NULL, "false", change_show_hidden_state},
-    {"show_binary", NULL, NULL, "false", change_show_binary_state},
-    {"up", up_activated},
-    {"home", home_activated}
-};
-
 static void bedit_file_browser_widget_init(BeditFileBrowserWidget *obj) {
     GtkBuilder *builder;
     GdkDisplay *display;
@@ -595,9 +594,121 @@ static void bedit_file_browser_widget_init(BeditFileBrowserWidget *obj) {
     g_object_unref(builder);
 
     obj->action_group = g_simple_action_group_new();
-    g_action_map_add_action_entries(
-        G_ACTION_MAP(obj->action_group), browser_entries,
-        G_N_ELEMENTS(browser_entries), obj
+
+    obj->open_action = g_simple_action_new("open", NULL);
+    g_signal_connect(
+        obj->open_action, "activate", G_CALLBACK(open_activated), obj
+    );
+    g_action_map_add_action(
+        G_ACTION_MAP(obj->action_group), G_ACTION(obj->open_action)
+    );
+
+    obj->set_active_root_action = g_simple_action_new("set_active_root", NULL);
+    g_signal_connect(
+        obj->set_active_root_action, "activate",
+        G_CALLBACK(set_active_root_activated), obj
+    );
+    g_action_map_add_action(
+        G_ACTION_MAP(obj->action_group), G_ACTION(obj->set_active_root_action)
+    );
+
+    obj->new_folder_action = g_simple_action_new("new_folder", NULL);
+    g_signal_connect(
+        obj->new_folder_action, "activate",
+        G_CALLBACK(new_folder_activated), obj
+    );
+    g_action_map_add_action(
+        G_ACTION_MAP(obj->action_group), G_ACTION(obj->new_folder_action)
+    );
+
+    obj->new_file_action = g_simple_action_new("new_file", NULL);
+    g_signal_connect(
+        obj->new_file_action, "activate", G_CALLBACK(new_file_activated), obj
+    );
+    g_action_map_add_action(
+        G_ACTION_MAP(obj->action_group), G_ACTION(obj->new_file_action)
+    );
+
+    obj->rename_action = g_simple_action_new("rename", NULL);
+    g_signal_connect(
+        obj->rename_action, "activate", G_CALLBACK(rename_activated), obj
+    );
+    g_action_map_add_action(
+        G_ACTION_MAP(obj->action_group), G_ACTION(obj->rename_action)
+    );
+
+    obj->move_to_trash_action = g_simple_action_new("move_to_trash", NULL);
+    g_signal_connect(
+        obj->move_to_trash_action, "activate",
+        G_CALLBACK(move_to_trash_activated), obj
+    );
+    g_action_map_add_action(
+        G_ACTION_MAP(obj->action_group), G_ACTION(obj->move_to_trash_action)
+    );
+
+    obj->delete_action = g_simple_action_new("delete", NULL);
+    g_signal_connect(
+        obj->delete_action, "activate", G_CALLBACK(delete_activated), obj
+    );
+    g_action_map_add_action(
+        G_ACTION_MAP(obj->action_group), G_ACTION(obj->delete_action)
+    );
+
+    obj->refresh_view_action = g_simple_action_new("refresh_view", NULL);
+    g_signal_connect(
+        obj->refresh_view_action, "activate",
+        G_CALLBACK(refresh_view_activated), obj
+    );
+    g_action_map_add_action(
+        G_ACTION_MAP(obj->action_group), G_ACTION(obj->refresh_view_action)
+    );
+
+    obj->view_folder_action = g_simple_action_new("view_folder", NULL);
+    g_signal_connect(
+        obj->view_folder_action, "activate",
+        G_CALLBACK(view_folder_activated), obj
+    );
+    g_action_map_add_action(
+        G_ACTION_MAP(obj->action_group), G_ACTION(obj->view_folder_action)
+    );
+
+    obj->open_in_terminal_action = g_simple_action_new("open_in_terminal", NULL);
+    g_signal_connect(
+        obj->open_in_terminal_action, "activate",
+        G_CALLBACK(open_in_terminal_activated), obj
+    );
+    g_action_map_add_action(
+        G_ACTION_MAP(obj->action_group), G_ACTION(obj->open_in_terminal_action)
+    );
+
+    obj->show_hidden_action = g_property_action_new(
+        "show_hidden", obj, "show-hidden"
+    );
+    g_action_map_add_action(
+        G_ACTION_MAP(obj->action_group), G_ACTION(obj->show_hidden_action)
+    );
+
+    obj->show_binary_action = g_property_action_new(
+        "show_binary", obj, "show-binary"
+    );
+    g_action_map_add_action(
+        G_ACTION_MAP(obj->action_group), G_ACTION(obj->show_binary_action)
+    );
+
+    obj->up_action = g_simple_action_new("up", NULL);
+    g_signal_connect(
+        obj->up_action, "activate", G_CALLBACK(up_activated), obj
+    );
+    g_action_map_add_action(
+        G_ACTION_MAP(obj->action_group), G_ACTION(obj->up_action)
+    );
+
+    obj->home_action = g_simple_action_new("home", NULL);
+    g_signal_connect(
+        obj->home_action, "activate", G_CALLBACK(home_activated), obj
+    );
+    g_action_map_add_action(
+        G_ACTION_MAP(obj->action_group), G_ACTION(obj->home_action)
     );
 
     gtk_widget_insert_action_group(
@@ -661,13 +772,17 @@ static void bedit_file_browser_widget_init(BeditFileBrowserWidget *obj) {
         "changed",
         G_CALLBACK(on_selection_changed), obj
     );
-    g_signal_connect(
-        obj->file_store, "notify::show-hidden",
-        G_CALLBACK(on_show_hidden_changed), obj
+
+    g_object_bind_property(
+        G_OBJECT(obj), "show-hidden",
+        G_OBJECT(obj->file_store), "show-hidden",
+        G_BINDING_BIDIRECTIONAL | G_BINDING_SYNC_CREATE
     );
-    g_signal_connect(
-        obj->file_store, "notify::show-binary",
-        G_CALLBACK(on_show_binary_changed), obj
+
+    g_object_bind_property(
+        G_OBJECT(obj), "show-binary",
+        G_OBJECT(obj->file_store), "show-binary",
+        G_BINDING_BIDIRECTIONAL | G_BINDING_SYNC_CREATE
     );
 
     g_signal_connect(
@@ -689,7 +804,6 @@ static void bedit_file_browser_widget_init(BeditFileBrowserWidget *obj) {
         obj->file_store, "error",
         G_CALLBACK(on_file_store_error), obj
     );
-
 
     g_object_bind_property(
         G_OBJECT(obj), "search-enabled",
@@ -727,30 +841,6 @@ static void update_sensitivity(BeditFileBrowserWidget *obj) {
         return;
     }
 
-    action = g_action_map_lookup_action(
-        G_ACTION_MAP(obj->action_group), "show_hidden"
-    );
-    g_action_change_state(
-        action,
-        g_variant_new_boolean(
-            bedit_file_browser_store_get_show_hidden(
-                BEDIT_FILE_BROWSER_STORE(model)
-            )
-        )
-    );
-
-    action = g_action_map_lookup_action(
-        G_ACTION_MAP(obj->action_group), "show_binary"
-    );
-    g_action_change_state(
-        action,
-        g_variant_new_boolean(
-            bedit_file_browser_store_get_show_binary(
-                BEDIT_FILE_BROWSER_STORE(model)
-            )
-        )
-    );
-
     /* sensitivity */
     action = g_action_map_lookup_action(
         G_ACTION_MAP(obj->action_group), "up"
@@ -759,18 +849,6 @@ static void update_sensitivity(BeditFileBrowserWidget *obj) {
     action = g_action_map_lookup_action(
         G_ACTION_MAP(obj->action_group), "home"
     );
-    g_simple_action_set_enabled(G_SIMPLE_ACTION(action), TRUE);
-
-    action = g_action_map_lookup_action(
-        G_ACTION_MAP(obj->action_group), "show_hidden"
-    );
-    g_simple_action_set_enabled(G_SIMPLE_ACTION(action), TRUE);
-
-    action = g_action_map_lookup_action(
-        G_ACTION_MAP(obj->action_group), "show_binary"
-    );
-    g_simple_action_set_enabled(G_SIMPLE_ACTION(action), TRUE);
-
     g_simple_action_set_enabled(G_SIMPLE_ACTION(action), TRUE);
 
     on_selection_changed(
@@ -1727,56 +1805,6 @@ static void on_selection_changed(
     g_simple_action_set_enabled(G_SIMPLE_ACTION(action), selected <= 1);
 }
 
-static void on_show_hidden_changed(
-    BeditFileBrowserStore *model, GParamSpec *param,
-    BeditFileBrowserWidget *obj
-) {
-    gboolean show_hidden;
-    GAction *action;
-    GVariant *variant;
-
-    g_return_if_fail(BEDIT_IS_FILE_BROWSER_STORE(model));
-    g_return_if_fail(BEDIT_IS_FILE_BROWSER_WIDGET(obj));
-
-    show_hidden = bedit_file_browser_store_get_show_hidden(model);
-
-    action = g_action_map_lookup_action(
-        G_ACTION_MAP(obj->action_group), "show_hidden"
-    );
-    variant = g_action_get_state(action);
-
-    if (g_variant_get_boolean(variant) != show_hidden) {
-        g_action_change_state(action, g_variant_new_boolean(show_hidden));
-    }
-
-    g_variant_unref(variant);
-}
-
-static void on_show_binary_changed(
-    BeditFileBrowserStore *model, GParamSpec *param,
-    BeditFileBrowserWidget *obj
-) {
-    gboolean show_binary;
-    GAction *action;
-    GVariant *variant;
-
-    g_return_if_fail(BEDIT_IS_FILE_BROWSER_STORE(model));
-    g_return_if_fail(BEDIT_IS_FILE_BROWSER_WIDGET(obj));
-
-    show_binary = bedit_file_browser_store_get_show_binary(model);
-
-    action = g_action_map_lookup_action(
-        G_ACTION_MAP(obj->action_group), "show_binary"
-    );
-    variant = g_action_get_state(action);
-
-    if (g_variant_get_boolean(variant) != show_binary) {
-        g_action_change_state(action, g_variant_new_boolean(show_binary));
-    }
-
-    g_variant_unref(variant);
-}
-
 static void up_activated(
     GSimpleAction *action, GVariant *parameter, gpointer user_data
 ) {
@@ -2000,26 +2028,6 @@ static void view_folder_activated(
     }
 
     g_list_free(rows);
-}
-
-static void change_show_hidden_state(
-    GSimpleAction *action, GVariant *state, gpointer user_data
-) {
-    BeditFileBrowserWidget *widget = BEDIT_FILE_BROWSER_WIDGET(user_data);
-
-    bedit_file_browser_store_set_show_hidden(
-        widget->file_store, g_variant_get_boolean(state)
-    );
-}
-
-static void change_show_binary_state(
-    GSimpleAction *action, GVariant *state, gpointer user_data
-) {
-    BeditFileBrowserWidget *widget = BEDIT_FILE_BROWSER_WIDGET(user_data);
-
-    bedit_file_browser_store_set_show_binary(
-        widget->file_store, g_variant_get_boolean(state)
-    );
 }
 
 static void open_in_terminal_activated(
