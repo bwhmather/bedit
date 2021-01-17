@@ -28,7 +28,6 @@
 #include <gio/gio.h>
 #include <glib-object.h>
 
-#include "bedit-file-browser-bookmarks-store.h"
 #include "bedit-file-browser-enum-types.h"
 #include "bedit-file-browser-store.h"
 #include "bedit-file-browser-view.h"
@@ -74,7 +73,6 @@ enum {
     ERROR,
     FILE_ACTIVATED,
     DIRECTORY_ACTIVATED,
-    BOOKMARK_ACTIVATED,
     NUM_SIGNALS
 };
 
@@ -351,7 +349,7 @@ static void set_click_policy_property(
     }
 }
 
-static void activate_selected_files(BeditFileBrowserView *view) {
+static void activate_selected_items(BeditFileBrowserView *view) {
     GtkTreeView *tree_view = GTK_TREE_VIEW(view);
     GtkTreeSelection *selection = gtk_tree_view_get_selection(tree_view);
     GList *rows = gtk_tree_selection_get_selected_rows(
@@ -392,24 +390,6 @@ static void activate_selected_files(BeditFileBrowserView *view) {
     }
 
     g_list_free_full(rows, (GDestroyNotify)gtk_tree_path_free);
-}
-
-static void activate_selected_bookmark(BeditFileBrowserView *view) {
-    GtkTreeView *tree_view = GTK_TREE_VIEW(view);
-    GtkTreeSelection *selection = gtk_tree_view_get_selection(tree_view);
-    GtkTreeIter iter;
-
-    if (gtk_tree_selection_get_selected(selection, &view->priv->model, &iter)) {
-        g_signal_emit(view, signals[BOOKMARK_ACTIVATED], 0, &iter);
-    }
-}
-
-static void activate_selected_items(BeditFileBrowserView *view) {
-    if (BEDIT_IS_FILE_BROWSER_STORE(view->priv->model)) {
-        activate_selected_files(view);
-    } else if (BEDIT_IS_FILE_BROWSER_BOOKMARKS_STORE(view->priv->model)) {
-        activate_selected_bookmark(view);
-    }
 }
 
 static void row_activated(
@@ -893,14 +873,6 @@ static void bedit_file_browser_view_class_init(
         G_TYPE_NONE, 1,
         GTK_TYPE_TREE_ITER
     );
-    signals[BOOKMARK_ACTIVATED] = g_signal_new(
-        "bookmark-activated", G_OBJECT_CLASS_TYPE(object_class),
-        G_SIGNAL_RUN_LAST,
-        G_STRUCT_OFFSET(BeditFileBrowserViewClass, bookmark_activated),
-        NULL, NULL, NULL,
-        G_TYPE_NONE, 1,
-        GTK_TYPE_TREE_ITER
-    );
 }
 
 static void bedit_file_browser_view_class_finalize(
@@ -946,39 +918,17 @@ static void icon_renderer_cb(
     GtkTreeViewColumn *tree_column, GtkCellRenderer *cell,
     GtkTreeModel *tree_model, GtkTreeIter *iter, BeditFileBrowserView *obj
 ) {
+    GIcon *icon;
 
-    if (BEDIT_IS_FILE_BROWSER_STORE(tree_model)) {
-        GIcon *icon;
+    gtk_tree_model_get(
+        tree_model, iter,
+        BEDIT_FILE_BROWSER_STORE_COLUMN_ICON, &icon,
+        -1
+    );
 
-        gtk_tree_model_get(
-            tree_model, iter,
-            BEDIT_FILE_BROWSER_STORE_COLUMN_ICON, &icon,
-            -1
-        );
+    g_object_set(cell, "gicon", icon, NULL);
 
-        g_object_set(cell, "gicon", icon, NULL);
-
-        g_clear_object(&icon);
-    } else {
-        GdkPixbuf *pixbuf;
-        gchar *icon_name;
-
-        gtk_tree_model_get(
-            tree_model, iter,
-            BEDIT_FILE_BROWSER_BOOKMARKS_STORE_COLUMN_ICON_NAME, &icon_name,
-            BEDIT_FILE_BROWSER_BOOKMARKS_STORE_COLUMN_ICON, &pixbuf,
-            -1
-        );
-
-        if (icon_name != NULL) {
-            g_object_set(cell, "icon-name", icon_name, NULL);
-        } else {
-            g_object_set(cell, "pixbuf", pixbuf, NULL);
-        }
-
-        g_free(icon_name);
-        g_clear_object(&pixbuf);
-    }
+    g_clear_object(&icon);
 }
 
 static void bedit_file_browser_view_init(BeditFileBrowserView *obj) {
