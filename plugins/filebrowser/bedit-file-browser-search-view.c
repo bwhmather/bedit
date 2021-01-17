@@ -483,6 +483,10 @@ static void bedit_file_browser_search_view_refresh(
         virtual_root = g_file_new_for_path(g_get_home_dir());
         query_cursor = query + 2;
         prefix = "~/";
+    } else if (g_str_has_prefix(query, "./")) {
+        virtual_root = g_object_ref(virtual_root);
+        query_cursor = query + 2;
+        prefix = "./";
     } else if (g_str_has_prefix(query, "/")) {
         virtual_root = g_file_new_for_path("/");
         query_cursor = query + 1;
