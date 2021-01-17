@@ -1392,11 +1392,15 @@ static gboolean directory_open(
     );
 
     if (FILE_IS_DIR(flags) && location) {
+        GtkWindow *window;
         gchar *uri = g_file_get_uri(location);
         result = TRUE;
 
+        window = GTK_WINDOW(gtk_widget_get_toplevel(GTK_WIDGET(obj)));
+        g_return_val_if_fail(GTK_IS_WINDOW(window), FALSE);
+
         if (!gtk_show_uri_on_window(
-            GTK_WINDOW(obj), uri, GDK_CURRENT_TIME, &error
+            window, uri, GDK_CURRENT_TIME, &error
         )) {
             g_signal_emit(
                 obj, signals[ERROR], 0,
