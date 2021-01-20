@@ -336,6 +336,32 @@ gboolean bedit_file_browser_search_file_enumerator_iterate(
             bedit_file_browser_search_file_enumerator_compare_match
         );
 
+        if (!g_strcmp0(enumerator->pattern, "..")) {
+            GFile *parent;
+            parent = g_file_get_parent(dir_file);
+            if (parent != NULL) {
+                match = g_slice_alloc0(sizeof(Match));
+                g_return_val_if_fail(match != NULL, FALSE);
+
+                match->file = g_file_get_parent(dir_file);
+                match->info = g_file_query_info(
+                    match->file, STANDARD_ATTRIBUTE_TYPES, G_FILE_QUERY_INFO_NONE,
+                    cancellable, error
+                );
+                if (*error) {
+                    return FALSE;
+                }
+                match->markup = g_strdup_printf(
+                    "%s..",
+                    (gchar *) dir_markup
+                );
+                match->quality = 0xffffffffffffffff;
+                enumerator->matches = g_list_prepend(
+                    enumerator->matches, match
+                );
+            }
+        }
+
         g_string_free(markup_buffer, TRUE);
 
         g_object_unref(child_enumerator);
