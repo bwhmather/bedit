@@ -512,8 +512,7 @@ static void bedit_file_browser_window_activatable_activate(
     /* Connect signals to store the last visited location */
     store = bedit_file_browser_widget_get_browser_store(priv->tree_widget);
 
-    // TODO
-    /*g_settings_bind(
+    g_settings_bind(
         priv->settings, "show-hidden",
         store, "show-hidden",
         G_SETTINGS_BIND_GET | G_SETTINGS_BIND_SET
@@ -523,7 +522,7 @@ static void bedit_file_browser_window_activatable_activate(
         priv->settings, "show-binary",
         store, "show-binary",
         G_SETTINGS_BIND_GET | G_SETTINGS_BIND_SET
-    );*/
+    );
 
     g_settings_bind(
         priv->settings, FILEBROWSER_BINARY_PATTERNS,
