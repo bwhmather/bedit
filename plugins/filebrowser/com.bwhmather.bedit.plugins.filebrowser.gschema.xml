@@ -1,12 +1,12 @@
 <schemalist gettext-domain="bedit">
   <schema id="com.bwhmather.bedit.plugins.filebrowser" path="/com/bwhmather/bedit/plugins/filebrowser/">
     <key name="show-hidden" type="b">
-      <default>TRUE</default>
+      <default>true</default>
       <summary>Show Hidden Files in File Browser</summary>
       <description>Set to false to exclude hidden files from the output.</description>
     </key>
     <key name="show-binary" type="b">
-      <default>FALSE</default>
+      <default>true</default>
       <summary>Show Binary Files in File Browser</summary>
       <description>Set to false to exclude files matching binary patterns from the output.</description>
     </key>
