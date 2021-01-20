@@ -117,6 +117,8 @@ struct _BeditFileBrowserWidget {
     BeditFileBrowserLocation *location;
     GtkToggleButton *search_toggle;
     GtkEntry *search_entry;
+    GtkToggleButton *show_hidden_toggle;
+    GtkToggleButton *show_binary_toggle;
 
     GtkStack *toolbar_stack;
     GtkStack *view_stack;
@@ -506,6 +508,13 @@ static void bedit_file_browser_widget_class_init(
     );
 
     gtk_widget_class_bind_template_child(
+        widget_class, BeditFileBrowserWidget, show_hidden_toggle
+    );
+    gtk_widget_class_bind_template_child(
+        widget_class, BeditFileBrowserWidget, show_binary_toggle
+    );
+
+    gtk_widget_class_bind_template_child(
         widget_class, BeditFileBrowserWidget, tree_view
     );
 
@@ -814,6 +823,17 @@ static void bedit_file_browser_widget_init(BeditFileBrowserWidget *obj) {
     g_object_bind_property(
         obj->search_entry, "text",
         obj->search_view, "query",
+        G_BINDING_BIDIRECTIONAL | G_BINDING_SYNC_CREATE
+    );
+
+    g_object_bind_property(
+        G_OBJECT(obj), "show-hidden",
+        G_OBJECT(obj->show_hidden_toggle), "active",
+        G_BINDING_BIDIRECTIONAL | G_BINDING_SYNC_CREATE
+    );
+    g_object_bind_property(
+        G_OBJECT(obj), "show-binary",
+        G_OBJECT(obj->show_binary_toggle), "active",
         G_BINDING_BIDIRECTIONAL | G_BINDING_SYNC_CREATE
     );
 
