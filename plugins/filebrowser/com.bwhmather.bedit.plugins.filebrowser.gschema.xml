@@ -1,10 +1,5 @@
 <schemalist gettext-domain="bedit">
   <schema id="com.bwhmather.bedit.plugins.filebrowser" path="/com/bwhmather/bedit/plugins/filebrowser/">
-    <key name="filter-mode" flags="com.bwhmather.bedit.plugins.filebrowser.BeditFileBrowserStoreFilterMode">
-      <default>['hide-hidden', 'hide-binary']</default>
-      <summary>File Browser Filter Mode</summary>
-      <description>This value determines what files get filtered from the file browser. Valid values are: none (filter nothing), hide-hidden (filter hidden files) and hide-binary (filter binary files).</description>
-    </key>
     <key name="show-hidden" type="b">
       <default>TRUE</default>
       <summary>Show Hidden Files in File Browser</summary>
