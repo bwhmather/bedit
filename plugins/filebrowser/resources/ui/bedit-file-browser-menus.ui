@@ -52,23 +52,6 @@
         <attribute name="action">browser.open_in_terminal</attribute>
       </item>
     </section>
-    <submenu>
-      <attribute name="label" translatable="yes">_Filter</attribute>
-      <section>
-        <item>
-          <attribute name="label" translatable="yes">Show _Hidden</attribute>
-          <attribute name="action">browser.show_hidden</attribute>
-        </item>
-        <item>
-          <attribute name="label" translatable="yes">Show _Binary</attribute>
-          <attribute name="action">browser.show_binary</attribute>
-        </item>
-        <item>
-          <attribute name="label" translatable="yes">Match Filename</attribute>
-          <attribute name="action">browser.show_match_filename</attribute>
-        </item>
-      </section>
-    </submenu>
     <section>
       <attribute name="id">extension-section</attribute>
     </section>
