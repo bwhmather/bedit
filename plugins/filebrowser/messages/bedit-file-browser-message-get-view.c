@@ -23,7 +23,7 @@
 #include "config.h"
 
 #include "bedit-file-browser-message-get-view.h"
-#include "plugins/filebrowser/bedit-file-browser-view.h"
+#include "plugins/filebrowser/bedit-file-browser-folder-view.h"
 
 enum {
     PROP_0,
@@ -32,7 +32,7 @@ enum {
 };
 
 struct _BeditFileBrowserMessageGetViewPrivate {
-    BeditFileBrowserView *view;
+    BeditFileBrowserFolderView *view;
 };
 
 G_DEFINE_TYPE_EXTENDED(
@@ -99,7 +99,7 @@ static void bedit_file_browser_message_get_view_class_init(
     g_object_class_install_property(
         object_class, PROP_VIEW,
         g_param_spec_object(
-            "view", "View", "View", BEDIT_TYPE_FILE_BROWSER_VIEW,
+            "view", "View", "View", BEDIT_TYPE_FILE_BROWSER_FOLDER_VIEW,
             G_PARAM_READWRITE | G_PARAM_CONSTRUCT | G_PARAM_STATIC_STRINGS
         )
     );

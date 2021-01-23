@@ -29,7 +29,7 @@
 #include <gtk/gtk.h>
 #include "bedit-file-browser-bookmarks-store.h"
 #include "bedit-file-browser-store.h"
-#include "bedit-file-browser-view.h"
+#include "bedit-file-browser-folder-view.h"
 
 G_BEGIN_DECLS
 
@@ -82,7 +82,7 @@ BeditFileBrowserStore *bedit_file_browser_widget_get_browser_store(
 BeditFileBrowserBookmarksStore *bedit_file_browser_widget_get_bookmarks_store(
     BeditFileBrowserWidget *obj
 );
-BeditFileBrowserView *bedit_file_browser_widget_get_browser_view(
+BeditFileBrowserFolderView *bedit_file_browser_widget_get_browser_view(
     BeditFileBrowserWidget *obj
 );
 

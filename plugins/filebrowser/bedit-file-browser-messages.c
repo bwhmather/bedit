@@ -442,7 +442,7 @@ static void message_set_show_binary_cb(
 static void message_get_view_cb(
     BeditMessageBus *bus, BeditMessage *message, WindowData *data
 ) {
-    BeditFileBrowserView *view;
+    BeditFileBrowserFolderView *view;
     view = bedit_file_browser_widget_get_browser_view(data->widget);
 
     g_object_set(message, "view", view, NULL);

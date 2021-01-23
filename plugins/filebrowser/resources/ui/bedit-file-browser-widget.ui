@@ -110,7 +110,7 @@
                 </child>
               </object>
               <packing>
-                <property name="name">tree</property>
+                <property name="name">folder</property>
               </packing>
             </child>
             <child>
@@ -148,7 +148,7 @@
             <property name="vexpand">True</property>
             <property name="shadow-type">in</property>
             <child>
-              <object class="BeditFileBrowserView" id="tree_view">
+              <object class="BeditFileBrowserFolderView" id="folder_view">
                 <property name="visible">True</property>
                 <property name="can-focus">True</property>
                 <child internal-child="selection">
@@ -158,7 +158,7 @@
             </child>
           </object>
           <packing>
-            <property name="name">tree</property>
+            <property name="name">folder</property>
           </packing>
         </child>
         <child>

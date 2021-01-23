@@ -216,8 +216,8 @@ static void on_click_policy_changed(
     BeditFileBrowserWindowActivatable *plugin
 ) {
     BeditFileBrowserWindowActivatablePrivate *priv;
-    BeditFileBrowserViewClickPolicy policy;
-    BeditFileBrowserView *view;
+    BeditFileBrowserFolderViewClickPolicy policy;
+    BeditFileBrowserFolderView *view;
 
     g_return_if_fail(BEDIT_IS_FILE_BROWSER_WINDOW_ACTIVATABLE(plugin));
 
@@ -226,7 +226,7 @@ static void on_click_policy_changed(
     policy = g_settings_get_enum(settings, key);
 
     view = bedit_file_browser_widget_get_browser_view(priv->tree_widget);
-    bedit_file_browser_view_set_click_policy(view, policy);
+    bedit_file_browser_folder_view_set_click_policy(view, policy);
 }
 
 static void on_confirm_trash_changed(
@@ -245,8 +245,8 @@ static void on_confirm_trash_changed(
 static void install_nautilus_prefs(BeditFileBrowserWindowActivatable *plugin) {
     BeditFileBrowserWindowActivatablePrivate *priv;
     gboolean prefb;
-    BeditFileBrowserViewClickPolicy policy;
-    BeditFileBrowserView *view;
+    BeditFileBrowserFolderViewClickPolicy policy;
+    BeditFileBrowserFolderView *view;
 
     g_return_if_fail(BEDIT_IS_FILE_BROWSER_WINDOW_ACTIVATABLE(plugin));
 
@@ -258,7 +258,7 @@ static void install_nautilus_prefs(BeditFileBrowserWindowActivatable *plugin) {
     );
 
     view = bedit_file_browser_widget_get_browser_view(priv->tree_widget);
-    bedit_file_browser_view_set_click_policy(view, policy);
+    bedit_file_browser_folder_view_set_click_policy(view, policy);
 
     priv->click_policy_handle = g_signal_connect(
         priv->nautilus_settings, "changed::" NAUTILUS_CLICK_POLICY_KEY,
