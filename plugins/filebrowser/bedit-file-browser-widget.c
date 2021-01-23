@@ -40,7 +40,7 @@
 #include "bedit-file-browser-folder-view.h"
 #include "bedit-file-browser-location.h"
 #include "bedit-file-browser-widget.h"
-#include "bedit-file-browser-search-view.h"
+#include "bedit-file-browser-filter-view.h"
 
 #define LOCATION_DATA_KEY "bedit-file-browser-widget-location"
 
@@ -66,7 +66,7 @@ enum {
     PROP_0,
 
     PROP_VIRTUAL_ROOT,
-    PROP_SEARCH_ENABLED,
+    PROP_FILTER_ENABLED,
     PROP_SHOW_HIDDEN,
     PROP_SHOW_BINARY,
 };
@@ -107,7 +107,7 @@ struct _BeditFileBrowserWidget {
     GtkBox parent;
 
     BeditFileBrowserFolderView *folder_view;
-    BeditFileBrowserSearchView *search_view;
+    BeditFileBrowserFilterView *filter_view;
 
     BeditFileBrowserStore *file_store;
     BeditFileBrowserBookmarksStore *bookmarks_store;
@@ -115,8 +115,8 @@ struct _BeditFileBrowserWidget {
     GMenuModel *dir_menu;
 
     BeditFileBrowserLocation *location;
-    GtkToggleButton *search_toggle;
-    GtkEntry *search_entry;
+    GtkToggleButton *filter_toggle;
+    GtkEntry *filter_entry;
     GtkToggleButton *show_hidden_toggle;
     GtkToggleButton *show_binary_toggle;
 
@@ -145,7 +145,7 @@ struct _BeditFileBrowserWidget {
 
     GdkCursor *busy_cursor;
 
-    guint search_enabled : 1;
+    guint filter_enabled : 1;
     guint show_hidden : 1;
     guint show_binary : 1;
 };
@@ -173,13 +173,13 @@ static gboolean on_view_stack_key_press_event(
     BeditFileBrowserWidget *obj
 );
 
-static gboolean on_search_entry_key_press_event(
-    GtkEntry *search_entry, GdkEventKey *event,
+static gboolean on_filter_entry_key_press_event(
+    GtkEntry *filter_entry, GdkEventKey *event,
     BeditFileBrowserWidget *obj
 );
 
-static void on_search_entry_text_changed(
-    GtkEntry *search_entry, GParamSpec *param, BeditFileBrowserWidget *obj
+static void on_filter_entry_text_changed(
+    GtkEntry *filter_entry, GParamSpec *param, BeditFileBrowserWidget *obj
 );
 
 static gboolean on_folder_view_button_press_event(
@@ -190,12 +190,12 @@ static gboolean on_folder_view_key_press_event(
     BeditFileBrowserFolderView *folder_view, GdkEventKey *event,
     BeditFileBrowserWidget *obj
 );
-static void on_search_view_file_activated(
-    BeditFileBrowserSearchView *search_view, GFile *location,
+static void on_filter_view_file_activated(
+    BeditFileBrowserFilterView *filter_view, GFile *location,
     BeditFileBrowserWidget *obj
 );
-static void on_search_view_directory_activated(
-    BeditFileBrowserSearchView *search_view, GFile *location,
+static void on_filter_view_directory_activated(
+    BeditFileBrowserFilterView *filter_view, GFile *location,
     BeditFileBrowserWidget *obj
 );
 
@@ -318,9 +318,9 @@ static void bedit_file_browser_widget_get_property(
         );
         break;
 
-    case PROP_SEARCH_ENABLED:
+    case PROP_FILTER_ENABLED:
         g_value_set_boolean(
-            value, bedit_file_browser_widget_get_search_enabled(obj)
+            value, bedit_file_browser_widget_get_filter_enabled(obj)
         );
         break;
 
@@ -354,8 +354,8 @@ static void bedit_file_browser_widget_set_property(
         );
         break;
 
-    case PROP_SEARCH_ENABLED:
-        bedit_file_browser_widget_set_search_enabled(
+    case PROP_FILTER_ENABLED:
+        bedit_file_browser_widget_set_filter_enabled(
             obj, g_value_get_boolean(value)
         );
         break;
@@ -399,10 +399,10 @@ static void bedit_file_browser_widget_class_init(
     );
 
     g_object_class_install_property(
-        object_class, PROP_SEARCH_ENABLED,
+        object_class, PROP_FILTER_ENABLED,
         g_param_spec_boolean(
-            "search-enabled", "Search Enabled",
-            "True if the widget is in search mode.  False otherwise",
+            "filter-enabled", "Filter Enabled",
+            "True if the widget is in filter mode.  False otherwise",
             FALSE,
             G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS |
             G_PARAM_EXPLICIT_NOTIFY
@@ -500,11 +500,11 @@ static void bedit_file_browser_widget_class_init(
     );
 
     gtk_widget_class_bind_template_child(
-        widget_class, BeditFileBrowserWidget, search_toggle
+        widget_class, BeditFileBrowserWidget, filter_toggle
     );
 
     gtk_widget_class_bind_template_child(
-        widget_class, BeditFileBrowserWidget, search_entry
+        widget_class, BeditFileBrowserWidget, filter_entry
     );
 
     gtk_widget_class_bind_template_child(
@@ -519,7 +519,7 @@ static void bedit_file_browser_widget_class_init(
     );
 
     gtk_widget_class_bind_template_child(
-        widget_class, BeditFileBrowserWidget, search_view
+        widget_class, BeditFileBrowserWidget, filter_view
     );
 
     gtk_widget_class_bind_template_child(
@@ -581,7 +581,7 @@ static void bedit_file_browser_widget_init(BeditFileBrowserWidget *obj) {
 
     display = gtk_widget_get_display(GTK_WIDGET(obj));
     obj->busy_cursor = gdk_cursor_new_from_name(display, "progress");
-    obj->search_enabled = FALSE;
+    obj->filter_enabled = FALSE;
     obj->show_hidden = TRUE;
     obj->show_binary = TRUE;
 
@@ -738,13 +738,13 @@ static void bedit_file_browser_widget_init(BeditFileBrowserWidget *obj) {
     );
 
     g_signal_connect(
-        obj->search_entry, "notify::text",
-        G_CALLBACK(on_search_entry_text_changed), obj
+        obj->filter_entry, "notify::text",
+        G_CALLBACK(on_filter_entry_text_changed), obj
     );
 
     g_signal_connect(
-        obj->search_entry, "key-press-event",
-        G_CALLBACK(on_search_entry_key_press_event), obj
+        obj->filter_entry, "key-press-event",
+        G_CALLBACK(on_filter_entry_key_press_event), obj
     );
 
     g_signal_connect(
@@ -815,14 +815,14 @@ static void bedit_file_browser_widget_init(BeditFileBrowserWidget *obj) {
     );
 
     g_object_bind_property(
-        G_OBJECT(obj), "search-enabled",
-        G_OBJECT(obj->search_toggle), "active",
+        G_OBJECT(obj), "filter-enabled",
+        G_OBJECT(obj->filter_toggle), "active",
         G_BINDING_BIDIRECTIONAL | G_BINDING_SYNC_CREATE
     );
 
     g_object_bind_property(
-        obj->search_entry, "text",
-        obj->search_view, "query",
+        obj->filter_entry, "text",
+        obj->filter_view, "query",
         G_BINDING_BIDIRECTIONAL | G_BINDING_SYNC_CREATE
     );
 
@@ -838,12 +838,12 @@ static void bedit_file_browser_widget_init(BeditFileBrowserWidget *obj) {
     );
 
     g_signal_connect(
-        obj->search_view, "file-activated",
-        G_CALLBACK(on_search_view_file_activated), obj
+        obj->filter_view, "file-activated",
+        G_CALLBACK(on_filter_view_file_activated), obj
     );
     g_signal_connect(
-        obj->search_view, "directory-activated",
-        G_CALLBACK(on_search_view_directory_activated), obj
+        obj->filter_view, "directory-activated",
+        G_CALLBACK(on_filter_view_directory_activated), obj
     );
 }
 
@@ -1106,8 +1106,8 @@ void bedit_file_browser_widget_set_virtual_root(
         obj->file_store, root, virtual_root
     );
 
-    bedit_file_browser_search_view_set_virtual_root(
-        obj->search_view, virtual_root
+    bedit_file_browser_filter_view_set_virtual_root(
+        obj->filter_view, virtual_root
     );
 }
 
@@ -1186,27 +1186,27 @@ void bedit_file_browser_widget_set_active_root_enabled(
 }
 
 
-void bedit_file_browser_widget_set_search_enabled(
+void bedit_file_browser_widget_set_filter_enabled(
     BeditFileBrowserWidget *obj, gboolean enabled
 ) {
     g_return_if_fail(BEDIT_IS_FILE_BROWSER_WIDGET(obj));
 
-    if (obj->search_enabled == enabled) {
+    if (obj->filter_enabled == enabled) {
         return;
     }
 
     if (enabled) {
         gtk_stack_set_visible_child_full(
-            obj->toolbar_stack, "search",
+            obj->toolbar_stack, "filter",
             GTK_STACK_TRANSITION_TYPE_NONE
         );
         gtk_stack_set_visible_child_full(
-            obj->view_stack, "search",
+            obj->view_stack, "filter",
             GTK_STACK_TRANSITION_TYPE_NONE
         );
 
-        bedit_file_browser_search_view_set_enabled(
-            obj->search_view, TRUE
+        bedit_file_browser_filter_view_set_enabled(
+            obj->filter_view, TRUE
         );
 
     } else {
@@ -1219,25 +1219,25 @@ void bedit_file_browser_widget_set_search_enabled(
             GTK_STACK_TRANSITION_TYPE_NONE
         );
 
-        bedit_file_browser_search_view_set_enabled(
-            obj->search_view, FALSE
+        bedit_file_browser_filter_view_set_enabled(
+            obj->filter_view, FALSE
         );
 
-        gtk_entry_reset_im_context(obj->search_entry);
-        gtk_entry_set_text(obj->search_entry, "");
+        gtk_entry_reset_im_context(obj->filter_entry);
+        gtk_entry_set_text(obj->filter_entry, "");
     }
 
-    obj->search_enabled = enabled;
+    obj->filter_enabled = enabled;
 
-    g_object_notify(G_OBJECT(obj), "search-enabled");
+    g_object_notify(G_OBJECT(obj), "filter-enabled");
 }
 
-gboolean bedit_file_browser_widget_get_search_enabled(
+gboolean bedit_file_browser_widget_get_filter_enabled(
     BeditFileBrowserWidget *obj
 ) {
     g_return_val_if_fail(BEDIT_IS_FILE_BROWSER_WIDGET(obj), FALSE);
 
-    return obj->search_enabled ? TRUE : FALSE;
+    return obj->filter_enabled ? TRUE : FALSE;
 }
 
 void bedit_file_browser_widget_set_show_hidden(
@@ -1493,27 +1493,27 @@ static void on_folder_view_directory_activated(
     g_object_unref(location);
 }
 
-static void on_search_view_file_activated(
-    BeditFileBrowserSearchView *search_view, GFile *location,
+static void on_filter_view_file_activated(
+    BeditFileBrowserFilterView *filter_view, GFile *location,
     BeditFileBrowserWidget *obj
 ) {
-    g_return_if_fail(BEDIT_IS_FILE_BROWSER_SEARCH_VIEW(search_view));
+    g_return_if_fail(BEDIT_IS_FILE_BROWSER_FILTER_VIEW(filter_view));
     g_return_if_fail(G_IS_FILE(location));
     g_return_if_fail(BEDIT_IS_FILE_BROWSER_WIDGET(obj));
 
-    bedit_file_browser_widget_set_search_enabled(obj, FALSE);
+    bedit_file_browser_widget_set_filter_enabled(obj, FALSE);
     g_signal_emit(obj, signals[FILE_ACTIVATED], 0, location);
 }
 
-static void on_search_view_directory_activated(
-    BeditFileBrowserSearchView *search_view, GFile *location,
+static void on_filter_view_directory_activated(
+    BeditFileBrowserFilterView *filter_view, GFile *location,
     BeditFileBrowserWidget *obj
 ) {
-    g_return_if_fail(BEDIT_IS_FILE_BROWSER_SEARCH_VIEW(search_view));
+    g_return_if_fail(BEDIT_IS_FILE_BROWSER_FILTER_VIEW(filter_view));
     g_return_if_fail(G_IS_FILE(location));
     g_return_if_fail(BEDIT_IS_FILE_BROWSER_WIDGET(obj));
 
-    bedit_file_browser_widget_set_search_enabled(obj, FALSE);
+    bedit_file_browser_widget_set_filter_enabled(obj, FALSE);
     g_signal_emit(obj, signals[DIRECTORY_ACTIVATED], 0, location);
 }
 
@@ -1577,8 +1577,8 @@ static void on_virtual_root_changed(
         g_message("NO!");
     }
 
-    bedit_file_browser_search_view_set_virtual_root(
-        obj->search_view, bedit_file_browser_store_get_virtual_root(model)
+    bedit_file_browser_filter_view_set_virtual_root(
+        obj->filter_view, bedit_file_browser_store_get_virtual_root(model)
     );
 
     g_object_notify(G_OBJECT(obj), "virtual-root");
@@ -1726,50 +1726,50 @@ static gboolean on_view_stack_key_press_event(
     g_return_val_if_fail(view_stack == obj->view_stack, FALSE);
 
     name = gtk_stack_get_visible_child_name(obj->view_stack);
-    if (g_strcmp0(name, "search")) {
+    if (g_strcmp0(name, "filter")) {
         if (!gtk_entry_im_context_filter_keypress(
-            obj->search_entry, event)
+            obj->filter_entry, event)
         ) {
             return FALSE;
         }
-        bedit_file_browser_widget_set_search_enabled(obj, TRUE);
+        bedit_file_browser_widget_set_filter_enabled(obj, TRUE);
 
         return TRUE;
     } else {
-        gtk_widget_realize(GTK_WIDGET(obj->search_entry));
+        gtk_widget_realize(GTK_WIDGET(obj->filter_entry));
         gtk_widget_event(
-            GTK_WIDGET(obj->search_entry), (GdkEvent *) event
+            GTK_WIDGET(obj->filter_entry), (GdkEvent *) event
         );
         return TRUE;
     }
 }
 
-static gboolean on_search_entry_key_press_event(
-    GtkEntry *search_entry, GdkEventKey *event,
+static gboolean on_filter_entry_key_press_event(
+    GtkEntry *filter_entry, GdkEventKey *event,
     BeditFileBrowserWidget *obj
 ) {
-    g_return_val_if_fail(GTK_IS_ENTRY(search_entry), FALSE);
+    g_return_val_if_fail(GTK_IS_ENTRY(filter_entry), FALSE);
     g_return_val_if_fail(BEDIT_IS_FILE_BROWSER_WIDGET(obj), FALSE);
 
     // TODO This is ignored in GTK3 because the popover holds a grab and
     // intercepts.  Should just work in GTK4.
     if (event->keyval == GDK_KEY_Escape) {
-        bedit_file_browser_widget_set_search_enabled(obj, FALSE);
+        bedit_file_browser_widget_set_filter_enabled(obj, FALSE);
         return TRUE;
     }
 
     return FALSE;
 }
 
-static void on_search_entry_text_changed(
-    GtkEntry *search_entry, GParamSpec *param, BeditFileBrowserWidget *obj
+static void on_filter_entry_text_changed(
+    GtkEntry *filter_entry, GParamSpec *param, BeditFileBrowserWidget *obj
 ) {
-    g_return_if_fail(GTK_IS_ENTRY(search_entry));
+    g_return_if_fail(GTK_IS_ENTRY(filter_entry));
     g_return_if_fail(BEDIT_IS_FILE_BROWSER_WIDGET(obj));
-    g_return_if_fail(search_entry == obj->search_entry);
+    g_return_if_fail(filter_entry == obj->filter_entry);
 
-    if (!g_strcmp0(gtk_entry_get_text(search_entry), "")) {
-        bedit_file_browser_widget_set_search_enabled(obj, FALSE);
+    if (!g_strcmp0(gtk_entry_get_text(filter_entry), "")) {
+        bedit_file_browser_widget_set_filter_enabled(obj, FALSE);
     }
 }
 

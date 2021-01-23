@@ -1,5 +1,5 @@
 /*
- * bedit-file-browser-search-child-dir-enumerator.c
+ * bedit-file-browser-filter-file-enumerator.c
  * This file is part of Bedit.
  *
  * Copyright (C) 2020 - Ben Mather
@@ -20,7 +20,7 @@
 
 #include "config.h"
 
-#include "bedit-file-browser-search-child-dir-enumerator.h"
+#include "bedit-file-browser-filter-file-enumerator.h"
 
 #include <gio/gio.h>
 #include <glib-object.h>
@@ -28,18 +28,22 @@
 
 #include "bedit/bedit-debug.h"
 
-#include "bedit-file-browser-search-dir-enumerator.h"
-#include "bedit-file-browser-search-match.h"
+#include "bedit-file-browser-filter-dir-enumerator.h"
+#include "bedit-file-browser-filter-match.h"
 
 #define STANDARD_ATTRIBUTE_TYPES                                            \
     G_FILE_ATTRIBUTE_STANDARD_TYPE ","                                      \
     G_FILE_ATTRIBUTE_STANDARD_IS_HIDDEN ","                                 \
-    G_FILE_ATTRIBUTE_STANDARD_NAME
+    G_FILE_ATTRIBUTE_STANDARD_IS_BACKUP ","                                 \
+    G_FILE_ATTRIBUTE_STANDARD_NAME ","                                      \
+    G_FILE_ATTRIBUTE_STANDARD_DISPLAY_NAME ","                              \
+    G_FILE_ATTRIBUTE_STANDARD_CONTENT_TYPE ","                              \
+    G_FILE_ATTRIBUTE_STANDARD_SYMBOLIC_ICON
 
-struct _BeditFileBrowserSearchChildDirEnumerator {
+struct _BeditFileBrowserFilterFileEnumerator {
     GObject parent_instance;
 
-    BeditFileBrowserSearchDirEnumerator *source;
+    BeditFileBrowserFilterDirEnumerator *source;
     gchar *pattern;
 
     /* Sorted queue of GFile instances that match the pattern, each a child of
@@ -54,33 +58,20 @@ enum {
     LAST_PROP,
 };
 
-static void bedit_file_browser_search_child_dir_enumerator_iface_init(
-    BeditFileBrowserSearchDirEnumeratorInterface *interface
-);
-static gboolean bedit_file_browser_search_child_dir_enumerator_iterate(
-    BeditFileBrowserSearchDirEnumerator *enumerator,
-    GFile **dir,
-    gchar **path_markup,
-    GCancellable *cancellable,
-    GError **error
-);
 
-G_DEFINE_DYNAMIC_TYPE_EXTENDED(
-    BeditFileBrowserSearchChildDirEnumerator,
-    bedit_file_browser_search_child_dir_enumerator,
-    G_TYPE_OBJECT, 0,
-    G_IMPLEMENT_INTERFACE_DYNAMIC(
-        BEDIT_TYPE_FILE_BROWSER_SEARCH_DIR_ENUMERATOR,
-        bedit_file_browser_search_child_dir_enumerator_iface_init
-    )
+G_DEFINE_DYNAMIC_TYPE(
+    BeditFileBrowserFilterFileEnumerator,
+    bedit_file_browser_filter_file_enumerator,
+    G_TYPE_OBJECT
 )
 
-static void bedit_file_browser_search_child_dir_enumerator_get_property(
+
+static void bedit_file_browser_filter_file_enumerator_get_property(
     GObject *object, guint prop_id, GValue *value, GParamSpec *pspec
 ) {
-    BeditFileBrowserSearchChildDirEnumerator *enumerator;
+    BeditFileBrowserFilterFileEnumerator *enumerator;
 
-    enumerator = BEDIT_FILE_BROWSER_SEARCH_CHILD_DIR_ENUMERATOR(object);
+    enumerator = BEDIT_FILE_BROWSER_FILTER_FILE_ENUMERATOR(object);
 
     switch (prop_id) {
     case PROP_SOURCE:
@@ -97,16 +88,16 @@ static void bedit_file_browser_search_child_dir_enumerator_get_property(
     }
 }
 
-static void bedit_file_browser_search_child_dir_enumerator_set_property(
+static void bedit_file_browser_filter_file_enumerator_set_property(
     GObject *object, guint prop_id, const GValue *value, GParamSpec *pspec
 ) {
-    BeditFileBrowserSearchChildDirEnumerator *enumerator;
+    BeditFileBrowserFilterFileEnumerator *enumerator;
 
-    enumerator = BEDIT_FILE_BROWSER_SEARCH_CHILD_DIR_ENUMERATOR(object);
+    enumerator = BEDIT_FILE_BROWSER_FILTER_FILE_ENUMERATOR(object);
 
     switch (prop_id) {
     case PROP_SOURCE:
-        enumerator->source = BEDIT_FILE_BROWSER_SEARCH_DIR_ENUMERATOR(
+        enumerator->source = BEDIT_FILE_BROWSER_FILTER_DIR_ENUMERATOR(
             g_value_dup_object(value)
         );
         break;
@@ -121,20 +112,20 @@ static void bedit_file_browser_search_child_dir_enumerator_set_property(
     }
 }
 
-static void bedit_file_browser_search_child_dir_enumerator_class_init(
-    BeditFileBrowserSearchChildDirEnumeratorClass *klass
+static void bedit_file_browser_filter_file_enumerator_class_init(
+    BeditFileBrowserFilterFileEnumeratorClass *klass
 ) {
     GObjectClass *object_class = G_OBJECT_CLASS(klass);
 
-    object_class->get_property = bedit_file_browser_search_child_dir_enumerator_get_property;
-    object_class->set_property = bedit_file_browser_search_child_dir_enumerator_set_property;
+    object_class->get_property = bedit_file_browser_filter_file_enumerator_get_property;
+    object_class->set_property = bedit_file_browser_filter_file_enumerator_set_property;
 
     g_object_class_install_property(
         object_class, PROP_SOURCE,
         g_param_spec_object(
             "source", "Source directory enumerator",
-            "Enumerator that yields directories to search in",
-            BEDIT_TYPE_FILE_BROWSER_SEARCH_DIR_ENUMERATOR,
+            "Enumerator that yields directories to filter in",
+            BEDIT_TYPE_FILE_BROWSER_FILTER_DIR_ENUMERATOR,
             G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS | G_PARAM_CONSTRUCT_ONLY
         )
     );
@@ -150,18 +141,12 @@ static void bedit_file_browser_search_child_dir_enumerator_class_init(
     );
 }
 
-static void bedit_file_browser_search_child_dir_enumerator_iface_init(
-    BeditFileBrowserSearchDirEnumeratorInterface *interface
-) {
-    interface->iterate = bedit_file_browser_search_child_dir_enumerator_iterate;
-}
-
-static void bedit_file_browser_search_child_dir_enumerator_class_finalize(
-    BeditFileBrowserSearchChildDirEnumeratorClass *klass
+static void bedit_file_browser_filter_file_enumerator_class_finalize(
+    BeditFileBrowserFilterFileEnumeratorClass *klass
 ) {}
 
-static void bedit_file_browser_search_child_dir_enumerator_init(
-    BeditFileBrowserSearchChildDirEnumerator *enumerator
+static void bedit_file_browser_filter_file_enumerator_init(
+    BeditFileBrowserFilterFileEnumerator *enumerator
 ) {
     enumerator->source = NULL;
     enumerator->pattern = NULL;
@@ -169,20 +154,20 @@ static void bedit_file_browser_search_child_dir_enumerator_init(
     enumerator->matches = NULL;
 }
 
-BeditFileBrowserSearchChildDirEnumerator
-*bedit_file_browser_search_child_dir_enumerator_new(
-    BeditFileBrowserSearchDirEnumerator *source, gchar *pattern
+BeditFileBrowserFilterFileEnumerator
+*bedit_file_browser_filter_file_enumerator_new(
+    BeditFileBrowserFilterDirEnumerator *source, gchar *pattern
 ) {
-    BeditFileBrowserSearchChildDirEnumerator *obj;
-    g_return_val_if_fail(BEDIT_IS_FILE_BROWSER_SEARCH_DIR_ENUMERATOR(source), NULL);
+    BeditFileBrowserFilterFileEnumerator *obj;
+    g_return_val_if_fail(BEDIT_IS_FILE_BROWSER_FILTER_DIR_ENUMERATOR(source), NULL);
     g_return_val_if_fail(pattern != NULL, NULL);
 
     obj = g_object_new(
-        BEDIT_TYPE_FILE_BROWSER_SEARCH_CHILD_DIR_ENUMERATOR,
+        BEDIT_TYPE_FILE_BROWSER_FILTER_FILE_ENUMERATOR,
         "source", source, "pattern", pattern,
         NULL
     );
-    g_return_val_if_fail(BEDIT_IS_FILE_BROWSER_SEARCH_CHILD_DIR_ENUMERATOR(obj), obj);
+    g_return_val_if_fail(BEDIT_IS_FILE_BROWSER_FILTER_FILE_ENUMERATOR(obj), obj);
     return obj;
 }
 
@@ -195,11 +180,12 @@ struct _Match {
     guint64 quality;
 };
 
-static gint bedit_file_browser_search_dir_enumerator_compare_match(
+static gint bedit_file_browser_filter_file_enumerator_compare_match(
     gconstpointer a, gconstpointer b
 ) {
     Match const *a_match, *b_match;
     GFileInfo *a_file_info, *b_file_info;
+    gboolean a_is_backup, b_is_backup;
     gboolean a_is_hidden, b_is_hidden;
 
     a_match = a;
@@ -212,6 +198,15 @@ static gint bedit_file_browser_search_dir_enumerator_compare_match(
         return 1;
     }
     if (b_match->quality < a_match->quality) {
+        return -1;
+    }
+
+    a_is_backup = g_file_info_get_is_backup(a_file_info);
+    b_is_backup = g_file_info_get_is_backup(b_file_info);
+    if (a_is_backup && !b_is_backup) {
+        return 1;
+    }
+    if (b_is_backup && !a_is_backup) {
         return -1;
     }
 
@@ -230,17 +225,19 @@ static gint bedit_file_browser_search_dir_enumerator_compare_match(
     );
 }
 
-static gboolean bedit_file_browser_search_child_dir_enumerator_iterate(
-    BeditFileBrowserSearchDirEnumerator *instance,
-    GFile **out_dir,
+gboolean bedit_file_browser_filter_file_enumerator_iterate(
+    BeditFileBrowserFilterFileEnumerator *enumerator,
+    GFile **out_file,
+    GFileInfo **out_info,
     gchar **out_markup,
     GCancellable *cancellable,
     GError **error
 ) {
-    BeditFileBrowserSearchChildDirEnumerator *enumerator;
     Match *match;
 
-    enumerator = BEDIT_FILE_BROWSER_SEARCH_CHILD_DIR_ENUMERATOR(instance);
+    g_return_val_if_fail(
+        BEDIT_IS_FILE_BROWSER_FILTER_FILE_ENUMERATOR(enumerator), FALSE
+    );
 
     if (g_cancellable_is_cancelled(cancellable)) {
         *error = g_error_new(
@@ -256,7 +253,7 @@ static gboolean bedit_file_browser_search_child_dir_enumerator_iterate(
         GFileEnumerator *child_enumerator;
         GString *markup_buffer;
 
-        if (!bedit_file_browser_search_dir_enumerator_iterate(
+        if (!bedit_file_browser_filter_dir_enumerator_iterate(
             enumerator->source,
             &dir_file,
             &dir_markup,
@@ -290,7 +287,7 @@ static gboolean bedit_file_browser_search_child_dir_enumerator_iterate(
         g_return_val_if_fail(markup_buffer != NULL, FALSE);
 
         while (TRUE) {
-            GFileInfo *child_info = NULL;
+            GFileInfo *child_info;
             gchar const *child_name;
             guint64 quality;
 
@@ -308,16 +305,9 @@ static gboolean bedit_file_browser_search_child_dir_enumerator_iterate(
                 break;
             }
 
-            if (
-                g_file_info_get_file_type(child_info) != G_FILE_TYPE_DIRECTORY
-            ) {
-                g_object_unref(child_info);
-                continue;
-            }
-
             child_name = g_file_info_get_name(child_info);
 
-            if (bedit_file_browser_search_match_segment(
+            if (bedit_file_browser_filter_match_segment(
                 enumerator->pattern, child_name,
                 markup_buffer, &quality
             )) {
@@ -327,7 +317,7 @@ static gboolean bedit_file_browser_search_child_dir_enumerator_iterate(
                 match->file = g_file_get_child(dir_file, child_name);
                 match->info = g_object_ref(child_info);
                 match->markup = g_strdup_printf(
-                    "%s%s/",
+                    "%s%s",
                     (gchar *) dir_markup,
                     markup_buffer->str
                 );
@@ -343,8 +333,34 @@ static gboolean bedit_file_browser_search_child_dir_enumerator_iterate(
 
         enumerator->matches = g_list_sort(
             enumerator->matches,
-            bedit_file_browser_search_dir_enumerator_compare_match
+            bedit_file_browser_filter_file_enumerator_compare_match
         );
+
+        if (!g_strcmp0(enumerator->pattern, "..")) {
+            GFile *parent;
+            parent = g_file_get_parent(dir_file);
+            if (parent != NULL) {
+                match = g_slice_alloc0(sizeof(Match));
+                g_return_val_if_fail(match != NULL, FALSE);
+
+                match->file = g_file_get_parent(dir_file);
+                match->info = g_file_query_info(
+                    match->file, STANDARD_ATTRIBUTE_TYPES, G_FILE_QUERY_INFO_NONE,
+                    cancellable, error
+                );
+                if (*error) {
+                    return FALSE;
+                }
+                match->markup = g_strdup_printf(
+                    "%s..",
+                    (gchar *) dir_markup
+                );
+                match->quality = 0xffffffffffffffff;
+                enumerator->matches = g_list_prepend(
+                    enumerator->matches, match
+                );
+            }
+        }
 
         g_string_free(markup_buffer, TRUE);
 
@@ -361,10 +377,16 @@ static gboolean bedit_file_browser_search_child_dir_enumerator_iterate(
     );
 
     /* Unpack match into out parameters. */
-    if (out_dir != NULL) {
-        *out_dir = g_steal_pointer(&match->file);
+    if (out_file != NULL) {
+        *out_file = g_steal_pointer(&match->file);
     } else {
         g_clear_object(&match->file);
+    }
+
+    if (out_info != NULL) {
+        *out_info = g_steal_pointer(&match->info);
+    } else {
+        g_clear_object(&match->info);
     }
 
     if (out_markup != NULL) {
@@ -378,8 +400,8 @@ static gboolean bedit_file_browser_search_child_dir_enumerator_iterate(
     return TRUE;
 }
 
-void _bedit_file_browser_search_child_dir_enumerator_register_type(
+void _bedit_file_browser_filter_file_enumerator_register_type(
     GTypeModule *type_module
 ) {
-    bedit_file_browser_search_child_dir_enumerator_register_type(type_module);
+    bedit_file_browser_filter_file_enumerator_register_type(type_module);
 }

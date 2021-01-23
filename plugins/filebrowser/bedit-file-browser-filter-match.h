@@ -1,5 +1,5 @@
 /*
- * bedit-file-browser-search-match.h
+ * bedit-file-browser-filter-match.h
  * This file is part of Bedit.
  *
  * Copyright (C) 2020 - Ben Mather
@@ -18,17 +18,17 @@
  * along with this program; if not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef BEDIT_FILE_BROWSER_SEARCH_MATCH_H
-#define BEDIT_FILE_BROWSER_SEARCH_MATCH_H
+#ifndef BEDIT_FILE_BROWSER_FILTER_MATCH_H
+#define BEDIT_FILE_BROWSER_FILTER_MATCH_H
 
 #include <gmodule.h>
 
 G_BEGIN_DECLS
 
-gboolean bedit_file_browser_search_match_segment(
+gboolean bedit_file_browser_filter_match_segment(
     gchar const *segment, gchar const *name, GString *markup, guint64 *quality
 );
 
 G_END_DECLS
 
-#endif /* BEDIT_FILE_BROWSER_SEARCH_MATCH_H */
+#endif /* BEDIT_FILE_BROWSER_FILTER_MATCH_H */

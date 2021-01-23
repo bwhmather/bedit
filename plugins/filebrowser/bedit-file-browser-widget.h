@@ -86,10 +86,10 @@ BeditFileBrowserFolderView *bedit_file_browser_widget_get_browser_view(
     BeditFileBrowserWidget *obj
 );
 
-void bedit_file_browser_widget_set_search_enabled(
+void bedit_file_browser_widget_set_filter_enabled(
     BeditFileBrowserWidget *obj, gboolean enabled
 );
-gboolean bedit_file_browser_widget_get_search_enabled(
+gboolean bedit_file_browser_widget_get_filter_enabled(
     BeditFileBrowserWidget *obj
 );
 void bedit_file_browser_widget_set_show_hidden(

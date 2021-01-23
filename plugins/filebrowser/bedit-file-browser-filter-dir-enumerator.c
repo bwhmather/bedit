@@ -1,5 +1,5 @@
 /*
- * bedit-file-browser-search-dir-enumerator.c
+ * bedit-file-browser-filter-dir-enumerator.c
  * This file is part of Bedit.
  *
  * Copyright (C) 2020 - Ben Mather
@@ -20,25 +20,25 @@
 
 #include "config.h"
 
-#include "bedit-file-browser-search-dir-enumerator.h"
+#include "bedit-file-browser-filter-dir-enumerator.h"
 
 #include <glib-object.h>
 #include <gmodule.h>
 
 G_DEFINE_INTERFACE(
-    BeditFileBrowserSearchDirEnumerator,
-    bedit_file_browser_search_dir_enumerator,
+    BeditFileBrowserFilterDirEnumerator,
+    bedit_file_browser_filter_dir_enumerator,
     G_TYPE_OBJECT
 );
 
-static void bedit_file_browser_search_dir_enumerator_default_init(
-    BeditFileBrowserSearchDirEnumeratorInterface *iface
+static void bedit_file_browser_filter_dir_enumerator_default_init(
+    BeditFileBrowserFilterDirEnumeratorInterface *iface
 ) {
     // Pass.
 }
 
 /**
- * bedit_file_browser_search_dir_enumerator_iterate
+ * bedit_file_browser_filter_dir_enumerator_iterate
  * @dir: (out)
  * @path_markup: (out)
  * @cancellable:
@@ -50,20 +50,20 @@ static void bedit_file_browser_search_dir_enumerator_default_init(
  * Returns: %FALSE if the end of the enumerator has been reached.  If this
  *   happens, dir and path_markup will be set to NULL.
  */
-gboolean bedit_file_browser_search_dir_enumerator_iterate(
-    BeditFileBrowserSearchDirEnumerator *enumerator,
+gboolean bedit_file_browser_filter_dir_enumerator_iterate(
+    BeditFileBrowserFilterDirEnumerator *enumerator,
     GFile **dir,
     gchar **path_markup,
     GCancellable *cancellable,
     GError **error
 ) {
-    BeditFileBrowserSearchDirEnumeratorInterface *iface;
+    BeditFileBrowserFilterDirEnumeratorInterface *iface;
 
     g_return_val_if_fail(
-        BEDIT_IS_FILE_BROWSER_SEARCH_DIR_ENUMERATOR(enumerator), FALSE
+        BEDIT_IS_FILE_BROWSER_FILTER_DIR_ENUMERATOR(enumerator), FALSE
     );
 
-    iface = BEDIT_FILE_BROWSER_SEARCH_DIR_ENUMERATOR_GET_IFACE(enumerator);
+    iface = BEDIT_FILE_BROWSER_FILTER_DIR_ENUMERATOR_GET_IFACE(enumerator);
 
     g_return_val_if_fail(iface->iterate != NULL, FALSE);
     return iface->iterate(enumerator, dir, path_markup, cancellable, error);

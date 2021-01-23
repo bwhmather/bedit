@@ -1,5 +1,5 @@
 /*
- * bedit-file-browser-search-dir-enumerator.h
+ * bedit-file-browser-filter-dir-enumerator.h
  * This file is part of Bedit.
  *
  * Copyright (C) 2020 - Ben Mather
@@ -18,8 +18,8 @@
  * along with this program; if not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef BEDIT_FILE_BROWSER_SEARCH_DIR_ENUMERATOR_H
-#define BEDIT_FILE_BROWSER_SEARCH_DIR_ENUMERATOR_H
+#ifndef BEDIT_FILE_BROWSER_FILTER_DIR_ENUMERATOR_H
+#define BEDIT_FILE_BROWSER_FILTER_DIR_ENUMERATOR_H
 
 #include <gio/gio.h>
 #include <glib-object.h>
@@ -27,21 +27,21 @@
 
 G_BEGIN_DECLS
 
-#define BEDIT_TYPE_FILE_BROWSER_SEARCH_DIR_ENUMERATOR                       \
-    bedit_file_browser_search_dir_enumerator_get_type()
+#define BEDIT_TYPE_FILE_BROWSER_FILTER_DIR_ENUMERATOR                       \
+    bedit_file_browser_filter_dir_enumerator_get_type()
 
 G_DECLARE_INTERFACE(
-    BeditFileBrowserSearchDirEnumerator,
-    bedit_file_browser_search_dir_enumerator,
-    BEDIT, FILE_BROWSER_SEARCH_DIR_ENUMERATOR,
+    BeditFileBrowserFilterDirEnumerator,
+    bedit_file_browser_filter_dir_enumerator,
+    BEDIT, FILE_BROWSER_FILTER_DIR_ENUMERATOR,
     GObject
 )
 
-struct _BeditFileBrowserSearchDirEnumeratorInterface {
+struct _BeditFileBrowserFilterDirEnumeratorInterface {
     GTypeInterface parent_iface;
 
     gboolean (*iterate) (
-        BeditFileBrowserSearchDirEnumerator *enumerator,
+        BeditFileBrowserFilterDirEnumerator *enumerator,
         GFile **dir,
         gchar **path_markup,
         GCancellable *cancellable,
@@ -49,8 +49,8 @@ struct _BeditFileBrowserSearchDirEnumeratorInterface {
     );
 };
 
-gboolean bedit_file_browser_search_dir_enumerator_iterate(
-    BeditFileBrowserSearchDirEnumerator *enumerator,
+gboolean bedit_file_browser_filter_dir_enumerator_iterate(
+    BeditFileBrowserFilterDirEnumerator *enumerator,
     GFile **dir,
     gchar **path_markup,
     GCancellable *cancellable,
@@ -59,4 +59,4 @@ gboolean bedit_file_browser_search_dir_enumerator_iterate(
 
 G_END_DECLS
 
-#endif /* BEDIT_FILE_BROWSER_SEARCH_DIR_ENUMERATOR_H */
+#endif /* BEDIT_FILE_BROWSER_FILTER_DIR_ENUMERATOR_H */

@@ -1,5 +1,5 @@
 /*
- * bedit-file-browser-search-view.c
+ * bedit-file-browser-filter-view.c
  * This file is part of Bedit.
  *
  * Copyright (C) 2020 - Ben Mather
@@ -20,21 +20,21 @@
 
 #include "config.h"
 
-#include "bedit-file-browser-search-view.h"
+#include "bedit-file-browser-filter-view.h"
 
 #include <gmodule.h>
 #include <gtk/gtk.h>
 
 #include "bedit/bedit-debug.h"
 
-#include "bedit-file-browser-search-match.h"
-#include "bedit-file-browser-search-dir-enumerator.h"
-#include "bedit-file-browser-search-root-dir-enumerator.h"
-#include "bedit-file-browser-search-child-dir-enumerator.h"
-#include "bedit-file-browser-search-parent-dir-enumerator.h"
-#include "bedit-file-browser-search-file-enumerator.h"
+#include "bedit-file-browser-filter-match.h"
+#include "bedit-file-browser-filter-dir-enumerator.h"
+#include "bedit-file-browser-filter-root-dir-enumerator.h"
+#include "bedit-file-browser-filter-child-dir-enumerator.h"
+#include "bedit-file-browser-filter-parent-dir-enumerator.h"
+#include "bedit-file-browser-filter-file-enumerator.h"
 
-struct _BeditFileBrowserSearchView {
+struct _BeditFileBrowserFilterView {
     GtkBin parent_instance;
 
     GtkTreeView *tree_view;
@@ -48,7 +48,7 @@ struct _BeditFileBrowserSearchView {
 };
 
 G_DEFINE_DYNAMIC_TYPE(
-    BeditFileBrowserSearchView, bedit_file_browser_search_view, GTK_TYPE_BIN
+    BeditFileBrowserFilterView, bedit_file_browser_filter_view, GTK_TYPE_BIN
 )
 
 enum {
@@ -73,46 +73,46 @@ typedef enum {
     COLUMN_LOCATION,
     COLUMN_FILE_INFO,
     N_COLUMNS,
-} BeditFileBrowserSearchStoreColumn;
+} BeditFileBrowserFilterStoreColumn;
 
-static void bedit_file_browser_search_view_activate_selected(
-    BeditFileBrowserSearchView *view
+static void bedit_file_browser_filter_view_activate_selected(
+    BeditFileBrowserFilterView *view
 );
 
-static void bedit_file_browser_search_view_on_row_activated(
+static void bedit_file_browser_filter_view_on_row_activated(
     GtkTreeView *tree_view, GtkTreePath *path, GtkTreeViewColumn *column,
-    BeditFileBrowserSearchView *view
+    BeditFileBrowserFilterView *view
 );
 
-static void bedit_file_browser_search_view_refresh(
-    BeditFileBrowserSearchView *view
+static void bedit_file_browser_filter_view_refresh(
+    BeditFileBrowserFilterView *view
 );
 
-static gboolean bedit_file_browser_search_view_on_key_press(
+static gboolean bedit_file_browser_filter_view_on_key_press(
     GtkWidget *widget, GdkEventKey *event
 );
 
-static void bedit_file_browser_search_view_get_property(
+static void bedit_file_browser_filter_view_get_property(
     GObject *object, guint prop_id, GValue *value, GParamSpec *pspec
 ) {
-    BeditFileBrowserSearchView *view = BEDIT_FILE_BROWSER_SEARCH_VIEW(object);
+    BeditFileBrowserFilterView *view = BEDIT_FILE_BROWSER_FILTER_VIEW(object);
 
     switch (prop_id) {
     case PROP_VIRTUAL_ROOT:
         g_value_take_object(
-            value, bedit_file_browser_search_view_get_virtual_root(view)
+            value, bedit_file_browser_filter_view_get_virtual_root(view)
         );
         break;
 
     case PROP_QUERY:
         g_value_take_string(
-            value, bedit_file_browser_search_view_get_query(view)
+            value, bedit_file_browser_filter_view_get_query(view)
         );
         break;
 
     case PROP_ENABLED:
         g_value_set_boolean(
-            value, bedit_file_browser_search_view_get_enabled(view)
+            value, bedit_file_browser_filter_view_get_enabled(view)
         );
         break;
 
@@ -122,26 +122,26 @@ static void bedit_file_browser_search_view_get_property(
     }
 }
 
-static void bedit_file_browser_search_view_set_property(
+static void bedit_file_browser_filter_view_set_property(
     GObject *object, guint prop_id, const GValue *value, GParamSpec *pspec
 ) {
-    BeditFileBrowserSearchView *view = BEDIT_FILE_BROWSER_SEARCH_VIEW(object);
+    BeditFileBrowserFilterView *view = BEDIT_FILE_BROWSER_FILTER_VIEW(object);
 
     switch (prop_id) {
     case PROP_VIRTUAL_ROOT:
-        bedit_file_browser_search_view_set_virtual_root(
+        bedit_file_browser_filter_view_set_virtual_root(
             view, G_FILE(g_value_dup_object(value))
         );
         break;
 
     case PROP_QUERY:
-        bedit_file_browser_search_view_set_query(
+        bedit_file_browser_filter_view_set_query(
             view, g_value_get_string(value)
         );
         break;
 
     case PROP_ENABLED:
-        bedit_file_browser_search_view_set_enabled(
+        bedit_file_browser_filter_view_set_enabled(
             view, g_value_get_boolean(value)
         );
         break;
@@ -152,21 +152,21 @@ static void bedit_file_browser_search_view_set_property(
     }
 }
 
-static void bedit_file_browser_search_view_grab_focus(GtkWidget *widget) {
-    BeditFileBrowserSearchView *view;
+static void bedit_file_browser_filter_view_grab_focus(GtkWidget *widget) {
+    BeditFileBrowserFilterView *view;
 
-    view = BEDIT_FILE_BROWSER_SEARCH_VIEW(widget);
+    view = BEDIT_FILE_BROWSER_FILTER_VIEW(widget);
     gtk_widget_grab_focus(GTK_WIDGET(view->tree_view));
 }
 
-static void bedit_file_browser_search_view_class_init(
-    BeditFileBrowserSearchViewClass *klass
+static void bedit_file_browser_filter_view_class_init(
+    BeditFileBrowserFilterViewClass *klass
 ) {
     GObjectClass *object_class = G_OBJECT_CLASS(klass);
     GtkWidgetClass *widget_class = GTK_WIDGET_CLASS(klass);
 
-    object_class->get_property = bedit_file_browser_search_view_get_property;
-    object_class->set_property = bedit_file_browser_search_view_set_property;
+    object_class->get_property = bedit_file_browser_filter_view_get_property;
+    object_class->set_property = bedit_file_browser_filter_view_set_property;
 
     g_object_class_install_property(
         object_class, PROP_VIRTUAL_ROOT,
@@ -218,28 +218,28 @@ static void bedit_file_browser_search_view_class_init(
         G_TYPE_NONE, 1, G_TYPE_FILE
     );
 
-    widget_class->grab_focus = bedit_file_browser_search_view_grab_focus;
-    widget_class->key_press_event = bedit_file_browser_search_view_on_key_press;
+    widget_class->grab_focus = bedit_file_browser_filter_view_grab_focus;
+    widget_class->key_press_event = bedit_file_browser_filter_view_on_key_press;
 
     gtk_widget_class_set_template_from_resource(
         widget_class,
         "/com/bwhmather/bedit/plugins/file-browser/ui/"
-        "bedit-file-browser-search-view.ui"
+        "bedit-file-browser-filter-view.ui"
     );
 
     gtk_widget_class_bind_template_child(
-        widget_class, BeditFileBrowserSearchView, tree_view
+        widget_class, BeditFileBrowserFilterView, tree_view
     );
 }
 
-static void bedit_file_browser_search_view_class_finalize(
-    BeditFileBrowserSearchViewClass *klass
+static void bedit_file_browser_filter_view_class_finalize(
+    BeditFileBrowserFilterViewClass *klass
 ) {}
 
 
 
-static void bedit_file_browser_search_view_init(
-    BeditFileBrowserSearchView *view
+static void bedit_file_browser_filter_view_init(
+    BeditFileBrowserFilterView *view
 ) {
     view->cancellable = NULL;
 
@@ -247,27 +247,27 @@ static void bedit_file_browser_search_view_init(
 
     g_signal_connect(
         view->tree_view, "row-activated",
-        G_CALLBACK(bedit_file_browser_search_view_on_row_activated), view
+        G_CALLBACK(bedit_file_browser_filter_view_on_row_activated), view
     );
 }
 
 /**
- * bedit_file_browser_search_view_new:
+ * bedit_file_browser_filter_view_new:
  *
- * Creates a new #BeditFileBrowserSearchView.
+ * Creates a new #BeditFileBrowserFilterView.
  *
- * Return value: the new #BeditFileBrowserSearchView object
+ * Return value: the new #BeditFileBrowserFilterView object
  **/
-BeditFileBrowserSearchView *bedit_file_browser_search_view_new(void) {
-    return g_object_new(BEDIT_TYPE_FILE_BROWSER_SEARCH_VIEW, NULL);
+BeditFileBrowserFilterView *bedit_file_browser_filter_view_new(void) {
+    return g_object_new(BEDIT_TYPE_FILE_BROWSER_FILTER_VIEW, NULL);
 }
 
-void bedit_file_browser_search_view_set_virtual_root(
-    BeditFileBrowserSearchView *view, GFile *virtual_root
+void bedit_file_browser_filter_view_set_virtual_root(
+    BeditFileBrowserFilterView *view, GFile *virtual_root
 ) {
     gboolean updated = FALSE;
 
-    g_return_if_fail(BEDIT_IS_FILE_BROWSER_SEARCH_VIEW(view));
+    g_return_if_fail(BEDIT_IS_FILE_BROWSER_FILTER_VIEW(view));
     g_return_if_fail(G_IS_FILE(virtual_root));
 
     if (view->virtual_root != NULL) {
@@ -281,14 +281,14 @@ void bedit_file_browser_search_view_set_virtual_root(
 
     if (updated) {
         g_object_notify(G_OBJECT(view), "virtual-root");
-        bedit_file_browser_search_view_refresh(view);
+        bedit_file_browser_filter_view_refresh(view);
     }
 }
 
-GFile *bedit_file_browser_search_view_get_virtual_root(
-    BeditFileBrowserSearchView *view
+GFile *bedit_file_browser_filter_view_get_virtual_root(
+    BeditFileBrowserFilterView *view
 ) {
-    g_return_val_if_fail(BEDIT_IS_FILE_BROWSER_SEARCH_VIEW(view), NULL);
+    g_return_val_if_fail(BEDIT_IS_FILE_BROWSER_FILTER_VIEW(view), NULL);
 
     if (view->virtual_root != NULL) {
         g_object_ref(view->virtual_root);
@@ -297,10 +297,10 @@ GFile *bedit_file_browser_search_view_get_virtual_root(
     return view->virtual_root;
 }
 
-void bedit_file_browser_search_view_set_query(
-    BeditFileBrowserSearchView *view, const gchar *query
+void bedit_file_browser_filter_view_set_query(
+    BeditFileBrowserFilterView *view, const gchar *query
 ) {
-    g_return_if_fail(BEDIT_IS_FILE_BROWSER_SEARCH_VIEW(view));
+    g_return_if_fail(BEDIT_IS_FILE_BROWSER_FILTER_VIEW(view));
 
     bedit_debug_message(DEBUG_PLUGINS, "query: %s", query);
 
@@ -308,28 +308,28 @@ void bedit_file_browser_search_view_set_query(
         bedit_debug(DEBUG_PLUGINS);
         view->query = g_strdup(query);
         g_object_notify(G_OBJECT(view), "query");
-        bedit_file_browser_search_view_refresh(view);
+        bedit_file_browser_filter_view_refresh(view);
     }
 }
 
-gchar *bedit_file_browser_search_view_get_query(
-    BeditFileBrowserSearchView *view
+gchar *bedit_file_browser_filter_view_get_query(
+    BeditFileBrowserFilterView *view
 ) {
-    g_return_val_if_fail(BEDIT_IS_FILE_BROWSER_SEARCH_VIEW(view), NULL);
+    g_return_val_if_fail(BEDIT_IS_FILE_BROWSER_FILTER_VIEW(view), NULL);
 
     return view->query;
 }
 
-void bedit_file_browser_search_view_set_enabled(
-    BeditFileBrowserSearchView *view, gboolean enabled
+void bedit_file_browser_filter_view_set_enabled(
+    BeditFileBrowserFilterView *view, gboolean enabled
 ) {
-    g_return_if_fail(BEDIT_IS_FILE_BROWSER_SEARCH_VIEW(view));
+    g_return_if_fail(BEDIT_IS_FILE_BROWSER_FILTER_VIEW(view));
 
     if (view->enabled != enabled) {
         view->enabled = enabled;
         g_object_notify(G_OBJECT(view), "enabled");
         if (enabled) {
-            bedit_file_browser_search_view_refresh(view);
+            bedit_file_browser_filter_view_refresh(view);
         } else if (view->cancellable != NULL) {
             g_cancellable_cancel(view->cancellable);
             g_clear_object(&view->cancellable);
@@ -337,21 +337,21 @@ void bedit_file_browser_search_view_set_enabled(
     }
 }
 
-gboolean bedit_file_browser_search_view_get_enabled(
-    BeditFileBrowserSearchView *view
+gboolean bedit_file_browser_filter_view_get_enabled(
+    BeditFileBrowserFilterView *view
 ) {
     return view->enabled ? TRUE : FALSE;
 }
 
-static void bedit_file_browser_search_view_activate_selected(
-    BeditFileBrowserSearchView *view
+static void bedit_file_browser_filter_view_activate_selected(
+    BeditFileBrowserFilterView *view
 ) {
     GtkTreeModel *model;
     GtkTreeSelection *selection;
     GList *rows;
     GFile *directory = NULL;
 
-    g_return_if_fail(BEDIT_IS_FILE_BROWSER_SEARCH_VIEW(view));
+    g_return_if_fail(BEDIT_IS_FILE_BROWSER_FILTER_VIEW(view));
 
     model = gtk_tree_view_get_model(view->tree_view);
 
@@ -401,69 +401,69 @@ static void bedit_file_browser_search_view_activate_selected(
     g_list_free_full(rows, (GDestroyNotify) gtk_tree_path_free);
 }
 
-static void bedit_file_browser_search_view_on_row_activated(
+static void bedit_file_browser_filter_view_on_row_activated(
     GtkTreeView *tree_view, GtkTreePath *path, GtkTreeViewColumn *column,
-    BeditFileBrowserSearchView *view
+    BeditFileBrowserFilterView *view
 ) {
     GtkTreeSelection *selection;
 
     g_return_if_fail(GTK_IS_TREE_VIEW(tree_view));
-    g_return_if_fail(BEDIT_IS_FILE_BROWSER_SEARCH_VIEW(view));
+    g_return_if_fail(BEDIT_IS_FILE_BROWSER_FILTER_VIEW(view));
 
     /* Make sure the activated row is the only one selected */
     selection = gtk_tree_view_get_selection(tree_view);
     gtk_tree_selection_unselect_all(selection);
     gtk_tree_selection_select_path(selection, path);
 
-    bedit_file_browser_search_view_activate_selected(view);
+    bedit_file_browser_filter_view_activate_selected(view);
 }
 
-static gboolean bedit_file_browser_search_view_on_key_press(
+static gboolean bedit_file_browser_filter_view_on_key_press(
     GtkWidget *widget, GdkEventKey *event
 ) {
-    BeditFileBrowserSearchView *view = BEDIT_FILE_BROWSER_SEARCH_VIEW(widget);
+    BeditFileBrowserFilterView *view = BEDIT_FILE_BROWSER_FILTER_VIEW(widget);
 
     switch (event->keyval) {
     case GDK_KEY_Return:
     case GDK_KEY_KP_Enter:
-        bedit_file_browser_search_view_activate_selected(view);
+        bedit_file_browser_filter_view_activate_selected(view);
         return TRUE;
 
     default:
         return GTK_WIDGET_CLASS(
-            bedit_file_browser_search_view_parent_class
+            bedit_file_browser_filter_view_parent_class
         )->key_press_event(widget, event);
     }
 }
 
-static void bedit_file_browser_search_view_refresh(
-    BeditFileBrowserSearchView *view
+static void bedit_file_browser_filter_view_refresh(
+    BeditFileBrowserFilterView *view
 ) {
     GError *error = NULL;
     gchar *query;
     gchar *query_cursor;
     gchar const *prefix;
     GFile *virtual_root;
-    BeditFileBrowserSearchDirEnumerator *dir_enumerator;
-    BeditFileBrowserSearchFileEnumerator *file_enumerator;
+    BeditFileBrowserFilterDirEnumerator *dir_enumerator;
+    BeditFileBrowserFilterFileEnumerator *file_enumerator;
     GtkTreeStore *tree_store;
     GtkTreePath *path;
     GtkTreeSelection *selection;
 
-    g_return_if_fail(BEDIT_IS_FILE_BROWSER_SEARCH_VIEW(view));
+    g_return_if_fail(BEDIT_IS_FILE_BROWSER_FILTER_VIEW(view));
 
-    if (!bedit_file_browser_search_view_get_enabled(view)) {
+    if (!bedit_file_browser_filter_view_get_enabled(view)) {
         bedit_debug_message(DEBUG_PLUGINS, "refresh skipped");
         return;
     }
 
-    query = bedit_file_browser_search_view_get_query(view);
+    query = bedit_file_browser_filter_view_get_query(view);
     if (query == NULL) {
         bedit_debug_message(DEBUG_PLUGINS, "refresh skipped");
         return;
     }
 
-    virtual_root = bedit_file_browser_search_view_get_virtual_root(view);
+    virtual_root = bedit_file_browser_filter_view_get_virtual_root(view);
     if (virtual_root == NULL) {
         bedit_debug_message(DEBUG_PLUGINS, "refresh skipped");
         return;
@@ -471,8 +471,8 @@ static void bedit_file_browser_search_view_refresh(
 
     bedit_debug_message(DEBUG_PLUGINS, "refresh");
 
-    // Cancel previous search.
-    // TODO make search run in background thread.
+    // Cancel previous filter.
+    // TODO make filter run in background thread.
     if (view->cancellable != NULL) {
         g_cancellable_cancel(view->cancellable);
         g_clear_object(&view->cancellable);
@@ -497,17 +497,17 @@ static void bedit_file_browser_search_view_refresh(
         prefix = "";
     }
 
-    dir_enumerator = BEDIT_FILE_BROWSER_SEARCH_DIR_ENUMERATOR(
-        bedit_file_browser_search_root_dir_enumerator_new(virtual_root, prefix)
+    dir_enumerator = BEDIT_FILE_BROWSER_FILTER_DIR_ENUMERATOR(
+        bedit_file_browser_filter_root_dir_enumerator_new(virtual_root, prefix)
     );
     g_return_if_fail(
-        BEDIT_IS_FILE_BROWSER_SEARCH_DIR_ENUMERATOR(dir_enumerator)
+        BEDIT_IS_FILE_BROWSER_FILTER_DIR_ENUMERATOR(dir_enumerator)
     );
 
     while (*query_cursor != '\0') {
         gchar *end;
         gchar *query_segment;
-        BeditFileBrowserSearchDirEnumerator *new_enumerator;
+        BeditFileBrowserFilterDirEnumerator *new_enumerator;
 
         end = strstr(query_cursor, "/");
         if (end == NULL) {
@@ -517,14 +517,14 @@ static void bedit_file_browser_search_view_refresh(
         query_segment = g_strndup(query_cursor, end - query_cursor);
 
         if (g_strcmp0(query_segment, "..")) {
-            new_enumerator = BEDIT_FILE_BROWSER_SEARCH_DIR_ENUMERATOR(
-                bedit_file_browser_search_child_dir_enumerator_new(
+            new_enumerator = BEDIT_FILE_BROWSER_FILTER_DIR_ENUMERATOR(
+                bedit_file_browser_filter_child_dir_enumerator_new(
                     dir_enumerator, query_segment
                 )
             );
         } else {
-            new_enumerator = BEDIT_FILE_BROWSER_SEARCH_DIR_ENUMERATOR(
-                bedit_file_browser_search_parent_dir_enumerator_new(
+            new_enumerator = BEDIT_FILE_BROWSER_FILTER_DIR_ENUMERATOR(
+                bedit_file_browser_filter_parent_dir_enumerator_new(
                     dir_enumerator
                 )
             );
@@ -539,11 +539,11 @@ static void bedit_file_browser_search_view_refresh(
         query_cursor = end + 1;
     }
 
-    file_enumerator = bedit_file_browser_search_file_enumerator_new(
+    file_enumerator = bedit_file_browser_filter_file_enumerator_new(
         dir_enumerator, query_cursor
     );
     g_return_if_fail(
-        BEDIT_IS_FILE_BROWSER_SEARCH_FILE_ENUMERATOR(file_enumerator)
+        BEDIT_IS_FILE_BROWSER_FILTER_FILE_ENUMERATOR(file_enumerator)
     );
     g_clear_object(&dir_enumerator);
 
@@ -560,7 +560,7 @@ static void bedit_file_browser_search_view_refresh(
         GFileInfo *match_info;
         gchar *match_markup;
 
-        if (!bedit_file_browser_search_file_enumerator_iterate(
+        if (!bedit_file_browser_filter_file_enumerator_iterate(
             file_enumerator,
             &match_file,
             &match_info,
@@ -597,6 +597,6 @@ static void bedit_file_browser_search_view_refresh(
     g_object_unref(virtual_root);
 }
 
-void _bedit_file_browser_search_view_register_type(GTypeModule *type_module) {
-    bedit_file_browser_search_view_register_type(type_module);
+void _bedit_file_browser_filter_view_register_type(GTypeModule *type_module) {
+    bedit_file_browser_filter_view_register_type(type_module);
 }

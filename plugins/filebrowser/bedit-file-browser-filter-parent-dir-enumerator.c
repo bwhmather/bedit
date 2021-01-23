@@ -1,5 +1,5 @@
 /*
- * bedit-file-browser-search-parent-dir-enumerator.c
+ * bedit-file-browser-filter-parent-dir-enumerator.c
  * This file is part of Bedit.
  *
  * Copyright (C) 2020 - Ben Mather
@@ -20,7 +20,7 @@
 
 #include "config.h"
 
-#include "bedit-file-browser-search-parent-dir-enumerator.h"
+#include "bedit-file-browser-filter-parent-dir-enumerator.h"
 
 #include <gio/gio.h>
 #include <glib-object.h>
@@ -28,13 +28,13 @@
 
 #include "bedit/bedit-debug.h"
 
-#include "bedit-file-browser-search-dir-enumerator.h"
-#include "bedit-file-browser-search-match.h"
+#include "bedit-file-browser-filter-dir-enumerator.h"
+#include "bedit-file-browser-filter-match.h"
 
-struct _BeditFileBrowserSearchParentDirEnumerator {
+struct _BeditFileBrowserFilterParentDirEnumerator {
     GObject parent_instance;
 
-    BeditFileBrowserSearchDirEnumerator *source;
+    BeditFileBrowserFilterDirEnumerator *source;
 
     GHashTable *visited;
 };
@@ -45,11 +45,11 @@ enum {
     LAST_PROP,
 };
 
-static void bedit_file_browser_search_parent_dir_enumerator_iface_init(
-    BeditFileBrowserSearchDirEnumeratorInterface *interface
+static void bedit_file_browser_filter_parent_dir_enumerator_iface_init(
+    BeditFileBrowserFilterDirEnumeratorInterface *interface
 );
-static gboolean bedit_file_browser_search_parent_dir_enumerator_iterate(
-    BeditFileBrowserSearchDirEnumerator *enumerator,
+static gboolean bedit_file_browser_filter_parent_dir_enumerator_iterate(
+    BeditFileBrowserFilterDirEnumerator *enumerator,
     GFile **dir,
     gchar **path_markup,
     GCancellable *cancellable,
@@ -57,21 +57,21 @@ static gboolean bedit_file_browser_search_parent_dir_enumerator_iterate(
 );
 
 G_DEFINE_DYNAMIC_TYPE_EXTENDED(
-    BeditFileBrowserSearchParentDirEnumerator,
-    bedit_file_browser_search_parent_dir_enumerator,
+    BeditFileBrowserFilterParentDirEnumerator,
+    bedit_file_browser_filter_parent_dir_enumerator,
     G_TYPE_OBJECT, 0,
     G_IMPLEMENT_INTERFACE_DYNAMIC(
-        BEDIT_TYPE_FILE_BROWSER_SEARCH_DIR_ENUMERATOR,
-        bedit_file_browser_search_parent_dir_enumerator_iface_init
+        BEDIT_TYPE_FILE_BROWSER_FILTER_DIR_ENUMERATOR,
+        bedit_file_browser_filter_parent_dir_enumerator_iface_init
     )
 )
 
-static void bedit_file_browser_search_parent_dir_enumerator_get_property(
+static void bedit_file_browser_filter_parent_dir_enumerator_get_property(
     GObject *object, guint prop_id, GValue *value, GParamSpec *pspec
 ) {
-    BeditFileBrowserSearchParentDirEnumerator *enumerator;
+    BeditFileBrowserFilterParentDirEnumerator *enumerator;
 
-    enumerator = BEDIT_FILE_BROWSER_SEARCH_PARENT_DIR_ENUMERATOR(object);
+    enumerator = BEDIT_FILE_BROWSER_FILTER_PARENT_DIR_ENUMERATOR(object);
 
     switch (prop_id) {
     case PROP_SOURCE:
@@ -84,16 +84,16 @@ static void bedit_file_browser_search_parent_dir_enumerator_get_property(
     }
 }
 
-static void bedit_file_browser_search_parent_dir_enumerator_set_property(
+static void bedit_file_browser_filter_parent_dir_enumerator_set_property(
     GObject *object, guint prop_id, const GValue *value, GParamSpec *pspec
 ) {
-    BeditFileBrowserSearchParentDirEnumerator *enumerator;
+    BeditFileBrowserFilterParentDirEnumerator *enumerator;
 
-    enumerator = BEDIT_FILE_BROWSER_SEARCH_PARENT_DIR_ENUMERATOR(object);
+    enumerator = BEDIT_FILE_BROWSER_FILTER_PARENT_DIR_ENUMERATOR(object);
 
     switch (prop_id) {
     case PROP_SOURCE:
-        enumerator->source = BEDIT_FILE_BROWSER_SEARCH_DIR_ENUMERATOR(
+        enumerator->source = BEDIT_FILE_BROWSER_FILTER_DIR_ENUMERATOR(
             g_value_dup_object(value)
         );
         break;
@@ -104,37 +104,37 @@ static void bedit_file_browser_search_parent_dir_enumerator_set_property(
     }
 }
 
-static void bedit_file_browser_search_parent_dir_enumerator_class_init(
-    BeditFileBrowserSearchParentDirEnumeratorClass *klass
+static void bedit_file_browser_filter_parent_dir_enumerator_class_init(
+    BeditFileBrowserFilterParentDirEnumeratorClass *klass
 ) {
     GObjectClass *object_class = G_OBJECT_CLASS(klass);
 
-    object_class->get_property = bedit_file_browser_search_parent_dir_enumerator_get_property;
-    object_class->set_property = bedit_file_browser_search_parent_dir_enumerator_set_property;
+    object_class->get_property = bedit_file_browser_filter_parent_dir_enumerator_get_property;
+    object_class->set_property = bedit_file_browser_filter_parent_dir_enumerator_set_property;
 
     g_object_class_install_property(
         object_class, PROP_SOURCE,
         g_param_spec_object(
             "source", "Source directory enumerator",
-            "Enumerator that yields directories to search in",
-            BEDIT_TYPE_FILE_BROWSER_SEARCH_DIR_ENUMERATOR,
+            "Enumerator that yields directories to filter in",
+            BEDIT_TYPE_FILE_BROWSER_FILTER_DIR_ENUMERATOR,
             G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS | G_PARAM_CONSTRUCT_ONLY
         )
     );
 }
 
-static void bedit_file_browser_search_parent_dir_enumerator_iface_init(
-    BeditFileBrowserSearchDirEnumeratorInterface *interface
+static void bedit_file_browser_filter_parent_dir_enumerator_iface_init(
+    BeditFileBrowserFilterDirEnumeratorInterface *interface
 ) {
-    interface->iterate = bedit_file_browser_search_parent_dir_enumerator_iterate;
+    interface->iterate = bedit_file_browser_filter_parent_dir_enumerator_iterate;
 }
 
-static void bedit_file_browser_search_parent_dir_enumerator_class_finalize(
-    BeditFileBrowserSearchParentDirEnumeratorClass *klass
+static void bedit_file_browser_filter_parent_dir_enumerator_class_finalize(
+    BeditFileBrowserFilterParentDirEnumeratorClass *klass
 ) {}
 
-static void bedit_file_browser_search_parent_dir_enumerator_init(
-    BeditFileBrowserSearchParentDirEnumerator *enumerator
+static void bedit_file_browser_filter_parent_dir_enumerator_init(
+    BeditFileBrowserFilterParentDirEnumerator *enumerator
 ) {
     enumerator->source = NULL;
     enumerator->visited = g_hash_table_new_full(
@@ -142,27 +142,27 @@ static void bedit_file_browser_search_parent_dir_enumerator_init(
     );
 }
 
-BeditFileBrowserSearchParentDirEnumerator
-*bedit_file_browser_search_parent_dir_enumerator_new(
-    BeditFileBrowserSearchDirEnumerator *source
+BeditFileBrowserFilterParentDirEnumerator
+*bedit_file_browser_filter_parent_dir_enumerator_new(
+    BeditFileBrowserFilterDirEnumerator *source
 ) {
     return g_object_new(
-        BEDIT_TYPE_FILE_BROWSER_SEARCH_PARENT_DIR_ENUMERATOR,
+        BEDIT_TYPE_FILE_BROWSER_FILTER_PARENT_DIR_ENUMERATOR,
         "source", source,
         NULL
     );
 }
 
-static gboolean bedit_file_browser_search_parent_dir_enumerator_iterate(
-    BeditFileBrowserSearchDirEnumerator *instance,
+static gboolean bedit_file_browser_filter_parent_dir_enumerator_iterate(
+    BeditFileBrowserFilterDirEnumerator *instance,
     GFile **out_dir,
     gchar **out_markup,
     GCancellable *cancellable,
     GError **error
 ) {
-    BeditFileBrowserSearchParentDirEnumerator *enumerator;
+    BeditFileBrowserFilterParentDirEnumerator *enumerator;
 
-    enumerator = BEDIT_FILE_BROWSER_SEARCH_PARENT_DIR_ENUMERATOR(instance);
+    enumerator = BEDIT_FILE_BROWSER_FILTER_PARENT_DIR_ENUMERATOR(instance);
 
     if (g_cancellable_is_cancelled(cancellable)) {
         *error = g_error_new(
@@ -177,7 +177,7 @@ static gboolean bedit_file_browser_search_parent_dir_enumerator_iterate(
         gchar *dir_markup;
         GFile *parent_file;
 
-        if (!bedit_file_browser_search_dir_enumerator_iterate(
+        if (!bedit_file_browser_filter_dir_enumerator_iterate(
             enumerator->source,
             &dir_file,
             &dir_markup,
@@ -211,8 +211,8 @@ static gboolean bedit_file_browser_search_parent_dir_enumerator_iterate(
     }
 }
 
-void _bedit_file_browser_search_parent_dir_enumerator_register_type(
+void _bedit_file_browser_filter_parent_dir_enumerator_register_type(
     GTypeModule *type_module
 ) {
-    bedit_file_browser_search_parent_dir_enumerator_register_type(type_module);
+    bedit_file_browser_filter_parent_dir_enumerator_register_type(type_module);
 }

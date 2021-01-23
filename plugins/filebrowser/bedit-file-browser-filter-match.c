@@ -1,5 +1,5 @@
 /*
- * bedit-file-browser-search-match.c
+ * bedit-file-browser-filter-match.c
  * This file is part of Bedit.
  *
  * Copyright (C) 2020 - Ben Mather
@@ -20,11 +20,11 @@
 
 #include "config.h"
 
-#include "bedit-file-browser-search-match.h"
+#include "bedit-file-browser-filter-match.h"
 
 #include <gmodule.h>
 
-static void bedit_file_browser_search_append_escaped(
+static void bedit_file_browser_filter_append_escaped(
     GString *str, gunichar chr
 ) {
     // Stolen from `g_markup_escape_text`, with some minor reformatting.
@@ -65,7 +65,7 @@ static void bedit_file_browser_search_append_escaped(
     }
 }
 
-gboolean bedit_file_browser_search_match_segment(
+gboolean bedit_file_browser_filter_match_segment(
     gchar const *segment, gchar const *name, GString *markup, guint64 *quality
 ) {
     gboolean bold = FALSE;
@@ -181,7 +181,7 @@ gboolean bedit_file_browser_search_match_segment(
                 }
             }
 
-            bedit_file_browser_search_append_escaped(
+            bedit_file_browser_filter_append_escaped(
                 markup, g_utf8_get_char(name_cursor)
             );
 

@@ -1,5 +1,5 @@
 /*
- * bedit-file-browser-search-parent-dir-enumerator.h
+ * bedit-file-browser-filter-root-dir-enumerator.h
  * This file is part of Bedit.
  *
  * Copyright (C) 2020 - Ben Mather
@@ -18,38 +18,36 @@
  * along with this program; if not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef BEDIT_FILE_BROWSER_SEARCH_PARENT_DIR_ENUMERATOR_H
-#define BEDIT_FILE_BROWSER_SEARCH_PARENT_DIR_ENUMERATOR_H
+#ifndef BEDIT_FILE_BROWSER_FILTER_ROOT_DIR_ENUMERATOR_H
+#define BEDIT_FILE_BROWSER_FILTER_ROOT_DIR_ENUMERATOR_H
 
 #include <gio/gio.h>
 #include <glib-object.h>
 #include <gmodule.h>
 
-#include "bedit-file-browser-search-dir-enumerator.h"
-
 G_BEGIN_DECLS
 
-#define BEDIT_TYPE_FILE_BROWSER_SEARCH_PARENT_DIR_ENUMERATOR                \
-    (bedit_file_browser_search_parent_dir_enumerator_get_type())
+#define BEDIT_TYPE_FILE_BROWSER_FILTER_ROOT_DIR_ENUMERATOR                  \
+    (bedit_file_browser_filter_root_dir_enumerator_get_type())
 
 G_DECLARE_FINAL_TYPE(
-    BeditFileBrowserSearchParentDirEnumerator,
-    bedit_file_browser_search_parent_dir_enumerator,
-    BEDIT, FILE_BROWSER_SEARCH_PARENT_DIR_ENUMERATOR,
+    BeditFileBrowserFilterRootDirEnumerator,
+    bedit_file_browser_filter_root_dir_enumerator,
+    BEDIT, FILE_BROWSER_FILTER_ROOT_DIR_ENUMERATOR,
     GObject
 )
 
-GType bedit_file_browser_search_parent_dir_enumerator_get_type(void) G_GNUC_CONST;
+GType bedit_file_browser_filter_root_dir_enumerator_get_type(void) G_GNUC_CONST;
 
-BeditFileBrowserSearchParentDirEnumerator
-*bedit_file_browser_search_parent_dir_enumerator_new(
-    BeditFileBrowserSearchDirEnumerator *source
+BeditFileBrowserFilterRootDirEnumerator
+*bedit_file_browser_filter_root_dir_enumerator_new(
+    GFile *file, gchar const *prefix
 );
 
-void _bedit_file_browser_search_parent_dir_enumerator_register_type(
+void _bedit_file_browser_filter_root_dir_enumerator_register_type(
     GTypeModule *type_module
 );
 
 G_END_DECLS
 
-#endif /* BEDIT_FILE_BROWSER_SEARCH_PARENT_DIR_ENUMERATOR_H */
+#endif /* BEDIT_FILE_BROWSER_FILTER_ROOT_DIR_ENUMERATOR_H */

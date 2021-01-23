@@ -45,11 +45,11 @@
 #include "bedit-file-browser-location.h"
 #include "bedit-file-browser-widget.h"
 #include "bedit-file-browser-folder-view.h"
-#include "bedit-file-browser-search-root-dir-enumerator.h"
-#include "bedit-file-browser-search-child-dir-enumerator.h"
-#include "bedit-file-browser-search-parent-dir-enumerator.h"
-#include "bedit-file-browser-search-file-enumerator.h"
-#include "bedit-file-browser-search-view.h"
+#include "bedit-file-browser-filter-root-dir-enumerator.h"
+#include "bedit-file-browser-filter-child-dir-enumerator.h"
+#include "bedit-file-browser-filter-parent-dir-enumerator.h"
+#include "bedit-file-browser-filter-file-enumerator.h"
+#include "bedit-file-browser-filter-view.h"
 
 G_MODULE_EXPORT void peas_register_types(PeasObjectModule *module) {
     bedit_file_browser_enum_and_flag_register_type(G_TYPE_MODULE(module));
@@ -60,19 +60,19 @@ G_MODULE_EXPORT void peas_register_types(PeasObjectModule *module) {
     _bedit_file_browser_folder_view_register_type(G_TYPE_MODULE(module));
     _bedit_file_browser_location_register_type(G_TYPE_MODULE(module));
     _bedit_file_browser_widget_register_type(G_TYPE_MODULE(module));
-    _bedit_file_browser_search_root_dir_enumerator_register_type(
+    _bedit_file_browser_filter_root_dir_enumerator_register_type(
         G_TYPE_MODULE(module)
     );
-    _bedit_file_browser_search_child_dir_enumerator_register_type(
+    _bedit_file_browser_filter_child_dir_enumerator_register_type(
         G_TYPE_MODULE(module)
     );
-    _bedit_file_browser_search_parent_dir_enumerator_register_type(
+    _bedit_file_browser_filter_parent_dir_enumerator_register_type(
         G_TYPE_MODULE(module)
     );
-    _bedit_file_browser_search_file_enumerator_register_type(
+    _bedit_file_browser_filter_file_enumerator_register_type(
         G_TYPE_MODULE(module)
     );
-    _bedit_file_browser_search_view_register_type(G_TYPE_MODULE(module));
+    _bedit_file_browser_filter_view_register_type(G_TYPE_MODULE(module));
 
     peas_object_module_register_extension_type(
         module, BEDIT_TYPE_APP_ACTIVATABLE,

@@ -18,11 +18,11 @@
         <property name="visible">True</property>
         <property name="spacing">3</property>
         <child>
-          <object class="GtkToggleButton" id="search_toggle">
+          <object class="GtkToggleButton" id="filter_toggle">
             <property name="visible">True</property>
             <property name="can-focus">False</property>
             <property name="receives-default">False</property>
-            <property name="image">search_image</property>
+            <property name="image">filter_image</property>
             <property name="tooltip-text" translatable="yes">Toggle search (automatic on text input)</property>
             <style>
               <class name="small-button"/>
@@ -114,12 +114,12 @@
               </packing>
             </child>
             <child>
-              <object class="GtkEntry" id="search_entry">
+              <object class="GtkEntry" id="filter_entry">
                 <property name="visible">True</property>
                 <property name="can-focus">True</property>
               </object>
               <packing>
-                <property name="name">search</property>
+                <property name="name">filter</property>
               </packing>
             </child>
           </object>
@@ -169,14 +169,14 @@
             <property name="vexpand">True</property>
             <property name="shadow-type">in</property>
             <child>
-              <object class="BeditFileBrowserSearchView" id="search_view">
+              <object class="BeditFileBrowserFilterView" id="filter_view">
                 <property name="visible">True</property>
                 <property name="can-focus">True</property>
               </object>
             </child>
           </object>
           <packing>
-            <property name="name">search</property>
+            <property name="name">filter</property>
           </packing>
         </child>
       </object>
@@ -193,7 +193,7 @@
     <property name="icon-name">go-up-symbolic</property>
     <property name="icon-size">2</property>
   </object>
-  <object class="GtkImage" id="search_image">
+  <object class="GtkImage" id="filter_image">
     <property name="visible">True</property>
     <property name="icon-name">edit-find-symbolic</property>
     <property name="icon-size">2</property>

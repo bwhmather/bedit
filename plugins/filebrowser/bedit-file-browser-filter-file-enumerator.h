@@ -1,5 +1,5 @@
 /*
- * bedit-file-browser-search-file-enumerator.h
+ * bedit-file-browser-filter-file-enumerator.h
  * This file is part of Bedit.
  *
  * Copyright (C) 2020 - Ben Mather
@@ -18,36 +18,36 @@
  * along with this program; if not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef BEDIT_FILE_BROWSER_SEARCH_FILE_ENUMERATOR_H
-#define BEDIT_FILE_BROWSER_SEARCH_FILE_ENUMERATOR_H
+#ifndef BEDIT_FILE_BROWSER_FILTER_FILE_ENUMERATOR_H
+#define BEDIT_FILE_BROWSER_FILTER_FILE_ENUMERATOR_H
 
 #include <gio/gio.h>
 #include <glib-object.h>
 #include <gmodule.h>
 
-#include "bedit-file-browser-search-dir-enumerator.h"
+#include "bedit-file-browser-filter-dir-enumerator.h"
 
 G_BEGIN_DECLS
 
-#define BEDIT_TYPE_FILE_BROWSER_SEARCH_FILE_ENUMERATOR                  \
-    (bedit_file_browser_search_file_enumerator_get_type())
+#define BEDIT_TYPE_FILE_BROWSER_FILTER_FILE_ENUMERATOR                  \
+    (bedit_file_browser_filter_file_enumerator_get_type())
 
 G_DECLARE_FINAL_TYPE(
-    BeditFileBrowserSearchFileEnumerator,
-    bedit_file_browser_search_file_enumerator,
-    BEDIT, FILE_BROWSER_SEARCH_FILE_ENUMERATOR,
+    BeditFileBrowserFilterFileEnumerator,
+    bedit_file_browser_filter_file_enumerator,
+    BEDIT, FILE_BROWSER_FILTER_FILE_ENUMERATOR,
     GObject
 )
 
-GType bedit_file_browser_search_file_enumerator_get_type(void) G_GNUC_CONST;
+GType bedit_file_browser_filter_file_enumerator_get_type(void) G_GNUC_CONST;
 
-BeditFileBrowserSearchFileEnumerator
-*bedit_file_browser_search_file_enumerator_new(
-    BeditFileBrowserSearchDirEnumerator *source, gchar *pattern
+BeditFileBrowserFilterFileEnumerator
+*bedit_file_browser_filter_file_enumerator_new(
+    BeditFileBrowserFilterDirEnumerator *source, gchar *pattern
 );
 
-gboolean bedit_file_browser_search_file_enumerator_iterate(
-    BeditFileBrowserSearchFileEnumerator *enumerator,
+gboolean bedit_file_browser_filter_file_enumerator_iterate(
+    BeditFileBrowserFilterFileEnumerator *enumerator,
     GFile **out_file,
     GFileInfo **out_info,
     gchar **out_markup,
@@ -55,10 +55,10 @@ gboolean bedit_file_browser_search_file_enumerator_iterate(
     GError **error
 );
 
-void _bedit_file_browser_search_file_enumerator_register_type(
+void _bedit_file_browser_filter_file_enumerator_register_type(
     GTypeModule *type_module
 );
 
 G_END_DECLS
 
-#endif /* BEDIT_FILE_BROWSER_SEARCH_FILE_ENUMERATOR_H */
+#endif /* BEDIT_FILE_BROWSER_FILTER_FILE_ENUMERATOR_H */

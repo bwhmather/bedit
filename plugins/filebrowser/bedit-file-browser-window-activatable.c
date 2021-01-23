@@ -876,7 +876,7 @@ static void on_popover_closed_cb(
 
     priv = bedit_file_browser_window_activatable_get_instance_private(plugin);
 
-    bedit_file_browser_widget_set_search_enabled(priv->tree_widget, FALSE);
+    bedit_file_browser_widget_set_filter_enabled(priv->tree_widget, FALSE);
 }
 
 static void on_window_size_allocate_cb(

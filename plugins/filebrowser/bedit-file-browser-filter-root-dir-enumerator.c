@@ -1,5 +1,5 @@
 /*
- * bedit-file-browser-search-root-dir-enumerator.c
+ * bedit-file-browser-filter-root-dir-enumerator.c
  * This file is part of Bedit.
  *
  * Copyright (C) 2020 - Ben Mather
@@ -20,7 +20,7 @@
 
 #include "config.h"
 
-#include "bedit-file-browser-search-root-dir-enumerator.h"
+#include "bedit-file-browser-filter-root-dir-enumerator.h"
 
 #include <gio/gio.h>
 #include <glib-object.h>
@@ -28,10 +28,10 @@
 
 #include "bedit/bedit-debug.h"
 
-#include "bedit-file-browser-search-dir-enumerator.h"
+#include "bedit-file-browser-filter-dir-enumerator.h"
 
 
-struct _BeditFileBrowserSearchRootDirEnumerator {
+struct _BeditFileBrowserFilterRootDirEnumerator {
     GObject parent_instance;
 
     GFile *root;
@@ -46,11 +46,11 @@ enum {
     LAST_PROP,
 };
 
-static void bedit_file_browser_search_root_dir_enumerator_iface_init(
-    BeditFileBrowserSearchDirEnumeratorInterface *interface
+static void bedit_file_browser_filter_root_dir_enumerator_iface_init(
+    BeditFileBrowserFilterDirEnumeratorInterface *interface
 );
-static gboolean bedit_file_browser_search_root_dir_enumerator_iterate(
-    BeditFileBrowserSearchDirEnumerator *enumerator,
+static gboolean bedit_file_browser_filter_root_dir_enumerator_iterate(
+    BeditFileBrowserFilterDirEnumerator *enumerator,
     GFile **dir,
     gchar **path_markup,
     GCancellable *cancellable,
@@ -58,22 +58,22 @@ static gboolean bedit_file_browser_search_root_dir_enumerator_iterate(
 );
 
 G_DEFINE_DYNAMIC_TYPE_EXTENDED(
-    BeditFileBrowserSearchRootDirEnumerator,
-    bedit_file_browser_search_root_dir_enumerator,
+    BeditFileBrowserFilterRootDirEnumerator,
+    bedit_file_browser_filter_root_dir_enumerator,
     G_TYPE_OBJECT, 0,
     G_IMPLEMENT_INTERFACE_DYNAMIC(
-        BEDIT_TYPE_FILE_BROWSER_SEARCH_DIR_ENUMERATOR,
-        bedit_file_browser_search_root_dir_enumerator_iface_init
+        BEDIT_TYPE_FILE_BROWSER_FILTER_DIR_ENUMERATOR,
+        bedit_file_browser_filter_root_dir_enumerator_iface_init
     )
 )
 
 
-static void bedit_file_browser_search_root_dir_enumerator_get_property(
+static void bedit_file_browser_filter_root_dir_enumerator_get_property(
     GObject *object, guint prop_id, GValue *value, GParamSpec *pspec
 ) {
-    BeditFileBrowserSearchRootDirEnumerator *enumerator;
+    BeditFileBrowserFilterRootDirEnumerator *enumerator;
 
-    enumerator = BEDIT_FILE_BROWSER_SEARCH_ROOT_DIR_ENUMERATOR(object);
+    enumerator = BEDIT_FILE_BROWSER_FILTER_ROOT_DIR_ENUMERATOR(object);
 
     switch (prop_id) {
     case PROP_ROOT:
@@ -90,12 +90,12 @@ static void bedit_file_browser_search_root_dir_enumerator_get_property(
     }
 }
 
-static void bedit_file_browser_search_root_dir_enumerator_set_property(
+static void bedit_file_browser_filter_root_dir_enumerator_set_property(
     GObject *object, guint prop_id, const GValue *value, GParamSpec *pspec
 ) {
-    BeditFileBrowserSearchRootDirEnumerator *enumerator;
+    BeditFileBrowserFilterRootDirEnumerator *enumerator;
 
-    enumerator = BEDIT_FILE_BROWSER_SEARCH_ROOT_DIR_ENUMERATOR(object);
+    enumerator = BEDIT_FILE_BROWSER_FILTER_ROOT_DIR_ENUMERATOR(object);
 
     switch (prop_id) {
     case PROP_ROOT:
@@ -112,13 +112,13 @@ static void bedit_file_browser_search_root_dir_enumerator_set_property(
     }
 }
 
-static void bedit_file_browser_search_root_dir_enumerator_class_init(
-    BeditFileBrowserSearchRootDirEnumeratorClass *klass
+static void bedit_file_browser_filter_root_dir_enumerator_class_init(
+    BeditFileBrowserFilterRootDirEnumeratorClass *klass
 ) {
     GObjectClass *object_class = G_OBJECT_CLASS(klass);
 
-    object_class->get_property = bedit_file_browser_search_root_dir_enumerator_get_property;
-    object_class->set_property = bedit_file_browser_search_root_dir_enumerator_set_property;
+    object_class->get_property = bedit_file_browser_filter_root_dir_enumerator_get_property;
+    object_class->set_property = bedit_file_browser_filter_root_dir_enumerator_set_property;
 
     g_object_class_install_property(
         object_class, PROP_ROOT,
@@ -141,18 +141,18 @@ static void bedit_file_browser_search_root_dir_enumerator_class_init(
     );
 }
 
-static void bedit_file_browser_search_root_dir_enumerator_iface_init(
-    BeditFileBrowserSearchDirEnumeratorInterface *interface
+static void bedit_file_browser_filter_root_dir_enumerator_iface_init(
+    BeditFileBrowserFilterDirEnumeratorInterface *interface
 ) {
-    interface->iterate = bedit_file_browser_search_root_dir_enumerator_iterate;
+    interface->iterate = bedit_file_browser_filter_root_dir_enumerator_iterate;
 }
 
-static void bedit_file_browser_search_root_dir_enumerator_class_finalize(
-    BeditFileBrowserSearchRootDirEnumeratorClass *klass
+static void bedit_file_browser_filter_root_dir_enumerator_class_finalize(
+    BeditFileBrowserFilterRootDirEnumeratorClass *klass
 ) {}
 
-static void bedit_file_browser_search_root_dir_enumerator_init(
-    BeditFileBrowserSearchRootDirEnumerator *enumerator
+static void bedit_file_browser_filter_root_dir_enumerator_init(
+    BeditFileBrowserFilterRootDirEnumerator *enumerator
 ) {
     enumerator->root = NULL;
     enumerator->prefix = NULL;
@@ -160,33 +160,33 @@ static void bedit_file_browser_search_root_dir_enumerator_init(
 }
 
 /**
- * bedit_file_browser_search_root_dir_enumerator_new:
+ * bedit_file_browser_filter_root_dir_enumerator_new:
  *
- * Creates a new #BeditFileBrowserSearchRootDirEnumerator.
+ * Creates a new #BeditFileBrowserFilterRootDirEnumerator.
  *
- * Return value: the new #BeditFileBrowserSearchRootDirEnumerator object
+ * Return value: the new #BeditFileBrowserFilterRootDirEnumerator object
  **/
-BeditFileBrowserSearchRootDirEnumerator
-*bedit_file_browser_search_root_dir_enumerator_new(
+BeditFileBrowserFilterRootDirEnumerator
+*bedit_file_browser_filter_root_dir_enumerator_new(
     GFile *root, gchar const *prefix
 ) {
     return g_object_new(
-        BEDIT_TYPE_FILE_BROWSER_SEARCH_ROOT_DIR_ENUMERATOR,
+        BEDIT_TYPE_FILE_BROWSER_FILTER_ROOT_DIR_ENUMERATOR,
         "root", root, "prefix", prefix,
         NULL
     );
 }
 
-static gboolean bedit_file_browser_search_root_dir_enumerator_iterate(
-    BeditFileBrowserSearchDirEnumerator *enumerator,
+static gboolean bedit_file_browser_filter_root_dir_enumerator_iterate(
+    BeditFileBrowserFilterDirEnumerator *enumerator,
     GFile **dir,
     gchar **path_markup,
     GCancellable *cancellable,
     GError **error
 ) {
-    BeditFileBrowserSearchRootDirEnumerator *root_enumerator;
+    BeditFileBrowserFilterRootDirEnumerator *root_enumerator;
 
-    root_enumerator = BEDIT_FILE_BROWSER_SEARCH_ROOT_DIR_ENUMERATOR(enumerator);
+    root_enumerator = BEDIT_FILE_BROWSER_FILTER_ROOT_DIR_ENUMERATOR(enumerator);
 
     if (root_enumerator->consumed) {
         return FALSE;
@@ -204,8 +204,8 @@ static gboolean bedit_file_browser_search_root_dir_enumerator_iterate(
     return TRUE;
 }
 
-void _bedit_file_browser_search_root_dir_enumerator_register_type(
+void _bedit_file_browser_filter_root_dir_enumerator_register_type(
     GTypeModule *type_module
 ) {
-    bedit_file_browser_search_root_dir_enumerator_register_type(type_module);
+    bedit_file_browser_filter_root_dir_enumerator_register_type(type_module);
 }

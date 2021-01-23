@@ -21,13 +21,13 @@ libfilebrowser_sources = files(
   'bedit-file-browser-folder-view.c',
   'bedit-file-browser-location.c',
   'bedit-file-browser-widget.c',
-  'bedit-file-browser-search-dir-enumerator.c',
-  'bedit-file-browser-search-match.c',
-  'bedit-file-browser-search-root-dir-enumerator.c',
-  'bedit-file-browser-search-child-dir-enumerator.c',
-  'bedit-file-browser-search-parent-dir-enumerator.c',
-  'bedit-file-browser-search-file-enumerator.c',
-  'bedit-file-browser-search-view.c',
+  'bedit-file-browser-filter-dir-enumerator.c',
+  'bedit-file-browser-filter-match.c',
+  'bedit-file-browser-filter-root-dir-enumerator.c',
+  'bedit-file-browser-filter-child-dir-enumerator.c',
+  'bedit-file-browser-filter-parent-dir-enumerator.c',
+  'bedit-file-browser-filter-file-enumerator.c',
+  'bedit-file-browser-filter-view.c',
 )
 
 libfilebrowser_deps = [
