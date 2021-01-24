@@ -22,6 +22,7 @@
 #define BEDIT_FILE_BROWSER_LOCATION_H
 
 #include <gtk/gtk.h>
+
 #include "bedit-file-browser-bookmarks-store.h"
 #include "bedit-file-browser-store.h"
 

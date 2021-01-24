@@ -26,7 +26,7 @@
 #include <glib-object.h>
 #include <gmodule.h>
 
-#include "bedit/bedit-debug.h"
+#include "bedit-debug.h"
 
 #include "bedit-file-browser-filter-dir-enumerator.h"
 

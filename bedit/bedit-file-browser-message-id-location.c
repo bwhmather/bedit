@@ -24,6 +24,7 @@
 #include "config.h"
 
 #include "bedit-file-browser-message-id-location.h"
+
 #include "gio/gio.h"
 
 enum {

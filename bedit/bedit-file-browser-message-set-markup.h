@@ -25,7 +25,7 @@
 #ifndef BEDIT_FILE_BROWSER_MESSAGE_SET_MARKUP_H
 #define BEDIT_FILE_BROWSER_MESSAGE_SET_MARKUP_H
 
-#include <bedit/bedit-message.h>
+#include "bedit-message.h"
 
 G_BEGIN_DECLS
 

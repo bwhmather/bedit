@@ -23,6 +23,7 @@
 #include "config.h"
 
 #include "bedit-file-browser-message-get-root.h"
+
 #include "gio/gio.h"
 
 enum {

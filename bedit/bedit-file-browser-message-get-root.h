@@ -23,7 +23,7 @@
 #ifndef BEDIT_FILE_BROWSER_MESSAGE_GET_ROOT_H
 #define BEDIT_FILE_BROWSER_MESSAGE_GET_ROOT_H
 
-#include <bedit/bedit-message.h>
+#include "bedit-message.h"
 
 G_BEGIN_DECLS
 

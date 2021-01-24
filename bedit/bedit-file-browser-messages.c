@@ -23,19 +23,19 @@
  */
 
 #include "bedit-file-browser-messages.h"
-#include "bedit-file-browser-store.h"
+
 #include "bedit-file-browser-message-activation.h"
 #include "bedit-file-browser-message-add-filter.h"
 #include "bedit-file-browser-message-extend-context-menu.h"
 #include "bedit-file-browser-message-get-root.h"
 #include "bedit-file-browser-message-get-view.h"
-#include "bedit-file-browser-message-id-location.h"
 #include "bedit-file-browser-message-id.h"
+#include "bedit-file-browser-message-id-location.h"
 #include "bedit-file-browser-message-set-emblem.h"
 #include "bedit-file-browser-message-set-markup.h"
 #include "bedit-file-browser-message-set-root.h"
-
-#include <bedit/bedit-message.h>
+#include "bedit-file-browser-store.h"
+#include "bedit-message.h"
 
 #define MESSAGE_OBJECT_PATH "/plugins/filebrowser"
 #define WINDOW_DATA_KEY "BeditFileBrowserMessagesWindowData"

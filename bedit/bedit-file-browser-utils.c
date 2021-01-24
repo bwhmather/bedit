@@ -24,10 +24,11 @@
 
 #include "config.h"
 
-#include <bedit/bedit-utils.h>
+#include "bedit-file-browser-utils.h"
+
 #include <glib/gi18n-lib.h>
 
-#include "bedit-file-browser-utils.h"
+#include "bedit-utils.h"
 
 gchar *bedit_file_browser_utils_symbolic_icon_name_from_file(GFile *file) {
     GFileInfo *info;

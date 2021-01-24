@@ -24,23 +24,25 @@
 
 #include "config.h"
 
-#include <bedit/bedit-utils.h>
-#include <gdk/gdkkeysyms.h>
-#include <glib.h>
-#include <glib/gi18n-lib.h>
+#include "bedit-file-browser-widget.h"
+
 #include <string.h>
 #include <sys/stat.h>
 #include <sys/types.h>
 
-#include "bedit-file-browser-bookmarks-store.h"
+#include <gdk/gdkkeysyms.h>
+#include <glib/gi18n-lib.h>
+#include <glib.h>
+
 #include "bedit-enum-types.h"
+#include "bedit-file-browser-bookmarks-store.h"
 #include "bedit-file-browser-error.h"
-#include "bedit-file-browser-store.h"
-#include "bedit-file-browser-utils.h"
+#include "bedit-file-browser-filter-view.h"
 #include "bedit-file-browser-folder-view.h"
 #include "bedit-file-browser-location.h"
-#include "bedit-file-browser-widget.h"
-#include "bedit-file-browser-filter-view.h"
+#include "bedit-file-browser-store.h"
+#include "bedit-file-browser-utils.h"
+#include "bedit-utils.h"
 
 #define LOCATION_DATA_KEY "bedit-file-browser-widget-location"
 

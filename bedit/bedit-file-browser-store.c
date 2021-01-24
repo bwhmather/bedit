@@ -24,15 +24,16 @@
 
 #include "config.h"
 
-#include <bedit/bedit-utils.h>
+#include "bedit-file-browser-store.h"
+
 #include <gio/gio.h>
 #include <glib/gi18n-lib.h>
 #include <string.h>
 
 #include "bedit-enum-types.h"
 #include "bedit-file-browser-error.h"
-#include "bedit-file-browser-store.h"
 #include "bedit-file-browser-utils.h"
+#include "bedit-utils.h"
 
 #define NODE_IS_DIR(node) (FILE_IS_DIR((node)->flags))
 #define NODE_IS_HIDDEN(node) (FILE_IS_HIDDEN((node)->flags))

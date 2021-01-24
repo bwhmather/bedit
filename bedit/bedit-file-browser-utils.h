@@ -25,8 +25,9 @@
 #ifndef BEDIT_FILE_BROWSER_UTILS_H
 #define BEDIT_FILE_BROWSER_UTILS_H
 
-#include <bedit/bedit-window.h>
 #include <gio/gio.h>
+
+#include "bedit-window.h"
 
 gchar *bedit_file_browser_utils_name_from_themed_icon(GIcon *icon);
 gchar *bedit_file_browser_utils_symbolic_icon_name_from_file(GFile *file);

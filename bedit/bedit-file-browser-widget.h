@@ -25,11 +25,12 @@
 #ifndef BEDIT_FILE_BROWSER_WIDGET_H
 #define BEDIT_FILE_BROWSER_WIDGET_H
 
-#include <bedit/bedit-menu-extension.h>
 #include <gtk/gtk.h>
+
 #include "bedit-file-browser-bookmarks-store.h"
-#include "bedit-file-browser-store.h"
 #include "bedit-file-browser-folder-view.h"
+#include "bedit-file-browser-store.h"
+#include "bedit-menu-extension.h"
 
 G_BEGIN_DECLS
 

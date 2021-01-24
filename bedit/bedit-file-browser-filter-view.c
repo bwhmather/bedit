@@ -25,14 +25,13 @@
 #include <gmodule.h>
 #include <gtk/gtk.h>
 
-#include "bedit/bedit-debug.h"
-
-#include "bedit-file-browser-filter-match.h"
-#include "bedit-file-browser-filter-dir-enumerator.h"
-#include "bedit-file-browser-filter-root-dir-enumerator.h"
+#include "bedit-debug.h"
 #include "bedit-file-browser-filter-child-dir-enumerator.h"
-#include "bedit-file-browser-filter-parent-dir-enumerator.h"
+#include "bedit-file-browser-filter-dir-enumerator.h"
 #include "bedit-file-browser-filter-file-enumerator.h"
+#include "bedit-file-browser-filter-match.h"
+#include "bedit-file-browser-filter-parent-dir-enumerator.h"
+#include "bedit-file-browser-filter-root-dir-enumerator.h"
 
 struct _BeditFileBrowserFilterView {
     GtkBin parent_instance;

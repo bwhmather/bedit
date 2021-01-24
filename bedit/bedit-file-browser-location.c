@@ -22,10 +22,10 @@
 
 #include "bedit-file-browser-location.h"
 
-#include <bedit/bedit-utils.h>
 #include <gdk/gdkkeysyms.h>
-#include <glib.h>
 #include <glib/gi18n-lib.h>
+#include <glib.h>
+#include <gtk/gtk.h>
 #include <string.h>
 #include <sys/stat.h>
 #include <sys/types.h>
@@ -33,8 +33,8 @@
 #include "bedit-file-browser-bookmarks-store.h"
 #include "bedit-file-browser-store.h"
 #include "bedit-file-browser-utils.h"
+#include "bedit-utils.h"
 
-#include <gtk/gtk.h>
 
 enum {
     BOOKMARKS_ID,

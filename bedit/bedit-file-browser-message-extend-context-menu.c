@@ -23,8 +23,9 @@
 
 #include "config.h"
 
-#include <bedit/bedit-menu-extension.h>
 #include "bedit-file-browser-message-extend-context-menu.h"
+
+#include "bedit-menu-extension.h"
 
 enum {
     PROP_0,

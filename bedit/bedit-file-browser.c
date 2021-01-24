@@ -25,20 +25,21 @@
 
 #include "bedit-file-browser.h"
 
-#include <bedit/bedit-app.h>
-#include <bedit/bedit-commands.h>
-#include <bedit/bedit-debug.h>
-#include <bedit/bedit-utils.h>
-#include <bedit/bedit-window.h>
-#include <glib/gi18n-lib.h>
-#include <gmodule.h>
 #include <string.h>
 
+#include <glib/gi18n-lib.h>
+#include <gmodule.h>
+
+#include "bedit-app.h"
+#include "bedit-commands.h"
+#include "bedit-debug.h"
 #include "bedit-enum-types.h"
-#include "bedit/bedit-file-browser-error.h"
-#include "bedit/bedit-file-browser-messages.h"
-#include "bedit/bedit-file-browser-utils.h"
-#include "bedit/bedit-file-browser-widget.h"
+#include "bedit-file-browser-error.h"
+#include "bedit-file-browser-messages.h"
+#include "bedit-file-browser-utils.h"
+#include "bedit-file-browser-widget.h"
+#include "bedit-utils.h"
+#include "bedit-window.h"
 
 #define FILEBROWSER_BASE_SETTINGS "com.bwhmather.bedit.plugins.filebrowser"
 #define FILEBROWSER_TREE_VIEW "tree-view"

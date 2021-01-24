@@ -21,14 +21,14 @@
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, see <http://www.gnu.org/licenses/>.
  */
+#include <string.h>
 
-#include <bedit/bedit-utils.h>
 #include <gio/gio.h>
 #include <glib/gi18n.h>
-#include <string.h>
 
 #include "bedit-file-browser-bookmarks-store.h"
 #include "bedit-file-browser-utils.h"
+#include "bedit-utils.h"
 
 struct _BeditFileBrowserBookmarksStore {
     GtkTreeStore parent_instance;

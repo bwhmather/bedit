@@ -25,9 +25,9 @@
 #ifndef BEDIT_FILE_BROWSER_MESSAGES_H
 #define BEDIT_FILE_BROWSER_MESSAGES_H
 
-#include <bedit/bedit-message-bus.h>
-#include <bedit/bedit-window.h>
 #include "bedit-file-browser-widget.h"
+#include "bedit-message-bus.h"
+#include "bedit-window.h"
 
 void bedit_file_browser_messages_register(
     BeditWindow *window, BeditFileBrowserWidget *widget

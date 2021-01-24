@@ -23,6 +23,7 @@
 #include "config.h"
 
 #include "bedit-file-browser-message-get-view.h"
+
 #include "bedit-file-browser-folder-view.h"
 
 enum {
