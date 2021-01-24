@@ -28,27 +28,15 @@
 #include <gtk/gtk.h>
 
 G_BEGIN_DECLS
+
 #define BEDIT_TYPE_FILE_BROWSER_STORE (bedit_file_browser_store_get_type())
-#define BEDIT_FILE_BROWSER_STORE(obj)                                       \
-    (G_TYPE_CHECK_INSTANCE_CAST(                                            \
-        (obj), BEDIT_TYPE_FILE_BROWSER_STORE, BeditFileBrowserStore         \
-    ))
-#define BEDIT_FILE_BROWSER_STORE_CONST(obj)                                 \
-    (G_TYPE_CHECK_INSTANCE_CAST(                                            \
-        (obj), BEDIT_TYPE_FILE_BROWSER_STORE, BeditFileBrowserStore const   \
-    ))
-#define BEDIT_FILE_BROWSER_STORE_CLASS(klass)                               \
-    (G_TYPE_CHECK_CLASS_CAST(                                               \
-        (klass), BEDIT_TYPE_FILE_BROWSER_STORE, BeditFileBrowserStoreClass  \
-    ))
-#define BEDIT_IS_FILE_BROWSER_STORE(obj)                                    \
-    (G_TYPE_CHECK_INSTANCE_TYPE((obj), BEDIT_TYPE_FILE_BROWSER_STORE))
-#define BEDIT_IS_FILE_BROWSER_STORE_CLASS(klass)                            \
-    (G_TYPE_CHECK_CLASS_TYPE((klass), BEDIT_TYPE_FILE_BROWSER_STORE))
-#define BEDIT_FILE_BROWSER_STORE_GET_CLASS(obj)                             \
-    (G_TYPE_INSTANCE_GET_CLASS(                                             \
-        (obj), BEDIT_TYPE_FILE_BROWSER_STORE, BeditFileBrowserStoreClass    \
-    ))
+
+G_DECLARE_FINAL_TYPE(
+    BeditFileBrowserStore,
+    bedit_file_browser_store,
+    BEDIT, FILE_BROWSER_STORE,
+    GObject
+)
 
 typedef enum {
     BEDIT_FILE_BROWSER_STORE_COLUMN_ICON = 0,
@@ -79,25 +67,9 @@ typedef enum {
     (flags & BEDIT_FILE_BROWSER_STORE_FLAG_IS_FILTERED)
 #define FILE_IS_DUMMY(flags) (flags & BEDIT_FILE_BROWSER_STORE_FLAG_IS_DUMMY)
 
-typedef struct _BeditFileBrowserStore BeditFileBrowserStore;
-typedef struct _BeditFileBrowserStoreClass BeditFileBrowserStoreClass;
-typedef struct _BeditFileBrowserStorePrivate BeditFileBrowserStorePrivate;
-
 typedef gboolean (*BeditFileBrowserStoreFilterFunc)(
     BeditFileBrowserStore *model, GtkTreeIter *iter, gpointer user_data
 );
-
-struct _BeditFileBrowserStore {
-    GObject parent;
-
-    BeditFileBrowserStorePrivate *priv;
-};
-
-struct _BeditFileBrowserStoreClass {
-    GObjectClass parent_class;
-};
-
-GType bedit_file_browser_store_get_type(void) G_GNUC_CONST;
 
 BeditFileBrowserStore *bedit_file_browser_store_new(GFile *root);
 void bedit_file_browser_store_set_root_and_virtual_root(
