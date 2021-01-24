@@ -95,20 +95,6 @@ struct _BeditFileBrowserStore {
 
 struct _BeditFileBrowserStoreClass {
     GObjectClass parent_class;
-
-    /* Signals */
-    void (*begin_loading)(BeditFileBrowserStore *model, GtkTreeIter *iter);
-    void (*end_loading)(BeditFileBrowserStore *model, GtkTreeIter *iter);
-    void (*error)(BeditFileBrowserStore *model, guint code, gchar *message);
-    gboolean (*no_trash)(BeditFileBrowserStore *model, GList *files);
-    // TODO gir conflict
-    // void (*rename)(
-    //     BeditFileBrowserStore *model, GFile *oldfile, GFile *newfile
-    // );
-    void (*begin_refresh)(BeditFileBrowserStore *model);
-    void (*end_refresh)(BeditFileBrowserStore *model);
-    void (*unload)(BeditFileBrowserStore *model, GFile *location);
-    void (*before_row_deleted)(BeditFileBrowserStore *model, GtkTreePath *path);
 };
 
 GType bedit_file_browser_store_get_type(void) G_GNUC_CONST;

@@ -402,54 +402,54 @@ static void bedit_file_browser_store_class_init(
 
     model_signals[BEGIN_LOADING] = g_signal_new(
         "begin-loading", G_OBJECT_CLASS_TYPE(object_class), G_SIGNAL_RUN_LAST,
-        G_STRUCT_OFFSET(BeditFileBrowserStoreClass, begin_loading),
+        0,
         NULL, NULL, NULL,
         G_TYPE_NONE, 1,
         GTK_TYPE_TREE_ITER
     );
     model_signals[END_LOADING] = g_signal_new(
         "end-loading", G_OBJECT_CLASS_TYPE(object_class), G_SIGNAL_RUN_LAST,
-        G_STRUCT_OFFSET(BeditFileBrowserStoreClass, end_loading),
+        0,
         NULL, NULL, NULL,
         G_TYPE_NONE, 1,
         GTK_TYPE_TREE_ITER
     );
     model_signals[ERROR] = g_signal_new(
         "error", G_OBJECT_CLASS_TYPE(object_class), G_SIGNAL_RUN_LAST,
-        G_STRUCT_OFFSET(BeditFileBrowserStoreClass, error),
+        0,
         NULL, NULL, NULL,
         G_TYPE_NONE, 2,
         G_TYPE_UINT, G_TYPE_STRING
     );
     model_signals[NO_TRASH] = g_signal_new(
         "no-trash", G_OBJECT_CLASS_TYPE(object_class), G_SIGNAL_RUN_LAST,
-        G_STRUCT_OFFSET(BeditFileBrowserStoreClass, no_trash),
+        0,
         g_signal_accumulator_true_handled, NULL, NULL,
         G_TYPE_BOOLEAN, 1,
         G_TYPE_POINTER
     );
     model_signals[RENAME] = g_signal_new(
         "rename", G_OBJECT_CLASS_TYPE(object_class), G_SIGNAL_RUN_LAST,
-        0,  // G_STRUCT_OFFSET(BeditFileBrowserStoreClass, rename),
+        0,
         NULL, NULL, NULL,
         G_TYPE_NONE, 2,
         G_TYPE_FILE, G_TYPE_FILE
     );
     model_signals[BEGIN_REFRESH] = g_signal_new(
         "begin-refresh", G_OBJECT_CLASS_TYPE(object_class), G_SIGNAL_RUN_LAST,
-        G_STRUCT_OFFSET(BeditFileBrowserStoreClass, begin_refresh),
+        0,
         NULL, NULL, NULL,
         G_TYPE_NONE, 0
     );
     model_signals[END_REFRESH] = g_signal_new(
         "end-refresh", G_OBJECT_CLASS_TYPE(object_class), G_SIGNAL_RUN_LAST,
-        G_STRUCT_OFFSET(BeditFileBrowserStoreClass, end_refresh),
+        0,
         NULL, NULL, NULL,
         G_TYPE_NONE, 0
     );
     model_signals[UNLOAD] = g_signal_new(
         "unload", G_OBJECT_CLASS_TYPE(object_class), G_SIGNAL_RUN_LAST,
-        G_STRUCT_OFFSET(BeditFileBrowserStoreClass, unload),
+        0,
         NULL, NULL, NULL,
         G_TYPE_NONE, 1,
         G_TYPE_FILE
@@ -457,7 +457,7 @@ static void bedit_file_browser_store_class_init(
     model_signals[BEFORE_ROW_DELETED] = g_signal_new(
         "before-row-deleted", G_OBJECT_CLASS_TYPE(object_class),
         G_SIGNAL_RUN_LAST,
-        G_STRUCT_OFFSET(BeditFileBrowserStoreClass, before_row_deleted),
+        0,
         NULL, NULL, NULL,
         G_TYPE_NONE, 1,
         GTK_TYPE_TREE_PATH | G_SIGNAL_TYPE_STATIC_SCOPE
