@@ -38,6 +38,8 @@
 #include "bedit-message-bus.h"
 #include "bedit-settings.h"
 #include "bedit/bedit-window.h"
+#include "bedit-file-browser.h"
+
 
 G_BEGIN_DECLS
 
@@ -76,6 +78,7 @@ struct _BeditWindowPrivate {
     GtkWidget *action_area;
     GtkWidget *gear_button;
     GtkWidget *leave_fullscreen_button;
+    BeditFileBrowser *file_browser;
 
     gint num_tabs_with_error;
 

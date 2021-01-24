@@ -198,6 +198,8 @@ static void bedit_window_dispose(GObject *object) {
             BEDIT_SEARCHBAR(window->priv->searchbar), NULL
         );
     }
+    bedit_file_browser_deactivate(window->priv->file_browser);
+    g_clear_object(&window->priv->file_browser);
 
     g_clear_object(&window->priv->message_bus);
     g_clear_object(&window->priv->window_group);
@@ -909,6 +911,8 @@ static void update_actions_sensitivity(BeditWindow *window) {
         window->priv->extensions,
         (PeasExtensionSetForeachFunc)extension_update_state, window
     );
+    // TODO
+    bedit_file_browser_update_state(window->priv->file_browser);
 }
 
 static void on_language_selector_shown(
@@ -2357,6 +2361,9 @@ static void bedit_window_init(BeditWindow *window) {
         (PeasExtensionSetForeachFunc)extension_added,
         window
     );
+
+    window->priv->file_browser = bedit_file_browser_new(window);
+    bedit_file_browser_activate(window->priv->file_browser);
 
     update_actions_sensitivity(window);
 

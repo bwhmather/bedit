@@ -673,6 +673,9 @@ static void bedit_app_startup(GApplication *application) {
         GTK_APPLICATION(application), "win.save-all", "<Primary><Shift>L"
     );
     add_accelerator(
+        GTK_APPLICATION(application), "win.file-browser", "<Primary><Shift>O"
+    );
+    add_accelerator(
         GTK_APPLICATION(application), "win.new-tab", "<Primary>T"
     );
     add_accelerator(
