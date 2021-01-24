@@ -80,10 +80,12 @@ static void on_toggle_action_cb(
     BeditFileBrowser *file_browser
 );
 static void on_file_activated_cb(
-    BeditFileBrowserWidget *widget, GFile *location, BeditWindow *window
+    BeditFileBrowserWidget *widget, GFile *location,
+    BeditFileBrowser *file_browser
 );
 static void on_directory_activated_cb(
-    BeditFileBrowserWidget *widget, GFile *location, BeditWindow *window
+    BeditFileBrowserWidget *widget, GFile *location,
+    BeditFileBrowser *file_browser
 );
 static void on_error_cb(
     BeditFileBrowserWidget *widget, guint code, gchar const *message,
@@ -91,14 +93,15 @@ static void on_error_cb(
 );
 static void on_rename_cb(
     BeditFileBrowserStore *model, GFile *oldfile, GFile *newfile,
-    BeditWindow *window
+    BeditFileBrowser *file_browser
 );
 static gboolean on_confirm_delete_cb(
     BeditFileBrowserWidget *widget, BeditFileBrowserStore *store, GList *rows,
     BeditFileBrowser *file_browser
 );
 static gboolean on_confirm_no_trash_cb(
-    BeditFileBrowserWidget *widget, GList *files, BeditWindow *window
+    BeditFileBrowserWidget *widget, GList *files,
+    BeditFileBrowser *file_browser
 );
 static void on_popover_closed_cb(
     GtkPopover *popover, BeditFileBrowser *file_browser
@@ -364,11 +367,11 @@ void bedit_file_browser_activate(BeditFileBrowser *file_browser) {
 
     g_signal_connect(
         file_browser->tree_widget, "file-activated",
-        G_CALLBACK(on_file_activated_cb), file_browser->window
+        G_CALLBACK(on_file_activated_cb), file_browser
     );
     g_signal_connect(
         file_browser->tree_widget, "directory-activated",
-        G_CALLBACK(on_directory_activated_cb), file_browser->window
+        G_CALLBACK(on_directory_activated_cb), file_browser
     );
 
     g_signal_connect(
@@ -383,7 +386,7 @@ void bedit_file_browser_activate(BeditFileBrowser *file_browser) {
 
     g_signal_connect(
         file_browser->tree_widget, "confirm-no-trash",
-        G_CALLBACK(on_confirm_no_trash_cb), file_browser->window
+        G_CALLBACK(on_confirm_no_trash_cb), file_browser
     );
 
     g_signal_connect(
@@ -497,7 +500,7 @@ void bedit_file_browser_activate(BeditFileBrowser *file_browser) {
 
     g_signal_connect(
         store, "rename",
-        G_CALLBACK(on_rename_cb), file_browser->window
+        G_CALLBACK(on_rename_cb), file_browser
     );
 
     /* Register messages on the bus */
@@ -591,22 +594,24 @@ static void on_toggle_action_cb(
 }
 
 static void on_file_activated_cb(
-    BeditFileBrowserWidget *tree_widget, GFile *location, BeditWindow *window
+    BeditFileBrowserWidget *tree_widget, GFile *location,
+    BeditFileBrowser *file_browser
 ) {
     g_return_if_fail(BEDIT_IS_FILE_BROWSER_WIDGET(tree_widget));
-    g_return_if_fail(BEDIT_IS_WINDOW(window));
+    g_return_if_fail(BEDIT_IS_FILE_BROWSER(file_browser));
 
-    bedit_commands_load_location(window, location, NULL, 0, 0);
+    bedit_commands_load_location(file_browser->window, location, NULL, 0, 0);
 }
 
 static void on_directory_activated_cb(
-    BeditFileBrowserWidget *tree_widget, GFile *location, BeditWindow *window
+    BeditFileBrowserWidget *tree_widget, GFile *location,
+    BeditFileBrowser *file_browser
 ) {
     g_return_if_fail(BEDIT_IS_FILE_BROWSER_WIDGET(tree_widget));
     g_return_if_fail(G_IS_FILE(location));
-    g_return_if_fail(BEDIT_IS_WINDOW(window));
+    g_return_if_fail(BEDIT_IS_FILE_BROWSER(file_browser));
 
-    _bedit_window_set_default_location(window, location);
+    _bedit_window_set_default_location(file_browser->window, location);
 }
 
 
@@ -664,13 +669,13 @@ static void on_error_cb(
 
 static void on_rename_cb(
     BeditFileBrowserStore *store, GFile *oldfile, GFile *newfile,
-    BeditWindow *window
+    BeditFileBrowser *file_browser
 ) {
     GList *documents;
     GList *item;
 
     g_return_if_fail(BEDIT_IS_FILE_BROWSER_STORE(store));
-    g_return_if_fail(BEDIT_IS_WINDOW(window));
+    g_return_if_fail(BEDIT_IS_FILE_BROWSER(file_browser));
 
     /* Find all documents and set its uri to newuri where it matches olduri */
     documents = bedit_app_get_documents(BEDIT_APP(g_application_get_default()));
@@ -737,7 +742,7 @@ static gchar *get_filename_from_path(GtkTreeModel *model, GtkTreePath *path) {
 }
 
 static gboolean on_confirm_no_trash_cb(
-    BeditFileBrowserWidget *widget, GList *files, BeditWindow *window
+    BeditFileBrowserWidget *widget, GList *files, BeditFileBrowser *file_browser
 ) {
     gchar *normal;
     gchar *message;
@@ -760,7 +765,9 @@ static gboolean on_confirm_no_trash_cb(
     }
 
     result = bedit_file_browser_utils_confirmation_dialog(
-        window, GTK_MESSAGE_QUESTION, message, secondary, _("_Delete")
+        file_browser->window, GTK_MESSAGE_QUESTION,
+        message, secondary,
+        _("_Delete")
     );
     g_free(secondary);
 
