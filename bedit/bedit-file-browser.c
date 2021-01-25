@@ -209,7 +209,9 @@ static void on_click_policy_changed(
 
     policy = g_settings_get_enum(settings, key);
 
-    view = bedit_file_browser_widget_get_browser_view(file_browser->tree_widget);
+    view = bedit_file_browser_widget_get_browser_view(
+        file_browser->tree_widget
+    );
     bedit_file_browser_folder_view_set_click_policy(view, policy);
 }
 
@@ -234,7 +236,9 @@ static void install_nautilus_prefs(BeditFileBrowser *file_browser) {
         file_browser->nautilus_settings, NAUTILUS_CLICK_POLICY_KEY
     );
 
-    view = bedit_file_browser_widget_get_browser_view(file_browser->tree_widget);
+    view = bedit_file_browser_widget_get_browser_view(
+        file_browser->tree_widget
+    );
     bedit_file_browser_folder_view_set_click_policy(view, policy);
 
     file_browser->click_policy_handle = g_signal_connect(
@@ -277,7 +281,9 @@ static void set_root_from_doc(
     parent = g_file_get_parent(location);
 
     if (parent != NULL) {
-        bedit_file_browser_widget_set_virtual_root(file_browser->tree_widget, parent);
+        bedit_file_browser_widget_set_virtual_root(
+            file_browser->tree_widget, parent
+        );
 
         g_object_unref(parent);
     }
@@ -350,7 +356,8 @@ void bedit_file_browser_update_state(BeditFileBrowser *file_browser) {
     doc = bedit_window_get_active_document(file_browser->window);
 
     bedit_file_browser_widget_set_active_root_enabled(
-        file_browser->tree_widget, doc != NULL && !bedit_document_is_untitled(doc)
+        file_browser->tree_widget,
+        doc != NULL && !bedit_document_is_untitled(doc)
     );
 }
 
@@ -406,15 +413,20 @@ void bedit_file_browser_activate(BeditFileBrowser *file_browser) {
     );
 
     file_browser->action_area_button = gtk_menu_button_new();
-    gtk_widget_set_valign(GTK_WIDGET(file_browser->action_area_button), GTK_ALIGN_CENTER);
-    gtk_widget_set_can_focus(GTK_WIDGET(file_browser->action_area_button), FALSE);
+    gtk_widget_set_valign(
+        GTK_WIDGET(file_browser->action_area_button), GTK_ALIGN_CENTER
+    );
+    gtk_widget_set_can_focus(
+        GTK_WIDGET(file_browser->action_area_button), FALSE
+    );
     gtk_widget_set_tooltip_text(
         GTK_WIDGET(file_browser->action_area_button),
         _("File browser (Ctrl+Shift+O)")
     );
 
     gtk_container_add(
-        GTK_CONTAINER(file_browser->action_area_button), action_area_button_image
+        GTK_CONTAINER(file_browser->action_area_button),
+        action_area_button_image
     );
 
     /* Connect using popover. */
@@ -549,7 +561,9 @@ void bedit_file_browser_deactivate(BeditFileBrowser *file_browser) {
         GTK_CONTAINER(action_area), GTK_WIDGET(file_browser->action_area_button)
     );
 
-    g_action_map_remove_action(G_ACTION_MAP(file_browser->window), "file-browser");
+    g_action_map_remove_action(
+        G_ACTION_MAP(file_browser->window), "file-browser"
+    );
 }
 
 static void bedit_file_browser_class_init(
@@ -847,3 +861,4 @@ static void on_window_size_allocate_cb(
         "height-request", CLAMP(allocation->height - 40, 100, 1200), NULL
     );
 }
+

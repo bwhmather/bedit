@@ -108,8 +108,10 @@ static void bedit_file_browser_filter_parent_dir_enumerator_class_init(
 ) {
     GObjectClass *object_class = G_OBJECT_CLASS(klass);
 
-    object_class->get_property = bedit_file_browser_filter_parent_dir_enumerator_get_property;
-    object_class->set_property = bedit_file_browser_filter_parent_dir_enumerator_set_property;
+    object_class->get_property =
+        bedit_file_browser_filter_parent_dir_enumerator_get_property;
+    object_class->set_property =
+        bedit_file_browser_filter_parent_dir_enumerator_set_property;
 
     g_object_class_install_property(
         object_class, PROP_SOURCE,
@@ -125,7 +127,8 @@ static void bedit_file_browser_filter_parent_dir_enumerator_class_init(
 static void bedit_file_browser_filter_parent_dir_enumerator_iface_init(
     BeditFileBrowserFilterDirEnumeratorInterface *interface
 ) {
-    interface->iterate = bedit_file_browser_filter_parent_dir_enumerator_iterate;
+    interface->iterate =
+        bedit_file_browser_filter_parent_dir_enumerator_iterate;
 }
 
 static void bedit_file_browser_filter_parent_dir_enumerator_init(
@@ -205,3 +208,4 @@ static gboolean bedit_file_browser_filter_parent_dir_enumerator_iterate(
         g_free(dir_markup);
     }
 }
+

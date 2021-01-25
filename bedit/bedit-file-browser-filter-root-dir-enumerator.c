@@ -30,7 +30,6 @@
 
 #include "bedit-file-browser-filter-dir-enumerator.h"
 
-
 struct _BeditFileBrowserFilterRootDirEnumerator {
     GObject parent_instance;
 
@@ -117,8 +116,10 @@ static void bedit_file_browser_filter_root_dir_enumerator_class_init(
 ) {
     GObjectClass *object_class = G_OBJECT_CLASS(klass);
 
-    object_class->get_property = bedit_file_browser_filter_root_dir_enumerator_get_property;
-    object_class->set_property = bedit_file_browser_filter_root_dir_enumerator_set_property;
+    object_class->get_property =
+        bedit_file_browser_filter_root_dir_enumerator_get_property;
+    object_class->set_property =
+        bedit_file_browser_filter_root_dir_enumerator_set_property;
 
     g_object_class_install_property(
         object_class, PROP_ROOT,
@@ -199,3 +200,4 @@ static gboolean bedit_file_browser_filter_root_dir_enumerator_iterate(
     root_enumerator->consumed = TRUE;
     return TRUE;
 }
+

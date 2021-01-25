@@ -52,7 +52,7 @@ static void bedit_file_browser_filter_append_escaped(
     default:
         if (
             (0x1 <= chr && chr <= 0x8) ||
-            (0xb <= chr && chr  <= 0xc) ||
+            (0xb <= chr && chr <= 0xc) ||
             (0xe <= chr && chr <= 0x1f) ||
             (0x7f <= chr && chr <= 0x84) ||
             (0x86 <= chr && chr <= 0x9f)
@@ -116,8 +116,6 @@ gboolean bedit_file_browser_filter_match_segment(
             chunk_end = g_utf8_find_next_char(chunk_end, NULL);
         }
 
-        g_return_val_if_fail(chunk_end > chunk_start, FALSE);  // TODO debugging only.
-
         // Find longest match.
         best_start = chunk_start;
         best_length = 0;
@@ -132,7 +130,7 @@ gboolean bedit_file_browser_filter_match_segment(
             candidate_query_cursor = query_cursor;
             candidate_length = 0;
 
-            while (candidate_start  + candidate_length <= chunk_end) {
+            while (candidate_start + candidate_length <= chunk_end) {
                 gunichar name_char = g_utf8_get_char(candidate_name_cursor);
                 gunichar query_char = g_utf8_get_char(candidate_query_cursor);
 
@@ -204,3 +202,4 @@ gboolean bedit_file_browser_filter_match_segment(
         return FALSE;
     }
 }
+

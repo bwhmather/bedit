@@ -542,10 +542,14 @@ static void bedit_file_browser_filter_view_refresh(
 
     tree_store = gtk_tree_store_new(
         N_COLUMNS,
-        G_TYPE_ICON,  // Icon name.
-        G_TYPE_STRING,  // Markup.
-        G_TYPE_FILE,  // Location.
-        G_TYPE_FILE_INFO  // Metadata.
+        // Icon name.
+        G_TYPE_ICON,
+        // Markup.
+        G_TYPE_STRING,
+        // Location.
+        G_TYPE_FILE,
+        // Metadata.
+        G_TYPE_FILE_INFO
     );
 
     while (TRUE) {
@@ -589,3 +593,4 @@ static void bedit_file_browser_filter_view_refresh(
     gtk_tree_path_free(path);
     g_object_unref(virtual_root);
 }
+

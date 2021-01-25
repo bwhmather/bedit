@@ -77,7 +77,12 @@
 #include "bedit-window-activatable.h"
 #include "bedit-window-private.h"
 
-enum { PROP_0, PROP_STATE, PROP_DEFAULT_LOCATION, LAST_PROP };
+enum {
+    PROP_0,
+    PROP_STATE,
+    PROP_DEFAULT_LOCATION,
+    LAST_PROP
+};
 
 static GParamSpec *properties[LAST_PROP];
 

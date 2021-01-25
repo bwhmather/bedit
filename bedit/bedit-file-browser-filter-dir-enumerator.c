@@ -68,3 +68,4 @@ gboolean bedit_file_browser_filter_dir_enumerator_iterate(
     g_return_val_if_fail(iface->iterate != NULL, FALSE);
     return iface->iterate(enumerator, dir, path_markup, cancellable, error);
 }
+

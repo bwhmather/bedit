@@ -858,3 +858,4 @@ static void on_bookmarks_file_changed(
         break;
     }
 }
+

@@ -60,3 +60,4 @@ gboolean bedit_file_browser_filter_dir_enumerator_iterate(
 G_END_DECLS
 
 #endif /* BEDIT_FILE_BROWSER_FILTER_DIR_ENUMERATOR_H */
+

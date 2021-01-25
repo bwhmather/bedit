@@ -125,8 +125,10 @@ static void bedit_file_browser_filter_child_dir_enumerator_class_init(
 ) {
     GObjectClass *object_class = G_OBJECT_CLASS(klass);
 
-    object_class->get_property = bedit_file_browser_filter_child_dir_enumerator_get_property;
-    object_class->set_property = bedit_file_browser_filter_child_dir_enumerator_set_property;
+    object_class->get_property =
+        bedit_file_browser_filter_child_dir_enumerator_get_property;
+    object_class->set_property =
+        bedit_file_browser_filter_child_dir_enumerator_set_property;
 
     g_object_class_install_property(
         object_class, PROP_SOURCE,
@@ -169,7 +171,9 @@ BeditFileBrowserFilterChildDirEnumerator
     BeditFileBrowserFilterDirEnumerator *source, gchar *pattern
 ) {
     BeditFileBrowserFilterChildDirEnumerator *obj;
-    g_return_val_if_fail(BEDIT_IS_FILE_BROWSER_FILTER_DIR_ENUMERATOR(source), NULL);
+    g_return_val_if_fail(
+        BEDIT_IS_FILE_BROWSER_FILTER_DIR_ENUMERATOR(source), NULL
+    );
     g_return_val_if_fail(pattern != NULL, NULL);
 
     obj = g_object_new(
@@ -177,7 +181,9 @@ BeditFileBrowserFilterChildDirEnumerator
         "source", source, "pattern", pattern,
         NULL
     );
-    g_return_val_if_fail(BEDIT_IS_FILE_BROWSER_FILTER_CHILD_DIR_ENUMERATOR(obj), obj);
+    g_return_val_if_fail(
+        BEDIT_IS_FILE_BROWSER_FILTER_CHILD_DIR_ENUMERATOR(obj), obj
+    );
     return obj;
 }
 
@@ -245,7 +251,7 @@ static gboolean bedit_file_browser_filter_child_dir_enumerator_iterate(
         return FALSE;
     }
 
-   while (enumerator->matches == NULL) {
+    while (enumerator->matches == NULL) {
         GFile *dir_file;
         gchar *dir_markup;
         GFileEnumerator *child_enumerator;
@@ -270,8 +276,12 @@ static gboolean bedit_file_browser_filter_child_dir_enumerator_iterate(
 
             if (
                 g_error_matches(*error, G_IO_ERROR, G_IO_ERROR_NOT_FOUND) ||
-                g_error_matches(*error, G_IO_ERROR, G_IO_ERROR_NOT_DIRECTORY) ||
-                g_error_matches(*error, G_IO_ERROR, G_IO_ERROR_PERMISSION_DENIED)
+                g_error_matches(
+                    *error, G_IO_ERROR, G_IO_ERROR_NOT_DIRECTORY
+                ) ||
+                g_error_matches(
+                    *error, G_IO_ERROR, G_IO_ERROR_PERMISSION_DENIED
+                )
             ) {
                 // TODO log error.
                 g_clear_error(error);
@@ -372,3 +382,4 @@ static gboolean bedit_file_browser_filter_child_dir_enumerator_iterate(
 
     return TRUE;
 }
+

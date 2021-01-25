@@ -426,7 +426,8 @@ static void bedit_file_browser_widget_class_init(
         object_class, PROP_SHOW_BINARY,
         g_param_spec_boolean(
             "show-binary", "Show binary",
-            "Set to false to exclude files matching binary patterns from the output",
+            "Set to false to exclude files matching binary patterns "
+            "from the output",
             TRUE,
             G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS |
             G_PARAM_EXPLICIT_NOTIFY
@@ -679,7 +680,9 @@ static void bedit_file_browser_widget_init(BeditFileBrowserWidget *obj) {
         G_ACTION_MAP(obj->action_group), G_ACTION(obj->view_folder_action)
     );
 
-    obj->open_in_terminal_action = g_simple_action_new("open_in_terminal", NULL);
+    obj->open_in_terminal_action = g_simple_action_new(
+        "open_in_terminal", NULL
+    );
     g_signal_connect(
         obj->open_in_terminal_action, "activate",
         G_CALLBACK(open_in_terminal_activated), obj
@@ -751,7 +754,9 @@ static void bedit_file_browser_widget_init(BeditFileBrowserWidget *obj) {
     );
 
     /* tree view */
-    bedit_file_browser_folder_view_set_restore_expand_state(obj->folder_view, TRUE);
+    bedit_file_browser_folder_view_set_restore_expand_state(
+        obj->folder_view, TRUE
+    );
 
     g_signal_connect(
         obj->folder_view, "notify::model",
@@ -1674,7 +1679,7 @@ static gboolean on_folder_view_key_press_event(
     if (
         (event->state & (
             ~GDK_CONTROL_MASK & ~GDK_MOD1_MASK
-        )) == (event->state | GDK_SHIFT_MASK)  &&
+        )) == (event->state | GDK_SHIFT_MASK) &&
         event->keyval == GDK_KEY_BackSpace
     ) {
         GAction *action = g_action_map_lookup_action(
@@ -1726,8 +1731,8 @@ static gboolean on_view_stack_key_press_event(
     name = gtk_stack_get_visible_child_name(obj->view_stack);
     if (g_strcmp0(name, "filter")) {
         if (!gtk_entry_im_context_filter_keypress(
-            obj->filter_entry, event)
-        ) {
+            obj->filter_entry, event
+        )) {
             return FALSE;
         }
         bedit_file_browser_widget_set_filter_enabled(obj, TRUE);
@@ -2082,3 +2087,4 @@ static void set_active_root_activated(
 
     g_signal_emit(widget, signals[SET_ACTIVE_ROOT], 0);
 }
+

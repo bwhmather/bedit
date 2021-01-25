@@ -37,8 +37,6 @@ G_DECLARE_FINAL_TYPE(
     GObject
 )
 
-GType bedit_file_browser_filter_root_dir_enumerator_get_type(void) G_GNUC_CONST;
-
 BeditFileBrowserFilterRootDirEnumerator
 *bedit_file_browser_filter_root_dir_enumerator_new(
     GFile *file, gchar const *prefix
@@ -47,3 +45,4 @@ BeditFileBrowserFilterRootDirEnumerator
 G_END_DECLS
 
 #endif /* BEDIT_FILE_BROWSER_FILTER_ROOT_DIR_ENUMERATOR_H */
+

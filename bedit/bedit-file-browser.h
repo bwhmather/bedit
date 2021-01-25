@@ -47,3 +47,4 @@ void bedit_file_browser_update_state(BeditFileBrowser *plugin);
 G_END_DECLS
 
 #endif /* BEDIT_FILE_BROWSER_WINDOW_ACTIVATABLE_H */
+

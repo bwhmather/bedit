@@ -28,7 +28,8 @@
 
 G_BEGIN_DECLS
 
-#define BEDIT_TYPE_FILE_BROWSER_LOCATION (bedit_file_browser_location_get_type())
+#define BEDIT_TYPE_FILE_BROWSER_LOCATION                                    \
+    (bedit_file_browser_location_get_type())
 
 G_DECLARE_FINAL_TYPE(
     BeditFileBrowserLocation, bedit_file_browser_location,

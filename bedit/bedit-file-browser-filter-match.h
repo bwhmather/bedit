@@ -32,3 +32,4 @@ gboolean bedit_file_browser_filter_match_segment(
 G_END_DECLS
 
 #endif /* BEDIT_FILE_BROWSER_FILTER_MATCH_H */
+

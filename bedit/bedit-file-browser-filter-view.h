@@ -34,8 +34,6 @@ G_DECLARE_FINAL_TYPE(
     GtkBin
 )
 
-GType bedit_file_browser_filter_view_get_type(void) G_GNUC_CONST;
-
 BeditFileBrowserFilterView *bedit_file_browser_filter_view_new(void);
 
 void bedit_file_browser_filter_view_set_virtual_root(

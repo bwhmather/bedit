@@ -29,7 +29,7 @@
 
 G_BEGIN_DECLS
 
-#define BEDIT_TYPE_FILE_BROWSER_FILTER_FILE_ENUMERATOR                  \
+#define BEDIT_TYPE_FILE_BROWSER_FILTER_FILE_ENUMERATOR                      \
     (bedit_file_browser_filter_file_enumerator_get_type())
 
 G_DECLARE_FINAL_TYPE(
@@ -38,8 +38,6 @@ G_DECLARE_FINAL_TYPE(
     BEDIT, FILE_BROWSER_FILTER_FILE_ENUMERATOR,
     GObject
 )
-
-GType bedit_file_browser_filter_file_enumerator_get_type(void) G_GNUC_CONST;
 
 BeditFileBrowserFilterFileEnumerator
 *bedit_file_browser_filter_file_enumerator_new(
@@ -58,3 +56,4 @@ gboolean bedit_file_browser_filter_file_enumerator_iterate(
 G_END_DECLS
 
 #endif /* BEDIT_FILE_BROWSER_FILTER_FILE_ENUMERATOR_H */
+

@@ -28,7 +28,8 @@
 #include <gtk/gtk.h>
 
 G_BEGIN_DECLS
-#define BEDIT_TYPE_FILE_BROWSER_FOLDER_VIEW (bedit_file_browser_folder_view_get_type())
+#define BEDIT_TYPE_FILE_BROWSER_FOLDER_VIEW                                 \
+    (bedit_file_browser_folder_view_get_type())
 #define BEDIT_FILE_BROWSER_FOLDER_VIEW(obj)                                 \
     (G_TYPE_CHECK_INSTANCE_CAST(                                            \
         (obj), BEDIT_TYPE_FILE_BROWSER_FOLDER_VIEW,                         \
@@ -46,21 +47,24 @@ G_BEGIN_DECLS
     ))
 #define BEDIT_IS_FILE_BROWSER_FOLDER_VIEW(obj)                              \
     (G_TYPE_CHECK_INSTANCE_TYPE(                                            \
-        (obj), BEDIT_TYPE_FILE_BROWSER_FOLDER_VIEW)                         \
-    )
+        (obj), BEDIT_TYPE_FILE_BROWSER_FOLDER_VIEW                          \
+    ))
 #define BEDIT_IS_FILE_BROWSER_FOLDER_VIEW_CLASS(klass)                      \
     (G_TYPE_CHECK_CLASS_TYPE(                                               \
-        (klass), BEDIT_TYPE_FILE_BROWSER_FOLDER_VIEW)                       \
-    )
+        (klass), BEDIT_TYPE_FILE_BROWSER_FOLDER_VIEW                        \
+    ))
 #define BEDIT_FILE_BROWSER_FOLDER_VIEW_GET_CLASS(obj)                       \
     (G_TYPE_INSTANCE_GET_CLASS(                                             \
         (obj), BEDIT_TYPE_FILE_BROWSER_FOLDER_VIEW,                         \
         BeditFileBrowserFolderViewClass                                     \
     ))
 
-typedef struct _BeditFileBrowserFolderView BeditFileBrowserFolderView;
-typedef struct _BeditFileBrowserFolderViewClass BeditFileBrowserFolderViewClass;
-typedef struct _BeditFileBrowserFolderViewPrivate BeditFileBrowserFolderViewPrivate;
+typedef struct _BeditFileBrowserFolderView
+    BeditFileBrowserFolderView;
+typedef struct _BeditFileBrowserFolderViewClass
+    BeditFileBrowserFolderViewClass;
+typedef struct _BeditFileBrowserFolderViewPrivate
+    BeditFileBrowserFolderViewPrivate;
 
 typedef enum {
     BEDIT_FILE_BROWSER_FOLDER_VIEW_CLICK_POLICY_SINGLE,
@@ -101,7 +105,8 @@ void bedit_file_browser_folder_view_start_rename(
     BeditFileBrowserFolderView *folder_view, GtkTreeIter *iter
 );
 void bedit_file_browser_folder_view_set_click_policy(
-    BeditFileBrowserFolderView *folder_view, BeditFileBrowserFolderViewClickPolicy policy
+    BeditFileBrowserFolderView *folder_view,
+    BeditFileBrowserFolderViewClickPolicy policy
 );
 void bedit_file_browser_folder_view_set_restore_expand_state(
     BeditFileBrowserFolderView *folder_view, gboolean restore_expand_state

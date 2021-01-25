@@ -387,7 +387,8 @@ static void bedit_file_browser_store_class_init(
         object_class, PROP_SHOW_BINARY,
         g_param_spec_boolean(
             "show-binary", "Show binary",
-            "Set to false to exclude files matching binary patterns from the output",
+            "Set to false to exclude files matching binary patterns "
+            "from the output",
             TRUE,
             G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS |
             G_PARAM_EXPLICIT_NOTIFY
@@ -3590,3 +3591,4 @@ gboolean bedit_file_browser_store_new_directory(
     g_object_unref(file);
     return result;
 }
+

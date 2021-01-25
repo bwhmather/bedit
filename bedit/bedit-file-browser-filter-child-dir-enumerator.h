@@ -29,7 +29,7 @@
 
 G_BEGIN_DECLS
 
-#define BEDIT_TYPE_FILE_BROWSER_FILTER_CHILD_DIR_ENUMERATOR                  \
+#define BEDIT_TYPE_FILE_BROWSER_FILTER_CHILD_DIR_ENUMERATOR                 \
     (bedit_file_browser_filter_child_dir_enumerator_get_type())
 
 G_DECLARE_FINAL_TYPE(
@@ -39,8 +39,6 @@ G_DECLARE_FINAL_TYPE(
     GObject
 )
 
-GType bedit_file_browser_filter_child_dir_enumerator_get_type(void) G_GNUC_CONST;
-
 BeditFileBrowserFilterChildDirEnumerator
 *bedit_file_browser_filter_child_dir_enumerator_new(
     BeditFileBrowserFilterDirEnumerator *source, gchar *pattern
@@ -49,3 +47,4 @@ BeditFileBrowserFilterChildDirEnumerator
 G_END_DECLS
 
 #endif /* BEDIT_FILE_BROWSER_FILTER_CHILD_DIR_ENUMERATOR_H */
+

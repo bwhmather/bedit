@@ -295,7 +295,9 @@ static void insert_location_path(BeditFileBrowserLocation *widget) {
     g_return_if_fail(BEDIT_IS_FILE_BROWSER_STORE(widget->file_store));
 
     root = bedit_file_browser_store_get_root(widget->file_store);
-    virtual_root = bedit_file_browser_store_get_virtual_root(widget->file_store);
+    virtual_root = bedit_file_browser_store_get_virtual_root(
+        widget->file_store
+    );
 
     g_return_if_fail(G_IS_FILE(root));
     g_return_if_fail(G_IS_FILE(virtual_root));
@@ -412,7 +414,8 @@ static void on_locations_treeview_row_activated(
 
 static void locations_icon_renderer_cb(
     GtkTreeViewColumn *tree_column, GtkCellRenderer *cell,
-    GtkTreeModel *tree_model, GtkTreeIter *iter, BeditFileBrowserLocation *widget
+    GtkTreeModel *tree_model, GtkTreeIter *iter,
+    BeditFileBrowserLocation *widget
 ) {
     GdkPixbuf *pixbuf;
     gchar *icon_name;
@@ -575,3 +578,4 @@ static void on_virtual_root_changed(
         check_current_item(widget, TRUE);
     }
 }
+
