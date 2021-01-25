@@ -428,6 +428,17 @@ static void toggle_hidden_filter(BeditFileBrowserFolderView *view) {
     }
 }
 
+static void toggle_binary_filter(BeditFileBrowserFolderView *view) {
+    if (BEDIT_IS_FILE_BROWSER_STORE(view->priv->model)) {
+        BeditFileBrowserStore *model;
+        model = BEDIT_FILE_BROWSER_STORE(view->priv->model);
+
+        bedit_file_browser_store_set_show_binary(
+            model, !bedit_file_browser_store_get_show_binary(model)
+        );
+    }
+}
+
 static gboolean button_event_modifies_selection(GdkEventButton *event) {
     return (event->state & (GDK_CONTROL_MASK | GDK_SHIFT_MASK)) != 0;
 }
@@ -675,11 +686,14 @@ static gboolean key_press_event(GtkWidget *widget, GdkEventKey *event) {
         if ((event->state & modifiers) == GDK_CONTROL_MASK) {
             toggle_hidden_filter(view);
             handled = TRUE;
-            break;
         }
+        break;
 
-    default:
-        handled = FALSE;
+    case GDK_KEY_b:
+        if ((event->state & modifiers) == GDK_CONTROL_MASK) {
+            toggle_binary_filter(view);
+            handled = TRUE;
+        }
         break;
     }
 
