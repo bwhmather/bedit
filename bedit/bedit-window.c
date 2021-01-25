@@ -197,8 +197,9 @@ static void bedit_window_dispose(GObject *object) {
         bedit_searchbar_set_view(
             BEDIT_SEARCHBAR(window->priv->searchbar), NULL
         );
+
+        bedit_file_browser_deactivate(window->priv->file_browser);
     }
-    bedit_file_browser_deactivate(window->priv->file_browser);
     g_clear_object(&window->priv->file_browser);
 
     g_clear_object(&window->priv->message_bus);
