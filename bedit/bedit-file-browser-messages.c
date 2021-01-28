@@ -119,7 +119,9 @@ static GtkTreePath *track_row_lookup(WindowData *data, const gchar *id) {
     return gtk_tree_row_reference_get_path(ref);
 }
 
-static void message_cache_data_free(MessageCacheData *data) {
+static void message_cache_data_free(
+    MessageCacheData *data, GClosure *closure
+) {
     g_object_unref(data->message);
     g_slice_free(MessageCacheData, data);
 }
