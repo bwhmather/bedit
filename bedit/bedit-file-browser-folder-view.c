@@ -78,8 +78,6 @@ enum {
 
 static guint signals[NUM_SIGNALS] = {0};
 
-static const GtkTargetEntry drag_source_targets[] = {{"text/uri-list", 0, 0}};
-
 G_DEFINE_TYPE_EXTENDED(
     BeditFileBrowserFolderView, bedit_file_browser_folder_view,
     GTK_TYPE_TREE_VIEW, 0,
@@ -961,6 +959,8 @@ static void icon_renderer_cb(
 static void bedit_file_browser_folder_view_init(
     BeditFileBrowserFolderView *obj
 ) {
+    GtkTargetEntry *drag_source_targets;
+
     obj->priv = bedit_file_browser_folder_view_get_instance_private(obj);
 
     obj->priv->column = gtk_tree_view_column_new();
@@ -993,10 +993,14 @@ static void bedit_file_browser_folder_view_init(
     gtk_tree_view_set_headers_visible(GTK_TREE_VIEW(obj), FALSE);
     gtk_tree_view_set_enable_search(GTK_TREE_VIEW(obj), FALSE);
 
+    drag_source_targets = gtk_target_entry_new("text/uri-list", 0, 0);
     gtk_tree_view_enable_model_drag_source(
-        GTK_TREE_VIEW(obj), GDK_BUTTON1_MASK, drag_source_targets,
-        G_N_ELEMENTS(drag_source_targets), GDK_ACTION_COPY
+        GTK_TREE_VIEW(obj),
+        GDK_BUTTON1_MASK,
+        drag_source_targets, 1,
+        GDK_ACTION_COPY
     );
+    gtk_target_entry_free(drag_source_targets);
 }
 
 /* Public */
