@@ -210,12 +210,8 @@ static GObject *create_custom_widget_cb(
     guint line_numbers;
     GtkWrapMode wrap_mode;
 
-    gchar *root_objects[] = {"adjustment1", "contents", NULL};
-
-    builder = gtk_builder_new();
-    gtk_builder_add_objects_from_resource(
-        builder, "/com/bwhmather/bedit/ui/bedit-print-preferences.ui",
-        root_objects, NULL
+    builder = gtk_builder_new_from_resource(
+        "/com/bwhmather/bedit/ui/bedit-print-preferences.ui"
     );
     contents = GTK_WIDGET(gtk_builder_get_object(builder, "contents"));
     g_object_ref(contents);
