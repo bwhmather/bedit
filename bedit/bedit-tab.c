@@ -1904,10 +1904,10 @@ static void load_async(
     launch_loader(loading_task, encoding);
 }
 
-static gboolean load_finish(BeditTab *tab, GAsyncResult *result) {
-    g_return_val_if_fail(g_task_is_valid(result, tab), FALSE);
+static void load_finish(BeditTab *tab, GAsyncResult *result, void *data) {
+    g_return_if_fail(g_task_is_valid(result, tab));
 
-    return g_task_propagate_boolean(G_TASK(result), NULL);
+    g_task_propagate_boolean(G_TASK(result), NULL);
 }
 
 void _bedit_tab_load(
