@@ -1191,7 +1191,6 @@ static void bedit_tab_init(BeditTab *tab) {
     gint auto_save_interval;
     BeditDocument *doc;
     BeditView *view;
-    BeditApp *app;
     GtkSourceFile *file;
 
     tab->state = BEDIT_TAB_STATE_NORMAL;
@@ -1216,8 +1215,6 @@ static void bedit_tab_init(BeditTab *tab) {
         tab->editor_settings, BEDIT_SETTINGS_AUTO_SAVE_INTERVAL, "u",
         &auto_save_interval
     );
-
-    app = BEDIT_APP(g_application_get_default());
 
     tab->auto_save = auto_save != FALSE;
 
