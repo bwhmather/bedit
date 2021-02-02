@@ -81,6 +81,8 @@ static GParamSpec *properties[LAST_PROP];
 
 G_DEFINE_TYPE(BeditSearchbar, bedit_searchbar, GTK_TYPE_BIN)
 
+static void bedit_searchbar_wait_focus_first(BeditSearchbar *searchbar);
+
 static void bedit_searchbar_get_property(
     GObject *object, guint prop_id, GValue *value, GParamSpec *pspec
 ) {
@@ -141,6 +143,18 @@ static void bedit_searchbar_set_property(
     }
 }
 
+static gboolean bedit_searchbar_focus_out_event(
+    GtkWidget *widget, GdkEventFocus *event
+) {
+    BeditSearchbar *searchbar = BEDIT_SEARCHBAR(widget);
+
+    bedit_searchbar_wait_focus_first(searchbar);
+
+    return GTK_WIDGET_CLASS(
+        bedit_searchbar_parent_class
+    )->focus_out_event(widget, event);
+}
+
 static void bedit_searchbar_class_init(BeditSearchbarClass *klass) {
     GObjectClass *object_class = G_OBJECT_CLASS(klass);
     GtkWidgetClass *widget_class = GTK_WIDGET_CLASS(klass);
@@ -173,6 +187,8 @@ static void bedit_searchbar_class_init(BeditSearchbarClass *klass) {
     );
 
     g_object_class_install_properties(object_class, LAST_PROP, properties);
+
+    widget_class->focus_out_event = bedit_searchbar_focus_out_event;
 
     gtk_widget_class_set_template_from_resource(
         widget_class, "/com/bwhmather/bedit/ui/bedit-searchbar.ui"
