@@ -773,6 +773,14 @@ static void bedit_searchbar_init(BeditSearchbar *searchbar) {
 
     searchbar->mode = BEDIT_SEARCHBAR_MODE_HIDDEN;
 
+    searchbar->view = NULL;
+
+    searchbar->context = NULL;
+    searchbar->cancellable = NULL;
+
+    searchbar->start_mark = NULL;
+    searchbar->cursor_moved_cb_id = 0;
+
     searchbar->search_active = FALSE;
     searchbar->replace_active = FALSE;
 
