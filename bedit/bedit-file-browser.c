@@ -180,7 +180,7 @@ static void bedit_file_browser_dispose(GObject *object) {
     g_clear_object(&file_browser->settings);
     g_clear_object(&file_browser->nautilus_settings);
     g_clear_object(&file_browser->terminal_settings);
-    g_clear_object(&file_browser->window);
+    file_browser->window = NULL;
 
     G_OBJECT_CLASS(bedit_file_browser_parent_class)->dispose(object);
 }
