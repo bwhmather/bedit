@@ -499,18 +499,20 @@ static void bedit_searchbar_wait_focus_first(BeditSearchbar *searchbar) {
     gboolean found;
 
     g_return_if_fail(BEDIT_IS_SEARCHBAR(searchbar));
+
     if (searchbar->view == NULL) {
         return;
     }
-
     g_return_if_fail(BEDIT_IS_VIEW(searchbar->view));
-    g_return_if_fail(GTK_SOURCE_IS_SEARCH_CONTEXT(searchbar->context));
-    g_return_if_fail(searchbar->start_mark != NULL);
 
     if (searchbar->cancellable == NULL) {
         // The last invocation of bedit_searchbar_focus_first has finished.
         return;
     }
+
+    g_return_if_fail(GTK_SOURCE_IS_SEARCH_CONTEXT(searchbar->context));
+    g_return_if_fail(searchbar->start_mark != NULL);
+
     // TODO it would be nice if there was a way to block on the current run of
     // bedit_searchbar_focus_first instead of killing it and starting again.
     g_cancellable_cancel(searchbar->cancellable);
