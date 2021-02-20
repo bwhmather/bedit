@@ -151,8 +151,31 @@ static void bedit_file_browser_init(
 
 static void bedit_file_browser_dispose(GObject *object) {
     BeditFileBrowser *file_browser;
+    GtkWidget *action_area;
 
     file_browser = BEDIT_FILE_BROWSER(object);
+
+    bedit_file_browser_messages_unregister(file_browser->window);
+
+    if (file_browser->click_policy_handle) {
+        g_signal_handler_disconnect(
+            file_browser->nautilus_settings, file_browser->click_policy_handle
+        );
+    }
+
+    if (file_browser->confirm_trash_handle) {
+        g_signal_handler_disconnect(
+            file_browser->nautilus_settings, file_browser->confirm_trash_handle
+        );
+    }
+
+    action_area = bedit_window_get_action_area(file_browser->window);
+    gtk_container_remove(
+        GTK_CONTAINER(action_area), GTK_WIDGET(file_browser->action_area_button)
+    );
+    g_action_map_remove_action(
+        G_ACTION_MAP(file_browser->window), "file-browser"
+    );
 
     g_clear_object(&file_browser->settings);
     g_clear_object(&file_browser->nautilus_settings);
@@ -361,12 +384,13 @@ void bedit_file_browser_update_state(BeditFileBrowser *file_browser) {
     );
 }
 
-void bedit_file_browser_activate(BeditFileBrowser *file_browser) {
+static void bedit_file_browser_constructed(GObject *obj) {
+    BeditFileBrowser *file_browser;
     GtkWidget *action_area;
     GtkWidget *action_area_button_image;
     BeditFileBrowserStore *store;
 
-    g_return_if_fail(BEDIT_IS_FILE_BROWSER(file_browser));
+    file_browser = BEDIT_FILE_BROWSER(obj);
 
     /* Setup tree widget. */
     file_browser->tree_widget =
@@ -533,37 +557,8 @@ void bedit_file_browser_activate(BeditFileBrowser *file_browser) {
     );
 
     bedit_file_browser_update_state(file_browser);
-}
 
-void bedit_file_browser_deactivate(BeditFileBrowser *file_browser) {
-    GtkWidget *action_area;
-
-    g_return_if_fail(BEDIT_IS_FILE_BROWSER(file_browser));
-
-    /* Unregister messages from the bus */
-    bedit_file_browser_messages_unregister(file_browser->window);
-
-    /* Disconnect signals */
-    if (file_browser->click_policy_handle) {
-        g_signal_handler_disconnect(
-            file_browser->nautilus_settings, file_browser->click_policy_handle
-        );
-    }
-
-    if (file_browser->confirm_trash_handle) {
-        g_signal_handler_disconnect(
-            file_browser->nautilus_settings, file_browser->confirm_trash_handle
-        );
-    }
-
-    action_area = bedit_window_get_action_area(file_browser->window);
-    gtk_container_remove(
-        GTK_CONTAINER(action_area), GTK_WIDGET(file_browser->action_area_button)
-    );
-
-    g_action_map_remove_action(
-        G_ACTION_MAP(file_browser->window), "file-browser"
-    );
+    G_OBJECT_CLASS(bedit_file_browser_parent_class)->constructed(obj);
 }
 
 static void bedit_file_browser_class_init(
@@ -571,6 +566,7 @@ static void bedit_file_browser_class_init(
 ) {
     GObjectClass *object_class = G_OBJECT_CLASS(klass);
 
+    object_class->constructed = bedit_file_browser_constructed;
     object_class->dispose = bedit_file_browser_dispose;
     object_class->set_property = bedit_file_browser_set_property;
     object_class->get_property = bedit_file_browser_get_property;

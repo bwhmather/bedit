@@ -40,8 +40,6 @@ G_DECLARE_FINAL_TYPE(
 BeditFileBrowser *bedit_file_browser_new(BeditWindow *window);
 
 // TODO left over from migration from plugin.
-void bedit_file_browser_activate(BeditFileBrowser *plugin);
-void bedit_file_browser_deactivate(BeditFileBrowser *plugin);
 void bedit_file_browser_update_state(BeditFileBrowser *plugin);
 
 G_END_DECLS
