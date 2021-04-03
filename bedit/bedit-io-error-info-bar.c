@@ -773,7 +773,9 @@ GtkWidget *bedit_file_already_open_warning_info_bar_new(GFile *location) {
     g_return_val_if_fail(G_IS_FILE(location), NULL);
 
     info_bar = tepl_info_bar_new();
-    tepl_info_bar_set_buttons_orientation(info_bar, GTK_ORIENTATION_HORIZONTAL);
+    tepl_info_bar_set_buttons_orientation(
+        GTK_INFO_BAR(info_bar), GTK_ORIENTATION_HORIZONTAL
+    );
 
     gtk_info_bar_add_button(
         GTK_INFO_BAR(info_bar), _("_Edit Anyway"), GTK_RESPONSE_YES
@@ -823,7 +825,7 @@ GtkWidget *bedit_externally_modified_saving_error_info_bar_new(
     info_bar = tepl_info_bar_new();
 
     tepl_info_bar_set_buttons_orientation(
-        info_bar, GTK_ORIENTATION_HORIZONTAL
+        GTK_INFO_BAR(info_bar), GTK_ORIENTATION_HORIZONTAL
     );
 
     gtk_info_bar_set_message_type(GTK_INFO_BAR(info_bar), GTK_MESSAGE_WARNING);
@@ -883,7 +885,7 @@ GtkWidget *bedit_no_backup_saving_error_info_bar_new(
     info_bar = tepl_info_bar_new();
 
     tepl_info_bar_set_buttons_orientation(
-        info_bar, GTK_ORIENTATION_HORIZONTAL
+        GTK_INFO_BAR(info_bar), GTK_ORIENTATION_HORIZONTAL
     );
 
     gtk_info_bar_set_message_type(GTK_INFO_BAR(info_bar), GTK_MESSAGE_WARNING);
