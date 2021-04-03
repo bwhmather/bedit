@@ -49,7 +49,6 @@
 #define NAUTILUS_FALLBACK_SETTINGS                                          \
     "com.bwhmather.bedit.plugins.filebrowser.nautilus"
 #define NAUTILUS_CLICK_POLICY_KEY "click-policy"
-#define NAUTILUS_CONFIRM_TRASH_KEY "confirm-trash"
 
 #define TERMINAL_BASE_SETTINGS "org.gnome.desktop.default-applications.terminal"
 #define TERMINAL_EXEC_KEY "exec"
@@ -68,10 +67,8 @@ struct _BeditFileBrowser {
     GtkWidget *action_area_button;
     GtkPopover *popover;
     BeditFileBrowserWidget *tree_widget;
-    gboolean confirm_trash;
 
     guint click_policy_handle;
-    guint confirm_trash_handle;
 };
 
 enum { PROP_0, PROP_WINDOW };
@@ -163,12 +160,6 @@ static void bedit_file_browser_dispose(GObject *object) {
         );
     }
 
-    if (file_browser->confirm_trash_handle) {
-        g_signal_handler_disconnect(
-            file_browser->nautilus_settings, file_browser->confirm_trash_handle
-        );
-    }
-
     action_area = bedit_window_get_action_area(file_browser->window);
     gtk_container_remove(
         GTK_CONTAINER(action_area), GTK_WIDGET(file_browser->action_area_button)
@@ -238,17 +229,7 @@ static void on_click_policy_changed(
     bedit_file_browser_folder_view_set_click_policy(view, policy);
 }
 
-static void on_confirm_trash_changed(
-    GSettings *settings, const gchar *key,
-    BeditFileBrowser *file_browser
-) {
-    g_return_if_fail(BEDIT_IS_FILE_BROWSER(file_browser));
-
-    file_browser->confirm_trash = g_settings_get_boolean(settings, key);
-}
-
 static void install_nautilus_prefs(BeditFileBrowser *file_browser) {
-    gboolean prefb;
     BeditFileBrowserFolderViewClickPolicy policy;
     BeditFileBrowserFolderView *view;
 
@@ -267,18 +248,6 @@ static void install_nautilus_prefs(BeditFileBrowser *file_browser) {
     file_browser->click_policy_handle = g_signal_connect(
         file_browser->nautilus_settings, "changed::" NAUTILUS_CLICK_POLICY_KEY,
         G_CALLBACK(on_click_policy_changed), file_browser
-    );
-
-    /* Get confirm_trash */
-    prefb = g_settings_get_boolean(
-        file_browser->nautilus_settings, NAUTILUS_CONFIRM_TRASH_KEY
-    );
-
-    file_browser->confirm_trash = prefb;
-
-    file_browser->confirm_trash_handle = g_signal_connect(
-        file_browser->nautilus_settings, "changed::" NAUTILUS_CONFIRM_TRASH_KEY,
-        G_CALLBACK(on_confirm_trash_changed), file_browser
     );
 }
 
@@ -797,10 +766,6 @@ static gboolean on_confirm_delete_cb(
     g_return_val_if_fail(BEDIT_IS_FILE_BROWSER_WIDGET(widget), FALSE);
     g_return_val_if_fail(BEDIT_IS_FILE_BROWSER_STORE(store), FALSE);
     g_return_val_if_fail(BEDIT_IS_FILE_BROWSER(file_browser), FALSE);
-
-    if (!file_browser->confirm_trash) {
-        return TRUE;
-    }
 
     if (paths->next == NULL) {
         normal = get_filename_from_path(
