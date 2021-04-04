@@ -604,7 +604,6 @@ static void update_actions_sensitivity(BeditWindow *window) {
     gboolean search_active;
     gboolean replace_active;
     GtkClipboard *clipboard;
-    gboolean enable_syntax_highlighting;
 
     bedit_debug(DEBUG_WINDOW);
 
@@ -837,19 +836,6 @@ static void update_actions_sensitivity(BeditWindow *window) {
             (state == BEDIT_TAB_STATE_EXTERNALLY_MODIFIED_NOTIFICATION)
         ) &&
         (doc != NULL)
-    );
-
-    action = g_action_map_lookup_action(
-        G_ACTION_MAP(window), "highlight-mode"
-    );
-    enable_syntax_highlighting = g_settings_get_boolean(
-        window->priv->editor_settings, BEDIT_SETTINGS_SYNTAX_HIGHLIGHTING
-    );
-    g_simple_action_set_enabled(
-        G_SIMPLE_ACTION(action),
-        (state != BEDIT_TAB_STATE_CLOSING) &&
-        (doc != NULL) &&
-        enable_syntax_highlighting
     );
 
     action = g_action_map_lookup_action(
@@ -2166,7 +2152,6 @@ static GActionEntry win_entries[] = {
     {"paste", _bedit_cmd_edit_paste},
     {"delete", _bedit_cmd_edit_delete},
     {"select-all", _bedit_cmd_edit_select_all},
-    {"highlight-mode", _bedit_cmd_view_highlight_mode},
     {"overwrite-mode", NULL, NULL, "false", _bedit_cmd_edit_overwrite_mode}
 };
 

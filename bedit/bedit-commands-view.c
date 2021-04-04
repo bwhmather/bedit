@@ -39,7 +39,6 @@
 #include <gtk/gtk.h>
 
 #include "bedit-debug.h"
-#include "bedit-highlight-mode-dialog.h"
 #include "bedit-highlight-mode-selector.h"
 #include "bedit-window.h"
 
@@ -77,44 +76,3 @@ void _bedit_cmd_view_leave_fullscreen_mode(
 ) {
     _bedit_window_unfullscreen(BEDIT_WINDOW(user_data));
 }
-
-static void on_language_selected(
-    BeditHighlightModeSelector *sel, GtkSourceLanguage *language,
-    BeditWindow *window
-) {
-    BeditDocument *doc;
-
-    doc = bedit_window_get_active_document(window);
-    if (doc) {
-        bedit_document_set_language(doc, language);
-    }
-}
-
-void _bedit_cmd_view_highlight_mode(
-    GSimpleAction *action, GVariant *parameter, gpointer user_data
-) {
-    GtkWindow *window = GTK_WINDOW(user_data);
-    GtkWidget *dlg;
-    BeditHighlightModeSelector *sel;
-    BeditDocument *doc;
-
-    dlg = bedit_highlight_mode_dialog_new(window);
-    sel = bedit_highlight_mode_dialog_get_selector(
-        BEDIT_HIGHLIGHT_MODE_DIALOG(dlg)
-    );
-
-    doc = bedit_window_get_active_document(BEDIT_WINDOW(window));
-    if (doc) {
-        bedit_highlight_mode_selector_select_language(
-            sel, bedit_document_get_language(doc)
-        );
-    }
-
-    g_signal_connect(
-        sel, "language-selected",
-        G_CALLBACK(on_language_selected), window
-    );
-
-    gtk_widget_show(GTK_WIDGET(dlg));
-}
-
