@@ -62,6 +62,11 @@ gchar *bedit_utils_location_get_dirname_for_display(GFile *location);
 gboolean bedit_utils_is_valid_location(GFile *location);
 
 gchar *bedit_utils_basename_for_display(GFile *location);
+gboolean bedit_utils_decode_uri(
+    const gchar *uri, gchar **scheme, gchar **user,
+    gchar **host, gchar **port,
+    gchar **path
+);
 
 /* Turns data from a drop into a list of well formatted uris */
 gchar **bedit_utils_drop_get_uris(GtkSelectionData *selection_data);

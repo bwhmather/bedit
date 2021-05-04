@@ -48,7 +48,6 @@
 
 #include <glib/gi18n.h>
 #include <string.h>
-#include <tepl/tepl.h>
 
 #include "bedit-debug.h"
 
@@ -173,7 +172,7 @@ gchar *bedit_utils_location_get_dirname_for_display(GFile *location) {
         g_object_unref(mount);
 
         /* obtain the "path" part of the uri */
-        tepl_utils_decode_uri(uri, NULL, NULL, NULL, NULL, &path);
+        bedit_utils_decode_uri(uri, NULL, NULL, NULL, NULL, &path);
 
         if (path == NULL) {
             dirname = uri_get_dirname(uri);
@@ -384,7 +383,7 @@ gchar *bedit_utils_basename_for_display(GFile *location) {
         }
     } else if (
         g_file_has_parent(location, NULL) ||
-        !tepl_utils_decode_uri(uri, NULL, NULL, &hn, NULL, NULL)
+        !bedit_utils_decode_uri(uri, NULL, NULL, &hn, NULL, NULL)
     ) {
         /* For remote files with a parent (so not just http://foo.com)
            or remote file for which the decoding of the host name fails,
@@ -461,6 +460,152 @@ gchar **bedit_utils_drop_get_uris(GtkSelectionData *selection_data) {
 
     g_strfreev(uris);
     return uri_list;
+}
+
+/**
+ * bedit_utils_decode_uri:
+ * @uri: the uri to decode
+ * @scheme: (out) (allow-none): return value pointer for the uri's
+ * scheme (e.g. http, sftp, ...), or %NULL
+ * @user: (out) (allow-none): return value pointer for the uri user info, or
+ * %NULL
+ * @port: (out) (allow-none): return value pointer for the uri port, or %NULL
+ * @host: (out) (allow-none): return value pointer for the uri host, or %NULL
+ * @path: (out) (allow-none): return value pointer for the uri path, or %NULL
+ *
+ * Parse and break an uri apart in its individual components like the uri
+ * scheme, user info, port, host and path. The return value pointer can be
+ * %NULL to ignore certain parts of the uri. If the function returns %TRUE, then
+ * all return value pointers should be freed using g_free
+ *
+ * Return value: %TRUE if the uri could be properly decoded, %FALSE otherwise.
+ */
+gboolean bedit_utils_decode_uri(
+    const gchar *uri, gchar **scheme, gchar **user,
+    gchar **host, gchar **port,
+    gchar **path
+) {
+    /* Largely copied from glib/gio/gdummyfile.c:_g_decode_uri. This
+     * functionality should be in glib/gio, but for now we implement it
+     * ourselves (see bug #546182) */
+    const char *p, *in, *hier_part_start, *hier_part_end;
+    char *out;
+    char c;
+
+    /* From RFC 3986 Decodes:
+     * URI = scheme ":" hier-part [ "?" query ] [ "#" fragment ]
+     */
+    p = uri;
+
+    null_ptr(scheme);
+    null_ptr(user);
+    null_ptr(port);
+    null_ptr(host);
+    null_ptr(path);
+
+    /* Decode scheme:
+     * scheme = ALPHA *( ALPHA / DIGIT / "+" / "-" / "." )
+     */
+    if (!g_ascii_isalpha(*p)) {
+        return FALSE;
+    }
+
+    while (1) {
+        c = *p++;
+
+        if (c == ':') {
+            break;
+        }
+
+        if (!(g_ascii_isalnum(c) || c == '+' || c == '-' || c == '.')) {
+            return FALSE;
+        }
+    }
+
+    if (scheme) {
+        *scheme = g_malloc(p - uri);
+        out = *scheme;
+
+        for (in = uri; in < p - 1; in++) {
+            *out++ = g_ascii_tolower(*in);
+        }
+
+        *out = '\0';
+    }
+
+    hier_part_start = p;
+    hier_part_end = p + strlen(p);
+
+    if (hier_part_start[0] == '/' && hier_part_start[1] == '/') {
+        const char *authority_start, *authority_end;
+        const char *userinfo_start, *userinfo_end;
+        const char *host_start, *host_end;
+        const char *port_start;
+
+        authority_start = hier_part_start + 2;
+        /* authority is always followed by / or nothing */
+        authority_end = memchr(
+            authority_start, '/', hier_part_end - authority_start
+        );
+
+        if (authority_end == NULL) {
+            authority_end = hier_part_end;
+        }
+
+        /* 3.2:
+         * authority = [ userinfo "@" ] host [ ":" port ]
+         */
+
+        userinfo_end = memchr(
+            authority_start, '@', authority_end - authority_start
+        );
+
+        if (userinfo_end) {
+            userinfo_start = authority_start;
+
+            if (user) {
+                *user = g_uri_unescape_segment(
+                    userinfo_start, userinfo_end, NULL
+                );
+            }
+
+            if (user && *user == NULL) {
+                if (scheme) {
+                    g_free(*scheme);
+                }
+
+                return FALSE;
+            }
+
+            host_start = userinfo_end + 1;
+        } else {
+            host_start = authority_start;
+        }
+
+        port_start = memchr(host_start, ':', authority_end - host_start);
+
+        if (port_start) {
+            host_end = port_start++;
+
+            if (port) {
+                *port = g_strndup(port_start, authority_end - port_start);
+            }
+        } else {
+            host_end = authority_end;
+        }
+
+        if (host) {
+            *host = g_strndup(host_start, host_end - host_start);
+        }
+
+        hier_part_start = authority_end;
+    }
+
+    if (path) {
+        *path = g_uri_unescape_segment(hier_part_start, hier_part_end, "/");
+    }
+
+    return TRUE;
 }
 
 GtkSourceCompressionType bedit_utils_get_compression_type_from_content_type(
