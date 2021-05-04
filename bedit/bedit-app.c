@@ -557,44 +557,18 @@ static gboolean show_menubar(void) {
     return result;
 }
 
-static GFile *get_metadata_manager_file(void) {
-    return g_file_new_build_filename(
-        bedit_dirs_get_user_data_dir(), "bedit-metadata.xml", NULL
+static void setup_metadata_manager(void) {
+    const gchar *user_data_dir;
+    gchar *metadata_path;
+
+    user_data_dir = bedit_dirs_get_user_data_dir();
+    metadata_path = g_build_filename(
+        user_data_dir, "bedit-metadata.xml", NULL
     );
-}
 
-static void load_metadata_manager(void) {
-    TeplMetadataManager *manager;
-    GFile *file;
-    GError *error = NULL;
+    tepl_metadata_manager_init(metadata_path);
 
-    manager = tepl_metadata_manager_get_singleton();
-    file = get_metadata_manager_file();
-    tepl_metadata_manager_load_from_disk(manager, file, &error);
-
-    if (error != NULL) {
-        g_warning("Failed to load metadata: %s", error->message);
-        g_clear_error(&error);
-    }
-
-    g_object_unref(file);
-}
-
-static void save_metadata_manager(void) {
-    TeplMetadataManager *manager;
-    GFile *file;
-    GError *error = NULL;
-
-    manager = tepl_metadata_manager_get_singleton();
-    file = get_metadata_manager_file();
-    tepl_metadata_manager_save_to_disk(manager, file, TRUE, &error);
-
-    if (error != NULL) {
-        g_warning("Failed to save metadata: %s", error->message);
-        g_clear_error(&error);
-    }
-
-    g_object_unref(file);
+    g_free(metadata_path);
 }
 
 static void bedit_app_startup(GApplication *application) {
@@ -610,7 +584,7 @@ static void bedit_app_startup(GApplication *application) {
     bedit_debug_init();
     bedit_debug_message(DEBUG_APP, "Startup");
 
-    load_metadata_manager();
+    setup_metadata_manager();
 
     setup_theme_extensions(BEDIT_APP(application));
 
@@ -1075,7 +1049,6 @@ static void bedit_app_shutdown(GApplication *app) {
     save_accels();
     save_page_setup(BEDIT_APP(app));
     save_print_settings(BEDIT_APP(app));
-    save_metadata_manager();
 
     G_APPLICATION_CLASS(bedit_app_parent_class)->shutdown(app);
 

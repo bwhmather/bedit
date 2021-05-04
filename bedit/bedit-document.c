@@ -70,7 +70,8 @@ static void set_content_type(BeditDocument *doc, const gchar *content_type);
 typedef struct {
     GtkSourceFile *file;
 
-    TeplMetadata *metadata;
+    /* Used only internally for the TeplFileMetadata. */
+    TeplFile *tepl_file;
 
     GSettings *editor_settings;
 
@@ -109,36 +110,6 @@ static GHashTable *allocated_untitled_numbers = NULL;
 G_DEFINE_TYPE_WITH_PRIVATE(
     BeditDocument, bedit_document, GTK_SOURCE_TYPE_BUFFER
 )
-
-static void load_metadata_from_metadata_manager(BeditDocument *doc) {
-    BeditDocumentPrivate *priv;
-    GFile *location;
-
-    priv = bedit_document_get_instance_private(doc);
-    location = gtk_source_file_get_location(priv->file);
-
-    if (location != NULL) {
-        TeplMetadataManager *manager;
-
-        manager = tepl_metadata_manager_get_singleton();
-        tepl_metadata_manager_copy_from(manager, location, priv->metadata);
-    }
-}
-
-static void save_metadata_into_metadata_manager(BeditDocument *doc) {
-    BeditDocumentPrivate *priv;
-    GFile *location;
-
-    priv = bedit_document_get_instance_private(doc);
-    location = gtk_source_file_get_location(priv->file);
-
-    if (location != NULL) {
-        TeplMetadataManager *manager;
-
-        manager = tepl_metadata_manager_get_singleton();
-        tepl_metadata_manager_merge_into(manager, location, priv->metadata);
-    }
-}
 
 static gint get_untitled_number(void) {
     gint i = 1;
@@ -234,11 +205,11 @@ static void bedit_document_dispose(GObject *object) {
     /* Metadata must be saved here and not in finalize because the language
      * is gone by the time finalize runs.
      */
-    if (priv->metadata != NULL) {
+    if (priv->tepl_file != NULL) {
         save_metadata(doc);
 
-        g_object_unref(priv->metadata);
-        priv->metadata = NULL;
+        g_object_unref(priv->tepl_file);
+        priv->tepl_file = NULL;
     }
 
     g_clear_object(&priv->file);
@@ -676,8 +647,6 @@ static void on_location_changed(
 
     priv = bedit_document_get_instance_private(doc);
 
-    load_metadata_from_metadata_manager(doc);
-
     location = gtk_source_file_get_location(file);
 
     if (location != NULL && priv->untitled_number > 0) {
@@ -686,6 +655,40 @@ static void on_location_changed(
     }
 
     g_object_notify_by_pspec(G_OBJECT(doc), properties[PROP_SHORTNAME]);
+}
+
+static void on_tepl_location_changed(
+    TeplFile *file, GParamSpec *pspec, BeditDocument *doc
+) {
+    TeplFileMetadata *metadata;
+    GError *error = NULL;
+
+    /* Load metadata for this location: we load sync since metadata is
+     * always local so it should be fast and we need the information
+     * right after the location was set.
+     * TODO: do async I/O for the metadata.
+     */
+    metadata = tepl_file_get_file_metadata(file);
+    tepl_file_metadata_load(metadata, NULL, &error);
+
+    if (error != NULL) {
+        /* Do not complain about metadata if we are opening a
+         * non existing file.
+         * TODO: we should know beforehand whether the file exists or
+         * not, and load the metadata only when needed (after loading
+         * the file content, for example).
+         */
+        if (
+            !g_error_matches(error, G_FILE_ERROR, G_FILE_ERROR_ISDIR) &&
+            !g_error_matches(error, G_FILE_ERROR, G_FILE_ERROR_NOTDIR) &&
+            !g_error_matches(error, G_FILE_ERROR, G_FILE_ERROR_NOENT) &&
+            !g_error_matches(error, G_IO_ERROR, G_IO_ERROR_NOT_FOUND)
+        ) {
+            g_warning("Loading metadata failed: %s", error->message);
+        }
+
+        g_clear_error(&error);
+    }
 }
 
 static void bedit_document_init(BeditDocument *doc) {
@@ -706,11 +709,23 @@ static void bedit_document_init(BeditDocument *doc) {
     update_time_of_last_save_or_load(doc);
 
     priv->file = gtk_source_file_new();
-    priv->metadata = tepl_metadata_new();
 
     g_signal_connect_object(
         priv->file, "notify::location",
         G_CALLBACK(on_location_changed), doc, 0
+    );
+
+    priv->tepl_file = tepl_file_new();
+
+    g_signal_connect_object(
+        priv->tepl_file, "notify::location",
+        G_CALLBACK(on_tepl_location_changed), doc, 0
+    );
+
+    /* For using TeplFileMetadata we only need the TeplFile:location. */
+    g_object_bind_property(
+        priv->file, "location", priv->tepl_file, "location",
+        G_BINDING_DEFAULT | G_BINDING_SYNC_CREATE
     );
 
     g_settings_bind(
@@ -1228,17 +1243,19 @@ glong _bedit_document_get_seconds_since_last_save_or_load(BeditDocument *doc) {
  */
 gchar *bedit_document_get_metadata(BeditDocument *doc, const gchar *key) {
     BeditDocumentPrivate *priv;
+    TeplFileMetadata *metadata;
 
     g_return_val_if_fail(BEDIT_IS_DOCUMENT(doc), NULL);
     g_return_val_if_fail(key != NULL, NULL);
 
     priv = bedit_document_get_instance_private(doc);
 
-    if (priv->metadata == NULL) {
+    if (priv->tepl_file == NULL) {
         return NULL;
     }
 
-    return tepl_metadata_get(priv->metadata, key);
+    metadata = tepl_file_get_file_metadata(priv->tepl_file);
+    return tepl_file_metadata_get(metadata, key);
 }
 
 /**
@@ -1254,28 +1271,55 @@ void bedit_document_set_metadata(
     BeditDocument *doc, const gchar *first_key, ...
 ) {
     BeditDocumentPrivate *priv;
+    TeplFileMetadata *metadata;
     va_list var_args;
     const gchar *key;
+    GError *error = NULL;
 
     g_return_if_fail(BEDIT_IS_DOCUMENT(doc));
     g_return_if_fail(first_key != NULL);
 
     priv = bedit_document_get_instance_private(doc);
 
-    if (priv->metadata == NULL) {
+    if (priv->tepl_file == NULL) {
         return;
     }
 
+    metadata = tepl_file_get_file_metadata(priv->tepl_file);
     va_start(var_args, first_key);
 
     for (key = first_key; key != NULL; key = va_arg(var_args, const gchar *)) {
         const gchar *value = va_arg(var_args, const gchar *);
-        tepl_metadata_set(priv->metadata, key, value);
+        tepl_file_metadata_set(metadata, key, value);
     }
 
     va_end(var_args);
 
-    save_metadata_into_metadata_manager(doc);
+    /* We save synchronously since metadata is always local so it should be
+     * fast. Moreover this function can be called on application shutdown,
+     * when the main loop has already exited, so an async operation would
+     * not terminate.
+     * https://bugzilla.gnome.org/show_bug.cgi?id=736591
+     * TODO: do async I/O for the metadata.
+     */
+    tepl_file_metadata_save(metadata, NULL, &error);
+
+    if (error != NULL) {
+        /* Do not complain about metadata if we are closing a document
+         * for a non existing file.
+         * TODO: we should know beforehand whether the file exists or
+         * not, and save the metadata only when needed (after saving the
+         * file content, for example).
+         */
+        if (
+            !g_error_matches(error, G_FILE_ERROR, G_FILE_ERROR_NOENT) &&
+            !g_error_matches(error, G_IO_ERROR, G_IO_ERROR_NOT_FOUND)
+        ) {
+            g_warning("Saving metadata failed: %s", error->message);
+        }
+
+        g_clear_error(&error);
+    }
 }
 
 /**
