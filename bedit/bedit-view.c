@@ -195,8 +195,6 @@ static void bedit_view_constructed(GObject *object) {
     BeditViewPrivate *priv;
     gboolean use_default_font;
 
-    G_OBJECT_CLASS(bedit_view_parent_class)->constructed(object);
-
     view = BEDIT_VIEW(object);
     priv = view->priv;
 
@@ -280,6 +278,8 @@ static void bedit_view_constructed(GObject *object) {
 
     gtk_source_view_set_indent_on_tab(GTK_SOURCE_VIEW(view), TRUE);
     gtk_source_view_set_smart_backspace(GTK_SOURCE_VIEW(view), TRUE);
+
+    G_OBJECT_CLASS(bedit_view_parent_class)->constructed(object);
 }
 
 static gboolean bedit_view_focus_out(GtkWidget *widget, GdkEventFocus *event) {
