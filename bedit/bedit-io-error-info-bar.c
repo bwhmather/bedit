@@ -766,38 +766,87 @@ const GtkSourceEncoding *bedit_conversion_error_info_bar_get_encoding(
 }
 
 GtkWidget *bedit_file_already_open_warning_info_bar_new(GFile *location) {
-    TeplInfoBar *info_bar;
-    gchar *uri;
-    gchar *primary_msg;
+    GtkWidget *info_bar;
+    GtkWidget *hbox_content;
+    GtkWidget *vbox;
+    gchar *primary_markup;
+    gchar *secondary_markup;
+    GtkWidget *primary_label;
+    GtkWidget *secondary_label;
+    gchar *primary_text;
+    const gchar *secondary_text;
+    gchar *full_formatted_uri;
+    gchar *uri_for_display;
+    gchar *temp_uri_for_display;
 
     g_return_val_if_fail(G_IS_FILE(location), NULL);
 
-    info_bar = tepl_info_bar_new();
-    tepl_info_bar_set_buttons_orientation(info_bar, GTK_ORIENTATION_HORIZONTAL);
+    full_formatted_uri = g_file_get_parse_name(location);
 
-    gtk_info_bar_add_button(
-        GTK_INFO_BAR(info_bar), _("_Edit Anyway"), GTK_RESPONSE_YES
+    /* Truncate the URI so it doesn't get insanely wide. Note that even
+     * though the dialog uses wrapped text, if the URI doesn't contain
+     * white space then the text-wrapping code is too stupid to wrap it.
+     */
+    temp_uri_for_display = bedit_utils_str_middle_truncate(
+        full_formatted_uri, MAX_URI_IN_DIALOG_LENGTH
     );
+    g_free(full_formatted_uri);
 
+    uri_for_display = g_markup_escape_text(temp_uri_for_display, -1);
+    g_free(temp_uri_for_display);
+
+    info_bar = gtk_info_bar_new();
     gtk_info_bar_add_button(
-        GTK_INFO_BAR(info_bar), _("Don't Edit"), GTK_RESPONSE_CANCEL
+        GTK_INFO_BAR(info_bar),
+        /* Translators: the access key chosen for this string should be
+         different from other main menu access keys (Open, Edit, View...) */
+        _("Edit Any_way"), GTK_RESPONSE_YES
     );
-
+    gtk_info_bar_add_button(
+        GTK_INFO_BAR(info_bar),
+        /* Translators: the access key chosen for this string should be
+         different from other main menu access keys (Open, Edit, View...) */
+        _("D_on’t Edit"), GTK_RESPONSE_CANCEL
+    );
     gtk_info_bar_set_message_type(GTK_INFO_BAR(info_bar), GTK_MESSAGE_WARNING);
 
-    uri = g_file_get_parse_name(location);
-    primary_msg = g_strdup_printf(
-        _("This file \"%s\" is already open in another window"), uri
-    );
-    tepl_info_bar_add_primary_message(info_bar, primary_msg);
-    g_free(uri);
-    g_free(primary_msg);
+    hbox_content = gtk_box_new(GTK_ORIENTATION_HORIZONTAL, 8);
 
-    tepl_info_bar_add_secondary_message(
-        info_bar, _("Do you want to edit anyway?")
-    );
+    vbox = gtk_box_new(GTK_ORIENTATION_VERTICAL, 6);
+    gtk_box_pack_start(GTK_BOX(hbox_content), vbox, TRUE, TRUE, 0);
 
-    return GTK_WIDGET(info_bar);
+    primary_text = g_strdup_printf(
+        _("This file “%s” is already open in another window."),
+        uri_for_display
+    );
+    g_free(uri_for_display);
+
+    primary_markup = g_strdup_printf("<b>%s</b>", primary_text);
+    g_free(primary_text);
+    primary_label = gtk_label_new(primary_markup);
+    g_free(primary_markup);
+    gtk_box_pack_start(GTK_BOX(vbox), primary_label, TRUE, TRUE, 0);
+    gtk_label_set_use_markup(GTK_LABEL(primary_label), TRUE);
+    gtk_label_set_line_wrap(GTK_LABEL(primary_label), TRUE);
+    gtk_widget_set_halign(primary_label, GTK_ALIGN_START);
+    gtk_widget_set_can_focus(primary_label, TRUE);
+    gtk_label_set_selectable(GTK_LABEL(primary_label), TRUE);
+
+    secondary_text = _("Do you want to edit it anyway?");
+    secondary_markup = g_strdup_printf("<small>%s</small>", secondary_text);
+    secondary_label = gtk_label_new(secondary_markup);
+    g_free(secondary_markup);
+    gtk_box_pack_start(GTK_BOX(vbox), secondary_label, TRUE, TRUE, 0);
+    gtk_widget_set_can_focus(secondary_label, TRUE);
+    gtk_label_set_use_markup(GTK_LABEL(secondary_label), TRUE);
+    gtk_label_set_line_wrap(GTK_LABEL(secondary_label), TRUE);
+    gtk_label_set_selectable(GTK_LABEL(secondary_label), TRUE);
+    gtk_widget_set_halign(secondary_label, GTK_ALIGN_START);
+
+    gtk_widget_show_all(hbox_content);
+    set_contents(info_bar, hbox_content);
+
+    return info_bar;
 }
 
 GtkWidget *bedit_externally_modified_saving_error_info_bar_new(
