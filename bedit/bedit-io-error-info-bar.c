@@ -803,30 +803,41 @@ GtkWidget *bedit_file_already_open_warning_info_bar_new(GFile *location) {
 GtkWidget *bedit_externally_modified_saving_error_info_bar_new(
     GFile *location, const GError *error
 ) {
-    TeplInfoBar *info_bar;
-    gchar *full_uri;
-    gchar *truncated_uri;
-    gchar *escaped_uri;
-    gchar *primary_msg;
-    const gchar *secondary_msg;
+    GtkWidget *info_bar;
+    GtkWidget *hbox_content;
+    GtkWidget *vbox;
+    gchar *primary_markup;
+    gchar *secondary_markup;
+    GtkWidget *primary_label;
+    GtkWidget *secondary_label;
+    gchar *primary_text;
+    const gchar *secondary_text;
+    gchar *full_formatted_uri;
+    gchar *uri_for_display;
+    gchar *temp_uri_for_display;
 
     g_return_val_if_fail(G_IS_FILE(location), NULL);
+    g_return_val_if_fail(error != NULL, NULL);
+    g_return_val_if_fail(error->domain == GTK_SOURCE_FILE_SAVER_ERROR, NULL);
     g_return_val_if_fail(
-        g_error_matches(
-            error,
-            GTK_SOURCE_FILE_SAVER_ERROR,
-            GTK_SOURCE_FILE_SAVER_ERROR_EXTERNALLY_MODIFIED
-        ),
-        NULL
+        error->code == GTK_SOURCE_FILE_SAVER_ERROR_EXTERNALLY_MODIFIED, NULL
     );
 
-    info_bar = tepl_info_bar_new();
+    full_formatted_uri = g_file_get_parse_name(location);
 
-    tepl_info_bar_set_buttons_orientation(
-        info_bar, GTK_ORIENTATION_HORIZONTAL
+    /* Truncate the URI so it doesn't get insanely wide. Note that even
+     * though the dialog uses wrapped text, if the URI doesn't contain
+     * white space then the text-wrapping code is too stupid to wrap it.
+     */
+    temp_uri_for_display = bedit_utils_str_middle_truncate(
+        full_formatted_uri, MAX_URI_IN_DIALOG_LENGTH
     );
+    g_free(full_formatted_uri);
 
-    gtk_info_bar_set_message_type(GTK_INFO_BAR(info_bar), GTK_MESSAGE_WARNING);
+    uri_for_display = g_markup_escape_text(temp_uri_for_display, -1);
+    g_free(temp_uri_for_display);
+
+    info_bar = gtk_info_bar_new();
 
     gtk_info_bar_add_button(
         GTK_INFO_BAR(info_bar), _("S_ave Anyway"), GTK_RESPONSE_YES
@@ -834,35 +845,52 @@ GtkWidget *bedit_externally_modified_saving_error_info_bar_new(
     gtk_info_bar_add_button(
         GTK_INFO_BAR(info_bar), _("D_on’t Save"), GTK_RESPONSE_CANCEL
     );
+    gtk_info_bar_set_message_type(GTK_INFO_BAR(info_bar), GTK_MESSAGE_WARNING);
 
-    full_uri = g_file_get_parse_name(location);
-    /* Truncate the URI so it doesn't get insanely wide. Note that even
-     * though the dialog uses wrapped text, if the URI doesn't contain
-     * white space then the text-wrapping code is too stupid to wrap it.
+    hbox_content = gtk_box_new(GTK_ORIENTATION_HORIZONTAL, 8);
+
+    vbox = gtk_box_new(GTK_ORIENTATION_VERTICAL, 6);
+    gtk_box_pack_start(GTK_BOX(hbox_content), vbox, TRUE, TRUE, 0);
+
+    /* FIXME: review this message, it's not clear since for the user the
+     * "modification" could be interpreted as the changes he made in the
+     * document. beside "reading" is not accurate (since last load/save)
      */
-    truncated_uri = bedit_utils_str_middle_truncate(
-        full_uri, MAX_URI_IN_DIALOG_LENGTH
-    );
-    escaped_uri = g_markup_escape_text(truncated_uri, -1);
-
-    primary_msg = g_strdup_printf(
+    primary_text = g_strdup_printf(
         _("The file “%s” has been modified since reading it."),
-        escaped_uri
+        uri_for_display
     );
-    tepl_info_bar_add_primary_message(info_bar, primary_msg);
+    g_free(uri_for_display);
 
-    secondary_msg = _(
+    primary_markup = g_strdup_printf("<b>%s</b>", primary_text);
+    g_free(primary_text);
+    primary_label = gtk_label_new(primary_markup);
+    g_free(primary_markup);
+    gtk_box_pack_start(GTK_BOX(vbox), primary_label, TRUE, TRUE, 0);
+    gtk_label_set_use_markup(GTK_LABEL(primary_label), TRUE);
+    gtk_label_set_line_wrap(GTK_LABEL(primary_label), TRUE);
+    gtk_widget_set_halign(primary_label, GTK_ALIGN_START);
+    gtk_widget_set_can_focus(primary_label, TRUE);
+    gtk_label_set_selectable(GTK_LABEL(primary_label), TRUE);
+
+    secondary_text = _(
         "If you save it, all the external changes could be lost. Save it "
         "anyway?"
     );
-    tepl_info_bar_add_secondary_message(info_bar, secondary_msg);
+    secondary_markup = g_strdup_printf("<small>%s</small>", secondary_text);
+    secondary_label = gtk_label_new(secondary_markup);
+    g_free(secondary_markup);
+    gtk_box_pack_start(GTK_BOX(vbox), secondary_label, TRUE, TRUE, 0);
+    gtk_widget_set_can_focus(secondary_label, TRUE);
+    gtk_label_set_use_markup(GTK_LABEL(secondary_label), TRUE);
+    gtk_label_set_line_wrap(GTK_LABEL(secondary_label), TRUE);
+    gtk_label_set_selectable(GTK_LABEL(secondary_label), TRUE);
+    gtk_widget_set_halign(secondary_label, GTK_ALIGN_START);
 
-    g_free(full_uri);
-    g_free(truncated_uri);
-    g_free(escaped_uri);
-    g_free(primary_msg);
+    gtk_widget_show_all(hbox_content);
+    set_contents(info_bar, hbox_content);
 
-    return GTK_WIDGET(info_bar);
+    return info_bar;
 }
 
 GtkWidget *bedit_no_backup_saving_error_info_bar_new(
