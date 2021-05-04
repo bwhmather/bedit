@@ -539,7 +539,7 @@ static void create_compositor(BeditPrintJob *job) {
         gchar *left;
 
         doc_name = bedit_document_get_uri_for_display(BEDIT_DOCUMENT(buf));
-        name_to_display = tepl_utils_str_middle_truncate(doc_name, 60);
+        name_to_display = bedit_utils_str_middle_truncate(doc_name, 60);
 
         left = g_strdup_printf(_("File: %s"), name_to_display);
 
