@@ -160,9 +160,7 @@ static GSList *load_file_list(
                         bedit_document_goto_line(doc, line_pos - 1);
                     }
 
-                    tepl_view_scroll_to_cursor(
-                        TEPL_VIEW(bedit_tab_get_view(tab))
-                    );
+                    bedit_view_scroll_to_cursor(bedit_tab_get_view(tab));
                 }
             }
 

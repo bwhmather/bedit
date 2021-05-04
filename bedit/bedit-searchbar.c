@@ -438,7 +438,7 @@ static void bedit_searchbar_focus_first_finished_cb(
             buffer, searchbar->cursor_moved_cb_id
         );
 
-        tepl_view_scroll_to_cursor(TEPL_VIEW(searchbar->view));
+        bedit_view_scroll_to_cursor(searchbar->view);
     } else if (!cancelled) {
         GtkTextIter start_at;
 
@@ -450,7 +450,7 @@ static void bedit_searchbar_focus_first_finished_cb(
             GTK_TEXT_BUFFER(buffer), &start_at, &start_at
         );
 
-        tepl_view_scroll_to_cursor(TEPL_VIEW(searchbar->view));
+        bedit_view_scroll_to_cursor(searchbar->view);
     }
 }
 
@@ -1132,7 +1132,7 @@ void bedit_searchbar_next(BeditSearchbar *searchbar) {
         gtk_text_buffer_select_range(buffer, &match_start, &match_end);
         bedit_searchbar_reset_start_mark(searchbar);
 
-        tepl_view_scroll_to_cursor(TEPL_VIEW(searchbar->view));
+        bedit_view_scroll_to_cursor(searchbar->view);
     }
 }
 
@@ -1174,7 +1174,7 @@ void bedit_searchbar_prev(BeditSearchbar *searchbar) {
         );
         bedit_searchbar_reset_start_mark(searchbar);
 
-        tepl_view_scroll_to_cursor(TEPL_VIEW(searchbar->view));
+        bedit_view_scroll_to_cursor(searchbar->view);
     }
 }
 

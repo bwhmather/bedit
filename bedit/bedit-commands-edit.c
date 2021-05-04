@@ -59,7 +59,7 @@ void _bedit_cmd_edit_undo(
 
     gtk_source_buffer_undo(active_document);
 
-    tepl_view_scroll_to_cursor(TEPL_VIEW(active_view));
+    bedit_view_scroll_to_cursor(active_view);
 
     gtk_widget_grab_focus(GTK_WIDGET(active_view));
 }
@@ -82,7 +82,7 @@ void _bedit_cmd_edit_redo(
 
     gtk_source_buffer_redo(active_document);
 
-    tepl_view_scroll_to_cursor(TEPL_VIEW(active_view));
+    bedit_view_scroll_to_cursor(active_view);
 
     gtk_widget_grab_focus(GTK_WIDGET(active_view));
 }
@@ -98,7 +98,7 @@ void _bedit_cmd_edit_cut(
     active_view = bedit_window_get_active_view(window);
     g_return_if_fail(active_view);
 
-    tepl_view_cut_clipboard(TEPL_VIEW(active_view));
+    bedit_view_cut_clipboard(active_view);
 
     gtk_widget_grab_focus(GTK_WIDGET(active_view));
 }
@@ -114,7 +114,7 @@ void _bedit_cmd_edit_copy(
     active_view = bedit_window_get_active_view(window);
     g_return_if_fail(active_view);
 
-    tepl_view_copy_clipboard(TEPL_VIEW(active_view));
+    bedit_view_copy_clipboard(active_view);
 
     gtk_widget_grab_focus(GTK_WIDGET(active_view));
 }
@@ -130,7 +130,7 @@ void _bedit_cmd_edit_paste(
     active_view = bedit_window_get_active_view(window);
     g_return_if_fail(active_view);
 
-    tepl_view_paste_clipboard(TEPL_VIEW(active_view));
+    bedit_view_paste_clipboard(active_view);
 
     gtk_widget_grab_focus(GTK_WIDGET(active_view));
 }
@@ -146,7 +146,7 @@ void _bedit_cmd_edit_delete(
     active_view = bedit_window_get_active_view(window);
     g_return_if_fail(active_view);
 
-    tepl_view_delete_selection(TEPL_VIEW(active_view));
+    bedit_view_delete_selection(active_view);
 
     gtk_widget_grab_focus(GTK_WIDGET(active_view));
 }
@@ -162,7 +162,7 @@ void _bedit_cmd_edit_select_all(
     active_view = bedit_window_get_active_view(window);
     g_return_if_fail(active_view);
 
-    tepl_view_select_all(TEPL_VIEW(active_view));
+    bedit_view_select_all(active_view);
 
     gtk_widget_grab_focus(GTK_WIDGET(active_view));
 }

@@ -912,7 +912,7 @@ static gboolean scroll_to_cursor(BeditTab *tab) {
     BeditView *view;
 
     view = bedit_tab_get_view(tab);
-    tepl_view_scroll_to_cursor(TEPL_VIEW(view));
+    bedit_view_scroll_to_cursor(view);
 
     tab->idle_scroll = 0;
     return G_SOURCE_REMOVE;
