@@ -823,7 +823,7 @@ static void add_scheme_chooser_response_cb(
     g_free(filename);
 
     if (scheme == NULL) {
-        tepl_utils_show_warning_dialog(
+        bedit_warning(
             GTK_WINDOW(dlg),
             _("The selected color scheme cannot be installed.")
         );
@@ -885,7 +885,7 @@ static void uninstall_scheme_clicked(
     );
 
     if (!uninstall_style_scheme(scheme)) {
-        tepl_utils_show_warning_dialog(
+        bedit_warning(
             GTK_WINDOW(dlg), _("Could not remove color scheme “%s”."),
             gtk_source_style_scheme_get_name(scheme)
         );
