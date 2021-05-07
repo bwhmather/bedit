@@ -1505,38 +1505,7 @@ static void goto_line(GTask *loading_task) {
         return;
     }
 
-    /* If enabled, move to the position stored in the metadata. */
-    if (g_settings_get_boolean(
-        data->tab->editor_settings,
-        BEDIT_SETTINGS_RESTORE_CURSOR_POSITION
-    )) {
-        gchar *pos;
-        gint offset;
-
-        pos = bedit_document_get_metadata(
-            doc, BEDIT_METADATA_ATTRIBUTE_POSITION
-        );
-
-        offset = pos != NULL ? atoi(pos) : 0;
-        g_free(pos);
-
-        gtk_text_buffer_get_iter_at_offset(
-            GTK_TEXT_BUFFER(doc), &iter, MAX(0, offset)
-        );
-
-        /* make sure it's a valid position, if the file
-         * changed we may have ended up in the middle of
-         * a utf8 character cluster */
-        if (!gtk_text_iter_is_cursor_position(&iter)) {
-            gtk_text_iter_set_line_offset(&iter, 0);
-        }
-    }
-
-    /* Otherwise to the top. */
-    else {
-        gtk_text_buffer_get_start_iter(GTK_TEXT_BUFFER(doc), &iter);
-    }
-
+    gtk_text_buffer_get_start_iter(GTK_TEXT_BUFFER(doc), &iter);
     gtk_text_buffer_place_cursor(GTK_TEXT_BUFFER(doc), &iter);
 }
 
@@ -1797,30 +1766,11 @@ static GSList *get_candidate_encodings(BeditTab *tab) {
     GSList *candidates = NULL;
     BeditDocument *doc;
     GtkSourceFile *file;
-    gchar *metadata_charset;
     const GtkSourceEncoding *file_encoding;
 
     candidates = bedit_settings_get_candidate_encodings(NULL);
 
-    /* Prepend the encoding stored in the metadata. */
     doc = bedit_tab_get_document(tab);
-    metadata_charset = bedit_document_get_metadata(
-        doc, BEDIT_METADATA_ATTRIBUTE_ENCODING
-    );
-
-    if (metadata_charset != NULL) {
-        const GtkSourceEncoding *metadata_enc;
-
-        metadata_enc = gtk_source_encoding_get_from_charset(metadata_charset);
-
-        if (metadata_enc != NULL) {
-            candidates = g_slist_prepend(candidates, (gpointer)metadata_enc);
-        }
-    }
-
-    /* Finally prepend the GtkSourceFile's encoding, if previously set by a
-     * file loader or file saver.
-     */
     file = bedit_document_get_file(doc);
     file_encoding = gtk_source_file_get_encoding(file);
 
@@ -1828,7 +1778,6 @@ static GSList *get_candidate_encodings(BeditTab *tab) {
         candidates = g_slist_prepend(candidates, (gpointer)file_encoding);
     }
 
-    g_free(metadata_charset);
     return candidates;
 }
 

@@ -547,13 +547,13 @@ static void bedit_searchbar_wait_focus_first(BeditSearchbar *searchbar) {
             buffer, searchbar->cursor_moved_cb_id
         );
 
-        tepl_view_scroll_to_cursor(TEPL_VIEW(searchbar->view));
+        bedit_view_scroll_to_cursor(searchbar->view);
     } else {
         gtk_text_buffer_select_range(
             GTK_TEXT_BUFFER(buffer), &start_at, &start_at
         );
 
-        tepl_view_scroll_to_cursor(TEPL_VIEW(searchbar->view));
+        bedit_view_scroll_to_cursor(searchbar->view);
     }
 }
 

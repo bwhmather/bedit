@@ -51,7 +51,6 @@
 
 #include <glib/gi18n.h>
 #include <libpeas/peas-extension-set.h>
-#include <tepl/tepl.h>
 
 #include "bedit-app-activatable.h"
 #include "bedit-commands-private.h"
@@ -565,8 +564,6 @@ static void setup_metadata_manager(void) {
     metadata_path = g_build_filename(
         user_data_dir, "bedit-metadata.xml", NULL
     );
-
-    tepl_metadata_manager_init(metadata_path);
 
     g_free(metadata_path);
 }

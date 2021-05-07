@@ -55,7 +55,6 @@
 
 #include <libintl.h>
 #include <locale.h>
-#include <tepl/tepl.h>
 
 #include "bedit-debug.h"
 #include "bedit-dirs.h"
@@ -150,7 +149,6 @@ int main(int argc, char *argv[]) {
     bedit_dirs_init();
 
     setup_i18n();
-    tepl_init();
 
     app = g_object_new(
         type, "application-id", "com.bwhmather.bedit", "flags",
@@ -172,8 +170,6 @@ int main(int argc, char *argv[]) {
             DEBUG_APP, "Leaking with %i refs", G_OBJECT(app)->ref_count
         );
     }
-
-    tepl_finalize();
 
 #ifdef G_OS_WIN32
     bedit_w32_unload_private_dll();

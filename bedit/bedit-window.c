@@ -51,7 +51,6 @@
 
 #include <glib/gi18n.h>
 #include <libpeas/peas-extension-set.h>
-#include <tepl/tepl.h>
 
 #include "bedit-app-private.h"
 #include "bedit-app.h"

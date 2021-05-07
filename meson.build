@@ -128,7 +128,6 @@ gmodule_dep = dependency('gmodule-2.0', version: glib_req)
 gio_dep = dependency('gio-2.0', version: glib_req)
 gtk_dep = dependency('gtk+-3.0', version: '>= 3.22')
 gtksourceview_dep = dependency('gtksourceview-4', version: '>= 4.0.2')
-tepl_dep = dependency('tepl-5', version: '>= 5.0')
 libpeas_dep = dependency('libpeas-1.0', version: libpeas_req)
 libpeas_gtk_dep = dependency('libpeas-gtk-1.0', version: libpeas_req)
 

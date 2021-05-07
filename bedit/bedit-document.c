@@ -53,7 +53,6 @@
 
 #include <glib/gi18n.h>
 #include <string.h>
-#include <tepl/tepl.h>
 
 #include "bedit-debug.h"
 #include "bedit-settings.h"
@@ -69,9 +68,6 @@ static void set_content_type(BeditDocument *doc, const gchar *content_type);
 
 typedef struct {
     GtkSourceFile *file;
-
-    /* Used only internally for the TeplFileMetadata. */
-    TeplFile *tepl_file;
 
     GSettings *editor_settings;
 
@@ -160,57 +156,11 @@ static const gchar *get_language_string(BeditDocument *doc) {
     return lang != NULL ? gtk_source_language_get_id(lang) : NO_LANGUAGE_NAME;
 }
 
-static void save_metadata(BeditDocument *doc) {
-    BeditDocumentPrivate *priv;
-    const gchar *language = NULL;
-    GtkTextIter iter;
-    gchar *position;
-
-    priv = bedit_document_get_instance_private(doc);
-    if (priv->language_set_by_user) {
-        language = get_language_string(doc);
-    }
-
-    gtk_text_buffer_get_iter_at_mark(
-        GTK_TEXT_BUFFER(doc), &iter,
-        gtk_text_buffer_get_insert(GTK_TEXT_BUFFER(doc))
-    );
-
-    position = g_strdup_printf("%d", gtk_text_iter_get_offset(&iter));
-
-    if (language == NULL) {
-        bedit_document_set_metadata(
-            doc,
-            BEDIT_METADATA_ATTRIBUTE_POSITION, position,
-            NULL
-        );
-    } else {
-        bedit_document_set_metadata(
-            doc,
-            BEDIT_METADATA_ATTRIBUTE_POSITION, position,
-            BEDIT_METADATA_ATTRIBUTE_LANGUAGE, language,
-            NULL
-        );
-    }
-
-    g_free(position);
-}
-
 static void bedit_document_dispose(GObject *object) {
     BeditDocument *doc = BEDIT_DOCUMENT(object);
     BeditDocumentPrivate *priv = bedit_document_get_instance_private(doc);
 
     bedit_debug(DEBUG_DOCUMENT);
-
-    /* Metadata must be saved here and not in finalize because the language
-     * is gone by the time finalize runs.
-     */
-    if (priv->tepl_file != NULL) {
-        save_metadata(doc);
-
-        g_object_unref(priv->tepl_file);
-        priv->tepl_file = NULL;
-    }
 
     g_clear_object(&priv->file);
     g_clear_object(&priv->editor_settings);
@@ -574,42 +524,26 @@ static GtkSourceStyleScheme *get_default_style_scheme(
 
 static GtkSourceLanguage *guess_language(BeditDocument *doc) {
     BeditDocumentPrivate *priv;
-    gchar *data;
     GtkSourceLanguageManager *manager =
         gtk_source_language_manager_get_default();
     GtkSourceLanguage *language = NULL;
+    GFile *location;
+    gchar *basename = NULL;
 
     priv = bedit_document_get_instance_private(doc);
 
-    data = bedit_document_get_metadata(doc, BEDIT_METADATA_ATTRIBUTE_LANGUAGE);
+    location = gtk_source_file_get_location(priv->file);
+    bedit_debug_message(DEBUG_DOCUMENT, "Sniffing Language");
 
-    if (data != NULL) {
-        bedit_debug_message(
-            DEBUG_DOCUMENT, "Language from metadata: %s", data
-        );
-
-        if (!g_str_equal(data, NO_LANGUAGE_NAME)) {
-            language = gtk_source_language_manager_get_language(manager, data);
-        }
-
-        g_free(data);
-    } else {
-        GFile *location;
-        gchar *basename = NULL;
-
-        location = gtk_source_file_get_location(priv->file);
-        bedit_debug_message(DEBUG_DOCUMENT, "Sniffing Language");
-
-        if (location != NULL) {
-            basename = g_file_get_basename(location);
-        }
-
-        language = gtk_source_language_manager_guess_language(
-            manager, basename, priv->content_type
-        );
-
-        g_free(basename);
+    if (location != NULL) {
+        basename = g_file_get_basename(location);
     }
+
+    language = gtk_source_language_manager_guess_language(
+        manager, basename, priv->content_type
+    );
+
+    g_free(basename);
 
     return language;
 }
@@ -657,40 +591,6 @@ static void on_location_changed(
     g_object_notify_by_pspec(G_OBJECT(doc), properties[PROP_SHORTNAME]);
 }
 
-static void on_tepl_location_changed(
-    TeplFile *file, GParamSpec *pspec, BeditDocument *doc
-) {
-    TeplFileMetadata *metadata;
-    GError *error = NULL;
-
-    /* Load metadata for this location: we load sync since metadata is
-     * always local so it should be fast and we need the information
-     * right after the location was set.
-     * TODO: do async I/O for the metadata.
-     */
-    metadata = tepl_file_get_file_metadata(file);
-    tepl_file_metadata_load(metadata, NULL, &error);
-
-    if (error != NULL) {
-        /* Do not complain about metadata if we are opening a
-         * non existing file.
-         * TODO: we should know beforehand whether the file exists or
-         * not, and load the metadata only when needed (after loading
-         * the file content, for example).
-         */
-        if (
-            !g_error_matches(error, G_FILE_ERROR, G_FILE_ERROR_ISDIR) &&
-            !g_error_matches(error, G_FILE_ERROR, G_FILE_ERROR_NOTDIR) &&
-            !g_error_matches(error, G_FILE_ERROR, G_FILE_ERROR_NOENT) &&
-            !g_error_matches(error, G_IO_ERROR, G_IO_ERROR_NOT_FOUND)
-        ) {
-            g_warning("Loading metadata failed: %s", error->message);
-        }
-
-        g_clear_error(&error);
-    }
-}
-
 static void bedit_document_init(BeditDocument *doc) {
     BeditDocumentPrivate *priv;
     GtkSourceStyleScheme *style_scheme;
@@ -713,19 +613,6 @@ static void bedit_document_init(BeditDocument *doc) {
     g_signal_connect_object(
         priv->file, "notify::location",
         G_CALLBACK(on_location_changed), doc, 0
-    );
-
-    priv->tepl_file = tepl_file_new();
-
-    g_signal_connect_object(
-        priv->tepl_file, "notify::location",
-        G_CALLBACK(on_tepl_location_changed), doc, 0
-    );
-
-    /* For using TeplFileMetadata we only need the TeplFile:location. */
-    g_object_bind_property(
-        priv->file, "location", priv->tepl_file, "location",
-        G_BINDING_DEFAULT | G_BINDING_SYNC_CREATE
     );
 
     g_settings_bind(
@@ -1230,96 +1117,6 @@ glong _bedit_document_get_seconds_since_last_save_or_load(BeditDocument *doc) {
     g_date_time_unref(now);
 
     return n_microseconds / (1000 * 1000);
-}
-
-/**
- * bedit_document_get_metadata:
- * @doc: a #BeditDocument
- * @key: name of the key
- *
- * Gets the metadata assigned to @key.
- *
- * Returns: the value assigned to @key. Free with g_free().
- */
-gchar *bedit_document_get_metadata(BeditDocument *doc, const gchar *key) {
-    BeditDocumentPrivate *priv;
-    TeplFileMetadata *metadata;
-
-    g_return_val_if_fail(BEDIT_IS_DOCUMENT(doc), NULL);
-    g_return_val_if_fail(key != NULL, NULL);
-
-    priv = bedit_document_get_instance_private(doc);
-
-    if (priv->tepl_file == NULL) {
-        return NULL;
-    }
-
-    metadata = tepl_file_get_file_metadata(priv->tepl_file);
-    return tepl_file_metadata_get(metadata, key);
-}
-
-/**
- * bedit_document_set_metadata:
- * @doc: a #BeditDocument
- * @first_key: name of the first key to set
- * @...: (allow-none): value for the first key, followed optionally by more
- * key/value pairs, followed by %NULL.
- *
- * Sets metadata on a document.
- */
-void bedit_document_set_metadata(
-    BeditDocument *doc, const gchar *first_key, ...
-) {
-    BeditDocumentPrivate *priv;
-    TeplFileMetadata *metadata;
-    va_list var_args;
-    const gchar *key;
-    GError *error = NULL;
-
-    g_return_if_fail(BEDIT_IS_DOCUMENT(doc));
-    g_return_if_fail(first_key != NULL);
-
-    priv = bedit_document_get_instance_private(doc);
-
-    if (priv->tepl_file == NULL) {
-        return;
-    }
-
-    metadata = tepl_file_get_file_metadata(priv->tepl_file);
-    va_start(var_args, first_key);
-
-    for (key = first_key; key != NULL; key = va_arg(var_args, const gchar *)) {
-        const gchar *value = va_arg(var_args, const gchar *);
-        tepl_file_metadata_set(metadata, key, value);
-    }
-
-    va_end(var_args);
-
-    /* We save synchronously since metadata is always local so it should be
-     * fast. Moreover this function can be called on application shutdown,
-     * when the main loop has already exited, so an async operation would
-     * not terminate.
-     * https://bugzilla.gnome.org/show_bug.cgi?id=736591
-     * TODO: do async I/O for the metadata.
-     */
-    tepl_file_metadata_save(metadata, NULL, &error);
-
-    if (error != NULL) {
-        /* Do not complain about metadata if we are closing a document
-         * for a non existing file.
-         * TODO: we should know beforehand whether the file exists or
-         * not, and save the metadata only when needed (after saving the
-         * file content, for example).
-         */
-        if (
-            !g_error_matches(error, G_FILE_ERROR, G_FILE_ERROR_NOENT) &&
-            !g_error_matches(error, G_IO_ERROR, G_IO_ERROR_NOT_FOUND)
-        ) {
-            g_warning("Saving metadata failed: %s", error->message);
-        }
-
-        g_clear_error(&error);
-    }
 }
 
 /**
