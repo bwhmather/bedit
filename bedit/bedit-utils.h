@@ -82,6 +82,12 @@ const gchar *bedit_utils_newline_type_to_string(
     GtkSourceNewlineType newline_type
 );
 
+gchar *bedit_utils_str_middle_truncate(
+    const gchar *string, guint truncate_length
+);
+gchar *bedit_utils_str_end_truncate(
+    const gchar *string, guint truncate_length
+);
 gchar *bedit_utils_replace_home_dir_with_tilde(const gchar *uri);
 
 G_END_DECLS
