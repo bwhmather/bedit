@@ -51,13 +51,6 @@
 
 #include "bedit-debug.h"
 
-static void widget_get_origin(GtkWidget *widget, gint *x, gint *y) {
-    GdkWindow *window;
-
-    window = gtk_widget_get_window(widget);
-    gdk_window_get_origin(window, x, y);
-}
-
 gboolean bedit_utils_menu_position_under_tree_view(
     GtkTreeView *tree_view, GdkRectangle *rect
 ) {
