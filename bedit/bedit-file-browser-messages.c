@@ -695,21 +695,6 @@ static void register_signals(
     );
 }
 
-static void message_unregistered(
-    BeditMessageBus *bus, const gchar *object_path, const gchar *method,
-    BeditWindow *window
-) {
-    gchar *identifier;
-    FilterData *data;
-    WindowData *wdata;
-
-    wdata = get_window_data(window);
-
-    identifier = bedit_message_type_identifier(object_path, method);
-
-    g_free(identifier);
-}
-
 void bedit_file_browser_messages_register(
     BeditWindow *window, BeditFileBrowserWidget *widget
 ) {
@@ -717,11 +702,6 @@ void bedit_file_browser_messages_register(
 
     register_methods(window, widget);
     register_signals(window, widget);
-
-    g_signal_connect(
-        bedit_window_get_message_bus(window), "unregistered",
-        G_CALLBACK(message_unregistered), window
-    );
 }
 
 static void cleanup_signals(BeditWindow *window) {
@@ -735,10 +715,6 @@ static void cleanup_signals(BeditWindow *window) {
     g_signal_handler_disconnect(store, data->root_changed_id);
     g_signal_handler_disconnect(store, data->begin_loading_id);
     g_signal_handler_disconnect(store, data->end_loading_id);
-
-    g_signal_handlers_disconnect_by_func(
-        data->bus, message_unregistered, window
-    );
 }
 
 void bedit_file_browser_messages_unregister(BeditWindow *window) {
