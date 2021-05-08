@@ -1551,16 +1551,6 @@ static void successful_load(GTask *loading_task) {
     GtkSourceFile *file = bedit_document_get_file(doc);
     GFile *location;
 
-    if (data->user_requested_encoding) {
-        const GtkSourceEncoding *encoding =
-            gtk_source_file_loader_get_encoding(data->loader);
-        const gchar *charset = gtk_source_encoding_get_charset(encoding);
-
-        bedit_document_set_metadata(
-            doc, BEDIT_METADATA_ATTRIBUTE_ENCODING, charset, NULL
-        );
-    }
-
     goto_line(loading_task);
 
     /* Scroll to the cursor when the document is loaded, we need to do it in

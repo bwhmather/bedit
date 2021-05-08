@@ -150,12 +150,6 @@ static void update_time_of_last_save_or_load(BeditDocument *doc) {
     priv->time_of_last_save_or_load = g_date_time_new_now_utc();
 }
 
-static const gchar *get_language_string(BeditDocument *doc) {
-    GtkSourceLanguage *lang = bedit_document_get_language(doc);
-
-    return lang != NULL ? gtk_source_language_get_id(lang) : NO_LANGUAGE_NAME;
-}
-
 static void bedit_document_dispose(GObject *object) {
     BeditDocument *doc = BEDIT_DOCUMENT(object);
     BeditDocumentPrivate *priv = bedit_document_get_instance_private(doc);
@@ -454,37 +448,7 @@ static void set_language(
 
     gtk_source_buffer_set_language(GTK_SOURCE_BUFFER(doc), lang);
 
-    if (set_by_user) {
-        const gchar *language = get_language_string(doc);
-
-        bedit_document_set_metadata(
-            doc, BEDIT_METADATA_ATTRIBUTE_LANGUAGE, language, NULL
-        );
-    }
-
     priv->language_set_by_user = set_by_user;
-}
-
-static void save_encoding_metadata(BeditDocument *doc) {
-    BeditDocumentPrivate *priv;
-    const GtkSourceEncoding *encoding;
-    const gchar *charset;
-
-    bedit_debug(DEBUG_DOCUMENT);
-
-    priv = bedit_document_get_instance_private(doc);
-
-    encoding = gtk_source_file_get_encoding(priv->file);
-
-    if (encoding == NULL) {
-        encoding = gtk_source_encoding_get_utf8();
-    }
-
-    charset = gtk_source_encoding_get_charset(encoding);
-
-    bedit_document_set_metadata(
-        doc, BEDIT_METADATA_ATTRIBUTE_ENCODING, charset, NULL
-    );
 }
 
 static GtkSourceStyleScheme *get_default_style_scheme(
@@ -952,8 +916,6 @@ static void saved_query_info_cb(
     update_time_of_last_save_or_load(doc);
 
     priv->create = FALSE;
-
-    save_encoding_metadata(doc);
 
     /* Async operation finished. */
     g_object_unref(doc);
