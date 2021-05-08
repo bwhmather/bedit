@@ -2168,17 +2168,6 @@ static void sync_fullscreen_actions(BeditWindow *window, gboolean fullscreen) {
     g_object_unref(action);
 }
 
-static void init_amtk_application_window(BeditWindow *bedit_window) {
-    AmtkApplicationWindow *amtk_window;
-
-    amtk_window = amtk_application_window_get_from_gtk_application_window(
-        GTK_APPLICATION_WINDOW(bedit_window)
-    );
-    amtk_application_window_set_statusbar(
-        amtk_window, GTK_STATUSBAR(bedit_window->priv->statusbar)
-    );
-}
-
 static void bedit_window_init(BeditWindow *window) {
     GtkTargetList *tl;
     GMenuModel *hamburger_menu;
@@ -2212,7 +2201,6 @@ static void bedit_window_init(BeditWindow *window) {
     window->priv->message_bus = bedit_message_bus_new();
 
     gtk_widget_init_template(GTK_WIDGET(window));
-    init_amtk_application_window(window);
 
     g_action_map_add_action_entries(
         G_ACTION_MAP(window), win_entries, G_N_ELEMENTS(win_entries), window
