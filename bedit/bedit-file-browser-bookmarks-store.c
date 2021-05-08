@@ -132,19 +132,18 @@ static gboolean add_file(
     }
 
     if (flags & BEDIT_FILE_BROWSER_BOOKMARKS_STORE_IS_HOME) {
-        icon_name = g_strdup("user-home-symbolic");
+        icon_name = g_strdup("user-home");
     } else if (flags & BEDIT_FILE_BROWSER_BOOKMARKS_STORE_IS_DESKTOP) {
-        icon_name = g_strdup("user-desktop-symbolic");
+        icon_name = g_strdup("user-desktop");
     } else if (flags & BEDIT_FILE_BROWSER_BOOKMARKS_STORE_IS_ROOT) {
-        icon_name = g_strdup("drive-harddisk-symbolic");
+        icon_name = g_strdup("drive-harddisk");
     } else {
         /* getting the icon is a sync get_info call, so we just do it for local
          * files */
         if (native) {
-            icon_name =
-                bedit_file_browser_utils_symbolic_icon_name_from_file(file);
+            icon_name = bedit_file_browser_utils_icon_name_from_file(file);
         } else {
-            icon_name = g_strdup("folder-symbolic");
+            icon_name = g_strdup("folder");
         }
     }
 
@@ -247,19 +246,19 @@ static void get_fs_properties(
     *icon_name = NULL;
 
     if (G_IS_DRIVE(fs)) {
-        icon = g_drive_get_symbolic_icon(G_DRIVE(fs));
+        icon = g_drive_get_icon(G_DRIVE(fs));
         *name = g_drive_get_name(G_DRIVE(fs));
         *icon_name = bedit_file_browser_utils_name_from_themed_icon(icon);
 
         *flags |= BEDIT_FILE_BROWSER_BOOKMARKS_STORE_IS_DRIVE;
     } else if (G_IS_VOLUME(fs)) {
-        icon = g_volume_get_symbolic_icon(G_VOLUME(fs));
+        icon = g_volume_get_icon(G_VOLUME(fs));
         *name = g_volume_get_name(G_VOLUME(fs));
         *icon_name = bedit_file_browser_utils_name_from_themed_icon(icon);
 
         *flags |= BEDIT_FILE_BROWSER_BOOKMARKS_STORE_IS_VOLUME;
     } else if (G_IS_MOUNT(fs)) {
-        icon = g_mount_get_symbolic_icon(G_MOUNT(fs));
+        icon = g_mount_get_icon(G_MOUNT(fs));
         *name = g_mount_get_name(G_MOUNT(fs));
         *icon_name = bedit_file_browser_utils_name_from_themed_icon(icon);
 

@@ -30,12 +30,12 @@
 
 #include "bedit-utils.h"
 
-gchar *bedit_file_browser_utils_symbolic_icon_name_from_file(GFile *file) {
+gchar *bedit_file_browser_utils_icon_name_from_file(GFile *file) {
     GFileInfo *info;
     GIcon *icon;
 
     info = g_file_query_info(
-        file, G_FILE_ATTRIBUTE_STANDARD_SYMBOLIC_ICON, G_FILE_QUERY_INFO_NONE,
+        file, G_FILE_ATTRIBUTE_STANDARD_ICON, G_FILE_QUERY_INFO_NONE,
         NULL, NULL
     );
 
@@ -44,7 +44,7 @@ gchar *bedit_file_browser_utils_symbolic_icon_name_from_file(GFile *file) {
     }
 
     if (
-        (icon = g_file_info_get_symbolic_icon(info)) &&
+        (icon = g_file_info_get_icon(info)) &&
         G_IS_THEMED_ICON(icon)
     ) {
         const gchar *const *names = g_themed_icon_get_names(

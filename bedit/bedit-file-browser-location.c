@@ -248,7 +248,7 @@ static void insert_path_item(
     GdkPixbuf *icon = NULL;
 
     unescape = bedit_file_browser_utils_file_basename(file);
-    icon_name = bedit_file_browser_utils_symbolic_icon_name_from_file(file);
+    icon_name = bedit_file_browser_utils_icon_name_from_file(file);
 
     gtk_list_store_insert_after(widget->locations_model, iter, after);
 

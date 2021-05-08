@@ -51,7 +51,7 @@
     G_FILE_ATTRIBUTE_STANDARD_IS_BACKUP ","                                 \
     G_FILE_ATTRIBUTE_STANDARD_NAME ","                                      \
     G_FILE_ATTRIBUTE_STANDARD_CONTENT_TYPE ","                              \
-    G_FILE_ATTRIBUTE_STANDARD_SYMBOLIC_ICON
+    G_FILE_ATTRIBUTE_STANDARD_ICON
 
 typedef struct _FileBrowserNode FileBrowserNode;
 typedef struct _FileBrowserNodeDir FileBrowserNodeDir;
@@ -1680,7 +1680,7 @@ static void model_recomposite_icon_real(
 
     if (!info) {
         g_file_query_info(
-            node->file, G_FILE_ATTRIBUTE_STANDARD_SYMBOLIC_ICON,
+            node->file, G_FILE_ATTRIBUTE_STANDARD_ICON,
             G_FILE_QUERY_INFO_NONE, NULL, NULL
         );
     }
@@ -1689,10 +1689,10 @@ static void model_recomposite_icon_real(
         return;
     }
 
-    icon = g_file_info_get_symbolic_icon(info);
+    icon = g_file_info_get_icon(info);
 
     if (!icon) {
-        icon = g_content_type_get_symbolic_icon("text/x-generic");
+        icon = g_content_type_get_icon("text/x-generic");
     }
 
     if (node->emblem) {
@@ -2169,7 +2169,7 @@ static FileBrowserNode *model_add_node_from_dir(
             file_browser_node_set_name(node);
         }
 
-        node->icon = g_content_type_get_symbolic_icon("inode/directory");
+        node->icon = g_content_type_get_icon("inode/directory");
 
         model_add_node(model, node, parent);
     }

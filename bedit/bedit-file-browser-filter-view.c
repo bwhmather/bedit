@@ -569,7 +569,7 @@ static void bedit_file_browser_filter_view_refresh(
 
         gtk_tree_store_insert_with_values(
             tree_store, NULL, NULL, -1,
-            COLUMN_ICON, g_file_info_get_symbolic_icon(match_info),
+            COLUMN_ICON, g_file_info_get_icon(match_info),
             COLUMN_MARKUP, match_markup,
             COLUMN_LOCATION, match_file,
             COLUMN_FILE_INFO, match_info,

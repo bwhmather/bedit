@@ -30,7 +30,7 @@
 #include "bedit-window.h"
 
 gchar *bedit_file_browser_utils_name_from_themed_icon(GIcon *icon);
-gchar *bedit_file_browser_utils_symbolic_icon_name_from_file(GFile *file);
+gchar *bedit_file_browser_utils_icon_name_from_file(GFile *file);
 gchar *bedit_file_browser_utils_file_basename(GFile *file);
 
 gboolean bedit_file_browser_utils_confirmation_dialog(
