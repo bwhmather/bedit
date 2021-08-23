@@ -577,7 +577,6 @@ static SpellConfigureWidget *get_configure_widget(BeditSpellPlugin *plugin) {
     SpellConfigureWidget *widget;
     GtkBuilder *builder;
     gboolean status;
-    gchar *root_objects[] = {"spell_dialog_content", NULL};
 
     bedit_debug(DEBUG_PLUGINS);
 
@@ -585,10 +584,10 @@ static SpellConfigureWidget *get_configure_widget(BeditSpellPlugin *plugin) {
     widget->settings = g_object_ref(plugin->priv->settings);
 
     builder = gtk_builder_new();
-    gtk_builder_add_objects_from_resource(
+    gtk_builder_add_from_resource(
         builder,
         "/com/bwhmather/bedit/plugins/spell/ui/bedit-spell-setup-dialog.ui",
-        root_objects, NULL
+        NULL
     );
     widget->content = GTK_WIDGET(gtk_builder_get_object(
         builder, "spell_dialog_content"

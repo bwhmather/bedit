@@ -591,7 +591,6 @@ static TimeConfigureWidget *get_configure_widget(BeditTimePlugin *plugin) {
     BeditTimePluginPromptType prompt_type;
     gchar *sf;
     GtkBuilder *builder;
-    gchar *root_objects[] = {"time_dialog_content", NULL};
 
     bedit_debug(DEBUG_PLUGINS);
 
@@ -599,10 +598,10 @@ static TimeConfigureWidget *get_configure_widget(BeditTimePlugin *plugin) {
     widget->settings = g_object_ref(plugin->priv->settings);
 
     builder = gtk_builder_new();
-    gtk_builder_add_objects_from_resource(
+    gtk_builder_add_from_resource(
         builder,
         "/com/bwhmather/bedit/plugins/time/ui/bedit-time-setup-dialog.ui",
-        root_objects, NULL
+        NULL
     );
     widget->content = GTK_WIDGET(gtk_builder_get_object(
         builder, "time_dialog_content"
