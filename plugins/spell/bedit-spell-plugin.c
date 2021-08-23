@@ -142,22 +142,6 @@ static GspellChecker *get_spell_checker(BeditDocument *doc) {
     return gspell_text_buffer_get_spell_checker(gspell_buffer);
 }
 
-static const GspellLanguage *get_language_from_metadata(BeditDocument *doc) {
-    const GspellLanguage *lang = NULL;
-    gchar *language_code = NULL;
-
-    language_code = bedit_document_get_metadata(
-        doc, BEDIT_METADATA_ATTRIBUTE_SPELL_LANGUAGE
-    );
-
-    if (language_code != NULL) {
-        lang = gspell_language_lookup(language_code);
-        g_free(language_code);
-    }
-
-    return lang;
-}
-
 static void check_spell_cb(
     GSimpleAction *action, GVariant *parameter, gpointer data
 ) {
@@ -245,11 +229,8 @@ static void set_language_cb(
 static void inline_checker_activate_cb(
     GSimpleAction *action, GVariant *parameter, gpointer data
 ) {
-    BeditSpellPlugin *plugin = BEDIT_SPELL_PLUGIN(data);
-    BeditSpellPluginPrivate *priv = plugin->priv;
     GVariant *state;
     gboolean active;
-    BeditView *view;
 
     bedit_debug(DEBUG_PLUGINS);
 
@@ -262,24 +243,6 @@ static void inline_checker_activate_cb(
     /* We must toggle ourself the value. */
     active = !active;
     g_action_change_state(G_ACTION(action), g_variant_new_boolean(active));
-
-    view = bedit_window_get_active_view(priv->window);
-    if (view != NULL) {
-        BeditDocument *doc;
-
-        doc = BEDIT_DOCUMENT(gtk_text_view_get_buffer(GTK_TEXT_VIEW(view)));
-
-        /* Set metadata in the "activate" handler, not in "change-state"
-         * because "change-state" is called every time the state
-         * changes, not specifically when the user has changed the state
-         * herself. For example "change-state" is called to initialize
-         * the sate to the default value specified in the GActionEntry.
-         */
-        bedit_document_set_metadata(
-            doc, BEDIT_METADATA_ATTRIBUTE_SPELL_ENABLED,
-            active ? SPELL_ENABLED_STR : NULL, NULL
-        );
-    }
 }
 
 static void inline_checker_change_state_cb(
@@ -378,24 +341,13 @@ static void update_ui(BeditSpellPlugin *plugin) {
 static void setup_inline_checker_from_metadata(
     BeditSpellPlugin *plugin, BeditView *view
 ) {
-    BeditDocument *doc;
     gboolean enabled;
-    gchar *enabled_str;
     GspellTextView *gspell_view;
     BeditView *active_view;
-
-    doc = BEDIT_DOCUMENT(gtk_text_view_get_buffer(GTK_TEXT_VIEW(view)));
 
     enabled = g_settings_get_boolean(
         plugin->priv->settings, SETTINGS_KEY_HIGHLIGHT_MISSPELLED
     );
-    enabled_str = bedit_document_get_metadata(
-        doc, BEDIT_METADATA_ATTRIBUTE_SPELL_ENABLED
-    );
-    if (enabled_str != NULL) {
-        enabled = g_str_equal(enabled_str, SPELL_ENABLED_STR);
-        g_free(enabled_str);
-    }
 
     gspell_view = gspell_text_view_get_from_gtk_text_view(GTK_TEXT_VIEW(view));
     gspell_text_view_set_inline_spell_checking(gspell_view, enabled);
@@ -413,82 +365,13 @@ static void setup_inline_checker_from_metadata(
     }
 }
 
-static void language_notify_cb(
-    GspellChecker *checker, GParamSpec *pspec, BeditDocument *doc
-) {
-    const GspellLanguage *lang;
-    const gchar *language_code;
-
-    g_return_if_fail(BEDIT_IS_DOCUMENT(doc));
-
-    lang = gspell_checker_get_language(checker);
-    g_return_if_fail(lang != NULL);
-
-    language_code = gspell_language_get_code(lang);
-    g_return_if_fail(language_code != NULL);
-
-    bedit_document_set_metadata(
-        doc, BEDIT_METADATA_ATTRIBUTE_SPELL_LANGUAGE, language_code, NULL
-    );
-}
-
 static void on_document_loaded(BeditDocument *doc, BeditSpellPlugin *plugin) {
-    GspellChecker *checker;
     BeditTab *tab;
     BeditView *view;
-
-    checker = get_spell_checker(doc);
-
-    if (checker != NULL) {
-        const GspellLanguage *lang;
-
-        lang = get_language_from_metadata(doc);
-
-        if (lang != NULL) {
-            g_signal_handlers_block_by_func(checker, language_notify_cb, doc);
-            gspell_checker_set_language(checker, lang);
-            g_signal_handlers_unblock_by_func(checker, language_notify_cb, doc);
-        }
-    }
 
     tab = bedit_tab_get_from_document(doc);
     view = bedit_tab_get_view(tab);
     setup_inline_checker_from_metadata(plugin, view);
-}
-
-static void on_document_saved(BeditDocument *doc, gpointer user_data) {
-    BeditTab *tab;
-    BeditView *view;
-    GspellChecker *checker;
-    const gchar *language_code = NULL;
-    GspellTextView *gspell_view;
-    gboolean inline_checking_enabled;
-
-    /* Make sure to save the metadata here too */
-
-    checker = get_spell_checker(doc);
-
-    if (checker != NULL) {
-        const GspellLanguage *lang;
-
-        lang = gspell_checker_get_language(checker);
-        if (lang != NULL) {
-            language_code = gspell_language_get_code(lang);
-        }
-    }
-
-    tab = bedit_tab_get_from_document(doc);
-    view = bedit_tab_get_view(tab);
-
-    gspell_view = gspell_text_view_get_from_gtk_text_view(GTK_TEXT_VIEW(view));
-    inline_checking_enabled =
-        gspell_text_view_get_inline_spell_checking(gspell_view);
-
-    bedit_document_set_metadata(
-        doc, BEDIT_METADATA_ATTRIBUTE_SPELL_ENABLED,
-        inline_checking_enabled ? SPELL_ENABLED_STR : NULL,
-        BEDIT_METADATA_ATTRIBUTE_SPELL_LANGUAGE, language_code, NULL
-    );
 }
 
 static void activate_spell_checking_in_view(
@@ -502,18 +385,10 @@ static void activate_spell_checking_in_view(
      * if a BeditTab has moved to another window.
      */
     if (get_spell_checker(doc) == NULL) {
-        const GspellLanguage *lang;
         GspellChecker *checker;
         GspellTextBuffer *gspell_buffer;
 
-        lang = get_language_from_metadata(doc);
-        checker = gspell_checker_new(lang);
-
-        g_signal_connect_object(
-            checker, "notify::language",
-            G_CALLBACK(language_notify_cb), doc,
-            0
-        );
+        checker = gspell_checker_new(NULL);
 
         gspell_buffer = gspell_text_buffer_get_from_gtk_text_buffer(
             GTK_TEXT_BUFFER(doc)
@@ -526,10 +401,6 @@ static void activate_spell_checking_in_view(
 
     g_signal_connect_object(
         doc, "loaded", G_CALLBACK(on_document_loaded), plugin, 0
-    );
-
-    g_signal_connect_object(
-        doc, "saved", G_CALLBACK(on_document_saved), plugin, 0
     );
 }
 
@@ -545,7 +416,6 @@ static void disconnect_view(BeditSpellPlugin *plugin, BeditView *view) {
      * found.
      */
     g_signal_handlers_disconnect_by_func(buffer, on_document_loaded, plugin);
-    g_signal_handlers_disconnect_by_func(buffer, on_document_saved, plugin);
 }
 
 static void deactivate_spell_checking_in_view(

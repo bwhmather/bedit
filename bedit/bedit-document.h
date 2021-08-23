@@ -92,12 +92,6 @@ gboolean bedit_document_goto_line_offset(
 void bedit_document_set_language(BeditDocument *doc, GtkSourceLanguage *lang);
 GtkSourceLanguage *bedit_document_get_language(BeditDocument *doc);
 
-gchar *bedit_document_get_metadata(BeditDocument *doc, const gchar *key);
-
-void bedit_document_set_metadata(
-    BeditDocument *doc, const gchar *first_key, ...
-);
-
 G_END_DECLS
 
 #endif /* BEDIT_DOCUMENT_H */
