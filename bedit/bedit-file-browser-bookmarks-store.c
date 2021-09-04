@@ -196,7 +196,7 @@ static void init_special_directories(BeditFileBrowserBookmarksStore *model) {
         g_object_unref(file);
     }
 
-#if defined(G_OS_WIN32) || defined(OS_OSX)
+#if defined(G_OS_WIN32)
     path = g_get_user_special_dir(G_USER_DIRECTORY_DESKTOP);
     if (path != NULL) {
         file = g_file_new_for_path(path);

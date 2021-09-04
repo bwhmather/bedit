@@ -34,7 +34,6 @@ libtime_sha = shared_module(
     pkglibdir,
     'plugins',
   ),
-  name_suffix: module_suffix,
 )
 
 time_gschema_file = files('com.bwhmather.bedit.plugins.time.gschema.xml')

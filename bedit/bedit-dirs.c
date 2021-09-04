@@ -31,10 +31,6 @@
 
 #include "bedit-dirs.h"
 
-#ifdef OS_OSX
-#include <gtkosxapplication.h>
-#endif
-
 static gchar *user_config_dir = NULL;
 static gchar *user_data_dir = NULL;
 static gchar *user_styles_dir = NULL;
@@ -62,23 +58,6 @@ void bedit_dirs_init(void) {
 
     g_free(win32_dir);
 #endif /* G_OS_WIN32 */
-
-#ifdef OS_OSX
-    if (gtkosx_application_get_bundle_id() != NULL) {
-        const gchar *bundle_resource_dir =
-            gtkosx_application_get_resource_path();
-
-        bedit_locale_dir = g_build_filename(
-            bundle_resource_dir, "share", "locale", NULL
-        );
-        bedit_lib_dir = g_build_filename(
-            bundle_resource_dir, "lib", "bedit", NULL
-        );
-        bedit_plugins_data_dir = g_build_filename(
-            bundle_resource_dir, "share", "bedit", "plugins", NULL
-        );
-    }
-#endif /* OS_OSX */
 
     if (bedit_locale_dir == NULL) {
         bedit_locale_dir = g_build_filename(

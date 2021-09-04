@@ -17,7 +17,6 @@ libmodelines_sha = shared_module(
     pkglibdir,
     'plugins',
   ),
-  name_suffix: module_suffix,
 )
 
 custom_target(

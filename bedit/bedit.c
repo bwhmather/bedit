@@ -47,9 +47,7 @@
 
 #include "bedit-app.h"
 
-#if defined OS_OSX
-#include "bedit-app-osx.h"
-#elif defined G_OS_WIN32
+#if defined G_OS_WIN32
 #include "bedit-app-win32.h"
 #endif
 
@@ -132,9 +130,7 @@ int main(int argc, char *argv[]) {
     BeditApp *app;
     gint status;
 
-#if defined OS_OSX
-    type = BEDIT_TYPE_APP_OSX;
-#elif defined G_OS_WIN32
+#if defined G_OS_WIN32
     if (!bedit_w32_load_private_dll()) {
         return 1;
     }

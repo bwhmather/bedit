@@ -4,10 +4,6 @@ project(
   meson_version: '>= 0.49'
 )
 
-if host_machine.system() == 'darwin'
-  add_languages('objc')
-endif
-
 # Compiler flags and warnings
 cc = meson.get_compiler('c')
 

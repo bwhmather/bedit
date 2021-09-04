@@ -25,7 +25,6 @@ bedit_doc_dep = declare_dependency(
 )
 
 libbedit_reference_ignored_h = [
-  'bedit-app-osx.h',
   'bedit-app-win32.h',
   'bedit-app-x11.h',
   'bedit-close-confirmation-dialog.h',
@@ -36,7 +35,6 @@ libbedit_reference_ignored_h = [
   'bedit-encodings-dialog.h',
   'bedit-enum-types.h',
   'bedit-file-chooser-dialog-gtk.h',
-  'bedit-file-chooser-dialog-osx.h',
   'bedit-file-chooser-dialog.h',
   'bedit-highlight-mode-dialog.h',
   'bedit-highlight-mode-selector.h',

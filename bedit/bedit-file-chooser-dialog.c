@@ -33,11 +33,7 @@
 
 #include "bedit-file-chooser-dialog.h"
 
-#ifdef OS_OSX
-#include "bedit-file-chooser-dialog-osx.h"
-#else
 #include "bedit-file-chooser-dialog-gtk.h"
-#endif
 
 G_DEFINE_INTERFACE(
     BeditFileChooserDialog, bedit_file_chooser_dialog, G_TYPE_OBJECT
@@ -79,19 +75,11 @@ BeditFileChooserDialog *bedit_file_chooser_dialog_create(
     GtkResponseType cancel_response, const gchar *accept_label,
     GtkResponseType accept_response
 ) {
-#ifdef OS_OSX
-    return bedit_file_chooser_dialog_osx_create(
-        title, parent, flags, encoding,
-        cancel_label, cancel_response,
-        accept_label, accept_response
-    );
-#else
     return bedit_file_chooser_dialog_gtk_create(
         title, parent, flags, encoding,
         cancel_label, cancel_response,
         accept_label, accept_response
     );
-#endif
 }
 
 void bedit_file_chooser_dialog_set_encoding(

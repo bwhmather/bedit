@@ -20,7 +20,6 @@ libspell_sha = shared_module(
     pkglibdir,
     'plugins',
   ),
-  name_suffix: module_suffix,
 )
 
 spell_gschema_file = files('com.bwhmather.bedit.plugins.spell.gschema.xml')

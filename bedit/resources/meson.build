@@ -1,13 +1,6 @@
 gresource_xml = configuration_data()
 
-if host_machine.system() == 'darwin'
-  gresource_xml.set(
-    'OS_DEPENDENT_RESOURCE_FILES',
-    '<file preprocess="xml-stripblanks">gtk/menus-traditional.ui</file>'
-  )
-else
-  gresource_xml.set('OS_DEPENDENT_RESOURCE_FILES', '')
-endif
+gresource_xml.set('OS_DEPENDENT_RESOURCE_FILES', '')
 
 libbedit_res_xml = configure_file(
   input: 'bedit.gresource.xml.in',

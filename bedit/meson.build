@@ -160,23 +160,7 @@ libbedit_deps = [
   libpeas_gtk_dep,
 ]
 
-if host_machine.system() == 'darwin'
-  libbedit_sources += files(
-    'bedit-app-osx.m',
-    'bedit-file-chooser-dialog-osx.m',
-  )
-  libbedit_c_args += [
-    '-DOS_OSX=1',
-  ]
-  libbedit_link_args += [
-    '-Wl,-framework', '-Wl,Foundation',
-    '-Wl,-framework', '-Wl,AppKit',
-  ]
-  gtk_mac_integration_dep = dependency('gtk-mac-integration-gtk3')
-  libbedit_deps += [
-    gtk_mac_integration_dep,
-  ]
-elif host_machine.system() == 'windows'
+if host_machine.system() == 'windows'
   libbedit_sources += files(
     'bedit-app-win32.c',
   )
@@ -316,12 +300,6 @@ bedit_sources = [
 ]
 
 bedit_c_args = []
-
-if host_machine.system() == 'darwin'
-  bedit_c_args += [
-    '-DOS_OSX=1',
-  ]
-endif
 
 bedit_deps = [
   libbedit_dep,
