@@ -38,7 +38,6 @@ libbedit_reference_ignored_h = [
   'bedit-file-chooser-dialog.h',
   'bedit-highlight-mode-dialog.h',
   'bedit-highlight-mode-selector.h',
-  'bedit-history-entry.h',
   'bedit-io-error-info-bar.h',
   'bedit-menu-stack-switcher.h',
   'bedit-multi-notebook.h',

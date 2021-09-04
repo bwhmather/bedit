@@ -257,7 +257,6 @@
   <schema id="com.bwhmather.bedit.state" path="/com/bwhmather/bedit/state/">
     <child name="window" schema="com.bwhmather.bedit.state.window"/>
     <child name="file-filter" schema="com.bwhmather.bedit.state.file-filter"/>
-    <child name="history-entry" schema="com.bwhmather.bedit.state.history-entry"/>
   </schema>
   <schema id="com.bwhmather.bedit.state.window" path="/com/bwhmather/bedit/state/window/">
     <key name="state" type="i">
@@ -276,14 +275,6 @@
   <schema id="com.bwhmather.bedit.state.file-filter" path="/com/bwhmather/bedit/state/file-filter/">
     <key name="filter-id" type="i">
       <default>0</default>
-    </key>
-  </schema>
-  <schema id="com.bwhmather.bedit.state.history-entry" path="/com/bwhmather/bedit/state/history-entry/">
-    <key name="search-for-entry" type="as">
-      <default>['']</default>
-    </key>
-    <key name="replace-with-entry" type="as">
-      <default>['']</default>
     </key>
   </schema>
   <schema id="com.bwhmather.bedit.plugins" path="/com/bwhmather/bedit/plugins/">
