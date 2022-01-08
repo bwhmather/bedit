@@ -1141,7 +1141,7 @@ static gint model_sort_default(
     a_collate_key = g_utf8_collate_key_for_filename(node_a->name, -1);
     b_collate_key = g_utf8_collate_key_for_filename(node_b->name, -1);
 
-    result = g_utf8_collate(a_collate_key, b_collate_key);
+    result = strcmp(a_collate_key, b_collate_key);
 
     g_free(a_collate_key);
     g_free(b_collate_key);

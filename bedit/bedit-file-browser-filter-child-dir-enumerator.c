@@ -202,6 +202,8 @@ static gint bedit_file_browser_filter_dir_enumerator_compare_match(
     Match const *a_match, *b_match;
     GFileInfo *a_file_info, *b_file_info;
     gboolean a_is_hidden, b_is_hidden;
+    gchar *a_collate_key, *b_collate_key;
+    gint result;
 
     a_match = a;
     b_match = b;
@@ -225,10 +227,22 @@ static gint bedit_file_browser_filter_dir_enumerator_compare_match(
         return -1;
     }
 
-    return g_utf8_collate(
+    a_collate_key = g_utf8_collate_key_for_filename(
+        g_file_info_get_name(a_file_info), -1
+    );
+    b_collate_key = g_utf8_collate_key_for_filename(
+        g_file_info_get_name(b_file_info), -1
+    );
+
+    result = strcmp(
         g_file_info_get_name(a_file_info),
         g_file_info_get_name(b_file_info)
     );
+
+    g_free(a_collate_key);
+    g_free(b_collate_key);
+
+    return result;
 }
 
 static gboolean bedit_file_browser_filter_child_dir_enumerator_iterate(
