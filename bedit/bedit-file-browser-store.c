@@ -3003,6 +3003,15 @@ void bedit_file_browser_store_set_root(
     bedit_file_browser_store_set_root_and_virtual_root(model, root, NULL);
 }
 
+/**
+ * bedit_file_browser_store_get_root:
+ * @model: the #BeditFileBrowserStore
+ *
+ * Returns the root of the filesystem which contains the virtual root in which
+ * bedit is currently running.
+ *
+ * Returns: (transfer full)
+ */
 GFile *bedit_file_browser_store_get_root(BeditFileBrowserStore *model) {
     g_return_val_if_fail(BEDIT_IS_FILE_BROWSER_STORE(model), NULL);
 
@@ -3013,6 +3022,15 @@ GFile *bedit_file_browser_store_get_root(BeditFileBrowserStore *model) {
     }
 }
 
+/**
+ * bedit_file_browser_store_get_virtual_root:
+ * @model: the #BeditFileBrowserStore
+ *
+ * Returns the root of the filesystem which contains the virtual root in which
+ * bedit is currently running.
+ *
+ * Returns: (transfer full)
+ */
 GFile *bedit_file_browser_store_get_virtual_root(BeditFileBrowserStore *model) {
     g_return_val_if_fail(BEDIT_IS_FILE_BROWSER_STORE(model), NULL);
 
@@ -3397,6 +3415,13 @@ static void delete_files(AsyncData *data) {
     }
 }
 
+/**
+ * bedit_file_browser_store_delete_all:
+ * @model: the #BeditFileBrowserStore
+ * @rows: (element-type GtkTreePath)
+ *     paths to the nodes corresponding to files that should be deleted.
+ * @trash: if true, move the files to trash instead of hard deleting.
+ */
 void bedit_file_browser_store_delete_all(
     BeditFileBrowserStore *model, GList *rows, gboolean trash
 ) {
