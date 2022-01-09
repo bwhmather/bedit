@@ -114,7 +114,6 @@ struct _BeditFileBrowserStore {
 
     gboolean show_hidden;
     gboolean show_binary;
-    BeditFileBrowserStoreFilterFunc filter_func;
     gpointer filter_user_data;
 
     gchar **binary_patterns;
@@ -1052,8 +1051,6 @@ static void model_end_loading(
 static void model_node_update_visibility(
     BeditFileBrowserStore *model, FileBrowserNode *node
 ) {
-    GtkTreeIter iter;
-
     node->flags &= ~BEDIT_FILE_BROWSER_STORE_FLAG_IS_FILTERED;
 
     if ((!model->show_hidden) && NODE_IS_HIDDEN(node)) {
@@ -1084,16 +1081,6 @@ static void model_node_update_visibility(
             }
 
             g_free(name_reversed);
-        }
-    }
-
-    if (model->filter_func) {
-        iter.user_data = node;
-
-        if (!model->filter_func(
-            model, &iter, model->filter_user_data
-        )) {
-            node->flags |= BEDIT_FILE_BROWSER_STORE_FLAG_IS_FILTERED;
         }
     }
 }
@@ -3134,17 +3121,6 @@ void bedit_file_browser_store_set_show_binary(
     model_refilter(model);
 
     g_object_notify(G_OBJECT(model), "show-binary");
-}
-
-void bedit_file_browser_store_set_filter_func(
-    BeditFileBrowserStore *model, BeditFileBrowserStoreFilterFunc func,
-    gpointer user_data
-) {
-    g_return_if_fail(BEDIT_IS_FILE_BROWSER_STORE(model));
-
-    model->filter_func = func;
-    model->filter_user_data = user_data;
-    model_refilter(model);
 }
 
 const gchar *const *bedit_file_browser_store_get_binary_patterns(

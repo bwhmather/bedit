@@ -67,10 +67,6 @@ typedef enum {
     (flags & BEDIT_FILE_BROWSER_STORE_FLAG_IS_FILTERED)
 #define FILE_IS_DUMMY(flags) (flags & BEDIT_FILE_BROWSER_STORE_FLAG_IS_DUMMY)
 
-typedef gboolean (*BeditFileBrowserStoreFilterFunc)(
-    BeditFileBrowserStore *model, GtkTreeIter *iter, gpointer user_data
-);
-
 BeditFileBrowserStore *bedit_file_browser_store_new(GFile *root);
 void bedit_file_browser_store_set_root_and_virtual_root(
     BeditFileBrowserStore *model, GFile *root, GFile *virtual_root
@@ -123,10 +119,6 @@ gboolean bedit_file_browser_store_get_show_binary(
 );
 void bedit_file_browser_store_set_show_binary(
     BeditFileBrowserStore *model, gboolean show_binary
-);
-void bedit_file_browser_store_set_filter_func(
-    BeditFileBrowserStore *model,
-    BeditFileBrowserStoreFilterFunc func, gpointer user_data
 );
 const gchar *const *bedit_file_browser_store_get_binary_patterns(
     BeditFileBrowserStore *model
