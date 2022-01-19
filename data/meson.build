@@ -4,7 +4,6 @@ install_man('bedit.1')
 
 appdata = 'com.bwhmather.bedit.appdata.xml'
 appdata_file = i18n.merge_file(
-  appdata,
   input: appdata + '.in',
   output: appdata,
   po_dir: '../po/',
@@ -27,7 +26,6 @@ endif
 
 desktop_file = 'com.bwhmather.bedit.desktop'
 desktop_output_file = i18n.merge_file(
-  desktop_file,
   type: 'desktop',
   input: desktop_file + '.in',
   output: desktop_file,
