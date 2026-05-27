@@ -165,19 +165,15 @@ public sealed class Bedit.Document : Gtk.Widget {
         if (this.file == null) {
             return;
         }
-        try {
-            var info = yield this.file.query_info_async(
-                GLib.FileAttribute.TIME_MODIFIED,
-                GLib.FileQueryInfoFlags.NONE,
-                GLib.Priority.DEFAULT, null
-            );
-            var old_mtime = this.file_text_mtime;
-            var new_mtime = info.get_modification_date_time();
-            if (new_mtime != null && old_mtime != null && old_mtime.compare(new_mtime) == 0) {
-                return;
-            }
-        } catch (Error err) {
-            warning("Error: %s\n", err.message);
+        var info = yield this.file.query_info_async(
+            GLib.FileAttribute.TIME_MODIFIED,
+            GLib.FileQueryInfoFlags.NONE,
+            GLib.Priority.DEFAULT, null
+        );
+        var old_mtime = this.file_text_mtime;
+        var new_mtime = info.get_modification_date_time();
+        if (new_mtime != null && old_mtime != null && old_mtime.compare(new_mtime) == 0) {
+            return;
         }
 
         yield this.file_text_force_reload_async();
@@ -218,7 +214,11 @@ public sealed class Bedit.Document : Gtk.Widget {
         case CREATED:
         case RENAMED:
             this.file_text_reload_async.begin((obj, res) => {
-                this.file_text_reload_async.end(res);
+                try {
+                    this.file_text_reload_async.end(res);
+                } catch (Error err) {
+                    warning("Failed to reload file: %s\n", err.message);
+                }
             });
             break;
         case DELETED:
@@ -261,7 +261,11 @@ public sealed class Bedit.Document : Gtk.Widget {
         this.map.connect(() => {
             this.file_text_monitor_reset();
             this.file_text_reload_async.begin((obj, res) => {
-                this.file_text_reload_async.end(res);
+                try {
+                    this.file_text_reload_async.end(res);
+                } catch (Error err) {
+                    warning("Failed to reload file: %s\n", err.message);
+                }
             });
         });
         this.unmap.connect(() => {
@@ -273,7 +277,11 @@ public sealed class Bedit.Document : Gtk.Widget {
         var focus_controller = new Gtk.EventControllerFocus();
         focus_controller.enter.connect(() => {
             this.file_text_reload_async.begin((obj, res) => {
-                this.file_text_reload_async.end(res);
+                try {
+                    this.file_text_reload_async.end(res);
+                } catch (Error err) {
+                    warning("Failed to reload file: %s\n", err.message);
+                }
             });
         });
 
