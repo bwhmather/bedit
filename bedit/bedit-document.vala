@@ -630,6 +630,7 @@ public sealed class Bedit.Document : Gtk.Widget {
                 this.source_buffer.get_start_iter(out start);
                 this.source_buffer.place_cursor(start);
             } else {
+                this.source_view.place_cursor_onscreen();
                 source_buffer_set_bytes(this.source_buffer, bytes);
             }
             this.source_buffer.set_modified(false);
@@ -713,6 +714,7 @@ public sealed class Bedit.Document : Gtk.Widget {
                 if (!this.source_buffer.get_modified() && !this.source_buffer.can_redo) {
                     this.loading = true;
                     this.load();
+                    this.source_view.place_cursor_onscreen();
                     source_buffer_set_bytes(this.source_buffer, disk);
                     this.source_buffer.set_modified(false);
                     this.scroll_to_cursor();
