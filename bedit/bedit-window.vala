@@ -1001,10 +1001,18 @@ public sealed class Bedit.Window : Gtk.ApplicationWindow {
         this.tab_view.grab_focus();
     }
 
+    private unowned Brk.TabView?
+    on_tab_view_create_window() {
+        var new_window = new Bedit.Window(this.application as Gtk.Application);
+        new_window.present();
+        return new_window.tab_view;
+    }
+
     private void
     tab_view_init() {
         tab_view.notify["selected-page"].connect(on_tab_view_selected_tab_changed);
         tab_view.close_page.connect(on_tab_view_close_page_request);
+        tab_view.create_window.connect(on_tab_view_create_window);
 
         this.close_request.connect(on_window_close_request);
     }
