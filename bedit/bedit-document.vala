@@ -1223,7 +1223,7 @@ public sealed class Bedit.Document : Gtk.Widget {
         this.bind_property("file-text", renderer, "reference", SYNC_CREATE);
     }
 
-    /* --- Overview Map ----------------------------------------------------------------------------------- */
+    /* --- Overview Map ----------------------------------------------------- */
 
     [GtkChild]
     private unowned GtkSource.Map overview_map;
