@@ -508,8 +508,26 @@ public sealed class Bedit.Window : Gtk.ApplicationWindow {
 
     public void
     open_file(GLib.File file) {
+        Brk.TabPage? draft_page = this.tab_view.selected_page;
+        if (draft_page != null) {
+            var existing = (Bedit.Document) draft_page.child;
+            if (existing.file != null) {
+                draft_page = null;
+            }
+            if (existing.can_undo || existing.can_redo) {
+                draft_page = null;
+            }
+            if (existing.modified) {
+                draft_page = null;
+            }
+        }
+
         var document = new Bedit.Document.for_file(file);
         this.add_document(document);
+
+        if (draft_page != null) {
+            this.tab_view.close_page(draft_page);
+        }
     }
 
     private void
@@ -995,7 +1013,7 @@ public sealed class Bedit.Window : Gtk.ApplicationWindow {
 
     private void
     add_document(Bedit.Document document) {
-        Brk.TabPage page = this.tab_view.add_page(document, null);
+        var page = this.tab_view.add_page(document, null);
         document.bind_property("title", page, "title", SYNC_CREATE);
         this.tab_view.selected_page = page;
         this.tab_view.grab_focus();
