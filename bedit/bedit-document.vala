@@ -15,19 +15,40 @@
  *
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
+
+private GLib.Bytes
+source_buffer_get_bytes(GtkSource.Buffer buffer) {
+    // I dream of a GtkSourceBuffer implementation that just creates a new
+    // GLib.Bytes instance for each operation.  Internally GtkSourceBuffer goes
+    // to great lengths to avoid doing a full traversal internally but as soon
+    // as we want it out we need to traverse all those pointers and copy all
+    // that memory an it's all for nothing.  We can't even reuse the results.
+    // Anyway, here we're going to use ownership shenanigans to avoid at least
+    // one extra copy because then we can at least say we tried.
+    Gtk.TextIter start, end;
+    buffer.get_bounds(out start, out end);
+    var text = buffer.get_text(start, end, true);
+    int length = text.length;
+	uint8[] data = (uint8[]) ((owned) text);
+	data.length = length;
+	if (data == null) {
+	    data = new uint8[0];
+	}
+    return new GLib.Bytes.take((owned) data);
+}
+
 private void
-source_buffer_set_bytes(GtkSource.Buffer buffer, GLib.Bytes bytes) {
-    Gtk.TextIter buf_start, buf_end;
-    buffer.get_bounds(out buf_start, out buf_end);
-    var old_text = buffer.get_text(buf_start, buf_end, true);
-    var new_data = bytes.get_data();
+source_buffer_set_bytes(GtkSource.Buffer buffer, GLib.Bytes new_bytes) {
+    var old_bytes = source_buffer_get_bytes(buffer);
+    var old_data = old_bytes.get_data();
+    var new_data = new_bytes.get_data();
 
     int line_delta = 0;
     int new_pos = 0;
     int new_line = 0;
 
     buffer.begin_user_action();
-    Bedit.line_diff(old_text.data, new_data, (old_start, old_count, new_start, new_count) => {
+    Bedit.line_diff(old_data, new_data, (old_start, old_count, new_start, new_count) => {
         while (new_line < new_start && new_pos < new_data.length) {
             if (new_data[new_pos++] == '\n') {
                 new_line++;
@@ -180,9 +201,9 @@ public sealed class Bedit.Document : Gtk.Widget {
     }
 
     private async void
-    file_text_save_async(GLib.File target, uint8[] bytes) throws Error {
-        yield target.replace_contents_async(
-            bytes, null, false,
+    file_text_save_async(GLib.File target, GLib.Bytes new_file_text) throws Error {
+        yield target.replace_contents_bytes_async(
+            new_file_text, null, false,
             GLib.FileCreateFlags.NONE,
             null,
             null
@@ -193,7 +214,6 @@ public sealed class Bedit.Document : Gtk.Widget {
             this.notify_property("file");
         }
 
-        var new_file_text = new GLib.Bytes(bytes);
         var old_file_text = this.file_text;
         if (old_file_text == null || old_file_text.compare(new_file_text) != 0) {
             this.file_text = new_file_text;
@@ -661,13 +681,10 @@ public sealed class Bedit.Document : Gtk.Widget {
         this.saving = true;
         this.save();
 
-        Gtk.TextIter s, e;
-        this.source_buffer.get_bounds(out s, out e);
-        var text  = this.source_buffer.get_text(s, e, true);
-        var bytes = text.data;   // uint8[], shares memory with `text`
+        var text = source_buffer_get_bytes(this.source_buffer);
 
         try {
-            yield this.file_text_save_async(file, bytes);
+            yield this.file_text_save_async(file, text);
             this.source_buffer.set_modified(false);
             this.saved();
         } finally {
@@ -707,9 +724,7 @@ public sealed class Bedit.Document : Gtk.Widget {
             }
             Gtk.TextIter s, e;
             this.source_buffer.get_bounds(out s, out e);
-            var buffer_bytes = new GLib.Bytes(
-                this.source_buffer.get_text(s, e, true).data
-            );
+            var buffer_bytes = source_buffer_get_bytes(this.source_buffer);
             if (disk.compare(buffer_bytes) != 0) {
                 if (!this.source_buffer.get_modified() && !this.source_buffer.can_redo) {
                     this.loading = true;
