@@ -63,7 +63,7 @@ public sealed class Bedit.DiffGutterRenderer : GtkSource.GutterRenderer {
 
         this.running = true;
 
-        var ref_bytes = reference.get_data();
+        unowned uint8[] ref_bytes = reference.get_data();
 
         Gtk.TextIter start, end;
         buffer.get_bounds(out start, out end);

@@ -40,8 +40,8 @@ source_buffer_get_bytes(GtkSource.Buffer buffer) {
 private void
 source_buffer_set_bytes(GtkSource.Buffer buffer, GLib.Bytes new_bytes) {
     var old_bytes = source_buffer_get_bytes(buffer);
-    var old_data = old_bytes.get_data();
-    var new_data = new_bytes.get_data();
+    unowned uint8[] old_data = old_bytes.get_data();
+    unowned uint8[] new_data = new_bytes.get_data();
 
     int line_delta = 0;
     int new_pos = 0;
