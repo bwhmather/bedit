@@ -6,8 +6,8 @@
     <property name="default-height">720</property>
     <child>
       <object class="BrkPreferencesPage">
-        <property name="name">editor</property>
-        <property name="title">Editor</property>
+        <property name="name">view</property>
+        <property name="title">View</property>
         <child>
           <object class="BrkPreferencesGroup">
             <property name="title">Display</property>
@@ -72,6 +72,12 @@
             </child>
           </object>
         </child>
+      </object>
+    </child>
+    <child>
+      <object class="BrkPreferencesPage">
+        <property name="name">editor</property>
+        <property name="title">Editor</property>
         <child>
           <object class="BrkPreferencesGroup">
             <property name="title">Indentation</property>
