@@ -9,7 +9,9 @@
               <object class="GtkScrolledWindow" id="scrolled_window">
                 <property name="hexpand">true</property>
                 <property name="vexpand">true</property>
-                <property name="overlay-scrolling">true</property>
+                <property name="hscrollbar-policy">automatic</property>
+                <property name="vscrollbar-policy">always</property>
+                <property name="overlay-scrolling">false</property>
                 <child>
                   <object class="GtkSourceView" id="source_view">
                     <property name="smart-home-end">after</property>
