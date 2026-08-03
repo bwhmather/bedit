@@ -108,6 +108,7 @@ public sealed class Bedit.Window : Gtk.ApplicationWindow {
     private void
     statusbar_init() {
         this.settings.bind("show-statusbar", this, "show-statusbar", GET);
+        this.bind_property("show-statusbar", this.status_bar, "visible", SYNC_CREATE);
         this.active_document_notify_connect("language", this.language_button_update);
         this.active_document_notify_connect("line", this.position_label_update);
         this.active_document_notify_connect("column", this.position_label_update);

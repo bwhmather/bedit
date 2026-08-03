@@ -261,7 +261,6 @@
         </child>
         <child type="bottom">
           <object class="BrkStatusbar" id="status_bar">
-            <property name="visible" bind-source="BeditWindow" bind-property="show-statusbar" bind-flags="sync-create"/>
             <child>
               <object class="GtkMenuButton" id="language_button">
                 <property name="direction">up</property>
