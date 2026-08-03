@@ -63,9 +63,13 @@ public sealed class Bedit.Window : Gtk.ApplicationWindow {
 
     public bool show_toolbar { get; set; }
 
+    [GtkChild]
+    private unowned Brk.Toolbar toolbar;
+
     private void
     toolbar_init() {
         this.settings.bind("show-toolbar", this, "show-toolbar", GET);
+        this.bind_property("show-toolbar", this.toolbar, "visible", SYNC_CREATE);
     }
 
     /* === Statusbar ======================================================== */

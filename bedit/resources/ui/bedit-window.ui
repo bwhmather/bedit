@@ -6,8 +6,7 @@
     <child>
       <object class="BrkToolbarView">
         <child type="top">
-          <object class="BrkToolbar">
-            <property name="visible" bind-source="BeditWindow" bind-property="show-toolbar" bind-flags="sync-create"/>
+          <object class="BrkToolbar" id="toolbar">
             <child>
               <object class="GtkButton">
                 <property name="icon-name">document-new</property>
