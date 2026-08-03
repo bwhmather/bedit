@@ -897,6 +897,9 @@ public sealed class Bedit.Window : Gtk.ApplicationWindow {
         });
 
         this.bind_property("search-visible", this.search_revealer, "reveal-child", SYNC_CREATE);
+        this.bind_property("replace-visible", this.replace_entry, "visible", SYNC_CREATE);
+        this.bind_property("replace-visible", this.replace_button, "visible", SYNC_CREATE);
+        this.bind_property("replace-visible", this.replace_all_button, "visible", SYNC_CREATE);
 
         this.replace_entry.activate.connect(this.replace_entry_on_activate);
 

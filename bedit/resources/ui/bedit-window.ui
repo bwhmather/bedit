@@ -151,7 +151,6 @@
                     </child>
                     <child>
                       <object class="GtkEntry" id="replace_entry">
-                        <property name="visible" bind-source="BeditWindow" bind-property="replace-visible" bind-flags="sync-create"/>
                         <property name="hexpand">true</property>
                         <property name="tooltip-text">Search replacement text</property>
                         <property name="primary-icon-name">edit-find-replace</property>
@@ -220,7 +219,6 @@
                     </child>
                     <child>
                       <object class="GtkButton" id="replace_button">
-                        <property name="visible" bind-source="BeditWindow" bind-property="replace-visible" bind-flags="sync-create"/>
                         <property name="halign">fill</property>
                         <property name="label">Replace</property>
                         <property name="tooltip-text">Replace first instance (Ctrl+R)</property>
@@ -233,7 +231,6 @@
                     </child>
                     <child>
                       <object class="GtkButton" id="replace_all_button">
-                        <property name="visible" bind-source="BeditWindow" bind-property="replace-visible" bind-flags="sync-create"/>
                         <property name="halign">fill</property>
                         <property name="label">Replace All</property>
                         <property name="tooltip-text">Replace all instances (Ctrl+Alt+R)</property>
