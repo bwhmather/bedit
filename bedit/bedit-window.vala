@@ -591,6 +591,12 @@ public sealed class Bedit.Window : Gtk.ApplicationWindow {
     [GtkChild]
     unowned Gtk.Entry replace_entry;
 
+    [GtkChild]
+    unowned Gtk.Button replace_button;
+
+    [GtkChild]
+    unowned Gtk.Button replace_all_button;
+
     public bool search_visible { get; private set; }
     public bool replace_visible { get; private set; }
     public bool search_active { get; private set; }
