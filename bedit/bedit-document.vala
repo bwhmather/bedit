@@ -1564,6 +1564,8 @@ public sealed class Bedit.Document : Gtk.Widget {
 
     /* --- Go To Line ------------------------------------------------------- */
 
+    public bool show_go_to_line { get; set; }
+
     [GtkChild]
     private unowned Gtk.Revealer go_to_line_revealer;
 
@@ -1662,68 +1664,58 @@ public sealed class Bedit.Document : Gtk.Widget {
         }
     }
 
-    public void
-    go_to_line_show() {
-        Gtk.TextIter iter;
-
-        this.go_to_line_revealer.reveal_child = true;
-
-        var cursor = this.source_buffer.get_insert();
-        this.source_buffer.get_iter_at_mark(out iter, cursor);
-        this.go_to_line_entry.text = (iter.get_line() + 1).to_string();
-        this.go_to_line_entry.select_region(0, -1);
-
-        this.go_to_line_entry.grab_focus();
-    }
-
     private void
     go_to_line_commit() {
         this.reset_start_mark();
     }
 
-    public void
-    go_to_line_hide() {
-        Gtk.TextIter start_iter;
-
-        if (!this.go_to_line_revealer.reveal_child) {
-            return;
-        }
-        this.go_to_line_revealer.reveal_child = false;
-
-        this.source_buffer.get_iter_at_mark(out start_iter, this.start_mark);
-        this.source_buffer.place_cursor(start_iter);
-        this.scroll_to_cursor();
-    }
-
     private void
     go_to_line_init() {
-        var action = new GLib.SimpleAction("show-go-to-line", null);
-        action.activate.connect(this.go_to_line_show);
+        var action = new GLib.PropertyAction("show-go-to-line", this, "show-go-to-line");
         this.document_actions.add_action(action);
 
-        action = new GLib.SimpleAction("hide-go-to-line", null);
-        action.activate.connect(this.go_to_line_hide);
-        this.document_actions.add_action(action);
+        this.bind_property("show-go-to-line", this.go_to_line_revealer, "reveal-child", SYNC_CREATE);
+        this.notify["show-go-to-line"].connect(() => {
+            Gtk.TextIter iter;
+            if (this.show_go_to_line) {
+                var cursor = this.source_buffer.get_insert();
+                this.source_buffer.get_iter_at_mark(out iter, cursor);
+                this.go_to_line_entry.text = (iter.get_line() + 1).to_string();
+                this.go_to_line_entry.select_region(0, -1);
+
+                this.go_to_line_entry.grab_focus();
+            } else {
+                this.source_buffer.get_iter_at_mark(out iter, this.start_mark);
+                this.source_buffer.place_cursor(iter);
+                this.scroll_to_cursor();
+            }
+        });
 
         this.go_to_line_entry.changed.connect((e) => { this.go_to_line_update(); });
 
         var focus_controller = new Gtk.EventControllerFocus();
         focus_controller.leave.connect((ec) => {
             this.go_to_line_commit();
-            this.go_to_line_hide();
+            this.show_go_to_line = false;
         });
         this.go_to_line_entry.add_controller(focus_controller);
 
         var shortcut_controller = new Gtk.ShortcutController();
         shortcut_controller.add_shortcut(new Gtk.Shortcut(
             Gtk.ShortcutTrigger.parse_string("Escape"),
-            new Gtk.NamedAction("doc.hide-go-to-line")
+            new Gtk.CallbackAction(() => {
+                if (!this.show_go_to_line) {
+                    return false;
+                }
+                this.show_go_to_line = false;
+                return true;
+            })
         ));
         this.go_to_line_entry.add_controller(shortcut_controller);
 
         this.go_to_line_entry.activate.connect((e) => {
             this.go_to_line_commit();
-            this.go_to_line_hide();
+            this.show_go_to_line = false;
         });
     }
 

@@ -114,7 +114,7 @@
             <child><object class="GtkSeparator"></object></child>
 
             <child>
-              <object class="GtkButton">
+              <object class="GtkToggleButton">
                 <property name="icon-name">go-jump</property>
                 <property name="tooltip-text">Go to line (Ctrl+I)</property>
                 <property name="action-name">doc.show-go-to-line</property>
