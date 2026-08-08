@@ -82,6 +82,12 @@ public sealed class Bedit.Window : Gtk.ApplicationWindow {
     [GtkChild]
     private unowned Gtk.MenuButton language_button;
 
+    [GtkChild]
+    private unowned Gtk.Entry language_entry;
+
+    [GtkChild]
+    private unowned Gtk.ListView language_list_view;
+
     private void
     language_button_update() {
         if (this.active_document == null || this.active_document.language == null) {
@@ -90,6 +96,42 @@ public sealed class Bedit.Window : Gtk.ApplicationWindow {
             this.language_button.label = this.active_document.language.name;
         }
     }
+
+    private void
+    language_init() {
+        var factory = new Gtk.SignalListItemFactory();
+        factory.setup.connect((listitem_) => {
+            var listitem = (Gtk.ListItem) listitem_;
+            var label = new Gtk.Label("");
+            listitem.child = label;
+        });
+        factory.bind.connect((listitem_) => {
+            var listitem = (Gtk.ListItem) listitem_;
+            var label = (Gtk.Label) listitem.child;
+            var language = (GtkSource.Language) listitem.item;
+            label.set_label(language.name);
+        });
+        this.language_list_view.factory = factory;
+
+        var language_model = new GLib.ListStore(typeof(GtkSource.Language));
+        var language_manager = GtkSource.LanguageManager.get_default();
+        foreach (var id in language_manager.language_ids) {
+            var language = language_manager.get_language(id);
+            if (language != null && !language.hidden) {
+                language_model.append(language);
+            }
+        }
+        var filter = new Gtk.StringFilter(
+            new Gtk.PropertyExpression(typeof(GtkSource.Language), null, "name")
+        );
+        this.language_entry.bind_property("text", filter, "search", DEFAULT);
+        var filter_model = new Gtk.FilterListModel(language_model, filter);
+        var selection_model = new Gtk.SingleSelection(filter_model);
+        this.language_list_view.model = selection_model;
+
+        this.active_document_notify_connect("language", this.language_button_update);
+    }
+
 
     [GtkChild]
     private unowned Gtk.Label position_label;
@@ -109,7 +151,7 @@ public sealed class Bedit.Window : Gtk.ApplicationWindow {
     statusbar_init() {
         this.settings.bind("show-statusbar", this, "show-statusbar", GET);
         this.bind_property("show-statusbar", this.status_bar, "visible", SYNC_CREATE);
-        this.active_document_notify_connect("language", this.language_button_update);
+        this.language_init();
         this.active_document_notify_connect("line", this.position_label_update);
         this.active_document_notify_connect("column", this.position_label_update);
     }
