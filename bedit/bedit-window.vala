@@ -129,6 +129,22 @@ public sealed class Bedit.Window : Gtk.ApplicationWindow {
         var selection_model = new Gtk.SingleSelection(filter_model);
         this.language_list_view.model = selection_model;
 
+        var key_controller = new Gtk.EventControllerKey();
+        key_controller.propagation_phase = BUBBLE;
+        key_controller.key_pressed.connect((controller, keyval, keycode, modifiers) => {
+            var handled = key_controller.forward(this.language_entry.get_delegate());
+            if (handled) {
+                this.language_entry.grab_focus_without_selecting();
+            }
+            return handled;
+        });
+        ((Gtk.Widget) this.language_list_view).add_controller(key_controller);
+
+        this.language_entry.activate.connect(() => {
+            var language = (GtkSource.Language?) selection_model.get_selected_item();
+            this.active_document.language = language;
+        });
+
         this.active_document_notify_connect("language", this.language_button_update);
     }
 
