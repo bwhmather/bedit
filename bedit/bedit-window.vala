@@ -182,7 +182,7 @@ public sealed class Bedit.Window : Gtk.ApplicationWindow {
     private void
     position_label_update() {
         if (this.active_document == null) {
-            this.position_label.label = "test";
+            this.position_label.label = "";
             this.position_label.visible = false;
         } else {
             this.position_label.label = "Line %i, Column %i".printf(
@@ -196,6 +196,24 @@ public sealed class Bedit.Window : Gtk.ApplicationWindow {
     position_indicator_init() {
         this.active_document_notify_connect("line", this.position_label_update);
         this.active_document_notify_connect("column", this.position_label_update);
+    }
+
+    /* --- Overwrite Indicator ---------------------------------------------- */
+
+    [GtkChild]
+    private unowned Gtk.Label overwrite_label;
+
+    private void
+    overwrite_indicator_init() {
+        this.active_document_notify_connect("overwrite", () => {
+            if (this.active_document == null) {
+                this.overwrite_label.label = "";
+                this.overwrite_label.visible = false;
+            } else {
+                this.overwrite_label.label = this.active_document.overwrite ? "OVR" : "INS";
+                this.overwrite_label.visible = true;
+            }
+        });
     }
 
     /* === Document Operations ============================================== */
@@ -1154,6 +1172,7 @@ public sealed class Bedit.Window : Gtk.ApplicationWindow {
         this.statusbar_init();
         this.language_indicator_init();
         this.position_indicator_init();
+        this.overwrite_indicator_init();
         this.window_actions_init();
         this.document_actions_init();
         this.clipboard_actions_init();

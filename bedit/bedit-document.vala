@@ -971,6 +971,15 @@ public sealed class Bedit.Document : Gtk.Widget {
         this.position_update();
     }
 
+    /* --- Overwrite Mode --------------------------------------------------- */
+
+    public bool overwrite { get; set; }
+
+    private void
+    overwrite_init() {
+        this.bind_property("overwrite", this.source_view, "overwrite", DEFAULT);
+    }
+
     /* === Whitespace ======================================================= */
 
     /* --- Indentation ------------------------------------------------------ */
@@ -1738,6 +1747,7 @@ public sealed class Bedit.Document : Gtk.Widget {
         title_init();
         language_init();
         position_init();
+        overwrite_init();
         font_init();
         word_wrap_init();
         indentation_init();
