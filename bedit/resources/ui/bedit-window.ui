@@ -265,7 +265,7 @@
               <object class="GtkMenuButton" id="language_button">
                 <property name="direction">up</property>
                 <property name="popover">
-                  <object class="GtkPopover">
+                  <object class="GtkPopover" id="language_popover">
                     <property name="width-request">250</property>
                     <property name="height-request">300</property>
                     <child>

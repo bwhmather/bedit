@@ -83,6 +83,9 @@ public sealed class Bedit.Window : Gtk.ApplicationWindow {
     private unowned Gtk.MenuButton language_button;
 
     [GtkChild]
+    private unowned Gtk.Popover language_popover;
+
+    [GtkChild]
     private unowned Gtk.Entry language_entry;
 
     [GtkChild]
@@ -90,10 +93,26 @@ public sealed class Bedit.Window : Gtk.ApplicationWindow {
 
     private void
     language_button_update() {
-        if (this.active_document == null || this.active_document.language == null) {
-            this.language_button.label = "Plain Text";
+        if (this.active_document == null) {
+            this.language_button.visible = false;
         } else {
-            this.language_button.label = this.active_document.language.name;
+            if (this.active_document.language == null) {
+                this.language_button.label = "Plain Text";
+            } else {
+                this.language_button.label = this.active_document.language.name;
+            }
+            this.language_button.visible = true;
+        }
+    }
+
+    private void
+    language_on_activate() {
+        var selection_model = (Gtk.SingleSelection) this.language_list_view.model;
+        var language = (GtkSource.Language?) selection_model.get_selected_item();
+        this.language_popover.popdown();
+        if (this.active_document != null) {
+            this.active_document.language = language;
+            this.active_document.grab_focus();
         }
     }
 
@@ -128,6 +147,7 @@ public sealed class Bedit.Window : Gtk.ApplicationWindow {
         var filter_model = new Gtk.FilterListModel(language_model, filter);
         var selection_model = new Gtk.SingleSelection(filter_model);
         this.language_list_view.model = selection_model;
+        this.language_list_view.activate.connect(this.language_on_activate);
 
         var key_controller = new Gtk.EventControllerKey();
         key_controller.propagation_phase = BUBBLE;
@@ -140,10 +160,8 @@ public sealed class Bedit.Window : Gtk.ApplicationWindow {
         });
         ((Gtk.Widget) this.language_list_view).add_controller(key_controller);
 
-        this.language_entry.activate.connect(() => {
-            var language = (GtkSource.Language?) selection_model.get_selected_item();
-            this.active_document.language = language;
-        });
+        this.language_entry.activate.connect(this.language_on_activate);
+        this.language_popover.default_widget = this.language_entry;
 
         this.active_document_notify_connect("language", this.language_button_update);
     }
@@ -155,11 +173,13 @@ public sealed class Bedit.Window : Gtk.ApplicationWindow {
     private void
     position_label_update() {
         if (this.active_document == null) {
-            this.position_label.label = "";
+            this.position_label.label = "test";
+            this.position_label.visible = false;
         } else {
             this.position_label.label = "Line %i, Column %i".printf(
                 this.active_document.line, this.active_document.column
             );
+            this.position_label.visible = true;
         }
     }
 
