@@ -79,6 +79,14 @@ public sealed class Bedit.Window : Gtk.ApplicationWindow {
     [GtkChild]
     private unowned Brk.Statusbar status_bar;
 
+    private void
+    statusbar_init() {
+        this.settings.bind("show-statusbar", this, "show-statusbar", GET);
+        this.bind_property("show-statusbar", this.status_bar, "visible", SYNC_CREATE);
+    }
+
+    /* --- Language Indicator ----------------------------------------------- */
+
     [GtkChild]
     private unowned Gtk.MenuButton language_button;
 
@@ -117,7 +125,7 @@ public sealed class Bedit.Window : Gtk.ApplicationWindow {
     }
 
     private void
-    language_init() {
+    language_indicator_init() {
         var factory = new Gtk.SignalListItemFactory();
         factory.setup.connect((listitem_) => {
             var listitem = (Gtk.ListItem) listitem_;
@@ -166,6 +174,7 @@ public sealed class Bedit.Window : Gtk.ApplicationWindow {
         this.active_document_notify_connect("language", this.language_button_update);
     }
 
+    /* --- Position Indicator ----------------------------------------------- */
 
     [GtkChild]
     private unowned Gtk.Label position_label;
@@ -184,10 +193,7 @@ public sealed class Bedit.Window : Gtk.ApplicationWindow {
     }
 
     private void
-    statusbar_init() {
-        this.settings.bind("show-statusbar", this, "show-statusbar", GET);
-        this.bind_property("show-statusbar", this.status_bar, "visible", SYNC_CREATE);
-        this.language_init();
+    position_indicator_init() {
         this.active_document_notify_connect("line", this.position_label_update);
         this.active_document_notify_connect("column", this.position_label_update);
     }
@@ -1146,6 +1152,8 @@ public sealed class Bedit.Window : Gtk.ApplicationWindow {
         this.menubar_init();
         this.toolbar_init();
         this.statusbar_init();
+        this.language_indicator_init();
+        this.position_indicator_init();
         this.window_actions_init();
         this.document_actions_init();
         this.clipboard_actions_init();
