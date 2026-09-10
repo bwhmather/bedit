@@ -1121,6 +1121,7 @@ public sealed class Bedit.Window : Gtk.ApplicationWindow {
     add_document(Bedit.Document document) {
         var page = this.tab_view.add_page(document, null);
         document.bind_property("title", page, "title", SYNC_CREATE);
+        document.bind_property("loading", page, "loading", SYNC_CREATE);
         this.tab_view.selected_page = page;
         this.tab_view.grab_focus();
     }
