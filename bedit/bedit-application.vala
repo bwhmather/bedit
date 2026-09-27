@@ -227,7 +227,7 @@ class Bedit.Application : Gtk.Application {
         this.set_accels_for_action("search.case-sensitive", {"<Control><Alt>M"});
         this.set_accels_for_action("search.regex", {"<Control><Alt>period"});
         this.set_accels_for_action("doc.focus", {"<Control>E"});
-        this.set_accels_for_action("doc.show-go-to-line", {"<Control>I"});
+        this.set_accels_for_action("doc.go-to-line-show", {"<Control>I"});
 
         // Tools.
         this.set_accels_for_action("app.open-check-spelling", {"<Shift>F7"});

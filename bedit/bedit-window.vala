@@ -388,10 +388,6 @@ public sealed class Bedit.Window : Gtk.ApplicationWindow {
     action_doc_duplicate_line() {
     }
 
-    /* --- Navigate to Line ------------------------------------------------- */
-
-    protected bool show_go_to_line { get; set; }
-
     /* --- Focus ------------------------------------------------------------ */
 
     private void
@@ -455,14 +451,35 @@ public sealed class Bedit.Window : Gtk.ApplicationWindow {
     private void
     document_actions_init() {
         this.document_actions.add_action_entries(document_action_entries,this);
-        var show_go_to_line_action = new GLib.PropertyAction("show-go-to-line", this, "show-go-to-line");
-        this.active_document_notify_connect("show-go-to-line", () => {
-            this.show_go_to_line = this.active_document != null && this.active_document.show_go_to_line;
+
+        this.notify["active-document"].connect(() => {
+            if (this.active_document == null) {
+                this.document_actions.remove_action("go-to-line-show");
+                this.document_actions.remove_action("go-to-line-hide");
+                this.document_actions.remove_action("show-go-to-line");
+                return;
+            }
+
+            var action = new GLib.SimpleAction("go-to-line-show", null);
+            action.activate.connect(() => {
+                this.active_document.show_go_to_line = true;
+            });
+            this.active_document.bind_property(
+                "show-go-to-line", action, "enabled", SYNC_CREATE | INVERT_BOOLEAN
+            );
+            this.document_actions.add_action(action);
+
+            action = new GLib.SimpleAction("go-to-line-hide", null);
+            action.activate.connect(() =>{
+                this.active_document.show_go_to_line = false;
+            });
+            this.active_document.bind_property("show-go-to-line", action, "enabled", SYNC_CREATE);
+            this.document_actions.add_action(action);
+
+            var paction = new GLib.PropertyAction("show-go-to-line", this.active_document, "show-go-to-line");
+            this.document_actions.add_action(paction);
         });
-        this.notify["show-go-to-line"].connect(() => {
-            if (this.active_document != null) this.active_document.show_go_to_line = this.show_go_to_line;
-        });
-        this.document_actions.add_action(show_go_to_line_action);
+
         this.insert_action_group("doc", this.document_actions);
 
         this.active_document_notify_connect("can-undo", this.document_actions_update);

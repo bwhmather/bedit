@@ -1680,9 +1680,6 @@ public sealed class Bedit.Document : Gtk.Widget {
 
     private void
     go_to_line_init() {
-        var action = new GLib.PropertyAction("show-go-to-line", this, "show-go-to-line");
-        this.document_actions.add_action(action);
-
         this.bind_property("show-go-to-line", this.go_to_line_revealer, "reveal-child", SYNC_CREATE);
         this.notify["show-go-to-line"].connect(() => {
             Gtk.TextIter iter;
@@ -1702,6 +1699,11 @@ public sealed class Bedit.Document : Gtk.Widget {
 
         this.go_to_line_entry.changed.connect((e) => { this.go_to_line_update(); });
 
+        this.go_to_line_entry.activate.connect((e) => {
+            this.go_to_line_commit();
+            this.show_go_to_line = false;
+        });
+
         var focus_controller = new Gtk.EventControllerFocus();
         focus_controller.leave.connect((ec) => {
             this.go_to_line_commit();
@@ -1709,23 +1711,27 @@ public sealed class Bedit.Document : Gtk.Widget {
         });
         this.go_to_line_entry.add_controller(focus_controller);
 
+        var action = new GLib.SimpleAction("go-to-line-show", null);
+        action.activate.connect(() => {
+            this.show_go_to_line = true;
+        });
+        this.bind_property("show-go-to-line", action, "enabled", SYNC_CREATE | INVERT_BOOLEAN);
+        this.document_actions.add_action(action);
+
+        action = new GLib.SimpleAction("go-to-line-hide", null);
+        action.activate.connect(() =>{
+            this.show_go_to_line = false;
+        });
+        this.bind_property("show-go-to-line", action, "enabled", SYNC_CREATE);
+        this.document_actions.add_action(action);
+
         var shortcut_controller = new Gtk.ShortcutController();
         shortcut_controller.add_shortcut(new Gtk.Shortcut(
             Gtk.ShortcutTrigger.parse_string("Escape"),
-            new Gtk.CallbackAction(() => {
-                if (!this.show_go_to_line) {
-                    return false;
-                }
-                this.show_go_to_line = false;
-                return true;
-            })
+            new Gtk.NamedAction("doc.go-to-line-hide")
         ));
-        this.go_to_line_entry.add_controller(shortcut_controller);
+        this.add_controller(shortcut_controller);
 
-        this.go_to_line_entry.activate.connect((e) => {
-            this.go_to_line_commit();
-            this.show_go_to_line = false;
-        });
     }
 
     /* === Lifecyle ========================================================= */
